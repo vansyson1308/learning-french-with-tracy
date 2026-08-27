@@ -134,20 +134,26 @@ describe("committed lexicon database", () => {
 });
 
 describe("build determinism (logical-dump contract)", () => {
-  test("two fresh builds are logically identical, and match the committed database", () => {
-    const dir = mkdtempSync(path.join(os.tmpdir(), "lexdb-test-"));
-    try {
-      const a = path.join(dir, "a.db");
-      const b = path.join(dir, "b.db");
-      buildSqliteDb(a, lexicon, registry, contentHash);
-      buildSqliteDb(b, lexicon, registry, contentHash);
-      const dumpA = logicalDump(a);
-      expect(dumpA).toBe(logicalDump(b));
-      expect(dumpA).toBe(logicalDump(committedPath));
-    } finally {
-      rmSync(dir, { recursive: true, force: true });
-    }
-  });
+  test(
+    "two fresh builds are logically identical, and match the committed database",
+    () => {
+      const dir = mkdtempSync(path.join(os.tmpdir(), "lexdb-test-"));
+      try {
+        const a = path.join(dir, "a.db");
+        const b = path.join(dir, "b.db");
+        buildSqliteDb(a, lexicon, registry, contentHash);
+        buildSqliteDb(b, lexicon, registry, contentHash);
+        const dumpA = logicalDump(a);
+        expect(dumpA).toBe(logicalDump(b));
+        expect(dumpA).toBe(logicalDump(committedPath));
+      } finally {
+        rmSync(dir, { recursive: true, force: true });
+      }
+    },
+    // Two full builds (each VACUUMs) + three logical dumps: comfortably fast
+    // locally but past Bun's 5s default on slower CI runners.
+    30_000
+  );
 
   test("the content hash is derived from source data, not the binary", () => {
     // Recomputing from the same in-memory sources is stable.
