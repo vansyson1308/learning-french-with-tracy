@@ -219,10 +219,9 @@ export const useProgress = create<ProgressState>()(
             lessons: 0,
             perfect: 0,
           };
-          const earned = Math.max(
-            0,
-            Math.min(Math.round(assessmentXp), XP_PER_LESSON)
-          );
+          const earned = Number.isFinite(assessmentXp)
+            ? Math.max(0, Math.min(Math.round(assessmentXp), XP_PER_LESSON))
+            : 0;
           const daily = bumpDailyXp(state, earned, today);
           const activeDays = pruneDays({
             ...state.activeDays,
