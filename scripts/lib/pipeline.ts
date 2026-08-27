@@ -40,6 +40,8 @@ export function safeResolve(...segments: string[]): string {
 /** The only paths compile is allowed to write. */
 export const GENERATED_TARGETS = [
   "src/content/packs",
+  "src/content/lexicon",
+  "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",
 ] as const;

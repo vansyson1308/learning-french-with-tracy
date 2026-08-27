@@ -9,12 +9,14 @@
 export type CourseCapabilities = {
   /** TODAY tab + guided daily session (French-first rollout). */
   dailySession: boolean;
+  /** Rich lexicon + vocabulary browser (Phase 4, French-first). */
+  lexicon: boolean;
 };
 
 const FLAGS: Record<string, Partial<CourseCapabilities>> = {
-  "fr-en": { dailySession: true },
+  "fr-en": { dailySession: true, lexicon: true },
 };
 
 export function courseCapabilities(courseId: string): CourseCapabilities {
-  return { dailySession: false, ...FLAGS[courseId] };
+  return { dailySession: false, lexicon: false, ...FLAGS[courseId] };
 }

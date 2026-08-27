@@ -20,8 +20,9 @@ import { hashSeed, seededRng } from "../review-builder";
 import type { ExerciseStep, SessionStep, TeachStep } from "../session/types";
 import type { MatchExercise, Pack, SelectExercise, Word } from "../types";
 
+import { pickDistractors } from "./distractors";
 import { dueFrenchReviewQueue } from "./engine";
-import { FR_SURFACE_FOR_ID, isCuratedFrItemId } from "./ids-fr";
+import { FR_COURSE_ID, FR_SURFACE_FOR_ID, isCuratedFrItemId } from "./ids-fr";
 import type { FsrsCardState } from "./scheduler";
 
 export type TodayPreset = "short" | "regular" | "long";
@@ -118,20 +119,20 @@ function buildSelect(args: {
   const display = (w: Word) => (direction === "targetToNative" ? w.native : w.target);
   const answerText = display(word);
 
-  const seen = new Set<string>([answerText]);
-  const candidates: Word[] = [];
-  for (const w of pool) {
-    const text = display(w);
-    if (w.target === word.target || seen.has(text)) continue;
-    seen.add(text);
-    candidates.push(w);
-  }
+  // Smart engine (Phase 4): confusables → same POS+topic → same band →
+  // same POS → safe fallback, same-gender preference for nouns (in
+  // production the option surfaces carry articles — a lone gender would
+  // leak the answer). Deterministic under the session rng.
   // Recognition options all carry their word's emoji (an emoji only on the
   // answer would give it away); production options are plain French text.
   const withEmoji = direction === "targetToNative";
-  const distractors = shuffle(candidates, rng)
-    .slice(0, 3)
-    .map((w) => (withEmoji ? { text: display(w), emoji: w.emoji } : { text: display(w) }));
+  const distractors = pickDistractors({
+    courseId: FR_COURSE_ID,
+    word,
+    pool,
+    rng,
+    direction,
+  }).map((w) => (withEmoji ? { text: display(w), emoji: w.emoji } : { text: display(w) }));
   if (distractors.length === 0) return null;
 
   const options = shuffle(

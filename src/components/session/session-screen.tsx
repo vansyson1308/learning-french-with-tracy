@@ -28,11 +28,13 @@ import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 import { CloseButton } from "@/components/close-button";
 import { DuoButton } from "@/components/duo-button";
 import { ExerciseRenderer } from "@/components/session/exercise-renderer";
+import { PostAnswerPanel } from "@/components/session/post-answer-panel";
 import { SessionSummary, type TodaySummaryStats } from "@/components/session/session-summary";
 import { TeachCard } from "@/components/session/teach-card";
 import { behaviorFor } from "@/lib/exercise-registry";
 import { exitScreen } from "@/lib/navigation";
 import { useSessionController, type SessionController } from "@/lib/session/controller";
+import { panelItemIdFor, teachMetaFor } from "@/lib/session/panel";
 import {
   currentStep,
   firstAttemptAccuracy as machineAccuracy,
@@ -124,6 +126,9 @@ export function SessionScreen({
 
   const exercise = step.type === "exercise" ? step.exercise : null;
   const selfAdvancing = exercise ? behaviorFor(exercise).selfAdvancing : false;
+  // Lexical feedback identity: exactly one stable French item or nothing.
+  const answered = state.status === "correct" || state.status === "wrong";
+  const panelItemId = answered ? panelItemIdFor(definition, step) : null;
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
@@ -154,7 +159,7 @@ export function SessionScreen({
           keyboardShouldPersistTaps="handled"
         >
           {step.type === "teach" ? (
-            <TeachCard word={step.word} courseId={definition.courseId} />
+            <TeachCard word={step.word} courseId={definition.courseId} meta={teachMetaFor(step)} />
           ) : (
             <ExerciseRenderer
               exercise={step.exercise}
@@ -204,6 +209,9 @@ export function SessionScreen({
               </Text>
             </Animated.View>
           )}
+          {panelItemId !== null ? (
+            <PostAnswerPanel itemId={panelItemId} correct={state.status === "correct"} />
+          ) : null}
           {step.type === "teach" ? (
             <DuoButton label="Continue" onPress={controller.onTeachContinue} />
           ) : state.status === "idle" ? (

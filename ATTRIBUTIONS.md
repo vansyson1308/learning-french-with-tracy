@@ -6,6 +6,17 @@ This file lists third-party sources this app builds on, generated from the
 provenance registry. It supplements — and never replaces — the repository's
 `LICENSE`; all existing copyright and MIT notices are preserved as-is.
 
+## Learning French with Tracy — authored French lexicon
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** authored lexical data (glosses reuse the project's existing course content)
+- **Retrieved:** 2026-08-27
+
+French lexicon data authored by the Learning French with Tracy project, published under CC BY-SA 4.0 (see LEXICON_LICENSE.md).
+
+> Original project authorship: part of speech, gender, IPA pronunciation, topics, example sentences, and confusable relations for the 54 curriculum lexemes; native glosses reuse the course content already covered by upstream-lingo-lessons. Contains zero rows from Lexique or any external dictionary — the Lexique 4 source is identified in content/fr/lexicon/source-manifest.json and remains not-retrieved (see content/fr/lexicon/ACQUISITION.md). Published under CC BY-SA 4.0 per the approved licensing decision so future Lexique-4-derived data (also CC BY-SA 4.0) merges license-coherently. The dataset license never applies to application code, which keeps its existing MIT licensing.
+
 ## ts-fsrs (open-spaced-repetition)
 
 - **License:** MIT

@@ -271,6 +271,19 @@ function DataCard() {
         </View>
         <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
       </Pressable>
+      <Pressable
+        onPress={() => router.push("/licenses")}
+        accessibilityRole="button"
+        accessibilityLabel="Licenses and attributions"
+        style={styles.dataRow}
+      >
+        <Ionicons name="document-text-outline" size={20} color={colors.skyDark} />
+        <View style={styles.dataRowText}>
+          <Text style={styles.dataRowTitle}>Licenses &amp; attributions</Text>
+          <Text style={styles.settingsHint}>Software notices and data sources.</Text>
+        </View>
+        <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
+      </Pressable>
     </View>
   );
 }

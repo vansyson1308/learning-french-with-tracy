@@ -258,3 +258,22 @@ export function frCardForSurface(
   if (!cards) return undefined;
   return cards[serializeCardKey({ itemId: frItemIdFor(surface), skill: "recognize" })];
 }
+
+/**
+ * Memory strength for the French word list (Phase 4): current FSRS
+ * retrievability as a 0–100 percentage, through the app-owned adapter —
+ * the UI never reimplements the forgetting formula. Words without a card
+ * have no memory model yet → null (callers show an empty bar, never a
+ * fabricated value). Fail-closed: an invalid card yields null, not a crash.
+ */
+export function frMemoryStrengthPercent(
+  card: FsrsCardState | undefined,
+  now: number = Date.now()
+): number | null {
+  if (!card) return null;
+  try {
+    return Math.round(fsrsScheduler.retrievability(card, now) * 100);
+  } catch {
+    return null;
+  }
+}

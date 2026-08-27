@@ -7,10 +7,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { SpeakerButton } from "@/components/speaker-button";
+import { courseCapabilities } from "@/lib/capabilities";
 import { useCourseContent } from "@/lib/content";
 import {
   dueFrenchReviewQueue,
   frCardForSurface,
+  frMemoryStrengthPercent,
   itemIdForCourse,
 } from "@/lib/learning/engine";
 import { FR_COURSE_ID } from "@/lib/learning/ids-fr";
@@ -33,17 +35,23 @@ export default function PracticeScreen() {
     : dueSrsWords(courseProgress.srs ?? {}).length;
   const quests = dailyQuests(progress);
 
+  const hasLexicon = courseCapabilities(activeCourseId).lexicon;
+
   const uniqueWords = [
     ...new Map(allWords().map((w) => [w.target, w] as const)).values(),
   ];
   const words = uniqueWords
-    .map((w) => ({
-      ...w,
-      stat: courseProgress.wordStats[itemIdForCourse(activeCourseId, w.target)],
-      dueAt: isFrench
-        ? frCardForSurface(courseProgress.cards, w.target)?.due
-        : courseProgress.srs?.[w.target]?.dueAt,
-    }))
+    .map((w) => {
+      const card = isFrench ? frCardForSurface(courseProgress.cards, w.target) : undefined;
+      return {
+        ...w,
+        stat: courseProgress.wordStats[itemIdForCourse(activeCourseId, w.target)],
+        dueAt: isFrench ? card?.due : courseProgress.srs?.[w.target]?.dueAt,
+        // French strength = real FSRS retrievability (memory model);
+        // legacy courses keep their correctness-ratio semantics untouched.
+        memory: isFrench ? frMemoryStrengthPercent(card) : null,
+      };
+    })
     .filter((w) => w.stat);
 
   return (
@@ -105,11 +113,33 @@ export default function PracticeScreen() {
           />
         </View>
 
+        {hasLexicon ? (
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Ionicons name="library" size={24} color={colors.skyDark} />
+              <Text style={styles.cardTitle}>Vocabulary</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>
+              Browse every French word — meaning, gender, pronunciation and examples.
+            </Text>
+            <DuoButton
+              label="Open vocabulary"
+              variant="primary"
+              onPress={() => router.push("/vocabulary")}
+            />
+          </View>
+        ) : null}
+
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Ionicons name="book" size={24} color={colors.greenDark} />
             <Text style={styles.cardTitle}>Words ({words.length})</Text>
           </View>
+          {isFrench && words.length > 0 ? (
+            <Text style={styles.cardSubtitle}>
+              Bars show memory strength — how likely you are to recall each word right now.
+            </Text>
+          ) : null}
           {words.length === 0 ? (
             <Text style={styles.cardSubtitle}>
               Words you learn will show up here with their strength.
@@ -119,7 +149,8 @@ export default function PracticeScreen() {
               .sort((a, b) => (b.stat?.lastSeen ?? 0) - (a.stat?.lastSeen ?? 0))
               .map((word) => {
                 const total = (word.stat?.correct ?? 0) + (word.stat?.wrong ?? 0);
-                const strength = total === 0 ? 0 : (word.stat!.correct / total) * 100;
+                const legacyStrength = total === 0 ? 0 : (word.stat!.correct / total) * 100;
+                const strength = isFrench ? (word.memory ?? 0) : legacyStrength;
                 const due = word.dueAt !== undefined ? dueInDaysAt(word.dueAt) : null;
                 return (
                   <View key={word.target} style={styles.wordRow}>

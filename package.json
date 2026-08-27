@@ -22,6 +22,7 @@
     "expo-sharing": "~56.0.17",
     "expo-speech": "~56.0.3",
     "expo-splash-screen": "~56.0.10",
+    "expo-sqlite": "~56.0.5",
     "expo-status-bar": "~56.0.4",
     "expo-symbols": "~56.0.6",
     "expo-system-ui": "~56.0.5",
@@ -62,7 +63,12 @@
     "content:compile": "bun scripts/compile-content.ts",
     "content:check": "bun scripts/compile-content.ts --check",
     "audio:check": "bun scripts/check-audio.ts",
-    "test:integration": "jest"
+    "test:integration": "jest",
+    "lexicon:source:verify": "bun scripts/lexicon-source.ts verify",
+    "lexicon:source:extract": "bun scripts/lexicon-source.ts extract",
+    "lexicon:validate": "bun scripts/validate-content.ts",
+    "lexicon:build": "bun scripts/compile-content.ts",
+    "lexicon:check": "bun scripts/compile-content.ts --check"
   },
   "private": true
 }
