@@ -50,7 +50,12 @@ export function isDue(entry: SrsEntry | undefined, now = Date.now()) {
 }
 
 export function dueInDays(entry: SrsEntry, now = Date.now()) {
-  const ms = entry.dueAt - now;
+  return dueInDaysAt(entry.dueAt, now);
+}
+
+/** Same math for callers that hold a bare due timestamp (FSRS cards). */
+export function dueInDaysAt(dueAt: number, now = Date.now()) {
+  const ms = dueAt - now;
   if (ms <= 0) return 0;
   return Math.ceil(ms / 86_400_000);
 }

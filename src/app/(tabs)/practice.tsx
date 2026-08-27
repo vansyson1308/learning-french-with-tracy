@@ -8,7 +8,13 @@ import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { SpeakerButton } from "@/components/speaker-button";
 import { useCourseContent } from "@/lib/content";
-import { dueInDays } from "@/lib/srs";
+import {
+  dueFrenchReviewQueue,
+  frCardForSurface,
+  itemIdForCourse,
+} from "@/lib/learning/engine";
+import { FR_COURSE_ID } from "@/lib/learning/ids-fr";
+import { dueInDaysAt } from "@/lib/srs";
 import { dailyQuests, dueSrsWords, useProgress, type Quest } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -19,7 +25,12 @@ export default function PracticeScreen() {
   const { activeCourseId } = progress;
   const courseProgress = progress.course();
   const { pack, allWords } = useCourseContent(activeCourseId);
-  const dueWords = dueSrsWords(courseProgress.srs ?? {});
+  const isFrench = activeCourseId === FR_COURSE_ID;
+  // French reviews come from the FSRS card map; other courses stay on the
+  // legacy srs map — one count, two sources.
+  const dueCount = isFrench
+    ? dueFrenchReviewQueue(courseProgress.cards).length
+    : dueSrsWords(courseProgress.srs ?? {}).length;
   const quests = dailyQuests(progress);
 
   const uniqueWords = [
@@ -28,8 +39,10 @@ export default function PracticeScreen() {
   const words = uniqueWords
     .map((w) => ({
       ...w,
-      stat: courseProgress.wordStats[w.target],
-      srs: courseProgress.srs?.[w.target],
+      stat: courseProgress.wordStats[itemIdForCourse(activeCourseId, w.target)],
+      dueAt: isFrench
+        ? frCardForSurface(courseProgress.cards, w.target)?.due
+        : courseProgress.srs?.[w.target]?.dueAt,
     }))
     .filter((w) => w.stat);
 
@@ -62,14 +75,14 @@ export default function PracticeScreen() {
             <Text style={styles.cardTitle}>Spaced review</Text>
           </View>
           <Text style={styles.cardSubtitle}>
-            {dueWords.length === 0
+            {dueCount === 0
               ? "No words due right now. Keep learning!"
-              : `${dueWords.length} word${dueWords.length === 1 ? "" : "s"} ready to review.`}
+              : `${dueCount} word${dueCount === 1 ? "" : "s"} ready to review.`}
           </Text>
           <DuoButton
             label="Review words"
             variant="primary"
-            disabled={dueWords.length === 0}
+            disabled={dueCount === 0}
             onPress={() => router.push("/lesson/srs")}
           />
         </View>
@@ -107,7 +120,7 @@ export default function PracticeScreen() {
               .map((word) => {
                 const total = (word.stat?.correct ?? 0) + (word.stat?.wrong ?? 0);
                 const strength = total === 0 ? 0 : (word.stat!.correct / total) * 100;
-                const due = word.srs ? dueInDays(word.srs) : null;
+                const due = word.dueAt !== undefined ? dueInDaysAt(word.dueAt) : null;
                 return (
                   <View key={word.target} style={styles.wordRow}>
                     <SpeakerButton text={word.target} size={36} />

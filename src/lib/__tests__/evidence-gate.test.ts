@@ -10,6 +10,7 @@ function ev(overrides: Partial<ReviewEvidence> = {}): ReviewEvidence {
     exerciseId: "u1-l1-e1",
     modality: "recognizeText",
     srsRole: "assessment",
+    source: "review",
     correct: true,
     hinted: false,
     assisted: false,

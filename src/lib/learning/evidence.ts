@@ -27,12 +27,16 @@ export type Modality =
   | "arrange" // wordBank
   | "match"; // matching pairs
 
+/** Which surface produced the evidence (drives legacy-course translation). */
+export type EvidenceSource = "lesson" | "review" | "mistakes";
+
 export type ReviewEvidence = {
   cardKey: CardKey;
   sessionId: string;
   exerciseId: string;
   modality: Modality;
   srsRole: SrsRole;
+  source: EvidenceSource;
   correct: boolean;
   /** Any hint requested before answering. */
   hinted: boolean;

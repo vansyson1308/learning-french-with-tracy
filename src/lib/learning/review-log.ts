@@ -11,7 +11,7 @@
  * roadmap's storage phase.
  */
 
-import type { Modality, SrsRole } from "./evidence";
+import type { EvidenceSource, Modality, SrsRole } from "./evidence";
 import type { FsrsCardState, Grade, PlainFsrsLog } from "./scheduler";
 
 export const REVIEW_LOG_CAP = 10_000;
@@ -33,6 +33,7 @@ export type ReviewLogEntry = {
   exerciseId: string;
   modality: Modality;
   srsRole: SrsRole;
+  source: EvidenceSource;
   correct: boolean;
   hinted: boolean;
   assisted: boolean;

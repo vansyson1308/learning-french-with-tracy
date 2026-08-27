@@ -3,7 +3,11 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 import { addDays, dayString, localWeek } from "./dates";
-import type { ReviewLogEntry } from "./learning/review-log";
+import { applyEvidence } from "./learning/engine";
+import type { ReviewEvidence } from "./learning/evidence";
+import { fsrsScheduler } from "./learning/fsrs-adapter";
+import { FR_COURSE_ID } from "./learning/ids-fr";
+import { lastMutationIndex, type ReviewLogEntry } from "./learning/review-log";
 import type { FsrsCardState } from "./learning/scheduler";
 import {
   DEFAULT_COURSE_ID,
@@ -80,6 +84,14 @@ type ProgressState = {
   clearMistake: (exerciseId: string) => void;
   recordWord: (target: string, correct: boolean) => void;
   reviewSrsWord: (target: string, correct: boolean) => void;
+  /**
+   * The single evidence path for all courses: fr-en → evidence gate → FSRS;
+   * every other course → exact legacy recordWord/reviewSrsWord translation.
+   * Returns true when the FSRS scheduler was mutated (enables undo).
+   */
+  submitEvidence: (ev: ReviewEvidence) => boolean;
+  /** Reverts the most recent French scheduler mutation (card + log entry). */
+  undoLastFrenchReview: () => boolean;
   setActiveCourse: (courseId: string) => void;
   setThemePreference: (preference: ThemePreference) => void;
   finishOnboarding: (courseId: string, goal: number) => void;
@@ -236,6 +248,57 @@ export const useProgress = create<ProgressState>()(
             srs: { ...c.srs, [target]: reviewWord(c.srs?.[target], correct ? 2 : 0) },
           }))
         ),
+
+      submitEvidence: (ev) => {
+        let mutated = false;
+        set((state) => {
+          const courseId = state.activeCourseId;
+          const out = applyEvidence({
+            courseId,
+            course: state.courses[courseId] ?? emptyCourseProgress(),
+            reviewLog: state.reviewLog,
+            ev,
+            now: Date.now(),
+          });
+          mutated = out.mutated;
+          return {
+            courses: { ...state.courses, [courseId]: out.course },
+            reviewLog: out.reviewLog,
+          };
+        });
+        return mutated;
+      },
+
+      undoLastFrenchReview: () => {
+        const state = get();
+        const idx = lastMutationIndex(state.reviewLog, FR_COURSE_ID);
+        if (idx < 0) return false;
+        const entry = state.reviewLog[idx];
+        const fr = state.courses[FR_COURSE_ID];
+        const current = fr?.cards?.[entry.cardKey];
+        if (!fr || !current || !entry.mutation) return false;
+        const restored = fsrsScheduler.rollback(current, {
+          grade: entry.mutation.grade,
+          at: entry.at,
+          prevCard: entry.mutation.prevCard,
+          fsrsLog: entry.mutation.fsrsLog,
+        });
+        set({
+          courses: {
+            ...state.courses,
+            [FR_COURSE_ID]: {
+              ...fr,
+              cards: { ...fr.cards, [entry.cardKey]: restored },
+            },
+          },
+          // Card and log move together: the undone review never happened.
+          reviewLog: [
+            ...state.reviewLog.slice(0, idx),
+            ...state.reviewLog.slice(idx + 1),
+          ],
+        });
+        return true;
+      },
 
       setActiveCourse: (courseId) => set({ activeCourseId: courseId }),
 

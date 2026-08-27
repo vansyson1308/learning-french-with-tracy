@@ -17,6 +17,7 @@ function entry(overrides: Partial<ReviewLogEntry> = {}): ReviewLogEntry {
     exerciseId: "e1",
     modality: "recognizeText",
     srsRole: "assessment",
+    source: "review",
     correct: true,
     hinted: false,
     assisted: false,
