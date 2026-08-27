@@ -7,9 +7,12 @@
  */
 
 import {
+  CONJUGATION_CELLS,
+  ConjugationsSchema,
   PackSchema,
   PedagogyConceptsSchema,
   type Concept,
+  type Conjugations,
   type PackSource,
   type PedagogyConcepts,
 } from "../../content/schema";
@@ -102,6 +105,119 @@ export function validateLessonFlows(input: {
   return { errors, warnings: [] };
 }
 
+export const CONJUGATIONS_SOURCE = "content/fr/pedagogy/conjugations.json";
+
+export function loadConjugations(): Conjugations {
+  return ConjugationsSchema.parse(readJson(CONJUGATIONS_SOURCE));
+}
+
+type MorphVerb = {
+  lemma: string;
+  rows: { mot: string; infoVer: string }[];
+};
+
+/**
+ * §26 consumption contract, enforced: every authored conjugation cell must
+ * be EVIDENCED by the committed Lexique 4 verb-morphology rows — a row of
+ * the same lemma whose orthographic form matches the cell's value and
+ * whose analysis set carries the cell's mood:tense:person atom (row-level
+ * number is documented as noisy and never gates). Regular -er verbs must
+ * additionally follow the written paradigm they claim to teach.
+ */
+export function validateConjugationsData(input: {
+  conjugations: Conjugations;
+  morphologyVerbs: MorphVerb[];
+}): ValidationResult {
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`conjugations: ${m}`);
+  const byLemma = new Map(input.morphologyVerbs.map((v) => [v.lemma, v]));
+
+  const atomFor = (cell: string): ((atom: string) => boolean) => {
+    if (cell === "inf") return (a) => a === "inf";
+    if (cell === "participle") return (a) => a.startsWith("par:pas");
+    const person = cell.slice(4, 5); // "pre:1s" → "1"
+    return (a) => a === `ind:pre:${person}`;
+  };
+
+  const seen = new Set<string>();
+  for (const verb of input.conjugations.verbs) {
+    if (seen.has(verb.lemma)) err(`duplicate verb ${verb.lemma}`);
+    seen.add(verb.lemma);
+    const evidence = byLemma.get(verb.lemma);
+    if (!evidence || evidence.rows.length === 0) {
+      err(`${verb.lemma}: no verb-morphology evidence rows — extend the derive verb list first`);
+      continue;
+    }
+    for (const cell of CONJUGATION_CELLS) {
+      const form = verb.cells[cell];
+      if (form === undefined) {
+        err(`${verb.lemma}: cell ${cell} is missing — tables must be complete`);
+        continue;
+      }
+      const matches = atomFor(cell);
+      const evidenced = evidence.rows.some(
+        (row) => row.mot === form && row.infoVer.split(",").some(matches)
+      );
+      if (!evidenced) {
+        err(`${verb.lemma}: cell ${cell} = "${form}" is not evidenced by the Lexique 4 morphology rows`);
+      }
+    }
+    if (verb.group === "er-regular") {
+      const first = verb.cells["pre:1s"];
+      const stemEz = verb.cells.inf?.endsWith("er") ? `${verb.cells.inf.slice(0, -2)}ez` : undefined;
+      if (first !== undefined) {
+        if (verb.cells["pre:2s"] !== `${first}s`) err(`${verb.lemma}: er-regular 2s must be 1s + s`);
+        if (verb.cells["pre:3s"] !== first) err(`${verb.lemma}: er-regular 3s must equal 1s`);
+        if (verb.cells["pre:3p"] !== `${first}nt`) err(`${verb.lemma}: er-regular 3p must be 1s + nt`);
+      }
+      if (stemEz !== undefined && verb.cells["pre:2p"] !== stemEz) {
+        err(`${verb.lemma}: er-regular 2p must be stem + ez`);
+      }
+    }
+  }
+  return { errors, warnings: [] };
+}
+
+/**
+ * Pack ↔ tables ↔ evidence chain for conjugationCloze exercises: the
+ * expected answer must be exactly the named verb's authored cell (which is
+ * itself evidence-verified above), so no drill can ever teach a form the
+ * data does not support.
+ */
+export function validateConjugationClozes(input: {
+  packs: { courseId: string; pack: PackSource }[];
+  conjugations: Conjugations;
+}): ValidationResult {
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`conjugation-cloze: ${m}`);
+  const byLemma = new Map(input.conjugations.verbs.map((v) => [v.lemma, v]));
+  for (const { courseId, pack } of input.packs) {
+    for (const section of pack.sections)
+      for (const unit of section.units)
+        for (const lesson of unit.lessons)
+          for (const e of lesson.exercises) {
+            if (e.type !== "conjugationCloze") continue;
+            const where = `${courseId}/${e.id}`;
+            if (courseId !== "fr-en") {
+              err(`${where}: conjugationCloze is French pedagogy — not available for ${courseId}`);
+              continue;
+            }
+            const verb = byLemma.get(e.verb);
+            if (!verb) {
+              err(`${where}: verb ${e.verb} has no authored conjugation table`);
+              continue;
+            }
+            const expected = verb.cells[e.cell];
+            if (expected !== e.answer) {
+              err(`${where}: answer "${e.answer}" ≠ authored cell ${e.cell} = "${expected}"`);
+            }
+            if (!e.sentence.includes("___")) err(`${where}: sentence has no ___ blank`);
+            if (e.alternatives.includes(e.answer)) err(`${where}: answer duplicated in alternatives`);
+          }
+  }
+  return { errors, warnings: [] };
+}
+
 /** Disk-reading wrapper for the CLIs: concepts + flow integrity together. */
 export function validatePedagogy(): ValidationResult {
   let concepts: PedagogyConcepts;
@@ -126,7 +242,38 @@ export function validatePedagogy(): ValidationResult {
     packs,
     conceptIds: new Set(concepts.concepts.map((c) => c.id)),
   });
-  return { errors: [...conceptResult.errors, ...flowResult.errors], warnings: [] };
+
+  let conjugations: Conjugations;
+  try {
+    conjugations = loadConjugations();
+  } catch (e) {
+    return {
+      errors: [
+        ...conceptResult.errors,
+        ...flowResult.errors,
+        `conjugations: conjugations.json failed schema validation — ${(e as Error).message.split("\n")[0]}`,
+      ],
+      warnings: [],
+    };
+  }
+  const morphology = readJson("content/fr/lexicon/derived/verb-morphology.json") as {
+    verbs: { lemma: string; rows: { mot: string; infoVer: string }[] }[];
+  };
+  const conjResult = validateConjugationsData({
+    conjugations,
+    morphologyVerbs: morphology.verbs,
+  });
+  const clozeResult = validateConjugationClozes({ packs, conjugations });
+
+  return {
+    errors: [
+      ...conceptResult.errors,
+      ...flowResult.errors,
+      ...conjResult.errors,
+      ...clozeResult.errors,
+    ],
+    warnings: [],
+  };
 }
 
 /** The compiled runtime artifact: concepts keyed by id, authored order kept. */

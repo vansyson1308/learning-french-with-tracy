@@ -52,6 +52,14 @@ export function evidencePlanFor(
     return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
   }
 
+  // Conjugation production (§67): practice evidence on the verb's own
+  // lexeme when it exists — never lexical FSRS assessment.
+  if (exercise.type === "conjugationCloze") {
+    if (definition.courseId !== FR_COURSE_ID) return null;
+    const id = lexemeIdForLookupForm(exercise.verb);
+    return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
+  }
+
   if (exercise.type !== "select") return null;
 
   if (definition.courseId === FR_COURSE_ID) {

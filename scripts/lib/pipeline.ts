@@ -160,7 +160,7 @@ export function validateContent(): ValidationResult {
             if (ids.has(e.id)) err(`${pack.id}: duplicate exercise id ${e.id}`);
             ids.add(e.id);
             validateExercise(pack.id, e, err);
-            if (e.type !== "match" && e.audioTarget !== undefined) {
+            if ("audioTarget" in e && e.audioTarget !== undefined) {
               if (!manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
                 err(`${pack.id}: ${e.id} audioTarget has no audio: "${e.audioTarget}"`);
               }

@@ -78,13 +78,30 @@ export type ArticleSelectExercise = {
   audioTarget?: string;
 };
 
+/**
+ * Typed conjugation production (Phase 5B): STRICT grading (accents and
+ * exact inflection matter). No gradeTargets by design — grammar production
+ * is practice evidence, never lexical FSRS (§67).
+ */
+export type ConjugationClozeExercise = {
+  type: "conjugationCloze";
+  id: string;
+  sentence: string;
+  translation: string;
+  verb: string;
+  cell: string;
+  answer: string;
+  alternatives: string[];
+};
+
 export type Exercise =
   | SelectExercise
   | WordBankExercise
   | MatchExercise
   | TypeAnswerExercise
   | FillBlankExercise
-  | ArticleSelectExercise;
+  | ArticleSelectExercise
+  | ConjugationClozeExercise;
 
 /**
  * Optional explicit lesson flow (Phase 5B): ordered interleaving of

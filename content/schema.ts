@@ -77,6 +77,18 @@ export const FillBlankExerciseSchema = z.strictObject({
   gradeTargets,
 });
 
+export const CONJUGATION_CELLS = [
+  "inf",
+  "pre:1s",
+  "pre:2s",
+  "pre:3s",
+  "pre:1p",
+  "pre:2p",
+  "pre:3p",
+  "participle",
+] as const;
+export type ConjugationCell = (typeof CONJUGATION_CELLS)[number];
+
 /**
  * Grammar drill (Phase 5B §54–58): pick the right article for a noun. By
  * DESIGN this schema has no gradeTargets field — grammar answers are
@@ -99,6 +111,27 @@ export const ArticleSelectExerciseSchema = z.strictObject({
   audioTarget: z.string().min(1).optional(),
 });
 
+/**
+ * Typed conjugation production (Phase 5B §64–66). The expected answer is
+ * the named verb's authored cell (validated against the conjugation tables
+ * and, through them, the Lexique 4 morphology evidence). No gradeTargets
+ * by design — grammar production is practice evidence, never lexical FSRS
+ * (§67). Grading is STRICT: accents and exact inflection matter.
+ */
+export const ConjugationClozeExerciseSchema = z.strictObject({
+  type: z.literal("conjugationCloze"),
+  id,
+  /** Sentence with ___ where the conjugated form goes. */
+  sentence: z.string().min(1),
+  translation: z.string().min(1),
+  /** Infinitive lemma of the drilled verb (shown as the hint). */
+  verb: z.string().min(1),
+  cell: z.enum(CONJUGATION_CELLS),
+  answer: z.string().min(1),
+  /** Documented acceptable variants only — never meaning-changing endings. */
+  alternatives: z.array(z.string().min(1)),
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
@@ -106,6 +139,7 @@ export const ExerciseSchema = z.discriminatedUnion("type", [
   TypeAnswerExerciseSchema,
   FillBlankExerciseSchema,
   ArticleSelectExerciseSchema,
+  ConjugationClozeExerciseSchema,
 ]);
 
 /** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */
@@ -386,6 +420,32 @@ export const PedagogyConceptsSchema = z.strictObject({
   concepts: z.array(ConceptSchema),
 });
 export type PedagogyConcepts = z.infer<typeof PedagogyConceptsSchema>;
+
+/**
+ * content/fr/pedagogy/conjugations.json — authored conjugation tables for
+ * the High-Yield Verbs unit (Phase 5B §60–68). Scope: présent, past
+ * participle (passé composé), infinitive (futur proche). AUTHORED cells,
+ * each machine-verified against the committed Lexique 4 verb-morphology
+ * evidence (the §26 consumption contract: never blind extraction).
+ */
+export const ConjugatedVerbSchema = z.strictObject({
+  /** Infinitive lemma, e.g. "être". */
+  lemma: z.string().min(1),
+  english: z.string().min(1),
+  /** "er-regular" drives the pattern lesson; "irregular" is taught by table. */
+  group: z.enum(["er-regular", "irregular"]),
+  /** Passé-composé auxiliary for this verb. */
+  auxiliary: z.enum(["avoir", "être"]),
+  cells: z.record(z.enum(CONJUGATION_CELLS), z.string().min(1)),
+});
+export type ConjugatedVerb = z.infer<typeof ConjugatedVerbSchema>;
+
+export const ConjugationsSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  verbs: z.array(ConjugatedVerbSchema).min(1),
+});
+export type Conjugations = z.infer<typeof ConjugationsSchema>;
 
 /**
  * content/fr/lexicon/match-overrides.json — the §15 manual-disposition
