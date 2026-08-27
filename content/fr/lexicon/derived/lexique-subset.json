@@ -825,6 +825,60 @@
       "status": "matched",
       "matchKey": "attendre|VER||p",
       "candidateCount": 1
+    },
+    {
+      "id": "fr:w:jour",
+      "surface": "le jour",
+      "lookupForm": "jour",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "jour|NOM|m|s",
+      "candidateCount": 1
+    },
+    {
+      "id": "fr:w:heure",
+      "surface": "l'heure",
+      "lookupForm": "heure",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "heure|NOM|f|s",
+      "candidateCount": 1
+    },
+    {
+      "id": "fr:w:minute",
+      "surface": "la minute",
+      "lookupForm": "minute",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "minute|NOM|f|s",
+      "candidateCount": 1
+    },
+    {
+      "id": "fr:w:semaine",
+      "surface": "la semaine",
+      "lookupForm": "semaine",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "semaine|NOM|f|s",
+      "candidateCount": 1
+    },
+    {
+      "id": "fr:w:mois",
+      "surface": "le mois",
+      "lookupForm": "mois",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "mois|NOM|m|i",
+      "candidateCount": 1
+    },
+    {
+      "id": "fr:w:annee",
+      "surface": "l'année",
+      "lookupForm": "année",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "année|NOM|f|s",
+      "candidateCount": 1
     }
   ],
   "entries": [
@@ -13316,6 +13370,269 @@
           "freqOrtho": 1.589,
           "freqLemme": 1269.411,
           "cdOrtho": 0.72719,
+          "isLem": false,
+          "preval": 100
+        }
+      ]
+    },
+    {
+      "id": "fr:w:jour",
+      "lookupForm": "jour",
+      "lemma": "jour",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "jour",
+          "phono": "ZuR",
+          "ipa": "ʒuʁ",
+          "lemme": "jour",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "m",
+          "nombre": "s",
+          "infoVer": "",
+          "freqMot": 547.117,
+          "freqOrtho": 547.117,
+          "freqLemme": 920.943,
+          "cdOrtho": 80.41641,
+          "isLem": true,
+          "preval": 100
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "jours",
+          "phono": "ZuR",
+          "ipa": "ʒuʁ",
+          "lemme": "jour",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "m",
+          "nombre": "p",
+          "infoVer": "",
+          "freqMot": 373.563,
+          "freqOrtho": 373.566,
+          "freqLemme": 920.943,
+          "cdOrtho": 68.58849,
+          "isLem": false,
+          "preval": 100
+        }
+      ]
+    },
+    {
+      "id": "fr:w:heure",
+      "lookupForm": "heure",
+      "lemma": "heure",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "heure",
+          "phono": "9R",
+          "ipa": "œʁ",
+          "lemme": "heure",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "s",
+          "infoVer": "",
+          "freqMot": 337.025,
+          "freqOrtho": 337.028,
+          "freqLemme": 609.022,
+          "cdOrtho": 67.28261,
+          "isLem": true,
+          "preval": 100
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "heures",
+          "phono": "9R",
+          "ipa": "œʁ",
+          "lemme": "heure",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "i",
+          "infoVer": "",
+          "freqMot": 271.807,
+          "freqOrtho": 271.937,
+          "freqLemme": 609.022,
+          "cdOrtho": 56.22627,
+          "isLem": false,
+          "preval": 100
+        }
+      ]
+    },
+    {
+      "id": "fr:w:minute",
+      "lookupForm": "minute",
+      "lemma": "minute",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "minute",
+          "phono": "minyt",
+          "ipa": "minyt",
+          "lemme": "minute",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM,VER",
+          "genre": "f",
+          "nombre": "s",
+          "infoVer": "",
+          "freqMot": 166.215,
+          "freqOrtho": 167.339,
+          "freqLemme": 404.247,
+          "cdOrtho": 44.99694,
+          "isLem": true,
+          "preval": 100
+        },
+        {
+          "mot": "minute",
+          "phono": "minyt",
+          "ipa": "minyt",
+          "lemme": "minuter",
+          "cgram": "VER",
+          "cgramOrtho": "NOM,VER",
+          "genre": "",
+          "nombre": "s",
+          "infoVer": "ind:pre:1,ind:pre:3,imp:pre:2",
+          "freqMot": 1.123,
+          "freqOrtho": 167.339,
+          "freqLemme": 1.902,
+          "cdOrtho": 44.99694,
+          "isLem": false,
+          "preval": 100
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "minutes",
+          "phono": "minyt",
+          "ipa": "minyt",
+          "lemme": "minute",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM,VER",
+          "genre": "f",
+          "nombre": "p",
+          "infoVer": "",
+          "freqMot": 237.972,
+          "freqOrtho": 238.421,
+          "freqLemme": 404.247,
+          "cdOrtho": 51.63197,
+          "isLem": false,
+          "preval": 100
+        }
+      ]
+    },
+    {
+      "id": "fr:w:semaine",
+      "lookupForm": "semaine",
+      "lemma": "semaine",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "semaine",
+          "phono": "s°mEn",
+          "ipa": "səmɛn",
+          "lemme": "semaine",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "s",
+          "infoVer": "",
+          "freqMot": 204.864,
+          "freqOrtho": 204.864,
+          "freqLemme": 333.437,
+          "cdOrtho": 48.44305,
+          "isLem": true,
+          "preval": 100
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "semaines",
+          "phono": "s°mEn",
+          "ipa": "səmɛn",
+          "lemme": "semaine",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "p",
+          "infoVer": "",
+          "freqMot": 128.566,
+          "freqOrtho": 128.566,
+          "freqLemme": 333.437,
+          "cdOrtho": 35.62615,
+          "isLem": false,
+          "preval": 100
+        }
+      ]
+    },
+    {
+      "id": "fr:w:mois",
+      "lookupForm": "mois",
+      "lemma": "mois",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "mois",
+          "phono": "mwa",
+          "ipa": "mwa",
+          "lemme": "mois",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "m",
+          "nombre": "i",
+          "infoVer": "",
+          "freqMot": 296.063,
+          "freqOrtho": 296.063,
+          "freqLemme": 296.275,
+          "cdOrtho": 58.11696,
+          "isLem": true,
+          "preval": 96
+        }
+      ],
+      "lemmaRows": []
+    },
+    {
+      "id": "fr:w:annee",
+      "lookupForm": "année",
+      "lemma": "année",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "année",
+          "phono": "ane",
+          "ipa": "ane",
+          "lemme": "année",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "s",
+          "infoVer": "",
+          "freqMot": 150.924,
+          "freqOrtho": 150.927,
+          "freqLemme": 360.839,
+          "cdOrtho": 36.31353,
+          "isLem": true,
+          "preval": 100
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "années",
+          "phono": "ane",
+          "ipa": "ane",
+          "lemme": "année",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "p",
+          "infoVer": "",
+          "freqMot": 209.759,
+          "freqOrtho": 209.759,
+          "freqLemme": 360.839,
+          "cdOrtho": 50.74862,
           "isLem": false,
           "preval": 100
         }
