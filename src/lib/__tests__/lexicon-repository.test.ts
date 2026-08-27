@@ -103,19 +103,9 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     // merci has no population rank (ONO category) yet sorts by its raw
     // frequency — rank is never the sort key.
     expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
-    // Unmeasured entries sink to the end in course order: the three
-    // expressions, then the 6 Unit D time nouns awaiting extract round 7.
-    expect(ids.slice(-9)).toEqual([
-      "fr:w:au-revoir",
-      "fr:w:s-il-vous-plait",
-      "fr:w:bonne-nuit",
-      "fr:w:jour",
-      "fr:w:heure",
-      "fr:w:minute",
-      "fr:w:semaine",
-      "fr:w:mois",
-      "fr:w:annee",
-    ]);
+    // The three unmeasured expressions sink to the end in course order;
+    // every word lexeme (Units A through D included) is measured.
+    expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
   });
 
   test("getExamples returns the authored example pairs", async () => {
