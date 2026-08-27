@@ -294,6 +294,28 @@ export const SourceManifestSchema = z
   });
 export type SourceManifest = z.infer<typeof SourceManifestSchema>;
 
+/**
+ * content/fr/lexicon/match-overrides.json — the §15 manual-disposition
+ * channel for lexemes the strict matcher leaves unmatched. Every override
+ * names the exact source row it adopts and the human justification; the
+ * validator additionally requires the override to reference a row that
+ * really exists in the committed evidence subset for that lexeme, and
+ * rejects overrides for lexemes the matcher already resolves (or that are
+ * never matchable, i.e. expressions). Silent correction stays impossible.
+ */
+export const MatchOverridesSchema = z.strictObject({
+  version: z.literal(1),
+  overrides: z.array(
+    z.strictObject({
+      id: lexemeId,
+      /** Mot|Cgram|Genre|Nombre of the adopted source row. */
+      matchKey: z.string().min(1),
+      justification: z.string().min(20),
+    })
+  ),
+});
+export type MatchOverrides = z.infer<typeof MatchOverridesSchema>;
+
 const LICENSE_ALLOWLIST = [
   "MIT",
   "Apache-2.0",

@@ -13,8 +13,8 @@
  *    it reports as "ambiguous" with an explanatory note.
  */
 import type { RichLexeme, RichLexicon } from "../../content/schema";
-import { lexiqueGenderFor, lexiquePosFor, type MatchStatus } from "./lexicon";
-import type { CoreLexemeRows, TrimmedRow } from "./lexique-derive-lib";
+import { lexiqueFormEquals, lexiqueGenderFor, lexiquePosFor, type MatchStatus } from "./lexicon";
+import { trimmedRowKey, type CoreLexemeRows } from "./lexique-derive-lib";
 
 export type CrossCheckStatus =
   | "agree"
@@ -67,10 +67,6 @@ export function normalizeIpaForComparison(value: string): string {
     .replace(/[ˈˌ./\s()]/g, "")
     .replace(/ʀ/g, "ʁ")
     .replace(/g/g, "ɡ");
-}
-
-function trimmedRowKey(row: TrimmedRow): string {
-  return [row.mot, row.cgram, row.genre, row.nombre].join("|");
 }
 
 function check(
@@ -132,14 +128,19 @@ function check(
   // lemma + POS: from the matched row when there is one; otherwise report
   // what the source DOES say about this form so the investigation has the
   // evidence in hand.
+  // Lemma equality applies the same documented ligature fold as matching
+  // (the source writes "oeuf" for our "œuf" — same lemma, digraph spelling).
+  const lemmaAgrees = matched !== null && lexiqueFormEquals(matched.lemme, lex.lemma);
   fields.push({
     field: "lemma",
-    status: rowStatus === "agree" ? (matched && matched.lemme === lex.lemma ? "agree" : "disagree") : rowStatus,
+    status: rowStatus === "agree" ? (lemmaAgrees ? "agree" : "disagree") : rowStatus,
     authored: lex.lemma,
     external: matched ? matched.lemme : entry.formRows.length > 0 ? observedReadings : null,
     ...(rowStatus === "disagree"
       ? { note: "the form exists in the source only under other readings" }
-      : {}),
+      : lemmaAgrees && matched !== null && matched.lemme !== lex.lemma
+        ? { note: "source writes the ligature as a digraph (documented fold)" }
+        : {}),
   });
   fields.push({
     field: "partOfSpeech",

@@ -200,6 +200,23 @@ describe("crossCheckCore", () => {
     expect(report.items[1].fields.find((f) => f.field === "frequency")?.status).toBe("disagree");
   });
 
+  test("ligature digraph lemma (oeuf for œuf) agrees with a documented note", () => {
+    const lex = lexeme({
+      id: "fr:w:oeuf",
+      surface: "l'œuf",
+      lemma: "œuf",
+      lookupForm: "œuf",
+      pronunciation: { value: "œf", notation: "ipa", source: "original-french-lexicon" },
+    });
+    const report = reportFor(lexiconOf(lex), [noun("oeuf", "m", "œf", "24")]);
+    const item = report.items[0];
+    expect(item.matchStatus).toBe("matched");
+    const lemma = item.fields.find((f) => f.field === "lemma");
+    expect(lemma?.status).toBe("agree");
+    expect(lemma?.note).toContain("digraph");
+    expect(item.overall).toBe("agree");
+  });
+
   test("summary counts add up per field", () => {
     const lex = lexeme({ id: "fr:w:chat", lookupForm: "chat", lemma: "chat", surface: "le chat" });
     const report = reportFor(lexiconOf(lex), [noun("chat", "m", "ʃa", "30")]);

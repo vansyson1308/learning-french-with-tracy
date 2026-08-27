@@ -14,18 +14,22 @@
  * "source-unavailable" and never invents matches.
  */
 
+import { existsSync } from "fs";
+
 import {
   FrLexemeMapSchema,
+  MatchOverridesSchema,
   PackSchema,
   RichLexiconSchema,
   SourceManifestSchema,
+  type MatchOverrides,
   type PartOfSpeech,
   type RichLexeme,
   type RichLexicon,
   type SourceManifest,
 } from "../../content/schema";
 import { FR_COURSE_ID, FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
-import { loadRegistry, readJson, type ValidationResult } from "./pipeline";
+import { loadRegistry, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const LEXIQUE_SOURCE_ID = "lexique-4";
 
@@ -266,7 +270,7 @@ export function validateLexicon(): ValidationResult {
       for (const word of unit.words) {
         if (!packGloss.has(word.target)) packGloss.set(word.target, word.native);
       }
-  return validateLexiconData({
+  const result = validateLexiconData({
     lexicon,
     manifest,
     frozenMap,
@@ -274,6 +278,46 @@ export function validateLexicon(): ValidationResult {
     registryIds: new Set(loadRegistry().sources.map((s) => s.id)),
     packGloss,
   });
+
+  // Manual match overrides validate against the committed evidence subset.
+  let overrides: MatchOverrides;
+  try {
+    overrides = loadMatchOverrides();
+  } catch (e) {
+    result.errors.push(
+      `match-overrides: match-overrides.json failed schema validation — ${(e as Error).message.split("\n")[0]}`
+    );
+    return result;
+  }
+  if (overrides.overrides.length > 0) {
+    const subsetRel = "content/fr/lexicon/derived/lexique-subset.json";
+    if (!existsSync(safeResolve(subsetRel))) {
+      result.errors.push(
+        "match-overrides: overrides exist but the committed evidence subset is missing — run the derive step first"
+      );
+      return result;
+    }
+    const subset = readJson(subsetRel) as {
+      audit?: SourceMatchRow[];
+      entries?: { id: string; formRows: Record<string, string>[] }[];
+    };
+    const availableRowKeys = new Map<string, Set<string>>();
+    for (const entry of subset.entries ?? []) {
+      availableRowKeys.set(
+        entry.id,
+        new Set(
+          entry.formRows.map((r) => [r.mot, r.cgram, r.genre, r.nombre].join("|"))
+        )
+      );
+    }
+    const overrideResult = validateMatchOverridesData({
+      overrides,
+      audit: subset.audit ?? [],
+      availableRowKeys,
+    });
+    result.errors.push(...overrideResult.errors);
+  }
+  return result;
 }
 
 // ---------------------------------------------------------------------------
@@ -509,6 +553,78 @@ export function matchLexemes(
  */
 export function lexiconSourceAudit(rows: LexiqueRow[] | null = null): SourceMatchRow[] {
   return matchLexemes(loadRichLexicon(), rows);
+}
+
+// ---------------------------------------------------------------------------
+// Manual match overrides (§15 dispositions for matcher-unresolvable items)
+// ---------------------------------------------------------------------------
+
+export function loadMatchOverrides(): MatchOverrides {
+  const rel = "content/fr/lexicon/match-overrides.json";
+  if (!existsSync(safeResolve(rel))) return { version: 1, overrides: [] };
+  return MatchOverridesSchema.parse(readJson(rel));
+}
+
+/**
+ * Pure override validation: an override may only resolve what the strict
+ * matcher genuinely cannot (unmatched/ambiguous — never expressions, never
+ * already-matched items), and must adopt a row that really exists in the
+ * committed evidence subset for that lexeme.
+ */
+export function validateMatchOverridesData(input: {
+  overrides: MatchOverrides;
+  audit: SourceMatchRow[];
+  /** lexeme id → row keys present in its committed evidence formRows. */
+  availableRowKeys: Map<string, Set<string>>;
+}): ValidationResult {
+  const { overrides, audit, availableRowKeys } = input;
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`match-overrides: ${m}`);
+  const auditById = new Map(audit.map((r) => [r.id, r]));
+  const seen = new Set<string>();
+  for (const override of overrides.overrides) {
+    if (seen.has(override.id)) err(`duplicate override for ${override.id}`);
+    seen.add(override.id);
+    const row = auditById.get(override.id);
+    if (!row) {
+      err(`${override.id} is not a known lexeme`);
+      continue;
+    }
+    if (row.status === "matched") {
+      err(`${override.id} is already matched by the strict matcher — a redundant override hides drift`);
+    } else if (row.status === "not-applicable") {
+      err(`${override.id} is an expression — never lexique-matched, not even by override`);
+    } else if (row.status === "source-unavailable") {
+      err(`${override.id}: no evidence rows exist to adopt (source-unavailable)`);
+    }
+    const available = availableRowKeys.get(override.id) ?? new Set();
+    if ((row.status === "unmatched" || row.status === "ambiguous") && !available.has(override.matchKey)) {
+      err(
+        `${override.id}: matchKey "${override.matchKey}" is not among the committed evidence rows for this lexeme (${[...available].join(", ") || "none"})`
+      );
+    }
+  }
+  return { errors, warnings: [] };
+}
+
+/**
+ * The effective match table the importer consumes: strict-matcher results
+ * plus validated manual overrides, each entry labeled with its provenance.
+ */
+export function effectiveMatchKeys(
+  audit: SourceMatchRow[],
+  overrides: MatchOverrides
+): Map<string, { matchKey: string; via: "matcher" | "override" }> {
+  const map = new Map<string, { matchKey: string; via: "matcher" | "override" }>();
+  for (const row of audit) {
+    if (row.status === "matched" && row.matchKey !== null) {
+      map.set(row.id, { matchKey: row.matchKey, via: "matcher" });
+    }
+  }
+  for (const override of overrides.overrides) {
+    map.set(override.id, { matchKey: override.matchKey, via: "override" });
+  }
+  return map;
 }
 
 // ---------------------------------------------------------------------------

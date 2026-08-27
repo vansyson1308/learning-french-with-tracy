@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "overrides": [
+    {
+      "id": "fr:w:bonjour",
+      "matchKey": "bonjour|NOM|m|s",
+      "justification": "The strict matcher leaves bonjour unmatched because the curriculum teaches it as an interjection (a greeting) while Lexique 4 has no interjection reading for it and classes the word NOM m. Both classifications describe the same surface in the same greeting usage — the subtitle corpus counts spoken 'Bonjour !' under this NOM row (freqLemme 483.788/M, prevalence 100) — so its frequency and 3_Phono_IPA value (bɔ̃ʒuʁ, identical to the authored IPA) genuinely describe the taught word. The authored partOfSpeech stays interjection; the divergence is documented in REVIEW.md (P5A.2 disposition 1)."
+    },
+    {
+      "id": "fr:w:bonsoir",
+      "matchKey": "bonsoir|NOM|m|i",
+      "justification": "Same disposition as bonjour: taught as an interjection greeting, classed NOM m (nombre i) by Lexique 4 with no interjection reading available. The NOM row's measurements (freqLemme 108.437/M, prevalence 95, IPA bɔ̃swaʁ identical to the authored value) describe the same spoken greeting, so they may be adopted while the authored partOfSpeech stays interjection. Documented in REVIEW.md (P5A.2 disposition 1)."
+    }
+  ]
+}

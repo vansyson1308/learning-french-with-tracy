@@ -51,6 +51,11 @@ function num(value: string | undefined): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+/** The same Mot|Cgram|Genre|Nombre identity lexiqueRowKey builds, over the trimmed projection. */
+export function trimmedRowKey(row: TrimmedRow): string {
+  return [row.mot, row.cgram, row.genre, row.nombre].join("|");
+}
+
 export function trimRow(row: LexiqueRow): TrimmedRow {
   return {
     mot: row[L4.MOT] ?? "",

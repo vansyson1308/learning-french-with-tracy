@@ -26,9 +26,11 @@
 import { Database } from "bun:sqlite";
 import { createHash } from "crypto";
 
+import { existsSync } from "fs";
+
 import type { RichLexicon, SourceManifest, SourceRegistry } from "../../content/schema";
 import { foldForSearch, foldLigatures } from "../../src/lib/learning/lexicon-search";
-import { canonicalJson } from "./pipeline";
+import { canonicalJson, readJson, safeResolve } from "./pipeline";
 import { lexiconSourceAudit, type SourceMatchRow } from "./lexicon";
 
 /** Bump when the SQLite schema (tables/columns/pragmas) changes shape. */
@@ -420,6 +422,27 @@ export function buildSourceAuditReport(audit: SourceMatchRow[]) {
   return { rows: audit };
 }
 
+/**
+ * The audit that lands in the committed reports. Offline environments never
+ * see the raw artifact, so once the source is retrieved the REAL audit
+ * comes from the committed derived subset (produced runner-side against
+ * the verified artifact) — but only when its sha matches the manifest pin;
+ * a stale or missing subset falls back to the honest source-unavailable
+ * audit rather than inventing or reusing drifted evidence.
+ */
+export function committedSourceAudit(manifest: SourceManifest): SourceMatchRow[] {
+  if (manifest.retrieval.status === "retrieved") {
+    const rel = "content/fr/lexicon/derived/lexique-subset.json";
+    if (existsSync(safeResolve(rel))) {
+      const subset = readJson(rel) as { source?: { sha256?: string }; audit?: SourceMatchRow[] };
+      if (Array.isArray(subset.audit) && subset.source?.sha256 === manifest.retrieval.sha256) {
+        return subset.audit;
+      }
+    }
+  }
+  return lexiconSourceAudit();
+}
+
 export { lexiconSourceAudit };
 
 // ---------------------------------------------------------------------------
@@ -449,7 +472,7 @@ export function compileLexiconArtifacts(
   registry: SourceRegistry
 ): { contentHash: string; files: Array<{ relPath: string; contents: string }> } {
   const contentHash = lexiconContentHash(lexicon, manifest, registry);
-  const audit = lexiconSourceAudit();
+  const audit = committedSourceAudit(manifest);
   return {
     contentHash,
     files: [

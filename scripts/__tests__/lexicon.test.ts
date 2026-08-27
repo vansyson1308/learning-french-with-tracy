@@ -12,6 +12,7 @@ import type { RichLexicon, SourceManifest } from "../../content/schema";
 import { SourceManifestSchema } from "../../content/schema";
 import {
   derivedSurfaceMap,
+  effectiveMatchKeys,
   frequencyBandFor,
   genderEvidenceInText,
   lexiqueGenderFor,
@@ -23,6 +24,8 @@ import {
   splitSurfaceArticle,
   validateLexicon,
   validateLexiconData,
+  validateMatchOverridesData,
+  type SourceMatchRow,
 } from "../lib/lexicon";
 import { readJson } from "../lib/pipeline";
 
@@ -581,6 +584,63 @@ describe("matchLexemes — deterministic, fail-closed", () => {
     ]);
     expect(audit[0].status).toBe("matched");
     expect(audit[0].matchKey).toBe("oeuf|NOM|m|s");
+  });
+});
+
+describe("match overrides — §15 dispositions, never silent", () => {
+  const audit: SourceMatchRow[] = [
+    { id: "fr:w:chat", surface: "le chat", lookupForm: "chat", partOfSpeech: "noun", status: "matched", matchKey: "chat|NOM|m|s", candidateCount: 1 },
+    { id: "fr:w:bonjour", surface: "bonjour", lookupForm: "bonjour", partOfSpeech: "interjection", status: "unmatched", matchKey: null, candidateCount: 0 },
+    { id: "fr:w:au-revoir", surface: "au revoir", lookupForm: "au revoir", partOfSpeech: "expression", status: "not-applicable", matchKey: null, candidateCount: 0 },
+    { id: "fr:w:vide", surface: "vide", lookupForm: "vide", partOfSpeech: "adjective", status: "source-unavailable", matchKey: null, candidateCount: 0 },
+  ];
+  const availableRowKeys = new Map([["fr:w:bonjour", new Set(["bonjour|NOM|m|s"])]]);
+  const justification = "documented disposition with a real reason, see REVIEW.md";
+  const check = (overrides: { id: string; matchKey: string; justification: string }[]) =>
+    validateMatchOverridesData({ overrides: { version: 1, overrides }, audit, availableRowKeys }).errors;
+
+  test("a valid override for an unmatched lexeme adopting an existing evidence row passes", () => {
+    expect(check([{ id: "fr:w:bonjour", matchKey: "bonjour|NOM|m|s", justification }])).toEqual([]);
+  });
+
+  test("overriding an already-matched lexeme is rejected (hides drift)", () => {
+    expect(check([{ id: "fr:w:chat", matchKey: "chat|NOM|m|s", justification }]).join("\n")).toContain(
+      "already matched"
+    );
+  });
+
+  test("expressions can never be overridden into a match", () => {
+    expect(check([{ id: "fr:w:au-revoir", matchKey: "x|NOM|m|s", justification }]).join("\n")).toContain(
+      "never lexique-matched"
+    );
+  });
+
+  test("source-unavailable, unknown ids, phantom rows and duplicates are rejected", () => {
+    expect(check([{ id: "fr:w:vide", matchKey: "vide|ADJ||s", justification }]).join("\n")).toContain(
+      "source-unavailable"
+    );
+    expect(check([{ id: "fr:w:ghost", matchKey: "g|NOM|m|s", justification }]).join("\n")).toContain(
+      "not a known lexeme"
+    );
+    expect(
+      check([{ id: "fr:w:bonjour", matchKey: "bonjour|INT||", justification }]).join("\n")
+    ).toContain("not among the committed evidence rows");
+    expect(
+      check([
+        { id: "fr:w:bonjour", matchKey: "bonjour|NOM|m|s", justification },
+        { id: "fr:w:bonjour", matchKey: "bonjour|NOM|m|s", justification },
+      ]).join("\n")
+    ).toContain("duplicate override");
+  });
+
+  test("effectiveMatchKeys merges matcher results with overrides, labeled by provenance", () => {
+    const effective = effectiveMatchKeys(audit, {
+      version: 1,
+      overrides: [{ id: "fr:w:bonjour", matchKey: "bonjour|NOM|m|s", justification }],
+    });
+    expect(effective.get("fr:w:chat")).toEqual({ matchKey: "chat|NOM|m|s", via: "matcher" });
+    expect(effective.get("fr:w:bonjour")).toEqual({ matchKey: "bonjour|NOM|m|s", via: "override" });
+    expect(effective.has("fr:w:au-revoir")).toBe(false);
   });
 });
 
