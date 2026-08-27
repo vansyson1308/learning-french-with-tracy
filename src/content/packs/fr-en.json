@@ -8519,6 +8519,911 @@
               ]
             }
           ]
+        },
+        {
+          "id": "fr-en:unit-d",
+          "title": "Numbers 0–100",
+          "description": "The whole number system in three rules — plus the words for counting time.",
+          "guidebook": "# Numbers 0–100\n\nFrench numbers are a small system, not a hundred vocabulary items. Learn the pieces and the three famous corners.\n\n## The building blocks\n\n- 0–16 are single words: zéro, un, deux… seize.\n- 17–19 compound with dix: **dix-sept, dix-huit, dix-neuf**.\n- The tens 20–60: vingt, trente, quarante, cinquante, soixante. Units attach with a hyphen — **vingt-deux** — except at 1: **vingt et un**, trente et un… soixante et un.\n\n## The seventies\n\nThere is no French word for seventy: 70 is **soixante-dix** (sixty-ten), and the seventies keep counting through the teens — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 is the one \"et onze\": **soixante et onze**. Belgium and Switzerland say *septante* instead — recognize it, but this course teaches France French.\n\n## Four twenties\n\n80 is **quatre-vingts** — literally four twenties — and keeps its -s only when bare: **quatre-vingts**, but **quatre-vingt-un** (no \"et\" here!). The nineties ride on top through the teens again: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Belgium and Switzerland say *nonante*. And 100 is simply **cent**.\n\n## Two official spellings\n\nThe traditional orthography spaces around et (**vingt et un**); the 1990 spelling rectifications hyphenate everything (**vingt-et-un**). Both are correct and both are accepted here — this course displays the traditional forms.\n\n## Counting time\n\n- **le jour** — the day · **la journée** — the day as you live it\n- **l'heure** (f) — the hour · **la minute** — the minute\n- **la semaine** — the week · **le mois** — the month · **l'année** (f) — the year",
+          "words": [
+            {
+              "target": "le jour",
+              "native": "the day",
+              "emoji": "☀️"
+            },
+            {
+              "target": "l'heure",
+              "native": "the hour",
+              "emoji": "🕐"
+            },
+            {
+              "target": "la minute",
+              "native": "the minute",
+              "emoji": "⏱️"
+            },
+            {
+              "target": "la semaine",
+              "native": "the week",
+              "emoji": "🗓️"
+            },
+            {
+              "target": "le mois",
+              "native": "the month",
+              "emoji": "📆"
+            },
+            {
+              "target": "l'année",
+              "native": "the year",
+              "emoji": "🎆"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ud-l0",
+              "title": "Zero to twenty",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "3",
+                  "options": [
+                    {
+                      "text": "trois"
+                    },
+                    {
+                      "text": "cinq"
+                    },
+                    {
+                      "text": "sept"
+                    },
+                    {
+                      "text": "neuf"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "8",
+                  "options": [
+                    {
+                      "text": "huit"
+                    },
+                    {
+                      "text": "six"
+                    },
+                    {
+                      "text": "deux"
+                    },
+                    {
+                      "text": "dix"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "treize",
+                  "options": [
+                    {
+                      "text": "13"
+                    },
+                    {
+                      "text": "3"
+                    },
+                    {
+                      "text": "16"
+                    },
+                    {
+                      "text": "12"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e3",
+                  "mode": "targetToNative",
+                  "prompt": "17",
+                  "options": [
+                    {
+                      "text": "dix-sept"
+                    },
+                    {
+                      "text": "sept"
+                    },
+                    {
+                      "text": "seize"
+                    },
+                    {
+                      "text": "dix-neuf"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e4",
+                  "mode": "targetToNative",
+                  "prompt": "seize",
+                  "options": [
+                    {
+                      "text": "16"
+                    },
+                    {
+                      "text": "6"
+                    },
+                    {
+                      "text": "15"
+                    },
+                    {
+                      "text": "17"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l0-e5",
+                  "mode": "produceTarget",
+                  "prompt": "5",
+                  "answer": "cinq",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l0-e6",
+                  "mode": "produceTarget",
+                  "prompt": "12",
+                  "answer": "douze",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l0-e7",
+                  "mode": "produceTarget",
+                  "prompt": "19",
+                  "answer": "dix-neuf",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e8",
+                  "mode": "targetToNative",
+                  "prompt": "le jour",
+                  "options": [
+                    {
+                      "text": "the day"
+                    },
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the year"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:jour"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e9",
+                  "mode": "targetToNative",
+                  "prompt": "l'heure",
+                  "options": [
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the day"
+                    },
+                    {
+                      "text": "the minute"
+                    },
+                    {
+                      "text": "the month"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:heure"
+                  ]
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:numbers-to-sixty"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e8"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e9"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ud-l1",
+              "title": "Tens and the et-un rule",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "22",
+                  "options": [
+                    {
+                      "text": "vingt-deux"
+                    },
+                    {
+                      "text": "vingt et un"
+                    },
+                    {
+                      "text": "trente-deux"
+                    },
+                    {
+                      "text": "vingt"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "21",
+                  "options": [
+                    {
+                      "text": "vingt et un"
+                    },
+                    {
+                      "text": "vingt-deux"
+                    },
+                    {
+                      "text": "trente et un"
+                    },
+                    {
+                      "text": "vingt"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "quarante-cinq",
+                  "options": [
+                    {
+                      "text": "45"
+                    },
+                    {
+                      "text": "55"
+                    },
+                    {
+                      "text": "44"
+                    },
+                    {
+                      "text": "54"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e3",
+                  "mode": "targetToNative",
+                  "prompt": "61",
+                  "options": [
+                    {
+                      "text": "soixante et un"
+                    },
+                    {
+                      "text": "cinquante et un"
+                    },
+                    {
+                      "text": "soixante"
+                    },
+                    {
+                      "text": "soixante-deux"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e4",
+                  "mode": "produceTarget",
+                  "prompt": "21",
+                  "answer": "vingt et un",
+                  "alternatives": [
+                    "vingt-et-un"
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e5",
+                  "mode": "produceTarget",
+                  "prompt": "34",
+                  "answer": "trente-quatre",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e6",
+                  "mode": "produceTarget",
+                  "prompt": "58",
+                  "answer": "cinquante-huit",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e7",
+                  "mode": "produceTarget",
+                  "prompt": "61",
+                  "answer": "soixante et un",
+                  "alternatives": [
+                    "soixante-et-un"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e8",
+                  "mode": "targetToNative",
+                  "prompt": "la minute",
+                  "options": [
+                    {
+                      "text": "the minute"
+                    },
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the day"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:minute"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e9",
+                  "mode": "targetToNative",
+                  "prompt": "la semaine",
+                  "options": [
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the month"
+                    },
+                    {
+                      "text": "the year"
+                    },
+                    {
+                      "text": "the minute"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:semaine"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e10",
+                  "mode": "nativeToTarget",
+                  "prompt": "the week",
+                  "options": [
+                    {
+                      "text": "la semaine"
+                    },
+                    {
+                      "text": "la minute"
+                    },
+                    {
+                      "text": "l'heure"
+                    },
+                    {
+                      "text": "le jour"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:semaine"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ud-l2",
+              "title": "The famous seventies",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "70",
+                  "options": [
+                    {
+                      "text": "soixante-dix"
+                    },
+                    {
+                      "text": "soixante"
+                    },
+                    {
+                      "text": "dix-sept"
+                    },
+                    {
+                      "text": "soixante-dix-sept"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "71",
+                  "options": [
+                    {
+                      "text": "soixante et onze"
+                    },
+                    {
+                      "text": "soixante et un"
+                    },
+                    {
+                      "text": "soixante-dix"
+                    },
+                    {
+                      "text": "soixante-douze"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "soixante-quinze",
+                  "options": [
+                    {
+                      "text": "75"
+                    },
+                    {
+                      "text": "65"
+                    },
+                    {
+                      "text": "15"
+                    },
+                    {
+                      "text": "74"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "77",
+                  "options": [
+                    {
+                      "text": "soixante-dix-sept"
+                    },
+                    {
+                      "text": "soixante-sept"
+                    },
+                    {
+                      "text": "dix-sept"
+                    },
+                    {
+                      "text": "soixante-dix"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e4",
+                  "mode": "targetToNative",
+                  "prompt": "soixante-dix-neuf",
+                  "options": [
+                    {
+                      "text": "79"
+                    },
+                    {
+                      "text": "69"
+                    },
+                    {
+                      "text": "78"
+                    },
+                    {
+                      "text": "89"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l2-e5",
+                  "mode": "produceTarget",
+                  "prompt": "70",
+                  "answer": "soixante-dix",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l2-e6",
+                  "mode": "produceTarget",
+                  "prompt": "71",
+                  "answer": "soixante et onze",
+                  "alternatives": [
+                    "soixante-et-onze"
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l2-e7",
+                  "mode": "produceTarget",
+                  "prompt": "76",
+                  "answer": "soixante-seize",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e8",
+                  "mode": "targetToNative",
+                  "prompt": "le mois",
+                  "options": [
+                    {
+                      "text": "the month"
+                    },
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the year"
+                    },
+                    {
+                      "text": "the day"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:mois"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e9",
+                  "mode": "nativeToTarget",
+                  "prompt": "the month",
+                  "options": [
+                    {
+                      "text": "le mois"
+                    },
+                    {
+                      "text": "la semaine"
+                    },
+                    {
+                      "text": "l'année"
+                    },
+                    {
+                      "text": "la journée"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:mois"
+                  ]
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:numbers-seventies"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e6"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e7"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e8"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e9"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ud-l3",
+              "title": "Four twenties to one hundred",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "80",
+                  "options": [
+                    {
+                      "text": "quatre-vingts"
+                    },
+                    {
+                      "text": "quatre-vingt-dix"
+                    },
+                    {
+                      "text": "vingt"
+                    },
+                    {
+                      "text": "quatre-vingt-quatre"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "81",
+                  "options": [
+                    {
+                      "text": "quatre-vingt-un"
+                    },
+                    {
+                      "text": "quatre-vingts"
+                    },
+                    {
+                      "text": "quatre-vingt-onze"
+                    },
+                    {
+                      "text": "soixante et onze"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "quatre-vingt-dix",
+                  "options": [
+                    {
+                      "text": "90"
+                    },
+                    {
+                      "text": "80"
+                    },
+                    {
+                      "text": "70"
+                    },
+                    {
+                      "text": "94"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "91",
+                  "options": [
+                    {
+                      "text": "quatre-vingt-onze"
+                    },
+                    {
+                      "text": "quatre-vingt-un"
+                    },
+                    {
+                      "text": "quatre-vingt-dix"
+                    },
+                    {
+                      "text": "soixante et onze"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e4",
+                  "mode": "targetToNative",
+                  "prompt": "quatre-vingt-dix-neuf",
+                  "options": [
+                    {
+                      "text": "99"
+                    },
+                    {
+                      "text": "89"
+                    },
+                    {
+                      "text": "79"
+                    },
+                    {
+                      "text": "98"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e5",
+                  "mode": "produceTarget",
+                  "prompt": "80",
+                  "answer": "quatre-vingts",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e6",
+                  "mode": "produceTarget",
+                  "prompt": "85",
+                  "answer": "quatre-vingt-cinq",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e7",
+                  "mode": "produceTarget",
+                  "prompt": "91",
+                  "answer": "quatre-vingt-onze",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e8",
+                  "mode": "produceTarget",
+                  "prompt": "100",
+                  "answer": "cent",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e9",
+                  "mode": "targetToNative",
+                  "prompt": "l'année",
+                  "options": [
+                    {
+                      "text": "the year"
+                    },
+                    {
+                      "text": "the month"
+                    },
+                    {
+                      "text": "the day (daytime)"
+                    },
+                    {
+                      "text": "the week"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:annee"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e10",
+                  "mode": "nativeToTarget",
+                  "prompt": "the year",
+                  "options": [
+                    {
+                      "text": "l'année"
+                    },
+                    {
+                      "text": "le mois"
+                    },
+                    {
+                      "text": "la semaine"
+                    },
+                    {
+                      "text": "la journée"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:annee"
+                  ]
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:numbers-eighties"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e0"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e1"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e2"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e3"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e4"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e5"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e6"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e7"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e8"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e9"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e10"
+                }
+              ]
+            }
+          ]
         }
       ]
     }

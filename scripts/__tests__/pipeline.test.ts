@@ -113,9 +113,11 @@ describe("compiler: round-trip and determinism", () => {
 
   test("gradeTargets coverage: exactly the unambiguous French exercises", () => {
     const fr = coverage["fr-en"];
-    expect(fr.withGradeTargets).toBe(197);
-    expect(fr.total).toBe(335); // 220 Section 1 + 37 Unit A + 41 Unit B + 37 Unit C
-    expect(fr.byType["select"]).toEqual({ total: 177, withGradeTargets: 177 });
+    expect(fr.withGradeTargets).toBe(206);
+    expect(fr.total).toBe(377); // 220 Section 1 + 37 A + 41 B + 37 C + 42 D
+    // Unit D's 19 number-spelling selects deliberately carry NO targets —
+    // numbers are not lexemes and never touch FSRS (§79).
+    expect(fr.byType["select"]).toEqual({ total: 205, withGradeTargets: 186 });
     expect(fr.byType["match"]).toEqual({ total: 20, withGradeTargets: 20 });
     expect(fr.byType["wordBank"].withGradeTargets).toBe(0);
     expect(fr.byType["typeAnswer"].withGradeTargets).toBe(0);

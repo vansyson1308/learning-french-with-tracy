@@ -1,5 +1,5 @@
 {
-  "contentHash": "20deb3de975f01f2",
+  "contentHash": "39624ea720d9adbd",
   "entries": [
     {
       "id": "fr:w:homme",
@@ -1704,7 +1704,10 @@
       "example": {
         "fr": "Bonne journée !",
         "en": "Have a good day!"
-      }
+      },
+      "confusables": [
+        "fr:w:jour"
+      ]
     },
     {
       "id": "fr:w:argent",
@@ -1828,6 +1831,117 @@
       "example": {
         "fr": "Nous attendons le train.",
         "en": "We are waiting for the train."
+      }
+    },
+    {
+      "id": "fr:w:jour",
+      "surface": "le jour",
+      "lookupForm": "jour",
+      "lemma": "jour",
+      "gloss": "the day",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "ʒuʁ",
+        "notation": "ipa"
+      },
+      "example": {
+        "fr": "Quel jour sommes-nous ?",
+        "en": "What day is it?"
+      },
+      "confusables": [
+        "fr:w:journee"
+      ]
+    },
+    {
+      "id": "fr:w:heure",
+      "surface": "l'heure",
+      "lookupForm": "heure",
+      "lemma": "heure",
+      "gloss": "the hour",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "œʁ",
+        "notation": "ipa"
+      },
+      "example": {
+        "fr": "Le train part dans une heure.",
+        "en": "The train leaves in an hour."
+      }
+    },
+    {
+      "id": "fr:w:minute",
+      "surface": "la minute",
+      "lookupForm": "minute",
+      "lemma": "minute",
+      "gloss": "the minute",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "minyt",
+        "notation": "ipa"
+      },
+      "example": {
+        "fr": "Attends une minute !",
+        "en": "Wait a minute!"
+      }
+    },
+    {
+      "id": "fr:w:semaine",
+      "surface": "la semaine",
+      "lookupForm": "semaine",
+      "lemma": "semaine",
+      "gloss": "the week",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "səmɛn",
+        "notation": "ipa"
+      },
+      "example": {
+        "fr": "Je travaille cinq jours par semaine.",
+        "en": "I work five days a week."
+      }
+    },
+    {
+      "id": "fr:w:mois",
+      "surface": "le mois",
+      "lookupForm": "mois",
+      "lemma": "mois",
+      "gloss": "the month",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "mwa",
+        "notation": "ipa"
+      },
+      "example": {
+        "fr": "Le mois de mai est très beau.",
+        "en": "The month of May is very beautiful."
+      }
+    },
+    {
+      "id": "fr:w:annee",
+      "surface": "l'année",
+      "lookupForm": "année",
+      "lemma": "année",
+      "gloss": "the year",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "ane",
+        "notation": "ipa"
+      },
+      "example": {
+        "fr": "Bonne année !",
+        "en": "Happy New Year!"
       }
     }
   ]

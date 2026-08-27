@@ -1,5 +1,5 @@
 {
-  "contentHash": "20deb3de975f01f2",
+  "contentHash": "39624ea720d9adbd",
   "schemaVersion": 2,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
@@ -3047,6 +3047,9 @@
           "source": "original-french-lexicon"
         }
       ],
+      "confusables": [
+        "fr:w:jour"
+      ],
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
@@ -3274,6 +3277,165 @@
         {
           "source": "lexique-4",
           "key": "attendre|VER||p"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:jour",
+      "surface": "le jour",
+      "lookupForm": "jour",
+      "lemma": "jour",
+      "gloss": "the day",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "ʒuʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Quel jour sommes-nous ?",
+          "en": "What day is it?",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "confusables": [
+        "fr:w:journee"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:heure",
+      "surface": "l'heure",
+      "lookupForm": "heure",
+      "lemma": "heure",
+      "gloss": "the hour",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "œʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le train part dans une heure.",
+          "en": "The train leaves in an hour.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:minute",
+      "surface": "la minute",
+      "lookupForm": "minute",
+      "lemma": "minute",
+      "gloss": "the minute",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "minyt",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Attends une minute !",
+          "en": "Wait a minute!",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:semaine",
+      "surface": "la semaine",
+      "lookupForm": "semaine",
+      "lemma": "semaine",
+      "gloss": "the week",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "səmɛn",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Je travaille cinq jours par semaine.",
+          "en": "I work five days a week.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:mois",
+      "surface": "le mois",
+      "lookupForm": "mois",
+      "lemma": "mois",
+      "gloss": "the month",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "mwa",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le mois de mai est très beau.",
+          "en": "The month of May is very beautiful.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:annee",
+      "surface": "l'année",
+      "lookupForm": "année",
+      "lemma": "année",
+      "gloss": "the year",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "pronunciation": {
+        "value": "ane",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Bonne année !",
+          "en": "Happy New Year!",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
         }
       ]
     }

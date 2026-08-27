@@ -52,7 +52,7 @@ function packWritableSurfaces(): Set<string> {
 describe("FR_LEXEME_IDS ↔ fr-en pack (drift guards)", () => {
   test("covers exactly the pack's distinct word targets", () => {
     const targets = packWordTargets();
-    expect(targets.size).toBe(91);
+    expect(targets.size).toBe(97);
     expect(Object.keys(FR_LEXEME_IDS).sort()).toEqual([...targets].sort());
   });
 

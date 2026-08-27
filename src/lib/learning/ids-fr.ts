@@ -123,6 +123,12 @@ export const FR_LEXEME_IDS: Readonly<Record<string, string>> = {
   "la monnaie": "fr:w:monnaie",
   rester: "fr:w:rester",
   attendre: "fr:w:attendre",
+  "le jour": "fr:w:jour",
+  "l'heure": "fr:w:heure",
+  "la minute": "fr:w:minute",
+  "la semaine": "fr:w:semaine",
+  "le mois": "fr:w:mois",
+  "l'année": "fr:w:annee",
 };
 
 /** Reverse map (id → canonical surface) for review-session building. */

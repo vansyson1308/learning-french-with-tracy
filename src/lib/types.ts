@@ -42,7 +42,7 @@ export type MatchExercise = {
 export type TypeAnswerExercise = {
   type: "typeAnswer";
   id: string;
-  mode: "translate" | "listen";
+  mode: "translate" | "listen" | "produceTarget";
   prompt: string;
   audioTarget?: string;
   answer: string;

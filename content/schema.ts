@@ -58,7 +58,12 @@ export const MatchExerciseSchema = z.strictObject({
 export const TypeAnswerExerciseSchema = z.strictObject({
   type: z.literal("typeAnswer"),
   id,
-  mode: z.enum(["translate", "listen"]),
+  /**
+   * translate = target prompt, native answer; listen = audio, target
+   * answer; produceTarget = native/digit prompt, TARGET-language answer
+   * (Phase 5B §76 — the numbers unit's typed production drills).
+   */
+  mode: z.enum(["translate", "listen", "produceTarget"]),
   prompt: z.string(),
   audioTarget: z.string().min(1).optional(),
   answer: z.string().min(1),
