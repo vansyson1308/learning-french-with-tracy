@@ -42,6 +42,11 @@ jobs:
       - name: Lint
         if: matrix.tz == 'UTC'
         run: bun run lint
+      # Phase 3: jest-expo + RNTL integration suite (real Expo Router tree).
+      # Timezone-independent, so the UTC leg carries it.
+      - name: Integration tests (jest-expo)
+        if: matrix.tz == 'UTC'
+        run: bun run test:integration
       # Phase 2 content pipeline: sources validate, generated artifacts are
       # not stale, and the immutable legacy audio baseline is untouched.
       # These make zero network (and zero paid-API) calls by construction.
