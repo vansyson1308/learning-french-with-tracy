@@ -27,7 +27,9 @@ import {
   selectCandidatePool,
 } from "./lib/lexicon";
 import {
+  RANK_ORDERING,
   coreLexemeRows,
+  corePopulationRanks,
   frequencyStats,
   genderSuffixStats,
   verbMorphology,
@@ -133,6 +135,11 @@ if (pool.excludedByQualityGuard.length > 0) {
       pool.excludedByQualityGuard.map((e) => `${e.lemma} (${e.freqLemme}/M, CD ${e.cdOrtho})`).join(", ")
   );
 }
+
+// 2b. Population ranks for the core lexemes' lemma rows (honest rank #N).
+const ranks = corePopulationRanks(lexicon, rows);
+emit("core-ranks.json", { source, generator, ordering: RANK_ORDERING, ranks });
+console.log(`population ranks for ${Object.keys(ranks).length} core lemma keys`);
 
 // 3. Population frequency statistics (band-derivation evidence).
 const stats = frequencyStats(rows);

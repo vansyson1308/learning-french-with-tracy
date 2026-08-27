@@ -384,6 +384,45 @@ export function verbMorphology(rows: LexiqueRow[], lemmas: readonly string[]): V
 }
 
 // ---------------------------------------------------------------------------
+// Population ranks for the core lexemes (honest "rank #N" values)
+// ---------------------------------------------------------------------------
+
+export const RANK_ORDERING =
+  "1-based rank by 12_FreqLemme descending (ties broken alphabetically) over the eligible lemma population — see the frequency-stats population definition";
+
+/**
+ * Ranks each core lexeme's candidate lemma rows within the FULL eligible
+ * population, so a displayed or stored rank means "the Nth most frequent
+ * learnable French lemma", never "Nth among the words we happen to teach".
+ * Keys are `<lemma-row 1_Mot>|<mapped POS>`.
+ */
+export function corePopulationRanks(
+  lexicon: RichLexicon,
+  rows: LexiqueRow[]
+): Record<string, number> {
+  const population = eligibleLemmaPopulation(rows);
+  const rankByKey = new Map<string, number>();
+  population.forEach((entry, i) => rankByKey.set(`${entry.lemma}|${entry.partOfSpeech}`, i + 1));
+
+  const wanted = new Set<string>();
+  const core = coreLexemeRows(lexicon, rows);
+  for (const entry of core.entries) {
+    for (const row of [...entry.formRows, ...entry.lemmaRows]) {
+      if (!row.isLem) continue;
+      const pos = lexiquePosFor(row.cgram);
+      if (pos === null) continue;
+      wanted.add(`${row.mot}|${pos}`);
+    }
+  }
+  const ranks: Record<string, number> = {};
+  for (const key of wanted) {
+    const rank = rankByKey.get(key);
+    if (rank !== undefined) ranks[key] = rank;
+  }
+  return ranks;
+}
+
+// ---------------------------------------------------------------------------
 // 54-core evidence rows (§13–15 cross-check input)
 // ---------------------------------------------------------------------------
 

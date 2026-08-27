@@ -9,6 +9,7 @@ import { describe, expect, test } from "bun:test";
 import type { RichLexicon } from "../../content/schema";
 import {
   coreLexemeRows,
+  corePopulationRanks,
   eligibleLemmaPopulation,
   frequencyStats,
   genderSuffixStats,
@@ -252,6 +253,20 @@ describe("coreLexemeRows", () => {
     noun("chats", "m", "30", { lemme: "chat", isLem: "0", "8_Nombre": "p" }),
     noun("gare", "f", "10"),
   ];
+
+  test("population ranks are ranks in the FULL eligible population, not among the taught words", () => {
+    const manyRows = [
+      ...rows,
+      l4row({ "1_Mot": "manger", "4_Lemme": "manger", "5_Cgram": "VER", "12_FreqLemme": "120", "14_IsLem": "1" }),
+      noun("maison", "f", "90"),
+    ];
+    // Population by freq: manger 120 (1), maison 90 (2), chat 30 (3), gare 10 (4).
+    const ranks = corePopulationRanks(lexicon, manyRows);
+    expect(ranks["chat|noun"]).toBe(3);
+    // Only keys relevant to the core lexemes are emitted.
+    expect(ranks["maison|noun"]).toBeUndefined();
+    expect(ranks["manger|verb"]).toBeUndefined();
+  });
 
   test("separates form rows from other lemma inflections, expressions collect nothing", () => {
     const core = coreLexemeRows(lexicon, rows);
