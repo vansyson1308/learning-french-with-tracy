@@ -45,9 +45,14 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     env:
-      TSV_URL: "https://www.lexique.org/databases/Lexique400/Lexique400.tsv"
-      ZIP_URL: "https://www.lexique.org/databases/Lexique400/Lexique400.zip"
-      README_URL: "https://www.lexique.org/databases/Lexique400/README-Lexique.txt"
+      # Official host only. The origin's TLS certificate does not cover the
+      # www subdomain (curl error 60 observed), so candidates are tried in
+      # order: apex HTTPS first; plain-HTTP on the official host is the
+      # last resort (TLS verification is never disabled). The successful
+      # base URL is recorded into the committed recon report.
+      TSV_PATH: "databases/Lexique400/Lexique400.tsv"
+      ZIP_PATH: "databases/Lexique400/Lexique400.zip"
+      README_PATH: "databases/Lexique400/README-Lexique.txt"
       ARTIFACT: /tmp/Lexique400.tsv
     steps:
       - uses: actions/checkout@v4
@@ -62,13 +67,25 @@ jobs:
       - name: Download official artifact (with official-ZIP fallback)
         run: |
           set -euo pipefail
+          fetch_one () {
+            local rel="$1" out="$2" base
+            for base in "https://lexique.org" "https://www.lexique.org" "http://lexique.org" "http://www.lexique.org"; do
+              if curl -fSL --retry 2 --retry-delay 5 -o "$out" "$base/$rel"; then
+                echo "$base" > /tmp/used-base.txt
+                echo "fetched $base/$rel"
+                return 0
+              fi
+              echo "failed: $base/$rel"
+            done
+            return 1
+          }
           fetch_tsv () {
             local out="$1"
-            if curl -fSL --retry 3 --retry-delay 5 -o "$out" "$TSV_URL"; then
+            if fetch_one "$TSV_PATH" "$out"; then
               return 0
             fi
-            echo "Direct TSV failed; trying official ZIP"
-            curl -fSL --retry 3 --retry-delay 5 -o /tmp/Lexique400.zip "$ZIP_URL"
+            echo "Direct TSV failed on every official host; trying official ZIP"
+            fetch_one "$ZIP_PATH" /tmp/Lexique400.zip
             sha256sum /tmp/Lexique400.zip | tee /tmp/zip.sha
             unzip -o /tmp/Lexique400.zip -d /tmp/lexique-zip
             find /tmp/lexique-zip -name '*.tsv' -o -name '*.txt' | head -20
@@ -88,14 +105,15 @@ jobs:
             exit 1
           fi
           ls -la "$ARTIFACT"
-          curl -fSL --retry 3 --retry-delay 5 -o /tmp/README-Lexique.txt "$README_URL" || echo "README fetch failed (non-fatal)"
+          fetch_one "$README_PATH" /tmp/README-Lexique.txt || echo "README fetch failed (non-fatal)"
 
       - name: Recon (header, column profile, samples, official README)
         if: inputs.mode == 'recon'
         run: |
           set -euo pipefail
           mkdir -p content/fr/lexicon/derived
-          bun scripts/lexique-recon.ts --artifact "$ARTIFACT" --url "$TSV_URL"
+          USED_BASE=$(cat /tmp/used-base.txt 2>/dev/null || echo "https://lexique.org")
+          bun scripts/lexique-recon.ts --artifact "$ARTIFACT" --url "$USED_BASE/$TSV_PATH"
           if [ -s /tmp/README-Lexique.txt ]; then
             cp /tmp/README-Lexique.txt content/fr/lexicon/derived/README-Lexique400.txt
           fi
