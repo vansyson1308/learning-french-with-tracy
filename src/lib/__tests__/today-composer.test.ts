@@ -85,6 +85,24 @@ describe("PATH frontier (§35)", () => {
         for (const l of u.lessons) all[l.id] = true;
     expect(pathFrontierLesson(pack, all)).toBeNull();
   });
+
+  test("Section 2 integration: with Section 1 complete, TODAY introduces Unit A words", () => {
+    // Phase 5B: the frontier crosses into Section 2, whose audio-less
+    // selects carry compiler-emitted gradeTargets — TODAY's new-item
+    // introduction must keep working across the section boundary.
+    const done: Record<string, true> = {};
+    for (const u of pack.sections[0].units) for (const l of u.lessons) done[l.id] = true;
+    const frontier = pathFrontierLesson(pack, done)!;
+    expect(frontier.lessonId).toBe("fr-en:ua-l0");
+    expect(frontier.gradeTargetIds.length).toBeGreaterThan(0);
+    expect(frontier.gradeTargetIds).toContain("fr:w:maison");
+    const plan = composeTodaySession(input({ completedLessons: done }));
+    const teachIds = plan.steps
+      .filter((s): s is Extract<SessionStep, { type: "teach" }> => s.type === "teach")
+      .map((s) => s.itemId);
+    expect(teachIds.length).toBeGreaterThan(0);
+    for (const id of teachIds) expect(frontier.gradeTargetIds).toContain(id);
+  });
 });
 
 describe("TODAY composer: warm-up and backlog (§32-33)", () => {

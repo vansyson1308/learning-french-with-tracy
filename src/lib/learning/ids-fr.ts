@@ -129,6 +129,8 @@ export const FR_LEXEME_IDS: Readonly<Record<string, string>> = {
   "la semaine": "fr:w:semaine",
   "le mois": "fr:w:mois",
   "l'année": "fr:w:annee",
+  "l'histoire": "fr:w:histoire",
+  "le héros": "fr:w:heros",
 };
 
 /** Reverse map (id → canonical surface) for review-session building. */

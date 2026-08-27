@@ -15,7 +15,10 @@
     "fr:concept:false-friends",
     "fr:concept:numbers-to-sixty",
     "fr:concept:numbers-seventies",
-    "fr:concept:numbers-eighties"
+    "fr:concept:numbers-eighties",
+    "fr:concept:elision",
+    "fr:concept:liaison",
+    "fr:concept:h-two-kinds"
   ],
   "byId": {
     "fr:concept:gender-two-classes": {
@@ -529,6 +532,102 @@
         "Belgium and Switzerland say nonante for the nineties (nonante-deux = 92). Recognition only — France French is graded here."
       ],
       "memoryHint": "quatre-vingts loses its -s the moment another number follows.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:elision": {
+      "id": "fr:concept:elision",
+      "title": "The disappearing vowels",
+      "shortRule": "le, la, je, ne, de, que drop their vowel before a vowel sound: l'eau, j'ai, n'est pas.",
+      "explanation": "French refuses to let two vowel sounds collide across these little words. Before a word starting with a vowel sound, le and la become l' (l'eau, l'homme), je becomes j' (j'ai), ne becomes n' (ce n'est pas), de becomes d' and que becomes qu'. This is not optional or casual — writing 'je ai' is simply wrong. The apostrophe is the visible trace of the dropped vowel, and it is why dictionary entries like eau hide their gender behind l'.",
+      "examples": [
+        {
+          "fr": "l'eau",
+          "en": "the water",
+          "note": "la + eau"
+        },
+        {
+          "fr": "j'ai deux chats",
+          "en": "I have two cats",
+          "note": "je + ai"
+        },
+        {
+          "fr": "ce n'est pas vrai",
+          "en": "it is not true",
+          "note": "ne + est"
+        }
+      ],
+      "exceptions": [
+        "Elision needs a vowel SOUND, not just a vowel letter — and some h-words refuse it entirely (see the two h's)."
+      ],
+      "memoryHint": "Two vowel sounds may never touch: drop the first, write an apostrophe.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:liaison": {
+      "id": "fr:concept:liaison",
+      "title": "Linking words together",
+      "shortRule": "A silent final consonant can wake up before a vowel: les amis sounds like \"layz-ah-mee\".",
+      "explanation": "In connected speech, some silent final consonants attach to a following vowel. After the little words — determiners and pronouns — the link is required: les amis (the s wakes up as a z sound and starts 'amis'), nous avons, vous êtes, un petit ami (t links). But liaison is forbidden after et (et ici — no link), after a singular noun (le chat est — the t of chat stays silent), and before certain h-words. Between those poles there is a polite-register middle ground you will meet later; for now, trust the required links after les/des/nous/vous/ils/elles.",
+      "examples": [
+        {
+          "fr": "les amis",
+          "en": "the friends",
+          "note": "s links as a z sound"
+        },
+        {
+          "fr": "nous avons",
+          "en": "we have",
+          "note": "required liaison after nous"
+        },
+        {
+          "fr": "et ici",
+          "en": "and here",
+          "note": "NEVER a liaison after et"
+        }
+      ],
+      "exceptions": [
+        "No liaison after et, after a singular noun, or before an h aspiré word (les héros — no link)."
+      ],
+      "memoryHint": "Little word + vowel = link it. After et: never.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:h-two-kinds": {
+      "id": "fr:concept:h-two-kinds",
+      "title": "The two silent h's",
+      "shortRule": "Every French h is silent — but h muet words elide and link (l'histoire), h aspiré words refuse both (le héros).",
+      "explanation": "No French h is ever pronounced, yet h-words split into two families. H muet behaves like a vowel: l'histoire, l'homme, l'hôtel — elision applies, and liaison links (les hommes: z sound). H aspiré behaves like a consonant even though you hear nothing: le héros (never l'héros), and les héros has no link at all. You cannot hear the difference in the h itself — only the words around it reveal which family a word belongs to, so learn h-words together with their article.",
+      "examples": [
+        {
+          "fr": "l'histoire",
+          "en": "the story",
+          "note": "h muet — elision applies"
+        },
+        {
+          "fr": "le héros",
+          "en": "the hero",
+          "note": "h aspiré — never l'héros"
+        },
+        {
+          "fr": "l'hôtel",
+          "en": "the hotel",
+          "note": "h muet"
+        }
+      ],
+      "exceptions": [
+        "Dictionaries mark h aspiré with a star or apostrophe before the entry. When in doubt, the le/l' test tells you the family."
+      ],
+      "memoryHint": "Hero keeps his distance: LE héros. Stories let you in: L'histoire.",
       "sourceRefs": [
         {
           "source": "original-french-pedagogy"

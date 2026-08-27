@@ -40,6 +40,52 @@ export function teachMetaFor(step: SessionStep): LexemeMeta | undefined {
   return lexemeMetaFor(step.itemId);
 }
 
+/** Human label for a conjugation cell (Phase 5B §67 panel note). */
+const CELL_LABELS: Record<string, string> = {
+  "pre:1s": "the je form",
+  "pre:2s": "the tu form",
+  "pre:3s": "the il/elle form",
+  "pre:1p": "the nous form",
+  "pre:2p": "the vous form",
+  "pre:3p": "the ils/elles form",
+  inf: "the infinitive",
+  participle: "the past participle",
+};
+
+const ARTICLE_GENDER: Record<string, string> = {
+  le: "masculine",
+  la: "feminine",
+  un: "masculine",
+  une: "feminine",
+};
+
+/**
+ * Phase 5B single-note addition: ONE derived line for grammar exercises,
+ * built purely from the exercise's own authored fields (never parsed from
+ * rendered text). Null for every other exercise type — the lexical panel
+ * stays exactly as it was.
+ */
+export function grammarNoteFor(step: SessionStep): string | null {
+  if (step.type !== "exercise") return null;
+  const exercise = step.exercise;
+  if (exercise.type === "articleSelect") {
+    const article = exercise.articles[exercise.correct];
+    if (article === undefined) return null;
+    const gender = ARTICLE_GENDER[article];
+    return gender !== undefined
+      ? `${exercise.noun} takes ${article} — ${gender}.`
+      : `${exercise.noun} takes ${article}.`;
+  }
+  if (exercise.type === "conjugationCloze") {
+    const label = CELL_LABELS[exercise.cell];
+    if (label === undefined) return null;
+    const tense =
+      exercise.cell.startsWith("pre:") ? " in the présent" : "";
+    return `${exercise.answer} is ${label} of ${exercise.verb}${tense}.`;
+  }
+  return null;
+}
+
 export type PanelData = {
   surface: string;
   gloss: string;

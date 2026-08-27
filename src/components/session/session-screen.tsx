@@ -35,7 +35,7 @@ import { TeachCard } from "@/components/session/teach-card";
 import { behaviorFor } from "@/lib/exercise-registry";
 import { exitScreen } from "@/lib/navigation";
 import { useSessionController, type SessionController } from "@/lib/session/controller";
-import { panelItemIdFor, teachMetaFor } from "@/lib/session/panel";
+import { grammarNoteFor, panelItemIdFor, teachMetaFor } from "@/lib/session/panel";
 import {
   currentStep,
   firstAttemptAccuracy as machineAccuracy,
@@ -213,7 +213,11 @@ export function SessionScreen({
             </Animated.View>
           )}
           {panelItemId !== null ? (
-            <PostAnswerPanel itemId={panelItemId} correct={state.status === "correct"} />
+            <PostAnswerPanel
+              itemId={panelItemId}
+              correct={state.status === "correct"}
+              note={grammarNoteFor(step) ?? undefined}
+            />
           ) : null}
           {step.type === "teach" || step.type === "concept" ? (
             <DuoButton label="Continue" onPress={controller.onTeachContinue} />

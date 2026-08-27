@@ -36,13 +36,13 @@ describe("committed lexicon data", () => {
     expect(errors).toEqual([]);
   });
 
-  test("triple lock holds: rich lexicon ≡ frozen map ≡ runtime map (97 ids)", () => {
+  test("triple lock holds: rich lexicon ≡ frozen map ≡ runtime map (99 ids)", () => {
     const rich = derivedSurfaceMap(loadRichLexicon());
     const frozen = readJson("content/fr/lexemes.json") as Record<string, string>;
     const canon = (m: Record<string, string>) => JSON.stringify(Object.entries(m).sort());
     expect(canon(rich)).toBe(canon(frozen));
     expect(canon(frozen)).toBe(canon(FR_LEXEME_IDS));
-    expect(Object.keys(rich).length).toBe(97); // 54 originals + 17 Unit A + 7 Unit B + 13 Unit C + 6 Unit D
+    expect(Object.keys(rich).length).toBe(99); // 54 originals + 17 A + 7 B + 13 C + 6 D + 2 E
   });
 
   test("post-activation pronunciation: genuine IPA everywhere; lexique-4 for adopted words, authored otherwise", () => {
