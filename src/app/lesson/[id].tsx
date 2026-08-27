@@ -485,7 +485,9 @@ export default function LessonScreen() {
               <Text style={[styles.feedback, { color: colors.correctText }]}>
                 Nicely done!
               </Text>
-              {lastMutated ? <UndoLink onPress={onUndo} color={colors.correctText} /> : null}
+              {lastMutated && isSrs ? (
+                <UndoLink onPress={onUndo} color={colors.correctText} />
+              ) : null}
             </Animated.View>
           )}
           {status === "wrong" && (
@@ -495,7 +497,9 @@ export default function LessonScreen() {
                 <Text style={[styles.feedback, { color: colors.wrongText }]}>
                   Correct answer:
                 </Text>
-                {lastMutated ? <UndoLink onPress={onUndo} color={colors.wrongText} /> : null}
+                {lastMutated && isSrs ? (
+                  <UndoLink onPress={onUndo} color={colors.wrongText} />
+                ) : null}
               </View>
               <Text style={[styles.feedbackDetail, { color: colors.wrongText }]}>
                 {correctAnswerText(exercise)}
