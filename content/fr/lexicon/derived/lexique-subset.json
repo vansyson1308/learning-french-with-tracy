@@ -237,9 +237,9 @@
       "surface": "l'œuf",
       "lookupForm": "œuf",
       "partOfSpeech": "noun",
-      "status": "unmatched",
-      "matchKey": null,
-      "candidateCount": 0
+      "status": "matched",
+      "matchKey": "oeuf|NOM||",
+      "candidateCount": 1
     },
     {
       "id": "fr:w:fromage",
@@ -2696,8 +2696,44 @@
       "lookupForm": "œuf",
       "lemma": "œuf",
       "partOfSpeech": "noun",
-      "formRows": [],
-      "lemmaRows": []
+      "formRows": [
+        {
+          "mot": "oeuf",
+          "phono": "9f",
+          "ipa": "œf",
+          "lemme": "oeuf",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "",
+          "nombre": "",
+          "infoVer": "",
+          "freqMot": 16.405,
+          "freqOrtho": 16.405,
+          "freqLemme": 49.842,
+          "cdOrtho": 4.53613,
+          "isLem": true,
+          "preval": 94
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "oeufs",
+          "phono": "2",
+          "ipa": "ø",
+          "lemme": "oeuf",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "m",
+          "nombre": "p",
+          "infoVer": "",
+          "freqMot": 33.418,
+          "freqOrtho": 33.418,
+          "freqLemme": 49.842,
+          "cdOrtho": 9.46724,
+          "isLem": false,
+          "preval": 94
+        }
+      ]
     },
     {
       "id": "fr:w:fromage",
