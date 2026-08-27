@@ -41,6 +41,7 @@ export function safeResolve(...segments: string[]): string {
 export const GENERATED_TARGETS = [
   "src/content/packs",
   "src/content/lexicon",
+  "src/content/concepts",
   "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",

@@ -42,7 +42,20 @@ export type TeachStep = {
   phase?: TodayPhase;
 };
 
-export type SessionStep = ExerciseStep | TeachStep;
+/**
+ * Continue-only pedagogy step (Phase 5B): renders an authored concept and
+ * advances on acknowledge. Never grades, never emits evidence, never
+ * touches FSRS/wordStats/XP — structurally identical to a teach step in
+ * the machine, with content resolved from the compiled concepts artifact.
+ */
+export type ConceptStep = {
+  type: "concept";
+  stepId: string;
+  conceptId: string;
+  phase?: TodayPhase;
+};
+
+export type SessionStep = ExerciseStep | TeachStep | ConceptStep;
 
 /**
  * What finishing the session does:

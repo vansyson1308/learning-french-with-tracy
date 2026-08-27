@@ -17,6 +17,12 @@ import path from "path";
 
 import { validateLexicon, loadRichLexicon, loadSourceManifest } from "./lib/lexicon";
 import {
+  CONCEPTS_ARTIFACT,
+  compileConceptsArtifact,
+  loadPedagogyConcepts,
+  validatePedagogy,
+} from "./lib/pedagogy";
+import {
   buildSqliteDb,
   compileLexiconArtifacts,
   dbAssetName,
@@ -33,7 +39,11 @@ import {
 
 const checkOnly = process.argv.includes("--check");
 
-const validation = [...validateContent().errors, ...validateLexicon().errors];
+const validation = [
+  ...validateContent().errors,
+  ...validateLexicon().errors,
+  ...validatePedagogy().errors,
+];
 if (validation.length > 0) {
   for (const e of validation) console.error(`ERROR ${e}`);
   process.exit(1);
@@ -43,6 +53,7 @@ const { files, coverage } = compileAll();
 const lexicon = loadRichLexicon();
 const lexiconArtifacts = compileLexiconArtifacts(lexicon, loadSourceManifest(), loadRegistry());
 files.push(...lexiconArtifacts.files);
+files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadPedagogyConcepts()) });
 
 let drifted = 0;
 for (const file of files) {

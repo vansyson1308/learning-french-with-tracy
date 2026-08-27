@@ -27,6 +27,7 @@ import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
 import { CloseButton } from "@/components/close-button";
 import { DuoButton } from "@/components/duo-button";
+import { ConceptCard } from "@/components/session/concept-card";
 import { ExerciseRenderer } from "@/components/session/exercise-renderer";
 import { PostAnswerPanel } from "@/components/session/post-answer-panel";
 import { SessionSummary, type TodaySummaryStats } from "@/components/session/session-summary";
@@ -160,6 +161,8 @@ export function SessionScreen({
         >
           {step.type === "teach" ? (
             <TeachCard word={step.word} courseId={definition.courseId} meta={teachMetaFor(step)} />
+          ) : step.type === "concept" ? (
+            <ConceptCard conceptId={step.conceptId} />
           ) : (
             <ExerciseRenderer
               exercise={step.exercise}
@@ -212,7 +215,7 @@ export function SessionScreen({
           {panelItemId !== null ? (
             <PostAnswerPanel itemId={panelItemId} correct={state.status === "correct"} />
           ) : null}
-          {step.type === "teach" ? (
+          {step.type === "teach" || step.type === "concept" ? (
             <DuoButton label="Continue" onPress={controller.onTeachContinue} />
           ) : state.status === "idle" ? (
             <DuoButton

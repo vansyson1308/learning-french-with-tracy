@@ -70,7 +70,19 @@ export type Exercise =
   | TypeAnswerExercise
   | FillBlankExercise;
 
-export type LessonPack = { id: string; title: string; exercises: Exercise[] };
+/**
+ * Optional explicit lesson flow (Phase 5B): ordered interleaving of
+ * Continue-only concept steps and the lesson's exercises. Absent = the
+ * exercises in order (every pre-5B lesson unchanged).
+ */
+export type LessonFlowEntry = { concept: string } | { exercise: string };
+
+export type LessonPack = {
+  id: string;
+  title: string;
+  exercises: Exercise[];
+  flow?: LessonFlowEntry[];
+};
 
 export type UnitPack = {
   id: string;

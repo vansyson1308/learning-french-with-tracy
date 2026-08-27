@@ -17,7 +17,7 @@ import { dueSrsWords, type CourseProgress, type MistakeRef } from "../store";
 import type { SrsEntry } from "../srs";
 import type { Exercise, LessonPack, Word } from "../types";
 
-import type { ExerciseStep, SessionDefinition } from "./types";
+import type { ExerciseStep, SessionDefinition, SessionStep } from "./types";
 
 function exerciseSteps(
   exercises: Exercise[],
@@ -31,6 +31,28 @@ function exerciseSteps(
   }));
 }
 
+/**
+ * A lesson's step plan: the explicit flow (concept steps interleaved with
+ * exercises) when authored, otherwise the exercises in order. Flow
+ * integrity (every entry resolves; every exercise exactly once) is a
+ * compile-time content-validation guarantee; a dangling reference here is
+ * a build bug and fails loudly rather than silently dropping graded work.
+ */
+export function lessonSteps(lesson: LessonPack): SessionStep[] {
+  if (!lesson.flow) return exerciseSteps(lesson.exercises);
+  const byId = new Map(lesson.exercises.map((e) => [e.id, e]));
+  return lesson.flow.map((entry, i) => {
+    if ("concept" in entry) {
+      return { type: "concept", stepId: `concept:${i}:${entry.concept}`, conceptId: entry.concept };
+    }
+    const exercise = byId.get(entry.exercise);
+    if (!exercise) {
+      throw new Error(`lesson ${lesson.id}: flow references missing exercise ${entry.exercise}`);
+    }
+    return { type: "exercise", stepId: exercise.id, exercise };
+  });
+}
+
 export function buildPathSessionDefinition(args: {
   courseId: string;
   lesson: LessonPack;
@@ -41,7 +63,7 @@ export function buildPathSessionDefinition(args: {
     kind: replay ? "replay" : "path",
     courseId: args.courseId,
     lessonId: args.lesson.id,
-    steps: exerciseSteps(args.lesson.exercises),
+    steps: lessonSteps(args.lesson),
     completion: replay ? "practice" : "lesson",
     evidenceSource: "lesson",
     trackMistakes: true,

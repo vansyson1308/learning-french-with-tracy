@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "language": "fr",
+  "concepts": [
+    {
+      "id": "fr:concept:gender-two-classes",
+      "title": "Every French noun has a gender",
+      "shortRule": "Every noun is masculine (le) or feminine (la) — the article is part of the word.",
+      "explanation": "French sorts all nouns into two grammatical classes, masculine and feminine. This is a property of the word itself, not of the thing it names, so the reliable way to learn a noun is to learn it together with its article: 'le chat', 'la pomme'. The good news: a noun's ENDING often signals its gender, and the upcoming lessons teach only the ending patterns that a 36,940-noun analysis shows to be genuinely dependable.",
+      "examples": [
+        { "fr": "le chat", "en": "the cat", "note": "masculine — le" },
+        { "fr": "la pomme", "en": "the apple", "note": "feminine — la" },
+        {
+          "fr": "l'eau",
+          "en": "the water",
+          "note": "before a vowel sound the article shortens to l', hiding the gender — eau is feminine"
+        }
+      ],
+      "exceptions": [
+        "Before a vowel sound, both le and la become l', so the article stops showing the gender. For those nouns, remember them with un/une instead: une eau minérale."
+      ],
+      "memoryHint": "Always learn 'le chat', never just 'chat'.",
+      "sourceRefs": [
+        { "source": "original-french-pedagogy" },
+        { "source": "lexique-4", "key": "gender-suffix-stats" }
+      ]
+    }
+  ]
+}

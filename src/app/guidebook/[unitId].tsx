@@ -7,24 +7,58 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { CloseButton } from "@/components/close-button";
 import { SpeakerButton } from "@/components/speaker-button";
 import { useCourseContent } from "@/lib/content";
+import { parseGuidebook, type InlineSpan } from "@/lib/guidebook-markdown";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
+function InlineSpans({ spans }: { spans: InlineSpan[] }) {
+  return (
+    <>
+      {spans.map((span, i) => (
+        <Text
+          key={i}
+          style={[
+            span.bold && { fontWeight: "800" as const },
+            span.italic && { fontStyle: "italic" as const },
+          ]}
+        >
+          {span.text}
+        </Text>
+      ))}
+    </>
+  );
+}
+
+/** Real markdown-subset rendering (§50): emphasis is displayed, not stripped. */
 function GuidebookText({ markdown }: { markdown: string }) {
   const styles = useStyles();
   return (
     <View style={{ gap: 10 }}>
-      {markdown.split("\n").map((line, i) => {
-        const trimmed = line.trim();
-        if (!trimmed) return null;
-        const isHeading = trimmed.startsWith("#");
-        const clean = trimmed
-          .replace(/^#+\s*/, "")
-          .replace(/^[*-]\s+/, "•  ")
-          .replace(/\*+/g, "");
+      {parseGuidebook(markdown).map((block, i) => {
+        if (block.kind === "heading") {
+          return (
+            <Text key={i} style={styles.heading}>
+              <InlineSpans spans={block.spans} />
+            </Text>
+          );
+        }
+        if (block.kind === "bullets") {
+          return (
+            <View key={i} style={{ gap: 6 }}>
+              {block.items.map((item, j) => (
+                <View key={j} style={{ flexDirection: "row", gap: 8 }}>
+                  <Text style={styles.paragraph}>•</Text>
+                  <Text style={[styles.paragraph, { flex: 1 }]}>
+                    <InlineSpans spans={item} />
+                  </Text>
+                </View>
+              ))}
+            </View>
+          );
+        }
         return (
-          <Text key={i} style={isHeading ? styles.heading : styles.paragraph}>
-            {clean}
+          <Text key={i} style={styles.paragraph}>
+            <InlineSpans spans={block.spans} />
           </Text>
         );
       })}
