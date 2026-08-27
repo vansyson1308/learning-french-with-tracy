@@ -4281,36 +4281,128 @@
         }
       ],
       "overall": "agree"
+    },
+    {
+      "id": "fr:w:histoire",
+      "surface": "l'histoire",
+      "lookupForm": "histoire",
+      "matchStatus": "matched",
+      "matchKey": "histoire|NOM|f|s",
+      "fields": [
+        {
+          "field": "lookup",
+          "status": "agree",
+          "authored": "histoire",
+          "external": "histoire/NOM/f"
+        },
+        {
+          "field": "lemma",
+          "status": "agree",
+          "authored": "histoire",
+          "external": "histoire"
+        },
+        {
+          "field": "partOfSpeech",
+          "status": "agree",
+          "authored": "noun",
+          "external": "NOM"
+        },
+        {
+          "field": "gender",
+          "status": "agree",
+          "authored": "feminine",
+          "external": "f"
+        },
+        {
+          "field": "pronunciation",
+          "status": "agree",
+          "authored": "istwaʁ",
+          "external": "istwaʁ"
+        },
+        {
+          "field": "frequency",
+          "status": "agree",
+          "authored": "355.123",
+          "external": "355.123"
+        }
+      ],
+      "overall": "agree"
+    },
+    {
+      "id": "fr:w:heros",
+      "surface": "le héros",
+      "lookupForm": "héros",
+      "matchStatus": "matched",
+      "matchKey": "héros|NOM|m|i",
+      "fields": [
+        {
+          "field": "lookup",
+          "status": "agree",
+          "authored": "héros",
+          "external": "héros/NOM/m"
+        },
+        {
+          "field": "lemma",
+          "status": "agree",
+          "authored": "héros",
+          "external": "héros"
+        },
+        {
+          "field": "partOfSpeech",
+          "status": "agree",
+          "authored": "noun",
+          "external": "NOM"
+        },
+        {
+          "field": "gender",
+          "status": "agree",
+          "authored": "masculine",
+          "external": "m"
+        },
+        {
+          "field": "pronunciation",
+          "status": "agree",
+          "authored": "eʁo",
+          "external": "eʁo"
+        },
+        {
+          "field": "frequency",
+          "status": "agree",
+          "authored": "75.304",
+          "external": "75.304"
+        }
+      ],
+      "overall": "agree"
     }
   ],
   "summary": {
     "items": {
-      "agree": 91,
+      "agree": 93,
       "attention": 3,
       "not-applicable": 3
     },
     "fields": {
       "lookup": {
-        "agree": 94,
+        "agree": 96,
         "not-applicable": 3
       },
       "lemma": {
-        "agree": 94
+        "agree": 96
       },
       "partOfSpeech": {
-        "agree": 92,
+        "agree": 94,
         "disagree": 2
       },
       "gender": {
-        "agree": 74,
+        "agree": 76,
         "external-missing": 1,
         "ambiguous": 1
       },
       "pronunciation": {
-        "agree": 94
+        "agree": 96
       },
       "frequency": {
-        "agree": 94
+        "agree": 96
       }
     }
   }

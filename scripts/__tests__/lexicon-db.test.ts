@@ -91,12 +91,11 @@ describe("committed lexicon database", () => {
     db.close();
     expect(exampleCounts.length).toBe(99);
     expect(exampleCounts.every((r) => r.n >= 1)).toBe(true);
-    // 99 authored refs + 94 adopted Lexique 4 rows (49 + 2 overrides from
-    // the original 54, 17 Unit A, 7 Unit B — être/avoir via documented
-    // VER-row overrides — 13 Unit C and 6 Unit D; the 2 Unit E h-words
-    // are authored-only until extract round 8).
-    expect(refCounts?.n).toBe(193);
-    expect(lexiqueRefs?.n).toBe(94);
+    // 99 authored refs + 96 adopted Lexique 4 rows (49 + 2 overrides from
+    // the original 54, then Units A(17) B(7, être/avoir via documented
+    // VER-row overrides) C(13) D(6) E(2)).
+    expect(refCounts?.n).toBe(195);
+    expect(lexiqueRefs?.n).toBe(96);
     expect(sources).toEqual([
       { id: "lexique-4", license: "CC-BY-SA-4.0" },
       { id: "original-french-lexicon", license: "CC-BY-SA-4.0" },
