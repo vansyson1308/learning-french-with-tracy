@@ -42,10 +42,11 @@ export const REVIEW_SESSION_SIZE = 10;
 export function buildSrsExercises(
   dueTargets: string[],
   pool: Word[],
-  seed: number
+  seed: number,
+  limit = REVIEW_SESSION_SIZE
 ): Exercise[] {
   const rng = seededRng(seed);
-  return dueTargets.slice(0, REVIEW_SESSION_SIZE).flatMap((target) => {
+  return dueTargets.slice(0, limit).flatMap((target) => {
     const word = pool.find((w) => w.target === target);
     if (!word) return [];
 
