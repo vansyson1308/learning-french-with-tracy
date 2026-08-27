@@ -91,10 +91,10 @@ describe("committed lexicon database", () => {
     db.close();
     expect(exampleCounts.length).toBe(71);
     expect(exampleCounts.every((r) => r.n >= 1)).toBe(true);
-    // 71 authored refs + 51 adopted Lexique 4 rows (the 17 Unit A lexemes
-    // adopt theirs with the next derive+import round).
-    expect(refCounts?.n).toBe(122);
-    expect(lexiqueRefs?.n).toBe(51);
+    // 71 authored refs + 68 adopted Lexique 4 rows (49 + 2 overrides from
+    // the original 54, plus the 17 Unit A adoptions).
+    expect(refCounts?.n).toBe(139);
+    expect(lexiqueRefs?.n).toBe(68);
     expect(sources).toEqual([
       { id: "lexique-4", license: "CC-BY-SA-4.0" },
       { id: "original-french-lexicon", license: "CC-BY-SA-4.0" },
