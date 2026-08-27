@@ -127,13 +127,16 @@ jobs:
             echo "Nothing to commit."
             exit 0
           fi
-          git commit -m "Phase 5A: Lexique 4 ${{ inputs.mode }} results (official source, runner-side)
-
-Acquired from the official lexique.org distribution on a GitHub-hosted
-runner (the interactive build environment's egress allowlist does not
-include lexique.org). Raw artifact retained as a workflow run artifact
-only; this commit carries the derived, deterministic outputs.
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01AwHYc63cWfazzNrf1PyqCf"
+          printf '%s\n' \
+            "Phase 5A: Lexique 4 ${{ inputs.mode }} results (official source, runner-side)" \
+            "" \
+            "Acquired from the official lexique.org distribution on a GitHub-hosted" \
+            "runner (the interactive build environment's egress allowlist does not" \
+            "include lexique.org). Raw artifact retained as a workflow run artifact" \
+            "only; this commit carries the derived, deterministic outputs." \
+            "" \
+            "Co-Authored-By: Claude <noreply@anthropic.com>" \
+            "Claude-Session: https://claude.ai/code/session_01AwHYc63cWfazzNrf1PyqCf" \
+            > /tmp/commit-msg.txt
+          git commit -F /tmp/commit-msg.txt
           git push origin "HEAD:${{ github.ref_name }}"
