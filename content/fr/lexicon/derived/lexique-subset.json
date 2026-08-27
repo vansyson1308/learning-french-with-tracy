@@ -879,6 +879,24 @@
       "status": "matched",
       "matchKey": "année|NOM|f|s",
       "candidateCount": 1
+    },
+    {
+      "id": "fr:w:histoire",
+      "surface": "l'histoire",
+      "lookupForm": "histoire",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "histoire|NOM|f|s",
+      "candidateCount": 1
+    },
+    {
+      "id": "fr:w:heros",
+      "surface": "le héros",
+      "lookupForm": "héros",
+      "partOfSpeech": "noun",
+      "status": "matched",
+      "matchKey": "héros|NOM|m|i",
+      "candidateCount": 1
     }
   ],
   "entries": [
@@ -13635,6 +13653,111 @@
           "cdOrtho": 50.74862,
           "isLem": false,
           "preval": 100
+        }
+      ]
+    },
+    {
+      "id": "fr:w:histoire",
+      "lookupForm": "histoire",
+      "lemma": "histoire",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "histoire",
+          "phono": "istwaR",
+          "ipa": "istwaʁ",
+          "lemme": "histoire",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "s",
+          "infoVer": "",
+          "freqMot": 301.794,
+          "freqOrtho": 301.794,
+          "freqLemme": 355.123,
+          "cdOrtho": 60.61543,
+          "isLem": true,
+          "preval": 95
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "histoires",
+          "phono": "istwaR",
+          "ipa": "istwaʁ",
+          "lemme": "histoire",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "p",
+          "infoVer": "",
+          "freqMot": 53.158,
+          "freqOrtho": 53.747,
+          "freqLemme": 355.123,
+          "cdOrtho": 18.01133,
+          "isLem": false,
+          "preval": 95
+        }
+      ]
+    },
+    {
+      "id": "fr:w:heros",
+      "lookupForm": "héros",
+      "lemma": "héros",
+      "partOfSpeech": "noun",
+      "formRows": [
+        {
+          "mot": "héros",
+          "phono": "eRo",
+          "ipa": "eʁo",
+          "lemme": "héros",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "m",
+          "nombre": "i",
+          "infoVer": "",
+          "freqMot": 65.225,
+          "freqOrtho": 65.228,
+          "freqLemme": 75.304,
+          "cdOrtho": 16.76363,
+          "isLem": true,
+          "preval": 90
+        }
+      ],
+      "lemmaRows": [
+        {
+          "mot": "héroïne",
+          "phono": "eRoin",
+          "ipa": "eʁoin",
+          "lemme": "héros",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "s",
+          "infoVer": "",
+          "freqMot": 9.873,
+          "freqOrtho": 14.142,
+          "freqLemme": 75.304,
+          "cdOrtho": 3.73699,
+          "isLem": false,
+          "preval": 90
+        },
+        {
+          "mot": "héroïnes",
+          "phono": "eRoin",
+          "ipa": "eʁoin",
+          "lemme": "héros",
+          "cgram": "NOM",
+          "cgramOrtho": "NOM",
+          "genre": "f",
+          "nombre": "p",
+          "infoVer": "",
+          "freqMot": 0.095,
+          "freqOrtho": 0.332,
+          "freqLemme": 75.304,
+          "cdOrtho": 0.15156,
+          "isLem": false,
+          "preval": 90
         }
       ]
     }
