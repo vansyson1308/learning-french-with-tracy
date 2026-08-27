@@ -93,7 +93,9 @@ function applyLegacy(
   now: number
 ): CourseProgress {
   const surface = ev.cardKey.itemId;
-  if (ev.source === "review") {
+  // TODAY is French-only; if evidence ever reached a legacy course anyway,
+  // the safe translation is the review one (srs write, no stats inflation).
+  if (ev.source === "review" || ev.source === "today") {
     return {
       ...course,
       srs: {
@@ -125,7 +127,12 @@ function applyFrench(
 
   // Strength stats mirror the legacy visibility rules: lesson/mistakes
   // interactions update them, review sessions never did, teach never will.
-  if (ev.source !== "review" && ev.srsRole !== "teach") {
+  // TODAY (§28) is stricter: only a designated assessment that actually
+  // mutates the scheduler bumps stats — see below, after the gate.
+  if (
+    (ev.source === "lesson" || ev.source === "mistakes") &&
+    ev.srsRole !== "teach"
+  ) {
     next = {
       ...next,
       wordStats: {
@@ -156,6 +163,22 @@ function applyFrench(
       // the evidence is still logged below, without a mutation.
       console.warn("FSRS review failed; card left unchanged", error);
     }
+  }
+
+  // TODAY stats: exactly one bump per card, tied to the one scheduler
+  // mutation — teach, mixed practice and finale reinforcement never inflate.
+  if (ev.source === "today" && mutation !== undefined) {
+    next = {
+      ...next,
+      wordStats: {
+        ...next.wordStats,
+        [ev.cardKey.itemId]: bumpStat(
+          next.wordStats[ev.cardKey.itemId],
+          ev.correct,
+          now
+        ),
+      },
+    };
   }
 
   const entry: ReviewLogEntry = { ...baseLogEntry(FR_COURSE_ID, ev, now), mutation };
