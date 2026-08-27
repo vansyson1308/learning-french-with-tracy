@@ -16,6 +16,8 @@ import os from "os";
 import path from "path";
 
 import { validateLexicon, loadRichLexicon, loadSourceManifest } from "./lib/lexicon";
+import { deriveGenderPatterns } from "./lib/gender-patterns";
+import type { GenderSuffixStats } from "./lib/lexique-derive-lib";
 import {
   CONCEPTS_ARTIFACT,
   compileConceptsArtifact,
@@ -31,8 +33,10 @@ import {
 } from "./lib/lexicon-build";
 import {
   assertGeneratedTarget,
+  canonicalJson,
   compileAll,
   loadRegistry,
+  readJson,
   safeResolve,
   validateContent,
 } from "./lib/pipeline";
@@ -54,6 +58,25 @@ const lexicon = loadRichLexicon();
 const lexiconArtifacts = compileLexiconArtifacts(lexicon, loadSourceManifest(), loadRegistry());
 files.push(...lexiconArtifacts.files);
 files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadPedagogyConcepts()) });
+
+// §51–53 committed pattern report: every statistically-derived pattern from
+// the real noun-lemma population (the curriculum teaches a curated subset;
+// this report is the honest full record the curation draws from).
+{
+  const genderStats = readJson("content/fr/lexicon/derived/gender-suffix-stats.json") as GenderSuffixStats & {
+    source: { sha256: string };
+  };
+  files.push({
+    relPath: "content/reports/gender-patterns.json",
+    contents: canonicalJson({
+      source: genderStats.source,
+      generator: "scripts/lib/gender-patterns.ts",
+      thresholds: { minLemmas: 100, minReliabilityPct: 90, almostAlwaysPct: 99 },
+      population: genderStats.population,
+      patterns: deriveGenderPatterns(genderStats),
+    }),
+  });
+}
 
 let drifted = 0;
 for (const file of files) {
