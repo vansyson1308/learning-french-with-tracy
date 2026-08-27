@@ -1,0 +1,235 @@
+/**
+ * Session controller (Phase 3): the thin React layer between the pure
+ * session reducer and the world. Owns ONLY side effects — sound, haptics,
+ * speech, evidence submission, mistakes bookkeeping, completion policy,
+ * AppState-aware latency — and delegates every session rule to the reducer.
+ */
+
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { AppState } from "react-native";
+
+import { speakTarget, useSfx } from "../audio";
+import { behaviorFor } from "../exercise-registry";
+import { haptics } from "../haptics";
+import { useProgress, XP_PER_LESSON } from "../store";
+
+import { buildCheckEvidence, buildMatchWordEvidence } from "./evidence";
+import {
+  currentStep,
+  emptySessionState,
+  isPerfect,
+  sessionReducer,
+  type SessionMachineState,
+} from "./reducer";
+import {
+  isActiveAppState,
+  pauseClock,
+  readClockMs,
+  resumeClock,
+  startClock,
+} from "./timing";
+import type { SessionDefinition } from "./types";
+
+function newSessionId(): string {
+  return `s-${Date.now().toString(36)}-${Math.floor(Math.random() * 0xffffffff).toString(36)}`;
+}
+
+export type SessionController = {
+  state: SessionMachineState;
+  definition: SessionDefinition;
+  /** True right after an answer that mutated the FSRS scheduler. */
+  lastMutated: boolean;
+  /** Scheduler mutations so far (undo-adjusted) — drives TODAY XP. */
+  assessmentsCompleted: number;
+  onAnswer: (value: SessionMachineState["answer"]) => void;
+  onCheck: () => void;
+  onContinue: () => void;
+  onTeachContinue: () => void;
+  onMatchComplete: (wrongAttempts: number) => void;
+  onMatchWordResult: (surface: string, correct: boolean) => void;
+  onUndo: () => void;
+};
+
+export function useSessionController(definition: SessionDefinition): SessionController {
+  const progress = useProgress();
+  const sfx = useSfx();
+  const [state, dispatch] = useReducer(sessionReducer, undefined, emptySessionState);
+  const [lastMutated, setLastMutated] = useState(false);
+  const [assessmentsCompleted, setAssessmentsCompleted] = useState(0);
+  const clockRef = useRef(startClock(0));
+  const finishedRef = useRef(false);
+
+  // One session per definition: identity, plan and timers reset together.
+  // The definition is frozen by the route (memo over a state snapshot), so
+  // store writes made DURING the session never re-run this.
+  useEffect(() => {
+    dispatch({ type: "start", sessionId: newSessionId(), steps: definition.steps });
+    clockRef.current = startClock(Date.now());
+    finishedRef.current = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLastMutated(false);
+    setAssessmentsCompleted(0);
+  }, [definition]);
+
+  // Active-time latency: background/inactive time never counts (§19).
+  useEffect(() => {
+    const sub = AppState.addEventListener("change", (next) => {
+      clockRef.current = isActiveAppState(next)
+        ? resumeClock(clockRef.current, Date.now())
+        : pauseClock(clockRef.current, Date.now());
+    });
+    return () => sub.remove();
+  }, []);
+
+  // Completion policy — runs exactly once when the machine finishes.
+  const { finished } = state;
+  useEffect(() => {
+    if (!finished || finishedRef.current || state.steps.length === 0) return;
+    finishedRef.current = true;
+    if (definition.completion === "lesson") {
+      progress.completeLesson(definition.lessonId, isPerfect(state));
+    } else if (definition.completion === "practice") {
+      progress.recordPracticeSession();
+    } else {
+      progress.completeTodaySession(
+        Math.min(assessmentsCompleted, XP_PER_LESSON)
+      );
+    }
+    sfx.playFinish();
+    haptics.celebrate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finished]);
+
+  const latencyNow = () => readClockMs(clockRef.current, Date.now());
+  const resetClock = () => {
+    clockRef.current = startClock(Date.now());
+  };
+
+  const onAnswer = useCallback<SessionController["onAnswer"]>((value) => {
+    dispatch({ type: "answer", value });
+  }, []);
+
+  const onCheck = useCallback(() => {
+    const step = currentStep(state);
+    if (!step || step.type !== "exercise" || state.status !== "idle") return;
+    const behavior = behaviorFor(step.exercise);
+    const correct = behavior.check(step.exercise, state.answer);
+
+    if (correct) {
+      sfx.playCorrect();
+      haptics.success();
+      progress.clearMistake(step.exercise.id);
+    } else {
+      sfx.playIncorrect();
+      haptics.error();
+      if (definition.trackMistakes) {
+        progress.addMistake({
+          lessonId: definition.lessonId,
+          exerciseId: step.exercise.id,
+        });
+      }
+    }
+
+    const evidence = buildCheckEvidence({
+      definition,
+      step,
+      sessionId: state.sessionId,
+      correct,
+      attemptIndex: state.attempts[step.stepId] ?? 0,
+      latencyMs: Math.max(0, latencyNow()),
+    });
+    if (evidence) {
+      const mutated = progress.submitEvidence(evidence);
+      setLastMutated(mutated);
+      if (mutated) setAssessmentsCompleted((n) => n + 1);
+    } else {
+      setLastMutated(false);
+    }
+
+    if (
+      correct &&
+      step.exercise.type === "select" &&
+      step.exercise.mode === "nativeToTarget" &&
+      step.exercise.audioTarget
+    ) {
+      speakTarget(definition.courseId, step.exercise.audioTarget);
+    }
+
+    dispatch({ type: "check" });
+  }, [state, definition, progress, sfx]);
+
+  const onContinue = useCallback(() => {
+    setLastMutated(false);
+    resetClock();
+    dispatch({ type: "continue" });
+  }, []);
+
+  const onTeachContinue = useCallback(() => {
+    resetClock();
+    dispatch({ type: "teachContinue" });
+  }, []);
+
+  const onMatchComplete = useCallback(
+    (wrongAttempts: number) => {
+      const step = currentStep(state);
+      if (!step || step.type !== "exercise") return;
+      if (wrongAttempts > 0) {
+        sfx.playIncorrect();
+        if (definition.trackMistakes) {
+          progress.addMistake({
+            lessonId: definition.lessonId,
+            exerciseId: step.exercise.id,
+          });
+        }
+      } else {
+        sfx.playCorrect();
+        progress.clearMistake(step.exercise.id);
+      }
+      resetClock();
+      dispatch({ type: "matchComplete", wrongAttempts });
+    },
+    [state, definition, progress, sfx]
+  );
+
+  const onMatchWordResult = useCallback(
+    (surface: string, correct: boolean) => {
+      const step = currentStep(state);
+      if (!step || step.type !== "exercise") return;
+      progress.submitEvidence(
+        buildMatchWordEvidence({
+          definition,
+          step,
+          sessionId: state.sessionId,
+          surface,
+          correct,
+          attemptIndex: state.attempts[step.stepId] ?? 0,
+          latencyMs: Math.max(0, latencyNow()),
+        })
+      );
+    },
+    [state, definition, progress]
+  );
+
+  const onUndo = useCallback(() => {
+    if (!definition.allowUndo || !lastMutated) return;
+    if (!progress.undoLastFrenchReview()) return;
+    setLastMutated(false);
+    setAssessmentsCompleted((n) => Math.max(0, n - 1));
+    resetClock();
+    dispatch({ type: "undoCurrent" });
+  }, [definition, lastMutated, progress]);
+
+  return {
+    state,
+    definition,
+    lastMutated,
+    assessmentsCompleted,
+    onAnswer,
+    onCheck,
+    onContinue,
+    onTeachContinue,
+    onMatchComplete,
+    onMatchWordResult,
+    onUndo,
+  };
+}

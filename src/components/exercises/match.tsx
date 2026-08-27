@@ -1,9 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { speakTarget } from "@/lib/audio";
 import { haptics } from "@/lib/haptics";
-import { useProgress } from "@/lib/store";
 import { makeThemedStyles } from "@/lib/theme";
 import type { MatchExercise } from "@/lib/types";
 
@@ -13,6 +11,8 @@ type MatchProps = {
   exercise: MatchExercise;
   onComplete: (wrongAttempts: number) => void;
   onWordResult: (target: string, correct: boolean) => void;
+  /** Session-provided audio: Match knows nothing about courses or stores. */
+  onSpeak: (target: string) => void;
 };
 
 function shuffleBy<T>(items: T[], seedText: string): T[] {
@@ -35,8 +35,7 @@ function shuffleBy<T>(items: T[], seedText: string): T[] {
   return out;
 }
 
-export function Match({ exercise, onComplete, onWordResult }: MatchProps) {
-  const courseId = useProgress((s) => s.activeCourseId);
+export function Match({ exercise, onComplete, onWordResult, onSpeak }: MatchProps) {
   const styles = useStyles();
   const left = useMemo(
     () => shuffleBy(exercise.pairs.map((p) => p.target), exercise.id + "L"),
@@ -99,7 +98,7 @@ export function Match({ exercise, onComplete, onWordResult }: MatchProps) {
               state={stateFor(target, target, selectedTarget === target)}
               disabled={matched.has(target)}
               onPress={() => {
-                speakTarget(courseId, target);
+                onSpeak(target);
                 setSelectedTarget(target);
                 tryMatch(target, selectedNative);
               }}

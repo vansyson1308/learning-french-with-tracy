@@ -80,6 +80,13 @@ type ProgressState = {
   completeLesson: (lessonId: string, perfect: boolean) => void;
   /** Mistake/review practice: counts as activity, never as lesson completion. */
   recordPracticeSession: () => void;
+  /**
+   * TODAY completion (§58-61): counts as daily activity and streak, adds
+   * bounded XP (1 per completed designated assessment, capped at
+   * XP_PER_LESSON) to course + daily XP — never writes completedLessons,
+   * never counts as a lesson or a perfect lesson.
+   */
+  completeTodaySession: (assessmentXp: number) => void;
   addMistake: (mistake: MistakeRef) => void;
   clearMistake: (exerciseId: string) => void;
   recordWord: (target: string, correct: boolean) => void;
@@ -202,6 +209,33 @@ export const useProgress = create<ProgressState>()(
             [today]: { ...prevDay, sessions: (prevDay.sessions ?? 0) + 1 },
           });
           return { streak, lastActiveDay: today, activeDays };
+        }),
+
+      completeTodaySession: (assessmentXp) =>
+        set((state) => {
+          const { today, streak } = activityBase(state, new Date());
+          const prevDay = state.activeDays[today] ?? {
+            xp: 0,
+            lessons: 0,
+            perfect: 0,
+          };
+          const earned = Number.isFinite(assessmentXp)
+            ? Math.max(0, Math.min(Math.round(assessmentXp), XP_PER_LESSON))
+            : 0;
+          const daily = bumpDailyXp(state, earned, today);
+          const activeDays = pruneDays({
+            ...state.activeDays,
+            [today]: {
+              ...prevDay,
+              xp: prevDay.xp + earned,
+              sessions: (prevDay.sessions ?? 0) + 1,
+            },
+          });
+          const courseUpdate = updateCourse(state, state.activeCourseId, (c) => ({
+            ...c,
+            xp: c.xp + earned,
+          }));
+          return { streak, lastActiveDay: today, activeDays, ...daily, ...courseUpdate };
         }),
 
       addMistake: (mistake) =>

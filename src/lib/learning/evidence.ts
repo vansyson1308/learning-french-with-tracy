@@ -28,7 +28,7 @@ export type Modality =
   | "match"; // matching pairs
 
 /** Which surface produced the evidence (drives legacy-course translation). */
-export type EvidenceSource = "lesson" | "review" | "mistakes";
+export type EvidenceSource = "lesson" | "review" | "mistakes" | "today";
 
 export type ReviewEvidence = {
   cardKey: CardKey;
