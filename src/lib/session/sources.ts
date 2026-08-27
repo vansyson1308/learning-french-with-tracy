@@ -96,7 +96,9 @@ export function buildReviewSessionDefinition(args: {
     exercises = buildSrsExercises(
       queue.map((d) => d.surface),
       pool,
-      seed
+      seed,
+      undefined,
+      courseId
     );
     evidenceBySurface = Object.fromEntries(
       queue.map((d) => [d.surface, d.key.slice(0, d.key.lastIndexOf("|"))])
@@ -105,7 +107,7 @@ export function buildReviewSessionDefinition(args: {
     const srs = (course.srs ?? {}) as Record<string, SrsEntry>;
     const due = dueSrsWords(srs, args.now);
     const seed = hashSeed(due.map((t) => `${t}@${srs[t]?.dueAt ?? 0}`).join("|"));
-    exercises = buildSrsExercises(due, pool, seed);
+    exercises = buildSrsExercises(due, pool, seed, undefined, courseId);
     evidenceBySurface = Object.fromEntries(due.map((t) => [t, t]));
   }
 

@@ -1,3 +1,4 @@
+import { pickDistractors } from "./learning/distractors";
 import type { Exercise, Word } from "./types";
 
 /** FNV-1a string hash — a pure way to derive a session seed from content. */
@@ -34,34 +35,33 @@ function shuffle<T>(items: T[], rng: () => number): T[] {
 export const REVIEW_SESSION_SIZE = 10;
 
 /**
- * Build the spaced-review session for the due words. Distractors are sampled
- * randomly from the course word pool (deduped by display string, never equal
- * to the answer) and the correct option's position is shuffled — the previous
- * builder always placed the answer at index 0 with the same three distractors.
+ * Build the spaced-review session for the due words. Distractors come from
+ * the smart engine (Phase 4): tiered by confusables/POS/topic with a
+ * same-gender preference for nouns where lexicon metadata exists, safe
+ * deduped fallback where it doesn't (legacy courses) — never the answer,
+ * never a duplicate display, and the correct option's position is shuffled.
  */
 export function buildSrsExercises(
   dueTargets: string[],
   pool: Word[],
   seed: number,
-  limit = REVIEW_SESSION_SIZE
+  limit = REVIEW_SESSION_SIZE,
+  courseId = "fr-en"
 ): Exercise[] {
   const rng = seededRng(seed);
   return dueTargets.slice(0, limit).flatMap((target) => {
     const word = pool.find((w) => w.target === target);
     if (!word) return [];
 
-    const seen = new Set<string>([word.native]);
-    const candidates: Word[] = [];
-    for (const w of pool) {
-      if (w.target === target || seen.has(w.native)) continue;
-      seen.add(w.native);
-      candidates.push(w);
-    }
     // Every option carries its own word's emoji — an emoji only on the
     // correct answer would telegraph it (pre-Phase-3 flaw, fixed here).
-    const distractors = shuffle(candidates, rng)
-      .slice(0, 3)
-      .map((w) => ({ text: w.native, emoji: w.emoji }));
+    const distractors = pickDistractors({
+      courseId,
+      word,
+      pool,
+      rng,
+      direction: "targetToNative",
+    }).map((w) => ({ text: w.native, emoji: w.emoji }));
     if (distractors.length === 0) return [];
 
     const options = shuffle(
