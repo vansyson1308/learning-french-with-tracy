@@ -38,7 +38,9 @@ jobs:
       - name: Typecheck
         run: bunx tsc --noEmit
       - name: Unit tests
-        run: bun test
+        # `bun run test` uses the scoped script (src + scripts): raw
+        # `bun test` would also sweep up the jest-only integration suite.
+        run: bun run test
       - name: Lint
         if: matrix.tz == 'UTC'
         run: bun run lint
