@@ -7,6 +7,8 @@
 
 import React from "react";
 
+import { ArticleSelect } from "@/components/exercises/article-select";
+import { ConjugationCloze } from "@/components/exercises/conjugation-cloze";
 import { FillBlank } from "@/components/exercises/fill-blank";
 import { Match } from "@/components/exercises/match";
 import { Select } from "@/components/exercises/select";
@@ -79,6 +81,24 @@ export function ExerciseRenderer({
         <FillBlank
           exercise={exercise}
           answer={typeof answer === "number" ? answer : null}
+          onAnswer={onAnswer}
+          status={status}
+        />
+      );
+    case "articleSelect":
+      return (
+        <ArticleSelect
+          exercise={exercise}
+          answer={typeof answer === "number" ? answer : null}
+          onAnswer={onAnswer}
+          status={status}
+        />
+      );
+    case "conjugationCloze":
+      return (
+        <ConjugationCloze
+          exercise={exercise}
+          answer={typeof answer === "string" ? answer : ""}
           onAnswer={onAnswer}
           status={status}
         />

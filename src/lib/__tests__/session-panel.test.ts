@@ -9,6 +9,7 @@ import { describe, expect, test } from "bun:test";
 import { FR_COURSE_ID } from "../learning/ids-fr";
 import {
   displayPronunciation,
+  grammarNoteFor,
   panelDataFor,
   panelItemIdFor,
   teachMetaFor,
@@ -183,5 +184,66 @@ describe("panelDataFor — display model", () => {
   test("pronunciation display never mislabels phonology as IPA", () => {
     expect(displayPronunciation({ value: "Sa", notation: "phonology" })).toBe("Sa");
     expect(displayPronunciation({ value: "ʃa", notation: "ipa" })).toBe("/ʃa/");
+  });
+});
+
+describe("grammarNoteFor — the Phase 5B single-note addition", () => {
+  const step = (exercise: Exercise): ExerciseStep => ({
+    type: "exercise",
+    stepId: exercise.id,
+    exercise,
+  });
+
+  test("articleSelect notes the article and its gender", () => {
+    const note = grammarNoteFor(
+      step({
+        type: "articleSelect",
+        id: "g1",
+        articles: ["le", "la"],
+        noun: "maison",
+        gloss: "the house",
+        correct: 1,
+      })
+    );
+    expect(note).toBe("maison takes la — feminine.");
+  });
+
+  test("conjugationCloze notes the person and tense", () => {
+    const note = grammarNoteFor(
+      step({
+        type: "conjugationCloze",
+        id: "g2",
+        sentence: "Tu ___ une pomme.",
+        translation: "You eat an apple.",
+        verb: "manger",
+        cell: "pre:2s",
+        answer: "manges",
+        alternatives: [],
+      })
+    );
+    expect(note).toBe("manges is the tu form of manger in the présent.");
+  });
+
+  test("participle cell gets no tense suffix", () => {
+    const note = grammarNoteFor(
+      step({
+        type: "conjugationCloze",
+        id: "g3",
+        sentence: "J'ai ___ une pomme.",
+        translation: "I ate an apple.",
+        verb: "manger",
+        cell: "participle",
+        answer: "mangé",
+        alternatives: [],
+      })
+    );
+    expect(note).toBe("mangé is the past participle of manger.");
+  });
+
+  test("lexical exercises and non-exercise steps get no note", () => {
+    expect(grammarNoteFor(step(selectExercise()))).toBeNull();
+    expect(
+      grammarNoteFor({ type: "concept", stepId: "c", conceptId: "fr:concept:elision" })
+    ).toBeNull();
   });
 });

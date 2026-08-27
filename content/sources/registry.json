@@ -39,6 +39,17 @@
       "notes": "Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md)."
     },
     {
+      "id": "original-french-pedagogy",
+      "name": "Learning French with Tracy — authored French pedagogy",
+      "kind": "authored teaching content (concept explanations, rules, examples, guidebooks)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "French pedagogy content authored by the Learning French with Tracy project.",
+      "retrievedAt": "2026-08-27",
+      "covers": ["content/fr/pedagogy/"],
+      "notes": "Clean-room authored teaching content for the Phase 5B pedagogy units (gender & articles, high-yield verbs, cognates & false friends, numbers, connected French). Linguistic FACTS are drawn from the referenced sources recorded in content/fr/pedagogy/RESEARCH.md (institutional references such as Académie française and OQLF usage pages, plus this repository's Lexique-4-derived population statistics); all PROSE is original. Statistical claims in concepts additionally carry a lexique-4 sourceRef. Ships under the repository's MIT grant like the course packs (the CC BY-SA dataset boundary covers the lexicon only)."
+    },
+    {
       "id": "ts-fsrs",
       "name": "ts-fsrs (open-spaced-repetition)",
       "kind": "code (runtime scheduling library)",

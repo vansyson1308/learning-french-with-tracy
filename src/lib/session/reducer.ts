@@ -164,8 +164,11 @@ export function sessionReducer(
     }
 
     case "teachContinue": {
+      // Acknowledge-only steps: teach cards and concept steps share the
+      // same mechanics — advance on Continue, count toward progress, no
+      // grading and no retry semantics.
       const step = currentStep(state);
-      if (!step || step.type !== "teach") return state;
+      if (!step || (step.type !== "teach" && step.type !== "concept")) return state;
       return advance({ ...state, completedCount: state.completedCount + 1 }, false);
     }
 

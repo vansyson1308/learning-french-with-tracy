@@ -20,6 +20,7 @@ import { behaviorFor } from "../exercise-registry";
 import type { ReviewEvidence, SrsRole } from "../learning/evidence";
 import { itemIdForCourse } from "../learning/engine";
 import { FR_COURSE_ID, frItemIdFor, isCuratedFrItemId } from "../learning/ids-fr";
+import { lexemeIdForLookupForm } from "../learning/lexicon-index";
 
 import type { ExerciseStep, SessionDefinition, StepEvidencePlan } from "./types";
 
@@ -41,19 +42,42 @@ export function evidencePlanFor(
   if (step.evidence) return step.evidence;
 
   const exercise = step.exercise;
-  if (exercise.type !== "select" || !exercise.audioTarget) return null;
+
+  // Grammar drills (§58): practice evidence on the drilled noun's own
+  // lexeme when it resolves unambiguously — logged, NEVER an assessment,
+  // so a grammar answer can never mutate the lexical recognize card.
+  if (exercise.type === "articleSelect") {
+    if (definition.courseId !== FR_COURSE_ID) return null;
+    const id = lexemeIdForLookupForm(exercise.noun);
+    return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
+  }
+
+  // Conjugation production (§67): practice evidence on the verb's own
+  // lexeme when it exists — never lexical FSRS assessment.
+  if (exercise.type === "conjugationCloze") {
+    if (definition.courseId !== FR_COURSE_ID) return null;
+    const id = lexemeIdForLookupForm(exercise.verb);
+    return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
+  }
+
+  if (exercise.type !== "select") return null;
 
   if (definition.courseId === FR_COURSE_ID) {
+    // The compiler-emitted gradeTargets ARE the deliberate eligibility
+    // metadata (Section 2 lessons ship without bundled audio, so the
+    // Phase-1 audioTarget proxy cannot be the gate any more).
     const targets = exercise.gradeTargets ?? [];
     if (targets.length === 1 && isCuratedFrItemId(targets[0])) {
       return { itemId: targets[0], srsRole: plannedRole(definition) };
     }
+    if (!exercise.audioTarget) return null;
     // No/ambiguous/unknown gradeTargets: log under the best-known id so the
     // interaction is preserved, but never schedule from a guess.
     return { itemId: frItemIdFor(exercise.audioTarget), srsRole: "practice" };
   }
 
   // Legacy courses: raw surface, unchanged semantics.
+  if (!exercise.audioTarget) return null;
   return {
     itemId: exercise.audioTarget,
     srsRole: plannedRole(definition),

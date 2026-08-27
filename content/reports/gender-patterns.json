@@ -1,0 +1,516 @@
+{
+  "source": {
+    "id": "lexique-4",
+    "sha256": "fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a",
+    "url": "https://lexique.org/databases/Lexique400/Lexique400.tsv",
+    "retrievedAt": "2026-08-27"
+  },
+  "generator": "scripts/lib/gender-patterns.ts",
+  "thresholds": {
+    "minLemmas": 100,
+    "minReliabilityPct": 90,
+    "almostAlwaysPct": 99
+  },
+  "population": {
+    "definition": "rows with 14_IsLem = 1 whose 5_Cgram maps to noun, whose 1_Mot is a lowercase single word (proper nouns and multiword rows excluded) and which carry a 7_Genre value (m, f or e); one entry per (lemma, gender), so a genuinely two-gender noun counts once per gender",
+    "size": 36940,
+    "byGenre": {
+      "m": 21965,
+      "f": 13091,
+      "e": 1884
+    }
+  },
+  "patterns": [
+    {
+      "suffix": "ium",
+      "gender": "masculine",
+      "reliabilityPct": 100,
+      "lemmaCount": 155,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "eux",
+      "gender": "masculine",
+      "reliabilityPct": 100,
+      "lemmaCount": 107,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "ment",
+      "gender": "masculine",
+      "reliabilityPct": 99.8,
+      "lemmaCount": 1094,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "isme",
+      "gender": "masculine",
+      "reliabilityPct": 99.8,
+      "lemmaCount": 616,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "tion",
+      "gender": "feminine",
+      "reliabilityPct": 99.5,
+      "lemmaCount": 1895,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "ien",
+      "gender": "masculine",
+      "reliabilityPct": 99.2,
+      "lemmaCount": 265,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "sion",
+      "gender": "feminine",
+      "reliabilityPct": 99.1,
+      "lemmaCount": 222,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "mie",
+      "gender": "feminine",
+      "reliabilityPct": 99,
+      "lemmaCount": 200,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "ron",
+      "gender": "masculine",
+      "reliabilityPct": 99,
+      "lemmaCount": 104,
+      "wording": "almost always",
+      "subtracted": []
+    },
+    {
+      "suffix": "gie",
+      "gender": "feminine",
+      "reliabilityPct": 98.9,
+      "lemmaCount": 283,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ance",
+      "gender": "feminine",
+      "reliabilityPct": 98.9,
+      "lemmaCount": 272,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ing",
+      "gender": "masculine",
+      "reliabilityPct": 98.9,
+      "lemmaCount": 187,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "rie",
+      "gender": "feminine",
+      "reliabilityPct": 98.8,
+      "lemmaCount": 513,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "hie",
+      "gender": "feminine",
+      "reliabilityPct": 98.7,
+      "lemmaCount": 152,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "oir",
+      "gender": "masculine",
+      "reliabilityPct": 98.7,
+      "lemmaCount": 149,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "al",
+      "gender": "masculine",
+      "reliabilityPct": 98.6,
+      "lemmaCount": 210,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "age",
+      "gender": "masculine",
+      "reliabilityPct": 98.5,
+      "lemmaCount": 1234,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ence",
+      "gender": "feminine",
+      "reliabilityPct": 98.3,
+      "lemmaCount": 232,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "let",
+      "gender": "masculine",
+      "reliabilityPct": 98.1,
+      "lemmaCount": 103,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "et",
+      "gender": "masculine",
+      "reliabilityPct": 98,
+      "lemmaCount": 407,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ité",
+      "gender": "feminine",
+      "reliabilityPct": 97.8,
+      "lemmaCount": 855,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "nce",
+      "gender": "feminine",
+      "reliabilityPct": 97.7,
+      "lemmaCount": 522,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "us",
+      "gender": "masculine",
+      "reliabilityPct": 97.7,
+      "lemmaCount": 222,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "au",
+      "gender": "masculine",
+      "reliabilityPct": 97.2,
+      "lemmaCount": 248,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ier",
+      "gender": "masculine",
+      "reliabilityPct": 97.1,
+      "lemmaCount": 589,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "um",
+      "gender": "masculine",
+      "reliabilityPct": 97.1,
+      "lemmaCount": 277,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "in",
+      "gender": "masculine",
+      "reliabilityPct": 97,
+      "lemmaCount": 558,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ant",
+      "gender": "masculine",
+      "reliabilityPct": 97,
+      "lemmaCount": 405,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "on",
+      "gender": "masculine",
+      "reliabilityPct": 96.7,
+      "lemmaCount": 738,
+      "wording": "usually",
+      "subtracted": [
+        "ion",
+        "son"
+      ]
+    },
+    {
+      "suffix": "eau",
+      "gender": "masculine",
+      "reliabilityPct": 96.7,
+      "lemmaCount": 212,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "at",
+      "gender": "masculine",
+      "reliabilityPct": 96.6,
+      "lemmaCount": 266,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "rd",
+      "gender": "masculine",
+      "reliabilityPct": 96.5,
+      "lemmaCount": 283,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "nie",
+      "gender": "feminine",
+      "reliabilityPct": 96.5,
+      "lemmaCount": 141,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "lon",
+      "gender": "masculine",
+      "reliabilityPct": 96.4,
+      "lemmaCount": 140,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ie",
+      "gender": "feminine",
+      "reliabilityPct": 96.3,
+      "lemmaCount": 1902,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ard",
+      "gender": "masculine",
+      "reliabilityPct": 96.3,
+      "lemmaCount": 246,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ot",
+      "gender": "masculine",
+      "reliabilityPct": 96.3,
+      "lemmaCount": 214,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "il",
+      "gender": "masculine",
+      "reliabilityPct": 96.3,
+      "lemmaCount": 136,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "pie",
+      "gender": "feminine",
+      "reliabilityPct": 96.1,
+      "lemmaCount": 103,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "er",
+      "gender": "masculine",
+      "reliabilityPct": 95.9,
+      "lemmaCount": 983,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ou",
+      "gender": "masculine",
+      "reliabilityPct": 95.7,
+      "lemmaCount": 138,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ton",
+      "gender": "masculine",
+      "reliabilityPct": 95.6,
+      "lemmaCount": 137,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "sie",
+      "gender": "feminine",
+      "reliabilityPct": 95.4,
+      "lemmaCount": 108,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "esse",
+      "gender": "feminine",
+      "reliabilityPct": 95.2,
+      "lemmaCount": 105,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "use",
+      "gender": "feminine",
+      "reliabilityPct": 94.9,
+      "lemmaCount": 118,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "el",
+      "gender": "masculine",
+      "reliabilityPct": 94.7,
+      "lemmaCount": 169,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "is",
+      "gender": "masculine",
+      "reliabilityPct": 94.5,
+      "lemmaCount": 417,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ts",
+      "gender": "masculine",
+      "reliabilityPct": 94.5,
+      "lemmaCount": 146,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ome",
+      "gender": "masculine",
+      "reliabilityPct": 94.5,
+      "lemmaCount": 110,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ette",
+      "gender": "feminine",
+      "reliabilityPct": 94.3,
+      "lemmaCount": 476,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ain",
+      "gender": "masculine",
+      "reliabilityPct": 94.1,
+      "lemmaCount": 118,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "an",
+      "gender": "masculine",
+      "reliabilityPct": 93.8,
+      "lemmaCount": 288,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "it",
+      "gender": "masculine",
+      "reliabilityPct": 92.6,
+      "lemmaCount": 176,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "eur",
+      "gender": "masculine",
+      "reliabilityPct": 92.5,
+      "lemmaCount": 1938,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "rs",
+      "gender": "masculine",
+      "reliabilityPct": 92.1,
+      "lemmaCount": 178,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ine",
+      "gender": "feminine",
+      "reliabilityPct": 91.6,
+      "lemmaCount": 654,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ière",
+      "gender": "feminine",
+      "reliabilityPct": 91.4,
+      "lemmaCount": 151,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "if",
+      "gender": "masculine",
+      "reliabilityPct": 90.8,
+      "lemmaCount": 130,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ise",
+      "gender": "feminine",
+      "reliabilityPct": 90.8,
+      "lemmaCount": 120,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ose",
+      "gender": "feminine",
+      "reliabilityPct": 90.4,
+      "lemmaCount": 177,
+      "wording": "usually",
+      "subtracted": []
+    },
+    {
+      "suffix": "ar",
+      "gender": "masculine",
+      "reliabilityPct": 90.3,
+      "lemmaCount": 124,
+      "wording": "usually",
+      "subtracted": []
+    }
+  ]
+}

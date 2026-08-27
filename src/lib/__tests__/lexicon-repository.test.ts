@@ -66,17 +66,17 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
 
   test("list: course order, alphabetical, and pos filter", async () => {
     const course = await repo.list();
-    expect(course.length).toBe(54);
+    expect(course.length).toBe(99);
     expect(course[0].id).toBe("fr:w:homme");
     const alpha = await repo.list({ sort: "alpha" });
     // âne sorts under A with the accent-folded sort key
     expect(alpha.map((r) => r.id).indexOf("fr:w:ane")).toBeLessThan(
       alpha.map((r) => r.id).indexOf("fr:w:billet")
     );
-    // 54 total − 2 verbs − 2 adverbs (oui/non) − 5 interjections − 3 expressions = 42 nouns
+    // 99 total − 11 verbs − 2 adverbs (oui/non) − 5 interjections − 3 expressions = 78 nouns
     const nouns = await repo.list({ pos: "noun" });
     expect(nouns.every((r) => r.pos === "noun")).toBe(true);
-    expect(nouns.length).toBe(42);
+    expect(nouns.length).toBe(78);
     const expressions = await repo.list({ pos: "expression" });
     expect(expressions.map((r) => r.id).sort()).toEqual([
       "fr:w:au-revoir",
@@ -89,12 +89,22 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     expect(await repo.supportsFrequencySort()).toBe(true);
     const byFreq = await repo.list({ sort: "frequency" });
     const ids = byFreq.map((r) => r.id);
-    // Real Lexique 4 measurements: non (4070.88/M) > oui > homme > merci.
-    expect(ids.slice(0, 4)).toEqual(["fr:w:non", "fr:w:oui", "fr:w:homme", "fr:w:merci"]);
+    // Real Lexique 4 measurements: the Unit B anchor verbs dominate —
+    // être (35040.2/M, population rank 1) > avoir (13032.0, rank 2) >
+    // aller (9795.9) > faire (9061.7) > non (4070.9) > oui (3112.5).
+    expect(ids.slice(0, 6)).toEqual([
+      "fr:w:etre",
+      "fr:w:avoir",
+      "fr:w:aller",
+      "fr:w:faire",
+      "fr:w:non",
+      "fr:w:oui",
+    ]);
     // merci has no population rank (ONO category) yet sorts by its raw
     // frequency — rank is never the sort key.
     expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
-    // The three unmeasured expressions sink to the end in course order.
+    // The three unmeasured expressions sink to the end in course order;
+    // every word lexeme (Units A through E included) is measured.
     expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
   });
 
@@ -148,9 +158,9 @@ describe("license artifacts in the compiled dataset (§101)", () => {
 });
 
 describe("runtime lexicon index (session-critical accessor)", () => {
-  test("covers all 54 lexemes with pronunciation, example and topic", () => {
+  test("covers all 99 lexemes with pronunciation, example and topic", () => {
     const all = allLexemeMeta();
-    expect(all.length).toBe(54);
+    expect(all.length).toBe(99);
     for (const meta of all) {
       expect(meta.pronunciation?.notation).toBe("ipa");
       expect(meta.example?.fr.length).toBeGreaterThan(0);

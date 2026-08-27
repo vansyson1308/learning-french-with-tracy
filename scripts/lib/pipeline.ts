@@ -24,6 +24,10 @@ import {
   type PackSource,
   type SourceRegistry,
 } from "../../content/schema";
+import {
+  acceptedNumberSpellings,
+  frenchNumber,
+} from "../../src/lib/learning/french-numbers";
 import { FR_COURSE_ID, FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
@@ -41,6 +45,7 @@ export function safeResolve(...segments: string[]): string {
 export const GENERATED_TARGETS = [
   "src/content/packs",
   "src/content/lexicon",
+  "src/content/concepts",
   "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",
@@ -78,7 +83,36 @@ export type ValidationResult = { errors: string[]; warnings: string[] };
 
 type AnyExercise = PackSource["sections"][number]["units"][number]["lessons"][number]["exercises"][number];
 
-function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) => void) {
+export function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) => void) {
+  // Number-drill agreement (Phase 5B §75-80): any French exercise whose
+  // prompt is a bare integer 0-100 is a number drill, and its expected
+  // answer must agree with the deterministic engine — the pack can never
+  // drift from the verified spelling rules.
+  if (courseId === "fr-en") {
+    const numeric = (s: string) => (/^\d{1,3}$/.test(s) ? Number(s) : null);
+    if (e.type === "typeAnswer" && e.mode === "produceTarget") {
+      const n = numeric(e.prompt);
+      if (n !== null && n >= 0 && n <= 100) {
+        const accepted = acceptedNumberSpellings(n);
+        if (e.answer !== accepted[0] || JSON.stringify(e.alternatives) !== JSON.stringify(accepted.slice(1))) {
+          push(
+            `${e.id}: number drill for ${n} must accept exactly [${accepted.join(", ")}] (engine spelling), got answer "${e.answer}" alternatives [${e.alternatives.join(", ")}]`
+          );
+        }
+      }
+    }
+    if (e.type === "select") {
+      const n = numeric(e.prompt);
+      if (n !== null && n >= 0 && n <= 100) {
+        const expected = frenchNumber(n).traditional;
+        if (e.options[e.correct]?.text !== expected) {
+          push(
+            `${e.id}: digit→word select for ${n} must key "${expected}" (engine spelling), got "${e.options[e.correct]?.text}"`
+          );
+        }
+      }
+    }
+  }
   if (e.type === "select") {
     if (e.correct >= e.options.length) push(`${e.id}: correct index out of range`);
     const texts = e.options.map((o) => o.text);
@@ -102,6 +136,22 @@ function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) 
   if (e.type === "match") {
     const targets = e.pairs.map((p) => p.target);
     if (new Set(targets).size !== targets.length) push(`${e.id}: duplicate pair target`);
+  }
+  if (e.type === "articleSelect") {
+    if (e.correct >= e.articles.length) push(`${e.id}: correct index out of range`);
+    if (new Set(e.articles).size !== e.articles.length) push(`${e.id}: duplicate articles`);
+    // §57 elision safety: le/la cannot be drilled on a noun that takes l'
+    // (vowel- or h-initial — h aspiré vs muet is exactly the ambiguity the
+    // program says generated exercises must avoid).
+    const elisionSensitive = e.articles.some((a) => a === "le" || a === "la");
+    if (elisionSensitive && /^[aeiouyâàäéèêëîïôöûüœh]/i.test(e.noun)) {
+      push(
+        `${e.id}: le/la drill on vowel/h-initial noun "${e.noun}" — such nouns elide to l' (or hide h-aspiré ambiguity); use un/une or a consonant-initial noun`
+      );
+    }
+    if (courseId !== "fr-en") {
+      push(`${e.id}: articleSelect is French pedagogy — not available for ${courseId}`);
+    }
   }
 }
 
@@ -143,7 +193,7 @@ export function validateContent(): ValidationResult {
             if (ids.has(e.id)) err(`${pack.id}: duplicate exercise id ${e.id}`);
             ids.add(e.id);
             validateExercise(pack.id, e, err);
-            if (e.type !== "match" && e.audioTarget !== undefined) {
+            if ("audioTarget" in e && e.audioTarget !== undefined) {
               if (!manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
                 err(`${pack.id}: ${e.id} audioTarget has no audio: "${e.audioTarget}"`);
               }
@@ -266,8 +316,21 @@ export type CoverageRow = {
  * stays unmarked until deliberate eligibility metadata exists.
  */
 function frGradeTargets(e: AnyExercise, map: Record<string, string>): string[] | undefined {
-  if (e.type === "select" && e.audioTarget !== undefined) {
-    const id = map[e.audioTarget];
+  if (e.type === "select") {
+    // The exercise's unambiguous French surface: bundled-audio lessons key
+    // it by audioTarget (Section 1); audio-less lessons key it by what the
+    // select actually shows — the French prompt (target→native) or the
+    // correct French option (native→target). Listen mode without audio can
+    // never be unambiguous.
+    const surface =
+      e.audioTarget ??
+      (e.mode === "targetToNative"
+        ? e.prompt
+        : e.mode === "nativeToTarget"
+          ? e.options[e.correct]?.text
+          : undefined);
+    if (surface === undefined) return undefined;
+    const id = map[surface];
     return id === undefined ? undefined : [id];
   }
   if (e.type === "match") {

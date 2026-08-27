@@ -27,16 +27,21 @@ export function TypeAnswer({
   const styles = useStyles();
   const scheme = useResolvedScheme();
   const isListen = exercise.mode === "listen";
+  const isProduceTarget = exercise.mode === "produceTarget";
 
   useEffect(() => {
     if (isListen && exercise.audioTarget) speakTarget(courseId, exercise.audioTarget);
   }, [courseId, exercise.id, isListen, exercise.audioTarget]);
 
+  const title = isListen
+    ? `Type what you hear (${targetLanguage})`
+    : isProduceTarget
+      ? `Write this in ${targetLanguage}`
+      : "Write this in English";
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        {isListen ? `Type what you hear (${targetLanguage})` : "Write this in English"}
-      </Text>
+      <Text style={styles.title}>{title}</Text>
 
       <View style={styles.promptRow}>
         {exercise.audioTarget ? <SpeakerButton text={exercise.audioTarget} /> : null}
@@ -47,7 +52,7 @@ export function TypeAnswer({
         value={answer}
         onChangeText={onAnswer}
         editable={status === "none"}
-        placeholder={isListen ? `Type in ${targetLanguage}` : "Type in English"}
+        placeholder={isListen || isProduceTarget ? `Type in ${targetLanguage}` : "Type in English"}
         placeholderTextColor={colors.neutral400}
         autoCapitalize="none"
         autoCorrect={false}

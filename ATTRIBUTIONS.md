@@ -28,6 +28,17 @@ French lexicon data authored by the Learning French with Tracy project, publishe
 
 > Original project authorship: part of speech, gender, IPA pronunciation, topics, example sentences, and confusable relations for the 54 curriculum lexemes; native glosses reuse the course content already covered by upstream-lingo-lessons. Contains zero rows from Lexique or any external dictionary — the Lexique 4 source is identified in content/fr/lexicon/source-manifest.json and remains not-retrieved (see content/fr/lexicon/ACQUISITION.md). Published under CC BY-SA 4.0 per the approved licensing decision so future Lexique-4-derived data (also CC BY-SA 4.0) merges license-coherently. The dataset license never applies to application code, which keeps its existing MIT licensing.
 
+## Learning French with Tracy — authored French pedagogy
+
+- **License:** MIT
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** authored teaching content (concept explanations, rules, examples, guidebooks)
+- **Retrieved:** 2026-08-27
+
+French pedagogy content authored by the Learning French with Tracy project.
+
+> Clean-room authored teaching content for the Phase 5B pedagogy units (gender & articles, high-yield verbs, cognates & false friends, numbers, connected French). Linguistic FACTS are drawn from the referenced sources recorded in content/fr/pedagogy/RESEARCH.md (institutional references such as Académie française and OQLF usage pages, plus this repository's Lexique-4-derived population statistics); all PROSE is original. Statistical claims in concepts additionally carry a lexique-4 sourceRef. Ships under the repository's MIT grant like the course packs (the CC BY-SA dataset boundary covers the lexicon only).
+
 ## ts-fsrs (open-spaced-repetition)
 
 - **License:** MIT

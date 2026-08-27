@@ -5382,6 +5382,4017 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fr-en:section-2",
+      "title": "Section 2: Building blocks",
+      "units": [
+        {
+          "id": "fr-en:unit-a",
+          "title": "Gender & Articles",
+          "description": "Le or la? Let word endings do the work for you.",
+          "guidebook": "## Le or la? 🎯\n\nEvery French noun is **masculine** (*le*) or **feminine** (*la*). The ending often decides it — these numbers come from an analysis of **36,940 French nouns**:\n\n### Almost always feminine\n- **-tion** → *la question* (feminine 99.5% of the time)\n- **-ance / -ence** → *la chance, la confiance* (about 99%)\n- **-ité** → *la vérité, la sécurité* (97.8%)\n- **-ie** → *la vie* (96.3%)\n\n### Usually masculine\n- **-ment** → *le moment, le sentiment* (99.8%)\n- **-age** → *le voyage, le message* (98.5% — but *l'image* is feminine)\n- **-eau** → *le bureau, le cadeau* (96.7% — but *l'eau* is feminine!)\n- **-ier** → *le papier* (97.1%)\n\n### Handle with care\n- **-on** is usually masculine (*le patron*) — **but** the *-ion* and *-son* families inside it are feminine: *la question, la maison, la raison*.\n- **-eur** is usually masculine (*le docteur*) — famous feminine exceptions: *la peur, l'erreur, la couleur, la fleur*.\n\n**Habit to build:** never learn a bare noun. Learn *la maison*, not *maison*.",
+          "words": [
+            {
+              "target": "la question",
+              "native": "the question",
+              "emoji": "❓"
+            },
+            {
+              "target": "la situation",
+              "native": "the situation",
+              "emoji": "🧭"
+            },
+            {
+              "target": "le voyage",
+              "native": "the trip",
+              "emoji": "✈️"
+            },
+            {
+              "target": "le message",
+              "native": "the message",
+              "emoji": "✉️"
+            },
+            {
+              "target": "le bureau",
+              "native": "the office",
+              "emoji": "🏢"
+            },
+            {
+              "target": "le cadeau",
+              "native": "the gift",
+              "emoji": "🎁"
+            },
+            {
+              "target": "le moment",
+              "native": "the moment",
+              "emoji": "⏰"
+            },
+            {
+              "target": "le sentiment",
+              "native": "the feeling",
+              "emoji": "💭"
+            },
+            {
+              "target": "la vérité",
+              "native": "the truth",
+              "emoji": "🕯️"
+            },
+            {
+              "target": "la sécurité",
+              "native": "safety",
+              "emoji": "🔒"
+            },
+            {
+              "target": "la chance",
+              "native": "luck",
+              "emoji": "🍀"
+            },
+            {
+              "target": "la confiance",
+              "native": "trust",
+              "emoji": "🤝"
+            },
+            {
+              "target": "la maison",
+              "native": "the house",
+              "emoji": "🏠"
+            },
+            {
+              "target": "la raison",
+              "native": "the reason",
+              "emoji": "🧠"
+            },
+            {
+              "target": "le patron",
+              "native": "the boss",
+              "emoji": "👔"
+            },
+            {
+              "target": "le papier",
+              "native": "the paper",
+              "emoji": "📄"
+            },
+            {
+              "target": "la vie",
+              "native": "life",
+              "emoji": "🌱"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ua-l0",
+              "title": "Two genders",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la maison",
+                  "options": [
+                    {
+                      "text": "the house"
+                    },
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the gift"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la question",
+                  "options": [
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the message"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "le voyage",
+                  "options": [
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the moment"
+                    },
+                    {
+                      "text": "the house"
+                    },
+                    {
+                      "text": "the paper"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e3",
+                  "mode": "targetToNative",
+                  "prompt": "le bureau",
+                  "options": [
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the house"
+                    },
+                    {
+                      "text": "the boss"
+                    },
+                    {
+                      "text": "the gift"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l0-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "maison",
+                  "gloss": "the house",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l0-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "voyage",
+                  "gloss": "the trip",
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "the house",
+                  "options": [
+                    {
+                      "text": "la maison"
+                    },
+                    {
+                      "text": "le bureau"
+                    },
+                    {
+                      "text": "la question"
+                    },
+                    {
+                      "text": "le voyage"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l0-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "question",
+                  "gloss": "the question",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l0-e8",
+                  "sentence": "___ bureau est fermé.",
+                  "translation": "The office is closed.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-two-classes"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ua-l1",
+              "title": "Feminine endings",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la vérité",
+                  "options": [
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "the situation"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la chance",
+                  "options": [
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "life"
+                    },
+                    {
+                      "text": "safety"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "la confiance",
+                  "options": [
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "the feeling"
+                    },
+                    {
+                      "text": "the truth"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e3",
+                  "mode": "targetToNative",
+                  "prompt": "la situation",
+                  "options": [
+                    {
+                      "text": "the situation"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "safety"
+                    },
+                    {
+                      "text": "the moment"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l1-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "vérité",
+                  "gloss": "the truth",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l1-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "chance",
+                  "gloss": "luck",
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "the truth",
+                  "options": [
+                    {
+                      "text": "la vérité"
+                    },
+                    {
+                      "text": "la vie"
+                    },
+                    {
+                      "text": "la chance"
+                    },
+                    {
+                      "text": "la raison"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l1-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "situation",
+                  "gloss": "the situation",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l1-e8",
+                  "sentence": "___ situation est difficile.",
+                  "translation": "The situation is difficult.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 1
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-feminine-endings"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ua-l2",
+              "title": "Masculine endings",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "le cadeau",
+                  "options": [
+                    {
+                      "text": "the gift"
+                    },
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the message"
+                    },
+                    {
+                      "text": "the moment"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "le moment",
+                  "options": [
+                    {
+                      "text": "the moment"
+                    },
+                    {
+                      "text": "the feeling"
+                    },
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the paper"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "le sentiment",
+                  "options": [
+                    {
+                      "text": "the feeling"
+                    },
+                    {
+                      "text": "the moment"
+                    },
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "the truth"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "le message",
+                  "options": [
+                    {
+                      "text": "the message"
+                    },
+                    {
+                      "text": "the paper"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the gift"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e4",
+                  "mode": "targetToNative",
+                  "prompt": "le papier",
+                  "options": [
+                    {
+                      "text": "the paper"
+                    },
+                    {
+                      "text": "the message"
+                    },
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the trip"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l2-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "cadeau",
+                  "gloss": "the gift",
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l2-e6",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "moment",
+                  "gloss": "the moment",
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l2-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "papier",
+                  "gloss": "the paper",
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l2-e8",
+                  "sentence": "___ cadeau est pour toi.",
+                  "translation": "The gift is for you.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-masculine-endings"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ua-l3",
+              "title": "Tricky endings",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la raison",
+                  "options": [
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the boss"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "le patron",
+                  "options": [
+                    {
+                      "text": "the boss"
+                    },
+                    {
+                      "text": "the man"
+                    },
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "the office"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "la vie",
+                  "options": [
+                    {
+                      "text": "life"
+                    },
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the house"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "la sécurité",
+                  "options": [
+                    {
+                      "text": "safety"
+                    },
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "the situation"
+                    },
+                    {
+                      "text": "luck"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "patron",
+                  "gloss": "the boss",
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "raison",
+                  "gloss": "the reason",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e6",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "vie",
+                  "gloss": "life",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "sécurité",
+                  "gloss": "safety",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e8",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "maison",
+                  "gloss": "the house",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l3-e9",
+                  "sentence": "___ vie est belle.",
+                  "translation": "Life is beautiful.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 1
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-tricky-endings"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e8"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e9"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-b",
+          "title": "High-Yield Verbs",
+          "description": "Être, avoir, aller, faire and the -er family — plus the future and past you can build from them.",
+          "guidebook": "# High-yield verbs\n\nEight verbs carry an enormous share of everyday French. Four are irregular anchors — **être**, **avoir**, **aller**, **faire** — and the regular -er family (like **parler**) covers most of the rest.\n\n## Être — to be\n\n- **je suis** — I am\n- **tu es** — you are\n- **il/elle est** — he/she is\n- **nous sommes** — we are\n- **vous êtes** — you are (plural or formal)\n- **ils/elles sont** — they are\n\n## Avoir — to have\n\n- **j'ai** — I have\n- **tu as** — you have\n- **il/elle a** — he/she has\n- **nous avons** — we have\n- **vous avez** — you have\n- **ils/elles ont** — they have\n\nFrench says *avoir faim* (to have hunger) where English says to be hungry. Watch for avoir in fixed phrases: avoir raison, avoir 20 ans.\n\n## Aller — to go\n\n- **je vais**, **tu vas**, **il/elle va**\n- **nous allons**, **vous allez**, **ils/elles vont**\n\n*Futur proche*: aller + infinitive means going to. **Je vais manger** — I am going to eat. Only aller conjugates; the second verb stays in its dictionary form.\n\n## Faire — to do, to make\n\n- **je fais**, **tu fais**, **il/elle fait**\n- **nous faisons**, **vous faites**, **ils/elles font**\n\n## The -er pattern\n\nTake the stem (parler → parl-) and add **-e, -es, -e, -ons, -ez, -ent**:\n\n- je parle · tu parles · il/elle parle\n- nous parlons · vous parlez · ils/elles parlent\n\nIn speech, parle, parles and parlent all sound identical, and parlez sounds like the infinitive parler — the pronoun does the work out loud. Manger keeps its e before -ons: **nous mangeons**.\n\n## The past in one move\n\nAvoir (présent) + past participle: **J'ai mangé** — I ate. For -er verbs the participle is the infinitive sound written **-é**: parlé, aimé, habité. Irregular participles worth memorizing now: être → **été**, avoir → **eu**, faire → **fait**.",
+          "words": [
+            {
+              "target": "être",
+              "native": "to be",
+              "emoji": "🧍"
+            },
+            {
+              "target": "avoir",
+              "native": "to have",
+              "emoji": "🎁"
+            },
+            {
+              "target": "aller",
+              "native": "to go",
+              "emoji": "🚶"
+            },
+            {
+              "target": "faire",
+              "native": "to do, to make",
+              "emoji": "🛠️"
+            },
+            {
+              "target": "parler",
+              "native": "to speak",
+              "emoji": "🗣️"
+            },
+            {
+              "target": "aimer",
+              "native": "to like, to love",
+              "emoji": "❤️"
+            },
+            {
+              "target": "habiter",
+              "native": "to live (somewhere)",
+              "emoji": "🏠"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ub-l0",
+              "title": "To be and to have",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "être",
+                  "options": [
+                    {
+                      "text": "to be"
+                    },
+                    {
+                      "text": "to have"
+                    },
+                    {
+                      "text": "to go"
+                    },
+                    {
+                      "text": "to speak"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "avoir",
+                  "options": [
+                    {
+                      "text": "to have"
+                    },
+                    {
+                      "text": "to be"
+                    },
+                    {
+                      "text": "to do, to make"
+                    },
+                    {
+                      "text": "to like, to love"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l0-e2",
+                  "sentence": "Je ___ content.",
+                  "translation": "I am happy.",
+                  "verb": "être",
+                  "cell": "pre:1s",
+                  "answer": "suis",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l0-e3",
+                  "sentence": "Tu ___ mon ami.",
+                  "translation": "You are my friend.",
+                  "verb": "être",
+                  "cell": "pre:2s",
+                  "answer": "es",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l0-e4",
+                  "sentence": "Elle ___ à la maison.",
+                  "translation": "She is at home.",
+                  "verb": "être",
+                  "cell": "pre:3s",
+                  "answer": "est",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l0-e5",
+                  "sentence": "J'___ deux chats.",
+                  "translation": "I have two cats.",
+                  "verb": "avoir",
+                  "cell": "pre:1s",
+                  "answer": "ai",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l0-e6",
+                  "sentence": "Tu ___ raison.",
+                  "translation": "You are right.",
+                  "verb": "avoir",
+                  "cell": "pre:2s",
+                  "answer": "as",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l0-e7",
+                  "sentence": "Il ___ un cadeau pour toi.",
+                  "translation": "He has a gift for you.",
+                  "verb": "avoir",
+                  "cell": "pre:3s",
+                  "answer": "a",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l0-e8",
+                  "mode": "nativeToTarget",
+                  "prompt": "to be",
+                  "options": [
+                    {
+                      "text": "être"
+                    },
+                    {
+                      "text": "avoir"
+                    },
+                    {
+                      "text": "aller"
+                    },
+                    {
+                      "text": "faire"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l0-e9",
+                  "sentence": "Nous ___ une question.",
+                  "translation": "We have a question.",
+                  "verb": "avoir",
+                  "cell": "pre:1p",
+                  "answer": "avons",
+                  "alternatives": []
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:etre-avoir-present"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e8"
+                },
+                {
+                  "exercise": "fr-en:ub-l0-e9"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ub-l1",
+              "title": "The -er pattern",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "parler",
+                  "options": [
+                    {
+                      "text": "to speak"
+                    },
+                    {
+                      "text": "to live (somewhere)"
+                    },
+                    {
+                      "text": "to like, to love"
+                    },
+                    {
+                      "text": "to eat"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "habiter",
+                  "options": [
+                    {
+                      "text": "to live (somewhere)"
+                    },
+                    {
+                      "text": "to speak"
+                    },
+                    {
+                      "text": "to eat"
+                    },
+                    {
+                      "text": "to go"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "aimer",
+                  "options": [
+                    {
+                      "text": "to like, to love"
+                    },
+                    {
+                      "text": "to have"
+                    },
+                    {
+                      "text": "to speak"
+                    },
+                    {
+                      "text": "to do, to make"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l1-e3",
+                  "sentence": "Elle ___ avec sa mère.",
+                  "translation": "She talks with her mother.",
+                  "verb": "parler",
+                  "cell": "pre:3s",
+                  "answer": "parle",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l1-e4",
+                  "sentence": "Tu ___ trop vite.",
+                  "translation": "You talk too fast.",
+                  "verb": "parler",
+                  "cell": "pre:2s",
+                  "answer": "parles",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l1-e5",
+                  "sentence": "Nous ___ à Paris.",
+                  "translation": "We live in Paris.",
+                  "verb": "habiter",
+                  "cell": "pre:1p",
+                  "answer": "habitons",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l1-e6",
+                  "sentence": "Vous ___ le café ?",
+                  "translation": "Do you like coffee?",
+                  "verb": "aimer",
+                  "cell": "pre:2p",
+                  "answer": "aimez",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l1-e7",
+                  "sentence": "Ils ___ ensemble.",
+                  "translation": "They talk together.",
+                  "verb": "parler",
+                  "cell": "pre:3p",
+                  "answer": "parlent",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l1-e8",
+                  "sentence": "J'___ la musique.",
+                  "translation": "I love music.",
+                  "verb": "aimer",
+                  "cell": "pre:1s",
+                  "answer": "aime",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l1-e9",
+                  "mode": "nativeToTarget",
+                  "prompt": "to live (somewhere)",
+                  "options": [
+                    {
+                      "text": "habiter"
+                    },
+                    {
+                      "text": "parler"
+                    },
+                    {
+                      "text": "aimer"
+                    },
+                    {
+                      "text": "manger"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:er-verbs-one-sound"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e0"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e1"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e2"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e3"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e4"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e5"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e6"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e7"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e8"
+                },
+                {
+                  "exercise": "fr-en:ub-l1-e9"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ub-l2",
+              "title": "Going places, making plans",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "aller",
+                  "options": [
+                    {
+                      "text": "to go"
+                    },
+                    {
+                      "text": "to do, to make"
+                    },
+                    {
+                      "text": "to be"
+                    },
+                    {
+                      "text": "to eat"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "faire",
+                  "options": [
+                    {
+                      "text": "to do, to make"
+                    },
+                    {
+                      "text": "to go"
+                    },
+                    {
+                      "text": "to have"
+                    },
+                    {
+                      "text": "to speak"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e2",
+                  "sentence": "Je ___ au bureau.",
+                  "translation": "I am going to the office.",
+                  "verb": "aller",
+                  "cell": "pre:1s",
+                  "answer": "vais",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e3",
+                  "sentence": "Tu ___ au restaurant ?",
+                  "translation": "Are you going to the restaurant?",
+                  "verb": "aller",
+                  "cell": "pre:2s",
+                  "answer": "vas",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e4",
+                  "sentence": "Elle ___ au musée.",
+                  "translation": "She is going to the museum.",
+                  "verb": "aller",
+                  "cell": "pre:3s",
+                  "answer": "va",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e5",
+                  "sentence": "Il ___ ses devoirs.",
+                  "translation": "He does his homework.",
+                  "verb": "faire",
+                  "cell": "pre:3s",
+                  "answer": "fait",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e6",
+                  "sentence": "Nous ___ un gâteau.",
+                  "translation": "We are making a cake.",
+                  "verb": "faire",
+                  "cell": "pre:1p",
+                  "answer": "faisons",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e7",
+                  "sentence": "Je ___ manger.",
+                  "translation": "I am going to eat.",
+                  "verb": "aller",
+                  "cell": "pre:1s",
+                  "answer": "vais",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e8",
+                  "sentence": "Nous ___ parler avec le patron.",
+                  "translation": "We are going to talk with the boss.",
+                  "verb": "aller",
+                  "cell": "pre:1p",
+                  "answer": "allons",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l2-e9",
+                  "sentence": "Ils ___ faire un voyage.",
+                  "translation": "They are going to take a trip.",
+                  "verb": "aller",
+                  "cell": "pre:3p",
+                  "answer": "vont",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l2-e10",
+                  "mode": "nativeToTarget",
+                  "prompt": "to go",
+                  "options": [
+                    {
+                      "text": "aller"
+                    },
+                    {
+                      "text": "faire"
+                    },
+                    {
+                      "text": "être"
+                    },
+                    {
+                      "text": "parler"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "exercise": "fr-en:ub-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e6"
+                },
+                {
+                  "concept": "fr:concept:futur-proche"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e7"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e8"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e9"
+                },
+                {
+                  "exercise": "fr-en:ub-l2-e10"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ub-l3",
+              "title": "Yesterday and today",
+              "exercises": [
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e0",
+                  "sentence": "Vous ___ professeurs.",
+                  "translation": "You are teachers.",
+                  "verb": "être",
+                  "cell": "pre:2p",
+                  "answer": "êtes",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e1",
+                  "sentence": "Nous ___ contents.",
+                  "translation": "We are happy.",
+                  "verb": "être",
+                  "cell": "pre:1p",
+                  "answer": "sommes",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e2",
+                  "sentence": "Elles ___ à Paris.",
+                  "translation": "They are in Paris.",
+                  "verb": "être",
+                  "cell": "pre:3p",
+                  "answer": "sont",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e3",
+                  "sentence": "Ils ___ faim.",
+                  "translation": "They are hungry.",
+                  "verb": "avoir",
+                  "cell": "pre:3p",
+                  "answer": "ont",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e4",
+                  "sentence": "J'___ mangé une pomme.",
+                  "translation": "I ate an apple.",
+                  "verb": "avoir",
+                  "cell": "pre:1s",
+                  "answer": "ai",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e5",
+                  "sentence": "Tu ___ parlé avec elle ?",
+                  "translation": "Did you talk with her?",
+                  "verb": "avoir",
+                  "cell": "pre:2s",
+                  "answer": "as",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e6",
+                  "sentence": "Il ___ fait ses devoirs.",
+                  "translation": "He did his homework.",
+                  "verb": "avoir",
+                  "cell": "pre:3s",
+                  "answer": "a",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e7",
+                  "sentence": "Nous ___ habité à Lyon.",
+                  "translation": "We lived in Lyon.",
+                  "verb": "avoir",
+                  "cell": "pre:1p",
+                  "answer": "avons",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ub-l3-e8",
+                  "sentence": "Vous ___ aimé le film.",
+                  "translation": "You liked the movie.",
+                  "verb": "avoir",
+                  "cell": "pre:2p",
+                  "answer": "avez",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ub-l3-e9",
+                  "mode": "nativeToTarget",
+                  "prompt": "to have",
+                  "options": [
+                    {
+                      "text": "avoir"
+                    },
+                    {
+                      "text": "être"
+                    },
+                    {
+                      "text": "faire"
+                    },
+                    {
+                      "text": "aller"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "exercise": "fr-en:ub-l3-e0"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e1"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e2"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e3"
+                },
+                {
+                  "concept": "fr:concept:passe-compose"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e4"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e5"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e6"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e7"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e8"
+                },
+                {
+                  "exercise": "fr-en:ub-l3-e9"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-c",
+          "title": "Cognates & False Friends",
+          "description": "Harvest the words French shares with English — and defuse the ones that only pretend to.",
+          "guidebook": "# Words you already know — and words that lie\n\nFrench and English share thousands of words. This unit teaches you to harvest the shared ones and defuse the deceptive ones.\n\n## The -tion family\n\nOf the 16 -tion nouns in this course's corpus-derived everyday pool, 15 are the same word in English: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Across a 36,940-noun analysis they are **99.5% feminine** — say *la*.\n\n- The sound changes even when the spelling doesn't: -tion is /sjɔ̃/, never /shun/.\n- The one trap in the pool: **Félicitations !** means *Congratulations!*\n\n## The -té bridge\n\n-té usually becomes English -ty — 10 of the everyday pool's 16:\n\n- **la liberté** — liberty, freedom\n- **la réalité** — reality\n- **la société** — society · **la sécurité** — security · **l'université** — university\n\nBut six are real vocabulary, not cognates: **la santé** (health), **la vérité** (truth), **la volonté** (will), **l'été** (summer). Gender runs **91.6% feminine** (1,031 nouns measured); the masculine exceptions include **le côté** (the side) and **l'été**.\n\nFor later: French has 616 nouns in **-isme** matching English -ism — **99.8% masculine**.\n\n## False friends\n\nLearn each trap with its repair word:\n\n- **la librairie** = the bookshop → the library is **la bibliothèque**\n- **la journée** = the day(time) → a journey is **un voyage**\n- **la monnaie** = change, coins → money is **l'argent**\n- **rester** = to stay (never to rest)\n- **attendre** = to wait (never to attend)\n\nMore to watch for as you advance: *sensible* means sensitive, *actuellement* means currently.",
+          "words": [
+            {
+              "target": "la solution",
+              "native": "the solution",
+              "emoji": "💡"
+            },
+            {
+              "target": "la direction",
+              "native": "the direction",
+              "emoji": "🧭"
+            },
+            {
+              "target": "l'attention",
+              "native": "attention",
+              "emoji": "⚠️"
+            },
+            {
+              "target": "la liberté",
+              "native": "freedom",
+              "emoji": "🕊️"
+            },
+            {
+              "target": "la réalité",
+              "native": "reality",
+              "emoji": "🌍"
+            },
+            {
+              "target": "la musique",
+              "native": "music",
+              "emoji": "🎵"
+            },
+            {
+              "target": "la journée",
+              "native": "the day (daytime)",
+              "emoji": "📅"
+            },
+            {
+              "target": "l'argent",
+              "native": "the money",
+              "emoji": "💰"
+            },
+            {
+              "target": "la librairie",
+              "native": "the bookshop",
+              "emoji": "📚"
+            },
+            {
+              "target": "la bibliothèque",
+              "native": "the library",
+              "emoji": "🏛️"
+            },
+            {
+              "target": "la monnaie",
+              "native": "change (coins)",
+              "emoji": "🪙"
+            },
+            {
+              "target": "rester",
+              "native": "to stay",
+              "emoji": "⏸️"
+            },
+            {
+              "target": "attendre",
+              "native": "to wait",
+              "emoji": "⏳"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uc-l0",
+              "title": "Free words",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la solution",
+                  "options": [
+                    {
+                      "text": "the solution"
+                    },
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the situation"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la direction",
+                  "options": [
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "the solution"
+                    },
+                    {
+                      "text": "attention"
+                    },
+                    {
+                      "text": "the trip"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "l'attention",
+                  "options": [
+                    {
+                      "text": "attention"
+                    },
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the solution"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l0-e3",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "solution",
+                  "gloss": "the solution",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l0-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "direction",
+                  "gloss": "the direction",
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e5",
+                  "mode": "nativeToTarget",
+                  "prompt": "the solution",
+                  "options": [
+                    {
+                      "text": "la solution"
+                    },
+                    {
+                      "text": "la direction"
+                    },
+                    {
+                      "text": "l'attention"
+                    },
+                    {
+                      "text": "la question"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "attention",
+                  "options": [
+                    {
+                      "text": "l'attention"
+                    },
+                    {
+                      "text": "la solution"
+                    },
+                    {
+                      "text": "la situation"
+                    },
+                    {
+                      "text": "la vérité"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l0-e7",
+                  "sentence": "___ direction est bonne.",
+                  "translation": "The direction is good.",
+                  "options": [
+                    "La",
+                    "Le"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e8",
+                  "mode": "targetToNative",
+                  "prompt": "la question",
+                  "options": [
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the solution"
+                    },
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "attention"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:cognate-tion-family"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:uc-l1",
+              "title": "The -té bridge",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la liberté",
+                  "options": [
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "reality"
+                    },
+                    {
+                      "text": "music"
+                    },
+                    {
+                      "text": "safety"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la réalité",
+                  "options": [
+                    {
+                      "text": "reality"
+                    },
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "music"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "la musique",
+                  "options": [
+                    {
+                      "text": "music"
+                    },
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "the library"
+                    },
+                    {
+                      "text": "reality"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l1-e3",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "liberté",
+                  "gloss": "freedom",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l1-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "musique",
+                  "gloss": "music",
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e5",
+                  "mode": "nativeToTarget",
+                  "prompt": "freedom",
+                  "options": [
+                    {
+                      "text": "la liberté"
+                    },
+                    {
+                      "text": "la réalité"
+                    },
+                    {
+                      "text": "la musique"
+                    },
+                    {
+                      "text": "la sécurité"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "reality",
+                  "options": [
+                    {
+                      "text": "la réalité"
+                    },
+                    {
+                      "text": "la liberté"
+                    },
+                    {
+                      "text": "la vérité"
+                    },
+                    {
+                      "text": "la vie"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l1-e7",
+                  "sentence": "J'aime ___ musique.",
+                  "translation": "I like music.",
+                  "options": [
+                    "la",
+                    "le"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e8",
+                  "mode": "targetToNative",
+                  "prompt": "la vérité",
+                  "options": [
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "reality"
+                    },
+                    {
+                      "text": "safety"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:cognate-te-family"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e0"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e1"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e2"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e3"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e4"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e5"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e6"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e7"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:uc-l2",
+              "title": "Words that lie",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la librairie",
+                  "options": [
+                    {
+                      "text": "the bookshop"
+                    },
+                    {
+                      "text": "the library"
+                    },
+                    {
+                      "text": "the bakery"
+                    },
+                    {
+                      "text": "the kitchen"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la bibliothèque",
+                  "options": [
+                    {
+                      "text": "the library"
+                    },
+                    {
+                      "text": "the bookshop"
+                    },
+                    {
+                      "text": "the school"
+                    },
+                    {
+                      "text": "the office"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e2",
+                  "mode": "nativeToTarget",
+                  "prompt": "the library",
+                  "options": [
+                    {
+                      "text": "la bibliothèque"
+                    },
+                    {
+                      "text": "la librairie"
+                    },
+                    {
+                      "text": "la journée"
+                    },
+                    {
+                      "text": "l'école"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "la journée",
+                  "options": [
+                    {
+                      "text": "the day (daytime)"
+                    },
+                    {
+                      "text": "the journey"
+                    },
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the newspaper"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "the bookshop",
+                  "options": [
+                    {
+                      "text": "la librairie"
+                    },
+                    {
+                      "text": "la bibliothèque"
+                    },
+                    {
+                      "text": "la maison"
+                    },
+                    {
+                      "text": "le bureau"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l2-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "librairie",
+                  "gloss": "the bookshop",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l2-e6",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "journée",
+                  "gloss": "the day (daytime)",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l2-e7",
+                  "sentence": "Bonne ___ !",
+                  "translation": "Have a good day!",
+                  "options": [
+                    "journée",
+                    "librairie"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e8",
+                  "mode": "targetToNative",
+                  "prompt": "le voyage",
+                  "options": [
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the day (daytime)"
+                    },
+                    {
+                      "text": "the bookshop"
+                    },
+                    {
+                      "text": "the money"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:false-friends"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e6"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e7"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:uc-l3",
+              "title": "More traps",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la monnaie",
+                  "options": [
+                    {
+                      "text": "change (coins)"
+                    },
+                    {
+                      "text": "the money"
+                    },
+                    {
+                      "text": "the wallet"
+                    },
+                    {
+                      "text": "the ticket"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "l'argent",
+                  "options": [
+                    {
+                      "text": "the money"
+                    },
+                    {
+                      "text": "change (coins)"
+                    },
+                    {
+                      "text": "the bank"
+                    },
+                    {
+                      "text": "the price"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "rester",
+                  "options": [
+                    {
+                      "text": "to stay"
+                    },
+                    {
+                      "text": "to rest"
+                    },
+                    {
+                      "text": "to go"
+                    },
+                    {
+                      "text": "to wait"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "attendre",
+                  "options": [
+                    {
+                      "text": "to wait"
+                    },
+                    {
+                      "text": "to attend"
+                    },
+                    {
+                      "text": "to hear"
+                    },
+                    {
+                      "text": "to stay"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "the money",
+                  "options": [
+                    {
+                      "text": "l'argent"
+                    },
+                    {
+                      "text": "la monnaie"
+                    },
+                    {
+                      "text": "le papier"
+                    },
+                    {
+                      "text": "le billet"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e5",
+                  "mode": "nativeToTarget",
+                  "prompt": "to wait",
+                  "options": [
+                    {
+                      "text": "attendre"
+                    },
+                    {
+                      "text": "rester"
+                    },
+                    {
+                      "text": "aller"
+                    },
+                    {
+                      "text": "parler"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "to stay",
+                  "options": [
+                    {
+                      "text": "rester"
+                    },
+                    {
+                      "text": "attendre"
+                    },
+                    {
+                      "text": "habiter"
+                    },
+                    {
+                      "text": "être"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l3-e7",
+                  "sentence": "Tu as de la ___ ?",
+                  "translation": "Do you have change?",
+                  "options": [
+                    "monnaie",
+                    "musique"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e8",
+                  "mode": "nativeToTarget",
+                  "prompt": "change (coins)",
+                  "options": [
+                    {
+                      "text": "la monnaie"
+                    },
+                    {
+                      "text": "l'argent"
+                    },
+                    {
+                      "text": "la journée"
+                    },
+                    {
+                      "text": "la question"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e9",
+                  "mode": "targetToNative",
+                  "prompt": "le billet",
+                  "options": [
+                    {
+                      "text": "the ticket"
+                    },
+                    {
+                      "text": "the money"
+                    },
+                    {
+                      "text": "change (coins)"
+                    },
+                    {
+                      "text": "the paper"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-d",
+          "title": "Numbers 0–100",
+          "description": "The whole number system in three rules — plus the words for counting time.",
+          "guidebook": "# Numbers 0–100\n\nFrench numbers are a small system, not a hundred vocabulary items. Learn the pieces and the three famous corners.\n\n## The building blocks\n\n- 0–16 are single words: zéro, un, deux… seize.\n- 17–19 compound with dix: **dix-sept, dix-huit, dix-neuf**.\n- The tens 20–60: vingt, trente, quarante, cinquante, soixante. Units attach with a hyphen — **vingt-deux** — except at 1: **vingt et un**, trente et un… soixante et un.\n\n## The seventies\n\nThere is no French word for seventy: 70 is **soixante-dix** (sixty-ten), and the seventies keep counting through the teens — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 is the one \"et onze\": **soixante et onze**. Belgium and Switzerland say *septante* instead — recognize it, but this course teaches France French.\n\n## Four twenties\n\n80 is **quatre-vingts** — literally four twenties — and keeps its -s only when bare: **quatre-vingts**, but **quatre-vingt-un** (no \"et\" here!). The nineties ride on top through the teens again: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Belgium and Switzerland say *nonante*. And 100 is simply **cent**.\n\n## Two official spellings\n\nThe traditional orthography spaces around et (**vingt et un**); the 1990 spelling rectifications hyphenate everything (**vingt-et-un**). Both are correct and both are accepted here — this course displays the traditional forms.\n\n## Counting time\n\n- **le jour** — the day · **la journée** — the day as you live it\n- **l'heure** (f) — the hour · **la minute** — the minute\n- **la semaine** — the week · **le mois** — the month · **l'année** (f) — the year",
+          "words": [
+            {
+              "target": "le jour",
+              "native": "the day",
+              "emoji": "☀️"
+            },
+            {
+              "target": "l'heure",
+              "native": "the hour",
+              "emoji": "🕐"
+            },
+            {
+              "target": "la minute",
+              "native": "the minute",
+              "emoji": "⏱️"
+            },
+            {
+              "target": "la semaine",
+              "native": "the week",
+              "emoji": "🗓️"
+            },
+            {
+              "target": "le mois",
+              "native": "the month",
+              "emoji": "📆"
+            },
+            {
+              "target": "l'année",
+              "native": "the year",
+              "emoji": "🎆"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ud-l0",
+              "title": "Zero to twenty",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "3",
+                  "options": [
+                    {
+                      "text": "trois"
+                    },
+                    {
+                      "text": "cinq"
+                    },
+                    {
+                      "text": "sept"
+                    },
+                    {
+                      "text": "neuf"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "8",
+                  "options": [
+                    {
+                      "text": "huit"
+                    },
+                    {
+                      "text": "six"
+                    },
+                    {
+                      "text": "deux"
+                    },
+                    {
+                      "text": "dix"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "treize",
+                  "options": [
+                    {
+                      "text": "13"
+                    },
+                    {
+                      "text": "3"
+                    },
+                    {
+                      "text": "16"
+                    },
+                    {
+                      "text": "12"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e3",
+                  "mode": "targetToNative",
+                  "prompt": "17",
+                  "options": [
+                    {
+                      "text": "dix-sept"
+                    },
+                    {
+                      "text": "sept"
+                    },
+                    {
+                      "text": "seize"
+                    },
+                    {
+                      "text": "dix-neuf"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e4",
+                  "mode": "targetToNative",
+                  "prompt": "seize",
+                  "options": [
+                    {
+                      "text": "16"
+                    },
+                    {
+                      "text": "6"
+                    },
+                    {
+                      "text": "15"
+                    },
+                    {
+                      "text": "17"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l0-e5",
+                  "mode": "produceTarget",
+                  "prompt": "5",
+                  "answer": "cinq",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l0-e6",
+                  "mode": "produceTarget",
+                  "prompt": "12",
+                  "answer": "douze",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l0-e7",
+                  "mode": "produceTarget",
+                  "prompt": "19",
+                  "answer": "dix-neuf",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e8",
+                  "mode": "targetToNative",
+                  "prompt": "le jour",
+                  "options": [
+                    {
+                      "text": "the day"
+                    },
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the year"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l0-e9",
+                  "mode": "targetToNative",
+                  "prompt": "l'heure",
+                  "options": [
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the day"
+                    },
+                    {
+                      "text": "the minute"
+                    },
+                    {
+                      "text": "the month"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:numbers-to-sixty"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e8"
+                },
+                {
+                  "exercise": "fr-en:ud-l0-e9"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ud-l1",
+              "title": "Tens and the et-un rule",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "22",
+                  "options": [
+                    {
+                      "text": "vingt-deux"
+                    },
+                    {
+                      "text": "vingt et un"
+                    },
+                    {
+                      "text": "trente-deux"
+                    },
+                    {
+                      "text": "vingt"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "21",
+                  "options": [
+                    {
+                      "text": "vingt et un"
+                    },
+                    {
+                      "text": "vingt-deux"
+                    },
+                    {
+                      "text": "trente et un"
+                    },
+                    {
+                      "text": "vingt"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "quarante-cinq",
+                  "options": [
+                    {
+                      "text": "45"
+                    },
+                    {
+                      "text": "55"
+                    },
+                    {
+                      "text": "44"
+                    },
+                    {
+                      "text": "54"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e3",
+                  "mode": "targetToNative",
+                  "prompt": "61",
+                  "options": [
+                    {
+                      "text": "soixante et un"
+                    },
+                    {
+                      "text": "cinquante et un"
+                    },
+                    {
+                      "text": "soixante"
+                    },
+                    {
+                      "text": "soixante-deux"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e4",
+                  "mode": "produceTarget",
+                  "prompt": "21",
+                  "answer": "vingt et un",
+                  "alternatives": [
+                    "vingt-et-un"
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e5",
+                  "mode": "produceTarget",
+                  "prompt": "34",
+                  "answer": "trente-quatre",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e6",
+                  "mode": "produceTarget",
+                  "prompt": "58",
+                  "answer": "cinquante-huit",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l1-e7",
+                  "mode": "produceTarget",
+                  "prompt": "61",
+                  "answer": "soixante et un",
+                  "alternatives": [
+                    "soixante-et-un"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e8",
+                  "mode": "targetToNative",
+                  "prompt": "la minute",
+                  "options": [
+                    {
+                      "text": "the minute"
+                    },
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the day"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e9",
+                  "mode": "targetToNative",
+                  "prompt": "la semaine",
+                  "options": [
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the month"
+                    },
+                    {
+                      "text": "the year"
+                    },
+                    {
+                      "text": "the minute"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l1-e10",
+                  "mode": "nativeToTarget",
+                  "prompt": "the week",
+                  "options": [
+                    {
+                      "text": "la semaine"
+                    },
+                    {
+                      "text": "la minute"
+                    },
+                    {
+                      "text": "l'heure"
+                    },
+                    {
+                      "text": "le jour"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ud-l2",
+              "title": "The famous seventies",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "70",
+                  "options": [
+                    {
+                      "text": "soixante-dix"
+                    },
+                    {
+                      "text": "soixante"
+                    },
+                    {
+                      "text": "dix-sept"
+                    },
+                    {
+                      "text": "soixante-dix-sept"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "71",
+                  "options": [
+                    {
+                      "text": "soixante et onze"
+                    },
+                    {
+                      "text": "soixante et un"
+                    },
+                    {
+                      "text": "soixante-dix"
+                    },
+                    {
+                      "text": "soixante-douze"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "soixante-quinze",
+                  "options": [
+                    {
+                      "text": "75"
+                    },
+                    {
+                      "text": "65"
+                    },
+                    {
+                      "text": "15"
+                    },
+                    {
+                      "text": "74"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "77",
+                  "options": [
+                    {
+                      "text": "soixante-dix-sept"
+                    },
+                    {
+                      "text": "soixante-sept"
+                    },
+                    {
+                      "text": "dix-sept"
+                    },
+                    {
+                      "text": "soixante-dix"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e4",
+                  "mode": "targetToNative",
+                  "prompt": "soixante-dix-neuf",
+                  "options": [
+                    {
+                      "text": "79"
+                    },
+                    {
+                      "text": "69"
+                    },
+                    {
+                      "text": "78"
+                    },
+                    {
+                      "text": "89"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l2-e5",
+                  "mode": "produceTarget",
+                  "prompt": "70",
+                  "answer": "soixante-dix",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l2-e6",
+                  "mode": "produceTarget",
+                  "prompt": "71",
+                  "answer": "soixante et onze",
+                  "alternatives": [
+                    "soixante-et-onze"
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l2-e7",
+                  "mode": "produceTarget",
+                  "prompt": "76",
+                  "answer": "soixante-seize",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e8",
+                  "mode": "targetToNative",
+                  "prompt": "le mois",
+                  "options": [
+                    {
+                      "text": "the month"
+                    },
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the year"
+                    },
+                    {
+                      "text": "the day"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l2-e9",
+                  "mode": "nativeToTarget",
+                  "prompt": "the month",
+                  "options": [
+                    {
+                      "text": "le mois"
+                    },
+                    {
+                      "text": "la semaine"
+                    },
+                    {
+                      "text": "l'année"
+                    },
+                    {
+                      "text": "la journée"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:numbers-seventies"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e6"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e7"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e8"
+                },
+                {
+                  "exercise": "fr-en:ud-l2-e9"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ud-l3",
+              "title": "Four twenties to one hundred",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "80",
+                  "options": [
+                    {
+                      "text": "quatre-vingts"
+                    },
+                    {
+                      "text": "quatre-vingt-dix"
+                    },
+                    {
+                      "text": "vingt"
+                    },
+                    {
+                      "text": "quatre-vingt-quatre"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "81",
+                  "options": [
+                    {
+                      "text": "quatre-vingt-un"
+                    },
+                    {
+                      "text": "quatre-vingts"
+                    },
+                    {
+                      "text": "quatre-vingt-onze"
+                    },
+                    {
+                      "text": "soixante et onze"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "quatre-vingt-dix",
+                  "options": [
+                    {
+                      "text": "90"
+                    },
+                    {
+                      "text": "80"
+                    },
+                    {
+                      "text": "70"
+                    },
+                    {
+                      "text": "94"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "91",
+                  "options": [
+                    {
+                      "text": "quatre-vingt-onze"
+                    },
+                    {
+                      "text": "quatre-vingt-un"
+                    },
+                    {
+                      "text": "quatre-vingt-dix"
+                    },
+                    {
+                      "text": "soixante et onze"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e4",
+                  "mode": "targetToNative",
+                  "prompt": "quatre-vingt-dix-neuf",
+                  "options": [
+                    {
+                      "text": "99"
+                    },
+                    {
+                      "text": "89"
+                    },
+                    {
+                      "text": "79"
+                    },
+                    {
+                      "text": "98"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e5",
+                  "mode": "produceTarget",
+                  "prompt": "80",
+                  "answer": "quatre-vingts",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e6",
+                  "mode": "produceTarget",
+                  "prompt": "85",
+                  "answer": "quatre-vingt-cinq",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e7",
+                  "mode": "produceTarget",
+                  "prompt": "91",
+                  "answer": "quatre-vingt-onze",
+                  "alternatives": []
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "fr-en:ud-l3-e8",
+                  "mode": "produceTarget",
+                  "prompt": "100",
+                  "answer": "cent",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e9",
+                  "mode": "targetToNative",
+                  "prompt": "l'année",
+                  "options": [
+                    {
+                      "text": "the year"
+                    },
+                    {
+                      "text": "the month"
+                    },
+                    {
+                      "text": "the day (daytime)"
+                    },
+                    {
+                      "text": "the week"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ud-l3-e10",
+                  "mode": "nativeToTarget",
+                  "prompt": "the year",
+                  "options": [
+                    {
+                      "text": "l'année"
+                    },
+                    {
+                      "text": "le mois"
+                    },
+                    {
+                      "text": "la semaine"
+                    },
+                    {
+                      "text": "la journée"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:numbers-eighties"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e0"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e1"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e2"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e3"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e4"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e5"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e6"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e7"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e8"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e9"
+                },
+                {
+                  "exercise": "fr-en:ud-l3-e10"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-e",
+          "title": "Connected French",
+          "description": "Elision, liaison and the two silent h's — how written words join up in real French.",
+          "guidebook": "# Connected French\n\nWritten French keeps words apart; spoken French runs them together. Three mechanisms do the work.\n\n## Elision — the disappearing vowels\n\nBefore a vowel sound, these little words drop their vowel and take an apostrophe:\n\n- **le / la → l'** — l'eau, l'homme, l'histoire\n- **je → j'** — j'ai, j'habite\n- **ne → n'** — ce n'est pas\n- **de → d'**, **que → qu'**\n\nThis is mandatory: *je ai* is never correct.\n\n## Liaison — silent letters that wake up\n\nAfter the little words, a silent final consonant links to a following vowel:\n\n- **les amis** — the s wakes up as a z sound\n- **nous avons**, **vous êtes**, **ils ont**\n- **un petit ami** — the t links\n\nLiaison is forbidden after **et** (et ici — no link) and after a singular noun (le chat est…).\n\n## The two silent h's\n\nEvery French h is silent, but words split into two families:\n\n- **h muet** acts like a vowel: **l'histoire**, **l'homme**, **l'hôtel**, and les hommes links.\n- **h aspiré** acts like a consonant: **le héros** (never l'héros), and les héros has NO link.\n\nYou cannot hear the h itself — learn h-words with their article, and let le/l' tell you the family.",
+          "words": [
+            {
+              "target": "l'histoire",
+              "native": "the story, history",
+              "emoji": "📖"
+            },
+            {
+              "target": "le héros",
+              "native": "the hero",
+              "emoji": "🦸"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ue-l0",
+              "title": "The disappearing vowels",
+              "exercises": [
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l0-e0",
+                  "sentence": "___ homme est grand.",
+                  "translation": "The man is tall.",
+                  "options": [
+                    "L'",
+                    "Le"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l0-e1",
+                  "sentence": "___ école est fermée.",
+                  "translation": "The school is closed.",
+                  "options": [
+                    "L'",
+                    "La"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l0-e2",
+                  "sentence": "C'est de ___ eau.",
+                  "translation": "It is water.",
+                  "options": [
+                    "l'",
+                    "la"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l0-e3",
+                  "sentence": "Je ___ aime pas le café.",
+                  "translation": "I do not like coffee.",
+                  "options": [
+                    "n'",
+                    "ne"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l0-e4",
+                  "sentence": "___ ai une question.",
+                  "translation": "I have a question.",
+                  "options": [
+                    "J'",
+                    "Je"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l0-e5",
+                  "mode": "targetToNative",
+                  "prompt": "l'homme",
+                  "options": [
+                    {
+                      "text": "the man"
+                    },
+                    {
+                      "text": "the water"
+                    },
+                    {
+                      "text": "the school"
+                    },
+                    {
+                      "text": "the hero"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l0-e6",
+                  "sentence": "C'est ___ histoire de ma vie.",
+                  "translation": "It is the story of my life.",
+                  "options": [
+                    "l'",
+                    "la"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l0-e7",
+                  "mode": "targetToNative",
+                  "prompt": "l'histoire",
+                  "options": [
+                    {
+                      "text": "the story, history"
+                    },
+                    {
+                      "text": "the hero"
+                    },
+                    {
+                      "text": "the school"
+                    },
+                    {
+                      "text": "the day"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l0-e8",
+                  "mode": "nativeToTarget",
+                  "prompt": "the story, history",
+                  "options": [
+                    {
+                      "text": "l'histoire"
+                    },
+                    {
+                      "text": "le héros"
+                    },
+                    {
+                      "text": "l'école"
+                    },
+                    {
+                      "text": "la journée"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:elision"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:ue-l0-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ue-l1",
+              "title": "Linking words",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "In « les amis », the final s…",
+                  "options": [
+                    {
+                      "text": "links to amis with a z sound"
+                    },
+                    {
+                      "text": "stays silent"
+                    },
+                    {
+                      "text": "is pronounced like s in 'sun'"
+                    },
+                    {
+                      "text": "drops entirely from the phrase"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Which phrase has a required liaison?",
+                  "options": [
+                    {
+                      "text": "nous avons"
+                    },
+                    {
+                      "text": "le chat dort"
+                    },
+                    {
+                      "text": "et ici"
+                    },
+                    {
+                      "text": "la table"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "In « vous êtes », the s of vous…",
+                  "options": [
+                    {
+                      "text": "links: it sounds like a z starting êtes"
+                    },
+                    {
+                      "text": "is silent — no link"
+                    },
+                    {
+                      "text": "sounds like s in 'sun'"
+                    },
+                    {
+                      "text": "becomes a t sound"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l1-e3",
+                  "mode": "targetToNative",
+                  "prompt": "After « et », a liaison is…",
+                  "options": [
+                    {
+                      "text": "never made"
+                    },
+                    {
+                      "text": "always made"
+                    },
+                    {
+                      "text": "optional"
+                    },
+                    {
+                      "text": "made only before h"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l1-e4",
+                  "mode": "targetToNative",
+                  "prompt": "Which phrase has NO liaison?",
+                  "options": [
+                    {
+                      "text": "et alors"
+                    },
+                    {
+                      "text": "les amis"
+                    },
+                    {
+                      "text": "nous avons"
+                    },
+                    {
+                      "text": "vous êtes"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l1-e5",
+                  "sentence": "Nous ___ deux chats.",
+                  "translation": "We have two cats.",
+                  "options": [
+                    "avons",
+                    "avez"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l1-e6",
+                  "mode": "targetToNative",
+                  "prompt": "In « les hommes », the final s of les…",
+                  "options": [
+                    {
+                      "text": "links — homme starts with h muet"
+                    },
+                    {
+                      "text": "is silent — h blocks it"
+                    },
+                    {
+                      "text": "sounds like sh"
+                    },
+                    {
+                      "text": "turns homme into l'homme"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l1-e7",
+                  "sentence": "Vous ___ professeurs.",
+                  "translation": "You are teachers.",
+                  "options": [
+                    "êtes",
+                    "es"
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:liaison"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e0"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e1"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e2"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e3"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e4"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e5"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e6"
+                },
+                {
+                  "exercise": "fr-en:ue-l1-e7"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ue-l2",
+              "title": "The two h's",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "le héros",
+                  "options": [
+                    {
+                      "text": "the hero"
+                    },
+                    {
+                      "text": "the story, history"
+                    },
+                    {
+                      "text": "the man"
+                    },
+                    {
+                      "text": "the hour"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l2-e1",
+                  "sentence": "___ héros est courageux.",
+                  "translation": "The hero is brave.",
+                  "options": [
+                    "Le",
+                    "L'"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l2-e2",
+                  "sentence": "___ histoire est intéressante.",
+                  "translation": "The story is interesting.",
+                  "options": [
+                    "L'",
+                    "La"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l2-e3",
+                  "sentence": "___ hôtel est ouvert.",
+                  "translation": "The hotel is open.",
+                  "options": [
+                    "L'",
+                    "Le"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l2-e4",
+                  "mode": "targetToNative",
+                  "prompt": "In « les héros », the final s of les…",
+                  "options": [
+                    {
+                      "text": "is silent — h aspiré blocks the liaison"
+                    },
+                    {
+                      "text": "links with a z sound"
+                    },
+                    {
+                      "text": "is pronounced like s in 'sun'"
+                    },
+                    {
+                      "text": "turns héros into l'héros"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l2-e5",
+                  "mode": "nativeToTarget",
+                  "prompt": "the hero",
+                  "options": [
+                    {
+                      "text": "le héros"
+                    },
+                    {
+                      "text": "l'histoire"
+                    },
+                    {
+                      "text": "l'homme"
+                    },
+                    {
+                      "text": "l'hôtel"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l2-e6",
+                  "sentence": "___ homme attend le train.",
+                  "translation": "The man is waiting for the train.",
+                  "options": [
+                    "L'",
+                    "Le"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l2-e7",
+                  "mode": "targetToNative",
+                  "prompt": "Both h's in héros and histoire are…",
+                  "options": [
+                    {
+                      "text": "silent — only the words around them differ"
+                    },
+                    {
+                      "text": "pronounced softly"
+                    },
+                    {
+                      "text": "pronounced only in héros"
+                    },
+                    {
+                      "text": "pronounced only in histoire"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:h-two-kinds"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e6"
+                },
+                {
+                  "exercise": "fr-en:ue-l2-e7"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ue-l3",
+              "title": "Putting it together",
+              "exercises": [
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ue-l3-e0",
+                  "sentence": "J'___ à Paris.",
+                  "translation": "I live in Paris.",
+                  "verb": "habiter",
+                  "cell": "pre:1s",
+                  "answer": "habite",
+                  "alternatives": []
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ue-l3-e1",
+                  "sentence": "Tu ___ l'histoire ?",
+                  "translation": "Do you like the story?",
+                  "verb": "aimer",
+                  "cell": "pre:2s",
+                  "answer": "aimes",
+                  "alternatives": []
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l3-e2",
+                  "sentence": "___ année commence bien.",
+                  "translation": "The year is starting well.",
+                  "options": [
+                    "L'",
+                    "La"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "l'argent",
+                  "options": [
+                    {
+                      "text": "the money"
+                    },
+                    {
+                      "text": "the year"
+                    },
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the story, history"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l3-e4",
+                  "sentence": "Je ___ ai pas d'argent.",
+                  "translation": "I do not have any money.",
+                  "options": [
+                    "n'",
+                    "ne"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "conjugationCloze",
+                  "id": "fr-en:ue-l3-e5",
+                  "sentence": "J'___ deux chats.",
+                  "translation": "I have two cats.",
+                  "verb": "avoir",
+                  "cell": "pre:1s",
+                  "answer": "ai",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l3-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "the man",
+                  "options": [
+                    {
+                      "text": "l'homme"
+                    },
+                    {
+                      "text": "le héros"
+                    },
+                    {
+                      "text": "le jour"
+                    },
+                    {
+                      "text": "l'hôtel"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ue-l3-e7",
+                  "sentence": "C'est ___ heure du café.",
+                  "translation": "It is coffee time.",
+                  "options": [
+                    "l'",
+                    "la"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ue-l3-e8",
+                  "mode": "targetToNative",
+                  "prompt": "Which is written correctly?",
+                  "options": [
+                    {
+                      "text": "j'ai raison"
+                    },
+                    {
+                      "text": "je ai raison"
+                    },
+                    {
+                      "text": "j ai raison"
+                    },
+                    {
+                      "text": "je'ai raison"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -95,9 +95,11 @@ export function pathFrontierLesson(
       for (const lesson of unit.lessons) {
         if (completedLessons[lesson.id]) continue;
         const ids: string[] = [];
-        for (const exercise of lesson.exercises)
-          for (const id of exercise.gradeTargets ?? [])
-            if (!ids.includes(id)) ids.push(id); // authored order, deduped
+        for (const exercise of lesson.exercises) {
+          // Grammar drills (articleSelect) carry no gradeTargets by design.
+          const targets = "gradeTargets" in exercise ? exercise.gradeTargets ?? [] : [];
+          for (const id of targets) if (!ids.includes(id)) ids.push(id); // authored order, deduped
+        }
         return { lessonId: lesson.id, gradeTargetIds: ids };
       }
   return null;

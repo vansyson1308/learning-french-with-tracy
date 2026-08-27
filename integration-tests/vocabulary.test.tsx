@@ -40,15 +40,16 @@ const chatCard = {
 };
 
 describe("Vocabulary Browser", () => {
-  test("lists all 54 words with honest count and POS/gender rows", async () => {
+  test("lists all 99 words with honest count and POS/gender rows", async () => {
     seedFrench();
     renderRouter("./src/app", { initialUrl: "/vocabulary" });
-    await waitFor(() => expect(screen.getByText("54 words")).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText("99 words")).toBeOnTheScreen());
     expect(screen.getByText("l'homme")).toBeOnTheScreen();
     expect(screen.getByText("the man")).toBeOnTheScreen();
     expect(screen.getByText("Course order")).toBeOnTheScreen();
     // Frequency sort renders now that real Lexique 4 measurements exist,
-    // and orders by raw per-million ("non" is the most frequent taught word).
+    // and orders by raw per-million (être, population rank 1 at 35040.2/M,
+    // is the most frequent taught word since Unit B landed).
     const frequencyChip = screen.getByText("Frequency");
     expect(frequencyChip).toBeOnTheScreen();
     await userEvent.press(frequencyChip);
@@ -56,14 +57,14 @@ describe("Vocabulary Browser", () => {
       const labels = screen
         .getAllByTestId("vocab-row-surface")
         .map((node) => node.props.children);
-      expect(labels[0]).toBe("non");
+      expect(labels[0]).toBe("être");
     });
   });
 
   test("search handles accents and apostrophes; filters narrow the list", async () => {
     seedFrench();
     renderRouter("./src/app", { initialUrl: "/vocabulary" });
-    await waitFor(() => expect(screen.getByText("54 words")).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText("99 words")).toBeOnTheScreen());
 
     const input = screen.getByLabelText("Search vocabulary");
     await userEvent.type(input, "garcon");
@@ -75,7 +76,7 @@ describe("Vocabulary Browser", () => {
     await waitFor(() => expect(screen.getByText("s'il vous plaît")).toBeOnTheScreen());
 
     await userEvent.clear(input);
-    await waitFor(() => expect(screen.getByText("54 words")).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText("99 words")).toBeOnTheScreen());
     await userEvent.press(screen.getByText("Expressions"));
     await waitFor(() => expect(screen.getByText("3 words")).toBeOnTheScreen());
     expect(screen.getByText("au revoir")).toBeOnTheScreen();
@@ -129,7 +130,7 @@ describe("Vocabulary Browser", () => {
       },
     });
     renderRouter("./src/app", { initialUrl: "/vocabulary" });
-    await waitFor(() => expect(screen.getByText("54 words")).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText("99 words")).toBeOnTheScreen());
     await userEvent.press(screen.getByLabelText("l'homme, the man"));
     renderRouter("./src/app", { initialUrl: "/vocabulary/fr%3Aw%3Ahomme" });
     await waitFor(() => expect(screen.getByText(/Not in your reviews yet/)).toBeOnTheScreen());

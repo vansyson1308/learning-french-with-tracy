@@ -1,0 +1,638 @@
+{
+  "version": 1,
+  "language": "fr",
+  "order": [
+    "fr:concept:gender-two-classes",
+    "fr:concept:gender-feminine-endings",
+    "fr:concept:gender-masculine-endings",
+    "fr:concept:gender-tricky-endings",
+    "fr:concept:etre-avoir-present",
+    "fr:concept:er-verbs-one-sound",
+    "fr:concept:futur-proche",
+    "fr:concept:passe-compose",
+    "fr:concept:cognate-tion-family",
+    "fr:concept:cognate-te-family",
+    "fr:concept:false-friends",
+    "fr:concept:numbers-to-sixty",
+    "fr:concept:numbers-seventies",
+    "fr:concept:numbers-eighties",
+    "fr:concept:elision",
+    "fr:concept:liaison",
+    "fr:concept:h-two-kinds"
+  ],
+  "byId": {
+    "fr:concept:gender-two-classes": {
+      "id": "fr:concept:gender-two-classes",
+      "title": "Every French noun has a gender",
+      "shortRule": "Every noun is masculine (le) or feminine (la) — the article is part of the word.",
+      "explanation": "French sorts all nouns into two grammatical classes, masculine and feminine. This is a property of the word itself, not of the thing it names, so the reliable way to learn a noun is to learn it together with its article: 'le chat', 'la pomme'. The good news: a noun's ENDING often signals its gender, and the upcoming lessons teach only the ending patterns that a 36,940-noun analysis shows to be genuinely dependable.",
+      "examples": [
+        {
+          "fr": "le chat",
+          "en": "the cat",
+          "note": "masculine — le"
+        },
+        {
+          "fr": "la pomme",
+          "en": "the apple",
+          "note": "feminine — la"
+        },
+        {
+          "fr": "l'eau",
+          "en": "the water",
+          "note": "before a vowel sound the article shortens to l', hiding the gender — eau is feminine"
+        }
+      ],
+      "exceptions": [
+        "Before a vowel sound, both le and la become l', so the article stops showing the gender. For those nouns, remember them with un/une instead: une eau minérale."
+      ],
+      "memoryHint": "Always learn 'le chat', never just 'chat'.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    "fr:concept:gender-feminine-endings": {
+      "id": "fr:concept:gender-feminine-endings",
+      "title": "Endings that say « feminine »",
+      "shortRule": "Nouns ending in -tion, -ance, -ence, -ité or -ie are almost always feminine.",
+      "explanation": "You do not have to memorize every noun's gender one by one — the ending often decides it. In an analysis of 36,940 French nouns, words ending in -tion are feminine 99.5% of the time, -ance 98.9%, -ence 98.3%, -ité 97.8%, and -ie 96.3%. When you meet a new noun with one of these endings, say « la » with confidence.",
+      "examples": [
+        {
+          "fr": "la question",
+          "en": "the question",
+          "note": "-tion → feminine (99.5% of 1,895 nouns)"
+        },
+        {
+          "fr": "la chance",
+          "en": "luck",
+          "note": "-ance → feminine"
+        },
+        {
+          "fr": "la vérité",
+          "en": "the truth",
+          "note": "-ité → feminine"
+        },
+        {
+          "fr": "la vie",
+          "en": "life",
+          "note": "-ie → feminine"
+        }
+      ],
+      "exceptions": [
+        "\"Almost always\" is not \"always\": a rare exception exists for each ending — but with reliability this high, guessing feminine is the right habit."
+      ],
+      "memoryHint": "-tion, -ance/-ence, -ité, -ie → la.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:gender-masculine-endings": {
+      "id": "fr:concept:gender-masculine-endings",
+      "title": "Endings that say « masculine »",
+      "shortRule": "Nouns ending in -ment, -age, -eau or -ier are usually masculine.",
+      "explanation": "The masculine side has strong ending patterns too, from the same 36,940-noun analysis: -ment is masculine 99.8% of the time, -age 98.5%, -eau 96.7%, and -ier 97.1%. Meet a new noun with one of these endings and « le » is very likely right.",
+      "examples": [
+        {
+          "fr": "le moment",
+          "en": "the moment",
+          "note": "-ment → masculine (99.8% of 1,094 nouns)"
+        },
+        {
+          "fr": "le voyage",
+          "en": "the trip",
+          "note": "-age → masculine"
+        },
+        {
+          "fr": "le cadeau",
+          "en": "the gift",
+          "note": "-eau → masculine"
+        },
+        {
+          "fr": "le papier",
+          "en": "the paper",
+          "note": "-ier → masculine"
+        }
+      ],
+      "exceptions": [
+        "l'eau (water) is feminine — the most famous exception to -eau.",
+        "l'image (the picture) and la page are feminine -age words: -age is \"usually\", not \"always\"."
+      ],
+      "memoryHint": "-ment, -age, -eau, -ier → le (but l'eau is feminine!).",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:gender-tricky-endings": {
+      "id": "fr:concept:gender-tricky-endings",
+      "title": "Two endings that need care",
+      "shortRule": "-on is usually masculine — but -ion and -son words inside it are feminine. -eur is usually masculine — with famous feminine exceptions.",
+      "explanation": "Two common endings hide sub-patterns. Nouns in -on are masculine 96.7% of the time ONCE you set aside the -ion family (feminine: la question) and the -son family (feminine: la maison, la raison). And -eur nouns are masculine 92.5% of the time, but several very frequent ones are feminine. Learn the sub-families, not just the last two letters.",
+      "examples": [
+        {
+          "fr": "le patron",
+          "en": "the boss",
+          "note": "-on (not -ion/-son) → masculine"
+        },
+        {
+          "fr": "la maison",
+          "en": "the house",
+          "note": "-son → feminine sub-family"
+        },
+        {
+          "fr": "la raison",
+          "en": "the reason",
+          "note": "-son → feminine sub-family"
+        },
+        {
+          "fr": "le docteur",
+          "en": "the doctor",
+          "note": "-eur → usually masculine"
+        }
+      ],
+      "exceptions": [
+        "Frequent feminine -eur nouns: la peur (fear), l'erreur (the mistake), la couleur (the color), la fleur (the flower).",
+        "The -son sub-family: la maison, la raison, la saison, la chanson — feminine."
+      ],
+      "memoryHint": "See -ion or -son? Think la. Other -on? Think le.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:etre-avoir-present": {
+      "id": "fr:concept:etre-avoir-present",
+      "title": "Être and avoir — the two anchor verbs",
+      "shortRule": "je suis / tu es / il est · j'ai / tu as / il a — learn these six forms cold.",
+      "explanation": "The two most-used verbs in French are also the most irregular, so their présent forms are learned as words, not from a pattern: être (to be) — je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont; avoir (to have) — j'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont. They repay the effort twice: they carry everyday sentences now, and later they build the past tense for every other verb.",
+      "examples": [
+        {
+          "fr": "Je suis content.",
+          "en": "I am happy.",
+          "note": "être — 1st person"
+        },
+        {
+          "fr": "Tu as raison.",
+          "en": "You are right (literally: you have reason).",
+          "note": "avoir — 2nd person"
+        },
+        {
+          "fr": "Ils ont deux chats.",
+          "en": "They have two cats.",
+          "note": "avoir — 3rd person plural"
+        }
+      ],
+      "exceptions": [
+        "French uses avoir where English uses be in fixed phrases: avoir faim (to be hungry), avoir raison (to be right), avoir 20 ans (to be 20 years old).",
+        "Before a vowel, je shortens: j'ai, never 'je ai'."
+      ],
+      "memoryHint": "sont = they are, ont = they have — the s belongs to être.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:er-verbs-one-sound": {
+      "id": "fr:concept:er-verbs-one-sound",
+      "title": "-er verbs: six spellings, three sounds",
+      "shortRule": "parle, parles and parlent are all pronounced the same — endings change on paper more than in speech.",
+      "explanation": "Regular -er verbs (the largest verb family) all conjugate like parler: je parle, tu parles, il/elle parle, nous parlons, vous parlez, ils/elles parlent. In speech those six forms collapse to three sounds — parle/parles/parlent all sound like 'parl' (Lexique 4 phonology: /paʁl/), parlons has its own sound, and parlez sounds exactly like the infinitive parler (/paʁle/). So when you speak, the pronoun does most of the work; the written endings matter most when you type or write.",
+      "examples": [
+        {
+          "fr": "Elle parle avec sa mère.",
+          "en": "She talks with her mother.",
+          "note": "3rd person: stem + e"
+        },
+        {
+          "fr": "Nous habitons à Paris.",
+          "en": "We live in Paris.",
+          "note": "nous: stem + ons"
+        },
+        {
+          "fr": "Vous aimez le café ?",
+          "en": "Do you like coffee?",
+          "note": "vous: stem + ez — sounds like the infinitive"
+        }
+      ],
+      "exceptions": [
+        "Verbs in -ger keep the e before -ons to protect the soft g: nous mangeons, never 'mangons'.",
+        "Aller looks like an -er verb but is irregular: je vais, tu vas, il va."
+      ],
+      "memoryHint": "If the subject is je/tu/il/ils, an -er verb usually SOUNDS like its bare stem.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:futur-proche": {
+      "id": "fr:concept:futur-proche",
+      "title": "Talking about the future with aller",
+      "shortRule": "aller (présent) + infinitive = going to: Je vais manger — I am going to eat.",
+      "explanation": "French has a simple future you can use from day one: conjugate aller in the présent and follow it with any infinitive, exactly like English 'going to'. Je vais parler (I'm going to speak), tu vas manger, nous allons habiter à Lyon. You only ever conjugate aller — the second verb stays in the dictionary form — so six memorized forms of aller unlock future statements with every verb you know.",
+      "examples": [
+        {
+          "fr": "Je vais manger.",
+          "en": "I am going to eat.",
+          "note": "vais + infinitive"
+        },
+        {
+          "fr": "Nous allons parler avec le patron.",
+          "en": "We are going to talk with the boss.",
+          "note": "allons + infinitive"
+        },
+        {
+          "fr": "Ils vont faire un voyage.",
+          "en": "They are going to take a trip.",
+          "note": "vont + infinitive"
+        }
+      ],
+      "exceptions": [
+        "Aller alone also means physically going somewhere: Je vais au bureau — I am going to the office. Context tells you which reading is meant."
+      ],
+      "memoryHint": "aller + infinitive works just like English 'going to + verb'.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:passe-compose": {
+      "id": "fr:concept:passe-compose",
+      "title": "The past with avoir + participle",
+      "shortRule": "avoir (présent) + past participle = did / have done: J'ai mangé — I ate.",
+      "explanation": "The everyday French past tense is built from two pieces you already have: the présent of avoir plus the verb's past participle. For -er verbs the participle just swaps -er for -é (parler → parlé, manger → mangé), so J'ai parlé = I spoke, Tu as mangé = you ate, Nous avons habité = we lived. Some verbs have participles to memorize — être → été, avoir → eu, faire → fait — but the frame never changes.",
+      "examples": [
+        {
+          "fr": "J'ai mangé une pomme.",
+          "en": "I ate an apple.",
+          "note": "avoir + mangé"
+        },
+        {
+          "fr": "Tu as parlé avec elle ?",
+          "en": "Did you talk with her?",
+          "note": "avoir + parlé"
+        },
+        {
+          "fr": "Il a fait ses devoirs.",
+          "en": "He did his homework.",
+          "note": "irregular participle: fait"
+        }
+      ],
+      "exceptions": [
+        "A small set of movement/change verbs (aller among them) build this tense with être instead of avoir: Je suis allé — I went. That set is taught as its own list later."
+      ],
+      "memoryHint": "-er verb? Its participle is the infinitive sound spelled -é.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:cognate-tion-family": {
+      "id": "fr:concept:cognate-tion-family",
+      "title": "Hundreds of free words",
+      "shortRule": "A French noun in -tion is almost always the same word as in English — and feminine.",
+      "explanation": "You already know a large stock of French: of the 16 -tion nouns frequent enough for this course's corpus-derived candidate pool, 15 are the same word in English — solution, question, direction, situation, attention, information, condition, conversation… (opération just swaps é for e). The gender comes free too: across the 36,940-noun analysis, -tion nouns run 99.5% feminine (1,895 measured), so say la solution, la direction — and remember l' hides the la in l'attention.",
+      "examples": [
+        {
+          "fr": "la solution",
+          "en": "the solution",
+          "note": "identical spelling"
+        },
+        {
+          "fr": "la direction",
+          "en": "the direction",
+          "note": "identical spelling"
+        },
+        {
+          "fr": "l'attention",
+          "en": "attention",
+          "note": "feminine — the l' just hides it"
+        }
+      ],
+      "exceptions": [
+        "félicitation is the pool's one non-transparent -tion word: Félicitations ! means Congratulations!",
+        "The words are shared, the sounds are not — French -tion says /sjɔ̃/, never /shun/."
+      ],
+      "memoryHint": "See -tion? Trust the meaning, say la.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "candidate-pool"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    "fr:concept:cognate-te-family": {
+      "id": "fr:concept:cognate-te-family",
+      "title": "The -té bridge",
+      "shortRule": "-té usually turns into English -ty: la liberté → liberty.",
+      "explanation": "The -té ending is a bridge to English -ty: 10 of the 16 -té nouns in the everyday pool map straight across — liberté→liberty, réalité→reality, société→society, sécurité→security, université→university, identité→identity… The other six are real vocabulary to learn, not cognates: santé is health, vérité is truth, volonté is will, and été is summer. Gender: 91.6% of the 1,031 -té nouns are feminine; the masculine exceptions include le côté (the side), l'été and un invité (a guest). Bonus family for later: French has 616 nouns in -isme mirroring English -ism, 99.8% masculine — none crack the everyday top-1500.",
+      "examples": [
+        {
+          "fr": "la liberté",
+          "en": "freedom / liberty",
+          "note": "-té → -ty"
+        },
+        {
+          "fr": "la réalité",
+          "en": "reality",
+          "note": "-té → -ty"
+        },
+        {
+          "fr": "la santé",
+          "en": "health",
+          "note": "NOT \"santy\" — a real word to learn"
+        }
+      ],
+      "exceptions": [
+        "Non-cognates in the family: santé = health, vérité = truth, volonté = will, été = summer.",
+        "Masculine exceptions to feminine -té: le côté, l'été, un invité."
+      ],
+      "memoryHint": "-té → -ty, and la — unless it is le côté or l'été.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "candidate-pool"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    "fr:concept:false-friends": {
+      "id": "fr:concept:false-friends",
+      "title": "Words that lie",
+      "shortRule": "Some French words look English but mean something else — learn each trap together with its repair word.",
+      "explanation": "A few high-value French words are traps: they look like English words they do not mean. La librairie is the bookshop — the library is la bibliothèque. La journée is the day(time) — a journey is un voyage. La monnaie is your change in coins — money in general is l'argent. Rester means to stay, never to rest, and attendre means to wait, never to attend. The fix is to learn each trap as a pair: the French word with its real meaning, plus the French word for what it fooled you into thinking.",
+      "examples": [
+        {
+          "fr": "la librairie",
+          "en": "the bookshop",
+          "note": "the library = la bibliothèque"
+        },
+        {
+          "fr": "Bonne journée !",
+          "en": "Have a good day!",
+          "note": "a journey = un voyage"
+        },
+        {
+          "fr": "Tu as de la monnaie ?",
+          "en": "Do you have change?",
+          "note": "money = l'argent"
+        }
+      ],
+      "exceptions": [
+        "More traps for later: sensible means sensitive, actuellement means currently, assister à means to attend."
+      ],
+      "memoryHint": "La librairie sells books; la bibliothèque lends them.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:numbers-to-sixty": {
+      "id": "fr:concept:numbers-to-sixty",
+      "title": "Counting to sixty",
+      "shortRule": "Singles to 16, dix-compounds to 19, then tens + hyphen — except 21, 31… which take \"et un\".",
+      "explanation": "French numbers are a system, not a list. 0–16 are single words (zéro … seize). 17–19 compound with dix: dix-sept, dix-huit, dix-neuf. The tens vingt, trente, quarante, cinquante, soixante attach their unit with a hyphen — vingt-deux, cinquante-huit — except at one, where French says vingt et un, trente et un … soixante et un. Two spellings are official: the traditional 'vingt et un' and the 1990 rectified 'vingt-et-un'. This course shows the traditional forms and accepts both when you type.",
+      "examples": [
+        {
+          "fr": "dix-sept",
+          "en": "17",
+          "note": "dix + sept"
+        },
+        {
+          "fr": "vingt-deux",
+          "en": "22",
+          "note": "hyphen"
+        },
+        {
+          "fr": "vingt et un",
+          "en": "21",
+          "note": "the et-un exception (also written vingt-et-un)"
+        }
+      ],
+      "exceptions": [
+        "The \"et\" appears only at 21, 31, 41, 51, 61 — and at 71."
+      ],
+      "memoryHint": "Hyphens everywhere; \"et\" only before un (and onze at 71).",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:numbers-seventies": {
+      "id": "fr:concept:numbers-seventies",
+      "title": "The famous seventies",
+      "shortRule": "70 is soixante-dix (sixty-ten); the seventies keep counting through the teens.",
+      "explanation": "France French has no separate word for seventy. 70 is soixante-dix — sixty-ten — and the decade rides the teens: 72 soixante-douze (60+12), 75 soixante-quinze, 77 soixante-dix-sept, 79 soixante-dix-neuf. 71 is the one 'et onze': soixante et onze. If you hear soixante, wait for the rest of the number before writing anything down.",
+      "examples": [
+        {
+          "fr": "soixante-dix",
+          "en": "70",
+          "note": "60 + 10"
+        },
+        {
+          "fr": "soixante et onze",
+          "en": "71",
+          "note": "the lone \"et onze\""
+        },
+        {
+          "fr": "soixante-dix-sept",
+          "en": "77",
+          "note": "60 + 17"
+        }
+      ],
+      "exceptions": [
+        "Belgium and Switzerland say septante (septante-cinq = 75). Recognize it — this course teaches and grades France French."
+      ],
+      "memoryHint": "70s = soixante + the teens.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:numbers-eighties": {
+      "id": "fr:concept:numbers-eighties",
+      "title": "Four twenties",
+      "shortRule": "80 is quatre-vingts (4 × 20); the -s stays only when nothing follows, and the 80s/90s never take \"et\".",
+      "explanation": "80 is quatre-vingts — literally four twenties — and it keeps its plural -s only when bare: quatre-vingts, but quatre-vingt-un, quatre-vingt-deux… (and no 'et' before un here). The nineties stack the teens on top: 90 quatre-vingt-dix, 91 quatre-vingt-onze, 99 quatre-vingt-dix-neuf. And 100 is simply cent.",
+      "examples": [
+        {
+          "fr": "quatre-vingts",
+          "en": "80",
+          "note": "bare — keeps the -s"
+        },
+        {
+          "fr": "quatre-vingt-un",
+          "en": "81",
+          "note": "no -s, no \"et\""
+        },
+        {
+          "fr": "quatre-vingt-onze",
+          "en": "91",
+          "note": "80 + 11"
+        }
+      ],
+      "exceptions": [
+        "Belgium and Switzerland say nonante for the nineties (nonante-deux = 92). Recognition only — France French is graded here."
+      ],
+      "memoryHint": "quatre-vingts loses its -s the moment another number follows.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:elision": {
+      "id": "fr:concept:elision",
+      "title": "The disappearing vowels",
+      "shortRule": "le, la, je, ne, de, que drop their vowel before a vowel sound: l'eau, j'ai, n'est pas.",
+      "explanation": "French refuses to let two vowel sounds collide across these little words. Before a word starting with a vowel sound, le and la become l' (l'eau, l'homme), je becomes j' (j'ai), ne becomes n' (ce n'est pas), de becomes d' and que becomes qu'. This is not optional or casual — writing 'je ai' is simply wrong. The apostrophe is the visible trace of the dropped vowel, and it is why dictionary entries like eau hide their gender behind l'.",
+      "examples": [
+        {
+          "fr": "l'eau",
+          "en": "the water",
+          "note": "la + eau"
+        },
+        {
+          "fr": "j'ai deux chats",
+          "en": "I have two cats",
+          "note": "je + ai"
+        },
+        {
+          "fr": "ce n'est pas vrai",
+          "en": "it is not true",
+          "note": "ne + est"
+        }
+      ],
+      "exceptions": [
+        "Elision needs a vowel SOUND, not just a vowel letter — and some h-words refuse it entirely (see the two h's)."
+      ],
+      "memoryHint": "Two vowel sounds may never touch: drop the first, write an apostrophe.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:liaison": {
+      "id": "fr:concept:liaison",
+      "title": "Linking words together",
+      "shortRule": "A silent final consonant can wake up before a vowel: les amis sounds like \"layz-ah-mee\".",
+      "explanation": "In connected speech, some silent final consonants attach to a following vowel. After the little words — determiners and pronouns — the link is required: les amis (the s wakes up as a z sound and starts 'amis'), nous avons, vous êtes, un petit ami (t links). But liaison is forbidden after et (et ici — no link), after a singular noun (le chat est — the t of chat stays silent), and before certain h-words. Between those poles there is a polite-register middle ground you will meet later; for now, trust the required links after les/des/nous/vous/ils/elles.",
+      "examples": [
+        {
+          "fr": "les amis",
+          "en": "the friends",
+          "note": "s links as a z sound"
+        },
+        {
+          "fr": "nous avons",
+          "en": "we have",
+          "note": "required liaison after nous"
+        },
+        {
+          "fr": "et ici",
+          "en": "and here",
+          "note": "NEVER a liaison after et"
+        }
+      ],
+      "exceptions": [
+        "No liaison after et, after a singular noun, or before an h aspiré word (les héros — no link)."
+      ],
+      "memoryHint": "Little word + vowel = link it. After et: never.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:h-two-kinds": {
+      "id": "fr:concept:h-two-kinds",
+      "title": "The two silent h's",
+      "shortRule": "Every French h is silent — but h muet words elide and link (l'histoire), h aspiré words refuse both (le héros).",
+      "explanation": "No French h is ever pronounced, yet h-words split into two families. H muet behaves like a vowel: l'histoire, l'homme, l'hôtel — elision applies, and liaison links (les hommes: z sound). H aspiré behaves like a consonant even though you hear nothing: le héros (never l'héros), and les héros has no link at all. You cannot hear the difference in the h itself — only the words around it reveal which family a word belongs to, so learn h-words together with their article.",
+      "examples": [
+        {
+          "fr": "l'histoire",
+          "en": "the story",
+          "note": "h muet — elision applies"
+        },
+        {
+          "fr": "le héros",
+          "en": "the hero",
+          "note": "h aspiré — never l'héros"
+        },
+        {
+          "fr": "l'hôtel",
+          "en": "the hotel",
+          "note": "h muet"
+        }
+      ],
+      "exceptions": [
+        "Dictionaries mark h aspiré with a star or apostrophe before the entry. When in doubt, the le/l' test tells you the family."
+      ],
+      "memoryHint": "Hero keeps his distance: LE héros. Stories let you in: L'histoire.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    }
+  }
+}

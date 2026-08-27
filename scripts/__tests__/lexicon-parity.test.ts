@@ -98,10 +98,13 @@ describe("list parity", () => {
   test("frequency sort agrees over the real activated measurements (§19)", async () => {
     const native = await runNativeList(exec, { sort: "frequency" });
     expect(native).toEqual(await web.list({ sort: "frequency" }));
-    // Sanity against the real data: raw per-million descending, with
-    // rank-less merci (ONO) placed by its raw frequency, not sunk.
+    // Sanity against the real data: raw per-million descending — the Unit B
+    // anchor verbs lead (être 35040.2/M, avoir 13032.0, aller 9795.9,
+    // faire 9061.7), and rank-less merci (ONO) is still placed by its raw
+    // frequency, not sunk.
     const ids = native.map((r: { id: string }) => r.id);
-    expect(ids.slice(0, 4)).toEqual(["fr:w:non", "fr:w:oui", "fr:w:homme", "fr:w:merci"]);
+    expect(ids.slice(0, 4)).toEqual(["fr:w:etre", "fr:w:avoir", "fr:w:aller", "fr:w:faire"]);
+    expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
   });
 });
 

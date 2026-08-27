@@ -58,7 +58,12 @@ export const MatchExerciseSchema = z.strictObject({
 export const TypeAnswerExerciseSchema = z.strictObject({
   type: z.literal("typeAnswer"),
   id,
-  mode: z.enum(["translate", "listen"]),
+  /**
+   * translate = target prompt, native answer; listen = audio, target
+   * answer; produceTarget = native/digit prompt, TARGET-language answer
+   * (Phase 5B §76 — the numbers unit's typed production drills).
+   */
+  mode: z.enum(["translate", "listen", "produceTarget"]),
   prompt: z.string(),
   audioTarget: z.string().min(1).optional(),
   answer: z.string().min(1),
@@ -77,18 +82,93 @@ export const FillBlankExerciseSchema = z.strictObject({
   gradeTargets,
 });
 
+export const CONJUGATION_CELLS = [
+  "inf",
+  "pre:1s",
+  "pre:2s",
+  "pre:3s",
+  "pre:1p",
+  "pre:2p",
+  "pre:3p",
+  "participle",
+] as const;
+export type ConjugationCell = (typeof CONJUGATION_CELLS)[number];
+
+/**
+ * Grammar drill (Phase 5B §54–58): pick the right article for a noun. By
+ * DESIGN this schema has no gradeTargets field — grammar answers are
+ * practice evidence and must never mutate a lexical recognize card; the
+ * strict object makes that structural, not conventional. Elision safety
+ * (§57): when the choice set contains le/la, the noun must start with a
+ * consonant sound (validated) — vowel/h-initial nouns take l' and cannot
+ * be drilled on le-vs-la.
+ */
+export const ArticleSelectExerciseSchema = z.strictObject({
+  type: z.literal("articleSelect"),
+  id,
+  /** The article choices, e.g. ["le","la"] or ["un","une"]. */
+  articles: z.array(z.string().min(1)).min(2),
+  /** The noun WITHOUT its article, exactly as it should follow it. */
+  noun: z.string().min(1),
+  /** English gloss shown under the noun. */
+  gloss: z.string().min(1),
+  correct: z.number().int().min(0),
+  audioTarget: z.string().min(1).optional(),
+});
+
+/**
+ * Typed conjugation production (Phase 5B §64–66). The expected answer is
+ * the named verb's authored cell (validated against the conjugation tables
+ * and, through them, the Lexique 4 morphology evidence). No gradeTargets
+ * by design — grammar production is practice evidence, never lexical FSRS
+ * (§67). Grading is STRICT: accents and exact inflection matter.
+ */
+export const ConjugationClozeExerciseSchema = z.strictObject({
+  type: z.literal("conjugationCloze"),
+  id,
+  /** Sentence with ___ where the conjugated form goes. */
+  sentence: z.string().min(1),
+  translation: z.string().min(1),
+  /** Infinitive lemma of the drilled verb (shown as the hint). */
+  verb: z.string().min(1),
+  cell: z.enum(CONJUGATION_CELLS),
+  answer: z.string().min(1),
+  /** Documented acceptable variants only — never meaning-changing endings. */
+  alternatives: z.array(z.string().min(1)),
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
   MatchExerciseSchema,
   TypeAnswerExerciseSchema,
   FillBlankExerciseSchema,
+  ArticleSelectExerciseSchema,
+  ConjugationClozeExerciseSchema,
+]);
+
+/** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */
+export const conceptId = z.string().regex(/^fr:concept:[a-z0-9]+(?:-[a-z0-9]+)*$/);
+
+/**
+ * Optional explicit lesson flow (Phase 5B): the ordered interleaving of
+ * concept steps (Continue-only teaching, no grading/FSRS/XP) and the
+ * lesson's exercises. When absent, the flow is simply the exercises in
+ * order — every pre-5B lesson keeps its exact behavior. When present, the
+ * validator requires each entry to resolve and every exercise to appear
+ * exactly once, so a flow can reorder or interleave but never drop or
+ * duplicate graded work.
+ */
+export const LessonFlowEntrySchema = z.union([
+  z.strictObject({ concept: conceptId }),
+  z.strictObject({ exercise: id }),
 ]);
 
 export const LessonSchema = z.strictObject({
   id,
   title: z.string().min(1),
   exercises: z.array(ExerciseSchema).min(1),
+  flow: z.array(LessonFlowEntrySchema).min(1).optional(),
 });
 
 export const UnitSchema = z.strictObject({
@@ -163,7 +243,15 @@ export type PartOfSpeech = (typeof POS_VALUES)[number];
 export const GENDER_VALUES = ["masculine", "feminine", "both", "unknown"] as const;
 export type LexemeGender = (typeof GENDER_VALUES)[number];
 
-export const TOPIC_VALUES = ["people", "greetings", "food", "animals", "travel"] as const;
+export const TOPIC_VALUES = [
+  "people",
+  "greetings",
+  "food",
+  "animals",
+  "travel",
+  "everyday",
+  "ideas",
+] as const;
 export type LexemeTopic = (typeof TOPIC_VALUES)[number];
 
 export const FREQUENCY_BAND_VALUES = ["very-common", "common", "less-common"] as const;
@@ -298,6 +386,71 @@ export const SourceManifestSchema = z
     }
   });
 export type SourceManifest = z.infer<typeof SourceManifestSchema>;
+
+/**
+ * content/fr/pedagogy/concepts.json — the Phase 5B pedagogy-concept model.
+ * A concept is Continue-only teaching content rendered by the generic
+ * ConceptStep: it never grades, never touches FSRS/wordStats/XP, and is
+ * clean-room authored (facts with sourceRefs; no copied prose).
+ */
+export const ConceptExampleSchema = z.strictObject({
+  fr: z.string().min(1),
+  en: z.string().min(1),
+  /** Optional gloss/why line shown under the pair. */
+  note: z.string().min(1).optional(),
+});
+
+export const ConceptSchema = z.strictObject({
+  id: conceptId,
+  /** Learner-facing title (no CEFR labels — program rule). */
+  title: z.string().min(1),
+  /** One-line memorable rule, honest wording ("usually", "very often"). */
+  shortRule: z.string().min(1),
+  /** A few sentences of plain-language explanation. */
+  explanation: z.string().min(1),
+  examples: z.array(ConceptExampleSchema).min(1),
+  /** Honest exceptions/limits of the rule (may be empty, never hidden). */
+  exceptions: z.array(z.string().min(1)),
+  memoryHint: z.string().min(1).optional(),
+  /** Registered sources backing the FACTS (data stats, references). */
+  sourceRefs: z
+    .array(z.strictObject({ source: z.string().min(1), key: z.string().min(1).optional() }))
+    .min(1),
+});
+export type Concept = z.infer<typeof ConceptSchema>;
+
+export const PedagogyConceptsSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  concepts: z.array(ConceptSchema),
+});
+export type PedagogyConcepts = z.infer<typeof PedagogyConceptsSchema>;
+
+/**
+ * content/fr/pedagogy/conjugations.json — authored conjugation tables for
+ * the High-Yield Verbs unit (Phase 5B §60–68). Scope: présent, past
+ * participle (passé composé), infinitive (futur proche). AUTHORED cells,
+ * each machine-verified against the committed Lexique 4 verb-morphology
+ * evidence (the §26 consumption contract: never blind extraction).
+ */
+export const ConjugatedVerbSchema = z.strictObject({
+  /** Infinitive lemma, e.g. "être". */
+  lemma: z.string().min(1),
+  english: z.string().min(1),
+  /** "er-regular" drives the pattern lesson; "irregular" is taught by table. */
+  group: z.enum(["er-regular", "irregular"]),
+  /** Passé-composé auxiliary for this verb. */
+  auxiliary: z.enum(["avoir", "être"]),
+  cells: z.record(z.enum(CONJUGATION_CELLS), z.string().min(1)),
+});
+export type ConjugatedVerb = z.infer<typeof ConjugatedVerbSchema>;
+
+export const ConjugationsSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  verbs: z.array(ConjugatedVerbSchema).min(1),
+});
+export type Conjugations = z.infer<typeof ConjugationsSchema>;
 
 /**
  * content/fr/lexicon/match-overrides.json — the §15 manual-disposition

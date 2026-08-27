@@ -16,7 +16,15 @@ import { SpeakerButton } from "@/components/speaker-button";
 import { panelDataFor } from "@/lib/session/panel";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
-export function PostAnswerPanel({ itemId }: { itemId: string; correct: boolean }) {
+export function PostAnswerPanel({
+  itemId,
+  note,
+}: {
+  itemId: string;
+  correct: boolean;
+  /** Phase 5B: one derived grammar note (articleSelect/conjugationCloze). */
+  note?: string;
+}) {
   const styles = useStyles();
   const [expanded, setExpanded] = useState(false);
   const data = panelDataFor(itemId);
@@ -51,6 +59,7 @@ export function PostAnswerPanel({ itemId }: { itemId: string; correct: boolean }
           <Text style={styles.exampleEn}>{data.example.en}</Text>
         </View>
       ) : null}
+      {note ? <Text style={styles.note}>{note}</Text> : null}
       {expanded ? (
         <Text style={styles.moreDetail}>
           {[
@@ -103,6 +112,7 @@ const useStyles = makeThemedStyles((colors) =>
     example: { gap: 1 },
     exampleFr: { fontSize: 14, fontWeight: "600", color: colors.neutral700 },
     exampleEn: { fontSize: 13, color: colors.textMuted },
+    note: { fontSize: 13, fontWeight: "600", color: colors.skyDark },
     moreButton: { alignSelf: "flex-start", paddingVertical: 2 },
     moreText: { fontSize: 13, fontWeight: "800", color: colors.skyDark },
     moreDetail: { fontSize: 13, color: colors.textMuted },

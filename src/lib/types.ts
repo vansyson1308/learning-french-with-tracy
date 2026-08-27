@@ -42,7 +42,7 @@ export type MatchExercise = {
 export type TypeAnswerExercise = {
   type: "typeAnswer";
   id: string;
-  mode: "translate" | "listen";
+  mode: "translate" | "listen" | "produceTarget";
   prompt: string;
   audioTarget?: string;
   answer: string;
@@ -63,14 +63,59 @@ export type FillBlankExercise = {
   gradeTargets?: string[];
 };
 
+/**
+ * Grammar drill (Phase 5B): pick the right article for a noun. Carries NO
+ * gradeTargets by design — grammar answers are practice evidence and never
+ * mutate a lexical recognize card (§58).
+ */
+export type ArticleSelectExercise = {
+  type: "articleSelect";
+  id: string;
+  articles: string[];
+  noun: string;
+  gloss: string;
+  correct: number;
+  audioTarget?: string;
+};
+
+/**
+ * Typed conjugation production (Phase 5B): STRICT grading (accents and
+ * exact inflection matter). No gradeTargets by design — grammar production
+ * is practice evidence, never lexical FSRS (§67).
+ */
+export type ConjugationClozeExercise = {
+  type: "conjugationCloze";
+  id: string;
+  sentence: string;
+  translation: string;
+  verb: string;
+  cell: string;
+  answer: string;
+  alternatives: string[];
+};
+
 export type Exercise =
   | SelectExercise
   | WordBankExercise
   | MatchExercise
   | TypeAnswerExercise
-  | FillBlankExercise;
+  | FillBlankExercise
+  | ArticleSelectExercise
+  | ConjugationClozeExercise;
 
-export type LessonPack = { id: string; title: string; exercises: Exercise[] };
+/**
+ * Optional explicit lesson flow (Phase 5B): ordered interleaving of
+ * Continue-only concept steps and the lesson's exercises. Absent = the
+ * exercises in order (every pre-5B lesson unchanged).
+ */
+export type LessonFlowEntry = { concept: string } | { exercise: string };
+
+export type LessonPack = {
+  id: string;
+  title: string;
+  exercises: Exercise[];
+  flow?: LessonFlowEntry[];
+};
 
 export type UnitPack = {
   id: string;

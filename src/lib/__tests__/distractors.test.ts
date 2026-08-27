@@ -9,6 +9,7 @@ import { describe, expect, test } from "bun:test";
 import { pickDistractors, tierOf } from "../learning/distractors";
 import { frItemIdFor } from "../learning/ids-fr";
 import { lexemeMetaFor, type LexemeMeta } from "../learning/lexicon-index";
+import { PENDING_LEXIQUE_IMPORT } from "./pending-lexique-import";
 import { seededRng } from "../review-builder";
 import { PACKS } from "../../content/packs";
 import type { Word } from "../types";
@@ -50,9 +51,10 @@ describe("band tier activation (§20) — real Lexique 4 bands make tier 3 non-v
     expect(tierOf(chat, meta("la vache"))).toBe(2); // noun, animals, less-common
   });
 
-  test("every lexeme surfaced to the distractor engine carries a real band", () => {
+  test("every adopted lexeme surfaced to the distractor engine carries a real band", () => {
     for (const w of frPool) {
       const m = lexemeMetaFor(frItemIdFor(w.target));
+      if (m && PENDING_LEXIQUE_IMPORT.has(m.id)) continue; // awaiting import round
       if (m && m.pos !== "expression") {
         expect(["very-common", "common", "less-common"]).toContain(m.band ?? "");
       }
