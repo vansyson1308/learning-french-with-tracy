@@ -63,12 +63,28 @@ export type FillBlankExercise = {
   gradeTargets?: string[];
 };
 
+/**
+ * Grammar drill (Phase 5B): pick the right article for a noun. Carries NO
+ * gradeTargets by design — grammar answers are practice evidence and never
+ * mutate a lexical recognize card (§58).
+ */
+export type ArticleSelectExercise = {
+  type: "articleSelect";
+  id: string;
+  articles: string[];
+  noun: string;
+  gloss: string;
+  correct: number;
+  audioTarget?: string;
+};
+
 export type Exercise =
   | SelectExercise
   | WordBankExercise
   | MatchExercise
   | TypeAnswerExercise
-  | FillBlankExercise;
+  | FillBlankExercise
+  | ArticleSelectExercise;
 
 /**
  * Optional explicit lesson flow (Phase 5B): ordered interleaving of

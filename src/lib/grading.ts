@@ -30,6 +30,7 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
   switch (exercise.type) {
     case "select":
     case "fillBlank":
+    case "articleSelect":
       return answer === exercise.correct;
     case "wordBank": {
       if (!Array.isArray(answer)) return false;
@@ -54,6 +55,8 @@ export function correctAnswerText(exercise: Exercise): string {
       return exercise.options[exercise.correct].text;
     case "fillBlank":
       return exercise.sentence.replace("___", exercise.options[exercise.correct]);
+    case "articleSelect":
+      return `${exercise.articles[exercise.correct]} ${exercise.noun}`;
     case "wordBank":
       return exercise.answer.join(" ");
     case "typeAnswer":
@@ -67,6 +70,7 @@ export function answerIsReady(exercise: Exercise, answer: Answer): boolean {
   switch (exercise.type) {
     case "select":
     case "fillBlank":
+    case "articleSelect":
       return typeof answer === "number";
     case "wordBank":
       return Array.isArray(answer) && answer.length > 0;

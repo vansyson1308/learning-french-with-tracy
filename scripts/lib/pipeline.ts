@@ -79,7 +79,7 @@ export type ValidationResult = { errors: string[]; warnings: string[] };
 
 type AnyExercise = PackSource["sections"][number]["units"][number]["lessons"][number]["exercises"][number];
 
-function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) => void) {
+export function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) => void) {
   if (e.type === "select") {
     if (e.correct >= e.options.length) push(`${e.id}: correct index out of range`);
     const texts = e.options.map((o) => o.text);
@@ -103,6 +103,22 @@ function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) 
   if (e.type === "match") {
     const targets = e.pairs.map((p) => p.target);
     if (new Set(targets).size !== targets.length) push(`${e.id}: duplicate pair target`);
+  }
+  if (e.type === "articleSelect") {
+    if (e.correct >= e.articles.length) push(`${e.id}: correct index out of range`);
+    if (new Set(e.articles).size !== e.articles.length) push(`${e.id}: duplicate articles`);
+    // §57 elision safety: le/la cannot be drilled on a noun that takes l'
+    // (vowel- or h-initial — h aspiré vs muet is exactly the ambiguity the
+    // program says generated exercises must avoid).
+    const elisionSensitive = e.articles.some((a) => a === "le" || a === "la");
+    if (elisionSensitive && /^[aeiouyâàäéèêëîïôöûüœh]/i.test(e.noun)) {
+      push(
+        `${e.id}: le/la drill on vowel/h-initial noun "${e.noun}" — such nouns elide to l' (or hide h-aspiré ambiguity); use un/une or a consonant-initial noun`
+      );
+    }
+    if (courseId !== "fr-en") {
+      push(`${e.id}: articleSelect is French pedagogy — not available for ${courseId}`);
+    }
   }
 }
 

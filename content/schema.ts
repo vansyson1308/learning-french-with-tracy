@@ -77,12 +77,35 @@ export const FillBlankExerciseSchema = z.strictObject({
   gradeTargets,
 });
 
+/**
+ * Grammar drill (Phase 5B §54–58): pick the right article for a noun. By
+ * DESIGN this schema has no gradeTargets field — grammar answers are
+ * practice evidence and must never mutate a lexical recognize card; the
+ * strict object makes that structural, not conventional. Elision safety
+ * (§57): when the choice set contains le/la, the noun must start with a
+ * consonant sound (validated) — vowel/h-initial nouns take l' and cannot
+ * be drilled on le-vs-la.
+ */
+export const ArticleSelectExerciseSchema = z.strictObject({
+  type: z.literal("articleSelect"),
+  id,
+  /** The article choices, e.g. ["le","la"] or ["un","une"]. */
+  articles: z.array(z.string().min(1)).min(2),
+  /** The noun WITHOUT its article, exactly as it should follow it. */
+  noun: z.string().min(1),
+  /** English gloss shown under the noun. */
+  gloss: z.string().min(1),
+  correct: z.number().int().min(0),
+  audioTarget: z.string().min(1).optional(),
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
   MatchExerciseSchema,
   TypeAnswerExerciseSchema,
   FillBlankExerciseSchema,
+  ArticleSelectExerciseSchema,
 ]);
 
 /** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */

@@ -7,6 +7,7 @@
 
 import React from "react";
 
+import { ArticleSelect } from "@/components/exercises/article-select";
 import { FillBlank } from "@/components/exercises/fill-blank";
 import { Match } from "@/components/exercises/match";
 import { Select } from "@/components/exercises/select";
@@ -77,6 +78,15 @@ export function ExerciseRenderer({
     case "fillBlank":
       return (
         <FillBlank
+          exercise={exercise}
+          answer={typeof answer === "number" ? answer : null}
+          onAnswer={onAnswer}
+          status={status}
+        />
+      );
+    case "articleSelect":
+      return (
+        <ArticleSelect
           exercise={exercise}
           answer={typeof answer === "number" ? answer : null}
           onAnswer={onAnswer}

@@ -40,6 +40,26 @@ export function allLexemeMeta(): readonly LexemeMeta[] {
   return INDEX.entries;
 }
 
+// lookupForm → id, unique matches only: a form shared by several lexemes
+// resolves to undefined so no caller can guess between homographs.
+const BY_LOOKUP_FORM = (() => {
+  const map = new Map<string, string | null>();
+  for (const entry of INDEX.entries) {
+    map.set(entry.lookupForm, map.has(entry.lookupForm) ? null : entry.id);
+  }
+  return map;
+})();
+
+/**
+ * Resolves a bare form (no article) to its curated lexeme id when exactly
+ * one lexeme carries it — used by grammar drills to attach practice
+ * evidence to the right word without ever guessing.
+ */
+export function lexemeIdForLookupForm(lookupForm: string): string | undefined {
+  const id = BY_LOOKUP_FORM.get(lookupForm);
+  return id === null || id === undefined ? undefined : id;
+}
+
 export function lexiconIndexContentHash(): string {
   return INDEX.contentHash;
 }

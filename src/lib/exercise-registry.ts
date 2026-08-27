@@ -71,6 +71,11 @@ export const EXERCISE_BEHAVIOR: Record<Exercise["type"], ExerciseBehavior> = {
     modality: () => "recognizeText",
     selfAdvancing: false,
   },
+  articleSelect: {
+    ...delegate,
+    modality: () => "grammarChoice",
+    selfAdvancing: false,
+  },
 };
 
 export function behaviorFor(exercise: Exercise): ExerciseBehavior {

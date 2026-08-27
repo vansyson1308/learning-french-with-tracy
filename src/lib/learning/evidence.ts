@@ -25,7 +25,8 @@ export type Modality =
   | "produceText" // select: native → target, typeAnswer
   | "listen" // select listen mode
   | "arrange" // wordBank
-  | "match"; // matching pairs
+  | "match" // matching pairs
+  | "grammarChoice"; // grammar drills (articleSelect) — practice-only by design
 
 /** Which surface produced the evidence (drives legacy-course translation). */
 export type EvidenceSource = "lesson" | "review" | "mistakes" | "today";

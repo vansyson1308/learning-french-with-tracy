@@ -20,6 +20,7 @@ import { behaviorFor } from "../exercise-registry";
 import type { ReviewEvidence, SrsRole } from "../learning/evidence";
 import { itemIdForCourse } from "../learning/engine";
 import { FR_COURSE_ID, frItemIdFor, isCuratedFrItemId } from "../learning/ids-fr";
+import { lexemeIdForLookupForm } from "../learning/lexicon-index";
 
 import type { ExerciseStep, SessionDefinition, StepEvidencePlan } from "./types";
 
@@ -41,6 +42,16 @@ export function evidencePlanFor(
   if (step.evidence) return step.evidence;
 
   const exercise = step.exercise;
+
+  // Grammar drills (§58): practice evidence on the drilled noun's own
+  // lexeme when it resolves unambiguously — logged, NEVER an assessment,
+  // so a grammar answer can never mutate the lexical recognize card.
+  if (exercise.type === "articleSelect") {
+    if (definition.courseId !== FR_COURSE_ID) return null;
+    const id = lexemeIdForLookupForm(exercise.noun);
+    return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
+  }
+
   if (exercise.type !== "select" || !exercise.audioTarget) return null;
 
   if (definition.courseId === FR_COURSE_ID) {
