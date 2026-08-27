@@ -46,10 +46,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "1248.636",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "1248.636",
+          "external": "1248.636"
         }
       ],
       "overall": "agree"
@@ -93,10 +92,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "645.807",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "645.807",
+          "external": "645.807"
         }
       ],
       "overall": "agree"
@@ -135,15 +133,14 @@
         {
           "field": "pronunciation",
           "status": "agree",
-          "authored": "ɡaʁsɔ̃",
+          "authored": "gaʁsɔ̃",
           "external": "gaʁsɔ̃"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "431.813",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "431.813",
+          "external": "431.813"
         }
       ],
       "overall": "agree"
@@ -187,10 +184,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "566.994",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "566.994",
+          "external": "566.994"
         }
       ],
       "overall": "agree"
@@ -234,10 +230,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "31.057",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "31.057",
+          "external": "31.057"
         }
       ],
       "overall": "agree"
@@ -281,10 +276,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "43.415",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "43.415",
+          "external": "43.415"
         }
       ],
       "overall": "agree"
@@ -328,10 +322,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "239.519",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "239.519",
+          "external": "239.519"
         }
       ],
       "overall": "agree"
@@ -375,10 +368,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "43.025",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "43.025",
+          "external": "43.025"
         }
       ],
       "overall": "agree"
@@ -416,10 +408,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "395.06",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "395.06",
+          "external": "395.06"
         }
       ],
       "overall": "agree"
@@ -457,10 +448,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "266.661",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "266.661",
+          "external": "266.661"
         }
       ],
       "overall": "agree"
@@ -498,10 +488,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "3112.547",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "3112.547",
+          "external": "3112.547"
         }
       ],
       "overall": "agree"
@@ -539,10 +528,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "4070.88",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "4070.88",
+          "external": "4070.88"
         }
       ],
       "overall": "agree"
@@ -553,6 +541,7 @@
       "lookupForm": "bonjour",
       "matchStatus": "unmatched",
       "matchKey": null,
+      "overrideKey": "bonjour|NOM|m|s",
       "fields": [
         {
           "field": "lookup",
@@ -562,28 +551,28 @@
         },
         {
           "field": "lemma",
-          "status": "disagree",
+          "status": "agree",
           "authored": "bonjour",
-          "external": "bonjour/NOM/m",
-          "note": "the form exists in the source only under other readings"
+          "external": "bonjour"
         },
         {
           "field": "partOfSpeech",
           "status": "disagree",
           "authored": "interjection",
-          "external": "bonjour/NOM/m"
+          "external": "NOM",
+          "note": "taxonomy divergence accepted by documented override (match-overrides.json + REVIEW.md pass 3)"
         },
         {
           "field": "pronunciation",
-          "status": "disagree",
+          "status": "agree",
           "authored": "bɔ̃ʒuʁ",
-          "external": null
+          "external": "bɔ̃ʒuʁ"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": null
+          "status": "agree",
+          "authored": "483.788",
+          "external": "483.788"
         }
       ],
       "overall": "attention"
@@ -638,10 +627,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "1030.361",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "1030.361",
+          "external": "1030.361"
         }
       ],
       "overall": "agree"
@@ -669,6 +657,7 @@
       "lookupForm": "bonsoir",
       "matchStatus": "unmatched",
       "matchKey": null,
+      "overrideKey": "bonsoir|NOM|m|i",
       "fields": [
         {
           "field": "lookup",
@@ -678,28 +667,28 @@
         },
         {
           "field": "lemma",
-          "status": "disagree",
+          "status": "agree",
           "authored": "bonsoir",
-          "external": "bonsoir/NOM/m",
-          "note": "the form exists in the source only under other readings"
+          "external": "bonsoir"
         },
         {
           "field": "partOfSpeech",
           "status": "disagree",
           "authored": "interjection",
-          "external": "bonsoir/NOM/m"
+          "external": "NOM",
+          "note": "taxonomy divergence accepted by documented override (match-overrides.json + REVIEW.md pass 3)"
         },
         {
           "field": "pronunciation",
-          "status": "disagree",
+          "status": "agree",
           "authored": "bɔ̃swaʁ",
-          "external": null
+          "external": "bɔ̃swaʁ"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": null
+          "status": "agree",
+          "authored": "108.437",
+          "external": "108.437"
         }
       ],
       "overall": "attention"
@@ -754,10 +743,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "224.959",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "224.959",
+          "external": "224.959"
         }
       ],
       "overall": "agree"
@@ -795,10 +783,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "187.5",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "187.5",
+          "external": "187.5"
         }
       ],
       "overall": "agree"
@@ -842,10 +829,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "639.25",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "639.25",
+          "external": "639.25"
         }
       ],
       "overall": "agree"
@@ -889,10 +875,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "254.953",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "254.953",
+          "external": "254.953"
         }
       ],
       "overall": "agree"
@@ -936,10 +921,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "129.275",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "129.275",
+          "external": "129.275"
         }
       ],
       "overall": "agree"
@@ -983,10 +967,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "61.978",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "61.978",
+          "external": "61.978"
         }
       ],
       "overall": "agree"
@@ -1030,10 +1013,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "14.972",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "14.972",
+          "external": "14.972"
         }
       ],
       "overall": "agree"
@@ -1078,10 +1060,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "49.842",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "49.842",
+          "external": "49.842"
         }
       ],
       "overall": "agree"
@@ -1119,20 +1100,18 @@
         },
         {
           "field": "pronunciation",
-          "status": "disagree",
-          "authored": "fʁɔmaʒ",
-          "external": "fʁomaʒ",
-          "note": "compare beyond the documented normalization (stress/syllable marks, ʀ→ʁ, g→ɡ) — investigate manually, never auto-correct"
+          "status": "agree",
+          "authored": "fʁomaʒ",
+          "external": "fʁomaʒ"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "29.117",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "29.117",
+          "external": "29.117"
         }
       ],
-      "overall": "attention"
+      "overall": "agree"
     },
     {
       "id": "fr:w:fruit",
@@ -1173,10 +1152,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "33.642",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "33.642",
+          "external": "33.642"
         }
       ],
       "overall": "agree"
@@ -1220,10 +1198,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "25.057",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "25.057",
+          "external": "25.057"
         }
       ],
       "overall": "agree"
@@ -1267,10 +1244,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "41.627",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "41.627",
+          "external": "41.627"
         }
       ],
       "overall": "agree"
@@ -1314,10 +1290,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "189.12",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "189.12",
+          "external": "189.12"
         }
       ],
       "overall": "agree"
@@ -1361,10 +1336,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "79.497",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "79.497",
+          "external": "79.497"
         }
       ],
       "overall": "agree"
@@ -1408,10 +1382,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "103.614",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "103.614",
+          "external": "103.614"
         }
       ],
       "overall": "agree"
@@ -1455,10 +1428,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "57.991",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "57.991",
+          "external": "57.991"
         }
       ],
       "overall": "agree"
@@ -1502,10 +1474,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "60.623",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "60.623",
+          "external": "60.623"
         }
       ],
       "overall": "agree"
@@ -1549,10 +1520,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "8.734",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "8.734",
+          "external": "8.734"
         }
       ],
       "overall": "agree"
@@ -1596,10 +1566,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "31.278",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "31.278",
+          "external": "31.278"
         }
       ],
       "overall": "agree"
@@ -1643,10 +1612,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "19.152",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "19.152",
+          "external": "19.152"
         }
       ],
       "overall": "agree"
@@ -1690,10 +1658,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "12.728",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "12.728",
+          "external": "12.728"
         }
       ],
       "overall": "agree"
@@ -1731,20 +1698,18 @@
         },
         {
           "field": "pronunciation",
-          "status": "disagree",
-          "authored": "ɑn",
-          "external": "an",
-          "note": "compare beyond the documented normalization (stress/syllable marks, ʀ→ʁ, g→ɡ) — investigate manually, never auto-correct"
+          "status": "agree",
+          "authored": "an",
+          "external": "an"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "9.07",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "9.07",
+          "external": "9.07"
         }
       ],
-      "overall": "attention"
+      "overall": "agree"
     },
     {
       "id": "fr:w:poule",
@@ -1785,10 +1750,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "5.544",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "5.544",
+          "external": "5.544"
         }
       ],
       "overall": "agree"
@@ -1826,20 +1790,18 @@
         },
         {
           "field": "pronunciation",
-          "status": "disagree",
-          "authored": "kɔʃɔ̃",
-          "external": "koʃɔ̃",
-          "note": "compare beyond the documented normalization (stress/syllable marks, ʀ→ʁ, g→ɡ) — investigate manually, never auto-correct"
+          "status": "agree",
+          "authored": "koʃɔ̃",
+          "external": "koʃɔ̃"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "21.953",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "21.953",
+          "external": "21.953"
         }
       ],
-      "overall": "attention"
+      "overall": "agree"
     },
     {
       "id": "fr:w:ville",
@@ -1880,10 +1842,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "296.149",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "296.149",
+          "external": "296.149"
         }
       ],
       "overall": "agree"
@@ -1927,10 +1888,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "133.187",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "133.187",
+          "external": "133.187"
         }
       ],
       "overall": "agree"
@@ -1969,15 +1929,14 @@
         {
           "field": "pronunciation",
           "status": "agree",
-          "authored": "ɡaʁ",
+          "authored": "gaʁ",
           "external": "gaʁ"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "21.434",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "21.434",
+          "external": "21.434"
         }
       ],
       "overall": "agree"
@@ -2015,20 +1974,18 @@
         },
         {
           "field": "pronunciation",
-          "status": "disagree",
-          "authored": "aeʁɔpɔʁ",
-          "external": "aeʁopɔʁ",
-          "note": "compare beyond the documented normalization (stress/syllable marks, ʀ→ʁ, g→ɡ) — investigate manually, never auto-correct"
+          "status": "agree",
+          "authored": "aeʁopɔʁ",
+          "external": "aeʁopɔʁ"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "34.924",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "34.924",
+          "external": "34.924"
         }
       ],
-      "overall": "attention"
+      "overall": "agree"
     },
     {
       "id": "fr:w:hotel",
@@ -2069,10 +2026,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "102.484",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "102.484",
+          "external": "102.484"
         }
       ],
       "overall": "agree"
@@ -2116,10 +2072,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "20.503",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "20.503",
+          "external": "20.503"
         }
       ],
       "overall": "agree"
@@ -2163,10 +2118,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "60.987",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "60.987",
+          "external": "60.987"
         }
       ],
       "overall": "agree"
@@ -2210,10 +2164,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "164.434",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "164.434",
+          "external": "164.434"
         }
       ],
       "overall": "agree"
@@ -2257,10 +2210,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "50.769",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "50.769",
+          "external": "50.769"
         }
       ],
       "overall": "agree"
@@ -2304,10 +2256,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "30.136",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "30.136",
+          "external": "30.136"
         }
       ],
       "overall": "agree"
@@ -2347,15 +2298,14 @@
         {
           "field": "pronunciation",
           "status": "agree",
-          "authored": "ɡoʃ",
+          "authored": "goʃ",
           "external": "goʃ"
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "55.453",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "55.453",
+          "external": "55.453"
         }
       ],
       "overall": "attention"
@@ -2399,10 +2349,9 @@
         },
         {
           "field": "frequency",
-          "status": "authored-missing",
-          "authored": null,
-          "external": "48.661",
-          "note": "expected before frequency activation (P5A.3) — the activation flips these to agree"
+          "status": "agree",
+          "authored": "48.661",
+          "external": "48.661"
         }
       ],
       "overall": "agree"
@@ -2410,8 +2359,8 @@
   ],
   "summary": {
     "items": {
-      "agree": 44,
-      "attention": 7,
+      "agree": 48,
+      "attention": 3,
       "not-applicable": 3
     },
     "fields": {
@@ -2420,8 +2369,7 @@
         "not-applicable": 3
       },
       "lemma": {
-        "agree": 49,
-        "disagree": 2
+        "agree": 51
       },
       "partOfSpeech": {
         "agree": 49,
@@ -2433,11 +2381,10 @@
         "ambiguous": 1
       },
       "pronunciation": {
-        "agree": 45,
-        "disagree": 6
+        "agree": 51
       },
       "frequency": {
-        "authored-missing": 51
+        "agree": 51
       }
     }
   }

@@ -52,31 +52,32 @@ Lexique 4 only), and no other dictionary/corpus dataset was substituted
 (Phase 4 mandate: no Wiktionary/Kaikki/Tatoeba/FreeDict/Lingua Libre
 ingestion).
 
-## What this means for the shipped data (fail-closed rules)
+## Fail-closed rules (written in Phase 4; still binding, now in their retrieved state)
 
-1. `content/fr/lexicon/source-manifest.json` records the source with
-   `retrieval.status: "not-retrieved"` and `sha256: null`. The ingestion
-   command (`bun run lexicon:source:extract`) **refuses to run** until a
-   developer places the official artifact locally, records its SHA-256 in
-   the manifest, and confirms the column layout against the official
-   documentation. There is no code path that ingests unpinned data.
-2. Every learner-facing field currently shipped for the 54 curriculum
-   lexemes is **newly-authored original project material** (glosses reuse
-   the project's existing course content; pronunciation, examples, gender,
-   topics are authored and carry `original-project` source references).
-   Nothing is labeled as Lexique-derived anywhere in the data, the app, or
-   the reports.
-3. Frequency fields are **absent** (the Phase 4 rule is: frequency comes
-   only from real Lexique measurements). UI that would need frequency
-   (e.g. a frequency sort in the vocabulary browser) stays hidden while the
-   data honestly cannot support it.
-4. The per-lexeme source-match audit reports `source-unavailable` for all
-   entries rather than inventing matches; the article-consistency audit
-   runs against authored gender (a real internal-consistency gate) and
-   gains the Lexique cross-check automatically once the artifact is
-   ingested.
-5. CI never downloads anything: ingestion is a deliberate developer-side
-   action; CI validates only committed derived data.
+1. `content/fr/lexicon/source-manifest.json` pins the retrieval (status
+   `retrieved`, official URL, date, SHA-256, confirmed 37-column layout).
+   Verification (`bun run lexicon:source:verify`), derivation
+   (`bun run lexicon:derive`, runner-side) and import
+   (`bun run lexicon:import`) all **refuse to run** against an artifact or
+   derived file whose hash differs from the pin — a future Lexique release
+   is a deliberate re-pin, never a silent upgrade. There is no code path
+   that ingests unpinned data.
+2. Glosses, examples, topics and confusable relations remain
+   **newly-authored original project material**; frequency and
+   pronunciation for the 51 effectively-matched word lexemes are now REAL
+   Lexique 4 measurements (raw 12_FreqLemme + population rank +
+   population-quantile band; 3_Phono_IPA verbatim), each carrying a
+   `lexique-4` source reference with the adopted row key. The 3
+   expressions stay entirely project-authored.
+3. Frequency-dependent UI (the vocabulary browser's Frequency sort)
+   activated only when the data became real, and sorts by raw per-million.
+4. The per-lexeme source-match audit in the committed reports is the REAL
+   audit from the committed evidence subset (49 matched, 2 justified
+   overrides, 3 not-applicable expressions); cross-check dispositions are
+   in REVIEW.md pass 3 and the honest attention queue is
+   derived/core-crosscheck.json.
+5. CI never downloads anything: acquisition runs only via the
+   dispatch-only workflow; CI validates committed derived data offline.
 
 ## How the retrieval was planned (Phase 4, written before it happened)
 

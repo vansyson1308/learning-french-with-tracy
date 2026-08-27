@@ -217,6 +217,35 @@ describe("crossCheckCore", () => {
     expect(item.overall).toBe("agree");
   });
 
+  test("a documented override supplies the evidence row; the POS divergence stays flagged", () => {
+    const lex = lexeme({
+      id: "fr:w:bonjour",
+      surface: "bonjour",
+      lemma: "bonjour",
+      lookupForm: "bonjour",
+      partOfSpeech: "interjection",
+      gender: undefined,
+      pronunciation: { value: "bɔ̃ʒuʁ", notation: "ipa", source: "lexique-4" },
+      frequency: { source: "lexique-4", rawValue: 483.788, band: "very-common" },
+    });
+    const rows = [noun("bonjour", "m", "bɔ̃ʒuʁ", "483.788")];
+    const overrides = new Map([["fr:w:bonjour", "bonjour|NOM|m|s"]]);
+    const report = crossCheckCore(lexiconOf(lex), coreLexemeRows(lexiconOf(lex), rows), overrides);
+    const item = report.items[0];
+    expect(item.matchStatus).toBe("unmatched");
+    expect(item.overrideKey).toBe("bonjour|NOM|m|s");
+    const by = Object.fromEntries(item.fields.map((f) => [f.field, f.status]));
+    // Fields compare against the adopted row, not against nothing.
+    expect(by.lemma).toBe("agree");
+    expect(by.pronunciation).toBe("agree");
+    expect(by.frequency).toBe("agree");
+    // The real taxonomy divergence stays visible, with the disposition note.
+    const pos = item.fields.find((f) => f.field === "partOfSpeech");
+    expect(pos?.status).toBe("disagree");
+    expect(pos?.note).toContain("documented override");
+    expect(item.overall).toBe("attention");
+  });
+
   test("summary counts add up per field", () => {
     const lex = lexeme({ id: "fr:w:chat", lookupForm: "chat", lemma: "chat", surface: "le chat" });
     const report = reportFor(lexiconOf(lex), [noun("chat", "m", "ʃa", "30")]);

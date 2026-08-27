@@ -38,6 +38,8 @@ export type ItemCrossCheck = {
   lookupForm: string;
   matchStatus: MatchStatus;
   matchKey: string | null;
+  /** Set when a documented match override supplies the evidence row. */
+  overrideKey?: string;
   fields: FieldCheck[];
   /** "attention" iff any field disagrees or is ambiguous — the manual queue. */
   overall: "agree" | "attention" | "not-applicable";
@@ -72,7 +74,8 @@ export function normalizeIpaForComparison(value: string): string {
 function check(
   lex: RichLexeme,
   entry: CoreLexemeRows["entries"][number],
-  audit: CoreLexemeRows["audit"][number]
+  audit: CoreLexemeRows["audit"][number],
+  overrideKey: string | undefined
 ): ItemCrossCheck {
   const base = {
     id: lex.id,
@@ -80,6 +83,7 @@ function check(
     lookupForm: lex.lookupForm,
     matchStatus: audit.status,
     matchKey: audit.matchKey,
+    ...(audit.status !== "matched" && overrideKey !== undefined ? { overrideKey } : {}),
   };
 
   if (lex.partOfSpeech === "expression") {
@@ -111,13 +115,19 @@ function check(
     external: entry.formRows.length > 0 ? observedReadings : null,
   });
 
+  // The evidence row: the strict match, or the documented override's
+  // adopted row — so imported values are compared against the row they
+  // actually came from, never against nothing.
+  const evidenceKey =
+    audit.status === "matched" && audit.matchKey !== null ? audit.matchKey : overrideKey ?? null;
   const matched =
-    audit.status === "matched" && audit.matchKey !== null
-      ? entry.formRows.find((r) => trimmedRowKey(r) === audit.matchKey) ?? null
+    evidenceKey !== null
+      ? entry.formRows.find((r) => trimmedRowKey(r) === evidenceKey) ?? null
       : null;
+  const viaOverride = audit.status !== "matched" && overrideKey !== undefined && matched !== null;
 
   const rowStatus: CrossCheckStatus =
-    audit.status === "matched"
+    audit.status === "matched" || viaOverride
       ? "agree"
       : audit.status === "ambiguous"
         ? "ambiguous"
@@ -142,16 +152,15 @@ function check(
         ? { note: "source writes the ligature as a digraph (documented fold)" }
         : {}),
   });
+  const posAgrees = matched !== null && lexiquePosFor(matched.cgram) === lex.partOfSpeech;
   fields.push({
     field: "partOfSpeech",
-    status:
-      rowStatus === "agree"
-        ? matched && lexiquePosFor(matched.cgram) === lex.partOfSpeech
-          ? "agree"
-          : "disagree"
-        : rowStatus,
+    status: rowStatus === "agree" ? (posAgrees ? "agree" : "disagree") : rowStatus,
     authored: lex.partOfSpeech,
     external: matched ? matched.cgram : entry.formRows.length > 0 ? observedReadings : null,
+    ...(viaOverride && !posAgrees
+      ? { note: "taxonomy divergence accepted by documented override (match-overrides.json + REVIEW.md pass 3)" }
+      : {}),
   });
 
   // gender (nouns only).
@@ -266,7 +275,11 @@ function check(
   return { ...base, fields, overall: attention ? "attention" : "agree" };
 }
 
-export function crossCheckCore(lexicon: RichLexicon, core: CoreLexemeRows): CrossCheckReport {
+export function crossCheckCore(
+  lexicon: RichLexicon,
+  core: CoreLexemeRows,
+  overrides: ReadonlyMap<string, string> = new Map()
+): CrossCheckReport {
   const auditById = new Map(core.audit.map((row) => [row.id, row]));
   const entryById = new Map(core.entries.map((e) => [e.id, e]));
   const items = lexicon.lexemes.map((lex) => {
@@ -275,7 +288,7 @@ export function crossCheckCore(lexicon: RichLexicon, core: CoreLexemeRows): Cros
     if (!audit || !entry) {
       throw new Error(`core subset is missing lexeme ${lex.id} — regenerate the derived data`);
     }
-    return check(lex, entry, audit);
+    return check(lex, entry, audit, overrides.get(lex.id));
   });
 
   const itemCounts: Record<string, number> = {};

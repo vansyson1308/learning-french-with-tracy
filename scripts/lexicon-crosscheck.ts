@@ -7,7 +7,7 @@
  */
 import { writeFileSync } from "fs";
 
-import { loadRichLexicon, loadSourceManifest } from "./lib/lexicon";
+import { loadMatchOverrides, loadRichLexicon, loadSourceManifest } from "./lib/lexicon";
 import { crossCheckCore } from "./lib/lexicon-crosscheck";
 import type { CoreLexemeRows } from "./lib/lexique-derive-lib";
 import { canonicalJson, readJson, safeResolve } from "./lib/pipeline";
@@ -35,7 +35,8 @@ if (subset.source?.sha256 !== manifest.retrieval.sha256) {
 }
 
 const lexicon = loadRichLexicon();
-const report = crossCheckCore(lexicon, { audit: subset.audit, entries: subset.entries });
+const overrideKeys = new Map(loadMatchOverrides().overrides.map((o) => [o.id, o.matchKey]));
+const report = crossCheckCore(lexicon, { audit: subset.audit, entries: subset.entries }, overrideKeys);
 
 const out = safeResolve("content/fr/lexicon/derived/core-crosscheck.json");
 writeFileSync(
