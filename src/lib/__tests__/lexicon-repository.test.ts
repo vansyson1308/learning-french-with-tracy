@@ -114,6 +114,27 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
   });
 });
 
+describe("license artifacts in the compiled dataset (§101)", () => {
+  test("the web fallback carries the dataset license and full source attributions", () => {
+    const data = frWebFallback as GeneratedLexiconData & {
+      datasetLicense: string;
+      sources: { id: string; license: string; attribution: string; url: string }[];
+    };
+    expect(data.datasetLicense).toBe("CC-BY-SA-4.0");
+    expect(data.sources.length).toBeGreaterThanOrEqual(1);
+    for (const s of data.sources) {
+      expect(s.license.length).toBeGreaterThan(0);
+      expect(s.attribution.length).toBeGreaterThan(0);
+      expect(s.url.length).toBeGreaterThan(0);
+    }
+    // Every sourceRef in shipped entries points at a shipped source record.
+    const ids = new Set(data.sources.map((s) => s.id));
+    for (const e of data.entries) {
+      for (const ref of e.sourceRefs) expect(ids.has(ref.source)).toBe(true);
+    }
+  });
+});
+
 describe("runtime lexicon index (session-critical accessor)", () => {
   test("covers all 54 lexemes with pronunciation, example and topic", () => {
     const all = allLexemeMeta();

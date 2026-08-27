@@ -73,6 +73,9 @@ export default function RootLayout() {
         <Stack.Screen name="lesson/[id]" options={{ presentation: "fullScreenModal" }} />
         <Stack.Screen name="session/today" options={{ presentation: "fullScreenModal" }} />
         <Stack.Screen name="guidebook/[unitId]" options={{ presentation: "modal" }} />
+        <Stack.Screen name="vocabulary/index" />
+        <Stack.Screen name="vocabulary/[id]" />
+        <Stack.Screen name="licenses" options={{ presentation: "modal" }} />
       </Stack>
     </>
   );

@@ -7,6 +7,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { pickDistractors, tierOf } from "../learning/distractors";
+import { frItemIdFor } from "../learning/ids-fr";
 import { lexemeMetaFor, type LexemeMeta } from "../learning/lexicon-index";
 import { seededRng } from "../review-builder";
 import { PACKS } from "../../content/packs";
@@ -191,6 +192,5 @@ describe("determinism", () => {
 
 function idOf(w: Word): string {
   // Test helper: resolve through the frozen map the engine itself uses.
-  const { frItemIdFor } = require("../learning/ids-fr") as typeof import("../learning/ids-fr");
   return frItemIdFor(w.target);
 }

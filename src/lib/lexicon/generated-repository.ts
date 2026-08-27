@@ -16,7 +16,7 @@ import type {
 
 export type GeneratedLexiconData = {
   contentHash: string;
-  entries: Array<{
+  entries: {
     id: string;
     surface: string;
     lookupForm: string;
@@ -30,7 +30,7 @@ export type GeneratedLexiconData = {
     examples: { fr: string; en: string; source: string }[];
     confusables?: string[];
     sourceRefs: { source: string; key?: string }[];
-  }>;
+  }[];
 };
 
 type Entry = GeneratedLexiconData["entries"][number] & { ord: number };
