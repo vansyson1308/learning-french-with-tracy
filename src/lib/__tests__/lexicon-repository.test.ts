@@ -31,8 +31,14 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     expect(homme!.gloss).toBe("the man");
     expect(homme!.pronunciation).toEqual({ value: "ɔm", notation: "ipa" });
     expect(homme!.examples.length).toBeGreaterThanOrEqual(1);
-    expect(homme!.sourceRefs).toEqual([{ source: "original-french-lexicon" }]);
-    expect(homme!.frequency).toBeUndefined();
+    // Authored ref first, then the adopted Lexique 4 row (authored order is
+    // the cross-tier contract).
+    expect(homme!.sourceRefs).toEqual([
+      { source: "original-french-lexicon" },
+      { source: "lexique-4", key: "homme|NOM|m|s" },
+    ]);
+    // Real measurement: homme is the 57th most frequent learnable lemma.
+    expect(homme!.frequency).toEqual({ band: "very-common", rank: 57, perMillion: 1248.636 });
   });
 
   test("getById returns null for unknown ids", async () => {
@@ -79,11 +85,17 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     ]);
   });
 
-  test("frequency sort is not supported while no frequency data exists", async () => {
-    expect(await repo.supportsFrequencySort()).toBe(false);
-    // Still deterministic if called: falls back to course order.
+  test("frequency sort is supported and orders by raw per-million descending", async () => {
+    expect(await repo.supportsFrequencySort()).toBe(true);
     const byFreq = await repo.list({ sort: "frequency" });
-    expect(byFreq.map((r) => r.id)).toEqual((await repo.list()).map((r) => r.id));
+    const ids = byFreq.map((r) => r.id);
+    // Real Lexique 4 measurements: non (4070.88/M) > oui > homme > merci.
+    expect(ids.slice(0, 4)).toEqual(["fr:w:non", "fr:w:oui", "fr:w:homme", "fr:w:merci"]);
+    // merci has no population rank (ONO category) yet sorts by its raw
+    // frequency — rank is never the sort key.
+    expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
+    // The three unmeasured expressions sink to the end in course order.
+    expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
   });
 
   test("getExamples returns the authored example pairs", async () => {

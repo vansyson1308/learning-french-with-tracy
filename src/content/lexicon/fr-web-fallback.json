@@ -1,8 +1,15 @@
 {
-  "contentHash": "621c62cd6704d0a2",
-  "schemaVersion": 1,
+  "contentHash": "1fbec6664e13e1f4",
+  "schemaVersion": 2,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
+    {
+      "id": "lexique-4",
+      "name": "Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://lexique.org",
+      "attribution": "Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org)."
+    },
     {
       "id": "original-french-lexicon",
       "name": "Learning French with Tracy — authored French lexicon",
@@ -21,6 +28,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "people",
+      "frequency": {
+        "band": "very-common",
+        "rank": 57,
+        "perMillion": 1248.636
+      },
       "pronunciation": {
         "value": "ɔm",
         "notation": "ipa"
@@ -38,6 +50,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "homme|NOM|m|s"
         }
       ]
     },
@@ -50,6 +66,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "people",
+      "frequency": {
+        "band": "very-common",
+        "rank": 116,
+        "perMillion": 645.807
+      },
       "pronunciation": {
         "value": "fam",
         "notation": "ipa"
@@ -67,6 +88,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "femme|NOM|f|s"
         }
       ]
     },
@@ -79,8 +104,13 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "people",
+      "frequency": {
+        "band": "very-common",
+        "rank": 174,
+        "perMillion": 431.813
+      },
       "pronunciation": {
-        "value": "ɡaʁsɔ̃",
+        "value": "gaʁsɔ̃",
         "notation": "ipa"
       },
       "examples": [
@@ -96,6 +126,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "garçon|NOM|m|s"
         }
       ]
     },
@@ -108,6 +142,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "people",
+      "frequency": {
+        "band": "very-common",
+        "rank": 129,
+        "perMillion": 566.994
+      },
       "pronunciation": {
         "value": "fij",
         "notation": "ipa"
@@ -125,6 +164,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "fille|NOM|f|s"
         }
       ]
     },
@@ -137,6 +180,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1678,
+        "perMillion": 31.057
+      },
       "pronunciation": {
         "value": "pɔm",
         "notation": "ipa"
@@ -151,6 +199,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "pomme|NOM|f|s"
         }
       ]
     },
@@ -163,6 +215,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1292,
+        "perMillion": 43.415
+      },
       "pronunciation": {
         "value": "pɛ̃",
         "notation": "ipa"
@@ -177,6 +234,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "pain|NOM|m|s"
         }
       ]
     },
@@ -189,6 +250,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "food",
+      "frequency": {
+        "band": "very-common",
+        "rank": 293,
+        "perMillion": 239.519
+      },
       "pronunciation": {
         "value": "o",
         "notation": "ipa"
@@ -206,6 +272,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "eau|NOM|f|s"
         }
       ]
     },
@@ -218,6 +288,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1303,
+        "perMillion": 43.025
+      },
       "pronunciation": {
         "value": "lɛ",
         "notation": "ipa"
@@ -232,6 +307,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "lait|NOM|m|s"
         }
       ]
     },
@@ -243,6 +322,11 @@
       "gloss": "to eat",
       "pos": "verb",
       "topic": "food",
+      "frequency": {
+        "band": "very-common",
+        "rank": 193,
+        "perMillion": 395.06
+      },
       "pronunciation": {
         "value": "mɑ̃ʒe",
         "notation": "ipa"
@@ -260,6 +344,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "manger|VER||p"
         }
       ]
     },
@@ -271,6 +359,11 @@
       "gloss": "to drink",
       "pos": "verb",
       "topic": "food",
+      "frequency": {
+        "band": "very-common",
+        "rank": 267,
+        "perMillion": 266.661
+      },
       "pronunciation": {
         "value": "bwaʁ",
         "notation": "ipa"
@@ -288,6 +381,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "boire|VER||"
         }
       ]
     },
@@ -299,6 +396,11 @@
       "gloss": "yes",
       "pos": "adverb",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "rank": 29,
+        "perMillion": 3112.547
+      },
       "pronunciation": {
         "value": "wi",
         "notation": "ipa"
@@ -316,6 +418,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "oui|ADV||"
         }
       ]
     },
@@ -327,6 +433,11 @@
       "gloss": "no",
       "pos": "adverb",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "rank": 19,
+        "perMillion": 4070.88
+      },
       "pronunciation": {
         "value": "nɔ̃",
         "notation": "ipa"
@@ -344,6 +455,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "non|ADV||"
         }
       ]
     },
@@ -355,6 +470,11 @@
       "gloss": "hello / good day",
       "pos": "interjection",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "rank": 152,
+        "perMillion": 483.788
+      },
       "pronunciation": {
         "value": "bɔ̃ʒuʁ",
         "notation": "ipa"
@@ -372,6 +492,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "bonjour|NOM|m|s"
         }
       ]
     },
@@ -411,6 +535,10 @@
       "gloss": "thank you",
       "pos": "interjection",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "perMillion": 1030.361
+      },
       "pronunciation": {
         "value": "mɛʁsi",
         "notation": "ipa"
@@ -425,6 +553,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "merci|ONO||"
         }
       ]
     },
@@ -461,6 +593,11 @@
       "gloss": "good evening",
       "pos": "interjection",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "rank": 583,
+        "perMillion": 108.437
+      },
       "pronunciation": {
         "value": "bɔ̃swaʁ",
         "notation": "ipa"
@@ -479,6 +616,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "bonsoir|NOM|m|i"
         }
       ]
     },
@@ -518,6 +659,10 @@
       "gloss": "hi / bye (informal)",
       "pos": "interjection",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "perMillion": 224.959
+      },
       "pronunciation": {
         "value": "saly",
         "notation": "ipa"
@@ -535,6 +680,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "salut|ONO||"
         }
       ]
     },
@@ -546,6 +695,10 @@
       "gloss": "sorry / excuse me",
       "pos": "interjection",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "perMillion": 187.5
+      },
       "pronunciation": {
         "value": "paʁdɔ̃",
         "notation": "ipa"
@@ -560,6 +713,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "pardon|ONO||"
         }
       ]
     },
@@ -572,6 +729,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "rank": 117,
+        "perMillion": 639.25
+      },
       "pronunciation": {
         "value": "məsjø",
         "notation": "ipa"
@@ -589,6 +751,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "monsieur|NOM|m|s"
         }
       ]
     },
@@ -601,6 +767,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "greetings",
+      "frequency": {
+        "band": "very-common",
+        "rank": 276,
+        "perMillion": 254.953
+      },
       "pronunciation": {
         "value": "madam",
         "notation": "ipa"
@@ -618,6 +789,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "madame|NOM|f|s"
         }
       ]
     },
@@ -630,6 +805,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "very-common",
+        "rank": 500,
+        "perMillion": 129.275
+      },
       "pronunciation": {
         "value": "kafe",
         "notation": "ipa"
@@ -647,6 +827,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "café|NOM|m|s"
         }
       ]
     },
@@ -659,6 +843,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 984,
+        "perMillion": 61.978
+      },
       "pronunciation": {
         "value": "te",
         "notation": "ipa"
@@ -676,6 +865,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "thé|NOM|m|s"
         }
       ]
     },
@@ -688,6 +881,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 2878,
+        "perMillion": 14.972
+      },
       "pronunciation": {
         "value": "ʁi",
         "notation": "ipa"
@@ -702,6 +900,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "riz|NOM|m|i"
         }
       ]
     },
@@ -714,6 +916,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1156,
+        "perMillion": 49.842
+      },
       "pronunciation": {
         "value": "œf",
         "notation": "ipa"
@@ -728,6 +935,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "oeuf|NOM||"
         }
       ]
     },
@@ -740,8 +951,13 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1780,
+        "perMillion": 29.117
+      },
       "pronunciation": {
-        "value": "fʁɔmaʒ",
+        "value": "fʁomaʒ",
         "notation": "ipa"
       },
       "examples": [
@@ -754,6 +970,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "fromage|NOM|m|s"
         }
       ]
     },
@@ -766,6 +986,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1568,
+        "perMillion": 33.642
+      },
       "pronunciation": {
         "value": "fʁɥi",
         "notation": "ipa"
@@ -780,6 +1005,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "fruit|NOM|m|s"
         }
       ]
     },
@@ -792,6 +1021,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1977,
+        "perMillion": 25.057
+      },
       "pronunciation": {
         "value": "ʒy",
         "notation": "ipa"
@@ -809,6 +1043,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "jus|NOM|m|i"
         }
       ]
     },
@@ -821,6 +1059,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "food",
+      "frequency": {
+        "band": "common",
+        "rank": 1331,
+        "perMillion": 41.627
+      },
       "pronunciation": {
         "value": "pulɛ",
         "notation": "ipa"
@@ -838,6 +1081,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "poulet|NOM|m|s"
         }
       ]
     },
@@ -850,6 +1097,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "very-common",
+        "rank": 352,
+        "perMillion": 189.12
+      },
       "pronunciation": {
         "value": "ʃjɛ̃",
         "notation": "ipa"
@@ -867,6 +1119,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "chien|NOM|m|s"
         }
       ]
     },
@@ -879,6 +1135,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "common",
+        "rank": 780,
+        "perMillion": 79.497
+      },
       "pronunciation": {
         "value": "ʃa",
         "notation": "ipa"
@@ -896,6 +1157,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "chat|NOM|m|s"
         }
       ]
     },
@@ -908,6 +1173,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "very-common",
+        "rank": 617,
+        "perMillion": 103.614
+      },
       "pronunciation": {
         "value": "ʃəval",
         "notation": "ipa"
@@ -925,6 +1195,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "cheval|NOM|m|s"
         }
       ]
     },
@@ -937,6 +1211,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "common",
+        "rank": 1034,
+        "perMillion": 57.991
+      },
       "pronunciation": {
         "value": "wazo",
         "notation": "ipa"
@@ -951,6 +1230,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "oiseau|NOM|m|s"
         }
       ]
     },
@@ -963,6 +1246,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "common",
+        "rank": 1000,
+        "perMillion": 60.623
+      },
       "pronunciation": {
         "value": "pwasɔ̃",
         "notation": "ipa"
@@ -977,6 +1265,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "poisson|NOM|m|s"
         }
       ]
     },
@@ -989,6 +1281,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "animals",
+      "frequency": {
+        "band": "less-common",
+        "rank": 4055,
+        "perMillion": 8.734
+      },
       "pronunciation": {
         "value": "vaʃ",
         "notation": "ipa"
@@ -1006,6 +1303,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "vache|NOM|f|s"
         }
       ]
     },
@@ -1018,6 +1319,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "common",
+        "rank": 1673,
+        "perMillion": 31.278
+      },
       "pronunciation": {
         "value": "lapɛ̃",
         "notation": "ipa"
@@ -1035,6 +1341,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "lapin|NOM|m|s"
         }
       ]
     },
@@ -1047,6 +1357,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "animals",
+      "frequency": {
+        "band": "common",
+        "rank": 2406,
+        "perMillion": 19.152
+      },
       "pronunciation": {
         "value": "suʁi",
         "notation": "ipa"
@@ -1064,6 +1379,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "souris|NOM|f|i"
         }
       ]
     },
@@ -1076,6 +1395,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "common",
+        "rank": 3194,
+        "perMillion": 12.728
+      },
       "pronunciation": {
         "value": "mutɔ̃",
         "notation": "ipa"
@@ -1093,6 +1417,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "mouton|NOM|m|s"
         }
       ]
     },
@@ -1105,8 +1433,13 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "less-common",
+        "rank": 3960,
+        "perMillion": 9.07
+      },
       "pronunciation": {
-        "value": "ɑn",
+        "value": "an",
         "notation": "ipa"
       },
       "examples": [
@@ -1122,6 +1455,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "âne|NOM|m|s"
         }
       ]
     },
@@ -1134,6 +1471,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "animals",
+      "frequency": {
+        "band": "less-common",
+        "rank": 5339,
+        "perMillion": 5.544
+      },
       "pronunciation": {
         "value": "pul",
         "notation": "ipa"
@@ -1151,6 +1493,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "poule|NOM|f|s"
         }
       ]
     },
@@ -1163,8 +1509,13 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "animals",
+      "frequency": {
+        "band": "common",
+        "rank": 2191,
+        "perMillion": 21.953
+      },
       "pronunciation": {
-        "value": "kɔʃɔ̃",
+        "value": "koʃɔ̃",
         "notation": "ipa"
       },
       "examples": [
@@ -1177,6 +1528,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "cochon|NOM|m|s"
         }
       ]
     },
@@ -1189,6 +1544,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
+      "frequency": {
+        "band": "very-common",
+        "rank": 241,
+        "perMillion": 296.149
+      },
       "pronunciation": {
         "value": "vil",
         "notation": "ipa"
@@ -1203,6 +1563,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "ville|NOM|f|s"
         }
       ]
     },
@@ -1215,6 +1579,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
+      "frequency": {
+        "band": "very-common",
+        "rank": 480,
+        "perMillion": 133.187
+      },
       "pronunciation": {
         "value": "ʁy",
         "notation": "ipa"
@@ -1229,6 +1598,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "rue|NOM|f|s"
         }
       ]
     },
@@ -1241,8 +1614,13 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 2231,
+        "perMillion": 21.434
+      },
       "pronunciation": {
-        "value": "ɡaʁ",
+        "value": "gaʁ",
         "notation": "ipa"
       },
       "examples": [
@@ -1258,6 +1636,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gare|NOM|f|s"
         }
       ]
     },
@@ -1270,8 +1652,13 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 1530,
+        "perMillion": 34.924
+      },
       "pronunciation": {
-        "value": "aeʁɔpɔʁ",
+        "value": "aeʁopɔʁ",
         "notation": "ipa"
       },
       "examples": [
@@ -1287,6 +1674,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "aéroport|NOM|m|s"
         }
       ]
     },
@@ -1299,6 +1690,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "travel",
+      "frequency": {
+        "band": "very-common",
+        "rank": 620,
+        "perMillion": 102.484
+      },
       "pronunciation": {
         "value": "otɛl",
         "notation": "ipa"
@@ -1313,6 +1709,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "hôtel|NOM|m|s"
         }
       ]
     },
@@ -1325,6 +1725,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 2291,
+        "perMillion": 20.503
+      },
       "pronunciation": {
         "value": "myze",
         "notation": "ipa"
@@ -1339,6 +1744,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "musée|NOM|m|s"
         }
       ]
     },
@@ -1351,6 +1760,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 996,
+        "perMillion": 60.987
+      },
       "pronunciation": {
         "value": "bijɛ",
         "notation": "ipa"
@@ -1368,6 +1782,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "billet|NOM|m|s"
         }
       ]
     },
@@ -1380,6 +1798,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
+      "frequency": {
+        "band": "very-common",
+        "rank": 402,
+        "perMillion": 164.434
+      },
       "pronunciation": {
         "value": "kaʁt",
         "notation": "ipa"
@@ -1397,6 +1820,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "carte|NOM|f|s"
         }
       ]
     },
@@ -1409,6 +1836,11 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 1141,
+        "perMillion": 50.769
+      },
       "pronunciation": {
         "value": "taksi",
         "notation": "ipa"
@@ -1423,6 +1855,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "taxi|NOM|m|s"
         }
       ]
     },
@@ -1435,6 +1871,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 1728,
+        "perMillion": 30.136
+      },
       "pronunciation": {
         "value": "valiz",
         "notation": "ipa"
@@ -1449,6 +1890,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "valise|NOM|f|s"
         }
       ]
     },
@@ -1461,8 +1906,13 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 1067,
+        "perMillion": 55.453
+      },
       "pronunciation": {
-        "value": "ɡoʃ",
+        "value": "goʃ",
         "notation": "ipa"
       },
       "examples": [
@@ -1478,6 +1928,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gauche|NOM|e|s"
         }
       ]
     },
@@ -1490,6 +1944,11 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 1176,
+        "perMillion": 48.661
+      },
       "pronunciation": {
         "value": "dʁwat",
         "notation": "ipa"
@@ -1507,6 +1966,10 @@
       "sourceRefs": [
         {
           "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "droite|NOM|f|s"
         }
       ]
     }

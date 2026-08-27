@@ -33,6 +33,33 @@ function pick(target: string, direction: "targetToNative" | "nativeToTarget", se
   });
 }
 
+describe("band tier activation (§20) — real Lexique 4 bands make tier 3 non-vacuous", () => {
+  const meta = (target: string): LexemeMeta | undefined =>
+    lexemeMetaFor(frItemIdFor(wordFor(target).target));
+
+  test("same-POS candidates now split by frequency band", () => {
+    const chat = meta("le chat"); // noun, animals, band common (29.851/M)
+    expect(chat?.band).toBe("common");
+    // Same POS + same band, different topic → tier 3.
+    expect(tierOf(chat, meta("la gare"))).toBe(3); // noun, travel, common
+    expect(tierOf(chat, meta("la valise"))).toBe(3); // noun, travel, common
+    // Same POS, different band → only tier 4 now.
+    expect(tierOf(chat, meta("la ville"))).toBe(4); // noun, travel topic, very-common
+    expect(tierOf(chat, meta("l'eau"))).toBe(4); // noun, food topic, very-common
+    // Topic still outranks band (tier 2), whatever the band says.
+    expect(tierOf(chat, meta("la vache"))).toBe(2); // noun, animals, less-common
+  });
+
+  test("every lexeme surfaced to the distractor engine carries a real band", () => {
+    for (const w of frPool) {
+      const m = lexemeMetaFor(frItemIdFor(w.target));
+      if (m && m.pos !== "expression") {
+        expect(["very-common", "common", "less-common"]).toContain(m.band ?? "");
+      }
+    }
+  });
+});
+
 describe("tier preferences", () => {
   test("authored confusables always come first (gauche → droite)", () => {
     for (const seed of [1, 2, 3, 7, 99]) {

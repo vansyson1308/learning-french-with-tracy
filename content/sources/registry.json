@@ -28,6 +28,17 @@
       "notes": "Original project authorship: part of speech, gender, IPA pronunciation, topics, example sentences, and confusable relations for the 54 curriculum lexemes; native glosses reuse the course content already covered by upstream-lingo-lessons. Contains zero rows from Lexique or any external dictionary — the Lexique 4 source is identified in content/fr/lexicon/source-manifest.json and remains not-retrieved (see content/fr/lexicon/ACQUISITION.md). Published under CC BY-SA 4.0 per the approved licensing decision so future Lexique-4-derived data (also CC BY-SA 4.0) merges license-coherently. The dataset license never applies to application code, which keeps its existing MIT licensing."
     },
     {
+      "id": "lexique-4",
+      "name": "Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)",
+      "kind": "lexical database (frequency, contextual diversity, prevalence, phonology incl. IPA, lemmas, verb morphology)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://lexique.org",
+      "attribution": "Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).",
+      "retrievedAt": "2026-08-27",
+      "covers": ["content/fr/lexicon/derived/", "content/fr/lexicon/lexemes.json"],
+      "notes": "Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md)."
+    },
+    {
       "id": "ts-fsrs",
       "name": "ts-fsrs (open-spaced-repetition)",
       "kind": "code (runtime scheduling library)",

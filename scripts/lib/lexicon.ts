@@ -101,8 +101,14 @@ export function validateLexiconData(input: {
   registryIds: Set<string>;
   /** course surface → native gloss (first occurrence wins, as authored). */
   packGloss: Map<string, string>;
+  /**
+   * §18 band boundaries from the committed population statistics; when
+   * provided, every stored band must recompute from its rawValue — a band
+   * that drifts from the documented derivation fails the gate.
+   */
+  bandThresholds?: FrequencyBandThresholds;
 }): ValidationResult {
-  const { lexicon, manifest, frozenMap, runtimeMap, registryIds, packGloss } = input;
+  const { lexicon, manifest, frozenMap, runtimeMap, registryIds, packGloss, bandThresholds } = input;
   const errors: string[] = [];
   const err = (m: string) => errors.push(`lexicon: ${m}`);
 
@@ -226,6 +232,14 @@ export function validateLexiconData(input: {
     if (lex.frequency && lex.frequency.source !== LEXIQUE_SOURCE_ID) {
       err(`${where}: frequency must come from real ${LEXIQUE_SOURCE_ID} measurements only`);
     }
+    if (lex.frequency && bandThresholds) {
+      const expected = frequencyBandFor(lex.frequency.rawValue, bandThresholds);
+      if (lex.frequency.band !== expected) {
+        err(
+          `${where}: frequency band "${lex.frequency.band}" does not recompute from rawValue ${lex.frequency.rawValue} under the population thresholds (expected "${expected}") — re-run the import`
+        );
+      }
+    }
 
     // Relations: known ids, no self-reference, symmetric.
     for (const other of lex.relations?.confusables ?? []) {
@@ -270,6 +284,20 @@ export function validateLexicon(): ValidationResult {
       for (const word of unit.words) {
         if (!packGloss.has(word.target)) packGloss.set(word.target, word.native);
       }
+  // Band thresholds come from the committed population statistics when the
+  // derivation exists and matches the pinned artifact.
+  let bandThresholds: FrequencyBandThresholds | undefined;
+  const statsRel = "content/fr/lexicon/derived/frequency-stats.json";
+  if (manifest.retrieval.status === "retrieved" && existsSync(safeResolve(statsRel))) {
+    const stats = readJson(statsRel) as {
+      source?: { sha256?: string };
+      freqLemme?: { quantiles?: Record<string, number> };
+    };
+    if (stats.source?.sha256 === manifest.retrieval.sha256 && stats.freqLemme?.quantiles) {
+      bandThresholds = bandThresholdsFromStats({ freqLemme: { quantiles: stats.freqLemme.quantiles } });
+    }
+  }
+
   const result = validateLexiconData({
     lexicon,
     manifest,
@@ -277,6 +305,7 @@ export function validateLexicon(): ValidationResult {
     runtimeMap: FR_LEXEME_IDS,
     registryIds: new Set(loadRegistry().sources.map((s) => s.id)),
     packGloss,
+    bandThresholds,
   });
 
   // Manual match overrides validate against the committed evidence subset.
@@ -405,6 +434,30 @@ export type FrequencyBandThresholds = {
   /** per-million floor for "common" */
   common: number;
 };
+
+/**
+ * §18 band boundaries, derived from the committed population statistics —
+ * never hardcoded cutoffs:
+ *   very-common = top 1% of the eligible lemma population (freqLemme ≥ p99)
+ *   common      = top 5% (freqLemme ≥ p95)
+ *   less-common = the rest
+ * Rationale: the eligible population IS the learnable French lexicon
+ * (~65k lemmas); its top percentile (~650 lemmas) is the core spoken
+ * vocabulary tier and its top 5% (~3,250) roughly bounds a learner's
+ * first years — and the split is empirically discriminative over the
+ * curriculum (21/25/3 on the 49 matcher-matched core items) where
+ * coarser quantiles collapse every item into one band.
+ */
+export function bandThresholdsFromStats(stats: {
+  freqLemme: { quantiles: Record<string, number> };
+}): FrequencyBandThresholds {
+  const p99 = stats.freqLemme.quantiles.p99;
+  const p95 = stats.freqLemme.quantiles.p95;
+  if (typeof p99 !== "number" || typeof p95 !== "number") {
+    throw new Error("frequency-stats quantiles are missing p99/p95 — regenerate the derived statistics");
+  }
+  return { veryCommon: p99, common: p95 };
+}
 
 /**
  * Frequency bands over occurrences-per-million-words. The thresholds are

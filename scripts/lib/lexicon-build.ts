@@ -33,8 +33,13 @@ import { foldForSearch, foldLigatures } from "../../src/lib/learning/lexicon-sea
 import { canonicalJson, readJson, safeResolve } from "./pipeline";
 import { lexiconSourceAudit, type SourceMatchRow } from "./lexicon";
 
-/** Bump when the SQLite schema (tables/columns/pragmas) changes shape. */
-export const DB_SCHEMA_VERSION = 1;
+/**
+ * Bump when the SQLite schema (tables/columns/pragmas) changes shape.
+ * History: 1 = Phase 4 initial; 2 = lexeme_sources.ord (authored source-ref
+ * order is the cross-tier contract — alphabetical source_id ordering broke
+ * parity once lexemes carried two refs).
+ */
+export const DB_SCHEMA_VERSION = 2;
 
 /**
  * Bump when emission LOGIC changes what lands in the database without any
@@ -150,7 +155,13 @@ export function buildWebFallback(
       ...(lex.gender !== undefined ? { gender: lex.gender } : {}),
       ...(lex.topic !== undefined ? { topic: lex.topic } : {}),
       ...(lex.frequency !== undefined
-        ? { frequency: { band: lex.frequency.band, rank: lex.frequency.rank, perMillion: lex.frequency.rawValue } }
+        ? {
+            frequency: {
+              band: lex.frequency.band,
+              ...(lex.frequency.rank !== undefined ? { rank: lex.frequency.rank } : {}),
+              perMillion: lex.frequency.rawValue,
+            },
+          }
         : {}),
       ...(lex.pronunciation !== undefined
         ? { pronunciation: { value: lex.pronunciation.value, notation: lex.pronunciation.notation } }
@@ -213,6 +224,7 @@ CREATE TABLE lexeme_sources (
   lexeme_id TEXT NOT NULL REFERENCES lexemes(id),
   source_id TEXT NOT NULL REFERENCES sources(id),
   match_key TEXT,
+  ord INTEGER NOT NULL,
   PRIMARY KEY (lexeme_id, source_id)
 ) WITHOUT ROWID;
 CREATE VIRTUAL TABLE lexeme_fts USING fts5(
@@ -267,7 +279,7 @@ export function buildSqliteDb(
       "INSERT INTO relations (lexeme_id, rel_type, target_id) VALUES (?, 'confusable', ?)"
     );
     const insLexSource = db.prepare(
-      "INSERT INTO lexeme_sources (lexeme_id, source_id, match_key) VALUES (?, ?, ?)"
+      "INSERT INTO lexeme_sources (lexeme_id, source_id, match_key, ord) VALUES (?, ?, ?, ?)"
     );
     const insFts = db.prepare("INSERT INTO lexeme_fts (id, surface, lemma, gloss) VALUES (?, ?, ?, ?)");
 
@@ -298,7 +310,7 @@ export function buildSqliteDb(
     for (const lex of lexicon.lexemes) {
       lex.examples.forEach((ex, ordinal) => insExample.run(lex.id, ordinal, ex.fr, ex.en, ex.source));
       for (const target of lex.relations?.confusables ?? []) insRelation.run(lex.id, target);
-      for (const ref of lex.sourceRefs) insLexSource.run(lex.id, ref.source, ref.key ?? null);
+      lex.sourceRefs.forEach((ref, refIdx) => insLexSource.run(lex.id, ref.source, ref.key ?? null, refIdx));
     }
 
     const integrity = db.query<{ integrity_check: string }, []>("PRAGMA integrity_check").get();
@@ -335,7 +347,7 @@ export function logicalDump(dbPath: string): string {
       { name: "examples", order: "lexeme_id, ordinal" },
       { name: "relations", order: "lexeme_id, rel_type, target_id" },
       { name: "sources", order: "id" },
-      { name: "lexeme_sources", order: "lexeme_id, source_id" },
+      { name: "lexeme_sources", order: "lexeme_id, ord" },
       { name: "lexeme_fts", order: "id" },
     ];
     for (const t of tables) {

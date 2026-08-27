@@ -29,7 +29,8 @@ export type LexemeDetail = LexemeSummary & {
   lemma: string;
   lookupForm: string;
   pronunciation?: { value: string; notation: string };
-  frequency?: { band: string; rank: number; perMillion: number };
+  /** rank is the lemma's population rank; absent for unranked categories. */
+  frequency?: { band: string; rank?: number; perMillion: number };
   examples: LexemeExample[];
   confusables?: string[];
   sourceRefs: { source: string; key?: string }[];

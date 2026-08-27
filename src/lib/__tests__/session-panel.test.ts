@@ -161,7 +161,8 @@ describe("panelDataFor — display model", () => {
       topic: "animals",
     });
     expect(data?.example?.fr).toBe("Le chat boit du lait.");
-    expect(data?.band).toBeUndefined();
+    // Real Lexique 4 measurement: chat is in the common band (29.851/M).
+    expect(data?.band).toBe("common");
   });
 
   test("elided noun marks the l' cue so gender is still taught", () => {

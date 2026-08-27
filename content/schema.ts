@@ -191,11 +191,16 @@ export const LexemeExampleSchema = z.strictObject({
 export const LexemeFrequencySchema = z.strictObject({
   /** Registry id of the measurement source (real measurements only). */
   source: z.string().min(1),
-  /** The source's raw measurement (e.g. occurrences per million words). */
+  /** The source's raw measurement (occurrences per million words). */
   rawValue: z.number().nonnegative(),
-  /** 1-based rank among the source's entries under the documented ordering. */
-  rank: z.number().int().min(1),
-  /** Band derived from documented thresholds (see scripts/lib/lexicon.ts). */
+  /**
+   * 1-based rank in the eligible lemma population under the documented
+   * ordering (derived/core-ranks.json). Absent when the lemma's category
+   * sits outside the ranked population (e.g. interjections like merci) —
+   * sorting always uses rawValue, never rank.
+   */
+  rank: z.number().int().min(1).optional(),
+  /** Band derived from the population-quantile thresholds (§18). */
   band: z.enum(FREQUENCY_BAND_VALUES),
 });
 

@@ -44,22 +44,39 @@ describe("committed lexicon data", () => {
     expect(Object.keys(rich).length).toBe(54);
   });
 
-  test("every lexeme ships pronunciation labeled ipa from the authored source", () => {
+  test("post-activation pronunciation: genuine IPA everywhere; lexique-4 for matched words, authored for expressions", () => {
     for (const lex of loadRichLexicon().lexemes) {
       expect(lex.pronunciation?.notation).toBe("ipa");
-      expect(lex.pronunciation?.source).toBe("original-french-lexicon");
+      if (lex.partOfSpeech === "expression") {
+        expect(lex.pronunciation?.source).toBe("original-french-lexicon");
+      } else {
+        // Adopted verbatim from 3_Phono_IPA (REVIEW.md pass 3 disposition);
+        // never a Lexique-ASCII value mislabeled as IPA.
+        expect(lex.pronunciation?.source).toBe("lexique-4");
+        expect(lex.pronunciation?.value).not.toMatch(/[A-Z0-9§@°&]/);
+      }
     }
   });
 
-  test("no lexeme carries frequency or any lexique-4 reference while unretrieved", () => {
+  test("post-activation frequency: every word lexeme carries real lexique-4 measurements; expressions none", () => {
+    const unrankedOno = new Set(["fr:w:merci", "fr:w:salut", "fr:w:pardon"]);
     for (const lex of loadRichLexicon().lexemes) {
-      expect(lex.frequency).toBeUndefined();
-      const sources = [
-        ...lex.sourceRefs.map((r) => r.source),
-        ...lex.examples.map((e) => e.source),
-        lex.pronunciation?.source,
-      ];
-      expect(sources).not.toContain("lexique-4");
+      if (lex.partOfSpeech === "expression") {
+        expect(lex.frequency).toBeUndefined();
+        expect(lex.sourceRefs.map((r) => r.source)).not.toContain("lexique-4");
+        continue;
+      }
+      expect(lex.frequency?.source).toBe("lexique-4");
+      expect(lex.frequency!.rawValue).toBeGreaterThan(0);
+      // Population rank exists exactly where the category is ranked —
+      // the three ONO-category greetings legitimately have none.
+      if (unrankedOno.has(lex.id)) {
+        expect(lex.frequency!.rank).toBeUndefined();
+      } else {
+        expect(lex.frequency!.rank).toBeGreaterThanOrEqual(1);
+      }
+      // Provenance: the adopted row is recorded.
+      expect(lex.sourceRefs.some((r) => r.source === "lexique-4" && r.key)).toBe(true);
     }
   });
 });
