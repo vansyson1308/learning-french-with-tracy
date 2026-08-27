@@ -7,6 +7,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -41,6 +42,9 @@ import {
   type Status,
 } from "@/lib/grading";
 import { useCourseContent } from "@/lib/content";
+import { dueFrenchReviewQueue, itemIdForCourse } from "@/lib/learning/engine";
+import type { Modality } from "@/lib/learning/evidence";
+import { FR_COURSE_ID, isWordMappedFrSurface } from "@/lib/learning/ids-fr";
 import { buildSrsExercises, hashSeed } from "@/lib/review-builder";
 import { haptics } from "@/lib/haptics";
 import {
@@ -90,12 +94,27 @@ export default function LessonScreen() {
       return { exercises: list, lessonId: "mistakes", alreadyCompleted: true };
     }
     if (isSrs) {
-      const due = dueSrsWords(courseProgress.srs);
+      if (state.activeCourseId === FR_COURSE_ID) {
+        // French reviews come from FSRS cards, ordered ascending by
+        // retrievability — the most at-risk memories first.
+        const queue = dueFrenchReviewQueue(courseProgress.cards);
+        const seed = hashSeed(queue.map((d) => `${d.surface}@${d.dueAt}`).join("|"));
+        return {
+          exercises: buildSrsExercises(
+            queue.map((d) => d.surface),
+            allWords(),
+            seed
+          ),
+          lessonId: "srs",
+          alreadyCompleted: true,
+        };
+      }
+      const due = dueSrsWords(courseProgress.srs ?? {});
       // Seed derived purely from the session's content (due set + each word's
       // due date), so builds are deterministic per queue state and reproducible
       // in tests, while reshuffling once reviews change the queue.
       const seed = hashSeed(
-        due.map((t) => `${t}@${courseProgress.srs[t]?.dueAt ?? 0}`).join("|")
+        due.map((t) => `${t}@${courseProgress.srs?.[t]?.dueAt ?? 0}`).join("|")
       );
       return {
         exercises: buildSrsExercises(due, allWords(), seed),
@@ -124,6 +143,13 @@ export default function LessonScreen() {
   const wrongIds = useRef(new Set<string>());
   const [finished, setFinished] = useState(false);
   const finishedRef = useRef(false);
+  // Evidence bookkeeping: one stable sessionId per session instance (set in
+  // the reset effect, never during render), per-exercise attempt counts for
+  // retry detection, and the shown-at timestamp for latency.
+  const sessionIdRef = useRef("");
+  const attemptsRef = useRef(new Map<string, number>());
+  const shownAtRef = useRef(0);
+  const [lastMutated, setLastMutated] = useState(false);
 
   // Pre-existing session-reset pattern: the queue state machine re-seeds when
   // a new session's exercises arrive. Restructuring it (keyed remount /
@@ -139,6 +165,12 @@ export default function LessonScreen() {
     wrongIds.current = new Set();
     setFinished(false);
     finishedRef.current = false;
+    sessionIdRef.current = `s-${Date.now().toString(36)}-${Math.floor(
+      Math.random() * 0xffffffff
+    ).toString(36)}`;
+    attemptsRef.current = new Map();
+    shownAtRef.current = Date.now();
+    setLastMutated(false);
   }, [exercises]);
 
   const exercise = queue[index];
@@ -247,6 +279,39 @@ export default function LessonScreen() {
 
   if (!exercise) return <SafeAreaView style={styles.screen} />;
 
+  const isFrench = activeCourseId === FR_COURSE_ID;
+  const source = isSrs ? "review" : isMistakes ? "mistakes" : "lesson";
+
+  const submitSelectEvidence = (target: string, isCorrect: boolean) => {
+    const attempt = attemptsRef.current.get(exercise.id) ?? 0;
+    attemptsRef.current.set(exercise.id, attempt + 1);
+    const modality: Modality =
+      exercise.type === "select" && exercise.mode === "listen"
+        ? "listen"
+        : exercise.type === "select" && exercise.mode === "nativeToTarget"
+          ? "produceText"
+          : "recognizeText";
+    // Conservative eligibility (§O2b): review warm-ups and lesson selects on
+    // a mapped word are designated assessments; mistake re-drills and
+    // unmapped surfaces are practice. Legacy courses ignore the role.
+    const eligible = !isMistakes && (!isFrench || isWordMappedFrSurface(target));
+    const mutated = progress.submitEvidence({
+      cardKey: { itemId: itemIdForCourse(activeCourseId, target), skill: "recognize" },
+      sessionId: sessionIdRef.current,
+      exerciseId: exercise.id,
+      modality,
+      srsRole: eligible ? "assessment" : "practice",
+      source,
+      correct: isCorrect,
+      hinted: false,
+      assisted: false,
+      toleranceUsed: false,
+      latencyMs: Math.max(0, Date.now() - shownAtRef.current),
+      attemptIndex: attempt,
+    });
+    setLastMutated(mutated);
+  };
+
   const onCheck = () => {
     const isCorrect = checkAnswer(exercise, answer);
     if (isCorrect) {
@@ -256,8 +321,7 @@ export default function LessonScreen() {
       setCorrectCount((c) => c + 1);
       progress.clearMistake(exercise.id);
       if (exercise.type === "select" && exercise.audioTarget) {
-        if (isSrs) progress.reviewSrsWord(exercise.audioTarget, true);
-        else progress.recordWord(exercise.audioTarget, true);
+        submitSelectEvidence(exercise.audioTarget, true);
         if (exercise.mode === "nativeToTarget")
           speakTarget(activeCourseId, exercise.audioTarget);
       }
@@ -270,8 +334,7 @@ export default function LessonScreen() {
         progress.addMistake({ lessonId, exerciseId: exercise.id });
       }
       if (exercise.type === "select" && exercise.audioTarget) {
-        if (isSrs) progress.reviewSrsWord(exercise.audioTarget, false);
-        else progress.recordWord(exercise.audioTarget, false);
+        submitSelectEvidence(exercise.audioTarget, false);
       }
     }
   };
@@ -280,7 +343,23 @@ export default function LessonScreen() {
     if (status === "wrong") setQueue((q) => [...q, exercise]);
     setStatus("none");
     setAnswer(null);
+    setLastMutated(false);
+    shownAtRef.current = Date.now();
     setIndex((i) => i + 1);
+  };
+
+  // Undo (French reviews): reverts the scheduler write and returns the
+  // exercise to its unanswered state — the review never happened.
+  const onUndo = () => {
+    if (!progress.undoLastFrenchReview()) return;
+    const attempt = attemptsRef.current.get(exercise.id) ?? 1;
+    attemptsRef.current.set(exercise.id, Math.max(0, attempt - 1));
+    if (status === "correct") setCorrectCount((c) => Math.max(0, c - 1));
+    if (status === "wrong") wrongIds.current.delete(exercise.id);
+    setStatus("none");
+    setAnswer(null);
+    setLastMutated(false);
+    shownAtRef.current = Date.now();
   };
 
   return (
@@ -329,6 +408,10 @@ export default function LessonScreen() {
             <Match
               exercise={exercise}
               onComplete={(wrongAttempts) => {
+                attemptsRef.current.set(
+                  exercise.id,
+                  (attemptsRef.current.get(exercise.id) ?? 0) + 1
+                );
                 if (wrongAttempts > 0) {
                   sfx.playIncorrect();
                   wrongIds.current.add(exercise.id);
@@ -345,7 +428,28 @@ export default function LessonScreen() {
                 setAnswer(null);
                 setIndex((i) => i + 1);
               }}
-              onWordResult={(target, ok) => progress.recordWord(target, ok)}
+              onWordResult={(target, ok) =>
+                // Matching is a game mechanic: srsRole "none" never touches
+                // the FSRS scheduler; legacy courses translate to the exact
+                // historical recordWord call.
+                progress.submitEvidence({
+                  cardKey: {
+                    itemId: itemIdForCourse(activeCourseId, target),
+                    skill: "recognize",
+                  },
+                  sessionId: sessionIdRef.current,
+                  exerciseId: exercise.id,
+                  modality: "match",
+                  srsRole: "none",
+                  source,
+                  correct: ok,
+                  hinted: false,
+                  assisted: false,
+                  toleranceUsed: false,
+                  latencyMs: Math.max(0, Date.now() - shownAtRef.current),
+                  attemptIndex: attemptsRef.current.get(exercise.id) ?? 0,
+                })
+              }
             />
           )}
           {exercise.type === "typeAnswer" && (
@@ -381,6 +485,9 @@ export default function LessonScreen() {
               <Text style={[styles.feedback, { color: colors.correctText }]}>
                 Nicely done!
               </Text>
+              {lastMutated && isSrs ? (
+                <UndoLink onPress={onUndo} color={colors.correctText} />
+              ) : null}
             </Animated.View>
           )}
           {status === "wrong" && (
@@ -390,6 +497,9 @@ export default function LessonScreen() {
                 <Text style={[styles.feedback, { color: colors.wrongText }]}>
                   Correct answer:
                 </Text>
+                {lastMutated && isSrs ? (
+                  <UndoLink onPress={onUndo} color={colors.wrongText} />
+                ) : null}
               </View>
               <Text style={[styles.feedbackDetail, { color: colors.wrongText }]}>
                 {correctAnswerText(exercise)}
@@ -412,6 +522,23 @@ export default function LessonScreen() {
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
+  );
+}
+
+/** Modest undo affordance — shown only after an FSRS scheduler write. */
+function UndoLink({ onPress, color }: { onPress: () => void; color: string }) {
+  const styles = useStyles();
+  return (
+    <Pressable
+      onPress={onPress}
+      hitSlop={10}
+      accessibilityRole="button"
+      accessibilityLabel="Undo this review"
+      style={styles.undoLink}
+    >
+      <Ionicons name="arrow-undo" size={16} color={color} />
+      <Text style={[styles.undoText, { color }]}>Undo</Text>
+    </Pressable>
   );
 }
 
@@ -484,6 +611,15 @@ const useStyles = makeThemedStyles((colors) => StyleSheet.create({
   },
   feedbackRow: { flexDirection: "row", alignItems: "center", gap: 8 },
   feedback: { fontSize: 20, fontWeight: "800" },
+  undoLink: {
+    marginLeft: "auto",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  undoText: { fontSize: 14, fontWeight: "700" },
   feedbackDetail: { fontSize: 16, fontWeight: "600", marginTop: 2, marginLeft: 34 },
   center: {
     flex: 1,

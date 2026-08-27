@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.3.11 # pinned to the locally verified Phase-0/1 toolchain
       - name: Install (frozen lockfile)
         run: bun install --frozen-lockfile
       - name: Typecheck
@@ -49,7 +49,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.3.11 # pinned to the locally verified Phase-0/1 toolchain
       - name: Install (frozen lockfile)
         run: bun install --frozen-lockfile
       - name: Export web bundle

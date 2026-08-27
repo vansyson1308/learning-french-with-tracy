@@ -15,8 +15,11 @@ export const DEFAULT_EASE = 2.5;
 export const MIN_EASE = 1.3;
 
 /** Quality 0 = wrong, 1 = hard-but-correct, 2 = good. */
-export function reviewWord(entry: SrsEntry | undefined, quality: 0 | 1 | 2): SrsEntry {
-  const now = Date.now();
+export function reviewWord(
+  entry: SrsEntry | undefined,
+  quality: 0 | 1 | 2,
+  now = Date.now()
+): SrsEntry {
   const base: SrsEntry = entry ?? { interval: 0, ease: DEFAULT_EASE, dueAt: now, streak: 0 };
 
   if (quality === 0) {
@@ -47,7 +50,12 @@ export function isDue(entry: SrsEntry | undefined, now = Date.now()) {
 }
 
 export function dueInDays(entry: SrsEntry, now = Date.now()) {
-  const ms = entry.dueAt - now;
+  return dueInDaysAt(entry.dueAt, now);
+}
+
+/** Same math for callers that hold a bare due timestamp (FSRS cards). */
+export function dueInDaysAt(dueAt: number, now = Date.now()) {
+  const ms = dueAt - now;
   if (ms <= 0) return 0;
   return Math.ceil(ms / 86_400_000);
 }

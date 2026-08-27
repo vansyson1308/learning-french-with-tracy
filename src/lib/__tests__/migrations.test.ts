@@ -15,16 +15,16 @@ import richFixture from "../__fixtures__/progress/v0-rich.json";
 // for fixtures and is tested separately with crafted inputs.
 const NOW = new Date(2026, 5, 15, 12, 0, 0);
 
-describe("v0 → v1 migration (fixtures)", () => {
+describe("v0 → v1 migration (fixtures, step-scoped to v1)", () => {
   test("rich current-shape user: pollution pruned, everything else intact", () => {
-    const out = migrateProgress(richFixture.state, 0, NOW);
+    const out = migrateProgress(richFixture.state, 0, NOW, 1);
     const fr = out.courses["fr-en"];
     expect(fr.completedLessons["srs"]).toBeUndefined();
     expect(fr.completedLessons["mistakes"]).toBeUndefined();
     expect(fr.completedLessons["fr-en:u0-l0"]).toBe(true);
     expect(fr.completedLessons["fr-en:u0-l1"]).toBe(true);
     expect(fr.xp).toBe(215);
-    expect(fr.srs["l'homme"]).toEqual({
+    expect(fr.srs!["l'homme"]).toEqual({
       interval: 3,
       ease: 2.6,
       dueAt: 1768200000000,
@@ -42,12 +42,12 @@ describe("v0 → v1 migration (fixtures)", () => {
   });
 
   test("flat legacy user nests under the default course, keeping theme + days", () => {
-    const out = migrateProgress(flatFixture.state, 0, NOW);
+    const out = migrateProgress(flatFixture.state, 0, NOW, 1);
     const course = out.courses[DEFAULT_COURSE_ID];
     expect(course.xp).toBe(45);
     expect(course.completedLessons["es-en:u0-l0"]).toBe(true);
     expect(course.completedLessons["srs"]).toBeUndefined();
-    expect(course.srs["el agua"].interval).toBe(1);
+    expect(course.srs!["el agua"].interval).toBe(1);
     expect(course.wordStats["el agua"].correct).toBe(2);
     // The old (dead) in-code migration dropped these two — the fix keeps them.
     expect(out.themePreference).toBe("light");
@@ -59,7 +59,7 @@ describe("v0 → v1 migration (fixtures)", () => {
   });
 
   test("fresh install is untouched apart from defaults", () => {
-    const out = migrateProgress(freshFixture.state, 0, NOW);
+    const out = migrateProgress(freshFixture.state, 0, NOW, 1);
     expect(out.courses).toEqual({});
     expect(out.streak).toBe(0);
     expect(out.onboardingDone).toBe(false);
@@ -68,16 +68,16 @@ describe("v0 → v1 migration (fixtures)", () => {
 
   test("multi-course user: every course survives, only pollution changes", () => {
     const input = multiFixture.state;
-    const out = migrateProgress(input, 0, NOW);
+    const out = migrateProgress(input, 0, NOW, 1);
     expect(Object.keys(out.courses).sort()).toEqual(["es-en", "fr-en", "ja-en"]);
     expect(out.courses["es-en"].mistakes).toHaveLength(2);
-    expect(out.courses["es-en"].srs["el agua"].interval).toBe(20);
+    expect(out.courses["es-en"].srs!["el agua"].interval).toBe(20);
     expect(out.courses["ja-en"].completedLessons["srs"]).toBeUndefined();
     expect(out.courses["ja-en"].completedLessons["ja-en:u0-l0"]).toBe(true);
     expect(out.courses["fr-en"].completedLessons["mistakes"]).toBeUndefined();
     // Totality: no srs/wordStats keys lost anywhere.
     for (const id of Object.keys(input.courses) as (keyof typeof input.courses)[]) {
-      expect(Object.keys(out.courses[id].srs)).toEqual(
+      expect(Object.keys(out.courses[id].srs!)).toEqual(
         Object.keys(input.courses[id].srs)
       );
       expect(Object.keys(out.courses[id].wordStats)).toEqual(
@@ -87,8 +87,8 @@ describe("v0 → v1 migration (fixtures)", () => {
   });
 
   test("already-v1 input passes through unchanged", () => {
-    const v1 = migrateProgress(richFixture.state, 0, NOW);
-    const again = migrateProgress(v1, 1, NOW);
+    const v1 = migrateProgress(richFixture.state, 0, NOW, 1);
+    const again = migrateProgress(v1, 1, NOW, 1);
     expect(again).toEqual(v1);
   });
 });

@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, test } from "bun:test";
 
 import { dayString } from "../dates";
+import { __setMigrationFailureForTests } from "../persistence/migrations";
 import {
   dailyQuests,
   lastSevenDays,
@@ -35,8 +36,8 @@ beforeEach(() => {
   resetStore();
 });
 
-describe("persist wiring: rehydrate runs the v0→v1 migration", () => {
-  test("v0 fixture rehydrates migrated, and the next write stores version 1", async () => {
+describe("persist wiring: rehydrate runs the full migration chain", () => {
+  test("v0 fixture rehydrates at v2: French on FSRS cards, next write stores version 2", async () => {
     await rehydrateFrom(richFixture);
     const s = useProgress.getState();
     expect(s.streak).toBe(5);
@@ -44,16 +45,36 @@ describe("persist wiring: rehydrate runs the v0→v1 migration", () => {
     expect(s.courses["fr-en"].xp).toBe(215);
     expect(s.courses["fr-en"].completedLessons["srs"]).toBeUndefined();
     expect(s.courses["fr-en"].completedLessons["fr-en:u0-l0"]).toBe(true);
-    expect(s.courses["fr-en"].srs["l'homme"].interval).toBe(3);
+    // v2: French srs became FSRS cards under stable ids (legacy copy kept).
+    expect(s.courses["fr-en"].srs).toBeUndefined();
+    expect(s.courses["fr-en"].cards!["fr:w:homme|recognize"].stability).toBe(3);
+    expect(s.courses["fr-en"].srsLegacy!["l'homme"].interval).toBe(3);
 
     useProgress.getState().setThemePreference("light");
     await new Promise((r) => setTimeout(r, 0)); // let persist flush
     const raw = memoryStorage.get(PROGRESS_STORAGE_KEY);
     expect(raw).toBeTruthy();
     const stored = JSON.parse(raw as string);
-    expect(stored.version).toBe(1);
+    expect(stored.version).toBe(2);
     expect(stored.state.themePreference).toBe("light");
     expect(stored.state.courses["fr-en"].completedLessons["srs"]).toBeUndefined();
+    expect(stored.state.courses["fr-en"].cards["fr:w:femme|recognize"].state).toBe("new");
+  });
+
+  test("a failing migration leaves stored bytes untouched (fail closed)", async () => {
+    const before = JSON.stringify(richFixture);
+    memoryStorage.set(PROGRESS_STORAGE_KEY, before);
+    __setMigrationFailureForTests(2);
+    try {
+      await Promise.resolve(useProgress.persist.rehydrate()).catch(() => undefined);
+    } finally {
+      __setMigrationFailureForTests(null);
+    }
+    // The learner's only copy of their data was not rewritten or lost —
+    // the next launch (with the bug fixed) migrates it normally.
+    expect(memoryStorage.get(PROGRESS_STORAGE_KEY)).toBe(before);
+    await useProgress.persist.rehydrate();
+    expect(useProgress.getState().courses["fr-en"].cards).toBeDefined();
   });
 });
 
