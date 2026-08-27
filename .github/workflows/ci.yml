@@ -1,0 +1,61 @@
+# Phase 0 CI: install → typecheck → tests (across timezones) → lint → export size.
+#
+# Test runner decision (Phase 0 spike): `bun test`.
+# - Bun is already the package manager; the runner needs zero new config.
+# - Every unit under test is a pure TS module (grading, dates, migrations,
+#   backup-core, review-builder) or runs against the AsyncStorage/expo-module
+#   mocks preloaded via bunfig.toml — no React Native runtime is ever loaded,
+#   so no babel/jest-expo transform chain is needed.
+# - `jest-expo` remains the documented option if component tests are wanted
+#   later; it was not adopted now because it adds a large dependency and
+#   transform surface for zero additional coverage at this phase.
+#
+# The test job runs under three timezones on purpose: streak/day logic is
+# local-time-based and the v0→v1 migration grandfathers UTC-written day keys,
+# so both offset signs (and UTC itself) must stay green.
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tz: ["UTC", "America/Los_Angeles", "Asia/Tokyo"]
+    env:
+      TZ: ${{ matrix.tz }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Typecheck
+        run: bunx tsc --noEmit
+      - name: Unit tests
+        run: bun test
+      - name: Lint
+        if: matrix.tz == 'UTC'
+        run: bun run lint
+
+  export-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Export web bundle
+        run: bunx expo export --platform web --output-dir dist
+      - name: Report export size
+        run: |
+          echo "## Web export size" >> "$GITHUB_STEP_SUMMARY"
+          du -sh dist | tee -a "$GITHUB_STEP_SUMMARY"
+          du -sh dist/_expo/static/js/web/*.js | sort -rh | head -5 | tee -a "$GITHUB_STEP_SUMMARY"

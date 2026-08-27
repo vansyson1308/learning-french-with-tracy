@@ -1,0 +1,46 @@
+{
+  "state": {
+    "activeCourseId": "fr-en",
+    "streak": 5,
+    "lastActiveDay": "2026-01-10",
+    "dailyGoal": 20,
+    "dailyXp": 30,
+    "dailyXpDay": "2026-01-10",
+    "onboardingDone": true,
+    "themePreference": "dark",
+    "courses": {
+      "fr-en": {
+        "xp": 215,
+        "completedLessons": {
+          "fr-en:u0-l0": true,
+          "fr-en:u0-l1": true,
+          "srs": true,
+          "mistakes": true
+        },
+        "mistakes": [
+          { "lessonId": "fr-en:u0-l1", "exerciseId": "fr-en:u0-l1-e3" }
+        ],
+        "wordStats": {
+          "l'homme": { "correct": 4, "wrong": 1, "lastSeen": 1767950000000 }
+        },
+        "srs": {
+          "l'homme": { "interval": 3, "ease": 2.6, "dueAt": 1768200000000, "streak": 2 },
+          "la femme": { "interval": 0, "ease": 2.3, "dueAt": 1767950000000, "streak": 0 }
+        }
+      },
+      "es-en": {
+        "xp": 15,
+        "completedLessons": { "es-en:u0-l0": true },
+        "mistakes": [],
+        "wordStats": {},
+        "srs": {}
+      }
+    },
+    "activeDays": {
+      "2026-01-10": { "xp": 30, "lessons": 2, "perfect": 1 }
+    },
+    "hearts": 3,
+    "heartsUpdatedAt": 1767000000000
+  },
+  "version": 0
+}

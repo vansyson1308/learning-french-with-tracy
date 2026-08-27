@@ -1,16 +1,41 @@
 import { Stack, router, useSegments } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import * as SystemUI from "expo-system-ui";
-import React, { useEffect } from "react";
+import React, { useEffect, useSyncExternalStore } from "react";
 
 import { useProgress } from "@/lib/store";
 import { useResolvedScheme, useThemeColors } from "@/lib/theme";
+
+// Hold the splash until the persisted store has rehydrated — otherwise the
+// first frames render default state and returning users see an onboarding
+// flash on every cold start.
+SplashScreen.preventAutoHideAsync().catch(() => {});
+
+function subscribeToHydration(callback: () => void) {
+  return useProgress.persist.onFinishHydration(callback);
+}
+function getHydrated() {
+  return useProgress.persist.hasHydrated();
+}
+function getServerHydrated() {
+  return false;
+}
 
 export default function RootLayout() {
   const onboardingDone = useProgress((s) => s.onboardingDone);
   const segments = useSegments();
   const scheme = useResolvedScheme();
   const colors = useThemeColors();
+  const hydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getHydrated,
+    getServerHydrated
+  );
+
+  useEffect(() => {
+    if (hydrated) SplashScreen.hideAsync().catch(() => {});
+  }, [hydrated]);
 
   useEffect(() => {
     // Root window color, so transitions and overscroll never flash white.
@@ -18,6 +43,7 @@ export default function RootLayout() {
   }, [colors.background]);
 
   useEffect(() => {
+    if (!hydrated) return;
     const inOnboarding = segments[0] === "onboarding";
     const state = useProgress.getState();
     const hasProgress = Object.values(state.courses).some(
@@ -30,7 +56,7 @@ export default function RootLayout() {
     } else if (!shouldShowOnboarding && inOnboarding) {
       router.replace("/(tabs)");
     }
-  }, [onboardingDone, segments]);
+  }, [hydrated, onboardingDone, segments]);
 
   return (
     <>

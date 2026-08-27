@@ -1,0 +1,4 @@
+[test]
+# Mocks for native-backed modules (AsyncStorage, expo-file-system, …) so the
+# store and backup shells are testable in plain Bun. See __tests__/setup.ts.
+preload = ["./src/lib/__tests__/setup.ts"]
