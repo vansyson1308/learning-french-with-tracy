@@ -1,11 +1,17 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Image } from "expo-image";
-import React from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Flag } from "@/components/flag";
+import {
+  commitImport,
+  exportProgress,
+  pickBackupFile,
+  prepareImport,
+} from "@/lib/backup";
 import { useCourseContent } from "@/lib/content";
 import {
   currentStreak,
@@ -175,8 +181,97 @@ export default function ProfileScreen() {
             Device follows your phone&apos;s light or dark setting.
           </Text>
         </View>
+
+        <DataCard />
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+function DataCard() {
+  const colors = useThemeColors();
+  const styles = useStyles();
+  const [busy, setBusy] = useState(false);
+
+  const onExport = async () => {
+    setBusy(true);
+    const result = await exportProgress();
+    setBusy(false);
+    if (!result.ok) Alert.alert("Export failed", result.reason);
+  };
+
+  const onImport = async () => {
+    setBusy(true);
+    const picked = await pickBackupFile();
+    setBusy(false);
+    if (picked.kind === "canceled") return;
+    if (picked.kind === "error") {
+      Alert.alert("Import failed", picked.reason);
+      return;
+    }
+    const staged = prepareImport(picked.raw);
+    if (!staged.ok) {
+      Alert.alert("Import failed", staged.reason);
+      return;
+    }
+    const courseCount = Object.keys(staged.state.courses).length;
+    Alert.alert(
+      "Replace progress?",
+      `This replaces your current progress with the backup (${courseCount} ` +
+        `course${courseCount === 1 ? "" : "s"}, ${staged.state.streak}-day ` +
+        "streak). A safety copy of your current progress is saved first.",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Import",
+          style: "destructive",
+          onPress: async () => {
+            setBusy(true);
+            const result = await commitImport(staged.state);
+            setBusy(false);
+            if (result.ok) Alert.alert("Progress imported");
+            else Alert.alert("Import failed", result.reason);
+          },
+        },
+      ]
+    );
+  };
+
+  return (
+    <View style={styles.settingsCard}>
+      <View style={styles.settingsHeader}>
+        <Ionicons name="archive-outline" size={22} color={colors.skyDark} />
+        <Text style={styles.settingsTitle}>Data</Text>
+      </View>
+      <Pressable
+        onPress={onExport}
+        disabled={busy}
+        accessibilityRole="button"
+        accessibilityLabel="Export progress"
+        style={styles.dataRow}
+      >
+        <Ionicons name="download-outline" size={20} color={colors.green} />
+        <View style={styles.dataRowText}>
+          <Text style={styles.dataRowTitle}>Export progress</Text>
+          <Text style={styles.settingsHint}>Save a backup file of everything.</Text>
+        </View>
+        <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
+      </Pressable>
+      <Pressable
+        onPress={onImport}
+        disabled={busy}
+        accessibilityRole="button"
+        accessibilityLabel="Import progress"
+        style={styles.dataRow}
+      >
+        <Ionicons name="cloud-upload-outline" size={20} color={colors.indigo} />
+        <View style={styles.dataRowText}>
+          <Text style={styles.dataRowTitle}>Import progress</Text>
+          <Text style={styles.settingsHint}>Restore from a backup file.</Text>
+        </View>
+        <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
+      </Pressable>
+    </View>
   );
 }
 
@@ -256,4 +351,12 @@ const useStyles = makeThemedStyles((colors) => StyleSheet.create({
   themeLabel: { fontSize: 13, fontWeight: "700", color: colors.textMuted },
   themeLabelActive: { color: colors.greenDark },
   settingsHint: { fontSize: 12, color: colors.textMuted },
+  dataRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingVertical: 6,
+  },
+  dataRowText: { flex: 1, gap: 2 },
+  dataRowTitle: { fontSize: 15, fontWeight: "700", color: colors.neutral700 },
 }));

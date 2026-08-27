@@ -1,0 +1,57 @@
+{
+  "state": {
+    "activeCourseId": "ja-en",
+    "streak": 12,
+    "lastActiveDay": "2026-01-08",
+    "dailyGoal": 50,
+    "dailyXp": 65,
+    "dailyXpDay": "2026-01-08",
+    "onboardingDone": true,
+    "themePreference": "system",
+    "courses": {
+      "fr-en": {
+        "xp": 120,
+        "completedLessons": { "fr-en:u0-l0": true, "mistakes": true },
+        "mistakes": [],
+        "wordStats": {
+          "le pain": { "correct": 3, "wrong": 2, "lastSeen": 1767800000000 }
+        },
+        "srs": {
+          "le pain": { "interval": 8, "ease": 2.7, "dueAt": 1768600000000, "streak": 3 }
+        }
+      },
+      "es-en": {
+        "xp": 350,
+        "completedLessons": { "es-en:u0-l0": true, "es-en:u0-l1": true },
+        "mistakes": [
+          { "lessonId": "es-en:u0-l1", "exerciseId": "es-en:u0-l1-e5" },
+          { "lessonId": "es-en:u1-l0", "exerciseId": "es-en:u1-l0-e2" }
+        ],
+        "wordStats": {
+          "el agua": { "correct": 9, "wrong": 1, "lastSeen": 1767900000000 },
+          "la manzana": { "correct": 5, "wrong": 4, "lastSeen": 1767910000000 }
+        },
+        "srs": {
+          "el agua": { "interval": 20, "ease": 2.8, "dueAt": 1769600000000, "streak": 4 },
+          "la manzana": { "interval": 1, "ease": 2.15, "dueAt": 1768000000000, "streak": 1 }
+        }
+      },
+      "ja-en": {
+        "xp": 60,
+        "completedLessons": { "ja-en:u0-l0": true, "ja-en:u0-l1": true, "srs": true },
+        "mistakes": [],
+        "wordStats": {
+          "男の人": { "correct": 2, "wrong": 0, "lastSeen": 1767940000000 }
+        },
+        "srs": {
+          "男の人": { "interval": 3, "ease": 2.55, "dueAt": 1768200000000, "streak": 2 }
+        }
+      }
+    },
+    "activeDays": {
+      "2026-01-07": { "xp": 30, "lessons": 2, "perfect": 0 },
+      "2026-01-08": { "xp": 65, "lessons": 3, "perfect": 2 }
+    }
+  },
+  "version": 0
+}

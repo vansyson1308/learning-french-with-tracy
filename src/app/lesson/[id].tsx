@@ -33,7 +33,15 @@ import { Select } from "@/components/exercises/select";
 import { TypeAnswer } from "@/components/exercises/type-answer";
 import { WordBank } from "@/components/exercises/word-bank";
 import { speakTarget, useSfx } from "@/lib/audio";
+import {
+  answerIsReady,
+  checkAnswer,
+  correctAnswerText,
+  type Answer,
+  type Status,
+} from "@/lib/grading";
 import { useCourseContent } from "@/lib/content";
+import { buildSrsExercises, hashSeed } from "@/lib/review-builder";
 import { haptics } from "@/lib/haptics";
 import {
   currentStreak,
@@ -45,70 +53,6 @@ import {
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 import type { Exercise } from "@/lib/types";
 
-type Status = "none" | "correct" | "wrong";
-type Answer = number | number[] | string | null;
-
-function normalize(text: string) {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[.,!?¿¡;:"'、。！？]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function checkAnswer(exercise: Exercise, answer: Answer): boolean {
-  switch (exercise.type) {
-    case "select":
-    case "fillBlank":
-      return answer === exercise.correct;
-    case "wordBank": {
-      if (!Array.isArray(answer)) return false;
-      const attempt = answer.map((i) => exercise.tokens[i]).join(" ");
-      return normalize(attempt) === normalize(exercise.answer.join(" "));
-    }
-    case "typeAnswer": {
-      if (typeof answer !== "string") return false;
-      const attempt = normalize(answer);
-      return [exercise.answer, ...exercise.alternatives].some(
-        (a) => normalize(a) === attempt
-      );
-    }
-    case "match":
-      return answer === "done";
-  }
-}
-
-function correctAnswerText(exercise: Exercise): string {
-  switch (exercise.type) {
-    case "select":
-      return exercise.options[exercise.correct].text;
-    case "fillBlank":
-      return exercise.sentence.replace("___", exercise.options[exercise.correct]);
-    case "wordBank":
-      return exercise.answer.join(" ");
-    case "typeAnswer":
-      return exercise.answer;
-    case "match":
-      return "";
-  }
-}
-
-function answerIsReady(exercise: Exercise, answer: Answer): boolean {
-  switch (exercise.type) {
-    case "select":
-    case "fillBlank":
-      return typeof answer === "number";
-    case "wordBank":
-      return Array.isArray(answer) && answer.length > 0;
-    case "typeAnswer":
-      return typeof answer === "string" && answer.trim().length > 0;
-    case "match":
-      return answer === "done";
-  }
-}
-
 export default function LessonScreen() {
   const colors = useThemeColors();
   const styles = useStyles();
@@ -116,42 +60,25 @@ export default function LessonScreen() {
   const insets = useSafeAreaInsets();
   const progress = useProgress();
   const { activeCourseId } = progress;
-  const courseProgress = progress.course();
-  const { pack, getLesson, allWords, getWord } = useCourseContent(activeCourseId);
+  const { pack, getLesson, allWords } = useCourseContent(activeCourseId);
   const sfx = useSfx();
 
   const isMistakes = id === "mistakes";
   const isSrs = id === "srs";
 
-  const buildSrsExercises = (dueWords: string[]): Exercise[] => {
-    const pool = allWords();
-    return dueWords.slice(0, 10).flatMap((target) => {
-      const word = getWord(target);
-      if (!word) return [];
-      const distractors = pool
-        .filter((w) => w.target !== target)
-        .slice(0, 3)
-        .map((w) => ({ text: w.native }));
-      const options = [{ text: word.native, emoji: word.emoji }, ...distractors].slice(
-        0,
-        4
-      );
-      const correctIndex = options.findIndex((o) => o.text === word.native);
-      return [
-        {
-          type: "select" as const,
-          id: `srs-${target}`,
-          mode: "targetToNative" as const,
-          prompt: "What does this mean?",
-          audioTarget: word.target,
-          options,
-          correct: correctIndex >= 0 ? correctIndex : 0,
-        },
-      ];
-    });
-  };
-
   const { exercises, lessonId, alreadyCompleted } = useMemo(() => {
+    // Session content is frozen at entry: read the store imperatively so the
+    // grading writes made DURING the session don't rebuild this memo and
+    // reset the queue mid-session (which previously made mistake/review
+    // sessions restart after every answer).
+    const state = useProgress.getState();
+    const courseProgress = state.courses[state.activeCourseId] ?? {
+      xp: 0,
+      completedLessons: {},
+      mistakes: [],
+      wordStats: {},
+      srs: {},
+    };
     if (isMistakes) {
       const list = courseProgress.mistakes
         .map((m) => {
@@ -164,8 +91,14 @@ export default function LessonScreen() {
     }
     if (isSrs) {
       const due = dueSrsWords(courseProgress.srs);
+      // Seed derived purely from the session's content (due set + each word's
+      // due date), so builds are deterministic per queue state and reproducible
+      // in tests, while reshuffling once reviews change the queue.
+      const seed = hashSeed(
+        due.map((t) => `${t}@${courseProgress.srs[t]?.dueAt ?? 0}`).join("|")
+      );
       return {
-        exercises: buildSrsExercises(due),
+        exercises: buildSrsExercises(due, allWords(), seed),
         lessonId: "srs",
         alreadyCompleted: true,
       };
@@ -176,8 +109,10 @@ export default function LessonScreen() {
       lessonId: ref?.lesson.id ?? "",
       alreadyCompleted: !!courseProgress.completedLessons[ref?.lesson.id ?? ""],
     };
+    // Store data is intentionally read via getState (not subscribed) — only a
+    // new route or course switch starts a new session.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, activeCourseId, courseProgress.mistakes, courseProgress.srs]);
+  }, [id, activeCourseId]);
 
   const isPractice = isMistakes || isSrs || alreadyCompleted;
 
@@ -190,7 +125,12 @@ export default function LessonScreen() {
   const [finished, setFinished] = useState(false);
   const finishedRef = useRef(false);
 
+  // Pre-existing session-reset pattern: the queue state machine re-seeds when
+  // a new session's exercises arrive. Restructuring it (keyed remount /
+  // extracted session engine) is deliberately deferred to the orchestrator
+  // phase — out of scope for the Phase 0 correctness slice.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setQueue(exercises);
     setIndex(0);
     setStatus("none");
@@ -217,7 +157,10 @@ export default function LessonScreen() {
     if (!exercise && total > 0 && !finishedRef.current) {
       finishedRef.current = true;
       const perfect = wrongIds.current.size === 0;
-      progress.completeLesson(lessonId, perfect);
+      // Practice (mistakes/review/replays) counts as activity for the streak
+      // but never awards lesson XP or writes completedLessons.
+      if (isPractice) progress.recordPracticeSession();
+      else progress.completeLesson(lessonId, perfect);
       sfx.playFinish();
       haptics.celebrate();
       setFinished(true);
@@ -237,6 +180,10 @@ export default function LessonScreen() {
   }
 
   if (finished) {
+    // Pre-existing pattern: wrongIds is a ref mutated during answering; by the
+    // time `finished` renders it is stable for the session. Restructuring is
+    // deferred with the session-engine extraction (orchestrator phase).
+    // eslint-disable-next-line react-hooks/refs
     const perfect = wrongIds.current.size === 0;
     return (
       <SafeAreaView style={styles.screen}>
@@ -256,12 +203,23 @@ export default function LessonScreen() {
                 : "Lesson complete!"}
           </Animated.Text>
           <Animated.View entering={FadeInUp.delay(300)} style={styles.resultRow}>
-            <ResultCard
-              label="Total XP"
-              value={`${XP_PER_LESSON + (perfect ? XP_PERFECT_BONUS : 0)}`}
-              icon={<Ionicons name="flash" size={20} color={colors.amber} />}
-              color={colors.amber}
-            />
+            {isPractice ? (
+              <ResultCard
+                label="Reviewed"
+                value={`${correctCount}`}
+                icon={
+                  <Ionicons name="checkmark-done" size={20} color={colors.green} />
+                }
+                color={colors.green}
+              />
+            ) : (
+              <ResultCard
+                label="Total XP"
+                value={`${XP_PER_LESSON + (perfect ? XP_PERFECT_BONUS : 0)}`}
+                icon={<Ionicons name="flash" size={20} color={colors.amber} />}
+                color={colors.amber}
+              />
+            )}
             <ResultCard
               label="Streak"
               value={`${currentStreak(progress)}`}
@@ -271,7 +229,7 @@ export default function LessonScreen() {
               color={colors.orange}
             />
           </Animated.View>
-          {perfect ? (
+          {perfect && !isPractice ? (
             <Animated.Text entering={FadeInUp.delay(450)} style={styles.perfect}>
               Perfect lesson! +{XP_PERFECT_BONUS} XP
             </Animated.Text>
