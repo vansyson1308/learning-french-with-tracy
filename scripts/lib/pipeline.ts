@@ -24,6 +24,10 @@ import {
   type PackSource,
   type SourceRegistry,
 } from "../../content/schema";
+import {
+  acceptedNumberSpellings,
+  frenchNumber,
+} from "../../src/lib/learning/french-numbers";
 import { FR_COURSE_ID, FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
@@ -80,6 +84,35 @@ export type ValidationResult = { errors: string[]; warnings: string[] };
 type AnyExercise = PackSource["sections"][number]["units"][number]["lessons"][number]["exercises"][number];
 
 export function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) => void) {
+  // Number-drill agreement (Phase 5B §75-80): any French exercise whose
+  // prompt is a bare integer 0-100 is a number drill, and its expected
+  // answer must agree with the deterministic engine — the pack can never
+  // drift from the verified spelling rules.
+  if (courseId === "fr-en") {
+    const numeric = (s: string) => (/^\d{1,3}$/.test(s) ? Number(s) : null);
+    if (e.type === "typeAnswer" && e.mode === "produceTarget") {
+      const n = numeric(e.prompt);
+      if (n !== null && n >= 0 && n <= 100) {
+        const accepted = acceptedNumberSpellings(n);
+        if (e.answer !== accepted[0] || JSON.stringify(e.alternatives) !== JSON.stringify(accepted.slice(1))) {
+          push(
+            `${e.id}: number drill for ${n} must accept exactly [${accepted.join(", ")}] (engine spelling), got answer "${e.answer}" alternatives [${e.alternatives.join(", ")}]`
+          );
+        }
+      }
+    }
+    if (e.type === "select") {
+      const n = numeric(e.prompt);
+      if (n !== null && n >= 0 && n <= 100) {
+        const expected = frenchNumber(n).traditional;
+        if (e.options[e.correct]?.text !== expected) {
+          push(
+            `${e.id}: digit→word select for ${n} must key "${expected}" (engine spelling), got "${e.options[e.correct]?.text}"`
+          );
+        }
+      }
+    }
+  }
   if (e.type === "select") {
     if (e.correct >= e.options.length) push(`${e.id}: correct index out of range`);
     const texts = e.options.map((o) => o.text);

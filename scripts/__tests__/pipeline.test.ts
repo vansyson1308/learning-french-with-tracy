@@ -12,6 +12,7 @@ import {
   readJson,
   safeResolve,
   validateContent,
+  validateExercise,
   validateRegistry,
 } from "../lib/pipeline";
 
@@ -211,5 +212,83 @@ describe("audio foundation", () => {
     const result = checkAudio();
     expect(result.errors).toEqual([]);
     expect(result.checkedFiles).toBe(859);
+  });
+});
+
+describe("number-drill engine agreement (§75-80)", () => {
+  const errorsFor = (e: unknown): string[] => {
+    const out: string[] = [];
+    validateExercise("fr-en", e as Parameters<typeof validateExercise>[1], (m) => out.push(m));
+    return out;
+  };
+
+  test("an engine-agreeing produceTarget drill passes", () => {
+    expect(
+      errorsFor({
+        type: "typeAnswer",
+        id: "n1",
+        mode: "produceTarget",
+        prompt: "21",
+        answer: "vingt et un",
+        alternatives: ["vingt-et-un"],
+      })
+    ).toEqual([]);
+  });
+
+  test("a drifted produceTarget answer fails", () => {
+    expect(
+      errorsFor({
+        type: "typeAnswer",
+        id: "n2",
+        mode: "produceTarget",
+        prompt: "80",
+        answer: "quatre-vingt", // missing the bare -s
+        alternatives: [],
+      }).join("\n")
+    ).toContain("engine spelling");
+  });
+
+  test("missing rectified alternatives fail", () => {
+    expect(
+      errorsFor({
+        type: "typeAnswer",
+        id: "n3",
+        mode: "produceTarget",
+        prompt: "71",
+        answer: "soixante et onze",
+        alternatives: [], // must also accept soixante-et-onze
+      }).join("\n")
+    ).toContain("engine spelling");
+  });
+
+  test("a digit→word select keying the wrong spelling fails", () => {
+    expect(
+      errorsFor({
+        type: "select",
+        id: "n4",
+        mode: "targetToNative",
+        prompt: "81",
+        options: [
+          { text: "quatre-vingt et un" }, // no et in the 80s
+          { text: "quatre-vingts" },
+          { text: "quatre-vingt-onze" },
+          { text: "soixante et un" },
+        ],
+        correct: 0,
+      }).join("\n")
+    ).toContain('must key "quatre-vingt-un"');
+  });
+
+  test("non-numeric prompts are untouched by the rule", () => {
+    expect(
+      errorsFor({
+        type: "typeAnswer",
+        id: "n5",
+        mode: "produceTarget",
+        prompt: "the water",
+        answer: "l'eau",
+        alternatives: [],
+      })
+    ).toEqual([]);
   });
 });

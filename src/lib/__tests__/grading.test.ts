@@ -106,3 +106,26 @@ describe("answerIsReady / correctAnswerText", () => {
     expect(correctAnswerText(typeAnswer)).toBe("I am a woman.");
   });
 });
+
+describe("typeAnswer number spellings (Phase 5B §77)", () => {
+  const drill: Exercise = {
+    type: "typeAnswer",
+    id: "num-21",
+    mode: "produceTarget",
+    prompt: "21",
+    answer: "vingt et un",
+    alternatives: ["vingt-et-un"],
+  };
+
+  test("both official orthographies are accepted", () => {
+    expect(checkAnswer(drill, "vingt et un")).toBe(true);
+    expect(checkAnswer(drill, "vingt-et-un")).toBe(true);
+    expect(checkAnswer(drill, "Vingt et un")).toBe(true);
+  });
+
+  test("hyphens are structural — a mashed or half-hyphenated form is wrong", () => {
+    expect(checkAnswer(drill, "vingtetun")).toBe(false);
+    expect(checkAnswer(drill, "vingt et-un")).toBe(false);
+    expect(checkAnswer(drill, "vingt deux")).toBe(false);
+  });
+});
