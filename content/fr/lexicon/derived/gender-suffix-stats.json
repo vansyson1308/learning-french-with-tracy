@@ -1,0 +1,2123 @@
+{
+  "source": {
+    "id": "lexique-4",
+    "sha256": "fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a",
+    "url": "https://lexique.org/databases/Lexique400/Lexique400.tsv",
+    "retrievedAt": "2026-08-27"
+  },
+  "generator": "scripts/lexique-derive.ts",
+  "population": {
+    "definition": "rows with 14_IsLem = 1 whose 5_Cgram maps to noun, whose 1_Mot is a lowercase single word (proper nouns and multiword rows excluded) and which carry a 7_Genre value (m, f or e); one entry per (lemma, gender), so a genuinely two-gender noun counts once per gender",
+    "size": 36940,
+    "byGenre": {
+      "m": 21965,
+      "f": 13091,
+      "e": 1884
+    }
+  },
+  "researchedSuffixes": [
+    {
+      "ending": "tion",
+      "m": 9,
+      "f": 1886,
+      "e": 0,
+      "total": 1895
+    },
+    {
+      "ending": "sion",
+      "m": 1,
+      "f": 220,
+      "e": 1,
+      "total": 222
+    },
+    {
+      "ending": "té",
+      "m": 87,
+      "f": 944,
+      "e": 0,
+      "total": 1031
+    },
+    {
+      "ending": "eau",
+      "m": 205,
+      "f": 7,
+      "e": 0,
+      "total": 212
+    },
+    {
+      "ending": "age",
+      "m": 1216,
+      "f": 12,
+      "e": 6,
+      "total": 1234
+    },
+    {
+      "ending": "isme",
+      "m": 615,
+      "f": 0,
+      "e": 1,
+      "total": 616
+    },
+    {
+      "ending": "ette",
+      "m": 20,
+      "f": 449,
+      "e": 7,
+      "total": 476
+    },
+    {
+      "ending": "ence",
+      "m": 4,
+      "f": 228,
+      "e": 0,
+      "total": 232
+    },
+    {
+      "ending": "ance",
+      "m": 2,
+      "f": 269,
+      "e": 1,
+      "total": 272
+    },
+    {
+      "ending": "ure",
+      "m": 58,
+      "f": 349,
+      "e": 7,
+      "total": 414
+    },
+    {
+      "ending": "oir",
+      "m": 147,
+      "f": 2,
+      "e": 0,
+      "total": 149
+    },
+    {
+      "ending": "eur",
+      "m": 1793,
+      "f": 96,
+      "e": 49,
+      "total": 1938
+    },
+    {
+      "ending": "euse",
+      "m": 1,
+      "f": 75,
+      "e": 1,
+      "total": 77
+    },
+    {
+      "ending": "ie",
+      "m": 59,
+      "f": 1831,
+      "e": 12,
+      "total": 1902
+    },
+    {
+      "ending": "aison",
+      "m": 0,
+      "f": 47,
+      "e": 0,
+      "total": 47
+    },
+    {
+      "ending": "ment",
+      "m": 1092,
+      "f": 1,
+      "e": 1,
+      "total": 1094
+    },
+    {
+      "ending": "esse",
+      "m": 5,
+      "f": 100,
+      "e": 0,
+      "total": 105
+    },
+    {
+      "ending": "ude",
+      "m": 5,
+      "f": 65,
+      "e": 0,
+      "total": 70
+    },
+    {
+      "ending": "ade",
+      "m": 13,
+      "f": 165,
+      "e": 7,
+      "total": 185
+    },
+    {
+      "ending": "ine",
+      "m": 48,
+      "f": 599,
+      "e": 7,
+      "total": 654
+    },
+    {
+      "ending": "elle",
+      "m": 16,
+      "f": 139,
+      "e": 4,
+      "total": 159
+    },
+    {
+      "ending": "ier",
+      "m": 572,
+      "f": 5,
+      "e": 12,
+      "total": 589
+    },
+    {
+      "ending": "ière",
+      "m": 12,
+      "f": 138,
+      "e": 1,
+      "total": 151
+    },
+    {
+      "ending": "et",
+      "m": 399,
+      "f": 5,
+      "e": 3,
+      "total": 407
+    },
+    {
+      "ending": "on",
+      "m": 860,
+      "f": 2224,
+      "e": 9,
+      "total": 3093
+    },
+    {
+      "ending": "in",
+      "m": 541,
+      "f": 11,
+      "e": 6,
+      "total": 558
+    },
+    {
+      "ending": "al",
+      "m": 207,
+      "f": 2,
+      "e": 1,
+      "total": 210
+    }
+  ],
+  "dataDrivenEndings": [
+    {
+      "ending": "on",
+      "m": 860,
+      "f": 2224,
+      "e": 9,
+      "total": 3093
+    },
+    {
+      "ending": "ion",
+      "m": 84,
+      "f": 2142,
+      "e": 1,
+      "total": 2227
+    },
+    {
+      "ending": "te",
+      "m": 461,
+      "f": 1129,
+      "e": 537,
+      "total": 2127
+    },
+    {
+      "ending": "ur",
+      "m": 1856,
+      "f": 102,
+      "e": 52,
+      "total": 2010
+    },
+    {
+      "ending": "eur",
+      "m": 1793,
+      "f": 96,
+      "e": 49,
+      "total": 1938
+    },
+    {
+      "ending": "ie",
+      "m": 59,
+      "f": 1831,
+      "e": 12,
+      "total": 1902
+    },
+    {
+      "ending": "re",
+      "m": 815,
+      "f": 771,
+      "e": 170,
+      "total": 1756
+    },
+    {
+      "ending": "nt",
+      "m": 1652,
+      "f": 9,
+      "e": 10,
+      "total": 1671
+    },
+    {
+      "ending": "ge",
+      "m": 1308,
+      "f": 80,
+      "e": 17,
+      "total": 1405
+    },
+    {
+      "ending": "ne",
+      "m": 332,
+      "f": 934,
+      "e": 76,
+      "total": 1342
+    },
+    {
+      "ending": "age",
+      "m": 1215,
+      "f": 12,
+      "e": 6,
+      "total": 1233
+    },
+    {
+      "ending": "le",
+      "m": 405,
+      "f": 709,
+      "e": 113,
+      "total": 1227
+    },
+    {
+      "ending": "ent",
+      "m": 1218,
+      "f": 4,
+      "e": 2,
+      "total": 1224
+    },
+    {
+      "ending": "me",
+      "m": 1008,
+      "f": 92,
+      "e": 55,
+      "total": 1155
+    },
+    {
+      "ending": "té",
+      "m": 86,
+      "f": 944,
+      "e": 0,
+      "total": 1030
+    },
+    {
+      "ending": "er",
+      "m": 943,
+      "f": 14,
+      "e": 26,
+      "total": 983
+    },
+    {
+      "ending": "se",
+      "m": 103,
+      "f": 824,
+      "e": 31,
+      "total": 958
+    },
+    {
+      "ending": "ité",
+      "m": 19,
+      "f": 836,
+      "e": 0,
+      "total": 855
+    },
+    {
+      "ending": "ue",
+      "m": 230,
+      "f": 387,
+      "e": 193,
+      "total": 810
+    },
+    {
+      "ending": "ce",
+      "m": 85,
+      "f": 600,
+      "e": 10,
+      "total": 695
+    },
+    {
+      "ending": "de",
+      "m": 240,
+      "f": 385,
+      "e": 40,
+      "total": 665
+    },
+    {
+      "ending": "sme",
+      "m": 659,
+      "f": 0,
+      "e": 1,
+      "total": 660
+    },
+    {
+      "ending": "ine",
+      "m": 48,
+      "f": 599,
+      "e": 7,
+      "total": 654
+    },
+    {
+      "ending": "ste",
+      "m": 133,
+      "f": 25,
+      "e": 441,
+      "total": 599
+    },
+    {
+      "ending": "tte",
+      "m": 34,
+      "f": 546,
+      "e": 10,
+      "total": 590
+    },
+    {
+      "ending": "ier",
+      "m": 572,
+      "f": 5,
+      "e": 12,
+      "total": 589
+    },
+    {
+      "ending": "es",
+      "m": 265,
+      "f": 245,
+      "e": 57,
+      "total": 567
+    },
+    {
+      "ending": "in",
+      "m": 541,
+      "f": 11,
+      "e": 6,
+      "total": 558
+    },
+    {
+      "ending": "que",
+      "m": 168,
+      "f": 272,
+      "e": 102,
+      "total": 542
+    },
+    {
+      "ending": "nce",
+      "m": 11,
+      "f": 510,
+      "e": 1,
+      "total": 522
+    },
+    {
+      "ending": "rie",
+      "m": 4,
+      "f": 507,
+      "e": 2,
+      "total": 513
+    },
+    {
+      "ending": "lle",
+      "m": 60,
+      "f": 381,
+      "e": 20,
+      "total": 461
+    },
+    {
+      "ending": "he",
+      "m": 128,
+      "f": 234,
+      "e": 60,
+      "total": 422
+    },
+    {
+      "ending": "is",
+      "m": 394,
+      "f": 19,
+      "e": 4,
+      "total": 417
+    },
+    {
+      "ending": "ure",
+      "m": 58,
+      "f": 349,
+      "e": 6,
+      "total": 413
+    },
+    {
+      "ending": "et",
+      "m": 399,
+      "f": 5,
+      "e": 3,
+      "total": 407
+    },
+    {
+      "ending": "ant",
+      "m": 393,
+      "f": 4,
+      "e": 8,
+      "total": 405
+    },
+    {
+      "ending": "en",
+      "m": 365,
+      "f": 4,
+      "e": 1,
+      "total": 370
+    },
+    {
+      "ending": "ire",
+      "m": 182,
+      "f": 79,
+      "e": 106,
+      "total": 367
+    },
+    {
+      "ending": "ée",
+      "m": 32,
+      "f": 295,
+      "e": 7,
+      "total": 334
+    },
+    {
+      "ending": "ite",
+      "m": 61,
+      "f": 252,
+      "e": 19,
+      "total": 332
+    },
+    {
+      "ending": "ère",
+      "m": 97,
+      "f": 216,
+      "e": 7,
+      "total": 320
+    },
+    {
+      "ending": "sse",
+      "m": 39,
+      "f": 242,
+      "e": 15,
+      "total": 296
+    },
+    {
+      "ending": "che",
+      "m": 56,
+      "f": 211,
+      "e": 27,
+      "total": 294
+    },
+    {
+      "ending": "an",
+      "m": 270,
+      "f": 13,
+      "e": 5,
+      "total": 288
+    },
+    {
+      "ending": "gie",
+      "m": 3,
+      "f": 280,
+      "e": 0,
+      "total": 283
+    },
+    {
+      "ending": "rd",
+      "m": 273,
+      "f": 0,
+      "e": 10,
+      "total": 283
+    },
+    {
+      "ending": "tre",
+      "m": 241,
+      "f": 24,
+      "e": 17,
+      "total": 282
+    },
+    {
+      "ending": "um",
+      "m": 269,
+      "f": 4,
+      "e": 4,
+      "total": 277
+    },
+    {
+      "ending": "at",
+      "m": 257,
+      "f": 6,
+      "e": 3,
+      "total": 266
+    },
+    {
+      "ending": "ien",
+      "m": 263,
+      "f": 1,
+      "e": 1,
+      "total": 265
+    },
+    {
+      "ending": "au",
+      "m": 241,
+      "f": 7,
+      "e": 0,
+      "total": 248
+    },
+    {
+      "ending": "ard",
+      "m": 237,
+      "f": 0,
+      "e": 9,
+      "total": 246
+    },
+    {
+      "ending": "ng",
+      "m": 236,
+      "f": 2,
+      "e": 3,
+      "total": 241
+    },
+    {
+      "ending": "pe",
+      "m": 109,
+      "f": 104,
+      "e": 15,
+      "total": 228
+    },
+    {
+      "ending": "us",
+      "m": 217,
+      "f": 2,
+      "e": 3,
+      "total": 222
+    },
+    {
+      "ending": "ot",
+      "m": 206,
+      "f": 4,
+      "e": 4,
+      "total": 214
+    },
+    {
+      "ending": "eau",
+      "m": 205,
+      "f": 6,
+      "e": 0,
+      "total": 211
+    },
+    {
+      "ending": "al",
+      "m": 206,
+      "f": 2,
+      "e": 1,
+      "total": 209
+    },
+    {
+      "ending": "ir",
+      "m": 198,
+      "f": 6,
+      "e": 1,
+      "total": 205
+    },
+    {
+      "ending": "mie",
+      "m": 1,
+      "f": 198,
+      "e": 1,
+      "total": 200
+    },
+    {
+      "ending": "gue",
+      "m": 52,
+      "f": 53,
+      "e": 91,
+      "total": 196
+    },
+    {
+      "ending": "ing",
+      "m": 185,
+      "f": 0,
+      "e": 2,
+      "total": 187
+    },
+    {
+      "ending": "ade",
+      "m": 13,
+      "f": 165,
+      "e": 7,
+      "total": 185
+    },
+    {
+      "ending": "rs",
+      "m": 164,
+      "f": 10,
+      "e": 4,
+      "total": 178
+    },
+    {
+      "ending": "ose",
+      "m": 12,
+      "f": 160,
+      "e": 5,
+      "total": 177
+    },
+    {
+      "ending": "as",
+      "m": 140,
+      "f": 28,
+      "e": 8,
+      "total": 176
+    },
+    {
+      "ending": "it",
+      "m": 163,
+      "f": 10,
+      "e": 3,
+      "total": 176
+    },
+    {
+      "ending": "el",
+      "m": 160,
+      "f": 7,
+      "e": 2,
+      "total": 169
+    },
+    {
+      "ending": "ule",
+      "m": 59,
+      "f": 86,
+      "e": 12,
+      "total": 157
+    },
+    {
+      "ending": "os",
+      "m": 124,
+      "f": 16,
+      "e": 16,
+      "total": 156
+    },
+    {
+      "ending": "ium",
+      "m": 155,
+      "f": 0,
+      "e": 0,
+      "total": 155
+    },
+    {
+      "ending": "ux",
+      "m": 147,
+      "f": 6,
+      "e": 2,
+      "total": 155
+    },
+    {
+      "ending": "hie",
+      "m": 2,
+      "f": 150,
+      "e": 0,
+      "total": 152
+    },
+    {
+      "ending": "oir",
+      "m": 147,
+      "f": 2,
+      "e": 0,
+      "total": 149
+    },
+    {
+      "ending": "ts",
+      "m": 138,
+      "f": 5,
+      "e": 3,
+      "total": 146
+    },
+    {
+      "ending": "nie",
+      "m": 5,
+      "f": 136,
+      "e": 0,
+      "total": 141
+    },
+    {
+      "ending": "lon",
+      "m": 135,
+      "f": 3,
+      "e": 2,
+      "total": 140
+    },
+    {
+      "ending": "ide",
+      "m": 88,
+      "f": 32,
+      "e": 19,
+      "total": 139
+    },
+    {
+      "ending": "ou",
+      "m": 132,
+      "f": 2,
+      "e": 4,
+      "total": 138
+    },
+    {
+      "ending": "ve",
+      "m": 32,
+      "f": 96,
+      "e": 10,
+      "total": 138
+    },
+    {
+      "ending": "ton",
+      "m": 131,
+      "f": 3,
+      "e": 3,
+      "total": 137
+    },
+    {
+      "ending": "il",
+      "m": 131,
+      "f": 4,
+      "e": 1,
+      "total": 136
+    },
+    {
+      "ending": "ate",
+      "m": 86,
+      "f": 29,
+      "e": 16,
+      "total": 131
+    },
+    {
+      "ending": "if",
+      "m": 118,
+      "f": 9,
+      "e": 3,
+      "total": 130
+    },
+    {
+      "ending": "nte",
+      "m": 25,
+      "f": 100,
+      "e": 4,
+      "total": 129
+    },
+    {
+      "ending": "son",
+      "m": 62,
+      "f": 65,
+      "e": 1,
+      "total": 128
+    },
+    {
+      "ending": "ra",
+      "m": 73,
+      "f": 43,
+      "e": 10,
+      "total": 126
+    },
+    {
+      "ending": "ène",
+      "m": 93,
+      "f": 25,
+      "e": 7,
+      "total": 125
+    },
+    {
+      "ending": "ar",
+      "m": 112,
+      "f": 9,
+      "e": 3,
+      "total": 124
+    },
+    {
+      "ending": "one",
+      "m": 70,
+      "f": 42,
+      "e": 10,
+      "total": 122
+    },
+    {
+      "ending": "ane",
+      "m": 46,
+      "f": 49,
+      "e": 26,
+      "total": 121
+    },
+    {
+      "ending": "ise",
+      "m": 8,
+      "f": 109,
+      "e": 3,
+      "total": 120
+    },
+    {
+      "ending": "ns",
+      "m": 103,
+      "f": 13,
+      "e": 4,
+      "total": 120
+    },
+    {
+      "ending": "ole",
+      "m": 24,
+      "f": 89,
+      "e": 7,
+      "total": 120
+    },
+    {
+      "ending": "ain",
+      "m": 111,
+      "f": 5,
+      "e": 2,
+      "total": 118
+    },
+    {
+      "ending": "rt",
+      "m": 104,
+      "f": 10,
+      "e": 4,
+      "total": 118
+    },
+    {
+      "ending": "use",
+      "m": 5,
+      "f": 112,
+      "e": 1,
+      "total": 118
+    },
+    {
+      "ending": "ia",
+      "m": 58,
+      "f": 54,
+      "e": 5,
+      "total": 117
+    },
+    {
+      "ending": "tes",
+      "m": 44,
+      "f": 48,
+      "e": 21,
+      "total": 113
+    },
+    {
+      "ending": "ome",
+      "m": 104,
+      "f": 1,
+      "e": 5,
+      "total": 110
+    },
+    {
+      "ending": "be",
+      "m": 57,
+      "f": 40,
+      "e": 11,
+      "total": 108
+    },
+    {
+      "ending": "sie",
+      "m": 4,
+      "f": 103,
+      "e": 1,
+      "total": 108
+    },
+    {
+      "ending": "eux",
+      "m": 107,
+      "f": 0,
+      "e": 0,
+      "total": 107
+    },
+    {
+      "ending": "ale",
+      "m": 25,
+      "f": 70,
+      "e": 10,
+      "total": 105
+    },
+    {
+      "ending": "ron",
+      "m": 103,
+      "f": 0,
+      "e": 1,
+      "total": 104
+    },
+    {
+      "ending": "let",
+      "m": 101,
+      "f": 2,
+      "e": 0,
+      "total": 103
+    },
+    {
+      "ending": "pie",
+      "m": 1,
+      "f": 99,
+      "e": 3,
+      "total": 103
+    },
+    {
+      "ending": "ol",
+      "m": 97,
+      "f": 0,
+      "e": 2,
+      "total": 99
+    },
+    {
+      "ending": "ut",
+      "m": 95,
+      "f": 3,
+      "e": 0,
+      "total": 98
+    },
+    {
+      "ending": "ais",
+      "m": 96,
+      "f": 0,
+      "e": 0,
+      "total": 96
+    },
+    {
+      "ending": "ois",
+      "m": 92,
+      "f": 1,
+      "e": 1,
+      "total": 94
+    },
+    {
+      "ending": "la",
+      "m": 49,
+      "f": 41,
+      "e": 3,
+      "total": 93
+    },
+    {
+      "ending": "nne",
+      "m": 9,
+      "f": 79,
+      "e": 5,
+      "total": 93
+    },
+    {
+      "ending": "ri",
+      "m": 85,
+      "f": 7,
+      "e": 1,
+      "total": 93
+    },
+    {
+      "ending": "mme",
+      "m": 71,
+      "f": 16,
+      "e": 4,
+      "total": 91
+    },
+    {
+      "ending": "lé",
+      "m": 79,
+      "f": 11,
+      "e": 0,
+      "total": 90
+    },
+    {
+      "ending": "ro",
+      "m": 70,
+      "f": 14,
+      "e": 5,
+      "total": 89
+    },
+    {
+      "ending": "phe",
+      "m": 54,
+      "f": 8,
+      "e": 26,
+      "total": 88
+    },
+    {
+      "ending": "to",
+      "m": 77,
+      "f": 5,
+      "e": 6,
+      "total": 88
+    },
+    {
+      "ending": "ck",
+      "m": 78,
+      "f": 3,
+      "e": 6,
+      "total": 87
+    },
+    {
+      "ending": "ile",
+      "m": 43,
+      "f": 20,
+      "e": 24,
+      "total": 87
+    },
+    {
+      "ending": "ta",
+      "m": 35,
+      "f": 42,
+      "e": 10,
+      "total": 87
+    },
+    {
+      "ending": "tie",
+      "m": 1,
+      "f": 85,
+      "e": 0,
+      "total": 86
+    },
+    {
+      "ending": "or",
+      "m": 81,
+      "f": 1,
+      "e": 3,
+      "total": 85
+    },
+    {
+      "ending": "ase",
+      "m": 17,
+      "f": 65,
+      "e": 2,
+      "total": 84
+    },
+    {
+      "ending": "ble",
+      "m": 56,
+      "f": 10,
+      "e": 18,
+      "total": 84
+    },
+    {
+      "ending": "tif",
+      "m": 78,
+      "f": 3,
+      "e": 2,
+      "total": 83
+    },
+    {
+      "ending": "lie",
+      "m": 7,
+      "f": 72,
+      "e": 2,
+      "total": 81
+    },
+    {
+      "ending": "na",
+      "m": 47,
+      "f": 32,
+      "e": 2,
+      "total": 81
+    },
+    {
+      "ending": "urs",
+      "m": 76,
+      "f": 4,
+      "e": 1,
+      "total": 81
+    },
+    {
+      "ending": "ré",
+      "m": 75,
+      "f": 4,
+      "e": 0,
+      "total": 79
+    },
+    {
+      "ending": "ope",
+      "m": 55,
+      "f": 14,
+      "e": 9,
+      "total": 78
+    },
+    {
+      "ending": "nd",
+      "m": 72,
+      "f": 2,
+      "e": 3,
+      "total": 77
+    },
+    {
+      "ending": "ter",
+      "m": 67,
+      "f": 4,
+      "e": 3,
+      "total": 74
+    },
+    {
+      "ending": "ch",
+      "m": 62,
+      "f": 7,
+      "e": 4,
+      "total": 73
+    },
+    {
+      "ending": "ute",
+      "m": 11,
+      "f": 45,
+      "e": 17,
+      "total": 73
+    },
+    {
+      "ending": "ème",
+      "m": 42,
+      "f": 3,
+      "e": 27,
+      "total": 72
+    },
+    {
+      "ending": "ma",
+      "m": 59,
+      "f": 9,
+      "e": 4,
+      "total": 72
+    },
+    {
+      "ending": "nde",
+      "m": 18,
+      "f": 52,
+      "e": 2,
+      "total": 72
+    },
+    {
+      "ending": "lo",
+      "m": 60,
+      "f": 1,
+      "e": 10,
+      "total": 71
+    },
+    {
+      "ending": "man",
+      "m": 60,
+      "f": 9,
+      "e": 2,
+      "total": 71
+    },
+    {
+      "ending": "tin",
+      "m": 69,
+      "f": 1,
+      "e": 1,
+      "total": 71
+    },
+    {
+      "ending": "èse",
+      "m": 5,
+      "f": 64,
+      "e": 1,
+      "total": 70
+    },
+    {
+      "ending": "gne",
+      "m": 16,
+      "f": 46,
+      "e": 8,
+      "total": 70
+    },
+    {
+      "ending": "ote",
+      "m": 23,
+      "f": 39,
+      "e": 8,
+      "total": 70
+    },
+    {
+      "ending": "ude",
+      "m": 5,
+      "f": 65,
+      "e": 0,
+      "total": 70
+    },
+    {
+      "ending": "ers",
+      "m": 64,
+      "f": 3,
+      "e": 2,
+      "total": 69
+    },
+    {
+      "ending": "ice",
+      "m": 36,
+      "f": 30,
+      "e": 2,
+      "total": 68
+    },
+    {
+      "ending": "les",
+      "m": 35,
+      "f": 24,
+      "e": 9,
+      "total": 68
+    },
+    {
+      "ending": "li",
+      "m": 56,
+      "f": 6,
+      "e": 2,
+      "total": 64
+    },
+    {
+      "ending": "uet",
+      "m": 62,
+      "f": 0,
+      "e": 0,
+      "total": 62
+    },
+    {
+      "ending": "do",
+      "m": 49,
+      "f": 6,
+      "e": 4,
+      "total": 59
+    },
+    {
+      "ending": "ore",
+      "m": 41,
+      "f": 12,
+      "e": 6,
+      "total": 59
+    },
+    {
+      "ending": "rde",
+      "m": 11,
+      "f": 44,
+      "e": 3,
+      "total": 58
+    },
+    {
+      "ending": "rne",
+      "m": 21,
+      "f": 32,
+      "e": 5,
+      "total": 58
+    },
+    {
+      "ending": "sé",
+      "m": 56,
+      "f": 2,
+      "e": 0,
+      "total": 58
+    },
+    {
+      "ending": "ll",
+      "m": 55,
+      "f": 2,
+      "e": 0,
+      "total": 57
+    },
+    {
+      "ending": "da",
+      "m": 36,
+      "f": 19,
+      "e": 1,
+      "total": 56
+    },
+    {
+      "ending": "eté",
+      "m": 6,
+      "f": 50,
+      "e": 0,
+      "total": 56
+    },
+    {
+      "ending": "our",
+      "m": 48,
+      "f": 5,
+      "e": 3,
+      "total": 56
+    },
+    {
+      "ending": "eu",
+      "m": 52,
+      "f": 3,
+      "e": 0,
+      "total": 55
+    },
+    {
+      "ending": "nge",
+      "m": 29,
+      "f": 24,
+      "e": 2,
+      "total": 55
+    },
+    {
+      "ending": "res",
+      "m": 34,
+      "f": 18,
+      "e": 3,
+      "total": 55
+    },
+    {
+      "ending": "ti",
+      "m": 50,
+      "f": 3,
+      "e": 2,
+      "total": 55
+    },
+    {
+      "ending": "ace",
+      "m": 20,
+      "f": 28,
+      "e": 5,
+      "total": 53
+    },
+    {
+      "ending": "am",
+      "m": 49,
+      "f": 3,
+      "e": 1,
+      "total": 53
+    },
+    {
+      "ending": "lot",
+      "m": 52,
+      "f": 0,
+      "e": 1,
+      "total": 53
+    },
+    {
+      "ending": "né",
+      "m": 46,
+      "f": 5,
+      "e": 2,
+      "total": 53
+    },
+    {
+      "ending": "no",
+      "m": 47,
+      "f": 3,
+      "e": 3,
+      "total": 53
+    },
+    {
+      "ending": "bie",
+      "m": 5,
+      "f": 46,
+      "e": 1,
+      "total": 52
+    },
+    {
+      "ending": "nes",
+      "m": 18,
+      "f": 30,
+      "e": 4,
+      "total": 52
+    },
+    {
+      "ending": "rme",
+      "m": 30,
+      "f": 20,
+      "e": 2,
+      "total": 52
+    },
+    {
+      "ending": "st",
+      "m": 44,
+      "f": 7,
+      "e": 1,
+      "total": 52
+    },
+    {
+      "ending": "ac",
+      "m": 48,
+      "f": 2,
+      "e": 1,
+      "total": 51
+    },
+    {
+      "ending": "ive",
+      "m": 6,
+      "f": 43,
+      "e": 2,
+      "total": 51
+    },
+    {
+      "ending": "ls",
+      "m": 45,
+      "f": 4,
+      "e": 2,
+      "total": 51
+    },
+    {
+      "ending": "net",
+      "m": 51,
+      "f": 0,
+      "e": 0,
+      "total": 51
+    },
+    {
+      "ending": "oi",
+      "m": 42,
+      "f": 7,
+      "e": 2,
+      "total": 51
+    },
+    {
+      "ending": "rin",
+      "m": 51,
+      "f": 0,
+      "e": 0,
+      "total": 51
+    },
+    {
+      "ending": "co",
+      "m": 37,
+      "f": 6,
+      "e": 7,
+      "total": 50
+    },
+    {
+      "ending": "ga",
+      "m": 39,
+      "f": 10,
+      "e": 1,
+      "total": 50
+    },
+    {
+      "ending": "go",
+      "m": 43,
+      "f": 4,
+      "e": 3,
+      "total": 50
+    },
+    {
+      "ending": "ic",
+      "m": 48,
+      "f": 1,
+      "e": 1,
+      "total": 50
+    },
+    {
+      "ending": "ïde",
+      "m": 37,
+      "f": 10,
+      "e": 3,
+      "total": 50
+    },
+    {
+      "ending": "non",
+      "m": 47,
+      "f": 2,
+      "e": 1,
+      "total": 50
+    },
+    {
+      "ending": "rre",
+      "m": 21,
+      "f": 25,
+      "e": 3,
+      "total": 49
+    },
+    {
+      "ending": "née",
+      "m": 6,
+      "f": 42,
+      "e": 0,
+      "total": 48
+    },
+    {
+      "ending": "ort",
+      "m": 42,
+      "f": 4,
+      "e": 2,
+      "total": 48
+    },
+    {
+      "ending": "don",
+      "m": 46,
+      "f": 1,
+      "e": 0,
+      "total": 47
+    },
+    {
+      "ending": "dre",
+      "m": 33,
+      "f": 9,
+      "e": 5,
+      "total": 47
+    },
+    {
+      "ending": "ds",
+      "m": 45,
+      "f": 2,
+      "e": 0,
+      "total": 47
+    },
+    {
+      "ending": "ni",
+      "m": 41,
+      "f": 4,
+      "e": 2,
+      "total": 47
+    },
+    {
+      "ending": "ode",
+      "m": 31,
+      "f": 11,
+      "e": 5,
+      "total": 47
+    },
+    {
+      "ending": "out",
+      "m": 45,
+      "f": 2,
+      "e": 0,
+      "total": 47
+    },
+    {
+      "ending": "ps",
+      "m": 43,
+      "f": 3,
+      "e": 1,
+      "total": 47
+    },
+    {
+      "ending": "ul",
+      "m": 45,
+      "f": 1,
+      "e": 1,
+      "total": 47
+    },
+    {
+      "ending": "aie",
+      "m": 5,
+      "f": 41,
+      "e": 0,
+      "total": 46
+    },
+    {
+      "ending": "bre",
+      "m": 31,
+      "f": 13,
+      "e": 2,
+      "total": 46
+    },
+    {
+      "ending": "fe",
+      "m": 15,
+      "f": 26,
+      "e": 5,
+      "total": 46
+    },
+    {
+      "ending": "ses",
+      "m": 9,
+      "f": 34,
+      "e": 3,
+      "total": 46
+    },
+    {
+      "ending": "lée",
+      "m": 1,
+      "f": 42,
+      "e": 2,
+      "total": 45
+    },
+    {
+      "ending": "are",
+      "m": 28,
+      "f": 10,
+      "e": 6,
+      "total": 44
+    },
+    {
+      "ending": "cle",
+      "m": 37,
+      "f": 5,
+      "e": 2,
+      "total": 44
+    },
+    {
+      "ending": "ger",
+      "m": 41,
+      "f": 2,
+      "e": 1,
+      "total": 44
+    },
+    {
+      "ending": "ies",
+      "m": 19,
+      "f": 25,
+      "e": 0,
+      "total": 44
+    },
+    {
+      "ending": "ète",
+      "m": 13,
+      "f": 20,
+      "e": 10,
+      "total": 43
+    },
+    {
+      "ending": "ka",
+      "m": 18,
+      "f": 19,
+      "e": 6,
+      "total": 43
+    },
+    {
+      "ending": "ons",
+      "m": 32,
+      "f": 9,
+      "e": 2,
+      "total": 43
+    },
+    {
+      "ending": "une",
+      "m": 4,
+      "f": 35,
+      "e": 4,
+      "total": 43
+    },
+    {
+      "ending": "ame",
+      "m": 19,
+      "f": 18,
+      "e": 5,
+      "total": 42
+    },
+    {
+      "ending": "dé",
+      "m": 39,
+      "f": 2,
+      "e": 1,
+      "total": 42
+    },
+    {
+      "ending": "hon",
+      "m": 39,
+      "f": 2,
+      "e": 0,
+      "total": 41
+    },
+    {
+      "ending": "ud",
+      "m": 41,
+      "f": 0,
+      "e": 0,
+      "total": 41
+    },
+    {
+      "ending": "uin",
+      "m": 40,
+      "f": 1,
+      "e": 0,
+      "total": 41
+    },
+    {
+      "ending": "and",
+      "m": 38,
+      "f": 1,
+      "e": 1,
+      "total": 40
+    },
+    {
+      "ending": "lin",
+      "m": 40,
+      "f": 0,
+      "e": 0,
+      "total": 40
+    },
+    {
+      "ending": "rat",
+      "m": 37,
+      "f": 3,
+      "e": 0,
+      "total": 40
+    },
+    {
+      "ending": "rée",
+      "m": 5,
+      "f": 34,
+      "e": 1,
+      "total": 40
+    },
+    {
+      "ending": "ret",
+      "m": 40,
+      "f": 0,
+      "e": 0,
+      "total": 40
+    },
+    {
+      "ending": "ss",
+      "m": 38,
+      "f": 2,
+      "e": 0,
+      "total": 40
+    },
+    {
+      "ending": "ha",
+      "m": 24,
+      "f": 15,
+      "e": 0,
+      "total": 39
+    },
+    {
+      "ending": "ler",
+      "m": 37,
+      "f": 1,
+      "e": 1,
+      "total": 39
+    },
+    {
+      "ending": "ail",
+      "m": 37,
+      "f": 1,
+      "e": 0,
+      "total": 38
+    },
+    {
+      "ending": "ave",
+      "m": 15,
+      "f": 19,
+      "e": 4,
+      "total": 38
+    },
+    {
+      "ending": "rge",
+      "m": 9,
+      "f": 25,
+      "e": 4,
+      "total": 38
+    },
+    {
+      "ending": "ues",
+      "m": 19,
+      "f": 10,
+      "e": 9,
+      "total": 38
+    },
+    {
+      "ending": "ze",
+      "m": 22,
+      "f": 14,
+      "e": 2,
+      "total": 38
+    },
+    {
+      "ending": "io",
+      "m": 26,
+      "f": 7,
+      "e": 4,
+      "total": 37
+    },
+    {
+      "ending": "lis",
+      "m": 32,
+      "f": 4,
+      "e": 1,
+      "total": 37
+    },
+    {
+      "ending": "rte",
+      "m": 9,
+      "f": 27,
+      "e": 1,
+      "total": 37
+    },
+    {
+      "ending": "the",
+      "m": 17,
+      "f": 13,
+      "e": 7,
+      "total": 37
+    },
+    {
+      "ending": "ker",
+      "m": 33,
+      "f": 0,
+      "e": 3,
+      "total": 36
+    },
+    {
+      "ending": "nat",
+      "m": 36,
+      "f": 0,
+      "e": 0,
+      "total": 36
+    },
+    {
+      "ending": "oc",
+      "m": 28,
+      "f": 2,
+      "e": 6,
+      "total": 36
+    },
+    {
+      "ending": "om",
+      "m": 30,
+      "f": 3,
+      "e": 3,
+      "total": 36
+    },
+    {
+      "ending": "tal",
+      "m": 36,
+      "f": 0,
+      "e": 0,
+      "total": 36
+    },
+    {
+      "ending": "uit",
+      "m": 29,
+      "f": 6,
+      "e": 1,
+      "total": 36
+    },
+    {
+      "ending": "vre",
+      "m": 18,
+      "f": 13,
+      "e": 5,
+      "total": 36
+    },
+    {
+      "ending": "ack",
+      "m": 31,
+      "f": 2,
+      "e": 2,
+      "total": 35
+    },
+    {
+      "ending": "die",
+      "m": 4,
+      "f": 31,
+      "e": 0,
+      "total": 35
+    },
+    {
+      "ending": "hé",
+      "m": 33,
+      "f": 2,
+      "e": 0,
+      "total": 35
+    },
+    {
+      "ending": "nal",
+      "m": 34,
+      "f": 0,
+      "e": 1,
+      "total": 35
+    },
+    {
+      "ending": "ris",
+      "m": 32,
+      "f": 3,
+      "e": 0,
+      "total": 35
+    },
+    {
+      "ending": "ime",
+      "m": 15,
+      "f": 14,
+      "e": 5,
+      "total": 34
+    },
+    {
+      "ending": "mi",
+      "m": 33,
+      "f": 1,
+      "e": 0,
+      "total": 34
+    },
+    {
+      "ending": "sh",
+      "m": 27,
+      "f": 4,
+      "e": 3,
+      "total": 34
+    },
+    {
+      "ending": "ba",
+      "m": 17,
+      "f": 13,
+      "e": 3,
+      "total": 33
+    },
+    {
+      "ending": "ca",
+      "m": 22,
+      "f": 8,
+      "e": 3,
+      "total": 33
+    },
+    {
+      "ending": "ex",
+      "m": 33,
+      "f": 0,
+      "e": 0,
+      "total": 33
+    },
+    {
+      "ending": "ix",
+      "m": 26,
+      "f": 7,
+      "e": 0,
+      "total": 33
+    },
+    {
+      "ending": "ks",
+      "m": 27,
+      "f": 2,
+      "e": 4,
+      "total": 33
+    },
+    {
+      "ending": "lan",
+      "m": 33,
+      "f": 0,
+      "e": 0,
+      "total": 33
+    },
+    {
+      "ending": "ral",
+      "m": 33,
+      "f": 0,
+      "e": 0,
+      "total": 33
+    },
+    {
+      "ending": "sée",
+      "m": 5,
+      "f": 28,
+      "e": 0,
+      "total": 33
+    },
+    {
+      "ending": "sin",
+      "m": 33,
+      "f": 0,
+      "e": 0,
+      "total": 33
+    },
+    {
+      "ending": "art",
+      "m": 27,
+      "f": 4,
+      "e": 1,
+      "total": 32
+    },
+    {
+      "ending": "aud",
+      "m": 32,
+      "f": 0,
+      "e": 0,
+      "total": 32
+    },
+    {
+      "ending": "mé",
+      "m": 29,
+      "f": 3,
+      "e": 0,
+      "total": 32
+    },
+    {
+      "ending": "ah",
+      "m": 21,
+      "f": 8,
+      "e": 2,
+      "total": 31
+    },
+    {
+      "ending": "eil",
+      "m": 31,
+      "f": 0,
+      "e": 0,
+      "total": 31
+    },
+    {
+      "ending": "hi",
+      "m": 29,
+      "f": 2,
+      "e": 0,
+      "total": 31
+    },
+    {
+      "ending": "ié",
+      "m": 23,
+      "f": 5,
+      "e": 3,
+      "total": 31
+    },
+    {
+      "ending": "ki",
+      "m": 31,
+      "f": 0,
+      "e": 0,
+      "total": 31
+    },
+    {
+      "ending": "nts",
+      "m": 30,
+      "f": 1,
+      "e": 0,
+      "total": 31
+    },
+    {
+      "ending": "yse",
+      "m": 0,
+      "f": 31,
+      "e": 0,
+      "total": 31
+    },
+    {
+      "ending": "çon",
+      "m": 25,
+      "f": 5,
+      "e": 0,
+      "total": 30
+    },
+    {
+      "ending": "em",
+      "m": 28,
+      "f": 2,
+      "e": 0,
+      "total": 30
+    },
+    {
+      "ending": "ffe",
+      "m": 5,
+      "f": 21,
+      "e": 4,
+      "total": 30
+    },
+    {
+      "ending": "iat",
+      "m": 29,
+      "f": 1,
+      "e": 0,
+      "total": 30
+    },
+    {
+      "ending": "lat",
+      "m": 30,
+      "f": 0,
+      "e": 0,
+      "total": 30
+    },
+    {
+      "ending": "ria",
+      "m": 4,
+      "f": 24,
+      "e": 2,
+      "total": 30
+    },
+    {
+      "ending": "xe",
+      "m": 15,
+      "f": 13,
+      "e": 2,
+      "total": 30
+    }
+  ],
+  "minCount": 30
+}
