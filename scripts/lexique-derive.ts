@@ -124,8 +124,15 @@ emit("candidate-pool.json", {
   source,
   generator,
   criteria: "see selectCandidatePool in scripts/lib/lexicon.ts (documented deterministic selection)",
-  entries: pool,
+  entries: pool.entries,
+  excludedByQualityGuard: pool.excludedByQualityGuard,
 });
+if (pool.excludedByQualityGuard.length > 0) {
+  console.log(
+    `quality guard excluded ${pool.excludedByQualityGuard.length}: ` +
+      pool.excludedByQualityGuard.map((e) => `${e.lemma} (${e.freqLemme}/M, CD ${e.cdOrtho})`).join(", ")
+  );
+}
 
 // 3. Population frequency statistics (band-derivation evidence).
 const stats = frequencyStats(rows);

@@ -556,6 +556,32 @@ describe("matchLexemes — deterministic, fail-closed", () => {
     ]).find((r) => r.id === "fr:w:chat");
     expect(chat?.status).toBe("unmatched");
   });
+
+  test("the documented ligature fold matches œuf against the source's oeuf", () => {
+    const oeufLexicon: RichLexicon = {
+      version: 1,
+      language: "fr",
+      lexemes: [
+        {
+          id: "fr:w:oeuf",
+          surface: "l'œuf",
+          lemma: "œuf",
+          lookupForm: "œuf",
+          partOfSpeech: "noun",
+          gender: "masculine",
+          nativeGloss: "the egg",
+          topic: "food",
+          examples: [{ fr: "Je mange un œuf.", en: "I eat an egg.", source: "original-french-lexicon" }],
+          sourceRefs: [{ source: "original-french-lexicon" }],
+        },
+      ],
+    };
+    const audit = matchLexemes(oeufLexicon, [
+      l4row({ "1_Mot": "oeuf", "4_Lemme": "oeuf", "5_Cgram": "NOM", "7_Genre": "m", "8_Nombre": "s", "14_IsLem": "1" }),
+    ]);
+    expect(audit[0].status).toBe("matched");
+    expect(audit[0].matchKey).toBe("oeuf|NOM|m|s");
+  });
 });
 
 describe("selectCandidatePool — documented deterministic selection", () => {
@@ -572,26 +598,27 @@ describe("selectCandidatePool — documented deterministic selection", () => {
       "33_Preval": over.preval ?? "",
     });
 
-  test("filters POS, non-lemma rows, proper nouns and multiword forms", () => {
-    const pool = selectCandidatePool([
+  test("filters non-plain categories, non-lemma rows, proper nouns and multiword forms", () => {
+    const { entries } = selectCandidatePool([
       row("chat", "NOM", "30", { genre: "m", ipa: "ʃa", preval: "99" }),
       row("manger", "VER", "120"),
       row("mangeons", "VER", "120", { lemme: "manger", isLem: "0" }), // inflected — dropped
       row("Paris", "NOM", "500"), // capitalized — dropped
       row("pomme de terre", "NOM", "12"), // multiword — dropped
       row("le", "ART:def", "25000"), // POS outside the pool — dropped
+      row("mon", "ADJ:pos", "6900"), // function word (maps to adjective) — dropped
       row("aujourd'hui", "ADV", "300"), // internal apostrophe — kept
     ]);
-    expect(pool.map((p) => p.lemma)).toEqual(["aujourd'hui", "manger", "chat"]);
-    expect(pool.find((p) => p.lemma === "chat")?.gender).toBe("masculine");
-    expect(pool.find((p) => p.lemma === "chat")?.ipa).toBe("ʃa");
-    expect(pool.find((p) => p.lemma === "chat")?.preval).toBe(99);
-    expect(pool.find((p) => p.lemma === "manger")?.gender).toBeNull();
-    expect(pool.find((p) => p.lemma === "manger")?.preval).toBeNull();
+    expect(entries.map((p) => p.lemma)).toEqual(["aujourd'hui", "manger", "chat"]);
+    expect(entries.find((p) => p.lemma === "chat")?.gender).toBe("masculine");
+    expect(entries.find((p) => p.lemma === "chat")?.ipa).toBe("ʃa");
+    expect(entries.find((p) => p.lemma === "chat")?.preval).toBe(99);
+    expect(entries.find((p) => p.lemma === "manger")?.gender).toBeNull();
+    expect(entries.find((p) => p.lemma === "manger")?.preval).toBeNull();
   });
 
   test("dedupes by (lemma, POS) keeping the highest lemma frequency, and truncates", () => {
-    const pool = selectCandidatePool(
+    const { entries } = selectCandidatePool(
       [
         row("chat", "NOM", "5", { genre: "m" }),
         row("chat", "NOM", "30", { genre: "m" }),
@@ -600,29 +627,45 @@ describe("selectCandidatePool — documented deterministic selection", () => {
       ],
       2
     );
-    expect(pool.map((p) => `${p.lemma}:${p.freqLemme}`)).toEqual(["chat:30", "chien:20"]);
+    expect(entries.map((p) => `${p.lemma}:${p.freqLemme}`)).toEqual(["chat:30", "chien:20"]);
   });
 
   test("ordering is frequency descending with alphabetical tiebreak; ranks are 1-based", () => {
-    const pool = selectCandidatePool([
+    const { entries } = selectCandidatePool([
       row("zèbre", "NOM", "3", { genre: "m" }),
       row("abeille", "NOM", "3", { genre: "f" }),
       row("chat", "NOM", "30", { genre: "m" }),
     ]);
-    expect(pool.map((p) => p.lemma)).toEqual(["chat", "abeille", "zèbre"]);
-    expect(pool.map((p) => p.sourceRank)).toEqual([1, 2, 3]);
-    expect(pool[0].selectionReason).toContain("rank 1 by lemma subtitle frequency (30/M)");
+    expect(entries.map((p) => p.lemma)).toEqual(["chat", "abeille", "zèbre"]);
+    expect(entries.map((p) => p.sourceRank)).toEqual([1, 2, 3]);
+    expect(entries[0].selectionReason).toContain("rank 1 by lemma subtitle frequency (30/M)");
   });
 
   test("épicène nouns carry gender both; authored (lemma, POS) pairs are flagged", () => {
-    const pool = selectCandidatePool(
+    const { entries } = selectCandidatePool(
       [row("élève", "NOM", "40", { genre: "e" }), row("chat", "NOM", "30", { genre: "m" })],
       1500,
       new Set(["chat|noun"])
     );
-    expect(pool.find((p) => p.lemma === "élève")?.gender).toBe("both");
-    expect(pool.find((p) => p.lemma === "chat")?.alreadyAuthored).toBe(true);
-    expect(pool.find((p) => p.lemma === "chat")?.selectionReason).toContain("already authored");
-    expect(pool.find((p) => p.lemma === "élève")?.alreadyAuthored).toBe(false);
+    expect(entries.find((p) => p.lemma === "élève")?.gender).toBe("both");
+    expect(entries.find((p) => p.lemma === "chat")?.alreadyAuthored).toBe(true);
+    expect(entries.find((p) => p.lemma === "chat")?.selectionReason).toContain("already authored");
+    expect(entries.find((p) => p.lemma === "élève")?.alreadyAuthored).toBe(false);
+  });
+
+  test("CD corroboration excludes lemmatization artifacts, RECORDED not silent", () => {
+    const { entries, excludedByQualityGuard } = selectCandidatePool([
+      row("pas", "ADV", "18098.642", { cd: "99.79639" }),
+      row("upas", "ADV", "18098.642", { cd: "0.01378", preval: "0" }), // the real observed artifact
+      row("chat", "NOM", "30", { genre: "m", cd: "12" }),
+    ]);
+    expect(entries.map((p) => p.lemma)).toEqual(["pas", "chat"]);
+    expect(excludedByQualityGuard).toHaveLength(1);
+    expect(excludedByQualityGuard[0].lemma).toBe("upas");
+    expect(excludedByQualityGuard[0].reason).toContain("lemmatization artifact");
+    // Genuinely rare words (low freq AND low CD) are untouched by the guard.
+    const rare = selectCandidatePool([row("ferlage", "NOM", "0.076", { genre: "m", cd: "0.003" })]);
+    expect(rare.entries.map((p) => p.lemma)).toEqual(["ferlage"]);
+    expect(rare.excludedByQualityGuard).toEqual([]);
   });
 });

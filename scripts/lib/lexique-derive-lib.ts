@@ -19,6 +19,7 @@ import {
   CANDIDATE_POS,
   L4,
   LEXIQUE_WORD_SHAPE,
+  lexiqueFormEquals,
   lexiquePosFor,
   matchLexemes,
   type LexiqueRow,
@@ -398,12 +399,17 @@ export type CoreLexemeRows = {
 export function coreLexemeRows(lexicon: RichLexicon, rows: LexiqueRow[]): CoreLexemeRows {
   const audit = matchLexemes(lexicon, rows);
   const entries = lexicon.lexemes.map((lex) => {
-    const formRows = rows.filter((r) => r[L4.MOT] === lex.lookupForm).map(trimRow);
+    // lexiqueFormEquals applies the documented ligature fold (œuf ↔ oeuf).
+    const formRows = rows.filter((r) => lexiqueFormEquals(r[L4.MOT], lex.lookupForm)).map(trimRow);
     const lemmaRows =
       lex.partOfSpeech === "expression"
         ? []
         : rows
-            .filter((r) => (r[L4.LEMME] ?? "") === lex.lemma && r[L4.MOT] !== lex.lookupForm)
+            .filter(
+              (r) =>
+                lexiqueFormEquals(r[L4.LEMME], lex.lemma) &&
+                !lexiqueFormEquals(r[L4.MOT], lex.lookupForm)
+            )
             .map(trimRow);
     const sortKey = (t: TrimmedRow) =>
       `${t.mot}|${t.cgram}|${t.genre}|${t.nombre}`;

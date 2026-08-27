@@ -429,6 +429,22 @@ export function lexiqueRowKey(row: LexiqueRow): string {
 }
 
 /**
+ * Documented orthography fold for source matching ONLY: Lexique writes the
+ * o-e ligature as the digraph ("oeuf", "coeur"), while the curriculum keeps
+ * the typographically correct "œuf". The fold mirrors the app's existing
+ * search-contract ligature handling; it never rewrites authored data.
+ */
+export function foldLexiqueOrthography(value: string): string {
+  return value.replace(/œ/g, "oe").replace(/æ/g, "ae");
+}
+
+/** True when the source cell equals the curriculum form directly or under the documented ligature fold. */
+export function lexiqueFormEquals(sourceValue: string | undefined, curriculumForm: string): boolean {
+  const v = sourceValue ?? "";
+  return v === curriculumForm || v === foldLexiqueOrthography(curriculumForm);
+}
+
+/**
  * Deterministic, fail-closed matching of curriculum lexemes against source
  * rows. The ladder narrows by form → lemma → POS, then prefers the source's
  * own canonical-lemma rows (14_IsLem), then gender for nouns (an épicène
@@ -453,8 +469,8 @@ export function matchLexemes(
     if (rows === null) {
       return { ...base, status: "source-unavailable", matchKey: null, candidateCount: 0 };
     }
-    const byForm = rows.filter((r) => r[L4.MOT] === lex.lookupForm);
-    const byLemma = byForm.filter((r) => (r[L4.LEMME] ?? "") === lex.lemma);
+    const byForm = rows.filter((r) => lexiqueFormEquals(r[L4.MOT], lex.lookupForm));
+    const byLemma = byForm.filter((r) => lexiqueFormEquals(r[L4.LEMME], lex.lemma));
     const byPos = byLemma.filter((r) => lexiquePosFor(r[L4.CGRAM] ?? "") === lex.partOfSpeech);
     let candidates = byPos;
     if (candidates.length > 1) {
@@ -523,22 +539,61 @@ export const CANDIDATE_POOL_SIZE = 1500;
 export const CANDIDATE_POS: readonly PartOfSpeech[] = ["noun", "verb", "adjective", "adverb"];
 
 /**
+ * The authoring pool draws from PLAIN lexical categories only. The mapped
+ * POS is not enough here: ADJ:pos/ADJ:dem etc. map to "adjective" but are
+ * closed-class function words (mon, ce, cette…) that would flood the top
+ * frequency ranks of a vocabulary-authoring list (observed in the first
+ * real derivation: eleven of the top thirty). Grammar words are taught by
+ * the pedagogy units, not authored as vocabulary candidates.
+ */
+export const CANDIDATE_PLAIN_CGRAM = new Set(["NOM", "VER", "ADJ", "ADV"]);
+
+/**
+ * Quality guard against source lemmatization artifacts, corroborated by
+ * contextual diversity: a lemma claiming ≥ 20 occurrences per million while
+ * its own canonical form appears in under 0.05% of the 65k subtitle
+ * documents is physically incoherent — the lemma frequency belongs to a
+ * different word. Observed real cases: "upas" (freqLemme 18098.6 inherited
+ * from "pas", CD 0.014, prevalence 0) and "garçonne" (431.8, CD 0.037).
+ * Exclusions are RECORDED in the pool artifact, never silent.
+ */
+export function failsCdCorroboration(freqLemme: number, cdOrtho: number): boolean {
+  return freqLemme >= 20 && cdOrtho < 0.05;
+}
+
+/**
  * Single-word lowercase French form: letters/accents/œ/æ with internal
  * hyphens or apostrophes. Filters proper nouns (capitalized) and multiword
  * rows from lemma populations.
  */
 export const LEXIQUE_WORD_SHAPE = /^[a-zàâäéèêëîïôöùûüÿçœæ]+(?:[-'][a-zàâäéèêëîïôöùûüÿçœæ]+)*$/;
 
+export type CandidatePool = {
+  entries: CandidateEntry[];
+  /** CD-corroboration exclusions, recorded for transparency (§24). */
+  excludedByQualityGuard: {
+    lemma: string;
+    partOfSpeech: PartOfSpeech;
+    freqLemme: number;
+    cdOrtho: number;
+    reason: string;
+  }[];
+};
+
 /**
  * Documented deterministic selection for the authoring-only candidate pool
  * (never curriculum, never cards, never learner-visible — no translations
  * are fabricated for it):
- *  1. keep rows whose 5_Cgram maps to noun/verb/adjective/adverb;
+ *  1. keep rows whose 5_Cgram is a PLAIN lexical category (NOM/VER/ADJ/ADV
+ *     — see CANDIDATE_PLAIN_CGRAM: subcategorized function words like
+ *     ADJ:pos "mon" are grammar material, not vocabulary candidates);
  *  2. keep the source's own canonical lemma rows only (14_IsLem = 1);
  *  3. keep single-word lowercase forms (letters, accents, œ/æ, internal
  *     hyphens or apostrophes) — filters proper nouns and multiword rows;
  *  4. dedupe by (lemma, POS) keeping the highest 12_FreqLemme;
- *  5. order by 12_FreqLemme descending (the only genuinely lemma-level
+ *  5. drop rows failing CD corroboration (failsCdCorroboration — source
+ *     lemmatization artifacts), RECORDING each exclusion;
+ *  6. order by 12_FreqLemme descending (the only genuinely lemma-level
  *     frequency variable — see LEXIQUE4_COLUMNS.md), tie-broken
  *     alphabetically, and take the first `size` entries.
  * Contextual diversity and prevalence ride along as quality signals for the
@@ -548,12 +603,14 @@ export function selectCandidatePool(
   rows: LexiqueRow[],
   size: number = CANDIDATE_POOL_SIZE,
   authoredKeys: ReadonlySet<string> = new Set()
-): CandidateEntry[] {
+): CandidatePool {
   const wordShape = LEXIQUE_WORD_SHAPE;
   type Picked = Omit<CandidateEntry, "sourceRank" | "selectionReason">;
   const best = new Map<string, Picked>();
   for (const row of rows) {
-    const pos = lexiquePosFor(row[L4.CGRAM] ?? "");
+    const cgram = row[L4.CGRAM] ?? "";
+    if (!CANDIDATE_PLAIN_CGRAM.has(cgram)) continue;
+    const pos = lexiquePosFor(cgram);
     if (pos === null || !CANDIDATE_POS.includes(pos)) continue;
     if (row[L4.IS_LEM] !== "1") continue;
     const lemma = row[L4.MOT] ?? "";
@@ -578,7 +635,24 @@ export function selectCandidatePool(
       });
     }
   }
-  return [...best.values()]
+  const excludedByQualityGuard: CandidatePool["excludedByQualityGuard"] = [];
+  const kept: Picked[] = [];
+  for (const entry of best.values()) {
+    if (failsCdCorroboration(entry.freqLemme, entry.cdOrtho)) {
+      excludedByQualityGuard.push({
+        lemma: entry.lemma,
+        partOfSpeech: entry.partOfSpeech,
+        freqLemme: entry.freqLemme,
+        cdOrtho: entry.cdOrtho,
+        reason:
+          "CD corroboration failed: claimed lemma frequency is top-tier while the canonical form appears in under 0.05% of documents — source lemmatization artifact",
+      });
+      continue;
+    }
+    kept.push(entry);
+  }
+  excludedByQualityGuard.sort((a, b) => b.freqLemme - a.freqLemme || a.lemma.localeCompare(b.lemma, "fr"));
+  const entries = kept
     .sort((a, b) => b.freqLemme - a.freqLemme || a.lemma.localeCompare(b.lemma, "fr"))
     .slice(0, size)
     .map((entry, i) => ({
@@ -589,6 +663,7 @@ export function selectCandidatePool(
         `CD ${entry.cdOrtho}; prevalence ${entry.preval ?? "n/a"}` +
         (entry.alreadyAuthored ? "; already authored in the 54-core" : ""),
     }));
+  return { entries, excludedByQualityGuard };
 }
 
 /** (lemma, POS) keys of the authored curriculum lexemes, for pool flagging. */
