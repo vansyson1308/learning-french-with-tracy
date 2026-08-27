@@ -13,29 +13,59 @@
     "citation": "New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. https://doi.org/10.3758/s13428-026-02967-5",
     "license": "CC-BY-SA-4.0",
     "officialLocations": [
+      "https://lexique.org",
       "http://www.lexique.org",
       "https://osf.io/arjcz/"
     ]
   },
   "retrieval": {
-    "status": "not-retrieved",
-    "artifactFilename": null,
-    "url": null,
-    "retrievedAt": null,
-    "sha256": null
+    "status": "retrieved",
+    "artifactFilename": "Lexique400.tsv",
+    "url": "https://lexique.org/databases/Lexique400/Lexique400.tsv",
+    "retrievedAt": "2026-08-27",
+    "sha256": "fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a"
   },
   "expectedColumns": {
-    "toConfirm": true,
+    "toConfirm": false,
     "names": [
-      "ortho",
-      "phon",
-      "lemme",
-      "cgram",
-      "genre",
-      "nombre",
-      "freqlemfilms",
-      "freqfilms"
+      "1_Mot",
+      "2_Phono",
+      "3_Phono_IPA",
+      "4_Lemme",
+      "5_Cgram",
+      "6_CgramOrtho",
+      "7_Genre",
+      "8_Nombre",
+      "9_InfoVER",
+      "10_FreqMot",
+      "11_FreqOrtho",
+      "12_FreqLemme",
+      "13_CDOrtho",
+      "14_IsLem",
+      "15_NbLettres",
+      "16_NbPhons",
+      "17_OLD20",
+      "18_PLD20",
+      "19_CVOrtho",
+      "20_CVPhono",
+      "21_VoisOrtho",
+      "22_VoisPhono",
+      "23_NbHomog",
+      "24_NbHomoph",
+      "25_SyllPhono",
+      "26_SyllNb",
+      "27_SyllCV",
+      "28_PUOrtho",
+      "29_PUPhon",
+      "30_MorphoBase",
+      "31_MorphoStruct",
+      "32_MorphoDecomp",
+      "33_Preval",
+      "34_PrevalNb",
+      "35_RT_FLP",
+      "36_zRT_FLP",
+      "37_Err_FLP"
     ]
   },
-  "notes": "Retrieval blocked in the Phase 4 build environment (all distribution hosts egress-blocked; see ACQUISITION.md for the full attempt record). The column names above are declared from the Lexique 3.8x documentation lineage and MUST be confirmed against the real Lexique 4 artifact at retrieval time; the extractor hard-fails on any mismatch. Lexique's 'phon' field is a phonemic code in Lexique's own alphabet, not verified as IPA — extracted pronunciations are labeled notation 'phonology' unless a documented conversion is added and verified. No data from this source is present in the repository while retrieval.status is 'not-retrieved'."
+  "notes": "Retrieved 2026-08-27 from the official lexique.org distribution by the developer-dispatched GitHub Actions workflow (.github/workflows/lexique-source.yml; the interactive build environment's egress allowlist does not include lexique.org). The run downloaded the artifact twice and both downloads hashed identically to the pinned sha256; the raw 33,067,258-byte TSV (189,863 data rows, UTF-8, no BOM) is retained as a workflow run artifact only and is never committed. Identity, real header, per-column profile and sample rows are committed in derived/lexique4-recon.json; the official README (license CC BY-SA 4.0 and citation) is committed as derived/README-Lexique400.txt. The 37 column names above are the REAL Lexique 4.00 header, confirmed against the artifact — column roles are documented in LEXIQUE4_COLUMNS.md. Phonology: 2_Phono is Lexique's ASCII phonological alphabet (never label it IPA); 3_Phono_IPA is a dedicated genuine-IPA column (verified glyph inventory — see LEXIQUE4_COLUMNS.md), so IPA-labeled pronunciation may cite lexique-4 only when taken verbatim from 3_Phono_IPA. Any future retrieval that does not hash to the pinned sha256 is source-version drift and must fail loudly (verify mode enforces this)."
 }

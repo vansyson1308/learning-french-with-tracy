@@ -78,20 +78,48 @@ ingestion).
 5. CI never downloads anything: ingestion is a deliberate developer-side
    action; CI validates only committed derived data.
 
-## How a developer completes the retrieval (outside this environment)
+## How the retrieval was planned (Phase 4, written before it happened)
 
-1. Download the official Lexique 4 database export (TSV/CSV) from
-   lexique.org or the OSF deposit above, on a normally-networked machine.
+1. Download the official Lexique 4 database export from lexique.org or the
+   OSF deposit above, on a normally-networked machine.
 2. `sha256sum <artifact>` and record filename, URL used, retrieval date,
    and hash in `content/fr/lexicon/source-manifest.json`
    (`retrieval.status: "retrieved"`).
 3. Confirm the column layout of the artifact against the official
-   documentation and update the manifest's `expectedColumns` if the
-   placeholder names differ.
-4. Run `bun run lexicon:source:extract -- --artifact <path>`; commit the
-   derived subset + updated reports it produces. The compiler then treats
-   Lexique-derived fields as present and the audits tighten automatically.
+   documentation and update the manifest's `expectedColumns`.
+4. Run the derivation and commit the derived subset + updated reports.
 
-Until those steps happen, this repository intentionally contains **zero
-rows of Lexique data** — only this record, the manifest, and machinery
-that is tested against clearly-labeled synthetic fixtures.
+## Retrieval completed (2026-08-27, Phase 5A)
+
+The plan above was executed with GitHub-hosted Actions runners as the
+"normally-networked machine" (the only environment in this project's reach
+whose egress includes lexique.org). Full mechanics live in
+`.github/workflows/lexique-source.yml` — a workflow with exactly one
+trigger, `workflow_dispatch`, so CI stays fully offline:
+
+- **Artifact**: `Lexique400.tsv` from
+  `https://lexique.org/databases/Lexique400/Lexique400.tsv` (the apex host
+  serves a valid TLS certificate; `www.lexique.org` does not — curl error
+  60 observed — and TLS verification was never disabled).
+- **Identity**: 33,067,258 bytes, 189,863 data rows, 37 columns, UTF-8
+  without BOM, sha256
+  `fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a` —
+  pinned in `source-manifest.json`.
+- **Reproducibility**: the run downloaded the artifact twice; both
+  downloads hashed identically (enforced in the workflow — a mismatch
+  aborts the run).
+- **Raw data policy**: the ~33 MB TSV is retained as a 90-day workflow run
+  artifact for audit and is never committed; the repository carries only
+  the committed reconnaissance report (`derived/lexique4-recon.json`), the
+  official README (`derived/README-Lexique400.txt`, which states the
+  CC BY-SA 4.0 license and the citation), and the deterministic derived
+  datasets produced by `scripts/lexique-derive.ts` (extract mode).
+- **Column mapping**: the real 37-column layout differs from the Lexique 3
+  lineage names the Phase 4 manifest declared as placeholders; every
+  column's meaning, type, null behavior and use is documented in
+  `LEXIQUE4_COLUMNS.md`, and the manifest's `expectedColumns` now pins the
+  real header with `toConfirm: false`.
+- **Drift guard**: verification (`bun run lexicon:source:verify`) and
+  derivation (`bun run lexicon:derive`) both fail loudly on any artifact
+  whose hash differs from the pin — a future Lexique release is a
+  deliberate re-pin, never a silent upgrade.

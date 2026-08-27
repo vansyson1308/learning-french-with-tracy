@@ -171,9 +171,10 @@ export type FrequencyBand = (typeof FREQUENCY_BAND_VALUES)[number];
 
 /**
  * `notation` is honest labeling: "ipa" only for values that really are IPA.
- * A Lexique-derived phonological code must ship as "phonology" unless a
- * documented, verified conversion produced genuine IPA (enforced below and
- * by the extractor).
+ * Lexique 4's 2_Phono ASCII alphabet ships as "phonology"; its dedicated
+ * 3_Phono_IPA column is genuine IPA and may ship as "ipa" verbatim (see
+ * content/fr/lexicon/LEXIQUE4_COLUMNS.md; the validator rejects
+ * lexique-sourced "ipa" values carrying ASCII-alphabet characters).
  */
 export const PronunciationSchema = z.strictObject({
   value: z.string().min(1),

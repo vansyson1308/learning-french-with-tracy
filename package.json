@@ -65,7 +65,7 @@
     "audio:check": "bun scripts/check-audio.ts",
     "test:integration": "jest",
     "lexicon:source:verify": "bun scripts/lexicon-source.ts verify",
-    "lexicon:source:extract": "bun scripts/lexicon-source.ts extract",
+    "lexicon:derive": "bun scripts/lexique-derive.ts",
     "lexicon:validate": "bun scripts/validate-content.ts",
     "lexicon:build": "bun scripts/compile-content.ts",
     "lexicon:check": "bun scripts/compile-content.ts --check"

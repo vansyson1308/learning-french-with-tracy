@@ -134,24 +134,25 @@ function fixtureLexicon(): RichLexicon {
 }
 
 function fixtureManifest(status: "not-retrieved" | "retrieved" = "not-retrieved"): SourceManifest {
+  const names = ["1_Mot", "2_Phono", "3_Phono_IPA", "4_Lemme", "5_Cgram", "7_Genre"];
   if (status === "retrieved") {
     return SourceManifestSchema.parse({
       source: manifestSource(),
       retrieval: {
         status: "retrieved",
-        artifactFilename: "Lexique4.tsv",
-        url: "http://www.lexique.org/databases/Lexique4/Lexique4.tsv",
+        artifactFilename: "Lexique400.tsv",
+        url: "https://lexique.org/databases/Lexique400/Lexique400.tsv",
         retrievedAt: "2026-08-27",
         sha256: "a".repeat(64),
       },
-      expectedColumns: { toConfirm: false, names: ["ortho", "phon", "lemme", "cgram", "genre"] },
+      expectedColumns: { toConfirm: false, names },
       notes: "fixture",
     });
   }
   return SourceManifestSchema.parse({
     source: manifestSource(),
     retrieval: { status: "not-retrieved", artifactFilename: null, url: null, retrievedAt: null, sha256: null },
-    expectedColumns: { toConfirm: true, names: ["ortho", "phon", "lemme", "cgram", "genre"] },
+    expectedColumns: { toConfirm: true, names },
     notes: "fixture",
   });
 }
@@ -293,12 +294,18 @@ describe("validateLexiconData mutation tests — every rule fires", () => {
     );
   });
 
-  test("lexique-sourced pronunciation labeled ipa fails (never mislabel)", () => {
+  test("lexique ASCII phonology mislabeled as ipa fails (2_Phono is never IPA)", () => {
     const lexicon = fixtureLexicon();
     lexicon.lexemes[0].pronunciation = { value: "Sa", notation: "ipa", source: "lexique-4" };
     expect(
       errorsFor({ lexicon, manifest: fixtureManifest("retrieved") }).join("\n")
-    ).toContain('must not be labeled "ipa"');
+    ).toContain("Lexique-ASCII alphabet characters");
+  });
+
+  test("genuine IPA from 3_Phono_IPA labeled ipa is accepted when retrieved", () => {
+    const lexicon = fixtureLexicon();
+    lexicon.lexemes[0].pronunciation = { value: "ʃa", notation: "ipa", source: "lexique-4" };
+    expect(errorsFor({ lexicon, manifest: fixtureManifest("retrieved") })).toEqual([]);
   });
 
   test("lexique-sourced pronunciation labeled phonology is accepted when retrieved", () => {
@@ -410,44 +417,82 @@ describe("Lexique mapping tables", () => {
     expect(lexiquePosFor("")).toBeNull();
   });
 
-  test("genre mapping", () => {
+  test("genre mapping (Lexique 4 adds épicène e → both)", () => {
     expect(lexiqueGenderFor("m")).toBe("masculine");
     expect(lexiqueGenderFor("f")).toBe("feminine");
+    expect(lexiqueGenderFor("e")).toBe("both");
     expect(lexiqueGenderFor("")).toBe("unknown");
     expect(lexiqueGenderFor("?")).toBe("unknown");
   });
 
-  test("frequency bands use the documented thresholds", () => {
-    expect(frequencyBandFor(250)).toBe("very-common");
-    expect(frequencyBandFor(10)).toBe("very-common");
-    expect(frequencyBandFor(9.99)).toBe("common");
-    expect(frequencyBandFor(1)).toBe("common");
-    expect(frequencyBandFor(0.99)).toBe("less-common");
-    expect(frequencyBandFor(0)).toBe("less-common");
+  test("frequency bands apply explicit population-derived thresholds — no built-in cutoffs", () => {
+    const t = { veryCommon: 10, common: 1 };
+    expect(frequencyBandFor(250, t)).toBe("very-common");
+    expect(frequencyBandFor(10, t)).toBe("very-common");
+    expect(frequencyBandFor(9.99, t)).toBe("common");
+    expect(frequencyBandFor(1, t)).toBe("common");
+    expect(frequencyBandFor(0.99, t)).toBe("less-common");
+    expect(frequencyBandFor(0, t)).toBe("less-common");
+    // The thresholds genuinely parameterize the result.
+    expect(frequencyBandFor(5, { veryCommon: 4, common: 2 })).toBe("very-common");
+    expect(frequencyBandFor(5, { veryCommon: 40, common: 4 })).toBe("common");
   });
 });
 
-describe("parseLexiqueTsv", () => {
-  const header = "ortho\tphon\tlemme\tcgram\tgenre";
+describe("parseLexiqueTsv (real Lexique 4 header)", () => {
+  const header = "1_Mot\t2_Phono\t3_Phono_IPA\t4_Lemme\t5_Cgram\t7_Genre";
 
   test("parses well-formed rows", () => {
-    const rows = parseLexiqueTsv(`${header}\nchat\tSa\tchat\tNOM\tm\n`, ["ortho", "cgram"]);
-    expect(rows).toEqual([{ ortho: "chat", phon: "Sa", lemme: "chat", cgram: "NOM", genre: "m" }]);
+    const rows = parseLexiqueTsv(`${header}\nchat\tSa\tʃa\tchat\tNOM\tm\n`, ["1_Mot", "5_Cgram"]);
+    expect(rows).toEqual([
+      {
+        "1_Mot": "chat",
+        "2_Phono": "Sa",
+        "3_Phono_IPA": "ʃa",
+        "4_Lemme": "chat",
+        "5_Cgram": "NOM",
+        "7_Genre": "m",
+      },
+    ]);
   });
 
   test("missing expected column is a hard error, not a guess", () => {
-    expect(() => parseLexiqueTsv(`ortho\tphon\nchat\tSa`, ["ortho", "cgram"])).toThrow(
-      /missing expected column "cgram"/
+    expect(() => parseLexiqueTsv(`1_Mot\t2_Phono\nchat\tSa`, ["1_Mot", "5_Cgram"])).toThrow(
+      /missing expected column "5_Cgram"/
     );
   });
 
   test("empty artifact is a hard error", () => {
-    expect(() => parseLexiqueTsv("", ["ortho"])).toThrow(/empty source artifact/);
+    expect(() => parseLexiqueTsv("", ["1_Mot"])).toThrow(/empty source artifact/);
   });
 });
 
+/** Full-shape Lexique 4 row for matcher/pool tests (unused columns empty). */
+function l4row(over: Record<string, string>): Record<string, string> {
+  return {
+    "1_Mot": "",
+    "2_Phono": "",
+    "3_Phono_IPA": "",
+    "4_Lemme": "",
+    "5_Cgram": "",
+    "6_CgramOrtho": "",
+    "7_Genre": "",
+    "8_Nombre": "",
+    "9_InfoVER": "",
+    "10_FreqMot": "",
+    "11_FreqOrtho": "",
+    "12_FreqLemme": "",
+    "13_CDOrtho": "",
+    "14_IsLem": "",
+    "33_Preval": "",
+    ...over,
+  };
+}
+
 describe("matchLexemes — deterministic, fail-closed", () => {
   const lexicon = fixtureLexicon();
+  const chatRow = (over: Record<string, string> = {}) =>
+    l4row({ "1_Mot": "chat", "4_Lemme": "chat", "5_Cgram": "NOM", "7_Genre": "m", "8_Nombre": "s", "14_IsLem": "1", ...over });
 
   test("null rows → source-unavailable for matchable entries, not-applicable for expressions", () => {
     const audit = matchLexemes(lexicon, null);
@@ -456,41 +501,49 @@ describe("matchLexemes — deterministic, fail-closed", () => {
     expect(audit.find((r) => r.id === "fr:w:au-revoir")?.status).toBe("not-applicable");
   });
 
-  test("a single lemma+POS candidate matches with a stable key", () => {
+  test("a single lemma+POS candidate matches with a stable Mot|Cgram|Genre|Nombre key", () => {
     const rows = [
-      { ortho: "chat", lemme: "chat", cgram: "NOM", genre: "m" },
-      { ortho: "chatte", lemme: "chatte", cgram: "NOM", genre: "f" },
+      chatRow(),
+      l4row({ "1_Mot": "chatte", "4_Lemme": "chatte", "5_Cgram": "NOM", "7_Genre": "f", "8_Nombre": "s", "14_IsLem": "1" }),
     ];
-    const audit = matchLexemes(lexicon, rows);
-    const chat = audit.find((r) => r.id === "fr:w:chat");
+    const chat = matchLexemes(lexicon, rows).find((r) => r.id === "fr:w:chat");
     expect(chat?.status).toBe("matched");
-    expect(chat?.matchKey).toBe("chat|NOM");
+    expect(chat?.matchKey).toBe("chat|NOM|m|s");
   });
 
   test("POS filtering resolves homographs (noun vs verb row)", () => {
     const rows = [
-      { ortho: "manger", lemme: "manger", cgram: "NOM", genre: "m" },
-      { ortho: "manger", lemme: "manger", cgram: "VER", genre: "" },
+      l4row({ "1_Mot": "manger", "4_Lemme": "manger", "5_Cgram": "NOM", "7_Genre": "m", "8_Nombre": "s", "14_IsLem": "1" }),
+      l4row({ "1_Mot": "manger", "4_Lemme": "manger", "5_Cgram": "VER", "9_InfoVER": "inf", "14_IsLem": "1" }),
     ];
     const manger = matchLexemes(lexicon, rows).find((r) => r.id === "fr:w:manger");
     expect(manger?.status).toBe("matched");
-    expect(manger?.matchKey).toBe("manger|VER");
+    expect(manger?.matchKey).toBe("manger|VER||");
+  });
+
+  test("the source's own lemma flag disambiguates before gender", () => {
+    const rows = [chatRow({ "14_IsLem": "0", "8_Nombre": "p" }), chatRow()];
+    const chat = matchLexemes(lexicon, rows).find((r) => r.id === "fr:w:chat");
+    expect(chat?.status).toBe("matched");
+    expect(chat?.matchKey).toBe("chat|NOM|m|s");
   });
 
   test("gender disambiguates same-POS noun rows", () => {
-    const rows = [
-      { ortho: "chat", lemme: "chat", cgram: "NOM", genre: "f" },
-      { ortho: "chat", lemme: "chat", cgram: "NOM", genre: "m" },
-    ];
+    const rows = [chatRow({ "7_Genre": "f" }), chatRow()];
     const chat = matchLexemes(lexicon, rows).find((r) => r.id === "fr:w:chat");
     expect(chat?.status).toBe("matched");
+    expect(chat?.matchKey).toBe("chat|NOM|m|s");
+  });
+
+  test("an épicène (e) row is compatible with either authored gender", () => {
+    const rows = [chatRow({ "7_Genre": "f" }), chatRow({ "7_Genre": "e" })];
+    const chat = matchLexemes(lexicon, rows).find((r) => r.id === "fr:w:chat");
+    expect(chat?.status).toBe("matched");
+    expect(chat?.matchKey).toBe("chat|NOM|e|s");
   });
 
   test("still-ambiguous candidates stay ambiguous — never picked by frequency", () => {
-    const rows = [
-      { ortho: "chat", lemme: "chat", cgram: "NOM", genre: "m", freqfilms: "999" },
-      { ortho: "chat", lemme: "chat", cgram: "NOM", genre: "m", freqfilms: "1" },
-    ];
+    const rows = [chatRow({ "12_FreqLemme": "999" }), chatRow({ "12_FreqLemme": "1" })];
     const chat = matchLexemes(lexicon, rows).find((r) => r.id === "fr:w:chat");
     expect(chat?.status).toBe("ambiguous");
     expect(chat?.matchKey).toBeNull();
@@ -499,27 +552,31 @@ describe("matchLexemes — deterministic, fail-closed", () => {
 
   test("no candidate → unmatched", () => {
     const chat = matchLexemes(lexicon, [
-      { ortho: "chien", lemme: "chien", cgram: "NOM", genre: "m" },
+      l4row({ "1_Mot": "chien", "4_Lemme": "chien", "5_Cgram": "NOM", "7_Genre": "m", "14_IsLem": "1" }),
     ]).find((r) => r.id === "fr:w:chat");
     expect(chat?.status).toBe("unmatched");
   });
 });
 
 describe("selectCandidatePool — documented deterministic selection", () => {
-  const row = (ortho: string, cgram: string, freq: string, over: Record<string, string> = {}) => ({
-    ortho,
-    lemme: over.lemme ?? ortho,
-    cgram,
-    genre: over.genre ?? "",
-    freqlemfilms: freq,
-    ...over,
-  });
+  const row = (mot: string, cgram: string, freqLemme: string, over: Record<string, string> = {}) =>
+    l4row({
+      "1_Mot": mot,
+      "4_Lemme": over.lemme ?? mot,
+      "5_Cgram": cgram,
+      "7_Genre": over.genre ?? "",
+      "12_FreqLemme": freqLemme,
+      "13_CDOrtho": over.cd ?? "0.5",
+      "14_IsLem": over.isLem ?? "1",
+      "3_Phono_IPA": over.ipa ?? "",
+      "33_Preval": over.preval ?? "",
+    });
 
-  test("filters POS, inflected rows, proper nouns and multiword forms", () => {
+  test("filters POS, non-lemma rows, proper nouns and multiword forms", () => {
     const pool = selectCandidatePool([
-      row("chat", "NOM", "30", { genre: "m" }),
+      row("chat", "NOM", "30", { genre: "m", ipa: "ʃa", preval: "99" }),
       row("manger", "VER", "120"),
-      row("mangeons", "VER", "120", { lemme: "manger" }), // inflected — dropped
+      row("mangeons", "VER", "120", { lemme: "manger", isLem: "0" }), // inflected — dropped
       row("Paris", "NOM", "500"), // capitalized — dropped
       row("pomme de terre", "NOM", "12"), // multiword — dropped
       row("le", "ART:def", "25000"), // POS outside the pool — dropped
@@ -527,10 +584,13 @@ describe("selectCandidatePool — documented deterministic selection", () => {
     ]);
     expect(pool.map((p) => p.lemma)).toEqual(["aujourd'hui", "manger", "chat"]);
     expect(pool.find((p) => p.lemma === "chat")?.gender).toBe("masculine");
+    expect(pool.find((p) => p.lemma === "chat")?.ipa).toBe("ʃa");
+    expect(pool.find((p) => p.lemma === "chat")?.preval).toBe(99);
     expect(pool.find((p) => p.lemma === "manger")?.gender).toBeNull();
+    expect(pool.find((p) => p.lemma === "manger")?.preval).toBeNull();
   });
 
-  test("dedupes by (lemma, POS) keeping the highest frequency, and truncates", () => {
+  test("dedupes by (lemma, POS) keeping the highest lemma frequency, and truncates", () => {
     const pool = selectCandidatePool(
       [
         row("chat", "NOM", "5", { genre: "m" }),
@@ -540,15 +600,29 @@ describe("selectCandidatePool — documented deterministic selection", () => {
       ],
       2
     );
-    expect(pool.map((p) => `${p.lemma}:${p.perMillion}`)).toEqual(["chat:30", "chien:20"]);
+    expect(pool.map((p) => `${p.lemma}:${p.freqLemme}`)).toEqual(["chat:30", "chien:20"]);
   });
 
-  test("ordering is frequency descending with alphabetical tiebreak", () => {
+  test("ordering is frequency descending with alphabetical tiebreak; ranks are 1-based", () => {
     const pool = selectCandidatePool([
       row("zèbre", "NOM", "3", { genre: "m" }),
       row("abeille", "NOM", "3", { genre: "f" }),
       row("chat", "NOM", "30", { genre: "m" }),
     ]);
     expect(pool.map((p) => p.lemma)).toEqual(["chat", "abeille", "zèbre"]);
+    expect(pool.map((p) => p.sourceRank)).toEqual([1, 2, 3]);
+    expect(pool[0].selectionReason).toContain("rank 1 by lemma subtitle frequency (30/M)");
+  });
+
+  test("épicène nouns carry gender both; authored (lemma, POS) pairs are flagged", () => {
+    const pool = selectCandidatePool(
+      [row("élève", "NOM", "40", { genre: "e" }), row("chat", "NOM", "30", { genre: "m" })],
+      1500,
+      new Set(["chat|noun"])
+    );
+    expect(pool.find((p) => p.lemma === "élève")?.gender).toBe("both");
+    expect(pool.find((p) => p.lemma === "chat")?.alreadyAuthored).toBe(true);
+    expect(pool.find((p) => p.lemma === "chat")?.selectionReason).toContain("already authored");
+    expect(pool.find((p) => p.lemma === "élève")?.alreadyAuthored).toBe(false);
   });
 });
