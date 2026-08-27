@@ -70,7 +70,7 @@ describe("committed lexicon database", () => {
     expect(rows.map((r) => r.surface)).toEqual(lexicon.lexemes.map((l) => l.surface));
   });
 
-  test("every lexeme has examples and a registered source reference", () => {
+  test("every lexeme has examples and registered source references (incl. lexique-4)", () => {
     const db = open(committedPath);
     const exampleCounts = db
       .query<{ lexeme_id: string; n: number }, []>(
@@ -80,12 +80,22 @@ describe("committed lexicon database", () => {
     const refCounts = db
       .query<{ n: number }, []>("SELECT COUNT(*) as n FROM lexeme_sources")
       .get();
-    const sources = db.query<{ id: string; license: string }, []>("SELECT id, license FROM sources").all();
+    const sources = db
+      .query<{ id: string; license: string }, []>("SELECT id, license FROM sources ORDER BY id")
+      .all();
+    const lexiqueRefs = db
+      .query<{ n: number }, []>(
+        "SELECT COUNT(*) as n FROM lexeme_sources WHERE source_id = 'lexique-4' AND match_key IS NOT NULL"
+      )
+      .get();
     db.close();
     expect(exampleCounts.length).toBe(54);
     expect(exampleCounts.every((r) => r.n >= 1)).toBe(true);
-    expect(refCounts?.n).toBe(54);
+    // 54 authored refs + 51 adopted Lexique 4 rows (49 matched + 2 overrides).
+    expect(refCounts?.n).toBe(105);
+    expect(lexiqueRefs?.n).toBe(51);
     expect(sources).toEqual([
+      { id: "lexique-4", license: "CC-BY-SA-4.0" },
       { id: "original-french-lexicon", license: "CC-BY-SA-4.0" },
     ]);
   });

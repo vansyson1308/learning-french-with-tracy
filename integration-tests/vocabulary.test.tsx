@@ -46,9 +46,18 @@ describe("Vocabulary Browser", () => {
     await waitFor(() => expect(screen.getByText("54 words")).toBeOnTheScreen());
     expect(screen.getByText("l'homme")).toBeOnTheScreen();
     expect(screen.getByText("the man")).toBeOnTheScreen();
-    // No frequency sort while the data cannot support it honestly.
-    expect(screen.queryByText("Frequency")).toBeNull();
     expect(screen.getByText("Course order")).toBeOnTheScreen();
+    // Frequency sort renders now that real Lexique 4 measurements exist,
+    // and orders by raw per-million ("non" is the most frequent taught word).
+    const frequencyChip = screen.getByText("Frequency");
+    expect(frequencyChip).toBeOnTheScreen();
+    await userEvent.press(frequencyChip);
+    await waitFor(() => {
+      const labels = screen
+        .getAllByTestId("vocab-row-surface")
+        .map((node) => node.props.children);
+      expect(labels[0]).toBe("non");
+    });
   });
 
   test("search handles accents and apostrophes; filters narrow the list", async () => {

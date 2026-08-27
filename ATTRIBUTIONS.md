@@ -6,6 +6,17 @@ This file lists third-party sources this app builds on, generated from the
 provenance registry. It supplements — and never replaces — the repository's
 `LICENSE`; all existing copyright and MIT notices are preserved as-is.
 
+## Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://lexique.org
+- **What:** lexical database (frequency, contextual diversity, prevalence, phonology incl. IPA, lemmas, verb morphology)
+- **Retrieved:** 2026-08-27
+
+Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).
+
+> Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md).
+
 ## Learning French with Tracy — authored French lexicon
 
 - **License:** CC-BY-SA-4.0

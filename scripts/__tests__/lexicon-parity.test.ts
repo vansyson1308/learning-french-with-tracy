@@ -95,10 +95,13 @@ describe("list parity", () => {
     }
   });
 
-  test("frequency sort degrades identically while no data supports it", async () => {
-    expect(await runNativeList(exec, { sort: "frequency" })).toEqual(
-      await web.list({ sort: "frequency" })
-    );
+  test("frequency sort agrees over the real activated measurements (§19)", async () => {
+    const native = await runNativeList(exec, { sort: "frequency" });
+    expect(native).toEqual(await web.list({ sort: "frequency" }));
+    // Sanity against the real data: raw per-million descending, with
+    // rank-less merci (ONO) placed by its raw frequency, not sunk.
+    const ids = native.map((r: { id: string }) => r.id);
+    expect(ids.slice(0, 4)).toEqual(["fr:w:non", "fr:w:oui", "fr:w:homme", "fr:w:merci"]);
   });
 });
 
@@ -119,8 +122,9 @@ describe("detail parity", () => {
     expect(nativeExamples).toEqual(await web.getExamples("fr:w:poule"));
   });
 
-  test("frequency-sort support agrees (both false today)", async () => {
+  test("frequency-sort support agrees (both true with activated data)", async () => {
     const row = await exec.first<{ n: number }>(SQL.anyFrequency, []);
-    expect((row?.n ?? 0) > 0).toBe(await web.supportsFrequencySort());
+    expect((row?.n ?? 0) > 0).toBe(true);
+    expect(await web.supportsFrequencySort()).toBe(true);
   });
 });

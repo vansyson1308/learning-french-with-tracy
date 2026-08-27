@@ -52,46 +52,75 @@ Lexique 4 only), and no other dictionary/corpus dataset was substituted
 (Phase 4 mandate: no Wiktionary/Kaikki/Tatoeba/FreeDict/Lingua Libre
 ingestion).
 
-## What this means for the shipped data (fail-closed rules)
+## Fail-closed rules (written in Phase 4; still binding, now in their retrieved state)
 
-1. `content/fr/lexicon/source-manifest.json` records the source with
-   `retrieval.status: "not-retrieved"` and `sha256: null`. The ingestion
-   command (`bun run lexicon:source:extract`) **refuses to run** until a
-   developer places the official artifact locally, records its SHA-256 in
-   the manifest, and confirms the column layout against the official
-   documentation. There is no code path that ingests unpinned data.
-2. Every learner-facing field currently shipped for the 54 curriculum
-   lexemes is **newly-authored original project material** (glosses reuse
-   the project's existing course content; pronunciation, examples, gender,
-   topics are authored and carry `original-project` source references).
-   Nothing is labeled as Lexique-derived anywhere in the data, the app, or
-   the reports.
-3. Frequency fields are **absent** (the Phase 4 rule is: frequency comes
-   only from real Lexique measurements). UI that would need frequency
-   (e.g. a frequency sort in the vocabulary browser) stays hidden while the
-   data honestly cannot support it.
-4. The per-lexeme source-match audit reports `source-unavailable` for all
-   entries rather than inventing matches; the article-consistency audit
-   runs against authored gender (a real internal-consistency gate) and
-   gains the Lexique cross-check automatically once the artifact is
-   ingested.
-5. CI never downloads anything: ingestion is a deliberate developer-side
-   action; CI validates only committed derived data.
+1. `content/fr/lexicon/source-manifest.json` pins the retrieval (status
+   `retrieved`, official URL, date, SHA-256, confirmed 37-column layout).
+   Verification (`bun run lexicon:source:verify`), derivation
+   (`bun run lexicon:derive`, runner-side) and import
+   (`bun run lexicon:import`) all **refuse to run** against an artifact or
+   derived file whose hash differs from the pin — a future Lexique release
+   is a deliberate re-pin, never a silent upgrade. There is no code path
+   that ingests unpinned data.
+2. Glosses, examples, topics and confusable relations remain
+   **newly-authored original project material**; frequency and
+   pronunciation for the 51 effectively-matched word lexemes are now REAL
+   Lexique 4 measurements (raw 12_FreqLemme + population rank +
+   population-quantile band; 3_Phono_IPA verbatim), each carrying a
+   `lexique-4` source reference with the adopted row key. The 3
+   expressions stay entirely project-authored.
+3. Frequency-dependent UI (the vocabulary browser's Frequency sort)
+   activated only when the data became real, and sorts by raw per-million.
+4. The per-lexeme source-match audit in the committed reports is the REAL
+   audit from the committed evidence subset (49 matched, 2 justified
+   overrides, 3 not-applicable expressions); cross-check dispositions are
+   in REVIEW.md pass 3 and the honest attention queue is
+   derived/core-crosscheck.json.
+5. CI never downloads anything: acquisition runs only via the
+   dispatch-only workflow; CI validates committed derived data offline.
 
-## How a developer completes the retrieval (outside this environment)
+## How the retrieval was planned (Phase 4, written before it happened)
 
-1. Download the official Lexique 4 database export (TSV/CSV) from
-   lexique.org or the OSF deposit above, on a normally-networked machine.
+1. Download the official Lexique 4 database export from lexique.org or the
+   OSF deposit above, on a normally-networked machine.
 2. `sha256sum <artifact>` and record filename, URL used, retrieval date,
    and hash in `content/fr/lexicon/source-manifest.json`
    (`retrieval.status: "retrieved"`).
 3. Confirm the column layout of the artifact against the official
-   documentation and update the manifest's `expectedColumns` if the
-   placeholder names differ.
-4. Run `bun run lexicon:source:extract -- --artifact <path>`; commit the
-   derived subset + updated reports it produces. The compiler then treats
-   Lexique-derived fields as present and the audits tighten automatically.
+   documentation and update the manifest's `expectedColumns`.
+4. Run the derivation and commit the derived subset + updated reports.
 
-Until those steps happen, this repository intentionally contains **zero
-rows of Lexique data** — only this record, the manifest, and machinery
-that is tested against clearly-labeled synthetic fixtures.
+## Retrieval completed (2026-08-27, Phase 5A)
+
+The plan above was executed with GitHub-hosted Actions runners as the
+"normally-networked machine" (the only environment in this project's reach
+whose egress includes lexique.org). Full mechanics live in
+`.github/workflows/lexique-source.yml` — a workflow with exactly one
+trigger, `workflow_dispatch`, so CI stays fully offline:
+
+- **Artifact**: `Lexique400.tsv` from
+  `https://lexique.org/databases/Lexique400/Lexique400.tsv` (the apex host
+  serves a valid TLS certificate; `www.lexique.org` does not — curl error
+  60 observed — and TLS verification was never disabled).
+- **Identity**: 33,067,258 bytes, 189,863 data rows, 37 columns, UTF-8
+  without BOM, sha256
+  `fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a` —
+  pinned in `source-manifest.json`.
+- **Reproducibility**: the run downloaded the artifact twice; both
+  downloads hashed identically (enforced in the workflow — a mismatch
+  aborts the run).
+- **Raw data policy**: the ~33 MB TSV is retained as a 90-day workflow run
+  artifact for audit and is never committed; the repository carries only
+  the committed reconnaissance report (`derived/lexique4-recon.json`), the
+  official README (`derived/README-Lexique400.txt`, which states the
+  CC BY-SA 4.0 license and the citation), and the deterministic derived
+  datasets produced by `scripts/lexique-derive.ts` (extract mode).
+- **Column mapping**: the real 37-column layout differs from the Lexique 3
+  lineage names the Phase 4 manifest declared as placeholders; every
+  column's meaning, type, null behavior and use is documented in
+  `LEXIQUE4_COLUMNS.md`, and the manifest's `expectedColumns` now pins the
+  real header with `toConfirm: false`.
+- **Drift guard**: verification (`bun run lexicon:source:verify`) and
+  derivation (`bun run lexicon:derive`) both fail loudly on any artifact
+  whose hash differs from the pin — a future Lexique release is a
+  deliberate re-pin, never a silent upgrade.

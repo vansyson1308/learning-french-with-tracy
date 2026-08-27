@@ -1,0 +1,683 @@
+{
+  "source": {
+    "url": "https://lexique.org/databases/Lexique400/Lexique400.tsv",
+    "filename": "Lexique400.tsv",
+    "retrievedAt": "2026-08-27"
+  },
+  "bytes": 33067258,
+  "sha256": "fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a",
+  "encodingProbe": {
+    "bomHex": "315f4d",
+    "replacementCharsInSample": 0
+  },
+  "columnCount": 37,
+  "dataRows": 189863,
+  "header": [
+    "1_Mot",
+    "2_Phono",
+    "3_Phono_IPA",
+    "4_Lemme",
+    "5_Cgram",
+    "6_CgramOrtho",
+    "7_Genre",
+    "8_Nombre",
+    "9_InfoVER",
+    "10_FreqMot",
+    "11_FreqOrtho",
+    "12_FreqLemme",
+    "13_CDOrtho",
+    "14_IsLem",
+    "15_NbLettres",
+    "16_NbPhons",
+    "17_OLD20",
+    "18_PLD20",
+    "19_CVOrtho",
+    "20_CVPhono",
+    "21_VoisOrtho",
+    "22_VoisPhono",
+    "23_NbHomog",
+    "24_NbHomoph",
+    "25_SyllPhono",
+    "26_SyllNb",
+    "27_SyllCV",
+    "28_PUOrtho",
+    "29_PUPhon",
+    "30_MorphoBase",
+    "31_MorphoStruct",
+    "32_MorphoDecomp",
+    "33_Preval",
+    "34_PrevalNb",
+    "35_RT_FLP",
+    "36_zRT_FLP",
+    "37_Err_FLP"
+  ],
+  "profileSampleSize": 5000,
+  "sampleRows": [
+    [
+      "pollacks",
+      "pOlak",
+      "pɔlak",
+      "pollacks",
+      "NOM",
+      "NOM",
+      "e",
+      "p",
+      "",
+      "0.003",
+      "0.006",
+      "0.003",
+      "0.00306",
+      "1",
+      "8",
+      "5",
+      "2.7",
+      "1.8",
+      "CVCCVCCC",
+      "CVCVC",
+      "0",
+      "2",
+      "0",
+      "2",
+      "pO-lak",
+      "2",
+      "CV-CVC",
+      "8",
+      "5",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "disproportionnées",
+      "dispRopORsjone",
+      "dispʁopɔʁsjone",
+      "disproportionner",
+      "VER",
+      "VER,ADJ",
+      "f",
+      "p",
+      "par:pas:",
+      "0.041",
+      "0.085",
+      "0.339",
+      "0.04133",
+      "0",
+      "17",
+      "14",
+      "4.35",
+      "5.25",
+      "CVCCCVCVCCVVCCVVVC",
+      "CVCCCVCVCCYVCV",
+      "0",
+      "0",
+      "1",
+      "6",
+      "dis-pRo-pOR-sjo-ne",
+      "5",
+      "CVC-CCV-CVC-CYV-CV",
+      "0",
+      "12",
+      "",
+      "",
+      "",
+      "100",
+      "26",
+      "",
+      "",
+      ""
+    ],
+    [
+      "marger",
+      "maRZe",
+      "maʁʒe",
+      "marger",
+      "VER",
+      "VER",
+      "",
+      "",
+      "inf",
+      "0.006",
+      "0.009",
+      "0.149",
+      "0.00459",
+      "1",
+      "6",
+      "5",
+      "1.45",
+      "1.4",
+      "CVCCVC",
+      "CVCCV",
+      "9",
+      "9",
+      "0",
+      "0",
+      "maR-Ze",
+      "2",
+      "CVC-CV",
+      "6",
+      "5",
+      "marge",
+      "0-1-1",
+      "/marg(e).er",
+      "60",
+      "25",
+      "",
+      "",
+      ""
+    ]
+  ],
+  "columnProfile": [
+    {
+      "index": 0,
+      "name": "1_Mot",
+      "emptyPct": 0,
+      "distinctInSample": 4994,
+      "samples": [
+        "pollacks",
+        "disproportionnées",
+        "marger",
+        "cybernéticien",
+        "accusons",
+        "ferlage"
+      ]
+    },
+    {
+      "index": 1,
+      "name": "2_Phono",
+      "emptyPct": 0,
+      "distinctInSample": 4863,
+      "samples": [
+        "pOlak",
+        "dispRopORsjone",
+        "maRZe",
+        "sibERnetisj5",
+        "akyz§",
+        "fERlaZ"
+      ]
+    },
+    {
+      "index": 2,
+      "name": "3_Phono_IPA",
+      "emptyPct": 0,
+      "distinctInSample": 4863,
+      "samples": [
+        "pɔlak",
+        "dispʁopɔʁsjone",
+        "maʁʒe",
+        "sibɛʁnetisjɛ̃",
+        "akyzɔ̃",
+        "fɛʁlaʒ"
+      ]
+    },
+    {
+      "index": 3,
+      "name": "4_Lemme",
+      "emptyPct": 0,
+      "distinctInSample": 4481,
+      "samples": [
+        "pollacks",
+        "disproportionner",
+        "marger",
+        "cybernéticien",
+        "accuser",
+        "ferlage"
+      ]
+    },
+    {
+      "index": 4,
+      "name": "5_Cgram",
+      "emptyPct": 0,
+      "distinctInSample": 15,
+      "samples": [
+        "NOM",
+        "VER",
+        "ADJ",
+        "PRE",
+        "ADV",
+        "PRO:rel"
+      ]
+    },
+    {
+      "index": 5,
+      "name": "6_CgramOrtho",
+      "emptyPct": 0,
+      "distinctInSample": 51,
+      "samples": [
+        "NOM",
+        "VER,ADJ",
+        "VER",
+        "NOM,ADJ",
+        "ADJ",
+        "NOM,ADJ,VER"
+      ]
+    },
+    {
+      "index": 6,
+      "name": "7_Genre",
+      "emptyPct": 41.1,
+      "distinctInSample": 3,
+      "samples": [
+        "e",
+        "f",
+        "m"
+      ]
+    },
+    {
+      "index": 7,
+      "name": "8_Nombre",
+      "emptyPct": 10.8,
+      "distinctInSample": 3,
+      "samples": [
+        "p",
+        "s",
+        "i"
+      ]
+    },
+    {
+      "index": 8,
+      "name": "9_InfoVER",
+      "emptyPct": 54.7,
+      "distinctInSample": 98,
+      "samples": [
+        "par:pas:",
+        "inf",
+        "ind:pre:1,imp:pre:1",
+        "ind:imp:2",
+        "ind:fut:1",
+        "cnd:pre:3"
+      ]
+    },
+    {
+      "index": 9,
+      "name": "10_FreqMot",
+      "emptyPct": 0,
+      "distinctInSample": 776,
+      "samples": [
+        "0.003",
+        "0.041",
+        "0.006",
+        "0.016",
+        "0.294",
+        "0.085"
+      ]
+    },
+    {
+      "index": 10,
+      "name": "11_FreqOrtho",
+      "emptyPct": 0,
+      "distinctInSample": 936,
+      "samples": [
+        "0.006",
+        "0.085",
+        "0.009",
+        "0.019",
+        "0.294",
+        "0.003"
+      ]
+    },
+    {
+      "index": 11,
+      "name": "12_FreqLemme",
+      "emptyPct": 0,
+      "distinctInSample": 1748,
+      "samples": [
+        "0.003",
+        "0.339",
+        "0.149",
+        "0.025",
+        "59.472",
+        "0.076"
+      ]
+    },
+    {
+      "index": 12,
+      "name": "13_CDOrtho",
+      "emptyPct": 0,
+      "distinctInSample": 895,
+      "samples": [
+        "0.00306",
+        "0.04133",
+        "0.00459",
+        "0.00765",
+        "0.13625",
+        "0.00153"
+      ]
+    },
+    {
+      "index": 13,
+      "name": "14_IsLem",
+      "emptyPct": 0,
+      "distinctInSample": 2,
+      "samples": [
+        "1",
+        "0"
+      ]
+    },
+    {
+      "index": 14,
+      "name": "15_NbLettres",
+      "emptyPct": 0,
+      "distinctInSample": 21,
+      "samples": [
+        "8",
+        "17",
+        "6",
+        "13",
+        "7",
+        "9"
+      ]
+    },
+    {
+      "index": 15,
+      "name": "16_NbPhons",
+      "emptyPct": 0,
+      "distinctInSample": 18,
+      "samples": [
+        "5",
+        "14",
+        "12",
+        "6",
+        "7",
+        "10"
+      ]
+    },
+    {
+      "index": 16,
+      "name": "17_OLD20",
+      "emptyPct": 0,
+      "distinctInSample": 133,
+      "samples": [
+        "2.7",
+        "4.35",
+        "1.45",
+        "4.65",
+        "2.05",
+        "1.85"
+      ]
+    },
+    {
+      "index": 17,
+      "name": "18_PLD20",
+      "emptyPct": 0,
+      "distinctInSample": 119,
+      "samples": [
+        "1.8",
+        "5.25",
+        "1.4",
+        "4.8",
+        "1.85",
+        "2.65"
+      ]
+    },
+    {
+      "index": 18,
+      "name": "19_CVOrtho",
+      "emptyPct": 0,
+      "distinctInSample": 1889,
+      "samples": [
+        "CVCCVCCC",
+        "CVCCCVCVCCVVCCVVVC",
+        "CVCCVC",
+        "CVCVCCVVCVCVVC",
+        "VCCVCVCC",
+        "CVCCVCV"
+      ]
+    },
+    {
+      "index": 19,
+      "name": "20_CVPhono",
+      "emptyPct": 0,
+      "distinctInSample": 940,
+      "samples": [
+        "CVCVC",
+        "CVCCCVCVCCYVCV",
+        "CVCCV",
+        "CVCVCCVCVCYV",
+        "VCVCVV",
+        "CVCCVC"
+      ]
+    },
+    {
+      "index": 20,
+      "name": "21_VoisOrtho",
+      "emptyPct": 0,
+      "distinctInSample": 27,
+      "samples": [
+        "0",
+        "9",
+        "1",
+        "3",
+        "2",
+        "5"
+      ]
+    },
+    {
+      "index": 21,
+      "name": "22_VoisPhono",
+      "emptyPct": 0,
+      "distinctInSample": 104,
+      "samples": [
+        "2",
+        "0",
+        "9",
+        "3",
+        "4",
+        "71"
+      ]
+    },
+    {
+      "index": 22,
+      "name": "23_NbHomog",
+      "emptyPct": 0,
+      "distinctInSample": 5,
+      "samples": [
+        "0",
+        "1",
+        "2",
+        "4",
+        "3"
+      ]
+    },
+    {
+      "index": 23,
+      "name": "24_NbHomoph",
+      "emptyPct": 0,
+      "distinctInSample": 21,
+      "samples": [
+        "2",
+        "6",
+        "0",
+        "4",
+        "1",
+        "15"
+      ]
+    },
+    {
+      "index": 24,
+      "name": "25_SyllPhono",
+      "emptyPct": 0,
+      "distinctInSample": 4863,
+      "samples": [
+        "pO-lak",
+        "dis-pRo-pOR-sjo-ne",
+        "maR-Ze",
+        "si-bER-ne-ti-sj5",
+        "a-ky-z§",
+        "fER-laZ"
+      ]
+    },
+    {
+      "index": 25,
+      "name": "26_SyllNb",
+      "emptyPct": 0,
+      "distinctInSample": 9,
+      "samples": [
+        "2",
+        "5",
+        "3",
+        "4",
+        "1",
+        "6"
+      ]
+    },
+    {
+      "index": 26,
+      "name": "27_SyllCV",
+      "emptyPct": 0,
+      "distinctInSample": 752,
+      "samples": [
+        "CV-CVC",
+        "CVC-CCV-CVC-CYV-CV",
+        "CVC-CV",
+        "CV-CVC-CV-CV-CYV",
+        "V-CV-CV",
+        "CVC-CVC"
+      ]
+    },
+    {
+      "index": 27,
+      "name": "28_PUOrtho",
+      "emptyPct": 0,
+      "distinctInSample": 21,
+      "samples": [
+        "8",
+        "0",
+        "6",
+        "11",
+        "5",
+        "9"
+      ]
+    },
+    {
+      "index": 28,
+      "name": "29_PUPhon",
+      "emptyPct": 0,
+      "distinctInSample": 16,
+      "samples": [
+        "5",
+        "12",
+        "10",
+        "0",
+        "6",
+        "1"
+      ]
+    },
+    {
+      "index": 29,
+      "name": "30_MorphoBase",
+      "emptyPct": 78.3,
+      "distinctInSample": 921,
+      "samples": [
+        "marge",
+        "ferler",
+        "César",
+        "office",
+        "culture",
+        "serrer"
+      ]
+    },
+    {
+      "index": 30,
+      "name": "31_MorphoStruct",
+      "emptyPct": 73.5,
+      "distinctInSample": 23,
+      "samples": [
+        "0-1-1",
+        "1-0-2",
+        "1-1-2",
+        "1-1-1",
+        "0-1-0",
+        "0-1-2"
+      ]
+    },
+    {
+      "index": 31,
+      "name": "32_MorphoDecomp",
+      "emptyPct": 73.7,
+      "distinctInSample": 1311,
+      "samples": [
+        "/marg(e).er",
+        "_cyber.éti(que)/c.ien",
+        "/ferl(er).age",
+        "/césar.ien",
+        "/§official§.ant",
+        "_in/cult(ure).iv.able"
+      ]
+    },
+    {
+      "index": 32,
+      "name": "33_Preval",
+      "emptyPct": 39.1,
+      "distinctInSample": 89,
+      "samples": [
+        "100",
+        "60",
+        "72",
+        "4",
+        "87",
+        "96"
+      ]
+    },
+    {
+      "index": 33,
+      "name": "34_PrevalNb",
+      "emptyPct": 39.1,
+      "distinctInSample": 37,
+      "samples": [
+        "26",
+        "25",
+        "18",
+        "28",
+        "24",
+        "21"
+      ]
+    },
+    {
+      "index": 34,
+      "name": "35_RT_FLP",
+      "emptyPct": 74.5,
+      "distinctInSample": 1249,
+      "samples": [
+        "762.1052632",
+        "784.6666667",
+        "617.76",
+        "765.8",
+        "728.7916667",
+        "689.4"
+      ]
+    },
+    {
+      "index": 35,
+      "name": "36_zRT_FLP",
+      "emptyPct": 74.5,
+      "distinctInSample": 1273,
+      "samples": [
+        "0.270093479",
+        "0.227755039",
+        "-0.633491295",
+        "0.20668842",
+        "0.070546996",
+        "-0.229896056"
+      ]
+    },
+    {
+      "index": 36,
+      "name": "37_Err_FLP",
+      "emptyPct": 74.5,
+      "distinctInSample": 71,
+      "samples": [
+        "0.2",
+        "0.125",
+        "0",
+        "0.16",
+        "0.04",
+        "0.086956522"
+      ]
+    }
+  ]
+}

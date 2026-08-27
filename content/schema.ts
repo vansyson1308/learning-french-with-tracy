@@ -171,9 +171,10 @@ export type FrequencyBand = (typeof FREQUENCY_BAND_VALUES)[number];
 
 /**
  * `notation` is honest labeling: "ipa" only for values that really are IPA.
- * A Lexique-derived phonological code must ship as "phonology" unless a
- * documented, verified conversion produced genuine IPA (enforced below and
- * by the extractor).
+ * Lexique 4's 2_Phono ASCII alphabet ships as "phonology"; its dedicated
+ * 3_Phono_IPA column is genuine IPA and may ship as "ipa" verbatim (see
+ * content/fr/lexicon/LEXIQUE4_COLUMNS.md; the validator rejects
+ * lexique-sourced "ipa" values carrying ASCII-alphabet characters).
  */
 export const PronunciationSchema = z.strictObject({
   value: z.string().min(1),
@@ -190,11 +191,16 @@ export const LexemeExampleSchema = z.strictObject({
 export const LexemeFrequencySchema = z.strictObject({
   /** Registry id of the measurement source (real measurements only). */
   source: z.string().min(1),
-  /** The source's raw measurement (e.g. occurrences per million words). */
+  /** The source's raw measurement (occurrences per million words). */
   rawValue: z.number().nonnegative(),
-  /** 1-based rank among the source's entries under the documented ordering. */
-  rank: z.number().int().min(1),
-  /** Band derived from documented thresholds (see scripts/lib/lexicon.ts). */
+  /**
+   * 1-based rank in the eligible lemma population under the documented
+   * ordering (derived/core-ranks.json). Absent when the lemma's category
+   * sits outside the ranked population (e.g. interjections like merci) —
+   * sorting always uses rawValue, never rank.
+   */
+  rank: z.number().int().min(1).optional(),
+  /** Band derived from the population-quantile thresholds (§18). */
   band: z.enum(FREQUENCY_BAND_VALUES),
 });
 
@@ -292,6 +298,28 @@ export const SourceManifestSchema = z
     }
   });
 export type SourceManifest = z.infer<typeof SourceManifestSchema>;
+
+/**
+ * content/fr/lexicon/match-overrides.json — the §15 manual-disposition
+ * channel for lexemes the strict matcher leaves unmatched. Every override
+ * names the exact source row it adopts and the human justification; the
+ * validator additionally requires the override to reference a row that
+ * really exists in the committed evidence subset for that lexeme, and
+ * rejects overrides for lexemes the matcher already resolves (or that are
+ * never matchable, i.e. expressions). Silent correction stays impossible.
+ */
+export const MatchOverridesSchema = z.strictObject({
+  version: z.literal(1),
+  overrides: z.array(
+    z.strictObject({
+      id: lexemeId,
+      /** Mot|Cgram|Genre|Nombre of the adopted source row. */
+      matchKey: z.string().min(1),
+      justification: z.string().min(20),
+    })
+  ),
+});
+export type MatchOverrides = z.infer<typeof MatchOverridesSchema>;
 
 const LICENSE_ALLOWLIST = [
   "MIT",

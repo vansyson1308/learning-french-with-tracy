@@ -1,13 +1,14 @@
 {
-  "contentHash": "dd1082099bc276e4",
+  "contentHash": "1fbec6664e13e1f4",
   "totals": {
     "lexemes": 54
   },
   "externalSource": {
     "id": "lexique-4",
-    "retrievalStatus": "not-retrieved",
+    "retrievalStatus": "retrieved",
     "matchStatusCounts": {
-      "source-unavailable": 51,
+      "matched": 49,
+      "unmatched": 2,
       "not-applicable": 3
     }
   },
@@ -15,7 +16,7 @@
     "partOfSpeech": 54,
     "gender": 42,
     "pronunciation": 54,
-    "frequency": 0,
+    "frequency": 51,
     "examples": 54,
     "topic": 54,
     "confusables": 35
@@ -36,7 +37,8 @@
       "travel": 12
     },
     "sourceRefs": {
-      "original-french-lexicon": 54
+      "original-french-lexicon": 54,
+      "lexique-4": 51
     }
   },
   "conflicts": {
@@ -46,6 +48,6 @@
   },
   "candidatePool": {
     "present": false,
-    "reason": "source not retrieved (see content/fr/lexicon/ACQUISITION.md)"
+    "reason": "run lexicon:source:extract to generate"
   }
 }

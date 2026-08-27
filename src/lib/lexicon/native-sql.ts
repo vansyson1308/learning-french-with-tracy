@@ -29,10 +29,16 @@ export const SQL = {
   // sort_key is the accent/ligature-folded lookup form, precomputed at
   // build time — deterministic on every platform, no locale/ICU variance.
   orderAlpha: ` ORDER BY sort_key, ord`,
-  orderFrequency: ` ORDER BY (freq_rank IS NULL), freq_rank, ord`,
+  // Raw per-million frequency is the sort key: it is meaningful for every
+  // measured entry, while the population rank is absent for categories
+  // outside the ranked population (e.g. merci, ONO). Unmeasured entries
+  // sink to the end in course order.
+  orderFrequency: ` ORDER BY (freq_per_million IS NULL), freq_per_million DESC, ord`,
   examples: `SELECT fr, en FROM examples WHERE lexeme_id = ? ORDER BY ordinal`,
   confusables: `SELECT target_id FROM relations WHERE lexeme_id = ? AND rel_type = 'confusable' ORDER BY target_id`,
-  sourceRefs: `SELECT source_id, match_key FROM lexeme_sources WHERE lexeme_id = ? ORDER BY source_id`,
+  // Authored order (ord) is the cross-tier contract — the generated tier
+  // returns refs in authored order, so the SQL tier must too.
+  sourceRefs: `SELECT source_id, match_key FROM lexeme_sources WHERE lexeme_id = ? ORDER BY ord`,
   anyFrequency: `SELECT COUNT(*) AS n FROM lexemes WHERE freq_band IS NOT NULL`,
 } as const;
 
@@ -86,8 +92,14 @@ export function rowToDetail(
     ...(row.ipa !== null && row.ipa_notation !== null
       ? { pronunciation: { value: row.ipa, notation: row.ipa_notation } }
       : {}),
-    ...(row.freq_band !== null && row.freq_rank !== null && row.freq_per_million !== null
-      ? { frequency: { band: row.freq_band, rank: row.freq_rank, perMillion: row.freq_per_million } }
+    ...(row.freq_band !== null && row.freq_per_million !== null
+      ? {
+          frequency: {
+            band: row.freq_band,
+            ...(row.freq_rank !== null ? { rank: row.freq_rank } : {}),
+            perMillion: row.freq_per_million,
+          },
+        }
       : {}),
     examples,
     ...(confusables.length > 0 ? { confusables } : {}),

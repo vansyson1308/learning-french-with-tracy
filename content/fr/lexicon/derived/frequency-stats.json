@@ -1,0 +1,175 @@
+{
+  "source": {
+    "id": "lexique-4",
+    "sha256": "fe333b4f9e1797f23922d5863cde28635ee13685813af0f9b4b4b9f7d4610a5a",
+    "url": "https://lexique.org/databases/Lexique400/Lexique400.tsv",
+    "retrievedAt": "2026-08-27"
+  },
+  "generator": "scripts/lexique-derive.ts",
+  "population": {
+    "definition": "rows with 14_IsLem = 1 whose 5_Cgram maps to noun/verb/adjective/adverb and whose 1_Mot is a lowercase single word (letters/accents/œ/æ, internal hyphen or apostrophe allowed — proper nouns and multiword rows excluded), deduplicated by (1_Mot, mapped POS) keeping the highest 12_FreqLemme",
+    "size": 64836,
+    "byPos": {
+      "verb": 5989,
+      "adverb": 1874,
+      "adjective": 12259,
+      "noun": 44714
+    }
+  },
+  "freqLemme": {
+    "min": 0.003,
+    "max": 35040.212,
+    "quantiles": {
+      "p10": 0.003,
+      "p25": 0.009,
+      "p50": 0.063,
+      "p75": 0.592,
+      "p90": 3.892,
+      "p95": 12.472,
+      "p99": 97.203
+    }
+  },
+  "cdOrtho": {
+    "present": 64836,
+    "min": 0.00153,
+    "max": 99.94029,
+    "quantiles": {
+      "p10": 0.00153,
+      "p25": 0.00306,
+      "p50": 0.02296,
+      "p75": 0.2128,
+      "p90": 1.46816,
+      "p95": 4.44121,
+      "p99": 31.85395
+    }
+  },
+  "preval": {
+    "present": 34716,
+    "min": 0,
+    "max": 100
+  },
+  "topByFreqLemme": [
+    {
+      "lemma": "être",
+      "partOfSpeech": "verb",
+      "freqLemme": 35040.212,
+      "cdOrtho": 97.64085
+    },
+    {
+      "lemma": "avoir",
+      "partOfSpeech": "verb",
+      "freqLemme": 19741.582,
+      "cdOrtho": 96.44519
+    },
+    {
+      "lemma": "pas",
+      "partOfSpeech": "adverb",
+      "freqLemme": 18098.642,
+      "cdOrtho": 99.79639
+    },
+    {
+      "lemma": "upas",
+      "partOfSpeech": "adverb",
+      "freqLemme": 18098.642,
+      "cdOrtho": 0.01378
+    },
+    {
+      "lemma": "ne",
+      "partOfSpeech": "adverb",
+      "freqLemme": 17693.877,
+      "cdOrtho": 99.58512
+    },
+    {
+      "lemma": "aller",
+      "partOfSpeech": "verb",
+      "freqLemme": 9795.946,
+      "cdOrtho": 91.53399
+    },
+    {
+      "lemma": "faire",
+      "partOfSpeech": "verb",
+      "freqLemme": 9061.728,
+      "cdOrtho": 99.02633
+    },
+    {
+      "lemma": "mes",
+      "partOfSpeech": "adjective",
+      "freqLemme": 6962.576,
+      "cdOrtho": 93.63901
+    },
+    {
+      "lemma": "mon",
+      "partOfSpeech": "adjective",
+      "freqLemme": 6962.576,
+      "cdOrtho": 99.04164
+    },
+    {
+      "lemma": "ce",
+      "partOfSpeech": "adjective",
+      "freqLemme": 6521.715,
+      "cdOrtho": 99.6387
+    },
+    {
+      "lemma": "ces",
+      "partOfSpeech": "adjective",
+      "freqLemme": 6521.715,
+      "cdOrtho": 94.54072
+    },
+    {
+      "lemma": "cet",
+      "partOfSpeech": "adjective",
+      "freqLemme": 6521.715,
+      "cdOrtho": 79.26822
+    },
+    {
+      "lemma": "cette",
+      "partOfSpeech": "adjective",
+      "freqLemme": 6521.715,
+      "cdOrtho": 98.19963
+    },
+    {
+      "lemma": "pouvoir",
+      "partOfSpeech": "verb",
+      "freqLemme": 6267.658,
+      "cdOrtho": 58.33129
+    },
+    {
+      "lemma": "dire",
+      "partOfSpeech": "verb",
+      "freqLemme": 6099.386,
+      "cdOrtho": 96.85701
+    },
+    {
+      "lemma": "vouloir",
+      "partOfSpeech": "verb",
+      "freqLemme": 5239.237,
+      "cdOrtho": 30.98438
+    },
+    {
+      "lemma": "savoir",
+      "partOfSpeech": "verb",
+      "freqLemme": 4973.842,
+      "cdOrtho": 80.41182
+    },
+    {
+      "lemma": "bien",
+      "partOfSpeech": "adverb",
+      "freqLemme": 4425.085,
+      "cdOrtho": 99.33252
+    },
+    {
+      "lemma": "non",
+      "partOfSpeech": "adverb",
+      "freqLemme": 4070.88,
+      "cdOrtho": 98.86558
+    },
+    {
+      "lemma": "devoir",
+      "partOfSpeech": "verb",
+      "freqLemme": 3830.592,
+      "cdOrtho": 43.88549
+    }
+  ],
+  "unknownCgramValues": {},
+  "totalDataRows": 189863
+}

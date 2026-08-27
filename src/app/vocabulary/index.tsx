@@ -177,7 +177,7 @@ export default function VocabularyScreen() {
               style={styles.row}
             >
               <View style={styles.rowText}>
-                <Text style={styles.rowSurface}>{item.surface}</Text>
+                <Text testID="vocab-row-surface" style={styles.rowSurface}>{item.surface}</Text>
                 <Text style={styles.rowGloss}>{item.gloss}</Text>
               </View>
               <View style={styles.rowMeta}>

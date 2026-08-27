@@ -59,11 +59,13 @@ export default function LicensesScreen() {
             </View>
           ))}
           <Text style={styles.text}>
-            The dataset is designed to incorporate data derived from Lexique 4 (New,
-            Pallier, Schalchli, Bourgin, &amp; Gimenes, 2026 — lexique.org), which is
-            distributed under CC BY-SA 4.0. No Lexique data is included in this version;
-            when it is added, its attribution and a description of the modifications
-            will appear here and in ATTRIBUTIONS.md.
+            Word frequency and IPA pronunciation values are derived from Lexique 4
+            (New, Pallier, Schalchli, Bourgin, &amp; Gimenes, 2026 — lexique.org),
+            distributed under CC BY-SA 4.0. Modifications: selection of the curriculum
+            entries, per-word matching to Lexique rows, frequency banding derived from
+            the corpus distribution, and integration with this app&apos;s authored
+            lexicon. Full provenance is recorded in ATTRIBUTIONS.md and the
+            repository&apos;s content/fr/lexicon documentation.
           </Text>
         </Section>
 

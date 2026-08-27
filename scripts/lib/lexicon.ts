@@ -14,18 +14,22 @@
  * "source-unavailable" and never invents matches.
  */
 
+import { existsSync } from "fs";
+
 import {
   FrLexemeMapSchema,
+  MatchOverridesSchema,
   PackSchema,
   RichLexiconSchema,
   SourceManifestSchema,
+  type MatchOverrides,
   type PartOfSpeech,
   type RichLexeme,
   type RichLexicon,
   type SourceManifest,
 } from "../../content/schema";
 import { FR_COURSE_ID, FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
-import { loadRegistry, readJson, type ValidationResult } from "./pipeline";
+import { loadRegistry, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const LEXIQUE_SOURCE_ID = "lexique-4";
 
@@ -97,8 +101,14 @@ export function validateLexiconData(input: {
   registryIds: Set<string>;
   /** course surface → native gloss (first occurrence wins, as authored). */
   packGloss: Map<string, string>;
+  /**
+   * §18 band boundaries from the committed population statistics; when
+   * provided, every stored band must recompute from its rawValue — a band
+   * that drifts from the documented derivation fails the gate.
+   */
+  bandThresholds?: FrequencyBandThresholds;
 }): ValidationResult {
-  const { lexicon, manifest, frozenMap, runtimeMap, registryIds, packGloss } = input;
+  const { lexicon, manifest, frozenMap, runtimeMap, registryIds, packGloss, bandThresholds } = input;
   const errors: string[] = [];
   const err = (m: string) => errors.push(`lexicon: ${m}`);
 
@@ -205,11 +215,30 @@ export function validateLexiconData(input: {
         err(`${where}: expressions are project-authored — a Lexique match here would be fabricated`);
       }
     }
-    if (lex.pronunciation && lex.pronunciation.notation === "ipa" && lex.pronunciation.source === LEXIQUE_SOURCE_ID) {
-      err(`${where}: Lexique phonology must not be labeled "ipa" without a documented, verified conversion`);
+    // Lexique 4 ships genuine IPA in its dedicated 3_Phono_IPA column
+    // (documented in content/fr/lexicon/LEXIQUE4_COLUMNS.md), so a
+    // lexique-4 pronunciation MAY be labeled "ipa" — but only verbatim from
+    // that column. The 2_Phono ASCII alphabet uses capitals, digits and
+    // symbols that genuine IPA never contains; their presence proves a
+    // mislabel and fails the gate.
+    if (
+      lex.pronunciation &&
+      lex.pronunciation.notation === "ipa" &&
+      lex.pronunciation.source === LEXIQUE_SOURCE_ID &&
+      /[A-Z0-9§@°&]/.test(lex.pronunciation.value)
+    ) {
+      err(`${where}: lexique-4 pronunciation labeled "ipa" contains Lexique-ASCII alphabet characters — genuine IPA comes verbatim from 3_Phono_IPA only (2_Phono is notation "phonology")`);
     }
     if (lex.frequency && lex.frequency.source !== LEXIQUE_SOURCE_ID) {
       err(`${where}: frequency must come from real ${LEXIQUE_SOURCE_ID} measurements only`);
+    }
+    if (lex.frequency && bandThresholds) {
+      const expected = frequencyBandFor(lex.frequency.rawValue, bandThresholds);
+      if (lex.frequency.band !== expected) {
+        err(
+          `${where}: frequency band "${lex.frequency.band}" does not recompute from rawValue ${lex.frequency.rawValue} under the population thresholds (expected "${expected}") — re-run the import`
+        );
+      }
     }
 
     // Relations: known ids, no self-reference, symmetric.
@@ -255,26 +284,106 @@ export function validateLexicon(): ValidationResult {
       for (const word of unit.words) {
         if (!packGloss.has(word.target)) packGloss.set(word.target, word.native);
       }
-  return validateLexiconData({
+  // Band thresholds come from the committed population statistics when the
+  // derivation exists and matches the pinned artifact.
+  let bandThresholds: FrequencyBandThresholds | undefined;
+  const statsRel = "content/fr/lexicon/derived/frequency-stats.json";
+  if (manifest.retrieval.status === "retrieved" && existsSync(safeResolve(statsRel))) {
+    const stats = readJson(statsRel) as {
+      source?: { sha256?: string };
+      freqLemme?: { quantiles?: Record<string, number> };
+    };
+    if (stats.source?.sha256 === manifest.retrieval.sha256 && stats.freqLemme?.quantiles) {
+      bandThresholds = bandThresholdsFromStats({ freqLemme: { quantiles: stats.freqLemme.quantiles } });
+    }
+  }
+
+  const result = validateLexiconData({
     lexicon,
     manifest,
     frozenMap,
     runtimeMap: FR_LEXEME_IDS,
     registryIds: new Set(loadRegistry().sources.map((s) => s.id)),
     packGloss,
+    bandThresholds,
   });
+
+  // Manual match overrides validate against the committed evidence subset.
+  let overrides: MatchOverrides;
+  try {
+    overrides = loadMatchOverrides();
+  } catch (e) {
+    result.errors.push(
+      `match-overrides: match-overrides.json failed schema validation — ${(e as Error).message.split("\n")[0]}`
+    );
+    return result;
+  }
+  if (overrides.overrides.length > 0) {
+    const subsetRel = "content/fr/lexicon/derived/lexique-subset.json";
+    if (!existsSync(safeResolve(subsetRel))) {
+      result.errors.push(
+        "match-overrides: overrides exist but the committed evidence subset is missing — run the derive step first"
+      );
+      return result;
+    }
+    const subset = readJson(subsetRel) as {
+      audit?: SourceMatchRow[];
+      entries?: { id: string; formRows: Record<string, string>[] }[];
+    };
+    const availableRowKeys = new Map<string, Set<string>>();
+    for (const entry of subset.entries ?? []) {
+      availableRowKeys.set(
+        entry.id,
+        new Set(
+          entry.formRows.map((r) => [r.mot, r.cgram, r.genre, r.nombre].join("|"))
+        )
+      );
+    }
+    const overrideResult = validateMatchOverridesData({
+      overrides,
+      audit: subset.audit ?? [],
+      availableRowKeys,
+    });
+    result.errors.push(...overrideResult.errors);
+  }
+  return result;
 }
 
 // ---------------------------------------------------------------------------
-// Lexique 4 mapping (used by the developer-side extractor and its tests)
+// Lexique 4 mapping (used by the runner-side derive step and its tests)
 // ---------------------------------------------------------------------------
 
 /**
- * Deterministic mapping from the Lexique `cgram` lineage to the app's POS
- * vocabulary. Declared from the Lexique 3.8x documentation; the Lexique 4
- * layout is to-confirm at retrieval (source-manifest.expectedColumns), and
- * any unknown value maps to null so the caller fails loudly instead of
- * guessing.
+ * The REAL Lexique 4.00 column names, confirmed against the pinned artifact
+ * (see content/fr/lexicon/LEXIQUE4_COLUMNS.md and derived/lexique4-recon.json).
+ * All row access goes through these constants — never raw strings — so a
+ * layout change fails in exactly one place.
+ */
+export const L4 = {
+  MOT: "1_Mot",
+  PHONO: "2_Phono",
+  IPA: "3_Phono_IPA",
+  LEMME: "4_Lemme",
+  CGRAM: "5_Cgram",
+  CGRAM_ORTHO: "6_CgramOrtho",
+  GENRE: "7_Genre",
+  NOMBRE: "8_Nombre",
+  INFOVER: "9_InfoVER",
+  FREQ_MOT: "10_FreqMot",
+  FREQ_ORTHO: "11_FreqOrtho",
+  FREQ_LEMME: "12_FreqLemme",
+  CD_ORTHO: "13_CDOrtho",
+  IS_LEM: "14_IsLem",
+  PREVAL: "33_Preval",
+  PREVAL_NB: "34_PrevalNb",
+} as const;
+
+/**
+ * Deterministic mapping from Lexique `5_Cgram` values to the app's POS
+ * vocabulary. Keys follow the Lexique documentation lineage (the recon
+ * sample shows 15 distinct values, all covered); any value NOT in this map
+ * returns null so the caller fails loudly instead of guessing, and the
+ * derive step reports every unmapped value it sees (unknownCgramValues).
  */
 export const LEXIQUE_CGRAM_TO_POS: Readonly<Record<string, PartOfSpeech>> = {
   NOM: "noun",
@@ -306,22 +415,64 @@ export function lexiquePosFor(cgram: string): PartOfSpeech | null {
   return LEXIQUE_CGRAM_TO_POS[cgram] ?? null;
 }
 
-export function lexiqueGenderFor(genre: string): "masculine" | "feminine" | "unknown" {
+/**
+ * `7_Genre` mapping. Lexique 4 adds "e" (épicène — either gender) to the
+ * m/f of the documentation lineage; it maps to the schema's "both" and is
+ * surfaced explicitly by the cross-check rather than silently satisfying an
+ * authored m/f.
+ */
+export function lexiqueGenderFor(genre: string): "masculine" | "feminine" | "both" | "unknown" {
   if (genre === "m") return "masculine";
   if (genre === "f") return "feminine";
+  if (genre === "e") return "both";
   return "unknown";
 }
 
+export type FrequencyBandThresholds = {
+  /** per-million floor for "very-common" */
+  veryCommon: number;
+  /** per-million floor for "common" */
+  common: number;
+};
+
 /**
- * Frequency bands over occurrences-per-million-words (documented
- * derivation, applied only to real source measurements):
- *   ≥ 10 per million → "very-common"  (roughly the first few thousand words)
- *   ≥ 1 per million  → "common"
- *   otherwise        → "less-common"
+ * §18 band boundaries, derived from the committed population statistics —
+ * never hardcoded cutoffs:
+ *   very-common = top 1% of the eligible lemma population (freqLemme ≥ p99)
+ *   common      = top 5% (freqLemme ≥ p95)
+ *   less-common = the rest
+ * Rationale: the eligible population IS the learnable French lexicon
+ * (~65k lemmas); its top percentile (~650 lemmas) is the core spoken
+ * vocabulary tier and its top 5% (~3,250) roughly bounds a learner's
+ * first years — and the split is empirically discriminative over the
+ * curriculum (21/25/3 on the 49 matcher-matched core items) where
+ * coarser quantiles collapse every item into one band.
  */
-export function frequencyBandFor(perMillion: number): "very-common" | "common" | "less-common" {
-  if (perMillion >= 10) return "very-common";
-  if (perMillion >= 1) return "common";
+export function bandThresholdsFromStats(stats: {
+  freqLemme: { quantiles: Record<string, number> };
+}): FrequencyBandThresholds {
+  const p99 = stats.freqLemme.quantiles.p99;
+  const p95 = stats.freqLemme.quantiles.p95;
+  if (typeof p99 !== "number" || typeof p95 !== "number") {
+    throw new Error("frequency-stats quantiles are missing p99/p95 — regenerate the derived statistics");
+  }
+  return { veryCommon: p99, common: p95 };
+}
+
+/**
+ * Frequency bands over occurrences-per-million-words. The thresholds are
+ * NOT constants of this module: per the Phase 5 program they are derived
+ * from the eligible-lemma-population distribution of the real source
+ * (quantiles recorded in content/fr/lexicon/derived/frequency-stats.json)
+ * and passed in explicitly, so an arbitrary cutoff can never masquerade as
+ * a data-derived one.
+ */
+export function frequencyBandFor(
+  perMillion: number,
+  thresholds: FrequencyBandThresholds
+): "very-common" | "common" | "less-common" {
+  if (perMillion >= thresholds.veryCommon) return "very-common";
+  if (perMillion >= thresholds.common) return "common";
   return "less-common";
 }
 
@@ -360,16 +511,43 @@ export type SourceMatchRow = {
   lookupForm: string;
   partOfSpeech: PartOfSpeech;
   status: MatchStatus;
-  /** The matched source row key (ortho|cgram) when status is "matched". */
+  /** The matched source row key (Mot|Cgram|Genre|Nombre) when "matched". */
   matchKey: string | null;
   candidateCount: number;
 };
 
 /**
+ * A source row's stable identity for audit keys: one Lexique row is a
+ * (form, category) reading, further split by gender/number for homograph
+ * rows (e.g. "tour" NOM m vs "tour" NOM f).
+ */
+export function lexiqueRowKey(row: LexiqueRow): string {
+  return [row[L4.MOT], row[L4.CGRAM], row[L4.GENRE], row[L4.NOMBRE]].join("|");
+}
+
+/**
+ * Documented orthography fold for source matching ONLY: Lexique writes the
+ * o-e ligature as the digraph ("oeuf", "coeur"), while the curriculum keeps
+ * the typographically correct "œuf". The fold mirrors the app's existing
+ * search-contract ligature handling; it never rewrites authored data.
+ */
+export function foldLexiqueOrthography(value: string): string {
+  return value.replace(/œ/g, "oe").replace(/æ/g, "ae");
+}
+
+/** True when the source cell equals the curriculum form directly or under the documented ligature fold. */
+export function lexiqueFormEquals(sourceValue: string | undefined, curriculumForm: string): boolean {
+  const v = sourceValue ?? "";
+  return v === curriculumForm || v === foldLexiqueOrthography(curriculumForm);
+}
+
+/**
  * Deterministic, fail-closed matching of curriculum lexemes against source
- * rows. Disambiguation uses lemma + POS (+ gender for nouns) — NEVER
- * frequency alone; anything still ambiguous stays "ambiguous" and gets no
- * metadata. Expressions are project-authored and never matched.
+ * rows. The ladder narrows by form → lemma → POS, then prefers the source's
+ * own canonical-lemma rows (14_IsLem), then gender for nouns (an épicène
+ * "e" row is compatible with either authored gender) — NEVER frequency;
+ * anything still ambiguous stays "ambiguous" and gets no metadata.
+ * Expressions are project-authored and never matched.
  */
 export function matchLexemes(
   lexicon: RichLexicon,
@@ -388,20 +566,26 @@ export function matchLexemes(
     if (rows === null) {
       return { ...base, status: "source-unavailable", matchKey: null, candidateCount: 0 };
     }
-    const byForm = rows.filter((r) => r.ortho === lex.lookupForm);
-    const byLemma = byForm.filter((r) => (r.lemme ?? r.ortho) === lex.lemma);
-    const byPos = byLemma.filter((r) => lexiquePosFor(r.cgram ?? "") === lex.partOfSpeech);
+    const byForm = rows.filter((r) => lexiqueFormEquals(r[L4.MOT], lex.lookupForm));
+    const byLemma = byForm.filter((r) => lexiqueFormEquals(r[L4.LEMME], lex.lemma));
+    const byPos = byLemma.filter((r) => lexiquePosFor(r[L4.CGRAM] ?? "") === lex.partOfSpeech);
     let candidates = byPos;
+    if (candidates.length > 1) {
+      const lemRows = candidates.filter((r) => r[L4.IS_LEM] === "1");
+      if (lemRows.length > 0) candidates = lemRows;
+    }
     if (candidates.length > 1 && lex.partOfSpeech === "noun" && lex.gender && lex.gender !== "unknown") {
-      const byGender = candidates.filter((r) => lexiqueGenderFor(r.genre ?? "") === lex.gender);
+      const byGender = candidates.filter((r) => {
+        const g = lexiqueGenderFor(r[L4.GENRE] ?? "");
+        return g === lex.gender || g === "both";
+      });
       if (byGender.length > 0) candidates = byGender;
     }
     if (candidates.length === 1) {
-      const row = candidates[0];
       return {
         ...base,
         status: "matched",
-        matchKey: `${row.ortho}|${row.cgram}`,
+        matchKey: lexiqueRowKey(candidates[0]),
         candidateCount: 1,
       };
     }
@@ -425,54 +609,238 @@ export function lexiconSourceAudit(rows: LexiqueRow[] | null = null): SourceMatc
 }
 
 // ---------------------------------------------------------------------------
+// Manual match overrides (§15 dispositions for matcher-unresolvable items)
+// ---------------------------------------------------------------------------
+
+export function loadMatchOverrides(): MatchOverrides {
+  const rel = "content/fr/lexicon/match-overrides.json";
+  if (!existsSync(safeResolve(rel))) return { version: 1, overrides: [] };
+  return MatchOverridesSchema.parse(readJson(rel));
+}
+
+/**
+ * Pure override validation: an override may only resolve what the strict
+ * matcher genuinely cannot (unmatched/ambiguous — never expressions, never
+ * already-matched items), and must adopt a row that really exists in the
+ * committed evidence subset for that lexeme.
+ */
+export function validateMatchOverridesData(input: {
+  overrides: MatchOverrides;
+  audit: SourceMatchRow[];
+  /** lexeme id → row keys present in its committed evidence formRows. */
+  availableRowKeys: Map<string, Set<string>>;
+}): ValidationResult {
+  const { overrides, audit, availableRowKeys } = input;
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`match-overrides: ${m}`);
+  const auditById = new Map(audit.map((r) => [r.id, r]));
+  const seen = new Set<string>();
+  for (const override of overrides.overrides) {
+    if (seen.has(override.id)) err(`duplicate override for ${override.id}`);
+    seen.add(override.id);
+    const row = auditById.get(override.id);
+    if (!row) {
+      err(`${override.id} is not a known lexeme`);
+      continue;
+    }
+    if (row.status === "matched") {
+      err(`${override.id} is already matched by the strict matcher — a redundant override hides drift`);
+    } else if (row.status === "not-applicable") {
+      err(`${override.id} is an expression — never lexique-matched, not even by override`);
+    } else if (row.status === "source-unavailable") {
+      err(`${override.id}: no evidence rows exist to adopt (source-unavailable)`);
+    }
+    const available = availableRowKeys.get(override.id) ?? new Set();
+    if ((row.status === "unmatched" || row.status === "ambiguous") && !available.has(override.matchKey)) {
+      err(
+        `${override.id}: matchKey "${override.matchKey}" is not among the committed evidence rows for this lexeme (${[...available].join(", ") || "none"})`
+      );
+    }
+  }
+  return { errors, warnings: [] };
+}
+
+/**
+ * The effective match table the importer consumes: strict-matcher results
+ * plus validated manual overrides, each entry labeled with its provenance.
+ */
+export function effectiveMatchKeys(
+  audit: SourceMatchRow[],
+  overrides: MatchOverrides
+): Map<string, { matchKey: string; via: "matcher" | "override" }> {
+  const map = new Map<string, { matchKey: string; via: "matcher" | "override" }>();
+  for (const row of audit) {
+    if (row.status === "matched" && row.matchKey !== null) {
+      map.set(row.id, { matchKey: row.matchKey, via: "matcher" });
+    }
+  }
+  for (const override of overrides.overrides) {
+    map.set(override.id, { matchKey: override.matchKey, via: "override" });
+  }
+  return map;
+}
+
+// ---------------------------------------------------------------------------
 // Authoring-only candidate pool (never learner-visible)
 // ---------------------------------------------------------------------------
 
 export type CandidateEntry = {
   lemma: string;
   partOfSpeech: PartOfSpeech;
-  gender: "masculine" | "feminine" | "unknown" | null;
-  perMillion: number;
+  gender: "masculine" | "feminine" | "both" | "unknown" | null;
+  /** Genuine IPA from 3_Phono_IPA, verbatim. */
+  ipa: string;
+  /** 12_FreqLemme — lemma subtitle frequency per million (primary ranking). */
+  freqLemme: number;
+  /** 13_CDOrtho — contextual diversity of the lemma's own form. */
+  cdOrtho: number;
+  /** 33_Preval — prevalence where present (null when the column is empty). */
+  preval: number | null;
+  /** True when the (lemma, POS) pair is already an authored curriculum lexeme. */
+  alreadyAuthored: boolean;
+  /** 1-based rank under the documented ordering (the §23 "source rank"). */
+  sourceRank: number;
+  /** Human-readable §23 selection reason (authoring aid, never learner-visible). */
+  selectionReason: string;
 };
 
 export const CANDIDATE_POOL_SIZE = 1500;
-const CANDIDATE_POS: readonly PartOfSpeech[] = ["noun", "verb", "adjective", "adverb"];
+export const CANDIDATE_POS: readonly PartOfSpeech[] = ["noun", "verb", "adjective", "adverb"];
+
+/**
+ * The authoring pool draws from PLAIN lexical categories only. The mapped
+ * POS is not enough here: ADJ:pos/ADJ:dem etc. map to "adjective" but are
+ * closed-class function words (mon, ce, cette…) that would flood the top
+ * frequency ranks of a vocabulary-authoring list (observed in the first
+ * real derivation: eleven of the top thirty). Grammar words are taught by
+ * the pedagogy units, not authored as vocabulary candidates.
+ */
+export const CANDIDATE_PLAIN_CGRAM = new Set(["NOM", "VER", "ADJ", "ADV"]);
+
+/**
+ * Quality guard against source lemmatization artifacts, corroborated by
+ * contextual diversity: a lemma claiming ≥ 20 occurrences per million while
+ * its own canonical form appears in under 0.05% of the 65k subtitle
+ * documents is physically incoherent — the lemma frequency belongs to a
+ * different word. Observed real cases: "upas" (freqLemme 18098.6 inherited
+ * from "pas", CD 0.014, prevalence 0) and "garçonne" (431.8, CD 0.037).
+ * Exclusions are RECORDED in the pool artifact, never silent.
+ */
+export function failsCdCorroboration(freqLemme: number, cdOrtho: number): boolean {
+  return freqLemme >= 20 && cdOrtho < 0.05;
+}
+
+/**
+ * Single-word lowercase French form: letters/accents/œ/æ with internal
+ * hyphens or apostrophes. Filters proper nouns (capitalized) and multiword
+ * rows from lemma populations.
+ */
+export const LEXIQUE_WORD_SHAPE = /^[a-zàâäéèêëîïôöùûüÿçœæ]+(?:[-'][a-zàâäéèêëîïôöùûüÿçœæ]+)*$/;
+
+export type CandidatePool = {
+  entries: CandidateEntry[];
+  /** CD-corroboration exclusions, recorded for transparency (§24). */
+  excludedByQualityGuard: {
+    lemma: string;
+    partOfSpeech: PartOfSpeech;
+    freqLemme: number;
+    cdOrtho: number;
+    reason: string;
+  }[];
+};
 
 /**
  * Documented deterministic selection for the authoring-only candidate pool
  * (never curriculum, never cards, never learner-visible — no translations
  * are fabricated for it):
- *  1. keep rows whose cgram maps to noun/verb/adjective/adverb;
- *  2. keep lemma rows only (ortho === lemme) so the pool lists lemmas;
+ *  1. keep rows whose 5_Cgram is a PLAIN lexical category (NOM/VER/ADJ/ADV
+ *     — see CANDIDATE_PLAIN_CGRAM: subcategorized function words like
+ *     ADJ:pos "mon" are grammar material, not vocabulary candidates);
+ *  2. keep the source's own canonical lemma rows only (14_IsLem = 1);
  *  3. keep single-word lowercase forms (letters, accents, œ/æ, internal
  *     hyphens or apostrophes) — filters proper nouns and multiword rows;
- *  4. dedupe by (lemma, POS) keeping the highest lemma film frequency;
- *  5. order by lemma film frequency (per million) descending, tie-broken
- *     alphabetically, and take the first CANDIDATE_POOL_SIZE entries.
+ *  4. dedupe by (lemma, POS) keeping the highest 12_FreqLemme;
+ *  5. drop rows failing CD corroboration (failsCdCorroboration — source
+ *     lemmatization artifacts), RECORDING each exclusion;
+ *  6. order by 12_FreqLemme descending (the only genuinely lemma-level
+ *     frequency variable — see LEXIQUE4_COLUMNS.md), tie-broken
+ *     alphabetically, and take the first `size` entries.
+ * Contextual diversity and prevalence ride along as quality signals for the
+ * human authoring pass; they never reorder the pool silently.
  */
-export function selectCandidatePool(rows: LexiqueRow[], size: number = CANDIDATE_POOL_SIZE): CandidateEntry[] {
-  const wordShape = /^[a-zàâäéèêëîïôöùûüÿçœæ]+(?:[-'][a-zàâäéèêëîïôöùûüÿçœæ]+)*$/;
-  const best = new Map<string, CandidateEntry>();
+export function selectCandidatePool(
+  rows: LexiqueRow[],
+  size: number = CANDIDATE_POOL_SIZE,
+  authoredKeys: ReadonlySet<string> = new Set()
+): CandidatePool {
+  const wordShape = LEXIQUE_WORD_SHAPE;
+  type Picked = Omit<CandidateEntry, "sourceRank" | "selectionReason">;
+  const best = new Map<string, Picked>();
   for (const row of rows) {
-    const pos = lexiquePosFor(row.cgram ?? "");
+    const cgram = row[L4.CGRAM] ?? "";
+    if (!CANDIDATE_PLAIN_CGRAM.has(cgram)) continue;
+    const pos = lexiquePosFor(cgram);
     if (pos === null || !CANDIDATE_POS.includes(pos)) continue;
-    const lemma = row.lemme ?? "";
-    if (lemma === "" || lemma !== row.ortho) continue;
-    if (!wordShape.test(lemma)) continue;
-    const perMillion = Number(row.freqlemfilms ?? "0");
-    if (!Number.isFinite(perMillion)) continue;
+    if (row[L4.IS_LEM] !== "1") continue;
+    const lemma = row[L4.MOT] ?? "";
+    if (lemma === "" || !wordShape.test(lemma)) continue;
+    const freqLemme = Number(row[L4.FREQ_LEMME] ?? "");
+    if (!Number.isFinite(freqLemme)) continue;
     const key = `${lemma}|${pos}`;
     const existing = best.get(key);
-    if (existing === undefined || perMillion > existing.perMillion) {
+    if (existing === undefined || freqLemme > existing.freqLemme) {
+      const cdOrtho = Number(row[L4.CD_ORTHO] ?? "");
+      const prevalRaw = row[L4.PREVAL] ?? "";
+      const preval = prevalRaw === "" ? null : Number(prevalRaw);
       best.set(key, {
         lemma,
         partOfSpeech: pos,
-        gender: pos === "noun" ? lexiqueGenderFor(row.genre ?? "") : null,
-        perMillion,
+        gender: pos === "noun" ? lexiqueGenderFor(row[L4.GENRE] ?? "") : null,
+        ipa: row[L4.IPA] ?? "",
+        freqLemme,
+        cdOrtho: Number.isFinite(cdOrtho) ? cdOrtho : 0,
+        preval: preval !== null && Number.isFinite(preval) ? preval : null,
+        alreadyAuthored: authoredKeys.has(key),
       });
     }
   }
-  return [...best.values()]
-    .sort((a, b) => b.perMillion - a.perMillion || a.lemma.localeCompare(b.lemma, "fr"))
-    .slice(0, size);
+  const excludedByQualityGuard: CandidatePool["excludedByQualityGuard"] = [];
+  const kept: Picked[] = [];
+  for (const entry of best.values()) {
+    if (failsCdCorroboration(entry.freqLemme, entry.cdOrtho)) {
+      excludedByQualityGuard.push({
+        lemma: entry.lemma,
+        partOfSpeech: entry.partOfSpeech,
+        freqLemme: entry.freqLemme,
+        cdOrtho: entry.cdOrtho,
+        reason:
+          "CD corroboration failed: claimed lemma frequency is top-tier while the canonical form appears in under 0.05% of documents — source lemmatization artifact",
+      });
+      continue;
+    }
+    kept.push(entry);
+  }
+  excludedByQualityGuard.sort((a, b) => b.freqLemme - a.freqLemme || a.lemma.localeCompare(b.lemma, "fr"));
+  const entries = kept
+    .sort((a, b) => b.freqLemme - a.freqLemme || a.lemma.localeCompare(b.lemma, "fr"))
+    .slice(0, size)
+    .map((entry, i) => ({
+      ...entry,
+      sourceRank: i + 1,
+      selectionReason:
+        `rank ${i + 1} by lemma subtitle frequency (${entry.freqLemme}/M); ` +
+        `CD ${entry.cdOrtho}; prevalence ${entry.preval ?? "n/a"}` +
+        (entry.alreadyAuthored ? "; already authored in the 54-core" : ""),
+    }));
+  return { entries, excludedByQualityGuard };
+}
+
+/** (lemma, POS) keys of the authored curriculum lexemes, for pool flagging. */
+export function authoredLemmaPosKeys(lexicon: RichLexicon): Set<string> {
+  const keys = new Set<string>();
+  for (const lex of lexicon.lexemes) {
+    if (lex.partOfSpeech === "expression") continue;
+    keys.add(`${lex.lemma}|${lex.partOfSpeech}`);
+  }
+  return keys;
 }

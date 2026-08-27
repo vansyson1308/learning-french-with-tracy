@@ -25,7 +25,7 @@ export type GeneratedLexiconData = {
     pos: string;
     gender?: string;
     topic?: string;
-    frequency?: { band: string; rank: number; perMillion: number };
+    frequency?: { band: string; rank?: number; perMillion: number };
     pronunciation?: { value: string; notation: string };
     examples: { fr: string; en: string; source: string }[];
     confusables?: string[];
@@ -93,11 +93,13 @@ export class GeneratedLexiconRepository implements LexiconRepository {
         return ka < kb ? -1 : ka > kb ? 1 : a.ord - b.ord;
       });
     } else if (sort === "frequency") {
-      // Honest sort: entries without frequency sink to the end in course order.
+      // Raw per-million descending — the same key as the SQL tier: rank is
+      // absent for unranked categories (merci), so it can never be the sort
+      // key. Unmeasured entries sink to the end in course order.
       rows.sort((a, b) => {
-        const ra = a.frequency?.rank ?? Number.POSITIVE_INFINITY;
-        const rb = b.frequency?.rank ?? Number.POSITIVE_INFINITY;
-        return ra - rb || a.ord - b.ord;
+        const fa = a.frequency?.perMillion ?? Number.NEGATIVE_INFINITY;
+        const fb = b.frequency?.perMillion ?? Number.NEGATIVE_INFINITY;
+        return fb - fa || a.ord - b.ord;
       });
     } else {
       rows.sort((a, b) => a.ord - b.ord);

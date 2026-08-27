@@ -65,3 +65,60 @@ applied. The mechanical audits (article consistency, symmetry, gloss
 identity, triple id lock) run in `content:validate` on every CI build, so
 the review's structural findings are locked in as executable rules rather
 than prose.
+
+## Pass 3 — Lexique 4 cross-check dispositions (Phase 5A.2)
+
+The retrieved Lexique 4 artifact (sha256 `fe333b4f…`, see
+`source-manifest.json`) enabled the external cross-check of all 54 items
+(`bun run lexicon:crosscheck` → `derived/core-crosscheck.json`). Result:
+43 items agree on every checkable field, 3 are expressions
+(never lexique-matched by design), 8 initially needed investigation — one
+resolved as a cross-check comparison bug (œuf's lemma is spelled with the
+digraph "oeuf" in the source; the documented ligature fold now applies to
+the lemma comparison too), leaving 7 items. Each has a deliberate
+disposition below. **No authored value was changed silently; every change
+is listed here.**
+
+1. **bonjour, bonsoir — partOfSpeech: authored `interjection`, source `NOM m`.**
+   Lexique 4 has no interjection reading for either greeting (its
+   interjection-adjacent category, ONO, covers onomatopoeia). The NOM
+   classification is lexicographically standard ("un bonjour chaleureux"),
+   and the curriculum classification as a greeting interjection is
+   pedagogically standard; both describe the same surface in the same
+   spoken usage. **Disposition: keep authored `interjection`;** adopt the
+   NOM rows' measurements (frequency, prevalence, IPA — byte-identical to
+   the authored IPA on both words) through the validated, justified
+   entries in `match-overrides.json`. The strict matcher continues to
+   report these as unmatched — the override channel exists precisely so
+   this divergence stays visible instead of being patched into the
+   matcher.
+2. **fromage /fʁɔmaʒ/→/fʁomaʒ/, cochon /kɔʃɔ̃/→/koʃɔ̃/, aéroport
+   /aeʁɔpɔʁ/→/aeʁopɔʁ/ — mid-vowel convention.** The differences are
+   systematic, not errors: Lexique 4 transcribes the o-vowel in unstressed
+   open syllables as close /o/ (loi de position), while the Phase 4
+   authored values used open /ɔ/. Both conventions appear in published
+   dictionaries. **Disposition: adopt the source transcription verbatim
+   for matched lexemes** during the Phase 5A.3 import (pronunciation
+   source becomes `lexique-4`, notation stays honestly `ipa` because the
+   values come from the dedicated 3_Phono_IPA column). Rationale: one
+   consistent, citable transcription system across all lexemes beats a
+   per-word editorial mix; the values change exactly where listed here.
+3. **âne /ɑn/→/an/ — /ɑ/–/a/ merger.** Lexique 4 does not use /ɑ/: the
+   back-a is merged into /a/ in its transcription system, matching the
+   near-complete merger in contemporary European French. **Disposition:
+   adopt /an/ with the same import** (covered by disposition 2's rule).
+   The traditional /ɑn/ remains correct in conservative accents; the app
+   teaches the contemporary form.
+4. **gauche — gender: authored `feminine`, source `e` (épicène).** The
+   source marks the noun épicène because both genders exist with
+   different senses ("la gauche" — the left side / political left; "un
+   gauche" — a left punch, boxing). The curriculum teaches the direction
+   sense, which is feminine. **Disposition: keep authored `feminine`;**
+   the épicène flag is sense-mixing, not evidence against the taught
+   sense. No data change.
+
+Remaining honest gaps after Phase 5A.3 imports: bonjour/bonsoir keep
+`partOfSpeech: interjection` with adopted measurements via overrides;
+œuf's source row carries no gender value (empty `7_Genre` — a source gap;
+the authored masculine stands on the internal article audit: "un œuf" in
+the example corpus); expressions stay entirely project-authored.
