@@ -113,9 +113,9 @@ describe("compiler: round-trip and determinism", () => {
 
   test("gradeTargets coverage: exactly the unambiguous French exercises", () => {
     const fr = coverage["fr-en"];
-    expect(fr.withGradeTargets).toBe(159);
-    expect(fr.total).toBe(257); // 220 Section 1 + 37 Unit A
-    expect(fr.byType["select"]).toEqual({ total: 139, withGradeTargets: 139 });
+    expect(fr.withGradeTargets).toBe(170);
+    expect(fr.total).toBe(298); // 220 Section 1 + 37 Unit A + 41 Unit B
+    expect(fr.byType["select"]).toEqual({ total: 150, withGradeTargets: 150 });
     expect(fr.byType["match"]).toEqual({ total: 20, withGradeTargets: 20 });
     expect(fr.byType["wordBank"].withGradeTargets).toBe(0);
     expect(fr.byType["typeAnswer"].withGradeTargets).toBe(0);

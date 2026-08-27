@@ -66,14 +66,14 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
 
   test("list: course order, alphabetical, and pos filter", async () => {
     const course = await repo.list();
-    expect(course.length).toBe(71);
+    expect(course.length).toBe(78);
     expect(course[0].id).toBe("fr:w:homme");
     const alpha = await repo.list({ sort: "alpha" });
     // âne sorts under A with the accent-folded sort key
     expect(alpha.map((r) => r.id).indexOf("fr:w:ane")).toBeLessThan(
       alpha.map((r) => r.id).indexOf("fr:w:billet")
     );
-    // 71 total − 2 verbs − 2 adverbs (oui/non) − 5 interjections − 3 expressions = 59 nouns
+    // 78 total − 9 verbs − 2 adverbs (oui/non) − 5 interjections − 3 expressions = 59 nouns
     const nouns = await repo.list({ pos: "noun" });
     expect(nouns.every((r) => r.pos === "noun")).toBe(true);
     expect(nouns.length).toBe(59);
@@ -94,10 +94,22 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     // merci has no population rank (ONO category) yet sorts by its raw
     // frequency — rank is never the sort key.
     expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
-    // The three unmeasured expressions sink to the end in course order;
-    // every word lexeme (Unit A included) is measured — vie (1015.4/M)
-    // slots right after merci (1030.4/M) among the taught words.
-    expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
+    // Unmeasured entries sink to the end in course order: the three
+    // expressions, then the 7 Unit B verbs still awaiting extract round 5
+    // (PENDING_LEXIQUE_IMPORT). vie (1015.4/M) still slots right after
+    // merci (1030.4/M) among the measured words.
+    expect(ids.slice(-10)).toEqual([
+      "fr:w:au-revoir",
+      "fr:w:s-il-vous-plait",
+      "fr:w:bonne-nuit",
+      "fr:w:etre",
+      "fr:w:avoir",
+      "fr:w:aller",
+      "fr:w:faire",
+      "fr:w:parler",
+      "fr:w:aimer",
+      "fr:w:habiter",
+    ]);
     expect(ids.slice(0, 5)).toEqual(["fr:w:non", "fr:w:oui", "fr:w:homme", "fr:w:merci", "fr:w:vie"]);
   });
 
@@ -151,9 +163,9 @@ describe("license artifacts in the compiled dataset (§101)", () => {
 });
 
 describe("runtime lexicon index (session-critical accessor)", () => {
-  test("covers all 71 lexemes with pronunciation, example and topic", () => {
+  test("covers all 78 lexemes with pronunciation, example and topic", () => {
     const all = allLexemeMeta();
-    expect(all.length).toBe(71);
+    expect(all.length).toBe(78);
     for (const meta of all) {
       expect(meta.pronunciation?.notation).toBe("ipa");
       expect(meta.example?.fr.length).toBeGreaterThan(0);

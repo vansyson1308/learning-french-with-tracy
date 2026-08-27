@@ -162,6 +162,152 @@
           "key": "gender-patterns"
         }
       ]
+    },
+    {
+      "id": "fr:concept:etre-avoir-present",
+      "title": "Être and avoir — the two anchor verbs",
+      "shortRule": "je suis / tu es / il est · j'ai / tu as / il a — learn these six forms cold.",
+      "explanation": "The two most-used verbs in French are also the most irregular, so their présent forms are learned as words, not from a pattern: être (to be) — je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont; avoir (to have) — j'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont. They repay the effort twice: they carry everyday sentences now, and later they build the past tense for every other verb.",
+      "examples": [
+        {
+          "fr": "Je suis content.",
+          "en": "I am happy.",
+          "note": "être — 1st person"
+        },
+        {
+          "fr": "Tu as raison.",
+          "en": "You are right (literally: you have reason).",
+          "note": "avoir — 2nd person"
+        },
+        {
+          "fr": "Ils ont deux chats.",
+          "en": "They have two cats.",
+          "note": "avoir — 3rd person plural"
+        }
+      ],
+      "exceptions": [
+        "French uses avoir where English uses be in fixed phrases: avoir faim (to be hungry), avoir raison (to be right), avoir 20 ans (to be 20 years old).",
+        "Before a vowel, je shortens: j'ai, never 'je ai'."
+      ],
+      "memoryHint": "sont = they are, ont = they have — the s belongs to être.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    {
+      "id": "fr:concept:er-verbs-one-sound",
+      "title": "-er verbs: six spellings, three sounds",
+      "shortRule": "parle, parles and parlent are all pronounced the same — endings change on paper more than in speech.",
+      "explanation": "Regular -er verbs (the largest verb family) all conjugate like parler: je parle, tu parles, il/elle parle, nous parlons, vous parlez, ils/elles parlent. In speech those six forms collapse to three sounds — parle/parles/parlent all sound like 'parl' (Lexique 4 phonology: /paʁl/), parlons has its own sound, and parlez sounds exactly like the infinitive parler (/paʁle/). So when you speak, the pronoun does most of the work; the written endings matter most when you type or write.",
+      "examples": [
+        {
+          "fr": "Elle parle avec sa mère.",
+          "en": "She talks with her mother.",
+          "note": "3rd person: stem + e"
+        },
+        {
+          "fr": "Nous habitons à Paris.",
+          "en": "We live in Paris.",
+          "note": "nous: stem + ons"
+        },
+        {
+          "fr": "Vous aimez le café ?",
+          "en": "Do you like coffee?",
+          "note": "vous: stem + ez — sounds like the infinitive"
+        }
+      ],
+      "exceptions": [
+        "Verbs in -ger keep the e before -ons to protect the soft g: nous mangeons, never 'mangons'.",
+        "Aller looks like an -er verb but is irregular: je vais, tu vas, il va."
+      ],
+      "memoryHint": "If the subject is je/tu/il/ils, an -er verb usually SOUNDS like its bare stem.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    {
+      "id": "fr:concept:futur-proche",
+      "title": "Talking about the future with aller",
+      "shortRule": "aller (présent) + infinitive = going to: Je vais manger — I am going to eat.",
+      "explanation": "French has a simple future you can use from day one: conjugate aller in the présent and follow it with any infinitive, exactly like English 'going to'. Je vais parler (I'm going to speak), tu vas manger, nous allons habiter à Lyon. You only ever conjugate aller — the second verb stays in the dictionary form — so six memorized forms of aller unlock future statements with every verb you know.",
+      "examples": [
+        {
+          "fr": "Je vais manger.",
+          "en": "I am going to eat.",
+          "note": "vais + infinitive"
+        },
+        {
+          "fr": "Nous allons parler avec le patron.",
+          "en": "We are going to talk with the boss.",
+          "note": "allons + infinitive"
+        },
+        {
+          "fr": "Ils vont faire un voyage.",
+          "en": "They are going to take a trip.",
+          "note": "vont + infinitive"
+        }
+      ],
+      "exceptions": [
+        "Aller alone also means physically going somewhere: Je vais au bureau — I am going to the office. Context tells you which reading is meant."
+      ],
+      "memoryHint": "aller + infinitive works just like English 'going to + verb'.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    {
+      "id": "fr:concept:passe-compose",
+      "title": "The past with avoir + participle",
+      "shortRule": "avoir (présent) + past participle = did / have done: J'ai mangé — I ate.",
+      "explanation": "The everyday French past tense is built from two pieces you already have: the présent of avoir plus the verb's past participle. For -er verbs the participle just swaps -er for -é (parler → parlé, manger → mangé), so J'ai parlé = I spoke, Tu as mangé = you ate, Nous avons habité = we lived. Some verbs have participles to memorize — être → été, avoir → eu, faire → fait — but the frame never changes.",
+      "examples": [
+        {
+          "fr": "J'ai mangé une pomme.",
+          "en": "I ate an apple.",
+          "note": "avoir + mangé"
+        },
+        {
+          "fr": "Tu as parlé avec elle ?",
+          "en": "Did you talk with her?",
+          "note": "avoir + parlé"
+        },
+        {
+          "fr": "Il a fait ses devoirs.",
+          "en": "He did his homework.",
+          "note": "irregular participle: fait"
+        }
+      ],
+      "exceptions": [
+        "A small set of movement/change verbs (aller among them) build this tense with être instead of avoir: Je suis allé — I went. That set is taught as its own list later."
+      ],
+      "memoryHint": "-er verb? Its participle is the infinitive sound spelled -é.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
     }
   ]
 }

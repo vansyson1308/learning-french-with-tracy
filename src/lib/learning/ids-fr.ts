@@ -103,6 +103,13 @@ export const FR_LEXEME_IDS: Readonly<Record<string, string>> = {
   "le patron": "fr:w:patron",
   "le papier": "fr:w:papier",
   "la vie": "fr:w:vie",
+  être: "fr:w:etre",
+  avoir: "fr:w:avoir",
+  aller: "fr:w:aller",
+  faire: "fr:w:faire",
+  parler: "fr:w:parler",
+  aimer: "fr:w:aimer",
+  habiter: "fr:w:habiter",
 };
 
 /** Reverse map (id → canonical surface) for review-session building. */

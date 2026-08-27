@@ -59,13 +59,13 @@ describe("committed lexicon database", () => {
     expect(v?.user_version).toBe(DB_SCHEMA_VERSION);
   });
 
-  test("all 71 lexemes are present in authored order with their ids", () => {
+  test("all 78 lexemes are present in authored order with their ids", () => {
     const db = open(committedPath);
     const rows = db
       .query<{ id: string; surface: string }, []>("SELECT id, surface FROM lexemes ORDER BY ord")
       .all();
     db.close();
-    expect(rows.length).toBe(71);
+    expect(rows.length).toBe(78);
     expect(rows.map((r) => r.id)).toEqual(lexicon.lexemes.map((l) => l.id));
     expect(rows.map((r) => r.surface)).toEqual(lexicon.lexemes.map((l) => l.surface));
   });
@@ -89,11 +89,12 @@ describe("committed lexicon database", () => {
       )
       .get();
     db.close();
-    expect(exampleCounts.length).toBe(71);
+    expect(exampleCounts.length).toBe(78);
     expect(exampleCounts.every((r) => r.n >= 1)).toBe(true);
-    // 71 authored refs + 68 adopted Lexique 4 rows (49 + 2 overrides from
-    // the original 54, plus the 17 Unit A adoptions).
-    expect(refCounts?.n).toBe(139);
+    // 78 authored refs + 68 adopted Lexique 4 rows (49 + 2 overrides from
+    // the original 54, plus the 17 Unit A adoptions; the 7 Unit B verbs are
+    // authored-only until extract round 5 lands their adoptions).
+    expect(refCounts?.n).toBe(146);
     expect(lexiqueRefs?.n).toBe(68);
     expect(sources).toEqual([
       { id: "lexique-4", license: "CC-BY-SA-4.0" },
