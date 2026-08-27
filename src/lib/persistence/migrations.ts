@@ -8,15 +8,23 @@
  *   v0  implicit zustand default — what every install before Phase 0 has
  *   v1  Phase 0: explicit versioning, practice-pollution pruning, local-day
  *       streak grandfathering
+ *   v2  Phase 1: fr-en ONLY moves to FSRS — srs → cards (stable ids via
+ *       SM-2 estimation) + srsLegacy rollback copy + wordStats re-key;
+ *       top-level reviewLog initialized. Every other course byte-preserved.
  */
 
 import {
   grandfatherLastActiveDay,
   grandfatherTodayField,
 } from "../dates";
+import { serializeCardKey } from "../learning/card-key";
+import { FR_COURSE_ID, frItemIdFor, isWordMappedFrSurface } from "../learning/ids-fr";
+import type { ReviewLogEntry } from "../learning/review-log";
+import type { FsrsCardState } from "../learning/scheduler";
+import { estimateFsrsCardFromSm2 } from "../learning/sm2-migration";
 import type { SrsEntry } from "../srs";
 
-export const PERSIST_VERSION = 1;
+export const PERSIST_VERSION = 2;
 
 /** Course flat-legacy (pre-per-course) progress nests under. */
 export const DEFAULT_COURSE_ID = "es-en";
@@ -28,7 +36,12 @@ export type PersistedCourseProgress = {
   completedLessons: Record<string, true>;
   mistakes: PersistedMistake[];
   wordStats: Record<string, PersistedWordStat>;
-  srs: Record<string, SrsEntry>;
+  /** Legacy scheduler state. Absent for fr-en from v2 on. */
+  srs?: Record<string, SrsEntry>;
+  /** FSRS cards keyed by serialized CardKey. fr-en only, from v2. */
+  cards?: Record<string, FsrsCardState>;
+  /** One-release rollback copy of the pre-v2 fr srs map (removed in v3). */
+  srsLegacy?: Record<string, SrsEntry>;
 } & Record<string, unknown>;
 export type PersistedDayActivity = {
   xp: number;
@@ -48,6 +61,8 @@ export type PersistedProgress = {
   themePreference: "system" | "light" | "dark";
   courses: Record<string, PersistedCourseProgress>;
   activeDays: Record<string, PersistedDayActivity>;
+  /** Append-only evidence log (added in v2), ring-capped in the store. */
+  reviewLog?: ReviewLogEntry[];
 } & Record<string, unknown>;
 
 /** Route ids that practice sessions historically wrote into completedLessons. */
@@ -129,13 +144,100 @@ function migrateV0toV1(persisted: unknown, now: Date): PersistedProgress {
   return base;
 }
 
-/** Run every step from `fromVersion` up to PERSIST_VERSION. */
+export function mergeWordStats(
+  a: PersistedWordStat,
+  b: PersistedWordStat
+): PersistedWordStat {
+  return {
+    correct: a.correct + b.correct,
+    wrong: a.wrong + b.wrong,
+    lastSeen: Math.max(a.lastSeen, b.lastSeen),
+  };
+}
+
+/**
+ * v1 → v2: French-first FSRS. Touches ONLY courses["fr-en"] (plus adding the
+ * empty top-level reviewLog); every other course object passes through
+ * untouched — asserted byte-identical by tests, not aspirationally.
+ *
+ * For fr-en:
+ * - every srs entry becomes an FSRS card under (stable itemId, "recognize");
+ *   unknown surfaces get reversible fr:legacy: ids — zero entries dropped
+ * - the old srs map is kept verbatim as srsLegacy (one-release rollback)
+ * - wordStats re-key through the same ids; collisions merge sum/sum/max
+ */
+function migrateV1toV2(persisted: PersistedProgress): PersistedProgress {
+  const next: PersistedProgress = {
+    ...persisted,
+    reviewLog: Array.isArray(persisted.reviewLog) ? persisted.reviewLog : [],
+  };
+  const fr = persisted.courses?.[FR_COURSE_ID];
+  if (!fr) return next;
+
+  const srs = fr.srs ?? {};
+  const cards: Record<string, FsrsCardState> = {};
+  let orphanCount = 0;
+  for (const [surface, entry] of Object.entries(srs)) {
+    if (!isWordMappedFrSurface(surface)) orphanCount += 1;
+    const key = serializeCardKey({ itemId: frItemIdFor(surface), skill: "recognize" });
+    const card = estimateFsrsCardFromSm2(entry, fr.wordStats?.[surface]?.wrong ?? 0);
+    const existing = cards[key];
+    // Two surfaces can only collide if they map to the same lexeme; keep the
+    // more recently reviewed card (defensive — impossible with today's map).
+    if (!existing || (card.last_review ?? 0) >= (existing.last_review ?? 0)) {
+      cards[key] = card;
+    }
+  }
+
+  const wordStats: Record<string, PersistedWordStat> = {};
+  for (const [surface, stat] of Object.entries(fr.wordStats ?? {})) {
+    const id = frItemIdFor(surface);
+    wordStats[id] = wordStats[id] ? mergeWordStats(wordStats[id], stat) : { ...stat };
+  }
+
+  const { srs: _dropped, ...frRest } = fr;
+  next.courses = {
+    ...persisted.courses,
+    [FR_COURSE_ID]: { ...frRest, cards, srsLegacy: srs, wordStats },
+  };
+  if (orphanCount > 0 && typeof console !== "undefined") {
+    console.info(
+      `fr-en migration: ${orphanCount} legacy-keyed card${orphanCount === 1 ? "" : "s"} preserved`
+    );
+  }
+  return next;
+}
+
+/**
+ * Test seam: force the step that migrates TO the given version to throw, so
+ * suites can prove a mid-chain failure leaves stored data untouched.
+ */
+let failAtVersionForTests: number | null = null;
+export function __setMigrationFailureForTests(version: number | null): void {
+  failAtVersionForTests = version;
+}
+
+function checkFailureSeam(targetVersion: number): void {
+  if (failAtVersionForTests === targetVersion) {
+    throw new Error(`injected migration failure at v${targetVersion}`);
+  }
+}
+
+/** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
   fromVersion: number,
-  now: Date
+  now: Date,
+  toVersion: number = PERSIST_VERSION
 ): PersistedProgress {
   let state: unknown = persisted;
-  if (fromVersion < 1) state = migrateV0toV1(state, now);
+  if (fromVersion < 1 && toVersion >= 1) {
+    checkFailureSeam(1);
+    state = migrateV0toV1(state, now);
+  }
+  if (fromVersion < 2 && toVersion >= 2) {
+    checkFailureSeam(2);
+    state = migrateV1toV2(state as PersistedProgress);
+  }
   return state as PersistedProgress;
 }

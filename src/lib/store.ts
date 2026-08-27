@@ -3,6 +3,8 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 import { addDays, dayString, localWeek } from "./dates";
+import type { ReviewLogEntry } from "./learning/review-log";
+import type { FsrsCardState } from "./learning/scheduler";
 import {
   DEFAULT_COURSE_ID,
   migrateProgress,
@@ -36,7 +38,12 @@ export type CourseProgress = {
   completedLessons: Record<string, true>;
   mistakes: MistakeRef[];
   wordStats: Record<string, WordStat>;
-  srs: Record<string, SrsEntry>;
+  /** Legacy scheduler state — every course except fr-en (from v2). */
+  srs?: Record<string, SrsEntry>;
+  /** FSRS cards keyed by serialized CardKey — fr-en only (from v2). */
+  cards?: Record<string, FsrsCardState>;
+  /** One-release rollback copy of the pre-v2 fr srs map. */
+  srsLegacy?: Record<string, SrsEntry>;
 };
 
 function emptyCourseProgress(): CourseProgress {
@@ -62,6 +69,8 @@ type ProgressState = {
   courses: Record<string, CourseProgress>;
   /** Per-day activity across courses, for the streak calendar and quests. */
   activeDays: Record<string, DayActivity>;
+  /** Append-only evidence log (v2), ring-capped at REVIEW_LOG_CAP. */
+  reviewLog: ReviewLogEntry[];
 
   course: () => CourseProgress;
   completeLesson: (lessonId: string, perfect: boolean) => void;
@@ -123,6 +132,7 @@ export const useProgress = create<ProgressState>()(
       themePreference: "system",
       courses: {},
       activeDays: {},
+      reviewLog: [],
 
       course: () => get().courses[get().activeCourseId] ?? emptyCourseProgress(),
 
@@ -214,7 +224,7 @@ export const useProgress = create<ProgressState>()(
                   lastSeen: Date.now(),
                 },
               },
-              srs: { ...c.srs, [target]: reviewWord(c.srs[target], quality) },
+              srs: { ...c.srs, [target]: reviewWord(c.srs?.[target], quality) },
             };
           })
         ),
@@ -223,7 +233,7 @@ export const useProgress = create<ProgressState>()(
         set((state) =>
           updateCourse(state, state.activeCourseId, (c) => ({
             ...c,
-            srs: { ...c.srs, [target]: reviewWord(c.srs[target], correct ? 2 : 0) },
+            srs: { ...c.srs, [target]: reviewWord(c.srs?.[target], correct ? 2 : 0) },
           }))
         ),
 

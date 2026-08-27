@@ -100,14 +100,44 @@ describe("prepareImport (staged validation — never mutates)", () => {
   });
 
   test("invariant violations are rejected (malformed SRS entry)", () => {
+    // On a non-French course: those stay legacy through v2, so the raw
+    // invalid entry reaches the invariant checks untransformed. (NaN becomes
+    // null in JSON, which finite checks reject.)
     const bad = validState();
-    bad.courses["fr-en"].srs["evil"] = {
+    bad.courses["es-en"].srs!["evil"] = {
       interval: Number.NaN,
       ease: 2.5,
       dueAt: 0,
       streak: 0,
     };
     expect(prepareImport(wrap(bad, 0), NOW).ok).toBe(false);
+  });
+
+  test("invariant violations are rejected (malformed v2 FSRS card)", () => {
+    // A v2-versioned backup skips migration, so its cards are validated as-is.
+    const v2 = prepareImport(wrap(validState(), 0), NOW);
+    if (!v2.ok) throw new Error("stage failed");
+    const bad = JSON.parse(JSON.stringify(v2.state)) as typeof v2.state;
+    bad.courses["fr-en"].cards!["fr:w:homme|recognize"].stability =
+      null as unknown as number;
+    expect(prepareImport(wrap(bad, 2), NOW).ok).toBe(false);
+
+    const badKey = JSON.parse(JSON.stringify(v2.state)) as typeof v2.state;
+    badKey.courses["fr-en"].cards!["no-separator"] =
+      badKey.courses["fr-en"].cards!["fr:w:homme|recognize"];
+    expect(prepareImport(wrap(badKey, 2), NOW).ok).toBe(false);
+  });
+
+  test("a v2 export round-trips: French cards and srsLegacy survive import", () => {
+    const v2 = prepareImport(wrap(validState(), 0), NOW);
+    if (!v2.ok) throw new Error("stage failed");
+    const again = prepareImport(wrap(v2.state, 2), NOW);
+    expect(again.ok).toBe(true);
+    if (!again.ok) return;
+    expect(again.state).toEqual(v2.state);
+    expect(again.state.courses["fr-en"].cards!["fr:w:homme|recognize"].stability).toBe(3);
+    expect(again.state.courses["fr-en"].srsLegacy!["l'homme"].interval).toBe(3);
+    expect(again.state.reviewLog).toEqual([]);
   });
 
   test("prototype-pollution keys are stripped, not merged", () => {
@@ -130,7 +160,7 @@ describe("sanitize", () => {
 });
 
 describe("commitImport (transaction safety)", () => {
-  test("happy path: safety copy written, storage committed at v1, store live", async () => {
+  test("happy path: safety copy written, storage committed at v2, store live", async () => {
     memoryStorage.set(PROGRESS_STORAGE_KEY, JSON.stringify(freshFixture));
     const staged = prepareImport(wrap(validState(), 0), NOW);
     if (!staged.ok) throw new Error("stage failed");
@@ -139,8 +169,9 @@ describe("commitImport (transaction safety)", () => {
     expect(outcome.ok).toBe(true);
 
     const stored = JSON.parse(memoryStorage.get(PROGRESS_STORAGE_KEY) as string);
-    expect(stored.version).toBe(1);
+    expect(stored.version).toBe(2);
     expect(stored.state.courses["fr-en"].xp).toBe(215);
+    expect(stored.state.courses["fr-en"].cards["fr:w:homme|recognize"]).toBeDefined();
     expect(useProgress.getState().streak).toBe(5);
     expect(useProgress.getState().activeCourseId).toBe("fr-en");
 
@@ -156,7 +187,10 @@ describe("commitImport (transaction safety)", () => {
   test("interrupted commit leaves current state untouched", async () => {
     // Seed at the current persist version so the restore path's rehydrate
     // doesn't (legitimately) migrate-and-rewrite the stored form.
-    const before = JSON.stringify({ state: freshFixture.state, version: 1 });
+    const before = JSON.stringify({
+      state: { ...freshFixture.state, reviewLog: [] },
+      version: 2,
+    });
     memoryStorage.set(PROGRESS_STORAGE_KEY, before);
     const staged = prepareImport(wrap(validState(), 0), NOW);
     if (!staged.ok) throw new Error("stage failed");

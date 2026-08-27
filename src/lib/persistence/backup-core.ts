@@ -8,11 +8,17 @@
  * does the caller commit; any failure leaves current user state untouched.
  */
 
+import { REVIEW_LOG_CAP } from "../learning/review-log";
+import type { FsrsCardState } from "../learning/scheduler";
+import type { SrsEntry } from "../srs";
+
 import {
   migrateProgress,
   PERSIST_VERSION,
   type PersistedProgress,
 } from "./migrations";
+
+const FSRS_STATES = new Set(["new", "learning", "review", "relearning"]);
 
 export const BACKUP_FORMAT = "lingo-progress-backup";
 export const ENVELOPE_VERSION = 1;
@@ -155,20 +161,50 @@ export function runInvariants(state: PersistedProgress, now: Date): string[] {
         }
       }
     }
-    if (!course.srs || typeof course.srs !== "object") {
+    // From v2, fr-en stores FSRS `cards` (+ `srsLegacy`) instead of `srs`;
+    // every other course still stores `srs`. A course must have one of them.
+    const hasSrs = !!course.srs && typeof course.srs === "object";
+    const hasCards = !!course.cards && typeof course.cards === "object";
+    if (!hasSrs && !hasCards) {
       problems.push(`invalid review data in ${courseId}`);
+    }
+    if (hasSrs && !validSrsMap(course.srs!, maxTimestamp)) {
+      problems.push(`invalid review entry in ${courseId}`);
+    }
+    if (course.srsLegacy !== undefined) {
+      if (
+        typeof course.srsLegacy !== "object" ||
+        course.srsLegacy === null ||
+        !validSrsMap(course.srsLegacy, maxTimestamp)
+      ) {
+        problems.push(`invalid legacy review copy in ${courseId}`);
+      }
+    }
+    if (hasCards) {
+      for (const [key, card] of Object.entries(course.cards!)) {
+        if (!validCard(key, card, maxTimestamp)) {
+          problems.push(`invalid card in ${courseId}`);
+          break;
+        }
+      }
+    }
+  }
+
+  if (state.reviewLog !== undefined) {
+    if (!Array.isArray(state.reviewLog) || state.reviewLog.length > REVIEW_LOG_CAP) {
+      problems.push("invalid review log");
     } else {
-      for (const entry of Object.values(course.srs)) {
+      for (const e of state.reviewLog) {
         if (
-          !entry ||
-          !finiteAtLeast(entry.interval, 0) ||
-          !finiteAtLeast(entry.ease, 1) ||
-          entry.ease > 10 ||
-          !finiteAtLeast(entry.dueAt, 0) ||
-          entry.dueAt > maxTimestamp ||
-          !finiteAtLeast(entry.streak, 0)
+          !e ||
+          typeof e !== "object" ||
+          !finiteAtLeast(e.at, 0) ||
+          e.at > maxTimestamp ||
+          typeof e.cardKey !== "string" ||
+          typeof e.sessionId !== "string" ||
+          typeof e.courseId !== "string"
         ) {
-          problems.push(`invalid review entry in ${courseId}`);
+          problems.push("invalid review log entry");
           break;
         }
       }
@@ -176,6 +212,42 @@ export function runInvariants(state: PersistedProgress, now: Date): string[] {
   }
 
   return problems;
+}
+
+function validSrsMap(map: Record<string, SrsEntry>, maxTimestamp: number): boolean {
+  for (const entry of Object.values(map)) {
+    if (
+      !entry ||
+      !finiteAtLeast(entry.interval, 0) ||
+      !finiteAtLeast(entry.ease, 1) ||
+      entry.ease > 10 ||
+      !finiteAtLeast(entry.dueAt, 0) ||
+      entry.dueAt > maxTimestamp ||
+      !finiteAtLeast(entry.streak, 0)
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function validCard(key: string, card: FsrsCardState, maxTimestamp: number): boolean {
+  if (!key || key.indexOf("|") <= 0) return false;
+  return (
+    !!card &&
+    typeof card === "object" &&
+    finiteAtLeast(card.due, 0) &&
+    card.due <= maxTimestamp &&
+    finiteAtLeast(card.stability, 0) &&
+    finiteAtLeast(card.difficulty, 0) &&
+    card.difficulty <= 10 &&
+    finiteAtLeast(card.scheduled_days, 0) &&
+    finiteAtLeast(card.learning_steps, 0) &&
+    finiteAtLeast(card.reps, 0) &&
+    finiteAtLeast(card.lapses, 0) &&
+    FSRS_STATES.has(card.state) &&
+    (card.last_review === undefined || finiteAtLeast(card.last_review, 0))
+  );
 }
 
 /**

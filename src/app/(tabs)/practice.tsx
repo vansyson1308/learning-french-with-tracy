@@ -19,7 +19,7 @@ export default function PracticeScreen() {
   const { activeCourseId } = progress;
   const courseProgress = progress.course();
   const { pack, allWords } = useCourseContent(activeCourseId);
-  const dueWords = dueSrsWords(courseProgress.srs);
+  const dueWords = dueSrsWords(courseProgress.srs ?? {});
   const quests = dailyQuests(progress);
 
   const uniqueWords = [
@@ -29,7 +29,7 @@ export default function PracticeScreen() {
     .map((w) => ({
       ...w,
       stat: courseProgress.wordStats[w.target],
-      srs: courseProgress.srs[w.target],
+      srs: courseProgress.srs?.[w.target],
     }))
     .filter((w) => w.stat);
 

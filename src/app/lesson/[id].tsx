@@ -90,12 +90,12 @@ export default function LessonScreen() {
       return { exercises: list, lessonId: "mistakes", alreadyCompleted: true };
     }
     if (isSrs) {
-      const due = dueSrsWords(courseProgress.srs);
+      const due = dueSrsWords(courseProgress.srs ?? {});
       // Seed derived purely from the session's content (due set + each word's
       // due date), so builds are deterministic per queue state and reproducible
       // in tests, while reshuffling once reviews change the queue.
       const seed = hashSeed(
-        due.map((t) => `${t}@${courseProgress.srs[t]?.dueAt ?? 0}`).join("|")
+        due.map((t) => `${t}@${courseProgress.srs?.[t]?.dueAt ?? 0}`).join("|")
       );
       return {
         exercises: buildSrsExercises(due, allWords(), seed),
