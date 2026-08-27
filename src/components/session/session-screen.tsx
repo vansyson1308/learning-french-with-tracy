@@ -81,14 +81,19 @@ export function SessionScreen({
       exitScreen();
       return;
     }
-    Alert.alert(
-      "Leave this session?",
-      "Answers you already gave are saved. The session itself won't be counted as completed.",
-      [
-        { text: "Keep going", style: "cancel" },
-        { text: "Leave", style: "destructive", onPress: () => exitScreen() },
-      ]
-    );
+    const message =
+      "Answers you already gave are saved. The session itself won't be counted as completed.";
+    if (Platform.OS === "web") {
+      // RN-web's Alert is a no-op; without this the close button would go dead.
+      if (typeof window !== "undefined" && window.confirm(`Leave this session?\n\n${message}`)) {
+        exitScreen();
+      }
+      return;
+    }
+    Alert.alert("Leave this session?", message, [
+      { text: "Keep going", style: "cancel" },
+      { text: "Leave", style: "destructive", onPress: () => exitScreen() },
+    ]);
   };
 
   if (definition.steps.length === 0) {

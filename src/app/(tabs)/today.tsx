@@ -28,12 +28,13 @@ const PRESET_ORDER: TodayPreset[] = ["short", "regular", "long"];
 export default function TodayScreen() {
   const colors = useThemeColors();
   const styles = useStyles();
-  const progress = useProgress();
-  const { activeCourseId } = progress;
+  // Targeted selectors (§89): the preview re-renders only when the active
+  // course's progress, the streak fields, or the course id change.
+  const activeCourseId = useProgress((s) => s.activeCourseId);
+  const course = useProgress((s) => s.courses[s.activeCourseId]);
+  const streak = useProgress((s) => currentStreak(s));
   const { pack } = useCourseContent(activeCourseId);
   const [preset, setPreset] = useState<TodayPreset>("regular");
-
-  const course = progress.courses[activeCourseId];
 
   // Preview from the ACTUAL composed plan (§31) — recomputed when reviews
   // or lesson progress change, deterministic within a day for equal state.
@@ -53,7 +54,6 @@ export default function TodayScreen() {
   }
 
   const caughtUp = plan.steps.length === 0;
-  const streak = currentStreak(progress);
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>

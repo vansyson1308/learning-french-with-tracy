@@ -76,10 +76,25 @@ export default function TodaySessionRoute() {
       emptyMessage="You're all caught up!"
       buildTodayStats={(controller): TodaySummaryStats => {
         const live = useProgress.getState().courses[definition.courseId];
+        // Accuracy over designated assessments only (§64): mixed practice
+        // and the finale game are reinforcement, not retrieval measurement.
+        const assessmentStepIds = new Set(
+          definition.steps
+            .filter(
+              (s) => s.type === "exercise" && s.evidence?.srsRole === "assessment"
+            )
+            .map((s) => s.stepId)
+        );
+        const firsts = Object.entries(controller.state.firstResults).filter(([id]) =>
+          assessmentStepIds.has(id)
+        );
         return {
           reviewsCompleted: plan.reviewCount,
           newWordsIntroduced: plan.newCount,
-          firstAttemptAccuracy: firstAttemptAccuracy(controller.state),
+          firstAttemptAccuracy:
+            firsts.length === 0
+              ? firstAttemptAccuracy(controller.state)
+              : firsts.filter(([, ok]) => ok).length / firsts.length,
           xpEarned: Math.min(controller.assessmentsCompleted, XP_PER_LESSON),
           remainingBacklog: dueFrenchReviewQueue(live?.cards).length,
         };
