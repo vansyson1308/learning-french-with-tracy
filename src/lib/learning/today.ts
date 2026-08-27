@@ -126,16 +126,17 @@ function buildSelect(args: {
     seen.add(text);
     candidates.push(w);
   }
+  // Recognition options all carry their word's emoji (an emoji only on the
+  // answer would give it away); production options are plain French text.
+  const withEmoji = direction === "targetToNative";
   const distractors = shuffle(candidates, rng)
     .slice(0, 3)
-    .map((w) => ({ text: display(w) }));
+    .map((w) => (withEmoji ? { text: display(w), emoji: w.emoji } : { text: display(w) }));
   if (distractors.length === 0) return null;
 
   const options = shuffle(
     [
-      direction === "targetToNative"
-        ? { text: answerText, emoji: word.emoji }
-        : { text: answerText },
+      withEmoji ? { text: answerText, emoji: word.emoji } : { text: answerText },
       ...distractors,
     ],
     rng
@@ -144,8 +145,9 @@ function buildSelect(args: {
     type: "select",
     id: args.id,
     mode: direction,
-    prompt:
-      direction === "targetToNative" ? "What does this mean?" : `Translate "${word.native}"`,
+    // The Select renders `prompt` as the asked word (titles come from the
+    // mode): show the French for recognition, the native for production.
+    prompt: direction === "targetToNative" ? word.target : word.native,
     audioTarget: word.target,
     options,
     correct: options.findIndex((o) => o.text === answerText),

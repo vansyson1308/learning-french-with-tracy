@@ -57,9 +57,11 @@ export function buildSrsExercises(
       seen.add(w.native);
       candidates.push(w);
     }
+    // Every option carries its own word's emoji — an emoji only on the
+    // correct answer would telegraph it (pre-Phase-3 flaw, fixed here).
     const distractors = shuffle(candidates, rng)
       .slice(0, 3)
-      .map((w) => ({ text: w.native }));
+      .map((w) => ({ text: w.native, emoji: w.emoji }));
     if (distractors.length === 0) return [];
 
     const options = shuffle(
@@ -73,7 +75,9 @@ export function buildSrsExercises(
         type: "select" as const,
         id: `srs-${target}`,
         mode: "targetToNative" as const,
-        prompt: "What does this mean?",
+        // The prompt is what the Select renders as the word being asked —
+        // it must be the French surface, not a duplicate of the title.
+        prompt: word.target,
         audioTarget: word.target,
         options,
         correct,
