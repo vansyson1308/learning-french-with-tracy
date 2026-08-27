@@ -43,7 +43,8 @@
     "@types/react": "~19.2.2",
     "eslint": "^9",
     "eslint-config-expo": "^57.0.2",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "zod": "^4.4.3"
   },
   "scripts": {
     "start": "expo start --dev-client",
@@ -53,7 +54,11 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
-    "test": "bun test"
+    "test": "bun test",
+    "content:validate": "bun scripts/validate-content.ts",
+    "content:compile": "bun scripts/compile-content.ts",
+    "content:check": "bun scripts/compile-content.ts --check",
+    "audio:check": "bun scripts/check-audio.ts"
   },
   "private": true
 }

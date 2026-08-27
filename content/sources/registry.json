@@ -1,0 +1,31 @@
+{
+  "sources": [
+    {
+      "id": "upstream-lingo-lessons",
+      "name": "Lingo Lessons (Open Apps Studio)",
+      "kind": "code + course content + pre-generated TTS audio",
+      "license": "MIT",
+      "url": "https://github.com/Open-Apps-Studio/lingo-lessons",
+      "attribution": "Based on Lingo Lessons by Open Apps Studio, used under the MIT License. The original LICENSE (including the 650 Industries, Inc. notice from the create-expo-app template) is preserved in this repository.",
+      "retrievedAt": "2026-08-27",
+      "covers": [
+        "content/courses/",
+        "src/content/",
+        "assets/audio/",
+        "assets/images/"
+      ],
+      "notes": "The base repository this fork continues. Bundled course packs and audio ship under the repository's MIT grant; the original audio generator and its TTS source were never published, so per-asset audio provenance is recorded as presumed rather than proven. A provenance audit of shipped assets remains a recorded obligation before any commercial distribution (approved plan, section I3.5). No new third-party dataset was ingested in Phase 2."
+    },
+    {
+      "id": "ts-fsrs",
+      "name": "ts-fsrs (open-spaced-repetition)",
+      "kind": "code (runtime scheduling library)",
+      "license": "MIT",
+      "url": "https://github.com/open-spaced-repetition/ts-fsrs",
+      "attribution": "Spaced-repetition scheduling powered by ts-fsrs, © open-spaced-repetition contributors, MIT License.",
+      "retrievedAt": "2026-08-27",
+      "covers": ["node_modules/ts-fsrs/"],
+      "notes": "FSRS-6 scheduler. The SM-2 migration math is an independent TypeScript implementation of the published memory_state_from_sm2 formula from fsrs-rs (also MIT)."
+    }
+  ]
+}
