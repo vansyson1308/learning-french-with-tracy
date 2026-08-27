@@ -308,6 +308,120 @@
           "key": "verb-morphology"
         }
       ]
+    },
+    {
+      "id": "fr:concept:cognate-tion-family",
+      "title": "Hundreds of free words",
+      "shortRule": "A French noun in -tion is almost always the same word as in English — and feminine.",
+      "explanation": "You already know a large stock of French: of the 16 -tion nouns frequent enough for this course's corpus-derived candidate pool, 15 are the same word in English — solution, question, direction, situation, attention, information, condition, conversation… (opération just swaps é for e). The gender comes free too: across the 36,940-noun analysis, -tion nouns run 99.5% feminine (1,895 measured), so say la solution, la direction — and remember l' hides the la in l'attention.",
+      "examples": [
+        {
+          "fr": "la solution",
+          "en": "the solution",
+          "note": "identical spelling"
+        },
+        {
+          "fr": "la direction",
+          "en": "the direction",
+          "note": "identical spelling"
+        },
+        {
+          "fr": "l'attention",
+          "en": "attention",
+          "note": "feminine — the l' just hides it"
+        }
+      ],
+      "exceptions": [
+        "félicitation is the pool's one non-transparent -tion word: Félicitations ! means Congratulations!",
+        "The words are shared, the sounds are not — French -tion says /sjɔ̃/, never /shun/."
+      ],
+      "memoryHint": "See -tion? Trust the meaning, say la.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "candidate-pool"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    {
+      "id": "fr:concept:cognate-te-family",
+      "title": "The -té bridge",
+      "shortRule": "-té usually turns into English -ty: la liberté → liberty.",
+      "explanation": "The -té ending is a bridge to English -ty: 10 of the 16 -té nouns in the everyday pool map straight across — liberté→liberty, réalité→reality, société→society, sécurité→security, université→university, identité→identity… The other six are real vocabulary to learn, not cognates: santé is health, vérité is truth, volonté is will, and été is summer. Gender: 91.6% of the 1,031 -té nouns are feminine; the masculine exceptions include le côté (the side), l'été and un invité (a guest). Bonus family for later: French has 616 nouns in -isme mirroring English -ism, 99.8% masculine — none crack the everyday top-1500.",
+      "examples": [
+        {
+          "fr": "la liberté",
+          "en": "freedom / liberty",
+          "note": "-té → -ty"
+        },
+        {
+          "fr": "la réalité",
+          "en": "reality",
+          "note": "-té → -ty"
+        },
+        {
+          "fr": "la santé",
+          "en": "health",
+          "note": "NOT \"santy\" — a real word to learn"
+        }
+      ],
+      "exceptions": [
+        "Non-cognates in the family: santé = health, vérité = truth, volonté = will, été = summer.",
+        "Masculine exceptions to feminine -té: le côté, l'été, un invité."
+      ],
+      "memoryHint": "-té → -ty, and la — unless it is le côté or l'été.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "candidate-pool"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    {
+      "id": "fr:concept:false-friends",
+      "title": "Words that lie",
+      "shortRule": "Some French words look English but mean something else — learn each trap together with its repair word.",
+      "explanation": "A few high-value French words are traps: they look like English words they do not mean. La librairie is the bookshop — the library is la bibliothèque. La journée is the day(time) — a journey is un voyage. La monnaie is your change in coins — money in general is l'argent. Rester means to stay, never to rest, and attendre means to wait, never to attend. The fix is to learn each trap as a pair: the French word with its real meaning, plus the French word for what it fooled you into thinking.",
+      "examples": [
+        {
+          "fr": "la librairie",
+          "en": "the bookshop",
+          "note": "the library = la bibliothèque"
+        },
+        {
+          "fr": "Bonne journée !",
+          "en": "Have a good day!",
+          "note": "a journey = un voyage"
+        },
+        {
+          "fr": "Tu as de la monnaie ?",
+          "en": "Do you have change?",
+          "note": "money = l'argent"
+        }
+      ],
+      "exceptions": [
+        "More traps for later: sensible means sensitive, actuellement means currently, assister à means to attend."
+      ],
+      "memoryHint": "La librairie sells books; la bibliothèque lends them.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
     }
   ]
 }

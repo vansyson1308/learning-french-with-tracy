@@ -7566,6 +7566,959 @@
               ]
             }
           ]
+        },
+        {
+          "id": "fr-en:unit-c",
+          "title": "Cognates & False Friends",
+          "description": "Harvest the words French shares with English — and defuse the ones that only pretend to.",
+          "guidebook": "# Words you already know — and words that lie\n\nFrench and English share thousands of words. This unit teaches you to harvest the shared ones and defuse the deceptive ones.\n\n## The -tion family\n\nOf the 16 -tion nouns in this course's corpus-derived everyday pool, 15 are the same word in English: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Across a 36,940-noun analysis they are **99.5% feminine** — say *la*.\n\n- The sound changes even when the spelling doesn't: -tion is /sjɔ̃/, never /shun/.\n- The one trap in the pool: **Félicitations !** means *Congratulations!*\n\n## The -té bridge\n\n-té usually becomes English -ty — 10 of the everyday pool's 16:\n\n- **la liberté** — liberty, freedom\n- **la réalité** — reality\n- **la société** — society · **la sécurité** — security · **l'université** — university\n\nBut six are real vocabulary, not cognates: **la santé** (health), **la vérité** (truth), **la volonté** (will), **l'été** (summer). Gender runs **91.6% feminine** (1,031 nouns measured); the masculine exceptions include **le côté** (the side) and **l'été**.\n\nFor later: French has 616 nouns in **-isme** matching English -ism — **99.8% masculine**.\n\n## False friends\n\nLearn each trap with its repair word:\n\n- **la librairie** = the bookshop → the library is **la bibliothèque**\n- **la journée** = the day(time) → a journey is **un voyage**\n- **la monnaie** = change, coins → money is **l'argent**\n- **rester** = to stay (never to rest)\n- **attendre** = to wait (never to attend)\n\nMore to watch for as you advance: *sensible* means sensitive, *actuellement* means currently.",
+          "words": [
+            {
+              "target": "la solution",
+              "native": "the solution",
+              "emoji": "💡"
+            },
+            {
+              "target": "la direction",
+              "native": "the direction",
+              "emoji": "🧭"
+            },
+            {
+              "target": "l'attention",
+              "native": "attention",
+              "emoji": "⚠️"
+            },
+            {
+              "target": "la liberté",
+              "native": "freedom",
+              "emoji": "🕊️"
+            },
+            {
+              "target": "la réalité",
+              "native": "reality",
+              "emoji": "🌍"
+            },
+            {
+              "target": "la musique",
+              "native": "music",
+              "emoji": "🎵"
+            },
+            {
+              "target": "la journée",
+              "native": "the day (daytime)",
+              "emoji": "📅"
+            },
+            {
+              "target": "l'argent",
+              "native": "the money",
+              "emoji": "💰"
+            },
+            {
+              "target": "la librairie",
+              "native": "the bookshop",
+              "emoji": "📚"
+            },
+            {
+              "target": "la bibliothèque",
+              "native": "the library",
+              "emoji": "🏛️"
+            },
+            {
+              "target": "la monnaie",
+              "native": "change (coins)",
+              "emoji": "🪙"
+            },
+            {
+              "target": "rester",
+              "native": "to stay",
+              "emoji": "⏸️"
+            },
+            {
+              "target": "attendre",
+              "native": "to wait",
+              "emoji": "⏳"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uc-l0",
+              "title": "Free words",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la solution",
+                  "options": [
+                    {
+                      "text": "the solution"
+                    },
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the situation"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:solution"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la direction",
+                  "options": [
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "the solution"
+                    },
+                    {
+                      "text": "attention"
+                    },
+                    {
+                      "text": "the trip"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:direction"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "l'attention",
+                  "options": [
+                    {
+                      "text": "attention"
+                    },
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the solution"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:attention"
+                  ]
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l0-e3",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "solution",
+                  "gloss": "the solution",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l0-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "direction",
+                  "gloss": "the direction",
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e5",
+                  "mode": "nativeToTarget",
+                  "prompt": "the solution",
+                  "options": [
+                    {
+                      "text": "la solution"
+                    },
+                    {
+                      "text": "la direction"
+                    },
+                    {
+                      "text": "l'attention"
+                    },
+                    {
+                      "text": "la question"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:solution"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "attention",
+                  "options": [
+                    {
+                      "text": "l'attention"
+                    },
+                    {
+                      "text": "la solution"
+                    },
+                    {
+                      "text": "la situation"
+                    },
+                    {
+                      "text": "la vérité"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:attention"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l0-e7",
+                  "sentence": "___ direction est bonne.",
+                  "translation": "The direction is good.",
+                  "options": [
+                    "La",
+                    "Le"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l0-e8",
+                  "mode": "targetToNative",
+                  "prompt": "la question",
+                  "options": [
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the solution"
+                    },
+                    {
+                      "text": "the direction"
+                    },
+                    {
+                      "text": "attention"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:question"
+                  ]
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:cognate-tion-family"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:uc-l0-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:uc-l1",
+              "title": "The -té bridge",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la liberté",
+                  "options": [
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "reality"
+                    },
+                    {
+                      "text": "music"
+                    },
+                    {
+                      "text": "safety"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:liberte"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la réalité",
+                  "options": [
+                    {
+                      "text": "reality"
+                    },
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "music"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:realite"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "la musique",
+                  "options": [
+                    {
+                      "text": "music"
+                    },
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "the library"
+                    },
+                    {
+                      "text": "reality"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:musique"
+                  ]
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l1-e3",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "liberté",
+                  "gloss": "freedom",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l1-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "musique",
+                  "gloss": "music",
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e5",
+                  "mode": "nativeToTarget",
+                  "prompt": "freedom",
+                  "options": [
+                    {
+                      "text": "la liberté"
+                    },
+                    {
+                      "text": "la réalité"
+                    },
+                    {
+                      "text": "la musique"
+                    },
+                    {
+                      "text": "la sécurité"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:liberte"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "reality",
+                  "options": [
+                    {
+                      "text": "la réalité"
+                    },
+                    {
+                      "text": "la liberté"
+                    },
+                    {
+                      "text": "la vérité"
+                    },
+                    {
+                      "text": "la vie"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:realite"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l1-e7",
+                  "sentence": "J'aime ___ musique.",
+                  "translation": "I like music.",
+                  "options": [
+                    "la",
+                    "le"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l1-e8",
+                  "mode": "targetToNative",
+                  "prompt": "la vérité",
+                  "options": [
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "freedom"
+                    },
+                    {
+                      "text": "reality"
+                    },
+                    {
+                      "text": "safety"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:verite"
+                  ]
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:cognate-te-family"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e0"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e1"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e2"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e3"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e4"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e5"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e6"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e7"
+                },
+                {
+                  "exercise": "fr-en:uc-l1-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:uc-l2",
+              "title": "Words that lie",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la librairie",
+                  "options": [
+                    {
+                      "text": "the bookshop"
+                    },
+                    {
+                      "text": "the library"
+                    },
+                    {
+                      "text": "the bakery"
+                    },
+                    {
+                      "text": "the kitchen"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:librairie"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la bibliothèque",
+                  "options": [
+                    {
+                      "text": "the library"
+                    },
+                    {
+                      "text": "the bookshop"
+                    },
+                    {
+                      "text": "the school"
+                    },
+                    {
+                      "text": "the office"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:bibliotheque"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e2",
+                  "mode": "nativeToTarget",
+                  "prompt": "the library",
+                  "options": [
+                    {
+                      "text": "la bibliothèque"
+                    },
+                    {
+                      "text": "la librairie"
+                    },
+                    {
+                      "text": "la journée"
+                    },
+                    {
+                      "text": "l'école"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:bibliotheque"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "la journée",
+                  "options": [
+                    {
+                      "text": "the day (daytime)"
+                    },
+                    {
+                      "text": "the journey"
+                    },
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the newspaper"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:journee"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "the bookshop",
+                  "options": [
+                    {
+                      "text": "la librairie"
+                    },
+                    {
+                      "text": "la bibliothèque"
+                    },
+                    {
+                      "text": "la maison"
+                    },
+                    {
+                      "text": "le bureau"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:librairie"
+                  ]
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l2-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "librairie",
+                  "gloss": "the bookshop",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:uc-l2-e6",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "journée",
+                  "gloss": "the day (daytime)",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l2-e7",
+                  "sentence": "Bonne ___ !",
+                  "translation": "Have a good day!",
+                  "options": [
+                    "journée",
+                    "librairie"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l2-e8",
+                  "mode": "targetToNative",
+                  "prompt": "le voyage",
+                  "options": [
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the day (daytime)"
+                    },
+                    {
+                      "text": "the bookshop"
+                    },
+                    {
+                      "text": "the money"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:voyage"
+                  ]
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:false-friends"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e6"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e7"
+                },
+                {
+                  "exercise": "fr-en:uc-l2-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:uc-l3",
+              "title": "More traps",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la monnaie",
+                  "options": [
+                    {
+                      "text": "change (coins)"
+                    },
+                    {
+                      "text": "the money"
+                    },
+                    {
+                      "text": "the wallet"
+                    },
+                    {
+                      "text": "the ticket"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:monnaie"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "l'argent",
+                  "options": [
+                    {
+                      "text": "the money"
+                    },
+                    {
+                      "text": "change (coins)"
+                    },
+                    {
+                      "text": "the bank"
+                    },
+                    {
+                      "text": "the price"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:argent"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "rester",
+                  "options": [
+                    {
+                      "text": "to stay"
+                    },
+                    {
+                      "text": "to rest"
+                    },
+                    {
+                      "text": "to go"
+                    },
+                    {
+                      "text": "to wait"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:rester"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "attendre",
+                  "options": [
+                    {
+                      "text": "to wait"
+                    },
+                    {
+                      "text": "to attend"
+                    },
+                    {
+                      "text": "to hear"
+                    },
+                    {
+                      "text": "to stay"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:attendre"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "the money",
+                  "options": [
+                    {
+                      "text": "l'argent"
+                    },
+                    {
+                      "text": "la monnaie"
+                    },
+                    {
+                      "text": "le papier"
+                    },
+                    {
+                      "text": "le billet"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:argent"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e5",
+                  "mode": "nativeToTarget",
+                  "prompt": "to wait",
+                  "options": [
+                    {
+                      "text": "attendre"
+                    },
+                    {
+                      "text": "rester"
+                    },
+                    {
+                      "text": "aller"
+                    },
+                    {
+                      "text": "parler"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:attendre"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "to stay",
+                  "options": [
+                    {
+                      "text": "rester"
+                    },
+                    {
+                      "text": "attendre"
+                    },
+                    {
+                      "text": "habiter"
+                    },
+                    {
+                      "text": "être"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:rester"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:uc-l3-e7",
+                  "sentence": "Tu as de la ___ ?",
+                  "translation": "Do you have change?",
+                  "options": [
+                    "monnaie",
+                    "musique"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e8",
+                  "mode": "nativeToTarget",
+                  "prompt": "change (coins)",
+                  "options": [
+                    {
+                      "text": "la monnaie"
+                    },
+                    {
+                      "text": "l'argent"
+                    },
+                    {
+                      "text": "la journée"
+                    },
+                    {
+                      "text": "la question"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:monnaie"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:uc-l3-e9",
+                  "mode": "targetToNative",
+                  "prompt": "le billet",
+                  "options": [
+                    {
+                      "text": "the ticket"
+                    },
+                    {
+                      "text": "the money"
+                    },
+                    {
+                      "text": "change (coins)"
+                    },
+                    {
+                      "text": "the paper"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:billet"
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

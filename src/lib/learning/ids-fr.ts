@@ -110,6 +110,19 @@ export const FR_LEXEME_IDS: Readonly<Record<string, string>> = {
   parler: "fr:w:parler",
   aimer: "fr:w:aimer",
   habiter: "fr:w:habiter",
+  "la solution": "fr:w:solution",
+  "la direction": "fr:w:direction",
+  "l'attention": "fr:w:attention",
+  "la liberté": "fr:w:liberte",
+  "la réalité": "fr:w:realite",
+  "la musique": "fr:w:musique",
+  "la journée": "fr:w:journee",
+  "l'argent": "fr:w:argent",
+  "la librairie": "fr:w:librairie",
+  "la bibliothèque": "fr:w:bibliotheque",
+  "la monnaie": "fr:w:monnaie",
+  rester: "fr:w:rester",
+  attendre: "fr:w:attendre",
 };
 
 /** Reverse map (id → canonical surface) for review-session building. */
