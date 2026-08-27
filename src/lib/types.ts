@@ -15,6 +15,8 @@ export type SelectExercise = {
   audioTarget?: string;
   options: { text: string; emoji?: string }[];
   correct: number;
+  /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
+  gradeTargets?: string[];
 };
 
 export type WordBankExercise = {
@@ -25,12 +27,16 @@ export type WordBankExercise = {
   audioTarget?: string;
   tokens: string[];
   answer: string[];
+  /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
+  gradeTargets?: string[];
 };
 
 export type MatchExercise = {
   type: "match";
   id: string;
   pairs: { target: string; native: string }[];
+  /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
+  gradeTargets?: string[];
 };
 
 export type TypeAnswerExercise = {
@@ -41,6 +47,8 @@ export type TypeAnswerExercise = {
   audioTarget?: string;
   answer: string;
   alternatives: string[];
+  /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
+  gradeTargets?: string[];
 };
 
 export type FillBlankExercise = {
@@ -51,6 +59,8 @@ export type FillBlankExercise = {
   audioTarget?: string;
   options: string[];
   correct: number;
+  /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
+  gradeTargets?: string[];
 };
 
 export type Exercise =
