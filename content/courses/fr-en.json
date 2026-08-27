@@ -5382,6 +5382,859 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fr-en:section-2",
+      "title": "Section 2: Building blocks",
+      "units": [
+        {
+          "id": "fr-en:unit-a",
+          "title": "Gender & Articles",
+          "description": "Le or la? Let word endings do the work for you.",
+          "guidebook": "## Le or la? 🎯\n\nEvery French noun is **masculine** (*le*) or **feminine** (*la*). The ending often decides it — these numbers come from an analysis of **36,940 French nouns**:\n\n### Almost always feminine\n- **-tion** → *la question* (feminine 99.5% of the time)\n- **-ance / -ence** → *la chance, la confiance* (about 99%)\n- **-ité** → *la vérité, la sécurité* (97.8%)\n- **-ie** → *la vie* (96.3%)\n\n### Usually masculine\n- **-ment** → *le moment, le sentiment* (99.8%)\n- **-age** → *le voyage, le message* (98.5% — but *l'image* is feminine)\n- **-eau** → *le bureau, le cadeau* (96.7% — but *l'eau* is feminine!)\n- **-ier** → *le papier* (97.1%)\n\n### Handle with care\n- **-on** is usually masculine (*le patron*) — **but** the *-ion* and *-son* families inside it are feminine: *la question, la maison, la raison*.\n- **-eur** is usually masculine (*le docteur*) — famous feminine exceptions: *la peur, l'erreur, la couleur, la fleur*.\n\n**Habit to build:** never learn a bare noun. Learn *la maison*, not *maison*.",
+          "words": [
+            {
+              "target": "la question",
+              "native": "the question",
+              "emoji": "❓"
+            },
+            {
+              "target": "la situation",
+              "native": "the situation",
+              "emoji": "🧭"
+            },
+            {
+              "target": "le voyage",
+              "native": "the trip",
+              "emoji": "✈️"
+            },
+            {
+              "target": "le message",
+              "native": "the message",
+              "emoji": "✉️"
+            },
+            {
+              "target": "le bureau",
+              "native": "the office",
+              "emoji": "🏢"
+            },
+            {
+              "target": "le cadeau",
+              "native": "the gift",
+              "emoji": "🎁"
+            },
+            {
+              "target": "le moment",
+              "native": "the moment",
+              "emoji": "⏰"
+            },
+            {
+              "target": "le sentiment",
+              "native": "the feeling",
+              "emoji": "💭"
+            },
+            {
+              "target": "la vérité",
+              "native": "the truth",
+              "emoji": "🕯️"
+            },
+            {
+              "target": "la sécurité",
+              "native": "safety",
+              "emoji": "🔒"
+            },
+            {
+              "target": "la chance",
+              "native": "luck",
+              "emoji": "🍀"
+            },
+            {
+              "target": "la confiance",
+              "native": "trust",
+              "emoji": "🤝"
+            },
+            {
+              "target": "la maison",
+              "native": "the house",
+              "emoji": "🏠"
+            },
+            {
+              "target": "la raison",
+              "native": "the reason",
+              "emoji": "🧠"
+            },
+            {
+              "target": "le patron",
+              "native": "the boss",
+              "emoji": "👔"
+            },
+            {
+              "target": "le papier",
+              "native": "the paper",
+              "emoji": "📄"
+            },
+            {
+              "target": "la vie",
+              "native": "life",
+              "emoji": "🌱"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ua-l0",
+              "title": "Two genders",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la maison",
+                  "options": [
+                    {
+                      "text": "the house"
+                    },
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the gift"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la question",
+                  "options": [
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the message"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "le voyage",
+                  "options": [
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the moment"
+                    },
+                    {
+                      "text": "the house"
+                    },
+                    {
+                      "text": "the paper"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e3",
+                  "mode": "targetToNative",
+                  "prompt": "le bureau",
+                  "options": [
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the house"
+                    },
+                    {
+                      "text": "the boss"
+                    },
+                    {
+                      "text": "the gift"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l0-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "maison",
+                  "gloss": "the house",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l0-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "voyage",
+                  "gloss": "the trip",
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l0-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "the house",
+                  "options": [
+                    {
+                      "text": "la maison"
+                    },
+                    {
+                      "text": "le bureau"
+                    },
+                    {
+                      "text": "la question"
+                    },
+                    {
+                      "text": "le voyage"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l0-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "question",
+                  "gloss": "the question",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l0-e8",
+                  "sentence": "___ bureau est fermé.",
+                  "translation": "The office is closed.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-two-classes"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l0-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ua-l1",
+              "title": "Feminine endings",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la vérité",
+                  "options": [
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "the situation"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "la chance",
+                  "options": [
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "life"
+                    },
+                    {
+                      "text": "safety"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "la confiance",
+                  "options": [
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "the feeling"
+                    },
+                    {
+                      "text": "the truth"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e3",
+                  "mode": "targetToNative",
+                  "prompt": "la situation",
+                  "options": [
+                    {
+                      "text": "the situation"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "safety"
+                    },
+                    {
+                      "text": "the moment"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l1-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "vérité",
+                  "gloss": "the truth",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l1-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "chance",
+                  "gloss": "luck",
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l1-e6",
+                  "mode": "nativeToTarget",
+                  "prompt": "the truth",
+                  "options": [
+                    {
+                      "text": "la vérité"
+                    },
+                    {
+                      "text": "la vie"
+                    },
+                    {
+                      "text": "la chance"
+                    },
+                    {
+                      "text": "la raison"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l1-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "situation",
+                  "gloss": "the situation",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l1-e8",
+                  "sentence": "___ situation est difficile.",
+                  "translation": "The situation is difficult.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 1
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-feminine-endings"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l1-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ua-l2",
+              "title": "Masculine endings",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "le cadeau",
+                  "options": [
+                    {
+                      "text": "the gift"
+                    },
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the message"
+                    },
+                    {
+                      "text": "the moment"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "le moment",
+                  "options": [
+                    {
+                      "text": "the moment"
+                    },
+                    {
+                      "text": "the feeling"
+                    },
+                    {
+                      "text": "the trip"
+                    },
+                    {
+                      "text": "the paper"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "le sentiment",
+                  "options": [
+                    {
+                      "text": "the feeling"
+                    },
+                    {
+                      "text": "the moment"
+                    },
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "the truth"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "le message",
+                  "options": [
+                    {
+                      "text": "the message"
+                    },
+                    {
+                      "text": "the paper"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the gift"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l2-e4",
+                  "mode": "targetToNative",
+                  "prompt": "le papier",
+                  "options": [
+                    {
+                      "text": "the paper"
+                    },
+                    {
+                      "text": "the message"
+                    },
+                    {
+                      "text": "the office"
+                    },
+                    {
+                      "text": "the trip"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l2-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "cadeau",
+                  "gloss": "the gift",
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l2-e6",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "moment",
+                  "gloss": "the moment",
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l2-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "papier",
+                  "gloss": "the paper",
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l2-e8",
+                  "sentence": "___ cadeau est pour toi.",
+                  "translation": "The gift is for you.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 0
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-masculine-endings"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l2-e8"
+                }
+              ]
+            },
+            {
+              "id": "fr-en:ua-l3",
+              "title": "Tricky endings",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "la raison",
+                  "options": [
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "the question"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the boss"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "le patron",
+                  "options": [
+                    {
+                      "text": "the boss"
+                    },
+                    {
+                      "text": "the man"
+                    },
+                    {
+                      "text": "the reason"
+                    },
+                    {
+                      "text": "the office"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "la vie",
+                  "options": [
+                    {
+                      "text": "life"
+                    },
+                    {
+                      "text": "luck"
+                    },
+                    {
+                      "text": "the truth"
+                    },
+                    {
+                      "text": "the house"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "fr-en:ua-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "la sécurité",
+                  "options": [
+                    {
+                      "text": "safety"
+                    },
+                    {
+                      "text": "trust"
+                    },
+                    {
+                      "text": "the situation"
+                    },
+                    {
+                      "text": "luck"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e4",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "patron",
+                  "gloss": "the boss",
+                  "correct": 0
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e5",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "raison",
+                  "gloss": "the reason",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e6",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "vie",
+                  "gloss": "life",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e7",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "sécurité",
+                  "gloss": "safety",
+                  "correct": 1
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "fr-en:ua-l3-e8",
+                  "articles": [
+                    "le",
+                    "la"
+                  ],
+                  "noun": "maison",
+                  "gloss": "the house",
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "fr-en:ua-l3-e9",
+                  "sentence": "___ vie est belle.",
+                  "translation": "Life is beautiful.",
+                  "options": [
+                    "Le",
+                    "La"
+                  ],
+                  "correct": 1
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "fr:concept:gender-tricky-endings"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e0"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e1"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e2"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e3"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e4"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e5"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e6"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e7"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e8"
+                },
+                {
+                  "exercise": "fr-en:ua-l3-e9"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

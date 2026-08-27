@@ -66,17 +66,17 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
 
   test("list: course order, alphabetical, and pos filter", async () => {
     const course = await repo.list();
-    expect(course.length).toBe(54);
+    expect(course.length).toBe(71);
     expect(course[0].id).toBe("fr:w:homme");
     const alpha = await repo.list({ sort: "alpha" });
     // âne sorts under A with the accent-folded sort key
     expect(alpha.map((r) => r.id).indexOf("fr:w:ane")).toBeLessThan(
       alpha.map((r) => r.id).indexOf("fr:w:billet")
     );
-    // 54 total − 2 verbs − 2 adverbs (oui/non) − 5 interjections − 3 expressions = 42 nouns
+    // 71 total − 2 verbs − 2 adverbs (oui/non) − 5 interjections − 3 expressions = 59 nouns
     const nouns = await repo.list({ pos: "noun" });
     expect(nouns.every((r) => r.pos === "noun")).toBe(true);
-    expect(nouns.length).toBe(42);
+    expect(nouns.length).toBe(59);
     const expressions = await repo.list({ pos: "expression" });
     expect(expressions.map((r) => r.id).sort()).toEqual([
       "fr:w:au-revoir",
@@ -94,8 +94,12 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     // merci has no population rank (ONO category) yet sorts by its raw
     // frequency — rank is never the sort key.
     expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
-    // The three unmeasured expressions sink to the end in course order.
-    expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
+    // Unmeasured entries sink to the end in course order: the 3
+    // expressions, then the 17 Unit A lexemes awaiting the import round
+    // (PENDING_LEXIQUE_IMPORT — reverts to expressions-only when adopted).
+    expect(ids[ids.length - 20]).toBe("fr:w:au-revoir");
+    expect(ids.slice(-17)[0]).toBe("fr:w:question");
+    expect(ids[ids.length - 1]).toBe("fr:w:vie");
   });
 
   test("getExamples returns the authored example pairs", async () => {
@@ -148,9 +152,9 @@ describe("license artifacts in the compiled dataset (§101)", () => {
 });
 
 describe("runtime lexicon index (session-critical accessor)", () => {
-  test("covers all 54 lexemes with pronunciation, example and topic", () => {
+  test("covers all 71 lexemes with pronunciation, example and topic", () => {
     const all = allLexemeMeta();
-    expect(all.length).toBe(54);
+    expect(all.length).toBe(71);
     for (const meta of all) {
       expect(meta.pronunciation?.notation).toBe("ipa");
       expect(meta.example?.fr.length).toBeGreaterThan(0);

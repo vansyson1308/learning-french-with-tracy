@@ -85,6 +85,24 @@ export const FR_LEXEME_IDS: Readonly<Record<string, string>> = {
   "la valise": "fr:w:valise",
   "la gauche": "fr:w:gauche",
   "la droite": "fr:w:droite",
+  // Section 2, Unit A — Gender & Articles (Phase 5B; ids immutable once shipped)
+  "la question": "fr:w:question",
+  "la situation": "fr:w:situation",
+  "le voyage": "fr:w:voyage",
+  "le message": "fr:w:message",
+  "le bureau": "fr:w:bureau",
+  "le cadeau": "fr:w:cadeau",
+  "le moment": "fr:w:moment",
+  "le sentiment": "fr:w:sentiment",
+  "la vérité": "fr:w:verite",
+  "la sécurité": "fr:w:securite",
+  "la chance": "fr:w:chance",
+  "la confiance": "fr:w:confiance",
+  "la maison": "fr:w:maison",
+  "la raison": "fr:w:raison",
+  "le patron": "fr:w:patron",
+  "le papier": "fr:w:papier",
+  "la vie": "fr:w:vie",
 };
 
 /** Reverse map (id → canonical surface) for review-session building. */

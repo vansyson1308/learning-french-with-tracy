@@ -204,7 +204,15 @@ export type PartOfSpeech = (typeof POS_VALUES)[number];
 export const GENDER_VALUES = ["masculine", "feminine", "both", "unknown"] as const;
 export type LexemeGender = (typeof GENDER_VALUES)[number];
 
-export const TOPIC_VALUES = ["people", "greetings", "food", "animals", "travel"] as const;
+export const TOPIC_VALUES = [
+  "people",
+  "greetings",
+  "food",
+  "animals",
+  "travel",
+  "everyday",
+  "ideas",
+] as const;
 export type LexemeTopic = (typeof TOPIC_VALUES)[number];
 
 export const FREQUENCY_BAND_VALUES = ["very-common", "common", "less-common"] as const;

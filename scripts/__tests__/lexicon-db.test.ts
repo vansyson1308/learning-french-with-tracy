@@ -59,13 +59,13 @@ describe("committed lexicon database", () => {
     expect(v?.user_version).toBe(DB_SCHEMA_VERSION);
   });
 
-  test("all 54 lexemes are present in authored order with their ids", () => {
+  test("all 71 lexemes are present in authored order with their ids", () => {
     const db = open(committedPath);
     const rows = db
       .query<{ id: string; surface: string }, []>("SELECT id, surface FROM lexemes ORDER BY ord")
       .all();
     db.close();
-    expect(rows.length).toBe(54);
+    expect(rows.length).toBe(71);
     expect(rows.map((r) => r.id)).toEqual(lexicon.lexemes.map((l) => l.id));
     expect(rows.map((r) => r.surface)).toEqual(lexicon.lexemes.map((l) => l.surface));
   });
@@ -89,10 +89,11 @@ describe("committed lexicon database", () => {
       )
       .get();
     db.close();
-    expect(exampleCounts.length).toBe(54);
+    expect(exampleCounts.length).toBe(71);
     expect(exampleCounts.every((r) => r.n >= 1)).toBe(true);
-    // 54 authored refs + 51 adopted Lexique 4 rows (49 matched + 2 overrides).
-    expect(refCounts?.n).toBe(105);
+    // 71 authored refs + 51 adopted Lexique 4 rows (the 17 Unit A lexemes
+    // adopt theirs with the next derive+import round).
+    expect(refCounts?.n).toBe(122);
     expect(lexiqueRefs?.n).toBe(51);
     expect(sources).toEqual([
       { id: "lexique-4", license: "CC-BY-SA-4.0" },

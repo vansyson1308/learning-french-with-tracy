@@ -96,8 +96,17 @@ describe("evidencePlanFor: gradeTargets are the authored authority (§23-24)", (
     expect(plan).toEqual({ itemId: "el agua", srsRole: "assessment" });
   });
 
-  test("selects without audioTarget and sentence-bearing types emit nothing", () => {
-    expect(evidencePlanFor(def(), selectStep({ audioTarget: undefined }))).toBeNull();
+  test("audio-less selects assess through gradeTargets (Section 2); with neither signal, nothing", () => {
+    // Phase 5B revision of the Phase-1 interim rule: compiler-emitted
+    // gradeTargets are the deliberate eligibility metadata, so a Section-2
+    // select with no bundled audio still assesses its single curated item.
+    expect(evidencePlanFor(def(), selectStep({ audioTarget: undefined }))).toEqual({
+      itemId: "fr:w:pomme",
+      srsRole: "assessment",
+    });
+    expect(
+      evidencePlanFor(def(), selectStep({ audioTarget: undefined, gradeTargets: undefined }))
+    ).toBeNull();
     const wordBank: ExerciseStep = {
       type: "exercise",
       stepId: "wb",

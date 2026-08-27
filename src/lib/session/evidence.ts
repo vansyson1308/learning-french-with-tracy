@@ -52,19 +52,24 @@ export function evidencePlanFor(
     return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
   }
 
-  if (exercise.type !== "select" || !exercise.audioTarget) return null;
+  if (exercise.type !== "select") return null;
 
   if (definition.courseId === FR_COURSE_ID) {
+    // The compiler-emitted gradeTargets ARE the deliberate eligibility
+    // metadata (Section 2 lessons ship without bundled audio, so the
+    // Phase-1 audioTarget proxy cannot be the gate any more).
     const targets = exercise.gradeTargets ?? [];
     if (targets.length === 1 && isCuratedFrItemId(targets[0])) {
       return { itemId: targets[0], srsRole: plannedRole(definition) };
     }
+    if (!exercise.audioTarget) return null;
     // No/ambiguous/unknown gradeTargets: log under the best-known id so the
     // interaction is preserved, but never schedule from a guess.
     return { itemId: frItemIdFor(exercise.audioTarget), srsRole: "practice" };
   }
 
   // Legacy courses: raw surface, unchanged semantics.
+  if (!exercise.audioTarget) return null;
   return {
     itemId: exercise.audioTarget,
     srsRole: plannedRole(definition),

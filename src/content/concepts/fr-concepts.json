@@ -2,7 +2,10 @@
   "version": 1,
   "language": "fr",
   "order": [
-    "fr:concept:gender-two-classes"
+    "fr:concept:gender-two-classes",
+    "fr:concept:gender-feminine-endings",
+    "fr:concept:gender-masculine-endings",
+    "fr:concept:gender-tricky-endings"
   ],
   "byId": {
     "fr:concept:gender-two-classes": {
@@ -38,6 +41,131 @@
         {
           "source": "lexique-4",
           "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    "fr:concept:gender-feminine-endings": {
+      "id": "fr:concept:gender-feminine-endings",
+      "title": "Endings that say « feminine »",
+      "shortRule": "Nouns ending in -tion, -ance, -ence, -ité or -ie are almost always feminine.",
+      "explanation": "You do not have to memorize every noun's gender one by one — the ending often decides it. In an analysis of 36,940 French nouns, words ending in -tion are feminine 99.5% of the time, -ance 98.9%, -ence 98.3%, -ité 97.8%, and -ie 96.3%. When you meet a new noun with one of these endings, say « la » with confidence.",
+      "examples": [
+        {
+          "fr": "la question",
+          "en": "the question",
+          "note": "-tion → feminine (99.5% of 1,895 nouns)"
+        },
+        {
+          "fr": "la chance",
+          "en": "luck",
+          "note": "-ance → feminine"
+        },
+        {
+          "fr": "la vérité",
+          "en": "the truth",
+          "note": "-ité → feminine"
+        },
+        {
+          "fr": "la vie",
+          "en": "life",
+          "note": "-ie → feminine"
+        }
+      ],
+      "exceptions": [
+        "\"Almost always\" is not \"always\": a rare exception exists for each ending — but with reliability this high, guessing feminine is the right habit."
+      ],
+      "memoryHint": "-tion, -ance/-ence, -ité, -ie → la.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:gender-masculine-endings": {
+      "id": "fr:concept:gender-masculine-endings",
+      "title": "Endings that say « masculine »",
+      "shortRule": "Nouns ending in -ment, -age, -eau or -ier are usually masculine.",
+      "explanation": "The masculine side has strong ending patterns too, from the same 36,940-noun analysis: -ment is masculine 99.8% of the time, -age 98.5%, -eau 96.7%, and -ier 97.1%. Meet a new noun with one of these endings and « le » is very likely right.",
+      "examples": [
+        {
+          "fr": "le moment",
+          "en": "the moment",
+          "note": "-ment → masculine (99.8% of 1,094 nouns)"
+        },
+        {
+          "fr": "le voyage",
+          "en": "the trip",
+          "note": "-age → masculine"
+        },
+        {
+          "fr": "le cadeau",
+          "en": "the gift",
+          "note": "-eau → masculine"
+        },
+        {
+          "fr": "le papier",
+          "en": "the paper",
+          "note": "-ier → masculine"
+        }
+      ],
+      "exceptions": [
+        "l'eau (water) is feminine — the most famous exception to -eau.",
+        "l'image (the picture) and la page are feminine -age words: -age is \"usually\", not \"always\"."
+      ],
+      "memoryHint": "-ment, -age, -eau, -ier → le (but l'eau is feminine!).",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:gender-tricky-endings": {
+      "id": "fr:concept:gender-tricky-endings",
+      "title": "Two endings that need care",
+      "shortRule": "-on is usually masculine — but -ion and -son words inside it are feminine. -eur is usually masculine — with famous feminine exceptions.",
+      "explanation": "Two common endings hide sub-patterns. Nouns in -on are masculine 96.7% of the time ONCE you set aside the -ion family (feminine: la question) and the -son family (feminine: la maison, la raison). And -eur nouns are masculine 92.5% of the time, but several very frequent ones are feminine. Learn the sub-families, not just the last two letters.",
+      "examples": [
+        {
+          "fr": "le patron",
+          "en": "the boss",
+          "note": "-on (not -ion/-son) → masculine"
+        },
+        {
+          "fr": "la maison",
+          "en": "the house",
+          "note": "-son → feminine sub-family"
+        },
+        {
+          "fr": "la raison",
+          "en": "the reason",
+          "note": "-son → feminine sub-family"
+        },
+        {
+          "fr": "le docteur",
+          "en": "the doctor",
+          "note": "-eur → usually masculine"
+        }
+      ],
+      "exceptions": [
+        "Frequent feminine -eur nouns: la peur (fear), l'erreur (the mistake), la couleur (the color), la fleur (the flower).",
+        "The -son sub-family: la maison, la raison, la saison, la chanson — feminine."
+      ],
+      "memoryHint": "See -ion or -son? Think la. Other -on? Think le.",
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
         }
       ]
     }

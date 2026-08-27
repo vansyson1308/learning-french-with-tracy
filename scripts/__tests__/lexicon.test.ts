@@ -27,6 +27,7 @@ import {
   validateMatchOverridesData,
   type SourceMatchRow,
 } from "../lib/lexicon";
+import { PENDING_LEXIQUE_IMPORT } from "../../src/lib/__tests__/pending-lexique-import";
 import { readJson } from "../lib/pipeline";
 
 describe("committed lexicon data", () => {
@@ -35,19 +36,19 @@ describe("committed lexicon data", () => {
     expect(errors).toEqual([]);
   });
 
-  test("triple lock holds: rich lexicon ≡ frozen map ≡ runtime map (54 ids)", () => {
+  test("triple lock holds: rich lexicon ≡ frozen map ≡ runtime map (71 ids)", () => {
     const rich = derivedSurfaceMap(loadRichLexicon());
     const frozen = readJson("content/fr/lexemes.json") as Record<string, string>;
     const canon = (m: Record<string, string>) => JSON.stringify(Object.entries(m).sort());
     expect(canon(rich)).toBe(canon(frozen));
     expect(canon(frozen)).toBe(canon(FR_LEXEME_IDS));
-    expect(Object.keys(rich).length).toBe(54);
+    expect(Object.keys(rich).length).toBe(71); // 54 originals (sacrosanct) + 17 Unit A
   });
 
-  test("post-activation pronunciation: genuine IPA everywhere; lexique-4 for matched words, authored for expressions", () => {
+  test("post-activation pronunciation: genuine IPA everywhere; lexique-4 for adopted words, authored otherwise", () => {
     for (const lex of loadRichLexicon().lexemes) {
       expect(lex.pronunciation?.notation).toBe("ipa");
-      if (lex.partOfSpeech === "expression") {
+      if (lex.partOfSpeech === "expression" || PENDING_LEXIQUE_IMPORT.has(lex.id)) {
         expect(lex.pronunciation?.source).toBe("original-french-lexicon");
       } else {
         // Adopted verbatim from 3_Phono_IPA (REVIEW.md pass 3 disposition);
@@ -58,10 +59,11 @@ describe("committed lexicon data", () => {
     }
   });
 
-  test("post-activation frequency: every word lexeme carries real lexique-4 measurements; expressions none", () => {
+  test("post-activation frequency: adopted word lexemes carry real lexique-4 measurements; expressions and pending none", () => {
     const unrankedOno = new Set(["fr:w:merci", "fr:w:salut", "fr:w:pardon"]);
     for (const lex of loadRichLexicon().lexemes) {
-      if (lex.partOfSpeech === "expression") {
+      if (lex.partOfSpeech === "expression" || PENDING_LEXIQUE_IMPORT.has(lex.id)) {
+        // Pending lexemes must NOT fake measurements before adoption.
         expect(lex.frequency).toBeUndefined();
         expect(lex.sourceRefs.map((r) => r.source)).not.toContain("lexique-4");
         continue;

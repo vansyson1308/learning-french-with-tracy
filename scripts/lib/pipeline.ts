@@ -283,8 +283,21 @@ export type CoverageRow = {
  * stays unmarked until deliberate eligibility metadata exists.
  */
 function frGradeTargets(e: AnyExercise, map: Record<string, string>): string[] | undefined {
-  if (e.type === "select" && e.audioTarget !== undefined) {
-    const id = map[e.audioTarget];
+  if (e.type === "select") {
+    // The exercise's unambiguous French surface: bundled-audio lessons key
+    // it by audioTarget (Section 1); audio-less lessons key it by what the
+    // select actually shows — the French prompt (target→native) or the
+    // correct French option (native→target). Listen mode without audio can
+    // never be unambiguous.
+    const surface =
+      e.audioTarget ??
+      (e.mode === "targetToNative"
+        ? e.prompt
+        : e.mode === "nativeToTarget"
+          ? e.options[e.correct]?.text
+          : undefined);
+    if (surface === undefined) return undefined;
+    const id = map[surface];
     return id === undefined ? undefined : [id];
   }
   if (e.type === "match") {
