@@ -1,0 +1,41 @@
+{
+  "source": {
+    "id": "lexique-4",
+    "name": "Lexique 4 (French lexical database)",
+    "targetVersion": "4.00",
+    "authors": [
+      "Boris New",
+      "Christophe Pallier",
+      "Gauvain Schalchli",
+      "Jessica Bourgin",
+      "Manuel Gimenes"
+    ],
+    "citation": "New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. https://doi.org/10.3758/s13428-026-02967-5",
+    "license": "CC-BY-SA-4.0",
+    "officialLocations": [
+      "http://www.lexique.org",
+      "https://osf.io/arjcz/"
+    ]
+  },
+  "retrieval": {
+    "status": "not-retrieved",
+    "artifactFilename": null,
+    "url": null,
+    "retrievedAt": null,
+    "sha256": null
+  },
+  "expectedColumns": {
+    "toConfirm": true,
+    "names": [
+      "ortho",
+      "phon",
+      "lemme",
+      "cgram",
+      "genre",
+      "nombre",
+      "freqlemfilms",
+      "freqfilms"
+    ]
+  },
+  "notes": "Retrieval blocked in the Phase 4 build environment (all distribution hosts egress-blocked; see ACQUISITION.md for the full attempt record). The column names above are declared from the Lexique 3.8x documentation lineage and MUST be confirmed against the real Lexique 4 artifact at retrieval time; the extractor hard-fails on any mismatch. Lexique's 'phon' field is a phonemic code in Lexique's own alphabet, not verified as IPA — extracted pronunciations are labeled notation 'phonology' unless a documented conversion is added and verified. No data from this source is present in the repository while retrieval.status is 'not-retrieved'."
+}

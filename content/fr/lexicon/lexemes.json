@@ -1,0 +1,839 @@
+{
+  "version": 1,
+  "language": "fr",
+  "lexemes": [
+    {
+      "id": "fr:w:homme",
+      "surface": "l'homme",
+      "lemma": "homme",
+      "lookupForm": "homme",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the man",
+      "pronunciation": { "value": "ɔm", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "people",
+      "examples": [
+        { "fr": "L'homme boit un café.", "en": "The man is drinking a coffee.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:femme"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:femme",
+      "surface": "la femme",
+      "lemma": "femme",
+      "lookupForm": "femme",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the woman",
+      "pronunciation": { "value": "fam", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "people",
+      "examples": [
+        { "fr": "La femme mange une pomme.", "en": "The woman is eating an apple.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:homme"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:garcon",
+      "surface": "le garçon",
+      "lemma": "garçon",
+      "lookupForm": "garçon",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the boy",
+      "pronunciation": { "value": "ɡaʁsɔ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "people",
+      "examples": [
+        { "fr": "Le garçon a un chien.", "en": "The boy has a dog.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:fille"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:fille",
+      "surface": "la fille",
+      "lemma": "fille",
+      "lookupForm": "fille",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the girl",
+      "pronunciation": { "value": "fij", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "people",
+      "examples": [
+        { "fr": "La fille boit du lait.", "en": "The girl is drinking milk.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:garcon"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:pomme",
+      "surface": "la pomme",
+      "lemma": "pomme",
+      "lookupForm": "pomme",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the apple",
+      "pronunciation": { "value": "pɔm", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "La pomme est rouge.", "en": "The apple is red.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:pain",
+      "surface": "le pain",
+      "lemma": "pain",
+      "lookupForm": "pain",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the bread",
+      "pronunciation": { "value": "pɛ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Le pain est bon.", "en": "The bread is good.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:eau",
+      "surface": "l'eau",
+      "lemma": "eau",
+      "lookupForm": "eau",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the water",
+      "pronunciation": { "value": "o", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Je bois de l'eau.", "en": "I am drinking water.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:jus"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:lait",
+      "surface": "le lait",
+      "lemma": "lait",
+      "lookupForm": "lait",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the milk",
+      "pronunciation": { "value": "lɛ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Le lait est froid.", "en": "The milk is cold.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:manger",
+      "surface": "manger",
+      "lemma": "manger",
+      "lookupForm": "manger",
+      "partOfSpeech": "verb",
+      "nativeGloss": "to eat",
+      "pronunciation": { "value": "mɑ̃ʒe", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Je mange du pain le matin.", "en": "I eat bread in the morning.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:boire"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:boire",
+      "surface": "boire",
+      "lemma": "boire",
+      "lookupForm": "boire",
+      "partOfSpeech": "verb",
+      "nativeGloss": "to drink",
+      "pronunciation": { "value": "bwaʁ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Il boit de l'eau.", "en": "He is drinking water.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:manger"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:oui",
+      "surface": "oui",
+      "lemma": "oui",
+      "lookupForm": "oui",
+      "partOfSpeech": "adverb",
+      "nativeGloss": "yes",
+      "pronunciation": { "value": "wi", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Oui, merci beaucoup.", "en": "Yes, thank you very much.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:non"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:non",
+      "surface": "non",
+      "lemma": "non",
+      "lookupForm": "non",
+      "partOfSpeech": "adverb",
+      "nativeGloss": "no",
+      "pronunciation": { "value": "nɔ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Non, merci.", "en": "No, thank you.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:oui"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:bonjour",
+      "surface": "bonjour",
+      "lemma": "bonjour",
+      "lookupForm": "bonjour",
+      "partOfSpeech": "interjection",
+      "nativeGloss": "hello / good day",
+      "pronunciation": { "value": "bɔ̃ʒuʁ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Bonjour, madame.", "en": "Hello, madam.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:bonsoir"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:au-revoir",
+      "surface": "au revoir",
+      "lemma": "au revoir",
+      "lookupForm": "au revoir",
+      "partOfSpeech": "expression",
+      "nativeGloss": "goodbye",
+      "pronunciation": { "value": "o ʁəvwaʁ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Au revoir, à demain.", "en": "Goodbye, see you tomorrow.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:salut"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:merci",
+      "surface": "merci",
+      "lemma": "merci",
+      "lookupForm": "merci",
+      "partOfSpeech": "interjection",
+      "nativeGloss": "thank you",
+      "pronunciation": { "value": "mɛʁsi", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Merci pour le café.", "en": "Thank you for the coffee.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:s-il-vous-plait",
+      "surface": "s'il vous plaît",
+      "lemma": "s'il vous plaît",
+      "lookupForm": "s'il vous plaît",
+      "partOfSpeech": "expression",
+      "nativeGloss": "please",
+      "pronunciation": { "value": "sil vu plɛ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Un thé, s'il vous plaît.", "en": "A tea, please.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:bonsoir",
+      "surface": "bonsoir",
+      "lemma": "bonsoir",
+      "lookupForm": "bonsoir",
+      "partOfSpeech": "interjection",
+      "nativeGloss": "good evening",
+      "pronunciation": { "value": "bɔ̃swaʁ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Bonsoir, monsieur.", "en": "Good evening, sir.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:bonjour", "fr:w:bonne-nuit"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:bonne-nuit",
+      "surface": "bonne nuit",
+      "lemma": "bonne nuit",
+      "lookupForm": "bonne nuit",
+      "partOfSpeech": "expression",
+      "nativeGloss": "good night",
+      "pronunciation": { "value": "bɔn nɥi", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Bonne nuit, Paul.", "en": "Good night, Paul.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:bonsoir"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:salut",
+      "surface": "salut",
+      "lemma": "salut",
+      "lookupForm": "salut",
+      "partOfSpeech": "interjection",
+      "nativeGloss": "hi / bye (informal)",
+      "pronunciation": { "value": "saly", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Salut, Marie.", "en": "Hi, Marie.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:au-revoir"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:pardon",
+      "surface": "pardon",
+      "lemma": "pardon",
+      "lookupForm": "pardon",
+      "partOfSpeech": "interjection",
+      "nativeGloss": "sorry / excuse me",
+      "pronunciation": { "value": "paʁdɔ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Pardon, monsieur.", "en": "Excuse me, sir.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:monsieur",
+      "surface": "monsieur",
+      "lemma": "monsieur",
+      "lookupForm": "monsieur",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "sir",
+      "pronunciation": { "value": "məsjø", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Merci, monsieur.", "en": "Thank you, sir.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:madame"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:madame",
+      "surface": "madame",
+      "lemma": "madame",
+      "lookupForm": "madame",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "madam",
+      "pronunciation": { "value": "madam", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "greetings",
+      "examples": [
+        { "fr": "Au revoir, madame.", "en": "Goodbye, madam.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:monsieur"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:cafe",
+      "surface": "le café",
+      "lemma": "café",
+      "lookupForm": "café",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the coffee",
+      "pronunciation": { "value": "kafe", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Le café est chaud.", "en": "The coffee is hot.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:the"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:the",
+      "surface": "le thé",
+      "lemma": "thé",
+      "lookupForm": "thé",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the tea",
+      "pronunciation": { "value": "te", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Le thé est vert.", "en": "The tea is green.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:cafe"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:riz",
+      "surface": "le riz",
+      "lemma": "riz",
+      "lookupForm": "riz",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the rice",
+      "pronunciation": { "value": "ʁi", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Je mange du riz.", "en": "I am eating rice.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:oeuf",
+      "surface": "l'œuf",
+      "lemma": "œuf",
+      "lookupForm": "œuf",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the egg",
+      "pronunciation": { "value": "œf", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Je mange un œuf.", "en": "I am eating an egg.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:fromage",
+      "surface": "le fromage",
+      "lemma": "fromage",
+      "lookupForm": "fromage",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the cheese",
+      "pronunciation": { "value": "fʁɔmaʒ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "J'aime le fromage.", "en": "I like cheese.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:fruit",
+      "surface": "le fruit",
+      "lemma": "fruit",
+      "lookupForm": "fruit",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the fruit",
+      "pronunciation": { "value": "fʁɥi", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "La pomme est un fruit.", "en": "The apple is a fruit.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:jus",
+      "surface": "le jus",
+      "lemma": "jus",
+      "lookupForm": "jus",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the juice",
+      "pronunciation": { "value": "ʒy", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "La fille boit du jus.", "en": "The girl is drinking juice.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:eau"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:poulet",
+      "surface": "le poulet",
+      "lemma": "poulet",
+      "lookupForm": "poulet",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the chicken",
+      "pronunciation": { "value": "pulɛ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "food",
+      "examples": [
+        { "fr": "Nous mangeons du poulet.", "en": "We are eating chicken.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:poule"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:chien",
+      "surface": "le chien",
+      "lemma": "chien",
+      "lookupForm": "chien",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the dog",
+      "pronunciation": { "value": "ʃjɛ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Le chien est petit.", "en": "The dog is small.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:chat"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:chat",
+      "surface": "le chat",
+      "lemma": "chat",
+      "lookupForm": "chat",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the cat",
+      "pronunciation": { "value": "ʃa", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Le chat boit du lait.", "en": "The cat is drinking milk.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:chien"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:cheval",
+      "surface": "le cheval",
+      "lemma": "cheval",
+      "lookupForm": "cheval",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the horse",
+      "pronunciation": { "value": "ʃəval", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Le cheval est grand.", "en": "The horse is big.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:ane"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:oiseau",
+      "surface": "l'oiseau",
+      "lemma": "oiseau",
+      "lookupForm": "oiseau",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the bird",
+      "pronunciation": { "value": "wazo", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Un oiseau chante.", "en": "A bird is singing.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:poisson",
+      "surface": "le poisson",
+      "lemma": "poisson",
+      "lookupForm": "poisson",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the fish",
+      "pronunciation": { "value": "pwasɔ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Le poisson est dans l'eau.", "en": "The fish is in the water.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:vache",
+      "surface": "la vache",
+      "lemma": "vache",
+      "lookupForm": "vache",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the cow",
+      "pronunciation": { "value": "vaʃ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "La vache est grande.", "en": "The cow is big.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:mouton"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:lapin",
+      "surface": "le lapin",
+      "lemma": "lapin",
+      "lookupForm": "lapin",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the rabbit",
+      "pronunciation": { "value": "lapɛ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Le lapin est blanc.", "en": "The rabbit is white.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:souris"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:souris",
+      "surface": "la souris",
+      "lemma": "souris",
+      "lookupForm": "souris",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the mouse",
+      "pronunciation": { "value": "suʁi", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "La souris est petite.", "en": "The mouse is small.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:lapin"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:mouton",
+      "surface": "le mouton",
+      "lemma": "mouton",
+      "lookupForm": "mouton",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the sheep",
+      "pronunciation": { "value": "mutɔ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Le mouton mange.", "en": "The sheep is eating.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:vache"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:ane",
+      "surface": "l'âne",
+      "lemma": "âne",
+      "lookupForm": "âne",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the donkey",
+      "pronunciation": { "value": "ɑn", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "L'âne est gris.", "en": "The donkey is gray.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:cheval"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:poule",
+      "surface": "la poule",
+      "lemma": "poule",
+      "lookupForm": "poule",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the hen",
+      "pronunciation": { "value": "pul", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "La poule a un œuf.", "en": "The hen has an egg.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:poulet"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:cochon",
+      "surface": "le cochon",
+      "lemma": "cochon",
+      "lookupForm": "cochon",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the pig",
+      "pronunciation": { "value": "kɔʃɔ̃", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "animals",
+      "examples": [
+        { "fr": "Le cochon est rose.", "en": "The pig is pink.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:ville",
+      "surface": "la ville",
+      "lemma": "ville",
+      "lookupForm": "ville",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the city",
+      "pronunciation": { "value": "vil", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "La ville est belle.", "en": "The city is beautiful.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:rue",
+      "surface": "la rue",
+      "lemma": "rue",
+      "lookupForm": "rue",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the street",
+      "pronunciation": { "value": "ʁy", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "La rue est longue.", "en": "The street is long.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:gare",
+      "surface": "la gare",
+      "lemma": "gare",
+      "lookupForm": "gare",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the train station",
+      "pronunciation": { "value": "ɡaʁ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "Où est la gare ?", "en": "Where is the train station?", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:aeroport"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:aeroport",
+      "surface": "l'aéroport",
+      "lemma": "aéroport",
+      "lookupForm": "aéroport",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the airport",
+      "pronunciation": { "value": "aeʁɔpɔʁ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "Le taxi va à l'aéroport.", "en": "The taxi is going to the airport.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:gare"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:hotel",
+      "surface": "l'hôtel",
+      "lemma": "hôtel",
+      "lookupForm": "hôtel",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the hotel",
+      "pronunciation": { "value": "otɛl", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "Je vais à l'hôtel.", "en": "I am going to the hotel.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:musee",
+      "surface": "le musée",
+      "lemma": "musée",
+      "lookupForm": "musée",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the museum",
+      "pronunciation": { "value": "myze", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "Le musée est fermé.", "en": "The museum is closed.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:billet",
+      "surface": "le billet",
+      "lemma": "billet",
+      "lookupForm": "billet",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the ticket",
+      "pronunciation": { "value": "bijɛ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "J'ai un billet de train.", "en": "I have a train ticket.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:carte"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:carte",
+      "surface": "la carte",
+      "lemma": "carte",
+      "lookupForm": "carte",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the map",
+      "pronunciation": { "value": "kaʁt", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "Je regarde la carte.", "en": "I am looking at the map.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:billet"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:taxi",
+      "surface": "le taxi",
+      "lemma": "taxi",
+      "lookupForm": "taxi",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "nativeGloss": "the taxi",
+      "pronunciation": { "value": "taksi", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "Le taxi est jaune.", "en": "The taxi is yellow.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:valise",
+      "surface": "la valise",
+      "lemma": "valise",
+      "lookupForm": "valise",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the suitcase",
+      "pronunciation": { "value": "valiz", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "La valise est lourde.", "en": "The suitcase is heavy.", "source": "original-french-lexicon" }
+      ],
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:gauche",
+      "surface": "la gauche",
+      "lemma": "gauche",
+      "lookupForm": "gauche",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the left",
+      "pronunciation": { "value": "ɡoʃ", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "La gare est à gauche.", "en": "The train station is on the left.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:droite"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    },
+    {
+      "id": "fr:w:droite",
+      "surface": "la droite",
+      "lemma": "droite",
+      "lookupForm": "droite",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "nativeGloss": "the right",
+      "pronunciation": { "value": "dʁwat", "notation": "ipa", "source": "original-french-lexicon" },
+      "topic": "travel",
+      "examples": [
+        { "fr": "L'hôtel est à droite.", "en": "The hotel is on the right.", "source": "original-french-lexicon" }
+      ],
+      "relations": { "confusables": ["fr:w:gauche"] },
+      "sourceRefs": [{ "source": "original-french-lexicon" }]
+    }
+  ]
+}
