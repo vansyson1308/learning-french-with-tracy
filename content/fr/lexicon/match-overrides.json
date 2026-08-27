@@ -10,6 +10,16 @@
       "id": "fr:w:bonsoir",
       "matchKey": "bonsoir|NOM|m|i",
       "justification": "Same disposition as bonjour: taught as an interjection greeting, classed NOM m (nombre i) by Lexique 4 with no interjection reading available. The NOM row's measurements (freqLemme 108.437/M, prevalence 95, IPA bɔ̃swaʁ identical to the authored value) describe the same spoken greeting, so they may be adopted while the authored partOfSpeech stays interjection. Documented in REVIEW.md (P5A.2 disposition 1)."
+    },
+    {
+      "id": "fr:w:etre",
+      "matchKey": "être|VER||p",
+      "justification": "Round-5 evidence leaves être ambiguous between two same-lemma IsLem rows: être|VER (main verb — je suis content, c'est) and être|AUX (its auxiliary occurrences inside compound tenses of movement/change verbs). The curriculum lexeme documents the main verb 'to be'; the auxiliary role is a grammatical function taught by the passé-composé concept, not a meaning of this vocabulary entry. The VER row's measurements (freqLemme and 3_Phono_IPA ɛtʁ, identical to the authored IPA) therefore describe the taught word. One real row is adopted; the two categories are never summed, per the no-invented-measurements rule. (A NOM row 'un être' also exists but is POS-filtered before ambiguity.)"
+    },
+    {
+      "id": "fr:w:avoir",
+      "matchKey": "avoir|VER||",
+      "justification": "Same VER/AUX split as être: round-5 evidence carries avoir|VER (possession — nous avons deux chats) and avoir|AUX (auxiliary of the passé composé) as separate IsLem rows, and the matcher correctly refuses to choose between them. The curriculum lexeme teaches possession 'to have'; the auxiliary role belongs to the passé-composé concept rather than this vocabulary entry, so the VER row's frequency and IPA (avwaʁ, identical to the authored value) are the honest measurements to adopt. One real row adopted, categories never summed."
     }
   ]
 }

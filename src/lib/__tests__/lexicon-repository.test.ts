@@ -89,28 +89,23 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     expect(await repo.supportsFrequencySort()).toBe(true);
     const byFreq = await repo.list({ sort: "frequency" });
     const ids = byFreq.map((r) => r.id);
-    // Real Lexique 4 measurements: non (4070.88/M) > oui > homme > merci.
-    expect(ids.slice(0, 4)).toEqual(["fr:w:non", "fr:w:oui", "fr:w:homme", "fr:w:merci"]);
-    // merci has no population rank (ONO category) yet sorts by its raw
-    // frequency — rank is never the sort key.
-    expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
-    // Unmeasured entries sink to the end in course order: the three
-    // expressions, then the 7 Unit B verbs still awaiting extract round 5
-    // (PENDING_LEXIQUE_IMPORT). vie (1015.4/M) still slots right after
-    // merci (1030.4/M) among the measured words.
-    expect(ids.slice(-10)).toEqual([
-      "fr:w:au-revoir",
-      "fr:w:s-il-vous-plait",
-      "fr:w:bonne-nuit",
+    // Real Lexique 4 measurements: the Unit B anchor verbs dominate —
+    // être (35040.2/M, population rank 1) > avoir (13032.0, rank 2) >
+    // aller (9795.9) > faire (9061.7) > non (4070.9) > oui (3112.5).
+    expect(ids.slice(0, 6)).toEqual([
       "fr:w:etre",
       "fr:w:avoir",
       "fr:w:aller",
       "fr:w:faire",
-      "fr:w:parler",
-      "fr:w:aimer",
-      "fr:w:habiter",
+      "fr:w:non",
+      "fr:w:oui",
     ]);
-    expect(ids.slice(0, 5)).toEqual(["fr:w:non", "fr:w:oui", "fr:w:homme", "fr:w:merci", "fr:w:vie"]);
+    // merci has no population rank (ONO category) yet sorts by its raw
+    // frequency — rank is never the sort key.
+    expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
+    // The three unmeasured expressions sink to the end in course order;
+    // every word lexeme (Units A and B included) is measured.
+    expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
   });
 
   test("getExamples returns the authored example pairs", async () => {
