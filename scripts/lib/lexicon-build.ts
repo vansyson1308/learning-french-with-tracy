@@ -27,7 +27,7 @@ import { Database } from "bun:sqlite";
 import { createHash } from "crypto";
 
 import type { RichLexicon, SourceManifest, SourceRegistry } from "../../content/schema";
-import { foldLigatures } from "../../src/lib/learning/lexicon-search";
+import { foldForSearch, foldLigatures } from "../../src/lib/learning/lexicon-search";
 import { canonicalJson } from "./pipeline";
 import { lexiconSourceAudit, type SourceMatchRow } from "./lexicon";
 
@@ -39,9 +39,10 @@ export const DB_SCHEMA_VERSION = 1;
  * source or schema change (e.g. how FTS text is folded). It feeds the
  * content hash so such a change still ships as a new asset filename —
  * a previously copied database must never be silently kept stale.
- * Revision history: 1 = initial emitter; 2 = ligature-folded FTS text.
+ * Revision history: 1 = initial emitter; 2 = ligature-folded FTS text;
+ * 3 = deterministic sort_key column (accent-folded alphabetical order).
  */
-export const DB_BUILD_REVISION = 2;
+export const DB_BUILD_REVISION = 3;
 
 export function lexiconContentHash(
   lexicon: RichLexicon,
@@ -173,6 +174,7 @@ CREATE TABLE lexemes (
   ord INTEGER NOT NULL UNIQUE,
   surface TEXT NOT NULL UNIQUE,
   lookup_form TEXT NOT NULL,
+  sort_key TEXT NOT NULL,
   lemma TEXT NOT NULL,
   pos TEXT NOT NULL,
   gender TEXT,
@@ -252,9 +254,9 @@ export function buildSqliteDb(
     }
 
     const insLex = db.prepare(
-      `INSERT INTO lexemes (id, ord, surface, lookup_form, lemma, pos, gender, gloss, topic,
+      `INSERT INTO lexemes (id, ord, surface, lookup_form, sort_key, lemma, pos, gender, gloss, topic,
         ipa, ipa_notation, freq_band, freq_rank, freq_per_million)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     );
     const insExample = db.prepare(
       "INSERT INTO examples (lexeme_id, ordinal, fr, en, source_id) VALUES (?, ?, ?, ?, ?)"
@@ -275,6 +277,7 @@ export function buildSqliteDb(
         ord,
         lex.surface,
         lex.lookupForm,
+        foldForSearch(lex.lookupForm),
         lex.lemma,
         lex.partOfSpeech,
         lex.gender ?? null,

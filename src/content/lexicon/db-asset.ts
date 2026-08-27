@@ -5,6 +5,6 @@
  * database is never overwritten in place. Import this module only from
  * native-only code paths (the web bundle must not pull the asset).
  */
-export const FR_LEXICON_DB_NAME = "fr-lexicon-v1-a1ccba2a569f51c0.db";
-export const FR_LEXICON_CONTENT_HASH = "a1ccba2a569f51c0";
-export const FR_LEXICON_DB_ASSET = require("../../../assets/lexicon/fr-lexicon-v1-a1ccba2a569f51c0.db");
+export const FR_LEXICON_DB_NAME = "fr-lexicon-v1-dd1082099bc276e4.db";
+export const FR_LEXICON_CONTENT_HASH = "dd1082099bc276e4";
+export const FR_LEXICON_DB_ASSET = require("../../../assets/lexicon/fr-lexicon-v1-dd1082099bc276e4.db");
