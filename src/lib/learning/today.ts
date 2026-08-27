@@ -15,7 +15,8 @@
  * rewritten, and the plan reports the remaining backlog honestly.
  */
 
-import { seededRng } from "../review-builder";
+import { dayString } from "../dates";
+import { hashSeed, seededRng } from "../review-builder";
 import type { ExerciseStep, SessionStep, TeachStep } from "../session/types";
 import type { MatchExercise, Pack, SelectExercise, Word } from "../types";
 
@@ -149,6 +150,37 @@ function buildSelect(args: {
     options,
     correct: options.findIndex((o) => o.text === answerText),
   };
+}
+
+/**
+ * Route-facing wrapper: derives the deterministic seed from the state
+ * snapshot + local day + preset (§46 — same state, same day, same preset →
+ * the same plan), with lint-friendly time defaults. Tests use
+ * composeTodaySession directly with explicit values.
+ */
+export function composeTodayFromSnapshot(args: {
+  pack: Pack;
+  completedLessons: Record<string, true>;
+  cards: Record<string, FsrsCardState> | undefined;
+  preset: TodayPreset;
+  day?: string;
+  now?: number;
+}): TodayPlan {
+  const now = args.now ?? Date.now();
+  const day = args.day ?? dayString(new Date(now));
+  const dueKeys = dueFrenchReviewQueue(args.cards, now)
+    .map((d) => `${d.key}@${d.dueAt}`)
+    .join(",");
+  const frontier = pathFrontierLesson(args.pack, args.completedLessons);
+  const seed = hashSeed(`${day}|${args.preset}|${frontier?.lessonId ?? "-"}|${dueKeys}`);
+  return composeTodaySession({
+    pack: args.pack,
+    completedLessons: args.completedLessons,
+    cards: args.cards,
+    preset: args.preset,
+    seed,
+    now,
+  });
 }
 
 export function composeTodaySession(input: TodayPlanInput): TodayPlan {
