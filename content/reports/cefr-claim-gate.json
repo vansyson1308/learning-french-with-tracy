@@ -14,8 +14,10 @@
         },
         {
           "domain": "written_reception",
-          "status": "objectives_not_assessed",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.reading.familiar_words"
+          ]
         },
         {
           "domain": "spoken_production",
@@ -33,10 +35,12 @@
           "directAssessedObjectives": []
         }
       ],
-      "coveredCompetences": [],
+      "coveredCompetences": [
+        "fr.obj.greetings.basic",
+        "fr.obj.vocab.everyday_basics"
+      ],
       "unassessedDomains": [
         "spoken_reception",
-        "written_reception",
         "spoken_production",
         "written_production",
         "interaction"
@@ -77,7 +81,18 @@
           "directAssessedObjectives": []
         }
       ],
-      "coveredCompetences": [],
+      "coveredCompetences": [
+        "fr.obj.connected.elision",
+        "fr.obj.gender.articles_basic",
+        "fr.obj.gender.ending_patterns",
+        "fr.obj.greetings.basic",
+        "fr.obj.numbers.0_100",
+        "fr.obj.strategy.cognate_transfer",
+        "fr.obj.verbs.er_present",
+        "fr.obj.verbs.etre_avoir_present",
+        "fr.obj.vocab.everyday_basics",
+        "fr.obj.vocab.places_travel"
+      ],
       "unassessedDomains": [
         "spoken_reception",
         "written_reception",

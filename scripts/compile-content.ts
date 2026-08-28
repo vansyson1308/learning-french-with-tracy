@@ -24,7 +24,15 @@ import {
   loadPedagogyConcepts,
   validatePedagogy,
 } from "./lib/pedagogy";
-import { collectAssessmentItemTargets, loadClaimPolicy, loadCourseObjectives, validateAssessment } from "./lib/assessment";
+import {
+  collectAssessmentItemTargets,
+  compileCheckpointsArtifact,
+  compileObjectivesArtifact,
+  loadCheckpoints,
+  loadClaimPolicy,
+  loadCourseObjectives,
+  validateAssessment,
+} from "./lib/assessment";
 import {
   buildCefrAlignment,
   buildObjectiveCoverage,
@@ -115,6 +123,34 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
     contents: canonicalJson({
       generator: "scripts/lib/assessment-reports.ts",
       ...buildCefrAlignment(objectivesDoc.objectives),
+    }),
+  });
+  files.push({
+    relPath: "src/content/assessment/fr-objectives.json",
+    contents: compileObjectivesArtifact(objectivesDoc),
+  });
+  const checkpoints = loadCheckpoints();
+  files.push({
+    relPath: "src/content/assessment/fr-checkpoints.json",
+    contents: compileCheckpointsArtifact(checkpoints),
+  });
+  files.push({
+    relPath: "content/reports/checkpoint-coverage.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      checkpoints: checkpoints.checkpoints.map((cp) => ({
+        id: cp.id,
+        checkpointVersion: cp.checkpointVersion,
+        sectionId: cp.sectionId,
+        itemCount: cp.items.length,
+        criteria: cp.criteria,
+        objectives: Object.fromEntries(
+          [...cp.items.reduce((m, item) => {
+            for (const oid of item.objectiveTargets) m.set(oid, (m.get(oid) ?? 0) + 1);
+            return m;
+          }, new Map<string, number>()).entries()].sort(([a], [b]) => a.localeCompare(b))
+        ),
+      })),
     }),
   });
   files.push({

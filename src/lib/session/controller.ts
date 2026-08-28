@@ -13,6 +13,7 @@ import { behaviorFor } from "../exercise-registry";
 import { haptics } from "../haptics";
 import { useProgress, XP_PER_LESSON } from "../store";
 
+import { buildCheckpointAttempt } from "../assessment/checkpoint";
 import { buildCheckEvidence, buildMatchWordEvidence } from "./evidence";
 import {
   currentStep,
@@ -57,14 +58,21 @@ export function useSessionController(definition: SessionDefinition): SessionCont
   const [lastMutated, setLastMutated] = useState(false);
   const [assessmentsCompleted, setAssessmentsCompleted] = useState(0);
   const clockRef = useRef(startClock(0));
+  const startedAtRef = useRef(0);
   const finishedRef = useRef(false);
 
   // One session per definition: identity, plan and timers reset together.
   // The definition is frozen by the route (memo over a state snapshot), so
   // store writes made DURING the session never re-run this.
   useEffect(() => {
-    dispatch({ type: "start", sessionId: newSessionId(), steps: definition.steps });
+    dispatch({
+      type: "start",
+      sessionId: newSessionId(),
+      steps: definition.steps,
+      retryPolicy: definition.retryPolicy ?? "untilCorrect",
+    });
     clockRef.current = startClock(Date.now());
+    startedAtRef.current = Date.now();
     finishedRef.current = false;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLastMutated(false);
@@ -90,6 +98,21 @@ export function useSessionController(definition: SessionDefinition): SessionCont
       progress.completeLesson(definition.lessonId, isPerfect(state));
     } else if (definition.completion === "practice") {
       progress.recordPracticeSession();
+    } else if (definition.completion === "checkpoint") {
+      // Assessment record only (§59): zero XP, no streak, no completion.
+      if (definition.assessment) {
+        progress.recordCheckpointAttempt(
+          buildCheckpointAttempt({
+            plan: definition.assessment,
+            firstResults: state.firstResults,
+            startedAt: startedAtRef.current,
+            completedAt: Date.now(),
+          })
+        );
+      }
+    } else if (definition.completion === "placement") {
+      // The placement route reads the machine state and stores the result
+      // itself; completing here must mutate nothing (§78).
     } else {
       progress.completeTodaySession(
         Math.min(assessmentsCompleted, XP_PER_LESSON)
@@ -115,10 +138,12 @@ export function useSessionController(definition: SessionDefinition): SessionCont
     const behavior = behaviorFor(step.exercise);
     const correct = behavior.check(step.exercise, state.answer);
 
+    const scored = definition.kind === "checkpoint" || definition.kind === "placement";
     if (correct) {
       sfx.playCorrect();
       haptics.success();
-      progress.clearMistake(step.exercise.id);
+      // Scored assessments never touch the mistakes system, either way (§58).
+      if (!scored) progress.clearMistake(step.exercise.id);
     } else {
       sfx.playIncorrect();
       haptics.error();

@@ -1,0 +1,215 @@
+/**
+ * Checkpoint engine (§147): no retry in scored sessions, first-attempt
+ * scoring, no FSRS/wordStats/mistakes/XP mutation, attempt recording with
+ * retention, and the session-definition shape (§104-108).
+ */
+import { describe, expect, test } from "bun:test";
+
+import { buildCheckpointAttempt, scoreObjectives } from "../assessment/checkpoint";
+import { checkpointFor, CHECKPOINT_ORDER } from "../assessment/content";
+import { evidencePlanFor } from "../session/evidence";
+import { emptySessionState, sessionReducer, type SessionMachineState } from "../session/reducer";
+import { buildCheckpointSessionDefinition } from "../session/sources";
+import type { ExerciseStep, SessionAssessmentPlan, SessionStep } from "../session/types";
+import { useProgress } from "../store";
+
+const CP1 = checkpointFor("fr.checkpoint.section-1")!;
+const CP2 = checkpointFor("fr.checkpoint.section-2")!;
+
+function start(steps: SessionStep[], retryPolicy: "untilCorrect" | "none"): SessionMachineState {
+  return sessionReducer(emptySessionState(), {
+    type: "start",
+    sessionId: "t",
+    steps,
+    retryPolicy,
+  });
+}
+
+function exerciseStep(stepId: string): ExerciseStep {
+  return {
+    type: "exercise",
+    stepId,
+    exercise: {
+      type: "select",
+      id: stepId,
+      mode: "targetToNative",
+      prompt: "x",
+      options: [{ text: "right" }, { text: "wrong" }],
+      correct: 0,
+    },
+  };
+}
+
+describe("compiled checkpoints", () => {
+  test("both section checkpoints exist with their authored shapes", () => {
+    expect(CHECKPOINT_ORDER).toEqual(["fr.checkpoint.section-1", "fr.checkpoint.section-2"]);
+    expect(CP1.items.length).toBe(12);
+    expect(CP2.items.length).toBe(18);
+    expect(CP1.criteria.minItemsPerObjective).toBe(2);
+    expect(CP1.criteria.demonstratedShare).toBe(0.66); // 2-of-3 demonstrates — product-local, not a CEFR cut score
+  });
+
+  test("the session definition is a scored assessment: exercises only, no retry, no mistakes, no undo", () => {
+    const def = buildCheckpointSessionDefinition(CP2);
+    expect(def.kind).toBe("checkpoint");
+    expect(def.retryPolicy).toBe("none");
+    expect(def.completion).toBe("checkpoint");
+    expect(def.trackMistakes).toBe(false);
+    expect(def.allowUndo).toBe(false);
+    expect(def.steps.every((s) => s.type === "exercise")).toBe(true); // §108
+    expect(Object.keys(def.assessment!.itemObjectives).length).toBe(18);
+  });
+});
+
+describe("retry policy none (§55, §105)", () => {
+  test("a wrong answer records, does NOT re-queue, and the session still completes fully", () => {
+    let state = start([exerciseStep("a"), exerciseStep("b")], "none");
+    state = sessionReducer(state, { type: "answer", value: 1 }); // wrong
+    state = sessionReducer(state, { type: "check" });
+    expect(state.status).toBe("wrong");
+    state = sessionReducer(state, { type: "continue" });
+    expect(state.queue.length).toBe(2); // no retry appended
+    state = sessionReducer(state, { type: "answer", value: 0 });
+    state = sessionReducer(state, { type: "check" });
+    state = sessionReducer(state, { type: "continue" });
+    expect(state.finished).toBe(true);
+    expect(state.firstResults).toEqual({ a: false, b: true });
+    expect(state.completedCount).toBe(2); // progress reaches 1 despite the miss
+  });
+
+  test("learning sessions keep the until-correct re-queue", () => {
+    let state = start([exerciseStep("a")], "untilCorrect");
+    state = sessionReducer(state, { type: "answer", value: 1 });
+    state = sessionReducer(state, { type: "check" });
+    state = sessionReducer(state, { type: "continue" });
+    expect(state.queue.length).toBe(2); // retry appended
+    expect(state.finished).toBe(false);
+  });
+});
+
+describe("scored sessions emit no learning evidence (§56-58)", () => {
+  test("evidencePlanFor is null for checkpoint and placement kinds — even for grammar/select steps", () => {
+    const def = buildCheckpointSessionDefinition(CP2);
+    for (const step of def.steps) {
+      expect(evidencePlanFor(def, step as ExerciseStep)).toBeNull();
+    }
+    const placementDef = { ...def, kind: "placement" as const };
+    expect(evidencePlanFor(placementDef, def.steps[0] as ExerciseStep)).toBeNull();
+  });
+});
+
+describe("scoring (§61-64)", () => {
+  const plan: SessionAssessmentPlan = {
+    checkpointId: "fr.checkpoint.test",
+    checkpointVersion: 1,
+    criteria: { minItemsPerObjective: 2, demonstratedShare: 0.66 },
+    itemObjectives: {
+      i1: ["fr.obj.a.x"],
+      i2: ["fr.obj.a.x"],
+      i3: ["fr.obj.a.x"],
+      i4: ["fr.obj.b.y"],
+      i5: ["fr.obj.b.y"],
+      i6: ["fr.obj.c.z"],
+    },
+  };
+
+  test("demonstrated needs enough items AND enough correct share", () => {
+    const results = scoreObjectives(plan, {
+      i1: true,
+      i2: true,
+      i3: false, // 2/3 = 0.667 → demonstrated
+      i4: true,
+      i5: false, // 1/2 = 0.5 → needs_practice
+      i6: true, // 1 item → insufficient_evidence
+    });
+    expect(results).toEqual([
+      { objectiveId: "fr.obj.a.x", result: "demonstrated", correct: 2, total: 3 },
+      { objectiveId: "fr.obj.b.y", result: "needs_practice", correct: 1, total: 2 },
+      { objectiveId: "fr.obj.c.z", result: "insufficient_evidence", correct: 1, total: 1 },
+    ]);
+  });
+
+  test("one lucky item can never demonstrate (§64)", () => {
+    const results = scoreObjectives(plan, { i6: true });
+    expect(results).toEqual([
+      { objectiveId: "fr.obj.c.z", result: "insufficient_evidence", correct: 1, total: 1 },
+    ]);
+  });
+
+  test("buildCheckpointAttempt records first-attempt items and the overall share", () => {
+    const attempt = buildCheckpointAttempt({
+      plan,
+      firstResults: { i1: true, i2: false, i4: true },
+      startedAt: 100,
+      completedAt: 200,
+    });
+    expect(attempt.checkpointId).toBe("fr.checkpoint.test");
+    expect(attempt.itemResults).toEqual([
+      { itemId: "i1", correct: true },
+      { itemId: "i2", correct: false },
+      { itemId: "i4", correct: true },
+    ]);
+    expect(attempt.overallCorrectShare).toBeCloseTo(2 / 3);
+  });
+});
+
+describe("store: recordCheckpointAttempt mutates assessment state ONLY (§56-59, §147)", () => {
+  test("appending an attempt changes no XP, lessons, cards, wordStats, mistakes or log", () => {
+    useProgress.setState({
+      activeCourseId: "fr-en",
+      dailyXp: 10,
+      assessment: { checkpointAttempts: [], placementFloor: 0 },
+      courses: {
+        "fr-en": {
+          xp: 42,
+          completedLessons: { "fr-en:u0-l0": true },
+          mistakes: [],
+          wordStats: {},
+          cards: {},
+          srsLegacy: {},
+        },
+      },
+      reviewLog: [],
+    } as never);
+    const before = useProgress.getState();
+    const beforeCourse = JSON.stringify(before.courses);
+    const beforeLog = JSON.stringify(before.reviewLog);
+
+    before.recordCheckpointAttempt({
+      checkpointId: "fr.checkpoint.section-1",
+      checkpointVersion: 1,
+      startedAt: 1,
+      completedAt: 2,
+      itemResults: [{ itemId: "x", correct: true }],
+      objectiveResults: [],
+      overallCorrectShare: 1,
+    });
+
+    const after = useProgress.getState();
+    expect(after.assessment.checkpointAttempts.length).toBe(1);
+    expect(after.courses["fr-en"].xp).toBe(42);
+    expect(after.dailyXp).toBe(10);
+    expect(JSON.stringify(after.courses)).toBe(beforeCourse);
+    expect(JSON.stringify(after.reviewLog)).toBe(beforeLog);
+  });
+
+  test("retakes append and retention caps per checkpoint without dropping the latest", () => {
+    useProgress.setState({
+      assessment: { checkpointAttempts: [], placementFloor: 0 },
+    } as never);
+    for (let i = 0; i < 8; i++) {
+      useProgress.getState().recordCheckpointAttempt({
+        checkpointId: "fr.checkpoint.section-1",
+        checkpointVersion: 1,
+        startedAt: i,
+        completedAt: i + 1,
+        itemResults: [],
+        objectiveResults: [],
+        overallCorrectShare: 0,
+      });
+    }
+    const attempts = useProgress.getState().assessment.checkpointAttempts;
+    expect(attempts.length).toBe(5);
+    expect(attempts[attempts.length - 1].startedAt).toBe(7);
+  });
+});

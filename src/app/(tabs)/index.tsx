@@ -20,6 +20,7 @@ import {
   dailyXpToday,
   useProgress,
 } from "@/lib/store";
+import { CheckpointCard } from "@/components/assessment/checkpoint-card";
 import { makeThemedStyles, radius, unitPalette, useThemeColors } from "@/lib/theme";
 
 function indentFor(index: number) {
@@ -145,6 +146,15 @@ export default function LearnScreen() {
                 </View>
               );
             })}
+            {activeCourseId === "fr-en" ? (
+              <CheckpointCard
+                sectionId={section.id}
+                sectionComplete={section.units
+                  .flatMap((u) => u.lessons)
+                  .every((l) => !!courseProgress.completedLessons[l.id])}
+                attempts={progress.assessment.checkpointAttempts}
+              />
+            ) : null}
           </View>
         ))}
       </ScrollView>

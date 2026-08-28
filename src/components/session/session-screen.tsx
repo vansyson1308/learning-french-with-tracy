@@ -51,12 +51,18 @@ export function SessionScreen({
   targetLanguage,
   emptyMessage = "Nothing to practice yet!",
   buildTodayStats,
+  renderFinished,
 }: {
   definition: SessionDefinition;
   targetLanguage: string;
   emptyMessage?: string;
   /** TODAY passes this to compute honest summary stats at finish time. */
   buildTodayStats?: (controller: SessionController) => TodaySummaryStats;
+  /**
+   * Scored assessments (checkpoint/placement) replace the generic summary
+   * with their own results screen (§112, §118).
+   */
+  renderFinished?: (controller: SessionController) => React.ReactElement | null;
 }) {
   const colors = useThemeColors();
   const styles = useStyles();
@@ -111,6 +117,8 @@ export function SessionScreen({
   }
 
   if (state.finished) {
+    const custom = renderFinished?.(controller);
+    if (custom) return custom;
     return (
       <SessionSummary
         kind={definition.kind}

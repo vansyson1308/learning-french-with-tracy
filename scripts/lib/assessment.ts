@@ -5,16 +5,20 @@
  */
 
 import {
+  CheckpointsSchema,
   ClaimPolicySchema,
   CourseObjectivesSchema,
   PackSchema,
+  type Checkpoint,
+  type Checkpoints,
   type ClaimPolicy,
+  type Conjugations,
   type CourseObjective,
   type CourseObjectives,
   type PackSource,
 } from "../../content/schema";
-import { loadPedagogyConcepts } from "./pedagogy";
-import { listCourseSources, readJson, type ValidationResult } from "./pipeline";
+import { loadConjugations, loadPedagogyConcepts } from "./pedagogy";
+import { listCourseSources, readJson, validateExercise, type ValidationResult } from "./pipeline";
 import { readFileSync } from "fs";
 
 export const OBJECTIVES_SOURCE = "content/fr/assessment/objectives.json";
@@ -287,8 +291,157 @@ export function validateAssessment(): ValidationResult {
     // concept schema failures are reported by validatePedagogy
   }
   const mapping = validateCurriculumMapping({ objectives, packs, concepts });
+  let checkpointErrors: string[] = [];
+  try {
+    const checkpoints = loadCheckpoints();
+    const frPack = packs.find((p) => p.courseId === "fr-en");
+    if (frPack) {
+      checkpointErrors = validateCheckpointsData({
+        checkpoints,
+        objectives,
+        conjugations: loadConjugations(),
+        frPack: frPack.pack,
+      }).errors;
+    }
+  } catch (e) {
+    checkpointErrors = [
+      `checkpoints: schema validation failed — ${(e as Error).message.split("\n")[0]}`,
+    ];
+  }
   return {
-    errors: [...graph.errors, ...claim.errors, ...mapping.errors],
+    errors: [...graph.errors, ...claim.errors, ...mapping.errors, ...checkpointErrors],
     warnings: [],
   };
+}
+
+// ---------------------------------------------------------------------------
+// Checkpoints (§49-66)
+// ---------------------------------------------------------------------------
+
+export const CHECKPOINTS_SOURCE = "content/fr/assessment/checkpoints.json";
+
+export function loadCheckpoints(): Checkpoints {
+  return CheckpointsSchema.parse(readJson(CHECKPOINTS_SOURCE));
+}
+
+/**
+ * Checkpoint bank rules (§53, §64, §136): ids unique and stable, every item
+ * maps to resolving objectives, exercise payloads pass the same content
+ * rules as lesson exercises (number-engine agreement, elision safety,
+ * option dedup), conjugation answers equal the evidence-verified authored
+ * cells, no lexical gradeTargets anywhere, section refs resolve, and every
+ * ESSENTIAL objective keeps ≥2 scored items across all checkpoints.
+ */
+export function validateCheckpointsData(input: {
+  checkpoints: Checkpoints;
+  objectives: CourseObjectives;
+  conjugations: Conjugations;
+  frPack: PackSource;
+  minItemsPerEssentialObjective?: number;
+}): ValidationResult {
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`checkpoints: ${m}`);
+  const known = new Map(input.objectives.objectives.map((o) => [o.id, o]));
+  const sectionIds = new Set(input.frPack.sections.map((s) => s.id));
+  const verbs = new Map(input.conjugations.verbs.map((v) => [v.lemma, v]));
+
+  const cpIds = new Set<string>();
+  const itemIds = new Set<string>();
+  const essentialItemCount = new Map<string, number>();
+
+  for (const cp of input.checkpoints.checkpoints) {
+    if (cpIds.has(cp.id)) err(`duplicate checkpoint id ${cp.id}`);
+    cpIds.add(cp.id);
+    if (!sectionIds.has(cp.sectionId)) err(`${cp.id}: unknown section ${cp.sectionId}`);
+    for (const item of cp.items) {
+      if (itemIds.has(item.id)) err(`duplicate item id ${item.id}`);
+      itemIds.add(item.id);
+      const e = item.exercise;
+      if ("gradeTargets" in e && e.gradeTargets !== undefined) {
+        err(`${item.id}: checkpoint items must not carry lexical gradeTargets (§56)`);
+      }
+      if ("objectiveTargets" in e && (e as { objectiveTargets?: unknown }).objectiveTargets !== undefined) {
+        err(`${item.id}: put objective mapping on the ITEM, not inside the exercise payload`);
+      }
+      validateExercise("fr-en", e, (m) => err(`${item.id}: ${m}`));
+      let touchesEssential = false;
+      for (const oid of item.objectiveTargets) {
+        const objective = known.get(oid);
+        if (!objective) {
+          err(`${item.id}: unknown objective ${oid}`);
+          continue;
+        }
+        if (objective.essential) {
+          touchesEssential = true;
+          essentialItemCount.set(oid, (essentialItemCount.get(oid) ?? 0) + 1);
+        }
+      }
+      if (item.essential && !touchesEssential) {
+        err(`${item.id}: marked essential but targets no essential objective`);
+      }
+      if (e.type === "conjugationCloze") {
+        const table = verbs.get(e.verb);
+        if (!table) {
+          err(`${item.id}: verb ${e.verb} has no authored conjugation table`);
+        } else if (table.cells[e.cell] !== e.answer) {
+          err(`${item.id}: answer "${e.answer}" ≠ authored cell ${e.cell} = "${table.cells[e.cell]}"`);
+        }
+      }
+    }
+  }
+
+  const minPerEssential = input.minItemsPerEssentialObjective ?? 2;
+  for (const o of input.objectives.objectives) {
+    if (!o.essential) continue;
+    const count = essentialItemCount.get(o.id) ?? 0;
+    if (count < minPerEssential) {
+      err(
+        `essential objective ${o.id} has ${count} checkpoint item(s) — needs ≥${minPerEssential} (§64)`
+      );
+    }
+  }
+
+  return { errors, warnings: [] };
+}
+
+/** Compiled runtime artifact for checkpoint sessions. */
+export function compileCheckpointsArtifact(checkpoints: Checkpoints): string {
+  const byId: Record<string, Checkpoint> = {};
+  for (const cp of checkpoints.checkpoints) byId[cp.id] = cp;
+  return `${JSON.stringify(
+    {
+      version: checkpoints.version,
+      language: checkpoints.language,
+      order: checkpoints.checkpoints.map((c) => c.id),
+      byId,
+    },
+    null,
+    2
+  )}\n`;
+}
+
+/** Compiled runtime artifact: objective metadata for progress UI. */
+export function compileObjectivesArtifact(objectives: CourseObjectives): string {
+  const byId: Record<string, unknown> = {};
+  for (const o of objectives.objectives) {
+    byId[o.id] = {
+      id: o.id,
+      title: o.title,
+      canDo: o.canDo,
+      category: o.category,
+      essential: o.essential,
+      prerequisites: o.prerequisites,
+      cefrAlignments: o.cefrAlignments,
+    };
+  }
+  return `${JSON.stringify(
+    {
+      version: objectives.version,
+      language: objectives.language,
+      order: objectives.objectives.map((o) => o.id),
+      byId,
+    },
+    null,
+    2
+  )}\n`;
 }

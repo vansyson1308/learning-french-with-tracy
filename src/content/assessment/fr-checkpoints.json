@@ -1,0 +1,742 @@
+{
+  "version": 1,
+  "language": "fr",
+  "order": [
+    "fr.checkpoint.section-1",
+    "fr.checkpoint.section-2"
+  ],
+  "byId": {
+    "fr.checkpoint.section-1": {
+      "id": "fr.checkpoint.section-1",
+      "checkpointVersion": 1,
+      "sectionId": "fr-en:section-1",
+      "title": "Section 1 check",
+      "description": "Show what you can do with the essentials — greetings, everyday words, and reading familiar French.",
+      "items": [
+        {
+          "id": "fr.cpi.s1.greet_evening",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-greet_evening",
+            "mode": "nativeToTarget",
+            "prompt": "You arrive at a restaurant at 8 pm. What do you say?",
+            "options": [
+              {
+                "text": "Bonsoir !"
+              },
+              {
+                "text": "Bonne nuit !"
+              },
+              {
+                "text": "Au revoir !"
+              },
+              {
+                "text": "Merci !"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.greetings.basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.greet_leaving",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-greet_leaving",
+            "mode": "nativeToTarget",
+            "prompt": "You are leaving a shop. What do you say?",
+            "options": [
+              {
+                "text": "Au revoir !"
+              },
+              {
+                "text": "Bonjour !"
+              },
+              {
+                "text": "Oui !"
+              },
+              {
+                "text": "Pardon !"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.greetings.basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.greet_thanks",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-greet_thanks",
+            "mode": "nativeToTarget",
+            "prompt": "Someone holds the door open for you. You say:",
+            "options": [
+              {
+                "text": "Merci !"
+              },
+              {
+                "text": "S'il vous plaît !"
+              },
+              {
+                "text": "Bonne nuit !"
+              },
+              {
+                "text": "Non !"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.greetings.basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.vocab_horse",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-vocab_horse",
+            "mode": "nativeToTarget",
+            "prompt": "the horse",
+            "options": [
+              {
+                "text": "le cheval"
+              },
+              {
+                "text": "le chien"
+              },
+              {
+                "text": "la vache"
+              },
+              {
+                "text": "le poisson"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.vocab.everyday_basics"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.vocab_cheese",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-vocab_cheese",
+            "mode": "nativeToTarget",
+            "prompt": "the cheese",
+            "options": [
+              {
+                "text": "le fromage"
+              },
+              {
+                "text": "le pain"
+              },
+              {
+                "text": "le lait"
+              },
+              {
+                "text": "l'œuf"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.vocab.everyday_basics"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.vocab_girl",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-vocab_girl",
+            "mode": "targetToNative",
+            "prompt": "la fille",
+            "options": [
+              {
+                "text": "the girl"
+              },
+              {
+                "text": "the woman"
+              },
+              {
+                "text": "the boy"
+              },
+              {
+                "text": "the man"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.vocab.everyday_basics"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.read_water",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-read_water",
+            "mode": "targetToNative",
+            "prompt": "Je bois de l'eau.",
+            "options": [
+              {
+                "text": "I drink water."
+              },
+              {
+                "text": "I eat bread."
+              },
+              {
+                "text": "I drink milk."
+              },
+              {
+                "text": "I like water."
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.read_cat",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-read_cat",
+            "mode": "targetToNative",
+            "prompt": "Le chat mange le poisson.",
+            "options": [
+              {
+                "text": "The cat eats the fish."
+              },
+              {
+                "text": "The dog eats the fish."
+              },
+              {
+                "text": "The cat drinks the milk."
+              },
+              {
+                "text": "The fish eats the cat."
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.read_dog",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-read_dog",
+            "mode": "targetToNative",
+            "prompt": "Le chien est dans la rue.",
+            "options": [
+              {
+                "text": "The dog is in the street."
+              },
+              {
+                "text": "The cat is in the street."
+              },
+              {
+                "text": "The dog is at the station."
+              },
+              {
+                "text": "The dog is in the city."
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s1.travel_station",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-travel_station",
+            "mode": "nativeToTarget",
+            "prompt": "the train station",
+            "options": [
+              {
+                "text": "la gare"
+              },
+              {
+                "text": "la ville"
+              },
+              {
+                "text": "l'aéroport"
+              },
+              {
+                "text": "l'hôtel"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.vocab.places_travel"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s1.travel_ticket",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-travel_ticket",
+            "mode": "targetToNative",
+            "prompt": "le billet",
+            "options": [
+              {
+                "text": "the ticket"
+              },
+              {
+                "text": "the map"
+              },
+              {
+                "text": "the museum"
+              },
+              {
+                "text": "the street"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.vocab.places_travel"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s1.travel_map",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s1-travel_map",
+            "mode": "nativeToTarget",
+            "prompt": "the map",
+            "options": [
+              {
+                "text": "la carte"
+              },
+              {
+                "text": "la rue"
+              },
+              {
+                "text": "la gare"
+              },
+              {
+                "text": "le billet"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.vocab.places_travel"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "fr.checkpoint.section-2": {
+      "id": "fr.checkpoint.section-2",
+      "checkpointVersion": 1,
+      "sectionId": "fr-en:section-2",
+      "title": "Section 2 check",
+      "description": "Show what you can do with the building blocks — articles, verbs, numbers and connected writing.",
+      "items": [
+        {
+          "id": "fr.cpi.s2.article_house",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "fr-cpx-s2-article_house",
+            "articles": [
+              "un",
+              "une"
+            ],
+            "noun": "maison",
+            "gloss": "a house",
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "fr.obj.gender.articles_basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.article_gift",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "fr-cpx-s2-article_gift",
+            "articles": [
+              "le",
+              "la"
+            ],
+            "noun": "cadeau",
+            "gloss": "the gift",
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.gender.articles_basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.pattern_revolution",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "fr-cpx-s2-pattern_revolution",
+            "articles": [
+              "le",
+              "la"
+            ],
+            "noun": "révolution",
+            "gloss": "the revolution",
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "fr.obj.gender.ending_patterns"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s2.pattern_government",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "fr-cpx-s2-pattern_government",
+            "articles": [
+              "le",
+              "la"
+            ],
+            "noun": "gouvernement",
+            "gloss": "the government",
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.gender.ending_patterns"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s2.pattern_garage",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "fr-cpx-s2-pattern_garage",
+            "articles": [
+              "le",
+              "la"
+            ],
+            "noun": "garage",
+            "gloss": "the garage",
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.gender.ending_patterns"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s2.etre_nous",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "fr-cpx-s2-etre_nous",
+            "sentence": "Nous ___ en France.",
+            "translation": "We are in France.",
+            "verb": "être",
+            "cell": "pre:1p",
+            "answer": "sommes",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.verbs.etre_avoir_present",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.avoir_elles",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "fr-cpx-s2-avoir_elles",
+            "sentence": "Elles ___ deux chiens.",
+            "translation": "They have two dogs.",
+            "verb": "avoir",
+            "cell": "pre:3p",
+            "answer": "ont",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.verbs.etre_avoir_present",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.avoir_vous",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "fr-cpx-s2-avoir_vous",
+            "sentence": "Vous ___ une maison.",
+            "translation": "You have a house.",
+            "verb": "avoir",
+            "cell": "pre:2p",
+            "answer": "avez",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.verbs.etre_avoir_present",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.er_parler",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "fr-cpx-s2-er_parler",
+            "sentence": "Il ___ avec le professeur.",
+            "translation": "He talks with the teacher.",
+            "verb": "parler",
+            "cell": "pre:3s",
+            "answer": "parle",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.verbs.er_present",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.er_aimer",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "fr-cpx-s2-er_aimer",
+            "sentence": "Nous ___ le chocolat.",
+            "translation": "We love chocolate.",
+            "verb": "aimer",
+            "cell": "pre:1p",
+            "answer": "aimons",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.verbs.er_present",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.er_habiter",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "fr-cpx-s2-er_habiter",
+            "sentence": "Tu ___ à Paris.",
+            "translation": "You live in Paris.",
+            "verb": "habiter",
+            "cell": "pre:2s",
+            "answer": "habites",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.verbs.er_present",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.number_73",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "typeAnswer",
+            "id": "fr-cpx-s2-number_73",
+            "mode": "produceTarget",
+            "prompt": "73",
+            "answer": "soixante-treize",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.numbers.0_100",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.number_95",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "typeAnswer",
+            "id": "fr-cpx-s2-number_95",
+            "mode": "produceTarget",
+            "prompt": "95",
+            "answer": "quatre-vingt-quinze",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.numbers.0_100",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.number_41",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "typeAnswer",
+            "id": "fr-cpx-s2-number_41",
+            "mode": "produceTarget",
+            "prompt": "41",
+            "answer": "quarante et un",
+            "alternatives": [
+              "quarante-et-un"
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.numbers.0_100",
+            "fr.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s2.elision_amie",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "fillBlank",
+            "id": "fr-cpx-s2-elision_amie",
+            "sentence": "C'est ___ amie de Marie.",
+            "translation": "She is Marie's friend.",
+            "options": [
+              "l'",
+              "la"
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.connected.elision"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s2.elision_habite",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "fillBlank",
+            "id": "fr-cpx-s2-elision_habite",
+            "sentence": "Je ___ habite pas à Lyon.",
+            "translation": "I do not live in Lyon.",
+            "options": [
+              "n'",
+              "ne"
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.connected.elision"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s2.cognate_nation",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s2-cognate_nation",
+            "mode": "targetToNative",
+            "prompt": "la nation",
+            "options": [
+              {
+                "text": "the nation"
+              },
+              {
+                "text": "the birth"
+              },
+              {
+                "text": "the notion"
+              },
+              {
+                "text": "the note"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.strategy.cognate_transfer"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s2.cognate_library",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s2-cognate_library",
+            "mode": "nativeToTarget",
+            "prompt": "the library",
+            "options": [
+              {
+                "text": "la bibliothèque"
+              },
+              {
+                "text": "la librairie"
+              },
+              {
+                "text": "la liberté"
+              },
+              {
+                "text": "la gare"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.strategy.cognate_transfer"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    }
+  }
+}

@@ -367,3 +367,84 @@ describe("claim gate honesty (§145)", () => {
     expect(a1.coveredCompetences).toEqual([]);
   });
 });
+
+import { loadCheckpoints, validateCheckpointsData } from "../lib/assessment";
+import { loadConjugations } from "../lib/pedagogy";
+
+describe("checkpoint banks — real data + mutations (§53, §64)", () => {
+  const inputs = () => ({
+    checkpoints: loadCheckpoints(),
+    objectives: loadCourseObjectives(),
+    conjugations: loadConjugations(),
+    frPack: frPack(),
+  });
+
+  test("the committed banks validate", () => {
+    expect(validateCheckpointsData(inputs()).errors).toEqual([]);
+  });
+
+  test("every essential objective has ≥2 scored items across the banks", () => {
+    const { checkpoints, objectives } = inputs();
+    const count = new Map<string, number>();
+    for (const cp of checkpoints.checkpoints)
+      for (const item of cp.items)
+        for (const oid of item.objectiveTargets)
+          count.set(oid, (count.get(oid) ?? 0) + 1);
+    for (const o of objectives.objectives.filter((x) => x.essential)) {
+      expect({ id: o.id, enough: (count.get(o.id) ?? 0) >= 2 }).toEqual({ id: o.id, enough: true });
+    }
+  });
+
+  test("an unknown objective target fails", () => {
+    const input = inputs();
+    input.checkpoints.checkpoints[0].items[0].objectiveTargets = ["fr.obj.ghost.thing"];
+    expect(validateCheckpointsData(input).errors.join("\n")).toContain("unknown objective");
+  });
+
+  test("a cloze whose answer disagrees with the authored table fails", () => {
+    const input = inputs();
+    const item = input.checkpoints.checkpoints[1].items.find(
+      (i) => i.exercise.type === "conjugationCloze"
+    )!;
+    (item.exercise as { answer: string }).answer = "sui";
+    expect(validateCheckpointsData(input).errors.join("\n")).toContain("authored cell");
+  });
+
+  test("lexical gradeTargets on a checkpoint item fail (§56)", () => {
+    const input = inputs();
+    (input.checkpoints.checkpoints[0].items[0].exercise as { gradeTargets?: string[] }).gradeTargets = [
+      "fr:w:chat",
+    ];
+    expect(validateCheckpointsData(input).errors.join("\n")).toContain("must not carry lexical gradeTargets");
+  });
+
+  test("dropping essential coverage below the floor fails (§64)", () => {
+    const input = inputs();
+    for (const cp of input.checkpoints.checkpoints) {
+      for (const item of cp.items) {
+        item.objectiveTargets = item.objectiveTargets.filter(
+          (t) => t !== "fr.obj.greetings.basic"
+        );
+        if (item.objectiveTargets.length === 0) item.objectiveTargets = ["fr.obj.vocab.places_travel"];
+      }
+    }
+    expect(validateCheckpointsData(input).errors.join("\n")).toContain(
+      "essential objective fr.obj.greetings.basic"
+    );
+  });
+
+  test("an unknown section reference fails", () => {
+    const input = inputs();
+    input.checkpoints.checkpoints[0].sectionId = "fr-en:section-9";
+    expect(validateCheckpointsData(input).errors.join("\n")).toContain("unknown section");
+  });
+
+  test("a number drill in a checkpoint must agree with the engine", () => {
+    const input = inputs();
+    const item = input.checkpoints.checkpoints[1].items.find(
+      (i) => i.exercise.type === "typeAnswer"
+    )!;
+    (item.exercise as { answer: string }).answer = "soixante-et-treize";
+    expect(validateCheckpointsData(input).errors.join("\n")).toContain("engine spelling");
+  });
+});

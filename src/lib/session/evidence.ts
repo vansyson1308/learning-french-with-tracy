@@ -39,6 +39,10 @@ export function evidencePlanFor(
   definition: SessionDefinition,
   step: ExerciseStep
 ): StepEvidencePlan | null {
+  // Scored assessments (§56-57, §78): NOTHING flows to the learning engine —
+  // no FSRS mutation, no wordStats, no review-log noise. Their outcomes are
+  // recorded as assessment state by the completion policy instead.
+  if (definition.kind === "checkpoint" || definition.kind === "placement") return null;
   if (step.evidence) return step.evidence;
 
   const exercise = step.exercise;

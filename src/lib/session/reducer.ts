@@ -17,6 +17,8 @@ export type StepStatus = "idle" | "correct" | "wrong";
 export type SessionMachineState = {
   /** Stable for the whole session; set once by "start". */
   sessionId: string;
+  /** Wrong-answer policy (§55): "none" = scored assessment, no re-queue. */
+  retryPolicy: "untilCorrect" | "none";
   /** The frozen plan — never changes after start. */
   steps: SessionStep[];
   /** Active queue: plan order plus retries appended at the end. */
@@ -36,7 +38,7 @@ export type SessionMachineState = {
 };
 
 export type SessionAction =
-  | { type: "start"; sessionId: string; steps: SessionStep[] }
+  | { type: "start"; sessionId: string; steps: SessionStep[]; retryPolicy?: "untilCorrect" | "none" }
   | { type: "answer"; value: Answer }
   | { type: "check" }
   | { type: "matchComplete"; wrongAttempts: number }
@@ -47,6 +49,7 @@ export type SessionAction =
 export function emptySessionState(): SessionMachineState {
   return {
     sessionId: "",
+    retryPolicy: "untilCorrect",
     steps: [],
     queue: [],
     index: 0,
@@ -104,6 +107,7 @@ export function sessionReducer(
       return {
         ...emptySessionState(),
         sessionId: action.sessionId,
+        retryPolicy: action.retryPolicy ?? "untilCorrect",
         steps: action.steps,
         queue: action.steps,
         finished: false,
@@ -159,8 +163,15 @@ export function sessionReducer(
             }
           : state.wrongCounts,
       };
-      // Match auto-advances (no feedback footer): wrong plays re-queue.
-      return advance(next, wrong);
+      // Match auto-advances (no feedback footer): wrong plays re-queue —
+      // unless the session is a scored assessment (§55).
+      const requeueMatch = wrong && state.retryPolicy !== "none";
+      return advance(
+        requeueMatch || !wrong
+          ? next
+          : { ...next, completedCount: next.completedCount + 1 },
+        requeueMatch
+      );
     }
 
     case "teachContinue": {
@@ -175,7 +186,13 @@ export function sessionReducer(
     case "continue": {
       const step = currentStep(state);
       if (!step || step.type !== "exercise" || state.status === "idle") return state;
-      return advance(state, state.status === "wrong");
+      const requeue = state.status === "wrong" && state.retryPolicy !== "none";
+      // Without a retry, a wrong step is still DONE — progress must reach 1.
+      const completedCount =
+        state.status === "wrong" && !requeue
+          ? state.completedCount + 1
+          : state.completedCount;
+      return advance({ ...state, completedCount }, requeue);
     }
 
     case "undoCurrent": {

@@ -626,3 +626,58 @@ export const ClaimPolicySchema = z.strictObject({
   claimWording: z.string().min(1),
 });
 export type ClaimPolicy = z.infer<typeof ClaimPolicySchema>;
+
+// ---------------------------------------------------------------------------
+// Phase 6: checkpoint assessment banks (§49-66, §121-123)
+// ---------------------------------------------------------------------------
+
+export const checkpointId = z.string().regex(/^fr\.checkpoint\.[a-z0-9-]+$/);
+export const assessmentItemId = z.string().regex(/^fr\.cpi\.[a-z0-9_.-]+$/);
+
+/**
+ * One original checkpoint item (§51, §53): a standard exercise payload plus
+ * REQUIRED objective mapping. Authored content — gradeTargets never appears
+ * (checkpoints don't touch lexical FSRS), and item ids/versions are stable
+ * so stored attempts stay interpretable (§66, §123).
+ */
+export const CheckpointItemSchema = z.strictObject({
+  id: assessmentItemId,
+  itemVersion: z.number().int().min(1),
+  exercise: ExerciseSchema,
+  objectiveTargets: z.array(objectiveId).min(1),
+  /** Items assessing an essential objective the blueprint counts on. */
+  essential: z.boolean(),
+});
+export type CheckpointItem = z.infer<typeof CheckpointItemSchema>;
+
+/**
+ * Product-local demonstration criteria (§62-63): NOT official CEFR cut
+ * scores — documented course diagnostics. An objective is `demonstrated`
+ * in an attempt when it has ≥ minItemsPerObjective scored items AND the
+ * correct share is ≥ demonstratedShare; with fewer items the result is
+ * `insufficient_evidence`; otherwise `needs_practice`.
+ */
+export const CheckpointCriteriaSchema = z.strictObject({
+  minItemsPerObjective: z.number().int().min(2),
+  demonstratedShare: z.number().min(0.5).max(1),
+});
+
+export const CheckpointSchema = z.strictObject({
+  id: checkpointId,
+  /** Bump when items/criteria change meaning (§66). */
+  checkpointVersion: z.number().int().min(1),
+  /** The PATH section whose completion unlocks this checkpoint. */
+  sectionId: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  items: z.array(CheckpointItemSchema).min(1),
+  criteria: CheckpointCriteriaSchema,
+});
+export type Checkpoint = z.infer<typeof CheckpointSchema>;
+
+export const CheckpointsSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  checkpoints: z.array(CheckpointSchema).min(1),
+});
+export type Checkpoints = z.infer<typeof CheckpointsSchema>;

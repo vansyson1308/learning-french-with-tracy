@@ -3,7 +3,9 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 import {
+  capCheckpointAttempts,
   emptyAssessmentState,
+  type CheckpointAttempt,
   type PersistedAssessmentState,
 } from "./assessment/types";
 import { addDays, dayString, localWeek } from "./dates";
@@ -81,6 +83,14 @@ type ProgressState = {
   reviewLog: ReviewLogEntry[];
   /** Phase 6 learner assessment state (checkpoints + placement, v3). */
   assessment: PersistedAssessmentState;
+
+  /**
+   * Records a completed checkpoint attempt (§60). Assessment record ONLY:
+   * no XP, no streak, no lesson completion, no FSRS/wordStats writes (§59).
+   * Retention: most recent attempts per checkpoint, capped; the latest is
+   * never dropped (§164).
+   */
+  recordCheckpointAttempt: (attempt: CheckpointAttempt) => void;
 
   course: () => CourseProgress;
   completeLesson: (lessonId: string, perfect: boolean) => void;
@@ -203,6 +213,16 @@ export const useProgress = create<ProgressState>()(
           return { streak, lastActiveDay: today, activeDays, ...daily, ...courseUpdate };
         }),
 
+      recordCheckpointAttempt: (attempt) =>
+        set((state) => ({
+          assessment: {
+            ...state.assessment,
+            checkpointAttempts: capCheckpointAttempts([
+              ...state.assessment.checkpointAttempts,
+              attempt,
+            ]),
+          },
+        })),
       recordPracticeSession: () =>
         set((state) => {
           const { today, streak } = activityBase(state, new Date());
