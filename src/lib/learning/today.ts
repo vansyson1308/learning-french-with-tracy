@@ -49,6 +49,12 @@ export type TodayPlanInput = {
   preset: TodayPreset;
   seed: number;
   now: number;
+  /**
+   * Accepted placement floor (§87-88): the frontier — and therefore new-word
+   * introduction — starts at this global lesson index. Lessons before it are
+   * placement-cleared: open for review, never the frontier. 0 = no floor.
+   */
+  placementFloor?: number;
 };
 
 export type TodayPlan = {
@@ -85,14 +91,23 @@ function packWords(pack: Pack): Word[] {
   return [...seen.values()];
 }
 
-/** The PATH frontier: the first lesson the learner has not completed (§35). */
+/**
+ * The PATH frontier: the first lesson the learner has not completed at or
+ * after the placement floor (§35, §87-88). Placement-cleared lessons before
+ * the floor stay open for review but are never the frontier — TODAY must
+ * not re-introduce what the learner placed past.
+ */
 export function pathFrontierLesson(
   pack: Pack,
-  completedLessons: Record<string, true>
+  completedLessons: Record<string, true>,
+  floorIndex = 0
 ): { lessonId: string; gradeTargetIds: string[] } | null {
+  let globalIndex = -1;
   for (const section of pack.sections)
     for (const unit of section.units)
       for (const lesson of unit.lessons) {
+        globalIndex += 1;
+        if (globalIndex < floorIndex) continue;
         if (completedLessons[lesson.id]) continue;
         const ids: string[] = [];
         for (const exercise of lesson.exercises) {
@@ -168,6 +183,7 @@ export function composeTodayFromSnapshot(args: {
   completedLessons: Record<string, true>;
   cards: Record<string, FsrsCardState> | undefined;
   preset: TodayPreset;
+  placementFloor?: number;
   day?: string;
   now?: number;
 }): TodayPlan {
@@ -176,7 +192,7 @@ export function composeTodayFromSnapshot(args: {
   const dueKeys = dueFrenchReviewQueue(args.cards, now)
     .map((d) => `${d.key}@${d.dueAt}`)
     .join(",");
-  const frontier = pathFrontierLesson(args.pack, args.completedLessons);
+  const frontier = pathFrontierLesson(args.pack, args.completedLessons, args.placementFloor ?? 0);
   const seed = hashSeed(`${day}|${args.preset}|${frontier?.lessonId ?? "-"}|${dueKeys}`);
   return composeTodaySession({
     pack: args.pack,
@@ -185,6 +201,7 @@ export function composeTodayFromSnapshot(args: {
     preset: args.preset,
     seed,
     now,
+    placementFloor: args.placementFloor,
   });
 }
 
@@ -225,7 +242,11 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   const reviewCount = steps.length;
 
   // ---- 2. NEW: PATH frontier only, authored order (§34-40) --------------
-  const frontier = pathFrontierLesson(input.pack, input.completedLessons);
+  const frontier = pathFrontierLesson(
+    input.pack,
+    input.completedLessons,
+    input.placementFloor ?? 0
+  );
   const newItems: Item[] = [];
   for (const id of frontier?.gradeTargetIds ?? []) {
     if (newItems.length >= budgets.newItems) break;

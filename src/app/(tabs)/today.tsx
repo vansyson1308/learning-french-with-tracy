@@ -33,6 +33,7 @@ export default function TodayScreen() {
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const course = useProgress((s) => s.courses[s.activeCourseId]);
   const streak = useProgress((s) => currentStreak(s));
+  const placementFloor = useProgress((s) => s.assessment.placementFloor);
   const { pack } = useCourseContent(activeCourseId);
   const [preset, setPreset] = useState<TodayPreset>("regular");
 
@@ -45,8 +46,9 @@ export default function TodayScreen() {
         completedLessons: course?.completedLessons ?? {},
         cards: course?.cards,
         preset,
+        placementFloor,
       }),
-    [pack, course, preset]
+    [pack, course, preset, placementFloor]
   );
 
   if (!courseCapabilities(activeCourseId).dailySession) {

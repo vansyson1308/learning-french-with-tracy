@@ -403,11 +403,19 @@ export const useProgress = create<ProgressState>()(
   )
 );
 
+/**
+ * The "current" lesson on the PATH: the first incomplete lesson at or after
+ * the accepted placement floor (§87-88). With no placement, the floor is 0
+ * and this is simply the first incomplete lesson. Placement-cleared lessons
+ * before the floor stay open (§81-84) — they are just never "current".
+ */
 export function currentLessonIndex(
   completed: Record<string, true>,
-  lessonIds: string[]
+  lessonIds: string[],
+  floorIndex = 0
 ) {
-  const firstIncomplete = lessonIds.findIndex((id) => !completed[id]);
+  const floor = Math.max(0, Math.min(Math.floor(floorIndex), lessonIds.length));
+  const firstIncomplete = lessonIds.findIndex((id, i) => i >= floor && !completed[id]);
   return firstIncomplete === -1 ? lessonIds.length : firstIncomplete;
 }
 
