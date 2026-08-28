@@ -148,6 +148,25 @@ export default function ProfileScreen() {
           ))}
         </View>
 
+        {activeCourseId === "fr-en" ? (
+          <Pressable
+            onPress={() => router.push("/goals")}
+            accessibilityRole="button"
+            accessibilityLabel="Your French goals"
+            style={styles.goalsCard}
+            testID="goals-entry"
+          >
+            <Ionicons name="flag-outline" size={22} color={colors.greenDark} />
+            <View style={styles.dataRowText}>
+              <Text style={styles.dataRowTitle}>Your French goals</Text>
+              <Text style={styles.settingsHint}>
+                Can-do goals, what&apos;s been checked, and your starting point.
+              </Text>
+            </View>
+            <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
+          </Pressable>
+        ) : null}
+
         <View style={styles.settingsCard}>
           <View style={styles.settingsHeader}>
             <Ionicons name="color-palette-outline" size={22} color={colors.indigo} />
@@ -372,4 +391,13 @@ const useStyles = makeThemedStyles((colors) => StyleSheet.create({
   },
   dataRowText: { flex: 1, gap: 2 },
   dataRowTitle: { fontSize: 15, fontWeight: "700", color: colors.neutral700 },
+  goalsCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    borderWidth: 2,
+    borderColor: colors.neutral200,
+    borderRadius: radius.xl,
+    padding: 16,
+  },
 }));
