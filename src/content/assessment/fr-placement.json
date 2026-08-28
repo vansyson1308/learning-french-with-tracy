@@ -1,0 +1,455 @@
+{
+  "version": 1,
+  "language": "fr",
+  "placementVersion": 1,
+  "maxItems": 16,
+  "allComfortableLessonId": "fr-en:ue-l0",
+  "stages": [
+    {
+      "id": "fr.pstage.foundations",
+      "title": "Foundations",
+      "clusters": [
+        {
+          "id": "fr.pcluster.everyday",
+          "objectiveId": "fr.obj.vocab.everyday_basics",
+          "anchorLessonId": "fr-en:u0-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.milk",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-milk",
+                "mode": "nativeToTarget",
+                "prompt": "the milk",
+                "options": [
+                  {
+                    "text": "le lait"
+                  },
+                  {
+                    "text": "le pain"
+                  },
+                  {
+                    "text": "l'eau"
+                  },
+                  {
+                    "text": "le jus"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.vocab.everyday_basics"
+              ]
+            },
+            {
+              "id": "fr.pli.s1.bird",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-bird",
+                "mode": "targetToNative",
+                "prompt": "l'oiseau",
+                "options": [
+                  {
+                    "text": "the bird"
+                  },
+                  {
+                    "text": "the fish"
+                  },
+                  {
+                    "text": "the rabbit"
+                  },
+                  {
+                    "text": "the mouse"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.vocab.everyday_basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.greetings",
+          "objectiveId": "fr.obj.greetings.basic",
+          "anchorLessonId": "fr-en:u1-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.morning",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-morning",
+                "mode": "nativeToTarget",
+                "prompt": "It's morning and you walk into the bakery. You say:",
+                "options": [
+                  {
+                    "text": "Bonjour !"
+                  },
+                  {
+                    "text": "Bonsoir !"
+                  },
+                  {
+                    "text": "Au revoir !"
+                  },
+                  {
+                    "text": "Bonne nuit !"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.greetings.basic"
+              ]
+            },
+            {
+              "id": "fr.pli.s1.polite",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-polite",
+                "mode": "nativeToTarget",
+                "prompt": "You ask for something politely. You add:",
+                "options": [
+                  {
+                    "text": "s'il vous plaît"
+                  },
+                  {
+                    "text": "salut"
+                  },
+                  {
+                    "text": "bonne nuit"
+                  },
+                  {
+                    "text": "au revoir"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.greetings.basic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.reading",
+          "objectiveId": "fr.obj.reading.familiar_words",
+          "anchorLessonId": "fr-en:u2-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.girl_milk",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-girl_milk",
+                "mode": "targetToNative",
+                "prompt": "La fille boit du lait.",
+                "options": [
+                  {
+                    "text": "The girl drinks milk."
+                  },
+                  {
+                    "text": "The girl eats bread."
+                  },
+                  {
+                    "text": "The boy drinks milk."
+                  },
+                  {
+                    "text": "The girl drinks water."
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.familiar_words"
+              ]
+            },
+            {
+              "id": "fr.pli.s1.man_ticket",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-man_ticket",
+                "mode": "targetToNative",
+                "prompt": "L'homme a un billet.",
+                "options": [
+                  {
+                    "text": "The man has a ticket."
+                  },
+                  {
+                    "text": "The man has a map."
+                  },
+                  {
+                    "text": "The woman has a ticket."
+                  },
+                  {
+                    "text": "The man is at the station."
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.places",
+          "objectiveId": "fr.obj.vocab.places_travel",
+          "anchorLessonId": "fr-en:u4-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.airport",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-airport",
+                "mode": "nativeToTarget",
+                "prompt": "the airport",
+                "options": [
+                  {
+                    "text": "l'aéroport"
+                  },
+                  {
+                    "text": "l'hôtel"
+                  },
+                  {
+                    "text": "la gare"
+                  },
+                  {
+                    "text": "le musée"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.vocab.places_travel"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fr.pstage.building_blocks",
+      "title": "Building blocks",
+      "clusters": [
+        {
+          "id": "fr.pcluster.articles",
+          "objectiveId": "fr.obj.gender.articles_basic",
+          "anchorLessonId": "fr-en:ua-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.voyage",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "fr-plx-s2-voyage",
+                "articles": [
+                  "le",
+                  "la"
+                ],
+                "noun": "voyage",
+                "gloss": "the trip",
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.gender.articles_basic"
+              ]
+            },
+            {
+              "id": "fr.pli.s2.securite",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "fr-plx-s2-securite",
+                "articles": [
+                  "le",
+                  "la"
+                ],
+                "noun": "sécurité",
+                "gloss": "safety",
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "fr.obj.gender.articles_basic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.endings",
+          "objectiveId": "fr.obj.gender.ending_patterns",
+          "anchorLessonId": "fr-en:ua-l1",
+          "items": [
+            {
+              "id": "fr.pli.s2.tradition",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "fr-plx-s2-tradition",
+                "articles": [
+                  "le",
+                  "la"
+                ],
+                "noun": "tradition",
+                "gloss": "the tradition",
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "fr.obj.gender.ending_patterns"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.etre_avoir",
+          "objectiveId": "fr.obj.verbs.etre_avoir_present",
+          "anchorLessonId": "fr-en:ub-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.sommes",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s2-sommes",
+                "mode": "targetToNative",
+                "prompt": "Nous sommes contents.",
+                "options": [
+                  {
+                    "text": "We are happy."
+                  },
+                  {
+                    "text": "We have cats."
+                  },
+                  {
+                    "text": "They are happy."
+                  },
+                  {
+                    "text": "You are happy."
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.verbs.etre_avoir_present"
+              ]
+            },
+            {
+              "id": "fr.pli.s2.a_chien",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "conjugationCloze",
+                "id": "fr-plx-s2-a_chien",
+                "sentence": "Il ___ un chien.",
+                "translation": "He has a dog.",
+                "verb": "avoir",
+                "cell": "pre:3s",
+                "answer": "a",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.verbs.etre_avoir_present",
+                "fr.obj.writing.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.er",
+          "objectiveId": "fr.obj.verbs.er_present",
+          "anchorLessonId": "fr-en:ub-l1",
+          "items": [
+            {
+              "id": "fr.pli.s2.parle",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "conjugationCloze",
+                "id": "fr-plx-s2-parle",
+                "sentence": "Elle ___ français.",
+                "translation": "She speaks French.",
+                "verb": "parler",
+                "cell": "pre:3s",
+                "answer": "parle",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.verbs.er_present",
+                "fr.obj.writing.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.numbers",
+          "objectiveId": "fr.obj.numbers.0_100",
+          "anchorLessonId": "fr-en:ud-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.n16",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "typeAnswer",
+                "id": "fr-plx-s2-n16",
+                "mode": "produceTarget",
+                "prompt": "16",
+                "answer": "seize",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.writing.familiar_words"
+              ]
+            },
+            {
+              "id": "fr.pli.s2.n82",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "typeAnswer",
+                "id": "fr-plx-s2-n82",
+                "mode": "produceTarget",
+                "prompt": "82",
+                "answer": "quatre-vingt-deux",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.writing.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.elision",
+          "objectiveId": "fr.obj.connected.elision",
+          "anchorLessonId": "fr-en:ue-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.hotel",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "fillBlank",
+                "id": "fr-plx-s2-hotel",
+                "sentence": "___ hôtel est grand.",
+                "translation": "The hotel is big.",
+                "options": [
+                  "L'",
+                  "Le"
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.connected.elision"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

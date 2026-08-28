@@ -22,8 +22,8 @@ function v1Of(fixtureState: unknown): PersistedProgress {
 }
 
 describe("v1 → v2 migration: French moves to FSRS", () => {
-  test("PERSIST_VERSION is 2", () => {
-    expect(PERSIST_VERSION).toBe(2);
+  test("PERSIST_VERSION is 3", () => {
+    expect(PERSIST_VERSION).toBe(3);
   });
 
   test("rich user: srs → cards under stable ids, srsLegacy kept, due preserved", () => {
@@ -126,15 +126,16 @@ describe("v1 → v2 migration: French moves to FSRS", () => {
     expect(fr.srsLegacy!["Je mange une pomme."]).toBeDefined();
   });
 
-  test("a user without a French course only gains the review log", () => {
+  test("a user without a French course only gains the review log and the assessment container", () => {
     const v1 = v1Of(multiFixture.state);
     const noFr: PersistedProgress = JSON.parse(JSON.stringify(v1));
     delete noFr.courses["fr-en"];
 
     const out = migrateProgress(noFr, 1, NOW);
     expect(out.reviewLog).toEqual([]);
-    const { reviewLog: _r1, ...outRest } = out;
-    const { reviewLog: _r2, ...inRest } = noFr;
+    expect(out.assessment).toEqual({ checkpointAttempts: [], placementFloor: 0 });
+    const { reviewLog: _r1, assessment: _a1, ...outRest } = out;
+    const { reviewLog: _r2, assessment: _a2, ...inRest } = noFr;
     expect(JSON.stringify(outRest)).toBe(JSON.stringify(inRest));
   });
 

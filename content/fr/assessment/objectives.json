@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "language": "fr",
+  "objectives": [
+    {
+      "id": "fr.obj.greetings.basic",
+      "title": "Everyday greetings & politeness",
+      "canDo": "I can recognise and write the everyday French greetings and politeness formulas — bonjour, bonsoir, salut, au revoir, merci, s'il vous plaît — and pick the right one for the situation.",
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Conversation (spoken interaction)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:conversation"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Formulas are assessed in written recognition and typed form only — spoken use is not yet assessed."
+    },
+    {
+      "id": "fr.obj.vocab.everyday_basics",
+      "title": "Core everyday nouns",
+      "canDo": "I can understand and name the course's core everyday words — people, food and drink, animals, and other common everyday things — when I read them.",
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "fr.obj.vocab.places_travel",
+      "title": "Places & travel words",
+      "canDo": "I can understand the French words for common places and travel needs — la ville, la gare, l'hôtel, le billet — when I read them.",
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "fr.obj.vocab.time_calendar",
+      "title": "Time & calendar words",
+      "canDo": "I can use the French words for counting time — le jour, l'heure, la minute, la semaine, le mois, l'année.",
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "fr.obj.reading.familiar_words",
+      "title": "Reading familiar words & short phrases",
+      "canDo": "I can recognise familiar French words and very short learned phrases when I see them written, and match them to their meaning.",
+      "category": "written_reception",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at Pre-A1 only: the course genuinely assesses written recognition of familiar words and learned phrases. A1 reading (short simple texts) is not yet assessed."
+    },
+    {
+      "id": "fr.obj.writing.familiar_words",
+      "title": "Writing familiar words & forms",
+      "canDo": "I can type familiar French words and learned forms with the right spelling, including accents — mangé, être, vingt et un.",
+      "category": "written_production",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Evidence is single words and short learned forms, not composed sentences."
+    },
+    {
+      "id": "fr.obj.gender.articles_basic",
+      "title": "Articles with familiar nouns",
+      "canDo": "I can choose the right article — le or la, un or une — for the familiar nouns I have learned.",
+      "category": "grammar",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "fr.obj.gender.ending_patterns",
+      "title": "Gender from word endings",
+      "canDo": "I can use reliable French endings — -tion, -ance, -ité, -ment, -age, -eau — to predict whether a new noun takes le or la.",
+      "category": "grammar",
+      "prerequisites": [
+        "fr.obj.gender.articles_basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "fr.obj.verbs.etre_avoir_present",
+      "title": "Être & avoir in the present",
+      "canDo": "I can use the present-tense forms of être and avoir with every subject — je suis, tu as, nous sommes, ils ont.",
+      "category": "grammar",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "fr.obj.verbs.er_present",
+      "title": "Regular -er verbs in the present",
+      "canDo": "I can conjugate regular -er verbs like parler, aimer and habiter in the present tense for every subject.",
+      "category": "grammar",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": true
+    },
+    {
+      "id": "fr.obj.verbs.aller_faire_present",
+      "title": "Aller & faire in the present",
+      "canDo": "I can use the present-tense forms of aller and faire — je vais, elle va, nous faisons, ils font.",
+      "category": "grammar",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "fr.obj.verbs.futur_proche",
+      "title": "Near future with aller",
+      "canDo": "I can talk about plans by putting aller in front of any verb — Je vais manger, Nous allons parler.",
+      "category": "grammar",
+      "prerequisites": [
+        "fr.obj.verbs.aller_faire_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "fr.obj.verbs.passe_compose_avoir",
+      "title": "Past tense with avoir",
+      "canDo": "I can build the everyday past tense with avoir plus a participle — J'ai mangé, Tu as parlé — for the verbs I know.",
+      "category": "grammar",
+      "prerequisites": [
+        "fr.obj.verbs.etre_avoir_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A2",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "Introduced with avoir-auxiliary verbs only; être-auxiliary verbs and agreement are not yet taught."
+    },
+    {
+      "id": "fr.obj.numbers.0_100",
+      "title": "Numbers 0-100",
+      "canDo": "I can understand and write every French number from zéro to cent, including the et-un pattern, soixante-dix and quatre-vingts.",
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Numbers are read and typed; understanding spoken numbers is not yet assessed."
+    },
+    {
+      "id": "fr.obj.connected.elision",
+      "title": "Elision in writing",
+      "canDo": "I can apply mandatory French elision in writing — l'eau, j'ai, ce n'est pas — and never write je ai or le homme.",
+      "category": "grammar",
+      "prerequisites": [
+        "fr.obj.gender.articles_basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "fr.obj.connected.liaison_h",
+      "title": "Liaison & the two h's",
+      "canDo": "I can recognise where French links words together — les amis, nous avons — where it never does, and why l'histoire but le héros.",
+      "category": "phonology",
+      "prerequisites": [
+        "fr.obj.connected.elision"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Phonological control (sound articulation)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:phonological-control"
+        }
+      ],
+      "essential": false,
+      "evidenceNote": "Rule recognition only — actual pronunciation is not assessed."
+    },
+    {
+      "id": "fr.obj.strategy.cognate_transfer",
+      "title": "Cognate bridges & false friends",
+      "canDo": "I can use the -tion and -té bridges to understand new French words from English — and I know the classic traps like librairie and journée.",
+      "category": "strategy",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Identifying cues and inferring",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:identifying-cues-inferring"
+        }
+      ],
+      "essential": false
+    }
+  ]
+}

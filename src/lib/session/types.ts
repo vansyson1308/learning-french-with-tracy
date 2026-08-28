@@ -7,7 +7,14 @@
 import type { EvidenceSource, SrsRole } from "../learning/evidence";
 import type { Exercise, Word } from "../types";
 
-export type SessionKind = "path" | "replay" | "review" | "mistakes" | "today";
+export type SessionKind =
+  | "path"
+  | "replay"
+  | "review"
+  | "mistakes"
+  | "today"
+  | "checkpoint"
+  | "placement";
 
 /** TODAY session phases (informational on steps; drives summary grouping). */
 export type TodayPhase = "warmup" | "new" | "mixed" | "finale";
@@ -59,11 +66,33 @@ export type SessionStep = ExerciseStep | TeachStep | ConceptStep;
 
 /**
  * What finishing the session does:
- *  - "lesson":   completeLesson(lessonId, perfect) — XP, unlock, streak
- *  - "practice": recordPracticeSession() — activity only
- *  - "today":    completeTodaySession(...) — activity + bounded TODAY XP
+ *  - "lesson":     completeLesson(lessonId, perfect) — XP, unlock, streak
+ *  - "practice":   recordPracticeSession() — activity only
+ *  - "today":      completeTodaySession(...) — activity + bounded TODAY XP
+ *  - "checkpoint": recordCheckpointAttempt(...) — assessment record ONLY:
+ *                  no XP, no streak, no lesson completion (§59)
+ *  - "placement":  the placement route stores the result — no XP, no
+ *                  learning-memory mutation of any kind (§78)
  */
-export type CompletionPolicy = "lesson" | "practice" | "today";
+export type CompletionPolicy =
+  | "lesson"
+  | "practice"
+  | "today"
+  | "checkpoint"
+  | "placement";
+
+/**
+ * Scored-assessment plan attached to checkpoint/placement definitions: the
+ * step→objective map the completion scorer needs (§52-53). Steps in scored
+ * sessions are exercises only — no teach/concept steps (§108).
+ */
+export type SessionAssessmentPlan = {
+  checkpointId: string;
+  checkpointVersion: number;
+  criteria: { minItemsPerObjective: number; demonstratedShare: number };
+  /** stepId → objective ids the item assesses. */
+  itemObjectives: Record<string, string[]>;
+};
 
 export type SessionDefinition = {
   kind: SessionKind;
@@ -77,4 +106,23 @@ export type SessionDefinition = {
   trackMistakes: boolean;
   /** French review surfaces offer undo after a scheduler mutation. */
   allowUndo: boolean;
+  /**
+   * Wrong-answer policy (§55, §105): "untilCorrect" (default when absent —
+   * every pre-Phase-6 session) re-queues wrong steps; "none" records the
+   * first attempt and moves on — scored assessments never drill.
+   */
+  retryPolicy?: "untilCorrect" | "none";
+  /**
+   * Answer-feedback depth (§118): "full" (default when absent) shows the
+   * correct answer and post-answer teaching; "minimal" acknowledges that the
+   * answer was recorded without revealing it — a diagnostic must not teach
+   * mid-test or leak answers into a retake.
+   */
+  feedbackPolicy?: "full" | "minimal";
+  /**
+   * Present for checkpoint sessions (§104): the step→objective scoring plan.
+   * Placement sessions resolve scoring from the compiled placement plan in
+   * the route instead, so they carry no per-session plan here.
+   */
+  assessment?: SessionAssessmentPlan;
 };

@@ -20,6 +20,7 @@ import {
   dailyXpToday,
   useProgress,
 } from "@/lib/store";
+import { CheckpointCard } from "@/components/assessment/checkpoint-card";
 import { makeThemedStyles, radius, unitPalette, useThemeColors } from "@/lib/theme";
 
 function indentFor(index: number) {
@@ -42,9 +43,23 @@ export default function LearnScreen() {
   const todayXp = dailyXpToday(progress);
   const goalPct = Math.min(100, (todayXp / dailyGoal) * 100);
   const lessonIds = allLessons.map((l) => l.lesson.id);
-  const currentIndex = currentLessonIndex(courseProgress.completedLessons, lessonIds);
+  // The placement floor is a French-course concept (§81-89); other courses
+  // always see floor 0 — their behavior is untouched.
+  const placementFloor =
+    activeCourseId === "fr-en" ? progress.assessment.placementFloor : 0;
+  const currentIndex = currentLessonIndex(
+    courseProgress.completedLessons,
+    lessonIds,
+    placementFloor
+  );
   const streak = currentStreak(progress);
   const streakLit = activeToday(progress);
+  // Offer "Find your starting point" to fresh French learners (§69-70):
+  // no placement yet, nothing completed yet.
+  const showPlacementEntry =
+    activeCourseId === "fr-en" &&
+    !progress.assessment.placement &&
+    Object.keys(courseProgress.completedLessons).length === 0;
 
   // Units cycle through the palette across the whole course.
   const unitColor = new Map<string, (typeof unitPalette)[number]>();
@@ -94,6 +109,24 @@ export default function LearnScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.path}>
+        {showPlacementEntry ? (
+          <Pressable
+            style={styles.placementCard}
+            onPress={() => router.push("/placement/intro")}
+            accessibilityRole="button"
+            accessibilityLabel="Studied French before? Find your starting point"
+            testID="placement-entry-card"
+          >
+            <Ionicons name="compass" size={24} color={colors.skyDark} />
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={styles.placementTitle}>Studied French before?</Text>
+              <Text style={styles.placementSubtitle}>
+                Take a short check to find your starting point.
+              </Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
+          </Pressable>
+        ) : null}
         {pack.sections.map((section) => (
           <View key={section.id}>
             <Text style={styles.sectionTitle}>{section.title}</Text>
@@ -126,12 +159,18 @@ export default function LearnScreen() {
                       const isCompleted = !!courseProgress.completedLessons[ref.lesson.id];
                       const isCurrent = ref.globalIndex === currentIndex;
                       const isLocked = ref.globalIndex > currentIndex;
+                      // Placement-cleared (§84): before the accepted floor,
+                      // not completed — open for review, visually distinct
+                      // from BOTH completed and untouched.
+                      const isCleared =
+                        !isCompleted && ref.globalIndex < placementFloor;
                       const isLastInUnit = i === unitLessons.length - 1;
                       return (
                         <LessonNode
                           key={ref.lesson.id}
                           offset={indentFor(i)}
                           completed={isCompleted}
+                          cleared={isCleared}
                           current={isCurrent}
                           locked={isLocked}
                           crown={isLastInUnit}
@@ -145,6 +184,15 @@ export default function LearnScreen() {
                 </View>
               );
             })}
+            {activeCourseId === "fr-en" ? (
+              <CheckpointCard
+                sectionId={section.id}
+                sectionComplete={section.units
+                  .flatMap((u) => u.lessons)
+                  .every((l) => !!courseProgress.completedLessons[l.id])}
+                attempts={progress.assessment.checkpointAttempts}
+              />
+            ) : null}
           </View>
         ))}
       </ScrollView>
@@ -175,6 +223,7 @@ function Stat({
 function LessonNode({
   offset,
   completed,
+  cleared,
   current,
   locked,
   crown,
@@ -184,6 +233,8 @@ function LessonNode({
 }: {
   offset: number;
   completed: boolean;
+  /** Placement-cleared (§84): open for review, never marked complete. */
+  cleared: boolean;
   current: boolean;
   locked: boolean;
   crown: boolean;
@@ -196,6 +247,8 @@ function LessonNode({
   const iconColor = locked ? colors.neutral400 : colors.white;
   const icon = completed ? (
     <Ionicons name="checkmark-sharp" size={34} color={iconColor} />
+  ) : cleared ? (
+    <MaterialCommunityIcons name="fast-forward" size={32} color={iconColor} />
   ) : locked ? (
     crown ? (
       <MaterialCommunityIcons name="crown" size={32} color={iconColor} />
@@ -222,13 +275,20 @@ function LessonNode({
         accessibilityLabel={label}
         accessibilityState={{ disabled: locked, selected: current }}
         accessibilityHint={
-          locked ? "Locked. Complete earlier lessons first." : completed ? "Completed. Practice again." : "Start this lesson."
+          locked
+            ? "Locked. Complete earlier lessons first."
+            : completed
+              ? "Completed. Practice again."
+              : cleared
+                ? "Cleared by your placement check. Review any time."
+                : "Start this lesson."
         }
         style={({ pressed }) => [
           styles.node,
           locked
             ? styles.nodeLocked
             : { backgroundColor: color.main, borderColor: color.dark },
+          cleared && styles.nodeCleared,
           { borderBottomWidth: pressed ? 2 : 8 },
         ]}
       >
@@ -337,6 +397,20 @@ const useStyles = makeThemedStyles((colors) => StyleSheet.create({
     justifyContent: "center",
   },
   nodeLocked: { backgroundColor: colors.neutral200, borderColor: colors.neutral400 },
+  nodeCleared: { opacity: 0.65 },
+  placementCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    borderRadius: radius.md,
+    borderWidth: 2,
+    borderColor: colors.skyDark,
+    backgroundColor: colors.surface,
+    padding: 14,
+    marginBottom: 10,
+  },
+  placementTitle: { fontSize: 15, fontWeight: "800", color: colors.text },
+  placementSubtitle: { fontSize: 13, color: colors.textMuted },
   startBubble: {
     backgroundColor: colors.surface,
     borderWidth: 2,

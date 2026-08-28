@@ -150,3 +150,107 @@ export function buildReviewSessionDefinition(args: {
     allowUndo: courseId === FR_COURSE_ID,
   };
 }
+
+// ---------------------------------------------------------------------------
+// Phase 6: checkpoint sessions (§54, §104-108)
+// ---------------------------------------------------------------------------
+
+/** Compiled checkpoint artifact shape (src/content/assessment). */
+type CompiledCheckpoint = {
+  id: string;
+  checkpointVersion: number;
+  sectionId: string;
+  title: string;
+  description: string;
+  items: {
+    id: string;
+    itemVersion: number;
+    exercise: Exercise;
+    objectiveTargets: string[];
+    essential: boolean;
+  }[];
+  criteria: { minItemsPerObjective: number; demonstratedShare: number };
+};
+
+/**
+ * A scored checkpoint session (§49-59): exercises ONLY (no teach/concept —
+ * §108 structural), retryPolicy "none" (first attempt is the record, §55),
+ * no evidence flow (evidencePlanFor nulls scored kinds), no mistakes
+ * tracking, completion "checkpoint" (assessment record, zero XP).
+ */
+export function buildCheckpointSessionDefinition(
+  checkpoint: CompiledCheckpoint
+): SessionDefinition {
+  const steps: SessionStep[] = checkpoint.items.map((item) => ({
+    type: "exercise",
+    stepId: item.id,
+    exercise: item.exercise,
+  }));
+  return {
+    kind: "checkpoint",
+    courseId: "fr-en",
+    lessonId: checkpoint.id,
+    steps,
+    completion: "checkpoint",
+    evidenceSource: "lesson",
+    trackMistakes: false,
+    allowUndo: false,
+    retryPolicy: "none",
+    assessment: {
+      checkpointId: checkpoint.id,
+      checkpointVersion: checkpoint.checkpointVersion,
+      criteria: checkpoint.criteria,
+      itemObjectives: Object.fromEntries(
+        checkpoint.items.map((item) => [item.id, item.objectiveTargets])
+      ),
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Phase 6: placement sessions (§67-80, §115-120)
+// ---------------------------------------------------------------------------
+
+/** Compiled placement stage shape (src/content/assessment/fr-placement). */
+type CompiledPlacementStageSource = {
+  id: string;
+  title: string;
+  clusters: {
+    id: string;
+    objectiveId: string;
+    anchorLessonId: string;
+    items: { id: string; itemVersion: number; exercise: Exercise; objectiveTargets: string[] }[];
+  }[];
+};
+
+/**
+ * One placement stage as a scored session (§73): exercises only, first
+ * attempt is the record (§55), minimal feedback so the diagnostic never
+ * teaches mid-test (§118), an "I don't know" affordance recorded as a
+ * declared gap (§117), and NO learning-memory mutation of any kind — no
+ * evidence, no mistakes, no XP (§78). The route owns cross-stage flow and
+ * result storage; completion "placement" is a structural no-op.
+ */
+export function buildPlacementStageSessionDefinition(
+  stage: CompiledPlacementStageSource
+): SessionDefinition {
+  const steps: SessionStep[] = stage.clusters.flatMap((cluster) =>
+    cluster.items.map((item) => ({
+      type: "exercise" as const,
+      stepId: item.id,
+      exercise: item.exercise,
+    }))
+  );
+  return {
+    kind: "placement",
+    courseId: "fr-en",
+    lessonId: `placement:${stage.id}`,
+    steps,
+    completion: "placement",
+    evidenceSource: "lesson",
+    trackMistakes: false,
+    allowUndo: false,
+    retryPolicy: "none",
+    feedbackPolicy: "minimal",
+  };
+}

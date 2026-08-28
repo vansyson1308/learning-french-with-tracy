@@ -190,6 +190,69 @@ export function runInvariants(state: PersistedProgress, now: Date): string[] {
     }
   }
 
+  // Phase 6 (v3): the assessment container, when present, must be
+  // structurally sane — malformed checkpoint/placement data never reaches
+  // live state.
+  if (state.assessment !== undefined) {
+    const a = state.assessment as {
+      checkpointAttempts?: unknown;
+      placement?: unknown;
+      placementFloor?: unknown;
+    } | null;
+    if (!a || typeof a !== "object") {
+      problems.push("invalid assessment state");
+    } else {
+      if (!Array.isArray(a.checkpointAttempts)) {
+        problems.push("invalid checkpoint attempts");
+      } else {
+        for (const attempt of a.checkpointAttempts as {
+          checkpointId?: unknown;
+          checkpointVersion?: unknown;
+          startedAt?: unknown;
+          completedAt?: unknown;
+          itemResults?: unknown;
+          objectiveResults?: unknown;
+        }[]) {
+          if (
+            !attempt ||
+            typeof attempt.checkpointId !== "string" ||
+            !finiteAtLeast(attempt.checkpointVersion, 1) ||
+            !finiteAtLeast(attempt.startedAt, 0) ||
+            !finiteAtLeast(attempt.completedAt, 0) ||
+            (attempt.completedAt as number) > maxTimestamp ||
+            !Array.isArray(attempt.itemResults) ||
+            !Array.isArray(attempt.objectiveResults)
+          ) {
+            problems.push("invalid checkpoint attempt");
+            break;
+          }
+        }
+      }
+      if (!finiteAtLeast(a.placementFloor, 0)) {
+        problems.push("invalid placement floor");
+      }
+      if (a.placement !== undefined) {
+        const p = a.placement as {
+          placementVersion?: unknown;
+          completedAt?: unknown;
+          recommendedLessonId?: unknown;
+          recommendedFloorIndex?: unknown;
+        } | null;
+        if (
+          !p ||
+          typeof p !== "object" ||
+          !finiteAtLeast(p.placementVersion, 1) ||
+          !finiteAtLeast(p.completedAt, 0) ||
+          (p.completedAt as number) > maxTimestamp ||
+          typeof p.recommendedLessonId !== "string" ||
+          !finiteAtLeast(p.recommendedFloorIndex, 0)
+        ) {
+          problems.push("invalid placement result");
+        }
+      }
+    }
+  }
+
   if (state.reviewLog !== undefined) {
     if (!Array.isArray(state.reviewLog) || state.reviewLog.length > REVIEW_LOG_CAP) {
       problems.push("invalid review log");

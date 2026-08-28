@@ -1,0 +1,155 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "policyVersion": 1,
+  "minItemsForAssessed": 2,
+  "levels": [
+    {
+      "level": "PRE_A1",
+      "claimable": false,
+      "domains": [
+        {
+          "domain": "spoken_reception",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_reception",
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.reading.familiar_words"
+          ]
+        },
+        {
+          "domain": "spoken_production",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_production",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "interaction",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        }
+      ],
+      "coveredCompetences": [
+        "fr.obj.greetings.basic",
+        "fr.obj.vocab.everyday_basics"
+      ],
+      "unassessedDomains": [
+        "spoken_reception",
+        "spoken_production",
+        "written_production",
+        "interaction"
+      ],
+      "evidenceLimitations": [
+        "Spoken production is not assessed (no speaking assessment exists).",
+        "Listening is not assessed in scored assessment.",
+        "Interaction is not assessed."
+      ]
+    },
+    {
+      "level": "A1",
+      "claimable": false,
+      "domains": [
+        {
+          "domain": "spoken_reception",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_reception",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "spoken_production",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_production",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "interaction",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        }
+      ],
+      "coveredCompetences": [
+        "fr.obj.connected.elision",
+        "fr.obj.gender.articles_basic",
+        "fr.obj.gender.ending_patterns",
+        "fr.obj.greetings.basic",
+        "fr.obj.numbers.0_100",
+        "fr.obj.strategy.cognate_transfer",
+        "fr.obj.verbs.er_present",
+        "fr.obj.verbs.etre_avoir_present",
+        "fr.obj.vocab.everyday_basics",
+        "fr.obj.vocab.places_travel"
+      ],
+      "unassessedDomains": [
+        "spoken_reception",
+        "written_reception",
+        "spoken_production",
+        "written_production",
+        "interaction"
+      ],
+      "evidenceLimitations": [
+        "Spoken production is not assessed (no speaking assessment exists).",
+        "Listening is not assessed in scored assessment.",
+        "Interaction is not assessed."
+      ]
+    },
+    {
+      "level": "A2",
+      "claimable": false,
+      "domains": [
+        {
+          "domain": "spoken_reception",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_reception",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "spoken_production",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "written_production",
+          "status": "no_direct_objective",
+          "directAssessedObjectives": []
+        },
+        {
+          "domain": "interaction",
+          "status": "no_objectives_in_domain",
+          "directAssessedObjectives": []
+        }
+      ],
+      "coveredCompetences": [],
+      "unassessedDomains": [
+        "spoken_reception",
+        "written_reception",
+        "spoken_production",
+        "written_production",
+        "interaction"
+      ],
+      "evidenceLimitations": [
+        "Spoken production is not assessed (no speaking assessment exists).",
+        "Listening is not assessed in scored assessment.",
+        "Interaction is not assessed."
+      ]
+    }
+  ],
+  "wording": "CEFR-aligned estimate — not an official CEFR examination or certification."
+}

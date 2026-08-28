@@ -2,6 +2,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
+import {
+  capCheckpointAttempts,
+  emptyAssessmentState,
+  type CheckpointAttempt,
+  type PersistedAssessmentState,
+  type PlacementResult,
+} from "./assessment/types";
 import { addDays, dayString, localWeek } from "./dates";
 import { applyEvidence } from "./learning/engine";
 import type { ReviewEvidence } from "./learning/evidence";
@@ -75,6 +82,25 @@ type ProgressState = {
   activeDays: Record<string, DayActivity>;
   /** Append-only evidence log (v2), ring-capped at REVIEW_LOG_CAP. */
   reviewLog: ReviewLogEntry[];
+  /** Phase 6 learner assessment state (checkpoints + placement, v3). */
+  assessment: PersistedAssessmentState;
+
+  /**
+   * Records a completed checkpoint attempt (§60). Assessment record ONLY:
+   * no XP, no streak, no lesson completion, no FSRS/wordStats writes (§59).
+   * Retention: most recent attempts per checkpoint, capped; the latest is
+   * never dropped (§164).
+   */
+  recordCheckpointAttempt: (attempt: CheckpointAttempt) => void;
+  /**
+   * Store a completed placement diagnostic (§78-83): the result plus the
+   * floor the learner ACCEPTED (their recommendation, or 0 for "start from
+   * the beginning"). Mutates assessment state only — no completedLessons,
+   * no XP, no streak, no learning memory of any kind.
+   */
+  setPlacementResult: (result: PlacementResult, acceptedFloorIndex: number) => void;
+  /** Clear the placement floor (§86). The result record is kept as history. */
+  resetPlacement: () => void;
 
   course: () => CourseProgress;
   completeLesson: (lessonId: string, perfect: boolean) => void;
@@ -152,6 +178,7 @@ export const useProgress = create<ProgressState>()(
       courses: {},
       activeDays: {},
       reviewLog: [],
+      assessment: emptyAssessmentState(),
 
       course: () => get().courses[get().activeCourseId] ?? emptyCourseProgress(),
 
@@ -196,6 +223,31 @@ export const useProgress = create<ProgressState>()(
           return { streak, lastActiveDay: today, activeDays, ...daily, ...courseUpdate };
         }),
 
+      recordCheckpointAttempt: (attempt) =>
+        set((state) => ({
+          assessment: {
+            ...state.assessment,
+            checkpointAttempts: capCheckpointAttempts([
+              ...state.assessment.checkpointAttempts,
+              attempt,
+            ]),
+          },
+        })),
+      setPlacementResult: (result, acceptedFloorIndex) =>
+        set((state) => ({
+          assessment: {
+            ...state.assessment,
+            placement: result,
+            placementFloor:
+              Number.isFinite(acceptedFloorIndex) && acceptedFloorIndex > 0
+                ? Math.floor(acceptedFloorIndex)
+                : 0,
+          },
+        })),
+      resetPlacement: () =>
+        set((state) => ({
+          assessment: { ...state.assessment, placementFloor: 0 },
+        })),
       recordPracticeSession: () =>
         set((state) => {
           const { today, streak } = activityBase(state, new Date());
@@ -351,11 +403,19 @@ export const useProgress = create<ProgressState>()(
   )
 );
 
+/**
+ * The "current" lesson on the PATH: the first incomplete lesson at or after
+ * the accepted placement floor (§87-88). With no placement, the floor is 0
+ * and this is simply the first incomplete lesson. Placement-cleared lessons
+ * before the floor stay open (§81-84) — they are just never "current".
+ */
 export function currentLessonIndex(
   completed: Record<string, true>,
-  lessonIds: string[]
+  lessonIds: string[],
+  floorIndex = 0
 ) {
-  const firstIncomplete = lessonIds.findIndex((id) => !completed[id]);
+  const floor = Math.max(0, Math.min(Math.floor(floorIndex), lessonIds.length));
+  const firstIncomplete = lessonIds.findIndex((id, i) => i >= floor && !completed[id]);
   return firstIncomplete === -1 ? lessonIds.length : firstIncomplete;
 }
 

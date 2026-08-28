@@ -22,6 +22,20 @@ export const WordSchema = z.strictObject({
 
 const gradeTargets = z.array(z.string().min(1)).min(1).optional();
 
+/**
+ * Stable course-objective id, e.g. "fr.obj.gender.articles_basic" — a
+ * long-lived content identity (§20), never derived from titles.
+ */
+export const objectiveId = z.string().regex(/^fr\.obj\.[a-z0-9_]+\.[a-z0-9_]+$/);
+
+/**
+ * Course-objective assessment/practice targets (§29-31). AUTHORED metadata,
+ * orthogonal to compiler-emitted `gradeTargets`: gradeTargets is lexical
+ * FSRS identity; objectiveTargets is curriculum/assessment meaning. The two
+ * systems are never conflated.
+ */
+const objectiveTargets = z.array(objectiveId).min(1).optional();
+
 export const SelectExerciseSchema = z.strictObject({
   type: z.literal("select"),
   id,
@@ -33,6 +47,7 @@ export const SelectExerciseSchema = z.strictObject({
     .min(2),
   correct: z.number().int().min(0),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const WordBankExerciseSchema = z.strictObject({
@@ -44,6 +59,7 @@ export const WordBankExerciseSchema = z.strictObject({
   tokens: z.array(z.string().min(1)).min(1),
   answer: z.array(z.string().min(1)).min(1),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const MatchExerciseSchema = z.strictObject({
@@ -53,6 +69,7 @@ export const MatchExerciseSchema = z.strictObject({
     .array(z.strictObject({ target: z.string().min(1), native: z.string().min(1) }))
     .min(2),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const TypeAnswerExerciseSchema = z.strictObject({
@@ -69,6 +86,7 @@ export const TypeAnswerExerciseSchema = z.strictObject({
   answer: z.string().min(1),
   alternatives: z.array(z.string()),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const FillBlankExerciseSchema = z.strictObject({
@@ -80,6 +98,7 @@ export const FillBlankExerciseSchema = z.strictObject({
   options: z.array(z.string().min(1)).min(2),
   correct: z.number().int().min(0),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const CONJUGATION_CELLS = [
@@ -114,6 +133,7 @@ export const ArticleSelectExerciseSchema = z.strictObject({
   gloss: z.string().min(1),
   correct: z.number().int().min(0),
   audioTarget: z.string().min(1).optional(),
+  objectiveTargets,
 });
 
 /**
@@ -135,6 +155,7 @@ export const ConjugationClozeExerciseSchema = z.strictObject({
   answer: z.string().min(1),
   /** Documented acceptable variants only — never meaning-changing endings. */
   alternatives: z.array(z.string().min(1)),
+  objectiveTargets,
 });
 
 export const ExerciseSchema = z.discriminatedUnion("type", [
@@ -169,6 +190,12 @@ export const LessonSchema = z.strictObject({
   title: z.string().min(1),
   exercises: z.array(ExerciseSchema).min(1),
   flow: z.array(LessonFlowEntrySchema).min(1).optional(),
+  /**
+   * Course objectives this lesson teaches (§27). Required for every French
+   * lesson by validation; forbidden outside fr-en (§153) — other courses
+   * carry no CEFR/objective metadata.
+   */
+  objectives: z.array(objectiveId).min(1).optional(),
 });
 
 export const UnitSchema = z.strictObject({
@@ -412,6 +439,8 @@ export const ConceptSchema = z.strictObject({
   /** Honest exceptions/limits of the rule (may be empty, never hidden). */
   exceptions: z.array(z.string().min(1)),
   memoryHint: z.string().min(1).optional(),
+  /** Course objectives this concept teaches toward (§28). */
+  objectives: z.array(objectiveId).min(1).optional(),
   /** Registered sources backing the FACTS (data stats, references). */
   sourceRefs: z
     .array(z.strictObject({ source: z.string().min(1), key: z.string().min(1).optional() }))
@@ -509,3 +538,199 @@ export const SourceRegistrySchema = z.strictObject({
     .min(1),
 });
 export type SourceRegistry = z.infer<typeof SourceRegistrySchema>;
+
+// ---------------------------------------------------------------------------
+// Phase 6: course objectives, CEFR alignment, assessment (§17-22, §98-103)
+// ---------------------------------------------------------------------------
+
+export const OBJECTIVE_CATEGORIES = [
+  "lexical",
+  "grammar",
+  "spoken_reception",
+  "written_reception",
+  "spoken_production",
+  "written_production",
+  "interaction",
+  "phonology",
+  "strategy",
+] as const;
+export type ObjectiveCategory = (typeof OBJECTIVE_CATEGORIES)[number];
+
+export const CEFR_LEVELS = ["PRE_A1", "A1", "A2", "B1", "B2", "C1", "C2"] as const;
+export type CefrLevel = (typeof CEFR_LEVELS)[number];
+
+/**
+ * One CEFR alignment (§18). `direct` means the objective closely represents
+ * the communicative ability the referenced scale describes at that level;
+ * `supports` means the objective develops linguistic resources that support
+ * it. When in doubt the mapping MUST be `supports` (§166) — overclaiming is
+ * the failure mode this schema exists to prevent. `sourceRef` names the
+ * official reference (registered in assessment RESEARCH.md), never quoted
+ * descriptor text.
+ */
+export const CefrAlignmentSchema = z.strictObject({
+  level: z.enum(CEFR_LEVELS),
+  scaleName: z.string().min(1),
+  relation: z.enum(["direct", "supports"]),
+  sourceRef: z.string().min(1),
+});
+export type CefrAlignment = z.infer<typeof CefrAlignmentSchema>;
+
+/**
+ * An app-owned course objective (§17). `canDo` is ORIGINAL app wording in
+ * learner-friendly can-do form — official CEFR descriptor text is never
+ * pasted (§141). `essential` marks objectives whose demonstration the
+ * section checkpoints must cover (§64).
+ */
+export const CourseObjectiveSchema = z.strictObject({
+  id: objectiveId,
+  title: z.string().min(1),
+  canDo: z.string().min(10),
+  category: z.enum(OBJECTIVE_CATEGORIES),
+  prerequisites: z.array(objectiveId),
+  cefrAlignments: z.array(CefrAlignmentSchema).min(1),
+  essential: z.boolean(),
+  /** Honest evidence limitation shown to reviewers/reports (optional). */
+  evidenceNote: z.string().optional(),
+});
+export type CourseObjective = z.infer<typeof CourseObjectiveSchema>;
+
+export const CourseObjectivesSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  objectives: z.array(CourseObjectiveSchema).min(1),
+});
+export type CourseObjectives = z.infer<typeof CourseObjectivesSchema>;
+
+/**
+ * Claim policy (§98-103): the data half of the overall-level claim gate.
+ * A level is claimable only when every `requiredDomains` entry has at least
+ * `minAssessedObjectivesPerDomain` objectives that (a) belong to that
+ * activity domain, (b) carry a DIRECT alignment at the level, and (c) have
+ * real checkpoint assessment coverage. Vocabulary counts and lesson counts
+ * are deliberately not inputs (§100-101).
+ */
+export const ClaimPolicySchema = z.strictObject({
+  version: z.literal(1),
+  /** Levels the product evaluates claims for (higher levels implicitly false). */
+  evaluatedLevels: z.array(z.enum(CEFR_LEVELS)).min(1),
+  /**
+   * The communicative-activity domains an overall claim requires at every
+   * evaluated level. Uses objective categories restricted to activity-like
+   * domains (reception/production/interaction) — competences (lexical,
+   * grammar, phonology, strategy) support but never substitute (§8).
+   */
+  requiredDomains: z.array(z.enum(OBJECTIVE_CATEGORIES)).min(1),
+  minAssessedObjectivesPerDomain: z.number().int().min(1),
+  /** Wording rule: even a claimable level is an aligned estimate (§102). */
+  claimWording: z.string().min(1),
+});
+export type ClaimPolicy = z.infer<typeof ClaimPolicySchema>;
+
+// ---------------------------------------------------------------------------
+// Phase 6: checkpoint assessment banks (§49-66, §121-123)
+// ---------------------------------------------------------------------------
+
+export const checkpointId = z.string().regex(/^fr\.checkpoint\.[a-z0-9-]+$/);
+export const assessmentItemId = z.string().regex(/^fr\.cpi\.[a-z0-9_.-]+$/);
+
+/**
+ * One original checkpoint item (§51, §53): a standard exercise payload plus
+ * REQUIRED objective mapping. Authored content — gradeTargets never appears
+ * (checkpoints don't touch lexical FSRS), and item ids/versions are stable
+ * so stored attempts stay interpretable (§66, §123).
+ */
+export const CheckpointItemSchema = z.strictObject({
+  id: assessmentItemId,
+  itemVersion: z.number().int().min(1),
+  exercise: ExerciseSchema,
+  objectiveTargets: z.array(objectiveId).min(1),
+  /** Items assessing an essential objective the blueprint counts on. */
+  essential: z.boolean(),
+});
+export type CheckpointItem = z.infer<typeof CheckpointItemSchema>;
+
+/**
+ * Product-local demonstration criteria (§62-63): NOT official CEFR cut
+ * scores — documented course diagnostics. An objective is `demonstrated`
+ * in an attempt when it has ≥ minItemsPerObjective scored items AND the
+ * correct share is ≥ demonstratedShare; with fewer items the result is
+ * `insufficient_evidence`; otherwise `needs_practice`.
+ */
+export const CheckpointCriteriaSchema = z.strictObject({
+  minItemsPerObjective: z.number().int().min(2),
+  demonstratedShare: z.number().min(0.5).max(1),
+});
+
+export const CheckpointSchema = z.strictObject({
+  id: checkpointId,
+  /** Bump when items/criteria change meaning (§66). */
+  checkpointVersion: z.number().int().min(1),
+  /** The PATH section whose completion unlocks this checkpoint. */
+  sectionId: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  items: z.array(CheckpointItemSchema).min(1),
+  criteria: CheckpointCriteriaSchema,
+});
+export type Checkpoint = z.infer<typeof CheckpointSchema>;
+
+export const CheckpointsSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  checkpoints: z.array(CheckpointSchema).min(1),
+});
+export type Checkpoints = z.infer<typeof CheckpointsSchema>;
+
+// ---------------------------------------------------------------------------
+// Phase 6: placement diagnostic (§67-80, §121-123)
+// ---------------------------------------------------------------------------
+
+export const placementStageId = z.string().regex(/^fr\.pstage\.[a-z0-9_]+$/);
+export const placementClusterId = z.string().regex(/^fr\.pcluster\.[a-z0-9_]+$/);
+export const placementItemId = z.string().regex(/^fr\.pli\.[a-z0-9_.-]+$/);
+
+export const PlacementItemSchema = z.strictObject({
+  id: placementItemId,
+  itemVersion: z.number().int().min(1),
+  exercise: ExerciseSchema,
+  objectiveTargets: z.array(objectiveId).min(1),
+});
+export type PlacementItem = z.infer<typeof PlacementItemSchema>;
+
+/**
+ * One curriculum-area probe (§74): a cluster maps to one objective and one
+ * ANCHOR lesson — the recommendation for a learner whose earliest gap is
+ * this cluster (§75). Cluster order inside a stage must follow curriculum
+ * order (validated), so "earliest weak cluster" is well-defined.
+ */
+export const PlacementClusterSchema = z.strictObject({
+  id: placementClusterId,
+  objectiveId,
+  anchorLessonId: z.string().min(1),
+  items: z.array(PlacementItemSchema).min(1).max(3),
+});
+export type PlacementCluster = z.infer<typeof PlacementClusterSchema>;
+
+export const PlacementStageSchema = z.strictObject({
+  id: placementStageId,
+  title: z.string().min(1),
+  clusters: z.array(PlacementClusterSchema).min(1),
+});
+export type PlacementStage = z.infer<typeof PlacementStageSchema>;
+
+/**
+ * The staged deterministic diagnostic (§73): stage 2 runs only when every
+ * stage-1 cluster is comfortable. No IRT, no adaptivity beyond the stage
+ * gate (§122). Item budget across all stages is validated ≤ maxItems.
+ */
+export const PlacementSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  placementVersion: z.number().int().min(1),
+  maxItems: z.number().int().min(1).max(18),
+  /** Recommendation when every probed cluster is comfortable. */
+  allComfortableLessonId: z.string().min(1),
+  stages: z.array(PlacementStageSchema).min(1),
+});
+export type PlacementContent = z.infer<typeof PlacementSchema>;

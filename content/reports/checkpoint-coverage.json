@@ -1,0 +1,41 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "checkpoints": [
+    {
+      "id": "fr.checkpoint.section-1",
+      "checkpointVersion": 1,
+      "sectionId": "fr-en:section-1",
+      "itemCount": 12,
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      },
+      "objectives": {
+        "fr.obj.greetings.basic": 3,
+        "fr.obj.reading.familiar_words": 3,
+        "fr.obj.vocab.everyday_basics": 3,
+        "fr.obj.vocab.places_travel": 3
+      }
+    },
+    {
+      "id": "fr.checkpoint.section-2",
+      "checkpointVersion": 1,
+      "sectionId": "fr-en:section-2",
+      "itemCount": 18,
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      },
+      "objectives": {
+        "fr.obj.connected.elision": 2,
+        "fr.obj.gender.articles_basic": 2,
+        "fr.obj.gender.ending_patterns": 3,
+        "fr.obj.numbers.0_100": 3,
+        "fr.obj.strategy.cognate_transfer": 2,
+        "fr.obj.verbs.er_present": 3,
+        "fr.obj.verbs.etre_avoir_present": 3,
+        "fr.obj.writing.familiar_words": 9
+      }
+    }
+  ]
+}

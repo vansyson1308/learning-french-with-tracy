@@ -25,6 +25,23 @@ import {
   validatePedagogy,
 } from "./lib/pedagogy";
 import {
+  collectAssessmentItemTargets,
+  compileCheckpointsArtifact,
+  compileObjectivesArtifact,
+  compilePlacementArtifact,
+  loadCheckpoints,
+  loadClaimPolicy,
+  loadCourseObjectives,
+  loadPlacement,
+  validateAssessment,
+} from "./lib/assessment";
+import {
+  buildCefrAlignment,
+  buildObjectiveCoverage,
+  evaluateClaimGate,
+} from "./lib/assessment-reports";
+import { PackSchema } from "../content/schema";
+import {
   buildSqliteDb,
   compileLexiconArtifacts,
   dbAssetName,
@@ -47,6 +64,7 @@ const validation = [
   ...validateContent().errors,
   ...validateLexicon().errors,
   ...validatePedagogy().errors,
+  ...validateAssessment().errors,
 ];
 if (validation.length > 0) {
   for (const e of validation) console.error(`ERROR ${e}`);
@@ -74,6 +92,112 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
       thresholds: { minLemmas: 100, minReliabilityPct: 90, almostAlwaysPct: 99 },
       population: genderStats.population,
       patterns: deriveGenderPatterns(genderStats),
+    }),
+  });
+}
+
+// §131-135 assessment reports: objective coverage, CEFR alignment, and the
+// overall-level claim gate — deterministic content-only artifacts. The
+// checkpoint/placement item-target lists come from the authored assessment
+// content when present (empty arrays until those banks exist).
+{
+  const objectivesDoc = loadCourseObjectives();
+  const policy = loadClaimPolicy();
+  const frPack = PackSchema.parse(readJson("content/courses/fr-en.json"));
+  const concepts = loadPedagogyConcepts().concepts;
+  const checkpointItemTargets = collectAssessmentItemTargets("content/fr/assessment/checkpoints.json", "checkpoints");
+  const placementItemTargets = collectAssessmentItemTargets("content/fr/assessment/placement.json", "stages");
+  files.push({
+    relPath: "content/reports/course-objective-coverage.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      objectives: buildObjectiveCoverage({
+        objectives: objectivesDoc.objectives,
+        frPack,
+        concepts,
+        checkpointItemTargets,
+        placementItemTargets,
+      }),
+    }),
+  });
+  files.push({
+    relPath: "content/reports/cefr-alignment.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      ...buildCefrAlignment(objectivesDoc.objectives),
+    }),
+  });
+  files.push({
+    relPath: "src/content/assessment/fr-objectives.json",
+    contents: compileObjectivesArtifact(objectivesDoc),
+  });
+  const checkpoints = loadCheckpoints();
+  files.push({
+    relPath: "src/content/assessment/fr-checkpoints.json",
+    contents: compileCheckpointsArtifact(checkpoints),
+  });
+  files.push({
+    relPath: "content/reports/checkpoint-coverage.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      checkpoints: checkpoints.checkpoints.map((cp) => ({
+        id: cp.id,
+        checkpointVersion: cp.checkpointVersion,
+        sectionId: cp.sectionId,
+        itemCount: cp.items.length,
+        criteria: cp.criteria,
+        objectives: Object.fromEntries(
+          [...cp.items.reduce((m, item) => {
+            for (const oid of item.objectiveTargets) m.set(oid, (m.get(oid) ?? 0) + 1);
+            return m;
+          }, new Map<string, number>()).entries()].sort(([a], [b]) => a.localeCompare(b))
+        ),
+      })),
+    }),
+  });
+  files.push({
+    relPath: "content/reports/cefr-claim-gate.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      ...evaluateClaimGate({
+        objectives: objectivesDoc.objectives,
+        policy,
+        checkpointItemTargets,
+      }),
+    }),
+  });
+  const placement = loadPlacement();
+  files.push({
+    relPath: "src/content/assessment/fr-placement.json",
+    contents: compilePlacementArtifact(placement),
+  });
+  files.push({
+    relPath: "content/reports/placement-coverage.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      placementVersion: placement.placementVersion,
+      maxItems: placement.maxItems,
+      totalItems: placement.stages.reduce(
+        (n, s) => n + s.clusters.reduce((m, c) => m + c.items.length, 0),
+        0
+      ),
+      allComfortableLessonId: placement.allComfortableLessonId,
+      stages: placement.stages.map((s) => ({
+        id: s.id,
+        clusters: s.clusters.map((c) => ({
+          id: c.id,
+          objectiveId: c.objectiveId,
+          anchorLessonId: c.anchorLessonId,
+          itemCount: c.items.length,
+        })),
+      })),
+      objectivesNotProbed: objectivesDoc.objectives
+        .map((o) => o.id)
+        .filter(
+          (oid) =>
+            !placement.stages.some((s) => s.clusters.some((c) => c.objectiveId === oid))
+        )
+        .sort((a, b) => a.localeCompare(b)),
     }),
   });
 }

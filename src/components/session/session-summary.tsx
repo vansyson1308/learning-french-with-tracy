@@ -32,6 +32,10 @@ const TITLES: Record<SessionKind, string> = {
   review: "Review complete!",
   mistakes: "Mistakes conquered!",
   today: "That's today, done!",
+  // Scored assessments route to their own result screens; these fire only
+  // if the generic summary ever renders for them.
+  checkpoint: "Check complete!",
+  placement: "Check complete!",
 };
 
 export function SessionSummary({

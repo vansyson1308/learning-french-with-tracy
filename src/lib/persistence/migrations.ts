@@ -11,6 +11,11 @@
  *   v2  Phase 1: fr-en ONLY moves to FSRS — srs → cards (stable ids via
  *       SM-2 estimation) + srsLegacy rollback copy + wordStats re-key;
  *       top-level reviewLog initialized. Every other course byte-preserved.
+ *   v3  Phase 6: top-level `assessment` container (checkpoint attempts,
+ *       placement result, placement floor). Everything else — srsLegacy
+ *       included (§46: its removal needs its own explicit migration
+ *       decision) — passes through untouched; placementFloor starts at 0
+ *       so existing users behave exactly as before (§89).
  */
 
 import {
@@ -23,8 +28,12 @@ import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 import { estimateFsrsCardFromSm2 } from "../learning/sm2-migration";
 import type { SrsEntry } from "../srs";
+import {
+  emptyAssessmentState,
+  type PersistedAssessmentState,
+} from "../assessment/types";
 
-export const PERSIST_VERSION = 2;
+export const PERSIST_VERSION = 3;
 
 /** Course flat-legacy (pre-per-course) progress nests under. */
 export const DEFAULT_COURSE_ID = "es-en";
@@ -40,7 +49,10 @@ export type PersistedCourseProgress = {
   srs?: Record<string, SrsEntry>;
   /** FSRS cards keyed by serialized CardKey. fr-en only, from v2. */
   cards?: Record<string, FsrsCardState>;
-  /** One-release rollback copy of the pre-v2 fr srs map (removed in v3). */
+  /**
+   * Rollback copy of the pre-v2 fr srs map. Still retained at v3 — removing
+   * rollback data requires a separate explicit migration decision (§46).
+   */
   srsLegacy?: Record<string, SrsEntry>;
 } & Record<string, unknown>;
 export type PersistedDayActivity = {
@@ -63,6 +75,8 @@ export type PersistedProgress = {
   activeDays: Record<string, PersistedDayActivity>;
   /** Append-only evidence log (added in v2), ring-capped in the store. */
   reviewLog?: ReviewLogEntry[];
+  /** Learner assessment state (added in v3): checkpoints + placement. */
+  assessment?: PersistedAssessmentState;
 } & Record<string, unknown>;
 
 /** Route ids that practice sessions historically wrote into completedLessons. */
@@ -223,6 +237,28 @@ function checkFailureSeam(targetVersion: number): void {
   }
 }
 
+/**
+ * v2 → v3: Phase 6 assessment container. Additive only — initializes the
+ * `assessment` field (empty attempts, no placement, floor 0). A malformed
+ * pre-existing value of the field is replaced by the empty container; a
+ * structurally valid one (e.g. re-import of a v3 backup routed through the
+ * chain) passes through.
+ */
+function migrateV2toV3(persisted: PersistedProgress): PersistedProgress {
+  const existing = persisted.assessment;
+  const valid =
+    !!existing &&
+    typeof existing === "object" &&
+    Array.isArray((existing as PersistedAssessmentState).checkpointAttempts) &&
+    typeof (existing as PersistedAssessmentState).placementFloor === "number" &&
+    Number.isFinite((existing as PersistedAssessmentState).placementFloor) &&
+    (existing as PersistedAssessmentState).placementFloor >= 0;
+  return {
+    ...persisted,
+    assessment: valid ? (existing as PersistedAssessmentState) : emptyAssessmentState(),
+  };
+}
+
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
@@ -238,6 +274,10 @@ export function migrateProgress(
   if (fromVersion < 2 && toVersion >= 2) {
     checkFailureSeam(2);
     state = migrateV1toV2(state as PersistedProgress);
+  }
+  if (fromVersion < 3 && toVersion >= 3) {
+    checkFailureSeam(3);
+    state = migrateV2toV3(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }

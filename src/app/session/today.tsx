@@ -47,6 +47,7 @@ export default function TodaySessionRoute() {
       completedLessons: course?.completedLessons ?? {},
       cards: course?.cards,
       preset,
+      placementFloor: state.assessment.placementFloor,
     });
     return {
       plan,

@@ -7,6 +7,11 @@ module.exports = {
   preset: "jest-expo",
   roots: ["<rootDir>/integration-tests"],
   setupFiles: ["<rootDir>/integration-tests/setup.js"],
+  // These are full-router behavior tests (renderRouter over the real app
+  // tree); on a contended CI runner with all suites in parallel, a single
+  // render can exceed jest's 5s default. Assertions are unchanged — this is
+  // capacity headroom, not tolerance.
+  testTimeout: 30000,
   moduleNameMapper: {
     // Mirror tsconfig: @/assets/* lives at the repo root, @/* under src/.
     "^@/assets/(.*)$": "<rootDir>/assets/$1",

@@ -328,6 +328,10 @@
                   "answer": "I am a woman.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -579,6 +583,10 @@
                   "answer": "She is a girl.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -828,6 +836,10 @@
                   "answer": "I eat bread.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -1075,6 +1087,10 @@
                   "answer": "I drink milk.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             }
           ]
@@ -1400,6 +1416,10 @@
                   "answer": "I am doing well, thank you.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.greetings.basic",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -1651,6 +1671,10 @@
                   "answer": "Very well, and you?",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.greetings.basic",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -1904,6 +1928,10 @@
                   "answer": "Thank you very much, madam.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.greetings.basic",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -2153,6 +2181,10 @@
                   "answer": "Have a good evening!",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.greetings.basic",
+                "fr.obj.reading.familiar_words"
               ]
             }
           ]
@@ -2472,6 +2504,10 @@
                   "answer": "I eat bread.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -2721,6 +2757,10 @@
                   "answer": "I want some juice.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -2970,6 +3010,10 @@
                   "answer": "I eat an egg.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -3219,6 +3263,10 @@
                   "answer": "I eat chicken.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             }
           ]
@@ -3540,6 +3588,10 @@
                   "answer": "The cat is small.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -3793,6 +3845,10 @@
                   "answer": "The horse is fast.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -4048,6 +4104,10 @@
                   "answer": "The fish is in the water.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -4297,6 +4357,10 @@
                   "answer": "I love animals.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.everyday_basics",
+                "fr.obj.reading.familiar_words"
               ]
             }
           ]
@@ -4624,6 +4688,10 @@
                   "answer": "I am looking for the hotel.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.places_travel",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -4873,6 +4941,10 @@
                   "answer": "Go straight ahead.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.places_travel",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -5124,6 +5196,10 @@
                   "answer": "It is next to the bank.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.places_travel",
+                "fr.obj.reading.familiar_words"
               ]
             },
             {
@@ -5377,6 +5453,10 @@
                   "answer": "The train leaves at ten o'clock.",
                   "alternatives": []
                 }
+              ],
+              "objectives": [
+                "fr.obj.vocab.places_travel",
+                "fr.obj.reading.familiar_words"
               ]
             }
           ]
@@ -5577,7 +5657,10 @@
                   ],
                   "noun": "maison",
                   "gloss": "the house",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.articles_basic"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -5588,7 +5671,10 @@
                   ],
                   "noun": "voyage",
                   "gloss": "the trip",
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.articles_basic"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5620,7 +5706,10 @@
                   ],
                   "noun": "question",
                   "gloss": "the question",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.articles_basic"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -5631,7 +5720,10 @@
                     "Le",
                     "La"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.articles_basic"
+                  ]
                 }
               ],
               "flow": [
@@ -5665,6 +5757,9 @@
                 {
                   "exercise": "fr-en:ua-l0-e8"
                 }
+              ],
+              "objectives": [
+                "fr.obj.gender.articles_basic"
               ]
             },
             {
@@ -5764,7 +5859,10 @@
                   ],
                   "noun": "vérité",
                   "gloss": "the truth",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -5775,7 +5873,10 @@
                   ],
                   "noun": "chance",
                   "gloss": "luck",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5807,7 +5908,10 @@
                   ],
                   "noun": "situation",
                   "gloss": "the situation",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -5818,7 +5922,10 @@
                     "Le",
                     "La"
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 }
               ],
               "flow": [
@@ -5852,6 +5959,9 @@
                 {
                   "exercise": "fr-en:ua-l1-e8"
                 }
+              ],
+              "objectives": [
+                "fr.obj.gender.ending_patterns"
               ]
             },
             {
@@ -5972,7 +6082,10 @@
                   ],
                   "noun": "cadeau",
                   "gloss": "the gift",
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -5983,7 +6096,10 @@
                   ],
                   "noun": "moment",
                   "gloss": "the moment",
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -5994,7 +6110,10 @@
                   ],
                   "noun": "papier",
                   "gloss": "the paper",
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -6005,7 +6124,10 @@
                     "Le",
                     "La"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 }
               ],
               "flow": [
@@ -6039,6 +6161,9 @@
                 {
                   "exercise": "fr-en:ua-l2-e8"
                 }
+              ],
+              "objectives": [
+                "fr.obj.gender.ending_patterns"
               ]
             },
             {
@@ -6138,7 +6263,10 @@
                   ],
                   "noun": "patron",
                   "gloss": "the boss",
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -6149,7 +6277,10 @@
                   ],
                   "noun": "raison",
                   "gloss": "the reason",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -6160,7 +6291,10 @@
                   ],
                   "noun": "vie",
                   "gloss": "life",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -6171,7 +6305,10 @@
                   ],
                   "noun": "sécurité",
                   "gloss": "safety",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -6182,7 +6319,10 @@
                   ],
                   "noun": "maison",
                   "gloss": "the house",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -6193,7 +6333,10 @@
                     "Le",
                     "La"
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 }
               ],
               "flow": [
@@ -6230,6 +6373,10 @@
                 {
                   "exercise": "fr-en:ua-l3-e9"
                 }
+              ],
+              "objectives": [
+                "fr.obj.gender.ending_patterns",
+                "fr.obj.gender.articles_basic"
               ]
             }
           ]
@@ -6331,7 +6478,10 @@
                   "verb": "être",
                   "cell": "pre:1s",
                   "answer": "suis",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6341,7 +6491,10 @@
                   "verb": "être",
                   "cell": "pre:2s",
                   "answer": "es",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6351,7 +6504,10 @@
                   "verb": "être",
                   "cell": "pre:3s",
                   "answer": "est",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6361,7 +6517,10 @@
                   "verb": "avoir",
                   "cell": "pre:1s",
                   "answer": "ai",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6371,7 +6530,10 @@
                   "verb": "avoir",
                   "cell": "pre:2s",
                   "answer": "as",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6381,7 +6543,10 @@
                   "verb": "avoir",
                   "cell": "pre:3s",
                   "answer": "a",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "select",
@@ -6412,7 +6577,10 @@
                   "verb": "avoir",
                   "cell": "pre:1p",
                   "answer": "avons",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 }
               ],
               "flow": [
@@ -6449,6 +6617,10 @@
                 {
                   "exercise": "fr-en:ub-l0-e9"
                 }
+              ],
+              "objectives": [
+                "fr.obj.verbs.etre_avoir_present",
+                "fr.obj.writing.familiar_words"
               ]
             },
             {
@@ -6526,7 +6698,10 @@
                   "verb": "parler",
                   "cell": "pre:3s",
                   "answer": "parle",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6536,7 +6711,10 @@
                   "verb": "parler",
                   "cell": "pre:2s",
                   "answer": "parles",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6546,7 +6724,10 @@
                   "verb": "habiter",
                   "cell": "pre:1p",
                   "answer": "habitons",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6556,7 +6737,10 @@
                   "verb": "aimer",
                   "cell": "pre:2p",
                   "answer": "aimez",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6566,7 +6750,10 @@
                   "verb": "parler",
                   "cell": "pre:3p",
                   "answer": "parlent",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6576,7 +6763,10 @@
                   "verb": "aimer",
                   "cell": "pre:1s",
                   "answer": "aime",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "select",
@@ -6634,6 +6824,10 @@
                 {
                   "exercise": "fr-en:ub-l1-e9"
                 }
+              ],
+              "objectives": [
+                "fr.obj.verbs.er_present",
+                "fr.obj.writing.familiar_words"
               ]
             },
             {
@@ -6690,7 +6884,10 @@
                   "verb": "aller",
                   "cell": "pre:1s",
                   "answer": "vais",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.aller_faire_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6700,7 +6897,10 @@
                   "verb": "aller",
                   "cell": "pre:2s",
                   "answer": "vas",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.aller_faire_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6710,7 +6910,10 @@
                   "verb": "aller",
                   "cell": "pre:3s",
                   "answer": "va",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.aller_faire_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6720,7 +6923,10 @@
                   "verb": "faire",
                   "cell": "pre:3s",
                   "answer": "fait",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.aller_faire_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6730,7 +6936,10 @@
                   "verb": "faire",
                   "cell": "pre:1p",
                   "answer": "faisons",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.aller_faire_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6740,7 +6949,10 @@
                   "verb": "aller",
                   "cell": "pre:1s",
                   "answer": "vais",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.futur_proche"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6750,7 +6962,10 @@
                   "verb": "aller",
                   "cell": "pre:1p",
                   "answer": "allons",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.futur_proche"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6760,7 +6975,10 @@
                   "verb": "aller",
                   "cell": "pre:3p",
                   "answer": "vont",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.futur_proche"
+                  ]
                 },
                 {
                   "type": "select",
@@ -6821,6 +7039,11 @@
                 {
                   "exercise": "fr-en:ub-l2-e10"
                 }
+              ],
+              "objectives": [
+                "fr.obj.verbs.aller_faire_present",
+                "fr.obj.verbs.futur_proche",
+                "fr.obj.writing.familiar_words"
               ]
             },
             {
@@ -6835,7 +7058,10 @@
                   "verb": "être",
                   "cell": "pre:2p",
                   "answer": "êtes",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6845,7 +7071,10 @@
                   "verb": "être",
                   "cell": "pre:1p",
                   "answer": "sommes",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6855,7 +7084,10 @@
                   "verb": "être",
                   "cell": "pre:3p",
                   "answer": "sont",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6865,7 +7097,10 @@
                   "verb": "avoir",
                   "cell": "pre:3p",
                   "answer": "ont",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6875,7 +7110,10 @@
                   "verb": "avoir",
                   "cell": "pre:1s",
                   "answer": "ai",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.passe_compose_avoir"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6885,7 +7123,10 @@
                   "verb": "avoir",
                   "cell": "pre:2s",
                   "answer": "as",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.passe_compose_avoir"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6895,7 +7136,10 @@
                   "verb": "avoir",
                   "cell": "pre:3s",
                   "answer": "a",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.passe_compose_avoir"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6905,7 +7149,10 @@
                   "verb": "avoir",
                   "cell": "pre:1p",
                   "answer": "avons",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.passe_compose_avoir"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -6915,7 +7162,10 @@
                   "verb": "avoir",
                   "cell": "pre:2p",
                   "answer": "avez",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.passe_compose_avoir"
+                  ]
                 },
                 {
                   "type": "select",
@@ -6973,6 +7223,11 @@
                 {
                   "exercise": "fr-en:ub-l3-e9"
                 }
+              ],
+              "objectives": [
+                "fr.obj.verbs.etre_avoir_present",
+                "fr.obj.verbs.passe_compose_avoir",
+                "fr.obj.writing.familiar_words"
               ]
             }
           ]
@@ -7126,7 +7381,10 @@
                   ],
                   "noun": "solution",
                   "gloss": "the solution",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -7137,7 +7395,10 @@
                   ],
                   "noun": "direction",
                   "gloss": "the direction",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7190,7 +7451,10 @@
                     "La",
                     "Le"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7245,6 +7509,10 @@
                 {
                   "exercise": "fr-en:uc-l0-e8"
                 }
+              ],
+              "objectives": [
+                "fr.obj.strategy.cognate_transfer",
+                "fr.obj.gender.ending_patterns"
               ]
             },
             {
@@ -7323,7 +7591,10 @@
                   ],
                   "noun": "liberté",
                   "gloss": "freedom",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -7334,7 +7605,10 @@
                   ],
                   "noun": "musique",
                   "gloss": "music",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7387,7 +7661,10 @@
                     "la",
                     "le"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7442,6 +7719,10 @@
                 {
                   "exercise": "fr-en:uc-l1-e8"
                 }
+              ],
+              "objectives": [
+                "fr.obj.strategy.cognate_transfer",
+                "fr.obj.gender.ending_patterns"
               ]
             },
             {
@@ -7562,7 +7843,10 @@
                   ],
                   "noun": "librairie",
                   "gloss": "the bookshop",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "articleSelect",
@@ -7573,7 +7857,10 @@
                   ],
                   "noun": "journée",
                   "gloss": "the day (daytime)",
-                  "correct": 1
+                  "correct": 1,
+                  "objectiveTargets": [
+                    "fr.obj.gender.ending_patterns"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -7584,7 +7871,10 @@
                     "journée",
                     "librairie"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.strategy.cognate_transfer"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7639,6 +7929,10 @@
                 {
                   "exercise": "fr-en:uc-l2-e8"
                 }
+              ],
+              "objectives": [
+                "fr.obj.strategy.cognate_transfer",
+                "fr.obj.vocab.places_travel"
               ]
             },
             {
@@ -7801,7 +8095,10 @@
                     "monnaie",
                     "musique"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.strategy.cognate_transfer"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7845,6 +8142,10 @@
                   ],
                   "correct": 0
                 }
+              ],
+              "objectives": [
+                "fr.obj.strategy.cognate_transfer",
+                "fr.obj.vocab.everyday_basics"
               ]
             }
           ]
@@ -7910,7 +8211,10 @@
                       "text": "neuf"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7931,7 +8235,10 @@
                       "text": "dix"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7952,7 +8259,10 @@
                       "text": "12"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7973,7 +8283,10 @@
                       "text": "dix-neuf"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -7994,7 +8307,10 @@
                       "text": "17"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8002,7 +8318,10 @@
                   "mode": "produceTarget",
                   "prompt": "5",
                   "answer": "cinq",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8010,7 +8329,10 @@
                   "mode": "produceTarget",
                   "prompt": "12",
                   "answer": "douze",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8018,7 +8340,10 @@
                   "mode": "produceTarget",
                   "prompt": "19",
                   "answer": "dix-neuf",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8097,6 +8422,11 @@
                 {
                   "exercise": "fr-en:ud-l0-e9"
                 }
+              ],
+              "objectives": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.vocab.time_calendar",
+                "fr.obj.writing.familiar_words"
               ]
             },
             {
@@ -8122,7 +8452,10 @@
                       "text": "vingt"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8143,7 +8476,10 @@
                       "text": "vingt"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8164,7 +8500,10 @@
                       "text": "54"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8185,7 +8524,10 @@
                       "text": "soixante-deux"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8195,6 +8537,9 @@
                   "answer": "vingt et un",
                   "alternatives": [
                     "vingt-et-un"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
                   ]
                 },
                 {
@@ -8203,7 +8548,10 @@
                   "mode": "produceTarget",
                   "prompt": "34",
                   "answer": "trente-quatre",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8211,7 +8559,10 @@
                   "mode": "produceTarget",
                   "prompt": "58",
                   "answer": "cinquante-huit",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8221,6 +8572,9 @@
                   "answer": "soixante et un",
                   "alternatives": [
                     "soixante-et-un"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
                   ]
                 },
                 {
@@ -8286,6 +8640,11 @@
                   ],
                   "correct": 0
                 }
+              ],
+              "objectives": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.vocab.time_calendar",
+                "fr.obj.writing.familiar_words"
               ]
             },
             {
@@ -8311,7 +8670,10 @@
                       "text": "soixante-dix-sept"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8332,7 +8694,10 @@
                       "text": "soixante-douze"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8353,7 +8718,10 @@
                       "text": "74"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8374,7 +8742,10 @@
                       "text": "soixante-dix"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8395,7 +8766,10 @@
                       "text": "89"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8403,7 +8777,10 @@
                   "mode": "produceTarget",
                   "prompt": "70",
                   "answer": "soixante-dix",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8413,6 +8790,9 @@
                   "answer": "soixante et onze",
                   "alternatives": [
                     "soixante-et-onze"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
                   ]
                 },
                 {
@@ -8421,7 +8801,10 @@
                   "mode": "produceTarget",
                   "prompt": "76",
                   "answer": "soixante-seize",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8500,6 +8883,11 @@
                 {
                   "exercise": "fr-en:ud-l2-e9"
                 }
+              ],
+              "objectives": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.vocab.time_calendar",
+                "fr.obj.writing.familiar_words"
               ]
             },
             {
@@ -8525,7 +8913,10 @@
                       "text": "quatre-vingt-quatre"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8546,7 +8937,10 @@
                       "text": "soixante et onze"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8567,7 +8961,10 @@
                       "text": "94"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8588,7 +8985,10 @@
                       "text": "soixante et onze"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8609,7 +9009,10 @@
                       "text": "98"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8617,7 +9020,10 @@
                   "mode": "produceTarget",
                   "prompt": "80",
                   "answer": "quatre-vingts",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8625,7 +9031,10 @@
                   "mode": "produceTarget",
                   "prompt": "85",
                   "answer": "quatre-vingt-cinq",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8633,7 +9042,10 @@
                   "mode": "produceTarget",
                   "prompt": "91",
                   "answer": "quatre-vingt-onze",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
@@ -8641,7 +9053,10 @@
                   "mode": "produceTarget",
                   "prompt": "100",
                   "answer": "cent",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.numbers.0_100"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8723,6 +9138,11 @@
                 {
                   "exercise": "fr-en:ud-l3-e10"
                 }
+              ],
+              "objectives": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.vocab.time_calendar",
+                "fr.obj.writing.familiar_words"
               ]
             }
           ]
@@ -8758,7 +9178,10 @@
                     "L'",
                     "Le"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -8769,7 +9192,10 @@
                     "L'",
                     "La"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -8780,7 +9206,10 @@
                     "l'",
                     "la"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -8791,7 +9220,10 @@
                     "n'",
                     "ne"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -8802,7 +9234,10 @@
                     "J'",
                     "Je"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8834,7 +9269,10 @@
                     "l'",
                     "la"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8910,6 +9348,9 @@
                 {
                   "exercise": "fr-en:ue-l0-e8"
                 }
+              ],
+              "objectives": [
+                "fr.obj.connected.elision"
               ]
             },
             {
@@ -8935,7 +9376,10 @@
                       "text": "drops entirely from the phrase"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8956,7 +9400,10 @@
                       "text": "la table"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8977,7 +9424,10 @@
                       "text": "becomes a t sound"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "select",
@@ -8998,7 +9448,10 @@
                       "text": "made only before h"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9019,7 +9472,10 @@
                       "text": "vous êtes"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -9030,7 +9486,10 @@
                     "avons",
                     "avez"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9051,7 +9510,10 @@
                       "text": "turns homme into l'homme"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -9062,7 +9524,10 @@
                     "êtes",
                     "es"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 }
               ],
               "flow": [
@@ -9093,6 +9558,9 @@
                 {
                   "exercise": "fr-en:ue-l1-e7"
                 }
+              ],
+              "objectives": [
+                "fr.obj.connected.liaison_h"
               ]
             },
             {
@@ -9129,7 +9597,10 @@
                     "Le",
                     "L'"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -9140,7 +9611,10 @@
                     "L'",
                     "La"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -9151,7 +9625,10 @@
                     "L'",
                     "Le"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9172,7 +9649,10 @@
                       "text": "turns héros into l'héros"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9204,7 +9684,10 @@
                     "L'",
                     "Le"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9225,7 +9708,10 @@
                       "text": "pronounced only in histoire"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.liaison_h"
+                  ]
                 }
               ],
               "flow": [
@@ -9256,6 +9742,9 @@
                 {
                   "exercise": "fr-en:ue-l2-e7"
                 }
+              ],
+              "objectives": [
+                "fr.obj.connected.liaison_h"
               ]
             },
             {
@@ -9270,7 +9759,10 @@
                   "verb": "habiter",
                   "cell": "pre:1s",
                   "answer": "habite",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -9280,7 +9772,10 @@
                   "verb": "aimer",
                   "cell": "pre:2s",
                   "answer": "aimes",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.er_present"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -9291,7 +9786,10 @@
                     "L'",
                     "La"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9323,7 +9821,10 @@
                     "n'",
                     "ne"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -9333,7 +9834,10 @@
                   "verb": "avoir",
                   "cell": "pre:1s",
                   "answer": "ai",
-                  "alternatives": []
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.verbs.etre_avoir_present"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9365,7 +9869,10 @@
                     "l'",
                     "la"
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 },
                 {
                   "type": "select",
@@ -9386,8 +9893,15 @@
                       "text": "je'ai raison"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.connected.elision"
+                  ]
                 }
+              ],
+              "objectives": [
+                "fr.obj.connected.elision",
+                "fr.obj.verbs.er_present"
               ]
             }
           ]
