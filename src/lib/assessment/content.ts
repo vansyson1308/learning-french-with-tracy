@@ -5,7 +5,9 @@
 
 import checkpointsArtifact from "../../content/assessment/fr-checkpoints.json";
 import objectivesArtifact from "../../content/assessment/fr-objectives.json";
+import placementArtifact from "../../content/assessment/fr-placement.json";
 import type { Exercise } from "../types";
+import type { PlacementPlanContent } from "./placement";
 import type { CheckpointObjectiveResult } from "./types";
 
 export type CompiledCheckpointItem = {
@@ -71,6 +73,59 @@ export function checkpointForSection(sectionId: string): CompiledCheckpoint | un
   return checkpoints.order
     .map((id) => checkpoints.byId[id])
     .find((cp) => cp.sectionId === sectionId);
+}
+
+export type CompiledPlacementItem = {
+  id: string;
+  itemVersion: number;
+  exercise: Exercise;
+  objectiveTargets: string[];
+};
+
+export type CompiledPlacementCluster = {
+  id: string;
+  objectiveId: string;
+  anchorLessonId: string;
+  items: CompiledPlacementItem[];
+};
+
+export type CompiledPlacementStage = {
+  id: string;
+  title: string;
+  clusters: CompiledPlacementCluster[];
+};
+
+export type CompiledPlacement = {
+  placementVersion: number;
+  maxItems: number;
+  allComfortableLessonId: string;
+  stages: CompiledPlacementStage[];
+};
+
+const placement = placementArtifact as unknown as CompiledPlacement;
+
+/** The full compiled placement plan (stages with exercise payloads). */
+export function placementContent(): CompiledPlacement {
+  return placement;
+}
+
+/** The same plan reduced to the pure engine's shape (item ids only). */
+export function placementEnginePlan(): PlacementPlanContent {
+  return {
+    placementVersion: placement.placementVersion,
+    maxItems: placement.maxItems,
+    allComfortableLessonId: placement.allComfortableLessonId,
+    stages: placement.stages.map((stage) => ({
+      id: stage.id,
+      title: stage.title,
+      clusters: stage.clusters.map((cluster) => ({
+        id: cluster.id,
+        objectiveId: cluster.objectiveId,
+        anchorLessonId: cluster.anchorLessonId,
+        itemIds: cluster.items.map((item) => item.id),
+      })),
+    })),
+  };
 }
 
 export const OBJECTIVE_ORDER: readonly string[] = objectives.order;

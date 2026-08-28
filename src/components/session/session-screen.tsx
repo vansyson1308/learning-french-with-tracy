@@ -135,9 +135,12 @@ export function SessionScreen({
 
   const exercise = step.type === "exercise" ? step.exercise : null;
   const selfAdvancing = exercise ? behaviorFor(exercise).selfAdvancing : false;
+  // Minimal feedback (§118): a diagnostic acknowledges the answer without
+  // revealing it — no correct-answer line, no teaching panel, no verdict.
+  const minimalFeedback = definition.feedbackPolicy === "minimal";
   // Lexical feedback identity: exactly one stable French item or nothing.
   const answered = state.status === "correct" || state.status === "wrong";
-  const panelItemId = answered ? panelItemIdFor(definition, step) : null;
+  const panelItemId = answered && !minimalFeedback ? panelItemIdFor(definition, step) : null;
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
@@ -189,11 +192,17 @@ export function SessionScreen({
           style={[
             styles.footer,
             { paddingBottom: Math.max(insets.bottom + 8, 24) },
-            state.status === "correct" && { backgroundColor: colors.correctBg },
-            state.status === "wrong" && { backgroundColor: colors.wrongBg },
+            !minimalFeedback && state.status === "correct" && { backgroundColor: colors.correctBg },
+            !minimalFeedback && state.status === "wrong" && { backgroundColor: colors.wrongBg },
           ]}
         >
-          {state.status === "correct" && (
+          {minimalFeedback && answered && (
+            <Animated.View entering={FadeInDown.duration(200)} style={styles.feedbackRow}>
+              <Ionicons name="checkmark-done" size={26} color={colors.skyDark} />
+              <Text style={[styles.feedback, { color: colors.text }]}>Answer recorded</Text>
+            </Animated.View>
+          )}
+          {!minimalFeedback && state.status === "correct" && (
             <Animated.View entering={FadeInDown.duration(200)} style={styles.feedbackRow}>
               <Ionicons name="checkmark-circle" size={26} color={colors.correctText} />
               <Text style={[styles.feedback, { color: colors.correctText }]}>
@@ -204,7 +213,7 @@ export function SessionScreen({
               ) : null}
             </Animated.View>
           )}
-          {state.status === "wrong" && exercise && (
+          {!minimalFeedback && state.status === "wrong" && exercise && (
             <Animated.View entering={FadeInDown.duration(200)}>
               <View style={styles.feedbackRow}>
                 <Ionicons name="close-circle" size={26} color={colors.wrongText} />
@@ -230,19 +239,26 @@ export function SessionScreen({
           {step.type === "teach" || step.type === "concept" ? (
             <DuoButton label="Continue" onPress={controller.onTeachContinue} />
           ) : state.status === "idle" ? (
-            <DuoButton
-              label="Check"
-              onPress={controller.onCheck}
-              disabled={
-                selfAdvancing ||
-                !exercise ||
-                !behaviorFor(exercise).isReady(exercise, state.answer)
-              }
-            />
+            <>
+              <DuoButton
+                label="Check"
+                onPress={controller.onCheck}
+                disabled={
+                  selfAdvancing ||
+                  !exercise ||
+                  !behaviorFor(exercise).isReady(exercise, state.answer)
+                }
+              />
+              {definition.kind === "placement" && !selfAdvancing ? (
+                <DuoButton label="I don't know" variant="white" onPress={controller.onSkip} />
+              ) : null}
+            </>
           ) : (
             <DuoButton
               label="Continue"
-              variant={state.status === "wrong" ? "danger" : "secondary"}
+              variant={
+                minimalFeedback ? "secondary" : state.status === "wrong" ? "danger" : "secondary"
+              }
               onPress={controller.onContinue}
             />
           )}

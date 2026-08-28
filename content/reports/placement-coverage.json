@@ -1,0 +1,88 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "placementVersion": 1,
+  "maxItems": 16,
+  "totalItems": 16,
+  "allComfortableLessonId": "fr-en:ue-l0",
+  "stages": [
+    {
+      "id": "fr.pstage.foundations",
+      "clusters": [
+        {
+          "id": "fr.pcluster.everyday",
+          "objectiveId": "fr.obj.vocab.everyday_basics",
+          "anchorLessonId": "fr-en:u0-l0",
+          "itemCount": 2
+        },
+        {
+          "id": "fr.pcluster.greetings",
+          "objectiveId": "fr.obj.greetings.basic",
+          "anchorLessonId": "fr-en:u1-l0",
+          "itemCount": 2
+        },
+        {
+          "id": "fr.pcluster.reading",
+          "objectiveId": "fr.obj.reading.familiar_words",
+          "anchorLessonId": "fr-en:u2-l0",
+          "itemCount": 2
+        },
+        {
+          "id": "fr.pcluster.places",
+          "objectiveId": "fr.obj.vocab.places_travel",
+          "anchorLessonId": "fr-en:u4-l0",
+          "itemCount": 1
+        }
+      ]
+    },
+    {
+      "id": "fr.pstage.building_blocks",
+      "clusters": [
+        {
+          "id": "fr.pcluster.articles",
+          "objectiveId": "fr.obj.gender.articles_basic",
+          "anchorLessonId": "fr-en:ua-l0",
+          "itemCount": 2
+        },
+        {
+          "id": "fr.pcluster.endings",
+          "objectiveId": "fr.obj.gender.ending_patterns",
+          "anchorLessonId": "fr-en:ua-l1",
+          "itemCount": 1
+        },
+        {
+          "id": "fr.pcluster.etre_avoir",
+          "objectiveId": "fr.obj.verbs.etre_avoir_present",
+          "anchorLessonId": "fr-en:ub-l0",
+          "itemCount": 2
+        },
+        {
+          "id": "fr.pcluster.er",
+          "objectiveId": "fr.obj.verbs.er_present",
+          "anchorLessonId": "fr-en:ub-l1",
+          "itemCount": 1
+        },
+        {
+          "id": "fr.pcluster.numbers",
+          "objectiveId": "fr.obj.numbers.0_100",
+          "anchorLessonId": "fr-en:ud-l0",
+          "itemCount": 2
+        },
+        {
+          "id": "fr.pcluster.elision",
+          "objectiveId": "fr.obj.connected.elision",
+          "anchorLessonId": "fr-en:ue-l0",
+          "itemCount": 1
+        }
+      ]
+    }
+  ],
+  "objectivesNotProbed": [
+    "fr.obj.connected.liaison_h",
+    "fr.obj.strategy.cognate_transfer",
+    "fr.obj.verbs.aller_faire_present",
+    "fr.obj.verbs.futur_proche",
+    "fr.obj.verbs.passe_compose_avoir",
+    "fr.obj.vocab.time_calendar",
+    "fr.obj.writing.familiar_words"
+  ]
+}

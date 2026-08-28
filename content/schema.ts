@@ -681,3 +681,56 @@ export const CheckpointsSchema = z.strictObject({
   checkpoints: z.array(CheckpointSchema).min(1),
 });
 export type Checkpoints = z.infer<typeof CheckpointsSchema>;
+
+// ---------------------------------------------------------------------------
+// Phase 6: placement diagnostic (§67-80, §121-123)
+// ---------------------------------------------------------------------------
+
+export const placementStageId = z.string().regex(/^fr\.pstage\.[a-z0-9_]+$/);
+export const placementClusterId = z.string().regex(/^fr\.pcluster\.[a-z0-9_]+$/);
+export const placementItemId = z.string().regex(/^fr\.pli\.[a-z0-9_.-]+$/);
+
+export const PlacementItemSchema = z.strictObject({
+  id: placementItemId,
+  itemVersion: z.number().int().min(1),
+  exercise: ExerciseSchema,
+  objectiveTargets: z.array(objectiveId).min(1),
+});
+export type PlacementItem = z.infer<typeof PlacementItemSchema>;
+
+/**
+ * One curriculum-area probe (§74): a cluster maps to one objective and one
+ * ANCHOR lesson — the recommendation for a learner whose earliest gap is
+ * this cluster (§75). Cluster order inside a stage must follow curriculum
+ * order (validated), so "earliest weak cluster" is well-defined.
+ */
+export const PlacementClusterSchema = z.strictObject({
+  id: placementClusterId,
+  objectiveId,
+  anchorLessonId: z.string().min(1),
+  items: z.array(PlacementItemSchema).min(1).max(3),
+});
+export type PlacementCluster = z.infer<typeof PlacementClusterSchema>;
+
+export const PlacementStageSchema = z.strictObject({
+  id: placementStageId,
+  title: z.string().min(1),
+  clusters: z.array(PlacementClusterSchema).min(1),
+});
+export type PlacementStage = z.infer<typeof PlacementStageSchema>;
+
+/**
+ * The staged deterministic diagnostic (§73): stage 2 runs only when every
+ * stage-1 cluster is comfortable. No IRT, no adaptivity beyond the stage
+ * gate (§122). Item budget across all stages is validated ≤ maxItems.
+ */
+export const PlacementSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  placementVersion: z.number().int().min(1),
+  maxItems: z.number().int().min(1).max(18),
+  /** Recommendation when every probed cluster is comfortable. */
+  allComfortableLessonId: z.string().min(1),
+  stages: z.array(PlacementStageSchema).min(1),
+});
+export type PlacementContent = z.infer<typeof PlacementSchema>;

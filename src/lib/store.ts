@@ -7,6 +7,7 @@ import {
   emptyAssessmentState,
   type CheckpointAttempt,
   type PersistedAssessmentState,
+  type PlacementResult,
 } from "./assessment/types";
 import { addDays, dayString, localWeek } from "./dates";
 import { applyEvidence } from "./learning/engine";
@@ -91,6 +92,15 @@ type ProgressState = {
    * never dropped (§164).
    */
   recordCheckpointAttempt: (attempt: CheckpointAttempt) => void;
+  /**
+   * Store a completed placement diagnostic (§78-83): the result plus the
+   * floor the learner ACCEPTED (their recommendation, or 0 for "start from
+   * the beginning"). Mutates assessment state only — no completedLessons,
+   * no XP, no streak, no learning memory of any kind.
+   */
+  setPlacementResult: (result: PlacementResult, acceptedFloorIndex: number) => void;
+  /** Clear the placement floor (§86). The result record is kept as history. */
+  resetPlacement: () => void;
 
   course: () => CourseProgress;
   completeLesson: (lessonId: string, perfect: boolean) => void;
@@ -222,6 +232,21 @@ export const useProgress = create<ProgressState>()(
               attempt,
             ]),
           },
+        })),
+      setPlacementResult: (result, acceptedFloorIndex) =>
+        set((state) => ({
+          assessment: {
+            ...state.assessment,
+            placement: result,
+            placementFloor:
+              Number.isFinite(acceptedFloorIndex) && acceptedFloorIndex > 0
+                ? Math.floor(acceptedFloorIndex)
+                : 0,
+          },
+        })),
+      resetPlacement: () =>
+        set((state) => ({
+          assessment: { ...state.assessment, placementFloor: 0 },
         })),
       recordPracticeSession: () =>
         set((state) => {

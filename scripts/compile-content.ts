@@ -28,9 +28,11 @@ import {
   collectAssessmentItemTargets,
   compileCheckpointsArtifact,
   compileObjectivesArtifact,
+  compilePlacementArtifact,
   loadCheckpoints,
   loadClaimPolicy,
   loadCourseObjectives,
+  loadPlacement,
   validateAssessment,
 } from "./lib/assessment";
 import {
@@ -162,6 +164,40 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
         policy,
         checkpointItemTargets,
       }),
+    }),
+  });
+  const placement = loadPlacement();
+  files.push({
+    relPath: "src/content/assessment/fr-placement.json",
+    contents: compilePlacementArtifact(placement),
+  });
+  files.push({
+    relPath: "content/reports/placement-coverage.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      placementVersion: placement.placementVersion,
+      maxItems: placement.maxItems,
+      totalItems: placement.stages.reduce(
+        (n, s) => n + s.clusters.reduce((m, c) => m + c.items.length, 0),
+        0
+      ),
+      allComfortableLessonId: placement.allComfortableLessonId,
+      stages: placement.stages.map((s) => ({
+        id: s.id,
+        clusters: s.clusters.map((c) => ({
+          id: c.id,
+          objectiveId: c.objectiveId,
+          anchorLessonId: c.anchorLessonId,
+          itemCount: c.items.length,
+        })),
+      })),
+      objectivesNotProbed: objectivesDoc.objectives
+        .map((o) => o.id)
+        .filter(
+          (oid) =>
+            !placement.stages.some((s) => s.clusters.some((c) => c.objectiveId === oid))
+        )
+        .sort((a, b) => a.localeCompare(b)),
     }),
   });
 }

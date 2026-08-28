@@ -39,7 +39,7 @@ export function CheckpointResults({
 
         {strong.length > 0 && (
           <View style={styles.group}>
-            <Text style={styles.groupTitle}>You're strong in</Text>
+            <Text style={styles.groupTitle}>You&apos;re strong in</Text>
             {strong.map((r) => (
               <Text key={r.objectiveId} style={styles.rowStrong}>
                 ✓ {titleFor(r.objectiveId)}

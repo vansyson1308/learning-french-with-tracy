@@ -9,6 +9,7 @@ import {
   ClaimPolicySchema,
   CourseObjectivesSchema,
   PackSchema,
+  PlacementSchema,
   type Checkpoint,
   type Checkpoints,
   type ClaimPolicy,
@@ -16,6 +17,7 @@ import {
   type CourseObjective,
   type CourseObjectives,
   type PackSource,
+  type PlacementContent,
 } from "../../content/schema";
 import { loadConjugations, loadPedagogyConcepts } from "./pedagogy";
 import { listCourseSources, readJson, validateExercise, type ValidationResult } from "./pipeline";
@@ -308,8 +310,25 @@ export function validateAssessment(): ValidationResult {
       `checkpoints: schema validation failed — ${(e as Error).message.split("\n")[0]}`,
     ];
   }
+  let placementErrors: string[] = [];
+  try {
+    const placement = loadPlacement();
+    const frPack = packs.find((p) => p.courseId === "fr-en");
+    if (frPack) {
+      placementErrors = validatePlacementData({
+        placement,
+        objectives,
+        conjugations: loadConjugations(),
+        frPack: frPack.pack,
+      }).errors;
+    }
+  } catch (e) {
+    placementErrors = [
+      `placement: schema validation failed — ${(e as Error).message.split("\n")[0]}`,
+    ];
+  }
   return {
-    errors: [...graph.errors, ...claim.errors, ...mapping.errors, ...checkpointErrors],
+    errors: [...graph.errors, ...claim.errors, ...mapping.errors, ...checkpointErrors, ...placementErrors],
     warnings: [],
   };
 }
@@ -414,6 +433,131 @@ export function compileCheckpointsArtifact(checkpoints: Checkpoints): string {
       language: checkpoints.language,
       order: checkpoints.checkpoints.map((c) => c.id),
       byId,
+    },
+    null,
+    2
+  )}\n`;
+}
+
+// ---------------------------------------------------------------------------
+// Placement (§67-89, §115-121)
+// ---------------------------------------------------------------------------
+
+export const PLACEMENT_SOURCE = "content/fr/assessment/placement.json";
+
+export function loadPlacement(): PlacementContent {
+  return PlacementSchema.parse(readJson(PLACEMENT_SOURCE));
+}
+
+/**
+ * Placement bank rules (§73-77, §136): ids unique, cluster objectives and
+ * anchor lessons resolve, anchors appear in strictly increasing curriculum
+ * order (the earliest-weak-frontier walk in §75 depends on it), the item
+ * budget respects maxItems, every item's primary target is its cluster's
+ * objective, exercise payloads pass the shared content rules, conjugation
+ * answers equal the evidence-verified cells, and nothing carries lexical
+ * gradeTargets (placement mutates no learning memory, §78).
+ */
+export function validatePlacementData(input: {
+  placement: PlacementContent;
+  objectives: CourseObjectives;
+  conjugations: Conjugations;
+  frPack: PackSource;
+}): ValidationResult {
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`placement: ${m}`);
+  const known = new Map(input.objectives.objectives.map((o) => [o.id, o]));
+  const verbs = new Map(input.conjugations.verbs.map((v) => [v.lemma, v]));
+
+  const lessonOrder = new Map<string, number>();
+  for (const section of input.frPack.sections) {
+    for (const unit of section.units) {
+      for (const lesson of unit.lessons) lessonOrder.set(lesson.id, lessonOrder.size);
+    }
+  }
+
+  if (!lessonOrder.has(input.placement.allComfortableLessonId)) {
+    err(`allComfortableLessonId ${input.placement.allComfortableLessonId} is not an fr-en lesson`);
+  }
+
+  const stageIds = new Set<string>();
+  const clusterIds = new Set<string>();
+  const itemIds = new Set<string>();
+  let totalItems = 0;
+  let previousAnchorIndex = -1;
+
+  for (const stage of input.placement.stages) {
+    if (stageIds.has(stage.id)) err(`duplicate stage id ${stage.id}`);
+    stageIds.add(stage.id);
+    for (const cluster of stage.clusters) {
+      if (clusterIds.has(cluster.id)) err(`duplicate cluster id ${cluster.id}`);
+      clusterIds.add(cluster.id);
+      if (!known.has(cluster.objectiveId)) {
+        err(`${cluster.id}: unknown objective ${cluster.objectiveId}`);
+      }
+      const anchorIndex = lessonOrder.get(cluster.anchorLessonId);
+      if (anchorIndex === undefined) {
+        err(`${cluster.id}: anchor ${cluster.anchorLessonId} is not an fr-en lesson`);
+      } else {
+        // Strictly increasing across the whole walk: a later cluster must
+        // never point earlier than one already probed (§75).
+        if (anchorIndex <= previousAnchorIndex) {
+          err(
+            `${cluster.id}: anchor ${cluster.anchorLessonId} breaks curriculum order — ` +
+              `clusters must anchor strictly later than the previous cluster`
+          );
+        }
+        previousAnchorIndex = Math.max(previousAnchorIndex, anchorIndex);
+      }
+      for (const item of cluster.items) {
+        totalItems += 1;
+        if (itemIds.has(item.id)) err(`duplicate item id ${item.id}`);
+        itemIds.add(item.id);
+        const e = item.exercise;
+        if ("gradeTargets" in e && e.gradeTargets !== undefined) {
+          err(`${item.id}: placement items must not carry lexical gradeTargets (§78)`);
+        }
+        if ("objectiveTargets" in e && (e as { objectiveTargets?: unknown }).objectiveTargets !== undefined) {
+          err(`${item.id}: put objective mapping on the ITEM, not inside the exercise payload`);
+        }
+        validateExercise("fr-en", e, (m) => err(`${item.id}: ${m}`));
+        if (item.objectiveTargets[0] !== cluster.objectiveId) {
+          err(
+            `${item.id}: primary objective ${item.objectiveTargets[0]} ≠ cluster objective ${cluster.objectiveId}`
+          );
+        }
+        for (const oid of item.objectiveTargets) {
+          if (!known.has(oid)) err(`${item.id}: unknown objective ${oid}`);
+        }
+        if (e.type === "conjugationCloze") {
+          const table = verbs.get(e.verb);
+          if (!table) {
+            err(`${item.id}: verb ${e.verb} has no authored conjugation table`);
+          } else if (table.cells[e.cell] !== e.answer) {
+            err(`${item.id}: answer "${e.answer}" ≠ authored cell ${e.cell} = "${table.cells[e.cell]}"`);
+          }
+        }
+      }
+    }
+  }
+
+  if (totalItems > input.placement.maxItems) {
+    err(`${totalItems} items exceed the maxItems budget of ${input.placement.maxItems} (§76)`);
+  }
+
+  return { errors, warnings: [] };
+}
+
+/** Compiled runtime artifact for placement sessions. */
+export function compilePlacementArtifact(placement: PlacementContent): string {
+  return `${JSON.stringify(
+    {
+      version: placement.version,
+      language: placement.language,
+      placementVersion: placement.placementVersion,
+      maxItems: placement.maxItems,
+      allComfortableLessonId: placement.allComfortableLessonId,
+      stages: placement.stages,
     },
     null,
     2

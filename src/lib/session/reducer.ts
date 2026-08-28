@@ -34,6 +34,12 @@ export type SessionMachineState = {
   attempts: Record<string, number>;
   /** stepId → correctness of the FIRST attempt only (exercise steps). */
   firstResults: Record<string, boolean>;
+  /**
+   * stepId → explicitly skipped via "I don't know" (§117). Distinct from a
+   * wrong answer: counted once as a gap, never as a failure — skipped steps
+   * appear in neither firstResults nor wrongCounts.
+   */
+  skipped: Record<string, boolean>;
   finished: boolean;
 };
 
@@ -41,6 +47,7 @@ export type SessionAction =
   | { type: "start"; sessionId: string; steps: SessionStep[]; retryPolicy?: "untilCorrect" | "none" }
   | { type: "answer"; value: Answer }
   | { type: "check" }
+  | { type: "skip" }
   | { type: "matchComplete"; wrongAttempts: number }
   | { type: "teachContinue" }
   | { type: "continue" }
@@ -59,6 +66,7 @@ export function emptySessionState(): SessionMachineState {
     wrongCounts: {},
     attempts: {},
     firstResults: {},
+    skipped: {},
     finished: false,
   };
 }
@@ -141,6 +149,25 @@ export function sessionReducer(
               [step.stepId]: (state.wrongCounts[step.stepId] ?? 0) + 1,
             },
       };
+    }
+
+    case "skip": {
+      // "I don't know" (§117): declares the item unknown BEFORE checking.
+      // Counted once as a gap by the placement engine — never marked wrong,
+      // never re-queued, never punished twice. Advances immediately.
+      const step = currentStep(state);
+      if (!step || step.type !== "exercise" || state.status !== "idle") return state;
+      const attempt = state.attempts[step.stepId] ?? 0;
+      if (attempt > 0) return state; // only a first encounter can be declared unknown
+      return advance(
+        {
+          ...state,
+          attempts: { ...state.attempts, [step.stepId]: attempt + 1 },
+          skipped: { ...state.skipped, [step.stepId]: true },
+          completedCount: state.completedCount + 1,
+        },
+        false
+      );
     }
 
     case "matchComplete": {

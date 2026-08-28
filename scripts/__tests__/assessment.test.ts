@@ -448,3 +448,96 @@ describe("checkpoint banks — real data + mutations (§53, §64)", () => {
     expect(validateCheckpointsData(input).errors.join("\n")).toContain("engine spelling");
   });
 });
+
+import { loadPlacement, validatePlacementData } from "../lib/assessment";
+
+describe("placement bank — real data + mutations (§73-78)", () => {
+  const inputs = () => ({
+    placement: loadPlacement(),
+    objectives: loadCourseObjectives(),
+    conjugations: loadConjugations(),
+    frPack: frPack(),
+  });
+
+  test("the committed placement plan validates", () => {
+    expect(validatePlacementData(inputs()).errors).toEqual([]);
+  });
+
+  test("an unknown cluster objective fails", () => {
+    const input = inputs();
+    input.placement.stages[0].clusters[0].objectiveId = "fr.obj.ghost.thing";
+    expect(validatePlacementData(input).errors.join("\n")).toContain("unknown objective");
+  });
+
+  test("an anchor that breaks curriculum order fails (§75)", () => {
+    const input = inputs();
+    // Point the greetings cluster (second) at lesson one — earlier than the
+    // everyday cluster's anchor before it.
+    input.placement.stages[0].clusters[1].anchorLessonId = "fr-en:u0-l0";
+    expect(validatePlacementData(input).errors.join("\n")).toContain("breaks curriculum order");
+  });
+
+  test("an anchor outside the fr-en pack fails", () => {
+    const input = inputs();
+    input.placement.stages[0].clusters[0].anchorLessonId = "fr-en:zz-l9";
+    expect(validatePlacementData(input).errors.join("\n")).toContain("not an fr-en lesson");
+  });
+
+  test("an unknown all-comfortable anchor fails", () => {
+    const input = inputs();
+    input.placement.allComfortableLessonId = "fr-en:zz-l9";
+    expect(validatePlacementData(input).errors.join("\n")).toContain("not an fr-en lesson");
+  });
+
+  test("exceeding the item budget fails (§76)", () => {
+    const input = inputs();
+    const cluster = input.placement.stages[0].clusters[3]; // places: one item today
+    const clone = JSON.parse(JSON.stringify(cluster.items[0]));
+    clone.id = "fr.pli.s1.extra";
+    clone.exercise.id = "fr-plx-s1-extra";
+    cluster.items.push(clone);
+    expect(validatePlacementData(input).errors.join("\n")).toContain("exceed the maxItems budget");
+  });
+
+  test("a duplicate item id fails", () => {
+    const input = inputs();
+    const cluster = input.placement.stages[0].clusters[0];
+    cluster.items[1].id = cluster.items[0].id;
+    expect(validatePlacementData(input).errors.join("\n")).toContain("duplicate item id");
+  });
+
+  test("an item whose primary target is not its cluster's objective fails", () => {
+    const input = inputs();
+    input.placement.stages[0].clusters[0].items[0].objectiveTargets = [
+      "fr.obj.greetings.basic",
+    ];
+    expect(validatePlacementData(input).errors.join("\n")).toContain("≠ cluster objective");
+  });
+
+  test("lexical gradeTargets on a placement item fail (§78)", () => {
+    const input = inputs();
+    (input.placement.stages[0].clusters[0].items[0].exercise as { gradeTargets?: string[] }).gradeTargets =
+      ["fr:w:chat"];
+    expect(validatePlacementData(input).errors.join("\n")).toContain(
+      "must not carry lexical gradeTargets"
+    );
+  });
+
+  test("a cloze whose answer disagrees with the authored table fails", () => {
+    const input = inputs();
+    const item = input.placement.stages[1].clusters
+      .flatMap((c) => c.items)
+      .find((i) => i.exercise.type === "conjugationCloze")!;
+    (item.exercise as { answer: string }).answer = "as";
+    expect(validatePlacementData(input).errors.join("\n")).toContain("authored cell");
+  });
+
+  test("a number drill in placement must agree with the engine", () => {
+    const input = inputs();
+    const item = input.placement.stages[1].clusters
+      .flatMap((c) => c.items)
+      .find((i) => i.exercise.type === "typeAnswer")!;
+    (item.exercise as { answer: string }).answer = "saize";
+    expect(validatePlacementData(input).errors.join("\n")).toContain("engine spelling");
+  });
+});

@@ -112,6 +112,17 @@ export type SessionDefinition = {
    * first attempt and moves on — scored assessments never drill.
    */
   retryPolicy?: "untilCorrect" | "none";
-  /** Present iff kind is checkpoint/placement (§104). */
+  /**
+   * Answer-feedback depth (§118): "full" (default when absent) shows the
+   * correct answer and post-answer teaching; "minimal" acknowledges that the
+   * answer was recorded without revealing it — a diagnostic must not teach
+   * mid-test or leak answers into a retake.
+   */
+  feedbackPolicy?: "full" | "minimal";
+  /**
+   * Present for checkpoint sessions (§104): the step→objective scoring plan.
+   * Placement sessions resolve scoring from the compiled placement plan in
+   * the route instead, so they carry no per-session plan here.
+   */
   assessment?: SessionAssessmentPlan;
 };

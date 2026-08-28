@@ -44,6 +44,8 @@ export type SessionController = {
   assessmentsCompleted: number;
   onAnswer: (value: SessionMachineState["answer"]) => void;
   onCheck: () => void;
+  /** "I don't know" (§117) — placement only; records a declared gap. */
+  onSkip: () => void;
   onContinue: () => void;
   onTeachContinue: () => void;
   onMatchComplete: (wrongAttempts: number) => void;
@@ -139,14 +141,25 @@ export function useSessionController(definition: SessionDefinition): SessionCont
     const correct = behavior.check(step.exercise, state.answer);
 
     const scored = definition.kind === "checkpoint" || definition.kind === "placement";
+    // Minimal feedback (§118) hides the verdict — the sound and haptic must
+    // not reveal what the screen deliberately withholds.
+    const silentVerdict = definition.feedbackPolicy === "minimal";
     if (correct) {
-      sfx.playCorrect();
-      haptics.success();
+      if (silentVerdict) {
+        haptics.tap();
+      } else {
+        sfx.playCorrect();
+        haptics.success();
+      }
       // Scored assessments never touch the mistakes system, either way (§58).
       if (!scored) progress.clearMistake(step.exercise.id);
     } else {
-      sfx.playIncorrect();
-      haptics.error();
+      if (silentVerdict) {
+        haptics.tap();
+      } else {
+        sfx.playIncorrect();
+        haptics.error();
+      }
       if (definition.trackMistakes) {
         progress.addMistake({
           lessonId: definition.lessonId,
@@ -173,6 +186,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
 
     if (
       correct &&
+      !silentVerdict &&
       step.exercise.type === "select" &&
       step.exercise.mode === "nativeToTarget" &&
       step.exercise.audioTarget
@@ -182,6 +196,17 @@ export function useSessionController(definition: SessionDefinition): SessionCont
 
     dispatch({ type: "check" });
   }, [state, definition, progress, sfx]);
+
+  const onSkip = useCallback(() => {
+    // Declared-unknown is a placement affordance (§117): no grading, no
+    // evidence, no mistakes, no sounds of failure — a neutral advance.
+    if (definition.kind !== "placement") return;
+    const step = currentStep(state);
+    if (!step || step.type !== "exercise" || state.status !== "idle") return;
+    haptics.tap();
+    resetClock();
+    dispatch({ type: "skip" });
+  }, [state, definition]);
 
   const onContinue = useCallback(() => {
     setLastMutated(false);
@@ -251,6 +276,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
     assessmentsCompleted,
     onAnswer,
     onCheck,
+    onSkip,
     onContinue,
     onTeachContinue,
     onMatchComplete,
