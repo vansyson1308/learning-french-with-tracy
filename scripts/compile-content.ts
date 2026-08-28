@@ -24,6 +24,13 @@ import {
   loadPedagogyConcepts,
   validatePedagogy,
 } from "./lib/pedagogy";
+import { collectAssessmentItemTargets, loadClaimPolicy, loadCourseObjectives, validateAssessment } from "./lib/assessment";
+import {
+  buildCefrAlignment,
+  buildObjectiveCoverage,
+  evaluateClaimGate,
+} from "./lib/assessment-reports";
+import { PackSchema } from "../content/schema";
 import {
   buildSqliteDb,
   compileLexiconArtifacts,
@@ -47,6 +54,7 @@ const validation = [
   ...validateContent().errors,
   ...validateLexicon().errors,
   ...validatePedagogy().errors,
+  ...validateAssessment().errors,
 ];
 if (validation.length > 0) {
   for (const e of validation) console.error(`ERROR ${e}`);
@@ -74,6 +82,50 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
       thresholds: { minLemmas: 100, minReliabilityPct: 90, almostAlwaysPct: 99 },
       population: genderStats.population,
       patterns: deriveGenderPatterns(genderStats),
+    }),
+  });
+}
+
+// §131-135 assessment reports: objective coverage, CEFR alignment, and the
+// overall-level claim gate — deterministic content-only artifacts. The
+// checkpoint/placement item-target lists come from the authored assessment
+// content when present (empty arrays until those banks exist).
+{
+  const objectivesDoc = loadCourseObjectives();
+  const policy = loadClaimPolicy();
+  const frPack = PackSchema.parse(readJson("content/courses/fr-en.json"));
+  const concepts = loadPedagogyConcepts().concepts;
+  const checkpointItemTargets = collectAssessmentItemTargets("content/fr/assessment/checkpoints.json", "checkpoints");
+  const placementItemTargets = collectAssessmentItemTargets("content/fr/assessment/placement.json", "stages");
+  files.push({
+    relPath: "content/reports/course-objective-coverage.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      objectives: buildObjectiveCoverage({
+        objectives: objectivesDoc.objectives,
+        frPack,
+        concepts,
+        checkpointItemTargets,
+        placementItemTargets,
+      }),
+    }),
+  });
+  files.push({
+    relPath: "content/reports/cefr-alignment.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      ...buildCefrAlignment(objectivesDoc.objectives),
+    }),
+  });
+  files.push({
+    relPath: "content/reports/cefr-claim-gate.json",
+    contents: canonicalJson({
+      generator: "scripts/lib/assessment-reports.ts",
+      ...evaluateClaimGate({
+        objectives: objectivesDoc.objectives,
+        policy,
+        checkpointItemTargets,
+      }),
     }),
   });
 }

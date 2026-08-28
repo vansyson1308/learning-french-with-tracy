@@ -1,0 +1,117 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "levels": [
+    {
+      "level": "PRE_A1",
+      "scales": [
+        {
+          "scaleName": "Conversation (spoken interaction)",
+          "sourceRef": "cefr-cv-2020:conversation",
+          "direct": [],
+          "supports": [
+            "fr.obj.greetings.basic"
+          ]
+        },
+        {
+          "scaleName": "Reading comprehension (overall)",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
+          "direct": [
+            "fr.obj.reading.familiar_words"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Vocabulary range",
+          "sourceRef": "cefr-cv-2020:vocabulary-range",
+          "direct": [],
+          "supports": [
+            "fr.obj.vocab.everyday_basics"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "A1",
+      "scales": [
+        {
+          "scaleName": "Grammatical accuracy",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy",
+          "direct": [],
+          "supports": [
+            "fr.obj.gender.articles_basic",
+            "fr.obj.gender.ending_patterns",
+            "fr.obj.verbs.aller_faire_present",
+            "fr.obj.verbs.er_present",
+            "fr.obj.verbs.etre_avoir_present",
+            "fr.obj.verbs.futur_proche"
+          ]
+        },
+        {
+          "scaleName": "Identifying cues and inferring",
+          "sourceRef": "cefr-cv-2020:identifying-cues-inferring",
+          "direct": [],
+          "supports": [
+            "fr.obj.strategy.cognate_transfer"
+          ]
+        },
+        {
+          "scaleName": "Orthographic control",
+          "sourceRef": "cefr-cv-2020:orthographic-control",
+          "direct": [],
+          "supports": [
+            "fr.obj.connected.elision",
+            "fr.obj.writing.familiar_words"
+          ]
+        },
+        {
+          "scaleName": "Phonological control (sound articulation)",
+          "sourceRef": "cefr-cv-2020:phonological-control",
+          "direct": [],
+          "supports": [
+            "fr.obj.connected.liaison_h"
+          ]
+        },
+        {
+          "scaleName": "Reading comprehension (overall)",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
+          "direct": [],
+          "supports": [
+            "fr.obj.reading.familiar_words"
+          ]
+        },
+        {
+          "scaleName": "Sociolinguistic appropriateness",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness",
+          "direct": [],
+          "supports": [
+            "fr.obj.greetings.basic"
+          ]
+        },
+        {
+          "scaleName": "Vocabulary range",
+          "sourceRef": "cefr-cv-2020:vocabulary-range",
+          "direct": [],
+          "supports": [
+            "fr.obj.numbers.0_100",
+            "fr.obj.vocab.everyday_basics",
+            "fr.obj.vocab.places_travel",
+            "fr.obj.vocab.time_calendar"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "A2",
+      "scales": [
+        {
+          "scaleName": "Grammatical accuracy",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy",
+          "direct": [],
+          "supports": [
+            "fr.obj.verbs.passe_compose_avoir"
+          ]
+        }
+      ]
+    }
+  ]
+}

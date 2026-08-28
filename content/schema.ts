@@ -22,6 +22,20 @@ export const WordSchema = z.strictObject({
 
 const gradeTargets = z.array(z.string().min(1)).min(1).optional();
 
+/**
+ * Stable course-objective id, e.g. "fr.obj.gender.articles_basic" — a
+ * long-lived content identity (§20), never derived from titles.
+ */
+export const objectiveId = z.string().regex(/^fr\.obj\.[a-z0-9_]+\.[a-z0-9_]+$/);
+
+/**
+ * Course-objective assessment/practice targets (§29-31). AUTHORED metadata,
+ * orthogonal to compiler-emitted `gradeTargets`: gradeTargets is lexical
+ * FSRS identity; objectiveTargets is curriculum/assessment meaning. The two
+ * systems are never conflated.
+ */
+const objectiveTargets = z.array(objectiveId).min(1).optional();
+
 export const SelectExerciseSchema = z.strictObject({
   type: z.literal("select"),
   id,
@@ -33,6 +47,7 @@ export const SelectExerciseSchema = z.strictObject({
     .min(2),
   correct: z.number().int().min(0),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const WordBankExerciseSchema = z.strictObject({
@@ -44,6 +59,7 @@ export const WordBankExerciseSchema = z.strictObject({
   tokens: z.array(z.string().min(1)).min(1),
   answer: z.array(z.string().min(1)).min(1),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const MatchExerciseSchema = z.strictObject({
@@ -53,6 +69,7 @@ export const MatchExerciseSchema = z.strictObject({
     .array(z.strictObject({ target: z.string().min(1), native: z.string().min(1) }))
     .min(2),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const TypeAnswerExerciseSchema = z.strictObject({
@@ -69,6 +86,7 @@ export const TypeAnswerExerciseSchema = z.strictObject({
   answer: z.string().min(1),
   alternatives: z.array(z.string()),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const FillBlankExerciseSchema = z.strictObject({
@@ -80,6 +98,7 @@ export const FillBlankExerciseSchema = z.strictObject({
   options: z.array(z.string().min(1)).min(2),
   correct: z.number().int().min(0),
   gradeTargets,
+  objectiveTargets,
 });
 
 export const CONJUGATION_CELLS = [
@@ -114,6 +133,7 @@ export const ArticleSelectExerciseSchema = z.strictObject({
   gloss: z.string().min(1),
   correct: z.number().int().min(0),
   audioTarget: z.string().min(1).optional(),
+  objectiveTargets,
 });
 
 /**
@@ -135,6 +155,7 @@ export const ConjugationClozeExerciseSchema = z.strictObject({
   answer: z.string().min(1),
   /** Documented acceptable variants only — never meaning-changing endings. */
   alternatives: z.array(z.string().min(1)),
+  objectiveTargets,
 });
 
 export const ExerciseSchema = z.discriminatedUnion("type", [
@@ -169,6 +190,12 @@ export const LessonSchema = z.strictObject({
   title: z.string().min(1),
   exercises: z.array(ExerciseSchema).min(1),
   flow: z.array(LessonFlowEntrySchema).min(1).optional(),
+  /**
+   * Course objectives this lesson teaches (§27). Required for every French
+   * lesson by validation; forbidden outside fr-en (§153) — other courses
+   * carry no CEFR/objective metadata.
+   */
+  objectives: z.array(objectiveId).min(1).optional(),
 });
 
 export const UnitSchema = z.strictObject({
@@ -412,6 +439,8 @@ export const ConceptSchema = z.strictObject({
   /** Honest exceptions/limits of the rule (may be empty, never hidden). */
   exceptions: z.array(z.string().min(1)),
   memoryHint: z.string().min(1).optional(),
+  /** Course objectives this concept teaches toward (§28). */
+  objectives: z.array(objectiveId).min(1).optional(),
   /** Registered sources backing the FACTS (data stats, references). */
   sourceRefs: z
     .array(z.strictObject({ source: z.string().min(1), key: z.string().min(1).optional() }))
@@ -513,12 +542,6 @@ export type SourceRegistry = z.infer<typeof SourceRegistrySchema>;
 // ---------------------------------------------------------------------------
 // Phase 6: course objectives, CEFR alignment, assessment (§17-22, §98-103)
 // ---------------------------------------------------------------------------
-
-/**
- * Stable course-objective id, e.g. "fr.obj.gender.articles_basic". These are
- * long-lived content identities (§20) — never derived from mutable titles.
- */
-export const objectiveId = z.string().regex(/^fr\.obj\.[a-z0-9_]+\.[a-z0-9_]+$/);
 
 export const OBJECTIVE_CATEGORIES = [
   "lexical",

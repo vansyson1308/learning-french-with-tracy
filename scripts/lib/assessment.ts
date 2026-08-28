@@ -7,11 +7,14 @@
 import {
   ClaimPolicySchema,
   CourseObjectivesSchema,
+  PackSchema,
   type ClaimPolicy,
   type CourseObjective,
   type CourseObjectives,
+  type PackSource,
 } from "../../content/schema";
-import { readJson, type ValidationResult } from "./pipeline";
+import { loadPedagogyConcepts } from "./pedagogy";
+import { listCourseSources, readJson, type ValidationResult } from "./pipeline";
 import { readFileSync } from "fs";
 
 export const OBJECTIVES_SOURCE = "content/fr/assessment/objectives.json";
@@ -148,6 +151,106 @@ export function validateClaimPolicyData(input: { policy: ClaimPolicy }): Validat
   return { errors, warnings: [] };
 }
 
+/**
+ * Curriculum ↔ objective cross-references (§140, §144): every French lesson
+ * declares resolving objectives; exercise objectiveTargets and concept
+ * objectives resolve; non-French courses carry NO objective metadata
+ * (§153); and every objective is actually taught by at least one lesson —
+ * an untaught objective is an invented one (§23).
+ */
+export function validateCurriculumMapping(input: {
+  objectives: CourseObjectives;
+  packs: { courseId: string; pack: PackSource }[];
+  concepts: { id: string; objectives?: string[] }[];
+}): ValidationResult {
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`curriculum-mapping: ${m}`);
+  const known = new Set(input.objectives.objectives.map((o) => o.id));
+  const taught = new Set<string>();
+
+  for (const { courseId, pack } of input.packs) {
+    const isFrench = courseId === "fr-en";
+    for (const section of pack.sections) {
+      for (const unit of section.units) {
+        for (const lesson of unit.lessons) {
+          if (!isFrench) {
+            if (lesson.objectives !== undefined) {
+              err(`${courseId}/${lesson.id}: objectives are French-only metadata (§153)`);
+            }
+          } else if (lesson.objectives === undefined) {
+            err(`${lesson.id}: French lesson must declare objectives (§144)`);
+          } else {
+            for (const o of lesson.objectives) {
+              if (!known.has(o)) err(`${lesson.id}: unknown objective ${o}`);
+              taught.add(o);
+            }
+            if (new Set(lesson.objectives).size !== lesson.objectives.length) {
+              err(`${lesson.id}: duplicate lesson objectives`);
+            }
+          }
+          for (const e of lesson.exercises) {
+            const targets = (e as { objectiveTargets?: string[] }).objectiveTargets;
+            if (targets === undefined) continue;
+            if (!isFrench) {
+              err(`${courseId}/${e.id}: objectiveTargets are French-only metadata (§153)`);
+              continue;
+            }
+            for (const o of targets) {
+              if (!known.has(o)) err(`${e.id}: unknown objectiveTarget ${o}`);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  for (const concept of input.concepts) {
+    for (const o of concept.objectives ?? []) {
+      if (!known.has(o)) err(`${concept.id}: unknown concept objective ${o}`);
+    }
+  }
+
+  for (const o of input.objectives.objectives) {
+    if (!taught.has(o.id)) {
+      err(`objective ${o.id} is taught by no lesson — remove it or map the curriculum honestly (§23)`);
+    }
+  }
+
+  return { errors, warnings: [] };
+}
+
+/**
+ * Item objectiveTargets from an authored assessment bank, for the coverage
+ * reports and the claim gate. Tolerates the file not existing yet (the
+ * banks land in later Phase-6 stages); once present, their own schema
+ * validation governs shape — this only collects targets.
+ */
+export function collectAssessmentItemTargets(
+  relPath: string,
+  containerKey: "checkpoints" | "stages"
+): string[][] {
+  let doc: unknown;
+  try {
+    doc = readJson(relPath);
+  } catch {
+    return [];
+  }
+  const containers = (doc as Record<string, unknown>)[containerKey];
+  if (!Array.isArray(containers)) return [];
+  const out: string[][] = [];
+  for (const container of containers) {
+    const items = (container as { items?: unknown }).items;
+    if (!Array.isArray(items)) continue;
+    for (const item of items) {
+      const targets = (item as { objectiveTargets?: unknown }).objectiveTargets;
+      if (Array.isArray(targets) && targets.every((t) => typeof t === "string")) {
+        out.push(targets as string[]);
+      }
+    }
+  }
+  return out;
+}
+
 /** Disk-reading aggregator for the CLIs. */
 export function validateAssessment(): ValidationResult {
   let objectives: CourseObjectives;
@@ -170,5 +273,22 @@ export function validateAssessment(): ValidationResult {
   }
   const graph = validateObjectiveGraph({ objectives });
   const claim = validateClaimPolicyData({ policy });
-  return { errors: [...graph.errors, ...claim.errors], warnings: [] };
+  // Packs that fail their own schema are reported by validateContent; the
+  // mapping check simply skips them here (same posture as lesson flows).
+  const packs: { courseId: string; pack: PackSource }[] = [];
+  for (const file of listCourseSources()) {
+    const parsed = PackSchema.safeParse(readJson(`content/courses/${file}`));
+    if (parsed.success) packs.push({ courseId: file.replace(/\.json$/, ""), pack: parsed.data });
+  }
+  let concepts: { id: string; objectives?: string[] }[] = [];
+  try {
+    concepts = loadPedagogyConcepts().concepts;
+  } catch {
+    // concept schema failures are reported by validatePedagogy
+  }
+  const mapping = validateCurriculumMapping({ objectives, packs, concepts });
+  return {
+    errors: [...graph.errors, ...claim.errors, ...mapping.errors],
+    warnings: [],
+  };
 }

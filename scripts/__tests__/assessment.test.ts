@@ -176,3 +176,194 @@ describe("validateClaimPolicyData — the gate stays activity-based", () => {
     ).toContain("duplicate required domain");
   });
 });
+
+import { PackSchema, type ClaimPolicy as Policy, type CourseObjective } from "../../content/schema";
+import { validateCurriculumMapping } from "../lib/assessment";
+import {
+  buildCefrAlignment,
+  buildObjectiveCoverage,
+  evaluateClaimGate,
+} from "../lib/assessment-reports";
+import { readJson } from "../lib/pipeline";
+
+const frPack = () => PackSchema.parse(readJson("content/courses/fr-en.json"));
+
+describe("curriculum mapping — real data + mutations (§144)", () => {
+  test("every French lesson declares resolving objectives; every objective is taught", () => {
+    const result = validateCurriculumMapping({
+      objectives: loadCourseObjectives(),
+      packs: [{ courseId: "fr-en", pack: frPack() }],
+      concepts: [],
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  test("a French lesson without objectives fails", () => {
+    const pack = frPack();
+    delete pack.sections[0].units[0].lessons[0].objectives;
+    const result = validateCurriculumMapping({
+      objectives: loadCourseObjectives(),
+      packs: [{ courseId: "fr-en", pack }],
+      concepts: [],
+    });
+    expect(result.errors.join("\n")).toContain("must declare objectives");
+  });
+
+  test("objective metadata on a non-French course fails (§153)", () => {
+    const pack = frPack();
+    const result = validateCurriculumMapping({
+      objectives: loadCourseObjectives(),
+      packs: [{ courseId: "es-en", pack }],
+      concepts: [],
+    });
+    expect(result.errors.join("\n")).toContain("French-only metadata");
+  });
+
+  test("unknown objective references fail", () => {
+    const pack = frPack();
+    pack.sections[0].units[0].lessons[0].objectives = ["fr.obj.ghost.thing"];
+    const result = validateCurriculumMapping({
+      objectives: loadCourseObjectives(),
+      packs: [{ courseId: "fr-en", pack }],
+      concepts: [],
+    });
+    expect(result.errors.join("\n")).toContain("unknown objective");
+  });
+
+  test("an objective taught by no lesson fails (§23 anti-invention)", () => {
+    const objectives = loadCourseObjectives();
+    objectives.objectives.push({
+      id: "fr.obj.test.untaught",
+      title: "Untaught",
+      canDo: "I can do a thing no lesson teaches.",
+      category: "grammar",
+      prerequisites: [],
+      cefrAlignments: [
+        { level: "A1", scaleName: "Grammatical accuracy", relation: "supports", sourceRef: "cefr-cv-2020:grammatical-accuracy" },
+      ],
+      essential: false,
+    });
+    const result = validateCurriculumMapping({
+      objectives,
+      packs: [{ courseId: "fr-en", pack: frPack() }],
+      concepts: [],
+    });
+    expect(result.errors.join("\n")).toContain("taught by no lesson");
+  });
+});
+
+describe("coverage + alignment reports are faithful", () => {
+  test("every objective is taught and the S2 grammar drills carry explicit targets", () => {
+    const rows = buildObjectiveCoverage({
+      objectives: loadCourseObjectives().objectives,
+      frPack: frPack(),
+      concepts: readJson("content/fr/pedagogy/concepts.json") ? (readJson("content/fr/pedagogy/concepts.json") as { concepts: { id: string; objectives?: string[] }[] }).concepts : [],
+      checkpointItemTargets: [],
+      placementItemTargets: [],
+    });
+    expect(rows.length).toBe(17);
+    for (const row of rows) {
+      expect({ id: row.id, lessons: row.lessonsTeaching.length > 0 }).toEqual({ id: row.id, lessons: true });
+    }
+    const byId = new Map(rows.map((r) => [r.id, r]));
+    expect(byId.get("fr.obj.reading.familiar_words")!.lessonsTeaching.length).toBe(20);
+    expect(byId.get("fr.obj.gender.articles_basic")!.exercisesTargeting).toBeGreaterThanOrEqual(4);
+    expect(byId.get("fr.obj.numbers.0_100")!.exercisesTargeting).toBeGreaterThanOrEqual(30);
+    expect(byId.get("fr.obj.verbs.passe_compose_avoir")!.exercisesTargeting).toBe(5);
+  });
+
+  test("the alignment report exposes the single Pre-A1 direct and groups supports", () => {
+    const report = buildCefrAlignment(loadCourseObjectives().objectives);
+    const pre = report.levels.find((l) => l.level === "PRE_A1")!;
+    const reading = pre.scales.find((s) => s.scaleName.startsWith("Reading"))!;
+    expect(reading.direct).toEqual(["fr.obj.reading.familiar_words"]);
+    const a1 = report.levels.find((l) => l.level === "A1")!;
+    for (const scale of a1.scales) expect(scale.direct).toEqual([]);
+  });
+});
+
+describe("claim gate honesty (§145)", () => {
+  const spokenLess = () => loadCourseObjectives().objectives;
+  const policy = (): Policy => loadClaimPolicy();
+
+  test("real content: every evaluated level is NOT claimable", () => {
+    const gate = evaluateClaimGate({
+      objectives: spokenLess(),
+      policy: policy(),
+      checkpointItemTargets: [],
+    });
+    for (const level of gate.levels) {
+      expect({ level: level.level, claimable: level.claimable }).toEqual({
+        level: level.level,
+        claimable: false,
+      });
+    }
+  });
+
+  test("full checkpoint coverage of every EXISTING objective still never claims a level (speaking missing)", () => {
+    const objectives = spokenLess();
+    // Saturate: 5 hypothetical scored items per objective.
+    const items = objectives.flatMap((o) => [[o.id], [o.id], [o.id], [o.id], [o.id]]);
+    const gate = evaluateClaimGate({ objectives, policy: policy(), checkpointItemTargets: items });
+    for (const level of gate.levels) {
+      expect(level.claimable).toBe(false);
+      expect(level.unassessedDomains).toContain("spoken_production");
+      expect(level.unassessedDomains).toContain("interaction");
+      expect(level.evidenceLimitations.join(" ")).toContain("Spoken production is not assessed");
+    }
+  });
+
+  test("lesson completion is not even an input: the gate takes content only", () => {
+    // Structural: evaluateClaimGate's signature has no learner state. With
+    // zero scored items nothing is claimable regardless of any imaginable
+    // completion state.
+    const gate = evaluateClaimGate({
+      objectives: spokenLess(),
+      policy: policy(),
+      checkpointItemTargets: [],
+    });
+    expect(gate.levels.every((l) => !l.claimable)).toBe(true);
+  });
+
+  test("the gate CAN open when a level's domains are genuinely direct + assessed", () => {
+    const mk = (id: string, category: CourseObjective["category"]): CourseObjective => ({
+      id,
+      title: id,
+      canDo: `I can demonstrably do ${id}.`,
+      category,
+      prerequisites: [],
+      cefrAlignments: [
+        {
+          level: "PRE_A1",
+          scaleName: "Synthetic scale",
+          relation: "direct",
+          sourceRef: "cefr-cv-2020:overall-reading-comprehension",
+        },
+      ],
+      essential: true,
+      evidenceNote: "Synthetic full-coverage fixture.",
+    });
+    const objectives = [
+      mk("fr.obj.syn.listen", "spoken_reception"),
+      mk("fr.obj.syn.read", "written_reception"),
+      mk("fr.obj.syn.speak", "spoken_production"),
+      mk("fr.obj.syn.write", "written_production"),
+      mk("fr.obj.syn.interact", "interaction"),
+    ];
+    const items = objectives.flatMap((o) => [[o.id], [o.id]]);
+    const gate = evaluateClaimGate({
+      objectives,
+      policy: { ...policy(), evaluatedLevels: ["PRE_A1"] },
+      checkpointItemTargets: items,
+    });
+    expect(gate.levels[0].claimable).toBe(true);
+  });
+
+  test("one scored item per objective is below the evidence floor (§64)", () => {
+    const objectives = spokenLess();
+    const items = objectives.map((o) => [o.id]);
+    const gate = evaluateClaimGate({ objectives, policy: policy(), checkpointItemTargets: items });
+    const a1 = gate.levels.find((l) => l.level === "A1")!;
+    expect(a1.coveredCompetences).toEqual([]);
+  });
+});

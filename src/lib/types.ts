@@ -17,6 +17,8 @@ export type SelectExercise = {
   correct: number;
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
+  /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
+  objectiveTargets?: string[];
 };
 
 export type WordBankExercise = {
@@ -29,6 +31,8 @@ export type WordBankExercise = {
   answer: string[];
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
+  /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
+  objectiveTargets?: string[];
 };
 
 export type MatchExercise = {
@@ -37,6 +41,8 @@ export type MatchExercise = {
   pairs: { target: string; native: string }[];
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
+  /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
+  objectiveTargets?: string[];
 };
 
 export type TypeAnswerExercise = {
@@ -49,6 +55,8 @@ export type TypeAnswerExercise = {
   alternatives: string[];
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
+  /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
+  objectiveTargets?: string[];
 };
 
 export type FillBlankExercise = {
@@ -61,6 +69,8 @@ export type FillBlankExercise = {
   correct: number;
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
+  /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
+  objectiveTargets?: string[];
 };
 
 /**
@@ -76,6 +86,8 @@ export type ArticleSelectExercise = {
   gloss: string;
   correct: number;
   audioTarget?: string;
+  /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
+  objectiveTargets?: string[];
 };
 
 /**
@@ -92,6 +104,8 @@ export type ConjugationClozeExercise = {
   cell: string;
   answer: string;
   alternatives: string[];
+  /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */
+  objectiveTargets?: string[];
 };
 
 export type Exercise =
@@ -115,6 +129,8 @@ export type LessonPack = {
   title: string;
   exercises: Exercise[];
   flow?: LessonFlowEntry[];
+  /** Course objectives this lesson teaches (Phase 6 §27; French only). */
+  objectives?: string[];
 };
 
 export type UnitPack = {
