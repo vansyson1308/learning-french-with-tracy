@@ -37,7 +37,7 @@ beforeEach(() => {
 });
 
 describe("persist wiring: rehydrate runs the full migration chain", () => {
-  test("v0 fixture rehydrates at v2: French on FSRS cards, next write stores version 2", async () => {
+  test("v0 fixture rehydrates at the latest version: French on FSRS cards, next write stores version 3", async () => {
     await rehydrateFrom(richFixture);
     const s = useProgress.getState();
     expect(s.streak).toBe(5);
@@ -55,7 +55,7 @@ describe("persist wiring: rehydrate runs the full migration chain", () => {
     const raw = memoryStorage.get(PROGRESS_STORAGE_KEY);
     expect(raw).toBeTruthy();
     const stored = JSON.parse(raw as string);
-    expect(stored.version).toBe(2);
+    expect(stored.version).toBe(3);
     expect(stored.state.themePreference).toBe("light");
     expect(stored.state.courses["fr-en"].completedLessons["srs"]).toBeUndefined();
     expect(stored.state.courses["fr-en"].cards["fr:w:femme|recognize"].state).toBe("new");

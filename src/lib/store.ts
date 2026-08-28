@@ -2,6 +2,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
+import {
+  emptyAssessmentState,
+  type PersistedAssessmentState,
+} from "./assessment/types";
 import { addDays, dayString, localWeek } from "./dates";
 import { applyEvidence } from "./learning/engine";
 import type { ReviewEvidence } from "./learning/evidence";
@@ -75,6 +79,8 @@ type ProgressState = {
   activeDays: Record<string, DayActivity>;
   /** Append-only evidence log (v2), ring-capped at REVIEW_LOG_CAP. */
   reviewLog: ReviewLogEntry[];
+  /** Phase 6 learner assessment state (checkpoints + placement, v3). */
+  assessment: PersistedAssessmentState;
 
   course: () => CourseProgress;
   completeLesson: (lessonId: string, perfect: boolean) => void;
@@ -152,6 +158,7 @@ export const useProgress = create<ProgressState>()(
       courses: {},
       activeDays: {},
       reviewLog: [],
+      assessment: emptyAssessmentState(),
 
       course: () => get().courses[get().activeCourseId] ?? emptyCourseProgress(),
 

@@ -160,7 +160,7 @@ describe("sanitize", () => {
 });
 
 describe("commitImport (transaction safety)", () => {
-  test("happy path: safety copy written, storage committed at v2, store live", async () => {
+  test("happy path: safety copy written, storage committed at the latest version, store live", async () => {
     memoryStorage.set(PROGRESS_STORAGE_KEY, JSON.stringify(freshFixture));
     const staged = prepareImport(wrap(validState(), 0), NOW);
     if (!staged.ok) throw new Error("stage failed");
@@ -169,7 +169,7 @@ describe("commitImport (transaction safety)", () => {
     expect(outcome.ok).toBe(true);
 
     const stored = JSON.parse(memoryStorage.get(PROGRESS_STORAGE_KEY) as string);
-    expect(stored.version).toBe(2);
+    expect(stored.version).toBe(3);
     expect(stored.state.courses["fr-en"].xp).toBe(215);
     expect(stored.state.courses["fr-en"].cards["fr:w:homme|recognize"]).toBeDefined();
     expect(useProgress.getState().streak).toBe(5);
@@ -189,7 +189,7 @@ describe("commitImport (transaction safety)", () => {
     // doesn't (legitimately) migrate-and-rewrite the stored form.
     const before = JSON.stringify({
       state: { ...freshFixture.state, reviewLog: [] },
-      version: 2,
+      version: 3,
     });
     memoryStorage.set(PROGRESS_STORAGE_KEY, before);
     const staged = prepareImport(wrap(validState(), 0), NOW);
