@@ -509,3 +509,97 @@ export const SourceRegistrySchema = z.strictObject({
     .min(1),
 });
 export type SourceRegistry = z.infer<typeof SourceRegistrySchema>;
+
+// ---------------------------------------------------------------------------
+// Phase 6: course objectives, CEFR alignment, assessment (§17-22, §98-103)
+// ---------------------------------------------------------------------------
+
+/**
+ * Stable course-objective id, e.g. "fr.obj.gender.articles_basic". These are
+ * long-lived content identities (§20) — never derived from mutable titles.
+ */
+export const objectiveId = z.string().regex(/^fr\.obj\.[a-z0-9_]+\.[a-z0-9_]+$/);
+
+export const OBJECTIVE_CATEGORIES = [
+  "lexical",
+  "grammar",
+  "spoken_reception",
+  "written_reception",
+  "spoken_production",
+  "written_production",
+  "interaction",
+  "phonology",
+  "strategy",
+] as const;
+export type ObjectiveCategory = (typeof OBJECTIVE_CATEGORIES)[number];
+
+export const CEFR_LEVELS = ["PRE_A1", "A1", "A2", "B1", "B2", "C1", "C2"] as const;
+export type CefrLevel = (typeof CEFR_LEVELS)[number];
+
+/**
+ * One CEFR alignment (§18). `direct` means the objective closely represents
+ * the communicative ability the referenced scale describes at that level;
+ * `supports` means the objective develops linguistic resources that support
+ * it. When in doubt the mapping MUST be `supports` (§166) — overclaiming is
+ * the failure mode this schema exists to prevent. `sourceRef` names the
+ * official reference (registered in assessment RESEARCH.md), never quoted
+ * descriptor text.
+ */
+export const CefrAlignmentSchema = z.strictObject({
+  level: z.enum(CEFR_LEVELS),
+  scaleName: z.string().min(1),
+  relation: z.enum(["direct", "supports"]),
+  sourceRef: z.string().min(1),
+});
+export type CefrAlignment = z.infer<typeof CefrAlignmentSchema>;
+
+/**
+ * An app-owned course objective (§17). `canDo` is ORIGINAL app wording in
+ * learner-friendly can-do form — official CEFR descriptor text is never
+ * pasted (§141). `essential` marks objectives whose demonstration the
+ * section checkpoints must cover (§64).
+ */
+export const CourseObjectiveSchema = z.strictObject({
+  id: objectiveId,
+  title: z.string().min(1),
+  canDo: z.string().min(10),
+  category: z.enum(OBJECTIVE_CATEGORIES),
+  prerequisites: z.array(objectiveId),
+  cefrAlignments: z.array(CefrAlignmentSchema).min(1),
+  essential: z.boolean(),
+  /** Honest evidence limitation shown to reviewers/reports (optional). */
+  evidenceNote: z.string().optional(),
+});
+export type CourseObjective = z.infer<typeof CourseObjectiveSchema>;
+
+export const CourseObjectivesSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  objectives: z.array(CourseObjectiveSchema).min(1),
+});
+export type CourseObjectives = z.infer<typeof CourseObjectivesSchema>;
+
+/**
+ * Claim policy (§98-103): the data half of the overall-level claim gate.
+ * A level is claimable only when every `requiredDomains` entry has at least
+ * `minAssessedObjectivesPerDomain` objectives that (a) belong to that
+ * activity domain, (b) carry a DIRECT alignment at the level, and (c) have
+ * real checkpoint assessment coverage. Vocabulary counts and lesson counts
+ * are deliberately not inputs (§100-101).
+ */
+export const ClaimPolicySchema = z.strictObject({
+  version: z.literal(1),
+  /** Levels the product evaluates claims for (higher levels implicitly false). */
+  evaluatedLevels: z.array(z.enum(CEFR_LEVELS)).min(1),
+  /**
+   * The communicative-activity domains an overall claim requires at every
+   * evaluated level. Uses objective categories restricted to activity-like
+   * domains (reception/production/interaction) — competences (lexical,
+   * grammar, phonology, strategy) support but never substitute (§8).
+   */
+  requiredDomains: z.array(z.enum(OBJECTIVE_CATEGORIES)).min(1),
+  minAssessedObjectivesPerDomain: z.number().int().min(1),
+  /** Wording rule: even a claimable level is an aligned estimate (§102). */
+  claimWording: z.string().min(1),
+});
+export type ClaimPolicy = z.infer<typeof ClaimPolicySchema>;
