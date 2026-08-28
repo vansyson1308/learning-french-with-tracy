@@ -117,6 +117,14 @@ export function SessionScreen({
   }
 
   if (state.finished) {
+    // A definition swap mid-mount (placement stage 2) leaves one frame where
+    // the OLD machine's finished state renders under the NEW definition
+    // before the controller's start effect resets the machine. "Finished" is
+    // only real when the machine is running THIS definition's frozen plan —
+    // otherwise render nothing for that frame.
+    if (state.steps !== definition.steps) {
+      return <SafeAreaView style={styles.screen} />;
+    }
     const custom = renderFinished?.(controller);
     if (custom) return custom;
     return (
