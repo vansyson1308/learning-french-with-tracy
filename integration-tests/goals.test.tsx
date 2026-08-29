@@ -3,7 +3,7 @@
  * grouping ("not assessed" ≠ "needs practice", §93), placement estimates
  * marked as estimates, and the reset-starting-point flow (§86).
  */
-import { screen, userEvent, waitFor } from "@testing-library/react-native";
+import { fireEvent, screen, userEvent, waitFor } from "@testing-library/react-native";
 import { renderRouter } from "expo-router/testing-library";
 import React from "react";
 
@@ -49,16 +49,64 @@ const PLACEMENT_RESULT = {
 };
 
 describe("goals screen (§90-97)", () => {
-  test("fresh learner: overall level not assessed; goals not started; no verdict groups", async () => {
+  test("fresh learner: A1 estimate incomplete (never failed); goals not started; no verdict groups", async () => {
     seedFrench();
     renderRouter("./src/app", { initialUrl: "/goals" });
     await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
-    expect(screen.getByText("Overall CEFR level")).toBeOnTheScreen();
-    expect(screen.getByText("Not assessed yet")).toBeOnTheScreen();
+    // P9 §45-§49: the claim split — the estimate card names the five
+    // domains, offers the capstone, and words everything as an estimate.
+    expect(screen.getByText("CEFR-aligned A1 estimate")).toBeOnTheScreen();
+    expect(screen.getByTestId("a1-estimate-value")).toHaveTextContent("Not complete yet");
+    expect(screen.getByTestId("a1-domain-chips")).toBeOnTheScreen();
+    expect(screen.getByTestId("capstone-link")).toBeOnTheScreen();
+    // The limit explainer (§49) opens on demand and never claims a level.
+    expect(screen.queryByTestId("estimate-limits")).toBeNull();
+    fireEvent.press(screen.getByTestId("estimate-limits-toggle"));
+    const limits = screen.getByTestId("estimate-limits");
+    expect(limits).toHaveTextContent(/never an official CEFR examination/);
+    expect(limits).toHaveTextContent(/ever counted as a failure/);
     expect(screen.getByTestId("goal-group-not_started")).toBeOnTheScreen();
     expect(screen.queryByTestId("goal-group-demonstrated")).toBeNull();
     expect(screen.queryByTestId("goal-group-needs_practice")).toBeNull();
     expect(screen.getByText("Find your starting point")).toBeOnTheScreen();
+  });
+
+  test("demonstrating one direct objective per domain flips the estimate (P9 §48)", async () => {
+    const objectiveResults = [
+      "fr.obj.listening.short_info",
+      "fr.obj.reading.short_messages",
+      "fr.obj.speaking.give_info",
+      "fr.obj.writing.short_message",
+      "fr.obj.interaction.everyday_conversation",
+    ].map((objectiveId) => ({
+      objectiveId,
+      result: "demonstrated" as const,
+      correct: 2,
+      total: 2,
+    }));
+    seedFrench({
+      assessment: {
+        placementFloor: 0,
+        checkpointAttempts: [
+          {
+            checkpointId: "fr.checkpoint.a1-capstone",
+            checkpointVersion: 1,
+            formId: "a",
+            formVersion: 1,
+            startedAt: 1,
+            completedAt: 2,
+            itemResults: [],
+            objectiveResults,
+            overallCorrectShare: 1,
+          },
+        ],
+      },
+    });
+    renderRouter("./src/app", { initialUrl: "/goals" });
+    await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
+    expect(screen.getByTestId("a1-estimate-value")).toHaveTextContent(
+      "Demonstrated across all five skills"
+    );
   });
 
   test("placement: comfortable goals show as ESTIMATES; gaps never do (§40)", async () => {
@@ -111,8 +159,9 @@ describe("goals screen (§90-97)", () => {
     expect(screen.getByTestId("goal-group-needs_practice")).not.toHaveTextContent(
       /Elision in writing/
     );
-    // Overall level stays honest even with demonstrated goals (§94).
-    expect(screen.getByText("Not assessed yet")).toBeOnTheScreen();
+    // The overall estimate stays honest even with demonstrated goals (§94):
+    // lexical verdicts alone never complete the five-domain A1 estimate.
+    expect(screen.getByTestId("a1-estimate-value")).toHaveTextContent("Not complete yet");
   });
 
   test("reset starting point clears the floor and keeps the record (§86)", async () => {

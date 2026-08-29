@@ -176,3 +176,39 @@ The retake policy, in full:
   would trade real evidence for cosmetic variety. The A1 capstone is the
   surface sized for genuine parallel forms and is built on exactly this
   machinery.
+
+## The A1 Capstone blueprint (Phase 9 §41-§44)
+
+`fr.checkpoint.a1-capstone` is one reserved sitting across all five
+communication domains, sampling each through ONE representative
+essential direct-A1 objective:
+
+| domain             | representative objective                    | bank | per form |
+|--------------------|---------------------------------------------|------|----------|
+| spoken_reception   | fr.obj.listening.short_info                 | 4    | 2        |
+| written_reception  | fr.obj.reading.short_messages               | 4    | 2        |
+| spoken_production  | fr.obj.speaking.give_info                   | 4    | 2        |
+| written_production | fr.obj.writing.short_message                | 4    | 2        |
+| interaction        | fr.obj.interaction.everyday_conversation    | 4    | 2        |
+
+Design decisions, recorded:
+
+- **Distinct tasks.** Every capstone input is new and reserved
+  (`a1cap_*`) — no section-checkpoint item or stimulus is recycled, so a
+  capstone sitting is never a memory test of earlier checks.
+- **Two disjoint parallel forms** (`a`/`b`, 10 items each), selected by
+  the Phase-9.7 rotation; each form independently satisfies the
+  per-objective criteria floor (validator-enforced).
+- **Representative-objective sampling.** A 20-item sitting cannot floor
+  all 10 essential direct A1 objectives at 3 items each; sampling one
+  objective per domain keeps every domain's evidence real (2 items per
+  sitting, 0.66 share) without pretending to more coverage than one
+  sitting can carry. Full per-objective coverage remains the section
+  checkpoints' job; both feed the same latest-attempt learner standing.
+- **Device-limited honesty (§44).** Speaking and conversation items ride
+  the standard speech preflight and skip channel: a device that cannot
+  recognize French speech leaves those domains at insufficient
+  evidence — the learner's estimate reads INCOMPLETE, never failed.
+- **Wording (§47).** Everywhere the estimate surfaces it is a
+  "CEFR-aligned A1 estimate" from this course's own checks — never
+  "Certified", "Official", or any Council of Europe endorsement.

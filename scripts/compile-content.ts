@@ -213,18 +213,35 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
       })),
     }),
   });
+  const claimGate = evaluateClaimGate({
+    objectives: objectivesDoc.objectives,
+    policy,
+    checkpointItems: collectScoredItemEvidence(
+      "content/fr/assessment/checkpoints.json",
+      "checkpoints"
+    ),
+  });
   files.push({
     relPath: "content/reports/cefr-claim-gate.json",
     contents: canonicalJson({
       generator: "scripts/lib/assessment-reports.ts",
-      ...evaluateClaimGate({
-        objectives: objectivesDoc.objectives,
-        policy,
-        checkpointItems: collectScoredItemEvidence(
-          "content/fr/assessment/checkpoints.json",
-          "checkpoints"
-        ),
-      }),
+      ...claimGate,
+    }),
+  });
+  // P9 §45-§47: the COURSE-claimability half of the claim split, as a tiny
+  // runtime artifact — whether this course's reserved assessment system
+  // covers each evaluated level, plus the exact non-certification wording.
+  // The LEARNER half derives at runtime from the learner's own attempts.
+  files.push({
+    relPath: "src/content/assessment/fr-claim.json",
+    contents: canonicalJson({
+      generator: "scripts/compile-content.ts",
+      claimWording: policy.claimWording,
+      levels: claimGate.levels.map((level) => ({
+        level: level.level,
+        courseClaimable: level.claimable,
+        unassessedDomains: level.unassessedDomains,
+      })),
     }),
   });
   const placement = loadPlacement();

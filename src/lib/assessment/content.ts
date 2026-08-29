@@ -4,6 +4,7 @@
  */
 
 import checkpointsArtifact from "../../content/assessment/fr-checkpoints.json";
+import claimArtifact from "../../content/assessment/fr-claim.json";
 import objectivesArtifact from "../../content/assessment/fr-objectives.json";
 import placementArtifact from "../../content/assessment/fr-placement.json";
 import type { Exercise } from "../types";
@@ -140,6 +141,24 @@ export function objectiveFor(id: string): CompiledObjective | undefined {
 
 export function allObjectives(): CompiledObjective[] {
   return objectives.order.map((id) => objectives.byId[id]);
+}
+
+/** COURSE-claimability artifact (P9 §45-§47): a compile-time fact of the
+ *  content — whether the course's reserved assessment system covers each
+ *  evaluated level — plus the non-certification wording, verbatim. */
+export type CompiledCourseClaim = {
+  claimWording: string;
+  levels: { level: string; courseClaimable: boolean; unassessedDomains: string[] }[];
+};
+
+const claim = claimArtifact as unknown as CompiledCourseClaim;
+
+export function courseClaim(): CompiledCourseClaim {
+  return claim;
+}
+
+export function courseClaimableAt(level: string): boolean {
+  return claim.levels.some((l) => l.level === level && l.courseClaimable);
 }
 
 /** Split a scored attempt's objective results for the results screen (§112). */
