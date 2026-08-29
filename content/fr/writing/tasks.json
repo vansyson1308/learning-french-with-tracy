@@ -1,0 +1,1910 @@
+{
+ "version": 1,
+ "language": "fr",
+ "tasks": [
+  {
+   "id": "fr.write.o_name",
+   "taskFamily": "personal_profile",
+   "mode": "guided",
+   "instruction": "You are Léa. Write one short French sentence saying your name.",
+   "cueFacts": [
+    {
+     "label": "Your name",
+     "value": "Léa"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "your name",
+      "variants": [
+       "je m'appelle Léa",
+       "je suis Léa",
+       "moi c'est Léa"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 3,
+    "maxTokens": 12,
+    "requireSentenceVerbs": [
+     "m'appelle",
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Je m'appelle Léa."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:bonjour"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.o_age",
+   "taskFamily": "personal_profile",
+   "mode": "guided",
+   "instruction": "Still as Léa: write a sentence saying your age.",
+   "cueFacts": [
+    {
+     "label": "Your age",
+     "value": "22"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "age",
+      "description": "your age",
+      "variants": [
+       "j'ai vingt-deux ans"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 3,
+    "maxTokens": 12,
+    "requireSentenceVerbs": [
+     "ai"
+    ]
+   },
+   "modelAnswers": [
+    "J'ai 22 ans."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:annee"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.o_city",
+   "taskFamily": "personal_profile",
+   "mode": "guided",
+   "instruction": "Still as Léa: write a sentence saying where you live.",
+   "cueFacts": [
+    {
+     "label": "Your city",
+     "value": "Paris"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "city",
+      "description": "where you live",
+      "variants": [
+       "j'habite à Paris",
+       "j'habite Paris"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 3,
+    "maxTokens": 12,
+    "requireSentenceVerbs": [
+     "habite"
+    ]
+   },
+   "modelAnswers": [
+    "J'habite à Paris."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter",
+    "fr:w:ville"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.o_profile",
+   "taskFamily": "personal_profile",
+   "mode": "guided",
+   "instruction": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Léa"
+    },
+    {
+     "label": "Age",
+     "value": "22"
+    },
+    {
+     "label": "City",
+     "value": "Paris"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "your name",
+      "variants": [
+       "je m'appelle Léa",
+       "je suis Léa"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "age",
+      "description": "your age",
+      "variants": [
+       "j'ai vingt-deux ans"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "where you live",
+      "variants": [
+       "j'habite à Paris",
+       "j'habite Paris"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 8,
+    "maxTokens": 30,
+    "requireSentenceVerbs": [
+     "m'appelle",
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Je m'appelle Léa, j'ai 22 ans et j'habite à Paris."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.o_open",
+   "taskFamily": "personal_profile",
+   "mode": "open",
+   "instruction": "Now for real: introduce YOURSELF in French — your name, and your age or your city. Write freely; this is practice, not a test.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "about_you",
+      "description": "a sentence about you",
+      "variants": [
+       "je m'appelle",
+       "je suis",
+       "j'ai",
+       "j'habite"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 4,
+    "maxTokens": 60
+   },
+   "modelAnswers": [
+    "Je m'appelle Marco, j'ai trente ans et j'habite à Nice."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.p_like",
+   "taskFamily": "simple_description",
+   "mode": "guided",
+   "instruction": "Write one French sentence saying that you like coffee.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "like",
+      "description": "what you like",
+      "variants": [
+       "j'aime le café",
+       "j'adore le café"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 3,
+    "maxTokens": 10,
+    "requireSentenceVerbs": [
+     "aime",
+     "adore"
+    ]
+   },
+   "modelAnswers": [
+    "J'aime le café."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:aimer",
+    "fr:w:cafe"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.p_like_two",
+   "taskFamily": "simple_description",
+   "mode": "guided",
+   "instruction": "Write a sentence saying you like tea and bread.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "tea",
+      "description": "that you like tea",
+      "variants": [
+       "j'aime le thé",
+       "j'adore le thé"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "bread",
+      "description": "the bread",
+      "variants": [
+       "le pain"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 4,
+    "maxTokens": 14,
+    "requireSentenceVerbs": [
+     "aime",
+     "adore"
+    ]
+   },
+   "modelAnswers": [
+    "J'aime le thé et le pain."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:the",
+    "fr:w:pain"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.p_person",
+   "taskFamily": "simple_description",
+   "mode": "guided",
+   "instruction": "Write one sentence about Hugo: he lives in Lyon.",
+   "cueFacts": [
+    {
+     "label": "Person",
+     "value": "Hugo"
+    },
+    {
+     "label": "City",
+     "value": "Lyon"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "lives",
+      "description": "where Hugo lives",
+      "variants": [
+       "il habite à Lyon",
+       "il habite Lyon",
+       "Hugo habite à Lyon",
+       "Hugo habite Lyon"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 3,
+    "maxTokens": 12,
+    "requireSentenceVerbs": [
+     "habite"
+    ]
+   },
+   "modelAnswers": [
+    "Il habite à Lyon."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.p_cat",
+   "taskFamily": "simple_description",
+   "mode": "guided",
+   "instruction": "Write one sentence: the cat drinks milk.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "fact",
+      "description": "what the cat does",
+      "variants": [
+       "le chat boit du lait",
+       "le chat boit le lait"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 4,
+    "maxTokens": 12,
+    "requireSentenceVerbs": [
+     "boit"
+    ]
+   },
+   "modelAnswers": [
+    "Le chat boit du lait."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:chat",
+    "fr:w:boire",
+    "fr:w:lait"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.p_open",
+   "taskFamily": "simple_description",
+   "mode": "open",
+   "instruction": "Describe someone you know in one or two short French sentences — where they live, or what they like.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "person",
+      "description": "a sentence about the person",
+      "variants": [
+       "il est",
+       "elle est",
+       "il habite",
+       "elle habite",
+       "il aime",
+       "elle aime",
+       "c'est"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 4,
+    "maxTokens": 60
+   },
+   "modelAnswers": [
+    "Elle habite à Paris et elle aime le thé."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter",
+    "fr:w:aimer"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.q_note_cafe",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Marie: greet her, and tell her the café is at two o'clock.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Marie"
+    },
+    {
+     "label": "What",
+     "value": "café"
+    },
+    {
+     "label": "Time",
+     "value": "2:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the café time",
+      "variants": [
+       "le café est à deux heures",
+       "café à deux heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Bonjour Marie, le café est à deux heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:cafe",
+    "fr:w:heure"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.q_note_train",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Paul: greet him, and say the train is tomorrow at nine.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Paul"
+    },
+    {
+     "label": "What",
+     "value": "train"
+    },
+    {
+     "label": "When",
+     "value": "tomorrow, 9:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the train time",
+      "variants": [
+       "le train est demain à neuf heures",
+       "train demain à neuf heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Salut Paul, le train est demain à neuf heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:train",
+    "fr:w:demain"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.q_note_closing",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "place",
+      "description": "where you are",
+      "variants": [
+       "je suis à la gare"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "closing",
+      "description": "a closing",
+      "variants": [
+       "à demain"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 6,
+    "maxTokens": 22,
+    "requireSentenceVerbs": [
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Bonjour, je suis à la gare. À demain !"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:gare",
+    "fr:w:demain"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.q_open",
+   "taskFamily": "short_message",
+   "mode": "open",
+   "instruction": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "message",
+      "description": "your message",
+      "variants": [
+       "bonjour",
+       "salut",
+       "à demain",
+       "au revoir",
+       "merci"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 4,
+    "maxTokens": 60
+   },
+   "modelAnswers": [
+    "Salut Léa, je suis au café. À demain !"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:cafe"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.r_form_arrival",
+   "taskFamily": "simple_form",
+   "mode": "guided",
+   "instruction": "Fill in the arrival form with the details on the card.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Léa"
+    },
+    {
+     "label": "Age",
+     "value": "22"
+    },
+    {
+     "label": "City",
+     "value": "Paris"
+    }
+   ],
+   "formFields": [
+    {
+     "id": "prenom",
+     "label": "Prénom",
+     "slotId": "name"
+    },
+    {
+     "id": "age",
+     "label": "Âge",
+     "slotId": "age"
+    },
+    {
+     "id": "ville",
+     "label": "Ville",
+     "slotId": "city"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "your first name",
+      "variants": [
+       "Léa"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "age",
+      "description": "your age",
+      "variants": [
+       "vingt-deux"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "your city",
+      "variants": [
+       "Paris"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 2,
+    "maxTokens": 12
+   },
+   "modelAnswers": [
+    "Léa | 22 | Paris"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.form_filling"
+   ],
+   "lexemeRefs": [
+    "fr:w:ville"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.r_form_hotel",
+   "taskFamily": "simple_form",
+   "mode": "guided",
+   "instruction": "Fill in the small hotel form with the details on the card.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Marco"
+    },
+    {
+     "label": "City",
+     "value": "Nice"
+    },
+    {
+     "label": "Day",
+     "value": "samedi"
+    }
+   ],
+   "formFields": [
+    {
+     "id": "prenom",
+     "label": "Prénom",
+     "slotId": "name"
+    },
+    {
+     "id": "ville",
+     "label": "Ville",
+     "slotId": "city"
+    },
+    {
+     "id": "jour",
+     "label": "Jour d'arrivée",
+     "slotId": "day"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "the first name",
+      "variants": [
+       "Marco"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "the city",
+      "variants": [
+       "Nice"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "day",
+      "description": "the arrival day",
+      "variants": [
+       "samedi"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 2,
+    "maxTokens": 12
+   },
+   "modelAnswers": [
+    "Marco | Nice | samedi"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.form_filling"
+   ],
+   "lexemeRefs": [
+    "fr:w:samedi"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.r_message_full",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write to Marie: greet her, say you are at the café tomorrow at ten, and close.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Marie"
+    },
+    {
+     "label": "Where",
+     "value": "café"
+    },
+    {
+     "label": "When",
+     "value": "tomorrow, 10:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "where and when",
+      "variants": [
+       "je suis au café demain à dix heures"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "closing",
+      "description": "a closing",
+      "variants": [
+       "à demain",
+       "au revoir"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 8,
+    "maxTokens": 26,
+    "requireSentenceVerbs": [
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Bonjour Marie, je suis au café demain à dix heures. À demain !"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message",
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:cafe",
+    "fr:w:demain"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.r_open",
+   "taskFamily": "personal_profile",
+   "mode": "open",
+   "instruction": "Write two or three short sentences about yourself — anything you can say in French. Free practice.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "about_you",
+      "description": "sentences about you",
+      "variants": [
+       "je m'appelle",
+       "je suis",
+       "j'ai",
+       "j'habite",
+       "j'aime"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 6,
+    "maxTokens": 80
+   },
+   "modelAnswers": [
+    "Je m'appelle Marco. J'ai trente ans, j'habite à Nice et j'aime le café."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info",
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter",
+    "fr:w:aimer"
+   ],
+   "scoredEligibility": false,
+   "reserved": false,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_profile_nadia",
+   "taskFamily": "personal_profile",
+   "mode": "guided",
+   "instruction": "You are Nadia. Introduce yourself in writing — name, age and city, in complete sentences.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Nadia"
+    },
+    {
+     "label": "Age",
+     "value": "35"
+    },
+    {
+     "label": "City",
+     "value": "Lyon"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "your name",
+      "variants": [
+       "je m'appelle Nadia",
+       "je suis Nadia"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "age",
+      "description": "your age",
+      "variants": [
+       "j'ai trente-cinq ans"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "where you live",
+      "variants": [
+       "j'habite à Lyon",
+       "j'habite Lyon"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 8,
+    "maxTokens": 30,
+    "requireSentenceVerbs": [
+     "m'appelle",
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Je m'appelle Nadia, j'ai 35 ans et j'habite à Lyon."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_profile_tom",
+   "taskFamily": "personal_profile",
+   "mode": "guided",
+   "instruction": "You are Tom. Introduce yourself in writing — name, age and city, in complete sentences.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Tom"
+    },
+    {
+     "label": "Age",
+     "value": "28"
+    },
+    {
+     "label": "City",
+     "value": "Nice"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "your name",
+      "variants": [
+       "je m'appelle Tom",
+       "je suis Tom"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "age",
+      "description": "your age",
+      "variants": [
+       "j'ai vingt-huit ans"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "where you live",
+      "variants": [
+       "j'habite à Nice",
+       "j'habite Nice"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 8,
+    "maxTokens": 30,
+    "requireSentenceVerbs": [
+     "m'appelle",
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Je m'appelle Tom, j'ai 28 ans et j'habite à Nice."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_profile_emma",
+   "taskFamily": "personal_profile",
+   "mode": "guided",
+   "instruction": "You are Emma. Introduce yourself in writing — name, age and city, in complete sentences.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Emma"
+    },
+    {
+     "label": "Age",
+     "value": "41"
+    },
+    {
+     "label": "City",
+     "value": "Marseille"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "your name",
+      "variants": [
+       "je m'appelle Emma",
+       "je suis Emma"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "age",
+      "description": "your age",
+      "variants": [
+       "j'ai quarante et un ans"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "where you live",
+      "variants": [
+       "j'habite à Marseille",
+       "j'habite Marseille"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 8,
+    "maxTokens": 30,
+    "requireSentenceVerbs": [
+     "m'appelle",
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Je m'appelle Emma, j'ai 41 ans et j'habite à Marseille."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.personal_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_sofia_tea",
+   "taskFamily": "simple_description",
+   "mode": "guided",
+   "instruction": "Write one sentence about Sofia: she likes tea.",
+   "cueFacts": [
+    {
+     "label": "Person",
+     "value": "Sofia"
+    },
+    {
+     "label": "Likes",
+     "value": "tea"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "fact",
+      "description": "what Sofia likes",
+      "variants": [
+       "sofia aime le thé",
+       "elle aime le thé"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 3,
+    "maxTokens": 12,
+    "requireSentenceVerbs": [
+     "aime"
+    ]
+   },
+   "modelAnswers": [
+    "Sofia aime le thé."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:aimer",
+    "fr:w:the"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_cat_water",
+   "taskFamily": "simple_description",
+   "mode": "guided",
+   "instruction": "Write one sentence: the cat drinks water.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "fact",
+      "description": "what the cat does",
+      "variants": [
+       "le chat boit de l'eau",
+       "le chat boit l'eau"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 4,
+    "maxTokens": 12,
+    "requireSentenceVerbs": [
+     "boit"
+    ]
+   },
+   "modelAnswers": [
+    "Le chat boit de l'eau."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:chat",
+    "fr:w:boire",
+    "fr:w:eau"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_leo_paris",
+   "taskFamily": "simple_description",
+   "mode": "guided",
+   "instruction": "Write about Léo in one or two short sentences: he lives in Paris and he works.",
+   "cueFacts": [
+    {
+     "label": "Person",
+     "value": "Léo"
+    },
+    {
+     "label": "City",
+     "value": "Paris"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "lives",
+      "description": "where Léo lives",
+      "variants": [
+       "il habite à Paris",
+       "il habite Paris",
+       "Léo habite à Paris",
+       "Léo habite Paris"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "works",
+      "description": "that he works",
+      "variants": [
+       "il travaille",
+       "et travaille",
+       "Léo travaille"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 18,
+    "requireSentenceVerbs": [
+     "habite",
+     "travaille"
+    ]
+   },
+   "modelAnswers": [
+    "Léo habite à Paris et il travaille."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.phrases_sentences"
+   ],
+   "lexemeRefs": [
+    "fr:w:habiter",
+    "fr:w:travailler"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_note_anna",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Anna: greet her, and tell her the café is at three o'clock.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Anna"
+    },
+    {
+     "label": "What",
+     "value": "café"
+    },
+    {
+     "label": "Time",
+     "value": "3:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the café time",
+      "variants": [
+       "le café est à trois heures",
+       "café à trois heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Bonjour Anna, le café est à trois heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:cafe",
+    "fr:w:heure"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_note_train",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note: greet your friend, and say the train is Saturday at eight.",
+   "cueFacts": [
+    {
+     "label": "What",
+     "value": "train"
+    },
+    {
+     "label": "When",
+     "value": "Saturday, 8:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the train day and time",
+      "variants": [
+       "le train est samedi à huit heures",
+       "train samedi à huit heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Salut, le train est samedi à huit heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:train",
+    "fr:w:samedi"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_note_library",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a note: say hello, say you are at the library, and close with “see you tomorrow”.",
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "place",
+      "description": "where you are",
+      "variants": [
+       "je suis à la bibliothèque"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "closing",
+      "description": "a closing",
+      "variants": [
+       "à demain"
+      ],
+      "cueProvided": false
+     }
+    ],
+    "minTokens": 6,
+    "maxTokens": 22,
+    "requireSentenceVerbs": [
+     "suis"
+    ]
+   },
+   "modelAnswers": [
+    "Bonjour, je suis à la bibliothèque. À demain !"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:bibliotheque",
+    "fr:w:demain"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_form_nadia",
+   "taskFamily": "simple_form",
+   "mode": "guided",
+   "instruction": "Fill in the registration form with the details on the card.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Nadia"
+    },
+    {
+     "label": "Age",
+     "value": "35"
+    },
+    {
+     "label": "City",
+     "value": "Lyon"
+    }
+   ],
+   "formFields": [
+    {
+     "id": "prenom",
+     "label": "Prénom",
+     "slotId": "name"
+    },
+    {
+     "id": "age",
+     "label": "Âge",
+     "slotId": "age"
+    },
+    {
+     "id": "ville",
+     "label": "Ville",
+     "slotId": "city"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "the first name",
+      "variants": [
+       "Nadia"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "age",
+      "description": "the age",
+      "variants": [
+       "trente-cinq"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "the city",
+      "variants": [
+       "Lyon"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 2,
+    "maxTokens": 12
+   },
+   "modelAnswers": [
+    "Nadia | 35 | Lyon"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.form_filling"
+   ],
+   "lexemeRefs": [
+    "fr:w:ville"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_form_tom",
+   "taskFamily": "simple_form",
+   "mode": "guided",
+   "instruction": "Fill in the hotel form with the details on the card.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Tom"
+    },
+    {
+     "label": "City",
+     "value": "Nice"
+    },
+    {
+     "label": "Day",
+     "value": "dimanche"
+    }
+   ],
+   "formFields": [
+    {
+     "id": "prenom",
+     "label": "Prénom",
+     "slotId": "name"
+    },
+    {
+     "id": "ville",
+     "label": "Ville",
+     "slotId": "city"
+    },
+    {
+     "id": "jour",
+     "label": "Jour d'arrivée",
+     "slotId": "day"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "the first name",
+      "variants": [
+       "Tom"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "the city",
+      "variants": [
+       "Nice"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "day",
+      "description": "the arrival day",
+      "variants": [
+       "dimanche"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 2,
+    "maxTokens": 12
+   },
+   "modelAnswers": [
+    "Tom | Nice | dimanche"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.form_filling"
+   ],
+   "lexemeRefs": [
+    "fr:w:dimanche"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.cp5_form_emma",
+   "taskFamily": "simple_form",
+   "mode": "guided",
+   "instruction": "Fill in the library-card form with the details on the card.",
+   "cueFacts": [
+    {
+     "label": "Name",
+     "value": "Emma"
+    },
+    {
+     "label": "Age",
+     "value": "41"
+    },
+    {
+     "label": "City",
+     "value": "Marseille"
+    }
+   ],
+   "formFields": [
+    {
+     "id": "prenom",
+     "label": "Prénom",
+     "slotId": "name"
+    },
+    {
+     "id": "age",
+     "label": "Âge",
+     "slotId": "age"
+    },
+    {
+     "id": "ville",
+     "label": "Ville",
+     "slotId": "city"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "name",
+      "description": "the first name",
+      "variants": [
+       "Emma"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "age",
+      "description": "the age",
+      "variants": [
+       "quarante et un"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "city",
+      "description": "the city",
+      "variants": [
+       "Marseille"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 2,
+    "maxTokens": 12
+   },
+   "modelAnswers": [
+    "Emma | 41 | Marseille"
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.form_filling"
+   ],
+   "lexemeRefs": [
+    "fr:w:ville"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_train",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Paul: greet him, and tell him the train is at nine o'clock.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Paul"
+    },
+    {
+     "label": "What",
+     "value": "train"
+    },
+    {
+     "label": "Time",
+     "value": "9:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the train time",
+      "variants": [
+       "le train est à neuf heures",
+       "train à neuf heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Salut Paul, le train est à neuf heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:train",
+    "fr:w:heure"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_resto",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Léa: greet her, and tell her the restaurant is on Saturday.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Léa"
+    },
+    {
+     "label": "What",
+     "value": "restaurant"
+    },
+    {
+     "label": "Day",
+     "value": "Saturday"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the restaurant day",
+      "variants": [
+       "le restaurant est samedi",
+       "le restaurant c'est samedi",
+       "restaurant samedi"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Bonjour Léa, le restaurant est samedi."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:restaurant",
+    "fr:w:samedi"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_magasin",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Marc: greet him, and tell him the shop is open tomorrow.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Marc"
+    },
+    {
+     "label": "What",
+     "value": "shop"
+    },
+    {
+     "label": "When",
+     "value": "tomorrow"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the shop opening",
+      "variants": [
+       "le magasin est ouvert demain",
+       "le magasin ouvre demain",
+       "magasin ouvert demain"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Salut Marc, le magasin est ouvert demain."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:magasin",
+    "fr:w:ouvert",
+    "fr:w:demain"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_gare",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Anna: greet her, say you are at the station, and that you are coming back at six.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Anna"
+    },
+    {
+     "label": "Where",
+     "value": "station"
+    },
+    {
+     "label": "Back at",
+     "value": "6:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "place",
+      "description": "where you are",
+      "variants": [
+       "je suis à la gare"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "time",
+      "description": "when you are back",
+      "variants": [
+       "je rentre à six heures",
+       "à six heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 7,
+    "maxTokens": 25
+   },
+   "modelAnswers": [
+    "Salut Anna, je suis à la gare. Je rentre à six heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:gare",
+    "fr:w:heure"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  }
+ ]
+}

@@ -208,6 +208,8 @@ export function runInvariants(state: PersistedProgress, now: Date): string[] {
         for (const attempt of a.checkpointAttempts as {
           checkpointId?: unknown;
           checkpointVersion?: unknown;
+          formId?: unknown;
+          formVersion?: unknown;
           startedAt?: unknown;
           completedAt?: unknown;
           itemResults?: unknown;
@@ -217,6 +219,10 @@ export function runInvariants(state: PersistedProgress, now: Date): string[] {
             !attempt ||
             typeof attempt.checkpointId !== "string" ||
             !finiteAtLeast(attempt.checkpointVersion, 1) ||
+            // P9 §38: form fields are OPTIONAL (pre-forms attempts carry
+            // neither) but must be sane when present.
+            (attempt.formId !== undefined && typeof attempt.formId !== "string") ||
+            (attempt.formVersion !== undefined && !finiteAtLeast(attempt.formVersion, 1)) ||
             !finiteAtLeast(attempt.startedAt, 0) ||
             !finiteAtLeast(attempt.completedAt, 0) ||
             (attempt.completedAt as number) > maxTimestamp ||

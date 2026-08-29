@@ -1,6 +1,12 @@
-import type { Exercise } from "./types";
+import type { Exercise, GuidedWritingExercise, SimpleFormExercise } from "./types";
 
 import { gradeSpokenAttempt } from "./speech/grader";
+import { knownFrenchVocabulary } from "./writing/content";
+import {
+  evaluateGuidedWriting,
+  evaluateSimpleForm,
+  type WritingEvaluation,
+} from "./writing/rubric";
 
 export type Status = "none" | "correct" | "wrong";
 
@@ -17,15 +23,96 @@ export type SpokenAnswer = {
   assisted: boolean;
 };
 
-export type Answer = number | number[] | string | SpokenAnswer | null;
+/**
+ * A written-production submission (P9 §14): free text for guidedWriting,
+ * per-field values for simpleForm. Grading itself is the deterministic
+ * tri-state rubric engine; the boolean checkAnswer contract maps
+ * meets_rubric → true and everything else → false, while scored surfaces
+ * read the full evaluation to route insufficiently_scorable to the
+ * no-evidence path (§17).
+ */
+export type WrittenAnswer =
+  | { written: true; kind: "text"; text: string }
+  | { written: true; kind: "form"; values: Record<string, string> };
+
+/**
+ * A finished interaction scenario as a submittable answer (P9 §36-37):
+ * the deterministic engine's whole-scenario result. "Correct" means the
+ * communicative goal was met AND every scored turn matched on its first
+ * judged final; an unfinished (technically incomplete) run is routed to
+ * the no-evidence skip path by scored surfaces, never graded.
+ */
+export type InteractionAnswer = {
+  interaction: true;
+  goalMet: boolean;
+  passedFirstTry: boolean;
+  scoredTurns: number;
+  matchedFirstTry: number;
+  supportUsed: number;
+  repairMoves: number;
+  technicallyIncomplete: boolean;
+};
+
+export type Answer =
+  | number
+  | number[]
+  | string
+  | SpokenAnswer
+  | WrittenAnswer
+  | InteractionAnswer
+  | null;
 
 export function isSpokenAnswer(answer: Answer): answer is SpokenAnswer {
   return (
     typeof answer === "object" &&
     answer !== null &&
     !Array.isArray(answer) &&
-    answer.spoken === true
+    (answer as { spoken?: unknown }).spoken === true
   );
+}
+
+export function isInteractionAnswer(answer: Answer): answer is InteractionAnswer {
+  return (
+    typeof answer === "object" &&
+    answer !== null &&
+    !Array.isArray(answer) &&
+    (answer as { interaction?: unknown }).interaction === true
+  );
+}
+
+export function isWrittenAnswer(answer: Answer): answer is WrittenAnswer {
+  return (
+    typeof answer === "object" &&
+    answer !== null &&
+    !Array.isArray(answer) &&
+    (answer as { written?: unknown }).written === true
+  );
+}
+
+/** Full tri-state evaluation for a writing step (renderer + scored routing). */
+export function evaluateWrittenAnswer(
+  exercise: GuidedWritingExercise | SimpleFormExercise,
+  answer: Answer
+): WritingEvaluation | null {
+  if (!isWrittenAnswer(answer)) return null;
+  if (exercise.type === "guidedWriting") {
+    if (answer.kind !== "text") return null;
+    return evaluateGuidedWriting({
+      text: answer.text,
+      rubric: exercise.rubric,
+      promptText: [
+        exercise.instruction,
+        ...(exercise.cueFacts ?? []).flatMap((cue) => [cue.label, cue.value]),
+      ].join(" "),
+      knownFrench: knownFrenchVocabulary(),
+    });
+  }
+  if (answer.kind !== "form") return null;
+  return evaluateSimpleForm({
+    values: answer.values,
+    fields: exercise.fields,
+    rubric: exercise.rubric,
+  });
 }
 
 export function normalize(text: string) {
@@ -109,6 +196,21 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
         acceptedVariants: exercise.acceptedVariants,
         requiredConcepts: exercise.requiredConcepts,
       }).correct;
+    case "guidedWriting":
+    case "simpleForm":
+      // Tri-state collapses honestly here: only meets_rubric is "correct";
+      // insufficiently_scorable is routed to no-evidence by the scored
+      // surfaces BEFORE this boolean is recorded (§17).
+      return evaluateWrittenAnswer(exercise, answer)?.verdict === "meets_rubric";
+    case "interactionScenario":
+      // §37: goal met AND clean first-judgment turns; incomplete runs are
+      // never graded (scored surfaces skip them before this boolean).
+      return (
+        isInteractionAnswer(answer) &&
+        !answer.technicallyIncomplete &&
+        answer.goalMet &&
+        answer.passedFirstTry
+      );
   }
 }
 
@@ -136,6 +238,11 @@ export function correctAnswerText(exercise: Exercise): string {
     case "speakRepetition":
     case "speakProduction":
       return exercise.target;
+    case "guidedWriting":
+    case "simpleForm":
+      return exercise.modelAnswers[0];
+    case "interactionScenario":
+      return ""; // there is no single "correct sentence" for a conversation
   }
 }
 
@@ -159,5 +266,18 @@ export function answerIsReady(exercise: Exercise, answer: Answer): boolean {
     case "speakRepetition":
     case "speakProduction":
       return isSpokenAnswer(answer);
+    case "guidedWriting":
+      return (
+        isWrittenAnswer(answer) && answer.kind === "text" && answer.text.trim().length > 0
+      );
+    case "simpleForm":
+      return (
+        isWrittenAnswer(answer) &&
+        answer.kind === "form" &&
+        Object.values(answer.values).some((v) => v.trim().length > 0)
+      );
+    case "interactionScenario":
+      // The step resolves only when the scenario reached a terminal.
+      return isInteractionAnswer(answer) && !answer.technicallyIncomplete;
   }
 }

@@ -12,7 +12,11 @@ import { Alert, Platform, Pressable, ScrollView, StyleSheet, Text, View } from "
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CloseButton } from "@/components/close-button";
-import { allObjectives } from "@/lib/assessment/content";
+import { allObjectives, courseClaimableAt } from "@/lib/assessment/content";
+import {
+  A1_DOMAIN_DISPLAY,
+  deriveA1Estimate,
+} from "@/lib/assessment/estimate";
 import {
   deriveObjectiveStates,
   objectiveLessonMap,
@@ -62,6 +66,12 @@ export default function GoalsScreen() {
   const floorRef =
     floor > 0 ? getLesson(placement?.recommendedLessonId ?? "") : undefined;
 
+  // P9 §45-§49: the claim split. Course claimability is a compiled fact;
+  // the learner's estimate derives from their own checkpoint evidence.
+  const courseReady = courseClaimableAt("A1");
+  const estimate = deriveA1Estimate({ objectives, states });
+  const [limitsOpen, setLimitsOpen] = React.useState(false);
+
   const onResetFloor = () => {
     const doReset = () => progress.resetPlacement();
     const message =
@@ -87,14 +97,116 @@ export default function GoalsScreen() {
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.overallCard} testID="overall-level-card">
-          <Text style={styles.overallLabel}>Overall CEFR level</Text>
-          <Text style={styles.overallValue}>Not assessed yet</Text>
-          <Text style={styles.overallNote}>
-            This course checks specific goals, not a whole level. A CEFR level
-            covers listening, reading, speaking and writing together — more
-            than these checks measure. An official level comes only from an
-            accredited examination.
+          <Text style={styles.overallLabel}>CEFR-aligned A1 estimate</Text>
+          <Text style={styles.overallValue} testID="a1-estimate-value">
+            {estimate.overall === "demonstrated"
+              ? "Demonstrated across all five skills"
+              : "Not complete yet"}
           </Text>
+          {courseReady ? (
+            <Text style={styles.overallNote}>
+              {estimate.overall === "demonstrated"
+                ? "You have shown every A1 skill area in this course's own checks. This is a course-based estimate — an official level comes only from an accredited examination."
+                : `An A1 estimate needs demonstrated evidence in all five skill areas. Still to show: ${estimate.missingDomains
+                    .map((d) => A1_DOMAIN_DISPLAY[d])
+                    .join(", ")}. A skipped speaking part just leaves the estimate incomplete — it never counts against you.`}
+            </Text>
+          ) : (
+            <Text style={styles.overallNote}>
+              This course cannot yet assess a full level across all five skill
+              areas.
+            </Text>
+          )}
+          <View style={styles.domainRow} testID="a1-domain-chips">
+            {estimate.domains.map((d) => (
+              <View
+                key={d.domain}
+                style={[
+                  styles.domainChip,
+                  d.status === "demonstrated" && {
+                    backgroundColor: colors.correctBg,
+                    borderColor: colors.correctBg,
+                  },
+                ]}
+              >
+                <Ionicons
+                  name={
+                    d.status === "demonstrated"
+                      ? "checkmark-circle"
+                      : d.status === "needs_practice"
+                        ? "barbell"
+                        : "ellipse-outline"
+                  }
+                  size={14}
+                  color={d.status === "demonstrated" ? colors.correctText : colors.neutral400}
+                />
+                <Text
+                  style={[
+                    styles.domainChipText,
+                    d.status === "demonstrated" && { color: colors.correctText },
+                  ]}
+                >
+                  {A1_DOMAIN_DISPLAY[d.domain]}
+                </Text>
+              </View>
+            ))}
+          </View>
+          {courseReady ? (
+            <Pressable
+              onPress={() => router.push("/checkpoint/fr.checkpoint.a1-capstone")}
+              accessibilityRole="button"
+              accessibilityLabel="Take the A1 check"
+              style={styles.linkRow}
+              testID="capstone-link"
+            >
+              <Ionicons name="school" size={16} color={colors.skyDark} />
+              <Text style={[styles.linkText, { color: colors.skyDark }]}>
+                Take the A1 check — all five skills in one sitting
+              </Text>
+            </Pressable>
+          ) : null}
+          <Pressable
+            onPress={() => setLimitsOpen((open) => !open)}
+            accessibilityRole="button"
+            accessibilityLabel="What this estimate is and is not"
+            style={styles.linkRow}
+            testID="estimate-limits-toggle"
+          >
+            <Ionicons
+              name={limitsOpen ? "chevron-up" : "information-circle-outline"}
+              size={16}
+              color={colors.neutral400}
+            />
+            <Text style={[styles.linkText, { color: colors.neutral400 }]}>
+              What this estimate is — and is not
+            </Text>
+          </Pressable>
+          {limitsOpen ? (
+            <View style={styles.limitsBox} testID="estimate-limits">
+              <Text style={styles.overallNote}>
+                • It is a CEFR-aligned estimate from this course&apos;s own
+                deterministic checks, scored on your latest attempt at each
+                check — never an official CEFR examination, certificate, or
+                Council of Europe endorsement.
+              </Text>
+              <Text style={styles.overallNote}>
+                • Speaking and conversation checks need a device that can
+                recognize French speech. If yours can&apos;t, those parts are
+                skipped: the estimate stays incomplete, and nothing is ever
+                counted as a failure.
+              </Text>
+              <Text style={styles.overallNote}>
+                • Retaking a check replaces your standing with the newest
+                result — a different parallel version where one exists — and
+                earlier attempts are kept, never re-scored.
+              </Text>
+              <Text style={styles.overallNote}>
+                • A full CEFR level covers more situations and spontaneity
+                than any app can sample. Treat this as an honest map of what
+                you have shown here, not a qualification.
+              </Text>
+            </View>
+          ) : null}
         </View>
 
         <View style={styles.placementCard}>
@@ -200,6 +312,19 @@ const useStyles = makeThemedStyles((colors) =>
     },
     overallValue: { fontSize: 20, fontWeight: "800", color: colors.text },
     overallNote: { fontSize: 13, color: colors.textMuted, lineHeight: 18 },
+    domainRow: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 4 },
+    domainChip: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 4,
+      borderWidth: 1.5,
+      borderColor: colors.neutral200,
+      borderRadius: radius.full,
+      paddingHorizontal: 10,
+      paddingVertical: 4,
+    },
+    domainChipText: { fontSize: 12, fontWeight: "700", color: colors.neutral700 },
+    limitsBox: { gap: 6, marginTop: 2 },
     placementCard: {
       borderRadius: radius.md,
       borderWidth: 2,

@@ -12,6 +12,8 @@ import {
   contextualStringsFor,
   gateFor,
   gateMessage,
+  NETWORK_DISCLOSURE_TEXT,
+  networkDisclosureRequired,
   outcomeNotice,
   recordingBudget,
   showHeardBeforeCheck,
@@ -190,6 +192,39 @@ describe("capability gate (§24/§25)", () => {
   test("granted everything → ready", () => {
     expect(gateFor(ready, learning)).toEqual({ kind: "ready" });
     expect(gateFor(ready, scored)).toEqual({ kind: "ready" });
+  });
+
+  test("network disclosure (P9 §7): required exactly when the system service may use the network", () => {
+    const networkPossible: SpeechCapability = {
+      ...ready,
+      frenchOnDeviceModelInstalled: false,
+      networkBackedRecognitionPossible: true,
+    };
+    // Required: capable device, unproven offline model, not yet acknowledged.
+    expect(networkDisclosureRequired(networkPossible, false)).toBe(true);
+    // Acknowledged once → never nags again.
+    expect(networkDisclosureRequired(networkPossible, true)).toBe(false);
+    // Proven offline model → nothing to disclose.
+    expect(networkDisclosureRequired(ready, false)).toBe(false);
+    // No recognizer / no French → other gates handle it; no disclosure.
+    expect(networkDisclosureRequired(unavailableCapability("android"), false)).toBe(false);
+    expect(
+      networkDisclosureRequired(
+        { ...networkPossible, frenchRecognitionAvailable: false },
+        false
+      )
+    ).toBe(false);
+    // Still probing → nothing yet.
+    expect(networkDisclosureRequired(null, false)).toBe(false);
+  });
+
+  test("the disclosure text states the three §7 facts and offers the skip", () => {
+    expect(NETWORK_DISCLOSURE_TEXT).toContain("system service");
+    expect(NETWORK_DISCLOSURE_TEXT).toContain("internet");
+    expect(NETWORK_DISCLOSURE_TEXT).toContain("never uploads");
+    expect(NETWORK_DISCLOSURE_TEXT).toContain("skip");
+    // Never a percentage, never scare copy about AI.
+    expect(NETWORK_DISCLOSURE_TEXT).not.toMatch(/%|AI/);
   });
 
   test("null capability is still probing", () => {

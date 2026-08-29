@@ -80,7 +80,8 @@ export function SessionScreen({
         (planned) =>
           planned.type === "exercise" &&
           (planned.exercise.type === "speakRepetition" ||
-            planned.exercise.type === "speakProduction")
+            planned.exercise.type === "speakProduction" ||
+            planned.exercise.type === "interactionScenario")
       ),
     [definition.steps]
   );
@@ -231,6 +232,10 @@ export function SessionScreen({
                     }
                   : undefined
               }
+              writing={{
+                scored:
+                  definition.kind === "checkpoint" || definition.kind === "placement",
+              }}
             />
           )}
         </ScrollView>
@@ -265,15 +270,20 @@ export function SessionScreen({
               <View style={styles.feedbackRow}>
                 <Ionicons name="close-circle" size={26} color={colors.wrongText} />
                 <Text style={[styles.feedback, { color: colors.wrongText }]}>
-                  Correct answer:
+                  {/* An interaction has no single correct sentence to show. */}
+                  {behaviorFor(exercise).answerText(exercise)
+                    ? "Correct answer:"
+                    : "Not quite this time"}
                 </Text>
                 {controller.lastMutated && definition.allowUndo ? (
                   <UndoLink onPress={controller.onUndo} color={colors.wrongText} />
                 ) : null}
               </View>
-              <Text style={[styles.feedbackDetail, { color: colors.wrongText }]}>
-                {behaviorFor(exercise).answerText(exercise)}
-              </Text>
+              {behaviorFor(exercise).answerText(exercise) ? (
+                <Text style={[styles.feedbackDetail, { color: colors.wrongText }]}>
+                  {behaviorFor(exercise).answerText(exercise)}
+                </Text>
+              ) : null}
             </Animated.View>
           )}
           {panelItemId !== null ? (

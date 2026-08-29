@@ -146,6 +146,42 @@ export default function PracticeScreen() {
           </View>
         ) : null}
 
+        {isFrench ? (
+          <View style={styles.card} testID="practice-writing-card">
+            <View style={styles.cardHeader}>
+              <Ionicons name="pencil" size={24} color={colors.greenDark} />
+              <Text style={styles.cardTitle}>Writing practice</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>
+              A few short writing tasks with honest feedback — what your French
+              said, and what the task still needs. Nothing here is graded.
+            </Text>
+            <DuoButton
+              label="Practice writing"
+              variant="primary"
+              onPress={() => router.push("/lesson/writing-practice")}
+            />
+          </View>
+        ) : null}
+
+        {isFrench ? (
+          <View style={styles.card} testID="practice-conversation-card">
+            <View style={styles.cardHeader}>
+              <Ionicons name="chatbubbles" size={24} color={colors.sky} />
+              <Text style={styles.cardTitle}>Conversation practice</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>
+              One short spoken conversation with a patient partner. Ask to hear
+              a line again, or more simply — that&apos;s what practice is for.
+            </Text>
+            <DuoButton
+              label="Have a conversation"
+              variant="primary"
+              onPress={() => router.push("/lesson/conversation")}
+            />
+          </View>
+        ) : null}
+
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Ionicons name="bandage" size={24} color={colors.rose} />

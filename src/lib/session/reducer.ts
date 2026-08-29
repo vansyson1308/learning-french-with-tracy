@@ -9,8 +9,9 @@
  */
 
 import { checkAnswer, type Answer } from "../grading";
+import type { Exercise } from "../types";
 
-import type { SessionStep } from "./types";
+import type { SessionKind, SessionStep } from "./types";
 
 export type StepStatus = "idle" | "correct" | "wrong";
 
@@ -90,6 +91,27 @@ export function firstAttemptAccuracy(state: SessionMachineState): number | null 
 export function sessionProgress(state: SessionMachineState): number {
   if (state.steps.length === 0) return 0;
   return Math.min(1, state.completedCount / state.steps.length);
+}
+
+/** Exercise types whose administration depends on working device hardware
+ *  (speaker or microphone) rather than on the learner's knowledge. */
+const DEVICE_DEPENDENT_TYPES: ReadonlySet<Exercise["type"]> = new Set([
+  "listeningComprehension",
+  "dictation",
+  "speakRepetition",
+  "speakProduction",
+  "interactionScenario",
+]);
+
+/**
+ * The skip gate (§117; P7 §69-70/§104; P8 §24; P9 §36): "I don't know" is
+ * placement-wide, and device-dependent steps are skippable EVERYWHERE — a
+ * learner without audio or a working microphone continues without penalty;
+ * in scored sessions the skipped item yields insufficient evidence, never
+ * a failure. Every other step outside placement must be answered.
+ */
+export function skipAllowed(kind: SessionKind, exerciseType: Exercise["type"]): boolean {
+  return kind === "placement" || DEVICE_DEPENDENT_TYPES.has(exerciseType);
 }
 
 function advance(state: SessionMachineState, requeueCurrent: boolean): SessionMachineState {

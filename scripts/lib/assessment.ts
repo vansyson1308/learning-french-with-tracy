@@ -52,6 +52,16 @@ export const CEFR_SOURCE_REFS: readonly string[] = [
   "cefr-cv-2020:overall-oral-production",
   "cefr-cv-2020:sustained-monologue-describing",
   "cefr-cv-2020:sustained-monologue-giving-information",
+  // Phase-9 written-production + interaction scales (documented in
+  // content/fr/writing/RESEARCH.md and content/fr/interaction/RESEARCH.md,
+  // with per-row verification status).
+  "cefr-cv-2020:overall-written-production",
+  "cefr-cv-2020:overall-written-interaction",
+  "cefr-cv-2020:notes-messages-forms",
+  "cefr-cv-2020:correspondence",
+  "cefr-cv-2020:overall-oral-interaction",
+  "cefr-cv-2020:information-exchange",
+  "cefr-cv-2020:obtaining-goods-services",
 ];
 
 export function loadCourseObjectives(): CourseObjectives {
@@ -300,6 +310,48 @@ function speechTaskFamilies(): Map<string, string> {
   return speechFamilyCache;
 }
 
+let writingFamilyCache: Map<string, string> | null = null;
+
+/** writingTaskId → authored taskFamily (P9 §21-analog honesty for writing). */
+function writingTaskFamilies(): Map<string, string> {
+  if (writingFamilyCache) return writingFamilyCache;
+  writingFamilyCache = new Map();
+  try {
+    const doc = readJson("content/fr/writing/tasks.json") as {
+      tasks?: { id?: unknown; taskFamily?: unknown }[];
+    };
+    for (const task of doc.tasks ?? []) {
+      if (typeof task.id === "string" && typeof task.taskFamily === "string") {
+        writingFamilyCache.set(task.id, task.taskFamily);
+      }
+    }
+  } catch {
+    // No writing source yet — exercise types remain the fallback family.
+  }
+  return writingFamilyCache;
+}
+
+let interactionFamilyCache: Map<string, string> | null = null;
+
+/** scenarioId → authored taskFamily (P9 §35: the scenario IS the input). */
+function interactionTaskFamilies(): Map<string, string> {
+  if (interactionFamilyCache) return interactionFamilyCache;
+  interactionFamilyCache = new Map();
+  try {
+    const doc = readJson("content/fr/interaction/scenarios.json") as {
+      scenarios?: { id?: unknown; taskFamily?: unknown }[];
+    };
+    for (const scenario of doc.scenarios ?? []) {
+      if (typeof scenario.id === "string" && typeof scenario.taskFamily === "string") {
+        interactionFamilyCache.set(scenario.id, scenario.taskFamily);
+      }
+    }
+  } catch {
+    // No interaction source yet — exercise types remain the fallback family.
+  }
+  return interactionFamilyCache;
+}
+
 export function collectScoredItemEvidence(
   relPath: string,
   containerKey: "checkpoints" | "stages"
@@ -319,24 +371,42 @@ export function collectScoredItemEvidence(
     for (const item of items) {
       const targets = (item as { objectiveTargets?: unknown }).objectiveTargets;
       const exercise = (item as { exercise?: unknown }).exercise as
-        | { type?: unknown; clipId?: unknown; readingId?: unknown; speechItemId?: unknown }
+        | {
+            type?: unknown;
+            clipId?: unknown;
+            readingId?: unknown;
+            speechItemId?: unknown;
+            writingTaskId?: unknown;
+            scenarioId?: unknown;
+          }
         | undefined;
       if (!Array.isArray(targets) || !targets.every((t) => typeof t === "string")) continue;
       const clip = typeof exercise?.clipId === "string" ? exercise.clipId : null;
       const reading = typeof exercise?.readingId === "string" ? exercise.readingId : null;
       const speechItemId =
         typeof exercise?.speechItemId === "string" ? exercise.speechItemId : null;
-      // Speech items (P8 §21): the honest task family is the AUTHORED one
-      // (formulaic_exchange / self_introduction / …), not the single
-      // exercise type; the elicitation prompt itself is the input identity.
+      const writingTaskId =
+        typeof exercise?.writingTaskId === "string" ? exercise.writingTaskId : null;
+      const scenarioId =
+        typeof exercise?.scenarioId === "string" ? exercise.scenarioId : null;
+      // Speech/writing/interaction items (P8 §21, P9 §21/§35): the honest
+      // task family is the AUTHORED one (formulaic_exchange / transaction /
+      // …), not the exercise type; the elicitation prompt — or the whole
+      // scenario — is the input identity.
       const speechFamily =
         speechItemId !== null ? speechTaskFamilies().get(speechItemId) : undefined;
+      const writingFamily =
+        writingTaskId !== null ? writingTaskFamilies().get(writingTaskId) : undefined;
+      const interactionFamily =
+        scenarioId !== null ? interactionTaskFamilies().get(scenarioId) : undefined;
       out.push({
         objectiveTargets: targets as string[],
         taskFamily:
           speechFamily ??
+          writingFamily ??
+          interactionFamily ??
           (typeof exercise?.type === "string" ? exercise.type : "unknown"),
-        inputId: clip ?? reading ?? speechItemId,
+        inputId: clip ?? reading ?? speechItemId ?? writingTaskId ?? scenarioId,
       });
     }
   }
@@ -458,6 +528,49 @@ export function validateCheckpointsData(input: {
     if (cpIds.has(cp.id)) err(`duplicate checkpoint id ${cp.id}`);
     cpIds.add(cp.id);
     if (!sectionIds.has(cp.sectionId)) err(`${cp.id}: unknown section ${cp.sectionId}`);
+
+    // Parallel forms (P9 §38-§39): every declared form must be a VALID
+    // administration on its own — its items resolve, no dead bank items,
+    // and every objective the bank targets keeps at least the criteria
+    // floor of items inside EVERY form (otherwise a retake on that form
+    // could only ever yield structural insufficient_evidence).
+    if (cp.forms) {
+      const bankIds = new Set(cp.items.map((i) => i.id));
+      const formIds = new Set<string>();
+      const coveredByForms = new Set<string>();
+      for (const form of cp.forms) {
+        if (formIds.has(form.formId)) err(`${cp.id}: duplicate form id ${form.formId}`);
+        formIds.add(form.formId);
+        const seen = new Set<string>();
+        const perObjective = new Map<string, number>();
+        for (const itemId of form.itemIds) {
+          if (!bankIds.has(itemId)) {
+            err(`${cp.id}/${form.formId}: item ${itemId} is not in the bank`);
+            continue;
+          }
+          if (seen.has(itemId)) err(`${cp.id}/${form.formId}: duplicate item ${itemId}`);
+          seen.add(itemId);
+          coveredByForms.add(itemId);
+          const item = cp.items.find((i) => i.id === itemId)!;
+          for (const oid of new Set(item.objectiveTargets)) {
+            perObjective.set(oid, (perObjective.get(oid) ?? 0) + 1);
+          }
+        }
+        const bankObjectives = new Set(cp.items.flatMap((i) => i.objectiveTargets));
+        for (const oid of bankObjectives) {
+          if ((perObjective.get(oid) ?? 0) < cp.criteria.minItemsPerObjective) {
+            err(
+              `${cp.id}/${form.formId}: objective ${oid} has ${perObjective.get(oid) ?? 0} item(s) — every form needs ≥${cp.criteria.minItemsPerObjective} (P9 §39)`
+            );
+          }
+        }
+      }
+      for (const item of cp.items) {
+        if (!coveredByForms.has(item.id)) {
+          err(`${cp.id}: item ${item.id} appears in no form — dead bank item`);
+        }
+      }
+    }
     for (const item of cp.items) {
       if (itemIds.has(item.id)) err(`duplicate item id ${item.id}`);
       itemIds.add(item.id);

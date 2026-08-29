@@ -62,7 +62,7 @@
         },
         {
           "domain": "interaction",
-          "status": "no_objectives_in_domain",
+          "status": "no_direct_objective",
           "directAssessedObjectives": []
         }
       ],
@@ -87,7 +87,7 @@
     },
     {
       "level": "A1",
-      "claimable": false,
+      "claimable": true,
       "domains": [
         {
           "domain": "spoken_reception",
@@ -108,7 +108,7 @@
               "Understanding conversation between others"
             ],
             "distinctInputsByObjective": {
-              "fr.obj.listening.short_info": 2,
+              "fr.obj.listening.short_info": 6,
               "fr.obj.listening.announcements": 3,
               "fr.obj.listening.short_dialogues": 2
             }
@@ -133,7 +133,7 @@
               "Reading for orientation (signs & notices)"
             ],
             "distinctInputsByObjective": {
-              "fr.obj.reading.short_messages": 2,
+              "fr.obj.reading.short_messages": 4,
               "fr.obj.reading.notices_info": 2,
               "fr.obj.reading.short_texts": 2
             }
@@ -163,20 +163,65 @@
             "distinctInputsByObjective": {
               "fr.obj.speaking.formulaic": 3,
               "fr.obj.speaking.self_intro": 3,
-              "fr.obj.speaking.give_info": 3,
+              "fr.obj.speaking.give_info": 7,
               "fr.obj.speaking.describe": 3
             }
           }
         },
         {
           "domain": "written_production",
-          "status": "no_direct_objective",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.writing.form_filling",
+            "fr.obj.writing.personal_info",
+            "fr.obj.writing.phrases_sentences",
+            "fr.obj.writing.short_message"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "personal_profile",
+              "short_message",
+              "simple_description",
+              "simple_form"
+            ],
+            "scaleNames": [
+              "Correspondence",
+              "Notes, messages and forms",
+              "Overall written interaction",
+              "Overall written production"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.writing.personal_info": 3,
+              "fr.obj.writing.phrases_sentences": 3,
+              "fr.obj.writing.short_message": 7,
+              "fr.obj.writing.form_filling": 3
+            }
+          }
         },
         {
           "domain": "interaction",
-          "status": "no_objectives_in_domain",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.interaction.everyday_conversation",
+            "fr.obj.interaction.practical_needs"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "conversation",
+              "information_exchange",
+              "transaction"
+            ],
+            "scaleNames": [
+              "Conversation",
+              "Information exchange",
+              "Obtaining goods and services",
+              "Overall oral interaction"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.interaction.everyday_conversation": 7,
+              "fr.obj.interaction.practical_needs": 3
+            }
+          }
         }
       ],
       "coveredCompetences": [
@@ -188,13 +233,8 @@
         "fr.obj.vocab.everyday_basics",
         "fr.obj.vocab.places_travel"
       ],
-      "unassessedDomains": [
-        "written_production",
-        "interaction"
-      ],
+      "unassessedDomains": [],
       "evidenceLimitations": [
-        "Written production is not assessed (no direct assessment exists at this level).",
-        "Interaction is not assessed (no direct assessment exists at this level).",
         "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity."
       ]
     },
@@ -224,7 +264,7 @@
         },
         {
           "domain": "interaction",
-          "status": "no_objectives_in_domain",
+          "status": "no_direct_objective",
           "directAssessedObjectives": []
         }
       ],

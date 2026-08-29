@@ -115,13 +115,15 @@ describe("compiler: round-trip and determinism", () => {
   test("gradeTargets coverage: exactly the unambiguous French exercises", () => {
     const fr = coverage["fr-en"];
     expect(fr.withGradeTargets).toBe(256);
-    expect(fr.total).toBe(549); // 411 S1-2 + 104 S3 + 34 Section 4
+    expect(fr.total).toBe(604); // 411 S1-2 + 104 S3 + 34 S4 + 24 S5 + 31 S6
     // Unit D's 19 number-spelling selects and Unit E's 9 meta-linguistic
     // rule selects deliberately carry NO targets — numbers and rule
     // recognition never touch FSRS (§79, §88). Every Section-3/4 word-level
     // select/match carries targets; comprehension types never do (below),
     // and speak types grade cards through evidenceLexemeRefs instead.
-    expect(fr.byType["select"]).toEqual({ total: 258, withGradeTargets: 230 });
+    // Section-6's 13 phrase-comprehension selects carry no targets either:
+    // their prompts are whole conversational lines, not single lexemes.
+    expect(fr.byType["select"]).toEqual({ total: 271, withGradeTargets: 230 });
     expect(fr.byType["speakRepetition"].withGradeTargets).toBe(0);
     expect(fr.byType["speakProduction"].withGradeTargets).toBe(0);
     expect(fr.byType["match"]).toEqual({ total: 26, withGradeTargets: 26 });

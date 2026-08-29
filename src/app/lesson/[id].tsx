@@ -12,12 +12,15 @@ import React, { useMemo } from "react";
 
 import { SessionScreen } from "@/components/session/session-screen";
 import { useCourseContent } from "@/lib/content";
+import { dayString } from "@/lib/dates";
 import {
+  buildConversationPracticeSessionDefinition,
   buildListeningReviewSessionDefinition,
   buildSpeakingReviewSessionDefinition,
   buildMistakesSessionDefinition,
   buildPathSessionDefinition,
   buildReviewSessionDefinition,
+  buildWritingPracticeSessionDefinition,
 } from "@/lib/session/sources";
 import type { SessionDefinition } from "@/lib/session/types";
 import { useProgress } from "@/lib/store";
@@ -64,6 +67,21 @@ export default function LessonScreen() {
     // Speaking review (P8 §16): French-only surface over due speak cards.
     if (id === "srs-speaking") {
       return buildSpeakingReviewSessionDefinition({ course: courseProgress });
+    }
+    // Writing practice (P9 §62): a short rotating set of taught writing
+    // steps in learning mode — rubric feedback, model answers, no cards.
+    if (id === "writing-practice") {
+      return buildWritingPracticeSessionDefinition({
+        pack,
+        seedKey: dayString(new Date()),
+      });
+    }
+    // Conversation practice (P9 §63): one practice scenario per session,
+    // rotating daily; reserved assessment scenarios can never appear.
+    if (id === "conversation") {
+      return buildConversationPracticeSessionDefinition({
+        seedKey: dayString(new Date()),
+      });
     }
     const ref = getLesson(id ?? "");
     if (!ref) {

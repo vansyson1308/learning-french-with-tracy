@@ -174,3 +174,30 @@ export function gateMessage(gate: SpeechGate): string | null {
       return "Microphone or speech recognition permission is turned off. Enable it in Settings, or skip this step.";
   }
 }
+
+/**
+ * Network-backed recognition disclosure (P9 §7): when the SYSTEM recognizer
+ * may process speech over the network because no offline French model is
+ * proven installed, the learner is told once — before their first recording,
+ * not buried in a policy document and not repeated on every question.
+ * Pure rule; the acknowledgement flag lives in the persisted store.
+ */
+export function networkDisclosureRequired(
+  capability: SpeechCapability | null,
+  acknowledged: boolean
+): boolean {
+  if (acknowledged || capability === null) return false;
+  return (
+    capability.available &&
+    capability.frenchRecognitionAvailable &&
+    capability.networkBackedRecognitionPossible &&
+    !capability.frenchOnDeviceModelInstalled
+  );
+}
+
+/** Honest wording for the §7 disclosure — facts only, no scare copy. */
+export const NETWORK_DISCLOSURE_TEXT =
+  "Speech recognition is provided by your device's system service. Without an " +
+  "offline French model it may use the internet to recognize what you say. " +
+  "This app itself never uploads or stores your recording — and you can " +
+  "always skip speaking.";

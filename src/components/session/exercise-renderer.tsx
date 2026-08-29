@@ -11,10 +11,13 @@ import { ArticleSelect } from "@/components/exercises/article-select";
 import { ConjugationCloze } from "@/components/exercises/conjugation-cloze";
 import { Dictation } from "@/components/exercises/dictation";
 import { FillBlank } from "@/components/exercises/fill-blank";
+import { InteractionScenarioStep } from "@/components/exercises/interaction-scenario";
 import { ListeningComprehension } from "@/components/exercises/listening-comprehension";
 import { Match } from "@/components/exercises/match";
 import { ReadingComprehension } from "@/components/exercises/reading-comprehension";
+import { GuidedWriting } from "@/components/exercises/guided-writing";
 import { Select } from "@/components/exercises/select";
+import { SimpleForm } from "@/components/exercises/simple-form";
 import { SpeakProduction } from "@/components/exercises/speak-production";
 import { SpeakRepetition } from "@/components/exercises/speak-repetition";
 import { TypeAnswer } from "@/components/exercises/type-answer";
@@ -40,6 +43,15 @@ export type ReceptionContext = {
   scored: boolean;
   revealTranscript: boolean;
   onAudioSkip?: () => void;
+};
+
+/**
+ * Writing rendering context (P9 §15/§19): scored sessions suppress the
+ * local rubric feedback and the model answer; learning shows both after
+ * an attempt.
+ */
+export type WritingContext = {
+  scored: boolean;
 };
 
 function ListeningComprehensionStep({
@@ -114,6 +126,7 @@ export function ExerciseRenderer({
   onMatchWordResult,
   reception,
   speech,
+  writing,
 }: {
   exercise: Exercise;
   answer: Answer;
@@ -127,6 +140,8 @@ export function ExerciseRenderer({
   reception?: ReceptionContext;
   /** Required whenever speak exercise types can appear (French, P8). */
   speech?: SpeechExerciseContext;
+  /** Writing rendering policy (French, P9); defaults to learning mode. */
+  writing?: WritingContext;
 }) {
   const receptionCtx: ReceptionContext =
     reception ?? { scored: false, revealTranscript: true };
@@ -244,6 +259,42 @@ export function ExerciseRenderer({
       if (!speech) return null;
       return (
         <SpeakProduction
+          key={exercise.id}
+          exercise={exercise}
+          answer={answer}
+          status={status}
+          speech={speech}
+          onAnswer={onAnswer}
+        />
+      );
+    case "guidedWriting":
+      return (
+        <GuidedWriting
+          key={exercise.id}
+          exercise={exercise}
+          answer={answer}
+          status={status}
+          scored={writing?.scored ?? false}
+          onAnswer={onAnswer}
+        />
+      );
+    case "simpleForm":
+      return (
+        <SimpleForm
+          key={exercise.id}
+          exercise={exercise}
+          answer={answer}
+          status={status}
+          scored={writing?.scored ?? false}
+          onAnswer={onAnswer}
+        />
+      );
+    case "interactionScenario":
+      // The whole conversation is one step riding the same speech session
+      // as the speak types; no recognizer context → no dead control.
+      if (!speech) return null;
+      return (
+        <InteractionScenarioStep
           key={exercise.id}
           exercise={exercise}
           answer={answer}

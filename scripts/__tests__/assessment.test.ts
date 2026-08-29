@@ -21,20 +21,29 @@ describe("committed assessment data", () => {
     expect(validateAssessment().errors).toEqual([]);
   });
 
-  test("the graph has the authored shape: 28 objectives, 18 essential, 12 direct alignments", () => {
+  test("the graph has the authored shape: 34 objectives, 23 essential, 22 direct alignments", () => {
     const { objectives } = loadCourseObjectives();
-    expect(objectives.length).toBe(28); // 17 P6 + 7 P7 receptive + 4 P8 spoken
-    // 8 Phase-6 essentials + 7 receptive (P7) + 3 spoken-production
-    // essentials (P8; "describe" stays non-essential by design).
-    expect(objectives.filter((o) => o.essential).length).toBe(18);
+    expect(objectives.length).toBe(34); // 17 P6 + 7 P7 + 4 P8 spoken + 4 P9 written + 2 P9 interaction
+    // 8 Phase-6 essentials + 7 receptive (P7) + 3 spoken-production (P8)
+    // + 3 written-production (P9; form_filling stays non-essential by
+    // design, like "describe") + 2 interaction (P9 §35 — both essential:
+    // the Section-6 checkpoint assesses both).
+    expect(objectives.filter((o) => o.essential).length).toBe(23);
     const directs = objectives.flatMap((o) =>
       o.cefrAlignments.filter((a) => a.relation === "direct").map((a) => `${o.id}@${a.level}`)
     );
     // Directs stay defensible-only (§166, P7 §92-96): reception directs the
-    // Section-3 checkpoint assesses, plus the four Phase-8 A1 spoken-
-    // production directs the Section-4 checkpoint assesses. INTERACTION
-    // still carries NO direct claim anywhere (Phase 9).
+    // Section-3 checkpoint assesses, the four Phase-8 A1 spoken-production
+    // directs (Section-4 checkpoint), the Phase-9 written-production
+    // directs (Section-5 checkpoint; personal_info and short_message each
+    // align two written scales), and the two Phase-9 interaction directs
+    // (Section-6 reserved multi-turn scenarios; each aligns two of the
+    // four registered A1 interaction scales).
     expect(directs.sort()).toEqual([
+      "fr.obj.interaction.everyday_conversation@A1",
+      "fr.obj.interaction.everyday_conversation@A1",
+      "fr.obj.interaction.practical_needs@A1",
+      "fr.obj.interaction.practical_needs@A1",
       "fr.obj.listening.announcements@A1",
       "fr.obj.listening.familiar_words@PRE_A1",
       "fr.obj.listening.short_dialogues@A1",
@@ -47,6 +56,12 @@ describe("committed assessment data", () => {
       "fr.obj.speaking.formulaic@A1",
       "fr.obj.speaking.give_info@A1",
       "fr.obj.speaking.self_intro@A1",
+      "fr.obj.writing.form_filling@A1",
+      "fr.obj.writing.personal_info@A1",
+      "fr.obj.writing.personal_info@A1",
+      "fr.obj.writing.phrases_sentences@A1",
+      "fr.obj.writing.short_message@A1",
+      "fr.obj.writing.short_message@A1",
     ]);
   });
 
@@ -282,7 +297,7 @@ describe("coverage + alignment reports are faithful", () => {
       checkpointItemTargets: [],
       placementItemTargets: [],
     });
-    expect(rows.length).toBe(28);
+    expect(rows.length).toBe(34);
     for (const row of rows) {
       expect({ id: row.id, lessons: row.lessonsTeaching.length > 0 }).toEqual({ id: row.id, lessons: true });
     }
@@ -311,18 +326,25 @@ describe("coverage + alignment reports are faithful", () => {
       ["Reading comprehension (overall)", ["fr.obj.reading.familiar_words"]],
     ]);
     const a1 = report.levels.find((l) => l.level === "A1")!;
-    // A1 directs exist ONLY on the reception scales the Section-3
-    // checkpoint assesses and the oral-production scales the Section-4
-    // checkpoint assesses; interaction scales stay empty (Phase 9).
+    // A1 directs exist ONLY on scales a reserved checkpoint actually
+    // assesses: reception (Section 3), oral production (Section 4),
+    // written production (Section 5), and — Phase 9 — the four
+    // interaction scales the Section-6 scenarios assess.
     for (const scale of a1.scales) {
       const assessed =
-        /Listening|Reading|Understanding conversation|Overall oral production|Sustained monologue/.test(
+        /Listening|Reading|Understanding conversation|Overall oral production|Sustained monologue|written production|written interaction|Correspondence|Notes, messages|Overall oral interaction|^Conversation$|Information exchange|Obtaining goods/.test(
           scale.scaleName
         );
       if (!assessed) expect({ scale: scale.scaleName, direct: scale.direct }).toEqual({ scale: scale.scaleName, direct: [] });
     }
     const a1Directs = a1.scales.flatMap((s) => s.direct).sort();
     expect(a1Directs).toEqual([
+      // Phase 9 interaction (per-scale rows: each objective appears under
+      // both of its aligned scales).
+      "fr.obj.interaction.everyday_conversation",
+      "fr.obj.interaction.everyday_conversation",
+      "fr.obj.interaction.practical_needs",
+      "fr.obj.interaction.practical_needs",
       "fr.obj.listening.announcements",
       "fr.obj.listening.short_dialogues",
       "fr.obj.listening.short_info",
@@ -333,6 +355,14 @@ describe("coverage + alignment reports are faithful", () => {
       "fr.obj.speaking.formulaic",
       "fr.obj.speaking.give_info",
       "fr.obj.speaking.self_intro",
+      // Phase 9 written production (per-scale rows: personal_info and
+      // short_message each appear under both of their aligned scales).
+      "fr.obj.writing.form_filling",
+      "fr.obj.writing.personal_info",
+      "fr.obj.writing.personal_info",
+      "fr.obj.writing.phrases_sentences",
+      "fr.obj.writing.short_message",
+      "fr.obj.writing.short_message",
     ]);
   });
 });
@@ -383,12 +413,23 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
     // 4 task families, 3 scales. This is coverage of the assessment SYSTEM;
     // a learner's own claim still requires their real checkpoint evidence.
     expect(domain("spoken_production").status).toBe("covered");
-    // Written production and interaction remain honestly unclaimed, so the
-    // OVERALL A1 claim stays false — speaking must never imply A1 (§21).
-    expect(domain("written_production").status).not.toBe("covered");
-    expect(domain("interaction").status).toBe("no_objectives_in_domain");
-    expect(a1.claimable).toBe(false);
-    for (const level of gate.levels) {
+    // Phase 9: the Section-5 writing checkpoint gives written production
+    // the same assessability coverage — 4 direct objectives x 3 reserved
+    // rubric-scored tasks, 4 task families, 4 scales.
+    expect(domain("written_production").status).toBe("covered");
+    // Phase 9 §35-§36: the Section-6 reserved multi-turn scenarios close
+    // the last domain — 2 direct objectives x 3 scenario inputs each,
+    // all three interaction task families, 4 scales.
+    expect(domain("interaction").status).toBe("covered");
+    // With all five domains covered, the COURSE is A1-claimable as an
+    // assessment system (§45-§47): every domain can be assessed with
+    // breadth. This is coverage of the course's assessment capability —
+    // a learner's own A1 estimate still requires their real checkpoint
+    // evidence (the learner-attainment gate, §48).
+    expect(a1.claimable).toBe(true);
+    // PRE_A1 and A2 stay unclaimable: interaction and production carry
+    // no PRE_A1 directs, and nothing aligns A2 at all.
+    for (const level of gate.levels.filter((l) => l.level !== "A1")) {
       expect({ level: level.level, claimable: level.claimable }).toEqual({
         level: level.level,
         claimable: false,
@@ -396,12 +437,15 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
     }
   });
 
-  test("full checkpoint coverage of every objective still never claims a level (interaction is Phase 9)", () => {
+  test("even saturated evidence claims ONLY levels where every domain has authored directs", () => {
     const objectives = spokenLess();
     // Saturate: 5 hypothetical standalone scored items per objective across
-    // two task families — breadth is not the blocker here, interaction is:
-    // no interaction objective exists anywhere, so NO amount of coverage of
-    // what the course teaches can make an overall level claimable.
+    // two task families. Claiming is bounded by the AUTHORED direct
+    // coverage per level, never by evidence volume: A1 is the only level
+    // where all five domains carry direct objectives, so A1 alone can
+    // become claimable — PRE_A1 (no production/interaction directs) and
+    // A2 (no directs at all) stay false no matter how much evidence piles
+    // up.
     const items = objectives.flatMap((o) => [
       ev(o.id),
       ev(o.id),
@@ -411,14 +455,19 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
     ]);
     const gate = evaluateClaimGate({ objectives, policy: policy(), checkpointItems: items });
     for (const level of gate.levels) {
-      expect(level.claimable).toBe(false);
-      expect(level.unassessedDomains).toContain("interaction");
-      expect(level.evidenceLimitations.join(" ")).toContain("Interaction is not assessed");
+      expect({ level: level.level, claimable: level.claimable }).toEqual({
+        level: level.level,
+        claimable: level.level === "A1",
+      });
     }
-    // Phase 8 flips A1 spoken production out of the unassessed bucket —
-    // and that alone must never make anything claimable.
+    const preA1 = gate.levels.find((l) => l.level === "PRE_A1")!;
+    expect(preA1.unassessedDomains).toContain("interaction");
+    const a2 = gate.levels.find((l) => l.level === "A2")!;
+    expect(a2.claimable).toBe(false);
+    // Phase 8 flipped A1 spoken production out of the unassessed bucket.
     const a1 = gate.levels.find((l) => l.level === "A1")!;
     expect(a1.unassessedDomains).not.toContain("spoken_production");
+    expect(a1.unassessedDomains).not.toContain("interaction");
   });
 
   test("limitation wording tracks the domain status — assessed-but-narrow is never called unassessed (P8 Gate 0)", () => {

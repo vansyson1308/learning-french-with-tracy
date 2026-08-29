@@ -1,0 +1,68 @@
+{
+  "$comment": "Phase-8 native acceptance record (P9 §3-§9). Hand-authored QA evidence, updated only with real evidence. Categories: validated_on_device (ran on physical hardware), automated_tested (behavior pinned by the automated suites against the provider double / pure machine), compiled_only (native artifacts build but the behavior never executed), not_tested (no evidence of any kind). Never upgrade a category without the corresponding evidence.",
+  "recordVersion": 2,
+  "updatedAt": "2026-08-29",
+  "deviceAccessAttempt": {
+    "attemptedAt": "2026-08-29",
+    "environment": "managed cloud container (Linux)",
+    "routesProbed": {
+      "usbDevices": "none — /dev/bus/usb absent",
+      "adb": "not installed; no Android SDK, no ANDROID_HOME, no emulator images",
+      "xcrun": "not available — Linux host, iOS tooling impossible",
+      "easBuild": "api.expo.dev egress-blocked by environment network policy (connect_rejected); additionally the project's EAS identity belongs to upstream and must not be used to manufacture access",
+      "ownerDeviceInfrastructure": "none provided"
+    },
+    "conclusion": "no physical-device route exists in this environment; release readiness remains CONDITIONAL on this gate"
+  },
+  "matrix": {
+    "permission_undetermined_flow": "automated_tested",
+    "permission_grant_flow": "automated_tested",
+    "permission_denial_flow": "automated_tested",
+    "permission_cannot_ask_again_restricted": "automated_tested",
+    "french_stt_initialization": "compiled_only",
+    "on_device_french_recognition": "not_tested",
+    "network_backed_fallback": "not_tested",
+    "short_utterance": "not_tested",
+    "longer_a1_utterance": "not_tested",
+    "stop_immediately_after_final_syllable": "automated_tested",
+    "wait_then_stop": "automated_tested",
+    "rapid_start_stop": "automated_tested",
+    "start_twice": "automated_tested",
+    "stop_twice": "automated_tested",
+    "abort": "automated_tested",
+    "silence": "automated_tested",
+    "background_while_recording": "automated_tested",
+    "foreground_recovery": "automated_tested",
+    "incoming_audio_interruption": "automated_tested",
+    "bluetooth_headphone_route_change": "not_tested",
+    "speaker_playback_to_microphone_transition": "automated_tested",
+    "microphone_to_playback_restoration": "compiled_only",
+    "sequential_attempts": "automated_tested",
+    "checkpoint_speech_item": "automated_tested",
+    "placement_speech_stage": "automated_tested",
+    "practice_speaking_review": "automated_tested",
+    "today_speak_review": "automated_tested",
+    "cache_cleanup": "automated_tested",
+    "app_reload": "automated_tested"
+  },
+  "matrixNotes": {
+    "automated_tested": "pinned by the pure attempt-machine suite, the adapter suite over a controllable provider double, the jest hook/exercise/gate suites, and the browser E2E — these verify APP LOGIC, not real recognizer behavior",
+    "compiled_only": "expo prebuild (Android + iOS) and the Hermes/Android export succeed with the speech module and permission strings present; the code path never executed against a real recognizer",
+    "not_tested": "requires a physical microphone + platform recognizer; no honest evidence exists"
+  },
+  "learnerAccentCanary": {
+    "status": "not_run",
+    "reason": "requires human participants speaking into real hardware; impossible in this environment and never to be simulated",
+    "protocol": "when hardware + participants exist: clear French, accented French, hesitant French, number phrases, elision, common verbs, short formulaic expressions; record outcome CATEGORIES only (accepted / near-miss rejected / technical), no identities, no retained audio, no dataset"
+  },
+  "stopRaceExpectation": {
+    "pinned": "automated: stop-then-lost-verdict finalizes as technical no_final_result — never a wrong answer, never a promoted partial, never FSRS Again, never checkpoint/placement weakness",
+    "onDevice": "not_tested"
+  },
+  "disclosure": {
+    "networkBackedRecognition": "implemented (P9 §7): one-time in-flow disclosure gates the first recording whenever the system recognizer may use the network (no proven offline French model); acknowledgement persisted as speechNoticeAckAt; also shown in the spoken-checkpoint preflight before a scored session"
+  },
+  "checkpointPreflight": {
+    "status": "implemented (P9 §8): capability hard-blocks, permission explained and requestable AT the preflight (point of use = starting the check), blocked permission ends in Settings/Back with no attempt created, network disclosure acknowledged before start"
+  }
+}

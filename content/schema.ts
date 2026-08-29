@@ -244,6 +244,90 @@ export const SpeakProductionExerciseSchema = z.strictObject({
   objectiveTargets,
 });
 
+/**
+ * Written-production rubric (P9 §16): every check the deterministic local
+ * engine is allowed to make is authored here — nothing is inferred at
+ * runtime beyond these rules.
+ */
+export const WritingSlotSchema = z.strictObject({
+  id: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+  /** Learner-facing description used in missing-slot feedback (English). */
+  description: z.string().min(3),
+  /** Accepted French realizations; contiguous-run matched after folding. */
+  variants: z.array(z.string().min(1)).min(1),
+  /**
+   * True when the slot's content is handed to the learner as a cue fact
+   * (e.g. the city they should say they live in) — such variants may
+   * legitimately appear inside instruction/cues; un-cued slot variants
+   * appearing there are an answer leak and fail validation.
+   */
+  cueProvided: z.boolean(),
+});
+
+export const WritingRubricSchema = z.strictObject({
+  requiredSlots: z.array(WritingSlotSchema).min(1),
+  /** Minimum meaningful length in tokens (anti "oui" answers). */
+  minTokens: z.number().int().min(2).max(40),
+  /** Maximum sensible length (anti keyword-stuffed paste). */
+  maxTokens: z.number().int().min(6).max(120),
+  /**
+   * When present, at least one of these conjugated forms must appear —
+   * the task demands a real clause, checked ONLY against this authored
+   * allowlist (the engine never invents grammar judgment, §18).
+   */
+  requireSentenceVerbs: z.array(z.string().min(1)).min(1).optional(),
+});
+
+export const GuidedWritingExerciseSchema = z.strictObject({
+  type: z.literal("guidedWriting"),
+  id,
+  writingTaskId: z.string().regex(/^fr\.write\.[a-z0-9_]+$/),
+  /** "guided" is rubric-graded; "open" is practice-only, never evidence. */
+  writingMode: z.enum(["guided", "open"]),
+  instruction: z.string().min(1),
+  /** Facts the learner must express (English labels, values may be French names/numbers). */
+  cueFacts: z
+    .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+    .min(1)
+    .optional(),
+  rubric: WritingRubricSchema,
+  /** Shown only AFTER an attempt in learning mode; never pre-submission in scored. */
+  modelAnswers: z.array(z.string().min(1)).min(1),
+  objectiveTargets,
+});
+
+export const SimpleFormExerciseSchema = z.strictObject({
+  type: z.literal("simpleForm"),
+  id,
+  writingTaskId: z.string().regex(/^fr\.write\.[a-z0-9_]+$/),
+  instruction: z.string().min(1),
+  /** Discrete labeled fields; each checks against one rubric slot. */
+  fields: z
+    .array(
+      z.strictObject({
+        id: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+        label: z.string().min(1),
+        slotId: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+      })
+    )
+    .min(2),
+  rubric: WritingRubricSchema,
+  modelAnswers: z.array(z.string().min(1)).min(1),
+  objectiveTargets,
+});
+
+/**
+ * A whole authored multi-turn scenario runs as ONE session step (P9 §32):
+ * the exercise references the scenario by id; the graph itself lives in
+ * the interaction source and its compiled artifact.
+ */
+export const InteractionScenarioExerciseSchema = z.strictObject({
+  type: z.literal("interactionScenario"),
+  id,
+  scenarioId: z.string().regex(/^fr\.scenario\.[a-z0-9_]+$/),
+  objectiveTargets,
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
@@ -257,6 +341,9 @@ export const ExerciseSchema = z.discriminatedUnion("type", [
   DictationExerciseSchema,
   SpeakRepetitionExerciseSchema,
   SpeakProductionExerciseSchema,
+  GuidedWritingExerciseSchema,
+  SimpleFormExerciseSchema,
+  InteractionScenarioExerciseSchema,
 ]);
 
 /** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */
@@ -775,15 +862,38 @@ export const CheckpointCriteriaSchema = z.strictObject({
   demonstratedShare: z.number().min(0.5).max(1),
 });
 
+/**
+ * A parallel assessment form (P9 §38-§39): one named, valid administration
+ * of the checkpoint — a subset of its item bank that still satisfies the
+ * per-objective criteria floor for every objective the bank targets.
+ * Retakes rotate deterministically through forms so a second sitting is
+ * never a memory test of the first. Declaring forms is a content decision:
+ * a bank sitting exactly at the claim-gate item floor stays single-form
+ * (splitting it would thin per-sitting evidence below its own criteria).
+ */
+export const CheckpointFormSchema = z.strictObject({
+  formId: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+  itemIds: z.array(assessmentItemId).min(1),
+});
+export type CheckpointForm = z.infer<typeof CheckpointFormSchema>;
+
 export const CheckpointSchema = z.strictObject({
   id: checkpointId,
   /** Bump when items/criteria change meaning (§66). */
   checkpointVersion: z.number().int().min(1),
+  /**
+   * Bump when the FORM structure changes meaning (P9 §38): which forms
+   * exist or which items each administers. Recorded on every attempt so
+   * history stays interpretable after content updates — never rescored.
+   */
+  formVersion: z.number().int().min(1),
   /** The PATH section whose completion unlocks this checkpoint. */
   sectionId: z.string().min(1),
   title: z.string().min(1),
   description: z.string().min(1),
   items: z.array(CheckpointItemSchema).min(1),
+  /** ≥2 parallel forms, or absent: the whole bank is the single form. */
+  forms: z.array(CheckpointFormSchema).min(2).optional(),
   criteria: CheckpointCriteriaSchema,
 });
 export type Checkpoint = z.infer<typeof CheckpointSchema>;
@@ -1052,3 +1162,135 @@ export const SpeechItemsSchema = z.strictObject({
   items: z.array(SpeechItemSchema).min(1),
 });
 export type SpeechItems = z.infer<typeof SpeechItemsSchema>;
+
+/* ------------------------------------------------------------------ */
+/* Written production (Phase 9 §13-§23)                                */
+/* ------------------------------------------------------------------ */
+
+export const WRITING_TASK_FAMILIES = [
+  "personal_profile",
+  "simple_description",
+  "short_message",
+  "simple_form",
+] as const;
+
+/**
+ * One authored writing task — the single source of truth the pack,
+ * checkpoint and capstone exercises must mirror byte-for-byte (the same
+ * discipline as speech items). `mode: "open"` tasks are practice-only and
+ * may never be scored-eligible (P9 §15).
+ */
+export const WritingTaskSchema = z.strictObject({
+  id: z.string().regex(/^fr\.write\.[a-z0-9_]+$/),
+  taskFamily: z.enum(WRITING_TASK_FAMILIES),
+  mode: z.enum(["guided", "open"]),
+  instruction: z.string().min(1),
+  cueFacts: z
+    .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+    .min(1)
+    .optional(),
+  /** simple_form tasks list their discrete fields; others omit. */
+  formFields: z
+    .array(
+      z.strictObject({
+        id: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+        label: z.string().min(1),
+        slotId: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+      })
+    )
+    .min(2)
+    .optional(),
+  rubric: WritingRubricSchema,
+  modelAnswers: z.array(z.string().min(1)).min(1),
+  objectiveRefs: z.array(objectiveId).min(1),
+  lexemeRefs: z.array(z.string().regex(/^fr:w:[a-z0-9-]+$/)),
+  /** May appear in scored contexts (checkpoint / capstone forms). */
+  scoredEligibility: z.boolean(),
+  /** Reserved assessment stimuli never appear as teaching material. */
+  reserved: z.boolean(),
+  sourceRef: z.literal("original-project"),
+});
+export type WritingTask = z.infer<typeof WritingTaskSchema>;
+
+export const WritingTasksSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  tasks: z.array(WritingTaskSchema).min(1),
+});
+export type WritingTasks = z.infer<typeof WritingTasksSchema>;
+
+/* ------------------------------------------------------------------ */
+/* Spoken interaction (Phase 9 §24-§37)                                */
+/* ------------------------------------------------------------------ */
+
+const interactionNodeId = z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/);
+
+export const InteractionPartnerNodeSchema = z.strictObject({
+  kind: z.literal("partner"),
+  id: interactionNodeId,
+  text: z.string().min(1),
+  clipId: clipIdSchema,
+  rephraseText: z.string().min(1).optional(),
+  rephraseClipId: clipIdSchema.optional(),
+  next: interactionNodeId,
+});
+
+export const InteractionExpectedIntentSchema = z.strictObject({
+  intent: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+  acceptedVariants: z.array(z.string().min(1)).min(1),
+  requiredConcepts: z.array(z.array(z.string().min(1)).min(1)).min(1).optional(),
+  next: interactionNodeId,
+});
+
+export const InteractionLearnerNodeSchema = z.strictObject({
+  kind: z.literal("learner"),
+  id: interactionNodeId,
+  prompt: z.string().min(1),
+  expected: z.array(InteractionExpectedIntentSchema).min(1),
+  noMatchNext: interactionNodeId,
+  scored: z.boolean(),
+});
+
+export const InteractionTerminalNodeSchema = z.strictObject({
+  kind: z.literal("terminal"),
+  id: interactionNodeId,
+  outcome: z.enum(["goal_met", "goal_not_met"]),
+  text: z.string().min(1).optional(),
+  clipId: clipIdSchema.optional(),
+});
+
+export const InteractionNodeSchema = z.discriminatedUnion("kind", [
+  InteractionPartnerNodeSchema,
+  InteractionLearnerNodeSchema,
+  InteractionTerminalNodeSchema,
+]);
+
+export const INTERACTION_TASK_FAMILIES = [
+  "conversation",
+  "information_exchange",
+  "transaction",
+] as const;
+
+export const InteractionScenarioSchema = z.strictObject({
+  id: z.string().regex(/^fr\.scenario\.[a-z0-9_]+$/),
+  title: z.string().min(1),
+  goal: z.string().min(1),
+  taskFamily: z.enum(INTERACTION_TASK_FAMILIES),
+  objectiveRefs: z.array(objectiveId).min(1),
+  startNodeId: interactionNodeId,
+  nodes: z.record(interactionNodeId, InteractionNodeSchema),
+  support: z.strictObject({
+    allowRepeat: z.boolean(),
+    allowRephrase: z.boolean(),
+  }),
+  reserved: z.boolean(),
+  sourceRef: z.literal("original-project"),
+});
+export type InteractionScenarioSource = z.infer<typeof InteractionScenarioSchema>;
+
+export const InteractionScenariosSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  scenarios: z.array(InteractionScenarioSchema).min(1),
+});
+export type InteractionScenarios = z.infer<typeof InteractionScenariosSchema>;

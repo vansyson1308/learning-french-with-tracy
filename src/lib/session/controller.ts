@@ -10,7 +10,7 @@ import { AppState } from "react-native";
 
 import { speakTarget, useSfx } from "../audio";
 import { behaviorFor } from "../exercise-registry";
-import { isSpokenAnswer } from "../grading";
+import { evaluateWrittenAnswer, isSpokenAnswer } from "../grading";
 import { haptics } from "../haptics";
 import { useProgress, XP_PER_LESSON } from "../store";
 
@@ -21,6 +21,7 @@ import {
   emptySessionState,
   isPerfect,
   sessionReducer,
+  skipAllowed,
   type SessionMachineState,
 } from "./reducer";
 import {
@@ -139,9 +140,27 @@ export function useSessionController(definition: SessionDefinition): SessionCont
     const step = currentStep(state);
     if (!step || step.type !== "exercise" || state.status !== "idle") return;
     const behavior = behaviorFor(step.exercise);
-    const correct = behavior.check(step.exercise, state.answer);
-
     const scored = definition.kind === "checkpoint" || definition.kind === "placement";
+
+    // P9 §17: in SCORED sessions a writing submission the deterministic
+    // engine genuinely cannot classify is INSUFFICIENT EVIDENCE — recorded
+    // through the skip channel (excluded from every scoring denominator),
+    // never as a wrong answer. Learning sessions fall through and show the
+    // honest local feedback instead.
+    if (
+      scored &&
+      (step.exercise.type === "guidedWriting" || step.exercise.type === "simpleForm")
+    ) {
+      const evaluation = evaluateWrittenAnswer(step.exercise, state.answer);
+      if (evaluation?.verdict === "insufficiently_scorable") {
+        haptics.tap();
+        resetClock();
+        dispatch({ type: "skip" });
+        return;
+      }
+    }
+
+    const correct = behavior.check(step.exercise, state.answer);
     // Minimal feedback (§118) hides the verdict — the sound and haptic must
     // not reveal what the screen deliberately withholds.
     const silentVerdict = definition.feedbackPolicy === "minimal";
@@ -200,16 +219,12 @@ export function useSessionController(definition: SessionDefinition): SessionCont
   }, [state, definition, progress, sfx]);
 
   const onSkip = useCallback(() => {
-    // Declared-unknown (§117) and the audio-unavailable escape (P7 §69-70,
-    // §81): allowed in placement, and on audio-dependent steps everywhere —
-    // a learner without audio continues without penalty; in checkpoints the
-    // skipped item simply yields insufficient evidence (P7 §104), and no
-    // learning memory mutates anywhere.
+    // Declared-unknown + device-dependent escapes: the rule itself is the
+    // reducer module's pure skipAllowed (§117; P7 §69-70/§104; P8 §24;
+    // P9 §36). No learning memory mutates on a skip anywhere.
     const step = currentStep(state);
     if (!step || step.type !== "exercise" || state.status !== "idle") return;
-    const audioDependent =
-      step.exercise.type === "listeningComprehension" || step.exercise.type === "dictation";
-    if (definition.kind !== "placement" && !audioDependent) return;
+    if (!skipAllowed(definition.kind, step.exercise.type)) return;
     haptics.tap();
     resetClock();
     dispatch({ type: "skip" });

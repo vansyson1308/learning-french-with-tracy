@@ -14547,6 +14547,1920 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fr-en:section-5",
+      "title": "Section 5: Write everyday French",
+      "units": [
+        {
+          "id": "fr-en:unit-o",
+          "title": "Ecris qui tu es",
+          "description": "Write who you are: your name, your age, where you live.",
+          "guidebook": "Writing French starts with the sentences you already SAY. Je m'appelle... (my name is), J'ai ... ans (I am ... years old), J'habite a ... (I live in). Accents are part of spelling, but while you learn, the app accepts your answer without them and shows the accented form.",
+          "words": [
+            {
+              "target": "habiter",
+              "native": "to live (somewhere)",
+              "emoji": "🏠"
+            },
+            {
+              "target": "la ville",
+              "native": "the city",
+              "emoji": "🏙️"
+            },
+            {
+              "target": "l'année",
+              "native": "the year",
+              "emoji": "🎂"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uo-l0",
+              "title": "Your name",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s5-e1",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: my name is Lea",
+                  "tokens": [
+                    "Léa",
+                    "m'appelle",
+                    "je"
+                  ],
+                  "answer": [
+                    "je",
+                    "m'appelle",
+                    "Léa"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e2",
+                  "writingTaskId": "fr.write.o_name",
+                  "writingMode": "guided",
+                  "instruction": "You are Léa. Write one short French sentence saying your name.",
+                  "cueFacts": [
+                    {
+                      "label": "Your name",
+                      "value": "Léa"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "your name",
+                        "variants": [
+                          "je m'appelle Léa",
+                          "je suis Léa",
+                          "moi c'est Léa"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 12,
+                    "requireSentenceVerbs": [
+                      "m'appelle",
+                      "suis"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "Je m'appelle Léa."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.personal_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.personal_info"
+              ]
+            },
+            {
+              "id": "fr-en:uo-l1",
+              "title": "Your age",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s5-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I am 22 years old",
+                  "tokens": [
+                    "ans",
+                    "j'ai",
+                    "22"
+                  ],
+                  "answer": [
+                    "j'ai",
+                    "22",
+                    "ans"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e4",
+                  "writingTaskId": "fr.write.o_age",
+                  "writingMode": "guided",
+                  "instruction": "Still as Léa: write a sentence saying your age.",
+                  "cueFacts": [
+                    {
+                      "label": "Your age",
+                      "value": "22"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "age",
+                        "description": "your age",
+                        "variants": [
+                          "j'ai vingt-deux ans"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 12,
+                    "requireSentenceVerbs": [
+                      "ai"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "J'ai 22 ans."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.personal_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.personal_info"
+              ]
+            },
+            {
+              "id": "fr-en:uo-l2",
+              "title": "Your city",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s5-e5",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I live in Paris",
+                  "tokens": [
+                    "à",
+                    "j'habite",
+                    "Paris"
+                  ],
+                  "answer": [
+                    "j'habite",
+                    "à",
+                    "Paris"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e6",
+                  "writingTaskId": "fr.write.o_city",
+                  "writingMode": "guided",
+                  "instruction": "Still as Léa: write a sentence saying where you live.",
+                  "cueFacts": [
+                    {
+                      "label": "Your city",
+                      "value": "Paris"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "city",
+                        "description": "where you live",
+                        "variants": [
+                          "j'habite à Paris",
+                          "j'habite Paris"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 12,
+                    "requireSentenceVerbs": [
+                      "habite"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "J'habite à Paris."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.personal_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.personal_info"
+              ]
+            },
+            {
+              "id": "fr-en:uo-l3",
+              "title": "All about you",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e7",
+                  "writingTaskId": "fr.write.o_profile",
+                  "writingMode": "guided",
+                  "instruction": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences.",
+                  "cueFacts": [
+                    {
+                      "label": "Name",
+                      "value": "Léa"
+                    },
+                    {
+                      "label": "Age",
+                      "value": "22"
+                    },
+                    {
+                      "label": "City",
+                      "value": "Paris"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "your name",
+                        "variants": [
+                          "je m'appelle Léa",
+                          "je suis Léa"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "age",
+                        "description": "your age",
+                        "variants": [
+                          "j'ai vingt-deux ans"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "city",
+                        "description": "where you live",
+                        "variants": [
+                          "j'habite à Paris",
+                          "j'habite Paris"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 8,
+                    "maxTokens": 30,
+                    "requireSentenceVerbs": [
+                      "m'appelle",
+                      "suis"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "Je m'appelle Léa, j'ai 22 ans et j'habite à Paris."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.personal_info"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e8",
+                  "writingTaskId": "fr.write.o_open",
+                  "writingMode": "open",
+                  "instruction": "Now for real: introduce YOURSELF in French — your name, and your age or your city. Write freely; this is practice, not a test.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "about_you",
+                        "description": "a sentence about you",
+                        "variants": [
+                          "je m'appelle",
+                          "je suis",
+                          "j'ai",
+                          "j'habite"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 60
+                  },
+                  "modelAnswers": [
+                    "Je m'appelle Marco, j'ai trente ans et j'habite à Nice."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.personal_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.personal_info"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-p",
+          "title": "Des phrases simples",
+          "description": "Write simple sentences about people, things and likes.",
+          "guidebook": "One subject, one verb, one thing: J'aime le cafe. Il habite a Lyon. Le chat boit du lait. Keep sentences short - that IS good A1 French.",
+          "words": [
+            {
+              "target": "aimer",
+              "native": "to like, to love",
+              "emoji": "❤️"
+            },
+            {
+              "target": "boire",
+              "native": "to drink",
+              "emoji": "☕"
+            },
+            {
+              "target": "le chat",
+              "native": "the cat",
+              "emoji": "🐱"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:up-l0",
+              "title": "What you like",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s5-e9",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I like coffee",
+                  "tokens": [
+                    "café",
+                    "j'aime",
+                    "le"
+                  ],
+                  "answer": [
+                    "j'aime",
+                    "le",
+                    "café"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e10",
+                  "writingTaskId": "fr.write.p_like",
+                  "writingMode": "guided",
+                  "instruction": "Write one French sentence saying that you like coffee.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "like",
+                        "description": "what you like",
+                        "variants": [
+                          "j'aime le café",
+                          "j'adore le café"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 10,
+                    "requireSentenceVerbs": [
+                      "aime",
+                      "adore"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "J'aime le café."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.phrases_sentences"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.phrases_sentences"
+              ]
+            },
+            {
+              "id": "fr-en:up-l1",
+              "title": "Two things you like",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e11",
+                  "writingTaskId": "fr.write.p_like_two",
+                  "writingMode": "guided",
+                  "instruction": "Write a sentence saying you like tea and bread.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "tea",
+                        "description": "that you like tea",
+                        "variants": [
+                          "j'aime le thé",
+                          "j'adore le thé"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "bread",
+                        "description": "the bread",
+                        "variants": [
+                          "le pain"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 14,
+                    "requireSentenceVerbs": [
+                      "aime",
+                      "adore"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "J'aime le thé et le pain."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.phrases_sentences"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.phrases_sentences"
+              ]
+            },
+            {
+              "id": "fr-en:up-l2",
+              "title": "About someone else",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s5-e12",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: he lives in Lyon",
+                  "tokens": [
+                    "Lyon",
+                    "habite",
+                    "il",
+                    "à"
+                  ],
+                  "answer": [
+                    "il",
+                    "habite",
+                    "à",
+                    "Lyon"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e13",
+                  "writingTaskId": "fr.write.p_person",
+                  "writingMode": "guided",
+                  "instruction": "Write one sentence about Hugo: he lives in Lyon.",
+                  "cueFacts": [
+                    {
+                      "label": "Person",
+                      "value": "Hugo"
+                    },
+                    {
+                      "label": "City",
+                      "value": "Lyon"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "lives",
+                        "description": "where Hugo lives",
+                        "variants": [
+                          "il habite à Lyon",
+                          "il habite Lyon",
+                          "Hugo habite à Lyon",
+                          "Hugo habite Lyon"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 3,
+                    "maxTokens": 12,
+                    "requireSentenceVerbs": [
+                      "habite"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "Il habite à Lyon."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.phrases_sentences"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.phrases_sentences"
+              ]
+            },
+            {
+              "id": "fr-en:up-l3",
+              "title": "A small scene",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e14",
+                  "writingTaskId": "fr.write.p_cat",
+                  "writingMode": "guided",
+                  "instruction": "Write one sentence: the cat drinks milk.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "fact",
+                        "description": "what the cat does",
+                        "variants": [
+                          "le chat boit du lait",
+                          "le chat boit le lait"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 12,
+                    "requireSentenceVerbs": [
+                      "boit"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "Le chat boit du lait."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.phrases_sentences"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e15",
+                  "writingTaskId": "fr.write.p_open",
+                  "writingMode": "open",
+                  "instruction": "Describe someone you know in one or two short French sentences — where they live, or what they like.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "person",
+                        "description": "a sentence about the person",
+                        "variants": [
+                          "il est",
+                          "elle est",
+                          "il habite",
+                          "elle habite",
+                          "il aime",
+                          "elle aime",
+                          "c'est"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 60
+                  },
+                  "modelAnswers": [
+                    "Elle habite à Paris et elle aime le thé."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.phrases_sentences"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.phrases_sentences"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-q",
+          "title": "Petits messages",
+          "description": "Write short everyday notes: greeting, fact, closing.",
+          "guidebook": "A good A1 message has three small parts: a greeting (Bonjour, Salut), one clear fact (le train est demain a neuf heures), and a closing (A demain !). That's all a real note needs.",
+          "words": [
+            {
+              "target": "le message",
+              "native": "the message",
+              "emoji": "✉️"
+            },
+            {
+              "target": "demain",
+              "native": "tomorrow",
+              "emoji": "📅"
+            },
+            {
+              "target": "la gare",
+              "native": "the train station",
+              "emoji": "🚉"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uq-l0",
+              "title": "A note about the cafe",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s5-e16",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: the cafe is at two o'clock",
+                  "tokens": [
+                    "heures",
+                    "est",
+                    "le",
+                    "café",
+                    "à",
+                    "deux"
+                  ],
+                  "answer": [
+                    "le",
+                    "café",
+                    "est",
+                    "à",
+                    "deux",
+                    "heures"
+                  ]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e17",
+                  "writingTaskId": "fr.write.q_note_cafe",
+                  "writingMode": "guided",
+                  "instruction": "Write a short note to Marie: greet her, and tell her the café is at two o'clock.",
+                  "cueFacts": [
+                    {
+                      "label": "To",
+                      "value": "Marie"
+                    },
+                    {
+                      "label": "What",
+                      "value": "café"
+                    },
+                    {
+                      "label": "Time",
+                      "value": "2:00"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "greeting",
+                        "description": "a greeting",
+                        "variants": [
+                          "bonjour",
+                          "salut",
+                          "bonsoir"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "fact",
+                        "description": "the café time",
+                        "variants": [
+                          "le café est à deux heures",
+                          "café à deux heures"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 5,
+                    "maxTokens": 20
+                  },
+                  "modelAnswers": [
+                    "Bonjour Marie, le café est à deux heures."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.short_message"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.short_message"
+              ]
+            },
+            {
+              "id": "fr-en:uq-l1",
+              "title": "A note about the train",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e18",
+                  "writingTaskId": "fr.write.q_note_train",
+                  "writingMode": "guided",
+                  "instruction": "Write a short note to Paul: greet him, and say the train is tomorrow at nine.",
+                  "cueFacts": [
+                    {
+                      "label": "To",
+                      "value": "Paul"
+                    },
+                    {
+                      "label": "What",
+                      "value": "train"
+                    },
+                    {
+                      "label": "When",
+                      "value": "tomorrow, 9:00"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "greeting",
+                        "description": "a greeting",
+                        "variants": [
+                          "bonjour",
+                          "salut",
+                          "bonsoir"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "fact",
+                        "description": "the train time",
+                        "variants": [
+                          "le train est demain à neuf heures",
+                          "train demain à neuf heures"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 5,
+                    "maxTokens": 20
+                  },
+                  "modelAnswers": [
+                    "Salut Paul, le train est demain à neuf heures."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.short_message"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.short_message"
+              ]
+            },
+            {
+              "id": "fr-en:uq-l2",
+              "title": "Greeting, fact, closing",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e19",
+                  "writingTaskId": "fr.write.q_note_closing",
+                  "writingMode": "guided",
+                  "instruction": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "greeting",
+                        "description": "a greeting",
+                        "variants": [
+                          "bonjour",
+                          "salut"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "place",
+                        "description": "where you are",
+                        "variants": [
+                          "je suis à la gare"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "closing",
+                        "description": "a closing",
+                        "variants": [
+                          "à demain"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 6,
+                    "maxTokens": 22,
+                    "requireSentenceVerbs": [
+                      "suis"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "Bonjour, je suis à la gare. À demain !"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.short_message"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.short_message"
+              ]
+            },
+            {
+              "id": "fr-en:uq-l3",
+              "title": "Your own note",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e20",
+                  "writingTaskId": "fr.write.q_open",
+                  "writingMode": "open",
+                  "instruction": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "message",
+                        "description": "your message",
+                        "variants": [
+                          "bonjour",
+                          "salut",
+                          "à demain",
+                          "au revoir",
+                          "merci"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 4,
+                    "maxTokens": 60
+                  },
+                  "modelAnswers": [
+                    "Salut Léa, je suis au café. À demain !"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.short_message"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.short_message"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-r",
+          "title": "Formulaires et messages",
+          "description": "Fill in simple forms and put your writing together.",
+          "guidebook": "Forms ask for facts, not sentences: Prenom (first name), Age, Ville (city), Jour (day). Write just the fact in each box. Then one last real message puts everything together.",
+          "words": [
+            {
+              "target": "le jour",
+              "native": "the day",
+              "emoji": "📆"
+            },
+            {
+              "target": "samedi",
+              "native": "Saturday",
+              "emoji": "📝"
+            },
+            {
+              "target": "dimanche",
+              "native": "Sunday",
+              "emoji": "🌞"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ur-l0",
+              "title": "The arrival form",
+              "exercises": [
+                {
+                  "type": "simpleForm",
+                  "id": "s5-e21",
+                  "writingTaskId": "fr.write.r_form_arrival",
+                  "instruction": "Fill in the arrival form with the details on the card.",
+                  "fields": [
+                    {
+                      "id": "prenom",
+                      "label": "Prénom",
+                      "slotId": "name"
+                    },
+                    {
+                      "id": "age",
+                      "label": "Âge",
+                      "slotId": "age"
+                    },
+                    {
+                      "id": "ville",
+                      "label": "Ville",
+                      "slotId": "city"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "your first name",
+                        "variants": [
+                          "Léa"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "age",
+                        "description": "your age",
+                        "variants": [
+                          "vingt-deux"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "city",
+                        "description": "your city",
+                        "variants": [
+                          "Paris"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12
+                  },
+                  "modelAnswers": [
+                    "Léa | 22 | Paris"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.form_filling"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.form_filling"
+              ]
+            },
+            {
+              "id": "fr-en:ur-l1",
+              "title": "The hotel form",
+              "exercises": [
+                {
+                  "type": "simpleForm",
+                  "id": "s5-e22",
+                  "writingTaskId": "fr.write.r_form_hotel",
+                  "instruction": "Fill in the small hotel form with the details on the card.",
+                  "fields": [
+                    {
+                      "id": "prenom",
+                      "label": "Prénom",
+                      "slotId": "name"
+                    },
+                    {
+                      "id": "ville",
+                      "label": "Ville",
+                      "slotId": "city"
+                    },
+                    {
+                      "id": "jour",
+                      "label": "Jour d'arrivée",
+                      "slotId": "day"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "name",
+                        "description": "the first name",
+                        "variants": [
+                          "Marco"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "city",
+                        "description": "the city",
+                        "variants": [
+                          "Nice"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "day",
+                        "description": "the arrival day",
+                        "variants": [
+                          "samedi"
+                        ],
+                        "cueProvided": true
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 12
+                  },
+                  "modelAnswers": [
+                    "Marco | Nice | samedi"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.form_filling"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.form_filling"
+              ]
+            },
+            {
+              "id": "fr-en:ur-l2",
+              "title": "A full message",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e23",
+                  "writingTaskId": "fr.write.r_message_full",
+                  "writingMode": "guided",
+                  "instruction": "Write to Marie: greet her, say you are at the café tomorrow at ten, and close.",
+                  "cueFacts": [
+                    {
+                      "label": "To",
+                      "value": "Marie"
+                    },
+                    {
+                      "label": "Where",
+                      "value": "café"
+                    },
+                    {
+                      "label": "When",
+                      "value": "tomorrow, 10:00"
+                    }
+                  ],
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "greeting",
+                        "description": "a greeting",
+                        "variants": [
+                          "bonjour",
+                          "salut"
+                        ],
+                        "cueProvided": false
+                      },
+                      {
+                        "id": "fact",
+                        "description": "where and when",
+                        "variants": [
+                          "je suis au café demain à dix heures"
+                        ],
+                        "cueProvided": true
+                      },
+                      {
+                        "id": "closing",
+                        "description": "a closing",
+                        "variants": [
+                          "à demain",
+                          "au revoir"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 8,
+                    "maxTokens": 26,
+                    "requireSentenceVerbs": [
+                      "suis"
+                    ]
+                  },
+                  "modelAnswers": [
+                    "Bonjour Marie, je suis au café demain à dix heures. À demain !"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.short_message",
+                    "fr.obj.writing.personal_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.short_message",
+                "fr.obj.writing.personal_info"
+              ]
+            },
+            {
+              "id": "fr-en:ur-l3",
+              "title": "Everything about you",
+              "exercises": [
+                {
+                  "type": "guidedWriting",
+                  "id": "s5-e24",
+                  "writingTaskId": "fr.write.r_open",
+                  "writingMode": "open",
+                  "instruction": "Write two or three short sentences about yourself — anything you can say in French. Free practice.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "about_you",
+                        "description": "sentences about you",
+                        "variants": [
+                          "je m'appelle",
+                          "je suis",
+                          "j'ai",
+                          "j'habite",
+                          "j'aime"
+                        ],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 6,
+                    "maxTokens": 80
+                  },
+                  "modelAnswers": [
+                    "Je m'appelle Marco. J'ai trente ans, j'habite à Nice et j'aime le café."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.writing.personal_info",
+                    "fr.obj.writing.phrases_sentences"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.writing.personal_info",
+                "fr.obj.writing.phrases_sentences"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fr-en:section-6",
+      "title": "Section 6: Talk with someone",
+      "units": [
+        {
+          "id": "fr-en:unit-s",
+          "title": "Premiers échanges",
+          "description": "Real first exchanges: hello, how are you, names, goodbye.",
+          "guidebook": "A French conversation has a rhythm: Bonjour ! - Ça va ? - Ça va bien, merci. Et toi ? You don't need long sentences; you need the RIGHT short ones, said at the right moment. In these conversations, tap the buttons to hear a line again or to hear it more simply - asking for help is part of real A1 French, and it never counts against you.",
+          "words": [
+            {
+              "target": "salut",
+              "native": "hi / bye (informal)",
+              "emoji": "🙋"
+            },
+            {
+              "target": "bonsoir",
+              "native": "good evening",
+              "emoji": "🌙"
+            },
+            {
+              "target": "au revoir",
+              "native": "goodbye",
+              "emoji": "👋"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:us-l0",
+              "title": "Hello, how are you?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Ça va ?",
+                  "options": [
+                    {
+                      "text": "How are you?"
+                    },
+                    {
+                      "text": "Where are you?"
+                    },
+                    {
+                      "text": "Who are you?"
+                    },
+                    {
+                      "text": "What time is it?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: it's going well, thanks",
+                  "tokens": [
+                    "merci",
+                    "bien",
+                    "ça",
+                    "va"
+                  ],
+                  "answer": [
+                    "ça",
+                    "va",
+                    "bien",
+                    "merci"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Je dois partir.",
+                  "options": [
+                    {
+                      "text": "I have to leave."
+                    },
+                    {
+                      "text": "I want to eat."
+                    },
+                    {
+                      "text": "I live here."
+                    },
+                    {
+                      "text": "I am late."
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:us-l1",
+              "title": "Conversation: a quick hello",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s6-e4",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: goodbye, have a good day",
+                  "tokens": [
+                    "journée",
+                    "au",
+                    "bonne",
+                    "revoir"
+                  ],
+                  "answer": [
+                    "au",
+                    "revoir",
+                    "bonne",
+                    "journée"
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e5",
+                  "scenarioId": "fr.scenario.salut_ca_va",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:us-l2",
+              "title": "Names",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e6",
+                  "mode": "targetToNative",
+                  "prompt": "Comment vous appelez-vous ?",
+                  "options": [
+                    {
+                      "text": "What is your name?"
+                    },
+                    {
+                      "text": "How old are you?"
+                    },
+                    {
+                      "text": "Where do you live?"
+                    },
+                    {
+                      "text": "How are you?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: me, it's Marc",
+                  "tokens": [
+                    "c'est",
+                    "Marc",
+                    "moi"
+                  ],
+                  "answer": [
+                    "moi",
+                    "c'est",
+                    "Marc"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e8",
+                  "mode": "targetToNative",
+                  "prompt": "Enchanté !",
+                  "options": [
+                    {
+                      "text": "Nice to meet you!"
+                    },
+                    {
+                      "text": "Excuse me!"
+                    },
+                    {
+                      "text": "See you soon!"
+                    },
+                    {
+                      "text": "Well done!"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:us-l3",
+              "title": "Conversation: meeting someone",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e9",
+                  "scenarioId": "fr.scenario.rencontre_nom",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-t",
+          "title": "Au café, au magasin",
+          "description": "Order, buy, and pay with simple polite French.",
+          "guidebook": "Je voudrais... (I would like) opens almost every polite request: Je voudrais un café, s'il vous plaît. The server may ask Et avec ça ? (anything else?) - answer with more, or C'est tout (that's all). Prices come back with ça fait... - listen for the number.",
+          "words": [
+            {
+              "target": "le thé",
+              "native": "the tea",
+              "emoji": "🍵"
+            },
+            {
+              "target": "le jus",
+              "native": "the juice",
+              "emoji": "🧃"
+            },
+            {
+              "target": "payer",
+              "native": "to pay",
+              "emoji": "💶"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ut-l0",
+              "title": "May I help you?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e10",
+                  "mode": "targetToNative",
+                  "prompt": "Vous désirez ?",
+                  "options": [
+                    {
+                      "text": "What would you like?"
+                    },
+                    {
+                      "text": "Are you leaving?"
+                    },
+                    {
+                      "text": "Do you understand?"
+                    },
+                    {
+                      "text": "Are you hungry?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e11",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I would like a coffee, please",
+                  "tokens": [
+                    "s'il",
+                    "un",
+                    "je",
+                    "café",
+                    "voudrais",
+                    "vous",
+                    "plaît"
+                  ],
+                  "answer": [
+                    "je",
+                    "voudrais",
+                    "un",
+                    "café",
+                    "s'il",
+                    "vous",
+                    "plaît"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e12",
+                  "mode": "targetToNative",
+                  "prompt": "Et avec ça ?",
+                  "options": [
+                    {
+                      "text": "Anything else?"
+                    },
+                    {
+                      "text": "How is it?"
+                    },
+                    {
+                      "text": "Who is it?"
+                    },
+                    {
+                      "text": "At what time?"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:ut-l1",
+              "title": "Conversation: at the café",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s6-e13",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: that's two euros",
+                  "tokens": [
+                    "deux",
+                    "fait",
+                    "ça",
+                    "euros"
+                  ],
+                  "answer": [
+                    "ça",
+                    "fait",
+                    "deux",
+                    "euros"
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e14",
+                  "scenarioId": "fr.scenario.cafe_boisson",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:ut-l2",
+              "title": "That's all, thanks",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e15",
+                  "mode": "targetToNative",
+                  "prompt": "C'est tout.",
+                  "options": [
+                    {
+                      "text": "That's all."
+                    },
+                    {
+                      "text": "It's here."
+                    },
+                    {
+                      "text": "It's early."
+                    },
+                    {
+                      "text": "That's wrong."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e16",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I would like some bread",
+                  "tokens": [
+                    "pain",
+                    "voudrais",
+                    "je",
+                    "du"
+                  ],
+                  "answer": [
+                    "je",
+                    "voudrais",
+                    "du",
+                    "pain"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:ut-l3",
+              "title": "Conversation: at the shop",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e17",
+                  "scenarioId": "fr.scenario.magasin_courses",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-u",
+          "title": "Trouver son chemin",
+          "description": "Ask where places are and understand short directions.",
+          "guidebook": "To find your way you only need one question: Où est... ? (where is...?). Add s'il vous plaît and you are unmistakably polite. The answers reuse words you know: à gauche (left), à droite (right), tout droit (straight on), là-bas (over there). Say Merci beaucoup ! and you're done.",
+          "words": [
+            {
+              "target": "la gare",
+              "native": "the train station",
+              "emoji": "🚉"
+            },
+            {
+              "target": "la gauche",
+              "native": "the left",
+              "emoji": "⬅️"
+            },
+            {
+              "target": "la droite",
+              "native": "the right",
+              "emoji": "➡️"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uu-l0",
+              "title": "Where is...?",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s6-e18",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: where is the station, please?",
+                  "tokens": [
+                    "la",
+                    "où",
+                    "s'il",
+                    "gare",
+                    "est",
+                    "plaît",
+                    "vous"
+                  ],
+                  "answer": [
+                    "où",
+                    "est",
+                    "la",
+                    "gare",
+                    "s'il",
+                    "vous",
+                    "plaît"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e19",
+                  "mode": "targetToNative",
+                  "prompt": "C'est tout droit, puis à gauche.",
+                  "options": [
+                    {
+                      "text": "It's straight on, then left."
+                    },
+                    {
+                      "text": "It's closed on Mondays."
+                    },
+                    {
+                      "text": "It's behind you."
+                    },
+                    {
+                      "text": "It's very far."
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:uu-l1",
+              "title": "Conversation: the station",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e20",
+                  "mode": "targetToNative",
+                  "prompt": "Je peux vous aider ?",
+                  "options": [
+                    {
+                      "text": "Can I help you?"
+                    },
+                    {
+                      "text": "Can you hear me?"
+                    },
+                    {
+                      "text": "Do you like it?"
+                    },
+                    {
+                      "text": "Are we there?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e21",
+                  "scenarioId": "fr.scenario.ou_gare",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:uu-l2",
+              "title": "Left, right, over there",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e22",
+                  "mode": "targetToNative",
+                  "prompt": "L'hôtel est là-bas, à droite.",
+                  "options": [
+                    {
+                      "text": "The hotel is over there, on the right."
+                    },
+                    {
+                      "text": "The hotel is closed today."
+                    },
+                    {
+                      "text": "The hotel is behind the station."
+                    },
+                    {
+                      "text": "The hotel is on the left."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e23",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I'm looking for the hotel",
+                  "tokens": [
+                    "l'hôtel",
+                    "je",
+                    "cherche"
+                  ],
+                  "answer": [
+                    "je",
+                    "cherche",
+                    "l'hôtel"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:uu-l3",
+              "title": "Conversation: the hotel",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e24",
+                  "scenarioId": "fr.scenario.ou_hotel",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-v",
+          "title": "Faire des projets",
+          "description": "Agree on days, times and places - and say what you'd like.",
+          "guidebook": "Plans at A1 are three questions: Quel jour ? (which day), À quelle heure ? (at what time), Où ça ? (where). Answer with what you know: demain, samedi, à dix heures, au café. To accept warmly: Parfait ! Super ! À demain !",
+          "words": [
+            {
+              "target": "demain",
+              "native": "tomorrow",
+              "emoji": "🌅"
+            },
+            {
+              "target": "l'heure",
+              "native": "the hour",
+              "emoji": "⏰"
+            },
+            {
+              "target": "le restaurant",
+              "native": "the restaurant",
+              "emoji": "🍽️"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uv-l0",
+              "title": "Which day? What time?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e25",
+                  "mode": "targetToNative",
+                  "prompt": "À quelle heure ?",
+                  "options": [
+                    {
+                      "text": "At what time?"
+                    },
+                    {
+                      "text": "On which floor?"
+                    },
+                    {
+                      "text": "In which city?"
+                    },
+                    {
+                      "text": "With whom?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e26",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: tomorrow at ten o'clock",
+                  "tokens": [
+                    "heures",
+                    "à",
+                    "demain",
+                    "dix"
+                  ],
+                  "answer": [
+                    "demain",
+                    "à",
+                    "dix",
+                    "heures"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e27",
+                  "mode": "targetToNative",
+                  "prompt": "On se voit où ?",
+                  "options": [
+                    {
+                      "text": "Where do we meet?"
+                    },
+                    {
+                      "text": "When do we eat?"
+                    },
+                    {
+                      "text": "Why do we wait?"
+                    },
+                    {
+                      "text": "Who else is coming?"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:uv-l1",
+              "title": "Conversation: making a plan",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e28",
+                  "scenarioId": "fr.scenario.rendez_vous",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:uv-l2",
+              "title": "Would you like something?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e29",
+                  "mode": "targetToNative",
+                  "prompt": "Tu veux boire quelque chose ?",
+                  "options": [
+                    {
+                      "text": "Do you want something to drink?"
+                    },
+                    {
+                      "text": "Do you want to leave now?"
+                    },
+                    {
+                      "text": "Can you say that again?"
+                    },
+                    {
+                      "text": "Are you cold?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e30",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: yes, some water please (to a friend)",
+                  "tokens": [
+                    "te",
+                    "de",
+                    "oui",
+                    "s'il",
+                    "l'eau",
+                    "plaît"
+                  ],
+                  "answer": [
+                    "oui",
+                    "de",
+                    "l'eau",
+                    "s'il",
+                    "te",
+                    "plaît"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:uv-l3",
+              "title": "Conversation: at a friend's place",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e31",
+                  "scenarioId": "fr.scenario.chez_ami",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

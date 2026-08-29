@@ -1,35 +1,117 @@
 {
   "generator": "scripts/reception-audio.ts qa",
-  "authoredClipCount": 60,
-  "uniqueAssetCount": 58,
+  "authoredClipCount": 177,
+  "uniqueAssetCount": 167,
   "technicalFailures": 0,
   "speakerSummary": [
     {
       "speaker": "fr_FR-siwis-medium",
-      "clips": 52,
-      "meanWer": 0.2001,
+      "clips": 56,
+      "meanWer": 0.141,
       "technicalFailures": 0
     },
     {
       "speaker": "mixed",
       "clips": 8,
-      "meanWer": 0.23,
+      "meanWer": 0.192,
+      "technicalFailures": 0
+    },
+    {
+      "speaker": "fr_FR-upmc-medium#1",
+      "clips": 113,
+      "meanWer": 0.2982,
       "technicalFailures": 0
     }
   ],
   "clips": [
+    {
+      "clipId": "fr.clip.a1cap_bus",
+      "assetKey": "314d58bbf0f72edd6b88",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Le bus pour le centre-ville part dans dix minutes.",
+      "durationSec": 2.691,
+      "bytes": 21777,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.58,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Le bus pour le centre-ville part dans 10 minutes.",
+        "wer": 0.1
+      }
+    },
+    {
+      "clipId": "fr.clip.a1cap_cinema",
+      "assetKey": "6a487047e0ed39aa41dd",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Salut ! Le film commence à vingt heures. On se voit devant le cinéma.",
+      "durationSec": 4.362,
+      "bytes": 35152,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.82,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Salut, le film commence à 20 h, on se voit devant le cinéma.",
+        "wer": 0.1538
+      }
+    },
+    {
+      "clipId": "fr.clip.a1cap_musee",
+      "assetKey": "4ff02b623a193a49bd3c",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Le musée est ouvert de dix heures à dix-huit heures.",
+      "durationSec": 2.978,
+      "bytes": 24076,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.46,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Le musée est ouvert de 10h à 18h.",
+        "wer": 0.4545
+      }
+    },
+    {
+      "clipId": "fr.clip.a1cap_pharmacie",
+      "assetKey": "1a389742c7b704f828f6",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "La pharmacie est fermée aujourd'hui. Elle ouvre demain matin.",
+      "durationSec": 3.736,
+      "bytes": 30137,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.33,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "La pharmacie est fermée aujourd'hui, elle ouvre demain matin.",
+        "wer": 0
+      }
+    },
     {
       "clipId": "fr.clip.cp3_biblio_ferme",
       "assetKey": "2b0fb05e9656e34d52dd",
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "La bibliothèque ferme à six heures ce soir.",
-      "durationSec": 2.56,
-      "bytes": 20733,
+      "durationSec": 2.743,
+      "bytes": 22195,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.8,
+      "charsPerSec": 15.68,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -43,17 +125,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Pardon, le magasin ouvre à quelle heure ? Le magasin ouvre à neuf heures, madame.",
-      "durationSec": 5.277,
-      "bytes": 42466,
+      "durationSec": 5.198,
+      "bytes": 41839,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.35,
+      "charsPerSec": 15.58,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Pardon, le magasin ouvre à quelle heure ?",
-        "wer": 0.5
+        "text": "Pardon, le magasin ouvra qu'à l'heure.  Le magasin ouvra neuf heures, madame.",
+        "wer": 0.3571
       }
     },
     {
@@ -62,16 +144,16 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Bonjour, un thé, s'il vous plaît. Bien sûr. Trois euros, monsieur.",
-      "durationSec": 5.068,
-      "bytes": 40795,
+      "durationSec": 5.146,
+      "bytes": 41421,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.02,
+      "charsPerSec": 12.83,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, un T, s'il vous plaît.  Bien sûr, trois euros, monsieur.",
+        "text": "bonjour, un T, s'il vous plaît.  Bien sûr, trois euros monsieur.",
         "wer": 0.0833
       }
     },
@@ -81,12 +163,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le soir",
-      "durationSec": 0.888,
-      "bytes": 7358,
+      "durationSec": 0.94,
+      "bytes": 7776,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 7.88,
+      "charsPerSec": 7.44,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -100,17 +182,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "voie quatre",
-      "durationSec": 1.097,
-      "bytes": 9030,
+      "durationSec": 1.149,
+      "bytes": 9448,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 10.03,
+      "charsPerSec": 9.57,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Voix 4.",
-        "wer": 1
+        "text": "Voie 4.",
+        "wer": 0.5
       }
     },
     {
@@ -119,16 +201,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "L'entrée du musée coûte huit euros le samedi.",
-      "durationSec": 2.638,
-      "bytes": 21359,
+      "durationSec": 2.534,
+      "bytes": 20524,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.06,
+      "charsPerSec": 17.76,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "L'entrée du musée coût 8 euros, le samedi.",
+        "text": "L'entrée du musée coup de huit euros le samedi.",
         "wer": 0.2222
       }
     },
@@ -138,16 +220,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le fromage",
-      "durationSec": 1.123,
-      "bytes": 9239,
+      "durationSec": 1.071,
+      "bytes": 8821,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.9,
+      "charsPerSec": 9.34,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "le fromage.",
+        "text": "Le fromage.",
         "wer": 0
       }
     },
@@ -157,17 +239,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "l'hôtel",
-      "durationSec": 1.045,
-      "bytes": 8612,
+      "durationSec": 0.993,
+      "bytes": 8194,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 6.7,
+      "charsPerSec": 7.05,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "L'hostile.",
-        "wer": 0.5
+        "text": "Lorsque tel.",
+        "wer": 1
       }
     },
     {
@@ -176,12 +258,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le restaurant de la plage est ouvert le samedi matin.",
-      "durationSec": 3.344,
-      "bytes": 27002,
+      "durationSec": 3.135,
+      "bytes": 25330,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.85,
+      "charsPerSec": 16.91,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -209,22 +291,2169 @@
       }
     },
     {
+      "clipId": "fr.clip.ix_a1cap_invitation_confirm_ask",
+      "assetKey": "f6a12573d2b5e854e0a7",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Super ! À neuf heures, ça va ?",
+      "durationSec": 2.09,
+      "bytes": 16971,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.36,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Le peur à 9h, ça va !",
+        "wer": 0.6667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_invitation_confirm_s",
+      "assetKey": "6421fc4ed73b09f958a9",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Neuf heures, ça va ?",
+      "durationSec": 1.62,
+      "bytes": 13209,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.35,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Neveleur, ça va !",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_invitation_end",
+      "assetKey": "35d0a39f6b367c889ebf",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Parfait ! À demain !",
+      "durationSec": 1.332,
+      "bytes": 10910,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.01,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Parfait, et demain.",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_invitation_invite_ask",
+      "assetKey": "607392d37ed9e1d49c6e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Salut ! On va au café demain matin ?",
+      "durationSec": 2.325,
+      "bytes": 18852,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.48,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Salut, on va au café de main matin.",
+        "wer": 0.2857
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_invitation_invite_s",
+      "assetKey": "f247d4f34e6354056db4",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Café, demain matin ?",
+      "durationSec": 1.646,
+      "bytes": 13418,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.15,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "à café, demain matin.",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_julie_end",
+      "assetKey": "82f27bb516eb0870b91b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Super ! À bientôt, Nadia !",
+      "durationSec": 2.247,
+      "bytes": 18225,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.57,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Super, à bientôt, Nadia !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_julie_french_ask",
+      "assetKey": "7a3afeba22aee62ff2eb",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Enchantée, Nadia ! Vous parlez français ?",
+      "durationSec": 2.508,
+      "bytes": 20315,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.35,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Enchanté, Nadia, vous parlez français.",
+        "wer": 0.2
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_julie_french_s",
+      "assetKey": "aa3217447985f4dd8ee8",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous parlez français ?",
+      "durationSec": 1.202,
+      "bytes": 9866,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.31,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "vous parlez français.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_julie_name_ask",
+      "assetKey": "8236a98970087317513c",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Moi, c'est Julie. Et vous ?",
+      "durationSec": 2.664,
+      "bytes": 21568,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.89,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, moi, c'est Julie, et vous.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_julie_name_s",
+      "assetKey": "491642d000ec8cf5303b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Comment vous vous appelez ?",
+      "durationSec": 1.202,
+      "bytes": 9866,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 22.47,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Comment vous vous appelez ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_telephone_end",
+      "assetKey": "35d0a39f6b367c889ebf",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Parfait ! À demain !",
+      "durationSec": 1.332,
+      "bytes": 10910,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.01,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Parfait, et demain.",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_telephone_place_ask",
+      "assetKey": "d6ac3c35120db5716ffe",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À neuf heures, d'accord ! Et où ça ?",
+      "durationSec": 2.194,
+      "bytes": 17807,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.41,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Un oeuvre, d'accord ? Et vous sain ?",
+        "wer": 0.625
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_telephone_place_s",
+      "assetKey": "3a5e97d198a3a0d6d579",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "On se voit où ?",
+      "durationSec": 0.914,
+      "bytes": 7567,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.41,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "On se voit où.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_telephone_time_ask",
+      "assetKey": "205a3666f675053c3363",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Salut ! On se voit à quelle heure demain ?",
+      "durationSec": 2.299,
+      "bytes": 18643,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.27,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Salut, on se voit à quel verre de n'un.",
+        "wer": 0.625
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_telephone_time_s",
+      "assetKey": "62a734ed6bc7e30e7c49",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À quelle heure, demain ?",
+      "durationSec": 1.802,
+      "bytes": 14672,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.32,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "A quelle heure ? Demain ?",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_voisin_bye_ask",
+      "assetKey": "4fda25d942bda1fbf645",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Tant mieux ! Bon, à plus tard !",
+      "durationSec": 2.064,
+      "bytes": 16762,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.02,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Comment mieux ? Bon, à plus tard !",
+        "wer": 0.1667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_voisin_bye_s",
+      "assetKey": "92173f5ad248648f02e4",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À plus tard !",
+      "durationSec": 0.81,
+      "bytes": 6731,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.05,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "à plus tard.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_voisin_end",
+      "assetKey": "ed75eca7f8c5245f9065",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Merci, à bientôt !",
+      "durationSec": 1.75,
+      "bytes": 14254,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 10.28,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Merci, à bientôt.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_voisin_hello_ask",
+      "assetKey": "88278608099a78e1fa5c",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Vous allez bien ?",
+      "durationSec": 1.358,
+      "bytes": 11119,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 19.88,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, vous allez bien !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_a1cap_voisin_hello_s",
+      "assetKey": "59de2bf98055558c3c45",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ça va ?",
+      "durationSec": 0.601,
+      "bytes": 5059,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.65,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "C'est venu !",
+        "wer": 1.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cafe_boisson_end",
+      "assetKey": "fba0c4fa79206826039c",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Merci à vous ! Bonne journée !",
+      "durationSec": 1.881,
+      "bytes": 15299,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.95,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Merci à vous.  Bonne journée.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cafe_boisson_order_ask",
+      "assetKey": "9cc3d4ffde202c9c350e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Vous désirez ?",
+      "durationSec": 1.411,
+      "bytes": 11537,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.01,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "bonjour ou désirer.",
+        "wer": 0.6667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cafe_boisson_order_cafe_b",
+      "assetKey": "846a5510798d0b184189",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Un café, très bien ! Ça fait deux euros. Et voilà votre boisson !",
+      "durationSec": 4.101,
+      "bytes": 33062,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.85,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Un café, très bien, ça fait 2 euros, et voilà votre boisson !",
+        "wer": 0.0833
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cafe_boisson_order_s",
+      "assetKey": "b9864569b1a5194e1ecb",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Qu'est-ce que vous voulez boire ?",
+      "durationSec": 1.411,
+      "bytes": 11537,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 23.39,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Qu'est-ce que vous voulez boire ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cafe_boisson_order_the_b",
+      "assetKey": "786f5e3a046d801f9879",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Un thé, parfait ! Ça fait deux euros. Et voilà votre boisson !",
+      "durationSec": 3.5,
+      "bytes": 28256,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.71,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "un T, parfait, ça fait 2€, et voilà votre boisson !",
+        "wer": 0.2727
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cafe_boisson_thanks_s",
+      "assetKey": "a1bc94fdb23516130dd2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Voilà pour vous !",
+      "durationSec": 0.836,
+      "bytes": 6940,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.34,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Vous l'appuivez.",
+        "wer": 1
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_chez_ami_end",
+      "assetKey": "1bf516b8945b25a50763",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "De rien ! Assieds-toi !",
+      "durationSec": 1.411,
+      "bytes": 11537,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.3,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "de rien si de toi.",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_chez_ami_offer_ask",
+      "assetKey": "d430084a2106a322cd10",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bienvenue ! Tu veux boire quelque chose ?",
+      "durationSec": 2.194,
+      "bytes": 17807,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.68,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bienvenue, tu veux boire quelque chose.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_chez_ami_offer_s",
+      "assetKey": "1c472aab24a76723c09f",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Tu veux de l'eau, un café ?",
+      "durationSec": 1.593,
+      "bytes": 13000,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.94,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Tu veux de l'eau, un café ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_chez_ami_thanks_s",
+      "assetKey": "f5fd521e16b9e4c5ab85",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Tiens !",
+      "durationSec": 0.522,
+      "bytes": 4432,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.4,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Ciao !",
+        "wer": 1
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_chez_ami_want_cafe_b",
+      "assetKey": "0d9dce72681c1e643cf2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Un petit café, alors. Et voilà pour toi !",
+      "durationSec": 2.795,
+      "bytes": 22613,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.67,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "un petit café, alors, et voilà pour toi !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_chez_ami_want_eau_b",
+      "assetKey": "cdbb871741bc87ab2f84",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Un grand verre d'eau, alors. Et voilà pour toi !",
+      "durationSec": 2.978,
+      "bytes": 24076,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.12,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Un grand verre d'eau, alors, et voilà pour toi.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_ask_time_b",
+      "assetKey": "57ddaef87add0cc63c07",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Le train part à dix heures, voie deux. Voilà votre billet !",
+      "durationSec": 3.474,
+      "bytes": 28047,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.98,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "le train paradiseur, voie-de, voilà votre billet.",
+        "wer": 0.4545
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_ask_track_b",
+      "assetKey": "299d5ff08a3977ecfe4b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Voie deux. Le train part à dix heures. Voilà votre billet !",
+      "durationSec": 3.291,
+      "bytes": 26584,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.93,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "ou à te, le train par à 10h, voilà votre billet !",
+        "wer": 0.5455
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_end",
+      "assetKey": "c63be05e115f9368164a",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bon voyage !",
+      "durationSec": 0.94,
+      "bytes": 7776,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.76,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bon voyage !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_question_ask",
+      "assetKey": "6d08be9106ba26563df6",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Un billet pour Lyon, très bien. Ça fait vingt euros.",
+      "durationSec": 3.318,
+      "bytes": 26793,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.67,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "un billet pour l'huion. Très bien, ça fait 20€.",
+        "wer": 0.4
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_question_s",
+      "assetKey": "e6616a23811141449f6e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vingt euros, s'il vous plaît.",
+      "durationSec": 1.724,
+      "bytes": 14045,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.82,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "20€ s'il vous plaît.",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_thanks_s",
+      "assetKey": "bc28649e5f4dd4525101",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Tenez, votre billet.",
+      "durationSec": 1.75,
+      "bytes": 14254,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.43,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Tenez votre billet.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_ticket_ask",
+      "assetKey": "8dd54e0d6cfcbeb47896",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Vous allez où ?",
+      "durationSec": 1.567,
+      "bytes": 12791,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.95,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, vous allez où ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_billet_ticket_s",
+      "assetKey": "c7d950ee7bed0f85d556",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous voulez aller où ?",
+      "durationSec": 1.228,
+      "bytes": 10075,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.92,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Vous pouvez aller ouf.",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_end",
+      "assetKey": "c1219be90858a549c51f",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Merci ! À bientôt !",
+      "durationSec": 1.463,
+      "bytes": 11955,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.99,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Merci, à bientôt !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_more_ask",
+      "assetKey": "78cf47de2b788dbdfc59",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Voilà ! Et avec ça ?",
+      "durationSec": 1.515,
+      "bytes": 12373,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.2,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Voilà, et avec ça.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_more_s",
+      "assetKey": "52e7968333d58eac7d7d",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Autre chose ?",
+      "durationSec": 0.862,
+      "bytes": 7149,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.08,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "autre chose.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_more_water_b",
+      "assetKey": "935c5b8f69662eca642a",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Et une bouteille d'eau ! Ça fait trois euros. Voilà pour vous.",
+      "durationSec": 3.03,
+      "bytes": 24494,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.46,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Et une bouteille d'eau, ça fait 3 euros.  Voilà pour vous !",
+        "wer": 0.0833
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_thanks_s",
+      "assetKey": "cb505ead4a4b1197c64d",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Tenez !",
+      "durationSec": 0.575,
+      "bytes": 4850,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.18,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Toi !",
+        "wer": 1
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_thats_all_b",
+      "assetKey": "fb0972f51e20a070fac0",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Alors, ça fait un euro. Voilà pour vous.",
+      "durationSec": 2.612,
+      "bytes": 21150,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.31,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "alors ça fait d'un euro, voilà pour vous !",
+        "wer": 0.125
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_want_ask",
+      "assetKey": "3389fb4c9f0c26441885",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Qu'est-ce que vous voulez aujourd'hui ?",
+      "durationSec": 2.22,
+      "bytes": 18016,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 22.07,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, qu'est-ce que vous voulez aujourd'hui ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_boulangerie_want_s",
+      "assetKey": "86c057b1c17f304d3ac5",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous voulez quoi ?",
+      "durationSec": 0.94,
+      "bytes": 7776,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 19.14,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Vous voulez croire ?",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_end",
+      "assetKey": "fba0c4fa79206826039c",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Merci à vous ! Bonne journée !",
+      "durationSec": 1.881,
+      "bytes": 15299,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.95,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Merci à vous.  Bonne journée.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_order_ask",
+      "assetKey": "804ee7112d2b1096b258",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Qu'est-ce que je vous sers ?",
+      "durationSec": 1.829,
+      "bytes": 14881,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.78,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, qu'est-ce que je vous serre ?",
+        "wer": 0.125
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_order_cafe_b",
+      "assetKey": "4ee25f85872b0cf13418",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Un café, tout de suite ! Et voilà !",
+      "durationSec": 2.456,
+      "bytes": 19897,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.25,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Un café. Tout de suite voilà !",
+        "wer": 0.1429
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_order_s",
+      "assetKey": "4ccbe93c023c54faaccb",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous voulez boire quoi ?",
+      "durationSec": 1.149,
+      "bytes": 9448,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.88,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Vous voulez boire quoi ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_order_the_b",
+      "assetKey": "955c15eec22f143896f4",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Un thé, très bien ! Et voilà !",
+      "durationSec": 2.299,
+      "bytes": 18643,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.05,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "A un T, très bien, voilà !",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_price_s",
+      "assetKey": "a1bc94fdb23516130dd2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Voilà pour vous !",
+      "durationSec": 0.836,
+      "bytes": 6940,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.34,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Vous l'appuivez.",
+        "wer": 1
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_thanks_ask",
+      "assetKey": "65f799544e4dc2e3a5dc",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ça fait deux euros.",
+      "durationSec": 1.176,
+      "bytes": 9657,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.16,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Ça fait 12 euros.",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_cafe_thanks_s",
+      "assetKey": "561608bf05ed05df0c62",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Deux euros.",
+      "durationSec": 0.836,
+      "bytes": 6940,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.16,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "J'ai fait le run.",
+        "wer": 2.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_ask_back_s",
+      "assetKey": "352395bf3f49fe5a6440",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Posez-moi une question !",
+      "durationSec": 1.332,
+      "bytes": 10910,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.01,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Posez-moi une question.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_end",
+      "assetKey": "22f5c29566e41095907b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Moi, j'habite ici, à Paris ! À bientôt, Nadia !",
+      "durationSec": 4.127,
+      "bytes": 33271,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.39,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Moi, j'habite ici à Paris, à bientôt, Nadia.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_english_ask",
+      "assetKey": "642c65eec78b1f145d1b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ah, Lyon ! Très joli. Et vous parlez anglais ?",
+      "durationSec": 2.926,
+      "bytes": 23658,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.72,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "A, Lyon, très lowly, et vous parlez anglais.",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_english_s",
+      "assetKey": "8dd02595c5a1e908d47e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous parlez anglais ?",
+      "durationSec": 1.149,
+      "bytes": 9448,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.27,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "pour parler anglais.",
+        "wer": 0.6667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_live_ask",
+      "assetKey": "e506237174eedf82d5e3",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Alors, Nadia, vous habitez où ?",
+      "durationSec": 2.664,
+      "bytes": 21568,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.63,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "alors Nadia, vous habitez-vous.",
+        "wer": 0.2
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_live_s",
+      "assetKey": "95e660036e72bc072531",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous habitez où ?",
+      "durationSec": 1.123,
+      "bytes": 9239,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.13,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Fous habitez-vous.",
+        "wer": 0.6667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_no_speak_b",
+      "assetKey": "63921b62839942de06bb",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Pas de problème ! Moi, je parle français et anglais. Voilà, vous savez tout sur moi… ou presque !",
+      "durationSec": 5.46,
+      "bytes": 43929,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.77,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "pas de problème. Moi, je pars français et emblès.  Voilà, vous savez tout sur mon presque.",
+        "wer": 0.2353
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_faire_connaissance_yes_speak_b",
+      "assetKey": "04ec207b735df8ccbcdc",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Moi, je parle anglais aussi ! Voilà, vous savez tout sur moi… ou presque !",
+      "durationSec": 4.545,
+      "bytes": 36615,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.28,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Moi, je parle anglais aussi, voilà, vous savez tout sur moi, presque.",
+        "wer": 0.0769
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_day_ask",
+      "assetKey": "d9e2bcab34dcd6645bfe",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "On va au restaurant cette semaine ? Demain ou samedi ?",
+      "durationSec": 2.978,
+      "bytes": 24076,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.13,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "On va au restaurant cette semaine, demain ou samedi.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_day_demain_b",
+      "assetKey": "9453c12a22332598e12c",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Demain, super ! Alors, à quelle heure ?",
+      "durationSec": 2.873,
+      "bytes": 23240,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.57,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Demain, super, alors, à quel âme ?",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_day_s",
+      "assetKey": "905c40800b2fd8799e7b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Demain ou samedi ?",
+      "durationSec": 1.332,
+      "bytes": 10910,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.51,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Deux mois au samedi.",
+        "wer": 1
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_day_samedi_b",
+      "assetKey": "cfec1e94eb427049766d",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Samedi, parfait ! Alors, à quelle heure ?",
+      "durationSec": 2.821,
+      "bytes": 22822,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.53,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Femme dit, parfait, alors, à quel ordre ?",
+        "wer": 0.6667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_end",
+      "assetKey": "27fef95a44a5d23fa71e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Parfait ! À bientôt !",
+      "durationSec": 1.463,
+      "bytes": 11955,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.36,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Parfait, à bientôt !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_place_ask",
+      "assetKey": "71e9c21d3b1fce6351e1",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À sept heures, très bien ! On se retrouve où ?",
+      "durationSec": 2.795,
+      "bytes": 22613,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.46,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "cette heure. Très bien, on se retrouve !",
+        "wer": 0.4444
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_place_s",
+      "assetKey": "3eb5f4a0a86852b02488",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Où ça ?",
+      "durationSec": 0.653,
+      "bytes": 5477,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 10.72,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Où ça ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_projets_time_s",
+      "assetKey": "91f5f1c6fc583026ad9e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À quelle heure ?",
+      "durationSec": 0.784,
+      "bytes": 6522,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.42,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "A quelle heure ?",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_bye_s",
+      "assetKey": "f4fb8d6b2eb3d9f5d9f7",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Au revoir !",
+      "durationSec": 0.967,
+      "bytes": 7985,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.38,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Au revoir.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_doing_fine_b",
+      "assetKey": "a79db01510ffc3c797f1",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Très bien ! Bon, je dois partir. Allez, à bientôt !",
+      "durationSec": 3.553,
+      "bytes": 28674,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.36,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bon, je dois partir. Allez, à bientôt !",
+        "wer": 0.2222
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_doing_ok_b",
+      "assetKey": "d241a6c0c0258f8a9213",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ah, ça va seulement ? Bon, je dois partir. Allez, à bientôt !",
+      "durationSec": 4.258,
+      "bytes": 34316,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.33,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Ah, ça va seulement. Bon, je dois partir. Allez, à bientôt.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_end",
+      "assetKey": "6c9652d41b7ba87f75f3",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonne journée !",
+      "durationSec": 0.888,
+      "bytes": 7358,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.89,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonne journée !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_how_ask",
+      "assetKey": "567918726bc059334922",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Enchanté, Nadia ! Vous allez bien ?",
+      "durationSec": 2.299,
+      "bytes": 18643,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.23,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Enchanté, ne dire, vous allez bien.",
+        "wer": 0.4
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_how_s",
+      "assetKey": "59de2bf98055558c3c45",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ça va ?",
+      "durationSec": 0.601,
+      "bytes": 5059,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.65,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "C'est venu !",
+        "wer": 1.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_name_ask",
+      "assetKey": "1cdb735b3ff0708e2147",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Moi, c'est Paul. Et vous, comment vous appelez-vous ?",
+      "durationSec": 3.997,
+      "bytes": 32226,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.76,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, noir, c'est toi et vous, comment vous appelez-vous ?",
+        "wer": 0.1818
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_cp_rencontre_name_s",
+      "assetKey": "491642d000ec8cf5303b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Comment vous vous appelez ?",
+      "durationSec": 1.202,
+      "bytes": 9866,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 22.47,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Comment vous vous appelez ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_magasin_courses_more_ask",
+      "assetKey": "34724a77fc5906466a0e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Voilà le pain ! Et avec ça ?",
+      "durationSec": 1.698,
+      "bytes": 13836,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.49,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Voilà le pan et avec ça.",
+        "wer": 0.1667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_magasin_courses_more_s",
+      "assetKey": "1a6c110b3913c4f891e7",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous voulez autre chose ?",
+      "durationSec": 1.332,
+      "bytes": 10910,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.77,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "ou voulait d'autres choses.",
+        "wer": 1.25
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_magasin_courses_thats_all_t",
+      "assetKey": "f8175fc744746216fbd6",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Très bien ! Ça fait un euro. Merci, bonne journée !",
+      "durationSec": 3.396,
+      "bytes": 27420,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.02,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Eh bien, t'as fait un euro ! Merci ! Bonne journée !",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_magasin_courses_want_ask",
+      "assetKey": "70d465bd437c35bbdf36",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Je peux vous aider ?",
+      "durationSec": 1.672,
+      "bytes": 13627,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.94,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, je peux vous aider.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_magasin_courses_want_eau_t",
+      "assetKey": "52975c56d3e0f51c9eef",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Et une bouteille d'eau ! Ça fait trois euros. Merci, bonne journée !",
+      "durationSec": 3.814,
+      "bytes": 30764,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.83,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Et une bouteille d'eau, ça fait trois d'euros.  Merci, bonne journée !",
+        "wer": 0.0833
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_magasin_courses_want_s",
+      "assetKey": "86c057b1c17f304d3ac5",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous voulez quoi ?",
+      "durationSec": 0.94,
+      "bytes": 7776,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 19.14,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Vous voulez croire ?",
+        "wer": 0.3333
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_gare_ask_ask",
+      "assetKey": "beee7190e577f92cebc4",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Oui, bonjour ! Je peux vous aider ?",
+      "durationSec": 2.168,
+      "bytes": 17598,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.14,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Lui, bonjour, je peux vous aider.",
+        "wer": 0.1667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_gare_ask_s",
+      "assetKey": "2d32cfc5cf8a4fa328b3",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous cherchez quelque chose ?",
+      "durationSec": 1.463,
+      "bytes": 11955,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 19.82,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "ou chercher quelque chose.",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_gare_end",
+      "assetKey": "710dba78a06c0cefee46",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "De rien ! Bonne journée !",
+      "durationSec": 1.411,
+      "bytes": 11537,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.72,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "De rien ! Bonne journée !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_gare_thanks_ask",
+      "assetKey": "5146e9d75f5a477a5976",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "La gare ? C'est tout droit, puis à gauche.",
+      "durationSec": 2.56,
+      "bytes": 20733,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.41,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "L'abdard fait tout droit, puis à gauche.",
+        "wer": 0.4444
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_gare_thanks_s",
+      "assetKey": "21a4e665ec4b947dfeaf",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Tout droit, puis à gauche.",
+      "durationSec": 1.829,
+      "bytes": 14881,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.22,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "tout droit puis à gauche.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_hotel_ask_ask",
+      "assetKey": "8c97c57d84bfa51e92a4",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonsoir ! Vous cherchez quelque chose ?",
+      "durationSec": 2.299,
+      "bytes": 18643,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.97,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonsoir, vous cherchez quelque chose.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_hotel_ask_s",
+      "assetKey": "8f87ac3e2b6b3d89560d",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Je peux vous aider ?",
+      "durationSec": 1.123,
+      "bytes": 9239,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.81,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Je peux vous aider.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_hotel_end",
+      "assetKey": "a48d9c17b52ec7a1851a",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Je vous en prie ! Bonne soirée !",
+      "durationSec": 1.802,
+      "bytes": 14672,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.75,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Je vous en prie, bonne soirée !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_hotel_thanks_ask",
+      "assetKey": "48b7ad3ab9cae86aa869",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "L'hôtel est là-bas, à droite. C'est à deux minutes.",
+      "durationSec": 3.135,
+      "bytes": 25330,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.27,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "au telle et là-bas à droite, c'est à deux minutes.",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_ou_hotel_thanks_s",
+      "assetKey": "91073781e9fbc5dcc31f",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À droite. C'est tout près.",
+      "durationSec": 1.62,
+      "bytes": 13209,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.05,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "la boîte c'est tout prêt",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_pas_grave",
+      "assetKey": "71ccb199be05fdd693ad",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ce n'est pas grave ! Une autre fois, peut-être.",
+      "durationSec": 2.821,
+      "bytes": 22822,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.66,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Ce n'est pas grave, une autre fois, peut-être.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rencontre_nom_here_ask",
+      "assetKey": "e10e549c656a0a9789c2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Enchanté, Léa ! Vous habitez ici ?",
+      "durationSec": 2.482,
+      "bytes": 20106,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.7,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Enchanté, l'air vous habitez ici.",
+        "wer": 0.4
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rencontre_nom_here_s",
+      "assetKey": "e4960faf19f44b37a6ed",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Vous habitez ici ?",
+      "durationSec": 1.254,
+      "bytes": 10284,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.36,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Vous habitez ici ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rencontre_nom_name_ask",
+      "assetKey": "4625db337704c7d25e91",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour ! Je m'appelle Marc. Et vous ?",
+      "durationSec": 2.194,
+      "bytes": 17807,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.32,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Bonjour, je m'appelle Marc, et vous !",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rencontre_nom_name_s",
+      "assetKey": "01b361220933763f391a",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Moi, c'est Marc. Et vous ?",
+      "durationSec": 2.064,
+      "bytes": 16762,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.6,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Moi, c'est NARTE ! Yévo !",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rencontre_nom_no_elsewhere_t",
+      "assetKey": "1d174be18164afbf6cd2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ah, d'accord ! Bienvenue ici, alors. Au revoir, Léa !",
+      "durationSec": 4.075,
+      "bytes": 32853,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.01,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "D'accord, bienvenue ici.  Alors, on revoit les A.",
+        "wer": 0.5556
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rencontre_nom_yes_here_t",
+      "assetKey": "a9fda62bc868a93ea219",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Super ! Moi aussi, j'habite ici. Au revoir, Léa !",
+      "durationSec": 4.232,
+      "bytes": 34107,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.58,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Super, moi aussi, j'habite ici, au revoir, lien.",
+        "wer": 0.1111
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rendez_vous_end",
+      "assetKey": "8a0b191912e6931e08ec",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Super ! À demain, alors !",
+      "durationSec": 2.194,
+      "bytes": 17807,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.39,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "super, adonement, alors",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rendez_vous_place_ask",
+      "assetKey": "9372108f1da26135e026",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À dix heures, parfait ! On se voit où ?",
+      "durationSec": 2.664,
+      "bytes": 21568,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.64,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "à 10h, parfait, on se voit où.",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rendez_vous_place_s",
+      "assetKey": "3eb5f4a0a86852b02488",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Où ça ?",
+      "durationSec": 0.653,
+      "bytes": 5477,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 10.72,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Où ça ?",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rendez_vous_time_ask",
+      "assetKey": "df5a1aa693325f01069d",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "On va au café demain ? À quelle heure ?",
+      "durationSec": 2.038,
+      "bytes": 16553,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 19.14,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "On va au café demain, à quel heure ?",
+        "wer": 0.125
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_rendez_vous_time_s",
+      "assetKey": "a4434b26d61708012a0d",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Demain, à quelle heure ?",
+      "durationSec": 1.541,
+      "bytes": 12582,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.57,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Demain, à quel heure ?",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_salut_ca_va_bye_ask",
+      "assetKey": "8e6851c081f04000dbe2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Super ! Bon, je dois partir. Au revoir !",
+      "durationSec": 3.004,
+      "bytes": 24285,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.32,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Super, bon, je dois partir au revoir.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_salut_ca_va_bye_s",
+      "assetKey": "f4fb8d6b2eb3d9f5d9f7",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Au revoir !",
+      "durationSec": 0.967,
+      "bytes": 7985,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.38,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Au revoir.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_salut_ca_va_end",
+      "assetKey": "3510943a8b7f19970fa2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "À bientôt !",
+      "durationSec": 0.862,
+      "bytes": 7149,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.76,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "À la dien tout.",
+        "wer": 1.5
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_salut_ca_va_hello_ask",
+      "assetKey": "b832b0f264265945e1b4",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Salut ! Ça va ?",
+      "durationSec": 1.202,
+      "bytes": 9866,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.48,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Salut, 120 !",
+        "wer": 0.6667
+      }
+    },
+    {
+      "clipId": "fr.clip.ix_salut_ca_va_hello_s",
+      "assetKey": "db5b1ffd1480a9136eb1",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Salut ! Tu vas bien ?",
+      "durationSec": 1.384,
+      "bytes": 11328,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.17,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Salut ! Tu vas bien !",
+        "wer": 0
+      }
+    },
+    {
       "clipId": "fr.clip.pl_gare_annonce",
       "assetKey": "a0b1b5d038174aba2f95",
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le train part à dix heures, voie une.",
-      "durationSec": 2.638,
-      "bytes": 21359,
+      "durationSec": 2.612,
+      "bytes": 21150,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.02,
+      "charsPerSec": 14.16,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train par a dix heures, voie une.",
-        "wer": 0.25
+        "text": "Le train para-diseur, voire une.",
+        "wer": 0.625
       }
     },
     {
@@ -233,17 +2462,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le lait",
-      "durationSec": 0.862,
-      "bytes": 7149,
+      "durationSec": 0.731,
+      "bytes": 6104,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.12,
+      "charsPerSec": 9.57,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Lele.",
-        "wer": 1
+        "text": "Le lait.",
+        "wer": 0
       }
     },
     {
@@ -271,12 +2500,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le café",
-      "durationSec": 0.888,
-      "bytes": 7358,
+      "durationSec": 1.045,
+      "bytes": 8612,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 7.88,
+      "charsPerSec": 6.7,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -290,16 +2519,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "bonjour",
-      "durationSec": 0.836,
-      "bytes": 6940,
+      "durationSec": 0.888,
+      "bytes": 7358,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.37,
+      "charsPerSec": 7.88,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour.",
+        "text": "bonjour",
         "wer": 0
       }
     },
@@ -309,17 +2538,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le lait",
-      "durationSec": 0.862,
-      "bytes": 7149,
+      "durationSec": 0.731,
+      "bytes": 6104,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.12,
+      "charsPerSec": 9.57,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Lele.",
-        "wer": 1
+        "text": "Le lait.",
+        "wer": 0
       }
     },
     {
@@ -328,12 +2557,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le train",
-      "durationSec": 0.81,
-      "bytes": 6731,
+      "durationSec": 0.862,
+      "bytes": 7149,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.88,
+      "charsPerSec": 9.28,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -347,12 +2576,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "l'eau",
-      "durationSec": 0.522,
-      "bytes": 4432,
+      "durationSec": 0.575,
+      "bytes": 4850,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.57,
+      "charsPerSec": 8.7,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -385,12 +2614,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le matin",
-      "durationSec": 0.836,
-      "bytes": 6940,
+      "durationSec": 0.731,
+      "bytes": 6104,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.57,
+      "charsPerSec": 10.94,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -404,12 +2633,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Merci beaucoup, monsieur.",
-      "durationSec": 1.75,
-      "bytes": 14254,
+      "durationSec": 1.672,
+      "bytes": 13627,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.28,
+      "charsPerSec": 14.95,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -423,12 +2652,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le pain",
-      "durationSec": 0.705,
-      "bytes": 5895,
+      "durationSec": 0.784,
+      "bytes": 6522,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.92,
+      "charsPerSec": 8.93,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -442,12 +2671,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le café est ouvert le soir.",
-      "durationSec": 1.776,
-      "bytes": 14463,
+      "durationSec": 1.985,
+      "bytes": 16135,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.2,
+      "charsPerSec": 13.6,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -461,12 +2690,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le train",
-      "durationSec": 0.81,
-      "bytes": 6731,
+      "durationSec": 0.862,
+      "bytes": 7149,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.88,
+      "charsPerSec": 9.28,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -480,16 +2709,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Attention, le départ est voie trois.",
-      "durationSec": 2.064,
-      "bytes": 16762,
+      "durationSec": 2.22,
+      "bytes": 18016,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.44,
+      "charsPerSec": 16.21,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Attention, le départ est voie 3 !",
+        "text": "Attention, le départ est voie 3.",
         "wer": 0.1667
       }
     },
@@ -518,12 +2747,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le magasin ferme dans dix minutes.",
-      "durationSec": 2.142,
-      "bytes": 17389,
+      "durationSec": 2.038,
+      "bytes": 16553,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.87,
+      "charsPerSec": 16.69,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -537,17 +2766,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le musée ouvre à dix heures le dimanche.",
-      "durationSec": 2.456,
-      "bytes": 19897,
+      "durationSec": 2.534,
+      "bytes": 20524,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.29,
+      "charsPerSec": 15.79,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le musée ouvra dix heures le dimanche.",
-        "wer": 0.25
+        "text": "Le musée ouvra 10 heures le dimanche.",
+        "wer": 0.375
       }
     },
     {
@@ -556,16 +2785,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "La sortie est à droite, après la porte.",
-      "durationSec": 2.508,
-      "bytes": 20315,
+      "durationSec": 2.403,
+      "bytes": 19479,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.55,
+      "charsPerSec": 16.23,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "La sortie est à droite après la porte.",
+        "text": "La sortie est à droite, après la porte.",
         "wer": 0
       }
     },
@@ -575,17 +2804,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le billet coûte seize euros.",
-      "durationSec": 1.515,
-      "bytes": 12373,
+      "durationSec": 1.437,
+      "bytes": 11746,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 18.48,
+      "charsPerSec": 19.49,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le billet coûte 16 euros.",
-        "wer": 0.2
+        "text": "Le billet coûte 16€.",
+        "wer": 0.4
       }
     },
     {
@@ -594,17 +2823,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Votre table est à gauche, près de l'entrée.",
-      "durationSec": 2.534,
-      "bytes": 20524,
+      "durationSec": 2.638,
+      "bytes": 21359,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.97,
+      "charsPerSec": 16.3,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Pote ta bête à gauche, près de l'entrée.",
-        "wer": 0.3333
+        "text": "Votre table est à gauche, près de l'entrée.",
+        "wer": 0
       }
     },
     {
@@ -613,17 +2842,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le train pour Lyon part à neuf heures, voie deux.",
-      "durationSec": 2.664,
-      "bytes": 21568,
+      "durationSec": 2.873,
+      "bytes": 23240,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 18.39,
+      "charsPerSec": 17.05,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train pour lui en part à 9h, voie 2.",
-        "wer": 0.5
+        "text": "Le train pour lui en part à neuf heures, voie deux.",
+        "wer": 0.2
       }
     },
     {
@@ -632,17 +2861,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Je voudrais du pain, s'il vous plaît. Voilà. Ça fait deux euros.",
-      "durationSec": 4.441,
-      "bytes": 35779,
+      "durationSec": 4.493,
+      "bytes": 36197,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.41,
+      "charsPerSec": 14.24,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Je voudrais du pain, s'il vous plaît.  Voilà, ça fait deux euros.",
-        "wer": 0
+        "text": "Je vous rédupe un, s'il vous plait.  Voilà, ça fait deux euros.",
+        "wer": 0.3077
       }
     },
     {
@@ -651,17 +2880,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Un billet pour Paris, s'il vous plaît. Le train part à huit heures, voie deux.",
-      "durationSec": 5.198,
-      "bytes": 41839,
+      "durationSec": 5.433,
+      "bytes": 43720,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15,
+      "charsPerSec": 14.36,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "un billet pour Paris, s'il vous plaît.",
-        "wer": 0.5
+        "text": "Un billet pour Paris, si vous plaît.  Le train part à huit heures, voie deux.",
+        "wer": 0.125
       }
     },
     {
@@ -670,16 +2899,16 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Bonjour, un café et un jus, s'il vous plaît. Bien sûr. Ça fait cinq euros.",
-      "durationSec": 5.773,
-      "bytes": 46437,
+      "durationSec": 5.512,
+      "bytes": 44347,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.82,
+      "charsPerSec": 13.43,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, un café et un jus, s'il vous plaît.  Bien sûr, ça fait 5 euros.",
+        "text": "bonjour, un café et un jus, s'il vous plaît.  Bien sûr, ça fait 5 euros.",
         "wer": 0.0625
       }
     },
@@ -689,17 +2918,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Le départ est à quelle heure ? À sept heures, madame.",
-      "durationSec": 3.265,
-      "bytes": 26375,
+      "durationSec": 3.318,
+      "bytes": 26793,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.23,
+      "charsPerSec": 15.98,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le départ est à quelle heure ?  A cette heure, ma dame.",
-        "wer": 0.5
+        "text": "Le départ est à quel heure ?  A cette heure, ma dame.",
+        "wer": 0.6
       }
     },
     {
@@ -708,17 +2937,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Pardon, où est la gare ? La gare est à droite, après le musée.",
-      "durationSec": 4.18,
-      "bytes": 33689,
+      "durationSec": 4.284,
+      "bytes": 34525,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.83,
+      "charsPerSec": 14.47,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Pardon ? Ou est la gare ?  La gare est à droite après le musée.",
-        "wer": 0.0769
+        "text": "Pardon ? Où est la gare ?  La gare est à droite après le musée.",
+        "wer": 0
       }
     },
     {
@@ -727,17 +2956,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Bonsoir, une table pour deux, s'il vous plaît. Bien sûr, la table près de la porte.",
-      "durationSec": 6.087,
-      "bytes": 48945,
+      "durationSec": 6.139,
+      "bytes": 49363,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.64,
+      "charsPerSec": 13.52,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "On soit une table pour deux, s'il vous plaît.  Bien sûr, la table près de la porte.",
-        "wer": 0.1176
+        "text": "Bonsoir, une table pour deux, s'il vous plaît.  Bien sûr, la table près de la porte.",
+        "wer": 0
       }
     },
     {
@@ -746,16 +2975,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le matin, la plage est calme. Le soir, il y a de la musique.",
-      "durationSec": 4.336,
-      "bytes": 34943,
+      "durationSec": 4.101,
+      "bytes": 33062,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.84,
+      "charsPerSec": 14.63,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le matin, la plage est calme, le soir il y a de la musique.",
+        "text": "Le matin, la plage est calme, le soir, il y a de la musique.",
         "wer": 0
       }
     },
@@ -765,12 +2994,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Samedi, nous achetons du fromage et du pain au magasin.",
-      "durationSec": 3.265,
-      "bytes": 26375,
+      "durationSec": 3.004,
+      "bytes": 24285,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.84,
+      "charsPerSec": 18.31,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -784,12 +3013,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Je travaille le matin. L'après-midi, je vais à la bibliothèque.",
-      "durationSec": 3.997,
-      "bytes": 32226,
+      "durationSec": 3.944,
+      "bytes": 31808,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.76,
+      "charsPerSec": 15.97,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -803,17 +3032,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Au revoir !",
-      "durationSec": 0.94,
-      "bytes": 7776,
+      "durationSec": 0.914,
+      "bytes": 7567,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 11.7,
+      "charsPerSec": 12.03,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Revoire.",
-        "wer": 1
+        "text": "Au revoir.",
+        "wer": 0
       }
     },
     {
@@ -822,12 +3051,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Merci beaucoup.",
-      "durationSec": 1.254,
-      "bytes": 10284,
+      "durationSec": 1.228,
+      "bytes": 10075,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 11.96,
+      "charsPerSec": 12.22,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -841,12 +3070,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Pardon !",
-      "durationSec": 0.836,
-      "bytes": 6940,
+      "durationSec": 0.679,
+      "bytes": 5686,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.57,
+      "charsPerSec": 11.78,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -860,17 +3089,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "S'il vous plaît.",
-      "durationSec": 1.019,
-      "bytes": 8403,
+      "durationSec": 0.888,
+      "bytes": 7358,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.71,
+      "charsPerSec": 18.01,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "s'il vous plaît.",
-        "wer": 0
+        "text": "s'il vous plait.",
+        "wer": 0.25
       }
     },
     {
@@ -879,12 +3108,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "J'aime le café.",
-      "durationSec": 1.176,
-      "bytes": 9657,
+      "durationSec": 1.123,
+      "bytes": 9239,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.76,
+      "charsPerSec": 13.35,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -898,12 +3127,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "J'habite à Paris.",
-      "durationSec": 0.967,
-      "bytes": 7985,
+      "durationSec": 0.993,
+      "bytes": 8194,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.59,
+      "charsPerSec": 17.13,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -917,12 +3146,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Je parle français.",
-      "durationSec": 1.463,
-      "bytes": 11955,
+      "durationSec": 1.411,
+      "bytes": 11537,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.3,
+      "charsPerSec": 12.76,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -936,12 +3165,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Je suis à l'hôtel.",
-      "durationSec": 1.254,
-      "bytes": 10284,
+      "durationSec": 1.202,
+      "bytes": 9866,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.36,
+      "charsPerSec": 14.98,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -955,12 +3184,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Je travaille le matin.",
-      "durationSec": 1.515,
-      "bytes": 12373,
+      "durationSec": 1.411,
+      "bytes": 11537,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.52,
+      "charsPerSec": 15.6,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -974,17 +3203,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Je vais à la gare.",
-      "durationSec": 1.149,
-      "bytes": 9448,
+      "durationSec": 1.202,
+      "bytes": 9866,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.66,
+      "charsPerSec": 14.98,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Je vais vers la gare.",
-        "wer": 0.2
+        "text": "Je vais à la gare.",
+        "wer": 0
       }
     },
     {
@@ -993,12 +3222,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Ça coûte trois euros.",
-      "durationSec": 1.358,
-      "bytes": 11119,
+      "durationSec": 1.463,
+      "bytes": 11955,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.46,
+      "charsPerSec": 14.36,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1012,12 +3241,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Il y a deux chats.",
-      "durationSec": 1.306,
-      "bytes": 10701,
+      "durationSec": 1.097,
+      "bytes": 9030,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.78,
+      "charsPerSec": 16.41,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1050,17 +3279,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le train part à neuf heures.",
-      "durationSec": 1.724,
-      "bytes": 14045,
+      "durationSec": 1.62,
+      "bytes": 13209,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.24,
+      "charsPerSec": 17.29,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train par un oeuvre.",
-        "wer": 0.6667
+        "text": "le train para neuf heures",
+        "wer": 0.3333
       }
     },
     {
@@ -1069,16 +3298,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "C'est un chien.",
-      "durationSec": 1.019,
-      "bytes": 8403,
+      "durationSec": 0.993,
+      "bytes": 8194,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.72,
+      "charsPerSec": 15.11,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est ton chien.",
+        "text": "C'est en chien.",
         "wer": 0.25
       }
     },
@@ -1107,12 +3336,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "C'est le matin.",
-      "durationSec": 0.967,
-      "bytes": 7985,
+      "durationSec": 1.097,
+      "bytes": 9030,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.52,
+      "charsPerSec": 13.67,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1126,12 +3355,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le magasin est ouvert.",
-      "durationSec": 1.62,
-      "bytes": 13209,
+      "durationSec": 1.515,
+      "bytes": 12373,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.58,
+      "charsPerSec": 14.52,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {

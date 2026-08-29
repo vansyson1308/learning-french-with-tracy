@@ -10,6 +10,8 @@
  * cannot reshape the running queue.
  */
 
+import { selectCheckpointForm } from "../assessment/checkpoint";
+import { interactionPracticeScenarios } from "../interaction/content";
 import { pickDistractors } from "../learning/distractors";
 import { dueFrenchReviewQueue } from "../learning/engine";
 import { FR_COURSE_ID } from "../learning/ids-fr";
@@ -19,7 +21,7 @@ import { speakExerciseForItem, speakProductionIndex, speechItemFor } from "../sp
 import { buildSrsExercises, hashSeed, seededRng } from "../review-builder";
 import { dueSrsWords, type CourseProgress, type MistakeRef } from "../store";
 import type { SrsEntry } from "../srs";
-import type { Exercise, LessonPack, ListeningComprehensionExercise, Word } from "../types";
+import type { Exercise, LessonPack, ListeningComprehensionExercise, Pack, Word } from "../types";
 
 import type { ExerciseStep, SessionDefinition, SessionStep } from "./types";
 
@@ -290,6 +292,87 @@ export function dueSpeakingReviewCounts(
 }
 
 // ---------------------------------------------------------------------------
+// Phase 9: writing + conversation practice (§62-§64)
+// ---------------------------------------------------------------------------
+
+/**
+ * Writing practice (P9 §62): a short rotating set of the course's TAUGHT
+ * writing steps (lesson exercises only — reserved assessment tasks can
+ * never appear here because they are never in lessons). Learning-mode
+ * feedback, zero evidence (writing mints no cards, §62), practice
+ * completion. Deterministic per seed key so a day's session is stable.
+ */
+export function buildWritingPracticeSessionDefinition(args: {
+  pack: Pack;
+  seedKey: string;
+  count?: number;
+}): SessionDefinition {
+  const writing: Exercise[] = [];
+  for (const section of args.pack.sections)
+    for (const unit of section.units)
+      for (const lesson of unit.lessons)
+        for (const exercise of lesson.exercises) {
+          if (exercise.type === "guidedWriting" || exercise.type === "simpleForm") {
+            writing.push(exercise);
+          }
+        }
+  const rng = seededRng(hashSeed(`writing:${args.seedKey}`));
+  const shuffled = [...writing].sort(() => rng() - 0.5);
+  const chosen = shuffled.slice(0, Math.max(1, args.count ?? 4));
+  return {
+    kind: "review",
+    courseId: FR_COURSE_ID,
+    lessonId: "writing-practice",
+    steps: chosen.map((exercise) => ({
+      type: "exercise",
+      stepId: `wp-${exercise.id}`,
+      exercise,
+    })),
+    completion: "practice",
+    evidenceSource: "lesson",
+    trackMistakes: false,
+    allowUndo: false,
+  };
+}
+
+/**
+ * Conversation practice (P9 §63): exactly ONE practice scenario per
+ * session — a whole conversation is one step — rotating deterministically
+ * through the non-reserved bank. Reserved assessment scenarios can never
+ * appear (interactionPracticeScenarios filters them), TODAY is untouched
+ * (§64: no multi-turn conversation is ever injected there), and no
+ * lexical evidence flows (§35).
+ */
+export function buildConversationPracticeSessionDefinition(args: {
+  seedKey: string;
+}): SessionDefinition {
+  const scenarios = interactionPracticeScenarios();
+  const steps: SessionStep[] = [];
+  if (scenarios.length > 0) {
+    const scenario = scenarios[hashSeed(`conversation:${args.seedKey}`) % scenarios.length];
+    steps.push({
+      type: "exercise",
+      stepId: `cp-${scenario.id}`,
+      exercise: {
+        type: "interactionScenario",
+        id: `conversation-${scenario.id}`,
+        scenarioId: scenario.id,
+      },
+    });
+  }
+  return {
+    kind: "review",
+    courseId: FR_COURSE_ID,
+    lessonId: "conversation",
+    steps,
+    completion: "practice",
+    evidenceSource: "lesson",
+    trackMistakes: false,
+    allowUndo: false,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Phase 6: checkpoint sessions (§54, §104-108)
 // ---------------------------------------------------------------------------
 
@@ -297,6 +380,7 @@ export function dueSpeakingReviewCounts(
 type CompiledCheckpoint = {
   id: string;
   checkpointVersion: number;
+  formVersion: number;
   sectionId: string;
   title: string;
   description: string;
@@ -307,6 +391,7 @@ type CompiledCheckpoint = {
     objectiveTargets: string[];
     essential: boolean;
   }[];
+  forms?: { formId: string; itemIds: string[] }[];
   criteria: { minItemsPerObjective: number; demonstratedShare: number };
 };
 
@@ -315,11 +400,20 @@ type CompiledCheckpoint = {
  * §108 structural), retryPolicy "none" (first attempt is the record, §55),
  * no evidence flow (evidencePlanFor nulls scored kinds), no mistakes
  * tracking, completion "checkpoint" (assessment record, zero XP).
+ *
+ * Parallel forms (P9 §38-§39): the sitting administers ONE deterministic
+ * form — retakes rotate by prior attempt count, so pass the learner's
+ * recorded attempt count for this checkpoint; a bank without declared
+ * forms is its own single "full" form (count irrelevant).
  */
 export function buildCheckpointSessionDefinition(
-  checkpoint: CompiledCheckpoint
+  checkpoint: CompiledCheckpoint,
+  priorAttemptCount = 0
 ): SessionDefinition {
-  const steps: SessionStep[] = checkpoint.items.map((item) => ({
+  const form = selectCheckpointForm(checkpoint, priorAttemptCount);
+  const administered = new Set(form.itemIds);
+  const items = checkpoint.items.filter((item) => administered.has(item.id));
+  const steps: SessionStep[] = items.map((item) => ({
     type: "exercise",
     stepId: item.id,
     exercise: item.exercise,
@@ -337,9 +431,11 @@ export function buildCheckpointSessionDefinition(
     assessment: {
       checkpointId: checkpoint.id,
       checkpointVersion: checkpoint.checkpointVersion,
+      formId: form.formId,
+      formVersion: checkpoint.formVersion,
       criteria: checkpoint.criteria,
       itemObjectives: Object.fromEntries(
-        checkpoint.items.map((item) => [item.id, item.objectiveTargets])
+        items.map((item) => [item.id, item.objectiveTargets])
       ),
     },
   };

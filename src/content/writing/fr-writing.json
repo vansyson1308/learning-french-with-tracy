@@ -1,0 +1,1258 @@
+{
+  "generator": "scripts/lib/writing.ts",
+  "version": 1,
+  "order": [
+    "fr.write.o_name",
+    "fr.write.o_age",
+    "fr.write.o_city",
+    "fr.write.o_profile",
+    "fr.write.o_open",
+    "fr.write.p_like",
+    "fr.write.p_like_two",
+    "fr.write.p_person",
+    "fr.write.p_cat",
+    "fr.write.p_open",
+    "fr.write.q_note_cafe",
+    "fr.write.q_note_train",
+    "fr.write.q_note_closing",
+    "fr.write.q_open",
+    "fr.write.r_form_arrival",
+    "fr.write.r_form_hotel",
+    "fr.write.r_message_full",
+    "fr.write.r_open"
+  ],
+  "byId": {
+    "fr.write.o_name": {
+      "id": "fr.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "You are Léa. Write one short French sentence saying your name.",
+      "cueFacts": [
+        {
+          "label": "Your name",
+          "value": "Léa"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "your name",
+            "variants": [
+              "je m'appelle Léa",
+              "je suis Léa",
+              "moi c'est Léa"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "m'appelle",
+          "suis"
+        ]
+      },
+      "modelAnswers": [
+        "Je m'appelle Léa."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonjour"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.o_age": {
+      "id": "fr.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Still as Léa: write a sentence saying your age.",
+      "cueFacts": [
+        {
+          "label": "Your age",
+          "value": "22"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": "your age",
+            "variants": [
+              "j'ai vingt-deux ans"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "ai"
+        ]
+      },
+      "modelAnswers": [
+        "J'ai 22 ans."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:annee"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.o_city": {
+      "id": "fr.write.o_city",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Still as Léa: write a sentence saying where you live.",
+      "cueFacts": [
+        {
+          "label": "Your city",
+          "value": "Paris"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "city",
+            "description": "where you live",
+            "variants": [
+              "j'habite à Paris",
+              "j'habite Paris"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "habite"
+        ]
+      },
+      "modelAnswers": [
+        "J'habite à Paris."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter",
+        "fr:w:ville"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.o_profile": {
+      "id": "fr.write.o_profile",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences.",
+      "cueFacts": [
+        {
+          "label": "Name",
+          "value": "Léa"
+        },
+        {
+          "label": "Age",
+          "value": "22"
+        },
+        {
+          "label": "City",
+          "value": "Paris"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "your name",
+            "variants": [
+              "je m'appelle Léa",
+              "je suis Léa"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": "your age",
+            "variants": [
+              "j'ai vingt-deux ans"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "where you live",
+            "variants": [
+              "j'habite à Paris",
+              "j'habite Paris"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "m'appelle",
+          "suis"
+        ]
+      },
+      "modelAnswers": [
+        "Je m'appelle Léa, j'ai 22 ans et j'habite à Paris."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.o_open": {
+      "id": "fr.write.o_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Now for real: introduce YOURSELF in French — your name, and your age or your city. Write freely; this is practice, not a test.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about_you",
+            "description": "a sentence about you",
+            "variants": [
+              "je m'appelle",
+              "je suis",
+              "j'ai",
+              "j'habite"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Je m'appelle Marco, j'ai trente ans et j'habite à Nice."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.p_like": {
+      "id": "fr.write.p_like",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Write one French sentence saying that you like coffee.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": "what you like",
+            "variants": [
+              "j'aime le café",
+              "j'adore le café"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 10,
+        "requireSentenceVerbs": [
+          "aime",
+          "adore"
+        ]
+      },
+      "modelAnswers": [
+        "J'aime le café."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "fr:w:aimer",
+        "fr:w:cafe"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.p_like_two": {
+      "id": "fr.write.p_like_two",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Write a sentence saying you like tea and bread.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "tea",
+            "description": "that you like tea",
+            "variants": [
+              "j'aime le thé",
+              "j'adore le thé"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "bread",
+            "description": "the bread",
+            "variants": [
+              "le pain"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 14,
+        "requireSentenceVerbs": [
+          "aime",
+          "adore"
+        ]
+      },
+      "modelAnswers": [
+        "J'aime le thé et le pain."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "fr:w:the",
+        "fr:w:pain"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.p_person": {
+      "id": "fr.write.p_person",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Write one sentence about Hugo: he lives in Lyon.",
+      "cueFacts": [
+        {
+          "label": "Person",
+          "value": "Hugo"
+        },
+        {
+          "label": "City",
+          "value": "Lyon"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "lives",
+            "description": "where Hugo lives",
+            "variants": [
+              "il habite à Lyon",
+              "il habite Lyon",
+              "Hugo habite à Lyon",
+              "Hugo habite Lyon"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "habite"
+        ]
+      },
+      "modelAnswers": [
+        "Il habite à Lyon."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.p_cat": {
+      "id": "fr.write.p_cat",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Write one sentence: the cat drinks milk.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "fact",
+            "description": "what the cat does",
+            "variants": [
+              "le chat boit du lait",
+              "le chat boit le lait"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "boit"
+        ]
+      },
+      "modelAnswers": [
+        "Le chat boit du lait."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "fr:w:chat",
+        "fr:w:boire",
+        "fr:w:lait"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.p_open": {
+      "id": "fr.write.p_open",
+      "taskFamily": "simple_description",
+      "mode": "open",
+      "instruction": "Describe someone you know in one or two short French sentences — where they live, or what they like.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "person",
+            "description": "a sentence about the person",
+            "variants": [
+              "il est",
+              "elle est",
+              "il habite",
+              "elle habite",
+              "il aime",
+              "elle aime",
+              "c'est"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Elle habite à Paris et elle aime le thé."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter",
+        "fr:w:aimer"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.q_note_cafe": {
+      "id": "fr.write.q_note_cafe",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Write a short note to Marie: greet her, and tell her the café is at two o'clock.",
+      "cueFacts": [
+        {
+          "label": "To",
+          "value": "Marie"
+        },
+        {
+          "label": "What",
+          "value": "café"
+        },
+        {
+          "label": "Time",
+          "value": "2:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "a greeting",
+            "variants": [
+              "bonjour",
+              "salut",
+              "bonsoir"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "fact",
+            "description": "the café time",
+            "variants": [
+              "le café est à deux heures",
+              "café à deux heures"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Bonjour Marie, le café est à deux heures."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe",
+        "fr:w:heure"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.q_note_train": {
+      "id": "fr.write.q_note_train",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Write a short note to Paul: greet him, and say the train is tomorrow at nine.",
+      "cueFacts": [
+        {
+          "label": "To",
+          "value": "Paul"
+        },
+        {
+          "label": "What",
+          "value": "train"
+        },
+        {
+          "label": "When",
+          "value": "tomorrow, 9:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "a greeting",
+            "variants": [
+              "bonjour",
+              "salut",
+              "bonsoir"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "fact",
+            "description": "the train time",
+            "variants": [
+              "le train est demain à neuf heures",
+              "train demain à neuf heures"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Salut Paul, le train est demain à neuf heures."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "fr:w:train",
+        "fr:w:demain"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.q_note_closing": {
+      "id": "fr.write.q_note_closing",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "a greeting",
+            "variants": [
+              "bonjour",
+              "salut"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": "where you are",
+            "variants": [
+              "je suis à la gare"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": "a closing",
+            "variants": [
+              "à demain"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 22,
+        "requireSentenceVerbs": [
+          "suis"
+        ]
+      },
+      "modelAnswers": [
+        "Bonjour, je suis à la gare. À demain !"
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "fr:w:gare",
+        "fr:w:demain"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.q_open": {
+      "id": "fr.write.q_open",
+      "taskFamily": "short_message",
+      "mode": "open",
+      "instruction": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "message",
+            "description": "your message",
+            "variants": [
+              "bonjour",
+              "salut",
+              "à demain",
+              "au revoir",
+              "merci"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Salut Léa, je suis au café. À demain !"
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.r_form_arrival": {
+      "id": "fr.write.r_form_arrival",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Fill in the arrival form with the details on the card.",
+      "cueFacts": [
+        {
+          "label": "Name",
+          "value": "Léa"
+        },
+        {
+          "label": "Age",
+          "value": "22"
+        },
+        {
+          "label": "City",
+          "value": "Paris"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "prenom",
+          "label": "Prénom",
+          "slotId": "name"
+        },
+        {
+          "id": "age",
+          "label": "Âge",
+          "slotId": "age"
+        },
+        {
+          "id": "ville",
+          "label": "Ville",
+          "slotId": "city"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "your first name",
+            "variants": [
+              "Léa"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": "your age",
+            "variants": [
+              "vingt-deux"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "your city",
+            "variants": [
+              "Paris"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Léa | 22 | Paris"
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "fr:w:ville"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.r_form_hotel": {
+      "id": "fr.write.r_form_hotel",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Fill in the small hotel form with the details on the card.",
+      "cueFacts": [
+        {
+          "label": "Name",
+          "value": "Marco"
+        },
+        {
+          "label": "City",
+          "value": "Nice"
+        },
+        {
+          "label": "Day",
+          "value": "samedi"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "prenom",
+          "label": "Prénom",
+          "slotId": "name"
+        },
+        {
+          "id": "ville",
+          "label": "Ville",
+          "slotId": "city"
+        },
+        {
+          "id": "jour",
+          "label": "Jour d'arrivée",
+          "slotId": "day"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "the first name",
+            "variants": [
+              "Marco"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "the city",
+            "variants": [
+              "Nice"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": "the arrival day",
+            "variants": [
+              "samedi"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Marco | Nice | samedi"
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "fr:w:samedi"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.r_message_full": {
+      "id": "fr.write.r_message_full",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Write to Marie: greet her, say you are at the café tomorrow at ten, and close.",
+      "cueFacts": [
+        {
+          "label": "To",
+          "value": "Marie"
+        },
+        {
+          "label": "Where",
+          "value": "café"
+        },
+        {
+          "label": "When",
+          "value": "tomorrow, 10:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "a greeting",
+            "variants": [
+              "bonjour",
+              "salut"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "fact",
+            "description": "where and when",
+            "variants": [
+              "je suis au café demain à dix heures"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": "a closing",
+            "variants": [
+              "à demain",
+              "au revoir"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 26,
+        "requireSentenceVerbs": [
+          "suis"
+        ]
+      },
+      "modelAnswers": [
+        "Bonjour Marie, je suis au café demain à dix heures. À demain !"
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.short_message",
+        "fr.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe",
+        "fr:w:demain"
+      ],
+      "scoredEligibility": false
+    },
+    "fr.write.r_open": {
+      "id": "fr.write.r_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": "Write two or three short sentences about yourself — anything you can say in French. Free practice.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about_you",
+            "description": "sentences about you",
+            "variants": [
+              "je m'appelle",
+              "je suis",
+              "j'ai",
+              "j'habite",
+              "j'aime"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 80
+      },
+      "modelAnswers": [
+        "Je m'appelle Marco. J'ai trente ans, j'habite à Nice et j'aime le café."
+      ],
+      "objectiveRefs": [
+        "fr.obj.writing.personal_info",
+        "fr.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter",
+        "fr:w:aimer"
+      ],
+      "scoredEligibility": false
+    }
+  },
+  "knownFrench": [
+    "a",
+    "achete",
+    "acheter",
+    "aeroport",
+    "ai",
+    "aime",
+    "aiment",
+    "aimer",
+    "aimes",
+    "aimez",
+    "aimons",
+    "alle",
+    "aller",
+    "allez",
+    "allons",
+    "ane",
+    "annee",
+    "apres",
+    "argent",
+    "arrive",
+    "as",
+    "assez",
+    "attendons",
+    "attendre",
+    "attends",
+    "attention",
+    "au",
+    "aujourd",
+    "aussi",
+    "aux",
+    "avant",
+    "avec",
+    "avez",
+    "avoir",
+    "avons",
+    "banque",
+    "beau",
+    "beaucoup",
+    "belle",
+    "bibliotheque",
+    "bien",
+    "billet",
+    "blanc",
+    "boire",
+    "bois",
+    "boit",
+    "bon",
+    "bonjour",
+    "bonne",
+    "bonsoir",
+    "bureau",
+    "bus",
+    "c",
+    "ca",
+    "cadeau",
+    "cafe",
+    "calme",
+    "car",
+    "carte",
+    "ce",
+    "cela",
+    "cent",
+    "ces",
+    "cette",
+    "chance",
+    "chante",
+    "chat",
+    "chats",
+    "chaud",
+    "cheval",
+    "chez",
+    "chien",
+    "cinq",
+    "cinquante",
+    "cochon",
+    "combien",
+    "comment",
+    "confiance",
+    "content",
+    "coute",
+    "couter",
+    "d",
+    "dans",
+    "de",
+    "demain",
+    "depart",
+    "des",
+    "deux",
+    "devoirs",
+    "difficile",
+    "dimanche",
+    "direction",
+    "dis",
+    "dix",
+    "donc",
+    "donne",
+    "douze",
+    "droite",
+    "du",
+    "eau",
+    "ecoute",
+    "elle",
+    "elles",
+    "emprunte",
+    "en",
+    "entree",
+    "es",
+    "est",
+    "et",
+    "ete",
+    "etes",
+    "etrange",
+    "etre",
+    "eu",
+    "euros",
+    "facile",
+    "faire",
+    "fais",
+    "faisons",
+    "fait",
+    "faites",
+    "femme",
+    "ferme",
+    "fermee",
+    "fermer",
+    "fille",
+    "font",
+    "froid",
+    "fromage",
+    "fruit",
+    "garcon",
+    "gare",
+    "gauche",
+    "grand",
+    "grande",
+    "gris",
+    "habite",
+    "habitent",
+    "habiter",
+    "habites",
+    "habitez",
+    "habitons",
+    "heros",
+    "heure",
+    "heures",
+    "histoire",
+    "homme",
+    "hotel",
+    "hui",
+    "huit",
+    "il",
+    "ils",
+    "importante",
+    "j",
+    "jaune",
+    "je",
+    "jour",
+    "journee",
+    "jours",
+    "jus",
+    "l",
+    "la",
+    "lait",
+    "lapin",
+    "le",
+    "les",
+    "leur",
+    "leurs",
+    "liberte",
+    "librairie",
+    "lis",
+    "livre",
+    "livres",
+    "long",
+    "longue",
+    "lourde",
+    "lui",
+    "m",
+    "ma",
+    "madame",
+    "magasin",
+    "mai",
+    "mais",
+    "maison",
+    "mange",
+    "mangent",
+    "mangeons",
+    "manger",
+    "manges",
+    "mangez",
+    "marche",
+    "marie",
+    "matin",
+    "me",
+    "merci",
+    "mere",
+    "mes",
+    "message",
+    "minute",
+    "moi",
+    "mois",
+    "moment",
+    "mon",
+    "monnaie",
+    "monsieur",
+    "mouton",
+    "musee",
+    "musique",
+    "n",
+    "ne",
+    "neuf",
+    "neufs",
+    "non",
+    "nos",
+    "notre",
+    "nous",
+    "nuit",
+    "oeuf",
+    "oiseau",
+    "on",
+    "ont",
+    "onze",
+    "ou",
+    "oui",
+    "ouvert",
+    "ouvre",
+    "ouvrir",
+    "paie",
+    "pain",
+    "papier",
+    "par",
+    "pardon",
+    "paris",
+    "parle",
+    "parlent",
+    "parler",
+    "parles",
+    "parlez",
+    "parlons",
+    "part",
+    "pas",
+    "patron",
+    "paul",
+    "payer",
+    "petit",
+    "petite",
+    "place",
+    "plage",
+    "plait",
+    "plus",
+    "poisson",
+    "pomme",
+    "porte",
+    "poule",
+    "poulet",
+    "pour",
+    "pourquoi",
+    "precieuse",
+    "prefere",
+    "prendre",
+    "prenons",
+    "pres",
+    "prix",
+    "qu",
+    "quand",
+    "quarante",
+    "quatorze",
+    "quatre",
+    "que",
+    "quel",
+    "question",
+    "qui",
+    "quinze",
+    "quoi",
+    "raison",
+    "realite",
+    "regarde",
+    "restaurant",
+    "rester",
+    "reve",
+    "revoir",
+    "riz",
+    "rose",
+    "rouge",
+    "route",
+    "rue",
+    "s",
+    "sa",
+    "salut",
+    "samedi",
+    "sans",
+    "sauve",
+    "se",
+    "securite",
+    "seize",
+    "semaine",
+    "sentiment",
+    "sept",
+    "ses",
+    "simple",
+    "situation",
+    "six",
+    "soir",
+    "soixante",
+    "solution",
+    "sommes",
+    "son",
+    "sont",
+    "sortie",
+    "souris",
+    "sous",
+    "suis",
+    "sur",
+    "t",
+    "ta",
+    "table",
+    "taxi",
+    "te",
+    "tes",
+    "the",
+    "toi",
+    "ton",
+    "train",
+    "travaille",
+    "travailler",
+    "treize",
+    "trente",
+    "tres",
+    "trois",
+    "tu",
+    "un",
+    "une",
+    "va",
+    "vache",
+    "vais",
+    "valise",
+    "vas",
+    "vend",
+    "verite",
+    "vert",
+    "vie",
+    "ville",
+    "vingt",
+    "vingts",
+    "voie",
+    "voila",
+    "vont",
+    "vos",
+    "votre",
+    "voudrais",
+    "vouloir",
+    "vous",
+    "voyage",
+    "vraie",
+    "y",
+    "zero"
+  ]
+}

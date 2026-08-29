@@ -62,6 +62,13 @@ Keys name the CEFR scale consulted; they are references, not quotations.
 | `cefr-cv-2020:overall-oral-production` | Overall oral production (Phase 8; incl. Pre-A1 band) |
 | `cefr-cv-2020:sustained-monologue-describing` | Sustained monologue: describing experience (Phase 8) |
 | `cefr-cv-2020:sustained-monologue-giving-information` | Sustained monologue: giving information (Phase 8) |
+| `cefr-cv-2020:overall-written-production` | Overall written production (Phase 9; A1 row snippet-verified — see content/fr/writing/RESEARCH.md) |
+| `cefr-cv-2020:overall-written-interaction` | Overall written interaction (Phase 9; A1 row snippet-verified) |
+| `cefr-cv-2020:notes-messages-forms` | Notes, messages and forms (Phase 9; A1 row snippet-verified) |
+| `cefr-cv-2020:correspondence` | Correspondence (Phase 9; used conservatively — verification status in content/fr/writing/RESEARCH.md) |
+| `cefr-cv-2020:overall-oral-interaction` | Overall oral interaction (Phase 9; A1 row snippet-verified — see content/fr/interaction/RESEARCH.md) |
+| `cefr-cv-2020:information-exchange` | Information exchange (Phase 9; A1 row snippet-verified) |
+| `cefr-cv-2020:obtaining-goods-services` | Obtaining goods and services (Phase 9; A1 row snippet-verified) |
 
 ## Descriptor paraphrase policy (§10, §141)
 
@@ -135,3 +142,73 @@ exists to make precise (§178).
 - The in-app disclaimer explains: learning goals are aligned with selected
   CEFR descriptors; the app's assessments are course-based learning
   diagnostics, not an official CEFR examination or certification.
+
+## Retakes, versioning and parallel forms (Phase 9 §38-§40)
+
+The retake policy, in full:
+
+- **Latest valid attempt wins.** A learner's standing per objective is
+  the most recent checkpoint attempt that produced a REAL verdict
+  (`demonstrated` or `needs_practice`) for that objective — in both
+  directions: a later `needs_practice` supersedes an earlier
+  `demonstrated`, and vice versa. `insufficient_evidence` is thin
+  sampling, not a verdict: it never overwrites anything and never counts
+  against the learner.
+- **History is never rescored.** Attempts are append-only records
+  (bounded to the most recent 5 per checkpoint id). Content updates
+  never rewrite or re-grade a stored attempt; instead every attempt
+  carries the `checkpointVersion`, `formId` and `formVersion` in force
+  when it was sat, so old records stay interpretable after the content
+  evolves. Attempts recorded before forms existed carry no form fields
+  and keep their full standing.
+- **Parallel forms.** A checkpoint MAY declare ≥2 named forms — subsets
+  of its item bank that each independently satisfy the per-objective
+  criteria floor (validator-enforced, so no form can be structurally
+  unable to demonstrate an objective). A sitting administers exactly one
+  form, selected deterministically by rotation over the learner's prior
+  attempt count at that checkpoint: the second sitting is a different
+  form, never a memory test of the first. A checkpoint without declared
+  forms administers its whole bank as the single implicit form `full`.
+- **Why the six section checkpoints are single-form.** Each bank sits
+  deliberately at the claim gate's 3-items-per-direct-objective floor;
+  splitting it into disjoint forms would drop per-sitting evidence below
+  the checkpoint's own published criteria, and overlapping micro-forms
+  would trade real evidence for cosmetic variety. The A1 capstone is the
+  surface sized for genuine parallel forms and is built on exactly this
+  machinery.
+
+## The A1 Capstone blueprint (Phase 9 §41-§44)
+
+`fr.checkpoint.a1-capstone` is one reserved sitting across all five
+communication domains, sampling each through ONE representative
+essential direct-A1 objective:
+
+| domain             | representative objective                    | bank | per form |
+|--------------------|---------------------------------------------|------|----------|
+| spoken_reception   | fr.obj.listening.short_info                 | 4    | 2        |
+| written_reception  | fr.obj.reading.short_messages               | 4    | 2        |
+| spoken_production  | fr.obj.speaking.give_info                   | 4    | 2        |
+| written_production | fr.obj.writing.short_message                | 4    | 2        |
+| interaction        | fr.obj.interaction.everyday_conversation    | 4    | 2        |
+
+Design decisions, recorded:
+
+- **Distinct tasks.** Every capstone input is new and reserved
+  (`a1cap_*`) — no section-checkpoint item or stimulus is recycled, so a
+  capstone sitting is never a memory test of earlier checks.
+- **Two disjoint parallel forms** (`a`/`b`, 10 items each), selected by
+  the Phase-9.7 rotation; each form independently satisfies the
+  per-objective criteria floor (validator-enforced).
+- **Representative-objective sampling.** A 20-item sitting cannot floor
+  all 10 essential direct A1 objectives at 3 items each; sampling one
+  objective per domain keeps every domain's evidence real (2 items per
+  sitting, 0.66 share) without pretending to more coverage than one
+  sitting can carry. Full per-objective coverage remains the section
+  checkpoints' job; both feed the same latest-attempt learner standing.
+- **Device-limited honesty (§44).** Speaking and conversation items ride
+  the standard speech preflight and skip channel: a device that cannot
+  recognize French speech leaves those domains at insufficient
+  evidence — the learner's estimate reads INCOMPLETE, never failed.
+- **Wording (§47).** Everywhere the estimate surfaces it is a
+  "CEFR-aligned A1 estimate" from this course's own checks — never
+  "Certified", "Official", or any Council of Europe endorsement.

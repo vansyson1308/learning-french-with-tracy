@@ -52,6 +52,18 @@ import {
   validateReception,
 } from "./lib/reception";
 import {
+  assessmentBankInteractionExercises,
+  compileInteractionArtifact,
+  loadInteractionScenarios,
+  validateInteraction,
+} from "./lib/interaction";
+import {
+  assessmentBankWritingExercises,
+  compileWritingArtifact,
+  loadWritingTasks,
+  validateWriting,
+} from "./lib/writing";
+import {
   assessmentBankSpeechExercises,
   compileSpeechItemsArtifact,
   loadSpeechItems,
@@ -96,6 +108,20 @@ const validation = [
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
     frPack: readJson("content/courses/fr-en.json") as never,
     assessmentSpeech: assessmentBankSpeechExercises(),
+  }).errors,
+  ...validateWriting({
+    writing: loadWritingTasks(),
+    objectives: loadCourseObjectives(),
+    lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
+    frPack: readJson("content/courses/fr-en.json") as never,
+    assessmentWriting: assessmentBankWritingExercises(),
+  }).errors,
+  ...validateInteraction({
+    interaction: loadInteractionScenarios(),
+    objectives: loadCourseObjectives(),
+    listening: loadListening(),
+    frPack: readJson("content/courses/fr-en.json") as never,
+    assessmentInteraction: assessmentBankInteractionExercises(),
   }).errors,
 ];
 if (validation.length > 0) {
@@ -187,18 +213,35 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
       })),
     }),
   });
+  const claimGate = evaluateClaimGate({
+    objectives: objectivesDoc.objectives,
+    policy,
+    checkpointItems: collectScoredItemEvidence(
+      "content/fr/assessment/checkpoints.json",
+      "checkpoints"
+    ),
+  });
   files.push({
     relPath: "content/reports/cefr-claim-gate.json",
     contents: canonicalJson({
       generator: "scripts/lib/assessment-reports.ts",
-      ...evaluateClaimGate({
-        objectives: objectivesDoc.objectives,
-        policy,
-        checkpointItems: collectScoredItemEvidence(
-          "content/fr/assessment/checkpoints.json",
-          "checkpoints"
-        ),
-      }),
+      ...claimGate,
+    }),
+  });
+  // P9 §45-§47: the COURSE-claimability half of the claim split, as a tiny
+  // runtime artifact — whether this course's reserved assessment system
+  // covers each evaluated level, plus the exact non-certification wording.
+  // The LEARNER half derives at runtime from the learner's own attempts.
+  files.push({
+    relPath: "src/content/assessment/fr-claim.json",
+    contents: canonicalJson({
+      generator: "scripts/compile-content.ts",
+      claimWording: policy.claimWording,
+      levels: claimGate.levels.map((level) => ({
+        level: level.level,
+        courseClaimable: level.claimable,
+        unassessedDomains: level.unassessedDomains,
+      })),
     }),
   });
   const placement = loadPlacement();
@@ -234,6 +277,19 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
   files.push({
     relPath: "src/content/speech/fr-speech-items.json",
     contents: compileSpeechItemsArtifact(loadSpeechItems()),
+  });
+  // Phase-9 writing tasks + the deterministic known-French vocabulary the
+  // rubric engine's plausibility floor uses; reserved tasks never leave
+  // the pipeline.
+  files.push({
+    relPath: "src/content/writing/fr-writing.json",
+    contents: compileWritingArtifact(loadWritingTasks()),
+  });
+  // Phase-9 interaction scenarios — every scenario incl. reserved (the
+  // checkpoint executes reserved graphs); practice surfaces filter.
+  files.push({
+    relPath: "src/content/interaction/fr-scenarios.json",
+    contents: compileInteractionArtifact(loadInteractionScenarios()),
   });
   files.push({
     relPath: "content/reports/placement-coverage.json",
