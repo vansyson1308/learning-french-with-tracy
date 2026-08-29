@@ -41,12 +41,13 @@ function exerciseStep(stepId: string): ExerciseStep {
 }
 
 describe("compiled checkpoints", () => {
-  test("all four section checkpoints exist with their authored shapes", () => {
+  test("all five section checkpoints exist with their authored shapes", () => {
     expect(CHECKPOINT_ORDER).toEqual([
       "fr.checkpoint.section-1",
       "fr.checkpoint.section-2",
       "fr.checkpoint.section-3",
       "fr.checkpoint.section-4",
+      "fr.checkpoint.section-5",
     ]);
     expect(CP1.items.length).toBe(12);
     expect(CP2.items.length).toBe(18);
@@ -77,6 +78,32 @@ describe("compiled checkpoints", () => {
     }
     expect([...perObjective.values()].every((n) => n === 3)).toBe(true);
     expect(perObjective.size).toBe(4);
+  });
+
+  test("Section-5 checkpoint: 12 reserved writing items, guided-only, tri-state honest (P9 §22)", () => {
+    const cp5 = checkpointFor("fr.checkpoint.section-5")!;
+    expect(cp5.sectionId).toBe("fr-en:section-5");
+    expect(cp5.items.length).toBe(12);
+    for (const item of cp5.items) {
+      const type = item.exercise.type;
+      expect(type === "guidedWriting" || type === "simpleForm").toBe(true);
+      // Scored writing is GUIDED only — open practice never reaches a bank.
+      if (item.exercise.type === "guidedWriting") {
+        expect(item.exercise.writingMode).toBe("guided");
+      }
+    }
+    // 3 items per written objective across 2 exercise types + 4 authored
+    // task families — the claim gate's per-objective and breadth floors.
+    const perObjective = new Map<string, number>();
+    for (const item of cp5.items) {
+      for (const o of item.objectiveTargets) {
+        perObjective.set(o, (perObjective.get(o) ?? 0) + 1);
+      }
+    }
+    expect(perObjective.get("fr.obj.writing.personal_info")).toBe(3);
+    expect(perObjective.get("fr.obj.writing.phrases_sentences")).toBe(3);
+    expect(perObjective.get("fr.obj.writing.short_message")).toBeGreaterThanOrEqual(3);
+    expect(perObjective.get("fr.obj.writing.form_filling")).toBe(3);
   });
 
   test("Section-3 checkpoint: 22 receptive items, balanced and audio-honest (P7 §101-105)", () => {

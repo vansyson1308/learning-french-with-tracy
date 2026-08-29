@@ -115,7 +115,7 @@ describe("compiler: round-trip and determinism", () => {
   test("gradeTargets coverage: exactly the unambiguous French exercises", () => {
     const fr = coverage["fr-en"];
     expect(fr.withGradeTargets).toBe(256);
-    expect(fr.total).toBe(549); // 411 S1-2 + 104 S3 + 34 Section 4
+    expect(fr.total).toBe(573); // 411 S1-2 + 104 S3 + 34 Section 4
     // Unit D's 19 number-spelling selects and Unit E's 9 meta-linguistic
     // rule selects deliberately carry NO targets — numbers and rule
     // recognition never touch FSRS (§79, §88). Every Section-3/4 word-level

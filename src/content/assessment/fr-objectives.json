@@ -29,7 +29,11 @@
     "fr.obj.speaking.formulaic",
     "fr.obj.speaking.self_intro",
     "fr.obj.speaking.give_info",
-    "fr.obj.speaking.describe"
+    "fr.obj.speaking.describe",
+    "fr.obj.writing.personal_info",
+    "fr.obj.writing.phrases_sentences",
+    "fr.obj.writing.short_message",
+    "fr.obj.writing.form_filling"
   ],
   "byId": {
     "fr.obj.greetings.basic": {
@@ -579,6 +583,106 @@
           "scaleName": "Sustained monologue: describing experience",
           "relation": "supports",
           "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+        }
+      ]
+    },
+    "fr.obj.writing.personal_info": {
+      "id": "fr.obj.writing.personal_info",
+      "title": "Writing who you are",
+      "canDo": "I can give simple personal information in writing — my name, my age and where I live — in short French sentences.",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.writing.familiar_words",
+        "fr.obj.verbs.etre_avoir_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:orthographic-control"
+        }
+      ]
+    },
+    "fr.obj.writing.phrases_sentences": {
+      "id": "fr.obj.writing.phrases_sentences",
+      "title": "Writing simple sentences",
+      "canDo": "I can write simple short sentences about familiar people and things — who does what, where someone lives, what I like.",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.writing.personal_info",
+        "fr.obj.verbs.er_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ]
+    },
+    "fr.obj.writing.short_message": {
+      "id": "fr.obj.writing.short_message",
+      "title": "Writing a short message",
+      "canDo": "I can write a very short simple message — a greeting, one or two everyday facts like a time or place, and a closing.",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.writing.personal_info",
+        "fr.obj.vocab.time_calendar"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Correspondence",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:correspondence"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction"
+        }
+      ]
+    },
+    "fr.obj.writing.form_filling": {
+      "id": "fr.obj.writing.form_filling",
+      "title": "Filling in a simple form",
+      "canDo": "I can complete a simple everyday form with my name, age, city and similar concrete details in French.",
+      "category": "written_production",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.writing.familiar_words",
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Notes, messages and forms",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:notes-messages-forms"
         }
       ]
     }

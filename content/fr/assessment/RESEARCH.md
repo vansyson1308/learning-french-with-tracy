@@ -62,6 +62,13 @@ Keys name the CEFR scale consulted; they are references, not quotations.
 | `cefr-cv-2020:overall-oral-production` | Overall oral production (Phase 8; incl. Pre-A1 band) |
 | `cefr-cv-2020:sustained-monologue-describing` | Sustained monologue: describing experience (Phase 8) |
 | `cefr-cv-2020:sustained-monologue-giving-information` | Sustained monologue: giving information (Phase 8) |
+| `cefr-cv-2020:overall-written-production` | Overall written production (Phase 9; A1 row snippet-verified — see content/fr/writing/RESEARCH.md) |
+| `cefr-cv-2020:overall-written-interaction` | Overall written interaction (Phase 9; A1 row snippet-verified) |
+| `cefr-cv-2020:notes-messages-forms` | Notes, messages and forms (Phase 9; A1 row snippet-verified) |
+| `cefr-cv-2020:correspondence` | Correspondence (Phase 9; used conservatively — verification status in content/fr/writing/RESEARCH.md) |
+| `cefr-cv-2020:overall-oral-interaction` | Overall oral interaction (Phase 9; A1 row snippet-verified — see content/fr/interaction/RESEARCH.md) |
+| `cefr-cv-2020:information-exchange` | Information exchange (Phase 9; A1 row snippet-verified) |
+| `cefr-cv-2020:obtaining-goods-services` | Obtaining goods and services (Phase 9; A1 row snippet-verified) |
 
 ## Descriptor paraphrase policy (§10, §141)
 

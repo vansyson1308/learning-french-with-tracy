@@ -1,573 +1,677 @@
 {
-  "version": 1,
-  "language": "fr",
-  "objectives": [
+ "version": 1,
+ "language": "fr",
+ "objectives": [
+  {
+   "id": "fr.obj.greetings.basic",
+   "title": "Everyday greetings & politeness",
+   "canDo": "I can recognise and write the everyday French greetings and politeness formulas — bonjour, bonsoir, salut, au revoir, merci, s'il vous plaît — and pick the right one for the situation.",
+   "category": "lexical",
+   "prerequisites": [],
+   "cefrAlignments": [
     {
-      "id": "fr.obj.greetings.basic",
-      "title": "Everyday greetings & politeness",
-      "canDo": "I can recognise and write the everyday French greetings and politeness formulas — bonjour, bonsoir, salut, au revoir, merci, s'il vous plaît — and pick the right one for the situation.",
-      "category": "lexical",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "PRE_A1",
-          "scaleName": "Conversation (spoken interaction)",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:conversation"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Sociolinguistic appropriateness",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Formulas are assessed in written recognition and typed form only — spoken use is not yet assessed."
+     "level": "PRE_A1",
+     "scaleName": "Conversation (spoken interaction)",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:conversation"
     },
     {
-      "id": "fr.obj.vocab.everyday_basics",
-      "title": "Core everyday nouns",
-      "canDo": "I can understand and name the course's core everyday words — people, food and drink, animals, and other common everyday things — when I read them.",
-      "category": "lexical",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "PRE_A1",
-          "scaleName": "Vocabulary range",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:vocabulary-range"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Vocabulary range",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:vocabulary-range"
-        }
-      ],
-      "essential": true
-    },
-    {
-      "id": "fr.obj.vocab.places_travel",
-      "title": "Places & travel words",
-      "canDo": "I can understand the French words for common places and travel needs — la ville, la gare, l'hôtel, le billet — when I read them.",
-      "category": "lexical",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Vocabulary range",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:vocabulary-range"
-        }
-      ],
-      "essential": false
-    },
-    {
-      "id": "fr.obj.vocab.time_calendar",
-      "title": "Time & calendar words",
-      "canDo": "I can use the French words for counting time — le jour, l'heure, la minute, la semaine, le mois, l'année.",
-      "category": "lexical",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Vocabulary range",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:vocabulary-range"
-        }
-      ],
-      "essential": false
-    },
-    {
-      "id": "fr.obj.reading.familiar_words",
-      "title": "Reading familiar words & short phrases",
-      "canDo": "I can recognise familiar French words and very short learned phrases when I see them written, and match them to their meaning.",
-      "category": "written_reception",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "PRE_A1",
-          "scaleName": "Reading comprehension (overall)",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Reading comprehension (overall)",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at Pre-A1 only: the course genuinely assesses written recognition of familiar words and learned phrases. A1 reading (short simple texts) is not yet assessed."
-    },
-    {
-      "id": "fr.obj.writing.familiar_words",
-      "title": "Writing familiar words & forms",
-      "canDo": "I can type familiar French words and learned forms with the right spelling, including accents — mangé, être, vingt et un.",
-      "category": "written_production",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Orthographic control",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:orthographic-control"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Evidence is single words and short learned forms, not composed sentences."
-    },
-    {
-      "id": "fr.obj.gender.articles_basic",
-      "title": "Articles with familiar nouns",
-      "canDo": "I can choose the right article — le or la, un or une — for the familiar nouns I have learned.",
-      "category": "grammar",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Grammatical accuracy",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
-        }
-      ],
-      "essential": true
-    },
-    {
-      "id": "fr.obj.gender.ending_patterns",
-      "title": "Gender from word endings",
-      "canDo": "I can use reliable French endings — -tion, -ance, -ité, -ment, -age, -eau — to predict whether a new noun takes le or la.",
-      "category": "grammar",
-      "prerequisites": [
-        "fr.obj.gender.articles_basic"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Grammatical accuracy",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
-        }
-      ],
-      "essential": false
-    },
-    {
-      "id": "fr.obj.verbs.etre_avoir_present",
-      "title": "Être & avoir in the present",
-      "canDo": "I can use the present-tense forms of être and avoir with every subject — je suis, tu as, nous sommes, ils ont.",
-      "category": "grammar",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Grammatical accuracy",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
-        }
-      ],
-      "essential": true
-    },
-    {
-      "id": "fr.obj.verbs.er_present",
-      "title": "Regular -er verbs in the present",
-      "canDo": "I can conjugate regular -er verbs like parler, aimer and habiter in the present tense for every subject.",
-      "category": "grammar",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Grammatical accuracy",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
-        }
-      ],
-      "essential": true
-    },
-    {
-      "id": "fr.obj.verbs.aller_faire_present",
-      "title": "Aller & faire in the present",
-      "canDo": "I can use the present-tense forms of aller and faire — je vais, elle va, nous faisons, ils font.",
-      "category": "grammar",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Grammatical accuracy",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
-        }
-      ],
-      "essential": false
-    },
-    {
-      "id": "fr.obj.verbs.futur_proche",
-      "title": "Near future with aller",
-      "canDo": "I can talk about plans by putting aller in front of any verb — Je vais manger, Nous allons parler.",
-      "category": "grammar",
-      "prerequisites": [
-        "fr.obj.verbs.aller_faire_present"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Grammatical accuracy",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
-        }
-      ],
-      "essential": false
-    },
-    {
-      "id": "fr.obj.verbs.passe_compose_avoir",
-      "title": "Past tense with avoir",
-      "canDo": "I can build the everyday past tense with avoir plus a participle — J'ai mangé, Tu as parlé — for the verbs I know.",
-      "category": "grammar",
-      "prerequisites": [
-        "fr.obj.verbs.etre_avoir_present"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A2",
-          "scaleName": "Grammatical accuracy",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
-        }
-      ],
-      "essential": false,
-      "evidenceNote": "Introduced with avoir-auxiliary verbs only; être-auxiliary verbs and agreement are not yet taught."
-    },
-    {
-      "id": "fr.obj.numbers.0_100",
-      "title": "Numbers 0-100",
-      "canDo": "I can understand and write every French number from zéro to cent, including the et-un pattern, soixante-dix and quatre-vingts.",
-      "category": "lexical",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Vocabulary range",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:vocabulary-range"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Numbers are read and typed; understanding spoken numbers is not yet assessed."
-    },
-    {
-      "id": "fr.obj.connected.elision",
-      "title": "Elision in writing",
-      "canDo": "I can apply mandatory French elision in writing — l'eau, j'ai, ce n'est pas — and never write je ai or le homme.",
-      "category": "grammar",
-      "prerequisites": [
-        "fr.obj.gender.articles_basic"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Orthographic control",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:orthographic-control"
-        }
-      ],
-      "essential": false
-    },
-    {
-      "id": "fr.obj.connected.liaison_h",
-      "title": "Liaison & the two h's",
-      "canDo": "I can recognise where French links words together — les amis, nous avons — where it never does, and why l'histoire but le héros.",
-      "category": "phonology",
-      "prerequisites": [
-        "fr.obj.connected.elision"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Phonological control (sound articulation)",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:phonological-control"
-        }
-      ],
-      "essential": false,
-      "evidenceNote": "Rule recognition only — actual pronunciation is not assessed."
-    },
-    {
-      "id": "fr.obj.strategy.cognate_transfer",
-      "title": "Cognate bridges & false friends",
-      "canDo": "I can use the -tion and -té bridges to understand new French words from English — and I know the classic traps like librairie and journée.",
-      "category": "strategy",
-      "prerequisites": [],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Identifying cues and inferring",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:identifying-cues-inferring"
-        }
-      ],
-      "essential": false
-    },
-    {
-      "id": "fr.obj.listening.familiar_words",
-      "title": "Hearing familiar words & phrases",
-      "canDo": "I can understand familiar words and very short learned phrases when I hear them spoken clearly and slowly.",
-      "category": "spoken_reception",
-      "prerequisites": [
-        "fr.obj.vocab.everyday_basics"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "PRE_A1",
-          "scaleName": "Listening comprehension (overall)",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Listening comprehension (overall)",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at Pre-A1 only: bundled clear synthesized single-word/short-phrase clips, scored in the Section-3 checkpoint. Natural conversational speech and accent variety are NOT assessed."
-    },
-    {
-      "id": "fr.obj.listening.short_info",
-      "title": "Catching concrete details by ear",
-      "canDo": "I can pick out concrete information — places, times, prices and numbers — from a short, clear, slow recording about everyday things.",
-      "category": "spoken_reception",
-      "prerequisites": [
-        "fr.obj.listening.familiar_words",
-        "fr.obj.numbers.0_100"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Listening to audio media & recordings",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:audio-media-recordings"
-        },
-        {
-          "level": "PRE_A1",
-          "scaleName": "Listening comprehension (overall)",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at A1 within bundled-audio scope: short synthesized factual recordings with 1-3 information units, scored in the Section-3 checkpoint. Authentic-speed media are NOT assessed."
-    },
-    {
-      "id": "fr.obj.listening.announcements",
-      "title": "Following short announcements & instructions",
-      "canDo": "I can follow very short, simple everyday announcements and instructions when they are spoken clearly and slowly.",
-      "category": "spoken_reception",
-      "prerequisites": [
-        "fr.obj.listening.familiar_words"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Listening to announcements & instructions",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:announcements-instructions"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at A1 within bundled-audio scope: synthesized station/shop-style announcements and simple instructions, scored in the Section-3 checkpoint."
-    },
-    {
-      "id": "fr.obj.listening.short_dialogues",
-      "title": "Following a short conversation",
-      "canDo": "I can follow the main point of a very short, simple conversation between two people speaking clearly about everyday things.",
-      "category": "spoken_reception",
-      "prerequisites": [
-        "fr.obj.listening.familiar_words",
-        "fr.obj.greetings.basic"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Understanding conversation between others",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:understanding-conversation"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at A1 within bundled-audio scope: two-voice synthesized exchanges of 2-4 turns, scored in the Section-3 checkpoint. The learner listens only — interaction is NOT assessed."
-    },
-    {
-      "id": "fr.obj.reading.short_messages",
-      "title": "Reading short messages",
-      "canDo": "I can understand short, simple written messages — notes, texts and simple postcards — about everyday plans and needs.",
-      "category": "written_reception",
-      "prerequisites": [
-        "fr.obj.reading.familiar_words"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Reading correspondence (short messages)",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:reading-correspondence"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at A1: original short messages read and answered in the Section-3 checkpoint."
-    },
-    {
-      "id": "fr.obj.reading.notices_info",
-      "title": "Finding information in notices & signs",
-      "canDo": "I can find concrete information in everyday notices, signs, opening hours and simple practical texts.",
-      "category": "written_reception",
-      "prerequisites": [
-        "fr.obj.reading.familiar_words"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Reading for orientation (signs & notices)",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:reading-orientation"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at A1: original notices/schedules with locate-type questions, scored in the Section-3 checkpoint."
-    },
-    {
-      "id": "fr.obj.reading.short_texts",
-      "title": "Understanding short simple texts",
-      "canDo": "I can understand short, very simple descriptive texts about familiar topics, reading slowly and re-reading when I need to.",
-      "category": "written_reception",
-      "prerequisites": [
-        "fr.obj.reading.familiar_words",
-        "fr.obj.verbs.etre_avoir_present"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Reading comprehension (overall)",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
-        },
-        {
-          "level": "A2",
-          "scaleName": "Reading comprehension (overall)",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Direct at A1: original 2-5 sentence descriptions/micro-narratives, scored in the Section-3 checkpoint. Longer or unfamiliar-topic texts are NOT assessed."
-    },
-    {
-      "id": "fr.obj.speaking.formulaic",
-      "title": "Saying everyday formulas aloud",
-      "canDo": "I can say the everyday French greeting and politeness formulas aloud — bonjour, bonsoir, merci, s'il vous plaît, pardon, au revoir — choosing the right one for the situation.",
-      "category": "spoken_production",
-      "prerequisites": [
-        "fr.obj.greetings.basic"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "PRE_A1",
-          "scaleName": "Overall oral production",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:overall-oral-production"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Overall oral production",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:overall-oral-production"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Sociolinguistic appropriateness",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Assessed from what an on-device speech recogniser heard the learner say — word recognition only, never a pronunciation-quality score."
-    },
-    {
-      "id": "fr.obj.speaking.self_intro",
-      "title": "Introducing yourself aloud",
-      "canDo": "I can say simple fixed sentences about myself aloud — where I live, what I speak, what I like and what I do — one short sentence at a time.",
-      "category": "spoken_production",
-      "prerequisites": [
-        "fr.obj.verbs.etre_avoir_present",
-        "fr.obj.verbs.er_present"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Sustained monologue: describing experience",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Overall oral production",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:overall-oral-production"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Assessed from recognised words in elicited sentences — the meaning cue is English; the French is never shown before the attempt."
-    },
-    {
-      "id": "fr.obj.speaking.give_info",
-      "title": "Giving simple information aloud",
-      "canDo": "I can give simple spoken information about familiar things — how many there are, what something costs, and when something happens — using numbers and everyday words.",
-      "category": "spoken_production",
-      "prerequisites": [
-        "fr.obj.numbers.0_100"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Sustained monologue: giving information",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:sustained-monologue-giving-information"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Overall oral production",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:overall-oral-production"
-        }
-      ],
-      "essential": true,
-      "evidenceNote": "Recognised digits and number words are treated as the same information; wrong numbers are wrong answers, silence is never scored."
-    },
-    {
-      "id": "fr.obj.speaking.describe",
-      "title": "Describing people and things aloud",
-      "canDo": "I can describe familiar people, places and things aloud in short, mainly isolated phrases — saying what something is and one simple fact about it.",
-      "category": "spoken_production",
-      "prerequisites": [
-        "fr.obj.vocab.everyday_basics"
-      ],
-      "cefrAlignments": [
-        {
-          "level": "A1",
-          "scaleName": "Overall oral production",
-          "relation": "direct",
-          "sourceRef": "cefr-cv-2020:overall-oral-production"
-        },
-        {
-          "level": "A1",
-          "scaleName": "Sustained monologue: describing experience",
-          "relation": "supports",
-          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
-        }
-      ],
-      "essential": false,
-      "evidenceNote": "Short isolated phrases only — connected description is beyond this course's A1 claim."
+     "level": "A1",
+     "scaleName": "Sociolinguistic appropriateness",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
     }
-  ]
+   ],
+   "essential": true,
+   "evidenceNote": "Formulas are assessed in written recognition and typed form only — spoken use is not yet assessed."
+  },
+  {
+   "id": "fr.obj.vocab.everyday_basics",
+   "title": "Core everyday nouns",
+   "canDo": "I can understand and name the course's core everyday words — people, food and drink, animals, and other common everyday things — when I read them.",
+   "category": "lexical",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "PRE_A1",
+     "scaleName": "Vocabulary range",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:vocabulary-range"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Vocabulary range",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:vocabulary-range"
+    }
+   ],
+   "essential": true
+  },
+  {
+   "id": "fr.obj.vocab.places_travel",
+   "title": "Places & travel words",
+   "canDo": "I can understand the French words for common places and travel needs — la ville, la gare, l'hôtel, le billet — when I read them.",
+   "category": "lexical",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Vocabulary range",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:vocabulary-range"
+    }
+   ],
+   "essential": false
+  },
+  {
+   "id": "fr.obj.vocab.time_calendar",
+   "title": "Time & calendar words",
+   "canDo": "I can use the French words for counting time — le jour, l'heure, la minute, la semaine, le mois, l'année.",
+   "category": "lexical",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Vocabulary range",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:vocabulary-range"
+    }
+   ],
+   "essential": false
+  },
+  {
+   "id": "fr.obj.reading.familiar_words",
+   "title": "Reading familiar words & short phrases",
+   "canDo": "I can recognise familiar French words and very short learned phrases when I see them written, and match them to their meaning.",
+   "category": "written_reception",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "PRE_A1",
+     "scaleName": "Reading comprehension (overall)",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Reading comprehension (overall)",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at Pre-A1 only: the course genuinely assesses written recognition of familiar words and learned phrases. A1 reading (short simple texts) is not yet assessed."
+  },
+  {
+   "id": "fr.obj.writing.familiar_words",
+   "title": "Writing familiar words & forms",
+   "canDo": "I can type familiar French words and learned forms with the right spelling, including accents — mangé, être, vingt et un.",
+   "category": "written_production",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Orthographic control",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:orthographic-control"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Evidence is single words and short learned forms, not composed sentences."
+  },
+  {
+   "id": "fr.obj.gender.articles_basic",
+   "title": "Articles with familiar nouns",
+   "canDo": "I can choose the right article — le or la, un or une — for the familiar nouns I have learned.",
+   "category": "grammar",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": true
+  },
+  {
+   "id": "fr.obj.gender.ending_patterns",
+   "title": "Gender from word endings",
+   "canDo": "I can use reliable French endings — -tion, -ance, -ité, -ment, -age, -eau — to predict whether a new noun takes le or la.",
+   "category": "grammar",
+   "prerequisites": [
+    "fr.obj.gender.articles_basic"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": false
+  },
+  {
+   "id": "fr.obj.verbs.etre_avoir_present",
+   "title": "Être & avoir in the present",
+   "canDo": "I can use the present-tense forms of être and avoir with every subject — je suis, tu as, nous sommes, ils ont.",
+   "category": "grammar",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": true
+  },
+  {
+   "id": "fr.obj.verbs.er_present",
+   "title": "Regular -er verbs in the present",
+   "canDo": "I can conjugate regular -er verbs like parler, aimer and habiter in the present tense for every subject.",
+   "category": "grammar",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": true
+  },
+  {
+   "id": "fr.obj.verbs.aller_faire_present",
+   "title": "Aller & faire in the present",
+   "canDo": "I can use the present-tense forms of aller and faire — je vais, elle va, nous faisons, ils font.",
+   "category": "grammar",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": false
+  },
+  {
+   "id": "fr.obj.verbs.futur_proche",
+   "title": "Near future with aller",
+   "canDo": "I can talk about plans by putting aller in front of any verb — Je vais manger, Nous allons parler.",
+   "category": "grammar",
+   "prerequisites": [
+    "fr.obj.verbs.aller_faire_present"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": false
+  },
+  {
+   "id": "fr.obj.verbs.passe_compose_avoir",
+   "title": "Past tense with avoir",
+   "canDo": "I can build the everyday past tense with avoir plus a participle — J'ai mangé, Tu as parlé — for the verbs I know.",
+   "category": "grammar",
+   "prerequisites": [
+    "fr.obj.verbs.etre_avoir_present"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A2",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": false,
+   "evidenceNote": "Introduced with avoir-auxiliary verbs only; être-auxiliary verbs and agreement are not yet taught."
+  },
+  {
+   "id": "fr.obj.numbers.0_100",
+   "title": "Numbers 0-100",
+   "canDo": "I can understand and write every French number from zéro to cent, including the et-un pattern, soixante-dix and quatre-vingts.",
+   "category": "lexical",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Vocabulary range",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:vocabulary-range"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Numbers are read and typed; understanding spoken numbers is not yet assessed."
+  },
+  {
+   "id": "fr.obj.connected.elision",
+   "title": "Elision in writing",
+   "canDo": "I can apply mandatory French elision in writing — l'eau, j'ai, ce n'est pas — and never write je ai or le homme.",
+   "category": "grammar",
+   "prerequisites": [
+    "fr.obj.gender.articles_basic"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Orthographic control",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:orthographic-control"
+    }
+   ],
+   "essential": false
+  },
+  {
+   "id": "fr.obj.connected.liaison_h",
+   "title": "Liaison & the two h's",
+   "canDo": "I can recognise where French links words together — les amis, nous avons — where it never does, and why l'histoire but le héros.",
+   "category": "phonology",
+   "prerequisites": [
+    "fr.obj.connected.elision"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Phonological control (sound articulation)",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:phonological-control"
+    }
+   ],
+   "essential": false,
+   "evidenceNote": "Rule recognition only — actual pronunciation is not assessed."
+  },
+  {
+   "id": "fr.obj.strategy.cognate_transfer",
+   "title": "Cognate bridges & false friends",
+   "canDo": "I can use the -tion and -té bridges to understand new French words from English — and I know the classic traps like librairie and journée.",
+   "category": "strategy",
+   "prerequisites": [],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Identifying cues and inferring",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:identifying-cues-inferring"
+    }
+   ],
+   "essential": false
+  },
+  {
+   "id": "fr.obj.listening.familiar_words",
+   "title": "Hearing familiar words & phrases",
+   "canDo": "I can understand familiar words and very short learned phrases when I hear them spoken clearly and slowly.",
+   "category": "spoken_reception",
+   "prerequisites": [
+    "fr.obj.vocab.everyday_basics"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "PRE_A1",
+     "scaleName": "Listening comprehension (overall)",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Listening comprehension (overall)",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at Pre-A1 only: bundled clear synthesized single-word/short-phrase clips, scored in the Section-3 checkpoint. Natural conversational speech and accent variety are NOT assessed."
+  },
+  {
+   "id": "fr.obj.listening.short_info",
+   "title": "Catching concrete details by ear",
+   "canDo": "I can pick out concrete information — places, times, prices and numbers — from a short, clear, slow recording about everyday things.",
+   "category": "spoken_reception",
+   "prerequisites": [
+    "fr.obj.listening.familiar_words",
+    "fr.obj.numbers.0_100"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Listening to audio media & recordings",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:audio-media-recordings"
+    },
+    {
+     "level": "PRE_A1",
+     "scaleName": "Listening comprehension (overall)",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at A1 within bundled-audio scope: short synthesized factual recordings with 1-3 information units, scored in the Section-3 checkpoint. Authentic-speed media are NOT assessed."
+  },
+  {
+   "id": "fr.obj.listening.announcements",
+   "title": "Following short announcements & instructions",
+   "canDo": "I can follow very short, simple everyday announcements and instructions when they are spoken clearly and slowly.",
+   "category": "spoken_reception",
+   "prerequisites": [
+    "fr.obj.listening.familiar_words"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Listening to announcements & instructions",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:announcements-instructions"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at A1 within bundled-audio scope: synthesized station/shop-style announcements and simple instructions, scored in the Section-3 checkpoint."
+  },
+  {
+   "id": "fr.obj.listening.short_dialogues",
+   "title": "Following a short conversation",
+   "canDo": "I can follow the main point of a very short, simple conversation between two people speaking clearly about everyday things.",
+   "category": "spoken_reception",
+   "prerequisites": [
+    "fr.obj.listening.familiar_words",
+    "fr.obj.greetings.basic"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Understanding conversation between others",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:understanding-conversation"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at A1 within bundled-audio scope: two-voice synthesized exchanges of 2-4 turns, scored in the Section-3 checkpoint. The learner listens only — interaction is NOT assessed."
+  },
+  {
+   "id": "fr.obj.reading.short_messages",
+   "title": "Reading short messages",
+   "canDo": "I can understand short, simple written messages — notes, texts and simple postcards — about everyday plans and needs.",
+   "category": "written_reception",
+   "prerequisites": [
+    "fr.obj.reading.familiar_words"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Reading correspondence (short messages)",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:reading-correspondence"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at A1: original short messages read and answered in the Section-3 checkpoint."
+  },
+  {
+   "id": "fr.obj.reading.notices_info",
+   "title": "Finding information in notices & signs",
+   "canDo": "I can find concrete information in everyday notices, signs, opening hours and simple practical texts.",
+   "category": "written_reception",
+   "prerequisites": [
+    "fr.obj.reading.familiar_words"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Reading for orientation (signs & notices)",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:reading-orientation"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at A1: original notices/schedules with locate-type questions, scored in the Section-3 checkpoint."
+  },
+  {
+   "id": "fr.obj.reading.short_texts",
+   "title": "Understanding short simple texts",
+   "canDo": "I can understand short, very simple descriptive texts about familiar topics, reading slowly and re-reading when I need to.",
+   "category": "written_reception",
+   "prerequisites": [
+    "fr.obj.reading.familiar_words",
+    "fr.obj.verbs.etre_avoir_present"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Reading comprehension (overall)",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+    },
+    {
+     "level": "A2",
+     "scaleName": "Reading comprehension (overall)",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Direct at A1: original 2-5 sentence descriptions/micro-narratives, scored in the Section-3 checkpoint. Longer or unfamiliar-topic texts are NOT assessed."
+  },
+  {
+   "id": "fr.obj.speaking.formulaic",
+   "title": "Saying everyday formulas aloud",
+   "canDo": "I can say the everyday French greeting and politeness formulas aloud — bonjour, bonsoir, merci, s'il vous plaît, pardon, au revoir — choosing the right one for the situation.",
+   "category": "spoken_production",
+   "prerequisites": [
+    "fr.obj.greetings.basic"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "PRE_A1",
+     "scaleName": "Overall oral production",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:overall-oral-production"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Overall oral production",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-oral-production"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Sociolinguistic appropriateness",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Assessed from what an on-device speech recogniser heard the learner say — word recognition only, never a pronunciation-quality score."
+  },
+  {
+   "id": "fr.obj.speaking.self_intro",
+   "title": "Introducing yourself aloud",
+   "canDo": "I can say simple fixed sentences about myself aloud — where I live, what I speak, what I like and what I do — one short sentence at a time.",
+   "category": "spoken_production",
+   "prerequisites": [
+    "fr.obj.verbs.etre_avoir_present",
+    "fr.obj.verbs.er_present"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Sustained monologue: describing experience",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Overall oral production",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:overall-oral-production"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Assessed from recognised words in elicited sentences — the meaning cue is English; the French is never shown before the attempt."
+  },
+  {
+   "id": "fr.obj.speaking.give_info",
+   "title": "Giving simple information aloud",
+   "canDo": "I can give simple spoken information about familiar things — how many there are, what something costs, and when something happens — using numbers and everyday words.",
+   "category": "spoken_production",
+   "prerequisites": [
+    "fr.obj.numbers.0_100"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Sustained monologue: giving information",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:sustained-monologue-giving-information"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Overall oral production",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:overall-oral-production"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Recognised digits and number words are treated as the same information; wrong numbers are wrong answers, silence is never scored."
+  },
+  {
+   "id": "fr.obj.speaking.describe",
+   "title": "Describing people and things aloud",
+   "canDo": "I can describe familiar people, places and things aloud in short, mainly isolated phrases — saying what something is and one simple fact about it.",
+   "category": "spoken_production",
+   "prerequisites": [
+    "fr.obj.vocab.everyday_basics"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Overall oral production",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-oral-production"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Sustained monologue: describing experience",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+    }
+   ],
+   "essential": false,
+   "evidenceNote": "Short isolated phrases only — connected description is beyond this course's A1 claim."
+  },
+  {
+   "id": "fr.obj.writing.personal_info",
+   "title": "Writing who you are",
+   "canDo": "I can give simple personal information in writing — my name, my age and where I live — in short French sentences.",
+   "category": "written_production",
+   "prerequisites": [
+    "fr.obj.writing.familiar_words",
+    "fr.obj.verbs.etre_avoir_present"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Overall written production",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-written-production"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Overall written interaction",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-written-interaction"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Orthographic control",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:orthographic-control"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Assessed by guided rubric-scored writing with required information slots (name, age, place); open free writing is never scored evidence."
+  },
+  {
+   "id": "fr.obj.writing.phrases_sentences",
+   "title": "Writing simple sentences",
+   "canDo": "I can write simple short sentences about familiar people and things — who does what, where someone lives, what I like.",
+   "category": "written_production",
+   "prerequisites": [
+    "fr.obj.writing.personal_info",
+    "fr.obj.verbs.er_present"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Overall written production",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-written-production"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Grammatical accuracy",
+     "relation": "supports",
+     "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Assessed by guided sentence-writing tasks whose rubric requires a subject+verb clause from an authored verb list plus the task's information slots."
+  },
+  {
+   "id": "fr.obj.writing.short_message",
+   "title": "Writing a short message",
+   "canDo": "I can write a very short simple message — a greeting, one or two everyday facts like a time or place, and a closing.",
+   "category": "written_production",
+   "prerequisites": [
+    "fr.obj.writing.personal_info",
+    "fr.obj.vocab.time_calendar"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Correspondence",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:correspondence"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Overall written interaction",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-written-interaction"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Assessed by guided note-writing tasks; the rubric requires the message's communicative parts (greeting, fact, closing), never style judgment."
+  },
+  {
+   "id": "fr.obj.writing.form_filling",
+   "title": "Filling in a simple form",
+   "canDo": "I can complete a simple everyday form with my name, age, city and similar concrete details in French.",
+   "category": "written_production",
+   "prerequisites": [
+    "fr.obj.writing.familiar_words",
+    "fr.obj.numbers.0_100"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Notes, messages and forms",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:notes-messages-forms"
+    }
+   ],
+   "essential": false,
+   "evidenceNote": "Assessed by discrete labeled form fields checked deterministically against the cue facts; an empty form is insufficient evidence, never failure."
+  }
+ ]
 }

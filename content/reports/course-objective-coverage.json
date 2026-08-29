@@ -842,6 +842,140 @@
       "exercisesTargeting": 7,
       "checkpointItems": 3,
       "placementItems": 0
+    },
+    {
+      "id": "fr.obj.writing.personal_info",
+      "title": "Writing who you are",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.writing.familiar_words",
+        "fr.obj.verbs.etre_avoir_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Orthographic control",
+          "relation": "supports"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:uo-l0",
+        "fr-en:uo-l1",
+        "fr-en:uo-l2",
+        "fr-en:uo-l3",
+        "fr-en:ur-l2",
+        "fr-en:ur-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 10,
+      "exercisesTargeting": 7,
+      "checkpointItems": 3,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.writing.phrases_sentences",
+      "title": "Writing simple sentences",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.writing.personal_info",
+        "fr.obj.verbs.er_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall written production",
+          "relation": "direct"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:up-l0",
+        "fr-en:up-l1",
+        "fr-en:up-l2",
+        "fr-en:up-l3",
+        "fr-en:ur-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 8,
+      "exercisesTargeting": 6,
+      "checkpointItems": 3,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.writing.short_message",
+      "title": "Writing a short message",
+      "category": "written_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.writing.personal_info",
+        "fr.obj.vocab.time_calendar"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Correspondence",
+          "relation": "direct"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall written interaction",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:uq-l0",
+        "fr-en:uq-l1",
+        "fr-en:uq-l2",
+        "fr-en:uq-l3",
+        "fr-en:ur-l2"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 6,
+      "exercisesTargeting": 5,
+      "checkpointItems": 3,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.writing.form_filling",
+      "title": "Filling in a simple form",
+      "category": "written_production",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.writing.familiar_words",
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Notes, messages and forms",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:ur-l0",
+        "fr-en:ur-l1"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 2,
+      "exercisesTargeting": 2,
+      "checkpointItems": 3,
+      "placementItems": 0
     }
   ]
 }

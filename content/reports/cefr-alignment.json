@@ -52,6 +52,14 @@
       "level": "A1",
       "scales": [
         {
+          "scaleName": "Correspondence",
+          "sourceRef": "cefr-cv-2020:correspondence",
+          "direct": [
+            "fr.obj.writing.short_message"
+          ],
+          "supports": []
+        },
+        {
           "scaleName": "Grammatical accuracy",
           "sourceRef": "cefr-cv-2020:grammatical-accuracy",
           "direct": [],
@@ -61,7 +69,8 @@
             "fr.obj.verbs.aller_faire_present",
             "fr.obj.verbs.er_present",
             "fr.obj.verbs.etre_avoir_present",
-            "fr.obj.verbs.futur_proche"
+            "fr.obj.verbs.futur_proche",
+            "fr.obj.writing.phrases_sentences"
           ]
         },
         {
@@ -97,12 +106,21 @@
           "supports": []
         },
         {
+          "scaleName": "Notes, messages and forms",
+          "sourceRef": "cefr-cv-2020:notes-messages-forms",
+          "direct": [
+            "fr.obj.writing.form_filling"
+          ],
+          "supports": []
+        },
+        {
           "scaleName": "Orthographic control",
           "sourceRef": "cefr-cv-2020:orthographic-control",
           "direct": [],
           "supports": [
             "fr.obj.connected.elision",
-            "fr.obj.writing.familiar_words"
+            "fr.obj.writing.familiar_words",
+            "fr.obj.writing.personal_info"
           ]
         },
         {
@@ -116,6 +134,24 @@
             "fr.obj.speaking.give_info",
             "fr.obj.speaking.self_intro"
           ]
+        },
+        {
+          "scaleName": "Overall written interaction",
+          "sourceRef": "cefr-cv-2020:overall-written-interaction",
+          "direct": [
+            "fr.obj.writing.personal_info",
+            "fr.obj.writing.short_message"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Overall written production",
+          "sourceRef": "cefr-cv-2020:overall-written-production",
+          "direct": [
+            "fr.obj.writing.personal_info",
+            "fr.obj.writing.phrases_sentences"
+          ],
+          "supports": []
         },
         {
           "scaleName": "Phonological control (sound articulation)",

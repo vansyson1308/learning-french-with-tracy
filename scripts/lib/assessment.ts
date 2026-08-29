@@ -52,6 +52,16 @@ export const CEFR_SOURCE_REFS: readonly string[] = [
   "cefr-cv-2020:overall-oral-production",
   "cefr-cv-2020:sustained-monologue-describing",
   "cefr-cv-2020:sustained-monologue-giving-information",
+  // Phase-9 written-production + interaction scales (documented in
+  // content/fr/writing/RESEARCH.md and content/fr/interaction/RESEARCH.md,
+  // with per-row verification status).
+  "cefr-cv-2020:overall-written-production",
+  "cefr-cv-2020:overall-written-interaction",
+  "cefr-cv-2020:notes-messages-forms",
+  "cefr-cv-2020:correspondence",
+  "cefr-cv-2020:overall-oral-interaction",
+  "cefr-cv-2020:information-exchange",
+  "cefr-cv-2020:obtaining-goods-services",
 ];
 
 export function loadCourseObjectives(): CourseObjectives {
@@ -300,6 +310,27 @@ function speechTaskFamilies(): Map<string, string> {
   return speechFamilyCache;
 }
 
+let writingFamilyCache: Map<string, string> | null = null;
+
+/** writingTaskId → authored taskFamily (P9 §21-analog honesty for writing). */
+function writingTaskFamilies(): Map<string, string> {
+  if (writingFamilyCache) return writingFamilyCache;
+  writingFamilyCache = new Map();
+  try {
+    const doc = readJson("content/fr/writing/tasks.json") as {
+      tasks?: { id?: unknown; taskFamily?: unknown }[];
+    };
+    for (const task of doc.tasks ?? []) {
+      if (typeof task.id === "string" && typeof task.taskFamily === "string") {
+        writingFamilyCache.set(task.id, task.taskFamily);
+      }
+    }
+  } catch {
+    // No writing source yet — exercise types remain the fallback family.
+  }
+  return writingFamilyCache;
+}
+
 export function collectScoredItemEvidence(
   relPath: string,
   containerKey: "checkpoints" | "stages"
@@ -319,24 +350,35 @@ export function collectScoredItemEvidence(
     for (const item of items) {
       const targets = (item as { objectiveTargets?: unknown }).objectiveTargets;
       const exercise = (item as { exercise?: unknown }).exercise as
-        | { type?: unknown; clipId?: unknown; readingId?: unknown; speechItemId?: unknown }
+        | {
+            type?: unknown;
+            clipId?: unknown;
+            readingId?: unknown;
+            speechItemId?: unknown;
+            writingTaskId?: unknown;
+          }
         | undefined;
       if (!Array.isArray(targets) || !targets.every((t) => typeof t === "string")) continue;
       const clip = typeof exercise?.clipId === "string" ? exercise.clipId : null;
       const reading = typeof exercise?.readingId === "string" ? exercise.readingId : null;
       const speechItemId =
         typeof exercise?.speechItemId === "string" ? exercise.speechItemId : null;
-      // Speech items (P8 §21): the honest task family is the AUTHORED one
-      // (formulaic_exchange / self_introduction / …), not the single
+      const writingTaskId =
+        typeof exercise?.writingTaskId === "string" ? exercise.writingTaskId : null;
+      // Speech/writing items (P8 §21, P9 §21): the honest task family is the
+      // AUTHORED one (formulaic_exchange / personal_profile / …), not the
       // exercise type; the elicitation prompt itself is the input identity.
       const speechFamily =
         speechItemId !== null ? speechTaskFamilies().get(speechItemId) : undefined;
+      const writingFamily =
+        writingTaskId !== null ? writingTaskFamilies().get(writingTaskId) : undefined;
       out.push({
         objectiveTargets: targets as string[],
         taskFamily:
           speechFamily ??
+          writingFamily ??
           (typeof exercise?.type === "string" ? exercise.type : "unknown"),
-        inputId: clip ?? reading ?? speechItemId,
+        inputId: clip ?? reading ?? speechItemId ?? writingTaskId,
       });
     }
   }

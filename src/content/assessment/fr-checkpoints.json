@@ -5,7 +5,8 @@
     "fr.checkpoint.section-1",
     "fr.checkpoint.section-2",
     "fr.checkpoint.section-3",
-    "fr.checkpoint.section-4"
+    "fr.checkpoint.section-4",
+    "fr.checkpoint.section-5"
   ],
   "byId": {
     "fr.checkpoint.section-1": {
@@ -1714,6 +1715,718 @@
           },
           "objectiveTargets": [
             "fr.obj.speaking.describe"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "fr.checkpoint.section-5": {
+      "id": "fr.checkpoint.section-5",
+      "checkpointVersion": 1,
+      "sectionId": "fr-en:section-5",
+      "title": "Section 5 check",
+      "description": "Show what you can WRITE - introduce someone, write simple sentences, leave a short note and fill in a form. The app checks the information in your French; it never grades style.",
+      "items": [
+        {
+          "id": "fr.cpi.s5.profile_nadia",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-profile_nadia",
+            "writingTaskId": "fr.write.cp5_profile_nadia",
+            "writingMode": "guided",
+            "instruction": "You are Nadia. Introduce yourself in writing — name, age and city, in complete sentences.",
+            "cueFacts": [
+              {
+                "label": "Name",
+                "value": "Nadia"
+              },
+              {
+                "label": "Age",
+                "value": "35"
+              },
+              {
+                "label": "City",
+                "value": "Lyon"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "your name",
+                  "variants": [
+                    "je m'appelle Nadia",
+                    "je suis Nadia"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "your age",
+                  "variants": [
+                    "j'ai trente-cinq ans"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "where you live",
+                  "variants": [
+                    "j'habite à Lyon",
+                    "j'habite Lyon"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 8,
+              "maxTokens": 30,
+              "requireSentenceVerbs": [
+                "m'appelle",
+                "suis"
+              ]
+            },
+            "modelAnswers": [
+              "Je m'appelle Nadia, j'ai 35 ans et j'habite à Lyon."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.personal_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.profile_tom",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-profile_tom",
+            "writingTaskId": "fr.write.cp5_profile_tom",
+            "writingMode": "guided",
+            "instruction": "You are Tom. Introduce yourself in writing — name, age and city, in complete sentences.",
+            "cueFacts": [
+              {
+                "label": "Name",
+                "value": "Tom"
+              },
+              {
+                "label": "Age",
+                "value": "28"
+              },
+              {
+                "label": "City",
+                "value": "Nice"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "your name",
+                  "variants": [
+                    "je m'appelle Tom",
+                    "je suis Tom"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "your age",
+                  "variants": [
+                    "j'ai vingt-huit ans"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "where you live",
+                  "variants": [
+                    "j'habite à Nice",
+                    "j'habite Nice"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 8,
+              "maxTokens": 30,
+              "requireSentenceVerbs": [
+                "m'appelle",
+                "suis"
+              ]
+            },
+            "modelAnswers": [
+              "Je m'appelle Tom, j'ai 28 ans et j'habite à Nice."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.personal_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.profile_emma",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-profile_emma",
+            "writingTaskId": "fr.write.cp5_profile_emma",
+            "writingMode": "guided",
+            "instruction": "You are Emma. Introduce yourself in writing — name, age and city, in complete sentences.",
+            "cueFacts": [
+              {
+                "label": "Name",
+                "value": "Emma"
+              },
+              {
+                "label": "Age",
+                "value": "41"
+              },
+              {
+                "label": "City",
+                "value": "Marseille"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "your name",
+                  "variants": [
+                    "je m'appelle Emma",
+                    "je suis Emma"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "your age",
+                  "variants": [
+                    "j'ai quarante et un ans"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "where you live",
+                  "variants": [
+                    "j'habite à Marseille",
+                    "j'habite Marseille"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 8,
+              "maxTokens": 30,
+              "requireSentenceVerbs": [
+                "m'appelle",
+                "suis"
+              ]
+            },
+            "modelAnswers": [
+              "Je m'appelle Emma, j'ai 41 ans et j'habite à Marseille."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.personal_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.sofia_tea",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-sofia_tea",
+            "writingTaskId": "fr.write.cp5_sofia_tea",
+            "writingMode": "guided",
+            "instruction": "Write one sentence about Sofia: she likes tea.",
+            "cueFacts": [
+              {
+                "label": "Person",
+                "value": "Sofia"
+              },
+              {
+                "label": "Likes",
+                "value": "tea"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "fact",
+                  "description": "what Sofia likes",
+                  "variants": [
+                    "sofia aime le thé",
+                    "elle aime le thé"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 3,
+              "maxTokens": 12,
+              "requireSentenceVerbs": [
+                "aime"
+              ]
+            },
+            "modelAnswers": [
+              "Sofia aime le thé."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.phrases_sentences"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.cat_water",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-cat_water",
+            "writingTaskId": "fr.write.cp5_cat_water",
+            "writingMode": "guided",
+            "instruction": "Write one sentence: the cat drinks water.",
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "fact",
+                  "description": "what the cat does",
+                  "variants": [
+                    "le chat boit de l'eau",
+                    "le chat boit l'eau"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 4,
+              "maxTokens": 12,
+              "requireSentenceVerbs": [
+                "boit"
+              ]
+            },
+            "modelAnswers": [
+              "Le chat boit de l'eau."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.phrases_sentences"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.leo_paris",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-leo_paris",
+            "writingTaskId": "fr.write.cp5_leo_paris",
+            "writingMode": "guided",
+            "instruction": "Write about Léo in one or two short sentences: he lives in Paris and he works.",
+            "cueFacts": [
+              {
+                "label": "Person",
+                "value": "Léo"
+              },
+              {
+                "label": "City",
+                "value": "Paris"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "lives",
+                  "description": "where Léo lives",
+                  "variants": [
+                    "il habite à Paris",
+                    "il habite Paris",
+                    "Léo habite à Paris",
+                    "Léo habite Paris"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "works",
+                  "description": "that he works",
+                  "variants": [
+                    "il travaille",
+                    "et travaille",
+                    "Léo travaille"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 18,
+              "requireSentenceVerbs": [
+                "habite",
+                "travaille"
+              ]
+            },
+            "modelAnswers": [
+              "Léo habite à Paris et il travaille."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.phrases_sentences"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.note_anna",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-note_anna",
+            "writingTaskId": "fr.write.cp5_note_anna",
+            "writingMode": "guided",
+            "instruction": "Write a short note to Anna: greet her, and tell her the café is at three o'clock.",
+            "cueFacts": [
+              {
+                "label": "To",
+                "value": "Anna"
+              },
+              {
+                "label": "What",
+                "value": "café"
+              },
+              {
+                "label": "Time",
+                "value": "3:00"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "a greeting",
+                  "variants": [
+                    "bonjour",
+                    "salut",
+                    "bonsoir"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "fact",
+                  "description": "the café time",
+                  "variants": [
+                    "le café est à trois heures",
+                    "café à trois heures"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Bonjour Anna, le café est à trois heures."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.note_train",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-note_train",
+            "writingTaskId": "fr.write.cp5_note_train",
+            "writingMode": "guided",
+            "instruction": "Write a short note: greet your friend, and say the train is Saturday at eight.",
+            "cueFacts": [
+              {
+                "label": "What",
+                "value": "train"
+              },
+              {
+                "label": "When",
+                "value": "Saturday, 8:00"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "a greeting",
+                  "variants": [
+                    "bonjour",
+                    "salut",
+                    "bonsoir"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "fact",
+                  "description": "the train day and time",
+                  "variants": [
+                    "le train est samedi à huit heures",
+                    "train samedi à huit heures"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Salut, le train est samedi à huit heures."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.note_library",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-s5-note_library",
+            "writingTaskId": "fr.write.cp5_note_library",
+            "writingMode": "guided",
+            "instruction": "Write a note: say hello, say you are at the library, and close with “see you tomorrow”.",
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "a greeting",
+                  "variants": [
+                    "bonjour",
+                    "salut"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "place",
+                  "description": "where you are",
+                  "variants": [
+                    "je suis à la bibliothèque"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "closing",
+                  "description": "a closing",
+                  "variants": [
+                    "à demain"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 6,
+              "maxTokens": 22,
+              "requireSentenceVerbs": [
+                "suis"
+              ]
+            },
+            "modelAnswers": [
+              "Bonjour, je suis à la bibliothèque. À demain !"
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s5.form_nadia",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "simpleForm",
+            "id": "fr-cpx-s5-form_nadia",
+            "writingTaskId": "fr.write.cp5_form_nadia",
+            "instruction": "Fill in the registration form with the details on the card.",
+            "fields": [
+              {
+                "id": "prenom",
+                "label": "Prénom",
+                "slotId": "name"
+              },
+              {
+                "id": "age",
+                "label": "Âge",
+                "slotId": "age"
+              },
+              {
+                "id": "ville",
+                "label": "Ville",
+                "slotId": "city"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "the first name",
+                  "variants": [
+                    "Nadia"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "the age",
+                  "variants": [
+                    "trente-cinq"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "the city",
+                  "variants": [
+                    "Lyon"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 2,
+              "maxTokens": 12
+            },
+            "modelAnswers": [
+              "Nadia | 35 | Lyon"
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.form_filling"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s5.form_tom",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "simpleForm",
+            "id": "fr-cpx-s5-form_tom",
+            "writingTaskId": "fr.write.cp5_form_tom",
+            "instruction": "Fill in the hotel form with the details on the card.",
+            "fields": [
+              {
+                "id": "prenom",
+                "label": "Prénom",
+                "slotId": "name"
+              },
+              {
+                "id": "ville",
+                "label": "Ville",
+                "slotId": "city"
+              },
+              {
+                "id": "jour",
+                "label": "Jour d'arrivée",
+                "slotId": "day"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "the first name",
+                  "variants": [
+                    "Tom"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "the city",
+                  "variants": [
+                    "Nice"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "day",
+                  "description": "the arrival day",
+                  "variants": [
+                    "dimanche"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 2,
+              "maxTokens": 12
+            },
+            "modelAnswers": [
+              "Tom | Nice | dimanche"
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.form_filling"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s5.form_emma",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "simpleForm",
+            "id": "fr-cpx-s5-form_emma",
+            "writingTaskId": "fr.write.cp5_form_emma",
+            "instruction": "Fill in the library-card form with the details on the card.",
+            "fields": [
+              {
+                "id": "prenom",
+                "label": "Prénom",
+                "slotId": "name"
+              },
+              {
+                "id": "age",
+                "label": "Âge",
+                "slotId": "age"
+              },
+              {
+                "id": "ville",
+                "label": "Ville",
+                "slotId": "city"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "the first name",
+                  "variants": [
+                    "Emma"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "the age",
+                  "variants": [
+                    "quarante et un"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "the city",
+                  "variants": [
+                    "Marseille"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 2,
+              "maxTokens": 12
+            },
+            "modelAnswers": [
+              "Emma | 41 | Marseille"
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.form_filling"
           ],
           "essential": false
         }

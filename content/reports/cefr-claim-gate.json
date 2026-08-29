@@ -170,8 +170,33 @@
         },
         {
           "domain": "written_production",
-          "status": "no_direct_objective",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.writing.form_filling",
+            "fr.obj.writing.personal_info",
+            "fr.obj.writing.phrases_sentences",
+            "fr.obj.writing.short_message"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "personal_profile",
+              "short_message",
+              "simple_description",
+              "simple_form"
+            ],
+            "scaleNames": [
+              "Correspondence",
+              "Notes, messages and forms",
+              "Overall written interaction",
+              "Overall written production"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.writing.personal_info": 3,
+              "fr.obj.writing.phrases_sentences": 3,
+              "fr.obj.writing.short_message": 3,
+              "fr.obj.writing.form_filling": 3
+            }
+          }
         },
         {
           "domain": "interaction",
@@ -189,11 +214,9 @@
         "fr.obj.vocab.places_travel"
       ],
       "unassessedDomains": [
-        "written_production",
         "interaction"
       ],
       "evidenceLimitations": [
-        "Written production is not assessed (no direct assessment exists at this level).",
         "Interaction is not assessed (no direct assessment exists at this level).",
         "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity."
       ]

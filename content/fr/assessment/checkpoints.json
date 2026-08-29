@@ -1,1721 +1,2433 @@
 {
-  "version": 1,
-  "language": "fr",
-  "checkpoints": [
+ "version": 1,
+ "language": "fr",
+ "checkpoints": [
+  {
+   "id": "fr.checkpoint.section-1",
+   "checkpointVersion": 1,
+   "sectionId": "fr-en:section-1",
+   "title": "Section 1 check",
+   "description": "Show what you can do with the essentials — greetings, everyday words, and reading familiar French.",
+   "items": [
     {
-      "id": "fr.checkpoint.section-1",
-      "checkpointVersion": 1,
-      "sectionId": "fr-en:section-1",
-      "title": "Section 1 check",
-      "description": "Show what you can do with the essentials — greetings, everyday words, and reading familiar French.",
-      "items": [
-        {
-          "id": "fr.cpi.s1.greet_evening",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-greet_evening",
-            "mode": "nativeToTarget",
-            "prompt": "You arrive at a restaurant at 8 pm. What do you say?",
-            "options": [
-              {
-                "text": "Bonsoir !"
-              },
-              {
-                "text": "Bonne nuit !"
-              },
-              {
-                "text": "Au revoir !"
-              },
-              {
-                "text": "Merci !"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.greetings.basic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.greet_leaving",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-greet_leaving",
-            "mode": "nativeToTarget",
-            "prompt": "You are leaving a shop. What do you say?",
-            "options": [
-              {
-                "text": "Au revoir !"
-              },
-              {
-                "text": "Bonjour !"
-              },
-              {
-                "text": "Oui !"
-              },
-              {
-                "text": "Pardon !"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.greetings.basic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.greet_thanks",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-greet_thanks",
-            "mode": "nativeToTarget",
-            "prompt": "Someone holds the door open for you. You say:",
-            "options": [
-              {
-                "text": "Merci !"
-              },
-              {
-                "text": "S'il vous plaît !"
-              },
-              {
-                "text": "Bonne nuit !"
-              },
-              {
-                "text": "Non !"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.greetings.basic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.vocab_horse",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-vocab_horse",
-            "mode": "nativeToTarget",
-            "prompt": "the horse",
-            "options": [
-              {
-                "text": "le cheval"
-              },
-              {
-                "text": "le chien"
-              },
-              {
-                "text": "la vache"
-              },
-              {
-                "text": "le poisson"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.vocab.everyday_basics"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.vocab_cheese",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-vocab_cheese",
-            "mode": "nativeToTarget",
-            "prompt": "the cheese",
-            "options": [
-              {
-                "text": "le fromage"
-              },
-              {
-                "text": "le pain"
-              },
-              {
-                "text": "le lait"
-              },
-              {
-                "text": "l'œuf"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.vocab.everyday_basics"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.vocab_girl",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-vocab_girl",
-            "mode": "targetToNative",
-            "prompt": "la fille",
-            "options": [
-              {
-                "text": "the girl"
-              },
-              {
-                "text": "the woman"
-              },
-              {
-                "text": "the boy"
-              },
-              {
-                "text": "the man"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.vocab.everyday_basics"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.read_water",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-read_water",
-            "mode": "targetToNative",
-            "prompt": "Je bois de l'eau.",
-            "options": [
-              {
-                "text": "I drink water."
-              },
-              {
-                "text": "I eat bread."
-              },
-              {
-                "text": "I drink milk."
-              },
-              {
-                "text": "I like water."
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.read_cat",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-read_cat",
-            "mode": "targetToNative",
-            "prompt": "Le chat mange le poisson.",
-            "options": [
-              {
-                "text": "The cat eats the fish."
-              },
-              {
-                "text": "The dog eats the fish."
-              },
-              {
-                "text": "The cat drinks the milk."
-              },
-              {
-                "text": "The fish eats the cat."
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.read_dog",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-read_dog",
-            "mode": "targetToNative",
-            "prompt": "Le chien est dans la rue.",
-            "options": [
-              {
-                "text": "The dog is in the street."
-              },
-              {
-                "text": "The cat is in the street."
-              },
-              {
-                "text": "The dog is at the station."
-              },
-              {
-                "text": "The dog is in the city."
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s1.travel_station",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-travel_station",
-            "mode": "nativeToTarget",
-            "prompt": "the train station",
-            "options": [
-              {
-                "text": "la gare"
-              },
-              {
-                "text": "la ville"
-              },
-              {
-                "text": "l'aéroport"
-              },
-              {
-                "text": "l'hôtel"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.vocab.places_travel"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s1.travel_ticket",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-travel_ticket",
-            "mode": "targetToNative",
-            "prompt": "le billet",
-            "options": [
-              {
-                "text": "the ticket"
-              },
-              {
-                "text": "the map"
-              },
-              {
-                "text": "the museum"
-              },
-              {
-                "text": "the street"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.vocab.places_travel"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s1.travel_map",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s1-travel_map",
-            "mode": "nativeToTarget",
-            "prompt": "the map",
-            "options": [
-              {
-                "text": "la carte"
-              },
-              {
-                "text": "la rue"
-              },
-              {
-                "text": "la gare"
-              },
-              {
-                "text": "le billet"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.vocab.places_travel"
-          ],
-          "essential": false
-        }
+     "id": "fr.cpi.s1.greet_evening",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-greet_evening",
+      "mode": "nativeToTarget",
+      "prompt": "You arrive at a restaurant at 8 pm. What do you say?",
+      "options": [
+       {
+        "text": "Bonsoir !"
+       },
+       {
+        "text": "Bonne nuit !"
+       },
+       {
+        "text": "Au revoir !"
+       },
+       {
+        "text": "Merci !"
+       }
       ],
-      "criteria": {
-        "minItemsPerObjective": 2,
-        "demonstratedShare": 0.66
-      }
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.greetings.basic"
+     ],
+     "essential": true
     },
     {
-      "id": "fr.checkpoint.section-2",
-      "checkpointVersion": 1,
-      "sectionId": "fr-en:section-2",
-      "title": "Section 2 check",
-      "description": "Show what you can do with the building blocks — articles, verbs, numbers and connected writing.",
-      "items": [
-        {
-          "id": "fr.cpi.s2.article_house",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "articleSelect",
-            "id": "fr-cpx-s2-article_house",
-            "articles": [
-              "un",
-              "une"
-            ],
-            "noun": "maison",
-            "gloss": "a house",
-            "correct": 1
-          },
-          "objectiveTargets": [
-            "fr.obj.gender.articles_basic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.article_gift",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "articleSelect",
-            "id": "fr-cpx-s2-article_gift",
-            "articles": [
-              "le",
-              "la"
-            ],
-            "noun": "cadeau",
-            "gloss": "the gift",
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.gender.articles_basic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.pattern_revolution",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "articleSelect",
-            "id": "fr-cpx-s2-pattern_revolution",
-            "articles": [
-              "le",
-              "la"
-            ],
-            "noun": "révolution",
-            "gloss": "the revolution",
-            "correct": 1
-          },
-          "objectiveTargets": [
-            "fr.obj.gender.ending_patterns"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s2.pattern_government",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "articleSelect",
-            "id": "fr-cpx-s2-pattern_government",
-            "articles": [
-              "le",
-              "la"
-            ],
-            "noun": "gouvernement",
-            "gloss": "the government",
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.gender.ending_patterns"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s2.pattern_garage",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "articleSelect",
-            "id": "fr-cpx-s2-pattern_garage",
-            "articles": [
-              "le",
-              "la"
-            ],
-            "noun": "garage",
-            "gloss": "the garage",
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.gender.ending_patterns"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s2.etre_nous",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "conjugationCloze",
-            "id": "fr-cpx-s2-etre_nous",
-            "sentence": "Nous ___ en France.",
-            "translation": "We are in France.",
-            "verb": "être",
-            "cell": "pre:1p",
-            "answer": "sommes",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.verbs.etre_avoir_present",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.avoir_elles",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "conjugationCloze",
-            "id": "fr-cpx-s2-avoir_elles",
-            "sentence": "Elles ___ deux chiens.",
-            "translation": "They have two dogs.",
-            "verb": "avoir",
-            "cell": "pre:3p",
-            "answer": "ont",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.verbs.etre_avoir_present",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.avoir_vous",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "conjugationCloze",
-            "id": "fr-cpx-s2-avoir_vous",
-            "sentence": "Vous ___ une maison.",
-            "translation": "You have a house.",
-            "verb": "avoir",
-            "cell": "pre:2p",
-            "answer": "avez",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.verbs.etre_avoir_present",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.er_parler",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "conjugationCloze",
-            "id": "fr-cpx-s2-er_parler",
-            "sentence": "Il ___ avec le professeur.",
-            "translation": "He talks with the teacher.",
-            "verb": "parler",
-            "cell": "pre:3s",
-            "answer": "parle",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.verbs.er_present",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.er_aimer",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "conjugationCloze",
-            "id": "fr-cpx-s2-er_aimer",
-            "sentence": "Nous ___ le chocolat.",
-            "translation": "We love chocolate.",
-            "verb": "aimer",
-            "cell": "pre:1p",
-            "answer": "aimons",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.verbs.er_present",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.er_habiter",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "conjugationCloze",
-            "id": "fr-cpx-s2-er_habiter",
-            "sentence": "Tu ___ à Paris.",
-            "translation": "You live in Paris.",
-            "verb": "habiter",
-            "cell": "pre:2s",
-            "answer": "habites",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.verbs.er_present",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.number_73",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "typeAnswer",
-            "id": "fr-cpx-s2-number_73",
-            "mode": "produceTarget",
-            "prompt": "73",
-            "answer": "soixante-treize",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.numbers.0_100",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.number_95",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "typeAnswer",
-            "id": "fr-cpx-s2-number_95",
-            "mode": "produceTarget",
-            "prompt": "95",
-            "answer": "quatre-vingt-quinze",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.numbers.0_100",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.number_41",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "typeAnswer",
-            "id": "fr-cpx-s2-number_41",
-            "mode": "produceTarget",
-            "prompt": "41",
-            "answer": "quarante et un",
-            "alternatives": [
-              "quarante-et-un"
-            ]
-          },
-          "objectiveTargets": [
-            "fr.obj.numbers.0_100",
-            "fr.obj.writing.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s2.elision_amie",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "fillBlank",
-            "id": "fr-cpx-s2-elision_amie",
-            "sentence": "C'est ___ amie de Marie.",
-            "translation": "She is Marie's friend.",
-            "options": [
-              "l'",
-              "la"
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.connected.elision"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s2.elision_habite",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "fillBlank",
-            "id": "fr-cpx-s2-elision_habite",
-            "sentence": "Je ___ habite pas à Lyon.",
-            "translation": "I do not live in Lyon.",
-            "options": [
-              "n'",
-              "ne"
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.connected.elision"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s2.cognate_nation",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s2-cognate_nation",
-            "mode": "targetToNative",
-            "prompt": "la nation",
-            "options": [
-              {
-                "text": "the nation"
-              },
-              {
-                "text": "the birth"
-              },
-              {
-                "text": "the notion"
-              },
-              {
-                "text": "the note"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.strategy.cognate_transfer"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s2.cognate_library",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s2-cognate_library",
-            "mode": "nativeToTarget",
-            "prompt": "the library",
-            "options": [
-              {
-                "text": "la bibliothèque"
-              },
-              {
-                "text": "la librairie"
-              },
-              {
-                "text": "la liberté"
-              },
-              {
-                "text": "la gare"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.strategy.cognate_transfer"
-          ],
-          "essential": false
-        }
+     "id": "fr.cpi.s1.greet_leaving",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-greet_leaving",
+      "mode": "nativeToTarget",
+      "prompt": "You are leaving a shop. What do you say?",
+      "options": [
+       {
+        "text": "Au revoir !"
+       },
+       {
+        "text": "Bonjour !"
+       },
+       {
+        "text": "Oui !"
+       },
+       {
+        "text": "Pardon !"
+       }
       ],
-      "criteria": {
-        "minItemsPerObjective": 2,
-        "demonstratedShare": 0.66
-      }
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.greetings.basic"
+     ],
+     "essential": true
     },
     {
-      "id": "fr.checkpoint.section-3",
-      "checkpointVersion": 1,
-      "sectionId": "fr-en:section-3",
-      "title": "Section 3 check",
-      "description": "Show what you can understand — listen to real announcements and dialogues, and read the messages, signs and short texts of everyday French.",
-      "items": [
-        {
-          "id": "fr.cpi.s3.fam_hotel",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-fam_hotel",
-            "clipId": "fr.clip.cp3_hotel",
-            "question": "What do you hear?",
-            "options": [
-              {
-                "text": "the hotel"
-              },
-              {
-                "text": "the school"
-              },
-              {
-                "text": "the station"
-              },
-              {
-                "text": "the museum"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.fam_fromage",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-fam_fromage",
-            "clipId": "fr.clip.cp3_fromage",
-            "question": "What do you hear?",
-            "options": [
-              {
-                "text": "the cheese"
-              },
-              {
-                "text": "the bread"
-              },
-              {
-                "text": "the chicken"
-              },
-              {
-                "text": "the fish"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.fam_dictee_soir",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "dictation",
-            "id": "fr-cpx-s3-fam_dictee_soir",
-            "clipId": "fr.clip.cp3_dictee_soir",
-            "answer": "le soir",
-            "alternatives": [
-              "soir"
-            ]
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.familiar_words"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.ann_biblio_heure",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-ann_biblio_heure",
-            "clipId": "fr.clip.cp3_biblio_ferme",
-            "question": "When does the library close tonight?",
-            "options": [
-              {
-                "text": "At six o'clock"
-              },
-              {
-                "text": "At nine o'clock"
-              },
-              {
-                "text": "At eleven o'clock"
-              },
-              {
-                "text": "At four o'clock"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.announcements"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.ann_biblio_lieu",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-ann_biblio_lieu",
-            "clipId": "fr.clip.cp3_biblio_ferme",
-            "question": "What place is this announcement about?",
-            "options": [
-              {
-                "text": "The library"
-              },
-              {
-                "text": "The station"
-              },
-              {
-                "text": "The shop"
-              },
-              {
-                "text": "The museum"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.announcements"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.ann_train_voie",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-ann_train_voie",
-            "clipId": "fr.clip.cp3_train_marseille",
-            "question": "Which platform does the Marseille train leave from?",
-            "options": [
-              {
-                "text": "Platform four"
-              },
-              {
-                "text": "Platform two"
-              },
-              {
-                "text": "Platform nine"
-              },
-              {
-                "text": "Platform eleven"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.announcements"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.ann_dictee_voie",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "dictation",
-            "id": "fr-cpx-s3-ann_dictee_voie",
-            "clipId": "fr.clip.cp3_dictee_voie",
-            "answer": "voie quatre",
-            "alternatives": []
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.announcements"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.info_musee_prix",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-info_musee_prix",
-            "clipId": "fr.clip.cp3_entree_musee",
-            "question": "How much does the museum entrance cost?",
-            "options": [
-              {
-                "text": "Eight euros"
-              },
-              {
-                "text": "Two euros"
-              },
-              {
-                "text": "Ten euros"
-              },
-              {
-                "text": "Four euros"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.short_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.info_musee_jour",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-info_musee_jour",
-            "clipId": "fr.clip.cp3_entree_musee",
-            "question": "Which day is that price for?",
-            "options": [
-              {
-                "text": "Saturday"
-              },
-              {
-                "text": "Sunday"
-              },
-              {
-                "text": "Monday"
-              },
-              {
-                "text": "Tuesday"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.short_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.info_resto_plage",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-info_resto_plage",
-            "clipId": "fr.clip.cp3_resto_plage",
-            "question": "When is the beach restaurant open?",
-            "options": [
-              {
-                "text": "Saturday morning"
-              },
-              {
-                "text": "Sunday evening"
-              },
-              {
-                "text": "Every evening"
-              },
-              {
-                "text": "Tomorrow morning"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.short_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.dlg_the_objet",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-dlg_the_objet",
-            "clipId": "fr.clip.cp3_dialogue_the",
-            "question": "What does the customer order?",
-            "options": [
-              {
-                "text": "A tea"
-              },
-              {
-                "text": "A coffee"
-              },
-              {
-                "text": "A glass of milk"
-              },
-              {
-                "text": "A glass of wine"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.short_dialogues"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.dlg_the_prix",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-dlg_the_prix",
-            "clipId": "fr.clip.cp3_dialogue_the",
-            "question": "How much does it cost?",
-            "options": [
-              {
-                "text": "Three euros"
-              },
-              {
-                "text": "Two euros"
-              },
-              {
-                "text": "Nine euros"
-              },
-              {
-                "text": "Six euros"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.short_dialogues"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.dlg_magasin_heure",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "listeningComprehension",
-            "id": "fr-cpx-s3-dlg_magasin_heure",
-            "clipId": "fr.clip.cp3_dialogue_magasin",
-            "question": "When does the shop open?",
-            "options": [
-              {
-                "text": "At nine o'clock"
-              },
-              {
-                "text": "At six o'clock"
-              },
-              {
-                "text": "At eleven o'clock"
-              },
-              {
-                "text": "At two o'clock"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.listening.short_dialogues"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.msg_theo_quand",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "readingComprehension",
-            "id": "fr-cpx-s3-msg_theo_quand",
-            "readingId": "fr.read.cp3_message_theo",
-            "question": "When is Théo taking the train?",
-            "options": [
-              {
-                "text": "Sunday morning"
-              },
-              {
-                "text": "Saturday evening"
-              },
-              {
-                "text": "Monday morning"
-              },
-              {
-                "text": "Tomorrow evening"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.short_messages"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.msg_theo_ou",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "readingComprehension",
-            "id": "fr-cpx-s3-msg_theo_ou",
-            "readingId": "fr.read.cp3_message_theo",
-            "question": "Where is Théo going?",
-            "options": [
-              {
-                "text": "To the beach"
-              },
-              {
-                "text": "To the museum"
-              },
-              {
-                "text": "To the station café"
-              },
-              {
-                "text": "To school"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.short_messages"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.msg_ferme",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s3-msg_ferme",
-            "mode": "targetToNative",
-            "prompt": "Le café est fermé aujourd'hui.",
-            "options": [
-              {
-                "text": "The café is closed today"
-              },
-              {
-                "text": "The café is open today"
-              },
-              {
-                "text": "The café opens tomorrow"
-              },
-              {
-                "text": "The café is next to the station"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.short_messages"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.not_biblio_jours",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "readingComprehension",
-            "id": "fr-cpx-s3-not_biblio_jours",
-            "readingId": "fr.read.cp3_notice_biblio",
-            "question": "On which days is the library open?",
-            "options": [
-              {
-                "text": "Tuesday to Saturday"
-              },
-              {
-                "text": "Monday to Friday"
-              },
-              {
-                "text": "Every day"
-              },
-              {
-                "text": "Saturday and Sunday only"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.notices_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.not_biblio_dimanche",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "readingComprehension",
-            "id": "fr-cpx-s3-not_biblio_dimanche",
-            "readingId": "fr.read.cp3_notice_biblio",
-            "question": "What does the notice say about Sunday?",
-            "options": [
-              {
-                "text": "The library is closed"
-              },
-              {
-                "text": "The library opens at nine"
-              },
-              {
-                "text": "The library closes at six"
-              },
-              {
-                "text": "Entry is free"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.notices_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.not_sortie",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "select",
-            "id": "fr-cpx-s3-not_sortie",
-            "mode": "targetToNative",
-            "prompt": "Sortie",
-            "options": [
-              {
-                "text": "The way out"
-              },
-              {
-                "text": "The entrance"
-              },
-              {
-                "text": "The ticket office"
-              },
-              {
-                "text": "The platform"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.notices_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.txt_camille_ou",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "readingComprehension",
-            "id": "fr-cpx-s3-txt_camille_ou",
-            "readingId": "fr.read.cp3_texte_camille",
-            "question": "Where does Camille work?",
-            "options": [
-              {
-                "text": "At the station restaurant"
-              },
-              {
-                "text": "At the beach café"
-              },
-              {
-                "text": "At the library"
-              },
-              {
-                "text": "At the museum"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.short_texts"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.txt_camille_matin",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "readingComprehension",
-            "id": "fr-cpx-s3-txt_camille_matin",
-            "readingId": "fr.read.cp3_texte_camille",
-            "question": "What does Camille buy in the morning?",
-            "options": [
-              {
-                "text": "Bread and cheese"
-              },
-              {
-                "text": "Coffee and tea"
-              },
-              {
-                "text": "Fish and rice"
-              },
-              {
-                "text": "Milk and eggs"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.short_texts"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s3.txt_nora_train",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "readingComprehension",
-            "id": "fr-cpx-s3-txt_nora_train",
-            "readingId": "fr.read.cp3_texte_nora",
-            "question": "How does Nora get to the library?",
-            "options": [
-              {
-                "text": "By train"
-              },
-              {
-                "text": "By taxi"
-              },
-              {
-                "text": "On foot"
-              },
-              {
-                "text": "By car"
-              }
-            ],
-            "correct": 0
-          },
-          "objectiveTargets": [
-            "fr.obj.reading.short_texts"
-          ],
-          "essential": true
-        }
+     "id": "fr.cpi.s1.greet_thanks",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-greet_thanks",
+      "mode": "nativeToTarget",
+      "prompt": "Someone holds the door open for you. You say:",
+      "options": [
+       {
+        "text": "Merci !"
+       },
+       {
+        "text": "S'il vous plaît !"
+       },
+       {
+        "text": "Bonne nuit !"
+       },
+       {
+        "text": "Non !"
+       }
       ],
-      "criteria": {
-        "minItemsPerObjective": 2,
-        "demonstratedShare": 0.66
-      }
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.greetings.basic"
+     ],
+     "essential": true
     },
     {
-      "id": "fr.checkpoint.section-4",
-      "checkpointVersion": 1,
-      "sectionId": "fr-en:section-4",
-      "title": "Section 4 check",
-      "description": "Show what you can SAY — greet, introduce yourself, give real information and describe things aloud. The app grades the words it heard; it never scores your accent.",
-      "items": [
-        {
-          "id": "fr.cpi.s4.greet_restaurant",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-greet_restaurant",
-            "speechItemId": "fr.speak.cp4_greet_restaurant",
-            "instruction": "You walk into a restaurant at seven in the evening. Greet the waiter.",
-            "target": "Bonsoir",
-            "acceptedVariants": [
-              "Bonsoir",
-              "Bonsoir, monsieur",
-              "Bonsoir, madame"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.formulaic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.thanks_door",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-thanks_door",
-            "speechItemId": "fr.speak.cp4_thanks_door",
-            "instruction": "Someone holds the door open for you. Thank them.",
-            "target": "Merci",
-            "acceptedVariants": [
-              "Merci",
-              "Merci beaucoup",
-              "Merci, monsieur",
-              "Merci, madame"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.formulaic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.leave_shop",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-leave_shop",
-            "speechItemId": "fr.speak.cp4_leave_shop",
-            "instruction": "You are leaving the shop after paying. Say goodbye.",
-            "target": "Au revoir",
-            "acceptedVariants": [
-              "Au revoir",
-              "Au revoir, madame",
-              "Au revoir, monsieur"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.formulaic"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.language",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-language",
-            "speechItemId": "fr.speak.cp4_language",
-            "instruction": "Someone asks which language you speak. Answer: French.",
-            "target": "Je parle français",
-            "acceptedVariants": [
-              "Je parle français"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.self_intro"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.like_tea",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-like_tea",
-            "speechItemId": "fr.speak.cp4_like_tea",
-            "instruction": "Say that you like tea.",
-            "target": "J'aime le thé",
-            "acceptedVariants": [
-              "J'aime le thé"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.self_intro"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.work_evening",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-work_evening",
-            "speechItemId": "fr.speak.cp4_work_evening",
-            "instruction": "Say that you work in the evening.",
-            "target": "Je travaille le soir",
-            "acceptedVariants": [
-              "Je travaille le soir"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.self_intro"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.dogs",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-dogs",
-            "speechItemId": "fr.speak.cp4_dogs",
-            "instruction": "Say how many dogs there are.",
-            "cueEmoji": "🐶🐶🐶",
-            "cueFacts": [
-              {
-                "label": "Dogs",
-                "value": "3"
-              }
-            ],
-            "target": "Il y a trois chiens",
-            "acceptedVariants": [
-              "Il y a trois chiens"
-            ],
-            "requiredConcepts": [
-              [
-                "il y a"
-              ],
-              [
-                "trois",
-                "3"
-              ],
-              [
-                "chiens",
-                "chien"
-              ]
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.give_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.price_five",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-price_five",
-            "speechItemId": "fr.speak.cp4_price_five",
-            "instruction": "Say what it costs.",
-            "cueFacts": [
-              {
-                "label": "Price",
-                "value": "5 €"
-              }
-            ],
-            "target": "Ça coûte cinq euros",
-            "acceptedVariants": [
-              "Ça coûte cinq euros"
-            ],
-            "requiredConcepts": [
-              [
-                "coûte"
-              ],
-              [
-                "cinq",
-                "5"
-              ],
-              [
-                "euros",
-                "euro"
-              ]
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.give_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.train_ten",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-train_ten",
-            "speechItemId": "fr.speak.cp4_train_ten",
-            "instruction": "Say when the train leaves.",
-            "cueFacts": [
-              {
-                "label": "Departure",
-                "value": "10:00"
-              }
-            ],
-            "target": "Le train part à dix heures",
-            "acceptedVariants": [
-              "Le train part à dix heures"
-            ],
-            "requiredConcepts": [
-              [
-                "train"
-              ],
-              [
-                "dix",
-                "10"
-              ],
-              [
-                "heures",
-                "heure"
-              ]
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.give_info"
-          ],
-          "essential": true
-        },
-        {
-          "id": "fr.cpi.s4.cat_pic",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-cat_pic",
-            "speechItemId": "fr.speak.cp4_cat_pic",
-            "instruction": "Say what this is.",
-            "cueEmoji": "🐱",
-            "target": "C'est un chat",
-            "acceptedVariants": [
-              "C'est un chat",
-              "Un chat"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.describe"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s4.evening_pic",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-evening_pic",
-            "speechItemId": "fr.speak.cp4_evening_pic",
-            "instruction": "Say what time of day this is.",
-            "cueEmoji": "🌙",
-            "target": "C'est le soir",
-            "acceptedVariants": [
-              "C'est le soir",
-              "Le soir"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.describe"
-          ],
-          "essential": false
-        },
-        {
-          "id": "fr.cpi.s4.shop_closed",
-          "itemVersion": 1,
-          "exercise": {
-            "type": "speakProduction",
-            "id": "fr-cpx-s4-shop_closed",
-            "speechItemId": "fr.speak.cp4_shop_closed",
-            "instruction": "Say that the shop is closed.",
-            "target": "Le magasin est fermé",
-            "acceptedVariants": [
-              "Le magasin est fermé"
-            ],
-            "evidenceLexemeRefs": [],
-            "revealTargetAfterAttempts": null,
-            "allowContextualBias": false,
-            "modelClipId": null,
-            "allowedAttempts": 2
-          },
-          "objectiveTargets": [
-            "fr.obj.speaking.describe"
-          ],
-          "essential": false
-        }
+     "id": "fr.cpi.s1.vocab_horse",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-vocab_horse",
+      "mode": "nativeToTarget",
+      "prompt": "the horse",
+      "options": [
+       {
+        "text": "le cheval"
+       },
+       {
+        "text": "le chien"
+       },
+       {
+        "text": "la vache"
+       },
+       {
+        "text": "le poisson"
+       }
       ],
-      "criteria": {
-        "minItemsPerObjective": 2,
-        "demonstratedShare": 0.66
-      }
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.vocab.everyday_basics"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s1.vocab_cheese",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-vocab_cheese",
+      "mode": "nativeToTarget",
+      "prompt": "the cheese",
+      "options": [
+       {
+        "text": "le fromage"
+       },
+       {
+        "text": "le pain"
+       },
+       {
+        "text": "le lait"
+       },
+       {
+        "text": "l'œuf"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.vocab.everyday_basics"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s1.vocab_girl",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-vocab_girl",
+      "mode": "targetToNative",
+      "prompt": "la fille",
+      "options": [
+       {
+        "text": "the girl"
+       },
+       {
+        "text": "the woman"
+       },
+       {
+        "text": "the boy"
+       },
+       {
+        "text": "the man"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.vocab.everyday_basics"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s1.read_water",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-read_water",
+      "mode": "targetToNative",
+      "prompt": "Je bois de l'eau.",
+      "options": [
+       {
+        "text": "I drink water."
+       },
+       {
+        "text": "I eat bread."
+       },
+       {
+        "text": "I drink milk."
+       },
+       {
+        "text": "I like water."
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s1.read_cat",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-read_cat",
+      "mode": "targetToNative",
+      "prompt": "Le chat mange le poisson.",
+      "options": [
+       {
+        "text": "The cat eats the fish."
+       },
+       {
+        "text": "The dog eats the fish."
+       },
+       {
+        "text": "The cat drinks the milk."
+       },
+       {
+        "text": "The fish eats the cat."
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s1.read_dog",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-read_dog",
+      "mode": "targetToNative",
+      "prompt": "Le chien est dans la rue.",
+      "options": [
+       {
+        "text": "The dog is in the street."
+       },
+       {
+        "text": "The cat is in the street."
+       },
+       {
+        "text": "The dog is at the station."
+       },
+       {
+        "text": "The dog is in the city."
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s1.travel_station",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-travel_station",
+      "mode": "nativeToTarget",
+      "prompt": "the train station",
+      "options": [
+       {
+        "text": "la gare"
+       },
+       {
+        "text": "la ville"
+       },
+       {
+        "text": "l'aéroport"
+       },
+       {
+        "text": "l'hôtel"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.vocab.places_travel"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s1.travel_ticket",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-travel_ticket",
+      "mode": "targetToNative",
+      "prompt": "le billet",
+      "options": [
+       {
+        "text": "the ticket"
+       },
+       {
+        "text": "the map"
+       },
+       {
+        "text": "the museum"
+       },
+       {
+        "text": "the street"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.vocab.places_travel"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s1.travel_map",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s1-travel_map",
+      "mode": "nativeToTarget",
+      "prompt": "the map",
+      "options": [
+       {
+        "text": "la carte"
+       },
+       {
+        "text": "la rue"
+       },
+       {
+        "text": "la gare"
+       },
+       {
+        "text": "le billet"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.vocab.places_travel"
+     ],
+     "essential": false
     }
-  ]
+   ],
+   "criteria": {
+    "minItemsPerObjective": 2,
+    "demonstratedShare": 0.66
+   }
+  },
+  {
+   "id": "fr.checkpoint.section-2",
+   "checkpointVersion": 1,
+   "sectionId": "fr-en:section-2",
+   "title": "Section 2 check",
+   "description": "Show what you can do with the building blocks — articles, verbs, numbers and connected writing.",
+   "items": [
+    {
+     "id": "fr.cpi.s2.article_house",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "articleSelect",
+      "id": "fr-cpx-s2-article_house",
+      "articles": [
+       "un",
+       "une"
+      ],
+      "noun": "maison",
+      "gloss": "a house",
+      "correct": 1
+     },
+     "objectiveTargets": [
+      "fr.obj.gender.articles_basic"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.article_gift",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "articleSelect",
+      "id": "fr-cpx-s2-article_gift",
+      "articles": [
+       "le",
+       "la"
+      ],
+      "noun": "cadeau",
+      "gloss": "the gift",
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.gender.articles_basic"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.pattern_revolution",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "articleSelect",
+      "id": "fr-cpx-s2-pattern_revolution",
+      "articles": [
+       "le",
+       "la"
+      ],
+      "noun": "révolution",
+      "gloss": "the revolution",
+      "correct": 1
+     },
+     "objectiveTargets": [
+      "fr.obj.gender.ending_patterns"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s2.pattern_government",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "articleSelect",
+      "id": "fr-cpx-s2-pattern_government",
+      "articles": [
+       "le",
+       "la"
+      ],
+      "noun": "gouvernement",
+      "gloss": "the government",
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.gender.ending_patterns"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s2.pattern_garage",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "articleSelect",
+      "id": "fr-cpx-s2-pattern_garage",
+      "articles": [
+       "le",
+       "la"
+      ],
+      "noun": "garage",
+      "gloss": "the garage",
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.gender.ending_patterns"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s2.etre_nous",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "conjugationCloze",
+      "id": "fr-cpx-s2-etre_nous",
+      "sentence": "Nous ___ en France.",
+      "translation": "We are in France.",
+      "verb": "être",
+      "cell": "pre:1p",
+      "answer": "sommes",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.verbs.etre_avoir_present",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.avoir_elles",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "conjugationCloze",
+      "id": "fr-cpx-s2-avoir_elles",
+      "sentence": "Elles ___ deux chiens.",
+      "translation": "They have two dogs.",
+      "verb": "avoir",
+      "cell": "pre:3p",
+      "answer": "ont",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.verbs.etre_avoir_present",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.avoir_vous",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "conjugationCloze",
+      "id": "fr-cpx-s2-avoir_vous",
+      "sentence": "Vous ___ une maison.",
+      "translation": "You have a house.",
+      "verb": "avoir",
+      "cell": "pre:2p",
+      "answer": "avez",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.verbs.etre_avoir_present",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.er_parler",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "conjugationCloze",
+      "id": "fr-cpx-s2-er_parler",
+      "sentence": "Il ___ avec le professeur.",
+      "translation": "He talks with the teacher.",
+      "verb": "parler",
+      "cell": "pre:3s",
+      "answer": "parle",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.verbs.er_present",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.er_aimer",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "conjugationCloze",
+      "id": "fr-cpx-s2-er_aimer",
+      "sentence": "Nous ___ le chocolat.",
+      "translation": "We love chocolate.",
+      "verb": "aimer",
+      "cell": "pre:1p",
+      "answer": "aimons",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.verbs.er_present",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.er_habiter",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "conjugationCloze",
+      "id": "fr-cpx-s2-er_habiter",
+      "sentence": "Tu ___ à Paris.",
+      "translation": "You live in Paris.",
+      "verb": "habiter",
+      "cell": "pre:2s",
+      "answer": "habites",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.verbs.er_present",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.number_73",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "typeAnswer",
+      "id": "fr-cpx-s2-number_73",
+      "mode": "produceTarget",
+      "prompt": "73",
+      "answer": "soixante-treize",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.numbers.0_100",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.number_95",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "typeAnswer",
+      "id": "fr-cpx-s2-number_95",
+      "mode": "produceTarget",
+      "prompt": "95",
+      "answer": "quatre-vingt-quinze",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.numbers.0_100",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.number_41",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "typeAnswer",
+      "id": "fr-cpx-s2-number_41",
+      "mode": "produceTarget",
+      "prompt": "41",
+      "answer": "quarante et un",
+      "alternatives": [
+       "quarante-et-un"
+      ]
+     },
+     "objectiveTargets": [
+      "fr.obj.numbers.0_100",
+      "fr.obj.writing.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s2.elision_amie",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "fillBlank",
+      "id": "fr-cpx-s2-elision_amie",
+      "sentence": "C'est ___ amie de Marie.",
+      "translation": "She is Marie's friend.",
+      "options": [
+       "l'",
+       "la"
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.connected.elision"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s2.elision_habite",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "fillBlank",
+      "id": "fr-cpx-s2-elision_habite",
+      "sentence": "Je ___ habite pas à Lyon.",
+      "translation": "I do not live in Lyon.",
+      "options": [
+       "n'",
+       "ne"
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.connected.elision"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s2.cognate_nation",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s2-cognate_nation",
+      "mode": "targetToNative",
+      "prompt": "la nation",
+      "options": [
+       {
+        "text": "the nation"
+       },
+       {
+        "text": "the birth"
+       },
+       {
+        "text": "the notion"
+       },
+       {
+        "text": "the note"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.strategy.cognate_transfer"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s2.cognate_library",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s2-cognate_library",
+      "mode": "nativeToTarget",
+      "prompt": "the library",
+      "options": [
+       {
+        "text": "la bibliothèque"
+       },
+       {
+        "text": "la librairie"
+       },
+       {
+        "text": "la liberté"
+       },
+       {
+        "text": "la gare"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.strategy.cognate_transfer"
+     ],
+     "essential": false
+    }
+   ],
+   "criteria": {
+    "minItemsPerObjective": 2,
+    "demonstratedShare": 0.66
+   }
+  },
+  {
+   "id": "fr.checkpoint.section-3",
+   "checkpointVersion": 1,
+   "sectionId": "fr-en:section-3",
+   "title": "Section 3 check",
+   "description": "Show what you can understand — listen to real announcements and dialogues, and read the messages, signs and short texts of everyday French.",
+   "items": [
+    {
+     "id": "fr.cpi.s3.fam_hotel",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-fam_hotel",
+      "clipId": "fr.clip.cp3_hotel",
+      "question": "What do you hear?",
+      "options": [
+       {
+        "text": "the hotel"
+       },
+       {
+        "text": "the school"
+       },
+       {
+        "text": "the station"
+       },
+       {
+        "text": "the museum"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.fam_fromage",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-fam_fromage",
+      "clipId": "fr.clip.cp3_fromage",
+      "question": "What do you hear?",
+      "options": [
+       {
+        "text": "the cheese"
+       },
+       {
+        "text": "the bread"
+       },
+       {
+        "text": "the chicken"
+       },
+       {
+        "text": "the fish"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.fam_dictee_soir",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "dictation",
+      "id": "fr-cpx-s3-fam_dictee_soir",
+      "clipId": "fr.clip.cp3_dictee_soir",
+      "answer": "le soir",
+      "alternatives": [
+       "soir"
+      ]
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.familiar_words"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.ann_biblio_heure",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-ann_biblio_heure",
+      "clipId": "fr.clip.cp3_biblio_ferme",
+      "question": "When does the library close tonight?",
+      "options": [
+       {
+        "text": "At six o'clock"
+       },
+       {
+        "text": "At nine o'clock"
+       },
+       {
+        "text": "At eleven o'clock"
+       },
+       {
+        "text": "At four o'clock"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.announcements"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.ann_biblio_lieu",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-ann_biblio_lieu",
+      "clipId": "fr.clip.cp3_biblio_ferme",
+      "question": "What place is this announcement about?",
+      "options": [
+       {
+        "text": "The library"
+       },
+       {
+        "text": "The station"
+       },
+       {
+        "text": "The shop"
+       },
+       {
+        "text": "The museum"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.announcements"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.ann_train_voie",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-ann_train_voie",
+      "clipId": "fr.clip.cp3_train_marseille",
+      "question": "Which platform does the Marseille train leave from?",
+      "options": [
+       {
+        "text": "Platform four"
+       },
+       {
+        "text": "Platform two"
+       },
+       {
+        "text": "Platform nine"
+       },
+       {
+        "text": "Platform eleven"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.announcements"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.ann_dictee_voie",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "dictation",
+      "id": "fr-cpx-s3-ann_dictee_voie",
+      "clipId": "fr.clip.cp3_dictee_voie",
+      "answer": "voie quatre",
+      "alternatives": []
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.announcements"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.info_musee_prix",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-info_musee_prix",
+      "clipId": "fr.clip.cp3_entree_musee",
+      "question": "How much does the museum entrance cost?",
+      "options": [
+       {
+        "text": "Eight euros"
+       },
+       {
+        "text": "Two euros"
+       },
+       {
+        "text": "Ten euros"
+       },
+       {
+        "text": "Four euros"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.short_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.info_musee_jour",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-info_musee_jour",
+      "clipId": "fr.clip.cp3_entree_musee",
+      "question": "Which day is that price for?",
+      "options": [
+       {
+        "text": "Saturday"
+       },
+       {
+        "text": "Sunday"
+       },
+       {
+        "text": "Monday"
+       },
+       {
+        "text": "Tuesday"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.short_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.info_resto_plage",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-info_resto_plage",
+      "clipId": "fr.clip.cp3_resto_plage",
+      "question": "When is the beach restaurant open?",
+      "options": [
+       {
+        "text": "Saturday morning"
+       },
+       {
+        "text": "Sunday evening"
+       },
+       {
+        "text": "Every evening"
+       },
+       {
+        "text": "Tomorrow morning"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.short_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.dlg_the_objet",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-dlg_the_objet",
+      "clipId": "fr.clip.cp3_dialogue_the",
+      "question": "What does the customer order?",
+      "options": [
+       {
+        "text": "A tea"
+       },
+       {
+        "text": "A coffee"
+       },
+       {
+        "text": "A glass of milk"
+       },
+       {
+        "text": "A glass of wine"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.short_dialogues"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.dlg_the_prix",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-dlg_the_prix",
+      "clipId": "fr.clip.cp3_dialogue_the",
+      "question": "How much does it cost?",
+      "options": [
+       {
+        "text": "Three euros"
+       },
+       {
+        "text": "Two euros"
+       },
+       {
+        "text": "Nine euros"
+       },
+       {
+        "text": "Six euros"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.short_dialogues"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.dlg_magasin_heure",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "listeningComprehension",
+      "id": "fr-cpx-s3-dlg_magasin_heure",
+      "clipId": "fr.clip.cp3_dialogue_magasin",
+      "question": "When does the shop open?",
+      "options": [
+       {
+        "text": "At nine o'clock"
+       },
+       {
+        "text": "At six o'clock"
+       },
+       {
+        "text": "At eleven o'clock"
+       },
+       {
+        "text": "At two o'clock"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.listening.short_dialogues"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.msg_theo_quand",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "readingComprehension",
+      "id": "fr-cpx-s3-msg_theo_quand",
+      "readingId": "fr.read.cp3_message_theo",
+      "question": "When is Théo taking the train?",
+      "options": [
+       {
+        "text": "Sunday morning"
+       },
+       {
+        "text": "Saturday evening"
+       },
+       {
+        "text": "Monday morning"
+       },
+       {
+        "text": "Tomorrow evening"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.short_messages"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.msg_theo_ou",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "readingComprehension",
+      "id": "fr-cpx-s3-msg_theo_ou",
+      "readingId": "fr.read.cp3_message_theo",
+      "question": "Where is Théo going?",
+      "options": [
+       {
+        "text": "To the beach"
+       },
+       {
+        "text": "To the museum"
+       },
+       {
+        "text": "To the station café"
+       },
+       {
+        "text": "To school"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.short_messages"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.msg_ferme",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s3-msg_ferme",
+      "mode": "targetToNative",
+      "prompt": "Le café est fermé aujourd'hui.",
+      "options": [
+       {
+        "text": "The café is closed today"
+       },
+       {
+        "text": "The café is open today"
+       },
+       {
+        "text": "The café opens tomorrow"
+       },
+       {
+        "text": "The café is next to the station"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.short_messages"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.not_biblio_jours",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "readingComprehension",
+      "id": "fr-cpx-s3-not_biblio_jours",
+      "readingId": "fr.read.cp3_notice_biblio",
+      "question": "On which days is the library open?",
+      "options": [
+       {
+        "text": "Tuesday to Saturday"
+       },
+       {
+        "text": "Monday to Friday"
+       },
+       {
+        "text": "Every day"
+       },
+       {
+        "text": "Saturday and Sunday only"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.notices_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.not_biblio_dimanche",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "readingComprehension",
+      "id": "fr-cpx-s3-not_biblio_dimanche",
+      "readingId": "fr.read.cp3_notice_biblio",
+      "question": "What does the notice say about Sunday?",
+      "options": [
+       {
+        "text": "The library is closed"
+       },
+       {
+        "text": "The library opens at nine"
+       },
+       {
+        "text": "The library closes at six"
+       },
+       {
+        "text": "Entry is free"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.notices_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.not_sortie",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "select",
+      "id": "fr-cpx-s3-not_sortie",
+      "mode": "targetToNative",
+      "prompt": "Sortie",
+      "options": [
+       {
+        "text": "The way out"
+       },
+       {
+        "text": "The entrance"
+       },
+       {
+        "text": "The ticket office"
+       },
+       {
+        "text": "The platform"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.notices_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.txt_camille_ou",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "readingComprehension",
+      "id": "fr-cpx-s3-txt_camille_ou",
+      "readingId": "fr.read.cp3_texte_camille",
+      "question": "Where does Camille work?",
+      "options": [
+       {
+        "text": "At the station restaurant"
+       },
+       {
+        "text": "At the beach café"
+       },
+       {
+        "text": "At the library"
+       },
+       {
+        "text": "At the museum"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.short_texts"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.txt_camille_matin",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "readingComprehension",
+      "id": "fr-cpx-s3-txt_camille_matin",
+      "readingId": "fr.read.cp3_texte_camille",
+      "question": "What does Camille buy in the morning?",
+      "options": [
+       {
+        "text": "Bread and cheese"
+       },
+       {
+        "text": "Coffee and tea"
+       },
+       {
+        "text": "Fish and rice"
+       },
+       {
+        "text": "Milk and eggs"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.short_texts"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s3.txt_nora_train",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "readingComprehension",
+      "id": "fr-cpx-s3-txt_nora_train",
+      "readingId": "fr.read.cp3_texte_nora",
+      "question": "How does Nora get to the library?",
+      "options": [
+       {
+        "text": "By train"
+       },
+       {
+        "text": "By taxi"
+       },
+       {
+        "text": "On foot"
+       },
+       {
+        "text": "By car"
+       }
+      ],
+      "correct": 0
+     },
+     "objectiveTargets": [
+      "fr.obj.reading.short_texts"
+     ],
+     "essential": true
+    }
+   ],
+   "criteria": {
+    "minItemsPerObjective": 2,
+    "demonstratedShare": 0.66
+   }
+  },
+  {
+   "id": "fr.checkpoint.section-4",
+   "checkpointVersion": 1,
+   "sectionId": "fr-en:section-4",
+   "title": "Section 4 check",
+   "description": "Show what you can SAY — greet, introduce yourself, give real information and describe things aloud. The app grades the words it heard; it never scores your accent.",
+   "items": [
+    {
+     "id": "fr.cpi.s4.greet_restaurant",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-greet_restaurant",
+      "speechItemId": "fr.speak.cp4_greet_restaurant",
+      "instruction": "You walk into a restaurant at seven in the evening. Greet the waiter.",
+      "target": "Bonsoir",
+      "acceptedVariants": [
+       "Bonsoir",
+       "Bonsoir, monsieur",
+       "Bonsoir, madame"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.formulaic"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.thanks_door",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-thanks_door",
+      "speechItemId": "fr.speak.cp4_thanks_door",
+      "instruction": "Someone holds the door open for you. Thank them.",
+      "target": "Merci",
+      "acceptedVariants": [
+       "Merci",
+       "Merci beaucoup",
+       "Merci, monsieur",
+       "Merci, madame"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.formulaic"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.leave_shop",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-leave_shop",
+      "speechItemId": "fr.speak.cp4_leave_shop",
+      "instruction": "You are leaving the shop after paying. Say goodbye.",
+      "target": "Au revoir",
+      "acceptedVariants": [
+       "Au revoir",
+       "Au revoir, madame",
+       "Au revoir, monsieur"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.formulaic"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.language",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-language",
+      "speechItemId": "fr.speak.cp4_language",
+      "instruction": "Someone asks which language you speak. Answer: French.",
+      "target": "Je parle français",
+      "acceptedVariants": [
+       "Je parle français"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.self_intro"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.like_tea",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-like_tea",
+      "speechItemId": "fr.speak.cp4_like_tea",
+      "instruction": "Say that you like tea.",
+      "target": "J'aime le thé",
+      "acceptedVariants": [
+       "J'aime le thé"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.self_intro"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.work_evening",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-work_evening",
+      "speechItemId": "fr.speak.cp4_work_evening",
+      "instruction": "Say that you work in the evening.",
+      "target": "Je travaille le soir",
+      "acceptedVariants": [
+       "Je travaille le soir"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.self_intro"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.dogs",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-dogs",
+      "speechItemId": "fr.speak.cp4_dogs",
+      "instruction": "Say how many dogs there are.",
+      "cueEmoji": "🐶🐶🐶",
+      "cueFacts": [
+       {
+        "label": "Dogs",
+        "value": "3"
+       }
+      ],
+      "target": "Il y a trois chiens",
+      "acceptedVariants": [
+       "Il y a trois chiens"
+      ],
+      "requiredConcepts": [
+       [
+        "il y a"
+       ],
+       [
+        "trois",
+        "3"
+       ],
+       [
+        "chiens",
+        "chien"
+       ]
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.give_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.price_five",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-price_five",
+      "speechItemId": "fr.speak.cp4_price_five",
+      "instruction": "Say what it costs.",
+      "cueFacts": [
+       {
+        "label": "Price",
+        "value": "5 €"
+       }
+      ],
+      "target": "Ça coûte cinq euros",
+      "acceptedVariants": [
+       "Ça coûte cinq euros"
+      ],
+      "requiredConcepts": [
+       [
+        "coûte"
+       ],
+       [
+        "cinq",
+        "5"
+       ],
+       [
+        "euros",
+        "euro"
+       ]
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.give_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.train_ten",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-train_ten",
+      "speechItemId": "fr.speak.cp4_train_ten",
+      "instruction": "Say when the train leaves.",
+      "cueFacts": [
+       {
+        "label": "Departure",
+        "value": "10:00"
+       }
+      ],
+      "target": "Le train part à dix heures",
+      "acceptedVariants": [
+       "Le train part à dix heures"
+      ],
+      "requiredConcepts": [
+       [
+        "train"
+       ],
+       [
+        "dix",
+        "10"
+       ],
+       [
+        "heures",
+        "heure"
+       ]
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.give_info"
+     ],
+     "essential": true
+    },
+    {
+     "id": "fr.cpi.s4.cat_pic",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-cat_pic",
+      "speechItemId": "fr.speak.cp4_cat_pic",
+      "instruction": "Say what this is.",
+      "cueEmoji": "🐱",
+      "target": "C'est un chat",
+      "acceptedVariants": [
+       "C'est un chat",
+       "Un chat"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.describe"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s4.evening_pic",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-evening_pic",
+      "speechItemId": "fr.speak.cp4_evening_pic",
+      "instruction": "Say what time of day this is.",
+      "cueEmoji": "🌙",
+      "target": "C'est le soir",
+      "acceptedVariants": [
+       "C'est le soir",
+       "Le soir"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.describe"
+     ],
+     "essential": false
+    },
+    {
+     "id": "fr.cpi.s4.shop_closed",
+     "itemVersion": 1,
+     "exercise": {
+      "type": "speakProduction",
+      "id": "fr-cpx-s4-shop_closed",
+      "speechItemId": "fr.speak.cp4_shop_closed",
+      "instruction": "Say that the shop is closed.",
+      "target": "Le magasin est fermé",
+      "acceptedVariants": [
+       "Le magasin est fermé"
+      ],
+      "evidenceLexemeRefs": [],
+      "revealTargetAfterAttempts": null,
+      "allowContextualBias": false,
+      "modelClipId": null,
+      "allowedAttempts": 2
+     },
+     "objectiveTargets": [
+      "fr.obj.speaking.describe"
+     ],
+     "essential": false
+    }
+   ],
+   "criteria": {
+    "minItemsPerObjective": 2,
+    "demonstratedShare": 0.66
+   }
+  },
+  {
+   "id": "fr.checkpoint.section-5",
+   "checkpointVersion": 1,
+   "sectionId": "fr-en:section-5",
+   "title": "Section 5 check",
+   "description": "Show what you can WRITE - introduce someone, write simple sentences, leave a short note and fill in a form. The app checks the information in your French; it never grades style.",
+   "criteria": {
+    "minItemsPerObjective": 2,
+    "demonstratedShare": 0.66
+   },
+   "items": [
+    {
+     "id": "fr.cpi.s5.profile_nadia",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.personal_info"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-profile_nadia",
+      "writingTaskId": "fr.write.cp5_profile_nadia",
+      "writingMode": "guided",
+      "instruction": "You are Nadia. Introduce yourself in writing — name, age and city, in complete sentences.",
+      "cueFacts": [
+       {
+        "label": "Name",
+        "value": "Nadia"
+       },
+       {
+        "label": "Age",
+        "value": "35"
+       },
+       {
+        "label": "City",
+        "value": "Lyon"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "name",
+         "description": "your name",
+         "variants": [
+          "je m'appelle Nadia",
+          "je suis Nadia"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "age",
+         "description": "your age",
+         "variants": [
+          "j'ai trente-cinq ans"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "city",
+         "description": "where you live",
+         "variants": [
+          "j'habite à Lyon",
+          "j'habite Lyon"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 8,
+       "maxTokens": 30,
+       "requireSentenceVerbs": [
+        "m'appelle",
+        "suis"
+       ]
+      },
+      "modelAnswers": [
+       "Je m'appelle Nadia, j'ai 35 ans et j'habite à Lyon."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.profile_tom",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.personal_info"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-profile_tom",
+      "writingTaskId": "fr.write.cp5_profile_tom",
+      "writingMode": "guided",
+      "instruction": "You are Tom. Introduce yourself in writing — name, age and city, in complete sentences.",
+      "cueFacts": [
+       {
+        "label": "Name",
+        "value": "Tom"
+       },
+       {
+        "label": "Age",
+        "value": "28"
+       },
+       {
+        "label": "City",
+        "value": "Nice"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "name",
+         "description": "your name",
+         "variants": [
+          "je m'appelle Tom",
+          "je suis Tom"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "age",
+         "description": "your age",
+         "variants": [
+          "j'ai vingt-huit ans"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "city",
+         "description": "where you live",
+         "variants": [
+          "j'habite à Nice",
+          "j'habite Nice"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 8,
+       "maxTokens": 30,
+       "requireSentenceVerbs": [
+        "m'appelle",
+        "suis"
+       ]
+      },
+      "modelAnswers": [
+       "Je m'appelle Tom, j'ai 28 ans et j'habite à Nice."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.profile_emma",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.personal_info"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-profile_emma",
+      "writingTaskId": "fr.write.cp5_profile_emma",
+      "writingMode": "guided",
+      "instruction": "You are Emma. Introduce yourself in writing — name, age and city, in complete sentences.",
+      "cueFacts": [
+       {
+        "label": "Name",
+        "value": "Emma"
+       },
+       {
+        "label": "Age",
+        "value": "41"
+       },
+       {
+        "label": "City",
+        "value": "Marseille"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "name",
+         "description": "your name",
+         "variants": [
+          "je m'appelle Emma",
+          "je suis Emma"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "age",
+         "description": "your age",
+         "variants": [
+          "j'ai quarante et un ans"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "city",
+         "description": "where you live",
+         "variants": [
+          "j'habite à Marseille",
+          "j'habite Marseille"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 8,
+       "maxTokens": 30,
+       "requireSentenceVerbs": [
+        "m'appelle",
+        "suis"
+       ]
+      },
+      "modelAnswers": [
+       "Je m'appelle Emma, j'ai 41 ans et j'habite à Marseille."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.sofia_tea",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.phrases_sentences"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-sofia_tea",
+      "writingTaskId": "fr.write.cp5_sofia_tea",
+      "writingMode": "guided",
+      "instruction": "Write one sentence about Sofia: she likes tea.",
+      "cueFacts": [
+       {
+        "label": "Person",
+        "value": "Sofia"
+       },
+       {
+        "label": "Likes",
+        "value": "tea"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "fact",
+         "description": "what Sofia likes",
+         "variants": [
+          "sofia aime le thé",
+          "elle aime le thé"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 3,
+       "maxTokens": 12,
+       "requireSentenceVerbs": [
+        "aime"
+       ]
+      },
+      "modelAnswers": [
+       "Sofia aime le thé."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.cat_water",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.phrases_sentences"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-cat_water",
+      "writingTaskId": "fr.write.cp5_cat_water",
+      "writingMode": "guided",
+      "instruction": "Write one sentence: the cat drinks water.",
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "fact",
+         "description": "what the cat does",
+         "variants": [
+          "le chat boit de l'eau",
+          "le chat boit l'eau"
+         ],
+         "cueProvided": false
+        }
+       ],
+       "minTokens": 4,
+       "maxTokens": 12,
+       "requireSentenceVerbs": [
+        "boit"
+       ]
+      },
+      "modelAnswers": [
+       "Le chat boit de l'eau."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.leo_paris",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.phrases_sentences"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-leo_paris",
+      "writingTaskId": "fr.write.cp5_leo_paris",
+      "writingMode": "guided",
+      "instruction": "Write about Léo in one or two short sentences: he lives in Paris and he works.",
+      "cueFacts": [
+       {
+        "label": "Person",
+        "value": "Léo"
+       },
+       {
+        "label": "City",
+        "value": "Paris"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "lives",
+         "description": "where Léo lives",
+         "variants": [
+          "il habite à Paris",
+          "il habite Paris",
+          "Léo habite à Paris",
+          "Léo habite Paris"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "works",
+         "description": "that he works",
+         "variants": [
+          "il travaille",
+          "et travaille",
+          "Léo travaille"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 5,
+       "maxTokens": 18,
+       "requireSentenceVerbs": [
+        "habite",
+        "travaille"
+       ]
+      },
+      "modelAnswers": [
+       "Léo habite à Paris et il travaille."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.note_anna",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.short_message"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-note_anna",
+      "writingTaskId": "fr.write.cp5_note_anna",
+      "writingMode": "guided",
+      "instruction": "Write a short note to Anna: greet her, and tell her the café is at three o'clock.",
+      "cueFacts": [
+       {
+        "label": "To",
+        "value": "Anna"
+       },
+       {
+        "label": "What",
+        "value": "café"
+       },
+       {
+        "label": "Time",
+        "value": "3:00"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "greeting",
+         "description": "a greeting",
+         "variants": [
+          "bonjour",
+          "salut",
+          "bonsoir"
+         ],
+         "cueProvided": false
+        },
+        {
+         "id": "fact",
+         "description": "the café time",
+         "variants": [
+          "le café est à trois heures",
+          "café à trois heures"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 5,
+       "maxTokens": 20
+      },
+      "modelAnswers": [
+       "Bonjour Anna, le café est à trois heures."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.note_train",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.short_message"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-note_train",
+      "writingTaskId": "fr.write.cp5_note_train",
+      "writingMode": "guided",
+      "instruction": "Write a short note: greet your friend, and say the train is Saturday at eight.",
+      "cueFacts": [
+       {
+        "label": "What",
+        "value": "train"
+       },
+       {
+        "label": "When",
+        "value": "Saturday, 8:00"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "greeting",
+         "description": "a greeting",
+         "variants": [
+          "bonjour",
+          "salut",
+          "bonsoir"
+         ],
+         "cueProvided": false
+        },
+        {
+         "id": "fact",
+         "description": "the train day and time",
+         "variants": [
+          "le train est samedi à huit heures",
+          "train samedi à huit heures"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 5,
+       "maxTokens": 20
+      },
+      "modelAnswers": [
+       "Salut, le train est samedi à huit heures."
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.note_library",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.short_message"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "guidedWriting",
+      "id": "fr-cpx-s5-note_library",
+      "writingTaskId": "fr.write.cp5_note_library",
+      "writingMode": "guided",
+      "instruction": "Write a note: say hello, say you are at the library, and close with “see you tomorrow”.",
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "greeting",
+         "description": "a greeting",
+         "variants": [
+          "bonjour",
+          "salut"
+         ],
+         "cueProvided": false
+        },
+        {
+         "id": "place",
+         "description": "where you are",
+         "variants": [
+          "je suis à la bibliothèque"
+         ],
+         "cueProvided": false
+        },
+        {
+         "id": "closing",
+         "description": "a closing",
+         "variants": [
+          "à demain"
+         ],
+         "cueProvided": false
+        }
+       ],
+       "minTokens": 6,
+       "maxTokens": 22,
+       "requireSentenceVerbs": [
+        "suis"
+       ]
+      },
+      "modelAnswers": [
+       "Bonjour, je suis à la bibliothèque. À demain !"
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.form_nadia",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.form_filling"
+     ],
+     "essential": false,
+     "exercise": {
+      "type": "simpleForm",
+      "id": "fr-cpx-s5-form_nadia",
+      "writingTaskId": "fr.write.cp5_form_nadia",
+      "instruction": "Fill in the registration form with the details on the card.",
+      "fields": [
+       {
+        "id": "prenom",
+        "label": "Prénom",
+        "slotId": "name"
+       },
+       {
+        "id": "age",
+        "label": "Âge",
+        "slotId": "age"
+       },
+       {
+        "id": "ville",
+        "label": "Ville",
+        "slotId": "city"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "name",
+         "description": "the first name",
+         "variants": [
+          "Nadia"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "age",
+         "description": "the age",
+         "variants": [
+          "trente-cinq"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "city",
+         "description": "the city",
+         "variants": [
+          "Lyon"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 2,
+       "maxTokens": 12
+      },
+      "modelAnswers": [
+       "Nadia | 35 | Lyon"
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.form_tom",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.form_filling"
+     ],
+     "essential": false,
+     "exercise": {
+      "type": "simpleForm",
+      "id": "fr-cpx-s5-form_tom",
+      "writingTaskId": "fr.write.cp5_form_tom",
+      "instruction": "Fill in the hotel form with the details on the card.",
+      "fields": [
+       {
+        "id": "prenom",
+        "label": "Prénom",
+        "slotId": "name"
+       },
+       {
+        "id": "ville",
+        "label": "Ville",
+        "slotId": "city"
+       },
+       {
+        "id": "jour",
+        "label": "Jour d'arrivée",
+        "slotId": "day"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "name",
+         "description": "the first name",
+         "variants": [
+          "Tom"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "city",
+         "description": "the city",
+         "variants": [
+          "Nice"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "day",
+         "description": "the arrival day",
+         "variants": [
+          "dimanche"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 2,
+       "maxTokens": 12
+      },
+      "modelAnswers": [
+       "Tom | Nice | dimanche"
+      ]
+     }
+    },
+    {
+     "id": "fr.cpi.s5.form_emma",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.writing.form_filling"
+     ],
+     "essential": false,
+     "exercise": {
+      "type": "simpleForm",
+      "id": "fr-cpx-s5-form_emma",
+      "writingTaskId": "fr.write.cp5_form_emma",
+      "instruction": "Fill in the library-card form with the details on the card.",
+      "fields": [
+       {
+        "id": "prenom",
+        "label": "Prénom",
+        "slotId": "name"
+       },
+       {
+        "id": "age",
+        "label": "Âge",
+        "slotId": "age"
+       },
+       {
+        "id": "ville",
+        "label": "Ville",
+        "slotId": "city"
+       }
+      ],
+      "rubric": {
+       "requiredSlots": [
+        {
+         "id": "name",
+         "description": "the first name",
+         "variants": [
+          "Emma"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "age",
+         "description": "the age",
+         "variants": [
+          "quarante et un"
+         ],
+         "cueProvided": true
+        },
+        {
+         "id": "city",
+         "description": "the city",
+         "variants": [
+          "Marseille"
+         ],
+         "cueProvided": true
+        }
+       ],
+       "minTokens": 2,
+       "maxTokens": 12
+      },
+      "modelAnswers": [
+       "Emma | 41 | Marseille"
+      ]
+     }
+    }
+   ]
+  }
+ ]
 }
