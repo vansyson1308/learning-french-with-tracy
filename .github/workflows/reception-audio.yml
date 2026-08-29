@@ -114,7 +114,7 @@ jobs:
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
-          pip install "faster-whisper==1.0.3"
+          pip install "faster-whisper==1.0.3" requests  # requests: undeclared fw dep with huggingface-hub>=1
           python3 scripts/reception-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model base
 
       - name: Technical QA + report
