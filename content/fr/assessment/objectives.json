@@ -307,6 +307,160 @@
         }
       ],
       "essential": false
+    },
+    {
+      "id": "fr.obj.listening.familiar_words",
+      "title": "Hearing familiar words & phrases",
+      "canDo": "I can understand familiar words and very short learned phrases when I hear them spoken clearly and slowly.",
+      "category": "spoken_reception",
+      "prerequisites": [
+        "fr.obj.vocab.everyday_basics"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at Pre-A1 only: bundled clear synthesized single-word/short-phrase clips, scored in the Section-3 checkpoint. Natural conversational speech and accent variety are NOT assessed."
+    },
+    {
+      "id": "fr.obj.listening.short_info",
+      "title": "Catching concrete details by ear",
+      "canDo": "I can pick out concrete information — places, times, prices and numbers — from a short, clear, slow recording about everyday things.",
+      "category": "spoken_reception",
+      "prerequisites": [
+        "fr.obj.listening.familiar_words",
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to audio media & recordings",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:audio-media-recordings"
+        },
+        {
+          "level": "PRE_A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1 within bundled-audio scope: short synthesized factual recordings with 1-3 information units, scored in the Section-3 checkpoint. Authentic-speed media are NOT assessed."
+    },
+    {
+      "id": "fr.obj.listening.announcements",
+      "title": "Following short announcements & instructions",
+      "canDo": "I can follow very short, simple everyday announcements and instructions when they are spoken clearly and slowly.",
+      "category": "spoken_reception",
+      "prerequisites": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to announcements & instructions",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:announcements-instructions"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1 within bundled-audio scope: synthesized station/shop-style announcements and simple instructions, scored in the Section-3 checkpoint."
+    },
+    {
+      "id": "fr.obj.listening.short_dialogues",
+      "title": "Following a short conversation",
+      "canDo": "I can follow the main point of a very short, simple conversation between two people speaking clearly about everyday things.",
+      "category": "spoken_reception",
+      "prerequisites": [
+        "fr.obj.listening.familiar_words",
+        "fr.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Understanding conversation between others",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:understanding-conversation"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1 within bundled-audio scope: two-voice synthesized exchanges of 2-4 turns, scored in the Section-3 checkpoint. The learner listens only — interaction is NOT assessed."
+    },
+    {
+      "id": "fr.obj.reading.short_messages",
+      "title": "Reading short messages",
+      "canDo": "I can understand short, simple written messages — notes, texts and simple postcards — about everyday plans and needs.",
+      "category": "written_reception",
+      "prerequisites": [
+        "fr.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading correspondence (short messages)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-correspondence"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1: original short messages read and answered in the Section-3 checkpoint."
+    },
+    {
+      "id": "fr.obj.reading.notices_info",
+      "title": "Finding information in notices & signs",
+      "canDo": "I can find concrete information in everyday notices, signs, opening hours and simple practical texts.",
+      "category": "written_reception",
+      "prerequisites": [
+        "fr.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation (signs & notices)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-orientation"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1: original notices/schedules with locate-type questions, scored in the Section-3 checkpoint."
+    },
+    {
+      "id": "fr.obj.reading.short_texts",
+      "title": "Understanding short simple texts",
+      "canDo": "I can understand short, very simple descriptive texts about familiar topics, reading slowly and re-reading when I need to.",
+      "category": "written_reception",
+      "prerequisites": [
+        "fr.obj.reading.familiar_words",
+        "fr.obj.verbs.etre_avoir_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A2",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1: original 2-5 sentence descriptions/micro-narratives, scored in the Section-3 checkpoint. Longer or unfamiliar-topic texts are NOT assessed."
     }
   ]
 }

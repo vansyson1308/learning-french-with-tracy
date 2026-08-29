@@ -13,6 +13,7 @@ import React, { useMemo } from "react";
 import { SessionScreen } from "@/components/session/session-screen";
 import { useCourseContent } from "@/lib/content";
 import {
+  buildListeningReviewSessionDefinition,
   buildMistakesSessionDefinition,
   buildPathSessionDefinition,
   buildReviewSessionDefinition,
@@ -47,6 +48,14 @@ export default function LessonScreen() {
     if (id === "srs") {
       return buildReviewSessionDefinition({
         courseId: state.activeCourseId,
+        course: courseProgress,
+        pool: allWords(),
+      });
+    }
+    // Listening review (P7 §79-81): French-only surface over due listen
+    // cards; the practice tab only offers it for the French course.
+    if (id === "srs-listening") {
+      return buildListeningReviewSessionDefinition({
         course: courseProgress,
         pool: allWords(),
       });

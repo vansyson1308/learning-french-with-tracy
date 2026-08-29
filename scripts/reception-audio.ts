@@ -37,6 +37,8 @@ type Voice = {
   id: string;
   role: string;
   multiSpeaker: boolean;
+  /** Speaker ids the canary sweeps for a multi-speaker voice. */
+  canarySpeakers?: number[];
   pinnedSpeakers?: number[];
   files: VoiceFiles;
   declaredDataset: string | null;
@@ -93,16 +95,33 @@ function parseModelCard(text: string): { dataset: string | null; license: string
 
 function licenseGateCheck(manifest: Manifest, voiceId: string, cardText: string): string {
   const { allow, deny } = manifest.licenseGate;
-  const haystack = cardText.toLowerCase();
+  // Gate over the LICENSE-RELEVANT lines only (license/CC/dataset lines) —
+  // the first recon run proved a whole-card substring check is wrong: bare
+  // "NC" matches inside the word "French". Deny tokens match with token
+  // boundaries so CC BY-NC fails but FRENCH does not.
+  const { dataset, license } = parseModelCard(cardText);
+  const haystack = [dataset ?? "", license ?? ""].join("\n");
+  if (haystack.trim().length === 0) {
+    fail(`${voiceId}: MODEL_CARD carries no parseable dataset/license line — failing closed (P7 §37)`);
+  }
   for (const bad of deny) {
-    // Deny entries are short tokens (AGPL, NC…): match as standalone-ish text.
-    if (haystack.includes(bad.toLowerCase())) {
-      fail(`${voiceId}: MODEL_CARD mentions denied license token "${bad}" — failing closed (P7 §31/§37)`);
+    const boundary = new RegExp(`(^|[^A-Za-z])${bad.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`, "i");
+    if (boundary.test(haystack)) {
+      fail(
+        `${voiceId}: license/dataset line mentions denied token "${bad}" (${haystack.replace(/\n/g, " | ")}) — failing closed (P7 §31/§37)`
+      );
     }
   }
-  const hit = allow.find((ok) => haystack.includes(ok.toLowerCase()));
+  // Spelling-normalized allow match: "CC BY 4.0" == "CC-BY 4.0" ==
+  // "CC-BY-4.0" (the siwis card writes "CC-BY 4.0" — verified from the
+  // double-downloaded card). Deny stayed boundary-based on the RAW lines
+  // above, so CC-BY-NC still fails before ever reaching this.
+  const norm = (x: string) => x.toLowerCase().replace(/[-\s]+/g, "");
+  const hit = allow.find((ok) => norm(haystack).includes(norm(ok)));
   if (!hit) {
-    fail(`${voiceId}: MODEL_CARD matches no allowed license (${allow.join(", ")}) — failing closed (P7 §37)`);
+    fail(
+      `${voiceId}: license/dataset line matches no allowed license (${allow.join(", ")}); saw: ${haystack.replace(/\n/g, " | ")} — failing closed (P7 §37)`
+    );
   }
   return hit;
 }
@@ -200,8 +219,10 @@ function assetKeyFor(segments: GenSegment[], pipelineVersion: number): string {
   return createHash("sha256").update(canonical).digest("hex").slice(0, 20);
 }
 
-/** Canary sweep speakers for the multi-speaker voice (selection audit). */
-const CANARY_MLS_SPEAKERS = [0, 1, 2, 3, 4, 5, 6, 7];
+/** Short label for canary clip ids: "fr_FR-upmc-medium" → "upmc". */
+function voiceShortName(voiceId: string): string {
+  return voiceId.replace(/^[a-z]{2}_[A-Z]{2}-/, "").replace(/-[a-z]+$/, "");
+}
 
 function plan(mode: string, out: string) {
   const manifest = loadManifest();
@@ -218,10 +239,20 @@ function plan(mode: string, out: string) {
     const canary = JSON.parse(readFileSync(CANARY_PATH, "utf8")) as {
       items: { id: string; text: string }[];
     };
+    // Manifest-driven sweep: every candidate voice, every canary speaker for
+    // multi-speaker models — the ASR audit over this output picks the pins.
     for (const item of canary.items) {
-      push(`${item.id}@siwis`, [{ voiceId: "fr_FR-siwis-medium", speaker: null, text: item.text }]);
-      for (const sp of CANARY_MLS_SPEAKERS) {
-        push(`${item.id}@mls-${sp}`, [{ voiceId: "fr_FR-mls-medium", speaker: sp, text: item.text }]);
+      for (const voice of manifest.voices) {
+        const short = voiceShortName(voice.id);
+        if (!voice.multiSpeaker) {
+          push(`${item.id}@${short}`, [{ voiceId: voice.id, speaker: null, text: item.text }]);
+          continue;
+        }
+        const speakers = voice.canarySpeakers ?? voice.pinnedSpeakers ?? [];
+        if (speakers.length === 0) fail(`${voice.id}: multi-speaker voice has no canarySpeakers`);
+        for (const sp of speakers) {
+          push(`${item.id}@${short}-${sp}`, [{ voiceId: voice.id, speaker: sp, text: item.text }]);
+        }
       }
     }
   } else if (mode === "generate") {

@@ -41,6 +41,13 @@ export const CEFR_SOURCE_REFS: readonly string[] = [
   "cefr-cv-2020:orthographic-control",
   "cefr-cv-2020:phonological-control",
   "cefr-cv-2020:identifying-cues-inferring",
+  // Phase-7 reception scales (documented in RESEARCH.md §Phase-7 additions)
+  "cefr-cv-2020:overall-listening-comprehension",
+  "cefr-cv-2020:audio-media-recordings",
+  "cefr-cv-2020:announcements-instructions",
+  "cefr-cv-2020:understanding-conversation",
+  "cefr-cv-2020:reading-correspondence",
+  "cefr-cv-2020:reading-orientation",
 ];
 
 export function loadCourseObjectives(): CourseObjectives {

@@ -21,6 +21,7 @@ import type { ReviewEvidence, SrsRole } from "../learning/evidence";
 import { itemIdForCourse } from "../learning/engine";
 import { FR_COURSE_ID, frItemIdFor, isCuratedFrItemId } from "../learning/ids-fr";
 import { lexemeIdForLookupForm } from "../learning/lexicon-index";
+import { clipFor } from "../reception/content";
 
 import type { ExerciseStep, SessionDefinition, StepEvidencePlan } from "./types";
 
@@ -64,6 +65,22 @@ export function evidencePlanFor(
     return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
   }
 
+  // Listening comprehension (P7 §72-78): the ONLY exercise shape that may
+  // create listen-card evidence is a single-lexeme word_phrase clip with a
+  // meaning question — auditory recognition of one word. Every other clip
+  // kind (announcements, dialogues, factual, multi-word phrases) is
+  // sentence comprehension and NEVER creates lexical cards (§75). Dictation
+  // tests orthographic decoding, not meaning — it emits nothing.
+  if (exercise.type === "listeningComprehension") {
+    if (definition.courseId !== FR_COURSE_ID) return null;
+    const clip = clipFor(exercise.clipId);
+    if (!clip || clip.kind !== "word_phrase") return null;
+    if (clip.lexemeRefs.length !== 1) return null;
+    const id = clip.lexemeRefs[0];
+    if (!isCuratedFrItemId(id)) return null;
+    return { itemId: id, skill: "listen", srsRole: plannedRole(definition) };
+  }
+
   if (exercise.type !== "select") return null;
 
   if (definition.courseId === FR_COURSE_ID) {
@@ -101,7 +118,7 @@ export function buildCheckEvidence(args: {
   if (!plan) return null;
   const exercise = step.exercise;
   return {
-    cardKey: { itemId: plan.itemId, skill: "recognize" },
+    cardKey: { itemId: plan.itemId, skill: plan.skill ?? "recognize" },
     sessionId: args.sessionId,
     exerciseId: exercise.id,
     modality: behaviorFor(exercise).modality(exercise),

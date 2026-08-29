@@ -36,10 +36,15 @@ export type CheckpointAttempt = {
   overallCorrectShare: number;
 };
 
-/** Per-objective placement estimate (§80): never "demonstrated". */
+/**
+ * Per-objective placement estimate (§80): never "demonstrated".
+ * "not_estimated" (P7 §110) records that the only evidence was
+ * audio-unavailable skips — the objective was probed but the device could
+ * not play audio, so no inference about the learner exists at all.
+ */
 export type PlacementObjectiveEstimate = {
   objectiveId: string;
-  estimate: "comfortable" | "gap" | "unknown";
+  estimate: "comfortable" | "gap" | "unknown" | "not_estimated";
 };
 
 /** The persisted placement outcome (§79). */

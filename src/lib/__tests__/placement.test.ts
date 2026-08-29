@@ -37,15 +37,15 @@ function allCorrect(...stageIndexes: number[]): PlacementAnswers {
 }
 
 describe("compiled placement content (§76)", () => {
-  test("two stages, ten clusters, sixteen items within the authored budget", () => {
-    expect(CONTENT.stages.length).toBe(2);
+  test("three stages, fourteen clusters, twenty-two items within budget (v2)", () => {
+    expect(CONTENT.stages.length).toBe(3);
     const clusters = CONTENT.stages.flatMap((s) => s.clusters);
-    expect(clusters.length).toBe(10);
+    expect(clusters.length).toBe(14);
     const items = clusters.flatMap((c) => c.items);
-    expect(items.length).toBe(16);
+    expect(items.length).toBe(22);
     expect(items.length).toBeLessThanOrEqual(CONTENT.maxItems);
-    expect(new Set(items.map((i) => i.id)).size).toBe(16);
-    expect(CONTENT.allComfortableLessonId).toBe("fr-en:ue-l0");
+    expect(new Set(items.map((i) => i.id)).size).toBe(22);
+    expect(CONTENT.allComfortableLessonId).toBe("fr-en:uj-l0");
   });
 
   test("cluster anchors walk the curriculum strictly forward (§75)", () => {
@@ -61,7 +61,23 @@ describe("compiled placement content (§76)", () => {
       "fr-en:ub-l1",
       "fr-en:ud-l0",
       "fr-en:ue-l0",
+      "fr-en:uf-l0",
+      "fr-en:ug-l0",
+      "fr-en:ug-l1",
+      "fr-en:uh-l0",
     ]);
+  });
+
+  test("the receptive stage is exactly the pl_* reserve inputs (P7 §108)", () => {
+    const reception = CONTENT.stages[2];
+    expect(reception.id).toBe("fr.pstage.reception");
+    const exercises = reception.clusters.flatMap((c) => c.items.map((i) => i.exercise));
+    const types = new Set(exercises.map((e) => e.type));
+    expect(types).toEqual(new Set(["listeningComprehension", "readingComprehension"]));
+    for (const e of exercises) {
+      if (e.type === "listeningComprehension") expect(e.clipId.startsWith("fr.clip.pl_")).toBe(true);
+      if (e.type === "readingComprehension") expect(e.readingId.startsWith("fr.read.pl_")).toBe(true);
+    }
   });
 });
 
@@ -101,10 +117,16 @@ describe("engine personas (§148)", () => {
     expect(rec.recommendedLessonId).toBe("fr-en:ub-l0");
   });
 
-  test("all strong: the authored all-comfortable anchor — the course's final unit", () => {
+  test("strong sections 1-2 but reception unanswered: reception is the unknown frontier", () => {
     const rec = recommendPlacement(PLAN, allCorrect(0, 1));
+    expect(rec.allComfortable).toBe(false);
+    expect(rec.recommendedLessonId).toBe("fr-en:uf-l0");
+  });
+
+  test("all strong incl. reception: the authored all-comfortable anchor — the final unit", () => {
+    const rec = recommendPlacement(PLAN, allCorrect(0, 1, 2));
     expect(rec.allComfortable).toBe(true);
-    expect(rec.recommendedLessonId).toBe("fr-en:ue-l0");
+    expect(rec.recommendedLessonId).toBe("fr-en:uj-l0");
   });
 
   test("an unanswered cluster is an unknown frontier, not skipped over", () => {
@@ -131,7 +153,7 @@ describe("engine personas (§148)", () => {
       completedAt: 1000,
     });
     expect(JSON.stringify(a)).toBe(JSON.stringify(b));
-    expect(a.placementVersion).toBe(1);
+    expect(a.placementVersion).toBe(2);
     expect(a.recommendedLessonId).toBe("fr-en:u1-l0");
   });
 });
@@ -320,5 +342,83 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
     expect(useProgress.getState().assessment.placementFloor).toBe(0);
     useProgress.getState().setPlacementResult(result, 4.9);
     expect(useProgress.getState().assessment.placementFloor).toBe(4);
+  });
+});
+
+describe("audio-unavailable escape in placement (P7 §110, §150)", () => {
+  /** Stage-3 listening item ids from the real content. */
+  const LISTEN_ITEMS = ["fr.pli.s3.listen_lait", "fr.pli.s3.annonce_heure", "fr.pli.s3.annonce_voie"];
+  const READ_ITEMS = ["fr.pli.s3.notice_jours", "fr.pli.s3.notice_heures", "fr.pli.s3.message_quand"];
+
+  function receptionWithAudioSkips(readingCorrect = true): PlacementAnswers {
+    const answers = allCorrect(0, 1);
+    for (const id of LISTEN_ITEMS) answers[id] = "audio_unavailable";
+    for (const id of READ_ITEMS) answers[id] = readingCorrect;
+    return answers;
+  }
+
+  test("answersFromSession: audio skips map to audio_unavailable, text skips stay IDK", () => {
+    const answers = answersFromSession({
+      stepIds: ["lc1", "sel1"],
+      firstResults: {},
+      skipped: { lc1: true, sel1: true },
+      audioStepIds: new Set(["lc1"]),
+    });
+    expect(answers).toEqual({ lc1: "audio_unavailable", sel1: null });
+  });
+
+  test("skipped listening never anchors the floor: reading evidence decides", () => {
+    const rec = recommendPlacement(PLAN, receptionWithAudioSkips(true));
+    // Both listening clusters are not_estimated; both reading clusters
+    // comfortable — every ESTIMATED cluster is comfortable.
+    expect(rec.allComfortable).toBe(true);
+    expect(rec.hasNotEstimated).toBe(true);
+    expect(rec.recommendedLessonId).toBe("fr-en:uj-l0");
+    const byId = new Map(rec.clusterOutcomes.map((o) => [o.clusterId, o.outcome]));
+    expect(byId.get("fr.pcluster.listen_words")).toBe("not_estimated");
+    expect(byId.get("fr.pcluster.listen_announcements")).toBe("not_estimated");
+    expect(byId.get("fr.pcluster.read_notices")).toBe("comfortable");
+  });
+
+  test("a reading gap still anchors normally with listening not estimated", () => {
+    const answers = receptionWithAudioSkips(true);
+    answers["fr.pli.s3.message_quand"] = false;
+    const rec = recommendPlacement(PLAN, answers);
+    expect(rec.recommendedLessonId).toBe("fr-en:ug-l1");
+    expect(rec.hasNotEstimated).toBe(true);
+    expect(rec.allComfortable).toBe(false);
+  });
+
+  test("a WRONG listening answer is real evidence — audio worked, the gap is real", () => {
+    const answers = allCorrect(0, 1, 2);
+    answers["fr.pli.s3.listen_lait"] = false;
+    const rec = recommendPlacement(PLAN, answers);
+    expect(rec.recommendedLessonId).toBe("fr-en:uf-l0");
+    expect(rec.hasNotEstimated).toBe(false);
+  });
+
+  test("stored result: not_estimated estimates persist; item results stay null (historical shape)", () => {
+    const result = buildPlacementResult({
+      plan: PLAN,
+      answers: receptionWithAudioSkips(true),
+      recommendedFloorIndex: 30,
+      completedAt: 2000,
+    });
+    expect(result.placementVersion).toBe(2);
+    const estimates = new Map(result.objectiveEstimates.map((e) => [e.objectiveId, e.estimate]));
+    expect(estimates.get("fr.obj.listening.familiar_words")).toBe("not_estimated");
+    expect(estimates.get("fr.obj.listening.announcements")).toBe("not_estimated");
+    expect(estimates.get("fr.obj.reading.notices_info")).toBe("comfortable");
+    const itemResult = result.itemResults.find((r) => r.itemId === "fr.pli.s3.listen_lait");
+    expect(itemResult?.correct).toBeNull();
+  });
+
+  test("a partially-answered listening cluster estimates from what WAS heard", () => {
+    const answers = allCorrect(0, 1, 2);
+    answers["fr.pli.s3.annonce_voie"] = "audio_unavailable"; // heard one, lost audio
+    const rec = recommendPlacement(PLAN, answers);
+    const byId = new Map(rec.clusterOutcomes.map((o) => [o.clusterId, o.outcome]));
+    expect(byId.get("fr.pcluster.listen_announcements")).toBe("comfortable");
+    expect(rec.allComfortable).toBe(true);
   });
 });

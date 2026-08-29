@@ -114,7 +114,7 @@ jobs:
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
-          pip install "faster-whisper==1.0.3"
+          pip install "faster-whisper==1.0.3" requests  # requests: undeclared fw dep with huggingface-hub>=1
           python3 scripts/reception-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model base
 
       - name: Technical QA + report
@@ -150,7 +150,12 @@ jobs:
           set -euo pipefail
           git config user.name "reception-audio workflow"
           git config user.email "actions@users.noreply.github.com"
-          git add content/fr/reception content/reports assets/audio/fr-reception 2>/dev/null || true
+          # Paths added individually: a multi-path `git add` is all-or-nothing
+          # and a missing assets dir silently staged NOTHING on the first
+          # successful recon run.
+          for p in content/fr/reception content/reports assets/audio/fr-reception; do
+            if [ -e "$p" ]; then git add "$p"; fi
+          done
           if git diff --cached --quiet; then
             echo "nothing to commit"
             exit 0
@@ -163,4 +168,18 @@ jobs:
             echo "model weights were used on the runner and never committed."
           } > /tmp/commit-msg.txt
           git commit -F /tmp/commit-msg.txt
+          # Another dispatch-only workflow can push to the same branch while
+          # this one runs (proven by run 33231606347 racing the lexique
+          # extract): rebase onto the moved remote and retry. The committed
+          # paths are workflow-owned, so the rebase cannot conflict with a
+          # concurrent content push; if it somehow does, fail loudly.
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:${{ github.ref_name }}"; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) — rebasing onto the moved branch"
+            git fetch origin "${{ github.ref_name }}"
+            git rebase "origin/${{ github.ref_name }}"
+            sleep $((attempt * 5))
+          done
           git push origin "HEAD:${{ github.ref_name }}"

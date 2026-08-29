@@ -74,6 +74,10 @@ export function validateReception(input: {
   listening: Listening | null;
   objectives: CourseObjectives;
   lexemeIds: Set<string>;
+  /** When provided, every clipId/readingId used by fr-en exercises must resolve. */
+  frPack?: {
+    sections: { units: { lessons: { exercises: { type: string; id: string }[] }[] }[] }[];
+  };
 }): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -160,6 +164,27 @@ export function validateReception(input: {
     }
   }
 
+  if (input.frPack) {
+    const knownClips = new Set((input.listening?.clips ?? []).map((c) => c.id));
+    const knownReadings = new Set((input.readings?.readings ?? []).map((r) => r.id));
+    for (const section of input.frPack.sections) {
+      for (const unit of section.units) {
+        for (const lesson of unit.lessons) {
+          for (const e of lesson.exercises) {
+            const clipRef = (e as { clipId?: string }).clipId;
+            const readingRef = (e as { readingId?: string }).readingId;
+            if ((e.type === "listeningComprehension" || e.type === "dictation") && clipRef !== undefined) {
+              if (!knownClips.has(clipRef)) err(`${e.id}: unknown clip ${clipRef}`);
+            }
+            if (e.type === "readingComprehension" && readingRef !== undefined) {
+              if (!knownReadings.has(readingRef)) err(`${e.id}: unknown reading ${readingRef}`);
+            }
+          }
+        }
+      }
+    }
+  }
+
   return { errors, warnings };
 }
 
@@ -224,7 +249,12 @@ export function compileListeningArtifact(
   )}\n`;
 }
 
-/** Static require map so Metro bundles the committed clips (P7 §26, §32). */
+/**
+ * Static require map so Metro bundles the committed clips (P7 §26, §32).
+ * Only clips whose generated asset EXISTS are mapped — a dead require would
+ * break bundling; the validator separately errors on any missing asset once
+ * generation has run, so a shipped build can never lack a mapped clip.
+ */
 export function compileClipAssetsModule(listening: Listening): string {
   const lines = [
     "/**",
@@ -238,6 +268,7 @@ export function compileClipAssetsModule(listening: Listening): string {
   ];
   for (const clip of listening.clips) {
     const key = receptionAssetKey(resolveClipSegments(listening, clip));
+    if (!existsSync(safeResolve(RECEPTION_ASSETS_DIR, `${key}.mp3`))) continue;
     lines.push(`  "${clip.id}": require("../../../assets/audio/fr-reception/${key}.mp3"),`);
   }
   lines.push("};", "");

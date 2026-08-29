@@ -62,12 +62,18 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
         (a) => normalize(a) === attempt
       );
     }
-    case "conjugationCloze": {
+    case "conjugationCloze":
+    case "dictation": {
+      // Dictation shares the strict contract (P7 §63): orthographic
+      // decoding is the construct, so accents and exact forms matter.
       if (typeof answer !== "string") return false;
       return [exercise.answer, ...exercise.alternatives].some((a) =>
         strictFrenchEquals(a, answer)
       );
     }
+    case "listeningComprehension":
+    case "readingComprehension":
+      return answer === exercise.correct;
     case "match":
       return answer === "done";
   }
@@ -87,6 +93,11 @@ export function correctAnswerText(exercise: Exercise): string {
       return exercise.answer;
     case "conjugationCloze":
       return exercise.sentence.replace("___", exercise.answer);
+    case "dictation":
+      return exercise.answer;
+    case "listeningComprehension":
+    case "readingComprehension":
+      return exercise.options[exercise.correct].text;
     case "match":
       return "";
   }
@@ -102,7 +113,11 @@ export function answerIsReady(exercise: Exercise, answer: Answer): boolean {
       return Array.isArray(answer) && answer.length > 0;
     case "typeAnswer":
     case "conjugationCloze":
+    case "dictation":
       return typeof answer === "string" && answer.trim().length > 0;
+    case "listeningComprehension":
+    case "readingComprehension":
+      return typeof answer === "number";
     case "match":
       return answer === "done";
   }

@@ -41,12 +41,35 @@ function exerciseStep(stepId: string): ExerciseStep {
 }
 
 describe("compiled checkpoints", () => {
-  test("both section checkpoints exist with their authored shapes", () => {
-    expect(CHECKPOINT_ORDER).toEqual(["fr.checkpoint.section-1", "fr.checkpoint.section-2"]);
+  test("all three section checkpoints exist with their authored shapes", () => {
+    expect(CHECKPOINT_ORDER).toEqual([
+      "fr.checkpoint.section-1",
+      "fr.checkpoint.section-2",
+      "fr.checkpoint.section-3",
+    ]);
     expect(CP1.items.length).toBe(12);
     expect(CP2.items.length).toBe(18);
     expect(CP1.criteria.minItemsPerObjective).toBe(2);
     expect(CP1.criteria.demonstratedShare).toBe(0.66); // 2-of-3 demonstrates — product-local, not a CEFR cut score
+  });
+
+  test("Section-3 checkpoint: 22 receptive items, balanced and audio-honest (P7 §101-105)", () => {
+    const cp3 = checkpointFor("fr.checkpoint.section-3")!;
+    expect(cp3.sectionId).toBe("fr-en:section-3");
+    expect(cp3.items.length).toBe(22);
+    const types = cp3.items.map((i) => i.exercise.type);
+    const count = (t: string) => types.filter((x) => x === t).length;
+    // Listening 13 (11 comprehension + 2 dictation) / reading 9 (7
+    // comprehension + 2 sign-reading selects): both modalities substantial.
+    expect(count("listeningComprehension")).toBe(11);
+    expect(count("dictation")).toBe(2);
+    expect(count("readingComprehension")).toBe(7);
+    expect(count("select")).toBe(2);
+    // Scored session over it: exercises only, no retries, no undo.
+    const def = buildCheckpointSessionDefinition(cp3);
+    expect(def.kind).toBe("checkpoint");
+    expect(def.retryPolicy).toBe("none");
+    expect(Object.keys(def.assessment!.itemObjectives).length).toBe(22);
   });
 
   test("the session definition is a scored assessment: exercises only, no retry, no mistakes, no undo", () => {

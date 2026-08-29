@@ -24,7 +24,9 @@
       "url": "https://github.com/vansyson1308/learning-french-with-tracy",
       "attribution": "French lexicon data authored by the Learning French with Tracy project, published under CC BY-SA 4.0 (see LEXICON_LICENSE.md).",
       "retrievedAt": "2026-08-27",
-      "covers": ["content/fr/lexicon/"],
+      "covers": [
+        "content/fr/lexicon/"
+      ],
       "notes": "Original project authorship: part of speech, gender, IPA pronunciation, topics, example sentences, and confusable relations for the 54 curriculum lexemes; native glosses reuse the course content already covered by upstream-lingo-lessons. Contains zero rows from Lexique or any external dictionary — the Lexique 4 source is identified in content/fr/lexicon/source-manifest.json and remains not-retrieved (see content/fr/lexicon/ACQUISITION.md). Published under CC BY-SA 4.0 per the approved licensing decision so future Lexique-4-derived data (also CC BY-SA 4.0) merges license-coherently. The dataset license never applies to application code, which keeps its existing MIT licensing."
     },
     {
@@ -35,7 +37,10 @@
       "url": "https://lexique.org",
       "attribution": "Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).",
       "retrievedAt": "2026-08-27",
-      "covers": ["content/fr/lexicon/derived/", "content/fr/lexicon/lexemes.json"],
+      "covers": [
+        "content/fr/lexicon/derived/",
+        "content/fr/lexicon/lexemes.json"
+      ],
       "notes": "Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md)."
     },
     {
@@ -46,7 +51,9 @@
       "url": "https://github.com/vansyson1308/learning-french-with-tracy",
       "attribution": "French pedagogy content authored by the Learning French with Tracy project.",
       "retrievedAt": "2026-08-27",
-      "covers": ["content/fr/pedagogy/"],
+      "covers": [
+        "content/fr/pedagogy/"
+      ],
       "notes": "Clean-room authored teaching content for the Phase 5B pedagogy units (gender & articles, high-yield verbs, cognates & false friends, numbers, connected French). Linguistic FACTS are drawn from the referenced sources recorded in content/fr/pedagogy/RESEARCH.md (institutional references such as Académie française and OQLF usage pages, plus this repository's Lexique-4-derived population statistics); all PROSE is original. Statistical claims in concepts additionally carry a lexique-4 sourceRef. Ships under the repository's MIT grant like the course packs (the CC BY-SA dataset boundary covers the lexicon only)."
     },
     {
@@ -57,8 +64,38 @@
       "url": "https://github.com/open-spaced-repetition/ts-fsrs",
       "attribution": "Spaced-repetition scheduling powered by ts-fsrs, © open-spaced-repetition contributors, MIT License.",
       "retrievedAt": "2026-08-27",
-      "covers": ["node_modules/ts-fsrs/"],
+      "covers": [
+        "node_modules/ts-fsrs/"
+      ],
       "notes": "FSRS-6 scheduler. The SM-2 migration math is an independent TypeScript implementation of the published memory_state_from_sm2 formula from fsrs-rs (also MIT)."
+    },
+    {
+      "id": "piper-voice-siwis",
+      "name": "Piper voice fr_FR-siwis-medium (SIWIS French speech corpus)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled reception audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/siwis/medium",
+      "attribution": "Reception listening audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-siwis-medium voice, trained on the SIWIS French speech corpus (CC BY 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/.",
+      "retrievedAt": "2026-08-29",
+      "covers": [
+        "assets/audio/fr-reception/",
+        "content/fr/reception/model-cards/fr_FR-siwis-medium.MODEL_CARD.txt"
+      ],
+      "notes": "Speaker A of the reception voice cast (announcements, monologue, dialogue first voice). Model weights are never committed — only pins (audio-source-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only reception-audio workflow."
+    },
+    {
+      "id": "piper-voice-upmc",
+      "name": "Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled reception audio",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/upmc/medium",
+      "attribution": "Reception dialogue audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-upmc-medium voice (CC BY-SA 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/. Audio clips voiced by this model are distributed under CC BY-SA 4.0 with attribution, matching the project's existing share-alike posture (see LEXICON_LICENSE.md).",
+      "retrievedAt": "2026-08-29",
+      "covers": [
+        "assets/audio/fr-reception/",
+        "content/fr/reception/model-cards/fr_FR-upmc-medium.MODEL_CARD.txt"
+      ],
+      "notes": "Speaker B of the reception voice cast (dialogue second voice), adopted after fr_FR-mls-medium failed the canary ASR quality audit. CC BY-SA 4.0 share-alike accepted deliberately: the project already publishes its derived French dataset under CC BY-SA 4.0 (approved plan, section AC2) and ships an in-app attributions screen, so the obligations are already implemented. The reception audio derived from this voice carries the same license and attribution."
     }
   ]
 }

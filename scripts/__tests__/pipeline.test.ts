@@ -114,16 +114,22 @@ describe("compiler: round-trip and determinism", () => {
 
   test("gradeTargets coverage: exactly the unambiguous French exercises", () => {
     const fr = coverage["fr-en"];
-    expect(fr.withGradeTargets).toBe(213);
-    expect(fr.total).toBe(411); // 220 Section 1 + 37 A + 41 B + 37 C + 42 D + 34 E
+    expect(fr.withGradeTargets).toBe(251);
+    expect(fr.total).toBe(515); // 411 Sections 1-2 + 104 Section 3
     // Unit D's 19 number-spelling selects and Unit E's 9 meta-linguistic
     // rule selects deliberately carry NO targets — numbers and rule
-    // recognition never touch FSRS (§79, §88).
-    expect(fr.byType["select"]).toEqual({ total: 221, withGradeTargets: 193 });
-    expect(fr.byType["match"]).toEqual({ total: 20, withGradeTargets: 20 });
+    // recognition never touch FSRS (§79, §88). Every Section-3 word-level
+    // select/match carries targets; comprehension types never do (below).
+    expect(fr.byType["select"]).toEqual({ total: 253, withGradeTargets: 225 });
+    expect(fr.byType["match"]).toEqual({ total: 26, withGradeTargets: 26 });
     expect(fr.byType["wordBank"].withGradeTargets).toBe(0);
     expect(fr.byType["typeAnswer"].withGradeTargets).toBe(0);
     expect(fr.byType["fillBlank"].withGradeTargets).toBe(0);
+    // P7 §75: sentence/passage comprehension NEVER creates lexical cards —
+    // the reception exercise types carry no gradeTargets by design.
+    expect(fr.byType["listeningComprehension"]).toEqual({ total: 35, withGradeTargets: 0 });
+    expect(fr.byType["readingComprehension"]).toEqual({ total: 24, withGradeTargets: 0 });
+    expect(fr.byType["dictation"]).toEqual({ total: 7, withGradeTargets: 0 });
     for (const [courseId, row] of Object.entries(coverage)) {
       if (courseId !== "fr-en") expect(row.withGradeTargets).toBe(0);
     }

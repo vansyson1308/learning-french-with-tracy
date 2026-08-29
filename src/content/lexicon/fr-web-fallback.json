@@ -1,5 +1,5 @@
 {
-  "contentHash": "9f4f441ad1cddef5",
+  "contentHash": "07337cd4a8d13484",
   "schemaVersion": 2,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
@@ -3560,6 +3560,940 @@
         {
           "source": "lexique-4",
           "key": "héros|NOM|m|i"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:train",
+      "surface": "le train",
+      "lookupForm": "train",
+      "lemma": "train",
+      "gloss": "the train",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "travel",
+      "frequency": {
+        "band": "very-common",
+        "rank": 264,
+        "perMillion": 271.573
+      },
+      "pronunciation": {
+        "value": "tʁɛ̃",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le train arrive à la gare.",
+          "en": "The train arrives at the station.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "train|NOM|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:magasin",
+      "surface": "le magasin",
+      "lookupForm": "magasin",
+      "lemma": "magasin",
+      "gloss": "the shop",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "places",
+      "frequency": {
+        "band": "common",
+        "rank": 885,
+        "perMillion": 69.114
+      },
+      "pronunciation": {
+        "value": "magazɛ̃",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le magasin est ouvert.",
+          "en": "The shop is open.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "magasin|NOM|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:prix",
+      "surface": "le prix",
+      "lookupForm": "prix",
+      "lemma": "prix",
+      "gloss": "the price",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "shopping",
+      "frequency": {
+        "band": "very-common",
+        "rank": 581,
+        "perMillion": 108.785
+      },
+      "pronunciation": {
+        "value": "pʁi",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le prix est sur la porte.",
+          "en": "The price is on the door.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "prix|NOM|m|i"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:porte",
+      "surface": "la porte",
+      "lookupForm": "porte",
+      "lemma": "porte",
+      "gloss": "the door",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "places",
+      "frequency": {
+        "band": "very-common",
+        "rank": 232,
+        "perMillion": 307.38
+      },
+      "pronunciation": {
+        "value": "pɔʁt",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "La porte du musée est fermée.",
+          "en": "The museum door is closed.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "porte|NOM|f|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:matin",
+      "surface": "le matin",
+      "lookupForm": "matin",
+      "lemma": "matin",
+      "gloss": "the morning",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "time",
+      "frequency": {
+        "band": "very-common",
+        "rank": 277,
+        "perMillion": 253.443
+      },
+      "pronunciation": {
+        "value": "matɛ̃",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le matin, je bois un café.",
+          "en": "In the morning, I drink a coffee.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "matin|NOM|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:soir",
+      "surface": "le soir",
+      "lookupForm": "soir",
+      "lemma": "soir",
+      "gloss": "the evening",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "time",
+      "frequency": {
+        "band": "very-common",
+        "rank": 131,
+        "perMillion": 559.304
+      },
+      "pronunciation": {
+        "value": "swaʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le soir, nous mangeons à la maison.",
+          "en": "In the evening, we eat at home.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "soir|NOM|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:demain",
+      "surface": "demain",
+      "lookupForm": "demain",
+      "lemma": "demain",
+      "gloss": "tomorrow",
+      "pos": "adverb",
+      "topic": "time",
+      "frequency": {
+        "band": "very-common",
+        "rank": 229,
+        "perMillion": 311.225
+      },
+      "pronunciation": {
+        "value": "dəmɛ̃",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Demain, je travaille.",
+          "en": "Tomorrow, I work.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "demain|ADV||"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:aujourdhui",
+      "surface": "aujourd'hui",
+      "lookupForm": "aujourd'hui",
+      "lemma": "aujourd'hui",
+      "gloss": "today",
+      "pos": "adverb",
+      "topic": "time",
+      "frequency": {
+        "band": "very-common",
+        "rank": 202,
+        "perMillion": 370.585
+      },
+      "pronunciation": {
+        "value": "oʒuʁdɥi",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Aujourd'hui, le musée est ouvert.",
+          "en": "Today, the museum is open.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "aujourd'hui|ADV||"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:samedi",
+      "surface": "samedi",
+      "lookupForm": "samedi",
+      "lemma": "samedi",
+      "gloss": "Saturday",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "time",
+      "frequency": {
+        "band": "common",
+        "rank": 1406,
+        "perMillion": 38.959
+      },
+      "pronunciation": {
+        "value": "samədi",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Samedi, nous allons à la plage.",
+          "en": "On Saturday, we go to the beach.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "samedi|NOM|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:dimanche",
+      "surface": "dimanche",
+      "lookupForm": "dimanche",
+      "lemma": "dimanche",
+      "gloss": "Sunday",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "time",
+      "frequency": {
+        "band": "common",
+        "rank": 1429,
+        "perMillion": 37.877
+      },
+      "pronunciation": {
+        "value": "dimɑ̃ʃ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le magasin est fermé le dimanche.",
+          "en": "The shop is closed on Sundays.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "dimanche|NOM|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:ouvert",
+      "surface": "ouvert",
+      "lookupForm": "ouvert",
+      "lemma": "ouvert",
+      "gloss": "open",
+      "pos": "adjective",
+      "topic": "shopping",
+      "frequency": {
+        "band": "common",
+        "rank": 1319,
+        "perMillion": 42.218
+      },
+      "pronunciation": {
+        "value": "uvɛʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le café est ouvert le matin.",
+          "en": "The café is open in the morning.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "ouvert|ADJ|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:ouvrir",
+      "surface": "ouvrir",
+      "lookupForm": "ouvrir",
+      "lemma": "ouvrir",
+      "gloss": "to open",
+      "pos": "verb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 224,
+        "perMillion": 322.617
+      },
+      "pronunciation": {
+        "value": "uvʁiʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le magasin ouvre à neuf heures.",
+          "en": "The shop opens at nine o'clock.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "ouvrir|VER||"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:fermer",
+      "surface": "fermer",
+      "lookupForm": "fermer",
+      "lemma": "fermer",
+      "gloss": "to close",
+      "pos": "verb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 328,
+        "perMillion": 206.68
+      },
+      "pronunciation": {
+        "value": "fɛʁme",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "La bibliothèque ferme à six heures.",
+          "en": "The library closes at six o'clock.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "fermer|VER||p"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:acheter",
+      "surface": "acheter",
+      "lookupForm": "acheter",
+      "lemma": "acheter",
+      "gloss": "to buy",
+      "pos": "verb",
+      "topic": "shopping",
+      "frequency": {
+        "band": "very-common",
+        "rank": 269,
+        "perMillion": 266.016
+      },
+      "pronunciation": {
+        "value": "aʃəte",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "J'achète du pain.",
+          "en": "I buy some bread.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "acheter|VER||p"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:couter",
+      "surface": "coûter",
+      "lookupForm": "coûter",
+      "lemma": "coûter",
+      "gloss": "to cost",
+      "pos": "verb",
+      "topic": "shopping",
+      "frequency": {
+        "band": "common",
+        "rank": 939,
+        "perMillion": 64.68
+      },
+      "pronunciation": {
+        "value": "kute",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le billet coûte dix euros.",
+          "en": "The ticket costs ten euros.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "coûter|VER||p"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:vouloir",
+      "surface": "vouloir",
+      "lookupForm": "vouloir",
+      "lemma": "vouloir",
+      "gloss": "to want",
+      "pos": "verb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 16,
+        "perMillion": 5239.237
+      },
+      "pronunciation": {
+        "value": "vulwaʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Je voudrais un thé.",
+          "en": "I would like a tea.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "vouloir|VER||"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:prendre",
+      "surface": "prendre",
+      "lookupForm": "prendre",
+      "lemma": "prendre",
+      "gloss": "to take",
+      "pos": "verb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 40,
+        "perMillion": 1894.187
+      },
+      "pronunciation": {
+        "value": "pʁɑ̃dʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Nous prenons le train.",
+          "en": "We take the train.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "prendre|VER||p"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:payer",
+      "surface": "payer",
+      "lookupForm": "payer",
+      "lemma": "payer",
+      "gloss": "to pay",
+      "pos": "verb",
+      "topic": "shopping",
+      "frequency": {
+        "band": "very-common",
+        "rank": 205,
+        "perMillion": 359.902
+      },
+      "pronunciation": {
+        "value": "peje",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Elle paie à la sortie.",
+          "en": "She pays at the exit.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "payer|VER||"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:travailler",
+      "surface": "travailler",
+      "lookupForm": "travailler",
+      "lemma": "travailler",
+      "gloss": "to work",
+      "pos": "verb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 140,
+        "perMillion": 520.703
+      },
+      "pronunciation": {
+        "value": "tʁavaje",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Il travaille à la banque.",
+          "en": "He works at the bank.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "travailler|VER||p"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:restaurant",
+      "surface": "le restaurant",
+      "lookupForm": "restaurant",
+      "lemma": "restaurant",
+      "gloss": "the restaurant",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "places",
+      "frequency": {
+        "band": "common",
+        "rank": 1116,
+        "perMillion": 52.845
+      },
+      "pronunciation": {
+        "value": "ʁɛstoʁɑ̃",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le restaurant ouvre le soir.",
+          "en": "The restaurant opens in the evening.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "restaurant|NOM|m|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:depart",
+      "surface": "le départ",
+      "lookupForm": "départ",
+      "lemma": "départ",
+      "gloss": "the departure",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 957,
+        "perMillion": 63.734
+      },
+      "pronunciation": {
+        "value": "depaʁ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le départ est à huit heures.",
+          "en": "The departure is at eight o'clock.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "départ|NOM|m|p"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:voie",
+      "surface": "la voie",
+      "lookupForm": "voie",
+      "lemma": "voie",
+      "gloss": "the platform",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "travel",
+      "frequency": {
+        "band": "common",
+        "rank": 1093,
+        "perMillion": 54.266
+      },
+      "pronunciation": {
+        "value": "vwa",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Le train part voie deux.",
+          "en": "The train leaves from platform two.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "voie|NOM|f|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:place",
+      "surface": "la place",
+      "lookupForm": "place",
+      "lemma": "place",
+      "gloss": "the square",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "places",
+      "frequency": {
+        "band": "very-common",
+        "rank": 262,
+        "perMillion": 275.266
+      },
+      "pronunciation": {
+        "value": "plas",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "La place est près de la gare.",
+          "en": "The square is near the station.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "place|NOM|f|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:table",
+      "surface": "la table",
+      "lookupForm": "table",
+      "lemma": "table",
+      "gloss": "the table",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 624,
+        "perMillion": 101.266
+      },
+      "pronunciation": {
+        "value": "tabl",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "Une table pour deux, s'il vous plaît.",
+          "en": "A table for two, please.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "table|NOM|f|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:plage",
+      "surface": "la plage",
+      "lookupForm": "plage",
+      "lemma": "plage",
+      "gloss": "the beach",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "places",
+      "frequency": {
+        "band": "common",
+        "rank": 1333,
+        "perMillion": 41.557
+      },
+      "pronunciation": {
+        "value": "plaʒ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "La plage est calme le matin.",
+          "en": "The beach is calm in the morning.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "plage|NOM|f|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:entree",
+      "surface": "l'entrée",
+      "lookupForm": "entrée",
+      "lemma": "entrée",
+      "gloss": "the entrance",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "places",
+      "frequency": {
+        "band": "common",
+        "rank": 1069,
+        "perMillion": 55.418
+      },
+      "pronunciation": {
+        "value": "ɑ̃tʁe",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "L'entrée est à gauche.",
+          "en": "The entrance is on the left.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "entrée|NOM|f|s"
+        }
+      ]
+    },
+    {
+      "id": "fr:w:sortie",
+      "surface": "la sortie",
+      "lookupForm": "sortie",
+      "lemma": "sortie",
+      "gloss": "the exit",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "places",
+      "frequency": {
+        "band": "common",
+        "rank": 1062,
+        "perMillion": 55.794
+      },
+      "pronunciation": {
+        "value": "sɔʁti",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "fr": "La sortie est à droite.",
+          "en": "The exit is on the right.",
+          "source": "original-french-lexicon"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-lexicon"
+        },
+        {
+          "source": "lexique-4",
+          "key": "sortie|NOM|f|s"
         }
       ]
     }

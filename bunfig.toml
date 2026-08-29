@@ -2,3 +2,9 @@
 # Mocks for native-backed modules (AsyncStorage, expo-file-system, …) so the
 # store and backup shells are testable in plain Bun. See __tests__/setup.ts.
 preload = ["./src/lib/__tests__/setup.ts"]
+
+# Metro bundles require()'d audio as asset modules; Bun must treat them as
+# file references too (never parse binary as JS) so the generated
+# fr-clip-assets map is importable under `bun test`.
+[loader]
+".mp3" = "file"

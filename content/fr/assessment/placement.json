@@ -1,9 +1,9 @@
 {
   "version": 1,
   "language": "fr",
-  "placementVersion": 1,
-  "maxItems": 16,
-  "allComfortableLessonId": "fr-en:ue-l0",
+  "placementVersion": 2,
+  "maxItems": 22,
+  "allComfortableLessonId": "fr-en:uj-l0",
   "stages": [
     {
       "id": "fr.pstage.foundations",
@@ -445,6 +445,208 @@
               },
               "objectiveTargets": [
                 "fr.obj.connected.elision"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fr.pstage.reception",
+      "title": "Understanding French",
+      "clusters": [
+        {
+          "id": "fr.pcluster.listen_words",
+          "objectiveId": "fr.obj.listening.familiar_words",
+          "anchorLessonId": "fr-en:uf-l0",
+          "items": [
+            {
+              "id": "fr.pli.s3.listen_lait",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "fr-plx-s3-listen_lait",
+                "clipId": "fr.clip.pl_lait",
+                "question": "What do you hear?",
+                "options": [
+                  {
+                    "text": "the milk"
+                  },
+                  {
+                    "text": "the bread"
+                  },
+                  {
+                    "text": "the water"
+                  },
+                  {
+                    "text": "the juice"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.listening.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.read_notices",
+          "objectiveId": "fr.obj.reading.notices_info",
+          "anchorLessonId": "fr-en:ug-l0",
+          "items": [
+            {
+              "id": "fr.pli.s3.notice_jours",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "fr-plx-s3-notice_jours",
+                "readingId": "fr.read.pl_notice_cafe",
+                "question": "On which days is the café open?",
+                "options": [
+                  {
+                    "text": "Monday to Saturday"
+                  },
+                  {
+                    "text": "Every day"
+                  },
+                  {
+                    "text": "Saturday and Sunday"
+                  },
+                  {
+                    "text": "Tuesday to Friday"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.notices_info"
+              ]
+            },
+            {
+              "id": "fr.pli.s3.notice_heures",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "fr-plx-s3-notice_heures",
+                "readingId": "fr.read.pl_notice_cafe",
+                "question": "At what time does the café open?",
+                "options": [
+                  {
+                    "text": "At eight o'clock"
+                  },
+                  {
+                    "text": "At twenty o'clock"
+                  },
+                  {
+                    "text": "At ten o'clock"
+                  },
+                  {
+                    "text": "At noon"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.notices_info"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.read_messages",
+          "objectiveId": "fr.obj.reading.short_messages",
+          "anchorLessonId": "fr-en:ug-l1",
+          "items": [
+            {
+              "id": "fr.pli.s3.message_quand",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "fr-plx-s3-message_quand",
+                "readingId": "fr.read.pl_message_court",
+                "question": "When is the dinner at the restaurant?",
+                "options": [
+                  {
+                    "text": "Tomorrow evening"
+                  },
+                  {
+                    "text": "Tonight"
+                  },
+                  {
+                    "text": "Sunday morning"
+                  },
+                  {
+                    "text": "Next Saturday"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.short_messages"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.listen_announcements",
+          "objectiveId": "fr.obj.listening.announcements",
+          "anchorLessonId": "fr-en:uh-l0",
+          "items": [
+            {
+              "id": "fr.pli.s3.annonce_heure",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "fr-plx-s3-annonce_heure",
+                "clipId": "fr.clip.pl_gare_annonce",
+                "question": "At what time does the train leave?",
+                "options": [
+                  {
+                    "text": "At ten o'clock"
+                  },
+                  {
+                    "text": "At two o'clock"
+                  },
+                  {
+                    "text": "At six o'clock"
+                  },
+                  {
+                    "text": "At noon"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.listening.announcements"
+              ]
+            },
+            {
+              "id": "fr.pli.s3.annonce_voie",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "fr-plx-s3-annonce_voie",
+                "clipId": "fr.clip.pl_gare_annonce",
+                "question": "Which platform does it leave from?",
+                "options": [
+                  {
+                    "text": "Platform one"
+                  },
+                  {
+                    "text": "Platform two"
+                  },
+                  {
+                    "text": "Platform four"
+                  },
+                  {
+                    "text": "Platform ten"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.listening.announcements"
               ]
             }
           ]

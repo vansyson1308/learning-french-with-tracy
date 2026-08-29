@@ -733,6 +733,631 @@
         "minItemsPerObjective": 2,
         "demonstratedShare": 0.66
       }
+    },
+    {
+      "id": "fr.checkpoint.section-3",
+      "checkpointVersion": 1,
+      "sectionId": "fr-en:section-3",
+      "title": "Section 3 check",
+      "description": "Show what you can understand — listen to real announcements and dialogues, and read the messages, signs and short texts of everyday French.",
+      "items": [
+        {
+          "id": "fr.cpi.s3.fam_hotel",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-fam_hotel",
+            "clipId": "fr.clip.cp3_hotel",
+            "question": "What do you hear?",
+            "options": [
+              {
+                "text": "the hotel"
+              },
+              {
+                "text": "the school"
+              },
+              {
+                "text": "the station"
+              },
+              {
+                "text": "the museum"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.fam_fromage",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-fam_fromage",
+            "clipId": "fr.clip.cp3_fromage",
+            "question": "What do you hear?",
+            "options": [
+              {
+                "text": "the cheese"
+              },
+              {
+                "text": "the bread"
+              },
+              {
+                "text": "the chicken"
+              },
+              {
+                "text": "the fish"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.fam_dictee_soir",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "dictation",
+            "id": "fr-cpx-s3-fam_dictee_soir",
+            "clipId": "fr.clip.cp3_dictee_soir",
+            "answer": "le soir",
+            "alternatives": [
+              "soir"
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.ann_biblio_heure",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-ann_biblio_heure",
+            "clipId": "fr.clip.cp3_biblio_ferme",
+            "question": "When does the library close tonight?",
+            "options": [
+              {
+                "text": "At six o'clock"
+              },
+              {
+                "text": "At nine o'clock"
+              },
+              {
+                "text": "At eleven o'clock"
+              },
+              {
+                "text": "At four o'clock"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.ann_biblio_lieu",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-ann_biblio_lieu",
+            "clipId": "fr.clip.cp3_biblio_ferme",
+            "question": "What place is this announcement about?",
+            "options": [
+              {
+                "text": "The library"
+              },
+              {
+                "text": "The station"
+              },
+              {
+                "text": "The shop"
+              },
+              {
+                "text": "The museum"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.ann_train_voie",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-ann_train_voie",
+            "clipId": "fr.clip.cp3_train_marseille",
+            "question": "Which platform does the Marseille train leave from?",
+            "options": [
+              {
+                "text": "Platform four"
+              },
+              {
+                "text": "Platform two"
+              },
+              {
+                "text": "Platform nine"
+              },
+              {
+                "text": "Platform eleven"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.ann_dictee_voie",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "dictation",
+            "id": "fr-cpx-s3-ann_dictee_voie",
+            "clipId": "fr.clip.cp3_dictee_voie",
+            "answer": "voie quatre",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.info_musee_prix",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-info_musee_prix",
+            "clipId": "fr.clip.cp3_entree_musee",
+            "question": "How much does the museum entrance cost?",
+            "options": [
+              {
+                "text": "Eight euros"
+              },
+              {
+                "text": "Two euros"
+              },
+              {
+                "text": "Ten euros"
+              },
+              {
+                "text": "Four euros"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.info_musee_jour",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-info_musee_jour",
+            "clipId": "fr.clip.cp3_entree_musee",
+            "question": "Which day is that price for?",
+            "options": [
+              {
+                "text": "Saturday"
+              },
+              {
+                "text": "Sunday"
+              },
+              {
+                "text": "Monday"
+              },
+              {
+                "text": "Tuesday"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.info_resto_plage",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-info_resto_plage",
+            "clipId": "fr.clip.cp3_resto_plage",
+            "question": "When is the beach restaurant open?",
+            "options": [
+              {
+                "text": "Saturday morning"
+              },
+              {
+                "text": "Sunday evening"
+              },
+              {
+                "text": "Every evening"
+              },
+              {
+                "text": "Tomorrow morning"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.dlg_the_objet",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-dlg_the_objet",
+            "clipId": "fr.clip.cp3_dialogue_the",
+            "question": "What does the customer order?",
+            "options": [
+              {
+                "text": "A tea"
+              },
+              {
+                "text": "A coffee"
+              },
+              {
+                "text": "A glass of milk"
+              },
+              {
+                "text": "A glass of wine"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_dialogues"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.dlg_the_prix",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-dlg_the_prix",
+            "clipId": "fr.clip.cp3_dialogue_the",
+            "question": "How much does it cost?",
+            "options": [
+              {
+                "text": "Three euros"
+              },
+              {
+                "text": "Two euros"
+              },
+              {
+                "text": "Nine euros"
+              },
+              {
+                "text": "Six euros"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_dialogues"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.dlg_magasin_heure",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-s3-dlg_magasin_heure",
+            "clipId": "fr.clip.cp3_dialogue_magasin",
+            "question": "When does the shop open?",
+            "options": [
+              {
+                "text": "At nine o'clock"
+              },
+              {
+                "text": "At six o'clock"
+              },
+              {
+                "text": "At eleven o'clock"
+              },
+              {
+                "text": "At two o'clock"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_dialogues"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.msg_theo_quand",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-s3-msg_theo_quand",
+            "readingId": "fr.read.cp3_message_theo",
+            "question": "When is Théo taking the train?",
+            "options": [
+              {
+                "text": "Sunday morning"
+              },
+              {
+                "text": "Saturday evening"
+              },
+              {
+                "text": "Monday morning"
+              },
+              {
+                "text": "Tomorrow evening"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.msg_theo_ou",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-s3-msg_theo_ou",
+            "readingId": "fr.read.cp3_message_theo",
+            "question": "Where is Théo going?",
+            "options": [
+              {
+                "text": "To the beach"
+              },
+              {
+                "text": "To the museum"
+              },
+              {
+                "text": "To the station café"
+              },
+              {
+                "text": "To school"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.msg_ferme",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s3-msg_ferme",
+            "mode": "targetToNative",
+            "prompt": "Le café est fermé aujourd'hui.",
+            "options": [
+              {
+                "text": "The café is closed today"
+              },
+              {
+                "text": "The café is open today"
+              },
+              {
+                "text": "The café opens tomorrow"
+              },
+              {
+                "text": "The café is next to the station"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.not_biblio_jours",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-s3-not_biblio_jours",
+            "readingId": "fr.read.cp3_notice_biblio",
+            "question": "On which days is the library open?",
+            "options": [
+              {
+                "text": "Tuesday to Saturday"
+              },
+              {
+                "text": "Monday to Friday"
+              },
+              {
+                "text": "Every day"
+              },
+              {
+                "text": "Saturday and Sunday only"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.notices_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.not_biblio_dimanche",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-s3-not_biblio_dimanche",
+            "readingId": "fr.read.cp3_notice_biblio",
+            "question": "What does the notice say about Sunday?",
+            "options": [
+              {
+                "text": "The library is closed"
+              },
+              {
+                "text": "The library opens at nine"
+              },
+              {
+                "text": "The library closes at six"
+              },
+              {
+                "text": "Entry is free"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.notices_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.not_sortie",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "fr-cpx-s3-not_sortie",
+            "mode": "targetToNative",
+            "prompt": "Sortie",
+            "options": [
+              {
+                "text": "The way out"
+              },
+              {
+                "text": "The entrance"
+              },
+              {
+                "text": "The ticket office"
+              },
+              {
+                "text": "The platform"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.notices_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.txt_camille_ou",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-s3-txt_camille_ou",
+            "readingId": "fr.read.cp3_texte_camille",
+            "question": "Where does Camille work?",
+            "options": [
+              {
+                "text": "At the station restaurant"
+              },
+              {
+                "text": "At the beach café"
+              },
+              {
+                "text": "At the library"
+              },
+              {
+                "text": "At the museum"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_texts"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.txt_camille_matin",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-s3-txt_camille_matin",
+            "readingId": "fr.read.cp3_texte_camille",
+            "question": "What does Camille buy in the morning?",
+            "options": [
+              {
+                "text": "Bread and cheese"
+              },
+              {
+                "text": "Coffee and tea"
+              },
+              {
+                "text": "Fish and rice"
+              },
+              {
+                "text": "Milk and eggs"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_texts"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s3.txt_nora_train",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-s3-txt_nora_train",
+            "readingId": "fr.read.cp3_texte_nora",
+            "question": "How does Nora get to the library?",
+            "options": [
+              {
+                "text": "By train"
+              },
+              {
+                "text": "By taxi"
+              },
+              {
+                "text": "On foot"
+              },
+              {
+                "text": "By car"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_texts"
+          ],
+          "essential": true
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
     }
   ]
 }

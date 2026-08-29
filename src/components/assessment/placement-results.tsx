@@ -36,7 +36,10 @@ export function PlacementResults({
     (o: ClusterOutcome) => o.outcome === "comfortable"
   );
   const gaps = recommendation.clusterOutcomes.filter(
-    (o: ClusterOutcome) => o.outcome !== "comfortable"
+    (o: ClusterOutcome) => o.outcome !== "comfortable" && o.outcome !== "not_estimated"
+  );
+  const notEstimated = recommendation.clusterOutcomes.filter(
+    (o: ClusterOutcome) => o.outcome === "not_estimated"
   );
 
   return (
@@ -84,6 +87,22 @@ export function PlacementResults({
                 • {titleFor(o.objectiveId)}
               </Text>
             ))}
+          </View>
+        )}
+
+        {notEstimated.length > 0 && (
+          <View style={styles.group} testID="placement-not-estimated">
+            <Text style={styles.groupTitle}>Not estimated — audio unavailable</Text>
+            {notEstimated.map((o) => (
+              <Text key={o.clusterId} style={styles.rowGap}>
+                — {titleFor(o.objectiveId)}
+              </Text>
+            ))}
+            <Text style={styles.note}>
+              We couldn&apos;t play audio on this device, so listening was
+              skipped without penalty. The listening units stay fully open —
+              try them any time audio works.
+            </Text>
           </View>
         )}
 

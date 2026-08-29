@@ -13,6 +13,16 @@
           ]
         },
         {
+          "scaleName": "Listening comprehension (overall)",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension",
+          "direct": [
+            "fr.obj.listening.familiar_words"
+          ],
+          "supports": [
+            "fr.obj.listening.short_info"
+          ]
+        },
+        {
           "scaleName": "Reading comprehension (overall)",
           "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
           "direct": [
@@ -55,6 +65,30 @@
           ]
         },
         {
+          "scaleName": "Listening comprehension (overall)",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension",
+          "direct": [],
+          "supports": [
+            "fr.obj.listening.familiar_words"
+          ]
+        },
+        {
+          "scaleName": "Listening to announcements & instructions",
+          "sourceRef": "cefr-cv-2020:announcements-instructions",
+          "direct": [
+            "fr.obj.listening.announcements"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Listening to audio media & recordings",
+          "sourceRef": "cefr-cv-2020:audio-media-recordings",
+          "direct": [
+            "fr.obj.listening.short_info"
+          ],
+          "supports": []
+        },
+        {
           "scaleName": "Orthographic control",
           "sourceRef": "cefr-cv-2020:orthographic-control",
           "direct": [],
@@ -74,10 +108,28 @@
         {
           "scaleName": "Reading comprehension (overall)",
           "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
-          "direct": [],
+          "direct": [
+            "fr.obj.reading.short_texts"
+          ],
           "supports": [
             "fr.obj.reading.familiar_words"
           ]
+        },
+        {
+          "scaleName": "Reading correspondence (short messages)",
+          "sourceRef": "cefr-cv-2020:reading-correspondence",
+          "direct": [
+            "fr.obj.reading.short_messages"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Reading for orientation (signs & notices)",
+          "sourceRef": "cefr-cv-2020:reading-orientation",
+          "direct": [
+            "fr.obj.reading.notices_info"
+          ],
+          "supports": []
         },
         {
           "scaleName": "Sociolinguistic appropriateness",
@@ -86,6 +138,14 @@
           "supports": [
             "fr.obj.greetings.basic"
           ]
+        },
+        {
+          "scaleName": "Understanding conversation between others",
+          "sourceRef": "cefr-cv-2020:understanding-conversation",
+          "direct": [
+            "fr.obj.listening.short_dialogues"
+          ],
+          "supports": []
         },
         {
           "scaleName": "Vocabulary range",
@@ -109,6 +169,14 @@
           "direct": [],
           "supports": [
             "fr.obj.verbs.passe_compose_avoir"
+          ]
+        },
+        {
+          "scaleName": "Reading comprehension (overall)",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
+          "direct": [],
+          "supports": [
+            "fr.obj.reading.short_texts"
           ]
         }
       ]

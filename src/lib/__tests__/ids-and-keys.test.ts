@@ -52,7 +52,7 @@ function packWritableSurfaces(): Set<string> {
 describe("FR_LEXEME_IDS ↔ fr-en pack (drift guards)", () => {
   test("covers exactly the pack's distinct word targets", () => {
     const targets = packWordTargets();
-    expect(targets.size).toBe(99);
+    expect(targets.size).toBe(126);
     expect(Object.keys(FR_LEXEME_IDS).sort()).toEqual([...targets].sort());
   });
 
@@ -129,7 +129,7 @@ describe("CardKey serialization", () => {
     expect(parseCardKey("")).toBeUndefined();
   });
 
-  test("skill registry currently contains exactly 'recognize'", () => {
-    expect([...SKILLS]).toEqual(["recognize"]);
+  test("skill registry: recognize + the Phase-7 listen activation", () => {
+    expect([...SKILLS]).toEqual(["recognize", "listen"]);
   });
 });

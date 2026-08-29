@@ -1,13 +1,16 @@
 /**
  * CardKey — the identity a review card is stored under: (itemId, skill).
  *
- * The skill dimension is reserved NOW (Phase 1 uses only "recognize") so the
- * roadmap's listening/production drills become new cards, not a second
- * card-key migration. Serialized form is `${itemId}|${skill}` — persisted in
- * the v2 card map, so both directions must stay stable forever.
+ * The skill dimension was reserved in Phase 1 exactly so this moment costs
+ * one union member: Phase 7 activates "listen" (auditory recognition of a
+ * single lexeme — audio→meaning). Listen cards are NEW keys created by
+ * their first assessment; no existing "recognize" entry is ever rewritten,
+ * so activation needs no migration. Serialized form is `${itemId}|${skill}`
+ * — persisted in the v2 card map, so both directions must stay stable
+ * forever.
  */
 
-export const SKILLS = ["recognize"] as const;
+export const SKILLS = ["recognize", "listen"] as const;
 export type Skill = (typeof SKILLS)[number];
 
 export type CardKey = {

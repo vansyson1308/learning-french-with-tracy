@@ -9,9 +9,23 @@
   "voicesRepository": "https://huggingface.co/rhasspy/piper-voices",
   "voicesRevision": "v1.0.0",
   "licenseGate": {
-    "note": "Recon fails closed unless every voice's MODEL_CARD states a dataset/license matched by allow and matched by no deny entry (P7 §31, §37).",
-    "allow": ["CC BY 4.0", "CC-BY-4.0", "CC BY 4", "cc-by-4.0"],
-    "deny": ["AGPL", "GPL", "NC", "ND"]
+    "note": "Recon fails closed unless every voice's MODEL_CARD states a dataset/license matched by allow and matched by no deny entry (P7 §31, §37). The allow list mirrors the project-wide LICENSE_ALLOWLIST posture (content/schema.ts): CC BY 4.0 and CC BY-SA 4.0 in text or URL form. Share-alike is accepted deliberately — the project already publishes derived data under CC BY-SA 4.0 with an in-app attributions screen (see content/sources/registry.json entries piper-voice-*); AGPL/GPL/NC/ND remain denied.",
+    "allow": [
+      "CC BY 4.0",
+      "CC-BY-4.0",
+      "CC BY 4",
+      "cc-by-4.0",
+      "CC BY-SA 4.0",
+      "CC-BY-SA-4.0",
+      "creativecommons.org/licenses/by/4.0",
+      "creativecommons.org/licenses/by-sa/4.0"
+    ],
+    "deny": [
+      "AGPL",
+      "GPL",
+      "NC",
+      "ND"
+    ]
   },
   "voices": [
     {
@@ -21,53 +35,63 @@
       "files": {
         "model": {
           "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "641d1ab097da2b81128c076810edb052b385decc8be3381814802a64a73baf99",
+          "bytes": 63201294
         },
         "config": {
           "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "39479916c2db192b5ac9764daddd0c744d83e023ad890c6976c0633ae4df8959",
+          "bytes": 4875
         },
         "modelCard": {
           "path": "fr/fr_FR/siwis/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "bd8b8d079d4d3d2c4cc20345889bbcd586d72f021a132f93357a763eb5232cce",
+          "bytes": 284
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null
+      "declaredLicense": "* License: CC-BY 4.0"
     },
     {
-      "id": "fr_FR-mls-medium",
-      "role": "speaker pool — dialogue second voices (pinned speaker ids chosen by canary ASR audit)",
+      "id": "fr_FR-upmc-medium",
+      "role": "speaker B — dialogue second voice (speaker 1, male; pinned by the canary ASR audit, run 33231334069)",
       "multiSpeaker": true,
-      "pinnedSpeakers": [],
+      "canarySpeakers": [
+        0,
+        1
+      ],
+      "pinnedSpeakers": [
+        1
+      ],
       "files": {
         "model": {
-          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx",
+          "sha256": "9abb3800c199148897a9ed64e100d224f3de83579f100044174ad19418f1786f",
+          "bytes": 76733615
         },
         "config": {
-          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx.json",
+          "sha256": "e8636ec15dfd5d72db37a02cb5320a20f2b8d339f2a0e4337da64c58a33a5868",
+          "bytes": 4996
         },
         "modelCard": {
-          "path": "fr/fr_FR/mls/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "path": "fr/fr_FR/upmc/medium/MODEL_CARD",
+          "sha256": "cf1ac7309e0e04bb159b7e6ae80bc8f66bfce9bdfb3e62ae93a6f57e210ab98a",
+          "bytes": 316
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null
+      "declaredLicense": "* License: http://creativecommons.org/licenses/by-sa/4.0/"
     }
   ],
   "excludedVoices": [
     {
       "id": "fr_FR-tom-medium",
       "reason": "Upstream metadata associates its training dataset with AGPLv3 — excluded to avoid the licensing complication (P7 §31). Re-evaluate only with an explicit legal review."
+    },
+    {
+      "id": "fr_FR-mls-medium",
+      "reason": "Failed the canary ASR quality audit (workflow run 33230542810): mean WER ≈ 0.98–2.47 across all eight sampled speakers vs 0.19 for siwis through the identical pipeline — the audio is not reliably intelligible, so it may never be a scored stimulus (P7 §40, §56-60). License itself was clean (CC-BY 4.0); exclusion is quality-based."
     }
   ]
 }

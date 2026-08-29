@@ -1,0 +1,609 @@
+{
+  "version": 1,
+  "language": "fr",
+  "readings": [
+    {
+      "id": "fr.read.ug_horaires_musee",
+      "kind": "notice",
+      "title": "Horaires du musée",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Musée de la ville"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ouvert du mardi au dimanche, de dix heures à dix-huit heures."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Fermé le lundi. Entrée : huit euros."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:musee",
+        "fr:w:ville",
+        "fr:w:ouvert",
+        "fr:w:entree",
+        "fr:w:heure",
+        "fr:w:dimanche"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "lundi",
+          "gloss": "Monday"
+        },
+        {
+          "surface": "mardi",
+          "gloss": "Tuesday"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.ug_message_lea",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Salut ! Demain matin, je vais au marché avec ma sœur. On achète du pain et du fromage. Tu viens ? — Léa"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "fr:w:salut",
+        "fr:w:demain",
+        "fr:w:matin",
+        "fr:w:acheter",
+        "fr:w:pain",
+        "fr:w:fromage"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "marché",
+          "gloss": "market"
+        },
+        {
+          "surface": "sœur",
+          "gloss": "sister"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.ug_panneau_sortie",
+      "kind": "notice",
+      "title": "Dans la gare",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Sortie — à droite"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Entrée du magasin — à gauche, après la porte."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:sortie",
+        "fr:w:droite",
+        "fr:w:entree",
+        "fr:w:magasin",
+        "fr:w:gauche",
+        "fr:w:porte"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.ug_message_patron",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Bonjour Paul, le restaurant ouvre à midi aujourd'hui. La table près de la porte est pour madame Martin. Merci !"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "fr:w:restaurant",
+        "fr:w:ouvrir",
+        "fr:w:aujourdhui",
+        "fr:w:table",
+        "fr:w:porte"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "midi",
+          "gloss": "noon"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.ug_horaires_magasin",
+      "kind": "notice",
+      "title": "Horaires",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Boulangerie du matin"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ouvert du lundi au samedi, de sept heures à treize heures."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Fermé le dimanche."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:ouvert",
+        "fr:w:samedi",
+        "fr:w:dimanche",
+        "fr:w:heure",
+        "fr:w:matin"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "boulangerie",
+          "gloss": "bakery"
+        },
+        {
+          "surface": "lundi",
+          "gloss": "Monday"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.ui_dialogue_gare",
+      "kind": "dialogue",
+      "blocks": [
+        {
+          "kind": "line",
+          "speaker": "Théo",
+          "text": "Bonjour, un billet pour Lyon, s'il vous plaît."
+        },
+        {
+          "kind": "line",
+          "speaker": "Agent",
+          "text": "Bien sûr. Le train part à neuf heures, voie deux."
+        },
+        {
+          "kind": "line",
+          "speaker": "Théo",
+          "text": "Merci ! C'est combien ?"
+        },
+        {
+          "kind": "line",
+          "speaker": "Agent",
+          "text": "Seize euros, monsieur."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_messages",
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:billet",
+        "fr:w:train",
+        "fr:w:voie",
+        "fr:w:heure"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "combien",
+          "gloss": "how much"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.ui_dialogue_cafe",
+      "kind": "dialogue",
+      "blocks": [
+        {
+          "kind": "line",
+          "speaker": "Emma",
+          "text": "Bonsoir ! Une table pour deux, s'il vous plaît."
+        },
+        {
+          "kind": "line",
+          "speaker": "Serveur",
+          "text": "Bien sûr, madame. La table près de l'entrée."
+        },
+        {
+          "kind": "line",
+          "speaker": "Emma",
+          "text": "Merci beaucoup."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonsoir",
+        "fr:w:table",
+        "fr:w:entree",
+        "fr:w:madame"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.uj_ville_leo",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Léo habite dans une petite ville près de la plage. Le matin, il travaille au magasin. Le soir, il va au restaurant avec ses amis."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter",
+        "fr:w:ville",
+        "fr:w:plage",
+        "fr:w:matin",
+        "fr:w:travailler",
+        "fr:w:magasin",
+        "fr:w:soir",
+        "fr:w:restaurant"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "petite",
+          "gloss": "small"
+        },
+        {
+          "surface": "amis",
+          "gloss": "friends"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.uj_semaine_anna",
+      "kind": "narrative",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Aujourd'hui, c'est samedi. Anna prend le train pour la ville. Elle achète un cadeau pour sa mère et paie douze euros. Le soir, elle mange au restaurant."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:aujourdhui",
+        "fr:w:samedi",
+        "fr:w:prendre",
+        "fr:w:train",
+        "fr:w:ville",
+        "fr:w:acheter",
+        "fr:w:cadeau",
+        "fr:w:payer",
+        "fr:w:soir"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "mère",
+          "gloss": "mother"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "basic_inference"
+      }
+    },
+    {
+      "id": "fr.read.uj_matin_gare",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La gare ouvre à cinq heures du matin. Le premier train part à six heures. Le café de la gare ouvre à sept heures."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts",
+        "fr.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:gare",
+        "fr:w:ouvrir",
+        "fr:w:heure",
+        "fr:w:matin",
+        "fr:w:train",
+        "fr:w:cafe"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "premier",
+          "gloss": "first"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.uj_dimanche_famille",
+      "kind": "narrative",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Le dimanche, le magasin est fermé. Marc reste à la maison le matin. L'après-midi, il va à la plage avec sa famille. Ils mangent du poulet et du riz."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:dimanche",
+        "fr:w:magasin",
+        "fr:w:rester",
+        "fr:w:maison",
+        "fr:w:matin",
+        "fr:w:plage",
+        "fr:w:manger",
+        "fr:w:poulet",
+        "fr:w:riz"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "fermé",
+          "gloss": "closed"
+        },
+        {
+          "surface": "famille",
+          "gloss": "family"
+        },
+        {
+          "surface": "après-midi",
+          "gloss": "afternoon"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "basic_inference"
+      }
+    },
+    {
+      "id": "fr.read.cp3_message_theo",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Salut ! Dimanche matin, je prends le train pour la plage. Le départ est à neuf heures. Tu viens avec nous ? — Théo"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "fr:w:dimanche",
+        "fr:w:matin",
+        "fr:w:prendre",
+        "fr:w:train",
+        "fr:w:plage",
+        "fr:w:depart",
+        "fr:w:heure"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.cp3_notice_biblio",
+      "kind": "notice",
+      "title": "Bibliothèque — horaires",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Bibliothèque de la ville"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ouvert du mardi au samedi, de neuf heures à dix-huit heures."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Fermé le dimanche et le lundi."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:bibliotheque",
+        "fr:w:ville",
+        "fr:w:ouvert",
+        "fr:w:samedi",
+        "fr:w:dimanche",
+        "fr:w:heure"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.cp3_texte_camille",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Camille travaille au restaurant de la gare. Le matin, elle achète du pain et du fromage au magasin. Le restaurant ouvre à midi et ferme le soir à dix heures."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:travailler",
+        "fr:w:restaurant",
+        "fr:w:gare",
+        "fr:w:matin",
+        "fr:w:acheter",
+        "fr:w:pain",
+        "fr:w:fromage",
+        "fr:w:magasin",
+        "fr:w:ouvrir",
+        "fr:w:fermer",
+        "fr:w:soir"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.pl_notice_cafe",
+      "kind": "notice",
+      "title": "Café — horaires",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Café de la place"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ouvert du lundi au samedi, de huit heures à vingt heures."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe",
+        "fr:w:place",
+        "fr:w:ouvert",
+        "fr:w:samedi",
+        "fr:w:heure"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.pl_message_court",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Salut ! Demain soir, nous mangeons au restaurant près de la gare. Tu viens ?"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "fr:w:demain",
+        "fr:w:soir",
+        "fr:w:manger",
+        "fr:w:restaurant",
+        "fr:w:gare"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.read.cp3_texte_nora",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nora habite à Paris. Le matin, elle prend le train pour la bibliothèque. Le soir, elle mange au restaurant avec une amie."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter",
+        "fr:w:train",
+        "fr:w:bibliotheque",
+        "fr:w:restaurant"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "une amie",
+          "gloss": "a friend"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    }
+  ]
+}

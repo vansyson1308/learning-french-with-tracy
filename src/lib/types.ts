@@ -108,6 +108,48 @@ export type ConjugationClozeExercise = {
   objectiveTargets?: string[];
 };
 
+/**
+ * Listening comprehension (Phase 7 §61): a bundled deterministic clip plus
+ * a meaning question. The transcript is NEVER rendered before the answer.
+ * No gradeTargets by design — clip comprehension is objective evidence,
+ * never a lexical FSRS write (P7 §75).
+ */
+export type ListeningComprehensionExercise = {
+  type: "listeningComprehension";
+  id: string;
+  clipId: string;
+  question: string;
+  options: { text: string }[];
+  correct: number;
+  /** AUTHORED course-objective targets (Phase 6 §29-31). */
+  objectiveTargets?: string[];
+};
+
+/** Reading comprehension (Phase 7 §62): a passage plus a meaning question. */
+export type ReadingComprehensionExercise = {
+  type: "readingComprehension";
+  id: string;
+  readingId: string;
+  question: string;
+  options: { text: string }[];
+  correct: number;
+  objectiveTargets?: string[];
+};
+
+/**
+ * Dictation (Phase 7 §63): hear a clip, type what was said. Primarily
+ * listening decoding + orthographic production — never sole evidence of
+ * broad listening comprehension, and no gradeTargets by design.
+ */
+export type DictationExercise = {
+  type: "dictation";
+  id: string;
+  clipId: string;
+  answer: string;
+  alternatives: string[];
+  objectiveTargets?: string[];
+};
+
 export type Exercise =
   | SelectExercise
   | WordBankExercise
@@ -115,7 +157,10 @@ export type Exercise =
   | TypeAnswerExercise
   | FillBlankExercise
   | ArticleSelectExercise
-  | ConjugationClozeExercise;
+  | ConjugationClozeExercise
+  | ListeningComprehensionExercise
+  | ReadingComprehensionExercise
+  | DictationExercise;
 
 /**
  * Optional explicit lesson flow (Phase 5B): ordered interleaving of

@@ -1,0 +1,56 @@
+{
+  "generator": "scripts/reception-audio.ts recon",
+  "voicesRevision": "v1.0.0",
+  "piperTts": {
+    "package": "piper-tts",
+    "pinnedVersion": "1.2.0"
+  },
+  "voices": [
+    {
+      "voice": "fr_FR-siwis-medium",
+      "dataset": null,
+      "license": "* License: CC-BY 4.0",
+      "licenseGateMatched": "CC BY 4.0",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx",
+          "sha256": "641d1ab097da2b81128c076810edb052b385decc8be3381814802a64a73baf99",
+          "bytes": 63201294
+        },
+        "config": {
+          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx.json",
+          "sha256": "39479916c2db192b5ac9764daddd0c744d83e023ad890c6976c0633ae4df8959",
+          "bytes": 4875
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/siwis/medium/MODEL_CARD",
+          "sha256": "bd8b8d079d4d3d2c4cc20345889bbcd586d72f021a132f93357a763eb5232cce",
+          "bytes": 284
+        }
+      }
+    },
+    {
+      "voice": "fr_FR-upmc-medium",
+      "dataset": null,
+      "license": "* License: http://creativecommons.org/licenses/by-sa/4.0/",
+      "licenseGateMatched": "creativecommons.org/licenses/by-sa/4.0",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx",
+          "sha256": "9abb3800c199148897a9ed64e100d224f3de83579f100044174ad19418f1786f",
+          "bytes": 76733615
+        },
+        "config": {
+          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx.json",
+          "sha256": "e8636ec15dfd5d72db37a02cb5320a20f2b8d339f2a0e4337da64c58a33a5868",
+          "bytes": 4996
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/upmc/medium/MODEL_CARD",
+          "sha256": "cf1ac7309e0e04bb159b7e6ae80bc8f66bfce9bdfb3e62ae93a6f57e210ab98a",
+          "bytes": 316
+        }
+      }
+    }
+  ]
+}

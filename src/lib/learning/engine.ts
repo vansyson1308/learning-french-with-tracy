@@ -13,7 +13,7 @@
 import type { CourseProgress, WordStat } from "../store";
 import { reviewWord } from "../srs";
 
-import { serializeCardKey } from "./card-key";
+import { serializeCardKey, type Skill } from "./card-key";
 import type { ReviewEvidence } from "./evidence";
 import { gateEvidence } from "./evidence-gate";
 import { fsrsScheduler } from "./fsrs-adapter";
@@ -222,16 +222,21 @@ export type DueFrenchItem = {
  * most-at-risk first (new/lapsed cards report 0 and lead). Only curated ids
  * are returned: fr:legacy: orphans stay safely in storage but cannot render
  * an exercise (exactly like pre-v2 sentence-keyed entries never surfaced).
- * Deterministic: ties break by due date, then key.
+ * Scoped to ONE skill (default "recognize", the pre-Phase-7 behavior):
+ * listen cards live in the same map but review through their own surface,
+ * so neither queue can render the other's modality. Deterministic: ties
+ * break by due date, then key.
  */
 export function dueFrenchReviewQueue(
   cards: Record<string, FsrsCardState> | undefined,
-  now = Date.now()
+  now = Date.now(),
+  skill: Skill = "recognize"
 ): DueFrenchItem[] {
   if (!cards) return [];
   const due: DueFrenchItem[] = [];
   for (const [key, card] of Object.entries(cards)) {
     if (!fsrsScheduler.isDue(card, now)) continue;
+    if (key.slice(key.lastIndexOf("|") + 1) !== skill) continue;
     const itemId = key.slice(0, key.lastIndexOf("|"));
     const surface = FR_SURFACE_FOR_ID[itemId];
     if (surface === undefined) continue;

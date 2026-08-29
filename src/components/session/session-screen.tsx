@@ -192,6 +192,19 @@ export function SessionScreen({
               onAnswer={controller.onAnswer}
               onMatchComplete={controller.onMatchComplete}
               onMatchWordResult={controller.onMatchWordResult}
+              reception={{
+                scored:
+                  definition.kind === "checkpoint" || definition.kind === "placement",
+                // NEVER reveal transcripts in a scored session — several
+                // items can probe the SAME clip, and a revealed transcript
+                // with the verdict beside it would turn every later item on
+                // that clip into a read-the-answer question (P7 §67, §102).
+                revealTranscript:
+                  definition.kind !== "checkpoint" &&
+                  definition.kind !== "placement" &&
+                  definition.feedbackPolicy !== "minimal",
+                onAudioSkip: controller.onSkip,
+              }}
             />
           )}
         </ScrollView>

@@ -21,16 +21,29 @@ describe("committed assessment data", () => {
     expect(validateAssessment().errors).toEqual([]);
   });
 
-  test("the graph has the authored shape: 17 objectives, 8 essential, exactly 1 direct alignment", () => {
+  test("the graph has the authored shape: 24 objectives, 15 essential, 8 direct alignments", () => {
     const { objectives } = loadCourseObjectives();
-    expect(objectives.length).toBe(17);
-    expect(objectives.filter((o) => o.essential).length).toBe(8);
+    expect(objectives.length).toBe(24); // 17 Phase-6 + 7 Phase-7 receptive
+    // 8 Phase-6 essentials + the 7 receptive objectives flipped essential
+    // in the same commit as the Section-3 checkpoint that assesses them.
+    expect(objectives.filter((o) => o.essential).length).toBe(15);
     const directs = objectives.flatMap((o) =>
       o.cefrAlignments.filter((a) => a.relation === "direct").map((a) => `${o.id}@${a.level}`)
     );
-    // The single defensible direct claim (§166): written recognition of
-    // familiar words IS what the course assesses — at Pre-A1 only.
-    expect(directs).toEqual(["fr.obj.reading.familiar_words@PRE_A1"]);
+    // Directs stay defensible-only (§166, P7 §92-96): the two Pre-A1
+    // familiar-words claims (one per receptive modality) plus the five
+    // Phase-7 A1 reception objectives the Section-3 checkpoint assesses.
+    // Production/interaction still carry NO direct claim anywhere.
+    expect(directs.sort()).toEqual([
+      "fr.obj.listening.announcements@A1",
+      "fr.obj.listening.familiar_words@PRE_A1",
+      "fr.obj.listening.short_dialogues@A1",
+      "fr.obj.listening.short_info@A1",
+      "fr.obj.reading.familiar_words@PRE_A1",
+      "fr.obj.reading.notices_info@A1",
+      "fr.obj.reading.short_messages@A1",
+      "fr.obj.reading.short_texts@A1",
+    ]);
   });
 
   test("topological order puts every prerequisite before its dependent", () => {
@@ -182,7 +195,7 @@ describe("validateClaimPolicyData — the gate stays activity-based", () => {
 });
 
 import { PackSchema, type ClaimPolicy as Policy, type CourseObjective } from "../../content/schema";
-import { validateCurriculumMapping } from "../lib/assessment";
+import { collectScoredItemEvidence, validateCurriculumMapping } from "../lib/assessment";
 import {
   buildCefrAlignment,
   buildObjectiveCoverage,
@@ -265,24 +278,50 @@ describe("coverage + alignment reports are faithful", () => {
       checkpointItemTargets: [],
       placementItemTargets: [],
     });
-    expect(rows.length).toBe(17);
+    expect(rows.length).toBe(24);
     for (const row of rows) {
       expect({ id: row.id, lessons: row.lessonsTeaching.length > 0 }).toEqual({ id: row.id, lessons: true });
     }
     const byId = new Map(rows.map((r) => [r.id, r]));
-    expect(byId.get("fr.obj.reading.familiar_words")!.lessonsTeaching.length).toBe(20);
+    // 20 Section-1 lessons + the 3 Section-3 lessons whose word-level
+    // reading work also targets written familiar-word recognition.
+    expect(byId.get("fr.obj.reading.familiar_words")!.lessonsTeaching.length).toBe(23);
+    // Phase-7 receptive objectives are all taught by real Section-3 lessons.
+    expect(byId.get("fr.obj.listening.familiar_words")!.exercisesTargeting).toBeGreaterThanOrEqual(12);
+    expect(byId.get("fr.obj.listening.short_dialogues")!.exercisesTargeting).toBeGreaterThanOrEqual(6);
+    expect(byId.get("fr.obj.reading.notices_info")!.exercisesTargeting).toBeGreaterThanOrEqual(6);
     expect(byId.get("fr.obj.gender.articles_basic")!.exercisesTargeting).toBeGreaterThanOrEqual(4);
     expect(byId.get("fr.obj.numbers.0_100")!.exercisesTargeting).toBeGreaterThanOrEqual(30);
     expect(byId.get("fr.obj.verbs.passe_compose_avoir")!.exercisesTargeting).toBe(5);
   });
 
-  test("the alignment report exposes the single Pre-A1 direct and groups supports", () => {
+  test("the alignment report exposes the receptive directs and groups supports", () => {
     const report = buildCefrAlignment(loadCourseObjectives().objectives);
     const pre = report.levels.find((l) => l.level === "PRE_A1")!;
-    const reading = pre.scales.find((s) => s.scaleName.startsWith("Reading"))!;
-    expect(reading.direct).toEqual(["fr.obj.reading.familiar_words"]);
+    const preDirects = pre.scales
+      .filter((s) => s.direct.length > 0)
+      .map((s) => [s.scaleName, s.direct]);
+    // One familiar-words direct per receptive modality — nothing else at Pre-A1.
+    expect(preDirects).toEqual([
+      ["Listening comprehension (overall)", ["fr.obj.listening.familiar_words"]],
+      ["Reading comprehension (overall)", ["fr.obj.reading.familiar_words"]],
+    ]);
     const a1 = report.levels.find((l) => l.level === "A1")!;
-    for (const scale of a1.scales) expect(scale.direct).toEqual([]);
+    // A1 directs exist ONLY on the reception scales the Section-3
+    // checkpoint assesses; production/interaction scales stay empty.
+    for (const scale of a1.scales) {
+      const receptive = /Listening|Reading|Understanding conversation/.test(scale.scaleName);
+      if (!receptive) expect({ scale: scale.scaleName, direct: scale.direct }).toEqual({ scale: scale.scaleName, direct: [] });
+    }
+    const a1Directs = a1.scales.flatMap((s) => s.direct).sort();
+    expect(a1Directs).toEqual([
+      "fr.obj.listening.announcements",
+      "fr.obj.listening.short_dialogues",
+      "fr.obj.listening.short_info",
+      "fr.obj.reading.notices_info",
+      "fr.obj.reading.short_messages",
+      "fr.obj.reading.short_texts",
+    ]);
   });
 });
 
@@ -302,6 +341,36 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
       policy: policy(),
       checkpointItems: [],
     });
+    for (const level of gate.levels) {
+      expect({ level: level.level, claimable: level.claimable }).toEqual({
+        level: level.level,
+        claimable: false,
+      });
+    }
+  });
+
+  test("real checkpoint evidence: reception domains covered at A1; A1 overall still false (P7 §149, §181)", () => {
+    const evidence = [
+      ...collectScoredItemEvidence("content/fr/assessment/checkpoints.json", "checkpoints"),
+      ...collectScoredItemEvidence("content/fr/assessment/placement.json", "stages"),
+    ];
+    const gate = evaluateClaimGate({
+      objectives: spokenLess(),
+      policy: policy(),
+      checkpointItems: evidence,
+    });
+    const a1 = gate.levels.find((l) => l.level === "A1")!;
+    const domain = (id: string) => a1.domains.find((d) => d.domain === id)!;
+    // The Section-3 bank satisfies the hardened breadth gate for both
+    // reception domains: >=1 assessed direct objective (3 items / 2 inputs
+    // each), >=2 task families, >=2 scales.
+    expect(domain("spoken_reception").status).toBe("covered");
+    expect(domain("written_reception").status).toBe("covered");
+    // Production and interaction remain honestly unclaimed, so the OVERALL
+    // A1 claim stays false — teaching reception must never imply A1 (§181).
+    expect(domain("spoken_production").status).toBe("no_objectives_in_domain");
+    expect(domain("interaction").status).toBe("no_objectives_in_domain");
+    expect(a1.claimable).toBe(false);
     for (const level of gate.levels) {
       expect({ level: level.level, claimable: level.claimable }).toEqual({
         level: level.level,

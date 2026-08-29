@@ -198,11 +198,16 @@ export function useSessionController(definition: SessionDefinition): SessionCont
   }, [state, definition, progress, sfx]);
 
   const onSkip = useCallback(() => {
-    // Declared-unknown is a placement affordance (§117): no grading, no
-    // evidence, no mistakes, no sounds of failure — a neutral advance.
-    if (definition.kind !== "placement") return;
+    // Declared-unknown (§117) and the audio-unavailable escape (P7 §69-70,
+    // §81): allowed in placement, and on audio-dependent steps everywhere —
+    // a learner without audio continues without penalty; in checkpoints the
+    // skipped item simply yields insufficient evidence (P7 §104), and no
+    // learning memory mutates anywhere.
     const step = currentStep(state);
     if (!step || step.type !== "exercise" || state.status !== "idle") return;
+    const audioDependent =
+      step.exercise.type === "listeningComprehension" || step.exercise.type === "dictation";
+    if (definition.kind !== "placement" && !audioDependent) return;
     haptics.tap();
     resetClock();
     dispatch({ type: "skip" });

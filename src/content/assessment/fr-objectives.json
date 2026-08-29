@@ -18,7 +18,14 @@
     "fr.obj.numbers.0_100",
     "fr.obj.connected.elision",
     "fr.obj.connected.liaison_h",
-    "fr.obj.strategy.cognate_transfer"
+    "fr.obj.strategy.cognate_transfer",
+    "fr.obj.listening.familiar_words",
+    "fr.obj.listening.short_info",
+    "fr.obj.listening.announcements",
+    "fr.obj.listening.short_dialogues",
+    "fr.obj.reading.short_messages",
+    "fr.obj.reading.notices_info",
+    "fr.obj.reading.short_texts"
   ],
   "byId": {
     "fr.obj.greetings.basic": {
@@ -318,6 +325,153 @@
           "scaleName": "Identifying cues and inferring",
           "relation": "supports",
           "sourceRef": "cefr-cv-2020:identifying-cues-inferring"
+        }
+      ]
+    },
+    "fr.obj.listening.familiar_words": {
+      "id": "fr.obj.listening.familiar_words",
+      "title": "Hearing familiar words & phrases",
+      "canDo": "I can understand familiar words and very short learned phrases when I hear them spoken clearly and slowly.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.vocab.everyday_basics"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ]
+    },
+    "fr.obj.listening.short_info": {
+      "id": "fr.obj.listening.short_info",
+      "title": "Catching concrete details by ear",
+      "canDo": "I can pick out concrete information — places, times, prices and numbers — from a short, clear, slow recording about everyday things.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.listening.familiar_words",
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to audio media & recordings",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:audio-media-recordings"
+        },
+        {
+          "level": "PRE_A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-listening-comprehension"
+        }
+      ]
+    },
+    "fr.obj.listening.announcements": {
+      "id": "fr.obj.listening.announcements",
+      "title": "Following short announcements & instructions",
+      "canDo": "I can follow very short, simple everyday announcements and instructions when they are spoken clearly and slowly.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to announcements & instructions",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:announcements-instructions"
+        }
+      ]
+    },
+    "fr.obj.listening.short_dialogues": {
+      "id": "fr.obj.listening.short_dialogues",
+      "title": "Following a short conversation",
+      "canDo": "I can follow the main point of a very short, simple conversation between two people speaking clearly about everyday things.",
+      "category": "spoken_reception",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.listening.familiar_words",
+        "fr.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Understanding conversation between others",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:understanding-conversation"
+        }
+      ]
+    },
+    "fr.obj.reading.short_messages": {
+      "id": "fr.obj.reading.short_messages",
+      "title": "Reading short messages",
+      "canDo": "I can understand short, simple written messages — notes, texts and simple postcards — about everyday plans and needs.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading correspondence (short messages)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-correspondence"
+        }
+      ]
+    },
+    "fr.obj.reading.notices_info": {
+      "id": "fr.obj.reading.notices_info",
+      "title": "Finding information in notices & signs",
+      "canDo": "I can find concrete information in everyday notices, signs, opening hours and simple practical texts.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation (signs & notices)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-orientation"
+        }
+      ]
+    },
+    "fr.obj.reading.short_texts": {
+      "id": "fr.obj.reading.short_texts",
+      "title": "Understanding short simple texts",
+      "canDo": "I can understand short, very simple descriptive texts about familiar topics, reading slowly and re-reading when I need to.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.reading.familiar_words",
+        "fr.obj.verbs.etre_avoir_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        },
+        {
+          "level": "A2",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
         }
       ]
     }

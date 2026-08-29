@@ -59,13 +59,13 @@ describe("committed lexicon database", () => {
     expect(v?.user_version).toBe(DB_SCHEMA_VERSION);
   });
 
-  test("all 99 lexemes are present in authored order with their ids", () => {
+  test("all 126 lexemes are present in authored order with their ids", () => {
     const db = open(committedPath);
     const rows = db
       .query<{ id: string; surface: string }, []>("SELECT id, surface FROM lexemes ORDER BY ord")
       .all();
     db.close();
-    expect(rows.length).toBe(99);
+    expect(rows.length).toBe(126);
     expect(rows.map((r) => r.id)).toEqual(lexicon.lexemes.map((l) => l.id));
     expect(rows.map((r) => r.surface)).toEqual(lexicon.lexemes.map((l) => l.surface));
   });
@@ -89,13 +89,14 @@ describe("committed lexicon database", () => {
       )
       .get();
     db.close();
-    expect(exampleCounts.length).toBe(99);
+    expect(exampleCounts.length).toBe(126);
     expect(exampleCounts.every((r) => r.n >= 1)).toBe(true);
-    // 99 authored refs + 96 adopted Lexique 4 rows (49 + 2 overrides from
+    // 126 authored refs + 123 adopted Lexique 4 rows (49 + 2 overrides from
     // the original 54, then Units A(17) B(7, être/avoir via documented
-    // VER-row overrides) C(13) D(6) E(2)).
-    expect(refCounts?.n).toBe(195);
-    expect(lexiqueRefs?.n).toBe(96);
+    // VER-row overrides) C(13) D(6) E(2), and the 27 Section-3 reception
+    // words adopted by the Phase-7 extract round).
+    expect(refCounts?.n).toBe(249);
+    expect(lexiqueRefs?.n).toBe(123);
     expect(sources).toEqual([
       { id: "lexique-4", license: "CC-BY-SA-4.0" },
       { id: "original-french-lexicon", license: "CC-BY-SA-4.0" },

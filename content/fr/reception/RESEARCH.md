@@ -123,6 +123,34 @@ report records — only comprehension of **clear standard synthesized speech
 with limited speaker/accent diversity**. Broad accent comprehension is a
 later-maturity goal and is explicitly out of evidence scope.
 
+### Voice selection record (canary evidence)
+
+- **fr_FR-siwis-medium** (CC BY 4.0) — PASSED the canary ASR audit
+  (workflow run 33230542810): mean WER 0.19 over the 14-item phonetic
+  canary, with residual errors dominated by the ASR normalizer counting
+  digit renderings of numbers as word mismatches. Speaker A.
+- **fr_FR-mls-medium** (CC BY 4.0) — EXCLUDED on quality. Same run, same
+  pipeline: mean WER 0.98–2.47 across all eight sampled speakers, with
+  Whisper hallucinating unrelated French on roughly half the clips — the
+  audio is not reliably intelligible, and intelligibility IS the scored
+  construct (P7 §40, §56-60). License was clean; the exclusion is
+  recorded in audio-source-manifest.json `excludedVoices`.
+- **fr_FR-upmc-medium** (CC BY-SA 4.0, two speakers: Jessica, Pierre) —
+  ADOPTED as speaker B after passing the same fail-closed recon + canary.
+  Its share-alike license is accepted deliberately: the project already
+  publishes derived data under CC BY-SA 4.0 with an in-app attributions
+  screen (approved plan §AC2; registry entries `piper-voice-*`), so the
+  obligations are already implemented. The first recon attempt failed
+  closed on the then-CC-BY-only allow list — working exactly as designed —
+  and the allow list was then aligned with the project-wide
+  LICENSE_ALLOWLIST (CC BY / CC BY-SA, text and URL spellings).
+  AGPL/GPL/NC/ND stay denied (fr_FR-tom-medium remains excluded).
+  Canary verdict (run 33231334069): speaker 1 mean WER 0.197, speaker 0
+  0.209, siwis 0.184 through the identical pipeline — both speakers on
+  par with siwis. **Speaker 1 pinned** for voiceCast B: best WER of the
+  two and a male voice, giving dialogues a clear contrast with siwis
+  (female) for who-is-speaking comprehension.
+
 ## 7. Reading policy
 
 - All reading texts are original project-authored (`original-project`
@@ -132,6 +160,23 @@ later-maturity goal and is explicitly out of evidence scope.
   scored mode disables lexical help before answering, and revealed
   assistance disqualifies/marks the evidence (§54-55, §98).
 - Dialogue texts carry explicit speaker labels (never color-only).
+
+### Generation QA record (full 39-clip round)
+
+Workflow run 33231760754 synthesized all 39 authored clips (37 unique
+assets — two dictation clips deliberately share text, therefore asset,
+with their teaching clips): 0 technical failures (duration, clipping,
+edge-silence, chars/sec all in range), mean ASR WER 0.137. High-WER rows
+were reviewed by hand: almost all are ASR normalization artifacts (the
+audit renders spoken numbers as digits — "neuf heures" vs "9h" — and
+splits liaisons), not audio defects. One genuine red flag —
+`fr.clip.cp3_dialogue_magasin` at 0.73 with hallucinated ASR output —
+was fixed at the source: the answer segment was reworded from the
+elliptical "À neuf heures, madame." to the fuller "Le magasin ouvre à
+neuf heures, madame." (clearer for an A1 listener too) and regenerated.
+The ASR audit stays a red-flag detector, never a linguistic oracle
+(P7 §40): pass/fail authority is the technical QA plus human review of
+flagged rows.
 
 ## 8. Claim-gate hardening (Phase 7, Part II)
 

@@ -10626,6 +10626,2932 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fr-en:section-3",
+      "title": "Section 3: Understand everyday French",
+      "units": [
+        {
+          "id": "fr-en:unit-f",
+          "title": "Écoute !",
+          "description": "Tune your ear: familiar French words and phrases, by sound alone.",
+          "guidebook": "## Listening starts with sounds you know\n\nYou already read these words. Now you will *hear* them — played clearly, and you can replay or slow them down while you practice.\n\n- Listen first, answer second. The spelling comes after.\n- **Slow mode** is a learning tool. Checkpoints use normal speed.\n- If you can't use audio right now, you can skip a listening item — it stays due.",
+          "words": [
+            {
+              "target": "le train",
+              "native": "the train",
+              "emoji": "🚆"
+            },
+            {
+              "target": "le matin",
+              "native": "the morning",
+              "emoji": "🌅"
+            },
+            {
+              "target": "le soir",
+              "native": "the evening",
+              "emoji": "🌆"
+            },
+            {
+              "target": "demain",
+              "native": "tomorrow",
+              "emoji": "📅"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uf-l0",
+              "title": "Premiers sons",
+              "exercises": [
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e1",
+                  "clipId": "fr.clip.uf_cafe",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "the coffee"
+                    },
+                    {
+                      "text": "the tea"
+                    },
+                    {
+                      "text": "the milk"
+                    },
+                    {
+                      "text": "the juice"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e2",
+                  "clipId": "fr.clip.uf_gare",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "the station"
+                    },
+                    {
+                      "text": "the street"
+                    },
+                    {
+                      "text": "the city"
+                    },
+                    {
+                      "text": "the house"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "the train",
+                  "options": [
+                    {
+                      "text": "le train"
+                    },
+                    {
+                      "text": "le taxi"
+                    },
+                    {
+                      "text": "le billet"
+                    },
+                    {
+                      "text": "la gare"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words",
+                    "fr.obj.vocab.places_travel"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:train"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e4",
+                  "clipId": "fr.clip.uf_train",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "the train"
+                    },
+                    {
+                      "text": "the ticket"
+                    },
+                    {
+                      "text": "the taxi"
+                    },
+                    {
+                      "text": "the trip"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "dictation",
+                  "id": "s3-e5",
+                  "clipId": "fr.clip.uf_dictee_bonjour",
+                  "answer": "bonjour",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "match",
+                  "id": "s3-e6",
+                  "pairs": [
+                    {
+                      "target": "le train",
+                      "native": "the train"
+                    },
+                    {
+                      "target": "le matin",
+                      "native": "the morning"
+                    },
+                    {
+                      "target": "le soir",
+                      "native": "the evening"
+                    },
+                    {
+                      "target": "demain",
+                      "native": "tomorrow"
+                    }
+                  ],
+                  "gradeTargets": [
+                    "fr:w:train",
+                    "fr:w:matin",
+                    "fr:w:soir",
+                    "fr:w:demain"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.familiar_words",
+                "fr.obj.vocab.everyday_basics"
+              ]
+            },
+            {
+              "id": "fr-en:uf-l1",
+              "title": "Phrases entendues",
+              "exercises": [
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e7",
+                  "clipId": "fr.clip.uf_bonsoir",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "Good evening, madam."
+                    },
+                    {
+                      "text": "Good morning, sir."
+                    },
+                    {
+                      "text": "Good night!"
+                    },
+                    {
+                      "text": "Goodbye, madam."
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e8",
+                  "clipId": "fr.clip.uf_pain",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "the bread"
+                    },
+                    {
+                      "text": "the milk"
+                    },
+                    {
+                      "text": "the cheese"
+                    },
+                    {
+                      "text": "the water"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e9",
+                  "mode": "targetToNative",
+                  "prompt": "le matin",
+                  "options": [
+                    {
+                      "text": "the morning"
+                    },
+                    {
+                      "text": "the evening"
+                    },
+                    {
+                      "text": "the night"
+                    },
+                    {
+                      "text": "the day"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:matin"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e10",
+                  "clipId": "fr.clip.uf_matin",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "the morning"
+                    },
+                    {
+                      "text": "the evening"
+                    },
+                    {
+                      "text": "the month"
+                    },
+                    {
+                      "text": "the week"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "dictation",
+                  "id": "s3-e11",
+                  "clipId": "fr.clip.uf_dictee_lait",
+                  "answer": "le lait",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e12",
+                  "clipId": "fr.clip.uf_merci",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "Thank you very much, sir."
+                    },
+                    {
+                      "text": "You're welcome, madam."
+                    },
+                    {
+                      "text": "Excuse me, sir."
+                    },
+                    {
+                      "text": "Please, sir."
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.familiar_words"
+              ]
+            },
+            {
+              "id": "fr-en:uf-l2",
+              "title": "Le matin et le soir",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e13",
+                  "mode": "nativeToTarget",
+                  "prompt": "tomorrow",
+                  "options": [
+                    {
+                      "text": "demain"
+                    },
+                    {
+                      "text": "le matin"
+                    },
+                    {
+                      "text": "le soir"
+                    },
+                    {
+                      "text": "la semaine"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:demain"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e14",
+                  "clipId": "fr.clip.uf_eau",
+                  "question": "What do you hear?",
+                  "options": [
+                    {
+                      "text": "the water"
+                    },
+                    {
+                      "text": "the milk"
+                    },
+                    {
+                      "text": "the juice"
+                    },
+                    {
+                      "text": "the tea"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e15",
+                  "clipId": "fr.clip.uf_soir_phrase",
+                  "question": "What does this mean?",
+                  "options": [
+                    {
+                      "text": "The café is open in the evening."
+                    },
+                    {
+                      "text": "The café is closed in the evening."
+                    },
+                    {
+                      "text": "The café is open in the morning."
+                    },
+                    {
+                      "text": "The shop is open in the evening."
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e16",
+                  "mode": "targetToNative",
+                  "prompt": "le soir",
+                  "options": [
+                    {
+                      "text": "the evening"
+                    },
+                    {
+                      "text": "the morning"
+                    },
+                    {
+                      "text": "the exit"
+                    },
+                    {
+                      "text": "the departure"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:soir"
+                  ]
+                },
+                {
+                  "type": "dictation",
+                  "id": "s3-e17",
+                  "clipId": "fr.clip.uf_dictee_train",
+                  "answer": "le train",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "match",
+                  "id": "s3-e18",
+                  "pairs": [
+                    {
+                      "target": "le matin",
+                      "native": "the morning"
+                    },
+                    {
+                      "target": "l'eau",
+                      "native": "the water"
+                    },
+                    {
+                      "target": "le pain",
+                      "native": "the bread"
+                    },
+                    {
+                      "target": "le café",
+                      "native": "the coffee"
+                    }
+                  ],
+                  "gradeTargets": [
+                    "fr:w:matin",
+                    "fr:w:eau",
+                    "fr:w:pain",
+                    "fr:w:cafe"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.familiar_words",
+                "fr.obj.reading.familiar_words"
+              ]
+            },
+            {
+              "id": "fr-en:uf-l3",
+              "title": "Bilan d'écoute",
+              "exercises": [
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e19",
+                  "clipId": "fr.clip.uf_cafe",
+                  "question": "Which drink did you hear?",
+                  "options": [
+                    {
+                      "text": "coffee"
+                    },
+                    {
+                      "text": "tea"
+                    },
+                    {
+                      "text": "water"
+                    },
+                    {
+                      "text": "milk"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e20",
+                  "clipId": "fr.clip.uf_matin",
+                  "question": "Which time of day did you hear?",
+                  "options": [
+                    {
+                      "text": "the morning"
+                    },
+                    {
+                      "text": "the evening"
+                    },
+                    {
+                      "text": "the night"
+                    },
+                    {
+                      "text": "the afternoon"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e21",
+                  "clipId": "fr.clip.uf_bonsoir",
+                  "question": "When would you hear this greeting?",
+                  "options": [
+                    {
+                      "text": "In the evening"
+                    },
+                    {
+                      "text": "In the morning"
+                    },
+                    {
+                      "text": "At night, going to bed"
+                    },
+                    {
+                      "text": "At lunch"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e22",
+                  "mode": "nativeToTarget",
+                  "prompt": "the morning",
+                  "options": [
+                    {
+                      "text": "le matin"
+                    },
+                    {
+                      "text": "le soir"
+                    },
+                    {
+                      "text": "demain"
+                    },
+                    {
+                      "text": "le jour"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:matin"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e23",
+                  "clipId": "fr.clip.uf_train",
+                  "question": "Which word did you hear?",
+                  "options": [
+                    {
+                      "text": "le train"
+                    },
+                    {
+                      "text": "le pain"
+                    },
+                    {
+                      "text": "le bain"
+                    },
+                    {
+                      "text": "le grain"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "dictation",
+                  "id": "s3-e24",
+                  "clipId": "fr.clip.uf_dictee_bonjour",
+                  "answer": "bonjour",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-g",
+          "title": "Messages & panneaux",
+          "description": "Read real-life French: notes from friends, signs, and opening hours.",
+          "guidebook": "## Reading the French around you\n\nShort messages and notices are the first *real* French most people meet: opening hours, signs, a note from a friend.\n\n- Look for **concrete facts**: days, times, prices, places.\n- `Ouvert` = open · `Fermé` = closed — the two most useful words on any door.\n- Days end in **-di**: lundi, mardi… samedi. Dimanche is the odd one out.",
+          "words": [
+            {
+              "target": "le magasin",
+              "native": "the shop",
+              "emoji": "🏪"
+            },
+            {
+              "target": "ouvert",
+              "native": "open",
+              "emoji": "🔓"
+            },
+            {
+              "target": "aujourd'hui",
+              "native": "today",
+              "emoji": "📆"
+            },
+            {
+              "target": "samedi",
+              "native": "Saturday",
+              "emoji": "🗓️"
+            },
+            {
+              "target": "dimanche",
+              "native": "Sunday",
+              "emoji": "⛪"
+            },
+            {
+              "target": "l'entrée",
+              "native": "the entrance",
+              "emoji": "🚪"
+            },
+            {
+              "target": "la sortie",
+              "native": "the exit",
+              "emoji": "🏃"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ug-l0",
+              "title": "Horaires",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e25",
+                  "mode": "nativeToTarget",
+                  "prompt": "the shop",
+                  "options": [
+                    {
+                      "text": "le magasin"
+                    },
+                    {
+                      "text": "le musée"
+                    },
+                    {
+                      "text": "la gare"
+                    },
+                    {
+                      "text": "le marché"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:magasin"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e26",
+                  "readingId": "fr.read.ug_horaires_musee",
+                  "question": "On which day is the museum closed?",
+                  "options": [
+                    {
+                      "text": "Monday"
+                    },
+                    {
+                      "text": "Sunday"
+                    },
+                    {
+                      "text": "Saturday"
+                    },
+                    {
+                      "text": "Tuesday"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e27",
+                  "readingId": "fr.read.ug_horaires_musee",
+                  "question": "How much is the entrance?",
+                  "options": [
+                    {
+                      "text": "8 euros"
+                    },
+                    {
+                      "text": "10 euros"
+                    },
+                    {
+                      "text": "18 euros"
+                    },
+                    {
+                      "text": "6 euros"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info",
+                    "fr.obj.numbers.0_100"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e28",
+                  "mode": "targetToNative",
+                  "prompt": "ouvert",
+                  "options": [
+                    {
+                      "text": "open"
+                    },
+                    {
+                      "text": "closed"
+                    },
+                    {
+                      "text": "free"
+                    },
+                    {
+                      "text": "full"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:ouvert"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e29",
+                  "readingId": "fr.read.ug_horaires_musee",
+                  "question": "When does the museum open?",
+                  "options": [
+                    {
+                      "text": "At 10 o'clock"
+                    },
+                    {
+                      "text": "At 8 o'clock"
+                    },
+                    {
+                      "text": "At 6 o'clock"
+                    },
+                    {
+                      "text": "At noon"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.notices_info",
+                "fr.obj.reading.familiar_words"
+              ]
+            },
+            {
+              "id": "fr-en:ug-l1",
+              "title": "Un petit message",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e30",
+                  "mode": "nativeToTarget",
+                  "prompt": "Saturday",
+                  "options": [
+                    {
+                      "text": "samedi"
+                    },
+                    {
+                      "text": "dimanche"
+                    },
+                    {
+                      "text": "demain"
+                    },
+                    {
+                      "text": "aujourd'hui"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:samedi"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e31",
+                  "readingId": "fr.read.ug_message_lea",
+                  "question": "When is Léa going to the market?",
+                  "options": [
+                    {
+                      "text": "Tomorrow morning"
+                    },
+                    {
+                      "text": "Tonight"
+                    },
+                    {
+                      "text": "On Sunday"
+                    },
+                    {
+                      "text": "Today at noon"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_messages"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e32",
+                  "readingId": "fr.read.ug_message_lea",
+                  "question": "What does Léa want to buy?",
+                  "options": [
+                    {
+                      "text": "Bread and cheese"
+                    },
+                    {
+                      "text": "Milk and juice"
+                    },
+                    {
+                      "text": "Apples and tea"
+                    },
+                    {
+                      "text": "Fish and rice"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_messages"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e33",
+                  "mode": "targetToNative",
+                  "prompt": "dimanche",
+                  "options": [
+                    {
+                      "text": "Sunday"
+                    },
+                    {
+                      "text": "Saturday"
+                    },
+                    {
+                      "text": "tomorrow"
+                    },
+                    {
+                      "text": "today"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:dimanche"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e34",
+                  "readingId": "fr.read.ug_message_lea",
+                  "question": "Who is Léa going with?",
+                  "options": [
+                    {
+                      "text": "Her sister"
+                    },
+                    {
+                      "text": "Her brother"
+                    },
+                    {
+                      "text": "Her boss"
+                    },
+                    {
+                      "text": "Her friend Paul"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_messages"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.short_messages",
+                "fr.obj.reading.familiar_words"
+              ]
+            },
+            {
+              "id": "fr-en:ug-l2",
+              "title": "Panneaux utiles",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e35",
+                  "mode": "nativeToTarget",
+                  "prompt": "the exit",
+                  "options": [
+                    {
+                      "text": "la sortie"
+                    },
+                    {
+                      "text": "l'entrée"
+                    },
+                    {
+                      "text": "la porte"
+                    },
+                    {
+                      "text": "la voie"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:sortie"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e36",
+                  "readingId": "fr.read.ug_panneau_sortie",
+                  "question": "Where is the exit?",
+                  "options": [
+                    {
+                      "text": "On the right"
+                    },
+                    {
+                      "text": "On the left"
+                    },
+                    {
+                      "text": "Straight ahead"
+                    },
+                    {
+                      "text": "Upstairs"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e37",
+                  "readingId": "fr.read.ug_panneau_sortie",
+                  "question": "Where is the shop entrance?",
+                  "options": [
+                    {
+                      "text": "On the left, after the door"
+                    },
+                    {
+                      "text": "On the right"
+                    },
+                    {
+                      "text": "Next to the exit"
+                    },
+                    {
+                      "text": "In front of the station"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e38",
+                  "readingId": "fr.read.ug_message_patron",
+                  "question": "Which table is reserved for Madame Martin?",
+                  "options": [
+                    {
+                      "text": "The one near the door"
+                    },
+                    {
+                      "text": "The one near the window"
+                    },
+                    {
+                      "text": "The one at the entrance"
+                    },
+                    {
+                      "text": "The one on the terrace"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_messages"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e39",
+                  "mode": "nativeToTarget",
+                  "prompt": "today",
+                  "options": [
+                    {
+                      "text": "aujourd'hui"
+                    },
+                    {
+                      "text": "demain"
+                    },
+                    {
+                      "text": "le matin"
+                    },
+                    {
+                      "text": "samedi"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:aujourdhui"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.notices_info",
+                "fr.obj.reading.short_messages"
+              ]
+            },
+            {
+              "id": "fr-en:ug-l3",
+              "title": "Ouvert ou fermé ?",
+              "exercises": [
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e40",
+                  "readingId": "fr.read.ug_horaires_magasin",
+                  "question": "On which day is the bakery closed?",
+                  "options": [
+                    {
+                      "text": "Sunday"
+                    },
+                    {
+                      "text": "Saturday"
+                    },
+                    {
+                      "text": "Monday"
+                    },
+                    {
+                      "text": "Friday"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e41",
+                  "readingId": "fr.read.ug_horaires_magasin",
+                  "question": "When does the bakery open?",
+                  "options": [
+                    {
+                      "text": "At 7 o'clock"
+                    },
+                    {
+                      "text": "At 9 o'clock"
+                    },
+                    {
+                      "text": "At 1 o'clock"
+                    },
+                    {
+                      "text": "At 8 o'clock"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e42",
+                  "mode": "targetToNative",
+                  "prompt": "l'entrée",
+                  "options": [
+                    {
+                      "text": "the entrance"
+                    },
+                    {
+                      "text": "the exit"
+                    },
+                    {
+                      "text": "the door"
+                    },
+                    {
+                      "text": "the platform"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:entree"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e43",
+                  "readingId": "fr.read.ug_horaires_musee",
+                  "question": "Until what time is the museum open?",
+                  "options": [
+                    {
+                      "text": "18:00"
+                    },
+                    {
+                      "text": "13:00"
+                    },
+                    {
+                      "text": "20:00"
+                    },
+                    {
+                      "text": "10:00"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "match",
+                  "id": "s3-e44",
+                  "pairs": [
+                    {
+                      "target": "ouvert",
+                      "native": "open"
+                    },
+                    {
+                      "target": "la sortie",
+                      "native": "the exit"
+                    },
+                    {
+                      "target": "l'entrée",
+                      "native": "the entrance"
+                    },
+                    {
+                      "target": "le magasin",
+                      "native": "the shop"
+                    }
+                  ],
+                  "gradeTargets": [
+                    "fr:w:ouvert",
+                    "fr:w:sortie",
+                    "fr:w:entree",
+                    "fr:w:magasin"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.notices_info"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-h",
+          "title": "Annonces & consignes",
+          "description": "Catch the key facts in announcements: times, platforms, and simple instructions.",
+          "guidebook": "## You don't need every word\n\nAnnouncements are fast in real life — but they always carry the same few facts: **what**, **when**, **where**.\n\n- Listen for numbers: times (à neuf heures) and platforms (voie deux).\n- `Le départ` = departure. `Attention` = attention/mind out.\n- In this unit you can replay and slow clips. The checkpoint plays them at normal speed, twice.",
+          "words": [
+            {
+              "target": "la porte",
+              "native": "the door",
+              "emoji": "🚪"
+            },
+            {
+              "target": "la voie",
+              "native": "the platform",
+              "emoji": "🛤️"
+            },
+            {
+              "target": "le départ",
+              "native": "the departure",
+              "emoji": "🛫"
+            },
+            {
+              "target": "le prix",
+              "native": "the price",
+              "emoji": "💶"
+            },
+            {
+              "target": "ouvrir",
+              "native": "to open",
+              "emoji": "🔑"
+            },
+            {
+              "target": "fermer",
+              "native": "to close",
+              "emoji": "🔒"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uh-l0",
+              "title": "À la gare",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e45",
+                  "mode": "nativeToTarget",
+                  "prompt": "the platform",
+                  "options": [
+                    {
+                      "text": "la voie"
+                    },
+                    {
+                      "text": "la porte"
+                    },
+                    {
+                      "text": "la sortie"
+                    },
+                    {
+                      "text": "la place"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:voie"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e46",
+                  "clipId": "fr.clip.uh_train_lyon",
+                  "question": "Where is this train going?",
+                  "options": [
+                    {
+                      "text": "Lyon"
+                    },
+                    {
+                      "text": "Paris"
+                    },
+                    {
+                      "text": "Marseille"
+                    },
+                    {
+                      "text": "Nice"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e47",
+                  "clipId": "fr.clip.uh_train_lyon",
+                  "question": "Which platform does it leave from?",
+                  "options": [
+                    {
+                      "text": "Platform 2"
+                    },
+                    {
+                      "text": "Platform 3"
+                    },
+                    {
+                      "text": "Platform 9"
+                    },
+                    {
+                      "text": "Platform 1"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements",
+                    "fr.obj.listening.short_info",
+                    "fr.obj.numbers.0_100"
+                  ]
+                },
+                {
+                  "type": "dictation",
+                  "id": "s3-e48",
+                  "clipId": "fr.clip.uh_dictee_ferme",
+                  "answer": "Le magasin est fermé.",
+                  "alternatives": [
+                    "le magasin est fermé"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e49",
+                  "mode": "targetToNative",
+                  "prompt": "le départ",
+                  "options": [
+                    {
+                      "text": "the departure"
+                    },
+                    {
+                      "text": "the arrival"
+                    },
+                    {
+                      "text": "the platform"
+                    },
+                    {
+                      "text": "the exit"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:depart"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.announcements",
+                "fr.obj.listening.short_info",
+                "fr.obj.numbers.0_100"
+              ]
+            },
+            {
+              "id": "fr-en:uh-l1",
+              "title": "Ouvre et ferme",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e50",
+                  "mode": "nativeToTarget",
+                  "prompt": "to close",
+                  "options": [
+                    {
+                      "text": "fermer"
+                    },
+                    {
+                      "text": "ouvrir"
+                    },
+                    {
+                      "text": "acheter"
+                    },
+                    {
+                      "text": "payer"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:fermer"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e51",
+                  "clipId": "fr.clip.uh_magasin_ferme",
+                  "question": "What does this mean?",
+                  "options": [
+                    {
+                      "text": "The shop closes in ten minutes."
+                    },
+                    {
+                      "text": "The shop opens in ten minutes."
+                    },
+                    {
+                      "text": "The shop closes at ten o'clock."
+                    },
+                    {
+                      "text": "The shop is closed today."
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e52",
+                  "clipId": "fr.clip.uh_musee_ouvre",
+                  "question": "When does the museum open on Sundays?",
+                  "options": [
+                    {
+                      "text": "At 10 o'clock"
+                    },
+                    {
+                      "text": "At 12 o'clock"
+                    },
+                    {
+                      "text": "At 2 o'clock"
+                    },
+                    {
+                      "text": "It is closed"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements",
+                    "fr.obj.listening.short_info"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e53",
+                  "mode": "targetToNative",
+                  "prompt": "ouvrir",
+                  "options": [
+                    {
+                      "text": "to open"
+                    },
+                    {
+                      "text": "to close"
+                    },
+                    {
+                      "text": "to buy"
+                    },
+                    {
+                      "text": "to take"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:ouvrir"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e54",
+                  "clipId": "fr.clip.uh_magasin_ferme",
+                  "question": "How long until the shop closes?",
+                  "options": [
+                    {
+                      "text": "10 minutes"
+                    },
+                    {
+                      "text": "2 minutes"
+                    },
+                    {
+                      "text": "an hour"
+                    },
+                    {
+                      "text": "30 minutes"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements",
+                    "fr.obj.numbers.0_100"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.announcements",
+                "fr.obj.listening.short_info"
+              ]
+            },
+            {
+              "id": "fr-en:uh-l2",
+              "title": "Consignes simples",
+              "exercises": [
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e55",
+                  "clipId": "fr.clip.uh_porte_droite",
+                  "question": "Where is the exit?",
+                  "options": [
+                    {
+                      "text": "On the right, after the door"
+                    },
+                    {
+                      "text": "On the left, before the door"
+                    },
+                    {
+                      "text": "Straight ahead"
+                    },
+                    {
+                      "text": "Behind you"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e56",
+                  "mode": "nativeToTarget",
+                  "prompt": "the door",
+                  "options": [
+                    {
+                      "text": "la porte"
+                    },
+                    {
+                      "text": "la voie"
+                    },
+                    {
+                      "text": "la table"
+                    },
+                    {
+                      "text": "la sortie"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:porte"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e57",
+                  "clipId": "fr.clip.uh_attention_depart",
+                  "question": "Which platform is the departure from?",
+                  "options": [
+                    {
+                      "text": "Platform 3"
+                    },
+                    {
+                      "text": "Platform 2"
+                    },
+                    {
+                      "text": "Platform 13"
+                    },
+                    {
+                      "text": "Platform 4"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements",
+                    "fr.obj.listening.short_info"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e58",
+                  "clipId": "fr.clip.uh_table_gauche",
+                  "question": "Where is your table?",
+                  "options": [
+                    {
+                      "text": "On the left, near the entrance"
+                    },
+                    {
+                      "text": "On the right, near the exit"
+                    },
+                    {
+                      "text": "Near the window"
+                    },
+                    {
+                      "text": "Near the kitchen"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e59",
+                  "mode": "targetToNative",
+                  "prompt": "le prix",
+                  "options": [
+                    {
+                      "text": "the price"
+                    },
+                    {
+                      "text": "the ticket"
+                    },
+                    {
+                      "text": "the prize money"
+                    },
+                    {
+                      "text": "the receipt"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:prix"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.announcements"
+              ]
+            },
+            {
+              "id": "fr-en:uh-l3",
+              "title": "Combien ça coûte ?",
+              "exercises": [
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e60",
+                  "clipId": "fr.clip.uh_prix_billet",
+                  "question": "How much does the ticket cost?",
+                  "options": [
+                    {
+                      "text": "16 euros"
+                    },
+                    {
+                      "text": "6 euros"
+                    },
+                    {
+                      "text": "60 euros"
+                    },
+                    {
+                      "text": "13 euros"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_info",
+                    "fr.obj.numbers.0_100"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e61",
+                  "mode": "nativeToTarget",
+                  "prompt": "to open",
+                  "options": [
+                    {
+                      "text": "ouvrir"
+                    },
+                    {
+                      "text": "fermer"
+                    },
+                    {
+                      "text": "coûter"
+                    },
+                    {
+                      "text": "vouloir"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:ouvrir"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e62",
+                  "clipId": "fr.clip.uh_musee_ouvre",
+                  "question": "On which day does this announcement apply?",
+                  "options": [
+                    {
+                      "text": "Sunday"
+                    },
+                    {
+                      "text": "Saturday"
+                    },
+                    {
+                      "text": "Monday"
+                    },
+                    {
+                      "text": "Every day"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.announcements"
+                  ]
+                },
+                {
+                  "type": "dictation",
+                  "id": "s3-e63",
+                  "clipId": "fr.clip.uf_dictee_train",
+                  "answer": "le train",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                },
+                {
+                  "type": "match",
+                  "id": "s3-e64",
+                  "pairs": [
+                    {
+                      "target": "la voie",
+                      "native": "the platform"
+                    },
+                    {
+                      "target": "le départ",
+                      "native": "the departure"
+                    },
+                    {
+                      "target": "fermer",
+                      "native": "to close"
+                    },
+                    {
+                      "target": "le prix",
+                      "native": "the price"
+                    }
+                  ],
+                  "gradeTargets": [
+                    "fr:w:voie",
+                    "fr:w:depart",
+                    "fr:w:fermer",
+                    "fr:w:prix"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.short_info",
+                "fr.obj.numbers.0_100",
+                "fr.obj.listening.announcements"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-i",
+          "title": "Petits dialogues",
+          "description": "Follow short everyday exchanges: at the café, the station, the shop.",
+          "guidebook": "## Two voices, one situation\n\nReal French comes in exchanges. You'll hear two people — you only need the *point*.\n\n- `Je voudrais…` = I would like… (the polite all-purpose opener)\n- `Ça fait…` = that comes to… (the price)\n- You listen only — nobody asks you to speak yet.",
+          "words": [
+            {
+              "target": "la table",
+              "native": "the table",
+              "emoji": "🪑"
+            },
+            {
+              "target": "le restaurant",
+              "native": "the restaurant",
+              "emoji": "🍽️"
+            },
+            {
+              "target": "vouloir",
+              "native": "to want",
+              "emoji": "🙏"
+            },
+            {
+              "target": "acheter",
+              "native": "to buy",
+              "emoji": "🛒"
+            },
+            {
+              "target": "payer",
+              "native": "to pay",
+              "emoji": "💳"
+            },
+            {
+              "target": "coûter",
+              "native": "to cost",
+              "emoji": "🏷️"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ui-l0",
+              "title": "Au café",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e65",
+                  "mode": "nativeToTarget",
+                  "prompt": "the table",
+                  "options": [
+                    {
+                      "text": "la table"
+                    },
+                    {
+                      "text": "la porte"
+                    },
+                    {
+                      "text": "la place"
+                    },
+                    {
+                      "text": "la carte"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:table"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e66",
+                  "clipId": "fr.clip.ui_cafe_commande",
+                  "question": "What does the customer order?",
+                  "options": [
+                    {
+                      "text": "A coffee and a juice"
+                    },
+                    {
+                      "text": "A tea and a milk"
+                    },
+                    {
+                      "text": "Two coffees"
+                    },
+                    {
+                      "text": "A coffee and bread"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e67",
+                  "clipId": "fr.clip.ui_cafe_commande",
+                  "question": "How much does it cost?",
+                  "options": [
+                    {
+                      "text": "5 euros"
+                    },
+                    {
+                      "text": "2 euros"
+                    },
+                    {
+                      "text": "15 euros"
+                    },
+                    {
+                      "text": "9 euros"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues",
+                    "fr.obj.numbers.0_100"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e68",
+                  "readingId": "fr.read.ui_dialogue_cafe",
+                  "question": "What does Emma ask for?",
+                  "options": [
+                    {
+                      "text": "A table for two"
+                    },
+                    {
+                      "text": "A coffee"
+                    },
+                    {
+                      "text": "The bill"
+                    },
+                    {
+                      "text": "A menu"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e69",
+                  "mode": "targetToNative",
+                  "prompt": "vouloir",
+                  "options": [
+                    {
+                      "text": "to want"
+                    },
+                    {
+                      "text": "to pay"
+                    },
+                    {
+                      "text": "to buy"
+                    },
+                    {
+                      "text": "to cost"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:vouloir"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.short_dialogues",
+                "fr.obj.reading.short_texts"
+              ]
+            },
+            {
+              "id": "fr-en:ui-l1",
+              "title": "Un billet, s'il vous plaît",
+              "exercises": [
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e70",
+                  "clipId": "fr.clip.ui_billet_train",
+                  "question": "Where does the customer want to go?",
+                  "options": [
+                    {
+                      "text": "Paris"
+                    },
+                    {
+                      "text": "Lyon"
+                    },
+                    {
+                      "text": "Marseille"
+                    },
+                    {
+                      "text": "Bordeaux"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e71",
+                  "clipId": "fr.clip.ui_billet_train",
+                  "question": "When does the train leave?",
+                  "options": [
+                    {
+                      "text": "At 8 o'clock, platform 2"
+                    },
+                    {
+                      "text": "At 2 o'clock, platform 8"
+                    },
+                    {
+                      "text": "At 8 o'clock, platform 3"
+                    },
+                    {
+                      "text": "At 9 o'clock, platform 2"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues",
+                    "fr.obj.listening.short_info"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e72",
+                  "mode": "nativeToTarget",
+                  "prompt": "to buy",
+                  "options": [
+                    {
+                      "text": "acheter"
+                    },
+                    {
+                      "text": "payer"
+                    },
+                    {
+                      "text": "coûter"
+                    },
+                    {
+                      "text": "vouloir"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:acheter"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e73",
+                  "clipId": "fr.clip.ui_ou_gare",
+                  "question": "Where is the station?",
+                  "options": [
+                    {
+                      "text": "On the right, after the museum"
+                    },
+                    {
+                      "text": "On the left, after the museum"
+                    },
+                    {
+                      "text": "Next to the café"
+                    },
+                    {
+                      "text": "Behind the shop"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e74",
+                  "mode": "targetToNative",
+                  "prompt": "coûter",
+                  "options": [
+                    {
+                      "text": "to cost"
+                    },
+                    {
+                      "text": "to count"
+                    },
+                    {
+                      "text": "to cut"
+                    },
+                    {
+                      "text": "to pay"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:couter"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.short_dialogues",
+                "fr.obj.listening.short_info"
+              ]
+            },
+            {
+              "id": "fr-en:ui-l2",
+              "title": "Acheter et payer",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e75",
+                  "mode": "nativeToTarget",
+                  "prompt": "to pay",
+                  "options": [
+                    {
+                      "text": "payer"
+                    },
+                    {
+                      "text": "acheter"
+                    },
+                    {
+                      "text": "vouloir"
+                    },
+                    {
+                      "text": "fermer"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:payer"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e76",
+                  "clipId": "fr.clip.ui_achat_pain",
+                  "question": "What does the customer want?",
+                  "options": [
+                    {
+                      "text": "Some bread"
+                    },
+                    {
+                      "text": "Some cheese"
+                    },
+                    {
+                      "text": "Some milk"
+                    },
+                    {
+                      "text": "Some apples"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e77",
+                  "clipId": "fr.clip.ui_achat_pain",
+                  "question": "How much is it?",
+                  "options": [
+                    {
+                      "text": "2 euros"
+                    },
+                    {
+                      "text": "12 euros"
+                    },
+                    {
+                      "text": "5 euros"
+                    },
+                    {
+                      "text": "10 euros"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues",
+                    "fr.obj.numbers.0_100"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e78",
+                  "clipId": "fr.clip.ui_restaurant_table",
+                  "question": "What do the customers get?",
+                  "options": [
+                    {
+                      "text": "The table near the door"
+                    },
+                    {
+                      "text": "The table near the entrance"
+                    },
+                    {
+                      "text": "A table outside"
+                    },
+                    {
+                      "text": "No table — it's full"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e79",
+                  "mode": "targetToNative",
+                  "prompt": "le restaurant",
+                  "options": [
+                    {
+                      "text": "the restaurant"
+                    },
+                    {
+                      "text": "the café"
+                    },
+                    {
+                      "text": "the shop"
+                    },
+                    {
+                      "text": "the market"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:restaurant"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.short_dialogues"
+              ]
+            },
+            {
+              "id": "fr-en:ui-l3",
+              "title": "À quelle heure ?",
+              "exercises": [
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e80",
+                  "clipId": "fr.clip.ui_heure_depart",
+                  "question": "When is the departure?",
+                  "options": [
+                    {
+                      "text": "At 7 o'clock"
+                    },
+                    {
+                      "text": "At 5 o'clock"
+                    },
+                    {
+                      "text": "At 9 o'clock"
+                    },
+                    {
+                      "text": "At 11 o'clock"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_dialogues",
+                    "fr.obj.listening.short_info"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e81",
+                  "readingId": "fr.read.ui_dialogue_gare",
+                  "question": "When does Théo's train leave?",
+                  "options": [
+                    {
+                      "text": "At 9 o'clock, platform 2"
+                    },
+                    {
+                      "text": "At 2 o'clock, platform 9"
+                    },
+                    {
+                      "text": "At 9 o'clock, platform 6"
+                    },
+                    {
+                      "text": "At 8 o'clock, platform 2"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts",
+                    "fr.obj.reading.short_messages"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e82",
+                  "readingId": "fr.read.ui_dialogue_gare",
+                  "question": "How much does the ticket cost?",
+                  "options": [
+                    {
+                      "text": "16 euros"
+                    },
+                    {
+                      "text": "6 euros"
+                    },
+                    {
+                      "text": "26 euros"
+                    },
+                    {
+                      "text": "13 euros"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts",
+                    "fr.obj.numbers.0_100"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e83",
+                  "mode": "nativeToTarget",
+                  "prompt": "the restaurant",
+                  "options": [
+                    {
+                      "text": "le restaurant"
+                    },
+                    {
+                      "text": "le magasin"
+                    },
+                    {
+                      "text": "le musée"
+                    },
+                    {
+                      "text": "la gare"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:restaurant"
+                  ]
+                },
+                {
+                  "type": "match",
+                  "id": "s3-e84",
+                  "pairs": [
+                    {
+                      "target": "acheter",
+                      "native": "to buy"
+                    },
+                    {
+                      "target": "payer",
+                      "native": "to pay"
+                    },
+                    {
+                      "target": "vouloir",
+                      "native": "to want"
+                    },
+                    {
+                      "target": "la table",
+                      "native": "the table"
+                    }
+                  ],
+                  "gradeTargets": [
+                    "fr:w:acheter",
+                    "fr:w:payer",
+                    "fr:w:vouloir",
+                    "fr:w:table"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.listening.short_dialogues",
+                "fr.obj.reading.short_texts",
+                "fr.obj.reading.short_messages"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-j",
+          "title": "Petites histoires",
+          "description": "Short connected French: find the facts, follow the story.",
+          "guidebook": "## From sentences to stories\n\nThese texts are a few sentences long. Read them slowly, re-read freely — that's what good readers do.\n\n- First pass: what is it about?\n- Second pass: find the specific facts (who, when, where, how much).\n- Unknown word? In lessons you can tap the glossary chips under the text.",
+          "words": [
+            {
+              "target": "la place",
+              "native": "the square",
+              "emoji": "🏛️"
+            },
+            {
+              "target": "la plage",
+              "native": "the beach",
+              "emoji": "🏖️"
+            },
+            {
+              "target": "travailler",
+              "native": "to work",
+              "emoji": "💼"
+            },
+            {
+              "target": "prendre",
+              "native": "to take",
+              "emoji": "🤲"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uj-l0",
+              "title": "Léo au travail",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e85",
+                  "mode": "nativeToTarget",
+                  "prompt": "to work",
+                  "options": [
+                    {
+                      "text": "travailler"
+                    },
+                    {
+                      "text": "habiter"
+                    },
+                    {
+                      "text": "rester"
+                    },
+                    {
+                      "text": "prendre"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:travailler"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e86",
+                  "readingId": "fr.read.uj_ville_leo",
+                  "question": "Where does Léo live?",
+                  "options": [
+                    {
+                      "text": "In a small town near the beach"
+                    },
+                    {
+                      "text": "In a big city"
+                    },
+                    {
+                      "text": "Near the station"
+                    },
+                    {
+                      "text": "Next to the museum"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e87",
+                  "readingId": "fr.read.uj_ville_leo",
+                  "question": "What does Léo do in the evening?",
+                  "options": [
+                    {
+                      "text": "Goes to the restaurant with friends"
+                    },
+                    {
+                      "text": "Works at the shop"
+                    },
+                    {
+                      "text": "Stays at home"
+                    },
+                    {
+                      "text": "Goes to the library"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e88",
+                  "mode": "targetToNative",
+                  "prompt": "la plage",
+                  "options": [
+                    {
+                      "text": "the beach"
+                    },
+                    {
+                      "text": "the square"
+                    },
+                    {
+                      "text": "the street"
+                    },
+                    {
+                      "text": "the place"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:plage"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e89",
+                  "clipId": "fr.clip.uj_plage_matin",
+                  "question": "What is the beach like in the morning?",
+                  "options": [
+                    {
+                      "text": "Calm"
+                    },
+                    {
+                      "text": "Full of music"
+                    },
+                    {
+                      "text": "Closed"
+                    },
+                    {
+                      "text": "Cold"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.short_texts"
+              ]
+            },
+            {
+              "id": "fr-en:uj-l1",
+              "title": "Le samedi d'Anna",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s3-e90",
+                  "mode": "nativeToTarget",
+                  "prompt": "to take",
+                  "options": [
+                    {
+                      "text": "prendre"
+                    },
+                    {
+                      "text": "payer"
+                    },
+                    {
+                      "text": "vouloir"
+                    },
+                    {
+                      "text": "travailler"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:prendre"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e91",
+                  "readingId": "fr.read.uj_semaine_anna",
+                  "question": "How does Anna go to the city?",
+                  "options": [
+                    {
+                      "text": "By train"
+                    },
+                    {
+                      "text": "By bus"
+                    },
+                    {
+                      "text": "By taxi"
+                    },
+                    {
+                      "text": "On foot"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e92",
+                  "readingId": "fr.read.uj_semaine_anna",
+                  "question": "How much does she pay for the present?",
+                  "options": [
+                    {
+                      "text": "12 euros"
+                    },
+                    {
+                      "text": "2 euros"
+                    },
+                    {
+                      "text": "20 euros"
+                    },
+                    {
+                      "text": "10 euros"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts",
+                    "fr.obj.numbers.0_100"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e93",
+                  "readingId": "fr.read.uj_semaine_anna",
+                  "question": "Who is the present for?",
+                  "options": [
+                    {
+                      "text": "Her mother"
+                    },
+                    {
+                      "text": "Her sister"
+                    },
+                    {
+                      "text": "Her friend"
+                    },
+                    {
+                      "text": "Her boss"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e94",
+                  "mode": "targetToNative",
+                  "prompt": "la place",
+                  "options": [
+                    {
+                      "text": "the square"
+                    },
+                    {
+                      "text": "the beach"
+                    },
+                    {
+                      "text": "the platform"
+                    },
+                    {
+                      "text": "the door"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:place"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.short_texts",
+                "fr.obj.numbers.0_100"
+              ]
+            },
+            {
+              "id": "fr-en:uj-l2",
+              "title": "La gare le matin",
+              "exercises": [
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e95",
+                  "readingId": "fr.read.uj_matin_gare",
+                  "question": "When does the station open?",
+                  "options": [
+                    {
+                      "text": "At 5 in the morning"
+                    },
+                    {
+                      "text": "At 6 in the morning"
+                    },
+                    {
+                      "text": "At 7 in the morning"
+                    },
+                    {
+                      "text": "At 8 in the morning"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts",
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e96",
+                  "readingId": "fr.read.uj_matin_gare",
+                  "question": "When does the station café open?",
+                  "options": [
+                    {
+                      "text": "At 7 o'clock"
+                    },
+                    {
+                      "text": "At 5 o'clock"
+                    },
+                    {
+                      "text": "At 6 o'clock"
+                    },
+                    {
+                      "text": "At 9 o'clock"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts",
+                    "fr.obj.reading.notices_info"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e97",
+                  "clipId": "fr.clip.uj_semaine_travail",
+                  "question": "What does the speaker do in the morning?",
+                  "options": [
+                    {
+                      "text": "Works"
+                    },
+                    {
+                      "text": "Goes to the library"
+                    },
+                    {
+                      "text": "Sleeps"
+                    },
+                    {
+                      "text": "Goes to the beach"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_info"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e98",
+                  "mode": "nativeToTarget",
+                  "prompt": "the beach",
+                  "options": [
+                    {
+                      "text": "la plage"
+                    },
+                    {
+                      "text": "la place"
+                    },
+                    {
+                      "text": "la page"
+                    },
+                    {
+                      "text": "la cage"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:plage"
+                  ]
+                },
+                {
+                  "type": "dictation",
+                  "id": "s3-e99",
+                  "clipId": "fr.clip.cp3_dictee_soir",
+                  "answer": "le soir",
+                  "alternatives": [],
+                  "objectiveTargets": [
+                    "fr.obj.listening.familiar_words"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.short_texts",
+                "fr.obj.reading.notices_info",
+                "fr.obj.listening.short_info"
+              ]
+            },
+            {
+              "id": "fr-en:uj-l3",
+              "title": "Dimanche en famille",
+              "exercises": [
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e100",
+                  "readingId": "fr.read.uj_dimanche_famille",
+                  "question": "Why does Marc stay at home in the morning?",
+                  "options": [
+                    {
+                      "text": "The shop is closed on Sundays"
+                    },
+                    {
+                      "text": "It is raining"
+                    },
+                    {
+                      "text": "He works at home"
+                    },
+                    {
+                      "text": "He is tired"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts"
+                  ]
+                },
+                {
+                  "type": "readingComprehension",
+                  "id": "s3-e101",
+                  "readingId": "fr.read.uj_dimanche_famille",
+                  "question": "What do they eat at the beach?",
+                  "options": [
+                    {
+                      "text": "Chicken and rice"
+                    },
+                    {
+                      "text": "Bread and cheese"
+                    },
+                    {
+                      "text": "Fish and chips"
+                    },
+                    {
+                      "text": "Apples and milk"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.short_texts"
+                  ]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "s3-e102",
+                  "clipId": "fr.clip.uj_samedi_marche",
+                  "question": "What do they buy on Saturday?",
+                  "options": [
+                    {
+                      "text": "Cheese and bread"
+                    },
+                    {
+                      "text": "Milk and juice"
+                    },
+                    {
+                      "text": "Chicken and rice"
+                    },
+                    {
+                      "text": "Fruit and tea"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.listening.short_info"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s3-e103",
+                  "mode": "targetToNative",
+                  "prompt": "prendre",
+                  "options": [
+                    {
+                      "text": "to take"
+                    },
+                    {
+                      "text": "to give"
+                    },
+                    {
+                      "text": "to want"
+                    },
+                    {
+                      "text": "to pay"
+                    }
+                  ],
+                  "correct": 0,
+                  "objectiveTargets": [
+                    "fr.obj.reading.familiar_words"
+                  ],
+                  "gradeTargets": [
+                    "fr:w:prendre"
+                  ]
+                },
+                {
+                  "type": "match",
+                  "id": "s3-e104",
+                  "pairs": [
+                    {
+                      "target": "travailler",
+                      "native": "to work"
+                    },
+                    {
+                      "target": "prendre",
+                      "native": "to take"
+                    },
+                    {
+                      "target": "la plage",
+                      "native": "the beach"
+                    },
+                    {
+                      "target": "la place",
+                      "native": "the square"
+                    }
+                  ],
+                  "gradeTargets": [
+                    "fr:w:travailler",
+                    "fr:w:prendre",
+                    "fr:w:plage",
+                    "fr:w:place"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.reading.short_texts",
+                "fr.obj.listening.short_info"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
