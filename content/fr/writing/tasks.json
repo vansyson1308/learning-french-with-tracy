@@ -1662,6 +1662,249 @@
    "scoredEligibility": true,
    "reserved": true,
    "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_train",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Paul: greet him, and tell him the train is at nine o'clock.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Paul"
+    },
+    {
+     "label": "What",
+     "value": "train"
+    },
+    {
+     "label": "Time",
+     "value": "9:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the train time",
+      "variants": [
+       "le train est à neuf heures",
+       "train à neuf heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Salut Paul, le train est à neuf heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:train",
+    "fr:w:heure"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_resto",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Léa: greet her, and tell her the restaurant is on Saturday.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Léa"
+    },
+    {
+     "label": "What",
+     "value": "restaurant"
+    },
+    {
+     "label": "Day",
+     "value": "Saturday"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the restaurant day",
+      "variants": [
+       "le restaurant est samedi",
+       "le restaurant c'est samedi",
+       "restaurant samedi"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Bonjour Léa, le restaurant est samedi."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:restaurant",
+    "fr:w:samedi"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_magasin",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Marc: greet him, and tell him the shop is open tomorrow.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Marc"
+    },
+    {
+     "label": "What",
+     "value": "shop"
+    },
+    {
+     "label": "When",
+     "value": "tomorrow"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "fact",
+      "description": "the shop opening",
+      "variants": [
+       "le magasin est ouvert demain",
+       "le magasin ouvre demain",
+       "magasin ouvert demain"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 5,
+    "maxTokens": 20
+   },
+   "modelAnswers": [
+    "Salut Marc, le magasin est ouvert demain."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:magasin",
+    "fr:w:ouvert",
+    "fr:w:demain"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.write.a1cap_note_gare",
+   "taskFamily": "short_message",
+   "mode": "guided",
+   "instruction": "Write a short note to Anna: greet her, say you are at the station, and that you are coming back at six.",
+   "cueFacts": [
+    {
+     "label": "To",
+     "value": "Anna"
+    },
+    {
+     "label": "Where",
+     "value": "station"
+    },
+    {
+     "label": "Back at",
+     "value": "6:00"
+    }
+   ],
+   "rubric": {
+    "requiredSlots": [
+     {
+      "id": "greeting",
+      "description": "a greeting",
+      "variants": [
+       "bonjour",
+       "salut",
+       "bonsoir"
+      ],
+      "cueProvided": false
+     },
+     {
+      "id": "place",
+      "description": "where you are",
+      "variants": [
+       "je suis à la gare"
+      ],
+      "cueProvided": true
+     },
+     {
+      "id": "time",
+      "description": "when you are back",
+      "variants": [
+       "je rentre à six heures",
+       "à six heures"
+      ],
+      "cueProvided": true
+     }
+    ],
+    "minTokens": 7,
+    "maxTokens": 25
+   },
+   "modelAnswers": [
+    "Salut Anna, je suis à la gare. Je rentre à six heures."
+   ],
+   "objectiveRefs": [
+    "fr.obj.writing.short_message"
+   ],
+   "lexemeRefs": [
+    "fr:w:gare",
+    "fr:w:heure"
+   ],
+   "scoredEligibility": true,
+   "reserved": true,
+   "sourceRef": "original-project"
   }
  ]
 }

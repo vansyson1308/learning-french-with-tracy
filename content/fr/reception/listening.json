@@ -3922,6 +3922,569 @@
     "maxPlays": 2,
     "rate": 1
    }
+  },
+  {
+   "id": "fr.clip.a1cap_musee",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "A",
+     "text": "Le musée est ouvert de dix heures à dix-huit heures."
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.listening.short_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:ouvert",
+    "fr:w:heure"
+   ],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 2,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.a1cap_bus",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "A",
+     "text": "Le bus pour le centre-ville part dans dix minutes."
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.listening.short_info"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 2,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.a1cap_pharmacie",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "A",
+     "text": "La pharmacie est fermée aujourd'hui. Elle ouvre demain matin."
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.listening.short_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:aujourdhui",
+    "fr:w:demain",
+    "fr:w:matin",
+    "fr:w:ouvrir"
+   ],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 2,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.a1cap_cinema",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "A",
+     "text": "Salut ! Le film commence à vingt heures. On se voit devant le cinéma."
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.listening.short_info"
+   ],
+   "lexemeRefs": [
+    "fr:w:salut",
+    "fr:w:heure"
+   ],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 3,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_voisin_end",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Merci, à bientôt !"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_voisin_hello_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Ça va ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_voisin_hello_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Bonjour ! Vous allez bien ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_voisin_bye_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "À plus tard !"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_voisin_bye_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Tant mieux ! Bon, à plus tard !"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_telephone_end",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Parfait ! À demain !"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_telephone_time_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "À quelle heure, demain ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_telephone_time_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Salut ! On se voit à quelle heure demain ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_telephone_place_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "On se voit où ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_telephone_place_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "À neuf heures, d'accord ! Et où ça ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_julie_end",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Super ! À bientôt, Nadia !"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_julie_name_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Comment vous vous appelez ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_julie_name_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Bonjour ! Moi, c'est Julie. Et vous ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_julie_french_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Vous parlez français ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_julie_french_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Enchantée, Nadia ! Vous parlez français ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_invitation_end",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Parfait ! À demain !"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_invitation_invite_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Café, demain matin ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_invitation_invite_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Salut ! On va au café demain matin ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_invitation_confirm_s",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Neuf heures, ça va ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
+  },
+  {
+   "id": "fr.clip.ix_a1cap_invitation_confirm_ask",
+   "kind": "message",
+   "segments": [
+    {
+     "speaker": "B",
+     "text": "Super ! À neuf heures, ça va ?"
+    }
+   ],
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "lexemeRefs": [],
+   "sourceRef": "original-project",
+   "authoringSpec": {
+    "informationUnits": 1,
+    "inferenceDemand": "locate"
+   },
+   "scoredPlaybackPolicy": {
+    "maxPlays": 2,
+    "rate": 1
+   }
   }
  ]
 }

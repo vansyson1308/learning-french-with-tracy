@@ -2999,6 +2999,660 @@
    },
    "reserved": true,
    "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.scenario.a1cap_voisin",
+   "title": "A friendly neighbour",
+   "goal": "Answer your neighbour's greeting and wish them a good day.",
+   "taskFamily": "conversation",
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "startNodeId": "p_hello",
+   "nodes": {
+    "t_miss": {
+     "kind": "terminal",
+     "id": "t_miss",
+     "outcome": "goal_not_met",
+     "text": "Ce n'est pas grave ! Une autre fois, peut-être.",
+     "clipId": "fr.clip.ix_pas_grave"
+    },
+    "p_hello": {
+     "kind": "partner",
+     "id": "p_hello",
+     "text": "Bonjour ! Vous allez bien ?",
+     "clipId": "fr.clip.ix_a1cap_voisin_hello_ask",
+     "rephraseText": "Ça va ?",
+     "rephraseClipId": "fr.clip.ix_a1cap_voisin_hello_s",
+     "next": "l_hello"
+    },
+    "l_hello": {
+     "kind": "learner",
+     "id": "l_hello",
+     "prompt": "Say you're doing well, thanks.",
+     "expected": [
+      {
+       "intent": "fine",
+       "acceptedVariants": [
+        "Ça va bien, merci !",
+        "Très bien, merci !",
+        "Je vais bien, merci !"
+       ],
+       "requiredConcepts": [
+        [
+         "ça va bien",
+         "très bien",
+         "je vais bien"
+        ]
+       ],
+       "next": "p_bye"
+      }
+     ],
+     "noMatchNext": "r_hello",
+     "scored": true
+    },
+    "r_hello": {
+     "kind": "partner",
+     "id": "r_hello",
+     "text": "Ça va ?",
+     "clipId": "fr.clip.ix_a1cap_voisin_hello_s",
+     "next": "l_hello_b"
+    },
+    "l_hello_b": {
+     "kind": "learner",
+     "id": "l_hello_b",
+     "prompt": "Say you're doing well, thanks.",
+     "expected": [
+      {
+       "intent": "fine",
+       "acceptedVariants": [
+        "Ça va bien, merci !",
+        "Très bien, merci !",
+        "Je vais bien, merci !"
+       ],
+       "requiredConcepts": [
+        [
+         "ça va bien",
+         "très bien",
+         "je vais bien"
+        ]
+       ],
+       "next": "p_bye"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "p_bye": {
+     "kind": "partner",
+     "id": "p_bye",
+     "text": "Tant mieux ! Bon, à plus tard !",
+     "clipId": "fr.clip.ix_a1cap_voisin_bye_ask",
+     "rephraseText": "À plus tard !",
+     "rephraseClipId": "fr.clip.ix_a1cap_voisin_bye_s",
+     "next": "l_bye"
+    },
+    "l_bye": {
+     "kind": "learner",
+     "id": "l_bye",
+     "prompt": "Wish them a good day.",
+     "expected": [
+      {
+       "intent": "goodday",
+       "acceptedVariants": [
+        "Bonne journée !",
+        "Au revoir, bonne journée !",
+        "À bientôt !"
+       ],
+       "requiredConcepts": [
+        [
+         "bonne journée",
+         "au revoir",
+         "à bientôt"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "r_bye",
+     "scored": true
+    },
+    "r_bye": {
+     "kind": "partner",
+     "id": "r_bye",
+     "text": "À plus tard !",
+     "clipId": "fr.clip.ix_a1cap_voisin_bye_s",
+     "next": "l_bye_b"
+    },
+    "l_bye_b": {
+     "kind": "learner",
+     "id": "l_bye_b",
+     "prompt": "Wish them a good day.",
+     "expected": [
+      {
+       "intent": "goodday",
+       "acceptedVariants": [
+        "Bonne journée !",
+        "Au revoir, bonne journée !",
+        "À bientôt !"
+       ],
+       "requiredConcepts": [
+        [
+         "bonne journée",
+         "au revoir",
+         "à bientôt"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "t_ok": {
+     "kind": "terminal",
+     "id": "t_ok",
+     "outcome": "goal_met",
+     "text": "Merci, à bientôt !",
+     "clipId": "fr.clip.ix_a1cap_voisin_end"
+    }
+   },
+   "support": {
+    "allowRepeat": true,
+    "allowRephrase": true
+   },
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.scenario.a1cap_telephone",
+   "title": "A quick phone call",
+   "goal": "Agree when and where to meet tomorrow.",
+   "taskFamily": "conversation",
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "startNodeId": "p_time",
+   "nodes": {
+    "t_miss": {
+     "kind": "terminal",
+     "id": "t_miss",
+     "outcome": "goal_not_met",
+     "text": "Ce n'est pas grave ! Une autre fois, peut-être.",
+     "clipId": "fr.clip.ix_pas_grave"
+    },
+    "p_time": {
+     "kind": "partner",
+     "id": "p_time",
+     "text": "Salut ! On se voit à quelle heure demain ?",
+     "clipId": "fr.clip.ix_a1cap_telephone_time_ask",
+     "rephraseText": "À quelle heure, demain ?",
+     "rephraseClipId": "fr.clip.ix_a1cap_telephone_time_s",
+     "next": "l_time"
+    },
+    "l_time": {
+     "kind": "learner",
+     "id": "l_time",
+     "prompt": "Say a time: at nine o'clock.",
+     "expected": [
+      {
+       "intent": "nine",
+       "acceptedVariants": [
+        "À neuf heures !",
+        "Neuf heures.",
+        "Demain à neuf heures.",
+        "À 9 heures."
+       ],
+       "requiredConcepts": [
+        [
+         "neuf heures"
+        ]
+       ],
+       "next": "p_place"
+      }
+     ],
+     "noMatchNext": "r_time",
+     "scored": true
+    },
+    "r_time": {
+     "kind": "partner",
+     "id": "r_time",
+     "text": "À quelle heure, demain ?",
+     "clipId": "fr.clip.ix_a1cap_telephone_time_s",
+     "next": "l_time_b"
+    },
+    "l_time_b": {
+     "kind": "learner",
+     "id": "l_time_b",
+     "prompt": "Say a time: at nine o'clock.",
+     "expected": [
+      {
+       "intent": "nine",
+       "acceptedVariants": [
+        "À neuf heures !",
+        "Neuf heures.",
+        "Demain à neuf heures.",
+        "À 9 heures."
+       ],
+       "requiredConcepts": [
+        [
+         "neuf heures"
+        ]
+       ],
+       "next": "p_place"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "p_place": {
+     "kind": "partner",
+     "id": "p_place",
+     "text": "À neuf heures, d'accord ! Et où ça ?",
+     "clipId": "fr.clip.ix_a1cap_telephone_place_ask",
+     "rephraseText": "On se voit où ?",
+     "rephraseClipId": "fr.clip.ix_a1cap_telephone_place_s",
+     "next": "l_place"
+    },
+    "l_place": {
+     "kind": "learner",
+     "id": "l_place",
+     "prompt": "Say: at the café.",
+     "expected": [
+      {
+       "intent": "cafe",
+       "acceptedVariants": [
+        "Au café !",
+        "On se voit au café."
+       ],
+       "requiredConcepts": [
+        [
+         "au café"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "r_place",
+     "scored": true
+    },
+    "r_place": {
+     "kind": "partner",
+     "id": "r_place",
+     "text": "On se voit où ?",
+     "clipId": "fr.clip.ix_a1cap_telephone_place_s",
+     "next": "l_place_b"
+    },
+    "l_place_b": {
+     "kind": "learner",
+     "id": "l_place_b",
+     "prompt": "Say: at the café.",
+     "expected": [
+      {
+       "intent": "cafe",
+       "acceptedVariants": [
+        "Au café !",
+        "On se voit au café."
+       ],
+       "requiredConcepts": [
+        [
+         "au café"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "t_ok": {
+     "kind": "terminal",
+     "id": "t_ok",
+     "outcome": "goal_met",
+     "text": "Parfait ! À demain !",
+     "clipId": "fr.clip.ix_a1cap_telephone_end"
+    }
+   },
+   "support": {
+    "allowRepeat": true,
+    "allowRephrase": true
+   },
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.scenario.a1cap_julie",
+   "title": "Meeting Julie",
+   "goal": "Give your name and answer her question. You are Nadia.",
+   "taskFamily": "conversation",
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "startNodeId": "p_name",
+   "nodes": {
+    "t_miss": {
+     "kind": "terminal",
+     "id": "t_miss",
+     "outcome": "goal_not_met",
+     "text": "Ce n'est pas grave ! Une autre fois, peut-être.",
+     "clipId": "fr.clip.ix_pas_grave"
+    },
+    "p_name": {
+     "kind": "partner",
+     "id": "p_name",
+     "text": "Bonjour ! Moi, c'est Julie. Et vous ?",
+     "clipId": "fr.clip.ix_a1cap_julie_name_ask",
+     "rephraseText": "Comment vous vous appelez ?",
+     "rephraseClipId": "fr.clip.ix_a1cap_julie_name_s",
+     "next": "l_name"
+    },
+    "l_name": {
+     "kind": "learner",
+     "id": "l_name",
+     "prompt": "Say hello and give your name — you are Nadia.",
+     "expected": [
+      {
+       "intent": "name",
+       "acceptedVariants": [
+        "Bonjour, je m'appelle Nadia.",
+        "Je m'appelle Nadia.",
+        "Moi, c'est Nadia.",
+        "Je suis Nadia."
+       ],
+       "requiredConcepts": [
+        [
+         "je m'appelle nadia",
+         "moi c'est nadia",
+         "je suis nadia"
+        ]
+       ],
+       "next": "p_french"
+      }
+     ],
+     "noMatchNext": "r_name",
+     "scored": true
+    },
+    "r_name": {
+     "kind": "partner",
+     "id": "r_name",
+     "text": "Comment vous vous appelez ?",
+     "clipId": "fr.clip.ix_a1cap_julie_name_s",
+     "next": "l_name_b"
+    },
+    "l_name_b": {
+     "kind": "learner",
+     "id": "l_name_b",
+     "prompt": "Say hello and give your name — you are Nadia.",
+     "expected": [
+      {
+       "intent": "name",
+       "acceptedVariants": [
+        "Bonjour, je m'appelle Nadia.",
+        "Je m'appelle Nadia.",
+        "Moi, c'est Nadia.",
+        "Je suis Nadia."
+       ],
+       "requiredConcepts": [
+        [
+         "je m'appelle nadia",
+         "moi c'est nadia",
+         "je suis nadia"
+        ]
+       ],
+       "next": "p_french"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "p_french": {
+     "kind": "partner",
+     "id": "p_french",
+     "text": "Enchantée, Nadia ! Vous parlez français ?",
+     "clipId": "fr.clip.ix_a1cap_julie_french_ask",
+     "rephraseText": "Vous parlez français ?",
+     "rephraseClipId": "fr.clip.ix_a1cap_julie_french_s",
+     "next": "l_french"
+    },
+    "l_french": {
+     "kind": "learner",
+     "id": "l_french",
+     "prompt": "Say yes — a little.",
+     "expected": [
+      {
+       "intent": "yes",
+       "acceptedVariants": [
+        "Oui, un peu !",
+        "Oui !",
+        "Un peu."
+       ],
+       "requiredConcepts": [
+        [
+         "oui",
+         "un peu"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "r_french",
+     "scored": true
+    },
+    "r_french": {
+     "kind": "partner",
+     "id": "r_french",
+     "text": "Vous parlez français ?",
+     "clipId": "fr.clip.ix_a1cap_julie_french_s",
+     "next": "l_french_b"
+    },
+    "l_french_b": {
+     "kind": "learner",
+     "id": "l_french_b",
+     "prompt": "Say yes — a little.",
+     "expected": [
+      {
+       "intent": "yes",
+       "acceptedVariants": [
+        "Oui, un peu !",
+        "Oui !",
+        "Un peu."
+       ],
+       "requiredConcepts": [
+        [
+         "oui",
+         "un peu"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "t_ok": {
+     "kind": "terminal",
+     "id": "t_ok",
+     "outcome": "goal_met",
+     "text": "Super ! À bientôt, Nadia !",
+     "clipId": "fr.clip.ix_a1cap_julie_end"
+    }
+   },
+   "support": {
+    "allowRepeat": true,
+    "allowRephrase": true
+   },
+   "reserved": true,
+   "sourceRef": "original-project"
+  },
+  {
+   "id": "fr.scenario.a1cap_invitation",
+   "title": "An invitation",
+   "goal": "Accept a friend's café invitation and confirm the time.",
+   "taskFamily": "conversation",
+   "objectiveRefs": [
+    "fr.obj.interaction.everyday_conversation"
+   ],
+   "startNodeId": "p_invite",
+   "nodes": {
+    "t_miss": {
+     "kind": "terminal",
+     "id": "t_miss",
+     "outcome": "goal_not_met",
+     "text": "Ce n'est pas grave ! Une autre fois, peut-être.",
+     "clipId": "fr.clip.ix_pas_grave"
+    },
+    "p_invite": {
+     "kind": "partner",
+     "id": "p_invite",
+     "text": "Salut ! On va au café demain matin ?",
+     "clipId": "fr.clip.ix_a1cap_invitation_invite_ask",
+     "rephraseText": "Café, demain matin ?",
+     "rephraseClipId": "fr.clip.ix_a1cap_invitation_invite_s",
+     "next": "l_invite"
+    },
+    "l_invite": {
+     "kind": "learner",
+     "id": "l_invite",
+     "prompt": "Say yes — sounds good.",
+     "expected": [
+      {
+       "intent": "accept",
+       "acceptedVariants": [
+        "Oui, super !",
+        "Oui, d'accord !",
+        "D'accord !",
+        "Oui !"
+       ],
+       "requiredConcepts": [
+        [
+         "oui",
+         "d'accord",
+         "super"
+        ]
+       ],
+       "next": "p_confirm"
+      }
+     ],
+     "noMatchNext": "r_invite",
+     "scored": true
+    },
+    "r_invite": {
+     "kind": "partner",
+     "id": "r_invite",
+     "text": "Café, demain matin ?",
+     "clipId": "fr.clip.ix_a1cap_invitation_invite_s",
+     "next": "l_invite_b"
+    },
+    "l_invite_b": {
+     "kind": "learner",
+     "id": "l_invite_b",
+     "prompt": "Say yes — sounds good.",
+     "expected": [
+      {
+       "intent": "accept",
+       "acceptedVariants": [
+        "Oui, super !",
+        "Oui, d'accord !",
+        "D'accord !",
+        "Oui !"
+       ],
+       "requiredConcepts": [
+        [
+         "oui",
+         "d'accord",
+         "super"
+        ]
+       ],
+       "next": "p_confirm"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "p_confirm": {
+     "kind": "partner",
+     "id": "p_confirm",
+     "text": "Super ! À neuf heures, ça va ?",
+     "clipId": "fr.clip.ix_a1cap_invitation_confirm_ask",
+     "rephraseText": "Neuf heures, ça va ?",
+     "rephraseClipId": "fr.clip.ix_a1cap_invitation_confirm_s",
+     "next": "l_confirm"
+    },
+    "l_confirm": {
+     "kind": "learner",
+     "id": "l_confirm",
+     "prompt": "Say yes, that works.",
+     "expected": [
+      {
+       "intent": "ok",
+       "acceptedVariants": [
+        "Oui, ça va !",
+        "Ça va !",
+        "Oui, d'accord.",
+        "Parfait !"
+       ],
+       "requiredConcepts": [
+        [
+         "ça va",
+         "oui",
+         "d'accord",
+         "parfait"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "r_confirm",
+     "scored": true
+    },
+    "r_confirm": {
+     "kind": "partner",
+     "id": "r_confirm",
+     "text": "Neuf heures, ça va ?",
+     "clipId": "fr.clip.ix_a1cap_invitation_confirm_s",
+     "next": "l_confirm_b"
+    },
+    "l_confirm_b": {
+     "kind": "learner",
+     "id": "l_confirm_b",
+     "prompt": "Say yes, that works.",
+     "expected": [
+      {
+       "intent": "ok",
+       "acceptedVariants": [
+        "Oui, ça va !",
+        "Ça va !",
+        "Oui, d'accord.",
+        "Parfait !"
+       ],
+       "requiredConcepts": [
+        [
+         "ça va",
+         "oui",
+         "d'accord",
+         "parfait"
+        ]
+       ],
+       "next": "t_ok"
+      }
+     ],
+     "noMatchNext": "t_miss",
+     "scored": false
+    },
+    "t_ok": {
+     "kind": "terminal",
+     "id": "t_ok",
+     "outcome": "goal_met",
+     "text": "Parfait ! À demain !",
+     "clipId": "fr.clip.ix_a1cap_invitation_end"
+    }
+   },
+   "support": {
+    "allowRepeat": true,
+    "allowRephrase": true
+   },
+   "reserved": true,
+   "sourceRef": "original-project"
   }
  ]
 }
