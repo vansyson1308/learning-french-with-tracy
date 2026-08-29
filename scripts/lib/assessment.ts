@@ -331,6 +331,27 @@ function writingTaskFamilies(): Map<string, string> {
   return writingFamilyCache;
 }
 
+let interactionFamilyCache: Map<string, string> | null = null;
+
+/** scenarioId → authored taskFamily (P9 §35: the scenario IS the input). */
+function interactionTaskFamilies(): Map<string, string> {
+  if (interactionFamilyCache) return interactionFamilyCache;
+  interactionFamilyCache = new Map();
+  try {
+    const doc = readJson("content/fr/interaction/scenarios.json") as {
+      scenarios?: { id?: unknown; taskFamily?: unknown }[];
+    };
+    for (const scenario of doc.scenarios ?? []) {
+      if (typeof scenario.id === "string" && typeof scenario.taskFamily === "string") {
+        interactionFamilyCache.set(scenario.id, scenario.taskFamily);
+      }
+    }
+  } catch {
+    // No interaction source yet — exercise types remain the fallback family.
+  }
+  return interactionFamilyCache;
+}
+
 export function collectScoredItemEvidence(
   relPath: string,
   containerKey: "checkpoints" | "stages"
@@ -356,6 +377,7 @@ export function collectScoredItemEvidence(
             readingId?: unknown;
             speechItemId?: unknown;
             writingTaskId?: unknown;
+            scenarioId?: unknown;
           }
         | undefined;
       if (!Array.isArray(targets) || !targets.every((t) => typeof t === "string")) continue;
@@ -365,20 +387,26 @@ export function collectScoredItemEvidence(
         typeof exercise?.speechItemId === "string" ? exercise.speechItemId : null;
       const writingTaskId =
         typeof exercise?.writingTaskId === "string" ? exercise.writingTaskId : null;
-      // Speech/writing items (P8 §21, P9 §21): the honest task family is the
-      // AUTHORED one (formulaic_exchange / personal_profile / …), not the
-      // exercise type; the elicitation prompt itself is the input identity.
+      const scenarioId =
+        typeof exercise?.scenarioId === "string" ? exercise.scenarioId : null;
+      // Speech/writing/interaction items (P8 §21, P9 §21/§35): the honest
+      // task family is the AUTHORED one (formulaic_exchange / transaction /
+      // …), not the exercise type; the elicitation prompt — or the whole
+      // scenario — is the input identity.
       const speechFamily =
         speechItemId !== null ? speechTaskFamilies().get(speechItemId) : undefined;
       const writingFamily =
         writingTaskId !== null ? writingTaskFamilies().get(writingTaskId) : undefined;
+      const interactionFamily =
+        scenarioId !== null ? interactionTaskFamilies().get(scenarioId) : undefined;
       out.push({
         objectiveTargets: targets as string[],
         taskFamily:
           speechFamily ??
           writingFamily ??
+          interactionFamily ??
           (typeof exercise?.type === "string" ? exercise.type : "unknown"),
-        inputId: clip ?? reading ?? speechItemId ?? writingTaskId,
+        inputId: clip ?? reading ?? speechItemId ?? writingTaskId ?? scenarioId,
       });
     }
   }

@@ -41,18 +41,40 @@ function exerciseStep(stepId: string): ExerciseStep {
 }
 
 describe("compiled checkpoints", () => {
-  test("all five section checkpoints exist with their authored shapes", () => {
+  test("all six section checkpoints exist with their authored shapes", () => {
     expect(CHECKPOINT_ORDER).toEqual([
       "fr.checkpoint.section-1",
       "fr.checkpoint.section-2",
       "fr.checkpoint.section-3",
       "fr.checkpoint.section-4",
       "fr.checkpoint.section-5",
+      "fr.checkpoint.section-6",
     ]);
     expect(CP1.items.length).toBe(12);
     expect(CP2.items.length).toBe(18);
     expect(CP1.criteria.minItemsPerObjective).toBe(2);
     expect(CP1.criteria.demonstratedShare).toBe(0.66); // 2-of-3 demonstrates — product-local, not a CEFR cut score
+  });
+
+  test("Section-6 checkpoint: 6 reserved multi-turn interaction scenarios (P9 §35-§37)", () => {
+    const cp6 = checkpointFor("fr.checkpoint.section-6")!;
+    expect(cp6.sectionId).toBe("fr-en:section-6");
+    expect(cp6.items.length).toBe(6);
+    for (const item of cp6.items) {
+      expect(item.exercise.type).toBe("interactionScenario");
+      expect(item.essential).toBe(true);
+    }
+    // 3 scenario items per interaction objective — the claim gate's
+    // per-objective floor, each on its own scenario input.
+    const perObjective = new Map<string, number>();
+    for (const item of cp6.items) {
+      for (const o of item.objectiveTargets) {
+        perObjective.set(o, (perObjective.get(o) ?? 0) + 1);
+      }
+    }
+    expect(perObjective.get("fr.obj.interaction.everyday_conversation")).toBe(3);
+    expect(perObjective.get("fr.obj.interaction.practical_needs")).toBe(3);
+    expect(perObjective.size).toBe(2);
   });
 
   test("Section-4 checkpoint: 12 reserved spoken items, production-only, model-free (P8 §20)", () => {
