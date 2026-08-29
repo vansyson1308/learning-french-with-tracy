@@ -123,6 +123,30 @@ report records — only comprehension of **clear standard synthesized speech
 with limited speaker/accent diversity**. Broad accent comprehension is a
 later-maturity goal and is explicitly out of evidence scope.
 
+### Voice selection record (canary evidence)
+
+- **fr_FR-siwis-medium** (CC BY 4.0) — PASSED the canary ASR audit
+  (workflow run 33230542810): mean WER 0.19 over the 14-item phonetic
+  canary, with residual errors dominated by the ASR normalizer counting
+  digit renderings of numbers as word mismatches. Speaker A.
+- **fr_FR-mls-medium** (CC BY 4.0) — EXCLUDED on quality. Same run, same
+  pipeline: mean WER 0.98–2.47 across all eight sampled speakers, with
+  Whisper hallucinating unrelated French on roughly half the clips — the
+  audio is not reliably intelligible, and intelligibility IS the scored
+  construct (P7 §40, §56-60). License was clean; the exclusion is
+  recorded in audio-source-manifest.json `excludedVoices`.
+- **fr_FR-upmc-medium** (CC BY-SA 4.0, two speakers: Jessica, Pierre) —
+  candidate replacement for speaker B, subject to the same fail-closed
+  recon + canary. Its share-alike license is accepted deliberately: the
+  project already publishes derived data under CC BY-SA 4.0 with an
+  in-app attributions screen (approved plan §AC2; registry entries
+  `piper-voice-*`), so the obligations are already implemented. The
+  first recon attempt failed closed on the then-CC-BY-only allow list —
+  working exactly as designed — and the allow list was then aligned with
+  the project-wide LICENSE_ALLOWLIST (CC BY / CC BY-SA, text and URL
+  spellings). AGPL/GPL/NC/ND stay denied (fr_FR-tom-medium remains
+  excluded).
+
 ## 7. Reading policy
 
 - All reading texts are original project-authored (`original-project`

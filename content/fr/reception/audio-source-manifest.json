@@ -9,12 +9,16 @@
   "voicesRepository": "https://huggingface.co/rhasspy/piper-voices",
   "voicesRevision": "v1.0.0",
   "licenseGate": {
-    "note": "Recon fails closed unless every voice's MODEL_CARD states a dataset/license matched by allow and matched by no deny entry (P7 §31, §37).",
+    "note": "Recon fails closed unless every voice's MODEL_CARD states a dataset/license matched by allow and matched by no deny entry (P7 §31, §37). The allow list mirrors the project-wide LICENSE_ALLOWLIST posture (content/schema.ts): CC BY 4.0 and CC BY-SA 4.0 in text or URL form. Share-alike is accepted deliberately — the project already publishes derived data under CC BY-SA 4.0 with an in-app attributions screen (see content/sources/registry.json entries piper-voice-*); AGPL/GPL/NC/ND remain denied.",
     "allow": [
       "CC BY 4.0",
       "CC-BY-4.0",
       "CC BY 4",
-      "cc-by-4.0"
+      "cc-by-4.0",
+      "CC BY-SA 4.0",
+      "CC-BY-SA-4.0",
+      "creativecommons.org/licenses/by/4.0",
+      "creativecommons.org/licenses/by-sa/4.0"
     ],
     "deny": [
       "AGPL",
