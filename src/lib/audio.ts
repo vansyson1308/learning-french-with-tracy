@@ -24,6 +24,26 @@ const TTS_LOCALES: Record<string, string> = {
 
 let voicePlayer: AudioPlayer | null = null;
 
+/**
+ * Stop all central voice playback before a speech-recognition attempt
+ * (P8 §10: model audio must never sound while the mic is open).
+ * Component-owned players (listening exercises) pause themselves.
+ */
+export function stopSpeechPlayback() {
+  Speech.stop();
+  voicePlayer?.pause();
+}
+
+/**
+ * Re-assert the app's playback audio session. The speech recognizer leaves
+ * iOS in a playAndRecord/measurement session that it does NOT restore
+ * (verified in the pinned provider source — RESEARCH.md §5), which mutes or
+ * quiets normal playback; call this after EVERY terminal attempt state.
+ */
+export function restorePlaybackAudioMode() {
+  setAudioModeAsync({ playsInSilentMode: true, allowsRecording: false }).catch(() => {});
+}
+
 export function speakTarget(courseId: string, text: string) {
   Speech.stop();
   const key = `${courseId}:${text}`;
