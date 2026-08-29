@@ -90,25 +90,25 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     expect(await repo.supportsFrequencySort()).toBe(true);
     const byFreq = await repo.list({ sort: "frequency" });
     const ids = byFreq.map((r) => r.id);
-    // Real Lexique 4 measurements: the Unit B anchor verbs dominate —
+    // Real Lexique 4 measurements: the anchor verbs dominate —
     // être (35040.2/M, population rank 1) > avoir (13032.0, rank 2) >
-    // aller (9795.9) > faire (9061.7) > non (4070.9) > oui (3112.5).
-    expect(ids.slice(0, 6)).toEqual([
+    // aller (9795.9) > faire (9061.7) > vouloir (5239.2, adopted with the
+    // Phase-7 Section-3 round) > non (4070.9) > oui (3112.5).
+    expect(ids.slice(0, 7)).toEqual([
       "fr:w:etre",
       "fr:w:avoir",
       "fr:w:aller",
       "fr:w:faire",
+      "fr:w:vouloir",
       "fr:w:non",
       "fr:w:oui",
     ]);
     // merci has no population rank (ONO category) yet sorts by its raw
     // frequency — rank is never the sort key.
     expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
-    // Unmeasured lexemes sink to the end in course order: the three
-    // expressions, then the 27 pending Section-3 lexemes (whose Lexique
-    // adoption round will pull them back into measured order).
-    expect(ids.slice(-30, -27)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
-    expect(ids.slice(-3)).toEqual(["fr:w:plage", "fr:w:entree", "fr:w:sortie"]);
+    // The three unmeasured expressions sink to the end in course order;
+    // every word lexeme (the 27 Section-3 adoptions included) is measured.
+    expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
   });
 
   test("getExamples returns the authored example pairs", async () => {

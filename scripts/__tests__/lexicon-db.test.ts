@@ -91,13 +91,12 @@ describe("committed lexicon database", () => {
     db.close();
     expect(exampleCounts.length).toBe(126);
     expect(exampleCounts.every((r) => r.n >= 1)).toBe(true);
-    // 126 authored refs + 96 adopted Lexique 4 rows (49 + 2 overrides from
+    // 126 authored refs + 123 adopted Lexique 4 rows (49 + 2 overrides from
     // the original 54, then Units A(17) B(7, être/avoir via documented
-    // VER-row overrides) C(13) D(6) E(2)). The 27 Section-3 lexemes are in
-    // PENDING_LEXIQUE_IMPORT: authored ref only until their adoption round
-    // (which must raise lexiqueRefs to 123 and shrink the pending set).
-    expect(refCounts?.n).toBe(222);
-    expect(lexiqueRefs?.n).toBe(96);
+    // VER-row overrides) C(13) D(6) E(2), and the 27 Section-3 reception
+    // words adopted by the Phase-7 extract round).
+    expect(refCounts?.n).toBe(249);
+    expect(lexiqueRefs?.n).toBe(123);
     expect(sources).toEqual([
       { id: "lexique-4", license: "CC-BY-SA-4.0" },
       { id: "original-french-lexicon", license: "CC-BY-SA-4.0" },
