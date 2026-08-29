@@ -1,7 +1,13 @@
 {
   "generator": "scripts/lib/assessment-reports.ts",
-  "policyVersion": 1,
-  "minItemsForAssessed": 2,
+  "policyVersion": 2,
+  "minItemsForAssessed": 3,
+  "breadthPolicy": {
+    "minItemsPerDirectObjective": 3,
+    "minDistinctInputsPerDirectObjective": 2,
+    "minTaskFamiliesPerDomain": 2,
+    "minDistinctScalesPerDomain": 2
+  },
   "levels": [
     {
       "level": "PRE_A1",
@@ -14,10 +20,21 @@
         },
         {
           "domain": "written_reception",
-          "status": "covered",
+          "status": "insufficient_breadth",
           "directAssessedObjectives": [
             "fr.obj.reading.familiar_words"
-          ]
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "select"
+            ],
+            "scaleNames": [
+              "Reading comprehension (overall)"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.reading.familiar_words": 3
+            }
+          }
         },
         {
           "domain": "spoken_production",
@@ -41,6 +58,7 @@
       ],
       "unassessedDomains": [
         "spoken_reception",
+        "written_reception",
         "spoken_production",
         "written_production",
         "interaction"
@@ -82,12 +100,9 @@
         }
       ],
       "coveredCompetences": [
-        "fr.obj.connected.elision",
-        "fr.obj.gender.articles_basic",
         "fr.obj.gender.ending_patterns",
         "fr.obj.greetings.basic",
         "fr.obj.numbers.0_100",
-        "fr.obj.strategy.cognate_transfer",
         "fr.obj.verbs.er_present",
         "fr.obj.verbs.etre_avoir_present",
         "fr.obj.vocab.everyday_basics",

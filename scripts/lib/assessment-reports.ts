@@ -154,13 +154,34 @@ export function buildCefrAlignment(objectives: CourseObjective[]): CefrAlignment
 
 export type DomainStatus =
   | "covered"
+  | "insufficient_breadth"
   | "objectives_not_assessed"
   | "no_direct_objective"
   | "no_objectives_in_domain";
 
+/** One scored item's evidence: targets + task family + shared source input. */
+export type ScoredItemEvidence = {
+  objectiveTargets: string[];
+  taskFamily: string;
+  /** Shared clip/text id; null = the item is its own independent input. */
+  inputId: string | null;
+};
+
+export type DomainBreadth = {
+  taskFamilies: string[];
+  scaleNames: string[];
+  distinctInputsByObjective: Record<string, number>;
+};
+
 export type ClaimGateResult = {
   policyVersion: number;
   minItemsForAssessed: number;
+  breadthPolicy: {
+    minItemsPerDirectObjective: number;
+    minDistinctInputsPerDirectObjective: number;
+    minTaskFamiliesPerDomain: number;
+    minDistinctScalesPerDomain: number;
+  };
   levels: {
     level: CefrLevel;
     claimable: boolean;
@@ -168,6 +189,7 @@ export type ClaimGateResult = {
       domain: ObjectiveCategory;
       status: DomainStatus;
       directAssessedObjectives: string[];
+      breadth?: DomainBreadth;
     }[];
     coveredCompetences: string[];
     unassessedDomains: ObjectiveCategory[];
@@ -177,26 +199,50 @@ export type ClaimGateResult = {
 };
 
 /**
- * The gate. Inputs are CONTENT ONLY — objectives, policy, and per-objective
- * scored-item counts from authored checkpoints. There is deliberately no
- * learner-state parameter: completing lessons, accumulating XP or knowing
- * N words can never make a level claimable (§100-101, §145).
+ * The gate — hardened in Phase 7 (P7 §10-14). Inputs are CONTENT ONLY:
+ * objectives, policy, and the scored checkpoint items' evidence rows. There
+ * is deliberately no learner-state parameter: completing lessons,
+ * accumulating XP or knowing N words can never make a level claimable
+ * (§100-101, §145).
+ *
+ * A domain covers a level only when, beyond having a direct objective at
+ * all, its evidence clears every product-local breadth rule: enough items
+ * per direct objective, enough INDEPENDENT source inputs (three questions
+ * about one clip are one input, P7 §13), and — across the domain — enough
+ * distinct task families and distinct aligned CEFR scale families. These
+ * thresholds are internal evidence-sufficiency rules, not Council of Europe
+ * cut scores (P7 §12).
  */
 export function evaluateClaimGate(input: {
   objectives: CourseObjective[];
   policy: ClaimPolicy;
-  checkpointItemTargets: string[][];
-  minItemsForAssessed?: number;
+  checkpointItems: ScoredItemEvidence[];
 }): ClaimGateResult {
-  const minItems = input.minItemsForAssessed ?? 2;
-  const itemCount = new Map<string, number>();
-  for (const targets of input.checkpointItemTargets) {
-    for (const oid of new Set(targets)) {
-      itemCount.set(oid, (itemCount.get(oid) ?? 0) + 1);
+  const { policy } = input;
+  const minItems = policy.minItemsPerDirectObjective;
+
+  // Per-objective evidence rollup from the scored items.
+  const perObjective = new Map<
+    string,
+    { items: number; inputs: Set<string>; families: Set<string> }
+  >();
+  let standaloneCounter = 0;
+  for (const item of input.checkpointItems) {
+    // A standalone item (no shared clip/text) is its own independent input.
+    const inputKey = item.inputId ?? `standalone:${standaloneCounter++}`;
+    for (const oid of new Set(item.objectiveTargets)) {
+      let row = perObjective.get(oid);
+      if (!row) perObjective.set(oid, (row = { items: 0, inputs: new Set(), families: new Set() }));
+      row.items += 1;
+      row.inputs.add(inputKey);
+      row.families.add(item.taskFamily);
     }
   }
-  const levels = input.policy.evaluatedLevels.map((level) => {
-    const domains = input.policy.requiredDomains.map((domain) => {
+  const evidenceFor = (oid: string) =>
+    perObjective.get(oid) ?? { items: 0, inputs: new Set<string>(), families: new Set<string>() };
+
+  const levels = policy.evaluatedLevels.map((level) => {
+    const domains = policy.requiredDomains.map((domain) => {
       const inDomain = input.objectives.filter((o) => o.category === domain);
       if (inDomain.length === 0) {
         return { domain, status: "no_objectives_in_domain" as const, directAssessedObjectives: [] };
@@ -207,14 +253,52 @@ export function evaluateClaimGate(input: {
       if (direct.length === 0) {
         return { domain, status: "no_direct_objective" as const, directAssessedObjectives: [] };
       }
-      const assessed = direct.filter((o) => (itemCount.get(o.id) ?? 0) >= minItems);
-      if (assessed.length < input.policy.minAssessedObjectivesPerDomain) {
+      // An objective is assessed only with enough items AND enough
+      // independent inputs (P7 §13).
+      const assessed = direct.filter((o) => {
+        const e = evidenceFor(o.id);
+        return e.items >= minItems && e.inputs.size >= policy.minDistinctInputsPerDirectObjective;
+      });
+      if (assessed.length < policy.minAssessedObjectivesPerDomain) {
         return { domain, status: "objectives_not_assessed" as const, directAssessedObjectives: [] };
+      }
+      // Domain-level breadth (P7 §11, §14): distinct task families across
+      // the assessed objectives' evidence, and distinct aligned CEFR scale
+      // families among their direct alignments at this level.
+      const families = new Set<string>();
+      const distinctInputsByObjective: Record<string, number> = {};
+      for (const o of assessed) {
+        const e = evidenceFor(o.id);
+        for (const f of e.families) families.add(f);
+        distinctInputsByObjective[o.id] = e.inputs.size;
+      }
+      const scales = new Set<string>();
+      for (const o of assessed) {
+        for (const a of o.cefrAlignments) {
+          if (a.level === level && a.relation === "direct") scales.add(a.scaleName);
+        }
+      }
+      const breadth: DomainBreadth = {
+        taskFamilies: [...families].sort(),
+        scaleNames: [...scales].sort(),
+        distinctInputsByObjective,
+      };
+      if (
+        families.size < policy.minTaskFamiliesPerDomain ||
+        scales.size < policy.minDistinctScalesPerDomain
+      ) {
+        return {
+          domain,
+          status: "insufficient_breadth" as const,
+          directAssessedObjectives: assessed.map((o) => o.id).sort(),
+          breadth,
+        };
       }
       return {
         domain,
         status: "covered" as const,
         directAssessedObjectives: assessed.map((o) => o.id).sort(),
+        breadth,
       };
     });
     const claimable = domains.every((d) => d.status === "covered");
@@ -225,7 +309,7 @@ export function evaluateClaimGate(input: {
             (o) =>
               ["lexical", "grammar", "phonology", "strategy"].includes(o.category) &&
               o.cefrAlignments.some((a) => a.level === level) &&
-              (itemCount.get(o.id) ?? 0) >= minItems
+              evidenceFor(o.id).items >= minItems
           )
           .map((o) => o.id)
       ),
@@ -233,6 +317,9 @@ export function evaluateClaimGate(input: {
     const unassessed = domains
       .filter((d) => d.status !== "covered")
       .map((d) => d.domain);
+    const spokenReceptionCovered = domains.some(
+      (d) => d.domain === "spoken_reception" && d.status === "covered"
+    );
     return {
       level,
       claimable,
@@ -246,6 +333,11 @@ export function evaluateClaimGate(input: {
         ...(domains.some((d) => d.domain === "spoken_reception" && d.status !== "covered")
           ? ["Listening is not assessed in scored assessment."]
           : []),
+        ...(spokenReceptionCovered
+          ? [
+              "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity.",
+            ]
+          : []),
         ...(domains.some((d) => d.domain === "interaction" && d.status !== "covered")
           ? ["Interaction is not assessed."]
           : []),
@@ -253,9 +345,15 @@ export function evaluateClaimGate(input: {
     };
   });
   return {
-    policyVersion: input.policy.version,
+    policyVersion: policy.version,
     minItemsForAssessed: minItems,
+    breadthPolicy: {
+      minItemsPerDirectObjective: policy.minItemsPerDirectObjective,
+      minDistinctInputsPerDirectObjective: policy.minDistinctInputsPerDirectObjective,
+      minTaskFamiliesPerDomain: policy.minTaskFamiliesPerDomain,
+      minDistinctScalesPerDomain: policy.minDistinctScalesPerDomain,
+    },
     levels,
-    wording: input.policy.claimWording,
+    wording: policy.claimWording,
   };
 }

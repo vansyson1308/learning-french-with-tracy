@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "language": "fr",
+  "note": "Generation canary (P7 §38): difficult French rendered by every candidate voice/speaker BEFORE any shipped clip is generated. Never shipped to learners; drives the ASR audit and the pinned speaker selection.",
+  "items": [
+    {
+      "id": "canary.elision.habite",
+      "focus": "elision + h muet",
+      "text": "J'habite à Paris et j'aime l'hôtel."
+    },
+    {
+      "id": "canary.elision.eau",
+      "focus": "elision l' + vowel",
+      "text": "L'eau est froide et l'école est ouverte."
+    },
+    {
+      "id": "canary.liaison.enfants",
+      "focus": "liaison plural + verb",
+      "text": "Les enfants arrivent dans un petit appartement."
+    },
+    {
+      "id": "canary.liaison.vous",
+      "focus": "liaison vous avez / c'est un",
+      "text": "Vous avez raison, c'est un très bon ami."
+    },
+    {
+      "id": "canary.numbers.71",
+      "focus": "compound number 71",
+      "text": "Le bus soixante et onze passe dans dix minutes."
+    },
+    {
+      "id": "canary.numbers.95",
+      "focus": "compound number 95 + 16",
+      "text": "Il y a quatre-vingt-quinze personnes et seize chaises."
+    },
+    {
+      "id": "canary.nasal.vin",
+      "focus": "three nasal vowels",
+      "text": "Un bon vin blanc et du pain chaud."
+    },
+    {
+      "id": "canary.oe.soeur",
+      "focus": "œ ligature",
+      "text": "Ma sœur mange un œuf de bon cœur."
+    },
+    {
+      "id": "canary.accents.achete",
+      "focus": "é / è / ê contrasts",
+      "text": "J'achète du café près de la fenêtre en été."
+    },
+    {
+      "id": "canary.verbs.silent",
+      "focus": "silent -ent + final consonants",
+      "text": "Ils mangent ensemble et elle finit son travail."
+    },
+    {
+      "id": "canary.question.gare",
+      "focus": "question intonation",
+      "text": "Où est la gare, s'il vous plaît ?"
+    },
+    {
+      "id": "canary.question.viens",
+      "focus": "yes/no question intonation",
+      "text": "Tu viens avec nous demain matin ?"
+    },
+    {
+      "id": "canary.announcement.train",
+      "focus": "announcement register + time + platform",
+      "text": "Le train pour Lyon part à quinze heures, voie deux."
+    },
+    {
+      "id": "canary.dialogue.cafe",
+      "focus": "two-turn dialogue rhythm",
+      "text": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros."
+    }
+  ]
+}
