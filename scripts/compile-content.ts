@@ -41,6 +41,15 @@ import {
   buildObjectiveCoverage,
   evaluateClaimGate,
 } from "./lib/assessment-reports";
+import {
+  compileClipAssetsModule,
+  compileListeningArtifact,
+  compileReadingsArtifact,
+  loadClipDurations,
+  loadListening,
+  loadReadings,
+  validateReception,
+} from "./lib/reception";
 import { PackSchema } from "../content/schema";
 import {
   buildSqliteDb,
@@ -66,6 +75,12 @@ const validation = [
   ...validateLexicon().errors,
   ...validatePedagogy().errors,
   ...validateAssessment().errors,
+  ...validateReception({
+    readings: loadReadings(),
+    listening: loadListening(),
+    objectives: loadCourseObjectives(),
+    lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
+  }).errors,
 ];
 if (validation.length > 0) {
   for (const e of validation) console.error(`ERROR ${e}`);
@@ -175,6 +190,25 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
     relPath: "src/content/assessment/fr-placement.json",
     contents: compilePlacementArtifact(placement),
   });
+  // Phase-7 reception artifacts — emitted once the sources exist (P7 §43).
+  const readings = loadReadings();
+  if (readings) {
+    files.push({
+      relPath: "src/content/reception/fr-reading.json",
+      contents: compileReadingsArtifact(readings),
+    });
+  }
+  const listening = loadListening();
+  if (listening) {
+    files.push({
+      relPath: "src/content/reception/fr-listening.json",
+      contents: compileListeningArtifact(listening, loadClipDurations()),
+    });
+    files.push({
+      relPath: "src/content/reception/fr-clip-assets.ts",
+      contents: compileClipAssetsModule(listening),
+    });
+  }
   files.push({
     relPath: "content/reports/placement-coverage.json",
     contents: canonicalJson({
