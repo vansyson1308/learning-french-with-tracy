@@ -18,7 +18,9 @@
     "fr.read.cp3_texte_camille",
     "fr.read.pl_notice_cafe",
     "fr.read.pl_message_court",
-    "fr.read.cp3_texte_nora"
+    "fr.read.cp3_texte_nora",
+    "fr.read.a1cap_note_magasin",
+    "fr.read.a1cap_invitation"
   ],
   "byId": {
     "fr.read.ug_horaires_musee": {
@@ -621,6 +623,71 @@
       "sourceRef": "original-project",
       "authoringSpec": {
         "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    "fr.read.a1cap_note_magasin": {
+      "id": "fr.read.a1cap_note_magasin",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Salut ! Je suis au magasin. Je rentre à onze heures. Ton sandwich est sur la table. — Papa"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "fr:w:salut",
+        "fr:w:magasin",
+        "fr:w:heure",
+        "fr:w:table"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "rentre",
+          "gloss": "come back"
+        },
+        {
+          "surface": "sandwich",
+          "gloss": "sandwich"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    "fr.read.a1cap_invitation": {
+      "id": "fr.read.a1cap_invitation",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Chère Léa, samedi on mange au restaurant à sept heures du soir. Tu peux venir ? À samedi ! — Nadia"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "fr:w:samedi",
+        "fr:w:manger",
+        "fr:w:restaurant",
+        "fr:w:heure",
+        "fr:w:soir"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "venir",
+          "gloss": "to come"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
         "inferenceDemand": "locate"
       }
     }

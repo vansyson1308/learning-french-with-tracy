@@ -7,7 +7,8 @@
     "fr.checkpoint.section-3",
     "fr.checkpoint.section-4",
     "fr.checkpoint.section-5",
-    "fr.checkpoint.section-6"
+    "fr.checkpoint.section-6",
+    "fr.checkpoint.a1-capstone"
   ],
   "byId": {
     "fr.checkpoint.section-1": {
@@ -2531,6 +2532,697 @@
       ],
       "criteria": {
         "minItemsPerObjective": 3,
+        "demonstratedShare": 0.66
+      }
+    },
+    "fr.checkpoint.a1-capstone": {
+      "id": "fr.checkpoint.a1-capstone",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "fr-en:section-6",
+      "title": "The A1 check",
+      "description": "One sitting across all five skills: listen, read, speak, write and hold short conversations. Two parallel versions - a retake gives you the other one. The result is a CEFR-aligned A1 estimate from this course's own checks, never an official certificate. If your device can't record speech, those parts are skipped and your estimate simply stays incomplete - it never counts against you.",
+      "items": [
+        {
+          "id": "fr.cpi.cap.listen_musee",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-cap-listen_musee",
+            "clipId": "fr.clip.a1cap_musee",
+            "question": "When is the museum open?",
+            "options": [
+              {
+                "text": "From ten to six"
+              },
+              {
+                "text": "Only in the morning"
+              },
+              {
+                "text": "From noon to midnight"
+              },
+              {
+                "text": "It is closed"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.listen_bus",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-cap-listen_bus",
+            "clipId": "fr.clip.a1cap_bus",
+            "question": "When does the bus leave?",
+            "options": [
+              {
+                "text": "Tomorrow morning"
+              },
+              {
+                "text": "In ten minutes"
+              },
+              {
+                "text": "At ten o'clock"
+              },
+              {
+                "text": "In an hour"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.listen_pharmacie",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-cap-listen_pharmacie",
+            "clipId": "fr.clip.a1cap_pharmacie",
+            "question": "When does the pharmacy open?",
+            "options": [
+              {
+                "text": "Tonight"
+              },
+              {
+                "text": "Next week"
+              },
+              {
+                "text": "Tomorrow morning"
+              },
+              {
+                "text": "In ten minutes"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.listen_cinema",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "fr-cpx-cap-listen_cinema",
+            "clipId": "fr.clip.a1cap_cinema",
+            "question": "Where are you meeting?",
+            "options": [
+              {
+                "text": "At the café"
+              },
+              {
+                "text": "At the station"
+              },
+              {
+                "text": "At home"
+              },
+              {
+                "text": "In front of the cinema"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "fr.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.read_note_ou",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-cap-read_note_ou",
+            "readingId": "fr.read.a1cap_note_magasin",
+            "question": "Where is the writer?",
+            "options": [
+              {
+                "text": "At the shop"
+              },
+              {
+                "text": "At the station"
+              },
+              {
+                "text": "At school"
+              },
+              {
+                "text": "At the restaurant"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.read_note_quand",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-cap-read_note_quand",
+            "readingId": "fr.read.a1cap_note_magasin",
+            "question": "When are they coming back?",
+            "options": [
+              {
+                "text": "At nine"
+              },
+              {
+                "text": "At eleven"
+              },
+              {
+                "text": "Tomorrow"
+              },
+              {
+                "text": "Tonight"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.read_inv_quoi",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-cap-read_inv_quoi",
+            "readingId": "fr.read.a1cap_invitation",
+            "question": "What is the plan?",
+            "options": [
+              {
+                "text": "A film on Sunday"
+              },
+              {
+                "text": "Coffee tomorrow morning"
+              },
+              {
+                "text": "Dinner at a restaurant on Saturday"
+              },
+              {
+                "text": "A walk in the park"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.read_inv_heure",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "fr-cpx-cap-read_inv_heure",
+            "readingId": "fr.read.a1cap_invitation",
+            "question": "At what time?",
+            "options": [
+              {
+                "text": "At noon"
+              },
+              {
+                "text": "At five"
+              },
+              {
+                "text": "At nine in the morning"
+              },
+              {
+                "text": "At seven in the evening"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "fr.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.speak_time",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-cap-speak_time",
+            "speechItemId": "fr.speak.a1cap_time",
+            "instruction": "Say what time it is.",
+            "cueFacts": [
+              {
+                "label": "Time",
+                "value": "10:00"
+              }
+            ],
+            "target": "Il est dix heures",
+            "acceptedVariants": [
+              "Il est dix heures",
+              "Dix heures"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.speak_price",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-cap-speak_price",
+            "speechItemId": "fr.speak.a1cap_price",
+            "instruction": "Say how much it costs.",
+            "cueFacts": [
+              {
+                "label": "Price",
+                "value": "3 €"
+              }
+            ],
+            "target": "Ça coûte trois euros",
+            "acceptedVariants": [
+              "Ça coûte trois euros",
+              "Ça fait trois euros",
+              "C'est trois euros",
+              "Trois euros"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.speak_live",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-cap-speak_live",
+            "speechItemId": "fr.speak.a1cap_live",
+            "instruction": "Say where you live.",
+            "cueFacts": [
+              {
+                "label": "City",
+                "value": "Marseille"
+              }
+            ],
+            "target": "J'habite à Marseille",
+            "acceptedVariants": [
+              "J'habite à Marseille",
+              "J'habite Marseille"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.speak_day",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-cap-speak_day",
+            "speechItemId": "fr.speak.a1cap_day",
+            "instruction": "Say what day it is tomorrow.",
+            "cueFacts": [
+              {
+                "label": "Tomorrow",
+                "value": "Saturday"
+              }
+            ],
+            "target": "Demain, c'est samedi",
+            "acceptedVariants": [
+              "Demain, c'est samedi",
+              "C'est samedi demain",
+              "Samedi"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.write_note_train",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-cap-write_note_train",
+            "writingTaskId": "fr.write.a1cap_note_train",
+            "writingMode": "guided",
+            "instruction": "Write a short note to Paul: greet him, and tell him the train is at nine o'clock.",
+            "cueFacts": [
+              {
+                "label": "To",
+                "value": "Paul"
+              },
+              {
+                "label": "What",
+                "value": "train"
+              },
+              {
+                "label": "Time",
+                "value": "9:00"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "a greeting",
+                  "variants": [
+                    "bonjour",
+                    "salut",
+                    "bonsoir"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "fact",
+                  "description": "the train time",
+                  "variants": [
+                    "le train est à neuf heures",
+                    "train à neuf heures"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Salut Paul, le train est à neuf heures."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.write_note_resto",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-cap-write_note_resto",
+            "writingTaskId": "fr.write.a1cap_note_resto",
+            "writingMode": "guided",
+            "instruction": "Write a short note to Léa: greet her, and tell her the restaurant is on Saturday.",
+            "cueFacts": [
+              {
+                "label": "To",
+                "value": "Léa"
+              },
+              {
+                "label": "What",
+                "value": "restaurant"
+              },
+              {
+                "label": "Day",
+                "value": "Saturday"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "a greeting",
+                  "variants": [
+                    "bonjour",
+                    "salut",
+                    "bonsoir"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "fact",
+                  "description": "the restaurant day",
+                  "variants": [
+                    "le restaurant est samedi",
+                    "le restaurant c'est samedi",
+                    "restaurant samedi"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Bonjour Léa, le restaurant est samedi."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.write_note_magasin",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-cap-write_note_magasin",
+            "writingTaskId": "fr.write.a1cap_note_magasin",
+            "writingMode": "guided",
+            "instruction": "Write a short note to Marc: greet him, and tell him the shop is open tomorrow.",
+            "cueFacts": [
+              {
+                "label": "To",
+                "value": "Marc"
+              },
+              {
+                "label": "What",
+                "value": "shop"
+              },
+              {
+                "label": "When",
+                "value": "tomorrow"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "a greeting",
+                  "variants": [
+                    "bonjour",
+                    "salut",
+                    "bonsoir"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "fact",
+                  "description": "the shop opening",
+                  "variants": [
+                    "le magasin est ouvert demain",
+                    "le magasin ouvre demain",
+                    "magasin ouvert demain"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Salut Marc, le magasin est ouvert demain."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.write_note_gare",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "fr-cpx-cap-write_note_gare",
+            "writingTaskId": "fr.write.a1cap_note_gare",
+            "writingMode": "guided",
+            "instruction": "Write a short note to Anna: greet her, say you are at the station, and that you are coming back at six.",
+            "cueFacts": [
+              {
+                "label": "To",
+                "value": "Anna"
+              },
+              {
+                "label": "Where",
+                "value": "station"
+              },
+              {
+                "label": "Back at",
+                "value": "6:00"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "a greeting",
+                  "variants": [
+                    "bonjour",
+                    "salut",
+                    "bonsoir"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "place",
+                  "description": "where you are",
+                  "variants": [
+                    "je suis à la gare"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "time",
+                  "description": "when you are back",
+                  "variants": [
+                    "je rentre à six heures",
+                    "à six heures"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 7,
+              "maxTokens": 25
+            },
+            "modelAnswers": [
+              "Salut Anna, je suis à la gare. Je rentre à six heures."
+            ]
+          },
+          "objectiveTargets": [
+            "fr.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.talk_voisin",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "fr-cpx-cap-talk_voisin",
+            "scenarioId": "fr.scenario.a1cap_voisin"
+          },
+          "objectiveTargets": [
+            "fr.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.talk_telephone",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "fr-cpx-cap-talk_telephone",
+            "scenarioId": "fr.scenario.a1cap_telephone"
+          },
+          "objectiveTargets": [
+            "fr.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.talk_julie",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "fr-cpx-cap-talk_julie",
+            "scenarioId": "fr.scenario.a1cap_julie"
+          },
+          "objectiveTargets": [
+            "fr.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.cap.talk_invitation",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "fr-cpx-cap-talk_invitation",
+            "scenarioId": "fr.scenario.a1cap_invitation"
+          },
+          "objectiveTargets": [
+            "fr.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        }
+      ],
+      "forms": [
+        {
+          "formId": "a",
+          "itemIds": [
+            "fr.cpi.cap.listen_musee",
+            "fr.cpi.cap.listen_bus",
+            "fr.cpi.cap.read_note_ou",
+            "fr.cpi.cap.read_note_quand",
+            "fr.cpi.cap.speak_time",
+            "fr.cpi.cap.speak_price",
+            "fr.cpi.cap.write_note_train",
+            "fr.cpi.cap.write_note_resto",
+            "fr.cpi.cap.talk_voisin",
+            "fr.cpi.cap.talk_telephone"
+          ]
+        },
+        {
+          "formId": "b",
+          "itemIds": [
+            "fr.cpi.cap.listen_pharmacie",
+            "fr.cpi.cap.listen_cinema",
+            "fr.cpi.cap.read_inv_quoi",
+            "fr.cpi.cap.read_inv_heure",
+            "fr.cpi.cap.speak_live",
+            "fr.cpi.cap.speak_day",
+            "fr.cpi.cap.write_note_magasin",
+            "fr.cpi.cap.write_note_gare",
+            "fr.cpi.cap.talk_julie",
+            "fr.cpi.cap.talk_invitation"
+          ]
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
         "demonstratedShare": 0.66
       }
     }

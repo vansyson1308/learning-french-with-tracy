@@ -6,7 +6,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { buildCheckpointAttempt, scoreObjectives } from "../assessment/checkpoint";
-import { checkpointFor, CHECKPOINT_ORDER } from "../assessment/content";
+import { checkpointFor, checkpointForSection, CHECKPOINT_ORDER } from "../assessment/content";
 import { evidencePlanFor } from "../session/evidence";
 import { emptySessionState, sessionReducer, type SessionMachineState } from "../session/reducer";
 import { buildCheckpointSessionDefinition } from "../session/sources";
@@ -41,7 +41,7 @@ function exerciseStep(stepId: string): ExerciseStep {
 }
 
 describe("compiled checkpoints", () => {
-  test("all six section checkpoints exist with their authored shapes", () => {
+  test("all six section checkpoints exist, plus the A1 capstone (P9 §41)", () => {
     expect(CHECKPOINT_ORDER).toEqual([
       "fr.checkpoint.section-1",
       "fr.checkpoint.section-2",
@@ -49,6 +49,7 @@ describe("compiled checkpoints", () => {
       "fr.checkpoint.section-4",
       "fr.checkpoint.section-5",
       "fr.checkpoint.section-6",
+      "fr.checkpoint.a1-capstone",
     ]);
     expect(CP1.items.length).toBe(12);
     expect(CP2.items.length).toBe(18);
@@ -75,6 +76,43 @@ describe("compiled checkpoints", () => {
     expect(perObjective.get("fr.obj.interaction.everyday_conversation")).toBe(3);
     expect(perObjective.get("fr.obj.interaction.practical_needs")).toBe(3);
     expect(perObjective.size).toBe(2);
+  });
+
+  test("A1 capstone: 20 items over five domains, two disjoint forms at the floor (P9 §41-§43)", () => {
+    const cap = checkpointFor("fr.checkpoint.a1-capstone")!;
+    expect(cap.items.length).toBe(20);
+    expect(cap.formVersion).toBe(1);
+    expect(cap.forms?.map((f) => f.formId)).toEqual(["a", "b"]);
+    // Disjoint 10/10 split covering the whole bank.
+    const a = new Set(cap.forms![0].itemIds);
+    const b = new Set(cap.forms![1].itemIds);
+    expect(a.size).toBe(10);
+    expect(b.size).toBe(10);
+    expect([...a].filter((id) => b.has(id))).toEqual([]);
+    // One representative objective per domain, 4 items each, 2 per form.
+    const objectives = new Set(cap.items.flatMap((i) => i.objectiveTargets));
+    expect([...objectives].sort()).toEqual([
+      "fr.obj.interaction.everyday_conversation",
+      "fr.obj.listening.short_info",
+      "fr.obj.reading.short_messages",
+      "fr.obj.speaking.give_info",
+      "fr.obj.writing.short_message",
+    ]);
+    for (const form of cap.forms!) {
+      const perObjective = new Map<string, number>();
+      for (const itemId of form.itemIds) {
+        const item = cap.items.find((i) => i.id === itemId)!;
+        for (const oid of item.objectiveTargets) {
+          perObjective.set(oid, (perObjective.get(oid) ?? 0) + 1);
+        }
+      }
+      for (const oid of objectives) {
+        expect(perObjective.get(oid)).toBe(2);
+      }
+    }
+    // Sharing section-6's sectionId must not displace the SECTION card:
+    // checkpointForSection resolves the section checkpoint, not the capstone.
+    expect(checkpointForSection("fr-en:section-6")?.id).toBe("fr.checkpoint.section-6");
   });
 
   test("Section-4 checkpoint: 12 reserved spoken items, production-only, model-free (P8 §20)", () => {
