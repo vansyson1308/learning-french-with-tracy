@@ -752,3 +752,115 @@ export const PlacementSchema = z.strictObject({
   stages: z.array(PlacementStageSchema).min(1),
 });
 export type PlacementContent = z.infer<typeof PlacementSchema>;
+
+// ---------------------------------------------------------------------------
+// Phase 7: reception sources (P7 §43-49)
+// ---------------------------------------------------------------------------
+
+export const readingIdSchema = z.string().regex(/^fr\.read\.[a-z0-9_]+$/);
+export const clipIdSchema = z.string().regex(/^fr\.clip\.[a-z0-9_]+$/);
+
+export const READING_KINDS = [
+  "notice",
+  "message",
+  "dialogue",
+  "description",
+  "directions",
+  "info",
+  "narrative",
+] as const;
+
+export const LISTENING_KINDS = [
+  "word_phrase",
+  "announcement",
+  "instruction",
+  "message",
+  "dialogue",
+  "factual",
+] as const;
+
+/**
+ * Authoring difficulty variables (P7 §8): DESIGN CONTROLS recorded per
+ * input, never psychometrically calibrated scores (§119).
+ */
+export const ReceptionAuthoringSpecSchema = z.strictObject({
+  informationUnits: z.number().int().min(1).max(6),
+  inferenceDemand: z.enum(["locate", "basic_inference"]),
+  lexicalNotes: z.string().optional(),
+});
+
+/** Reading content blocks: paragraphs, or speaker-labeled dialogue lines. */
+export const ReadingBlockSchema = z.union([
+  z.strictObject({ kind: z.literal("paragraph"), text: z.string().min(1) }),
+  z.strictObject({
+    kind: z.literal("line"),
+    speaker: z.string().min(1),
+    text: z.string().min(1),
+  }),
+]);
+
+export const ReadingSourceSchema = z.strictObject({
+  id: readingIdSchema,
+  kind: z.enum(READING_KINDS),
+  title: z.string().min(1).optional(),
+  blocks: z.array(ReadingBlockSchema).min(1).max(10),
+  objectiveRefs: z.array(objectiveId).min(1),
+  /** Course lexemes the text leans on (coverage QA, not grading). */
+  lexemeRefs: z.array(z.string().regex(/^fr:w:[a-z0-9-]+$/)),
+  /** Learning-mode-only glosses for the small supported-unknown load. */
+  supportGlossary: z.array(
+    z.strictObject({ surface: z.string().min(1), gloss: z.string().min(1) })
+  ),
+  sourceRef: z.literal("original-project"),
+  authoringSpec: ReceptionAuthoringSpecSchema,
+});
+export type ReadingSource = z.infer<typeof ReadingSourceSchema>;
+
+export const ReadingsSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  readings: z.array(ReadingSourceSchema).min(1),
+});
+export type Readings = z.infer<typeof ReadingsSchema>;
+
+/**
+ * A listening clip is one or more speaker-labeled segments synthesized with
+ * the pinned voice cast and concatenated deterministically at generation
+ * time — the segments ARE the single authoritative transcript (P7 §40).
+ */
+export const ListeningSegmentSchema = z.strictObject({
+  speaker: z.enum(["A", "B"]),
+  text: z.string().min(1),
+});
+
+export const ListeningClipSchema = z.strictObject({
+  id: clipIdSchema,
+  kind: z.enum(LISTENING_KINDS),
+  segments: z.array(ListeningSegmentSchema).min(1).max(4),
+  objectiveRefs: z.array(objectiveId).min(1),
+  lexemeRefs: z.array(z.string().regex(/^fr:w:[a-z0-9-]+$/)),
+  sourceRef: z.literal("original-project"),
+  authoringSpec: ReceptionAuthoringSpecSchema,
+  /** Scored sessions: normal rate only, bounded deliberate plays (P7 §23, §67). */
+  scoredPlaybackPolicy: z.strictObject({
+    maxPlays: z.number().int().min(1).max(3),
+    rate: z.literal(1),
+  }),
+});
+export type ListeningClip = z.infer<typeof ListeningClipSchema>;
+
+export const ListeningSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  /**
+   * The pinned voice cast (P7 §59): stable speaker letters map to concrete
+   * pinned voices/speaker ids in ONE place, so a re-generation can never
+   * silently reshuffle who speaks.
+   */
+  voiceCast: z.strictObject({
+    A: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
+    B: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
+  }),
+  clips: z.array(ListeningClipSchema).min(1),
+});
+export type Listening = z.infer<typeof ListeningSchema>;

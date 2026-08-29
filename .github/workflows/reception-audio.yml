@@ -106,20 +106,8 @@ jobs:
         run: |
           set -euo pipefail
           bun scripts/reception-audio.ts plan --mode "$([ "${{ inputs.mode }}" = "canary" ] && echo canary || echo generate)" --out "$PLAN"
-          mkdir -p "$WAV" "$OUT"
-          bun -e '
-            const plan = require("'"$PLAN"'");
-            for (const c of plan.clips) {
-              console.log([c.assetKey, c.voiceId, c.speaker ?? "", c.text].join("\t"));
-            }
-          ' | while IFS=$'\t' read -r key voice speaker text; do
-            MODEL="$DL/$voice.model.1"
-            CONFIG="$DL/$voice.config.1"
-            ARGS=(--model "$MODEL" --config "$CONFIG" --output_file "$WAV/$key.wav")
-            if [ -n "$speaker" ]; then ARGS+=(--speaker "$speaker"); fi
-            printf '%s' "$text" | piper "${ARGS[@]}"
-            ffmpeg -v error -y -i "$WAV/$key.wav" -ar 22050 -ac 1 -codec:a libmp3lame -b:a 64k "$OUT/$key.mp3"
-          done
+          bun scripts/reception-audio.ts synth-script --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" > /tmp/synth.sh
+          bash /tmp/synth.sh
           ls "$OUT" | wc -l
 
       - name: ASR audit (faster-whisper, technical signal only)

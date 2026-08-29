@@ -181,30 +181,21 @@ function verify(downloads: string) {
 // plan
 // ---------------------------------------------------------------------------
 
+export type GenSegment = { voiceId: string; speaker: number | null; text: string };
 export type GenClip = {
   clipId: string;
+  /** Joined transcript — the QA/ASR reference. */
   text: string;
-  voiceId: string;
-  speaker: number | null;
-  lengthScale: number;
+  segments: GenSegment[];
   assetKey: string;
 };
 
-function assetKeyFor(input: {
-  language: string;
-  text: string;
-  voiceId: string;
-  speaker: number | null;
-  lengthScale: number;
-  pipelineVersion: number;
-}): string {
+function assetKeyFor(segments: GenSegment[], pipelineVersion: number): string {
   const canonical = JSON.stringify([
-    input.language,
-    input.text,
-    input.voiceId,
-    input.speaker,
-    input.lengthScale,
-    input.pipelineVersion,
+    "fr",
+    segments.map((s) => [s.voiceId, s.speaker, s.text]),
+    1.0, // length scale (normal authored rate; slow mode is playback-time)
+    pipelineVersion,
   ]);
   return createHash("sha256").update(canonical).digest("hex").slice(0, 20);
 }
@@ -215,21 +206,12 @@ const CANARY_MLS_SPEAKERS = [0, 1, 2, 3, 4, 5, 6, 7];
 function plan(mode: string, out: string) {
   const manifest = loadManifest();
   const clips: GenClip[] = [];
-  const push = (clipId: string, text: string, voiceId: string, speaker: number | null) => {
+  const push = (clipId: string, segments: GenSegment[]) => {
     clips.push({
       clipId,
-      text,
-      voiceId,
-      speaker,
-      lengthScale: 1.0,
-      assetKey: assetKeyFor({
-        language: "fr",
-        text,
-        voiceId,
-        speaker,
-        lengthScale: 1.0,
-        pipelineVersion: manifest.pipelineVersion,
-      }),
+      text: segments.map((s) => s.text).join(" "),
+      segments,
+      assetKey: assetKeyFor(segments, manifest.pipelineVersion),
     });
   };
   if (mode === "canary") {
@@ -237,24 +219,79 @@ function plan(mode: string, out: string) {
       items: { id: string; text: string }[];
     };
     for (const item of canary.items) {
-      push(`${item.id}@siwis`, item.text, "fr_FR-siwis-medium", null);
+      push(`${item.id}@siwis`, [{ voiceId: "fr_FR-siwis-medium", speaker: null, text: item.text }]);
       for (const sp of CANARY_MLS_SPEAKERS) {
-        push(`${item.id}@mls-${sp}`, item.text, "fr_FR-mls-medium", sp);
+        push(`${item.id}@mls-${sp}`, [{ voiceId: "fr_FR-mls-medium", speaker: sp, text: item.text }]);
       }
     }
   } else if (mode === "generate") {
     if (!existsSync(LISTENING_PATH)) fail("listening.json does not exist yet — author content first");
     const listening = JSON.parse(readFileSync(LISTENING_PATH, "utf8")) as {
-      clips: { id: string; transcript: string; voice: { voiceId: string; speaker: number | null } }[];
+      voiceCast: Record<"A" | "B", { voiceId: string; speaker: number | null }>;
+      clips: { id: string; segments: { speaker: "A" | "B"; text: string }[] }[];
     };
     for (const clip of listening.clips) {
-      push(clip.id, clip.transcript, clip.voice.voiceId, clip.voice.speaker);
+      push(
+        clip.id,
+        clip.segments.map((seg) => ({
+          voiceId: listening.voiceCast[seg.speaker].voiceId,
+          speaker: listening.voiceCast[seg.speaker].speaker,
+          text: seg.text,
+        }))
+      );
     }
   } else {
     fail(`unknown plan mode ${mode}`);
   }
   writeFileSync(out, `${JSON.stringify({ pipelineVersion: manifest.pipelineVersion, clips }, null, 2)}\n`);
   console.log(`plan (${mode}): ${clips.length} clips → ${out}`);
+}
+
+/**
+ * Emit a deterministic bash script that synthesizes every planned clip:
+ * piper per segment → 0.35s silence joins → one 22.05kHz mono 64k MP3 per
+ * clip. Generated (not hand-run) so quoting is exact and the run log shows
+ * the full recipe.
+ */
+function synthScript(planPath: string, dl: string, wav: string, out: string) {
+  const genPlan = JSON.parse(readFileSync(planPath, "utf8")) as { clips: GenClip[] };
+  const shq = (s: string) => `'${s.replace(/'/g, `'\\''`)}'`;
+  const lines: string[] = [
+    "#!/usr/bin/env bash",
+    "set -euo pipefail",
+    `mkdir -p ${shq(wav)} ${shq(out)}`,
+    // Inter-segment beat for dialogue clips.
+    `ffmpeg -v error -y -f lavfi -i anullsrc=r=22050:cl=mono -t 0.35 ${shq(`${wav}/_gap.wav`)}`,
+  ];
+  for (const clip of genPlan.clips) {
+    const segWavs: string[] = [];
+    clip.segments.forEach((seg, i) => {
+      const segWav = `${wav}/${clip.assetKey}.seg${i}.wav`;
+      segWavs.push(segWav);
+      const speakerArgs = seg.speaker === null ? "" : ` --speaker ${seg.speaker}`;
+      lines.push(
+        `printf '%s' ${shq(seg.text)} | piper --model ${shq(`${dl}/${seg.voiceId}.model.1`)} --config ${shq(`${dl}/${seg.voiceId}.config.1`)}${speakerArgs} --output_file ${shq(segWav)}`
+      );
+    });
+    const joined = `${wav}/${clip.assetKey}.joined.wav`;
+    if (segWavs.length === 1) {
+      lines.push(`cp ${shq(segWavs[0])} ${shq(joined)}`);
+    } else {
+      const listFile = `${wav}/${clip.assetKey}.list`;
+      const entries = segWavs
+        .map((p) => `file ${shq(p)}`)
+        .join(`\\nfile ${shq(`${wav}/_gap.wav`)}\\n`);
+      lines.push(`printf '%b\\n' ${shq(entries)} > ${shq(listFile)}`);
+      lines.push(
+        `ffmpeg -v error -y -f concat -safe 0 -i ${shq(listFile)} -ar 22050 -ac 1 ${shq(joined)}`
+      );
+    }
+    lines.push(
+      `ffmpeg -v error -y -i ${shq(joined)} -ar 22050 -ac 1 -codec:a libmp3lame -b:a 64k ${shq(`${out}/${clip.assetKey}.mp3`)}`
+    );
+  }
+  lines.push(`echo "synthesized ${genPlan.clips.length} clips"`);
+  process.stdout.write(`${lines.join("\n")}\n`);
 }
 
 // ---------------------------------------------------------------------------
@@ -303,6 +340,7 @@ function ffEdgeSilence(p: string): { lead: number | null; trail: number | null }
 type QaRow = {
   clipId: string;
   assetKey: string;
+  /** First segment's voice, or "mixed" for multi-voice dialogue clips. */
   voiceId: string;
   speaker: number | null;
   transcript: string;
@@ -327,12 +365,15 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   for (const clip of genPlan.clips) {
     const p = path.join(outdir, `${clip.assetKey}.mp3`);
     const issues: string[] = [];
+    const voices = new Set(clip.segments.map((s) => s.voiceId));
+    const rowVoice = voices.size === 1 ? clip.segments[0].voiceId : "mixed";
+    const rowSpeaker = voices.size === 1 ? clip.segments[0].speaker : null;
     if (!existsSync(p)) {
       rows.push({
         clipId: clip.clipId,
         assetKey: clip.assetKey,
-        voiceId: clip.voiceId,
-        speaker: clip.speaker,
+        voiceId: rowVoice,
+        speaker: rowSpeaker,
         transcript: clip.text,
         durationSec: 0,
         bytes: 0,
@@ -363,8 +404,8 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
     rows.push({
       clipId: clip.clipId,
       assetKey: clip.assetKey,
-      voiceId: clip.voiceId,
-      speaker: clip.speaker,
+      voiceId: rowVoice,
+      speaker: rowSpeaker,
       transcript: clip.text,
       durationSec: Number(duration.toFixed(3)),
       bytes,
@@ -420,6 +461,13 @@ const cmd = process.argv[2];
 if (cmd === "recon") recon(arg("downloads") ?? fail("--downloads required"));
 else if (cmd === "verify") verify(arg("downloads") ?? fail("--downloads required"));
 else if (cmd === "plan") plan(arg("mode") ?? fail("--mode required"), arg("out") ?? fail("--out required"));
+else if (cmd === "synth-script")
+  synthScript(
+    arg("plan") ?? fail("--plan required"),
+    arg("dl") ?? fail("--dl required"),
+    arg("wav") ?? fail("--wav required"),
+    arg("out") ?? fail("--out required")
+  );
 else if (cmd === "qa")
   qa(
     arg("plan") ?? fail("--plan required"),
