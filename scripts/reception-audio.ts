@@ -110,7 +110,12 @@ function licenseGateCheck(manifest: Manifest, voiceId: string, cardText: string)
       );
     }
   }
-  const hit = allow.find((ok) => haystack.toLowerCase().includes(ok.toLowerCase()));
+  // Spelling-normalized allow match: "CC BY 4.0" == "CC-BY 4.0" ==
+  // "CC-BY-4.0" (the siwis card writes "CC-BY 4.0" — verified from the
+  // double-downloaded card). Deny stayed boundary-based on the RAW lines
+  // above, so CC-BY-NC still fails before ever reaching this.
+  const norm = (x: string) => x.toLowerCase().replace(/[-\s]+/g, "");
+  const hit = allow.find((ok) => norm(haystack).includes(norm(ok)));
   if (!hit) {
     fail(
       `${voiceId}: license/dataset line matches no allowed license (${allow.join(", ")}); saw: ${haystack.replace(/\n/g, " | ")} — failing closed (P7 §37)`
