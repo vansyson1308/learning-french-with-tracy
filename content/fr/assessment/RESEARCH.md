@@ -59,6 +59,9 @@ Keys name the CEFR scale consulted; they are references, not quotations.
 | `cefr-cv-2020:understanding-conversation` | Understanding conversation between other speakers (Phase 7) |
 | `cefr-cv-2020:reading-correspondence` | Reading correspondence / short messages (Phase 7) |
 | `cefr-cv-2020:reading-orientation` | Reading for orientation — signs, notices (Phase 7) |
+| `cefr-cv-2020:overall-oral-production` | Overall oral production (Phase 8; incl. Pre-A1 band) |
+| `cefr-cv-2020:sustained-monologue-describing` | Sustained monologue: describing experience (Phase 8) |
+| `cefr-cv-2020:sustained-monologue-giving-information` | Sustained monologue: giving information (Phase 8) |
 
 ## Descriptor paraphrase policy (§10, §141)
 

@@ -48,6 +48,10 @@ export const CEFR_SOURCE_REFS: readonly string[] = [
   "cefr-cv-2020:understanding-conversation",
   "cefr-cv-2020:reading-correspondence",
   "cefr-cv-2020:reading-orientation",
+  // Phase-8 oral-production scales (documented in RESEARCH.md §Phase-8 additions)
+  "cefr-cv-2020:overall-oral-production",
+  "cefr-cv-2020:sustained-monologue-describing",
+  "cefr-cv-2020:sustained-monologue-giving-information",
 ];
 
 export function loadCourseObjectives(): CourseObjectives {
