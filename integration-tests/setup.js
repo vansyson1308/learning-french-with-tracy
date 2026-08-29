@@ -28,6 +28,55 @@ jest.mock("expo-audio", () => ({
   setAudioModeAsync: async () => {},
 }));
 jest.mock("expo-speech", () => ({ speak: jest.fn(), stop: jest.fn() }));
+// Speech recognition (P8): a controllable double of the provider module.
+// Default shape = a capable iOS device with permissions granted; tests
+// mutate `__speechState` and drive events through `__emitSpeechEvent`.
+jest.mock("expo-speech-recognition", () => {
+  const listeners = new Map();
+  const state = {
+    available: true,
+    onDevice: true,
+    recording: true,
+    locales: ["fr-FR"],
+    installedLocales: ["fr-FR"],
+    permission: { granted: true, status: "granted", canAskAgain: true },
+    startCalls: [],
+  };
+  const ExpoSpeechRecognitionModule = {
+    addListener(name, handler) {
+      const list = listeners.get(name) ?? [];
+      list.push(handler);
+      listeners.set(name, list);
+      return {
+        remove() {
+          listeners.set(name, (listeners.get(name) ?? []).filter((h) => h !== handler));
+        },
+      };
+    },
+    start(options) {
+      state.startCalls.push(options);
+    },
+    stop: jest.fn(),
+    abort: jest.fn(),
+    isRecognitionAvailable: () => state.available,
+    supportsOnDeviceRecognition: () => state.onDevice,
+    supportsRecording: () => state.recording,
+    getSupportedLocales: async () => ({
+      locales: state.locales,
+      installedLocales: state.installedLocales,
+    }),
+    getMicrophonePermissionsAsync: async () => state.permission,
+    getSpeechRecognizerPermissionsAsync: async () => state.permission,
+    requestPermissionsAsync: async () => state.permission,
+  };
+  return {
+    ExpoSpeechRecognitionModule,
+    __speechState: state,
+    __emitSpeechEvent: (name, payload) => {
+      for (const handler of [...(listeners.get(name) ?? [])]) handler(payload);
+    },
+  };
+});
 jest.mock("expo-haptics", () => ({
   impactAsync: async () => {},
   notificationAsync: async () => {},

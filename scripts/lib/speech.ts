@@ -8,8 +8,12 @@
 
 import { existsSync } from "fs";
 
+import { z } from "zod";
+
 import {
   SPEECH_PRACTICE_ELICITATIONS,
+  SpeakProductionExerciseSchema,
+  SpeakRepetitionExerciseSchema,
   SpeechItemsSchema,
   type CourseObjectives,
   type Listening,
@@ -64,11 +68,45 @@ function exposesFrench(promptText: string, frenchAnswer: string): boolean {
   return false;
 }
 
+type SpeakRepetitionExercise = z.infer<typeof SpeakRepetitionExerciseSchema>;
+type SpeakProductionExercise = z.infer<typeof SpeakProductionExerciseSchema>;
+
+/** Minimal pack shape for the exercise cross-checks (schema-validated upstream). */
+export type FrPackForSpeech = {
+  sections: {
+    units: { lessons: { exercises: ({ type: string; id: string } & Record<string, unknown>)[] }[] }[];
+  }[];
+};
+
+function packSpeechExercises(
+  pack: FrPackForSpeech
+): (SpeakRepetitionExercise | SpeakProductionExercise)[] {
+  const found: (SpeakRepetitionExercise | SpeakProductionExercise)[] = [];
+  for (const section of pack.sections) {
+    for (const unit of section.units) {
+      for (const lesson of unit.lessons) {
+        for (const exercise of lesson.exercises) {
+          if (exercise.type === "speakRepetition") {
+            found.push(exercise as unknown as SpeakRepetitionExercise);
+          } else if (exercise.type === "speakProduction") {
+            found.push(exercise as unknown as SpeakProductionExercise);
+          }
+        }
+      }
+    }
+  }
+  return found;
+}
+
+const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+
 export function validateSpeech(input: {
   speech: SpeechItems | null;
   objectives: CourseObjectives | null;
   listening: Listening | null;
   lexemeIds: Set<string>;
+  /** When provided, embedded speech-exercise fields must mirror the items. */
+  frPack?: FrPackForSpeech;
 }): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -162,6 +200,70 @@ export function validateSpeech(input: {
     }
     if (item.modelAudioRef !== null && input.listening !== null && !knownClips.has(item.modelAudioRef)) {
       err(`${item.id}: modelAudioRef ${item.modelAudioRef} resolves to no listening clip`);
+    }
+  }
+
+  // --- pack exercises must mirror their items exactly (single source of
+  // truth stays the item; embedded runtime copies cannot drift) -----------
+  if (input.frPack) {
+    const itemById = new Map(input.speech.items.map((entry) => [entry.id, entry]));
+    for (const exercise of packSpeechExercises(input.frPack)) {
+      const item = itemById.get(exercise.speechItemId);
+      if (!item) {
+        err(`${exercise.id}: unknown speech item ${exercise.speechItemId}`);
+        continue;
+      }
+      if (item.reserved) {
+        // §20: checkpoint-reserved prompts never appear as teaching or
+        // practice stimuli anywhere in the course path.
+        err(`${exercise.id}: speech item ${item.id} is RESERVED for assessment`);
+      }
+      if (!same(exercise.target, item.target)) {
+        err(`${exercise.id}: target differs from item ${item.id}`);
+      }
+      if (!same(exercise.acceptedVariants, item.acceptedVariants)) {
+        err(`${exercise.id}: acceptedVariants differ from item ${item.id}`);
+      }
+      if (!same(exercise.requiredConcepts, item.requiredConcepts)) {
+        err(`${exercise.id}: requiredConcepts differ from item ${item.id}`);
+      }
+      if (exercise.type === "speakRepetition") {
+        if (item.elicitationType !== "repetition") {
+          err(
+            `${exercise.id}: speakRepetition must reference a repetition item, got ${item.elicitationType}`
+          );
+        }
+        if (item.modelAudioRef === null || exercise.modelClipId !== item.modelAudioRef) {
+          err(`${exercise.id}: modelClipId must equal item ${item.id} modelAudioRef`);
+        }
+      } else {
+        if (isPracticeElicitation(item)) {
+          err(
+            `${exercise.id}: speakProduction must reference a production item, got ${item.elicitationType}`
+          );
+        }
+        if (!same(exercise.instruction, item.prompt.instruction)) {
+          err(`${exercise.id}: instruction differs from item ${item.id}`);
+        }
+        if (!same(exercise.cueEmoji, item.prompt.cueEmoji)) {
+          err(`${exercise.id}: cueEmoji differs from item ${item.id}`);
+        }
+        if (!same(exercise.cueFacts, item.prompt.cueFacts)) {
+          err(`${exercise.id}: cueFacts differ from item ${item.id}`);
+        }
+        if (exercise.revealTargetAfterAttempts !== item.assistancePolicy.revealTargetAfterAttempts) {
+          err(`${exercise.id}: revealTargetAfterAttempts differs from item ${item.id}`);
+        }
+        if (exercise.allowContextualBias !== item.assistancePolicy.allowContextualBias) {
+          err(`${exercise.id}: allowContextualBias differs from item ${item.id}`);
+        }
+        if (!same(exercise.modelClipId, item.modelAudioRef)) {
+          err(`${exercise.id}: modelClipId differs from item ${item.id} modelAudioRef`);
+        }
+        if (exercise.allowedAttempts !== item.allowedAttempts) {
+          err(`${exercise.id}: allowedAttempts differs from item ${item.id}`);
+        }
+      }
     }
   }
 

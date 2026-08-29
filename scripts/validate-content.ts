@@ -1,4 +1,6 @@
 /** CI entry: schema + rule + provenance validation of the content sources. */
+import { readFileSync } from "fs";
+
 import { loadCourseObjectives, validateAssessment } from "./lib/assessment";
 import { loadRichLexicon, validateLexicon } from "./lib/lexicon";
 import { validatePedagogy } from "./lib/pedagogy";
@@ -17,7 +19,7 @@ try {
     listening: loadListening(),
     objectives: loadCourseObjectives(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
-    frPack: JSON.parse(require("fs").readFileSync("content/courses/fr-en.json", "utf8")),
+    frPack: JSON.parse(readFileSync("content/courses/fr-en.json", "utf8")),
   });
 } catch (e) {
   reception = {
@@ -32,6 +34,7 @@ try {
     objectives: loadCourseObjectives(),
     listening: loadListening(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
+    frPack: JSON.parse(readFileSync("content/courses/fr-en.json", "utf8")),
   });
 } catch (e) {
   speech = {
@@ -61,4 +64,4 @@ if (errors.length > 0) {
   console.error(`\ncontent validation failed with ${errors.length} error(s)`);
   process.exit(1);
 }
-console.log("content validation passed (packs + registry + rich lexicon + pedagogy + assessment + reception)");
+console.log("content validation passed (packs + registry + rich lexicon + pedagogy + assessment + reception + speech)");

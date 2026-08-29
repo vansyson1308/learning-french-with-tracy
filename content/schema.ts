@@ -197,6 +197,51 @@ export const DictationExerciseSchema = z.strictObject({
   objectiveTargets,
 });
 
+/**
+ * Speak-after-the-model PRACTICE (P8 §11): the model clip is the stimulus,
+ * the French is visible, and the recognized transcript is feedback only —
+ * NEVER spoken-production evidence. Grading fields are embedded from the
+ * referenced speech item; the speech validator enforces byte-equality.
+ */
+export const SpeakRepetitionExerciseSchema = z.strictObject({
+  type: z.literal("speakRepetition"),
+  id,
+  speechItemId: z.string().regex(/^fr\.speak\.[a-z0-9_]+$/),
+  modelClipId: z.string().regex(/^fr\.clip\.[a-z0-9_]+$/),
+  target: z.string().min(1),
+  acceptedVariants: z.array(z.string().min(1)).min(1),
+  requiredConcepts: z.array(z.array(z.string().min(1)).min(1)).min(1).optional(),
+  objectiveTargets,
+});
+
+/**
+ * Elicited spoken PRODUCTION (P8 §11): a meaning-only cue (English
+ * instruction, emoji, facts), the French target never exposed before the
+ * attempt, deterministic grading of what the recognizer heard.
+ */
+export const SpeakProductionExerciseSchema = z.strictObject({
+  type: z.literal("speakProduction"),
+  id,
+  speechItemId: z.string().regex(/^fr\.speak\.[a-z0-9_]+$/),
+  instruction: z.string().min(1),
+  cueEmoji: z.string().min(1).optional(),
+  cueFacts: z
+    .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+    .min(1)
+    .optional(),
+  target: z.string().min(1),
+  acceptedVariants: z.array(z.string().min(1)).min(1),
+  requiredConcepts: z.array(z.array(z.string().min(1)).min(1)).min(1).optional(),
+  /** Learning mode may reveal the target after N non-matching recordings. */
+  revealTargetAfterAttempts: z.number().int().min(1).max(5).nullable(),
+  allowContextualBias: z.boolean(),
+  /** Learning-mode model answer, played only AFTER a graded attempt. */
+  modelClipId: z.string().regex(/^fr\.clip\.[a-z0-9_]+$/).nullable(),
+  /** Scored recording attempts before the step must resolve. */
+  allowedAttempts: z.number().int().min(1).max(3),
+  objectiveTargets,
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
@@ -208,6 +253,8 @@ export const ExerciseSchema = z.discriminatedUnion("type", [
   ListeningComprehensionExerciseSchema,
   ReadingComprehensionExerciseSchema,
   DictationExerciseSchema,
+  SpeakRepetitionExerciseSchema,
+  SpeakProductionExerciseSchema,
 ]);
 
 /** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */

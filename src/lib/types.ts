@@ -150,6 +150,45 @@ export type DictationExercise = {
   objectiveTargets?: string[];
 };
 
+/**
+ * Speak-after-the-model PRACTICE (P8 §11): model clip is the stimulus, the
+ * French is visible, the recognized transcript is feedback only — NEVER
+ * spoken-production evidence, and no gradeTargets by design.
+ */
+export type SpeakRepetitionExercise = {
+  type: "speakRepetition";
+  id: string;
+  speechItemId: string;
+  modelClipId: string;
+  target: string;
+  acceptedVariants: string[];
+  requiredConcepts?: string[][];
+  objectiveTargets?: string[];
+};
+
+/**
+ * Elicited spoken PRODUCTION (P8 §11): meaning-only cue, the French target
+ * never exposed before the attempt, deterministic grading of what the
+ * recognizer heard (§12). Grading fields mirror the authored speech item
+ * (pipeline-enforced).
+ */
+export type SpeakProductionExercise = {
+  type: "speakProduction";
+  id: string;
+  speechItemId: string;
+  instruction: string;
+  cueEmoji?: string;
+  cueFacts?: { label: string; value: string }[];
+  target: string;
+  acceptedVariants: string[];
+  requiredConcepts?: string[][];
+  revealTargetAfterAttempts: number | null;
+  allowContextualBias: boolean;
+  modelClipId: string | null;
+  allowedAttempts: number;
+  objectiveTargets?: string[];
+};
+
 export type Exercise =
   | SelectExercise
   | WordBankExercise
@@ -160,7 +199,9 @@ export type Exercise =
   | ConjugationClozeExercise
   | ListeningComprehensionExercise
   | ReadingComprehensionExercise
-  | DictationExercise;
+  | DictationExercise
+  | SpeakRepetitionExercise
+  | SpeakProductionExercise;
 
 /**
  * Optional explicit lesson flow (Phase 5B): ordered interleaving of

@@ -148,6 +148,43 @@ describe("requiredConcepts slot grading (information-giving tasks)", () => {
   });
 });
 
+describe("session grading dispatch (checkAnswer over SpokenAnswer)", () => {
+  const exercise: import("../types").SpeakProductionExercise = {
+    type: "speakProduction",
+    id: "x",
+    speechItemId: "fr.speak.x",
+    instruction: "Say that you would like a coffee.",
+    target: "Je voudrais un café",
+    acceptedVariants: ["Je voudrais un café"],
+    revealTargetAfterAttempts: null,
+    allowContextualBias: false,
+    modelClipId: null,
+    allowedAttempts: 2,
+  };
+  const spokenAnswer = (finalTranscript: string) => ({
+    spoken: true as const,
+    finalTranscript,
+    alternatives: [],
+    assisted: false,
+  });
+
+  test("a spoken answer grades through the deterministic grader", async () => {
+    const { answerIsReady, checkAnswer, correctAnswerText } = await import("../grading");
+    expect(checkAnswer(exercise, spokenAnswer("je voudrais un café !"))).toBe(true);
+    expect(checkAnswer(exercise, spokenAnswer("je voudrais un thé"))).toBe(false);
+    expect(correctAnswerText(exercise)).toBe("Je voudrais un café");
+    expect(answerIsReady(exercise, spokenAnswer("bonjour"))).toBe(true);
+  });
+
+  test("non-spoken answer shapes are never ready and never pass", async () => {
+    const { answerIsReady, checkAnswer } = await import("../grading");
+    for (const bad of [null, 0, "je voudrais un café", [1, 2]] as const) {
+      expect(answerIsReady(exercise, bad as never)).toBe(false);
+      expect(checkAnswer(exercise, bad as never)).toBe(false);
+    }
+  });
+});
+
 describe("determinism and honesty", () => {
   test("grading is a pure function of transcripts and spec", () => {
     const grading = spec(["bonjour"], [["bonjour"]]);
