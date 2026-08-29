@@ -8,7 +8,13 @@
  */
 /* eslint-disable no-undef */
 const React = require("react");
-const { View, Text, Image, ScrollView } = require("react-native");
+
+// react-native is required LAZILY: expo-router/testing-library's own
+// jest.mock factory for reanimated evaluates this file mid-import-chain,
+// where an eager react-native require can throw and silently downgrade the
+// whole module to {} (their factory catch). Deferring the require to first
+// render keeps the factory safe.
+const RN = () => require("react-native");
 
 const id = (v) => v;
 const chainable = () => {
@@ -20,22 +26,31 @@ const chainable = () => {
 };
 
 const AnimatedView = React.forwardRef((props, ref) =>
-  React.createElement(View, { ...props, ref })
+  React.createElement(RN().View, { ...props, ref })
 );
 AnimatedView.displayName = "Animated.View";
 const AnimatedText = React.forwardRef((props, ref) =>
-  React.createElement(Text, { ...props, ref })
+  React.createElement(RN().Text, { ...props, ref })
 );
 AnimatedText.displayName = "Animated.Text";
+const AnimatedImage = React.forwardRef((props, ref) =>
+  React.createElement(RN().Image, { ...props, ref })
+);
+AnimatedImage.displayName = "Animated.Image";
+const AnimatedScrollView = React.forwardRef((props, ref) =>
+  React.createElement(RN().ScrollView, { ...props, ref })
+);
+AnimatedScrollView.displayName = "Animated.ScrollView";
 
 module.exports = {
   __esModule: true,
   default: {
     View: AnimatedView,
     Text: AnimatedText,
-    Image,
-    ScrollView,
+    Image: AnimatedImage,
+    ScrollView: AnimatedScrollView,
     createAnimatedComponent: (C) => C,
+    call: () => {},
   },
   useSharedValue: (init) => {
     const box = { value: init };

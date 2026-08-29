@@ -8,7 +8,22 @@ jest.mock("@react-native-async-storage/async-storage", () =>
   require("@react-native-async-storage/async-storage/jest/async-storage-mock")
 );
 jest.mock("expo-audio", () => ({
-  useAudioPlayer: () => ({ seekTo: jest.fn(), play: jest.fn(), replace: jest.fn() }),
+  useAudioPlayer: () => ({
+    seekTo: jest.fn(),
+    play: jest.fn(),
+    pause: jest.fn(),
+    replace: jest.fn(),
+    setPlaybackRate: jest.fn(),
+  }),
+  // Static status: the pure listening-player machine is fully covered by
+  // unit tests; here the adapter only needs a stable non-playing status.
+  useAudioPlayerStatus: () => ({
+    playing: false,
+    didJustFinish: false,
+    currentTime: 0,
+    duration: 1.2,
+    isLoaded: true,
+  }),
   createAudioPlayer: () => ({ seekTo: jest.fn(), play: jest.fn(), replace: jest.fn(), remove: jest.fn() }),
   setAudioModeAsync: async () => {},
 }));
