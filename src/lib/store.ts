@@ -363,6 +363,12 @@ export const useProgress = create<ProgressState>()(
         const fr = state.courses[FR_COURSE_ID];
         const current = fr?.cards?.[entry.cardKey];
         if (!fr || !current || !entry.mutation) return false;
+        // Integrity guard: only roll back the exact card this mutation
+        // produced (its last_review IS the entry timestamp). A log entry
+        // whose key resolves to some other card — e.g. a pre-fix entry
+        // written under the wrong skill — is refused, never "restored"
+        // onto a card the review never touched.
+        if (current.last_review !== entry.at) return false;
         const restored = fsrsScheduler.rollback(current, {
           grade: entry.mutation.grade,
           at: entry.at,

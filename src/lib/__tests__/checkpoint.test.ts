@@ -185,6 +185,44 @@ describe("scoring (§61-64)", () => {
     ]);
   });
 
+  test("skipped items are excluded from every denominator (P8 §20): device states never become learner evidence", () => {
+    // A learner skipped i2/i3 (e.g. a speak step behind a blocked mic) and
+    // i6 entirely: skips reach the scorer as ABSENT firstResults entries.
+    const firstResults = { i1: true, i4: true, i5: false };
+    const results = scoreObjectives(plan, firstResults);
+    expect(results).toEqual([
+      // fr.obj.a.x drained below the 2-item floor by skips → insufficient
+      // evidence, never needs_practice (the skip is not a wrong answer).
+      { objectiveId: "fr.obj.a.x", result: "insufficient_evidence", correct: 1, total: 1 },
+      { objectiveId: "fr.obj.b.y", result: "needs_practice", correct: 1, total: 2 },
+      // fr.obj.c.z fully skipped → no result minted at all: absence of
+      // evidence, not evidence of absence.
+    ]);
+    expect(results.find((r) => r.objectiveId === "fr.obj.c.z")).toBeUndefined();
+
+    const attempt = buildCheckpointAttempt({
+      plan,
+      firstResults,
+      startedAt: 0,
+      completedAt: 1,
+    });
+    // Skipped steps never appear as itemResults and never dilute or inflate
+    // the overall share: 2 correct of 3 SCORED, not of 6 planned.
+    expect(attempt.itemResults.map((r) => r.itemId)).toEqual(["i1", "i4", "i5"]);
+    expect(attempt.overallCorrectShare).toBeCloseTo(2 / 3);
+  });
+
+  test("a skip in a scored session lands in skipped, not firstResults — the scorer never sees it", () => {
+    let state = start([exerciseStep("a"), exerciseStep("b")], "none");
+    state = sessionReducer(state, { type: "skip" });
+    state = sessionReducer(state, { type: "answer", value: 0 });
+    state = sessionReducer(state, { type: "check" });
+    state = sessionReducer(state, { type: "continue" });
+    expect(state.finished).toBe(true);
+    expect(state.skipped).toEqual({ a: true });
+    expect(state.firstResults).toEqual({ b: true });
+  });
+
   test("buildCheckpointAttempt records first-attempt items and the overall share", () => {
     const attempt = buildCheckpointAttempt({
       plan,

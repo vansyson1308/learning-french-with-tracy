@@ -123,6 +123,40 @@ export function shouldRunStage(
   return true;
 }
 
+export type StageAdvance =
+  | { kind: "run"; stageIndex: number; answers: PlacementAnswers }
+  | { kind: "finished"; answers: PlacementAnswers };
+
+/**
+ * Next RUNNABLE stage strictly after `fromIndex` (P8 §22): a stage that
+ * needs scored speech on a device that cannot administer it is never run —
+ * its items are auto-marked "speech_unavailable" (so its clusters resolve
+ * not_estimated, transparently) and the walk continues. Pure: the placement
+ * runner delegates here so the skip loop is deterministic and testable.
+ */
+export function advanceToNextStage(
+  plan: PlacementPlanContent,
+  fromIndex: number,
+  answers: PlacementAnswers,
+  /** Per-stage: does stage i contain scored speech items? */
+  speechStages: readonly boolean[],
+  speechEligible: boolean
+): StageAdvance {
+  let next = fromIndex + 1;
+  const current = { ...answers };
+  while (next < plan.stages.length && shouldRunStage(plan, next, current)) {
+    if (speechStages[next] && !speechEligible) {
+      for (const cluster of plan.stages[next].clusters) {
+        for (const id of cluster.itemIds) current[id] = "speech_unavailable";
+      }
+      next += 1;
+      continue;
+    }
+    return { kind: "run", stageIndex: next, answers: current };
+  }
+  return { kind: "finished", answers: current };
+}
+
 export type PlacementRecommendation = {
   recommendedLessonId: string;
   clusterOutcomes: ClusterOutcome[];

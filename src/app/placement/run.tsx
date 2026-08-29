@@ -13,10 +13,10 @@ import { PlacementResults } from "@/components/assessment/placement-results";
 import { SessionScreen } from "@/components/session/session-screen";
 import { placementContent, placementEnginePlan } from "@/lib/assessment/content";
 import {
+  advanceToNextStage,
   answersFromSession,
   buildPlacementResult,
   recommendPlacement,
-  shouldRunStage,
   type PlacementAnswers,
 } from "@/lib/assessment/placement";
 import { useCourseContent } from "@/lib/content";
@@ -65,17 +65,6 @@ function stageNeedsSpeech(stage: ReturnType<typeof placementContent>["stages"][n
   );
 }
 
-/** Every item of a stage marked speech-unavailable (§22: never administered). */
-function speechUnavailableAnswers(
-  stage: ReturnType<typeof placementContent>["stages"][number]
-): PlacementAnswers {
-  const out: PlacementAnswers = {};
-  for (const cluster of stage.clusters) {
-    for (const item of cluster.items) out[item.id] = "speech_unavailable";
-  }
-  return out;
-}
-
 /**
  * Rendered by SessionScreen when a stage finishes; merges the stage's
  * answers upward exactly once (an effect, never during render).
@@ -121,27 +110,19 @@ export default function PlacementRunScreen() {
     };
   }, []);
 
+  const speechStages = useMemo(() => plan.stages.map(stageNeedsSpeech), [plan]);
+
   /**
    * Advance to the next RUNNABLE stage from `index` with `merged` answers:
    * speech stages an incapable device cannot administer are auto-marked
-   * and passed over; when nothing remains, the run is finished.
+   * and passed over (pure logic in advanceToNextStage, P8 §22); when
+   * nothing remains, the run is finished.
    */
   const advanceFrom = (index: number, merged: PlacementAnswers) => {
-    let next = index + 1;
-    let current = { ...merged };
-    while (next < plan.stages.length && shouldRunStage(enginePlan, next, current)) {
-      const candidate = plan.stages[next];
-      if (stageNeedsSpeech(candidate) && !speechEligible) {
-        current = { ...current, ...speechUnavailableAnswers(candidate) };
-        next += 1;
-        continue;
-      }
-      setAnswers(current);
-      setStageIndex(next);
-      return;
-    }
-    setAnswers(current);
-    setFinished(true);
+    const step = advanceToNextStage(enginePlan, index, merged, speechStages, speechEligible);
+    setAnswers(step.answers);
+    if (step.kind === "run") setStageIndex(step.stageIndex);
+    else setFinished(true);
   };
 
   const stage = plan.stages[stageIndex];

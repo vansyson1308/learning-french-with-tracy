@@ -9,6 +9,7 @@ import { describe, expect, test } from "bun:test";
 
 import { placementContent, placementEnginePlan } from "../assessment/content";
 import {
+  advanceToNextStage,
   answersFromSession,
   buildPlacementResult,
   evaluateClusters,
@@ -193,6 +194,83 @@ describe("engine personas (§148)", () => {
     expect(JSON.stringify(a)).toBe(JSON.stringify(b));
     expect(a.placementVersion).toBe(3);
     expect(a.recommendedLessonId).toBe("fr-en:u1-l0");
+  });
+});
+
+describe("stage advance with capability gating (P8 §22)", () => {
+  // The real plan's one speech stage is the last (production).
+  const SPEECH_STAGES = CONTENT.stages.map((s) =>
+    s.clusters.some((c) =>
+      c.items.some(
+        (i) =>
+          i.exercise.type === "speakProduction" || i.exercise.type === "speakRepetition"
+      )
+    )
+  );
+
+  test("the compiled plan gates exactly the production stage behind speech", () => {
+    expect(SPEECH_STAGES).toEqual([false, false, false, true]);
+  });
+
+  test("a capable device RUNS the production stage after comfortable reception", () => {
+    const step = advanceToNextStage(PLAN, 2, allCorrect(0, 1, 2), SPEECH_STAGES, true);
+    expect(step).toEqual({ kind: "run", stageIndex: 3, answers: allCorrect(0, 1, 2) });
+  });
+
+  test("an incapable device never administers production: auto-marked, finished, not_estimated", () => {
+    const step = advanceToNextStage(PLAN, 2, allCorrect(0, 1, 2), SPEECH_STAGES, false);
+    expect(step.kind).toBe("finished");
+    for (const cluster of PLAN.stages[3].clusters) {
+      for (const id of cluster.itemIds) {
+        expect(step.answers[id]).toBe("speech_unavailable");
+      }
+    }
+    // …and the engine outcome downstream is transparent, never lowered.
+    const rec = recommendPlacement(PLAN, step.answers);
+    expect(rec.allComfortable).toBe(true);
+    expect(rec.hasNotEstimated).toBe(true);
+    expect(rec.recommendedLessonId).toBe("fr-en:un-l0");
+  });
+
+  test("a gap before the production stage finishes WITHOUT touching speech items", () => {
+    const answers = allCorrect(0);
+    answers["fr.pli.s1.polite"] = false;
+    const step = advanceToNextStage(PLAN, 0, answers, SPEECH_STAGES, false);
+    expect(step.kind).toBe("finished");
+    for (const cluster of PLAN.stages[3].clusters) {
+      for (const id of cluster.itemIds) {
+        expect(step.answers[id]).toBeUndefined(); // never reached, never marked
+      }
+    }
+  });
+
+  test("an auto-marked speech stage halts the strict ladder — later stages stay unprobed (synthetic)", () => {
+    // §73's ladder runs a stage only when EVERY earlier cluster is
+    // comfortable; a not_estimated speech stage therefore ends the walk.
+    // The same rule already governs audio skips (the P7 pins below): the
+    // learner is never probed past un-estimated ground, and the floor's
+    // all-comfortable anchor only OPENS lessons, so nothing is lost.
+    const synthetic = {
+      placementVersion: 3,
+      maxItems: 10,
+      allComfortableLessonId: "fr-en:zz-l0",
+      stages: [
+        { id: "s0", title: "t", clusters: [{ id: "c0", objectiveId: "o0", anchorLessonId: "a0", itemIds: ["i0"] }] },
+        { id: "s1", title: "t", clusters: [{ id: "c1", objectiveId: "o1", anchorLessonId: "a1", itemIds: ["i1"] }] },
+        { id: "s2", title: "t", clusters: [{ id: "c2", objectiveId: "o2", anchorLessonId: "a2", itemIds: ["i2"] }] },
+      ],
+    };
+    const step = advanceToNextStage(synthetic, 0, { i0: true }, [false, true, true], false);
+    expect(step.kind).toBe("finished");
+    expect(step.answers.i1).toBe("speech_unavailable");
+    expect(step.answers.i2).toBeUndefined(); // ladder halted; never probed, never marked
+  });
+
+  test("the walk is pure: the caller's answers object is never mutated", () => {
+    const answers = allCorrect(0, 1, 2);
+    const before = JSON.stringify(answers);
+    advanceToNextStage(PLAN, 2, answers, SPEECH_STAGES, false);
+    expect(JSON.stringify(answers)).toBe(before);
   });
 });
 

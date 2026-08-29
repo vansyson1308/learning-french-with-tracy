@@ -166,6 +166,24 @@ describe("silence vs wrong vs broken (§9, §14)", () => {
     expect(s.outcome).toEqual({ kind: "no_speech" });
   });
 
+  test("stop twice is a no-op: the second tap changes nothing (red-team #7)", () => {
+    const once = seq(initialAttemptState(ATTEMPT), started, { type: "stopRequested" });
+    const twice = seq(once, { type: "stopRequested" });
+    expect(twice).toBe(once); // same object — the reducer returned state untouched
+    // …and stop after a terminal outcome cannot resurrect the attempt.
+    const done = seq(once, { type: "final", result: result("bonjour") }, { type: "stopRequested" });
+    expect(done.phase).toBe("finalized");
+    expect(done.outcome?.kind).toBe("final");
+  });
+
+  test("a network failure is technical — never a grade, never silence (red-team #14)", () => {
+    const s = seq(initialAttemptState(ATTEMPT), started, {
+      type: "error",
+      code: "network",
+    });
+    expect(s.outcome).toEqual({ kind: "technical", reason: "network_failed" });
+  });
+
   test("a recognized-but-wrong answer stays a final (grading happens later)", () => {
     const s = seq(initialAttemptState(ATTEMPT), started, {
       type: "final",
