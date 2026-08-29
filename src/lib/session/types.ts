@@ -4,6 +4,7 @@
  * policies explicit instead of encoding them in magic route strings.
  */
 
+import type { Skill } from "../learning/card-key";
 import type { EvidenceSource, SrsRole } from "../learning/evidence";
 import type { Exercise, Word } from "../types";
 
@@ -30,6 +31,8 @@ export type StepEvidencePlan = {
   itemId: string;
   /** Planner-designated role for the FIRST attempt at this step. */
   srsRole: SrsRole;
+  /** Card skill dimension; omitted means "recognize" (pre-Phase-7 shape). */
+  skill?: Skill;
 };
 
 export type ExerciseStep = {

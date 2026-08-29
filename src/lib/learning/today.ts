@@ -18,7 +18,13 @@
 import { dayString } from "../dates";
 import { hashSeed, seededRng } from "../review-builder";
 import type { ExerciseStep, SessionStep, TeachStep } from "../session/types";
-import type { MatchExercise, Pack, SelectExercise, Word } from "../types";
+import type {
+  ListeningComprehensionExercise,
+  MatchExercise,
+  Pack,
+  SelectExercise,
+  Word,
+} from "../types";
 
 import { pickDistractors } from "./distractors";
 import { dueFrenchReviewQueue } from "./engine";
@@ -55,21 +61,35 @@ export type TodayPlanInput = {
    * placement-cleared: open for review, never the frontier. 0 = no floor.
    */
   placementFloor?: number;
+  /**
+   * Sessionable listen-card stimuli (P7 §134-137): itemId → clipId for
+   * lexemes whose single-word clip has a bundled asset. Passed in (never
+   * read here) so the composer stays pure; empty/omitted disables the
+   * listening share entirely — exactly the pre-Phase-7 plan.
+   */
+  listenClips?: Record<string, string>;
 };
 
 export type TodayPlan = {
   steps: SessionStep[];
-  /** Warm-up reviews included in this session. */
+  /** Warm-up reviews included in this session (listening included). */
   reviewCount: number;
+  /** Listening reviews among reviewCount (bounded share, P7 §135). */
+  listenCount: number;
   /** New words taught (each = teach + immediate assessment). */
   newCount: number;
-  /** All currently due cards, before budgeting. */
+  /** All currently due cards, before budgeting (both skills). */
   backlogTotal: number;
   /** Due cards that did NOT fit this session's budget. */
   backlogRemaining: number;
   /** Honest estimate from the actual composed step count. */
   estimatedMinutes: number;
 };
+
+/** Listening's bounded slice of the review budget: at most a third (§135). */
+export function todayListenBudget(reviewBudget: number): number {
+  return Math.floor(reviewBudget / 3);
+}
 
 type Item = { itemId: string; word: Word };
 
@@ -184,12 +204,16 @@ export function composeTodayFromSnapshot(args: {
   cards: Record<string, FsrsCardState> | undefined;
   preset: TodayPreset;
   placementFloor?: number;
+  listenClips?: Record<string, string>;
   day?: string;
   now?: number;
 }): TodayPlan {
   const now = args.now ?? Date.now();
   const day = args.day ?? dayString(new Date(now));
-  const dueKeys = dueFrenchReviewQueue(args.cards, now)
+  const dueKeys = [
+    ...dueFrenchReviewQueue(args.cards, now),
+    ...dueFrenchReviewQueue(args.cards, now, "listen"),
+  ]
     .map((d) => `${d.key}@${d.dueAt}`)
     .join(",");
   const frontier = pathFrontierLesson(args.pack, args.completedLessons, args.placementFloor ?? 0);
@@ -198,6 +222,7 @@ export function composeTodayFromSnapshot(args: {
     pack: args.pack,
     completedLessons: args.completedLessons,
     cards: args.cards,
+    listenClips: args.listenClips,
     preset: args.preset,
     seed,
     now,
@@ -213,10 +238,25 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   const steps: SessionStep[] = [];
 
   // ---- 1. WARM-UP: most at-risk due cards, capped by budget only --------
+  // Listening takes a BOUNDED share (≤ a third, P7 §135): reading recall
+  // stays the session's core, and a listener without working audio loses at
+  // most that slice (each listening step also carries the skip escape).
+  const listenClips = input.listenClips ?? {};
+  const listenQueue = dueFrenchReviewQueue(input.cards, input.now, "listen").filter(
+    (d) => listenClips[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
+  );
+  const listenItems: Item[] = [];
+  for (const due of listenQueue) {
+    if (listenItems.length >= todayListenBudget(budgets.review)) break;
+    const word = wordBySurface.get(due.surface);
+    if (!word) continue;
+    listenItems.push({ itemId: due.key.slice(0, due.key.lastIndexOf("|")), word });
+  }
+
   const dueQueue = dueFrenchReviewQueue(input.cards, input.now);
   const warmupItems: Item[] = [];
   for (const due of dueQueue) {
-    if (warmupItems.length >= budgets.review) break;
+    if (warmupItems.length + listenItems.length >= budgets.review) break;
     const word = wordBySurface.get(due.surface);
     if (!word) continue; // unrenderable stays safely in the backlog
     const itemId = due.key.slice(0, due.key.lastIndexOf("|"));
@@ -238,6 +278,34 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
       evidence: { itemId: item.itemId, srsRole: "assessment" },
       phase: "warmup",
     } satisfies ExerciseStep);
+  }
+  let listenCount = 0;
+  for (const item of listenItems) {
+    const distractors = pickDistractors({
+      courseId: FR_COURSE_ID,
+      word: item.word,
+      pool,
+      rng,
+      direction: "targetToNative",
+    }).map((w) => ({ text: w.native }));
+    if (distractors.length === 0) continue;
+    const options = shuffle([{ text: item.word.native }, ...distractors], rng);
+    const exercise: ListeningComprehensionExercise = {
+      type: "listeningComprehension",
+      id: `today-listen-${item.itemId}`,
+      clipId: listenClips[item.itemId],
+      question: "What do you hear?",
+      options,
+      correct: options.findIndex((o) => o.text === item.word.native),
+    };
+    steps.push({
+      type: "exercise",
+      stepId: exercise.id,
+      exercise,
+      evidence: { itemId: item.itemId, skill: "listen", srsRole: "assessment" },
+      phase: "warmup",
+    } satisfies ExerciseStep);
+    listenCount += 1;
   }
   const reviewCount = steps.length;
 
@@ -350,9 +418,13 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   return {
     steps,
     reviewCount,
+    listenCount,
     newCount: newItems.length,
-    backlogTotal: dueQueue.length,
-    backlogRemaining: Math.max(0, dueQueue.length - warmupItems.length),
+    backlogTotal: dueQueue.length + listenQueue.length,
+    backlogRemaining: Math.max(
+      0,
+      dueQueue.length - warmupItems.length + listenQueue.length - listenItems.length
+    ),
     estimatedMinutes:
       steps.length === 0
         ? 0

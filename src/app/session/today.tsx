@@ -13,6 +13,7 @@ import type { TodaySummaryStats } from "@/components/session/session-summary";
 import { courseCapabilities } from "@/lib/capabilities";
 import { useCourseContent } from "@/lib/content";
 import { dueFrenchReviewQueue } from "@/lib/learning/engine";
+import { listenWordClipIndex } from "@/lib/reception/content";
 import {
   composeTodayFromSnapshot,
   TODAY_PRESETS,
@@ -48,6 +49,7 @@ export default function TodaySessionRoute() {
       cards: course?.cards,
       preset,
       placementFloor: state.assessment.placementFloor,
+      listenClips: listenWordClipIndex(),
     });
     return {
       plan,

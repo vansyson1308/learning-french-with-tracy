@@ -17,6 +17,7 @@ import {
 } from "@/lib/learning/engine";
 import { FR_COURSE_ID } from "@/lib/learning/ids-fr";
 import { dueInDaysAt } from "@/lib/srs";
+import { dueListeningReviewCount } from "@/lib/session/sources";
 import { dailyQuests, dueSrsWords, useProgress, type Quest } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -33,6 +34,9 @@ export default function PracticeScreen() {
   const dueCount = isFrench
     ? dueFrenchReviewQueue(courseProgress.cards).length
     : dueSrsWords(courseProgress.srs ?? {}).length;
+  // Listening review (P7 §79-81): due listen cards whose word clip has a
+  // bundled asset. French-only; zero for every other course.
+  const dueListenCount = isFrench ? dueListeningReviewCount(courseProgress.cards) : 0;
   const quests = dailyQuests(progress);
 
   const hasLexicon = courseCapabilities(activeCourseId).lexicon;
@@ -94,6 +98,26 @@ export default function PracticeScreen() {
             onPress={() => router.push("/lesson/srs")}
           />
         </View>
+
+        {isFrench ? (
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Ionicons name="headset" size={24} color={colors.sky} />
+              <Text style={styles.cardTitle}>Listening review</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>
+              {dueListenCount === 0
+                ? "No listening due right now. Meet words by ear in Section 3!"
+                : `${dueListenCount} word${dueListenCount === 1 ? "" : "s"} to recognize by ear.`}
+            </Text>
+            <DuoButton
+              label="Review listening"
+              variant="primary"
+              disabled={dueListenCount === 0}
+              onPress={() => router.push("/lesson/srs-listening")}
+            />
+          </View>
+        ) : null}
 
         <View style={styles.card}>
           <View style={styles.cardHeader}>

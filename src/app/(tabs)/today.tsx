@@ -15,6 +15,7 @@ import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { courseCapabilities } from "@/lib/capabilities";
 import { useCourseContent } from "@/lib/content";
+import { listenWordClipIndex } from "@/lib/reception/content";
 import {
   composeTodayFromSnapshot,
   TODAY_PRESETS,
@@ -47,6 +48,7 @@ export default function TodayScreen() {
         cards: course?.cards,
         preset,
         placementFloor,
+        listenClips: listenWordClipIndex(),
       }),
     [pack, course, preset, placementFloor]
   );

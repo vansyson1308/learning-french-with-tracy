@@ -61,3 +61,24 @@ export function clipAudioSource(id: string): number | null {
 
 export const CLIP_ORDER: readonly string[] = listening.order;
 export const READING_ORDER: readonly string[] = reading.order;
+
+/**
+ * Word-clip index (P7 §72-78): lexemeId → the clip that can serve as its
+ * auditory stimulus. Only single-lexeme word_phrase clips WITH a bundled
+ * deterministic asset qualify — a listen card can never be reviewed off
+ * device TTS, and a clip whose audio has not been generated yet simply
+ * leaves its lexeme unreviewable (the card stays due). First clip in
+ * authored order wins, deterministically.
+ */
+export function listenWordClipIndex(): Record<string, string> {
+  const index: Record<string, string> = {};
+  for (const id of listening.order) {
+    const clip = listening.byId[id];
+    if (!clip || clip.kind !== "word_phrase") continue;
+    if (clip.lexemeRefs.length !== 1) continue;
+    if (clipAudioSource(id) === null) continue;
+    const lexemeId = clip.lexemeRefs[0];
+    if (index[lexemeId] === undefined) index[lexemeId] = id;
+  }
+  return index;
+}

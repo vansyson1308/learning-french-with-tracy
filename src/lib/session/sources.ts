@@ -10,12 +10,15 @@
  * cannot reshape the running queue.
  */
 
+import { pickDistractors } from "../learning/distractors";
 import { dueFrenchReviewQueue } from "../learning/engine";
 import { FR_COURSE_ID } from "../learning/ids-fr";
-import { buildSrsExercises, hashSeed } from "../review-builder";
+import type { FsrsCardState } from "../learning/scheduler";
+import { listenWordClipIndex } from "../reception/content";
+import { buildSrsExercises, hashSeed, seededRng } from "../review-builder";
 import { dueSrsWords, type CourseProgress, type MistakeRef } from "../store";
 import type { SrsEntry } from "../srs";
-import type { Exercise, LessonPack, Word } from "../types";
+import type { Exercise, LessonPack, ListeningComprehensionExercise, Word } from "../types";
 
 import type { ExerciseStep, SessionDefinition, SessionStep } from "./types";
 
@@ -149,6 +152,82 @@ export function buildReviewSessionDefinition(args: {
     trackMistakes: false,
     allowUndo: courseId === FR_COURSE_ID,
   };
+}
+
+/**
+ * Listening review (P7 §79-81): due LISTEN cards replayed as generated
+ * audio→meaning questions over the lexeme's own bundled word clip. Cards
+ * whose clip has no generated asset yet are simply not sessionable — they
+ * stay due untouched (never wrong, never consumed). Skipping a step via
+ * the audio-unavailable affordance produces no evidence, so the card
+ * stays due too.
+ */
+export function buildListeningReviewSessionDefinition(args: {
+  course: Pick<CourseProgress, "cards">;
+  pool: Word[];
+  now?: number;
+}): SessionDefinition {
+  const clipIndex = listenWordClipIndex();
+  const queue = dueFrenchReviewQueue(args.course.cards, args.now, "listen").filter(
+    (d) => clipIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
+  );
+  const wordBySurface = new Map(args.pool.map((w) => [w.target, w]));
+  const rng = seededRng(hashSeed(queue.map((d) => `${d.key}@${d.dueAt}`).join("|")));
+
+  const steps: ExerciseStep[] = [];
+  for (const due of queue) {
+    const itemId = due.key.slice(0, due.key.lastIndexOf("|"));
+    const word = wordBySurface.get(due.surface);
+    if (!word) continue;
+    const distractors = pickDistractors({
+      courseId: FR_COURSE_ID,
+      word,
+      pool: args.pool,
+      rng,
+      direction: "targetToNative",
+    }).map((w) => ({ text: w.native }));
+    if (distractors.length === 0) continue;
+    const options = [{ text: word.native }, ...distractors]
+      .map((option) => ({ option, order: rng() }))
+      .sort((a, b) => a.order - b.order)
+      .map((x) => x.option);
+    const exercise: ListeningComprehensionExercise = {
+      type: "listeningComprehension",
+      id: `listen-review-${itemId}`,
+      clipId: clipIndex[itemId],
+      question: "What do you hear?",
+      options,
+      correct: options.findIndex((o) => o.text === word.native),
+    };
+    steps.push({
+      type: "exercise",
+      stepId: exercise.id,
+      exercise,
+      evidence: { itemId, skill: "listen", srsRole: "assessment" },
+    });
+  }
+
+  return {
+    kind: "review",
+    courseId: FR_COURSE_ID,
+    lessonId: "srs-listening",
+    steps,
+    completion: "practice",
+    evidenceSource: "review",
+    trackMistakes: false,
+    allowUndo: true,
+  };
+}
+
+/** Due listen cards that are actually sessionable (clip asset bundled). */
+export function dueListeningReviewCount(
+  cards: Record<string, FsrsCardState> | undefined,
+  now?: number
+): number {
+  const clipIndex = listenWordClipIndex();
+  return dueFrenchReviewQueue(cards, now, "listen").filter(
+    (d) => clipIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
+  ).length;
 }
 
 // ---------------------------------------------------------------------------
