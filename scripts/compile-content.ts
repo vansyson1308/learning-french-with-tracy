@@ -52,6 +52,12 @@ import {
   validateReception,
 } from "./lib/reception";
 import {
+  assessmentBankWritingExercises,
+  compileWritingArtifact,
+  loadWritingTasks,
+  validateWriting,
+} from "./lib/writing";
+import {
   assessmentBankSpeechExercises,
   compileSpeechItemsArtifact,
   loadSpeechItems,
@@ -96,6 +102,13 @@ const validation = [
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
     frPack: readJson("content/courses/fr-en.json") as never,
     assessmentSpeech: assessmentBankSpeechExercises(),
+  }).errors,
+  ...validateWriting({
+    writing: loadWritingTasks(),
+    objectives: loadCourseObjectives(),
+    lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
+    frPack: readJson("content/courses/fr-en.json") as never,
+    assessmentWriting: assessmentBankWritingExercises(),
   }).errors,
 ];
 if (validation.length > 0) {
@@ -234,6 +247,13 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
   files.push({
     relPath: "src/content/speech/fr-speech-items.json",
     contents: compileSpeechItemsArtifact(loadSpeechItems()),
+  });
+  // Phase-9 writing tasks + the deterministic known-French vocabulary the
+  // rubric engine's plausibility floor uses; reserved tasks never leave
+  // the pipeline.
+  files.push({
+    relPath: "src/content/writing/fr-writing.json",
+    contents: compileWritingArtifact(loadWritingTasks()),
   });
   files.push({
     relPath: "content/reports/placement-coverage.json",

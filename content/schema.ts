@@ -244,6 +244,78 @@ export const SpeakProductionExerciseSchema = z.strictObject({
   objectiveTargets,
 });
 
+/**
+ * Written-production rubric (P9 §16): every check the deterministic local
+ * engine is allowed to make is authored here — nothing is inferred at
+ * runtime beyond these rules.
+ */
+export const WritingSlotSchema = z.strictObject({
+  id: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+  /** Learner-facing description used in missing-slot feedback (English). */
+  description: z.string().min(3),
+  /** Accepted French realizations; contiguous-run matched after folding. */
+  variants: z.array(z.string().min(1)).min(1),
+  /**
+   * True when the slot's content is handed to the learner as a cue fact
+   * (e.g. the city they should say they live in) — such variants may
+   * legitimately appear inside instruction/cues; un-cued slot variants
+   * appearing there are an answer leak and fail validation.
+   */
+  cueProvided: z.boolean(),
+});
+
+export const WritingRubricSchema = z.strictObject({
+  requiredSlots: z.array(WritingSlotSchema).min(1),
+  /** Minimum meaningful length in tokens (anti "oui" answers). */
+  minTokens: z.number().int().min(2).max(40),
+  /** Maximum sensible length (anti keyword-stuffed paste). */
+  maxTokens: z.number().int().min(6).max(120),
+  /**
+   * When present, at least one of these conjugated forms must appear —
+   * the task demands a real clause, checked ONLY against this authored
+   * allowlist (the engine never invents grammar judgment, §18).
+   */
+  requireSentenceVerbs: z.array(z.string().min(1)).min(1).optional(),
+});
+
+export const GuidedWritingExerciseSchema = z.strictObject({
+  type: z.literal("guidedWriting"),
+  id,
+  writingTaskId: z.string().regex(/^fr\.write\.[a-z0-9_]+$/),
+  /** "guided" is rubric-graded; "open" is practice-only, never evidence. */
+  writingMode: z.enum(["guided", "open"]),
+  instruction: z.string().min(1),
+  /** Facts the learner must express (English labels, values may be French names/numbers). */
+  cueFacts: z
+    .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+    .min(1)
+    .optional(),
+  rubric: WritingRubricSchema,
+  /** Shown only AFTER an attempt in learning mode; never pre-submission in scored. */
+  modelAnswers: z.array(z.string().min(1)).min(1),
+  objectiveTargets,
+});
+
+export const SimpleFormExerciseSchema = z.strictObject({
+  type: z.literal("simpleForm"),
+  id,
+  writingTaskId: z.string().regex(/^fr\.write\.[a-z0-9_]+$/),
+  instruction: z.string().min(1),
+  /** Discrete labeled fields; each checks against one rubric slot. */
+  fields: z
+    .array(
+      z.strictObject({
+        id: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+        label: z.string().min(1),
+        slotId: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+      })
+    )
+    .min(2),
+  rubric: WritingRubricSchema,
+  modelAnswers: z.array(z.string().min(1)).min(1),
+  objectiveTargets,
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
@@ -257,6 +329,8 @@ export const ExerciseSchema = z.discriminatedUnion("type", [
   DictationExerciseSchema,
   SpeakRepetitionExerciseSchema,
   SpeakProductionExerciseSchema,
+  GuidedWritingExerciseSchema,
+  SimpleFormExerciseSchema,
 ]);
 
 /** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */
@@ -1052,3 +1126,59 @@ export const SpeechItemsSchema = z.strictObject({
   items: z.array(SpeechItemSchema).min(1),
 });
 export type SpeechItems = z.infer<typeof SpeechItemsSchema>;
+
+/* ------------------------------------------------------------------ */
+/* Written production (Phase 9 §13-§23)                                */
+/* ------------------------------------------------------------------ */
+
+export const WRITING_TASK_FAMILIES = [
+  "personal_profile",
+  "simple_description",
+  "short_message",
+  "simple_form",
+] as const;
+
+/**
+ * One authored writing task — the single source of truth the pack,
+ * checkpoint and capstone exercises must mirror byte-for-byte (the same
+ * discipline as speech items). `mode: "open"` tasks are practice-only and
+ * may never be scored-eligible (P9 §15).
+ */
+export const WritingTaskSchema = z.strictObject({
+  id: z.string().regex(/^fr\.write\.[a-z0-9_]+$/),
+  taskFamily: z.enum(WRITING_TASK_FAMILIES),
+  mode: z.enum(["guided", "open"]),
+  instruction: z.string().min(1),
+  cueFacts: z
+    .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+    .min(1)
+    .optional(),
+  /** simple_form tasks list their discrete fields; others omit. */
+  formFields: z
+    .array(
+      z.strictObject({
+        id: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+        label: z.string().min(1),
+        slotId: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+      })
+    )
+    .min(2)
+    .optional(),
+  rubric: WritingRubricSchema,
+  modelAnswers: z.array(z.string().min(1)).min(1),
+  objectiveRefs: z.array(objectiveId).min(1),
+  lexemeRefs: z.array(z.string().regex(/^fr:w:[a-z0-9-]+$/)),
+  /** May appear in scored contexts (checkpoint / capstone forms). */
+  scoredEligibility: z.boolean(),
+  /** Reserved assessment stimuli never appear as teaching material. */
+  reserved: z.boolean(),
+  sourceRef: z.literal("original-project"),
+});
+export type WritingTask = z.infer<typeof WritingTaskSchema>;
+
+export const WritingTasksSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  tasks: z.array(WritingTaskSchema).min(1),
+});
+export type WritingTasks = z.infer<typeof WritingTasksSchema>;

@@ -191,6 +191,44 @@ export type SpeakProductionExercise = {
   objectiveTargets?: string[];
 };
 
+/** Authored deterministic writing rubric (P9 §16) — mirrors the task. */
+export type WritingRubricSpec = {
+  requiredSlots: {
+    id: string;
+    description: string;
+    variants: string[];
+    cueProvided: boolean;
+  }[];
+  minTokens: number;
+  maxTokens: number;
+  requireSentenceVerbs?: string[];
+};
+
+export type GuidedWritingExercise = {
+  type: "guidedWriting";
+  id: string;
+  writingTaskId: string;
+  /** "guided" is rubric-graded; "open" is practice-only, never evidence. */
+  writingMode: "guided" | "open";
+  instruction: string;
+  cueFacts?: { label: string; value: string }[];
+  rubric: WritingRubricSpec;
+  /** Shown only AFTER an attempt in learning; never pre-submission scored. */
+  modelAnswers: string[];
+  objectiveTargets?: string[];
+};
+
+export type SimpleFormExercise = {
+  type: "simpleForm";
+  id: string;
+  writingTaskId: string;
+  instruction: string;
+  fields: { id: string; label: string; slotId: string }[];
+  rubric: WritingRubricSpec;
+  modelAnswers: string[];
+  objectiveTargets?: string[];
+};
+
 export type Exercise =
   | SelectExercise
   | WordBankExercise
@@ -203,7 +241,9 @@ export type Exercise =
   | ReadingComprehensionExercise
   | DictationExercise
   | SpeakRepetitionExercise
-  | SpeakProductionExercise;
+  | SpeakProductionExercise
+  | GuidedWritingExercise
+  | SimpleFormExercise;
 
 /**
  * Optional explicit lesson flow (Phase 5B): ordered interleaving of

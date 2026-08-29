@@ -10,7 +10,7 @@ import { AppState } from "react-native";
 
 import { speakTarget, useSfx } from "../audio";
 import { behaviorFor } from "../exercise-registry";
-import { isSpokenAnswer } from "../grading";
+import { evaluateWrittenAnswer, isSpokenAnswer } from "../grading";
 import { haptics } from "../haptics";
 import { useProgress, XP_PER_LESSON } from "../store";
 
@@ -139,9 +139,27 @@ export function useSessionController(definition: SessionDefinition): SessionCont
     const step = currentStep(state);
     if (!step || step.type !== "exercise" || state.status !== "idle") return;
     const behavior = behaviorFor(step.exercise);
-    const correct = behavior.check(step.exercise, state.answer);
-
     const scored = definition.kind === "checkpoint" || definition.kind === "placement";
+
+    // P9 §17: in SCORED sessions a writing submission the deterministic
+    // engine genuinely cannot classify is INSUFFICIENT EVIDENCE — recorded
+    // through the skip channel (excluded from every scoring denominator),
+    // never as a wrong answer. Learning sessions fall through and show the
+    // honest local feedback instead.
+    if (
+      scored &&
+      (step.exercise.type === "guidedWriting" || step.exercise.type === "simpleForm")
+    ) {
+      const evaluation = evaluateWrittenAnswer(step.exercise, state.answer);
+      if (evaluation?.verdict === "insufficiently_scorable") {
+        haptics.tap();
+        resetClock();
+        dispatch({ type: "skip" });
+        return;
+      }
+    }
+
+    const correct = behavior.check(step.exercise, state.answer);
     // Minimal feedback (§118) hides the verdict — the sound and haptic must
     // not reveal what the screen deliberately withholds.
     const silentVerdict = definition.feedbackPolicy === "minimal";

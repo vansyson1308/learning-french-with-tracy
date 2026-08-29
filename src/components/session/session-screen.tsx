@@ -231,6 +231,10 @@ export function SessionScreen({
                     }
                   : undefined
               }
+              writing={{
+                scored:
+                  definition.kind === "checkpoint" || definition.kind === "placement",
+              }}
             />
           )}
         </ScrollView>
