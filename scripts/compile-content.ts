@@ -51,6 +51,7 @@ import {
   loadReadings,
   validateReception,
 } from "./lib/reception";
+import { loadSpeechItems, validateSpeech } from "./lib/speech";
 import { PackSchema } from "../content/schema";
 import {
   buildSqliteDb,
@@ -82,6 +83,12 @@ const validation = [
     objectives: loadCourseObjectives(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
     frPack: readJson("content/courses/fr-en.json") as never,
+  }).errors,
+  ...validateSpeech({
+    speech: loadSpeechItems(),
+    objectives: loadCourseObjectives(),
+    listening: loadListening(),
+    lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
   }).errors,
 ];
 if (validation.length > 0) {

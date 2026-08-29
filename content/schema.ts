@@ -910,3 +910,90 @@ export const ListeningSchema = z.strictObject({
   clips: z.array(ListeningClipSchema).min(1),
 });
 export type Listening = z.infer<typeof ListeningSchema>;
+
+// ---------------------------------------------------------------------------
+// Spoken production (P8 §11/§19)
+// ---------------------------------------------------------------------------
+
+export const speechItemId = z.string().regex(/^fr\.speak\.[a-z0-9_]+$/);
+
+/** CEFR-anchored A1 oral-production task families (RESEARCH.md §4). */
+export const SPEECH_TASK_FAMILIES = [
+  "formulaic_exchange",
+  "self_introduction",
+  "information_giving",
+  "description",
+] as const;
+
+/**
+ * PRACTICE-ONLY elicitations expose or model the French before the attempt
+ * — they are NEVER spoken-production evidence (§11). The construct
+ * validators enforce the split; the enums keep it explicit in data.
+ */
+export const SPEECH_PRACTICE_ELICITATIONS = ["repetition", "read_aloud"] as const;
+/** Production elicitations: the cue carries meaning, never the French form. */
+export const SPEECH_PRODUCTION_ELICITATIONS = [
+  "semantic_prompt",
+  "situation_prompt",
+  "picture_prompt",
+  "information_prompt",
+] as const;
+export const SPEECH_ELICITATION_TYPES = [
+  ...SPEECH_PRACTICE_ELICITATIONS,
+  ...SPEECH_PRODUCTION_ELICITATIONS,
+] as const;
+
+/** The learner-visible cue. English/emoji/data only for production items. */
+export const SpeechPromptSchema = z.strictObject({
+  /** Task instruction in English ("Say that you would like a coffee."). */
+  instruction: z.string().min(1),
+  /** Optional emoji/icon cue (picture prompts). */
+  cueEmoji: z.string().min(1).optional(),
+  /** Structured facts to convey for information-giving ("Cats" → "2"). */
+  cueFacts: z
+    .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+    .min(1)
+    .optional(),
+});
+
+export const SpeechItemSchema = z.strictObject({
+  id: speechItemId,
+  taskFamily: z.enum(SPEECH_TASK_FAMILIES),
+  elicitationType: z.enum(SPEECH_ELICITATION_TYPES),
+  prompt: SpeechPromptSchema,
+  /** Canonical French answer — displayed only AFTER attempts in learning. */
+  target: z.string().min(1),
+  /** Whole-utterance answers the deterministic grader accepts (§12). */
+  acceptedVariants: z.array(z.string().min(1)).min(1),
+  /** Concept slots (each = acceptable forms); all must be heard at once. */
+  requiredConcepts: z.array(z.array(z.string().min(1)).min(1)).min(1).optional(),
+  objectiveRefs: z.array(objectiveId).min(1),
+  /** Course lexemes the item leans on (coverage QA). */
+  lexemeRefs: z.array(z.string().regex(/^fr:w:[a-z0-9-]+$/)),
+  /** Lexemes whose |speak cards a correct production may grade (⊆ lexemeRefs). */
+  evidenceLexemeRefs: z.array(z.string().regex(/^fr:w:[a-z0-9-]+$/)),
+  assistancePolicy: z.strictObject({
+    /** Practice-only recognition bias; never sent on scored attempts (§13). */
+    allowContextualBias: z.boolean(),
+    /** Learning mode may reveal the target after N failed attempts (null = never). */
+    revealTargetAfterAttempts: z.number().int().min(1).max(5).nullable(),
+  }),
+  /** May appear in scored contexts (review probes, checkpoint, placement). */
+  scoredEligibility: z.boolean(),
+  /** Model-answer clip: learning-mode feedback AFTER attempts; never pre-scoring (§18). */
+  modelAudioRef: clipIdSchema.nullable(),
+  recognitionLocale: z.literal("fr-FR"),
+  /** Recording attempts before the item resolves (humane retry, §23). */
+  allowedAttempts: z.number().int().min(1).max(3),
+  /** Checkpoint-reserved prompts never appear as teaching stimuli (§20). */
+  reserved: z.boolean(),
+  sourceRef: z.literal("original-project"),
+});
+export type SpeechItem = z.infer<typeof SpeechItemSchema>;
+
+export const SpeechItemsSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  items: z.array(SpeechItemSchema).min(1),
+});
+export type SpeechItems = z.infer<typeof SpeechItemsSchema>;
