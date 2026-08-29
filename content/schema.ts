@@ -792,7 +792,7 @@ export const PlacementSchema = z.strictObject({
   version: z.literal(1),
   language: z.literal("fr"),
   placementVersion: z.number().int().min(1),
-  maxItems: z.number().int().min(1).max(18),
+  maxItems: z.number().int().min(1).max(22),
   /** Recommendation when every probed cluster is comfortable. */
   allComfortableLessonId: z.string().min(1),
   stages: z.array(PlacementStageSchema).min(1),

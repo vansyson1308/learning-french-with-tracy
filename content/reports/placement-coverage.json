@@ -1,9 +1,9 @@
 {
   "generator": "scripts/lib/assessment-reports.ts",
-  "placementVersion": 1,
-  "maxItems": 16,
-  "totalItems": 16,
-  "allComfortableLessonId": "fr-en:ue-l0",
+  "placementVersion": 2,
+  "maxItems": 22,
+  "totalItems": 22,
+  "allComfortableLessonId": "fr-en:uj-l0",
   "stages": [
     {
       "id": "fr.pstage.foundations",
@@ -74,16 +74,41 @@
           "itemCount": 1
         }
       ]
+    },
+    {
+      "id": "fr.pstage.reception",
+      "clusters": [
+        {
+          "id": "fr.pcluster.listen_words",
+          "objectiveId": "fr.obj.listening.familiar_words",
+          "anchorLessonId": "fr-en:uf-l0",
+          "itemCount": 1
+        },
+        {
+          "id": "fr.pcluster.read_notices",
+          "objectiveId": "fr.obj.reading.notices_info",
+          "anchorLessonId": "fr-en:ug-l0",
+          "itemCount": 2
+        },
+        {
+          "id": "fr.pcluster.read_messages",
+          "objectiveId": "fr.obj.reading.short_messages",
+          "anchorLessonId": "fr-en:ug-l1",
+          "itemCount": 1
+        },
+        {
+          "id": "fr.pcluster.listen_announcements",
+          "objectiveId": "fr.obj.listening.announcements",
+          "anchorLessonId": "fr-en:uh-l0",
+          "itemCount": 2
+        }
+      ]
     }
   ],
   "objectivesNotProbed": [
     "fr.obj.connected.liaison_h",
-    "fr.obj.listening.announcements",
-    "fr.obj.listening.familiar_words",
     "fr.obj.listening.short_dialogues",
     "fr.obj.listening.short_info",
-    "fr.obj.reading.notices_info",
-    "fr.obj.reading.short_messages",
     "fr.obj.reading.short_texts",
     "fr.obj.strategy.cognate_transfer",
     "fr.obj.verbs.aller_faire_present",

@@ -31,23 +31,33 @@ export type PlacementPlanContent = {
   stages: PlacementStageContent[];
 };
 
-/** Per-item outcome: true/false from grading, null = explicit "I don't know" (§117). */
-export type PlacementAnswers = Record<string, boolean | null>;
+/**
+ * Per-item outcome: true/false from grading, null = explicit "I don't
+ * know" (§117), "audio_unavailable" = a skipped AUDIO-dependent item
+ * (P7 §110) — a device problem, never evidence about the learner.
+ */
+export type PlacementAnswer = boolean | null | "audio_unavailable";
+export type PlacementAnswers = Record<string, PlacementAnswer>;
 
 /**
  * Assemble engine answers from a finished scored session: first-attempt
  * verdicts, with an explicit "I don't know" recorded as null (§115-117).
+ * A skip on an audio-dependent step (listening comprehension, dictation)
+ * is the audio-unavailable escape, not a declared gap (P7 §69-70, §110).
  * Steps never reached (abandoned session) simply stay absent.
  */
 export function answersFromSession(input: {
   stepIds: string[];
   firstResults: Record<string, boolean>;
   skipped: Record<string, boolean>;
+  /** Step ids whose exercise needs audio (listening/dictation). */
+  audioStepIds?: ReadonlySet<string>;
 }): PlacementAnswers {
   const out: PlacementAnswers = {};
   for (const id of input.stepIds) {
-    if (input.skipped[id]) out[id] = null;
-    else if (id in input.firstResults) out[id] = input.firstResults[id];
+    if (input.skipped[id]) {
+      out[id] = input.audioStepIds?.has(id) ? "audio_unavailable" : null;
+    } else if (id in input.firstResults) out[id] = input.firstResults[id];
   }
   return out;
 }
@@ -56,8 +66,13 @@ export type ClusterOutcome = {
   clusterId: string;
   objectiveId: string;
   anchorLessonId: string;
-  /** comfortable = every item correct; gap = any wrong/idk; unknown = unanswered. */
-  outcome: "comfortable" | "gap" | "unknown";
+  /**
+   * comfortable = every estimating item correct; gap = any wrong/idk;
+   * unknown = unanswered; not_estimated = the only evidence was
+   * audio-unavailable skips (P7 §110) — a device state, not a learner
+   * state, so it can never anchor the floor or count as weak.
+   */
+  outcome: "comfortable" | "gap" | "unknown" | "not_estimated";
 };
 
 export function evaluateClusters(
@@ -65,27 +80,23 @@ export function evaluateClusters(
   answers: PlacementAnswers
 ): ClusterOutcome[] {
   return stage.clusters.map((cluster) => {
-    const answered = cluster.itemIds.filter((id) => answers[id] !== undefined);
-    if (answered.length === 0) {
-      return {
-        clusterId: cluster.id,
-        objectiveId: cluster.objectiveId,
-        anchorLessonId: cluster.anchorLessonId,
-        outcome: "unknown",
-      };
-    }
-    // "I don't know" counts once, as gap evidence — never punished twice (§117).
-    const allCorrect = answered.every((id) => answers[id] === true);
-    return {
+    const base = {
       clusterId: cluster.id,
       objectiveId: cluster.objectiveId,
       anchorLessonId: cluster.anchorLessonId,
-      outcome: allCorrect ? "comfortable" : "gap",
     };
+    const seen = cluster.itemIds.filter((id) => answers[id] !== undefined);
+    // Audio-unavailable answers estimate nothing (P7 §110).
+    const estimating = seen.filter((id) => answers[id] !== "audio_unavailable");
+    if (seen.length === 0) return { ...base, outcome: "unknown" };
+    if (estimating.length === 0) return { ...base, outcome: "not_estimated" };
+    // "I don't know" counts once, as gap evidence — never punished twice (§117).
+    const allCorrect = estimating.every((id) => answers[id] === true);
+    return { ...base, outcome: allCorrect ? "comfortable" : "gap" };
   });
 }
 
-/** Stage 2 runs only when every stage-1 cluster is comfortable (§73). */
+/** A later stage runs only when every earlier cluster is comfortable (§73). */
 export function shouldRunStage(
   plan: PlacementPlanContent,
   stageIndex: number,
@@ -102,15 +113,19 @@ export function shouldRunStage(
 export type PlacementRecommendation = {
   recommendedLessonId: string;
   clusterOutcomes: ClusterOutcome[];
-  /** True when every probed cluster came back comfortable. */
+  /** True when every ESTIMATED cluster came back comfortable. */
   allComfortable: boolean;
+  /** True when any probed cluster could not be estimated (audio skips). */
+  hasNotEstimated: boolean;
 };
 
 /**
  * Earliest weak frontier (§75): walk clusters in curricular order across
  * the stages that actually ran; the first gap/unknown cluster's anchor is
- * the recommendation. All comfortable → the authored all-comfortable
- * anchor (the final unit — the course has nothing beyond it to place into).
+ * the recommendation. A not_estimated cluster is transparent — a learner
+ * without working audio is never anchored down for it (P7 §110); the floor
+ * only ever OPENS lessons, so the un-estimated units stay fully available.
+ * All estimated comfortable → the authored all-comfortable anchor.
  */
 export function recommendPlacement(
   plan: PlacementPlanContent,
@@ -121,11 +136,14 @@ export function recommendPlacement(
     if (!shouldRunStage(plan, i, answers)) break;
     outcomes.push(...evaluateClusters(plan.stages[i], answers));
   }
-  const firstWeak = outcomes.find((o) => o.outcome !== "comfortable");
+  const firstWeak = outcomes.find(
+    (o) => o.outcome !== "comfortable" && o.outcome !== "not_estimated"
+  );
   return {
     recommendedLessonId: firstWeak?.anchorLessonId ?? plan.allComfortableLessonId,
     clusterOutcomes: outcomes,
     allComfortable: firstWeak === undefined,
+    hasNotEstimated: outcomes.some((o) => o.outcome === "not_estimated"),
   };
 }
 
@@ -135,8 +153,7 @@ export function placementEstimates(
 ): PlacementObjectiveEstimate[] {
   return outcomes.map((o) => ({
     objectiveId: o.objectiveId,
-    estimate:
-      o.outcome === "comfortable" ? "comfortable" : o.outcome === "gap" ? "gap" : "unknown",
+    estimate: o.outcome === "unknown" ? "unknown" : o.outcome,
   }));
 }
 
@@ -147,8 +164,11 @@ export function buildPlacementResult(input: {
   completedAt: number;
 }): PlacementResult {
   const recommendation = recommendPlacement(input.plan, input.answers);
+  // Stored item results keep the Phase-6 shape: an audio-unavailable skip
+  // persists as null (no verdict), exactly like "I don't know" — the
+  // distinction lives in the per-objective "not_estimated" estimates.
   const itemResults: AssessmentItemResult[] = Object.entries(input.answers).map(
-    ([itemId, correct]) => ({ itemId, correct })
+    ([itemId, answer]) => ({ itemId, correct: answer === "audio_unavailable" ? null : answer })
   );
   return {
     placementVersion: input.plan.placementVersion,

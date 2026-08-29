@@ -25,12 +25,24 @@ import type { SessionMachineState } from "@/lib/session/reducer";
 import { buildPlacementStageSessionDefinition } from "@/lib/session/sources";
 import { useProgress } from "@/lib/store";
 
-/** First-attempt answers for a finished stage: true/false, null for IDK. */
+/**
+ * First-attempt answers for a finished stage: true/false, null for IDK,
+ * audio_unavailable for skips on audio-dependent steps (P7 §110).
+ */
 function stageAnswers(state: SessionMachineState): PlacementAnswers {
+  const exerciseSteps = state.steps.filter((s) => s.type === "exercise");
   return answersFromSession({
-    stepIds: state.steps.filter((s) => s.type === "exercise").map((s) => s.stepId),
+    stepIds: exerciseSteps.map((s) => s.stepId),
     firstResults: state.firstResults,
     skipped: state.skipped,
+    audioStepIds: new Set(
+      exerciseSteps
+        .filter(
+          (s) =>
+            s.exercise.type === "listeningComprehension" || s.exercise.type === "dictation"
+        )
+        .map((s) => s.stepId)
+    ),
   });
 }
 
