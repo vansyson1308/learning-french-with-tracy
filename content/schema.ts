@@ -611,7 +611,7 @@ export type CourseObjectives = z.infer<typeof CourseObjectivesSchema>;
  * are deliberately not inputs (§100-101).
  */
 export const ClaimPolicySchema = z.strictObject({
-  version: z.literal(1),
+  version: z.literal(2),
   /** Levels the product evaluates claims for (higher levels implicitly false). */
   evaluatedLevels: z.array(z.enum(CEFR_LEVELS)).min(1),
   /**
@@ -622,6 +622,24 @@ export const ClaimPolicySchema = z.strictObject({
    */
   requiredDomains: z.array(z.enum(OBJECTIVE_CATEGORIES)).min(1),
   minAssessedObjectivesPerDomain: z.number().int().min(1),
+  /**
+   * Phase-7 breadth thresholds (P7 §10-14). All of these are INTERNAL
+   * evidence-sufficiency rules — product-local, never Council of Europe cut
+   * scores (P7 §12). A domain "covers" a level only when its direct
+   * objectives clear every one of them.
+   */
+  /** Scored items each direct objective needs before it counts as assessed. */
+  minItemsPerDirectObjective: z.number().int().min(1),
+  /**
+   * Independent source inputs (distinct clips/texts; a standalone item is
+   * its own input) each direct objective's evidence must span — three
+   * questions about one clip are one input (P7 §13).
+   */
+  minDistinctInputsPerDirectObjective: z.number().int().min(1),
+  /** Distinct task families across a domain's assessed direct objectives. */
+  minTaskFamiliesPerDomain: z.number().int().min(1),
+  /** Distinct aligned CEFR scale families among those direct objectives. */
+  minDistinctScalesPerDomain: z.number().int().min(1),
   /** Wording rule: even a claimable level is an aligned estimate (§102). */
   claimWording: z.string().min(1),
 });

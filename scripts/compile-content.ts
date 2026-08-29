@@ -26,6 +26,7 @@ import {
 } from "./lib/pedagogy";
 import {
   collectAssessmentItemTargets,
+  collectScoredItemEvidence,
   compileCheckpointsArtifact,
   compileObjectivesArtifact,
   compilePlacementArtifact,
@@ -162,7 +163,10 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
       ...evaluateClaimGate({
         objectives: objectivesDoc.objectives,
         policy,
-        checkpointItemTargets,
+        checkpointItems: collectScoredItemEvidence(
+          "content/fr/assessment/checkpoints.json",
+          "checkpoints"
+        ),
       }),
     }),
   });

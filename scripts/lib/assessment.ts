@@ -257,6 +257,52 @@ export function collectAssessmentItemTargets(
   return out;
 }
 
+/**
+ * Rich scored-item evidence for the hardened claim gate (P7 §11-13): the
+ * objective targets PLUS the task family (exercise type) and the shared
+ * source input (clip/text) the item is about. `inputId` null means the item
+ * is its own independent input (standalone vocabulary/grammar items).
+ */
+export type ScoredItemEvidence = {
+  objectiveTargets: string[];
+  taskFamily: string;
+  inputId: string | null;
+};
+
+export function collectScoredItemEvidence(
+  relPath: string,
+  containerKey: "checkpoints" | "stages"
+): ScoredItemEvidence[] {
+  let doc: unknown;
+  try {
+    doc = readJson(relPath);
+  } catch {
+    return [];
+  }
+  const containers = (doc as Record<string, unknown>)[containerKey];
+  if (!Array.isArray(containers)) return [];
+  const out: ScoredItemEvidence[] = [];
+  for (const container of containers) {
+    const items = (container as { items?: unknown }).items;
+    if (!Array.isArray(items)) continue;
+    for (const item of items) {
+      const targets = (item as { objectiveTargets?: unknown }).objectiveTargets;
+      const exercise = (item as { exercise?: unknown }).exercise as
+        | { type?: unknown; clipId?: unknown; readingId?: unknown }
+        | undefined;
+      if (!Array.isArray(targets) || !targets.every((t) => typeof t === "string")) continue;
+      const clip = typeof exercise?.clipId === "string" ? exercise.clipId : null;
+      const reading = typeof exercise?.readingId === "string" ? exercise.readingId : null;
+      out.push({
+        objectiveTargets: targets as string[],
+        taskFamily: typeof exercise?.type === "string" ? exercise.type : "unknown",
+        inputId: clip ?? reading,
+      });
+    }
+  }
+  return out;
+}
+
 /** Disk-reading aggregator for the CLIs. */
 export function validateAssessment(): ValidationResult {
   let objectives: CourseObjectives;

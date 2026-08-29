@@ -144,10 +144,14 @@ describe("validateObjectiveGraph — every rule fires", () => {
 
 describe("validateClaimPolicyData — the gate stays activity-based", () => {
   const policy = (over: Partial<ClaimPolicy> = {}): ClaimPolicy => ({
-    version: 1,
+    version: 2,
     evaluatedLevels: ["PRE_A1", "A1"],
     requiredDomains: ["written_reception", "spoken_production", "interaction"],
     minAssessedObjectivesPerDomain: 1,
+    minItemsPerDirectObjective: 3,
+    minDistinctInputsPerDirectObjective: 2,
+    minTaskFamiliesPerDomain: 2,
+    minDistinctScalesPerDomain: 2,
     claimWording: "CEFR-aligned estimate.",
     ...over,
   });
@@ -282,15 +286,21 @@ describe("coverage + alignment reports are faithful", () => {
   });
 });
 
-describe("claim gate honesty (§145)", () => {
+describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
   const spokenLess = () => loadCourseObjectives().objectives;
   const policy = (): Policy => loadClaimPolicy();
+  /** Evidence-row helper: standalone item unless an inputId is given. */
+  const ev = (oid: string | string[], taskFamily = "select", inputId: string | null = null) => ({
+    objectiveTargets: Array.isArray(oid) ? oid : [oid],
+    taskFamily,
+    inputId,
+  });
 
   test("real content: every evaluated level is NOT claimable", () => {
     const gate = evaluateClaimGate({
       objectives: spokenLess(),
       policy: policy(),
-      checkpointItemTargets: [],
+      checkpointItems: [],
     });
     for (const level of gate.levels) {
       expect({ level: level.level, claimable: level.claimable }).toEqual({
@@ -302,9 +312,16 @@ describe("claim gate honesty (§145)", () => {
 
   test("full checkpoint coverage of every EXISTING objective still never claims a level (speaking missing)", () => {
     const objectives = spokenLess();
-    // Saturate: 5 hypothetical scored items per objective.
-    const items = objectives.flatMap((o) => [[o.id], [o.id], [o.id], [o.id], [o.id]]);
-    const gate = evaluateClaimGate({ objectives, policy: policy(), checkpointItemTargets: items });
+    // Saturate: 5 hypothetical standalone scored items per objective across
+    // two task families — breadth is not the blocker here, speaking is.
+    const items = objectives.flatMap((o) => [
+      ev(o.id),
+      ev(o.id),
+      ev(o.id),
+      ev(o.id, "typeAnswer"),
+      ev(o.id, "typeAnswer"),
+    ]);
+    const gate = evaluateClaimGate({ objectives, policy: policy(), checkpointItems: items });
     for (const level of gate.levels) {
       expect(level.claimable).toBe(false);
       expect(level.unassessedDomains).toContain("spoken_production");
@@ -314,55 +331,161 @@ describe("claim gate honesty (§145)", () => {
   });
 
   test("lesson completion is not even an input: the gate takes content only", () => {
-    // Structural: evaluateClaimGate's signature has no learner state. With
-    // zero scored items nothing is claimable regardless of any imaginable
-    // completion state.
     const gate = evaluateClaimGate({
       objectives: spokenLess(),
       policy: policy(),
-      checkpointItemTargets: [],
+      checkpointItems: [],
     });
     expect(gate.levels.every((l) => !l.claimable)).toBe(true);
   });
 
-  test("the gate CAN open when a level's domains are genuinely direct + assessed", () => {
-    const mk = (id: string, category: CourseObjective["category"]): CourseObjective => ({
-      id,
-      title: id,
-      canDo: `I can demonstrably do ${id}.`,
-      category,
-      prerequisites: [],
-      cefrAlignments: [
-        {
-          level: "PRE_A1",
-          scaleName: "Synthetic scale",
-          relation: "direct",
-          sourceRef: "cefr-cv-2020:overall-reading-comprehension",
-        },
-      ],
-      essential: true,
-      evidenceNote: "Synthetic full-coverage fixture.",
-    });
-    const objectives = [
-      mk("fr.obj.syn.listen", "spoken_reception"),
-      mk("fr.obj.syn.read", "written_reception"),
-      mk("fr.obj.syn.speak", "spoken_production"),
-      mk("fr.obj.syn.write", "written_production"),
-      mk("fr.obj.syn.interact", "interaction"),
+  const mkObjective = (
+    id: string,
+    category: CourseObjective["category"],
+    scaleName = "Synthetic scale"
+  ): CourseObjective => ({
+    id,
+    title: id,
+    canDo: `I can demonstrably do ${id}.`,
+    category,
+    prerequisites: [],
+    cefrAlignments: [
+      {
+        level: "PRE_A1",
+        scaleName,
+        relation: "direct",
+        sourceRef: "cefr-cv-2020:overall-reading-comprehension",
+      },
+    ],
+    essential: true,
+    evidenceNote: "Synthetic full-coverage fixture.",
+  });
+
+  /** Two direct objectives per domain on distinct scales — full breadth. */
+  const fullBreadthFixture = () => {
+    const domains: CourseObjective["category"][] = [
+      "spoken_reception",
+      "written_reception",
+      "spoken_production",
+      "written_production",
+      "interaction",
     ];
-    const items = objectives.flatMap((o) => [[o.id], [o.id]]);
+    const objectives = domains.flatMap((d) => [
+      mkObjective(`fr.obj.syn.${d}.a`, d, `${d} scale one`),
+      mkObjective(`fr.obj.syn.${d}.b`, d, `${d} scale two`),
+    ]);
+    // 3 items per objective, two independent inputs, two task families.
+    const items = objectives.flatMap((o) => [
+      ev(o.id, "select", `${o.id}:input1`),
+      ev(o.id, "select", `${o.id}:input2`),
+      ev(o.id, "typeAnswer", `${o.id}:input2`),
+    ]);
+    return { objectives, items };
+  };
+
+  test("the gate CAN open when domains have genuine direct, broad, multi-input evidence", () => {
+    const { objectives, items } = fullBreadthFixture();
     const gate = evaluateClaimGate({
       objectives,
       policy: { ...policy(), evaluatedLevels: ["PRE_A1"] },
-      checkpointItemTargets: items,
+      checkpointItems: items,
     });
     expect(gate.levels[0].claimable).toBe(true);
+    for (const d of gate.levels[0].domains) {
+      expect(d.status).toBe("covered");
+      expect(d.breadth!.taskFamilies.length).toBeGreaterThanOrEqual(2);
+      expect(d.breadth!.scaleNames.length).toBeGreaterThanOrEqual(2);
+    }
+  });
+
+  test("§149: many questions about ONE clip are one input — never enough breadth", () => {
+    const { objectives } = fullBreadthFixture();
+    // Six items per objective, all about the same single clip.
+    const items = objectives.flatMap((o) =>
+      Array.from({ length: 6 }, () => ev(o.id, "listeningComprehension", "clip:only-one"))
+    );
+    const gate = evaluateClaimGate({
+      objectives,
+      policy: { ...policy(), evaluatedLevels: ["PRE_A1"] },
+      checkpointItems: items,
+    });
+    expect(gate.levels[0].claimable).toBe(false);
+    // Each objective has 6 items but only ONE distinct input → not assessed.
+    for (const d of gate.levels[0].domains) {
+      expect(d.status).toBe("objectives_not_assessed");
+    }
+  });
+
+  test("§149: one task family per domain is insufficient breadth even with inputs", () => {
+    const { objectives } = fullBreadthFixture();
+    const items = objectives.flatMap((o) => [
+      ev(o.id, "select", `${o.id}:input1`),
+      ev(o.id, "select", `${o.id}:input2`),
+      ev(o.id, "select", `${o.id}:input3`),
+    ]);
+    const gate = evaluateClaimGate({
+      objectives,
+      policy: { ...policy(), evaluatedLevels: ["PRE_A1"] },
+      checkpointItems: items,
+    });
+    expect(gate.levels[0].claimable).toBe(false);
+    for (const d of gate.levels[0].domains) {
+      expect(d.status).toBe("insufficient_breadth");
+      expect(d.breadth!.taskFamilies).toEqual(["select"]);
+    }
+  });
+
+  test("§149: one aligned scale per domain is insufficient breadth", () => {
+    const domains: CourseObjective["category"][] = ["written_reception"];
+    const objectives = domains.flatMap((d) => [
+      mkObjective(`fr.obj.syn.${d}.a`, d, "same scale"),
+      mkObjective(`fr.obj.syn.${d}.b`, d, "same scale"),
+    ]);
+    const items = objectives.flatMap((o) => [
+      ev(o.id, "select", `${o.id}:i1`),
+      ev(o.id, "readingComprehension", `${o.id}:i2`),
+      ev(o.id, "readingComprehension", `${o.id}:i3`),
+    ]);
+    const gate = evaluateClaimGate({
+      objectives,
+      policy: { ...policy(), evaluatedLevels: ["PRE_A1"], requiredDomains: ["written_reception"] },
+      checkpointItems: items,
+    });
+    const d = gate.levels[0].domains[0];
+    expect(d.status).toBe("insufficient_breadth");
+    expect(d.breadth!.scaleNames).toEqual(["same scale"]);
+  });
+
+  test("§149: listening + reading fully covered but speaking absent → A1 overall false", () => {
+    const receptive: CourseObjective["category"][] = ["spoken_reception", "written_reception"];
+    const objectives = receptive.flatMap((d) => [
+      { ...mkObjective(`fr.obj.syn.${d}.a`, d, `${d} scale one`), cefrAlignments: [{ level: "A1" as const, scaleName: `${d} scale one`, relation: "direct" as const, sourceRef: "cefr-cv-2020:overall-reading-comprehension" }] },
+      { ...mkObjective(`fr.obj.syn.${d}.b`, d, `${d} scale two`), cefrAlignments: [{ level: "A1" as const, scaleName: `${d} scale two`, relation: "direct" as const, sourceRef: "cefr-cv-2020:overall-reading-comprehension" }] },
+    ]);
+    const items = objectives.flatMap((o) => [
+      ev(o.id, "select", `${o.id}:i1`),
+      ev(o.id, "listeningComprehension", `${o.id}:i2`),
+      ev(o.id, "listeningComprehension", `${o.id}:i3`),
+    ]);
+    const gate = evaluateClaimGate({
+      objectives,
+      policy: { ...policy(), evaluatedLevels: ["A1"] },
+      checkpointItems: items,
+    });
+    const a1 = gate.levels[0];
+    expect(a1.domains.find((d) => d.domain === "spoken_reception")!.status).toBe("covered");
+    expect(a1.domains.find((d) => d.domain === "written_reception")!.status).toBe("covered");
+    expect(a1.claimable).toBe(false);
+    expect(a1.unassessedDomains).toContain("spoken_production");
+    expect(a1.unassessedDomains).toContain("interaction");
+    // Covered synthetic listening carries the honesty limitation (P7 §123).
+    expect(a1.evidenceLimitations.join(" ")).toContain("synthesized");
   });
 
   test("one scored item per objective is below the evidence floor (§64)", () => {
     const objectives = spokenLess();
-    const items = objectives.map((o) => [o.id]);
-    const gate = evaluateClaimGate({ objectives, policy: policy(), checkpointItemTargets: items });
+    const items = objectives.map((o) => ev(o.id));
+    const gate = evaluateClaimGate({ objectives, policy: policy(), checkpointItems: items });
     const a1 = gate.levels.find((l) => l.level === "A1")!;
     expect(a1.coveredCompetences).toEqual([]);
   });
