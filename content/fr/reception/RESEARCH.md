@@ -161,6 +161,23 @@ later-maturity goal and is explicitly out of evidence scope.
   assistance disqualifies/marks the evidence (§54-55, §98).
 - Dialogue texts carry explicit speaker labels (never color-only).
 
+### Generation QA record (full 39-clip round)
+
+Workflow run 33231760754 synthesized all 39 authored clips (37 unique
+assets — two dictation clips deliberately share text, therefore asset,
+with their teaching clips): 0 technical failures (duration, clipping,
+edge-silence, chars/sec all in range), mean ASR WER 0.137. High-WER rows
+were reviewed by hand: almost all are ASR normalization artifacts (the
+audit renders spoken numbers as digits — "neuf heures" vs "9h" — and
+splits liaisons), not audio defects. One genuine red flag —
+`fr.clip.cp3_dialogue_magasin` at 0.73 with hallucinated ASR output —
+was fixed at the source: the answer segment was reworded from the
+elliptical "À neuf heures, madame." to the fuller "Le magasin ouvre à
+neuf heures, madame." (clearer for an A1 listener too) and regenerated.
+The ASR audit stays a red-flag detector, never a linguistic oracle
+(P7 §40): pass/fail authority is the technical QA plus human review of
+flagged rows.
+
 ## 8. Claim-gate hardening (Phase 7, Part II)
 
 Phase 6's gate required only `minAssessedObjectivesPerDomain: 1` with ≥2

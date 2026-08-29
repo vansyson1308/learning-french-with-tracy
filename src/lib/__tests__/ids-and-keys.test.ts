@@ -129,7 +129,7 @@ describe("CardKey serialization", () => {
     expect(parseCardKey("")).toBeUndefined();
   });
 
-  test("skill registry currently contains exactly 'recognize'", () => {
-    expect([...SKILLS]).toEqual(["recognize"]);
+  test("skill registry: recognize + the Phase-7 listen activation", () => {
+    expect([...SKILLS]).toEqual(["recognize", "listen"]);
   });
 });

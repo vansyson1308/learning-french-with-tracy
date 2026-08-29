@@ -242,7 +242,10 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   // stays the session's core, and a listener without working audio loses at
   // most that slice (each listening step also carries the skip escape).
   const listenClips = input.listenClips ?? {};
-  const listenQueue = dueFrenchReviewQueue(input.cards, input.now, "listen").filter(
+  // Backlog honesty: EVERY due listen card counts, sessionable or not — a
+  // card whose clip asset is not bundled stays due and stays visible.
+  const allListenDue = dueFrenchReviewQueue(input.cards, input.now, "listen");
+  const listenQueue = allListenDue.filter(
     (d) => listenClips[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
   );
   const listenItems: Item[] = [];
@@ -420,10 +423,10 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
     reviewCount,
     listenCount,
     newCount: newItems.length,
-    backlogTotal: dueQueue.length + listenQueue.length,
+    backlogTotal: dueQueue.length + allListenDue.length,
     backlogRemaining: Math.max(
       0,
-      dueQueue.length - warmupItems.length + listenQueue.length - listenItems.length
+      dueQueue.length - warmupItems.length + allListenDue.length - listenItems.length
     ),
     estimatedMinutes:
       steps.length === 0
