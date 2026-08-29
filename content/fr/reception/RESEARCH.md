@@ -136,16 +136,20 @@ later-maturity goal and is explicitly out of evidence scope.
   construct (P7 §40, §56-60). License was clean; the exclusion is
   recorded in audio-source-manifest.json `excludedVoices`.
 - **fr_FR-upmc-medium** (CC BY-SA 4.0, two speakers: Jessica, Pierre) —
-  candidate replacement for speaker B, subject to the same fail-closed
-  recon + canary. Its share-alike license is accepted deliberately: the
-  project already publishes derived data under CC BY-SA 4.0 with an
-  in-app attributions screen (approved plan §AC2; registry entries
-  `piper-voice-*`), so the obligations are already implemented. The
-  first recon attempt failed closed on the then-CC-BY-only allow list —
-  working exactly as designed — and the allow list was then aligned with
-  the project-wide LICENSE_ALLOWLIST (CC BY / CC BY-SA, text and URL
-  spellings). AGPL/GPL/NC/ND stay denied (fr_FR-tom-medium remains
-  excluded).
+  ADOPTED as speaker B after passing the same fail-closed recon + canary.
+  Its share-alike license is accepted deliberately: the project already
+  publishes derived data under CC BY-SA 4.0 with an in-app attributions
+  screen (approved plan §AC2; registry entries `piper-voice-*`), so the
+  obligations are already implemented. The first recon attempt failed
+  closed on the then-CC-BY-only allow list — working exactly as designed —
+  and the allow list was then aligned with the project-wide
+  LICENSE_ALLOWLIST (CC BY / CC BY-SA, text and URL spellings).
+  AGPL/GPL/NC/ND stay denied (fr_FR-tom-medium remains excluded).
+  Canary verdict (run 33231334069): speaker 1 mean WER 0.197, speaker 0
+  0.209, siwis 0.184 through the identical pipeline — both speakers on
+  par with siwis. **Speaker 1 pinned** for voiceCast B: best WER of the
+  two and a male voice, giving dialogues a clear contrast with siwis
+  (female) for who-is-speaking comprehension.
 
 ## 7. Reading policy
 

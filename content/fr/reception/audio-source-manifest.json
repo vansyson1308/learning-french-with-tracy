@@ -54,13 +54,15 @@
     },
     {
       "id": "fr_FR-upmc-medium",
-      "role": "speaker pool — dialogue second voices (pinned speaker ids chosen by canary ASR audit)",
+      "role": "speaker B — dialogue second voice (speaker 1, male; pinned by the canary ASR audit, run 33231334069)",
       "multiSpeaker": true,
       "canarySpeakers": [
         0,
         1
       ],
-      "pinnedSpeakers": [],
+      "pinnedSpeakers": [
+        1
+      ],
       "files": {
         "model": {
           "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx",

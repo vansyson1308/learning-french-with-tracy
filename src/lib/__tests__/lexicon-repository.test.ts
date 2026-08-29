@@ -66,17 +66,18 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
 
   test("list: course order, alphabetical, and pos filter", async () => {
     const course = await repo.list();
-    expect(course.length).toBe(99);
+    expect(course.length).toBe(126);
     expect(course[0].id).toBe("fr:w:homme");
     const alpha = await repo.list({ sort: "alpha" });
     // âne sorts under A with the accent-folded sort key
     expect(alpha.map((r) => r.id).indexOf("fr:w:ane")).toBeLessThan(
       alpha.map((r) => r.id).indexOf("fr:w:billet")
     );
-    // 99 total − 11 verbs − 2 adverbs (oui/non) − 5 interjections − 3 expressions = 78 nouns
+    // 126 total − 19 verbs − 4 adverbs (oui/non/demain/aujourd'hui) −
+    // 5 interjections − 3 expressions − 1 adjective (ouvert) = 94 nouns
     const nouns = await repo.list({ pos: "noun" });
     expect(nouns.every((r) => r.pos === "noun")).toBe(true);
-    expect(nouns.length).toBe(78);
+    expect(nouns.length).toBe(94);
     const expressions = await repo.list({ pos: "expression" });
     expect(expressions.map((r) => r.id).sort()).toEqual([
       "fr:w:au-revoir",
@@ -103,9 +104,11 @@ describe("GeneratedLexiconRepository over the real compiled data", () => {
     // merci has no population rank (ONO category) yet sorts by its raw
     // frequency — rank is never the sort key.
     expect(ids.indexOf("fr:w:merci")).toBeLessThan(ids.indexOf("fr:w:femme"));
-    // The three unmeasured expressions sink to the end in course order;
-    // every word lexeme (Units A through E included) is measured.
-    expect(ids.slice(-3)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
+    // Unmeasured lexemes sink to the end in course order: the three
+    // expressions, then the 27 pending Section-3 lexemes (whose Lexique
+    // adoption round will pull them back into measured order).
+    expect(ids.slice(-30, -27)).toEqual(["fr:w:au-revoir", "fr:w:s-il-vous-plait", "fr:w:bonne-nuit"]);
+    expect(ids.slice(-3)).toEqual(["fr:w:plage", "fr:w:entree", "fr:w:sortie"]);
   });
 
   test("getExamples returns the authored example pairs", async () => {
@@ -158,9 +161,9 @@ describe("license artifacts in the compiled dataset (§101)", () => {
 });
 
 describe("runtime lexicon index (session-critical accessor)", () => {
-  test("covers all 99 lexemes with pronunciation, example and topic", () => {
+  test("covers all 126 lexemes with pronunciation, example and topic", () => {
     const all = allLexemeMeta();
-    expect(all.length).toBe(99);
+    expect(all.length).toBe(126);
     for (const meta of all) {
       expect(meta.pronunciation?.notation).toBe("ipa");
       expect(meta.example?.fr.length).toBeGreaterThan(0);

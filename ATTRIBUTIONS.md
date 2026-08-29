@@ -39,6 +39,28 @@ French pedagogy content authored by the Learning French with Tracy project.
 
 > Clean-room authored teaching content for the Phase 5B pedagogy units (gender & articles, high-yield verbs, cognates & false friends, numbers, connected French). Linguistic FACTS are drawn from the referenced sources recorded in content/fr/pedagogy/RESEARCH.md (institutional references such as Académie française and OQLF usage pages, plus this repository's Lexique-4-derived population statistics); all PROSE is original. Statistical claims in concepts additionally carry a lexique-4 sourceRef. Ships under the repository's MIT grant like the course packs (the CC BY-SA dataset boundary covers the lexicon only).
 
+## Piper voice fr_FR-siwis-medium (SIWIS French speech corpus)
+
+- **License:** CC-BY-4.0
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/siwis/medium
+- **What:** neural TTS voice used at pipeline time to synthesize bundled reception audio
+- **Retrieved:** 2026-08-29
+
+Reception listening audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-siwis-medium voice, trained on the SIWIS French speech corpus (CC BY 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/.
+
+> Speaker A of the reception voice cast (announcements, monologue, dialogue first voice). Model weights are never committed — only pins (audio-source-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only reception-audio workflow.
+
+## Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/upmc/medium
+- **What:** neural TTS voice used at pipeline time to synthesize bundled reception audio
+- **Retrieved:** 2026-08-29
+
+Reception dialogue audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-upmc-medium voice (CC BY-SA 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/. Audio clips voiced by this model are distributed under CC BY-SA 4.0 with attribution, matching the project's existing share-alike posture (see LEXICON_LICENSE.md).
+
+> Speaker B of the reception voice cast (dialogue second voice), adopted after fr_FR-mls-medium failed the canary ASR quality audit. CC BY-SA 4.0 share-alike accepted deliberately: the project already publishes its derived French dataset under CC BY-SA 4.0 (approved plan, section AC2) and ships an in-app attributions screen, so the obligations are already implemented. The reception audio derived from this voice carries the same license and attribution.
+
 ## ts-fsrs (open-spaced-repetition)
 
 - **License:** MIT
