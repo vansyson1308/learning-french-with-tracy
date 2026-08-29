@@ -24,6 +24,7 @@ import { useProgress } from "@/lib/store";
 import type { SpeechSessionApi } from "@/lib/speech/use-speech-session";
 import { useSpeechAttempt } from "@/lib/speech/use-speech-attempt";
 import type { SpeechRecognizerPort } from "@/lib/speech/recognizer-port";
+import type { SpeechOutcome } from "@/lib/speech/types";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 /** Inert stand-in while the session adapter is still mounting. */
@@ -63,6 +64,7 @@ export function SpeakRecordControl({
   heardText,
   hint,
   onFinal,
+  onOutcome,
   onSkip,
   onBeforeRecord,
 }: {
@@ -83,6 +85,11 @@ export function SpeakRecordControl({
   /** Parent-provided practice hint after a final (never a score). */
   hint?: string | null;
   onFinal: (answer: SpokenAnswer) => void;
+  /**
+   * Every settled attempt outcome, final or not (P9 §28/§71): interaction
+   * steps count silent/technical attempts without ever judging them.
+   */
+  onOutcome?: (outcome: SpeechOutcome) => void;
   onSkip?: () => void;
   /** Pause any model/stimulus audio before the mic opens (§10). */
   onBeforeRecord?: () => void;
@@ -95,14 +102,20 @@ export function SpeakRecordControl({
   const assistedAtStartRef = React.useRef(false);
   const replayPlayer = useAudioPlayer();
 
-  // Deliver each FINAL outcome exactly once as a submittable SpokenAnswer.
+  // Deliver each FINAL outcome exactly once as a submittable SpokenAnswer
+  // (and every settled outcome once through onOutcome, for callers that
+  // track non-final attempts — never judged, only counted).
   const onFinalRef = React.useRef(onFinal);
+  const onOutcomeRef = React.useRef(onOutcome);
   React.useEffect(() => {
     onFinalRef.current = onFinal;
+    onOutcomeRef.current = onOutcome;
   });
   const outcome = attempt.outcome;
   React.useEffect(() => {
-    if (outcome?.kind !== "final") return;
+    if (!outcome) return;
+    onOutcomeRef.current?.(outcome);
+    if (outcome.kind !== "final") return;
     onFinalRef.current({
       spoken: true,
       finalTranscript: outcome.result.finalTranscript,

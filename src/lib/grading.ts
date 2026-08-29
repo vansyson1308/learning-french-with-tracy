@@ -35,12 +35,31 @@ export type WrittenAnswer =
   | { written: true; kind: "text"; text: string }
   | { written: true; kind: "form"; values: Record<string, string> };
 
+/**
+ * A finished interaction scenario as a submittable answer (P9 §36-37):
+ * the deterministic engine's whole-scenario result. "Correct" means the
+ * communicative goal was met AND every scored turn matched on its first
+ * judged final; an unfinished (technically incomplete) run is routed to
+ * the no-evidence skip path by scored surfaces, never graded.
+ */
+export type InteractionAnswer = {
+  interaction: true;
+  goalMet: boolean;
+  passedFirstTry: boolean;
+  scoredTurns: number;
+  matchedFirstTry: number;
+  supportUsed: number;
+  repairMoves: number;
+  technicallyIncomplete: boolean;
+};
+
 export type Answer =
   | number
   | number[]
   | string
   | SpokenAnswer
   | WrittenAnswer
+  | InteractionAnswer
   | null;
 
 export function isSpokenAnswer(answer: Answer): answer is SpokenAnswer {
@@ -49,6 +68,15 @@ export function isSpokenAnswer(answer: Answer): answer is SpokenAnswer {
     answer !== null &&
     !Array.isArray(answer) &&
     (answer as { spoken?: unknown }).spoken === true
+  );
+}
+
+export function isInteractionAnswer(answer: Answer): answer is InteractionAnswer {
+  return (
+    typeof answer === "object" &&
+    answer !== null &&
+    !Array.isArray(answer) &&
+    (answer as { interaction?: unknown }).interaction === true
   );
 }
 
@@ -174,6 +202,15 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
       // insufficiently_scorable is routed to no-evidence by the scored
       // surfaces BEFORE this boolean is recorded (§17).
       return evaluateWrittenAnswer(exercise, answer)?.verdict === "meets_rubric";
+    case "interactionScenario":
+      // §37: goal met AND clean first-judgment turns; incomplete runs are
+      // never graded (scored surfaces skip them before this boolean).
+      return (
+        isInteractionAnswer(answer) &&
+        !answer.technicallyIncomplete &&
+        answer.goalMet &&
+        answer.passedFirstTry
+      );
   }
 }
 
@@ -204,6 +241,8 @@ export function correctAnswerText(exercise: Exercise): string {
     case "guidedWriting":
     case "simpleForm":
       return exercise.modelAnswers[0];
+    case "interactionScenario":
+      return ""; // there is no single "correct sentence" for a conversation
   }
 }
 
@@ -237,5 +276,8 @@ export function answerIsReady(exercise: Exercise, answer: Answer): boolean {
         answer.kind === "form" &&
         Object.values(answer.values).some((v) => v.trim().length > 0)
       );
+    case "interactionScenario":
+      // The step resolves only when the scenario reached a terminal.
+      return isInteractionAnswer(answer) && !answer.technicallyIncomplete;
   }
 }

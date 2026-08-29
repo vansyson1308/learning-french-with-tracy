@@ -48,7 +48,8 @@ export default function CheckpointScreen() {
     checkpoint?.items.some(
       (item) =>
         item.exercise.type === "speakProduction" ||
-        item.exercise.type === "speakRepetition"
+        item.exercise.type === "speakRepetition" ||
+        item.exercise.type === "interactionScenario"
     ) ?? false;
   const [speechGate, setSpeechGate] = useState<
     "probing" | "ok" | "blocked" | "needsPermission" | "permissionBlocked"

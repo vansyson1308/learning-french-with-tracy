@@ -116,6 +116,11 @@ export const EXERCISE_BEHAVIOR: Record<Exercise["type"], ExerciseBehavior> = {
     modality: () => "produceText",
     selfAdvancing: false,
   },
+  interactionScenario: {
+    ...delegate,
+    modality: () => "speak",
+    selfAdvancing: false,
+  },
 };
 
 export function behaviorFor(exercise: Exercise): ExerciseBehavior {

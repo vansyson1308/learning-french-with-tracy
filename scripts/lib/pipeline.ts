@@ -50,6 +50,7 @@ export const GENERATED_TARGETS = [
   "src/content/reception",
   "src/content/speech",
   "src/content/writing",
+  "src/content/interaction",
   "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",

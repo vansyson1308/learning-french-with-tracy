@@ -229,6 +229,14 @@ export type SimpleFormExercise = {
   objectiveTargets?: string[];
 };
 
+export type InteractionScenarioExercise = {
+  type: "interactionScenario";
+  id: string;
+  /** The authored scenario graph, resolved from the compiled artifact. */
+  scenarioId: string;
+  objectiveTargets?: string[];
+};
+
 export type Exercise =
   | SelectExercise
   | WordBankExercise
@@ -243,7 +251,8 @@ export type Exercise =
   | SpeakRepetitionExercise
   | SpeakProductionExercise
   | GuidedWritingExercise
-  | SimpleFormExercise;
+  | SimpleFormExercise
+  | InteractionScenarioExercise;
 
 /**
  * Optional explicit lesson flow (Phase 5B): ordered interleaving of

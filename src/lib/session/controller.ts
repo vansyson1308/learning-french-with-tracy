@@ -21,6 +21,7 @@ import {
   emptySessionState,
   isPerfect,
   sessionReducer,
+  skipAllowed,
   type SessionMachineState,
 } from "./reducer";
 import {
@@ -218,16 +219,12 @@ export function useSessionController(definition: SessionDefinition): SessionCont
   }, [state, definition, progress, sfx]);
 
   const onSkip = useCallback(() => {
-    // Declared-unknown (§117) and the audio-unavailable escape (P7 §69-70,
-    // §81): allowed in placement, and on audio-dependent steps everywhere —
-    // a learner without audio continues without penalty; in checkpoints the
-    // skipped item simply yields insufficient evidence (P7 §104), and no
-    // learning memory mutates anywhere.
+    // Declared-unknown + device-dependent escapes: the rule itself is the
+    // reducer module's pure skipAllowed (§117; P7 §69-70/§104; P8 §24;
+    // P9 §36). No learning memory mutates on a skip anywhere.
     const step = currentStep(state);
     if (!step || step.type !== "exercise" || state.status !== "idle") return;
-    const audioDependent =
-      step.exercise.type === "listeningComprehension" || step.exercise.type === "dictation";
-    if (definition.kind !== "placement" && !audioDependent) return;
+    if (!skipAllowed(definition.kind, step.exercise.type)) return;
     haptics.tap();
     resetClock();
     dispatch({ type: "skip" });

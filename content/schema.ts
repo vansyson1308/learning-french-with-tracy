@@ -316,6 +316,18 @@ export const SimpleFormExerciseSchema = z.strictObject({
   objectiveTargets,
 });
 
+/**
+ * A whole authored multi-turn scenario runs as ONE session step (P9 §32):
+ * the exercise references the scenario by id; the graph itself lives in
+ * the interaction source and its compiled artifact.
+ */
+export const InteractionScenarioExerciseSchema = z.strictObject({
+  type: z.literal("interactionScenario"),
+  id,
+  scenarioId: z.string().regex(/^fr\.scenario\.[a-z0-9_]+$/),
+  objectiveTargets,
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
@@ -331,6 +343,7 @@ export const ExerciseSchema = z.discriminatedUnion("type", [
   SpeakProductionExerciseSchema,
   GuidedWritingExerciseSchema,
   SimpleFormExerciseSchema,
+  InteractionScenarioExerciseSchema,
 ]);
 
 /** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */
@@ -1182,3 +1195,79 @@ export const WritingTasksSchema = z.strictObject({
   tasks: z.array(WritingTaskSchema).min(1),
 });
 export type WritingTasks = z.infer<typeof WritingTasksSchema>;
+
+/* ------------------------------------------------------------------ */
+/* Spoken interaction (Phase 9 §24-§37)                                */
+/* ------------------------------------------------------------------ */
+
+const interactionNodeId = z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/);
+
+export const InteractionPartnerNodeSchema = z.strictObject({
+  kind: z.literal("partner"),
+  id: interactionNodeId,
+  text: z.string().min(1),
+  clipId: clipIdSchema,
+  rephraseText: z.string().min(1).optional(),
+  rephraseClipId: clipIdSchema.optional(),
+  next: interactionNodeId,
+});
+
+export const InteractionExpectedIntentSchema = z.strictObject({
+  intent: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+  acceptedVariants: z.array(z.string().min(1)).min(1),
+  requiredConcepts: z.array(z.array(z.string().min(1)).min(1)).min(1).optional(),
+  next: interactionNodeId,
+});
+
+export const InteractionLearnerNodeSchema = z.strictObject({
+  kind: z.literal("learner"),
+  id: interactionNodeId,
+  prompt: z.string().min(1),
+  expected: z.array(InteractionExpectedIntentSchema).min(1),
+  noMatchNext: interactionNodeId,
+  scored: z.boolean(),
+});
+
+export const InteractionTerminalNodeSchema = z.strictObject({
+  kind: z.literal("terminal"),
+  id: interactionNodeId,
+  outcome: z.enum(["goal_met", "goal_not_met"]),
+  text: z.string().min(1).optional(),
+  clipId: clipIdSchema.optional(),
+});
+
+export const InteractionNodeSchema = z.discriminatedUnion("kind", [
+  InteractionPartnerNodeSchema,
+  InteractionLearnerNodeSchema,
+  InteractionTerminalNodeSchema,
+]);
+
+export const INTERACTION_TASK_FAMILIES = [
+  "conversation",
+  "information_exchange",
+  "transaction",
+] as const;
+
+export const InteractionScenarioSchema = z.strictObject({
+  id: z.string().regex(/^fr\.scenario\.[a-z0-9_]+$/),
+  title: z.string().min(1),
+  goal: z.string().min(1),
+  taskFamily: z.enum(INTERACTION_TASK_FAMILIES),
+  objectiveRefs: z.array(objectiveId).min(1),
+  startNodeId: interactionNodeId,
+  nodes: z.record(interactionNodeId, InteractionNodeSchema),
+  support: z.strictObject({
+    allowRepeat: z.boolean(),
+    allowRephrase: z.boolean(),
+  }),
+  reserved: z.boolean(),
+  sourceRef: z.literal("original-project"),
+});
+export type InteractionScenarioSource = z.infer<typeof InteractionScenarioSchema>;
+
+export const InteractionScenariosSchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  scenarios: z.array(InteractionScenarioSchema).min(1),
+});
+export type InteractionScenarios = z.infer<typeof InteractionScenariosSchema>;

@@ -52,6 +52,12 @@ import {
   validateReception,
 } from "./lib/reception";
 import {
+  assessmentBankInteractionExercises,
+  compileInteractionArtifact,
+  loadInteractionScenarios,
+  validateInteraction,
+} from "./lib/interaction";
+import {
   assessmentBankWritingExercises,
   compileWritingArtifact,
   loadWritingTasks,
@@ -109,6 +115,13 @@ const validation = [
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
     frPack: readJson("content/courses/fr-en.json") as never,
     assessmentWriting: assessmentBankWritingExercises(),
+  }).errors,
+  ...validateInteraction({
+    interaction: loadInteractionScenarios(),
+    objectives: loadCourseObjectives(),
+    listening: loadListening(),
+    frPack: readJson("content/courses/fr-en.json") as never,
+    assessmentInteraction: assessmentBankInteractionExercises(),
   }).errors,
 ];
 if (validation.length > 0) {
@@ -254,6 +267,12 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
   files.push({
     relPath: "src/content/writing/fr-writing.json",
     contents: compileWritingArtifact(loadWritingTasks()),
+  });
+  // Phase-9 interaction scenarios — every scenario incl. reserved (the
+  // checkpoint executes reserved graphs); practice surfaces filter.
+  files.push({
+    relPath: "src/content/interaction/fr-scenarios.json",
+    contents: compileInteractionArtifact(loadInteractionScenarios()),
   });
   files.push({
     relPath: "content/reports/placement-coverage.json",

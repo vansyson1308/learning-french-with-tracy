@@ -11,6 +11,7 @@ import { ArticleSelect } from "@/components/exercises/article-select";
 import { ConjugationCloze } from "@/components/exercises/conjugation-cloze";
 import { Dictation } from "@/components/exercises/dictation";
 import { FillBlank } from "@/components/exercises/fill-blank";
+import { InteractionScenarioStep } from "@/components/exercises/interaction-scenario";
 import { ListeningComprehension } from "@/components/exercises/listening-comprehension";
 import { Match } from "@/components/exercises/match";
 import { ReadingComprehension } from "@/components/exercises/reading-comprehension";
@@ -285,6 +286,20 @@ export function ExerciseRenderer({
           answer={answer}
           status={status}
           scored={writing?.scored ?? false}
+          onAnswer={onAnswer}
+        />
+      );
+    case "interactionScenario":
+      // The whole conversation is one step riding the same speech session
+      // as the speak types; no recognizer context → no dead control.
+      if (!speech) return null;
+      return (
+        <InteractionScenarioStep
+          key={exercise.id}
+          exercise={exercise}
+          answer={answer}
+          status={status}
+          speech={speech}
           onAnswer={onAnswer}
         />
       );
