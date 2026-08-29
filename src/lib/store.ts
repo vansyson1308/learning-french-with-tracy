@@ -84,7 +84,16 @@ type ProgressState = {
   reviewLog: ReviewLogEntry[];
   /** Phase 6 learner assessment state (checkpoints + placement, v3). */
   assessment: PersistedAssessmentState;
+  /**
+   * When the learner acknowledged the network-backed speech recognition
+   * disclosure (P9 §7); null/absent = not yet shown-and-acknowledged.
+   * Additive optional field — no persist-version bump, backups pass it
+   * through, and older states hydrate without it.
+   */
+  speechNoticeAckAt?: number | null;
 
+  /** Acknowledge the §7 network-recognition disclosure (once, persisted). */
+  acknowledgeSpeechNotice: () => void;
   /**
    * Records a completed checkpoint attempt (§60). Assessment record ONLY:
    * no XP, no streak, no lesson completion, no FSRS/wordStats writes (§59).
@@ -179,6 +188,9 @@ export const useProgress = create<ProgressState>()(
       activeDays: {},
       reviewLog: [],
       assessment: emptyAssessmentState(),
+      speechNoticeAckAt: null,
+
+      acknowledgeSpeechNotice: () => set({ speechNoticeAckAt: Date.now() }),
 
       course: () => get().courses[get().activeCourseId] ?? emptyCourseProgress(),
 

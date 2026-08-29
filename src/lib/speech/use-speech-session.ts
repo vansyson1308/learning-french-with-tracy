@@ -47,6 +47,23 @@ export async function probeSpeechCapabilityOnce(): Promise<SpeechCapability> {
   }
 }
 
+/**
+ * One-shot POINT-OF-USE permission request for pre-session gates (P9 §8):
+ * starting a spoken checkpoint IS the point of use, so the preflight may
+ * request here — the learner never discovers mid-checkpoint that every item
+ * is unusable. Returns the refreshed capability snapshot.
+ */
+export async function requestSpeechPermissionOnce(): Promise<SpeechCapability> {
+  const adapter = new ExpoSpeechRecognizerAdapter();
+  try {
+    return await adapter.requestPermissions();
+  } catch {
+    return unavailableCapability("unknown");
+  } finally {
+    adapter.dispose();
+  }
+}
+
 export function useSpeechSession(enabled: boolean): SpeechSessionApi {
   const [port, setPort] = useState<SpeechRecognizerPort | null>(null);
   const [capability, setCapability] = useState<SpeechCapability | null>(null);

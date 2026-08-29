@@ -15,9 +15,12 @@ import type { SpokenAnswer } from "@/lib/grading";
 import {
   gateFor,
   gateMessage,
+  NETWORK_DISCLOSURE_TEXT,
+  networkDisclosureRequired,
   outcomeNotice,
   type SpeakStepContext,
 } from "@/lib/speech/step-policy";
+import { useProgress } from "@/lib/store";
 import type { SpeechSessionApi } from "@/lib/speech/use-speech-session";
 import { useSpeechAttempt } from "@/lib/speech/use-speech-attempt";
 import type { SpeechRecognizerPort } from "@/lib/speech/recognizer-port";
@@ -109,6 +112,11 @@ export function SpeakRecordControl({
   }, [outcome]);
 
   const gate = gateFor(session.capability, ctx);
+  const speechNoticeAckAt = useProgress((s) => s.speechNoticeAckAt ?? null);
+  const acknowledgeSpeechNotice = useProgress((s) => s.acknowledgeSpeechNotice);
+  const needsNetworkDisclosure =
+    gate.kind === "ready" &&
+    networkDisclosureRequired(session.capability, speechNoticeAckAt !== null);
   const budgetLeft = budget === null ? null : Math.max(0, budget - attemptsUsed);
   const outOfAttempts = budgetLeft !== null && budgetLeft === 0;
   const active =
@@ -183,6 +191,19 @@ export function SpeakRecordControl({
           />
         ) : null}
         {onSkip ? <DuoButton label="Skip this step" variant="white" onPress={onSkip} /> : null}
+      </View>
+    );
+  }
+
+  // §7 (P9): before the FIRST recording on a device whose system recognizer
+  // may use the network, say so once — plainly, not per-question, and never
+  // buried in a settings page. Recording stays closed until acknowledged.
+  if (needsNetworkDisclosure) {
+    return (
+      <View style={styles.wrap} testID="speech-network-notice">
+        <Text style={styles.rationale}>{NETWORK_DISCLOSURE_TEXT}</Text>
+        <DuoButton label="Got it" onPress={acknowledgeSpeechNotice} />
+        {skipLink}
       </View>
     );
   }
