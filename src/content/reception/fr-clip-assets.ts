@@ -45,4 +45,6 @@ export const RECEPTION_CLIP_ASSETS: Record<string, number> = {
   "fr.clip.cp3_dialogue_magasin": require("../../../assets/audio/fr-reception/aca93799acdff6919fa8.mp3"),
   "fr.clip.pl_lait": require("../../../assets/audio/fr-reception/110daa8d422c55edfa6f.mp3"),
   "fr.clip.pl_gare_annonce": require("../../../assets/audio/fr-reception/a0b1b5d038174aba2f95.mp3"),
+  "fr.clip.cp3_resto_plage": require("../../../assets/audio/fr-reception/9282c9fc7f6588ac21ac.mp3"),
+  "fr.clip.cp3_dictee_voie": require("../../../assets/audio/fr-reception/c8ae6de0fe20cfd40279.mp3"),
 };

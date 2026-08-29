@@ -21,10 +21,12 @@ describe("committed assessment data", () => {
     expect(validateAssessment().errors).toEqual([]);
   });
 
-  test("the graph has the authored shape: 24 objectives, 8 essential, 8 direct alignments", () => {
+  test("the graph has the authored shape: 24 objectives, 15 essential, 8 direct alignments", () => {
     const { objectives } = loadCourseObjectives();
     expect(objectives.length).toBe(24); // 17 Phase-6 + 7 Phase-7 receptive
-    expect(objectives.filter((o) => o.essential).length).toBe(8);
+    // 8 Phase-6 essentials + the 7 receptive objectives flipped essential
+    // in the same commit as the Section-3 checkpoint that assesses them.
+    expect(objectives.filter((o) => o.essential).length).toBe(15);
     const directs = objectives.flatMap((o) =>
       o.cefrAlignments.filter((a) => a.relation === "direct").map((a) => `${o.id}@${a.level}`)
     );
@@ -193,7 +195,7 @@ describe("validateClaimPolicyData — the gate stays activity-based", () => {
 });
 
 import { PackSchema, type ClaimPolicy as Policy, type CourseObjective } from "../../content/schema";
-import { validateCurriculumMapping } from "../lib/assessment";
+import { collectScoredItemEvidence, validateCurriculumMapping } from "../lib/assessment";
 import {
   buildCefrAlignment,
   buildObjectiveCoverage,
@@ -339,6 +341,36 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
       policy: policy(),
       checkpointItems: [],
     });
+    for (const level of gate.levels) {
+      expect({ level: level.level, claimable: level.claimable }).toEqual({
+        level: level.level,
+        claimable: false,
+      });
+    }
+  });
+
+  test("real checkpoint evidence: reception domains covered at A1; A1 overall still false (P7 §149, §181)", () => {
+    const evidence = [
+      ...collectScoredItemEvidence("content/fr/assessment/checkpoints.json", "checkpoints"),
+      ...collectScoredItemEvidence("content/fr/assessment/placement.json", "stages"),
+    ];
+    const gate = evaluateClaimGate({
+      objectives: spokenLess(),
+      policy: policy(),
+      checkpointItems: evidence,
+    });
+    const a1 = gate.levels.find((l) => l.level === "A1")!;
+    const domain = (id: string) => a1.domains.find((d) => d.domain === id)!;
+    // The Section-3 bank satisfies the hardened breadth gate for both
+    // reception domains: >=1 assessed direct objective (3 items / 2 inputs
+    // each), >=2 task families, >=2 scales.
+    expect(domain("spoken_reception").status).toBe("covered");
+    expect(domain("written_reception").status).toBe("covered");
+    // Production and interaction remain honestly unclaimed, so the OVERALL
+    // A1 claim stays false — teaching reception must never imply A1 (§181).
+    expect(domain("spoken_production").status).toBe("no_objectives_in_domain");
+    expect(domain("interaction").status).toBe("no_objectives_in_domain");
+    expect(a1.claimable).toBe(false);
     for (const level of gate.levels) {
       expect({ level: level.level, claimable: level.claimable }).toEqual({
         level: level.level,

@@ -15,8 +15,22 @@
       "domains": [
         {
           "domain": "spoken_reception",
-          "status": "objectives_not_assessed",
-          "directAssessedObjectives": []
+          "status": "insufficient_breadth",
+          "directAssessedObjectives": [
+            "fr.obj.listening.familiar_words"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "dictation",
+              "listeningComprehension"
+            ],
+            "scaleNames": [
+              "Listening comprehension (overall)"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.listening.familiar_words": 3
+            }
+          }
         },
         {
           "domain": "written_reception",
@@ -75,13 +89,53 @@
       "domains": [
         {
           "domain": "spoken_reception",
-          "status": "objectives_not_assessed",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.listening.announcements",
+            "fr.obj.listening.short_dialogues",
+            "fr.obj.listening.short_info"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "dictation",
+              "listeningComprehension"
+            ],
+            "scaleNames": [
+              "Listening to announcements & instructions",
+              "Listening to audio media & recordings",
+              "Understanding conversation between others"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.listening.short_info": 2,
+              "fr.obj.listening.announcements": 3,
+              "fr.obj.listening.short_dialogues": 2
+            }
+          }
         },
         {
           "domain": "written_reception",
-          "status": "objectives_not_assessed",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.reading.notices_info",
+            "fr.obj.reading.short_messages",
+            "fr.obj.reading.short_texts"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "readingComprehension",
+              "select"
+            ],
+            "scaleNames": [
+              "Reading comprehension (overall)",
+              "Reading correspondence (short messages)",
+              "Reading for orientation (signs & notices)"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.reading.short_messages": 2,
+              "fr.obj.reading.notices_info": 2,
+              "fr.obj.reading.short_texts": 2
+            }
+          }
         },
         {
           "domain": "spoken_production",
@@ -109,15 +163,13 @@
         "fr.obj.vocab.places_travel"
       ],
       "unassessedDomains": [
-        "spoken_reception",
-        "written_reception",
         "spoken_production",
         "written_production",
         "interaction"
       ],
       "evidenceLimitations": [
         "Spoken production is not assessed (no speaking assessment exists).",
-        "Listening is not assessed in scored assessment.",
+        "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity.",
         "Interaction is not assessed."
       ]
     },
