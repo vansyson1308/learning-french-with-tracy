@@ -168,4 +168,18 @@ jobs:
             echo "model weights were used on the runner and never committed."
           } > /tmp/commit-msg.txt
           git commit -F /tmp/commit-msg.txt
+          # Another dispatch-only workflow can push to the same branch while
+          # this one runs (proven by run 33231606347 racing the lexique
+          # extract): rebase onto the moved remote and retry. The committed
+          # paths are workflow-owned, so the rebase cannot conflict with a
+          # concurrent content push; if it somehow does, fail loudly.
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:${{ github.ref_name }}"; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) — rebasing onto the moved branch"
+            git fetch origin "${{ github.ref_name }}"
+            git rebase "origin/${{ github.ref_name }}"
+            sleep $((attempt * 5))
+          done
           git push origin "HEAD:${{ github.ref_name }}"
