@@ -399,6 +399,50 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
     }
   });
 
+  test("limitation wording tracks the domain status — assessed-but-narrow is never called unassessed (P8 Gate 0)", () => {
+    const evidence = [
+      ...collectScoredItemEvidence("content/fr/assessment/checkpoints.json", "checkpoints"),
+      ...collectScoredItemEvidence("content/fr/assessment/placement.json", "stages"),
+    ];
+    const gate = evaluateClaimGate({
+      objectives: spokenLess(),
+      policy: policy(),
+      checkpointItems: evidence,
+    });
+    for (const level of gate.levels) {
+      for (const d of level.domains) {
+        const display: Record<string, string> = {
+          spoken_reception: "Listening",
+          written_reception: "Reading",
+          spoken_production: "Spoken production",
+          written_production: "Written production",
+          interaction: "Interaction",
+        };
+        const line = level.evidenceLimitations.find((l) =>
+          l.startsWith(display[d.domain] ?? d.domain)
+        );
+        if (d.status === "covered") {
+          // Covered domains carry no limitation (the synthesized-audio
+          // disclosure is a separate, non-status line).
+          expect(line?.includes("not assessed") ?? false).toBe(false);
+        } else if (d.status === "insufficient_breadth") {
+          // THE Gate-0 regression: real scored evidence exists, so the
+          // wording must say "assessed … lacks breadth", never "not assessed".
+          expect(line).toContain("is assessed at this level");
+          expect(line).not.toContain("is not assessed");
+        } else {
+          expect(line).toBeDefined();
+        }
+      }
+    }
+    // Concrete pin on the real data: PRE_A1 listening has scored items now.
+    const pre = gate.levels.find((l) => l.level === "PRE_A1")!;
+    expect(pre.evidenceLimitations.join(" ")).not.toContain(
+      "Listening is not assessed in scored assessment"
+    );
+    expect(pre.evidenceLimitations.join(" ")).toContain("Listening is assessed at this level");
+  });
+
   test("lesson completion is not even an input: the gate takes content only", () => {
     const gate = evaluateClaimGate({
       objectives: spokenLess(),

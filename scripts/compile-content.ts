@@ -42,6 +42,7 @@ import {
   evaluateClaimGate,
 } from "./lib/assessment-reports";
 import {
+  compileAudioCensus,
   compileClipAssetsModule,
   compileListeningArtifact,
   compileReadingsArtifact,
@@ -208,6 +209,10 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
     files.push({
       relPath: "src/content/reception/fr-clip-assets.ts",
       contents: compileClipAssetsModule(listening),
+    });
+    files.push({
+      relPath: "content/reports/reception-audio-census.json",
+      contents: compileAudioCensus(listening),
     });
   }
   files.push({
