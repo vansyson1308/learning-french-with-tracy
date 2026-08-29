@@ -1,385 +1,83 @@
 {
   "generator": "scripts/reception-audio.ts qa",
-  "clipCount": 126,
-  "technicalFailures": 2,
+  "clipCount": 42,
+  "technicalFailures": 0,
   "speakerSummary": [
     {
       "speaker": "fr_FR-siwis-medium",
       "clips": 14,
-      "meanWer": 0.1869,
+      "meanWer": 0.1839,
       "technicalFailures": 0
     },
     {
-      "speaker": "fr_FR-mls-medium#0",
+      "speaker": "fr_FR-upmc-medium#1",
       "clips": 14,
-      "meanWer": 0.9793,
+      "meanWer": 0.1974,
       "technicalFailures": 0
     },
     {
-      "speaker": "fr_FR-mls-medium#6",
+      "speaker": "fr_FR-upmc-medium#0",
       "clips": 14,
-      "meanWer": 1.1233,
+      "meanWer": 0.2087,
       "technicalFailures": 0
-    },
-    {
-      "speaker": "fr_FR-mls-medium#1",
-      "clips": 14,
-      "meanWer": 1.2106,
-      "technicalFailures": 0
-    },
-    {
-      "speaker": "fr_FR-mls-medium#3",
-      "clips": 14,
-      "meanWer": 1.2942,
-      "technicalFailures": 0
-    },
-    {
-      "speaker": "fr_FR-mls-medium#2",
-      "clips": 14,
-      "meanWer": 1.313,
-      "technicalFailures": 0
-    },
-    {
-      "speaker": "fr_FR-mls-medium#7",
-      "clips": 14,
-      "meanWer": 1.3208,
-      "technicalFailures": 0
-    },
-    {
-      "speaker": "fr_FR-mls-medium#4",
-      "clips": 14,
-      "meanWer": 1.3398,
-      "technicalFailures": 0
-    },
-    {
-      "speaker": "fr_FR-mls-medium#5",
-      "clips": 14,
-      "meanWer": 2.4701,
-      "technicalFailures": 2
     }
   ],
   "clips": [
-    {
-      "clipId": "canary.accents.achete@mls-0",
-      "assetKey": "cb15375a88b93ba5c988",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 0,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 3.109,
-      "bytes": 25121,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.83,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café près de va fenêtre en été.",
-        "wer": 0.2
-      }
-    },
-    {
-      "clipId": "canary.accents.achete@mls-1",
-      "assetKey": "fea42ad34920211f8eb4",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 1,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 3.135,
-      "bytes": 25330,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.72,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café, près de rafonètre, en été.",
-        "wer": 0.3
-      }
-    },
-    {
-      "clipId": "canary.accents.achete@mls-2",
-      "assetKey": "fcf611cd0079710605e4",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 2.22,
-      "bytes": 18016,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 19.37,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café près de la fenêtre en l'été.",
-        "wer": 0.2
-      }
-    },
-    {
-      "clipId": "canary.accents.achete@mls-3",
-      "assetKey": "e3815404e0cf50b87b24",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 3.109,
-      "bytes": 25121,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.83,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café, près de va fenêtre en été.",
-        "wer": 0.2
-      }
-    },
-    {
-      "clipId": "canary.accents.achete@mls-4",
-      "assetKey": "f23141cb55ab3a76e2e5",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 3.004,
-      "bytes": 24285,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 14.31,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café près de vafonnêtres en été.",
-        "wer": 0.3
-      }
-    },
-    {
-      "clipId": "canary.accents.achete@mls-5",
-      "assetKey": "273cf9df87373ba8e9b7",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 3.135,
-      "bytes": 25330,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.72,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café près de Affonate en été.",
-        "wer": 0.3
-      }
-    },
-    {
-      "clipId": "canary.accents.achete@mls-6",
-      "assetKey": "02bdb2aa560e9c207d3a",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 3.265,
-      "bytes": 26375,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.17,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café pris de bafonnade en été.",
-        "wer": 0.4
-      }
-    },
-    {
-      "clipId": "canary.accents.achete@mls-7",
-      "assetKey": "8d9dee24974b5291d37f",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 3.161,
-      "bytes": 25539,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.6,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "achète du café près de la fenêtre en été.",
-        "wer": 0.1
-      }
-    },
     {
       "clipId": "canary.accents.achete@siwis",
       "assetKey": "665fb4c10cb22bcbb076",
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "J'achète du café près de la fenêtre en été.",
-      "durationSec": 2.351,
-      "bytes": 19061,
+      "durationSec": 2.482,
+      "bytes": 20106,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 18.29,
+      "charsPerSec": 17.33,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "achète du café près de la fenêtre en été.",
-        "wer": 0.1
+        "text": "ta chaîte du café près de la fenêtre en été.",
+        "wer": 0.2
       }
     },
     {
-      "clipId": "canary.announcement.train@mls-0",
-      "assetKey": "cea28405598f5a28ea9f",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.accents.achete@upmc-0",
+      "assetKey": "b28a93c047ac6ebdef76",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 3.918,
-      "bytes": 31599,
+      "transcript": "J'achète du café près de la fenêtre en été.",
+      "durationSec": 2.638,
+      "bytes": 21359,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.02,
+      "charsPerSec": 16.3,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Trin pour y en part à 15h, voie de...",
-        "wer": 0.7
+        "text": "j'achète du café près de la fenêtre en été.",
+        "wer": 0
       }
     },
     {
-      "clipId": "canary.announcement.train@mls-1",
-      "assetKey": "95fd702888e0d0f02664",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.accents.achete@upmc-1",
+      "assetKey": "62cf5c0fdeda31a69aa4",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 3.971,
-      "bytes": 32017,
+      "transcript": "J'achète du café près de la fenêtre en été.",
+      "durationSec": 2.377,
+      "bytes": 19270,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.84,
+      "charsPerSec": 18.09,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Trin pour y en part, à 15h, voie de...",
-        "wer": 0.7
-      }
-    },
-    {
-      "clipId": "canary.announcement.train@mls-2",
-      "assetKey": "57deedf51c3c46e6c9b6",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 3.527,
-      "bytes": 28465,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 14.46,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Trin pourrions par à 15h.",
-        "wer": 0.9
-      }
-    },
-    {
-      "clipId": "canary.announcement.train@mls-3",
-      "assetKey": "ab6d082ec1c2f8ed0724",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 4.963,
-      "bytes": 39959,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.28,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "C'est un pourillon par à 15h, voie 2, va !",
-        "wer": 0.9
-      }
-    },
-    {
-      "clipId": "canary.announcement.train@mls-4",
-      "assetKey": "b619b616747ce5a85d42",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 4.232,
-      "bytes": 34107,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 12.05,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "ce train pour l'ion, par à 15h voie de...",
-        "wer": 0.7
-      }
-    },
-    {
-      "clipId": "canary.announcement.train@mls-5",
-      "assetKey": "3c16de26308bc5e2fef0",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 4.389,
-      "bytes": 35361,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 11.62,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "un train pour l'ion par à 15h voie de l'eau.",
-        "wer": 0.9
-      }
-    },
-    {
-      "clipId": "canary.announcement.train@mls-6",
-      "assetKey": "ccba48f46cf50c823df4",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 3.683,
-      "bytes": 29719,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.85,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "30 pourrions par 15h voie de 1",
-        "wer": 1
-      }
-    },
-    {
-      "clipId": "canary.announcement.train@mls-7",
-      "assetKey": "c08e086a93f8d122ea53",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 3.553,
-      "bytes": 28674,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 14.36,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "le train pour lui en part à 15h, voie de !",
-        "wer": 0.5
+        "text": "j'achète du café près de la fenêtre en été.",
+        "wer": 0
       }
     },
     {
@@ -388,169 +86,55 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
-      "durationSec": 2.926,
-      "bytes": 23658,
+      "durationSec": 2.952,
+      "bytes": 23867,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.43,
+      "charsPerSec": 17.28,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le trampolillon par à 15h, voie 2.",
-        "wer": 0.7
+        "text": "Le train pour l'ion par à 15h, voie deux.",
+        "wer": 0.5
       }
     },
     {
-      "clipId": "canary.dialogue.cafe@mls-0",
-      "assetKey": "d30d1a999b1e31b31fa6",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.announcement.train@upmc-0",
+      "assetKey": "e8ed7bb424cface5b4c7",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 6.165,
-      "bytes": 49572,
+      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
+      "durationSec": 3.109,
+      "bytes": 25121,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 10.22,
+      "charsPerSec": 16.41,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "jour, un café, si le vous.  Ça, c'est une feu, c'est un feu.",
-        "wer": 0.9231
+        "text": "le train pour lui en part à 15h voie 2.",
+        "wer": 0.5
       }
     },
     {
-      "clipId": "canary.dialogue.cafe@mls-1",
-      "assetKey": "61c86ac0c9ff8b4bbca9",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.announcement.train@upmc-1",
+      "assetKey": "b7f13e17ef20f86668af",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 11.912,
-      "bytes": 95547,
+      "transcript": "Le train pour Lyon part à quinze heures, voie deux.",
+      "durationSec": 3.291,
+      "bytes": 26584,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.29,
+      "charsPerSec": 15.49,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Journe café. Si je vous pari, vous sentz...  ça, c'est pas vite. ça v'est pas vite.  Et ça, on vous pesons.",
-        "wer": 1.6154
-      }
-    },
-    {
-      "clipId": "canary.dialogue.cafe@mls-2",
-      "assetKey": "78d34f477a6dde2195b7",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 7.184,
-      "bytes": 57722,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.77,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Je vous cafée, s'il vous,  ben, c'est pas ça,  c'est pas ça, c'est pas ça, c'est pas ça,  ben, c'est pas ça, c'est pas ça,",
-        "wer": 2.1538
-      }
-    },
-    {
-      "clipId": "canary.dialogue.cafe@mls-3",
-      "assetKey": "3ff9b80a3900433f7c8c",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 7.158,
-      "bytes": 57513,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.8,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Enfin, je vous repas un café, si le boucle va pas rire.  Enfin, elle est pas, c'est de ce bruit, ça, c'est de ce que je veux, ça peut rire un peu avant.",
-        "wer": 2.4615
-      }
-    },
-    {
-      "clipId": "canary.dialogue.cafe@mls-4",
-      "assetKey": "b2f9abcbf0e41be858a3",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 8.176,
-      "bytes": 65663,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 7.71,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Je vous remercie.  Café, si vous, vas-y, c'est vrai.  C'est vrai, c'est vrai, c'est vrai, c'est vrai.  Ça, c'est vrai, c'est vrai.  Je ne peux pas passer.  C'est vrai.",
-        "wer": 2.7692
-      }
-    },
-    {
-      "clipId": "canary.dialogue.cafe@mls-5",
-      "assetKey": "de6c77a09495303289ae",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 13.244,
-      "bytes": 106205,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 4.76,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Je vous rappelle un jour, ON L'ÉTéma Extrait visualisé.  2, 3, 4, 5, 7, 4, 5, 5 ...",
-        "wer": 1.3077
-      }
-    },
-    {
-      "clipId": "canary.dialogue.cafe@mls-6",
-      "assetKey": "a0b857a0db4814b3014a",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 8.411,
-      "bytes": 67544,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 7.49,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "J'aurai un enceux café, s'il vous,  que l'on sait, sont invités, c'est vrai,  ça m'église, allez, parce que ça va être un enceux de temps.",
-        "wer": 1.8462
-      }
-    },
-    {
-      "clipId": "canary.dialogue.cafe@mls-7",
-      "assetKey": "912988cca8792dbda68b",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 9.038,
-      "bytes": 72559,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.97,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "les autres jours en ce café,  s'il vous,  dans les temps,  on les savait,  fait mal,  plus ça fait temps.",
-        "wer": 1.2308
+        "text": "le train pour Lyonpa à 15h voie 2.",
+        "wer": 0.5
       }
     },
     {
@@ -559,169 +143,55 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
-      "durationSec": 4.31,
-      "bytes": 34734,
+      "durationSec": 4.206,
+      "bytes": 33898,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.62,
+      "charsPerSec": 14.98,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
+        "text": "Bonjour, un café s'il vous plaît, bien sûr, ça fait deux euros.",
         "wer": 0
       }
     },
     {
-      "clipId": "canary.elision.eau@mls-0",
-      "assetKey": "253dc5675a3ae2c5d0a8",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.dialogue.cafe@upmc-0",
+      "assetKey": "79d5319d92848d264871",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 3.892,
-      "bytes": 31390,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.28,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "selon moi c'est froid dans l'héloin que c'est l'éloin qu'on voulait, c'est ça.",
-        "wer": 1.7778
-      }
-    },
-    {
-      "clipId": "canary.elision.eau@mls-1",
-      "assetKey": "3c2ea84f143fe4f2f35e",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 1,
-      "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 4.859,
-      "bytes": 39123,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.23,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Nous sommes empérés, froides de notre épée,  nous avions parlant ce qu'on pouvait être devant.",
-        "wer": 1.7778
-      }
-    },
-    {
-      "clipId": "canary.elision.eau@mls-2",
-      "assetKey": "3e6045324f0502db4d20",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "L'eau est froide et l'école est ouverte.",
+      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
       "durationSec": 4.441,
       "bytes": 35779,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.01,
+      "charsPerSec": 14.19,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Soit qu'on livre de froid vite et le jolique dans le lit où vous êtes venu.",
-        "wer": 1.7778
+        "text": "Bonjour, un café si vous plaît, bien sûr, ça fait 2 euros.",
+        "wer": 0.2308
       }
     },
     {
-      "clipId": "canary.elision.eau@mls-3",
-      "assetKey": "833872f18c1ae15153e0",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 3.318,
-      "bytes": 26793,
+      "clipId": "canary.dialogue.cafe@upmc-1",
+      "assetKey": "445f329b79f2961cc3e2",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Bonjour, un café s'il vous plaît. Bien sûr, ça fait deux euros.",
+      "durationSec": 4.284,
+      "bytes": 34525,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.06,
+      "charsPerSec": 14.71,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "il s'en pense pas en riche preuve et le recueil est ouvert grâce.",
-        "wer": 1.3333
-      }
-    },
-    {
-      "clipId": "canary.elision.eau@mls-4",
-      "assetKey": "eeac24ea0aeab8976fd4",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 4.467,
-      "bytes": 35988,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.95,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "et dans le froid, ils avaient paru, et qu'on vait que le seul.",
-        "wer": 1.4444
-      }
-    },
-    {
-      "clipId": "canary.elision.eau@mls-5",
-      "assetKey": "daee1ea5c2028d6375ce",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 6.844,
-      "bytes": 55005,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 5.84,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "C'est sympa, et puis il faut appeler dans l'épisode.  Parfois, on se retrouve avec l'épisode.",
-        "wer": 1.7778
-      }
-    },
-    {
-      "clipId": "canary.elision.eau@mls-6",
-      "assetKey": "30e614e568fe430a1187",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 4.545,
-      "bytes": 36615,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.8,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Un genre d'honneur est froide, et l'honneur dit que c'est pas réprouvé dans ce genre.",
-        "wer": 1.4444
-      }
-    },
-    {
-      "clipId": "canary.elision.eau@mls-7",
-      "assetKey": "440729a15e3f589a5bcb",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 4.937,
-      "bytes": 39750,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.1,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il s'en est danser, froid dans le temps, il y en a une pourrie, et il est couvait que mal.",
-        "wer": 2.1111
+        "text": "Bonjour, un café si vous plaît, bien sûr, sera fait 2 euros.",
+        "wer": 0.3077
       }
     },
     {
@@ -730,12 +200,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "L'eau est froide et l'école est ouverte.",
-      "durationSec": 2.717,
-      "bytes": 21986,
+      "durationSec": 2.586,
+      "bytes": 20941,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.72,
+      "charsPerSec": 15.47,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -744,155 +214,41 @@
       }
     },
     {
-      "clipId": "canary.elision.habite@mls-0",
-      "assetKey": "ed2f4cbdc432ec95aa46",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.elision.eau@upmc-0",
+      "assetKey": "0a05b1630aebb3785ce8",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 4.206,
-      "bytes": 33898,
+      "transcript": "L'eau est froide et l'école est ouverte.",
+      "durationSec": 2.247,
+      "bytes": 18225,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.32,
+      "charsPerSec": 17.81,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "à des taparis, et j'aime T-O.",
-        "wer": 0.6667
+        "text": "L'eau est froide et l'école est ouverte.",
+        "wer": 0
       }
     },
     {
-      "clipId": "canary.elision.habite@mls-1",
-      "assetKey": "b5ec4a96fdc6f74c304c",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.elision.eau@upmc-1",
+      "assetKey": "fc506def9490ab08d795",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 4.389,
-      "bytes": 35361,
+      "transcript": "L'eau est froide et l'école est ouverte.",
+      "durationSec": 2.377,
+      "bytes": 19270,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 7.98,
+      "charsPerSec": 16.83,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "à Paris  et j'aime",
-        "wer": 0.4444
-      }
-    },
-    {
-      "clipId": "canary.elision.habite@mls-2",
-      "assetKey": "586db4bb3427b70e21ea",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 3.448,
-      "bytes": 27838,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.15,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "A tout à pari. Et j'aime le tais.",
-        "wer": 0.5556
-      }
-    },
-    {
-      "clipId": "canary.elision.habite@mls-3",
-      "assetKey": "38d711ee39ba4f911a79",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 3.291,
-      "bytes": 26584,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.63,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "A vite à Paris et j'aime rôté de voix.",
-        "wer": 0.5556
-      }
-    },
-    {
-      "clipId": "canary.elision.habite@mls-4",
-      "assetKey": "2151de06a8eb298c3745",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 3.709,
-      "bytes": 29928,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 9.44,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "A vite à Paris, et j'aime reter un...",
-        "wer": 0.4444
-      }
-    },
-    {
-      "clipId": "canary.elision.habite@mls-5",
-      "assetKey": "5731597594377092ed88",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 4.206,
-      "bytes": 33898,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.32,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Rabilt à Paris.  Et j'aime, ouz, t'es...",
-        "wer": 0.5556
-      }
-    },
-    {
-      "clipId": "canary.elision.habite@mls-6",
-      "assetKey": "9b95ad44d96f0b755e21",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 3.03,
-      "bytes": 24494,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 11.55,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "La vie est à Paris, et je me t'aime.",
-        "wer": 0.7778
-      }
-    },
-    {
-      "clipId": "canary.elision.habite@mls-7",
-      "assetKey": "2e12702defbd2864aeb3",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 3.605,
-      "bytes": 29092,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 9.71,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "à Paris. Et j'aime, oh t'es, oh, devant.",
-        "wer": 0.7778
+        "text": "L'eau est froide et l'école est ouverte.",
+        "wer": 0
       }
     },
     {
@@ -901,12 +257,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "J'habite à Paris et j'aime l'hôtel.",
-      "durationSec": 2.064,
-      "bytes": 16762,
+      "durationSec": 2.011,
+      "bytes": 16344,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.96,
+      "charsPerSec": 17.4,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -915,155 +271,41 @@
       }
     },
     {
-      "clipId": "canary.liaison.enfants@mls-0",
-      "assetKey": "b45dcd2e8567c70f5ba8",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.elision.habite@upmc-0",
+      "assetKey": "9652ce453681489b6419",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 3.318,
-      "bytes": 26793,
+      "transcript": "J'habite à Paris et j'aime l'hôtel.",
+      "durationSec": 2.325,
+      "bytes": 18852,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.17,
+      "charsPerSec": 15.05,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Enfin, arrive dans un petit appartement.",
-        "wer": 0.4286
+        "text": "J'habite à Paris et j'aime l'hôtel.",
+        "wer": 0
       }
     },
     {
-      "clipId": "canary.liaison.enfants@mls-1",
-      "assetKey": "d60058f6c310698dd084",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.elision.habite@upmc-1",
+      "assetKey": "4d890592ecd7ea42ab3d",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 4.049,
-      "bytes": 32644,
+      "transcript": "J'habite à Paris et j'aime l'hôtel.",
+      "durationSec": 2.351,
+      "bytes": 19061,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 11.61,
+      "charsPerSec": 14.89,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ça, enfin, arrive dans un petit appartement.  Abra.",
-        "wer": 0.5714
-      }
-    },
-    {
-      "clipId": "canary.liaison.enfants@mls-2",
-      "assetKey": "103c74edfba52c942617",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 3.866,
-      "bytes": 31181,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 12.16,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "ce enfant arrive dans un petit appartement.",
-        "wer": 0.4286
-      }
-    },
-    {
-      "clipId": "canary.liaison.enfants@mls-3",
-      "assetKey": "e10cda0d0dbce7c676e7",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 4.598,
-      "bytes": 37033,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.22,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Enfin, arrive dans un petit appartement, oui.",
-        "wer": 0.5714
-      }
-    },
-    {
-      "clipId": "canary.liaison.enfants@mls-4",
-      "assetKey": "ea17d00568b95b0a1343",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 3.788,
-      "bytes": 30555,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 12.41,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Zé, ce enfant arrive dans un petit appartement.",
-        "wer": 0.5714
-      }
-    },
-    {
-      "clipId": "canary.liaison.enfants@mls-5",
-      "assetKey": "b533787520d505230080",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 4.075,
-      "bytes": 32853,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 11.53,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Enfin, avile dans un petit appartement.",
-        "wer": 0.4286
-      }
-    },
-    {
-      "clipId": "canary.liaison.enfants@mls-6",
-      "assetKey": "ed5c36fe39bdf10ad2d9",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 3.866,
-      "bytes": 31181,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 12.16,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "enfin, on va rive dans un petit appartement.",
-        "wer": 0.5714
-      }
-    },
-    {
-      "clipId": "canary.liaison.enfants@mls-7",
-      "assetKey": "9b4bbc73f4dc2598587c",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 3.553,
-      "bytes": 28674,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.23,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "en fin arrivent dans un petit appartement.",
-        "wer": 0.2857
+        "text": "J'habite à Paris et j'aime l'hôtel.",
+        "wer": 0
       }
     },
     {
@@ -1072,12 +314,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Les enfants arrivent dans un petit appartement.",
-      "durationSec": 2.247,
-      "bytes": 18225,
+      "durationSec": 2.22,
+      "bytes": 18016,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 20.92,
+      "charsPerSec": 21.17,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1086,155 +328,41 @@
       }
     },
     {
-      "clipId": "canary.liaison.vous@mls-0",
-      "assetKey": "28669481ac47930afa55",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.liaison.enfants@upmc-0",
+      "assetKey": "3d5c6ea55ba7d36601f9",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 3.997,
-      "bytes": 32226,
+      "transcript": "Les enfants arrivent dans un petit appartement.",
+      "durationSec": 2.743,
+      "bytes": 22195,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 10.01,
+      "charsPerSec": 17.14,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Avérise, c'est un très d'un ami.",
-        "wer": 0.5556
+        "text": "Les enfants arrivent dans un petit appartement.",
+        "wer": 0
       }
     },
     {
-      "clipId": "canary.liaison.vous@mls-1",
-      "assetKey": "cf418f935fcea50cbf32",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.liaison.enfants@upmc-1",
+      "assetKey": "5a55bd920ed87b7f44b6",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 4.206,
-      "bytes": 33898,
+      "transcript": "Les enfants arrivent dans un petit appartement.",
+      "durationSec": 2.586,
+      "bytes": 20941,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.51,
+      "charsPerSec": 18.17,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Averaison, c'est un très besoin d'amis.",
-        "wer": 0.6667
-      }
-    },
-    {
-      "clipId": "canary.liaison.vous@mls-2",
-      "assetKey": "f1a6bf45a10c9ce9c143",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 3.944,
-      "bytes": 31808,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.14,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "J'avais raison. C'est un vrai trait, n'amé.",
-        "wer": 0.6667
-      }
-    },
-    {
-      "clipId": "canary.liaison.vous@mls-3",
-      "assetKey": "f900a87c19d48f14df6b",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 4.676,
-      "bytes": 37660,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.55,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Avez raison, c'est un très faim, n'amie.",
-        "wer": 0.4444
-      }
-    },
-    {
-      "clipId": "canary.liaison.vous@mls-4",
-      "assetKey": "80980d429e6d44e762ac",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 3.918,
-      "bytes": 31599,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.21,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "A vrai, c'est un trait d'un ami.",
-        "wer": 0.6667
-      }
-    },
-    {
-      "clipId": "canary.liaison.vous@mls-5",
-      "assetKey": "5d11c61ed1078b613f48",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 6.165,
-      "bytes": 49572,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.49,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "J'avais raison, c'est un très nouvel nom.",
-        "wer": 0.4444
-      }
-    },
-    {
-      "clipId": "canary.liaison.vous@mls-6",
-      "assetKey": "a6e8d0cdb3a1e5887198",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 2.873,
-      "bytes": 23240,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.92,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "la vie réseau, c'est très l'un ami.",
-        "wer": 0.6667
-      }
-    },
-    {
-      "clipId": "canary.liaison.vous@mls-7",
-      "assetKey": "2cf98bcd24960ce0e0ad",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Vous avez raison, c'est un très bon ami.",
-      "durationSec": 3.631,
-      "bytes": 29301,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 11.02,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "J'avais raison, c'est très bon ami.",
-        "wer": 0.3333
+        "text": "Les enfants arrivent dans un petit appartement.",
+        "wer": 0
       }
     },
     {
@@ -1252,162 +380,46 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Vous avez raison, c'est un très bon ami.",
-        "wer": 0
+        "text": "Aux avais raisons, c'est un très bon ami.",
+        "wer": 0.3333
       }
     },
     {
-      "clipId": "canary.nasal.vin@mls-0",
-      "assetKey": "85654e21c0558471642f",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.liaison.vous@upmc-0",
+      "assetKey": "f03cb76d90a18f8edc3c",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 4.963,
-      "bytes": 39959,
+      "transcript": "Vous avez raison, c'est un très bon ami.",
+      "durationSec": 2.247,
+      "bytes": 18225,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 6.85,
+      "charsPerSec": 17.81,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Donc, c'est pas de l'épisode, c'est de faire passer  par la vie de l'aise et par les états de l'accueil.",
-        "wer": 3
+        "text": "Vous avez raison, c'est un très bon mami.",
+        "wer": 0.1111
       }
     },
     {
-      "clipId": "canary.nasal.vin@mls-1",
-      "assetKey": "80ded1e4232ffa478d35",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.liaison.vous@upmc-1",
+      "assetKey": "a0ac903fb1be2b89ca39",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 6.74,
-      "bytes": 54169,
+      "transcript": "Vous avez raison, c'est un très bon ami.",
+      "durationSec": 2.795,
+      "bytes": 22613,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.04,
+      "charsPerSec": 14.31,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "S'il se passe au pied, ça passe, le passe,  Ah c'est pas c'est peu peu, euh...  Euh, ça commence.",
-        "wer": 2.75
-      }
-    },
-    {
-      "clipId": "canary.nasal.vin@mls-2",
-      "assetKey": "aec1ec453e986817cb8a",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 5.616,
-      "bytes": 45183,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.05,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "sans qu'ils qu'on veut, ils veulent un passé,  ils veulent un passé, ça va, ça va, ça va, ça va.",
-        "wer": 2.625
-      }
-    },
-    {
-      "clipId": "canary.nasal.vin@mls-3",
-      "assetKey": "c0ef1424a3818a6763f8",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 5.198,
-      "bytes": 41839,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.54,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "C'est ça qu'il a besoin, on ne fait pas lui, on lui faisait, ça va répasser, c'est ça qu'il a besoin",
-        "wer": 3.125
-      }
-    },
-    {
-      "clipId": "canary.nasal.vin@mls-4",
-      "assetKey": "d54304cf7cf0164a3834",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 6.191,
-      "bytes": 49781,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 5.49,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Des gens vont vinegarir plus tard會 vise ces pensées  d'am clays 하낛",
-        "wer": 1.5
-      }
-    },
-    {
-      "clipId": "canary.nasal.vin@mls-5",
-      "assetKey": "ab614ed6c981063d9a87",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 9.378,
-      "bytes": 75276,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 3.63,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.6 chars/sec)"
-      ],
-      "asr": {
-        "text": "sa vie, sa aze,  la aze,  la grève aze, aze,  la vie, sa aze, sa aze,  sa aze, sa aze, sa aze.",
-        "wer": 2.75
-      }
-    },
-    {
-      "clipId": "canary.nasal.vin@mls-6",
-      "assetKey": "b8afb288181fcfeb0bd4",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 5.59,
-      "bytes": 44974,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.08,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "C'est bien sûr qu'on se passe de mesocelles par exemple, c'est pas bien sûr qu'on se passe.",
-        "wer": 2.625
-      }
-    },
-    {
-      "clipId": "canary.nasal.vin@mls-7",
-      "assetKey": "98c0a117df69d05df2bf",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 6.191,
-      "bytes": 49781,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 5.49,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "faisant qu'il connaît ses pensions, ça parlait du bon sens parce qu'il connaît que c'était ça parlait, faisant le sol.",
-        "wer": 2.75
+        "text": "Vous avez raison. C'est un très bon ami.",
+        "wer": 0
       }
     },
     {
@@ -1416,169 +428,55 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Un bon vin blanc et du pain chaud.",
-      "durationSec": 1.907,
-      "bytes": 15508,
+      "durationSec": 1.829,
+      "bytes": 14881,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.83,
+      "charsPerSec": 18.59,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Un bon vin blanc et du pan chaud.",
+        "text": "Un bon vin blanc et du pin chaud.",
         "wer": 0.125
       }
     },
     {
-      "clipId": "canary.numbers.71@mls-0",
-      "assetKey": "039f5e57b009f93ffa54",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.nasal.vin@upmc-0",
+      "assetKey": "29c276230b9ca99bb6f7",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 4.754,
-      "bytes": 38287,
+      "transcript": "Un bon vin blanc et du pain chaud.",
+      "durationSec": 1.881,
+      "bytes": 15299,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.89,
+      "charsPerSec": 18.08,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "ce soit son évolueuse passe dans 10 minutes",
-        "wer": 0.6667
+        "text": "un beau vingt blancs et du par chaud.",
+        "wer": 0.5
       }
     },
     {
-      "clipId": "canary.numbers.71@mls-1",
-      "assetKey": "1ff716a31fa93fa1f48a",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.nasal.vin@upmc-1",
+      "assetKey": "0c5af08f806dc39e7ffe",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 4.676,
-      "bytes": 37660,
+      "transcript": "Un bon vin blanc et du pain chaud.",
+      "durationSec": 2.011,
+      "bytes": 16344,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 10.05,
+      "charsPerSec": 16.9,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est ce que ce soit sans et on ne se passe dans 10 minutes.",
-        "wer": 1.2222
-      }
-    },
-    {
-      "clipId": "canary.numbers.71@mls-2",
-      "assetKey": "807c2372bfb6ba376d63",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 4.153,
-      "bytes": 33480,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 11.32,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "besoin de plus de 60 et que l'espace d'un diminu besoin d'un rêve.",
-        "wer": 1.6667
-      }
-    },
-    {
-      "clipId": "canary.numbers.71@mls-3",
-      "assetKey": "ae84475607899355f655",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 4.31,
-      "bytes": 34734,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.9,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Ça, c'est pas du, ça, sois sans, et que je ne spasse dans 10 minutes.",
-        "wer": 1.4444
-      }
-    },
-    {
-      "clipId": "canary.numbers.71@mls-4",
-      "assetKey": "74f08529221a64065484",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 4.415,
-      "bytes": 35570,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.65,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "un sepsus 60, et là, on se passe dans 10 minutes.",
-        "wer": 0.7778
-      }
-    },
-    {
-      "clipId": "canary.numbers.71@mls-5",
-      "assetKey": "f88b75b7afc279754c61",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 5.538,
-      "bytes": 44556,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.49,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Ça, on s'est 60, et qu'on va les se passer dans 10 minutes.",
-        "wer": 1.3333
-      }
-    },
-    {
-      "clipId": "canary.numbers.71@mls-6",
-      "assetKey": "279c66493055783a3d72",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 4.754,
-      "bytes": 38287,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 9.89,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Je suis soixant et pour un espace dans 10 minutes.",
-        "wer": 0.7778
-      }
-    },
-    {
-      "clipId": "canary.numbers.71@mls-7",
-      "assetKey": "98b335272f2d278883af",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Le bus soixante et onze passe dans dix minutes.",
-      "durationSec": 4.127,
-      "bytes": 33271,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 11.39,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "que ça s'est passé 6 ans et il ne se passe pas d'un jour, une minute.",
-        "wer": 1.7778
+        "text": "un bon 20 blanc et du pâchot.",
+        "wer": 0.375
       }
     },
     {
@@ -1601,155 +499,41 @@
       }
     },
     {
-      "clipId": "canary.numbers.95@mls-0",
-      "assetKey": "96e4166f4468d127ef0c",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.numbers.71@upmc-0",
+      "assetKey": "3c731b8977ad4ec04611",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 4.206,
-      "bytes": 33898,
+      "transcript": "Le bus soixante et onze passe dans dix minutes.",
+      "durationSec": 2.56,
+      "bytes": 20733,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.84,
+      "charsPerSec": 18.36,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Il y a 95 personnes et 16 chiffres.",
-        "wer": 0.5
+        "text": "Le bus 60 et 11 passent en 10 minutes.",
+        "wer": 0.5556
       }
     },
     {
-      "clipId": "canary.numbers.95@mls-1",
-      "assetKey": "9a781cf4a406793f6a87",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.numbers.71@upmc-1",
+      "assetKey": "490774573b0b5b5d3c19",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 4.911,
-      "bytes": 39541,
+      "transcript": "Le bus soixante et onze passe dans dix minutes.",
+      "durationSec": 2.351,
+      "bytes": 19061,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 11,
+      "charsPerSec": 19.99,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Il va 95 personnes, et 16, chez eux, hein.",
-        "wer": 0.9
-      }
-    },
-    {
-      "clipId": "canary.numbers.95@mls-2",
-      "assetKey": "2213d4177edfd442b2a2",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 4.153,
-      "bytes": 33480,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il a 85 personnes et 16 chez eux.",
-        "wer": 0.7
-      }
-    },
-    {
-      "clipId": "canary.numbers.95@mls-3",
-      "assetKey": "38dfab6c49e06bce075a",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 3.5,
-      "bytes": 28256,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 15.43,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il y a 95 personnes et 16 chers.",
-        "wer": 0.5
-      }
-    },
-    {
-      "clipId": "canary.numbers.95@mls-4",
-      "assetKey": "bff688c60f0807d04029",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 4.127,
-      "bytes": 33271,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.08,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il y a 95 personnes et 16 chefs.",
-        "wer": 0.5
-      }
-    },
-    {
-      "clipId": "canary.numbers.95@mls-5",
-      "assetKey": "01a409049e3f5ad3cdf2",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 5.433,
-      "bytes": 43720,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 9.94,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il y a 95 personnes et 16 chefs à zéro.",
-        "wer": 0.7
-      }
-    },
-    {
-      "clipId": "canary.numbers.95@mls-6",
-      "assetKey": "8d893da25b4eeb5690ac",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 4.571,
-      "bytes": 36824,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 11.81,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il y a 95 personnes et c'est le chais.",
-        "wer": 0.7
-      }
-    },
-    {
-      "clipId": "canary.numbers.95@mls-7",
-      "assetKey": "b4a1f0b2a82c155fd647",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 4.258,
-      "bytes": 34316,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 12.68,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il y a 95 personnes et 16 chefs.",
-        "wer": 0.5
+        "text": "Le bus 71 passe en 10 minutes.",
+        "wer": 0.5556
       }
     },
     {
@@ -1758,12 +542,31 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
-      "durationSec": 2.9,
-      "bytes": 23449,
+      "durationSec": 2.873,
+      "bytes": 23240,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 18.62,
+      "charsPerSec": 18.79,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Il y a 95 personnes et ses chaise.",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "canary.numbers.95@upmc-0",
+      "assetKey": "825710851a45a9c6258b",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 0,
+      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
+      "durationSec": 3.37,
+      "bytes": 27211,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.02,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1772,157 +575,22 @@
       }
     },
     {
-      "clipId": "canary.oe.soeur@mls-0",
-      "assetKey": "65174ec991a671f3f7ac",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 0,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 4.545,
-      "bytes": 36615,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 7.26,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "pour avancer, c'est moi, c'est …  Ozipe, c'est moi, c'est moi, c'est …",
-        "wer": 2
-      }
-    },
-    {
-      "clipId": "canary.oe.soeur@mls-1",
-      "assetKey": "53e9c12d534499d368d4",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.numbers.95@upmc-1",
+      "assetKey": "19baa0ab29069b2c6be5",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 7.602,
-      "bytes": 61066,
+      "transcript": "Il y a quatre-vingt-quinze personnes et seize chaises.",
+      "durationSec": 2.664,
+      "bytes": 21568,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.34,
+      "charsPerSec": 20.27,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est passé, c'est passé bother  C'est passé, c'est passé ! LDALA Sorry for helping the doors  C'est passé !",
-        "wer": 2.75
-      }
-    },
-    {
-      "clipId": "canary.oe.soeur@mls-2",
-      "assetKey": "f9cf45e922ca4a51944f",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 4.702,
-      "bytes": 37869,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 7.02,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Je vous ai besoin de parler, je vous ai besoin de parler.  Je vous ai besoin de parler.  Je vous ai besoin de parler.  Bon, à fond.",
-        "wer": 3.125
-      }
-    },
-    {
-      "clipId": "canary.oe.soeur@mls-3",
-      "assetKey": "9280b944fa5061dbbf89",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 6.4,
-      "bytes": 51453,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 5.16,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "parce que ça y passait pas du Christ  pas c'était pas du Christ  pas du Christ  pas du Christ  pense pas de hardness  gauche",
-        "wer": 3
-      }
-    },
-    {
-      "clipId": "canary.oe.soeur@mls-4",
-      "assetKey": "d26fb6c8aae042d48c45",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 5.486,
-      "bytes": 44138,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.02,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Je parle un peu propice de course,  parce que je les détails bien,",
-        "wer": 1.5
-      }
-    },
-    {
-      "clipId": "canary.oe.soeur@mls-5",
-      "assetKey": "71ca253685dd10eb9d20",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 9.038,
-      "bytes": 72559,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 3.65,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.7 chars/sec)"
-      ],
-      "asr": {
-        "text": "c'est ogsåEm  cfe  ça  c'est os onge  ng  ng  ly  ng",
-        "wer": 1.625
-      }
-    },
-    {
-      "clipId": "canary.oe.soeur@mls-6",
-      "assetKey": "b8474528954c4cdd290e",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 5.747,
-      "bytes": 46228,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 5.74,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "C'est passé, c'est passé caste, c'est passé, c'est passé, c'est passé, c'est passé, paï這樣.",
-        "wer": 2.5
-      }
-    },
-    {
-      "clipId": "canary.oe.soeur@mls-7",
-      "assetKey": "5dde18b847440956c28b",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 5.172,
-      "bytes": 41630,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.38,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "le p�er est pegé de sa part  de sa part  de sa part  de sa part  de sa part  de sa part",
-        "wer": 2.75
+        "text": "Il y a 95 personnes et 16 chaises.",
+        "wer": 0.4
       }
     },
     {
@@ -1931,169 +599,55 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Ma sœur mange un œuf de bon cœur.",
-      "durationSec": 2.142,
-      "bytes": 17389,
+      "durationSec": 2.168,
+      "bytes": 17598,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.41,
+      "charsPerSec": 15.22,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ma sœur mange un œuvre de bon coeur !",
+        "text": "Ma sœur mange un euf de bon cœur.",
         "wer": 0.125
       }
     },
     {
-      "clipId": "canary.question.gare@mls-0",
-      "assetKey": "34e85326e988546b8d79",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.oe.soeur@upmc-0",
+      "assetKey": "eec700b783b9e2dc1411",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 2.743,
-      "bytes": 22195,
+      "transcript": "Ma sœur mange un œuf de bon cœur.",
+      "durationSec": 3.056,
+      "bytes": 24703,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.03,
+      "charsPerSec": 10.8,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est une... C'est une... C'est une... C'est une...",
-        "wer": 1.375
+        "text": "M'asseur mange un neuf de bon cœur.",
+        "wer": 0.375
       }
     },
     {
-      "clipId": "canary.question.gare@mls-1",
-      "assetKey": "8423398af43de7c0589d",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.oe.soeur@upmc-1",
+      "assetKey": "ad396278b101a426dbf0",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 5.172,
-      "bytes": 41630,
+      "transcript": "Ma sœur mange un œuf de bon cœur.",
+      "durationSec": 1.933,
+      "bytes": 15717,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 6.38,
+      "charsPerSec": 17.07,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bah ça marche, ça marche.  Ah ça marche, ça va toujours.  Non pas ça, ça marche.",
-        "wer": 2
-      }
-    },
-    {
-      "clipId": "canary.question.gare@mls-2",
-      "assetKey": "204ce9d4ee44f37102b3",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 5.172,
-      "bytes": 41630,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.38,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Si vous pensez, pensez, pensez, pensez, pensez, pensez, passez, passez, passez par ceux qui sont délicatifs.",
-        "wer": 2
-      }
-    },
-    {
-      "clipId": "canary.question.gare@mls-3",
-      "assetKey": "642f1034377943700fac",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 3.866,
-      "bytes": 31181,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.54,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Il va sais pas si vous tää corre car il va faire les defenses  mais si vousYO le pa interpréh castle",
-        "wer": 2.5
-      }
-    },
-    {
-      "clipId": "canary.question.gare@mls-4",
-      "assetKey": "1df21d144f2d5cfd3029",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 4.206,
-      "bytes": 33898,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 7.85,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "dannons dans mes deux astronautes  Lotus-Laurent s' 뜻er  il está classique  et c'est…  Vendez miser  il vient de vous  vous présCalmer  pour ceci  de votre hurting  avant de faire venir  ainsi que ce n'est pas  de taadore  mais le vedσait  le 있었  encore",
-        "wer": 5.375
-      }
-    },
-    {
-      "clipId": "canary.question.gare@mls-5",
-      "assetKey": "3a4c44d78e5a45b13742",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 8.072,
-      "bytes": 64827,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 4.09,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est pas c'est",
-        "wer": 20.75
-      }
-    },
-    {
-      "clipId": "canary.question.gare@mls-6",
-      "assetKey": "6d71b128c6df4a80da47",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 5.068,
-      "bytes": 40795,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.51,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "c'est pas identical  s'il parle bien sur mon son",
-        "wer": 1
-      }
-    },
-    {
-      "clipId": "canary.question.gare@mls-7",
-      "assetKey": "7c7509f08e50e15d14b3",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 4.127,
-      "bytes": 33271,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "et vous s'adressez pas, c'est pas un truc de c'est un jeu, le sang et le pesait de toi.",
-        "wer": 2.625
+        "text": "Ma sœur mange un œuvre de bon cœur.",
+        "wer": 0.125
       }
     },
     {
@@ -2102,12 +656,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Où est la gare, s'il vous plaît ?",
-      "durationSec": 1.646,
-      "bytes": 13418,
+      "durationSec": 1.593,
+      "bytes": 13000,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 20.05,
+      "charsPerSec": 20.71,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -2116,155 +670,41 @@
       }
     },
     {
-      "clipId": "canary.question.viens@mls-0",
-      "assetKey": "9df6cefdb6c3364c359f",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.question.gare@upmc-0",
+      "assetKey": "228cc66fa7aa54a3fa3d",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 3.213,
-      "bytes": 25957,
+      "transcript": "Où est la gare, s'il vous plaît ?",
+      "durationSec": 1.985,
+      "bytes": 16135,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 10.27,
+      "charsPerSec": 16.62,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est bien avec nous demain, Marse.",
-        "wer": 0.6667
+        "text": "Où est la gare, s'il vous plaît ?",
+        "wer": 0
       }
     },
     {
-      "clipId": "canary.question.viens@mls-1",
-      "assetKey": "9cc0b992a2c3108c1d9d",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.question.gare@upmc-1",
+      "assetKey": "48d256ced8c372eb12c8",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 5.695,
-      "bytes": 45810,
+      "transcript": "Où est la gare, s'il vous plaît ?",
+      "durationSec": 2.038,
+      "bytes": 16553,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.79,
+      "charsPerSec": 16.2,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "ça vient, avec nous, demain, va réparer, hein, réparer.",
-        "wer": 1
-      }
-    },
-    {
-      "clipId": "canary.question.viens@mls-2",
-      "assetKey": "cfe92c91d0b58325c813",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 4.18,
-      "bytes": 33689,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 7.9,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "ça vient d'avec nous demain,  bah c'est pas ça.",
-        "wer": 1.3333
-      }
-    },
-    {
-      "clipId": "canary.question.viens@mls-3",
-      "assetKey": "d76c3b3d969a0ef56a6f",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 3.683,
-      "bytes": 29719,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 8.96,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Vient avec nous de ma vérité.",
-        "wer": 0.8333
-      }
-    },
-    {
-      "clipId": "canary.question.viens@mls-4",
-      "assetKey": "6838c3650bbd50fe9eaf",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 4.911,
-      "bytes": 39541,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 6.72,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Ça vient avec nous, le marre, rafait à ce heureux.",
-        "wer": 1.3333
-      }
-    },
-    {
-      "clipId": "canary.question.viens@mls-5",
-      "assetKey": "121afe43cbbd2965a77f",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 4.362,
-      "bytes": 35152,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 7.56,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Donc viens, avec nous, demain, navez-t-à-z, à l'aise.",
-        "wer": 1.3333
-      }
-    },
-    {
-      "clipId": "canary.question.viens@mls-6",
-      "assetKey": "73452ddf154a6ee18c76",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 3.109,
-      "bytes": 25121,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.62,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Ça, vient d'avec noudement l'art, etc.",
-        "wer": 1.1667
-      }
-    },
-    {
-      "clipId": "canary.question.viens@mls-7",
-      "assetKey": "445cccfac24142fbaac2",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 3.161,
-      "bytes": 25539,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.44,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Bien avec nous, te marre d'un fait, c'est pas, il n'y a pas.",
-        "wer": 2.5
+        "text": "Où est la gare ? Si le vous plaît !",
+        "wer": 0.25
       }
     },
     {
@@ -2273,12 +713,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Tu viens avec nous demain matin ?",
-      "durationSec": 1.672,
-      "bytes": 13627,
+      "durationSec": 1.541,
+      "bytes": 12582,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 19.74,
+      "charsPerSec": 21.41,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -2287,155 +727,41 @@
       }
     },
     {
-      "clipId": "canary.verbs.silent@mls-0",
-      "assetKey": "dc6628faa0a2a6c6cd12",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.question.viens@upmc-0",
+      "assetKey": "136f76b0081e1be68871",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 0,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 3.422,
-      "bytes": 27629,
+      "transcript": "Tu viens avec nous demain matin ?",
+      "durationSec": 1.75,
+      "bytes": 14254,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.73,
+      "charsPerSec": 18.85,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "mangement ensemble, et elle finit son travail.",
-        "wer": 0.25
+        "text": "Tu viens avec nous demain matin.",
+        "wer": 0
       }
     },
     {
-      "clipId": "canary.verbs.silent@mls-1",
-      "assetKey": "24831a19433dcd90491e",
-      "voiceId": "fr_FR-mls-medium",
+      "clipId": "canary.question.viens@upmc-1",
+      "assetKey": "74517a7c133188c82878",
+      "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 3.918,
-      "bytes": 31599,
+      "transcript": "Tu viens avec nous demain matin ?",
+      "durationSec": 1.724,
+      "bytes": 14045,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 11.99,
+      "charsPerSec": 19.14,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Mange ensemble, et elle finit son travail.",
-        "wer": 0.25
-      }
-    },
-    {
-      "clipId": "canary.verbs.silent@mls-2",
-      "assetKey": "8b21ea6da62583133c93",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 2,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 3.579,
-      "bytes": 28883,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.13,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "un manche ensemble, et elle finit son travail.",
-        "wer": 0.25
-      }
-    },
-    {
-      "clipId": "canary.verbs.silent@mls-3",
-      "assetKey": "f59015e0274372053255",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 3,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 4.441,
-      "bytes": 35779,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 10.58,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "mange ensemble, et elle finit son travail.",
-        "wer": 0.25
-      }
-    },
-    {
-      "clipId": "canary.verbs.silent@mls-4",
-      "assetKey": "ca931554e4d6f6153f96",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 4,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 3.5,
-      "bytes": 28256,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.43,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Manche ensemble, et le fini s'en travaille.",
-        "wer": 0.875
-      }
-    },
-    {
-      "clipId": "canary.verbs.silent@mls-5",
-      "assetKey": "3f563a50fe917318d8cc",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 5,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 5.198,
-      "bytes": 41839,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 9.04,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "ça mange bien ensemble, et elle finit son travail.",
-        "wer": 0.375
-      }
-    },
-    {
-      "clipId": "canary.verbs.silent@mls-6",
-      "assetKey": "04501c758c06a6adade3",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 6,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 3.892,
-      "bytes": 31390,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 12.08,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Manje d'ensemble, et elle finit son travail.",
-        "wer": 0.25
-      }
-    },
-    {
-      "clipId": "canary.verbs.silent@mls-7",
-      "assetKey": "b225ed8a0a1843d4a00a",
-      "voiceId": "fr_FR-mls-medium",
-      "speaker": 7,
-      "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 3.474,
-      "bytes": 28047,
-      "maxVolumeDb": null,
-      "leadingSilenceSec": null,
-      "trailingSilenceSec": null,
-      "charsPerSec": 13.53,
-      "technical": "pass",
-      "technicalIssues": [],
-      "asr": {
-        "text": "Vraiment je ensemble et elle finit son travail.",
-        "wer": 0.25
+        "text": "Tu viens avec nous demain matin ?",
+        "wer": 0
       }
     },
     {
@@ -2444,17 +770,55 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Ils mangent ensemble et elle finit son travail.",
-      "durationSec": 3.422,
-      "bytes": 27629,
+      "durationSec": 3.37,
+      "bytes": 27211,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.73,
+      "charsPerSec": 13.95,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "et le manche t'ensemble et elle finit son travail.",
-        "wer": 0.5
+        "text": "Ils mangent ensemble et elles finit son travail.",
+        "wer": 0.125
+      }
+    },
+    {
+      "clipId": "canary.verbs.silent@upmc-0",
+      "assetKey": "0f5b47248496d0edd03e",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 0,
+      "transcript": "Ils mangent ensemble et elle finit son travail.",
+      "durationSec": 2.664,
+      "bytes": 21568,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.64,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Il mange ensemble et elle finit son travail.",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "canary.verbs.silent@upmc-1",
+      "assetKey": "6a16063ac7af78df28ee",
+      "voiceId": "fr_FR-upmc-medium",
+      "speaker": 1,
+      "transcript": "Ils mangent ensemble et elle finit son travail.",
+      "durationSec": 2.508,
+      "bytes": 20315,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.74,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Il mange ensemble et elle finit son travail.",
+        "wer": 0.25
       }
     }
   ]
