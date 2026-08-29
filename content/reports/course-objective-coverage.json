@@ -976,6 +976,82 @@
       "exercisesTargeting": 2,
       "checkpointItems": 3,
       "placementItems": 0
+    },
+    {
+      "id": "fr.obj.interaction.everyday_conversation",
+      "title": "Everyday conversation",
+      "category": "interaction",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.speaking.formulaic",
+        "fr.obj.speaking.self_intro",
+        "fr.obj.listening.short_dialogues"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall oral interaction",
+          "relation": "direct"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Conversation",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:us-l0",
+        "fr-en:us-l1",
+        "fr-en:us-l2",
+        "fr-en:us-l3",
+        "fr-en:uv-l0",
+        "fr-en:uv-l1",
+        "fr-en:uv-l2",
+        "fr-en:uv-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 16,
+      "exercisesTargeting": 4,
+      "checkpointItems": 3,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.interaction.practical_needs",
+      "title": "Practical needs and simple transactions",
+      "category": "interaction",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.speaking.give_info",
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Obtaining goods and services",
+          "relation": "direct"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Information exchange",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:ut-l0",
+        "fr-en:ut-l1",
+        "fr-en:ut-l2",
+        "fr-en:ut-l3",
+        "fr-en:uu-l0",
+        "fr-en:uu-l1",
+        "fr-en:uu-l2",
+        "fr-en:uu-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 15,
+      "exercisesTargeting": 4,
+      "checkpointItems": 3,
+      "placementItems": 0
     }
   ]
 }

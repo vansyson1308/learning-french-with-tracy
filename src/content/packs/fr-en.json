@@ -15682,6 +15682,785 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fr-en:section-6",
+      "title": "Section 6: Talk with someone",
+      "units": [
+        {
+          "id": "fr-en:unit-s",
+          "title": "Premiers échanges",
+          "description": "Real first exchanges: hello, how are you, names, goodbye.",
+          "guidebook": "A French conversation has a rhythm: Bonjour ! - Ça va ? - Ça va bien, merci. Et toi ? You don't need long sentences; you need the RIGHT short ones, said at the right moment. In these conversations, tap the buttons to hear a line again or to hear it more simply - asking for help is part of real A1 French, and it never counts against you.",
+          "words": [
+            {
+              "target": "salut",
+              "native": "hi / bye (informal)",
+              "emoji": "🙋"
+            },
+            {
+              "target": "bonsoir",
+              "native": "good evening",
+              "emoji": "🌙"
+            },
+            {
+              "target": "au revoir",
+              "native": "goodbye",
+              "emoji": "👋"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:us-l0",
+              "title": "Hello, how are you?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Ça va ?",
+                  "options": [
+                    {
+                      "text": "How are you?"
+                    },
+                    {
+                      "text": "Where are you?"
+                    },
+                    {
+                      "text": "Who are you?"
+                    },
+                    {
+                      "text": "What time is it?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: it's going well, thanks",
+                  "tokens": [
+                    "merci",
+                    "bien",
+                    "ça",
+                    "va"
+                  ],
+                  "answer": [
+                    "ça",
+                    "va",
+                    "bien",
+                    "merci"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Je dois partir.",
+                  "options": [
+                    {
+                      "text": "I have to leave."
+                    },
+                    {
+                      "text": "I want to eat."
+                    },
+                    {
+                      "text": "I live here."
+                    },
+                    {
+                      "text": "I am late."
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:us-l1",
+              "title": "Conversation: a quick hello",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s6-e4",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: goodbye, have a good day",
+                  "tokens": [
+                    "journée",
+                    "au",
+                    "bonne",
+                    "revoir"
+                  ],
+                  "answer": [
+                    "au",
+                    "revoir",
+                    "bonne",
+                    "journée"
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e5",
+                  "scenarioId": "fr.scenario.salut_ca_va",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:us-l2",
+              "title": "Names",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e6",
+                  "mode": "targetToNative",
+                  "prompt": "Comment vous appelez-vous ?",
+                  "options": [
+                    {
+                      "text": "What is your name?"
+                    },
+                    {
+                      "text": "How old are you?"
+                    },
+                    {
+                      "text": "Where do you live?"
+                    },
+                    {
+                      "text": "How are you?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: me, it's Marc",
+                  "tokens": [
+                    "c'est",
+                    "Marc",
+                    "moi"
+                  ],
+                  "answer": [
+                    "moi",
+                    "c'est",
+                    "Marc"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e8",
+                  "mode": "targetToNative",
+                  "prompt": "Enchanté !",
+                  "options": [
+                    {
+                      "text": "Nice to meet you!"
+                    },
+                    {
+                      "text": "Excuse me!"
+                    },
+                    {
+                      "text": "See you soon!"
+                    },
+                    {
+                      "text": "Well done!"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:us-l3",
+              "title": "Conversation: meeting someone",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e9",
+                  "scenarioId": "fr.scenario.rencontre_nom",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-t",
+          "title": "Au café, au magasin",
+          "description": "Order, buy, and pay with simple polite French.",
+          "guidebook": "Je voudrais... (I would like) opens almost every polite request: Je voudrais un café, s'il vous plaît. The server may ask Et avec ça ? (anything else?) - answer with more, or C'est tout (that's all). Prices come back with ça fait... - listen for the number.",
+          "words": [
+            {
+              "target": "le thé",
+              "native": "the tea",
+              "emoji": "🍵"
+            },
+            {
+              "target": "le jus",
+              "native": "the juice",
+              "emoji": "🧃"
+            },
+            {
+              "target": "payer",
+              "native": "to pay",
+              "emoji": "💶"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ut-l0",
+              "title": "May I help you?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e10",
+                  "mode": "targetToNative",
+                  "prompt": "Vous désirez ?",
+                  "options": [
+                    {
+                      "text": "What would you like?"
+                    },
+                    {
+                      "text": "Are you leaving?"
+                    },
+                    {
+                      "text": "Do you understand?"
+                    },
+                    {
+                      "text": "Are you hungry?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e11",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I would like a coffee, please",
+                  "tokens": [
+                    "s'il",
+                    "un",
+                    "je",
+                    "café",
+                    "voudrais",
+                    "vous",
+                    "plaît"
+                  ],
+                  "answer": [
+                    "je",
+                    "voudrais",
+                    "un",
+                    "café",
+                    "s'il",
+                    "vous",
+                    "plaît"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e12",
+                  "mode": "targetToNative",
+                  "prompt": "Et avec ça ?",
+                  "options": [
+                    {
+                      "text": "Anything else?"
+                    },
+                    {
+                      "text": "How is it?"
+                    },
+                    {
+                      "text": "Who is it?"
+                    },
+                    {
+                      "text": "At what time?"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:ut-l1",
+              "title": "Conversation: at the café",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s6-e13",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: that's two euros",
+                  "tokens": [
+                    "deux",
+                    "fait",
+                    "ça",
+                    "euros"
+                  ],
+                  "answer": [
+                    "ça",
+                    "fait",
+                    "deux",
+                    "euros"
+                  ]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e14",
+                  "scenarioId": "fr.scenario.cafe_boisson",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:ut-l2",
+              "title": "That's all, thanks",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e15",
+                  "mode": "targetToNative",
+                  "prompt": "C'est tout.",
+                  "options": [
+                    {
+                      "text": "That's all."
+                    },
+                    {
+                      "text": "It's here."
+                    },
+                    {
+                      "text": "It's early."
+                    },
+                    {
+                      "text": "That's wrong."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e16",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I would like some bread",
+                  "tokens": [
+                    "pain",
+                    "voudrais",
+                    "je",
+                    "du"
+                  ],
+                  "answer": [
+                    "je",
+                    "voudrais",
+                    "du",
+                    "pain"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:ut-l3",
+              "title": "Conversation: at the shop",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e17",
+                  "scenarioId": "fr.scenario.magasin_courses",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-u",
+          "title": "Trouver son chemin",
+          "description": "Ask where places are and understand short directions.",
+          "guidebook": "To find your way you only need one question: Où est... ? (where is...?). Add s'il vous plaît and you are unmistakably polite. The answers reuse words you know: à gauche (left), à droite (right), tout droit (straight on), là-bas (over there). Say Merci beaucoup ! and you're done.",
+          "words": [
+            {
+              "target": "la gare",
+              "native": "the train station",
+              "emoji": "🚉"
+            },
+            {
+              "target": "la gauche",
+              "native": "the left",
+              "emoji": "⬅️"
+            },
+            {
+              "target": "la droite",
+              "native": "the right",
+              "emoji": "➡️"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uu-l0",
+              "title": "Where is...?",
+              "exercises": [
+                {
+                  "type": "wordBank",
+                  "id": "s6-e18",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: where is the station, please?",
+                  "tokens": [
+                    "la",
+                    "où",
+                    "s'il",
+                    "gare",
+                    "est",
+                    "plaît",
+                    "vous"
+                  ],
+                  "answer": [
+                    "où",
+                    "est",
+                    "la",
+                    "gare",
+                    "s'il",
+                    "vous",
+                    "plaît"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e19",
+                  "mode": "targetToNative",
+                  "prompt": "C'est tout droit, puis à gauche.",
+                  "options": [
+                    {
+                      "text": "It's straight on, then left."
+                    },
+                    {
+                      "text": "It's closed on Mondays."
+                    },
+                    {
+                      "text": "It's behind you."
+                    },
+                    {
+                      "text": "It's very far."
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:uu-l1",
+              "title": "Conversation: the station",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e20",
+                  "mode": "targetToNative",
+                  "prompt": "Je peux vous aider ?",
+                  "options": [
+                    {
+                      "text": "Can I help you?"
+                    },
+                    {
+                      "text": "Can you hear me?"
+                    },
+                    {
+                      "text": "Do you like it?"
+                    },
+                    {
+                      "text": "Are we there?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e21",
+                  "scenarioId": "fr.scenario.ou_gare",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:uu-l2",
+              "title": "Left, right, over there",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e22",
+                  "mode": "targetToNative",
+                  "prompt": "L'hôtel est là-bas, à droite.",
+                  "options": [
+                    {
+                      "text": "The hotel is over there, on the right."
+                    },
+                    {
+                      "text": "The hotel is closed today."
+                    },
+                    {
+                      "text": "The hotel is behind the station."
+                    },
+                    {
+                      "text": "The hotel is on the left."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e23",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: I'm looking for the hotel",
+                  "tokens": [
+                    "l'hôtel",
+                    "je",
+                    "cherche"
+                  ],
+                  "answer": [
+                    "je",
+                    "cherche",
+                    "l'hôtel"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            },
+            {
+              "id": "fr-en:uu-l3",
+              "title": "Conversation: the hotel",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e24",
+                  "scenarioId": "fr.scenario.ou_hotel",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.practical_needs"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.practical_needs"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-v",
+          "title": "Faire des projets",
+          "description": "Agree on days, times and places - and say what you'd like.",
+          "guidebook": "Plans at A1 are three questions: Quel jour ? (which day), À quelle heure ? (at what time), Où ça ? (where). Answer with what you know: demain, samedi, à dix heures, au café. To accept warmly: Parfait ! Super ! À demain !",
+          "words": [
+            {
+              "target": "demain",
+              "native": "tomorrow",
+              "emoji": "🌅"
+            },
+            {
+              "target": "l'heure",
+              "native": "the hour",
+              "emoji": "⏰"
+            },
+            {
+              "target": "le restaurant",
+              "native": "the restaurant",
+              "emoji": "🍽️"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uv-l0",
+              "title": "Which day? What time?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e25",
+                  "mode": "targetToNative",
+                  "prompt": "À quelle heure ?",
+                  "options": [
+                    {
+                      "text": "At what time?"
+                    },
+                    {
+                      "text": "On which floor?"
+                    },
+                    {
+                      "text": "In which city?"
+                    },
+                    {
+                      "text": "With whom?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e26",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: tomorrow at ten o'clock",
+                  "tokens": [
+                    "heures",
+                    "à",
+                    "demain",
+                    "dix"
+                  ],
+                  "answer": [
+                    "demain",
+                    "à",
+                    "dix",
+                    "heures"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s6-e27",
+                  "mode": "targetToNative",
+                  "prompt": "On se voit où ?",
+                  "options": [
+                    {
+                      "text": "Where do we meet?"
+                    },
+                    {
+                      "text": "When do we eat?"
+                    },
+                    {
+                      "text": "Why do we wait?"
+                    },
+                    {
+                      "text": "Who else is coming?"
+                    }
+                  ],
+                  "correct": 0
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:uv-l1",
+              "title": "Conversation: making a plan",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e28",
+                  "scenarioId": "fr.scenario.rendez_vous",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:uv-l2",
+              "title": "Would you like something?",
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "s6-e29",
+                  "mode": "targetToNative",
+                  "prompt": "Tu veux boire quelque chose ?",
+                  "options": [
+                    {
+                      "text": "Do you want something to drink?"
+                    },
+                    {
+                      "text": "Do you want to leave now?"
+                    },
+                    {
+                      "text": "Can you say that again?"
+                    },
+                    {
+                      "text": "Are you cold?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "s6-e30",
+                  "direction": "nativeToTarget",
+                  "prompt": "Arrange: yes, some water please (to a friend)",
+                  "tokens": [
+                    "te",
+                    "de",
+                    "oui",
+                    "s'il",
+                    "l'eau",
+                    "plaît"
+                  ],
+                  "answer": [
+                    "oui",
+                    "de",
+                    "l'eau",
+                    "s'il",
+                    "te",
+                    "plaît"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            },
+            {
+              "id": "fr-en:uv-l3",
+              "title": "Conversation: at a friend's place",
+              "exercises": [
+                {
+                  "type": "interactionScenario",
+                  "id": "s6-e31",
+                  "scenarioId": "fr.scenario.chez_ami",
+                  "objectiveTargets": [
+                    "fr.obj.interaction.everyday_conversation"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.interaction.everyday_conversation"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

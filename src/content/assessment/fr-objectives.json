@@ -33,7 +33,9 @@
     "fr.obj.writing.personal_info",
     "fr.obj.writing.phrases_sentences",
     "fr.obj.writing.short_message",
-    "fr.obj.writing.form_filling"
+    "fr.obj.writing.form_filling",
+    "fr.obj.interaction.everyday_conversation",
+    "fr.obj.interaction.practical_needs"
   ],
   "byId": {
     "fr.obj.greetings.basic": {
@@ -683,6 +685,58 @@
           "scaleName": "Notes, messages and forms",
           "relation": "direct",
           "sourceRef": "cefr-cv-2020:notes-messages-forms"
+        }
+      ]
+    },
+    "fr.obj.interaction.everyday_conversation": {
+      "id": "fr.obj.interaction.everyday_conversation",
+      "title": "Everyday conversation",
+      "canDo": "I can take part in a short, simple conversation with a patient partner — greet someone, exchange simple everyday questions and answers, and close the exchange — relying on repetition and rephrasing when I need them.",
+      "category": "interaction",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.speaking.formulaic",
+        "fr.obj.speaking.self_intro",
+        "fr.obj.listening.short_dialogues"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall oral interaction",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-interaction"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Conversation",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:conversation"
+        }
+      ]
+    },
+    "fr.obj.interaction.practical_needs": {
+      "id": "fr.obj.interaction.practical_needs",
+      "title": "Practical needs and simple transactions",
+      "canDo": "I can ask for everyday things and handle very simple transactions — order, buy, ask where something is, ask the time or the price — and understand the short answer.",
+      "category": "interaction",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.speaking.give_info",
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Obtaining goods and services",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:obtaining-goods-services"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Information exchange",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:information-exchange"
         }
       ]
     }

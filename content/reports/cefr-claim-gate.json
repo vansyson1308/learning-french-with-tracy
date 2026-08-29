@@ -62,7 +62,7 @@
         },
         {
           "domain": "interaction",
-          "status": "no_objectives_in_domain",
+          "status": "no_direct_objective",
           "directAssessedObjectives": []
         }
       ],
@@ -87,7 +87,7 @@
     },
     {
       "level": "A1",
-      "claimable": false,
+      "claimable": true,
       "domains": [
         {
           "domain": "spoken_reception",
@@ -200,8 +200,28 @@
         },
         {
           "domain": "interaction",
-          "status": "no_objectives_in_domain",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.interaction.everyday_conversation",
+            "fr.obj.interaction.practical_needs"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "conversation",
+              "information_exchange",
+              "transaction"
+            ],
+            "scaleNames": [
+              "Conversation",
+              "Information exchange",
+              "Obtaining goods and services",
+              "Overall oral interaction"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.interaction.everyday_conversation": 3,
+              "fr.obj.interaction.practical_needs": 3
+            }
+          }
         }
       ],
       "coveredCompetences": [
@@ -213,11 +233,8 @@
         "fr.obj.vocab.everyday_basics",
         "fr.obj.vocab.places_travel"
       ],
-      "unassessedDomains": [
-        "interaction"
-      ],
+      "unassessedDomains": [],
       "evidenceLimitations": [
-        "Interaction is not assessed (no direct assessment exists at this level).",
         "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity."
       ]
     },
@@ -247,7 +264,7 @@
         },
         {
           "domain": "interaction",
-          "status": "no_objectives_in_domain",
+          "status": "no_direct_objective",
           "directAssessedObjectives": []
         }
       ],

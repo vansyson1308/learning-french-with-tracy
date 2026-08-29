@@ -52,6 +52,14 @@
       "level": "A1",
       "scales": [
         {
+          "scaleName": "Conversation",
+          "sourceRef": "cefr-cv-2020:conversation",
+          "direct": [
+            "fr.obj.interaction.everyday_conversation"
+          ],
+          "supports": []
+        },
+        {
           "scaleName": "Correspondence",
           "sourceRef": "cefr-cv-2020:correspondence",
           "direct": [
@@ -80,6 +88,14 @@
           "supports": [
             "fr.obj.strategy.cognate_transfer"
           ]
+        },
+        {
+          "scaleName": "Information exchange",
+          "sourceRef": "cefr-cv-2020:information-exchange",
+          "direct": [
+            "fr.obj.interaction.practical_needs"
+          ],
+          "supports": []
         },
         {
           "scaleName": "Listening comprehension (overall)",
@@ -114,6 +130,14 @@
           "supports": []
         },
         {
+          "scaleName": "Obtaining goods and services",
+          "sourceRef": "cefr-cv-2020:obtaining-goods-services",
+          "direct": [
+            "fr.obj.interaction.practical_needs"
+          ],
+          "supports": []
+        },
+        {
           "scaleName": "Orthographic control",
           "sourceRef": "cefr-cv-2020:orthographic-control",
           "direct": [],
@@ -122,6 +146,14 @@
             "fr.obj.writing.familiar_words",
             "fr.obj.writing.personal_info"
           ]
+        },
+        {
+          "scaleName": "Overall oral interaction",
+          "sourceRef": "cefr-cv-2020:overall-oral-interaction",
+          "direct": [
+            "fr.obj.interaction.everyday_conversation"
+          ],
+          "supports": []
         },
         {
           "scaleName": "Overall oral production",
