@@ -244,9 +244,28 @@ export function validateContent(): ValidationResult {
           }
   }
 
-  // Catalog (hand-maintained) still validates and matches compiled counts.
+  // Catalog (hand-maintained) still validates — and its advertised counts
+  // must MATCH each pack (P9.10: the French row silently rotted at Phase
+  // 5B's "10 units · 40 lessons" while the course grew to 27/108; a
+  // hand-maintained display number needs a machine check).
   const catalog = CatalogSchema.safeParse(readJson("src/content/catalog.json"));
   if (!catalog.success) err(`catalog.json: ${catalog.error.issues[0]?.message}`);
+  if (catalog.success) {
+    for (const course of catalog.data.courses) {
+      const pack = PackSchema.safeParse(readJson(`content/courses/${course.id}.json`));
+      if (!pack.success) continue; // pack schema errors are reported elsewhere
+      const units = pack.data.sections.reduce((n, s) => n + s.units.length, 0);
+      const lessons = pack.data.sections.reduce(
+        (n, s) => n + s.units.reduce((m, u) => m + u.lessons.length, 0),
+        0
+      );
+      if (course.unitCount !== units || course.lessonCount !== lessons) {
+        err(
+          `catalog.json: ${course.id} advertises ${course.unitCount} units · ${course.lessonCount} lessons but the pack has ${units} · ${lessons}`
+        );
+      }
+    }
+  }
 
   errors.push(...validateRegistry().errors);
   return { errors, warnings };
