@@ -672,6 +672,60 @@
    ],
    "essential": false,
    "evidenceNote": "Assessed by discrete labeled form fields checked deterministically against the cue facts; an empty form is insufficient evidence, never failure."
+  },
+  {
+   "id": "fr.obj.interaction.everyday_conversation",
+   "title": "Everyday conversation",
+   "canDo": "I can take part in a short, simple conversation with a patient partner — greet someone, exchange simple everyday questions and answers, and close the exchange — relying on repetition and rephrasing when I need them.",
+   "category": "interaction",
+   "prerequisites": [
+    "fr.obj.speaking.formulaic",
+    "fr.obj.speaking.self_intro",
+    "fr.obj.listening.short_dialogues"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Overall oral interaction",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:overall-oral-interaction"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Conversation",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:conversation"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Assessed by multi-turn deterministic scenarios where the recognized meaning decides the partner's next turn; repeat/rephrase support is tracked and never penalized, and technical speech failures yield insufficient evidence, never a fail."
+  },
+  {
+   "id": "fr.obj.interaction.practical_needs",
+   "title": "Practical needs and simple transactions",
+   "canDo": "I can ask for everyday things and handle very simple transactions — order, buy, ask where something is, ask the time or the price — and understand the short answer.",
+   "category": "interaction",
+   "prerequisites": [
+    "fr.obj.speaking.give_info",
+    "fr.obj.listening.short_info",
+    "fr.obj.numbers.0_100"
+   ],
+   "cefrAlignments": [
+    {
+     "level": "A1",
+     "scaleName": "Obtaining goods and services",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:obtaining-goods-services"
+    },
+    {
+     "level": "A1",
+     "scaleName": "Information exchange",
+     "relation": "direct",
+     "sourceRef": "cefr-cv-2020:information-exchange"
+    }
+   ],
+   "essential": true,
+   "evidenceNote": "Assessed by multi-turn scenario items in shop/café/travel settings; passing requires the communicative goal AND first-attempt intent matches on scored turns (repair keeps the conversation alive but is recorded)."
   }
  ]
 }

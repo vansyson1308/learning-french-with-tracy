@@ -2428,6 +2428,97 @@
      }
     }
    ]
+  },
+  {
+   "id": "fr.checkpoint.section-6",
+   "checkpointVersion": 1,
+   "sectionId": "fr-en:section-6",
+   "title": "Section 6 check",
+   "description": "Show that you can TALK with someone - six short conversations with a patient partner. You will hear the partner (no written French) and answer by speaking. Asking to hear a line again, or more simply, never counts against you.",
+   "criteria": {
+    "minItemsPerObjective": 3,
+    "demonstratedShare": 0.66
+   },
+   "items": [
+    {
+     "id": "fr.cpi.s6.rencontre",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.interaction.everyday_conversation"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "interactionScenario",
+      "id": "fr-cpx-s6-1",
+      "scenarioId": "fr.scenario.cp_rencontre"
+     }
+    },
+    {
+     "id": "fr.cpi.s6.faire_connaissance",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.interaction.everyday_conversation"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "interactionScenario",
+      "id": "fr-cpx-s6-2",
+      "scenarioId": "fr.scenario.cp_faire_connaissance"
+     }
+    },
+    {
+     "id": "fr.cpi.s6.projets",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.interaction.everyday_conversation"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "interactionScenario",
+      "id": "fr-cpx-s6-3",
+      "scenarioId": "fr.scenario.cp_projets"
+     }
+    },
+    {
+     "id": "fr.cpi.s6.cafe",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.interaction.practical_needs"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "interactionScenario",
+      "id": "fr-cpx-s6-4",
+      "scenarioId": "fr.scenario.cp_cafe"
+     }
+    },
+    {
+     "id": "fr.cpi.s6.boulangerie",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.interaction.practical_needs"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "interactionScenario",
+      "id": "fr-cpx-s6-5",
+      "scenarioId": "fr.scenario.cp_boulangerie"
+     }
+    },
+    {
+     "id": "fr.cpi.s6.billet",
+     "itemVersion": 1,
+     "objectiveTargets": [
+      "fr.obj.interaction.practical_needs"
+     ],
+     "essential": true,
+     "exercise": {
+      "type": "interactionScenario",
+      "id": "fr-cpx-s6-6",
+      "scenarioId": "fr.scenario.cp_billet"
+     }
+    }
+   ]
   }
  ]
 }
