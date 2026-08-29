@@ -23,6 +23,7 @@
         "expo-router": "~56.2.10",
         "expo-sharing": "~56.0.17",
         "expo-speech": "~56.0.3",
+        "expo-speech-recognition": "56.0.4",
         "expo-splash-screen": "~56.0.10",
         "expo-sqlite": "~56.0.5",
         "expo-status-bar": "~56.0.4",
@@ -980,6 +981,8 @@
     "expo-sharing": ["expo-sharing@56.0.25", "", { "dependencies": { "@expo/config-plugins": "^56.0.15", "@expo/config-types": "^56.0.7", "@expo/plist": "^0.7.0" }, "peerDependencies": { "expo": "*", "react": "*", "react-native": "*" } }, "sha512-X3QviZbMuWrizYmsGojmbahoKBappNe8AvGl+g+Heh1Ebgr3thHotJbBOkgTK5scBszA3qc83MZTtHJ3gAtRaQ=="],
 
     "expo-speech": ["expo-speech@56.0.3", "", { "peerDependencies": { "expo": "*" } }, "sha512-NkO7RX+BgJCALrjL/6C9AsyenkmJD9EBDIKAQmSN6BLrcXxwZnyQ9TSo/ZTSDSY9Y28aStXHfEBQogt2qUrP9w=="],
+
+    "expo-speech-recognition": ["expo-speech-recognition@56.0.4", "", { "peerDependencies": { "expo": "*", "react": "*", "react-native": "*" } }, "sha512-6Sh6aeKSG4W81TYfHUL8sgOxO++YrUi5Zhpmu5tiWurm6NP5hFL1SHd6+GbtV7Fyo4Cc35AofR9QxiSROZMJcQ=="],
 
     "expo-splash-screen": ["expo-splash-screen@56.0.10", "", { "dependencies": { "@expo/config-plugins": "~56.0.8", "@expo/image-utils": "^0.10.1", "xml2js": "0.6.0" }, "peerDependencies": { "expo": "*" } }, "sha512-vDIlo8hzt9HlCZQ0kSY66v83D1WEXOJbVMeyPDfXDu9tbDdPMNUyDpi4WGJXikAjxnAKfbt5Mv5NnEbxINy+VA=="],
 
