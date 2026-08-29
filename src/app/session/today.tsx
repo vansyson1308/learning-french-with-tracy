@@ -14,6 +14,7 @@ import { courseCapabilities } from "@/lib/capabilities";
 import { useCourseContent } from "@/lib/content";
 import { dueFrenchReviewQueue } from "@/lib/learning/engine";
 import { listenWordClipIndex } from "@/lib/reception/content";
+import { speakExerciseIndex } from "@/lib/speech/content";
 import {
   composeTodayFromSnapshot,
   TODAY_PRESETS,
@@ -29,7 +30,10 @@ function isPreset(value: unknown): value is TodayPreset {
 }
 
 export default function TodaySessionRoute() {
-  const { preset: presetParam } = useLocalSearchParams<{ preset?: string }>();
+  const { preset: presetParam, speak: speakParam } = useLocalSearchParams<{
+    preset?: string;
+    speak?: string;
+  }>();
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const { pack } = useCourseContent(activeCourseId);
 
@@ -50,6 +54,9 @@ export default function TodaySessionRoute() {
       preset,
       placementFloor: state.assessment.placementFloor,
       listenClips: listenWordClipIndex(),
+      // "Can't speak now" (P8 §17): speak=0 composes a fully silent session;
+      // the due speak cards stay honestly in the backlog.
+      speakExercises: speakParam === "0" ? undefined : speakExerciseIndex(),
     });
     return {
       plan,
@@ -66,7 +73,7 @@ export default function TodaySessionRoute() {
     };
     // Snapshot semantics: only a fresh navigation composes a fresh session.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [presetParam, activeCourseId]);
+  }, [presetParam, speakParam, activeCourseId]);
 
   if (!courseCapabilities(activeCourseId).dailySession) {
     return <Redirect href="/" />;

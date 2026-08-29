@@ -34,17 +34,24 @@ export type PlacementPlanContent = {
 /**
  * Per-item outcome: true/false from grading, null = explicit "I don't
  * know" (§117), "audio_unavailable" = a skipped AUDIO-dependent item
- * (P7 §110) — a device problem, never evidence about the learner.
+ * (P7 §110), "speech_unavailable" = a speaking item the device could not
+ * administer (P8 §22) — device problems, never evidence about the learner.
  */
-export type PlacementAnswer = boolean | null | "audio_unavailable";
+export type PlacementAnswer = boolean | null | "audio_unavailable" | "speech_unavailable";
 export type PlacementAnswers = Record<string, PlacementAnswer>;
+
+/** Device-state answers that estimate NOTHING about the learner. */
+export function isUnavailableAnswer(answer: PlacementAnswer | undefined): boolean {
+  return answer === "audio_unavailable" || answer === "speech_unavailable";
+}
 
 /**
  * Assemble engine answers from a finished scored session: first-attempt
  * verdicts, with an explicit "I don't know" recorded as null (§115-117).
  * A skip on an audio-dependent step (listening comprehension, dictation)
- * is the audio-unavailable escape, not a declared gap (P7 §69-70, §110).
- * Steps never reached (abandoned session) simply stay absent.
+ * is the audio-unavailable escape (P7 §69-70, §110); a skip on a speaking
+ * step is the speech-unavailable escape (P8 §22-23) — neither is a
+ * declared gap. Steps never reached (abandoned session) simply stay absent.
  */
 export function answersFromSession(input: {
   stepIds: string[];
@@ -52,11 +59,17 @@ export function answersFromSession(input: {
   skipped: Record<string, boolean>;
   /** Step ids whose exercise needs audio (listening/dictation). */
   audioStepIds?: ReadonlySet<string>;
+  /** Step ids whose exercise needs speech capture (speak types). */
+  speechStepIds?: ReadonlySet<string>;
 }): PlacementAnswers {
   const out: PlacementAnswers = {};
   for (const id of input.stepIds) {
     if (input.skipped[id]) {
-      out[id] = input.audioStepIds?.has(id) ? "audio_unavailable" : null;
+      out[id] = input.audioStepIds?.has(id)
+        ? "audio_unavailable"
+        : input.speechStepIds?.has(id)
+          ? "speech_unavailable"
+          : null;
     } else if (id in input.firstResults) out[id] = input.firstResults[id];
   }
   return out;
@@ -69,8 +82,8 @@ export type ClusterOutcome = {
   /**
    * comfortable = every estimating item correct; gap = any wrong/idk;
    * unknown = unanswered; not_estimated = the only evidence was
-   * audio-unavailable skips (P7 §110) — a device state, not a learner
-   * state, so it can never anchor the floor or count as weak.
+   * audio/speech-unavailable skips (P7 §110, P8 §22) — a device state,
+   * not a learner state, so it can never anchor the floor or count as weak.
    */
   outcome: "comfortable" | "gap" | "unknown" | "not_estimated";
 };
@@ -87,7 +100,7 @@ export function evaluateClusters(
     };
     const seen = cluster.itemIds.filter((id) => answers[id] !== undefined);
     // Audio-unavailable answers estimate nothing (P7 §110).
-    const estimating = seen.filter((id) => answers[id] !== "audio_unavailable");
+    const estimating = seen.filter((id) => !isUnavailableAnswer(answers[id]));
     if (seen.length === 0) return { ...base, outcome: "unknown" };
     if (estimating.length === 0) return { ...base, outcome: "not_estimated" };
     // "I don't know" counts once, as gap evidence — never punished twice (§117).
@@ -108,6 +121,40 @@ export function shouldRunStage(
     if (!outcomes.every((o) => o.outcome === "comfortable")) return false;
   }
   return true;
+}
+
+export type StageAdvance =
+  | { kind: "run"; stageIndex: number; answers: PlacementAnswers }
+  | { kind: "finished"; answers: PlacementAnswers };
+
+/**
+ * Next RUNNABLE stage strictly after `fromIndex` (P8 §22): a stage that
+ * needs scored speech on a device that cannot administer it is never run —
+ * its items are auto-marked "speech_unavailable" (so its clusters resolve
+ * not_estimated, transparently) and the walk continues. Pure: the placement
+ * runner delegates here so the skip loop is deterministic and testable.
+ */
+export function advanceToNextStage(
+  plan: PlacementPlanContent,
+  fromIndex: number,
+  answers: PlacementAnswers,
+  /** Per-stage: does stage i contain scored speech items? */
+  speechStages: readonly boolean[],
+  speechEligible: boolean
+): StageAdvance {
+  let next = fromIndex + 1;
+  const current = { ...answers };
+  while (next < plan.stages.length && shouldRunStage(plan, next, current)) {
+    if (speechStages[next] && !speechEligible) {
+      for (const cluster of plan.stages[next].clusters) {
+        for (const id of cluster.itemIds) current[id] = "speech_unavailable";
+      }
+      next += 1;
+      continue;
+    }
+    return { kind: "run", stageIndex: next, answers: current };
+  }
+  return { kind: "finished", answers: current };
 }
 
 export type PlacementRecommendation = {
@@ -168,7 +215,7 @@ export function buildPlacementResult(input: {
   // persists as null (no verdict), exactly like "I don't know" — the
   // distinction lives in the per-objective "not_estimated" estimates.
   const itemResults: AssessmentItemResult[] = Object.entries(input.answers).map(
-    ([itemId, answer]) => ({ itemId, correct: answer === "audio_unavailable" ? null : answer })
+    ([itemId, answer]) => ({ itemId, correct: isUnavailableAnswer(answer) ? null : (answer as boolean | null) })
   );
   return {
     placementVersion: input.plan.placementVersion,

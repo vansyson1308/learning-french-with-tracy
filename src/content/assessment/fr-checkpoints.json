@@ -4,7 +4,8 @@
   "order": [
     "fr.checkpoint.section-1",
     "fr.checkpoint.section-2",
-    "fr.checkpoint.section-3"
+    "fr.checkpoint.section-3",
+    "fr.checkpoint.section-4"
   ],
   "byId": {
     "fr.checkpoint.section-1": {
@@ -1357,6 +1358,364 @@
             "fr.obj.reading.short_texts"
           ],
           "essential": true
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "fr.checkpoint.section-4": {
+      "id": "fr.checkpoint.section-4",
+      "checkpointVersion": 1,
+      "sectionId": "fr-en:section-4",
+      "title": "Section 4 check",
+      "description": "Show what you can SAY — greet, introduce yourself, give real information and describe things aloud. The app grades the words it heard; it never scores your accent.",
+      "items": [
+        {
+          "id": "fr.cpi.s4.greet_restaurant",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-greet_restaurant",
+            "speechItemId": "fr.speak.cp4_greet_restaurant",
+            "instruction": "You walk into a restaurant at seven in the evening. Greet the waiter.",
+            "target": "Bonsoir",
+            "acceptedVariants": [
+              "Bonsoir",
+              "Bonsoir, monsieur",
+              "Bonsoir, madame"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.formulaic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.thanks_door",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-thanks_door",
+            "speechItemId": "fr.speak.cp4_thanks_door",
+            "instruction": "Someone holds the door open for you. Thank them.",
+            "target": "Merci",
+            "acceptedVariants": [
+              "Merci",
+              "Merci beaucoup",
+              "Merci, monsieur",
+              "Merci, madame"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.formulaic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.leave_shop",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-leave_shop",
+            "speechItemId": "fr.speak.cp4_leave_shop",
+            "instruction": "You are leaving the shop after paying. Say goodbye.",
+            "target": "Au revoir",
+            "acceptedVariants": [
+              "Au revoir",
+              "Au revoir, madame",
+              "Au revoir, monsieur"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.formulaic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.language",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-language",
+            "speechItemId": "fr.speak.cp4_language",
+            "instruction": "Someone asks which language you speak. Answer: French.",
+            "target": "Je parle français",
+            "acceptedVariants": [
+              "Je parle français"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.self_intro"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.like_tea",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-like_tea",
+            "speechItemId": "fr.speak.cp4_like_tea",
+            "instruction": "Say that you like tea.",
+            "target": "J'aime le thé",
+            "acceptedVariants": [
+              "J'aime le thé"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.self_intro"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.work_evening",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-work_evening",
+            "speechItemId": "fr.speak.cp4_work_evening",
+            "instruction": "Say that you work in the evening.",
+            "target": "Je travaille le soir",
+            "acceptedVariants": [
+              "Je travaille le soir"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.self_intro"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.dogs",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-dogs",
+            "speechItemId": "fr.speak.cp4_dogs",
+            "instruction": "Say how many dogs there are.",
+            "cueEmoji": "🐶🐶🐶",
+            "cueFacts": [
+              {
+                "label": "Dogs",
+                "value": "3"
+              }
+            ],
+            "target": "Il y a trois chiens",
+            "acceptedVariants": [
+              "Il y a trois chiens"
+            ],
+            "requiredConcepts": [
+              [
+                "il y a"
+              ],
+              [
+                "trois",
+                "3"
+              ],
+              [
+                "chiens",
+                "chien"
+              ]
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.price_five",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-price_five",
+            "speechItemId": "fr.speak.cp4_price_five",
+            "instruction": "Say what it costs.",
+            "cueFacts": [
+              {
+                "label": "Price",
+                "value": "5 €"
+              }
+            ],
+            "target": "Ça coûte cinq euros",
+            "acceptedVariants": [
+              "Ça coûte cinq euros"
+            ],
+            "requiredConcepts": [
+              [
+                "coûte"
+              ],
+              [
+                "cinq",
+                "5"
+              ],
+              [
+                "euros",
+                "euro"
+              ]
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.train_ten",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-train_ten",
+            "speechItemId": "fr.speak.cp4_train_ten",
+            "instruction": "Say when the train leaves.",
+            "cueFacts": [
+              {
+                "label": "Departure",
+                "value": "10:00"
+              }
+            ],
+            "target": "Le train part à dix heures",
+            "acceptedVariants": [
+              "Le train part à dix heures"
+            ],
+            "requiredConcepts": [
+              [
+                "train"
+              ],
+              [
+                "dix",
+                "10"
+              ],
+              [
+                "heures",
+                "heure"
+              ]
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "fr.cpi.s4.cat_pic",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-cat_pic",
+            "speechItemId": "fr.speak.cp4_cat_pic",
+            "instruction": "Say what this is.",
+            "cueEmoji": "🐱",
+            "target": "C'est un chat",
+            "acceptedVariants": [
+              "C'est un chat",
+              "Un chat"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.describe"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s4.evening_pic",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-evening_pic",
+            "speechItemId": "fr.speak.cp4_evening_pic",
+            "instruction": "Say what time of day this is.",
+            "cueEmoji": "🌙",
+            "target": "C'est le soir",
+            "acceptedVariants": [
+              "C'est le soir",
+              "Le soir"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.describe"
+          ],
+          "essential": false
+        },
+        {
+          "id": "fr.cpi.s4.shop_closed",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "fr-cpx-s4-shop_closed",
+            "speechItemId": "fr.speak.cp4_shop_closed",
+            "instruction": "Say that the shop is closed.",
+            "target": "Le magasin est fermé",
+            "acceptedVariants": [
+              "Le magasin est fermé"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "fr.obj.speaking.describe"
+          ],
+          "essential": false
         }
       ],
       "criteria": {

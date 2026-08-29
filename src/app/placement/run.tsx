@@ -13,16 +13,17 @@ import { PlacementResults } from "@/components/assessment/placement-results";
 import { SessionScreen } from "@/components/session/session-screen";
 import { placementContent, placementEnginePlan } from "@/lib/assessment/content";
 import {
+  advanceToNextStage,
   answersFromSession,
   buildPlacementResult,
   recommendPlacement,
-  shouldRunStage,
   type PlacementAnswers,
 } from "@/lib/assessment/placement";
 import { useCourseContent } from "@/lib/content";
 import type { SessionController } from "@/lib/session/controller";
 import type { SessionMachineState } from "@/lib/session/reducer";
 import { buildPlacementStageSessionDefinition } from "@/lib/session/sources";
+import { probeSpeechCapabilityOnce } from "@/lib/speech/use-speech-session";
 import { useProgress } from "@/lib/store";
 
 /**
@@ -43,7 +44,25 @@ function stageAnswers(state: SessionMachineState): PlacementAnswers {
         )
         .map((s) => s.stepId)
     ),
+    speechStepIds: new Set(
+      exerciseSteps
+        .filter(
+          (s) =>
+            s.exercise.type === "speakProduction" || s.exercise.type === "speakRepetition"
+        )
+        .map((s) => s.stepId)
+    ),
   });
+}
+
+/** Does this stage require scored speech capture? */
+function stageNeedsSpeech(stage: ReturnType<typeof placementContent>["stages"][number]): boolean {
+  return stage.clusters.some((cluster) =>
+    cluster.items.some(
+      (item) =>
+        item.exercise.type === "speakProduction" || item.exercise.type === "speakRepetition"
+    )
+  );
 }
 
 /**
@@ -74,6 +93,37 @@ export default function PlacementRunScreen() {
   const [stageIndex, setStageIndex] = useState(0);
   const [answers, setAnswers] = useState<PlacementAnswers>({});
   const [finished, setFinished] = useState(false);
+
+  // Scored speech is capability-gated (P8 §22): probed once up front; a
+  // speech stage on an incapable device is never administered — its items
+  // record speech_unavailable, the estimate says not_estimated, and the
+  // floor is never lowered by a device state. Until the probe resolves we
+  // stay conservative (not eligible).
+  const [speechEligible, setSpeechEligible] = useState(false);
+  useEffect(() => {
+    let live = true;
+    void probeSpeechCapabilityOnce().then((capability) => {
+      if (live) setSpeechEligible(capability.scoredEligible);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  const speechStages = useMemo(() => plan.stages.map(stageNeedsSpeech), [plan]);
+
+  /**
+   * Advance to the next RUNNABLE stage from `index` with `merged` answers:
+   * speech stages an incapable device cannot administer are auto-marked
+   * and passed over (pure logic in advanceToNextStage, P8 §22); when
+   * nothing remains, the run is finished.
+   */
+  const advanceFrom = (index: number, merged: PlacementAnswers) => {
+    const step = advanceToNextStage(enginePlan, index, merged, speechStages, speechEligible);
+    setAnswers(step.answers);
+    if (step.kind === "run") setStageIndex(step.stageIndex);
+    else setFinished(true);
+  };
 
   const stage = plan.stages[stageIndex];
   const definition = useMemo(
@@ -116,14 +166,7 @@ export default function PlacementRunScreen() {
           key={stage.id}
           controller={controller}
           onStageDone={(stageResult) => {
-            const merged = { ...answers, ...stageResult };
-            setAnswers(merged);
-            const next = stageIndex + 1;
-            if (next < plan.stages.length && shouldRunStage(enginePlan, next, merged)) {
-              setStageIndex(next);
-            } else {
-              setFinished(true);
-            }
+            advanceFrom(stageIndex, { ...answers, ...stageResult });
           }}
         />
       )}

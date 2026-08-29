@@ -17,7 +17,7 @@ import {
   type Readings,
   type ReadingSource,
 } from "../../content/schema";
-import { readJson, safeResolve, type ValidationResult } from "./pipeline";
+import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const READINGS_SOURCE = "content/fr/reception/reading.json";
 export const LISTENING_SOURCE = "content/fr/reception/listening.json";
@@ -162,6 +162,19 @@ export function validateReception(input: {
         );
       }
     }
+    // Census invariant (P8 Gate 0): every physical file must be a REFERENCED
+    // asset key. Orphans creep in when an authored transcript changes (the
+    // key moves) — Phase 7 cleaned one by hand; the validator now catches it.
+    if (assetsPresent) {
+      const referenced = new Set(
+        listening.clips.map((c) => `${receptionAssetKey(resolveClipSegments(listening, c))}.mp3`)
+      );
+      for (const file of assetFiles) {
+        if (file.endsWith(".mp3") && !referenced.has(file)) {
+          err(`orphan asset ${file}: no authored clip resolves to it — delete it or restore its clip`);
+        }
+      }
+    }
   }
 
   if (input.frPack) {
@@ -255,6 +268,39 @@ export function compileListeningArtifact(
  * break bundling; the validator separately errors on any missing asset once
  * generation has run, so a shipped build can never lack a mapped clip.
  */
+/**
+ * Audio census (P8 Gate 0) — the three counts are DIFFERENT CONCEPTS and
+ * must be reported as such, never forced equal:
+ *  - authoredClipCount: logical clips in listening.json (one per clip id);
+ *  - uniqueAssetCount: distinct deterministic asset keys — clips whose
+ *    resolved segments are identical share one synthesized file by design;
+ *  - physicalAssetCount: .mp3 files actually on disk (0 pre-generation).
+ * Internal consistency: physical == unique once generation has run, and
+ * every shared asset names the clip ids that share it.
+ */
+export function compileAudioCensus(listening: Listening): string {
+  const byKey = new Map<string, string[]>();
+  for (const clip of listening.clips) {
+    const key = receptionAssetKey(resolveClipSegments(listening, clip));
+    byKey.set(key, [...(byKey.get(key) ?? []), clip.id]);
+  }
+  const assetsAbs = safeResolve(RECEPTION_ASSETS_DIR);
+  const physical = existsSync(assetsAbs)
+    ? readdirSync(assetsAbs).filter((f) => f.endsWith(".mp3")).length
+    : 0;
+  return canonicalJson({
+    generator: "scripts/lib/reception.ts compileAudioCensus",
+    authoredClipCount: listening.clips.length,
+    uniqueAssetCount: byKey.size,
+    physicalAssetCount: physical,
+    generationComplete: physical === byKey.size,
+    sharedAssetGroups: [...byKey.entries()]
+      .filter(([, ids]) => ids.length > 1)
+      .map(([assetKey, clipIds]) => ({ assetKey, clipIds: [...clipIds].sort() }))
+      .sort((a, b) => (a.assetKey < b.assetKey ? -1 : 1)),
+  });
+}
+
 export function compileClipAssetsModule(listening: Listening): string {
   const lines = [
     "/**",

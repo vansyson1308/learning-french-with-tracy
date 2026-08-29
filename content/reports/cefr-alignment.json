@@ -23,6 +23,14 @@
           ]
         },
         {
+          "scaleName": "Overall oral production",
+          "sourceRef": "cefr-cv-2020:overall-oral-production",
+          "direct": [],
+          "supports": [
+            "fr.obj.speaking.formulaic"
+          ]
+        },
+        {
           "scaleName": "Reading comprehension (overall)",
           "sourceRef": "cefr-cv-2020:overall-reading-comprehension",
           "direct": [
@@ -98,6 +106,18 @@
           ]
         },
         {
+          "scaleName": "Overall oral production",
+          "sourceRef": "cefr-cv-2020:overall-oral-production",
+          "direct": [
+            "fr.obj.speaking.describe",
+            "fr.obj.speaking.formulaic"
+          ],
+          "supports": [
+            "fr.obj.speaking.give_info",
+            "fr.obj.speaking.self_intro"
+          ]
+        },
+        {
           "scaleName": "Phonological control (sound articulation)",
           "sourceRef": "cefr-cv-2020:phonological-control",
           "direct": [],
@@ -136,8 +156,27 @@
           "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness",
           "direct": [],
           "supports": [
-            "fr.obj.greetings.basic"
+            "fr.obj.greetings.basic",
+            "fr.obj.speaking.formulaic"
           ]
+        },
+        {
+          "scaleName": "Sustained monologue: describing experience",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing",
+          "direct": [
+            "fr.obj.speaking.self_intro"
+          ],
+          "supports": [
+            "fr.obj.speaking.describe"
+          ]
+        },
+        {
+          "scaleName": "Sustained monologue: giving information",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-giving-information",
+          "direct": [
+            "fr.obj.speaking.give_info"
+          ],
+          "supports": []
         },
         {
           "scaleName": "Understanding conversation between others",

@@ -41,16 +41,42 @@ function exerciseStep(stepId: string): ExerciseStep {
 }
 
 describe("compiled checkpoints", () => {
-  test("all three section checkpoints exist with their authored shapes", () => {
+  test("all four section checkpoints exist with their authored shapes", () => {
     expect(CHECKPOINT_ORDER).toEqual([
       "fr.checkpoint.section-1",
       "fr.checkpoint.section-2",
       "fr.checkpoint.section-3",
+      "fr.checkpoint.section-4",
     ]);
     expect(CP1.items.length).toBe(12);
     expect(CP2.items.length).toBe(18);
     expect(CP1.criteria.minItemsPerObjective).toBe(2);
     expect(CP1.criteria.demonstratedShare).toBe(0.66); // 2-of-3 demonstrates — product-local, not a CEFR cut score
+  });
+
+  test("Section-4 checkpoint: 12 reserved spoken items, production-only, model-free (P8 §20)", () => {
+    const cp4 = checkpointFor("fr.checkpoint.section-4")!;
+    expect(cp4.sectionId).toBe("fr-en:section-4");
+    expect(cp4.items.length).toBe(12);
+    for (const item of cp4.items) {
+      expect(item.exercise.type).toBe("speakProduction");
+      if (item.exercise.type !== "speakProduction") continue;
+      // Scored spoken items never carry a model clip, never allow bias,
+      // never reveal the target, and never write speak cards.
+      expect(item.exercise.modelClipId).toBeNull();
+      expect(item.exercise.allowContextualBias).toBe(false);
+      expect(item.exercise.revealTargetAfterAttempts).toBeNull();
+      expect(item.exercise.evidenceLexemeRefs).toEqual([]);
+    }
+    // 3 items per spoken objective — the claim gate's per-objective floor.
+    const perObjective = new Map<string, number>();
+    for (const item of cp4.items) {
+      for (const o of item.objectiveTargets) {
+        perObjective.set(o, (perObjective.get(o) ?? 0) + 1);
+      }
+    }
+    expect([...perObjective.values()].every((n) => n === 3)).toBe(true);
+    expect(perObjective.size).toBe(4);
   });
 
   test("Section-3 checkpoint: 22 receptive items, balanced and audio-honest (P7 §101-105)", () => {
@@ -157,6 +183,44 @@ describe("scoring (§61-64)", () => {
     expect(results).toEqual([
       { objectiveId: "fr.obj.c.z", result: "insufficient_evidence", correct: 1, total: 1 },
     ]);
+  });
+
+  test("skipped items are excluded from every denominator (P8 §20): device states never become learner evidence", () => {
+    // A learner skipped i2/i3 (e.g. a speak step behind a blocked mic) and
+    // i6 entirely: skips reach the scorer as ABSENT firstResults entries.
+    const firstResults = { i1: true, i4: true, i5: false };
+    const results = scoreObjectives(plan, firstResults);
+    expect(results).toEqual([
+      // fr.obj.a.x drained below the 2-item floor by skips → insufficient
+      // evidence, never needs_practice (the skip is not a wrong answer).
+      { objectiveId: "fr.obj.a.x", result: "insufficient_evidence", correct: 1, total: 1 },
+      { objectiveId: "fr.obj.b.y", result: "needs_practice", correct: 1, total: 2 },
+      // fr.obj.c.z fully skipped → no result minted at all: absence of
+      // evidence, not evidence of absence.
+    ]);
+    expect(results.find((r) => r.objectiveId === "fr.obj.c.z")).toBeUndefined();
+
+    const attempt = buildCheckpointAttempt({
+      plan,
+      firstResults,
+      startedAt: 0,
+      completedAt: 1,
+    });
+    // Skipped steps never appear as itemResults and never dilute or inflate
+    // the overall share: 2 correct of 3 SCORED, not of 6 planned.
+    expect(attempt.itemResults.map((r) => r.itemId)).toEqual(["i1", "i4", "i5"]);
+    expect(attempt.overallCorrectShare).toBeCloseTo(2 / 3);
+  });
+
+  test("a skip in a scored session lands in skipped, not firstResults — the scorer never sees it", () => {
+    let state = start([exerciseStep("a"), exerciseStep("b")], "none");
+    state = sessionReducer(state, { type: "skip" });
+    state = sessionReducer(state, { type: "answer", value: 0 });
+    state = sessionReducer(state, { type: "check" });
+    state = sessionReducer(state, { type: "continue" });
+    expect(state.finished).toBe(true);
+    expect(state.skipped).toEqual({ a: true });
+    expect(state.firstResults).toEqual({ b: true });
   });
 
   test("buildCheckpointAttempt records first-attempt items and the overall share", () => {

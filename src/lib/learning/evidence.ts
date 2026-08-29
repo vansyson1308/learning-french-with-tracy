@@ -26,7 +26,8 @@ export type Modality =
   | "listen" // select listen mode
   | "arrange" // wordBank
   | "match" // matching pairs
-  | "grammarChoice"; // grammar drills (articleSelect) — practice-only by design
+  | "grammarChoice" // grammar drills (articleSelect) — practice-only by design
+  | "speak"; // spoken attempts (P8) — evidence eligibility arrives with the speak skill
 
 /** Which surface produced the evidence (drives legacy-course translation). */
 export type EvidenceSource = "lesson" | "review" | "mistakes" | "today";

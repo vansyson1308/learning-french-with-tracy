@@ -47,7 +47,14 @@
           }
         }
       ],
-      "expo-audio"
+      "expo-audio",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "The microphone is used only while you practice speaking French, to hear your answer.",
+          "speechRecognitionPermission": "Speech recognition turns your spoken French into text so the app can check your answer. Nothing is recorded until you tap the record button."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

@@ -1,0 +1,903 @@
+{
+  "generator": "scripts/lib/speech.ts",
+  "version": 1,
+  "order": [
+    "fr.speak.k_rep_bonjour",
+    "fr.speak.k_rep_merci",
+    "fr.speak.k_greet_morning",
+    "fr.speak.k_thank",
+    "fr.speak.k_please",
+    "fr.speak.k_evening",
+    "fr.speak.k_bye",
+    "fr.speak.k_pardon",
+    "fr.speak.l_rep_suis",
+    "fr.speak.l_rep_habite",
+    "fr.speak.l_rep_parle",
+    "fr.speak.l_live",
+    "fr.speak.l_speak_french",
+    "fr.speak.l_like_coffee",
+    "fr.speak.l_work_morning",
+    "fr.speak.l_go_station",
+    "fr.speak.m_rep_prix",
+    "fr.speak.m_rep_heure",
+    "fr.speak.m_cats",
+    "fr.speak.m_price",
+    "fr.speak.m_train_time",
+    "fr.speak.m_week_days",
+    "fr.speak.n_rep_ouvert",
+    "fr.speak.n_dog",
+    "fr.speak.n_station",
+    "fr.speak.n_door_closed",
+    "fr.speak.n_shop_open",
+    "fr.speak.n_morning"
+  ],
+  "byId": {
+    "fr.speak.k_rep_bonjour": {
+      "id": "fr.speak.k_rep_bonjour",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "bonjour",
+      "acceptedVariants": [
+        "bonjour"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonjour"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.uf_dictee_bonjour",
+      "allowedAttempts": 2
+    },
+    "fr.speak.k_rep_merci": {
+      "id": "fr.speak.k_rep_merci",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "Merci beaucoup, monsieur.",
+      "acceptedVariants": [
+        "Merci beaucoup, monsieur."
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:merci",
+        "fr:w:monsieur"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.uf_merci",
+      "allowedAttempts": 2
+    },
+    "fr.speak.k_greet_morning": {
+      "id": "fr.speak.k_greet_morning",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "It's morning and you walk into a bakery. Greet the baker."
+      },
+      "target": "Bonjour",
+      "acceptedVariants": [
+        "Bonjour",
+        "Bonjour, madame",
+        "Bonjour, monsieur"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonjour"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:bonjour"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.uf_dictee_bonjour",
+      "allowedAttempts": 2
+    },
+    "fr.speak.k_thank": {
+      "id": "fr.speak.k_thank",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say thank you very much."
+      },
+      "target": "Merci beaucoup",
+      "acceptedVariants": [
+        "Merci beaucoup"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:merci"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:merci"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.uk_merci",
+      "allowedAttempts": 2
+    },
+    "fr.speak.k_please": {
+      "id": "fr.speak.k_please",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "You are asking for something. Add the polite phrase for 'please'."
+      },
+      "target": "S'il vous plaît",
+      "acceptedVariants": [
+        "S'il vous plaît"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:s-il-vous-plait"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:s-il-vous-plait"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.uk_svp",
+      "allowedAttempts": 2
+    },
+    "fr.speak.k_evening": {
+      "id": "fr.speak.k_evening",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "It's 8 pm and you meet your neighbour. Greet them."
+      },
+      "target": "Bonsoir",
+      "acceptedVariants": [
+        "Bonsoir",
+        "Bonsoir, madame",
+        "Bonsoir, monsieur"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonsoir"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:bonsoir"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.uf_bonsoir",
+      "allowedAttempts": 2
+    },
+    "fr.speak.k_bye": {
+      "id": "fr.speak.k_bye",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say goodbye."
+      },
+      "target": "Au revoir",
+      "acceptedVariants": [
+        "Au revoir"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:au-revoir"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:au-revoir"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.uk_au_revoir",
+      "allowedAttempts": 2
+    },
+    "fr.speak.k_pardon": {
+      "id": "fr.speak.k_pardon",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "You bump into someone in the street. Excuse yourself."
+      },
+      "target": "Pardon",
+      "acceptedVariants": [
+        "Pardon"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:pardon"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:pardon"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.uk_pardon",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_rep_suis": {
+      "id": "fr.speak.l_rep_suis",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "Je suis à l'hôtel.",
+      "acceptedVariants": [
+        "Je suis à l'hôtel."
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:etre",
+        "fr:w:hotel"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.ul_suis_hotel",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_rep_habite": {
+      "id": "fr.speak.l_rep_habite",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "J'habite à Paris.",
+      "acceptedVariants": [
+        "J'habite à Paris."
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.ul_habite_paris",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_rep_parle": {
+      "id": "fr.speak.l_rep_parle",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "Je parle français.",
+      "acceptedVariants": [
+        "Je parle français."
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:parler"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.ul_parle_francais",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_live": {
+      "id": "fr.speak.l_live",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say that you live in Paris."
+      },
+      "target": "J'habite à Paris",
+      "acceptedVariants": [
+        "J'habite à Paris"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:habiter"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.ul_habite_paris",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_speak_french": {
+      "id": "fr.speak.l_speak_french",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say that you speak French."
+      },
+      "target": "Je parle français",
+      "acceptedVariants": [
+        "Je parle français"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:parler"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:parler"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.ul_parle_francais",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_like_coffee": {
+      "id": "fr.speak.l_like_coffee",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say that you like coffee."
+      },
+      "target": "J'aime le café",
+      "acceptedVariants": [
+        "J'aime le café"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:aimer",
+        "fr:w:cafe"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:aimer"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.ul_aime_cafe",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_work_morning": {
+      "id": "fr.speak.l_work_morning",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say that you work in the morning."
+      },
+      "target": "Je travaille le matin",
+      "acceptedVariants": [
+        "Je travaille le matin"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:travailler",
+        "fr:w:matin"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:travailler"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.ul_travaille_matin",
+      "allowedAttempts": 2
+    },
+    "fr.speak.l_go_station": {
+      "id": "fr.speak.l_go_station",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say that you are going to the station."
+      },
+      "target": "Je vais à la gare",
+      "acceptedVariants": [
+        "Je vais à la gare"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "fr:w:aller",
+        "fr:w:gare"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:aller"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.ul_vais_gare",
+      "allowedAttempts": 2
+    },
+    "fr.speak.m_rep_prix": {
+      "id": "fr.speak.m_rep_prix",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "Le billet coûte seize euros.",
+      "acceptedVariants": [
+        "Le billet coûte seize euros."
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:billet",
+        "fr:w:couter"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.uh_prix_billet",
+      "allowedAttempts": 2
+    },
+    "fr.speak.m_rep_heure": {
+      "id": "fr.speak.m_rep_heure",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "Le musée ouvre à dix heures le dimanche.",
+      "acceptedVariants": [
+        "Le musée ouvre à dix heures le dimanche."
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:musee",
+        "fr:w:heure",
+        "fr:w:dimanche"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.uh_musee_ouvre",
+      "allowedAttempts": 2
+    },
+    "fr.speak.m_cats": {
+      "id": "fr.speak.m_cats",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Say how many cats there are.",
+        "cueEmoji": "🐈🐈",
+        "cueFacts": [
+          {
+            "label": "Cats",
+            "value": "2"
+          }
+        ]
+      },
+      "target": "Il y a deux chats",
+      "acceptedVariants": [
+        "Il y a deux chats"
+      ],
+      "requiredConcepts": [
+        [
+          "il y a"
+        ],
+        [
+          "deux",
+          "2"
+        ],
+        [
+          "chats",
+          "chat"
+        ]
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:chat"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:chat"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.um_deux_chats",
+      "allowedAttempts": 2
+    },
+    "fr.speak.m_price": {
+      "id": "fr.speak.m_price",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Say what it costs.",
+        "cueFacts": [
+          {
+            "label": "Price",
+            "value": "3 €"
+          }
+        ]
+      },
+      "target": "Ça coûte trois euros",
+      "acceptedVariants": [
+        "Ça coûte trois euros"
+      ],
+      "requiredConcepts": [
+        [
+          "coûte"
+        ],
+        [
+          "trois",
+          "3"
+        ],
+        [
+          "euros",
+          "euro"
+        ]
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:couter"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:couter"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.um_coute_trois",
+      "allowedAttempts": 2
+    },
+    "fr.speak.m_train_time": {
+      "id": "fr.speak.m_train_time",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Say when the train leaves.",
+        "cueFacts": [
+          {
+            "label": "Departure",
+            "value": "9:00"
+          }
+        ]
+      },
+      "target": "Le train part à neuf heures",
+      "acceptedVariants": [
+        "Le train part à neuf heures"
+      ],
+      "requiredConcepts": [
+        [
+          "train"
+        ],
+        [
+          "neuf",
+          "9"
+        ],
+        [
+          "heures",
+          "heure"
+        ]
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:train",
+        "fr:w:heure"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:train"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.um_train_neuf",
+      "allowedAttempts": 2
+    },
+    "fr.speak.m_week_days": {
+      "id": "fr.speak.m_week_days",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Say how many days there are in a week.",
+        "cueFacts": [
+          {
+            "label": "Days in a week",
+            "value": "7"
+          }
+        ]
+      },
+      "target": "Il y a sept jours dans une semaine",
+      "acceptedVariants": [
+        "Il y a sept jours dans une semaine",
+        "Il y a sept jours"
+      ],
+      "requiredConcepts": [
+        [
+          "sept",
+          "7"
+        ],
+        [
+          "jours",
+          "jour"
+        ]
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:jour",
+        "fr:w:semaine"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:jour"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.um_sept_jours",
+      "allowedAttempts": 2
+    },
+    "fr.speak.n_rep_ouvert": {
+      "id": "fr.speak.n_rep_ouvert",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Listen, then say it yourself."
+      },
+      "target": "Le café est ouvert le soir.",
+      "acceptedVariants": [
+        "Le café est ouvert le soir."
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe",
+        "fr:w:ouvert",
+        "fr:w:soir"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "fr.clip.uf_soir_phrase",
+      "allowedAttempts": 2
+    },
+    "fr.speak.n_dog": {
+      "id": "fr.speak.n_dog",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Say what this is.",
+        "cueEmoji": "🐶"
+      },
+      "target": "C'est un chien",
+      "acceptedVariants": [
+        "C'est un chien",
+        "Un chien"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "fr:w:chien"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:chien"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.un_cest_chien",
+      "allowedAttempts": 2
+    },
+    "fr.speak.n_station": {
+      "id": "fr.speak.n_station",
+      "taskFamily": "description",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "You arrive at a big building full of trains. Say what this place is."
+      },
+      "target": "C'est la gare",
+      "acceptedVariants": [
+        "C'est la gare",
+        "C'est une gare"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "fr:w:gare"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:gare"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.un_cest_gare",
+      "allowedAttempts": 2
+    },
+    "fr.speak.n_door_closed": {
+      "id": "fr.speak.n_door_closed",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Describe the door.",
+        "cueEmoji": "🚪🔒"
+      },
+      "target": "La porte est fermée",
+      "acceptedVariants": [
+        "La porte est fermée"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "fr:w:porte",
+        "fr:w:fermer"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:porte"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.un_porte_fermee",
+      "allowedAttempts": 2
+    },
+    "fr.speak.n_shop_open": {
+      "id": "fr.speak.n_shop_open",
+      "taskFamily": "description",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Say that the shop is open."
+      },
+      "target": "Le magasin est ouvert",
+      "acceptedVariants": [
+        "Le magasin est ouvert"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "fr:w:magasin",
+        "fr:w:ouvert"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:ouvert"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.un_magasin_ouvert",
+      "allowedAttempts": 2
+    },
+    "fr.speak.n_morning": {
+      "id": "fr.speak.n_morning",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Say what time of day this is.",
+        "cueEmoji": "🌅"
+      },
+      "target": "C'est le matin",
+      "acceptedVariants": [
+        "C'est le matin",
+        "Le matin"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "fr:w:matin"
+      ],
+      "evidenceLexemeRefs": [
+        "fr:w:matin"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "fr.clip.un_cest_matin",
+      "allowedAttempts": 2
+    }
+  }
+}

@@ -42,6 +42,7 @@ import {
   evaluateClaimGate,
 } from "./lib/assessment-reports";
 import {
+  compileAudioCensus,
   compileClipAssetsModule,
   compileListeningArtifact,
   compileReadingsArtifact,
@@ -50,6 +51,12 @@ import {
   loadReadings,
   validateReception,
 } from "./lib/reception";
+import {
+  assessmentBankSpeechExercises,
+  compileSpeechItemsArtifact,
+  loadSpeechItems,
+  validateSpeech,
+} from "./lib/speech";
 import { PackSchema } from "../content/schema";
 import {
   buildSqliteDb,
@@ -81,6 +88,14 @@ const validation = [
     objectives: loadCourseObjectives(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
     frPack: readJson("content/courses/fr-en.json") as never,
+  }).errors,
+  ...validateSpeech({
+    speech: loadSpeechItems(),
+    objectives: loadCourseObjectives(),
+    listening: loadListening(),
+    lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
+    frPack: readJson("content/courses/fr-en.json") as never,
+    assessmentSpeech: assessmentBankSpeechExercises(),
   }).errors,
 ];
 if (validation.length > 0) {
@@ -209,7 +224,17 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
       relPath: "src/content/reception/fr-clip-assets.ts",
       contents: compileClipAssetsModule(listening),
     });
+    files.push({
+      relPath: "content/reports/reception-audio-census.json",
+      contents: compileAudioCensus(listening),
+    });
   }
+  // Phase-8 speech items — always emitted (empty until authored) so the
+  // app's static import exists; reserved items never leave the pipeline.
+  files.push({
+    relPath: "src/content/speech/fr-speech-items.json",
+    contents: compileSpeechItemsArtifact(loadSpeechItems()),
+  });
   files.push({
     relPath: "content/reports/placement-coverage.json",
     contents: canonicalJson({

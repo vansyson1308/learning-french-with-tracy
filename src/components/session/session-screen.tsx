@@ -43,6 +43,7 @@ import {
   sessionProgress,
 } from "@/lib/session/reducer";
 import type { SessionDefinition } from "@/lib/session/types";
+import { useSpeechSession } from "@/lib/speech/use-speech-session";
 import { currentStreak, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -70,6 +71,20 @@ export function SessionScreen({
   const progress = useProgress();
   const controller = useSessionController(definition);
   const { state } = controller;
+
+  // One recognizer per session, created only when speak steps exist; its
+  // teardown sweeps the speech cache (P8 §8 boundary).
+  const hasSpeechSteps = React.useMemo(
+    () =>
+      definition.steps.some(
+        (planned) =>
+          planned.type === "exercise" &&
+          (planned.exercise.type === "speakRepetition" ||
+            planned.exercise.type === "speakProduction")
+      ),
+    [definition.steps]
+  );
+  const speechSession = useSpeechSession(hasSpeechSteps);
 
   const step = currentStep(state);
   const percentage = sessionProgress(state) * 100;
@@ -205,6 +220,17 @@ export function SessionScreen({
                   definition.feedbackPolicy !== "minimal",
                 onAudioSkip: controller.onSkip,
               }}
+              speech={
+                hasSpeechSteps
+                  ? {
+                      scored:
+                        definition.kind === "checkpoint" ||
+                        definition.kind === "placement",
+                      session: speechSession,
+                      onSpeechSkip: controller.onSkip,
+                    }
+                  : undefined
+              }
             />
           )}
         </ScrollView>

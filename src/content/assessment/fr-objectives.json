@@ -25,7 +25,11 @@
     "fr.obj.listening.short_dialogues",
     "fr.obj.reading.short_messages",
     "fr.obj.reading.notices_info",
-    "fr.obj.reading.short_texts"
+    "fr.obj.reading.short_texts",
+    "fr.obj.speaking.formulaic",
+    "fr.obj.speaking.self_intro",
+    "fr.obj.speaking.give_info",
+    "fr.obj.speaking.describe"
   ],
   "byId": {
     "fr.obj.greetings.basic": {
@@ -472,6 +476,109 @@
           "scaleName": "Reading comprehension (overall)",
           "relation": "supports",
           "sourceRef": "cefr-cv-2020:overall-reading-comprehension"
+        }
+      ]
+    },
+    "fr.obj.speaking.formulaic": {
+      "id": "fr.obj.speaking.formulaic",
+      "title": "Saying everyday formulas aloud",
+      "canDo": "I can say the everyday French greeting and politeness formulas aloud — bonjour, bonsoir, merci, s'il vous plaît, pardon, au revoir — choosing the right one for the situation.",
+      "category": "spoken_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ]
+    },
+    "fr.obj.speaking.self_intro": {
+      "id": "fr.obj.speaking.self_intro",
+      "title": "Introducing yourself aloud",
+      "canDo": "I can say simple fixed sentences about myself aloud — where I live, what I speak, what I like and what I do — one short sentence at a time.",
+      "category": "spoken_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.verbs.etre_avoir_present",
+        "fr.obj.verbs.er_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: describing experience",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        }
+      ]
+    },
+    "fr.obj.speaking.give_info": {
+      "id": "fr.obj.speaking.give_info",
+      "title": "Giving simple information aloud",
+      "canDo": "I can give simple spoken information about familiar things — how many there are, what something costs, and when something happens — using numbers and everyday words.",
+      "category": "spoken_production",
+      "essential": true,
+      "prerequisites": [
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: giving information",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-giving-information"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        }
+      ]
+    },
+    "fr.obj.speaking.describe": {
+      "id": "fr.obj.speaking.describe",
+      "title": "Describing people and things aloud",
+      "canDo": "I can describe familiar people, places and things aloud in short, mainly isolated phrases — saying what something is and one simple fact about it.",
+      "category": "spoken_production",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.vocab.everyday_basics"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Overall oral production",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:overall-oral-production"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sustained monologue: describing experience",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sustained-monologue-describing"
         }
       ]
     }

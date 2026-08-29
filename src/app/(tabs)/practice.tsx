@@ -17,7 +17,7 @@ import {
 } from "@/lib/learning/engine";
 import { FR_COURSE_ID } from "@/lib/learning/ids-fr";
 import { dueInDaysAt } from "@/lib/srs";
-import { dueListeningReviewCount } from "@/lib/session/sources";
+import { dueListeningReviewCount, dueSpeakingReviewCounts } from "@/lib/session/sources";
 import { dailyQuests, dueSrsWords, useProgress, type Quest } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -37,6 +37,11 @@ export default function PracticeScreen() {
   // Listening review (P7 §79-81): due listen cards whose word clip has a
   // bundled asset. French-only; zero for every other course.
   const dueListenCount = isFrench ? dueListeningReviewCount(courseProgress.cards) : 0;
+  // Speaking review (P8 §16): sessionable vs total kept apart — a due speak
+  // card with no authored prompt stays VISIBLY due, never silently hidden.
+  const dueSpeak = isFrench
+    ? dueSpeakingReviewCounts(courseProgress.cards)
+    : { sessionable: 0, total: 0 };
   const quests = dailyQuests(progress);
 
   const hasLexicon = courseCapabilities(activeCourseId).lexicon;
@@ -115,6 +120,28 @@ export default function PracticeScreen() {
               variant="primary"
               disabled={dueListenCount === 0}
               onPress={() => router.push("/lesson/srs-listening")}
+            />
+          </View>
+        ) : null}
+
+        {isFrench ? (
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Ionicons name="mic" size={24} color={colors.indigo} />
+              <Text style={styles.cardTitle}>Speaking review</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>
+              {dueSpeak.total === 0
+                ? "No speaking due right now. Meet words out loud in Section 4!"
+                : dueSpeak.sessionable === 0
+                  ? `${dueSpeak.total} word${dueSpeak.total === 1 ? "" : "s"} due to say aloud — no speaking prompts are available for them yet, so they stay due.`
+                  : `${dueSpeak.sessionable} word${dueSpeak.sessionable === 1 ? "" : "s"} to say aloud.`}
+            </Text>
+            <DuoButton
+              label="Review speaking"
+              variant="primary"
+              disabled={dueSpeak.sessionable === 0}
+              onPress={() => router.push("/lesson/srs-speaking")}
             />
           </View>
         ) : null}

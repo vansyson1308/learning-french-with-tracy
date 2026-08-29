@@ -81,6 +81,22 @@ export function evidencePlanFor(
     return { itemId: id, skill: "listen", srsRole: plannedRole(definition) };
   }
 
+  // Elicited spoken production (P8 §15): the ONLY construct that may
+  // create speak-card evidence. Repetition/read-aloud are practice by
+  // definition (the pipeline also rejects them claiming evidence), scored
+  // kinds already returned null above, silence/technical outcomes never
+  // reach a check, and skip emits nothing — so what remains is a
+  // recognized FINAL on a production step with exactly one curated
+  // evidence lexeme. The assisted flag rides the SpokenAnswer and the
+  // gate refuses assisted assessments downstream.
+  if (exercise.type === "speakProduction") {
+    if (definition.courseId !== FR_COURSE_ID) return null;
+    const targets = exercise.evidenceLexemeRefs;
+    if (targets.length !== 1 || !isCuratedFrItemId(targets[0])) return null;
+    return { itemId: targets[0], skill: "speak", srsRole: plannedRole(definition) };
+  }
+  if (exercise.type === "speakRepetition") return null; // §11: never evidence
+
   if (exercise.type !== "select") return null;
 
   if (definition.courseId === FR_COURSE_ID) {
@@ -112,6 +128,8 @@ export function buildCheckEvidence(args: {
   correct: boolean;
   attemptIndex: number;
   latencyMs: number;
+  /** Practice assistance active when the answer was produced (P8 §13). */
+  assisted?: boolean;
 }): ReviewEvidence | null {
   const { definition, step } = args;
   const plan = evidencePlanFor(definition, step);
@@ -126,7 +144,7 @@ export function buildCheckEvidence(args: {
     source: definition.evidenceSource,
     correct: args.correct,
     hinted: false,
-    assisted: false,
+    assisted: args.assisted ?? false,
     toleranceUsed: false,
     latencyMs: args.latencyMs,
     attemptIndex: args.attemptIndex,

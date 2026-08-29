@@ -14,6 +14,7 @@ import { SessionScreen } from "@/components/session/session-screen";
 import { useCourseContent } from "@/lib/content";
 import {
   buildListeningReviewSessionDefinition,
+  buildSpeakingReviewSessionDefinition,
   buildMistakesSessionDefinition,
   buildPathSessionDefinition,
   buildReviewSessionDefinition,
@@ -59,6 +60,10 @@ export default function LessonScreen() {
         course: courseProgress,
         pool: allWords(),
       });
+    }
+    // Speaking review (P8 §16): French-only surface over due speak cards.
+    if (id === "srs-speaking") {
+      return buildSpeakingReviewSessionDefinition({ course: courseProgress });
     }
     const ref = getLesson(id ?? "");
     if (!ref) {

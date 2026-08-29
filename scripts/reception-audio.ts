@@ -473,7 +473,10 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
     `${JSON.stringify(
       {
         generator: "scripts/reception-audio.ts qa",
-        clipCount: rows.length,
+        // Census names (P8 Gate 0): one QA row per AUTHORED clip; distinct
+        // asset keys deduplicate identical synthesized content by design.
+        authoredClipCount: rows.length,
+        uniqueAssetCount: new Set(rows.map((r) => r.assetKey)).size,
         technicalFailures: failures,
         speakerSummary,
         clips: rows,

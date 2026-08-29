@@ -16,6 +16,7 @@ import { Flag } from "@/components/flag";
 import { courseCapabilities } from "@/lib/capabilities";
 import { useCourseContent } from "@/lib/content";
 import { listenWordClipIndex } from "@/lib/reception/content";
+import { speakExerciseIndex } from "@/lib/speech/content";
 import {
   composeTodayFromSnapshot,
   TODAY_PRESETS,
@@ -37,6 +38,9 @@ export default function TodayScreen() {
   const placementFloor = useProgress((s) => s.assessment.placementFloor);
   const { pack } = useCourseContent(activeCourseId);
   const [preset, setPreset] = useState<TodayPreset>("regular");
+  // "Can't speak now" (P8 §17): per-visit choice — off composes a fully
+  // silent session; the due speak cards stay honestly in the backlog.
+  const [speakEnabled, setSpeakEnabled] = useState(true);
 
   // Preview from the ACTUAL composed plan (§31) — recomputed when reviews
   // or lesson progress change, deterministic within a day for equal state.
@@ -49,8 +53,25 @@ export default function TodayScreen() {
         preset,
         placementFloor,
         listenClips: listenWordClipIndex(),
+        speakExercises: speakEnabled ? speakExerciseIndex() : undefined,
       }),
-    [pack, course, preset, placementFloor]
+    [pack, course, preset, placementFloor, speakEnabled]
+  );
+  // The toggle appears only when speaking would actually be in the plan.
+  const speakAvailable = useMemo(
+    () =>
+      speakEnabled
+        ? plan.speakCount > 0
+        : composeTodayFromSnapshot({
+            pack,
+            completedLessons: course?.completedLessons ?? {},
+            cards: course?.cards,
+            preset,
+            placementFloor,
+            listenClips: listenWordClipIndex(),
+            speakExercises: speakExerciseIndex(),
+          }).speakCount > 0,
+    [plan.speakCount, speakEnabled, pack, course, preset, placementFloor]
   );
 
   if (!courseCapabilities(activeCourseId).dailySession) {
@@ -121,6 +142,28 @@ export default function TodayScreen() {
               </Text>
             ) : null}
 
+            {speakAvailable ? (
+              <Pressable
+                onPress={() => setSpeakEnabled((v) => !v)}
+                accessibilityRole="switch"
+                accessibilityState={{ checked: !speakEnabled }}
+                accessibilityLabel="Can't speak right now"
+                style={styles.speakToggle}
+                testID="today-speak-toggle"
+              >
+                <Ionicons
+                  name={speakEnabled ? "mic-outline" : "mic-off-outline"}
+                  size={18}
+                  color={speakEnabled ? colors.textMuted : colors.orange}
+                />
+                <Text style={styles.speakToggleText}>
+                  {speakEnabled
+                    ? `Includes ${plan.speakCount} speaking ${plan.speakCount === 1 ? "review" : "reviews"} — tap if you can't speak right now`
+                    : "Speaking is off for this session — those reviews stay due"}
+                </Text>
+              </Pressable>
+            ) : null}
+
             <View
               style={styles.presetRow}
               accessibilityRole="radiogroup"
@@ -150,7 +193,10 @@ export default function TodayScreen() {
             <DuoButton
               label="Start today's session"
               onPress={() =>
-                router.push({ pathname: "/session/today", params: { preset } })
+                router.push({
+                  pathname: "/session/today",
+                  params: { preset, speak: speakEnabled ? "1" : "0" },
+                })
               }
             />
           </View>
@@ -215,6 +261,8 @@ const useStyles = makeThemedStyles((colors) =>
     previewValue: { fontSize: 22, fontWeight: "800", color: colors.neutral700 },
     previewLabel: { fontSize: 12, fontWeight: "600", color: colors.textMuted },
     backlogNote: { fontSize: 13, color: colors.textMuted, lineHeight: 18 },
+    speakToggle: { flexDirection: "row", alignItems: "center", gap: 8 },
+    speakToggleText: { flex: 1, fontSize: 13, color: colors.textMuted, lineHeight: 18 },
     presetRow: { flexDirection: "row", gap: 8 },
     presetChip: {
       flex: 1,

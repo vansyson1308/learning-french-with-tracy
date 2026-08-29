@@ -159,6 +159,34 @@ export type DomainStatus =
   | "no_direct_objective"
   | "no_objectives_in_domain";
 
+const DOMAIN_DISPLAY: Record<string, string> = {
+  spoken_reception: "Listening",
+  written_reception: "Reading",
+  spoken_production: "Spoken production",
+  written_production: "Written production",
+  interaction: "Interaction",
+};
+
+/**
+ * Honest one-line limitation for a non-covered domain, keyed on the ACTUAL
+ * status: "not assessed" wording is reserved for domains with no direct
+ * assessment at the level; assessed-but-narrow evidence says so instead.
+ */
+export function domainLimitation(domain: string, status: DomainStatus): string | null {
+  const name = DOMAIN_DISPLAY[domain] ?? domain;
+  switch (status) {
+    case "covered":
+      return null;
+    case "no_objectives_in_domain":
+    case "no_direct_objective":
+      return `${name} is not assessed (no direct assessment exists at this level).`;
+    case "objectives_not_assessed":
+      return `${name} has direct objectives at this level, but not enough scored evidence to count as assessed.`;
+    case "insufficient_breadth":
+      return `${name} is assessed at this level, but the evidence does not yet span enough task families or scales for a claim.`;
+  }
+}
+
 /** One scored item's evidence: targets + task family + shared source input. */
 export type ScoredItemEvidence = {
   objectiveTargets: string[];
@@ -326,20 +354,18 @@ export function evaluateClaimGate(input: {
       domains,
       coveredCompetences,
       unassessedDomains: unassessed,
+      // Limitations are DERIVED from each domain's actual status — a domain
+      // that IS assessed but lacks breadth must never be described as "not
+      // assessed" (Gate-0 fix: the Phase-6 blanket strings went stale the
+      // moment Phase 7 added scored listening evidence).
       evidenceLimitations: [
-        ...(domains.some((d) => d.domain === "spoken_production" && d.status !== "covered")
-          ? ["Spoken production is not assessed (no speaking assessment exists)."]
-          : []),
-        ...(domains.some((d) => d.domain === "spoken_reception" && d.status !== "covered")
-          ? ["Listening is not assessed in scored assessment."]
-          : []),
+        ...domains
+          .map((d) => domainLimitation(d.domain, d.status))
+          .filter((l): l is string => l !== null),
         ...(spokenReceptionCovered
           ? [
               "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity.",
             ]
-          : []),
-        ...(domains.some((d) => d.domain === "interaction" && d.status !== "covered")
-          ? ["Interaction is not assessed."]
           : []),
       ],
     };

@@ -1,7 +1,32 @@
 import type { Exercise } from "./types";
 
+import { gradeSpokenAttempt } from "./speech/grader";
+
 export type Status = "none" | "correct" | "wrong";
-export type Answer = number | number[] | string | null;
+
+/**
+ * A finished speech attempt as a submittable answer (P8 §12): the
+ * recognizer's FINAL n-best transcripts, plus whether practice assistance
+ * (contextual bias, a revealed target) was active when it was recorded —
+ * consumed by the evidence layer, never by grading itself.
+ */
+export type SpokenAnswer = {
+  spoken: true;
+  finalTranscript: string;
+  alternatives: string[];
+  assisted: boolean;
+};
+
+export type Answer = number | number[] | string | SpokenAnswer | null;
+
+export function isSpokenAnswer(answer: Answer): answer is SpokenAnswer {
+  return (
+    typeof answer === "object" &&
+    answer !== null &&
+    !Array.isArray(answer) &&
+    answer.spoken === true
+  );
+}
 
 export function normalize(text: string) {
   return (
@@ -76,6 +101,14 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
       return answer === exercise.correct;
     case "match":
       return answer === "done";
+    case "speakRepetition":
+    case "speakProduction":
+      // Deterministic spoken grading (P8 §12) over the FINAL n-best only.
+      if (!isSpokenAnswer(answer)) return false;
+      return gradeSpokenAttempt(answer, {
+        acceptedVariants: exercise.acceptedVariants,
+        requiredConcepts: exercise.requiredConcepts,
+      }).correct;
   }
 }
 
@@ -100,6 +133,9 @@ export function correctAnswerText(exercise: Exercise): string {
       return exercise.options[exercise.correct].text;
     case "match":
       return "";
+    case "speakRepetition":
+    case "speakProduction":
+      return exercise.target;
   }
 }
 
@@ -120,5 +156,8 @@ export function answerIsReady(exercise: Exercise, answer: Answer): boolean {
       return typeof answer === "number";
     case "match":
       return answer === "done";
+    case "speakRepetition":
+    case "speakProduction":
+      return isSpokenAnswer(answer);
   }
 }

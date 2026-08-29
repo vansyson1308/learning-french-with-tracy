@@ -1,18 +1,19 @@
 {
   "generator": "scripts/reception-audio.ts qa",
-  "clipCount": 41,
+  "authoredClipCount": 60,
+  "uniqueAssetCount": 58,
   "technicalFailures": 0,
   "speakerSummary": [
     {
-      "speaker": "mixed",
-      "clips": 8,
-      "meanWer": 0.1368,
+      "speaker": "fr_FR-siwis-medium",
+      "clips": 52,
+      "meanWer": 0.2001,
       "technicalFailures": 0
     },
     {
-      "speaker": "fr_FR-siwis-medium",
-      "clips": 33,
-      "meanWer": 0.1605,
+      "speaker": "mixed",
+      "clips": 8,
+      "meanWer": 0.23,
       "technicalFailures": 0
     }
   ],
@@ -23,12 +24,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "La bibliothèque ferme à six heures ce soir.",
-      "durationSec": 2.664,
-      "bytes": 21568,
+      "durationSec": 2.56,
+      "bytes": 20733,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.14,
+      "charsPerSec": 16.8,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -42,17 +43,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Pardon, le magasin ouvre à quelle heure ? Le magasin ouvre à neuf heures, madame.",
-      "durationSec": 4.989,
-      "bytes": 40168,
+      "durationSec": 5.277,
+      "bytes": 42466,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.23,
+      "charsPerSec": 15.35,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Pardon, le magasin ouvre à quelle heure ?  Le magasin ouvre à neuf heures, madame.",
-        "wer": 0
+        "text": "Pardon, le magasin ouvre à quelle heure ?",
+        "wer": 0.5
       }
     },
     {
@@ -61,17 +62,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Bonjour, un thé, s'il vous plaît. Bien sûr. Trois euros, monsieur.",
-      "durationSec": 4.728,
-      "bytes": 38078,
+      "durationSec": 5.068,
+      "bytes": 40795,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.96,
+      "charsPerSec": 13.02,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, un T, si vous plaît.  Bien sûr, trois euros, monsieur.",
-        "wer": 0.25
+        "text": "Bonjour, un T, s'il vous plaît.  Bien sûr, trois euros, monsieur.",
+        "wer": 0.0833
       }
     },
     {
@@ -80,16 +81,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le soir",
-      "durationSec": 0.94,
-      "bytes": 7776,
+      "durationSec": 0.888,
+      "bytes": 7358,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 7.44,
+      "charsPerSec": 7.88,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "le soir.",
+        "text": "le soir",
         "wer": 0
       }
     },
@@ -108,8 +109,8 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "voie 4",
-        "wer": 0.5
+        "text": "Voix 4.",
+        "wer": 1
       }
     },
     {
@@ -118,16 +119,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "L'entrée du musée coûte huit euros le samedi.",
-      "durationSec": 2.508,
-      "bytes": 20315,
+      "durationSec": 2.638,
+      "bytes": 21359,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.94,
+      "charsPerSec": 17.06,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "L'entrée du musée coup de huit euros le samedi.",
+        "text": "L'entrée du musée coût 8 euros, le samedi.",
         "wer": 0.2222
       }
     },
@@ -137,16 +138,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le fromage",
-      "durationSec": 1.097,
-      "bytes": 9030,
+      "durationSec": 1.123,
+      "bytes": 9239,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.11,
+      "charsPerSec": 8.9,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le fromage.",
+        "text": "le fromage.",
         "wer": 0
       }
     },
@@ -156,17 +157,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "l'hôtel",
-      "durationSec": 0.993,
-      "bytes": 8194,
+      "durationSec": 1.045,
+      "bytes": 8612,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 7.05,
+      "charsPerSec": 6.7,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "L'hôtel.",
-        "wer": 0
+        "text": "L'hostile.",
+        "wer": 0.5
       }
     },
     {
@@ -175,12 +176,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le restaurant de la plage est ouvert le samedi matin.",
-      "durationSec": 3.082,
-      "bytes": 24912,
+      "durationSec": 3.344,
+      "bytes": 27002,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.19,
+      "charsPerSec": 15.85,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -194,12 +195,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le train pour Marseille part voie quatre, à onze heures.",
-      "durationSec": 2.952,
-      "bytes": 23867,
+      "durationSec": 3.082,
+      "bytes": 24912,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 18.97,
+      "charsPerSec": 18.17,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -213,17 +214,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le train part à dix heures, voie une.",
-      "durationSec": 2.717,
-      "bytes": 21986,
+      "durationSec": 2.638,
+      "bytes": 21359,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.62,
+      "charsPerSec": 14.02,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train par à 10h, voie une.",
-        "wer": 0.375
+        "text": "Le train par a dix heures, voie une.",
+        "wer": 0.25
       }
     },
     {
@@ -232,16 +233,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le lait",
-      "durationSec": 0.81,
-      "bytes": 6731,
+      "durationSec": 0.862,
+      "bytes": 7149,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.64,
+      "charsPerSec": 8.12,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Luleh.",
+        "text": "Lele.",
         "wer": 1
       }
     },
@@ -251,16 +252,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Bonsoir, madame.",
-      "durationSec": 1.306,
-      "bytes": 10701,
+      "durationSec": 1.332,
+      "bytes": 10910,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.25,
+      "charsPerSec": 12.01,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonsoir, madame.",
+        "text": "Bonsoir, madame !",
         "wer": 0
       }
     },
@@ -270,16 +271,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le café",
-      "durationSec": 0.862,
-      "bytes": 7149,
+      "durationSec": 0.888,
+      "bytes": 7358,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.12,
+      "charsPerSec": 7.88,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le café.",
+        "text": "le café",
         "wer": 0
       }
     },
@@ -289,16 +290,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "bonjour",
-      "durationSec": 0.862,
-      "bytes": 7149,
+      "durationSec": 0.836,
+      "bytes": 6940,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.12,
+      "charsPerSec": 8.37,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour!",
+        "text": "Bonjour.",
         "wer": 0
       }
     },
@@ -308,17 +309,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le lait",
-      "durationSec": 0.81,
-      "bytes": 6731,
+      "durationSec": 0.862,
+      "bytes": 7149,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 8.64,
+      "charsPerSec": 8.12,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le lait.",
-        "wer": 0
+        "text": "Lele.",
+        "wer": 1
       }
     },
     {
@@ -327,12 +328,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le train",
-      "durationSec": 0.862,
-      "bytes": 7149,
+      "durationSec": 0.81,
+      "bytes": 6731,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.28,
+      "charsPerSec": 9.88,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -346,12 +347,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "l'eau",
-      "durationSec": 0.627,
-      "bytes": 5268,
+      "durationSec": 0.522,
+      "bytes": 4432,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 7.98,
+      "charsPerSec": 9.57,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -365,12 +366,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "la gare",
-      "durationSec": 0.888,
-      "bytes": 7358,
+      "durationSec": 0.967,
+      "bytes": 7985,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 7.88,
+      "charsPerSec": 7.24,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -384,16 +385,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le matin",
-      "durationSec": 0.784,
-      "bytes": 6522,
+      "durationSec": 0.836,
+      "bytes": 6940,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 10.21,
+      "charsPerSec": 9.57,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le matin.",
+        "text": "le matin.",
         "wer": 0
       }
     },
@@ -403,17 +404,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Merci beaucoup, monsieur.",
-      "durationSec": 1.593,
-      "bytes": 13000,
+      "durationSec": 1.75,
+      "bytes": 14254,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.69,
+      "charsPerSec": 14.28,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Merci beaucoup, M. !",
-        "wer": 0.3333
+        "text": "Merci beaucoup, monsieur.",
+        "wer": 0
       }
     },
     {
@@ -422,12 +423,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le pain",
-      "durationSec": 0.679,
-      "bytes": 5686,
+      "durationSec": 0.705,
+      "bytes": 5895,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 10.31,
+      "charsPerSec": 9.92,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -441,12 +442,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le café est ouvert le soir.",
-      "durationSec": 1.933,
-      "bytes": 15717,
+      "durationSec": 1.776,
+      "bytes": 14463,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.97,
+      "charsPerSec": 15.2,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -460,12 +461,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "le train",
-      "durationSec": 0.862,
-      "bytes": 7149,
+      "durationSec": 0.81,
+      "bytes": 6731,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 9.28,
+      "charsPerSec": 9.88,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -479,12 +480,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Attention, le départ est voie trois.",
-      "durationSec": 2.351,
-      "bytes": 19061,
+      "durationSec": 2.064,
+      "bytes": 16762,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.31,
+      "charsPerSec": 17.44,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -498,12 +499,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le magasin est fermé.",
-      "durationSec": 1.541,
-      "bytes": 12582,
+      "durationSec": 1.463,
+      "bytes": 11955,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.63,
+      "charsPerSec": 14.36,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -517,12 +518,12 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le magasin ferme dans dix minutes.",
-      "durationSec": 2.273,
-      "bytes": 18434,
+      "durationSec": 2.142,
+      "bytes": 17389,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.96,
+      "charsPerSec": 15.87,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -536,17 +537,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le musée ouvre à dix heures le dimanche.",
-      "durationSec": 2.508,
-      "bytes": 20315,
+      "durationSec": 2.456,
+      "bytes": 19897,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.95,
+      "charsPerSec": 16.29,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le musée ouvra 10 heures le dimanche.",
-        "wer": 0.375
+        "text": "Le musée ouvra dix heures le dimanche.",
+        "wer": 0.25
       }
     },
     {
@@ -555,16 +556,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "La sortie est à droite, après la porte.",
-      "durationSec": 2.691,
-      "bytes": 21777,
+      "durationSec": 2.508,
+      "bytes": 20315,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.49,
+      "charsPerSec": 15.55,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "La sortie est à droite, après la porte.",
+        "text": "La sortie est à droite après la porte.",
         "wer": 0
       }
     },
@@ -574,17 +575,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le billet coûte seize euros.",
-      "durationSec": 1.463,
-      "bytes": 11955,
+      "durationSec": 1.515,
+      "bytes": 12373,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 19.14,
+      "charsPerSec": 18.48,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le billet coûte 16€.",
-        "wer": 0.4
+        "text": "Le billet coûte 16 euros.",
+        "wer": 0.2
       }
     },
     {
@@ -612,16 +613,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le train pour Lyon part à neuf heures, voie deux.",
-      "durationSec": 2.795,
-      "bytes": 22613,
+      "durationSec": 2.664,
+      "bytes": 21568,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.53,
+      "charsPerSec": 18.39,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train pour l'ion part à 9h00, voie 2.",
+        "text": "Le train pour lui en part à 9h, voie 2.",
         "wer": 0.5
       }
     },
@@ -631,12 +632,12 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Je voudrais du pain, s'il vous plaît. Voilà. Ça fait deux euros.",
-      "durationSec": 4.493,
-      "bytes": 36197,
+      "durationSec": 4.441,
+      "bytes": 35779,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.24,
+      "charsPerSec": 14.41,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -650,17 +651,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Un billet pour Paris, s'il vous plaît. Le train part à huit heures, voie deux.",
-      "durationSec": 5.303,
-      "bytes": 42675,
+      "durationSec": 5.198,
+      "bytes": 41839,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.71,
+      "charsPerSec": 15,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "un billet pour Paris, s'il vous plaît.  Le train part à 8h voie 2.",
-        "wer": 0.1875
+        "text": "un billet pour Paris, s'il vous plaît.",
+        "wer": 0.5
       }
     },
     {
@@ -669,16 +670,16 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Bonjour, un café et un jus, s'il vous plaît. Bien sûr. Ça fait cinq euros.",
-      "durationSec": 5.695,
-      "bytes": 45810,
+      "durationSec": 5.773,
+      "bytes": 46437,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 12.99,
+      "charsPerSec": 12.82,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "bonjour, un café et un jus, s'il vous plaît.  Bien sûr, ça fait 5 euros.",
+        "text": "Bonjour, un café et un jus, s'il vous plaît.  Bien sûr, ça fait 5 euros.",
         "wer": 0.0625
       }
     },
@@ -688,17 +689,17 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Le départ est à quelle heure ? À sept heures, madame.",
-      "durationSec": 3.318,
-      "bytes": 26793,
+      "durationSec": 3.265,
+      "bytes": 26375,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.98,
+      "charsPerSec": 16.23,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le départ est à quel heure ?  A cette heure, madame.",
-        "wer": 0.4
+        "text": "Le départ est à quelle heure ?  A cette heure, ma dame.",
+        "wer": 0.5
       }
     },
     {
@@ -707,12 +708,12 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Pardon, où est la gare ? La gare est à droite, après le musée.",
-      "durationSec": 4.362,
-      "bytes": 35152,
+      "durationSec": 4.18,
+      "bytes": 33689,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.21,
+      "charsPerSec": 14.83,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -726,12 +727,12 @@
       "voiceId": "mixed",
       "speaker": null,
       "transcript": "Bonsoir, une table pour deux, s'il vous plaît. Bien sûr, la table près de la porte.",
-      "durationSec": 6.191,
-      "bytes": 49781,
+      "durationSec": 6.087,
+      "bytes": 48945,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.41,
+      "charsPerSec": 13.64,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -745,16 +746,16 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Le matin, la plage est calme. Le soir, il y a de la musique.",
-      "durationSec": 4.415,
-      "bytes": 35570,
+      "durationSec": 4.336,
+      "bytes": 34943,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.59,
+      "charsPerSec": 13.84,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le matin, la plage est calme, le soir, il y a de la musique.",
+        "text": "Le matin, la plage est calme, le soir il y a de la musique.",
         "wer": 0
       }
     },
@@ -764,17 +765,17 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Samedi, nous achetons du fromage et du pain au magasin.",
-      "durationSec": 3.03,
-      "bytes": 24494,
+      "durationSec": 3.265,
+      "bytes": 26375,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 18.15,
+      "charsPerSec": 16.84,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Sam dit, nous achetons du formage et du pain en magasin.",
-        "wer": 0.4
+        "text": "Sam dit, nous achetons du fromage et du pain en magasin.",
+        "wer": 0.3
       }
     },
     {
@@ -783,16 +784,377 @@
       "voiceId": "fr_FR-siwis-medium",
       "speaker": null,
       "transcript": "Je travaille le matin. L'après-midi, je vais à la bibliothèque.",
-      "durationSec": 3.788,
-      "bytes": 30555,
+      "durationSec": 3.997,
+      "bytes": 32226,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 16.63,
+      "charsPerSec": 15.76,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
         "text": "Je travaille le matin, l'après-midi, je vais à la bibliothèque.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.uk_au_revoir",
+      "assetKey": "fd20576afe7e3fb6e599",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Au revoir !",
+      "durationSec": 0.94,
+      "bytes": 7776,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.7,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Revoire.",
+        "wer": 1
+      }
+    },
+    {
+      "clipId": "fr.clip.uk_merci",
+      "assetKey": "9c0b3d6a798008fb70c1",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Merci beaucoup.",
+      "durationSec": 1.254,
+      "bytes": 10284,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 11.96,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Merci beaucoup.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.uk_pardon",
+      "assetKey": "1cfe4d1414c7d39be506",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Pardon !",
+      "durationSec": 0.836,
+      "bytes": 6940,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 9.57,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Ardome.",
+        "wer": 1
+      }
+    },
+    {
+      "clipId": "fr.clip.uk_svp",
+      "assetKey": "b6bad8723238da41c021",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "S'il vous plaît.",
+      "durationSec": 1.019,
+      "bytes": 8403,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.71,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "s'il vous plaît.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ul_aime_cafe",
+      "assetKey": "b114245a7b2ca092081e",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "J'aime le café.",
+      "durationSec": 1.176,
+      "bytes": 9657,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.76,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "J'aime le café.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ul_habite_paris",
+      "assetKey": "20c9653409d1bca452dd",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "J'habite à Paris.",
+      "durationSec": 0.967,
+      "bytes": 7985,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.59,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "J'habite à Paris.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ul_parle_francais",
+      "assetKey": "558e146c61ae9b877b7f",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Je parle français.",
+      "durationSec": 1.463,
+      "bytes": 11955,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 12.3,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Je parle français.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ul_suis_hotel",
+      "assetKey": "ac0fcbfd0b8897f3eb6c",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Je suis à l'hôtel.",
+      "durationSec": 1.254,
+      "bytes": 10284,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.36,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Je suis à l'hôtel.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ul_travaille_matin",
+      "assetKey": "dcef682299a0e8585c65",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Je travaille le matin.",
+      "durationSec": 1.515,
+      "bytes": 12373,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.52,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Je travaille le matin.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.ul_vais_gare",
+      "assetKey": "c119aa48227196249223",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Je vais à la gare.",
+      "durationSec": 1.149,
+      "bytes": 9448,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.66,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Je vais vers la gare.",
+        "wer": 0.2
+      }
+    },
+    {
+      "clipId": "fr.clip.um_coute_trois",
+      "assetKey": "79ded5a5fd06295c15ea",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Ça coûte trois euros.",
+      "durationSec": 1.358,
+      "bytes": 11119,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.46,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Ça coûte 3 euros.",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.um_deux_chats",
+      "assetKey": "b306e08f11cfab6ce010",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Il y a deux chats.",
+      "durationSec": 1.306,
+      "bytes": 10701,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.78,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Il y a deux chats.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.um_sept_jours",
+      "assetKey": "f775955b77bde9c6880a",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Il y a sept jours dans une semaine.",
+      "durationSec": 1.959,
+      "bytes": 15926,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.86,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Il y a 7 jours dans une semaine.",
+        "wer": 0.125
+      }
+    },
+    {
+      "clipId": "fr.clip.um_train_neuf",
+      "assetKey": "811f762981dc2278a830",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Le train part à neuf heures.",
+      "durationSec": 1.724,
+      "bytes": 14045,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.24,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Le train par un oeuvre.",
+        "wer": 0.6667
+      }
+    },
+    {
+      "clipId": "fr.clip.un_cest_chien",
+      "assetKey": "9623daab4aded6762fc7",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "C'est un chien.",
+      "durationSec": 1.019,
+      "bytes": 8403,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 14.72,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "C'est ton chien.",
+        "wer": 0.25
+      }
+    },
+    {
+      "clipId": "fr.clip.un_cest_gare",
+      "assetKey": "4b77e753a5888c51126d",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "C'est la gare.",
+      "durationSec": 0.888,
+      "bytes": 7358,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.76,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Et la gare.",
+        "wer": 0.5
+      }
+    },
+    {
+      "clipId": "fr.clip.un_cest_matin",
+      "assetKey": "6f9ee48ef5278261feb5",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "C'est le matin.",
+      "durationSec": 0.967,
+      "bytes": 7985,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.52,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "C'est le matin.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.un_magasin_ouvert",
+      "assetKey": "ab0c3e969fc15c37c14c",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "Le magasin est ouvert.",
+      "durationSec": 1.62,
+      "bytes": 13209,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 13.58,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "Le magasin est ouvert.",
+        "wer": 0
+      }
+    },
+    {
+      "clipId": "fr.clip.un_porte_fermee",
+      "assetKey": "e30998caa8cc2f359dae",
+      "voiceId": "fr_FR-siwis-medium",
+      "speaker": null,
+      "transcript": "La porte est fermée.",
+      "durationSec": 1.254,
+      "bytes": 10284,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 15.95,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "La porte est fermée.",
         "wer": 0
       }
     }

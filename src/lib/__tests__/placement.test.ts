@@ -9,6 +9,7 @@ import { describe, expect, test } from "bun:test";
 
 import { placementContent, placementEnginePlan } from "../assessment/content";
 import {
+  advanceToNextStage,
   answersFromSession,
   buildPlacementResult,
   evaluateClusters,
@@ -37,15 +38,30 @@ function allCorrect(...stageIndexes: number[]): PlacementAnswers {
 }
 
 describe("compiled placement content (§76)", () => {
-  test("three stages, fourteen clusters, twenty-two items within budget (v2)", () => {
-    expect(CONTENT.stages.length).toBe(3);
+  test("four stages, sixteen clusters, twenty-eight items within budget (v3)", () => {
+    expect(CONTENT.stages.length).toBe(4);
     const clusters = CONTENT.stages.flatMap((s) => s.clusters);
-    expect(clusters.length).toBe(14);
+    expect(clusters.length).toBe(16);
     const items = clusters.flatMap((c) => c.items);
-    expect(items.length).toBe(22);
+    expect(items.length).toBe(28);
     expect(items.length).toBeLessThanOrEqual(CONTENT.maxItems);
-    expect(new Set(items.map((i) => i.id)).size).toBe(22);
-    expect(CONTENT.allComfortableLessonId).toBe("fr-en:uj-l0");
+    expect(new Set(items.map((i) => i.id)).size).toBe(28);
+    expect(CONTENT.allComfortableLessonId).toBe("fr-en:un-l0");
+  });
+
+  test("the production stage is speech-only reserved production items (P8 §22)", () => {
+    const production = CONTENT.stages[3];
+    expect(production.id).toBe("fr.pstage.production");
+    for (const cluster of production.clusters) {
+      for (const item of cluster.items) {
+        expect(item.exercise.type).toBe("speakProduction");
+        if (item.exercise.type !== "speakProduction") continue;
+        expect(item.exercise.modelClipId).toBeNull();
+        expect(item.exercise.allowContextualBias).toBe(false);
+        expect(item.exercise.revealTargetAfterAttempts).toBeNull();
+        expect(item.exercise.evidenceLexemeRefs).toEqual([]);
+      }
+    }
   });
 
   test("cluster anchors walk the curriculum strictly forward (§75)", () => {
@@ -65,6 +81,8 @@ describe("compiled placement content (§76)", () => {
       "fr-en:ug-l0",
       "fr-en:ug-l1",
       "fr-en:uh-l0",
+      "fr-en:uk-l0",
+      "fr-en:um-l0",
     ]);
   });
 
@@ -123,10 +141,31 @@ describe("engine personas (§148)", () => {
     expect(rec.recommendedLessonId).toBe("fr-en:uf-l0");
   });
 
-  test("all strong incl. reception: the authored all-comfortable anchor — the final unit", () => {
+  test("all strong through reception: SPEAKING becomes the unknown frontier (v3)", () => {
     const rec = recommendPlacement(PLAN, allCorrect(0, 1, 2));
+    expect(rec.allComfortable).toBe(false);
+    expect(rec.recommendedLessonId).toBe("fr-en:uk-l0");
+  });
+
+  test("all strong incl. speaking: the authored all-comfortable anchor — the final unit", () => {
+    const rec = recommendPlacement(PLAN, allCorrect(0, 1, 2, 3));
     expect(rec.allComfortable).toBe(true);
-    expect(rec.recommendedLessonId).toBe("fr-en:uj-l0");
+    expect(rec.recommendedLessonId).toBe("fr-en:un-l0");
+  });
+
+  test("speech-unavailable production stage is TRANSPARENT: never weak, never anchoring (§22)", () => {
+    const answers = allCorrect(0, 1, 2);
+    for (const cluster of PLAN.stages[3].clusters) {
+      for (const id of cluster.itemIds) answers[id] = "speech_unavailable";
+    }
+    const rec = recommendPlacement(PLAN, answers);
+    expect(rec.allComfortable).toBe(true);
+    expect(rec.hasNotEstimated).toBe(true);
+    expect(rec.recommendedLessonId).toBe("fr-en:un-l0");
+    const speakOutcomes = rec.clusterOutcomes.filter((o) =>
+      o.clusterId.startsWith("fr.pcluster.speak")
+    );
+    expect(speakOutcomes.map((o) => o.outcome)).toEqual(["not_estimated", "not_estimated"]);
   });
 
   test("an unanswered cluster is an unknown frontier, not skipped over", () => {
@@ -153,8 +192,85 @@ describe("engine personas (§148)", () => {
       completedAt: 1000,
     });
     expect(JSON.stringify(a)).toBe(JSON.stringify(b));
-    expect(a.placementVersion).toBe(2);
+    expect(a.placementVersion).toBe(3);
     expect(a.recommendedLessonId).toBe("fr-en:u1-l0");
+  });
+});
+
+describe("stage advance with capability gating (P8 §22)", () => {
+  // The real plan's one speech stage is the last (production).
+  const SPEECH_STAGES = CONTENT.stages.map((s) =>
+    s.clusters.some((c) =>
+      c.items.some(
+        (i) =>
+          i.exercise.type === "speakProduction" || i.exercise.type === "speakRepetition"
+      )
+    )
+  );
+
+  test("the compiled plan gates exactly the production stage behind speech", () => {
+    expect(SPEECH_STAGES).toEqual([false, false, false, true]);
+  });
+
+  test("a capable device RUNS the production stage after comfortable reception", () => {
+    const step = advanceToNextStage(PLAN, 2, allCorrect(0, 1, 2), SPEECH_STAGES, true);
+    expect(step).toEqual({ kind: "run", stageIndex: 3, answers: allCorrect(0, 1, 2) });
+  });
+
+  test("an incapable device never administers production: auto-marked, finished, not_estimated", () => {
+    const step = advanceToNextStage(PLAN, 2, allCorrect(0, 1, 2), SPEECH_STAGES, false);
+    expect(step.kind).toBe("finished");
+    for (const cluster of PLAN.stages[3].clusters) {
+      for (const id of cluster.itemIds) {
+        expect(step.answers[id]).toBe("speech_unavailable");
+      }
+    }
+    // …and the engine outcome downstream is transparent, never lowered.
+    const rec = recommendPlacement(PLAN, step.answers);
+    expect(rec.allComfortable).toBe(true);
+    expect(rec.hasNotEstimated).toBe(true);
+    expect(rec.recommendedLessonId).toBe("fr-en:un-l0");
+  });
+
+  test("a gap before the production stage finishes WITHOUT touching speech items", () => {
+    const answers = allCorrect(0);
+    answers["fr.pli.s1.polite"] = false;
+    const step = advanceToNextStage(PLAN, 0, answers, SPEECH_STAGES, false);
+    expect(step.kind).toBe("finished");
+    for (const cluster of PLAN.stages[3].clusters) {
+      for (const id of cluster.itemIds) {
+        expect(step.answers[id]).toBeUndefined(); // never reached, never marked
+      }
+    }
+  });
+
+  test("an auto-marked speech stage halts the strict ladder — later stages stay unprobed (synthetic)", () => {
+    // §73's ladder runs a stage only when EVERY earlier cluster is
+    // comfortable; a not_estimated speech stage therefore ends the walk.
+    // The same rule already governs audio skips (the P7 pins below): the
+    // learner is never probed past un-estimated ground, and the floor's
+    // all-comfortable anchor only OPENS lessons, so nothing is lost.
+    const synthetic = {
+      placementVersion: 3,
+      maxItems: 10,
+      allComfortableLessonId: "fr-en:zz-l0",
+      stages: [
+        { id: "s0", title: "t", clusters: [{ id: "c0", objectiveId: "o0", anchorLessonId: "a0", itemIds: ["i0"] }] },
+        { id: "s1", title: "t", clusters: [{ id: "c1", objectiveId: "o1", anchorLessonId: "a1", itemIds: ["i1"] }] },
+        { id: "s2", title: "t", clusters: [{ id: "c2", objectiveId: "o2", anchorLessonId: "a2", itemIds: ["i2"] }] },
+      ],
+    };
+    const step = advanceToNextStage(synthetic, 0, { i0: true }, [false, true, true], false);
+    expect(step.kind).toBe("finished");
+    expect(step.answers.i1).toBe("speech_unavailable");
+    expect(step.answers.i2).toBeUndefined(); // ladder halted; never probed, never marked
+  });
+
+  test("the walk is pure: the caller's answers object is never mutated", () => {
+    const answers = allCorrect(0, 1, 2);
+    const before = JSON.stringify(answers);
+    advanceToNextStage(PLAN, 2, answers, SPEECH_STAGES, false);
+    expect(JSON.stringify(answers)).toBe(before);
   });
 });
 
@@ -373,7 +489,7 @@ describe("audio-unavailable escape in placement (P7 §110, §150)", () => {
     // comfortable — every ESTIMATED cluster is comfortable.
     expect(rec.allComfortable).toBe(true);
     expect(rec.hasNotEstimated).toBe(true);
-    expect(rec.recommendedLessonId).toBe("fr-en:uj-l0");
+    expect(rec.recommendedLessonId).toBe("fr-en:un-l0");
     const byId = new Map(rec.clusterOutcomes.map((o) => [o.clusterId, o.outcome]));
     expect(byId.get("fr.pcluster.listen_words")).toBe("not_estimated");
     expect(byId.get("fr.pcluster.listen_announcements")).toBe("not_estimated");
@@ -404,7 +520,7 @@ describe("audio-unavailable escape in placement (P7 §110, §150)", () => {
       recommendedFloorIndex: 30,
       completedAt: 2000,
     });
-    expect(result.placementVersion).toBe(2);
+    expect(result.placementVersion).toBe(3);
     const estimates = new Map(result.objectiveEstimates.map((e) => [e.objectiveId, e.estimate]));
     expect(estimates.get("fr.obj.listening.familiar_words")).toBe("not_estimated");
     expect(estimates.get("fr.obj.listening.announcements")).toBe("not_estimated");
@@ -414,7 +530,7 @@ describe("audio-unavailable escape in placement (P7 §110, §150)", () => {
   });
 
   test("a partially-answered listening cluster estimates from what WAS heard", () => {
-    const answers = allCorrect(0, 1, 2);
+    const answers = allCorrect(0, 1, 2, 3);
     answers["fr.pli.s3.annonce_voie"] = "audio_unavailable"; // heard one, lost audio
     const rec = recommendPlacement(PLAN, answers);
     const byId = new Map(rec.clusterOutcomes.map((o) => [o.clusterId, o.outcome]));

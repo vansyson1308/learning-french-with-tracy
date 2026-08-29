@@ -15,12 +15,15 @@ import { ListeningComprehension } from "@/components/exercises/listening-compreh
 import { Match } from "@/components/exercises/match";
 import { ReadingComprehension } from "@/components/exercises/reading-comprehension";
 import { Select } from "@/components/exercises/select";
+import { SpeakProduction } from "@/components/exercises/speak-production";
+import { SpeakRepetition } from "@/components/exercises/speak-repetition";
 import { TypeAnswer } from "@/components/exercises/type-answer";
 import { WordBank } from "@/components/exercises/word-bank";
 import { speakTarget } from "@/lib/audio";
 import type { Answer, Status } from "@/lib/grading";
 import { clipAudioSource, clipFor } from "@/lib/reception/content";
 import { useListeningPlayer } from "@/lib/reception/use-listening-player";
+import type { SpeechExerciseContext } from "@/lib/speech/use-speech-session";
 import type {
   DictationExercise,
   Exercise,
@@ -110,6 +113,7 @@ export function ExerciseRenderer({
   onMatchComplete,
   onMatchWordResult,
   reception,
+  speech,
 }: {
   exercise: Exercise;
   answer: Answer;
@@ -121,6 +125,8 @@ export function ExerciseRenderer({
   onMatchWordResult: (target: string, correct: boolean) => void;
   /** Required whenever reception exercise types can appear (French). */
   reception?: ReceptionContext;
+  /** Required whenever speak exercise types can appear (French, P8). */
+  speech?: SpeechExerciseContext;
 }) {
   const receptionCtx: ReceptionContext =
     reception ?? { scored: false, revealTranscript: true };
@@ -217,6 +223,32 @@ export function ExerciseRenderer({
           answer={typeof answer === "string" ? answer : null}
           status={status}
           reception={receptionCtx}
+          onAnswer={onAnswer}
+        />
+      );
+    case "speakRepetition":
+      // Without a session speech context there is no recognizer to drive —
+      // render nothing rather than a dead control (steps stay skippable).
+      if (!speech) return null;
+      return (
+        <SpeakRepetition
+          key={exercise.id}
+          exercise={exercise}
+          answer={answer}
+          status={status}
+          speech={speech}
+          onAnswer={onAnswer}
+        />
+      );
+    case "speakProduction":
+      if (!speech) return null;
+      return (
+        <SpeakProduction
+          key={exercise.id}
+          exercise={exercise}
+          answer={answer}
+          status={status}
+          speech={speech}
           onAnswer={onAnswer}
         />
       );

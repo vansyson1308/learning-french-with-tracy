@@ -31,11 +31,18 @@ export function itemIdForCourse(courseId: string, surface: string): string {
   return courseId === FR_COURSE_ID ? frItemIdFor(surface) : surface;
 }
 
-/** CardKey-safe log key for any itemId (legacy surfaces could contain "|"). */
-function logCardKey(itemId: string): string {
+/**
+ * CardKey-safe log key carrying the evidence's REAL skill (legacy surfaces
+ * could contain "|", so the itemId is escaped). The skill must never be
+ * collapsed here: the one-mutation-per-card-per-session gate and undo both
+ * resolve cards through this exact string, so a listen/speak review logged
+ * under "|recognize" would break the session guard for its own card AND
+ * point undo at the wrong card.
+ */
+function logCardKey(cardKey: ReviewEvidence["cardKey"]): string {
   return serializeCardKey({
-    itemId: itemId.split("|").join("%7C"),
-    skill: "recognize",
+    itemId: cardKey.itemId.split("|").join("%7C"),
+    skill: cardKey.skill,
   });
 }
 
@@ -63,7 +70,7 @@ function baseLogEntry(
   return {
     at: now,
     courseId,
-    cardKey: logCardKey(ev.cardKey.itemId),
+    cardKey: logCardKey(ev.cardKey),
     sessionId: ev.sessionId,
     exerciseId: ev.exerciseId,
     modality: ev.modality,

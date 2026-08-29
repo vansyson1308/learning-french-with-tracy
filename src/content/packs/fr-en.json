@@ -13552,6 +13552,1001 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fr-en:section-4",
+      "title": "Section 4: Speak your first French",
+      "units": [
+        {
+          "id": "fr-en:unit-k",
+          "title": "Dis bonjour !",
+          "description": "Say the everyday formulas out loud — greetings, thanks and polite words.",
+          "guidebook": "## Your voice, your first tool\n\nYou already read and hear these formulas. Now you SAY them.\n\n- The app listens with your device's speech recognition and shows **what it heard** — words, never a pronunciation score.\n- Recording happens only while you hold the conversation — tap record, speak, tap stop.\n- Can't speak right now (a bus, a library)? Skip the step — it stays due, honestly.",
+          "words": [
+            {
+              "target": "bonjour",
+              "native": "hello / good day",
+              "emoji": "👋"
+            },
+            {
+              "target": "merci",
+              "native": "thank you",
+              "emoji": "🙏"
+            },
+            {
+              "target": "s'il vous plaît",
+              "native": "please",
+              "emoji": "🙏"
+            },
+            {
+              "target": "au revoir",
+              "native": "goodbye",
+              "emoji": "👋"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:uk-l0",
+              "title": "Bonjour !",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e1",
+                  "speechItemId": "fr.speak.k_rep_bonjour",
+                  "modelClipId": "fr.clip.uf_dictee_bonjour",
+                  "target": "bonjour",
+                  "acceptedVariants": [
+                    "bonjour"
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s4-e2",
+                  "mode": "targetToNative",
+                  "prompt": "bonjour",
+                  "audioTarget": "bonjour",
+                  "options": [
+                    {
+                      "text": "hello!"
+                    },
+                    {
+                      "text": "goodbye"
+                    },
+                    {
+                      "text": "good evening"
+                    },
+                    {
+                      "text": "thank you"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:bonjour"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e3",
+                  "speechItemId": "fr.speak.k_greet_morning",
+                  "instruction": "It's morning and you walk into a bakery. Greet the baker.",
+                  "target": "Bonjour",
+                  "acceptedVariants": [
+                    "Bonjour",
+                    "Bonjour, madame",
+                    "Bonjour, monsieur"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:bonjour"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.uf_dictee_bonjour",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.formulaic"
+              ]
+            },
+            {
+              "id": "fr-en:uk-l1",
+              "title": "Merci beaucoup",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e4",
+                  "speechItemId": "fr.speak.k_rep_merci",
+                  "modelClipId": "fr.clip.uf_merci",
+                  "target": "Merci beaucoup, monsieur.",
+                  "acceptedVariants": [
+                    "Merci beaucoup, monsieur."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e5",
+                  "speechItemId": "fr.speak.k_thank",
+                  "instruction": "Say thank you very much.",
+                  "target": "Merci beaucoup",
+                  "acceptedVariants": [
+                    "Merci beaucoup"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:merci"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.uk_merci",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e6",
+                  "speechItemId": "fr.speak.k_please",
+                  "instruction": "You are asking for something. Add the polite phrase for 'please'.",
+                  "target": "S'il vous plaît",
+                  "acceptedVariants": [
+                    "S'il vous plaît"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:s-il-vous-plait"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.uk_svp",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.formulaic"
+              ]
+            },
+            {
+              "id": "fr-en:uk-l2",
+              "title": "Le soir",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e7",
+                  "speechItemId": "fr.speak.k_evening",
+                  "instruction": "It's 8 pm and you meet your neighbour. Greet them.",
+                  "target": "Bonsoir",
+                  "acceptedVariants": [
+                    "Bonsoir",
+                    "Bonsoir, madame",
+                    "Bonsoir, monsieur"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:bonsoir"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.uf_bonsoir",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e8",
+                  "speechItemId": "fr.speak.k_bye",
+                  "instruction": "Say goodbye.",
+                  "target": "Au revoir",
+                  "acceptedVariants": [
+                    "Au revoir"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:au-revoir"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.uk_au_revoir",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.formulaic"
+              ]
+            },
+            {
+              "id": "fr-en:uk-l3",
+              "title": "Pardon !",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e9",
+                  "speechItemId": "fr.speak.k_pardon",
+                  "instruction": "You bump into someone in the street. Excuse yourself.",
+                  "target": "Pardon",
+                  "acceptedVariants": [
+                    "Pardon"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:pardon"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.uk_pardon",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s4-e10",
+                  "mode": "targetToNative",
+                  "prompt": "s'il vous plaît",
+                  "audioTarget": "s'il vous plaît",
+                  "options": [
+                    {
+                      "text": "please"
+                    },
+                    {
+                      "text": "thank you"
+                    },
+                    {
+                      "text": "excuse me"
+                    },
+                    {
+                      "text": "good night"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:s-il-vous-plait"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.formulaic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-l",
+          "title": "Je me présente",
+          "description": "Introduce yourself aloud: where you live, what you speak, what you like.",
+          "guidebook": "## One sentence about yourself\n\nA1 speaking is short, fixed sentences — and that's exactly what these are.\n\n- **Je parle…**, **j'habite…**, **j'aime…** — say them until they come out on their own.\n- After each attempt the app shows what it heard, then plays a model answer.\n- The French answer is hidden at first on purpose: the goal is producing it from meaning, not reading it aloud.",
+          "words": [
+            {
+              "target": "parler",
+              "native": "to speak",
+              "emoji": "🗣️"
+            },
+            {
+              "target": "habiter",
+              "native": "to live (somewhere)",
+              "emoji": "🏠"
+            },
+            {
+              "target": "aimer",
+              "native": "to like, to love",
+              "emoji": "❤️"
+            },
+            {
+              "target": "travailler",
+              "native": "to work",
+              "emoji": "💼"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:ul-l0",
+              "title": "Je suis, j'habite",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e11",
+                  "speechItemId": "fr.speak.l_rep_suis",
+                  "modelClipId": "fr.clip.ul_suis_hotel",
+                  "target": "Je suis à l'hôtel.",
+                  "acceptedVariants": [
+                    "Je suis à l'hôtel."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e12",
+                  "speechItemId": "fr.speak.l_rep_habite",
+                  "modelClipId": "fr.clip.ul_habite_paris",
+                  "target": "J'habite à Paris.",
+                  "acceptedVariants": [
+                    "J'habite à Paris."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e13",
+                  "speechItemId": "fr.speak.l_live",
+                  "instruction": "Say that you live in Paris.",
+                  "target": "J'habite à Paris",
+                  "acceptedVariants": [
+                    "J'habite à Paris"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:habiter"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.ul_habite_paris",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.self_intro"
+              ]
+            },
+            {
+              "id": "fr-en:ul-l1",
+              "title": "Je parle français",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e14",
+                  "speechItemId": "fr.speak.l_rep_parle",
+                  "modelClipId": "fr.clip.ul_parle_francais",
+                  "target": "Je parle français.",
+                  "acceptedVariants": [
+                    "Je parle français."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e15",
+                  "speechItemId": "fr.speak.l_speak_french",
+                  "instruction": "Say that you speak French.",
+                  "target": "Je parle français",
+                  "acceptedVariants": [
+                    "Je parle français"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:parler"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.ul_parle_francais",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.self_intro"
+              ]
+            },
+            {
+              "id": "fr-en:ul-l2",
+              "title": "J'aime, je travaille",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e16",
+                  "speechItemId": "fr.speak.l_like_coffee",
+                  "instruction": "Say that you like coffee.",
+                  "target": "J'aime le café",
+                  "acceptedVariants": [
+                    "J'aime le café"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:aimer"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.ul_aime_cafe",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e17",
+                  "speechItemId": "fr.speak.l_work_morning",
+                  "instruction": "Say that you work in the morning.",
+                  "target": "Je travaille le matin",
+                  "acceptedVariants": [
+                    "Je travaille le matin"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:travailler"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.ul_travaille_matin",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.self_intro"
+              ]
+            },
+            {
+              "id": "fr-en:ul-l3",
+              "title": "Je vais à…",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e18",
+                  "speechItemId": "fr.speak.l_go_station",
+                  "instruction": "Say that you are going to the station.",
+                  "target": "Je vais à la gare",
+                  "acceptedVariants": [
+                    "Je vais à la gare"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:aller"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.ul_vais_gare",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s4-e19",
+                  "mode": "targetToNative",
+                  "prompt": "habiter",
+                  "options": [
+                    {
+                      "text": "to live"
+                    },
+                    {
+                      "text": "to speak"
+                    },
+                    {
+                      "text": "to work"
+                    },
+                    {
+                      "text": "to like"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:habiter"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.self_intro"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-m",
+          "title": "Les chiffres à voix haute",
+          "description": "Give real information out loud: how many, how much, and when.",
+          "guidebook": "## Numbers you can SAY\n\nYou learned the number system in Section 2 — now say the numbers inside real sentences.\n\n- The cue shows the FACTS (a number, a price, a time) — you put them into French.\n- Digits count: if the app hears « 2 » or « deux », both are the same answer.\n- A wrong number is a wrong answer; silence is never graded as wrong.",
+          "words": [
+            {
+              "target": "le train",
+              "native": "the train",
+              "emoji": "🚆"
+            },
+            {
+              "target": "le billet",
+              "native": "the ticket",
+              "emoji": "🎫"
+            },
+            {
+              "target": "l'heure",
+              "native": "the hour",
+              "emoji": "🕐"
+            },
+            {
+              "target": "le jour",
+              "native": "the day",
+              "emoji": "☀️"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:um-l0",
+              "title": "Il y a…",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e20",
+                  "speechItemId": "fr.speak.m_rep_prix",
+                  "modelClipId": "fr.clip.uh_prix_billet",
+                  "target": "Le billet coûte seize euros.",
+                  "acceptedVariants": [
+                    "Le billet coûte seize euros."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.give_info"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e21",
+                  "speechItemId": "fr.speak.m_cats",
+                  "instruction": "Say how many cats there are.",
+                  "cueEmoji": "🐈🐈",
+                  "cueFacts": [
+                    {
+                      "label": "Cats",
+                      "value": "2"
+                    }
+                  ],
+                  "target": "Il y a deux chats",
+                  "acceptedVariants": [
+                    "Il y a deux chats"
+                  ],
+                  "requiredConcepts": [
+                    [
+                      "il y a"
+                    ],
+                    [
+                      "deux",
+                      "2"
+                    ],
+                    [
+                      "chats",
+                      "chat"
+                    ]
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:chat"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.um_deux_chats",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.give_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.give_info"
+              ]
+            },
+            {
+              "id": "fr-en:um-l1",
+              "title": "Ça coûte…",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e22",
+                  "speechItemId": "fr.speak.m_price",
+                  "instruction": "Say what it costs.",
+                  "cueFacts": [
+                    {
+                      "label": "Price",
+                      "value": "3 €"
+                    }
+                  ],
+                  "target": "Ça coûte trois euros",
+                  "acceptedVariants": [
+                    "Ça coûte trois euros"
+                  ],
+                  "requiredConcepts": [
+                    [
+                      "coûte"
+                    ],
+                    [
+                      "trois",
+                      "3"
+                    ],
+                    [
+                      "euros",
+                      "euro"
+                    ]
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:couter"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.um_coute_trois",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.give_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.give_info"
+              ]
+            },
+            {
+              "id": "fr-en:um-l2",
+              "title": "À quelle heure ?",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e23",
+                  "speechItemId": "fr.speak.m_rep_heure",
+                  "modelClipId": "fr.clip.uh_musee_ouvre",
+                  "target": "Le musée ouvre à dix heures le dimanche.",
+                  "acceptedVariants": [
+                    "Le musée ouvre à dix heures le dimanche."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.give_info"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e24",
+                  "speechItemId": "fr.speak.m_train_time",
+                  "instruction": "Say when the train leaves.",
+                  "cueFacts": [
+                    {
+                      "label": "Departure",
+                      "value": "9:00"
+                    }
+                  ],
+                  "target": "Le train part à neuf heures",
+                  "acceptedVariants": [
+                    "Le train part à neuf heures"
+                  ],
+                  "requiredConcepts": [
+                    [
+                      "train"
+                    ],
+                    [
+                      "neuf",
+                      "9"
+                    ],
+                    [
+                      "heures",
+                      "heure"
+                    ]
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:train"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.um_train_neuf",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.give_info"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.give_info"
+              ]
+            },
+            {
+              "id": "fr-en:um-l3",
+              "title": "Les jours",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e25",
+                  "speechItemId": "fr.speak.m_week_days",
+                  "instruction": "Say how many days there are in a week.",
+                  "cueFacts": [
+                    {
+                      "label": "Days in a week",
+                      "value": "7"
+                    }
+                  ],
+                  "target": "Il y a sept jours dans une semaine",
+                  "acceptedVariants": [
+                    "Il y a sept jours dans une semaine",
+                    "Il y a sept jours"
+                  ],
+                  "requiredConcepts": [
+                    [
+                      "sept",
+                      "7"
+                    ],
+                    [
+                      "jours",
+                      "jour"
+                    ]
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:jour"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.um_sept_jours",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.give_info"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s4-e26",
+                  "mode": "targetToNative",
+                  "prompt": "l'heure",
+                  "options": [
+                    {
+                      "text": "the hour"
+                    },
+                    {
+                      "text": "the day"
+                    },
+                    {
+                      "text": "the week"
+                    },
+                    {
+                      "text": "the month"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:heure"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.give_info"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-en:unit-n",
+          "title": "Décris-le !",
+          "description": "Describe what you see in short, simple phrases: what it is, and one fact.",
+          "guidebook": "## « C'est… » — your description machine\n\nThe simplest honest description is a short phrase: **C'est un chien. C'est la gare. C'est le matin.**\n\n- One phrase per idea. Isolated phrases are exactly what A1 speaking is.\n- Add one fact when you can: **Le magasin est ouvert. La porte est fermée.**\n- The picture or situation gives you the MEANING; the French comes from you.",
+          "words": [
+            {
+              "target": "le chien",
+              "native": "the dog",
+              "emoji": "🐕"
+            },
+            {
+              "target": "la gare",
+              "native": "the train station",
+              "emoji": "🚉"
+            },
+            {
+              "target": "la porte",
+              "native": "the door",
+              "emoji": "🚪"
+            },
+            {
+              "target": "le matin",
+              "native": "the morning",
+              "emoji": "🌅"
+            }
+          ],
+          "lessons": [
+            {
+              "id": "fr-en:un-l0",
+              "title": "C'est…",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e27",
+                  "speechItemId": "fr.speak.n_rep_ouvert",
+                  "modelClipId": "fr.clip.uf_soir_phrase",
+                  "target": "Le café est ouvert le soir.",
+                  "acceptedVariants": [
+                    "Le café est ouvert le soir."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e28",
+                  "speechItemId": "fr.speak.n_dog",
+                  "instruction": "Say what this is.",
+                  "cueEmoji": "🐶",
+                  "target": "C'est un chien",
+                  "acceptedVariants": [
+                    "C'est un chien",
+                    "Un chien"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:chien"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.un_cest_chien",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.describe"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.describe"
+              ]
+            },
+            {
+              "id": "fr-en:un-l1",
+              "title": "Les endroits",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e29",
+                  "speechItemId": "fr.speak.n_station",
+                  "instruction": "You arrive at a big building full of trains. Say what this place is.",
+                  "target": "C'est la gare",
+                  "acceptedVariants": [
+                    "C'est la gare",
+                    "C'est une gare"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:gare"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.un_cest_gare",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e30",
+                  "speechItemId": "fr.speak.n_door_closed",
+                  "instruction": "Describe the door.",
+                  "cueEmoji": "🚪🔒",
+                  "target": "La porte est fermée",
+                  "acceptedVariants": [
+                    "La porte est fermée"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:porte"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.un_porte_fermee",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.describe"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.describe"
+              ]
+            },
+            {
+              "id": "fr-en:un-l2",
+              "title": "Ouvert ou fermé ?",
+              "exercises": [
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e31",
+                  "speechItemId": "fr.speak.n_shop_open",
+                  "instruction": "Say that the shop is open.",
+                  "target": "Le magasin est ouvert",
+                  "acceptedVariants": [
+                    "Le magasin est ouvert"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:ouvert"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.un_magasin_ouvert",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "s4-e32",
+                  "speechItemId": "fr.speak.n_morning",
+                  "instruction": "Say what time of day this is.",
+                  "cueEmoji": "🌅",
+                  "target": "C'est le matin",
+                  "acceptedVariants": [
+                    "C'est le matin",
+                    "Le matin"
+                  ],
+                  "evidenceLexemeRefs": [
+                    "fr:w:matin"
+                  ],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": "fr.clip.un_cest_matin",
+                  "allowedAttempts": 2,
+                  "objectiveTargets": [
+                    "fr.obj.speaking.describe"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.describe"
+              ]
+            },
+            {
+              "id": "fr-en:un-l3",
+              "title": "Révision parlée",
+              "exercises": [
+                {
+                  "type": "speakRepetition",
+                  "id": "s4-e33",
+                  "speechItemId": "fr.speak.n_rep_ouvert",
+                  "modelClipId": "fr.clip.uf_soir_phrase",
+                  "target": "Le café est ouvert le soir.",
+                  "acceptedVariants": [
+                    "Le café est ouvert le soir."
+                  ],
+                  "objectiveTargets": [
+                    "fr.obj.speaking.describe"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "s4-e34",
+                  "mode": "targetToNative",
+                  "prompt": "la gare",
+                  "audioTarget": "la gare",
+                  "options": [
+                    {
+                      "text": "the station"
+                    },
+                    {
+                      "text": "the museum"
+                    },
+                    {
+                      "text": "the hotel"
+                    },
+                    {
+                      "text": "the street"
+                    }
+                  ],
+                  "correct": 0,
+                  "gradeTargets": [
+                    "fr:w:gare"
+                  ]
+                }
+              ],
+              "objectives": [
+                "fr.obj.speaking.describe"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

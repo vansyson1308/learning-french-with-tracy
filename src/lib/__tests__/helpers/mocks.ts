@@ -22,3 +22,12 @@ export const asyncStorageMock = {
 
 /** In-memory stand-in for expo-file-system files, keyed by uri. */
 export const memFiles = new Map<string, string>();
+
+/** Directories explicitly created via Directory.create() (uri set). */
+export const memDirs = new Set<string>();
+
+export function joinMockUri(parts: unknown[]): string {
+  return parts
+    .map((p) => (typeof p === "string" ? p : ((p as { uri?: string })?.uri ?? "")))
+    .join("/");
+}

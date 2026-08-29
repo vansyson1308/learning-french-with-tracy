@@ -380,6 +380,73 @@ describe("store integration: submitEvidence + undoLastFrenchReview", () => {
     expect(s.reviewLog[0].cardKey).toBe("fr:w:pomme|recognize");
   });
 
+  test("log entries carry the evidence's REAL skill — the session guard works per (item, skill)", () => {
+    // P8 regression: logCardKey used to hardcode "|recognize", which (a)
+    // disarmed the one-mutation-per-session guard for listen/speak cards and
+    // (b) falsely suppressed a recognize probe after a same-item speak
+    // mutation in the same session.
+    const speak = () =>
+      ev({
+        cardKey: { itemId: "fr:w:pomme", skill: "speak" },
+        modality: "speak",
+        source: "review",
+        exerciseId: "sp1",
+      });
+    expect(useProgress.getState().submitEvidence(speak())).toBe(true);
+    const logged = useProgress.getState().reviewLog[0];
+    expect(logged.cardKey).toBe("fr:w:pomme|speak"); // real skill, not |recognize
+
+    // Same card, same session, second designated probe → guard refuses.
+    expect(useProgress.getState().submitEvidence(speak())).toBe(false);
+
+    // Same ITEM but the recognize skill, same session → NOT suppressed.
+    expect(
+      useProgress.getState().submitEvidence(ev({ source: "review" }))
+    ).toBe(true);
+    const s = useProgress.getState();
+    expect(s.courses[FR_COURSE_ID].cards!["fr:w:pomme|speak"]).toBeDefined();
+    expect(s.courses[FR_COURSE_ID].cards!["fr:w:pomme|recognize"]).toBeDefined();
+  });
+
+  test("undo after a speak review rolls back the SPEAK card and never touches recognize", () => {
+    useProgress.getState().submitEvidence(ev()); // recognize, correct
+    const recognizeAfter = JSON.stringify(
+      useProgress.getState().courses[FR_COURSE_ID].cards!["fr:w:pomme|recognize"]
+    );
+    useProgress.getState().submitEvidence(
+      ev({
+        cardKey: { itemId: "fr:w:pomme", skill: "speak" },
+        modality: "speak",
+        source: "review",
+        sessionId: "s2",
+        correct: false,
+      })
+    );
+    expect(useProgress.getState().undoLastFrenchReview()).toBe(true);
+    const s = useProgress.getState();
+    // The speak card is back to pre-review (new) …
+    expect(s.courses[FR_COURSE_ID].cards!["fr:w:pomme|speak"].state).toBe("new");
+    // … and the recognize card is byte-identical to before the speak review.
+    expect(
+      JSON.stringify(s.courses[FR_COURSE_ID].cards!["fr:w:pomme|recognize"])
+    ).toBe(recognizeAfter);
+  });
+
+  test("undo refuses a log entry whose key resolves to a card the review never produced", () => {
+    // A pre-fix persisted log could hold a listen/speak mutation keyed
+    // "|recognize"; undo must refuse rather than restore the wrong card.
+    useProgress.getState().submitEvidence(ev());
+    const s = useProgress.getState();
+    const forged = s.reviewLog.map((e) => ({ ...e, at: e.at - 1 })); // timestamp mismatch
+    useProgress.setState({ reviewLog: forged });
+    expect(useProgress.getState().undoLastFrenchReview()).toBe(false);
+    // Card untouched (first Good on a new card → learning), log untouched.
+    expect(
+      useProgress.getState().courses[FR_COURSE_ID].cards!["fr:w:pomme|recognize"].state
+    ).toBe("learning");
+    expect(useProgress.getState().reviewLog).toHaveLength(1);
+  });
+
   test("non-French course through submitEvidence equals the historical recordWord", () => {
     useProgress.setState({ activeCourseId: "es-en" });
     useProgress
