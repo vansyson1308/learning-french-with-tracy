@@ -862,15 +862,38 @@ export const CheckpointCriteriaSchema = z.strictObject({
   demonstratedShare: z.number().min(0.5).max(1),
 });
 
+/**
+ * A parallel assessment form (P9 §38-§39): one named, valid administration
+ * of the checkpoint — a subset of its item bank that still satisfies the
+ * per-objective criteria floor for every objective the bank targets.
+ * Retakes rotate deterministically through forms so a second sitting is
+ * never a memory test of the first. Declaring forms is a content decision:
+ * a bank sitting exactly at the claim-gate item floor stays single-form
+ * (splitting it would thin per-sitting evidence below its own criteria).
+ */
+export const CheckpointFormSchema = z.strictObject({
+  formId: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/),
+  itemIds: z.array(assessmentItemId).min(1),
+});
+export type CheckpointForm = z.infer<typeof CheckpointFormSchema>;
+
 export const CheckpointSchema = z.strictObject({
   id: checkpointId,
   /** Bump when items/criteria change meaning (§66). */
   checkpointVersion: z.number().int().min(1),
+  /**
+   * Bump when the FORM structure changes meaning (P9 §38): which forms
+   * exist or which items each administers. Recorded on every attempt so
+   * history stays interpretable after content updates — never rescored.
+   */
+  formVersion: z.number().int().min(1),
   /** The PATH section whose completion unlocks this checkpoint. */
   sectionId: z.string().min(1),
   title: z.string().min(1),
   description: z.string().min(1),
   items: z.array(CheckpointItemSchema).min(1),
+  /** ≥2 parallel forms, or absent: the whole bank is the single form. */
+  forms: z.array(CheckpointFormSchema).min(2).optional(),
   criteria: CheckpointCriteriaSchema,
 });
 export type Checkpoint = z.infer<typeof CheckpointSchema>;

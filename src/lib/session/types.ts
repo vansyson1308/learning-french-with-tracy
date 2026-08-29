@@ -92,6 +92,9 @@ export type CompletionPolicy =
 export type SessionAssessmentPlan = {
   checkpointId: string;
   checkpointVersion: number;
+  /** Which parallel form this sitting administers (P9 §38-§39). */
+  formId: string;
+  formVersion: number;
   criteria: { minItemsPerObjective: number; demonstratedShare: number };
   /** stepId → objective ids the item assesses. */
   itemObjectives: Record<string, string[]>;

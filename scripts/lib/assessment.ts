@@ -528,6 +528,49 @@ export function validateCheckpointsData(input: {
     if (cpIds.has(cp.id)) err(`duplicate checkpoint id ${cp.id}`);
     cpIds.add(cp.id);
     if (!sectionIds.has(cp.sectionId)) err(`${cp.id}: unknown section ${cp.sectionId}`);
+
+    // Parallel forms (P9 §38-§39): every declared form must be a VALID
+    // administration on its own — its items resolve, no dead bank items,
+    // and every objective the bank targets keeps at least the criteria
+    // floor of items inside EVERY form (otherwise a retake on that form
+    // could only ever yield structural insufficient_evidence).
+    if (cp.forms) {
+      const bankIds = new Set(cp.items.map((i) => i.id));
+      const formIds = new Set<string>();
+      const coveredByForms = new Set<string>();
+      for (const form of cp.forms) {
+        if (formIds.has(form.formId)) err(`${cp.id}: duplicate form id ${form.formId}`);
+        formIds.add(form.formId);
+        const seen = new Set<string>();
+        const perObjective = new Map<string, number>();
+        for (const itemId of form.itemIds) {
+          if (!bankIds.has(itemId)) {
+            err(`${cp.id}/${form.formId}: item ${itemId} is not in the bank`);
+            continue;
+          }
+          if (seen.has(itemId)) err(`${cp.id}/${form.formId}: duplicate item ${itemId}`);
+          seen.add(itemId);
+          coveredByForms.add(itemId);
+          const item = cp.items.find((i) => i.id === itemId)!;
+          for (const oid of new Set(item.objectiveTargets)) {
+            perObjective.set(oid, (perObjective.get(oid) ?? 0) + 1);
+          }
+        }
+        const bankObjectives = new Set(cp.items.flatMap((i) => i.objectiveTargets));
+        for (const oid of bankObjectives) {
+          if ((perObjective.get(oid) ?? 0) < cp.criteria.minItemsPerObjective) {
+            err(
+              `${cp.id}/${form.formId}: objective ${oid} has ${perObjective.get(oid) ?? 0} item(s) — every form needs ≥${cp.criteria.minItemsPerObjective} (P9 §39)`
+            );
+          }
+        }
+      }
+      for (const item of cp.items) {
+        if (!coveredByForms.has(item.id)) {
+          err(`${cp.id}: item ${item.id} appears in no form — dead bank item`);
+        }
+      }
+    }
     for (const item of cp.items) {
       if (itemIds.has(item.id)) err(`duplicate item id ${item.id}`);
       itemIds.add(item.id);

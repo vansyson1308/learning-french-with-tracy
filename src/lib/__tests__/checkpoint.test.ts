@@ -200,6 +200,8 @@ describe("scoring (§61-64)", () => {
   const plan: SessionAssessmentPlan = {
     checkpointId: "fr.checkpoint.test",
     checkpointVersion: 1,
+    formId: "full",
+    formVersion: 1,
     criteria: { minItemsPerObjective: 2, demonstratedShare: 0.66 },
     itemObjectives: {
       i1: ["fr.obj.a.x"],

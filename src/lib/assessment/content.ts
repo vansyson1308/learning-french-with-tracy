@@ -21,10 +21,14 @@ export type CompiledCheckpointItem = {
 export type CompiledCheckpoint = {
   id: string;
   checkpointVersion: number;
+  /** Form-structure version, recorded on every attempt (P9 §38). */
+  formVersion: number;
   sectionId: string;
   title: string;
   description: string;
   items: CompiledCheckpointItem[];
+  /** ≥2 parallel forms when declared; absent = the bank is one form. */
+  forms?: { formId: string; itemIds: string[] }[];
   criteria: { minItemsPerObjective: number; demonstratedShare: number };
 };
 

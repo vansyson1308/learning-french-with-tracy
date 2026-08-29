@@ -32,9 +32,20 @@ export default function CheckpointScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const checkpoint = checkpointFor(id ?? "");
 
+  // Parallel-form seed (P9 §38-§39): the prior attempt count is captured
+  // ONCE at mount from a store snapshot — recording this sitting's attempt
+  // at completion must never rebuild the definition mid-screen.
+  const [priorAttemptCount] = useState(
+    () =>
+      useProgress
+        .getState()
+        .assessment.checkpointAttempts.filter((a) => a.checkpointId === (id ?? ""))
+        .length
+  );
   const definition = useMemo<SessionDefinition | null>(
-    () => (checkpoint ? buildCheckpointSessionDefinition(checkpoint) : null),
-    [checkpoint]
+    () =>
+      checkpoint ? buildCheckpointSessionDefinition(checkpoint, priorAttemptCount) : null,
+    [checkpoint, priorAttemptCount]
   );
 
   // Speech preflight (P8 §20/§22 + P9 §8): a SPOKEN checkpoint is never

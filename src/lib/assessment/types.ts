@@ -28,6 +28,13 @@ export type CheckpointAttempt = {
   checkpointId: string;
   /** Content version of the checkpoint definition when attempted (§66). */
   checkpointVersion: number;
+  /**
+   * Which parallel form this sitting administered and the form-structure
+   * version at the time (P9 §38). Optional: attempts recorded before
+   * forms existed carry neither — history is never rewritten (§40).
+   */
+  formId?: string;
+  formVersion?: number;
   startedAt: number;
   completedAt: number;
   itemResults: AssessmentItemResult[];

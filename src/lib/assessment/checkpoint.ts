@@ -63,10 +63,36 @@ export function buildCheckpointAttempt(input: {
   return {
     checkpointId: input.plan.checkpointId,
     checkpointVersion: input.plan.checkpointVersion,
+    formId: input.plan.formId,
+    formVersion: input.plan.formVersion,
     startedAt: input.startedAt,
     completedAt: input.completedAt,
     itemResults,
     objectiveResults: scoreObjectives(input.plan, input.firstResults),
     overallCorrectShare: total === 0 ? 0 : correct / total,
   };
+}
+
+/**
+ * Deterministic parallel-form selection (P9 §38-§39): retakes rotate
+ * through the declared forms in authored order, seeded by how many
+ * attempts at THIS checkpoint the learner has already recorded — the
+ * second sitting is a different form, never a memory test of the first.
+ * A checkpoint without declared forms administers its whole bank as the
+ * single implicit form "full". Pure: same history in, same form out.
+ */
+export function selectCheckpointForm(
+  checkpoint: {
+    items: { id: string }[];
+    forms?: { formId: string; itemIds: string[] }[];
+  },
+  priorAttemptCount: number
+): { formId: string; itemIds: string[] } {
+  const forms = checkpoint.forms;
+  if (!forms || forms.length === 0) {
+    return { formId: "full", itemIds: checkpoint.items.map((i) => i.id) };
+  }
+  const index = ((priorAttemptCount % forms.length) + forms.length) % forms.length;
+  const form = forms[index];
+  return { formId: form.formId, itemIds: [...form.itemIds] };
 }

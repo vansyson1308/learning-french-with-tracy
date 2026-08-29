@@ -142,3 +142,37 @@ exists to make precise (§178).
 - The in-app disclaimer explains: learning goals are aligned with selected
   CEFR descriptors; the app's assessments are course-based learning
   diagnostics, not an official CEFR examination or certification.
+
+## Retakes, versioning and parallel forms (Phase 9 §38-§40)
+
+The retake policy, in full:
+
+- **Latest valid attempt wins.** A learner's standing per objective is
+  the most recent checkpoint attempt that produced a REAL verdict
+  (`demonstrated` or `needs_practice`) for that objective — in both
+  directions: a later `needs_practice` supersedes an earlier
+  `demonstrated`, and vice versa. `insufficient_evidence` is thin
+  sampling, not a verdict: it never overwrites anything and never counts
+  against the learner.
+- **History is never rescored.** Attempts are append-only records
+  (bounded to the most recent 5 per checkpoint id). Content updates
+  never rewrite or re-grade a stored attempt; instead every attempt
+  carries the `checkpointVersion`, `formId` and `formVersion` in force
+  when it was sat, so old records stay interpretable after the content
+  evolves. Attempts recorded before forms existed carry no form fields
+  and keep their full standing.
+- **Parallel forms.** A checkpoint MAY declare ≥2 named forms — subsets
+  of its item bank that each independently satisfy the per-objective
+  criteria floor (validator-enforced, so no form can be structurally
+  unable to demonstrate an objective). A sitting administers exactly one
+  form, selected deterministically by rotation over the learner's prior
+  attempt count at that checkpoint: the second sitting is a different
+  form, never a memory test of the first. A checkpoint without declared
+  forms administers its whole bank as the single implicit form `full`.
+- **Why the six section checkpoints are single-form.** Each bank sits
+  deliberately at the claim gate's 3-items-per-direct-objective floor;
+  splitting it into disjoint forms would drop per-sitting evidence below
+  the checkpoint's own published criteria, and overlapping micro-forms
+  would trade real evidence for cosmetic variety. The A1 capstone is the
+  surface sized for genuine parallel forms and is built on exactly this
+  machinery.

@@ -150,6 +150,39 @@ describe("backup import validates assessment state fail-closed (§47-48)", () =>
     expect(staged.ok).toBe(false);
   });
 
+  test("form-stamped attempts import cleanly; malformed form fields fail closed (P9 §38)", () => {
+    const attempt = {
+      checkpointId: "fr.checkpoint.section-1",
+      checkpointVersion: 1,
+      formId: "a",
+      formVersion: 2,
+      startedAt: 1000,
+      completedAt: 2000,
+      itemResults: [],
+      objectiveResults: [],
+      overallCorrectShare: 0,
+    };
+    const ok = stageImport(
+      envelope((s) => {
+        s.assessment = { checkpointAttempts: [attempt as never], placementFloor: 0 };
+      }),
+      NOW
+    );
+    expect(ok.ok).toBe(true);
+    for (const bad of [{ formId: 7 }, { formVersion: 0 }, { formVersion: "x" }]) {
+      const staged = stageImport(
+        envelope((s) => {
+          s.assessment = {
+            checkpointAttempts: [{ ...attempt, ...bad } as never],
+            placementFloor: 0,
+          };
+        }),
+        NOW
+      );
+      expect({ bad, ok: staged.ok }).toEqual({ bad, ok: false });
+    }
+  });
+
   test("a negative or non-numeric placement floor is rejected", () => {
     for (const bad of [-3, Number.NaN, "seven"]) {
       const staged = stageImport(

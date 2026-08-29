@@ -10,6 +10,7 @@
  * cannot reshape the running queue.
  */
 
+import { selectCheckpointForm } from "../assessment/checkpoint";
 import { pickDistractors } from "../learning/distractors";
 import { dueFrenchReviewQueue } from "../learning/engine";
 import { FR_COURSE_ID } from "../learning/ids-fr";
@@ -297,6 +298,7 @@ export function dueSpeakingReviewCounts(
 type CompiledCheckpoint = {
   id: string;
   checkpointVersion: number;
+  formVersion: number;
   sectionId: string;
   title: string;
   description: string;
@@ -307,6 +309,7 @@ type CompiledCheckpoint = {
     objectiveTargets: string[];
     essential: boolean;
   }[];
+  forms?: { formId: string; itemIds: string[] }[];
   criteria: { minItemsPerObjective: number; demonstratedShare: number };
 };
 
@@ -315,11 +318,20 @@ type CompiledCheckpoint = {
  * §108 structural), retryPolicy "none" (first attempt is the record, §55),
  * no evidence flow (evidencePlanFor nulls scored kinds), no mistakes
  * tracking, completion "checkpoint" (assessment record, zero XP).
+ *
+ * Parallel forms (P9 §38-§39): the sitting administers ONE deterministic
+ * form — retakes rotate by prior attempt count, so pass the learner's
+ * recorded attempt count for this checkpoint; a bank without declared
+ * forms is its own single "full" form (count irrelevant).
  */
 export function buildCheckpointSessionDefinition(
-  checkpoint: CompiledCheckpoint
+  checkpoint: CompiledCheckpoint,
+  priorAttemptCount = 0
 ): SessionDefinition {
-  const steps: SessionStep[] = checkpoint.items.map((item) => ({
+  const form = selectCheckpointForm(checkpoint, priorAttemptCount);
+  const administered = new Set(form.itemIds);
+  const items = checkpoint.items.filter((item) => administered.has(item.id));
+  const steps: SessionStep[] = items.map((item) => ({
     type: "exercise",
     stepId: item.id,
     exercise: item.exercise,
@@ -337,9 +349,11 @@ export function buildCheckpointSessionDefinition(
     assessment: {
       checkpointId: checkpoint.id,
       checkpointVersion: checkpoint.checkpointVersion,
+      formId: form.formId,
+      formVersion: checkpoint.formVersion,
       criteria: checkpoint.criteria,
       itemObjectives: Object.fromEntries(
-        checkpoint.items.map((item) => [item.id, item.objectiveTargets])
+        items.map((item) => [item.id, item.objectiveTargets])
       ),
     },
   };
