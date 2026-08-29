@@ -150,7 +150,12 @@ jobs:
           set -euo pipefail
           git config user.name "reception-audio workflow"
           git config user.email "actions@users.noreply.github.com"
-          git add content/fr/reception content/reports assets/audio/fr-reception 2>/dev/null || true
+          # Paths added individually: a multi-path `git add` is all-or-nothing
+          # and a missing assets dir silently staged NOTHING on the first
+          # successful recon run.
+          for p in content/fr/reception content/reports assets/audio/fr-reception; do
+            if [ -e "$p" ]; then git add "$p"; fi
+          done
           if git diff --cached --quiet; then
             echo "nothing to commit"
             exit 0
