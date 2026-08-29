@@ -76,6 +76,21 @@ export const EXERCISE_BEHAVIOR: Record<Exercise["type"], ExerciseBehavior> = {
     modality: () => "grammarChoice",
     selfAdvancing: false,
   },
+  listeningComprehension: {
+    ...delegate,
+    modality: () => "listen",
+    selfAdvancing: false,
+  },
+  readingComprehension: {
+    ...delegate,
+    modality: () => "recognizeText",
+    selfAdvancing: false,
+  },
+  dictation: {
+    ...delegate,
+    modality: () => "listen",
+    selfAdvancing: false,
+  },
   conjugationCloze: {
     ...delegate,
     modality: () => "produceText",

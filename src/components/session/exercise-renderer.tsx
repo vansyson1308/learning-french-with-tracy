@@ -9,14 +9,96 @@ import React from "react";
 
 import { ArticleSelect } from "@/components/exercises/article-select";
 import { ConjugationCloze } from "@/components/exercises/conjugation-cloze";
+import { Dictation } from "@/components/exercises/dictation";
 import { FillBlank } from "@/components/exercises/fill-blank";
+import { ListeningComprehension } from "@/components/exercises/listening-comprehension";
 import { Match } from "@/components/exercises/match";
+import { ReadingComprehension } from "@/components/exercises/reading-comprehension";
 import { Select } from "@/components/exercises/select";
 import { TypeAnswer } from "@/components/exercises/type-answer";
 import { WordBank } from "@/components/exercises/word-bank";
 import { speakTarget } from "@/lib/audio";
 import type { Answer, Status } from "@/lib/grading";
-import type { Exercise } from "@/lib/types";
+import { clipAudioSource, clipFor } from "@/lib/reception/content";
+import { useListeningPlayer } from "@/lib/reception/use-listening-player";
+import type {
+  DictationExercise,
+  Exercise,
+  ListeningComprehensionExercise,
+} from "@/lib/types";
+
+/**
+ * Reception rendering context (P7 §66-71): scored sessions cap plays at the
+ * clip's authored policy and forbid slow mode; learning is uncapped with
+ * slow available. Transcript reveal and the audio-skip affordance are the
+ * session screen's calls.
+ */
+export type ReceptionContext = {
+  scored: boolean;
+  revealTranscript: boolean;
+  onAudioSkip?: () => void;
+};
+
+function ListeningComprehensionStep({
+  exercise,
+  answer,
+  status,
+  reception,
+  onAnswer,
+}: {
+  exercise: ListeningComprehensionExercise;
+  answer: number | null;
+  status: Status;
+  reception: ReceptionContext;
+  onAnswer: (value: Answer) => void;
+}) {
+  const clip = clipFor(exercise.clipId);
+  const player = useListeningPlayer(clipAudioSource(exercise.clipId), {
+    maxPlays: reception.scored ? (clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
+    allowSlow: !reception.scored,
+  });
+  return (
+    <ListeningComprehension
+      exercise={exercise}
+      answer={answer}
+      status={status}
+      player={player}
+      showTranscript={reception.revealTranscript && status !== "none"}
+      onAnswer={onAnswer}
+      onAudioUnavailable={status === "none" ? reception.onAudioSkip : undefined}
+    />
+  );
+}
+
+function DictationStep({
+  exercise,
+  answer,
+  status,
+  reception,
+  onAnswer,
+}: {
+  exercise: DictationExercise;
+  answer: string | null;
+  status: Status;
+  reception: ReceptionContext;
+  onAnswer: (value: Answer) => void;
+}) {
+  const clip = clipFor(exercise.clipId);
+  const player = useListeningPlayer(clipAudioSource(exercise.clipId), {
+    maxPlays: reception.scored ? (clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
+    allowSlow: !reception.scored,
+  });
+  return (
+    <Dictation
+      exercise={exercise}
+      answer={answer}
+      status={status}
+      player={player}
+      onAnswer={onAnswer}
+      onAudioUnavailable={status === "none" ? reception.onAudioSkip : undefined}
+    />
+  );
+}
 
 export function ExerciseRenderer({
   exercise,
@@ -27,6 +109,7 @@ export function ExerciseRenderer({
   onAnswer,
   onMatchComplete,
   onMatchWordResult,
+  reception,
 }: {
   exercise: Exercise;
   answer: Answer;
@@ -36,7 +119,11 @@ export function ExerciseRenderer({
   onAnswer: (value: Answer) => void;
   onMatchComplete: (wrongAttempts: number) => void;
   onMatchWordResult: (target: string, correct: boolean) => void;
+  /** Required whenever reception exercise types can appear (French). */
+  reception?: ReceptionContext;
 }) {
+  const receptionCtx: ReceptionContext =
+    reception ?? { scored: false, revealTranscript: true };
   switch (exercise.type) {
     case "select":
       return (
@@ -101,6 +188,36 @@ export function ExerciseRenderer({
           answer={typeof answer === "string" ? answer : ""}
           onAnswer={onAnswer}
           status={status}
+        />
+      );
+    case "listeningComprehension":
+      return (
+        <ListeningComprehensionStep
+          exercise={exercise}
+          answer={typeof answer === "number" ? answer : null}
+          status={status}
+          reception={receptionCtx}
+          onAnswer={onAnswer}
+        />
+      );
+    case "readingComprehension":
+      return (
+        <ReadingComprehension
+          exercise={exercise}
+          answer={typeof answer === "number" ? answer : null}
+          status={status}
+          allowGloss={!receptionCtx.scored}
+          onAnswer={onAnswer}
+        />
+      );
+    case "dictation":
+      return (
+        <DictationStep
+          exercise={exercise}
+          answer={typeof answer === "string" ? answer : null}
+          status={status}
+          reception={receptionCtx}
+          onAnswer={onAnswer}
         />
       );
   }

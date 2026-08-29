@@ -16,6 +16,7 @@ try {
     listening: loadListening(),
     objectives: loadCourseObjectives(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
+    frPack: JSON.parse(require("fs").readFileSync("content/courses/fr-en.json", "utf8")),
   });
 } catch (e) {
   reception = {

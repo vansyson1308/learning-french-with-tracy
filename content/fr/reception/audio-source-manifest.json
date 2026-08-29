@@ -49,35 +49,43 @@
       "declaredLicense": "* License: CC-BY 4.0"
     },
     {
-      "id": "fr_FR-mls-medium",
+      "id": "fr_FR-upmc-medium",
       "role": "speaker pool — dialogue second voices (pinned speaker ids chosen by canary ASR audit)",
       "multiSpeaker": true,
+      "canarySpeakers": [
+        0,
+        1
+      ],
       "pinnedSpeakers": [],
       "files": {
         "model": {
-          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx",
-          "sha256": "0ed223f78466917f2bae05ee90096ce69ab1fdeb251f55590d0e7422d234e162",
-          "bytes": 76733750
+          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx",
+          "sha256": null,
+          "bytes": null
         },
         "config": {
-          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json",
-          "sha256": "252b0b0a6e4cc4949e23eccb956f9c779986c32f934f2f7e2191e5fdc2edca61",
-          "bytes": 7036
+          "path": "fr/fr_FR/upmc/medium/fr_FR-upmc-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
         },
         "modelCard": {
-          "path": "fr/fr_FR/mls/medium/MODEL_CARD",
-          "sha256": "443ca90f1ed8e57d9fb802da6dc19c302d5d9b51ddbfbf27a17f3fb5c37ad154",
-          "bytes": 222
+          "path": "fr/fr_FR/upmc/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
         }
       },
       "declaredDataset": null,
-      "declaredLicense": "* License: CC-BY 4.0"
+      "declaredLicense": null
     }
   ],
   "excludedVoices": [
     {
       "id": "fr_FR-tom-medium",
       "reason": "Upstream metadata associates its training dataset with AGPLv3 — excluded to avoid the licensing complication (P7 §31). Re-evaluate only with an explicit legal review."
+    },
+    {
+      "id": "fr_FR-mls-medium",
+      "reason": "Failed the canary ASR quality audit (workflow run 33230542810): mean WER ≈ 0.98–2.47 across all eight sampled speakers vs 0.19 for siwis through the identical pipeline — the audio is not reliably intelligible, so it may never be a scored stimulus (P7 §40, §56-60). License itself was clean (CC-BY 4.0); exclusion is quality-based."
     }
   ]
 }

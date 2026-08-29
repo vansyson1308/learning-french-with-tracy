@@ -37,6 +37,8 @@ type Voice = {
   id: string;
   role: string;
   multiSpeaker: boolean;
+  /** Speaker ids the canary sweeps for a multi-speaker voice. */
+  canarySpeakers?: number[];
   pinnedSpeakers?: number[];
   files: VoiceFiles;
   declaredDataset: string | null;
@@ -217,8 +219,10 @@ function assetKeyFor(segments: GenSegment[], pipelineVersion: number): string {
   return createHash("sha256").update(canonical).digest("hex").slice(0, 20);
 }
 
-/** Canary sweep speakers for the multi-speaker voice (selection audit). */
-const CANARY_MLS_SPEAKERS = [0, 1, 2, 3, 4, 5, 6, 7];
+/** Short label for canary clip ids: "fr_FR-upmc-medium" → "upmc". */
+function voiceShortName(voiceId: string): string {
+  return voiceId.replace(/^[a-z]{2}_[A-Z]{2}-/, "").replace(/-[a-z]+$/, "");
+}
 
 function plan(mode: string, out: string) {
   const manifest = loadManifest();
@@ -235,10 +239,20 @@ function plan(mode: string, out: string) {
     const canary = JSON.parse(readFileSync(CANARY_PATH, "utf8")) as {
       items: { id: string; text: string }[];
     };
+    // Manifest-driven sweep: every candidate voice, every canary speaker for
+    // multi-speaker models — the ASR audit over this output picks the pins.
     for (const item of canary.items) {
-      push(`${item.id}@siwis`, [{ voiceId: "fr_FR-siwis-medium", speaker: null, text: item.text }]);
-      for (const sp of CANARY_MLS_SPEAKERS) {
-        push(`${item.id}@mls-${sp}`, [{ voiceId: "fr_FR-mls-medium", speaker: sp, text: item.text }]);
+      for (const voice of manifest.voices) {
+        const short = voiceShortName(voice.id);
+        if (!voice.multiSpeaker) {
+          push(`${item.id}@${short}`, [{ voiceId: voice.id, speaker: null, text: item.text }]);
+          continue;
+        }
+        const speakers = voice.canarySpeakers ?? voice.pinnedSpeakers ?? [];
+        if (speakers.length === 0) fail(`${voice.id}: multi-speaker voice has no canarySpeakers`);
+        for (const sp of speakers) {
+          push(`${item.id}@${short}-${sp}`, [{ voiceId: voice.id, speaker: sp, text: item.text }]);
+        }
       }
     }
   } else if (mode === "generate") {

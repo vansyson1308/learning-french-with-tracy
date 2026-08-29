@@ -62,10 +62,11 @@
         "fr-en:u3-l1",
         "fr-en:u3-l2",
         "fr-en:u3-l3",
-        "fr-en:uc-l3"
+        "fr-en:uc-l3",
+        "fr-en:uf-l0"
       ],
       "conceptsTeaching": [],
-      "exercisesPracticing": 142,
+      "exercisesPracticing": 148,
       "exercisesTargeting": 0,
       "checkpointItems": 3,
       "placementItems": 0
@@ -92,7 +93,7 @@
       ],
       "conceptsTeaching": [],
       "exercisesPracticing": 53,
-      "exercisesTargeting": 0,
+      "exercisesTargeting": 1,
       "checkpointItems": 3,
       "placementItems": 0
     },
@@ -159,11 +160,14 @@
         "fr-en:u4-l0",
         "fr-en:u4-l1",
         "fr-en:u4-l2",
-        "fr-en:u4-l3"
+        "fr-en:u4-l3",
+        "fr-en:uf-l2",
+        "fr-en:ug-l0",
+        "fr-en:ug-l1"
       ],
       "conceptsTeaching": [],
-      "exercisesPracticing": 220,
-      "exercisesTargeting": 0,
+      "exercisesPracticing": 236,
+      "exercisesTargeting": 32,
       "checkpointItems": 3,
       "placementItems": 0
     },
@@ -396,15 +400,18 @@
         "fr-en:ud-l0",
         "fr-en:ud-l1",
         "fr-en:ud-l2",
-        "fr-en:ud-l3"
+        "fr-en:ud-l3",
+        "fr-en:uh-l0",
+        "fr-en:uh-l3",
+        "fr-en:uj-l1"
       ],
       "conceptsTeaching": [
         "fr:concept:numbers-to-sixty",
         "fr:concept:numbers-seventies",
         "fr:concept:numbers-eighties"
       ],
-      "exercisesPracticing": 42,
-      "exercisesTargeting": 33,
+      "exercisesPracticing": 57,
+      "exercisesTargeting": 41,
       "checkpointItems": 3,
       "placementItems": 0
     },
@@ -490,6 +497,216 @@
       "exercisesPracticing": 37,
       "exercisesTargeting": 2,
       "checkpointItems": 2,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.listening.familiar_words",
+      "title": "Hearing familiar words & phrases",
+      "category": "spoken_reception",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.vocab.everyday_basics"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "direct"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "supports"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:uf-l0",
+        "fr-en:uf-l1",
+        "fr-en:uf-l2",
+        "fr-en:uf-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 24,
+      "exercisesTargeting": 20,
+      "checkpointItems": 0,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.listening.short_info",
+      "title": "Catching concrete details by ear",
+      "category": "spoken_reception",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.listening.familiar_words",
+        "fr.obj.numbers.0_100"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to audio media & recordings",
+          "relation": "direct"
+        },
+        {
+          "level": "PRE_A1",
+          "scaleName": "Listening comprehension (overall)",
+          "relation": "supports"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:uh-l0",
+        "fr-en:uh-l1",
+        "fr-en:uh-l3",
+        "fr-en:ui-l1",
+        "fr-en:uj-l2",
+        "fr-en:uj-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 30,
+      "exercisesTargeting": 9,
+      "checkpointItems": 0,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.listening.announcements",
+      "title": "Following short announcements & instructions",
+      "category": "spoken_reception",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Listening to announcements & instructions",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:uh-l0",
+        "fr-en:uh-l1",
+        "fr-en:uh-l2",
+        "fr-en:uh-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 20,
+      "exercisesTargeting": 9,
+      "checkpointItems": 0,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.listening.short_dialogues",
+      "title": "Following a short conversation",
+      "category": "spoken_reception",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.listening.familiar_words",
+        "fr.obj.greetings.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Understanding conversation between others",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:ui-l0",
+        "fr-en:ui-l1",
+        "fr-en:ui-l2",
+        "fr-en:ui-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 20,
+      "exercisesTargeting": 9,
+      "checkpointItems": 0,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.reading.short_messages",
+      "title": "Reading short messages",
+      "category": "written_reception",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading correspondence (short messages)",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:ug-l1",
+        "fr-en:ug-l2",
+        "fr-en:ui-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 15,
+      "exercisesTargeting": 5,
+      "checkpointItems": 0,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.reading.notices_info",
+      "title": "Finding information in notices & signs",
+      "category": "written_reception",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation (signs & notices)",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:ug-l0",
+        "fr-en:ug-l2",
+        "fr-en:ug-l3",
+        "fr-en:uj-l2"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 20,
+      "exercisesTargeting": 10,
+      "checkpointItems": 0,
+      "placementItems": 0
+    },
+    {
+      "id": "fr.obj.reading.short_texts",
+      "title": "Understanding short simple texts",
+      "category": "written_reception",
+      "essential": false,
+      "prerequisites": [
+        "fr.obj.reading.familiar_words",
+        "fr.obj.verbs.etre_avoir_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "direct"
+        },
+        {
+          "level": "A2",
+          "scaleName": "Reading comprehension (overall)",
+          "relation": "supports"
+        }
+      ],
+      "lessonsTeaching": [
+        "fr-en:ui-l0",
+        "fr-en:ui-l3",
+        "fr-en:uj-l0",
+        "fr-en:uj-l1",
+        "fr-en:uj-l2",
+        "fr-en:uj-l3"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 30,
+      "exercisesTargeting": 12,
+      "checkpointItems": 0,
       "placementItems": 0
     }
   ]

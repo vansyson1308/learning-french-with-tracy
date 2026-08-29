@@ -192,6 +192,12 @@ export function SessionScreen({
               onAnswer={controller.onAnswer}
               onMatchComplete={controller.onMatchComplete}
               onMatchWordResult={controller.onMatchWordResult}
+              reception={{
+                scored:
+                  definition.kind === "checkpoint" || definition.kind === "placement",
+                revealTranscript: definition.feedbackPolicy !== "minimal",
+                onAudioSkip: controller.onSkip,
+              }}
             />
           )}
         </ScrollView>

@@ -53,6 +53,12 @@ Keys name the CEFR scale consulted; they are references, not quotations.
 | `cefr-cv-2020:orthographic-control` | Orthographic control (linguistic competence) |
 | `cefr-cv-2020:phonological-control` | Phonological control |
 | `cefr-cv-2020:identifying-cues-inferring` | Identifying cues and inferring (reception strategy) |
+| `cefr-cv-2020:overall-listening-comprehension` | Overall listening comprehension (Phase 7; incl. Pre-A1 band) |
+| `cefr-cv-2020:audio-media-recordings` | Listening to audio media & recordings (Phase 7) |
+| `cefr-cv-2020:announcements-instructions` | Listening to announcements & instructions (Phase 7) |
+| `cefr-cv-2020:understanding-conversation` | Understanding conversation between other speakers (Phase 7) |
+| `cefr-cv-2020:reading-correspondence` | Reading correspondence / short messages (Phase 7) |
+| `cefr-cv-2020:reading-orientation` | Reading for orientation — signs, notices (Phase 7) |
 
 ## Descriptor paraphrase policy (§10, §141)
 

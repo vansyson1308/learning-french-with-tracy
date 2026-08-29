@@ -1,0 +1,1009 @@
+{
+  "version": 1,
+  "language": "fr",
+  "order": [
+    "fr.clip.uf_cafe",
+    "fr.clip.uf_gare",
+    "fr.clip.uf_train",
+    "fr.clip.uf_eau",
+    "fr.clip.uf_pain",
+    "fr.clip.uf_bonsoir",
+    "fr.clip.uf_merci",
+    "fr.clip.uf_matin",
+    "fr.clip.uf_soir_phrase",
+    "fr.clip.uf_dictee_lait",
+    "fr.clip.uf_dictee_bonjour",
+    "fr.clip.uf_dictee_train",
+    "fr.clip.uh_train_lyon",
+    "fr.clip.uh_magasin_ferme",
+    "fr.clip.uh_musee_ouvre",
+    "fr.clip.uh_porte_droite",
+    "fr.clip.uh_attention_depart",
+    "fr.clip.uh_prix_billet",
+    "fr.clip.uh_dictee_ferme",
+    "fr.clip.uh_table_gauche",
+    "fr.clip.ui_cafe_commande",
+    "fr.clip.ui_billet_train",
+    "fr.clip.ui_ou_gare",
+    "fr.clip.ui_achat_pain",
+    "fr.clip.ui_restaurant_table",
+    "fr.clip.ui_heure_depart",
+    "fr.clip.uj_plage_matin",
+    "fr.clip.uj_semaine_travail",
+    "fr.clip.uj_samedi_marche",
+    "fr.clip.cp3_hotel",
+    "fr.clip.cp3_fromage",
+    "fr.clip.cp3_dictee_soir",
+    "fr.clip.cp3_biblio_ferme",
+    "fr.clip.cp3_train_marseille",
+    "fr.clip.cp3_entree_musee",
+    "fr.clip.cp3_dialogue_the",
+    "fr.clip.cp3_dialogue_magasin",
+    "fr.clip.pl_lait",
+    "fr.clip.pl_gare_annonce"
+  ],
+  "byId": {
+    "fr.clip.uf_cafe": {
+      "id": "fr.clip.uf_cafe",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le café"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f3add7a459a287457da6",
+      "durationSec": null
+    },
+    "fr.clip.uf_gare": {
+      "id": "fr.clip.uf_gare",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "la gare"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:gare"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9150ac24c3b5db3a1758",
+      "durationSec": null
+    },
+    "fr.clip.uf_train": {
+      "id": "fr.clip.uf_train",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le train"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:train"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c7402b8bc3f1d9cceef3",
+      "durationSec": null
+    },
+    "fr.clip.uf_eau": {
+      "id": "fr.clip.uf_eau",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "l'eau"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:eau"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "55a5f869bb475de873ef",
+      "durationSec": null
+    },
+    "fr.clip.uf_pain": {
+      "id": "fr.clip.uf_pain",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le pain"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:pain"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e7e464ee94e06b86a753",
+      "durationSec": null
+    },
+    "fr.clip.uf_bonsoir": {
+      "id": "fr.clip.uf_bonsoir",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bonsoir, madame."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonsoir",
+        "fr:w:madame"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4e17d3667e4717d73dae",
+      "durationSec": null
+    },
+    "fr.clip.uf_merci": {
+      "id": "fr.clip.uf_merci",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Merci beaucoup, monsieur."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:merci",
+        "fr:w:monsieur"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e0fa64626cab397e6f19",
+      "durationSec": null
+    },
+    "fr.clip.uf_matin": {
+      "id": "fr.clip.uf_matin",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le matin"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:matin"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0f3f70e357ed0230a6cc",
+      "durationSec": null
+    },
+    "fr.clip.uf_soir_phrase": {
+      "id": "fr.clip.uf_soir_phrase",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le café est ouvert le soir."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe",
+        "fr:w:ouvert",
+        "fr:w:soir"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fd66fd6f3776725e9d5f",
+      "durationSec": null
+    },
+    "fr.clip.uf_dictee_lait": {
+      "id": "fr.clip.uf_dictee_lait",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le lait"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:lait"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "110daa8d422c55edfa6f",
+      "durationSec": null
+    },
+    "fr.clip.uf_dictee_bonjour": {
+      "id": "fr.clip.uf_dictee_bonjour",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "bonjour"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonjour"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1eace6373323f5a9c5bc",
+      "durationSec": null
+    },
+    "fr.clip.uf_dictee_train": {
+      "id": "fr.clip.uf_dictee_train",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le train"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:train"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c7402b8bc3f1d9cceef3",
+      "durationSec": null
+    },
+    "fr.clip.uh_train_lyon": {
+      "id": "fr.clip.uh_train_lyon",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le train pour Lyon part à neuf heures, voie deux."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements",
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:train",
+        "fr:w:voie",
+        "fr:w:heure"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ec4403c6a27a1dada0dd",
+      "durationSec": null
+    },
+    "fr.clip.uh_magasin_ferme": {
+      "id": "fr.clip.uh_magasin_ferme",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le magasin ferme dans dix minutes."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:magasin",
+        "fr:w:fermer",
+        "fr:w:minute"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "05e928d80152bf85854b",
+      "durationSec": null
+    },
+    "fr.clip.uh_musee_ouvre": {
+      "id": "fr.clip.uh_musee_ouvre",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le musée ouvre à dix heures le dimanche."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements",
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:musee",
+        "fr:w:ouvrir",
+        "fr:w:dimanche",
+        "fr:w:heure"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2302f27c80049bc4cf1d",
+      "durationSec": null
+    },
+    "fr.clip.uh_porte_droite": {
+      "id": "fr.clip.uh_porte_droite",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "La sortie est à droite, après la porte."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "fr:w:sortie",
+        "fr:w:droite",
+        "fr:w:porte"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c8e8e0aa63618965629a",
+      "durationSec": null
+    },
+    "fr.clip.uh_attention_depart": {
+      "id": "fr.clip.uh_attention_depart",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Attention, le départ est voie trois."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements",
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:attention",
+        "fr:w:depart",
+        "fr:w:voie"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2111591ac9a9482ae195",
+      "durationSec": null
+    },
+    "fr.clip.uh_prix_billet": {
+      "id": "fr.clip.uh_prix_billet",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le billet coûte seize euros."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:billet",
+        "fr:w:couter"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5c2e1ab38bb0a4880e6d",
+      "durationSec": null
+    },
+    "fr.clip.uh_dictee_ferme": {
+      "id": "fr.clip.uh_dictee_ferme",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le magasin est fermé."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:magasin"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b75836858dd01679b835",
+      "durationSec": null
+    },
+    "fr.clip.uh_table_gauche": {
+      "id": "fr.clip.uh_table_gauche",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Votre table est à gauche, près de l'entrée."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "fr:w:table",
+        "fr:w:gauche",
+        "fr:w:entree"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d3badcffdc0468a3bdd7",
+      "durationSec": null
+    },
+    "fr.clip.ui_cafe_commande": {
+      "id": "fr.clip.ui_cafe_commande",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Bonjour, un café et un jus, s'il vous plaît."
+        },
+        {
+          "speaker": "A",
+          "text": "Bien sûr. Ça fait cinq euros."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues",
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:cafe",
+        "fr:w:jus",
+        "fr:w:s-il-vous-plait"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9b4566b443eb37103318",
+      "durationSec": null
+    },
+    "fr.clip.ui_billet_train": {
+      "id": "fr.clip.ui_billet_train",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Un billet pour Paris, s'il vous plaît."
+        },
+        {
+          "speaker": "A",
+          "text": "Le train part à huit heures, voie deux."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues",
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:billet",
+        "fr:w:train",
+        "fr:w:voie",
+        "fr:w:heure"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "05bb008f7523b73b0ee6",
+      "durationSec": null
+    },
+    "fr.clip.ui_ou_gare": {
+      "id": "fr.clip.ui_ou_gare",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Pardon, où est la gare ?"
+        },
+        {
+          "speaker": "A",
+          "text": "La gare est à droite, après le musée."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "fr:w:pardon",
+        "fr:w:gare",
+        "fr:w:droite",
+        "fr:w:musee"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5566469de02568e485e4",
+      "durationSec": null
+    },
+    "fr.clip.ui_achat_pain": {
+      "id": "fr.clip.ui_achat_pain",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Je voudrais du pain, s'il vous plaît."
+        },
+        {
+          "speaker": "A",
+          "text": "Voilà. Ça fait deux euros."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:vouloir",
+        "fr:w:pain"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f6522c08bcce0074a100",
+      "durationSec": null
+    },
+    "fr.clip.ui_restaurant_table": {
+      "id": "fr.clip.ui_restaurant_table",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Bonsoir, une table pour deux, s'il vous plaît."
+        },
+        {
+          "speaker": "A",
+          "text": "Bien sûr, la table près de la porte."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonsoir",
+        "fr:w:table",
+        "fr:w:porte"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bb2e3d4cd1b6ccc48784",
+      "durationSec": null
+    },
+    "fr.clip.ui_heure_depart": {
+      "id": "fr.clip.ui_heure_depart",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Le départ est à quelle heure ?"
+        },
+        {
+          "speaker": "A",
+          "text": "À sept heures, madame."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues",
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:depart",
+        "fr:w:heure",
+        "fr:w:madame"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f5f06146ea91cff38f05",
+      "durationSec": null
+    },
+    "fr.clip.uj_plage_matin": {
+      "id": "fr.clip.uj_plage_matin",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le matin, la plage est calme. Le soir, il y a de la musique."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:matin",
+        "fr:w:plage",
+        "fr:w:soir",
+        "fr:w:musique"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bc4a2fe6b51e8efe935c",
+      "durationSec": null
+    },
+    "fr.clip.uj_semaine_travail": {
+      "id": "fr.clip.uj_semaine_travail",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Je travaille le matin. L'après-midi, je vais à la bibliothèque."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:travailler",
+        "fr:w:matin",
+        "fr:w:bibliotheque"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "94b635ebaa3f42d373c3",
+      "durationSec": null
+    },
+    "fr.clip.uj_samedi_marche": {
+      "id": "fr.clip.uj_samedi_marche",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Samedi, nous achetons du fromage et du pain au magasin."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:samedi",
+        "fr:w:acheter",
+        "fr:w:fromage",
+        "fr:w:pain",
+        "fr:w:magasin"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1ff2937d1c4fc4823973",
+      "durationSec": null
+    },
+    "fr.clip.cp3_hotel": {
+      "id": "fr.clip.cp3_hotel",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "l'hôtel"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:hotel"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6347d7f180c797120064",
+      "durationSec": null
+    },
+    "fr.clip.cp3_fromage": {
+      "id": "fr.clip.cp3_fromage",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le fromage"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:fromage"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5d0e002aaec93a961661",
+      "durationSec": null
+    },
+    "fr.clip.cp3_dictee_soir": {
+      "id": "fr.clip.cp3_dictee_soir",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le soir"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:soir"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2c81970c40761d56b4cc",
+      "durationSec": null
+    },
+    "fr.clip.cp3_biblio_ferme": {
+      "id": "fr.clip.cp3_biblio_ferme",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "La bibliothèque ferme à six heures ce soir."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements",
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:bibliotheque",
+        "fr:w:fermer",
+        "fr:w:heure",
+        "fr:w:soir"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2b0fb05e9656e34d52dd",
+      "durationSec": null
+    },
+    "fr.clip.cp3_train_marseille": {
+      "id": "fr.clip.cp3_train_marseille",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le train pour Marseille part voie quatre, à onze heures."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements",
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:train",
+        "fr:w:voie",
+        "fr:w:heure"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3395195dd4843cfa9954",
+      "durationSec": null
+    },
+    "fr.clip.cp3_entree_musee": {
+      "id": "fr.clip.cp3_entree_musee",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "L'entrée du musée coûte huit euros le samedi."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_info",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:entree",
+        "fr:w:musee",
+        "fr:w:couter",
+        "fr:w:samedi"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0364871857e393b533c8",
+      "durationSec": null
+    },
+    "fr.clip.cp3_dialogue_the": {
+      "id": "fr.clip.cp3_dialogue_the",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Bonjour, un thé, s'il vous plaît."
+        },
+        {
+          "speaker": "A",
+          "text": "Bien sûr. Trois euros, monsieur."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues",
+        "fr.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "fr:w:the",
+        "fr:w:monsieur"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dc1ea44a045f7e6addbe",
+      "durationSec": null
+    },
+    "fr.clip.cp3_dialogue_magasin": {
+      "id": "fr.clip.cp3_dialogue_magasin",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Pardon, le magasin ouvre à quelle heure ?"
+        },
+        {
+          "speaker": "A",
+          "text": "À neuf heures, madame."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_dialogues",
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:magasin",
+        "fr:w:ouvrir",
+        "fr:w:heure"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5a7ad947aec3edcebaa3",
+      "durationSec": null
+    },
+    "fr.clip.pl_lait": {
+      "id": "fr.clip.pl_lait",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "le lait"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "fr:w:lait"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "110daa8d422c55edfa6f",
+      "durationSec": null
+    },
+    "fr.clip.pl_gare_annonce": {
+      "id": "fr.clip.pl_gare_annonce",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Le train part à dix heures, voie une."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements",
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:train",
+        "fr:w:heure",
+        "fr:w:voie"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a0b1b5d038174aba2f95",
+      "durationSec": null
+    }
+  }
+}

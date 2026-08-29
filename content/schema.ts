@@ -158,6 +158,45 @@ export const ConjugationClozeExerciseSchema = z.strictObject({
   objectiveTargets,
 });
 
+/**
+ * Listening comprehension (Phase 7 §61): bundled deterministic clip +
+ * meaning question. Transcript never rendered before the answer. No
+ * gradeTargets by design (P7 §75).
+ */
+export const ListeningComprehensionExerciseSchema = z.strictObject({
+  type: z.literal("listeningComprehension"),
+  id,
+  clipId: z.string().regex(/^fr\.clip\.[a-z0-9_]+$/),
+  question: z.string().min(1),
+  options: z.array(z.strictObject({ text: z.string().min(1) })).min(2),
+  correct: z.number().int().min(0),
+  objectiveTargets,
+});
+
+/** Reading comprehension (Phase 7 §62): passage + meaning question. */
+export const ReadingComprehensionExerciseSchema = z.strictObject({
+  type: z.literal("readingComprehension"),
+  id,
+  readingId: z.string().regex(/^fr\.read\.[a-z0-9_]+$/),
+  question: z.string().min(1),
+  options: z.array(z.strictObject({ text: z.string().min(1) })).min(2),
+  correct: z.number().int().min(0),
+  objectiveTargets,
+});
+
+/**
+ * Dictation (Phase 7 §63): hear a bundled clip, type it. Strict grading
+ * (orthographic decoding is the construct); no gradeTargets by design.
+ */
+export const DictationExerciseSchema = z.strictObject({
+  type: z.literal("dictation"),
+  id,
+  clipId: z.string().regex(/^fr\.clip\.[a-z0-9_]+$/),
+  answer: z.string().min(1),
+  alternatives: z.array(z.string().min(1)),
+  objectiveTargets,
+});
+
 export const ExerciseSchema = z.discriminatedUnion("type", [
   SelectExerciseSchema,
   WordBankExerciseSchema,
@@ -166,6 +205,9 @@ export const ExerciseSchema = z.discriminatedUnion("type", [
   FillBlankExerciseSchema,
   ArticleSelectExerciseSchema,
   ConjugationClozeExerciseSchema,
+  ListeningComprehensionExerciseSchema,
+  ReadingComprehensionExerciseSchema,
+  DictationExerciseSchema,
 ]);
 
 /** Stable pedagogy-concept id, e.g. "fr:concept:gender-two-classes". */
@@ -278,6 +320,10 @@ export const TOPIC_VALUES = [
   "travel",
   "everyday",
   "ideas",
+  // Phase 7 (Section 3 receptive vocabulary domains)
+  "places",
+  "shopping",
+  "time",
 ] as const;
 export type LexemeTopic = (typeof TOPIC_VALUES)[number];
 

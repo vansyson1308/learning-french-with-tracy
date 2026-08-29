@@ -80,6 +80,7 @@ const validation = [
     listening: loadListening(),
     objectives: loadCourseObjectives(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
+    frPack: readJson("content/courses/fr-en.json") as never,
   }).errors,
 ];
 if (validation.length > 0) {

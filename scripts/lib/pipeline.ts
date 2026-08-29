@@ -139,6 +139,19 @@ export function validateExercise(courseId: string, e: AnyExercise, push: (msg: s
     const targets = e.pairs.map((p) => p.target);
     if (new Set(targets).size !== targets.length) push(`${e.id}: duplicate pair target`);
   }
+  if (e.type === "listeningComprehension" || e.type === "readingComprehension") {
+    if (e.correct >= e.options.length) push(`${e.id}: correct index out of range`);
+    const texts = e.options.map((o) => o.text);
+    if (new Set(texts).size !== texts.length) push(`${e.id}: duplicate option text`);
+    if (courseId !== "fr-en") {
+      push(`${e.id}: ${e.type} is French reception content — not available for ${courseId}`);
+    }
+  }
+  if (e.type === "dictation") {
+    if (courseId !== "fr-en") {
+      push(`${e.id}: dictation is French reception content — not available for ${courseId}`);
+    }
+  }
   if (e.type === "articleSelect") {
     if (e.correct >= e.articles.length) push(`${e.id}: correct index out of range`);
     if (new Set(e.articles).size !== e.articles.length) push(`${e.id}: duplicate articles`);
