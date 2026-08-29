@@ -574,6 +574,36 @@
         "informationUnits": 2,
         "inferenceDemand": "locate"
       }
+    },
+    {
+      "id": "fr.read.cp3_texte_nora",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nora habite à Paris. Le matin, elle prend le train pour la bibliothèque. Le soir, elle mange au restaurant avec une amie."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "fr:w:habiter",
+        "fr:w:train",
+        "fr:w:bibliotheque",
+        "fr:w:restaurant"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "une amie",
+          "gloss": "a friend"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
     }
   ]
 }

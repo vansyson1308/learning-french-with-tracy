@@ -1090,6 +1090,60 @@
         "maxPlays": 2,
         "rate": 1
       }
+    },
+    {
+      "id": "fr.clip.cp3_resto_plage",
+      "kind": "factual",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "Le restaurant de la plage est ouvert le samedi matin."
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:restaurant",
+        "fr:w:plage",
+        "fr:w:ouvert",
+        "fr:w:samedi",
+        "fr:w:matin"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "fr.clip.cp3_dictee_voie",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "voie quatre"
+        }
+      ],
+      "objectiveRefs": [
+        "fr.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "fr:w:voie"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      }
     }
   ]
 }
