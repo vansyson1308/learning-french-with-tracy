@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "pipelineVersion": 1,
+  "note": "Pinned TTS sources for Phase-7 reception audio (P7 §27-37). Hashes are written by the reception-audio workflow's recon mode from a double-download that must agree byte-for-byte, then verified fail-closed on every later run. Model weights are NEVER committed to this repository — only these pins, the model cards, and the generated audio assets. The Piper engine itself is MIT (rhasspy/piper @ 73c04d81d5590ecc46e522de3601ce7fb29fc2be, VERSION 1.2.0).",
+  "piperTts": {
+    "package": "piper-tts",
+    "pinnedVersion": "1.2.0"
+  },
+  "voicesRepository": "https://huggingface.co/rhasspy/piper-voices",
+  "voicesRevision": "v1.0.0",
+  "licenseGate": {
+    "note": "Recon fails closed unless every voice's MODEL_CARD states a dataset/license matched by allow and matched by no deny entry (P7 §31, §37).",
+    "allow": ["CC BY 4.0", "CC-BY-4.0", "CC BY 4", "cc-by-4.0"],
+    "deny": ["AGPL", "GPL", "NC", "ND"]
+  },
+  "voices": [
+    {
+      "id": "fr_FR-siwis-medium",
+      "role": "speaker A — primary voice for announcements and monologue",
+      "multiSpeaker": false,
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/siwis/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null
+    },
+    {
+      "id": "fr_FR-mls-medium",
+      "role": "speaker pool — dialogue second voices (pinned speaker ids chosen by canary ASR audit)",
+      "multiSpeaker": true,
+      "pinnedSpeakers": [],
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null
+    }
+  ],
+  "excludedVoices": [
+    {
+      "id": "fr_FR-tom-medium",
+      "reason": "Upstream metadata associates its training dataset with AGPLv3 — excluded to avoid the licensing complication (P7 §31). Re-evaluate only with an explicit legal review."
+    }
+  ]
+}
