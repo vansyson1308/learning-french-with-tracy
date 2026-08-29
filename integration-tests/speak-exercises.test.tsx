@@ -39,6 +39,7 @@ const production: SpeakProductionExercise = {
   cueEmoji: "☕",
   target: "Je voudrais un café",
   acceptedVariants: ["Je voudrais un café"],
+  evidenceLexemeRefs: ["fr:w:cafe"],
   revealTargetAfterAttempts: 2,
   allowContextualBias: false,
   modelClipId: null,

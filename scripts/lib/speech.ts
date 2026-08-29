@@ -21,13 +21,48 @@ import {
   type SpeechItems,
 } from "../../content/schema";
 import { foldSpokenFrench, normalizeSpokenFrench } from "../../src/lib/speech/grader";
-import { readJson, safeResolve, type ValidationResult } from "./pipeline";
+import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const SPEECH_SOURCE = "content/fr/speech/items.json";
 
 export function loadSpeechItems(): SpeechItems | null {
   if (!existsSync(safeResolve(SPEECH_SOURCE))) return null;
   return SpeechItemsSchema.parse(readJson(SPEECH_SOURCE));
+}
+
+/**
+ * Runtime artifact for the app's speech content module. ALWAYS emitted
+ * (empty before the curriculum authors items) so the static import exists,
+ * and NEVER includes reserved items — assessment prompts stay out of every
+ * practice/review surface by construction (§20).
+ */
+export function compileSpeechItemsArtifact(speech: SpeechItems | null): string {
+  const items = (speech?.items ?? []).filter((item) => !item.reserved);
+  const byId: Record<string, unknown> = {};
+  for (const item of items) {
+    byId[item.id] = {
+      id: item.id,
+      taskFamily: item.taskFamily,
+      elicitationType: item.elicitationType,
+      prompt: item.prompt,
+      target: item.target,
+      acceptedVariants: item.acceptedVariants,
+      ...(item.requiredConcepts ? { requiredConcepts: item.requiredConcepts } : {}),
+      objectiveRefs: item.objectiveRefs,
+      lexemeRefs: item.lexemeRefs,
+      evidenceLexemeRefs: item.evidenceLexemeRefs,
+      assistancePolicy: item.assistancePolicy,
+      scoredEligibility: item.scoredEligibility,
+      modelAudioRef: item.modelAudioRef,
+      allowedAttempts: item.allowedAttempts,
+    };
+  }
+  return canonicalJson({
+    generator: "scripts/lib/speech.ts",
+    version: 1,
+    order: items.map((item) => item.id),
+    byId,
+  });
 }
 
 const PRACTICE_TYPES: readonly string[] = SPEECH_PRACTICE_ELICITATIONS;
@@ -262,6 +297,9 @@ export function validateSpeech(input: {
         }
         if (exercise.allowedAttempts !== item.allowedAttempts) {
           err(`${exercise.id}: allowedAttempts differs from item ${item.id}`);
+        }
+        if (!same(exercise.evidenceLexemeRefs, item.evidenceLexemeRefs)) {
+          err(`${exercise.id}: evidenceLexemeRefs differ from item ${item.id}`);
         }
       }
     }

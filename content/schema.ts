@@ -232,6 +232,8 @@ export const SpeakProductionExerciseSchema = z.strictObject({
   target: z.string().min(1),
   acceptedVariants: z.array(z.string().min(1)).min(1),
   requiredConcepts: z.array(z.array(z.string().min(1)).min(1)).min(1).optional(),
+  /** Mirror of the item's evidenceLexemeRefs (P8 §15) — pipeline-checked. */
+  evidenceLexemeRefs: z.array(z.string().regex(/^fr:w:[a-z0-9-]+$/)),
   /** Learning mode may reveal the target after N non-matching recordings. */
   revealTargetAfterAttempts: z.number().int().min(1).max(5).nullable(),
   allowContextualBias: z.boolean(),

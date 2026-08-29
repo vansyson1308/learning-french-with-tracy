@@ -182,6 +182,8 @@ export type SpeakProductionExercise = {
   target: string;
   acceptedVariants: string[];
   requiredConcepts?: string[][];
+  /** Lexemes whose |speak cards this step may grade (P8 §15; ⊆ the item's). */
+  evidenceLexemeRefs: string[];
   revealTargetAfterAttempts: number | null;
   allowContextualBias: boolean;
   modelClipId: string | null;

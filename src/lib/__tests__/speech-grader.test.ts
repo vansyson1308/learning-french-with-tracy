@@ -156,6 +156,7 @@ describe("session grading dispatch (checkAnswer over SpokenAnswer)", () => {
     instruction: "Say that you would like a coffee.",
     target: "Je voudrais un café",
     acceptedVariants: ["Je voudrais un café"],
+    evidenceLexemeRefs: ["fr:w:cafe"],
     revealTargetAfterAttempts: null,
     allowContextualBias: false,
     modelClipId: null,

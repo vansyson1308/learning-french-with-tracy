@@ -37,6 +37,7 @@ const production: SpeakProductionExercise = {
   instruction: "Say that you would like a coffee.",
   target: "Je voudrais un café",
   acceptedVariants: ["Je voudrais un café"],
+  evidenceLexemeRefs: ["fr:w:cafe"],
   revealTargetAfterAttempts: 2,
   allowContextualBias: false,
   modelClipId: "fr.clip.model",

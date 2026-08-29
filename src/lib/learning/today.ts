@@ -23,6 +23,7 @@ import type {
   MatchExercise,
   Pack,
   SelectExercise,
+  SpeakProductionExercise,
   Word,
 } from "../types";
 
@@ -68,6 +69,13 @@ export type TodayPlanInput = {
    * listening share entirely — exactly the pre-Phase-7 plan.
    */
   listenClips?: Record<string, string>;
+  /**
+   * Sessionable speak-card probes (P8 §17): lexemeId → prebuilt elicited
+   * production exercise. Passed in (never read here) so the composer stays
+   * pure; empty/omitted — no speaking content, no capability, or the
+   * learner said "Can't speak now" — composes a fully silent session.
+   */
+  speakExercises?: Record<string, SpeakProductionExercise>;
 };
 
 export type TodayPlan = {
@@ -76,9 +84,11 @@ export type TodayPlan = {
   reviewCount: number;
   /** Listening reviews among reviewCount (bounded share, P7 §135). */
   listenCount: number;
+  /** Speaking reviews among reviewCount (bounded share, P8 §17). */
+  speakCount: number;
   /** New words taught (each = teach + immediate assessment). */
   newCount: number;
-  /** All currently due cards, before budgeting (both skills). */
+  /** All currently due cards, before budgeting (all skills). */
   backlogTotal: number;
   /** Due cards that did NOT fit this session's budget. */
   backlogRemaining: number;
@@ -89,6 +99,19 @@ export type TodayPlan = {
 /** Listening's bounded slice of the review budget: at most a third (§135). */
 export function todayListenBudget(reviewBudget: number): number {
   return Math.floor(reviewBudget / 3);
+}
+
+/**
+ * Speaking's bounded slice (P8 §17): at most a QUARTER of the review
+ * budget, and listening + speaking together never exceed HALF — reading
+ * recall stays the session's core, and a learner who cannot speak or
+ * listen right now loses at most those slices.
+ */
+export function todaySpeakBudget(reviewBudget: number, listenTaken: number): number {
+  return Math.max(
+    0,
+    Math.min(Math.floor(reviewBudget / 4), Math.floor(reviewBudget / 2) - listenTaken)
+  );
 }
 
 type Item = { itemId: string; word: Word };
@@ -205,6 +228,7 @@ export function composeTodayFromSnapshot(args: {
   preset: TodayPreset;
   placementFloor?: number;
   listenClips?: Record<string, string>;
+  speakExercises?: Record<string, SpeakProductionExercise>;
   day?: string;
   now?: number;
 }): TodayPlan {
@@ -213,6 +237,7 @@ export function composeTodayFromSnapshot(args: {
   const dueKeys = [
     ...dueFrenchReviewQueue(args.cards, now),
     ...dueFrenchReviewQueue(args.cards, now, "listen"),
+    ...dueFrenchReviewQueue(args.cards, now, "speak"),
   ]
     .map((d) => `${d.key}@${d.dueAt}`)
     .join(",");
@@ -223,6 +248,7 @@ export function composeTodayFromSnapshot(args: {
     completedLessons: args.completedLessons,
     cards: args.cards,
     listenClips: args.listenClips,
+    speakExercises: args.speakExercises,
     preset: args.preset,
     seed,
     now,
@@ -256,10 +282,25 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
     listenItems.push({ itemId: due.key.slice(0, due.key.lastIndexOf("|")), word });
   }
 
+  // Speaking takes its own bounded share (P8 §17) — sessionable only when
+  // the route provided a production exercise for the due lexeme; every due
+  // speak card still counts toward the honest backlog.
+  const speakExercises = input.speakExercises ?? {};
+  const allSpeakDue = dueFrenchReviewQueue(input.cards, input.now, "speak");
+  const speakBudget = todaySpeakBudget(budgets.review, listenItems.length);
+  const speakPicks: { itemId: string; exercise: SpeakProductionExercise }[] = [];
+  for (const due of allSpeakDue) {
+    if (speakPicks.length >= speakBudget) break;
+    const itemId = due.key.slice(0, due.key.lastIndexOf("|"));
+    const exercise = speakExercises[itemId];
+    if (!exercise) continue;
+    speakPicks.push({ itemId, exercise: { ...exercise, id: `today-speak-${itemId}` } });
+  }
+
   const dueQueue = dueFrenchReviewQueue(input.cards, input.now);
   const warmupItems: Item[] = [];
   for (const due of dueQueue) {
-    if (warmupItems.length + listenItems.length >= budgets.review) break;
+    if (warmupItems.length + listenItems.length + speakPicks.length >= budgets.review) break;
     const word = wordBySurface.get(due.surface);
     if (!word) continue; // unrenderable stays safely in the backlog
     const itemId = due.key.slice(0, due.key.lastIndexOf("|"));
@@ -309,6 +350,17 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
       phase: "warmup",
     } satisfies ExerciseStep);
     listenCount += 1;
+  }
+  let speakCount = 0;
+  for (const pick of speakPicks) {
+    steps.push({
+      type: "exercise",
+      stepId: pick.exercise.id,
+      exercise: pick.exercise,
+      evidence: { itemId: pick.itemId, skill: "speak", srsRole: "assessment" },
+      phase: "warmup",
+    } satisfies ExerciseStep);
+    speakCount += 1;
   }
   const reviewCount = steps.length;
 
@@ -422,11 +474,17 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
     steps,
     reviewCount,
     listenCount,
+    speakCount,
     newCount: newItems.length,
-    backlogTotal: dueQueue.length + allListenDue.length,
+    backlogTotal: dueQueue.length + allListenDue.length + allSpeakDue.length,
     backlogRemaining: Math.max(
       0,
-      dueQueue.length - warmupItems.length + allListenDue.length - listenItems.length
+      dueQueue.length -
+        warmupItems.length +
+        allListenDue.length -
+        listenItems.length +
+        allSpeakDue.length -
+        speakPicks.length
     ),
     estimatedMinutes:
       steps.length === 0

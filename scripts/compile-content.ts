@@ -51,7 +51,7 @@ import {
   loadReadings,
   validateReception,
 } from "./lib/reception";
-import { loadSpeechItems, validateSpeech } from "./lib/speech";
+import { compileSpeechItemsArtifact, loadSpeechItems, validateSpeech } from "./lib/speech";
 import { PackSchema } from "../content/schema";
 import {
   buildSqliteDb,
@@ -223,6 +223,12 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
       contents: compileAudioCensus(listening),
     });
   }
+  // Phase-8 speech items — always emitted (empty until authored) so the
+  // app's static import exists; reserved items never leave the pipeline.
+  files.push({
+    relPath: "src/content/speech/fr-speech-items.json",
+    contents: compileSpeechItemsArtifact(loadSpeechItems()),
+  });
   files.push({
     relPath: "content/reports/placement-coverage.json",
     contents: canonicalJson({

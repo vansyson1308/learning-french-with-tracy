@@ -48,6 +48,7 @@ export const GENERATED_TARGETS = [
   "src/content/concepts",
   "src/content/assessment",
   "src/content/reception",
+  "src/content/speech",
   "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",

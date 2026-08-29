@@ -15,6 +15,7 @@ import { dueFrenchReviewQueue } from "../learning/engine";
 import { FR_COURSE_ID } from "../learning/ids-fr";
 import type { FsrsCardState } from "../learning/scheduler";
 import { listenWordClipIndex } from "../reception/content";
+import { speakExerciseForItem, speakProductionIndex, speechItemFor } from "../speech/content";
 import { buildSrsExercises, hashSeed, seededRng } from "../review-builder";
 import { dueSrsWords, type CourseProgress, type MistakeRef } from "../store";
 import type { SrsEntry } from "../srs";
@@ -228,6 +229,64 @@ export function dueListeningReviewCount(
   return dueFrenchReviewQueue(cards, now, "listen").filter(
     (d) => clipIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
   ).length;
+}
+
+/**
+ * Speaking review (P8 §16): due SPEAK cards re-probed with an elicited
+ * production item that grades exactly that lexeme. Cards with no authored
+ * production item are not sessionable — they stay visibly due, untouched.
+ * Skipping ("Can't speak right now") produces no evidence, and assisted
+ * attempts are refused by the gate, so a card can only move on a real,
+ * unassisted, recognized production.
+ */
+export function buildSpeakingReviewSessionDefinition(args: {
+  course: Pick<CourseProgress, "cards">;
+  now?: number;
+}): SessionDefinition {
+  const itemIndex = speakProductionIndex();
+  const queue = dueFrenchReviewQueue(args.course.cards, args.now, "speak").filter(
+    (d) => itemIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
+  );
+
+  const steps: ExerciseStep[] = [];
+  for (const due of queue) {
+    const lexemeId = due.key.slice(0, due.key.lastIndexOf("|"));
+    const item = speechItemFor(itemIndex[lexemeId]);
+    if (!item) continue;
+    const exercise = speakExerciseForItem(item, `speak-review-${lexemeId}`);
+    steps.push({
+      type: "exercise",
+      stepId: exercise.id,
+      exercise,
+      evidence: { itemId: lexemeId, skill: "speak", srsRole: "assessment" },
+    });
+  }
+
+  return {
+    kind: "review",
+    courseId: FR_COURSE_ID,
+    lessonId: "srs-speaking",
+    steps,
+    completion: "practice",
+    evidenceSource: "review",
+    trackMistakes: false,
+    allowUndo: true,
+  };
+}
+
+/** Due speak cards split into sessionable / total (backlog honesty, §16). */
+export function dueSpeakingReviewCounts(
+  cards: Record<string, FsrsCardState> | undefined,
+  now?: number
+): { sessionable: number; total: number } {
+  const itemIndex = speakProductionIndex();
+  const due = dueFrenchReviewQueue(cards, now, "speak");
+  return {
+    sessionable: due.filter(
+      (d) => itemIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
+    ).length,
+    total: due.length,
+  };
 }
 
 // ---------------------------------------------------------------------------

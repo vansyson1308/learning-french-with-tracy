@@ -80,8 +80,9 @@ describe("card key: listen skill (§72-74)", () => {
       itemId: "fr:w:train",
       skill: "recognize",
     });
-    // Unknown skills still refuse to parse (storage safety net).
-    expect(parseCardKey("fr:w:train|speak")).toBeUndefined();
+    // Unknown skills still refuse to parse (storage safety net) — "speak"
+    // became real in Phase 8, so the example is a genuinely unknown skill.
+    expect(parseCardKey("fr:w:train|write")).toBeUndefined();
   });
 });
 

@@ -3,14 +3,16 @@
  *
  * The skill dimension was reserved in Phase 1 exactly so this moment costs
  * one union member: Phase 7 activates "listen" (auditory recognition of a
- * single lexeme — audio→meaning). Listen cards are NEW keys created by
- * their first assessment; no existing "recognize" entry is ever rewritten,
- * so activation needs no migration. Serialized form is `${itemId}|${skill}`
- * — persisted in the v2 card map, so both directions must stay stable
- * forever.
+ * single lexeme — audio→meaning), Phase 8 activates "speak" (elicited
+ * spoken production of a lexeme in a deterministic frame — meaning→spoken
+ * French, graded on what the recognizer heard). New skills' cards are NEW
+ * keys created by their first assessment; no existing entry is ever
+ * rewritten, so activation needs no migration. Serialized form is
+ * `${itemId}|${skill}` — persisted in the v2 card map, so both directions
+ * must stay stable forever.
  */
 
-export const SKILLS = ["recognize", "listen"] as const;
+export const SKILLS = ["recognize", "listen", "speak"] as const;
 export type Skill = (typeof SKILLS)[number];
 
 export type CardKey = {

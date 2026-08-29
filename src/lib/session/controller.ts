@@ -10,6 +10,7 @@ import { AppState } from "react-native";
 
 import { speakTarget, useSfx } from "../audio";
 import { behaviorFor } from "../exercise-registry";
+import { isSpokenAnswer } from "../grading";
 import { haptics } from "../haptics";
 import { useProgress, XP_PER_LESSON } from "../store";
 
@@ -175,6 +176,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
       correct,
       attemptIndex: state.attempts[step.stepId] ?? 0,
       latencyMs: Math.max(0, latencyNow()),
+      assisted: isSpokenAnswer(state.answer) ? state.answer.assisted : false,
     });
     if (evidence) {
       const mutated = progress.submitEvidence(evidence);
