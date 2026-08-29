@@ -1373,6 +1373,241 @@
       "allowedAttempts": 2,
       "reserved": true,
       "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.speak.pl4_greet_shop",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "You walk into a small shop in the morning. Greet the shopkeeper."
+      },
+      "target": "Bonjour",
+      "acceptedVariants": [
+        "Bonjour",
+        "Bonjour, madame",
+        "Bonjour, monsieur"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:bonjour"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "fr-FR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.speak.pl4_polite_request",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "You just asked for a ticket. Finish the request with the polite phrase."
+      },
+      "target": "S'il vous plaît",
+      "acceptedVariants": [
+        "S'il vous plaît"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:s-il-vous-plait"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "fr-FR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.speak.pl4_farewell_bus",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Your friend's bus is leaving and they wave at you. Say goodbye."
+      },
+      "target": "Au revoir",
+      "acceptedVariants": [
+        "Au revoir"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "fr:w:au-revoir"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "fr-FR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.speak.pl4_horses",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Say how many horses there are.",
+        "cueEmoji": "🐴🐴",
+        "cueFacts": [
+          {
+            "label": "Horses",
+            "value": "2"
+          }
+        ]
+      },
+      "target": "Il y a deux chevaux",
+      "acceptedVariants": [
+        "Il y a deux chevaux"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:cheval"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "fr-FR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project",
+      "requiredConcepts": [
+        [
+          "il y a"
+        ],
+        [
+          "deux",
+          "2"
+        ],
+        [
+          "chevaux",
+          "cheval"
+        ]
+      ]
+    },
+    {
+      "id": "fr.speak.pl4_price_seven",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Say what it costs.",
+        "cueFacts": [
+          {
+            "label": "Price",
+            "value": "7 €"
+          }
+        ]
+      },
+      "target": "Ça coûte sept euros",
+      "acceptedVariants": [
+        "Ça coûte sept euros"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:couter"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "fr-FR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project",
+      "requiredConcepts": [
+        [
+          "coûte"
+        ],
+        [
+          "sept",
+          "7"
+        ],
+        [
+          "euros",
+          "euro"
+        ]
+      ]
+    },
+    {
+      "id": "fr.speak.pl4_train_eight",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Say when the train leaves.",
+        "cueFacts": [
+          {
+            "label": "Departure",
+            "value": "8:00"
+          }
+        ]
+      },
+      "target": "Le train part à huit heures",
+      "acceptedVariants": [
+        "Le train part à huit heures"
+      ],
+      "objectiveRefs": [
+        "fr.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "fr:w:train",
+        "fr:w:heure"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "fr-FR",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project",
+      "requiredConcepts": [
+        [
+          "train"
+        ],
+        [
+          "huit",
+          "8"
+        ],
+        [
+          "heures",
+          "heure"
+        ]
+      ]
     }
   ]
 }

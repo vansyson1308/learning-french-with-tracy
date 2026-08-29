@@ -30,6 +30,23 @@ export type SpeechExerciseContext = {
   onSpeechSkip?: () => void;
 };
 
+/**
+ * One-shot capability probe for pre-session gates (P8 §20/§22): the
+ * Section-4 checkpoint and the placement production stage decide up front
+ * whether scored speech is even administrable. Creates a throwaway
+ * adapter, probes, disposes — no permission REQUEST ever happens here.
+ */
+export async function probeSpeechCapabilityOnce(): Promise<SpeechCapability> {
+  const adapter = new ExpoSpeechRecognizerAdapter();
+  try {
+    return await adapter.probeCapabilities();
+  } catch {
+    return unavailableCapability("unknown");
+  } finally {
+    adapter.dispose();
+  }
+}
+
 export function useSpeechSession(enabled: boolean): SpeechSessionApi {
   const [port, setPort] = useState<SpeechRecognizerPort | null>(null);
   const [capability, setCapability] = useState<SpeechCapability | null>(null);

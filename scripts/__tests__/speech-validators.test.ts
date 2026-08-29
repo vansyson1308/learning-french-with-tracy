@@ -219,11 +219,73 @@ describe("reference integrity", () => {
   });
 });
 
+describe("assessment banks (§20 — reserved items only)", () => {
+  const speakBankExercise = (item: SpeechItem) => ({
+    type: "speakProduction" as const,
+    id: "bank-x",
+    speechItemId: item.id,
+    instruction: item.prompt.instruction,
+    target: item.target,
+    acceptedVariants: item.acceptedVariants,
+    evidenceLexemeRefs: item.evidenceLexemeRefs,
+    revealTargetAfterAttempts: item.assistancePolicy.revealTargetAfterAttempts,
+    allowContextualBias: item.assistancePolicy.allowContextualBias,
+    modelClipId: item.modelAudioRef,
+    allowedAttempts: item.allowedAttempts,
+  });
+
+  test("a NON-reserved item in a scored bank is rejected", () => {
+    const teaching = item(); // reserved: false
+    const errors = validateSpeech({
+      speech: doc(teaching),
+      objectives,
+      listening,
+      lexemeIds,
+      assessmentSpeech: [speakBankExercise(teaching)],
+    }).errors;
+    expect(errors.some((e) => e.includes("must use RESERVED items"))).toBe(true);
+  });
+
+  test("a reserved item mirrored exactly is clean; a drifted copy is rejected", () => {
+    const probe = item({
+      id: "fr.speak.test_probe",
+      reserved: true,
+      modelAudioRef: null,
+      assistancePolicy: { allowContextualBias: false, revealTargetAfterAttempts: null },
+    });
+    const clean = validateSpeech({
+      speech: doc(probe),
+      objectives,
+      listening,
+      lexemeIds,
+      assessmentSpeech: [speakBankExercise(probe)],
+    }).errors;
+    expect(clean).toEqual([]);
+
+    const drifted = { ...speakBankExercise(probe), target: "Je veux un café" };
+    const errors = validateSpeech({
+      speech: doc(probe),
+      objectives,
+      listening,
+      lexemeIds,
+      assessmentSpeech: [drifted],
+    }).errors;
+    expect(errors.some((e) => e.includes("target differs"))).toBe(true);
+  });
+});
+
 describe("repository state", () => {
-  test("whatever speech content the repo currently ships validates clean", () => {
+  test("the shipped speech content and scored banks validate clean", async () => {
+    const { assessmentBankSpeechExercises } = await import("../lib/speech");
     const speech = loadSpeechItems();
     expect(
-      validateSpeech({ speech, objectives, listening, lexemeIds }).errors
+      validateSpeech({
+        speech,
+        objectives,
+        listening,
+        lexemeIds,
+        assessmentSpeech: assessmentBankSpeechExercises(),
+      }).errors
     ).toEqual([]);
   });
 });

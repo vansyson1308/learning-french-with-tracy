@@ -841,7 +841,13 @@ export const PlacementSchema = z.strictObject({
   version: z.literal(1),
   language: z.literal("fr"),
   placementVersion: z.number().int().min(1),
-  maxItems: z.number().int().min(1).max(22),
+  /**
+   * Worst-case item budget. Raised 22 → 28 for placement v3's OPTIONAL
+   * production stage (P8 §22): those 6 speaking items run only when every
+   * earlier cluster is comfortable AND the device can do scored speech —
+   * the common path stays the same length as v2.
+   */
+  maxItems: z.number().int().min(1).max(28),
   /** Recommendation when every probed cluster is comfortable. */
   allComfortableLessonId: z.string().min(1),
   stages: z.array(PlacementStageSchema).min(1),

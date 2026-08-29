@@ -267,16 +267,37 @@ describe("isolation pins (§15): fr:w:X|speak mutates NEITHER |recognize NOR |li
 
 describe("speaking review surface (§16)", () => {
   test("with no authored speech items, due speak cards stay VISIBLY due and unsessionable", () => {
+    // fr:w:train has an authored production item (Section 4's "say when
+    // the train leaves"); fr:w:cafe has none — its speak card must stay
+    // VISIBLY due and unsessionable, never silently hidden.
     const cards = { "fr:w:cafe|speak": dueCard(), "fr:w:train|speak": dueCard() };
-    // The compiled speech artifact is empty until Section 4 authors items.
     const definition = buildSpeakingReviewSessionDefinition({
       course: courseWith(cards),
       now: NOW,
     });
-    expect(definition.steps).toHaveLength(0);
-    expect(dueSpeakingReviewCounts(cards, NOW)).toEqual({ sessionable: 0, total: 2 });
+    expect(definition.steps).toHaveLength(1);
+    const step = definition.steps[0] as ExerciseStep;
+    expect(step.evidence).toEqual({
+      itemId: "fr:w:train",
+      skill: "speak",
+      srsRole: "assessment",
+    });
+    expect(step.exercise.type).toBe("speakProduction");
+    expect(dueSpeakingReviewCounts(cards, NOW)).toEqual({ sessionable: 1, total: 2 });
     // The cards themselves are untouched — still due.
     expect(dueFrenchReviewQueue(cards, NOW, "speak")).toHaveLength(2);
+  });
+
+  test("review steps never use RESERVED items (§20)", async () => {
+    const { speechItemFor, speakProductionIndex } = await import("../speech/content");
+    for (const itemId of Object.values(speakProductionIndex())) {
+      const item = speechItemFor(itemId)!;
+      // The compiled artifact excludes reserved items entirely, so the
+      // review index can only ever reach curriculum production items.
+      expect(item).toBeDefined();
+      expect(item.id.includes("cp4")).toBe(false);
+      expect(item.id.includes("pl4")).toBe(false);
+    }
   });
 });
 

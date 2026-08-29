@@ -1,9 +1,9 @@
 {
   "version": 1,
   "language": "fr",
-  "placementVersion": 2,
-  "maxItems": 22,
-  "allComfortableLessonId": "fr-en:uj-l0",
+  "placementVersion": 3,
+  "maxItems": 28,
+  "allComfortableLessonId": "fr-en:un-l0",
   "stages": [
     {
       "id": "fr.pstage.foundations",
@@ -647,6 +647,218 @@
               },
               "objectiveTargets": [
                 "fr.obj.listening.announcements"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fr.pstage.production",
+      "title": "Speaking French",
+      "clusters": [
+        {
+          "id": "fr.pcluster.speak_formulaic",
+          "objectiveId": "fr.obj.speaking.formulaic",
+          "anchorLessonId": "fr-en:uk-l0",
+          "items": [
+            {
+              "id": "fr.pli.s4.greet_shop",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-greet_shop",
+                "speechItemId": "fr.speak.pl4_greet_shop",
+                "instruction": "You walk into a small shop in the morning. Greet the shopkeeper.",
+                "target": "Bonjour",
+                "acceptedVariants": [
+                  "Bonjour",
+                  "Bonjour, madame",
+                  "Bonjour, monsieur"
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.formulaic"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.polite_request",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-polite_request",
+                "speechItemId": "fr.speak.pl4_polite_request",
+                "instruction": "You just asked for a ticket. Finish the request with the polite phrase.",
+                "target": "S'il vous plaît",
+                "acceptedVariants": [
+                  "S'il vous plaît"
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.formulaic"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.farewell_bus",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-farewell_bus",
+                "speechItemId": "fr.speak.pl4_farewell_bus",
+                "instruction": "Your friend's bus is leaving and they wave at you. Say goodbye.",
+                "target": "Au revoir",
+                "acceptedVariants": [
+                  "Au revoir"
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.formulaic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.speak_info",
+          "objectiveId": "fr.obj.speaking.give_info",
+          "anchorLessonId": "fr-en:um-l0",
+          "items": [
+            {
+              "id": "fr.pli.s4.horses",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-horses",
+                "speechItemId": "fr.speak.pl4_horses",
+                "instruction": "Say how many horses there are.",
+                "cueEmoji": "🐴🐴",
+                "cueFacts": [
+                  {
+                    "label": "Horses",
+                    "value": "2"
+                  }
+                ],
+                "target": "Il y a deux chevaux",
+                "acceptedVariants": [
+                  "Il y a deux chevaux"
+                ],
+                "requiredConcepts": [
+                  [
+                    "il y a"
+                  ],
+                  [
+                    "deux",
+                    "2"
+                  ],
+                  [
+                    "chevaux",
+                    "cheval"
+                  ]
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.give_info"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.price_seven",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-price_seven",
+                "speechItemId": "fr.speak.pl4_price_seven",
+                "instruction": "Say what it costs.",
+                "cueFacts": [
+                  {
+                    "label": "Price",
+                    "value": "7 €"
+                  }
+                ],
+                "target": "Ça coûte sept euros",
+                "acceptedVariants": [
+                  "Ça coûte sept euros"
+                ],
+                "requiredConcepts": [
+                  [
+                    "coûte"
+                  ],
+                  [
+                    "sept",
+                    "7"
+                  ],
+                  [
+                    "euros",
+                    "euro"
+                  ]
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.give_info"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.train_eight",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-train_eight",
+                "speechItemId": "fr.speak.pl4_train_eight",
+                "instruction": "Say when the train leaves.",
+                "cueFacts": [
+                  {
+                    "label": "Departure",
+                    "value": "8:00"
+                  }
+                ],
+                "target": "Le train part à huit heures",
+                "acceptedVariants": [
+                  "Le train part à huit heures"
+                ],
+                "requiredConcepts": [
+                  [
+                    "train"
+                  ],
+                  [
+                    "huit",
+                    "8"
+                  ],
+                  [
+                    "heures",
+                    "heure"
+                  ]
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.give_info"
               ]
             }
           ]

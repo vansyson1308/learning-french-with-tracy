@@ -51,7 +51,12 @@ import {
   loadReadings,
   validateReception,
 } from "./lib/reception";
-import { compileSpeechItemsArtifact, loadSpeechItems, validateSpeech } from "./lib/speech";
+import {
+  assessmentBankSpeechExercises,
+  compileSpeechItemsArtifact,
+  loadSpeechItems,
+  validateSpeech,
+} from "./lib/speech";
 import { PackSchema } from "../content/schema";
 import {
   buildSqliteDb,
@@ -90,6 +95,7 @@ const validation = [
     listening: loadListening(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
     frPack: readJson("content/courses/fr-en.json") as never,
+    assessmentSpeech: assessmentBankSpeechExercises(),
   }).errors,
 ];
 if (validation.length > 0) {

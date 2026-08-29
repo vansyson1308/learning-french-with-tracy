@@ -23,6 +23,7 @@ import { useCourseContent } from "@/lib/content";
 import type { SessionController } from "@/lib/session/controller";
 import type { SessionMachineState } from "@/lib/session/reducer";
 import { buildPlacementStageSessionDefinition } from "@/lib/session/sources";
+import { probeSpeechCapabilityOnce } from "@/lib/speech/use-speech-session";
 import { useProgress } from "@/lib/store";
 
 /**
@@ -43,7 +44,36 @@ function stageAnswers(state: SessionMachineState): PlacementAnswers {
         )
         .map((s) => s.stepId)
     ),
+    speechStepIds: new Set(
+      exerciseSteps
+        .filter(
+          (s) =>
+            s.exercise.type === "speakProduction" || s.exercise.type === "speakRepetition"
+        )
+        .map((s) => s.stepId)
+    ),
   });
+}
+
+/** Does this stage require scored speech capture? */
+function stageNeedsSpeech(stage: ReturnType<typeof placementContent>["stages"][number]): boolean {
+  return stage.clusters.some((cluster) =>
+    cluster.items.some(
+      (item) =>
+        item.exercise.type === "speakProduction" || item.exercise.type === "speakRepetition"
+    )
+  );
+}
+
+/** Every item of a stage marked speech-unavailable (§22: never administered). */
+function speechUnavailableAnswers(
+  stage: ReturnType<typeof placementContent>["stages"][number]
+): PlacementAnswers {
+  const out: PlacementAnswers = {};
+  for (const cluster of stage.clusters) {
+    for (const item of cluster.items) out[item.id] = "speech_unavailable";
+  }
+  return out;
 }
 
 /**
@@ -74,6 +104,45 @@ export default function PlacementRunScreen() {
   const [stageIndex, setStageIndex] = useState(0);
   const [answers, setAnswers] = useState<PlacementAnswers>({});
   const [finished, setFinished] = useState(false);
+
+  // Scored speech is capability-gated (P8 §22): probed once up front; a
+  // speech stage on an incapable device is never administered — its items
+  // record speech_unavailable, the estimate says not_estimated, and the
+  // floor is never lowered by a device state. Until the probe resolves we
+  // stay conservative (not eligible).
+  const [speechEligible, setSpeechEligible] = useState(false);
+  useEffect(() => {
+    let live = true;
+    void probeSpeechCapabilityOnce().then((capability) => {
+      if (live) setSpeechEligible(capability.scoredEligible);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  /**
+   * Advance to the next RUNNABLE stage from `index` with `merged` answers:
+   * speech stages an incapable device cannot administer are auto-marked
+   * and passed over; when nothing remains, the run is finished.
+   */
+  const advanceFrom = (index: number, merged: PlacementAnswers) => {
+    let next = index + 1;
+    let current = { ...merged };
+    while (next < plan.stages.length && shouldRunStage(enginePlan, next, current)) {
+      const candidate = plan.stages[next];
+      if (stageNeedsSpeech(candidate) && !speechEligible) {
+        current = { ...current, ...speechUnavailableAnswers(candidate) };
+        next += 1;
+        continue;
+      }
+      setAnswers(current);
+      setStageIndex(next);
+      return;
+    }
+    setAnswers(current);
+    setFinished(true);
+  };
 
   const stage = plan.stages[stageIndex];
   const definition = useMemo(
@@ -116,14 +185,7 @@ export default function PlacementRunScreen() {
           key={stage.id}
           controller={controller}
           onStageDone={(stageResult) => {
-            const merged = { ...answers, ...stageResult };
-            setAnswers(merged);
-            const next = stageIndex + 1;
-            if (next < plan.stages.length && shouldRunStage(enginePlan, next, merged)) {
-              setStageIndex(next);
-            } else {
-              setFinished(true);
-            }
+            advanceFrom(stageIndex, { ...answers, ...stageResult });
           }}
         />
       )}

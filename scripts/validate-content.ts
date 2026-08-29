@@ -6,7 +6,11 @@ import { loadRichLexicon, validateLexicon } from "./lib/lexicon";
 import { validatePedagogy } from "./lib/pedagogy";
 import { validateContent } from "./lib/pipeline";
 import { loadListening, loadReadings, validateReception } from "./lib/reception";
-import { loadSpeechItems, validateSpeech } from "./lib/speech";
+import {
+  assessmentBankSpeechExercises,
+  loadSpeechItems,
+  validateSpeech,
+} from "./lib/speech";
 
 const content = validateContent();
 const lexicon = validateLexicon();
@@ -35,6 +39,7 @@ try {
     listening: loadListening(),
     lexemeIds: new Set(loadRichLexicon().lexemes.map((l) => l.id)),
     frPack: JSON.parse(readFileSync("content/courses/fr-en.json", "utf8")),
+    assessmentSpeech: assessmentBankSpeechExercises(),
   });
 } catch (e) {
   speech = {

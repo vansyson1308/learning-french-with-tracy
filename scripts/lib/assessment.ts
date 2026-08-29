@@ -280,6 +280,26 @@ export type ScoredItemEvidence = {
   inputId: string | null;
 };
 
+/** speechItemId → authored task family (lazy; empty when no speech source). */
+let speechFamilyCache: Map<string, string> | null = null;
+function speechTaskFamilies(): Map<string, string> {
+  if (speechFamilyCache) return speechFamilyCache;
+  speechFamilyCache = new Map();
+  try {
+    const doc = readJson("content/fr/speech/items.json") as {
+      items?: { id?: unknown; taskFamily?: unknown }[];
+    };
+    for (const item of doc.items ?? []) {
+      if (typeof item.id === "string" && typeof item.taskFamily === "string") {
+        speechFamilyCache.set(item.id, item.taskFamily);
+      }
+    }
+  } catch {
+    // No speech source yet — exercise types remain the fallback family.
+  }
+  return speechFamilyCache;
+}
+
 export function collectScoredItemEvidence(
   relPath: string,
   containerKey: "checkpoints" | "stages"
@@ -299,15 +319,24 @@ export function collectScoredItemEvidence(
     for (const item of items) {
       const targets = (item as { objectiveTargets?: unknown }).objectiveTargets;
       const exercise = (item as { exercise?: unknown }).exercise as
-        | { type?: unknown; clipId?: unknown; readingId?: unknown }
+        | { type?: unknown; clipId?: unknown; readingId?: unknown; speechItemId?: unknown }
         | undefined;
       if (!Array.isArray(targets) || !targets.every((t) => typeof t === "string")) continue;
       const clip = typeof exercise?.clipId === "string" ? exercise.clipId : null;
       const reading = typeof exercise?.readingId === "string" ? exercise.readingId : null;
+      const speechItemId =
+        typeof exercise?.speechItemId === "string" ? exercise.speechItemId : null;
+      // Speech items (P8 §21): the honest task family is the AUTHORED one
+      // (formulaic_exchange / self_introduction / …), not the single
+      // exercise type; the elicitation prompt itself is the input identity.
+      const speechFamily =
+        speechItemId !== null ? speechTaskFamilies().get(speechItemId) : undefined;
       out.push({
         objectiveTargets: targets as string[],
-        taskFamily: typeof exercise?.type === "string" ? exercise.type : "unknown",
-        inputId: clip ?? reading,
+        taskFamily:
+          speechFamily ??
+          (typeof exercise?.type === "string" ? exercise.type : "unknown"),
+        inputId: clip ?? reading ?? speechItemId,
       });
     }
   }

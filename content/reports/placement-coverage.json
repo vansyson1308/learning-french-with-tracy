@@ -1,9 +1,9 @@
 {
   "generator": "scripts/lib/assessment-reports.ts",
-  "placementVersion": 2,
-  "maxItems": 22,
-  "totalItems": 22,
-  "allComfortableLessonId": "fr-en:uj-l0",
+  "placementVersion": 3,
+  "maxItems": 28,
+  "totalItems": 28,
+  "allComfortableLessonId": "fr-en:un-l0",
   "stages": [
     {
       "id": "fr.pstage.foundations",
@@ -103,6 +103,23 @@
           "itemCount": 2
         }
       ]
+    },
+    {
+      "id": "fr.pstage.production",
+      "clusters": [
+        {
+          "id": "fr.pcluster.speak_formulaic",
+          "objectiveId": "fr.obj.speaking.formulaic",
+          "anchorLessonId": "fr-en:uk-l0",
+          "itemCount": 3
+        },
+        {
+          "id": "fr.pcluster.speak_info",
+          "objectiveId": "fr.obj.speaking.give_info",
+          "anchorLessonId": "fr-en:um-l0",
+          "itemCount": 3
+        }
+      ]
     }
   ],
   "objectivesNotProbed": [
@@ -110,6 +127,8 @@
     "fr.obj.listening.short_dialogues",
     "fr.obj.listening.short_info",
     "fr.obj.reading.short_texts",
+    "fr.obj.speaking.describe",
+    "fr.obj.speaking.self_intro",
     "fr.obj.strategy.cognate_transfer",
     "fr.obj.verbs.aller_faire_present",
     "fr.obj.verbs.futur_proche",

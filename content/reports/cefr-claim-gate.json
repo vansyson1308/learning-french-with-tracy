@@ -52,7 +52,7 @@
         },
         {
           "domain": "spoken_production",
-          "status": "no_objectives_in_domain",
+          "status": "no_direct_objective",
           "directAssessedObjectives": []
         },
         {
@@ -141,8 +141,32 @@
         },
         {
           "domain": "spoken_production",
-          "status": "no_objectives_in_domain",
-          "directAssessedObjectives": []
+          "status": "covered",
+          "directAssessedObjectives": [
+            "fr.obj.speaking.describe",
+            "fr.obj.speaking.formulaic",
+            "fr.obj.speaking.give_info",
+            "fr.obj.speaking.self_intro"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "description",
+              "formulaic_exchange",
+              "information_giving",
+              "self_introduction"
+            ],
+            "scaleNames": [
+              "Overall oral production",
+              "Sustained monologue: describing experience",
+              "Sustained monologue: giving information"
+            ],
+            "distinctInputsByObjective": {
+              "fr.obj.speaking.formulaic": 3,
+              "fr.obj.speaking.self_intro": 3,
+              "fr.obj.speaking.give_info": 3,
+              "fr.obj.speaking.describe": 3
+            }
+          }
         },
         {
           "domain": "written_production",
@@ -165,12 +189,10 @@
         "fr.obj.vocab.places_travel"
       ],
       "unassessedDomains": [
-        "spoken_production",
         "written_production",
         "interaction"
       ],
       "evidenceLimitations": [
-        "Spoken production is not assessed (no direct assessment exists at this level).",
         "Written production is not assessed (no direct assessment exists at this level).",
         "Interaction is not assessed (no direct assessment exists at this level).",
         "Listening evidence uses clear synthesized standard-French audio with limited speaker and accent diversity."
@@ -192,7 +214,7 @@
         },
         {
           "domain": "spoken_production",
-          "status": "no_objectives_in_domain",
+          "status": "no_direct_objective",
           "directAssessedObjectives": []
         },
         {
