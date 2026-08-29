@@ -93,16 +93,28 @@ function parseModelCard(text: string): { dataset: string | null; license: string
 
 function licenseGateCheck(manifest: Manifest, voiceId: string, cardText: string): string {
   const { allow, deny } = manifest.licenseGate;
-  const haystack = cardText.toLowerCase();
+  // Gate over the LICENSE-RELEVANT lines only (license/CC/dataset lines) —
+  // the first recon run proved a whole-card substring check is wrong: bare
+  // "NC" matches inside the word "French". Deny tokens match with token
+  // boundaries so CC BY-NC fails but FRENCH does not.
+  const { dataset, license } = parseModelCard(cardText);
+  const haystack = [dataset ?? "", license ?? ""].join("\n");
+  if (haystack.trim().length === 0) {
+    fail(`${voiceId}: MODEL_CARD carries no parseable dataset/license line — failing closed (P7 §37)`);
+  }
   for (const bad of deny) {
-    // Deny entries are short tokens (AGPL, NC…): match as standalone-ish text.
-    if (haystack.includes(bad.toLowerCase())) {
-      fail(`${voiceId}: MODEL_CARD mentions denied license token "${bad}" — failing closed (P7 §31/§37)`);
+    const boundary = new RegExp(`(^|[^A-Za-z])${bad.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`, "i");
+    if (boundary.test(haystack)) {
+      fail(
+        `${voiceId}: license/dataset line mentions denied token "${bad}" (${haystack.replace(/\n/g, " | ")}) — failing closed (P7 §31/§37)`
+      );
     }
   }
-  const hit = allow.find((ok) => haystack.includes(ok.toLowerCase()));
+  const hit = allow.find((ok) => haystack.toLowerCase().includes(ok.toLowerCase()));
   if (!hit) {
-    fail(`${voiceId}: MODEL_CARD matches no allowed license (${allow.join(", ")}) — failing closed (P7 §37)`);
+    fail(
+      `${voiceId}: license/dataset line matches no allowed license (${allow.join(", ")}); saw: ${haystack.replace(/\n/g, " | ")} — failing closed (P7 §37)`
+    );
   }
   return hit;
 }
