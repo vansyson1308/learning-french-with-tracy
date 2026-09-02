@@ -73,7 +73,7 @@ jobs:
           java-version: "17"
       - name: Install (frozen lockfile)
         run: bun install --frozen-lockfile
-      - name: Release identity gate (internal profile semantics: a direct APK is not a store build)
+      - name: "Release identity gate (a direct APK is not a store build; the gate must still pass)"
         run: bun run release:identity
       - name: Content, audio and drift guards
         run: |
