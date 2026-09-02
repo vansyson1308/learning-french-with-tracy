@@ -11,7 +11,7 @@
  *    (§60). No such backend exists today.
  *  - Therefore PRODUCTION IS DISABLED (§109): productionTutorProvider()
  *    returns the disabled provider, every tutor UI surface stays hidden,
- *    and the app remains 100% offline. This is the intended final state
+ *    and the app makes no network requests of its own. This is the intended final state
  *    of this phase, not a stub for one.
  *  - A tutor may EXPLAIN, SUGGEST and ENCOURAGE — it may never grade
  *    (§56, §69): nothing in the grading, assessment, learning or session

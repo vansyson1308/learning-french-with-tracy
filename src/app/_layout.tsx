@@ -79,6 +79,7 @@ export default function RootLayout() {
         <Stack.Screen name="vocabulary/index" />
         <Stack.Screen name="vocabulary/[id]" />
         <Stack.Screen name="licenses" options={{ presentation: "modal" }} />
+        <Stack.Screen name="privacy" options={{ presentation: "modal" }} />
         <Stack.Screen name="goals" options={{ presentation: "modal" }} />
       </Stack>
     </>

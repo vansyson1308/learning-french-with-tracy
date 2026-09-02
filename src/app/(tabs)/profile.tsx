@@ -291,6 +291,22 @@ function DataCard() {
         <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
       </Pressable>
       <Pressable
+        onPress={() => router.push("/privacy")}
+        accessibilityRole="button"
+        accessibilityLabel="Privacy policy"
+        style={styles.dataRow}
+        testID="privacy-link"
+      >
+        <Ionicons name="shield-checkmark-outline" size={20} color={colors.green} />
+        <View style={styles.dataRowText}>
+          <Text style={styles.dataRowTitle}>Privacy</Text>
+          <Text style={styles.settingsHint}>
+            What stays on your device, and what the speech service does.
+          </Text>
+        </View>
+        <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
+      </Pressable>
+      <Pressable
         onPress={() => router.push("/licenses")}
         accessibilityRole="button"
         accessibilityLabel="Licenses and attributions"
