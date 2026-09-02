@@ -164,8 +164,10 @@ describe("build determinism (logical-dump contract)", () => {
       }
     },
     // Two full builds (each VACUUMs) + three logical dumps: comfortably fast
-    // locally but past Bun's 5s default on slower CI runners.
-    30_000
+    // locally but past Bun's 5s default on slower CI runners — a loaded
+    // shared runner took 37.6 s (Phase 10 run 33589672872), so the budget
+    // covers that with margin rather than turning runner load into a red CI.
+    120_000
   );
 
   test("the content hash is derived from source data, not the binary", () => {

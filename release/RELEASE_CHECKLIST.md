@@ -21,7 +21,7 @@ artifact · 🔒 requires an external prerequisite the owner holds ·
 | Performance / memory acceptable | ✅ (measurable part) | `PERFORMANCE.md`; device measurements 🔒 |
 | Historical migrations / backups work | ✅ | `historical-personas.test.ts` |
 | All automated tests green | ✅ | CI (5 timezone lanes, jest, content, audio, identity, E2E) |
-| No P0/P1 open | ⏳ | see `KNOWN_LIMITATIONS.md` (updated at close) |
+| No P0/P1 open | ✅ | `KNOWN_LIMITATIONS.md`: open P0 none, open P1 none; P2/P3 items and release conditions listed with owners |
 
 ## Release ready (§83)
 
@@ -31,7 +31,7 @@ artifact · 🔒 requires an external prerequisite the owner holds ·
 | Signing credentials available | 🔒 | Apple distribution certificate + profile; Android upload key (EAS or local) |
 | Physical-device acceptance | 🔒 | matrix in `NATIVE_ACCEPTANCE.md` |
 | Store declarations with real URLs / contacts | 🔒 | hosted privacy policy URL, support contact (`APP_PRIVACY.md`, `DATA_SAFETY.md`, `STORE_METADATA.md`) |
-| RC installs and runs on target platforms | ⏳/🔒 | CI Android QA APK (`RC_ARTIFACTS.md`); iOS device build needs signing |
+| RC installs and runs on target platforms | ✅ built / 🔒 device run | CI Android release APK and iOS simulator bundle compiled and inspected (`RC_ARTIFACTS.md`, `NATIVE_ACCEPTANCE.md`); installing and running them on hardware is the owner's device pass |
 
 ## Submission-day steps (once the prerequisites above exist)
 
