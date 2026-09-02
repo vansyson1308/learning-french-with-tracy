@@ -10,9 +10,11 @@
 #   later; it was not adopted now because it adds a large dependency and
 #   transform surface for zero additional coverage at this phase.
 #
-# The test job runs under three timezones on purpose: streak/day logic is
+# The test job runs under several timezones on purpose: streak/day logic is
 # local-time-based and the v0→v1 migration grandfathers UTC-written day keys,
-# so both offset signs (and UTC itself) must stay green.
+# so both offset signs (and UTC itself) must stay green. Phase 10 adds the
+# two extreme offsets (UTC+14 and UTC−11) so a day boundary can never hide
+# behind a moderate zone.
 name: CI
 
 on:
@@ -25,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tz: ["UTC", "America/Los_Angeles", "Asia/Tokyo"]
+        tz: ["UTC", "America/Los_Angeles", "Asia/Tokyo", "Pacific/Kiritimati", "Pacific/Pago_Pago"]
     env:
       TZ: ${{ matrix.tz }}
     steps:
@@ -58,6 +60,12 @@ jobs:
       - name: Audio baseline check
         if: matrix.tz == 'UTC'
         run: bun run audio:check
+      # Phase 10 Gate 1: the distribution identity must match the committed
+      # record exactly, and an unconfirmed (inherited) identity keeps store
+      # distribution BLOCKED. Pure config check — no network.
+      - name: Release identity gate
+        if: matrix.tz == 'UTC'
+        run: bun run release:identity
 
   export-size:
     runs-on: ubuntu-latest

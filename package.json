@@ -65,6 +65,8 @@
     "content:compile": "bun scripts/compile-content.ts",
     "content:check": "bun scripts/compile-content.ts --check",
     "audio:check": "bun scripts/check-audio.ts",
+    "release:identity": "bun scripts/release-identity-gate.ts",
+    "eas-build-pre-install": "bun scripts/release-identity-gate.ts",
     "test:integration": "jest",
     "lexicon:source:verify": "bun scripts/lexicon-source.ts verify",
     "lexicon:derive": "bun scripts/lexique-derive.ts",
