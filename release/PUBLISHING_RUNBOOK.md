@@ -58,7 +58,7 @@ that carries its evidence.
 
 | Step | Who | Evidence |
 |---|---|---|
-| F1. Website live | REPO/OWNER | Pages deploys on push to `main` (`pages.yml`); if the first deploy fails with "Pages not enabled", the owner enables Settings → Pages → Source: GitHub Actions once; verify `curl -sI https://vansyson1308.github.io/learning-french-with-tracy/privacy/` → 200 |
+| F1. Website live | REPO/OWNER | Pages deploys on push to `main` (`pages.yml`). The first deploy (run 33663402880) failed exactly this way — "Create Pages site failed: Resource not accessible by integration" — so the owner enables Settings → Pages → Build and deployment → Source: **GitHub Actions** once, then re-runs the Pages workflow; verify `curl -sI https://vansyson1308.github.io/learning-french-with-tracy/privacy/` → 200 |
 | F2. Listings | OWNER | `STORE_METADATA_FINAL.md` copied field by field; owner-supplied fields filled (support email/phone, seller name, copyright) |
 | F3. Screenshots | OWNER | `SCREENSHOT_MANIFEST.md` from the FINAL RC build; record the build number on each set |
 | F4. Privacy declarations | OWNER | `PRIVACY_FINAL.md`: App Privacy = Data Not Collected; Play Data safety per the recorded answers; Ads = No; content rating questionnaires; target audience 13+ |

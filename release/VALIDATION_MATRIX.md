@@ -43,7 +43,7 @@ perform; "Both" rows have an automated part and a device part.
 | VoiceOver / TalkBack / large text / contrast / reduce motion | rows A1–A15 | NOT STARTED | `ACCESSIBILITY_FINAL.md` |
 | Memory plateau, temp-audio cleanup on device | soak blocks 1–8 | NOT STARTED | `SOAK_REPORT.md` |
 | Store accounts, EAS project, signing keys | owner setup | NOT STARTED | `PUBLISHING_RUNBOOK.md` C–D |
-| Public privacy URL returns 200; support contact public | Pages deploy after merge; owner email | BLOCKED until merge / owner | `PUBLICATION_STATUS.md` |
+| Public privacy URL returns 200; support contact public | Pages deploy on `main`; owner email | BLOCKED — the site builds (run 33663402880, 7 pages) but Pages must be enabled once by the owner (source: GitHub Actions); email owner-supplied | `PUBLICATION_STATUS.md` |
 | Closed test 12 × 14 days; production access | Play Console | NOT STARTED | `ANDROID_CLOSED_TEST_PLAN.md` |
 
 ## D. Coverage summary
