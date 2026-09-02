@@ -19,7 +19,7 @@ report repeats. Success states are never conflated: ENGINEERING COMPLETE
 | Google Play developer account | BLOCKED — owner registration, fee, identity verification | `GOOGLE_PLAY_ACCOUNT_SETUP.md` |
 | EAS project under the owner's account | BLOCKED — `eas init` on the owner's machine; no token in the repo | `PUBLISHING_RUNBOOK.md` D1 |
 | Signing keys | BLOCKED — EAS-managed or owner-held; never created here | `PUBLISHING_RUNBOOK.md` D3–D5 |
-| RC builds (store profiles) | RC1 cut as an engineering candidate (`RC_HISTORY.md`); store-profile builds BLOCKED by the identity gate (fails closed) and the EAS project | `RC_HISTORY.md` |
+| RC builds (store profiles) | RC1 cut as an engineering candidate with its QA APK recorded (run 33660049388, artifact 9859191410, `RC_HISTORY.md`); store-profile builds BLOCKED by the identity gate (fails closed) and the EAS project | `RC_HISTORY.md` |
 | Device acceptance | NOT STARTED — needs an RC on phones | `DEVICE_ACCEPTANCE.md` |
 | Accessibility device pass | NOT STARTED | `ACCESSIBILITY_FINAL.md` |
 | Store listings, screenshots from the final RC | drafts ready; capture blocked on the RC | `STORE_METADATA_FINAL.md`, `SCREENSHOT_MANIFEST.md` |
