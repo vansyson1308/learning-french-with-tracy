@@ -30,6 +30,7 @@ import {
   compileCheckpointsArtifact,
   compileObjectivesArtifact,
   compilePlacementArtifact,
+  loadAttainmentPolicy,
   loadCheckpoints,
   loadClaimPolicy,
   loadCourseObjectives,
@@ -232,6 +233,21 @@ files.push({ relPath: CONCEPTS_ARTIFACT, contents: compileConceptsArtifact(loadP
   // runtime artifact — whether this course's reserved assessment system
   // covers each evaluated level, plus the exact non-certification wording.
   // The LEARNER half derives at runtime from the learner's own attempts.
+  // Phase 10 Gate 2: the LEARNER-attainment denominator — the authored
+  // per-domain list of objectives a learner must demonstrate. Shipped as
+  // data so the runtime estimate can never invent its own rule.
+  const attainment = loadAttainmentPolicy();
+  files.push({
+    relPath: "src/content/assessment/fr-attainment.json",
+    contents: canonicalJson({
+      generator: "scripts/compile-content.ts",
+      level: attainment.level,
+      domains: attainment.domains.map((d) => ({
+        domain: d.domain,
+        requiredObjectiveIds: [...d.requiredObjectiveIds].sort(),
+      })),
+    }),
+  });
   files.push({
     relPath: "src/content/assessment/fr-claim.json",
     contents: canonicalJson({

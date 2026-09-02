@@ -848,3 +848,105 @@ describe("placement bank — real data + mutations (§73-78)", () => {
     expect(validatePlacementData(input).errors.join("\n")).toContain("engine spelling");
   });
 });
+
+// ---------------------------------------------------------------------------
+// Phase 10 Gate 2: the authored learner-attainment policy (§10-§14)
+// ---------------------------------------------------------------------------
+import {
+  CAPSTONE_CHECKPOINT_ID,
+  loadAttainmentPolicy,
+  validateAttainmentPolicyData,
+} from "../lib/assessment";
+import type { AttainmentPolicy } from "../../content/schema";
+
+describe("attainment policy — real data + every rule fires", () => {
+  const attainment = loadAttainmentPolicy();
+  const objectives = loadCourseObjectives();
+  const policy = loadClaimPolicy();
+  const checkpoints = loadCheckpoints();
+  const run = (mutated: AttainmentPolicy, cps = checkpoints) =>
+    validateAttainmentPolicyData({ attainment: mutated, objectives, policy, checkpoints: cps }).errors;
+  const clone = (): AttainmentPolicy => JSON.parse(JSON.stringify(attainment));
+
+  test("the committed policy is valid and covers exactly the claim policy's domains", () => {
+    expect(run(attainment)).toEqual([]);
+    expect(attainment.domains.map((d) => d.domain).sort()).toEqual([...policy.requiredDomains].sort());
+    expect(attainment.domains.flatMap((d) => d.requiredObjectiveIds).length).toBe(14);
+  });
+
+  test("dropping an essential direct objective from its domain fails (nothing omitted silently)", () => {
+    const m = clone();
+    const listening = m.domains.find((d) => d.domain === "spoken_reception")!;
+    listening.requiredObjectiveIds = listening.requiredObjectiveIds.filter(
+      (id) => id !== "fr.obj.listening.announcements"
+    );
+    expect(run(m).join("\n")).toMatch(/announcements is neither required nor explicitly excluded/);
+  });
+
+  test("excluding an ESSENTIAL objective fails", () => {
+    const m = clone();
+    const writing = m.domains.find((d) => d.domain === "written_production")!;
+    writing.requiredObjectiveIds = writing.requiredObjectiveIds.filter(
+      (id) => id !== "fr.obj.writing.short_message"
+    );
+    writing.excludedObjectiveIds.push({
+      objectiveId: "fr.obj.writing.short_message",
+      reason: "a reason long enough to satisfy the schema minimum",
+    });
+    expect(run(m).join("\n")).toMatch(/short_message is ESSENTIAL and cannot be excluded/);
+  });
+
+  test("a required objective from another domain fails", () => {
+    const m = clone();
+    m.domains.find((d) => d.domain === "interaction")!.requiredObjectiveIds.push(
+      "fr.obj.reading.short_texts"
+    );
+    expect(run(m).join("\n")).toMatch(/short_texts belongs to written_reception/);
+  });
+
+  test("a required objective that is not directly aligned at A1 fails", () => {
+    const m = clone();
+    m.domains.find((d) => d.domain === "written_reception")!.requiredObjectiveIds.push(
+      "fr.obj.reading.familiar_words"
+    );
+    expect(run(m).join("\n")).toMatch(/familiar_words is not directly aligned at A1/);
+  });
+
+  test("a missing or unknown domain fails", () => {
+    const m = clone();
+    m.domains = m.domains.filter((d) => d.domain !== "interaction");
+    expect(run(m).join("\n")).toMatch(/required domain interaction has no attainment policy/);
+    const n = clone();
+    n.domains.push({
+      domain: "lexical",
+      requiredObjectiveIds: ["fr.obj.greetings.basic"],
+      excludedObjectiveIds: [],
+      rationale: "a rationale long enough to satisfy the schema minimum length",
+    });
+    expect(run(n).join("\n")).toMatch(/domain lexical is not a claim-policy required domain/);
+  });
+
+  test("a required objective no checkpoint form can demonstrate fails (the estimate must be completable)", () => {
+    const cps = JSON.parse(JSON.stringify(checkpoints)) as typeof checkpoints;
+    for (const cp of cps.checkpoints) {
+      for (const item of cp.items) {
+        item.objectiveTargets = item.objectiveTargets.filter(
+          (id) => id !== "fr.obj.interaction.practical_needs"
+        );
+      }
+    }
+    expect(run(attainment, cps).join("\n")).toMatch(
+      /practical_needs is required but no checkpoint form carries enough items/
+    );
+  });
+
+  test("a capstone that targets a domain's whole required set fails (§13)", () => {
+    const cps = JSON.parse(JSON.stringify(checkpoints)) as typeof checkpoints;
+    const capstone = cps.checkpoints.find((cp) => cp.id === CAPSTONE_CHECKPOINT_ID)!;
+    const interaction = attainment.domains.find((d) => d.domain === "interaction")!;
+    capstone.items[0].objectiveTargets = [...interaction.requiredObjectiveIds];
+    expect(run(attainment, cps).join("\n")).toMatch(
+      /interaction: the capstone targets every required objective/
+    );
+  });
+});

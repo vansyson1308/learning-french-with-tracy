@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "language": "fr",
+  "level": "A1",
+  "principle": "A learner's CEFR-aligned A1 estimate counts a communicative domain as demonstrated only when EVERY objective listed for that domain below carries a real 'demonstrated' checkpoint verdict under the latest-attempt policy. The list is the authored denominator: it names every essential objective that is aligned directly to an A1 descriptor scale in the domain. Non-essential direct objectives are listed under excludedObjectiveIds with the pedagogical reason; nothing is omitted silently. The A1 Capstone samples one representative objective per domain and therefore can contribute evidence but can never complete a domain on its own.",
+  "domains": [
+    {
+      "domain": "spoken_reception",
+      "requiredObjectiveIds": [
+        "fr.obj.listening.short_info",
+        "fr.obj.listening.announcements",
+        "fr.obj.listening.short_dialogues"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "The three essential listening objectives cover the A1 'Overall oral comprehension', 'Understanding announcements and instructions' and 'Understanding conversation between other people' scales. All three are assessed in the Section 3 checkpoint (3-4 items each); short_info is also sampled by the capstone."
+    },
+    {
+      "domain": "written_reception",
+      "requiredObjectiveIds": [
+        "fr.obj.reading.short_messages",
+        "fr.obj.reading.notices_info",
+        "fr.obj.reading.short_texts"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "The three essential reading objectives cover correspondence, signs/notices and short simple texts at A1. All three are assessed in the Section 3 checkpoint; short_messages is also sampled by the capstone."
+    },
+    {
+      "domain": "spoken_production",
+      "requiredObjectiveIds": [
+        "fr.obj.speaking.formulaic",
+        "fr.obj.speaking.self_intro",
+        "fr.obj.speaking.give_info"
+      ],
+      "excludedObjectiveIds": [
+        {
+          "objectiveId": "fr.obj.speaking.describe",
+          "reason": "Sustained monologue (describing people, places and possessions) is authored as non-essential at this stage: the deterministic speech grader can only credit short elicited utterances, so demonstrating it is optional evidence rather than a gate. It stays visible on the goals screen as its own objective."
+        }
+      ],
+      "rationale": "Formulaic exchanges, self-introduction and giving simple personal information are the essential A1 spoken-production objectives; each has 3 elicited items in the Section 4 checkpoint and give_info is also sampled by the capstone."
+    },
+    {
+      "domain": "written_production",
+      "requiredObjectiveIds": [
+        "fr.obj.writing.personal_info",
+        "fr.obj.writing.phrases_sentences",
+        "fr.obj.writing.short_message"
+      ],
+      "excludedObjectiveIds": [
+        {
+          "objectiveId": "fr.obj.writing.form_filling",
+          "reason": "Form filling is authored as non-essential: it is a narrow transactional skill whose deterministic scoring is slot-based; it is practised and reported but is not required for the estimate."
+        }
+      ],
+      "rationale": "Writing personal information, simple phrases and sentences, and a short message are the essential A1 written-production objectives; each has 3 rubric-scored tasks in the Section 5 checkpoint and short_message is also sampled by the capstone."
+    },
+    {
+      "domain": "interaction",
+      "requiredObjectiveIds": [
+        "fr.obj.interaction.everyday_conversation",
+        "fr.obj.interaction.practical_needs"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "Both interaction objectives are essential and directly aligned to A1 conversation and goal-oriented co-operation scales; each has 3 scored scenarios in the Section 6 checkpoint and everyday_conversation is also sampled by the capstone."
+    }
+  ]
+}
