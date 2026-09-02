@@ -1,0 +1,77 @@
+# Phase 10 native gate: compile the iOS project on a macOS runner (this
+# sandbox has no Xcode). Builds for the iOS Simulator WITHOUT code signing,
+# so it needs no certificates, no provisioning profile and no Apple
+# account — it proves the SDK 57 pods (including expo-speech-recognition
+# 57.0.0) compile, and captures the Info.plist and the privacy manifests
+# that end up in the app bundle. Dispatch-only; never archives, never
+# uploads.
+name: iOS simulator build (compile check)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref to build"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Release identity gate
+        run: bun run release:identity
+      - name: Generate the native project (CNG) and install pods
+        run: bunx expo prebuild --platform ios --clean
+      - name: Xcode version
+        run: xcodebuild -version | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Build for the simulator (no signing)
+        working-directory: ios
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -workspace LingoLessons.xcworkspace \
+            -scheme LingoLessons \
+            -configuration Release \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+            build | tail -200
+      - name: Inspect the bundle (plist, privacy manifests, size)
+        run: |
+          APP=$(find ios/build -name "LingoLessons.app" -type d | head -1)
+          mkdir -p artifact-report
+          plutil -convert xml1 -o artifact-report/Info.plist "$APP/Info.plist"
+          find "$APP" -name "PrivacyInfo.xcprivacy" -exec sh -c 'echo "== $1"; plutil -p "$1"' _ {} \; > artifact-report/privacy-manifests.txt
+          du -sh "$APP" | tee artifact-report/size.txt
+          {
+            echo "## iOS simulator bundle"
+            grep -A1 -E "NSMicrophoneUsageDescription|NSSpeechRecognitionUsageDescription|MinimumOSVersion|UIBackgroundModes" artifact-report/Info.plist || true
+            echo
+            echo "Privacy manifests in bundle:"
+            grep "^== " artifact-report/privacy-manifests.txt
+            cat artifact-report/size.txt
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Fail if a background mode or a missing usage string slipped in
+        run: |
+          ! grep -q "UIBackgroundModes" artifact-report/Info.plist
+          grep -q "NSMicrophoneUsageDescription" artifact-report/Info.plist
+          grep -q "NSSpeechRecognitionUsageDescription" artifact-report/Info.plist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios-simulator-report
+          path: artifact-report
+          retention-days: 30
