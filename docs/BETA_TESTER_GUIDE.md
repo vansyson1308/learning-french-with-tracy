@@ -36,6 +36,10 @@ Speech problems: tell us the French you said (as text) and what the app displaye
 ## 4. What NOT to send
 
 - Do not send voice recordings, screen recordings with your voice, or any personal data.
+
+## Pick a persona
+
+If you would rather follow a script than explore, pick one of the tester personas in the repository's device acceptance pack (`release/DEVICE_ACCEPTANCE.md`, section 1): complete beginner, studied before, returning learner with a backup, speaker, speaker with the microphone denied, offline commuter, screen-reader user, large text, or Android sideloader. Each is a complete first session and says what to look for.
 - Do not share your backup file publicly; it contains your learning history (no names, but it is yours).
 - Do not post the TestFlight or Play opt-in link publicly.
 
