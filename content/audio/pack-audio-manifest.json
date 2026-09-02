@@ -37,7 +37,7 @@
     "de-en": {
       "policy": "generated",
       "language": "de",
-      "voiceId": null,
+      "voiceId": "de_DE-thorsten-medium",
       "candidates": [
         "de_DE-thorsten-medium",
         "de_DE-mls-medium"
@@ -46,7 +46,7 @@
     "es-en": {
       "policy": "generated",
       "language": "es",
-      "voiceId": null,
+      "voiceId": "es_ES-davefx-medium",
       "candidates": [
         "es_ES-davefx-medium",
         "es_ES-sharvard-medium"
@@ -55,7 +55,7 @@
     "fr-en": {
       "policy": "generated",
       "language": "fr",
-      "voiceId": null,
+      "voiceId": "fr_FR-siwis-medium",
       "candidates": [
         "fr_FR-siwis-medium"
       ]
@@ -68,7 +68,7 @@
     "pt-en": {
       "policy": "generated",
       "language": "pt",
-      "voiceId": null,
+      "voiceId": "pt_BR-faber-medium",
       "candidates": [
         "pt_BR-faber-medium",
         "pt_BR-cadu-medium",
@@ -99,24 +99,24 @@
       "files": {
         "model": {
           "path": "de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "7e64762d8e5118bb578f2eea6207e1a35a8e0c30595010b666f983fc87bb7819",
+          "bytes": 63201294
         },
         "config": {
           "path": "de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "974adee790533adb273a1ac88f49027d2a1b8f0f2cf4905954a4791e79264e85",
+          "bytes": 4819
         },
         "modelCard": {
           "path": "de/de_DE/thorsten/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5196b5ab0794e6056263a1f37c18bec407b61ac187529bee29d1c366871e5c9e",
+          "bytes": 285
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: CC0",
+      "status": "selected",
+      "gateReason": "matched CC0"
     },
     {
       "id": "de_DE-mls-medium",
@@ -125,24 +125,24 @@
       "files": {
         "model": {
           "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
         },
         "config": {
           "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
         },
         "modelCard": {
           "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": "matched CC BY 4.0"
     },
     {
       "id": "es_ES-davefx-medium",
@@ -151,24 +151,24 @@
       "files": {
         "model": {
           "path": "es/es_ES/davefx/medium/es_ES-davefx-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "6658b03b1a6c316ee4c265a9896abc1393353c2d9e1bca7d66c2c442e222a917",
+          "bytes": 63201294
         },
         "config": {
           "path": "es/es_ES/davefx/medium/es_ES-davefx-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "0e0dda87c732f6f38771ff274a6380d9252f327dca77aa2963d5fbdf9ec54842",
+          "bytes": 4817
         },
         "modelCard": {
           "path": "es/es_ES/davefx/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "17523d253d605b262341aac23226b49686c31992af90236bd0abb7d4d154774d",
+          "bytes": 275
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: CC0",
+      "status": "selected",
+      "gateReason": "matched CC0"
     },
     {
       "id": "es_ES-sharvard-medium",
@@ -177,24 +177,24 @@
       "files": {
         "model": {
           "path": "es/es_ES/sharvard/medium/es_ES-sharvard-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "40febfb1679c69a4505ff311dc136e121e3419a13a290ef264fdf43ddedd0fb1",
+          "bytes": 76733615
         },
         "config": {
           "path": "es/es_ES/sharvard/medium/es_ES-sharvard-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "7438c9b699c72b0c3388dae1b68d3f364dc66a2150fe554a1c11f03372957b2c",
+          "bytes": 4903
         },
         "modelCard": {
           "path": "es/es_ES/sharvard/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "37655314d08fe8a0900abc628d3bcbee48ffbdd8fad9306b89525a0ada20fefc",
+          "bytes": 392
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: http://creativecommons.org/licenses/by/3.0/",
+      "status": "excluded",
+      "gateReason": "license/dataset line matches no allowed license (saw:  | * License: http://creativecommons.org/licenses/by/3.0/)"
     },
     {
       "id": "fr_FR-siwis-medium",
@@ -203,24 +203,24 @@
       "files": {
         "model": {
           "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "641d1ab097da2b81128c076810edb052b385decc8be3381814802a64a73baf99",
+          "bytes": 63201294
         },
         "config": {
           "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "39479916c2db192b5ac9764daddd0c744d83e023ad890c6976c0633ae4df8959",
+          "bytes": 4875
         },
         "modelCard": {
           "path": "fr/fr_FR/siwis/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "bd8b8d079d4d3d2c4cc20345889bbcd586d72f021a132f93357a763eb5232cce",
+          "bytes": 284
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "selected",
+      "gateReason": "matched CC BY 4.0"
     },
     {
       "id": "pt_BR-faber-medium",
@@ -229,24 +229,24 @@
       "files": {
         "model": {
           "path": "pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "858555e3a064209c57088fe6bd70c4c3dc54d03eaa00c45d5ecaf43a33f95aa7",
+          "bytes": 63201294
         },
         "config": {
           "path": "pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "7e694de195ae3fc36dd732c445eb04fb49b649854893cb5506b978f0d50a1d6f",
+          "bytes": 4855
         },
         "modelCard": {
           "path": "pt/pt_BR/faber/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "624fc8c611d29643ba30c0c1a1a0167d8dc1341cd2514ae0a0085bfed2b4741d",
+          "bytes": 278
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: CC0",
+      "status": "selected",
+      "gateReason": "matched CC0"
     },
     {
       "id": "pt_BR-cadu-medium",
@@ -255,24 +255,24 @@
       "files": {
         "model": {
           "path": "pt/pt_BR/cadu/medium/pt_BR-cadu-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "765f0809a6ea9035d4a6d0d008dbf8876e68b2dd32029312672fa8f405bdb535",
+          "bytes": 62950044
         },
         "config": {
           "path": "pt/pt_BR/cadu/medium/pt_BR-cadu-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5fe03aa3d4901880554905b12075713cd552598c8a350455a1ec73f8b4e6be19",
+          "bytes": 5040
         },
         "modelCard": {
           "path": "pt/pt_BR/cadu/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "526851a9c716b375658484a678ec0199332e02378aa367652d2093026b9527f8",
+          "bytes": 277
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: CC0",
+      "status": "eligible",
+      "gateReason": "matched CC0"
     },
     {
       "id": "pt_BR-jeff-medium",
@@ -281,24 +281,24 @@
       "files": {
         "model": {
           "path": "pt/pt_BR/jeff/medium/pt_BR-jeff-medium.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "3a6f4c46355813c2b7bbc4d16b6d13d60ed72074b952a393baace82a7d0c94b5",
+          "bytes": 62950044
         },
         "config": {
           "path": "pt/pt_BR/jeff/medium/pt_BR-jeff-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "7bf8145b572b36806f5ce0f1d3322b6711975bc7d0473e8d36fced4a9ec0030d",
+          "bytes": 5041
         },
         "modelCard": {
           "path": "pt/pt_BR/jeff/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "c6dca942949f1b3df0fd8c5316a75cd10507f10ffc9d12b0fc6dce6548ed032d",
+          "bytes": 277
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: CC0",
+      "status": "eligible",
+      "gateReason": "matched CC0"
     }
   ],
   "restoreAudioTargets": {
