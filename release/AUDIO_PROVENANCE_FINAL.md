@@ -30,7 +30,8 @@ unproven redistribution right, so under §9 the recordings do not ship.
 | Course | Decision | Why |
 |---|---|---|
 | fr-en | regenerate with `fr_FR-siwis-medium` (the reception voice) | one speaker across words, sentences and listening clips |
-| de-en, es-en, it-en, pt-en, zh-en | regenerate with a license-gated Piper voice selected by the canary ASR audit | Piper voices exist; every candidate's MODEL_CARD is read on the runner and gated fail-closed |
+| de-en, es-en, pt-en | regenerate with a license-gated Piper voice selected by the canary ASR audit | recon run 33646858305 (2026-09-02) admitted de_DE-thorsten-medium (CC0), de_DE-mls-medium (CC BY 4.0), es_ES-davefx-medium (CC0), pt_BR-faber/cadu/jeff-medium (CC0); es_ES-sharvard-medium was excluded (CC BY 3.0 is outside the project's allow list) |
+| it-en, zh-en | **device text-to-speech** (`audio.policy = device-tts`) | the only Italian medium voice (paola) states "License: See URL" and the only Mandarin voice (huayan) states "License: Unknown" — both excluded by the fail-closed gate in the same run; an unverifiable license is not a redistribution right, and the extra-low-quality Italian alternative is not release quality |
 | ja-en, ko-en | **device text-to-speech** (`audio.policy = device-tts` in the pack, reason recorded) | rhasspy/piper-voices v1.0.0 ships no Japanese or Korean voice; the runtime already spoke unknown strings through `expo-speech`, so course behaviour is preserved with the OS voice |
 | sound effects | regenerate from pure ffmpeg tone expressions | provenance-clean by construction; same file names so no code change |
 | Phase-10 residuals (four Section-1 prompts without audio; six partner lines) | closed: the four `audioTarget`s are restored by the pipeline's `restoreAudioTargets`; the six partner lines are re-synthesized by the reception workflow after the text edits | no P2 audio item is deferred |

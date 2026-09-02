@@ -61,12 +61,9 @@
       ]
     },
     "it-en": {
-      "policy": "generated",
+      "policy": "device-tts",
       "language": "it",
-      "voiceId": null,
-      "candidates": [
-        "it_IT-paola-medium"
-      ]
+      "reason": "The only Italian Piper voices are it_IT-paola-medium, whose MODEL_CARD states 'License: See URL' (no verifiable license, excluded by the gate on 2026-09-02, run 33646858305), and it_IT-riccardo-x_low (extra-low quality). The upstream recordings have no traceable license, so the course speaks through the device's own Italian text-to-speech voice."
     },
     "pt-en": {
       "policy": "generated",
@@ -79,12 +76,9 @@
       ]
     },
     "zh-en": {
-      "policy": "generated",
+      "policy": "device-tts",
       "language": "zh",
-      "voiceId": null,
-      "candidates": [
-        "zh_CN-huayan-medium"
-      ]
+      "reason": "The only Mandarin Piper voice, zh_CN-huayan-medium, states 'License: Unknown' in its MODEL_CARD (excluded by the gate on 2026-09-02, run 33646858305). The upstream recordings have no traceable license, so the course speaks through the device's own Chinese text-to-speech voice."
     },
     "ja-en": {
       "policy": "device-tts",
@@ -229,32 +223,6 @@
       "gateReason": null
     },
     {
-      "id": "it_IT-paola-medium",
-      "language": "it",
-      "note": "Italian; the only medium-quality Italian voice",
-      "files": {
-        "model": {
-          "path": "it/it_IT/paola/medium/it_IT-paola-medium.onnx",
-          "sha256": null,
-          "bytes": null
-        },
-        "config": {
-          "path": "it/it_IT/paola/medium/it_IT-paola-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
-        },
-        "modelCard": {
-          "path": "it/it_IT/paola/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
-        }
-      },
-      "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
-    },
-    {
       "id": "pt_BR-faber-medium",
       "language": "pt",
       "note": "Brazilian Portuguese (the course uses pt-BR); primary candidate",
@@ -323,32 +291,6 @@
         },
         "modelCard": {
           "path": "pt/pt_BR/jeff/medium/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
-        }
-      },
-      "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
-    },
-    {
-      "id": "zh_CN-huayan-medium",
-      "language": "zh",
-      "note": "Mandarin (Simplified); the only medium-quality Chinese voice",
-      "files": {
-        "model": {
-          "path": "zh/zh_CN/huayan/medium/zh_CN-huayan-medium.onnx",
-          "sha256": null,
-          "bytes": null
-        },
-        "config": {
-          "path": "zh/zh_CN/huayan/medium/zh_CN-huayan-medium.onnx.json",
-          "sha256": null,
-          "bytes": null
-        },
-        "modelCard": {
-          "path": "zh/zh_CN/huayan/medium/MODEL_CARD",
           "sha256": null,
           "bytes": null
         }
