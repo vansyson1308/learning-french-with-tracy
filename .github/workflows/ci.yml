@@ -83,3 +83,10 @@ jobs:
           echo "## Web export size" >> "$GITHUB_STEP_SUMMARY"
           du -sh dist | tee -a "$GITHUB_STEP_SUMMARY"
           du -sh dist/_expo/static/js/web/*.js | sort -rh | head -5 | tee -a "$GITHUB_STEP_SUMMARY"
+      # Phase 10: browser E2E over the export (the runner's Chrome; the
+      # web tier is honestly labelled — speech surfaces show their skip
+      # affordances). No network beyond localhost.
+      - name: Browser E2E (web tier)
+        env:
+          E2E_BROWSER_PATH: /usr/bin/google-chrome
+        run: bun run e2e:web dist
