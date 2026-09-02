@@ -16,10 +16,12 @@ export type IdentityRecord = {
   identity: {
     displayName: string;
     slug: string;
-    owner: string;
+    /** Expo account that owns the project; null after the identity migration until `eas init` under the owner's account. */
+    owner: string | null;
     iosBundleIdentifier: string;
     androidPackage: string;
-    easProjectId: string;
+    /** EAS project id; null after the migration until `eas init` writes the owner's own. */
+    easProjectId: string | null;
     ascAppId: string | null;
   };
   ownership: {
@@ -123,7 +125,7 @@ export function evaluateReleaseIdentity(input: IdentityGateInput): IdentityGateR
       : "BLOCKED";
   notes.push(`STORE DISTRIBUTION IDENTITY = ${storeDistribution}`);
   notes.push(
-    `identity: owner=${record.identity.owner} ios=${record.identity.iosBundleIdentifier} android=${record.identity.androidPackage} easProjectId=${record.identity.easProjectId} ascAppId=${record.identity.ascAppId ?? "none"}`
+    `identity: owner=${record.identity.owner ?? "none"} ios=${record.identity.iosBundleIdentifier} android=${record.identity.androidPackage} easProjectId=${record.identity.easProjectId ?? "none"} ascAppId=${record.identity.ascAppId ?? "none"}`
   );
 
   const profile = input.buildProfile ?? null;

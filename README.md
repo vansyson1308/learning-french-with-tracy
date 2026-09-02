@@ -28,9 +28,10 @@ language courses inherited from the base remain available.
 
 ## Documentation
 
-- User guide: `docs/USER_GUIDE.md`
+- User guide: `docs/USER_GUIDE.md` — every section is walked against the app; the record is `docs/USER_GUIDE_VALIDATION.md`
 - Beta tester guide: `docs/BETA_TESTER_GUIDE.md`
-- Release records (readiness, privacy, accessibility, audio provenance, store metadata, publishing runbook): `release/`
+- Where v1 stands: `release/PUBLICATION_STATUS.md`; how it gets to the stores: `release/PUBLISHING_RUNBOOK.md`; what a phone must still prove: `release/DEVICE_ACCEPTANCE.md`
+- Release records (readiness, privacy, accessibility, audio provenance, soak, store metadata, screenshots, RC ledger): `release/`
 
 ## Build
 
