@@ -1,25 +1,25 @@
 {
   "generator": "scripts/reception-audio.ts qa",
   "authoredClipCount": 177,
-  "uniqueAssetCount": 167,
+  "uniqueAssetCount": 166,
   "technicalFailures": 0,
   "speakerSummary": [
     {
-      "speaker": "fr_FR-siwis-medium",
-      "clips": 56,
-      "meanWer": 0.141,
+      "speaker": "mixed",
+      "clips": 8,
+      "meanWer": 0.044,
       "technicalFailures": 0
     },
     {
-      "speaker": "mixed",
-      "clips": 8,
-      "meanWer": 0.192,
+      "speaker": "fr_FR-siwis-medium",
+      "clips": 56,
+      "meanWer": 0.1347,
       "technicalFailures": 0
     },
     {
       "speaker": "fr_FR-upmc-medium#1",
       "clips": 113,
-      "meanWer": 0.2982,
+      "meanWer": 0.1826,
       "technicalFailures": 0
     }
   ],
@@ -40,7 +40,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Le bus pour le centre-ville part dans 10 minutes.",
-        "wer": 0.1
+        "wer": 0.1,
+        "model": "medium"
       }
     },
     {
@@ -58,8 +59,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Salut, le film commence à 20 h, on se voit devant le cinéma.",
-        "wer": 0.1538
+        "text": "Salut ! Le film commence à 20 heures. On se voit devant le cinéma.",
+        "wer": 0.0769,
+        "model": "medium"
       }
     },
     {
@@ -78,7 +80,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Le musée est ouvert de 10h à 18h.",
-        "wer": 0.4545
+        "wer": 0.4545,
+        "model": "medium"
       }
     },
     {
@@ -96,8 +99,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "La pharmacie est fermée aujourd'hui, elle ouvre demain matin.",
-        "wer": 0
+        "text": "La pharmacie est fermée aujourd'hui. Elle ouvre demain matin.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -116,7 +120,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "La bibliothèque ferme à 6 heures ce soir.",
-        "wer": 0.125
+        "wer": 0.125,
+        "model": "medium"
       }
     },
     {
@@ -134,8 +139,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Pardon, le magasin ouvra qu'à l'heure.  Le magasin ouvra neuf heures, madame.",
-        "wer": 0.3571
+        "text": "Pardon, le magasin ouvre à quelle heure ?  Le magasin ouvre à 9 heures, Madame.",
+        "wer": 0.0714,
+        "model": "medium"
       }
     },
     {
@@ -153,8 +159,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "bonjour, un T, s'il vous plaît.  Bien sûr, trois euros monsieur.",
-        "wer": 0.0833
+        "text": "Bonjour, un thé, s'il-vous-plaît.  Bien sûr, trois euros, monsieur.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -173,7 +180,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "le soir",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -191,8 +199,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Voie 4.",
-        "wer": 0.5
+        "text": "Voix 4",
+        "wer": 1,
+        "model": "medium"
       }
     },
     {
@@ -210,8 +219,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "L'entrée du musée coup de huit euros le samedi.",
-        "wer": 0.2222
+        "text": "L'entrée du musée coûte 8 euros le samedi.",
+        "wer": 0.1111,
+        "model": "medium"
       }
     },
     {
@@ -229,8 +239,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le fromage.",
-        "wer": 0
+        "text": "le fromage",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -248,8 +259,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Lorsque tel.",
-        "wer": 1
+        "text": "L'hôtel",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -268,7 +280,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Le restaurant de la plage est ouvert le samedi matin.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -286,8 +299,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train pour Marseille par voie 4 à 11h.",
-        "wer": 0.4
+        "text": "Le train pour Marseille part voire 4 à 11 heures.",
+        "wer": 0.3,
+        "model": "medium"
       }
     },
     {
@@ -305,8 +319,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le peur à 9h, ça va !",
-        "wer": 0.6667
+        "text": "Deux heures à neuf heures, ça va.",
+        "wer": 0.3333,
+        "model": "medium"
       }
     },
     {
@@ -324,8 +339,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Neveleur, ça va !",
-        "wer": 0.5
+        "text": "Neuve l'heure, ça va!",
+        "wer": 0.75,
+        "model": "medium"
       }
     },
     {
@@ -343,8 +359,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Parfait, et demain.",
-        "wer": 0.3333
+        "text": "Parfait, et demain !",
+        "wer": 0.3333,
+        "model": "medium"
       }
     },
     {
@@ -362,8 +379,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Salut, on va au café de main matin.",
-        "wer": 0.2857
+        "text": "Salut, on va au café demain matin.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -381,8 +399,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "à café, demain matin.",
-        "wer": 0.3333
+        "text": "Café, demain matin.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -400,8 +419,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Super, à bientôt, Nadia !",
-        "wer": 0
+        "text": "Super, à bientôt, Nadia.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -419,8 +439,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Enchanté, Nadia, vous parlez français.",
-        "wer": 0.2
+        "text": "Enchanté, Nadia. Vous parlez français.",
+        "wer": 0.2,
+        "model": "medium"
       }
     },
     {
@@ -438,8 +459,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "vous parlez français.",
-        "wer": 0
+        "text": "On parlait français.",
+        "wer": 0.6667,
+        "model": "medium"
       }
     },
     {
@@ -457,8 +479,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, moi, c'est Julie, et vous.",
-        "wer": 0
+        "text": "Bonjour, moi, c'est Julius, et vous ?",
+        "wer": 0.1429,
+        "model": "medium"
       }
     },
     {
@@ -476,8 +499,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Comment vous vous appelez ?",
-        "wer": 0
+        "text": "Comment vous vous appelez?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -495,8 +519,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Parfait, et demain.",
-        "wer": 0.3333
+        "text": "Parfait, et demain !",
+        "wer": 0.3333,
+        "model": "medium"
       }
     },
     {
@@ -514,8 +539,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Un oeuvre, d'accord ? Et vous sain ?",
-        "wer": 0.625
+        "text": "I'm over. D'accord. Et vous, ça ?",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -533,8 +559,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "On se voit où.",
-        "wer": 0
+        "text": "On se voit où ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -552,8 +579,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Salut, on se voit à quel verre de n'un.",
-        "wer": 0.625
+        "text": "Salut, on se voit à quelle heure demain ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -571,8 +599,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "A quelle heure ? Demain ?",
-        "wer": 0.25
+        "text": "À quelle heure ? Demain.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -590,8 +619,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Comment mieux ? Bon, à plus tard !",
-        "wer": 0.1667
+        "text": "Qu'en mieux ? Bon, à plus tard !",
+        "wer": 0.3333,
+        "model": "medium"
       }
     },
     {
@@ -609,8 +639,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "à plus tard.",
-        "wer": 0
+        "text": "A plus tard.",
+        "wer": 0.3333,
+        "model": "medium"
       }
     },
     {
@@ -628,8 +659,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Merci, à bientôt.",
-        "wer": 0
+        "text": "Merci, à bientôt !",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -647,8 +679,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, vous allez bien !",
-        "wer": 0
+        "text": "Bonjour, vous allez bien ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -666,8 +699,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est venu !",
-        "wer": 1.5
+        "text": "C'est bon.",
+        "wer": 1.5,
+        "model": "medium"
       }
     },
     {
@@ -685,8 +719,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Merci à vous.  Bonne journée.",
-        "wer": 0
+        "text": "Merci à vous. Bonne journée.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -704,27 +739,29 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "bonjour ou désirer.",
-        "wer": 0.6667
+        "text": "Bonjour, vous désirez ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
       "clipId": "fr.clip.ix_cafe_boisson_order_cafe_b",
-      "assetKey": "846a5510798d0b184189",
+      "assetKey": "7c9068d5f7434c326448",
       "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Un café, très bien ! Ça fait deux euros. Et voilà votre boisson !",
-      "durationSec": 4.101,
-      "bytes": 33062,
+      "transcript": "Un café, très bien ! Ça fait deux euros. Et voilà votre café !",
+      "durationSec": 3.84,
+      "bytes": 30973,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 15.85,
+      "charsPerSec": 16.15,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Un café, très bien, ça fait 2 euros, et voilà votre boisson !",
-        "wer": 0.0833
+        "text": "Un café, très bien, ça fait deux euros, et voilà votre café.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -743,26 +780,28 @@
       "technicalIssues": [],
       "asr": {
         "text": "Qu'est-ce que vous voulez boire ?",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
       "clipId": "fr.clip.ix_cafe_boisson_order_the_b",
-      "assetKey": "786f5e3a046d801f9879",
+      "assetKey": "03da3a4f7c7bfda49e67",
       "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Un thé, parfait ! Ça fait deux euros. Et voilà votre boisson !",
-      "durationSec": 3.5,
-      "bytes": 28256,
+      "transcript": "Un thé, parfait ! Ça fait deux euros. Et voilà votre thé !",
+      "durationSec": 3.318,
+      "bytes": 26793,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.71,
+      "charsPerSec": 17.48,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "un T, parfait, ça fait 2€, et voilà votre boisson !",
-        "wer": 0.2727
+        "text": "Un thé, parfait, ça fait deux euros. Et voilà votre thé.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -780,8 +819,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Vous l'appuivez.",
-        "wer": 1
+        "text": "Voilà pour vous.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -799,8 +839,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "de rien si de toi.",
-        "wer": 0.5
+        "text": "De rien, si de toi.",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -818,8 +859,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bienvenue, tu veux boire quelque chose.",
-        "wer": 0
+        "text": "Bienvenue ! Tu veux boire quelque chose ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -837,8 +879,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Tu veux de l'eau, un café ?",
-        "wer": 0
+        "text": "Tu veux de l'eau ? Un café.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -856,8 +899,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ciao !",
-        "wer": 1
+        "text": "Tchao",
+        "wer": 1,
+        "model": "medium"
       }
     },
     {
@@ -875,8 +919,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "un petit café, alors, et voilà pour toi !",
-        "wer": 0
+        "text": "Un petit café, alors, et voilà pour toi !",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -895,7 +940,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Un grand verre d'eau, alors, et voilà pour toi.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -913,8 +959,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "le train paradiseur, voie-de, voilà votre billet.",
-        "wer": 0.4545
+        "text": "Le train part à 10h, voie 2. Voilà votre billet.",
+        "wer": 0.2727,
+        "model": "medium"
       }
     },
     {
@@ -932,8 +979,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "ou à te, le train par à 10h, voilà votre billet !",
-        "wer": 0.5455
+        "text": "Water, le train part à 10h, voilà votre billet.",
+        "wer": 0.3636,
+        "model": "medium"
       }
     },
     {
@@ -951,8 +999,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bon voyage !",
-        "wer": 0
+        "text": "Bon voyage.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -970,8 +1019,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "un billet pour l'huion. Très bien, ça fait 20€.",
-        "wer": 0.4
+        "text": "Un billet pour Lyon. Très bien, ça fait 20 euros.",
+        "wer": 0.1,
+        "model": "medium"
       }
     },
     {
@@ -989,8 +1039,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "20€ s'il vous plaît.",
-        "wer": 0.3333
+        "text": "20 euros, s'il vous plaît.",
+        "wer": 0.1667,
+        "model": "medium"
       }
     },
     {
@@ -1009,7 +1060,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Tenez votre billet.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1028,7 +1080,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Bonjour, vous allez où ?",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1046,8 +1099,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Vous pouvez aller ouf.",
-        "wer": 0.5
+        "text": "Vous pouvez aller ouf !",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -1065,8 +1119,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Merci, à bientôt !",
-        "wer": 0
+        "text": "Merci, à bientôt.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1084,8 +1139,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Voilà, et avec ça.",
-        "wer": 0
+        "text": "Voilà, et avec ça...",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1103,8 +1159,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "autre chose.",
-        "wer": 0
+        "text": "Autre chose.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1122,8 +1179,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Et une bouteille d'eau, ça fait 3 euros.  Voilà pour vous !",
-        "wer": 0.0833
+        "text": "Et une bouteille d'eau, ça fait 3 euros. Voilà pour vous.",
+        "wer": 0.0833,
+        "model": "medium"
       }
     },
     {
@@ -1141,8 +1199,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Toi !",
-        "wer": 1
+        "text": "Tu m'aies ?",
+        "wer": 3,
+        "model": "medium"
       }
     },
     {
@@ -1160,8 +1219,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "alors ça fait d'un euro, voilà pour vous !",
-        "wer": 0.125
+        "text": "Alors, ça fait d'un euro. Voilà pour vous.",
+        "wer": 0.125,
+        "model": "medium"
       }
     },
     {
@@ -1180,26 +1240,28 @@
       "technicalIssues": [],
       "asr": {
         "text": "Bonjour, qu'est-ce que vous voulez aujourd'hui ?",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
       "clipId": "fr.clip.ix_cp_boulangerie_want_s",
-      "assetKey": "86c057b1c17f304d3ac5",
+      "assetKey": "e7691cccf9cd637467cf",
       "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Vous voulez quoi ?",
-      "durationSec": 0.94,
-      "bytes": 7776,
+      "transcript": "Qu'est-ce que vous voulez ?",
+      "durationSec": 1.097,
+      "bytes": 9030,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 19.14,
+      "charsPerSec": 24.61,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Vous voulez croire ?",
-        "wer": 0.3333
+        "text": "Qu'est-ce que vous voulez ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1217,8 +1279,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Merci à vous.  Bonne journée.",
-        "wer": 0
+        "text": "Merci à vous. Bonne journée.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1236,8 +1299,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, qu'est-ce que je vous serre ?",
-        "wer": 0.125
+        "text": "Bonjour, qu'est-ce que je vous sers ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1255,27 +1319,29 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Un café. Tout de suite voilà !",
-        "wer": 0.1429
+        "text": "Un café.  Tout de suite, voilà.",
+        "wer": 0.1429,
+        "model": "medium"
       }
     },
     {
       "clipId": "fr.clip.ix_cp_cafe_order_s",
-      "assetKey": "4ccbe93c023c54faaccb",
+      "assetKey": "b9864569b1a5194e1ecb",
       "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Vous voulez boire quoi ?",
-      "durationSec": 1.149,
-      "bytes": 9448,
+      "transcript": "Qu'est-ce que vous voulez boire ?",
+      "durationSec": 1.411,
+      "bytes": 11537,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 20.88,
+      "charsPerSec": 23.39,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Vous voulez boire quoi ?",
-        "wer": 0
+        "text": "Qu'est-ce que vous voulez boire ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1293,8 +1359,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "A un T, très bien, voilà !",
-        "wer": 0.5
+        "text": "Un T. Très bien. Voir un T.",
+        "wer": 0.6667,
+        "model": "medium"
       }
     },
     {
@@ -1312,8 +1379,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Vous l'appuivez.",
-        "wer": 1
+        "text": "Voilà pour vous.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1331,8 +1399,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ça fait 12 euros.",
-        "wer": 0.25
+        "text": "Ça fait 2 euros.",
+        "wer": 0.25,
+        "model": "medium"
       }
     },
     {
@@ -1350,8 +1419,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "J'ai fait le run.",
-        "wer": 2.5
+        "text": "du verre",
+        "wer": 1,
+        "model": "medium"
       }
     },
     {
@@ -1370,7 +1440,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Posez-moi une question.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1388,8 +1459,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Moi, j'habite ici à Paris, à bientôt, Nadia.",
-        "wer": 0
+        "text": "Moi, j'habite ici, à Paris. À bientôt, Nadia.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1407,8 +1479,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "A, Lyon, très lowly, et vous parlez anglais.",
-        "wer": 0.25
+        "text": "Ah, Lion, très joli, et vous parlez anglais !",
+        "wer": 0.125,
+        "model": "medium"
       }
     },
     {
@@ -1426,8 +1499,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "pour parler anglais.",
-        "wer": 0.6667
+        "text": "Vous parlez anglais.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1445,8 +1519,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "alors Nadia, vous habitez-vous.",
-        "wer": 0.2
+        "text": "Alors Nadia, vous habitez où ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1464,8 +1539,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Fous habitez-vous.",
-        "wer": 0.6667
+        "text": "Vous habitez où ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1483,8 +1559,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "pas de problème. Moi, je pars français et emblès.  Voilà, vous savez tout sur mon presque.",
-        "wer": 0.2353
+        "text": "Pas de problème, moi, je parle français et anglais, voilà, vous savez tout sur mots  presque",
+        "wer": 0.1176,
+        "model": "medium"
       }
     },
     {
@@ -1502,8 +1579,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Moi, je parle anglais aussi, voilà, vous savez tout sur moi, presque.",
-        "wer": 0.0769
+        "text": "Moi, je parle anglais aussi. Voilà, vous savez tout sur moi presque.",
+        "wer": 0.0769,
+        "model": "medium"
       }
     },
     {
@@ -1522,7 +1600,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "On va au restaurant cette semaine, demain ou samedi.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1540,8 +1619,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Demain, super, alors, à quel âme ?",
-        "wer": 0.3333
+        "text": "Demain, super alors, à quelle heure ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1559,8 +1639,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Deux mois au samedi.",
-        "wer": 1
+        "text": "demain ou samedi.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1578,8 +1659,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Femme dit, parfait, alors, à quel ordre ?",
-        "wer": 0.6667
+        "text": "Ça me dit, parfait ! Alors, à quelle heure ?",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -1598,7 +1680,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Parfait, à bientôt !",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1616,8 +1699,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "cette heure. Très bien, on se retrouve !",
-        "wer": 0.4444
+        "text": "À 7 heures. Très bien. On se retrouve où ?",
+        "wer": 0.1111,
+        "model": "medium"
       }
     },
     {
@@ -1636,7 +1720,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Où ça ?",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1654,8 +1739,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "A quelle heure ?",
-        "wer": 0.3333
+        "text": "À quelle heure ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1674,7 +1760,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Au revoir.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1692,27 +1779,29 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bon, je dois partir. Allez, à bientôt !",
-        "wer": 0.2222
+        "text": "Très bien. Bon, je dois partir. Allez, à bientôt.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
       "clipId": "fr.clip.ix_cp_rencontre_doing_ok_b",
-      "assetKey": "d241a6c0c0258f8a9213",
+      "assetKey": "ec637cc1dc02886141e8",
       "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Ah, ça va seulement ? Bon, je dois partir. Allez, à bientôt !",
-      "durationSec": 4.258,
-      "bytes": 34316,
+      "transcript": "Ah, comme ci, comme ça ? Bon, je dois partir. Allez, à bientôt !",
+      "durationSec": 5.12,
+      "bytes": 41213,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 14.33,
+      "charsPerSec": 12.5,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ah, ça va seulement. Bon, je dois partir. Allez, à bientôt.",
-        "wer": 0
+        "text": "Ah, comme si, comme ça, bon, je dois partir, allez, à bientôt !",
+        "wer": 0.0833,
+        "model": "medium"
       }
     },
     {
@@ -1730,8 +1819,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonne journée !",
-        "wer": 0
+        "text": "Bonne journée!",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1749,8 +1839,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Enchanté, ne dire, vous allez bien.",
-        "wer": 0.4
+        "text": "Enchanté, Nadia. Vous allez bien.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1768,8 +1859,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est venu !",
-        "wer": 1.5
+        "text": "C'est bon.",
+        "wer": 1.5,
+        "model": "medium"
       }
     },
     {
@@ -1787,8 +1879,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, noir, c'est toi et vous, comment vous appelez-vous ?",
-        "wer": 0.1818
+        "text": "Bonjour, moi, c'est Tove, et vous ? Comment vous appelez-vous ?",
+        "wer": 0.0909,
+        "model": "medium"
       }
     },
     {
@@ -1806,8 +1899,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Comment vous vous appelez ?",
-        "wer": 0
+        "text": "Comment vous vous appelez?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1825,8 +1919,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Voilà le pan et avec ça.",
-        "wer": 0.1667
+        "text": "Voilà le pain, et avec ça.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1844,8 +1939,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "ou voulait d'autres choses.",
-        "wer": 1.25
+        "text": "Vous voulez d'autres choses ?",
+        "wer": 0.75,
+        "model": "medium"
       }
     },
     {
@@ -1863,8 +1959,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Eh bien, t'as fait un euro ! Merci ! Bonne journée !",
-        "wer": 0.3333
+        "text": "Eh bien, t'as fait d'un euro. Merci, bonne journée.",
+        "wer": 0.4444,
+        "model": "medium"
       }
     },
     {
@@ -1883,7 +1980,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Bonjour, je peux vous aider.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1901,27 +1999,29 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Et une bouteille d'eau, ça fait trois d'euros.  Merci, bonne journée !",
-        "wer": 0.0833
+        "text": "Et une bouteille d'eau, ça fait 3 euros.  Merci, bonne journée.",
+        "wer": 0.0833,
+        "model": "medium"
       }
     },
     {
       "clipId": "fr.clip.ix_magasin_courses_want_s",
-      "assetKey": "86c057b1c17f304d3ac5",
+      "assetKey": "e7691cccf9cd637467cf",
       "voiceId": "fr_FR-upmc-medium",
       "speaker": 1,
-      "transcript": "Vous voulez quoi ?",
-      "durationSec": 0.94,
-      "bytes": 7776,
+      "transcript": "Qu'est-ce que vous voulez ?",
+      "durationSec": 1.097,
+      "bytes": 9030,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 19.14,
+      "charsPerSec": 24.61,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Vous voulez croire ?",
-        "wer": 0.3333
+        "text": "Qu'est-ce que vous voulez ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1939,8 +2039,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Lui, bonjour, je peux vous aider.",
-        "wer": 0.1667
+        "text": "Oui, bonjour, je peux vous aider ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1959,7 +2060,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "ou chercher quelque chose.",
-        "wer": 0.5
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -1977,8 +2079,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "De rien ! Bonne journée !",
-        "wer": 0
+        "text": "De rien, bonne journée.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -1996,8 +2099,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "L'abdard fait tout droit, puis à gauche.",
-        "wer": 0.4444
+        "text": "La gare fait tout droit, puis à gauche.",
+        "wer": 0.2222,
+        "model": "medium"
       }
     },
     {
@@ -2015,8 +2119,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "tout droit puis à gauche.",
-        "wer": 0
+        "text": "Tout droit, puis à gauche.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2034,8 +2139,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonsoir, vous cherchez quelque chose.",
-        "wer": 0
+        "text": "Bonsoir, vous cherchez quelque chose ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2054,7 +2160,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Je peux vous aider.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2072,8 +2179,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Je vous en prie, bonne soirée !",
-        "wer": 0
+        "text": "Je vous en prie, bonne soirée.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2091,8 +2199,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "au telle et là-bas à droite, c'est à deux minutes.",
-        "wer": 0.25
+        "text": "Hôtel est là-bas, à droite, 7 à 2 minutes.",
+        "wer": 0.3333,
+        "model": "medium"
       }
     },
     {
@@ -2110,8 +2219,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "la boîte c'est tout prêt",
-        "wer": 0.5
+        "text": "À droite, c'est tout prêt.",
+        "wer": 0.1667,
+        "model": "medium"
       }
     },
     {
@@ -2129,8 +2239,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ce n'est pas grave, une autre fois, peut-être.",
-        "wer": 0
+        "text": "Ce n'est pas grave. Une autre fois, peut-être.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2148,8 +2259,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Enchanté, l'air vous habitez ici.",
-        "wer": 0.4
+        "text": "Enchanté, Léa, vous habitez d'ici ?",
+        "wer": 0.2,
+        "model": "medium"
       }
     },
     {
@@ -2168,7 +2280,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Vous habitez ici ?",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2186,8 +2299,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonjour, je m'appelle Marc, et vous !",
-        "wer": 0
+        "text": "Bonjour, je m'appelle Marc, et vous ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2205,8 +2319,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Moi, c'est NARTE ! Yévo !",
-        "wer": 0.5
+        "text": "Moi, c'est Marc, et vous ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2224,8 +2339,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "D'accord, bienvenue ici.  Alors, on revoit les A.",
-        "wer": 0.5556
+        "text": "1, d'accord, bienvenue ici, alors, on revoit, Léa.",
+        "wer": 0.3333,
+        "model": "medium"
       }
     },
     {
@@ -2243,8 +2359,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Super, moi aussi, j'habite ici, au revoir, lien.",
-        "wer": 0.1111
+        "text": "Super. Moi aussi, j'habite ici. Au revoir, lien.",
+        "wer": 0.1111,
+        "model": "medium"
       }
     },
     {
@@ -2262,8 +2379,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "super, adonement, alors",
-        "wer": 0.5
+        "text": "Super, à demain, alors...",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2281,8 +2399,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "à 10h, parfait, on se voit où.",
-        "wer": 0.25
+        "text": "À 10 heures. Parfait, on se voit où ?",
+        "wer": 0.125,
+        "model": "medium"
       }
     },
     {
@@ -2301,7 +2420,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Où ça ?",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2319,8 +2439,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "On va au café demain, à quel heure ?",
-        "wer": 0.125
+        "text": "On va au café demain, à quelle heure ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2338,8 +2459,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Demain, à quel heure ?",
-        "wer": 0.25
+        "text": "Demain, à quelle heure ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2357,8 +2479,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Super, bon, je dois partir au revoir.",
-        "wer": 0
+        "text": "Super. Bon, je dois partir. Au revoir.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2377,7 +2500,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Au revoir.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2395,8 +2519,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "À la dien tout.",
-        "wer": 1.5
+        "text": "A bientôt.",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -2414,8 +2539,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Salut, 120 !",
-        "wer": 0.6667
+        "text": "Salut, Saint-Vin.",
+        "wer": 0.6667,
+        "model": "medium"
       }
     },
     {
@@ -2433,8 +2559,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Salut ! Tu vas bien !",
-        "wer": 0
+        "text": "Salut, tu vas bien ?",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2452,8 +2579,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train para-diseur, voire une.",
-        "wer": 0.625
+        "text": "Le train paradiseur, voire une.",
+        "wer": 0.625,
+        "model": "medium"
       }
     },
     {
@@ -2471,8 +2599,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le lait.",
-        "wer": 0
+        "text": "Le Lai",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -2490,8 +2619,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Bonsoir, madame !",
-        "wer": 0
+        "text": "Bonsoir madame.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2509,8 +2639,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "le café",
-        "wer": 0
+        "text": "Le café",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2528,8 +2659,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "bonjour",
-        "wer": 0
+        "text": "Bonjour",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2547,8 +2679,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le lait.",
-        "wer": 0
+        "text": "Le Lai",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -2567,7 +2700,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "le train",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2585,8 +2719,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "L'eau.",
-        "wer": 0
+        "text": "l'eau",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2604,8 +2739,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "La gare.",
-        "wer": 0
+        "text": "la gare",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2623,8 +2759,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "le matin.",
-        "wer": 0
+        "text": "Le matin",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2643,7 +2780,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Merci beaucoup, monsieur.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2661,8 +2799,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le pain.",
-        "wer": 0
+        "text": "Le pain",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2681,7 +2820,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Le café est ouvert le soir.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2700,7 +2840,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "le train",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2719,7 +2860,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Attention, le départ est voie 3.",
-        "wer": 0.1667
+        "wer": 0.1667,
+        "model": "medium"
       }
     },
     {
@@ -2738,7 +2880,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Le magasin est fermé.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2757,7 +2900,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Le magasin ferme dans 10 minutes.",
-        "wer": 0.1667
+        "wer": 0.1667,
+        "model": "medium"
       }
     },
     {
@@ -2775,8 +2919,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le musée ouvra 10 heures le dimanche.",
-        "wer": 0.375
+        "text": "Le musée ouvre à 10h le dimanche.",
+        "wer": 0.25,
+        "model": "medium"
       }
     },
     {
@@ -2795,7 +2940,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "La sortie est à droite, après la porte.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2813,8 +2959,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le billet coûte 16€.",
-        "wer": 0.4
+        "text": "Le billet coûte 16 euros.",
+        "wer": 0.2,
+        "model": "medium"
       }
     },
     {
@@ -2833,7 +2980,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Votre table est à gauche, près de l'entrée.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2851,8 +2999,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le train pour lui en part à neuf heures, voie deux.",
-        "wer": 0.2
+        "text": "Le train pour Lyon part à 9 heures, voie 2.",
+        "wer": 0.2,
+        "model": "medium"
       }
     },
     {
@@ -2870,8 +3019,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Je vous rédupe un, s'il vous plait.  Voilà, ça fait deux euros.",
-        "wer": 0.3077
+        "text": "Je voudrais du pain, s'il vous plaît.  Voilà, ça fait deux euros.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2889,27 +3039,29 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Un billet pour Paris, si vous plaît.  Le train part à huit heures, voie deux.",
-        "wer": 0.125
+        "text": "Un billet pour Paris, s'il vous plaît.  Le train part à 8 heures, voie 2.",
+        "wer": 0.125,
+        "model": "medium"
       }
     },
     {
       "clipId": "fr.clip.ui_cafe_commande",
-      "assetKey": "411536e0fb98574ed936",
+      "assetKey": "0dc39b0688bd4633d05d",
       "voiceId": "mixed",
       "speaker": null,
-      "transcript": "Bonjour, un café et un jus, s'il vous plaît. Bien sûr. Ça fait cinq euros.",
-      "durationSec": 5.512,
-      "bytes": 44347,
+      "transcript": "Bonjour, un café et un jus d'orange, s'il vous plaît. Bien sûr. Ça fait cinq euros.",
+      "durationSec": 6.034,
+      "bytes": 48527,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 13.43,
+      "charsPerSec": 13.75,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "bonjour, un café et un jus, s'il vous plaît.  Bien sûr, ça fait 5 euros.",
-        "wer": 0.0625
+        "text": "Bonjour, un café et un jus d'orange, s'il vous plaît.  Bien sûr, ça fait 5 euros.",
+        "wer": 0.0556,
+        "model": "medium"
       }
     },
     {
@@ -2927,8 +3079,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le départ est à quel heure ?  A cette heure, ma dame.",
-        "wer": 0.6
+        "text": "Le départ est à quelle heure ?  À 7 heures madame.",
+        "wer": 0.1,
+        "model": "medium"
       }
     },
     {
@@ -2946,8 +3099,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Pardon ? Où est la gare ?  La gare est à droite après le musée.",
-        "wer": 0
+        "text": "Pardon, où est la gare ?  La gare est à droite, après le musée.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2966,7 +3120,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Bonsoir, une table pour deux, s'il vous plaît.  Bien sûr, la table près de la porte.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -2984,8 +3139,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Le matin, la plage est calme, le soir, il y a de la musique.",
-        "wer": 0
+        "text": "Le matin, la plage est calme. Le soir, il y a de la musique.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3003,8 +3159,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Sam dit, nous achetons du fromage et du pain en magasin.",
-        "wer": 0.3
+        "text": "Samedi, nous achetons du fromage et du pain en magasin.",
+        "wer": 0.1,
+        "model": "medium"
       }
     },
     {
@@ -3023,7 +3180,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Je travaille le matin, l'après-midi, je vais à la bibliothèque.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3042,7 +3200,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Au revoir.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3061,7 +3220,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Merci beaucoup.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3079,8 +3239,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ardome.",
-        "wer": 1
+        "text": "Ardum",
+        "wer": 1,
+        "model": "medium"
       }
     },
     {
@@ -3098,8 +3259,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "s'il vous plait.",
-        "wer": 0.25
+        "text": "S'il vous plaît.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3118,7 +3280,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "J'aime le café.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3137,7 +3300,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "J'habite à Paris.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3156,7 +3320,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Je parle français.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3175,7 +3340,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Je suis à l'hôtel.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3194,7 +3360,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Je travaille le matin.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3213,7 +3380,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Je vais à la gare.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3231,8 +3399,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Ça coûte 3 euros.",
-        "wer": 0.25
+        "text": "Ça coûte 3€",
+        "wer": 0.5,
+        "model": "medium"
       }
     },
     {
@@ -3251,7 +3420,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Il y a deux chats.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3269,8 +3439,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Il y a 7 jours dans une semaine.",
-        "wer": 0.125
+        "text": "Il y a sept jours dans une semaine.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3288,8 +3459,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "le train para neuf heures",
-        "wer": 0.3333
+        "text": "Le train part à 9 heures.",
+        "wer": 0.1667,
+        "model": "medium"
       }
     },
     {
@@ -3307,8 +3479,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "C'est en chien.",
-        "wer": 0.25
+        "text": "C'est un chien.",
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3326,8 +3499,9 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Et la gare.",
-        "wer": 0.5
+        "text": "Elle agarre.",
+        "wer": 1,
+        "model": "medium"
       }
     },
     {
@@ -3346,7 +3520,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "C'est le matin.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3365,7 +3540,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "Le magasin est ouvert.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     },
     {
@@ -3384,7 +3560,8 @@
       "technicalIssues": [],
       "asr": {
         "text": "La porte est fermée.",
-        "wer": 0
+        "wer": 0,
+        "model": "medium"
       }
     }
   ]
