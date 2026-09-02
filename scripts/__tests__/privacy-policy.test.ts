@@ -73,6 +73,17 @@ describe("privacy policy source and Markdown", () => {
     expect(policyText).toMatch(/no advertising/);
   });
 
+  test("the in-app network-speech disclosure states the same boundary (§42, §74)", () => {
+    const source = readFileSync("src/lib/speech/step-policy.ts", "utf8");
+    const start = source.indexOf("NETWORK_DISCLOSURE_TEXT =");
+    const text = source.slice(start, source.indexOf(";", start));
+    expect(text).toMatch(/device's system service/);
+    expect(text).toMatch(/may use the internet/);
+    expect(text).toMatch(/never uploads or stores your recording/);
+    expect(text).toMatch(/skip speaking/);
+    for (const pattern of OFFLINE_PROMISES) expect(text).not.toMatch(pattern);
+  });
+
   test("no learner-facing app string makes an over-broad offline promise", () => {
     for (const file of [...sourceFiles("src/app"), ...sourceFiles("src/components"), ...sourceFiles("src/lib")]) {
       // The policy source necessarily names the promises it refuses to make.

@@ -87,6 +87,42 @@ function slotMatched(answerTokens: string[], slot: WritingSlot): boolean {
   );
 }
 
+/** Every [start, end) run where `needle` occurs in `haystack`. */
+function runSpans(haystack: string[], needle: string[]): [number, number][] {
+  const spans: [number, number][] = [];
+  if (needle.length === 0) return spans;
+  outer: for (let i = 0; i + needle.length <= haystack.length; i++) {
+    for (let j = 0; j < needle.length; j++) {
+      if (haystack[i + j] !== needle[j]) continue outer;
+    }
+    spans.push([i, i + needle.length]);
+  }
+  return spans;
+}
+
+/**
+ * How many DISTINCT places the answer realizes one slot (Phase 10 §27):
+ * overlapping variant matches ("moi je suis Léa" hitting two variants at
+ * once) count once; "je m'appelle Léa … je suis Léa" counts twice. Writing
+ * every variant you can think of is keyword stuffing, not an answer.
+ */
+function slotRealizations(answerTokens: string[], slot: WritingSlot): number {
+  const spans = slot.variants
+    .flatMap((variant) => runSpans(answerTokens, tokensOf(normalizeWrittenFrench(variant))))
+    .sort((a, b) => a[0] - b[0]);
+  let count = 0;
+  let end = -1;
+  for (const [start, stop] of spans) {
+    if (start >= end) {
+      count += 1;
+      end = stop;
+    } else if (stop > end) {
+      end = stop;
+    }
+  }
+  return count;
+}
+
 /** The insufficiently-scorable floor: below this share we refuse to judge. */
 export const FRENCH_SHARE_FLOOR = 0.5;
 
@@ -97,6 +133,12 @@ export function evaluateGuidedWriting(input: {
   promptText: string;
   /** Compiled known-French token vocabulary (fr-writing artifact). */
   knownFrench: ReadonlySet<string>;
+  /**
+   * Task mode (default "guided"). Open practice rubrics carry MENU slots —
+   * "any sentence about you" satisfied by several different starters — so
+   * realizing several of them is the point, never keyword stuffing.
+   */
+  mode?: "guided" | "open";
 }): WritingEvaluation {
   const { rubric } = input;
   const normalized = normalizeWrittenFrench(input.text);
@@ -189,6 +231,23 @@ export function evaluateGuidedWriting(input: {
     } else {
       feedback.push(`Don't forget: ${missing.map((m) => m.description).join(", ")}.`);
     }
+  }
+
+  // 7. Keyword stuffing (Phase 10 §27): a slot with several authored
+  //    phrasings realized in several separate places is a list of guesses,
+  //    not one answer. Single-phrasing slots (a name, "demain") are exempt:
+  //    repeating one fact ("… demain à dix heures. À demain !") is not a
+  //    list of alternatives.
+  const stuffed =
+    (input.mode ?? "guided") === "guided"
+      ? matched.filter(
+          (s) => s.variants.length >= 2 && slotRealizations(answerTokens, s) >= 2
+        )
+      : [];
+  if (stuffed.length > 0) {
+    feedback.push(
+      `Say ${stuffed.map((s) => s.description).join(" and ")} once — one clear sentence is enough.`
+    );
   }
 
   if (feedback.length > 0) {

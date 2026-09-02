@@ -229,7 +229,13 @@
    },
    "target": "Pardon",
    "acceptedVariants": [
-    "Pardon"
+    "Pardon",
+    "Excusez-moi",
+    "Pardon, madame",
+    "Pardon, monsieur",
+    "Oh, pardon",
+    "Désolé",
+    "Désolée"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.formulaic"
@@ -410,7 +416,9 @@
    },
    "target": "J'aime le café",
    "acceptedVariants": [
-    "J'aime le café"
+    "J'aime le café",
+    "J'adore le café",
+    "J'aime bien le café"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.self_intro"
@@ -624,7 +632,10 @@
    },
    "target": "Ça coûte trois euros",
    "acceptedVariants": [
-    "Ça coûte trois euros"
+    "Ça coûte trois euros",
+    "Ça fait trois euros",
+    "C'est trois euros",
+    "Trois euros"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.give_info"
@@ -647,7 +658,9 @@
    "sourceRef": "original-project",
    "requiredConcepts": [
     [
-     "coûte"
+     "coûte",
+     "ça fait",
+     "c'est"
     ],
     [
      "trois",
@@ -674,7 +687,11 @@
    },
    "target": "Le train part à neuf heures",
    "acceptedVariants": [
-    "Le train part à neuf heures"
+    "Le train part à neuf heures",
+    "Il part à neuf heures",
+    "À neuf heures",
+    "Le train est à neuf heures",
+    "Le départ est à neuf heures"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.give_info"
@@ -726,7 +743,9 @@
    "target": "Il y a sept jours dans une semaine",
    "acceptedVariants": [
     "Il y a sept jours dans une semaine",
-    "Il y a sept jours"
+    "Il y a sept jours",
+    "Une semaine a sept jours",
+    "Une semaine, c'est sept jours"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.give_info"
@@ -833,7 +852,9 @@
    "target": "C'est la gare",
    "acceptedVariants": [
     "C'est la gare",
-    "C'est une gare"
+    "C'est une gare",
+    "La gare",
+    "Une gare"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.describe"
@@ -860,7 +881,7 @@
    "taskFamily": "description",
    "elicitationType": "picture_prompt",
    "prompt": {
-    "instruction": "Describe the door.",
+    "instruction": "Say that the door is closed.",
     "cueEmoji": "🚪🔒"
    },
    "target": "La porte est fermée",
@@ -1085,7 +1106,9 @@
    },
    "target": "J'aime le thé",
    "acceptedVariants": [
-    "J'aime le thé"
+    "J'aime le thé",
+    "J'adore le thé",
+    "J'aime bien le thé"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.self_intro"
@@ -1200,7 +1223,10 @@
    },
    "target": "Ça coûte cinq euros",
    "acceptedVariants": [
-    "Ça coûte cinq euros"
+    "Ça coûte cinq euros",
+    "Ça fait cinq euros",
+    "C'est cinq euros",
+    "Cinq euros"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.give_info"
@@ -1221,7 +1247,9 @@
    "sourceRef": "original-project",
    "requiredConcepts": [
     [
-     "coûte"
+     "coûte",
+     "ça fait",
+     "c'est"
     ],
     [
      "cinq",
@@ -1248,7 +1276,11 @@
    },
    "target": "Le train part à dix heures",
    "acceptedVariants": [
-    "Le train part à dix heures"
+    "Le train part à dix heures",
+    "Il part à dix heures",
+    "À dix heures",
+    "Le train est à dix heures",
+    "Le départ est à dix heures"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.give_info"
@@ -1443,7 +1475,11 @@
    },
    "target": "Au revoir",
    "acceptedVariants": [
-    "Au revoir"
+    "Au revoir",
+    "Salut",
+    "À bientôt",
+    "Au revoir, à bientôt",
+    "À plus"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.formulaic"
@@ -1527,7 +1563,10 @@
    },
    "target": "Ça coûte sept euros",
    "acceptedVariants": [
-    "Ça coûte sept euros"
+    "Ça coûte sept euros",
+    "Ça fait sept euros",
+    "C'est sept euros",
+    "Sept euros"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.give_info"
@@ -1548,7 +1587,9 @@
    "sourceRef": "original-project",
    "requiredConcepts": [
     [
-     "coûte"
+     "coûte",
+     "ça fait",
+     "c'est"
     ],
     [
      "sept",
@@ -1575,7 +1616,11 @@
    },
    "target": "Le train part à huit heures",
    "acceptedVariants": [
-    "Le train part à huit heures"
+    "Le train part à huit heures",
+    "Il part à huit heures",
+    "À huit heures",
+    "Le train est à huit heures",
+    "Le départ est à huit heures"
    ],
    "objectiveRefs": [
     "fr.obj.speaking.give_info"

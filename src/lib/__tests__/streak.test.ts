@@ -50,7 +50,15 @@ describe("UTC→local grandfathering", () => {
     const utcYesterday = utcDayString(new Date(now.getTime() - 86_400_000));
     const localYesterday = dayString(addDays(now, -1));
     expect(grandfatherLastActiveDay(utcYesterday, now)).toBe(localYesterday);
-    expect(grandfatherLastActiveDay(localYesterday, now)).toBe(localYesterday);
+    // Stored v0 days were written under UTC semantics, so a stored value is
+    // read as a UTC day first. Far east of UTC (e.g. UTC+14 at 10:00 local)
+    // the UTC-today string IS the local-yesterday string; the UTC reading
+    // wins and maps to local-today — the learner keeps the streak either
+    // way and is never double-credited (Phase 10 extreme-timezone lane).
+    const ambiguous = localYesterday === utcDayString(now);
+    expect(grandfatherLastActiveDay(localYesterday, now)).toBe(
+      ambiguous ? dayString(now) : localYesterday
+    );
   });
 
   test("lapsed and null values are untouched", () => {

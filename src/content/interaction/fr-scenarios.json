@@ -60,14 +60,19 @@
                 "Ça va bien, merci !",
                 "Bonjour, ça va bien, merci !",
                 "Ça va bien !",
-                "Je vais bien, merci !"
+                "Je vais bien, merci !",
+                "Bien, merci !",
+                "Oui, ça va bien !"
               ],
               "requiredConcepts": [
                 [
                   "ça va bien",
                   "je vais bien",
                   "ça va très bien",
-                  "très bien merci"
+                  "très bien merci",
+                  "bien merci",
+                  "oui ça va",
+                  "je vais très bien"
                 ]
               ],
               "next": "p_bye"
@@ -95,14 +100,19 @@
                 "Ça va bien, merci !",
                 "Bonjour, ça va bien, merci !",
                 "Ça va bien !",
-                "Je vais bien, merci !"
+                "Je vais bien, merci !",
+                "Bien, merci !",
+                "Oui, ça va bien !"
               ],
               "requiredConcepts": [
                 [
                   "ça va bien",
                   "je vais bien",
                   "ça va très bien",
-                  "très bien merci"
+                  "très bien merci",
+                  "bien merci",
+                  "oui ça va",
+                  "je vais très bien"
                 ]
               ],
               "next": "p_bye"
@@ -131,14 +141,17 @@
                 "Au revoir !",
                 "Au revoir, bonne journée !",
                 "À bientôt !",
-                "Salut !"
+                "Salut !",
+                "À plus !"
               ],
               "requiredConcepts": [
                 [
                   "au revoir",
                   "à bientôt",
                   "bonne journée",
-                  "salut"
+                  "salut",
+                  "à plus",
+                  "à plus tard"
                 ]
               ],
               "next": "t_ok"
@@ -165,14 +178,17 @@
                 "Au revoir !",
                 "Au revoir, bonne journée !",
                 "À bientôt !",
-                "Salut !"
+                "Salut !",
+                "À plus !"
               ],
               "requiredConcepts": [
                 [
                   "au revoir",
                   "à bientôt",
                   "bonne journée",
-                  "salut"
+                  "salut",
+                  "à plus",
+                  "à plus tard"
                 ]
               ],
               "next": "t_ok"
@@ -709,11 +725,13 @@
               "intent": "thats_all",
               "acceptedVariants": [
                 "C'est tout, merci.",
-                "C'est tout !"
+                "C'est tout !",
+                "Non, merci."
               ],
               "requiredConcepts": [
                 [
-                  "c'est tout"
+                  "c'est tout",
+                  "non merci"
                 ]
               ],
               "next": "t_thats_all"
@@ -753,11 +771,13 @@
               "intent": "thats_all",
               "acceptedVariants": [
                 "C'est tout, merci.",
-                "C'est tout !"
+                "C'est tout !",
+                "Non, merci."
               ],
               "requiredConcepts": [
                 [
-                  "c'est tout"
+                  "c'est tout",
+                  "non merci"
                 ]
               ],
               "next": "t_thats_all"
@@ -810,13 +830,18 @@
                 "Où est la gare, s'il vous plaît ?",
                 "Excusez-moi, où est la gare ?",
                 "Pardon, où est la gare ?",
-                "Je cherche la gare."
+                "Je cherche la gare.",
+                "La gare, c'est où ?",
+                "Pour aller à la gare, s'il vous plaît ?"
               ],
               "requiredConcepts": [
                 [
                   "où est la gare",
                   "je cherche la gare",
-                  "la gare s'il vous plaît"
+                  "la gare s'il vous plaît",
+                  "la gare c'est où",
+                  "où se trouve la gare",
+                  "pour aller à la gare"
                 ]
               ],
               "next": "p_thanks"
@@ -843,13 +868,18 @@
                 "Où est la gare, s'il vous plaît ?",
                 "Excusez-moi, où est la gare ?",
                 "Pardon, où est la gare ?",
-                "Je cherche la gare."
+                "Je cherche la gare.",
+                "La gare, c'est où ?",
+                "Pour aller à la gare, s'il vous plaît ?"
               ],
               "requiredConcepts": [
                 [
                   "où est la gare",
                   "je cherche la gare",
-                  "la gare s'il vous plaît"
+                  "la gare s'il vous plaît",
+                  "la gare c'est où",
+                  "où se trouve la gare",
+                  "pour aller à la gare"
                 ]
               ],
               "next": "p_thanks"
@@ -970,13 +1000,18 @@
               "acceptedVariants": [
                 "Où est l'hôtel, s'il vous plaît ?",
                 "Excusez-moi, où est l'hôtel ?",
-                "Je cherche l'hôtel."
+                "Je cherche l'hôtel.",
+                "L'hôtel, c'est où ?",
+                "Pour aller à l'hôtel, s'il vous plaît ?"
               ],
               "requiredConcepts": [
                 [
                   "où est l'hôtel",
                   "je cherche l'hôtel",
-                  "l'hôtel s'il vous plaît"
+                  "l'hôtel s'il vous plaît",
+                  "l'hôtel c'est où",
+                  "où se trouve l'hôtel",
+                  "pour aller à l'hôtel"
                 ]
               ],
               "next": "p_thanks"
@@ -1002,13 +1037,18 @@
               "acceptedVariants": [
                 "Où est l'hôtel, s'il vous plaît ?",
                 "Excusez-moi, où est l'hôtel ?",
-                "Je cherche l'hôtel."
+                "Je cherche l'hôtel.",
+                "L'hôtel, c'est où ?",
+                "Pour aller à l'hôtel, s'il vous plaît ?"
               ],
               "requiredConcepts": [
                 [
                   "où est l'hôtel",
                   "je cherche l'hôtel",
-                  "l'hôtel s'il vous plaît"
+                  "l'hôtel s'il vous plaît",
+                  "l'hôtel c'est où",
+                  "où se trouve l'hôtel",
+                  "pour aller à l'hôtel"
                 ]
               ],
               "next": "p_thanks"
@@ -1564,14 +1604,17 @@
               "acceptedVariants": [
                 "Je vais très bien, merci !",
                 "Ça va bien, merci !",
-                "Très bien, merci !"
+                "Très bien, merci !",
+                "Bien, merci !"
               ],
               "requiredConcepts": [
                 [
                   "ça va bien",
                   "je vais bien",
                   "très bien",
-                  "je vais très bien"
+                  "je vais très bien",
+                  "bien merci",
+                  "ça va très bien"
                 ]
               ],
               "next": "b_how_doing_fine"
@@ -1613,14 +1656,17 @@
               "acceptedVariants": [
                 "Je vais très bien, merci !",
                 "Ça va bien, merci !",
-                "Très bien, merci !"
+                "Très bien, merci !",
+                "Bien, merci !"
               ],
               "requiredConcepts": [
                 [
                   "ça va bien",
                   "je vais bien",
                   "très bien",
-                  "je vais très bien"
+                  "je vais très bien",
+                  "bien merci",
+                  "ça va très bien"
                 ]
               ],
               "next": "b_how_doing_fine"
@@ -2092,19 +2138,6 @@
           "prompt": "Say that's all — or ask for some water too.",
           "expected": [
             {
-              "intent": "thats_all",
-              "acceptedVariants": [
-                "C'est tout, merci.",
-                "C'est tout !"
-              ],
-              "requiredConcepts": [
-                [
-                  "c'est tout"
-                ]
-              ],
-              "next": "b_more_thats_all"
-            },
-            {
               "intent": "more_water",
               "acceptedVariants": [
                 "De l'eau, s'il vous plaît.",
@@ -2117,6 +2150,21 @@
                 ]
               ],
               "next": "b_more_more_water"
+            },
+            {
+              "intent": "thats_all",
+              "acceptedVariants": [
+                "C'est tout, merci.",
+                "C'est tout !",
+                "Non, merci."
+              ],
+              "requiredConcepts": [
+                [
+                  "c'est tout",
+                  "non merci"
+                ]
+              ],
+              "next": "b_more_thats_all"
             }
           ],
           "noMatchNext": "r_more",
@@ -2135,19 +2183,6 @@
           "prompt": "Say that's all — or ask for some water too.",
           "expected": [
             {
-              "intent": "thats_all",
-              "acceptedVariants": [
-                "C'est tout, merci.",
-                "C'est tout !"
-              ],
-              "requiredConcepts": [
-                [
-                  "c'est tout"
-                ]
-              ],
-              "next": "b_more_thats_all"
-            },
-            {
               "intent": "more_water",
               "acceptedVariants": [
                 "De l'eau, s'il vous plaît.",
@@ -2160,6 +2195,21 @@
                 ]
               ],
               "next": "b_more_more_water"
+            },
+            {
+              "intent": "thats_all",
+              "acceptedVariants": [
+                "C'est tout, merci.",
+                "C'est tout !",
+                "Non, merci."
+              ],
+              "requiredConcepts": [
+                [
+                  "c'est tout",
+                  "non merci"
+                ]
+              ],
+              "next": "b_more_thats_all"
             }
           ],
           "noMatchNext": "t_miss",
@@ -2882,11 +2932,13 @@
               "intent": "ask_track",
               "acceptedVariants": [
                 "C'est quelle voie ?",
-                "Quelle voie, s'il vous plaît ?"
+                "Quelle voie, s'il vous plaît ?",
+                "C'est quel quai ?"
               ],
               "requiredConcepts": [
                 [
-                  "quelle voie"
+                  "quelle voie",
+                  "quel quai"
                 ]
               ],
               "next": "b_question_ask_track"
@@ -2926,11 +2978,13 @@
               "intent": "ask_track",
               "acceptedVariants": [
                 "C'est quelle voie ?",
-                "Quelle voie, s'il vous plaît ?"
+                "Quelle voie, s'il vous plaît ?",
+                "C'est quel quai ?"
               ],
               "requiredConcepts": [
                 [
-                  "quelle voie"
+                  "quelle voie",
+                  "quel quai"
                 ]
               ],
               "next": "b_question_ask_track"
@@ -3042,13 +3096,17 @@
               "acceptedVariants": [
                 "Ça va bien, merci !",
                 "Très bien, merci !",
-                "Je vais bien, merci !"
+                "Je vais bien, merci !",
+                "Bien, merci !"
               ],
               "requiredConcepts": [
                 [
                   "ça va bien",
                   "très bien",
-                  "je vais bien"
+                  "je vais bien",
+                  "bien merci",
+                  "ça va très bien",
+                  "je vais très bien"
                 ]
               ],
               "next": "p_bye"
@@ -3074,13 +3132,17 @@
               "acceptedVariants": [
                 "Ça va bien, merci !",
                 "Très bien, merci !",
-                "Je vais bien, merci !"
+                "Je vais bien, merci !",
+                "Bien, merci !"
               ],
               "requiredConcepts": [
                 [
                   "ça va bien",
                   "très bien",
-                  "je vais bien"
+                  "je vais bien",
+                  "bien merci",
+                  "ça va très bien",
+                  "je vais très bien"
                 ]
               ],
               "next": "p_bye"

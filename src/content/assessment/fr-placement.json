@@ -536,7 +536,7 @@
                     "text": "At eight o'clock"
                   },
                   {
-                    "text": "At twenty o'clock"
+                    "text": "At eight in the evening"
                   },
                   {
                     "text": "At ten o'clock"
@@ -718,7 +718,11 @@
                 "instruction": "Your friend's bus is leaving and they wave at you. Say goodbye.",
                 "target": "Au revoir",
                 "acceptedVariants": [
-                  "Au revoir"
+                  "Au revoir",
+                  "Salut",
+                  "À bientôt",
+                  "Au revoir, à bientôt",
+                  "À plus"
                 ],
                 "evidenceLexemeRefs": [],
                 "revealTargetAfterAttempts": null,
@@ -795,11 +799,16 @@
                 ],
                 "target": "Ça coûte sept euros",
                 "acceptedVariants": [
-                  "Ça coûte sept euros"
+                  "Ça coûte sept euros",
+                  "Ça fait sept euros",
+                  "C'est sept euros",
+                  "Sept euros"
                 ],
                 "requiredConcepts": [
                   [
-                    "coûte"
+                    "coûte",
+                    "ça fait",
+                    "c'est"
                   ],
                   [
                     "sept",
@@ -836,7 +845,11 @@
                 ],
                 "target": "Le train part à huit heures",
                 "acceptedVariants": [
-                  "Le train part à huit heures"
+                  "Le train part à huit heures",
+                  "Il part à huit heures",
+                  "À huit heures",
+                  "Le train est à huit heures",
+                  "Le départ est à huit heures"
                 ],
                 "requiredConcepts": [
                   [

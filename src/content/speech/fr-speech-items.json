@@ -238,7 +238,13 @@
       },
       "target": "Pardon",
       "acceptedVariants": [
-        "Pardon"
+        "Pardon",
+        "Excusez-moi",
+        "Pardon, madame",
+        "Pardon, monsieur",
+        "Oh, pardon",
+        "Désolé",
+        "Désolée"
       ],
       "objectiveRefs": [
         "fr.obj.speaking.formulaic"
@@ -401,7 +407,9 @@
       },
       "target": "J'aime le café",
       "acceptedVariants": [
-        "J'aime le café"
+        "J'aime le café",
+        "J'adore le café",
+        "J'aime bien le café"
       ],
       "objectiveRefs": [
         "fr.obj.speaking.self_intro"
@@ -597,11 +605,16 @@
       },
       "target": "Ça coûte trois euros",
       "acceptedVariants": [
-        "Ça coûte trois euros"
+        "Ça coûte trois euros",
+        "Ça fait trois euros",
+        "C'est trois euros",
+        "Trois euros"
       ],
       "requiredConcepts": [
         [
-          "coûte"
+          "coûte",
+          "ça fait",
+          "c'est"
         ],
         [
           "trois",
@@ -644,7 +657,11 @@
       },
       "target": "Le train part à neuf heures",
       "acceptedVariants": [
-        "Le train part à neuf heures"
+        "Le train part à neuf heures",
+        "Il part à neuf heures",
+        "À neuf heures",
+        "Le train est à neuf heures",
+        "Le départ est à neuf heures"
       ],
       "requiredConcepts": [
         [
@@ -693,7 +710,9 @@
       "target": "Il y a sept jours dans une semaine",
       "acceptedVariants": [
         "Il y a sept jours dans une semaine",
-        "Il y a sept jours"
+        "Il y a sept jours",
+        "Une semaine a sept jours",
+        "Une semaine, c'est sept jours"
       ],
       "requiredConcepts": [
         [
@@ -791,7 +810,9 @@
       "target": "C'est la gare",
       "acceptedVariants": [
         "C'est la gare",
-        "C'est une gare"
+        "C'est une gare",
+        "La gare",
+        "Une gare"
       ],
       "objectiveRefs": [
         "fr.obj.speaking.describe"
@@ -815,7 +836,7 @@
       "taskFamily": "description",
       "elicitationType": "picture_prompt",
       "prompt": {
-        "instruction": "Describe the door.",
+        "instruction": "Say that the door is closed.",
         "cueEmoji": "🚪🔒"
       },
       "target": "La porte est fermée",
