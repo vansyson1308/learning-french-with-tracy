@@ -1,0 +1,22 @@
+name: French correction
+description: A French sentence, translation, rule or accepted answer looks wrong.
+labels: ["content"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where (section, unit, lesson or exercise text)
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What the app shows or accepts
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: What it should be, and why
+    validations:
+      required: true

@@ -1,0 +1,125 @@
+# Part X — direct Android distribution through GitHub Releases (optional).
+#
+# Dispatch-only. Builds the release APK from a tagged commit, signs it with
+# the OWNER-CONTROLLED long-lived key held in repository secrets (never a
+# key generated on a runner, never a file in the tree), records its
+# SHA-256, and attaches APK + checksum to the GitHub Release for that tag.
+#
+# Refuses to run when:
+#   - the release identity is not confirmed (release/identity.json), so an
+#     APK can never ship under the inherited upstream package name;
+#   - the signing secrets are absent (no silent fall-back to the debug key);
+#   - the ref is not a v* tag (a release must be a ledgered RC/final commit).
+#
+# Secrets (set by the owner in Settings → Secrets → Actions):
+#   ANDROID_RELEASE_KEYSTORE_BASE64  base64 of the .jks/.keystore file
+#   ANDROID_RELEASE_KEYSTORE_PASSWORD
+#   ANDROID_RELEASE_KEY_ALIAS
+#   ANDROID_RELEASE_KEY_PASSWORD
+name: Android direct APK (GitHub Release)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to build and publish (e.g. v1.0.0-rc.1); must exist"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-direct-apk
+  cancel-in-progress: false
+
+jobs:
+  apk:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TAG: ${{ inputs.tag }}
+    steps:
+      - name: Refuse anything but a version tag
+        run: |
+          set -euo pipefail
+          case "$TAG" in v[0-9]*) ;; *) echo "tag must look like v1.0.0 or v1.0.0-rc.N"; exit 1;; esac
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+      - name: Refuse an unconfirmed identity or missing signing secrets
+        env:
+          KS_B64: ${{ secrets.ANDROID_RELEASE_KEYSTORE_BASE64 }}
+          KS_PASS: ${{ secrets.ANDROID_RELEASE_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_RELEASE_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.ANDROID_RELEASE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          STATUS=$(python3 -c "import json;print(json.load(open('release/identity.json'))['ownership']['status'])")
+          PACKAGE=$(python3 -c "import json;print(json.load(open('app.json'))['expo']['android']['package'])")
+          if [ "$STATUS" != "confirmed" ]; then echo "release identity is $STATUS — a direct APK never ships under an unconfirmed identity"; exit 1; fi
+          if [ "$PACKAGE" = "com.ahmet.lingo" ]; then echo "package is still the inherited upstream id"; exit 1; fi
+          for v in KS_B64 KS_PASS KEY_ALIAS KEY_PASS; do
+            if [ -z "${!v:-}" ]; then echo "missing signing secret for $v — the owner-held key must be configured first (PUBLISHING_RUNBOOK.md D5)"; exit 1; fi
+          done
+          echo "identity confirmed ($PACKAGE); signing secrets present"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: "Release identity gate (a direct APK is not a store build; the gate must still pass)"
+        run: bun run release:identity
+      - name: Content, audio and drift guards
+        run: |
+          set -euo pipefail
+          bun scripts/compile-content.ts --check
+          bun scripts/validate-content.ts
+          bun scripts/check-audio.ts
+      - name: Generate the native project (CNG)
+        run: bunx expo prebuild --platform android --no-install --clean
+      - name: Build release APK
+        working-directory: android
+        run: ./gradlew --no-daemon assembleRelease
+      - name: Sign with the owner-held key, verify, hash
+        env:
+          KS_B64: ${{ secrets.ANDROID_RELEASE_KEYSTORE_BASE64 }}
+          KS_PASS: ${{ secrets.ANDROID_RELEASE_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_RELEASE_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.ANDROID_RELEASE_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          APK=$(ls android/app/build/outputs/apk/release/*.apk | head -1)
+          KS=$(mktemp -d)/upload.keystore
+          printf '%s' "$KS_B64" | base64 -d > "$KS"
+          mkdir -p out
+          NAME="learning-french-with-tracy-${TAG}.apk"
+          "$BT/zipalign" -p -f 4 "$APK" out/aligned.apk
+          "$BT/apksigner" sign --ks "$KS" --ks-pass env:KS_PASS --ks-key-alias "$KEY_ALIAS" --key-pass env:KEY_PASS --out "out/$NAME" out/aligned.apk
+          rm -f "$KS" out/aligned.apk
+          "$BT/apksigner" verify --print-certs "out/$NAME" | tee out/certs.txt
+          "$BT/aapt2" dump badging "out/$NAME" | grep -E "^package:|targetSdkVersion" | tee out/badging.txt
+          (cd out && sha256sum "$NAME" | tee "$NAME.sha256")
+      - name: Attach to the GitHub Release for the tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          NAME="learning-french-with-tracy-${TAG}.apk"
+          NOTES="Direct-install APK for ${TAG} (Android 7.0+). Android shows an unknown-app warning for files not installed from Google Play — expected (docs/USER_GUIDE.md §2). Verify the checksum before installing: \`sha256sum -c ${NAME}.sha256\`. Package and signer: see certs.txt in the workflow artifact."
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "out/$NAME" "out/$NAME.sha256" --clobber
+          else
+            gh release create "$TAG" "out/$NAME" "out/$NAME.sha256" --title "$TAG" --notes "$NOTES" --prerelease
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-direct-apk-${{ inputs.tag }}
+          path: out
+          retention-days: 90

@@ -108,7 +108,11 @@ jobs:
         run: |
           set -euo pipefail
           pip install "faster-whisper==1.0.3" requests
-          python3 scripts/audio-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model base
+          # recon compares candidate voices on a 12-string canary (base is
+          # enough to rank them); generate audits every shipped clip with the
+          # multilingual medium model, padded with silence — see the script.
+          ASR_MODEL=$([ "${{ inputs.mode }}" = "recon" ] && echo base || echo medium)
+          python3 scripts/audio-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model "$ASR_MODEL"
 
       - name: Canary QA + voice selection
         if: inputs.mode == 'recon'

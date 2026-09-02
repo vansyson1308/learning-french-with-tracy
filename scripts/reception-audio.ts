@@ -24,7 +24,7 @@
 
 import { createHash } from "crypto";
 import { execFileSync } from "child_process";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import path from "path";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -284,7 +284,15 @@ function plan(mode: string, out: string) {
  * clip. Generated (not hand-run) so quoting is exact and the run log shows
  * the full recipe.
  */
-function synthScript(planPath: string, dl: string, wav: string, out: string) {
+/**
+ * `existing` (V1 publication): a directory of already-generated, already
+ * blessed assets. A clip whose content-addressed file exists there is
+ * COPIED into `out` instead of re-synthesized, so editing one clip's text
+ * re-synthesizes exactly that clip: Piper's sampling noise would otherwise
+ * re-render every unchanged clip with different bytes and churn the audio
+ * baseline for no reason. Anything copied is still QA'd and ASR-audited.
+ */
+function synthScript(planPath: string, dl: string, wav: string, out: string, existing?: string) {
   const genPlan = JSON.parse(readFileSync(planPath, "utf8")) as { clips: GenClip[] };
   const shq = (s: string) => `'${s.replace(/'/g, `'\\''`)}'`;
   const lines: string[] = [
@@ -294,7 +302,16 @@ function synthScript(planPath: string, dl: string, wav: string, out: string) {
     // Inter-segment beat for dialogue clips.
     `ffmpeg -v error -y -f lavfi -i anullsrc=r=22050:cl=mono -t 0.35 ${shq(`${wav}/_gap.wav`)}`,
   ];
+  let reused = 0;
+  const seen = new Set<string>();
   for (const clip of genPlan.clips) {
+    if (seen.has(clip.assetKey)) continue; // two clips with identical text share one asset
+    seen.add(clip.assetKey);
+    if (existing && existsSync(path.join(existing, `${clip.assetKey}.mp3`))) {
+      lines.push(`cp ${shq(path.join(existing, `${clip.assetKey}.mp3`))} ${shq(`${out}/${clip.assetKey}.mp3`)}`);
+      reused++;
+      continue;
+    }
     const segWavs: string[] = [];
     clip.segments.forEach((seg, i) => {
       const segWav = `${wav}/${clip.assetKey}.seg${i}.wav`;
@@ -321,8 +338,30 @@ function synthScript(planPath: string, dl: string, wav: string, out: string) {
       `ffmpeg -v error -y -i ${shq(joined)} -ar 22050 -ac 1 -codec:a libmp3lame -b:a 64k ${shq(`${out}/${clip.assetKey}.mp3`)}`
     );
   }
-  lines.push(`echo "synthesized ${genPlan.clips.length} clips"`);
+  lines.push(`echo "synthesized ${seen.size - reused} clips, reused ${reused} existing assets (${genPlan.clips.length} plan clips)"`);
   process.stdout.write(`${lines.join("\n")}\n`);
+}
+
+/**
+ * Remove generated assets that no plan clip references any more (a clip
+ * whose text changed gets a new content-addressed key; the old file would
+ * otherwise sit unreferenced and fail the validator's orphan check).
+ */
+function prune(planPath: string, dir: string) {
+  const genPlan = JSON.parse(readFileSync(planPath, "utf8")) as { clips: GenClip[] };
+  const referenced = new Set(genPlan.clips.map((c) => `${c.assetKey}.mp3`));
+  if (!existsSync(dir)) {
+    console.log(`prune: ${dir} does not exist — nothing to do`);
+    return;
+  }
+  let removed = 0;
+  for (const file of readdirSync(dir).sort()) {
+    if (!file.endsWith(".mp3") || referenced.has(file)) continue;
+    rmSync(path.join(dir, file));
+    console.log(`prune: removed unreferenced ${file}`);
+    removed++;
+  }
+  console.log(`prune: ${removed} unreferenced asset(s) removed from ${dir}`);
 }
 
 // ---------------------------------------------------------------------------
@@ -500,8 +539,10 @@ else if (cmd === "synth-script")
     arg("plan") ?? fail("--plan required"),
     arg("dl") ?? fail("--dl required"),
     arg("wav") ?? fail("--wav required"),
-    arg("out") ?? fail("--out required")
+    arg("out") ?? fail("--out required"),
+    arg("existing")
   );
+else if (cmd === "prune") prune(arg("plan") ?? fail("--plan required"), arg("dir") ?? fail("--dir required"));
 else if (cmd === "qa")
   qa(
     arg("plan") ?? fail("--plan required"),

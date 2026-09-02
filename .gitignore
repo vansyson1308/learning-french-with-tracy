@@ -50,6 +50,13 @@ store.config.json
 !content/**/*.md
 # release readiness dossier — must ship with the repo
 !release/**/*.md
+# public documentation (user guide, tester guide) — must ship with the repo
+!docs/**/*.md
+# documentation-site sources (scripts/build-site.ts) — must ship with the repo
+!site/**/*.md
+
+# python bytecode from the pipeline audit scripts
+__pycache__/
 
 # typescript
 *.tsbuildinfo
@@ -59,3 +66,8 @@ example
 # generated native folders
 /ios
 /android
+
+# generated documentation site (scripts/build-site.ts)
+dist-site/
+# web-tier storyboard previews (e2e/screenshots.mjs) — never store submissions
+dist-screens/

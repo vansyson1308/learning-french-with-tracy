@@ -6,6 +6,10 @@
   "nativeLanguage": "English",
   "nativeCode": "en",
   "flag": "🇮🇹",
+  "audio": {
+    "policy": "device-tts",
+    "reason": "The only Italian Piper voices are it_IT-paola-medium, whose MODEL_CARD states 'License: See URL' (no verifiable license, excluded by the gate on 2026-09-02, run 33646858305), and it_IT-riccardo-x_low (extra-low quality). The upstream recordings have no traceable license, so the course speaks through the device's own Italian text-to-speech voice."
+  },
   "sections": [
     {
       "id": "it-en:section-1",

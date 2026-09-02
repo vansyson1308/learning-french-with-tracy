@@ -1,0 +1,60 @@
+# Public documentation site (V1 publication program, Part III).
+#
+# Builds dist-site/ from repository sources (scripts/build-site.ts: the
+# in-app privacy policy module, docs/USER_GUIDE.md, ATTRIBUTIONS.md and
+# site/content/*.md) and publishes it with GitHub Pages. No analytics, no
+# cookies, no external assets. Runs on pushes to main that touch the
+# sources, and on manual dispatch.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "docs/**"
+      - "scripts/build-site.ts"
+      - "src/lib/privacy-policy.ts"
+      - "ATTRIBUTIONS.md"
+      - "release/support-contact.json"
+      - "app.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Build the site
+        run: bun scripts/build-site.ts
+      - name: Configure Pages (enables the site if the token may)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist-site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -281,6 +281,8 @@ export type UnitPack = {
 
 export type SectionPack = { id: string; title: string; units: UnitPack[] };
 
+export type PackAudioPolicy = { policy: "bundled" | "device-tts"; reason?: string };
+
 export type Pack = {
   id: string;
   version: number;
@@ -289,6 +291,8 @@ export type Pack = {
   nativeLanguage: string;
   nativeCode: string;
   flag: string;
+  /** Absent = bundled audio; device-tts courses speak via expo-speech. */
+  audio?: PackAudioPolicy;
   sections: SectionPack[];
 };
 

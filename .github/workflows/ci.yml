@@ -86,7 +86,15 @@ jobs:
       # Phase 10: browser E2E over the export (the runner's Chrome; the
       # web tier is honestly labelled — speech surfaces show their skip
       # affordances). No network beyond localhost.
+      - name: Documentation site builds from repository sources
+        run: bun scripts/build-site.ts
       - name: Browser E2E (web tier)
         env:
           E2E_BROWSER_PATH: /usr/bin/google-chrome
         run: bun run e2e:web dist
+      # V1 publication §16: every section of the user guide is walked against
+      # the export; a guide claim the app does not honour fails the build.
+      - name: User-guide walk (web tier)
+        env:
+          E2E_BROWSER_PATH: /usr/bin/google-chrome
+        run: bun run e2e:guide dist

@@ -106,7 +106,11 @@ jobs:
         run: |
           set -euo pipefail
           bun scripts/reception-audio.ts plan --mode "$([ "${{ inputs.mode }}" = "canary" ] && echo canary || echo generate)" --out "$PLAN"
-          bun scripts/reception-audio.ts synth-script --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" > /tmp/synth.sh
+          # generate reuses every already-blessed asset (content-addressed):
+          # only clips whose text changed are synthesized, so a wording fix
+          # never re-renders the untouched clips with different bytes.
+          EXISTING=$([ "${{ inputs.mode }}" = "generate" ] && echo "--existing assets/audio/fr-reception" || echo "")
+          bun scripts/reception-audio.ts synth-script --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" $EXISTING > /tmp/synth.sh
           bash /tmp/synth.sh
           ls "$OUT" | wc -l
 
@@ -115,7 +119,8 @@ jobs:
         run: |
           set -euo pipefail
           pip install "faster-whisper==1.0.3" requests  # requests: undeclared fw dep with huggingface-hub>=1
-          python3 scripts/reception-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model base
+          ASR_MODEL=$([ "${{ inputs.mode }}" = "generate" ] && echo medium || echo base)
+          python3 scripts/reception-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model "$ASR_MODEL"
 
       - name: Technical QA + report
         if: inputs.mode == 'canary'
@@ -129,10 +134,19 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p assets/audio/fr-reception
+          # a clip whose text changed has a new key; drop the file its old text produced
+          bun scripts/reception-audio.ts prune --plan "$PLAN" --dir assets/audio/fr-reception
           cp "$OUT"/*.mp3 assets/audio/fr-reception/
           bun scripts/reception-audio.ts qa --plan "$PLAN" --outdir assets/audio/fr-reception \
             --report content/reports/reception-audio-quality.json --asr "$ASR" --strict true
           cp "$PLAN" content/fr/reception/generated-plan.json
+          # regenerate the runtime clip-asset map and the listening artifact,
+          # prove the content validates, and re-bless the audio baseline so
+          # the branch is green the moment this run's commit lands
+          bun scripts/compile-content.ts
+          bun scripts/validate-content.ts
+          bun scripts/check-audio.ts --write-baseline
+          bun scripts/check-audio.ts
 
       - name: Upload run artifact (audio for audit)
         if: inputs.mode != 'recon'
@@ -153,8 +167,8 @@ jobs:
           # Paths added individually: a multi-path `git add` is all-or-nothing
           # and a missing assets dir silently staged NOTHING on the first
           # successful recon run.
-          for p in content/fr/reception content/reports assets/audio/fr-reception; do
-            if [ -e "$p" ]; then git add "$p"; fi
+          for p in content/fr/reception content/reports assets/audio/fr-reception src/content content/audio/legacy-baseline.json; do
+            if [ -e "$p" ]; then git add -A -- "$p"; fi
           done
           if git diff --cached --quiet; then
             echo "nothing to commit"

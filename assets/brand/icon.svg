@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    Learning French with Tracy — app mark (original work, MIT like the app).
+    A single "é" — the most French letter — in white on the brand blue, its
+    acute accent in coral so the mark reads as three colours at a glance.
+    Rendered to PNG by scripts/render-brand-assets.mjs; variants (adaptive
+    foreground/background/monochrome, splash, favicon) are derived from
+    the same shapes, never hand-edited.
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <g id="background">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    <circle cx="820" cy="210" r="330" fill="#ffffff" fill-opacity="0.07"/>
+    <circle cx="180" cy="880" r="260" fill="#0B1E5B" fill-opacity="0.12"/>
+  </g>
+  <g id="mark">
+    <!-- the letter body: a lowercase e built from paths so no font is needed -->
+    <g fill="#ffffff">
+      <path d="M512 322c-152 0-262 112-262 262 0 152 110 264 268 264 96 0 172-38 218-102l-76-56c-30 40-76 62-138 62-82 0-142-46-158-124h388c4-20 6-40 6-58 0-146-100-248-246-248zm-146 210c14-72 70-118 146-118 78 0 130 46 142 118H366z"/>
+    </g>
+    <!-- acute accent, coral -->
+    <path id="accent" d="M470 286l58-124c8-16 26-24 44-18l52 18c22 8 30 32 16 50l-92 100c-8 8-20 12-32 8l-34-12c-14-6-20-20-12-22z" fill="#FF6B6B"/>
+  </g>
+</svg>

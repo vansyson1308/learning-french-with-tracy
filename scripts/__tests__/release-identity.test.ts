@@ -23,24 +23,44 @@ describe("the committed identity record", () => {
     expect(result.ok).toBe(true);
   });
 
-  test("records the inherited upstream identity as UNCONFIRMED and store distribution BLOCKED", () => {
-    expect(record.ownership.status).toBe("unconfirmed");
-    expect(record.storeDistribution).toBe("blocked");
+  const unconfirmed = record.ownership.status === "unconfirmed";
+
+  test("store distribution is BLOCKED until the owner's own project and store records are linked", () => {
     const result = evaluateReleaseIdentity({ record, app, eas });
-    expect(result.storeDistribution).toBe("BLOCKED");
-    expect(result.notes[0]).toBe("STORE DISTRIBUTION IDENTITY = BLOCKED");
+    if (unconfirmed || record.identity.easProjectId === null) {
+      expect(record.storeDistribution).toBe("blocked");
+      expect(result.storeDistribution).toBe("BLOCKED");
+      expect(result.notes[0]).toBe("STORE DISTRIBUTION IDENTITY = BLOCKED");
+    } else {
+      expect(result.ok).toBe(true);
+    }
   });
 
-  test("the inherited values are the ones Phase 10 audited", () => {
+  test("while unconfirmed, the record still carries exactly the inherited values Phase 10 audited", () => {
+    if (!unconfirmed) return; // migrated: the confirmed identity is pinned by the drift test above
     expect(record.identity.owner).toBe("ahmet909");
     expect(record.identity.iosBundleIdentifier).toBe("com.ahmet.lingo");
     expect(record.identity.androidPackage).toBe("com.ahmet.lingo");
     expect(record.identity.ascAppId).toBe("6781818623");
   });
+
+  test("once confirmed, the identity is the owner's own (never the inherited one) with who/when/evidence", () => {
+    if (unconfirmed) return;
+    expect(record.identity.iosBundleIdentifier).not.toBe("com.ahmet.lingo");
+    expect(record.identity.androidPackage).not.toBe("com.ahmet.lingo");
+    expect(record.identity.owner).not.toBe("ahmet909");
+    expect(record.identity.easProjectId).not.toBe("c5e5ee9a-1aac-4b7c-ba0f-a97897c4d348");
+    expect(record.ownership.confirmedBy).toBeTruthy();
+    expect(record.ownership.evidence.length).toBeGreaterThan(0);
+    expect(app.version).toMatch(/^\d+\.\d+\.\d+$/);
+    expect(app.ios?.buildNumber).toMatch(/^\d+$/);
+    expect(typeof app.android?.versionCode).toBe("number");
+  });
 });
 
 describe("fail-closed behaviour", () => {
-  test("a store-distribution build profile is refused while ownership is unconfirmed", () => {
+  test("a store-distribution build profile is refused while distribution is blocked", () => {
+    if (record.storeDistribution === "allowed") return; // linked and allowed: production builds are the point
     const result = evaluateReleaseIdentity({ record, app, eas, buildProfile: "production" });
     expect(result.ok).toBe(false);
     expect(result.errors.join("\n")).toMatch(/Refusing to build/);

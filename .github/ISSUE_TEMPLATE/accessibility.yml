@@ -1,0 +1,24 @@
+name: Accessibility issue
+description: VoiceOver, TalkBack, text size, contrast, motion or focus problems.
+labels: ["accessibility"]
+body:
+  - type: input
+    id: setup
+    attributes:
+      label: Assistive technology and settings
+      placeholder: "VoiceOver on iOS 18.6; text size XXXL; Reduce Motion on"
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Screen and control
+      placeholder: "Lesson → word bank chips; the chip label is not announced"
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: What you could not do
+    validations:
+      required: true

@@ -219,10 +219,16 @@ describe("audio foundation", () => {
     expect(other.bytes).not.toEqual(a.bytes);
   });
 
-  test("the legacy baseline verifies: 859 untouched files + immutable manifest", () => {
+  test("the audio baseline verifies every pinned file and the manifest", () => {
+    // The baseline is re-blessed only by deliberate provenance decisions
+    // (V1 publication: untraceable ja/ko recordings removed, then every
+    // course regenerated from license-gated voices), so the count comes from
+    // the committed baseline itself, never a literal.
+    const baseline = readJson("content/audio/legacy-baseline.json") as { fileCount: number };
     const result = checkAudio();
     expect(result.errors).toEqual([]);
-    expect(result.checkedFiles).toBe(859);
+    expect(baseline.fileCount).toBeGreaterThan(0);
+    expect(result.checkedFiles).toBe(baseline.fileCount);
   });
 });
 

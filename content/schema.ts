@@ -391,6 +391,19 @@ export const SectionSchema = z.strictObject({
   units: z.array(UnitSchema).min(1),
 });
 
+/**
+ * Course audio policy (V1 publication program, Part II): "bundled" (the
+ * default — every audioTarget resolves to a pipeline-generated MP3) or
+ * "device-tts" (no bundled audio; the runtime speaks through the device's
+ * own text-to-speech voice because no license-clean voice exists for the
+ * language). A reason is mandatory for device-tts so the decision is on
+ * record next to the content.
+ */
+export const PackAudioPolicySchema = z.strictObject({
+  policy: z.enum(["bundled", "device-tts"]),
+  reason: z.string().min(20).optional(),
+});
+
 export const PackSchema = z.strictObject({
   id,
   version: z.number().int().min(1),
@@ -399,6 +412,7 @@ export const PackSchema = z.strictObject({
   nativeLanguage: z.string().min(1),
   nativeCode: z.string().min(2),
   flag: z.string().min(1),
+  audio: PackAudioPolicySchema.optional(),
   sections: z.array(SectionSchema).min(1),
 });
 export type PackSource = z.infer<typeof PackSchema>;

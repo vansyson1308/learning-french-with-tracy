@@ -42,7 +42,15 @@ const AnimatedScrollView = React.forwardRef((props, ref) =>
 );
 AnimatedScrollView.displayName = "Animated.ScrollView";
 
+// Reduced-motion surface (V1 publication): the root layout mounts
+// <ReducedMotionConfig mode={ReduceMotion.System} />; under Jest it renders
+// nothing and the enum only needs its members.
+const ReduceMotion = { System: "system", Always: "always", Never: "never" };
+const ReducedMotionConfig = () => null;
+
 module.exports = {
+  ReduceMotion,
+  ReducedMotionConfig,
   __esModule: true,
   default: {
     View: AnimatedView,

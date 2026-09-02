@@ -39,16 +39,49 @@ French pedagogy content authored by the Learning French with Tracy project.
 
 > Clean-room authored teaching content for the Phase 5B pedagogy units (gender & articles, high-yield verbs, cognates & false friends, numbers, connected French). Linguistic FACTS are drawn from the referenced sources recorded in content/fr/pedagogy/RESEARCH.md (institutional references such as Académie française and OQLF usage pages, plus this repository's Lexique-4-derived population statistics); all PROSE is original. Statistical claims in concepts additionally carry a lexique-4 sourceRef. Ships under the repository's MIT grant like the course packs (the CC BY-SA dataset boundary covers the lexicon only).
 
-## Piper voice fr_FR-siwis-medium (SIWIS French speech corpus)
+## Piper voice es_ES-davefx-medium
+
+- **License:** CC0-1.0
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/es/es_ES/davefx/medium
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-09-02
+
+Course audio for es-en synthesized with Piper (MIT, rhasspy/piper) using the es_ES-davefx-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the pack-audio canary ASR audit (mean WER 0.4417 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
+
+## Piper voice pt_BR-faber-medium
+
+- **License:** CC0-1.0
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/pt/pt_BR/faber/medium
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-09-02
+
+Course audio for pt-en synthesized with Piper (MIT, rhasspy/piper) using the pt_BR-faber-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the pack-audio canary ASR audit (mean WER 0.2292 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
+
+## Piper voice fr_FR-siwis-medium
 
 - **License:** CC-BY-4.0
 - **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/siwis/medium
-- **What:** neural TTS voice used at pipeline time to synthesize bundled reception audio
-- **Retrieved:** 2026-08-29
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-09-02
 
-Reception listening audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-siwis-medium voice, trained on the SIWIS French speech corpus (CC BY 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/.
+Course audio for fr-en synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-siwis-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
 
-> Speaker A of the reception voice cast (announcements, monologue, dialogue first voice). Model weights are never committed — only pins (audio-source-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only reception-audio workflow.
+> Selected by the pack-audio canary ASR audit (mean WER 0.1667 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
+
+## Piper voice de_DE-thorsten-medium
+
+- **License:** CC0-1.0
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/thorsten/medium
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-09-02
+
+Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the pack-audio canary ASR audit (mean WER 0.2083 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
 
 ## Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)
 

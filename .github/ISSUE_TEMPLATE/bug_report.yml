@@ -1,0 +1,33 @@
+name: Bug report
+description: Something in the app does not work as the user guide describes.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please do not attach voice recordings or personal data. Screenshots are welcome."
+  - type: input
+    id: version
+    attributes:
+      label: App version and platform
+      placeholder: "1.0.0 (build 3), iPhone 13 / iOS 18.6 — or Pixel 7 / Android 15"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open Learn → Section 1 … 2. Tap … 3. …"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+    validations:
+      required: true

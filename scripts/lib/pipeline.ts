@@ -54,6 +54,7 @@ export const GENERATED_TARGETS = [
   "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",
+  "src/content/attributions.json",
 ] as const;
 
 export function assertGeneratedTarget(relPath: string): void {
@@ -212,7 +213,10 @@ export function validateContent(): ValidationResult {
             ids.add(e.id);
             validateExercise(pack.id, e, err);
             if ("audioTarget" in e && e.audioTarget !== undefined) {
-              if (!manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
+              // device-tts courses (no license-clean voice exists for the
+              // language) carry no bundled audio by policy; the runtime
+              // speaks their audioTargets through the device voice.
+              if (pack.audio?.policy !== "device-tts" && !manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
                 err(`${pack.id}: ${e.id} audioTarget has no audio: "${e.audioTarget}"`);
               }
             }
@@ -439,9 +443,28 @@ export function compileAll(): { files: CompiledFile[]; coverage: Record<string, 
     relPath: "content/reports/grade-targets.json",
     contents: canonicalJson({ perCourse: coverage }),
   });
+  const registry = loadRegistry();
   files.push({
     relPath: "ATTRIBUTIONS.md",
-    contents: renderAttributions(loadRegistry()),
+    contents: renderAttributions(registry),
+  });
+  // In-app attributions (V1 publication): the Licenses screen renders every
+  // registry entry — CC BY voices and CC BY-SA data are credited inside the
+  // product, not only in the repository.
+  files.push({
+    relPath: "src/content/attributions.json",
+    contents: canonicalJson({
+      generator: "scripts/compile-content.ts",
+      sources: registry.sources.map((e) => ({
+        id: e.id,
+        name: e.name,
+        kind: e.kind,
+        license: e.license,
+        url: e.url,
+        attribution: e.attribution,
+        covers: e.covers,
+      })),
+    }),
   });
   return { files, coverage };
 }

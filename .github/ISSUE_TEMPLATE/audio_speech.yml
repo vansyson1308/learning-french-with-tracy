@@ -1,0 +1,39 @@
+name: Audio or speech problem
+description: No sound, wrong recognition, microphone or permission trouble.
+labels: ["speech"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do NOT upload recordings of your voice. Describe what you said and what the app showed it heard."
+  - type: input
+    id: device
+    attributes:
+      label: Device, OS version and app version
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of problem
+      options:
+        - No sound from clips or words
+        - Microphone / permission
+        - Speech recognition unavailable
+        - Recognition hears the wrong words
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: What you did, what you said (as text), and what the app showed
+    validations:
+      required: true
+  - type: checkboxes
+    id: env
+    attributes:
+      label: Environment
+      options:
+        - label: Headphones or Bluetooth were connected
+        - label: Device language / keyboard includes French
+        - label: The app said speech recognition may use the internet
