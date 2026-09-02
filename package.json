@@ -69,6 +69,7 @@
     "release:identity": "bun scripts/release-identity-gate.ts",
     "e2e:web": "node e2e/smoke-web.mjs",
     "e2e:guide": "node e2e/guide-walk.mjs",
+    "e2e:screens": "node e2e/screenshots.mjs",
     "brand:render": "node scripts/render-brand-assets.mjs",
     "release:bump": "bun scripts/bump-build.ts",
     "eas-build-pre-install": "bun scripts/release-identity-gate.ts",
