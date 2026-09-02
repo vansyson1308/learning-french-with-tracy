@@ -269,12 +269,24 @@ type QaRow = {
   charsPerSec: number;
   technical: "pass" | "fail";
   technicalIssues: string[];
-  asr?: { text: string; wer: number };
+  asr?: { text: string; wer: number; model?: string };
 };
+
+/**
+ * ASR review policy: a clip is listed for human review when the recognizer
+ * disagrees with at least half of a SENTENCE-length transcript (≥ 3 words).
+ * Isolated one- or two-word clips are the weakest case for any ASR model
+ * (no context to condition on), so their scores stay informational rather
+ * than actionable — the technical QA (duration, level, edge silence,
+ * speaking rate) still gates every clip.
+ */
+const REVIEW_WER = 0.5;
+const REVIEW_MIN_WORDS = 3;
 
 function qa(planPath: string, outdir: string, reportPath: string, asrPath?: string) {
   const genPlan = JSON.parse(readFileSync(planPath, "utf8")) as { mode: string; clips: PlanClip[] };
-  const asr: Record<string, { text: string; wer: number }> = asrPath ? JSON.parse(readFileSync(asrPath, "utf8")) : {};
+  const asr: Record<string, { text: string; wer: number; model?: string }> = asrPath ? JSON.parse(readFileSync(asrPath, "utf8")) : {};
+  const asrModel = Object.values(asr).find((a) => a.model)?.model ?? null;
   const rows: QaRow[] = [];
   let failures = 0;
   for (const clip of genPlan.clips) {
@@ -302,12 +314,17 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   const voiceSummary = [...byVoice.entries()]
     .map(([key, a]) => ({ courseId: a.courseId, voiceId: key.split("|")[1], clips: a.count, meanWer: Number((a.werSum / Math.max(a.count, 1)).toFixed(4)), technicalFailures: a.techFails }))
     .sort((a, b) => a.courseId.localeCompare(b.courseId) || a.meanWer - b.meanWer);
+  const wordCount = (text: string) => text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+  const review = rows
+    .filter((r) => r.asr && r.asr.wer >= REVIEW_WER && wordCount(r.transcript) >= REVIEW_MIN_WORDS)
+    .map((r) => ({ clipId: r.clipId, voiceId: r.voiceId, transcript: r.transcript, heard: r.asr!.text, wer: r.asr!.wer, durationSec: r.durationSec }));
   writeFileSync(
     reportPath,
-    `${JSON.stringify({ generator: "scripts/pack-audio.ts qa", mode: genPlan.mode, clipCount: rows.length, uniqueAssetCount: new Set(rows.map((r) => r.assetKey)).size, technicalFailures: failures, voiceSummary, clips: rows }, null, 2)}\n`
+    `${JSON.stringify({ generator: "scripts/pack-audio.ts qa", mode: genPlan.mode, asrModel, asrReviewPolicy: { minWords: REVIEW_MIN_WORDS, werAtLeast: REVIEW_WER, note: "single-word clips are informational only (no context for the recognizer); the technical QA gates every clip" }, clipCount: rows.length, uniqueAssetCount: new Set(rows.map((r) => r.assetKey)).size, technicalFailures: failures, sentenceClipsForReview: review.length, voiceSummary, review, clips: rows }, null, 2)}\n`
   );
-  console.log(`qa: ${rows.length} clips, ${failures} technical failures → ${reportPath}`);
+  console.log(`qa: ${rows.length} clips, ${failures} technical failures, ${review.length} sentence clips for review (asr model: ${asrModel ?? "none"}) → ${reportPath}`);
   for (const v of voiceSummary) console.log(`  ${v.courseId} ${v.voiceId}: meanWER=${v.meanWer} techFails=${v.technicalFailures}`);
+  for (const r of review) console.log(`  REVIEW ${r.clipId}: wer=${r.wer} heard=${JSON.stringify(r.heard)}`);
   if (failures > 0 && arg("strict") === "true") fail("technical QA failures in strict mode");
 }
 

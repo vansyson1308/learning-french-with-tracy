@@ -8,7 +8,15 @@ QA reports and candidate-voice selection, never replaces linguistic review,
 and the ASR model is never shipped. Runs only inside the dispatch-only
 workflow (huggingface.co is unreachable from the interactive environment).
 
-Usage: audio-asr-audit.py --plan plan.json --outdir clips/ --out asr.json [--model base]
+Every clip is transcribed with one second of digital silence before it and
+half a second after it: Whisper-family models are unreliable on sub-second
+audio with no lead-in, and the padding adds context without adding any
+bias (nothing about the expected text reaches the recognizer). Isolated
+single-word clips remain the weakest case for any ASR — the QA report
+therefore keeps sentence-length clips as the intelligibility signal and
+treats word-level scores as informational.
+
+Usage: audio-asr-audit.py --plan plan.json --outdir clips/ --out asr.json [--model medium]
 """
 
 import argparse
@@ -49,12 +57,18 @@ def main() -> int:
     ap.add_argument("--plan", required=True)
     ap.add_argument("--outdir", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--model", default="base")
+    ap.add_argument("--model", default="medium")
+    ap.add_argument("--lead-silence", type=float, default=1.0)
+    ap.add_argument("--tail-silence", type=float, default=0.5)
     args = ap.parse_args()
 
-    from faster_whisper import WhisperModel  # workflow-only dependency
+    import numpy as np
+    from faster_whisper import WhisperModel, decode_audio  # workflow-only dependency
 
     model = WhisperModel(args.model, device="cpu", compute_type="int8")
+    rate = 16000
+    lead = np.zeros(int(args.lead_silence * rate), dtype=np.float32)
+    tail = np.zeros(int(args.tail_silence * rate), dtype=np.float32)
     with open(args.plan, "r", encoding="utf-8") as f:
         plan = json.load(f)
 
@@ -65,10 +79,13 @@ def main() -> int:
         if not os.path.exists(path):
             results[clip["clipId"]] = {"text": "", "wer": 1.0}
             continue
-        segments, _info = model.transcribe(path, language=language, beam_size=5)
+        audio = np.concatenate([lead, decode_audio(path, sampling_rate=rate), tail])
+        segments, _info = model.transcribe(
+            audio, language=language, beam_size=5, condition_on_previous_text=False
+        )
         hyp_text = " ".join(seg.text for seg in segments).strip()
         score = edit_rate(normalize(clip["text"], language), normalize(hyp_text, language))
-        results[clip["clipId"]] = {"text": hyp_text, "wer": round(score, 4)}
+        results[clip["clipId"]] = {"text": hyp_text, "wer": round(score, 4), "model": args.model}
         print(f"{clip['clipId']}: wer={score:.3f} :: {hyp_text}")
 
     with open(args.out, "w", encoding="utf-8") as f:
