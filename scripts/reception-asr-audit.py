@@ -46,12 +46,21 @@ def main() -> int:
     ap.add_argument("--plan", required=True)
     ap.add_argument("--outdir", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--model", default="base")
+    ap.add_argument("--model", default="medium")
+    ap.add_argument("--lead-silence", type=float, default=1.0)
+    ap.add_argument("--tail-silence", type=float, default=0.5)
     args = ap.parse_args()
 
-    from faster_whisper import WhisperModel  # imported late: workflow-only dep
+    import numpy as np
+    from faster_whisper import WhisperModel, decode_audio  # imported late: workflow-only dep
 
+    # Silence padding (V1 publication): Whisper-family recognizers are
+    # unreliable on sub-second clips with no lead-in; padding adds context
+    # without bias (nothing about the expected text reaches the model).
     model = WhisperModel(args.model, device="cpu", compute_type="int8")
+    rate = 16000
+    lead = np.zeros(int(args.lead_silence * rate), dtype=np.float32)
+    tail = np.zeros(int(args.tail_silence * rate), dtype=np.float32)
     with open(args.plan, "r", encoding="utf-8") as f:
         plan = json.load(f)
 
@@ -61,10 +70,13 @@ def main() -> int:
         if not os.path.exists(path):
             results[clip["clipId"]] = {"text": "", "wer": 1.0}
             continue
-        segments, _info = model.transcribe(path, language="fr", beam_size=5)
+        audio = np.concatenate([lead, decode_audio(path, sampling_rate=rate), tail])
+        segments, _info = model.transcribe(
+            audio, language="fr", beam_size=5, condition_on_previous_text=False
+        )
         hyp_text = " ".join(seg.text for seg in segments).strip()
         score = wer(normalize(clip["text"]), normalize(hyp_text))
-        results[clip["clipId"]] = {"text": hyp_text, "wer": round(score, 4)}
+        results[clip["clipId"]] = {"text": hyp_text, "wer": round(score, 4), "model": args.model}
         print(f"{clip['clipId']}: wer={score:.3f} :: {hyp_text}")
 
     with open(args.out, "w", encoding="utf-8") as f:
