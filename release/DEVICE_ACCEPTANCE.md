@@ -48,7 +48,7 @@ device (iOS 16.4–17). Same table per device; note model + iOS version.
 | I1 | 2 | Install from TestFlight | installs; icon is the é mark; name "Learning French with Tracy" | |
 | I2 | 3 | First launch | course grid; goal chips; Learn French; Learn tab; no onboarding flash on relaunch | |
 | I3 | 6–8 | Lesson 1 to the end | Check/Continue; wrong answer re-queued; summary with XP; Profile updates | |
-| I4 | 14 | Listening lesson (Section 3) | clip plays through the speaker; Play again; Slow; silent switch respected? (plays in silent mode by design — note) | |
+| I4 | 14 | Listening lesson (Section 3) | clip plays through the speaker; Play again; Slow; silent switch respected? (plays in silent mode by design — note). Also play the five synthesized sentences the ASR audit flagged (`AUDIO_PROVENANCE_FINAL.md`): *L'oiseau vole haut.* (French course), *El perro bebe agua.* / *La vaca come.* / *No quiero beber té.* (Spanish course), *A ovelha é mansa.* (Portuguese course) — each must be intelligible; an unintelligible one is a P2 to re-synthesize | |
 | I5 | 15–17 | First speaking step | microphone + speech prompts appear once each; the on-device-model notice appears when no offline French model (Got it) | |
 | I6 | 15 | Record / stop / playback | *I heard: …* shows; Play back my recording works; second attempt; model answer after two misses | |
 | I7 | 16 | Denied permissions | Allow microphone → Open Settings; Settings → Privacy & Security → Microphone / Speech Recognition list the app | |
@@ -80,7 +80,7 @@ Run on at least: one recent Android (14/15) and one older supported device
 | A2 | 2 | Install the release `.apk` (P9) | unknown-app warning; installs; same identity; updating in place keeps progress | |
 | A3 | 3 | First launch | as I2; predictive back does not exit mid-lesson unexpectedly | |
 | A4 | 6–8 | Lesson 1 to the end | as I3; hardware/gesture back from a lesson asks nothing and returns to Learn (state per design) | |
-| A5 | 14 | Listening lesson | plays; Play again; Slow; volume rocker controls media volume | |
+| A5 | 14 | Listening lesson | plays; Play again; Slow; volume rocker controls media volume; the five flagged sentences from row I4 intelligible | |
 | A6 | 15–17 | First speaking step | RECORD_AUDIO prompt; the on-device-model notice when the recogniser has no offline French pack; Got it | |
 | A7 | 15 | Record / stop / playback | as I6 | |
 | A8 | 16 | Denied permission | Allow microphone → after "Don't ask again", Open Settings; Settings → Apps → app → Permissions → Microphone | |

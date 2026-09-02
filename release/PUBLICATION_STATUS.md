@@ -9,7 +9,7 @@ report repeats. Success states are never conflated: ENGINEERING COMPLETE
 
 | Gate | State | Evidence / what is missing |
 |---|---|---|
-| Engineering complete (main green, tests, content, audio provenance) | **YES** once PR #18 merges with the regenerated audio | `AUDIO_PROVENANCE_FINAL.md`, CI |
+| Engineering complete (main green, tests, content, audio provenance) | **YES** once PR #18 merges — regenerated audio landed (run 33648420215); the six reception lines land with the reception run | `AUDIO_PROVENANCE_FINAL.md`, CI |
 | Identity confirmed (Option B, immutable identifiers) | **WAITING FOR OWNER** | OWNER DECISION block in the program report; `scripts/apply-identity.ts` ready |
 | Version reset 1.0.0 / build 1 (local source) | applied by the identity migration | `VERSIONING.md` |
 | Public website (privacy, support, guide, licenses, accessibility, release) | built in CI; **deploys on the first push to main after merge** (Pages must be enabled once by the owner if the first deploy reports it) | `pages.yml`, `scripts/build-site.ts` |
