@@ -39,7 +39,7 @@ is fully satisfied; it becomes `v1.0.0`.
 
 | RC | Commit | Tag | Version / build | Artifacts (SHA-256) | CI | Guide walk | Device acceptance | Outcome |
 |---|---|---|---|---|---|---|---|---|
-| RC1 | _cut after the regenerated audio lands on the release branch_ | `v1.0.0-rc.1` | 1.0.0 / build 1 (after the identity migration) | web export bundle: _fill_; QA APK artifact zip: _fill_; EAS builds: _blocked until the owner's EAS project exists_ | _run id_ | _pass count_ | _not started_ | _open_ |
+| RC1 | `4fb6cebb094548117c4e6cb2acc998a9f15de9a1` (release branch head after the reception-audio run; later commits are release records only) | `v1.0.0-rc.1` (tagged after merge) | 1.1.0 inherited / no build number yet — the identity migration resets to 1.0.0 / build 1 and yields RC2 | web export entry bundle `entry-4f1909b2f84fd4eb929ff03afa98240e.js` (4,194,333 bytes) SHA-256 `d5434685dc6b40870d3ee4edad79471420fa48b9117f0f000384fe9789821f37`; QA APK: `android-release-build.yml` dispatched on this head, artifact hash recorded when it completes; EAS store builds: blocked until the owner's EAS project exists | CI green on the branch (run ids in `PUBLICATION_STATUS.md`); audio provenance CLOSED | 30 pass · 0 fail · 5 device-only · 3 test-backed | not started (no store build; needs identity + accounts) | open — engineering candidate; superseded by RC2 after `apply-identity.ts migrate` |
 
 ## Notes
 

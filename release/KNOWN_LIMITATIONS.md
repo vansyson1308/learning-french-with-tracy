@@ -38,7 +38,7 @@ itself.
 
 | # | Item | Plan |
 |---|---|---|
-| L10 | Six partner lines in listening clips are curt or unidiomatic for a shopkeeper (*Vous voulez quoi ?*, *ça va seulement ?*, *votre boisson*, bare *un jus*) | re-synthesize with the dispatch-only audio pipeline post-v1 (`CONTENT_REDTEAM.md`, deferred table) |
+| L10 | Six partner lines in listening clips were curt or unidiomatic for a shopkeeper (*Vous voulez quoi ?*, *ça va seulement ?*, *votre boisson*, bare *un jus*) | **CLOSED** — re-worded (commit 844b2e7) and re-synthesized by the reception-audio workflow (run 33656665002); the new clips transcribe at WER 0–0.08 |
 | L11 | `package.json` `version` (1.0.0) differs from `expo.version` (1.1.0) | resolved by the identity migration (expo.version → 1.0.0, build 1) |
 | L12 | Stored store listing (`STORE_METADATA.md`) was upstream's | replaced by `STORE_METADATA_FINAL.md` (owner-supplied fields marked, never invented) |
 

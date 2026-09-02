@@ -22,7 +22,7 @@ perform; "Both" rows have an automated part and a device part.
 | The user guide is true section by section | `bun run e2e:guide` | 30 pass · 0 fail · 5 device-only · 3 test-backed | CI; `docs/USER_GUIDE_VALIDATION.md` |
 | No network request of the app's own | recorded during the browser walks; static grep for fetch/XHR/WebSocket | 0 external requests; 0 call sites | guide walk; `SECURITY_AUDIT.md` |
 | Only the declared Android permissions ship; targetSdk 36 | APK badging/permissions dump from the built artifact | pass (Phase 10 run; re-run per RC) | `android-release-build.yml`, `RC_ARTIFACTS.md` |
-| Audio provenance: every bundled clip synthesized by the pinned, license-gated pipeline; sound effects generated; no untraceable file | pack-audio / reception-audio workflows (double-download hash pins, model cards, fail-closed license gate, technical QA strict, ASR audit) | pack audio: run 33648420215 → 544 clips, 0 technical failures, 5 sentence clips listed for device review; reception: generate run in flight for the six re-worded lines | `AUDIO_PROVENANCE_FINAL.md`, `content/reports/pack-audio-*.json` |
+| Audio provenance: every bundled clip synthesized by the pinned, license-gated pipeline; sound effects generated; no untraceable file | pack-audio / reception-audio workflows (double-download hash pins, model cards, fail-closed license gate, technical QA strict, ASR audit) | pass — pack audio run 33648420215 (544 clips, 0 technical failures, 5 sentence clips listed for device review); reception run 33656665002 (177 clips, 0 technical failures, six re-worded lines WER 0–0.08); no class-D file remains | `AUDIO_PROVENANCE_FINAL.md`, `content/reports/pack-audio-*.json` |
 | Backups round-trip and refuse corruption; every historical persona migrates losslessly | `backup.test.ts`, `historical-personas.test.ts` | pass | CI |
 | Assessment integrity (option order, capstone no-shortcut, keyword stuffing, speech/interaction attacks) | dedicated suites | pass | `ASSESSMENT_DOSSIER.md`, `CONTENT_REDTEAM.md`, `RELEASE_REDTEAM.md` |
 
@@ -48,9 +48,8 @@ perform; "Both" rows have an automated part and a device part.
 
 ## D. Coverage summary
 
-- Automated: every engineering claim in A is green on the current head
-  except the audio-provenance row, which closes when the two dispatch-only
-  audio runs commit their outputs (tracked in `PUBLICATION_STATUS.md`).
+- Automated: every engineering claim in A is green on the release-branch
+  head, including audio provenance.
 - Owner: nothing in C has started; each row has exact steps and a place to
   record the result. Until C is done the product state is ENGINEERING
   COMPLETE, not DEVICE ACCEPTED.

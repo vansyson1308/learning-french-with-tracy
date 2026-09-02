@@ -9,7 +9,7 @@ report repeats. Success states are never conflated: ENGINEERING COMPLETE
 
 | Gate | State | Evidence / what is missing |
 |---|---|---|
-| Engineering complete (main green, tests, content, audio provenance) | **YES** once PR #18 merges — regenerated audio landed (run 33648420215); the six reception lines land with the reception run | `AUDIO_PROVENANCE_FINAL.md`, CI |
+| Engineering complete (main green, tests, content, audio provenance) | **YES** on the release branch (audio provenance CLOSED: runs 33648420215 and 33656665002); becomes main's state when PR #18 merges | `AUDIO_PROVENANCE_FINAL.md`, CI |
 | Identity confirmed (Option B, immutable identifiers) | **WAITING FOR OWNER** | OWNER DECISION block in the program report; `scripts/apply-identity.ts` ready |
 | Version reset 1.0.0 / build 1 (local source) | applied by the identity migration | `VERSIONING.md` |
 | Public website (privacy, support, guide, licenses, accessibility, release) | built in CI; **deploys on the first push to main after merge** (Pages must be enabled once by the owner if the first deploy reports it) | `pages.yml`, `scripts/build-site.ts` |
@@ -19,7 +19,7 @@ report repeats. Success states are never conflated: ENGINEERING COMPLETE
 | Google Play developer account | BLOCKED — owner registration, fee, identity verification | `GOOGLE_PLAY_ACCOUNT_SETUP.md` |
 | EAS project under the owner's account | BLOCKED — `eas init` on the owner's machine; no token in the repo | `PUBLISHING_RUNBOOK.md` D1 |
 | Signing keys | BLOCKED — EAS-managed or owner-held; never created here | `PUBLISHING_RUNBOOK.md` D3–D5 |
-| RC builds (store profiles) | BLOCKED by the identity gate (fails closed) and the EAS project | `RC_HISTORY.md` |
+| RC builds (store profiles) | RC1 cut as an engineering candidate (`RC_HISTORY.md`); store-profile builds BLOCKED by the identity gate (fails closed) and the EAS project | `RC_HISTORY.md` |
 | Device acceptance | NOT STARTED — needs an RC on phones | `DEVICE_ACCEPTANCE.md` |
 | Accessibility device pass | NOT STARTED | `ACCESSIBILITY_FINAL.md` |
 | Store listings, screenshots from the final RC | drafts ready; capture blocked on the RC | `STORE_METADATA_FINAL.md`, `SCREENSHOT_MANIFEST.md` |
