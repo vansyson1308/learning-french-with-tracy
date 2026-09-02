@@ -55,6 +55,9 @@ store.config.json
 # documentation-site sources (scripts/build-site.ts) — must ship with the repo
 !site/**/*.md
 
+# python bytecode from the pipeline audit scripts
+__pycache__/
+
 # typescript
 *.tsbuildinfo
 
