@@ -212,7 +212,10 @@ export function validateContent(): ValidationResult {
             ids.add(e.id);
             validateExercise(pack.id, e, err);
             if ("audioTarget" in e && e.audioTarget !== undefined) {
-              if (!manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
+              // device-tts courses (no license-clean voice exists for the
+              // language) carry no bundled audio by policy; the runtime
+              // speaks their audioTargets through the device voice.
+              if (pack.audio?.policy !== "device-tts" && !manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
                 err(`${pack.id}: ${e.id} audioTarget has no audio: "${e.audioTarget}"`);
               }
             }

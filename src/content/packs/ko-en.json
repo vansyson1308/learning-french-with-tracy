@@ -6,6 +6,10 @@
   "nativeLanguage": "English",
   "nativeCode": "en",
   "flag": "🇰🇷",
+  "audio": {
+    "policy": "device-tts",
+    "reason": "No license-clean Korean synthesis voice is available to the audio pipeline (rhasspy/piper-voices v1.0.0 ships none) and the upstream recordings have no traceable license, so this course speaks through the device's own Korean text-to-speech voice."
+  },
   "sections": [
     {
       "id": "ko-en:section-1",

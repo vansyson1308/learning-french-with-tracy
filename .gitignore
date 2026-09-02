@@ -50,6 +50,8 @@ store.config.json
 !content/**/*.md
 # release readiness dossier — must ship with the repo
 !release/**/*.md
+# public documentation (user guide, tester guide) — must ship with the repo
+!docs/**/*.md
 
 # typescript
 *.tsbuildinfo
