@@ -6,6 +6,10 @@
   "nativeLanguage": "English",
   "nativeCode": "en",
   "flag": "🇨🇳",
+  "audio": {
+    "policy": "device-tts",
+    "reason": "The only Mandarin Piper voice, zh_CN-huayan-medium, states 'License: Unknown' in its MODEL_CARD (excluded by the gate on 2026-09-02, run 33646858305). The upstream recordings have no traceable license, so the course speaks through the device's own Chinese text-to-speech voice."
+  },
   "sections": [
     {
       "id": "zh-en:section-1",

@@ -52,6 +52,8 @@ store.config.json
 !release/**/*.md
 # public documentation (user guide, tester guide) — must ship with the repo
 !docs/**/*.md
+# documentation-site sources (scripts/build-site.ts) — must ship with the repo
+!site/**/*.md
 
 # typescript
 *.tsbuildinfo
