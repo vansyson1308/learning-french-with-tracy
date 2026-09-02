@@ -47,9 +47,13 @@ describe("audio census (P8 Gate 0)", () => {
       "fr.clip.ix_a1cap_telephone_end",
       "fr.clip.ix_a1cap_voisin_hello_s",
       "fr.clip.ix_cafe_boisson_end",
+      // V1 publication: the café order rephrase lines now share one wording
+      // ("Qu'est-ce que vous voulez boire ?") after the partner-line rewrite.
+      "fr.clip.ix_cafe_boisson_order_s",
       "fr.clip.ix_cafe_boisson_thanks_s",
       "fr.clip.ix_cp_boulangerie_want_s",
       "fr.clip.ix_cp_cafe_end",
+      "fr.clip.ix_cp_cafe_order_s",
       "fr.clip.ix_cp_cafe_price_s",
       "fr.clip.ix_cp_projets_place_s",
       "fr.clip.ix_cp_rencontre_bye_s",
