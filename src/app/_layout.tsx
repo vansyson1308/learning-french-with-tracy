@@ -3,6 +3,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import * as SystemUI from "expo-system-ui";
 import React, { useEffect, useSyncExternalStore } from "react";
+import { ReduceMotion, ReducedMotionConfig } from "react-native-reanimated";
 
 import { useProgress } from "@/lib/store";
 import { useResolvedScheme, useThemeColors } from "@/lib/theme";
@@ -60,6 +61,11 @@ export default function RootLayout() {
 
   return (
     <>
+      {/* Honour the OS "Reduce Motion" setting (V1 accessibility): every
+          reanimated transition — progress springs, entering fades, the
+          path's bobbing start bubble — jumps to its end state instead of
+          animating when the person has asked for less motion. */}
+      <ReducedMotionConfig mode={ReduceMotion.System} />
       <StatusBar style={scheme === "dark" ? "light" : "dark"} />
       <Stack
         screenOptions={{

@@ -11,6 +11,7 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import attributions from "@/content/attributions.json";
 import frWebFallback from "@/content/lexicon/fr-web-fallback.json";
 import { CloseButton } from "@/components/close-button";
 import { exitScreen } from "@/lib/navigation";
@@ -21,6 +22,18 @@ type FallbackShape = {
   sources: { id: string; name: string; license: string; url: string; attribution: string }[];
 };
 const lexiconData = frWebFallback as FallbackShape;
+type AttributionEntry = {
+  id: string;
+  name: string;
+  kind: string;
+  license: string;
+  url: string;
+  attribution: string;
+  covers: string[];
+};
+const registry = (attributions as { sources: AttributionEntry[] }).sources;
+/** Voices used at pipeline time to synthesize the bundled audio (CC BY / CC0 credits). */
+const voiceEntries = registry.filter((e) => /TTS voice/i.test(e.kind));
 
 export default function LicensesScreen() {
   const styles = useStyles();
@@ -71,10 +84,21 @@ export default function LicensesScreen() {
 
         <Section title="Audio">
           <Text style={styles.text}>
-            Word and sentence audio is pre-generated speech bundled with the app,
-            inherited from the upstream Lingo Lessons project under its MIT grant, with
-            the device&apos;s speech synthesis as fallback. No audio is fetched at runtime.
+            Word, sentence and listening audio is synthesized when the app is built, with
+            Piper (rhasspy/piper, MIT License) and the voices below; sound effects are
+            generated tone sequences. Courses without a license-cleared voice (Italian,
+            Japanese, Korean, Chinese) use your device&apos;s own speech synthesis. No
+            audio is fetched at runtime.
           </Text>
+          {voiceEntries.map((v) => (
+            <View key={v.id} style={styles.sourceRow}>
+              <Text style={styles.sourceName}>
+                {v.name} — {v.license}
+              </Text>
+              <Text style={styles.text}>{v.attribution}</Text>
+              <Text style={styles.url}>{v.url}</Text>
+            </View>
+          ))}
         </Section>
       </ScrollView>
     </SafeAreaView>

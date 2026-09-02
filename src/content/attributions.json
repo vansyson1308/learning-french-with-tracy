@@ -1,0 +1,124 @@
+{
+  "generator": "scripts/compile-content.ts",
+  "sources": [
+    {
+      "id": "upstream-lingo-lessons",
+      "name": "Lingo Lessons (Open Apps Studio)",
+      "kind": "code + course content + pre-generated TTS audio",
+      "license": "MIT",
+      "url": "https://github.com/Open-Apps-Studio/lingo-lessons",
+      "attribution": "Based on Lingo Lessons by Open Apps Studio, used under the MIT License. The original LICENSE (including the 650 Industries, Inc. notice from the create-expo-app template) is preserved in this repository.",
+      "covers": [
+        "content/courses/",
+        "src/content/",
+        "assets/audio/",
+        "assets/images/"
+      ]
+    },
+    {
+      "id": "original-french-lexicon",
+      "name": "Learning French with Tracy — authored French lexicon",
+      "kind": "authored lexical data (glosses reuse the project's existing course content)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "French lexicon data authored by the Learning French with Tracy project, published under CC BY-SA 4.0 (see LEXICON_LICENSE.md).",
+      "covers": [
+        "content/fr/lexicon/"
+      ]
+    },
+    {
+      "id": "lexique-4",
+      "name": "Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)",
+      "kind": "lexical database (frequency, contextual diversity, prevalence, phonology incl. IPA, lemmas, verb morphology)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://lexique.org",
+      "attribution": "Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).",
+      "covers": [
+        "content/fr/lexicon/derived/",
+        "content/fr/lexicon/lexemes.json"
+      ]
+    },
+    {
+      "id": "original-french-pedagogy",
+      "name": "Learning French with Tracy — authored French pedagogy",
+      "kind": "authored teaching content (concept explanations, rules, examples, guidebooks)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "French pedagogy content authored by the Learning French with Tracy project.",
+      "covers": [
+        "content/fr/pedagogy/"
+      ]
+    },
+    {
+      "id": "ts-fsrs",
+      "name": "ts-fsrs (open-spaced-repetition)",
+      "kind": "code (runtime scheduling library)",
+      "license": "MIT",
+      "url": "https://github.com/open-spaced-repetition/ts-fsrs",
+      "attribution": "Spaced-repetition scheduling powered by ts-fsrs, © open-spaced-repetition contributors, MIT License.",
+      "covers": [
+        "node_modules/ts-fsrs/"
+      ]
+    },
+    {
+      "id": "piper-voice-siwis",
+      "name": "Piper voice fr_FR-siwis-medium",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/siwis/medium",
+      "attribution": "Course audio for fr-en synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-siwis-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/fr/",
+        "content/audio/model-cards/fr_FR-siwis-medium.MODEL_CARD.txt"
+      ]
+    },
+    {
+      "id": "piper-voice-upmc",
+      "name": "Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled reception audio",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/upmc/medium",
+      "attribution": "Reception dialogue audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-upmc-medium voice (CC BY-SA 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/. Audio clips voiced by this model are distributed under CC BY-SA 4.0 with attribution, matching the project's existing share-alike posture (see LEXICON_LICENSE.md).",
+      "covers": [
+        "assets/audio/fr-reception/",
+        "content/fr/reception/model-cards/fr_FR-upmc-medium.MODEL_CARD.txt"
+      ]
+    },
+    {
+      "id": "piper-voice-thorsten",
+      "name": "Piper voice de_DE-thorsten-medium",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC0-1.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/thorsten/medium",
+      "attribution": "Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/de/",
+        "content/audio/model-cards/de_DE-thorsten-medium.MODEL_CARD.txt"
+      ]
+    },
+    {
+      "id": "piper-voice-davefx",
+      "name": "Piper voice es_ES-davefx-medium",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC0-1.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/es/es_ES/davefx/medium",
+      "attribution": "Course audio for es-en synthesized with Piper (MIT, rhasspy/piper) using the es_ES-davefx-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/es/",
+        "content/audio/model-cards/es_ES-davefx-medium.MODEL_CARD.txt"
+      ]
+    },
+    {
+      "id": "piper-voice-faber",
+      "name": "Piper voice pt_BR-faber-medium",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC0-1.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/pt/pt_BR/faber/medium",
+      "attribution": "Course audio for pt-en synthesized with Piper (MIT, rhasspy/piper) using the pt_BR-faber-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/pt/",
+        "content/audio/model-cards/pt_BR-faber-medium.MODEL_CARD.txt"
+      ]
+    }
+  ]
+}

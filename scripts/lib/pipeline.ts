@@ -54,6 +54,7 @@ export const GENERATED_TARGETS = [
   "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",
+  "src/content/attributions.json",
 ] as const;
 
 export function assertGeneratedTarget(relPath: string): void {
@@ -442,9 +443,28 @@ export function compileAll(): { files: CompiledFile[]; coverage: Record<string, 
     relPath: "content/reports/grade-targets.json",
     contents: canonicalJson({ perCourse: coverage }),
   });
+  const registry = loadRegistry();
   files.push({
     relPath: "ATTRIBUTIONS.md",
-    contents: renderAttributions(loadRegistry()),
+    contents: renderAttributions(registry),
+  });
+  // In-app attributions (V1 publication): the Licenses screen renders every
+  // registry entry — CC BY voices and CC BY-SA data are credited inside the
+  // product, not only in the repository.
+  files.push({
+    relPath: "src/content/attributions.json",
+    contents: canonicalJson({
+      generator: "scripts/compile-content.ts",
+      sources: registry.sources.map((e) => ({
+        id: e.id,
+        name: e.name,
+        kind: e.kind,
+        license: e.license,
+        url: e.url,
+        attribution: e.attribution,
+        covers: e.covers,
+      })),
+    }),
   });
   return { files, coverage };
 }

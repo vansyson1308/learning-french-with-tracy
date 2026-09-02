@@ -15,7 +15,7 @@ The app needs about 150 MB of storage and no permissions to install. The only pe
 
 ## 3. First launch
 
-The first screen asks which course you want. French is the course this app is built around; tap it. Then pick a **Daily XP goal** — 10, 20, 30 or 50 XP (a lesson is worth 15 XP, 20 when perfect) — and tap **Start learning**. You land on the **Learn** tab. You can change the course later from Profile → Learning → **Switch**.
+The first screen asks which course you want. French is the course this app is built around; tap it. Then pick a **Daily XP goal** — 10, 20, 30 or 50 XP (a lesson is worth 15 XP, 20 when perfect) — and tap **Learn French** (the button names the course you selected). You land on the **Learn** tab. You can change the course later from Profile → Learning → **Switch**.
 
 ## 4. Choosing French
 
@@ -27,16 +27,16 @@ If you have studied French before, the Learn tab shows **Studied French before? 
 
 ## 6. Learn (the path)
 
-The Learn tab shows the path: sections, units and lesson nodes. The current lesson is the one you can tap; earlier ones can be replayed (*Completed. Practice again.*); later ones say *Locked. Complete earlier lessons first.* Each unit has a guidebook (the book icon) explaining its grammar in plain language.
+The Learn tab shows the path: sections, units and lesson nodes. The current lesson is the one you can tap; earlier ones can be replayed; later ones are locked. A screen reader announces each node's state (*Completed. Practice again.*, *Locked. Complete earlier lessons first.*, *Cleared by your placement check. Review any time.*). Each unit has a guidebook (the book icon, labelled *<unit> guidebook*) explaining its grammar in plain language.
 
 ## 7. Sections and units
 
-1. **Basics** — greetings, people, food, animals, everyday sentences.
-2. **French that makes sense** — gender and articles, high-yield verbs, cognates and false friends, numbers 0–100, connected French (liaison and elision).
-3. **Listening and reading** — short announcements, dialogues, notices and texts.
-4. **Speaking** — formulaic phrases, introducing yourself, giving information, describing.
-5. **Writing** — personal details, simple sentences, short notes, forms.
-6. **Conversations** — everyday exchanges and practical needs with a partner voice.
+1. **Section 1: Beginner** — units *Basics 1*, *Greetings*, *Food*, *Animals*, *Travel*.
+2. **Section 2: Building blocks** — *Gender & Articles*, *High-Yield Verbs*, *Cognates & False Friends*, *Numbers 0–100*, *Connected French* (liaison and elision).
+3. **Section 3: Understand everyday French** — *Écoute !*, *Messages & panneaux*, *Annonces & consignes*, *Petits dialogues*, *Petites histoires* (listening and reading).
+4. **Section 4: Speak your first French** — *Dis bonjour !*, *Je me présente*, *Les chiffres à voix haute*, *Décris-le !*.
+5. **Section 5: Write everyday French** — *Écris qui tu es*, *Des phrases simples*, *Petits messages*, *Formulaires et messages*.
+6. **Section 6: Talk with someone** — *Premiers échanges*, *Au café, au magasin*, *Trouver son chemin*, *Faire des projets* (conversations with a partner voice).
 
 Each section ends with a **checkpoint** (section 6 leads to the A1 capstone).
 
@@ -50,7 +50,7 @@ Each section ends with a **checkpoint** (section 6 leads to the A1 capstone).
 - French-specific: **choose the article** (le/la/l'/les), **conjugate** a verb in a cloze, **number** drills, and concept cards that explain a rule before you practise it.
 - Listening and reading exercises (section 3), speaking (section 4), writing (section 5) and conversation (section 6) — described below.
 
-Tap **Check** to grade an answer, **Continue** to move on. If you are stuck, **I don't know** shows the answer and puts the exercise back in the queue. Wrong answers come back later in the same lesson until you get them right. At the end you see a summary: reviews, new words, streak and XP.
+Tap **Check** to grade an answer, **Continue** to move on. Wrong answers come back later in the same lesson until you get them right. **I don't know** appears only in the starting-point check and on steps that need audio or the microphone (**Skip this step**); ordinary lesson exercises are always answered. At the end you see a summary: reviews, new words, streak and XP.
 
 ## 9. Vocabulary
 
@@ -66,7 +66,7 @@ The app schedules review with a spaced-repetition algorithm (FSRS). Every word, 
 
 ## 12. Today
 
-The **Today** tab builds one session from what your memory needs: reviews that are due first (most at risk first), then new material from your current unit, then mixed practice, then a short matching finale. Choose a **Session length** — 5, 10 or 15 minutes — and tap **Start today's session**. If your device cannot record right now, tap **Can't speak now**: speaking reviews are left out of that session and stay due.
+The **Today** tab builds one session from what your memory needs: reviews that are due first (most at risk first), then new material from your current unit, then mixed practice, then a short matching finale. Choose a **Session length** — 5, 10 or 15 minutes — and tap **Start today's session**. On a device that can record, a **Can't speak now** switch appears above the button: turn it on and speaking reviews are left out of that session and stay due.
 
 ## 13. Review
 
@@ -121,7 +121,7 @@ The estimate is what this course's own checks observed. It is not an official CE
 
 ## 25. Goals screen
 
-Besides the estimate, the Goals screen lets you **Find your starting point** / **Retake the check**, and **Reset starting point** (with a confirmation: *Keep it* or *Reset*). Resetting the starting point never deletes completed lessons or review history.
+Besides the estimate, the Goals screen lets you **Find your starting point** / **Retake the check**. When your starting point is above the beginning of the path it also offers **Reset starting point** (with a confirmation: *Keep it* or *Reset*); otherwise it reads *Starting from the beginning.* Resetting the starting point never deletes completed lessons or review history.
 
 ## 26. XP, streak and activity
 
@@ -174,7 +174,7 @@ Resetting your starting point clears only the placement result (the "cleared" ma
 
 ## 35. Licenses and attributions
 
-Profile → **Licenses & attributions** (*Software notices and data sources.*) lists every third-party source: the Lingo Lessons base (MIT), Lexique 4 lexical data (CC BY-SA 4.0), the FSRS scheduler (ts-fsrs, MIT), and the Piper voices used to synthesize the bundled audio, each with its license. The same list is on the website.
+Profile → **Licenses & attributions** (*Software notices and data sources.*) lists every third-party source: the Lingo Lessons base (MIT), Lexique 4 lexical data (CC BY-SA 4.0), the FSRS scheduler (ts-fsrs, MIT), and — under **Audio** — Piper (MIT) with each voice used to synthesize the bundled audio and its license. The same list is on the website.
 
 ## 36. Support and contact
 
