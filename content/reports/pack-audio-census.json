@@ -1,0 +1,75 @@
+{
+  "generator": "scripts/pack-audio.ts apply",
+  "pipelineVersion": 1,
+  "courses": [
+    {
+      "courseId": "de-en",
+      "policy": "generated",
+      "language": "de",
+      "voiceId": "de_DE-thorsten-medium",
+      "strings": 95,
+      "files": 95
+    },
+    {
+      "courseId": "es-en",
+      "policy": "generated",
+      "language": "es",
+      "voiceId": "es_ES-davefx-medium",
+      "strings": 189,
+      "files": 189
+    },
+    {
+      "courseId": "fr-en",
+      "policy": "generated",
+      "language": "fr",
+      "voiceId": "fr_FR-siwis-medium",
+      "strings": 164,
+      "files": 164
+    },
+    {
+      "courseId": "it-en",
+      "policy": "device-tts",
+      "language": "it",
+      "voiceId": null,
+      "strings": 0,
+      "files": 0
+    },
+    {
+      "courseId": "pt-en",
+      "policy": "generated",
+      "language": "pt",
+      "voiceId": "pt_BR-faber-medium",
+      "strings": 96,
+      "files": 96
+    },
+    {
+      "courseId": "zh-en",
+      "policy": "device-tts",
+      "language": "zh",
+      "voiceId": null,
+      "strings": 0,
+      "files": 0
+    },
+    {
+      "courseId": "ja-en",
+      "policy": "device-tts",
+      "language": "ja",
+      "voiceId": null,
+      "strings": 0,
+      "files": 0
+    },
+    {
+      "courseId": "ko-en",
+      "policy": "device-tts",
+      "language": "ko",
+      "voiceId": null,
+      "strings": 0,
+      "files": 0
+    }
+  ],
+  "sfx": [
+    "correct.wav",
+    "incorrect.wav",
+    "finish.mp3"
+  ]
+}
