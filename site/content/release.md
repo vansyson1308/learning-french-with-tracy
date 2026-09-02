@@ -1,6 +1,6 @@
 # Release
 
-**Current version:** {{VERSION}} (first public release candidate).
+**Current version:** {{VERSION}} — release candidate in preparation; not yet published on any store.
 
 ## Where the app is available
 
@@ -21,7 +21,7 @@ This page is updated when store links exist.
 - The A1 estimate comes from the course's own checks and is not an official CEFR result.
 - Speaking uses your device's recogniser; on devices without an on-device French model it may use the internet, and the app says so before the first attempt.
 - No pronunciation scoring — the recogniser's transcript is what is graded.
-- The Japanese and Korean courses use your device's text-to-speech voices instead of bundled recordings.
+- All bundled audio is synthesized speech (Piper voices, credited under Licenses & attributions), not human recordings. The Italian, Japanese, Korean and Chinese courses use your device's text-to-speech voices instead, because no license-cleared voice exists for them.
 - The web version has no speech recognition.
 
 The full list lives in the repository under `release/KNOWN_LIMITATIONS.md`.
