@@ -827,6 +827,36 @@ export const ClaimPolicySchema = z.strictObject({
 });
 export type ClaimPolicy = z.infer<typeof ClaimPolicySchema>;
 
+/**
+ * Learner A1 attainment policy (Phase 10 Gate 2, §10-§16): the AUTHORED
+ * denominator of the learner-side estimate. For each communicative domain
+ * the overall claim requires, it lists every objective a learner must
+ * actually demonstrate (a real checkpoint verdict, latest attempt) before
+ * the domain counts. It is content, reviewed like content — never inferred
+ * from runtime counts, and never "any one objective". Non-essential direct
+ * objectives that are deliberately not gates are listed with a reason so
+ * nothing is omitted silently; the validator enforces that every essential
+ * direct objective of the domain is either required or explicitly excluded.
+ */
+export const AttainmentDomainPolicySchema = z.strictObject({
+  domain: z.enum(OBJECTIVE_CATEGORIES),
+  requiredObjectiveIds: z.array(objectiveId).min(1),
+  excludedObjectiveIds: z.array(
+    z.strictObject({ objectiveId, reason: z.string().min(20) })
+  ),
+  rationale: z.string().min(20),
+});
+export type AttainmentDomainPolicy = z.infer<typeof AttainmentDomainPolicySchema>;
+
+export const AttainmentPolicySchema = z.strictObject({
+  version: z.literal(1),
+  language: z.literal("fr"),
+  level: z.enum(CEFR_LEVELS),
+  principle: z.string().min(40),
+  domains: z.array(AttainmentDomainPolicySchema).min(1),
+});
+export type AttainmentPolicy = z.infer<typeof AttainmentPolicySchema>;
+
 // ---------------------------------------------------------------------------
 // Phase 6: checkpoint assessment banks (§49-66, §121-123)
 // ---------------------------------------------------------------------------

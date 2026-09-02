@@ -126,9 +126,12 @@ export default function PlacementRunScreen() {
   };
 
   const stage = plan.stages[stageIndex];
+  // One seed per run (Phase 10 Gate 3): captured at mount so the option
+  // order of every stage is fixed for this sitting and differs next time.
+  const [runSeed] = useState(() => `run${Date.now()}`);
   const definition = useMemo(
-    () => buildPlacementStageSessionDefinition(stage),
-    [stage]
+    () => buildPlacementStageSessionDefinition(stage, runSeed),
+    [stage, runSeed]
   );
 
   if (finished) {

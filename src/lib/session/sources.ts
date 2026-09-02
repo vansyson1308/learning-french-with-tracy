@@ -11,6 +11,7 @@
  */
 
 import { selectCheckpointForm } from "../assessment/checkpoint";
+import { administrationSeed, shuffleScoredOptions } from "../assessment/option-order";
 import { interactionPracticeScenarios } from "../interaction/content";
 import { pickDistractors } from "../learning/distractors";
 import { dueFrenchReviewQueue } from "../learning/engine";
@@ -413,10 +414,22 @@ export function buildCheckpointSessionDefinition(
   const form = selectCheckpointForm(checkpoint, priorAttemptCount);
   const administered = new Set(form.itemIds);
   const items = checkpoint.items.filter((item) => administered.has(item.id));
+  // Phase 10 Gate 3: scored MCQ options are rendered in a seeded order that
+  // is fixed for this administration (checkpoint, form, form version,
+  // attempt count, item) and different on the next attempt.
   const steps: SessionStep[] = items.map((item) => ({
     type: "exercise",
     stepId: item.id,
-    exercise: item.exercise,
+    exercise: shuffleScoredOptions(
+      item.exercise,
+      administrationSeed([
+        checkpoint.id,
+        form.formId,
+        `v${checkpoint.formVersion}`,
+        `attempt${priorAttemptCount}`,
+        item.id,
+      ])
+    ),
   }));
   return {
     kind: "checkpoint",
@@ -466,13 +479,23 @@ type CompiledPlacementStageSource = {
  * result storage; completion "placement" is a structural no-op.
  */
 export function buildPlacementStageSessionDefinition(
-  stage: CompiledPlacementStageSource
+  stage: CompiledPlacementStageSource,
+  /**
+   * Identifies THIS administration of the diagnostic (Phase 10 Gate 3):
+   * the route captures it once per run, so scored MCQ options keep one
+   * seeded order for the run and a different one on a later run. The
+   * empty default keeps the builder pure and reproducible in tests.
+   */
+  runSeed = ""
 ): SessionDefinition {
   const steps: SessionStep[] = stage.clusters.flatMap((cluster) =>
     cluster.items.map((item) => ({
       type: "exercise" as const,
       stepId: item.id,
-      exercise: item.exercise,
+      exercise: shuffleScoredOptions(
+        item.exercise,
+        administrationSeed(["placement", stage.id, runSeed, item.id])
+      ),
     }))
   );
   return {

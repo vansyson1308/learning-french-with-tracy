@@ -17,10 +17,10 @@ import {
   type WritingTasks,
 } from "../../content/schema";
 import { frenchNumber } from "../../src/lib/learning/french-numbers";
-import { normalizeWrittenFrench } from "../../src/lib/writing/rubric";
 import {
   evaluateGuidedWriting,
   evaluateSimpleForm,
+  normalizeWrittenFrench,
 } from "../../src/lib/writing/rubric";
 import { loadRichLexicon } from "./lexicon";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
@@ -250,6 +250,7 @@ export function validateWriting(input: {
               rubric: task.rubric,
               promptText: promptTextOf(task),
               knownFrench,
+              mode: task.mode,
             });
       if (evaluation.verdict !== "meets_rubric") {
         err(

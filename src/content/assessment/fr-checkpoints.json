@@ -1488,7 +1488,9 @@
             "instruction": "Say that you like tea.",
             "target": "J'aime le thé",
             "acceptedVariants": [
-              "J'aime le thé"
+              "J'aime le thé",
+              "J'adore le thé",
+              "J'aime bien le thé"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1583,11 +1585,16 @@
             ],
             "target": "Ça coûte cinq euros",
             "acceptedVariants": [
-              "Ça coûte cinq euros"
+              "Ça coûte cinq euros",
+              "Ça fait cinq euros",
+              "C'est cinq euros",
+              "Cinq euros"
             ],
             "requiredConcepts": [
               [
-                "coûte"
+                "coûte",
+                "ça fait",
+                "c'est"
               ],
               [
                 "cinq",
@@ -1625,7 +1632,11 @@
             ],
             "target": "Le train part à dix heures",
             "acceptedVariants": [
-              "Le train part à dix heures"
+              "Le train part à dix heures",
+              "Il part à dix heures",
+              "À dix heures",
+              "Le train est à dix heures",
+              "Le départ est à dix heures"
             ],
             "requiredConcepts": [
               [
@@ -1768,7 +1779,8 @@
                   "description": "your name",
                   "variants": [
                     "je m'appelle Nadia",
-                    "je suis Nadia"
+                    "je suis Nadia",
+                    "moi c'est Nadia"
                   ],
                   "cueProvided": true
                 },
@@ -1794,7 +1806,8 @@
               "maxTokens": 30,
               "requireSentenceVerbs": [
                 "m'appelle",
-                "suis"
+                "suis",
+                "c'est"
               ]
             },
             "modelAnswers": [
@@ -1836,7 +1849,8 @@
                   "description": "your name",
                   "variants": [
                     "je m'appelle Tom",
-                    "je suis Tom"
+                    "je suis Tom",
+                    "moi c'est Tom"
                   ],
                   "cueProvided": true
                 },
@@ -1862,7 +1876,8 @@
               "maxTokens": 30,
               "requireSentenceVerbs": [
                 "m'appelle",
-                "suis"
+                "suis",
+                "c'est"
               ]
             },
             "modelAnswers": [
@@ -1904,7 +1919,8 @@
                   "description": "your name",
                   "variants": [
                     "je m'appelle Emma",
-                    "je suis Emma"
+                    "je suis Emma",
+                    "moi c'est Emma"
                   ],
                   "cueProvided": true
                 },
@@ -1930,7 +1946,8 @@
               "maxTokens": 30,
               "requireSentenceVerbs": [
                 "m'appelle",
-                "suis"
+                "suis",
+                "c'est"
               ]
             },
             "modelAnswers": [
@@ -1968,7 +1985,11 @@
                   "description": "what Sofia likes",
                   "variants": [
                     "sofia aime le thé",
-                    "elle aime le thé"
+                    "elle aime le thé",
+                    "sofia adore le thé",
+                    "elle adore le thé",
+                    "sofia aime bien le thé",
+                    "elle aime bien le thé"
                   ],
                   "cueProvided": true
                 }
@@ -1976,7 +1997,8 @@
               "minTokens": 3,
               "maxTokens": 12,
               "requireSentenceVerbs": [
-                "aime"
+                "aime",
+                "adore"
               ]
             },
             "modelAnswers": [
@@ -2119,11 +2141,27 @@
                   "cueProvided": false
                 },
                 {
-                  "id": "fact",
-                  "description": "the café time",
+                  "id": "addressee",
+                  "description": "who the note is for (Anna)",
                   "variants": [
-                    "le café est à trois heures",
-                    "café à trois heures"
+                    "Anna"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "what",
+                  "description": "the café",
+                  "variants": [
+                    "café"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "time",
+                  "description": "the time (à trois heures)",
+                  "variants": [
+                    "à trois heures",
+                    "à quinze heures"
                   ],
                   "cueProvided": true
                 }
@@ -2172,11 +2210,26 @@
                   "cueProvided": false
                 },
                 {
-                  "id": "fact",
-                  "description": "the train day and time",
+                  "id": "what",
+                  "description": "the train",
                   "variants": [
-                    "le train est samedi à huit heures",
-                    "train samedi à huit heures"
+                    "train"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "day",
+                  "description": "the day (samedi)",
+                  "variants": [
+                    "samedi"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "time",
+                  "description": "the time (à huit heures)",
+                  "variants": [
+                    "à huit heures"
                   ],
                   "cueProvided": true
                 }
@@ -2934,11 +2987,26 @@
                   "cueProvided": false
                 },
                 {
-                  "id": "fact",
-                  "description": "the train time",
+                  "id": "addressee",
+                  "description": "who the note is for (Paul)",
                   "variants": [
-                    "le train est à neuf heures",
-                    "train à neuf heures"
+                    "Paul"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "what",
+                  "description": "the train",
+                  "variants": [
+                    "train"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "time",
+                  "description": "the time (à neuf heures)",
+                  "variants": [
+                    "à neuf heures"
                   ],
                   "cueProvided": true
                 }
@@ -2991,12 +3059,26 @@
                   "cueProvided": false
                 },
                 {
-                  "id": "fact",
-                  "description": "the restaurant day",
+                  "id": "addressee",
+                  "description": "who the note is for (Léa)",
                   "variants": [
-                    "le restaurant est samedi",
-                    "le restaurant c'est samedi",
-                    "restaurant samedi"
+                    "Léa"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "what",
+                  "description": "the restaurant",
+                  "variants": [
+                    "restaurant"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "day",
+                  "description": "the day (samedi)",
+                  "variants": [
+                    "samedi"
                   ],
                   "cueProvided": true
                 }
@@ -3049,12 +3131,35 @@
                   "cueProvided": false
                 },
                 {
-                  "id": "fact",
-                  "description": "the shop opening",
+                  "id": "addressee",
+                  "description": "who the note is for (Marc)",
                   "variants": [
-                    "le magasin est ouvert demain",
-                    "le magasin ouvre demain",
-                    "magasin ouvert demain"
+                    "Marc"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "what",
+                  "description": "the shop",
+                  "variants": [
+                    "magasin"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "open",
+                  "description": "that it is open (ouvert)",
+                  "variants": [
+                    "ouvert",
+                    "ouvre"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "day",
+                  "description": "the day (demain)",
+                  "variants": [
+                    "demain"
                   ],
                   "cueProvided": true
                 }

@@ -3,6 +3,7 @@
  * + objective metadata). Content only — learner state lives in the store.
  */
 
+import attainmentArtifact from "../../content/assessment/fr-attainment.json";
 import checkpointsArtifact from "../../content/assessment/fr-checkpoints.json";
 import claimArtifact from "../../content/assessment/fr-claim.json";
 import objectivesArtifact from "../../content/assessment/fr-objectives.json";
@@ -159,6 +160,20 @@ export function courseClaim(): CompiledCourseClaim {
 
 export function courseClaimableAt(level: string): boolean {
   return claim.levels.some((l) => l.level === level && l.courseClaimable);
+}
+
+/** LEARNER-attainment policy artifact (Phase 10 Gate 2): per domain, the
+ *  authored objectives a learner must demonstrate. The runtime never
+ *  derives this denominator from counts — it reads the reviewed content. */
+export type CompiledAttainmentPolicy = {
+  level: string;
+  domains: { domain: string; requiredObjectiveIds: string[] }[];
+};
+
+const attainment = attainmentArtifact as unknown as CompiledAttainmentPolicy;
+
+export function attainmentPolicy(): CompiledAttainmentPolicy {
+  return attainment;
 }
 
 /** Split a scored attempt's objective results for the results screen (§112). */

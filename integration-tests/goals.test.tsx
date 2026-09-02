@@ -7,6 +7,7 @@ import { fireEvent, screen, userEvent, waitFor } from "@testing-library/react-na
 import { renderRouter } from "expo-router/testing-library";
 import React from "react";
 
+import { attainmentPolicy } from "../src/lib/assessment/content";
 import { emptyAssessmentState } from "../src/lib/assessment/types";
 import { useProgress } from "../src/lib/store";
 
@@ -71,7 +72,7 @@ describe("goals screen (§90-97)", () => {
     expect(screen.getByText("Find your starting point")).toBeOnTheScreen();
   });
 
-  test("demonstrating one direct objective per domain flips the estimate (P9 §48)", async () => {
+  test("a perfect capstone alone does NOT complete the estimate — every domain stays partial (Phase 10 §13)", async () => {
     const objectiveResults = [
       "fr.obj.listening.short_info",
       "fr.obj.reading.short_messages",
@@ -104,9 +105,49 @@ describe("goals screen (§90-97)", () => {
     });
     renderRouter("./src/app", { initialUrl: "/goals" });
     await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
+    expect(screen.getByTestId("a1-estimate-value")).toHaveTextContent("Not complete yet");
+    // The learner can see WHY: each domain shows its authored denominator.
+    // Regexes: the chip also renders an icon glyph (a private-use character).
+    expect(screen.getByTestId("a1-domain-chip-spoken_reception")).toHaveTextContent(/Listening 1\/3/);
+    expect(screen.getByTestId("a1-domain-chip-interaction")).toHaveTextContent(/Conversation 1\/2/);
+    const detail = screen.getByTestId("a1-domain-detail");
+    expect(detail).toHaveTextContent(/Listening — 1 of 3 goals shown; still to show:/);
+    expect(detail).toHaveTextContent(/Following short announcements/);
+  });
+
+  test("demonstrating every required objective of every domain completes the estimate (Phase 10 §11)", async () => {
+    const required = attainmentPolicy().domains.flatMap((d) => d.requiredObjectiveIds);
+    const attempt = (checkpointId: string, ids: string[]) => ({
+      checkpointId,
+      checkpointVersion: 1,
+      startedAt: 1,
+      completedAt: 2,
+      itemResults: [],
+      objectiveResults: ids.map((objectiveId) => ({
+        objectiveId,
+        result: "demonstrated" as const,
+        correct: 3,
+        total: 3,
+      })),
+      overallCorrectShare: 1,
+    });
+    seedFrench({
+      assessment: {
+        placementFloor: 0,
+        checkpointAttempts: [
+          attempt("fr.checkpoint.section-3", required.filter((id) => /listening|reading/.test(id))),
+          attempt("fr.checkpoint.section-4", required.filter((id) => /speaking/.test(id))),
+          attempt("fr.checkpoint.section-5", required.filter((id) => /writing/.test(id))),
+          attempt("fr.checkpoint.section-6", required.filter((id) => /interaction/.test(id))),
+        ],
+      },
+    });
+    renderRouter("./src/app", { initialUrl: "/goals" });
+    await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
     expect(screen.getByTestId("a1-estimate-value")).toHaveTextContent(
       "Demonstrated across all five skills"
     );
+    expect(screen.queryByTestId("a1-domain-detail")).toBeNull();
   });
 
   test("placement: comfortable goals show as ESTIMATES; gaps never do (§40)", async () => {

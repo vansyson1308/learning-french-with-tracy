@@ -42,6 +42,9 @@ export default function OnboardingScreen() {
             <Pressable
               key={course.id}
               onPress={() => setCourseId(course.id)}
+              accessibilityRole="button"
+              accessibilityState={{ selected: courseId === course.id }}
+              accessibilityLabel={`${course.targetLanguage}, ${course.unitCount} units, ${course.lessonCount} lessons`}
               style={[styles.langChip, courseId === course.id && styles.langChipActive]}
             >
               <Flag courseId={course.id} size={32} />
@@ -66,6 +69,9 @@ export default function OnboardingScreen() {
             <Pressable
               key={g}
               onPress={() => setGoal(g)}
+              accessibilityRole="button"
+              accessibilityState={{ selected: goal === g }}
+              accessibilityLabel={`${g} XP a day, ${g <= 10 ? "casual" : g <= 20 ? "regular" : g <= 30 ? "serious" : "intense"}`}
               style={[styles.goalChip, goal === g && styles.goalChipActive]}
             >
               <Text style={[styles.goalText, goal === g && styles.goalTextActive]}>

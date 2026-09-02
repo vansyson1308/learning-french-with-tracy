@@ -105,6 +105,7 @@ export function evaluateWrittenAnswer(
         ...(exercise.cueFacts ?? []).flatMap((cue) => [cue.label, cue.value]),
       ].join(" "),
       knownFrench: knownFrenchVocabulary(),
+      mode: exercise.writingMode,
     });
   }
   if (answer.kind !== "form") return null;

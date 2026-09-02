@@ -2,7 +2,7 @@
  * The AI-tutor seam + practice entries (P9 §50-§64):
  *
  *  - Production tutor is DISABLED (§109) — no backend exists, the app
- *    stays 100% offline, no UI can render a tutor surface.
+ *    makes no network requests of its own, no UI can render a tutor surface.
  *  - §69 "AI cannot grade": nothing in the grading, assessment, learning,
  *    session, writing, speech or interaction layers imports the tutor
  *    module — the import graph makes tutor influence on any score,

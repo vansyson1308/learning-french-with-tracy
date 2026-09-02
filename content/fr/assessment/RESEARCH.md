@@ -212,3 +212,40 @@ Design decisions, recorded:
 - **Wording (§47).** Everywhere the estimate surfaces it is a
   "CEFR-aligned A1 estimate" from this course's own checks — never
   "Certified", "Official", or any Council of Europe endorsement.
+
+## Learner A1 attainment policy and option-order administration (Phase 10 Gates 2–3)
+
+**Attainment policy (`attainment.json`).** Phase 9's learner estimate
+counted a domain as demonstrated when *any one* direct-A1 objective in it
+carried a demonstrated verdict, while the course-claim gate knew the
+domain had two to four direct objectives. Phase 10 replaces that runtime
+inference with an authored denominator: for each of the five required
+domains, `attainment.json` lists every objective a learner must actually
+demonstrate (latest real verdict, `demonstrated`) before the domain counts.
+The default is *every essential direct-A1 objective of the domain*; the two
+non-essential direct objectives (`speaking.describe`, `writing.form_filling`)
+are excluded with a written reason. The validator refuses a policy that
+omits an essential direct objective, excludes an essential one, lists an
+objective from another domain or one not directly aligned at A1, names an
+objective no checkpoint form can demonstrate, or lets the A1 Capstone's
+one-objective-per-domain sample cover a domain's whole requirement. The
+compiled `fr-attainment.json` is the only denominator the runtime reads.
+Domain statuses are `demonstrated`, `needs_practice`, `partial`,
+`technical_unavailable` (a device that cannot score speech — a fact, never
+a verdict) and `no_evidence`; the overall estimate is shown only when the
+course is claimable *and* every domain is demonstrated. Wording remains
+"CEFR-aligned A1 estimate".
+
+**Option order at administration.** Authored MCQ banks carried the correct
+option at index 0 far above chance (Section 1: 12/12; Section 3 listening
+11/11; placement foundations 7/7). Rather than re-authoring positions —
+which would fix only today's items — scored sittings render `select`,
+`fillBlank`, `listeningComprehension` and `readingComprehension` options in
+a seeded order (checkpoint id, form id, form version, prior attempt count,
+item id; placement: stage id, per-run seed, item id). The order is stable
+within one administration, differs on the next attempt or form, needs no
+stored history, and never changes the answer. `articleSelect` keeps the
+canonical article paradigm order because that order carries meaning.
+Property tests over the real banks assert no rendered position exceeds
+half of all correct positions across twelve administrations and that every
+item's answer moves.

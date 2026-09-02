@@ -15,7 +15,7 @@
      "id": "fr-en:unit-1",
      "title": "Basics 1",
      "description": "Your very first French words and sentences. Learn people, food, drinks, and how to say what you are and what you eat.",
-     "guidebook": "## Welcome to French! 🇫🇷\n\nFrench nouns have a **gender**: they are either **masculine** (*le*) or **feminine** (*la*). You'll learn the article with each noun, so always remember it!\n\n### The verb *être* (to be)\nThis is one of the most important verbs. Here are the basics:\n- **je suis** — I am\n- **tu es** — you are (informal)\n- **il est** — he is / **elle est** — she is\n- **nous sommes** — we are\n\n### Saying what you eat and drink\nFrench uses **manger** (to eat) and **boire** (to drink):\n- *Je mange une pomme.* — I eat an apple.\n- *Je bois de l'eau.* — I drink water.\n\nNotice **de l'eau** instead of *la eau*: after *de*, the article *le/la* becomes **de l'** before a vowel.\n\n### A small but vital word\n**Oui** (yes) and **non** (no) will be your best friends in every conversation. Use them often!",
+     "guidebook": "## Welcome to French! 🇫🇷\n\nFrench nouns have a **gender**: they are either **masculine** (*le*) or **feminine** (*la*). You'll learn the article with each noun, so always remember it!\n\n### The verb *être* (to be)\nThis is one of the most important verbs. Here are the basics:\n- **je suis** — I am\n- **tu es** — you are (informal)\n- **il est** — he is / **elle est** — she is\n- **nous sommes** — we are\n\n### Saying what you eat and drink\nFrench uses **manger** (to eat) and **boire** (to drink):\n- *Je mange une pomme.* — I eat an apple.\n- *Je bois de l'eau.* — I drink water.\n\nNotice **de l'eau** (some water): it is *de la* + *eau*, and before a vowel sound *la* shortens to **l'** — so *l'eau*, never *la eau*. With a masculine noun, *de* + *le* becomes **du**: *du pain*.\n\n### A small but vital word\n**Oui** (yes) and **non** (no) will be your best friends in every conversation. Use them often!",
      "words": [
       {
        "target": "l'homme",
@@ -494,8 +494,7 @@
          "type": "wordBank",
          "id": "fr-en:u0-l1-e6",
          "direction": "targetToNative",
-         "prompt": "Il est un garçon.",
-         "audioTarget": "Il est un garçon.",
+         "prompt": "C'est un garçon.",
          "tokens": [
           "He",
           "No",
@@ -516,8 +515,7 @@
          "type": "wordBank",
          "id": "fr-en:u0-l1-e7",
          "direction": "targetToNative",
-         "prompt": "Elle est une fille.",
-         "audioTarget": "Elle est une fille.",
+         "prompt": "C'est une fille.",
          "tokens": [
           "woman",
           "I",
@@ -537,9 +535,8 @@
         {
          "type": "fillBlank",
          "id": "fr-en:u0-l1-e8",
-         "sentence": "Il est un ___.",
+         "sentence": "C'est un ___.",
          "translation": "He is a boy.",
-         "audioTarget": "Il est un garçon.",
          "options": [
           "pain",
           "garçon",
@@ -578,8 +575,7 @@
          "type": "typeAnswer",
          "id": "fr-en:u0-l1-e10",
          "mode": "translate",
-         "prompt": "Elle est une fille.",
-         "audioTarget": "Elle est une fille.",
+         "prompt": "C'est une fille.",
          "answer": "She is a girl.",
          "alternatives": []
         }
@@ -1591,7 +1587,7 @@
           "How",
           "it",
           "is",
-          "Youre"
+          "You're"
          ],
          "answer": [
           "How",
@@ -2193,7 +2189,7 @@
      "id": "fr-en:unit-3",
      "title": "Food",
      "description": "Learn essential French words for food and drink, and how to say what you want, eat, and drink.",
-     "guidebook": "Welcome to **Food**! 🥐\n\nIn French, every noun has a **gender**. Masculine nouns use *le* (or *un*), feminine nouns use *la* (or *une*). For example, *le café* (the coffee) is masculine, but *la pizza* is feminine.\n\nTo say what you want, use **je veux** (I want): *Je veux du café* — I want (some) coffee. **Du** is the partitive article, used for unspecified quantities of food and drink.\n\nTo say what you eat or drink, use **je mange** (I eat) and **je bois** (I drink): *Je mange du riz* (I eat rice), *Je bois du jus* (I drink juice).\n\n**Boire** is irregular: *je bois, tu bois, il boit*. **Manger** is regular but adds *-e* before silent endings: *je mange, tu manges*. Bon appétit! 🍽️",
+     "guidebook": "Welcome to **Food**! 🥐\n\nIn French, every noun has a **gender**. Masculine nouns use *le* (or *un*), feminine nouns use *la* (or *une*). For example, *le café* (the coffee) is masculine, but *la pizza* is feminine.\n\nTo say what you want, use **je veux** (I want): *Je veux du café* — I want (some) coffee. **Du** is the partitive article, used for unspecified quantities of food and drink.\n\nTo say what you eat or drink, use **je mange** (I eat) and **je bois** (I drink): *Je mange du riz* (I eat rice), *Je bois du jus* (I drink juice).\n\n**Boire** is irregular: *je bois, tu bois, il boit*. **Manger** is regular but keeps its *e* before *-ons* to protect the soft *g*: *nous mangeons*. Bon appétit! 🍽️",
      "words": [
       {
        "target": "le café",
@@ -2711,14 +2707,14 @@
         {
          "type": "fillBlank",
          "id": "fr-en:u2-l1-e8",
-         "sentence": "Je bois de l'eau.",
+         "sentence": "Je bois de ___.",
          "translation": "I drink water.",
          "audioTarget": "Je bois de l'eau.",
          "options": [
           "jus",
-          "leau",
           "l'eau",
-          "fromage"
+          "fromage",
+          "pain"
          ],
          "correct": 1
         },
@@ -3275,7 +3271,7 @@
      "id": "fr-en:unit-4",
      "title": "Animals",
      "description": "Learn the names of common animals in French and how to describe them simply.",
-     "guidebook": "## Animals in French 🐾\n\nWelcome! In this unit, you'll learn the names of common animals and how to describe them with simple sentences.\n\n### Gender of animal nouns\nMost animal nouns have a fixed gender. For example, **le chien** (the dog) is masculine, while **la chatte** (the female cat) is feminine. The general word **le chat** usually refers to cats in general.\n\n### Using adjectives\nFrench adjectives must agree in **gender and number** with the noun. Add **-e** for feminine (e.g., *grand → grande*) and **-s** for plural (e.g., *petit → petits*). Example: *un petit chien* → *une petite chienne*.\n\n### The verb \"être\" (to be)\nUse **être** to describe animals: *Le chien est grand* (The dog is big). Conjugation: *je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont*.\n\n### Tip\nWhen you learn an animal, also learn its article (**le** or **la**) — it helps you remember the gender naturally!",
+     "guidebook": "## Animals in French 🐾\n\nWelcome! In this unit, you'll learn the names of common animals and how to describe them with simple sentences.\n\n### Gender of animal nouns\nMost animal nouns have a fixed gender. For example, **le chien** (the dog) is masculine, while **la vache** (the cow) is feminine. A word like **le chat** refers to cats in general, whatever their sex.\n\n### Using adjectives\nFrench adjectives must agree in **gender and number** with the noun. Add **-e** for feminine (e.g., *grand → grande*) and **-s** for plural (e.g., *petit → petits*). Example: *un petit chien* → *une petite chienne*.\n\n### The verb \"être\" (to be)\nUse **être** to describe animals: *Le chien est grand* (The dog is big). Conjugation: *je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont*.\n\n### Tip\nWhen you learn an animal, also learn its article (**le** or **la**) — it helps you remember the gender naturally!",
      "words": [
       {
        "target": "le chien",
@@ -4058,14 +4054,14 @@
         {
          "type": "fillBlank",
          "id": "fr-en:u3-l2-e8",
-         "sentence": "L'oiseau vole haut.",
+         "sentence": "___ vole haut.",
          "translation": "The bird flies high.",
          "audioTarget": "L'oiseau vole haut.",
          "options": [
           "souris",
           "l'âne",
           "chat",
-          "Loiseau"
+          "L'oiseau"
          ],
          "correct": 3
         },
@@ -5471,7 +5467,7 @@
      "id": "fr-en:unit-a",
      "title": "Gender & Articles",
      "description": "Le or la? Let word endings do the work for you.",
-     "guidebook": "## Le or la? 🎯\n\nEvery French noun is **masculine** (*le*) or **feminine** (*la*). The ending often decides it — these numbers come from an analysis of **36,940 French nouns**:\n\n### Almost always feminine\n- **-tion** → *la question* (feminine 99.5% of the time)\n- **-ance / -ence** → *la chance, la confiance* (about 99%)\n- **-ité** → *la vérité, la sécurité* (97.8%)\n- **-ie** → *la vie* (96.3%)\n\n### Usually masculine\n- **-ment** → *le moment, le sentiment* (99.8%)\n- **-age** → *le voyage, le message* (98.5% — but *l'image* is feminine)\n- **-eau** → *le bureau, le cadeau* (96.7% — but *l'eau* is feminine!)\n- **-ier** → *le papier* (97.1%)\n\n### Handle with care\n- **-on** is usually masculine (*le patron*) — **but** the *-ion* and *-son* families inside it are feminine: *la question, la maison, la raison*.\n- **-eur** is usually masculine (*le docteur*) — famous feminine exceptions: *la peur, l'erreur, la couleur, la fleur*.\n\n**Habit to build:** never learn a bare noun. Learn *la maison*, not *maison*.",
+     "guidebook": "## Le or la? 🎯\n\nEvery French noun is **masculine** (*le*) or **feminine** (*la*). The ending often decides it — these numbers come from an analysis of **36,940 French nouns**:\n\n### Almost always feminine\n- **-tion** → *la question* (feminine 99.5% of the time)\n- **-ance / -ence** → *la chance, la confiance* (about 99%)\n- **-ité** → *la vérité, la sécurité* (97.8%)\n- **-ie** → *la vie* (96.3%)\n\n### Usually masculine\n- **-ment** → *le moment, le sentiment* (99.8%)\n- **-age** → *le voyage, le message* (98.5% — but *l'image*, *la page* and *la plage* are feminine)\n- **-eau** → *le bureau, le cadeau* (96.7% — but *l'eau* and *la peau* are feminine!)\n- **-ier** → *le papier* (97.1%)\n\n### Handle with care\n- **-on** is usually masculine (*le patron, le poisson, le garçon*) — **but** the *-tion/-sion* family is feminine (*la question, la télévision*), and so is the *-aison/-ison* family (*la maison, la raison, la saison*). Careful: *l'avion*, *le lion* and *le poisson* stay masculine.\n- **-eur** is usually masculine (*le docteur*) — famous feminine exceptions: *la peur, l'erreur, la couleur, la fleur*.\n\n**Habit to build:** never learn a bare noun. Learn *la maison*, not *maison*.",
      "words": [
       {
        "target": "la question",
@@ -7236,7 +7232,7 @@
      "id": "fr-en:unit-c",
      "title": "Cognates & False Friends",
      "description": "Harvest the words French shares with English — and defuse the ones that only pretend to.",
-     "guidebook": "# Words you already know — and words that lie\n\nFrench and English share thousands of words. This unit teaches you to harvest the shared ones and defuse the deceptive ones.\n\n## The -tion family\n\nOf the 16 -tion nouns in this course's corpus-derived everyday pool, 15 are the same word in English: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Across a 36,940-noun analysis they are **99.5% feminine** — say *la*.\n\n- The sound changes even when the spelling doesn't: -tion is /sjɔ̃/, never /shun/.\n- The one trap in the pool: **Félicitations !** means *Congratulations!*\n\n## The -té bridge\n\n-té usually becomes English -ty — 10 of the everyday pool's 16:\n\n- **la liberté** — liberty, freedom\n- **la réalité** — reality\n- **la société** — society · **la sécurité** — security · **l'université** — university\n\nBut six are real vocabulary, not cognates: **la santé** (health), **la vérité** (truth), **la volonté** (will), **l'été** (summer). Gender runs **91.6% feminine** (1,031 nouns measured); the masculine exceptions include **le côté** (the side) and **l'été**.\n\nFor later: French has 616 nouns in **-isme** matching English -ism — **99.8% masculine**.\n\n## False friends\n\nLearn each trap with its repair word:\n\n- **la librairie** = the bookshop → the library is **la bibliothèque**\n- **la journée** = the day(time) → a journey is **un voyage**\n- **la monnaie** = change, coins → money is **l'argent**\n- **rester** = to stay (never to rest)\n- **attendre** = to wait (never to attend)\n\nMore to watch for as you advance: *sensible* means sensitive, *actuellement* means currently.",
+     "guidebook": "# Words you already know — and words that lie\n\nFrench and English share thousands of words. This unit teaches you to harvest the shared ones and defuse the deceptive ones.\n\n## The -tion family\n\nOf the 16 -tion nouns in this course's corpus-derived everyday pool, 15 are the same word in English: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Across a 36,940-noun analysis they are **99.5% feminine** — say *la*.\n\n- The sound changes even when the spelling doesn't: -tion is /sjɔ̃/, never /shun/.\n- The one trap in the pool: **Félicitations !** means *Congratulations!*\n\n## The -té bridge\n\n-té usually becomes English -ty — 10 of the everyday pool's 16:\n\n- **la liberté** — liberty, freedom\n- **la réalité** — reality\n- **la société** — society · **la sécurité** — security · **l'université** — university\n\nBut six are real vocabulary, not cognates — for example **la santé** (health), **la vérité** (truth), **la volonté** (will), **l'été** (summer). Gender runs **91.6% feminine** (1,031 nouns measured); the masculine exceptions include **le côté** (the side) and **l'été**.\n\nFor later: French has 616 nouns in **-isme** matching English -ism — **99.8% masculine**.\n\n## False friends\n\nLearn each trap with its repair word:\n\n- **la librairie** = the bookshop → the library is **la bibliothèque**\n- **la journée** = the day(time) → a journey is **un voyage**\n- **la monnaie** = change, coins → money is **l'argent**\n- **rester** = to stay (never to rest)\n- **attendre** = to wait (never to attend)\n\nMore to watch for as you advance: *sensible* means sensitive, *actuellement* means currently.",
      "words": [
       {
        "target": "la solution",
@@ -8154,7 +8150,7 @@
      "id": "fr-en:unit-d",
      "title": "Numbers 0–100",
      "description": "The whole number system in three rules — plus the words for counting time.",
-     "guidebook": "# Numbers 0–100\n\nFrench numbers are a small system, not a hundred vocabulary items. Learn the pieces and the three famous corners.\n\n## The building blocks\n\n- 0–16 are single words: zéro, un, deux… seize.\n- 17–19 compound with dix: **dix-sept, dix-huit, dix-neuf**.\n- The tens 20–60: vingt, trente, quarante, cinquante, soixante. Units attach with a hyphen — **vingt-deux** — except at 1: **vingt et un**, trente et un… soixante et un.\n\n## The seventies\n\nThere is no French word for seventy: 70 is **soixante-dix** (sixty-ten), and the seventies keep counting through the teens — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 is the one \"et onze\": **soixante et onze**. Belgium and Switzerland say *septante* instead — recognize it, but this course teaches France French.\n\n## Four twenties\n\n80 is **quatre-vingts** — literally four twenties — and keeps its -s only when bare: **quatre-vingts**, but **quatre-vingt-un** (no \"et\" here!). The nineties ride on top through the teens again: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Belgium and Switzerland say *nonante*. And 100 is simply **cent**.\n\n## Two official spellings\n\nThe traditional orthography spaces around et (**vingt et un**); the 1990 spelling rectifications hyphenate everything (**vingt-et-un**). Both are correct and both are accepted here — this course displays the traditional forms.\n\n## Counting time\n\n- **le jour** — the day · **la journée** — the day as you live it\n- **l'heure** (f) — the hour · **la minute** — the minute\n- **la semaine** — the week · **le mois** — the month · **l'année** (f) — the year",
+     "guidebook": "# Numbers 0–100\n\nFrench numbers are a small system, not a hundred vocabulary items. Learn the pieces and the three famous corners.\n\n## The building blocks\n\n- 0–16 are single words: zéro, un, deux… seize.\n- 17–19 compound with dix: **dix-sept, dix-huit, dix-neuf**.\n- The tens 20–60: vingt, trente, quarante, cinquante, soixante. Units attach with a hyphen — **vingt-deux** — except at 1: **vingt et un**, trente et un… soixante et un.\n\n## The seventies\n\nThere is no French word for seventy: 70 is **soixante-dix** (sixty-ten), and the seventies keep counting through the teens — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 is the one \"et onze\": **soixante et onze**. Belgium and Switzerland say *septante* instead — recognize it, but this course teaches France French.\n\n## Four twenties\n\n80 is **quatre-vingts** — literally four twenties — and keeps its -s unless another number follows: **quatre-vingts** (*quatre-vingts euros*), but **quatre-vingt-un** (no \"et\" here!). The nineties ride on top through the teens again: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Belgium and Switzerland say *nonante*. And 100 is simply **cent**.\n\n## Two official spellings\n\nThe traditional orthography spaces around et (**vingt et un**); the 1990 spelling rectifications hyphenate everything (**vingt-et-un**). Both are correct and both are accepted here — this course displays the traditional forms.\n\n## Counting time\n\n- **le jour** — the day · **la journée** — the day as you live it\n- **l'heure** (f) — the hour · **la minute** — the minute\n- **la semaine** — the week · **le mois** — the month · **l'année** (f) — the year",
      "words": [
       {
        "target": "le jour",
@@ -9151,7 +9147,7 @@
      "id": "fr-en:unit-e",
      "title": "Connected French",
      "description": "Elision, liaison and the two silent h's — how written words join up in real French.",
-     "guidebook": "# Connected French\n\nWritten French keeps words apart; spoken French runs them together. Three mechanisms do the work.\n\n## Elision — the disappearing vowels\n\nBefore a vowel sound, these little words drop their vowel and take an apostrophe:\n\n- **le / la → l'** — l'eau, l'homme, l'histoire\n- **je → j'** — j'ai, j'habite\n- **ne → n'** — ce n'est pas\n- **de → d'**, **que → qu'**\n\nThis is mandatory: *je ai* is never correct.\n\n## Liaison — silent letters that wake up\n\nAfter the little words, a silent final consonant links to a following vowel:\n\n- **les amis** — the s wakes up as a z sound\n- **nous avons**, **vous êtes**, **ils ont**\n- **un petit ami** — the t links\n\nLiaison is forbidden after **et** (et ici — no link) and after a singular noun (le chat est…).\n\n## The two silent h's\n\nEvery French h is silent, but words split into two families:\n\n- **h muet** acts like a vowel: **l'histoire**, **l'homme**, **l'hôtel**, and les hommes links.\n- **h aspiré** acts like a consonant: **le héros** (never l'héros), and les héros has NO link.\n\nYou cannot hear the h itself — learn h-words with their article, and let le/l' tell you the family.",
+     "guidebook": "# Connected French\n\nWritten French keeps words apart; spoken French runs them together. Three mechanisms do the work.\n\n## Elision — the disappearing vowels\n\nBefore a vowel sound, these little words drop their vowel and take an apostrophe:\n\n- **le / la → l'** — l'eau, l'homme, l'histoire\n- **je → j'** — j'ai, j'habite\n- **ne → n'** — ce n'est pas\n- **de → d'**, **que → qu'**\n\nThis is mandatory: *je ai* is never correct.\n\n## Liaison — silent letters that wake up\n\nAfter the little words, a silent final consonant links to a following vowel:\n\n- **les amis** — the s wakes up as a z sound\n- **nous avons**, **vous êtes**, **ils ont**\n- **un petit enfant** — the t links\n\nLiaison is forbidden after **et** (et ici — no link) and after a singular noun (le chat est…).\n\n## The two silent h's\n\nEvery French h is silent, but words split into two families:\n\n- **h muet** acts like a vowel: **l'histoire**, **l'homme**, **l'hôtel**, and les hommes links.\n- **h aspiré** acts like a consonant: **le héros** (never l'héros), and les héros has NO link.\n\nYou cannot hear the h itself — learn h-words with their article, and let le/l' tell you the family.",
      "words": [
       {
        "target": "l'histoire",
@@ -11465,7 +11461,7 @@
            "text": "the ticket"
           },
           {
-           "text": "the prize money"
+           "text": "the door"
           },
           {
            "text": "the receipt"
@@ -12924,7 +12920,13 @@
          "instruction": "You bump into someone in the street. Excuse yourself.",
          "target": "Pardon",
          "acceptedVariants": [
-          "Pardon"
+          "Pardon",
+          "Excusez-moi",
+          "Pardon, madame",
+          "Pardon, monsieur",
+          "Oh, pardon",
+          "Désolé",
+          "Désolée"
          ],
          "evidenceLexemeRefs": [
           "fr:w:pardon"
@@ -13102,7 +13104,9 @@
          "instruction": "Say that you like coffee.",
          "target": "J'aime le café",
          "acceptedVariants": [
-          "J'aime le café"
+          "J'aime le café",
+          "J'adore le café",
+          "J'aime bien le café"
          ],
          "evidenceLexemeRefs": [
           "fr:w:aimer"
@@ -13299,11 +13303,16 @@
          ],
          "target": "Ça coûte trois euros",
          "acceptedVariants": [
-          "Ça coûte trois euros"
+          "Ça coûte trois euros",
+          "Ça fait trois euros",
+          "C'est trois euros",
+          "Trois euros"
          ],
          "requiredConcepts": [
           [
-           "coûte"
+           "coûte",
+           "ça fait",
+           "c'est"
           ],
           [
            "trois",
@@ -13360,7 +13369,11 @@
          ],
          "target": "Le train part à neuf heures",
          "acceptedVariants": [
-          "Le train part à neuf heures"
+          "Le train part à neuf heures",
+          "Il part à neuf heures",
+          "À neuf heures",
+          "Le train est à neuf heures",
+          "Le départ est à neuf heures"
          ],
          "requiredConcepts": [
           [
@@ -13409,7 +13422,9 @@
          "target": "Il y a sept jours dans une semaine",
          "acceptedVariants": [
           "Il y a sept jours dans une semaine",
-          "Il y a sept jours"
+          "Il y a sept jours",
+          "Une semaine a sept jours",
+          "Une semaine, c'est sept jours"
          ],
          "requiredConcepts": [
           [
@@ -13544,7 +13559,9 @@
          "target": "C'est la gare",
          "acceptedVariants": [
           "C'est la gare",
-          "C'est une gare"
+          "C'est une gare",
+          "La gare",
+          "Une gare"
          ],
          "evidenceLexemeRefs": [
           "fr:w:gare"
@@ -13561,7 +13578,7 @@
          "type": "speakProduction",
          "id": "s4-e30",
          "speechItemId": "fr.speak.n_door_closed",
-         "instruction": "Describe the door.",
+         "instruction": "Say that the door is closed.",
          "cueEmoji": "🚪🔒",
          "target": "La porte est fermée",
          "acceptedVariants": [
@@ -13688,9 +13705,9 @@
    "units": [
     {
      "id": "fr-en:unit-o",
-     "title": "Ecris qui tu es",
+     "title": "Écris qui tu es",
      "description": "Write who you are: your name, your age, where you live.",
-     "guidebook": "Writing French starts with the sentences you already SAY. Je m'appelle... (my name is), J'ai ... ans (I am ... years old), J'habite a ... (I live in). Accents are part of spelling, but while you learn, the app accepts your answer without them and shows the accented form.",
+     "guidebook": "Writing French starts with the sentences you already SAY. Je m'appelle... (my name is), J'ai ... ans (I am ... years old), J'habite à ... (I live in). Accents are part of spelling, but while you learn, the app accepts your answer without them and shows the accented form.",
      "words": [
       {
        "target": "habiter",
@@ -13716,7 +13733,7 @@
         {
          "type": "wordBank",
          "id": "s5-e1",
-         "prompt": "Arrange: my name is Lea",
+         "prompt": "Arrange: my name is Léa",
          "tokens": [
           "Léa",
           "m'appelle",
@@ -13758,7 +13775,8 @@
           "maxTokens": 12,
           "requireSentenceVerbs": [
            "m'appelle",
-           "suis"
+           "suis",
+           "c'est"
           ]
          },
          "modelAnswers": [
@@ -13927,7 +13945,8 @@
             "description": "your name",
             "variants": [
              "je m'appelle Léa",
-             "je suis Léa"
+             "je suis Léa",
+             "moi c'est Léa"
             ],
             "cueProvided": true
            },
@@ -13953,7 +13972,8 @@
           "maxTokens": 30,
           "requireSentenceVerbs": [
            "m'appelle",
-           "suis"
+           "suis",
+           "c'est"
           ]
          },
          "modelAnswers": [
@@ -14004,7 +14024,7 @@
      "id": "fr-en:unit-p",
      "title": "Des phrases simples",
      "description": "Write simple sentences about people, things and likes.",
-     "guidebook": "One subject, one verb, one thing: J'aime le cafe. Il habite a Lyon. Le chat boit du lait. Keep sentences short - that IS good A1 French.",
+     "guidebook": "One subject, one verb, one thing: J'aime le café. Il habite à Lyon. Le chat boit du lait. Keep sentences short - that IS good A1 French.",
      "words": [
       {
        "target": "aimer",
@@ -14093,11 +14113,19 @@
          "rubric": {
           "requiredSlots": [
            {
-            "id": "tea",
-            "description": "that you like tea",
+            "id": "like",
+            "description": "that you like something (j'aime)",
             "variants": [
-             "j'aime le thé",
-             "j'adore le thé"
+             "j'aime",
+             "j'adore"
+            ],
+            "cueProvided": false
+           },
+           {
+            "id": "tea",
+            "description": "the tea",
+            "variants": [
+             "thé"
             ],
             "cueProvided": false
            },
@@ -14105,7 +14133,7 @@
             "id": "bread",
             "description": "the bread",
             "variants": [
-             "le pain"
+             "pain"
             ],
             "cueProvided": false
            }
@@ -14278,7 +14306,7 @@
      "id": "fr-en:unit-q",
      "title": "Petits messages",
      "description": "Write short everyday notes: greeting, fact, closing.",
-     "guidebook": "A good A1 message has three small parts: a greeting (Bonjour, Salut), one clear fact (le train est demain a neuf heures), and a closing (A demain !). That's all a real note needs.",
+     "guidebook": "A good A1 message has three small parts: a greeting (Bonjour, Salut), one clear fact (le train est demain à neuf heures), and a closing (À demain !). That's all a real note needs.",
      "words": [
       {
        "target": "le message",
@@ -14356,11 +14384,27 @@
             "cueProvided": false
            },
            {
-            "id": "fact",
-            "description": "the café time",
+            "id": "addressee",
+            "description": "who the note is for (Marie)",
             "variants": [
-             "le café est à deux heures",
-             "café à deux heures"
+             "Marie"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "what",
+            "description": "the café",
+            "variants": [
+             "café"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "time",
+            "description": "the time (à deux heures)",
+            "variants": [
+             "à deux heures",
+             "à quatorze heures"
             ],
             "cueProvided": true
            }
@@ -14417,11 +14461,34 @@
             "cueProvided": false
            },
            {
-            "id": "fact",
-            "description": "the train time",
+            "id": "addressee",
+            "description": "who the note is for (Paul)",
             "variants": [
-             "le train est demain à neuf heures",
-             "train demain à neuf heures"
+             "Paul"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "what",
+            "description": "the train",
+            "variants": [
+             "train"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "day",
+            "description": "the day (demain)",
+            "variants": [
+             "demain"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "time",
+            "description": "the time (à neuf heures)",
+            "variants": [
+             "à neuf heures"
             ],
             "cueProvided": true
            }
@@ -14543,7 +14610,7 @@
      "id": "fr-en:unit-r",
      "title": "Formulaires et messages",
      "description": "Fill in simple forms and put your writing together.",
-     "guidebook": "Forms ask for facts, not sentences: Prenom (first name), Age, Ville (city), Jour (day). Write just the fact in each box. Then one last real message puts everything together.",
+     "guidebook": "Forms ask for facts, not sentences: Prénom (first name), Âge, Ville (city), Jour (day). Write just the fact in each box. Then one last real message puts everything together.",
      "words": [
       {
        "target": "le jour",
@@ -14734,10 +14801,34 @@
             "cueProvided": false
            },
            {
-            "id": "fact",
-            "description": "where and when",
+            "id": "addressee",
+            "description": "who the note is for (Marie)",
             "variants": [
-             "je suis au café demain à dix heures"
+             "Marie"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "where",
+            "description": "the place (café)",
+            "variants": [
+             "café"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "day",
+            "description": "the day (demain)",
+            "variants": [
+             "demain"
+            ],
+            "cueProvided": true
+           },
+           {
+            "id": "time",
+            "description": "the time (à dix heures)",
+            "variants": [
+             "à dix heures"
             ],
             "cueProvided": true
            },
@@ -14746,7 +14837,10 @@
             "description": "a closing",
             "variants": [
              "à demain",
-             "au revoir"
+             "au revoir",
+             "à bientôt",
+             "à plus",
+             "bises"
             ],
             "cueProvided": false
            }
@@ -14754,7 +14848,10 @@
           "minTokens": 8,
           "maxTokens": 26,
           "requireSentenceVerbs": [
-           "suis"
+           "suis",
+           "serai",
+           "se voit",
+           "se retrouve"
           ]
          },
          "modelAnswers": [

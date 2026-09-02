@@ -5,11 +5,13 @@
  */
 
 import {
+  AttainmentPolicySchema,
   CheckpointsSchema,
   ClaimPolicySchema,
   CourseObjectivesSchema,
   PackSchema,
   PlacementSchema,
+  type AttainmentPolicy,
   type Checkpoint,
   type Checkpoints,
   type ClaimPolicy,
@@ -70,6 +72,132 @@ export function loadCourseObjectives(): CourseObjectives {
 
 export function loadClaimPolicy(): ClaimPolicy {
   return ClaimPolicySchema.parse(readJson(CLAIM_POLICY_SOURCE));
+}
+
+export const ATTAINMENT_SOURCE = "content/fr/assessment/attainment.json";
+/** The cross-domain sampler that must never complete a domain by itself. */
+export const CAPSTONE_CHECKPOINT_ID = "fr.checkpoint.a1-capstone";
+
+export function loadAttainmentPolicy(): AttainmentPolicy {
+  return AttainmentPolicySchema.parse(readJson(ATTAINMENT_SOURCE));
+}
+
+/**
+ * Learner attainment policy rules (Phase 10 Gate 2, §10-§14):
+ *  - the policy covers exactly the claim policy's required domains, once each;
+ *  - every required/excluded objective exists, belongs to the domain, and
+ *    is DIRECTLY aligned at the policy level;
+ *  - every ESSENTIAL direct objective of the domain is required — nothing
+ *    is dropped silently; every non-essential direct objective is either
+ *    required or excluded with a written reason;
+ *  - every required objective is reachable: some checkpoint form targets it
+ *    with at least that checkpoint's minItemsPerObjective items, so a
+ *    "demonstrated" verdict is actually attainable;
+ *  - the capstone (a one-objective-per-domain sampler) never targets a
+ *    domain's whole required set — it can contribute, never complete.
+ */
+export function validateAttainmentPolicyData(input: {
+  attainment: AttainmentPolicy;
+  objectives: CourseObjectives;
+  policy: ClaimPolicy;
+  checkpoints: Checkpoints;
+}): ValidationResult {
+  const errors: string[] = [];
+  const err = (m: string) => errors.push(`attainment: ${m}`);
+  const { attainment, policy } = input;
+  const known = new Map(input.objectives.objectives.map((o) => [o.id, o]));
+  const level = attainment.level;
+
+  if (!policy.evaluatedLevels.includes(level)) {
+    err(`level ${level} is not an evaluated claim level (${policy.evaluatedLevels.join(", ")})`);
+  }
+  const seenDomains = new Set<string>();
+  for (const d of attainment.domains) {
+    if (seenDomains.has(d.domain)) err(`domain ${d.domain} declared twice`);
+    seenDomains.add(d.domain);
+    if (!policy.requiredDomains.includes(d.domain)) {
+      err(`domain ${d.domain} is not a claim-policy required domain`);
+    }
+  }
+  for (const required of policy.requiredDomains) {
+    if (!seenDomains.has(required)) err(`required domain ${required} has no attainment policy`);
+  }
+
+  const isDirectAtLevel = (id: string) =>
+    known.get(id)?.cefrAlignments.some((a) => a.level === level && a.relation === "direct") ??
+    false;
+
+  // Reachability: objective → max items targeting it inside a single form
+  // of a single checkpoint, compared against that checkpoint's floor.
+  const reachable = new Set<string>();
+  const capstoneTargets = new Set<string>();
+  for (const cp of input.checkpoints.checkpoints) {
+    const forms =
+      cp.forms && cp.forms.length > 0
+        ? cp.forms
+        : [{ formId: "full", itemIds: cp.items.map((i) => i.id) }];
+    for (const form of forms) {
+      const ids = new Set(form.itemIds);
+      const perObjective = new Map<string, number>();
+      for (const item of cp.items) {
+        if (!ids.has(item.id)) continue;
+        for (const oid of item.objectiveTargets) {
+          perObjective.set(oid, (perObjective.get(oid) ?? 0) + 1);
+          if (cp.id === CAPSTONE_CHECKPOINT_ID) capstoneTargets.add(oid);
+        }
+      }
+      for (const [oid, count] of perObjective) {
+        if (count >= cp.criteria.minItemsPerObjective) reachable.add(oid);
+      }
+    }
+  }
+
+  for (const d of attainment.domains) {
+    const required = new Set<string>();
+    for (const id of d.requiredObjectiveIds) {
+      if (required.has(id)) err(`${d.domain}: ${id} listed twice`);
+      required.add(id);
+      const o = known.get(id);
+      if (!o) {
+        err(`${d.domain}: unknown objective ${id}`);
+        continue;
+      }
+      if (o.category !== d.domain) err(`${d.domain}: ${id} belongs to ${o.category}`);
+      if (!isDirectAtLevel(id)) err(`${d.domain}: ${id} is not directly aligned at ${level}`);
+      if (!reachable.has(id)) {
+        err(
+          `${d.domain}: ${id} is required but no checkpoint form carries enough items to demonstrate it — the estimate could never be completed`
+        );
+      }
+    }
+    const excluded = new Set<string>();
+    for (const ex of d.excludedObjectiveIds) {
+      if (required.has(ex.objectiveId)) err(`${d.domain}: ${ex.objectiveId} both required and excluded`);
+      excluded.add(ex.objectiveId);
+      const o = known.get(ex.objectiveId);
+      if (!o) {
+        err(`${d.domain}: unknown excluded objective ${ex.objectiveId}`);
+        continue;
+      }
+      if (o.category !== d.domain) err(`${d.domain}: excluded ${ex.objectiveId} belongs to ${o.category}`);
+      if (o.essential) {
+        err(`${d.domain}: ${ex.objectiveId} is ESSENTIAL and cannot be excluded from attainment`);
+      }
+    }
+    for (const o of input.objectives.objectives) {
+      if (o.category !== d.domain || !isDirectAtLevel(o.id)) continue;
+      if (required.has(o.id) || excluded.has(o.id)) continue;
+      err(
+        `${d.domain}: direct-${level} objective ${o.id} is neither required nor explicitly excluded — nothing may be omitted silently`
+      );
+    }
+    if (required.size > 0 && [...required].every((id) => capstoneTargets.has(id))) {
+      err(
+        `${d.domain}: the capstone targets every required objective — a one-sitting sampler must never be able to complete a domain by itself`
+      );
+    }
+  }
+  return { errors, warnings: [] };
 }
 
 /**
@@ -483,8 +611,28 @@ export function validateAssessment(): ValidationResult {
       `placement: schema validation failed — ${(e as Error).message.split("\n")[0]}`,
     ];
   }
+  let attainmentErrors: string[] = [];
+  try {
+    attainmentErrors = validateAttainmentPolicyData({
+      attainment: loadAttainmentPolicy(),
+      objectives,
+      policy,
+      checkpoints: loadCheckpoints(),
+    }).errors;
+  } catch (e) {
+    attainmentErrors = [
+      `attainment: schema validation failed — ${(e as Error).message.split("\n")[0]}`,
+    ];
+  }
   return {
-    errors: [...graph.errors, ...claim.errors, ...mapping.errors, ...checkpointErrors, ...placementErrors],
+    errors: [
+      ...graph.errors,
+      ...claim.errors,
+      ...mapping.errors,
+      ...checkpointErrors,
+      ...placementErrors,
+      ...attainmentErrors,
+    ],
     warnings: [],
   };
 }
