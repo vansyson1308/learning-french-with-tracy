@@ -1,0 +1,382 @@
+{
+  "version": 1,
+  "pipelineVersion": 1,
+  "note": "Bundled course audio for every word, phrase and sentence the packs reference. Every voice is a candidate until the dispatch-only pack-audio workflow (recon) double-downloads it, pins its hashes, reads its MODEL_CARD and applies the license gate FAIL-CLOSED; the canary ASR audit then selects one eligible voice per course. Model weights are used on the runner and never committed. Courses whose language has no Piper voice keep no bundled audio and use the device's text-to-speech (policy device-tts).",
+  "piperTts": {
+    "package": "piper-tts",
+    "pinnedVersion": "1.2.0"
+  },
+  "voicesRepository": "https://huggingface.co/rhasspy/piper-voices",
+  "voicesRevision": "v1.0.0",
+  "licenseGate": {
+    "note": "Same posture as the reception pipeline (CC BY 4.0 / CC BY-SA 4.0 accepted, share-alike deliberately accepted because the project already publishes derived data under CC BY-SA 4.0 with an in-app attributions screen) plus CC0 / public-domain datasets, which are strictly more permissive. AGPL/GPL/NC/ND remain denied. A voice whose card matches nothing is excluded, never guessed.",
+    "allow": [
+      "CC BY 4.0",
+      "CC-BY-4.0",
+      "CC BY 4",
+      "cc-by-4.0",
+      "CC BY-SA 4.0",
+      "CC-BY-SA-4.0",
+      "creativecommons.org/licenses/by/4.0",
+      "creativecommons.org/licenses/by-sa/4.0",
+      "CC0",
+      "CC0 1.0",
+      "creativecommons.org/publicdomain/zero/1.0",
+      "public domain"
+    ],
+    "deny": [
+      "AGPL",
+      "GPL",
+      "NC",
+      "ND",
+      "non-commercial",
+      "noncommercial"
+    ]
+  },
+  "courses": {
+    "de-en": {
+      "policy": "generated",
+      "language": "de",
+      "voiceId": null,
+      "candidates": [
+        "de_DE-thorsten-medium",
+        "de_DE-mls-medium"
+      ]
+    },
+    "es-en": {
+      "policy": "generated",
+      "language": "es",
+      "voiceId": null,
+      "candidates": [
+        "es_ES-davefx-medium",
+        "es_ES-sharvard-medium"
+      ]
+    },
+    "fr-en": {
+      "policy": "generated",
+      "language": "fr",
+      "voiceId": null,
+      "candidates": [
+        "fr_FR-siwis-medium"
+      ]
+    },
+    "it-en": {
+      "policy": "generated",
+      "language": "it",
+      "voiceId": null,
+      "candidates": [
+        "it_IT-paola-medium"
+      ]
+    },
+    "pt-en": {
+      "policy": "generated",
+      "language": "pt",
+      "voiceId": null,
+      "candidates": [
+        "pt_BR-faber-medium",
+        "pt_BR-cadu-medium",
+        "pt_BR-jeff-medium"
+      ]
+    },
+    "zh-en": {
+      "policy": "generated",
+      "language": "zh",
+      "voiceId": null,
+      "candidates": [
+        "zh_CN-huayan-medium"
+      ]
+    },
+    "ja-en": {
+      "policy": "device-tts",
+      "language": "ja",
+      "reason": "rhasspy/piper-voices v1.0.0 ships no Japanese voice; the legacy recordings have no traceable license, so the course uses the device's own Japanese text-to-speech voice (expo-speech) instead of bundled audio."
+    },
+    "ko-en": {
+      "policy": "device-tts",
+      "language": "ko",
+      "reason": "rhasspy/piper-voices v1.0.0 ships no Korean voice; the legacy recordings have no traceable license, so the course uses the device's own Korean text-to-speech voice (expo-speech) instead of bundled audio."
+    }
+  },
+  "voices": [
+    {
+      "id": "de_DE-thorsten-medium",
+      "language": "de",
+      "note": "Thorsten Müller's German voice; primary German candidate",
+      "files": {
+        "model": {
+          "path": "de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "de/de_DE/thorsten/medium/de_DE-thorsten-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "de/de_DE/thorsten/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "de_DE-mls-medium",
+      "language": "de",
+      "note": "Multilingual LibriSpeech German; fallback candidate",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "es_ES-davefx-medium",
+      "language": "es",
+      "note": "Castilian Spanish; primary candidate",
+      "files": {
+        "model": {
+          "path": "es/es_ES/davefx/medium/es_ES-davefx-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "es/es_ES/davefx/medium/es_ES-davefx-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "es/es_ES/davefx/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "es_ES-sharvard-medium",
+      "language": "es",
+      "note": "Castilian Spanish (Harvard sentences); fallback candidate",
+      "files": {
+        "model": {
+          "path": "es/es_ES/sharvard/medium/es_ES-sharvard-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "es/es_ES/sharvard/medium/es_ES-sharvard-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "es/es_ES/sharvard/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "fr_FR-siwis-medium",
+      "language": "fr",
+      "note": "French; the voice already pinned for reception clips so course words and listening clips share one speaker",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "fr/fr_FR/siwis/medium/fr_FR-siwis-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/siwis/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "it_IT-paola-medium",
+      "language": "it",
+      "note": "Italian; the only medium-quality Italian voice",
+      "files": {
+        "model": {
+          "path": "it/it_IT/paola/medium/it_IT-paola-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "it/it_IT/paola/medium/it_IT-paola-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "it/it_IT/paola/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "pt_BR-faber-medium",
+      "language": "pt",
+      "note": "Brazilian Portuguese (the course uses pt-BR); primary candidate",
+      "files": {
+        "model": {
+          "path": "pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "pt/pt_BR/faber/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "pt_BR-cadu-medium",
+      "language": "pt",
+      "note": "Brazilian Portuguese; fallback candidate",
+      "files": {
+        "model": {
+          "path": "pt/pt_BR/cadu/medium/pt_BR-cadu-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "pt/pt_BR/cadu/medium/pt_BR-cadu-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "pt/pt_BR/cadu/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "pt_BR-jeff-medium",
+      "language": "pt",
+      "note": "Brazilian Portuguese; fallback candidate",
+      "files": {
+        "model": {
+          "path": "pt/pt_BR/jeff/medium/pt_BR-jeff-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "pt/pt_BR/jeff/medium/pt_BR-jeff-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "pt/pt_BR/jeff/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "zh_CN-huayan-medium",
+      "language": "zh",
+      "note": "Mandarin (Simplified); the only medium-quality Chinese voice",
+      "files": {
+        "model": {
+          "path": "zh/zh_CN/huayan/medium/zh_CN-huayan-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "zh/zh_CN/huayan/medium/zh_CN-huayan-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "zh/zh_CN/huayan/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    }
+  ],
+  "restoreAudioTargets": {
+    "fr-en": [
+      {
+        "exerciseId": "fr-en:u0-l1-e6",
+        "text": "C'est un garçon."
+      },
+      {
+        "exerciseId": "fr-en:u0-l1-e7",
+        "text": "C'est une fille."
+      },
+      {
+        "exerciseId": "fr-en:u0-l1-e8",
+        "text": "C'est un garçon."
+      },
+      {
+        "exerciseId": "fr-en:u0-l1-e10",
+        "text": "C'est une fille."
+      }
+    ]
+  }
+}

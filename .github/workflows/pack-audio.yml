@@ -1,0 +1,174 @@
+# Developer-dispatched pack-audio pipeline (V1 publication program, Part II).
+#
+# NOT part of the CI gate and can never run automatically: exactly one
+# trigger, workflow_dispatch (same posture as reception-audio.yml). It exists
+# because the interactive build environment cannot reach huggingface.co,
+# while GitHub-hosted runners can. Model weights are downloaded to the
+# runner, verified, USED, and discarded — never committed.
+#
+# Modes:
+#   recon     Download every candidate voice TWICE (both copies must hash
+#             identically), parse each MODEL_CARD, apply the license gate
+#             FAIL-CLOSED, synthesize a canary sample per candidate, run the
+#             ASR audit, select one voice per course, commit pins + cards +
+#             reports + registry entries.
+#   generate  Verify pins, synthesize every audio string of every generated
+#             course plus the three sound effects, run technical QA (strict)
+#             + the ASR audit, install the assets, regenerate the runtime
+#             manifest, re-bless the audio baseline, recompile content, and
+#             commit.
+name: Pack audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "recon | generate"
+        required: true
+        type: choice
+        options: [recon, generate]
+      courses:
+        description: "comma-separated course ids (generate needs every generated course)"
+        required: false
+        default: "de-en,es-en,fr-en,it-en,pt-en,zh-en"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pack-audio
+  cancel-in-progress: false
+
+jobs:
+  audio:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      HF_BASE: https://huggingface.co/rhasspy/piper-voices/resolve
+      DL: /tmp/pack-voices
+      WAV: /tmp/pack-wav
+      OUT: /tmp/pack-mp3
+      SFX: /tmp/pack-sfx
+      PLAN: /tmp/pack-plan.json
+      ASR: /tmp/pack-asr.json
+      COURSES: ${{ inputs.courses }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11 # same pin as ci.yml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+
+      - name: Download pinned voices
+        run: |
+          set -euo pipefail
+          mkdir -p "$DL"
+          REV=$(bun -e 'const m=require("./content/audio/pack-audio-manifest.json");console.log(m.voicesRevision)')
+          bun scripts/pack-audio.ts download-list --mode "${{ inputs.mode }}" --courses "$COURSES" | while IFS=$'\t' read -r voice kind relpath copies; do
+            [ -z "$voice" ] && continue
+            for copy in $(seq 1 "$copies"); do
+              echo "downloading $voice.$kind (copy $copy)"
+              curl -fSL --retry 3 --retry-delay 10 -o "$DL/$voice.$kind.$copy" "$HF_BASE/$REV/$relpath?download=true"
+            done
+          done
+          ls -la "$DL"
+
+      - name: Recon — pin hashes + license gate (fail closed)
+        if: inputs.mode == 'recon'
+        run: bun scripts/pack-audio.ts recon --downloads "$DL" --courses "$COURSES"
+
+      - name: Verify pins (fail closed on upstream drift)
+        if: inputs.mode == 'generate'
+        run: bun scripts/pack-audio.ts verify --downloads "$DL" --courses "$COURSES"
+
+      - name: Install piper-tts (pinned) + ffmpeg
+        run: |
+          set -euo pipefail
+          PIPER_VERSION=$(bun -e 'const m=require("./content/audio/pack-audio-manifest.json");console.log(m.piperTts.pinnedVersion)')
+          pip install "piper-tts==$PIPER_VERSION"
+          sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+          piper --version || true
+
+      - name: Synthesize
+        run: |
+          set -euo pipefail
+          MODE=$([ "${{ inputs.mode }}" = "recon" ] && echo canary || echo generate)
+          bun scripts/pack-audio.ts plan --mode "$MODE" --courses "$COURSES" --out "$PLAN"
+          bun scripts/pack-audio.ts synth-script --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" > /tmp/synth.sh
+          bash /tmp/synth.sh
+          ls "$OUT" | wc -l
+
+      - name: ASR audit (faster-whisper, technical signal only)
+        run: |
+          set -euo pipefail
+          pip install "faster-whisper==1.0.3" requests
+          python3 scripts/audio-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model base
+
+      - name: Canary QA + voice selection
+        if: inputs.mode == 'recon'
+        run: |
+          set -euo pipefail
+          bun scripts/pack-audio.ts qa --plan "$PLAN" --outdir "$OUT" --report content/reports/pack-audio-canary.json --asr "$ASR"
+          bun scripts/pack-audio.ts select --report content/reports/pack-audio-canary.json --courses "$COURSES"
+
+      - name: Sound effects + strict QA + install assets
+        if: inputs.mode == 'generate'
+        run: |
+          set -euo pipefail
+          bun scripts/pack-audio.ts sfx-script --out "$SFX" > /tmp/sfx.sh
+          bash /tmp/sfx.sh
+          bun scripts/pack-audio.ts qa --plan "$PLAN" --outdir "$OUT" --report content/reports/pack-audio-quality.json --asr "$ASR" --strict true
+          bun scripts/pack-audio.ts apply --plan "$PLAN" --outdir "$OUT" --sfx "$SFX"
+          bun scripts/check-audio.ts --write-baseline
+          bun scripts/compile-content.ts
+          bun scripts/validate-content.ts
+          bun scripts/check-audio.ts
+
+      - name: Upload run artifact (audio for audit)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pack-audio-${{ inputs.mode }}
+          path: |
+            /tmp/pack-mp3
+            /tmp/pack-sfx
+            /tmp/pack-asr.json
+            /tmp/pack-plan.json
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Commit results to the dispatched branch
+        run: |
+          set -euo pipefail
+          git config user.name "pack-audio workflow"
+          git config user.email "actions@users.noreply.github.com"
+          for p in content/audio content/reports content/sources/registry.json assets/audio assets/sfx src/content content/courses ATTRIBUTIONS.md; do
+            if [ -e "$p" ]; then git add -A -- "$p"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          {
+            echo "Pack audio ${{ inputs.mode }}: pinned-source pipeline output"
+            echo
+            echo "Dispatch-only workflow run ${{ github.run_id }} (mode: ${{ inputs.mode }}, courses: $COURSES)."
+            echo "Voices pinned in content/audio/pack-audio-manifest.json; model weights were"
+            echo "used on the runner and never committed."
+          } > /tmp/commit-msg.txt
+          git commit -F /tmp/commit-msg.txt
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:${{ github.ref_name }}"; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) — rebasing onto the moved branch"
+            git fetch origin "${{ github.ref_name }}"
+            git rebase "origin/${{ github.ref_name }}"
+            sleep $((attempt * 5))
+          done
+          git push origin "HEAD:${{ github.ref_name }}"
