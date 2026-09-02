@@ -1,8 +1,17 @@
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { haptics } from "@/lib/haptics";
 import { radius, useThemeColors, type ThemeColors } from "@/lib/theme";
+
+/** Spoken suffix + non-colour glyph per outcome (Phase 10 §36/§39: never colour alone). */
+const STATE_CUE: Record<OptionState, { label: string; icon: keyof typeof Ionicons.glyphMap | null }> = {
+  idle: { label: "", icon: null },
+  selected: { label: ", selected", icon: null },
+  correct: { label: ", correct", icon: "checkmark-circle" },
+  wrong: { label: ", not correct", icon: "close-circle" },
+};
 
 export type OptionState = "idle" | "selected" | "correct" | "wrong";
 
@@ -39,6 +48,7 @@ export function OptionCard({
   compact,
 }: OptionCardProps) {
   const c = stateColors(useThemeColors())[state];
+  const cue = STATE_CUE[state];
   return (
     <Pressable
       onPress={() => {
@@ -46,6 +56,9 @@ export function OptionCard({
         onPress();
       }}
       disabled={disabled}
+      accessibilityRole="button"
+      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${cue.label}`}
+      accessibilityState={{ disabled: !!disabled, selected: state === "selected" }}
       style={({ pressed }) => [
         styles.card,
         compact ? styles.compact : styles.full,
@@ -60,6 +73,9 @@ export function OptionCard({
       <View style={styles.textWrap}>
         <Text style={[styles.text, { color: c.text }]}>{text}</Text>
       </View>
+      {cue.icon ? (
+        <Ionicons name={cue.icon} size={20} color={c.text} style={styles.cueIcon} />
+      ) : null}
     </Pressable>
   );
 }
@@ -87,5 +103,6 @@ const styles = StyleSheet.create({
   },
   emoji: { fontSize: 34 },
   textWrap: { flexShrink: 1 },
+  cueIcon: { marginLeft: 4 },
   text: { fontSize: 17, fontWeight: "700", textAlign: "center" },
 });

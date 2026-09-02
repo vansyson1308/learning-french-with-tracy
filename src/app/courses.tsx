@@ -36,6 +36,9 @@ export default function CoursesScreen() {
                 setActiveCourse(course.id);
                 exitScreen();
               }}
+              accessibilityRole="button"
+              accessibilityState={{ selected: active }}
+              accessibilityLabel={`${course.targetLanguage}, ${lessonsDone} of ${course.lessonCount} lessons done${active ? ", active course" : ""}`}
               style={[styles.card, active && styles.cardActive]}
             >
               <Flag courseId={course.id} size={44} />

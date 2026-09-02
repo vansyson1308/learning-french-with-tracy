@@ -40,12 +40,12 @@ export function ReadingPassage({
         block.kind === "line" ? (
           <View key={i} style={styles.lineRow}>
             <Text style={styles.speaker}>{block.speaker}</Text>
-            <Text style={styles.lineText} maxFontSizeMultiplier={1.6}>
+            <Text style={styles.lineText} maxFontSizeMultiplier={2}>
               {block.text}
             </Text>
           </View>
         ) : (
-          <Text key={i} style={styles.paragraph} maxFontSizeMultiplier={1.6}>
+          <Text key={i} style={styles.paragraph} maxFontSizeMultiplier={2}>
             {block.text}
           </Text>
         )
