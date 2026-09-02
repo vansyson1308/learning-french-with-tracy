@@ -1,0 +1,75 @@
+# Phase 10 native gate: build a release-configuration Android APK on a
+# GitHub-hosted runner (this sandbox has no Android SDK), then read the
+# merged manifest and targetSdkVersion FROM THE ARTIFACT. Dispatch-only:
+# it never runs on push, never uploads to a store, uses no secrets, and
+# signs with the Expo template's debug keystore — an installable QA
+# artifact, not a distribution build.
+name: Android release build (QA artifact)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref to build"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Release identity gate (must stay BLOCKED for store profiles; QA build is internal)
+        run: bun run release:identity
+      - name: Generate the native project (CNG)
+        run: bunx expo prebuild --platform android --no-install --clean
+      - name: Record effective SDK levels
+        run: |
+          echo "## Android build inputs" >> "$GITHUB_STEP_SUMMARY"
+          grep -E "targetSdk|compileSdk|minSdk|buildTools|ndkVersion|agp" node_modules/react-native/gradle/libs.versions.toml | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Build release APK (debug-signed QA artifact)
+        working-directory: android
+        run: ./gradlew :app:assembleRelease --no-daemon --stacktrace
+      - name: Inspect the artifact (badging, permissions, target SDK)
+        run: |
+          APK=$(ls android/app/build/outputs/apk/release/*.apk | head -1)
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          mkdir -p artifact-report
+          "$BT/aapt2" dump badging "$APK" > artifact-report/badging.txt
+          "$BT/aapt2" dump permissions "$APK" > artifact-report/permissions.txt
+          "$BT/aapt2" dump xmltree --file AndroidManifest.xml "$APK" > artifact-report/manifest-xmltree.txt
+          cp android/app/build/intermediates/merged_manifests/release/*/AndroidManifest.xml artifact-report/merged-AndroidManifest.xml 2>/dev/null || cp android/app/build/intermediates/merged_manifest/release/AndroidManifest.xml artifact-report/merged-AndroidManifest.xml 2>/dev/null || true
+          ls -la "$APK" | tee artifact-report/size.txt
+          {
+            echo "## Artifact"
+            grep -E "^package:|targetSdkVersion|sdkVersion:|uses-permission" artifact-report/badging.txt
+            echo
+            echo "APK size: $(stat -c %s "$APK") bytes"
+          } >> "$GITHUB_STEP_SUMMARY"
+          cp "$APK" artifact-report/
+      - name: Fail if targetSdk is below 36 or a removed permission came back
+        run: |
+          set -e
+          grep -q "targetSdkVersion:'36'" artifact-report/badging.txt
+          ! grep -qE "FOREGROUND_SERVICE|SYSTEM_ALERT_WINDOW|READ_EXTERNAL_STORAGE|WRITE_EXTERNAL_STORAGE" artifact-report/permissions.txt
+          echo "targetSdk 36 confirmed; no removed permission present"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-release-qa
+          path: artifact-report
+          retention-days: 30
