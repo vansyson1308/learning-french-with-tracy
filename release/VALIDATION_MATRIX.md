@@ -43,7 +43,7 @@ perform; "Both" rows have an automated part and a device part.
 | VoiceOver / TalkBack / large text / contrast / reduce motion | rows A1–A15 | NOT STARTED | `ACCESSIBILITY_FINAL.md` |
 | Memory plateau, temp-audio cleanup on device | soak blocks 1–8 | NOT STARTED | `SOAK_REPORT.md` |
 | Store accounts, EAS project, signing keys | owner setup | NOT STARTED | `PUBLISHING_RUNBOOK.md` C–D |
-| Public privacy URL returns 200; support contact public | Pages deploy on `main` + `verify` job (`scripts/verify-site.sh`: 200 over HTTPS, product name, support email, no stale branding, viewport) | deployed (deployment 6316645993 success, PR #20); runner-side HTTP verification pending its first run; support email set | `PUBLICATION_STATUS.md` |
+| Public privacy URL returns 200; support contact public | Pages deploy on `main` + `verify` job (`scripts/verify-site.sh`: 200 over HTTPS, product name, support email, no stale branding, viewport) | **pass** — Pages run 34164579825 / job 101873083688 on 2026-09-07: all seven pages 200 over HTTPS; support email present on the privacy and support pages | `PUBLICATION_STATUS.md` |
 | Closed test 12 × 14 days; production access | Play Console | NOT STARTED | `ANDROID_CLOSED_TEST_PLAN.md` |
 
 ## D. Coverage summary

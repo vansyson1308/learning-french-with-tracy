@@ -4,6 +4,7 @@
 # github.io). Exit 1 on any failure. Usage: scripts/verify-site.sh [base-url]
 set -u
 BASE="${1:-https://vansyson1308.github.io/learning-french-with-tracy}"
+BASE="${BASE%/}"
 EMAIL="$(node -e "process.stdout.write(require('./release/support-contact.json').email || '')" 2>/dev/null || true)"
 NAME="Learning French with Tracy"
 fail=0
