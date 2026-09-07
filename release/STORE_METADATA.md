@@ -1,5 +1,7 @@
 # Store metadata audit and truth check (Phase 10 §63, §66)
 
+> **Superseded.** The upstream listing texts this note describes were replaced: `release/STORE_METADATA_FINAL.md` is the v1 listing, and the machine-readable drafts under `metadata/` and `store.config.example.json` now mirror it (name, subtitle, description, keywords, support and privacy URLs, support email). Kept as a record of what the fork inherited.
+
 ## What the repository contains
 
 `metadata/app-info/en-US.json`, `metadata/version/1.0.0/en-US.json` and

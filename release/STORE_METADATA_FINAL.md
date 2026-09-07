@@ -26,7 +26,7 @@ users/ratings, any comparison to other apps by name.
 | Name (App Store 30 / Play 30) | Learning French with Tracy |
 | Subtitle (App Store, 30) | Learn French offline, free |
 | Short description (Play, 80) | Free French course: lessons, listening, speaking, writing — offline, no ads. |
-| Bundle ID / package | per `release/identity.json` after confirmation |
+| Bundle ID / package | `com.vansyson1308.learningfrenchwithtracy` (confirmed by the owner on 2026-09-08; `release/identity.json`) |
 | Category | Education (primary); Play: Education |
 | Price | Free · no in-app purchases |
 | Ads | None (Play "Contains ads": No; App Store no ad identifier) |
@@ -35,7 +35,7 @@ users/ratings, any comparison to other apps by name.
 | Privacy policy URL | https://vansyson1308.github.io/learning-french-with-tracy/privacy/ (live only after the site deploys; verify HTTP 200 before submission) |
 | Support URL | https://vansyson1308.github.io/learning-french-with-tracy/support/ |
 | Marketing URL | https://vansyson1308.github.io/learning-french-with-tracy/ |
-| Support email / phone | **OWNER** |
+| Support email / phone | `duymank250997@gmail.com` (owner-supplied 2026-09-08; provisional, may change in a later release) / phone **OWNER** |
 | Seller / developer name | **OWNER** (personal accounts show the legal name) |
 | Copyright | **OWNER** ("© year name"; the app's code is MIT, derivative of Lingo Lessons by Open Apps Studio — keep the notice in the listing's description or licenses page, see below) |
 

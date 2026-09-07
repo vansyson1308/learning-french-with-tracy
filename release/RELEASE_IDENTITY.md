@@ -1,5 +1,7 @@
 # Release identity audit (Phase 10 Gate 1)
 
+> **Superseded on 2026-09-08.** This is the Phase 10 audit of the *inherited* identity and is kept as history. The owner approved the personal identity set and it was applied with `scripts/apply-identity.ts migrate` (see `ANDROID_RC2_BASELINE.md`, `release/identity.json`): the app is now **Learning French with Tracy**, `com.vansyson1308.learningfrenchwithtracy`, version 1.0.0 build 1, with no upstream Expo owner, EAS project id or App Store Connect id.
+
 **STORE DISTRIBUTION IDENTITY = BLOCKED** until the owner records
 confirmation in `release/identity.json`.
 

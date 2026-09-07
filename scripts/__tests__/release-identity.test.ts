@@ -73,8 +73,25 @@ describe("fail-closed behaviour", () => {
   });
 
   test("an unknown profile defaults to store distribution and is refused", () => {
+    const result = evaluateReleaseIdentity({ record, app, eas, buildProfile: "unlisted-profile" });
+    expect(isStoreProfile(eas, "unlisted-profile")).toBe(true);
+    expect(result.ok).toBe(false);
+  });
+
+  test("the preview profile is internal distribution (direct APK) and is permitted while stores stay blocked", () => {
+    expect(eas.build.preview.distribution).toBe("internal");
+    expect(eas.build.preview.android.buildType).toBe("apk");
+    expect(eas.build.preview.developmentClient).toBe(false);
+    expect(isStoreProfile(eas, "preview")).toBe(false);
     const result = evaluateReleaseIdentity({ record, app, eas, buildProfile: "preview" });
-    expect(isStoreProfile(eas, "preview")).toBe(true);
+    expect(result.ok).toBe(true);
+  });
+
+  test("the production profile is a store profile (app bundle) and stays refused until distribution is allowed", () => {
+    expect(eas.build.production.android.buildType).toBe("app-bundle");
+    expect(isStoreProfile(eas, "production")).toBe(true);
+    if (record.storeDistribution === "allowed") return;
+    const result = evaluateReleaseIdentity({ record, app, eas, buildProfile: "production" });
     expect(result.ok).toBe(false);
   });
 
@@ -87,7 +104,11 @@ describe("fail-closed behaviour", () => {
   });
 
   test("an unconfirmed record cannot declare store distribution allowed", () => {
-    const inconsistent: IdentityRecord = { ...record, storeDistribution: "allowed" };
+    const inconsistent: IdentityRecord = {
+      ...record,
+      ownership: { status: "unconfirmed", confirmedBy: null, confirmedOn: null, evidence: [] },
+      storeDistribution: "allowed",
+    };
     const result = evaluateReleaseIdentity({ record: inconsistent, app, eas });
     expect(result.ok).toBe(false);
     expect(result.storeDistribution).toBe("BLOCKED");

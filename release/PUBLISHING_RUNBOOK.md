@@ -21,8 +21,8 @@ that carries its evidence.
 
 | Step | Who | Command / evidence |
 |---|---|---|
-| B1. Confirm the identifier set ONCE | OWNER | reply YES to the OWNER DECISION block (display name, iOS bundle id, Android package, Expo slug, URL scheme) |
-| B2. Apply the migration | REPO | `bun scripts/apply-identity.ts --name "…" --slug … --scheme … --ios … --android …` (rewrites app.json/eas.json, resets version to 1.0.0 build 1, records `release/identity.json`, removes upstream EAS linkage); then `bun run test` (identity tests re-pin) and `bun run release:identity` |
+| B1. Confirm the identifier set ONCE | OWNER | **DONE 2026-09-08** — display name Learning French with Tracy, iOS bundle id and Android package `com.vansyson1308.learningfrenchwithtracy`, Expo slug `learning-french-with-tracy`, URL scheme `learningfrenchtracy` |
+| B2. Apply the migration | REPO | **DONE** — `bun scripts/apply-identity.ts migrate --name "Learning French with Tracy" --slug learning-french-with-tracy --scheme learningfrenchtracy --ios com.vansyson1308.learningfrenchwithtracy --android com.vansyson1308.learningfrenchwithtracy --confirmed-by "project owner" --confirmed-on 2026-09-08 --evidence "…"` (dry run reviewed first; rewrote app.json/eas.json, reset version to 1.0.0 build 1, recorded `release/identity.json`, removed the upstream Expo owner, EAS project id and ASC id) |
 | B3. Store records | OWNER | create the App Store Connect app and the Play Console app with the SAME identifiers (`APPLE_ACCOUNT_SETUP.md`, `GOOGLE_PLAY_ACCOUNT_SETUP.md`) — a bundle id/package cannot be changed after upload |
 
 ## C. Accounts and fees (never paid from here)
@@ -31,16 +31,16 @@ that carries its evidence.
 |---|---|---|
 | C1. Apple Developer Program (individual) enrolled and active | OWNER | `APPLE_ACCOUNT_SETUP.md` |
 | C2. Google Play Console personal developer account verified | OWNER | `GOOGLE_PLAY_ACCOUNT_SETUP.md` |
-| C3. Expo account for EAS (free tier is enough for v1 volumes) | OWNER | `eas whoami` on the owner's machine |
+| C3. Expo account for EAS (free tier is enough for v1 volumes) | OWNER | `eas whoami` on the owner's machine (the automation environment is not logged in and holds no token) |
 
 ## D. Build service and signing
 
 | Step | Who | Command / evidence |
 |---|---|---|
-| D1. Create the EAS project under the owner's account | OWNER (on their machine) | `bunx eas login` then `bunx eas init` — writes `extra.eas.projectId` into app.json; commit that change; **never** commit an `EXPO_TOKEN` or put one in the repo |
+| D1. Create the EAS project under the owner's account | OWNER | Route A (owner's machine): `npx eas-cli login`, then `npx eas-cli init --account <expo-username>` in the repository — it writes `extra.eas.projectId` into app.json; run `bun scripts/apply-identity.ts link --eas-project-id <uuid> --evidence "…"` (no `--allow-store` until Play exists) and commit. Route B (automation): store a personal access token from expo.dev as the `EXPO_TOKEN` **repository secret** (never in git) and dispatch `eas-build.yml` with `init: true`, which runs `eas init --account <username> --non-interactive`; the workflow prints the id and the same `link` command is run afterwards. Both routes: `ANDROID_RC2.md` |
 | D2. Version source | REPO | eas.json `appVersionSource: local` (set by B2); build numbers move only through `bun run release:bump` (`VERSIONING.md`) |
 | D3. iOS signing | OWNER | let EAS manage the distribution certificate and provisioning profile (`eas credentials` → iOS → managed); nothing is stored in the repo |
-| D4. Android upload key | OWNER | **Play App Signing** with an EAS-managed upload keystore (`eas credentials` → Android → generate new keystore, managed remotely) is the recommended path: the app-signing key lives with Google, the upload key with EAS under the owner's account, and neither is ever created in an ephemeral environment or committed. If the owner prefers a self-held key: generate it on their own machine (`keytool -genkeypair -v -keystore upload.jks -alias upload -keyalg RSA -keysize 2048 -validity 10000`), back it up offline, and upload it to EAS credentials — the `.jks` stays out of git (`.gitignore` already excludes `*.jks`, `*.p8`, `*.p12`, `*.key`) |
+| D4. Android signing key | OWNER / EAS | For the internal RC line (`preview` profile) EAS generates and stores the keystore on the first build (`eas build` interactively asks "Generate a new Android Keystore?" → yes; in `--non-interactive` mode EAS CLI generates it automatically). That keystore is the app's signing identity for every later RC (`ANDROID_SIGNING.md`: fingerprint recorded, never rotated casually). For Play: **Play App Signing** with this same keystore as the upload key is the recommended path; a self-held key is optional (`keytool -genkeypair -v -keystore upload.jks -alias upload -keyalg RSA -keysize 2048 -validity 10000`, backed up offline, uploaded to EAS credentials) — `.gitignore` already excludes `*.jks`, `*.p8`, `*.p12`, `*.key` |
 | D5. Direct-APK signing key (optional, Part X) | OWNER | a second long-lived key for GitHub Releases APKs, created and kept on the owner's machine, added as the `ANDROID_RELEASE_KEYSTORE_BASE64` / `…_PASSWORD` / `…_KEY_ALIAS` / `…_KEY_PASSWORD` repository secrets; the release workflow reads secrets only, never a file in the tree |
 
 ## E. Release candidate
@@ -50,7 +50,7 @@ that carries its evidence.
 | E1. Cut the RC commit | REPO | tag `v1.0.0-rc.N` on the release branch head; `RC_HISTORY.md` gets a row: commit, tag, `expo.version`, build number, artifacts and their SHA-256 |
 | E2. Web tier proof | REPO | `bunx expo export --platform web --output-dir dist && bun run e2e:web dist && bun run e2e:guide dist` (CI runs both) |
 | E3. Android QA artifact | REPO | dispatch `android-release-build.yml` (debug-signed QA APK; permissions and targetSdk 36 verified from the artifact) |
-| E4. Store builds | OWNER | `bunx eas build --profile production --platform ios` and `--platform android` (or `--platform all`); record build ids and artifact hashes from the EAS page in `RC_HISTORY.md` |
+| E4. Internal RC build (Android, permanent identity) | OWNER / REPO | `npx eas-cli build --platform android --profile preview` (internal distribution, direct-install APK, EAS-managed keystore) — or dispatch `eas-build.yml` once `EXPO_TOKEN` is a repository secret. Store builds (`--profile production`, app bundle) stay refused by the identity gate until `storeDistribution` is `allowed`. Record build id, artifact URL, SHA-256, size, certificate fingerprint in `ANDROID_RC2.md` / `RC_HISTORY.md` |
 | E5. Device acceptance on this RC | OWNER (+ testers) | `DEVICE_ACCEPTANCE.md` matrices; `SOAK_REPORT.md` device blocks; `ACCESSIBILITY_FINAL.md` rows — DEVICE ACCEPTED requires zero open P0/P1 |
 | E6. Any fix → new RC | REPO | fix, `bun run release:bump`, tag `rc.N+1`, repeat E2–E5 for the affected rows |
 
@@ -58,8 +58,8 @@ that carries its evidence.
 
 | Step | Who | Evidence |
 |---|---|---|
-| F1. Website live | REPO/OWNER | Pages deploys on push to `main` (`pages.yml`). The first deploy (run 33663402880) failed exactly this way — "Create Pages site failed: Resource not accessible by integration" — so the owner enables Settings → Pages → Build and deployment → Source: **GitHub Actions** once, then re-runs the Pages workflow; verify `curl -sI https://vansyson1308.github.io/learning-french-with-tracy/privacy/` → 200 |
-| F2. Listings | OWNER | `STORE_METADATA_FINAL.md` copied field by field; owner-supplied fields filled (support email/phone, seller name, copyright) |
+| F1. Website live | REPO/OWNER | Pages was enabled by the owner on 2026-09-08 (Settings → Pages → Source: GitHub Actions); `pages.yml` deploys on every push to `main` that touches the site sources. Verify from outside the automation sandbox (which cannot reach github.io): `curl -sI https://vansyson1308.github.io/learning-french-with-tracy/privacy/` → 200; the deployment is also visible in the repository's Deployments (environment `github-pages`) |
+| F2. Listings | OWNER | `STORE_METADATA_FINAL.md` copied field by field; support email `duymank250997@gmail.com` is already filled in; still owner-supplied: support phone, seller name, copyright line |
 | F3. Screenshots | OWNER | `SCREENSHOT_MANIFEST.md` from the FINAL RC build; record the build number on each set |
 | F4. Privacy declarations | OWNER | `PRIVACY_FINAL.md`: App Privacy = Data Not Collected; Play Data safety per the recorded answers; Ads = No; content rating questionnaires; target audience 13+ |
 | F5. Review information | OWNER | reviewer notes from `PRIVACY_FINAL.md` (no login; speech uses the OS service; how to reach each feature) |
