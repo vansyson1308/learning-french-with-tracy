@@ -1,0 +1,24 @@
+# Verify the deployed GitHub Pages site over real HTTPS from a runner with
+# internet access (the automation sandbox cannot reach github.io).
+# Dispatch-only; read-only; no secrets.
+name: Site verify
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Site base URL"
+        required: false
+        default: "https://vansyson1308.github.io/learning-french-with-tracy"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the live pages (HTTP 200, HTTPS, product name, support email, no stale branding, viewport)
+        run: scripts/verify-site.sh "${{ inputs.base_url }}"
