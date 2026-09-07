@@ -32,7 +32,7 @@ users/ratings, any comparison to other apps by name.
 | Ads | None (Play "Contains ads": No; App Store no ad identifier) |
 | Age rating | Apple questionnaire: no objectionable content → 4+; Play IARC questionnaire: no violence/sexual content/language/gambling/user interaction → Everyone / PEGI 3 |
 | Target audience (Play) | 13 and over (not designed for children — no children-specific requirements claimed) |
-| Privacy policy URL | https://vansyson1308.github.io/learning-french-with-tracy/privacy/ (live only after the site deploys; verify HTTP 200 before submission) |
+| Privacy policy URL | https://vansyson1308.github.io/learning-french-with-tracy/privacy/ (live — HTTP 200 over HTTPS verified on 2026-09-07 by Pages run 34164579825; the same check runs after every deploy) |
 | Support URL | https://vansyson1308.github.io/learning-french-with-tracy/support/ |
 | Marketing URL | https://vansyson1308.github.io/learning-french-with-tracy/ |
 | Support email / phone | `duymank250997@gmail.com` (owner-supplied 2026-09-08; provisional, may change in a later release) / phone **OWNER** |
