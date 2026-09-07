@@ -41,6 +41,7 @@ wait_text() { # text, seconds, dump-name -> 0/1
   while [ "$i" -lt "$secs" ]; do
     dump_ui "$name"
     ui_has "$t" "$name" && return 0
+    dismiss_dialogs
     sleep 2; i=$((i+2))
   done
   return 1
@@ -75,12 +76,21 @@ selected_state() { # content-desc prefix, dump-name -> prints selected="…" of 
   dump_ui "$2"; grep -o "<node [^>]*content-desc=\"$1[^\"]*\"[^>]*>" "$OUT/$2.xml" | grep -o 'selected="[a-z]*"' | head -1
 }
 swipe_up() { adb shell input swipe 540 1900 540 600 400; sleep 1; }
+dismiss_dialogs() { # system "X isn't responding" (ANR) dialogs from the emulator's own apps hide everything
+  dump_ui dlg
+  if grep -qiE "isn.t responding|has stopped|keeps stopping" "$OUT/dlg.xml" 2>/dev/null; then
+    note "   system dialog visible: $(grep -oiE '[^"]*isn.t responding[^"]*|[^"]*has stopped[^"]*' "$OUT/dlg.xml" | head -1) → dismissing"
+    tap_text "Wait" dlg2 exact || tap_text "Close app" dlg2 exact || tap_text "OK" dlg2 exact || true
+    sleep 2
+  fi
+}
 deeplink() { adb shell am start -W -a android.intent.action.VIEW -d "\"$SCHEME://$1\"" "$PKG" >/dev/null 2>&1; }
 
 note "== device"; adb shell getprop ro.build.version.release; adb shell getprop ro.build.version.sdk; adb shell wm size
 note "== install"; adb install -r "$APK" 2>&1 | tail -1
 if adb shell pm list packages | grep -q "^package:$PKG$"; then row "install" PASS "$(adb shell dumpsys package "$PKG" | grep -E 'versionName|versionCode' | head -2 | tr -s ' \n' ' ')"; else row "install" FAIL "package not present"; fi
 adb logcat -c 2>/dev/null || true
+note "== settle after boot"; sleep 15; dismiss_dialogs; adb shell input keyevent KEYCODE_HOME; sleep 2; dismiss_dialogs
 note "== cold launch"; adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
 if wait_text "Daily XP goal" 60 launch; then row "cold launch → onboarding" PASS "'Daily XP goal' visible"; else row "cold launch → onboarding" FAIL "onboarding text not found in 60 s (alive=$(alive && echo yes || echo no))"; fi
 shot 01-onboarding
@@ -90,6 +100,7 @@ row "launcher activity" "$([ -n "$LABEL" ] && echo PASS || echo FAIL)" "$LABEL"
 note "== onboarding: French → Learn French"
 texts launch
 onboard() {
+  dismiss_dialogs
   tap_text "French, " onb1 exact || tap_text "French" onb1 exact; sleep 1.5
   note "   French card selected: $(selected_state 'French,' onb1sel)"
   swipe_up; swipe_up; texts onb2
