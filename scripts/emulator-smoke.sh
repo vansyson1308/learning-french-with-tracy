@@ -30,7 +30,7 @@ for m in re.finditer(r'<node [^>]*>', x):
     for k in ("text", "content-desc"):
         v = re.search(k + r'="([^"]*)"', n)
         if v and v.group(1).strip() and v.group(1) not in seen: seen.append(v.group(1))
-print("   visible:", " | ".join(t[:40] for t in seen[:30]))
+print("   visible:", " | ".join(t[:40] for t in seen[:60]))
 PY
 }
 ui_has() { # text, dump-name
@@ -45,12 +45,12 @@ wait_text() { # text, seconds, dump-name -> 0/1
   done
   return 1
 }
-tap_text() { # text (matches text= or content-desc= case-insensitively), dump-name
-  local t="$1" name="$2"
+tap_text() { # text (matches text= or content-desc= case-insensitively), dump-name, [exact]
+  local t="$1" name="$2" mode="${3:-any}"
   dump_ui "$name"
-  python3 - "$OUT/$name.xml" "$t" <<'PY'
+  python3 - "$OUT/$name.xml" "$t" "$mode" <<'PY'
 import re, sys, subprocess
-xml = open(sys.argv[1], encoding="utf-8", errors="replace").read(); want = sys.argv[2].lower()
+xml = open(sys.argv[1], encoding="utf-8", errors="replace").read(); want = sys.argv[2].lower(); mode = sys.argv[3]
 best = None
 for m in re.finditer(r'<node [^>]*>', xml):
     node = m.group(0)
@@ -58,6 +58,7 @@ for m in re.finditer(r'<node [^>]*>', xml):
     t = (text.group(1) if text else "").strip().lower(); d = (desc.group(1) if desc else "").strip().lower()
     exact = want in (t, d) or d.startswith(want + ",") or d.startswith(want + " ")
     contains = want in t or want in d
+    if mode == "exact" and not exact: continue
     if not contains: continue
     b = re.search(r'bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"', node)
     if not b: continue
@@ -70,6 +71,10 @@ subprocess.run(["adb","shell","input","tap",str(best[1]),str(best[2])], check=Fa
 PY
 }
 alive() { adb shell pidof "$PKG" 2>/dev/null | grep -qE '[0-9]'; }
+selected_state() { # content-desc prefix, dump-name -> prints selected="…" of that node
+  dump_ui "$2"; grep -o "<node [^>]*content-desc=\"$1[^\"]*\"[^>]*>" "$OUT/$2.xml" | grep -o 'selected="[a-z]*"' | head -1
+}
+swipe_up() { adb shell input swipe 540 1900 540 600 400; sleep 1; }
 deeplink() { adb shell am start -W -a android.intent.action.VIEW -d "\"$SCHEME://$1\"" "$PKG" >/dev/null 2>&1; }
 
 note "== device"; adb shell getprop ro.build.version.release; adb shell getprop ro.build.version.sdk; adb shell wm size
@@ -85,8 +90,14 @@ row "launcher activity" "$([ -n "$LABEL" ] && echo PASS || echo FAIL)" "$LABEL"
 note "== onboarding: French → Learn French"
 texts launch
 onboard() {
-  tap_text "French" onb1; sleep 1.5; texts onb1
-  tap_text "Learn French" onb2 || tap_text "Start learning" onb2; sleep 3; texts onb2
+  tap_text "French, " onb1 exact || tap_text "French" onb1 exact; sleep 1.5
+  note "   French card selected: $(selected_state 'French,' onb1sel)"
+  swipe_up; swipe_up; texts onb2
+  if ! tap_text "Learn French" onb2 exact; then
+    note "   'Learn French' not visible after scrolling; button candidates: $(grep -oiE 'text="(Learn [A-Za-z]+|Start learning)"[^>]*bounds="[^"]*"' "$OUT/onb2.xml" | head -3 | tr '\n' ' ')"
+    tap_text "Start learning" onb2b exact && note "   tapped 'Start learning' (course not selected?)"
+  fi
+  sleep 3; texts onb3
 }
 onboard
 landed() { wait_text "Studied French before?" 20 learn || wait_text "Section 1" 5 learn || wait_text "Today" 5 learn; }
