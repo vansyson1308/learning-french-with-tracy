@@ -1,23 +1,30 @@
 {
   "cli": {
     "version": ">= 16.0.1",
-    "appVersionSource": "remote"
+    "appVersionSource": "local"
   },
   "build": {
     "development": {
       "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
       "distribution": "internal",
-      "autoIncrement": true
+      "developmentClient": false,
+      "android": {
+        "buildType": "apk"
+      }
     },
     "production": {
-      "autoIncrement": true
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
+      }
     }
   },
   "submit": {
     "production": {
-      "ios": {
-        "ascAppId": "6781818623"
-      }
+      "ios": {}
     },
     "development": {}
   }

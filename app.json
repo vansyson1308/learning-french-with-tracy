@@ -1,14 +1,15 @@
 {
   "expo": {
-    "name": "Lingo Lessons",
-    "slug": "lingo",
-    "version": "1.1.0",
+    "name": "Learning French with Tracy",
+    "slug": "learning-french-with-tracy",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "lingo",
+    "scheme": "learningfrenchtracy",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "bundleIdentifier": "com.ahmet.lingo",
+      "bundleIdentifier": "com.vansyson1308.learningfrenchwithtracy",
+      "buildNumber": "1",
       "icon": "./assets/images/icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -38,7 +39,8 @@
       }
     },
     "android": {
-      "package": "com.ahmet.lingo",
+      "package": "com.vansyson1308.learningfrenchwithtracy",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#1D4ED8",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -94,12 +96,8 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "owner": "ahmet909",
     "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "c5e5ee9a-1aac-4b7c-ba0f-a97897c4d348"
-      }
+      "router": {}
     }
   }
 }

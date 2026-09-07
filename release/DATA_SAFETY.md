@@ -48,4 +48,4 @@ Phase 10 and verified on the merged manifest.
 ## Owner-supplied items
 
 - Privacy policy URL (text: `release/PRIVACY_POLICY.md`).
-- Developer contact email shown on the listing.
+- Developer contact email shown on the listing — `duymank250997@gmail.com` (owner-supplied 2026-09-08, provisional).

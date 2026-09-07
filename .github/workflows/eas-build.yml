@@ -1,0 +1,176 @@
+# Android RC builds on EAS under the OWNER's Expo project (Android RC2
+# program). Dispatch-only: never runs on push, never submits to a store.
+#
+# Requirements (all owner-controlled, none in git):
+#   - repository secret EXPO_TOKEN: a personal access token from expo.dev
+#     (Account settings → Access tokens). The workflow refuses to run
+#     without it and never prints it.
+#   - the identity gate: `production` (store profile) is refused while
+#     release/identity.json keeps storeDistribution "blocked"; `preview`
+#     (internal distribution, direct-install APK) is permitted.
+#
+# One-time project creation: dispatch with `init_account` = the Expo
+# username or organisation. When app.json carries no EAS project id the
+# workflow runs `eas init --account <name> --non-interactive`, records the
+# new id with scripts/apply-identity.ts link (store distribution stays
+# blocked), and pushes that commit to the dispatched branch before building.
+#
+# Signing: EAS generates and stores the Android keystore on the first
+# non-interactive build and reuses it afterwards (release/ANDROID_SIGNING.md).
+# The certificate fingerprint is printed so continuity can be checked on
+# every RC; private key material never leaves EAS.
+name: EAS build (Android RC)
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: "EAS build profile"
+        type: choice
+        options: [preview, production]
+        default: preview
+      init_account:
+        description: "Expo account (username/org) to create or link the EAS project under — only when app.json has no projectId yet"
+        required: false
+        default: ""
+      wait:
+        description: "Wait for the build, download and verify the APK"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write # only used to push the one-time `eas init` commit
+
+concurrency:
+  group: eas-build-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  EAS_CLI: npx --yes eas-cli@23.2.0
+  EXPECTED_PACKAGE: com.vansyson1308.learningfrenchwithtracy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Refuse to run without the owner's EXPO_TOKEN secret
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "::error::EXPO_TOKEN repository secret is not set (Settings → Secrets and variables → Actions). Create a token at expo.dev → Account settings → Access tokens."
+            exit 1
+          fi
+          echo "EXPO_TOKEN present (length hidden)"
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Expo account
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: $EAS_CLI whoami
+      - name: expo-doctor (runs here with full network)
+        run: npx --yes expo-doctor@1.20.4
+      - name: Release identity gate for this profile (store profiles fail closed)
+        env:
+          EAS_BUILD_PROFILE: ${{ inputs.profile }}
+        run: bun run release:identity
+      - name: Create or link the owner's EAS project (one-time)
+        if: ${{ inputs.init_account != '' }}
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          ACCOUNT: ${{ inputs.init_account }}
+        run: |
+          set -e
+          HAS_ID=$(node -e "const a=require('./app.json').expo; process.stdout.write(a.extra && a.extra.eas && a.extra.eas.projectId ? 'yes' : 'no')")
+          if [ "$HAS_ID" = "yes" ]; then
+            echo "app.json already carries an EAS project id; nothing to initialise"
+            exit 0
+          fi
+          $EAS_CLI init --account "$ACCOUNT" --non-interactive
+          ID=$(node -e "process.stdout.write(require('./app.json').expo.extra.eas.projectId)")
+          echo "EAS project id: $ID"
+          bun scripts/apply-identity.ts link --eas-project-id "$ID" --evidence "eas init --account $ACCOUNT (non-interactive) via eas-build.yml run $GITHUB_RUN_ID"
+          bun run release:identity
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app.json release/identity.json
+          git commit -m "EAS: record the owner's EAS project id (eas init --account $ACCOUNT)" -m "Written by eas-build.yml run $GITHUB_RUN_ID. Store distribution stays blocked."
+          git push origin HEAD:"${GITHUB_REF#refs/heads/}"
+          {
+            echo "## EAS project"
+            echo "- account: $ACCOUNT"
+            echo "- project id: \`$ID\`"
+            echo "- recorded by commit $(git rev-parse HEAD)"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Refuse to build without a linked EAS project id
+        run: |
+          node -e "const a=require('./app.json').expo; if(!(a.extra&&a.extra.eas&&a.extra.eas.projectId)){console.error('app.json has no extra.eas.projectId — dispatch once with init_account, or run eas init on the owner machine and commit'); process.exit(1)}; console.log('EAS project id', a.extra.eas.projectId)"
+      - name: Build on EAS
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          PROFILE: ${{ inputs.profile }}
+          WAIT: ${{ inputs.wait }}
+        run: |
+          set -e
+          if [ "$WAIT" = "true" ]; then
+            $EAS_CLI build --platform android --profile "$PROFILE" --non-interactive --json > eas-build.json
+          else
+            $EAS_CLI build --platform android --profile "$PROFILE" --non-interactive --no-wait --json > eas-build.json
+          fi
+          node -e "
+            const b = require('./eas-build.json'); const x = Array.isArray(b) ? b[0] : b;
+            const out = { id: x.id, status: x.status, appVersion: x.appVersion, appBuildVersion: x.appBuildVersion, sdkVersion: x.sdkVersion, gitCommitHash: x.gitCommitHash, buildProfile: x.buildProfile, distribution: x.distribution, createdAt: x.createdAt, completedAt: x.completedAt, artifactUrl: x.artifacts && x.artifacts.buildUrl, applicationArchiveUrl: x.artifacts && x.artifacts.applicationArchiveUrl, projectId: x.project && x.project.id, buildPage: x.project && x.project.slug && x.project.ownerAccount ? 'https://expo.dev/accounts/' + x.project.ownerAccount.name + '/projects/' + x.project.slug + '/builds/' + x.id : undefined };
+            require('fs').writeFileSync('build-facts.json', JSON.stringify(out, null, 2)); console.log(JSON.stringify(out, null, 2));
+          "
+          {
+            echo "## EAS build"
+            echo '```json'; cat build-facts.json; echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Download and verify the APK
+        if: ${{ inputs.wait }}
+        run: |
+          set -e
+          URL=$(node -e "const f=require('./build-facts.json'); process.stdout.write(f.artifactUrl||f.applicationArchiveUrl||'')")
+          STATUS=$(node -e "process.stdout.write(require('./build-facts.json').status||'')")
+          if [ "$STATUS" != "FINISHED" ] && [ "$STATUS" != "finished" ]; then echo "::error::build status is $STATUS"; exit 1; fi
+          [ -n "$URL" ] || { echo "::error::no artifact URL in the build result"; exit 1; }
+          mkdir -p rc-artifact
+          curl -sSL --retry 4 -o rc-artifact/app.apk "$URL"
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$BT/aapt2" dump badging rc-artifact/app.apk > rc-artifact/badging.txt
+          "$BT/aapt2" dump permissions rc-artifact/app.apk > rc-artifact/permissions.txt
+          "$BT/apksigner" verify --verbose --print-certs rc-artifact/app.apk > rc-artifact/apksigner.txt
+          sha256sum rc-artifact/app.apk | tee rc-artifact/sha256.txt
+          stat -c %s rc-artifact/app.apk | tee rc-artifact/size.txt
+          PKG=$(grep -oP "^package: name='\K[^']+" rc-artifact/badging.txt)
+          [ "$PKG" = "$EXPECTED_PACKAGE" ] || { echo "::error::package is $PKG, expected $EXPECTED_PACKAGE"; exit 1; }
+          grep -q "targetSdkVersion:'36'" rc-artifact/badging.txt || { echo "::error::targetSdkVersion is not 36"; exit 1; }
+          grep -q "versionName='1.0.0'" rc-artifact/badging.txt || { echo "::error::versionName is not 1.0.0"; exit 1; }
+          ! grep -qE "FOREGROUND_SERVICE|SYSTEM_ALERT_WINDOW|READ_EXTERNAL_STORAGE|WRITE_EXTERNAL_STORAGE" rc-artifact/permissions.txt || { echo "::error::a removed permission came back"; exit 1; }
+          grep -q "Verifies" rc-artifact/apksigner.txt || { echo "::error::apksigner did not verify the signature"; exit 1; }
+          if grep -q "application-debuggable" rc-artifact/badging.txt; then echo "DEBUGGABLE=yes" | tee rc-artifact/debuggable.txt; else echo "DEBUGGABLE=no" | tee rc-artifact/debuggable.txt; fi
+          cp build-facts.json rc-artifact/
+          {
+            echo "## APK"
+            grep -E "^package:|targetSdkVersion|sdkVersion:|application-label:|application-debuggable" rc-artifact/badging.txt
+            echo; echo "permissions:"; cat rc-artifact/permissions.txt
+            echo; echo "sha256: $(cut -d' ' -f1 rc-artifact/sha256.txt)"; echo "size: $(cat rc-artifact/size.txt) bytes"
+            echo; echo "signer certificate:"; grep -E "Signer #1 certificate (SHA-256|DN)|Verifies|Verified using" rc-artifact/apksigner.txt
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: ${{ inputs.wait }}
+        with:
+          name: android-rc-${{ inputs.profile }}
+          path: rc-artifact
+          retention-days: 90

@@ -29,7 +29,7 @@ Thank you for testing. This page tells you how to install the test build, what t
 
 For each problem: what you did, what you expected, what happened, your device model and OS version, and the app version shown on the Profile screen. Screenshots help.
 
-Use the templates on GitHub Issues: **Bug report**, **Audio or speech problem**, **Accessibility issue**, **French correction** — or the support email if you were given one.
+Use the templates on GitHub Issues: **Bug report**, **Audio or speech problem**, **Accessibility issue**, **French correction** — or the support email, duymank250997@gmail.com.
 
 Speech problems: tell us the French you said (as text) and what the app displayed under "I heard:". That is all we need.
 

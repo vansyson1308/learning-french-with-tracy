@@ -11,9 +11,9 @@ everything else is in `docs/USER_GUIDE_VALIDATION.md` (guide walk),
 
 | Item | Value |
 |---|---|
-| Build under test | RC from `release/RC_HISTORY.md` — write its build number / versionCode here: ______ |
+| Build under test | **RC2** — version 1.0.0, versionCode 1, `com.vansyson1308.learningfrenchwithtracy` (`ANDROID_RC2.md`; not built until gate G1). Android runs are driven packet by packet from `ANDROID_DEVICE_ACCEPTANCE_PACKETS.md` |
 | iPhone install | TestFlight invitation (after Apple enrollment) — `APPLE_ACCOUNT_SETUP.md` |
-| Android install | Play internal-testing link, or the signed `.apk` attached to the GitHub Release for the same commit (`PUBLISHING_RUNBOOK.md` §Direct APK) |
+| Android install | the RC2 APK from the EAS build (`ANDROID_RC2.md` §4–§5): `adb install app.apk` after checking its SHA-256; later, the Play internal-testing link |
 | Minimum OS | iOS 16.4 · Android 7.0 (API 24) |
 | Time | ~90 minutes per device for the full matrix; the beta testers do the persona flows only |
 

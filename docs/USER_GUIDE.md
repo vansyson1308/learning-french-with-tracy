@@ -178,4 +178,4 @@ Profile → **Licenses & attributions** (*Software notices and data sources.*) l
 
 ## 36. Support and contact
 
-The Support page on the website has the FAQ and the contact routes; bug reports go to GitHub Issues with templates for bugs, audio or speech problems, accessibility issues and French corrections. Never send voice recordings.
+The Support page on the website has the FAQ and the contact routes; bug reports go to GitHub Issues with templates for bugs, audio or speech problems, accessibility issues and French corrections. The support email is duymank250997@gmail.com (it may change in a later version; the Support page always shows the current one). Never send voice recordings.

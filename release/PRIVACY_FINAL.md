@@ -63,6 +63,6 @@ Facts: educational language app; no violence, sexual content, profanity, drugs, 
 ## Owner-supplied fields (never invented)
 
 - Hosted privacy policy URL — becomes real when GitHub Pages is enabled (`PUBLICATION_STATUS.md`).
-- Public support email (`release/support-contact.json`).
+- Public support email — supplied 2026-09-08: `duymank250997@gmail.com` (provisional; `release/support-contact.json`).
 - App Review contact name/phone/email.
 - Play developer contact email/phone.
