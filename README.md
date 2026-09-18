@@ -34,6 +34,7 @@ language courses inherited from the base remain available.
 - Where v1 stands: `release/PUBLICATION_STATUS.md`; how it gets to the stores: `release/PUBLISHING_RUNBOOK.md`; what a phone must still prove: `release/DEVICE_ACCEPTANCE.md`
 - Release records (readiness, privacy, accessibility, audio provenance, soak, store metadata, screenshots, RC ledger): `release/`
 - Android RC2 (permanent identity → signed APK → phone acceptance): `release/ANDROID_RC2.md`, `release/ANDROID_SIGNING.md`, `release/ANDROID_DEVICE_ACCEPTANCE_PACKETS.md`, baseline `release/ANDROID_RC2_BASELINE.md`
+- Security: whole-repository audit `release/SECURITY_AUDIT_2026-09-18.md` (findings, verified controls, proposed patches); secrets and licences `release/SECURITY_AUDIT.md`
 
 ## Build
 
