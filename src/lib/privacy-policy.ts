@@ -11,8 +11,8 @@
  * on some devices, and the boundary is stated instead.
  */
 
-export const PRIVACY_POLICY_VERSION = "1.0";
-export const PRIVACY_POLICY_EFFECTIVE = "2026-09-02";
+export const PRIVACY_POLICY_VERSION = "1.1";
+export const PRIVACY_POLICY_EFFECTIVE = "2026-09-18";
 
 export type PolicySection = { title: string; paragraphs: string[] };
 
@@ -28,6 +28,7 @@ export const PRIVACY_POLICY_SECTIONS: readonly PolicySection[] = [
     title: "What stays on your device",
     paragraphs: [
       "Learning progress: which lessons you finished, points and streaks, spaced-repetition scheduling for words you have met, the results of the French checks you take, your placement result, and settings such as theme and daily goal. This is stored in the app's private storage and is not sent anywhere by the app.",
+      "Device backups: on iPhone, a backup of your phone (iCloud or a computer) can include the app's private storage under Apple's own backup terms; on Android the app opts out of automatic app-data backup, so your progress is copied off the phone only when you export a backup yourself.",
       "The French dictionary bundled with the app (word data, pronunciation, examples) is read-only content; using it records nothing about you.",
       "Nothing you write in writing practice is stored beyond checking your answer and showing you feedback; it is not kept in progress data.",
     ],

@@ -1,0 +1,26 @@
+# Weekly dependency proposals (release/SECURITY_AUDIT_2026-09-18.md §5.2).
+# - github-actions: every `uses:` is pinned to a commit SHA with a version
+#   comment; Dependabot moves the SHA and the comment together.
+# - bun: package.json / bun.lock. Expo, React Native and their scoped
+#   packages move as one group because they are released in lockstep.
+# Security advisories arrive through the same mechanism once Dependabot
+# alerts and security updates are switched on in the repository settings
+# (owner action, audit §4).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      expo:
+        patterns:
+          - "expo*"
+          - "@expo/*"
+          - "react-native*"
+          - "@react-native/*"

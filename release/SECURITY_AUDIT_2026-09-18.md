@@ -33,6 +33,10 @@ Nothing here blocks the Android RC2 program or a store submission; M1–M3
 are worth doing before the app is public on a store because that is when
 the repository becomes a target.
 
+Update, same day: every repository-side patch in §5 is applied in PR #27
+(§8 records what is fixed, what only the owner can change in the GitHub
+settings, and what is accepted as is).
+
 ## 2. Findings
 
 Severity scale: P0 = exploitable now / data loss / privacy breach; Medium =
@@ -242,7 +246,7 @@ a fact to know, no action required.
 3. Settings → Rules: the `main` ruleset from M2.
 4. Settings → General → Features: Issues on (M1).
 
-## 5. Proposed patches (not applied by this audit)
+## 5. Patches (proposed by the audit; applied in PR #27 — status in §8)
 
 ### 5.1 `SECURITY.md`
 
@@ -352,3 +356,47 @@ the job summary).
 | App code | grep for network clients, analytics SDKs, `eval` / `innerHTML` / `WebView` / `Linking.openURL`, `console.*`, string-built SQL, deep-link parameter handling | clean (§3) |
 | Static site | scripts, inline handlers, external resources, escaping in `scripts/build-site.ts` | clean; I3 |
 | Repository settings | REST API without authentication | public, `main` unprotected, Issues disabled, no `SECURITY.md`, no `dependabot.yml` — M1, M2 |
+
+## 8. Remediation status (2026-09-18, PR #27)
+
+| Finding | Status | Where |
+|---|---|---|
+| M1 disclosure route | **Repository side done**: `SECURITY.md` (private vulnerability reporting preferred; the support mailbox with "SECURITY" in the subject as the fallback; no public issues, no recordings; acknowledgement within 7 days). **Owner**: switch on Issues and private vulnerability reporting (§4) | `SECURITY.md`, README pointer |
+| M2 unprotected `main` | **Owner only** — a ruleset on `main` is a repository setting, not a file (§4) | — |
+| M3 mutable action tags | **Fixed**: all 41 `uses:` across the 11 workflows are pinned to a full commit SHA with the version tag kept as a comment; `.github/dependabot.yml` (github-actions weekly) moves the SHA and the comment together. Each SHA is the commit GitHub's own runner resolved for that tag in this repository's job logs ("Set up job" → `Download action repository … (SHA:…)`: checkout, setup-bun, setup-python and upload-artifact from run 33231288258; download-artifact, setup-java and android-emulator-runner from the emulator-smoke runs; configure-pages, upload-pages-artifact and deploy-pages from the Pages runs) — not copied from a third party. `eas-build.yml` no longer uses `actions/setup-node` (that workflow has never run here, so no runner-resolved SHA existed; the runner image's own Node ≥ 20 serves `npx eas-cli`) | `.github/workflows/*.yml`, `.github/dependabot.yml` |
+| L1 expression interpolation | **Fixed**: every `${{ }}` that used to be expanded into a `run:` script now arrives through `env:` — `MODE_INPUT` and `BRANCH` (pack-audio, reception-audio, lexique-source), `ARTIFACT_NAME` (android-emulator-smoke), `BASE_URL` (site-verify), `PAGE_URL` (pages); the run id uses `$GITHUB_RUN_ID`. A YAML walk over all workflows finds no expression inside any `run:` block | six workflows |
+| L2 CI token / timeouts | **Fixed**: `permissions: contents: read` and `timeout-minutes: 30` on both jobs | `ci.yml` |
+| L3 `allowBackup` | **Fixed**: `expo.android.allowBackup: false`; `expo prebuild --platform android` now emits `android:allowBackup="false"` (verified, native directory discarded). Privacy policy 1.1 (effective 2026-09-18) adds one paragraph on device backups: iPhone backups can include the app's private storage; Android opts out, so progress is copied off the phone only by the learner's own export | `app.json`, `src/lib/privacy-policy.ts`, `release/PRIVACY_POLICY.md` |
+| L4 public artifacts | **Fixed**: `retention-days: 7`; `build-facts.json` (EAS artifact URL) is no longer copied into the uploaded directory — it stays in the job summary | `eas-build.yml` |
+| L5, L6 advisories | **Accepted** as analysed above; the Dependabot `bun` entry opens the fix when one exists (`decode-uri-component` is still not overridable — it needs every `expo-router` 57.x to move off `query-string` 7) | `bun audit` |
+| L7 destructive script | **Fixed**: `scripts/reset-project.js` and the `reset-project` script are gone | `package.json` |
+| I1 support mailbox | Informational, owner's choice — unchanged | — |
+| I2 EAS internal links | Informational, inherent to internal distribution — unchanged | — |
+| I3 site CSP | **Fixed**: every generated page carries `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">`; the built site still has no script, no inline style attribute and no external resource (only outbound `href` links) | `scripts/build-site.ts` |
+
+Verification of the patched tree (local, then CI on PR #27): YAML parse of
+all 11 workflows (every `uses:` a 40-hex SHA, no `${{` inside any `run:`);
+`expo prebuild --platform android` manifest shows `android:allowBackup="false"`;
+`tsc --noEmit` clean; `expo lint` clean; `bun run test` 1184 pass under UTC
+and UTC+14; `bun run test:integration` 69 pass; `content:check`,
+`audio:check` (713 files) pass; `release:identity` passes for the default and
+`preview` profiles and refuses `production`; `scripts/build-site.ts` builds
+8 pages, all with the CSP tag, 0 scripts, 0 inline styles.
+
+### Still owner-only (GitHub settings, in this order)
+
+1. Settings → General → Features: **Issues** on.
+2. Settings → Code security: **Private vulnerability reporting** on (the
+   route `SECURITY.md` points to); **Dependabot alerts** and **Dependabot
+   security updates** on; confirm **Secret scanning** and **Push protection**
+   are on.
+3. Settings → Actions → General: workflow permissions **Read repository
+   contents and packages**; **Allow actions created by GitHub and verified
+   creators** (the pinned actions are all by GitHub, Oven and
+   ReactiveCircus).
+4. Settings → Rules → New branch ruleset for `main`: require a pull request,
+   require status checks to pass (the six CI checks: `checks (UTC)`,
+   `checks (America/Los_Angeles)`, `checks (Asia/Tokyo)`,
+   `checks (Pacific/Kiritimati)`, `checks (Pacific/Pago_Pago)`,
+   `export-size`), block force pushes, restrict deletions. Bypass list:
+   nobody (the maintainer merges through pull requests too).
