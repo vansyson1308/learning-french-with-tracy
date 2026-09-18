@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Verify the live pages (HTTP 200, HTTPS, product name, support email, no stale branding, viewport)
-        run: scripts/verify-site.sh "${{ inputs.base_url }}"
+        env:
+          BASE_URL: ${{ inputs.base_url }}
+        run: scripts/verify-site.sh "$BASE_URL"

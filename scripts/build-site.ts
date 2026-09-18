@@ -241,6 +241,7 @@ function page(opts: { title: string; nav: string; body: string; rel: string; des
 <title>${esc(opts.title)} · ${esc(APP_NAME)}</title>
 <meta name="description" content="${esc(opts.description)}">
 <meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <link rel="stylesheet" href="${opts.rel}styles.css">
 </head>
 <body>

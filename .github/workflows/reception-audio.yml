@@ -48,14 +48,18 @@ jobs:
       OUT: /tmp/reception-mp3
       PLAN: /tmp/reception-plan.json
       ASR: /tmp/reception-asr.json
+      # Inputs reach the shell only through the environment (never expanded
+      # into the script text).
+      MODE_INPUT: ${{ inputs.mode }}
+      BRANCH: ${{ github.ref_name }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: ${{ github.ref_name }}
-      - uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: 1.3.11 # same pin as ci.yml
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.11"
       - name: Install (frozen lockfile)
@@ -73,7 +77,7 @@ jobs:
             }
           ' | while IFS=$'\t' read -r voice kind relpath; do
             for copy in 1 2; do
-              if [ "${{ inputs.mode }}" != "recon" ] && [ "$copy" = "2" ]; then
+              if [ "$MODE_INPUT" != "recon" ] && [ "$copy" = "2" ]; then
                 continue # non-recon runs verify a single download against pins
               fi
               echo "downloading $voice.$kind (copy $copy)"
@@ -105,11 +109,11 @@ jobs:
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
-          bun scripts/reception-audio.ts plan --mode "$([ "${{ inputs.mode }}" = "canary" ] && echo canary || echo generate)" --out "$PLAN"
+          bun scripts/reception-audio.ts plan --mode "$([ "$MODE_INPUT" = "canary" ] && echo canary || echo generate)" --out "$PLAN"
           # generate reuses every already-blessed asset (content-addressed):
           # only clips whose text changed are synthesized, so a wording fix
           # never re-renders the untouched clips with different bytes.
-          EXISTING=$([ "${{ inputs.mode }}" = "generate" ] && echo "--existing assets/audio/fr-reception" || echo "")
+          EXISTING=$([ "$MODE_INPUT" = "generate" ] && echo "--existing assets/audio/fr-reception" || echo "")
           bun scripts/reception-audio.ts synth-script --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" $EXISTING > /tmp/synth.sh
           bash /tmp/synth.sh
           ls "$OUT" | wc -l
@@ -119,7 +123,7 @@ jobs:
         run: |
           set -euo pipefail
           pip install "faster-whisper==1.0.3" requests  # requests: undeclared fw dep with huggingface-hub>=1
-          ASR_MODEL=$([ "${{ inputs.mode }}" = "generate" ] && echo medium || echo base)
+          ASR_MODEL=$([ "$MODE_INPUT" = "generate" ] && echo medium || echo base)
           python3 scripts/reception-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --model "$ASR_MODEL"
 
       - name: Technical QA + report
@@ -150,7 +154,7 @@ jobs:
 
       - name: Upload run artifact (audio for audit)
         if: inputs.mode != 'recon'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: reception-audio-${{ inputs.mode }}
           path: |
@@ -175,9 +179,9 @@ jobs:
             exit 0
           fi
           {
-            echo "Reception audio ${{ inputs.mode }}: pinned-source pipeline output"
+            echo "Reception audio $MODE_INPUT: pinned-source pipeline output"
             echo
-            echo "Dispatch-only workflow run ${{ github.run_id }} (mode: ${{ inputs.mode }})."
+            echo "Dispatch-only workflow run $GITHUB_RUN_ID (mode: $MODE_INPUT)."
             echo "Sources pinned in content/fr/reception/audio-source-manifest.json;"
             echo "model weights were used on the runner and never committed."
           } > /tmp/commit-msg.txt
@@ -188,12 +192,12 @@ jobs:
           # paths are workflow-owned, so the rebase cannot conflict with a
           # concurrent content push; if it somehow does, fail loudly.
           for attempt in 1 2 3; do
-            if git push origin "HEAD:${{ github.ref_name }}"; then
+            if git push origin "HEAD:$BRANCH"; then
               exit 0
             fi
             echo "push rejected (attempt $attempt) — rebasing onto the moved branch"
-            git fetch origin "${{ github.ref_name }}"
-            git rebase "origin/${{ github.ref_name }}"
+            git fetch origin "$BRANCH"
+            git rebase "origin/$BRANCH"
             sleep $((attempt * 5))
           done
-          git push origin "HEAD:${{ github.ref_name }}"
+          git push origin "HEAD:$BRANCH"

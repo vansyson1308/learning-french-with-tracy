@@ -1,5 +1,7 @@
 # Secret and supply-chain audit (Phase 10 §48)
 
+> Superseded for the whole-repository view by `SECURITY_AUDIT_2026-09-18.md` (workflows, GitHub settings, Android configuration, dependency advisories). The secret and licence findings below remain valid.
+
 Run on 2026-09-02 against `phase10/final-release`.
 
 ## Secrets

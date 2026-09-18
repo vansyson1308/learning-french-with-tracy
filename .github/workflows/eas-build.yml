@@ -54,16 +54,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
-      - uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: 1.3.11
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      # No setup-node: the runner image's own Node (>= 20) runs `npx eas-cli`;
+      # every action used here is pinned to a commit SHA.
       - name: Refuse to run without the owner's EXPO_TOKEN secret
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
@@ -160,7 +159,6 @@ jobs:
           ! grep -qE "FOREGROUND_SERVICE|SYSTEM_ALERT_WINDOW|READ_EXTERNAL_STORAGE|WRITE_EXTERNAL_STORAGE" rc-artifact/permissions.txt || { echo "::error::a removed permission came back"; exit 1; }
           grep -q "Verifies" rc-artifact/apksigner.txt || { echo "::error::apksigner did not verify the signature"; exit 1; }
           if grep -q "application-debuggable" rc-artifact/badging.txt; then echo "DEBUGGABLE=yes" | tee rc-artifact/debuggable.txt; else echo "DEBUGGABLE=no" | tee rc-artifact/debuggable.txt; fi
-          cp build-facts.json rc-artifact/
           {
             echo "## APK"
             grep -E "^package:|targetSdkVersion|sdkVersion:|application-label:|application-debuggable" rc-artifact/badging.txt
@@ -168,9 +166,12 @@ jobs:
             echo; echo "sha256: $(cut -d' ' -f1 rc-artifact/sha256.txt)"; echo "size: $(cat rc-artifact/size.txt) bytes"
             echo; echo "signer certificate:"; grep -E "Signer #1 certificate (SHA-256|DN)|Verifies|Verified using" rc-artifact/apksigner.txt
           } >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: ${{ inputs.wait }}
         with:
           name: android-rc-${{ inputs.profile }}
           path: rc-artifact
-          retention-days: 90
+          # Public repository: run artifacts are downloadable by anyone with
+          # the run URL. The APK is recorded by hash in release/RC_HISTORY.md;
+          # build-facts.json (EAS artifact URL) stays in the job summary only.
+          retention-days: 7
