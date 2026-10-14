@@ -52,9 +52,9 @@ describe("envelope v2", () => {
     expect(envelope.state.courses["fr-en"].cards).toBeUndefined();
     expect(envelope.state.reviewLog).toBeUndefined();
     expect(envelope.learner.reviewLog.length).toBe(3);
-    expect(Object.keys(envelope.learner.cards["fr-en"]).length).toBeGreaterThan(0);
-    expect(envelope.manifest).toMatchObject({ reviewLog: 3, cards: Object.keys(envelope.learner.cards["fr-en"]).length });
-    expect(envelope.state.assessmentByCourse["fr-en"].placementFloor).toBe(20);
+    expect(Object.keys(envelope.learner.cards["fr"]).length).toBeGreaterThan(0);
+    expect(envelope.manifest).toMatchObject({ reviewLog: 3, cards: Object.keys(envelope.learner.cards["fr"]).length });
+    expect(envelope.state.assessmentByTarget["fr"].placementFloor).toBe(20);
     // Speech never rides along.
     expect(JSON.stringify(envelope)).not.toMatch(/transcript|recordingUri|\.wav/);
   });
@@ -65,9 +65,9 @@ describe("envelope v2", () => {
     if (!staged.ok) return;
     expect(staged.state.courses["fr-en"].cards).toBeUndefined();
     expect(staged.state.reviewLog).toBeUndefined();
-    expect(staged.state.assessmentByCourse!["fr-en"].placementFloor).toBe(20);
+    expect(staged.state.assessmentByTarget!["fr"].placementFloor).toBe(20);
     expect(staged.learner.reviewLog.length).toBe(3);
-    expect(staged.learner.cards["fr-en"]["fr:w:pomme|listen"]).toBeDefined();
+    expect(staged.learner.cards["fr"]["fr:w:pomme|listen"]).toBeDefined();
   });
 
   test("a v2 backup round-trips through commitImport: blob + learner store + live memory agree", async () => {
@@ -86,7 +86,7 @@ describe("envelope v2", () => {
     expect(useProgress.getState().reviewLog.length).toBe(2);
     const stored = await (await learnerStore()).exportAll();
     expect(stored.reviewLog.length).toBe(2);
-    expect(Object.keys(stored.cards["fr-en"]).length).toBe(Object.keys(learner.cards["fr-en"]).length);
+    expect(Object.keys(stored.cards["fr"]).length).toBe(Object.keys(learner.cards["fr"]).length);
     expect([...memFiles.keys()].some((k) => k.includes("progress-before-import-"))).toBe(true);
     // The rollback file is gone after a verified commit.
     expect([...memFiles.keys()].some((k) => k.includes("progress-rollback-"))).toBe(false);

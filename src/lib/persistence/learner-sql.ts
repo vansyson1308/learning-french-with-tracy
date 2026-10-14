@@ -7,7 +7,8 @@
  *
  * Tables:
  *   meta(key, value)
- *   cards(course_id, item_id, skill, state_json, due, updated_at)   PK (course_id, item_id, skill)
+ *   cards(target_code, item_id, skill, state_json, due, updated_at, course_id)   PK (target_code, item_id, skill)
+ *     — shared per TARGET language since P2b (D-4); course_id = provenance of the last write
  *   review_log(seq, course_id, at, card_key, session_id, exercise_id, attempt_index, entry_json)
  *     UNIQUE (course_id, at, card_key, session_id, exercise_id, attempt_index) — the LogRef identity;
  *     INSERT OR IGNORE makes a replayed pending buffer idempotent.
@@ -19,6 +20,8 @@ import type { FsrsCardState } from "../learning/scheduler";
 
 import {
   LEARNER_LOG_WINDOW,
+  normalizeLearnerCards,
+  targetCodeOfCourse,
   LEARNER_META,
   LEARNER_SCHEMA_VERSION,
   type CourseLearnerSlice,
@@ -47,15 +50,15 @@ export const LEARNER_DDL = [
     value TEXT NOT NULL
   )`,
   `CREATE TABLE IF NOT EXISTS cards (
-    course_id TEXT NOT NULL,
+    target_code TEXT NOT NULL,
     item_id TEXT NOT NULL,
     skill TEXT NOT NULL,
     state_json TEXT NOT NULL,
     due INTEGER NOT NULL,
     updated_at INTEGER NOT NULL,
-    PRIMARY KEY (course_id, item_id, skill)
+    course_id TEXT NOT NULL,
+    PRIMARY KEY (target_code, item_id, skill)
   )`,
-  `CREATE INDEX IF NOT EXISTS cards_course_due ON cards (course_id, due)`,
   `CREATE TABLE IF NOT EXISTS review_log (
     seq INTEGER PRIMARY KEY AUTOINCREMENT,
     course_id TEXT NOT NULL,
@@ -71,19 +74,44 @@ export const LEARNER_DDL = [
   `CREATE INDEX IF NOT EXISTS review_log_course_seq ON review_log (course_id, seq)`,
 ];
 
+/**
+ * Schema v1 → v2 (P2b): cards re-keyed from course to target language.
+ * Newest write wins on a collision; course_id is kept as provenance.
+ */
+export const LEARNER_MIGRATE_CARDS_V2 = [
+  `CREATE TABLE cards_v2 (
+    target_code TEXT NOT NULL,
+    item_id TEXT NOT NULL,
+    skill TEXT NOT NULL,
+    state_json TEXT NOT NULL,
+    due INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    course_id TEXT NOT NULL,
+    PRIMARY KEY (target_code, item_id, skill)
+  )`,
+  `INSERT OR REPLACE INTO cards_v2 (target_code, item_id, skill, state_json, due, updated_at, course_id)
+    SELECT CASE WHEN instr(course_id, '-') > 0 THEN substr(course_id, 1, instr(course_id, '-') - 1) ELSE course_id END,
+           item_id, skill, state_json, due, updated_at, course_id
+    FROM cards ORDER BY updated_at ASC`,
+  `DROP TABLE cards`,
+  `ALTER TABLE cards_v2 RENAME TO cards`,
+] as const;
+
 export const SQL = {
-  upsertCard: `INSERT INTO cards (course_id, item_id, skill, state_json, due, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?)
-    ON CONFLICT (course_id, item_id, skill) DO UPDATE SET
-      state_json = excluded.state_json, due = excluded.due, updated_at = excluded.updated_at`,
+  upsertCard: `INSERT INTO cards (target_code, item_id, skill, state_json, due, updated_at, course_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT (target_code, item_id, skill) DO UPDATE SET
+      state_json = excluded.state_json, due = excluded.due, updated_at = excluded.updated_at, course_id = excluded.course_id`,
+  cardColumns: `PRAGMA table_info(cards)`,
+  cardsIndex: `CREATE INDEX IF NOT EXISTS cards_target_due ON cards (target_code, due)`,
   appendLog: `INSERT OR IGNORE INTO review_log
     (course_id, at, card_key, session_id, exercise_id, attempt_index, entry_json)
     VALUES (?, ?, ?, ?, ?, ?, ?)`,
   removeLog: `DELETE FROM review_log
     WHERE course_id = ? AND at = ? AND card_key = ? AND session_id = ? AND exercise_id = ? AND attempt_index = ?`,
-  courseCards: `SELECT item_id, skill, state_json FROM cards WHERE course_id = ? ORDER BY item_id, skill`,
+  targetCards: `SELECT item_id, skill, state_json FROM cards WHERE target_code = ? ORDER BY item_id, skill`,
   courseLogTail: `SELECT entry_json FROM review_log WHERE course_id = ? ORDER BY seq DESC LIMIT ?`,
-  allCards: `SELECT course_id, item_id, skill, state_json FROM cards ORDER BY course_id, item_id, skill`,
+  allCards: `SELECT target_code, item_id, skill, state_json FROM cards ORDER BY target_code, item_id, skill`,
   allLog: `SELECT entry_json FROM review_log ORDER BY seq`,
   countCards: `SELECT COUNT(*) AS n FROM cards`,
   countLog: `SELECT COUNT(*) AS n FROM review_log`,
@@ -110,15 +138,24 @@ export class SqlLearnerStore implements LearnerStore {
 
   constructor(private readonly exec: LearnerSqlExecutor) {}
 
-  /** Create the schema when missing; idempotent. */
+  /** Create the schema when missing; migrate a v1 (course-keyed) cards table; idempotent. */
   async init(): Promise<void> {
     for (const statement of LEARNER_DDL) await this.exec.run(statement);
-    const version = await this.getMeta(LEARNER_META.schemaVersion);
-    if (version === null) await this.setMeta(LEARNER_META.schemaVersion, String(LEARNER_SCHEMA_VERSION));
+    const columns = await this.exec.all<{ name: string }>(SQL.cardColumns);
+    if (!columns.some((c) => c.name === "target_code")) {
+      await this.exec.transaction(async () => {
+        for (const statement of LEARNER_MIGRATE_CARDS_V2) await this.exec.run(statement);
+      });
+    }
+    // The cards index is created after the (possible) migration: on a v1
+    // table the column does not exist yet.
+    await this.exec.run(SQL.cardsIndex);
+    await this.setMeta(LEARNER_META.schemaVersion, String(LEARNER_SCHEMA_VERSION));
   }
 
   async loadCourse(courseId: string, logWindow = LEARNER_LOG_WINDOW): Promise<CourseLearnerSlice> {
-    const cardRows = await this.exec.all<{ item_id: string; skill: string; state_json: string }>(SQL.courseCards, [courseId]);
+    // Cards are the TARGET language's (shared across its courses); the log tail is the course's own.
+    const cardRows = await this.exec.all<{ item_id: string; skill: string; state_json: string }>(SQL.targetCards, [targetCodeOfCourse(courseId)]);
     const cards: Record<string, FsrsCardState> = {};
     for (const row of cardRows) cards[joinCardKey(row.item_id, row.skill)] = JSON.parse(row.state_json) as FsrsCardState;
     const logRows = await this.exec.all<{ entry_json: string }>(SQL.courseLogTail, [courseId, logWindow]);
@@ -131,7 +168,7 @@ export class SqlLearnerStore implements LearnerStore {
       const now = Date.now();
       for (const u of batch.cardUpserts) {
         const { itemId, skill } = splitCardKey(u.cardKey);
-        await this.exec.run(SQL.upsertCard, [u.courseId, itemId, skill, JSON.stringify(u.card), u.card.due, now]);
+        await this.exec.run(SQL.upsertCard, [targetCodeOfCourse(u.courseId), itemId, skill, JSON.stringify(u.card), u.card.due, now, u.courseId]);
       }
       for (const e of batch.logAppends) {
         await this.exec.run(SQL.appendLog, [e.courseId, e.at, e.cardKey, e.sessionId, e.exerciseId, e.attemptIndex, JSON.stringify(e)]);
@@ -149,10 +186,10 @@ export class SqlLearnerStore implements LearnerStore {
   }
 
   async exportAll(): Promise<LearnerData> {
-    const cardRows = await this.exec.all<{ course_id: string; item_id: string; skill: string; state_json: string }>(SQL.allCards);
+    const cardRows = await this.exec.all<{ target_code: string; item_id: string; skill: string; state_json: string }>(SQL.allCards);
     const cards: LearnerCards = {};
     for (const row of cardRows) {
-      (cards[row.course_id] ??= {})[joinCardKey(row.item_id, row.skill)] = JSON.parse(row.state_json) as FsrsCardState;
+      (cards[row.target_code] ??= {})[joinCardKey(row.item_id, row.skill)] = JSON.parse(row.state_json) as FsrsCardState;
     }
     const logRows = await this.exec.all<{ entry_json: string }>(SQL.allLog);
     return { cards, reviewLog: logRows.map((row) => JSON.parse(row.entry_json) as ReviewLogEntry) };
@@ -163,10 +200,11 @@ export class SqlLearnerStore implements LearnerStore {
       await this.exec.run(SQL.deleteAllLog);
       await this.exec.run(SQL.deleteAllCards);
       const now = Date.now();
-      for (const [courseId, cards] of Object.entries(data.cards)) {
+      // A backup written before P2b keys cards by course; re-key by target.
+      for (const [targetCode, cards] of Object.entries(normalizeLearnerCards(data.cards))) {
         for (const [cardKey, card] of Object.entries(cards)) {
           const { itemId, skill } = splitCardKey(cardKey);
-          await this.exec.run(SQL.upsertCard, [courseId, itemId, skill, JSON.stringify(card), card.due, now]);
+          await this.exec.run(SQL.upsertCard, [targetCode, itemId, skill, JSON.stringify(card), card.due, now, targetCode]);
         }
       }
       for (const e of data.reviewLog) {

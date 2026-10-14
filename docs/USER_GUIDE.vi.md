@@ -15,11 +15,11 @@ Learning French with Tracy là một khóa tiếng Pháp miễn phí. Ứng dụ
 
 ## 3. Lần mở đầu tiên
 
-Màn hình đầu tiên hỏi bạn muốn học khóa nào. Tiếng Pháp là khóa mà ứng dụng được xây dựng xoay quanh và đã được chọn sẵn; giữ nguyên (hoặc chạm vào khóa khác). Sau đó chọn **Mục tiêu XP mỗi ngày** — 10, 20, 30 hoặc 50 XP (một bài học được 15 XP, 20 nếu hoàn hảo) — rồi chạm **Học Tiếng Pháp** (nút ghi tên khóa bạn đã chọn). Bạn sẽ vào tab **Học**. Có thể đổi khóa sau tại Hồ sơ → Đang học → **Đổi**.
+Màn hình đầu tiên hỏi bạn muốn học khóa nào. Tiếng Pháp là khóa mà ứng dụng được xây dựng xoay quanh và có hai bản: một bản giải thích bằng tiếng Việt (`fr-vi`) và một bản giải thích bằng tiếng Anh (`fr-en`) — cùng từ vựng, âm thanh, bài học và bài kiểm tra tiếng Pháp, chỉ khác ngôn ngữ giải thích; mỗi thẻ ghi rõ ("Giải thích bằng …"). Khi ứng dụng hiển thị tiếng Việt, bản tiếng Việt đứng đầu và được chọn sẵn; giữ nguyên (hoặc chạm vào khóa khác). Sau đó chọn **Mục tiêu XP mỗi ngày** — 10, 20, 30 hoặc 50 XP (một bài học được 15 XP, 20 nếu hoàn hảo) — rồi chạm **Học Tiếng Pháp** (nút ghi tên khóa bạn đã chọn). Bạn sẽ vào tab **Học**. Có thể đổi khóa sau tại Hồ sơ → Đang học → **Đổi**.
 
 ## 4. Chọn tiếng Pháp
 
-Tiếng Pháp là khóa duy nhất có đầy đủ tính năng: phiên Hôm nay, nghe, nói, viết, hội thoại, bài kiểm tra, bài kiểm tra điểm bắt đầu và bài kiểm tra A1 tổng kết. Các khóa khác có lộ trình học, luyện lại lỗi sai và ôn từ.
+Tiếng Pháp là khóa duy nhất có đầy đủ tính năng: phiên Hôm nay, nghe, nói, viết, hội thoại, bài kiểm tra, bài kiểm tra điểm bắt đầu và bài kiểm tra A1 tổng kết. Cả hai bản tiếng Pháp đều có đủ. Trí nhớ tiếng Pháp của bạn dùng chung cho hai bản: một từ bạn ôn ở bản này cũng chính là thẻ ghi nhớ ở bản kia, kết quả bài kiểm tra điểm bắt đầu và bài kiểm tra cũng được giữ chung — chỉ số bài đã hoàn thành và XP được tính riêng theo từng bản. Phần giải thích tiếng Việt của bản `fr-vi` đang chờ người bản ngữ duyệt (xem `release/KNOWN_LIMITATIONS.md`); phần tiếng Pháp, âm thanh và cách chấm giống hệt bản tiếng Anh. Các khóa khác có lộ trình học, luyện lại lỗi sai và ôn từ.
 
 ## 5. Bài kiểm tra điểm bắt đầu (xếp lớp)
 

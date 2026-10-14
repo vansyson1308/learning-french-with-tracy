@@ -66,7 +66,7 @@ function speakEvidence(): ReviewEvidence {
 beforeEach(() => {
   useProgress.setState({
     activeCourseId: "fr-en",
-    assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
+    assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 0 } },
     courses: {
       "fr-en": {
         xp: 0,

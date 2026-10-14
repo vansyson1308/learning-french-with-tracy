@@ -25,6 +25,7 @@ import type {
   WritingRubricSource,
   WritingTask,
 } from "../../content/schema";
+import { applyExerciseOverlay, exerciseNativeFieldPaths, missingOverlayPaths } from "./native-fields";
 
 export class MissingNativeTextError extends Error {
   constructor(where: string, nativeCode: string, available: string[]) {
@@ -129,7 +130,28 @@ export function localizeObjective(o: CourseObjective, nativeCode: string): Omit<
   };
 }
 
-export function localizeCheckpoint(cp: Checkpoint, nativeCode: string): Record<string, unknown> {
+/**
+ * An assessment item's exercise in `nativeCode`: the plain payload when that
+ * is the document's own native language, otherwise the payload with the
+ * item's `exerciseNative[nativeCode]` overlay applied (fail-closed). The
+ * overlay never reaches the artifact.
+ */
+export function localizeAssessmentItem<T extends { id: string; exercise: Record<string, unknown>; exerciseNative?: Record<string, Record<string, string>> }>(
+  item: T,
+  exerciseNativeCode: string,
+  nativeCode: string
+): Omit<T, "exerciseNative"> {
+  const { exerciseNative, ...rest } = item;
+  if (nativeCode === exerciseNativeCode) return rest;
+  const overlay = exerciseNative?.[nativeCode];
+  if (overlay === undefined) {
+    if (exerciseNativeFieldPaths(item.exercise).length === 0) return rest;
+    throw new MissingNativeTextError(`${item.id}.exerciseNative`, nativeCode, Object.keys(exerciseNative ?? {}));
+  }
+  return { ...rest, exercise: applyExerciseOverlay(item.exercise, overlay, `${item.id}.exerciseNative.${nativeCode}`) };
+}
+
+export function localizeCheckpoint(cp: Checkpoint, nativeCode: string, exerciseNativeCode = "en"): Record<string, unknown> {
   return {
     id: cp.id,
     checkpointVersion: cp.checkpointVersion,
@@ -137,18 +159,44 @@ export function localizeCheckpoint(cp: Checkpoint, nativeCode: string): Record<s
     sectionId: cp.sectionId,
     title: pickNative(cp.title, nativeCode, `${cp.id}.title`),
     description: pickNative(cp.description, nativeCode, `${cp.id}.description`),
-    items: cp.items,
+    items: cp.items.map((item) => localizeAssessmentItem(item, exerciseNativeCode, nativeCode)),
     ...(cp.forms !== undefined ? { forms: cp.forms } : {}),
     criteria: cp.criteria,
   };
 }
 
-export function localizePlacementStage(stage: PlacementStage, nativeCode: string): Record<string, unknown> {
+export function localizePlacementStage(stage: PlacementStage, nativeCode: string, exerciseNativeCode = "en"): Record<string, unknown> {
   return {
     id: stage.id,
     title: pickNative(stage.title, nativeCode, `${stage.id}.title`),
-    clusters: stage.clusters,
+    clusters: stage.clusters.map((cluster) => ({
+      ...cluster,
+      items: cluster.items.map((item) => localizeAssessmentItem(item, exerciseNativeCode, nativeCode)),
+    })),
   };
+}
+
+/**
+ * Overlay completeness (validator, P2b): for every native code other than
+ * the document's own, every assessment item with native-language fields
+ * must carry a complete overlay.
+ */
+export function missingExerciseOverlays(
+  items: { id: string; exercise: Record<string, unknown>; exerciseNative?: Record<string, Record<string, string>> }[],
+  exerciseNativeCode: string,
+  nativeCodes: readonly string[]
+): string[] {
+  const errors: string[] = [];
+  for (const item of items) {
+    for (const code of nativeCodes) {
+      if (code === exerciseNativeCode) continue;
+      const missing = missingOverlayPaths(item.exercise, item.exerciseNative?.[code]);
+      if (missing.length > 0) errors.push(`${item.id}: exerciseNative.${code} missing ${missing.join(", ")}`);
+      const unknown = Object.keys(item.exerciseNative?.[code] ?? {}).filter((p) => !exerciseNativeFieldPaths(item.exercise).includes(p));
+      if (unknown.length > 0) errors.push(`${item.id}: exerciseNative.${code} has non-native paths ${unknown.join(", ")}`);
+    }
+  }
+  return errors;
 }
 
 export function localizeReading(reading: ReadingSource, nativeCode: string): Record<string, unknown> {

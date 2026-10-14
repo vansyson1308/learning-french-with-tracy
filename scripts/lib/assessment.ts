@@ -575,6 +575,10 @@ export function validateAssessment(lang: string, packs: LoadedPack[] = loadPacks
   // Packs that fail their own schema are reported by validateContent; the
   // mapping check simply skips them here (same posture as lesson flows).
   const mine = packs.filter((p) => p.pack.targetCode === lang);
+  // The placement walk is authored against the primary-native course (the
+  // smallest native code); other courses of the target validate the same
+  // walk re-pointed at their own lesson ids.
+  const primaryCourseId = [...mine].sort((a, b) => a.pack.nativeCode.localeCompare(b.pack.nativeCode))[0]?.pack.id ?? lang;
   let concepts: { id: string; objectives?: string[] }[] = [];
   try {
     concepts = loadPedagogyConcepts(lang)?.concepts ?? [];
@@ -599,7 +603,7 @@ export function validateAssessment(lang: string, packs: LoadedPack[] = loadPacks
     }
     try {
       bankErrors.push(
-        ...validatePlacementData({ placement: loadPlacement(lang), objectives, paradigms, pack, courseId }).errors
+        ...validatePlacementData({ placement: placementForCourse(loadPlacement(lang), primaryCourseId, courseId), objectives, paradigms, pack, courseId }).errors
       );
     } catch (e) {
       bankErrors.push(`placement: schema validation failed — ${(e as Error).message.split("\n")[0]}`);
@@ -762,7 +766,7 @@ export function validateCheckpointsData(input: {
 /** Compiled runtime artifact for checkpoint sessions (native text resolved). */
 export function compileCheckpointsArtifact(checkpoints: Checkpoints, nativeCode: string): string {
   const byId: Record<string, unknown> = {};
-  for (const cp of checkpoints.checkpoints) byId[cp.id] = localizeCheckpoint(cp, nativeCode);
+  for (const cp of checkpoints.checkpoints) byId[cp.id] = localizeCheckpoint(cp, nativeCode, checkpoints.exerciseNativeCode);
   return `${JSON.stringify(
     {
       version: checkpoints.version,
@@ -879,6 +883,26 @@ export function validatePlacementData(input: {
   return { errors, warnings: [] };
 }
 
+/**
+ * The placement walk authored for the primary-native course, re-pointed at
+ * the lessons of another course of the same target (P2b). Lesson ids are
+ * `<courseId>:<unit>-<lesson>`; a secondary-native course keeps the same
+ * unit/lesson slugs under its own prefix, so only the prefix changes.
+ */
+export function placementForCourse(placement: PlacementContent, primaryCourseId: string, courseId: string): PlacementContent {
+  if (primaryCourseId === courseId) return placement;
+  const remap = (lessonId: string) =>
+    lessonId.startsWith(`${primaryCourseId}:`) ? `${courseId}:${lessonId.slice(primaryCourseId.length + 1)}` : lessonId;
+  return {
+    ...placement,
+    allComfortableLessonId: remap(placement.allComfortableLessonId),
+    stages: placement.stages.map((s) => ({
+      ...s,
+      clusters: s.clusters.map((c) => ({ ...c, anchorLessonId: remap(c.anchorLessonId) })),
+    })),
+  };
+}
+
 /** Compiled runtime artifact for placement sessions (native text resolved). */
 export function compilePlacementArtifact(placement: PlacementContent, nativeCode: string): string {
   return `${JSON.stringify(
@@ -888,7 +912,7 @@ export function compilePlacementArtifact(placement: PlacementContent, nativeCode
       placementVersion: placement.placementVersion,
       maxItems: placement.maxItems,
       allComfortableLessonId: placement.allComfortableLessonId,
-      stages: placement.stages.map((s) => localizePlacementStage(s, nativeCode)),
+      stages: placement.stages.map((s) => localizePlacementStage(s, nativeCode, placement.exerciseNativeCode)),
     },
     null,
     2

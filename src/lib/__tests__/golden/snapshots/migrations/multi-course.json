@@ -5,7 +5,7 @@
     "format": "lingo-progress-backup",
     "learner": {
       "cards": {
-        "fr-en": {
+        "fr": {
           "fr:w:pain|recognize": {
             "difficulty": 6.538252946736481,
             "due": 1768600000000,
@@ -40,11 +40,11 @@
         "themePreference",
         "courses",
         "activeDays",
-        "assessmentByCourse",
-        "uiLanguage"
+        "uiLanguage",
+        "assessmentByTarget"
       ]
     },
-    "persistVersion": 4
+    "persistVersion": 5
   },
   "fromVersion": 0,
   "invariants": [],
@@ -62,7 +62,7 @@
         "xp": 65
       }
     },
-    "assessmentByCourse": {},
+    "assessmentByTarget": {},
     "courses": {
       "es-en": {
         "completedLessons": {
@@ -179,7 +179,7 @@
   "staged": {
     "learner": {
       "cards": {
-        "fr-en": {
+        "fr": {
           "fr:w:pain|recognize": {
             "difficulty": 6.538252946736481,
             "due": 1768600000000,
@@ -210,7 +210,7 @@
           "xp": 65
         }
       },
-      "assessmentByCourse": {},
+      "assessmentByTarget": {},
       "courses": {
         "es-en": {
           "completedLessons": {
@@ -311,5 +311,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 4
+  "toVersion": 5
 }

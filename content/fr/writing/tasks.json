@@ -7,12 +7,14 @@
    "taskFamily": "personal_profile",
    "mode": "guided",
    "instruction": {
-    "en": "You are Léa. Write one short French sentence saying your name."
+    "en": "You are Léa. Write one short French sentence saying your name.",
+    "vi": "Bạn là Léa. Hãy viết một câu tiếng Pháp ngắn nói tên của bạn."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Your name"
+      "en": "Your name",
+      "vi": "Tên của bạn"
      },
      "value": "Léa"
     }
@@ -22,7 +24,8 @@
      {
       "id": "name",
       "description": {
-       "en": "your name"
+       "en": "your name",
+       "vi": "tên của bạn"
       },
       "variants": [
        "je m'appelle Léa",
@@ -58,12 +61,14 @@
    "taskFamily": "personal_profile",
    "mode": "guided",
    "instruction": {
-    "en": "Still as Léa: write a sentence saying your age."
+    "en": "Still as Léa: write a sentence saying your age.",
+    "vi": "Vẫn là Léa: hãy viết một câu nói tuổi của bạn."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Your age"
+      "en": "Your age",
+      "vi": "Tuổi của bạn"
      },
      "value": "22"
     }
@@ -73,7 +78,8 @@
      {
       "id": "age",
       "description": {
-       "en": "your age"
+       "en": "your age",
+       "vi": "tuổi của bạn"
       },
       "variants": [
        "j'ai vingt-deux ans"
@@ -105,12 +111,14 @@
    "taskFamily": "personal_profile",
    "mode": "guided",
    "instruction": {
-    "en": "Still as Léa: write a sentence saying where you live."
+    "en": "Still as Léa: write a sentence saying where you live.",
+    "vi": "Vẫn là Léa: hãy viết một câu nói bạn sống ở đâu."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Your city"
+      "en": "Your city",
+      "vi": "Thành phố của bạn"
      },
      "value": "Paris"
     }
@@ -120,7 +128,8 @@
      {
       "id": "city",
       "description": {
-       "en": "where you live"
+       "en": "where you live",
+       "vi": "nơi bạn sống"
       },
       "variants": [
        "j'habite à Paris",
@@ -154,24 +163,28 @@
    "taskFamily": "personal_profile",
    "mode": "guided",
    "instruction": {
-    "en": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences."
+    "en": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences.",
+    "vi": "Ghép lại: hãy tự giới thiệu với tư cách Léa — tên, tuổi và thành phố, bằng câu hoàn chỉnh."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Léa"
     },
     {
      "label": {
-      "en": "Age"
+      "en": "Age",
+      "vi": "Tuổi"
      },
      "value": "22"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Paris"
     }
@@ -181,7 +194,8 @@
      {
       "id": "name",
       "description": {
-       "en": "your name"
+       "en": "your name",
+       "vi": "tên của bạn"
       },
       "variants": [
        "je m'appelle Léa",
@@ -193,7 +207,8 @@
      {
       "id": "age",
       "description": {
-       "en": "your age"
+       "en": "your age",
+       "vi": "tuổi của bạn"
       },
       "variants": [
        "j'ai vingt-deux ans"
@@ -203,7 +218,8 @@
      {
       "id": "city",
       "description": {
-       "en": "where you live"
+       "en": "where you live",
+       "vi": "nơi bạn sống"
       },
       "variants": [
        "j'habite à Paris",
@@ -238,14 +254,16 @@
    "taskFamily": "personal_profile",
    "mode": "open",
    "instruction": {
-    "en": "Now for real: introduce YOURSELF in French — your name, and your age or your city. Write freely; this is practice, not a test."
+    "en": "Now for real: introduce YOURSELF in French — your name, and your age or your city. Write freely; this is practice, not a test.",
+    "vi": "Giờ là thật: hãy tự giới thiệu CHÍNH BẠN bằng tiếng Pháp — tên bạn, và tuổi hoặc thành phố của bạn. Viết tự do; đây là luyện tập, không phải bài kiểm tra."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "about_you",
       "description": {
-       "en": "a sentence about you"
+       "en": "a sentence about you",
+       "vi": "một câu về bạn"
       },
       "variants": [
        "je m'appelle",
@@ -277,14 +295,16 @@
    "taskFamily": "simple_description",
    "mode": "guided",
    "instruction": {
-    "en": "Write one French sentence saying that you like coffee."
+    "en": "Write one French sentence saying that you like coffee.",
+    "vi": "Hãy viết một câu tiếng Pháp nói rằng bạn thích cà phê."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "like",
       "description": {
-       "en": "what you like"
+       "en": "what you like",
+       "vi": "điều bạn thích"
       },
       "variants": [
        "j'aime le café",
@@ -319,14 +339,16 @@
    "taskFamily": "simple_description",
    "mode": "guided",
    "instruction": {
-    "en": "Write a sentence saying you like tea and bread."
+    "en": "Write a sentence saying you like tea and bread.",
+    "vi": "Hãy viết một câu nói rằng bạn thích trà và bánh mì."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "like",
       "description": {
-       "en": "that you like something (j'aime)"
+       "en": "that you like something (j'aime)",
+       "vi": "rằng bạn thích điều gì đó (j'aime)"
       },
       "variants": [
        "j'aime",
@@ -337,7 +359,8 @@
      {
       "id": "tea",
       "description": {
-       "en": "the tea"
+       "en": "the tea",
+       "vi": "trà"
       },
       "variants": [
        "thé"
@@ -347,7 +370,8 @@
      {
       "id": "bread",
       "description": {
-       "en": "the bread"
+       "en": "the bread",
+       "vi": "bánh mì"
       },
       "variants": [
        "pain"
@@ -381,18 +405,21 @@
    "taskFamily": "simple_description",
    "mode": "guided",
    "instruction": {
-    "en": "Write one sentence about Hugo: he lives in Lyon."
+    "en": "Write one sentence about Hugo: he lives in Lyon.",
+    "vi": "Hãy viết một câu về Hugo: anh ấy sống ở Lyon."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Person"
+      "en": "Person",
+      "vi": "Người"
      },
      "value": "Hugo"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Lyon"
     }
@@ -402,7 +429,8 @@
      {
       "id": "lives",
       "description": {
-       "en": "where Hugo lives"
+       "en": "where Hugo lives",
+       "vi": "nơi Hugo sống"
       },
       "variants": [
        "il habite à Lyon",
@@ -437,14 +465,16 @@
    "taskFamily": "simple_description",
    "mode": "guided",
    "instruction": {
-    "en": "Write one sentence: the cat drinks milk."
+    "en": "Write one sentence: the cat drinks milk.",
+    "vi": "Hãy viết một câu: con mèo uống sữa."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "fact",
       "description": {
-       "en": "what the cat does"
+       "en": "what the cat does",
+       "vi": "con mèo làm gì"
       },
       "variants": [
        "le chat boit du lait",
@@ -479,14 +509,16 @@
    "taskFamily": "simple_description",
    "mode": "open",
    "instruction": {
-    "en": "Describe someone you know in one or two short French sentences — where they live, or what they like."
+    "en": "Describe someone you know in one or two short French sentences — where they live, or what they like.",
+    "vi": "Hãy miêu tả một người bạn biết trong một hoặc hai câu tiếng Pháp ngắn — họ sống ở đâu, hoặc họ thích gì."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "person",
       "description": {
-       "en": "a sentence about the person"
+       "en": "a sentence about the person",
+       "vi": "một câu về người đó"
       },
       "variants": [
        "il est",
@@ -522,24 +554,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note to Marie: greet her, and tell her the café is at two o'clock."
+    "en": "Write a short note to Marie: greet her, and tell her the café is at two o'clock.",
+    "vi": "Hãy viết một lời nhắn ngắn cho Marie: chào cô ấy, và nói rằng hẹn cà phê lúc hai giờ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Marie"
     },
     {
      "label": {
-      "en": "What"
+      "en": "What",
+      "vi": "Việc gì"
      },
      "value": "café"
     },
     {
      "label": {
-      "en": "Time"
+      "en": "Time",
+      "vi": "Giờ"
      },
      "value": "2:00"
     }
@@ -549,7 +585,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -561,7 +598,8 @@
      {
       "id": "addressee",
       "description": {
-       "en": "who the note is for (Marie)"
+       "en": "who the note is for (Marie)",
+       "vi": "lời nhắn gửi cho ai (Marie)"
       },
       "variants": [
        "Marie"
@@ -571,7 +609,8 @@
      {
       "id": "what",
       "description": {
-       "en": "the café"
+       "en": "the café",
+       "vi": "quán cà phê"
       },
       "variants": [
        "café"
@@ -581,7 +620,8 @@
      {
       "id": "time",
       "description": {
-       "en": "the time (à deux heures)"
+       "en": "the time (à deux heures)",
+       "vi": "giờ (à deux heures)"
       },
       "variants": [
        "à deux heures",
@@ -612,24 +652,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note to Paul: greet him, and say the train is tomorrow at nine."
+    "en": "Write a short note to Paul: greet him, and say the train is tomorrow at nine.",
+    "vi": "Hãy viết một lời nhắn ngắn cho Paul: chào anh ấy, và nói rằng tàu chạy ngày mai lúc chín giờ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Paul"
     },
     {
      "label": {
-      "en": "What"
+      "en": "What",
+      "vi": "Việc gì"
      },
      "value": "train"
     },
     {
      "label": {
-      "en": "When"
+      "en": "When",
+      "vi": "Khi nào"
      },
      "value": "tomorrow, 9:00"
     }
@@ -639,7 +683,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -651,7 +696,8 @@
      {
       "id": "addressee",
       "description": {
-       "en": "who the note is for (Paul)"
+       "en": "who the note is for (Paul)",
+       "vi": "lời nhắn gửi cho ai (Paul)"
       },
       "variants": [
        "Paul"
@@ -661,7 +707,8 @@
      {
       "id": "what",
       "description": {
-       "en": "the train"
+       "en": "the train",
+       "vi": "tàu hỏa"
       },
       "variants": [
        "train"
@@ -671,7 +718,8 @@
      {
       "id": "day",
       "description": {
-       "en": "the day (demain)"
+       "en": "the day (demain)",
+       "vi": "ngày (demain)"
       },
       "variants": [
        "demain"
@@ -681,7 +729,8 @@
      {
       "id": "time",
       "description": {
-       "en": "the time (à neuf heures)"
+       "en": "the time (à neuf heures)",
+       "vi": "giờ (à neuf heures)"
       },
       "variants": [
        "à neuf heures"
@@ -711,14 +760,16 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”."
+    "en": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”.",
+    "vi": "Hãy viết một lời nhắn: chào, nói rằng bạn đang ở nhà ga, và kết bằng “hẹn mai gặp lại”."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -729,7 +780,8 @@
      {
       "id": "place",
       "description": {
-       "en": "where you are"
+       "en": "where you are",
+       "vi": "nơi bạn đang ở"
       },
       "variants": [
        "je suis à la gare"
@@ -739,7 +791,8 @@
      {
       "id": "closing",
       "description": {
-       "en": "a closing"
+       "en": "a closing",
+       "vi": "câu kết"
       },
       "variants": [
        "à demain"
@@ -772,14 +825,16 @@
    "taskFamily": "short_message",
    "mode": "open",
    "instruction": {
-    "en": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice."
+    "en": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice.",
+    "vi": "Hãy tự viết một lời nhắn ngắn cho một người bạn — một lời chào, một thông tin, và một câu kết. Luyện tập tự do."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "message",
       "description": {
-       "en": "your message"
+       "en": "your message",
+       "vi": "lời nhắn của bạn"
       },
       "variants": [
        "bonjour",
@@ -812,24 +867,28 @@
    "taskFamily": "simple_form",
    "mode": "guided",
    "instruction": {
-    "en": "Fill in the arrival form with the details on the card."
+    "en": "Fill in the arrival form with the details on the card.",
+    "vi": "Hãy điền biểu mẫu nhập cảnh với các thông tin trên thẻ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Léa"
     },
     {
      "label": {
-      "en": "Age"
+      "en": "Age",
+      "vi": "Tuổi"
      },
      "value": "22"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Paris"
     }
@@ -856,7 +915,8 @@
      {
       "id": "name",
       "description": {
-       "en": "your first name"
+       "en": "your first name",
+       "vi": "tên của bạn"
       },
       "variants": [
        "Léa"
@@ -866,7 +926,8 @@
      {
       "id": "age",
       "description": {
-       "en": "your age"
+       "en": "your age",
+       "vi": "tuổi của bạn"
       },
       "variants": [
        "vingt-deux"
@@ -876,7 +937,8 @@
      {
       "id": "city",
       "description": {
-       "en": "your city"
+       "en": "your city",
+       "vi": "thành phố của bạn"
       },
       "variants": [
        "Paris"
@@ -905,24 +967,28 @@
    "taskFamily": "simple_form",
    "mode": "guided",
    "instruction": {
-    "en": "Fill in the small hotel form with the details on the card."
+    "en": "Fill in the small hotel form with the details on the card.",
+    "vi": "Hãy điền biểu mẫu nhỏ của khách sạn với các thông tin trên thẻ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Marco"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Nice"
     },
     {
      "label": {
-      "en": "Day"
+      "en": "Day",
+      "vi": "Ngày"
      },
      "value": "samedi"
     }
@@ -949,7 +1015,8 @@
      {
       "id": "name",
       "description": {
-       "en": "the first name"
+       "en": "the first name",
+       "vi": "tên"
       },
       "variants": [
        "Marco"
@@ -959,7 +1026,8 @@
      {
       "id": "city",
       "description": {
-       "en": "the city"
+       "en": "the city",
+       "vi": "thành phố"
       },
       "variants": [
        "Nice"
@@ -969,7 +1037,8 @@
      {
       "id": "day",
       "description": {
-       "en": "the arrival day"
+       "en": "the arrival day",
+       "vi": "ngày đến"
       },
       "variants": [
        "samedi"
@@ -998,24 +1067,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write to Marie: greet her, say you are at the café tomorrow at ten, and close."
+    "en": "Write to Marie: greet her, say you are at the café tomorrow at ten, and close.",
+    "vi": "Hãy viết cho Marie: chào cô ấy, nói rằng ngày mai bạn ở quán cà phê lúc mười giờ, và kết."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Marie"
     },
     {
      "label": {
-      "en": "Where"
+      "en": "Where",
+      "vi": "Ở đâu"
      },
      "value": "café"
     },
     {
      "label": {
-      "en": "When"
+      "en": "When",
+      "vi": "Khi nào"
      },
      "value": "tomorrow, 10:00"
     }
@@ -1025,7 +1098,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -1036,7 +1110,8 @@
      {
       "id": "addressee",
       "description": {
-       "en": "who the note is for (Marie)"
+       "en": "who the note is for (Marie)",
+       "vi": "lời nhắn gửi cho ai (Marie)"
       },
       "variants": [
        "Marie"
@@ -1046,7 +1121,8 @@
      {
       "id": "where",
       "description": {
-       "en": "the place (café)"
+       "en": "the place (café)",
+       "vi": "địa điểm (café)"
       },
       "variants": [
        "café"
@@ -1056,7 +1132,8 @@
      {
       "id": "day",
       "description": {
-       "en": "the day (demain)"
+       "en": "the day (demain)",
+       "vi": "ngày (demain)"
       },
       "variants": [
        "demain"
@@ -1066,7 +1143,8 @@
      {
       "id": "time",
       "description": {
-       "en": "the time (à dix heures)"
+       "en": "the time (à dix heures)",
+       "vi": "giờ (à dix heures)"
       },
       "variants": [
        "à dix heures"
@@ -1076,7 +1154,8 @@
      {
       "id": "closing",
       "description": {
-       "en": "a closing"
+       "en": "a closing",
+       "vi": "câu kết"
       },
       "variants": [
        "à demain",
@@ -1117,14 +1196,16 @@
    "taskFamily": "personal_profile",
    "mode": "open",
    "instruction": {
-    "en": "Write two or three short sentences about yourself — anything you can say in French. Free practice."
+    "en": "Write two or three short sentences about yourself — anything you can say in French. Free practice.",
+    "vi": "Hãy viết hai hoặc ba câu ngắn về bản thân — bất cứ điều gì bạn nói được bằng tiếng Pháp. Luyện tập tự do."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "about_you",
       "description": {
-       "en": "sentences about you"
+       "en": "sentences about you",
+       "vi": "các câu về bạn"
       },
       "variants": [
        "je m'appelle",
@@ -1159,24 +1240,28 @@
    "taskFamily": "personal_profile",
    "mode": "guided",
    "instruction": {
-    "en": "You are Nadia. Introduce yourself in writing — name, age and city, in complete sentences."
+    "en": "You are Nadia. Introduce yourself in writing — name, age and city, in complete sentences.",
+    "vi": "Bạn là Nadia. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Nadia"
     },
     {
      "label": {
-      "en": "Age"
+      "en": "Age",
+      "vi": "Tuổi"
      },
      "value": "35"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Lyon"
     }
@@ -1186,7 +1271,8 @@
      {
       "id": "name",
       "description": {
-       "en": "your name"
+       "en": "your name",
+       "vi": "tên của bạn"
       },
       "variants": [
        "je m'appelle Nadia",
@@ -1198,7 +1284,8 @@
      {
       "id": "age",
       "description": {
-       "en": "your age"
+       "en": "your age",
+       "vi": "tuổi của bạn"
       },
       "variants": [
        "j'ai trente-cinq ans"
@@ -1208,7 +1295,8 @@
      {
       "id": "city",
       "description": {
-       "en": "where you live"
+       "en": "where you live",
+       "vi": "nơi bạn sống"
       },
       "variants": [
        "j'habite à Lyon",
@@ -1243,24 +1331,28 @@
    "taskFamily": "personal_profile",
    "mode": "guided",
    "instruction": {
-    "en": "You are Tom. Introduce yourself in writing — name, age and city, in complete sentences."
+    "en": "You are Tom. Introduce yourself in writing — name, age and city, in complete sentences.",
+    "vi": "Bạn là Tom. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Tom"
     },
     {
      "label": {
-      "en": "Age"
+      "en": "Age",
+      "vi": "Tuổi"
      },
      "value": "28"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Nice"
     }
@@ -1270,7 +1362,8 @@
      {
       "id": "name",
       "description": {
-       "en": "your name"
+       "en": "your name",
+       "vi": "tên của bạn"
       },
       "variants": [
        "je m'appelle Tom",
@@ -1282,7 +1375,8 @@
      {
       "id": "age",
       "description": {
-       "en": "your age"
+       "en": "your age",
+       "vi": "tuổi của bạn"
       },
       "variants": [
        "j'ai vingt-huit ans"
@@ -1292,7 +1386,8 @@
      {
       "id": "city",
       "description": {
-       "en": "where you live"
+       "en": "where you live",
+       "vi": "nơi bạn sống"
       },
       "variants": [
        "j'habite à Nice",
@@ -1327,24 +1422,28 @@
    "taskFamily": "personal_profile",
    "mode": "guided",
    "instruction": {
-    "en": "You are Emma. Introduce yourself in writing — name, age and city, in complete sentences."
+    "en": "You are Emma. Introduce yourself in writing — name, age and city, in complete sentences.",
+    "vi": "Bạn là Emma. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Emma"
     },
     {
      "label": {
-      "en": "Age"
+      "en": "Age",
+      "vi": "Tuổi"
      },
      "value": "41"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Marseille"
     }
@@ -1354,7 +1453,8 @@
      {
       "id": "name",
       "description": {
-       "en": "your name"
+       "en": "your name",
+       "vi": "tên của bạn"
       },
       "variants": [
        "je m'appelle Emma",
@@ -1366,7 +1466,8 @@
      {
       "id": "age",
       "description": {
-       "en": "your age"
+       "en": "your age",
+       "vi": "tuổi của bạn"
       },
       "variants": [
        "j'ai quarante et un ans"
@@ -1376,7 +1477,8 @@
      {
       "id": "city",
       "description": {
-       "en": "where you live"
+       "en": "where you live",
+       "vi": "nơi bạn sống"
       },
       "variants": [
        "j'habite à Marseille",
@@ -1411,18 +1513,21 @@
    "taskFamily": "simple_description",
    "mode": "guided",
    "instruction": {
-    "en": "Write one sentence about Sofia: she likes tea."
+    "en": "Write one sentence about Sofia: she likes tea.",
+    "vi": "Hãy viết một câu về Sofia: cô ấy thích trà."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Person"
+      "en": "Person",
+      "vi": "Người"
      },
      "value": "Sofia"
     },
     {
      "label": {
-      "en": "Likes"
+      "en": "Likes",
+      "vi": "Thích"
      },
      "value": "tea"
     }
@@ -1432,7 +1537,8 @@
      {
       "id": "fact",
       "description": {
-       "en": "what Sofia likes"
+       "en": "what Sofia likes",
+       "vi": "điều Sofia thích"
       },
       "variants": [
        "sofia aime le thé",
@@ -1471,14 +1577,16 @@
    "taskFamily": "simple_description",
    "mode": "guided",
    "instruction": {
-    "en": "Write one sentence: the cat drinks water."
+    "en": "Write one sentence: the cat drinks water.",
+    "vi": "Hãy viết một câu: con mèo uống nước."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "fact",
       "description": {
-       "en": "what the cat does"
+       "en": "what the cat does",
+       "vi": "con mèo làm gì"
       },
       "variants": [
        "le chat boit de l'eau",
@@ -1513,18 +1621,21 @@
    "taskFamily": "simple_description",
    "mode": "guided",
    "instruction": {
-    "en": "Write about Léo in one or two short sentences: he lives in Paris and he works."
+    "en": "Write about Léo in one or two short sentences: he lives in Paris and he works.",
+    "vi": "Hãy viết về Léo trong một hoặc hai câu ngắn: anh ấy sống ở Paris và anh ấy đi làm."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Person"
+      "en": "Person",
+      "vi": "Người"
      },
      "value": "Léo"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Paris"
     }
@@ -1534,7 +1645,8 @@
      {
       "id": "lives",
       "description": {
-       "en": "where Léo lives"
+       "en": "where Léo lives",
+       "vi": "nơi Léo sống"
       },
       "variants": [
        "il habite à Paris",
@@ -1547,7 +1659,8 @@
      {
       "id": "works",
       "description": {
-       "en": "that he works"
+       "en": "that he works",
+       "vi": "rằng anh ấy đi làm"
       },
       "variants": [
        "il travaille",
@@ -1583,24 +1696,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note to Anna: greet her, and tell her the café is at three o'clock."
+    "en": "Write a short note to Anna: greet her, and tell her the café is at three o'clock.",
+    "vi": "Hãy viết một lời nhắn ngắn cho Anna: chào cô ấy, và nói rằng hẹn cà phê lúc ba giờ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Anna"
     },
     {
      "label": {
-      "en": "What"
+      "en": "What",
+      "vi": "Việc gì"
      },
      "value": "café"
     },
     {
      "label": {
-      "en": "Time"
+      "en": "Time",
+      "vi": "Giờ"
      },
      "value": "3:00"
     }
@@ -1610,7 +1727,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -1622,7 +1740,8 @@
      {
       "id": "addressee",
       "description": {
-       "en": "who the note is for (Anna)"
+       "en": "who the note is for (Anna)",
+       "vi": "lời nhắn gửi cho ai (Anna)"
       },
       "variants": [
        "Anna"
@@ -1632,7 +1751,8 @@
      {
       "id": "what",
       "description": {
-       "en": "the café"
+       "en": "the café",
+       "vi": "quán cà phê"
       },
       "variants": [
        "café"
@@ -1642,7 +1762,8 @@
      {
       "id": "time",
       "description": {
-       "en": "the time (à trois heures)"
+       "en": "the time (à trois heures)",
+       "vi": "giờ (à trois heures)"
       },
       "variants": [
        "à trois heures",
@@ -1673,18 +1794,21 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note: greet your friend, and say the train is Saturday at eight."
+    "en": "Write a short note: greet your friend, and say the train is Saturday at eight.",
+    "vi": "Hãy viết một lời nhắn ngắn: chào bạn của bạn, và nói rằng tàu chạy thứ Bảy lúc tám giờ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "What"
+      "en": "What",
+      "vi": "Việc gì"
      },
      "value": "train"
     },
     {
      "label": {
-      "en": "When"
+      "en": "When",
+      "vi": "Khi nào"
      },
      "value": "Saturday, 8:00"
     }
@@ -1694,7 +1818,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -1706,7 +1831,8 @@
      {
       "id": "what",
       "description": {
-       "en": "the train"
+       "en": "the train",
+       "vi": "tàu hỏa"
       },
       "variants": [
        "train"
@@ -1716,7 +1842,8 @@
      {
       "id": "day",
       "description": {
-       "en": "the day (samedi)"
+       "en": "the day (samedi)",
+       "vi": "ngày (samedi)"
       },
       "variants": [
        "samedi"
@@ -1726,7 +1853,8 @@
      {
       "id": "time",
       "description": {
-       "en": "the time (à huit heures)"
+       "en": "the time (à huit heures)",
+       "vi": "giờ (à huit heures)"
       },
       "variants": [
        "à huit heures"
@@ -1756,14 +1884,16 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a note: say hello, say you are at the library, and close with “see you tomorrow”."
+    "en": "Write a note: say hello, say you are at the library, and close with “see you tomorrow”.",
+    "vi": "Hãy viết một lời nhắn: chào, nói rằng bạn đang ở thư viện, và kết bằng “hẹn mai gặp lại”."
    },
    "rubric": {
     "requiredSlots": [
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -1774,7 +1904,8 @@
      {
       "id": "place",
       "description": {
-       "en": "where you are"
+       "en": "where you are",
+       "vi": "nơi bạn đang ở"
       },
       "variants": [
        "je suis à la bibliothèque"
@@ -1784,7 +1915,8 @@
      {
       "id": "closing",
       "description": {
-       "en": "a closing"
+       "en": "a closing",
+       "vi": "câu kết"
       },
       "variants": [
        "à demain"
@@ -1817,24 +1949,28 @@
    "taskFamily": "simple_form",
    "mode": "guided",
    "instruction": {
-    "en": "Fill in the registration form with the details on the card."
+    "en": "Fill in the registration form with the details on the card.",
+    "vi": "Hãy điền biểu mẫu đăng ký với các thông tin trên thẻ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Nadia"
     },
     {
      "label": {
-      "en": "Age"
+      "en": "Age",
+      "vi": "Tuổi"
      },
      "value": "35"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Lyon"
     }
@@ -1861,7 +1997,8 @@
      {
       "id": "name",
       "description": {
-       "en": "the first name"
+       "en": "the first name",
+       "vi": "tên"
       },
       "variants": [
        "Nadia"
@@ -1871,7 +2008,8 @@
      {
       "id": "age",
       "description": {
-       "en": "the age"
+       "en": "the age",
+       "vi": "tuổi"
       },
       "variants": [
        "trente-cinq"
@@ -1881,7 +2019,8 @@
      {
       "id": "city",
       "description": {
-       "en": "the city"
+       "en": "the city",
+       "vi": "thành phố"
       },
       "variants": [
        "Lyon"
@@ -1910,24 +2049,28 @@
    "taskFamily": "simple_form",
    "mode": "guided",
    "instruction": {
-    "en": "Fill in the hotel form with the details on the card."
+    "en": "Fill in the hotel form with the details on the card.",
+    "vi": "Hãy điền biểu mẫu khách sạn với các thông tin trên thẻ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Tom"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Nice"
     },
     {
      "label": {
-      "en": "Day"
+      "en": "Day",
+      "vi": "Ngày"
      },
      "value": "dimanche"
     }
@@ -1954,7 +2097,8 @@
      {
       "id": "name",
       "description": {
-       "en": "the first name"
+       "en": "the first name",
+       "vi": "tên"
       },
       "variants": [
        "Tom"
@@ -1964,7 +2108,8 @@
      {
       "id": "city",
       "description": {
-       "en": "the city"
+       "en": "the city",
+       "vi": "thành phố"
       },
       "variants": [
        "Nice"
@@ -1974,7 +2119,8 @@
      {
       "id": "day",
       "description": {
-       "en": "the arrival day"
+       "en": "the arrival day",
+       "vi": "ngày đến"
       },
       "variants": [
        "dimanche"
@@ -2003,24 +2149,28 @@
    "taskFamily": "simple_form",
    "mode": "guided",
    "instruction": {
-    "en": "Fill in the library-card form with the details on the card."
+    "en": "Fill in the library-card form with the details on the card.",
+    "vi": "Hãy điền biểu mẫu làm thẻ thư viện với các thông tin trên thẻ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "Name"
+      "en": "Name",
+      "vi": "Tên"
      },
      "value": "Emma"
     },
     {
      "label": {
-      "en": "Age"
+      "en": "Age",
+      "vi": "Tuổi"
      },
      "value": "41"
     },
     {
      "label": {
-      "en": "City"
+      "en": "City",
+      "vi": "Thành phố"
      },
      "value": "Marseille"
     }
@@ -2047,7 +2197,8 @@
      {
       "id": "name",
       "description": {
-       "en": "the first name"
+       "en": "the first name",
+       "vi": "tên"
       },
       "variants": [
        "Emma"
@@ -2057,7 +2208,8 @@
      {
       "id": "age",
       "description": {
-       "en": "the age"
+       "en": "the age",
+       "vi": "tuổi"
       },
       "variants": [
        "quarante et un"
@@ -2067,7 +2219,8 @@
      {
       "id": "city",
       "description": {
-       "en": "the city"
+       "en": "the city",
+       "vi": "thành phố"
       },
       "variants": [
        "Marseille"
@@ -2096,24 +2249,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note to Paul: greet him, and tell him the train is at nine o'clock."
+    "en": "Write a short note to Paul: greet him, and tell him the train is at nine o'clock.",
+    "vi": "Hãy viết một lời nhắn ngắn cho Paul: chào anh ấy, và nói rằng tàu chạy lúc chín giờ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Paul"
     },
     {
      "label": {
-      "en": "What"
+      "en": "What",
+      "vi": "Việc gì"
      },
      "value": "train"
     },
     {
      "label": {
-      "en": "Time"
+      "en": "Time",
+      "vi": "Giờ"
      },
      "value": "9:00"
     }
@@ -2123,7 +2280,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -2135,7 +2293,8 @@
      {
       "id": "addressee",
       "description": {
-       "en": "who the note is for (Paul)"
+       "en": "who the note is for (Paul)",
+       "vi": "lời nhắn gửi cho ai (Paul)"
       },
       "variants": [
        "Paul"
@@ -2145,7 +2304,8 @@
      {
       "id": "what",
       "description": {
-       "en": "the train"
+       "en": "the train",
+       "vi": "tàu hỏa"
       },
       "variants": [
        "train"
@@ -2155,7 +2315,8 @@
      {
       "id": "time",
       "description": {
-       "en": "the time (à neuf heures)"
+       "en": "the time (à neuf heures)",
+       "vi": "giờ (à neuf heures)"
       },
       "variants": [
        "à neuf heures"
@@ -2185,24 +2346,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note to Léa: greet her, and tell her the restaurant is on Saturday."
+    "en": "Write a short note to Léa: greet her, and tell her the restaurant is on Saturday.",
+    "vi": "Hãy viết một lời nhắn ngắn cho Léa: chào cô ấy, và nói rằng hẹn nhà hàng vào thứ Bảy."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Léa"
     },
     {
      "label": {
-      "en": "What"
+      "en": "What",
+      "vi": "Việc gì"
      },
      "value": "restaurant"
     },
     {
      "label": {
-      "en": "Day"
+      "en": "Day",
+      "vi": "Ngày"
      },
      "value": "Saturday"
     }
@@ -2212,7 +2377,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -2224,7 +2390,8 @@
      {
       "id": "addressee",
       "description": {
-       "en": "who the note is for (Léa)"
+       "en": "who the note is for (Léa)",
+       "vi": "lời nhắn gửi cho ai (Léa)"
       },
       "variants": [
        "Léa"
@@ -2234,7 +2401,8 @@
      {
       "id": "what",
       "description": {
-       "en": "the restaurant"
+       "en": "the restaurant",
+       "vi": "nhà hàng"
       },
       "variants": [
        "restaurant"
@@ -2244,7 +2412,8 @@
      {
       "id": "day",
       "description": {
-       "en": "the day (samedi)"
+       "en": "the day (samedi)",
+       "vi": "ngày (samedi)"
       },
       "variants": [
        "samedi"
@@ -2274,24 +2443,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note to Marc: greet him, and tell him the shop is open tomorrow."
+    "en": "Write a short note to Marc: greet him, and tell him the shop is open tomorrow.",
+    "vi": "Hãy viết một lời nhắn ngắn cho Marc: chào anh ấy, và nói rằng ngày mai cửa hàng mở cửa."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Marc"
     },
     {
      "label": {
-      "en": "What"
+      "en": "What",
+      "vi": "Việc gì"
      },
      "value": "shop"
     },
     {
      "label": {
-      "en": "When"
+      "en": "When",
+      "vi": "Khi nào"
      },
      "value": "tomorrow"
     }
@@ -2301,7 +2474,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -2313,7 +2487,8 @@
      {
       "id": "addressee",
       "description": {
-       "en": "who the note is for (Marc)"
+       "en": "who the note is for (Marc)",
+       "vi": "lời nhắn gửi cho ai (Marc)"
       },
       "variants": [
        "Marc"
@@ -2323,7 +2498,8 @@
      {
       "id": "what",
       "description": {
-       "en": "the shop"
+       "en": "the shop",
+       "vi": "cửa hàng"
       },
       "variants": [
        "magasin"
@@ -2333,7 +2509,8 @@
      {
       "id": "open",
       "description": {
-       "en": "that it is open (ouvert)"
+       "en": "that it is open (ouvert)",
+       "vi": "rằng cửa hàng mở (ouvert)"
       },
       "variants": [
        "ouvert",
@@ -2344,7 +2521,8 @@
      {
       "id": "day",
       "description": {
-       "en": "the day (demain)"
+       "en": "the day (demain)",
+       "vi": "ngày (demain)"
       },
       "variants": [
        "demain"
@@ -2375,24 +2553,28 @@
    "taskFamily": "short_message",
    "mode": "guided",
    "instruction": {
-    "en": "Write a short note to Anna: greet her, say you are at the station, and that you are coming back at six."
+    "en": "Write a short note to Anna: greet her, say you are at the station, and that you are coming back at six.",
+    "vi": "Hãy viết một lời nhắn ngắn cho Anna: chào cô ấy, nói rằng bạn đang ở nhà ga, và rằng bạn sẽ về lúc sáu giờ."
    },
    "cueFacts": [
     {
      "label": {
-      "en": "To"
+      "en": "To",
+      "vi": "Gửi"
      },
      "value": "Anna"
     },
     {
      "label": {
-      "en": "Where"
+      "en": "Where",
+      "vi": "Ở đâu"
      },
      "value": "station"
     },
     {
      "label": {
-      "en": "Back at"
+      "en": "Back at",
+      "vi": "Về lúc"
      },
      "value": "6:00"
     }
@@ -2402,7 +2584,8 @@
      {
       "id": "greeting",
       "description": {
-       "en": "a greeting"
+       "en": "a greeting",
+       "vi": "lời chào"
       },
       "variants": [
        "bonjour",
@@ -2414,7 +2597,8 @@
      {
       "id": "place",
       "description": {
-       "en": "where you are"
+       "en": "where you are",
+       "vi": "nơi bạn đang ở"
       },
       "variants": [
        "je suis à la gare"
@@ -2424,7 +2608,8 @@
      {
       "id": "time",
       "description": {
-       "en": "when you are back"
+       "en": "when you are back",
+       "vi": "khi nào bạn về"
       },
       "variants": [
        "je rentre à six heures",

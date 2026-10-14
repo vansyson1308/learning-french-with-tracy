@@ -16,6 +16,8 @@
  *       included (§46: its removal needs its own explicit migration
  *       decision) — passes through untouched; placementFloor starts at 0
  *       so existing users behave exactly as before (§89).
+ *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
+ *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
  *       data moved under the course it belonged to — French, the only
  *       course with checkpoints/placement before v4); `uiLanguage` arrives
@@ -42,7 +44,7 @@ import {
   type PersistedAssessmentState,
 } from "../assessment/types";
 
-export const PERSIST_VERSION = 4;
+export const PERSIST_VERSION = 5;
 
 /**
  * The course the single v3 `assessment` container belonged to. A MIGRATION
@@ -101,8 +103,15 @@ export type PersistedProgress = {
   reviewLog?: ReviewLogEntry[];
   /** Learner assessment state (v3 only; moved under assessmentByCourse in v4). */
   assessment?: PersistedAssessmentState;
-  /** Per-course assessment state (v4): checkpoints + placement of each course. */
+  /** Per-course assessment state (v4 only; moved under assessmentByTarget in v5). */
   assessmentByCourse?: Record<string, PersistedAssessmentState>;
+  /**
+   * Per-TARGET-language assessment state (v5, P2b decision D-4): the
+   * checkpoints, placement and estimate are target-level — `fr-en` and
+   * `fr-vi` share one French record; each attempt / placement result
+   * records the `courseId` it was taken in.
+   */
+  assessmentByTarget?: Record<string, PersistedAssessmentState>;
   /** UI language preference (v4). */
   uiLanguage?: UiLanguagePreference;
 } & Record<string, unknown>;
@@ -332,6 +341,61 @@ function migrateV3toV4(persisted: PersistedProgress): PersistedProgress {
   };
 }
 
+/** Course ids are `<target>-<native>`; a key without a dash is already a target code. */
+export function targetCodeOfCourseId(courseId: string): string {
+  const at = courseId.indexOf("-");
+  return at > 0 ? courseId.slice(0, at) : courseId;
+}
+
+/**
+ * v4 → v5 (P2b): `assessmentByCourse` becomes `assessmentByTarget`. Two
+ * courses of one target (fr-en + fr-vi) merge: attempts are concatenated
+ * (each tagged with its course of origin, oldest first), the most recent
+ * placement result wins, the accepted floor is the higher one. An
+ * `assessmentByTarget` already present (re-import of a v5 backup) is kept
+ * and only merged with what v4 data still exists.
+ */
+function migrateV4toV5(persisted: PersistedProgress): PersistedProgress {
+  const { assessmentByCourse, assessmentByTarget: existing, ...rest } = persisted;
+  const byTarget: Record<string, PersistedAssessmentState> = {};
+  if (existing && typeof existing === "object") {
+    for (const [target, value] of Object.entries(existing)) {
+      if (value && typeof value === "object") byTarget[target] = value as PersistedAssessmentState;
+    }
+  }
+  if (assessmentByCourse && typeof assessmentByCourse === "object") {
+    for (const [courseId, value] of Object.entries(assessmentByCourse)) {
+      if (!value || typeof value !== "object") continue;
+      const a = value as PersistedAssessmentState;
+      const target = targetCodeOfCourseId(courseId);
+      const current = byTarget[target];
+      const attempts = (Array.isArray(a.checkpointAttempts) ? a.checkpointAttempts : []).map((attempt) =>
+        attempt && typeof attempt === "object" && (attempt as { courseId?: unknown }).courseId === undefined ? { ...attempt, courseId } : attempt
+      );
+      const placement =
+        a.placement && typeof a.placement === "object"
+          ? (a.placement as { courseId?: unknown }).courseId === undefined
+            ? { ...a.placement, courseId }
+            : a.placement
+          : undefined;
+      if (!current) {
+        byTarget[target] = { ...a, checkpointAttempts: attempts, ...(placement ? { placement } : {}) };
+        continue;
+      }
+      const mergedAttempts = [...current.checkpointAttempts, ...attempts].sort((x, y) => (x?.completedAt ?? 0) - (y?.completedAt ?? 0));
+      const newerPlacement =
+        placement && (!current.placement || placement.completedAt > current.placement.completedAt) ? placement : current.placement;
+      byTarget[target] = {
+        ...current,
+        checkpointAttempts: mergedAttempts,
+        ...(newerPlacement ? { placement: newerPlacement } : {}),
+        placementFloor: Math.max(Number(current.placementFloor) || 0, Number(a.placementFloor) || 0),
+      };
+    }
+  }
+  return { ...rest, assessmentByTarget: byTarget };
+}
+
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
@@ -355,6 +419,10 @@ export function migrateProgress(
   if (fromVersion < 4 && toVersion >= 4) {
     checkFailureSeam(4);
     state = migrateV3toV4(state as PersistedProgress);
+  }
+  if (fromVersion < 5 && toVersion >= 5) {
+    checkFailureSeam(5);
+    state = migrateV4toV5(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }

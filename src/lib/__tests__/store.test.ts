@@ -38,7 +38,7 @@ beforeEach(() => {
 });
 
 describe("persist wiring: rehydrate runs the full migration chain", () => {
-  test("v0 fixture rehydrates at the latest version: French on FSRS cards, next write stores version 4 without them", async () => {
+  test("v0 fixture rehydrates at the latest version: French on FSRS cards, next write stores version 5 without them", async () => {
     await rehydrateFrom(richFixture);
     await whenLearnerReady();
     const s = useProgress.getState();
@@ -57,15 +57,15 @@ describe("persist wiring: rehydrate runs the full migration chain", () => {
     const raw = memoryStorage.get(PROGRESS_STORAGE_KEY);
     expect(raw).toBeTruthy();
     const stored = JSON.parse(raw as string);
-    expect(stored.version).toBe(4);
+    expect(stored.version).toBe(5);
     expect(stored.state.themePreference).toBe("light");
     expect(stored.state.courses["fr-en"].completedLessons["srs"]).toBeUndefined();
     // P1d: cards never enter the blob again — the learner store holds them.
     expect(stored.state.courses["fr-en"].cards).toBeUndefined();
     expect(stored.state.reviewLog).toBeUndefined();
     const learner = JSON.parse(memoryStorage.get("learner-v4") as string);
-    expect(learner.cards["fr-en"]["fr:w:femme|recognize"].state).toBe("new");
-    expect(stored.state.assessmentByCourse).toEqual({});
+    expect(learner.cards["fr"]["fr:w:femme|recognize"].state).toBe("new");
+    expect(stored.state.assessmentByTarget).toEqual({});
     expect(stored.state.uiLanguage).toBe("system");
   });
 

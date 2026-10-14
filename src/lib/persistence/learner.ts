@@ -40,6 +40,7 @@ import {
   type LearnerBatch,
   type LearnerData,
   type LearnerStore,
+  normalizeLearnerCards,
 } from "./learner-types";
 
 export const LEARNER_PENDING_KEY = "learner-pending-v4";
@@ -175,13 +176,14 @@ export function learnerDataFromBlob(state: {
   courses?: Record<string, { cards?: Record<string, FsrsCardState> } | undefined>;
   reviewLog?: ReviewLogEntry[];
 }): LearnerData {
-  const cards: LearnerData["cards"] = {};
+  const byCourse: LearnerData["cards"] = {};
   for (const [courseId, course] of Object.entries(state.courses ?? {})) {
     if (course?.cards && typeof course.cards === "object" && Object.keys(course.cards).length > 0) {
-      cards[courseId] = { ...course.cards };
+      byCourse[courseId] = { ...course.cards };
     }
   }
-  return { cards, reviewLog: Array.isArray(state.reviewLog) ? [...state.reviewLog] : [] };
+  // Shared per target language (D-4): `courses["fr-en"].cards` → `cards.fr`.
+  return { cards: normalizeLearnerCards(byCourse), reviewLog: Array.isArray(state.reviewLog) ? [...state.reviewLog] : [] };
 }
 
 export function blobCarriesLearnerData(state: {

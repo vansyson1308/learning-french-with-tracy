@@ -26,7 +26,7 @@ import {
   recordLearnerDelta,
   writeLearnerSafetyCopy,
 } from "./persistence/learner";
-import { logRefOf } from "./persistence/learner-types";
+import { logRefOf, targetCodeOfCourse } from "./persistence/learner-types";
 import {
   migrateProgress,
   PERSIST_VERSION,
@@ -111,7 +111,8 @@ type ProgressState = {
    */
   reviewLog: ReviewLogEntry[];
   /** Per-course learner assessment state (checkpoints + placement, v4). */
-  assessmentByCourse: Record<string, PersistedAssessmentState>;
+  /** Assessment per TARGET language (v5, D-4): `fr-en` and `fr-vi` share one French record. */
+  assessmentByTarget: Record<string, PersistedAssessmentState>;
   /**
    * When the learner acknowledged the network-backed speech recognition
    * disclosure (P9 §7); null/absent = not yet shown-and-acknowledged.
@@ -183,10 +184,10 @@ type ProgressState = {
  * it, and a backup of it still fails the import invariants.
  */
 export function assessmentFor(
-  state: Pick<ProgressState, "assessmentByCourse">,
+  state: Pick<ProgressState, "assessmentByTarget">,
   courseId: string
 ): PersistedAssessmentState {
-  const a = state.assessmentByCourse?.[courseId];
+  const a = state.assessmentByTarget?.[targetCodeOfCourse(courseId)];
   if (
     !a ||
     typeof a !== "object" ||
@@ -240,9 +241,9 @@ function updateAssessment(
   fn: (a: PersistedAssessmentState) => PersistedAssessmentState
 ): Partial<ProgressState> {
   return {
-    assessmentByCourse: {
-      ...state.assessmentByCourse,
-      [courseId]: fn(assessmentFor(state, courseId)),
+    assessmentByTarget: {
+      ...state.assessmentByTarget,
+      [targetCodeOfCourse(courseId)]: fn(assessmentFor(state, courseId)),
     },
   };
 }
@@ -283,7 +284,7 @@ export const useProgress = create<ProgressState>()(
       courses: {},
       activeDays: {},
       reviewLog: [],
-      assessmentByCourse: {},
+      assessmentByTarget: {},
       speechNoticeAckAt: null,
       learnerReady: false,
 
@@ -336,14 +337,15 @@ export const useProgress = create<ProgressState>()(
         set((state) =>
           updateAssessment(state, state.activeCourseId, (a) => ({
             ...a,
-            checkpointAttempts: capCheckpointAttempts([...a.checkpointAttempts, attempt]),
+            // The course is provenance; the record is the target language's (D-4).
+            checkpointAttempts: capCheckpointAttempts([...a.checkpointAttempts, { ...attempt, courseId: state.activeCourseId }]),
           }))
         ),
       setPlacementResult: (result, acceptedFloorIndex) =>
         set((state) =>
           updateAssessment(state, state.activeCourseId, (a) => ({
             ...a,
-            placement: result,
+            placement: { ...result, courseId: state.activeCourseId },
             placementFloor:
               Number.isFinite(acceptedFloorIndex) && acceptedFloorIndex > 0
                 ? Math.floor(acceptedFloorIndex)

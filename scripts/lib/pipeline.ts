@@ -391,6 +391,10 @@ export function validateContent(): ValidationResult {
     }
     const layers = targetLayers(pack.targetCode);
     const noBundledAudio = pack.audio?.policy === "device-tts" || pack.audio?.policy === "test-only";
+    // P2b: pack audio is keyed by the TARGET language's primary course; a
+    // secondary-native course validates against that course's manifest.
+    const primaryNative = [...new Set(packs.filter((p) => p.pack.targetCode === pack.targetCode).map((p) => p.pack.nativeCode))].sort()[0];
+    const audioCourseId = packs.find((p) => p.pack.targetCode === pack.targetCode && p.pack.nativeCode === primaryNative)?.pack.id ?? pack.id;
     errors.push(...objectiveMetadataErrors(pack, layers.assessment));
 
     const ids = new Set<string>();
@@ -408,7 +412,7 @@ export function validateContent(): ValidationResult {
               // device-tts courses (no license-clean voice exists for the
               // language) carry no bundled audio by policy; the runtime
               // speaks their audioTargets through the device voice.
-              if (!noBundledAudio && !manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
+              if (!noBundledAudio && !manifestKeys.has(`${audioCourseId}:${e.audioTarget}`)) {
                 err(`${pack.id}: ${e.id} audioTarget has no audio: "${e.audioTarget}"`);
               }
             }

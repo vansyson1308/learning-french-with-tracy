@@ -26,7 +26,7 @@ import { loadRichLexicon, loadSourceManifest } from "../lib/lexicon";
 import { dbAssetName, lexiconContentHash } from "../lib/lexicon-build";
 import { loadRegistry, safeResolve } from "../lib/pipeline";
 
-const contentHash = lexiconContentHash(loadRichLexicon("fr"), loadSourceManifest("fr"), loadRegistry());
+const contentHash = lexiconContentHash(loadRichLexicon("fr"), loadSourceManifest("fr"), loadRegistry(), "en");
 const KEYS = { targetCode: "fr", nativeCode: "en" };
 const db = new Database(safeResolve(`assets/lexicon/${dbAssetName("fr", contentHash)}`), {
   readonly: true,

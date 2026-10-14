@@ -22,18 +22,18 @@
         "themePreference",
         "courses",
         "activeDays",
-        "assessmentByCourse",
-        "uiLanguage"
+        "uiLanguage",
+        "assessmentByTarget"
       ]
     },
-    "persistVersion": 4
+    "persistVersion": 5
   },
   "fromVersion": 0,
   "invariants": [],
   "migrated": {
     "activeCourseId": "es-en",
     "activeDays": {},
-    "assessmentByCourse": {},
+    "assessmentByTarget": {},
     "courses": {},
     "dailyGoal": 20,
     "dailyXp": 0,
@@ -54,7 +54,7 @@
     "state": {
       "activeCourseId": "es-en",
       "activeDays": {},
-      "assessmentByCourse": {},
+      "assessmentByTarget": {},
       "courses": {},
       "dailyGoal": 20,
       "dailyXp": 0,
@@ -66,5 +66,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 4
+  "toVersion": 5
 }

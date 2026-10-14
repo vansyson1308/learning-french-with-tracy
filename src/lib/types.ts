@@ -301,6 +301,7 @@ export type CatalogCourse = {
   targetLanguage: string;
   targetCode: string;
   nativeLanguage: string;
+  nativeCode: string;
   flag: string;
   unitCount: number;
   lessonCount: number;

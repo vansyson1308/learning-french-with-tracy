@@ -163,17 +163,17 @@ describe("the store on top of the learner store", () => {
     expect(s.activeCourseId).toBe("fr-en");
     expect(Object.keys(s.courses["fr-en"].cards ?? {}).length).toBeGreaterThan(0);
     expect(s.reviewLog.length).toBe(3);
-    expect(s.assessmentByCourse["fr-en"].placementFloor).toBe(20);
+    expect(s.assessmentByTarget["fr"].placementFloor).toBe(20);
     // Force a blob write and check the stripped shape.
     s.setThemePreference("dark");
     await new Promise((r) => setTimeout(r, 0));
     const stored = JSON.parse(memoryStorage.get(PROGRESS_STORAGE_KEY) as string);
-    expect(stored.version).toBe(4);
+    expect(stored.version).toBe(5);
     expect(stored.state.courses["fr-en"].cards).toBeUndefined();
     expect(stored.state.reviewLog).toBeUndefined();
     const learner = await (await learnerStore()).exportAll();
     expect(learner.reviewLog.length).toBe(3);
-    expect(Object.keys(learner.cards["fr-en"]).length).toBe(Object.keys(s.courses["fr-en"].cards ?? {}).length);
+    expect(Object.keys(learner.cards["fr"]).length).toBe(Object.keys(s.courses["fr-en"].cards ?? {}).length);
     // The pre-v4 safety copy went to the documents directory.
     expect([...memFiles.keys()].some((k) => k.includes("progress-before-v4-"))).toBe(true);
   });

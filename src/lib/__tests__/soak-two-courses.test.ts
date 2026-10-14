@@ -153,8 +153,10 @@ async function checkStoreAfterFiftyDays(backend: string, numbers: SoakNumbers): 
   const all = await (await learnerStore()).exportAll();
   for (const courseId of COURSES) {
     expect(all.reviewLog.filter((e) => e.courseId === courseId).length).toBe((CYCLES / 2) * perDay);
-    expect(Object.keys(all.cards[courseId] ?? {}).length).toBeLessThanOrEqual(itemsOf(courseId).length * 2);
-    expect(Object.keys(all.cards[courseId] ?? {}).length).toBeGreaterThan(0);
+    // Cards are keyed by TARGET language (D-4): fr-en → fr, es-en → es.
+    const target = courseId.split("-")[0];
+    expect(Object.keys(all.cards[target] ?? {}).length).toBeLessThanOrEqual(itemsOf(courseId).length * 2);
+    expect(Object.keys(all.cards[target] ?? {}).length).toBeGreaterThan(0);
   }
   const s = useProgress.getState();
   expect(s.streak).toBe(CYCLES);
@@ -185,7 +187,7 @@ async function checkDayFiftyBackup(): Promise<void> {
   expect(staged.ok).toBe(true);
   if (!staged.ok) return;
   expect(runInvariants(staged.state, new Date(), staged.learner)).toEqual([]);
-  expect(Object.keys(staged.learner.cards).sort()).toEqual([...COURSES].sort());
+  expect(Object.keys(staged.learner.cards).sort()).toEqual(COURSES.map((c) => c.split("-")[0]).sort());
   expect(staged.learner.reviewLog.length).toBe(learner.reviewLog.length);
   expect(staged.state.courses["fr-en"].xp).toBe(live.courses["fr-en"].xp);
   expect(staged.state.courses["es-en"].xp).toBe(live.courses["es-en"].xp);

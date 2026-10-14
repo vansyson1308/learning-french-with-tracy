@@ -106,6 +106,53 @@
         "scenarios": "src/content/interaction/fr-scenarios.json"
       }
     },
+    "fr-vi": {
+      "id": "fr-vi",
+      "targetCode": "fr",
+      "nativeCode": "vi",
+      "targetLanguage": "French",
+      "nativeLanguage": "Vietnamese",
+      "flag": "🇫🇷",
+      "flagAsset": "fr",
+      "recognitionLocale": "fr-FR",
+      "ttsLocale": "fr-FR",
+      "script": "latin",
+      "idPrefix": "fr:w:",
+      "legacyIdPrefix": "fr:legacy:",
+      "capabilities": {
+        "fsrs": true,
+        "dailySession": true,
+        "lexicon": true,
+        "concepts": true,
+        "placement": true,
+        "checkpoints": true,
+        "goals": true,
+        "listening": true,
+        "reading": true,
+        "speaking": true,
+        "writing": true,
+        "conversation": true
+      },
+      "artifacts": {
+        "ids": "src/content/ids/fr.json",
+        "lexiconIndex": "src/content/lexicon/fr-vi-index.json",
+        "lexiconFallback": "src/content/lexicon/fr-vi-web-fallback.json",
+        "lexiconDb": "assets/lexicon/fr-vi-lexicon-v3-b49c69da4dd7df8b.db",
+        "concepts": "src/content/concepts/fr-vi-concepts.json",
+        "objectives": "src/content/assessment/fr-vi-objectives.json",
+        "checkpoints": "src/content/assessment/fr-vi-checkpoints.json",
+        "placement": "src/content/assessment/fr-vi-placement.json",
+        "attainment": "src/content/assessment/fr-attainment.json",
+        "claim": "src/content/assessment/fr-claim.json",
+        "listening": "src/content/reception/fr-listening.json",
+        "reading": "src/content/reception/fr-vi-reading.json",
+        "clipAssets": "src/content/reception/fr-clip-assets.ts",
+        "speech": "src/content/speech/fr-vi-speech-items.json",
+        "writing": "src/content/writing/fr-vi-writing.json",
+        "scenarios": "src/content/interaction/fr-vi-scenarios.json"
+      },
+      "audioCourseId": "fr-en"
+    },
     "it-en": {
       "id": "it-en",
       "targetCode": "it",

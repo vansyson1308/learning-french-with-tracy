@@ -35,7 +35,10 @@ export function restorePlaybackAudioMode() {
 
 export function speakTarget(courseId: string, text: string) {
   Speech.stop();
-  const key = `${courseId}:${text}`;
+  // Pack audio is the target language's: a secondary-native course (fr-vi)
+  // plays the clips recorded for the primary course of its target (fr-en).
+  const audioCourseId = courseProfile(courseId).audioCourseId ?? courseId;
+  const key = `${audioCourseId}:${text}`;
   const source = audioManifest[key];
   if (source) {
     if (!voicePlayer) voicePlayer = createAudioPlayer(source);

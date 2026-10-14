@@ -52,22 +52,39 @@ itself.
   French excellence layer is French-only (content, not code: since P1c the
   schema, validators and compiler accept any target language — see
   `content/README.md` — but only French has authored rich sources).
-- P1c compiles ONE set of rich artifacts per target language in the native
-  language of that language's courses; a target with courses in several
-  native languages (fr-en + fr-vi) needs the per-course artifacts of P2b.
-  Two historical names are kept for golden byte-identity until a told
-  rename: French reports stay at `content/reports/*.json` (other languages
-  report under `content/reports/<code>/`) and the French writing artifact's
-  token set stays under the `knownFrench` key.
+- Since P2b a target language can ship courses in several native languages
+  (`fr-en` + `fr-vi`): the compiler emits one set of native-dependent
+  artifacts per course (the primary native language — the smallest native
+  code — keeps the historical `fr-*` names, a secondary one is prefixed by
+  its course id, `fr-vi-*`) and shares the target-level ones (ids,
+  attainment, claim, listening clips, pack audio). Two historical names are
+  kept for golden byte-identity until a told rename: French reports stay at
+  `content/reports/*.json` (other languages report under
+  `content/reports/<code>/`) and the French writing artifact's token set
+  stays under the `knownFrench` key.
+- **Vietnamese translation reviewed by: pending native review.** The
+  Vietnamese text of `fr-vi` (3,139 strings: glosses, example
+  translations, options, prompts, questions, guidebooks, concept prose,
+  can-do statements, instructions, cue facts, rubric slots, scenario goals)
+  was drafted from the English source through the dictionary + JSONL
+  workflow of `scripts/translate-native.ts` and has NOT yet been signed off
+  by a native speaker. The review sheet is `content/fr/REVIEW-vi.md`
+  (every string with its source; word banks and typed answers whose word
+  order differs are flagged **re-author**). Until the owner records the
+  review here, treat `fr-vi` wording as draft; the French target text,
+  audio and grading are the same as `fr-en`.
 - The A1 statement is a **CEFR-aligned A1 estimate** derived from the
   course's own checks; it is not an official or certified CEFR result and
   the assessment has no empirical validation (no response data, no item
   statistics, no standard setting) — `ASSESSMENT_DOSSIER.md`.
 - No pronunciation scoring; spoken production is graded on what the
   recogniser transcribes.
-- UI chrome is Vietnamese or English (P2a); course CONTENT (glosses, options,
-  questions, guidebooks, concept prose) stays in each course's native
-  language — English for `fr-en` — until P2b ships `fr-vi`.
+- UI chrome is Vietnamese or English (P2a); course CONTENT is in the
+  course's native language: English in `fr-en`, Vietnamese in `fr-vi`
+  (P2b). A Vietnamese UI with `fr-en` selected therefore still shows
+  English glosses and questions — switch to the course "explained in
+  Tiếng Việt" from Profile → Learning → Switch. The seven inherited `*-en`
+  packs remain English-only until their `-vi` courses ship (Phase 3/4).
 - Learner history (cards, review log) lives in the learner store since
   persist v4: on a phone an expo-sqlite database (`learner-v4.db`), on the
   web tier a JSON document rewritten on every flush (its cost grows with the

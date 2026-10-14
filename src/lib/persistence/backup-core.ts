@@ -20,7 +20,7 @@ import type { FsrsCardState } from "../learning/scheduler";
 import type { SrsEntry } from "../srs";
 
 import { learnerDataFromBlob } from "./learner";
-import { emptyLearnerData, type LearnerData } from "./learner-types";
+import { emptyLearnerData, normalizeLearnerCards, targetCodeOfCourse, type LearnerData } from "./learner-types";
 import {
   migrateProgress,
   PERSIST_VERSION,
@@ -266,7 +266,11 @@ export function runInvariants(state: PersistedProgress, now: Date, learner?: Lea
     // A course keeps its review data either as a legacy `srs` map or as
     // FSRS cards in the learner store (an fsrs course may have none yet).
     const hasSrs = !!course.srs && typeof course.srs === "object";
-    const hasCards = learnerData.cards[courseId] !== undefined || (!!course.cards && typeof course.cards === "object");
+    // Cards are keyed by TARGET language in the learner section (D-4); an inline (pre-v4) map is per course.
+    const hasCards =
+      learnerData.cards[targetCodeOfCourse(courseId)] !== undefined ||
+      learnerData.cards[courseId] !== undefined ||
+      (!!course.cards && typeof course.cards === "object");
     if (!hasSrs && !hasCards && !hasCapability(courseId, "fsrs")) {
       problems.push(`invalid review data in ${courseId}`);
     }
@@ -302,21 +306,23 @@ export function runInvariants(state: PersistedProgress, now: Date, learner?: Lea
     }
   }
 
-  // v3-style single container or v4 per-course map, whichever the state carries.
+  // v3-style single container, v4 per-course map or v5 per-target map, whichever the state carries.
   if (state.assessment !== undefined) {
     const problem = invalidAssessment(state.assessment, maxTimestamp);
     if (problem) problems.push(problem);
   }
-  if (state.assessmentByCourse !== undefined) {
-    if (!state.assessmentByCourse || typeof state.assessmentByCourse !== "object") {
+  for (const field of ["assessmentByCourse", "assessmentByTarget"] as const) {
+    const map = state[field];
+    if (map === undefined) continue;
+    if (!map || typeof map !== "object") {
       problems.push("invalid assessment map");
-    } else {
-      for (const [courseId, a] of Object.entries(state.assessmentByCourse)) {
-        const problem = invalidAssessment(a, maxTimestamp);
-        if (problem) {
-          problems.push(`${problem} (${courseId})`);
-          break;
-        }
+      continue;
+    }
+    for (const [key, a] of Object.entries(map)) {
+      const problem = invalidAssessment(a, maxTimestamp);
+      if (problem) {
+        problems.push(`${problem} (${key})`);
+        break;
       }
     }
   }
@@ -390,7 +396,8 @@ function learnerSection(value: unknown): LearnerData | null {
   if (!value || typeof value !== "object") return null;
   const raw = value as { cards?: unknown; reviewLog?: unknown };
   if (!raw.cards || typeof raw.cards !== "object" || !Array.isArray(raw.reviewLog)) return null;
-  return { cards: raw.cards as LearnerData["cards"], reviewLog: raw.reviewLog as ReviewLogEntry[] };
+  // Backups written before P2b key cards by course id; the store keys by target language.
+  return { cards: normalizeLearnerCards(raw.cards as LearnerData["cards"]), reviewLog: raw.reviewLog as ReviewLogEntry[] };
 }
 
 /**
