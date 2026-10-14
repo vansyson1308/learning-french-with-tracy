@@ -392,6 +392,34 @@
       ],
       "notes": "P3b audio pipeline v2. Each MeloTTS model actually selected for a course gets its own registry entry (melotts-<lang>) at selection time, covering that language's assets.",
       "buildTimeOnly": true
+    },
+    {
+      "id": "kokoro-voice-im_nicola",
+      "name": "Kokoro-82M voice kokoro-im_nicola",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/im_nicola.pt voice (CC-BY-4.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-14",
+      "covers": [
+        "assets/audio/it/",
+        "content/audio/model-cards/it/kokoro-im_nicola.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1701 over 24 sampled strings, 0 technical failures). Model weights are never committed."
+    },
+    {
+      "id": "kokoro-voice-if_sara",
+      "name": "Kokoro-82M voice kokoro-if_sara",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/if_sara.pt voice (CC-BY-4.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-14",
+      "covers": [
+        "assets/audio/it/",
+        "content/audio/model-cards/it/kokoro-if_sara.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.2104 over 24 sampled strings, 0 technical failures). Model weights are never committed."
     }
   ]
 }

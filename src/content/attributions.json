@@ -323,6 +323,30 @@
       "covers": [
         "content/audio/engines.json"
       ]
+    },
+    {
+      "id": "kokoro-voice-im_nicola",
+      "name": "Kokoro-82M voice kokoro-im_nicola",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/im_nicola.pt voice (CC-BY-4.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/it/",
+        "content/audio/model-cards/it/kokoro-im_nicola.card.txt"
+      ]
+    },
+    {
+      "id": "kokoro-voice-if_sara",
+      "name": "Kokoro-82M voice kokoro-if_sara",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/if_sara.pt voice (CC-BY-4.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/it/",
+        "content/audio/model-cards/it/kokoro-if_sara.card.txt"
+      ]
     }
   ]
 }

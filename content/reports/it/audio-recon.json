@@ -1,0 +1,80 @@
+{
+  "generator": "scripts/audio.ts recon",
+  "language": "it",
+  "layers": "all",
+  "engines": {
+    "piper": {
+      "pinnedVersion": "1.2.0"
+    },
+    "kokoro": {
+      "pinnedVersion": "0.9.4"
+    },
+    "melotts": {
+      "pinnedVersion": "209145371cff8fc3bd60d7be902ea69cbdb7965a"
+    }
+  },
+  "voices": [
+    {
+      "voice": "kokoro-if_sara",
+      "engine": "kokoro",
+      "language": "it",
+      "dataset": null,
+      "license": "license: apache-2.0 | **Kokoro** is an open-weight TTS model with 82 million parameters. Despite its lightweight architecture, it delivers comparable quality to larger models while being significantly faster and more cost-efficient. With Apache-licensed weights, Kokoro can be deployed anywhere from production environments to personal projects. | > This is an Apache-licensed model, and Kokoro has been deployed in numerous projects and commercial APIs. We welcome the deployment of the model in real use cases. | - [Creative Commons Attribution](#creative-commons-attribution) | [Kokoro](/kˈOkəɹO/) is an open-weight TTS model with 82 million parameters. Despite its lightweight architecture, it delivers comparable quality to larger models while being significantly faster and more cost-efficient. With Apache-licensed weights, [Kokoro](/kˈOkəɹO/) can be deployed anywhere from production environments to personal projects. | - Public domain audio | - Audio licensed under Apache, MIT, etc | ### Creative Commons Attribution | The following CC BY audio was part of the dataset used to train Kokoro v1.0. | | Audio Data | Duration Used | License | Added to Training Set After | | | [Koniwa](https://github.com/koniwa/koniwa) `tnc` | <1h | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/deed.ja) | v0.19 / 22 Nov 2024 | | | [SIWIS](https://datashare.ed.ac.uk/handle/10283/2353) | <11h | [CC BY 4.0](https://datashare.ed.ac.uk/bitstream/handle/10283/2353/license_text) | v0.19 / 22 Nov 2024 |",
+      "status": "eligible",
+      "gateReason": "matched CC BY 4.0",
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/if_sara.pt",
+          "sha256": "6c0b253b955fe32f1a1a86006aebe83d050ea95afd0e7be15182f087deedbf55",
+          "bytes": 523425
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      }
+    },
+    {
+      "voice": "kokoro-im_nicola",
+      "engine": "kokoro",
+      "language": "it",
+      "dataset": null,
+      "license": "license: apache-2.0 | **Kokoro** is an open-weight TTS model with 82 million parameters. Despite its lightweight architecture, it delivers comparable quality to larger models while being significantly faster and more cost-efficient. With Apache-licensed weights, Kokoro can be deployed anywhere from production environments to personal projects. | > This is an Apache-licensed model, and Kokoro has been deployed in numerous projects and commercial APIs. We welcome the deployment of the model in real use cases. | - [Creative Commons Attribution](#creative-commons-attribution) | [Kokoro](/kˈOkəɹO/) is an open-weight TTS model with 82 million parameters. Despite its lightweight architecture, it delivers comparable quality to larger models while being significantly faster and more cost-efficient. With Apache-licensed weights, [Kokoro](/kˈOkəɹO/) can be deployed anywhere from production environments to personal projects. | - Public domain audio | - Audio licensed under Apache, MIT, etc | ### Creative Commons Attribution | The following CC BY audio was part of the dataset used to train Kokoro v1.0. | | Audio Data | Duration Used | License | Added to Training Set After | | | [Koniwa](https://github.com/koniwa/koniwa) `tnc` | <1h | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/deed.ja) | v0.19 / 22 Nov 2024 | | | [SIWIS](https://datashare.ed.ac.uk/handle/10283/2353) | <11h | [CC BY 4.0](https://datashare.ed.ac.uk/bitstream/handle/10283/2353/license_text) | v0.19 / 22 Nov 2024 |",
+      "status": "eligible",
+      "gateReason": "matched CC BY 4.0",
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/im_nicola.pt",
+          "sha256": "234ed06648649f9bd874b37508ea17560b9c993ef85b4ddb3e3a71e062bd2c12",
+          "bytes": 523341
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      }
+    }
+  ]
+}

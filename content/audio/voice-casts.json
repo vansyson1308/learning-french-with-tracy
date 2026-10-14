@@ -109,7 +109,7 @@
       }
     },
     "it": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "kokoro-if_sara",
@@ -121,11 +121,27 @@
         }
       ],
       "cast": {
-        "A": null,
-        "B": null
+        "A": "kokoro-im_nicola",
+        "B": "kokoro-if_sara"
       },
-      "canary": null,
-      "reason": "Piper paola/riccardo have no verifiable licence (excluded 2026-09-02); Kokoro Italian (Apache-2.0) is the only clean candidate"
+      "canary": {
+        "reportedAt": "2026-10-14",
+        "report": "content/reports/it/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-im_nicola",
+            "clips": 24,
+            "meanWer": 0.1701,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "kokoro-if_sara",
+            "clips": 24,
+            "meanWer": 0.2104,
+            "technicalFailures": 0
+          }
+        ]
+      }
     },
     "pt": {
       "status": "pending-canary",
