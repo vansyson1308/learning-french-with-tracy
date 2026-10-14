@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from "fs";
 
 import { PackSchema, SourceRegistrySchema } from "../../content/schema";
 import { FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
-import { audioKeyHash, checkAudio, MockTtsProvider, type AudioSpec } from "../lib/audio";
+import { audioKeyHash, checkAudio, loadBaselineGroups, MockTtsProvider, type AudioSpec } from "../lib/audio";
 import {
   assertGeneratedTarget,
   canonicalJson,
@@ -254,11 +254,13 @@ describe("audio foundation", () => {
     // (V1 publication: untraceable ja/ko recordings removed, then every
     // course regenerated from license-gated voices), so the count comes from
     // the committed baseline itself, never a literal.
-    const baseline = readJson("content/audio/legacy-baseline.json") as { fileCount: number };
+    // P3b: one baseline file per language group under content/audio/baseline/.
+    const baseline = loadBaselineGroups();
     const result = checkAudio();
     expect(result.errors).toEqual([]);
-    expect(baseline.fileCount).toBeGreaterThan(0);
-    expect(result.checkedFiles).toBe(baseline.fileCount);
+    expect(baseline.groups.length).toBeGreaterThan(0);
+    expect(Object.keys(baseline.files).length).toBeGreaterThan(0);
+    expect(result.checkedFiles).toBe(Object.keys(baseline.files).length);
   });
 });
 

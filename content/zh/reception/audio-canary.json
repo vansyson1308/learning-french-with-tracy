@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "language": "zh",
+  "note": "Generation canary (P3b): difficult Mandarin Chinese rendered by every candidate voice BEFORE any shipped clip is generated. Never shipped to learners; drives the ASR audit and the voice-cast selection (content/audio/voice-casts.json).",
+  "items": [
+    {
+      "id": "canary.tone.ma",
+      "focus": "four tones (mā má mǎ mà)",
+      "text": "妈妈骑马，马慢，妈妈骂马。"
+    },
+    {
+      "id": "canary.tone3.sandhi",
+      "focus": "third-tone sandhi",
+      "text": "我想买很好的雨伞。"
+    },
+    {
+      "id": "canary.retroflex.zhi",
+      "focus": "zh / ch / sh vs z / c / s",
+      "text": "这是四十四只石狮子。"
+    },
+    {
+      "id": "canary.numbers.73",
+      "focus": "numbers 73 / 1999 / 15",
+      "text": "七十三块钱，一九九九年，十五分钟。"
+    },
+    {
+      "id": "canary.question.ma",
+      "focus": "question particle 吗 / 呢",
+      "text": "你好吗？火车站在哪儿呢？"
+    },
+    {
+      "id": "canary.erhua.nar",
+      "focus": "erhua 哪儿 / 一点儿",
+      "text": "我们去那儿玩一会儿，吃一点儿东西。"
+    },
+    {
+      "id": "canary.measure.ge",
+      "focus": "measure words",
+      "text": "一个人、两本书、三杯茶。"
+    },
+    {
+      "id": "canary.ü.lü",
+      "focus": "ü vs u (lǜ / lù)",
+      "text": "绿色的路很长。"
+    },
+    {
+      "id": "canary.neutral.de",
+      "focus": "neutral tone 的 / 了",
+      "text": "我的朋友来了，他们吃了饭。"
+    },
+    {
+      "id": "canary.time.dian",
+      "focus": "time of day",
+      "text": "现在八点半，我们九点一刻出发。"
+    },
+    {
+      "id": "canary.greeting.nihao",
+      "focus": "greetings",
+      "text": "你好！早上好！谢谢，再见！"
+    },
+    {
+      "id": "canary.long.restaurant",
+      "focus": "long sentence",
+      "text": "我想预订今天晚上八点两个人的桌子，可以吗？"
+    }
+  ]
+}

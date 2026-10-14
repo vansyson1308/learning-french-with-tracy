@@ -151,8 +151,13 @@ export function isEvidenceOnlyLanguageDir(code: string): boolean {
   const root = safeResolve(`content/${code}`);
   if (!existsSync(root)) return false;
   const entries = readdirSync(root);
-  if (entries.some((e) => e !== "lexicon")) return false;
-  return !existsSync(path.join(root, "lexicon", "lexemes.json"));
+  // Evidence only: lexicon pools without authored lexemes, and/or the audio
+  // pipeline's reception canary / voice manifest without authored
+  // listening or reading sources (P3b).
+  if (entries.some((e) => e !== "lexicon" && e !== "reception")) return false;
+  if (existsSync(path.join(root, "lexicon", "lexemes.json"))) return false;
+  if (existsSync(path.join(root, "reception", "listening.json")) || existsSync(path.join(root, "reception", "reading.json"))) return false;
+  return true;
 }
 
 export function discoverTargets(packs: LoadedPack[] = loadPacks()): string[] {
@@ -198,7 +203,7 @@ export function targetLayers(targetCode: string): {
 } {
   const has = (rel: string) => existsSync(safeResolve(`content/${targetCode}/${rel}`));
   return {
-    reception: has("reception"),
+    reception: has("reception/listening.json") || has("reception/reading.json"),
     pedagogy: has("pedagogy"),
     assessment: has("assessment/objectives.json"),
     speech: has("speech/items.json"),

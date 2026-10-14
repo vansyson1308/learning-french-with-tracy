@@ -5,20 +5,24 @@
  * --write-baseline (re)creates the baseline — only legitimate when
  * intentionally blessing a new one with a recorded reason, never in CI.
  */
-import { writeFileSync } from "fs";
-
-import { buildAudioBaseline, checkAudio } from "./lib/audio";
-import { safeResolve } from "./lib/pipeline";
+import { baselineGroupOf, buildAudioBaseline, checkAudio, writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
 
 if (process.argv.includes("--write-baseline")) {
+  // P3b: one baseline file per language group under content/audio/baseline/
+  // (plus sfx.json and manifest.json). `--lang <code>` re-blesses one
+  // language; without it every group is rewritten (first migration only).
+  const i = process.argv.indexOf("--lang");
+  const lang = i >= 0 ? process.argv[i + 1] : undefined;
   const baseline = buildAudioBaseline();
-  writeFileSync(
-    safeResolve("content/audio/legacy-baseline.json"),
-    JSON.stringify(baseline, null, 2)
-  );
-  console.log(
-    `baseline written: ${baseline.fileCount} files, ${(baseline.totalBytes / 1e6).toFixed(1)} MB`
-  );
+  if (lang) {
+    writeLanguageBaseline(lang);
+  } else {
+    const langs = new Set(Object.keys(baseline.files).map(baselineGroupOf).filter((g) => g !== "sfx" && g !== "other").map((g) => g.replace(/-reception$/, "")));
+    for (const l of langs) writeLanguageBaseline(l);
+    writeSfxBaseline();
+  }
+  writeManifestBaseline();
+  console.log(`baseline written: ${baseline.fileCount} files, ${(baseline.totalBytes / 1e6).toFixed(1)} MB (${lang ?? "every language"} + sfx + manifest)`);
   process.exit(0);
 }
 

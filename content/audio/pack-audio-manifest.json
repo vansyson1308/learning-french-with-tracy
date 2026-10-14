@@ -1,94 +1,84 @@
 {
-  "version": 1,
-  "pipelineVersion": 1,
-  "note": "Bundled course audio for every word, phrase and sentence the packs reference. Every voice is a candidate until the dispatch-only pack-audio workflow (recon) double-downloads it, pins its hashes, reads its MODEL_CARD and applies the license gate FAIL-CLOSED; the canary ASR audit then selects one eligible voice per course. Model weights are used on the runner and never committed. Courses whose language has no Piper voice keep no bundled audio and use the device's text-to-speech (policy device-tts).",
-  "piperTts": {
-    "package": "piper-tts",
-    "pinnedVersion": "1.2.0"
+  "version": 2,
+  "pipelineVersions": {
+    "default": 2,
+    "fr": 1
   },
-  "voicesRepository": "https://huggingface.co/rhasspy/piper-voices",
-  "voicesRevision": "v1.0.0",
-  "licenseGate": {
-    "note": "Same posture as the reception pipeline (CC BY 4.0 / CC BY-SA 4.0 accepted, share-alike deliberately accepted because the project already publishes derived data under CC BY-SA 4.0 with an in-app attributions screen) plus CC0 / public-domain datasets, which are strictly more permissive. AGPL/GPL/NC/ND remain denied. A voice whose card matches nothing is excluded, never guessed.",
-    "allow": [
-      "CC BY 4.0",
-      "CC-BY-4.0",
-      "CC BY 4",
-      "cc-by-4.0",
-      "CC BY-SA 4.0",
-      "CC-BY-SA-4.0",
-      "creativecommons.org/licenses/by/4.0",
-      "creativecommons.org/licenses/by-sa/4.0",
-      "CC0",
-      "CC0 1.0",
-      "creativecommons.org/publicdomain/zero/1.0",
-      "public domain"
-    ],
-    "deny": [
-      "AGPL",
-      "GPL",
-      "NC",
-      "ND",
-      "non-commercial",
-      "noncommercial"
-    ]
-  },
+  "note": "Bundled course audio (pack layer: every word, phrase and sentence a course pack references; lexicon layer: every lexeme surface and example of a language's lexicon, keyed by its primary course). Audio pipeline v2 (P3b): engines, pins, licence gate and loudness target live in content/audio/engines.json; candidate voices per LANGUAGE and the selected voice cast live in content/audio/voice-casts.json (written by `scripts/audio.ts select` from the canary ASR audit); every voice is pinned here by double-download hash after recon. pipelineVersions: French clips keep version 1 (their content-addressed keys and bytes never change); every other language uses version 2 (EBU R128 loudness normalisation). Courses whose language has no licence-clean voice keep policy device-tts.",
+  "engines": "content/audio/engines.json",
+  "voiceCasts": "content/audio/voice-casts.json",
   "courses": {
     "de-en": {
       "policy": "generated",
       "language": "de",
       "voiceId": "de_DE-thorsten-medium",
-      "candidates": [
-        "de_DE-thorsten-medium",
-        "de_DE-mls-medium"
-      ]
+      "voiceCast": {
+        "A": "de_DE-thorsten-medium",
+        "B": null
+      }
     },
     "es-en": {
       "policy": "generated",
       "language": "es",
       "voiceId": "es_ES-davefx-medium",
-      "candidates": [
-        "es_ES-davefx-medium",
-        "es_ES-sharvard-medium"
-      ]
+      "voiceCast": {
+        "A": "es_ES-davefx-medium",
+        "B": null
+      }
     },
     "fr-en": {
       "policy": "generated",
       "language": "fr",
       "voiceId": "fr_FR-siwis-medium",
-      "candidates": [
-        "fr_FR-siwis-medium"
-      ]
+      "voiceCast": {
+        "A": "fr_FR-siwis-medium",
+        "B": null
+      }
     },
     "it-en": {
       "policy": "device-tts",
       "language": "it",
-      "reason": "The only Italian Piper voices are it_IT-paola-medium, whose MODEL_CARD states 'License: See URL' (no verifiable license, excluded by the gate on 2026-09-02, run 33646858305), and it_IT-riccardo-x_low (extra-low quality). The upstream recordings have no traceable license, so the course speaks through the device's own Italian text-to-speech voice."
+      "reason": "The only Italian Piper voices are it_IT-paola-medium, whose MODEL_CARD states 'License: See URL' (no verifiable license, excluded by the gate on 2026-09-02, run 33646858305), and it_IT-riccardo-x_low (extra-low quality). The upstream recordings have no traceable license, so the course speaks through the device's own Italian text-to-speech voice.",
+      "voiceCast": {
+        "A": null,
+        "B": null
+      }
     },
     "pt-en": {
       "policy": "generated",
       "language": "pt",
       "voiceId": "pt_BR-faber-medium",
-      "candidates": [
-        "pt_BR-faber-medium",
-        "pt_BR-cadu-medium",
-        "pt_BR-jeff-medium"
-      ]
+      "voiceCast": {
+        "A": "pt_BR-faber-medium",
+        "B": null
+      }
     },
     "zh-en": {
       "policy": "device-tts",
       "language": "zh",
-      "reason": "The only Mandarin Piper voice, zh_CN-huayan-medium, states 'License: Unknown' in its MODEL_CARD (excluded by the gate on 2026-09-02, run 33646858305). The upstream recordings have no traceable license, so the course speaks through the device's own Chinese text-to-speech voice."
+      "reason": "The only Mandarin Piper voice, zh_CN-huayan-medium, states 'License: Unknown' in its MODEL_CARD (excluded by the gate on 2026-09-02, run 33646858305). The upstream recordings have no traceable license, so the course speaks through the device's own Chinese text-to-speech voice.",
+      "voiceCast": {
+        "A": null,
+        "B": null
+      }
     },
     "ja-en": {
       "policy": "device-tts",
       "language": "ja",
-      "reason": "rhasspy/piper-voices v1.0.0 ships no Japanese voice; the legacy recordings have no traceable license, so the course uses the device's own Japanese text-to-speech voice (expo-speech) instead of bundled audio."
+      "reason": "rhasspy/piper-voices v1.0.0 ships no Japanese voice; the legacy recordings have no traceable license, so the course uses the device's own Japanese text-to-speech voice (expo-speech) instead of bundled audio.",
+      "voiceCast": {
+        "A": null,
+        "B": null
+      }
     },
     "ko-en": {
       "policy": "device-tts",
       "language": "ko",
-      "reason": "rhasspy/piper-voices v1.0.0 ships no Korean voice; the legacy recordings have no traceable license, so the course uses the device's own Korean text-to-speech voice (expo-speech) instead of bundled audio."
+      "reason": "rhasspy/piper-voices v1.0.0 ships no Korean voice; the legacy recordings have no traceable license, so the course uses the device's own Korean text-to-speech voice (expo-speech) instead of bundled audio.",
+      "voiceCast": {
+        "A": null,
+        "B": null
+      }
     }
   },
   "voices": [
@@ -116,7 +106,9 @@
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
       "status": "selected",
-      "gateReason": "matched CC0"
+      "gateReason": "matched CC0",
+      "engine": "piper",
+      "speaker": null
     },
     {
       "id": "de_DE-mls-medium",
@@ -142,7 +134,9 @@
       "declaredDataset": null,
       "declaredLicense": "* License: CC-BY 4.0",
       "status": "eligible",
-      "gateReason": "matched CC BY 4.0"
+      "gateReason": "matched CC BY 4.0",
+      "engine": "piper",
+      "speaker": null
     },
     {
       "id": "es_ES-davefx-medium",
@@ -168,7 +162,9 @@
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
       "status": "selected",
-      "gateReason": "matched CC0"
+      "gateReason": "matched CC0",
+      "engine": "piper",
+      "speaker": null
     },
     {
       "id": "es_ES-sharvard-medium",
@@ -194,7 +190,9 @@
       "declaredDataset": null,
       "declaredLicense": "* License: http://creativecommons.org/licenses/by/3.0/",
       "status": "excluded",
-      "gateReason": "license/dataset line matches no allowed license (saw:  | * License: http://creativecommons.org/licenses/by/3.0/)"
+      "gateReason": "license/dataset line matches no allowed license (saw:  | * License: http://creativecommons.org/licenses/by/3.0/)",
+      "engine": "piper",
+      "speaker": null
     },
     {
       "id": "fr_FR-siwis-medium",
@@ -220,7 +218,9 @@
       "declaredDataset": null,
       "declaredLicense": "* License: CC-BY 4.0",
       "status": "selected",
-      "gateReason": "matched CC BY 4.0"
+      "gateReason": "matched CC BY 4.0",
+      "engine": "piper",
+      "speaker": null
     },
     {
       "id": "pt_BR-faber-medium",
@@ -246,7 +246,9 @@
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
       "status": "selected",
-      "gateReason": "matched CC0"
+      "gateReason": "matched CC0",
+      "engine": "piper",
+      "speaker": null
     },
     {
       "id": "pt_BR-cadu-medium",
@@ -272,7 +274,9 @@
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
       "status": "eligible",
-      "gateReason": "matched CC0"
+      "gateReason": "matched CC0",
+      "engine": "piper",
+      "speaker": null
     },
     {
       "id": "pt_BR-jeff-medium",
@@ -298,7 +302,657 @@
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
       "status": "eligible",
-      "gateReason": "matched CC0"
+      "gateReason": "matched CC0",
+      "engine": "piper",
+      "speaker": null
+    },
+    {
+      "id": "es_MX-claude-high",
+      "engine": "piper",
+      "language": "es",
+      "note": "Mexican Spanish, high quality, dataset Apache-2.0 — the pack is Latin-American (vos-free, 'ustedes'), so es_MX is the preferred A voice",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "es/es_MX/claude/high/es_MX-claude-high.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "es/es_MX/claude/high/es_MX-claude-high.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "es/es_MX/claude/high/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-ef_dora",
+      "engine": "kokoro",
+      "language": "es",
+      "note": "Kokoro-82M Spanish female (Apache-2.0); espeak-ng G2P",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/ef_dora.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-em_alex",
+      "engine": "kokoro",
+      "language": "es",
+      "note": "Kokoro-82M Spanish male (Apache-2.0)",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/em_alex.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "melotts-es",
+      "engine": "melotts",
+      "language": "es",
+      "note": "MeloTTS Spanish model (MIT)",
+      "speaker": "ES",
+      "files": {
+        "checkpoint": {
+          "path": "checkpoint.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "de_DE-thorsten-high",
+      "engine": "piper",
+      "language": "de",
+      "note": "Thorsten Müller's German voice, high quality (CC0)",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "de/de_DE/thorsten/high/de_DE-thorsten-high.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "de/de_DE/thorsten/high/de_DE-thorsten-high.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "de/de_DE/thorsten/high/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "de_DE-kerstin-low",
+      "engine": "piper",
+      "language": "de",
+      "note": "Kerstin German female voice (CC0); low quality, 16 kHz — B candidate only",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "de/de_DE/kerstin/low/de_DE-kerstin-low.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "de/de_DE/kerstin/low/de_DE-kerstin-low.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "de/de_DE/kerstin/low/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-if_sara",
+      "engine": "kokoro",
+      "language": "it",
+      "note": "Kokoro-82M Italian female (Apache-2.0), grade C",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/if_sara.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-im_nicola",
+      "engine": "kokoro",
+      "language": "it",
+      "note": "Kokoro-82M Italian male (Apache-2.0), grade C",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/im_nicola.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-pf_dora",
+      "engine": "kokoro",
+      "language": "pt",
+      "note": "Kokoro-82M Brazilian Portuguese female (Apache-2.0)",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/pf_dora.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-pm_alex",
+      "engine": "kokoro",
+      "language": "pt",
+      "note": "Kokoro-82M Brazilian Portuguese male (Apache-2.0)",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/pm_alex.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-jf_alpha",
+      "engine": "kokoro",
+      "language": "ja",
+      "note": "Kokoro-82M Japanese female (Apache-2.0), grade C+",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/jf_alpha.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-jm_kumo",
+      "engine": "kokoro",
+      "language": "ja",
+      "note": "Kokoro-82M Japanese male (Apache-2.0), grade C-",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/jm_kumo.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "melotts-ja",
+      "engine": "melotts",
+      "language": "ja",
+      "note": "MeloTTS Japanese model (MIT)",
+      "speaker": "JP",
+      "files": {
+        "checkpoint": {
+          "path": "checkpoint.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "melotts-zh",
+      "engine": "melotts",
+      "language": "zh",
+      "note": "MeloTTS Chinese (mixed zh/en) model (MIT)",
+      "speaker": "ZH",
+      "files": {
+        "checkpoint": {
+          "path": "checkpoint.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-zf_xiaobei",
+      "engine": "kokoro",
+      "language": "zh",
+      "note": "Kokoro-82M Mandarin female (Apache-2.0), grade D",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/zf_xiaobei.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-zm_yunjian",
+      "engine": "kokoro",
+      "language": "zh",
+      "note": "Kokoro-82M Mandarin male (Apache-2.0), grade D",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/zm_yunjian.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "melotts-ko",
+      "engine": "melotts",
+      "language": "ko",
+      "note": "MeloTTS Korean model (MIT) — the only MIT/Apache Korean option",
+      "speaker": "KR",
+      "files": {
+        "checkpoint": {
+          "path": "checkpoint.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-af_heart",
+      "engine": "kokoro",
+      "language": "en",
+      "note": "Kokoro-82M American English female (Apache-2.0), grade A",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/af_heart.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "kokoro-am_michael",
+      "engine": "kokoro",
+      "language": "en",
+      "note": "Kokoro-82M American English male (Apache-2.0), grade C+",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "voiceFile": {
+          "path": "voices/am_michael.pt",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "melotts-en",
+      "engine": "melotts",
+      "language": "en",
+      "note": "MeloTTS English model (MIT), EN-US speaker",
+      "speaker": "EN-US",
+      "files": {
+        "checkpoint": {
+          "path": "checkpoint.pth",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
+    },
+    {
+      "id": "vi_VN-vais1000-medium",
+      "engine": "piper",
+      "language": "vi",
+      "note": "Vietnamese VAIS-1000 voice (CC BY 4.0) — UI / explanation audio if ever needed",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "vi/vi_VN/vais1000/medium/vi_VN-vais1000-medium.onnx",
+          "sha256": null,
+          "bytes": null
+        },
+        "config": {
+          "path": "vi/vi_VN/vais1000/medium/vi_VN-vais1000-medium.onnx.json",
+          "sha256": null,
+          "bytes": null
+        },
+        "modelCard": {
+          "path": "vi/vi_VN/vais1000/medium/MODEL_CARD",
+          "sha256": null,
+          "bytes": null
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "status": "candidate",
+      "gateReason": null
     }
   ],
   "restoreAudioTargets": {

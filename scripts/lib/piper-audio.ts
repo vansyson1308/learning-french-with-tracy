@@ -68,11 +68,13 @@ export function licenseGate(gate: LicenseGate, cardText: string): GateVerdict {
 }
 
 /** Map a matched allow-list entry to the registry's SPDX-style license id. */
-export function registryLicenseFor(matched: string): "CC-BY-4.0" | "CC-BY-SA-4.0" | "CC0-1.0" | null {
+export function registryLicenseFor(matched: string): "CC-BY-4.0" | "CC-BY-SA-4.0" | "CC0-1.0" | "Apache-2.0" | "MIT" | null {
   const n = matched.toLowerCase().replace(/[-\s]+/g, "");
   if (n.includes("bysa")) return "CC-BY-SA-4.0";
   if (n.includes("cc0") || n.includes("publicdomain")) return "CC0-1.0";
   if (n.includes("ccby")) return "CC-BY-4.0";
+  if (n.includes("apache")) return "Apache-2.0";
+  if (n === "mit") return "MIT";
   return null;
 }
 
@@ -139,14 +141,15 @@ export type TechnicalQa = {
   technicalIssues: string[];
 };
 
-export function technicalQa(filePath: string, transcript: string, language: string): TechnicalQa {
+export function technicalQa(filePath: string, transcript: string, language: string, band?: [number, number]): TechnicalQa {
   const issues: string[] = [];
   const { bytes } = sha256File(filePath);
   const duration = ffprobeDuration(filePath);
   const { maxVolumeDb } = ffVolume(filePath);
   const { lead, trail } = ffEdgeSilence(filePath);
   const charsPerSec = transcript.length / Math.max(duration, 0.001);
-  const [lo, hi] = charsPerSecBand(language);
+  // P3b: the band comes from the language plugin (carried in the plan); the legacy table is the fallback.
+  const [lo, hi] = band ?? charsPerSecBand(language);
   if (!(duration > 0.25)) issues.push(`duration ${duration.toFixed(2)}s too short`);
   if (bytes < 800) issues.push("file under 800 bytes");
   if (maxVolumeDb !== null && maxVolumeDb > -0.2) issues.push(`possible clipping (max ${maxVolumeDb}dB)`);

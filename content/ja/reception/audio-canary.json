@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "language": "ja",
+  "note": "Generation canary (P3b): difficult Japanese rendered by every candidate voice BEFORE any shipped clip is generated. Never shipped to learners; drives the ASR audit and the voice-cast selection (content/audio/voice-casts.json).",
+  "items": [
+    {
+      "id": "canary.long_vowel.obasan",
+      "focus": "long vowels (obasan / obāsan)",
+      "text": "おばさんとおばあさんは東京で会いました。"
+    },
+    {
+      "id": "canary.geminate.kitte",
+      "focus": "geminate consonants (kite / kitte)",
+      "text": "切手を買って、来てください。"
+    },
+    {
+      "id": "canary.pitch.hashi",
+      "focus": "pitch accent pairs (hashi)",
+      "text": "橋の上で箸を落としました。"
+    },
+    {
+      "id": "canary.particle.wa",
+      "focus": "particles は / へ / を",
+      "text": "私は学校へ行って、本を読みます。"
+    },
+    {
+      "id": "canary.numbers.counters",
+      "focus": "numbers + counters",
+      "text": "りんごを三つ、鉛筆を二本、猫が一匹います。"
+    },
+    {
+      "id": "canary.time.yoji",
+      "focus": "time and dates",
+      "text": "四時半に七月二十四日の会議があります。"
+    },
+    {
+      "id": "canary.katakana.loan",
+      "focus": "katakana loanwords",
+      "text": "コンビニでコーヒーとサンドイッチを買います。"
+    },
+    {
+      "id": "canary.question.doko",
+      "focus": "question intonation か",
+      "text": "駅はどこですか。電車は何時に出ますか。"
+    },
+    {
+      "id": "canary.polite.desu",
+      "focus": "polite forms",
+      "text": "初めまして。どうぞよろしくお願いします。"
+    },
+    {
+      "id": "canary.ryu.ryokou",
+      "focus": "ryo / kyo / sh sequences",
+      "text": "旅行で京都の写真をたくさん撮りました。"
+    },
+    {
+      "id": "canary.n.moraic",
+      "focus": "moraic n (kin'en)",
+      "text": "ここは禁煙です。千円でお願いします。"
+    },
+    {
+      "id": "canary.long.restaurant",
+      "focus": "long sentence",
+      "text": "今晩八時に二人で予約をしたいのですが、よろしいでしょうか。"
+    }
+  ]
+}

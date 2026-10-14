@@ -1,0 +1,259 @@
+# Developer-dispatched audio pipeline v2 (P3b) — replaces pack-audio.yml and
+# reception-audio.yml.
+#
+# NOT part of the CI gate and can never run automatically: exactly one
+# trigger, workflow_dispatch. Model weights and ASR models are downloaded
+# to the runner, verified, USED and discarded — never committed. Every
+# engine (Piper, Kokoro-82M, MeloTTS) and every voice is pinned in
+# content/audio/engines.json + the manifests; the licence gate fails closed.
+#
+# Modes:
+#   recon     Download every candidate voice of the language TWICE (identical
+#             hashes), read its licence card, apply the gate, pin, commit cards.
+#   canary    recon + synthesise the language's canary (content/<lang>/reception/
+#             audio-canary.json × every eligible candidate, plus 12 pack strings
+#             per course), ASR-audit (Whisper, or SenseVoice for zh/ja/ko/vi),
+#             QA, select the voice cast (content/audio/voice-casts.json) and
+#             register the chosen voices; commit reports + pins.
+#   generate  Verify pins, synthesise the chosen layers (pack / lexicon /
+#             reception / all) with the selected cast, strict QA + ASR audit,
+#             apply (per-language merge of src/content/audio-manifest.ts and
+#             the assets), re-bless THIS language's baseline, recompile,
+#             validate, check-audio, commit.
+name: Audio pipeline (v2)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "recon | canary | generate"
+        required: true
+        type: choice
+        options: [recon, canary, generate]
+      lang:
+        description: "target language code (es, de, it, pt, ja, ko, zh, en, vi; fr only for reception re-runs)"
+        required: true
+        type: string
+      layer:
+        description: "pack | reception | lexicon | all"
+        required: false
+        default: "all"
+        type: choice
+        options: [pack, reception, lexicon, all]
+      courses:
+        description: "comma-separated course ids of the language (default: all of them)"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audio-${{ inputs.lang }}
+  cancel-in-progress: false
+
+jobs:
+  audio:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      DL: /tmp/audio-voices
+      WAV: /tmp/audio-wav
+      OUT: /tmp/audio-mp3
+      SFX: /tmp/audio-sfx
+      PLAN: /tmp/audio-plan.json
+      ASR: /tmp/audio-asr.json
+      # Inputs reach the shell only through the environment (never expanded into the script text).
+      MODE_INPUT: ${{ inputs.mode }}
+      LANG_INPUT: ${{ inputs.lang }}
+      LAYER_INPUT: ${{ inputs.layer }}
+      COURSES_INPUT: ${{ inputs.courses }}
+      BRANCH: ${{ github.ref_name }}
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.11 # same pin as ci.yml
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.11"
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+
+      - name: Validate inputs and plan offline (dry run)
+        run: |
+          set -euo pipefail
+          case "$LANG_INPUT" in [a-z][a-z]|[a-z][a-z][a-z]) ;; *) echo "lang must be a 2-3 letter code"; exit 1;; esac
+          ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT")
+          [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
+          if [ "$MODE_INPUT" = "generate" ]; then
+            bun scripts/audio.ts plan "${ARGS[@]}" --mode generate --dry-run
+          else
+            bun scripts/audio.ts plan "${ARGS[@]}" --mode canary --dry-run || echo "canary dry run reported problems (expected before recon pins exist)"
+          fi
+
+      - name: Download pinned / candidate voices (recon and canary download twice)
+        run: |
+          set -euo pipefail
+          mkdir -p "$DL"
+          DLMODE=$([ "$MODE_INPUT" = "generate" ] && echo generate || echo recon)
+          ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT" --mode "$DLMODE")
+          [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
+          # One download per distinct URL per copy (Kokoro voices share the 327 MB model), then copied to each voice's local name.
+          bun scripts/audio.ts download-list "${ARGS[@]}" | while IFS=$'\t' read -r voice kind url copies; do
+            [ -z "$voice" ] && continue
+            for copy in $(seq 1 "$copies"); do
+              cache="$DL/.cache/$(printf '%s' "$url" | sha256sum | cut -c1-32).$copy"
+              if [ ! -f "$cache" ]; then
+                mkdir -p "$DL/.cache"
+                echo "downloading $url (copy $copy)"
+                curl -fSL --retry 3 --retry-delay 10 -o "$cache" "$url"
+              fi
+              cp "$cache" "$DL/$voice.$kind.$copy"
+            done
+          done
+          ls -la "$DL" | head -60
+
+      - name: Recon — pin hashes + licence gate (fail closed)
+        if: inputs.mode != 'generate'
+        run: |
+          set -euo pipefail
+          ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT" --downloads "$DL")
+          [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
+          bun scripts/audio.ts recon "${ARGS[@]}"
+
+      - name: Verify pins (fail closed on upstream drift)
+        if: inputs.mode == 'generate'
+        run: |
+          set -euo pipefail
+          ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT" --downloads "$DL")
+          [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
+          bun scripts/audio.ts verify "${ARGS[@]}"
+
+      - name: Install the engines the plan needs (pinned) + ffmpeg
+        if: inputs.mode != 'recon'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -q && sudo apt-get install -y -q ffmpeg espeak-ng
+          DLMODE=$([ "$MODE_INPUT" = "generate" ] && echo generate || echo recon)
+          ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT" --mode "$DLMODE")
+          [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
+          NEEDED=$(bun scripts/audio.ts engines-needed "${ARGS[@]}")
+          echo "engines needed: $NEEDED"
+          for engine in $NEEDED; do
+            bun -e "const e=require('./content/audio/engines.json').engines['$engine']; for (const line of e.install) console.log(line)" | while read -r line; do
+              case "$line" in
+                apt-get*) sudo $line ;;
+                *) eval "$line" ;;
+              esac
+            done
+          done
+          piper --version 2>/dev/null || true
+
+      - name: Synthesize
+        if: inputs.mode != 'recon'
+        run: |
+          set -euo pipefail
+          PLANMODE=$([ "$MODE_INPUT" = "generate" ] && echo generate || echo canary)
+          ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT" --mode "$PLANMODE" --out "$PLAN")
+          [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
+          bun scripts/audio.ts plan "${ARGS[@]}"
+          # generate reuses every already-blessed content-addressed asset of the language (pack + lexicon folder)
+          EXISTING=$([ "$MODE_INPUT" = "generate" ] && [ -d "assets/audio/$LANG_INPUT" ] && echo "--existing assets/audio/$LANG_INPUT" || echo "")
+          bun scripts/audio.ts synth-script --lang "$LANG_INPUT" --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" $EXISTING > /tmp/synth.sh
+          bash /tmp/synth.sh
+          ls "$OUT" | wc -l
+
+      - name: ASR audit (Whisper, or SenseVoice for zh/ja/ko/vi — technical signal only)
+        if: inputs.mode != 'recon'
+        run: |
+          set -euo pipefail
+          WHISPER=$(bun -e "console.log(require('./content/audio/engines.json').asr.whisper.pinnedVersion)")
+          pip install "faster-whisper==$WHISPER" requests
+          case "$LANG_INPUT" in
+            zh|ja|ko|vi)
+              FUNASR=$(bun -e "console.log(require('./content/audio/engines.json').asr.sensevoice.pinnedVersion)")
+              pip install "funasr==$FUNASR" torch torchaudio huggingface_hub
+              ;;
+          esac
+          ASR_MODEL=$([ "$MODE_INPUT" = "generate" ] && echo medium || echo base)
+          python3 scripts/audio-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --engine auto --model "$ASR_MODEL"
+
+      - name: Canary QA + voice-cast selection
+        if: inputs.mode == 'canary'
+        run: |
+          set -euo pipefail
+          REPORTS=$([ "$LANG_INPUT" = "fr" ] && echo content/reports || echo "content/reports/$LANG_INPUT")
+          mkdir -p "$REPORTS"
+          bun scripts/audio.ts qa --lang "$LANG_INPUT" --plan "$PLAN" --outdir "$OUT" --report "$REPORTS/audio-canary.json" --asr "$ASR"
+          ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT" --report "$REPORTS/audio-canary.json")
+          [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
+          bun scripts/audio.ts select "${ARGS[@]}"
+          bun scripts/compile-content.ts
+          bun scripts/validate-content.ts
+
+      - name: Generate — strict QA, apply (per-language merge), baseline, compile, validate
+        if: inputs.mode == 'generate'
+        run: |
+          set -euo pipefail
+          REPORTS=$([ "$LANG_INPUT" = "fr" ] && echo content/reports || echo "content/reports/$LANG_INPUT")
+          mkdir -p "$REPORTS"
+          SFXARG=""
+          if [ ! -f assets/sfx/correct.wav ]; then
+            bun scripts/audio.ts sfx-script --out "$SFX" > /tmp/sfx.sh && bash /tmp/sfx.sh && SFXARG="--sfx $SFX"
+          fi
+          bun scripts/audio.ts qa --lang "$LANG_INPUT" --plan "$PLAN" --outdir "$OUT" --report "$REPORTS/audio-quality.json" --asr "$ASR" --strict true
+          bun scripts/audio.ts apply --lang "$LANG_INPUT" --plan "$PLAN" --outdir "$OUT" $SFXARG
+          bun scripts/compile-content.ts
+          bun scripts/validate-content.ts
+          bun scripts/check-audio.ts
+
+      - name: Upload run artifact (audio for audit)
+        if: inputs.mode != 'recon'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: audio-${{ inputs.lang }}-${{ inputs.mode }}-${{ inputs.layer }}
+          path: |
+            /tmp/audio-mp3
+            /tmp/audio-asr.json
+            /tmp/audio-plan.json
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Commit results to the dispatched branch
+        run: |
+          set -euo pipefail
+          git config user.name "audio workflow"
+          git config user.email "actions@users.noreply.github.com"
+          for p in content/audio content/reports content/sources/registry.json "content/$LANG_INPUT/reception" "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx src/content content/courses ATTRIBUTIONS.md; do
+            if [ -e "$p" ]; then git add -A -- "$p"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+            exit 0
+          fi
+          {
+            echo "audio($LANG_INPUT): $MODE_INPUT ($LAYER_INPUT) — pinned-source pipeline output"
+            echo
+            echo "Dispatch-only workflow run $GITHUB_RUN_ID (mode: $MODE_INPUT, lang: $LANG_INPUT, layer: $LAYER_INPUT)."
+            echo "Engines pinned in content/audio/engines.json, voices in the manifests; model weights"
+            echo "were used on the runner and never committed."
+            echo
+            echo "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+          } > /tmp/commit-msg.txt
+          git commit -F /tmp/commit-msg.txt
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:$BRANCH"; then
+              exit 0
+            fi
+            echo "push rejected (attempt $attempt) — rebasing onto the moved branch"
+            git fetch origin "$BRANCH"
+            git rebase "origin/$BRANCH"
+            sleep $((attempt * 5))
+          done
+          git push origin "HEAD:$BRANCH"

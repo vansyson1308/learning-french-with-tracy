@@ -155,6 +155,36 @@ JMdict / CC-CEDICT / OpenJLPT / hsk30 / CEFR-J / NGSL):
    sources, `frequency` cites the manifest's frequency source only, and
    every cited source is registered with an allowlisted licence.
 
+## Audio pipeline v2 (P3b): pack, lexicon and reception audio for any language
+
+One dispatch-only workflow (`.github/workflows/audio.yml`) synthesises,
+audits and applies audio with any licence-gated engine — Piper (MIT engine,
+per-voice dataset licence), Kokoro-82M (Apache-2.0) or MeloTTS (MIT):
+
+- `content/audio/engines.json` — engine, model and ASR pins, the licence
+  gate (allow CC0 / CC BY 4.0 / CC BY-SA 4.0 / Apache-2.0 / MIT; deny
+  GPL/NC/ND/RAIL/unknown), loudness target, encoding.
+- `content/audio/voice-casts.json` — candidate voices per language and the
+  selected cast `{A, B}` with the canary results (`pending-canary`,
+  `selected`, `no-clean-voice`).
+- `content/audio/pack-audio-manifest.json` (v2) — pins of every voice
+  (`engine` per voice), per-course `voiceCast`, per-language
+  `pipelineVersions` (French frozen at 1; others 2 = loudness-normalised).
+- `content/<code>/reception/audio-canary.json` — 12 language-specific traps
+  every candidate voice must render before anything ships;
+  `audio-source-manifest.json` (v2, `engine` per voice) for the listening
+  clips of a language that has them.
+- Layers: `pack` (every string a course pack speaks), `lexicon` (every
+  lexeme surface and example of `content/<code>/lexicon/lexemes.json`, keyed
+  by the language's primary course), `reception` (listening clips).
+- Steps: `recon` (double download, gate, pin) → `canary` (synthesise the
+  canary × every eligible candidate, ASR audit — Whisper, or SenseVoice for
+  zh/ja/ko/vi, CER for ja/zh — select the cast, register the voices) →
+  `generate` (strict technical QA with the plugin's `charsPerSecBand`,
+  per-language merge of `src/content/audio-manifest.ts` and
+  `assets/audio/<code>/`, re-bless `content/audio/baseline/<code>.json`).
+- Offline: `bun scripts/audio.ts plan --lang <code> --layer all --mode generate --dry-run`.
+
 ## Adding a language `<code>`
 
 1. **Pack.** `content/courses/<code>-<native>.json` with `targetCode`,

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "language": "de",
+  "note": "Generation canary (P3b): difficult German rendered by every candidate voice BEFORE any shipped clip is generated. Never shipped to learners; drives the ASR audit and the voice-cast selection (content/audio/voice-casts.json).",
+  "items": [
+    {
+      "id": "canary.umlaut.schoen",
+      "focus": "ü / ö / ä",
+      "text": "Die schöne Küche ist größer als fünf Türen."
+    },
+    {
+      "id": "canary.devoicing.hund",
+      "focus": "final devoicing b/d/g",
+      "text": "Der Hund und das Rad liegen am Weg zum Berg."
+    },
+    {
+      "id": "canary.ch.ich",
+      "focus": "ich-Laut vs ach-Laut",
+      "text": "Ich möchte nicht noch acht Bücher nach Zürich bringen."
+    },
+    {
+      "id": "canary.sch.strasse",
+      "focus": "sch / st / sp",
+      "text": "Die Straße spielt mit dem Stein und dem Spiegel."
+    },
+    {
+      "id": "canary.eszett.gross",
+      "focus": "ß and long vowels",
+      "text": "Das große Maß weiß, dass die Straße heiß ist."
+    },
+    {
+      "id": "canary.numbers.73",
+      "focus": "numbers 73 / 1 999 / 12",
+      "text": "Dreiundsiebzig Euro, neunzehnhundertneunundneunzig, zwölf Uhr."
+    },
+    {
+      "id": "canary.compound.bahnhof",
+      "focus": "compound nouns",
+      "text": "Der Hauptbahnhof und die Straßenbahnhaltestelle sind geschlossen."
+    },
+    {
+      "id": "canary.r.vocalic",
+      "focus": "vocalic r / er endings",
+      "text": "Der Lehrer wohnt hinter dem Bäcker neben der Mutter."
+    },
+    {
+      "id": "canary.question.wo",
+      "focus": "question intonation",
+      "text": "Wo ist der Bahnhof? Wann fährt der Zug nach Berlin?"
+    },
+    {
+      "id": "canary.pf.apfel",
+      "focus": "pf / z / tz",
+      "text": "Der Apfel, die Katze und der Pfeffer sitzen auf dem Platz."
+    },
+    {
+      "id": "canary.vowel.laenge",
+      "focus": "vowel length pairs",
+      "text": "Staat und Stadt, Miete und Mitte, Ofen und offen."
+    },
+    {
+      "id": "canary.long.restaurant",
+      "focus": "long sentence with modal verb",
+      "text": "Ich möchte bitte einen Tisch für zwei Personen um acht Uhr abends reservieren."
+    }
+  ]
+}
