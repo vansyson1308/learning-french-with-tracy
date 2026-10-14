@@ -18,8 +18,8 @@ import {
 import { A1_DOMAINS, SPEECH_DOMAINS, deriveA1Estimate } from "../assessment/estimate";
 import type { ObjectiveLearnerState } from "../assessment/states";
 
-const objectives = allObjectives();
-const policy = attainmentPolicy();
+const objectives = allObjectives("fr-en");
+const policy = attainmentPolicy("fr-en");
 const required = new Set(policy.domains.flatMap((d) => d.requiredObjectiveIds));
 
 function statesWhere(
@@ -41,13 +41,13 @@ const estimateFor = (
 
 describe("course claimability (compiled, §45-§47)", () => {
   test("the course is A1-claimable as an assessment system; PRE_A1/A2 are not", () => {
-    expect(courseClaimableAt("A1")).toBe(true);
-    expect(courseClaimableAt("PRE_A1")).toBe(false);
-    expect(courseClaimableAt("A2")).toBe(false);
+    expect(courseClaimableAt("fr-en", "A1")).toBe(true);
+    expect(courseClaimableAt("fr-en", "PRE_A1")).toBe(false);
+    expect(courseClaimableAt("fr-en", "A2")).toBe(false);
   });
 
   test("the wording is an estimate, never a certification", () => {
-    const wording = courseClaim().claimWording;
+    const wording = courseClaim("fr-en").claimWording;
     expect(wording).toContain("CEFR-aligned estimate");
     expect(wording).toContain("not an official");
     expect(wording.toLowerCase()).not.toContain("certified");
@@ -204,7 +204,7 @@ describe("learner A1 estimate (§48, hardened §10-§15)", () => {
 });
 
 describe("the capstone cannot shortcut a domain (Phase 10 §13)", () => {
-  const capstone = checkpointFor("fr.checkpoint.a1-capstone")!;
+  const capstone = checkpointFor("fr-en", "fr.checkpoint.a1-capstone")!;
   const capstoneObjectives = new Set(capstone.items.flatMap((i) => i.objectiveTargets));
 
   test("data: the capstone samples a STRICT subset of every domain's required objectives", () => {

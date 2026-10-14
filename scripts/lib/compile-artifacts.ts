@@ -48,6 +48,7 @@ import {
 import { assessmentBankWritingExercises, compileWritingArtifact, loadWritingTasks, validateWriting } from "./writing";
 import { assessmentBankSpeechExercises, compileSpeechItemsArtifact, loadSpeechItems, validateSpeech } from "./speech";
 import { PackSchema } from "../../content/schema";
+import { compileCourseProfileArtifacts } from "./course-profiles";
 import { compileLexiconArtifacts, dbAssetName } from "./lexicon-build";
 import {
   canonicalJson,
@@ -113,7 +114,7 @@ export type CompiledArtifacts = {
  * validated here (call `validateAllSources()` first, as the compiler does).
  */
 export function compileAllArtifacts(): CompiledArtifacts {
-  const { files, coverage } = compileAll();
+  const { files, coverage, packs, idMaps } = compileAll();
   const lexicon = loadRichLexicon();
   const lexiconArtifacts = compileLexiconArtifacts(lexicon, loadSourceManifest(), loadRegistry());
   files.push(...lexiconArtifacts.files);
@@ -321,11 +322,22 @@ export function compileAllArtifacts(): CompiledArtifacts {
     });
   }
 
+  // P1b: course profiles, id registries, per-course artifact modules, db
+  // assets and flags — derived from everything emitted above.
+  const dbName = dbAssetName(lexiconArtifacts.contentHash);
+  const profileArtifacts = compileCourseProfileArtifacts({
+    packs,
+    files,
+    lexiconDbs: { [lexicon.language]: { name: dbName, contentHash: lexiconArtifacts.contentHash } },
+    idMaps,
+  });
+  files.push(...profileArtifacts.files);
+
   return {
     files,
     coverage,
     lexicon,
     lexiconContentHash: lexiconArtifacts.contentHash,
-    dbName: dbAssetName(lexiconArtifacts.contentHash),
+    dbName,
   };
 }

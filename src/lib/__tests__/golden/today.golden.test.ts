@@ -32,9 +32,9 @@ function dueCard(daysOverdue: number): FsrsCardState {
  * shares and the "Can't speak now" toggle actually change the plan.
  */
 function syntheticDuePersona() {
-  const listenIds = Object.keys(listenWordClipIndex()).slice(0, 4);
-  const speakIds = Object.keys(speakExerciseIndex()).slice(0, 4);
-  const recognizeIds = [...new Set([...listenIds, ...speakIds, ...Object.keys(listenWordClipIndex()).slice(4, 10)])];
+  const listenIds = Object.keys(listenWordClipIndex("fr-en")).slice(0, 4);
+  const speakIds = Object.keys(speakExerciseIndex("fr-en")).slice(0, 4);
+  const recognizeIds = [...new Set([...listenIds, ...speakIds, ...Object.keys(listenWordClipIndex("fr-en")).slice(4, 10)])];
   const cards: Record<string, FsrsCardState> = {};
   recognizeIds.forEach((id, i) => (cards[`${id}|recognize`] = dueCard(1 + (i % 5))));
   listenIds.forEach((id, i) => (cards[`${id}|listen`] = dueCard(2 + i)));
@@ -51,14 +51,13 @@ describe("today goldens (fr-en)", () => {
         test(`${persona} / ${preset} / ${canSpeak ? "speak" : "silent"}`, () => {
           const state = persona === "synthetic-due" ? syntheticDuePersona() : migratedPersona(persona);
           const course = state.courses["fr-en"];
-          const plan = composeTodayFromSnapshot({
-            pack: frPack,
+          const plan = composeTodayFromSnapshot({ courseId: "fr-en", pack: frPack,
             completedLessons: course?.completedLessons ?? {},
             cards: course?.cards,
             preset,
             placementFloor: state.assessment?.placementFloor ?? 0,
-            listenClips: listenWordClipIndex(),
-            speakExercises: canSpeak ? speakExerciseIndex() : undefined,
+            listenClips: listenWordClipIndex("fr-en"),
+            speakExercises: canSpeak ? speakExerciseIndex("fr-en") : undefined,
             day: GOLDEN_DAY,
             now: NOW_MS,
           });

@@ -162,7 +162,7 @@ describe("license artifacts in the compiled dataset (§101)", () => {
 
 describe("runtime lexicon index (session-critical accessor)", () => {
   test("covers all 126 lexemes with pronunciation, example and topic", () => {
-    const all = allLexemeMeta();
+    const all = allLexemeMeta("fr-en");
     expect(all.length).toBe(126);
     for (const meta of all) {
       expect(meta.pronunciation?.notation).toBe("ipa");
@@ -172,28 +172,28 @@ describe("runtime lexicon index (session-critical accessor)", () => {
   });
 
   test("lookups are safe on unknown/null input", () => {
-    expect(lexemeMetaFor("fr:w:chat")?.gloss).toBe("the cat");
-    expect(lexemeMetaFor("fr:legacy:xyz")).toBeUndefined();
-    expect(lexemeMetaFor(undefined)).toBeUndefined();
-    expect(lexemeMetaFor(null)).toBeUndefined();
+    expect(lexemeMetaFor("fr-en", "fr:w:chat")?.gloss).toBe("the cat");
+    expect(lexemeMetaFor("fr-en", "fr:legacy:xyz")).toBeUndefined();
+    expect(lexemeMetaFor("fr-en", undefined)).toBeUndefined();
+    expect(lexemeMetaFor("fr-en", null)).toBeUndefined();
   });
 
   test("article cues derive from the authored surface only", () => {
-    expect(articleCueFor(lexemeMetaFor("fr:w:chat")!)).toBe("le");
-    expect(articleCueFor(lexemeMetaFor("fr:w:vache")!)).toBe("la");
-    expect(articleCueFor(lexemeMetaFor("fr:w:eau")!)).toBe("l'");
-    expect(articleCueFor(lexemeMetaFor("fr:w:monsieur")!)).toBeUndefined();
-    expect(articleCueFor(lexemeMetaFor("fr:w:manger")!)).toBeUndefined();
+    expect(articleCueFor("fr-en", lexemeMetaFor("fr-en", "fr:w:chat")!)).toBe("le");
+    expect(articleCueFor("fr-en", lexemeMetaFor("fr-en", "fr:w:vache")!)).toBe("la");
+    expect(articleCueFor("fr-en", lexemeMetaFor("fr-en", "fr:w:eau")!)).toBe("l'");
+    expect(articleCueFor("fr-en", lexemeMetaFor("fr-en", "fr:w:monsieur")!)).toBeUndefined();
+    expect(articleCueFor("fr-en", lexemeMetaFor("fr-en", "fr:w:manger")!)).toBeUndefined();
   });
 
   test("index and web fallback carry the same content hash (one compile)", () => {
-    expect(lexiconIndexContentHash()).toBe((frWebFallback as GeneratedLexiconData).contentHash);
+    expect(lexiconIndexContentHash("fr-en")).toBe((frWebFallback as GeneratedLexiconData).contentHash);
   });
 
   test("confusables in the index are symmetric", () => {
-    for (const meta of allLexemeMeta()) {
+    for (const meta of allLexemeMeta("fr-en")) {
       for (const other of meta.confusables ?? []) {
-        expect(lexemeMetaFor(other)?.confusables ?? []).toContain(meta.id);
+        expect(lexemeMetaFor("fr-en", other)?.confusables ?? []).toContain(meta.id);
       }
     }
   });

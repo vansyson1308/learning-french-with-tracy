@@ -18,6 +18,7 @@ import {
   type InteractionScenario,
   type InteractionState,
 } from "../interaction/machine";
+import { languageRules } from "../languages";
 
 /** A small café exchange with REAL branching. */
 const CAFE: InteractionScenario = {
@@ -103,7 +104,7 @@ const CAFE: InteractionScenario = {
 };
 
 function run(state: InteractionState, ...events: InteractionEvent[]): InteractionState {
-  return events.reduce((s, e) => interactionReducer(CAFE, s, e), state);
+  return events.reduce((s, e) => interactionReducer(CAFE, s, e, languageRules("fr")), state);
 }
 
 const final = (text: string, alternatives: string[] = []): InteractionEvent => ({
@@ -223,8 +224,8 @@ describe("repair and first-attempt integrity (§28-29, §37)", () => {
       support: { allowRepeat: false, allowRephrase: false },
     };
     let s = startInteraction(strict);
-    s = interactionReducer(strict, s, { type: "repeatRequested" });
-    s = interactionReducer(strict, s, { type: "rephraseRequested" });
+    s = interactionReducer(strict, s, { type: "repeatRequested" }, languageRules("fr"));
+    s = interactionReducer(strict, s, { type: "rephraseRequested" }, languageRules("fr"));
     expect(s.supportUsed).toBe(0);
   });
 });
@@ -259,8 +260,8 @@ describe("terminal immunity, abandonment, determinism (§79)", () => {
       { type: "advance" },
       final("merci"),
     ];
-    const a = events.reduce((s, e) => interactionReducer(CAFE, s, e), startInteraction(CAFE));
-    const b = events.reduce((s, e) => interactionReducer(CAFE, s, e), startInteraction(CAFE));
+    const a = events.reduce((s, e) => interactionReducer(CAFE, s, e, languageRules("fr")), startInteraction(CAFE));
+    const b = events.reduce((s, e) => interactionReducer(CAFE, s, e, languageRules("fr")), startInteraction(CAFE));
     expect(JSON.stringify(a)).toBe(JSON.stringify(b));
   });
 

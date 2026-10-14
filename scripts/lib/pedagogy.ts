@@ -16,13 +16,7 @@ import {
   type PackSource,
   type PedagogyConcepts,
 } from "../../content/schema";
-import {
-  canonicalJson,
-  listCourseSources,
-  loadRegistry,
-  readJson,
-  type ValidationResult,
-} from "./pipeline";
+import { canonicalJson, listCourseSources, loadRegistry, readJson, targetCodeOf, targetLayers, type ValidationResult } from "./pipeline";
 
 export const CONCEPTS_SOURCE = "content/fr/pedagogy/concepts.json";
 export const CONCEPTS_ARTIFACT = "src/content/concepts/fr-concepts.json";
@@ -58,8 +52,8 @@ export function validatePedagogyData(input: {
 /**
  * Lesson-flow integrity over every pack: a flow may reorder and interleave
  * but never drop, duplicate, or invent graded work, and every concept it
- * references must exist. Concept steps are French pedagogy — only the
- * French course may carry flows that reference them.
+ * references must exist. Concept steps need authored pedagogy — only a
+ * course whose target language has it may carry flows that reference them.
  */
 export function validateLessonFlows(input: {
   packs: { courseId: string; pack: PackSource }[];
@@ -77,8 +71,8 @@ export function validateLessonFlows(input: {
           const seenExercises = new Set<string>();
           for (const entry of lesson.flow) {
             if ("concept" in entry) {
-              if (courseId !== "fr-en") {
-                err(`${where}: concept steps are French pedagogy — not available for ${courseId}`);
+              if (!targetLayers(targetCodeOf(courseId)).pedagogy) {
+                err(`${where}: concept steps need authored pedagogy (content/${targetCodeOf(courseId)}/pedagogy) — not available for ${courseId}`);
               }
               if (!input.conceptIds.has(entry.concept)) {
                 err(`${where}: flow references unknown concept ${entry.concept}`);
@@ -198,8 +192,8 @@ export function validateConjugationClozes(input: {
           for (const e of lesson.exercises) {
             if (e.type !== "conjugationCloze") continue;
             const where = `${courseId}/${e.id}`;
-            if (courseId !== "fr-en") {
-              err(`${where}: conjugationCloze is French pedagogy — not available for ${courseId}`);
+            if (!targetLayers(targetCodeOf(courseId)).pedagogy) {
+              err(`${where}: conjugationCloze needs authored pedagogy (content/${targetCodeOf(courseId)}/pedagogy) — not available for ${courseId}`);
               continue;
             }
             const verb = byLemma.get(e.verb);

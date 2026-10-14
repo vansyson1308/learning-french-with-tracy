@@ -17,11 +17,17 @@ import {
   type WritingTasks,
 } from "../../content/schema";
 import { frenchNumber } from "../../src/lib/learning/french-numbers";
+import { languageRules } from "../../src/lib/languages";
 import {
   evaluateGuidedWriting,
   evaluateSimpleForm,
-  normalizeWrittenFrench,
+  normalizeWritten,
 } from "../../src/lib/writing/rubric";
+
+/** The authored sources under content/fr are French (P1c parameterises this). */
+const RULES = languageRules("fr");
+const TARGET_LANGUAGE = "French";
+const normalizeWrittenFrench = (text: string) => normalizeWritten(text, RULES);
 import { loadRichLexicon } from "./lexicon";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
@@ -233,6 +239,8 @@ export function validateWriting(input: {
       const evaluation =
         task.taskFamily === "simple_form" && task.formFields
           ? evaluateSimpleForm({
+              rules: RULES,
+              targetLanguage: TARGET_LANGUAGE,
               values: Object.fromEntries(
                 task.formFields.map((field, i) => [
                   field.id,
@@ -246,10 +254,12 @@ export function validateWriting(input: {
               rubric: task.rubric,
             })
           : evaluateGuidedWriting({
+              rules: RULES,
+              targetLanguage: TARGET_LANGUAGE,
               text: model,
               rubric: task.rubric,
               promptText: promptTextOf(task),
-              knownFrench,
+              knownVocabulary: knownFrench,
               mode: task.mode,
             });
       if (evaluation.verdict !== "meets_rubric") {

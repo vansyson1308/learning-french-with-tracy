@@ -309,9 +309,10 @@ export function traceSession(
   steps: SessionStep[],
   retryPolicy: "untilCorrect" | "none",
   scriptFor: (stepId: string, encounter: number) => Script,
-  maxActions = 400
+  maxActions = 400,
+  courseId = "fr-en"
 ): TraceResult {
-  let s = sessionReducer(emptySessionState(), { type: "start", sessionId: "golden", steps, retryPolicy });
+  let s = sessionReducer(emptySessionState(), { type: "start", sessionId: "golden", courseId, steps, retryPolicy });
   const rows: TraceRow[] = [row("start", s)];
   const encounters: Record<string, number> = {};
   const apply = (label: string, action: SessionAction) => {

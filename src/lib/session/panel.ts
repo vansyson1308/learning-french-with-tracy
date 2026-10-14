@@ -2,7 +2,7 @@
  * PostAnswerPanel identity + data (Phase 4).
  *
  * Identity rule (§ panel-data-identity): the panel shows lexical detail
- * ONLY for an interaction tied to exactly one valid stable French item,
+ * ONLY for an interaction tied to exactly one valid stable item of the course,
  * resolved from the step's effective evidence plan (composer-designated
  * for generated steps, compiler-authored gradeTargets for PATH selects) —
  * NEVER by parsing rendered text. Anything ambiguous — match/multi-item
@@ -11,7 +11,7 @@
  */
 
 import { behaviorFor } from "../exercise-registry";
-import { isCuratedFrItemId } from "../learning/ids-fr";
+import { isCuratedItemId } from "../learning/ids";
 import {
   articleCueFor,
   lexemeMetaFor,
@@ -30,14 +30,14 @@ export function panelItemIdFor(
   if (behaviorFor(step.exercise).selfAdvancing) return null;
   const plan = evidencePlanFor(definition, step);
   if (!plan) return null;
-  return isCuratedFrItemId(plan.itemId) ? plan.itemId : null;
+  return isCuratedItemId(definition.courseId, plan.itemId) ? plan.itemId : null;
 }
 
-/** Rich metadata for a TODAY teach step (curated French items only). */
-export function teachMetaFor(step: SessionStep): LexemeMeta | undefined {
+/** Rich metadata for a TODAY teach step (curated items of the course only). */
+export function teachMetaFor(courseId: string, step: SessionStep): LexemeMeta | undefined {
   if (step.type !== "teach") return undefined;
-  if (!isCuratedFrItemId(step.itemId)) return undefined;
-  return lexemeMetaFor(step.itemId);
+  if (!isCuratedItemId(courseId, step.itemId)) return undefined;
+  return lexemeMetaFor(courseId, step.itemId);
 }
 
 /** Human label for a conjugation cell (Phase 5B §67 panel note). */
@@ -105,10 +105,10 @@ export function displayPronunciation(p: { value: string; notation: string }): st
   return p.notation === "ipa" ? `/${p.value}/` : p.value;
 }
 
-export function panelDataFor(itemId: string): PanelData | null {
-  const meta = lexemeMetaFor(itemId);
+export function panelDataFor(courseId: string, itemId: string): PanelData | null {
+  const meta = lexemeMetaFor(courseId, itemId);
   if (!meta) return null;
-  const cue = articleCueFor(meta);
+  const cue = articleCueFor(courseId, meta);
   const genderLabel =
     meta.pos === "noun" && (meta.gender === "masculine" || meta.gender === "feminine")
       ? `${meta.gender} noun${cue === "l'" ? ` (l')` : ""}`

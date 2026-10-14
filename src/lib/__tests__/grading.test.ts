@@ -71,21 +71,21 @@ const fillBlank: Exercise = {
 
 describe("checkAnswer", () => {
   test("select/fillBlank compare the option index", () => {
-    expect(checkAnswer(select, 0)).toBe(true);
-    expect(checkAnswer(select, 1)).toBe(false);
-    expect(checkAnswer(fillBlank, 1)).toBe(true);
+    expect(checkAnswer(select, 0, "fr-en")).toBe(true);
+    expect(checkAnswer(select, 1, "fr-en")).toBe(false);
+    expect(checkAnswer(fillBlank, 1, "fr-en")).toBe(true);
   });
 
   test("typeAnswer accepts the answer and alternatives, normalized", () => {
-    expect(checkAnswer(typeAnswer, "i am a woman")).toBe(true);
-    expect(checkAnswer(typeAnswer, "I’m a woman")).toBe(true);
-    expect(checkAnswer(typeAnswer, "I am a man")).toBe(false);
+    expect(checkAnswer(typeAnswer, "i am a woman", "fr-en")).toBe(true);
+    expect(checkAnswer(typeAnswer, "I’m a woman", "fr-en")).toBe(true);
+    expect(checkAnswer(typeAnswer, "I am a man", "fr-en")).toBe(false);
   });
 
   test("wordBank compares the assembled token sequence", () => {
-    expect(checkAnswer(wordBank, [1, 2, 3, 0])).toBe(true);
-    expect(checkAnswer(wordBank, [0, 1, 2, 3])).toBe(false);
-    expect(checkAnswer(wordBank, "nope")).toBe(false);
+    expect(checkAnswer(wordBank, [1, 2, 3, 0], "fr-en")).toBe(true);
+    expect(checkAnswer(wordBank, [0, 1, 2, 3], "fr-en")).toBe(false);
+    expect(checkAnswer(wordBank, "nope", "fr-en")).toBe(false);
   });
 });
 
@@ -118,14 +118,14 @@ describe("typeAnswer number spellings (Phase 5B §77)", () => {
   };
 
   test("both official orthographies are accepted", () => {
-    expect(checkAnswer(drill, "vingt et un")).toBe(true);
-    expect(checkAnswer(drill, "vingt-et-un")).toBe(true);
-    expect(checkAnswer(drill, "Vingt et un")).toBe(true);
+    expect(checkAnswer(drill, "vingt et un", "fr-en")).toBe(true);
+    expect(checkAnswer(drill, "vingt-et-un", "fr-en")).toBe(true);
+    expect(checkAnswer(drill, "Vingt et un", "fr-en")).toBe(true);
   });
 
   test("hyphens are structural — a mashed or half-hyphenated form is wrong", () => {
-    expect(checkAnswer(drill, "vingtetun")).toBe(false);
-    expect(checkAnswer(drill, "vingt et-un")).toBe(false);
-    expect(checkAnswer(drill, "vingt deux")).toBe(false);
+    expect(checkAnswer(drill, "vingtetun", "fr-en")).toBe(false);
+    expect(checkAnswer(drill, "vingt et-un", "fr-en")).toBe(false);
+    expect(checkAnswer(drill, "vingt deux", "fr-en")).toBe(false);
   });
 });

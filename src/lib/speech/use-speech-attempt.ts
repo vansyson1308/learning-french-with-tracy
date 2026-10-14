@@ -28,7 +28,7 @@ import {
 } from "./attempt-machine";
 import type { SpeechRecognizerPort } from "./recognizer-port";
 import { deleteRecording } from "./speech-cache";
-import { FRENCH_LOCALE, type SpeechOutcome } from "./types";
+import type { SpeechOutcome } from "./types";
 
 type HookEvent = AttemptEvent | { type: "reset"; attemptId: string };
 
@@ -50,7 +50,8 @@ export type StartSpeechAttemptOptions = {
   persistRecording?: boolean;
   /** Practice-only recognition bias; stripped for scored by the adapter too. */
   contextualStrings?: string[];
-  locale?: string;
+  /** Recognition locale of the session's course (profile.recognitionLocale). */
+  locale: string;
 };
 
 export type SpeechAttemptApi = {
@@ -208,7 +209,7 @@ export function useSpeechAttempt(port: SpeechRecognizerPort): SpeechAttemptApi {
       try {
         port.startAttempt({
           attemptId,
-          locale: options.locale ?? FRENCH_LOCALE,
+          locale: options.locale,
           mode: options.mode,
           persistRecording: options.persistRecording ?? false,
           contextualStrings:

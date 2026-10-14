@@ -1,5 +1,5 @@
 /**
- * PostAnswerPanel (Phase 4): concise lexical feedback after a French
+ * PostAnswerPanel (Phase 4): concise lexical feedback after a
  * answer tied to exactly one stable item. Compact by default — surface,
  * gloss, gender cue, pronunciation, one example — with a "More" disclosure
  * for lemma/POS/topic. Continue stays the obvious action (the panel sits
@@ -17,9 +17,11 @@ import { panelDataFor } from "@/lib/session/panel";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export function PostAnswerPanel({
+  courseId,
   itemId,
   note,
 }: {
+  courseId: string;
   itemId: string;
   correct: boolean;
   /** Phase 5B: one derived grammar note (articleSelect/conjugationCloze). */
@@ -27,7 +29,7 @@ export function PostAnswerPanel({
 }) {
   const styles = useStyles();
   const [expanded, setExpanded] = useState(false);
-  const data = panelDataFor(itemId);
+  const data = panelDataFor(courseId, itemId);
   if (!data) return null;
 
   return (

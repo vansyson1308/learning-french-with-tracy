@@ -1,6 +1,6 @@
 /**
  * Guided writing renderer (P9 §14-§19): an English communicative frame,
- * cue facts, and a free French text area. Grading is the deterministic
+ * cue facts, and a free target-language text area. Grading is the deterministic
  * tri-state rubric; this component only renders what the policy allows —
  * learning shows the honest local feedback and the model AFTER an attempt,
  * scored shows nothing but the learner's own text before submission.
@@ -18,12 +18,16 @@ import { makeThemedStyles, radius, useResolvedScheme, useThemeColors } from "@/l
 import type { GuidedWritingExercise } from "@/lib/types";
 
 export function GuidedWriting({
+  courseId,
+  targetLanguage,
   exercise,
   answer,
   status,
   scored,
   onAnswer,
 }: {
+  courseId: string;
+  targetLanguage: string;
   exercise: GuidedWritingExercise;
   answer: Answer;
   status: Status;
@@ -35,12 +39,12 @@ export function GuidedWriting({
   const scheme = useResolvedScheme();
   const text = isWrittenAnswer(answer) && answer.kind === "text" ? answer.text : "";
   const answered = status !== "none";
-  const evaluation = answered ? evaluateWrittenAnswer(exercise, answer) : null;
+  const evaluation = answered ? evaluateWrittenAnswer(exercise, answer, courseId) : null;
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        {exercise.writingMode === "open" ? "Write freely in French" : "Write it in French"}
+        {exercise.writingMode === "open" ? `Write freely in ${targetLanguage}` : `Write it in ${targetLanguage}`}
       </Text>
       <Text style={styles.instruction}>{exercise.instruction}</Text>
 
@@ -66,7 +70,7 @@ export function GuidedWriting({
         keyboardAppearance={scheme}
         multiline
         style={[styles.input, answered && styles.inputDone]}
-        accessibilityLabel="Your French answer"
+        accessibilityLabel={`Your ${targetLanguage} answer`}
         testID="writing-input"
       />
 

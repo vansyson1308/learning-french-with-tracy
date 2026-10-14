@@ -1,5 +1,5 @@
 /**
- * Listen-and-repeat PRACTICE (P8 §11): the model clip and its French text
+ * Listen-and-repeat PRACTICE (P8 §11): the model clip and its target text
  * are the stimulus, the learner repeats, and the recognizer's transcript is
  * feedback only — this construct is never spoken-production evidence. The
  * model pauses whenever the mic opens (§10).
@@ -24,12 +24,16 @@ import { makeThemedStyles, radius } from "@/lib/theme";
 import type { SpeakRepetitionExercise } from "@/lib/types";
 
 export function SpeakRepetition({
+  courseId,
+  targetLanguage,
   exercise,
   answer,
   status,
   speech,
   onAnswer,
 }: {
+  courseId: string;
+  targetLanguage: string;
   exercise: SpeakRepetitionExercise;
   answer: Answer;
   status: "none" | "correct" | "wrong";
@@ -38,7 +42,7 @@ export function SpeakRepetition({
 }) {
   const styles = useStyles();
   const ctx = { scored: speech.scored };
-  const player = useListeningPlayer(clipAudioSource(exercise.modelClipId), {
+  const player = useListeningPlayer(clipAudioSource(courseId, exercise.modelClipId), {
     maxPlays: null,
     allowSlow: true,
   });
@@ -46,7 +50,7 @@ export function SpeakRepetition({
   const heard = isSpokenAnswer(answer) ? answer.finalTranscript : null;
   const hint =
     heard !== null && !answered
-      ? checkAnswer(exercise, answer)
+      ? checkAnswer(exercise, answer, courseId)
         ? "That matched — check to continue!"
         : "Not quite the same. Listen again and retry, or check anyway."
       : null;
@@ -59,6 +63,7 @@ export function SpeakRepetition({
       </Text>
       <ListeningPlayerView api={player} />
       <SpeakRecordControl
+        targetLanguage={targetLanguage}
         scored={speech.scored}
         session={speech.session}
         mode={attemptMode(exercise, ctx)}

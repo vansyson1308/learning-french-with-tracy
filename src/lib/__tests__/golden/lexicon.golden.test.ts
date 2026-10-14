@@ -19,19 +19,19 @@ import { expectGolden } from "./helpers";
 
 const repo = new GeneratedLexiconRepository(frWebFallback as GeneratedLexiconData);
 const QUERIES = ["café", "cafe", "oeuf", "œuf", "le", "gar", "the man", "xyzzy"];
-const TEN = allLexemeMeta().slice(0, 10).map((m) => m.id);
+const TEN = allLexemeMeta("fr-en").slice(0, 10).map((m) => m.id);
 
 describe("lexicon goldens (fr)", () => {
   test("runtime index: ten lookups + article cues + lookup-form resolution", () => {
     expectGolden("lexicon/index", {
-      contentHash: lexiconIndexContentHash(),
-      count: allLexemeMeta().length,
-      lookups: TEN.map((id) => ({ id, meta: lexemeMetaFor(id), articleCue: articleCueFor(lexemeMetaFor(id)!) })),
+      contentHash: lexiconIndexContentHash("fr-en"),
+      count: allLexemeMeta("fr-en").length,
+      lookups: TEN.map((id) => ({ id, meta: lexemeMetaFor("fr-en", id), articleCue: articleCueFor("fr-en", lexemeMetaFor("fr-en", id)!) })),
       byLookupForm: ["homme", "femme", "cafe", "café", "pain", "eau", "nonexistent"].map((f) => ({
         form: f,
-        id: lexemeIdForLookupForm(f),
+        id: lexemeIdForLookupForm("fr-en", f),
       })),
-      unknown: lexemeMetaFor("fr:w:does-not-exist"),
+      unknown: lexemeMetaFor("fr-en", "fr:w:does-not-exist"),
     });
   });
 

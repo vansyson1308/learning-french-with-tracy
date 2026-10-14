@@ -11,34 +11,34 @@ import {
   answerIsReady,
   checkAnswer,
   correctAnswerText,
-  strictFrenchEquals,
+  strictEquals,
 } from "../grading";
 import { evidencePlanFor } from "../session/evidence";
 import type { ExerciseStep, SessionDefinition } from "../session/types";
 import type { ConjugationClozeExercise } from "../types";
 
-describe("strictFrenchEquals — accents and inflection are preserved", () => {
+describe("strictEquals — accents and inflection are preserved", () => {
   test("accents distinguish forms (mange ≠ mangé ≠ manges)", () => {
-    expect(strictFrenchEquals("mange", "mangé")).toBe(false);
-    expect(strictFrenchEquals("mange", "manges")).toBe(false);
-    expect(strictFrenchEquals("mangé", "mangé")).toBe(true);
-    expect(strictFrenchEquals("etes", "êtes")).toBe(false);
+    expect(strictEquals("mange", "mangé", "fr-en")).toBe(false);
+    expect(strictEquals("mange", "manges", "fr-en")).toBe(false);
+    expect(strictEquals("mangé", "mangé", "fr-en")).toBe(true);
+    expect(strictEquals("etes", "êtes", "fr-en")).toBe(false);
   });
 
   test("case is ignored but nothing else about letters is", () => {
-    expect(strictFrenchEquals("Suis", "suis")).toBe(true);
-    expect(strictFrenchEquals("ÊTES", "êtes")).toBe(true);
-    expect(strictFrenchEquals("suis", "suit")).toBe(false);
+    expect(strictEquals("Suis", "suis", "fr-en")).toBe(true);
+    expect(strictEquals("ÊTES", "êtes", "fr-en")).toBe(true);
+    expect(strictEquals("suis", "suit", "fr-en")).toBe(false);
   });
 
   test("Unicode NFC: composed and decomposed accents compare equal", () => {
-    expect(strictFrenchEquals("mangé", "mangé")).toBe(true);
+    expect(strictEquals("mangé", "mangé", "fr-en")).toBe(true);
   });
 
   test("smart apostrophes and exotic spaces are unified, whitespace collapsed", () => {
-    expect(strictFrenchEquals("j’ai", "j'ai")).toBe(true);
-    expect(strictFrenchEquals("va bien", "va bien")).toBe(true);
-    expect(strictFrenchEquals("  sommes ", "sommes")).toBe(true);
+    expect(strictEquals("j’ai", "j'ai", "fr-en")).toBe(true);
+    expect(strictEquals("va bien", "va bien", "fr-en")).toBe(true);
+    expect(strictEquals("  sommes ", "sommes", "fr-en")).toBe(true);
   });
 });
 
@@ -57,17 +57,17 @@ const cloze = (over: Partial<ConjugationClozeExercise> = {}): ConjugationClozeEx
 describe("grading", () => {
   test("only the exact inflected form (or a listed variant) is accepted", () => {
     const exercise = cloze();
-    expect(checkAnswer(exercise, "manges")).toBe(true);
-    expect(checkAnswer(exercise, "Manges")).toBe(true);
-    expect(checkAnswer(exercise, "mange")).toBe(false);
-    expect(checkAnswer(exercise, "mangé")).toBe(false);
-    expect(checkAnswer(exercise, 1)).toBe(false);
+    expect(checkAnswer(exercise, "manges", "fr-en")).toBe(true);
+    expect(checkAnswer(exercise, "Manges", "fr-en")).toBe(true);
+    expect(checkAnswer(exercise, "mange", "fr-en")).toBe(false);
+    expect(checkAnswer(exercise, "mangé", "fr-en")).toBe(false);
+    expect(checkAnswer(exercise, 1, "fr-en")).toBe(false);
   });
 
   test("alternatives are graded with the same strict comparison", () => {
     const exercise = cloze({ alternatives: ["bouffes"] });
-    expect(checkAnswer(exercise, "bouffes")).toBe(true);
-    expect(checkAnswer(exercise, "bouffe")).toBe(false);
+    expect(checkAnswer(exercise, "bouffes", "fr-en")).toBe(true);
+    expect(checkAnswer(exercise, "bouffe", "fr-en")).toBe(false);
   });
 
   test("readiness needs a non-blank string; answer text fills the blank", () => {

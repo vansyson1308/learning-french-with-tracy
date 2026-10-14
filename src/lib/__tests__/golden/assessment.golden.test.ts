@@ -8,11 +8,11 @@ import { describe, test } from "bun:test";
 
 import { buildCheckpointAttempt } from "../../assessment/checkpoint";
 import {
-  CHECKPOINT_ORDER,
+  checkpointOrder,
   attainmentPolicy,
   checkpointFor,
   courseClaimableAt,
-  OBJECTIVE_ORDER,
+  objectiveOrder,
   placementContent,
   placementEnginePlan,
 } from "../../assessment/content";
@@ -35,7 +35,7 @@ const OBJECTIVE_LESSONS = objectiveLessonMap(frPack);
 
 function estimateFor(completedLessons: Record<string, true>, attempts: CheckpointAttempt[], speechAvailable: boolean | null) {
   const states = deriveObjectiveStates({
-    objectiveIds: OBJECTIVE_ORDER,
+    objectiveIds: objectiveOrder("fr-en"),
     objectiveLessons: OBJECTIVE_LESSONS,
     completedLessons,
     checkpointAttempts: attempts,
@@ -43,9 +43,9 @@ function estimateFor(completedLessons: Record<string, true>, attempts: Checkpoin
   return {
     states,
     estimate: deriveA1Estimate({
-      policy: attainmentPolicy(),
+      policy: attainmentPolicy("fr-en"),
       states,
-      courseClaimable: courseClaimableAt("A1"),
+      courseClaimable: courseClaimableAt("fr-en", "A1"),
       speechAvailable,
     }),
   };
@@ -56,7 +56,7 @@ function sitScored(
   steps: ExerciseStep[],
   verdict: (i: number) => "correct" | "wrong" | "skip"
 ): SessionMachineState {
-  let s = sessionReducer(emptySessionState(), { type: "start", sessionId: "golden", steps, retryPolicy: "none" });
+  let s = sessionReducer(emptySessionState(), { type: "start", sessionId: "golden", courseId: "fr-en", steps, retryPolicy: "none" });
   steps.forEach((step, i) => {
     const v = verdict(i);
     const ex = step.exercise;
@@ -87,10 +87,10 @@ describe("assessment goldens (fr-en)", () => {
     });
   }
 
-  for (const checkpointId of [CHECKPOINT_ORDER[0], CHECKPOINT_ORDER[2]]) {
+  for (const checkpointId of [checkpointOrder("fr-en")[0], checkpointOrder("fr-en")[2]]) {
     test(`checkpoint scoring + estimate after it: ${checkpointId}`, () => {
-      const cp = checkpointFor(checkpointId)!;
-      const def = buildCheckpointSessionDefinition(cp, 0);
+      const cp = checkpointFor("fr-en", checkpointId)!;
+      const def = buildCheckpointSessionDefinition("fr-en", cp, 0);
       const steps = def.steps.filter((s): s is ExerciseStep => s.type === "exercise");
       // Two-thirds right, every third item wrong: enough signal for both verdicts.
       const sitting = sitScored(steps, (i) => (i % 3 === 2 ? "wrong" : "correct"));
@@ -112,10 +112,10 @@ describe("assessment goldens (fr-en)", () => {
   }
 
   test("placement: scripted stage-1 run (first cluster strong, second weak, one audio skip)", () => {
-    const plan = placementEnginePlan();
-    const content = placementContent();
+    const plan = placementEnginePlan("fr-en");
+    const content = placementContent("fr-en");
     const stage = content.stages[0];
-    const def = buildPlacementStageSessionDefinition(stage, "golden-run");
+    const def = buildPlacementStageSessionDefinition("fr-en", stage, "golden-run");
     const steps = def.steps.filter((s): s is ExerciseStep => s.type === "exercise");
     const firstClusterIds = new Set(stage.clusters[0].items.map((item) => item.id));
     const sitting = sitScored(steps, (i) => {

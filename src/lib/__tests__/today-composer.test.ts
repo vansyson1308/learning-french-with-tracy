@@ -41,6 +41,7 @@ function cardsFor(ids: string[], overdueStart = 1): Record<string, FsrsCardState
 
 function input(overrides: Partial<TodayPlanInput> = {}): TodayPlanInput {
   return {
+    courseId: "fr-en",
     pack,
     completedLessons: {},
     cards: {},

@@ -1,13 +1,14 @@
 /**
- * Synchronous accessor over the compiled lightweight lexicon index
- * (src/content/lexicon/fr-index.json). This is the ONLY lexicon surface
- * the session-critical path may use — TODAY, TeachCard, PostAnswerPanel
- * and the distractor engine read metadata here; SQLite never enters a
- * session. Missing entries return undefined and every caller must degrade
- * cleanly (the legacy courses have no index at all).
+ * Synchronous accessor over a course's compiled lightweight lexicon index
+ * (src/content/lexicon/<code>-index.json, resolved through the per-course
+ * artifact registry). This is the ONLY lexicon surface the session-critical
+ * path may use — TODAY, TeachCard, PostAnswerPanel and the distractor
+ * engine read metadata here; SQLite never enters a session. Courses without
+ * an index resolve nothing and every caller degrades cleanly.
  */
 
-import frIndex from "../../content/lexicon/fr-index.json";
+import { artifactsFor, memoByCourse } from "../content-registry";
+import { languageRulesForCourse } from "../languages";
 
 export type LexemeMeta = {
   id: string;
@@ -26,53 +27,50 @@ export type LexemeMeta = {
 
 type IndexShape = { contentHash: string; entries: LexemeMeta[] };
 
-const INDEX = frIndex as IndexShape;
-const BY_ID = new Map<string, LexemeMeta>(INDEX.entries.map((e) => [e.id, e]));
+type Resolved = {
+  index: IndexShape;
+  byId: Map<string, LexemeMeta>;
+  /** lookupForm → id, unique matches only (homographs resolve to null). */
+  byLookupForm: Map<string, string | null>;
+};
 
-/** Rich metadata for a stable French item id, or undefined (never throws). */
-export function lexemeMetaFor(itemId: string | undefined | null): LexemeMeta | undefined {
-  if (typeof itemId !== "string") return undefined;
-  return BY_ID.get(itemId);
-}
+const EMPTY: Resolved = {
+  index: { contentHash: "", entries: [] },
+  byId: new Map(),
+  byLookupForm: new Map(),
+};
 
-/** All index entries in authored course order (frozen array — do not mutate). */
-export function allLexemeMeta(): readonly LexemeMeta[] {
-  return INDEX.entries;
-}
-
-// lookupForm → id, unique matches only: a form shared by several lexemes
-// resolves to undefined so no caller can guess between homographs.
-const BY_LOOKUP_FORM = (() => {
-  const map = new Map<string, string | null>();
-  for (const entry of INDEX.entries) {
-    map.set(entry.lookupForm, map.has(entry.lookupForm) ? null : entry.id);
+const resolve = memoByCourse<Resolved>((courseId) => {
+  const raw = artifactsFor(courseId).lexiconIndex as IndexShape | undefined;
+  if (!raw) return EMPTY;
+  const byLookupForm = new Map<string, string | null>();
+  for (const entry of raw.entries) {
+    byLookupForm.set(entry.lookupForm, byLookupForm.has(entry.lookupForm) ? null : entry.id);
   }
-  return map;
-})();
+  return { index: raw, byId: new Map(raw.entries.map((e) => [e.id, e])), byLookupForm };
+});
 
-/**
- * Resolves a bare form (no article) to its curated lexeme id when exactly
- * one lexeme carries it — used by grammar drills to attach practice
- * evidence to the right word without ever guessing.
- */
-export function lexemeIdForLookupForm(lookupForm: string): string | undefined {
-  const id = BY_LOOKUP_FORM.get(lookupForm);
+/** Rich metadata for a stable item id of the course, or undefined (never throws). */
+export function lexemeMetaFor(courseId: string, itemId: string | undefined | null): LexemeMeta | undefined {
+  if (typeof itemId !== "string") return undefined;
+  return resolve(courseId).byId.get(itemId);
+}
+
+export function allLexemeMeta(courseId: string): readonly LexemeMeta[] {
+  return resolve(courseId).index.entries;
+}
+
+/** lookupForm → id, unique matches only: a form shared by several lexemes resolves to undefined. */
+export function lexemeIdForLookupForm(courseId: string, lookupForm: string): string | undefined {
+  const id = resolve(courseId).byLookupForm.get(lookupForm);
   return id === null || id === undefined ? undefined : id;
 }
 
-export function lexiconIndexContentHash(): string {
-  return INDEX.contentHash;
+export function lexiconIndexContentHash(courseId: string): string {
+  return resolve(courseId).index.contentHash;
 }
 
-/**
- * The gender-bearing article cue for a noun surface ("le", "la", "l'"),
- * derived from the authored surface — never computed by stripping
- * arbitrary words at runtime.
- */
-export function articleCueFor(meta: LexemeMeta): string | undefined {
-  if (meta.pos !== "noun") return undefined;
-  if (meta.surface.startsWith("le ")) return "le";
-  if (meta.surface.startsWith("la ")) return "la";
-  if (meta.surface.startsWith("l'")) return "l'";
-  return undefined;
+/** The article a noun surface leads with, per the course's language rules. */
+export function articleCueFor(courseId: string, meta: LexemeMeta): string | undefined {
+  return languageRulesForCourse(courseId).articleCue(meta.surface, meta.pos);
 }

@@ -24,7 +24,7 @@
  * courses. Selection is fully deterministic under the session rng.
  */
 
-import { FR_COURSE_ID, frItemIdFor } from "./ids-fr";
+import { itemIdFor } from "./ids";
 import { lexemeMetaFor, type LexemeMeta } from "./lexicon-index";
 import type { Word } from "../types";
 
@@ -40,8 +40,7 @@ function shuffle<T>(items: T[], rng: () => number): T[] {
 }
 
 function metaFor(courseId: string, word: Word): LexemeMeta | undefined {
-  if (courseId !== FR_COURSE_ID) return undefined;
-  return lexemeMetaFor(frItemIdFor(word.target));
+  return lexemeMetaFor(courseId, itemIdFor(courseId, word.target));
 }
 
 /** Exported for the test matrix; not part of the builder-facing API. */

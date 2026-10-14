@@ -71,6 +71,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
   useEffect(() => {
     dispatch({
       type: "start",
+      courseId: definition.courseId,
       sessionId: newSessionId(),
       steps: definition.steps,
       retryPolicy: definition.retryPolicy ?? "untilCorrect",
@@ -151,7 +152,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
       scored &&
       (step.exercise.type === "guidedWriting" || step.exercise.type === "simpleForm")
     ) {
-      const evaluation = evaluateWrittenAnswer(step.exercise, state.answer);
+      const evaluation = evaluateWrittenAnswer(step.exercise, state.answer, definition.courseId);
       if (evaluation?.verdict === "insufficiently_scorable") {
         haptics.tap();
         resetClock();
@@ -160,7 +161,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
       }
     }
 
-    const correct = behavior.check(step.exercise, state.answer);
+    const correct = behavior.check(step.exercise, state.answer, definition.courseId);
     // Minimal feedback (§118) hides the verdict — the sound and haptic must
     // not reveal what the screen deliberately withholds.
     const silentVerdict = definition.feedbackPolicy === "minimal";
@@ -198,7 +199,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
       assisted: isSpokenAnswer(state.answer) ? state.answer.assisted : false,
     });
     if (evidence) {
-      const mutated = progress.submitEvidence(evidence);
+      const mutated = progress.submitEvidence(evidence, definition.courseId);
       setLastMutated(mutated);
       if (mutated) setAssessmentsCompleted((n) => n + 1);
     } else {
@@ -284,7 +285,7 @@ export function useSessionController(definition: SessionDefinition): SessionCont
 
   const onUndo = useCallback(() => {
     if (!definition.allowUndo || !lastMutated) return;
-    if (!progress.undoLastFrenchReview()) return;
+    if (!progress.undoLastReview(definition.courseId)) return;
     setLastMutated(false);
     setAssessmentsCompleted((n) => Math.max(0, n - 1));
     resetClock();

@@ -96,7 +96,7 @@ describe("start wiring (§10/§13)", () => {
     const { result } = renderHook(() => useSpeechAttempt(port));
     expect(result.current.phase).toBe("idle");
 
-    act(() => result.current.start({ mode: "practice", contextualStrings: ["le lait"] }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice", contextualStrings: ["le lait"] }));
 
     expect(result.current.phase).toBe("starting");
     expect(port.startAttempt).toHaveBeenCalledTimes(1);
@@ -115,15 +115,15 @@ describe("start wiring (§10/§13)", () => {
   test("scored mode never forwards contextual bias from the hook either (§13)", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "scored", contextualStrings: ["je voudrais"] }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "scored", contextualStrings: ["je voudrais"] }));
     expect(port.startAttempt.mock.calls[0][0].contextualStrings).toBeUndefined();
   });
 
   test("a second start while one attempt is active is ignored", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     expect(port.startAttempt).toHaveBeenCalledTimes(1);
   });
 
@@ -133,7 +133,7 @@ describe("start wiring (§10/§13)", () => {
       throw new Error("previous session still active");
     });
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     expect(result.current.outcome).toEqual({ kind: "technical", reason: "recognizer_busy" });
   });
 });
@@ -142,7 +142,7 @@ describe("event routing and stale immunity (§9)", () => {
   test("happy path: started → partial → final, session restored after terminal", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     const id = attemptIdOf(port);
 
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
@@ -162,7 +162,7 @@ describe("event routing and stale immunity (§9)", () => {
   test("events stamped with a different attempt id never reach the machine", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     const id = attemptIdOf(port);
 
     act(() => port.emit({ attemptId: "ghost", type: "started", at: 1 }));
@@ -181,7 +181,7 @@ describe("stop and the fail-closed finalize timer (§9)", () => {
   test("stop asks the engine to finalize and arms the timeout", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
 
@@ -198,7 +198,7 @@ describe("stop and the fail-closed finalize timer (§9)", () => {
   test("a final inside the budget disarms the timer", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
     act(() => result.current.stop());
@@ -212,7 +212,7 @@ describe("stop and the fail-closed finalize timer (§9)", () => {
   test("stop before the engine confirmed the session start is honored", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     act(() => result.current.stop());
     expect(result.current.phase).toBe("stopping");
   });
@@ -222,7 +222,7 @@ describe("abort and background (§9 — no evidence, no penalty)", () => {
   test("abort abandons the attempt and tells the port", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
 
@@ -234,7 +234,7 @@ describe("abort and background (§9 — no evidence, no penalty)", () => {
   test("abort after the outcome exists is a no-op", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "final", result: finalResult(id, "oui") }));
     act(() => result.current.abort());
@@ -245,7 +245,7 @@ describe("abort and background (§9 — no evidence, no penalty)", () => {
   test("backgrounding mid-attempt aborts with a technical outcome", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice" }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice" }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
 
@@ -266,7 +266,7 @@ describe("recording hygiene (§8/§27)", () => {
   test("a persisted recording surfaces for replay after a final outcome", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice", persistRecording: true }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice", persistRecording: true }));
     const id = attemptIdOf(port);
     expect(port.startAttempt.mock.calls[0][0].persistRecording).toBe(true);
 
@@ -280,7 +280,7 @@ describe("recording hygiene (§8/§27)", () => {
   test("a non-final outcome deletes the attempt audio immediately", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice", persistRecording: true }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice", persistRecording: true }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
     act(() => port.emit({ attemptId: id, type: "recordingReady", uri: "cache/sp/b.wav" }));
@@ -293,7 +293,7 @@ describe("recording hygiene (§8/§27)", () => {
   test("audio arriving AFTER a non-final outcome is deleted, never stored", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice", persistRecording: true }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice", persistRecording: true }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
     act(() => port.emit({ attemptId: id, type: "error", code: "aborted" }));
@@ -306,7 +306,7 @@ describe("recording hygiene (§8/§27)", () => {
   test("starting the next attempt deletes the previous replay file", () => {
     const port = makePort();
     const { result } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice", persistRecording: true }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice", persistRecording: true }));
     const first = attemptIdOf(port);
     act(() => port.emit({ attemptId: first, type: "started", at: Date.now() }));
     act(() => port.emit({ attemptId: first, type: "recordingReady", uri: "cache/sp/one.wav" }));
@@ -314,7 +314,7 @@ describe("recording hygiene (§8/§27)", () => {
       port.emit({ attemptId: first, type: "final", result: finalResult(first, "un") })
     );
 
-    act(() => result.current.start({ mode: "practice", persistRecording: true }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice", persistRecording: true }));
     expect(deleteRecording).toHaveBeenCalledWith("cache/sp/one.wav");
     expect(result.current.recordingUri).toBeNull();
     expect(port.startAttempt).toHaveBeenCalledTimes(2);
@@ -323,7 +323,7 @@ describe("recording hygiene (§8/§27)", () => {
   test("unmount mid-attempt aborts the port and leaves no audio behind", () => {
     const port = makePort();
     const { result, unmount } = renderHook(() => useSpeechAttempt(port));
-    act(() => result.current.start({ mode: "practice", persistRecording: true }));
+    act(() => result.current.start({ locale: "fr-FR", mode: "practice", persistRecording: true }));
     const id = attemptIdOf(port);
     act(() => port.emit({ attemptId: id, type: "started", at: Date.now() }));
     act(() => port.emit({ attemptId: id, type: "recordingReady", uri: "cache/sp/gone.wav" }));

@@ -6,15 +6,15 @@
 import { describe, expect, test } from "bun:test";
 
 import { buildCheckpointAttempt, scoreObjectives } from "../assessment/checkpoint";
-import { checkpointFor, checkpointForSection, CHECKPOINT_ORDER } from "../assessment/content";
+import { checkpointFor, checkpointForSection, checkpointOrder } from "../assessment/content";
 import { evidencePlanFor } from "../session/evidence";
 import { emptySessionState, sessionReducer, type SessionMachineState } from "../session/reducer";
 import { buildCheckpointSessionDefinition } from "../session/sources";
 import type { ExerciseStep, SessionAssessmentPlan, SessionStep } from "../session/types";
 import { useProgress } from "../store";
 
-const CP1 = checkpointFor("fr.checkpoint.section-1")!;
-const CP2 = checkpointFor("fr.checkpoint.section-2")!;
+const CP1 = checkpointFor("fr-en", "fr.checkpoint.section-1")!;
+const CP2 = checkpointFor("fr-en", "fr.checkpoint.section-2")!;
 
 function start(steps: SessionStep[], retryPolicy: "untilCorrect" | "none"): SessionMachineState {
   return sessionReducer(emptySessionState(), {
@@ -42,7 +42,7 @@ function exerciseStep(stepId: string): ExerciseStep {
 
 describe("compiled checkpoints", () => {
   test("all six section checkpoints exist, plus the A1 capstone (P9 §41)", () => {
-    expect(CHECKPOINT_ORDER).toEqual([
+    expect(checkpointOrder("fr-en")).toEqual([
       "fr.checkpoint.section-1",
       "fr.checkpoint.section-2",
       "fr.checkpoint.section-3",
@@ -58,7 +58,7 @@ describe("compiled checkpoints", () => {
   });
 
   test("Section-6 checkpoint: 6 reserved multi-turn interaction scenarios (P9 §35-§37)", () => {
-    const cp6 = checkpointFor("fr.checkpoint.section-6")!;
+    const cp6 = checkpointFor("fr-en", "fr.checkpoint.section-6")!;
     expect(cp6.sectionId).toBe("fr-en:section-6");
     expect(cp6.items.length).toBe(6);
     for (const item of cp6.items) {
@@ -79,7 +79,7 @@ describe("compiled checkpoints", () => {
   });
 
   test("A1 capstone: 20 items over five domains, two disjoint forms at the floor (P9 §41-§43)", () => {
-    const cap = checkpointFor("fr.checkpoint.a1-capstone")!;
+    const cap = checkpointFor("fr-en", "fr.checkpoint.a1-capstone")!;
     expect(cap.items.length).toBe(20);
     expect(cap.formVersion).toBe(1);
     expect(cap.forms?.map((f) => f.formId)).toEqual(["a", "b"]);
@@ -112,11 +112,11 @@ describe("compiled checkpoints", () => {
     }
     // Sharing section-6's sectionId must not displace the SECTION card:
     // checkpointForSection resolves the section checkpoint, not the capstone.
-    expect(checkpointForSection("fr-en:section-6")?.id).toBe("fr.checkpoint.section-6");
+    expect(checkpointForSection("fr-en", "fr-en:section-6")?.id).toBe("fr.checkpoint.section-6");
   });
 
   test("Section-4 checkpoint: 12 reserved spoken items, production-only, model-free (P8 §20)", () => {
-    const cp4 = checkpointFor("fr.checkpoint.section-4")!;
+    const cp4 = checkpointFor("fr-en", "fr.checkpoint.section-4")!;
     expect(cp4.sectionId).toBe("fr-en:section-4");
     expect(cp4.items.length).toBe(12);
     for (const item of cp4.items) {
@@ -141,7 +141,7 @@ describe("compiled checkpoints", () => {
   });
 
   test("Section-5 checkpoint: 12 reserved writing items, guided-only, tri-state honest (P9 §22)", () => {
-    const cp5 = checkpointFor("fr.checkpoint.section-5")!;
+    const cp5 = checkpointFor("fr-en", "fr.checkpoint.section-5")!;
     expect(cp5.sectionId).toBe("fr-en:section-5");
     expect(cp5.items.length).toBe(12);
     for (const item of cp5.items) {
@@ -167,7 +167,7 @@ describe("compiled checkpoints", () => {
   });
 
   test("Section-3 checkpoint: 22 receptive items, balanced and audio-honest (P7 §101-105)", () => {
-    const cp3 = checkpointFor("fr.checkpoint.section-3")!;
+    const cp3 = checkpointFor("fr-en", "fr.checkpoint.section-3")!;
     expect(cp3.sectionId).toBe("fr-en:section-3");
     expect(cp3.items.length).toBe(22);
     const types = cp3.items.map((i) => i.exercise.type);
@@ -179,14 +179,14 @@ describe("compiled checkpoints", () => {
     expect(count("readingComprehension")).toBe(7);
     expect(count("select")).toBe(2);
     // Scored session over it: exercises only, no retries, no undo.
-    const def = buildCheckpointSessionDefinition(cp3);
+    const def = buildCheckpointSessionDefinition("fr-en", cp3);
     expect(def.kind).toBe("checkpoint");
     expect(def.retryPolicy).toBe("none");
     expect(Object.keys(def.assessment!.itemObjectives).length).toBe(22);
   });
 
   test("the session definition is a scored assessment: exercises only, no retry, no mistakes, no undo", () => {
-    const def = buildCheckpointSessionDefinition(CP2);
+    const def = buildCheckpointSessionDefinition("fr-en", CP2);
     expect(def.kind).toBe("checkpoint");
     expect(def.retryPolicy).toBe("none");
     expect(def.completion).toBe("checkpoint");
@@ -225,7 +225,7 @@ describe("retry policy none (§55, §105)", () => {
 
 describe("scored sessions emit no learning evidence (§56-58)", () => {
   test("evidencePlanFor is null for checkpoint and placement kinds — even for grammar/select steps", () => {
-    const def = buildCheckpointSessionDefinition(CP2);
+    const def = buildCheckpointSessionDefinition("fr-en", CP2);
     for (const step of def.steps) {
       expect(evidencePlanFor(def, step as ExerciseStep)).toBeNull();
     }

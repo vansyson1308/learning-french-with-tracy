@@ -136,7 +136,7 @@ describe("teachMetaFor", () => {
 
   test("curated teach step resolves rich metadata", () => {
     const teach: TeachStep = { type: "teach", stepId: "t", itemId: "fr:w:eau", word };
-    const meta = teachMetaFor(teach);
+    const meta = teachMetaFor("fr-en", teach);
     expect(meta?.gloss).toBe("the water");
     expect(meta?.gender).toBe("feminine");
     expect(meta?.pronunciation).toEqual({ value: "o", notation: "ipa" });
@@ -144,14 +144,14 @@ describe("teachMetaFor", () => {
 
   test("uncurated/legacy ids and exercise steps resolve to undefined", () => {
     const legacy: TeachStep = { type: "teach", stepId: "t", itemId: "fr:legacy:x", word };
-    expect(teachMetaFor(legacy)).toBeUndefined();
-    expect(teachMetaFor(exerciseStep(selectExercise()))).toBeUndefined();
+    expect(teachMetaFor("fr-en", legacy)).toBeUndefined();
+    expect(teachMetaFor("fr-en", exerciseStep(selectExercise()))).toBeUndefined();
   });
 });
 
 describe("panelDataFor — display model", () => {
   test("noun with visible article", () => {
-    const data = panelDataFor("fr:w:chat");
+    const data = panelDataFor("fr-en", "fr:w:chat");
     expect(data).toMatchObject({
       surface: "le chat",
       gloss: "the cat",
@@ -167,18 +167,18 @@ describe("panelDataFor — display model", () => {
   });
 
   test("elided noun marks the l' cue so gender is still taught", () => {
-    expect(panelDataFor("fr:w:eau")?.genderLabel).toBe("feminine noun (l')");
+    expect(panelDataFor("fr-en", "fr:w:eau")?.genderLabel).toBe("feminine noun (l')");
   });
 
   test("non-nouns carry no gender label", () => {
-    const data = panelDataFor("fr:w:manger");
+    const data = panelDataFor("fr-en", "fr:w:manger");
     expect(data?.genderLabel).toBeUndefined();
     expect(data?.pos).toBe("verb");
   });
 
   test("missing lexicon entries yield null (no fake panel)", () => {
-    expect(panelDataFor("fr:w:ghost")).toBeNull();
-    expect(panelDataFor("fr:legacy:whatever")).toBeNull();
+    expect(panelDataFor("fr-en", "fr:w:ghost")).toBeNull();
+    expect(panelDataFor("fr-en", "fr:legacy:whatever")).toBeNull();
   });
 
   test("pronunciation display never mislabels phonology as IPA", () => {

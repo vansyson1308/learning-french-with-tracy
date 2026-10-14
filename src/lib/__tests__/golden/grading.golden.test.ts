@@ -80,7 +80,7 @@ describe("grading goldens (fr-en)", () => {
         verdicts: Object.fromEntries(
           Object.entries(inputs).map(([label, answer]) => [
             label,
-            { answer, ready: answerIsReady(exercise, answer), correct: checkAnswer(exercise, answer) },
+            { answer, ready: answerIsReady(exercise, answer), correct: checkAnswer(exercise, answer, "fr-en") },
           ])
         ),
       };

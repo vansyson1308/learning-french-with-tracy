@@ -12,15 +12,17 @@ import { objectiveFor, splitObjectiveResults } from "@/lib/assessment/content";
 import type { CheckpointAttempt } from "@/lib/assessment/types";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
-function titleFor(objectiveId: string): string {
-  return objectiveFor(objectiveId)?.title ?? objectiveId;
+function titleFor(courseId: string, objectiveId: string): string {
+  return objectiveFor(courseId, objectiveId)?.title ?? objectiveId;
 }
 
 export function CheckpointResults({
+  courseId,
   attempt,
   checkpointTitle,
   onDone,
 }: {
+  courseId: string;
   attempt: CheckpointAttempt;
   checkpointTitle: string;
   onDone: () => void;
@@ -42,7 +44,7 @@ export function CheckpointResults({
             <Text style={styles.groupTitle}>You&apos;re strong in</Text>
             {strong.map((r) => (
               <Text key={r.objectiveId} style={styles.rowStrong}>
-                ✓ {titleFor(r.objectiveId)}
+                ✓ {titleFor(courseId, r.objectiveId)}
               </Text>
             ))}
           </View>
@@ -53,7 +55,7 @@ export function CheckpointResults({
             <Text style={styles.groupTitle}>Worth reviewing</Text>
             {review.map((r) => (
               <Text key={r.objectiveId} style={styles.rowReview}>
-                • {titleFor(r.objectiveId)} ({r.correct}/{r.total})
+                • {titleFor(courseId, r.objectiveId)} ({r.correct}/{r.total})
               </Text>
             ))}
           </View>
@@ -64,7 +66,7 @@ export function CheckpointResults({
             <Text style={styles.groupTitle}>Not enough questions to tell</Text>
             {thin.map((r) => (
               <Text key={r.objectiveId} style={styles.rowThin}>
-                · {titleFor(r.objectiveId)}
+                · {titleFor(courseId, r.objectiveId)}
               </Text>
             ))}
           </View>

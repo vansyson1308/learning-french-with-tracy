@@ -1,14 +1,13 @@
 /**
- * Runtime access to the compiled Phase-8 speech items. Content only —
- * learner state lives in the store. Reserved (assessment) items are
+ * Runtime access to the compiled speech items, per course (P1b). Content
+ * only — learner state lives in the store. Reserved (assessment) items are
  * excluded at COMPILE time, so nothing this module returns can ever leak a
- * checkpoint prompt into practice or review (§20). The artifact is
- * compiled from the authored French speech items (shipping since the
- * Section-4 curriculum); every consumer still handles an empty artifact
- * as "no speaking content yet", never as an error.
+ * checkpoint prompt into practice or review (§20). A course without
+ * authored speech items resolves an empty artifact — every consumer
+ * handles that as "no speaking content yet", never as an error.
  */
 
-import speechArtifact from "../../content/speech/fr-speech-items.json";
+import { artifactsFor, memoByCourse } from "../content-registry";
 import type { SpeakProductionExercise } from "../types";
 
 export type CompiledSpeechItem = {
@@ -41,10 +40,12 @@ export type CompiledSpeechItem = {
   allowedAttempts: number;
 };
 
-const speech = speechArtifact as unknown as {
-  order: string[];
-  byId: Record<string, CompiledSpeechItem>;
-};
+type SpeechArtifact = { order: string[]; byId: Record<string, CompiledSpeechItem> };
+const EMPTY: SpeechArtifact = { order: [], byId: {} };
+
+const speechOf = memoByCourse<SpeechArtifact>(
+  (courseId) => (artifactsFor(courseId).speech as SpeechArtifact | undefined) ?? EMPTY
+);
 
 const PRODUCTION_TYPES: readonly string[] = [
   "semantic_prompt",
@@ -53,12 +54,12 @@ const PRODUCTION_TYPES: readonly string[] = [
   "information_prompt",
 ];
 
-export function speechItemFor(id: string): CompiledSpeechItem | undefined {
-  return speech.byId[id];
+export function speechItemFor(courseId: string, id: string): CompiledSpeechItem | undefined {
+  return speechOf(courseId).byId[id];
 }
 
-export function speechItemIds(): string[] {
-  return speech.order;
+export function speechItemIds(courseId: string): string[] {
+  return speechOf(courseId).order;
 }
 
 /**
@@ -67,7 +68,8 @@ export function speechItemIds(): string[] {
  * plan enforces, applied at selection time so review probes always
  * resolve to a gradeable step.
  */
-export function speakProductionIndex(): Record<string, string> {
+export const speakProductionIndex = memoByCourse<Record<string, string>>((courseId) => {
+  const speech = speechOf(courseId);
   const index: Record<string, string> = {};
   for (const id of speech.order) {
     const item = speech.byId[id];
@@ -77,15 +79,16 @@ export function speakProductionIndex(): Record<string, string> {
     if (index[lexemeId] === undefined) index[lexemeId] = id;
   }
   return index;
-}
+});
 
 /**
  * lexemeId → prebuilt production exercise for TODAY's speaking share
  * (P8 §17). Ids are stable per lexeme; the composer re-ids its copies.
  */
-export function speakExerciseIndex(): Record<string, SpeakProductionExercise> {
+export function speakExerciseIndex(courseId: string): Record<string, SpeakProductionExercise> {
+  const speech = speechOf(courseId);
   const result: Record<string, SpeakProductionExercise> = {};
-  for (const [lexemeId, itemId] of Object.entries(speakProductionIndex())) {
+  for (const [lexemeId, itemId] of Object.entries(speakProductionIndex(courseId))) {
     const item = speech.byId[itemId];
     if (item) result[lexemeId] = speakExerciseForItem(item, `speak-${lexemeId}`);
   }

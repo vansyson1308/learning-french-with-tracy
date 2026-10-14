@@ -10,7 +10,7 @@ import { ConceptCard } from "../src/components/session/concept-card";
 
 describe("ConceptCard", () => {
   test("renders the authored gender concept from the compiled artifact", () => {
-    render(<ConceptCard conceptId="fr:concept:gender-two-classes" />);
+    render(<ConceptCard courseId="fr-en" conceptId="fr:concept:gender-two-classes" />);
     expect(screen.getByText("Every French noun has a gender")).toBeOnTheScreen();
     expect(
       screen.getByText("Every noun is masculine (le) or feminine (la) — the article is part of the word.")
@@ -24,7 +24,7 @@ describe("ConceptCard", () => {
   });
 
   test("fails soft (renders nothing) for an unknown concept id", () => {
-    render(<ConceptCard conceptId="fr:concept:ghost" />);
+    render(<ConceptCard courseId="fr-en" conceptId="fr:concept:ghost" />);
     expect(screen.toJSON()).toBeNull();
   });
 });

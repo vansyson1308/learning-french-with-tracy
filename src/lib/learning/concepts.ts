@@ -1,11 +1,11 @@
 /**
- * Runtime pedagogy-concept lookup (Phase 5B). Reads the compiled artifact
- * (src/content/concepts/fr-concepts.json, emitted by compile-content from
- * the authored content/fr/pedagogy/concepts.json) — the app never ships
+ * Runtime pedagogy-concept lookup (Phase 5B, per course since P1b). Reads
+ * the course's compiled concepts artifact (src/content/concepts/<code>-
+ * concepts.json via the artifact registry) — the app never ships
  * validation machinery, and courses without concepts simply never resolve
  * one.
  */
-import frConcepts from "../../content/concepts/fr-concepts.json";
+import { artifactsFor, memoByCourse } from "../content-registry";
 
 export type ConceptExample = { fr: string; en: string; note?: string };
 
@@ -19,8 +19,13 @@ export type ConceptContent = {
   memoryHint?: string;
 };
 
-const byId = frConcepts.byId as Record<string, ConceptContent>;
+type ConceptsArtifact = { byId: Record<string, ConceptContent> };
 
-export function conceptFor(conceptId: string): ConceptContent | undefined {
-  return byId[conceptId];
+const byId = memoByCourse<Record<string, ConceptContent>>((courseId) => {
+  const artifact = artifactsFor(courseId).concepts as ConceptsArtifact | undefined;
+  return artifact?.byId ?? {};
+});
+
+export function conceptFor(courseId: string, conceptId: string): ConceptContent | undefined {
+  return byId(courseId)[conceptId];
 }

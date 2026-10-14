@@ -12,7 +12,7 @@
  *   containment-checked against the repo root (no traversal, no eval).
  */
 
-import { readdirSync, readFileSync, rmSync } from "fs";
+import { existsSync, readdirSync, readFileSync, rmSync } from "fs";
 import path from "path";
 
 import {
@@ -24,11 +24,7 @@ import {
   type PackSource,
   type SourceRegistry,
 } from "../../content/schema";
-import {
-  acceptedNumberSpellings,
-  frenchNumber,
-} from "../../src/lib/learning/french-numbers";
-import { FR_COURSE_ID, FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
+import { BUILD_LANGUAGES } from "./languages";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
 
@@ -55,6 +51,10 @@ export function safeResolve(...segments: string[]): string {
 export const GENERATED_TARGETS = [
   "src/content/packs",
   "src/content/lexicon",
+  "src/content/ids",
+  "src/content/artifacts",
+  "src/content/course-profiles.json",
+  "src/content/flags.ts",
   "src/content/concepts",
   "src/content/assessment",
   "src/content/reception",
@@ -99,17 +99,48 @@ export type ValidationResult = { errors: string[]; warnings: string[] };
 
 type AnyExercise = PackSource["sections"][number]["units"][number]["lessons"][number]["exercises"][number];
 
-export function validateExercise(courseId: string, e: AnyExercise, push: (msg: string) => void) {
-  // Number-drill agreement (Phase 5B §75-80): any French exercise whose
-  // prompt is a bare integer 0-100 is a number drill, and its expected
-  // answer must agree with the deterministic engine — the pack can never
-  // drift from the verified spelling rules.
-  if (courseId === "fr-en") {
+/**
+ * Which rich layers a TARGET language's authored sources provide (P1b):
+ * the exercise types that need them are allowed in a pack exactly when the
+ * layer exists for that language — no course literal anywhere.
+ */
+export function targetLayers(targetCode: string): {
+  reception: boolean;
+  pedagogy: boolean;
+  ids: boolean;
+  numberDrill: NonNullable<(typeof BUILD_LANGUAGES)[string]["numberDrill"]> | undefined;
+} {
+  return {
+    reception: existsSync(safeResolve(`content/${targetCode}/reception`)),
+    pedagogy: existsSync(safeResolve(`content/${targetCode}/pedagogy`)),
+    ids: existsSync(safeResolve(`content/${targetCode}/lexemes.json`)),
+    numberDrill: BUILD_LANGUAGES[targetCode]?.numberDrill,
+  };
+}
+
+/** Course ids are `<target>-<native>` (CLAUDE.md conventions). */
+export function targetCodeOf(courseId: string): string {
+  return courseId.split("-")[0] ?? courseId;
+}
+
+export function validateExercise(
+  courseId: string,
+  e: AnyExercise,
+  push: (msg: string) => void,
+  targetCode: string = targetCodeOf(courseId)
+) {
+  const layers = targetLayers(targetCode);
+  // Number-drill agreement (Phase 5B §75-80): any exercise of a language
+  // with a verified number speller whose prompt is a bare integer 0-100 is
+  // a number drill, and its expected answer must agree with the
+  // deterministic engine — the pack can never drift from the spelling rules.
+  const speller = layers.numberDrill;
+  if (speller) {
     const numeric = (s: string) => (/^\d{1,3}$/.test(s) ? Number(s) : null);
     if (e.type === "typeAnswer" && e.mode === "produceTarget") {
       const n = numeric(e.prompt);
       if (n !== null && n >= 0 && n <= 100) {
-        const accepted = acceptedNumberSpellings(n);
+        const accepted = speller.accepted(n);
         if (e.answer !== accepted[0] || JSON.stringify(e.alternatives) !== JSON.stringify(accepted.slice(1))) {
           push(
             `${e.id}: number drill for ${n} must accept exactly [${accepted.join(", ")}] (engine spelling), got answer "${e.answer}" alternatives [${e.alternatives.join(", ")}]`
@@ -120,7 +151,7 @@ export function validateExercise(courseId: string, e: AnyExercise, push: (msg: s
     if (e.type === "select") {
       const n = numeric(e.prompt);
       if (n !== null && n >= 0 && n <= 100) {
-        const expected = frenchNumber(n).traditional;
+        const expected = speller.expected(n);
         if (e.options[e.correct]?.text !== expected) {
           push(
             `${e.id}: digit→word select for ${n} must key "${expected}" (engine spelling), got "${e.options[e.correct]?.text}"`
@@ -157,13 +188,13 @@ export function validateExercise(courseId: string, e: AnyExercise, push: (msg: s
     if (e.correct >= e.options.length) push(`${e.id}: correct index out of range`);
     const texts = e.options.map((o) => o.text);
     if (new Set(texts).size !== texts.length) push(`${e.id}: duplicate option text`);
-    if (courseId !== "fr-en") {
-      push(`${e.id}: ${e.type} is French reception content — not available for ${courseId}`);
+    if (!layers.reception) {
+      push(`${e.id}: ${e.type} needs authored reception content (content/${targetCode}/reception) — not available for ${courseId}`);
     }
   }
   if (e.type === "dictation") {
-    if (courseId !== "fr-en") {
-      push(`${e.id}: dictation is French reception content — not available for ${courseId}`);
+    if (!layers.reception) {
+      push(`${e.id}: dictation needs authored reception content (content/${targetCode}/reception) — not available for ${courseId}`);
     }
   }
   if (e.type === "articleSelect") {
@@ -178,8 +209,8 @@ export function validateExercise(courseId: string, e: AnyExercise, push: (msg: s
         `${e.id}: le/la drill on vowel/h-initial noun "${e.noun}" — such nouns elide to l' (or hide h-aspiré ambiguity); use un/une or a consonant-initial noun`
       );
     }
-    if (courseId !== "fr-en") {
-      push(`${e.id}: articleSelect is French pedagogy — not available for ${courseId}`);
+    if (!layers.pedagogy) {
+      push(`${e.id}: articleSelect needs authored pedagogy (content/${targetCode}/pedagogy) — not available for ${courseId}`);
     }
   }
 }
@@ -221,7 +252,7 @@ export function validateContent(): ValidationResult {
           for (const e of lesson.exercises) {
             if (ids.has(e.id)) err(`${pack.id}: duplicate exercise id ${e.id}`);
             ids.add(e.id);
-            validateExercise(pack.id, e, err);
+            validateExercise(pack.id, e, err, pack.targetCode);
             if ("audioTarget" in e && e.audioTarget !== undefined) {
               // device-tts courses (no license-clean voice exists for the
               // language) carry no bundled audio by policy; the runtime
@@ -236,25 +267,36 @@ export function validateContent(): ValidationResult {
           }
   }
 
-  // French lexeme map: schema, exact equality with the runtime Phase-1 map
-  // (the drift test), full coverage of pack word targets, unique ids.
-  const lexParsed = FrLexemeMapSchema.safeParse(readJson("content/fr/lexemes.json"));
-  if (!lexParsed.success) {
-    err(`content/fr/lexemes.json: ${lexParsed.error.issues[0]?.message}`);
-  } else {
-    const map = lexParsed.data;
-    const runtime = FR_LEXEME_IDS;
-    const a = JSON.stringify(Object.entries(map).sort());
-    const b = JSON.stringify(Object.entries(runtime).sort());
-    if (a !== b) err("content/fr/lexemes.json drifted from src/lib/learning/ids-fr.ts");
+  // Frozen lexeme maps (P1b, every language that has one): schema, unique
+  // ids, exact equality with the COMMITTED generated registry (the drift
+  // test — stable ids are persisted in learner data), and full coverage of
+  // every pack word of a course in that language.
+  for (const file of listCourseSources()) {
+    const pack = PackSchema.safeParse(readJson(`content/courses/${file}`));
+    if (!pack.success) continue;
+    const code = pack.data.targetCode;
+    const rel = `content/${code}/lexemes.json`;
+    if (!existsSync(safeResolve(rel))) continue;
+    const parsed = FrLexemeMapSchema.safeParse(readJson(rel));
+    if (!parsed.success) {
+      err(`${rel}: ${parsed.error.issues[0]?.message}`);
+      continue;
+    }
+    const map = parsed.data;
     const values = Object.values(map);
-    if (new Set(values).size !== values.length) err("fr lexeme ids are not unique");
-    const frPack = PackSchema.parse(readJson(`content/courses/${FR_COURSE_ID}.json`));
-    for (const section of frPack.sections)
+    if (new Set(values).size !== values.length) err(`${code} lexeme ids are not unique`);
+    const generatedRel = `src/content/ids/${code}.json`;
+    if (existsSync(safeResolve(generatedRel))) {
+      const generated = (readJson(generatedRel) as { surfaceToId: Record<string, string> }).surfaceToId;
+      const a = JSON.stringify(Object.entries(map).sort());
+      const b = JSON.stringify(Object.entries(generated).sort());
+      if (a !== b) err(`${rel} drifted from ${generatedRel} — run bun run content:compile`);
+    }
+    for (const section of pack.data.sections)
       for (const unit of section.units)
         for (const word of unit.words)
           if (map[word.target] === undefined) {
-            err(`fr word "${word.target}" missing from content/fr/lexemes.json`);
+            err(`${code} word "${word.target}" missing from ${rel}`);
           }
   }
 
@@ -360,13 +402,14 @@ export type CoverageRow = {
 };
 
 /**
- * gradeTargets emission — ONLY where ambiguity is zero (fr-en, word-mapped):
+ * gradeTargets emission — ONLY where ambiguity is zero (courses whose
+ * target language has a stable-id registry, word-mapped surfaces):
  *   select whose audioTarget is a mapped word → that word's lexeme id
  *   match → the mapped pair targets' ids
  * Everything else (sentence audioTargets, wordBank/typeAnswer/fillBlank)
  * stays unmarked until deliberate eligibility metadata exists.
  */
-function frGradeTargets(e: AnyExercise, map: Record<string, string>): string[] | undefined {
+function gradeTargetsFor(e: AnyExercise, map: Record<string, string>): string[] | undefined {
   if (e.type === "select") {
     // The exercise's unambiguous French surface: bundled-audio lessons key
     // it by audioTarget (Section 1); audio-less lessons key it by what the
@@ -393,10 +436,10 @@ function frGradeTargets(e: AnyExercise, map: Record<string, string>): string[] |
 
 export function compilePack(
   pack: PackSource,
-  frMap: Record<string, string>
+  /** The target language's frozen surface → id map; undefined = no registry (legacy course). */
+  idMap: Record<string, string> | undefined
 ): { pack: PackSource; coverage: CoverageRow } {
   const coverage: CoverageRow = { total: 0, withGradeTargets: 0, byType: {} };
-  const isFr = pack.id === FR_COURSE_ID;
   const out: PackSource = {
     ...pack,
     sections: pack.sections.map((section) => ({
@@ -409,7 +452,7 @@ export function compilePack(
             coverage.total += 1;
             const byType = (coverage.byType[e.type] ??= { total: 0, withGradeTargets: 0 });
             byType.total += 1;
-            const targets = isFr ? frGradeTargets(e, frMap) : undefined;
+            const targets = idMap ? gradeTargetsFor(e, idMap) : undefined;
             if (targets === undefined) return { ...e };
             coverage.withGradeTargets += 1;
             byType.withGradeTargets += 1;
@@ -435,16 +478,41 @@ function renderPacksIndex(courseIds: string[]): string {
 }
 
 /** Pure compile: returns every generated artifact as (relPath, bytes). */
-export function compileAll(): { files: CompiledFile[]; coverage: Record<string, CoverageRow> } {
-  const frMap = FrLexemeMapSchema.parse(readJson("content/fr/lexemes.json"));
+/** Frozen surface → id maps per target language that has one (content/<code>/lexemes.json). */
+export function loadIdMaps(): Record<string, Record<string, string>> {
+  const maps: Record<string, Record<string, string>> = {};
+  for (const file of listCourseSources()) {
+    const code = targetCodeOf(file.replace(/\.json$/, ""));
+    if (maps[code] !== undefined) continue;
+    const rel = `content/${code}/lexemes.json`;
+    if (!existsSync(safeResolve(rel))) continue;
+    const parsed = readJson(rel) as Record<string, string>;
+    const regex = new RegExp(`^${code}:w:[a-z0-9-]+$`);
+    for (const [surface, id] of Object.entries(parsed)) {
+      if (typeof id !== "string" || !regex.test(id)) throw new Error(`${rel}: "${surface}" → "${String(id)}" is not a ${code}:w:<slug> id`);
+    }
+    maps[code] = parsed;
+  }
+  return maps;
+}
+
+export function compileAll(): {
+  files: CompiledFile[];
+  coverage: Record<string, CoverageRow>;
+  packs: PackSource[];
+  idMaps: Record<string, Record<string, string>>;
+} {
+  const idMaps = loadIdMaps();
   const files: CompiledFile[] = [];
   const coverage: Record<string, CoverageRow> = {};
   const courseIds: string[] = [];
+  const packs: PackSource[] = [];
 
   for (const file of listCourseSources()) {
     const source = PackSchema.parse(readJson(`content/courses/${file}`));
-    const { pack, coverage: row } = compilePack(source, frMap);
+    const { pack, coverage: row } = compilePack(source, idMaps[source.targetCode]);
     courseIds.push(pack.id);
+    packs.push(source);
     coverage[pack.id] = row;
     files.push({ relPath: `src/content/packs/${pack.id}.json`, contents: canonicalJson(pack) });
   }
@@ -476,5 +544,5 @@ export function compileAll(): { files: CompiledFile[]; coverage: Record<string, 
       })),
     }),
   });
-  return { files, coverage };
+  return { files, coverage, packs, idMaps };
 }

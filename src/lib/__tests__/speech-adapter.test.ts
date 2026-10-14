@@ -103,7 +103,7 @@ const { ExpoSpeechRecognizerAdapter, SPEECH_PROVIDER, SPEECH_PROVIDER_VERSION } 
 type Adapter = InstanceType<typeof ExpoSpeechRecognizerAdapter>;
 
 function makeAdapter(): { adapter: Adapter; events: SpeechAdapterEvent[] } {
-  const adapter = new ExpoSpeechRecognizerAdapter();
+  const adapter = new ExpoSpeechRecognizerAdapter("fr-FR");
   const events: SpeechAdapterEvent[] = [];
   adapter.addListener((event) => events.push(event));
   return { adapter, events };
@@ -143,12 +143,13 @@ describe("capability probing (§7)", () => {
     const cap = await adapter.probeCapabilities();
     expect(cap).toEqual({
       platform: "ios",
+      locale: "fr-FR",
       available: true,
       microphonePermission: "granted",
       speechPermission: "granted",
-      frenchRecognitionAvailable: true,
+      targetRecognitionAvailable: true,
       onDeviceRecognitionAvailable: true,
-      frenchOnDeviceModelInstalled: true,
+      targetOnDeviceModelInstalled: true,
       networkBackedRecognitionPossible: false,
       recordingPersistenceAvailable: true,
       provider: SPEECH_PROVIDER,
@@ -164,7 +165,7 @@ describe("capability probing (§7)", () => {
     const cap = await adapter.probeCapabilities();
     expect(cap.available).toBe(false);
     expect(cap.scoredEligible).toBe(false);
-    expect(cap.frenchRecognitionAvailable).toBe(false);
+    expect(cap.targetRecognitionAvailable).toBe(false);
     adapter.dispose();
   });
 
@@ -201,8 +202,8 @@ describe("capability probing (§7)", () => {
     providerState.localesThrows = true;
     const { adapter } = makeAdapter();
     const cap = await adapter.probeCapabilities();
-    expect(cap.frenchRecognitionAvailable).toBe(true);
-    expect(cap.frenchOnDeviceModelInstalled).toBe(false);
+    expect(cap.targetRecognitionAvailable).toBe(true);
+    expect(cap.targetOnDeviceModelInstalled).toBe(false);
     expect(cap.networkBackedRecognitionPossible).toBe(true);
     adapter.dispose();
   });
@@ -212,7 +213,7 @@ describe("capability probing (§7)", () => {
     providerState.installedLocales = ["en-US"];
     const { adapter } = makeAdapter();
     const cap = await adapter.probeCapabilities();
-    expect(cap.frenchRecognitionAvailable).toBe(false);
+    expect(cap.targetRecognitionAvailable).toBe(false);
     expect(cap.scoredEligible).toBe(false);
     adapter.dispose();
   });
@@ -439,7 +440,7 @@ describe("event translation and attempt stamping (§9)", () => {
   });
 
   test("a listener that starts the NEXT attempt on 'end' is not clobbered by the slot-free", () => {
-    const adapter = new ExpoSpeechRecognizerAdapter();
+    const adapter = new ExpoSpeechRecognizerAdapter("fr-FR");
     const seen: SpeechAdapterEvent[] = [];
     adapter.addListener((event) => {
       seen.push(event);

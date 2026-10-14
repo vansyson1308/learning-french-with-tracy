@@ -16,7 +16,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { parseCardKey, serializeCardKey, SKILLS } from "../learning/card-key";
-import { applyEvidence, dueFrenchReviewQueue } from "../learning/engine";
+import { applyEvidence, dueReviewQueue } from "../learning/engine";
 import type { ReviewEvidence } from "../learning/evidence";
 import { fsrsScheduler } from "../learning/fsrs-adapter";
 import {
@@ -115,14 +115,14 @@ describe("card key: speak skill (§15)", () => {
       "fr:w:cafe|speak": dueCard(),
       "fr:w:train|speak": dueCard(),
     };
-    expect(dueFrenchReviewQueue(cards, NOW).map((d) => d.key)).toEqual([
+    expect(dueReviewQueue("fr-en", cards, NOW).map((d) => d.key)).toEqual([
       "fr:w:cafe|recognize",
     ]);
-    expect(dueFrenchReviewQueue(cards, NOW, "listen").map((d) => d.key)).toEqual([
+    expect(dueReviewQueue("fr-en", cards, NOW, "listen").map((d) => d.key)).toEqual([
       "fr:w:cafe|listen",
     ]);
     expect(
-      dueFrenchReviewQueue(cards, NOW, "speak")
+      dueReviewQueue("fr-en", cards, NOW, "speak")
         .map((d) => d.key)
         .sort()
     ).toEqual(["fr:w:cafe|speak", "fr:w:train|speak"]);
@@ -271,8 +271,7 @@ describe("speaking review surface (§16)", () => {
     // the train leaves"); fr:w:cafe has none — its speak card must stay
     // VISIBLY due and unsessionable, never silently hidden.
     const cards = { "fr:w:cafe|speak": dueCard(), "fr:w:train|speak": dueCard() };
-    const definition = buildSpeakingReviewSessionDefinition({
-      course: courseWith(cards),
+    const definition = buildSpeakingReviewSessionDefinition({ courseId: "fr-en", course: courseWith(cards),
       now: NOW,
     });
     expect(definition.steps).toHaveLength(1);
@@ -283,15 +282,15 @@ describe("speaking review surface (§16)", () => {
       srsRole: "assessment",
     });
     expect(step.exercise.type).toBe("speakProduction");
-    expect(dueSpeakingReviewCounts(cards, NOW)).toEqual({ sessionable: 1, total: 2 });
+    expect(dueSpeakingReviewCounts("fr-en", cards, NOW)).toEqual({ sessionable: 1, total: 2 });
     // The cards themselves are untouched — still due.
-    expect(dueFrenchReviewQueue(cards, NOW, "speak")).toHaveLength(2);
+    expect(dueReviewQueue("fr-en", cards, NOW, "speak")).toHaveLength(2);
   });
 
   test("review steps never use RESERVED items (§20)", async () => {
     const { speechItemFor, speakProductionIndex } = await import("../speech/content");
-    for (const itemId of Object.values(speakProductionIndex())) {
-      const item = speechItemFor(itemId)!;
+    for (const itemId of Object.values(speakProductionIndex("fr-en"))) {
+      const item = speechItemFor("fr-en", itemId)!;
       // The compiled artifact excludes reserved items entirely, so the
       // review index can only ever reach curriculum production items.
       expect(item).toBeDefined();
@@ -323,7 +322,7 @@ describe("TODAY speaking share (§17)", () => {
   });
 
   test("speak steps are bounded, carry speak-card evidence, and count as reviews", () => {
-    const plan = composeTodaySession({
+    const plan = composeTodaySession({ courseId: "fr-en",
       pack: frPack,
       completedLessons: {},
       cards: speakDue(4),
@@ -348,7 +347,7 @@ describe("TODAY speaking share (§17)", () => {
   });
 
   test("'Can't speak now' (no speakExercises) composes a fully silent session", () => {
-    const plan = composeTodaySession({
+    const plan = composeTodaySession({ courseId: "fr-en",
       pack: frPack,
       completedLessons: {},
       cards: speakDue(3),

@@ -24,8 +24,8 @@ const drill = (over: Partial<ArticleSelectExercise> = {}): ArticleSelectExercise
 describe("grading", () => {
   test("index equality, readiness, and correct-answer display", () => {
     const exercise = drill();
-    expect(checkAnswer(exercise, 1)).toBe(true);
-    expect(checkAnswer(exercise, 0)).toBe(false);
+    expect(checkAnswer(exercise, 1, "fr-en")).toBe(true);
+    expect(checkAnswer(exercise, 0, "fr-en")).toBe(false);
     expect(answerIsReady(exercise, null)).toBe(false);
     expect(answerIsReady(exercise, 0)).toBe(true);
     expect(correctAnswerText(exercise)).toBe("la pomme");

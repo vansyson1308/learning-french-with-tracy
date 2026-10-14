@@ -7,6 +7,6 @@
 
 import type { LexiconRepository } from "./types";
 
-export async function loadNativeLexiconRepository(): Promise<LexiconRepository | null> {
+export async function loadNativeLexiconRepository(_targetCode: string): Promise<LexiconRepository | null> {
   return null;
 }

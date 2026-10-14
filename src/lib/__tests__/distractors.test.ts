@@ -36,7 +36,7 @@ function pick(target: string, direction: "targetToNative" | "nativeToTarget", se
 
 describe("band tier activation (§20) — real Lexique 4 bands make tier 3 non-vacuous", () => {
   const meta = (target: string): LexemeMeta | undefined =>
-    lexemeMetaFor(frItemIdFor(wordFor(target).target));
+    lexemeMetaFor("fr-en", frItemIdFor(wordFor(target).target));
 
   test("same-POS candidates now split by frequency band", () => {
     const chat = meta("le chat"); // noun, animals, band common (29.851/M)
@@ -53,7 +53,7 @@ describe("band tier activation (§20) — real Lexique 4 bands make tier 3 non-v
 
   test("every adopted lexeme surfaced to the distractor engine carries a real band", () => {
     for (const w of frPool) {
-      const m = lexemeMetaFor(frItemIdFor(w.target));
+      const m = lexemeMetaFor("fr-en", frItemIdFor(w.target));
       if (m && PENDING_LEXIQUE_IMPORT.has(m.id)) continue; // awaiting import round
       if (m && m.pos !== "expression") {
         expect(["very-common", "common", "less-common"]).toContain(m.band ?? "");
@@ -74,7 +74,7 @@ describe("tier preferences", () => {
     const picks = pick("le chat", "targetToNative", 5);
     expect(picks.length).toBe(3);
     for (const w of picks) {
-      const meta = lexemeMetaFor(idOf(w));
+      const meta = lexemeMetaFor("fr-en", idOf(w));
       // chien is a confusable (tier 1) and also an animal; the rest tier 2.
       expect(meta?.pos).toBe("noun");
       expect(meta?.topic).toBe("animals");

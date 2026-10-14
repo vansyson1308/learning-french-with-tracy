@@ -63,6 +63,9 @@ describe("Android permissions are the minimum the product uses", () => {
   test("the speech-recognition plugin carries honest, situation-specific usage strings", () => {
     const speech = plugin("expo-speech-recognition") as Record<string, string>;
     expect(speech.microphonePermission).toMatch(/only while you practice speaking/i);
+    // P1b: language-neutral — no course's language is named in a permission string.
+    expect(speech.microphonePermission).not.toMatch(/french/i);
+    expect(speech.speechRecognitionPermission).not.toMatch(/french/i);
     expect(speech.speechRecognitionPermission).toMatch(/Nothing is recorded until you tap the record button/);
   });
 });

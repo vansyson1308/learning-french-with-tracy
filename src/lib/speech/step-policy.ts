@@ -2,9 +2,9 @@
  * Speech step policy (P8 §11/§13/§14/§23-25) — pure decisions the two
  * speak renderers must not improvise:
  *
- *  - repetition PRACTICE: model + French visible, partials allowed, always
+ *  - repetition PRACTICE: model + target text visible, partials allowed, always
  *    assisted, never scored;
- *  - elicited PRODUCTION: no French, no model, no partials before grading;
+ *  - elicited PRODUCTION: no target text, no model, no partials before grading;
  *    learning may reveal the target after N non-matching recordings (the
  *    attempt is then assisted) and play the model only AFTER grading;
  *  - scored: nothing but the cue before submission, bounded recording
@@ -19,7 +19,7 @@ export type SpeakExercise = SpeakRepetitionExercise | SpeakProductionExercise;
 
 export type SpeakStepContext = { scored: boolean };
 
-/** May the French target text be visible right now? */
+/** May the target text be visible right now? */
 export function showTarget(
   exercise: SpeakExercise,
   ctx: SpeakStepContext,
@@ -141,7 +141,7 @@ export type SpeechGate =
   | { kind: "ready" }
   /** Permissions undetermined: show the rationale and a request button (§24). */
   | { kind: "needsPermission" }
-  | { kind: "blocked"; reason: "permission" | "unavailable" | "noFrench" };
+  | { kind: "blocked"; reason: "permission" | "unavailable" | "noTargetLanguage" };
 
 /** Point-of-use capability gate for a speak step (§24/§25). */
 export function gateFor(
@@ -154,7 +154,7 @@ export function gateFor(
   if (ctx.scored && capability.platform === "web") {
     return { kind: "blocked", reason: "unavailable" };
   }
-  if (!capability.frenchRecognitionAvailable) return { kind: "blocked", reason: "noFrench" };
+  if (!capability.targetRecognitionAvailable) return { kind: "blocked", reason: "noTargetLanguage" };
   const mic = capability.microphonePermission;
   const speech = capability.speechPermission;
   if (mic === "granted" && speech === "granted") return { kind: "ready" };
@@ -163,13 +163,13 @@ export function gateFor(
 }
 
 /** Copy for a blocked gate — plain, honest, with the path forward. */
-export function gateMessage(gate: SpeechGate): string | null {
+export function gateMessage(gate: SpeechGate, targetLanguage: string): string | null {
   if (gate.kind !== "blocked") return null;
   switch (gate.reason) {
     case "unavailable":
       return "Speaking exercises aren't available here. You can skip this step.";
-    case "noFrench":
-      return "This device's speech recognition doesn't offer French. You can skip this step.";
+    case "noTargetLanguage":
+      return `This device's speech recognition doesn't offer ${targetLanguage}. You can skip this step.`;
     case "permission":
       return "Microphone or speech recognition permission is turned off. Enable it in Settings, or skip this step.";
   }
@@ -177,7 +177,7 @@ export function gateMessage(gate: SpeechGate): string | null {
 
 /**
  * Network-backed recognition disclosure (P9 §7): when the SYSTEM recognizer
- * may process speech over the network because no offline French model is
+ * may process speech over the network because no offline target-language model is
  * proven installed, the learner is told once — before their first recording,
  * not buried in a policy document and not repeated on every question.
  * Pure rule; the acknowledgement flag lives in the persisted store.
@@ -189,15 +189,18 @@ export function networkDisclosureRequired(
   if (acknowledged || capability === null) return false;
   return (
     capability.available &&
-    capability.frenchRecognitionAvailable &&
+    capability.targetRecognitionAvailable &&
     capability.networkBackedRecognitionPossible &&
-    !capability.frenchOnDeviceModelInstalled
+    !capability.targetOnDeviceModelInstalled
   );
 }
 
 /** Honest wording for the §7 disclosure — facts only, no scare copy. */
-export const NETWORK_DISCLOSURE_TEXT =
-  "Speech recognition is provided by your device's system service. Without an " +
-  "offline French model it may use the internet to recognize what you say. " +
-  "This app itself never uploads or stores your recording — and you can " +
-  "always skip speaking.";
+export function networkDisclosureText(targetLanguage: string): string {
+  return (
+    "Speech recognition is provided by your device's system service. Without an " +
+    `offline ${targetLanguage} model it may use the internet to recognize what you say. ` +
+    "This app itself never uploads or stores your recording — and you can " +
+    "always skip speaking."
+  );
+}

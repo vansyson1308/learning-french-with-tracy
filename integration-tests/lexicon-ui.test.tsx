@@ -11,7 +11,7 @@ import { lexemeMetaFor } from "../src/lib/learning/lexicon-index";
 
 describe("PostAnswerPanel", () => {
   test("shows compact lexical feedback with a More disclosure", async () => {
-    render(<PostAnswerPanel itemId="fr:w:chat" correct />);
+    render(<PostAnswerPanel courseId="fr-en" itemId="fr:w:chat" correct />);
     expect(screen.getByText("le chat")).toBeOnTheScreen();
     expect(screen.getByText("the cat")).toBeOnTheScreen();
     expect(screen.getByText("/ʃa/")).toBeOnTheScreen();
@@ -25,13 +25,13 @@ describe("PostAnswerPanel", () => {
   });
 
   test("elided-article noun teaches its gender", () => {
-    render(<PostAnswerPanel itemId="fr:w:eau" correct={false} />);
+    render(<PostAnswerPanel courseId="fr-en" itemId="fr:w:eau" correct={false} />);
     expect(screen.getByText("l'eau")).toBeOnTheScreen();
     expect(screen.getByText("feminine noun (l')")).toBeOnTheScreen();
   });
 
   test("renders nothing for an item without a lexicon entry", () => {
-    render(<PostAnswerPanel itemId="fr:w:ghost" correct />);
+    render(<PostAnswerPanel courseId="fr-en" itemId="fr:w:ghost" correct />);
     expect(screen.toJSON()).toBeNull();
   });
 });
@@ -40,7 +40,7 @@ describe("TeachCard enrichment", () => {
   const word = { target: "l'eau", native: "the water", emoji: "💧" };
 
   test("shows pronunciation, gender cue and example when metadata exists", () => {
-    render(<TeachCard word={word} courseId="fr-en" meta={lexemeMetaFor("fr:w:eau")} />);
+    render(<TeachCard word={word} courseId="fr-en" meta={lexemeMetaFor("fr-en", "fr:w:eau")} />);
     expect(screen.getByText("l'eau")).toBeOnTheScreen();
     expect(screen.getByText("the water")).toBeOnTheScreen();
     expect(screen.getByText("/o/")).toBeOnTheScreen();

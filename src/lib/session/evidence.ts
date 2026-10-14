@@ -4,7 +4,7 @@
  * Two truth sources, never mixed:
  *  - GENERATED steps (review/TODAY) carry an explicit `step.evidence` plan —
  *    the source already knows exactly which card it tests.
- *  - AUTHORED French PATH selects use the compiler-emitted `gradeTargets`
+ *  - AUTHORED PATH selects of an FSRS course use the compiler-emitted `gradeTargets`
  *    as the authoritative declaration: exactly one valid stable id makes
  *    the step assessment-eligible; missing, multiple, or invalid targets
  *    fail closed to practice (never a crash, never a guessed card).
@@ -16,10 +16,11 @@
  * the target and the planner-intended role.
  */
 
+import { hasCapability } from "../course-profile";
 import { behaviorFor } from "../exercise-registry";
 import type { ReviewEvidence, SrsRole } from "../learning/evidence";
 import { itemIdForCourse } from "../learning/engine";
-import { FR_COURSE_ID, frItemIdFor, isCuratedFrItemId } from "../learning/ids-fr";
+import { isCuratedItemId, itemIdFor } from "../learning/ids";
 import { lexemeIdForLookupForm } from "../learning/lexicon-index";
 import { clipFor } from "../reception/content";
 
@@ -51,18 +52,20 @@ export function evidencePlanFor(
   // Grammar drills (§58): practice evidence on the drilled noun's own
   // lexeme when it resolves unambiguously — logged, NEVER an assessment,
   // so a grammar answer can never mutate the lexical recognize card.
+  const courseId = definition.courseId;
+  const scheduled = hasCapability(courseId, "fsrs");
   if (exercise.type === "articleSelect") {
-    if (definition.courseId !== FR_COURSE_ID) return null;
-    const id = lexemeIdForLookupForm(exercise.noun);
-    return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
+    if (!scheduled) return null;
+    const id = lexemeIdForLookupForm(courseId, exercise.noun);
+    return id !== undefined && isCuratedItemId(courseId, id) ? { itemId: id, srsRole: "practice" } : null;
   }
 
   // Conjugation production (§67): practice evidence on the verb's own
   // lexeme when it exists — never lexical FSRS assessment.
   if (exercise.type === "conjugationCloze") {
-    if (definition.courseId !== FR_COURSE_ID) return null;
-    const id = lexemeIdForLookupForm(exercise.verb);
-    return id !== undefined && isCuratedFrItemId(id) ? { itemId: id, srsRole: "practice" } : null;
+    if (!scheduled) return null;
+    const id = lexemeIdForLookupForm(courseId, exercise.verb);
+    return id !== undefined && isCuratedItemId(courseId, id) ? { itemId: id, srsRole: "practice" } : null;
   }
 
   // Listening comprehension (P7 §72-78): the ONLY exercise shape that may
@@ -72,12 +75,12 @@ export function evidencePlanFor(
   // sentence comprehension and NEVER creates lexical cards (§75). Dictation
   // tests orthographic decoding, not meaning — it emits nothing.
   if (exercise.type === "listeningComprehension") {
-    if (definition.courseId !== FR_COURSE_ID) return null;
-    const clip = clipFor(exercise.clipId);
+    if (!scheduled) return null;
+    const clip = clipFor(courseId, exercise.clipId);
     if (!clip || clip.kind !== "word_phrase") return null;
     if (clip.lexemeRefs.length !== 1) return null;
     const id = clip.lexemeRefs[0];
-    if (!isCuratedFrItemId(id)) return null;
+    if (!isCuratedItemId(courseId, id)) return null;
     return { itemId: id, skill: "listen", srsRole: plannedRole(definition) };
   }
 
@@ -90,27 +93,27 @@ export function evidencePlanFor(
   // evidence lexeme. The assisted flag rides the SpokenAnswer and the
   // gate refuses assisted assessments downstream.
   if (exercise.type === "speakProduction") {
-    if (definition.courseId !== FR_COURSE_ID) return null;
+    if (!scheduled) return null;
     const targets = exercise.evidenceLexemeRefs;
-    if (targets.length !== 1 || !isCuratedFrItemId(targets[0])) return null;
+    if (targets.length !== 1 || !isCuratedItemId(courseId, targets[0])) return null;
     return { itemId: targets[0], skill: "speak", srsRole: plannedRole(definition) };
   }
   if (exercise.type === "speakRepetition") return null; // §11: never evidence
 
   if (exercise.type !== "select") return null;
 
-  if (definition.courseId === FR_COURSE_ID) {
+  if (scheduled) {
     // The compiler-emitted gradeTargets ARE the deliberate eligibility
     // metadata (Section 2 lessons ship without bundled audio, so the
     // Phase-1 audioTarget proxy cannot be the gate any more).
     const targets = exercise.gradeTargets ?? [];
-    if (targets.length === 1 && isCuratedFrItemId(targets[0])) {
+    if (targets.length === 1 && isCuratedItemId(courseId, targets[0])) {
       return { itemId: targets[0], srsRole: plannedRole(definition) };
     }
     if (!exercise.audioTarget) return null;
     // No/ambiguous/unknown gradeTargets: log under the best-known id so the
     // interaction is preserved, but never schedule from a guess.
-    return { itemId: frItemIdFor(exercise.audioTarget), srsRole: "practice" };
+    return { itemId: itemIdFor(courseId, exercise.audioTarget), srsRole: "practice" };
   }
 
   // Legacy courses: raw surface, unchanged semantics.

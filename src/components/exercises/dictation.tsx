@@ -1,6 +1,6 @@
 /**
  * Dictation (P7 §63): hear the bundled clip, type what was said. Strict
- * French grading (accents matter — orthographic decoding IS the construct).
+ * STRICT grading (accents matter — orthographic decoding IS the construct).
  * The transcript is the answer, so it is never shown before grading.
  */
 import React from "react";
@@ -12,6 +12,7 @@ import type { DictationExercise } from "@/lib/types";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 export function Dictation({
+  targetLanguage,
   exercise: _exercise,
   answer,
   status,
@@ -19,6 +20,7 @@ export function Dictation({
   onAnswer,
   onAudioUnavailable,
 }: {
+  targetLanguage: string;
   exercise: DictationExercise;
   answer: string | null;
   status: "none" | "correct" | "wrong";
@@ -42,7 +44,7 @@ export function Dictation({
         value={answer ?? ""}
         onChangeText={onAnswer}
         editable={status === "none"}
-        placeholder="Type in French — accents count"
+        placeholder={`Type in ${targetLanguage} — accents count`}
         placeholderTextColor={colors.neutral400}
         autoCapitalize="none"
         autoCorrect={false}

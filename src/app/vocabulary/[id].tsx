@@ -14,9 +14,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CloseButton } from "@/components/close-button";
 import { SpeakerButton } from "@/components/speaker-button";
-import { courseCapabilities } from "@/lib/capabilities";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { serializeCardKey } from "@/lib/learning/card-key";
-import { frMemoryStrengthPercent } from "@/lib/learning/engine";
+import { memoryStrengthPercent } from "@/lib/learning/engine";
 import type { FsrsCardState } from "@/lib/learning/scheduler";
 import { displayPronunciation } from "@/lib/session/panel";
 import { useLexiconRepository } from "@/lib/lexicon/use-lexicon-repository";
@@ -38,7 +38,7 @@ export default function LexemeDetailScreen() {
         serializeCardKey({ itemId, skill: "recognize" })
       ]
   );
-  const repoState = useLexiconRepository();
+  const repoState = useLexiconRepository(activeCourseId);
   const [detail, setDetail] = useState<LexemeDetail | null | "loading">("loading");
 
   useEffect(() => {
@@ -54,9 +54,9 @@ export default function LexemeDetailScreen() {
     };
   }, [repoState, itemId]);
 
-  if (!courseCapabilities(activeCourseId).lexicon) return <Redirect href="/" />;
+  if (!hasCapability(activeCourseId, "lexicon")) return <Redirect href="/" />;
 
-  const memory = frMemoryStrengthPercent(card);
+  const memory = memoryStrengthPercent(card);
   const dueDays = card ? dueInDaysAt(card.due) : null;
 
   return (
@@ -68,7 +68,9 @@ export default function LexemeDetailScreen() {
       </View>
       <ScrollView contentContainerStyle={styles.body}>
         {detail === "loading" ? null : detail === null ? (
-          <Text style={styles.empty}>This word isn&apos;t in the French lexicon.</Text>
+          <Text style={styles.empty}>
+            This word isn&apos;t in the {courseProfile(activeCourseId).targetLanguage} lexicon.
+          </Text>
         ) : (
           <>
             <View style={styles.card}>

@@ -24,7 +24,8 @@
  * not communication. No LLM, no fuzz, no confidence anywhere.
  */
 
-import { normalizeSpokenFrench } from "../speech/grader";
+import type { LanguageRules } from "../languages/types";
+import { normalizeSpoken } from "../speech/grader";
 
 export type WritingVerdict =
   | "meets_rubric"
@@ -50,19 +51,21 @@ export type WritingEvaluation = {
   verdict: WritingVerdict;
   matchedSlotIds: string[];
   missingSlots: { id: string; description: string }[];
-  /** Share of tokens recognized as French (0..1); 1 for empty input. */
-  frenchShare: number;
+  /** Share of tokens recognized as target-language vocabulary (0..1); 1 for empty input. */
+  knownShare: number;
   tokenCount: number;
   /** Honest, specific problem feedback — empty when the rubric is met. */
   feedback: string[];
 };
 
-/** Fold + digits→words + diacritic-insensitive (typing-kind, meaning-strict). */
-export function normalizeWrittenFrench(text: string): string {
-  return normalizeSpokenFrench(text)
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .normalize("NFC");
+/**
+ * Fold + digits→words + diacritic-insensitive (typing-kind, meaning-strict)
+ * under the course's language rules. Diacritic stripping is a Latin-script
+ * typing tolerance; plugins whose marks are phonemic (Vietnamese tones)
+ * keep them because their lenient form already does.
+ */
+export function normalizeWritten(text: string, rules: LanguageRules): string {
+  return rules.normalizeLenient(normalizeSpoken(text, rules));
 }
 
 function tokensOf(normalized: string): string[] {
@@ -81,9 +84,9 @@ function containsRun(haystack: string[], needle: string[]): boolean {
   return false;
 }
 
-function slotMatched(answerTokens: string[], slot: WritingSlot): boolean {
+function slotMatched(answerTokens: string[], slot: WritingSlot, rules: LanguageRules): boolean {
   return slot.variants.some((variant) =>
-    containsRun(answerTokens, tokensOf(normalizeWrittenFrench(variant)))
+    containsRun(answerTokens, tokensOf(normalizeWritten(variant, rules)))
   );
 }
 
@@ -106,9 +109,9 @@ function runSpans(haystack: string[], needle: string[]): [number, number][] {
  * once) count once; "je m'appelle Léa … je suis Léa" counts twice. Writing
  * every variant you can think of is keyword stuffing, not an answer.
  */
-function slotRealizations(answerTokens: string[], slot: WritingSlot): number {
+function slotRealizations(answerTokens: string[], slot: WritingSlot, rules: LanguageRules): number {
   const spans = slot.variants
-    .flatMap((variant) => runSpans(answerTokens, tokensOf(normalizeWrittenFrench(variant))))
+    .flatMap((variant) => runSpans(answerTokens, tokensOf(normalizeWritten(variant, rules))))
     .sort((a, b) => a[0] - b[0]);
   let count = 0;
   let end = -1;
@@ -124,15 +127,19 @@ function slotRealizations(answerTokens: string[], slot: WritingSlot): number {
 }
 
 /** The insufficiently-scorable floor: below this share we refuse to judge. */
-export const FRENCH_SHARE_FLOOR = 0.5;
+export const KNOWN_SHARE_FLOOR = 0.5;
 
 export function evaluateGuidedWriting(input: {
+  /** The course's language rules (folding, digits, tokens). */
+  rules: LanguageRules;
+  /** Display name of the target language, for the feedback copy. */
+  targetLanguage: string;
   text: string;
   rubric: WritingRubric;
   /** Instruction + cue text, for prompt-copy detection. */
   promptText: string;
-  /** Compiled known-French token vocabulary (fr-writing artifact). */
-  knownFrench: ReadonlySet<string>;
+  /** Compiled known-vocabulary token set of the course (writing artifact). */
+  knownVocabulary: ReadonlySet<string>;
   /**
    * Task mode (default "guided"). Open practice rubrics carry MENU slots —
    * "any sentence about you" satisfied by several different starters — so
@@ -140,12 +147,12 @@ export function evaluateGuidedWriting(input: {
    */
   mode?: "guided" | "open";
 }): WritingEvaluation {
-  const { rubric } = input;
-  const normalized = normalizeWrittenFrench(input.text);
+  const { rubric, rules, targetLanguage } = input;
+  const normalized = normalizeWritten(input.text, rules);
   const answerTokens = tokensOf(normalized);
   const tokenCount = answerTokens.length;
 
-  const matched = rubric.requiredSlots.filter((s) => slotMatched(answerTokens, s));
+  const matched = rubric.requiredSlots.filter((s) => slotMatched(answerTokens, s, rules));
   const missing = rubric.requiredSlots
     .filter((s) => !matched.includes(s))
     .map((s) => ({ id: s.id, description: s.description }));
@@ -156,44 +163,44 @@ export function evaluateGuidedWriting(input: {
   const taskTokens = new Set<string>();
   for (const slot of rubric.requiredSlots) {
     for (const v of slot.variants) {
-      for (const t of tokensOf(normalizeWrittenFrench(v))) taskTokens.add(t);
+      for (const t of tokensOf(normalizeWritten(v, rules))) taskTokens.add(t);
     }
   }
   const knownCount = answerTokens.filter(
-    (t) => input.knownFrench.has(t) || taskTokens.has(t)
+    (t) => input.knownVocabulary.has(t) || taskTokens.has(t)
   ).length;
-  const frenchShare = tokenCount === 0 ? 1 : knownCount / tokenCount;
+  const knownShare = tokenCount === 0 ? 1 : knownCount / tokenCount;
 
-  const base = { matchedSlotIds, missingSlots: missing, frenchShare, tokenCount };
+  const base = { matchedSlotIds, missingSlots: missing, knownShare, tokenCount };
 
   // 1. Nothing written → nothing to judge.
   if (tokenCount === 0) {
     return {
       ...base,
       verdict: "insufficiently_scorable",
-      feedback: ["Write your answer in French."],
+      feedback: [`Write your answer in ${targetLanguage}.`],
     };
   }
 
-  // 2. Not recognizably French → refuse to judge rather than guess (§17).
-  //    This is deliberately checked BEFORE slots: an English sentence with
-  //    French keywords must never pass (§67).
-  if (frenchShare < FRENCH_SHARE_FLOOR) {
+  // 2. Not recognizably the target language → refuse to judge rather than
+  //    guess (§17). This is deliberately checked BEFORE slots: a native-
+  //    language sentence with target keywords must never pass (§67).
+  if (knownShare < KNOWN_SHARE_FLOOR) {
     return {
       ...base,
       verdict: "insufficiently_scorable",
-      feedback: ["I can only check French — try writing your answer in French."],
+      feedback: [`I can only check ${targetLanguage} — try writing your answer in ${targetLanguage}.`],
     };
   }
 
   // 3. Prompt copy: every answer token already appears in the prompt/cues.
   //    A real answer adds its own French around the given facts.
-  const promptTokens = new Set(tokensOf(normalizeWrittenFrench(input.promptText)));
+  const promptTokens = new Set(tokensOf(normalizeWritten(input.promptText, rules)));
   if (tokenCount >= 2 && answerTokens.every((t) => promptTokens.has(t))) {
     return {
       ...base,
       verdict: "does_not_meet_rubric",
-      feedback: ["Write your own answer in French — don't copy the prompt."],
+      feedback: [`Write your own answer in ${targetLanguage} — don't copy the prompt.`],
     };
   }
 
@@ -212,7 +219,7 @@ export function evaluateGuidedWriting(input: {
   const verbs = rubric.requireSentenceVerbs ?? [];
   if (verbs.length > 0) {
     const hasVerb = verbs.some((v) =>
-      containsRun(answerTokens, tokensOf(normalizeWrittenFrench(v)))
+      containsRun(answerTokens, tokensOf(normalizeWritten(v, rules)))
     );
     if (!hasVerb) {
       feedback.push(
@@ -241,7 +248,7 @@ export function evaluateGuidedWriting(input: {
   const stuffed =
     (input.mode ?? "guided") === "guided"
       ? matched.filter(
-          (s) => s.variants.length >= 2 && slotRealizations(answerTokens, s) >= 2
+          (s) => s.variants.length >= 2 && slotRealizations(answerTokens, s, rules) >= 2
         )
       : [];
   if (stuffed.length > 0) {
@@ -259,10 +266,13 @@ export function evaluateGuidedWriting(input: {
 export type FormFieldSpec = { id: string; label: string; slotId: string };
 
 export function evaluateSimpleForm(input: {
+  rules: LanguageRules;
+  targetLanguage: string;
   values: Record<string, string>;
   fields: FormFieldSpec[];
   rubric: WritingRubric;
 }): WritingEvaluation {
+  const { rules } = input;
   const slotsById = new Map(input.rubric.requiredSlots.map((s) => [s.id, s]));
   const matchedSlotIds: string[] = [];
   const missingSlots: { id: string; description: string }[] = [];
@@ -274,7 +284,7 @@ export function evaluateSimpleForm(input: {
     const slot = slotsById.get(field.slotId);
     if (!slot) continue; // validator-impossible; fail closed as missing
     const raw = input.values[field.id] ?? "";
-    const answerTokens = tokensOf(normalizeWrittenFrench(raw));
+    const answerTokens = tokensOf(normalizeWritten(raw, rules));
     totalTokens += answerTokens.length;
     if (answerTokens.length === 0) {
       missingSlots.push({ id: slot.id, description: slot.description });
@@ -282,7 +292,7 @@ export function evaluateSimpleForm(input: {
       continue;
     }
     filled += 1;
-    if (slotMatched(answerTokens, slot)) {
+    if (slotMatched(answerTokens, slot, rules)) {
       matchedSlotIds.push(slot.id);
     } else {
       missingSlots.push({ id: slot.id, description: slot.description });
@@ -293,7 +303,7 @@ export function evaluateSimpleForm(input: {
   const base = {
     matchedSlotIds,
     missingSlots,
-    frenchShare: 1,
+    knownShare: 1,
     tokenCount: totalTokens,
   };
   if (filled === 0) {

@@ -69,7 +69,7 @@ describe("pathFrontierLesson honors the floor (§88, §151)", () => {
 
 describe("TODAY introduces new words from the floor frontier only (§88, §151)", () => {
   test("floored compose teaches Section-2 frontier words, not Section-1 words", () => {
-    const plan = composeTodaySession({
+    const plan = composeTodaySession({ courseId: "fr-en",
       pack: FR,
       completedLessons: {},
       cards: {},
@@ -104,8 +104,8 @@ describe("TODAY introduces new words from the floor frontier only (§88, §151)"
       seed: 42,
       now: 1_700_000_000_000,
     };
-    const withDefault = composeTodaySession(base);
-    const withExplicitZero = composeTodaySession({ ...base, placementFloor: 0 });
+    const withDefault = composeTodaySession({ courseId: "fr-en", ...base });
+    const withExplicitZero = composeTodaySession({ courseId: "fr-en", ...base, placementFloor: 0 });
     expect(JSON.stringify(withExplicitZero)).toBe(JSON.stringify(withDefault));
   });
 });

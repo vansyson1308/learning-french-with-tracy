@@ -12,7 +12,7 @@ const pool: Word[] = Array.from({ length: 20 }, (_, i) => ({
 describe("spaced-review session builder", () => {
   test("caps the session and produces one select exercise per due word", () => {
     const due = pool.map((w) => w.target).concat(["missing-word"]);
-    const exercises = buildSrsExercises(due, pool, 42);
+    const exercises = buildSrsExercises(due, pool, 42, undefined, "fr-en");
     expect(exercises.length).toBe(REVIEW_SESSION_SIZE);
     for (const e of exercises) {
       expect(e.type).toBe("select");
@@ -25,7 +25,7 @@ describe("spaced-review session builder", () => {
   });
 
   test("the correct option matches the word and distractors never equal it", () => {
-    const exercises = buildSrsExercises(["mot-3"], pool, 7);
+    const exercises = buildSrsExercises(["mot-3"], pool, 7, undefined, "fr-en");
     const e = exercises[0];
     if (e.type !== "select") throw new Error("expected select");
     expect(e.options[e.correct].text).toBe("word-3");
@@ -43,7 +43,7 @@ describe("spaced-review session builder", () => {
       { target: "e", native: "unique-3", emoji: "📧" },
     ];
     for (let seed = 0; seed < 25; seed++) {
-      const [e] = buildSrsExercises(["a"], dupPool, seed);
+      const [e] = buildSrsExercises(["a"], dupPool, seed, undefined, "fr-en");
       if (e.type !== "select") throw new Error("expected select");
       const texts = e.options.map((o) => o.text);
       expect(new Set(texts).size).toBe(texts.length);
@@ -54,7 +54,7 @@ describe("spaced-review session builder", () => {
   test("the correct answer's position is uniformly distributed (was always 0)", () => {
     const counts = [0, 0, 0, 0];
     for (let seed = 0; seed < 200; seed++) {
-      const [e] = buildSrsExercises(["mot-5"], pool, seed);
+      const [e] = buildSrsExercises(["mot-5"], pool, seed, undefined, "fr-en");
       if (e.type !== "select") throw new Error("expected select");
       counts[e.correct]++;
     }
@@ -64,10 +64,10 @@ describe("spaced-review session builder", () => {
   });
 
   test("deterministic for a given seed", () => {
-    const a = buildSrsExercises(["mot-1", "mot-2"], pool, 1234);
-    const b = buildSrsExercises(["mot-1", "mot-2"], pool, 1234);
+    const a = buildSrsExercises(["mot-1", "mot-2"], pool, 1234, undefined, "fr-en");
+    const b = buildSrsExercises(["mot-1", "mot-2"], pool, 1234, undefined, "fr-en");
     expect(a).toEqual(b);
-    const c = buildSrsExercises(["mot-1", "mot-2"], pool, 999);
+    const c = buildSrsExercises(["mot-1", "mot-2"], pool, 999, undefined, "fr-en");
     expect(JSON.stringify(c)).not.toBe(JSON.stringify(a));
   });
 
@@ -76,7 +76,7 @@ describe("spaced-review session builder", () => {
       { target: "x", native: "ex", emoji: "❌" },
       { target: "y", native: "why", emoji: "❓" },
     ];
-    const exercises = buildSrsExercises(["x", "ghost"], tiny, 5);
+    const exercises = buildSrsExercises(["x", "ghost"], tiny, 5, undefined, "fr-en");
     expect(exercises).toHaveLength(1);
     const e = exercises[0];
     if (e.type !== "select") throw new Error("expected select");

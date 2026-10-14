@@ -14,8 +14,8 @@ import { selectCheckpointForm } from "../assessment/checkpoint";
 import { administrationSeed, shuffleScoredOptions } from "../assessment/option-order";
 import { interactionPracticeScenarios } from "../interaction/content";
 import { pickDistractors } from "../learning/distractors";
-import { dueFrenchReviewQueue } from "../learning/engine";
-import { FR_COURSE_ID } from "../learning/ids-fr";
+import { hasCapability } from "../course-profile";
+import { dueReviewQueue } from "../learning/engine";
 import type { FsrsCardState } from "../learning/scheduler";
 import { listenWordClipIndex } from "../reception/content";
 import { speakExerciseForItem, speakProductionIndex, speechItemFor } from "../speech/content";
@@ -133,7 +133,7 @@ export function buildMistakesSessionDefinition(args: {
 }
 
 /**
- * Spaced review. French: FSRS due queue ordered by retrievability, each
+ * Spaced review. FSRS courses: due queue ordered by retrievability, each
  * generated step carrying its explicit card target. Legacy: the untouched
  * dueSrsWords queue with surface-keyed evidence. Seeds derive purely from
  * the queue content, so builds are deterministic per state (Phase-0 rule).
@@ -148,8 +148,8 @@ export function buildReviewSessionDefinition(args: {
   let exercises: Exercise[];
   let evidenceBySurface: Record<string, string>;
 
-  if (courseId === FR_COURSE_ID) {
-    const queue = dueFrenchReviewQueue(course.cards, args.now);
+  if (hasCapability(courseId, "fsrs")) {
+    const queue = dueReviewQueue(courseId, course.cards, args.now);
     const seed = hashSeed(queue.map((d) => `${d.surface}@${d.dueAt}`).join("|"));
     exercises = buildSrsExercises(
       queue.map((d) => d.surface),
@@ -183,7 +183,7 @@ export function buildReviewSessionDefinition(args: {
     completion: "practice",
     evidenceSource: "review",
     trackMistakes: false,
-    allowUndo: courseId === FR_COURSE_ID,
+    allowUndo: hasCapability(courseId, "fsrs"),
   };
 }
 
@@ -196,12 +196,14 @@ export function buildReviewSessionDefinition(args: {
  * stays due too.
  */
 export function buildListeningReviewSessionDefinition(args: {
+  courseId: string;
   course: Pick<CourseProgress, "cards">;
   pool: Word[];
   now?: number;
 }): SessionDefinition {
-  const clipIndex = listenWordClipIndex();
-  const queue = dueFrenchReviewQueue(args.course.cards, args.now, "listen").filter(
+  const { courseId } = args;
+  const clipIndex = listenWordClipIndex(courseId);
+  const queue = dueReviewQueue(courseId, args.course.cards, args.now, "listen").filter(
     (d) => clipIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
   );
   const wordBySurface = new Map(args.pool.map((w) => [w.target, w]));
@@ -213,7 +215,7 @@ export function buildListeningReviewSessionDefinition(args: {
     const word = wordBySurface.get(due.surface);
     if (!word) continue;
     const distractors = pickDistractors({
-      courseId: FR_COURSE_ID,
+      courseId,
       word,
       pool: args.pool,
       rng,
@@ -242,7 +244,7 @@ export function buildListeningReviewSessionDefinition(args: {
 
   return {
     kind: "review",
-    courseId: FR_COURSE_ID,
+    courseId,
     lessonId: "srs-listening",
     steps,
     completion: "practice",
@@ -254,11 +256,12 @@ export function buildListeningReviewSessionDefinition(args: {
 
 /** Due listen cards that are actually sessionable (clip asset bundled). */
 export function dueListeningReviewCount(
+  courseId: string,
   cards: Record<string, FsrsCardState> | undefined,
   now?: number
 ): number {
-  const clipIndex = listenWordClipIndex();
-  return dueFrenchReviewQueue(cards, now, "listen").filter(
+  const clipIndex = listenWordClipIndex(courseId);
+  return dueReviewQueue(courseId, cards, now, "listen").filter(
     (d) => clipIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
   ).length;
 }
@@ -272,18 +275,20 @@ export function dueListeningReviewCount(
  * unassisted, recognized production.
  */
 export function buildSpeakingReviewSessionDefinition(args: {
+  courseId: string;
   course: Pick<CourseProgress, "cards">;
   now?: number;
 }): SessionDefinition {
-  const itemIndex = speakProductionIndex();
-  const queue = dueFrenchReviewQueue(args.course.cards, args.now, "speak").filter(
+  const { courseId } = args;
+  const itemIndex = speakProductionIndex(courseId);
+  const queue = dueReviewQueue(courseId, args.course.cards, args.now, "speak").filter(
     (d) => itemIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
   );
 
   const steps: ExerciseStep[] = [];
   for (const due of queue) {
     const lexemeId = due.key.slice(0, due.key.lastIndexOf("|"));
-    const item = speechItemFor(itemIndex[lexemeId]);
+    const item = speechItemFor(courseId, itemIndex[lexemeId]);
     if (!item) continue;
     const exercise = speakExerciseForItem(item, `speak-review-${lexemeId}`);
     steps.push({
@@ -296,7 +301,7 @@ export function buildSpeakingReviewSessionDefinition(args: {
 
   return {
     kind: "review",
-    courseId: FR_COURSE_ID,
+    courseId,
     lessonId: "srs-speaking",
     steps,
     completion: "practice",
@@ -308,11 +313,12 @@ export function buildSpeakingReviewSessionDefinition(args: {
 
 /** Due speak cards split into sessionable / total (backlog honesty, §16). */
 export function dueSpeakingReviewCounts(
+  courseId: string,
   cards: Record<string, FsrsCardState> | undefined,
   now?: number
 ): { sessionable: number; total: number } {
-  const itemIndex = speakProductionIndex();
-  const due = dueFrenchReviewQueue(cards, now, "speak");
+  const itemIndex = speakProductionIndex(courseId);
+  const due = dueReviewQueue(courseId, cards, now, "speak");
   return {
     sessionable: due.filter(
       (d) => itemIndex[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
@@ -333,6 +339,7 @@ export function dueSpeakingReviewCounts(
  * completion. Deterministic per seed key so a day's session is stable.
  */
 export function buildWritingPracticeSessionDefinition(args: {
+  courseId: string;
   pack: Pack;
   seedKey: string;
   count?: number;
@@ -351,7 +358,7 @@ export function buildWritingPracticeSessionDefinition(args: {
   const chosen = shuffled.slice(0, Math.max(1, args.count ?? 4));
   return {
     kind: "review",
-    courseId: FR_COURSE_ID,
+    courseId: args.courseId,
     lessonId: "writing-practice",
     steps: chosen.map((exercise) => ({
       type: "exercise",
@@ -374,9 +381,10 @@ export function buildWritingPracticeSessionDefinition(args: {
  * lexical evidence flows (§35).
  */
 export function buildConversationPracticeSessionDefinition(args: {
+  courseId: string;
   seedKey: string;
 }): SessionDefinition {
-  const scenarios = interactionPracticeScenarios();
+  const scenarios = interactionPracticeScenarios(args.courseId);
   const steps: SessionStep[] = [];
   if (scenarios.length > 0) {
     const scenario = scenarios[hashSeed(`conversation:${args.seedKey}`) % scenarios.length];
@@ -392,7 +400,7 @@ export function buildConversationPracticeSessionDefinition(args: {
   }
   return {
     kind: "review",
-    courseId: FR_COURSE_ID,
+    courseId: args.courseId,
     lessonId: "conversation",
     steps,
     completion: "practice",
@@ -437,6 +445,7 @@ type CompiledCheckpoint = {
  * forms is its own single "full" form (count irrelevant).
  */
 export function buildCheckpointSessionDefinition(
+  courseId: string,
   checkpoint: CompiledCheckpoint,
   priorAttemptCount = 0
 ): SessionDefinition {
@@ -462,7 +471,7 @@ export function buildCheckpointSessionDefinition(
   }));
   return {
     kind: "checkpoint",
-    courseId: "fr-en",
+    courseId,
     lessonId: checkpoint.id,
     steps,
     completion: "checkpoint",
@@ -508,6 +517,7 @@ type CompiledPlacementStageSource = {
  * result storage; completion "placement" is a structural no-op.
  */
 export function buildPlacementStageSessionDefinition(
+  courseId: string,
   stage: CompiledPlacementStageSource,
   /**
    * Identifies THIS administration of the diagnostic (Phase 10 Gate 3):
@@ -529,7 +539,7 @@ export function buildPlacementStageSessionDefinition(
   );
   return {
     kind: "placement",
-    courseId: "fr-en",
+    courseId,
     lessonId: `placement:${stage.id}`,
     steps,
     completion: "placement",

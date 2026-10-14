@@ -6,7 +6,7 @@
  */
 import { describe, test } from "bun:test";
 
-import { checkpointFor } from "../../assessment/content";
+import { checkpointFor, placementContent } from "../../assessment/content";
 import { listenWordClipIndex } from "../../reception/content";
 import { fsrsScheduler } from "../../learning/fsrs-adapter";
 import type { FsrsCardState } from "../../learning/scheduler";
@@ -23,7 +23,6 @@ import {
 } from "../../session/sources";
 import type { SessionDefinition } from "../../session/types";
 import { speakExerciseIndex } from "../../speech/content";
-import placementJson from "../../../content/assessment/fr-placement.json";
 import {
   DAY_MS,
   GOLDEN_DAY,
@@ -97,7 +96,7 @@ describe("session goldens (fr-en)", () => {
   });
 
   test("srs review with a synthetic due set (6 recognize cards)", () => {
-    const ids = Object.keys(listenWordClipIndex()).slice(0, 6);
+    const ids = Object.keys(listenWordClipIndex("fr-en")).slice(0, 6);
     pin(
       "srs-synthetic",
       buildReviewSessionDefinition({
@@ -110,34 +109,34 @@ describe("session goldens (fr-en)", () => {
   });
 
   test("srs-listening over due listen cards with bundled clips", () => {
-    const ids = Object.keys(listenWordClipIndex()).slice(0, 5);
+    const ids = Object.keys(listenWordClipIndex("fr-en")).slice(0, 5);
     pin(
       "srs-listening",
-      buildListeningReviewSessionDefinition({ course: { cards: dueCards(ids, "listen") }, pool: allFrWords(), now: NOW_MS })
+      buildListeningReviewSessionDefinition({ courseId: "fr-en", course: { cards: dueCards(ids, "listen") }, pool: allFrWords(), now: NOW_MS })
     );
   });
 
   test("srs-speaking over due speak cards with authored probes", () => {
-    const ids = Object.keys(speakExerciseIndex()).slice(0, 5);
-    pin("srs-speaking", buildSpeakingReviewSessionDefinition({ course: { cards: dueCards(ids, "speak") }, now: NOW_MS }));
+    const ids = Object.keys(speakExerciseIndex("fr-en")).slice(0, 5);
+    pin("srs-speaking", buildSpeakingReviewSessionDefinition({ courseId: "fr-en", course: { cards: dueCards(ids, "speak") }, now: NOW_MS }));
   });
 
   test("writing-practice for a fixed day", () => {
-    pin("writing-practice", buildWritingPracticeSessionDefinition({ pack: frPack, seedKey: GOLDEN_DAY }));
+    pin("writing-practice", buildWritingPracticeSessionDefinition({ courseId: "fr-en", pack: frPack, seedKey: GOLDEN_DAY }));
   });
 
   test("conversation practice for a fixed day", () => {
-    pin("conversation", buildConversationPracticeSessionDefinition({ seedKey: GOLDEN_DAY }));
+    pin("conversation", buildConversationPracticeSessionDefinition({ courseId: "fr-en", seedKey: GOLDEN_DAY }));
   });
 
   test("section-3 checkpoint, first and second administration", () => {
-    const cp = checkpointFor("fr.checkpoint.section-3")!;
-    pin("checkpoint-section-3-attempt0", buildCheckpointSessionDefinition(cp, 0));
-    pin("checkpoint-section-3-attempt1", buildCheckpointSessionDefinition(cp, 1));
+    const cp = checkpointFor("fr-en", "fr.checkpoint.section-3")!;
+    pin("checkpoint-section-3-attempt0", buildCheckpointSessionDefinition("fr-en", cp, 0));
+    pin("checkpoint-section-3-attempt1", buildCheckpointSessionDefinition("fr-en", cp, 1));
   });
 
   test("placement stage 1 for a fixed run seed", () => {
-    const stage = (placementJson as { stages: Parameters<typeof buildPlacementStageSessionDefinition>[0][] }).stages[0];
-    pin("placement-stage-1", buildPlacementStageSessionDefinition(stage, "golden-run"), true);
+    const stage = placementContent("fr-en").stages[0];
+    pin("placement-stage-1", buildPlacementStageSessionDefinition("fr-en", stage, "golden-run"), true);
   });
 });

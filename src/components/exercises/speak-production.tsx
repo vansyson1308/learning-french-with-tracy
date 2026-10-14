@@ -1,6 +1,6 @@
 /**
  * Elicited spoken PRODUCTION (P8 §11/§13): a meaning-only cue — English
- * instruction, optional emoji, optional facts — and a recorder. The French
+ * instruction, optional emoji, optional facts — and a recorder. The target
  * target is NEVER visible before the attempt (learning may reveal it after
  * N non-matching recordings, which marks later attempts assisted); the
  * model answer plays only AFTER grading, and only in learning mode.
@@ -28,12 +28,16 @@ import { makeThemedStyles, radius } from "@/lib/theme";
 import type { SpeakProductionExercise } from "@/lib/types";
 
 export function SpeakProduction({
+  courseId,
+  targetLanguage,
   exercise,
   answer,
   status,
   speech,
   onAnswer,
 }: {
+  courseId: string;
+  targetLanguage: string;
   exercise: SpeakProductionExercise;
   answer: Answer;
   status: "none" | "correct" | "wrong";
@@ -51,7 +55,7 @@ export function SpeakProduction({
 
   const player = useListeningPlayer(
     exercise.modelClipId !== null && modelPlayable
-      ? clipAudioSource(exercise.modelClipId)
+      ? clipAudioSource(courseId, exercise.modelClipId)
       : null,
     { maxPlays: null, allowSlow: true }
   );
@@ -59,19 +63,19 @@ export function SpeakProduction({
   const heard = isSpokenAnswer(answer) ? answer.finalTranscript : null;
   const hint =
     heard !== null && !answered && !speech.scored
-      ? checkAnswer(exercise, answer)
+      ? checkAnswer(exercise, answer, courseId)
         ? "Sounds right — check to continue!"
         : "Not quite. Try again, or check what you have."
       : null;
 
   const onFinal = (value: SpokenAnswer) => {
-    if (!checkAnswer(exercise, value)) setWrongFinals((count) => count + 1);
+    if (!checkAnswer(exercise, value, courseId)) setWrongFinals((count) => count + 1);
     onAnswer(value);
   };
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.title}>Say it in French</Text>
+      <Text style={styles.title}>Say it in {targetLanguage}</Text>
       <View style={styles.cueCard} testID="production-cue">
         <Text style={styles.instruction}>{exercise.instruction}</Text>
         {exercise.cueEmoji ? <Text style={styles.cueEmoji}>{exercise.cueEmoji}</Text> : null}
@@ -89,6 +93,7 @@ export function SpeakProduction({
       ) : null}
       {modelPlayable ? <ListeningPlayerView api={player} /> : null}
       <SpeakRecordControl
+        targetLanguage={targetLanguage}
         scored={speech.scored}
         session={speech.session}
         mode={attemptMode(exercise, ctx)}

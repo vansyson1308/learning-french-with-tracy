@@ -15,8 +15,8 @@ import type { SpokenAnswer } from "@/lib/grading";
 import {
   gateFor,
   gateMessage,
-  NETWORK_DISCLOSURE_TEXT,
   networkDisclosureRequired,
+  networkDisclosureText,
   outcomeNotice,
   type SpeakStepContext,
 } from "@/lib/speech/step-policy";
@@ -52,6 +52,7 @@ function formatElapsed(ms: number): string {
 }
 
 export function SpeakRecordControl({
+  targetLanguage,
   scored,
   session,
   mode,
@@ -68,6 +69,8 @@ export function SpeakRecordControl({
   onSkip,
   onBeforeRecord,
 }: {
+  /** Display name of the target language (copy only). */
+  targetLanguage: string;
   scored: boolean;
   session: SpeechSessionApi;
   mode: "practice" | "scored";
@@ -144,6 +147,7 @@ export function SpeakRecordControl({
     setAttemptsUsed((used) => used + 1);
     onBeforeRecord?.();
     attempt.start({
+      locale: session.locale,
       mode,
       contextualStrings,
       persistRecording: !scored && (session.capability?.recordingPersistenceAvailable ?? false),
@@ -183,7 +187,7 @@ export function SpeakRecordControl({
     return (
       <View style={styles.wrap}>
         <Text style={styles.rationale}>
-          The microphone is used only while you practice speaking French, to hear
+          The microphone is used only while you practice speaking {targetLanguage}, to hear
           your answer. Nothing is recorded until you tap the button.
         </Text>
         <DuoButton label="Allow microphone" onPress={() => void session.request()} />
@@ -195,7 +199,7 @@ export function SpeakRecordControl({
   if (gate.kind === "blocked") {
     return (
       <View style={styles.wrap} testID="speak-blocked">
-        <Text style={styles.muted}>{gateMessage(gate)}</Text>
+        <Text style={styles.muted}>{gateMessage(gate, targetLanguage)}</Text>
         {gate.reason === "permission" && Platform.OS !== "web" ? (
           <DuoButton
             label="Open Settings"
@@ -214,7 +218,7 @@ export function SpeakRecordControl({
   if (needsNetworkDisclosure) {
     return (
       <View style={styles.wrap} testID="speech-network-notice">
-        <Text style={styles.rationale}>{NETWORK_DISCLOSURE_TEXT}</Text>
+        <Text style={styles.rationale}>{networkDisclosureText(targetLanguage)}</Text>
         <DuoButton label="Got it" onPress={acknowledgeSpeechNotice} />
         {skipLink}
       </View>

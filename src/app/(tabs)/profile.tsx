@@ -13,6 +13,7 @@ import {
   prepareImport,
 } from "@/lib/backup";
 import { useCourseContent } from "@/lib/content";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import {
   currentStreak,
   dailyXpToday,
@@ -148,17 +149,17 @@ export default function ProfileScreen() {
           ))}
         </View>
 
-        {activeCourseId === "fr-en" ? (
+        {hasCapability(activeCourseId, "goals") ? (
           <Pressable
             onPress={() => router.push("/goals")}
             accessibilityRole="button"
-            accessibilityLabel="Your French goals"
+            accessibilityLabel={`Your ${courseProfile(activeCourseId).targetLanguage} goals`}
             style={styles.goalsCard}
             testID="goals-entry"
           >
             <Ionicons name="flag-outline" size={22} color={colors.greenDark} />
             <View style={styles.dataRowText}>
-              <Text style={styles.dataRowTitle}>Your French goals</Text>
+              <Text style={styles.dataRowTitle}>Your {courseProfile(activeCourseId).targetLanguage} goals</Text>
               <Text style={styles.settingsHint}>
                 Can-do goals, what&apos;s been checked, and your starting point.
               </Text>

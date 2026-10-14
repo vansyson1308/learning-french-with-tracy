@@ -23,8 +23,8 @@ import { buildPlacementStageSessionDefinition } from "../session/sources";
 import type { ExerciseStep } from "../session/types";
 import { useProgress } from "../store";
 
-const PLAN = placementEnginePlan();
-const CONTENT = placementContent();
+const PLAN = placementEnginePlan("fr-en");
+const CONTENT = placementContent("fr-en");
 
 /** All items of the given stages answered correctly. */
 function allCorrect(...stageIndexes: number[]): PlacementAnswers {
@@ -313,7 +313,7 @@ describe('"I don\'t know" counts once (§117)', () => {
 
 describe("placement session definition (§104-108, §118)", () => {
   test("stage sessions are minimal-feedback scored assessments with no memory hooks", () => {
-    const def = buildPlacementStageSessionDefinition(CONTENT.stages[0]);
+    const def = buildPlacementStageSessionDefinition("fr-en", CONTENT.stages[0]);
     expect(def.kind).toBe("placement");
     expect(def.completion).toBe("placement");
     expect(def.retryPolicy).toBe("none");
