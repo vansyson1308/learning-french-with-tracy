@@ -1,0 +1,116 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "zh",
+  "recordedAt": "2026-10-14",
+  "artifacts": {
+    "kaikki-en-zh.jsonl": {
+      "status": "retrieved",
+      "sha256": "d62e29d8d435511d81e6398a421233a59e74f340cd1c47944e91a6d3b3b2bfaf",
+      "bytes": 1206615975,
+      "lines": 327297,
+      "samples": [
+        "{\"pos\": \"character\", \"redirects\": [\"馬\"], \"etymology_text\": \"Simplified from 馬, following the cursive script form\", \"etymology_links\": [[\"馬\", \"馬\"]], \"word\": \"马\", \"lang\": \"Chinese\", \"lang_code\": \"zh\", \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"en-马-zh-character-47DEQpj8\", \"categories\": [{\"name\": \"CJKV radicals\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}]}]}",
+        "{\"word\": \"MD\", \"lang\": \"Chinese\", \"lang_code\": \"zh\", \"redirects\": [\"媽的\"], \"pos\": \"soft-redirect\", \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"en-MD-zh-soft-redirect-47DEQpj8\"}]}"
+      ]
+    },
+    "kaikki-vi-zh.jsonl": {
+      "status": "retrieved",
+      "sha256": "250610f5bf0f0178f1292a95b1de55d01bd382fba2e7e6056f7fda9c91bbe08c",
+      "bytes": 14319549,
+      "lines": 3891,
+      "samples": [
+        "{\"word\": \"聰明\", \"lang_code\": \"zh\", \"lang\": \"Tiếng Trung Quốc\", \"pos\": \"adj\", \"pos_title\": \"Tính từ\", \"categories\": [{\"name\": \"Mục từ dùng cấu trúc mục từ Wiktionary cũ\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}, {\"name\": \"Mục từ tiếng Trung Quốc\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}], \"senses\": [{\"glosses\": [\"Thông minh, sáng dạ.\"], \"id\": \"vi-聰明-zh-adj-YwOTpTM5\"}]}"
+      ]
+    },
+    "frequencywords-zh.txt": {
+      "status": "retrieved",
+      "sha256": "0a34556e278008539273e07bda10baca9e2b9637cff2ff3ca9cd93782571abbd",
+      "bytes": 8307909,
+      "lines": 766612,
+      "samples": [
+        "的 3957141",
+        "我 3669472"
+      ]
+    },
+    "wordfreq-zh.csv": {
+      "status": "retrieved",
+      "sha256": "d9a8ebe690d65ce6e43df4f02296dc6a50a17aa6b977e1f6b1c695432d15c511",
+      "bytes": 629359,
+      "lines": 50001,
+      "samples": [
+        "word,zipf",
+        "的,7.79"
+      ]
+    },
+    "hsk30.csv": {
+      "status": "retrieved",
+      "sha256": "8c2b73f74776240bcf154624730fc6fb2c42c254d5c5d0f88943878b8e575b9b",
+      "bytes": 948891,
+      "lines": 11093,
+      "samples": [
+        "ID,Simplified,Traditional,Pinyin,POS,Level,WebNo,WebPinyin,OCR,Variants,CEDICT",
+        "L1-0001,爱,愛,ài,V,1,18,ài,爱,,愛|爱[ai4]"
+      ]
+    },
+    "cedict.txt": {
+      "status": "retrieved",
+      "sha256": "48c5db26168dc2234d81d847dfec96d44cd8127da21181771812537f5c24fdf5",
+      "bytes": 9864401,
+      "lines": 125301,
+      "samples": [
+        "# CC-CEDICT",
+        "# Community maintained free Chinese-English dictionary."
+      ]
+    },
+    "tatoeba-zh-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "a702ab580fc0513c565da383f373e788b2ddde1cf57d4c3bd85059f48a066a90",
+      "bytes": 8641879,
+      "lines": 89179,
+      "samples": [
+        "1\tcmn\t我們試試看！\tsysko\t\\N\t0000-00-00 00:00:00",
+        "2\tcmn\t我该去睡觉了。\tfucongcong\t\\N\t0000-00-00 00:00:00"
+      ]
+    },
+    "tatoeba-zh-links-en.tsv": {
+      "status": "retrieved",
+      "sha256": "9da66efaa5340a745787e0528ddd7eb36881fe3947182c937751e7a3256027cb",
+      "bytes": 1192113,
+      "lines": 78288,
+      "samples": [
+        "1\t413789",
+        "1\t414905"
+      ]
+    },
+    "tatoeba-zh-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "9c6940c249e13a5668a09c47c03c4035ea30f4d944c43011c45bf5917da5944b",
+      "bytes": 12364,
+      "lines": 798,
+      "samples": [
+        "1\t1585466",
+        "2\t5662"
+      ]
+    },
+    "tatoeba-eng-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+      "bytes": 198754998,
+      "lines": 2038719,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+      "bytes": 3739296,
+      "lines": 33223,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}

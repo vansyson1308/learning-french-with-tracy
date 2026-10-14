@@ -1,0 +1,8466 @@
+{
+  "generator": "scripts/lib/lexicon-etl/derive.ts",
+  "sources": [
+    {
+      "id": "cedict",
+      "sha256": "48c5db26168dc2234d81d847dfec96d44cd8127da21181771812537f5c24fdf5",
+      "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+      "retrievedAt": "2026-10-14"
+    },
+    {
+      "id": "kaikki-en",
+      "sha256": "d62e29d8d435511d81e6398a421233a59e74f340cd1c47944e91a6d3b3b2bfaf",
+      "url": "https://kaikki.org/dictionary/Chinese/kaikki.org-dictionary-Chinese.jsonl",
+      "retrievedAt": "2026-10-14"
+    }
+  ],
+  "readings": {
+    "的士|noun": {
+      "pinyin": "dī shì"
+    },
+    "知道|verb": {
+      "pinyin": "zhīdào"
+    },
+    "先生|noun": {
+      "pinyin": "xiānshēng"
+    },
+    "不是|verb": {
+      "pinyin": "bùshì"
+    },
+    "不要|verb": {
+      "pinyin": "bùyào"
+    },
+    "不是|noun": {
+      "pinyin": "bùshì"
+    },
+    "可以|adjective": {
+      "pinyin": "kěyǐ"
+    },
+    "可以|verb": {
+      "pinyin": "kěyǐ"
+    },
+    "真的|adverb": {
+      "pinyin": "zhēn de"
+    },
+    "多士|noun": {
+      "pinyin": "duō shì"
+    },
+    "不能|verb": {
+      "pinyin": "bùnéng"
+    },
+    "孩子|noun": {
+      "pinyin": "háizi"
+    },
+    "看到|verb": {
+      "pinyin": "kàn dào"
+    },
+    "一下|adverb": {
+      "pinyin": "yīxià"
+    },
+    "太太|noun": {
+      "pinyin": "tàitai"
+    },
+    "需要|verb": {
+      "pinyin": "xū yào"
+    },
+    "朋友|noun": {
+      "pinyin": "péngyou"
+    },
+    "今天|noun": {
+      "pinyin": "jīntiān"
+    },
+    "事情|noun": {
+      "pinyin": "shìqing"
+    },
+    "一直|adverb": {
+      "pinyin": "yī zhí"
+    },
+    "不想|verb": {
+      "pinyin": "bù xiǎng"
+    },
+    "更新|verb": {
+      "pinyin": "gēng xīn"
+    },
+    "爸爸|noun": {
+      "pinyin": "bàba"
+    },
+    "相信|verb": {
+      "pinyin": "xiāngxìn"
+    },
+    "大學|noun": {
+      "pinyin": "dàxué"
+    },
+    "意思|noun": {
+      "pinyin": "yìsi"
+    },
+    "地方|noun": {
+      "pinyin": "dìfang"
+    },
+    "女人|noun": {
+      "pinyin": "nǚrén"
+    },
+    "中文|noun": {
+      "pinyin": "Zhōngwén"
+    },
+    "得到|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "dé dào"
+    },
+    "任何|adjective": {
+      "pinyin": "rèn hé"
+    },
+    "想要|verb": {
+      "pinyin": "xiǎng yào"
+    },
+    "需要|noun": {
+      "pinyin": "xū yào"
+    },
+    "看看|verb": {
+      "pinyin": "kàn kan"
+    },
+    "一定|adverb": {
+      "pinyin": "yī dìng"
+    },
+    "之前|noun": {
+      "pinyin": "zhīqián"
+    },
+    "工作|noun": {
+      "pinyin": "gōngzuò"
+    },
+    "不用|adverb": {
+      "pinyin": "bù yòng"
+    },
+    "名字|noun": {
+      "pinyin": "míngzi"
+    },
+    "可能|adverb": {
+      "pinyin": "kěnéng"
+    },
+    "可能|noun": {
+      "pinyin": "kěnéng"
+    },
+    "明白|verb": {
+      "pinyin": "míngbai"
+    },
+    "新疆|noun": {
+      "pinyin": "Xīn jiāng"
+    },
+    "希望|verb": {
+      "pinyin": "xī wàng"
+    },
+    "工作|verb": {
+      "pinyin": "gōngzuò"
+    },
+    "地區|noun": {
+      "pinyin": "dìqū"
+    },
+    "如何|adverb": {
+      "pinyin": "rú hé"
+    },
+    "到底|adverb": {
+      "pinyin": "dào dǐ"
+    },
+    "小姐|noun": {
+      "pinyin": "xiǎo jie"
+    },
+    "上帝|noun": {
+      "pinyin": "Shàng dì"
+    },
+    "正在|adverb": {
+      "pinyin": "zhèng zài"
+    },
+    "生活|noun": {
+      "pinyin": "shēnghuó"
+    },
+    "男人|noun": {
+      "pinyin": "nánrén"
+    },
+    "明天|noun": {
+      "pinyin": "míngtiān"
+    },
+    "好像|verb": {
+      "pinyin": "hǎo xiàng"
+    },
+    "今晚|noun": {
+      "pinyin": "jīn wǎn"
+    },
+    "回家|verb": {
+      "pinyin": "huíjiā"
+    },
+    "希望|noun": {
+      "pinyin": "xī wàng"
+    },
+    "世界|noun": {
+      "pinyin": "shìjiè"
+    },
+    "天干|noun": {
+      "pinyin": "tiān gān"
+    },
+    "一次|adjective": {
+      "pinyin": "yī cì"
+    },
+    "女孩|noun": {
+      "pinyin": "nǚ hái"
+    },
+    "一些|noun": {
+      "pinyin": "yī xiē"
+    },
+    "以前|noun": {
+      "pinyin": "yǐqián"
+    },
+    "回去|verb": {
+      "pinyin": "huí qu"
+    },
+    "非常|adjective": {
+      "pinyin": "fēicháng"
+    },
+    "其他|adjective": {
+      "pinyin": "qí tā"
+    },
+    "家伙|noun": {
+      "pinyin": "jiā huo"
+    },
+    "看看|adverb": {
+      "pinyin": "kàn kan"
+    },
+    "中國|noun": {
+      "pinyin": "Zhōngguó"
+    },
+    "早上|noun": {
+      "pinyin": "zǎoshang"
+    },
+    "穿越|verb": {
+      "pinyin": "chuān yuè"
+    },
+    "一定|adjective": {
+      "pinyin": "yī dìng"
+    },
+    "晚上|noun": {
+      "pinyin": "wǎnshang"
+    },
+    "如此|adverb": {
+      "pinyin": "rú cǐ"
+    },
+    "了解|verb": {
+      "pinyin": "liǎo jiě"
+    },
+    "所有|adjective": {
+      "pinyin": "suǒ yǒu"
+    },
+    "所有|verb": {
+      "pinyin": "suǒ yǒu"
+    },
+    "非常|adverb": {
+      "pinyin": "fēicháng"
+    },
+    "公司|noun": {
+      "pinyin": "gōngsī"
+    },
+    "警察|noun": {
+      "pinyin": "jǐngchá"
+    },
+    "房子|noun": {
+      "pinyin": "fángzi"
+    },
+    "明白|adjective": {
+      "pinyin": "míngbai"
+    },
+    "混蛋|noun": {
+      "pinyin": "hún dàn"
+    },
+    "唯一|adjective": {
+      "pinyin": "wéi yī"
+    },
+    "真的|adjective": {
+      "pinyin": "zhēn de"
+    },
+    "漂亮|adjective": {
+      "pinyin": "piàoliang"
+    },
+    "夫人|noun": {
+      "pinyin": "fū ren"
+    },
+    "就要|adverb": {
+      "pinyin": "jiù yào"
+    },
+    "故事|noun": {
+      "pinyin": "gù shì"
+    },
+    "地方|adjective": {
+      "pinyin": "dìfāng"
+    },
+    "所有|noun": {
+      "pinyin": "suǒ yǒu"
+    },
+    "肯定|adverb": {
+      "pinyin": "kěn dìng"
+    },
+    "接受|verb": {
+      "pinyin": "jiē shòu"
+    },
+    "最好|adjective": {
+      "pinyin": "zuì hǎo"
+    },
+    "最好|adverb": {
+      "pinyin": "zuì hǎo"
+    },
+    "妻子|noun": {
+      "pinyin": "qīzi"
+    },
+    "出去|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "chūqù"
+    },
+    "失去|verb": {
+      "pinyin": "shī qù"
+    },
+    "回到|verb": {
+      "pinyin": "huí dào"
+    },
+    "一些|adverb": {
+      "pinyin": "yī xiē"
+    },
+    "生命|noun": {
+      "pinyin": "shēngmìng"
+    },
+    "完全|adverb": {
+      "pinyin": "wánquán"
+    },
+    "女士|noun": {
+      "pinyin": "nǚ shì"
+    },
+    "原因|noun": {
+      "pinyin": "yuán yīn"
+    },
+    "至少|adverb": {
+      "pinyin": "zhì shǎo"
+    },
+    "不行|adjective": {
+      "pinyin": "bù xíng"
+    },
+    "身上|noun": {
+      "pinyin": "shēn shang"
+    },
+    "衣服|noun": {
+      "pinyin": "yīfu"
+    },
+    "外面|noun": {
+      "pinyin": "wàimiàn"
+    },
+    "丈夫|noun": {
+      "pinyin": "zhàngfu"
+    },
+    "害怕|verb": {
+      "pinyin": "hàipà"
+    },
+    "月餅|noun": {
+      "pinyin": "yuèbǐng"
+    },
+    "月曜日|noun": {
+      "pinyin": "Yuè yào rì"
+    },
+    "才能|noun": {
+      "pinyin": "cái néng"
+    },
+    "多少|adjective": {
+      "pinyin": "duōshao"
+    },
+    "可能|verb": {
+      "pinyin": "kěnéng"
+    },
+    "照片|noun": {
+      "pinyin": "zhào piàn"
+    },
+    "完成|verb": {
+      "pinyin": "wán chéng"
+    },
+    "方式|noun": {
+      "pinyin": "fāng shì"
+    },
+    "第一次|noun": {
+      "pinyin": "dì yī cì"
+    },
+    "只能|adverb": {
+      "pinyin": "zhǐ néng"
+    },
+    "下去|verb": {
+      "pinyin": "xiàqù"
+    },
+    "眼睛|noun": {
+      "pinyin": "yǎnjing"
+    },
+    "一次|noun": {
+      "pinyin": "yī cì"
+    },
+    "感到|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "gǎn dào"
+    },
+    "不了|verb": {
+      "pinyin": "bùliǎo"
+    },
+    "想要|adjective": {
+      "pinyin": "xiǎng yào"
+    },
+    "容易|adjective": {
+      "pinyin": "róngyì"
+    },
+    "有趣|adjective": {
+      "pinyin": "yǒu qù"
+    },
+    "不行|adverb": {
+      "pinyin": "bù xíng"
+    },
+    "留下|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "liú xià"
+    },
+    "同意|verb": {
+      "pinyin": "tóng yì"
+    },
+    "不好|adjective": {
+      "pinyin": "bùhǎo"
+    },
+    "死亡|verb": {
+      "pinyin": "sǐ wáng"
+    },
+    "上面|noun": {
+      "pinyin": "shàng miàn"
+    },
+    "理解|verb": {
+      "pinyin": "lǐ jiě"
+    },
+    "保持|verb": {
+      "pinyin": "bǎo chí"
+    },
+    "注意|verb": {
+      "pinyin": "zhù yì"
+    },
+    "老婆|noun": {
+      "pinyin": "lǎopo"
+    },
+    "多久|adverb": {
+      "pinyin": "duō jiǔ"
+    },
+    "怪物|noun": {
+      "pinyin": "guàiwu"
+    },
+    "時候|noun": {
+      "pinyin": "shíhou"
+    },
+    "所有人|noun": {
+      "pinyin": "suǒ yǒu rén"
+    },
+    "日曜日|noun": {
+      "pinyin": "Rì yào rì"
+    },
+    "抓住|verb": {
+      "pinyin": "zhuā zhù"
+    },
+    "這麼|adverb": {
+      "pinyin": "zhème"
+    },
+    "昨晚|noun": {
+      "pinyin": "zuó wǎn"
+    },
+    "哥哥|noun": {
+      "pinyin": "gēge"
+    },
+    "休息|verb": {
+      "pinyin": "xiūxi"
+    },
+    "其中|adverb": {
+      "pinyin": "qí zhōng"
+    },
+    "每天|adverb": {
+      "pinyin": "měitiān"
+    },
+    "控制|verb": {
+      "pinyin": "kòng zhì"
+    },
+    "小孩|noun": {
+      "pinyin": "xiǎo hái"
+    },
+    "停止|verb": {
+      "pinyin": "tíng zhǐ"
+    },
+    "真正|adverb": {
+      "pinyin": "zhēn zhèng"
+    },
+    "告訴|verb": {
+      "pinyin": "gàosu"
+    },
+    "糟糕|adjective": {
+      "pinyin": "zāo gāo"
+    },
+    "武器|noun": {
+      "pinyin": "wǔ qì"
+    },
+    "家人|noun": {
+      "pinyin": "jiā rén"
+    },
+    "坐下|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "zuòxià"
+    },
+    "直接|adjective": {
+      "pinyin": "zhí jiē"
+    },
+    "方法|noun": {
+      "pinyin": "fāng fǎ"
+    },
+    "好好|adverb": {
+      "pinyin": "hǎo hǎo"
+    },
+    "大人|noun": {
+      "pinyin": "dàrén"
+    },
+    "拿到|verb": {
+      "pinyin": "ná dào"
+    },
+    "博士|noun": {
+      "pinyin": "bó shì"
+    },
+    "突然|adverb": {
+      "pinyin": "tū rán"
+    },
+    "想到|verb": {
+      "pinyin": "xiǎng dào"
+    },
+    "等待|verb": {
+      "pinyin": "děng dài"
+    },
+    "安全|adjective": {
+      "pinyin": "ān quán"
+    },
+    "安全|noun": {
+      "pinyin": "ān quán"
+    },
+    "父母|noun": {
+      "pinyin": "fùmǔ"
+    },
+    "想法|noun": {
+      "pinyin": "xiǎng fǎ"
+    },
+    "打算|verb": {
+      "pinyin": "dǎ suàn"
+    },
+    "阻止|verb": {
+      "pinyin": "zǔ zhǐ"
+    },
+    "消失|verb": {
+      "pinyin": "xiāo shī"
+    },
+    "似乎|adverb": {
+      "pinyin": "sì hū"
+    },
+    "家庭|noun": {
+      "pinyin": "jiā tíng"
+    },
+    "城市|noun": {
+      "pinyin": "chéngshì"
+    },
+    "力量|noun": {
+      "pinyin": "lìliàng"
+    },
+    "男孩|noun": {
+      "pinyin": "nán hái"
+    },
+    "完全|adjective": {
+      "pinyin": "wánquán"
+    },
+    "姐姐|noun": {
+      "pinyin": "jiějie"
+    },
+    "放下|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "fàng xià"
+    },
+    "昨天|noun": {
+      "pinyin": "zuótiān"
+    },
+    "完美|adjective": {
+      "pinyin": "wán měi"
+    },
+    "正常|adjective": {
+      "pinyin": "zhèng cháng"
+    },
+    "主意|noun": {
+      "pinyin": "zhǔyì"
+    },
+    "現在|noun": {
+      "pinyin": "xiànzài"
+    },
+    "存在|verb": {
+      "pinyin": "cún zài"
+    },
+    "重新|adverb": {
+      "pinyin": "chóng xīn"
+    },
+    "附近|noun": {
+      "pinyin": "fù jìn"
+    },
+    "姑娘|noun": {
+      "pinyin": "gūniang"
+    },
+    "方正|adjective": {
+      "pinyin": "Fāng zhèng"
+    },
+    "字幕|noun": {
+      "pinyin": "zì mù"
+    },
+    "加入|verb": {
+      "pinyin": "jiā rù"
+    },
+    "咖啡|noun": {
+      "pinyin": "kāfēi"
+    },
+    "警察|verb": {
+      "pinyin": "jǐngchá"
+    },
+    "遇到|verb": {
+      "pinyin": "yùdào"
+    },
+    "仍然|adverb": {
+      "pinyin": "réng rán"
+    },
+    "公主|noun": {
+      "pinyin": "gōng zhǔ"
+    },
+    "安排|verb": {
+      "pinyin": "ān pái"
+    },
+    "屁股|noun": {
+      "pinyin": "pìgu"
+    },
+    "老兄|noun": {
+      "pinyin": "lǎo xiōng"
+    },
+    "人生|noun": {
+      "pinyin": "rén shēng"
+    },
+    "叔叔|noun": {
+      "pinyin": "shū shu"
+    },
+    "食物|noun": {
+      "pinyin": "shí wù"
+    },
+    "阿拉伯|adjective": {
+      "pinyin": "ā lā bó"
+    },
+    "妹妹|noun": {
+      "pinyin": "mèimei"
+    },
+    "喜歡|verb": {
+      "pinyin": "xǐhuan"
+    },
+    "再次|adverb": {
+      "pinyin": "zài cì"
+    },
+    "下面|noun": {
+      "pinyin": "xiàmiàn"
+    },
+    "案子|noun": {
+      "pinyin": "àn zi"
+    },
+    "痛苦|adjective": {
+      "pinyin": "tòng kǔ"
+    },
+    "老子|noun": {
+      "pinyin": "Lǎo zǐ"
+    },
+    "清楚|adjective": {
+      "pinyin": "qīng chu"
+    },
+    "理由|noun": {
+      "pinyin": "lǐ yóu"
+    },
+    "命令|noun": {
+      "pinyin": "mìnglìng"
+    },
+    "首先|adverb": {
+      "pinyin": "shǒu xiān"
+    },
+    "提供|verb": {
+      "pinyin": "tí gōng"
+    },
+    "沒有|verb": {
+      "pinyin": "méiyǒu"
+    },
+    "面前|noun": {
+      "pinyin": "miànqián"
+    },
+    "日子|noun": {
+      "pinyin": "rìzi"
+    },
+    "舒服|adjective": {
+      "pinyin": "shū fu"
+    },
+    "再也|adverb": {
+      "pinyin": "zài yě"
+    },
+    "早就|adverb": {
+      "pinyin": "zǎo jiù"
+    },
+    "信息|noun": {
+      "pinyin": "xìn xī"
+    },
+    "星期|noun": {
+      "pinyin": "xīngqī"
+    },
+    "不得不|verb": {
+      "pinyin": "bù dé bù"
+    },
+    "手机|noun": {
+      "pinyin": "shǒu jī"
+    },
+    "打算|noun": {
+      "pinyin": "dǎ suàn"
+    },
+    "真正|adjective": {
+      "pinyin": "zhēn zhèng"
+    },
+    "不到|verb": {
+      "pinyin": "bù dào"
+    },
+    "跳舞|verb": {
+      "pinyin": "tiàowǔ"
+    },
+    "信任|verb": {
+      "pinyin": "xìn rèn"
+    },
+    "生活|verb": {
+      "pinyin": "shēnghuó"
+    },
+    "男人|adjective": {
+      "pinyin": "nánrén"
+    },
+    "正是|verb": {
+      "pinyin": "zhèng shì"
+    },
+    "不必|adverb": {
+      "pinyin": "bù bì"
+    },
+    "街道|noun": {
+      "pinyin": "jiēdào"
+    },
+    "住手|verb": {
+      "pinyin": "zhù shǒu"
+    },
+    "不再|adverb": {
+      "pinyin": "bù zài"
+    },
+    "弟弟|noun": {
+      "pinyin": "dì di"
+    },
+    "道歉|verb": {
+      "pinyin": "dào qiàn"
+    },
+    "政府|noun": {
+      "pinyin": "zhèngfǔ"
+    },
+    "最近|adjective": {
+      "pinyin": "zuì jìn"
+    },
+    "每次|adverb": {
+      "pinyin": "měi cì"
+    },
+    "位置|noun": {
+      "pinyin": "wèi zhi"
+    },
+    "剩下|verb": {
+      "pinyin": "shèng xià"
+    },
+    "有事|verb": {
+      "pinyin": "yǒu shì"
+    },
+    "不同|noun": {
+      "pinyin": "bù tóng"
+    },
+    "老爸|noun": {
+      "pinyin": "lǎo bà"
+    },
+    "全都|adverb": {
+      "pinyin": "quán dōu"
+    },
+    "看上去|verb": {
+      "pinyin": "kàn shang qu"
+    },
+    "全部|noun": {
+      "pinyin": "quánbù"
+    },
+    "生意|noun": {
+      "pinyin": "shēng yì"
+    },
+    "上去|verb": {
+      "pinyin": "shàng qù"
+    },
+    "搞定|verb": {
+      "pinyin": "gǎo dìng"
+    },
+    "下次|noun": {
+      "pinyin": "xià cì"
+    },
+    "米粉|noun": {
+      "pinyin": "mǐ fěn"
+    },
+    "消息|noun": {
+      "pinyin": "xiāoxi"
+    },
+    "受到|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "shòu dào"
+    },
+    "居然|adverb": {
+      "pinyin": "jū rán"
+    },
+    "多少|adverb": {
+      "pinyin": "duō shǎo"
+    },
+    "多少|noun": {
+      "pinyin": "duō shǎo"
+    },
+    "可能|adjective": {
+      "pinyin": "kěnéng"
+    },
+    "不知|verb": {
+      "pinyin": "bù zhī"
+    },
+    "清楚|adverb": {
+      "pinyin": "qīng chu"
+    },
+    "警官|noun": {
+      "pinyin": "jǐng guān"
+    },
+    "笨蛋|noun": {
+      "pinyin": "bèn dàn"
+    },
+    "法律|noun": {
+      "pinyin": "fǎlǜ"
+    },
+    "能力|noun": {
+      "pinyin": "néng lì"
+    },
+    "白痴|noun": {
+      "pinyin": "bái chī"
+    },
+    "根本|adjective": {
+      "pinyin": "gēnběn"
+    },
+    "根本|adverb": {
+      "pinyin": "gēnběn"
+    },
+    "根本|noun": {
+      "pinyin": "gēnběn"
+    },
+    "東西|noun": {
+      "pinyin": "dōngxī"
+    },
+    "時間|noun": {
+      "pinyin": "shíjiān"
+    },
+    "喝酒|verb": {
+      "pinyin": "hē jiǔ"
+    },
+    "好多|adjective": {
+      "pinyin": "hǎo duō"
+    },
+    "女朋友|noun": {
+      "pinyin": "nǚ péng you"
+    },
+    "好吃|adjective": {
+      "pinyin": "hǎo chī"
+    },
+    "事件|noun": {
+      "pinyin": "shìjiàn"
+    },
+    "酒吧|noun": {
+      "pinyin": "jiǔ bā"
+    },
+    "客人|noun": {
+      "pinyin": "kèrén"
+    },
+    "肯定|adjective": {
+      "pinyin": "kěn dìng"
+    },
+    "肯定|verb": {
+      "pinyin": "kěn dìng"
+    },
+    "加拿大|noun": {
+      "pinyin": "Jiā ná dà"
+    },
+    "上次|noun": {
+      "pinyin": "shàng cì"
+    },
+    "不在乎|verb": {
+      "pinyin": "bù zài hu"
+    },
+    "路上|noun": {
+      "pinyin": "lùshàng"
+    },
+    "不准|verb": {
+      "pinyin": "bù zhǔn"
+    },
+    "身份|noun": {
+      "pinyin": "shēn fèn"
+    },
+    "表演|verb": {
+      "pinyin": "biǎo yǎn"
+    },
+    "停下|verb": {
+      "pinyin": "tíng xià"
+    },
+    "婊子|noun": {
+      "pinyin": "biǎo zi"
+    },
+    "呼吸|verb": {
+      "pinyin": "hū xī"
+    },
+    "目前|noun": {
+      "pinyin": "mù qián"
+    },
+    "大概|adjective": {
+      "pinyin": "dà gài"
+    },
+    "使用|verb": {
+      "pinyin": "shǐyòng"
+    },
+    "秘密|noun": {
+      "pinyin": "mìmì"
+    },
+    "在家|verb": {
+      "pinyin": "zài jiā"
+    },
+    "一家|noun": {
+      "pinyin": "yī jiā"
+    },
+    "要求|noun": {
+      "pinyin": "yāo qiú"
+    },
+    "要求|verb": {
+      "pinyin": "yāo qiú"
+    },
+    "最近|adverb": {
+      "pinyin": "zuì jìn"
+    },
+    "立刻|adverb": {
+      "pinyin": "lì kè"
+    },
+    "世界|adverb": {
+      "pinyin": "shìjiè"
+    },
+    "文件|noun": {
+      "pinyin": "wén jiàn"
+    },
+    "成功|verb": {
+      "pinyin": "chénggōng"
+    },
+    "慢慢|adverb": {
+      "pinyin": "màn màn"
+    },
+    "利用|verb": {
+      "pinyin": "lì yòng"
+    },
+    "前面|noun": {
+      "pinyin": "qián miàn"
+    },
+    "奶奶|noun": {
+      "pinyin": "nǎinai"
+    },
+    "答案|noun": {
+      "pinyin": "dá àn"
+    },
+    "棉花|noun": {
+      "pinyin": "miánhuā"
+    },
+    "一遍|noun": {
+      "pinyin": "yī biàn"
+    },
+    "做出|verb": {
+      "pinyin": "zuò chū"
+    },
+    "值得|verb": {
+      "pinyin": "zhí de"
+    },
+    "下午|noun": {
+      "pinyin": "xiàwǔ"
+    },
+    "反正|verb": {
+      "pinyin": "fǎn zhèng"
+    },
+    "部分|noun": {
+      "pinyin": "bùfen"
+    },
+    "打包|verb": {
+      "pinyin": "dǎ bāo"
+    },
+    "竟然|adverb": {
+      "pinyin": "jìng rán"
+    },
+    "一生|noun": {
+      "pinyin": "yī shēng"
+    },
+    "味道|noun": {
+      "pinyin": "wèidào"
+    },
+    "回答|noun": {
+      "pinyin": "huídá"
+    },
+    "回答|verb": {
+      "pinyin": "huídá"
+    },
+    "大哥|noun": {
+      "pinyin": "dà gē"
+    },
+    "非洲|adjective": {
+      "pinyin": "Fēi zhōu"
+    },
+    "清楚|verb": {
+      "pinyin": "qīng chu"
+    },
+    "自由|adjective": {
+      "pinyin": "zìyóu"
+    },
+    "自由|noun": {
+      "pinyin": "zìyóu"
+    },
+    "爆炸|verb": {
+      "pinyin": "bào zhà"
+    },
+    "美好|adjective": {
+      "pinyin": "měi hǎo"
+    },
+    "美元|noun": {
+      "pinyin": "měi yuán"
+    },
+    "收拾|verb": {
+      "pinyin": "shōushi"
+    },
+    "包括|verb": {
+      "pinyin": "bāo kuò"
+    },
+    "問題|noun": {
+      "pinyin": "wèntí"
+    },
+    "公寓|noun": {
+      "pinyin": "gōng yù"
+    },
+    "合作|verb": {
+      "pinyin": "hé zuò"
+    },
+    "法官|noun": {
+      "pinyin": "fǎguān"
+    },
+    "方向|noun": {
+      "pinyin": "fāngxiàng"
+    },
+    "天花|noun": {
+      "pinyin": "tiān huā"
+    },
+    "病人|noun": {
+      "pinyin": "bìngrén"
+    },
+    "目的|noun": {
+      "pinyin": "mù dì"
+    },
+    "士兵|noun": {
+      "pinyin": "shì bīng"
+    },
+    "研究|verb": {
+      "pinyin": "yánjiū"
+    },
+    "傻瓜|noun": {
+      "pinyin": "shǎ guā"
+    },
+    "代表|noun": {
+      "pinyin": "dàibiǎo"
+    },
+    "拿走|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "ná zǒu"
+    },
+    "警方|noun": {
+      "pinyin": "jǐng fāng"
+    },
+    "出生|verb": {
+      "pinyin": "chū shēng"
+    },
+    "酒店|noun": {
+      "pinyin": "jiǔ diàn"
+    },
+    "上班|verb": {
+      "pinyin": "shàngbān"
+    },
+    "男朋友|noun": {
+      "pinyin": "nán péng you"
+    },
+    "造成|verb": {
+      "pinyin": "zào chéng"
+    },
+    "成功|noun": {
+      "pinyin": "chénggōng"
+    },
+    "想起|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "xiǎngqǐ"
+    },
+    "教堂|noun": {
+      "pinyin": "jiàotáng"
+    },
+    "老公|noun": {
+      "pinyin": "lǎo gōng"
+    },
+    "起來|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "qǐlái"
+    },
+    "拯救|verb": {
+      "pinyin": "zhěng jiù"
+    },
+    "消息|verb": {
+      "pinyin": "xiāoxi"
+    },
+    "一句|noun": {
+      "pinyin": "yī jù"
+    },
+    "媽媽|noun": {
+      "pinyin": "māma"
+    },
+    "方面|noun": {
+      "pinyin": "fāng miàn"
+    },
+    "晚餐|noun": {
+      "pinyin": "wǎncān"
+    },
+    "巨大|adjective": {
+      "pinyin": "jù dà"
+    },
+    "啤酒|noun": {
+      "pinyin": "píjiǔ"
+    },
+    "好看|adjective": {
+      "pinyin": "hǎokàn"
+    },
+    "逮捕|verb": {
+      "pinyin": "dài bǔ"
+    },
+    "主人|noun": {
+      "pinyin": "zhǔrén"
+    },
+    "可惜|adjective": {
+      "pinyin": "kě xī"
+    },
+    "上校|noun": {
+      "pinyin": "shàng xiào"
+    },
+    "家族|noun": {
+      "pinyin": "jiā zú"
+    },
+    "陛下|noun": {
+      "pinyin": "bì xià"
+    },
+    "中心|noun": {
+      "pinyin": "zhōng xīn"
+    },
+    "吹水|verb": {
+      "pinyin": "chuī shuǐ"
+    },
+    "旅行|verb": {
+      "pinyin": "lǚxíng"
+    },
+    "比如|verb": {
+      "pinyin": "Bǐ rú"
+    },
+    "人民|noun": {
+      "pinyin": "rénmín"
+    },
+    "奇怪|adjective": {
+      "pinyin": "qí guài"
+    },
+    "奇怪|noun": {
+      "pinyin": "qí guài"
+    },
+    "奇怪|verb": {
+      "pinyin": "qí guài"
+    },
+    "不少|adjective": {
+      "pinyin": "bù shǎo"
+    },
+    "支持|verb": {
+      "pinyin": "zhī chí"
+    },
+    "不行|verb": {
+      "pinyin": "bù xíng"
+    },
+    "愉快|adjective": {
+      "pinyin": "yú kuài"
+    },
+    "黑暗|adjective": {
+      "pinyin": "hēi'àn"
+    },
+    "沒有|adverb": {
+      "pinyin": "méiyǒu"
+    },
+    "真相|noun": {
+      "pinyin": "zhēn xiàng"
+    },
+    "秘密|adjective": {
+      "pinyin": "mìmì"
+    },
+    "可怕|adjective": {
+      "pinyin": "kě pà"
+    },
+    "可怕|adverb": {
+      "pinyin": "kě pà"
+    },
+    "有意思|adjective": {
+      "pinyin": "yǒu yì si"
+    },
+    "宇宙|noun": {
+      "pinyin": "yǔ zhòu"
+    },
+    "死去|verb": {
+      "pinyin": "sǐ qù"
+    },
+    "心情|noun": {
+      "pinyin": "xīn qíng"
+    },
+    "一部分|noun": {
+      "pinyin": "yī bù fen"
+    },
+    "角色|noun": {
+      "pinyin": "jué sè"
+    },
+    "支票|noun": {
+      "pinyin": "zhī piào"
+    },
+    "警告|noun": {
+      "pinyin": "jǐng gào"
+    },
+    "提醒|verb": {
+      "pinyin": "tí xǐng"
+    },
+    "注意|noun": {
+      "pinyin": "zhù yì"
+    },
+    "狗屎|noun": {
+      "pinyin": "gǒu shǐ"
+    },
+    "享受|verb": {
+      "pinyin": "xiǎng shòu"
+    },
+    "好人|noun": {
+      "pinyin": "hǎo rén"
+    },
+    "靠近|verb": {
+      "pinyin": "kào jìn"
+    },
+    "自由泳|noun": {
+      "pinyin": "zì yóu yǒng"
+    },
+    "蛋糕|noun": {
+      "pinyin": "dàngāo"
+    },
+    "多年|noun": {
+      "pinyin": "duō nián"
+    },
+    "同志|noun": {
+      "pinyin": "tóngzhì"
+    },
+    "醫生|noun": {
+      "pinyin": "yīshēng"
+    },
+    "不好|noun": {
+      "pinyin": "bùhǎo"
+    },
+    "期待|verb": {
+      "pinyin": "qī dài"
+    },
+    "第一|noun": {
+      "pinyin": "dì-yī"
+    },
+    "天使|noun": {
+      "pinyin": "tiān shǐ"
+    },
+    "現在|verb": {
+      "pinyin": "xiànzài"
+    },
+    "上床|verb": {
+      "pinyin": "shàng chuáng"
+    },
+    "神父|noun": {
+      "pinyin": "shén fu"
+    },
+    "不再|verb": {
+      "pinyin": "bù zài"
+    },
+    "生日|noun": {
+      "pinyin": "shēngrì"
+    },
+    "主要|adjective": {
+      "pinyin": "zhǔ yào"
+    },
+    "叫做|verb": {
+      "pinyin": "jiào zuò"
+    },
+    "作品|noun": {
+      "pinyin": "zuò pǐn"
+    },
+    "不同|adjective": {
+      "pinyin": "bù tóng"
+    },
+    "法庭|noun": {
+      "pinyin": "fǎtíng"
+    },
+    "艾滋病|noun": {
+      "pinyin": "ài zī bìng"
+    },
+    "速度|noun": {
+      "pinyin": "sù dù"
+    },
+    "周末|noun": {
+      "pinyin": "zhōu mò"
+    },
+    "尤其|adverb": {
+      "pinyin": "yóu qí"
+    },
+    "辛苦|verb": {
+      "pinyin": "xīn kǔ"
+    },
+    "婚姻|noun": {
+      "pinyin": "hūn yīn"
+    },
+    "天堂|noun": {
+      "pinyin": "tiāntáng"
+    },
+    "必要|adjective": {
+      "pinyin": "bì yào"
+    },
+    "必要|noun": {
+      "pinyin": "bì yào"
+    },
+    "教授|noun": {
+      "pinyin": "jiàoshòu"
+    },
+    "老大|noun": {
+      "pinyin": "lǎo dà"
+    },
+    "去世|verb": {
+      "pinyin": "qù shì"
+    },
+    "努力|noun": {
+      "pinyin": "nǔ lì"
+    },
+    "努力|verb": {
+      "pinyin": "nǔ lì"
+    },
+    "交易|noun": {
+      "pinyin": "jiāo yì"
+    },
+    "土地|noun": {
+      "pinyin": "tǔdì"
+    },
+    "更加|adverb": {
+      "pinyin": "gèng jiā"
+    },
+    "不可|verb": {
+      "pinyin": "bù kě"
+    },
+    "出來|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "chūlái"
+    },
+    "女性|noun": {
+      "pinyin": "nǚ xìng"
+    },
+    "算是|verb": {
+      "pinyin": "suàn shì"
+    },
+    "地址|noun": {
+      "pinyin": "dìzhǐ"
+    },
+    "非常|noun": {
+      "pinyin": "fēi cháng"
+    },
+    "在乎|verb": {
+      "pinyin": "zài hu"
+    },
+    "接近|adjective": {
+      "pinyin": "jiē jìn"
+    },
+    "不停|verb": {
+      "pinyin": "bù tíng"
+    },
+    "今年|noun": {
+      "pinyin": "jīnnián"
+    },
+    "演出|verb": {
+      "pinyin": "yǎn chū"
+    },
+    "逃跑|verb": {
+      "pinyin": "táo pǎo"
+    },
+    "感情|noun": {
+      "pinyin": "gǎn qíng"
+    },
+    "提到|verb": {
+      "pinyin": "tí dào"
+    },
+    "毒品|noun": {
+      "pinyin": "dú pǐn"
+    },
+    "失望|verb": {
+      "pinyin": "shī wàng"
+    },
+    "分手|verb": {
+      "pinyin": "fēn shǒu"
+    },
+    "森林|noun": {
+      "pinyin": "sēn lín"
+    },
+    "生存|verb": {
+      "pinyin": "shēng cún"
+    },
+    "地上|noun": {
+      "pinyin": "dì shang"
+    },
+    "好事|noun": {
+      "pinyin": "hǎo shì"
+    },
+    "世上|noun": {
+      "pinyin": "shì shàng"
+    },
+    "想念|verb": {
+      "pinyin": "xiǎng niàn"
+    },
+    "普通|adjective": {
+      "pinyin": "pǔ tōng"
+    },
+    "天才|noun": {
+      "pinyin": "tiān cái"
+    },
+    "妓女|noun": {
+      "pinyin": "jì nǚ"
+    },
+    "提出|verb": {
+      "pinyin": "tí chū"
+    },
+    "地區|adjective": {
+      "pinyin": "dìqū"
+    },
+    "戒指|noun": {
+      "pinyin": "jièzhi"
+    },
+    "取消|verb": {
+      "pinyin": "qǔ xiāo"
+    },
+    "玩意|noun": {
+      "pinyin": "wán yì"
+    },
+    "金星|noun": {
+      "pinyin": "Jīn xīng"
+    },
+    "搞砸|verb": {
+      "pinyin": "gǎo zá"
+    },
+    "私人|adjective": {
+      "pinyin": "sī rén"
+    },
+    "表示|verb": {
+      "pinyin": "biǎo shì"
+    },
+    "辦公室|noun": {
+      "pinyin": "bàngōngshì"
+    },
+    "糖果|noun": {
+      "pinyin": "táng guǒ"
+    },
+    "建立|verb": {
+      "pinyin": "jiàn lì"
+    },
+    "去年|noun": {
+      "pinyin": "qùnián"
+    },
+    "特殊|adjective": {
+      "pinyin": "tè shū"
+    },
+    "勇敢|adjective": {
+      "pinyin": "yǒng gǎn"
+    },
+    "不算|verb": {
+      "pinyin": "bù suàn"
+    },
+    "令人|verb": {
+      "pinyin": "lìng rén"
+    },
+    "通常|adverb": {
+      "pinyin": "tōng cháng"
+    },
+    "介意|verb": {
+      "pinyin": "jiè yì"
+    },
+    "手下|noun": {
+      "pinyin": "shǒu xià"
+    },
+    "手指|noun": {
+      "pinyin": "shǒuzhǐ"
+    },
+    "思考|verb": {
+      "pinyin": "sī kǎo"
+    },
+    "成功|adjective": {
+      "pinyin": "chénggōng"
+    },
+    "夜晚|noun": {
+      "pinyin": "yèwǎn"
+    },
+    "帽子|noun": {
+      "pinyin": "màozi"
+    },
+    "使用|noun": {
+      "pinyin": "shǐyòng"
+    },
+    "精神|adjective": {
+      "pinyin": "jīng shén"
+    },
+    "愚蠢|noun": {
+      "pinyin": "yú chǔn"
+    },
+    "背叛|verb": {
+      "pinyin": "bèi pàn"
+    },
+    "魔鬼|noun": {
+      "pinyin": "móguǐ"
+    },
+    "幸福|adjective": {
+      "pinyin": "xìng fú"
+    },
+    "幸福|noun": {
+      "pinyin": "xìng fú"
+    },
+    "了不起|adjective": {
+      "pinyin": "liǎo bu qǐ"
+    },
+    "唱歌|verb": {
+      "pinyin": "chàng gē"
+    },
+    "站住|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "zhàn zhù"
+    },
+    "吉米|noun": {
+      "pinyin": "Jí mǐ"
+    },
+    "引起|verb": {
+      "pinyin": "yǐn qǐ"
+    },
+    "有用|verb": {
+      "pinyin": "yǒu yòng"
+    },
+    "投票|verb": {
+      "pinyin": "tóu piào"
+    },
+    "想像|verb": {
+      "pinyin": "xiǎng xiàng"
+    },
+    "王子|noun": {
+      "pinyin": "wáng zǐ"
+    },
+    "吸血鬼|noun": {
+      "pinyin": "xī xuè guǐ"
+    },
+    "研究|noun": {
+      "pinyin": "yánjiū"
+    },
+    "特工|noun": {
+      "pinyin": "tè gōng"
+    },
+    "犯罪|verb": {
+      "pinyin": "fànzuì"
+    },
+    "早餐|noun": {
+      "pinyin": "zǎo cān"
+    },
+    "放心|verb": {
+      "pinyin": "fàng xīn"
+    },
+    "伊拉克|adjective": {
+      "pinyin": "Yī lā kè"
+    },
+    "好笑|adjective": {
+      "pinyin": "hǎo xiào"
+    },
+    "受不了|verb": {
+      "pinyin": "shòu bù liǎo"
+    },
+    "碰到|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "pèng dào"
+    },
+    "通知|noun": {
+      "pinyin": "tōngzhī"
+    },
+    "通知|verb": {
+      "pinyin": "tōngzhī"
+    },
+    "魔法|noun": {
+      "pinyin": "mó fǎ"
+    },
+    "分享|verb": {
+      "pinyin": "fēn xiǎng"
+    },
+    "年前|noun": {
+      "pinyin": "nián qián"
+    },
+    "感激|verb": {
+      "pinyin": "gǎn jī"
+    },
+    "同事|noun": {
+      "pinyin": "tóngshì"
+    },
+    "上尉|noun": {
+      "pinyin": "shàng wèi"
+    },
+    "桌子|noun": {
+      "pinyin": "zhuōzi"
+    },
+    "禁止|verb": {
+      "pinyin": "jìn zhǐ"
+    },
+    "交流|verb": {
+      "pinyin": "jiāo liú"
+    },
+    "放手|verb": {
+      "pinyin": "fàng shǒu"
+    },
+    "英里|noun": {
+      "pinyin": "yīng lǐ"
+    },
+    "一樣|adjective": {
+      "pinyin": "yīyàng"
+    },
+    "一樣|adverb": {
+      "pinyin": "yīyàng"
+    },
+    "正式|adjective": {
+      "pinyin": "zhèng shì"
+    },
+    "整天|noun": {
+      "pinyin": "zhěng tiān"
+    },
+    "巧克力|noun": {
+      "pinyin": "qiǎo kè lì"
+    },
+    "找出|verb": {
+      "pinyin": "zhǎo chū"
+    },
+    "受害者|noun": {
+      "pinyin": "shòu hài zhě"
+    },
+    "仙人球|noun": {
+      "pinyin": "xiān rén qiú"
+    },
+    "人人|noun": {
+      "pinyin": "rén rén"
+    },
+    "基地|noun": {
+      "pinyin": "Jī dì"
+    },
+    "第二|adjective": {
+      "pinyin": "dì èr"
+    },
+    "一般|adjective": {
+      "pinyin": "yī bān"
+    },
+    "病毒|noun": {
+      "pinyin": "bìng dú"
+    },
+    "好好|adjective": {
+      "pinyin": "hǎo hǎo"
+    },
+    "生病|verb": {
+      "pinyin": "shēng bìng"
+    },
+    "人物|noun": {
+      "pinyin": "rén wù"
+    },
+    "立即|adverb": {
+      "pinyin": "lì jí"
+    },
+    "女生|noun": {
+      "pinyin": "nǚ shēng"
+    },
+    "支持|noun": {
+      "pinyin": "zhī chí"
+    },
+    "星球|noun": {
+      "pinyin": "xīng qiú"
+    },
+    "精神|noun": {
+      "pinyin": "jīng shén"
+    },
+    "做事|verb": {
+      "pinyin": "zuò shì"
+    },
+    "打死|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "dǎsǐ"
+    },
+    "接到|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "jiē dào"
+    },
+    "折磨|verb": {
+      "pinyin": "zhé mó"
+    },
+    "明星|noun": {
+      "pinyin": "míng xīng"
+    },
+    "小伙子|noun": {
+      "pinyin": "xiǎohuǒzi"
+    },
+    "英雄|adjective": {
+      "pinyin": "yīngxióng"
+    },
+    "英雄|noun": {
+      "pinyin": "yīngxióng"
+    },
+    "美女|noun": {
+      "pinyin": "měi nǚ"
+    },
+    "電話|noun": {
+      "pinyin": "diànhuà"
+    },
+    "肯定|noun": {
+      "pinyin": "kěn dìng"
+    },
+    "政治|noun": {
+      "pinyin": "zhèngzhì"
+    },
+    "明明|adverb": {
+      "pinyin": "míng míng"
+    },
+    "女孩子|noun": {
+      "pinyin": "nǚ hái zi"
+    },
+    "案件|noun": {
+      "pinyin": "àn jiàn"
+    },
+    "老鼠|noun": {
+      "pinyin": "lǎoshǔ"
+    },
+    "代表|verb": {
+      "pinyin": "dàibiǎo"
+    },
+    "箱子|noun": {
+      "pinyin": "xiāngzi"
+    },
+    "巴士|noun": {
+      "pinyin": "bā shì"
+    },
+    "擔心|verb": {
+      "pinyin": "dānxīn"
+    },
+    "脖子|noun": {
+      "pinyin": "bózi"
+    },
+    "耳朵|noun": {
+      "pinyin": "ěrduo"
+    },
+    "罪犯|noun": {
+      "pinyin": "zuì fàn"
+    },
+    "一旦|adverb": {
+      "pinyin": "yī dàn"
+    },
+    "一旦|noun": {
+      "pinyin": "yī dàn"
+    },
+    "清理|verb": {
+      "pinyin": "qīng lǐ"
+    },
+    "宣布|verb": {
+      "pinyin": "xuān bù"
+    },
+    "能量|noun": {
+      "pinyin": "néng liàng"
+    },
+    "感受|noun": {
+      "pinyin": "gǎn shòu"
+    },
+    "感受|verb": {
+      "pinyin": "gǎn shòu"
+    },
+    "意外|adjective": {
+      "pinyin": "yì wài"
+    },
+    "意外|noun": {
+      "pinyin": "yì wài"
+    },
+    "印象|noun": {
+      "pinyin": "yìnxiàng"
+    },
+    "大部分|noun": {
+      "pinyin": "dà bù fen"
+    },
+    "阿姨|noun": {
+      "pinyin": "ā yí"
+    },
+    "而言|verb": {
+      "pinyin": "ér yán"
+    },
+    "鼻子|noun": {
+      "pinyin": "bízi"
+    },
+    "不錯|adjective": {
+      "pinyin": "bùcuò"
+    },
+    "大概|adverb": {
+      "pinyin": "dà gài"
+    },
+    "夏天|noun": {
+      "pinyin": "xiàtiān"
+    },
+    "如今|noun": {
+      "pinyin": "rújīn"
+    },
+    "性感|adjective": {
+      "pinyin": "xìng gǎn"
+    },
+    "肚子|noun": {
+      "pinyin": "dùzi"
+    },
+    "神奇|adjective": {
+      "pinyin": "shén qí"
+    },
+    "年代|noun": {
+      "pinyin": "nián dài"
+    },
+    "朝鮮|verb": {
+      "pinyin": "Cháoxiǎn"
+    },
+    "付出|verb": {
+      "pinyin": "fù chū"
+    },
+    "互相|adverb": {
+      "pinyin": "hù xiāng"
+    },
+    "他人|noun": {
+      "pinyin": "tā rén"
+    },
+    "好奇|adjective": {
+      "pinyin": "hào qí"
+    },
+    "打破|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "dǎ pò"
+    },
+    "第一|adverb": {
+      "pinyin": "dì-yī"
+    },
+    "父親|noun": {
+      "pinyin": "fùqīn"
+    },
+    "城堡|noun": {
+      "pinyin": "chéngbǎo"
+    },
+    "十分|adverb": {
+      "pinyin": "shí fēn"
+    },
+    "主意|verb": {
+      "pinyin": "zhǔyì"
+    },
+    "吸引|verb": {
+      "pinyin": "xī yǐn"
+    },
+    "存在|noun": {
+      "pinyin": "cún zài"
+    },
+    "反切|noun": {
+      "pinyin": "fǎn qiè"
+    },
+    "犯人|noun": {
+      "pinyin": "fànrén"
+    },
+    "小孩子|noun": {
+      "pinyin": "xiǎo hái zi"
+    },
+    "相同|adjective": {
+      "pinyin": "xiāng tóng"
+    },
+    "火星|verb": {
+      "pinyin": "Huǒ xīng"
+    },
+    "恐怖|noun": {
+      "pinyin": "kǒng bù"
+    },
+    "逃走|verb": {
+      "pinyin": "táo zǒu"
+    },
+    "程序|noun": {
+      "pinyin": "chéng xù"
+    },
+    "白人|noun": {
+      "pinyin": "bái rén"
+    },
+    "中尉|noun": {
+      "pinyin": "zhōng wèi"
+    },
+    "街上|noun": {
+      "pinyin": "jiē shang"
+    },
+    "一般|adverb": {
+      "pinyin": "yī bān"
+    },
+    "打架|verb": {
+      "pinyin": "dǎ jià"
+    },
+    "女王|noun": {
+      "pinyin": "nǚ wáng"
+    },
+    "午餐|noun": {
+      "pinyin": "wǔ cān"
+    },
+    "看法|noun": {
+      "pinyin": "kàn fǎ"
+    },
+    "喝醉|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "hēzuì"
+    },
+    "反正|adverb": {
+      "pinyin": "fǎn zhèng"
+    },
+    "警探|noun": {
+      "pinyin": "jǐng tàn"
+    },
+    "拖鞋|noun": {
+      "pinyin": "tuōxié"
+    },
+    "洗澡|verb": {
+      "pinyin": "xǐzǎo"
+    },
+    "黑色|noun": {
+      "pinyin": "hēi sè"
+    },
+    "行李|noun": {
+      "pinyin": "xínglǐ"
+    },
+    "不同|verb": {
+      "pinyin": "bù tóng"
+    },
+    "起床|verb": {
+      "pinyin": "qǐ chuáng"
+    },
+    "殿下|noun": {
+      "pinyin": "diàn xià"
+    },
+    "指控|verb": {
+      "pinyin": "zhǐ kòng"
+    },
+    "道理|noun": {
+      "pinyin": "dàolǐ"
+    },
+    "尖叫|verb": {
+      "pinyin": "jiān jiào"
+    },
+    "爵士|noun": {
+      "pinyin": "jué shì"
+    },
+    "有所|verb": {
+      "pinyin": "yǒu suǒ"
+    },
+    "大叔|noun": {
+      "pinyin": "dà shū"
+    },
+    "害怕|adverb": {
+      "pinyin": "hàipà"
+    },
+    "太空|noun": {
+      "pinyin": "tài kōng"
+    },
+    "恐怕|adverb": {
+      "pinyin": "kǒng pà"
+    },
+    "恐怕|verb": {
+      "pinyin": "kǒng pà"
+    },
+    "面包|noun": {
+      "pinyin": "miàn bāo"
+    },
+    "不久|adverb": {
+      "pinyin": "bù jiǔ"
+    },
+    "正如|verb": {
+      "pinyin": "zhèng rú"
+    },
+    "掌握|verb": {
+      "pinyin": "zhǎng wò"
+    },
+    "在意|verb": {
+      "pinyin": "zài yì"
+    },
+    "管理|verb": {
+      "pinyin": "guǎn lǐ"
+    },
+    "神秘|adjective": {
+      "pinyin": "shén mì"
+    },
+    "最高|adjective": {
+      "pinyin": "zuì gāo"
+    },
+    "哪兒|adverb": {
+      "pinyin": "nǎr"
+    },
+    "警局|noun": {
+      "pinyin": "jǐng jú"
+    },
+    "尊重|verb": {
+      "pinyin": "zūn zhòng"
+    },
+    "用力|verb": {
+      "pinyin": "yòng lì"
+    },
+    "海洋|noun": {
+      "pinyin": "hǎi yáng"
+    },
+    "椅子|noun": {
+      "pinyin": "yǐzi"
+    },
+    "搜查|verb": {
+      "pinyin": "sōu chá"
+    },
+    "快要|adverb": {
+      "pinyin": "kuài yào"
+    },
+    "退出|verb": {
+      "pinyin": "tuì chū"
+    },
+    "格式化|verb": {
+      "pinyin": "gé shì huà"
+    },
+    "和平|noun": {
+      "pinyin": "hépíng"
+    },
+    "增加|verb": {
+      "pinyin": "zēng jiā"
+    },
+    "玩笑|noun": {
+      "pinyin": "wán xiào"
+    },
+    "玩笑|verb": {
+      "pinyin": "wán xiào"
+    },
+    "有效|verb": {
+      "pinyin": "yǒu xiào"
+    },
+    "心中|noun": {
+      "pinyin": "xīn zhōng"
+    },
+    "忍受|verb": {
+      "pinyin": "rěn shòu"
+    },
+    "十字架|noun": {
+      "pinyin": "shí zì jià"
+    },
+    "好玩|adjective": {
+      "pinyin": "hǎo wán"
+    },
+    "渴望|verb": {
+      "pinyin": "kě wàng"
+    },
+    "著名|adjective": {
+      "pinyin": "zhù míng"
+    },
+    "信心|noun": {
+      "pinyin": "xìn xīn"
+    },
+    "事故|noun": {
+      "pinyin": "shì gù"
+    },
+    "玩具|noun": {
+      "pinyin": "wán jù"
+    },
+    "抱怨|verb": {
+      "pinyin": "bàoyuàn"
+    },
+    "陌生人|noun": {
+      "pinyin": "mò shēng rén"
+    },
+    "生物|noun": {
+      "pinyin": "shēng wù"
+    },
+    "究竟|verb": {
+      "pinyin": "jiū jìng"
+    },
+    "美妙|adjective": {
+      "pinyin": "měi miào"
+    },
+    "血液|noun": {
+      "pinyin": "xuè yè"
+    },
+    "健康|adjective": {
+      "pinyin": "jiànkāng"
+    },
+    "垃圾|noun": {
+      "pinyin": "lā jī"
+    },
+    "聊天|verb": {
+      "pinyin": "liáotiān"
+    },
+    "伙伴|noun": {
+      "pinyin": "huǒ bàn"
+    },
+    "收集|verb": {
+      "pinyin": "shōu jí"
+    },
+    "每年|adverb": {
+      "pinyin": "měi nián"
+    },
+    "王八蛋|noun": {
+      "pinyin": "wáng bā dàn"
+    },
+    "事物|noun": {
+      "pinyin": "shì wù"
+    },
+    "鞋子|noun": {
+      "pinyin": "xié zi"
+    },
+    "死者|noun": {
+      "pinyin": "sǐ zhě"
+    },
+    "能否|adverb": {
+      "pinyin": "néng fǒu"
+    },
+    "兒子|noun": {
+      "pinyin": "érzi"
+    },
+    "被捕|verb": {
+      "pinyin": "bèi bǔ"
+    },
+    "情人|noun": {
+      "pinyin": "qíng rén"
+    },
+    "游泳|verb": {
+      "pinyin": "yóuyǒng"
+    },
+    "降落|verb": {
+      "pinyin": "jiàng luò"
+    },
+    "工人|noun": {
+      "pinyin": "gōngrén"
+    },
+    "投降|verb": {
+      "pinyin": "tóu xiáng"
+    },
+    "交往|verb": {
+      "pinyin": "jiāo wǎng"
+    },
+    "出事|verb": {
+      "pinyin": "chūshì"
+    },
+    "嫉妒|verb": {
+      "pinyin": "jí dù"
+    },
+    "教授|verb": {
+      "pinyin": "jiāo shòu"
+    },
+    "英尺|noun": {
+      "pinyin": "yīng chǐ"
+    },
+    "公平|adjective": {
+      "pinyin": "gōng píng"
+    },
+    "公平|noun": {
+      "pinyin": "gōng píng"
+    },
+    "水曜日|noun": {
+      "pinyin": "Shuǐ yào rì"
+    },
+    "男子|noun": {
+      "pinyin": "nán zǐ"
+    },
+    "依然|adverb": {
+      "pinyin": "yī rán"
+    },
+    "外套|noun": {
+      "pinyin": "wài tào"
+    },
+    "努力|adjective": {
+      "pinyin": "nǔ lì"
+    },
+    "愚蠢|adjective": {
+      "pinyin": "yú chǔn"
+    },
+    "出色|adjective": {
+      "pinyin": "chū sè"
+    },
+    "失陪|verb": {
+      "pinyin": "shī péi"
+    },
+    "牛奶|noun": {
+      "pinyin": "niú nǎi"
+    },
+    "稍微|adverb": {
+      "pinyin": "shāo wēi"
+    },
+    "口交|noun": {
+      "pinyin": "kǒu jiāo"
+    },
+    "口交|verb": {
+      "pinyin": "kǒu jiāo"
+    },
+    "懂得|verb": {
+      "pinyin": "dǒng de"
+    },
+    "支付|verb": {
+      "pinyin": "zhī fù"
+    },
+    "正要|verb": {
+      "pinyin": "zhèng yào"
+    },
+    "感染|verb": {
+      "pinyin": "gǎn rǎn"
+    },
+    "常常|adverb": {
+      "pinyin": "cháng cháng"
+    },
+    "自治州|noun": {
+      "pinyin": "zì zhì zhōu"
+    },
+    "文化|noun": {
+      "pinyin": "wénhuà"
+    },
+    "沙漠|noun": {
+      "pinyin": "shā mò"
+    },
+    "完蛋|verb": {
+      "pinyin": "wán dàn"
+    },
+    "引擎|noun": {
+      "pinyin": "yǐn qíng"
+    },
+    "口袋|noun": {
+      "pinyin": "kǒu dài"
+    },
+    "道路|noun": {
+      "pinyin": "dào lù"
+    },
+    "全世界|noun": {
+      "pinyin": "quán shì jiè"
+    },
+    "卡路里|noun": {
+      "pinyin": "kǎ lù lǐ"
+    },
+    "描述|verb": {
+      "pinyin": "miáo shù"
+    },
+    "退休|verb": {
+      "pinyin": "tuìxiū"
+    },
+    "教育|noun": {
+      "pinyin": "jiào yù"
+    },
+    "全部|adjective": {
+      "pinyin": "quánbù"
+    },
+    "全部|adverb": {
+      "pinyin": "quánbù"
+    },
+    "也許|adverb": {
+      "pinyin": "yěxǔ"
+    },
+    "程度|noun": {
+      "pinyin": "chéng dù"
+    },
+    "保重|verb": {
+      "pinyin": "bǎo zhòng"
+    },
+    "搜索|verb": {
+      "pinyin": "sōu suǒ"
+    },
+    "天空|noun": {
+      "pinyin": "tiān kōng"
+    },
+    "心理|noun": {
+      "pinyin": "xīn lǐ"
+    },
+    "返回|verb": {
+      "pinyin": "fǎn huí"
+    },
+    "拿出|verb": {
+      "pinyin": "ná chū"
+    },
+    "承受|verb": {
+      "pinyin": "chéng shòu"
+    },
+    "少校|noun": {
+      "pinyin": "shào xiào"
+    },
+    "裙子|noun": {
+      "pinyin": "qúnzi"
+    },
+    "女友|noun": {
+      "pinyin": "nǚ yǒu"
+    },
+    "作用|noun": {
+      "pinyin": "zuò yòng"
+    },
+    "思想|noun": {
+      "pinyin": "sīxiǎng"
+    },
+    "迷人|adjective": {
+      "pinyin": "mí rén"
+    },
+    "刺激|verb": {
+      "pinyin": "cì jī"
+    },
+    "屋子|noun": {
+      "pinyin": "wūzi"
+    },
+    "女兒|noun": {
+      "pinyin": "nǚ'ér"
+    },
+    "接近|verb": {
+      "pinyin": "jiē jìn"
+    },
+    "工具|noun": {
+      "pinyin": "gōng jù"
+    },
+    "手臂|noun": {
+      "pinyin": "shǒu bì"
+    },
+    "害死|verb": {
+      "pinyin": "hài sǐ"
+    },
+    "卡式|adjective": {
+      "pinyin": "kǎ shì"
+    },
+    "流血|verb": {
+      "pinyin": "liúxuè"
+    },
+    "合法|adjective": {
+      "pinyin": "hé fǎ"
+    },
+    "黑人|noun": {
+      "pinyin": "hēirén"
+    },
+    "威士忌|noun": {
+      "pinyin": "wēi shì jì"
+    },
+    "走路|verb": {
+      "pinyin": "zǒulù"
+    },
+    "避免|verb": {
+      "pinyin": "bì miǎn"
+    },
+    "吵架|verb": {
+      "pinyin": "chǎojià"
+    },
+    "效果|noun": {
+      "pinyin": "xiào guǒ"
+    },
+    "歌手|noun": {
+      "pinyin": "gē shǒu"
+    },
+    "一刻|noun": {
+      "pinyin": "yī kè"
+    },
+    "正好|adjective": {
+      "pinyin": "zhèng hǎo"
+    },
+    "正好|adverb": {
+      "pinyin": "zhèng hǎo"
+    },
+    "撤退|verb": {
+      "pinyin": "chè tuì"
+    },
+    "垃圾|adjective": {
+      "pinyin": "lā jī"
+    },
+    "地面|noun": {
+      "pinyin": "dìmiàn"
+    },
+    "男生|noun": {
+      "pinyin": "nán shēng"
+    },
+    "最佳|adjective": {
+      "pinyin": "zuì jiā"
+    },
+    "男友|noun": {
+      "pinyin": "nán yǒu"
+    },
+    "集中|verb": {
+      "pinyin": "jí zhōng"
+    },
+    "布朗|noun": {
+      "pinyin": "Bù lǎng"
+    },
+    "全球|noun": {
+      "pinyin": "quán qiú"
+    },
+    "外星人|noun": {
+      "pinyin": "wài xīng rén"
+    },
+    "商店|noun": {
+      "pinyin": "shāng diàn"
+    },
+    "部落|noun": {
+      "pinyin": "bù luò"
+    },
+    "反抗|verb": {
+      "pinyin": "fǎn kàng"
+    },
+    "第二次|noun": {
+      "pinyin": "dì èr cì"
+    },
+    "留言|verb": {
+      "pinyin": "liú yán"
+    },
+    "姐妹|noun": {
+      "pinyin": "jiě mèi"
+    },
+    "取得|verb": {
+      "pinyin": "qǔ dé"
+    },
+    "女子|noun": {
+      "pinyin": "nǚzǐ"
+    },
+    "玻璃|noun": {
+      "pinyin": "bōli"
+    },
+    "眼前|noun": {
+      "pinyin": "yǎnqián"
+    },
+    "機會|noun": {
+      "pinyin": "jīhuì"
+    },
+    "猴子|noun": {
+      "pinyin": "hóuzi"
+    },
+    "陷入|verb": {
+      "pinyin": "xiàn rù"
+    },
+    "健康|noun": {
+      "pinyin": "jiànkāng"
+    },
+    "良好|adjective": {
+      "pinyin": "liáng hǎo"
+    },
+    "大街|noun": {
+      "pinyin": "dà jiē"
+    },
+    "走出|verb": {
+      "pinyin": "zǒu chū"
+    },
+    "地下室|noun": {
+      "pinyin": "dì xià shì"
+    },
+    "最新|adjective": {
+      "pinyin": "zuì xīn"
+    },
+    "大麻|noun": {
+      "pinyin": "dà má"
+    },
+    "手段|noun": {
+      "pinyin": "shǒu duàn"
+    },
+    "展示|noun": {
+      "pinyin": "zhǎn shì"
+    },
+    "前往|verb": {
+      "pinyin": "qián wǎng"
+    },
+    "警察局|noun": {
+      "pinyin": "jǐng chá jú"
+    },
+    "主席|noun": {
+      "pinyin": "zhǔxí"
+    },
+    "呼叫|verb": {
+      "pinyin": "hū jiào"
+    },
+    "眼神|noun": {
+      "pinyin": "yǎn shén"
+    },
+    "老人|noun": {
+      "pinyin": "lǎo rén"
+    },
+    "新娘|noun": {
+      "pinyin": "xīnniáng"
+    },
+    "衣服|verb": {
+      "pinyin": "yīfu"
+    },
+    "魅力|noun": {
+      "pinyin": "mèi lì"
+    },
+    "形成|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "xíng chéng"
+    },
+    "辦法|noun": {
+      "pinyin": "bànfǎ"
+    },
+    "表演|noun": {
+      "pinyin": "biǎo yǎn"
+    },
+    "坐牢|verb": {
+      "pinyin": "zuòláo"
+    },
+    "兔子|noun": {
+      "pinyin": "tùzi"
+    },
+    "地板|noun": {
+      "pinyin": "dì bǎn"
+    },
+    "追求|verb": {
+      "pinyin": "zhuī qiú"
+    },
+    "角度|noun": {
+      "pinyin": "jiǎo dù"
+    },
+    "商量|verb": {
+      "pinyin": "shāngliang"
+    },
+    "只好|adverb": {
+      "pinyin": "zhǐ hǎo"
+    },
+    "名叫|verb": {
+      "pinyin": "míng jiào"
+    },
+    "大量|adjective": {
+      "pinyin": "dà liàng"
+    },
+    "圈子|noun": {
+      "pinyin": "quānzi"
+    },
+    "保佑|verb": {
+      "pinyin": "bǎo yòu"
+    },
+    "同一|adjective": {
+      "pinyin": "tóng yī"
+    },
+    "性命|noun": {
+      "pinyin": "xìng mìng"
+    },
+    "浴室|noun": {
+      "pinyin": "yùshì"
+    },
+    "陷阱|noun": {
+      "pinyin": "xiàn jǐng"
+    },
+    "具有|verb": {
+      "pinyin": "jù yǒu"
+    },
+    "小偷|noun": {
+      "pinyin": "xiǎo tōu"
+    },
+    "白天|noun": {
+      "pinyin": "báitiān"
+    },
+    "果然|adverb": {
+      "pinyin": "guǒ rán"
+    },
+    "下雨|verb": {
+      "pinyin": "xiàyǔ"
+    },
+    "座位|noun": {
+      "pinyin": "zuò wèi"
+    },
+    "可笑|adjective": {
+      "pinyin": "kě xiào"
+    },
+    "今日|noun": {
+      "pinyin": "jīn rì"
+    },
+    "修好|verb": {
+      "pinyin": "xiū hǎo"
+    },
+    "袋子|noun": {
+      "pinyin": "dài zi"
+    },
+    "今早|noun": {
+      "pinyin": "jīn zǎo"
+    },
+    "宗教|noun": {
+      "pinyin": "zōng jiào"
+    },
+    "老朋友|noun": {
+      "pinyin": "lǎo péng you"
+    },
+    "迪斯科|noun": {
+      "pinyin": "dí sī kē"
+    },
+    "保留|verb": {
+      "pinyin": "bǎo liú"
+    },
+    "毛病|noun": {
+      "pinyin": "máo bìng"
+    },
+    "女巫|noun": {
+      "pinyin": "nǚ wū"
+    },
+    "寂寞|adjective": {
+      "pinyin": "jì mò"
+    },
+    "主演|noun": {
+      "pinyin": "zhǔ yǎn"
+    },
+    "表明|verb": {
+      "pinyin": "biǎo míng"
+    },
+    "提起|verb": {
+      "pinyin": "tí qǐ"
+    },
+    "真相|verb": {
+      "pinyin": "zhēn xiàng"
+    },
+    "古老|adjective": {
+      "pinyin": "gǔ lǎo"
+    },
+    "想不到|adverb": {
+      "pinyin": "xiǎng bu dào"
+    },
+    "多次|adverb": {
+      "pinyin": "duō cì"
+    },
+    "情感|noun": {
+      "pinyin": "qíng gǎn"
+    },
+    "突然|adjective": {
+      "pinyin": "tū rán"
+    },
+    "下降|verb": {
+      "pinyin": "xià jiàng"
+    },
+    "建造|verb": {
+      "pinyin": "jiàn zào"
+    },
+    "大海|noun": {
+      "pinyin": "dà hǎi"
+    },
+    "吃掉|verb": {
+      "pinyin": "chī diào"
+    },
+    "修女|noun": {
+      "pinyin": "xiū nǚ"
+    },
+    "疾病|noun": {
+      "pinyin": "jí bìng"
+    },
+    "故意|adverb": {
+      "pinyin": "gùyì"
+    },
+    "保密|verb": {
+      "pinyin": "bǎo mì"
+    },
+    "月亮|noun": {
+      "pinyin": "yuèliang"
+    },
+    "可能性|noun": {
+      "pinyin": "kě néng xìng"
+    },
+    "安全|verb": {
+      "pinyin": "ān quán"
+    },
+    "基本上|adverb": {
+      "pinyin": "jī běn shang"
+    },
+    "演奏|verb": {
+      "pinyin": "yǎn zòu"
+    },
+    "精彩|adjective": {
+      "pinyin": "jīng cǎi"
+    },
+    "歡迎|verb": {
+      "pinyin": "huānyíng"
+    },
+    "自豪|adjective": {
+      "pinyin": "zì háo"
+    },
+    "第二天|noun": {
+      "pinyin": "dì èr tiān"
+    },
+    "重大|adjective": {
+      "pinyin": "zhòng dà"
+    },
+    "三明治|noun": {
+      "pinyin": "sān míng zhì"
+    },
+    "進去|verb": {
+      "romanization": "verb-complement"
+    },
+    "高中|noun": {
+      "pinyin": "gāo zhōng"
+    },
+    "高中|verb": {
+      "pinyin": "gāo zhōng"
+    },
+    "一堆|noun": {
+      "pinyin": "yīduī"
+    },
+    "文章|noun": {
+      "pinyin": "wénzhāng"
+    },
+    "令人|noun": {
+      "pinyin": "lìng rén"
+    },
+    "出口|verb": {
+      "pinyin": "chū kǒu"
+    },
+    "注意力|noun": {
+      "pinyin": "zhù yì lì"
+    },
+    "不安|adjective": {
+      "pinyin": "bù ān"
+    },
+    "乘客|noun": {
+      "pinyin": "chéng kè"
+    },
+    "盒子|noun": {
+      "pinyin": "hézi"
+    },
+    "大臣|noun": {
+      "pinyin": "dà chén"
+    },
+    "春天|noun": {
+      "pinyin": "chūntiān"
+    },
+    "皇后|noun": {
+      "pinyin": "huáng hòu"
+    },
+    "智慧|noun": {
+      "pinyin": "zhì huì"
+    },
+    "歌曲|noun": {
+      "pinyin": "gē qǔ"
+    },
+    "小鬼|noun": {
+      "pinyin": "xiǎo guǐ"
+    },
+    "看好|verb": {
+      "pinyin": "kān hǎo"
+    },
+    "分子|noun": {
+      "pinyin": "fèn zǐ"
+    },
+    "熟悉|verb": {
+      "pinyin": "shú xī"
+    },
+    "冬天|noun": {
+      "pinyin": "dōngtiān"
+    },
+    "善良|adjective": {
+      "pinyin": "shàn liáng"
+    },
+    "散步|verb": {
+      "pinyin": "sànbù"
+    },
+    "敏感|adjective": {
+      "pinyin": "mǐn gǎn"
+    },
+    "不了|adverb": {
+      "pinyin": "bùliǎo"
+    },
+    "有空|verb": {
+      "pinyin": "yǒu kòng"
+    },
+    "走廊|noun": {
+      "pinyin": "zǒu láng"
+    },
+    "同情|verb": {
+      "pinyin": "tóng qíng"
+    },
+    "結婚|verb": {
+      "pinyin": "jiéhūn"
+    },
+    "完整|adjective": {
+      "pinyin": "wán zhěng"
+    },
+    "男性|noun": {
+      "pinyin": "nán xìng"
+    },
+    "地下|noun": {
+      "pinyin": "dì xià"
+    },
+    "拍照|verb": {
+      "pinyin": "pāi zhào"
+    },
+    "淘汰|verb": {
+      "pinyin": "táo tài"
+    },
+    "問題|adjective": {
+      "pinyin": "wèntí"
+    },
+    "尊重|adjective": {
+      "pinyin": "zūn zhòng"
+    },
+    "套房|noun": {
+      "pinyin": "tào fáng"
+    },
+    "跟上|verb": {
+      "pinyin": "gēn shàng"
+    },
+    "功夫|noun": {
+      "pinyin": "gōngfu"
+    },
+    "玫瑰|noun": {
+      "pinyin": "méi guī"
+    },
+    "叛徒|noun": {
+      "pinyin": "pàn tú"
+    },
+    "明早|noun": {
+      "pinyin": "míng zǎo"
+    },
+    "方便|adjective": {
+      "pinyin": "fāngbiàn"
+    },
+    "保姆|noun": {
+      "pinyin": "bǎo mǔ"
+    },
+    "自私|adjective": {
+      "pinyin": "zì sī"
+    },
+    "批准|verb": {
+      "pinyin": "pī zhǔn"
+    },
+    "十分|noun": {
+      "pinyin": "shí fēn"
+    },
+    "嘲笑|verb": {
+      "pinyin": "cháo xiào"
+    },
+    "甜心|noun": {
+      "pinyin": "tián xīn"
+    },
+    "甜心|verb": {
+      "pinyin": "tián xīn"
+    },
+    "囚犯|noun": {
+      "pinyin": "qiú fàn"
+    },
+    "一面|adverb": {
+      "pinyin": "yī miàn"
+    },
+    "被告|noun": {
+      "pinyin": "bèigào"
+    },
+    "金曜日|noun": {
+      "pinyin": "Jīn yào rì"
+    },
+    "少女|noun": {
+      "pinyin": "shào nǚ"
+    },
+    "打仗|verb": {
+      "pinyin": "dǎzhàng"
+    },
+    "倒霉|adjective": {
+      "pinyin": "dǎo méi"
+    },
+    "坦克|noun": {
+      "pinyin": "tǎn kè"
+    },
+    "激情|noun": {
+      "pinyin": "jī qíng"
+    },
+    "暴露|verb": {
+      "pinyin": "bào lù"
+    },
+    "白色|adjective": {
+      "pinyin": "bái sè"
+    },
+    "如同|verb": {
+      "pinyin": "rú tóng"
+    },
+    "影片|noun": {
+      "pinyin": "yǐng piàn"
+    },
+    "星星|noun": {
+      "pinyin": "xīngxīng"
+    },
+    "何不|adverb": {
+      "pinyin": "hé bù"
+    },
+    "午夜|noun": {
+      "pinyin": "wǔ yè"
+    },
+    "胳膊|noun": {
+      "pinyin": "gēbo"
+    },
+    "癌症|noun": {
+      "pinyin": "áizhèng"
+    },
+    "保存|verb": {
+      "pinyin": "bǎo cún"
+    },
+    "支援|verb": {
+      "pinyin": "zhī yuán"
+    },
+    "作家|noun": {
+      "pinyin": "zuò jiā"
+    },
+    "遵守|verb": {
+      "pinyin": "zūn shǒu"
+    },
+    "同伴|noun": {
+      "pinyin": "tóng bàn"
+    },
+    "整理|verb": {
+      "pinyin": "zhěng lǐ"
+    },
+    "打倒|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "dǎ dǎo"
+    },
+    "遭到|verb": {
+      "pinyin": "zāo dào"
+    },
+    "逃避|verb": {
+      "pinyin": "táo bì"
+    },
+    "入侵|verb": {
+      "pinyin": "rù qīn"
+    },
+    "基本|adjective": {
+      "pinyin": "jī běn"
+    },
+    "利益|noun": {
+      "pinyin": "lì yì"
+    },
+    "把手|noun": {
+      "pinyin": "bǎ shǒu"
+    },
+    "把手|verb": {
+      "pinyin": "bǎ shǒu"
+    },
+    "甜蜜|adjective": {
+      "pinyin": "tián mì"
+    },
+    "究竟|adverb": {
+      "pinyin": "jiū jìng"
+    },
+    "究竟|noun": {
+      "pinyin": "jiū jìng"
+    },
+    "不得|verb": {
+      "pinyin": "bù dé"
+    },
+    "巨人|noun": {
+      "pinyin": "jù rén"
+    },
+    "扮演|verb": {
+      "pinyin": "bàn yǎn"
+    },
+    "人才|noun": {
+      "pinyin": "rén cái"
+    },
+    "冒犯|verb": {
+      "pinyin": "mào fàn"
+    },
+    "一人|adverb": {
+      "pinyin": "yī rén"
+    },
+    "幫助|verb": {
+      "pinyin": "bāngzhù"
+    },
+    "注射|verb": {
+      "pinyin": "zhù shè"
+    },
+    "母親|noun": {
+      "pinyin": "mǔqīn"
+    },
+    "作出|verb": {
+      "pinyin": "zuò chū"
+    },
+    "快速|adverb": {
+      "pinyin": "kuài sù"
+    },
+    "保安|verb": {
+      "pinyin": "Bǎo ān"
+    },
+    "迅速|adjective": {
+      "pinyin": "xùn sù"
+    },
+    "古怪|adjective": {
+      "pinyin": "gǔ guài"
+    },
+    "老是|adverb": {
+      "pinyin": "lǎo shi"
+    },
+    "唱片|noun": {
+      "pinyin": "chàng piàn"
+    },
+    "遵命|verb": {
+      "pinyin": "zūn mìng"
+    },
+    "旅程|noun": {
+      "pinyin": "lǚ chéng"
+    },
+    "材料|noun": {
+      "pinyin": "cái liào"
+    },
+    "代替|verb": {
+      "pinyin": "dài tì"
+    },
+    "度假|verb": {
+      "pinyin": "dù jià"
+    },
+    "小狗|noun": {
+      "pinyin": "xiǎo gǒu"
+    },
+    "米奇|noun": {
+      "pinyin": "Mǐ qí"
+    },
+    "微笑|verb": {
+      "pinyin": "wēi xiào"
+    },
+    "別人|noun": {
+      "pinyin": "biérén"
+    },
+    "罪行|noun": {
+      "pinyin": "zuì xíng"
+    },
+    "公民|noun": {
+      "pinyin": "gōng mín"
+    },
+    "幻想|noun": {
+      "pinyin": "huàn xiǎng"
+    },
+    "模特|noun": {
+      "pinyin": "mó tè"
+    },
+    "期望|noun": {
+      "pinyin": "qī wàng"
+    },
+    "冰箱|noun": {
+      "pinyin": "bīngxiāng"
+    },
+    "日期|noun": {
+      "pinyin": "rì qī"
+    },
+    "狗屁|noun": {
+      "pinyin": "gǒu pì"
+    },
+    "侮辱|verb": {
+      "pinyin": "wǔ rǔ"
+    },
+    "恐怖分子|noun": {
+      "pinyin": "kǒng bù fèn zǐ"
+    },
+    "航班|noun": {
+      "pinyin": "háng bān"
+    },
+    "人們|noun": {
+      "pinyin": "rénmen"
+    },
+    "凌晨|noun": {
+      "pinyin": "líng chén"
+    },
+    "翅膀|noun": {
+      "pinyin": "chìbǎng"
+    },
+    "市民|noun": {
+      "pinyin": "shì mín"
+    },
+    "天生|adjective": {
+      "pinyin": "tiān shēng"
+    },
+    "棒球|noun": {
+      "pinyin": "bàng qiú"
+    },
+    "一家人|noun": {
+      "pinyin": "yī jiā rén"
+    },
+    "符合|verb": {
+      "pinyin": "fú hé"
+    },
+    "努力|adverb": {
+      "pinyin": "nǔ lì"
+    },
+    "合理|adjective": {
+      "pinyin": "hé lǐ"
+    },
+    "害羞|verb": {
+      "pinyin": "hài xiū"
+    },
+    "浪漫|adjective": {
+      "pinyin": "làng màn"
+    },
+    "伯爵|noun": {
+      "pinyin": "bó jué"
+    },
+    "地位|noun": {
+      "pinyin": "dì wèi"
+    },
+    "求婚|verb": {
+      "pinyin": "qiú hūn"
+    },
+    "牛仔|noun": {
+      "pinyin": "niú zǎi"
+    },
+    "不住|adverb": {
+      "pinyin": "bùzhù"
+    },
+    "成熟|verb": {
+      "pinyin": "chéng shú"
+    },
+    "法院|noun": {
+      "pinyin": "fǎyuàn"
+    },
+    "肌肉|noun": {
+      "pinyin": "jī ròu"
+    },
+    "村子|noun": {
+      "pinyin": "cūnzi"
+    },
+    "背景|noun": {
+      "pinyin": "bèi jǐng"
+    },
+    "鬼魂|noun": {
+      "pinyin": "guǐ hún"
+    },
+    "奶酪|noun": {
+      "pinyin": "nǎilào"
+    },
+    "公路|noun": {
+      "pinyin": "gōnglù"
+    },
+    "心跳|verb": {
+      "pinyin": "xīn tiào"
+    },
+    "修理|verb": {
+      "pinyin": "xiū lǐ"
+    },
+    "肩膀|noun": {
+      "pinyin": "jiānbǎng"
+    },
+    "全新|adjective": {
+      "pinyin": "quán xīn"
+    },
+    "想法|verb": {
+      "pinyin": "xiǎng fǎ"
+    },
+    "居民|noun": {
+      "pinyin": "jū mín"
+    },
+    "表面|noun": {
+      "pinyin": "biǎo miàn"
+    },
+    "中午|noun": {
+      "pinyin": "zhōngwǔ"
+    },
+    "主任|noun": {
+      "pinyin": "zhǔ rèn"
+    },
+    "皇帝|noun": {
+      "pinyin": "huángdì"
+    },
+    "哭泣|verb": {
+      "pinyin": "kū qì"
+    },
+    "祝福|noun": {
+      "pinyin": "zhù fú"
+    },
+    "命令|verb": {
+      "pinyin": "mìnglìng"
+    },
+    "手套|noun": {
+      "pinyin": "shǒu tào"
+    },
+    "操作|verb": {
+      "pinyin": "cāo zuò"
+    },
+    "嫌犯|noun": {
+      "pinyin": "xián fàn"
+    },
+    "傻子|noun": {
+      "pinyin": "shǎzi"
+    },
+    "忘掉|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "wàngdiào"
+    },
+    "胖子|noun": {
+      "pinyin": "pàng zi"
+    },
+    "隧道|noun": {
+      "pinyin": "suì dào"
+    },
+    "房間|noun": {
+      "pinyin": "fángjiān"
+    },
+    "面具|noun": {
+      "pinyin": "miàn jù"
+    },
+    "大事|noun": {
+      "pinyin": "dà shì"
+    },
+    "角落|noun": {
+      "pinyin": "jiǎo luò"
+    },
+    "人群|noun": {
+      "pinyin": "rén qún"
+    },
+    "做生意|verb": {
+      "pinyin": "zuò shēng yì"
+    },
+    "胸部|noun": {
+      "pinyin": "xiōng bù"
+    },
+    "南方|noun": {
+      "pinyin": "nánfāng"
+    },
+    "星座|noun": {
+      "pinyin": "xīng zuò"
+    },
+    "失控|verb": {
+      "pinyin": "shī kòng"
+    },
+    "所知|noun": {
+      "pinyin": "suǒ zhī"
+    },
+    "性交|verb": {
+      "pinyin": "xìng jiāo"
+    },
+    "技巧|noun": {
+      "pinyin": "jì qiǎo"
+    },
+    "深刻|adjective": {
+      "pinyin": "shēn kè"
+    },
+    "上升|verb": {
+      "pinyin": "shàng shēng"
+    },
+    "小丑|noun": {
+      "pinyin": "xiǎo chǒu"
+    },
+    "解除|verb": {
+      "pinyin": "jiě chú"
+    },
+    "一道|adverb": {
+      "pinyin": "yī dào"
+    },
+    "大概|noun": {
+      "pinyin": "dà gài"
+    },
+    "便宜|adjective": {
+      "pinyin": "piányi"
+    },
+    "成立|verb": {
+      "pinyin": "chéng lì"
+    },
+    "向前|adverb": {
+      "pinyin": "xiàng qián"
+    },
+    "掌控|verb": {
+      "pinyin": "zhǎng kòng"
+    },
+    "梅雨|noun": {
+      "pinyin": "méi yǔ"
+    },
+    "一口|noun": {
+      "pinyin": "yī kǒu"
+    },
+    "卑鄙|adjective": {
+      "pinyin": "bēi bǐ"
+    },
+    "比起|verb": {
+      "pinyin": "bǐ qǐ"
+    },
+    "短信|noun": {
+      "pinyin": "duǎn xìn"
+    },
+    "交易|verb": {
+      "pinyin": "jiāo yì"
+    },
+    "模式|noun": {
+      "pinyin": "mó shì"
+    },
+    "永不|adverb": {
+      "pinyin": "yǒng bù"
+    },
+    "小朋友|noun": {
+      "pinyin": "xiǎo péng yǒu"
+    },
+    "不好|verb": {
+      "pinyin": "bù hǎo"
+    },
+    "有罪|adjective": {
+      "pinyin": "yǒu zuì"
+    },
+    "暴力|adjective": {
+      "pinyin": "bào lì"
+    },
+    "暴力|noun": {
+      "pinyin": "bào lì"
+    },
+    "提高|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "tí gāo"
+    },
+    "夫妻|noun": {
+      "pinyin": "fūqī"
+    },
+    "信用卡|noun": {
+      "pinyin": "xìn yòng kǎ"
+    },
+    "信仰|noun": {
+      "pinyin": "xìn yǎng"
+    },
+    "信仰|verb": {
+      "pinyin": "xìn yǎng"
+    },
+    "原本|noun": {
+      "pinyin": "yuán běn"
+    },
+    "黑人|verb": {
+      "pinyin": "hēirén"
+    },
+    "空中|adjective": {
+      "pinyin": "kōng zhōng"
+    },
+    "保護|verb": {
+      "pinyin": "bǎohù"
+    },
+    "舞蹈|noun": {
+      "pinyin": "wǔ dǎo"
+    },
+    "幸好|adverb": {
+      "pinyin": "xìng hǎo"
+    },
+    "英文|noun": {
+      "pinyin": "Yīng wén"
+    },
+    "上午|noun": {
+      "pinyin": "shàngwǔ"
+    },
+    "反而|adverb": {
+      "pinyin": "fǎn ér"
+    },
+    "海岸|noun": {
+      "pinyin": "hǎi àn"
+    },
+    "火箭|noun": {
+      "pinyin": "huǒ jiàn"
+    },
+    "可靠|adjective": {
+      "pinyin": "kě kào"
+    },
+    "碎片|noun": {
+      "pinyin": "suì piàn"
+    },
+    "至今|adverb": {
+      "pinyin": "zhì jīn"
+    },
+    "打中|verb": {
+      "pinyin": "dǎ zhòng"
+    },
+    "黑鬼|noun": {
+      "pinyin": "hēi guǐ"
+    },
+    "使命|noun": {
+      "pinyin": "shǐ mìng"
+    },
+    "可悲|adjective": {
+      "pinyin": "kě bēi"
+    },
+    "偷偷|adverb": {
+      "pinyin": "tōu tōu"
+    },
+    "看出|verb": {
+      "pinyin": "kàn chū"
+    },
+    "例如|verb": {
+      "pinyin": "lì rú"
+    },
+    "足以|adverb": {
+      "pinyin": "zú yǐ"
+    },
+    "老師|noun": {
+      "pinyin": "lǎoshī"
+    },
+    "嘴巴|noun": {
+      "pinyin": "zuǐba"
+    },
+    "扔掉|verb": {
+      "pinyin": "rēng diào"
+    },
+    "死刑|noun": {
+      "pinyin": "sǐxíng"
+    },
+    "醫院|noun": {
+      "pinyin": "yīyuàn"
+    },
+    "克拉|noun": {
+      "pinyin": "kè lā"
+    },
+    "助手|noun": {
+      "pinyin": "zhù shǒu"
+    },
+    "所在|noun": {
+      "pinyin": "suǒ zài"
+    },
+    "安非他命|noun": {
+      "pinyin": "ān fēi tā mìng"
+    },
+    "拿下|verb": {
+      "pinyin": "ná xià"
+    },
+    "等不及|verb": {
+      "pinyin": "děng bù jí"
+    },
+    "天上|noun": {
+      "pinyin": "tiānshàng"
+    },
+    "懦夫|noun": {
+      "pinyin": "nuò fū"
+    },
+    "提前|verb": {
+      "pinyin": "tí qián"
+    },
+    "不妙|adjective": {
+      "pinyin": "bù miào"
+    },
+    "公爵|noun": {
+      "pinyin": "gōng jué"
+    },
+    "下令|verb": {
+      "pinyin": "xià lìng"
+    },
+    "查看|verb": {
+      "pinyin": "chá kàn"
+    },
+    "薪水|noun": {
+      "pinyin": "xīnshuǐ"
+    },
+    "可疑|adjective": {
+      "pinyin": "kě yí"
+    },
+    "清除|verb": {
+      "pinyin": "qīng chú"
+    },
+    "政府|adjective": {
+      "pinyin": "zhèngfǔ"
+    },
+    "河粉|noun": {
+      "pinyin": "hé fěn"
+    },
+    "基因|noun": {
+      "pinyin": "jī yīn"
+    },
+    "皇上|noun": {
+      "pinyin": "huángshang"
+    },
+    "精彩|noun": {
+      "pinyin": "jīng cǎi"
+    },
+    "高興|adjective": {
+      "pinyin": "gāoxìng"
+    },
+    "按摩|verb": {
+      "pinyin": "àn mó"
+    },
+    "胡扯|verb": {
+      "pinyin": "hú chě"
+    },
+    "指示|verb": {
+      "pinyin": "zhǐ shì"
+    },
+    "足球|noun": {
+      "pinyin": "zúqiú"
+    },
+    "以下|noun": {
+      "pinyin": "yǐ xià"
+    },
+    "深呼吸|verb": {
+      "pinyin": "shēn hū xī"
+    },
+    "行星|noun": {
+      "pinyin": "xíng xīng"
+    },
+    "透露|verb": {
+      "pinyin": "tòu lù"
+    },
+    "杯子|noun": {
+      "pinyin": "bēi zi"
+    },
+    "罪名|noun": {
+      "pinyin": "zuì míng"
+    },
+    "妖怪|noun": {
+      "pinyin": "yāoguài"
+    },
+    "收回|verb": {
+      "pinyin": "shōu huí"
+    },
+    "姓名|noun": {
+      "pinyin": "xìng míng"
+    },
+    "新人|noun": {
+      "pinyin": "xīn rén"
+    },
+    "阿里巴巴|noun": {
+      "pinyin": "ā lǐ Bā bā"
+    },
+    "跪下|verb": {
+      "pinyin": "guì xia"
+    },
+    "明年|noun": {
+      "pinyin": "míngnián"
+    },
+    "北方|noun": {
+      "pinyin": "běifāng"
+    },
+    "出席|verb": {
+      "pinyin": "chū xí"
+    },
+    "電影|noun": {
+      "pinyin": "diànyǐng"
+    },
+    "奇妙|adjective": {
+      "pinyin": "qí miào"
+    },
+    "水平|noun": {
+      "pinyin": "shuǐ píng"
+    },
+    "假期|noun": {
+      "pinyin": "jià qī"
+    },
+    "接吻|verb": {
+      "pinyin": "jiē wěn"
+    },
+    "播放|verb": {
+      "pinyin": "bō fàng"
+    },
+    "冰淇淋|noun": {
+      "pinyin": "bīngqílín"
+    },
+    "照看|verb": {
+      "pinyin": "zhào kàn"
+    },
+    "脆弱|adjective": {
+      "pinyin": "cuì ruò"
+    },
+    "樣子|noun": {
+      "pinyin": "yàngzi"
+    },
+    "意志|noun": {
+      "pinyin": "yì zhì"
+    },
+    "基金|noun": {
+      "pinyin": "jī jīn"
+    },
+    "工程|noun": {
+      "pinyin": "gōng chéng"
+    },
+    "朱古力|noun": {
+      "pinyin": "zhū gǔ lì"
+    },
+    "青年|noun": {
+      "pinyin": "qīng nián"
+    },
+    "食品|noun": {
+      "pinyin": "shí pǐn"
+    },
+    "辛苦|adjective": {
+      "pinyin": "xīn kǔ"
+    },
+    "岩石|noun": {
+      "pinyin": "yán shí"
+    },
+    "平常|adjective": {
+      "pinyin": "píng cháng"
+    },
+    "征服|verb": {
+      "pinyin": "zhēng fú"
+    },
+    "武士|noun": {
+      "pinyin": "wǔ shì"
+    },
+    "身材|noun": {
+      "pinyin": "shēn cái"
+    },
+    "查出|verb": {
+      "pinyin": "chá chū"
+    },
+    "上司|noun": {
+      "pinyin": "shàng si"
+    },
+    "娃娃|noun": {
+      "pinyin": "wáwa"
+    },
+    "小屋|noun": {
+      "pinyin": "xiǎo wū"
+    },
+    "怎能|adverb": {
+      "pinyin": "zěn néng"
+    },
+    "形式|noun": {
+      "pinyin": "xíng shì"
+    },
+    "做法|noun": {
+      "pinyin": "zuò fǎ"
+    },
+    "聚集|verb": {
+      "pinyin": "jù jí"
+    },
+    "遭受|verb": {
+      "pinyin": "zāo shòu"
+    },
+    "分析|noun": {
+      "pinyin": "fēn xī"
+    },
+    "老虎|noun": {
+      "pinyin": "lǎohǔ"
+    },
+    "荒唐|adjective": {
+      "pinyin": "huāng táng"
+    },
+    "政策|noun": {
+      "pinyin": "zhèngcè"
+    },
+    "科技|noun": {
+      "pinyin": "kē jì"
+    },
+    "表情|noun": {
+      "pinyin": "biǎo qíng"
+    },
+    "表情|verb": {
+      "pinyin": "biǎo qíng"
+    },
+    "老二|noun": {
+      "pinyin": "lǎo'èr"
+    },
+    "迷失|verb": {
+      "pinyin": "mí shī"
+    },
+    "患者|noun": {
+      "pinyin": "huàn zhě"
+    },
+    "被迫|verb": {
+      "pinyin": "bèi pò"
+    },
+    "性格|noun": {
+      "pinyin": "xìng gé"
+    },
+    "巧合|verb": {
+      "pinyin": "qiǎo hé"
+    },
+    "以上|noun": {
+      "pinyin": "yǐ shàng"
+    },
+    "通心粉|noun": {
+      "pinyin": "tōng xīn fěn"
+    },
+    "遇上|verb": {
+      "pinyin": "yù shàng"
+    },
+    "除掉|verb": {
+      "pinyin": "chú diào"
+    },
+    "喜歡|adjective": {
+      "pinyin": "xǐhuan"
+    },
+    "加速|verb": {
+      "pinyin": "jiā sù"
+    },
+    "和平|adjective": {
+      "pinyin": "hépíng"
+    },
+    "沉默|verb": {
+      "pinyin": "chén mò"
+    },
+    "告知|verb": {
+      "pinyin": "gào zhī"
+    },
+    "大道|noun": {
+      "pinyin": "dà dào"
+    },
+    "一路|adverb": {
+      "pinyin": "yī lù"
+    },
+    "此刻|adverb": {
+      "pinyin": "cǐ kè"
+    },
+    "尊敬|verb": {
+      "pinyin": "zūn jìng"
+    },
+    "痛苦|noun": {
+      "pinyin": "tòng kǔ"
+    },
+    "位子|noun": {
+      "pinyin": "wèi zi"
+    },
+    "真理|noun": {
+      "pinyin": "zhēn lǐ"
+    },
+    "本事|noun": {
+      "pinyin": "běn shì"
+    },
+    "首相|noun": {
+      "pinyin": "shǒu xiàng"
+    },
+    "等候|verb": {
+      "pinyin": "děng hòu"
+    },
+    "祖母|noun": {
+      "pinyin": "zǔmǔ"
+    },
+    "理想|noun": {
+      "pinyin": "lǐ xiǎng"
+    },
+    "小事|noun": {
+      "pinyin": "xiǎoshì"
+    },
+    "學校|noun": {
+      "pinyin": "xuéxiào"
+    },
+    "不爽|adjective": {
+      "pinyin": "bù shuǎng"
+    },
+    "不明|verb": {
+      "pinyin": "bù míng"
+    },
+    "祖父|noun": {
+      "pinyin": "zǔfù"
+    },
+    "燃料|noun": {
+      "pinyin": "rán liào"
+    },
+    "失望|adjective": {
+      "pinyin": "shī wàng"
+    },
+    "解放|verb": {
+      "pinyin": "jiě fàng"
+    },
+    "石油|noun": {
+      "pinyin": "shíyóu"
+    },
+    "皇家|noun": {
+      "pinyin": "huáng jiā"
+    },
+    "金子|noun": {
+      "pinyin": "jīnzi"
+    },
+    "超人|noun": {
+      "pinyin": "Chāo rén"
+    },
+    "投入|verb": {
+      "pinyin": "tóu rù"
+    },
+    "非得|verb": {
+      "pinyin": "fēi děi"
+    },
+    "缺乏|verb": {
+      "pinyin": "quē fá"
+    },
+    "女神|noun": {
+      "pinyin": "nǚ shén"
+    },
+    "牛排|noun": {
+      "pinyin": "niú pái"
+    },
+    "喝茶|verb": {
+      "pinyin": "hēchá"
+    },
+    "國家|noun": {
+      "pinyin": "guójiā"
+    },
+    "法案|noun": {
+      "pinyin": "fǎ àn"
+    },
+    "吉他|noun": {
+      "pinyin": "jí tā"
+    },
+    "排球|noun": {
+      "pinyin": "páiqiú"
+    },
+    "星期五|noun": {
+      "pinyin": "xīngqīwǔ"
+    },
+    "聲音|noun": {
+      "pinyin": "shēngyīn"
+    },
+    "生物|adjective": {
+      "pinyin": "shēng wù"
+    },
+    "搞笑|verb": {
+      "pinyin": "gǎo xiào"
+    },
+    "精神病|noun": {
+      "pinyin": "jīng shén bìng"
+    },
+    "蜘蛛|noun": {
+      "pinyin": "zhīzhū"
+    },
+    "心意|noun": {
+      "pinyin": "xīn yì"
+    },
+    "情形|noun": {
+      "pinyin": "qíng xing"
+    },
+    "倒下|verb": {
+      "pinyin": "dǎo xià"
+    },
+    "例子|noun": {
+      "pinyin": "lì zi"
+    },
+    "背泳|noun": {
+      "pinyin": "bèi yǒng"
+    },
+    "背泳|verb": {
+      "pinyin": "bèi yǒng"
+    },
+    "模仿|verb": {
+      "pinyin": "mó fǎng"
+    },
+    "室友|noun": {
+      "pinyin": "shì yǒu"
+    },
+    "反革命|adjective": {
+      "pinyin": "fǎn gé mìng"
+    },
+    "信念|noun": {
+      "pinyin": "xìn niàn"
+    },
+    "股票|noun": {
+      "pinyin": "gǔ piào"
+    },
+    "仁慈|adjective": {
+      "pinyin": "rén cí"
+    },
+    "探索|verb": {
+      "pinyin": "tàn suǒ"
+    },
+    "毛巾|noun": {
+      "pinyin": "máojīn"
+    },
+    "吸毒|verb": {
+      "pinyin": "xī dú"
+    },
+    "看見|verb": {
+      "romanization": "verb-complement"
+    },
+    "通道|noun": {
+      "pinyin": "tōng dào"
+    },
+    "嫌疑人|noun": {
+      "pinyin": "xián yí rén"
+    },
+    "星期六|noun": {
+      "pinyin": "xīngqīliù"
+    },
+    "激烈|adjective": {
+      "pinyin": "jī liè"
+    },
+    "迷路|verb": {
+      "pinyin": "mílù"
+    },
+    "通常|adjective": {
+      "pinyin": "tōng cháng"
+    },
+    "成交|verb": {
+      "pinyin": "chéng jiāo"
+    },
+    "高手|noun": {
+      "pinyin": "gāo shǒu"
+    },
+    "胡子|noun": {
+      "pinyin": "hú zi"
+    },
+    "吵醒|verb": {
+      "pinyin": "chǎo xǐng"
+    },
+    "相遇|verb": {
+      "pinyin": "xiāng yù"
+    },
+    "搬家|verb": {
+      "pinyin": "bānjiā"
+    },
+    "救援|verb": {
+      "pinyin": "jiù yuán"
+    },
+    "追捕|verb": {
+      "pinyin": "zhuī bǔ"
+    },
+    "大夫|noun": {
+      "pinyin": "dàifu"
+    },
+    "普通人|noun": {
+      "pinyin": "pǔ tōng rén"
+    },
+    "幸存者|noun": {
+      "pinyin": "xìng cún zhě"
+    },
+    "坦白|verb": {
+      "pinyin": "tǎn bái"
+    },
+    "拼命|verb": {
+      "pinyin": "pīn mìng"
+    },
+    "全身|verb": {
+      "pinyin": "quán shēn"
+    },
+    "物品|noun": {
+      "pinyin": "wù pǐn"
+    },
+    "美金|noun": {
+      "pinyin": "měi jīn"
+    },
+    "不幸|adjective": {
+      "pinyin": "bù xìng"
+    },
+    "不幸|adverb": {
+      "pinyin": "bù xìng"
+    },
+    "不幸|noun": {
+      "pinyin": "bù xìng"
+    },
+    "不幸|verb": {
+      "pinyin": "bù xìng"
+    },
+    "搬走|verb": {
+      "pinyin": "bān zǒu"
+    },
+    "英寸|noun": {
+      "pinyin": "yīng cùn"
+    },
+    "方案|noun": {
+      "pinyin": "fāng àn"
+    },
+    "清醒|adjective": {
+      "pinyin": "qīng xǐng"
+    },
+    "清醒|verb": {
+      "pinyin": "qīng xǐng"
+    },
+    "王后|noun": {
+      "pinyin": "wáng hòu"
+    },
+    "西部|noun": {
+      "pinyin": "xī bù"
+    },
+    "演唱|verb": {
+      "pinyin": "yǎn chàng"
+    },
+    "閉嘴|verb": {
+      "pinyin": "bìzuǐ"
+    },
+    "人性|noun": {
+      "pinyin": "rén xìng"
+    },
+    "公正|adjective": {
+      "pinyin": "gōng zhèng"
+    },
+    "找回|verb": {
+      "pinyin": "zhǎo huí"
+    },
+    "陷害|verb": {
+      "pinyin": "xiàn hài"
+    },
+    "比賽|noun": {
+      "pinyin": "bǐsài"
+    },
+    "一共|adverb": {
+      "pinyin": "yīgòng"
+    },
+    "大型|adjective": {
+      "pinyin": "dà xíng"
+    },
+    "好些|adjective": {
+      "pinyin": "hǎo xiē"
+    },
+    "笑容|noun": {
+      "pinyin": "xiào róng"
+    },
+    "老爹|noun": {
+      "pinyin": "lǎo diē"
+    },
+    "保住|verb": {
+      "pinyin": "bǎo zhù"
+    },
+    "吩咐|verb": {
+      "pinyin": "fēn fu"
+    },
+    "招呼|verb": {
+      "pinyin": "zhāo hu"
+    },
+    "水果|noun": {
+      "pinyin": "shuǐguǒ"
+    },
+    "共產黨|noun": {
+      "pinyin": "gòngchǎndǎng"
+    },
+    "下班|verb": {
+      "pinyin": "xià bān"
+    },
+    "全世界|adjective": {
+      "pinyin": "quán shì jiè"
+    },
+    "明智|adjective": {
+      "pinyin": "míng zhì"
+    },
+    "海上|adjective": {
+      "pinyin": "hǎi shàng"
+    },
+    "早已|adverb": {
+      "pinyin": "zǎo yǐ"
+    },
+    "直播|verb": {
+      "pinyin": "zhí bō"
+    },
+    "位置|verb": {
+      "pinyin": "wèi zhi"
+    },
+    "昏迷|verb": {
+      "pinyin": "hūn mí"
+    },
+    "受害人|noun": {
+      "pinyin": "shòu hài rén"
+    },
+    "耐心|adjective": {
+      "pinyin": "nài xīn"
+    },
+    "耐心|noun": {
+      "pinyin": "nài xīn"
+    },
+    "防止|verb": {
+      "pinyin": "fáng zhǐ"
+    },
+    "狗狗|noun": {
+      "pinyin": "gǒu gōu"
+    },
+    "淹死|verb": {
+      "pinyin": "yānsǐ"
+    },
+    "清白|adjective": {
+      "pinyin": "qīng bái"
+    },
+    "天天|adverb": {
+      "pinyin": "tiāntiān"
+    },
+    "出路|noun": {
+      "pinyin": "chū lù"
+    },
+    "棺材|noun": {
+      "pinyin": "guāncai"
+    },
+    "玉米|noun": {
+      "pinyin": "yùmǐ"
+    },
+    "留意|verb": {
+      "pinyin": "liú yì"
+    },
+    "高潮|noun": {
+      "pinyin": "gāo cháo"
+    },
+    "指望|noun": {
+      "pinyin": "zhǐwàng"
+    },
+    "指望|verb": {
+      "pinyin": "zhǐwàng"
+    },
+    "犯罪|adjective": {
+      "pinyin": "fànzuì"
+    },
+    "恐怖|adjective": {
+      "pinyin": "kǒng bù"
+    },
+    "人口|noun": {
+      "pinyin": "rén kǒu"
+    },
+    "能夠|verb": {
+      "pinyin": "nénggòu"
+    },
+    "人手|noun": {
+      "pinyin": "rén shǒu"
+    },
+    "一眼|noun": {
+      "pinyin": "yī yǎn"
+    },
+    "人士|noun": {
+      "pinyin": "rén shì"
+    },
+    "打工|verb": {
+      "pinyin": "dǎ gōng"
+    },
+    "形象|noun": {
+      "pinyin": "xíng xiàng"
+    },
+    "天下|noun": {
+      "pinyin": "tiānxià"
+    },
+    "平安|adjective": {
+      "pinyin": "Píng ān"
+    },
+    "出售|verb": {
+      "pinyin": "chū shòu"
+    },
+    "外婆|noun": {
+      "pinyin": "wàipó"
+    },
+    "卡住|verb": {
+      "pinyin": "kǎ zhù"
+    },
+    "星期天|noun": {
+      "pinyin": "xīngqītiān"
+    },
+    "涉及|verb": {
+      "pinyin": "shè jí"
+    },
+    "制服|noun": {
+      "pinyin": "zhìfú"
+    },
+    "制服|verb": {
+      "pinyin": "zhìfú"
+    },
+    "植物|noun": {
+      "pinyin": "zhíwù"
+    },
+    "一行|noun": {
+      "pinyin": "yī xíng"
+    },
+    "工作室|noun": {
+      "pinyin": "gōng zuò shì"
+    },
+    "合同|noun": {
+      "pinyin": "hé tong"
+    },
+    "值得|adjective": {
+      "pinyin": "zhí de"
+    },
+    "中央|noun": {
+      "pinyin": "zhōng yāng"
+    },
+    "事實|noun": {
+      "pinyin": "shìshí"
+    },
+    "需求|noun": {
+      "pinyin": "xū qiú"
+    },
+    "居住|verb": {
+      "pinyin": "jū zhù"
+    },
+    "商人|noun": {
+      "pinyin": "shāng rén"
+    },
+    "大小|noun": {
+      "pinyin": "dà xiǎo"
+    },
+    "身體|noun": {
+      "pinyin": "shēntǐ"
+    },
+    "得出|verb": {
+      "pinyin": "dé chū"
+    },
+    "瓶子|noun": {
+      "pinyin": "píngzi"
+    },
+    "非法|adjective": {
+      "pinyin": "fēi fǎ"
+    },
+    "非法|adverb": {
+      "pinyin": "fēi fǎ"
+    },
+    "安慰|verb": {
+      "pinyin": "ān wèi"
+    },
+    "偶像|noun": {
+      "pinyin": "ǒu xiàng"
+    },
+    "前途|noun": {
+      "pinyin": "qián tú"
+    },
+    "一人|noun": {
+      "pinyin": "yī rén"
+    },
+    "一向|adverb": {
+      "pinyin": "yī xiàng"
+    },
+    "分析|verb": {
+      "pinyin": "fēn xī"
+    },
+    "感情|verb": {
+      "pinyin": "gǎn qíng"
+    },
+    "火焰|noun": {
+      "pinyin": "huǒ yàn"
+    },
+    "引爆|verb": {
+      "pinyin": "yǐn bào"
+    },
+    "怪胎|noun": {
+      "pinyin": "guài tāi"
+    },
+    "外表|noun": {
+      "pinyin": "wài biǎo"
+    },
+    "首次|noun": {
+      "pinyin": "shǒu cì"
+    },
+    "故障|noun": {
+      "pinyin": "gù zhàng"
+    },
+    "有名|adjective": {
+      "pinyin": "yǒumíng"
+    },
+    "基督徒|noun": {
+      "pinyin": "Jī dū tú"
+    },
+    "舅舅|noun": {
+      "pinyin": "jiùjiu"
+    },
+    "停手|verb": {
+      "pinyin": "tíng shǒu"
+    },
+    "星期一|noun": {
+      "pinyin": "xīngqīyī"
+    },
+    "混球|noun": {
+      "pinyin": "hún qiú"
+    },
+    "共同|adjective": {
+      "pinyin": "gòng tóng"
+    },
+    "共同|adverb": {
+      "pinyin": "gòng tóng"
+    },
+    "伸出|verb": {
+      "pinyin": "shēn chū"
+    },
+    "通往|verb": {
+      "pinyin": "tōng wǎng"
+    },
+    "每人|noun": {
+      "pinyin": "měi rén"
+    },
+    "蟹黃|noun": {
+      "pinyin": "xièhuáng"
+    },
+    "迎接|verb": {
+      "pinyin": "yíng jiē"
+    },
+    "方便|verb": {
+      "pinyin": "fāngbiàn"
+    },
+    "目的地|noun": {
+      "pinyin": "mù dì dì"
+    },
+    "功能|noun": {
+      "pinyin": "gōng néng"
+    },
+    "忍不住|verb": {
+      "pinyin": "rěn bu zhù"
+    },
+    "沙拉|noun": {
+      "pinyin": "shā lā"
+    },
+    "怪人|noun": {
+      "pinyin": "guài rén"
+    },
+    "事先|adverb": {
+      "pinyin": "shìxiān"
+    },
+    "久等|verb": {
+      "pinyin": "jiǔ děng"
+    },
+    "停留|verb": {
+      "pinyin": "tíng liú"
+    },
+    "大象|noun": {
+      "pinyin": "dà xiàng"
+    },
+    "美味|adjective": {
+      "pinyin": "měi wèi"
+    },
+    "美味|noun": {
+      "pinyin": "měi wèi"
+    },
+    "出局|verb": {
+      "pinyin": "chū jú"
+    },
+    "追查|verb": {
+      "pinyin": "zhuī chá"
+    },
+    "住口|verb": {
+      "pinyin": "zhù kǒu"
+    },
+    "口音|noun": {
+      "pinyin": "kǒuyīn"
+    },
+    "全家|noun": {
+      "pinyin": "Quán jiā"
+    },
+    "半夜|noun": {
+      "pinyin": "bànyè"
+    },
+    "可卡因|noun": {
+      "pinyin": "kě kǎ yīn"
+    },
+    "海里|noun": {
+      "pinyin": "hǎi lǐ"
+    },
+    "叫醒|verb": {
+      "pinyin": "jiào xǐng"
+    },
+    "何必|adverb": {
+      "pinyin": "hé bì"
+    },
+    "少年|noun": {
+      "pinyin": "shàonián"
+    },
+    "接收|verb": {
+      "pinyin": "jiē shōu"
+    },
+    "仿宋|noun": {
+      "pinyin": "fǎng Sòng"
+    },
+    "大地|noun": {
+      "pinyin": "dà dì"
+    },
+    "大多|adverb": {
+      "pinyin": "dà duō"
+    },
+    "瓣膜|noun": {
+      "pinyin": "bàn mó"
+    },
+    "作者|noun": {
+      "pinyin": "zuò zhě"
+    },
+    "勇士|noun": {
+      "pinyin": "yǒng shì"
+    },
+    "珍惜|verb": {
+      "pinyin": "zhēn xī"
+    },
+    "睡覺|verb": {
+      "pinyin": "shuìjiào"
+    },
+    "蜂蜜|noun": {
+      "pinyin": "fēngmì"
+    },
+    "底下|noun": {
+      "pinyin": "dǐxià"
+    },
+    "婆婆|noun": {
+      "pinyin": "pópo"
+    },
+    "南部|noun": {
+      "pinyin": "nán bù"
+    },
+    "消除|verb": {
+      "pinyin": "xiāo chú"
+    },
+    "土豆|noun": {
+      "pinyin": "tǔ dòu"
+    },
+    "放屁|verb": {
+      "pinyin": "fàng pì"
+    },
+    "概念|noun": {
+      "pinyin": "gài niàn"
+    },
+    "汽油|noun": {
+      "pinyin": "qìyóu"
+    },
+    "祖先|noun": {
+      "pinyin": "zǔ xiān"
+    },
+    "童年|noun": {
+      "pinyin": "tóng nián"
+    },
+    "行事|verb": {
+      "pinyin": "xíng shì"
+    },
+    "歌唱|verb": {
+      "pinyin": "gē chàng"
+    },
+    "合作|adjective": {
+      "pinyin": "hé zuò"
+    },
+    "房租|noun": {
+      "pinyin": "fáng zū"
+    },
+    "生日|verb": {
+      "pinyin": "shēngrì"
+    },
+    "人渣|noun": {
+      "pinyin": "rén zhā"
+    },
+    "一下子|adverb": {
+      "pinyin": "yī xià zi"
+    },
+    "打扮|noun": {
+      "pinyin": "dǎ ban"
+    },
+    "打扮|verb": {
+      "pinyin": "dǎ ban"
+    },
+    "過去|noun": {
+      "pinyin": "guòqù"
+    },
+    "過去|verb": {
+      "pinyin": "guòqù"
+    },
+    "得分|verb": {
+      "pinyin": "dé fēn"
+    },
+    "西天|noun": {
+      "pinyin": "Xī tiān"
+    },
+    "服用|verb": {
+      "pinyin": "fú yòng"
+    },
+    "革命|adjective": {
+      "pinyin": "gémìng"
+    },
+    "福特|noun": {
+      "pinyin": "Fú tè"
+    },
+    "秩序|noun": {
+      "pinyin": "zhì xù"
+    },
+    "死神|noun": {
+      "pinyin": "sǐ shén"
+    },
+    "穆斯林|noun": {
+      "pinyin": "mùsīlín"
+    },
+    "展示|verb": {
+      "pinyin": "zhǎn shì"
+    },
+    "小人|noun": {
+      "pinyin": "xiǎo rén"
+    },
+    "滋味|noun": {
+      "pinyin": "zī wèi"
+    },
+    "畜生|noun": {
+      "pinyin": "chù sheng"
+    },
+    "打招呼|verb": {
+      "pinyin": "dǎ zhāo hu"
+    },
+    "防守|verb": {
+      "pinyin": "fáng shǒu"
+    },
+    "陌生|adjective": {
+      "pinyin": "mò shēng"
+    },
+    "交代|verb": {
+      "pinyin": "jiāodài"
+    },
+    "院子|noun": {
+      "pinyin": "yuànzi"
+    },
+    "埋葬|verb": {
+      "pinyin": "mái zàng"
+    },
+    "虐待|verb": {
+      "pinyin": "nüè dài"
+    },
+    "主語|noun": {
+      "pinyin": "zhǔyǔ"
+    },
+    "呼叫|noun": {
+      "pinyin": "hū jiào"
+    },
+    "三文治|noun": {
+      "pinyin": "sān wén zhì"
+    },
+    "地毯|noun": {
+      "pinyin": "dì tǎn"
+    },
+    "私下|adverb": {
+      "pinyin": "sī xià"
+    },
+    "墓地|noun": {
+      "pinyin": "mù dì"
+    },
+    "隔壁|noun": {
+      "pinyin": "gébì"
+    },
+    "超市|noun": {
+      "pinyin": "chāo shì"
+    },
+    "自信|adjective": {
+      "pinyin": "zì xìn"
+    },
+    "指出|verb": {
+      "pinyin": "zhǐ chū"
+    },
+    "模型|noun": {
+      "pinyin": "mó xíng"
+    },
+    "主角|noun": {
+      "pinyin": "zhǔ jué"
+    },
+    "接管|verb": {
+      "pinyin": "jiē guǎn"
+    },
+    "版本|noun": {
+      "pinyin": "bǎn běn"
+    },
+    "重建|verb": {
+      "pinyin": "chóng jiàn"
+    },
+    "休假|verb": {
+      "pinyin": "xiū jià"
+    },
+    "香蕉|noun": {
+      "pinyin": "xiāngjiāo"
+    },
+    "瓦特|verb": {
+      "pinyin": "wǎ tè"
+    },
+    "相比|verb": {
+      "pinyin": "xiāng bǐ"
+    },
+    "看待|verb": {
+      "pinyin": "kàn dài"
+    },
+    "蝙蝠|noun": {
+      "pinyin": "biānfú"
+    },
+    "道德|noun": {
+      "pinyin": "dào dé"
+    },
+    "清晰|adjective": {
+      "pinyin": "qīng xī"
+    },
+    "眼中|noun": {
+      "pinyin": "yǎn zhōng"
+    },
+    "老大|adjective": {
+      "pinyin": "lǎo dà"
+    },
+    "老大|adverb": {
+      "pinyin": "lǎo dà"
+    },
+    "性感|noun": {
+      "pinyin": "xìng gǎn"
+    },
+    "只管|adverb": {
+      "pinyin": "zhǐ guǎn"
+    },
+    "香水|noun": {
+      "pinyin": "xiāng shuǐ"
+    },
+    "光明|adjective": {
+      "pinyin": "guāng míng"
+    },
+    "教皇|noun": {
+      "pinyin": "jiào huáng"
+    },
+    "交易|adjective": {
+      "pinyin": "jiāo yì"
+    },
+    "青春|noun": {
+      "pinyin": "qīng chūn"
+    },
+    "出名|verb": {
+      "pinyin": "chūmíng"
+    },
+    "口味|noun": {
+      "pinyin": "kǒu wèi"
+    },
+    "面子|noun": {
+      "pinyin": "miàn zi"
+    },
+    "方言|noun": {
+      "pinyin": "Fāng yán"
+    },
+    "算是|adverb": {
+      "pinyin": "suàn shì"
+    },
+    "平民|noun": {
+      "pinyin": "píng mín"
+    },
+    "修改|verb": {
+      "pinyin": "xiū gǎi"
+    },
+    "印第安人|noun": {
+      "pinyin": "Yìn dì ān rén"
+    },
+    "未婚夫|noun": {
+      "pinyin": "wèi hūn fū"
+    },
+    "一同|adverb": {
+      "pinyin": "yītóng"
+    },
+    "取代|verb": {
+      "pinyin": "qǔ dài"
+    },
+    "取出|verb": {
+      "pinyin": "qǔ chū"
+    },
+    "尊敬|adjective": {
+      "pinyin": "zūn jìng"
+    },
+    "放心|adjective": {
+      "pinyin": "fàng xīn"
+    },
+    "有意|verb": {
+      "pinyin": "yǒu yì"
+    },
+    "克服|verb": {
+      "pinyin": "kè fú"
+    },
+    "水手|noun": {
+      "pinyin": "shuǐshǒu"
+    },
+    "牛肉|noun": {
+      "pinyin": "niúròu"
+    },
+    "打開|verb": {
+      "romanization": "verb-complement"
+    },
+    "元首|noun": {
+      "pinyin": "yuán shǒu"
+    },
+    "官方|noun": {
+      "pinyin": "guān fāng"
+    },
+    "召集|verb": {
+      "pinyin": "zhào jí"
+    },
+    "排除|verb": {
+      "pinyin": "pái chú"
+    },
+    "操心|verb": {
+      "pinyin": "cāo xīn"
+    },
+    "酒鬼|noun": {
+      "pinyin": "jiǔ guǐ"
+    },
+    "收入|noun": {
+      "pinyin": "shōu rù"
+    },
+    "一身|noun": {
+      "pinyin": "yī shēn"
+    },
+    "寒冷|adjective": {
+      "pinyin": "hán lěng"
+    },
+    "北部|noun": {
+      "pinyin": "běi bù"
+    },
+    "好友|noun": {
+      "pinyin": "hǎo yǒu"
+    },
+    "老弟|noun": {
+      "pinyin": "lǎo dì"
+    },
+    "不理|verb": {
+      "pinyin": "bù lǐ"
+    },
+    "牢房|noun": {
+      "pinyin": "láo fáng"
+    },
+    "選擇|verb": {
+      "pinyin": "xuǎnzé"
+    },
+    "利用|noun": {
+      "pinyin": "lì yòng"
+    },
+    "侵犯|verb": {
+      "pinyin": "qīn fàn"
+    },
+    "首席|adjective": {
+      "pinyin": "shǒu xí"
+    },
+    "各地|noun": {
+      "pinyin": "gè dì"
+    },
+    "哈哈|adjective": {
+      "pinyin": "hā hā"
+    },
+    "哈哈|adverb": {
+      "pinyin": "hā hā"
+    },
+    "大不了|adjective": {
+      "pinyin": "dà bu liǎo"
+    },
+    "大不了|adverb": {
+      "pinyin": "dà bu liǎo"
+    },
+    "上船|verb": {
+      "pinyin": "shàng chuán"
+    },
+    "改天|adverb": {
+      "pinyin": "gǎitiān"
+    },
+    "眼光|noun": {
+      "pinyin": "yǎn guāng"
+    },
+    "好久|adverb": {
+      "pinyin": "hǎojiǔ"
+    },
+    "靴子|noun": {
+      "pinyin": "xuē zi"
+    },
+    "四周|noun": {
+      "pinyin": "sì zhōu"
+    },
+    "影子|noun": {
+      "pinyin": "yǐngzi"
+    },
+    "看不出|verb": {
+      "pinyin": "kàn bu chū"
+    },
+    "污染|verb": {
+      "pinyin": "wū rǎn"
+    },
+    "火星|noun": {
+      "pinyin": "Huǒ xīng"
+    },
+    "明晚|noun": {
+      "pinyin": "míng wǎn"
+    },
+    "不利|adjective": {
+      "pinyin": "bù lì"
+    },
+    "蔬菜|noun": {
+      "pinyin": "shū cài"
+    },
+    "幼稚|adjective": {
+      "pinyin": "yòu zhì"
+    },
+    "出版|verb": {
+      "pinyin": "chū bǎn"
+    },
+    "友善|adjective": {
+      "pinyin": "yǒu shàn"
+    },
+    "山谷|noun": {
+      "pinyin": "shān gǔ"
+    },
+    "蝴蝶|noun": {
+      "pinyin": "húdié"
+    },
+    "男女|noun": {
+      "pinyin": "nán nǚ"
+    },
+    "得以|verb": {
+      "pinyin": "dé yǐ"
+    },
+    "泄露|verb": {
+      "pinyin": "xiè lòu"
+    },
+    "忽略|verb": {
+      "pinyin": "hū lüè"
+    },
+    "尾巴|noun": {
+      "pinyin": "wěiba"
+    },
+    "狠狠|adjective": {
+      "pinyin": "hěn hěn"
+    },
+    "跑掉|verb": {
+      "pinyin": "pǎo diào"
+    },
+    "充分|adjective": {
+      "pinyin": "chōng fèn"
+    },
+    "曲子|noun": {
+      "pinyin": "qǔzi"
+    },
+    "非要|adverb": {
+      "pinyin": "fēi yào"
+    },
+    "安息|verb": {
+      "pinyin": "ān xī"
+    },
+    "宿舍|noun": {
+      "pinyin": "sùshè"
+    },
+    "未婚妻|noun": {
+      "pinyin": "wèi hūn qī"
+    },
+    "露出|verb": {
+      "pinyin": "lù chū"
+    },
+    "也好|verb": {
+      "pinyin": "yě hǎo"
+    },
+    "尚未|adverb": {
+      "pinyin": "shàng wèi"
+    },
+    "致命|adjective": {
+      "pinyin": "zhì mìng"
+    },
+    "致命|verb": {
+      "pinyin": "zhì mìng"
+    },
+    "故意|adjective": {
+      "pinyin": "gùyì"
+    },
+    "本地|noun": {
+      "pinyin": "běndì"
+    },
+    "洞穴|noun": {
+      "pinyin": "dòng xué"
+    },
+    "制度|noun": {
+      "pinyin": "zhì dù"
+    },
+    "前妻|noun": {
+      "pinyin": "qián qī"
+    },
+    "疑犯|noun": {
+      "pinyin": "yí fàn"
+    },
+    "色情|noun": {
+      "pinyin": "sè qíng"
+    },
+    "途中|noun": {
+      "pinyin": "tú zhōng"
+    },
+    "主管|noun": {
+      "pinyin": "zhǔ guǎn"
+    },
+    "住嘴|verb": {
+      "pinyin": "zhù zuǐ"
+    },
+    "分鐘|noun": {
+      "pinyin": "fēnzhōng"
+    },
+    "外公|noun": {
+      "pinyin": "wài gōng"
+    },
+    "存活|verb": {
+      "pinyin": "cún huó"
+    },
+    "睡衣|noun": {
+      "pinyin": "shuì yī"
+    },
+    "黎明|noun": {
+      "pinyin": "lí míng"
+    },
+    "前方|noun": {
+      "pinyin": "qián fāng"
+    },
+    "警告|verb": {
+      "pinyin": "jǐng gào"
+    },
+    "魔力|noun": {
+      "pinyin": "mó lì"
+    },
+    "料到|verb": {
+      "pinyin": "liào dào"
+    },
+    "表哥|noun": {
+      "pinyin": "biǎogē"
+    },
+    "多大|adjective": {
+      "pinyin": "duō dà"
+    },
+    "甩掉|verb": {
+      "pinyin": "shuǎi diào"
+    },
+    "降低|verb": {
+      "pinyin": "jiàng dī"
+    },
+    "上路|verb": {
+      "pinyin": "shàng lù"
+    },
+    "以此|adverb": {
+      "pinyin": "yǐ cǐ"
+    },
+    "出院|verb": {
+      "pinyin": "chūyuàn"
+    },
+    "音樂|noun": {
+      "pinyin": "yīnyuè"
+    },
+    "名人|noun": {
+      "pinyin": "míng rén"
+    },
+    "碰巧|adverb": {
+      "pinyin": "pèng qiǎo"
+    },
+    "成年人|noun": {
+      "pinyin": "chéng nián rén"
+    },
+    "指甲|noun": {
+      "pinyin": "zhǐjia"
+    },
+    "一堆|adverb": {
+      "pinyin": "yīduī"
+    },
+    "突破|verb": {
+      "pinyin": "tū pò"
+    },
+    "文明|adjective": {
+      "pinyin": "wénmíng"
+    },
+    "伺服器|noun": {
+      "pinyin": "sì fú qì"
+    },
+    "握手|verb": {
+      "pinyin": "wò shǒu"
+    },
+    "早期|noun": {
+      "pinyin": "zǎo qī"
+    },
+    "享受|adjective": {
+      "pinyin": "xiǎng shòu"
+    },
+    "享受|noun": {
+      "pinyin": "xiǎng shòu"
+    },
+    "浴缸|noun": {
+      "pinyin": "yù gāng"
+    },
+    "物理|noun": {
+      "pinyin": "wù lǐ"
+    },
+    "祈求|verb": {
+      "pinyin": "qí qiú"
+    },
+    "相反|adjective": {
+      "pinyin": "xiāng fǎn"
+    },
+    "相反|adverb": {
+      "pinyin": "xiāng fǎn"
+    },
+    "好人|adjective": {
+      "pinyin": "hǎo rén"
+    },
+    "瀑布|noun": {
+      "pinyin": "pù bù"
+    },
+    "狡猾|adjective": {
+      "pinyin": "jiǎo huá"
+    },
+    "不快|adjective": {
+      "pinyin": "bù kuài"
+    },
+    "改造|verb": {
+      "pinyin": "gǎi zào"
+    },
+    "融化|verb": {
+      "pinyin": "róng huà"
+    },
+    "行程|noun": {
+      "pinyin": "xíng chéng"
+    },
+    "伏特加|noun": {
+      "pinyin": "fú tè jiā"
+    },
+    "病房|noun": {
+      "pinyin": "bìng fáng"
+    },
+    "光芒|noun": {
+      "pinyin": "guāng máng"
+    },
+    "大王|noun": {
+      "pinyin": "dà wáng"
+    },
+    "雕像|noun": {
+      "pinyin": "diāo xiàng"
+    },
+    "好喝|adjective": {
+      "pinyin": "hǎo hē"
+    },
+    "提升|verb": {
+      "pinyin": "tí shēng"
+    },
+    "能源|noun": {
+      "pinyin": "néng yuán"
+    },
+    "交出|verb": {
+      "pinyin": "jiāo chū"
+    },
+    "游泳池|noun": {
+      "pinyin": "yóu yǒng chí"
+    },
+    "甲板|noun": {
+      "pinyin": "jiǎ bǎn"
+    },
+    "破解|verb": {
+      "pinyin": "pò jiě"
+    },
+    "窗口|noun": {
+      "pinyin": "chuāng kǒu"
+    },
+    "急事|noun": {
+      "pinyin": "jí shì"
+    },
+    "治安|noun": {
+      "pinyin": "zhì ān"
+    },
+    "混合|verb": {
+      "pinyin": "hùn hé"
+    },
+    "葡萄酒|noun": {
+      "pinyin": "pú tao jiǔ"
+    },
+    "熟悉|adjective": {
+      "pinyin": "shú xī"
+    },
+    "女郎|noun": {
+      "pinyin": "nǚ láng"
+    },
+    "做人|verb": {
+      "pinyin": "zuò rén"
+    },
+    "打球|verb": {
+      "pinyin": "dǎqiú"
+    },
+    "拉屎|verb": {
+      "pinyin": "lā shǐ"
+    },
+    "教室|noun": {
+      "pinyin": "jiàoshì"
+    },
+    "海豚|noun": {
+      "pinyin": "hǎi tún"
+    },
+    "主教|noun": {
+      "pinyin": "zhǔjiào"
+    },
+    "因素|noun": {
+      "pinyin": "yīn sù"
+    },
+    "挽救|verb": {
+      "pinyin": "wǎn jiù"
+    },
+    "控告|verb": {
+      "pinyin": "kòng gào"
+    },
+    "措施|noun": {
+      "pinyin": "cuò shī"
+    },
+    "以往|noun": {
+      "pinyin": "yǐ wǎng"
+    },
+    "入口|noun": {
+      "pinyin": "rù kǒu"
+    },
+    "司令|noun": {
+      "pinyin": "sī lìng"
+    },
+    "手腕|noun": {
+      "pinyin": "shǒu wàn"
+    },
+    "一系列|adjective": {
+      "pinyin": "yī xì liè"
+    },
+    "地步|noun": {
+      "pinyin": "dì bù"
+    },
+    "追逐|verb": {
+      "pinyin": "zhuī zhú"
+    },
+    "奶油|noun": {
+      "pinyin": "nǎi yóu"
+    },
+    "卡片|noun": {
+      "pinyin": "kǎ piàn"
+    },
+    "走向|verb": {
+      "pinyin": "zǒu xiàng"
+    },
+    "普通話|noun": {
+      "pinyin": "pǔtōnghuà"
+    },
+    "呻吟|verb": {
+      "pinyin": "shēn yín"
+    },
+    "噪音|noun": {
+      "pinyin": "zào yīn"
+    },
+    "出手|verb": {
+      "pinyin": "chū shǒu"
+    },
+    "偶然|adverb": {
+      "pinyin": "ǒu rán"
+    },
+    "偷看|verb": {
+      "pinyin": "tōu kàn"
+    },
+    "文字|noun": {
+      "pinyin": "wénzì"
+    },
+    "待命|verb": {
+      "pinyin": "dài mìng"
+    },
+    "管用|adjective": {
+      "pinyin": "guǎn yòng"
+    },
+    "裡面|noun": {
+      "pinyin": "lǐmiàn"
+    },
+    "老家伙|noun": {
+      "pinyin": "lǎo jiā huo"
+    },
+    "願意|verb": {
+      "pinyin": "yuànyì"
+    },
+    "任務|noun": {
+      "pinyin": "rènwù"
+    },
+    "回合|noun": {
+      "pinyin": "huí hé"
+    },
+    "天亮|verb": {
+      "pinyin": "tiān liàng"
+    },
+    "果汁|noun": {
+      "pinyin": "guǒ zhī"
+    },
+    "下班|adjective": {
+      "pinyin": "xià bān"
+    },
+    "往常|noun": {
+      "pinyin": "wǎng cháng"
+    },
+    "撒尿|verb": {
+      "pinyin": "sā niào"
+    },
+    "收藏|verb": {
+      "pinyin": "shōu cáng"
+    },
+    "港口|noun": {
+      "pinyin": "gǎng kǒu"
+    },
+    "家具|noun": {
+      "pinyin": "jiā jù"
+    },
+    "高速公路|noun": {
+      "pinyin": "gāo sù gōng lù"
+    },
+    "一面|noun": {
+      "pinyin": "yī miàn"
+    },
+    "在外|verb": {
+      "pinyin": "zài wài"
+    },
+    "行不通|verb": {
+      "pinyin": "xíng bu tōng"
+    },
+    "配合|adjective": {
+      "pinyin": "pèi hé"
+    },
+    "配合|verb": {
+      "pinyin": "pèi hé"
+    },
+    "以防|adverb": {
+      "pinyin": "yǐ fáng"
+    },
+    "安保|noun": {
+      "pinyin": "ān bǎo"
+    },
+    "指定|verb": {
+      "pinyin": "zhǐ dìng"
+    },
+    "名片|noun": {
+      "pinyin": "míng piàn"
+    },
+    "嫌疑犯|noun": {
+      "pinyin": "xián yí fàn"
+    },
+    "受苦|verb": {
+      "pinyin": "shòu kǔ"
+    },
+    "大自然|noun": {
+      "pinyin": "dà zì rán"
+    },
+    "安心|verb": {
+      "pinyin": "ān xīn"
+    },
+    "白色|noun": {
+      "pinyin": "bái sè"
+    },
+    "手機|noun": {
+      "pinyin": "shǒujī"
+    },
+    "航行|verb": {
+      "pinyin": "háng xíng"
+    },
+    "首都|noun": {
+      "pinyin": "shǒu dū"
+    },
+    "手法|noun": {
+      "pinyin": "shǒu fǎ"
+    },
+    "旅途|noun": {
+      "pinyin": "lǚ tú"
+    },
+    "銀行|noun": {
+      "pinyin": "yínháng"
+    },
+    "陪伴|verb": {
+      "pinyin": "péi bàn"
+    },
+    "計劃|noun": {
+      "pinyin": "jìhuà"
+    },
+    "打交道|verb": {
+      "pinyin": "dǎ jiāo dào"
+    },
+    "火山|noun": {
+      "pinyin": "huǒshān"
+    },
+    "酗酒|verb": {
+      "pinyin": "xù jiǔ"
+    },
+    "作家|verb": {
+      "pinyin": "zuò jiā"
+    },
+    "刀子|noun": {
+      "pinyin": "dāo zi"
+    },
+    "局面|noun": {
+      "pinyin": "jú miàn"
+    },
+    "好玩|noun": {
+      "pinyin": "hǎo wán"
+    },
+    "好玩|verb": {
+      "pinyin": "hǎo wán"
+    },
+    "暑假|noun": {
+      "pinyin": "shǔjià"
+    },
+    "沙皇|noun": {
+      "pinyin": "shā huáng"
+    },
+    "影像|noun": {
+      "pinyin": "yǐng xiàng"
+    },
+    "公共|adjective": {
+      "pinyin": "gōnggòng"
+    },
+    "美人|noun": {
+      "pinyin": "měi rén"
+    },
+    "慈善|adjective": {
+      "pinyin": "cí shàn"
+    },
+    "棘手|adjective": {
+      "pinyin": "jí shǒu"
+    },
+    "片子|noun": {
+      "pinyin": "piān zi"
+    },
+    "好日子|noun": {
+      "pinyin": "hǎo rì zi"
+    },
+    "接通|verb": {
+      "pinyin": "jiē tōng"
+    },
+    "河流|noun": {
+      "pinyin": "hé liú"
+    },
+    "大人物|noun": {
+      "pinyin": "dà rén wù"
+    },
+    "報告|noun": {
+      "pinyin": "bàogào"
+    },
+    "胃口|noun": {
+      "pinyin": "wèi kǒu"
+    },
+    "心想|verb": {
+      "pinyin": "xīn xiǎng"
+    },
+    "定位|noun": {
+      "pinyin": "dìng wèi"
+    },
+    "下注|verb": {
+      "pinyin": "xià zhù"
+    },
+    "拘留|verb": {
+      "pinyin": "jū liú"
+    },
+    "蜜蜂|noun": {
+      "pinyin": "mìfēng"
+    },
+    "扭曲|verb": {
+      "pinyin": "niǔ qū"
+    },
+    "自首|verb": {
+      "pinyin": "zì shǒu"
+    },
+    "成就|noun": {
+      "pinyin": "chéng jiù"
+    },
+    "成就|verb": {
+      "pinyin": "chéng jiù"
+    },
+    "休想|verb": {
+      "pinyin": "xiū xiǎng"
+    },
+    "清洗|verb": {
+      "pinyin": "qīng xǐ"
+    },
+    "星系|noun": {
+      "pinyin": "xīng xì"
+    },
+    "狐狸|noun": {
+      "pinyin": "húli"
+    },
+    "世人|noun": {
+      "pinyin": "shì rén"
+    },
+    "半年|noun": {
+      "pinyin": "bànnián"
+    },
+    "器官|noun": {
+      "pinyin": "qì guān"
+    },
+    "毫不|adverb": {
+      "pinyin": "háo bù"
+    },
+    "重生|verb": {
+      "pinyin": "chóng shēng"
+    },
+    "下巴|noun": {
+      "pinyin": "xiàba"
+    },
+    "航空|noun": {
+      "pinyin": "háng kōng"
+    },
+    "重量|noun": {
+      "pinyin": "zhòng liàng"
+    },
+    "喝水|verb": {
+      "pinyin": "hēshuǐ"
+    },
+    "羞辱|verb": {
+      "pinyin": "xiū rǔ"
+    },
+    "遭遇|noun": {
+      "pinyin": "zāo yù"
+    },
+    "遭遇|verb": {
+      "pinyin": "zāo yù"
+    },
+    "元素|noun": {
+      "pinyin": "yuán sù"
+    },
+    "限制|verb": {
+      "pinyin": "xiàn zhì"
+    },
+    "代理|noun": {
+      "pinyin": "dài lǐ"
+    },
+    "屍體|noun": {
+      "pinyin": "shītǐ"
+    },
+    "晚宴|noun": {
+      "pinyin": "wǎn yàn"
+    },
+    "火力|noun": {
+      "pinyin": "huǒ lì"
+    },
+    "竟敢|verb": {
+      "pinyin": "jìng gǎn"
+    },
+    "保安|noun": {
+      "pinyin": "Bǎo ān"
+    },
+    "制定|verb": {
+      "pinyin": "zhì dìng"
+    },
+    "友好|adjective": {
+      "pinyin": "Yǒu hǎo"
+    },
+    "分散|verb": {
+      "pinyin": "fēn sàn"
+    },
+    "落下|verb": {
+      "pinyin": "luò xià"
+    },
+    "地震|noun": {
+      "pinyin": "dìzhèn"
+    },
+    "草莓|noun": {
+      "pinyin": "cǎo méi"
+    },
+    "勒索|verb": {
+      "pinyin": "lè suǒ"
+    },
+    "世界末日|noun": {
+      "pinyin": "shì jiè mò rì"
+    },
+    "身子|noun": {
+      "pinyin": "shēnzi"
+    },
+    "取笑|verb": {
+      "pinyin": "qǔ xiào"
+    },
+    "天黑|verb": {
+      "pinyin": "tiān hēi"
+    },
+    "吸引力|noun": {
+      "pinyin": "xī yǐn lì"
+    },
+    "助理|noun": {
+      "pinyin": "zhù lǐ"
+    },
+    "助理|verb": {
+      "pinyin": "zhù lǐ"
+    },
+    "侵入|verb": {
+      "pinyin": "qīn rù"
+    },
+    "毯子|noun": {
+      "pinyin": "tǎnzi"
+    },
+    "相片|noun": {
+      "pinyin": "xiàngpiàn"
+    },
+    "提名|verb": {
+      "pinyin": "tí míng"
+    },
+    "乳房|noun": {
+      "pinyin": "rǔ fáng"
+    },
+    "微笑|noun": {
+      "pinyin": "wēi xiào"
+    },
+    "信封|noun": {
+      "pinyin": "xìnfēng"
+    },
+    "良心|noun": {
+      "pinyin": "liángxīn"
+    },
+    "妹子|noun": {
+      "pinyin": "mèizi"
+    },
+    "指令|noun": {
+      "pinyin": "zhǐ lìng"
+    },
+    "大姐|noun": {
+      "pinyin": "dà jiě"
+    },
+    "幻想|verb": {
+      "pinyin": "huàn xiǎng"
+    },
+    "中央|adjective": {
+      "pinyin": "zhōng yāng"
+    },
+    "勾引|verb": {
+      "pinyin": "gōu yǐn"
+    },
+    "日落|noun": {
+      "pinyin": "rì luò"
+    },
+    "男孩子|noun": {
+      "pinyin": "nán hái zi"
+    },
+    "策略|noun": {
+      "pinyin": "cè lüè"
+    },
+    "有力|adjective": {
+      "pinyin": "yǒu lì"
+    },
+    "活力|noun": {
+      "pinyin": "huó lì"
+    },
+    "小弟弟|noun": {
+      "pinyin": "xiǎo dì di"
+    },
+    "超出|verb": {
+      "pinyin": "chāo chū"
+    },
+    "感冒|noun": {
+      "pinyin": "gǎn mào"
+    },
+    "把握|verb": {
+      "pinyin": "bǎ wò"
+    },
+    "跑步|verb": {
+      "pinyin": "pǎo bù"
+    },
+    "忘記|verb": {
+      "pinyin": "wàngjì"
+    },
+    "蹲下|verb": {
+      "pinyin": "dūn xià"
+    },
+    "持有|verb": {
+      "pinyin": "chí yǒu"
+    },
+    "泳池|noun": {
+      "pinyin": "yǒng chí"
+    },
+    "有利|adjective": {
+      "pinyin": "yǒu lì"
+    },
+    "傲慢|adjective": {
+      "pinyin": "ào màn"
+    },
+    "包含|verb": {
+      "pinyin": "bāo hán"
+    },
+    "升起|verb": {
+      "pinyin": "shēng qǐ"
+    },
+    "依然|adjective": {
+      "pinyin": "yī rán"
+    },
+    "缺少|verb": {
+      "pinyin": "quē shǎo"
+    },
+    "非凡|adjective": {
+      "pinyin": "fēi fán"
+    },
+    "黑暗|noun": {
+      "pinyin": "hēi'àn"
+    },
+    "一一|adverb": {
+      "pinyin": "yī yī"
+    },
+    "不曾|adverb": {
+      "pinyin": "bù céng"
+    },
+    "威力|noun": {
+      "pinyin": "wēi lì"
+    },
+    "咳嗽|verb": {
+      "pinyin": "késou"
+    },
+    "好不容易|adjective": {
+      "pinyin": "hǎo bù róng yì"
+    },
+    "布雷|verb": {
+      "pinyin": "bù léi"
+    },
+    "吸收|verb": {
+      "pinyin": "xī shōu"
+    },
+    "尺寸|noun": {
+      "pinyin": "chǐ cun"
+    },
+    "出自|verb": {
+      "pinyin": "chū zì"
+    },
+    "精力|noun": {
+      "pinyin": "jīng lì"
+    },
+    "飛機|noun": {
+      "pinyin": "fēijī"
+    },
+    "市中心|noun": {
+      "pinyin": "shì zhōng xīn"
+    },
+    "表弟|noun": {
+      "pinyin": "biǎodì"
+    },
+    "再度|adverb": {
+      "pinyin": "zài dù"
+    },
+    "弟兄|noun": {
+      "pinyin": "dì xiong"
+    },
+    "公布|verb": {
+      "pinyin": "gōng bù"
+    },
+    "仇恨|noun": {
+      "pinyin": "chóu hèn"
+    },
+    "文明|noun": {
+      "pinyin": "wénmíng"
+    },
+    "改善|verb": {
+      "pinyin": "gǎi shàn"
+    },
+    "海底|noun": {
+      "pinyin": "hǎi dǐ"
+    },
+    "背包|noun": {
+      "pinyin": "bēibāo"
+    },
+    "灰色|noun": {
+      "pinyin": "huī sè"
+    },
+    "牌子|noun": {
+      "pinyin": "pái zi"
+    },
+    "碰上|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "pèng shàng"
+    },
+    "機器|noun": {
+      "pinyin": "jīqì"
+    },
+    "疫苗|noun": {
+      "pinyin": "yì miáo"
+    },
+    "睡眠|noun": {
+      "pinyin": "shuì mián"
+    },
+    "學習|verb": {
+      "pinyin": "xuéxí"
+    },
+    "抱抱|verb": {
+      "pinyin": "bào bào"
+    },
+    "社交|verb": {
+      "pinyin": "shè jiāo"
+    },
+    "可汗|noun": {
+      "pinyin": "kè hán"
+    },
+    "摔倒|verb": {
+      "pinyin": "shuāi dǎo"
+    },
+    "流行|adjective": {
+      "pinyin": "liú xíng"
+    },
+    "流行|verb": {
+      "pinyin": "liú xíng"
+    },
+    "海水|noun": {
+      "pinyin": "hǎishuǐ"
+    },
+    "看清|verb": {
+      "pinyin": "kàn qīng"
+    },
+    "雪茄|noun": {
+      "pinyin": "xuě jiā"
+    },
+    "警戒|verb": {
+      "pinyin": "jǐng jiè"
+    },
+    "得知|verb": {
+      "pinyin": "dé zhī"
+    },
+    "插手|verb": {
+      "pinyin": "chā shǒu"
+    },
+    "碰面|verb": {
+      "pinyin": "pèng miàn"
+    },
+    "秋天|noun": {
+      "pinyin": "qiūtiān"
+    },
+    "滑雪|verb": {
+      "pinyin": "huá xuě"
+    },
+    "最多|adverb": {
+      "pinyin": "zuì duō"
+    },
+    "彩虹|noun": {
+      "pinyin": "cǎihóng"
+    },
+    "卡路里|verb": {
+      "pinyin": "kǎ lù lǐ"
+    },
+    "心思|noun": {
+      "pinyin": "xīn si"
+    },
+    "族人|noun": {
+      "pinyin": "zú rén"
+    },
+    "民主|noun": {
+      "pinyin": "mín zhǔ"
+    },
+    "青少年|noun": {
+      "pinyin": "qīng shào nián"
+    },
+    "老哥|noun": {
+      "pinyin": "lǎo gē"
+    },
+    "命名|verb": {
+      "pinyin": "mìng míng"
+    },
+    "抓狂|verb": {
+      "pinyin": "zhuā kuáng"
+    },
+    "移民|verb": {
+      "pinyin": "yí mín"
+    },
+    "鼓掌|verb": {
+      "pinyin": "gǔzhǎng"
+    },
+    "超越|verb": {
+      "pinyin": "chāo yuè"
+    },
+    "下手|noun": {
+      "pinyin": "xià shǒu"
+    },
+    "全力|noun": {
+      "pinyin": "quán lì"
+    },
+    "黑夜|noun": {
+      "pinyin": "hēi yè"
+    },
+    "特定|adjective": {
+      "pinyin": "tè dìng"
+    },
+    "青蛙|noun": {
+      "pinyin": "qīngwā"
+    },
+    "卡其|adjective": {
+      "pinyin": "kǎ qí"
+    },
+    "英勇|adjective": {
+      "pinyin": "yīng yǒng"
+    },
+    "成果|noun": {
+      "pinyin": "chéng guǒ"
+    },
+    "羞愧|adjective": {
+      "pinyin": "xiū kuì"
+    },
+    "有毒|adjective": {
+      "pinyin": "yǒu dú"
+    },
+    "精子|noun": {
+      "pinyin": "jīng zǐ"
+    },
+    "天空|adjective": {
+      "pinyin": "tiān kōng"
+    },
+    "作弊|verb": {
+      "pinyin": "zuò bì"
+    },
+    "外星|adjective": {
+      "pinyin": "wài xīng"
+    },
+    "有的是|verb": {
+      "pinyin": "yǒu de shì"
+    },
+    "起立|verb": {
+      "pinyin": "qǐ lì"
+    },
+    "剪刀|noun": {
+      "pinyin": "jiǎndāo"
+    },
+    "大腿|noun": {
+      "pinyin": "dà tuǐ"
+    },
+    "忍耐|verb": {
+      "pinyin": "rěn nài"
+    },
+    "星期四|noun": {
+      "pinyin": "xīngqīsì"
+    },
+    "集合|noun": {
+      "pinyin": "jí hé"
+    },
+    "集合|verb": {
+      "pinyin": "jí hé"
+    },
+    "不通|verb": {
+      "pinyin": "bù tōng"
+    },
+    "水面|noun": {
+      "pinyin": "shuǐ miàn"
+    },
+    "清晨|noun": {
+      "pinyin": "qīng chén"
+    },
+    "遊戲|noun": {
+      "pinyin": "yóuxì"
+    },
+    "老太太|noun": {
+      "pinyin": "lǎo tài tai"
+    },
+    "海外|noun": {
+      "pinyin": "hǎi wài"
+    },
+    "目光|noun": {
+      "pinyin": "mù guāng"
+    },
+    "系列|noun": {
+      "pinyin": "xìliè"
+    },
+    "求救|verb": {
+      "pinyin": "qiú jiù"
+    },
+    "沉重|adjective": {
+      "pinyin": "chén zhòng"
+    },
+    "芝士|noun": {
+      "pinyin": "zhī shì"
+    },
+    "電視|noun": {
+      "pinyin": "diànshì"
+    },
+    "一路|noun": {
+      "pinyin": "yī lù"
+    },
+    "佩服|verb": {
+      "pinyin": "pèi fú"
+    },
+    "入睡|verb": {
+      "pinyin": "rù shuì"
+    },
+    "已婚|adjective": {
+      "pinyin": "yǐ hūn"
+    },
+    "悲哀|adjective": {
+      "pinyin": "bēi āi"
+    },
+    "比特|noun": {
+      "pinyin": "bǐ tè"
+    },
+    "匿名|verb": {
+      "pinyin": "nì míng"
+    },
+    "挖掘|verb": {
+      "pinyin": "wā jué"
+    },
+    "水晶|noun": {
+      "pinyin": "shuǐ jīng"
+    },
+    "交通|noun": {
+      "pinyin": "jiāo tōng"
+    },
+    "花花公子|noun": {
+      "pinyin": "huā huā gōng zǐ"
+    },
+    "和尚|noun": {
+      "pinyin": "héshang"
+    },
+    "史上|adverb": {
+      "pinyin": "shǐ shàng"
+    },
+    "技能|noun": {
+      "pinyin": "jì néng"
+    },
+    "男爵|noun": {
+      "pinyin": "nán jué"
+    },
+    "真心|adjective": {
+      "pinyin": "zhēn xīn"
+    },
+    "真心|adverb": {
+      "pinyin": "zhēn xīn"
+    },
+    "真心|noun": {
+      "pinyin": "zhēn xīn"
+    },
+    "救出|verb": {
+      "pinyin": "jiù chū"
+    },
+    "汽水|noun": {
+      "pinyin": "qì shuǐ"
+    },
+    "到手|verb": {
+      "pinyin": "dào shǒu"
+    },
+    "新年|noun": {
+      "pinyin": "xīn nián"
+    },
+    "抵抗|noun": {
+      "pinyin": "dǐ kàng"
+    },
+    "抵抗|verb": {
+      "pinyin": "dǐ kàng"
+    },
+    "抗拒|verb": {
+      "pinyin": "kàng jù"
+    },
+    "幸存|verb": {
+      "pinyin": "xìng cún"
+    },
+    "流氓|noun": {
+      "pinyin": "liú máng"
+    },
+    "理智|adjective": {
+      "pinyin": "lǐ zhì"
+    },
+    "理智|noun": {
+      "pinyin": "lǐ zhì"
+    },
+    "原本|adverb": {
+      "pinyin": "yuán běn"
+    },
+    "管道|noun": {
+      "pinyin": "guǎn dào"
+    },
+    "右手|noun": {
+      "pinyin": "yòushǒu"
+    },
+    "收看|verb": {
+      "pinyin": "shōu kàn"
+    },
+    "永久|adjective": {
+      "pinyin": "yǒng jiǔ"
+    },
+    "借用|verb": {
+      "pinyin": "jiè yòng"
+    },
+    "跑道|noun": {
+      "pinyin": "pǎo dào"
+    },
+    "出口|noun": {
+      "pinyin": "chū kǒu"
+    },
+    "使得|verb": {
+      "pinyin": "shǐ de"
+    },
+    "分配|verb": {
+      "pinyin": "fēn pèi"
+    },
+    "慷慨|adjective": {
+      "pinyin": "kāng kǎi"
+    },
+    "玩弄|verb": {
+      "pinyin": "wán nòng"
+    },
+    "颱風|noun": {
+      "pinyin": "táifēng"
+    },
+    "天真|adjective": {
+      "pinyin": "tiān zhēn"
+    },
+    "修道院|noun": {
+      "pinyin": "xiū dào yuàn"
+    },
+    "派出|verb": {
+      "pinyin": "pài chū"
+    },
+    "蛋蛋|noun": {
+      "pinyin": "dàndàn"
+    },
+    "屁眼|noun": {
+      "pinyin": "pì yǎn"
+    },
+    "老人家|noun": {
+      "pinyin": "lǎo rén jiā"
+    },
+    "富有|adjective": {
+      "pinyin": "fù yǒu"
+    },
+    "富有|verb": {
+      "pinyin": "fù yǒu"
+    },
+    "救世主|noun": {
+      "pinyin": "Jiù shì zhǔ"
+    },
+    "密室|noun": {
+      "pinyin": "mì shì"
+    },
+    "信徒|noun": {
+      "pinyin": "xìn tú"
+    },
+    "得救|verb": {
+      "pinyin": "dé jiù"
+    },
+    "放假|verb": {
+      "pinyin": "fàngjià"
+    },
+    "接手|noun": {
+      "pinyin": "jiē shǒu"
+    },
+    "前任|noun": {
+      "pinyin": "qián rèn"
+    },
+    "玩家|noun": {
+      "pinyin": "wán jiā"
+    },
+    "走私|verb": {
+      "pinyin": "zǒu sī"
+    },
+    "金色|noun": {
+      "pinyin": "jīn sè"
+    },
+    "珍珠|noun": {
+      "pinyin": "zhēnzhū"
+    },
+    "外出|verb": {
+      "pinyin": "wài chū"
+    },
+    "口香糖|noun": {
+      "pinyin": "kǒu xiāng táng"
+    },
+    "海豹|noun": {
+      "pinyin": "hǎi bào"
+    },
+    "死因|noun": {
+      "pinyin": "sǐ yīn"
+    },
+    "羽毛|noun": {
+      "pinyin": "yǔ máo"
+    },
+    "制止|verb": {
+      "pinyin": "zhì zhǐ"
+    },
+    "加油站|noun": {
+      "pinyin": "jiā yóu zhàn"
+    },
+    "拘捕|verb": {
+      "pinyin": "jū bǔ"
+    },
+    "本性|noun": {
+      "pinyin": "běn xìng"
+    },
+    "任命|verb": {
+      "pinyin": "rèn mìng"
+    },
+    "重力|noun": {
+      "pinyin": "zhòng lì"
+    },
+    "服役|verb": {
+      "pinyin": "fú yì"
+    },
+    "有空|adjective": {
+      "pinyin": "yǒu kòng"
+    },
+    "痛快|adjective": {
+      "pinyin": "tòng kuài"
+    },
+    "躲避|verb": {
+      "pinyin": "duǒ bì"
+    },
+    "原始|adjective": {
+      "pinyin": "yuán shǐ"
+    },
+    "融入|verb": {
+      "pinyin": "róng rù"
+    },
+    "可行|adjective": {
+      "pinyin": "kě xíng"
+    },
+    "大衣|noun": {
+      "pinyin": "dà yī"
+    },
+    "天花板|noun": {
+      "pinyin": "tiānhuābǎn"
+    },
+    "暗示|noun": {
+      "pinyin": "àn shì"
+    },
+    "暗示|verb": {
+      "pinyin": "àn shì"
+    },
+    "操控|verb": {
+      "pinyin": "cāo kòng"
+    },
+    "古代|noun": {
+      "pinyin": "gǔdài"
+    },
+    "玩完|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "wán wán"
+    },
+    "胸口|noun": {
+      "pinyin": "xiōng kǒu"
+    },
+    "聰明|adjective": {
+      "pinyin": "cōngmíng"
+    },
+    "不成|adjective": {
+      "pinyin": "bù chéng"
+    },
+    "疼痛|noun": {
+      "pinyin": "téng tòng"
+    },
+    "目睹|verb": {
+      "pinyin": "mù dǔ"
+    },
+    "心碎|adjective": {
+      "pinyin": "xīn suì"
+    },
+    "留言|noun": {
+      "pinyin": "liú yán"
+    },
+    "享用|verb": {
+      "pinyin": "xiǎng yòng"
+    },
+    "全美|noun": {
+      "pinyin": "quán Měi"
+    },
+    "自殺|verb": {
+      "pinyin": "zìshā"
+    },
+    "蠢事|noun": {
+      "pinyin": "chǔn shì"
+    },
+    "結果|verb": {
+      "pinyin": "jiéguǒ"
+    },
+    "矛盾|noun": {
+      "pinyin": "máo dùn"
+    },
+    "主持|verb": {
+      "pinyin": "zhǔ chí"
+    },
+    "逃犯|noun": {
+      "pinyin": "táo fàn"
+    },
+    "嫂子|noun": {
+      "pinyin": "sǎozi"
+    },
+    "高興|verb": {
+      "pinyin": "gāoxìng"
+    },
+    "中校|noun": {
+      "pinyin": "zhōng xiào"
+    },
+    "商品|noun": {
+      "pinyin": "shāng pǐn"
+    },
+    "平凡|adjective": {
+      "pinyin": "píng fán"
+    },
+    "打劫|verb": {
+      "pinyin": "dǎ jié"
+    },
+    "指示|noun": {
+      "pinyin": "zhǐ shì"
+    },
+    "棕色|noun": {
+      "pinyin": "zōng sè"
+    },
+    "海洛因|noun": {
+      "pinyin": "hǎi luò yīn"
+    },
+    "趕緊|adverb": {
+      "pinyin": "gǎnjǐn"
+    },
+    "嫌疑|noun": {
+      "pinyin": "xián yí"
+    },
+    "中心|adverb": {
+      "pinyin": "zhōng xīn"
+    },
+    "核武器|noun": {
+      "pinyin": "hé wǔ qì"
+    },
+    "外遇|noun": {
+      "pinyin": "wài yù"
+    },
+    "明日|noun": {
+      "pinyin": "míng rì"
+    },
+    "早晚|noun": {
+      "pinyin": "zǎo wǎn"
+    },
+    "人情|noun": {
+      "pinyin": "rén qíng"
+    },
+    "容忍|verb": {
+      "pinyin": "róng rěn"
+    },
+    "盛大|adjective": {
+      "pinyin": "shèng dà"
+    },
+    "大使|noun": {
+      "pinyin": "dàshǐ"
+    },
+    "客房|noun": {
+      "pinyin": "kèfáng"
+    },
+    "提示|noun": {
+      "pinyin": "tí shì"
+    },
+    "效忠|verb": {
+      "pinyin": "xiào zhōng"
+    },
+    "上演|verb": {
+      "pinyin": "shàng yǎn"
+    },
+    "超能力|noun": {
+      "pinyin": "chāo néng lì"
+    },
+    "致敬|verb": {
+      "pinyin": "zhì jìng"
+    },
+    "上天|verb": {
+      "pinyin": "shàng tiān"
+    },
+    "往往|adverb": {
+      "pinyin": "wǎngwǎng"
+    },
+    "甜美|adjective": {
+      "pinyin": "tián měi"
+    },
+    "前往|adverb": {
+      "pinyin": "qián wǎng"
+    },
+    "放大|verb": {
+      "pinyin": "fàng dà"
+    },
+    "新郎|noun": {
+      "pinyin": "xīnláng"
+    },
+    "打造|verb": {
+      "pinyin": "dǎ zào"
+    },
+    "垃圾桶|noun": {
+      "pinyin": "lā jī tǒng"
+    },
+    "扯淡|verb": {
+      "pinyin": "chě dàn"
+    },
+    "行走|verb": {
+      "pinyin": "xíng zǒu"
+    },
+    "物理|adverb": {
+      "pinyin": "wù lǐ"
+    },
+    "精神病院|noun": {
+      "pinyin": "jīng shén bìng yuàn"
+    },
+    "干涉|verb": {
+      "pinyin": "gān shè"
+    },
+    "一方|noun": {
+      "pinyin": "yī fāng"
+    },
+    "翻譯|verb": {
+      "pinyin": "fānyì"
+    },
+    "疏散|verb": {
+      "pinyin": "shū sǎn"
+    },
+    "流浪|verb": {
+      "pinyin": "liú làng"
+    },
+    "生涯|noun": {
+      "pinyin": "shēng yá"
+    },
+    "被害人|noun": {
+      "pinyin": "bèi hài rén"
+    },
+    "深深|adverb": {
+      "pinyin": "shēn shēn"
+    },
+    "作主|verb": {
+      "pinyin": "zuò zhǔ"
+    },
+    "意大利人|noun": {
+      "pinyin": "Yì dà lì rén"
+    },
+    "植物|adjective": {
+      "pinyin": "zhíwù"
+    },
+    "困境|noun": {
+      "pinyin": "kùn jìng"
+    },
+    "租金|noun": {
+      "pinyin": "zū jīn"
+    },
+    "思念|verb": {
+      "pinyin": "sī niàn"
+    },
+    "派克|noun": {
+      "pinyin": "Pài kè"
+    },
+    "老家|noun": {
+      "pinyin": "lǎo jiā"
+    },
+    "起初|adverb": {
+      "pinyin": "qǐ chū"
+    },
+    "隔壁|adjective": {
+      "pinyin": "gébì"
+    },
+    "通信|verb": {
+      "pinyin": "tōng xìn"
+    },
+    "高度|adjective": {
+      "pinyin": "gāo dù"
+    },
+    "高度|adverb": {
+      "pinyin": "gāo dù"
+    },
+    "共事|verb": {
+      "pinyin": "gòng shì"
+    },
+    "提及|verb": {
+      "pinyin": "tí jí"
+    },
+    "真主|noun": {
+      "pinyin": "Zhēn zhǔ"
+    },
+    "脂肪|noun": {
+      "pinyin": "zhī fáng"
+    },
+    "固定|adjective": {
+      "pinyin": "gù dìng"
+    },
+    "固定|verb": {
+      "pinyin": "gù dìng"
+    },
+    "加班|verb": {
+      "pinyin": "jiā bān"
+    },
+    "搞不好|adverb": {
+      "pinyin": "gǎo bu hǎo"
+    },
+    "景色|noun": {
+      "pinyin": "jǐng sè"
+    },
+    "犯法|verb": {
+      "pinyin": "fànfǎ"
+    },
+    "今夜|noun": {
+      "pinyin": "jīn yè"
+    },
+    "平常|adverb": {
+      "pinyin": "píng cháng"
+    },
+    "政客|noun": {
+      "pinyin": "zhèng kè"
+    },
+    "窒息|verb": {
+      "pinyin": "zhì xī"
+    },
+    "幽默|adjective": {
+      "pinyin": "yōu mò"
+    },
+    "安慰|adjective": {
+      "pinyin": "ān wèi"
+    },
+    "神秘|noun": {
+      "pinyin": "shén mì"
+    },
+    "相互|adjective": {
+      "pinyin": "xiāng hù"
+    },
+    "相互|adverb": {
+      "pinyin": "xiāng hù"
+    },
+    "芯片|noun": {
+      "pinyin": "xīn piàn"
+    },
+    "炸掉|verb": {
+      "pinyin": "zhà diào"
+    },
+    "福利|noun": {
+      "pinyin": "fú lì"
+    },
+    "出差|verb": {
+      "pinyin": "chū chāi"
+    },
+    "限制|noun": {
+      "pinyin": "xiàn zhì"
+    },
+    "松鼠|noun": {
+      "pinyin": "sōng shǔ"
+    },
+    "母狗|noun": {
+      "pinyin": "mǔgǒu"
+    },
+    "包裹|noun": {
+      "pinyin": "bāo guǒ"
+    },
+    "包裹|verb": {
+      "pinyin": "bāo guǒ"
+    },
+    "屏幕|noun": {
+      "pinyin": "píng mù"
+    },
+    "星期二|noun": {
+      "pinyin": "xīngqī'èr"
+    },
+    "乘坐|verb": {
+      "pinyin": "chéng zuò"
+    },
+    "住院|verb": {
+      "pinyin": "zhù yuàn"
+    },
+    "下山|verb": {
+      "pinyin": "xià shān"
+    },
+    "色彩|noun": {
+      "pinyin": "sè cǎi"
+    },
+    "大量|adverb": {
+      "pinyin": "dà liàng"
+    },
+    "崇拜|noun": {
+      "pinyin": "chóng bài"
+    },
+    "崇拜|verb": {
+      "pinyin": "chóng bài"
+    },
+    "旨意|noun": {
+      "pinyin": "zhǐ yì"
+    },
+    "景象|noun": {
+      "pinyin": "jǐng xiàng"
+    },
+    "小小|adjective": {
+      "pinyin": "xiǎo xiǎo"
+    },
+    "小小|noun": {
+      "pinyin": "xiǎo xiǎo"
+    },
+    "一會兒|adverb": {
+      "pinyin": "yīhuìr"
+    },
+    "野心|noun": {
+      "pinyin": "yě xīn"
+    },
+    "下流|adjective": {
+      "pinyin": "xià liú"
+    },
+    "他用|noun": {
+      "pinyin": "tā yòng"
+    },
+    "力克|verb": {
+      "pinyin": "lì kè"
+    },
+    "吊死|verb": {
+      "pinyin": "diào sǐ"
+    },
+    "咆哮|verb": {
+      "pinyin": "páo xiào"
+    },
+    "原來|adverb": {
+      "pinyin": "yuánlái"
+    },
+    "同胞|noun": {
+      "pinyin": "tóng bāo"
+    },
+    "果然|adjective": {
+      "pinyin": "guǒ rán"
+    },
+    "果然|noun": {
+      "pinyin": "guǒ rán"
+    },
+    "步行|verb": {
+      "pinyin": "bù xíng"
+    },
+    "整整|adjective": {
+      "pinyin": "zhěng zhěng"
+    },
+    "整整|adverb": {
+      "pinyin": "zhěng zhěng"
+    },
+    "共享|verb": {
+      "pinyin": "gòng xiǎng"
+    },
+    "司令官|noun": {
+      "pinyin": "sī lìng guān"
+    },
+    "病情|noun": {
+      "pinyin": "bìng qíng"
+    },
+    "低估|verb": {
+      "pinyin": "dī gū"
+    },
+    "小型|adjective": {
+      "pinyin": "xiǎo xíng"
+    },
+    "部位|noun": {
+      "pinyin": "bù wèi"
+    },
+    "黑洞|noun": {
+      "pinyin": "hēi dòng"
+    },
+    "分成|verb": {
+      "pinyin": "fēn chéng"
+    },
+    "炫耀|verb": {
+      "pinyin": "xuàn yào"
+    },
+    "冰冷|adjective": {
+      "pinyin": "bīng lěng"
+    },
+    "博客|noun": {
+      "pinyin": "bó kè"
+    },
+    "改革|verb": {
+      "pinyin": "gǎi gé"
+    },
+    "一致|adjective": {
+      "pinyin": "yī zhì"
+    },
+    "便宜|noun": {
+      "pinyin": "biàn yí"
+    },
+    "便宜|verb": {
+      "pinyin": "piányi"
+    },
+    "麻煩|noun": {
+      "pinyin": "máfan"
+    },
+    "麻煩|verb": {
+      "pinyin": "máfan"
+    },
+    "前夫|noun": {
+      "pinyin": "qián fū"
+    },
+    "敵人|noun": {
+      "pinyin": "dírén"
+    },
+    "東西|adverb": {
+      "pinyin": "dōngxī"
+    },
+    "見面|verb": {
+      "pinyin": "jiànmiàn"
+    },
+    "接待|verb": {
+      "pinyin": "jiē dài"
+    },
+    "沙子|noun": {
+      "pinyin": "shāzi"
+    },
+    "全面|adjective": {
+      "pinyin": "quán miàn"
+    },
+    "吃醋|verb": {
+      "pinyin": "chī cù"
+    },
+    "曝光|verb": {
+      "pinyin": "bào guāng"
+    },
+    "和解|verb": {
+      "pinyin": "hé jiě"
+    },
+    "特意|adverb": {
+      "pinyin": "tè yì"
+    },
+    "血管|noun": {
+      "pinyin": "xuèguǎn"
+    },
+    "解救|verb": {
+      "pinyin": "jiě jiù"
+    },
+    "主演|verb": {
+      "pinyin": "zhǔ yǎn"
+    },
+    "向下|adverb": {
+      "pinyin": "xiàng xià"
+    },
+    "神像|noun": {
+      "pinyin": "shén xiàng"
+    },
+    "總統|noun": {
+      "pinyin": "zǒngtǒng"
+    },
+    "超人|verb": {
+      "pinyin": "Chāo rén"
+    },
+    "震撼|verb": {
+      "pinyin": "zhèn hàn"
+    },
+    "偏偏|adverb": {
+      "pinyin": "piān piān"
+    },
+    "逃亡|verb": {
+      "pinyin": "táo wáng"
+    },
+    "火曜日|noun": {
+      "pinyin": "Huǒ yào rì"
+    },
+    "依靠|noun": {
+      "pinyin": "yī kào"
+    },
+    "依靠|verb": {
+      "pinyin": "yī kào"
+    },
+    "封面|noun": {
+      "pinyin": "fēng miàn"
+    },
+    "激怒|verb": {
+      "pinyin": "jī nù"
+    },
+    "瘟疫|noun": {
+      "pinyin": "wēn yì"
+    },
+    "司令部|noun": {
+      "pinyin": "sī lìng bù"
+    },
+    "房屋|noun": {
+      "pinyin": "fáng wū"
+    },
+    "星期三|noun": {
+      "pinyin": "xīngqīsān"
+    },
+    "解散|verb": {
+      "pinyin": "jiě sàn"
+    },
+    "洗手|verb": {
+      "pinyin": "xǐshǒu"
+    },
+    "缺陷|noun": {
+      "pinyin": "quē xiàn"
+    },
+    "舞者|noun": {
+      "pinyin": "wǔ zhě"
+    },
+    "徽章|noun": {
+      "pinyin": "huī zhāng"
+    },
+    "表妹|noun": {
+      "pinyin": "biǎomèi"
+    },
+    "法郎|noun": {
+      "pinyin": "fǎ láng"
+    },
+    "使者|noun": {
+      "pinyin": "shǐ zhě"
+    },
+    "私事|noun": {
+      "pinyin": "sī shì"
+    },
+    "找死|verb": {
+      "pinyin": "zhǎo sǐ"
+    },
+    "蜜月|noun": {
+      "pinyin": "mì yuè"
+    },
+    "搞笑|adjective": {
+      "pinyin": "gǎo xiào"
+    },
+    "外人|noun": {
+      "pinyin": "wàirén"
+    },
+    "推出|verb": {
+      "pinyin": "tuī chū"
+    },
+    "政治|adjective": {
+      "pinyin": "zhèngzhì"
+    },
+    "口供|noun": {
+      "pinyin": "kǒu gòng"
+    },
+    "妓院|noun": {
+      "pinyin": "jì yuàn"
+    },
+    "平衡|noun": {
+      "pinyin": "píng héng"
+    },
+    "分心|verb": {
+      "pinyin": "fēn xīn"
+    },
+    "仙子|noun": {
+      "pinyin": "xiān zǐ"
+    },
+    "原地|noun": {
+      "pinyin": "yuán dì"
+    },
+    "赦免|verb": {
+      "pinyin": "shè miǎn"
+    },
+    "上衣|noun": {
+      "pinyin": "shàng yī"
+    },
+    "品牌|noun": {
+      "pinyin": "pǐn pái"
+    },
+    "山羊|noun": {
+      "pinyin": "shān yáng"
+    },
+    "美食|noun": {
+      "pinyin": "měi shí"
+    },
+    "振作|verb": {
+      "pinyin": "zhèn zuò"
+    },
+    "圈套|noun": {
+      "pinyin": "quān tào"
+    },
+    "官司|noun": {
+      "pinyin": "guān si"
+    },
+    "奶茶|noun": {
+      "pinyin": "nǎi chá"
+    },
+    "好意|noun": {
+      "pinyin": "hǎo yì"
+    },
+    "巨星|noun": {
+      "pinyin": "jù xīng"
+    },
+    "拖延|verb": {
+      "pinyin": "tuō yán"
+    },
+    "革命|noun": {
+      "pinyin": "gémìng"
+    },
+    "革命|verb": {
+      "pinyin": "gémìng"
+    },
+    "表示|noun": {
+      "pinyin": "biǎo shì"
+    },
+    "喇叭|noun": {
+      "pinyin": "lǎba"
+    },
+    "金字塔|noun": {
+      "pinyin": "jīn zì tǎ"
+    },
+    "住所|noun": {
+      "pinyin": "zhù suǒ"
+    },
+    "恐慌|noun": {
+      "pinyin": "kǒng huāng"
+    },
+    "提交|verb": {
+      "pinyin": "tí jiāo"
+    },
+    "形容|noun": {
+      "pinyin": "xíng róng"
+    },
+    "形容|verb": {
+      "pinyin": "xíng róng"
+    },
+    "蟑螂|noun": {
+      "pinyin": "zhāngláng"
+    },
+    "高尚|adjective": {
+      "pinyin": "gāo shàng"
+    },
+    "可否|verb": {
+      "pinyin": "kě fǒu"
+    },
+    "回想|verb": {
+      "pinyin": "huí xiǎng"
+    },
+    "屈服|verb": {
+      "pinyin": "qū fú"
+    },
+    "毛衣|noun": {
+      "pinyin": "máo yī"
+    },
+    "黑客|noun": {
+      "pinyin": "hēi kè"
+    },
+    "王牌|noun": {
+      "pinyin": "wáng pái"
+    },
+    "保守|adjective": {
+      "pinyin": "bǎo shǒu"
+    },
+    "保守|verb": {
+      "pinyin": "bǎo shǒu"
+    },
+    "酒精|noun": {
+      "pinyin": "jiǔ jīng"
+    },
+    "茉莉|noun": {
+      "pinyin": "mòlì"
+    },
+    "土曜日|noun": {
+      "pinyin": "Tǔ yào rì"
+    },
+    "相似|adjective": {
+      "pinyin": "xiāng sì"
+    },
+    "相似|verb": {
+      "pinyin": "xiāng sì"
+    },
+    "高地|noun": {
+      "pinyin": "gāo dì"
+    },
+    "殖民地|noun": {
+      "pinyin": "zhí mín dì"
+    },
+    "另一半|noun": {
+      "pinyin": "lìng yī bàn"
+    },
+    "推翻|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "tuīfān"
+    },
+    "月光|noun": {
+      "pinyin": "yuè guāng"
+    },
+    "迷路|noun": {
+      "pinyin": "mílù"
+    },
+    "大事|adverb": {
+      "pinyin": "dà shì"
+    },
+    "前提|noun": {
+      "pinyin": "qián tí"
+    },
+    "好心|adverb": {
+      "pinyin": "hǎo xīn"
+    },
+    "露面|verb": {
+      "pinyin": "lòu miàn"
+    },
+    "自信|noun": {
+      "pinyin": "zì xìn"
+    },
+    "豆子|noun": {
+      "pinyin": "dòuzi"
+    },
+    "游泳|noun": {
+      "pinyin": "yóuyǒng"
+    },
+    "不在意|verb": {
+      "pinyin": "bù zài yì"
+    },
+    "出示|verb": {
+      "pinyin": "chū shì"
+    },
+    "天地|noun": {
+      "pinyin": "tiān dì"
+    },
+    "方位|noun": {
+      "pinyin": "fāng wèi"
+    },
+    "未必|adverb": {
+      "pinyin": "wèi bì"
+    },
+    "末日|noun": {
+      "pinyin": "Mò rì"
+    },
+    "不足|verb": {
+      "pinyin": "bù zú"
+    },
+    "尋找|verb": {
+      "pinyin": "xúnzhǎo"
+    },
+    "保管|verb": {
+      "pinyin": "bǎo guǎn"
+    },
+    "遵循|verb": {
+      "pinyin": "zūn xún"
+    },
+    "坦白|adjective": {
+      "pinyin": "tǎn bái"
+    },
+    "結果|noun": {
+      "pinyin": "jiéguǒ"
+    },
+    "幽默感|noun": {
+      "pinyin": "yōu mò gǎn"
+    },
+    "悲痛|adjective": {
+      "pinyin": "bēi tòng"
+    },
+    "草原|noun": {
+      "pinyin": "cǎo yuán"
+    },
+    "全身|noun": {
+      "pinyin": "quán shēn"
+    },
+    "充足|adjective": {
+      "pinyin": "chōng zú"
+    },
+    "此次|noun": {
+      "pinyin": "cǐ cì"
+    },
+    "核心|adjective": {
+      "pinyin": "hé xīn"
+    },
+    "猩猩|noun": {
+      "pinyin": "xīng xing"
+    },
+    "道德|adjective": {
+      "pinyin": "dào dé"
+    },
+    "奇特|adjective": {
+      "pinyin": "qí tè"
+    },
+    "金融|noun": {
+      "pinyin": "jīn róng"
+    },
+    "危害|verb": {
+      "pinyin": "wēi hài"
+    },
+    "探望|verb": {
+      "pinyin": "tàn wàng"
+    },
+    "明亮|adjective": {
+      "pinyin": "míng liàng"
+    },
+    "盟友|noun": {
+      "pinyin": "méng yǒu"
+    },
+    "射中|verb": {
+      "pinyin": "shè zhòng"
+    },
+    "正事|noun": {
+      "pinyin": "zhèng shì"
+    },
+    "英俊|adjective": {
+      "pinyin": "yīng jùn"
+    },
+    "英俊|noun": {
+      "pinyin": "yīng jùn"
+    },
+    "回收|verb": {
+      "pinyin": "huí shōu"
+    },
+    "凡人|noun": {
+      "pinyin": "fán rén"
+    },
+    "性生活|noun": {
+      "pinyin": "xìng shēng huó"
+    },
+    "研究所|noun": {
+      "pinyin": "yán jiū suǒ"
+    },
+    "零件|noun": {
+      "pinyin": "líng jiàn"
+    },
+    "考試|noun": {
+      "pinyin": "kǎoshì"
+    },
+    "考試|verb": {
+      "pinyin": "kǎoshì"
+    },
+    "下士|noun": {
+      "pinyin": "xiàshì"
+    },
+    "特效|noun": {
+      "pinyin": "tè xiào"
+    },
+    "野餐|noun": {
+      "pinyin": "yě cān"
+    },
+    "梯子|noun": {
+      "pinyin": "tī zi"
+    },
+    "前行|verb": {
+      "pinyin": "qián xíng"
+    },
+    "半天|noun": {
+      "pinyin": "bàntiān"
+    },
+    "鑰匙|noun": {
+      "pinyin": "yàoshi"
+    },
+    "麻醉|verb": {
+      "pinyin": "má zuì"
+    },
+    "打碎|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "dǎ suì"
+    },
+    "知名|adjective": {
+      "pinyin": "zhī míng"
+    },
+    "公子|noun": {
+      "pinyin": "gōng zǐ"
+    },
+    "刺客|noun": {
+      "pinyin": "cì kè"
+    },
+    "盲目|adjective": {
+      "pinyin": "máng mù"
+    },
+    "肥皂|noun": {
+      "pinyin": "féizào"
+    },
+    "未知|adjective": {
+      "pinyin": "wèi zhī"
+    },
+    "未知|verb": {
+      "pinyin": "wèi zhī"
+    },
+    "不愧|adverb": {
+      "pinyin": "bù kuì"
+    },
+    "支配|verb": {
+      "pinyin": "zhī pèi"
+    },
+    "旅客|noun": {
+      "pinyin": "lǚ kè"
+    },
+    "分辨|verb": {
+      "pinyin": "fēn biàn"
+    },
+    "利息|noun": {
+      "pinyin": "lìxī"
+    },
+    "小提琴|noun": {
+      "pinyin": "xiǎo tí qín"
+    },
+    "特地|adverb": {
+      "pinyin": "tè dì"
+    },
+    "使得|adjective": {
+      "pinyin": "shǐ de"
+    },
+    "武力|noun": {
+      "pinyin": "wǔ lì"
+    },
+    "囚禁|verb": {
+      "pinyin": "qiú jìn"
+    },
+    "通向|verb": {
+      "pinyin": "tōng xiàng"
+    },
+    "有限|adjective": {
+      "pinyin": "yǒu xiàn"
+    },
+    "骨折|verb": {
+      "pinyin": "gǔ zhé"
+    },
+    "得知|adverb": {
+      "pinyin": "dé zhī"
+    },
+    "基佬|noun": {
+      "pinyin": "jī lǎo"
+    },
+    "擅自|adverb": {
+      "pinyin": "shàn zì"
+    },
+    "道具|noun": {
+      "pinyin": "dào jù"
+    },
+    "選擇|noun": {
+      "pinyin": "xuǎnzé"
+    },
+    "吸引|adjective": {
+      "pinyin": "xī yǐn"
+    },
+    "正值|adverb": {
+      "pinyin": "zhèng zhí"
+    },
+    "最少|adjective": {
+      "pinyin": "zuì shǎo"
+    },
+    "插入|verb": {
+      "pinyin": "chā rù"
+    },
+    "鬼混|verb": {
+      "pinyin": "guǐ hùn"
+    },
+    "招待|noun": {
+      "pinyin": "zhāodài"
+    },
+    "招待|verb": {
+      "pinyin": "zhāodài"
+    },
+    "定罪|verb": {
+      "pinyin": "dìng zuì"
+    },
+    "大炮|noun": {
+      "pinyin": "dà pào"
+    },
+    "不能不|verb": {
+      "pinyin": "bù néng bù"
+    },
+    "加密|verb": {
+      "pinyin": "jiā mì"
+    },
+    "吉利|adjective": {
+      "pinyin": "Jí lì"
+    },
+    "安靜|adjective": {
+      "pinyin": "ānjìng"
+    },
+    "罐子|noun": {
+      "pinyin": "guànzi"
+    },
+    "替代|verb": {
+      "pinyin": "tì dài"
+    },
+    "紫色|noun": {
+      "pinyin": "zǐ sè"
+    },
+    "超越|adjective": {
+      "pinyin": "chāo yuè"
+    },
+    "地雷|noun": {
+      "pinyin": "dì léi"
+    },
+    "踏上|verb": {
+      "pinyin": "tà shàng"
+    },
+    "布丁|noun": {
+      "pinyin": "bù dīng"
+    },
+    "前科|noun": {
+      "pinyin": "qián kē"
+    },
+    "爺爺|noun": {
+      "pinyin": "yéye"
+    },
+    "管子|noun": {
+      "pinyin": "Guǎn zǐ"
+    },
+    "吞噬|verb": {
+      "pinyin": "tūn shì"
+    },
+    "老太婆|noun": {
+      "pinyin": "lǎo tài pó"
+    },
+    "支援|noun": {
+      "pinyin": "zhī yuán"
+    },
+    "民族|noun": {
+      "pinyin": "mínzú"
+    },
+    "下水道|noun": {
+      "pinyin": "xià shuǐ dào"
+    },
+    "人心|noun": {
+      "pinyin": "rén xīn"
+    },
+    "底部|noun": {
+      "pinyin": "dǐ bù"
+    },
+    "沙田|noun": {
+      "pinyin": "Shā tián"
+    },
+    "深夜|noun": {
+      "pinyin": "shēn yè"
+    },
+    "合同|adjective": {
+      "pinyin": "hé tong"
+    },
+    "好比|verb": {
+      "pinyin": "hǎo bǐ"
+    },
+    "用餐|verb": {
+      "pinyin": "yòng cān"
+    },
+    "野人|noun": {
+      "pinyin": "yě rén"
+    },
+    "南瓜|noun": {
+      "pinyin": "nánguā"
+    },
+    "皇室|noun": {
+      "pinyin": "huáng shì"
+    },
+    "破裂|verb": {
+      "pinyin": "pò liè"
+    },
+    "表格|noun": {
+      "pinyin": "biǎo gé"
+    },
+    "百姓|noun": {
+      "pinyin": "bǎixìng"
+    },
+    "履行|verb": {
+      "pinyin": "lǚ xíng"
+    },
+    "吹牛|verb": {
+      "pinyin": "chuīniú"
+    },
+    "呆子|noun": {
+      "pinyin": "dāi zi"
+    },
+    "男士|noun": {
+      "pinyin": "nán shì"
+    },
+    "罪孽|noun": {
+      "pinyin": "zuì niè"
+    },
+    "揭露|verb": {
+      "pinyin": "jiē lù"
+    },
+    "村民|noun": {
+      "pinyin": "cūn mín"
+    },
+    "火腿|noun": {
+      "pinyin": "huǒ tuǐ"
+    },
+    "便是|adverb": {
+      "pinyin": "biàn shì"
+    },
+    "便是|verb": {
+      "pinyin": "biàn shì"
+    },
+    "典型|adjective": {
+      "pinyin": "diǎn xíng"
+    },
+    "典型|noun": {
+      "pinyin": "diǎn xíng"
+    },
+    "主管|verb": {
+      "pinyin": "zhǔ guǎn"
+    },
+    "原理|noun": {
+      "pinyin": "yuán lǐ"
+    },
+    "安置|verb": {
+      "pinyin": "ān zhì"
+    },
+    "情景|noun": {
+      "pinyin": "qíng jǐng"
+    },
+    "日出|noun": {
+      "pinyin": "rì chū"
+    },
+    "淑女|noun": {
+      "pinyin": "shū nǚ"
+    },
+    "身高|noun": {
+      "pinyin": "shēn gāo"
+    },
+    "不合|verb": {
+      "pinyin": "bù hé"
+    },
+    "巫婆|noun": {
+      "pinyin": "wūpó"
+    },
+    "心底|noun": {
+      "pinyin": "xīn dǐ"
+    },
+    "火柴|noun": {
+      "pinyin": "huǒ chái"
+    },
+    "火車|noun": {
+      "pinyin": "huǒchē"
+    },
+    "玩耍|verb": {
+      "pinyin": "wán shuǎ"
+    },
+    "捕捉|verb": {
+      "pinyin": "bǔ zhuō"
+    },
+    "路程|noun": {
+      "pinyin": "lù chéng"
+    },
+    "哀悼|verb": {
+      "pinyin": "āi dào"
+    },
+    "奉天|verb": {
+      "pinyin": "Fèng tiān"
+    },
+    "教父|noun": {
+      "pinyin": "jiào fù"
+    },
+    "粉碎|verb": {
+      "pinyin": "fěn suì"
+    },
+    "歷史|noun": {
+      "pinyin": "lìshǐ"
+    },
+    "味道|verb": {
+      "pinyin": "wèidào"
+    },
+    "一向|noun": {
+      "pinyin": "yī xiàng"
+    },
+    "古董|noun": {
+      "pinyin": "gǔdǒng"
+    },
+    "屠夫|noun": {
+      "pinyin": "tú fū"
+    },
+    "感人|adjective": {
+      "pinyin": "gǎn rén"
+    },
+    "有病|verb": {
+      "pinyin": "yǒu bìng"
+    },
+    "瞎子|noun": {
+      "pinyin": "xiāzi"
+    },
+    "第一名|noun": {
+      "pinyin": "dìyīmíng"
+    },
+    "理想|adjective": {
+      "pinyin": "lǐ xiǎng"
+    },
+    "伯母|noun": {
+      "pinyin": "bó mǔ"
+    },
+    "有份|verb": {
+      "pinyin": "yǒu fèn"
+    },
+    "咪咪|noun": {
+      "pinyin": "mī mī"
+    },
+    "外交|noun": {
+      "pinyin": "wài jiāo"
+    },
+    "自尊|noun": {
+      "pinyin": "zì zūn"
+    },
+    "援助|noun": {
+      "pinyin": "yuán zhù"
+    },
+    "困惑|noun": {
+      "pinyin": "kùn huò"
+    },
+    "巨型|adjective": {
+      "pinyin": "jù xíng"
+    },
+    "期限|noun": {
+      "pinyin": "qī xiàn"
+    },
+    "遇害|verb": {
+      "pinyin": "yù hài"
+    },
+    "富人|noun": {
+      "pinyin": "fù rén"
+    },
+    "棍子|noun": {
+      "pinyin": "gùn zi"
+    },
+    "每日|adverb": {
+      "pinyin": "měi rì"
+    },
+    "狂野|adjective": {
+      "pinyin": "kuáng yě"
+    },
+    "友好|noun": {
+      "pinyin": "Yǒu hǎo"
+    },
+    "跌倒|verb": {
+      "pinyin": "diē dǎo"
+    },
+    "民主|adjective": {
+      "pinyin": "mín zhǔ"
+    },
+    "值班|verb": {
+      "pinyin": "zhí bān"
+    },
+    "安全感|noun": {
+      "pinyin": "ān quán gǎn"
+    },
+    "出海|verb": {
+      "pinyin": "chū hǎi"
+    },
+    "可好|adverb": {
+      "pinyin": "kě hǎo"
+    },
+    "外界|noun": {
+      "pinyin": "wài jiè"
+    },
+    "新聞|noun": {
+      "pinyin": "xīnwén"
+    },
+    "冷血|adjective": {
+      "pinyin": "lěng xuè"
+    },
+    "副作用|noun": {
+      "pinyin": "fù zuò yòng"
+    },
+    "學生|noun": {
+      "pinyin": "xuéshēng"
+    },
+    "懦弱|adjective": {
+      "pinyin": "nuò ruò"
+    },
+    "播出|verb": {
+      "romanization": "verb-complement",
+      "pinyin": "bō chū"
+    },
+    "兄弟姐妹|noun": {
+      "pinyin": "xiōng dì jiě mèi"
+    },
+    "忍者|noun": {
+      "pinyin": "rěn zhě"
+    },
+    "成本|noun": {
+      "pinyin": "chéng běn"
+    },
+    "不妥|adjective": {
+      "pinyin": "bù tuǒ"
+    },
+    "趕快|adverb": {
+      "pinyin": "gǎnkuài"
+    },
+    "摩托車|noun": {
+      "pinyin": "mótuōchē"
+    },
+    "弄死|verb": {
+      "pinyin": "nòngsǐ"
+    },
+    "撕裂|verb": {
+      "pinyin": "sī liè"
+    },
+    "左手|noun": {
+      "pinyin": "zuǒ shǒu"
+    },
+    "同性|adjective": {
+      "pinyin": "tóng xìng"
+    },
+    "忘不了|noun": {
+      "pinyin": "wàng bu liǎo"
+    },
+    "抵押|verb": {
+      "pinyin": "dǐ yā"
+    },
+    "迷你|adjective": {
+      "pinyin": "mí nǐ"
+    },
+    "指南|noun": {
+      "pinyin": "zhǐ nán"
+    },
+    "每月|adverb": {
+      "pinyin": "měi yuè"
+    },
+    "骨灰|noun": {
+      "pinyin": "gǔ huī"
+    },
+    "王位|noun": {
+      "pinyin": "wáng wèi"
+    },
+    "模糊|adjective": {
+      "pinyin": "mó hu"
+    },
+    "一大早|adverb": {
+      "pinyin": "yī dà zǎo"
+    },
+    "人造|noun": {
+      "pinyin": "rén zào"
+    },
+    "難過|adjective": {
+      "pinyin": "nánguò"
+    },
+    "墨西哥人|noun": {
+      "pinyin": "Mò xī gē rén"
+    },
+    "恩怨|noun": {
+      "pinyin": "ēn yuàn"
+    },
+    "人命|noun": {
+      "pinyin": "rén mìng"
+    },
+    "警署|noun": {
+      "pinyin": "jǐng shǔ"
+    },
+    "新生|noun": {
+      "pinyin": "xīn shēng"
+    },
+    "完事|verb": {
+      "pinyin": "wán shì"
+    },
+    "匆忙|adjective": {
+      "pinyin": "cōng máng"
+    },
+    "提要|noun": {
+      "pinyin": "tí yào"
+    },
+    "提要|verb": {
+      "pinyin": "tí yào"
+    },
+    "感冒|verb": {
+      "pinyin": "gǎn mào"
+    },
+    "先前|adverb": {
+      "pinyin": "xiānqián"
+    },
+    "子女|noun": {
+      "pinyin": "zǐ nǚ"
+    },
+    "滑稽|noun": {
+      "pinyin": "huá jī"
+    },
+    "社會|noun": {
+      "pinyin": "shèhuì"
+    },
+    "集中|adjective": {
+      "pinyin": "jí zhōng"
+    },
+    "底下|adjective": {
+      "pinyin": "dǐxià"
+    },
+    "女婿|noun": {
+      "pinyin": "nǚxu"
+    },
+    "好球|noun": {
+      "pinyin": "hǎo qiú"
+    },
+    "有鬼|verb": {
+      "pinyin": "yǒu guǐ"
+    },
+    "照料|verb": {
+      "pinyin": "zhào liào"
+    },
+    "私人|noun": {
+      "pinyin": "sī rén"
+    },
+    "下雪|verb": {
+      "pinyin": "xiàxuě"
+    },
+    "臀部|noun": {
+      "pinyin": "tún bù"
+    },
+    "草坪|noun": {
+      "pinyin": "cǎo píng"
+    },
+    "地下|adjective": {
+      "pinyin": "dì xià"
+    },
+    "住址|noun": {
+      "pinyin": "zhù zhǐ"
+    },
+    "出庭|verb": {
+      "pinyin": "chū tíng"
+    },
+    "命中|verb": {
+      "pinyin": "mìng zhòng"
+    },
+    "溜走|verb": {
+      "pinyin": "liū zǒu"
+    },
+    "用途|noun": {
+      "pinyin": "yòng tú"
+    },
+    "迫使|verb": {
+      "pinyin": "pò shǐ"
+    },
+    "走向|noun": {
+      "pinyin": "zǒu xiàng"
+    },
+    "何方|noun": {
+      "pinyin": "hé fāng"
+    },
+    "破案|verb": {
+      "pinyin": "pò àn"
+    },
+    "豆腐|noun": {
+      "pinyin": "dòufu"
+    },
+    "自大|adjective": {
+      "pinyin": "zì dà"
+    },
+    "送死|verb": {
+      "pinyin": "sòng sǐ"
+    },
+    "勃起|verb": {
+      "pinyin": "bó qǐ"
+    },
+    "好受|adjective": {
+      "pinyin": "hǎo shòu"
+    },
+    "徒弟|noun": {
+      "pinyin": "túdì"
+    },
+    "招募|verb": {
+      "pinyin": "zhāo mù"
+    },
+    "五月|noun": {
+      "pinyin": "wǔyuè"
+    },
+    "兔崽子|noun": {
+      "pinyin": "tù zǎi zi"
+    },
+    "山洞|noun": {
+      "pinyin": "shān dòng"
+    },
+    "引力|noun": {
+      "pinyin": "yǐn lì"
+    },
+    "逃生|verb": {
+      "pinyin": "táo shēng"
+    },
+    "部署|verb": {
+      "pinyin": "bù shǔ"
+    },
+    "演員|noun": {
+      "pinyin": "yǎnyuán"
+    },
+    "摔跤|verb": {
+      "pinyin": "shuāi jiāo"
+    },
+    "伯伯|noun": {
+      "pinyin": "bóbo"
+    },
+    "火花|noun": {
+      "pinyin": "huǒ huā"
+    },
+    "瑜伽|noun": {
+      "pinyin": "yú jiā"
+    },
+    "收留|verb": {
+      "pinyin": "shōu liú"
+    },
+    "落入|verb": {
+      "pinyin": "luò rù"
+    },
+    "油漆|noun": {
+      "pinyin": "yóu qī"
+    },
+    "油漆|verb": {
+      "pinyin": "yóu qī"
+    },
+    "主持人|noun": {
+      "pinyin": "zhǔ chí rén"
+    },
+    "向上|verb": {
+      "pinyin": "xiàng shàng"
+    },
+    "用作|verb": {
+      "pinyin": "yòng zuò"
+    },
+    "初次|noun": {
+      "pinyin": "chū cì"
+    },
+    "打理|verb": {
+      "pinyin": "dǎ lǐ"
+    },
+    "深入|adjective": {
+      "pinyin": "shēn rù"
+    },
+    "深入|verb": {
+      "pinyin": "shēn rù"
+    },
+    "凶器|noun": {
+      "pinyin": "xiōng qì"
+    },
+    "允許|verb": {
+      "pinyin": "yǔnxǔ"
+    },
+    "得逞|verb": {
+      "pinyin": "dé chěng"
+    },
+    "比不上|verb": {
+      "pinyin": "bǐ bù shàng"
+    },
+    "片段|noun": {
+      "pinyin": "piàn duàn"
+    },
+    "跨越|verb": {
+      "pinyin": "kuà yuè"
+    },
+    "木偶|noun": {
+      "pinyin": "mù ǒu"
+    },
+    "神明|noun": {
+      "pinyin": "shén míng"
+    },
+    "蔓延|verb": {
+      "pinyin": "màn yán"
+    },
+    "可憐|adjective": {
+      "pinyin": "kělián"
+    },
+    "律師|noun": {
+      "pinyin": "lǜshī"
+    },
+    "植入|verb": {
+      "pinyin": "zhí rù"
+    },
+    "往前|adverb": {
+      "pinyin": "wǎngqián"
+    },
+    "往前|noun": {
+      "pinyin": "wǎngqián"
+    },
+    "花朵|noun": {
+      "pinyin": "huā duǒ"
+    },
+    "香味|noun": {
+      "pinyin": "xiāng wèi"
+    },
+    "想必|adverb": {
+      "pinyin": "xiǎng bì"
+    },
+    "背部|noun": {
+      "pinyin": "bèi bù"
+    },
+    "菊花|noun": {
+      "pinyin": "júhuā"
+    },
+    "瓦斯|noun": {
+      "pinyin": "wǎ sī"
+    },
+    "看穿|verb": {
+      "pinyin": "kàn chuān"
+    },
+    "粒子|noun": {
+      "pinyin": "lì zǐ"
+    },
+    "生死|verb": {
+      "pinyin": "shēngsǐ"
+    },
+    "一致|adverb": {
+      "pinyin": "yī zhì"
+    },
+    "品味|noun": {
+      "pinyin": "pǐn wèi"
+    },
+    "小伙|noun": {
+      "pinyin": "xiǎo huǒ"
+    },
+    "新手|noun": {
+      "pinyin": "xīn shǒu"
+    },
+    "公事|noun": {
+      "pinyin": "gōng shì"
+    },
+    "堵住|verb": {
+      "pinyin": "dǔ zhù"
+    },
+    "高大|adjective": {
+      "pinyin": "gāo dà"
+    },
+    "同行|verb": {
+      "pinyin": "tóng háng"
+    },
+    "派遣|verb": {
+      "pinyin": "pài qiǎn"
+    },
+    "熟人|noun": {
+      "pinyin": "shúrén"
+    },
+    "計劃|verb": {
+      "pinyin": "jìhuà"
+    },
+    "四月|noun": {
+      "pinyin": "sìyuè"
+    },
+    "戒酒|verb": {
+      "pinyin": "jiè jiǔ"
+    },
+    "走近|verb": {
+      "pinyin": "zǒu jìn"
+    },
+    "面孔|noun": {
+      "pinyin": "miàn kǒng"
+    },
+    "成人|verb": {
+      "pinyin": "chéng rén"
+    },
+    "入住|verb": {
+      "pinyin": "rù zhù"
+    },
+    "后座|noun": {
+      "pinyin": "hòu zuò"
+    },
+    "大笑|verb": {
+      "pinyin": "dà xiào"
+    },
+    "移民|noun": {
+      "pinyin": "yí mín"
+    },
+    "移植|verb": {
+      "pinyin": "yí zhí"
+    },
+    "反映|verb": {
+      "pinyin": "fǎn yìng"
+    },
+    "健身房|noun": {
+      "pinyin": "jiàn shēn fáng"
+    },
+    "沉睡|verb": {
+      "pinyin": "chén shuì"
+    },
+    "全力|adverb": {
+      "pinyin": "quán lì"
+    },
+    "口信|noun": {
+      "pinyin": "kǒu xìn"
+    },
+    "打牌|verb": {
+      "pinyin": "dǎ pái"
+    },
+    "整夜|adverb": {
+      "pinyin": "zhěng yè"
+    },
+    "片刻|noun": {
+      "pinyin": "piàn kè"
+    },
+    "伺候|verb": {
+      "pinyin": "cì hou"
+    },
+    "公牛|noun": {
+      "pinyin": "gōngniú"
+    },
+    "徘徊|verb": {
+      "pinyin": "pái huái"
+    },
+    "私奔|verb": {
+      "pinyin": "sī bēn"
+    },
+    "十足|adjective": {
+      "pinyin": "shí zú"
+    },
+    "不下|verb": {
+      "pinyin": "bù xià"
+    },
+    "往事|noun": {
+      "pinyin": "wǎng shì"
+    },
+    "待遇|noun": {
+      "pinyin": "dài yù"
+    },
+    "旋律|noun": {
+      "pinyin": "xuán lǜ"
+    },
+    "人格|noun": {
+      "pinyin": "rén gé"
+    },
+    "任性|adjective": {
+      "pinyin": "rèn xìng"
+    },
+    "奔跑|verb": {
+      "pinyin": "bēn pǎo"
+    },
+    "旁邊|noun": {
+      "pinyin": "pángbiān"
+    },
+    "上方|noun": {
+      "pinyin": "shàng fāng"
+    },
+    "自行|adverb": {
+      "pinyin": "zì xíng"
+    },
+    "奏效|verb": {
+      "pinyin": "zòu xiào"
+    },
+    "水下|adjective": {
+      "pinyin": "shuǐ xià"
+    },
+    "血腥|adjective": {
+      "pinyin": "xuè xīng"
+    },
+    "血腥|noun": {
+      "pinyin": "xuè xīng"
+    },
+    "吻合|verb": {
+      "pinyin": "wěn hé"
+    },
+    "花生|noun": {
+      "pinyin": "huāshēng"
+    },
+    "一口|adverb": {
+      "pinyin": "yī kǒu"
+    },
+    "效力|noun": {
+      "pinyin": "xiào lì"
+    },
+    "誓言|noun": {
+      "pinyin": "shì yán"
+    },
+    "誓言|verb": {
+      "pinyin": "shì yán"
+    },
+    "地窖|noun": {
+      "pinyin": "dì jiào"
+    },
+    "歹徒|noun": {
+      "pinyin": "dǎi tú"
+    },
+    "正面|noun": {
+      "pinyin": "zhèng miàn"
+    },
+    "動物|noun": {
+      "pinyin": "dòngwù"
+    },
+    "江湖|noun": {
+      "pinyin": "jiāng hú"
+    },
+    "激活|verb": {
+      "pinyin": "jī huó"
+    },
+    "真實|adjective": {
+      "pinyin": "zhēnshí"
+    },
+    "刻薄|adjective": {
+      "pinyin": "kè bó"
+    },
+    "消化|verb": {
+      "pinyin": "xiāo huà"
+    },
+    "先知|noun": {
+      "pinyin": "xiān zhī"
+    },
+    "不及|verb": {
+      "pinyin": "bù jí"
+    },
+    "愧疚|adjective": {
+      "pinyin": "kuì jiù"
+    },
+    "草地|noun": {
+      "pinyin": "cǎo dì"
+    },
+    "中毒|verb": {
+      "pinyin": "zhòng dú"
+    },
+    "付款|verb": {
+      "pinyin": "fù kuǎn"
+    },
+    "蜥蜴|noun": {
+      "pinyin": "xī yì"
+    },
+    "有罪|noun": {
+      "pinyin": "yǒu zuì"
+    },
+    "快感|noun": {
+      "pinyin": "kuài gǎn"
+    },
+    "暴徒|noun": {
+      "pinyin": "bào tú"
+    },
+    "漏洞|noun": {
+      "pinyin": "lòu dòng"
+    },
+    "舞伴|noun": {
+      "pinyin": "wǔ bàn"
+    },
+    "通通|adverb": {
+      "pinyin": "tōng tōng"
+    },
+    "平等|noun": {
+      "pinyin": "píng děng"
+    },
+    "失效|verb": {
+      "pinyin": "shī xiào"
+    },
+    "小妹妹|noun": {
+      "pinyin": "xiǎo mèi mei"
+    },
+    "一手|adjective": {
+      "pinyin": "yī shǒu"
+    },
+    "夏季|noun": {
+      "pinyin": "xià jì"
+    },
+    "旅館|noun": {
+      "pinyin": "lǚguǎn"
+    },
+    "要命|adverb": {
+      "pinyin": "yàomìng"
+    },
+    "貌似|adverb": {
+      "pinyin": "mào sì"
+    },
+    "貌似|verb": {
+      "pinyin": "mào sì"
+    },
+    "起身|verb": {
+      "pinyin": "qǐ shēn"
+    },
+    "小看|verb": {
+      "pinyin": "xiǎokàn"
+    },
+    "珊瑚|noun": {
+      "pinyin": "shān hú"
+    },
+    "胡琴|noun": {
+      "pinyin": "hú qin"
+    },
+    "致死|verb": {
+      "pinyin": "zhì sǐ"
+    },
+    "指引|noun": {
+      "pinyin": "zhǐ yǐn"
+    },
+    "指引|verb": {
+      "pinyin": "zhǐ yǐn"
+    },
+    "放心|adverb": {
+      "pinyin": "fàng xīn"
+    },
+    "放心|noun": {
+      "pinyin": "fàng xīn"
+    },
+    "空中|noun": {
+      "pinyin": "kōng zhōng"
+    },
+    "藏身|verb": {
+      "pinyin": "cáng shēn"
+    },
+    "大餐|noun": {
+      "pinyin": "dà cān"
+    },
+    "出血|verb": {
+      "pinyin": "chū xuè"
+    },
+    "有意|adverb": {
+      "pinyin": "yǒu yì"
+    },
+    "下星期|noun": {
+      "pinyin": "xià xīng qī"
+    },
+    "京都|noun": {
+      "pinyin": "Jīng dū"
+    },
+    "太空船|noun": {
+      "pinyin": "tài kōng chuán"
+    },
+    "超自然|adjective": {
+      "pinyin": "chāo zì rán"
+    },
+    "奶牛|noun": {
+      "pinyin": "nǎiniú"
+    },
+    "泡沫|noun": {
+      "pinyin": "pào mò"
+    },
+    "口水|noun": {
+      "pinyin": "kǒushuǐ"
+    },
+    "多多|adverb": {
+      "pinyin": "duō duō"
+    },
+    "酒保|noun": {
+      "pinyin": "jiǔ bǎo"
+    },
+    "高中生|noun": {
+      "pinyin": "gāo zhōng shēng"
+    },
+    "七月|noun": {
+      "pinyin": "qīyuè"
+    },
+    "策略|adjective": {
+      "pinyin": "cè lüè"
+    },
+    "中止|verb": {
+      "pinyin": "zhōng zhǐ"
+    },
+    "凡事|adverb": {
+      "pinyin": "fán shì"
+    },
+    "匕首|noun": {
+      "pinyin": "bǐ shǒu"
+    },
+    "如果|conjunction": {
+      "pinyin": "rú guǒ"
+    },
+    "就是|conjunction": {
+      "pinyin": "jiùshì"
+    },
+    "自己|pronoun": {
+      "pinyin": "zìjǐ"
+    },
+    "只是|conjunction": {
+      "pinyin": "zhǐ shì"
+    },
+    "但是|conjunction": {
+      "pinyin": "dàn shì"
+    },
+    "一起|determiner": {
+      "pinyin": "yī qǐ"
+    },
+    "我們|pronoun": {
+      "pinyin": "wǒmen"
+    },
+    "那些|pronoun": {
+      "pinyin": "nàxiē"
+    },
+    "一切|pronoun": {
+      "pinyin": "yīqiè"
+    },
+    "所以|conjunction": {
+      "pinyin": "suǒ yǐ"
+    },
+    "真是|interjection": {
+      "pinyin": "zhēn shi"
+    },
+    "你好|interjection": {
+      "pinyin": "nǐ hǎo"
+    },
+    "抱歉|interjection": {
+      "pinyin": "bào qiàn"
+    },
+    "大家|pronoun": {
+      "pinyin": "dàjiā"
+    },
+    "有人|interjection": {
+      "pinyin": "yǒu rén"
+    },
+    "所以|pronoun": {
+      "pinyin": "suǒ yǐ"
+    },
+    "只有|conjunction": {
+      "pinyin": "zhǐyǒu"
+    },
+    "而且|conjunction": {
+      "pinyin": "ér qiě"
+    },
+    "可是|conjunction": {
+      "pinyin": "kěshì"
+    },
+    "等等|interjection": {
+      "pinyin": "děng děng"
+    },
+    "他們|pronoun": {
+      "pinyin": "tāmen"
+    },
+    "重要|conjunction": {
+      "pinyin": "zhòngyào"
+    },
+    "只要|conjunction": {
+      "pinyin": "zhǐ yào"
+    },
+    "要是|conjunction": {
+      "pinyin": "yào shi"
+    },
+    "是不是|conjunction": {
+      "pinyin": "shì bu shì"
+    },
+    "或者|conjunction": {
+      "pinyin": "huò zhě"
+    },
+    "小心|interjection": {
+      "pinyin": "xiǎo xīn"
+    },
+    "兄弟|pronoun": {
+      "pinyin": "xiōngdi"
+    },
+    "不管|conjunction": {
+      "pinyin": "bù guǎn"
+    },
+    "就是|interjection": {
+      "pinyin": "jiùshì"
+    },
+    "甚至|conjunction": {
+      "pinyin": "shèn zhì"
+    },
+    "這個|pronoun": {
+      "pinyin": "zhège"
+    },
+    "是否|conjunction": {
+      "pinyin": "shì fǒu"
+    },
+    "你們|pronoun": {
+      "pinyin": "nǐmen"
+    },
+    "各位|pronoun": {
+      "pinyin": "gè wèi"
+    },
+    "不好意思|interjection": {
+      "pinyin": "bù hǎo yì si"
+    },
+    "直到|preposition": {
+      "pinyin": "zhí dào"
+    },
+    "就算|conjunction": {
+      "pinyin": "jiù suàn"
+    },
+    "收到|interjection": {
+      "pinyin": "shōu dào"
+    },
+    "晚安|interjection": {
+      "pinyin": "wǎn ān"
+    },
+    "謝謝|interjection": {
+      "pinyin": "xièxie"
+    },
+    "有些|determiner": {
+      "pinyin": "yǒu xiē"
+    },
+    "除了|preposition": {
+      "pinyin": "chú le"
+    },
+    "因此|conjunction": {
+      "pinyin": "yīn cǐ"
+    },
+    "是不是|interjection": {
+      "pinyin": "shì bu shì"
+    },
+    "小子|pronoun": {
+      "pinyin": "xiǎo zǐ"
+    },
+    "因為|conjunction": {
+      "pinyin": "yīnwèi"
+    },
+    "加油|interjection": {
+      "pinyin": "jiā yóu"
+    },
+    "即使|conjunction": {
+      "pinyin": "jí shǐ"
+    },
+    "老子|pronoun": {
+      "pinyin": "Lǎo zǐ"
+    },
+    "以及|conjunction": {
+      "pinyin": "yǐ jí"
+    },
+    "不然|conjunction": {
+      "pinyin": "bù rán"
+    },
+    "有些|pronoun": {
+      "pinyin": "yǒu xiē"
+    },
+    "這裡|pronoun": {
+      "pinyin": "zhèlǐ"
+    },
+    "那個|pronoun": {
+      "pinyin": "nàge"
+    },
+    "另外|conjunction": {
+      "pinyin": "lìngwài"
+    },
+    "差不多|interjection": {
+      "pinyin": "chà bu duō"
+    },
+    "之一|preposition": {
+      "pinyin": "zhī yī"
+    },
+    "而是|conjunction": {
+      "pinyin": "ér shì"
+    },
+    "人家|pronoun": {
+      "pinyin": "rénjia"
+    },
+    "老天|interjection": {
+      "pinyin": "lǎo tiān"
+    },
+    "救命|interjection": {
+      "pinyin": "jiù mìng"
+    },
+    "早上好|interjection": {
+      "pinyin": "zǎo shang hǎo"
+    },
+    "既然|conjunction": {
+      "pinyin": "jì rán"
+    },
+    "除非|conjunction": {
+      "pinyin": "chú fēi"
+    },
+    "或是|conjunction": {
+      "pinyin": "huò shì"
+    },
+    "不如|conjunction": {
+      "pinyin": "bù rú"
+    },
+    "沒事|interjection": {
+      "pinyin": "méishì"
+    },
+    "恭喜|interjection": {
+      "pinyin": "gōngxǐ"
+    },
+    "可不|interjection": {
+      "pinyin": "kě bu"
+    },
+    "一半|determiner": {
+      "pinyin": "yībàn"
+    },
+    "自然|conjunction": {
+      "pinyin": "zìrán"
+    },
+    "好不好|interjection": {
+      "pinyin": "hǎo bu hǎo"
+    },
+    "這兒|pronoun": {
+      "pinyin": "zhèr"
+    },
+    "彼此|pronoun": {
+      "pinyin": "bǐcǐ"
+    },
+    "之中|preposition": {
+      "pinyin": "zhī zhōng"
+    },
+    "等到|preposition": {
+      "pinyin": "děng dào"
+    },
+    "呵呵|interjection": {
+      "pinyin": "hē hē"
+    },
+    "不怕|conjunction": {
+      "pinyin": "bù pà"
+    },
+    "哎呀|interjection": {
+      "pinyin": "āi yā"
+    },
+    "那個|interjection": {
+      "pinyin": "nàge"
+    },
+    "然而|conjunction": {
+      "pinyin": "rán ér"
+    },
+    "這個|interjection": {
+      "pinyin": "zhège"
+    },
+    "早安|interjection": {
+      "pinyin": "zǎo ān"
+    },
+    "某些|determiner": {
+      "pinyin": "mǒu xiē"
+    },
+    "因為|preposition": {
+      "pinyin": "yīnwèi"
+    },
+    "左右|preposition": {
+      "pinyin": "zuǒyòu"
+    },
+    "自我|pronoun": {
+      "pinyin": "zì wǒ"
+    },
+    "要死|interjection": {
+      "pinyin": "yàosǐ"
+    },
+    "加上|conjunction": {
+      "pinyin": "jiā shàng"
+    },
+    "拜拜|interjection": {
+      "pinyin": "bái bái"
+    },
+    "某人|pronoun": {
+      "pinyin": "mǒu rén"
+    },
+    "假如|conjunction": {
+      "pinyin": "jiǎ rú"
+    },
+    "早晨|interjection": {
+      "pinyin": "zǎochen"
+    },
+    "按照|preposition": {
+      "pinyin": "àn zhào"
+    },
+    "之外|preposition": {
+      "pinyin": "zhīwài"
+    },
+    "再見|interjection": {
+      "pinyin": "zàijiàn"
+    },
+    "乖乖|interjection": {
+      "pinyin": "guāi guāi"
+    },
+    "不止|conjunction": {
+      "pinyin": "bù zhǐ"
+    },
+    "那裡|pronoun": {
+      "pinyin": "nàlǐ"
+    },
+    "哪裡|pronoun": {
+      "pinyin": "nǎlǐ"
+    },
+    "本人|pronoun": {
+      "pinyin": "běn rén"
+    },
+    "之下|preposition": {
+      "pinyin": "zhīxià"
+    },
+    "雖然|conjunction": {
+      "pinyin": "suīrán"
+    },
+    "本身|pronoun": {
+      "pinyin": "běn shēn"
+    },
+    "感謝|interjection": {
+      "pinyin": "gǎnxiè"
+    },
+    "要不然|conjunction": {
+      "pinyin": "yào bù rán"
+    },
+    "哪怕|conjunction": {
+      "pinyin": "nǎ pà"
+    },
+    "除非|preposition": {
+      "pinyin": "chú fēi"
+    },
+    "要不是|conjunction": {
+      "pinyin": "yào bu shì"
+    },
+    "以外|preposition": {
+      "pinyin": "yǐ wài"
+    },
+    "即便|conjunction": {
+      "pinyin": "jí biàn"
+    },
+    "之所以|conjunction": {
+      "pinyin": "zhī suǒ yǐ"
+    },
+    "一百|determiner": {
+      "pinyin": "yībǎi"
+    },
+    "哪些|pronoun": {
+      "pinyin": "nǎ xiē"
+    },
+    "咱們|pronoun": {
+      "pinyin": "zánmen"
+    },
+    "嘿嘿|interjection": {
+      "pinyin": "hēi hēi"
+    },
+    "通過|preposition": {
+      "pinyin": "tōngguò"
+    },
+    "不得了|interjection": {
+      "pinyin": "bù dé liǎo"
+    },
+    "此外|conjunction": {
+      "pinyin": "cǐ wài"
+    },
+    "二十|determiner": {
+      "pinyin": "èrshí"
+    },
+    "之上|preposition": {
+      "pinyin": "zhīshàng"
+    },
+    "之間|preposition": {
+      "pinyin": "zhījiān"
+    },
+    "確實|interjection": {
+      "pinyin": "quèshí"
+    },
+    "各自|pronoun": {
+      "pinyin": "gè zì"
+    },
+    "自身|pronoun": {
+      "pinyin": "zì shēn"
+    },
+    "一千|determiner": {
+      "pinyin": "yīqiān"
+    },
+    "免得|conjunction": {
+      "pinyin": "miǎn de"
+    },
+    "總是|conjunction": {
+      "pinyin": "zǒngshì"
+    },
+    "就此|conjunction": {
+      "pinyin": "jiù cǐ"
+    },
+    "小弟|pronoun": {
+      "pinyin": "xiǎo dì"
+    },
+    "五十|determiner": {
+      "pinyin": "wǔshí"
+    },
+    "以便|conjunction": {
+      "pinyin": "yǐ biàn"
+    },
+    "哪裡|interjection": {
+      "pinyin": "nǎlǐ"
+    },
+    "十二|determiner": {
+      "pinyin": "shí'èr"
+    },
+    "好棒|interjection": {
+      "pinyin": "hǎo bàng"
+    },
+    "不但|conjunction": {
+      "pinyin": "bù dàn"
+    },
+    "哪個|pronoun": {
+      "pinyin": "nǎge"
+    },
+    "除此之外|conjunction": {
+      "pinyin": "chú cǐ zhī wài"
+    },
+    "三十|determiner": {
+      "pinyin": "sānshí"
+    },
+    "直至|preposition": {
+      "pinyin": "zhí zhì"
+    },
+    "多謝|interjection": {
+      "pinyin": "duōxiè"
+    },
+    "一代|interjection": {
+      "pinyin": "yī dài"
+    },
+    "經過|preposition": {
+      "pinyin": "jīngguò"
+    },
+    "阿拉|pronoun": {
+      "pinyin": "ā lā"
+    },
+    "以免|conjunction": {
+      "pinyin": "yǐ miǎn"
+    },
+    "不光|conjunction": {
+      "pinyin": "bù guāng"
+    },
+    "另一方面|conjunction": {
+      "pinyin": "lìng yī fāng miàn"
+    },
+    "立正|interjection": {
+      "pinyin": "lì zhèng"
+    },
+    "十五|determiner": {
+      "pinyin": "shíwǔ"
+    },
+    "得罪|interjection": {
+      "pinyin": "dé zuì"
+    },
+    "唯有|conjunction": {
+      "pinyin": "wéi yǒu"
+    },
+    "十三|determiner": {
+      "pinyin": "shísān"
+    },
+    "拜拜|noun": {
+      "pinyin": "bái bái"
+    },
+    "拜拜|verb": {
+      "pinyin": "bái bái"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "source": {
+    "id": "frequencywords",
+    "sha256": "0a34556e278008539273e07bda10baca9e2b9637cff2ff3ca9cd93782571abbd",
+    "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/zh_cn/zh_cn_full.txt",
+    "retrievedAt": "2026-10-14"
+  },
+  "generator": "scripts/lib/lexicon-etl/derive.ts",
+  "population": {
+    "definition": "lemma|pos pairs of the content parts of speech (noun, verb, adjective, adverb) that have a kaikki lemma entry and at least one word form in the FrequencyWords list; a word form shared by several lemma entries (any part of speech) splits its count in proportion to each entry's richness (lemma senses + examples + 5 when it has an inflection table), and a closed-class lemma identical to the form absorbs the whole count; lemmas with an upper-case initial (proper nouns, abbreviations — except German nouns), single letters and letter/note names are excluded; per-million is relative to the FrequencyWords list total",
+    "size": 51849,
+    "byPos": {
+      "noun": 28936,
+      "verb": 16260,
+      "adjective": 5259,
+      "adverb": 1394
+    },
+    "listForms": 766612,
+    "listTotal": 85487865
+  },
+  "freqLemme": {
+    "unit": "occurrences per million words of the FrequencyWords list",
+    "quantiles": {
+      "p50": 0.117,
+      "p90": 2.784,
+      "p95": 7.2642,
+      "p99": 46.5797
+    }
+  },
+  "bandRule": "very-common = perMillion ≥ p99 of the population; common = ≥ p95; less-common = the rest (identical rule to the French Lexique derivation)",
+  "secondary": {
+    "id": "wordfreq",
+    "sha256": "d9a8ebe690d65ce6e43df4f02296dc6a50a17aa6b977e1f6b1c695432d15c511",
+    "url": "https://pypi.org/project/wordfreq/3.1.1/",
+    "retrievedAt": "2026-10-14",
+    "words": 50000,
+    "unit": "Zipf (log10 per billion)"
+  }
+}
