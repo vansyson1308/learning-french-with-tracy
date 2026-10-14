@@ -1,22 +1,26 @@
 #!/usr/bin/env python3
-"""Language-aware ASR audit for generated audio (V1 publication program).
+"""Language-aware ASR audit for generated audio (audio pipeline v2, P3b).
 
-Transcribes every clip in a generation plan with faster-whisper in the
-clip's own language and scores word (or, for Chinese, character) error rate
-against the authoritative transcript. A TECHNICAL signal only — it feeds
-QA reports and candidate-voice selection, never replaces linguistic review,
-and the ASR model is never shipped. Runs only inside the dispatch-only
-workflow (huggingface.co is unreachable from the interactive environment).
+Transcribes every clip of a generation plan and scores the word error rate
+(character error rate for Japanese and Chinese) against the authoritative
+transcript. A TECHNICAL signal only — it feeds the QA reports and the
+voice-cast selection, never replaces linguistic review, and no ASR model is
+ever shipped. Runs only inside the dispatch-only audio workflow.
+
+Recognisers (content/audio/engines.json → asr):
+  whisper     faster-whisper (default; --model base for canaries, medium for shipped clips)
+  sensevoice  FunASR SenseVoiceSmall — zh / ja / ko / vi (plan/06 §3); Whisper stays the fallback
+
+Language rules are NOT re-implemented here: the plan written by
+`scripts/audio.ts plan` carries the language and the build plugin's
+ASR-normalisation spec (ligature folds, apostrophe splitting, the
+word-character class, the Whisper language code).
 
 Every clip is transcribed with one second of digital silence before it and
-half a second after it: Whisper-family models are unreliable on sub-second
-audio with no lead-in, and the padding adds context without adding any
-bias (nothing about the expected text reaches the recognizer). Isolated
-single-word clips remain the weakest case for any ASR — the QA report
-therefore keeps sentence-length clips as the intelligibility signal and
-treats word-level scores as informational.
+half a second after it (Whisper-family models are unreliable on sub-second
+audio with no lead-in; the padding adds no bias).
 
-Usage: audio-asr-audit.py --plan plan.json --outdir clips/ --out asr.json [--model medium]
+Usage: audio-asr-audit.py --plan plan.json --outdir clips/ --out asr.json [--engine whisper|sensevoice|auto] [--model medium]
 """
 
 import argparse
@@ -26,15 +30,25 @@ import re
 import sys
 import unicodedata
 
+CER_LANGUAGES = {"ja", "zh"}
+SENSEVOICE_LANGUAGES = {"zh", "ja", "ko", "vi"}
+LEGACY_NORMALIZATION = {"ligatures": {"œ": "oe", "æ": "ae", "ß": "ss"}, "apostropheSplit": True, "wordChars": "a-zà-ÿ0-9", "whisperLanguage": None}
 
-def normalize(text: str, language: str) -> list[str]:
+
+def normalize(text: str, language: str, spec: dict) -> list[str]:
     text = unicodedata.normalize("NFC", text.lower())
-    text = text.replace("œ", "oe").replace("æ", "ae").replace("ß", "ss")
-    text = text.replace("'", " ").replace("’", " ")
-    if language == "zh":
-        chars = [c for c in text if c.isalnum() and not c.isspace()]
-        return chars
-    text = re.sub(r"[^\w\s]", " ", text)
+    for src, dst in (spec.get("ligatures") or {}).items():
+        text = text.replace(src, dst)
+    if language in CER_LANGUAGES:
+        # Character tokens: letters/digits/kana/han only (punctuation and spaces dropped).
+        return [c for c in text if c.isalnum()]
+    if spec.get("apostropheSplit", True):
+        text = text.replace("'", " ").replace("’", " ")
+    word_chars = spec.get("wordChars") or LEGACY_NORMALIZATION["wordChars"]
+    if word_chars == "\\w":
+        text = re.sub(r"[^\w\s]", " ", text)
+    else:
+        text = re.sub(rf"[^{word_chars} ]", " ", text)
     text = re.sub(r"[_\d]+", " ", text)
     return [t for t in text.split() if t]
 
@@ -52,41 +66,84 @@ def edit_rate(ref: list[str], hyp: list[str]) -> float:
     return d[len(ref)][len(hyp)] / max(len(ref), 1)
 
 
+class WhisperRecognizer:
+    def __init__(self, model: str):
+        from faster_whisper import WhisperModel, decode_audio  # workflow-only dependency
+        import numpy as np
+
+        self.np = np
+        self.decode_audio = decode_audio
+        self.model = WhisperModel(model, device="cpu", compute_type="int8")
+        self.name = f"faster-whisper:{model}"
+        self.rate = 16000
+
+    def transcribe(self, path: str, language: str, lead: float, tail: float) -> str:
+        np = self.np
+        audio = np.concatenate([np.zeros(int(lead * self.rate), dtype=np.float32), self.decode_audio(path, sampling_rate=self.rate), np.zeros(int(tail * self.rate), dtype=np.float32)])
+        segments, _info = self.model.transcribe(audio, language=language, beam_size=5, condition_on_previous_text=False)
+        return " ".join(seg.text for seg in segments).strip()
+
+
+class SenseVoiceRecognizer:
+    LANG = {"zh": "zh", "ja": "ja", "ko": "ko", "vi": "auto", "en": "en"}
+
+    def __init__(self, model: str, hub: str):
+        from funasr import AutoModel  # workflow-only dependency
+        from funasr.utils.postprocess_utils import rich_transcription_postprocess
+
+        self.post = rich_transcription_postprocess
+        self.model = AutoModel(model=model, hub=hub, device="cpu", disable_update=True)
+        self.name = f"sensevoice:{model}"
+
+    def transcribe(self, path: str, language: str, lead: float, tail: float) -> str:
+        res = self.model.generate(input=path, language=self.LANG.get(language, "auto"), use_itn=False, batch_size_s=0)
+        if not res:
+            return ""
+        return self.post(res[0]["text"]).strip()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan", required=True)
     ap.add_argument("--outdir", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--model", default="medium")
+    ap.add_argument("--engine", default="auto", choices=["auto", "whisper", "sensevoice"])
+    ap.add_argument("--model", default="medium", help="whisper model size (base for canaries)")
     ap.add_argument("--lead-silence", type=float, default=1.0)
     ap.add_argument("--tail-silence", type=float, default=0.5)
     args = ap.parse_args()
 
-    import numpy as np
-    from faster_whisper import WhisperModel, decode_audio  # workflow-only dependency
-
-    model = WhisperModel(args.model, device="cpu", compute_type="int8")
-    rate = 16000
-    lead = np.zeros(int(args.lead_silence * rate), dtype=np.float32)
-    tail = np.zeros(int(args.tail_silence * rate), dtype=np.float32)
     with open(args.plan, "r", encoding="utf-8") as f:
         plan = json.load(f)
+    language = plan.get("language") or "fr"
+    spec = plan.get("normalization") or LEGACY_NORMALIZATION
+    whisper_lang = spec.get("whisperLanguage") or language
+    engine = args.engine
+    if engine == "auto":
+        engine = "sensevoice" if language in SENSEVOICE_LANGUAGES else "whisper"
+    engines_doc = {}
+    engines_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "content", "audio", "engines.json")
+    if os.path.exists(engines_path):
+        with open(engines_path, "r", encoding="utf-8") as f:
+            engines_doc = json.load(f).get("asr", {})
+    if engine == "sensevoice":
+        sv = engines_doc.get("sensevoice", {})
+        recognizer = SenseVoiceRecognizer(sv.get("model", "FunAudioLLM/SenseVoiceSmall"), sv.get("modelHub", "hf"))
+    else:
+        recognizer = WhisperRecognizer(args.model)
 
+    metric = "cer" if language in CER_LANGUAGES else "wer"
     results = {}
     for clip in plan["clips"]:
         path = os.path.join(args.outdir, clip["assetKey"] + ".mp3")
-        language = clip.get("language", "fr")
+        clip_lang = clip.get("language", language)
         if not os.path.exists(path):
-            results[clip["clipId"]] = {"text": "", "wer": 1.0}
+            results[clip["clipId"]] = {"text": "", "wer": 1.0, "metric": metric, "engine": recognizer.name}
             continue
-        audio = np.concatenate([lead, decode_audio(path, sampling_rate=rate), tail])
-        segments, _info = model.transcribe(
-            audio, language=language, beam_size=5, condition_on_previous_text=False
-        )
-        hyp_text = " ".join(seg.text for seg in segments).strip()
-        score = edit_rate(normalize(clip["text"], language), normalize(hyp_text, language))
-        results[clip["clipId"]] = {"text": hyp_text, "wer": round(score, 4), "model": args.model}
-        print(f"{clip['clipId']}: wer={score:.3f} :: {hyp_text}")
+        hyp = recognizer.transcribe(path, whisper_lang if engine == "whisper" else clip_lang, args.lead_silence, args.tail_silence)
+        score = edit_rate(normalize(clip["text"], clip_lang, spec), normalize(hyp, clip_lang, spec))
+        results[clip["clipId"]] = {"text": hyp, "wer": round(score, 4), "metric": metric, "model": recognizer.name, "engine": engine}
+        print(f"{clip['clipId']}: {metric}={score:.3f} :: {hyp}")
 
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)

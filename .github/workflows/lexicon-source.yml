@@ -83,7 +83,7 @@ jobs:
       - name: Export wordfreq (pinned 3.1.1)
         run: |
           set -euo pipefail
-          python -m pip install --quiet "wordfreq==3.1.1"
+          python -m pip install --quiet "wordfreq[cjk]==3.1.1"
           python scripts/lib/lexicon-etl/export-wordfreq.py "$LANG_INPUT" "$SCRATCH/$LANG_INPUT/wordfreq-$LANG_INPUT.csv"
 
       - name: Recon (pin sha256/bytes/date, licence notes, samples)

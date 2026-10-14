@@ -226,6 +226,28 @@ Spaced-repetition scheduling powered by ts-fsrs, © open-spaced-repetition contr
 
 > FSRS-6 scheduler. The SM-2 migration math is an independent TypeScript implementation of the published memory_state_from_sm2 formula from fsrs-rs (also MIT).
 
+## Kokoro-82M (hexgrad) — neural TTS engine and model
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M
+- **What:** TTS engine used at pipeline time (never shipped)
+- **Retrieved:** 2026-10-15
+
+Audio for some courses is synthesized at pipeline time with Kokoro-82M (hexgrad, Apache-2.0; `kokoro` 0.9.4 and `misaki` G2P, Apache-2.0). The model is pinned by repository revision in content/audio/engines.json; weights are used on the runner and never committed.
+
+> P3b audio pipeline v2. Each Kokoro voice actually selected for a course gets its own registry entry (kokoro-voice-<name>) at selection time, covering that language's assets.
+
+## MeloTTS (MyShell.ai) — neural TTS engine and per-language models
+
+- **License:** MIT
+- **Source:** https://github.com/myshell-ai/MeloTTS
+- **What:** TTS engine used at pipeline time (never shipped)
+- **Retrieved:** 2026-10-15
+
+Audio for some courses is synthesized at pipeline time with MeloTTS (MyShell.ai, MIT) and its MIT per-language models (myshell-ai/MeloTTS-<Language> on Hugging Face), pinned by commit and repository revision in content/audio/engines.json; weights are used on the runner and never committed.
+
+> P3b audio pipeline v2. Each MeloTTS model actually selected for a course gets its own registry entry (melotts-<lang>) at selection time, covering that language's assets.
+
 ## Lingo Lessons (Open Apps Studio)
 
 - **License:** MIT

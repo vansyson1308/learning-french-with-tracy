@@ -301,6 +301,28 @@
         "content/zh/lexicon/",
         "content/en/lexicon/"
       ]
+    },
+    {
+      "id": "tts-engine-kokoro",
+      "name": "Kokoro-82M (hexgrad) — neural TTS engine and model",
+      "kind": "TTS engine used at pipeline time (never shipped)",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+      "attribution": "Audio for some courses is synthesized at pipeline time with Kokoro-82M (hexgrad, Apache-2.0; `kokoro` 0.9.4 and `misaki` G2P, Apache-2.0). The model is pinned by repository revision in content/audio/engines.json; weights are used on the runner and never committed.",
+      "covers": [
+        "content/audio/engines.json"
+      ]
+    },
+    {
+      "id": "tts-engine-melotts",
+      "name": "MeloTTS (MyShell.ai) — neural TTS engine and per-language models",
+      "kind": "TTS engine used at pipeline time (never shipped)",
+      "license": "MIT",
+      "url": "https://github.com/myshell-ai/MeloTTS",
+      "attribution": "Audio for some courses is synthesized at pipeline time with MeloTTS (MyShell.ai, MIT) and its MIT per-language models (myshell-ai/MeloTTS-<Language> on Hugging Face), pinned by commit and repository revision in content/audio/engines.json; weights are used on the runner and never committed.",
+      "covers": [
+        "content/audio/engines.json"
+      ]
     }
   ]
 }

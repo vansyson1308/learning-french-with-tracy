@@ -6,8 +6,8 @@
 import { describe, expect, test } from "bun:test";
 import path from "path";
 
-import { buildAudioBaseline, toRepoRelativePosix } from "../lib/audio";
-import { readJson, safeResolve } from "../lib/pipeline";
+import { buildAudioBaseline, loadBaselineGroups, toRepoRelativePosix } from "../lib/audio";
+import { safeResolve } from "../lib/pipeline";
 
 describe("audio baseline path keys", () => {
   test("toRepoRelativePosix uses forward slashes regardless of path.sep", () => {
@@ -17,7 +17,7 @@ describe("audio baseline path keys", () => {
   });
 
   test("every key of the fresh baseline matches the committed baseline's key style", () => {
-    const committed = readJson("content/audio/legacy-baseline.json") as { files: Record<string, string> };
+    const committed = loadBaselineGroups();
     const fresh = buildAudioBaseline();
     const freshKeys = Object.keys(fresh.files);
     expect(freshKeys.length).toBeGreaterThan(0);

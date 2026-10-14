@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "language": "es",
+  "note": "Generation canary (P3b): difficult Spanish rendered by every candidate voice BEFORE any shipped clip is generated. Never shipped to learners; drives the ASR audit and the voice-cast selection (content/audio/voice-casts.json).",
+  "items": [
+    {
+      "id": "canary.enye.manana",
+      "focus": "ñ + stressed syllable",
+      "text": "Mañana el niño pequeño come piña en la montaña."
+    },
+    {
+      "id": "canary.rr.perro",
+      "focus": "rr trill vs single r",
+      "text": "El perro corre por el barrio y el carro para en la torre."
+    },
+    {
+      "id": "canary.diphthong.ciudad",
+      "focus": "diphthongs ia/ue/ei",
+      "text": "En la ciudad hay seis puertas abiertas y veinte ventanas."
+    },
+    {
+      "id": "canary.jota.gente",
+      "focus": "j / g fricative",
+      "text": "La gente joven juega en el jardín de Jorge."
+    },
+    {
+      "id": "canary.question.donde",
+      "focus": "question intonation + inverted marks",
+      "text": "¿Dónde está la estación? ¿A qué hora sale el tren?"
+    },
+    {
+      "id": "canary.numbers.quince",
+      "focus": "numbers 15 / 73 / 100",
+      "text": "Son quince euros, setenta y tres céntimos, cien gramos."
+    },
+    {
+      "id": "canary.ll.calle",
+      "focus": "ll / y yeísmo",
+      "text": "La llave está en la calle, al lado de la silla amarilla."
+    },
+    {
+      "id": "canary.exclaim.hola",
+      "focus": "exclamation marks + greeting",
+      "text": "¡Hola! ¡Buenos días! ¡Qué bien te veo!"
+    },
+    {
+      "id": "canary.vowel.estoy",
+      "focus": "unstressed vowels keep quality",
+      "text": "Estoy cansado, pero estudio español todos los días."
+    },
+    {
+      "id": "canary.d.ciudad",
+      "focus": "final d / s aspiration sensitivity",
+      "text": "Es verdad: la salud es más importante que el dinero."
+    },
+    {
+      "id": "canary.liaison.el_agua",
+      "focus": "el agua / un hambre",
+      "text": "El agua está fría y tengo un hambre enorme."
+    },
+    {
+      "id": "canary.long.restaurant",
+      "focus": "long sentence, pauses",
+      "text": "Quiero reservar una mesa para dos personas a las ocho de la noche, por favor."
+    }
+  ]
+}

@@ -48,6 +48,17 @@ itself.
   the app, and the app makes no network requests of its own.
 - No accounts, no sync: progress lives on the device; backup is a manual
   export/import file.
+- **Audio for the non-French languages is produced by dispatched runs
+  (P3b).** The multi-engine pipeline, the licence gate, the per-language
+  canaries and the voice casts are in the repository; the canary runs for
+  es/de/it/pt/ja/zh/ko/en/vi and the Spanish pack + lexicon generation run on
+  GitHub-hosted runners after the merge and commit their results
+  (`content/audio/voice-casts.json`, `content/reports/<lang>/audio-*.json`).
+  Until a language's cast is `selected`, its inherited course keeps
+  `audio.policy = device-tts`; a language with no clean voice is recorded as
+  `no-clean-voice`, never voiced by a guessed model. Spanish pack audio is
+  regenerated under pipelineVersion 2 (loudness-normalised, the canary's A
+  voice) — its bytes change; French audio stays byte-identical.
 - **Spanish lexicon (P3a) is a derived draft.** `es-en` now ships an
   800-lexeme Spanish lexicon derived from Wiktionary (kaikki.org),
   FrequencyWords, wordfreq and Tatoeba (`content/es/lexicon/ACQUISITION.md`):

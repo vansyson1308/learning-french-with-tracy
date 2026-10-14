@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "note": "Audio pipeline v2 (P3b): every text-to-speech engine, model repository and ASR audit tool the dispatch-only audio workflow may install, pinned by version / commit / repository revision. Engines run on the GitHub runner only; nothing here ships in the app (the generated MP3s do). A voice is a candidate until recon downloads its files twice (identical hashes), reads its licence card and applies the licence gate below FAIL-CLOSED; the canary ASR audit then selects the voice cast per course (content/audio/voice-casts.json).",
+  "engines": {
+    "piper": {
+      "package": "piper-tts",
+      "pinnedVersion": "1.2.0",
+      "license": "MIT",
+      "url": "https://github.com/rhasspy/piper",
+      "voicesRepository": "https://huggingface.co/rhasspy/piper-voices",
+      "voicesRevision": "v1.0.0",
+      "install": ["pip install \"piper-tts==1.2.0\""],
+      "sampleRateHz": 22050,
+      "note": "Classic MIT engine (the GPL successor piper1-gpl is never used). Voice licences follow each voice's dataset (MODEL_CARD)."
+    },
+    "kokoro": {
+      "package": "kokoro",
+      "pinnedVersion": "0.9.4",
+      "g2pPackage": "misaki",
+      "g2pPinnedVersion": "0.9.4",
+      "license": "Apache-2.0",
+      "url": "https://github.com/hexgrad/kokoro",
+      "modelRepository": "https://huggingface.co/hexgrad/Kokoro-82M",
+      "modelRevision": "f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "modelLicense": "Apache-2.0",
+      "modelFile": "kokoro-v1_0.pth",
+      "configFile": "config.json",
+      "install": ["pip install \"kokoro==0.9.4\" \"misaki[ja,zh]==0.9.4\" soundfile", "apt-get install -y espeak-ng"],
+      "langCodes": { "en": "a", "es": "e", "fr": "f", "it": "i", "pt": "p", "ja": "j", "zh": "z", "hi": "h" },
+      "sampleRateHz": 24000,
+      "note": "Kokoro-82M (Apache-2.0, trained on permissive / non-copyrighted audio per the model card). Non-English G2P is thin (espeak-ng fallback for es/it/pt/fr); VOICES.md grades ja C+ / zh D — the canary audit decides. No Korean, no Vietnamese."
+    },
+    "melotts": {
+      "package": "melotts",
+      "gitRepository": "https://github.com/myshell-ai/MeloTTS",
+      "pinnedCommit": "209145371cff8fc3bd60d7be902ea69cbdb7965a",
+      "license": "MIT",
+      "url": "https://github.com/myshell-ai/MeloTTS",
+      "modelLicense": "MIT",
+      "models": {
+        "en": { "repository": "https://huggingface.co/myshell-ai/MeloTTS-English", "revision": "bb4fb7346d566d277ba8c8c7dbfdf6786139b8ef", "language": "EN", "defaultSpeaker": "EN-US" },
+        "es": { "repository": "https://huggingface.co/myshell-ai/MeloTTS-Spanish", "revision": "dbb5496df39d11a66c1d5f5a9ca357c3c9fb95fb", "language": "ES", "defaultSpeaker": "ES" },
+        "fr": { "repository": "https://huggingface.co/myshell-ai/MeloTTS-French", "revision": null, "language": "FR", "defaultSpeaker": "FR" },
+        "zh": { "repository": "https://huggingface.co/myshell-ai/MeloTTS-Chinese", "revision": "af5d207a364ea4208c6f589c89f57f88414bdd16", "language": "ZH", "defaultSpeaker": "ZH" },
+        "ja": { "repository": "https://huggingface.co/myshell-ai/MeloTTS-Japanese", "revision": "367f8795464b531b4e97c1515bddfc1243e60891", "language": "JP", "defaultSpeaker": "JP" },
+        "ko": { "repository": "https://huggingface.co/myshell-ai/MeloTTS-Korean", "revision": "0207e5adfc90129a51b6b03d89be6d84360ed323", "language": "KR", "defaultSpeaker": "KR" }
+      },
+      "install": ["pip install \"git+https://github.com/myshell-ai/MeloTTS.git@209145371cff8fc3bd60d7be902ea69cbdb7965a\"", "python -m unidic download"],
+      "sampleRateHz": 44100,
+      "note": "MeloTTS (MIT code, MIT model cards on Hugging Face). The only MIT engine with Japanese and Korean. Chinese is the mixed zh+en model."
+    }
+  },
+  "asr": {
+    "whisper": {
+      "package": "faster-whisper",
+      "pinnedVersion": "1.0.3",
+      "license": "MIT",
+      "models": { "canary": "base", "generate": "medium" },
+      "note": "Default audit recogniser (Latin-script languages). Never shipped."
+    },
+    "sensevoice": {
+      "package": "funasr",
+      "pinnedVersion": "1.4.16",
+      "license": "MIT",
+      "model": "FunAudioLLM/SenseVoiceSmall",
+      "modelHub": "hf",
+      "modelLicense": "other — FunASR MODEL_LICENSE (https://github.com/modelscope/FunASR/blob/main/MODEL_LICENSE); an audit tool that runs on the runner only and never ships",
+      "languages": ["zh", "ja", "ko", "vi"],
+      "note": "Stronger than Whisper base/medium on CJK and Vietnamese (plan/06 §3). Used for the audit of zh/ja/ko/vi clips; Whisper remains the fallback (--engine whisper)."
+    }
+  },
+  "licenseGate": {
+    "note": "Fail-closed gate over the licence-relevant lines of each voice's card (dataset licence for Piper voices; model licence for Kokoro / MeloTTS). Allowed for SHIPPED audio: CC0 / public domain, CC BY 4.0, CC BY-SA 4.0 (share-alike accepted — the project publishes derived data under CC BY-SA 4.0 with an in-app attributions screen), Apache-2.0 and MIT (dataset or model). Denied: GPL/AGPL, NC/ND, OpenRAIL / RAIL / Gemma-style use-restricted model terms, CPML, 'Unknown' / 'See URL' (an unverifiable licence is not a redistribution right). A card matching nothing is excluded, never guessed.",
+    "allow": [
+      "CC BY 4.0", "CC-BY-4.0", "CC BY 4", "cc-by-4.0", "creativecommons.org/licenses/by/4.0",
+      "CC BY-SA 4.0", "CC-BY-SA-4.0", "creativecommons.org/licenses/by-sa/4.0",
+      "CC0", "CC0 1.0", "creativecommons.org/publicdomain/zero/1.0", "public domain",
+      "Apache-2.0", "apache-2.0", "Apache 2.0", "Apache License 2.0", "apache.org/licenses/LICENSE-2.0",
+      "MIT"
+    ],
+    "deny": ["AGPL", "GPL", "NC", "ND", "non-commercial", "noncommercial", "OpenRAIL", "RAIL", "Gemma", "CPML", "Unknown", "See URL"]
+  },
+  "loudness": { "integratedLufs": -18, "truePeakDb": -1.5, "loudnessRange": 11, "note": "EBU R128 two-pass-free loudnorm applied to every clip of pipelineVersion ≥ 2 so engines mix evenly (French clips stay at pipelineVersion 1 — untouched bytes)." },
+  "encoding": { "sampleRateHz": 22050, "channels": 1, "mp3Kbps": 64 }
+}

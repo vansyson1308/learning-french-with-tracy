@@ -1,0 +1,227 @@
+{
+  "version": 1,
+  "note": "Voice cast per target language (P3b): the candidate voices the canary ASR audit compares (every candidate must pass the licence gate at recon), the selected cast {A: primary, B: second voice for dialogue / variety}, and the canary results. `status`: pending-canary (no run yet), selected, no-clean-voice (every candidate failed the gate or the intelligibility floor — recorded explicitly, the courses stay device-tts). Written by `scripts/audio.ts select`; never edited by hand except to add candidates.",
+  "languages": {
+    "fr": {
+      "status": "selected",
+      "candidates": [
+        {
+          "voiceId": "fr_FR-siwis-medium",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "fr_FR-upmc-medium",
+          "engine": "piper"
+        }
+      ],
+      "cast": {
+        "A": "fr_FR-siwis-medium",
+        "B": "fr_FR-upmc-medium"
+      },
+      "canary": {
+        "note": "Phase 7 / V1 publication canary (content/reports/reception-audio-canary.json, pack-audio-canary.json): siwis 0.184, upmc#1 0.197; French audio is frozen at pipelineVersion 1"
+      }
+    },
+    "es": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "es_MX-claude-high",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "es_ES-davefx-medium",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "kokoro-ef_dora",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "kokoro-em_alex",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "melotts-es",
+          "engine": "melotts"
+        }
+      ],
+      "cast": {
+        "A": "es_ES-davefx-medium",
+        "B": null
+      },
+      "canary": null,
+      "reason": "current A = the V1 selection (davefx, CC0); the pack text is Latin-American, so es_MX-claude-high (Apache-2.0) is expected to win the v2 canary — the audit decides"
+    },
+    "de": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "de_DE-thorsten-high",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "de_DE-thorsten-medium",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "de_DE-kerstin-low",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "de_DE-mls-medium",
+          "engine": "piper"
+        }
+      ],
+      "cast": {
+        "A": "de_DE-thorsten-medium",
+        "B": null
+      },
+      "canary": null
+    },
+    "it": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "kokoro-if_sara",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "kokoro-im_nicola",
+          "engine": "kokoro"
+        }
+      ],
+      "cast": {
+        "A": null,
+        "B": null
+      },
+      "canary": null,
+      "reason": "Piper paola/riccardo have no verifiable licence (excluded 2026-09-02); Kokoro Italian (Apache-2.0) is the only clean candidate"
+    },
+    "pt": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "pt_BR-faber-medium",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "pt_BR-cadu-medium",
+          "engine": "piper"
+        },
+        {
+          "voiceId": "kokoro-pf_dora",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "kokoro-pm_alex",
+          "engine": "kokoro"
+        }
+      ],
+      "cast": {
+        "A": "pt_BR-faber-medium",
+        "B": null
+      },
+      "canary": null
+    },
+    "ja": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "kokoro-jf_alpha",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "melotts-ja",
+          "engine": "melotts"
+        },
+        {
+          "voiceId": "kokoro-jm_kumo",
+          "engine": "kokoro"
+        }
+      ],
+      "cast": {
+        "A": null,
+        "B": null
+      },
+      "canary": null,
+      "reason": "no Piper Japanese voice exists; Kokoro ja (Apache-2.0, grade C+) and MeloTTS-JP (MIT) are compared by the SenseVoice/Whisper canary"
+    },
+    "zh": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "melotts-zh",
+          "engine": "melotts"
+        },
+        {
+          "voiceId": "kokoro-zf_xiaobei",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "kokoro-zm_yunjian",
+          "engine": "kokoro"
+        }
+      ],
+      "cast": {
+        "A": null,
+        "B": null
+      },
+      "canary": null,
+      "reason": "Piper huayan has an unknown licence (excluded); MeloTTS-ZH (MIT) and Kokoro zh (Apache-2.0, grade D) are compared"
+    },
+    "ko": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "melotts-ko",
+          "engine": "melotts"
+        }
+      ],
+      "cast": {
+        "A": null,
+        "B": null
+      },
+      "canary": null,
+      "reason": "MeloTTS-KR (MIT) is the only MIT/Apache Korean voice; a B voice does not exist under the gate (Supertonic 3 is OpenRAIL-M — denied for shipped audio)"
+    },
+    "en": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "kokoro-af_heart",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "kokoro-am_michael",
+          "engine": "kokoro"
+        },
+        {
+          "voiceId": "melotts-en",
+          "engine": "melotts"
+        }
+      ],
+      "cast": {
+        "A": null,
+        "B": null
+      },
+      "canary": null,
+      "reason": "for the en-vi course (P4f); Piper lessac (Blizzard licence URL), amy/alan ('See URL') and ryan (CC BY-NC-SA) fail the gate; libritts_r (CC BY 4.0, 904 speakers) is a possible later candidate"
+    },
+    "vi": {
+      "status": "pending-canary",
+      "candidates": [
+        {
+          "voiceId": "vi_VN-vais1000-medium",
+          "engine": "piper"
+        }
+      ],
+      "cast": {
+        "A": null,
+        "B": null
+      },
+      "canary": null,
+      "reason": "UI / explanation audio only if ever needed (no Vietnamese target course); VAIS-1000 is CC BY 4.0"
+    }
+  }
+}
