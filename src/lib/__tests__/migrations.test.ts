@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 
 import { dayString, utcDayString } from "../dates";
 import {
-  DEFAULT_COURSE_ID,
+  LEGACY_FLAT_COURSE_ID,
   migrateProgress,
   type PersistedProgress,
 } from "../persistence/migrations";
@@ -43,7 +43,7 @@ describe("v0 → v1 migration (fixtures, step-scoped to v1)", () => {
 
   test("flat legacy user nests under the default course, keeping theme + days", () => {
     const out = migrateProgress(flatFixture.state, 0, NOW, 1);
-    const course = out.courses[DEFAULT_COURSE_ID];
+    const course = out.courses[LEGACY_FLAT_COURSE_ID];
     expect(course.xp).toBe(45);
     expect(course.completedLessons["es-en:u0-l0"]).toBe(true);
     expect(course.completedLessons["srs"]).toBeUndefined();

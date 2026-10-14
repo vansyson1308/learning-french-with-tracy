@@ -5,7 +5,7 @@
  * recommends a starting lesson — never a level, never a score.
  */
 import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -13,10 +13,23 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { CloseButton } from "@/components/close-button";
 import { DuoButton } from "@/components/duo-button";
 import { placementContent } from "@/lib/assessment/content";
+import { courseCapabilities } from "@/lib/capabilities";
 import { exitScreen } from "@/lib/navigation";
+import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
+/**
+ * Course guard (P0): this surface exists only for courses that have the
+ * capability; a deep link while another course is active goes home instead
+ * of routing evidence to a course the content does not describe.
+ */
 export default function PlacementIntroScreen() {
+  const activeCourseId = useProgress((s) => s.activeCourseId);
+  if (!courseCapabilities(activeCourseId).placement) return <Redirect href="/" />;
+  return <PlacementIntroScreenBody />;
+}
+
+function PlacementIntroScreenBody() {
   const styles = useStyles();
   const colors = useThemeColors();
   const plan = placementContent();

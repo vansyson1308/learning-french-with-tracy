@@ -7,10 +7,11 @@
  * per-exercise behavior all live in src/lib/session and the registry.
  */
 
-import { useLocalSearchParams } from "expo-router";
+import { Redirect, useLocalSearchParams } from "expo-router";
 import React, { useMemo } from "react";
 
 import { SessionScreen } from "@/components/session/session-screen";
+import { courseCapabilities, lessonRouteCapability } from "@/lib/capabilities";
 import { useCourseContent } from "@/lib/content";
 import { dayString } from "@/lib/dates";
 import {
@@ -25,9 +26,21 @@ import {
 import type { SessionDefinition } from "@/lib/session/types";
 import { useProgress } from "@/lib/store";
 
+/**
+ * Course guard (P0): the magic ids srs-listening / srs-speaking /
+ * writing-practice / conversation are French surfaces; a deep link while
+ * another course is active goes home instead of grading evidence into a
+ * course that has no such content.
+ */
 export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const activeCourseId = useProgress((s) => s.activeCourseId);
+  const needs = lessonRouteCapability(id ?? "");
+  if (needs && !courseCapabilities(activeCourseId)[needs]) return <Redirect href="/" />;
+  return <LessonScreenBody id={id ?? ""} activeCourseId={activeCourseId} />;
+}
+
+function LessonScreenBody({ id, activeCourseId }: { id: string; activeCourseId: string }) {
   const { pack, getLesson, allWords } = useCourseContent(activeCourseId);
 
   const definition = useMemo<SessionDefinition>(() => {
@@ -83,7 +96,7 @@ export default function LessonScreen() {
         seedKey: dayString(new Date()),
       });
     }
-    const ref = getLesson(id ?? "");
+    const ref = getLesson(id);
     if (!ref) {
       return {
         kind: "path",
@@ -96,10 +109,14 @@ export default function LessonScreen() {
         allowUndo: false,
       };
     }
+    const alreadyCompleted = !!courseProgress.completedLessons[ref.lesson.id];
     return buildPathSessionDefinition({
       courseId: state.activeCourseId,
       lesson: ref.lesson,
-      alreadyCompleted: !!courseProgress.completedLessons[ref.lesson.id],
+      alreadyCompleted,
+      // Option order (P0): first sitting is seeded by the exercise alone; a
+      // replay rotates by day so a repeated lesson is not a position memory.
+      attempt: alreadyCompleted ? `replay:${dayString(new Date())}` : "first",
     });
     // Store data is intentionally read via getState (not subscribed) — only
     // a new route or course switch starts a new session.

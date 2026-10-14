@@ -35,8 +35,13 @@ import {
 
 export const PERSIST_VERSION = 3;
 
-/** Course flat-legacy (pre-per-course) progress nests under. */
-export const DEFAULT_COURSE_ID = "es-en";
+/**
+ * Course the flat-legacy (pre-per-course, v0) progress nests under. This is
+ * a MIGRATION constant frozen at the course the v0 app shipped with; it is
+ * deliberately separate from the onboarding default (`DEFAULT_COURSE` in
+ * store.ts), which may change without touching persisted data.
+ */
+export const LEGACY_FLAT_COURSE_ID = "es-en";
 
 export type PersistedWordStat = { correct: number; wrong: number; lastSeen: number };
 export type PersistedMistake = { lessonId: string; exerciseId: string };
@@ -95,7 +100,7 @@ function emptyCourse(): PersistedCourseProgress {
 function nestFlatLegacy(old: Record<string, unknown>): PersistedProgress {
   const legacy = old as Partial<PersistedCourseProgress> & Record<string, unknown>;
   return {
-    activeCourseId: DEFAULT_COURSE_ID,
+    activeCourseId: LEGACY_FLAT_COURSE_ID,
     streak: typeof old.streak === "number" ? old.streak : 0,
     lastActiveDay: typeof old.lastActiveDay === "string" ? old.lastActiveDay : null,
     dailyGoal: typeof old.dailyGoal === "number" ? old.dailyGoal : 20,
@@ -111,7 +116,7 @@ function nestFlatLegacy(old: Record<string, unknown>): PersistedProgress {
         ? (old.activeDays as PersistedProgress["activeDays"])
         : {},
     courses: {
-      [DEFAULT_COURSE_ID]: {
+      [LEGACY_FLAT_COURSE_ID]: {
         ...emptyCourse(),
         xp: typeof legacy.xp === "number" ? legacy.xp : 0,
         completedLessons: legacy.completedLessons ?? {},

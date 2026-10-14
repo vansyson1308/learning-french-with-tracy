@@ -15,7 +15,7 @@ The app needs about 150 MB of storage and no permissions to install. The only pe
 
 ## 3. First launch
 
-The first screen asks which course you want. French is the course this app is built around; tap it. Then pick a **Daily XP goal** — 10, 20, 30 or 50 XP (a lesson is worth 15 XP, 20 when perfect) — and tap **Learn French** (the button names the course you selected). You land on the **Learn** tab. You can change the course later from Profile → Learning → **Switch**.
+The first screen asks which course you want. French is the course this app is built around and is already selected; keep it (or tap another course). Then pick a **Daily XP goal** — 10, 20, 30 or 50 XP (a lesson is worth 15 XP, 20 when perfect) — and tap **Learn French** (the button names the course you selected). You land on the **Learn** tab. You can change the course later from Profile → Learning → **Switch**.
 
 ## 4. Choosing French
 
@@ -50,7 +50,7 @@ Each section ends with a **checkpoint** (section 6 leads to the A1 capstone).
 - French-specific: **choose the article** (le/la/l'/les), **conjugate** a verb in a cloze, **number** drills, and concept cards that explain a rule before you practise it.
 - Listening and reading exercises (section 3), speaking (section 4), writing (section 5) and conversation (section 6) — described below.
 
-Tap **Check** to grade an answer, **Continue** to move on. Wrong answers come back later in the same lesson until you get them right. **I don't know** appears only in the starting-point check and on steps that need audio or the microphone (**Skip this step**); ordinary lesson exercises are always answered. At the end you see a summary: reviews, new words, streak and XP.
+Tap **Check** to grade an answer, **Continue** to move on. Multiple-choice answers appear in a different order each time you sit a lesson (the same order if you reopen it the same day), so a position is never the clue. Wrong answers come back later in the same lesson until you get them right. **I don't know** appears only in the starting-point check and on steps that need audio or the microphone (**Skip this step**); ordinary lesson exercises are always answered. At the end you see a summary: reviews, new words, streak and XP.
 
 ## 9. Vocabulary
 

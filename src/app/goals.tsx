@@ -6,7 +6,7 @@
  * disclaimer surface lives here (§12, §96). Placement management (§86).
  */
 import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 import React from "react";
 import { Alert, Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -31,6 +31,7 @@ import {
 import { useCourseContent } from "@/lib/content";
 import { exitScreen } from "@/lib/navigation";
 import { probeSpeechCapabilityOnce } from "@/lib/speech/use-speech-session";
+import { courseCapabilities } from "@/lib/capabilities";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -87,7 +88,18 @@ function domainDetailLine(d: DomainEstimate): string {
   }
 }
 
+/**
+ * Course guard (P0): this surface exists only for courses that have the
+ * capability; a deep link while another course is active goes home instead
+ * of routing evidence to a course the content does not describe.
+ */
 export default function GoalsScreen() {
+  const activeCourseId = useProgress((s) => s.activeCourseId);
+  if (!courseCapabilities(activeCourseId).goals) return <Redirect href="/" />;
+  return <GoalsScreenBody />;
+}
+
+function GoalsScreenBody() {
   const styles = useStyles();
   const colors = useThemeColors();
   const progress = useProgress();

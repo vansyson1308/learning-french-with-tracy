@@ -44,10 +44,18 @@ describe("Android permissions are the minimum the product uses", () => {
     expect(plugin("expo-audio")).toEqual({ enableBackgroundPlayback: false, recordAudioAndroid: false });
   });
 
-  test("template defaults the product does not need are blocked (overlay, legacy external storage)", () => {
+  test("template and library defaults the product does not need are blocked", () => {
+    // SYSTEM_ALERT_WINDOW / *_EXTERNAL_STORAGE: template defaults (Phase 10).
+    // ACCESS_NETWORK_STATE (expo-image, media3) and WAKE_LOCK (media3-exoplayer
+    // via expo-audio): merged in from library manifests — seen on the RC3
+    // local build (P0); the app makes no requests and never plays in the
+    // background, so the merged APK must carry exactly the four permissions
+    // the privacy policy and DATA_SAFETY.md declare.
     expect([...app.android.blockedPermissions].sort()).toEqual([
+      "android.permission.ACCESS_NETWORK_STATE",
       "android.permission.READ_EXTERNAL_STORAGE",
       "android.permission.SYSTEM_ALERT_WINDOW",
+      "android.permission.WAKE_LOCK",
       "android.permission.WRITE_EXTERNAL_STORAGE",
     ]);
   });

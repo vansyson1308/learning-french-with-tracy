@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import path from "path";
 import { readFileSync } from "fs";
 
 import { PackSchema, SourceRegistrySchema } from "../../content/schema";
@@ -172,7 +173,8 @@ describe("pipeline security", () => {
   test("safeResolve rejects traversal out of the repository", () => {
     expect(() => safeResolve("../outside.txt")).toThrow(/escapes/);
     expect(() => safeResolve("content", "../../..", "etc", "passwd")).toThrow(/escapes/);
-    expect(safeResolve("content/courses")).toContain("learning-french-with-tracy");
+    // Checkout-name agnostic: the Windows build checkout lives at C:\src\lft.
+    expect(safeResolve("content/courses")).toBe(path.join(safeResolve("."), "content", "courses"));
   });
 
   test("writes are refused outside the declared generated targets", () => {

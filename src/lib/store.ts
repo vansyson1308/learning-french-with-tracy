@@ -17,7 +17,6 @@ import { FR_COURSE_ID } from "./learning/ids-fr";
 import { lastMutationIndex, type ReviewLogEntry } from "./learning/review-log";
 import type { FsrsCardState } from "./learning/scheduler";
 import {
-  DEFAULT_COURSE_ID,
   migrateProgress,
   PERSIST_VERSION,
 } from "./persistence/migrations";
@@ -27,7 +26,13 @@ export const XP_PER_LESSON = 15;
 export const XP_PERFECT_BONUS = 5;
 export const DAILY_GOAL_OPTIONS = [10, 20, 30, 50] as const;
 export const DEFAULT_DAILY_GOAL = 20;
-export const DEFAULT_COURSE = DEFAULT_COURSE_ID;
+/**
+ * Course preselected at onboarding and used as the initial active course.
+ * French is the complete course (P0 fix: the v0 default was the inherited
+ * Spanish pack); the v0 flat-legacy migration keeps its own
+ * `LEGACY_FLAT_COURSE_ID` in persistence/migrations.ts.
+ */
+export const DEFAULT_COURSE = "fr-en";
 /** The AsyncStorage key. Never renamed — schema changes bump PERSIST_VERSION. */
 export const PROGRESS_STORAGE_KEY = "progress-v2";
 /** Days of per-day history kept for the streak calendar and quests. */

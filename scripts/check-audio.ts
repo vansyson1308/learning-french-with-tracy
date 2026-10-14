@@ -1,8 +1,9 @@
 /**
- * Verifies the immutable legacy audio baseline (856 course MP3s + sfx +
- * manifest) and that every audio reference resolves. --write-baseline
- * (re)creates content/audio/legacy-baseline.json — only legitimate when
- * intentionally blessing a new baseline, never in CI.
+ * Verifies the pinned audio baseline (every shipped course MP3 + sfx + the
+ * manifest, as recorded in content/audio/legacy-baseline.json — the file
+ * count lives there, never here) and that every audio reference resolves.
+ * --write-baseline (re)creates the baseline — only legitimate when
+ * intentionally blessing a new one with a recorded reason, never in CI.
  */
 import { writeFileSync } from "fs";
 
