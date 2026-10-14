@@ -1,7 +1,8 @@
 # Android RC3 — first candidate built locally on Windows, owner-signed
 
-**RC3 status (2026-10-14): unsigned release APK built and verified on the
-owner's PC; signing + phone install are owner actions (§3, §4).**
+**RC3 status (2026-10-14): release APK built, checked and signed with the
+owner-held key on the owner's PC; phone install + packets 0–3 are still
+owner actions (§4) — no device result has been observed.**
 
 RC3 supersedes the RC2 EAS route (`ANDROID_RC2.md`): same permanent
 identity (`com.vansyson1308.learningfrenchwithtracy`, 1.0.0, versionCode 1),
@@ -44,11 +45,11 @@ cd android && gradlew.bat :app:assembleRelease --no-daemon --stacktrace
 | Prebuild | `/android` generated (git-ignored), `package.json` script edits reverted |
 | Gradle result | `BUILD SUCCESSFUL in 15m 29s` (868 tasks; 2026-10-14, after the `e5dcfd0` rebuild; the first build from `94413f7` took ~45 min cold including Gradle 9.3.1 + NDK downloads) |
 | Unsigned APK | `android\app\build\outputs\apk\release\app-release.apk` — 125,210,674 bytes, SHA-256 `ed112417b0ffb6b6fb0a424a7325409b91d92655c6fb552602e2d10b4330164e`, universal (arm64-v8a, armeabi-v7a, x86, x86_64); Gradle signs it with the template debug key (`signingConfigs.debug`) — the owner's `apksigner` run replaces that signature |
-| Signed APK | `out\learning-french-with-tracy-v1.0.0-rc.3.apk` — **pending the owner's signing run** (`plan\scripts\sign-apk-windows.cmd`); SHA-256, size, signer SHA-256 and DN are then copied here and into `RC_HISTORY.md` / `ANDROID_SIGNING.md` from `out\rc.3-signing-report.txt` |
+| Signed APK | `out\learning-french-with-tracy-v1.0.0-rc.3.apk` — signed by the owner on 2026-10-14 (`out\rc.3-signing-report.txt`): 125,390,101 bytes, SHA-256 `579a39062ef06d9c8bb0669465f610ad9e46cfebe109988365a6819600137a9f`; signer certificate SHA-256 `d280d1deacd82b6faeb52f0c1ace532776cd1c6f73aadbbf3133daeddced3182`, DN `CN=Nguyen Van Son, C=VN` |
 | Package / versionName / versionCode / targetSdk | must read `com.vansyson1308.learningfrenchwithtracy` / `1.0.0` / `1` / `36` — **observed:** `package: name='com.vansyson1308.learningfrenchwithtracy' versionCode='1' versionName='1.0.0'`, `targetSdkVersion:'36'`, `compileSdkVersion='36'`, label `Learning French with Tracy` — PASS |
 | Permissions | must be exactly `INTERNET`, `MODIFY_AUDIO_SETTINGS`, `RECORD_AUDIO`, `VIBRATE` — **observed:** exactly those four, plus the app's own AndroidX-generated `com.vansyson1308.learningfrenchwithtracy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` (signature-scoped, no prompt) — PASS. The first build (`94413f7`) also carried `ACCESS_NETWORK_STATE` (expo-image, media3) and `WAKE_LOCK` (media3-exoplayer); both are now in `blockedPermissions` (`e5dcfd0`) |
 | Debuggable | `aapt2 dump badging` must not print `application-debuggable` — **observed:** no `application-debuggable` line — PASS |
-| Signature | `apksigner verify` must report *Verifies* — pending the owner's signing run |
+| Signature | **observed:** `apksigner verify` → *Verifies* (v2: true, v3: true) — PASS |
 
 ### 3a. Owner: sign (once per RC)
 
