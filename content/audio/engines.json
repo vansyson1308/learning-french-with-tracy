@@ -65,8 +65,8 @@
       "model": "FunAudioLLM/SenseVoiceSmall",
       "modelHub": "hf",
       "modelLicense": "other — FunASR MODEL_LICENSE (https://github.com/modelscope/FunASR/blob/main/MODEL_LICENSE); an audit tool that runs on the runner only and never ships",
-      "languages": ["zh", "ja", "ko", "vi"],
-      "note": "Stronger than Whisper base/medium on CJK and Vietnamese (plan/06 §3). Used for the audit of zh/ja/ko/vi clips; Whisper remains the fallback (--engine whisper)."
+      "languages": ["zh", "ja", "ko"],
+      "note": "Stronger than Whisper base/medium on CJK (plan/06 §3). Used for the audit of zh/ja/ko clips; Whisper remains the fallback (--engine whisper). Not Vietnamese: SenseVoiceSmall knows zh/yue/en/ja/ko and emits Chinese filler for vi (the 2026-10-15 vi canary scored WER 1.0 on every clip for that reason)."
     }
   },
   "licenseGate": {

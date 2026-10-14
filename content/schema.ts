@@ -592,6 +592,15 @@ export const CatalogSchema = z.strictObject({
  * course onto FSRS before it has a rich lexicon.
  */
 export const CourseProfileOverrideSchema = z.strictObject({
+  /**
+   * P3c review gate: a course whose learner-facing text was authored or
+   * translated (every course whose native language is not the original
+   * English) compiles only when a native reviewer has signed it off here,
+   * or when `allowUnreviewed` is set explicitly AND release/KNOWN_LIMITATIONS.md
+   * names the course — so beta content ships honestly, never silently.
+   */
+  review: z.strictObject({ native: z.string().min(2), date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), checklist: z.string().optional() }).optional(),
+  allowUnreviewed: z.boolean().optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),
