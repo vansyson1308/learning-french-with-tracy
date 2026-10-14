@@ -10,8 +10,9 @@
 import { Redirect, useLocalSearchParams } from "expo-router";
 import React, { useMemo } from "react";
 
+import { useT } from "@/lib/i18n";
 import { SessionScreen } from "@/components/session/session-screen";
-import { hasCapability, lessonRouteCapability } from "@/lib/course-profile";
+import { courseProfile, hasCapability, lessonRouteCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
 import { dayString } from "@/lib/dates";
 import {
@@ -42,6 +43,7 @@ export default function LessonScreen() {
 
 function LessonScreenBody({ id, activeCourseId }: { id: string; activeCourseId: string }) {
   const { pack, getLesson, allWords } = useCourseContent(activeCourseId);
+  const { languageName } = useT();
 
   const definition = useMemo<SessionDefinition>(() => {
     // Session content is frozen at entry: read the store imperatively so
@@ -126,5 +128,10 @@ function LessonScreenBody({ id, activeCourseId }: { id: string; activeCourseId: 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, activeCourseId]);
 
-  return <SessionScreen definition={definition} targetLanguage={pack.targetLanguage} />;
+  return (
+    <SessionScreen
+      definition={definition}
+      targetLanguage={languageName(courseProfile(activeCourseId).targetCode, pack.targetLanguage)}
+    />
+  );
 }

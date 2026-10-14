@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { speakTarget } from "@/lib/audio";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
@@ -16,11 +17,12 @@ export function SpeakerButton({
   const courseId = useProgress((s) => s.activeCourseId);
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t } = useT();
   return (
     <Pressable
       onPress={() => speakTarget(courseId, text)}
       accessibilityRole="button"
-      accessibilityLabel="Play audio"
+      accessibilityLabel={t("a11y.playAudio")}
       style={({ pressed }) => [
         styles.button,
         { width: size, height: size, opacity: pressed ? 0.7 : 1 },

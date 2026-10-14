@@ -10,6 +10,7 @@ import { useAudioPlayer } from "expo-audio";
 import React from "react";
 import { Linking, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import type { SpokenAnswer } from "@/lib/grading";
 import {
@@ -99,6 +100,7 @@ export function SpeakRecordControl({
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t, tm } = useT();
   const ctx: SpeakStepContext = { scored };
   const attempt = useSpeechAttempt(session.port ?? INERT_PORT);
   const [attemptsUsed, setAttemptsUsed] = React.useState(0);
@@ -166,18 +168,18 @@ export function SpeakRecordControl({
       <Pressable
         onPress={onSkip}
         accessibilityRole="button"
-        accessibilityLabel="Skip this speaking exercise"
+        accessibilityLabel={t("speak.skipLabel")}
         style={styles.skipLink}
         testID="speak-skip"
       >
-        <Text style={styles.skipText}>Can&apos;t speak right now? Skip this step</Text>
+        <Text style={styles.skipText}>{t("speak.skipLink")}</Text>
       </Pressable>
     ) : null;
 
   if (gate.kind === "probing") {
     return (
       <View style={styles.wrap}>
-        <Text style={styles.muted}>Checking speech recognition…</Text>
+        <Text style={styles.muted}>{t("speak.probing")}</Text>
         {skipLink}
       </View>
     );
@@ -186,11 +188,8 @@ export function SpeakRecordControl({
   if (gate.kind === "needsPermission") {
     return (
       <View style={styles.wrap}>
-        <Text style={styles.rationale}>
-          The microphone is used only while you practice speaking {targetLanguage}, to hear
-          your answer. Nothing is recorded until you tap the button.
-        </Text>
-        <DuoButton label="Allow microphone" onPress={() => void session.request()} />
+        <Text style={styles.rationale}>{t("speak.rationale", { language: targetLanguage })}</Text>
+        <DuoButton label={t("speak.allowMicrophone")} onPress={() => void session.request()} />
         {skipLink}
       </View>
     );
@@ -199,15 +198,15 @@ export function SpeakRecordControl({
   if (gate.kind === "blocked") {
     return (
       <View style={styles.wrap} testID="speak-blocked">
-        <Text style={styles.muted}>{gateMessage(gate, targetLanguage)}</Text>
+        <Text style={styles.muted}>{tm(gateMessage(gate, targetLanguage) ?? { key: "speech.gate.unavailable" })}</Text>
         {gate.reason === "permission" && Platform.OS !== "web" ? (
           <DuoButton
-            label="Open Settings"
+            label={t("speak.openSettings")}
             variant="white"
             onPress={() => void Linking.openSettings()}
           />
         ) : null}
-        {onSkip ? <DuoButton label="Skip this step" variant="white" onPress={onSkip} /> : null}
+        {onSkip ? <DuoButton label={t("ex.skipStep")} variant="white" onPress={onSkip} /> : null}
       </View>
     );
   }
@@ -218,8 +217,8 @@ export function SpeakRecordControl({
   if (needsNetworkDisclosure) {
     return (
       <View style={styles.wrap} testID="speech-network-notice">
-        <Text style={styles.rationale}>{networkDisclosureText(targetLanguage)}</Text>
-        <DuoButton label="Got it" onPress={acknowledgeSpeechNotice} />
+        <Text style={styles.rationale}>{tm(networkDisclosureText(targetLanguage))}</Text>
+        <DuoButton label={t("speak.gotIt")} onPress={acknowledgeSpeechNotice} />
         {skipLink}
       </View>
     );
@@ -232,10 +231,10 @@ export function SpeakRecordControl({
           <View style={styles.recordingDot} />
           <Text style={styles.recordingText} testID="speak-elapsed">
             {attempt.phase === "recording"
-              ? `Recording ${formatElapsed(attempt.elapsedMs)}`
+              ? t("speak.recording", { elapsed: formatElapsed(attempt.elapsedMs) })
               : attempt.phase === "stopping"
-                ? "Processing…"
-                : "Preparing…"}
+                ? t("speak.processing")
+                : t("speak.preparing")}
           </Text>
         </View>
       ) : null}
@@ -256,7 +255,7 @@ export function SpeakRecordControl({
           }
           accessibilityRole="button"
           accessibilityLabel={
-            attempt.phase === "recording" ? "Stop recording" : "Record your answer"
+            attempt.phase === "recording" ? t("speak.stop") : t("speak.record")
           }
           style={({ pressed }) => [
             styles.micButton,
@@ -276,20 +275,20 @@ export function SpeakRecordControl({
 
       {budgetLeft !== null && !answered ? (
         <Text style={styles.muted} testID="speak-budget">
-          {budgetLeft === 1 ? "1 recording attempt left" : `${budgetLeft} recording attempts left`}
+          {t("speak.attemptsLeft", { n: budgetLeft })}
         </Text>
       ) : null}
 
       {notice && !active && !answered ? (
         <Text style={styles.notice} testID="speak-notice">
-          {notice.message}
-          {notice.retryable && outOfAttempts ? " No attempts left." : ""}
+          {tm(notice.message)}
+          {notice.retryable && outOfAttempts ? t("speak.noAttemptsLeft") : ""}
         </Text>
       ) : null}
 
       {(showHeard || answered) && heardText && !active ? (
         <View style={styles.heardBox} testID="speak-heard">
-          <Text style={styles.heardLabel}>I heard:</Text>
+          <Text style={styles.heardLabel}>{t("speak.heard")}</Text>
           <Text style={styles.heardText}>“{heardText}”</Text>
         </View>
       ) : null}
@@ -299,12 +298,12 @@ export function SpeakRecordControl({
         <Pressable
           onPress={onReplayPress}
           accessibilityRole="button"
-          accessibilityLabel="Play back my recording"
+          accessibilityLabel={t("speak.replayLabel")}
           style={styles.replayRow}
           testID="speak-replay"
         >
           <Ionicons name="play-circle-outline" size={22} color={colors.skyDark} />
-          <Text style={[styles.replayText, { color: colors.skyDark }]}>Play my recording</Text>
+          <Text style={[styles.replayText, { color: colors.skyDark }]}>{t("speak.replay")}</Text>
         </Pressable>
       ) : null}
 

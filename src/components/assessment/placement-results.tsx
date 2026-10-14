@@ -9,6 +9,7 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { objectiveFor } from "@/lib/assessment/content";
 import type { ClusterOutcome, PlacementRecommendation } from "@/lib/assessment/placement";
@@ -34,6 +35,7 @@ export function PlacementResults({
   onStartFromBeginning: () => void;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const comfortable = recommendation.clusterOutcomes.filter(
     (o: ClusterOutcome) => o.outcome === "comfortable"
   );
@@ -47,32 +49,25 @@ export function PlacementResults({
   return (
     <SafeAreaView style={styles.screen}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>Your starting point</Text>
+        <Text style={styles.title}>{t("placementResults.title")}</Text>
 
         <View style={styles.recommendCard} testID="placement-recommendation">
-          <Text style={styles.recommendLabel}>Recommended start</Text>
+          <Text style={styles.recommendLabel}>{t("placementResults.recommended")}</Text>
           <Text style={styles.recommendLesson}>
             {recommendedRef
               ? `${recommendedRef.unit.title} — ${recommendedRef.lesson.title}`
-              : "The beginning of the course"}
+              : t("placementResults.beginning")}
           </Text>
           {recommendation.allComfortable ? (
-            <Text style={styles.recommendNote}>
-              You looked comfortable with everything we checked, so we suggest
-              the last unit of the course. Anything before it stays open to
-              review any time.
-            </Text>
+            <Text style={styles.recommendNote}>{t("placementResults.allComfortable")}</Text>
           ) : (
-            <Text style={styles.recommendNote}>
-              Everything before this point stays open — you can always go back
-              and review.
-            </Text>
+            <Text style={styles.recommendNote}>{t("placementResults.openBefore")}</Text>
           )}
         </View>
 
         {comfortable.length > 0 && (
           <View style={styles.group}>
-            <Text style={styles.groupTitle}>You seem comfortable with</Text>
+            <Text style={styles.groupTitle}>{t("placementResults.comfortable")}</Text>
             {comfortable.map((o) => (
               <Text key={o.clusterId} style={styles.rowStrong}>
                 ✓ {titleFor(courseId, o.objectiveId)}
@@ -83,7 +78,7 @@ export function PlacementResults({
 
         {gaps.length > 0 && (
           <View style={styles.group}>
-            <Text style={styles.groupTitle}>Good things to build next</Text>
+            <Text style={styles.groupTitle}>{t("placementResults.gaps")}</Text>
             {gaps.map((o) => (
               <Text key={o.clusterId} style={styles.rowGap}>
                 • {titleFor(courseId, o.objectiveId)}
@@ -94,28 +89,22 @@ export function PlacementResults({
 
         {notEstimated.length > 0 && (
           <View style={styles.group} testID="placement-not-estimated">
-            <Text style={styles.groupTitle}>Not estimated — audio unavailable</Text>
+            <Text style={styles.groupTitle}>{t("placementResults.notEstimated")}</Text>
             {notEstimated.map((o) => (
               <Text key={o.clusterId} style={styles.rowGap}>
                 — {titleFor(courseId, o.objectiveId)}
               </Text>
             ))}
-            <Text style={styles.note}>
-              We couldn&apos;t play audio on this device, so listening was
-              skipped without penalty. The listening units stay fully open —
-              try them any time audio works.
-            </Text>
+            <Text style={styles.note}>{t("placementResults.audioNote")}</Text>
           </View>
         )}
 
-        <Text style={styles.note}>
-          This quick check only finds a starting lesson in this course. It is
-          not a language exam, and it doesn&apos;t give you a level or a score.
-        </Text>
+        <Text style={styles.note}>{t("placementResults.note")}</Text>
 
-        <DuoButton label="Start here" onPress={onStartHere} />
+        <DuoButton label={t("placementResults.startHere")} onPress={onStartHere} testID="placement-start-here" />
         <DuoButton
-          label="Start from the beginning"
+          label={t("placementResults.startBeginning")}
+          testID="placement-start-beginning"
           variant="white"
           onPress={onStartFromBeginning}
         />

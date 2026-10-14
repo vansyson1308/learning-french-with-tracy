@@ -5,6 +5,7 @@
  * ambiguous resolves to null.
  */
 import { describe, expect, test } from "bun:test";
+import { translateMessage } from "../i18n/translate";
 
 import { FR_COURSE_ID } from "../learning/ids-fr";
 import {
@@ -155,7 +156,7 @@ describe("panelDataFor — display model", () => {
     expect(data).toMatchObject({
       surface: "le chat",
       gloss: "the cat",
-      genderLabel: "masculine noun",
+      genderLabel: { key: "panel.genderLabel", params: { gender: "masculine", elided: "no" } },
       pronunciation: "/ʃa/",
       lemma: "chat",
       pos: "noun",
@@ -167,7 +168,7 @@ describe("panelDataFor — display model", () => {
   });
 
   test("elided noun marks the l' cue so gender is still taught", () => {
-    expect(panelDataFor("fr-en", "fr:w:eau")?.genderLabel).toBe("feminine noun (l')");
+    expect(translateMessage("en", panelDataFor("fr-en", "fr:w:eau")!.genderLabel!)).toBe("feminine noun (l')");
   });
 
   test("non-nouns carry no gender label", () => {
@@ -187,6 +188,11 @@ describe("panelDataFor — display model", () => {
   });
 });
 
+const noteText = (...args: Parameters<typeof grammarNoteFor>) => {
+  const m = grammarNoteFor(...args);
+  return m ? translateMessage("en", m) : m;
+};
+
 describe("grammarNoteFor — the Phase 5B single-note addition", () => {
   const step = (exercise: Exercise): ExerciseStep => ({
     type: "exercise",
@@ -195,7 +201,7 @@ describe("grammarNoteFor — the Phase 5B single-note addition", () => {
   });
 
   test("articleSelect notes the article and its gender", () => {
-    const note = grammarNoteFor(
+    const note = noteText(
       step({
         type: "articleSelect",
         id: "g1",
@@ -209,7 +215,7 @@ describe("grammarNoteFor — the Phase 5B single-note addition", () => {
   });
 
   test("conjugationCloze notes the person and tense", () => {
-    const note = grammarNoteFor(
+    const note = noteText(
       step({
         type: "conjugationCloze",
         id: "g2",
@@ -225,7 +231,7 @@ describe("grammarNoteFor — the Phase 5B single-note addition", () => {
   });
 
   test("participle cell gets no tense suffix", () => {
-    const note = grammarNoteFor(
+    const note = noteText(
       step({
         type: "conjugationCloze",
         id: "g3",

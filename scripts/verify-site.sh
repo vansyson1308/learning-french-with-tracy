@@ -38,6 +38,9 @@ check "/privacy/"  "$NAME" "Privacy Policy" ${EMAIL:+"$EMAIL"}
 check "/support/"  "$NAME" ${EMAIL:+"$EMAIL"}
 check "/guide/"    "$NAME" "User guide"
 check "/licenses/" "$NAME" "Lingo Lessons"
+# Vietnamese pages (P2a): the policy and the guide must be served in Vietnamese.
+check "/vi/privacy/"  "$NAME" "Chính sách quyền riêng tư" 'lang="vi"'
+check "/vi/guide/"    "$NAME" "Hướng dẫn sử dụng" 'lang="vi"'
 check "/accessibility/" "$NAME"
 check "/release/"  "$NAME"
 if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then

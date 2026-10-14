@@ -9,6 +9,7 @@
 import { Redirect, router } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 
+import { useT } from "@/lib/i18n";
 import { PlacementResults } from "@/components/assessment/placement-results";
 import { SessionScreen } from "@/components/session/session-screen";
 import { placementContent, placementEnginePlan } from "@/lib/assessment/content";
@@ -101,6 +102,7 @@ function PlacementRunScreenBody({ courseId }: { courseId: string }) {
   const enginePlan = useMemo(() => placementEnginePlan(courseId), [courseId]);
   const { getLesson } = useCourseContent(courseId);
   const profile = courseProfile(courseId);
+  const { languageName } = useT();
   const progress = useProgress();
 
   const [stageIndex, setStageIndex] = useState(0);
@@ -177,7 +179,7 @@ function PlacementRunScreenBody({ courseId }: { courseId: string }) {
   return (
     <SessionScreen
       definition={definition}
-      targetLanguage={profile.targetLanguage}
+      targetLanguage={languageName(profile.targetCode, profile.targetLanguage)}
       renderFinished={(controller) => (
         <StageBridge
           key={stage.id}

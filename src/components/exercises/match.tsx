@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { haptics } from "@/lib/haptics";
 import { makeThemedStyles } from "@/lib/theme";
 import type { MatchExercise } from "@/lib/types";
@@ -37,6 +38,7 @@ function shuffleBy<T>(items: T[], seedText: string): T[] {
 
 export function Match({ exercise, onComplete, onWordResult, onSpeak }: MatchProps) {
   const styles = useStyles();
+  const { t } = useT();
   const left = useMemo(
     () => shuffleBy(exercise.pairs.map((p) => p.target), exercise.id + "L"),
     [exercise]
@@ -88,7 +90,7 @@ export function Match({ exercise, onComplete, onWordResult, onSpeak }: MatchProp
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tap the matching pairs</Text>
+      <Text style={styles.title}>{t("ex.tapPairs")}</Text>
       <View style={styles.columns}>
         <View style={styles.column}>
           {left.map((target) => (

@@ -14,6 +14,7 @@ import { addDays, dayString, localWeek } from "./dates";
 import { serializeCardKey } from "./learning/card-key";
 import { applyEvidence } from "./learning/engine";
 import type { ReviewEvidence } from "./learning/evidence";
+import { msg, type Message } from "./i18n/message";
 import { fsrsScheduler } from "./learning/fsrs-adapter";
 import { lastMutationIndex, type ReviewLogEntry } from "./learning/review-log";
 import type { FsrsCardState } from "./learning/scheduler";
@@ -688,7 +689,7 @@ export function todayActivity(
 
 export type Quest = {
   id: string;
-  label: string;
+  label: Message;
   target: number;
   value: number;
   done: boolean;
@@ -698,7 +699,7 @@ export function dailyQuests(
   state: Pick<ProgressState, "activeDays" | "dailyGoal">
 ): Quest[] {
   const today = todayActivity(state);
-  const make = (id: string, label: string, target: number, value: number): Quest => ({
+  const make = (id: string, label: Message, target: number, value: number): Quest => ({
     id,
     label,
     target,
@@ -706,14 +707,9 @@ export function dailyQuests(
     done: value >= target,
   });
   return [
-    make("xp", `Earn ${state.dailyGoal} XP`, state.dailyGoal, today.xp),
-    make(
-      "lessons",
-      "Finish 3 lessons or reviews",
-      3,
-      today.lessons + (today.sessions ?? 0)
-    ),
-    make("perfect", "Get 1 perfect lesson", 1, today.perfect),
+    make("xp", msg("quest.xp", { goal: state.dailyGoal }), state.dailyGoal, today.xp),
+    make("lessons", msg("quest.lessons"), 3, today.lessons + (today.sessions ?? 0)),
+    make("perfect", msg("quest.perfect"), 1, today.perfect),
   ];
 }
 

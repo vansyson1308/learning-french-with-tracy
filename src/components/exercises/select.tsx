@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
 import { speakTarget } from "@/lib/audio";
 import { useProgress } from "@/lib/store";
@@ -26,6 +27,7 @@ export function Select({
 }: SelectProps) {
   const courseId = useProgress((s) => s.activeCourseId);
   const styles = useStyles();
+  const { t } = useT();
   const hasEmoji = exercise.options.some((o) => o.emoji);
   const isListen = exercise.mode === "listen";
 
@@ -42,10 +44,10 @@ export function Select({
 
   const title =
     exercise.mode === "targetToNative"
-      ? "What does this mean?"
+      ? t("ex.whatDoesThisMean")
       : exercise.mode === "nativeToTarget"
-        ? `Pick the ${targetLanguage} word`
-        : "Tap what you hear";
+        ? t("ex.pickWord", { language: targetLanguage })
+        : t("ex.tapWhatYouHear");
 
   return (
     <View style={styles.container}>

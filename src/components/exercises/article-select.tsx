@@ -6,6 +6,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { makeThemedStyles } from "@/lib/theme";
 import type { ArticleSelectExercise } from "@/lib/types";
 
@@ -20,6 +21,7 @@ type ArticleSelectProps = {
 
 export function ArticleSelect({ exercise, answer, onAnswer, status }: ArticleSelectProps) {
   const styles = useStyles();
+  const { t } = useT();
   const chosen = answer !== null ? exercise.articles[answer] : "___";
 
   const optionState = (index: number): OptionState => {
@@ -31,7 +33,7 @@ export function ArticleSelect({ exercise, answer, onAnswer, status }: ArticleSel
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Choose the right article</Text>
+      <Text style={styles.title}>{t("ex.chooseArticle")}</Text>
       <Text style={styles.phrase}>
         {chosen} {exercise.noun}
       </Text>

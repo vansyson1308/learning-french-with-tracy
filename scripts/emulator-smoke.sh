@@ -97,16 +97,21 @@ shot 01-onboarding
 # app label as the launcher sees it
 LABEL=$(adb shell "cmd package resolve-activity --brief -c android.intent.category.LAUNCHER $PKG" 2>/dev/null | tail -1)
 row "launcher activity" "$([ -n "$LABEL" ] && echo PASS || echo FAIL)" "$LABEL"
-note "== onboarding: French → Learn French"
+# P2a: the labels come from the UI catalogue of the build's language (UI_LANG=vi|en).
+UI_LANG="${UI_LANG:-en}"
+LABEL_FR="$(python3 -c "import json,sys;print(json.load(open('src/lib/i18n/catalog/$UI_LANG.json',encoding='utf-8'))['language.fr'])")"
+LABEL_LEARN="$(python3 -c "import json;c=json.load(open('src/lib/i18n/catalog/$UI_LANG.json',encoding='utf-8'));print(c['onboarding.learn'].replace('{language}',c['language.fr']))")"
+LABEL_START="$(python3 -c "import json;print(json.load(open('src/lib/i18n/catalog/$UI_LANG.json',encoding='utf-8'))['onboarding.start'])")"
+note "== onboarding: $LABEL_FR → $LABEL_LEARN ($UI_LANG)"
 texts launch
 onboard() {
   dismiss_dialogs
-  tap_text "French, " onb1 exact || tap_text "French" onb1 exact; sleep 1.5
+  tap_text "$LABEL_FR, " onb1 exact || tap_text "$LABEL_FR" onb1 exact; sleep 1.5
   note "   French card selected: $(selected_state 'French,' onb1sel)"
   swipe_up; swipe_up; texts onb2
-  if ! tap_text "Learn French" onb2 exact; then
-    note "   'Learn French' not visible after scrolling; button candidates: $(grep -oiE 'text="(Learn [A-Za-z]+|Start learning)"[^>]*bounds="[^"]*"' "$OUT/onb2.xml" | head -3 | tr '\n' ' ')"
-    tap_text "Start learning" onb2b exact && note "   tapped 'Start learning' (course not selected?)"
+  if ! tap_text "$LABEL_LEARN" onb2 exact; then
+    note "   '$LABEL_LEARN' not visible after scrolling; button candidates: $(grep -oiE 'text="[^"]*"[^>]*bounds="[^"]*"' "$OUT/onb2.xml" | head -3 | tr '\n' ' ')"
+    tap_text "$LABEL_START" onb2b exact && note "   tapped '$LABEL_START' (course not selected?)"
   fi
   sleep 3; texts onb3
 }

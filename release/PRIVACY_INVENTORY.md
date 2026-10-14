@@ -18,7 +18,7 @@ with the evidence in the source tree. This is the fact base for
 | 9 | External links | none opened; `Linking.openSettings()` only (system Settings for permissions) | — | No | `grep openURL src` → none |
 | 10 | Network | none: no `fetch`, `XMLHttpRequest`, `WebSocket`, or HTTP client in `src` | — | No | `grep -rn "fetch(\|XMLHttpRequest\|axios\|WebSocket" src` → none |
 | 11 | Tutor seam | `DisabledTutorProvider`; no credentials; no model calls; grading never imports the tutor | — | No | `src/lib/tutor/provider.ts`, `tutor-seam.test.ts` (import-graph + key scan) |
-| 12 | Third-party SDKs | Expo, React Native, ts-fsrs, zustand, async-storage, gesture-handler, reanimated, screens, safe-area-context, expo-speech-recognition; **no analytics, ads, crash reporting** | — | No | `ls node_modules | grep -iE "analytics\|firebase\|sentry\|…"` → none |
+| 12 | Third-party SDKs | Expo, React Native, ts-fsrs, zustand, async-storage, expo-sqlite, expo-localization (reads the device's language list locally to pick the UI language; nothing leaves the device), gesture-handler, reanimated, screens, safe-area-context, expo-speech-recognition; **no analytics, ads, crash reporting** | — | No | `ls node_modules | grep -iE "analytics\|firebase\|sentry\|…"` → none |
 | 13 | Logging | `console.info` of a migration COUNT; `console.warn` of an FSRS error object | dev console only | No | `migrations.ts:218`, `engine.ts:171`; no learner content logged |
 | 14 | Identifiers | none: no device id, advertising id, account, or push token is read | — | No | `expo-device` is installed but not imported by app code (`grep -rn "expo-device" src` → none) |
 

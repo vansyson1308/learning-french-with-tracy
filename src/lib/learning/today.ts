@@ -15,6 +15,8 @@
  * rewritten, and the plan reports the remaining backlog honestly.
  */
 
+import { contentString } from "../content-strings";
+import { courseProfile } from "../course-profile";
 import { dayString } from "../dates";
 import { hashSeed, seededRng } from "../review-builder";
 import type { ExerciseStep, SessionStep, TeachStep } from "../session/types";
@@ -344,7 +346,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
       type: "listeningComprehension",
       id: `today-listen-${item.itemId}`,
       clipId: listenClips[item.itemId],
-      question: "What do you hear?",
+      question: contentString(courseProfile(input.courseId).nativeCode, "whatDoYouHear"),
       options,
       correct: options.findIndex((o) => o.text === item.word.native),
     };

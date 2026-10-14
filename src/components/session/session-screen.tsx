@@ -36,6 +36,7 @@ import { behaviorFor } from "@/lib/exercise-registry";
 import { exitScreen } from "@/lib/navigation";
 import { useSessionController, type SessionController } from "@/lib/session/controller";
 import { courseProfile } from "@/lib/course-profile";
+import { useT } from "@/lib/i18n";
 import { grammarNoteFor, panelItemIdFor, teachMetaFor } from "@/lib/session/panel";
 import {
   currentStep,
@@ -51,7 +52,7 @@ import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 export function SessionScreen({
   definition,
   targetLanguage,
-  emptyMessage = "Nothing to practice yet!",
+  emptyMessage,
   buildTodayStats,
   renderFinished,
 }: {
@@ -68,6 +69,7 @@ export function SessionScreen({
 }) {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t, tm } = useT();
   const insets = useSafeAreaInsets();
   const progress = useProgress();
   const controller = useSessionController(definition);
@@ -107,18 +109,17 @@ export function SessionScreen({
       exitScreen();
       return;
     }
-    const message =
-      "Answers you already gave are saved. The session itself won't be counted as completed.";
+    const message = t("session.leaveBody");
     if (Platform.OS === "web") {
       // RN-web's Alert is a no-op; without this the close button would go dead.
-      if (typeof window !== "undefined" && window.confirm(`Leave this session?\n\n${message}`)) {
+      if (typeof window !== "undefined" && window.confirm(`${t("session.leaveTitle")}\n\n${message}`)) {
         exitScreen();
       }
       return;
     }
-    Alert.alert("Leave this session?", message, [
-      { text: "Keep going", style: "cancel" },
-      { text: "Leave", style: "destructive", onPress: () => exitScreen() },
+    Alert.alert(t("session.leaveTitle"), message, [
+      { text: t("session.keepGoing"), style: "cancel" },
+      { text: t("session.leave"), style: "destructive", onPress: () => exitScreen() },
     ]);
   };
 
@@ -126,8 +127,8 @@ export function SessionScreen({
     return (
       <SafeAreaView style={styles.screen}>
         <View style={styles.center}>
-          <Text style={styles.emptyTitle}>{emptyMessage}</Text>
-          <DuoButton label="Back" onPress={() => exitScreen()} />
+          <Text style={styles.emptyTitle}>{emptyMessage ?? t("session.nothingYet")}</Text>
+          <DuoButton label={t("common.back")} onPress={() => exitScreen()} testID="session-back" />
         </View>
       </SafeAreaView>
     );
@@ -166,6 +167,7 @@ export function SessionScreen({
   // Lexical feedback identity: exactly one stable item of the course or nothing.
   const answered = state.status === "correct" || state.status === "wrong";
   const panelItemId = answered && !minimalFeedback ? panelItemIdFor(definition, step) : null;
+  const grammarNote = grammarNoteFor(step);
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
@@ -177,7 +179,7 @@ export function SessionScreen({
           <CloseButton onPress={onClose} />
           <View
             style={styles.progressTrack}
-            accessibilityLabel={`Session progress ${Math.round(percentage)} percent`}
+            accessibilityLabel={t("session.progressLabel", { percent: Math.round(percentage) })}
           >
             <Animated.View style={[styles.progressFill, progressBarStyle]}>
               <View style={styles.progressShine} />
@@ -252,15 +254,13 @@ export function SessionScreen({
           {minimalFeedback && answered && (
             <Animated.View entering={FadeInDown.duration(200)} style={styles.feedbackRow}>
               <Ionicons name="checkmark-done" size={26} color={colors.skyDark} />
-              <Text style={[styles.feedback, { color: colors.text }]}>Answer recorded</Text>
+              <Text style={[styles.feedback, { color: colors.text }]}>{t("session.answerRecorded")}</Text>
             </Animated.View>
           )}
           {!minimalFeedback && state.status === "correct" && (
             <Animated.View entering={FadeInDown.duration(200)} style={styles.feedbackRow}>
               <Ionicons name="checkmark-circle" size={26} color={colors.correctText} />
-              <Text style={[styles.feedback, { color: colors.correctText }]}>
-                Nicely done!
-              </Text>
+              <Text style={[styles.feedback, { color: colors.correctText }]} testID="session-feedback">{t("session.nicelyDone")}</Text>
               {controller.lastMutated && definition.allowUndo ? (
                 <UndoLink onPress={controller.onUndo} color={colors.correctText} />
               ) : null}
@@ -270,11 +270,9 @@ export function SessionScreen({
             <Animated.View entering={FadeInDown.duration(200)}>
               <View style={styles.feedbackRow}>
                 <Ionicons name="close-circle" size={26} color={colors.wrongText} />
-                <Text style={[styles.feedback, { color: colors.wrongText }]}>
+                <Text style={[styles.feedback, { color: colors.wrongText }]} testID="session-feedback">
                   {/* An interaction has no single correct sentence to show. */}
-                  {behaviorFor(exercise).answerText(exercise)
-                    ? "Correct answer:"
-                    : "Not quite this time"}
+                  {behaviorFor(exercise).answerText(exercise) ? t("session.correctAnswer") : t("session.notQuite")}
                 </Text>
                 {controller.lastMutated && definition.allowUndo ? (
                   <UndoLink onPress={controller.onUndo} color={colors.wrongText} />
@@ -292,16 +290,17 @@ export function SessionScreen({
               courseId={definition.courseId}
               itemId={panelItemId}
               correct={state.status === "correct"}
-              note={grammarNoteFor(step) ?? undefined}
+              note={grammarNote ? tm(grammarNote) : undefined}
             />
           ) : null}
           {step.type === "teach" || step.type === "concept" ? (
-            <DuoButton label="Continue" onPress={controller.onTeachContinue} />
+            <DuoButton label={t("common.continue")} onPress={controller.onTeachContinue} testID="session-continue" />
           ) : state.status === "idle" ? (
             <>
               <DuoButton
-                label="Check"
+                label={t("common.check")}
                 onPress={controller.onCheck}
+                testID="session-check"
                 disabled={
                   selfAdvancing ||
                   !exercise ||
@@ -309,12 +308,13 @@ export function SessionScreen({
                 }
               />
               {definition.kind === "placement" && !selfAdvancing ? (
-                <DuoButton label="I don't know" variant="white" onPress={controller.onSkip} />
+                <DuoButton label={t("session.idk")} variant="white" onPress={controller.onSkip} testID="session-idk" />
               ) : null}
             </>
           ) : (
             <DuoButton
-              label="Continue"
+              label={t("common.continue")}
+              testID="session-continue"
               variant={
                 minimalFeedback ? "secondary" : state.status === "wrong" ? "danger" : "secondary"
               }
@@ -330,16 +330,17 @@ export function SessionScreen({
 /** Modest undo affordance — shown only after an FSRS scheduler write. */
 function UndoLink({ onPress, color }: { onPress: () => void; color: string }) {
   const styles = useStyles();
+  const { t } = useT();
   return (
     <Pressable
       onPress={onPress}
       hitSlop={10}
       accessibilityRole="button"
-      accessibilityLabel="Undo this review"
+      accessibilityLabel={t("session.undoLabel")}
       style={styles.undoLink}
     >
       <Ionicons name="arrow-undo" size={16} color={color} />
-      <Text style={[styles.undoText, { color }]}>Undo</Text>
+      <Text style={[styles.undoText, { color }]}>{t("session.undo")}</Text>
     </Pressable>
   );
 }

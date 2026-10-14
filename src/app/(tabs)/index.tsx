@@ -11,9 +11,10 @@ import Animated, {
 } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { Flag } from "@/components/flag";
 import { useCourseContent } from "@/lib/content";
-import { hasCapability } from "@/lib/course-profile";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import {
   activeToday,
   assessmentFor,
@@ -38,10 +39,12 @@ function indentFor(index: number) {
 export default function LearnScreen() {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t, languageName } = useT();
   const progress = useProgress();
   const { activeCourseId, dailyGoal } = progress;
   const courseProgress = progress.course();
   const { pack, allLessons } = useCourseContent(activeCourseId);
+  const langName = languageName(courseProfile(activeCourseId).targetCode, pack.targetLanguage);
   const todayXp = dailyXpToday(progress);
   const goalPct = Math.min(100, (todayXp / dailyGoal) * 100);
   const lessonIds = allLessons.map((l) => l.lesson.id);
@@ -80,7 +83,7 @@ export default function LearnScreen() {
           style={styles.coursePicker}
           onPress={() => router.push("/courses")}
           accessibilityRole="button"
-          accessibilityLabel={`Course: ${pack.targetLanguage}. Switch course`}
+          accessibilityLabel={t("learn.coursePickerLabel", { language: langName })}
         >
           <Flag courseId={activeCourseId} size={30} />
           <Ionicons name="chevron-down" size={14} color={colors.textMuted} />
@@ -108,7 +111,7 @@ export default function LearnScreen() {
           <View style={[styles.goalFill, { width: `${goalPct}%` }]} />
         </View>
         <Text style={styles.goalLabel} maxFontSizeMultiplier={1.3}>
-          {todayXp}/{dailyGoal} XP today
+          {t("learn.xpToday", { xp: todayXp, goal: dailyGoal })}
         </Text>
       </View>
 
@@ -118,22 +121,20 @@ export default function LearnScreen() {
             style={styles.placementCard}
             onPress={() => router.push("/placement/intro")}
             accessibilityRole="button"
-            accessibilityLabel={`Studied ${pack.targetLanguage} before? Find your starting point`}
+            accessibilityLabel={t("learn.placementEntryLabel", { language: langName })}
             testID="placement-entry-card"
           >
             <Ionicons name="compass" size={24} color={colors.skyDark} />
             <View style={{ flex: 1, gap: 2 }}>
-              <Text style={styles.placementTitle}>Studied {pack.targetLanguage} before?</Text>
-              <Text style={styles.placementSubtitle}>
-                Take a short check to find your starting point.
-              </Text>
+              <Text style={styles.placementTitle}>{t("learn.placementTitle", { language: langName })}</Text>
+              <Text style={styles.placementSubtitle}>{t("learn.placementSubtitle")}</Text>
             </View>
             <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
           </Pressable>
         ) : null}
         {pack.sections.map((section) => (
           <View key={section.id}>
-            <Text style={styles.sectionTitle}>{section.title}</Text>
+            <Text style={styles.sectionTitle} testID={`learn-section-${section.id}`}>{section.title}</Text>
             {section.units.map((unit) => {
               const unitLessons = allLessons.filter((l) => l.unit.id === unit.id);
               const color = unitColor.get(unit.id) ?? unitPalette[0];
@@ -152,7 +153,8 @@ export default function LearnScreen() {
                       ]}
                       onPress={() => router.push(`/guidebook/${unit.id}`)}
                       accessibilityRole="button"
-                      accessibilityLabel={`${unit.title} guidebook`}
+                      accessibilityLabel={t("learn.guidebookLabel", { unit: unit.title })}
+                      testID={`guidebook-button-${unit.id}`}
                     >
                       <Ionicons name="book" size={22} color={colors.white} />
                     </Pressable>
@@ -179,7 +181,7 @@ export default function LearnScreen() {
                           locked={isLocked}
                           crown={isLastInUnit}
                           color={color}
-                          label={`${unit.title}, lesson ${i + 1} of ${unitLessons.length}`}
+                          label={t("learn.lessonLabel", { unit: unit.title, n: i + 1, total: unitLessons.length })}
                           onPress={() => router.push(`/lesson/${ref.lesson.id}`)}
                         />
                       );
@@ -249,6 +251,7 @@ function LessonNode({
 }) {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t } = useT();
   const iconColor = locked ? colors.neutral400 : colors.white;
   const icon = completed ? (
     <Ionicons name="checkmark-sharp" size={34} color={iconColor} />
@@ -269,7 +272,7 @@ function LessonNode({
     <View style={[styles.nodeRow, { transform: [{ translateX: -offset }] }]}>
       {current && (
         <BobbingBubble>
-          <Text style={[styles.startText, { color: color.main }]}>START</Text>
+          <Text style={[styles.startText, { color: color.main }]}>{t("learn.start")}</Text>
           <View style={styles.startArrow} />
         </BobbingBubble>
       )}
@@ -279,14 +282,15 @@ function LessonNode({
         accessibilityRole="button"
         accessibilityLabel={label}
         accessibilityState={{ disabled: locked, selected: current }}
+        testID={locked ? "lesson-node-locked" : current ? "lesson-node-current" : "lesson-node"}
         accessibilityHint={
           locked
-            ? "Locked. Complete earlier lessons first."
+            ? t("learn.hint.locked")
             : completed
-              ? "Completed. Practice again."
+              ? t("learn.hint.completed")
               : cleared
-                ? "Cleared by your placement check. Review any time."
-                : "Start this lesson."
+                ? t("learn.hint.cleared")
+                : t("learn.hint.start")
         }
         style={({ pressed }) => [
           styles.node,

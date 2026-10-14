@@ -1,6 +1,7 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
 import { haptics } from "@/lib/haptics";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
@@ -17,6 +18,7 @@ type WordBankProps = {
 export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t } = useT();
   const locked = status !== "none";
 
   const pick = (index: number) => {
@@ -31,7 +33,7 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Translate this sentence</Text>
+      <Text style={styles.title}>{t("ex.translateSentence")}</Text>
 
       <View style={styles.promptRow}>
         {exercise.audioTarget ? <SpeakerButton text={exercise.audioTarget} /> : null}

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { Flag } from "@/components/flag";
 import {
   commitImport,
@@ -14,6 +15,7 @@ import {
 } from "@/lib/backup";
 import { useCourseContent } from "@/lib/content";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
+import type { UiLanguagePreference } from "@/lib/persistence/migrations";
 import {
   currentStreak,
   dailyXpToday,
@@ -23,20 +25,27 @@ import {
 } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
-const THEME_OPTIONS: { value: ThemePreference; label: string; icon: string }[] = [
-  { value: "system", label: "Device", icon: "phone-portrait-outline" },
-  { value: "light", label: "Light", icon: "sunny-outline" },
-  { value: "dark", label: "Dark", icon: "moon-outline" },
+const THEME_OPTIONS: { value: ThemePreference; icon: string }[] = [
+  { value: "system", icon: "phone-portrait-outline" },
+  { value: "light", icon: "sunny-outline" },
+  { value: "dark", icon: "moon-outline" },
+];
+const LANGUAGE_OPTIONS: { value: UiLanguagePreference; icon: string }[] = [
+  { value: "system", icon: "phone-portrait-outline" },
+  { value: "vi", icon: "language-outline" },
+  { value: "en", icon: "language-outline" },
 ];
 
 export default function ProfileScreen() {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t, languageName } = useT();
   const progress = useProgress();
-  const { themePreference, setThemePreference } = progress;
+  const { themePreference, setThemePreference, uiLanguage, setUiLanguage } = progress;
   const { activeCourseId, dailyGoal } = progress;
   const courseProgress = progress.course();
   const { pack, allLessons, allWords } = useCourseContent(activeCourseId);
+  const langName = languageName(courseProfile(activeCourseId).targetCode, pack.targetLanguage);
   const todayXp = dailyXpToday(progress);
   const streak = currentStreak(progress);
   const week = lastSevenDays(progress);
@@ -50,34 +59,34 @@ export default function ProfileScreen() {
 
   const stats = [
     {
-      label: "Day streak",
+      label: t("profile.stat.streak"),
       value: `${streak}`,
       icon: <MaterialCommunityIcons name="fire" size={28} color={colors.orange} />,
     },
     {
-      label: "Course XP",
+      label: t("profile.stat.xp"),
       value: `${courseProgress.xp}`,
       icon: <Ionicons name="flash" size={26} color={colors.skyDark} />,
     },
     {
-      label: "Today's XP",
+      label: t("profile.stat.todayXp"),
       value: `${todayXp}/${dailyGoal}`,
       icon: (
         <MaterialCommunityIcons name="bullseye-arrow" size={27} color={colors.amber} />
       ),
     },
     {
-      label: "To review",
+      label: t("profile.stat.toReview"),
       value: `${courseProgress.mistakes.length}`,
       icon: <Ionicons name="refresh-circle" size={26} color={colors.rose} />,
     },
     {
-      label: "Lessons done",
+      label: t("profile.stat.lessonsDone"),
       value: `${lessonsDone}/${allLessons.length}`,
       icon: <Ionicons name="checkmark-circle" size={26} color={colors.green} />,
     },
     {
-      label: "Words learned",
+      label: t("profile.stat.wordsLearned"),
       value: `${wordsLearned}`,
       icon: <Ionicons name="book" size={26} color={colors.indigo} />,
     },
@@ -92,13 +101,13 @@ export default function ProfileScreen() {
             style={styles.mascot}
             contentFit="contain"
           />
-          <Text style={styles.name}>My Progress</Text>
-          <Pressable onPress={() => router.push("/courses")} style={styles.courseRow}>
-            <Text style={styles.subtitle}>Learning</Text>
+          <Text style={styles.name}>{t("profile.title")}</Text>
+          <Pressable onPress={() => router.push("/courses")} style={styles.courseRow} testID="profile-switch">
+            <Text style={styles.subtitle}>{t("profile.learning")}</Text>
             <Flag courseId={activeCourseId} size={18} />
-            <Text style={styles.subtitle}>{pack.targetLanguage}</Text>
+            <Text style={styles.subtitle}>{langName}</Text>
             <View style={styles.switchRow}>
-              <Text style={styles.switch}>Switch</Text>
+              <Text style={styles.switch}>{t("profile.switch")}</Text>
               <Ionicons name="chevron-down" size={12} color={colors.green} />
             </View>
           </Pressable>
@@ -112,16 +121,14 @@ export default function ProfileScreen() {
               color={streak > 0 ? colors.orange : colors.neutral300}
             />
             <Text style={styles.weekTitle} maxFontSizeMultiplier={1.3}>
-              {streak > 0
-                ? `${streak} day streak`
-                : "Complete a lesson to start a streak"}
+              {streak > 0 ? t("profile.streakDays", { n: streak }) : t("profile.streakEmpty")}
             </Text>
           </View>
           <View style={styles.weekRow}>
             {week.map((d) => (
               <View key={d.day} style={styles.weekDay}>
                 <Text style={styles.weekLabel} maxFontSizeMultiplier={1.2}>
-                  {d.weekday}
+                  {t(`weekday.${d.weekdayIndex}` as never)}
                 </Text>
                 <View
                   style={[
@@ -141,7 +148,7 @@ export default function ProfileScreen() {
 
         <View style={styles.grid}>
           {stats.map((stat) => (
-            <View key={stat.label} style={styles.statCard}>
+            <View key={stat.label} style={styles.statCard} testID="profile-stat">
               {stat.icon}
               <Text style={styles.statValue}>{stat.value}</Text>
               <Text style={styles.statLabel}>{stat.label}</Text>
@@ -153,16 +160,14 @@ export default function ProfileScreen() {
           <Pressable
             onPress={() => router.push("/goals")}
             accessibilityRole="button"
-            accessibilityLabel={`Your ${courseProfile(activeCourseId).targetLanguage} goals`}
+            accessibilityLabel={t("profile.goalsTitle", { language: langName })}
             style={styles.goalsCard}
             testID="goals-entry"
           >
             <Ionicons name="flag-outline" size={22} color={colors.greenDark} />
             <View style={styles.dataRowText}>
-              <Text style={styles.dataRowTitle}>Your {courseProfile(activeCourseId).targetLanguage} goals</Text>
-              <Text style={styles.settingsHint}>
-                Can-do goals, what&apos;s been checked, and your starting point.
-              </Text>
+              <Text style={styles.dataRowTitle}>{t("profile.goalsTitle", { language: langName })}</Text>
+              <Text style={styles.settingsHint}>{t("profile.goalsHint")}</Text>
             </View>
             <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
           </Pressable>
@@ -171,7 +176,7 @@ export default function ProfileScreen() {
         <View style={styles.settingsCard}>
           <View style={styles.settingsHeader}>
             <Ionicons name="color-palette-outline" size={22} color={colors.indigo} />
-            <Text style={styles.settingsTitle}>Appearance</Text>
+            <Text style={styles.settingsTitle}>{t("profile.appearance")}</Text>
           </View>
           <View style={styles.themeRow}>
             {THEME_OPTIONS.map((option) => {
@@ -181,9 +186,10 @@ export default function ProfileScreen() {
                   key={option.value}
                   onPress={() => setThemePreference(option.value)}
                   accessibilityRole="button"
-                  accessibilityLabel={`${option.label} theme`}
+                  accessibilityLabel={t("profile.themeLabel", { theme: t(`profile.theme.${option.value}`) })}
                   accessibilityState={{ selected: active }}
                   style={[styles.themeChip, active && styles.themeChipActive]}
+                  testID={`theme-option-${option.value}`}
                 >
                   <Ionicons
                     name={option.icon as keyof typeof Ionicons.glyphMap}
@@ -191,15 +197,46 @@ export default function ProfileScreen() {
                     color={active ? colors.greenDark : colors.textMuted}
                   />
                   <Text style={[styles.themeLabel, active && styles.themeLabelActive]}>
-                    {option.label}
+                    {t(`profile.theme.${option.value}`)}
                   </Text>
                 </Pressable>
               );
             })}
           </View>
-          <Text style={styles.settingsHint}>
-            Device follows your phone&apos;s light or dark setting.
-          </Text>
+          <Text style={styles.settingsHint}>{t("profile.appearanceHint")}</Text>
+        </View>
+
+        <View style={styles.settingsCard} testID="language-card">
+          <View style={styles.settingsHeader}>
+            <Ionicons name="language-outline" size={22} color={colors.skyDark} />
+            <Text style={styles.settingsTitle}>{t("profile.language")}</Text>
+          </View>
+          <View style={styles.themeRow}>
+            {LANGUAGE_OPTIONS.map((option) => {
+              const active = uiLanguage === option.value;
+              return (
+                <Pressable
+                  key={option.value}
+                  onPress={() => setUiLanguage(option.value)}
+                  accessibilityRole="button"
+                  accessibilityLabel={t("profile.languageLabel", { option: t(`profile.language.${option.value}`) })}
+                  accessibilityState={{ selected: active }}
+                  style={[styles.themeChip, active && styles.themeChipActive]}
+                  testID={`language-option-${option.value}`}
+                >
+                  <Ionicons
+                    name={option.icon as keyof typeof Ionicons.glyphMap}
+                    size={20}
+                    color={active ? colors.greenDark : colors.textMuted}
+                  />
+                  <Text style={[styles.themeLabel, active && styles.themeLabelActive]}>
+                    {t(`profile.language.${option.value}`)}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+          <Text style={styles.settingsHint}>{t("profile.languageHint")}</Text>
         </View>
 
         <DataCard />
@@ -211,13 +248,14 @@ export default function ProfileScreen() {
 function DataCard() {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t, tm } = useT();
   const [busy, setBusy] = useState(false);
 
   const onExport = async () => {
     setBusy(true);
     const result = await exportProgress();
     setBusy(false);
-    if (!result.ok) Alert.alert("Export failed", result.reason);
+    if (!result.ok) Alert.alert(t("backup.exportFailedTitle"), tm(result.reason));
   };
 
   const onImport = async () => {
@@ -226,31 +264,29 @@ function DataCard() {
     setBusy(false);
     if (picked.kind === "canceled") return;
     if (picked.kind === "error") {
-      Alert.alert("Import failed", picked.reason);
+      Alert.alert(t("backup.importFailedTitle"), tm(picked.reason));
       return;
     }
     const staged = prepareImport(picked.raw);
     if (!staged.ok) {
-      Alert.alert("Import failed", staged.reason);
+      Alert.alert(t("backup.importFailedTitle"), tm(staged.reason));
       return;
     }
     const courseCount = Object.keys(staged.state.courses).length;
     Alert.alert(
-      "Replace progress?",
-      `This replaces your current progress with the backup (${courseCount} ` +
-        `course${courseCount === 1 ? "" : "s"}, ${staged.state.streak}-day ` +
-        "streak). A safety copy of your current progress is saved first.",
+      t("profile.replaceTitle"),
+      t("profile.replaceBody", { courses: courseCount, streak: staged.state.streak }),
       [
-        { text: "Cancel", style: "cancel" },
+        { text: t("common.cancel"), style: "cancel" },
         {
-          text: "Import",
+          text: t("profile.import"),
           style: "destructive",
           onPress: async () => {
             setBusy(true);
             const result = await commitImport(staged.state, staged.learner);
             setBusy(false);
-            if (result.ok) Alert.alert("Progress imported");
-            else Alert.alert("Import failed", result.reason);
+            if (result.ok) Alert.alert(t("profile.imported"));
+            else Alert.alert(t("backup.importFailedTitle"), tm(result.reason));
           },
         },
       ]
@@ -261,19 +297,20 @@ function DataCard() {
     <View style={styles.settingsCard}>
       <View style={styles.settingsHeader}>
         <Ionicons name="archive-outline" size={22} color={colors.skyDark} />
-        <Text style={styles.settingsTitle}>Data</Text>
+        <Text style={styles.settingsTitle}>{t("profile.data")}</Text>
       </View>
       <Pressable
         onPress={onExport}
         disabled={busy}
         accessibilityRole="button"
-        accessibilityLabel="Export progress"
+        accessibilityLabel={t("profile.export")}
         style={styles.dataRow}
+        testID="profile-export"
       >
         <Ionicons name="download-outline" size={20} color={colors.green} />
         <View style={styles.dataRowText}>
-          <Text style={styles.dataRowTitle}>Export progress</Text>
-          <Text style={styles.settingsHint}>Save a backup file of everything.</Text>
+          <Text style={styles.dataRowTitle}>{t("profile.export")}</Text>
+          <Text style={styles.settingsHint}>{t("profile.exportHint")}</Text>
         </View>
         <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
       </Pressable>
@@ -281,42 +318,42 @@ function DataCard() {
         onPress={onImport}
         disabled={busy}
         accessibilityRole="button"
-        accessibilityLabel="Import progress"
+        accessibilityLabel={t("profile.importTitle")}
         style={styles.dataRow}
+        testID="profile-import"
       >
         <Ionicons name="cloud-upload-outline" size={20} color={colors.indigo} />
         <View style={styles.dataRowText}>
-          <Text style={styles.dataRowTitle}>Import progress</Text>
-          <Text style={styles.settingsHint}>Restore from a backup file.</Text>
+          <Text style={styles.dataRowTitle}>{t("profile.importTitle")}</Text>
+          <Text style={styles.settingsHint}>{t("profile.importHint")}</Text>
         </View>
         <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
       </Pressable>
       <Pressable
         onPress={() => router.push("/privacy")}
         accessibilityRole="button"
-        accessibilityLabel="Privacy policy"
+        accessibilityLabel={t("profile.privacyLabel")}
         style={styles.dataRow}
         testID="privacy-link"
       >
         <Ionicons name="shield-checkmark-outline" size={20} color={colors.green} />
         <View style={styles.dataRowText}>
-          <Text style={styles.dataRowTitle}>Privacy</Text>
-          <Text style={styles.settingsHint}>
-            What stays on your device, and what the speech service does.
-          </Text>
+          <Text style={styles.dataRowTitle}>{t("profile.privacy")}</Text>
+          <Text style={styles.settingsHint}>{t("profile.privacyHint")}</Text>
         </View>
         <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
       </Pressable>
       <Pressable
         onPress={() => router.push("/licenses")}
         accessibilityRole="button"
-        accessibilityLabel="Licenses and attributions"
+        accessibilityLabel={t("profile.licensesLabel")}
         style={styles.dataRow}
+        testID="licenses-link"
       >
         <Ionicons name="document-text-outline" size={20} color={colors.skyDark} />
         <View style={styles.dataRowText}>
-          <Text style={styles.dataRowTitle}>Licenses &amp; attributions</Text>
-          <Text style={styles.settingsHint}>Software notices and data sources.</Text>
+          <Text style={styles.dataRowTitle}>{t("profile.licenses")}</Text>
+          <Text style={styles.settingsHint}>{t("profile.licensesHint")}</Text>
         </View>
         <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
       </Pressable>

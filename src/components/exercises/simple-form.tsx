@@ -13,6 +13,7 @@ import {
   type Answer,
   type Status,
 } from "@/lib/grading";
+import { useT } from "@/lib/i18n";
 import { makeThemedStyles, radius, useResolvedScheme, useThemeColors } from "@/lib/theme";
 import type { SimpleFormExercise } from "@/lib/types";
 
@@ -36,6 +37,7 @@ export function SimpleForm({
   const styles = useStyles();
   const colors = useThemeColors();
   const scheme = useResolvedScheme();
+  const { t, tm } = useT();
   const values =
     isWrittenAnswer(answer) && answer.kind === "form" ? answer.values : {};
   const answered = status !== "none";
@@ -43,7 +45,7 @@ export function SimpleForm({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Fill in the form in {targetLanguage}</Text>
+      <Text style={styles.title}>{t("ex.fillForm", { language: targetLanguage })}</Text>
       <Text style={styles.instruction}>{exercise.instruction}</Text>
 
       <View style={styles.formBox}>
@@ -74,7 +76,7 @@ export function SimpleForm({
 
       {answered && !scored && evaluation && evaluation.feedback.length > 0 ? (
         <View style={styles.feedbackBox} testID="writing-feedback">
-          {evaluation.feedback.map((line) => (
+          {evaluation.feedback.map(tm).map((line) => (
             <Text key={line} style={styles.feedbackText}>
               {line}
             </Text>

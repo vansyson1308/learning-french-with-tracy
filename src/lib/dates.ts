@@ -27,13 +27,15 @@ export function addDays(date: Date, days: number): Date {
 const WEEKDAY_LETTERS = ["S", "M", "T", "W", "T", "F", "S"] as const;
 
 /** The rolling 7-day local window ending today (oldest first). */
-export function localWeek(now: Date): { day: string; weekday: string; isToday: boolean }[] {
-  const out: { day: string; weekday: string; isToday: boolean }[] = [];
+export function localWeek(now: Date): { day: string; weekday: string; weekdayIndex: number; isToday: boolean }[] {
+  const out: { day: string; weekday: string; weekdayIndex: number; isToday: boolean }[] = [];
   for (let i = 6; i >= 0; i--) {
     const date = addDays(now, -i);
     out.push({
       day: dayString(date),
       weekday: WEEKDAY_LETTERS[date.getDay()],
+      // 0 = Sunday; the UI renders the letter from the catalogue (`weekday.<n>`).
+      weekdayIndex: date.getDay(),
       isToday: i === 0,
     });
   }

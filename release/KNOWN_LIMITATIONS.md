@@ -65,7 +65,9 @@ itself.
   statistics, no standard setting) — `ASSESSMENT_DOSSIER.md`.
 - No pronunciation scoring; spoken production is graded on what the
   recogniser transcribes.
-- UI language is English only (no i18n).
+- UI chrome is Vietnamese or English (P2a); course CONTENT (glosses, options,
+  questions, guidebooks, concept prose) stays in each course's native
+  language — English for `fr-en` — until P2b ships `fr-vi`.
 - Learner history (cards, review log) lives in the learner store since
   persist v4: on a phone an expo-sqlite database (`learner-v4.db`), on the
   web tier a JSON document rewritten on every flush (its cost grows with the

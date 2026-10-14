@@ -75,6 +75,9 @@ example
 dist-site/
 # web-tier storyboard previews (e2e/screenshots.mjs) — never store submissions
 dist-screens/
+screenshots/
+# Vietnamese-UI web export (CI builds it with EXPO_PUBLIC_UI_LANG=vi)
+dist-vi/
 
 # local signed-APK output of plan/scripts/sign-apk-windows.cmd (never committed)
 out/

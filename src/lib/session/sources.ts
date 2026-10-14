@@ -14,7 +14,8 @@ import { selectCheckpointForm } from "../assessment/checkpoint";
 import { administrationSeed, shuffleScoredOptions } from "../assessment/option-order";
 import { interactionPracticeScenarios } from "../interaction/content";
 import { pickDistractors } from "../learning/distractors";
-import { hasCapability } from "../course-profile";
+import { contentString } from "../content-strings";
+import { courseProfile, hasCapability } from "../course-profile";
 import { dueReviewQueue } from "../learning/engine";
 import type { FsrsCardState } from "../learning/scheduler";
 import { listenWordClipIndex } from "../reception/content";
@@ -230,7 +231,7 @@ export function buildListeningReviewSessionDefinition(args: {
       type: "listeningComprehension",
       id: `listen-review-${itemId}`,
       clipId: clipIndex[itemId],
-      question: "What do you hear?",
+      question: contentString(courseProfile(args.courseId).nativeCode, "whatDoYouHear"),
       options,
       correct: options.findIndex((o) => o.text === word.native),
     };

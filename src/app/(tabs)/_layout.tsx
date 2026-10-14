@@ -2,11 +2,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 
+import { useT } from "@/lib/i18n";
 import { hasCapability } from "@/lib/course-profile";
 import { useProgress } from "@/lib/store";
 import { useResolvedScheme, useThemeColors } from "@/lib/theme";
 
 export default function TabsLayout() {
+  const { t } = useT();
   const colors = useThemeColors();
   const scheme = useResolvedScheme();
   const activeCourseId = useProgress((s) => s.activeCourseId);
@@ -31,7 +33,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Learn",
+          title: t("tabs.learn"),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? "home" : "home-outline"} size={26} color={color} />
           ),
@@ -40,7 +42,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="today"
         options={{
-          title: "Today",
+          title: t("tabs.today"),
           // Stable Expo Router tab-hiding: no href = no tab button. Courses
           // without the dailySession capability keep their exact old tabs.
           href: hasToday ? undefined : null,
@@ -56,7 +58,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="practice"
         options={{
-          title: "Practice",
+          title: t("tabs.practice"),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "barbell" : "barbell-outline"}
@@ -69,7 +71,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
+          title: t("tabs.profile"),
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "person" : "person-outline"}

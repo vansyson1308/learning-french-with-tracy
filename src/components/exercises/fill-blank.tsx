@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { makeThemedStyles } from "@/lib/theme";
 import type { FillBlankExercise } from "@/lib/types";
 
@@ -15,6 +16,7 @@ type FillBlankProps = {
 
 export function FillBlank({ exercise, answer, onAnswer, status }: FillBlankProps) {
   const styles = useStyles();
+  const { t } = useT();
   const filled =
     answer !== null
       ? exercise.sentence.replace("___", exercise.options[answer])
@@ -29,7 +31,7 @@ export function FillBlank({ exercise, answer, onAnswer, status }: FillBlankProps
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Complete the sentence</Text>
+      <Text style={styles.title}>{t("ex.completeSentence")}</Text>
       <Text style={styles.sentence}>{filled}</Text>
       <Text style={styles.translation}>{exercise.translation}</Text>
 

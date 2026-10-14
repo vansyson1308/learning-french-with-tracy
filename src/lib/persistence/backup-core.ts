@@ -14,6 +14,7 @@
  */
 
 import { hasCapability } from "../course-profile";
+import { msg, type Message } from "../i18n/message";
 import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 import type { SrsEntry } from "../srs";
@@ -90,7 +91,7 @@ export function createEnvelope(
 
 export type StagedImport =
   | { ok: true; state: PersistedProgress; learner: LearnerData }
-  | { ok: false; reason: string };
+  | { ok: false; reason: Message };
 
 const BANNED_KEYS = new Set(["__proto__", "constructor", "prototype"]);
 
@@ -401,14 +402,14 @@ export function stageImport(raw: string, now: Date): StagedImport {
   try {
     parsed = JSON.parse(raw);
   } catch {
-    return { ok: false, reason: "The file isn't valid JSON." };
+    return { ok: false, reason: msg("backup.reason.invalidJson") };
   }
   if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-    return { ok: false, reason: "This isn't a progress backup file." };
+    return { ok: false, reason: msg("backup.reason.notBackup") };
   }
   const envelope = parsed as Record<string, unknown>;
   if (envelope.format !== BACKUP_FORMAT) {
-    return { ok: false, reason: "This isn't a progress backup file." };
+    return { ok: false, reason: msg("backup.reason.notBackup") };
   }
   if (
     typeof envelope.envelopeVersion !== "number" ||
@@ -416,7 +417,7 @@ export function stageImport(raw: string, now: Date): StagedImport {
   ) {
     return {
       ok: false,
-      reason: "This backup is from a newer app version. Update the app first.",
+      reason: msg("backup.reason.newerVersion"),
     };
   }
   const persistVersion = envelope.persistVersion;
@@ -428,11 +429,11 @@ export function stageImport(raw: string, now: Date): StagedImport {
   ) {
     return {
       ok: false,
-      reason: "This backup uses an unsupported data version.",
+      reason: msg("backup.reason.unsupportedVersion"),
     };
   }
   if (!envelope.state || typeof envelope.state !== "object") {
-    return { ok: false, reason: "The backup contains no progress data." };
+    return { ok: false, reason: msg("backup.reason.noProgress") };
   }
 
   let clean: unknown;
@@ -441,21 +442,21 @@ export function stageImport(raw: string, now: Date): StagedImport {
     clean = sanitize(envelope.state);
     cleanLearner = envelope.envelopeVersion >= 2 ? sanitize(envelope.learner) : undefined;
   } catch {
-    return { ok: false, reason: "The backup contains unsupported data." };
+    return { ok: false, reason: msg("backup.reason.unsupportedData") };
   }
 
   let migrated: PersistedProgress;
   try {
     migrated = migrateProgress(clean, persistVersion, now);
   } catch {
-    return { ok: false, reason: "The backup data couldn't be upgraded." };
+    return { ok: false, reason: msg("backup.reason.upgradeFailed") };
   }
 
   // Learner half: the v2 section, plus anything the (older) blob still
   // carried inline — a v1 backup's cards/log, or a v2 state exported
   // before its bootstrap ran. Store data wins on a card key collision.
   const section = learnerSection(cleanLearner);
-  if (section === null) return { ok: false, reason: "The backup's review data is unreadable." };
+  if (section === null) return { ok: false, reason: msg("backup.reason.reviewDataUnreadable") };
   const { state, learner: inline } = splitLearnerData(migrated);
   const cards: LearnerData["cards"] = {};
   for (const [courseId, byKey] of Object.entries(inline.cards)) cards[courseId] = { ...byKey };
@@ -464,7 +465,7 @@ export function stageImport(raw: string, now: Date): StagedImport {
 
   const problems = runInvariants(state, now, learner);
   if (problems.length > 0) {
-    return { ok: false, reason: `The backup failed validation (${problems[0]}).` };
+    return { ok: false, reason: msg("backup.reason.validationFailed", { problem: problems[0] }) };
   }
 
   return { ok: true, state, learner };

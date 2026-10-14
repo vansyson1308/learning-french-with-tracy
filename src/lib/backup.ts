@@ -31,12 +31,15 @@ import {
   PERSIST_VERSION,
   type PersistedProgress,
 } from "./persistence/migrations";
+import { currentUiLanguage } from "./i18n";
+import { msg, type Message } from "./i18n/message";
+import { translate } from "./i18n/translate";
 import { PROGRESS_STORAGE_KEY, resetLearnerMemory, runLearnerBootstrap, useProgress } from "./store";
 
-export type BackupOutcome = { ok: true } | { ok: false; reason: string };
+export type BackupOutcome = { ok: true } | { ok: false; reason: Message };
 
-function errorMessage(e: unknown): string {
-  return e instanceof Error ? e.message : String(e);
+function errorMessage(e: unknown): Message {
+  return msg("backup.reason.failure", { detail: e instanceof Error ? e.message : String(e) });
 }
 
 /** The data half of the store (what zustand persists — no functions, no learner data). */
@@ -112,11 +115,11 @@ export async function exportProgress(now = new Date()): Promise<BackupOutcome> {
     const name = `lingo-progress-${now.toISOString().slice(0, 10)}.json`;
     const file = writeFile(Paths.cache, name, JSON.stringify(envelope));
     if (!(await Sharing.isAvailableAsync())) {
-      return { ok: false, reason: "Sharing isn't available on this device." };
+      return { ok: false, reason: msg("backup.reason.sharingUnavailable") };
     }
     await Sharing.shareAsync(file.uri, {
       mimeType: "application/json",
-      dialogTitle: "Export progress",
+      dialogTitle: translate(currentUiLanguage(), "backup.shareTitle"),
     });
     return { ok: true };
   } catch (e) {
@@ -126,7 +129,7 @@ export async function exportProgress(now = new Date()): Promise<BackupOutcome> {
 
 export type PickResult =
   | { kind: "canceled" }
-  | { kind: "error"; reason: string }
+  | { kind: "error"; reason: Message }
   | { kind: "ok"; raw: string };
 
 /** Open the system picker and read the chosen backup file. */
@@ -139,7 +142,7 @@ export async function pickBackupFile(): Promise<PickResult> {
     });
     if (picked.canceled) return { kind: "canceled" };
     const uri = picked.assets?.[0]?.uri;
-    if (!uri) return { kind: "error", reason: "No file was selected." };
+    if (!uri) return { kind: "error", reason: msg("backup.reason.noFile") };
     const raw = await new File(uri).text();
     return { kind: "ok", raw };
   } catch (e) {
@@ -224,7 +227,7 @@ export async function commitImport(
       await restore();
       return {
         ok: false,
-        reason: "Import verification failed — your previous progress was restored.",
+        reason: msg("backup.reason.verificationFailed"),
       };
     }
     try {

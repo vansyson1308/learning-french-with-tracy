@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
+import { courseProfile } from "@/lib/course-profile";
+import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
 import { speakTarget } from "@/lib/audio";
 import { useProgress } from "@/lib/store";
@@ -26,6 +28,8 @@ export function TypeAnswer({
   const colors = useThemeColors();
   const styles = useStyles();
   const scheme = useResolvedScheme();
+  const { t, languageName } = useT();
+  const nativeName = languageName(courseProfile(courseId).nativeCode, courseProfile(courseId).nativeLanguage);
   const isListen = exercise.mode === "listen";
   const isProduceTarget = exercise.mode === "produceTarget";
 
@@ -34,10 +38,10 @@ export function TypeAnswer({
   }, [courseId, exercise.id, isListen, exercise.audioTarget]);
 
   const title = isListen
-    ? `Type what you hear (${targetLanguage})`
+    ? t("ex.typeWhatYouHearIn", { language: targetLanguage })
     : isProduceTarget
-      ? `Write this in ${targetLanguage}`
-      : "Write this in English";
+      ? t("ex.writeThisIn", { language: targetLanguage })
+      : t("ex.writeThisIn", { language: nativeName });
 
   return (
     <View style={styles.container}>
@@ -52,7 +56,7 @@ export function TypeAnswer({
         value={answer}
         onChangeText={onAnswer}
         editable={status === "none"}
-        placeholder={isListen || isProduceTarget ? `Type in ${targetLanguage}` : "Type in English"}
+        placeholder={t("ex.typeIn", { language: isListen || isProduceTarget ? targetLanguage : nativeName })}
         placeholderTextColor={colors.neutral400}
         autoCapitalize="none"
         autoCorrect={false}

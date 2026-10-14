@@ -11,6 +11,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Animated, { FadeInUp, ZoomIn } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 import { XP_PERFECT_BONUS, XP_PER_LESSON } from "@/lib/store";
@@ -26,17 +27,6 @@ export type TodaySummaryStats = {
   remainingBacklog: number;
 };
 
-const TITLES: Record<SessionKind, string> = {
-  path: "Lesson complete!",
-  replay: "Lesson complete!",
-  review: "Review complete!",
-  mistakes: "Mistakes conquered!",
-  today: "That's today, done!",
-  // Scored assessments route to their own result screens; these fire only
-  // if the generic summary ever renders for them.
-  checkpoint: "Check complete!",
-  placement: "Check complete!",
-};
 
 export function SessionSummary({
   kind,
@@ -55,6 +45,7 @@ export function SessionSummary({
 }) {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t } = useT();
   const isLesson = kind === "path";
 
   return (
@@ -68,20 +59,21 @@ export function SessionSummary({
           />
         </Animated.View>
         <Animated.Text entering={FadeInUp.delay(150)} style={styles.finishTitle}>
-          {TITLES[kind]}
+          {/* Scored assessments route to their own result screens; their titles fire only if the generic summary ever renders for them. */}
+          {t(`summary.title.${kind}`)}
         </Animated.Text>
 
         {kind === "today" && todayStats ? (
           <Animated.View entering={FadeInUp.delay(300)} style={styles.todayStats}>
             <View style={styles.resultRow}>
               <ResultCard
-                label="Reviews"
+                label={t("summary.reviews")}
                 value={`${todayStats.reviewsCompleted}`}
                 icon={<MaterialCommunityIcons name="brain" size={20} color={colors.indigo} />}
                 color={colors.indigo}
               />
               <ResultCard
-                label="New words"
+                label={t("summary.newWords")}
                 value={`${todayStats.newWordsIntroduced}`}
                 icon={<Ionicons name="sparkles" size={20} color={colors.green} />}
                 color={colors.green}
@@ -89,13 +81,13 @@ export function SessionSummary({
             </View>
             <View style={styles.resultRow}>
               <ResultCard
-                label="XP"
+                label={t("summary.xp")}
                 value={`${todayStats.xpEarned}`}
                 icon={<Ionicons name="flash" size={20} color={colors.amber} />}
                 color={colors.amber}
               />
               <ResultCard
-                label="Streak"
+                label={t("summary.streak")}
                 value={`${streak}`}
                 icon={
                   <MaterialCommunityIcons name="fire" size={22} color={colors.orange} />
@@ -105,37 +97,32 @@ export function SessionSummary({
             </View>
             {todayStats.firstAttemptAccuracy !== null ? (
               <Text style={styles.accuracyNote}>
-                First-try accuracy:{" "}
-                {Math.round(todayStats.firstAttemptAccuracy * 100)}%
+                {t("summary.accuracy", { percent: Math.round(todayStats.firstAttemptAccuracy * 100) })}
               </Text>
             ) : null}
             {todayStats.remainingBacklog > 0 ? (
-              <Text style={styles.backlogNote}>
-                {todayStats.remainingBacklog} review
-                {todayStats.remainingBacklog === 1 ? "" : "s"} still waiting — start
-                another session any time.
-              </Text>
+              <Text style={styles.backlogNote}>{t("summary.backlog", { n: todayStats.remainingBacklog })}</Text>
             ) : null}
           </Animated.View>
         ) : (
           <Animated.View entering={FadeInUp.delay(300)} style={styles.resultRow}>
             {isLesson ? (
               <ResultCard
-                label="Total XP"
+                label={t("summary.totalXp")}
                 value={`${XP_PER_LESSON + (perfect ? XP_PERFECT_BONUS : 0)}`}
                 icon={<Ionicons name="flash" size={20} color={colors.amber} />}
                 color={colors.amber}
               />
             ) : (
               <ResultCard
-                label="Reviewed"
+                label={t("summary.reviewed")}
                 value={`${correctCount}`}
                 icon={<Ionicons name="checkmark-done" size={20} color={colors.green} />}
                 color={colors.green}
               />
             )}
             <ResultCard
-              label="Streak"
+              label={t("summary.streak")}
               value={`${streak}`}
               icon={
                 <MaterialCommunityIcons name="fire" size={22} color={colors.orange} />
@@ -147,11 +134,11 @@ export function SessionSummary({
 
         {perfect && isLesson ? (
           <Animated.Text entering={FadeInUp.delay(450)} style={styles.perfect}>
-            Perfect lesson! +{XP_PERFECT_BONUS} XP
+            {t("summary.perfect", { bonus: XP_PERFECT_BONUS })}
           </Animated.Text>
         ) : null}
         <Animated.View entering={FadeInUp.delay(450)} style={{ alignSelf: "stretch" }}>
-          <DuoButton label="Continue" onPress={onDone} />
+          <DuoButton label={t("common.continue")} onPress={onDone} />
         </Animated.View>
       </View>
     </SafeAreaView>

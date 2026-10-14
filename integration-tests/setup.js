@@ -28,6 +28,9 @@ jest.mock("expo-audio", () => ({
   setAudioModeAsync: async () => {},
 }));
 jest.mock("expo-speech", () => ({ speak: jest.fn(), stop: jest.fn() }));
+jest.mock("expo-localization", () => ({
+  getLocales: () => [{ languageTag: "en-US", languageCode: "en", regionCode: "US" }],
+}));
 // Speech recognition (P8): a controllable double of the provider module.
 // Default shape = a capable iOS device with permissions granted; tests
 // mutate `__speechState` and drive events through `__emitSpeechEvent`.

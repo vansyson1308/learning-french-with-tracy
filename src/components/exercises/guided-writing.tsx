@@ -14,6 +14,7 @@ import {
   type Answer,
   type Status,
 } from "@/lib/grading";
+import { useT } from "@/lib/i18n";
 import { makeThemedStyles, radius, useResolvedScheme, useThemeColors } from "@/lib/theme";
 import type { GuidedWritingExercise } from "@/lib/types";
 
@@ -37,6 +38,7 @@ export function GuidedWriting({
   const styles = useStyles();
   const colors = useThemeColors();
   const scheme = useResolvedScheme();
+  const { t, tm } = useT();
   const text = isWrittenAnswer(answer) && answer.kind === "text" ? answer.text : "";
   const answered = status !== "none";
   const evaluation = answered ? evaluateWrittenAnswer(exercise, answer, courseId) : null;
@@ -44,7 +46,7 @@ export function GuidedWriting({
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        {exercise.writingMode === "open" ? `Write freely in ${targetLanguage}` : `Write it in ${targetLanguage}`}
+        {exercise.writingMode === "open" ? t("ex.writeFreely", { language: targetLanguage }) : t("ex.writeItIn", { language: targetLanguage })}
       </Text>
       <Text style={styles.instruction}>{exercise.instruction}</Text>
 
@@ -70,13 +72,13 @@ export function GuidedWriting({
         keyboardAppearance={scheme}
         multiline
         style={[styles.input, answered && styles.inputDone]}
-        accessibilityLabel={`Your ${targetLanguage} answer`}
+        accessibilityLabel={t("ex.yourAnswerLabel", { language: targetLanguage })}
         testID="writing-input"
       />
 
       {answered && !scored && evaluation && evaluation.feedback.length > 0 ? (
         <View style={styles.feedbackBox} testID="writing-feedback">
-          {evaluation.feedback.map((line) => (
+          {evaluation.feedback.map(tm).map((line) => (
             <Text key={line} style={styles.feedbackText}>
               {line}
             </Text>
@@ -86,7 +88,7 @@ export function GuidedWriting({
 
       {answered && !scored ? (
         <View style={styles.modelBox} testID="writing-model">
-          <Text style={styles.modelLabel}>One way to say it:</Text>
+          <Text style={styles.modelLabel}>{t("ex.oneWayToSayIt")}</Text>
           <Text style={styles.modelText}>{exercise.modelAnswers[0]}</Text>
         </View>
       ) : null}

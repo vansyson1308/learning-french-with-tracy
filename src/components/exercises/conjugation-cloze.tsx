@@ -7,6 +7,7 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { makeThemedStyles, radius, useResolvedScheme, useThemeColors } from "@/lib/theme";
 import type { ConjugationClozeExercise } from "@/lib/types";
 
@@ -28,6 +29,7 @@ export function ConjugationCloze({
   const colors = useThemeColors();
   const styles = useStyles();
   const scheme = useResolvedScheme();
+  const { t } = useT();
   const filled =
     status === "none"
       ? exercise.sentence
@@ -35,13 +37,13 @@ export function ConjugationCloze({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Type the verb form</Text>
+      <Text style={styles.title}>{t("ex.typeVerbForm")}</Text>
       <Text style={styles.sentence}>{filled}</Text>
       <Text style={styles.translation}>{exercise.translation}</Text>
 
       <View style={styles.hintRow}>
         <View style={styles.hintChip}>
-          <Text style={styles.hintText}>verbe : {exercise.verb}</Text>
+          <Text style={styles.hintText}>{t("ex.verbChip", { verb: exercise.verb })}</Text>
         </View>
       </View>
 
@@ -49,7 +51,7 @@ export function ConjugationCloze({
         value={answer}
         onChangeText={onAnswer}
         editable={status === "none"}
-        placeholder={`Type in ${targetLanguage} — accents count`}
+        placeholder={t("ex.typeInAccents", { language: targetLanguage })}
         placeholderTextColor={colors.neutral400}
         autoCapitalize="none"
         autoCorrect={false}

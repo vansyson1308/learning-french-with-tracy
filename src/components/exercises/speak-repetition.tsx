@@ -7,6 +7,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { SpeakRecordControl } from "@/components/exercises/speak-record-control";
 import { ListeningPlayerView } from "@/components/session/listening-player-view";
 import { checkAnswer, isSpokenAnswer, type Answer, type SpokenAnswer } from "@/lib/grading";
@@ -41,6 +42,7 @@ export function SpeakRepetition({
   onAnswer: (value: SpokenAnswer) => void;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const ctx = { scored: speech.scored };
   const player = useListeningPlayer(clipAudioSource(courseId, exercise.modelClipId), {
     maxPlays: null,
@@ -51,13 +53,13 @@ export function SpeakRepetition({
   const hint =
     heard !== null && !answered
       ? checkAnswer(exercise, answer, courseId)
-        ? "That matched — check to continue!"
-        : "Not quite the same. Listen again and retry, or check anyway."
+        ? t("ex.thatMatched")
+        : t("ex.notSame")
       : null;
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.title}>Listen and repeat</Text>
+      <Text style={styles.title}>{t("ex.listenRepeat")}</Text>
       <Text style={styles.target} testID="repetition-target">
         {exercise.target}
       </Text>

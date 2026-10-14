@@ -9,6 +9,7 @@ import { router } from "expo-router";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { checkpointForSection } from "@/lib/assessment/content";
 import type { CheckpointAttempt } from "@/lib/assessment/types";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
@@ -26,6 +27,7 @@ export function CheckpointCard({
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t } = useT();
   const checkpoint = checkpointForSection(courseId, sectionId);
   if (!checkpoint) return null;
 
@@ -41,7 +43,7 @@ export function CheckpointCard({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${checkpoint.title}${locked ? ", locked" : ""}`}
+      accessibilityLabel={locked ? t("checkpointCard.lockedLabel", { title: checkpoint.title }) : checkpoint.title}
       disabled={locked}
       onPress={() => router.push(`/checkpoint/${checkpoint.id}`)}
       style={[styles.card, locked && styles.cardLocked]}
@@ -56,9 +58,9 @@ export function CheckpointCard({
         <Text style={[styles.title, locked && styles.titleLocked]}>{checkpoint.title}</Text>
         <Text style={styles.subtitle}>
           {locked
-            ? "Finish this section's lessons to unlock"
+            ? t("checkpointCard.locked")
             : latest
-              ? `Last check: ${demonstrated} of ${latest.objectiveResults.length} goals demonstrated — retake any time`
+              ? t("checkpointCard.last", { shown: demonstrated, total: latest.objectiveResults.length })
               : checkpoint.description}
         </Text>
       </View>
