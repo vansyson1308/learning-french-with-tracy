@@ -1,6 +1,7 @@
 /**
- * Exercise behavior registry (Phase 3). ONE place describes how each of the
- * five exercise types behaves — readiness, grading, correct-answer display,
+ * Exercise behavior registry (Phase 3). ONE place describes how every
+ * exercise type behaves (fifteen today — the keys of EXERCISE_REGISTRY are
+ * the inventory of record) — readiness, grading, correct-answer display,
  * evidence modality, advance style — replacing the per-type switch sites
  * that were spread across the lesson screen.
  *

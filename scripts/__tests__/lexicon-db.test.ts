@@ -7,7 +7,7 @@
  */
 import { describe, expect, test } from "bun:test";
 import { Database } from "bun:sqlite";
-import { mkdtempSync, rmSync } from "fs";
+import { mkdtempSync } from "fs";
 import os from "os";
 import path from "path";
 
@@ -20,7 +20,7 @@ import {
   logicalDump,
   verifySqliteDb,
 } from "../lib/lexicon-build";
-import { loadRegistry, safeResolve } from "../lib/pipeline";
+import { loadRegistry, removeTempDirSync, safeResolve } from "../lib/pipeline";
 
 const lexicon = loadRichLexicon();
 const manifest = loadSourceManifest();
@@ -160,7 +160,7 @@ describe("build determinism (logical-dump contract)", () => {
         expect(dumpA).toBe(logicalDump(b));
         expect(dumpA).toBe(logicalDump(committedPath));
       } finally {
-        rmSync(dir, { recursive: true, force: true });
+        removeTempDirSync(dir);
       }
     },
     // Two full builds (each VACUUMs) + three logical dumps: comfortably fast

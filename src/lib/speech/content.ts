@@ -2,9 +2,10 @@
  * Runtime access to the compiled Phase-8 speech items. Content only —
  * learner state lives in the store. Reserved (assessment) items are
  * excluded at COMPILE time, so nothing this module returns can ever leak a
- * checkpoint prompt into practice or review (§20). The artifact is empty
- * until the Section-4 curriculum authors items; every consumer handles
- * that as "no speaking content yet", never as an error.
+ * checkpoint prompt into practice or review (§20). The artifact is
+ * compiled from the authored French speech items (shipping since the
+ * Section-4 curriculum); every consumer still handles an empty artifact
+ * as "no speaking content yet", never as an error.
  */
 
 import speechArtifact from "../../content/speech/fr-speech-items.json";

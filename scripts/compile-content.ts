@@ -11,7 +11,7 @@
  * integrity_check and foreign_key_check must also pass on the committed
  * file, and no stale versioned .db may remain next to the current one.
  */
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "fs";
 import os from "os";
 import path from "path";
 
@@ -84,6 +84,7 @@ import {
   compileAll,
   loadRegistry,
   readJson,
+  removeTempDirSync,
   safeResolve,
   validateContent,
 } from "./lib/pipeline";
@@ -403,7 +404,7 @@ try {
     }
   }
 } finally {
-  rmSync(tempDir, { recursive: true, force: true });
+  removeTempDirSync(tempDir);
 }
 
 for (const [courseId, row] of Object.entries(coverage)) {

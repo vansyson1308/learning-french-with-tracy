@@ -16,7 +16,7 @@ export default function OnboardingScreen() {
   const [courseId, setCourseId] = useState(
     catalog.courses.some((c) => c.id === DEFAULT_COURSE)
       ? DEFAULT_COURSE
-      : (orderedCourses[0]?.id ?? "es-en")
+      : (orderedCourses[0]?.id ?? DEFAULT_COURSE)
   );
   const [goal, setGoal] = useState<number>(20);
 

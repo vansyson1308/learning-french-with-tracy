@@ -23,7 +23,7 @@
  * determinism is verified over schema + ordered logical dumps instead.
  */
 
-import { Database } from "bun:sqlite";
+import { Database, type Statement } from "bun:sqlite";
 import { createHash } from "crypto";
 
 import { existsSync } from "fs";
@@ -243,13 +243,22 @@ export function buildSqliteDb(
   contentHash: string
 ): void {
   const db = new Database(dbPath, { create: true });
+  // Every prepared statement is finalized before close(): an unfinalized
+  // statement turns sqlite3_close into a zombie connection that only goes
+  // away at GC, which keeps the file locked on Windows (EBUSY on rm).
+  const statements: Statement[] = [];
+  const prepare = (sql: string): Statement => {
+    const stmt = db.prepare(sql);
+    statements.push(stmt);
+    return stmt;
+  };
   try {
     db.exec("PRAGMA journal_mode = DELETE;");
     db.exec(`PRAGMA user_version = ${DB_SCHEMA_VERSION};`);
     db.exec("PRAGMA foreign_keys = ON;");
     db.exec(DDL);
 
-    const meta = db.prepare("INSERT INTO metadata (key, value) VALUES (?, ?)");
+    const meta = prepare("INSERT INTO metadata (key, value) VALUES (?, ?)");
     const metadata: Record<string, string> = {
       schemaVersion: String(DB_SCHEMA_VERSION),
       contentVersion: String(lexicon.version),
@@ -260,28 +269,28 @@ export function buildSqliteDb(
     };
     for (const key of Object.keys(metadata).sort()) meta.run(key, metadata[key]);
 
-    const insSource = db.prepare(
+    const insSource = prepare(
       "INSERT INTO sources (id, name, license, url, attribution) VALUES (?, ?, ?, ?, ?)"
     );
     for (const s of referencedSources(lexicon, registry)) {
       insSource.run(s.id, s.name, s.license, s.url, s.attribution);
     }
 
-    const insLex = db.prepare(
+    const insLex = prepare(
       `INSERT INTO lexemes (id, ord, surface, lookup_form, sort_key, lemma, pos, gender, gloss, topic,
         ipa, ipa_notation, freq_band, freq_rank, freq_per_million)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     );
-    const insExample = db.prepare(
+    const insExample = prepare(
       "INSERT INTO examples (lexeme_id, ordinal, fr, en, source_id) VALUES (?, ?, ?, ?, ?)"
     );
-    const insRelation = db.prepare(
+    const insRelation = prepare(
       "INSERT INTO relations (lexeme_id, rel_type, target_id) VALUES (?, 'confusable', ?)"
     );
-    const insLexSource = db.prepare(
+    const insLexSource = prepare(
       "INSERT INTO lexeme_sources (lexeme_id, source_id, match_key, ord) VALUES (?, ?, ?, ?)"
     );
-    const insFts = db.prepare("INSERT INTO lexeme_fts (id, surface, lemma, gloss) VALUES (?, ?, ?, ?)");
+    const insFts = prepare("INSERT INTO lexeme_fts (id, surface, lemma, gloss) VALUES (?, ?, ?, ?)");
 
     // Two passes: all lexeme rows first, then the tables referencing them
     // (relations may point at lexemes that come later in authored order).
@@ -313,16 +322,17 @@ export function buildSqliteDb(
       lex.sourceRefs.forEach((ref, refIdx) => insLexSource.run(lex.id, ref.source, ref.key ?? null, refIdx));
     }
 
-    const integrity = db.query<{ integrity_check: string }, []>("PRAGMA integrity_check").get();
+    const integrity = prepare("PRAGMA integrity_check").get() as { integrity_check: string } | null;
     if (integrity?.integrity_check !== "ok") {
       throw new Error(`lexicon db failed integrity_check: ${integrity?.integrity_check}`);
     }
-    const fkViolations = db.query("PRAGMA foreign_key_check").all();
+    const fkViolations = prepare("PRAGMA foreign_key_check").all();
     if (fkViolations.length > 0) {
       throw new Error(`lexicon db failed foreign_key_check: ${JSON.stringify(fkViolations)}`);
     }
     db.exec("VACUUM;");
   } finally {
+    for (const stmt of statements) stmt.finalize();
     db.close();
   }
 }
@@ -333,13 +343,17 @@ export function buildSqliteDb(
  */
 export function logicalDump(dbPath: string): string {
   const db = new Database(dbPath, { readonly: true });
+  const statements: Statement[] = [];
+  const prepare = (sql: string): Statement => {
+    const stmt = db.prepare(sql);
+    statements.push(stmt);
+    return stmt;
+  };
   try {
-    const schema = db
-      .query<{ type: string; name: string; sql: string | null }, []>(
-        "SELECT type, name, sql FROM sqlite_master WHERE name NOT LIKE 'lexeme_fts_%' ORDER BY type, name"
-      )
-      .all();
-    const userVersion = db.query<{ user_version: number }, []>("PRAGMA user_version").get();
+    const schema = prepare(
+      "SELECT type, name, sql FROM sqlite_master WHERE name NOT LIKE 'lexeme_fts_%' ORDER BY type, name"
+    ).all() as { type: string; name: string; sql: string | null }[];
+    const userVersion = prepare("PRAGMA user_version").get() as { user_version: number } | null;
     const dump: Record<string, unknown> = { userVersion: userVersion?.user_version, schema };
     const tables: Array<{ name: string; order: string }> = [
       { name: "metadata", order: "key" },
@@ -351,10 +365,11 @@ export function logicalDump(dbPath: string): string {
       { name: "lexeme_fts", order: "id" },
     ];
     for (const t of tables) {
-      dump[t.name] = db.query(`SELECT * FROM ${t.name} ORDER BY ${t.order}`).all();
+      dump[t.name] = prepare(`SELECT * FROM ${t.name} ORDER BY ${t.order}`).all();
     }
     return canonicalJson(dump);
   } finally {
+    for (const stmt of statements) stmt.finalize();
     db.close();
   }
 }
@@ -363,16 +378,22 @@ export function logicalDump(dbPath: string): string {
 export function verifySqliteDb(dbPath: string): string[] {
   const errors: string[] = [];
   const db = new Database(dbPath, { readonly: true });
+  const statements: Statement[] = [];
   try {
-    const integrity = db.query<{ integrity_check: string }, []>("PRAGMA integrity_check").get();
+    const integrityStmt = db.prepare("PRAGMA integrity_check");
+    statements.push(integrityStmt);
+    const integrity = integrityStmt.get() as { integrity_check: string } | null;
     if (integrity?.integrity_check !== "ok") {
       errors.push(`integrity_check: ${integrity?.integrity_check ?? "no result"}`);
     }
-    const fk = db.query("PRAGMA foreign_key_check").all();
+    const fkStmt = db.prepare("PRAGMA foreign_key_check");
+    statements.push(fkStmt);
+    const fk = fkStmt.all();
     if (fk.length > 0) errors.push(`foreign_key_check: ${JSON.stringify(fk)}`);
   } catch (e) {
     errors.push(`cannot verify database: ${(e as Error).message}`);
   } finally {
+    for (const stmt of statements) stmt.finalize();
     db.close();
   }
   return errors;

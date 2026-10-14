@@ -6,7 +6,7 @@
  * Learning memory is mutated by NOTHING here (§78); accepting a result
  * stores it in assessment state only (§81-83).
  */
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 
 import { PlacementResults } from "@/components/assessment/placement-results";
@@ -24,6 +24,7 @@ import type { SessionController } from "@/lib/session/controller";
 import type { SessionMachineState } from "@/lib/session/reducer";
 import { buildPlacementStageSessionDefinition } from "@/lib/session/sources";
 import { probeSpeechCapabilityOnce } from "@/lib/speech/use-speech-session";
+import { courseCapabilities } from "@/lib/capabilities";
 import { useProgress } from "@/lib/store";
 
 /**
@@ -84,7 +85,18 @@ function StageBridge({
   return null;
 }
 
+/**
+ * Course guard (P0): this surface exists only for courses that have the
+ * capability; a deep link while another course is active goes home instead
+ * of routing evidence to a course the content does not describe.
+ */
 export default function PlacementRunScreen() {
+  const activeCourseId = useProgress((s) => s.activeCourseId);
+  if (!courseCapabilities(activeCourseId).placement) return <Redirect href="/" />;
+  return <PlacementRunScreenBody />;
+}
+
+function PlacementRunScreenBody() {
   const plan = placementContent();
   const enginePlan = useMemo(() => placementEnginePlan(), []);
   const { getLesson } = useCourseContent("fr-en");

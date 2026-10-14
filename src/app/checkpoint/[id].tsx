@@ -5,7 +5,7 @@
  * attempt plus a results screen with can-do wording.
  */
 
-import { router, useLocalSearchParams } from "expo-router";
+import { Redirect, router, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
 import { Linking, Platform, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -25,10 +25,22 @@ import {
   probeSpeechCapabilityOnce,
   requestSpeechPermissionOnce,
 } from "@/lib/speech/use-speech-session";
+import { courseCapabilities } from "@/lib/capabilities";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles } from "@/lib/theme";
 
+/**
+ * Course guard (P0): this surface exists only for courses that have the
+ * capability; a deep link while another course is active goes home instead
+ * of routing evidence to a course the content does not describe.
+ */
 export default function CheckpointScreen() {
+  const activeCourseId = useProgress((s) => s.activeCourseId);
+  if (!courseCapabilities(activeCourseId).checkpoints) return <Redirect href="/" />;
+  return <CheckpointScreenBody />;
+}
+
+function CheckpointScreenBody() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const checkpoint = checkpointFor(id ?? "");
 

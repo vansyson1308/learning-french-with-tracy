@@ -12,7 +12,7 @@
  *   containment-checked against the repo root (no traversal, no eval).
  */
 
-import { readdirSync, readFileSync } from "fs";
+import { readdirSync, readFileSync, rmSync } from "fs";
 import path from "path";
 
 import {
@@ -33,6 +33,16 @@ import { FR_COURSE_ID, FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
 
 /** Resolves inside the repo or throws — the anti-traversal gate for IO. */
+/**
+ * Remove a temp directory that briefly held a SQLite file. On Windows the
+ * handle can outlive `db.close()` (or an on-access scanner holds it) for a
+ * few hundred ms, which makes a plain rmSync throw EBUSY; retrying is the
+ * documented Node remedy.
+ */
+export function removeTempDirSync(dir: string): void {
+  rmSync(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
+}
+
 export function safeResolve(...segments: string[]): string {
   const resolved = path.resolve(REPO_ROOT, ...segments);
   if (resolved !== REPO_ROOT && !resolved.startsWith(REPO_ROOT + path.sep)) {

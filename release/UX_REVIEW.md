@@ -76,6 +76,13 @@ not" expands to the four honesty bullets; the wording is always
 
 ## Brand / metadata consistency (§63) — findings only, no renames
 
+> **Historical (Phase 10).** These findings predate the identity migration
+> of 2026-09-08 (`release/ANDROID_RC2.md` §1, `release/identity.json`):
+> the app is now named *Learning French with Tracy*, slug
+> `learning-french-with-tracy`, package `com.vansyson1308.learningfrenchwithtracy`,
+> and the store-metadata drafts were rewritten to the v1 listing. The
+> bullets below are kept as the record of what the review saw.
+
 - `app.json` name "Lingo Lessons", slug `lingo`; README titled "(Open
   Source) Lingo Lessons" and linking the upstream App Store id; icon/splash
   are upstream's; the repository is named "learning-french-with-tracy".

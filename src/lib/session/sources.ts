@@ -60,17 +60,46 @@ export function lessonSteps(lesson: LessonPack): SessionStep[] {
   });
 }
 
+/**
+ * Lesson MCQ option order (P0): authored lessons carry the correct answer
+ * at a fixed position far more often than chance, so each sitting renders
+ * select / fillBlank / listeningComprehension / readingComprehension
+ * options in a seeded order (seed = lesson, exercise, attempt) with
+ * `correct` remapped — the same seeded shuffle the scored builders use,
+ * so a re-render never reshuffles under the learner. Step ids and order
+ * are untouched; the authored content is never modified.
+ */
+export function shuffleLessonOptions(
+  steps: SessionStep[],
+  lessonId: string,
+  attempt: string | number
+): SessionStep[] {
+  return steps.map((step) =>
+    step.type === "exercise"
+      ? {
+          ...step,
+          exercise: shuffleScoredOptions(
+            step.exercise,
+            administrationSeed(["lesson", lessonId, step.exercise.id, `attempt${attempt}`])
+          ),
+        }
+      : step
+  );
+}
+
 export function buildPathSessionDefinition(args: {
   courseId: string;
   lesson: LessonPack;
   alreadyCompleted: boolean;
+  /** Administration key for option order (first sitting vs replays). */
+  attempt?: string | number;
 }): SessionDefinition {
   const replay = args.alreadyCompleted;
   return {
     kind: replay ? "replay" : "path",
     courseId: args.courseId,
     lessonId: args.lesson.id,
-    steps: lessonSteps(args.lesson),
+    steps: shuffleLessonOptions(lessonSteps(args.lesson), args.lesson.id, args.attempt ?? 0),
     completion: replay ? "practice" : "lesson",
     evidenceSource: "lesson",
     trackMistakes: true,
