@@ -54,7 +54,7 @@
       "reason": "current A = the V1 selection (davefx, CC0); the pack text is Latin-American, so es_MX-claude-high (Apache-2.0) is expected to win the v2 canary — the audit decides"
     },
     "de": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "de_DE-thorsten-high",
@@ -74,10 +74,39 @@
         }
       ],
       "cast": {
-        "A": "de_DE-thorsten-medium",
-        "B": null
+        "A": "de_DE-thorsten-high",
+        "B": "de_DE-thorsten-medium"
       },
-      "canary": null
+      "canary": {
+        "reportedAt": "2026-10-14",
+        "report": "content/reports/de/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "de_DE-thorsten-high",
+            "clips": 24,
+            "meanWer": 0.2298,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "de_DE-thorsten-medium",
+            "clips": 24,
+            "meanWer": 0.2544,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "de_DE-kerstin-low",
+            "clips": 24,
+            "meanWer": 0.4905,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "de_DE-mls-medium",
+            "clips": 24,
+            "meanWer": 1.1964,
+            "technicalFailures": 6
+          }
+        ]
+      }
     },
     "it": {
       "status": "pending-canary",
