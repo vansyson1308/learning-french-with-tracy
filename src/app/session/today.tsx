@@ -23,7 +23,7 @@ import {
 } from "@/lib/learning/today";
 import { firstAttemptAccuracy } from "@/lib/session/reducer";
 import type { SessionDefinition } from "@/lib/session/types";
-import { useProgress, XP_PER_LESSON } from "@/lib/store";
+import { assessmentFor, useProgress, XP_PER_LESSON } from "@/lib/store";
 
 function isPreset(value: unknown): value is TodayPreset {
   return typeof value === "string" && value in TODAY_PRESETS;
@@ -53,7 +53,7 @@ export default function TodaySessionRoute() {
       completedLessons: course?.completedLessons ?? {},
       cards: course?.cards,
       preset,
-      placementFloor: state.assessment.placementFloor,
+      placementFloor: assessmentFor(state, state.activeCourseId).placementFloor,
       listenClips: listenWordClipIndex(state.activeCourseId),
       // "Can't speak now" (P8 §17): speak=0 composes a fully silent session;
       // the due speak cards stay honestly in the backlog.

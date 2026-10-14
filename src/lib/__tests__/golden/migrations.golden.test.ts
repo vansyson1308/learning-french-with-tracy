@@ -8,6 +8,7 @@
 import { describe, test } from "bun:test";
 
 import { createEnvelope, runInvariants, stageImport } from "../../persistence/backup-core";
+import { learnerDataFromBlob } from "../../persistence/learner";
 import { PERSIST_VERSION, migrateProgress } from "../../persistence/migrations";
 import { NOW, PERSONA_NAMES, expectGolden, fixtureFor } from "./helpers";
 
@@ -18,7 +19,7 @@ describe("migration + backup goldens", () => {
     test(`${name}: migrate from v${fixtureFor(name).version} → v${PERSIST_VERSION}, export, re-import`, () => {
       const fixture = fixtureFor(name);
       const migrated = migrateProgress(fixture.state, fixture.version, NOW);
-      const envelope = createEnvelope(migrated, PERSIST_VERSION, NOW);
+      const envelope = createEnvelope(migrated, learnerDataFromBlob(migrated), PERSIST_VERSION, NOW);
       const staged = stageImport(JSON.stringify(envelope), NOW);
       expectGolden(`migrations/${name}`, {
         fromVersion: fixture.version,
@@ -31,11 +32,11 @@ describe("migration + backup goldens", () => {
     });
   }
 
-  test("every intermediate version of v0-rich (v1, v2, v3)", () => {
+  test("every intermediate version of v0-rich (v1, v2, v3, v4)", () => {
     const fixture = fixtureFor("v0-rich");
     expectGolden(
       "migrations/v0-rich.steps",
-      [1, 2, 3].map((to) => ({ to, state: migrateProgress(fixtureFor("v0-rich").state, fixture.version, NOW, to) }))
+      [1, 2, 3, 4].map((to) => ({ to, state: migrateProgress(fixtureFor("v0-rich").state, fixture.version, NOW, to) }))
     );
   });
 });

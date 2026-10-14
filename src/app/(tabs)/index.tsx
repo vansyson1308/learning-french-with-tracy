@@ -16,6 +16,7 @@ import { useCourseContent } from "@/lib/content";
 import { hasCapability } from "@/lib/course-profile";
 import {
   activeToday,
+  assessmentFor,
   currentLessonIndex,
   currentStreak,
   dailyXpToday,
@@ -46,8 +47,9 @@ export default function LearnScreen() {
   const lessonIds = allLessons.map((l) => l.lesson.id);
   // The placement floor belongs to courses with a placement diagnostic
   // (§81-89); other courses always see floor 0 — their behavior is untouched.
+  const assessment = assessmentFor(progress, activeCourseId);
   const placementFloor = hasCapability(activeCourseId, "placement")
-    ? progress.assessment.placementFloor
+    ? assessment.placementFloor
     : 0;
   const currentIndex = currentLessonIndex(
     courseProgress.completedLessons,
@@ -60,7 +62,7 @@ export default function LearnScreen() {
   // placement diagnostic (§69-70): no placement yet, nothing completed yet.
   const showPlacementEntry =
     hasCapability(activeCourseId, "placement") &&
-    !progress.assessment.placement &&
+    !assessment.placement &&
     Object.keys(courseProgress.completedLessons).length === 0;
 
   // Units cycle through the palette across the whole course.
@@ -193,7 +195,7 @@ export default function LearnScreen() {
                 sectionComplete={section.units
                   .flatMap((u) => u.lessons)
                   .every((l) => !!courseProgress.completedLessons[l.id])}
-                attempts={progress.assessment.checkpointAttempts}
+                attempts={assessment.checkpointAttempts}
               />
             ) : null}
           </View>

@@ -26,7 +26,7 @@ import {
   requestSpeechPermissionOnce,
 } from "@/lib/speech/use-speech-session";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
-import { useProgress } from "@/lib/store";
+import { assessmentFor, useProgress } from "@/lib/store";
 import { makeThemedStyles } from "@/lib/theme";
 
 /**
@@ -51,9 +51,8 @@ function CheckpointScreenBody({ courseId }: { courseId: string }) {
   // at completion must never rebuild the definition mid-screen.
   const [priorAttemptCount] = useState(
     () =>
-      useProgress
-        .getState()
-        .assessment.checkpointAttempts.filter((a) => a.checkpointId === (id ?? ""))
+      assessmentFor(useProgress.getState(), useProgress.getState().activeCourseId)
+        .checkpointAttempts.filter((a) => a.checkpointId === (id ?? ""))
         .length
   );
   const definition = useMemo<SessionDefinition | null>(

@@ -14,10 +14,18 @@ import { useResolvedScheme, useThemeColors } from "@/lib/theme";
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 function subscribeToHydration(callback: () => void) {
-  return useProgress.persist.onFinishHydration(callback);
+  const unsubscribeHydration = useProgress.persist.onFinishHydration(callback);
+  const unsubscribeStore = useProgress.subscribe(callback);
+  return () => {
+    unsubscribeHydration();
+    unsubscribeStore();
+  };
 }
+// Hydrated = the blob is back AND the learner store (cards, review log)
+// has loaded the active course — the first frames never show an empty
+// review queue to a returning learner (P1d).
 function getHydrated() {
-  return useProgress.persist.hasHydrated();
+  return useProgress.persist.hasHydrated() && useProgress.getState().learnerReady;
 }
 function getServerHydrated() {
   return false;

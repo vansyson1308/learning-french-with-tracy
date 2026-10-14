@@ -11,14 +11,25 @@ import {
 } from "./assessment/types";
 import { defaultCourseId } from "./course-profile";
 import { addDays, dayString, localWeek } from "./dates";
+import { serializeCardKey } from "./learning/card-key";
 import { applyEvidence } from "./learning/engine";
 import type { ReviewEvidence } from "./learning/evidence";
 import { fsrsScheduler } from "./learning/fsrs-adapter";
 import { lastMutationIndex, type ReviewLogEntry } from "./learning/review-log";
 import type { FsrsCardState } from "./learning/scheduler";
 import {
+  bootstrapLearner,
+  flushLearnerWrites,
+  loadCourseLearnerSlice,
+  mergeCourseSlice,
+  recordLearnerDelta,
+  writeLearnerSafetyCopy,
+} from "./persistence/learner";
+import { logRefOf } from "./persistence/learner-types";
+import {
   migrateProgress,
   PERSIST_VERSION,
+  type UiLanguagePreference,
 } from "./persistence/migrations";
 import { isDue, reviewWord, type SrsEntry } from "./srs";
 
@@ -56,7 +67,12 @@ export type CourseProgress = {
   wordStats: Record<string, WordStat>;
   /** Legacy scheduler state — courses without the fsrs capability (from v2). */
   srs?: Record<string, SrsEntry>;
-  /** FSRS cards keyed by serialized CardKey — fsrs courses (from v2). */
+  /**
+   * FSRS cards keyed by serialized CardKey — fsrs courses (from v2). In
+   * MEMORY only since v4: persisted by the learner store (SQLite/JSON),
+   * loaded per course on hydration / course switch, never serialised into
+   * the AsyncStorage blob.
+   */
   cards?: Record<string, FsrsCardState>;
   /** One-release rollback copy of the pre-v2 fr srs map. */
   srsLegacy?: Record<string, SrsEntry>;
@@ -82,13 +98,19 @@ type ProgressState = {
   onboardingDone: boolean;
   /** "system" follows the device's light/dark setting. */
   themePreference: ThemePreference;
+  /** UI language (v4; P2a renders it): "system" follows the device locale. */
+  uiLanguage: UiLanguagePreference;
   courses: Record<string, CourseProgress>;
   /** Per-day activity across courses, for the streak calendar and quests. */
   activeDays: Record<string, DayActivity>;
-  /** Append-only evidence log (v2), ring-capped at REVIEW_LOG_CAP. */
+  /**
+   * Append-only evidence log (v2) — in MEMORY only since v4 (the learner
+   * store keeps the full history; memory holds each loaded course's recent
+   * window plus this session's entries), ring-capped at REVIEW_LOG_CAP.
+   */
   reviewLog: ReviewLogEntry[];
-  /** Phase 6 learner assessment state (checkpoints + placement, v3). */
-  assessment: PersistedAssessmentState;
+  /** Per-course learner assessment state (checkpoints + placement, v4). */
+  assessmentByCourse: Record<string, PersistedAssessmentState>;
   /**
    * When the learner acknowledged the network-backed speech recognition
    * disclosure (P9 §7); null/absent = not yet shown-and-acknowledged.
@@ -96,24 +118,26 @@ type ProgressState = {
    * through, and older states hydrate without it.
    */
   speechNoticeAckAt?: number | null;
+  /** True once the learner store has loaded the active course (never persisted). */
+  learnerReady: boolean;
 
   /** Acknowledge the §7 network-recognition disclosure (once, persisted). */
   acknowledgeSpeechNotice: () => void;
   /**
-   * Records a completed checkpoint attempt (§60). Assessment record ONLY:
-   * no XP, no streak, no lesson completion, no FSRS/wordStats writes (§59).
-   * Retention: most recent attempts per checkpoint, capped; the latest is
-   * never dropped (§164).
+   * Records a completed checkpoint attempt (§60) for the active course.
+   * Assessment record ONLY: no XP, no streak, no lesson completion, no
+   * FSRS/wordStats writes (§59). Retention: most recent attempts per
+   * checkpoint, capped; the latest is never dropped (§164).
    */
   recordCheckpointAttempt: (attempt: CheckpointAttempt) => void;
   /**
-   * Store a completed placement diagnostic (§78-83): the result plus the
-   * floor the learner ACCEPTED (their recommendation, or 0 for "start from
-   * the beginning"). Mutates assessment state only — no completedLessons,
-   * no XP, no streak, no learning memory of any kind.
+   * Store a completed placement diagnostic (§78-83) for the active course:
+   * the result plus the floor the learner ACCEPTED (their recommendation,
+   * or 0 for "start from the beginning"). Mutates assessment state only —
+   * no completedLessons, no XP, no streak, no learning memory of any kind.
    */
   setPlacementResult: (result: PlacementResult, acceptedFloorIndex: number) => void;
-  /** Clear the placement floor (§86). The result record is kept as history. */
+  /** Clear the active course's placement floor (§86). The result record is kept as history. */
   resetPlacement: () => void;
 
   course: () => CourseProgress;
@@ -143,8 +167,37 @@ type ProgressState = {
   undoLastReview: (courseId: string) => boolean;
   setActiveCourse: (courseId: string) => void;
   setThemePreference: (preference: ThemePreference) => void;
+  setUiLanguage: (language: UiLanguagePreference) => void;
   finishOnboarding: (courseId: string, goal: number) => void;
+  /** Commit the pending learner-store buffer (one transaction); safe when empty. */
+  flushLearner: () => Promise<void>;
+  /** Bring a course's cards + recent log into memory (hydration, course switch). */
+  loadLearnerCourse: (courseId: string) => Promise<void>;
 };
+
+/**
+ * The assessment state of a course (empty for a course that never assessed
+ * anything). A malformed container — corrupt storage that a migration
+ * moved rather than repaired — reads as empty: the UI never dereferences
+ * it, and a backup of it still fails the import invariants.
+ */
+export function assessmentFor(
+  state: Pick<ProgressState, "assessmentByCourse">,
+  courseId: string
+): PersistedAssessmentState {
+  const a = state.assessmentByCourse?.[courseId];
+  if (
+    !a ||
+    typeof a !== "object" ||
+    !Array.isArray(a.checkpointAttempts) ||
+    typeof a.placementFloor !== "number" ||
+    !Number.isFinite(a.placementFloor) ||
+    a.placementFloor < 0
+  ) {
+    return emptyAssessmentState();
+  }
+  return a;
+}
 
 function bumpDailyXp(state: ProgressState, amount: number, today: string) {
   const dailyXp = state.dailyXpDay === today ? state.dailyXp + amount : amount;
@@ -180,6 +233,40 @@ function updateCourse(
   return { courses: { ...state.courses, [courseId]: fn(prev) } };
 }
 
+function updateAssessment(
+  state: ProgressState,
+  courseId: string,
+  fn: (a: PersistedAssessmentState) => PersistedAssessmentState
+): Partial<ProgressState> {
+  return {
+    assessmentByCourse: {
+      ...state.assessmentByCourse,
+      [courseId]: fn(assessmentFor(state, courseId)),
+    },
+  };
+}
+
+/**
+ * The blob: everything except what the learner store owns (cards, review
+ * log) and the runtime-only readiness flag. Unknown forward-compatible
+ * fields a newer build may have written survive (they are plain data);
+ * functions are dropped by JSON serialisation as before.
+ */
+function partializeForPersist(state: ProgressState) {
+  const { reviewLog: _log, learnerReady: _ready, courses, ...rest } = state;
+  return { ...rest, courses: withoutLearnerData(courses) };
+}
+
+/** Strip the learner-owned fields from memory once the store holds them. */
+function withoutLearnerData(courses: Record<string, CourseProgress>): Record<string, CourseProgress> {
+  const out: Record<string, CourseProgress> = {};
+  for (const [courseId, course] of Object.entries(courses)) {
+    const { cards: _cards, ...rest } = course;
+    out[courseId] = rest;
+  }
+  return out;
+}
+
 export const useProgress = create<ProgressState>()(
   persist(
     (set, get) => ({
@@ -191,11 +278,13 @@ export const useProgress = create<ProgressState>()(
       dailyXpDay: null,
       onboardingDone: false,
       themePreference: "system",
+      uiLanguage: "system",
       courses: {},
       activeDays: {},
       reviewLog: [],
-      assessment: emptyAssessmentState(),
+      assessmentByCourse: {},
       speechNoticeAckAt: null,
+      learnerReady: false,
 
       acknowledgeSpeechNotice: () => set({ speechNoticeAckAt: Date.now() }),
 
@@ -243,30 +332,27 @@ export const useProgress = create<ProgressState>()(
         }),
 
       recordCheckpointAttempt: (attempt) =>
-        set((state) => ({
-          assessment: {
-            ...state.assessment,
-            checkpointAttempts: capCheckpointAttempts([
-              ...state.assessment.checkpointAttempts,
-              attempt,
-            ]),
-          },
-        })),
+        set((state) =>
+          updateAssessment(state, state.activeCourseId, (a) => ({
+            ...a,
+            checkpointAttempts: capCheckpointAttempts([...a.checkpointAttempts, attempt]),
+          }))
+        ),
       setPlacementResult: (result, acceptedFloorIndex) =>
-        set((state) => ({
-          assessment: {
-            ...state.assessment,
+        set((state) =>
+          updateAssessment(state, state.activeCourseId, (a) => ({
+            ...a,
             placement: result,
             placementFloor:
               Number.isFinite(acceptedFloorIndex) && acceptedFloorIndex > 0
                 ? Math.floor(acceptedFloorIndex)
                 : 0,
-          },
-        })),
+          }))
+        ),
       resetPlacement: () =>
-        set((state) => ({
-          assessment: { ...state.assessment, placementFloor: 0 },
-        })),
+        set((state) =>
+          updateAssessment(state, state.activeCourseId, (a) => ({ ...a, placementFloor: 0 }))
+        ),
       recordPracticeSession: () =>
         set((state) => {
           const { today, streak } = activityBase(state, new Date());
@@ -372,6 +458,16 @@ export const useProgress = create<ProgressState>()(
             now: Date.now(),
           });
           mutated = out.mutated;
+          // The delta the learner store must eventually commit: the log entry
+          // this evidence produced and, when the scheduler moved, the card.
+          const entry = out.reviewLog[out.reviewLog.length - 1];
+          const cardKey = serializeCardKey(ev.cardKey);
+          const card = out.mutated ? out.course.cards?.[cardKey] : undefined;
+          recordLearnerDelta({
+            cardUpserts: card ? [{ courseId, cardKey, card }] : [],
+            logAppends: entry ? [entry] : [],
+            logRemovals: [],
+          });
           return {
             courses: { ...state.courses, [courseId]: out.course },
             reviewLog: out.reviewLog,
@@ -414,25 +510,132 @@ export const useProgress = create<ProgressState>()(
             ...state.reviewLog.slice(idx + 1),
           ],
         });
+        recordLearnerDelta({
+          cardUpserts: [{ courseId, cardKey: entry.cardKey, card: restored }],
+          logAppends: [],
+          logRemovals: [logRefOf(entry)],
+        });
         return true;
       },
 
-      setActiveCourse: (courseId) => set({ activeCourseId: courseId }),
+      setActiveCourse: (courseId) => {
+        set({ activeCourseId: courseId });
+        void get().loadLearnerCourse(courseId);
+      },
 
       setThemePreference: (preference) => set({ themePreference: preference }),
 
-      finishOnboarding: (courseId, goal) =>
-        set({ activeCourseId: courseId, dailyGoal: goal, onboardingDone: true }),
+      setUiLanguage: (language) => set({ uiLanguage: language }),
+
+      finishOnboarding: (courseId, goal) => {
+        set({ activeCourseId: courseId, dailyGoal: goal, onboardingDone: true });
+        void get().loadLearnerCourse(courseId);
+      },
+
+      flushLearner: () => flushLearnerWrites(),
+
+      loadLearnerCourse: async (courseId) => {
+        try {
+          // Flushes the pending buffer first, so the store is the truth and
+          // memory may drop every other course's learner data (it only ever
+          // holds the active course's window — same as after the bootstrap).
+          const slice = await loadCourseLearnerSlice(courseId);
+          set((state) => {
+            const isActive = state.activeCourseId === courseId;
+            const memoryLog = isActive ? state.reviewLog.filter((e) => e.courseId === courseId) : state.reviewLog;
+            const merged = mergeCourseSlice(state.courses[courseId]?.cards, memoryLog, courseId, slice);
+            const courses = isActive ? withoutLearnerData(state.courses) : state.courses;
+            return {
+              courses: {
+                ...courses,
+                [courseId]: { ...(state.courses[courseId] ?? emptyCourseProgress()), cards: merged.cards },
+              },
+              reviewLog: merged.reviewLog,
+            };
+          });
+        } catch (error) {
+          console.warn(`learner store: could not load ${courseId}`, error);
+        }
+      },
     }),
     {
       name: PROGRESS_STORAGE_KEY,
       storage: createJSONStorage(() => AsyncStorage),
       version: PERSIST_VERSION,
+      partialize: (state) => partializeForPersist(state) as unknown as ProgressState,
       migrate: (persisted, version) =>
         migrateProgress(persisted, version, new Date()) as unknown as ProgressState,
+      onRehydrateStorage: () => (_state, error) => {
+        // No readable storage (the static-export render pass in Node, a
+        // broken store): never touch the store here — a write would fail
+        // the same way and surface as an unhandled rejection. The client
+        // rehydrates again with real storage and bootstraps then.
+        if (error) return;
+        void runLearnerBootstrap();
+      },
     }
   )
 );
+
+/**
+ * After the blob hydrates: replay a left-over pending buffer, move a
+ * pre-v4 blob's cards/review log into the learner store (once, safety copy
+ * first), load the active course, and only then declare the store ready.
+ * Fail-soft: a learner-store failure never blocks the app — memory keeps
+ * whatever the blob carried and the next launch retries.
+ */
+let bootstrapPromise: Promise<void> = Promise.resolve();
+
+/** Resolves when the most recent learner bootstrap has finished (tests, import). */
+export function whenLearnerReady(): Promise<void> {
+  return bootstrapPromise;
+}
+
+/**
+ * Drop the in-memory learner data (cards, review log) and mark the store
+ * not ready. Used before re-reading a different blob + learner store (backup
+ * import, rollback) so the bootstrap loads from the store instead of
+ * treating memory as a pre-v4 blob to import.
+ */
+export function resetLearnerMemory(): void {
+  useProgress.setState((current) => ({
+    courses: withoutLearnerData(current.courses),
+    reviewLog: [],
+    learnerReady: false,
+  }));
+}
+
+export function runLearnerBootstrap(): Promise<void> {
+  bootstrapPromise = runLearnerBootstrapNow();
+  return bootstrapPromise;
+}
+
+async function runLearnerBootstrapNow(): Promise<void> {
+  const state = useProgress.getState();
+  try {
+    const result = await bootstrapLearner({
+      courses: state.courses,
+      reviewLog: state.reviewLog,
+      activeCourseId: state.activeCourseId,
+      writeSafetyCopy: writeLearnerSafetyCopy,
+    });
+    useProgress.setState((current) => ({
+      courses: {
+        ...withoutLearnerData(current.courses),
+        [current.activeCourseId]: {
+          ...(current.courses[current.activeCourseId] ?? emptyCourseProgress()),
+          cards: result.active.cards,
+        },
+      },
+      // Memory keeps the loaded window; a pre-v4 log is now in the store.
+      reviewLog: result.active.reviewLog,
+      learnerReady: true,
+    }));
+  } catch (error) {
+    console.warn("learner store: bootstrap failed — continuing with in-memory learner data", error);
+    useProgress.setState({ learnerReady: true });
+  }
+}
 
 /**
  * The "current" lesson on the PATH: the first incomplete lesson at or after

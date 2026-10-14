@@ -1,12 +1,18 @@
 {
   "envelope": {
-    "envelopeVersion": 1,
+    "envelopeVersion": 2,
     "exportedAt": "2026-06-15T12:00:00.000Z",
     "format": "lingo-progress-backup",
+    "learner": {
+      "cards": {},
+      "reviewLog": []
+    },
     "manifest": {
+      "cards": 0,
       "courses": [
         "es-en"
       ],
+      "reviewLog": 0,
       "topLevelKeys": [
         "activeCourseId",
         "streak",
@@ -18,11 +24,11 @@
         "themePreference",
         "activeDays",
         "courses",
-        "reviewLog",
-        "assessment"
+        "assessmentByCourse",
+        "uiLanguage"
       ]
     },
-    "persistVersion": 3
+    "persistVersion": 4
   },
   "fromVersion": 0,
   "invariants": [],
@@ -35,10 +41,7 @@
         "xp": 15
       }
     },
-    "assessment": {
-      "checkpointAttempts": [],
-      "placementFloor": 0
-    },
+    "assessmentByCourse": {},
     "courses": {
       "es-en": {
         "completedLessons": {
@@ -71,9 +74,14 @@
     "onboardingDone": true,
     "reviewLog": [],
     "streak": 2,
-    "themePreference": "light"
+    "themePreference": "light",
+    "uiLanguage": "system"
   },
   "staged": {
+    "learner": {
+      "cards": {},
+      "reviewLog": []
+    },
     "ok": true,
     "state": {
       "activeCourseId": "es-en",
@@ -84,10 +92,7 @@
           "xp": 15
         }
       },
-      "assessment": {
-        "checkpointAttempts": [],
-        "placementFloor": 0
-      },
+      "assessmentByCourse": {},
       "courses": {
         "es-en": {
           "completedLessons": {
@@ -118,10 +123,10 @@
       "dailyXpDay": "2026-01-09",
       "lastActiveDay": "2026-01-09",
       "onboardingDone": true,
-      "reviewLog": [],
       "streak": 2,
-      "themePreference": "light"
+      "themePreference": "light",
+      "uiLanguage": "system"
     }
   },
-  "toVersion": 3
+  "toVersion": 4
 }

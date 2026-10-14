@@ -1,17 +1,25 @@
 /**
  * Pure core of progress backup/import. No React Native imports — the I/O shell
- * (src/lib/backup.ts) handles files, sharing and the store; everything that can
- * be unit-tested lives here.
+ * (src/lib/backup.ts) handles files, sharing, the store and the learner
+ * database; everything that can be unit-tested lives here.
  *
- * Import is a staged transaction: parse → validate envelope → sanitize →
- * migrate into a scratch state → run invariants. Only when every step passes
- * does the caller commit; any failure leaves current user state untouched.
+ * Envelope v2 (P1d): the blob (`state`, persist v4, without cards/review
+ * log) plus a `learner` section (every FSRS card and review-log entry,
+ * pulled from the learner store). Envelope v1 (cards and log inline in
+ * `state`) is accepted forever: its learner data is split out after the
+ * migration chain. Import is a staged transaction: parse → validate
+ * envelope → sanitize → migrate into a scratch state → split → run
+ * invariants over both halves. Only when every step passes does the caller
+ * commit; any failure leaves current user state untouched.
  */
 
-import { REVIEW_LOG_CAP } from "../learning/review-log";
+import { hasCapability } from "../course-profile";
+import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 import type { SrsEntry } from "../srs";
 
+import { learnerDataFromBlob } from "./learner";
+import { emptyLearnerData, type LearnerData } from "./learner-types";
 import {
   migrateProgress,
   PERSIST_VERSION,
@@ -21,37 +29,67 @@ import {
 const FSRS_STATES = new Set(["new", "learning", "review", "relearning"]);
 
 export const BACKUP_FORMAT = "lingo-progress-backup";
-export const ENVELOPE_VERSION = 1;
+/** v2 (P1d): `learner` section; v1 backups (cards/log inside `state`) stay importable. */
+export const ENVELOPE_VERSION = 2;
 
 export type BackupEnvelope = {
   format: typeof BACKUP_FORMAT;
   envelopeVersion: number;
   persistVersion: number;
   exportedAt: string;
-  manifest: { topLevelKeys: string[]; courses: string[] };
+  manifest: { topLevelKeys: string[]; courses: string[]; cards: number; reviewLog: number };
+  /** The settings/progress blob — no cards, no review log (v2). */
   state: PersistedProgress;
+  /** Every FSRS card and review-log entry (v2). */
+  learner: LearnerData;
 };
+
+/** Removes the learner-owned fields from a blob (what a v4 blob never carries once the store holds them). */
+export function stripLearnerData(state: PersistedProgress): PersistedProgress {
+  const { reviewLog: _log, ...rest } = state;
+  const courses: PersistedProgress["courses"] = {};
+  for (const [courseId, course] of Object.entries(state.courses ?? {})) {
+    if (!course) continue;
+    const { cards: _cards, ...courseRest } = course;
+    courses[courseId] = courseRest;
+  }
+  return { ...rest, courses };
+}
+
+/** A blob that still carries learner data (pre-v4 / v1 backup) → (stripped blob, learner data). */
+export function splitLearnerData(state: PersistedProgress): { state: PersistedProgress; learner: LearnerData } {
+  return { state: stripLearnerData(state), learner: learnerDataFromBlob(state) };
+}
+
+export function countCards(learner: LearnerData): number {
+  return Object.values(learner.cards).reduce((n, byKey) => n + Object.keys(byKey).length, 0);
+}
 
 export function createEnvelope(
   state: PersistedProgress,
+  learner: LearnerData,
   persistVersion: number,
   now: Date
 ): BackupEnvelope {
+  const blob = stripLearnerData(state);
   return {
     format: BACKUP_FORMAT,
     envelopeVersion: ENVELOPE_VERSION,
     persistVersion,
     exportedAt: now.toISOString(),
     manifest: {
-      topLevelKeys: Object.keys(state),
-      courses: Object.keys(state.courses ?? {}),
+      topLevelKeys: Object.keys(blob),
+      courses: Object.keys(blob.courses ?? {}),
+      cards: countCards(learner),
+      reviewLog: learner.reviewLog.length,
     },
-    state,
+    state: blob,
+    learner,
   };
 }
 
 export type StagedImport =
-  | { ok: true; state: PersistedProgress }
+  | { ok: true; state: PersistedProgress; learner: LearnerData }
   | { ok: false; reason: string };
 
 const BANNED_KEYS = new Set(["__proto__", "constructor", "prototype"]);
@@ -87,10 +125,73 @@ function finiteAtLeast(v: unknown, min: number): v is number {
   return typeof v === "number" && Number.isFinite(v) && v >= min;
 }
 
-/** Structural sanity checks run on the migrated scratch state before commit. */
-export function runInvariants(state: PersistedProgress, now: Date): string[] {
+function invalidAssessment(a: unknown, maxTimestamp: number): string | null {
+  const s = a as {
+    checkpointAttempts?: unknown;
+    placement?: unknown;
+    placementFloor?: unknown;
+  } | null;
+  if (!s || typeof s !== "object") return "invalid assessment state";
+  if (!Array.isArray(s.checkpointAttempts)) return "invalid checkpoint attempts";
+  for (const attempt of s.checkpointAttempts as {
+    checkpointId?: unknown;
+    checkpointVersion?: unknown;
+    formId?: unknown;
+    formVersion?: unknown;
+    startedAt?: unknown;
+    completedAt?: unknown;
+    itemResults?: unknown;
+    objectiveResults?: unknown;
+  }[]) {
+    if (
+      !attempt ||
+      typeof attempt.checkpointId !== "string" ||
+      !finiteAtLeast(attempt.checkpointVersion, 1) ||
+      // P9 §38: form fields are OPTIONAL (pre-forms attempts carry
+      // neither) but must be sane when present.
+      (attempt.formId !== undefined && typeof attempt.formId !== "string") ||
+      (attempt.formVersion !== undefined && !finiteAtLeast(attempt.formVersion, 1)) ||
+      !finiteAtLeast(attempt.startedAt, 0) ||
+      !finiteAtLeast(attempt.completedAt, 0) ||
+      (attempt.completedAt as number) > maxTimestamp ||
+      !Array.isArray(attempt.itemResults) ||
+      !Array.isArray(attempt.objectiveResults)
+    ) {
+      return "invalid checkpoint attempt";
+    }
+  }
+  if (!finiteAtLeast(s.placementFloor, 0)) return "invalid placement floor";
+  if (s.placement !== undefined) {
+    const p = s.placement as {
+      placementVersion?: unknown;
+      completedAt?: unknown;
+      recommendedLessonId?: unknown;
+      recommendedFloorIndex?: unknown;
+    } | null;
+    if (
+      !p ||
+      typeof p !== "object" ||
+      !finiteAtLeast(p.placementVersion, 1) ||
+      !finiteAtLeast(p.completedAt, 0) ||
+      (p.completedAt as number) > maxTimestamp ||
+      typeof p.recommendedLessonId !== "string" ||
+      !finiteAtLeast(p.recommendedFloorIndex, 0)
+    ) {
+      return "invalid placement result";
+    }
+  }
+  return null;
+}
+
+/**
+ * Structural sanity checks run on the migrated scratch state (and its
+ * learner half) before commit. `learner` defaults to the cards/log the
+ * blob itself carries (pre-v4 shapes), so the invariants hold for both.
+ */
+export function runInvariants(state: PersistedProgress, now: Date, learner?: LearnerData): string[] {
   const problems: string[] = [];
   const maxTimestamp = now.getTime() + 10 * 365 * 86_400_000;
+  const learnerData = learner ?? learnerDataFromBlob(state);
 
   if (typeof state.activeCourseId !== "string" || !state.activeCourseId) {
     problems.push("missing active course");
@@ -161,11 +262,11 @@ export function runInvariants(state: PersistedProgress, now: Date): string[] {
         }
       }
     }
-    // From v2, fr-en stores FSRS `cards` (+ `srsLegacy`) instead of `srs`;
-    // every other course still stores `srs`. A course must have one of them.
+    // A course keeps its review data either as a legacy `srs` map or as
+    // FSRS cards in the learner store (an fsrs course may have none yet).
     const hasSrs = !!course.srs && typeof course.srs === "object";
-    const hasCards = !!course.cards && typeof course.cards === "object";
-    if (!hasSrs && !hasCards) {
+    const hasCards = learnerData.cards[courseId] !== undefined || (!!course.cards && typeof course.cards === "object");
+    if (!hasSrs && !hasCards && !hasCapability(courseId, "fsrs")) {
       problems.push(`invalid review data in ${courseId}`);
     }
     if (hasSrs && !validSrsMap(course.srs!, maxTimestamp)) {
@@ -180,102 +281,65 @@ export function runInvariants(state: PersistedProgress, now: Date): string[] {
         problems.push(`invalid legacy review copy in ${courseId}`);
       }
     }
-    if (hasCards) {
-      for (const [key, card] of Object.entries(course.cards!)) {
+  }
+
+  // Learner data (cards + review log) — from the store section or the blob.
+  if (!learnerData.cards || typeof learnerData.cards !== "object") {
+    problems.push("invalid learner cards");
+  } else {
+    outer: for (const [courseId, cards] of Object.entries(learnerData.cards)) {
+      if (!cards || typeof cards !== "object") {
+        problems.push(`invalid cards in ${courseId}`);
+        continue;
+      }
+      for (const [key, card] of Object.entries(cards)) {
         if (!validCard(key, card, maxTimestamp)) {
           problems.push(`invalid card in ${courseId}`);
-          break;
+          break outer;
         }
       }
     }
   }
 
-  // Phase 6 (v3): the assessment container, when present, must be
-  // structurally sane — malformed checkpoint/placement data never reaches
-  // live state.
+  // v3-style single container or v4 per-course map, whichever the state carries.
   if (state.assessment !== undefined) {
-    const a = state.assessment as {
-      checkpointAttempts?: unknown;
-      placement?: unknown;
-      placementFloor?: unknown;
-    } | null;
-    if (!a || typeof a !== "object") {
-      problems.push("invalid assessment state");
+    const problem = invalidAssessment(state.assessment, maxTimestamp);
+    if (problem) problems.push(problem);
+  }
+  if (state.assessmentByCourse !== undefined) {
+    if (!state.assessmentByCourse || typeof state.assessmentByCourse !== "object") {
+      problems.push("invalid assessment map");
     } else {
-      if (!Array.isArray(a.checkpointAttempts)) {
-        problems.push("invalid checkpoint attempts");
-      } else {
-        for (const attempt of a.checkpointAttempts as {
-          checkpointId?: unknown;
-          checkpointVersion?: unknown;
-          formId?: unknown;
-          formVersion?: unknown;
-          startedAt?: unknown;
-          completedAt?: unknown;
-          itemResults?: unknown;
-          objectiveResults?: unknown;
-        }[]) {
-          if (
-            !attempt ||
-            typeof attempt.checkpointId !== "string" ||
-            !finiteAtLeast(attempt.checkpointVersion, 1) ||
-            // P9 §38: form fields are OPTIONAL (pre-forms attempts carry
-            // neither) but must be sane when present.
-            (attempt.formId !== undefined && typeof attempt.formId !== "string") ||
-            (attempt.formVersion !== undefined && !finiteAtLeast(attempt.formVersion, 1)) ||
-            !finiteAtLeast(attempt.startedAt, 0) ||
-            !finiteAtLeast(attempt.completedAt, 0) ||
-            (attempt.completedAt as number) > maxTimestamp ||
-            !Array.isArray(attempt.itemResults) ||
-            !Array.isArray(attempt.objectiveResults)
-          ) {
-            problems.push("invalid checkpoint attempt");
-            break;
-          }
-        }
-      }
-      if (!finiteAtLeast(a.placementFloor, 0)) {
-        problems.push("invalid placement floor");
-      }
-      if (a.placement !== undefined) {
-        const p = a.placement as {
-          placementVersion?: unknown;
-          completedAt?: unknown;
-          recommendedLessonId?: unknown;
-          recommendedFloorIndex?: unknown;
-        } | null;
-        if (
-          !p ||
-          typeof p !== "object" ||
-          !finiteAtLeast(p.placementVersion, 1) ||
-          !finiteAtLeast(p.completedAt, 0) ||
-          (p.completedAt as number) > maxTimestamp ||
-          typeof p.recommendedLessonId !== "string" ||
-          !finiteAtLeast(p.recommendedFloorIndex, 0)
-        ) {
-          problems.push("invalid placement result");
+      for (const [courseId, a] of Object.entries(state.assessmentByCourse)) {
+        const problem = invalidAssessment(a, maxTimestamp);
+        if (problem) {
+          problems.push(`${problem} (${courseId})`);
+          break;
         }
       }
     }
   }
+  if (state.uiLanguage !== undefined && !["system", "vi", "en"].includes(String(state.uiLanguage))) {
+    problems.push("invalid UI language");
+  }
 
-  if (state.reviewLog !== undefined) {
-    if (!Array.isArray(state.reviewLog) || state.reviewLog.length > REVIEW_LOG_CAP) {
-      problems.push("invalid review log");
-    } else {
-      for (const e of state.reviewLog) {
-        if (
-          !e ||
-          typeof e !== "object" ||
-          !finiteAtLeast(e.at, 0) ||
-          e.at > maxTimestamp ||
-          typeof e.cardKey !== "string" ||
-          typeof e.sessionId !== "string" ||
-          typeof e.courseId !== "string"
-        ) {
-          problems.push("invalid review log entry");
-          break;
-        }
+  if (!Array.isArray(learnerData.reviewLog)) {
+    problems.push("invalid review log");
+  } else {
+    for (const e of learnerData.reviewLog) {
+      if (
+        !e ||
+        typeof e !== "object" ||
+        !finiteAtLeast(e.at, 0) ||
+        e.at > maxTimestamp ||
+        typeof e.cardKey !== "string" ||
+        typeof e.sessionId !== "string" ||
+        typeof e.courseId !== "string" ||
+        typeof e.exerciseId !== "string" ||
+        !finiteAtLeast(e.attemptIndex, 0)
+      ) {
+        problems.push("invalid review log entry");
+        break;
       }
     }
   }
@@ -317,6 +381,15 @@ function validCard(key: string, card: FsrsCardState, maxTimestamp: number): bool
     FSRS_STATES.has(card.state) &&
     (card.last_review === undefined || finiteAtLeast(card.last_review, 0))
   );
+}
+
+/** The learner section of a v2 envelope, sanitized and shape-checked (null = unusable). */
+function learnerSection(value: unknown): LearnerData | null {
+  if (value === undefined) return emptyLearnerData();
+  if (!value || typeof value !== "object") return null;
+  const raw = value as { cards?: unknown; reviewLog?: unknown };
+  if (!raw.cards || typeof raw.cards !== "object" || !Array.isArray(raw.reviewLog)) return null;
+  return { cards: raw.cards as LearnerData["cards"], reviewLog: raw.reviewLog as ReviewLogEntry[] };
 }
 
 /**
@@ -363,8 +436,10 @@ export function stageImport(raw: string, now: Date): StagedImport {
   }
 
   let clean: unknown;
+  let cleanLearner: unknown;
   try {
     clean = sanitize(envelope.state);
+    cleanLearner = envelope.envelopeVersion >= 2 ? sanitize(envelope.learner) : undefined;
   } catch {
     return { ok: false, reason: "The backup contains unsupported data." };
   }
@@ -376,10 +451,21 @@ export function stageImport(raw: string, now: Date): StagedImport {
     return { ok: false, reason: "The backup data couldn't be upgraded." };
   }
 
-  const problems = runInvariants(migrated, now);
+  // Learner half: the v2 section, plus anything the (older) blob still
+  // carried inline — a v1 backup's cards/log, or a v2 state exported
+  // before its bootstrap ran. Store data wins on a card key collision.
+  const section = learnerSection(cleanLearner);
+  if (section === null) return { ok: false, reason: "The backup's review data is unreadable." };
+  const { state, learner: inline } = splitLearnerData(migrated);
+  const cards: LearnerData["cards"] = {};
+  for (const [courseId, byKey] of Object.entries(inline.cards)) cards[courseId] = { ...byKey };
+  for (const [courseId, byKey] of Object.entries(section.cards)) cards[courseId] = { ...(cards[courseId] ?? {}), ...byKey };
+  const learner: LearnerData = { cards, reviewLog: [...inline.reviewLog, ...section.reviewLog] };
+
+  const problems = runInvariants(state, now, learner);
   if (problems.length > 0) {
     return { ok: false, reason: `The backup failed validation (${problems[0]}).` };
   }
 
-  return { ok: true, state: migrated };
+  return { ok: true, state, learner };
 }

@@ -1,13 +1,43 @@
 {
   "envelope": {
-    "envelopeVersion": 1,
+    "envelopeVersion": 2,
     "exportedAt": "2026-06-15T12:00:00.000Z",
     "format": "lingo-progress-backup",
+    "learner": {
+      "cards": {
+        "fr-en": {
+          "fr:w:femme|recognize": {
+            "difficulty": 0,
+            "due": 1767950000000,
+            "lapses": 0,
+            "learning_steps": 0,
+            "reps": 0,
+            "scheduled_days": 0,
+            "stability": 0,
+            "state": "new"
+          },
+          "fr:w:homme|recognize": {
+            "difficulty": 7.433767808396142,
+            "due": 1768200000000,
+            "lapses": 1,
+            "last_review": 1767940800000,
+            "learning_steps": 0,
+            "reps": 2,
+            "scheduled_days": 3,
+            "stability": 3,
+            "state": "review"
+          }
+        }
+      },
+      "reviewLog": []
+    },
     "manifest": {
+      "cards": 2,
       "courses": [
         "fr-en",
         "es-en"
       ],
+      "reviewLog": 0,
       "topLevelKeys": [
         "activeCourseId",
         "streak",
@@ -21,11 +51,11 @@
         "activeDays",
         "hearts",
         "heartsUpdatedAt",
-        "reviewLog",
-        "assessment"
+        "assessmentByCourse",
+        "uiLanguage"
       ]
     },
-    "persistVersion": 3
+    "persistVersion": 4
   },
   "fromVersion": 0,
   "invariants": [],
@@ -38,10 +68,7 @@
         "xp": 30
       }
     },
-    "assessment": {
-      "checkpointAttempts": [],
-      "placementFloor": 0
-    },
+    "assessmentByCourse": {},
     "courses": {
       "es-en": {
         "completedLessons": {
@@ -119,9 +146,38 @@
     "onboardingDone": true,
     "reviewLog": [],
     "streak": 5,
-    "themePreference": "dark"
+    "themePreference": "dark",
+    "uiLanguage": "system"
   },
   "staged": {
+    "learner": {
+      "cards": {
+        "fr-en": {
+          "fr:w:femme|recognize": {
+            "difficulty": 0,
+            "due": 1767950000000,
+            "lapses": 0,
+            "learning_steps": 0,
+            "reps": 0,
+            "scheduled_days": 0,
+            "stability": 0,
+            "state": "new"
+          },
+          "fr:w:homme|recognize": {
+            "difficulty": 7.433767808396142,
+            "due": 1768200000000,
+            "lapses": 1,
+            "last_review": 1767940800000,
+            "learning_steps": 0,
+            "reps": 2,
+            "scheduled_days": 3,
+            "stability": 3,
+            "state": "review"
+          }
+        }
+      },
+      "reviewLog": []
+    },
     "ok": true,
     "state": {
       "activeCourseId": "fr-en",
@@ -132,10 +188,7 @@
           "xp": 30
         }
       },
-      "assessment": {
-        "checkpointAttempts": [],
-        "placementFloor": 0
-      },
+      "assessmentByCourse": {},
       "courses": {
         "es-en": {
           "completedLessons": {
@@ -147,29 +200,6 @@
           "xp": 15
         },
         "fr-en": {
-          "cards": {
-            "fr:w:femme|recognize": {
-              "difficulty": 0,
-              "due": 1767950000000,
-              "lapses": 0,
-              "learning_steps": 0,
-              "reps": 0,
-              "scheduled_days": 0,
-              "stability": 0,
-              "state": "new"
-            },
-            "fr:w:homme|recognize": {
-              "difficulty": 7.433767808396142,
-              "due": 1768200000000,
-              "lapses": 1,
-              "last_review": 1767940800000,
-              "learning_steps": 0,
-              "reps": 2,
-              "scheduled_days": 3,
-              "stability": 3,
-              "state": "review"
-            }
-          },
           "completedLessons": {
             "fr-en:u0-l0": true,
             "fr-en:u0-l1": true
@@ -211,10 +241,10 @@
       "heartsUpdatedAt": 1767000000000,
       "lastActiveDay": "2026-01-10",
       "onboardingDone": true,
-      "reviewLog": [],
       "streak": 5,
-      "themePreference": "dark"
+      "themePreference": "dark",
+      "uiLanguage": "system"
     }
   },
-  "toVersion": 3
+  "toVersion": 4
 }

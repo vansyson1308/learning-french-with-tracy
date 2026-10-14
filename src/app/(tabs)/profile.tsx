@@ -247,7 +247,7 @@ function DataCard() {
           style: "destructive",
           onPress: async () => {
             setBusy(true);
-            const result = await commitImport(staged.state);
+            const result = await commitImport(staged.state, staged.learner);
             setBusy(false);
             if (result.ok) Alert.alert("Progress imported");
             else Alert.alert("Import failed", result.reason);

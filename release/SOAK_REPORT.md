@@ -48,6 +48,49 @@ The test fails if any bound is exceeded, if a cycle costs more than 400 ms,
 if the growth is worse than linear in the log size, or if a backup stops
 importing.
 
+## Automated soak, two FSRS courses — `src/lib/__tests__/soak-two-courses.test.ts` (P1d)
+
+Since persist v4 the cards and the review log live in the learner store,
+not in the persisted blob. The second soak drives two FSRS courses
+(`fr-en` and `es-en` with the FSRS capability forced on) for fifty days,
+alternating course every day: per day one lesson (11 graded steps +
+completion), one Today session (20 assessments + completion), one undo,
+and a flush of the pending buffer after each; a course switch reloads the
+active slice from the store. It runs twice — on the SQLite store through
+`bun:sqlite` (the device path, same SQL and executor contract as
+expo-sqlite) and on the JSON store (web / fallback).
+
+| Measure (Bun 1.4.3, this environment) | SQLite store | JSON store |
+|---|---|---|
+| Cycles completed | 50 | 50 |
+| Persisted blob (`progress-v2`) | 2.4 KB on day 1 → **19.3 KB on day 50** (limit 512 KB) | same |
+| Blob ever carries `cards` / `reviewLog` | never | never |
+| Learner store after 50 days | 1,500 log entries, 342 cards (≈ 1.0 MB as JSON) | same |
+| Memory window (active course only) | 750 entries (cap 2,000) | same |
+| Other course's cards in memory after a switch | 0 | 0 |
+| Cycle cost (33 evidence writes + 3 flushes + reload) | 26 ms early → 58 ms late | 32 ms early → 157 ms late |
+| Day-50 backup (envelope v2) | stages, invariants clean, both courses | same |
+
+Reading the numbers:
+
+- **The blob no longer grows with history.** Fifty heavy days leave it
+  under 20 KB, two orders of magnitude under the 512 KB bound the test
+  enforces; every store write re-serialises only this blob now.
+- **SQLite commits are O(delta).** The late/early ratio stays ≈ 2 (the
+  test allows 3): the extra cost is the course-switch reload of the 2,000-
+  entry window and bun:sqlite overhead, not a trend with history.
+- **The JSON store rewrites its whole document per flush**, so its cost
+  grows linearly with the history (≈ 1 MB after fifty days → ~150 ms per
+  day of three flushes). That is the web tier's and the test fallback's
+  characteristic, recorded here; the device path is SQLite.
+- The one-time import of a pre-v4 blob with 10,000 log entries and 800
+  cards takes ≈ 200 ms on bun:sqlite (`learner-bootstrap.test.ts`, budget
+  2 s).
+- Timings are from a standalone run of the file; inside the full
+  `bun run test` run (JIT warm, other suites resident) the same cycles
+  measure 7 → 20 ms (SQLite) and 8 → 41 ms (JSON). Sizes and counts are
+  identical in every run.
+
 ## Device soak — owner steps (release candidate build)
 
 Prerequisites: an RC build installed from TestFlight / Play internal

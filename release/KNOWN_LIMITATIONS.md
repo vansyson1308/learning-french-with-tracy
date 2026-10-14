@@ -66,5 +66,12 @@ itself.
 - No pronunciation scoring; spoken production is graded on what the
   recogniser transcribes.
 - UI language is English only (no i18n).
+- Learner history (cards, review log) lives in the learner store since
+  persist v4: on a phone an expo-sqlite database (`learner-v4.db`), on the
+  web tier a JSON document rewritten on every flush (its cost grows with the
+  history — measured in `SOAK_REPORT.md`; the web tier is secondary).
+  Memory holds only the active course's cards and its most recent 2,000
+  review-log entries; screens that count cards (Profile *To review*) count
+  the active course, as before.
 - Web tier: the lexicon SQLite is replaced by a generated fallback; speech
   recognition is unavailable and the app says so.

@@ -20,6 +20,7 @@ import frPack from "../../content/packs/fr-en.json";
 import type { ReviewEvidence } from "../learning/evidence";
 import { REVIEW_LOG_CAP } from "../learning/review-log";
 import { createEnvelope, runInvariants, stageImport } from "../persistence/backup-core";
+import { learnerDataFromBlob } from "../persistence/learner";
 import { PERSIST_VERSION } from "../persistence/migrations";
 import { useProgress } from "../store";
 
@@ -107,7 +108,8 @@ describe("soak: fifty heavy days through the real store", () => {
 
       // Backup every fifth day: export → stage → invariants.
       if (cycle % 5 === 4) {
-        const envelope = createEnvelope(useProgress.getState() as never, PERSIST_VERSION, new Date());
+        const snapshot = useProgress.getState() as never;
+        const envelope = createEnvelope(snapshot, learnerDataFromBlob(snapshot), PERSIST_VERSION, new Date());
         const staged = stageImport(JSON.stringify(envelope), new Date());
         expect(staged.ok).toBe(true);
         if (staged.ok) expect(runInvariants(staged.state, new Date())).toEqual([]);
@@ -159,12 +161,12 @@ describe("soak: fifty heavy days through the real store", () => {
 
   test("the day-50 backup imports losslessly into a fresh store", () => {
     const before = useProgress.getState();
-    const envelope = createEnvelope(before as never, PERSIST_VERSION, new Date());
+    const envelope = createEnvelope(before as never, learnerDataFromBlob(before as never), PERSIST_VERSION, new Date());
     const staged = stageImport(JSON.stringify(envelope), new Date());
     expect(staged.ok).toBe(true);
     if (!staged.ok) return;
     expect(staged.state.courses["fr-en"].xp).toBe(before.courses["fr-en"].xp);
-    expect((staged.state.reviewLog ?? []).length).toBe(before.reviewLog.length);
-    expect(Object.keys(staged.state.courses["fr-en"].cards ?? {}).length).toBe(Object.keys(before.courses["fr-en"].cards ?? {}).length);
+    expect(staged.learner.reviewLog.length).toBe(before.reviewLog.length);
+    expect(Object.keys(staged.learner.cards["fr-en"] ?? {}).length).toBe(Object.keys(before.courses["fr-en"].cards ?? {}).length);
   });
 });
