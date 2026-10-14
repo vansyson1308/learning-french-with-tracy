@@ -174,6 +174,7 @@ export type MessageKey =
   | "licenses.audioBody"
   | "licenses.lexicon"
   | "licenses.lexiconBody"
+  | "licenses.lexiconEtlBody"
   | "licenses.lexiqueBody"
   | "licenses.software"
   | "licenses.softwareBody"
@@ -448,4 +449,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 446;
+export const MESSAGE_KEY_COUNT = 447;

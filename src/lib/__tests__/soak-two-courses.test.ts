@@ -34,10 +34,10 @@ const CYCLES = 50;
 const LESSON_STEPS = 11;
 const TODAY_STEPS = 20;
 const BLOB_LIMIT_BYTES = 512 * 1024;
-const COURSES = ["fr-en", "es-en"] as const;
+const COURSES = ["fr-en", "de-en"] as const;
 
 const frItems = [...new Set([...JSON.stringify(frIndex).matchAll(/"(fr:w:[a-z0-9-]+)"/g)].map((m) => m[1]))].sort();
-const esItems = Array.from({ length: 126 }, (_, i) => `es:w:item-${i}`);
+const esItems = Array.from({ length: 126 }, (_, i) => `de:w:item-${i}`);
 const itemsOf = (courseId: string) => (courseId === "fr-en" ? frItems : esItems);
 
 function evidence(courseId: string, i: number, cycle: number, source: ReviewEvidence["source"], sessionId: string): ReviewEvidence {
@@ -81,7 +81,7 @@ const median = (xs: number[]) => {
 
 async function resetWorld(backend: "sqlite" | "json"): Promise<void> {
   setSystemTime(new Date(T0));
-  __setCourseCapabilityOverrideForTests("es-en", { fsrs: true });
+  __setCourseCapabilityOverrideForTests("de-en", { fsrs: true });
   // A clean slate in memory FIRST: the bootstrap imports whatever cards and
   // log the in-memory state carries (another test's leftovers would land in
   // the store as a "pre-v4 blob").
@@ -153,7 +153,7 @@ async function checkStoreAfterFiftyDays(backend: string, numbers: SoakNumbers): 
   const all = await (await learnerStore()).exportAll();
   for (const courseId of COURSES) {
     expect(all.reviewLog.filter((e) => e.courseId === courseId).length).toBe((CYCLES / 2) * perDay);
-    // Cards are keyed by TARGET language (D-4): fr-en → fr, es-en → es.
+    // Cards are keyed by TARGET language (D-4): fr-en → fr, de-en → de.
     const target = courseId.split("-")[0];
     expect(Object.keys(all.cards[target] ?? {}).length).toBeLessThanOrEqual(itemsOf(courseId).length * 2);
     expect(Object.keys(all.cards[target] ?? {}).length).toBeGreaterThan(0);
@@ -190,7 +190,7 @@ async function checkDayFiftyBackup(): Promise<void> {
   expect(Object.keys(staged.learner.cards).sort()).toEqual(COURSES.map((c) => c.split("-")[0]).sort());
   expect(staged.learner.reviewLog.length).toBe(learner.reviewLog.length);
   expect(staged.state.courses["fr-en"].xp).toBe(live.courses["fr-en"].xp);
-  expect(staged.state.courses["es-en"].xp).toBe(live.courses["es-en"].xp);
+  expect(staged.state.courses["de-en"].xp).toBe(live.courses["de-en"].xp);
 }
 
 describe.each(["sqlite", "json"] as const)("soak: two FSRS courses × fifty days on the %s learner store", (backend) => {
@@ -199,7 +199,7 @@ describe.each(["sqlite", "json"] as const)("soak: two FSRS courses × fifty days
   beforeAll(() => resetWorld(backend));
   afterAll(() => {
     setSystemTime();
-    __setCourseCapabilityOverrideForTests("es-en", null);
+    __setCourseCapabilityOverrideForTests("de-en", null);
     __setLearnerStoreForTests(null);
   });
 

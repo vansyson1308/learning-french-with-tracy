@@ -142,6 +142,19 @@ export function contentLanguageDirs(): string[] {
  * parsed packs plus every `content/<code>/` folder (a folder without a
  * pack is an authoring-in-progress error the validator reports).
  */
+/**
+ * P3a: `content/<code>/` holds only `lexicon/` evidence (source manifest,
+ * derived pools, review sheet, licence notes) — no authored lexemes
+ * (`lexicon/lexemes.json`), no frozen id map, no other rich layer.
+ */
+export function isEvidenceOnlyLanguageDir(code: string): boolean {
+  const root = safeResolve(`content/${code}`);
+  if (!existsSync(root)) return false;
+  const entries = readdirSync(root);
+  if (entries.some((e) => e !== "lexicon")) return false;
+  return !existsSync(path.join(root, "lexicon", "lexemes.json"));
+}
+
 export function discoverTargets(packs: LoadedPack[] = loadPacks()): string[] {
   const codes = new Set<string>(contentLanguageDirs());
   for (const { pack } of packs) codes.add(pack.targetCode);
@@ -423,10 +436,12 @@ export function validateContent(): ValidationResult {
         }
   }
 
-  // Every language folder needs at least one course, and a target's courses
-  // must agree on what the language is called.
+  // Every language folder needs at least one course — except an
+  // evidence-only folder (P3a: lexicon ETL pools without authored lexemes,
+  // English until its course exists) — and a target's courses must agree
+  // on what the language is called.
   for (const code of contentLanguageDirs()) {
-    if (packsForTarget(code, packs).length === 0) {
+    if (packsForTarget(code, packs).length === 0 && !isEvidenceOnlyLanguageDir(code)) {
       err(`content/${code}/ has rich sources but no course pack in content/courses/ targets "${code}"`);
     }
   }

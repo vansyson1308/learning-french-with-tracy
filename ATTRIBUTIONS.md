@@ -6,6 +6,83 @@ This file lists third-party sources this app builds on, generated from the
 provenance registry. It supplements — and never replaces — the repository's
 `LICENSE`; all existing copyright and MIT notices are preserved as-is.
 
+## CC-CEDICT (MDBG) — Chinese–English dictionary
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://www.mdbg.net/chinese/dictionary?page=cedict
+- **What:** dictionary (pinyin, senses)
+- **Retrieved:** 2026-10-15
+
+Pinyin and English senses from CC-CEDICT, a community-maintained free Chinese–English dictionary published by MDBG under CC BY-SA 4.0.
+
+> P3a: pinyin (tone marks derived from the numbered export) for readings.json.
+
+## CEFR-J Vocabulary Profile 1.5 (Tono Lab, TUFS) via Open Language Profiles
+
+- **License:** CEFR-J-terms
+- **Source:** https://github.com/openlanguageprofiles/olp-en-cefrj
+- **What:** CEFR anchor list (build-time selection reference)
+- **Retrieved:** 2026-10-15
+
+English CEFR level anchors from The CEFR-J Wordlist Version 1.5, compiled by Yukio Tono, Tokyo University of Foreign Studies (copyright Tono Laboratory, TUFS), via Open Language Profiles; used for research/commercial purposes with citation as the dataset's terms permit.
+
+> P3a English anchor. Build-time only: level labels in content/en/lexicon/derived/anchors.json drive selection; no CEFR-J text ships in the app.
+
+## FrequencyWords (hermitdave) — OpenSubtitles 2018 word frequencies
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://github.com/hermitdave/FrequencyWords
+- **What:** word frequency lists
+- **Retrieved:** 2026-10-15
+
+Word frequencies derived from the FrequencyWords lists (OpenSubtitles 2018; content CC BY-SA 4.0, code MIT) by Hermit Dave. Modifications: lemmatisation through the kaikki form index, population ranking and quantile banding (content/<lang>/lexicon/derived/frequency-stats.json).
+
+> P3a primary frequency measurement (`frequency.source`). Per-million values are relative to the list total, not the corpus (documented in frequency-stats.json).
+
+## ivankra/hsk30 — HSK 3.0 vocabulary levels
+
+- **License:** MIT
+- **Source:** https://github.com/ivankra/hsk30
+- **What:** exam anchor list
+- **Retrieved:** 2026-10-15
+
+HSK 3.0 level labels via ivankra/hsk30 (MIT) — a transcription of the 2021 standard published by the PRC Ministry of Education; entries are regenerated from CC-CEDICT / kaikki, never copied from the list.
+
+> P3a Chinese anchor (HSK 1–2 first). The repository's copyright caveat on the Ministry source is recorded in scripts/lib/lexicon-etl/sources.ts.
+
+## JMdict (EDRDG) — Japanese–English dictionary
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://www.edrdg.org/jmdict/j_jmdict.html
+- **What:** dictionary (readings, senses)
+- **Retrieved:** 2026-10-15
+
+This app uses the JMdict dictionary files. These files are the property of the Electronic Dictionary Research and Development Group, and are used in conformance with the Group's licence (https://www.edrdg.org/edrdg/licence.html), CC BY-SA 4.0.
+
+> P3a: kana readings and English senses for the Japanese pool (readings.json). The EDRDG requires the acknowledgement on a separate About/Sources screen — the Licences screen lists this entry.
+
+## kaikki.org Wiktextract (English Wiktionary edition)
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://kaikki.org/dictionary/
+- **What:** lexical data (per-language JSONL dumps)
+- **Retrieved:** 2026-10-15
+
+Lexical data (lemmas, parts of speech, inflected forms, gender, IPA, senses, example sentences) derived from Wiktionary via Wiktextract / kaikki.org (Tatu Ylonen), used under CC BY-SA 4.0 with attribution to the Wiktionary contributors; kaikki.org and Ylonen (LREC 2022) are cited. The lexicon dataset is published under CC BY-SA 4.0 (LEXICON_LICENSE.md).
+
+> P3a lexicon ETL v2 primary lexical source. Each language's dump is pinned (sha256, bytes, date) in content/<lang>/lexicon/source-manifest.json by the dispatch-only workflow .github/workflows/lexicon-source.yml; raw dumps are never committed. Per-lexeme provenance is the `word|pos` key in sourceRefs; examples carry `word|pos|sense`.
+
+## kaikki.org Wiktextract (Vietnamese Wiktionary edition)
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://kaikki.org/viwiktionary/
+- **What:** lexical data (Vietnamese glosses and examples)
+- **Retrieved:** 2026-10-15
+
+Vietnamese glosses and example translations derived from the Vietnamese Wiktionary via Wiktextract / kaikki.org, used under CC BY-SA 4.0 with attribution to the Vietnamese Wiktionary contributors.
+
+> P3a: the primary source of `glosses.vi` / `translations.vi`. Entries that only redirect are skipped; a lexeme without a Vietnamese sense carries the draft marker TODO:vi until the authoring toolkit (P3c) fills it — the marker blocks compile for any -vi course.
+
 ## Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)
 
 - **License:** CC-BY-SA-4.0
@@ -16,6 +93,28 @@ provenance registry. It supplements — and never replaces — the repository's
 Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).
 
 > Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md).
+
+## New General Service List 1.2 — frequency statistics
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://www.newgeneralservicelist.com/new-general-service-list
+- **What:** frequency anchor list
+- **Retrieved:** 2026-10-15
+
+English rank anchors from the New General Service List 1.2 (Browne, Culligan & Phillips, 2013), CC BY-SA 4.0.
+
+> P3a English rank anchor (NGSL_12_stats.csv: lemma, SFI rank).
+
+## OpenJLPT 0.1.0 — JLPT N5–N1 vocabulary (level labels)
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://github.com/evanclan/OpenJLPT
+- **What:** exam anchor list
+- **Retrieved:** 2026-10-15
+
+JLPT level anchors from OpenJLPT 0.1.0 (CC BY-SA 4.0; levels from Jonathan Waller's JLPT resources, CC BY; readings/glosses via JMdict, EDRDG, CC BY-SA 4.0; examples via Tatoeba, CC BY 2.0 FR).
+
+> P3a Japanese anchor (N5/N4 first). The JLPT publishes no official lists; these groupings are community-standard approximations (OpenJLPT NOTICE.md).
 
 ## Learning French with Tracy — authored French lexicon
 
@@ -38,6 +137,17 @@ French lexicon data authored by the Learning French with Tracy project, publishe
 French pedagogy content authored by the Learning French with Tracy project.
 
 > Clean-room authored teaching content for the Phase 5B pedagogy units (gender & articles, high-yield verbs, cognates & false friends, numbers, connected French). Linguistic FACTS are drawn from the referenced sources recorded in content/fr/pedagogy/RESEARCH.md (institutional references such as Académie française and OQLF usage pages, plus this repository's Lexique-4-derived population statistics); all PROSE is original. Statistical claims in concepts additionally carry a lexique-4 sourceRef. Ships under the repository's MIT grant like the course packs (the CC BY-SA dataset boundary covers the lexicon only).
+
+## Lexicon ETL v2 authored selection (this project)
+
+- **License:** original
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** original data (selection, topics, confusables, surfaces, review dispositions)
+- **Retrieved:** 2026-10-15
+
+Selection of the curriculum lexemes, topic assignment, confusable relations, surfaces with articles and gloss editing are original project authorship, published with the rest of the lexicon dataset under CC BY-SA 4.0 (LEXICON_LICENSE.md).
+
+> P3a: scripts/lexicon-author.ts writes content/<lang>/lexemes.json (frozen ids) and content/<lang>/lexicon/lexemes.json from the committed derived evidence; REVIEW.md per language records what a human still has to check (TODO:vi, auto-confusables, untranslated examples).
 
 ## Piper voice es_ES-davefx-medium
 
@@ -94,6 +204,17 @@ Reception dialogue audio synthesized with Piper (MIT, rhasspy/piper) using the f
 
 > Speaker B of the reception voice cast (dialogue second voice), adopted after fr_FR-mls-medium failed the canary ASR quality audit. CC BY-SA 4.0 share-alike accepted deliberately: the project already publishes its derived French dataset under CC BY-SA 4.0 (approved plan, section AC2) and ships an in-app attributions screen, so the obligations are already implemented. The reception audio derived from this voice carries the same license and attribution.
 
+## Tatoeba — sentences and translation links
+
+- **License:** CC-BY-2.0-FR
+- **Source:** https://tatoeba.org/en/downloads
+- **What:** example sentences
+- **Retrieved:** 2026-10-15
+
+Example sentences from the Tatoeba Project (https://tatoeba.org), CC BY 2.0 FR; each sentence credits its contributor by username in content/<lang>/lexicon/derived/tatoeba-credits.json and carries its sentence ids in the example `key`.
+
+> P3a example fallback when a kaikki sense has no usable example. Audio is never used (per-contributor licences).
+
 ## ts-fsrs (open-spaced-repetition)
 
 - **License:** MIT
@@ -115,3 +236,14 @@ Spaced-repetition scheduling powered by ts-fsrs, © open-spaced-repetition contr
 Based on Lingo Lessons by Open Apps Studio, used under the MIT License. The original LICENSE (including the 650 Industries, Inc. notice from the create-expo-app template) is preserved in this repository.
 
 > The base repository this fork continues. Bundled course packs and audio ship under the repository's MIT grant; the original audio generator and its TTS source were never published, so per-asset audio provenance is recorded as presumed rather than proven. A provenance audit of shipped assets remains a recorded obligation before any commercial distribution (approved plan, section I3.5). No new third-party dataset was ingested in Phase 2.
+
+## wordfreq 3.1.1 (Robyn Speer) — Zipf word frequencies
+
+- **License:** CC-BY-SA-4.0
+- **Source:** https://github.com/rspeer/wordfreq
+- **What:** word frequency data (exported Zipf values)
+- **Retrieved:** 2026-10-15
+
+Secondary frequency evidence from wordfreq (Speer, R. (2022). rspeer/wordfreq: v3.0 (v3.0.2). Zenodo. https://doi.org/10.5281/zenodo.7199437), data CC BY-SA 4.0 (incorporating Google Books Ngram and SUBTLEX components with their acknowledgements), code Apache-2.0.
+
+> P3a: `zipf` column of the candidate pools only (authoring evidence); never the `frequency` field of a lexeme.

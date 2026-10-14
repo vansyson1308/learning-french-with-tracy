@@ -28,7 +28,7 @@ import {
   frequencyBandFor,
   lexiquePosFor,
   loadMatchOverrides,
-  loadSourceManifest,
+  loadSourceManifestV1,
   type SourceMatchRow,
 } from "./lib/lexicon";
 import type { CoreLexemeRows, TrimmedRow } from "./lib/lexique-derive-lib";
@@ -46,7 +46,7 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-const manifest = loadSourceManifest(LEXIQUE_LANG);
+const manifest = loadSourceManifestV1(LEXIQUE_LANG);
 if (manifest === null) fail(`content/${LEXIQUE_LANG}/lexicon/source-manifest.json is missing`);
 if (manifest.retrieval.status !== "retrieved") fail("manifest is not retrieved (fail-closed)");
 const pinned = manifest.retrieval.sha256;

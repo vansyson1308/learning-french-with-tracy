@@ -1,0 +1,94 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "es",
+  "recordedAt": "2026-10-14",
+  "artifacts": {
+    "kaikki-en-es.jsonl": {
+      "status": "retrieved",
+      "sha256": "7b23a5dc004a47b63edc2e79a34b246bbf59d1a3067a1843a5c554c0e252b97c",
+      "bytes": 1054565723,
+      "lines": 811049,
+      "samples": [
+        "{\"pos\": \"phrase\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"es\", \"2\": \"phrase\"}, \"expansion\": \"cf.\"}], \"word\": \"cf.\", \"lang\": \"Spanish\", \"lang_code\": \"es\", \"senses\": [{\"links\": [[\"cónfer\", \"cónfer#Spanish\"]], \"glosses\": [\"abbreviation of cónfer\"], \"tags\": [\"abbreviation\", \"alt-of\"], \"alt_of\": [{\"word\": \"cónfer\"}], \"id\": \"en-cf.-es-phrase-VKiUH6J-\", \"categories\": []}]}",
+        "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"es\", \"2\": \"noun form\", \"g\": \"f-p\"}, \"expansion\": \"tapas f pl\"}], \"word\": \"tapas\", \"lang\": \"Spanish\", \"lang_code\": \"es\", \"senses\": [{\"links\": [[\"tapa\", \"tapa#Spanish\"]], \"glosses\": [\"plural of tapa\"], \"tags\": [\"feminine\", \"form-of\", \"plural\"], \"form_of\": [{\"word\": \"tapa\"}], \"id\": \"en-tapas-es-noun-4q~DgkZ-\"}]}"
+      ]
+    },
+    "kaikki-vi-es.jsonl": {
+      "status": "retrieved",
+      "sha256": "e9d843d255143178d4817bcfbc6d030b5e8a14dca17f3a0ab53caaaaffb62303",
+      "bytes": 4302623,
+      "lines": 4706,
+      "samples": []
+    },
+    "frequencywords-es.txt": {
+      "status": "retrieved",
+      "sha256": "dcff3ad4316192f4dc4ff7d26e637c6ff314ef1ca0f3f720c5649018a71056c0",
+      "bytes": 658626,
+      "lines": 50000,
+      "samples": [
+        "de 14459520",
+        "que 14421005"
+      ]
+    },
+    "wordfreq-es.csv": {
+      "status": "retrieved",
+      "sha256": "4d5d4937af2acb8128afa4a6940feb188d1a880e6611877934a1d3b247581709",
+      "bytes": 692552,
+      "lines": 50001,
+      "samples": [
+        "word,zipf",
+        "de,7.81"
+      ]
+    },
+    "tatoeba-es-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "f27f44533fc7725303eb58da2eccba7f9ab7e19ccd029fb811ef6d4bc783467e",
+      "bytes": 45897431,
+      "lines": 442544,
+      "samples": [
+        "2481\tspa\t¡Intentemos algo!\tShishir\t\\N\t2010-08-08 23:28:48",
+        "2482\tspa\tTengo que irme a dormir.\tShishir\t\\N\t2010-09-25 23:27:04"
+      ]
+    },
+    "tatoeba-es-links-en.tsv": {
+      "status": "retrieved",
+      "sha256": "45a490212158efcb6dfbbddbce43381b6a62e8ee8ac130f2df858cd73855a162",
+      "bytes": 4440350,
+      "lines": 283852,
+      "samples": [
+        "2481\t1276",
+        "2482\t1277"
+      ]
+    },
+    "tatoeba-es-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "bbc76a4acdd7473a476874f3e20322841186ba1462feb3b1e024402fcecd376c",
+      "bytes": 8107,
+      "lines": 591,
+      "samples": [
+        "2482\t5662",
+        "2483\t5663"
+      ]
+    },
+    "tatoeba-eng-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+      "bytes": 198754998,
+      "lines": 2038719,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+      "bytes": 3739296,
+      "lines": 33223,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}

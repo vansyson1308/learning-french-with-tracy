@@ -312,7 +312,9 @@ describe("dueReviewQueue ordering", () => {
   test("itemIdForCourse: stable ids for French, raw surfaces elsewhere", () => {
     expect(itemIdForCourse(FR_COURSE_ID, "la pomme")).toBe("fr:w:pomme");
     expect(itemIdForCourse(FR_COURSE_ID, "unknown!")).toContain("fr:legacy:");
-    expect(itemIdForCourse("es-en", "el agua")).toBe("el agua");
+    // P3a: Spanish has a registry too; German (no lexicon yet) keeps raw surfaces.
+    expect(itemIdForCourse("es-en", "el agua")).toBe("es:w:agua");
+    expect(itemIdForCourse("de-en", "das Haus")).toBe("das Haus");
   });
 });
 

@@ -22,7 +22,7 @@ import path from "path";
 import {
   authoredLemmaPosKeys,
   loadRichLexicon,
-  loadSourceManifest,
+  loadSourceManifestV1,
   parseLexiqueTsv,
   selectCandidatePool,
 } from "./lib/lexicon";
@@ -79,7 +79,7 @@ try {
   fail(`cannot read artifact at ${artifactPath}`);
 }
 const sha256 = createHash("sha256").update(bytes).digest("hex");
-const manifest = loadSourceManifest(LEXIQUE_LANG);
+const manifest = loadSourceManifestV1(LEXIQUE_LANG);
 if (manifest === null) throw new Error(`content/${LEXIQUE_LANG}/lexicon/source-manifest.json is missing`);
 
 if (manifest.retrieval.status !== "retrieved") {

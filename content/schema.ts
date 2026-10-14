@@ -650,7 +650,22 @@ export const TOPIC_VALUES = [
   "places",
   "shopping",
   "time",
+  // P3a (lexicon ETL v2: topic-balanced selection for the new target languages)
+  "family",
+  "home",
+  "body",
+  "clothing",
+  "colors",
+  "numbers",
+  "weather",
+  "nature",
+  "work",
+  "school",
+  "feelings",
+  "leisure",
+  "technology",
 ] as const;
+export type TopicValue = (typeof TOPIC_VALUES)[number];
 export type LexemeTopic = (typeof TOPIC_VALUES)[number];
 
 export const FREQUENCY_BAND_VALUES = ["very-common", "common", "less-common"] as const;
@@ -674,6 +689,8 @@ export const LexemeExampleSchema = z.strictObject({
   target: z.string().min(1),
   translations: nativeText(),
   source: z.string().min(1),
+  /** Source-side identity of the sentence (P3a: Tatoeba `spaId|engId`, kaikki `word|pos|sense`). */
+  key: z.string().min(1).optional(),
 });
 export type LexemeExampleSource = z.infer<typeof LexemeExampleSchema>;
 
@@ -742,7 +759,7 @@ export type RichLexicon = z.infer<typeof RichLexiconSchema>;
  * and artifact identity; "not-retrieved" forbids them, and the extractor
  * refuses to ingest anything while the status is "not-retrieved".
  */
-export const SourceManifestSchema = z
+export const SourceManifestV1Schema = z
   .strictObject({
     source: z.strictObject({
       id: z.string().min(1),
@@ -792,6 +809,66 @@ export const SourceManifestSchema = z
       });
     }
   });
+export type SourceManifestV1 = z.infer<typeof SourceManifestV1Schema>;
+
+/**
+ * P3a: a multi-source manifest for the ETL v2 languages — one pinned
+ * retrieval per open source (kaikki editions, FrequencyWords, wordfreq,
+ * Tatoeba, anchor lists, dictionaries). `frequencySourceId` names the
+ * measurement every `frequency` field must cite; a `retrieved` source pins
+ * sha256 + bytes + date; a declared-but-not-retrieved source (SUBTLEX-PT,
+ * NIKL) records the blocker and can never be referenced by a lexeme.
+ */
+export const SOURCE_ROLES = ["lexicon", "gloss-vi", "frequency", "frequency-secondary", "examples", "anchor", "dictionary"] as const;
+export const SourceManifestV2Schema = z
+  .strictObject({
+    version: z.literal(2),
+    language: languageCode,
+    generator: z.literal("scripts/lexicon-etl.ts"),
+    sources: z
+      .array(
+        z.strictObject({
+          id,
+          role: z.enum(SOURCE_ROLES),
+          name: z.string().min(1),
+          license: z.string().min(1),
+          citation: z.string().min(1),
+          url: z.string().min(1),
+          artifactFilename: z.string().min(1),
+          retrieval: z.strictObject({
+            status: z.enum(["not-retrieved", "retrieved"]),
+            retrievedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+            sha256: z.string().regex(/^[a-f0-9]{64}$/).nullable(),
+            bytes: z.number().int().nonnegative().nullable(),
+            /** Why a declared source is not retrieved (blocked download, no stable URL). */
+            blocker: z.string().min(1).optional(),
+          }),
+          notes: z.string().min(1),
+        })
+      )
+      .min(1),
+    frequencySourceId: id,
+    notes: z.string().min(1),
+  })
+  .superRefine((m, ctx) => {
+    const ids = new Set<string>();
+    m.sources.forEach((s, i) => {
+      const r = s.retrieval;
+      if (r.status === "retrieved" && (!r.sha256 || !r.retrievedAt || r.bytes === null)) {
+        ctx.addIssue({ code: "custom", message: `source ${s.id} (${s.artifactFilename}) is "retrieved" but sha256/bytes/retrievedAt are not pinned`, path: ["sources", i, "retrieval"] });
+      }
+      if (r.status === "not-retrieved" && (r.sha256 !== null || r.retrievedAt !== null || r.bytes !== null)) {
+        ctx.addIssue({ code: "custom", message: `source ${s.id} is "not-retrieved" and must not carry artifact pins`, path: ["sources", i, "retrieval"] });
+      }
+      ids.add(s.id);
+    });
+    if (!ids.has(m.frequencySourceId)) {
+      ctx.addIssue({ code: "custom", message: `frequencySourceId ${m.frequencySourceId} is not one of the manifest sources`, path: ["frequencySourceId"] });
+    }
+  });
+export type SourceManifestV2 = z.infer<typeof SourceManifestV2Schema>;
+
+export const SourceManifestSchema = z.union([SourceManifestV1Schema, SourceManifestV2Schema]);
 export type SourceManifest = z.infer<typeof SourceManifestSchema>;
 
 /* ------------------------------------------------------------------ */
@@ -921,6 +998,15 @@ const LICENSE_ALLOWLIST = [
   "CC-BY-2.0-FR",
   "CC0-1.0",
   "original",
+  /**
+   * P3a: CEFR-J Vocabulary Profile terms (Tono Lab, TUFS, via Open Language
+   * Profiles): "can be used for research and commercial purposes with no
+   * charge, provided that you cite the dataset properly". Attribution-only
+   * terms, used as a BUILD-TIME selection anchor for English (level labels
+   * in content/en/lexicon/derived/anchors.json); no CEFR-J text ships in
+   * the app. Registered explicitly so the allowlist stays the gate.
+   */
+  "CEFR-J-terms",
 ] as const;
 export const ALLOWED_LICENSES: readonly string[] = LICENSE_ALLOWLIST;
 
@@ -945,6 +1031,8 @@ export const SourceRegistrySchema = z.strictObject({
         notes: z.string().optional(),
         /** P1c: a source that only backs TEST-ONLY content — registered for provenance, never attributed in the app. */
         testOnly: z.boolean().optional(),
+        /** P3a: a build-time selection reference (anchor lists) whose data never ships; attributed in ATTRIBUTIONS.md only. */
+        buildTimeOnly: z.boolean().optional(),
       })
     )
     .min(1),

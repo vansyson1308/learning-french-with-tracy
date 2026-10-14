@@ -42,12 +42,12 @@
       "recognitionLocale": "es-ES",
       "ttsLocale": "es-ES",
       "script": "latin",
-      "idPrefix": "",
-      "legacyIdPrefix": "",
+      "idPrefix": "es:w:",
+      "legacyIdPrefix": "es:legacy:",
       "capabilities": {
         "fsrs": false,
         "dailySession": false,
-        "lexicon": false,
+        "lexicon": true,
         "concepts": false,
         "placement": false,
         "checkpoints": false,
@@ -58,7 +58,12 @@
         "writing": false,
         "conversation": false
       },
-      "artifacts": {}
+      "artifacts": {
+        "ids": "src/content/ids/es.json",
+        "lexiconIndex": "src/content/lexicon/es-index.json",
+        "lexiconFallback": "src/content/lexicon/es-web-fallback.json",
+        "lexiconDb": "assets/lexicon/es-lexicon-v3-e06659b53a31c566.db"
+      }
     },
     "fr-en": {
       "id": "fr-en",

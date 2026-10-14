@@ -37,6 +37,7 @@ import type { RichLexicon, SourceManifest, SourceRegistry } from "../../content/
 import { foldLigatures } from "../../src/lib/languages/base";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeLexeme } from "./native-text";
+import { manifestView } from "./lexicon-etl/manifest";
 import { canonicalJson, readJson, safeResolve } from "./pipeline";
 import { lexiconSourceAudit, type SourceMatchRow } from "./lexicon";
 
@@ -91,7 +92,7 @@ export function lexiconContentHash(
     dbSchemaVersion: DB_SCHEMA_VERSION,
     dbBuildRevision: DB_BUILD_REVISION,
     lexicon: lexiconNativeView(lexicon, nativeCode),
-    sourceSha256: manifest?.retrieval.sha256 ?? null,
+    sourceSha256: manifestView(manifest)?.primarySha256 ?? null,
     sources: referenced,
   });
   return createHash("sha256").update(input).digest("hex").slice(0, 16);
@@ -499,8 +500,8 @@ export function buildQualityReport(
     contentHash,
     totals: { lexemes: lexemes.length },
     externalSource: {
-      id: manifest?.source.id ?? null,
-      retrievalStatus: manifest?.retrieval.status ?? "none",
+      id: manifestView(manifest)?.primaryId ?? null,
+      retrievalStatus: manifest === null ? "none" : manifestView(manifest)?.primaryRetrieved ? "retrieved" : "not-retrieved",
       matchStatusCounts: auditCounts,
     },
     coverage: {
@@ -520,7 +521,7 @@ export function buildQualityReport(
       reason:
         manifest === null
           ? "no external lexical source for this language"
-          : manifest.retrieval.status === "retrieved"
+          : manifestView(manifest)?.primaryRetrieved
             ? "run lexicon:source:extract to generate"
             : `source not retrieved (see content/${lexicon.language}/lexicon/ACQUISITION.md)`,
     },
@@ -540,11 +541,12 @@ export function buildSourceAuditReport(audit: SourceMatchRow[]) {
  * audit rather than inventing or reusing drifted evidence.
  */
 export function committedSourceAudit(lexicon: RichLexicon, manifest: SourceManifest | null): SourceMatchRow[] {
-  if (manifest?.retrieval.status === "retrieved") {
+  const view = manifestView(manifest);
+  if (view?.version === 1 && view.primaryRetrieved) {
     const rel = `content/${lexicon.language}/lexicon/derived/lexique-subset.json`;
     if (existsSync(safeResolve(rel))) {
       const subset = readJson(rel) as { source?: { sha256?: string }; audit?: SourceMatchRow[] };
-      if (Array.isArray(subset.audit) && subset.source?.sha256 === manifest.retrieval.sha256) {
+      if (Array.isArray(subset.audit) && subset.source?.sha256 === view.primarySha256) {
         return subset.audit;
       }
     }
