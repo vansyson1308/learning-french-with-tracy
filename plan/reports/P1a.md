@@ -3,7 +3,7 @@
 Session: 2026-10-14 (Claude Code, autonomous loop). Branch `phase-1/golden-tests`.
 
 ## REPORT P1a
-Branch / PR: `phase-1/golden-tests` → `main`; PR: PR_PLACEHOLDER
+Branch / PR: `phase-1/golden-tests` → `main`; PR: https://github.com/vansyson1308/learning-french-with-tracy/pull/29
 Changed:
 - `scripts/lib/compile-artifacts.ts` (new): `validateAllSources()` + `compileAllArtifacts()` — the compiler's validation and in-memory artifact assembly extracted verbatim from `scripts/compile-content.ts` (which now calls them; `content:check` proves zero drift). Needed so a golden test can recompile without writing.
 - `scripts/lib/golden.ts` (new): compile manifest (sha256 of every file under `src/content/**`, every `content/reports/*.json`, `ATTRIBUTIONS.md`; logical dump of `assets/lexicon/*.db`), fresh recompile hashing, diffs, snapshot hashing.
@@ -20,7 +20,7 @@ Changed:
   - `README.md`: what is pinned, how to re-bless, when that is legitimate.
 - `.github/workflows/ci.yml`: named step **Golden tests (French behaviour pinned)** (`bun scripts/golden.ts --check`) in every timezone lane.
 - `plan/STATUS.md`, `plan/reports/P1a.md`.
-Gates: typecheck ✅ · lint ✅ · bun test ✅ (1259pass incl. 54 runtime + 3 compile goldens; local TZ, plus the golden suites re-run under Pacific/Kiritimati, Pacific/Pago_Pago, Asia/Tokyo ✅) · jest ✅ (69) · content:check ✅ (zero drift after the compiler extraction) · audio:check ✅ · release:identity ✅ · golden ✅ (`bun scripts/golden.ts --check`: 45 files + db, 54 runtime, ~6 s total; runtime suites alone ~0.2 s) · web export+e2e: CI
+Gates: typecheck ✅ · lint ✅ · bun test ✅ (1,259 pass incl. 54 runtime + 3 compile goldens; local TZ, plus the golden suites re-run under Pacific/Kiritimati, Pacific/Pago_Pago, Asia/Tokyo ✅) · jest ✅ (69) · content:check ✅ (zero drift after the compiler extraction) · audio:check ✅ · release:identity ✅ · golden ✅ (`bun scripts/golden.ts --check`: 45 files + db, 54 runtime, ~6 s total; runtime suites alone ~0.2 s) · web export+e2e: CI
 Device: not run (no app change).
 Docs updated: `src/lib/__tests__/golden/README.md`, `scripts/__tests__/golden/CHANGELOG.md`, `plan/STATUS.md`.
 Open questions / risks:

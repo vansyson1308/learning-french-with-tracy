@@ -3,7 +3,7 @@
 | id | milestone | branch / PR | status | date | notes |
 |---|---|---|---|---|---|
 | P0 | Local signed APK (RC3) + small fixes | `phase-0/rc3-local-apk` (PR pending push) | done (device test pending) | 2026-10-14 | toolchain installed; 7 small fixes + library-permission block, all gates green locally and on CI (5 TZ); release APK built and **signed by the owner** (`579a3906…7a9f`, signer `d280d1de…3182`); PR #28 merged; phone packets 0–3 and tag `v1.0.0-rc.3` still owner actions |
-| P1a | Golden tests | `phase-1/golden-tests` / PR_P1A | done | 2026-10-14 | compile manifest (45 files + SQLite logical dump) + 54 runtime snapshots (session, today, evidence, assessment, lexicon, grading, migrations); `bun scripts/golden.ts --check|--update --reason`; CI step "Golden tests" in all 5 TZ lanes; compiler artifact assembly extracted to `scripts/lib/compile-artifacts.ts` (zero drift) |
+| P1a | Golden tests | `phase-1/golden-tests` / [PR #29](https://github.com/vansyson1308/learning-french-with-tracy/pull/29) | done | 2026-10-14 | compile manifest (45 files + SQLite logical dump) + 54 runtime snapshots (session, today, evidence, assessment, lexicon, grading, migrations); `bun scripts/golden.ts --check|--update --reason`; CI step "Golden tests" in all 5 TZ lanes; compiler artifact assembly extracted to `scripts/lib/compile-artifacts.ts` (zero drift) |
 | P1b | CourseProfile decouple | – | not started | | |
 | P1c | Schema/compiler generalise | – | not started | | |
 | P1d | Persistence v4 | – | not started | | |
