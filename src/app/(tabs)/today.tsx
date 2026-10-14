@@ -11,9 +11,10 @@ import React, { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
-import { hasCapability } from "@/lib/course-profile";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
 import { listenWordClipIndex } from "@/lib/reception/content";
 import { speakExerciseIndex } from "@/lib/speech/content";
@@ -30,6 +31,7 @@ const PRESET_ORDER: TodayPreset[] = ["short", "regular", "long"];
 export default function TodayScreen() {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t, languageName } = useT();
   // Targeted selectors (§89): the preview re-renders only when the active
   // course's progress, the streak fields, or the course id change.
   const activeCourseId = useProgress((s) => s.activeCourseId);
@@ -37,6 +39,7 @@ export default function TodayScreen() {
   const streak = useProgress((s) => currentStreak(s));
   const placementFloor = useProgress((s) => assessmentFor(s, s.activeCourseId).placementFloor);
   const { pack } = useCourseContent(activeCourseId);
+  const langName = languageName(courseProfile(activeCourseId).targetCode, pack.targetLanguage);
   const [preset, setPreset] = useState<TodayPreset>("regular");
   // "Can't speak now" (P8 §17): per-visit choice — off composes a fully
   // silent session; the due speak cards stay honestly in the backlog.
@@ -85,11 +88,11 @@ export default function TodayScreen() {
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <ScrollView contentContainerStyle={styles.body}>
-        <Text style={styles.heading}>Today</Text>
+        <Text style={styles.heading}>{t("today.title")}</Text>
         <View style={styles.courseRow}>
           <Flag courseId={activeCourseId} size={20} />
-          <Text style={styles.courseLabel}>{pack.targetLanguage}</Text>
-          <View style={styles.streakChip} accessibilityLabel={`Streak ${streak} days`}>
+          <Text style={styles.courseLabel}>{langName}</Text>
+          <View style={styles.streakChip} accessibilityLabel={t("today.streakLabel", { n: streak })}>
             <MaterialCommunityIcons name="fire" size={18} color={colors.orange} />
             <Text style={styles.streakText}>{streak}</Text>
           </View>
@@ -99,15 +102,12 @@ export default function TodayScreen() {
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <Ionicons name="checkmark-circle" size={24} color={colors.green} />
-              <Text style={styles.cardTitle}>You&apos;re caught up for now.</Text>
+              <Text style={styles.cardTitle}>{t("today.caughtUpTitle")}</Text>
             </View>
-            <Text style={styles.cardSubtitle}>
-              No reviews are due and there&apos;s nothing new to introduce right now.
-              Keep going on your path, or practice freely.
-            </Text>
-            <DuoButton label="Continue learning" onPress={() => router.push("/")} />
+            <Text style={styles.cardSubtitle}>{t("today.caughtUpBody")}</Text>
+            <DuoButton label={t("today.continueLearning")} onPress={() => router.push("/")} />
             <DuoButton
-              label="Practice"
+              label={t("today.practice")}
               variant="secondary"
               onPress={() => router.push("/practice")}
             />
@@ -116,31 +116,30 @@ export default function TodayScreen() {
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <Ionicons name="sunny" size={24} color={colors.amber} />
-              <Text style={styles.cardTitle}>Your session</Text>
+              <Text style={styles.cardTitle}>{t("today.yourSession")}</Text>
             </View>
 
             <View style={styles.previewRow}>
               <PreviewStat
                 icon={<MaterialCommunityIcons name="brain" size={20} color={colors.indigo} />}
                 value={plan.reviewCount}
-                label={plan.reviewCount === 1 ? "review" : "reviews"}
+                label={t("today.reviews", { n: plan.reviewCount })}
               />
               <PreviewStat
                 icon={<Ionicons name="sparkles" size={20} color={colors.green} />}
                 value={plan.newCount}
-                label={plan.newCount === 1 ? "new word" : "new words"}
+                label={t("today.newWords", { n: plan.newCount })}
               />
               <PreviewStat
                 icon={<Ionicons name="time-outline" size={20} color={colors.textMuted} />}
                 value={`≈${plan.estimatedMinutes}`}
-                label="min"
+                label={t("today.min")}
               />
             </View>
 
             {plan.backlogRemaining > 0 ? (
               <Text style={styles.backlogNote}>
-                Focusing on your {plan.reviewCount} most at-risk words —{" "}
-                {plan.backlogRemaining} more still waiting after this session.
+                {t("today.backlogNote", { n: plan.reviewCount, remaining: plan.backlogRemaining })}
               </Text>
             ) : null}
 
@@ -149,7 +148,7 @@ export default function TodayScreen() {
                 onPress={() => setSpeakEnabled((v) => !v)}
                 accessibilityRole="switch"
                 accessibilityState={{ checked: !speakEnabled }}
-                accessibilityLabel="Can't speak right now"
+                accessibilityLabel={t("today.cantSpeakLabel")}
                 style={styles.speakToggle}
                 testID="today-speak-toggle"
               >
@@ -159,9 +158,7 @@ export default function TodayScreen() {
                   color={speakEnabled ? colors.textMuted : colors.orange}
                 />
                 <Text style={styles.speakToggleText}>
-                  {speakEnabled
-                    ? `Includes ${plan.speakCount} speaking ${plan.speakCount === 1 ? "review" : "reviews"} — tap if you can't speak right now`
-                    : "Speaking is off for this session — those reviews stay due"}
+                  {speakEnabled ? t("today.speakIncluded", { n: plan.speakCount }) : t("today.speakOff")}
                 </Text>
               </Pressable>
             ) : null}
@@ -169,7 +166,8 @@ export default function TodayScreen() {
             <View
               style={styles.presetRow}
               accessibilityRole="radiogroup"
-              accessibilityLabel="Session length"
+              accessibilityLabel={t("today.sessionLength")}
+              testID="today-presets"
             >
               {PRESET_ORDER.map((p) => {
                 const selected = preset === p;
@@ -179,13 +177,14 @@ export default function TodayScreen() {
                     onPress={() => setPreset(p)}
                     accessibilityRole="radio"
                     accessibilityState={{ selected }}
-                    accessibilityLabel={`${TODAY_PRESETS[p].minutes} minute session`}
+                    accessibilityLabel={t("today.minuteSession", { n: TODAY_PRESETS[p].minutes })}
+                    testID={`today-preset-${p}`}
                     style={[styles.presetChip, selected && styles.presetChipSelected]}
                   >
                     <Text
                       style={[styles.presetText, selected && styles.presetTextSelected]}
                     >
-                      {TODAY_PRESETS[p].minutes} min
+                      {t("today.minutes", { n: TODAY_PRESETS[p].minutes })}
                     </Text>
                   </Pressable>
                 );
@@ -193,7 +192,8 @@ export default function TodayScreen() {
             </View>
 
             <DuoButton
-              label="Start today's session"
+              label={t("today.startSession")}
+              testID="today-start"
               onPress={() =>
                 router.push({
                   pathname: "/session/today",

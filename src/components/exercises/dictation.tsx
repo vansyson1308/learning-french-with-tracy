@@ -6,6 +6,7 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { ListeningPlayerView } from "@/components/session/listening-player-view";
 import type { ListeningPlayerApi } from "@/lib/reception/use-listening-player";
 import type { DictationExercise } from "@/lib/types";
@@ -30,10 +31,11 @@ export function Dictation({
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t } = useT();
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.title}>Type what you hear</Text>
+      <Text style={styles.title}>{t("ex.typeWhatYouHear")}</Text>
       <ListeningPlayerView api={player} onAudioUnavailable={onAudioUnavailable} />
       <TextInput
         style={[
@@ -44,7 +46,7 @@ export function Dictation({
         value={answer ?? ""}
         onChangeText={onAnswer}
         editable={status === "none"}
-        placeholder={`Type in ${targetLanguage} — accents count`}
+        placeholder={t("ex.typeInAccents", { language: targetLanguage })}
         placeholderTextColor={colors.neutral400}
         autoCapitalize="none"
         autoCorrect={false}

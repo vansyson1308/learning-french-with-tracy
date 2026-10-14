@@ -6,6 +6,8 @@
  * asserted away, and are recorded in the assessment dossier.
  */
 import { describe, expect, test } from "bun:test";
+import { translateMessage } from "../i18n/translate";
+import type { Message } from "../i18n/message";
 
 import { gradeSpokenAttempt } from "../speech/grader";
 import { speechItemFor, speechItemIds } from "../speech/content";
@@ -23,6 +25,9 @@ function promptTextOf(task: (typeof guided)[number]): string {
 function evaluate(task: (typeof guided)[number], text: string) {
   return evaluateGuidedWriting({ rules: languageRules("fr"), targetLanguage: "French", text, rubric: task.rubric, promptText: promptTextOf(task), knownVocabulary: knownFrench });
 }
+
+const text = (ms: readonly Message[]) => ms.map((m) => translateMessage("en", m)).join(" ");
+
 
 const ENGLISH_WRAPPER =
   "I really think that what you want me to write here today is probably something like this so here it goes";
@@ -143,7 +148,7 @@ describe("writing rubric attacks (§27) — every guided task", () => {
       const stuffing = task.rubric.requiredSlots.map((s) => s.variants.join(" ")).join(" ");
       const result = evaluate(task, stuffing);
       if (result.verdict === "meets_rubric") stuffedAccepted += 1;
-      else expect(result.feedback.join(" ")).toMatch(/once|Keep it short/);
+      else expect(text(result.feedback)).toMatch(/once|Keep it short/);
     }
     expect(multiVariantTasks).toBeGreaterThan(5);
     expect(stuffedAccepted).toBe(0);
@@ -167,7 +172,7 @@ describe("writing rubric attacks (§27) — every guided task", () => {
     expect(run("Moi je suis Léa.").verdict).toBe("meets_rubric"); // two overlapping variants = one answer
     const stuffed = run("Je m'appelle Léa. Je suis Léa.");
     expect(stuffed.verdict).toBe("does_not_meet_rubric");
-    expect(stuffed.feedback[0]).toMatch(/Say your name once/);
+    expect(text([stuffed.feedback[0]])).toMatch(/Say your name once/);
   });
 });
 

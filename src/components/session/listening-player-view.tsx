@@ -9,6 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import type { ListeningPlayerApi } from "@/lib/reception/use-listening-player";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -22,6 +23,7 @@ export function ListeningPlayerView({
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t } = useT();
   const { state } = api;
   const pct = api.duration > 0 ? Math.min(100, (api.position / api.duration) * 100) : 0;
   const exhausted = api.playsLeft === 0 && !state.playing && !state.resumeCredit;
@@ -34,7 +36,7 @@ export function ListeningPlayerView({
           disabled={!state.playing && !api.canPlay}
           accessibilityRole="button"
           accessibilityLabel={
-            state.playing ? "Pause audio" : state.everFinished ? "Play again" : "Play audio"
+            state.playing ? t("player.pause") : state.everFinished ? t("player.playAgain") : t("a11y.playAudio")
           }
           style={[styles.playButton, !state.playing && !api.canPlay && styles.playDisabled]}
           testID="listening-play"
@@ -46,24 +48,22 @@ export function ListeningPlayerView({
           />
         </Pressable>
         <View style={styles.meta}>
-          <View style={styles.track} accessibilityLabel="Audio progress">
+          <View style={styles.track} accessibilityLabel={t("player.progress")}>
             <View style={[styles.fill, { width: `${pct}%` }]} />
           </View>
           <View style={styles.metaRow}>
             {api.playsLeft !== null ? (
               <Text style={styles.pill} testID="plays-left">
-                {exhausted
-                  ? "No plays left"
-                  : `${api.playsLeft} ${api.playsLeft === 1 ? "play" : "plays"} left`}
+                {exhausted ? t("player.noPlaysLeft") : t("player.playsLeft", { n: api.playsLeft })}
               </Text>
             ) : (
-              <Text style={styles.pillMuted}>Listen as often as you like</Text>
+              <Text style={styles.pillMuted}>{t("player.unlimited")}</Text>
             )}
             {state.config.allowSlow ? (
               <Pressable
                 onPress={api.onToggleRate}
                 accessibilityRole="button"
-                accessibilityLabel={state.rate === 1 ? "Switch to slow speed" : "Switch to normal speed"}
+                accessibilityLabel={state.rate === 1 ? t("player.slowOn") : t("player.slowOff")}
                 style={[styles.rateChip, state.rate !== 1 && styles.rateChipActive]}
                 testID="rate-toggle"
               >
@@ -73,7 +73,7 @@ export function ListeningPlayerView({
                   color={state.rate !== 1 ? colors.greenDark : colors.textMuted}
                 />
                 <Text style={[styles.rateText, state.rate !== 1 && styles.rateTextActive]}>
-                  {state.rate === 1 ? "Slow" : "Slow ✓"}
+                  {state.rate === 1 ? t("player.slow") : t("player.slowActive")}
                 </Text>
               </Pressable>
             ) : null}
@@ -81,20 +81,18 @@ export function ListeningPlayerView({
         </View>
       </View>
       {state.resumeCredit && !state.playing ? (
-        <Text style={styles.interrupted}>
-          Playback was interrupted — resuming won&apos;t use a play.
-        </Text>
+        <Text style={styles.interrupted}>{t("player.interrupted")}</Text>
       ) : null}
       {onAudioUnavailable ? (
         <Pressable
           onPress={onAudioUnavailable}
           accessibilityRole="button"
-          accessibilityLabel="I can't use audio right now"
+          accessibilityLabel={t("player.noAudio")}
           style={styles.noAudio}
           testID="audio-unavailable"
         >
           <Ionicons name="volume-mute-outline" size={15} color={colors.textMuted} />
-          <Text style={styles.noAudioText}>I can&apos;t use audio right now</Text>
+          <Text style={styles.noAudioText}>{t("player.noAudio")}</Text>
         </Pressable>
       ) : null}
     </View>

@@ -4,6 +4,8 @@
  * of the mandated attacks or requirements — none may be weakened.
  */
 import { describe, expect, test } from "bun:test";
+import { translateMessage } from "../i18n/translate";
+import type { Message } from "../i18n/message";
 
 import {
   evaluateGuidedWriting,
@@ -47,6 +49,9 @@ const rubric: WritingRubric = {
   maxTokens: 30,
   requireSentenceVerbs: ["m'appelle", "suis", "ai", "habite"],
 };
+
+const text = (ms: readonly Message[]) => ms.map((m) => translateMessage("en", m)).join(" ");
+
 
 const PROMPT =
   "Introduce yourself in French. Name: Marie. Age: 21. City: Paris.";
@@ -98,8 +103,8 @@ describe("guided writing: rejection with named reasons (§67/§77)", () => {
     const r = grade("Je m'appelle Marie et j'habite à Paris.");
     expect(r.verdict).toBe("does_not_meet_rubric");
     expect(r.missingSlots.map((m) => m.id)).toEqual(["age"]);
-    expect(r.feedback.join(" ")).toContain("your age");
-    expect(r.feedback.join(" ")).toContain("your name"); // the "included X but not Y" shape
+    expect(text(r.feedback)).toContain("your age");
+    expect(text(r.feedback)).toContain("your name"); // the "included X but not Y" shape
   });
 
   test("a wrong fact (wrong number) is a missing slot, not a lucky pass", () => {
@@ -117,20 +122,20 @@ describe("guided writing: rejection with named reasons (§67/§77)", () => {
   test("prompt-copy attack: echoing the given facts is not writing", () => {
     const r = grade("Marie 21 Paris");
     expect(r.verdict).toBe("does_not_meet_rubric");
-    expect(r.feedback[0]).toContain("don't copy the prompt");
+    expect(text([r.feedback[0]])).toContain("don't copy the prompt");
   });
 
   test("too-short responses get the honest length feedback", () => {
     const r = grade("Je suis Marie");
     expect(r.verdict).toBe("does_not_meet_rubric");
-    expect(r.feedback.join(" ")).toContain("at least 6 words");
+    expect(text(r.feedback)).toContain("at least 6 words");
   });
 
   test("keyword-stuffed over-length paste does not pass", () => {
     const padding = Array(30).fill("paris").join(" ");
     const r = grade(`Je m'appelle Marie j'ai 21 ans j'habite à Paris ${padding}`);
     expect(r.verdict).toBe("does_not_meet_rubric");
-    expect(r.feedback.join(" ")).toContain("short and simple");
+    expect(text(r.feedback)).toContain("short and simple");
   });
 
   test("verb morphology: a task demanding a clause rejects a verbless list", () => {
@@ -147,15 +152,15 @@ describe("guided writing: rejection with named reasons (§67/§77)", () => {
       knownVocabulary: KNOWN,
     });
     expect(r.verdict).toBe("does_not_meet_rubric");
-    expect(r.feedback.join(" ")).toContain("complete sentence");
-    expect(r.feedback.join(" ")).toContain("habite");
+    expect(text(r.feedback)).toContain("complete sentence");
+    expect(text(r.feedback)).toContain("habite");
   });
 
   test("an irrelevant French response fails on slots, in French-learner terms", () => {
     const r = grade("J'aime le chat et je travaille à Nice avec deux chats.");
     expect(r.verdict).toBe("does_not_meet_rubric");
     expect(r.missingSlots.length).toBe(3);
-    expect(r.feedback.join(" ")).toContain("Don't forget");
+    expect(text(r.feedback)).toContain("Don't forget");
   });
 });
 
@@ -168,7 +173,7 @@ describe("guided writing: the insufficiently_scorable floor (§17/§67/§77)", (
   test("an English sentence containing the French keywords NEVER passes", () => {
     const r = grade("My name is Marie and I live happily in Paris with friends");
     expect(r.verdict).toBe("insufficiently_scorable");
-    expect(r.feedback[0]).toContain("French");
+    expect(text([r.feedback[0]])).toContain("French");
   });
 
   test("French/English mixture below the floor is unscorable, above it grades normally", () => {
@@ -222,8 +227,8 @@ describe("simple form evaluation (§77)", () => {
       rubric: formRubric,
     });
     expect(r.verdict).toBe("does_not_meet_rubric");
-    expect(r.feedback.join(" ")).toContain("Age");
-    expect(r.feedback.join(" ")).toContain("City");
+    expect(text(r.feedback)).toContain("Age");
+    expect(text(r.feedback)).toContain("City");
   });
 
   test("a wrong field is named, not silently failed", () => {
@@ -233,6 +238,6 @@ describe("simple form evaluation (§77)", () => {
       rubric: formRubric,
     });
     expect(r.verdict).toBe("does_not_meet_rubric");
-    expect(r.feedback).toEqual(['Check the “Age” field.']);
+    expect(text(r.feedback)).toBe("Check the “Age” field.");
   });
 });

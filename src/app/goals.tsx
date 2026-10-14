@@ -11,6 +11,7 @@ import React from "react";
 import { Alert, Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT, type Translator } from "@/lib/i18n";
 import { CloseButton } from "@/components/close-button";
 import {
   allObjectives,
@@ -18,11 +19,7 @@ import {
   courseClaimableAt,
   objectiveFor,
 } from "@/lib/assessment/content";
-import {
-  A1_DOMAIN_DISPLAY,
-  deriveA1Estimate,
-  type DomainEstimate,
-} from "@/lib/assessment/estimate";
+import { deriveA1Estimate, type DomainEstimate } from "@/lib/assessment/estimate";
 import {
   deriveObjectiveStates,
   objectiveLessonMap,
@@ -37,20 +34,14 @@ import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 const GROUPS: {
   state: ObjectiveLearnerState;
-  title: string;
-  hint?: string;
+  hint?: boolean;
   icon: keyof typeof Ionicons.glyphMap;
 }[] = [
-  { state: "demonstrated", title: "Demonstrated in a checkpoint", icon: "ribbon" },
-  {
-    state: "estimated",
-    title: "Estimated from your placement",
-    hint: "Estimates only — a checkpoint can confirm them.",
-    icon: "compass",
-  },
-  { state: "needs_practice", title: "Worth practicing", icon: "barbell" },
-  { state: "learning", title: "In progress", icon: "footsteps" },
-  { state: "not_started", title: "Not started yet", icon: "ellipse-outline" },
+  { state: "demonstrated", icon: "ribbon" },
+  { state: "estimated", hint: true, icon: "compass" },
+  { state: "needs_practice", icon: "barbell" },
+  { state: "learning", icon: "footsteps" },
+  { state: "not_started", icon: "ellipse-outline" },
 ];
 
 const DOMAIN_STATUS_ICON: Record<DomainEstimate["status"], keyof typeof Ionicons.glyphMap> = {
@@ -71,20 +62,20 @@ function objectiveTitles(courseId: string, ids: string[]): string {
  * still missing — so a learner can see WHY the estimate is incomplete
  * without any assessment expertise.
  */
-function domainDetailLine(courseId: string, targetLanguage: string, d: DomainEstimate): string {
-  const name = A1_DOMAIN_DISPLAY[d.domain];
-  const shown = `${d.demonstratedObjectives.length} of ${d.requiredObjectives.length} goals shown`;
+function domainDetailLine(t: Translator["t"], courseId: string, targetLanguage: string, d: DomainEstimate): string {
+  const name = t(`domain.${d.domain}`);
+  const shown = t("goals.domain.shown", { shown: d.demonstratedObjectives.length, total: d.requiredObjectives.length });
   switch (d.status) {
     case "needs_practice":
-      return `${name} — ${shown}; worth practicing first: ${objectiveTitles(courseId, d.needsPracticeObjectives)}.`;
+      return t("goals.domain.needsPractice", { name, shown, titles: objectiveTitles(courseId, d.needsPracticeObjectives) });
     case "partial":
-      return `${name} — ${shown}; still to show: ${objectiveTitles(courseId, d.missingObjectives)}.`;
+      return t("goals.domain.partial", { name, shown, titles: objectiveTitles(courseId, d.missingObjectives) });
     case "technical_unavailable":
-      return `${name} — ${shown}; needs a device that can recognize ${targetLanguage} speech. This is a device limit, not a result.`;
+      return t("goals.domain.technical", { name, shown, language: targetLanguage });
     case "no_evidence":
-      return `${name} — ${shown}; take the checkpoint to show: ${objectiveTitles(courseId, d.missingObjectives)}.`;
+      return t("goals.domain.noEvidence", { name, shown, titles: objectiveTitles(courseId, d.missingObjectives) });
     case "demonstrated":
-      return `${name} — every required goal shown.`;
+      return t("goals.domain.demonstrated", { name });
   }
 }
 
@@ -102,10 +93,11 @@ export default function GoalsScreen() {
 function GoalsScreenBody({ courseId }: { courseId: string }) {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t, languageName } = useT();
   const progress = useProgress();
   const { pack, getLesson } = useCourseContent(courseId);
   const profile = courseProfile(courseId);
-  const targetLanguage = profile.targetLanguage;
+  const targetLanguage = languageName(profile.targetCode, profile.targetLanguage);
   const frCourse = progress.courses[courseId];
 
   const objectives = allObjectives(courseId);
@@ -149,17 +141,16 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
 
   const onResetFloor = () => {
     const doReset = () => progress.resetPlacement();
-    const message =
-      "Your path will start from the very beginning again. Nothing else changes — no progress is lost.";
+    const message = t("goals.resetBody");
     if (Platform.OS === "web") {
-      if (typeof window !== "undefined" && window.confirm(`Reset starting point?\n\n${message}`)) {
+      if (typeof window !== "undefined" && window.confirm(`${t("goals.resetTitle")}\n\n${message}`)) {
         doReset();
       }
       return;
     }
-    Alert.alert("Reset starting point?", message, [
-      { text: "Keep it", style: "cancel" },
-      { text: "Reset", style: "destructive", onPress: doReset },
+    Alert.alert(t("goals.resetTitle"), message, [
+      { text: t("goals.keepIt"), style: "cancel" },
+      { text: t("goals.reset"), style: "destructive", onPress: doReset },
     ]);
   };
 
@@ -167,30 +158,23 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <View style={styles.header}>
         <CloseButton onPress={() => exitScreen()} />
-        <Text style={styles.headerTitle}>Your {targetLanguage} goals</Text>
+        <Text style={styles.headerTitle}>{t("goals.title", { language: targetLanguage })}</Text>
         <View style={{ width: 44 }} />
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.overallCard} testID="overall-level-card">
-          <Text style={styles.overallLabel}>CEFR-aligned A1 estimate</Text>
+          <Text style={styles.overallLabel} testID="a1-estimate-label">{t("goals.estimateLabel")}</Text>
           <Text style={styles.overallValue} testID="a1-estimate-value">
-            {estimate.overall === "demonstrated"
-              ? "Demonstrated across all five skills"
-              : "Not complete yet"}
+            {estimate.overall === "demonstrated" ? t("goals.estimateDemonstrated") : t("goals.estimateIncomplete")}
           </Text>
           {courseReady ? (
             <Text style={styles.overallNote}>
               {estimate.overall === "demonstrated"
-                ? "You have shown every required goal in all five skill areas in this course's own checks. This is a course-based estimate — an official level comes only from an accredited examination."
-                : `An A1 estimate needs every required goal shown in all five skill areas — one good check is a start, not the whole area. Still to show: ${estimate.missingDomains
-                    .map((d) => A1_DOMAIN_DISPLAY[d])
-                    .join(", ")}. A skipped speaking part just leaves the estimate incomplete — it never counts against you.`}
+                ? t("goals.noteDemonstrated")
+                : t("goals.noteIncomplete", { domains: estimate.missingDomains.map((d) => t(`domain.${d}`)) })}
             </Text>
           ) : (
-            <Text style={styles.overallNote}>
-              This course cannot yet assess a full level across all five skill
-              areas.
-            </Text>
+            <Text style={styles.overallNote}>{t("goals.noteCourseNotReady")}</Text>
           )}
           <View style={styles.domainRow} testID="a1-domain-chips">
             {estimate.domains.map((d) => (
@@ -206,7 +190,7 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
                 testID={`a1-domain-chip-${d.domain}`}
                 accessible
                 accessibilityRole="text"
-                accessibilityLabel={domainDetailLine(courseId, targetLanguage, d)}
+                accessibilityLabel={domainDetailLine(t, courseId, targetLanguage, d)}
               >
                 <Ionicons
                   name={DOMAIN_STATUS_ICON[d.status]}
@@ -219,7 +203,7 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
                     d.status === "demonstrated" && { color: colors.correctText },
                   ]}
                 >
-                  {A1_DOMAIN_DISPLAY[d.domain]}
+                  {t(`domain.${d.domain}`)}
                   {d.status === "demonstrated"
                     ? ""
                     : ` ${d.demonstratedObjectives.length}/${d.requiredObjectives.length}`}
@@ -233,7 +217,7 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
                 .filter((d) => d.status !== "demonstrated")
                 .map((d) => (
                   <Text key={d.domain} style={styles.overallNote}>
-                    • {domainDetailLine(courseId, targetLanguage, d)}
+                    • {domainDetailLine(t, courseId, targetLanguage, d)}
                   </Text>
                 ))}
             </View>
@@ -242,20 +226,18 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
             <Pressable
               onPress={() => router.push("/checkpoint/fr.checkpoint.a1-capstone")}
               accessibilityRole="button"
-              accessibilityLabel="Take the A1 check"
+              accessibilityLabel={t("goals.takeA1Label")}
               style={styles.linkRow}
               testID="capstone-link"
             >
               <Ionicons name="school" size={16} color={colors.skyDark} />
-              <Text style={[styles.linkText, { color: colors.skyDark }]}>
-                Take the A1 check — all five skills in one sitting
-              </Text>
+              <Text style={[styles.linkText, { color: colors.skyDark }]}>{t("goals.takeA1")}</Text>
             </Pressable>
           ) : null}
           <Pressable
             onPress={() => setLimitsOpen((open) => !open)}
             accessibilityRole="button"
-            accessibilityLabel="What this estimate is and is not"
+            accessibilityLabel={t("goals.limitsLabel")}
             style={styles.linkRow}
             testID="estimate-limits-toggle"
           >
@@ -264,78 +246,53 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
               size={16}
               color={colors.neutral400}
             />
-            <Text style={[styles.linkText, { color: colors.neutral400 }]}>
-              What this estimate is — and is not
-            </Text>
+            <Text style={[styles.linkText, { color: colors.neutral400 }]}>{t("goals.limitsToggle")}</Text>
           </Pressable>
           {limitsOpen ? (
             <View style={styles.limitsBox} testID="estimate-limits">
-              <Text style={styles.overallNote}>
-                • It is a CEFR-aligned estimate from this course&apos;s own
-                deterministic checks, scored on your latest attempt at each
-                check — never an official CEFR examination, certificate, or
-                Council of Europe endorsement.
-              </Text>
-              <Text style={styles.overallNote}>
-                • Speaking and conversation checks need a device that can
-                recognize {targetLanguage} speech. If yours can&apos;t, those parts are
-                skipped: the estimate stays incomplete, and nothing is ever
-                counted as a failure.
-              </Text>
-              <Text style={styles.overallNote}>
-                • Retaking a check replaces your standing with the newest
-                result — a different parallel version where one exists — and
-                earlier attempts are kept, never re-scored.
-              </Text>
-              <Text style={styles.overallNote}>
-                • A full CEFR level covers more situations and spontaneity
-                than any app can sample. Treat this as an honest map of what
-                you have shown here, not a qualification.
-              </Text>
+              <Text style={styles.overallNote}>{t("goals.limits1")}</Text>
+              <Text style={styles.overallNote}>{t("goals.limits2", { language: targetLanguage })}</Text>
+              <Text style={styles.overallNote}>{t("goals.limits3")}</Text>
+              <Text style={styles.overallNote}>{t("goals.limits4")}</Text>
             </View>
           ) : null}
         </View>
 
         <View style={styles.placementCard}>
-          <Text style={styles.groupTitle}>Starting point</Text>
+          <Text style={styles.groupTitle}>{t("goals.startingPoint")}</Text>
           {placement ? (
             <>
-              <Text style={styles.rowText}>
+              <Text style={styles.rowText} testID="goals-starting-from">
                 {floor > 0 && floorRef
-                  ? `Starting from ${floorRef.unit.title} — ${floorRef.lesson.title}.`
-                  : "Starting from the beginning."}
+                  ? t("goals.startingFrom", { unit: floorRef.unit.title, lesson: floorRef.lesson.title })
+                  : t("goals.startingBeginning")}
               </Text>
               {floor > 0 ? (
                 <Pressable
                   onPress={onResetFloor}
                   accessibilityRole="button"
-                  accessibilityLabel="Reset starting point"
+                  accessibilityLabel={t("goals.resetStartingPoint")}
                   style={styles.linkRow}
                   testID="reset-floor"
                 >
                   <Ionicons name="refresh" size={16} color={colors.roseDark} />
-                  <Text style={[styles.linkText, { color: colors.roseDark }]}>
-                    Reset starting point
-                  </Text>
+                  <Text style={[styles.linkText, { color: colors.roseDark }]}>{t("goals.resetStartingPoint")}</Text>
                 </Pressable>
               ) : null}
             </>
           ) : (
-            <Text style={styles.rowText}>
-              You haven&apos;t taken the starting-point check.
-            </Text>
+            <Text style={styles.rowText}>{t("goals.notTaken")}</Text>
           )}
           <Pressable
             onPress={() => router.push("/placement/intro")}
             accessibilityRole="button"
-            accessibilityLabel={
-              placement ? "Retake the starting-point check" : "Find your starting point"
-            }
+            accessibilityLabel={placement ? t("goals.retakeLabel") : t("goals.findLabel")}
             style={styles.linkRow}
+            testID="goals-placement-action"
           >
             <Ionicons name="compass" size={16} color={colors.skyDark} />
             <Text style={[styles.linkText, { color: colors.skyDark }]}>
-              {placement ? "Retake the check" : "Find your starting point"}
+              {placement ? t("goals.retake") : t("goals.find")}
             </Text>
           </Pressable>
         </View>
@@ -347,9 +304,9 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
             <View key={group.state} style={styles.group} testID={`goal-group-${group.state}`}>
               <View style={styles.groupHeader}>
                 <Ionicons name={group.icon} size={18} color={colors.neutral700} />
-                <Text style={styles.groupTitle}>{group.title}</Text>
+                <Text style={styles.groupTitle}>{t(`goals.group.${group.state}`)}</Text>
               </View>
-              {group.hint ? <Text style={styles.groupHint}>{group.hint}</Text> : null}
+              {group.hint ? <Text style={styles.groupHint}>{t("goals.group.estimatedHint")}</Text> : null}
               {members.map((o) => (
                 <View key={o.id} style={styles.row}>
                   <Text style={styles.rowTitle}>{o.title}</Text>
@@ -360,12 +317,7 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
           );
         })}
 
-        <Text style={styles.disclaimer}>
-          Goals only count as demonstrated after a checkpoint; the
-          starting-point check gives estimates. Goal alignments in this app
-          are CEFR-aligned estimates — not an official CEFR examination or
-          certification.
-        </Text>
+        <Text style={styles.disclaimer} testID="goals-disclaimer">{t("goals.disclaimer")}</Text>
       </ScrollView>
     </SafeAreaView>
   );

@@ -19,6 +19,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT, type Translator } from "@/lib/i18n";
 import { CloseButton } from "@/components/close-button";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { serializeCardKey } from "@/lib/learning/card-key";
@@ -31,18 +32,19 @@ import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 type Filter = "all" | "learned" | "not-learned" | "noun" | "verb" | "expression";
 
-const FILTERS: { key: Filter; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "learned", label: "Learned" },
-  { key: "not-learned", label: "Not yet" },
-  { key: "noun", label: "Nouns" },
-  { key: "verb", label: "Verbs" },
-  { key: "expression", label: "Expressions" },
-];
+const FILTERS: Filter[] = ["all", "learned", "not-learned", "noun", "verb", "expression"];
+
+/** Part-of-speech label in the UI language (unknown tags fall back to the tag itself). */
+export function posLabel(t: Translator["t"], pos: string, gender?: string | null): string {
+  if (pos === "noun" && gender) return t("vocab.genderNoun", { gender });
+  const known = ["noun", "verb", "adjective", "adverb", "expression", "pronoun", "preposition", "number", "other"];
+  return known.includes(pos) ? t(`vocab.pos.${pos}` as never) : pos;
+}
 
 export default function VocabularyScreen() {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t, languageName } = useT();
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const cards = useProgress(
     (s) => s.courses[s.activeCourseId]?.cards as Record<string, FsrsCardState> | undefined
@@ -112,7 +114,7 @@ export default function VocabularyScreen() {
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <View style={styles.header}>
         <CloseButton onPress={() => exitScreen()} />
-        <Text style={styles.heading}>Vocabulary</Text>
+        <Text style={styles.heading}>{t("vocab.title")}</Text>
         <View style={{ width: 44 }} />
       </View>
 
@@ -120,20 +122,21 @@ export default function VocabularyScreen() {
         <TextInput
           value={query}
           onChangeText={setQuery}
-          placeholder={`Search ${profile.targetLanguage} or ${profile.nativeLanguage}…`}
+          placeholder={t("vocab.searchPlaceholder", { target: languageName(profile.targetCode, profile.targetLanguage), native: languageName(profile.nativeCode, profile.nativeLanguage) })}
           placeholderTextColor={colors.textMuted}
           autoCapitalize="none"
           autoCorrect={false}
-          accessibilityLabel="Search vocabulary"
+          accessibilityLabel={t("vocab.searchLabel")}
+          testID="vocab-search"
           style={styles.search}
         />
         {query.trim().length === 0 ? (
           <View style={styles.chipRow}>
-            <SortChip label="Course order" active={sort === "course"} onPress={() => setSort("course")} />
-            <SortChip label="A–Z" active={sort === "alpha"} onPress={() => setSort("alpha")} />
+            <SortChip label={t("vocab.sort.course")} active={sort === "course"} onPress={() => setSort("course")} testID="vocab-sort-course" />
+            <SortChip label={t("vocab.sort.alpha")} active={sort === "alpha"} onPress={() => setSort("alpha")} testID="vocab-sort-alpha" />
             {frequencySort ? (
               <SortChip
-                label="Frequency"
+                label={t("vocab.sort.frequency")}
                 active={sort === "frequency"}
                 onPress={() => setSort("frequency")}
               />
@@ -143,16 +146,17 @@ export default function VocabularyScreen() {
         <View style={styles.chipRow}>
           {FILTERS.map((f) => (
             <SortChip
-              key={f.key}
-              label={f.label}
-              active={filter === f.key}
-              onPress={() => setFilter(f.key)}
+              key={f}
+              label={t(`vocab.filter.${f}`)}
+              active={filter === f}
+              onPress={() => setFilter(f)}
+              testID={`vocab-filter-${f}`}
             />
           ))}
         </View>
         {visible !== null ? (
           <Text style={styles.count} accessibilityLiveRegion="polite">
-            {visible.length} word{visible.length === 1 ? "" : "s"}
+            {t("vocab.count", { n: visible.length })}
           </Text>
         ) : null}
       </View>
@@ -164,7 +168,7 @@ export default function VocabularyScreen() {
         ListEmptyComponent={
           visible === null ? null : (
             <Text style={styles.empty}>
-              {query.trim().length > 0 ? "No words match your search." : "No words match this filter."}
+              {query.trim().length > 0 ? t("vocab.noMatchSearch") : t("vocab.noMatchFilter")}
             </Text>
           )
         }
@@ -183,7 +187,7 @@ export default function VocabularyScreen() {
               </View>
               <View style={styles.rowMeta}>
                 <Text style={styles.rowPos}>
-                  {item.pos === "noun" && item.gender ? `${item.gender} noun` : item.pos}
+                  {posLabel(t, item.pos, item.gender)}
                 </Text>
                 {due !== null ? (
                   <View
@@ -191,7 +195,7 @@ export default function VocabularyScreen() {
                       styles.memoryDot,
                       { backgroundColor: due === "due" ? colors.amber : colors.green },
                     ]}
-                    accessibilityLabel={due === "due" ? "Review due" : "In your reviews"}
+                    accessibilityLabel={due === "due" ? t("vocab.reviewDue") : t("vocab.inReviews")}
                   />
                 ) : null}
               </View>
@@ -208,10 +212,12 @@ function SortChip({
   label,
   active,
   onPress,
+  testID,
 }: {
   label: string;
   active: boolean;
   onPress: () => void;
+  testID?: string;
 }) {
   const styles = useStyles();
   return (
@@ -220,6 +226,7 @@ function SortChip({
       accessibilityRole="button"
       accessibilityState={{ selected: active }}
       style={[styles.chip, active && styles.chipActive]}
+      testID={testID}
     >
       <Text style={[styles.chipText, active && styles.chipTextActive]}>{label}</Text>
     </Pressable>

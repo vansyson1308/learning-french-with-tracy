@@ -7,6 +7,7 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { objectiveFor, splitObjectiveResults } from "@/lib/assessment/content";
 import type { CheckpointAttempt } from "@/lib/assessment/types";
@@ -28,6 +29,7 @@ export function CheckpointResults({
   onDone: () => void;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const { strong, review, thin } = splitObjectiveResults(attempt.objectiveResults);
   const correct = attempt.itemResults.filter((r) => r.correct === true).length;
 
@@ -35,13 +37,11 @@ export function CheckpointResults({
     <SafeAreaView style={styles.screen}>
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>{checkpointTitle}</Text>
-        <Text style={styles.subtitle}>
-          {correct} of {attempt.itemResults.length} on the first try
-        </Text>
+        <Text style={styles.subtitle}>{t("checkpointResults.firstTry", { correct, total: attempt.itemResults.length })}</Text>
 
         {strong.length > 0 && (
           <View style={styles.group}>
-            <Text style={styles.groupTitle}>You&apos;re strong in</Text>
+            <Text style={styles.groupTitle}>{t("checkpointResults.strong")}</Text>
             {strong.map((r) => (
               <Text key={r.objectiveId} style={styles.rowStrong}>
                 ✓ {titleFor(courseId, r.objectiveId)}
@@ -52,7 +52,7 @@ export function CheckpointResults({
 
         {review.length > 0 && (
           <View style={styles.group}>
-            <Text style={styles.groupTitle}>Worth reviewing</Text>
+            <Text style={styles.groupTitle}>{t("checkpointResults.review")}</Text>
             {review.map((r) => (
               <Text key={r.objectiveId} style={styles.rowReview}>
                 • {titleFor(courseId, r.objectiveId)} ({r.correct}/{r.total})
@@ -63,7 +63,7 @@ export function CheckpointResults({
 
         {thin.length > 0 && (
           <View style={styles.group}>
-            <Text style={styles.groupTitle}>Not enough questions to tell</Text>
+            <Text style={styles.groupTitle}>{t("checkpointResults.thin")}</Text>
             {thin.map((r) => (
               <Text key={r.objectiveId} style={styles.rowThin}>
                 · {titleFor(courseId, r.objectiveId)}
@@ -72,12 +72,9 @@ export function CheckpointResults({
           </View>
         )}
 
-        <Text style={styles.note}>
-          This check is a course diagnostic — it guides what to practice next.
-          You can retake it from the path any time.
-        </Text>
+        <Text style={styles.note}>{t("checkpointResults.note")}</Text>
 
-        <DuoButton label="Done" onPress={onDone} />
+        <DuoButton label={t("common.done")} onPress={onDone} />
       </ScrollView>
     </SafeAreaView>
   );

@@ -24,6 +24,7 @@
  * not communication. No LLM, no fuzz, no confidence anywhere.
  */
 
+import { msg, type Message } from "../i18n/message";
 import type { LanguageRules } from "../languages/types";
 import { normalizeSpoken } from "../speech/grader";
 
@@ -54,8 +55,8 @@ export type WritingEvaluation = {
   /** Share of tokens recognized as target-language vocabulary (0..1); 1 for empty input. */
   knownShare: number;
   tokenCount: number;
-  /** Honest, specific problem feedback — empty when the rubric is met. */
-  feedback: string[];
+  /** Honest, specific problem feedback as message references (the UI formats them) — empty when the rubric is met. */
+  feedback: Message[];
 };
 
 /**
@@ -178,7 +179,7 @@ export function evaluateGuidedWriting(input: {
     return {
       ...base,
       verdict: "insufficiently_scorable",
-      feedback: [`Write your answer in ${targetLanguage}.`],
+      feedback: [msg("rubric.writeIn", { language: targetLanguage })],
     };
   }
 
@@ -189,7 +190,7 @@ export function evaluateGuidedWriting(input: {
     return {
       ...base,
       verdict: "insufficiently_scorable",
-      feedback: [`I can only check ${targetLanguage} — try writing your answer in ${targetLanguage}.`],
+      feedback: [msg("rubric.onlyLanguage", { language: targetLanguage })],
     };
   }
 
@@ -200,19 +201,17 @@ export function evaluateGuidedWriting(input: {
     return {
       ...base,
       verdict: "does_not_meet_rubric",
-      feedback: [`Write your own answer in ${targetLanguage} — don't copy the prompt.`],
+      feedback: [msg("rubric.ownAnswer", { language: targetLanguage })],
     };
   }
 
-  const feedback: string[] = [];
+  const feedback: Message[] = [];
 
   // 4. Length bounds.
   if (tokenCount < rubric.minTokens) {
-    feedback.push(
-      `Try a complete short answer — at least ${rubric.minTokens} words.`
-    );
+    feedback.push(msg("rubric.minTokens", { count: rubric.minTokens }));
   } else if (tokenCount > rubric.maxTokens) {
-    feedback.push("Keep it short and simple — a few short sentences are enough.");
+    feedback.push(msg("rubric.keepShort"));
   }
 
   // 5. A real clause, when the task demands one (authored allowlist only).
@@ -222,9 +221,7 @@ export function evaluateGuidedWriting(input: {
       containsRun(answerTokens, tokensOf(normalizeWritten(v, rules)))
     );
     if (!hasVerb) {
-      feedback.push(
-        `Use a complete sentence with a verb (for example: “${verbs[0]}”).`
-      );
+      feedback.push(msg("rubric.useVerb", { verb: verbs[0] }));
     }
   }
 
@@ -232,11 +229,13 @@ export function evaluateGuidedWriting(input: {
   if (missing.length > 0) {
     if (matched.length > 0) {
       feedback.push(
-        `You included ${matched.map((s) => s.description).join(" and ")}, ` +
-          `but not ${missing.map((m) => m.description).join(" or ")}.`
+        msg("rubric.includedButNot", {
+          included: matched.map((s) => s.description),
+          missing: missing.map((m) => m.description),
+        })
       );
     } else {
-      feedback.push(`Don't forget: ${missing.map((m) => m.description).join(", ")}.`);
+      feedback.push(msg("rubric.dontForget", { missing: missing.map((m) => m.description) }));
     }
   }
 
@@ -252,9 +251,7 @@ export function evaluateGuidedWriting(input: {
         )
       : [];
   if (stuffed.length > 0) {
-    feedback.push(
-      `Say ${stuffed.map((s) => s.description).join(" and ")} once — one clear sentence is enough.`
-    );
+    feedback.push(msg("rubric.sayOnce", { items: stuffed.map((s) => s.description) }));
   }
 
   if (feedback.length > 0) {
@@ -276,7 +273,7 @@ export function evaluateSimpleForm(input: {
   const slotsById = new Map(input.rubric.requiredSlots.map((s) => [s.id, s]));
   const matchedSlotIds: string[] = [];
   const missingSlots: { id: string; description: string }[] = [];
-  const feedback: string[] = [];
+  const feedback: Message[] = [];
   let filled = 0;
   let totalTokens = 0;
 
@@ -288,7 +285,7 @@ export function evaluateSimpleForm(input: {
     totalTokens += answerTokens.length;
     if (answerTokens.length === 0) {
       missingSlots.push({ id: slot.id, description: slot.description });
-      feedback.push(`Fill in the “${field.label}” field.`);
+      feedback.push(msg("rubric.fillField", { field: field.label }));
       continue;
     }
     filled += 1;
@@ -296,7 +293,7 @@ export function evaluateSimpleForm(input: {
       matchedSlotIds.push(slot.id);
     } else {
       missingSlots.push({ id: slot.id, description: slot.description });
-      feedback.push(`Check the “${field.label}” field.`);
+      feedback.push(msg("rubric.checkField", { field: field.label }));
     }
   }
 
@@ -310,7 +307,7 @@ export function evaluateSimpleForm(input: {
     return {
       ...base,
       verdict: "insufficiently_scorable",
-      feedback: ["Fill in the form to answer."],
+      feedback: [msg("rubric.fillForm")],
     };
   }
   if (missingSlots.length > 0) {

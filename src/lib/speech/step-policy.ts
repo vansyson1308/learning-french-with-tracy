@@ -13,6 +13,7 @@
  */
 
 import type { SpeakProductionExercise, SpeakRepetitionExercise } from "../types";
+import { msg, type Message } from "../i18n/message";
 import type { SpeechCapability, SpeechOutcome } from "./types";
 
 export type SpeakExercise = SpeakRepetitionExercise | SpeakProductionExercise;
@@ -99,18 +100,18 @@ export function attemptAssisted(
 /** Honest wording for a non-final outcome (§14); null = say nothing. */
 export function outcomeNotice(
   outcome: SpeechOutcome | null
-): { retryable: boolean; message: string } | null {
+): { retryable: boolean; message: Message } | null {
   if (outcome === null || outcome.kind === "final") return null;
   switch (outcome.kind) {
     case "no_speech":
       return {
         retryable: true,
-        message: "I didn't hear anything. Move closer to the microphone and try again.",
+        message: msg("speech.outcome.noSpeech"),
       };
     case "permission_denied":
       return {
         retryable: false,
-        message: "Recording needs microphone and speech permissions.",
+        message: msg("speech.outcome.permissionDenied"),
       };
     case "aborted":
       return null; // the learner's own action needs no commentary
@@ -119,18 +120,17 @@ export function outcomeNotice(
         case "backgrounded":
           return {
             retryable: true,
-            message: "Recording stopped when the app went to the background. Try again.",
+            message: msg("speech.outcome.backgrounded"),
           };
         case "network_failed":
           return {
             retryable: true,
-            message:
-              "Speech recognition on this device needs a network connection right now.",
+            message: msg("speech.outcome.networkNeeded"),
           };
         default:
           return {
             retryable: true,
-            message: "Something went wrong with speech recognition — that's not your answer's fault. Try again.",
+            message: msg("speech.outcome.failed"),
           };
       }
   }
@@ -163,15 +163,15 @@ export function gateFor(
 }
 
 /** Copy for a blocked gate — plain, honest, with the path forward. */
-export function gateMessage(gate: SpeechGate, targetLanguage: string): string | null {
+export function gateMessage(gate: SpeechGate, targetLanguage: string): Message | null {
   if (gate.kind !== "blocked") return null;
   switch (gate.reason) {
     case "unavailable":
-      return "Speaking exercises aren't available here. You can skip this step.";
+      return msg("speech.gate.unavailable");
     case "noTargetLanguage":
-      return `This device's speech recognition doesn't offer ${targetLanguage}. You can skip this step.`;
+      return msg("speech.gate.noTargetLanguage", { language: targetLanguage });
     case "permission":
-      return "Microphone or speech recognition permission is turned off. Enable it in Settings, or skip this step.";
+      return msg("speech.gate.permission");
   }
 }
 
@@ -196,11 +196,6 @@ export function networkDisclosureRequired(
 }
 
 /** Honest wording for the §7 disclosure — facts only, no scare copy. */
-export function networkDisclosureText(targetLanguage: string): string {
-  return (
-    "Speech recognition is provided by your device's system service. Without an " +
-    `offline ${targetLanguage} model it may use the internet to recognize what you say. ` +
-    "This app itself never uploads or stores your recording — and you can " +
-    "always skip speaking."
-  );
+export function networkDisclosureText(targetLanguage: string): Message {
+  return msg("speech.disclosure", { language: targetLanguage });
 }

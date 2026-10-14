@@ -10,6 +10,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Linking, Platform, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { CheckpointResults } from "@/components/assessment/checkpoint-results";
 import { DuoButton } from "@/components/duo-button";
 import { SessionScreen } from "@/components/session/session-screen";
@@ -42,8 +43,9 @@ export default function CheckpointScreen() {
 
 function CheckpointScreenBody({ courseId }: { courseId: string }) {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { t, tm, languageName } = useT();
   const profile = courseProfile(courseId);
-  const targetLanguage = profile.targetLanguage;
+  const targetLanguage = languageName(profile.targetCode, profile.targetLanguage);
   const checkpoint = checkpointFor(courseId, id ?? "");
 
   // Parallel-form seed (P9 §38-§39): the prior attempt count is captured
@@ -137,59 +139,52 @@ function CheckpointScreenBody({ courseId }: { courseId: string }) {
       <SafeAreaView style={styles.screen}>
         <View style={styles.center}>
           {speechGate === "probing" ? (
-            <Text style={styles.title}>Checking speech recognition…</Text>
+            <Text style={styles.title}>{t("checkpoint.probing")}</Text>
           ) : speechGate === "blocked" ? (
             <>
-              <Text style={styles.title}>This check needs speech recognition</Text>
+              <Text style={styles.title}>{t("checkpoint.blockedTitle")}</Text>
               <Text style={styles.body} testID="checkpoint-speech-blocked">
-                It asks you to SAY {targetLanguage} out loud, and this device can&apos;t do
-                scored speech recognition in {targetLanguage}. Nothing is recorded against
-                you — the section simply stays unchecked until you can take it
-                on a capable device.
+                {t("checkpoint.blockedBody", { language: targetLanguage })}
               </Text>
-              <DuoButton label="Back" onPress={() => router.back()} />
+              <DuoButton label={t("common.back")} onPress={() => router.back()} />
             </>
           ) : speechGate === "needsPermission" ? (
             <>
-              <Text style={styles.title}>This check uses your microphone</Text>
+              <Text style={styles.title}>{t("checkpoint.permissionTitle")}</Text>
               <Text style={styles.body} testID="checkpoint-speech-permission">
-                Every task asks you to say {targetLanguage} out loud, so the app needs
-                microphone and speech-recognition permission before it starts.
-                Nothing records until you tap the record button on each task.
+                {t("checkpoint.permissionBody", { language: targetLanguage })}
               </Text>
-              <DuoButton label="Allow microphone" onPress={requestPermission} />
-              <DuoButton label="Back" variant="white" onPress={() => router.back()} />
+              <DuoButton label={t("checkpoint.allowMicrophone")} onPress={requestPermission} />
+              <DuoButton label={t("common.back")} variant="white" onPress={() => router.back()} />
             </>
           ) : speechGate === "permissionBlocked" ? (
             <>
-              <Text style={styles.title}>Microphone permission is off</Text>
+              <Text style={styles.title}>{t("checkpoint.permissionBlockedTitle")}</Text>
               <Text style={styles.body} testID="checkpoint-speech-permission-blocked">
-                This check can&apos;t run without the microphone. Enable
-                microphone and speech recognition in Settings, then come back —
-                nothing has been recorded against you.
+                {t("checkpoint.permissionBlockedBody")}
               </Text>
               {Platform.OS !== "web" ? (
                 <DuoButton
-                  label="Open Settings"
+                  label={t("checkpoint.openSettings")}
                   onPress={() => void Linking.openSettings()}
                 />
               ) : null}
-              <DuoButton label="Back" variant="white" onPress={() => router.back()} />
+              <DuoButton label={t("common.back")} variant="white" onPress={() => router.back()} />
             </>
           ) : (
             <>
-              <Text style={styles.title}>Before you start</Text>
+              <Text style={styles.title}>{t("checkpoint.beforeStart")}</Text>
               <Text style={styles.body} testID="checkpoint-speech-disclosure">
-                {networkDisclosureText(targetLanguage)}
+                {tm(networkDisclosureText(targetLanguage))}
               </Text>
               <DuoButton
-                label="Got it — start the check"
+                label={t("checkpoint.gotItStart")}
                 onPress={() => {
                   acknowledgeSpeechNotice();
                   setDisclosureNeeded(false);
                 }}
               />
-              <DuoButton label="Back" variant="white" onPress={() => router.back()} />
+              <DuoButton label={t("common.back")} variant="white" onPress={() => router.back()} />
             </>
           )}
         </View>

@@ -67,6 +67,10 @@ mock.module("expo-file-system", () => {
   };
 });
 
+mock.module("expo-localization", () => ({
+  getLocales: () => [{ languageTag: "en-US", languageCode: "en", regionCode: "US" }],
+}));
+
 mock.module("expo-sharing", () => ({
   isAvailableAsync: async () => true,
   shareAsync: async () => {},

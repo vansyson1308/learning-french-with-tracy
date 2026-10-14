@@ -8,12 +8,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { conceptFor } from "@/lib/learning/concepts";
 import { exampleTexts } from "@/lib/lexicon/example-text";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export function ConceptCard({ courseId, conceptId }: { courseId: string; conceptId: string }) {
   const styles = useStyles();
+  const { t } = useT();
   const concept = conceptFor(courseId, conceptId);
   // Content validation guarantees resolution; fail soft (never wedge the
   // session) if a stale build ever ships a dangling reference.
@@ -21,7 +23,7 @@ export function ConceptCard({ courseId, conceptId }: { courseId: string; concept
 
   return (
     <View style={styles.card} testID="concept-card">
-      <Text style={styles.kicker}>Concept</Text>
+      <Text style={styles.kicker}>{t("concept.kicker")}</Text>
       <Text style={styles.title}>{concept.title}</Text>
       <View style={styles.ruleBox}>
         <Text style={styles.rule}>{concept.shortRule}</Text>
@@ -44,7 +46,7 @@ export function ConceptCard({ courseId, conceptId }: { courseId: string; concept
 
       {concept.exceptions.length > 0 ? (
         <View style={styles.exceptionBox}>
-          <Text style={styles.exceptionTitle}>Watch out</Text>
+          <Text style={styles.exceptionTitle}>{t("concept.watchOut")}</Text>
           {concept.exceptions.map((exception) => (
             <Text key={exception} style={styles.exceptionText}>
               {exception}

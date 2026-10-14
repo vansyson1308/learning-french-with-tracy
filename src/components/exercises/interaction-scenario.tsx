@@ -16,6 +16,7 @@ import { useAudioPlayer } from "expo-audio";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { SpeakRecordControl } from "@/components/exercises/speak-record-control";
 import { DuoButton } from "@/components/duo-button";
 import { isInteractionAnswer, type Answer, type InteractionAnswer, type SpokenAnswer } from "@/lib/grading";
@@ -77,6 +78,7 @@ export function InteractionScenarioStep({
   onAnswer: (value: InteractionAnswer) => void;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const scenario = React.useMemo(
     () => interactionScenarioFor(courseId, exercise.scenarioId),
     [courseId, exercise.scenarioId]
@@ -87,9 +89,9 @@ export function InteractionScenarioStep({
     // no-evidence escape rather than a dead screen.
     return (
       <View style={styles.wrap} testID="interaction-missing">
-        <Text style={styles.muted}>This conversation can&apos;t be loaded.</Text>
+        <Text style={styles.muted}>{t("ex.cannotLoadConversation")}</Text>
         {speech.onSpeechSkip ? (
-          <DuoButton label="Skip this step" variant="white" onPress={speech.onSpeechSkip} />
+          <DuoButton label={t("ex.skipStep")} variant="white" onPress={speech.onSpeechSkip} />
         ) : null}
       </View>
     );
@@ -126,6 +128,7 @@ function LoadedScenario({
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t } = useT();
   const scored = speech.scored;
   const answered = status !== "none";
 
@@ -233,7 +236,7 @@ function LoadedScenario({
     <View style={styles.wrap}>
       <Text style={styles.title}>{scenario.title}</Text>
       <View style={styles.goalCard} testID="interaction-goal">
-        <Text style={styles.goalLabel}>Your goal</Text>
+        <Text style={styles.goalLabel}>{t("ex.yourGoal")}</Text>
         <Text style={styles.goalText}>{scenario.goal}</Text>
       </View>
 
@@ -248,7 +251,7 @@ function LoadedScenario({
               {scored ? (
                 <View
                   style={styles.spokenRow}
-                  accessibilityLabel="The partner spoke (audio only)"
+                  accessibilityLabel={t("ex.partnerSpoke")}
                 >
                   <Ionicons name="volume-high" size={18} color={colors.neutral400} />
                   <Text style={styles.spokenPlaceholder}>…</Text>
@@ -282,28 +285,24 @@ function LoadedScenario({
                 <Pressable
                   onPress={onRepeat}
                   accessibilityRole="button"
-                  accessibilityLabel="Hear the partner again"
+                  accessibilityLabel={t("ex.hearAgainLabel")}
                   style={styles.supportButton}
                   testID="interaction-repeat"
                 >
                   <Ionicons name="repeat" size={18} color={colors.skyDark} />
-                  <Text style={[styles.supportText, { color: colors.skyDark }]}>
-                    Hear it again
-                  </Text>
+                  <Text style={[styles.supportText, { color: colors.skyDark }]}>{t("ex.hearAgain")}</Text>
                 </Pressable>
               ) : null}
               {canRephrase ? (
                 <Pressable
                   onPress={onRephrase}
                   accessibilityRole="button"
-                  accessibilityLabel="Ask the partner to say it more simply"
+                  accessibilityLabel={t("ex.saySimplyLabel")}
                   style={styles.supportButton}
                   testID="interaction-rephrase"
                 >
                   <Ionicons name="chatbubble-ellipses-outline" size={18} color={colors.skyDark} />
-                  <Text style={[styles.supportText, { color: colors.skyDark }]}>
-                    Say it simply
-                  </Text>
+                  <Text style={[styles.supportText, { color: colors.skyDark }]}>{t("ex.saySimply")}</Text>
                 </Pressable>
               ) : null}
             </View>
@@ -329,28 +328,20 @@ function LoadedScenario({
 
       {state.finished && !answered ? (
         <Text style={styles.muted} testID="interaction-finished">
-          The conversation is over — check to continue.
+          {t("ex.conversationOver")}
         </Text>
       ) : null}
 
       {answered && !scored && result ? (
         <View style={styles.resultCard} testID="interaction-result">
           <Text style={styles.resultTitle}>
-            {result.goalMet
-              ? "You reached your goal! 🎉"
-              : "The conversation ended before the goal."}
+            {result.goalMet ? t("ex.goalReached") : t("ex.goalMissed")}
           </Text>
           {result.goalMet && !result.passedFirstTry ? (
-            <Text style={styles.resultLine}>
-              Some replies needed a second try — run it again for a first-try pass.
-            </Text>
+            <Text style={styles.resultLine}>{t("ex.secondTry")}</Text>
           ) : null}
           {result.supportUsed > 0 ? (
-            <Text style={styles.resultLine}>
-              You asked for help {result.supportUsed}{" "}
-              {result.supportUsed === 1 ? "time" : "times"} — that&apos;s what a
-              patient partner is for.
-            </Text>
+            <Text style={styles.resultLine}>{t("ex.helpUsed", { n: result.supportUsed })}</Text>
           ) : null}
         </View>
       ) : null}

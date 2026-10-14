@@ -14,6 +14,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import attributions from "@/content/attributions.json";
 import frWebFallback from "@/content/lexicon/fr-web-fallback.json";
 import { CloseButton } from "@/components/close-button";
+import { useT } from "@/lib/i18n";
 import { exitScreen } from "@/lib/navigation";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
@@ -37,30 +38,23 @@ const voiceEntries = registry.filter((e) => /TTS voice/i.test(e.kind));
 
 export default function LicensesScreen() {
   const styles = useStyles();
+  const { t, languageName } = useT();
+  const lexiconLanguage = languageName("fr", "French");
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <View style={styles.header}>
         <CloseButton onPress={() => exitScreen()} />
-        <Text style={styles.heading}>Licenses &amp; attributions</Text>
+        <Text style={styles.heading}>{t("licenses.title")}</Text>
         <View style={{ width: 44 }} />
       </View>
-      <ScrollView contentContainerStyle={styles.body}>
-        <Section title="App software">
-          <Text style={styles.text}>
-            Based on Lingo Lessons by Open Apps Studio, used under the MIT License. The
-            original LICENSE file — including the 650 Industries, Inc. notice from the
-            create-expo-app template — is preserved in the project repository, alongside
-            the full generated ATTRIBUTIONS.md. Spaced-repetition scheduling is powered
-            by ts-fsrs (open-spaced-repetition contributors, MIT License).
-          </Text>
+      <ScrollView contentContainerStyle={styles.body} testID="licenses-screen">
+        <Section title={t("licenses.software")}>
+          <Text style={styles.text}>{t("licenses.softwareBody")}</Text>
         </Section>
 
-        <Section title="French lexicon data">
+        <Section title={t("licenses.lexicon", { language: lexiconLanguage })}>
           <Text style={styles.text}>
-            The French lexicon dataset (word metadata, pronunciation, examples) is
-            published under the Creative Commons Attribution-ShareAlike 4.0 license
-            ({lexiconData.datasetLicense}). This license covers the dataset only — it
-            does not change the app&apos;s software licensing.
+            {t("licenses.lexiconBody", { language: lexiconLanguage, license: lexiconData.datasetLicense })}
           </Text>
           {lexiconData.sources.map((s) => (
             <View key={s.id} style={styles.sourceRow}>
@@ -71,25 +65,11 @@ export default function LicensesScreen() {
               <Text style={styles.url}>{s.url}</Text>
             </View>
           ))}
-          <Text style={styles.text}>
-            Word frequency and IPA pronunciation values are derived from Lexique 4
-            (New, Pallier, Schalchli, Bourgin, &amp; Gimenes, 2026 — lexique.org),
-            distributed under CC BY-SA 4.0. Modifications: selection of the curriculum
-            entries, per-word matching to Lexique rows, frequency banding derived from
-            the corpus distribution, and integration with this app&apos;s authored
-            lexicon. Full provenance is recorded in ATTRIBUTIONS.md and the
-            repository&apos;s content/fr/lexicon documentation.
-          </Text>
+          <Text style={styles.text}>{t("licenses.lexiqueBody")}</Text>
         </Section>
 
-        <Section title="Audio">
-          <Text style={styles.text}>
-            Word, sentence and listening audio is synthesized when the app is built, with
-            Piper (rhasspy/piper, MIT License) and the voices below; sound effects are
-            generated tone sequences. Courses without a license-cleared voice (Italian,
-            Japanese, Korean, Chinese) use your device&apos;s own speech synthesis. No
-            audio is fetched at runtime.
-          </Text>
+        <Section title={t("licenses.audio")}>
+          <Text style={styles.text}>{t("licenses.audioBody")}</Text>
           {voiceEntries.map((v) => (
             <View key={v.id} style={styles.sourceRow}>
               <Text style={styles.sourceName}>

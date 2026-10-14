@@ -7,7 +7,9 @@ import {
   type ViewStyle,
 } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { radius, useThemeColors, type ThemeColors } from "@/lib/theme";
+import { labelTextTransform, lineHeight } from "@/lib/typography";
 
 type Variant = "primary" | "secondary" | "danger" | "super" | "locked" | "white";
 
@@ -30,6 +32,7 @@ type DuoButtonProps = {
   variant?: Variant;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
+  testID?: string;
 };
 
 /** The web app's 3D button: darker bottom border that collapses on press. */
@@ -39,14 +42,21 @@ export function DuoButton({
   variant = "secondary",
   disabled,
   style,
+  testID,
 }: DuoButtonProps) {
   const c = palette(useThemeColors())[disabled ? "locked" : variant];
+  const { lang } = useT();
+  // Vietnamese labels keep their natural case: uppercase letters with stacked
+  // diacritics (Ệ, Ở) clip at this weight and read worse; the line height
+  // gives the marks headroom in both languages.
+  const labelCase = labelTextTransform(lang);
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled}
       accessibilityRole="button"
       accessibilityState={{ disabled: !!disabled }}
+      testID={testID}
       style={({ pressed }) => [
         styles.base,
         {
@@ -59,7 +69,14 @@ export function DuoButton({
         style,
       ]}
     >
-      <Text style={[styles.label, { color: c.text }]}>{label}</Text>
+      <Text
+        style={[
+          styles.label,
+          { color: c.text, textTransform: labelCase, letterSpacing: labelCase === "none" ? 0 : 0.8 },
+        ]}
+      >
+        {label}
+      </Text>
     </Pressable>
   );
 }
@@ -75,7 +92,7 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "800",
     fontSize: 15,
-    textTransform: "uppercase",
-    letterSpacing: 0.8,
+    lineHeight: lineHeight.lg,
+    textAlign: "center",
   },
 });

@@ -8,6 +8,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { SpeakRecordControl } from "@/components/exercises/speak-record-control";
 import { ListeningPlayerView } from "@/components/session/listening-player-view";
 import { checkAnswer, isSpokenAnswer, type Answer, type SpokenAnswer } from "@/lib/grading";
@@ -45,6 +46,7 @@ export function SpeakProduction({
   onAnswer: (value: SpokenAnswer) => void;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const ctx = { scored: speech.scored };
   const answered = status !== "none";
   // Non-matching recordings this encounter (drives the learning reveal).
@@ -64,8 +66,8 @@ export function SpeakProduction({
   const hint =
     heard !== null && !answered && !speech.scored
       ? checkAnswer(exercise, answer, courseId)
-        ? "Sounds right — check to continue!"
-        : "Not quite. Try again, or check what you have."
+        ? t("ex.soundsRight")
+        : t("ex.notQuiteTryAgain")
       : null;
 
   const onFinal = (value: SpokenAnswer) => {
@@ -75,7 +77,7 @@ export function SpeakProduction({
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.title}>Say it in {targetLanguage}</Text>
+      <Text style={styles.title}>{t("ex.sayItIn", { language: targetLanguage })}</Text>
       <View style={styles.cueCard} testID="production-cue">
         <Text style={styles.instruction}>{exercise.instruction}</Text>
         {exercise.cueEmoji ? <Text style={styles.cueEmoji}>{exercise.cueEmoji}</Text> : null}

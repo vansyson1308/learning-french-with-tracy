@@ -58,6 +58,10 @@ jobs:
       - name: Lint
         if: matrix.tz == 'UTC'
         run: bun run lint
+      # P2a: the generated MessageKey union and the sorted catalogues must be committed.
+      - name: i18n catalogue check
+        if: matrix.tz == 'UTC'
+        run: bun scripts/i18n-keys.ts --check
       # Phase 3: jest-expo + RNTL integration suite (real Expo Router tree).
       # Timezone-independent, so the UTC leg carries it.
       - name: Integration tests (jest-expo)
@@ -111,3 +115,21 @@ jobs:
         env:
           E2E_BROWSER_PATH: /usr/bin/google-chrome
         run: bun run e2e:guide dist
+      # P2a: the same smoke and guide walk with the UI pinned to Vietnamese
+      # (EXPO_PUBLIC_UI_LANG is inlined into the export); selectors are
+      # testIDs and the expected labels come from the Vietnamese catalogue.
+      - name: Export web bundle (Vietnamese UI)
+        env:
+          EXPO_PUBLIC_UI_LANG: vi
+        # --clear: the transform cache of the English export would otherwise keep the inlined env.
+        run: bunx expo export --platform web --output-dir dist-vi --clear
+      - name: Browser E2E (web tier, Vietnamese UI)
+        env:
+          E2E_BROWSER_PATH: /usr/bin/google-chrome
+          UI_LANG: vi
+        run: bun run e2e:web dist-vi
+      - name: User-guide walk (web tier, Vietnamese UI)
+        env:
+          E2E_BROWSER_PATH: /usr/bin/google-chrome
+          UI_LANG: vi
+        run: bun run e2e:guide dist-vi

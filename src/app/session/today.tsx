@@ -8,9 +8,10 @@
 import { Redirect, useLocalSearchParams } from "expo-router";
 import React, { useMemo } from "react";
 
+import { useT } from "@/lib/i18n";
 import { SessionScreen } from "@/components/session/session-screen";
 import type { TodaySummaryStats } from "@/components/session/session-summary";
-import { hasCapability } from "@/lib/course-profile";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
 import { dueReviewQueue } from "@/lib/learning/engine";
 import { listenWordClipIndex } from "@/lib/reception/content";
@@ -36,6 +37,7 @@ export default function TodaySessionRoute() {
   }>();
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const { pack } = useCourseContent(activeCourseId);
+  const { t, languageName } = useT();
 
   const { definition, plan } = useMemo<{
     definition: SessionDefinition;
@@ -83,8 +85,8 @@ export default function TodaySessionRoute() {
   return (
     <SessionScreen
       definition={definition}
-      targetLanguage={pack.targetLanguage}
-      emptyMessage="You're all caught up!"
+      targetLanguage={languageName(courseProfile(activeCourseId).targetCode, pack.targetLanguage)}
+      emptyMessage={t("today.allCaughtUp")}
       buildTodayStats={(controller): TodaySummaryStats => {
         const live = useProgress.getState().courses[definition.courseId];
         // Accuracy over designated assessments only (§64): mixed practice

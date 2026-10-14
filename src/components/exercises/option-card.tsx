@@ -2,15 +2,16 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { haptics } from "@/lib/haptics";
 import { radius, useThemeColors, type ThemeColors } from "@/lib/theme";
 
 /** Spoken suffix + non-colour glyph per outcome (Phase 10 §36/§39: never colour alone). */
-const STATE_CUE: Record<OptionState, { label: string; icon: keyof typeof Ionicons.glyphMap | null }> = {
-  idle: { label: "", icon: null },
-  selected: { label: ", selected", icon: null },
-  correct: { label: ", correct", icon: "checkmark-circle" },
-  wrong: { label: ", not correct", icon: "close-circle" },
+const STATE_CUE: Record<OptionState, { label: "ex.state.selected" | "ex.state.correct" | "ex.state.wrong" | null; icon: keyof typeof Ionicons.glyphMap | null }> = {
+  idle: { label: null, icon: null },
+  selected: { label: "ex.state.selected", icon: null },
+  correct: { label: "ex.state.correct", icon: "checkmark-circle" },
+  wrong: { label: "ex.state.wrong", icon: "close-circle" },
 };
 
 export type OptionState = "idle" | "selected" | "correct" | "wrong";
@@ -49,6 +50,7 @@ export function OptionCard({
 }: OptionCardProps) {
   const c = stateColors(useThemeColors())[state];
   const cue = STATE_CUE[state];
+  const { t } = useT();
   return (
     <Pressable
       onPress={() => {
@@ -57,7 +59,8 @@ export function OptionCard({
       }}
       disabled={disabled}
       accessibilityRole="button"
-      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${cue.label}`}
+      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${cue.label ? t(cue.label) : ""}`}
+      testID="option-card"
       accessibilityState={{ disabled: !!disabled, selected: state === "selected" }}
       style={({ pressed }) => [
         styles.card,

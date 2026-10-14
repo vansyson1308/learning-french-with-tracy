@@ -10,6 +10,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { CloseButton } from "@/components/close-button";
 import { DuoButton } from "@/components/duo-button";
 import { placementContent } from "@/lib/assessment/content";
@@ -32,8 +33,10 @@ export default function PlacementIntroScreen() {
 function PlacementIntroScreenBody({ courseId }: { courseId: string }) {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t, languageName } = useT();
   const plan = placementContent(courseId);
-  const targetLanguage = courseProfile(courseId).targetLanguage;
+  const profile = courseProfile(courseId);
+  const targetLanguage = languageName(profile.targetCode, profile.targetLanguage);
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -42,26 +45,21 @@ function PlacementIntroScreenBody({ courseId }: { courseId: string }) {
       </View>
       <View style={styles.body}>
         <Ionicons name="compass" size={56} color={colors.skyDark} />
-        <Text style={styles.title}>Find your starting point</Text>
-        <Text style={styles.question}>Have you studied {targetLanguage} before?</Text>
+        <Text style={styles.title}>{t("placement.title")}</Text>
+        <Text style={styles.question}>{t("placement.question", { language: targetLanguage })}</Text>
         <View style={styles.card}>
-          <Text style={styles.cardText}>
-            If you have, a short check (at most {plan.maxItems} questions, a
-            few minutes) finds a good starting lesson in this course. You can
-            say &quot;I don&apos;t know&quot; to any question.
-          </Text>
-          <Text style={styles.cardText}>
-            It&apos;s not an exam: no score, no level — just where to start.
-            Everything before your starting point stays open for review.
-          </Text>
+          <Text style={styles.cardText}>{t("placement.card1", { n: plan.maxItems })}</Text>
+          <Text style={styles.cardText}>{t("placement.card2")}</Text>
         </View>
         <View style={styles.actions}>
           <DuoButton
-            label="Yes — find my starting point"
+            label={t("placement.yes")}
+            testID="placement-yes"
             onPress={() => router.replace("/placement/run")}
           />
           <DuoButton
-            label="I'm new — start from the beginning"
+            label={t("placement.new")}
+            testID="placement-new"
             variant="white"
             onPress={() => exitScreen()}
           />

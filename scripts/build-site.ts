@@ -17,6 +17,7 @@ import path from "path";
 import {
   PRIVACY_POLICY_EFFECTIVE,
   PRIVACY_POLICY_SECTIONS,
+  PRIVACY_POLICY_SECTIONS_VI,
   PRIVACY_POLICY_VERSION,
 } from "../src/lib/privacy-policy";
 
@@ -231,10 +232,31 @@ footer p{margin:.4rem 0}
 @media (max-width:600px){body{font-size:16px}main h1{font-size:1.6rem}}
 `;
 
-function page(opts: { title: string; nav: string; body: string; rel: string; description: string }): string {
-  const nav = NAV.map((n) => `<li><a href="${opts.rel}${n.href}"${n.href === opts.nav ? ' aria-current="page"' : ""}>${n.label}</a></li>`).join("");
+/** Vietnamese pages (P2a): the policy and the user guide, under /vi/. */
+const NAV_VI: { href: string; label: string }[] = [
+  { href: "", label: "Tổng quan (EN)" },
+  { href: "vi/guide/", label: "Hướng dẫn sử dụng" },
+  { href: "vi/privacy/", label: "Quyền riêng tư" },
+  { href: "privacy/", label: "Privacy (EN)" },
+];
+
+function page(opts: { title: string; nav: string; body: string; rel: string; description: string; lang?: "en" | "vi" }): string {
+  const lang = opts.lang ?? "en";
+  const items = lang === "vi" ? NAV_VI : NAV;
+  const nav = items.map((n) => `<li><a href="${opts.rel}${n.href}"${n.href === opts.nav ? ' aria-current="page"' : ""}>${n.label}</a></li>`).join("");
+  const skip = lang === "vi" ? "Bỏ qua tới nội dung" : "Skip to content";
+  const footer =
+    lang === "vi"
+      ? `<p>${esc(APP_NAME)} miễn phí, không quảng cáo, không tài khoản và không phân tích dữ liệu. Ứng dụng không tự gửi yêu cầu mạng nào; trang web này không đặt cookie và không tải gì từ bên thứ ba.</p>`
+      : `<p>${esc(APP_NAME)} is free, has no ads, no accounts and no analytics. The app makes no network requests of its own; this site sets no cookies and loads nothing from third parties.</p>`;
+  const switchLink =
+    lang === "vi"
+      ? `<p><a href="${opts.rel}${opts.nav.replace(/^vi\//, "")}" hreflang="en">English</a></p>`
+      : opts.nav === "privacy/" || opts.nav === "guide/"
+        ? `<p><a href="${opts.rel}vi/${opts.nav}" hreflang="vi" lang="vi">Tiếng Việt</a></p>`
+        : "";
   return `<!doctype html>
-<html lang="en">
+<html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -245,13 +267,14 @@ function page(opts: { title: string; nav: string; body: string; rel: string; des
 <link rel="stylesheet" href="${opts.rel}styles.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">${skip}</a>
 <header><div class="wrap"><a class="brand" href="${opts.rel}">${esc(APP_NAME)}</a><nav aria-label="Site"><ul>${nav}</ul></nav></div></header>
 <main id="main" class="wrap">
 ${opts.body}
+${switchLink}
 </main>
 <footer><div class="wrap">
-<p>${esc(APP_NAME)} is free, has no ads, no accounts and no analytics. The app makes no network requests of its own; this site sets no cookies and loads nothing from third parties.</p>
+${footer}
 <p>Derived from <a href="https://github.com/Open-Apps-Studio/lingo-lessons" rel="noopener">Lingo Lessons</a> by Open Apps Studio (MIT). Source code: <a href="https://github.com/vansyson1308/learning-french-with-tracy" rel="noopener">GitHub</a>.</p>
 </div></footer>
 </body>
@@ -291,7 +314,7 @@ function build() {
   writeFileSync(path.join(OUT, ".nojekyll"), "");
   writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${contact.siteBase}/sitemap.xml\n`);
 
-  const pages: { dir: string; nav: string; title: string; description: string; body: string }[] = [];
+  const pages: { dir: string; nav: string; title: string; description: string; body: string; lang?: "en" | "vi" }[] = [];
   const sub = (name: string, md: string) => md.replace(/\{\{APP_NAME\}\}/g, APP_NAME).replace(/\{\{VERSION\}\}/g, app.version).replace(/\{\{CONTACT\}\}/g, contactMarkdown()).replace(/\{\{ISSUES\}\}/g, contact.issues);
 
   pages.push({ dir: "", nav: "", title: "Overview", description: `${APP_NAME}: a free, local-first French course to a CEFR-aligned A1 estimate.`, body: markdownToHtml(sub("index", readMd("site/content/index.md"))).html });
@@ -312,6 +335,22 @@ function build() {
     ``,
   ].join("\n");
   pages.push({ dir: "privacy", nav: "privacy/", title: "Privacy Policy", description: `Privacy policy for ${APP_NAME}.`, body: withToc(privacyMd) });
+  // Vietnamese (P2a): the same policy in Vietnamese, and the Vietnamese user guide.
+  const privacyMdVi = [
+    `# Chính sách quyền riêng tư`,
+    ``,
+    `**${APP_NAME}** · Phiên bản chính sách ${PRIVACY_POLICY_VERSION}, hiệu lực từ ${PRIVACY_POLICY_EFFECTIVE}. Đây là đúng nội dung hiển thị trong ứng dụng ở Hồ sơ → Quyền riêng tư.`,
+    ``,
+    ...PRIVACY_POLICY_SECTIONS_VI.flatMap((s) => [`## ${s.title}`, ``, ...s.paragraphs.flatMap((p) => [p, ``])]),
+    `## Liên hệ`,
+    ``,
+    `Câu hỏi về quyền riêng tư và yêu cầu xóa dữ liệu: ứng dụng lưu mọi thứ trên thiết bị của bạn, nên xóa ứng dụng là xóa dữ liệu; nếu có câu hỏi, hãy dùng các kênh dưới đây.`,
+    ``,
+    contactMarkdown(),
+    ``,
+  ].join("\n");
+  pages.push({ dir: "vi/privacy", nav: "vi/privacy/", title: "Chính sách quyền riêng tư", description: `Chính sách quyền riêng tư của ${APP_NAME}.`, body: withToc(privacyMdVi), lang: "vi" });
+  pages.push({ dir: "vi/guide", nav: "vi/guide/", title: "Hướng dẫn sử dụng", description: `Cách dùng ${APP_NAME}, từ cài đặt đến sao lưu.`, body: withToc(sub("guide-vi", readMd("docs/USER_GUIDE.vi.md"))), lang: "vi" });
   pages.push({ dir: "accessibility", nav: "accessibility/", title: "Accessibility", description: `Accessibility statement for ${APP_NAME}.`, body: withToc(sub("a11y", readMd("site/content/accessibility.md"))) });
   const attributions = readMd("ATTRIBUTIONS.md").replace(/^<!--[\s\S]*?-->\s*/, "");
   pages.push({ dir: "licenses", nav: "licenses/", title: "Licenses and attributions", description: `Third-party sources and licenses used by ${APP_NAME}.`, body: withToc(`# Licenses and attributions\n\nApplication code is MIT-licensed (the original LICENSE, including the 650 Industries, Inc. notice, is preserved). Authored French lexicon data is CC BY-SA 4.0. Everything below is generated from the provenance registry and is identical to the app's Licenses screen.\n\n${attributions.replace(/^# Attributions\s*/m, "")}`) });
@@ -321,8 +360,8 @@ function build() {
   for (const p of pages) {
     const dir = p.dir ? path.join(OUT, p.dir) : OUT;
     mkdirSync(dir, { recursive: true });
-    const rel = p.dir ? "../" : "./";
-    writeFileSync(path.join(dir, "index.html"), page({ title: p.title, nav: p.nav, body: p.body, rel, description: p.description }));
+    const rel = p.dir ? "../".repeat(p.dir.split("/").length) : "./";
+    writeFileSync(path.join(dir, "index.html"), page({ title: p.title, nav: p.nav, body: p.body, rel, description: p.description, lang: p.lang }));
     urls.push(`${contact.siteBase}/${p.dir ? `${p.dir}/` : ""}`);
   }
   writeFileSync(path.join(OUT, "404.html"), page({ title: "Not found", nav: "x", body: `<h1>Page not found</h1><p>Try the <a href="./">overview</a> or the <a href="./guide/">user guide</a>.</p>`, rel: "./", description: "Not found" }));

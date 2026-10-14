@@ -11,10 +11,14 @@ import { join } from "path";
 
 import {
   PRIVACY_POLICY_SECTIONS,
+  PRIVACY_POLICY_SECTIONS_VI,
   renderPrivacyPolicyMarkdown,
 } from "../../src/lib/privacy-policy";
 
 const policyText = PRIVACY_POLICY_SECTIONS.map((s) => [s.title, ...s.paragraphs].join("\n")).join(
+  "\n"
+);
+const policyTextVi = PRIVACY_POLICY_SECTIONS_VI.map((s) => [s.title, ...s.paragraphs].join("\n")).join(
   "\n"
 );
 
@@ -26,10 +30,15 @@ const OFFLINE_PROMISES = [
   /entirely offline/i,
   /never leaves your (device|phone)/i,
   /never sent (anywhere|to anyone)/i,
+  // Vietnamese equivalents (P2a): the translation may not promise more than the English.
+  /100\s*%\s*ngoại tuyến/i,
+  /hoàn toàn ngoại tuyến/i,
+  /không bao giờ rời khỏi (thiết bị|điện thoại)/i,
+  /không bao giờ (được )?gửi đi đâu/i,
 ];
 /** Certification claims the policy must never make (the app's own honesty
  *  wording — "never an official CEFR examination" — is checked elsewhere). */
-const CERTIFICATION_CLAIMS = [/certified/i, /officially recogni[sz]ed/i, /accredited by/i];
+const CERTIFICATION_CLAIMS = [/certified/i, /officially recogni[sz]ed/i, /accredited by/i, /chứng nhận chính thức/i, /được công nhận chính thức/i];
 const FORBIDDEN_PROMISES = [...OFFLINE_PROMISES, ...CERTIFICATION_CLAIMS];
 
 function sourceFiles(dir: string): string[] {
@@ -59,6 +68,24 @@ describe("privacy policy source and Markdown", () => {
     for (const pattern of FORBIDDEN_PROMISES) expect(policyText).not.toMatch(pattern);
   });
 
+  test("the Vietnamese policy mirrors the English section by section and states the same boundary (P2a)", () => {
+    expect(PRIVACY_POLICY_SECTIONS_VI.length).toBe(PRIVACY_POLICY_SECTIONS.length);
+    for (let i = 0; i < PRIVACY_POLICY_SECTIONS.length; i++) {
+      expect({ section: PRIVACY_POLICY_SECTIONS[i].title, paragraphs: PRIVACY_POLICY_SECTIONS_VI[i].paragraphs.length }).toEqual({
+        section: PRIVACY_POLICY_SECTIONS[i].title,
+        paragraphs: PRIVACY_POLICY_SECTIONS[i].paragraphs.length,
+      });
+    }
+    expect(policyTextVi).toMatch(/nhận dạng giọng nói của hệ điều hành/);
+    expect(policyTextVi).toMatch(/có thể gửi âm thanh đến nhà cung cấp nền tảng/);
+    expect(policyTextVi).toMatch(/không vận hành máy chủ nhận dạng giọng nói nào/);
+    expect(policyTextVi).toMatch(/bộ nhớ riêng của ứng dụng trên thiết bị/);
+    expect(policyTextVi).toMatch(/Xóa ứng dụng sẽ xóa tất cả/);
+    expect(policyTextVi).toMatch(/không phân tích dữ liệu/);
+    expect(policyTextVi).toMatch(/không quảng cáo/);
+    for (const pattern of FORBIDDEN_PROMISES) expect(policyTextVi).not.toMatch(pattern);
+  });
+
   test("covers every item the release checklist requires (§43)", () => {
     expect(policyText).toMatch(/private storage on your device/);
     expect(policyText).toMatch(/temporary cache folder/);
@@ -74,18 +101,26 @@ describe("privacy policy source and Markdown", () => {
   });
 
   test("the in-app network-speech disclosure states the same boundary (§42, §74)", () => {
-    const source = readFileSync("src/lib/speech/step-policy.ts", "utf8");
-    const start = source.indexOf("export function networkDisclosureText(");
-    const text = source.slice(start, source.indexOf("\n}", start));
+    // Since P2a the disclosure is a catalogue message (speech.disclosure) in both languages.
+    const en = JSON.parse(readFileSync("src/lib/i18n/catalog/en.json", "utf8")) as Record<string, string>;
+    const vi = JSON.parse(readFileSync("src/lib/i18n/catalog/vi.json", "utf8")) as Record<string, string>;
+    const text = en["speech.disclosure"];
     expect(text).toMatch(/device's system service/);
     expect(text).toMatch(/may use the internet/);
     expect(text).toMatch(/never uploads or stores your recording/);
     expect(text).toMatch(/skip speaking/);
     for (const pattern of OFFLINE_PROMISES) expect(text).not.toMatch(pattern);
+    const textVi = vi["speech.disclosure"];
+    expect(textVi).toMatch(/dịch vụ hệ thống của thiết bị/);
+    expect(textVi).toMatch(/có thể dùng Internet/);
+    expect(textVi).toMatch(/không bao giờ tải lên hay lưu bản ghi âm/);
+    expect(textVi).toMatch(/bỏ qua phần nói/);
+    for (const pattern of OFFLINE_PROMISES) expect(textVi).not.toMatch(pattern);
   });
 
   test("no learner-facing app string makes an over-broad offline promise", () => {
-    for (const file of [...sourceFiles("src/app"), ...sourceFiles("src/components"), ...sourceFiles("src/lib")]) {
+    const catalogues = ["src/lib/i18n/catalog/en.json", "src/lib/i18n/catalog/vi.json"];
+    for (const file of [...sourceFiles("src/app"), ...sourceFiles("src/components"), ...sourceFiles("src/lib"), ...catalogues]) {
       // The policy source necessarily names the promises it refuses to make.
       if (file.endsWith("privacy-policy.ts")) continue;
       const source = readFileSync(file, "utf8");

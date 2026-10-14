@@ -4,14 +4,17 @@ import React, { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { catalog, orderedCourses } from "@/lib/content";
+import { courseProfile } from "@/lib/course-profile";
 import { DAILY_GOAL_OPTIONS, DEFAULT_COURSE, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export default function OnboardingScreen() {
   const styles = useStyles();
+  const { t, languageName } = useT();
   const finishOnboarding = useProgress((s) => s.finishOnboarding);
   const [courseId, setCourseId] = useState(
     catalog.courses.some((c) => c.id === DEFAULT_COURSE)
@@ -21,6 +24,9 @@ export default function OnboardingScreen() {
   const [goal, setGoal] = useState<number>(20);
 
   const selected = catalog.courses.find((c) => c.id === courseId);
+  const nameOf = (course: { id: string; targetLanguage: string }) =>
+    languageName(courseProfile(course.id).targetCode, course.targetLanguage);
+  const pace = (g: number) => t(`onboarding.pace.${g <= 10 ? "casual" : g <= 20 ? "regular" : g <= 30 ? "serious" : "intense"}`);
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -30,13 +36,10 @@ export default function OnboardingScreen() {
           style={styles.mascot}
           contentFit="contain"
         />
-        <Text style={styles.title}>Welcome!</Text>
-        <Text style={styles.subtitle}>
-          Pick a language and start learning with bite-sized lessons, real audio, and
-          spaced repetition.
-        </Text>
+        <Text style={styles.title}>{t("onboarding.welcome")}</Text>
+        <Text style={styles.subtitle}>{t("onboarding.subtitle")}</Text>
 
-        <Text style={styles.sectionLabel}>I want to learn</Text>
+        <Text style={styles.sectionLabel}>{t("onboarding.wantToLearn")}</Text>
         <View style={styles.langGrid}>
           {orderedCourses.map((course) => (
             <Pressable
@@ -44,7 +47,8 @@ export default function OnboardingScreen() {
               onPress={() => setCourseId(course.id)}
               accessibilityRole="button"
               accessibilityState={{ selected: courseId === course.id }}
-              accessibilityLabel={`${course.targetLanguage}, ${course.unitCount} units, ${course.lessonCount} lessons`}
+              testID={`onboarding-course-${course.id}`}
+              accessibilityLabel={t("onboarding.courseLabel", { language: nameOf(course), units: course.unitCount, lessons: course.lessonCount })}
               style={[styles.langChip, courseId === course.id && styles.langChipActive]}
             >
               <Flag courseId={course.id} size={32} />
@@ -54,16 +58,16 @@ export default function OnboardingScreen() {
                   courseId === course.id && styles.langNameActive,
                 ]}
               >
-                {course.targetLanguage}
+                {nameOf(course)}
               </Text>
               <Text style={styles.langMeta}>
-                {course.unitCount} units · {course.lessonCount} lessons
+                {t("onboarding.courseMeta", { units: course.unitCount, lessons: course.lessonCount })}
               </Text>
             </Pressable>
           ))}
         </View>
 
-        <Text style={styles.sectionLabel}>Daily XP goal</Text>
+        <Text style={styles.sectionLabel}>{t("onboarding.dailyGoal")}</Text>
         <View style={styles.goals}>
           {DAILY_GOAL_OPTIONS.map((g) => (
             <Pressable
@@ -71,21 +75,23 @@ export default function OnboardingScreen() {
               onPress={() => setGoal(g)}
               accessibilityRole="button"
               accessibilityState={{ selected: goal === g }}
-              accessibilityLabel={`${g} XP a day, ${g <= 10 ? "casual" : g <= 20 ? "regular" : g <= 30 ? "serious" : "intense"}`}
+              testID={`onboarding-goal-${g}`}
+              accessibilityLabel={t("onboarding.goalLabel", { xp: g, pace: pace(g) })}
               style={[styles.goalChip, goal === g && styles.goalChipActive]}
             >
               <Text style={[styles.goalText, goal === g && styles.goalTextActive]}>
                 {g} XP
               </Text>
               <Text style={[styles.goalHint, goal === g && styles.goalTextActive]}>
-                {g <= 10 ? "Casual" : g <= 20 ? "Regular" : g <= 30 ? "Serious" : "Intense"}
+                {pace(g)}
               </Text>
             </Pressable>
           ))}
         </View>
 
         <DuoButton
-          label={selected ? `Learn ${selected.targetLanguage}` : "Start learning"}
+          label={selected ? t("onboarding.learn", { language: nameOf(selected) }) : t("onboarding.start")}
+          testID="onboarding-start"
           onPress={() => {
             finishOnboarding(courseId, goal);
             router.replace("/(tabs)");

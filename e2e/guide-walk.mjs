@@ -12,11 +12,17 @@
  *   node e2e/guide-walk.mjs dist [report.json]
  *
  * Exit code 1 on any FAIL. Browser: E2E_BROWSER_PATH or the bundled Chromium.
+ *
+ * P2a: structural selectors are testIDs; every label the walk expects comes
+ * from the UI catalogue of the export's language (UI_LANG=vi|en), so the
+ * same walk verifies the English and the Vietnamese UI against the guide.
  */
 import { spawn } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import net from "node:net";
 import { chromium } from "playwright-core";
+
+import { UI_LANG, languageName, t } from "./i18n.mjs";
 
 const exportDir = process.argv[2] ?? "dist";
 const reportPath = process.argv[3];
@@ -35,6 +41,8 @@ const sectionTitles = pack.sections.map((s) => s.title);
 const lessonsById = new Map();
 for (const s of pack.sections) for (const u of s.units) for (const l of u.lessons) lessonsById.set(l.id, { lesson: l, unit: u });
 const firstWord = pack.sections[0].units[0].words[0];
+const FR = languageName("fr");
+const COURSE_CODES = ["fr", "es", "de", "it", "pt", "ja", "ko", "zh"];
 
 const results = [];
 const record = (section, title, status, evidence = "") => {
@@ -99,21 +107,23 @@ try {
   };
   const go = (path) => page.goto(`${BASE}${path}`, { waitUntil: "networkidle" });
   const click = async (text, opts = {}) => page.getByText(text, opts).first().click();
+  const byId = (id) => page.getByTestId(id);
+  const visible = (loc) => loc.isVisible().catch(() => false);
   const stepThrough = async (predicate, maxSteps = 14) => {
     for (let i = 0; i < maxSteps; i++) {
       if (await predicate()) return i;
-      const dontKnow = page.getByText("I don't know", { exact: true }).first();
-      const cont = page.getByText("Continue", { exact: true }).first();
-      if (await dontKnow.isVisible().catch(() => false)) await dontKnow.click();
-      else if (await cont.isVisible().catch(() => false)) await cont.click();
+      const dontKnow = byId("session-idk").first();
+      const cont = byId("session-continue").first();
+      if (await visible(dontKnow)) await dontKnow.click();
+      else if (await visible(cont)) await cont.click();
       else {
-        const skip = page.getByText(/Skip this step/).first();
-        if (await skip.isVisible().catch(() => false)) await skip.click();
+        const skip = byId("speak-skip").first();
+        if (await visible(skip)) await skip.click();
         else await page.waitForTimeout(400);
       }
       await page.waitForTimeout(250);
-      const cont2 = page.getByText("Continue", { exact: true }).first();
-      if (await cont2.isVisible().catch(() => false)) await cont2.click();
+      const cont2 = byId("session-continue").first();
+      if (await visible(cont2)) await cont2.click();
     }
     return -1;
   };
@@ -121,53 +131,58 @@ try {
   // ---- §1 §3 §4 onboarding ------------------------------------------------
   await go("/");
   await attempt(1, "What the app is — French plus the seven inherited courses are offered", async () => {
-    for (const c of ["French", "Spanish", "German", "Italian", "Portuguese", "Japanese", "Korean", "Chinese"]) await see(c, { exact: true });
-    return "8 course cards";
+    for (const code of COURSE_CODES) await see(languageName(code), { exact: true });
+    return `8 course cards (${UI_LANG})`;
   });
   device(2, "Installation — store / TestFlight / closed test / sideload", "install paths exist only on a phone; storage and permission-at-install claims verified in DEVICE_ACCEPTANCE.md");
   await attempt(3, "First launch — Daily XP goal chips and the start button", async () => {
-    await see("Daily XP goal");
-    const chips = await page.getByText(/\b(10|20|30|50)\b/).count();
-    await click("French", { exact: true });
-    const button = page.getByRole("button", { name: /^learn french$/i });
+    await see(t("onboarding.dailyGoal"));
+    let chips = 0;
+    for (const g of [10, 20, 30, 50]) if (await visible(byId(`onboarding-goal-${g}`))) chips++;
+    await byId("onboarding-course-fr-en").click();
+    const button = byId("onboarding-start");
     const label = (await button.textContent())?.trim();
+    const expected = t("onboarding.learn", { language: FR });
     await button.click();
     await see(sectionTitles[0]);
     if (chips < 4) throw new Error(`goal chips found: ${chips} (onboarding still completed)`);
+    if (label?.toLowerCase() !== expected.toLowerCase()) throw new Error(`start button reads "${label}", expected "${expected}"`);
     return `chips=${chips}; button reads "${label}"; lands on the Learn tab`;
   });
   await attempt(4, "Choosing French — French is a first-class course", async () => {
-    await see("Studied French before?");
+    await see(t("learn.placementTitle", { language: FR }));
     return "Learn tab shows the French-only placement entry";
   });
 
   // ---- §5 placement --------------------------------------------------------
   await attempt(5, "Starting-point check — intro, I don't know on every item, result choices", async () => {
     await go("/placement/intro");
-    await see("Find your starting point");
-    await see("Have you studied French before?");
-    await see("I'm new — start from the beginning");
-    await click("Yes — find my starting point");
-    await see("I don't know");
+    await see(t("placement.title"));
+    await see(t("placement.question", { language: FR }));
+    await see(t("placement.new"));
+    await byId("placement-yes").click();
+    await byId("session-idk").first().waitFor();
     let answered = 0;
     for (let i = 0; i < 60; i++) {
-      const done = page.getByText(/Start from the beginning|Start here/).first();
-      if (await done.isVisible().catch(() => false)) break;
-      const dk = page.getByText("I don't know", { exact: true }).first();
-      if (await dk.isVisible().catch(() => false)) {
+      if (await visible(byId("placement-start-beginning"))) break;
+      const dk = byId("session-idk").first();
+      if (await visible(dk)) {
         await dk.click();
         answered++;
         await page.waitForTimeout(150);
-        const cont = page.getByText("Continue", { exact: true }).first();
-        if (await cont.isVisible().catch(() => false)) await cont.click();
+        const cont = byId("session-continue").first();
+        if (await visible(cont)) await cont.click();
       } else {
-        const cont = page.getByText(/Continue|Next|Skip this step/).first();
-        if (await cont.isVisible().catch(() => false)) await cont.click();
+        const cont = byId("session-continue").first();
+        const skip = byId("speak-skip").first();
+        if (await visible(cont)) await cont.click();
+        else if (await visible(skip)) await skip.click();
         else await page.waitForTimeout(300);
       }
     }
-    await see(/Start from the beginning/);
-    await click(/Start from the beginning/);
+    await byId("placement-start-beginning").waitFor();
+    await see(t("placementResults.startBeginning"));
+    await byId("placement-start-beginning").click();
     return `${answered} items answered with I don't know; result screen offered Start from the beginning`;
   });
 
@@ -175,11 +190,11 @@ try {
   await attempt(6, "Learn — locked nodes, replayable nodes, guidebooks", async () => {
     await go("/");
     await see(sectionTitles[0]);
-    const locked = await page.locator('[role="button"][aria-disabled="true"]').count();
-    const guidebooks = await page.locator('[aria-label$=" guidebook"]').count();
+    const locked = await byId("lesson-node-locked").count();
+    const guidebooks = await page.locator('[data-testid^="guidebook-button-"]').count();
     if (locked < 1) throw new Error("no locked (disabled) lesson node");
     if (guidebooks < 1) throw new Error("no guidebook button");
-    await page.locator('[aria-label$=" guidebook"]').first().click();
+    await page.locator('[data-testid^="guidebook-button-"]').first().click();
     await page.waitForURL(/guidebook/);
     return `${locked} locked nodes (disabled), ${guidebooks} guidebook buttons; guidebook route opens (the Locked/Completed hints are screen-reader hints: DEVICE)`;
   });
@@ -194,31 +209,32 @@ try {
   // ---- §8 lesson flow -------------------------------------------------------
   await attempt(8, "Lesson flow — Check, I don't know reveals the answer, Continue", async () => {
     await go("/lesson/fr-en:u0-l0");
-    await see("Check", { exact: true });
-    const dontKnow = await page.getByText("I don't know", { exact: true }).count();
-    const option = page.getByRole("button").filter({ hasNotText: /^(Check|Continue|I don't know)$/ }).filter({ hasNot: page.locator('[aria-label="Play audio"]') });
-    const labels = await option.evaluateAll((els) => els.map((e) => e.getAttribute("aria-label") ?? e.textContent ?? ""));
-    const cardIndex = labels.findIndex((l) => l && !/close|play|audio|check|continue|know|back/i.test(l));
-    if (cardIndex < 0) throw new Error(`no answer option among ${labels.length} buttons`);
-    await option.nth(cardIndex).click();
-    await click("Check", { exact: true });
-    await see(/Nicely done!|Correct answer:|Not quite this time/);
-    await click("Continue", { exact: true });
-    await see("Check", { exact: true });
+    await see(t("common.check"), { exact: true });
+    const dontKnow = await byId("session-idk").count();
+    const option = byId("option-card");
+    if ((await option.count()) < 1) throw new Error("no answer option on the first step");
+    await option.first().click();
+    await byId("session-check").click();
+    await byId("session-feedback").first().waitFor();
+    await see(new RegExp(`${t("session.nicelyDone")}|${t("session.correctAnswer")}|${t("session.notQuite")}`));
+    await byId("session-continue").click();
+    await see(t("common.check"), { exact: true });
     return `option → Check → feedback → Continue → next exercise; "I don't know" buttons on a lesson step: ${dontKnow} (placement and audio/microphone steps only)`;
   });
 
   // ---- §9 §10 vocabulary ----------------------------------------------------
   await attempt(9, "Vocabulary browser — filters, sort and search", async () => {
     await go("/vocabulary");
-    for (const f of ["All", "Learned", "Not yet", "Nouns", "Verbs", "Expressions", "Course order"]) await see(f, { exact: true });
-    await page.getByPlaceholder("Search French or English…").waitFor();
+    for (const f of ["all", "learned", "not-learned", "noun", "verb", "expression"]) await see(t(`vocab.filter.${f}`), { exact: true });
+    await see(t("vocab.sort.course"), { exact: true });
+    await byId("vocab-search").waitFor();
     return "filters + Course order + search field";
   });
   await attempt(10, "Rich dictionary — an entry shows pronunciation and an example", async () => {
     await go("/vocabulary");
     await click(firstWord.target, { exact: true });
-    await see("Example", { exact: true });
+    await byId("vocab-example").waitFor();
+    await see(t("vocab.example"), { exact: true });
     return `entry for "${firstWord.target}" shows Example`;
   });
   tests(11, "Memory — FSRS scheduling and strength", "fsrs-adapter.test.ts, evidence-gate.test.ts, memory-strength.test.ts");
@@ -226,16 +242,16 @@ try {
   // ---- §12 §13 Today + Practice -------------------------------------------
   await attempt(12, "Today — session length presets, start, Can't speak now", async () => {
     await go("/today");
-    await page.locator('[aria-label="Session length"]').first().waitFor();
-    const presets = await page.locator('[aria-label$=" minute session"]').count();
-    await see("Start today's session");
-    const toggle = await page.locator('[aria-label="Can\'t speak right now"]').count();
+    await byId("today-presets").first().waitFor();
+    const presets = await page.locator('[data-testid^="today-preset-"]').count();
+    await see(t("today.startSession"));
+    const toggle = await byId("today-speak-toggle").count();
     if (presets < 3) throw new Error(`presets ${presets}`);
     return `${presets} presets; Start today's session; Can't speak now toggle ${toggle ? "present" : "hidden — shown only when the device can record (DEVICE)"}`;
   });
   await attempt(13, "Review — Practice cards", async () => {
     await go("/practice");
-    for (const c of ["Review words", "Review listening", "Review speaking", "Practice writing", "Have a conversation", "Practice mistakes", "Open vocabulary"]) await see(c, { exact: true });
+    for (const k of ["reviewWords", "reviewListening", "reviewSpeaking", "practiceWriting", "haveConversation", "practiceMistakes", "openVocabulary"]) await see(t(`practice.${k}`), { exact: true });
     return "7 practice entries";
   });
   tests(13, "Review — Undo this review", "review-log undo: evidence-routing.test.ts (undoLastFrenchReview); no card is due on a fresh web profile");
@@ -245,21 +261,18 @@ try {
     const listeningLesson = [...lessonsById.values()].find(({ lesson }) => lesson.exercises[0].type === "listeningComprehension")?.lesson;
     if (!listeningLesson) throw new Error("no lesson starts with a listening exercise");
     await go(`/lesson/${listeningLesson.id}`);
-    await page.locator('[aria-label="Play audio"]').first().waitFor();
+    await byId("listening-player").first().waitFor();
     await see(listeningLesson.exercises[0].question, { exact: true });
-    const slow = await page.locator('[aria-label^="Switch to slow speed"]').count();
+    const slow = await byId("rate-toggle").count();
     return `${listeningLesson.id}: Play audio + question; Slow control ${slow ? "present" : "absent"}`;
   });
 
   // ---- §15 §16 §17 speaking ------------------------------------------------
   await attempt(15, "Speaking — a Section 4 lesson shows the honest no-recognizer escape on web", async () => {
     await go("/lesson/fr-en:uk-l0");
-    const step = await stepThrough(async () =>
-      (await page.getByText(/Skip this step/).first().isVisible().catch(() => false)) ||
-      (await page.getByText(/speech recognition|can't record|cannot record/i).first().isVisible().catch(() => false))
-    );
+    const step = await stepThrough(async () => (await visible(byId("speak-skip").first())) || (await visible(byId("speak-blocked").first())));
     if (step < 0) throw new Error("no speaking step reached");
-    const escape = (await page.getByText(/Skip this step/).first().isVisible().catch(() => false)) ? "Skip this step" : "unavailable notice";
+    const escape = (await visible(byId("speak-skip").first())) ? t("ex.skipStep") : "unavailable notice";
     return `speaking step at ${step}: ${escape}`;
   });
   device(16, "Microphone permission — system prompts, Allow microphone / Open Settings", "OS permission dialogs; iOS Settings paths and Android app permissions");
@@ -268,21 +281,20 @@ try {
   // ---- §18 §19 writing + conversation ---------------------------------------
   await attempt(18, "Writing practice — Your French answer, Check, named feedback", async () => {
     await go("/practice");
-    await click("Practice writing", { exact: true });
-    await page.getByRole("textbox").first().fill("Bonjour, je m'appelle Léa et j'habite à Paris.");
-    await click("Check", { exact: true });
-    const feedback = await page
-      .getByText(/Nicely done!|Correct answer:|Not quite this time|You included|Don't forget|Write your|Try a complete|Use a complete|Keep it short|Say .* once/)
-      .first();
+    await byId("practice-writing").click();
+    await byId("writing-input").first().fill("Bonjour, je m'appelle Léa et j'habite à Paris.");
+    await byId("session-check").click();
+    const feedback = byId("session-feedback").first();
     await feedback.waitFor();
-    return `feedback: "${(await feedback.textContent())?.trim().slice(0, 80)}"`;
+    const named = await visible(byId("writing-feedback").first());
+    return `feedback: "${(await feedback.textContent())?.trim().slice(0, 80)}"${named ? " + named rubric feedback" : ""}`;
   });
   await attempt(19, "Conversation practice — partner exchange offers Skip this step on web", async () => {
     await go("/practice");
-    await click("Have a conversation", { exact: true });
+    await byId("practice-conversation").click();
     const escape = await Promise.race([
-      page.getByText(/Skip this step/).first().waitFor().then(() => "Skip this step"),
-      page.getByText(/speech recognition|can't record|cannot record/i).first().waitFor().then(() => "unavailable notice"),
+      byId("speak-skip").first().waitFor().then(() => t("ex.skipStep")),
+      byId("speak-blocked").first().waitFor().then(() => "unavailable notice"),
     ]);
     return escape;
   });
@@ -293,7 +305,7 @@ try {
     if (!readingLesson) throw new Error("no lesson starts with a reading exercise");
     await go(`/lesson/${readingLesson.id}`);
     await see(readingLesson.exercises[0].question, { exact: true });
-    const words = page.locator('[aria-label^="Show meaning of "]');
+    const words = page.locator('[data-testid^="gloss-"]').filter({ hasNot: page.getByTestId("gloss-value") });
     const wordButtons = await words.count();
     if (wordButtons < 1) throw new Error("no tappable words in the passage");
     await words.first().click();
@@ -303,39 +315,39 @@ try {
   // ---- §21 §22 checkpoints --------------------------------------------------
   await attempt(21, "Checkpoints — section-1 checkpoint starts and renders answer options", async () => {
     await go("/checkpoint/fr.checkpoint.section-1");
-    const start = page.getByText(/Start|Begin/i).first();
-    if (await start.isVisible().catch(() => false)) await start.click();
     await page.waitForTimeout(500);
-    const options = await page.getByRole("button", { name: /.+/ }).count();
-    if (options < 4) throw new Error(`${options} buttons`);
-    return `${options} buttons on the first item`;
+    const options = await byId("option-card").count();
+    if (options < 4) throw new Error(`${options} options`);
+    return `${options} options on the first item`;
   });
   await attempt(22, "A1 capstone — speech pre-gate on a platform without recognition", async () => {
     await go("/checkpoint/fr.checkpoint.a1-capstone");
-    const gated = await Promise.race([
-      page.getByText(/can't record speech|cannot|speech recognition/i).first().waitFor().then(() => "pre-gate"),
-      page.getByText("The A1 check").first().waitFor().then(() => "intro"),
-    ]);
-    return gated;
+    await byId("checkpoint-speech-blocked").waitFor();
+    return "pre-gate";
   });
 
   // ---- §23 §24 §25 goals ------------------------------------------------------
   await attempt(23, "CEFR-aligned A1 estimate — five skills with authored denominators", async () => {
     await go("/goals");
-    await see("CEFR-aligned A1 estimate");
-    const chip = await page.getByText(/Listening\s*\d\/\d/).first().textContent();
-    await see(/Not complete yet|Demonstrated across all five skills/);
+    await see(t("goals.estimateLabel"));
+    const chip = await byId("a1-domain-chip-spoken_reception").textContent();
+    if (!new RegExp(`${t("domain.spoken_reception")}\\s*\\d/\\d`).test(chip ?? "")) throw new Error(`chip "${chip}"`);
+    await see(new RegExp(`${t("goals.estimateIncomplete")}|${t("goals.estimateDemonstrated")}`));
     return `chip "${chip?.trim()}"`;
   });
   await attempt(24, "Why it is not official certification — the explainer in the app's own words", async () => {
-    await page.locator('[aria-label="What this estimate is and is not"]').first().click();
-    await see(/never an official CEFR examination/);
+    await byId("estimate-limits-toggle").first().click();
+    const limits = await byId("estimate-limits").innerText();
+    if (!limits.includes(t("goals.limits1").slice(2, 40))) throw new Error(`explainer: ${limits.slice(0, 80)}`);
+    const disclaimer = await byId("goals-disclaimer").textContent();
+    if (disclaimer?.trim() !== t("goals.disclaimer")) throw new Error("disclaimer differs from the catalogue");
     return "explainer toggle opens; disclaimer present";
   });
   await attempt(25, "Goals screen — starting-point actions", async () => {
-    await see(/Find your starting point|Retake the check/);
-    const reset = await page.getByText("Reset starting point", { exact: true }).count();
-    const fromStart = await page.getByText("Starting from the beginning.", { exact: true }).count();
+    await byId("goals-placement-action").waitFor();
+    await see(new RegExp(`${t("goals.find")}|${t("goals.retake")}`));
+    const reset = await byId("reset-floor").count();
+    const fromStart = await page.getByText(t("goals.startingBeginning"), { exact: true }).count();
     if (!reset && !fromStart) throw new Error("neither Reset starting point nor Starting from the beginning");
     return `Retake/Find present; ${reset ? "Reset starting point shown" : "Starting from the beginning. (Reset appears only when the starting point is above the beginning)"}; confirmation dialog: DEVICE`;
   });
@@ -343,32 +355,39 @@ try {
   // ---- §26–§30 profile ------------------------------------------------------------
   await attempt(26, "XP, streak and activity — Profile statistics", async () => {
     await go("/profile");
-    for (const s of ["Day streak", "Course XP", "Today's XP", "To review", "Lessons done", "Words learned", "Switch"]) await see(s, { exact: true });
+    for (const k of ["streak", "xp", "todayXp", "toReview", "lessonsDone", "wordsLearned"]) await see(t(`profile.stat.${k}`), { exact: true });
+    await see(t("profile.switch"), { exact: true });
     return "6 stats + Switch";
   });
   await attempt(27, "Backup export — Export progress row", async () => {
-    await see("Export progress", { exact: true });
-    await see("Save a backup file of everything.");
+    await byId("profile-export").waitFor();
+    await see(t("profile.export"), { exact: true });
+    await see(t("profile.exportHint"));
     return "row + hint";
   });
   await attempt(28, "Backup import — Import progress row", async () => {
-    await see("Import progress", { exact: true });
-    await see("Restore from a backup file.");
+    await byId("profile-import").waitFor();
+    await see(t("profile.importTitle"), { exact: true });
+    await see(t("profile.importHint"));
     return "row + hint (file picker and refusal paths: backup.test.ts + DEVICE)";
   });
   await attempt(29, "Data and privacy — policy reachable, states the OS speech boundary", async () => {
-    await click("Privacy", { exact: true });
-    await see(/may send the audio to the platform provider/);
-    await see(/does not operate any speech server/);
-    return "policy text verified";
+    await byId("privacy-link").click();
+    await byId("privacy-policy").waitFor();
+    const policy = await byId("privacy-policy").innerText();
+    const boundary = UI_LANG === "vi" ? [/có thể gửi âm thanh đến nhà cung cấp nền tảng/, /không vận hành máy chủ nhận dạng giọng nói nào/] : [/may send the audio to the platform provider/, /does not operate any speech server/];
+    for (const re of boundary) if (!re.test(policy)) throw new Error(`policy lacks ${re}`);
+    return `policy text verified (${UI_LANG})`;
   });
   await attempt(30, "Accessibility — Appearance Device / Light / Dark", async () => {
     await go("/profile");
-    await see("Appearance", { exact: true });
-    for (const t of ["Device", "Light", "Dark"]) await see(t, { exact: true });
-    await click("Dark", { exact: true });
-    await click("Device", { exact: true });
-    return "three appearance options, switching works";
+    await see(t("profile.appearance"), { exact: true });
+    for (const v of ["system", "light", "dark"]) await see(t(`profile.theme.${v}`), { exact: true });
+    await byId("theme-option-dark").click();
+    await byId("theme-option-system").click();
+    await see(t("profile.language"), { exact: true });
+    for (const v of ["system", "vi", "en"]) await byId(`language-option-${v}`).waitFor();
+    return "three appearance options + the app-language picker, switching works";
   });
 
   // ---- §31 §32 network ----------------------------------------------------------
@@ -380,22 +399,27 @@ try {
 
   // ---- §33 §34 troubleshooting + reset ---------------------------------------------
   await attempt(33, "Troubleshooting — every control the section names exists", async () => {
-    const seen = results.filter((r) => r.status === "PASS").map((r) => `${r.title} ${r.evidence}`).join(" ");
-    for (const label of ["Skip this step", "Import progress", "Play audio"]) {
-      if (!seen.includes(label)) throw new Error(`label not verified earlier: ${label}`);
+    // The controls §33 names were exercised by earlier sections: the speaking
+    // escape (§15/§19: Skip this step or the honest blocked panel), Import
+    // progress (§28) and the listening player (§14).
+    const passed = new Set(results.filter((r) => r.status === "PASS").map((r) => r.section));
+    for (const section of [14, 15, 19, 28]) {
+      if (!passed.has(section)) throw new Error(`§${section} did not pass, so its control is unverified`);
     }
-    return "Skip this step, Import progress, Play audio verified above (Can't speak now / Reset starting point: DEVICE rows)";
+    return "speaking escape (§15/§19), Import progress (§28), Play audio (§14) verified above; Can't speak now / Reset starting point: DEVICE rows";
   });
   device(34, "Reset and placement behaviour — confirmation dialog and what a reset keeps", "native Alert (Keep it / Reset); reset semantics covered by placement.test.ts");
 
   // ---- §35 §36 licenses + support ----------------------------------------------------
   await attempt(35, "Licenses and attributions — sources listed in the app", async () => {
     await go("/licenses");
-    await see(/Licenses/);
-    await see(/Lexique 4/);
-    await see(/ts-fsrs|FSRS/);
-    const piper = await page.getByText(/Piper/).first().isVisible().catch(() => false);
-    const lingo = await page.getByText(/Lingo Lessons/).first().isVisible().catch(() => false);
+    await byId("licenses-screen").waitFor();
+    await see(t("licenses.title"));
+    const text = await byId("licenses-screen").innerText();
+    if (!/Lexique 4/.test(text)) throw new Error("Lexique 4 not shown");
+    if (!/ts-fsrs|FSRS/.test(text)) throw new Error("FSRS not shown");
+    const piper = /Piper/.test(text);
+    const lingo = /Lingo Lessons/.test(text);
     if (!piper) throw new Error("Piper voice attribution not shown in the app");
     if (!lingo) throw new Error("Lingo Lessons base attribution not shown in the app");
     return "Lexique 4, FSRS, Piper voices, Lingo Lessons base";
@@ -415,6 +439,7 @@ const failed = results.filter((r) => r.status === "FAIL");
 const summary = {
   generator: "e2e/guide-walk.mjs",
   exportDir,
+  uiLanguage: UI_LANG,
   totals: { PASS: results.filter((r) => r.status === "PASS").length, FAIL: failed.length, DEVICE: results.filter((r) => r.status === "DEVICE").length, TESTS: results.filter((r) => r.status === "TESTS").length },
   externalRequests: external,
   results,

@@ -1,6 +1,6 @@
 # User guide
 
-Everything in this guide describes the app as it actually behaves in the current release; every section is walked on a release build before the guide is marked final (see the validation record in the repository, `docs/USER_GUIDE_VALIDATION.md`).
+Everything in this guide describes the app as it actually behaves in the current release; every section is walked on a release build before the guide is marked final (see the validation record in the repository, `docs/USER_GUIDE_VALIDATION.md`). A Vietnamese version of this guide is `docs/USER_GUIDE.vi.md` (website: `/vi/guide/`).
 
 ## 1. What the app is
 
@@ -142,6 +142,8 @@ Everything lives on your device: a local database holds your cards and review hi
 ## 30. Accessibility
 
 Every control has a screen-reader label and state; correct and incorrect answers are marked with a symbol and text, not colour alone; text follows the system size (reading passages up to 200%); dark mode follows the system or your choice under Profile → **Appearance** (*Device / Light / Dark*). Speaking steps are always skippable. See the accessibility statement on the website for the current status per feature.
+
+The app's own language — every screen, button, hint and message — is Vietnamese or English: Profile → **App language** (*Device / Tiếng Việt / English*). *Device* follows your phone's language (Vietnamese on a Vietnamese phone, English otherwise). Course content (word meanings, questions, guidebooks) keeps the language the course was written in; the French course is glossed in English until the Vietnamese French course ships.
 
 ## 31. Offline usage
 

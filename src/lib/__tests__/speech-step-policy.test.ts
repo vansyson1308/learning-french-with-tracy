@@ -4,6 +4,8 @@
  * assisted marking, gate states, honest outcome wording.
  */
 import { describe, expect, test } from "bun:test";
+import { translateMessage } from "../i18n/translate";
+import type { Message } from "../i18n/message";
 
 import {
   attemptAssisted,
@@ -49,6 +51,9 @@ const production: SpeakProductionExercise = {
 const learning = { scored: false };
 const scored = { scored: true };
 const fresh = { wrongFinals: 0, answered: false };
+
+const textOf = (m: Message | null | undefined) => (m ? translateMessage("en", m) : undefined);
+
 
 describe("target exposure (§11/§13)", () => {
   test("repetition always shows its French — it is the practice stimulus", () => {
@@ -144,13 +149,13 @@ describe("outcome wording (§14 — honest, never scores)", () => {
   test("silence is described as silence, retryable", () => {
     const notice = outcomeNotice({ kind: "no_speech" });
     expect(notice?.retryable).toBe(true);
-    expect(notice?.message).toContain("didn't hear");
+    expect(textOf(notice?.message)).toContain("didn't hear");
   });
 
   test("technical failure is never blamed on the answer", () => {
     const notice = outcomeNotice({ kind: "technical", reason: "unknown" });
     expect(notice?.retryable).toBe(true);
-    expect(notice?.message.toLowerCase()).not.toContain("wrong answer");
+    expect(textOf(notice?.message)?.toLowerCase()).not.toContain("wrong answer");
   });
 
   test("abort and final say nothing", () => {
@@ -168,7 +173,7 @@ describe("outcome wording (§14 — honest, never scores)", () => {
     ];
     for (const notice of all) {
       if (!notice) continue;
-      expect(notice.message).not.toMatch(/\d+\s*%|pronunciation score/i);
+      expect(textOf(notice.message)).not.toMatch(/\d+\s*%|pronunciation score/i);
     }
   });
 });
@@ -220,12 +225,12 @@ describe("capability gate (§24/§25)", () => {
   });
 
   test("the disclosure text states the three §7 facts and offers the skip", () => {
-    expect(networkDisclosureText("French")).toContain("system service");
-    expect(networkDisclosureText("French")).toContain("internet");
-    expect(networkDisclosureText("French")).toContain("never uploads");
-    expect(networkDisclosureText("French")).toContain("skip");
+    expect(textOf(networkDisclosureText("French"))).toContain("system service");
+    expect(textOf(networkDisclosureText("French"))).toContain("internet");
+    expect(textOf(networkDisclosureText("French"))).toContain("never uploads");
+    expect(textOf(networkDisclosureText("French"))).toContain("skip");
     // Never a percentage, never scare copy about AI.
-    expect(networkDisclosureText("French")).not.toMatch(/%|AI/);
+    expect(textOf(networkDisclosureText("French"))).not.toMatch(/%|AI/);
   });
 
   test("null capability is still probing", () => {
@@ -247,7 +252,7 @@ describe("capability gate (§24/§25)", () => {
         learning
       );
       expect(gate).toEqual({ kind: "blocked", reason: "permission" });
-      expect(gateMessage(gate, "French")).toContain("Settings");
+      expect(textOf(gateMessage(gate, "French"))).toContain("Settings");
     }
   });
 

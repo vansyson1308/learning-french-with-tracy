@@ -4,6 +4,7 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { CloseButton } from "@/components/close-button";
 import { SpeakerButton } from "@/components/speaker-button";
 import { useCourseContent } from "@/lib/content";
@@ -68,6 +69,7 @@ function GuidebookText({ markdown }: { markdown: string }) {
 
 export default function GuidebookScreen() {
   const styles = useStyles();
+  const { t } = useT();
   const { unitId } = useLocalSearchParams<{ unitId: string }>();
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const { getUnit } = useCourseContent(activeCourseId);
@@ -80,7 +82,7 @@ export default function GuidebookScreen() {
       <View style={styles.topBar}>
         <CloseButton />
         <Text style={styles.title} numberOfLines={1}>
-          {unit.title} Guidebook
+          {t("guidebook.title", { unit: unit.title })}
         </Text>
         <View style={{ width: 44 }} />
       </View>
@@ -89,7 +91,7 @@ export default function GuidebookScreen() {
         <Text style={styles.description}>{unit.description}</Text>
         <GuidebookText markdown={unit.guidebook} />
 
-        <Text style={styles.heading}>Key words</Text>
+        <Text style={styles.heading} testID="guidebook-key-words">{t("guidebook.keyWords")}</Text>
         <View style={{ gap: 8 }}>
           {unit.words.map((word) => (
             <View key={word.target} style={styles.wordRow}>

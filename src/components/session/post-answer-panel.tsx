@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
+import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
 import { exampleTexts } from "@/lib/lexicon/example-text";
 import { panelDataFor } from "@/lib/session/panel";
@@ -29,6 +30,7 @@ export function PostAnswerPanel({
   note?: string;
 }) {
   const styles = useStyles();
+  const { t, tm } = useT();
   const [expanded, setExpanded] = useState(false);
   const data = panelDataFor(courseId, itemId);
   const example = exampleTexts(courseId, data?.example);
@@ -38,7 +40,7 @@ export function PostAnswerPanel({
     <Animated.View
       entering={FadeInDown.duration(200)}
       style={styles.panel}
-      accessibilityLabel={`Word details: ${data.surface}, ${data.gloss}`}
+      accessibilityLabel={t("panel.detailsLabel", { surface: data.surface, gloss: data.gloss })}
     >
       <View style={styles.headRow}>
         <View style={styles.headText}>
@@ -52,7 +54,7 @@ export function PostAnswerPanel({
           {data.pronunciation ? <Text style={styles.pron}>{data.pronunciation}</Text> : null}
           {data.genderLabel ? (
             <View style={styles.genderPill}>
-              <Text style={styles.genderText}>{data.genderLabel}</Text>
+              <Text style={styles.genderText}>{tm(data.genderLabel)}</Text>
             </View>
           ) : null}
         </View>
@@ -67,10 +69,10 @@ export function PostAnswerPanel({
       {expanded ? (
         <Text style={styles.moreDetail}>
           {[
-            `Dictionary form: ${data.lemma}`,
+            t("panel.dictionaryForm", { lemma: data.lemma }),
             data.pos,
-            data.topic ? `topic: ${data.topic}` : null,
-            data.band ? `frequency: ${data.band}` : null,
+            data.topic ? t("panel.topic", { topic: data.topic }) : null,
+            data.band ? t("panel.frequency", { band: data.band }) : null,
           ]
             .filter(Boolean)
             .join(" · ")}
@@ -80,10 +82,10 @@ export function PostAnswerPanel({
           onPress={() => setExpanded(true)}
           hitSlop={8}
           accessibilityRole="button"
-          accessibilityLabel="More word details"
+          accessibilityLabel={t("panel.moreLabel")}
           style={styles.moreButton}
         >
-          <Text style={styles.moreText}>More</Text>
+          <Text style={styles.moreText}>{t("panel.more")}</Text>
         </Pressable>
       )}
     </Animated.View>

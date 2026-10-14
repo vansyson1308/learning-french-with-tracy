@@ -13,6 +13,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 
+import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
 import { speakTarget } from "@/lib/audio";
 import type { LexemeMeta } from "@/lib/learning/lexicon-index";
@@ -31,6 +32,7 @@ export function TeachCard({
   meta?: LexemeMeta;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const example = exampleTexts(courseId, meta?.example);
 
   // One auto-play when the word appears; the speaker button replays.
@@ -40,13 +42,13 @@ export function TeachCard({
 
   const genderLabel =
     meta?.pos === "noun" && (meta.gender === "masculine" || meta.gender === "feminine")
-      ? `${meta.gender} noun`
+      ? t("panel.genderLabel", { gender: meta.gender, elided: "no" })
       : undefined;
 
   return (
-    <View style={styles.wrap} accessibilityLabel={`New word: ${word.target}`}>
+    <View style={styles.wrap} accessibilityLabel={t("teach.newWordLabel", { word: word.target })}>
       <Animated.Text entering={FadeInDown.duration(200)} style={styles.kicker}>
-        NEW WORD
+        {t("teach.kicker")}
       </Animated.Text>
       <Animated.View entering={ZoomIn.springify().damping(14)} style={styles.card}>
         <Text style={styles.emoji} accessibilityElementsHidden>
@@ -55,7 +57,7 @@ export function TeachCard({
         <Text style={styles.target}>{word.target}</Text>
         <Text style={styles.native}>{word.native}</Text>
         {meta?.pronunciation ? (
-          <Text style={styles.pron} accessibilityLabel="Pronunciation">
+          <Text style={styles.pron} accessibilityLabel={t("teach.pronunciation")}>
             {displayPronunciation(meta.pronunciation)}
           </Text>
         ) : null}
@@ -75,7 +77,7 @@ export function TeachCard({
         ) : null}
       </Animated.View>
       <Animated.Text entering={FadeInDown.delay(150)} style={styles.hint}>
-        Listen, read it out loud, then continue.
+        {t("teach.hint")}
       </Animated.Text>
     </View>
   );

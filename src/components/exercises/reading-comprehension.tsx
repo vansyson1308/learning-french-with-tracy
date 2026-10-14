@@ -6,6 +6,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { OptionCard, type OptionState } from "@/components/exercises/option-card";
 import { ReadingPassage } from "@/components/session/reading-passage";
 import { readingFor } from "@/lib/reception/content";
@@ -40,12 +41,13 @@ export function ReadingComprehension({
   onAnswer: (index: number) => void;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const reading = readingFor(courseId, exercise.readingId);
-  if (!reading) return <Text style={styles.question}>Missing reading {exercise.readingId}</Text>;
+  if (!reading) return <Text style={styles.question}>{t("ex.missingReading", { id: exercise.readingId })}</Text>;
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.title}>Read, then answer</Text>
+      <Text style={styles.title}>{t("ex.readThenAnswer")}</Text>
       <ReadingPassage
         title={reading.title}
         kind={reading.kind}
@@ -53,7 +55,7 @@ export function ReadingComprehension({
         glossary={reading.supportGlossary}
         allowGloss={allowGloss}
       />
-      <Text style={styles.question}>{exercise.question}</Text>
+      <Text style={styles.question} testID="exercise-question">{exercise.question}</Text>
       <View style={styles.options}>
         {exercise.options.map((option, i) => (
           <OptionCard

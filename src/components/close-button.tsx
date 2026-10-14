@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { exitScreen } from "@/lib/navigation";
 import { radius, useThemeColors } from "@/lib/theme";
 
@@ -11,12 +12,13 @@ import { radius, useThemeColors } from "@/lib/theme";
  */
 export function CloseButton({ onPress }: { onPress?: () => void }) {
   const colors = useThemeColors();
+  const { t } = useT();
   return (
     <Pressable
       onPress={onPress ?? (() => exitScreen())}
       hitSlop={12}
       accessibilityRole="button"
-      accessibilityLabel="Close"
+      accessibilityLabel={t("common.close")}
       style={({ pressed }) => [
         styles.button,
         pressed && { backgroundColor: colors.neutral100 },

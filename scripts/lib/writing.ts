@@ -13,6 +13,7 @@
  */
 
 import { existsSync } from "fs";
+import { translateMessage } from "../../src/lib/i18n/translate";
 
 import {
   writingTasksSchema,
@@ -283,7 +284,7 @@ export function validateWriting(input: {
         if (evaluation.verdict !== "meets_rubric") {
           err(
             `${task.id}: modelAnswers[${index}] does not meet its own rubric ` +
-              `(${evaluation.verdict}: ${evaluation.feedback.join(" / ")})`
+              `(${evaluation.verdict}: ${evaluation.feedback.map((m) => translateMessage("en", m)).join(" / ")})`
           );
         }
       }

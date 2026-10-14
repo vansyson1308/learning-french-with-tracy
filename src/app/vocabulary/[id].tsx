@@ -12,6 +12,7 @@ import React, { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { CloseButton } from "@/components/close-button";
 import { SpeakerButton } from "@/components/speaker-button";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
@@ -21,6 +22,7 @@ import type { FsrsCardState } from "@/lib/learning/scheduler";
 import { displayPronunciation } from "@/lib/session/panel";
 import { exampleTexts } from "@/lib/lexicon/example-text";
 import { useLexiconRepository } from "@/lib/lexicon/use-lexicon-repository";
+import { posLabel } from "./index";
 import type { LexemeDetail } from "@/lib/lexicon/types";
 import { exitScreen } from "@/lib/navigation";
 import { dueInDaysAt } from "@/lib/srs";
@@ -30,6 +32,7 @@ import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 export default function LexemeDetailScreen() {
   const styles = useStyles();
   const colors = useThemeColors();
+  const { t, languageName } = useT();
   const params = useLocalSearchParams<{ id: string }>();
   const itemId = typeof params.id === "string" ? decodeURIComponent(params.id) : "";
   const activeCourseId = useProgress((s) => s.activeCourseId);
@@ -64,13 +67,13 @@ export default function LexemeDetailScreen() {
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <View style={styles.header}>
         <CloseButton onPress={() => exitScreen()} />
-        <Text style={styles.heading}>Word details</Text>
+        <Text style={styles.heading}>{t("vocab.detailTitle")}</Text>
         <View style={{ width: 44 }} />
       </View>
       <ScrollView contentContainerStyle={styles.body}>
         {detail === "loading" ? null : detail === null ? (
           <Text style={styles.empty}>
-            This word isn&apos;t in the {courseProfile(activeCourseId).targetLanguage} lexicon.
+            {t("vocab.notInLexicon", { language: languageName(courseProfile(activeCourseId).targetCode, courseProfile(activeCourseId).targetLanguage) })}
           </Text>
         ) : (
           <>
@@ -83,25 +86,23 @@ export default function LexemeDetailScreen() {
                 <SpeakerButton text={detail.surface} size={44} />
               </View>
               <View style={styles.chips}>
-                <Chip label={detail.pos === "noun" && detail.gender ? `${detail.gender} noun` : detail.pos} />
+                <Chip label={posLabel(t, detail.pos, detail.gender)} />
                 {detail.pronunciation ? (
                   <Chip label={displayPronunciation(detail.pronunciation)} tone="sky" />
                 ) : null}
                 {detail.topic ? <Chip label={detail.topic} /> : null}
               </View>
               {detail.lemma !== detail.surface ? (
-                <Text style={styles.lemma}>Dictionary form: {detail.lemma}</Text>
+                <Text style={styles.lemma}>{t("vocab.dictionaryForm", { lemma: detail.lemma })}</Text>
               ) : null}
               {detail.frequency ? (
-                <Text style={styles.lemma}>
-                  Frequency: {detail.frequency.band} (from film-subtitle counts)
-                </Text>
+                <Text style={styles.lemma}>{t("vocab.frequency", { band: detail.frequency.band })}</Text>
               ) : null}
             </View>
 
             {detail.examples.length > 0 ? (
               <View style={styles.card}>
-                <Text style={styles.sectionTitle}>Example</Text>
+                <Text style={styles.sectionTitle} testID="vocab-example">{t("vocab.example")}</Text>
                 {detail.examples.map((ex, index) => {
                   const texts = exampleTexts(activeCourseId, ex);
                   if (!texts) return null;
@@ -116,36 +117,31 @@ export default function LexemeDetailScreen() {
             ) : null}
 
             <View style={styles.card}>
-              <Text style={styles.sectionTitle}>Memory</Text>
+              <Text style={styles.sectionTitle}>{t("vocab.memory")}</Text>
               {card ? (
                 <>
-                  <Text style={styles.memoryLine}>
-                    In your reviews — memory strength {memory ?? 0}%.
-                  </Text>
+                  <Text style={styles.memoryLine}>{t("vocab.memoryLine", { percent: memory ?? 0 })}</Text>
                   <Text style={styles.memoryHint}>
                     {dueDays !== null && dueDays <= 0
-                      ? "Review due now."
+                      ? t("vocab.reviewDueNow")
                       : dueDays !== null
-                        ? `Next review in ${dueDays} day${dueDays === 1 ? "" : "s"}.`
+                        ? t("vocab.nextReview", { n: dueDays })
                         : ""}
                   </Text>
                 </>
               ) : (
-                <Text style={styles.memoryHint}>
-                  Not in your reviews yet — learn it through the path or a Today session.
-                  Browsing here never adds words for you.
-                </Text>
+                <Text style={styles.memoryHint}>{t("vocab.notInReviews")}</Text>
               )}
             </View>
 
             <Pressable
               onPress={() => router.push("/licenses")}
               accessibilityRole="button"
-              accessibilityLabel="Licenses and attributions"
+              accessibilityLabel={t("profile.licensesLabel")}
               style={styles.licenseRow}
             >
               <Ionicons name="information-circle-outline" size={16} color={colors.textMuted} />
-              <Text style={styles.licenseText}>Data licenses &amp; attributions</Text>
+              <Text style={styles.licenseText}>{t("vocab.dataLicenses")}</Text>
             </Pressable>
           </>
         )}

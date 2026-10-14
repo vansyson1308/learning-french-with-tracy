@@ -4,6 +4,7 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { SpeakerButton } from "@/components/speaker-button";
@@ -23,13 +24,14 @@ import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 export default function PracticeScreen() {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { t, languageName } = useT();
   const progress = useProgress();
   const { activeCourseId } = progress;
   const courseProgress = progress.course();
   const { pack, allWords } = useCourseContent(activeCourseId);
   const profile = courseProfile(activeCourseId);
   const caps = profile.capabilities;
-  const targetLanguage = profile.targetLanguage;
+  const targetLanguage = languageName(profile.targetCode, profile.targetLanguage);
   // FSRS courses count reviews from the card map; legacy courses stay on
   // the srs map — one count, two sources.
   const dueCount = caps.fsrs
@@ -69,10 +71,10 @@ export default function PracticeScreen() {
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <ScrollView contentContainerStyle={styles.body}>
-        <Text style={styles.heading}>Practice</Text>
+        <Text style={styles.heading}>{t("practice.title")}</Text>
         <View style={styles.courseRow}>
           <Flag courseId={activeCourseId} size={20} />
-          <Text style={styles.courseLabel}>{pack.targetLanguage}</Text>
+          <Text style={styles.courseLabel}>{languageName(profile.targetCode, pack.targetLanguage)}</Text>
         </View>
 
         <View style={styles.card}>
@@ -82,7 +84,7 @@ export default function PracticeScreen() {
               size={24}
               color={colors.amber}
             />
-            <Text style={styles.cardTitle}>Daily quests</Text>
+            <Text style={styles.cardTitle}>{t("practice.dailyQuests")}</Text>
           </View>
           {quests.map((quest) => (
             <QuestRow key={quest.id} quest={quest} />
@@ -92,15 +94,14 @@ export default function PracticeScreen() {
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <MaterialCommunityIcons name="brain" size={24} color={colors.indigo} />
-            <Text style={styles.cardTitle}>Spaced review</Text>
+            <Text style={styles.cardTitle}>{t("practice.spacedReview")}</Text>
           </View>
           <Text style={styles.cardSubtitle}>
-            {dueCount === 0
-              ? "No words due right now. Keep learning!"
-              : `${dueCount} word${dueCount === 1 ? "" : "s"} ready to review.`}
+            {dueCount === 0 ? t("practice.noWordsDue") : t("practice.wordsDue", { n: dueCount })}
           </Text>
           <DuoButton
-            label="Review words"
+            label={t("practice.reviewWords")}
+            testID="practice-review-words"
             variant="primary"
             disabled={dueCount === 0}
             onPress={() => router.push("/lesson/srs")}
@@ -111,15 +112,14 @@ export default function PracticeScreen() {
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <Ionicons name="headset" size={24} color={colors.sky} />
-              <Text style={styles.cardTitle}>Listening review</Text>
+              <Text style={styles.cardTitle}>{t("practice.listeningReview")}</Text>
             </View>
             <Text style={styles.cardSubtitle}>
-              {dueListenCount === 0
-                ? "No listening due right now. Meet words by ear in Section 3!"
-                : `${dueListenCount} word${dueListenCount === 1 ? "" : "s"} to recognize by ear.`}
+              {dueListenCount === 0 ? t("practice.noListeningDue") : t("practice.listeningDue", { n: dueListenCount })}
             </Text>
             <DuoButton
-              label="Review listening"
+              label={t("practice.reviewListening")}
+              testID="practice-review-listening"
               variant="primary"
               disabled={dueListenCount === 0}
               onPress={() => router.push("/lesson/srs-listening")}
@@ -131,17 +131,18 @@ export default function PracticeScreen() {
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <Ionicons name="mic" size={24} color={colors.indigo} />
-              <Text style={styles.cardTitle}>Speaking review</Text>
+              <Text style={styles.cardTitle}>{t("practice.speakingReview")}</Text>
             </View>
             <Text style={styles.cardSubtitle}>
               {dueSpeak.total === 0
-                ? "No speaking due right now. Meet words out loud in Section 4!"
+                ? t("practice.noSpeakingDue")
                 : dueSpeak.sessionable === 0
-                  ? `${dueSpeak.total} word${dueSpeak.total === 1 ? "" : "s"} due to say aloud — no speaking prompts are available for them yet, so they stay due.`
-                  : `${dueSpeak.sessionable} word${dueSpeak.sessionable === 1 ? "" : "s"} to say aloud.`}
+                  ? t("practice.speakingDueNoPrompts", { n: dueSpeak.total })
+                  : t("practice.speakingDue", { n: dueSpeak.sessionable })}
             </Text>
             <DuoButton
-              label="Review speaking"
+              label={t("practice.reviewSpeaking")}
+              testID="practice-review-speaking"
               variant="primary"
               disabled={dueSpeak.sessionable === 0}
               onPress={() => router.push("/lesson/srs-speaking")}
@@ -153,14 +154,12 @@ export default function PracticeScreen() {
           <View style={styles.card} testID="practice-writing-card">
             <View style={styles.cardHeader}>
               <Ionicons name="pencil" size={24} color={colors.greenDark} />
-              <Text style={styles.cardTitle}>Writing practice</Text>
+              <Text style={styles.cardTitle}>{t("practice.writingPractice")}</Text>
             </View>
-            <Text style={styles.cardSubtitle}>
-              A few short writing tasks with honest feedback — what your {targetLanguage}
-              said, and what the task still needs. Nothing here is graded.
-            </Text>
+            <Text style={styles.cardSubtitle}>{t("practice.writingBody", { language: targetLanguage })}</Text>
             <DuoButton
-              label="Practice writing"
+              label={t("practice.practiceWriting")}
+              testID="practice-writing"
               variant="primary"
               onPress={() => router.push("/lesson/writing-practice")}
             />
@@ -171,14 +170,12 @@ export default function PracticeScreen() {
           <View style={styles.card} testID="practice-conversation-card">
             <View style={styles.cardHeader}>
               <Ionicons name="chatbubbles" size={24} color={colors.sky} />
-              <Text style={styles.cardTitle}>Conversation practice</Text>
+              <Text style={styles.cardTitle}>{t("practice.conversationPractice")}</Text>
             </View>
-            <Text style={styles.cardSubtitle}>
-              One short spoken conversation with a patient partner. Ask to hear
-              a line again, or more simply — that&apos;s what practice is for.
-            </Text>
+            <Text style={styles.cardSubtitle}>{t("practice.conversationBody")}</Text>
             <DuoButton
-              label="Have a conversation"
+              label={t("practice.haveConversation")}
+              testID="practice-conversation"
               variant="primary"
               onPress={() => router.push("/lesson/conversation")}
             />
@@ -188,15 +185,16 @@ export default function PracticeScreen() {
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Ionicons name="bandage" size={24} color={colors.rose} />
-            <Text style={styles.cardTitle}>Mistakes</Text>
+            <Text style={styles.cardTitle}>{t("practice.mistakes")}</Text>
           </View>
           <Text style={styles.cardSubtitle}>
             {courseProgress.mistakes.length === 0
-              ? "No mistakes to review. Nice!"
-              : `${courseProgress.mistakes.length} exercise${courseProgress.mistakes.length === 1 ? "" : "s"} to fix.`}
+              ? t("practice.noMistakes")
+              : t("practice.mistakesToFix", { n: courseProgress.mistakes.length })}
           </Text>
           <DuoButton
-            label="Practice mistakes"
+            label={t("practice.practiceMistakes")}
+            testID="practice-mistakes"
             variant="primary"
             disabled={courseProgress.mistakes.length === 0}
             onPress={() => router.push("/lesson/mistakes")}
@@ -207,13 +205,12 @@ export default function PracticeScreen() {
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <Ionicons name="library" size={24} color={colors.skyDark} />
-              <Text style={styles.cardTitle}>Vocabulary</Text>
+              <Text style={styles.cardTitle}>{t("practice.vocabulary")}</Text>
             </View>
-            <Text style={styles.cardSubtitle}>
-              Browse every {targetLanguage} word — meaning, gender, pronunciation and examples.
-            </Text>
+            <Text style={styles.cardSubtitle}>{t("practice.vocabularyBody", { language: targetLanguage })}</Text>
             <DuoButton
-              label="Open vocabulary"
+              label={t("practice.openVocabulary")}
+              testID="practice-vocabulary"
               variant="primary"
               onPress={() => router.push("/vocabulary")}
             />
@@ -223,17 +220,13 @@ export default function PracticeScreen() {
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Ionicons name="book" size={24} color={colors.greenDark} />
-            <Text style={styles.cardTitle}>Words ({words.length})</Text>
+            <Text style={styles.cardTitle}>{t("practice.words", { n: words.length })}</Text>
           </View>
           {caps.fsrs && words.length > 0 ? (
-            <Text style={styles.cardSubtitle}>
-              Bars show memory strength — how likely you are to recall each word right now.
-            </Text>
+            <Text style={styles.cardSubtitle}>{t("practice.strengthHint")}</Text>
           ) : null}
           {words.length === 0 ? (
-            <Text style={styles.cardSubtitle}>
-              Words you learn will show up here with their strength.
-            </Text>
+            <Text style={styles.cardSubtitle}>{t("practice.wordsEmpty")}</Text>
           ) : (
             words
               .sort((a, b) => (b.stat?.lastSeen ?? 0) - (a.stat?.lastSeen ?? 0))
@@ -251,9 +244,9 @@ export default function PracticeScreen() {
                       </Text>
                       <Text style={styles.wordNative}>{word.native}</Text>
                       {due !== null && due === 0 ? (
-                        <Text style={styles.dueBadge}>Due now</Text>
+                        <Text style={styles.dueBadge}>{t("practice.dueNow")}</Text>
                       ) : due !== null && due <= 3 ? (
-                        <Text style={styles.dueSoon}>Review in {due}d</Text>
+                        <Text style={styles.dueSoon}>{t("practice.reviewInDays", { n: due })}</Text>
                       ) : null}
                     </View>
                     <View style={styles.strengthTrack}>
@@ -285,6 +278,7 @@ export default function PracticeScreen() {
 function QuestRow({ quest }: { quest: Quest }) {
   const colors = useThemeColors();
   const styles = useStyles();
+  const { tm } = useT();
   const pct = (quest.value / quest.target) * 100;
   return (
     <View style={styles.questRow}>
@@ -293,7 +287,7 @@ function QuestRow({ quest }: { quest: Quest }) {
           style={[styles.questLabel, quest.done && { color: colors.textMuted }]}
           maxFontSizeMultiplier={1.3}
         >
-          {quest.label}
+          {tm(quest.label)}
         </Text>
         <View style={styles.questTrack}>
           <View

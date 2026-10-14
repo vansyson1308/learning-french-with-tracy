@@ -7,6 +7,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { OptionCard, type OptionState } from "@/components/exercises/option-card";
 import { ListeningPlayerView } from "@/components/session/listening-player-view";
 import { clipFor } from "@/lib/reception/content";
@@ -47,13 +48,14 @@ export function ListeningComprehension({
   onAudioUnavailable?: () => void;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const clip = clipFor(courseId, exercise.clipId);
 
   return (
     <View style={styles.wrap}>
-      <Text style={styles.title}>Listen, then answer</Text>
+      <Text style={styles.title}>{t("ex.listenThenAnswer")}</Text>
       <ListeningPlayerView api={player} onAudioUnavailable={onAudioUnavailable} />
-      <Text style={styles.question}>{exercise.question}</Text>
+      <Text style={styles.question} testID="exercise-question">{exercise.question}</Text>
       <View style={styles.options}>
         {exercise.options.map((option, i) => (
           <OptionCard
@@ -67,7 +69,7 @@ export function ListeningComprehension({
       </View>
       {showTranscript && clip ? (
         <View style={styles.transcript} testID="clip-transcript">
-          <Text style={styles.transcriptTitle}>What you heard</Text>
+          <Text style={styles.transcriptTitle}>{t("ex.whatYouHeard")}</Text>
           {clip.transcriptLines.map((line, i) => (
             <Text key={i} style={styles.transcriptLine}>
               {clip.transcriptLines.length > 1 ? `${line.speaker === "A" ? "—" : "—"} ` : ""}

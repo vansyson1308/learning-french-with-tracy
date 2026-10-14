@@ -9,6 +9,7 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
+import { useT } from "@/lib/i18n";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export type ReadingBlock =
@@ -29,6 +30,7 @@ export function ReadingPassage({
   allowGloss: boolean;
 }) {
   const styles = useStyles();
+  const { t } = useT();
   const [openGloss, setOpenGloss] = useState<string | null>(null);
   const noticeLike = kind === "notice" || kind === "info";
   const active = allowGloss ? glossary.find((g) => g.surface === openGloss) : undefined;
@@ -57,7 +59,7 @@ export function ReadingPassage({
               key={g.surface}
               onPress={() => setOpenGloss(openGloss === g.surface ? null : g.surface)}
               accessibilityRole="button"
-              accessibilityLabel={`Show meaning of ${g.surface}`}
+              accessibilityLabel={t("reading.showMeaning", { word: g.surface })}
               style={[styles.glossChip, openGloss === g.surface && styles.glossChipActive]}
               testID={`gloss-${g.surface}`}
             >

@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, test } from "bun:test";
+import { translateMessage } from "../i18n/translate";
 
 import { commitImport, exportProgress, prepareImport } from "../backup";
 import {
@@ -69,7 +70,7 @@ describe("prepareImport (staged validation — never mutates)", () => {
   test("corrupt JSON is rejected", () => {
     const staged = prepareImport("{not json!!", NOW);
     expect(staged.ok).toBe(false);
-    if (!staged.ok) expect(staged.reason).toContain("JSON");
+    if (!staged.ok) expect(translateMessage("en", staged.reason)).toContain("JSON");
   });
 
   test("structurally invalid payloads are rejected", () => {
@@ -89,13 +90,13 @@ describe("prepareImport (staged validation — never mutates)", () => {
       NOW
     );
     expect(staged.ok).toBe(false);
-    if (!staged.ok) expect(staged.reason).toContain("newer");
+    if (!staged.ok) expect(translateMessage("en", staged.reason)).toContain("newer");
   });
 
   test("an unsupported persist version is rejected", () => {
     const staged = prepareImport(wrap(validState(), 99), NOW);
     expect(staged.ok).toBe(false);
-    if (!staged.ok) expect(staged.reason).toContain("version");
+    if (!staged.ok) expect(translateMessage("en", staged.reason)).toContain("version");
   });
 
   test("invariant violations are rejected (negative streak)", () => {
@@ -103,7 +104,7 @@ describe("prepareImport (staged validation — never mutates)", () => {
     bad.streak = -5;
     const staged = prepareImport(wrap(bad, 0), NOW);
     expect(staged.ok).toBe(false);
-    if (!staged.ok) expect(staged.reason).toContain("validation");
+    if (!staged.ok) expect(translateMessage("en", staged.reason)).toContain("validation");
   });
 
   test("invariant violations are rejected (malformed SRS entry)", () => {

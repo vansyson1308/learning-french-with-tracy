@@ -6,42 +6,42 @@
  */
 
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import { AppText } from "@/components/app-text";
 import { CloseButton } from "@/components/close-button";
+import { useT } from "@/lib/i18n";
 import { exitScreen } from "@/lib/navigation";
-import {
-  PRIVACY_POLICY_EFFECTIVE,
-  PRIVACY_POLICY_SECTIONS,
-  PRIVACY_POLICY_VERSION,
-} from "@/lib/privacy-policy";
+import { privacyPolicySections, privacyPolicyVersionLine } from "@/lib/privacy-policy";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export default function PrivacyScreen() {
   const styles = useStyles();
+  const { t, lang } = useT();
+  const sections = privacyPolicySections(lang);
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <View style={styles.header}>
         <CloseButton onPress={() => exitScreen()} />
-        <Text style={styles.heading} accessibilityRole="header">
-          Privacy
-        </Text>
+        <AppText variant="heading" color="strong" accessibilityRole="header">
+          {t("privacy.title")}
+        </AppText>
         <View style={{ width: 44 }} />
       </View>
       <ScrollView contentContainerStyle={styles.body} testID="privacy-policy">
-        <Text style={styles.meta}>
-          Version {PRIVACY_POLICY_VERSION} — effective {PRIVACY_POLICY_EFFECTIVE}
-        </Text>
-        {PRIVACY_POLICY_SECTIONS.map((section) => (
+        <AppText variant="caption" color="muted">
+          {privacyPolicyVersionLine(lang)}
+        </AppText>
+        {sections.map((section) => (
           <View key={section.title} style={styles.card}>
-            <Text style={styles.sectionTitle} accessibilityRole="header">
+            <AppText variant="subheading" color="strong" accessibilityRole="header">
               {section.title}
-            </Text>
+            </AppText>
             {section.paragraphs.map((paragraph, index) => (
-              <Text key={index} style={styles.text}>
+              <AppText key={index} variant="caption">
                 {paragraph}
-              </Text>
+              </AppText>
             ))}
           </View>
         ))}
@@ -60,9 +60,7 @@ const useStyles = makeThemedStyles((colors) =>
       paddingHorizontal: 10,
       paddingVertical: 8,
     },
-    heading: { fontSize: 18, fontWeight: "800", color: colors.neutral700 },
     body: { padding: 16, gap: 14, paddingBottom: 40 },
-    meta: { fontSize: 12, color: colors.textMuted },
     card: {
       borderWidth: 2,
       borderColor: colors.neutral200,
@@ -71,7 +69,5 @@ const useStyles = makeThemedStyles((colors) =>
       padding: 16,
       gap: 8,
     },
-    sectionTitle: { fontSize: 16, fontWeight: "800", color: colors.neutral700 },
-    text: { fontSize: 13, color: colors.text, lineHeight: 19 },
   })
 );
