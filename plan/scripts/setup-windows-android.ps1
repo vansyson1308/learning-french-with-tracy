@@ -3,6 +3,16 @@
 # Installs: bun, Android cmdline-tools + platform-tools + platforms;android-36 + build-tools;36.0.0 + ndk;27.1.12297006 + cmake;3.22.1
 # Uses:     the already-installed Temurin JDK 17 (C:\Program Files\Eclipse Adoptium\jdk-17.*), Node 24, Git.
 # Idempotent: safe to re-run.
+#
+# NOTE (2026-10-14): on the owner's PC PowerShell runs in Constrained Language Mode
+# (machine-level __PSLockdownPolicy=4), which blocks [Environment]:: calls, so this
+# script cannot run there. The same steps were done by hand from Git Bash / cmd:
+#   bun      : unzip https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64.zip -> %USERPROFILE%\.buninun.exe (+ copy as bunx.exe)
+#   SDK      : unzip commandlinetools-win-13114758_latest.zip -> %LOCALAPPDATA%\Android\Sdk\cmdline-tools\latest
+#              yes | sdkmanager.bat --licenses ; sdkmanager.bat "platform-tools" "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006" "cmake;3.22.1"
+#   env vars : setx JAVA_HOME / ANDROID_HOME ; user Path prepended with platform-tools, build-tools.0.0, %USERPROFILE%\.bunin (via reg add, setx truncates >1024 chars)
+#   git      : git config --global core.longpaths true
+# Signing is a separate owner-run batch file: plan\scripts\sign-apk-windows.cmd
 
 $ErrorActionPreference = 'Stop'
 function Say($m) { Write-Host "[setup] $m" -ForegroundColor Cyan }

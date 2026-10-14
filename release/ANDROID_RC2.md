@@ -1,6 +1,13 @@
 # Android RC2 — first release candidate under the permanent identity
 
-**RC2 status: NOT BUILT YET — waiting for one owner action (gate G1 below).**
+> **2026-10-14 — superseded for now by RC3.** The EAS route below never ran
+> (no EAS project). RC3 is built locally on the owner's Windows PC and signed
+> with an owner-held keystore: see `ANDROID_RC3.md` and `ANDROID_SIGNING.md`.
+> The EAS instructions are kept intact for the day an Expo project exists;
+> if that day comes, the EAS keystore must be the owner's `lft-upload.jks`
+> uploaded, never a second key.
+
+**RC2 status: NOT BUILT — never will be as an EAS build unless the owner creates the EAS project (gate G1 below); its content is carried forward into RC3.**
 Everything the repository can do on its own for RC2 is done and recorded
 here; the build itself needs the owner's Expo account.
 
