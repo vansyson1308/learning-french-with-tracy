@@ -55,6 +55,9 @@ store.config.json
 !docs/**/*.md
 # documentation-site sources (scripts/build-site.ts) — must ship with the repo
 !site/**/*.md
+# coordination plan + agent instructions (plan/ is the single source of truth for the roadmap)
+!CLAUDE.md
+!plan/**/*.md
 
 # python bytecode from the pipeline audit scripts
 __pycache__/

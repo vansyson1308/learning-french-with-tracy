@@ -1,0 +1,24 @@
+# P1c — Generalise the content schema, compiler and validators to any target language
+
+Read `CLAUDE.md`, `plan/07-PRODUCT-SPEC.md` §3 and §5, **`plan/03-AUDIT-CONTENT.md` §4–§5** and `plan/02-AUDIT-ARCHITECTURE.md` §2.1, §2.8. Branch `phase-1/schema-generalise`. French compile output must stay hash-identical (P1a goldens) — the only allowed golden re-bless is for *file renames* you are told to make below, and it must be documented in `scripts/__tests__/golden/CHANGELOG.md`. End with the REPORT block.
+
+## Goal
+`content/<target>/**` works for any language code; validators are parameterised by a build-time language plugin; the compiler loops over every target that has content.
+
+## Tasks
+1. `content/schema.ts`:
+   - `language: z.string().regex(/^[a-z]{2,3}$/)` everywhere `z.literal("fr")` was; the validator cross-checks it against the folder name and the pack's `targetCode`.
+   - Id regexes become factories: `lexemeId(lang)`, `objectiveId(lang)`, `clipId(lang)`, … with the same shapes (`<lang>:w:<slug>`, `<lang>.obj.<slug>`, `<lang>.clip.<slug>` …). Exercise ids stay as they are for `fr-en` (frozen) but new packs must use `<courseId>:<unit>-<lesson>-e<n>` — add a validator rule that applies to non-fr packs only.
+   - `recognitionLocale`: BCP-47 regex.
+   - `GENDER_VALUES` add `neuter`; article/gender consistency rules move into the language plugin (`scripts/lib/languages/<code>.ts`: `articleRules`, `splitSurfaceArticle`, `numberWords`, `normalizeForAsr`, `charsPerSecBand`, `tokenize`).
+   - Native-language text: `nativeGloss` → `glosses: Record<nativeCode,string>`; `examples[]` → `{ target: string, translations: Record<nativeCode,string>, source }`; concept examples likewise; objective `canDo`, speech `prompt.instruction`, writing `instruction`/slot `description`/`cueFacts` labels, scenario `goal`/`support` → `Record<nativeCode,string>`. **Migration script** `bun scripts/migrate-fr-schema-v2.ts` rewrites `content/fr/**` mechanically (`fr`→`target`, `en`→`translations.en`, `nativeGloss`→`glosses.en`); the compiled runtime artifacts must stay identical (the compiler emits the per-course native text by `nativeCode`) — this is how the goldens stay green.
+   - Grammar tables: `ConjugationsSchema` → generic `ParadigmTableSchema { lemma, gloss, group, cells: Record<cellId,string>, evidence }` with `cellIds` declared by the language plugin (fr keeps `inf, pre:1s…, participle`; ja/ko will declare politeness/tense cells later; zh none).
+   - Pack schema: `nativeCode` required; `audio.policy` unchanged.
+2. `scripts/compile-content.ts` + `scripts/lib/*`: discover targets by `content/<code>/` folders and packs by `content/courses/*.json`; every validator takes `(language, plugin, packsForTarget)`; reception/speech/writing/interaction mirror checks run for every pack that uses those exercise types; the "French-only" refusals become "capability/artifact present" checks; `compileAll` emits per-target artifacts (`src/content/<layer>/<lang>-*.json`, `src/content/reception/<lang>-clip-assets.ts`) and per-course profiles/artifact modules (from P1b); `catalog.json` gains `nativeCode` and is now generated (remove hand maintenance; keep the count validation as a self-check).
+3. Lexicon build: one SQLite DB per language (`assets/lexicon/<lang>-lexicon-v3-<hash>.db`), FTS5 tokenizer chosen by script (`unicode61 remove_diacritics 2` for latin; `trigram` for cjk); `fr` DB content unchanged apart from schema version → **this is the one allowed rename**, documented in the golden CHANGELOG with before/after logical dump equality.
+4. Audio scripts: `pack-audio.ts` unchanged in behaviour; `reception-audio.ts` and `reception-asr-audit.py` take `--lang` and read `content/<lang>/reception/*`; ASR normalisation from the plugin; add a `--dry-run` that validates manifests without network so it can be tested in CI.
+5. A **synthetic test language** `content/xx/` (+ `content/courses/xx-en.json`, tiny: 2 lexemes, 1 concept, 1 clip with a 0.5 s generated tone as audio under a test-only policy, 1 reading, 1 speech item, 1 writing task, 1 scenario, 2 objectives, 1 checkpoint, placement with 1 stage) used only by tests to prove every validator and the compiler run for a non-French language. It must be excluded from the app bundle and catalog (`test-only: true` flag honoured by the compiler) and from `audio:check`.
+6. Update `content/fr/*/RESEARCH.md` headers and `docs/` where schema field names changed; write `content/README.md` describing how to add a language (folders, plugin, manifests, registry, audio).
+
+## Definition of Done
+Goldens green (except the documented DB rename); `xx` compiles, validates, and its artifacts load through the P1b registry in a jest test; `bun run content:check` zero drift; every validator rule from `plan/03-AUDIT-CONTENT.md` §5 still enforced (tests); CI green; `plan/STATUS.md` updated.
