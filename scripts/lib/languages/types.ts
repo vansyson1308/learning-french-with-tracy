@@ -51,6 +51,12 @@ export type ArticleRules = {
   elisionSensitiveNoun?: RegExp;
   /** Articles whose drill triggers the elision rule (French: le/la). */
   elisionSensitiveArticles?: readonly string[];
+  /**
+   * P3a: articles that carry NO gender evidence before nouns matching the
+   * pattern (Spanish "el agua": feminine nouns with a stressed initial /a/
+   * take `el`). Removing evidence only — never adds a gender.
+   */
+  neutralBefore?: { articles: readonly string[]; noun: RegExp };
 };
 
 /** A paradigm-evidence row: a form with its analysis atoms (e.g. "ind:pre:1"). */

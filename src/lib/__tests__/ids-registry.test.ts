@@ -57,8 +57,16 @@ describe("generated id registry", () => {
     expect(surfaceFor("fr-en", "fr:legacy:%E0%A4%A")).toBeUndefined(); // malformed → undefined, never a throw
   });
 
+  test("es-en (P3a) has a registry: stable ids from the Spanish lexicon", () => {
+    expect(hasIdRegistry("es-en")).toBe(true);
+    expect(idPrefix("es-en")).toBe("es:w:");
+    expect(itemIdFor("es-en", "el agua")).toBe("es:w:agua");
+    expect(surfaceFor("es-en", "es:w:agua")).toBe("el agua");
+    expect(isCuratedItemId("es-en", "es:w:agua")).toBe(true);
+  });
+
   test("courses without a registry keep raw surfaces (legacy behaviour)", () => {
-    for (const courseId of ["es-en", "de-en", "ja-en", "zz-zz"]) {
+    for (const courseId of ["de-en", "ja-en", "zz-zz"]) {
       expect(hasIdRegistry(courseId)).toBe(false);
       expect(idPrefix(courseId)).toBe("");
       expect(itemIdFor(courseId, "el agua")).toBe("el agua");

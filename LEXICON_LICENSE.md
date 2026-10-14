@@ -1,9 +1,45 @@
-# French lexicon data license
+# Lexicon data license
 
-This file governs the **French lexicon dataset** in this repository — the
-files under `content/fr/lexicon/` and every artifact generated from them
-(the runtime lexicon index, the prebuilt SQLite lexicon database, and the
-lexicon reports). It does **not** govern application code.
+This file governs the **lexicon datasets** in this repository — the files
+under `content/<language>/lexicon/` (French since Phase 4; Spanish and the
+other ETL v2 languages since P3a) and every artifact generated from them
+(the runtime lexicon indexes, the prebuilt SQLite lexicon databases, and
+the lexicon reports). It does **not** govern application code.
+
+Every lexicon dataset is published under **CC BY-SA 4.0**; the per-language
+sections below record what each one is composed of.
+
+## Spanish and the ETL v2 languages (P3a)
+
+`content/es/lexicon/` (and, as pools/evidence only, `content/{de,it,pt,ja,ko,zh,en}/lexicon/derived/`)
+are derived by `scripts/lexicon-etl.ts` from the open sources pinned in
+each language's `source-manifest.json` (v2, one pinned retrieval per
+source) and recorded in `content/<lang>/lexicon/ACQUISITION.md`:
+
+- **Wiktionary via Wiktextract / kaikki.org** (English and Vietnamese
+  editions) — CC BY-SA 4.0 (and GFDL); lemmas, parts of speech, forms,
+  gender, IPA, senses, example sentences.
+- **FrequencyWords** (OpenSubtitles 2018) — CC BY-SA 4.0 content; the
+  `frequency` measurements. **wordfreq** 3.1.1 — CC BY-SA 4.0 data; the
+  secondary Zipf column of the pools.
+- **Tatoeba** — CC BY 2.0 FR; example sentence pairs, each contributor
+  credited in `derived/tatoeba-credits.json`.
+- **JMdict** (EDRDG) and **CC-CEDICT** (MDBG) — CC BY-SA 4.0; readings and
+  senses for Japanese and Chinese pools.
+- **Anchor lists used only to choose entries** (no text ships): OpenJLPT
+  (CC BY-SA 4.0), ivankra/hsk30 (MIT), NGSL 1.2 (CC BY-SA 4.0), CEFR-J 1.5
+  (Tono Lab terms: free for research and commercial use with citation).
+- **Original project authorship**: the selection, surfaces with articles,
+  gloss editing, topic assignment, confusable relations and the review
+  dispositions.
+
+CC BY-SA 4.0 inputs combine into a CC BY-SA 4.0 dataset; CC BY / MIT /
+attribution-only inputs are compatible and attributed in `ATTRIBUTIONS.md`.
+Vietnamese glosses that no source provides carry the draft marker `TODO:vi`
+until a reviewed translation replaces them (the validators block any
+`-vi` course until then).
+
+## French
 
 ## The dataset: CC BY-SA 4.0
 
@@ -60,3 +96,9 @@ attribution and share-alike. Suggested attribution:
 > CC BY-SA 4.0. Portions derived from Lexique 4 (New, Pallier, Schalchli,
 > Bourgin, & Gimenes, 2026), licensed CC BY-SA 4.0 — see
 > `content/fr/lexicon/source-manifest.json` for the pinned source.
+
+> Spanish lexicon data from the same project, licensed CC BY-SA 4.0.
+> Portions derived from Wiktionary via kaikki.org (CC BY-SA 4.0),
+> FrequencyWords (CC BY-SA 4.0), wordfreq (CC BY-SA 4.0) and Tatoeba
+> (CC BY 2.0 FR) — see `content/es/lexicon/source-manifest.json` and
+> `content/es/lexicon/ACQUISITION.md` for the pinned sources.

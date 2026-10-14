@@ -12,17 +12,14 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import attributions from "@/content/attributions.json";
-import frWebFallback from "@/content/lexicon/fr-web-fallback.json";
+import { allCourseProfiles } from "@/lib/course-profile";
 import { CloseButton } from "@/components/close-button";
 import { useT } from "@/lib/i18n";
 import { exitScreen } from "@/lib/navigation";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
-type FallbackShape = {
-  datasetLicense: string;
-  sources: { id: string; name: string; license: string; url: string; attribution: string }[];
-};
-const lexiconData = frWebFallback as FallbackShape;
+/** Every lexicon dataset of this project is published under CC BY-SA 4.0 (LEXICON_LICENSE.md). */
+const LEXICON_DATASET_LICENSE = "CC-BY-SA-4.0";
 type AttributionEntry = {
   id: string;
   name: string;
@@ -35,11 +32,18 @@ type AttributionEntry = {
 const registry = (attributions as { sources: AttributionEntry[] }).sources;
 /** Voices used at pipeline time to synthesize the bundled audio (CC BY / CC0 credits). */
 const voiceEntries = registry.filter((e) => /TTS voice/i.test(e.kind));
+/**
+ * Target languages that ship a lexicon (P3a: one section per language), and
+ * the registered sources backing each one — read from the generated
+ * attributions, so a new language's sources appear without touching the UI.
+ */
+const lexiconLanguages = [...new Set(allCourseProfiles().filter((p) => p.capabilities.lexicon).map((p) => p.targetCode))].sort();
+const lexiconSourcesFor = (code: string) =>
+  registry.filter((e) => e.covers.some((c) => c.startsWith(`content/${code}/lexicon/`) || c === `content/${code}/lexemes.json`));
 
 export default function LicensesScreen() {
   const styles = useStyles();
   const { t, languageName } = useT();
-  const lexiconLanguage = languageName("fr", "French");
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <View style={styles.header}>
@@ -52,21 +56,26 @@ export default function LicensesScreen() {
           <Text style={styles.text}>{t("licenses.softwareBody")}</Text>
         </Section>
 
-        <Section title={t("licenses.lexicon", { language: lexiconLanguage })}>
-          <Text style={styles.text}>
-            {t("licenses.lexiconBody", { language: lexiconLanguage, license: lexiconData.datasetLicense })}
-          </Text>
-          {lexiconData.sources.map((s) => (
-            <View key={s.id} style={styles.sourceRow}>
-              <Text style={styles.sourceName}>
-                {s.name} — {s.license}
+        {lexiconLanguages.map((code) => {
+          const lexiconLanguage = languageName(code, code);
+          return (
+            <Section key={code} title={t("licenses.lexicon", { language: lexiconLanguage })}>
+              <Text style={styles.text}>
+                {t("licenses.lexiconBody", { language: lexiconLanguage, license: LEXICON_DATASET_LICENSE })}
               </Text>
-              <Text style={styles.text}>{s.attribution}</Text>
-              <Text style={styles.url}>{s.url}</Text>
-            </View>
-          ))}
-          <Text style={styles.text}>{t("licenses.lexiqueBody")}</Text>
-        </Section>
+              {lexiconSourcesFor(code).map((s) => (
+                <View key={s.id} style={styles.sourceRow}>
+                  <Text style={styles.sourceName}>
+                    {s.name} — {s.license}
+                  </Text>
+                  <Text style={styles.text}>{s.attribution}</Text>
+                  <Text style={styles.url}>{s.url}</Text>
+                </View>
+              ))}
+              <Text style={styles.text}>{code === "fr" ? t("licenses.lexiqueBody") : t("licenses.lexiconEtlBody", { language: lexiconLanguage })}</Text>
+            </Section>
+          );
+        })}
 
         <Section title={t("licenses.audio")}>
           <Text style={styles.text}>{t("licenses.audioBody")}</Text>

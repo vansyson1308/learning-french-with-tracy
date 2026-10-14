@@ -115,6 +115,46 @@ course:
    placement) is per target (`assessmentByTarget`, persist v5). A review in
    `fr-vi` moves the card `fr-en` sees.
 
+## Lexicon ETL v2 (P3a): deriving `content/<code>/lexicon/` from open sources
+
+One generic, fail-closed derivation produces the lexical evidence of any
+target language from the open sources catalogued in
+`scripts/lib/lexicon-etl/sources.ts` (kaikki.org Wiktextract — English and
+Vietnamese editions —, FrequencyWords, wordfreq, Tatoeba, and per language
+JMdict / CC-CEDICT / OpenJLPT / hsk30 / CEFR-J / NGSL):
+
+1. **Acquire** (never in CI): dispatch `.github/workflows/lexicon-source.yml`
+   with `lang` and `mode` (`recon` pins every artifact's sha256/bytes/date
+   into `content/<code>/lexicon/source-manifest.json` — a v2 multi-source
+   manifest — and captures the licence notes under `sources/`; `extract`
+   verifies the pins and derives; `both` for first contact), or run
+   `bun scripts/lexicon-etl.ts fetch|recon|extract --lang <code> --dir <scratch>`
+   locally. Raw dumps (0.2–3.3 GB) are streamed and discarded; small
+   artifacts are kept as workflow run artifacts for audit. A retrieval that
+   does not hash to the pin is source-version drift and `extract` refuses.
+2. **Derived evidence** (`content/<code>/lexicon/derived/`, committed):
+   `candidate-pool.json` (top lemmas by measured frequency + every
+   course-pack word, with en/vi glosses, IPA, gender, examples, topics,
+   anchors, readings), `frequency-stats.json` (population quantiles → bands
+   exactly as French), `morphology.json` (verb forms → paradigm atoms),
+   `gender-stats.json`, `anchors.json` (exam/CEFR levels, or the honest
+   `frequency-derived` record), `readings.json` (ja/ko/zh),
+   `tatoeba-credits.json`, `recon.json`; for English also `vi-bridge.json`
+   (English lemma → Vietnamese translations) which other languages may use
+   to draft a Vietnamese gloss from an English sense (flagged for review).
+3. **Author** (offline, deterministic): `bun scripts/lexicon-author.ts --lang <code> --size N`
+   selects pack words first, then anchor-listed lemmas, then the frequency
+   population under a per-topic quota, and writes `content/<code>/lexemes.json`
+   (frozen ids), `content/<code>/lexicon/lexemes.json` and `REVIEW.md`
+   (every `TODO:vi`, bridged gloss, auto-confusable, untranslated example).
+   `--size 0 --pool-only` writes the review statistics only.
+4. **Validate / compile** as for any language: the lexicon validators add
+   the P3a rules — every native language a course of the target is taught
+   in needs a gloss and example translations on every lexeme, `TODO:`
+   markers are never glosses, a lexeme may cite only retrieved manifest
+   sources, `frequency` cites the manifest's frequency source only, and
+   every cited source is registered with an allowlisted licence.
+
 ## Adding a language `<code>`
 
 1. **Pack.** `content/courses/<code>-<native>.json` with `targetCode`,

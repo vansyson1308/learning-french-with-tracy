@@ -154,6 +154,216 @@
       ],
       "notes": "Marked testOnly: provenance is recorded like any source, but nothing it covers reaches learners.",
       "testOnly": true
+    },
+    {
+      "id": "kaikki-en",
+      "name": "kaikki.org Wiktextract (English Wiktionary edition)",
+      "kind": "lexical data (per-language JSONL dumps)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://kaikki.org/dictionary/",
+      "attribution": "Lexical data (lemmas, parts of speech, inflected forms, gender, IPA, senses, example sentences) derived from Wiktionary via Wiktextract / kaikki.org (Tatu Ylonen), used under CC BY-SA 4.0 with attribution to the Wiktionary contributors; kaikki.org and Ylonen (LREC 2022) are cited. The lexicon dataset is published under CC BY-SA 4.0 (LEXICON_LICENSE.md).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a lexicon ETL v2 primary lexical source. Each language's dump is pinned (sha256, bytes, date) in content/<lang>/lexicon/source-manifest.json by the dispatch-only workflow .github/workflows/lexicon-source.yml; raw dumps are never committed. Per-lexeme provenance is the `word|pos` key in sourceRefs; examples carry `word|pos|sense`."
+    },
+    {
+      "id": "kaikki-vi",
+      "name": "kaikki.org Wiktextract (Vietnamese Wiktionary edition)",
+      "kind": "lexical data (Vietnamese glosses and examples)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://kaikki.org/viwiktionary/",
+      "attribution": "Vietnamese glosses and example translations derived from the Vietnamese Wiktionary via Wiktextract / kaikki.org, used under CC BY-SA 4.0 with attribution to the Vietnamese Wiktionary contributors.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a: the primary source of `glosses.vi` / `translations.vi`. Entries that only redirect are skipped; a lexeme without a Vietnamese sense carries the draft marker TODO:vi until the authoring toolkit (P3c) fills it — the marker blocks compile for any -vi course."
+    },
+    {
+      "id": "frequencywords",
+      "name": "FrequencyWords (hermitdave) — OpenSubtitles 2018 word frequencies",
+      "kind": "word frequency lists",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/hermitdave/FrequencyWords",
+      "attribution": "Word frequencies derived from the FrequencyWords lists (OpenSubtitles 2018; content CC BY-SA 4.0, code MIT) by Hermit Dave. Modifications: lemmatisation through the kaikki form index, population ranking and quantile banding (content/<lang>/lexicon/derived/frequency-stats.json).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a primary frequency measurement (`frequency.source`). Per-million values are relative to the list total, not the corpus (documented in frequency-stats.json)."
+    },
+    {
+      "id": "wordfreq",
+      "name": "wordfreq 3.1.1 (Robyn Speer) — Zipf word frequencies",
+      "kind": "word frequency data (exported Zipf values)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/rspeer/wordfreq",
+      "attribution": "Secondary frequency evidence from wordfreq (Speer, R. (2022). rspeer/wordfreq: v3.0 (v3.0.2). Zenodo. https://doi.org/10.5281/zenodo.7199437), data CC BY-SA 4.0 (incorporating Google Books Ngram and SUBTLEX components with their acknowledgements), code Apache-2.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a: `zipf` column of the candidate pools only (authoring evidence); never the `frequency` field of a lexeme."
+    },
+    {
+      "id": "tatoeba",
+      "name": "Tatoeba — sentences and translation links",
+      "kind": "example sentences",
+      "license": "CC-BY-2.0-FR",
+      "url": "https://tatoeba.org/en/downloads",
+      "attribution": "Example sentences from the Tatoeba Project (https://tatoeba.org), CC BY 2.0 FR; each sentence credits its contributor by username in content/<lang>/lexicon/derived/tatoeba-credits.json and carries its sentence ids in the example `key`.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a example fallback when a kaikki sense has no usable example. Audio is never used (per-contributor licences)."
+    },
+    {
+      "id": "openjlpt",
+      "name": "OpenJLPT 0.1.0 — JLPT N5–N1 vocabulary (level labels)",
+      "kind": "exam anchor list",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/evanclan/OpenJLPT",
+      "attribution": "JLPT level anchors from OpenJLPT 0.1.0 (CC BY-SA 4.0; levels from Jonathan Waller's JLPT resources, CC BY; readings/glosses via JMdict, EDRDG, CC BY-SA 4.0; examples via Tatoeba, CC BY 2.0 FR).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/ja/lexicon/"
+      ],
+      "notes": "P3a Japanese anchor (N5/N4 first). The JLPT publishes no official lists; these groupings are community-standard approximations (OpenJLPT NOTICE.md).",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "hsk30",
+      "name": "ivankra/hsk30 — HSK 3.0 vocabulary levels",
+      "kind": "exam anchor list",
+      "license": "MIT",
+      "url": "https://github.com/ivankra/hsk30",
+      "attribution": "HSK 3.0 level labels via ivankra/hsk30 (MIT) — a transcription of the 2021 standard published by the PRC Ministry of Education; entries are regenerated from CC-CEDICT / kaikki, never copied from the list.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/zh/lexicon/"
+      ],
+      "notes": "P3a Chinese anchor (HSK 1–2 first). The repository's copyright caveat on the Ministry source is recorded in scripts/lib/lexicon-etl/sources.ts.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "jmdict",
+      "name": "JMdict (EDRDG) — Japanese–English dictionary",
+      "kind": "dictionary (readings, senses)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://www.edrdg.org/jmdict/j_jmdict.html",
+      "attribution": "This app uses the JMdict dictionary files. These files are the property of the Electronic Dictionary Research and Development Group, and are used in conformance with the Group's licence (https://www.edrdg.org/edrdg/licence.html), CC BY-SA 4.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/ja/lexicon/"
+      ],
+      "notes": "P3a: kana readings and English senses for the Japanese pool (readings.json). The EDRDG requires the acknowledgement on a separate About/Sources screen — the Licences screen lists this entry."
+    },
+    {
+      "id": "cedict",
+      "name": "CC-CEDICT (MDBG) — Chinese–English dictionary",
+      "kind": "dictionary (pinyin, senses)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://www.mdbg.net/chinese/dictionary?page=cedict",
+      "attribution": "Pinyin and English senses from CC-CEDICT, a community-maintained free Chinese–English dictionary published by MDBG under CC BY-SA 4.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/zh/lexicon/"
+      ],
+      "notes": "P3a: pinyin (tone marks derived from the numbered export) for readings.json."
+    },
+    {
+      "id": "cefr-j",
+      "name": "CEFR-J Vocabulary Profile 1.5 (Tono Lab, TUFS) via Open Language Profiles",
+      "kind": "CEFR anchor list (build-time selection reference)",
+      "license": "CEFR-J-terms",
+      "url": "https://github.com/openlanguageprofiles/olp-en-cefrj",
+      "attribution": "English CEFR level anchors from The CEFR-J Wordlist Version 1.5, compiled by Yukio Tono, Tokyo University of Foreign Studies (copyright Tono Laboratory, TUFS), via Open Language Profiles; used for research/commercial purposes with citation as the dataset's terms permit.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a English anchor. Build-time only: level labels in content/en/lexicon/derived/anchors.json drive selection; no CEFR-J text ships in the app.",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "ngsl",
+      "name": "New General Service List 1.2 — frequency statistics",
+      "kind": "frequency anchor list",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://www.newgeneralservicelist.com/new-general-service-list",
+      "attribution": "English rank anchors from the New General Service List 1.2 (Browne, Culligan & Phillips, 2013), CC BY-SA 4.0.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a English rank anchor (NGSL_12_stats.csv: lemma, SFI rank).",
+      "buildTimeOnly": true
+    },
+    {
+      "id": "original-lexicon-etl",
+      "name": "Lexicon ETL v2 authored selection (this project)",
+      "kind": "original data (selection, topics, confusables, surfaces, review dispositions)",
+      "license": "original",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Selection of the curriculum lexemes, topic assignment, confusable relations, surfaces with articles and gloss editing are original project authorship, published with the rest of the lexicon dataset under CC BY-SA 4.0 (LEXICON_LICENSE.md).",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/es/lexemes.json",
+        "content/de/lexemes.json",
+        "content/it/lexemes.json",
+        "content/pt/lexemes.json",
+        "content/ja/lexemes.json",
+        "content/ko/lexemes.json",
+        "content/zh/lexemes.json",
+        "content/en/lexemes.json",
+        "content/es/lexicon/",
+        "content/de/lexicon/",
+        "content/it/lexicon/",
+        "content/pt/lexicon/",
+        "content/ja/lexicon/",
+        "content/ko/lexicon/",
+        "content/zh/lexicon/",
+        "content/en/lexicon/"
+      ],
+      "notes": "P3a: scripts/lexicon-author.ts writes content/<lang>/lexemes.json (frozen ids) and content/<lang>/lexicon/lexemes.json from the committed derived evidence; REVIEW.md per language records what a human still has to check (TODO:vi, auto-confusables, untranslated examples)."
     }
   ]
 }

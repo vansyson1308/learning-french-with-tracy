@@ -27,8 +27,10 @@ import {
   type RichLexeme,
   type RichLexicon,
   type SourceManifest,
+  type SourceManifestV1,
 } from "../../content/schema";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
+import { isV2, manifestView } from "./lexicon-etl/manifest";
 import { idsArtifactRoot, isTestOnlyTarget, loadRegistry, packsForTarget, readJson, safeResolve, type LoadedPack, type ValidationResult } from "./pipeline";
 
 /** The committed generated registry for a language, or the frozen map itself before the first compile. */
@@ -54,11 +56,19 @@ export function loadRichLexicon(lang: string): RichLexicon {
   return doc;
 }
 
-/** The external-source manifest, or null when the language has no external lexical source. */
+/** The external-source manifest (v1 Lexique or v2 multi-source), or null when the language has no external lexical source. */
 export function loadSourceManifest(lang: string): SourceManifest | null {
   const rel = `content/${lang}/lexicon/source-manifest.json`;
   if (!existsSync(safeResolve(rel))) return null;
   return SourceManifestSchema.parse(readJson(rel));
+}
+
+/** The Lexique-style (v1) manifest the French tooling consumes; a v2 manifest here is a programming error. */
+export function loadSourceManifestV1(lang: string): SourceManifestV1 | null {
+  const m = loadSourceManifest(lang);
+  if (m === null) return null;
+  if (isV2(m)) throw new Error(`content/${lang}/lexicon/source-manifest.json is a v2 (ETL) manifest — the Lexique tools only read v1`);
+  return m;
 }
 
 export function loadFrozenMap(lang: string): Record<string, string> {
@@ -116,9 +126,14 @@ export function validateLexiconData(input: {
   const err = (m: string) => errors.push(`lexicon: ${m}`);
   const lang = plugin.code;
 
-  const externalSourceId = manifest?.source.id ?? null;
-  const sourceRetrieved = manifest?.retrieval.status === "retrieved";
+  const view = manifestView(manifest);
+  const externalSourceId = view?.primaryId ?? null;
+  const sourceRetrieved = view?.primaryRetrieved === true;
   const byId = new Map<string, RichLexeme>();
+  // P3a: every native language a course of this target is taught in must
+  // have a gloss on EVERY lexeme (not only the pack words), and a draft
+  // marker (`TODO:vi`) is never a gloss — the authoring toolkit fills it.
+  const courseNatives = [...new Set(packGlosses.map((p) => p.nativeCode))].sort();
 
   // Uniqueness.
   for (const lex of lexicon.lexemes) {
@@ -183,8 +198,10 @@ export function validateLexiconData(input: {
     // Article-consistency audit (course display vs authored gender). A
     // contradiction FAILS the gate — display text is never silently "fixed".
     if (article !== null && articles !== null) {
-      const proves = articles.gender[article];
-      if (proves !== undefined && lex.gender !== proves) {
+      const silent = articles.neutralBefore?.articles.includes(article) && articles.neutralBefore.noun.test(lex.lookupForm);
+      const proves = silent ? undefined : articles.gender[article];
+      // "both" (epicene: el/la estudiante) is consistent with either article; "unknown" never is.
+      if (proves !== undefined && lex.gender !== proves && lex.gender !== "both") {
         err(`${where}: surface article "${article}" contradicts authored gender "${lex.gender}"`);
       }
     }
@@ -201,6 +218,16 @@ export function validateLexiconData(input: {
     // Learner-facing completeness for this file.
     if (lex.examples.length === 0) err(`${where}: at least one example is required`);
     if (lex.topic === undefined) err(`${where}: topic is required for curriculum lexemes`);
+    for (const native of courseNatives) {
+      const g = lex.glosses[native];
+      if (g === undefined) err(`${where}: no "${native}" gloss but a ${lang}-${native} course exists — every lexeme needs it`);
+      else if (/^TODO:/.test(g)) err(`${where}: "${native}" gloss is the draft marker "${g}" — a ${lang}-${native} course cannot compile until it is filled`);
+      for (const [i, ex] of lex.examples.entries()) {
+        const t = ex.translations[native];
+        if (t === undefined) err(`${where}: example ${i} has no "${native}" translation but a ${lang}-${native} course exists`);
+        else if (/^TODO:/.test(t)) err(`${where}: example ${i} "${native}" translation is the draft marker — fill it before a ${lang}-${native} course can compile`);
+      }
+    }
 
     // Source discipline.
     const refSources = [
@@ -217,6 +244,8 @@ export function validateLexiconData(input: {
         if (!registryIds.has(src)) {
           err(`${where}: ${externalSourceId} data present but not registered in content/sources/registry.json`);
         }
+      } else if (view !== null && view.declared.has(src) && !view.retrieved.has(src)) {
+        err(`${where}: references ${src} but the source manifest records it as "not-retrieved" — fail-closed`);
       } else if (!registryIds.has(src)) {
         err(`${where}: source "${src}" is not registered`);
       }
@@ -299,12 +328,13 @@ export function validateLexicon(lang: string, packs: LoadedPack[]): ValidationRe
   // derivation exists and matches the pinned artifact.
   let bandThresholds: FrequencyBandThresholds | undefined;
   const statsRel = `content/${lang}/lexicon/derived/frequency-stats.json`;
-  if (manifest?.retrieval.status === "retrieved" && existsSync(safeResolve(statsRel))) {
+  const view = manifestView(manifest);
+  if (view?.primaryRetrieved && existsSync(safeResolve(statsRel))) {
     const stats = readJson(statsRel) as {
       source?: { sha256?: string };
       freqLemme?: { quantiles?: Record<string, number> };
     };
-    if (stats.source?.sha256 === manifest.retrieval.sha256 && stats.freqLemme?.quantiles) {
+    if (stats.source?.sha256 === view.primarySha256 && stats.freqLemme?.quantiles) {
       bandThresholds = bandThresholdsFromStats({ freqLemme: { quantiles: stats.freqLemme.quantiles } });
     }
   }

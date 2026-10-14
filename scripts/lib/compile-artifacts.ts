@@ -70,6 +70,7 @@ import {
   validateContent,
   type CompiledFile,
   type CoverageRow,
+  isEvidenceOnlyLanguageDir,
   type LoadedPack,
 } from "./pipeline";
 import {
@@ -141,10 +142,33 @@ function schemaFailure(label: string, e: unknown): string {
   return `${label}: schema validation failed — ${(e as Error).message.split("\n")[0]}`;
 }
 
+/**
+ * P3a: a target language may exist as EVIDENCE ONLY — `content/<lang>/lexicon/`
+ * holding a source manifest, the derived pools and a review sheet, but no
+ * authored lexemes and no course pack (English until P4f). Such a language
+ * has nothing to compile and nothing learner-facing to validate; any other
+ * rich layer without a course pack is an error.
+ */
+export function isEvidenceOnlyTarget(lang: string, packs: LoadedPack[]): boolean {
+  return packsForTarget(lang, packs).length === 0 && isEvidenceOnlyLanguageDir(lang);
+}
+
 /** Every rule of one target language's rich sources (schema failures reported, never thrown). */
 export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
   const errors: string[] = [];
   const mine = packsForTarget(lang, packs);
+  if (mine.length === 0) {
+    if (isEvidenceOnlyTarget(lang, packs)) {
+      // Only the manifest's shape is checked (fail-closed pins); nothing else exists yet.
+      try {
+        loadSourceManifest(lang);
+      } catch (e) {
+        errors.push(schemaFailure(`${lang} source manifest`, e));
+      }
+      return errors;
+    }
+    return [`${lang}: content/${lang}/ has rich sources but no course pack (content/courses/${lang}-<native>.json)`];
+  }
   const nativeCodes = nativeCodesFor(lang, packs);
   const plugin = buildPlugin(lang);
   const layers = targetLayers(lang);
@@ -676,6 +700,7 @@ export function compileAllArtifacts(): CompiledArtifacts {
   const lexiconDbs: LexiconDbPlan[] = [];
   const dbsByRoot: Record<string, Record<string, LexiconDbInfo>> = {};
   for (const lang of discoverTargets(loaded)) {
+    if (isEvidenceOnlyTarget(lang, loaded)) continue;
     const { files: targetFiles, dbPlans } = compileTarget(lang, loaded);
     files.push(...targetFiles);
     for (const dbPlan of dbPlans) {

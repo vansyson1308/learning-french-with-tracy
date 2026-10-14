@@ -1,0 +1,97 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "en",
+  "recordedAt": "2026-10-14",
+  "artifacts": {
+    "kaikki-en-en.jsonl": {
+      "status": "retrieved",
+      "sha256": "9978ce34256e4143c3498387564d293a9a2971ef376c1e038d369a2021c02195",
+      "bytes": 3335546346,
+      "lines": 1492838,
+      "samples": [
+        "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"en-noun\", \"args\": {}, \"expansion\": \"en (plural ens)\"}], \"forms\": [{\"form\": \"ens\", \"tags\": [\"plural\"]}], \"etymology_number\": \"4\", \"word\": \"en\", \"lang\": \"English\", \"lang_code\": \"en\", \"senses\": [{\"links\": [[\"Н\", \"Н#Translingual\"], [\"н\", \"н#Translingual\"]], \"glosses\": [\"The name of the Cyrillic script letter Н / н.\"], \"id\": \"en-en-en-noun-Fin3vHO4\"}]}",
+        "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"en-noun\", \"args\": {}, \"expansion\": \"te (plural tes)\"}], \"forms\": [{\"form\": \"tes\", \"tags\": [\"plural\"]}], \"etymology_number\": \"2\", \"word\": \"te\", \"lang\": \"English\", \"lang_code\": \"en\", \"senses\": [{\"links\": [[\"Т\", \"Т\"], [\"т\", \"т\"]], \"glosses\": [\"The name of the Cyrillic script letter Т / т.\"], \"id\": \"en-te-en-noun-aye45rus\"}]}"
+      ]
+    },
+    "kaikki-vi-en.jsonl": {
+      "status": "retrieved",
+      "sha256": "3504523051f918a34c3578fe16b240885949c7aaf9b16302006c83d202dfa55a",
+      "bytes": 114646500,
+      "lines": 133446,
+      "samples": [
+        "{\"word\": \"rusa\", \"lang_code\": \"en\", \"lang\": \"Tiếng Anh\", \"pos\": \"noun\", \"pos_title\": \"Danh từ\", \"categories\": [{\"name\": \"Danh từ tiếng Anh\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}, {\"name\": \"Mục từ dùng cấu trúc mục từ Wiktionary cũ\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}], \"senses\": [{\"glosses\": [\"Con nai.\"], \"id\": \"vi-rusa-en-noun-K9vMl4hK\"}]}",
+        "{\"word\": \"bri'du:n\", \"lang_code\": \"en\", \"lang\": \"Tiếng Anh\", \"pos\": \"noun\", \"pos_title\": \"Danh từ\", \"categories\": [{\"name\": \"Danh từ tiếng Anh\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}], \"senses\": [{\"glosses\": [\"Bộ cương sơ sài.\"], \"id\": \"vi-bri'du:n-en-noun-bRtDPPna\"}]}"
+      ]
+    },
+    "frequencywords-en.txt": {
+      "status": "retrieved",
+      "sha256": "5351ff405b1126ef555791dd4d9798a48e3e9a501a9fc481a9da957752cfb458",
+      "bytes": 622749,
+      "lines": 50000,
+      "samples": [
+        "you 28787591",
+        "i 27086011"
+      ]
+    },
+    "wordfreq-en.csv": {
+      "status": "retrieved",
+      "sha256": "6a834dc06d9ccc11b1a8d61dfd7604969da8f7d4b7156359b5459cc96c799a2b",
+      "bytes": 655765,
+      "lines": 50001,
+      "samples": [
+        "word,zipf",
+        "the,7.73"
+      ]
+    },
+    "cefrj-vocabulary-profile-1.5.csv": {
+      "status": "retrieved",
+      "sha256": "b0dd3c635f1c9a4fdf1490c7e5b7c48e8bbe55b652ad0c9860a95f98e10ae498",
+      "bytes": 233214,
+      "lines": 7800,
+      "samples": [
+        "headword,pos,CEFR,CoreInventory 1,CoreInventory 2,Threshold",
+        "a,determiner,A1,,,"
+      ]
+    },
+    "ngsl-1.2-stats.csv": {
+      "status": "retrieved",
+      "sha256": "2098bab8955a120a9766c6282a51d7d578c6cb0a7d946600d2ffb73ba25a0b44",
+      "bytes": 62566,
+      "lines": 2810,
+      "samples": [
+        "Lemma,SFI Rank,SFI,Adjusted Frequency per Million (U)",
+        "the,1,87.85,60910"
+      ]
+    },
+    "tatoeba-en-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+      "bytes": 198754998,
+      "lines": 2038719,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-en-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "88318379975177881534852f82328d9fc7030cb6a39cfea581c9bc4e7c7c5366",
+      "bytes": 377598,
+      "lines": 23180,
+      "samples": [
+        "1277\t5662",
+        "1280\t5665"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+      "bytes": 3739296,
+      "lines": 33223,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}

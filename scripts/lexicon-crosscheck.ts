@@ -7,7 +7,7 @@
  */
 import { writeFileSync } from "fs";
 
-import { loadMatchOverrides, loadRichLexicon, loadSourceManifest } from "./lib/lexicon";
+import { loadMatchOverrides, loadRichLexicon, loadSourceManifestV1 } from "./lib/lexicon";
 import { crossCheckCore } from "./lib/lexicon-crosscheck";
 import type { CoreLexemeRows } from "./lib/lexique-derive-lib";
 import { canonicalJson, readJson, safeResolve } from "./lib/pipeline";
@@ -18,7 +18,7 @@ const LEXIQUE_LANG = (() => {
   return i >= 0 ? process.argv[i + 1] : "fr";
 })();
 
-const manifest = loadSourceManifest(LEXIQUE_LANG);
+const manifest = loadSourceManifestV1(LEXIQUE_LANG);
 if (manifest === null) throw new Error(`content/${LEXIQUE_LANG}/lexicon/source-manifest.json is missing`);
 if (manifest.retrieval.status !== "retrieved") {
   console.error("ERROR the source manifest is not retrieved — nothing to cross-check (fail-closed)");

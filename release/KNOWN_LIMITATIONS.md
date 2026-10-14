@@ -48,6 +48,16 @@ itself.
   the app, and the app makes no network requests of its own.
 - No accounts, no sync: progress lives on the device; backup is a manual
   export/import file.
+- **Spanish lexicon (P3a) is a derived draft.** `es-en` now ships an
+  800-lexeme Spanish lexicon derived from Wiktionary (kaikki.org),
+  FrequencyWords, wordfreq and Tatoeba (`content/es/lexicon/ACQUISITION.md`):
+  English glosses come from Wiktionary senses (normalised, not reviewed),
+  most Vietnamese glosses are `TODO:vi` drafts or bridged through the
+  English Wiktionary translation table (listed in
+  `content/es/lexicon/REVIEW.md`; a native review is the P3c handoff), and
+  the inherited `es-en` course keeps its legacy scheduler
+  (`content/courses/es-en.profile.json` disables FSRS / Today until P4a
+  migrates learner data) — only the Vocabulary browser uses the new data.
 - The seven non-French courses run on the legacy scheduler untouched; the
   French excellence layer is French-only (content, not code: since P1c the
   schema, validators and compiler accept any target language — see

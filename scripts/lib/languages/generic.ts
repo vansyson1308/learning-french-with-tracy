@@ -27,8 +27,11 @@ export function genderEvidenceScanner(
     const evidence: ArticleGender[] = [];
     const escaped = lookupForm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const re = new RegExp(`(?:^|[^\\p{L}])(${alternation})\\s+${escaped}(?=$|[^\\p{L}])`, "giu");
+    const silent = rules.neutralBefore && rules.neutralBefore.noun.test(lookupForm) ? new Set(rules.neutralBefore.articles) : null;
     for (const m of text.matchAll(re)) {
-      const g = rules.gender[m[1].toLowerCase()];
+      const article = m[1].toLowerCase();
+      if (silent?.has(article)) continue;
+      const g = rules.gender[article];
       if (g) evidence.push(g);
     }
     return evidence;

@@ -67,9 +67,20 @@ describe("courseProfile", () => {
     expect(fr.audioCourseId).toBeUndefined();
   });
 
+  test("es-en (P3a) ships the Spanish lexicon read-only: lexicon on, scheduler unchanged until P4a", () => {
+    const p = courseProfile("es-en");
+    expect(p.idPrefix).toBe("es:w:");
+    expect(p.capabilities.lexicon).toBe(true);
+    // content/courses/es-en.profile.json keeps the inherited course on the legacy scheduler.
+    expect(p.capabilities.fsrs).toBe(false);
+    expect(p.capabilities.dailySession).toBe(false);
+    expect(Object.keys(p.artifacts).sort()).toEqual(["ids", "lexiconDb", "lexiconFallback", "lexiconIndex"]);
+    expect(p.artifacts.lexiconDb).toMatch(/^assets\/lexicon\/es-lexicon-v\d+-[0-9a-f]{16}\.db$/);
+  });
+
   test("every inherited course has no rich capability and no artifacts", () => {
     for (const course of catalog.courses) {
-      if (course.id === "fr-en" || course.id === "fr-vi") continue;
+      if (course.id === "fr-en" || course.id === "fr-vi" || course.id === "es-en") continue;
       const p = courseProfile(course.id);
       for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
       expect(p.artifacts).toEqual({});
@@ -93,16 +104,16 @@ describe("courseProfile", () => {
   });
 
   test("the test seam lifts a capability for one course and can be cleared", () => {
-    expect(hasCapability("es-en", "fsrs")).toBe(false);
-    __setCourseCapabilityOverrideForTests("es-en", { fsrs: true });
+    expect(hasCapability("de-en", "fsrs")).toBe(false);
+    __setCourseCapabilityOverrideForTests("de-en", { fsrs: true });
     try {
-      expect(hasCapability("es-en", "fsrs")).toBe(true);
-      expect(hasCapability("es-en", "lexicon")).toBe(false);
-      expect(hasCapability("de-en", "fsrs")).toBe(false);
+      expect(hasCapability("de-en", "fsrs")).toBe(true);
+      expect(hasCapability("de-en", "lexicon")).toBe(false);
+      expect(hasCapability("it-en", "fsrs")).toBe(false);
     } finally {
-      __setCourseCapabilityOverrideForTests("es-en", null);
+      __setCourseCapabilityOverrideForTests("de-en", null);
     }
-    expect(hasCapability("es-en", "fsrs")).toBe(false);
+    expect(hasCapability("de-en", "fsrs")).toBe(false);
   });
 
   test("courseProfile returns a fresh view (callers cannot mutate the table)", () => {
