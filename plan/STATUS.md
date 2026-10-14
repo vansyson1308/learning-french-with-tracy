@@ -24,5 +24,5 @@
 Owner actions outstanding:
 1. **P0 sign RC3** — in `cmd.exe` at `C:\src\lft` run `plan\scripts\sign-apk-windows.cmd 3` (creates `C:\keys\lft-upload.jks` on first run; you type the passwords). Back up the `.jks` + passwords offline in two places.
 2. **P0 install + phone packets 0–3** — enable USB debugging, `adb install out\learning-french-with-tracy-v1.0.0-rc.3.apk`, run the commands in `release/ANDROID_RC3.md` §4, reply with the PACKET lines + files from `out\packets`.
-3. **P0 push + tag** — `git push -u origin phase-0/rc3-local-apk`, open/merge the PR when CI is green, then `git tag -a v1.0.0-rc.3 e5dcfd015c407bf445afae9d517661f367934104 -m "v1.0.0-rc.3" && git push origin v1.0.0-rc.3` (the session cannot push).
+3. **P0 merge + tag** — merge PR #28 when CI is green, then `git tag -a v1.0.0-rc.3 e5dcfd015c407bf445afae9d517661f367934104 -m "v1.0.0-rc.3" && git push origin v1.0.0-rc.3` (the session cannot push).
 4. Paste the non-secret `outc.3-signing-report.txt` back so the fingerprint/hash rows in `release/ANDROID_SIGNING.md`, `RC_HISTORY.md`, `ANDROID_RC3.md` can be filled.
