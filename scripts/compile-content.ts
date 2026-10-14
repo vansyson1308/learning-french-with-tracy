@@ -117,7 +117,7 @@ for (const [courseId, row] of Object.entries(coverage)) {
   }
 }
 for (const plan of lexiconDbs) {
-  console.log(`lexicon ${plan.lang}: ${plan.lexicon.lexemes.length} lexemes, contentHash ${plan.contentHash}, db ${plan.name}${plan.testOnly ? " (test-only)" : ""}`);
+  console.log(`lexicon ${plan.assetPrefix}: ${plan.lexicon.lexemes.length} lexemes, contentHash ${plan.contentHash}, db ${plan.name}${plan.testOnly ? " (test-only)" : ""}`);
 }
 
 if (checkOnly && drifted > 0) process.exit(1);

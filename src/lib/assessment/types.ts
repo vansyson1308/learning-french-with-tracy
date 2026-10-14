@@ -35,6 +35,8 @@ export type CheckpointAttempt = {
    */
   formId?: string;
   formVersion?: number;
+  /** Course the attempt was taken in (P2b; assessment is per target language, the course is provenance). */
+  courseId?: string;
   startedAt: number;
   completedAt: number;
   itemResults: AssessmentItemResult[];
@@ -57,6 +59,8 @@ export type PlacementObjectiveEstimate = {
 /** The persisted placement outcome (§79). */
 export type PlacementResult = {
   placementVersion: number;
+  /** Course the check was taken in (P2b provenance). */
+  courseId?: string;
   completedAt: number;
   /** Lesson the learner is recommended to start from. */
   recommendedLessonId: string;

@@ -27,7 +27,10 @@ if (!browserPath) {
   console.error("no Chromium/Chrome found; set E2E_BROWSER_PATH");
   process.exit(2);
 }
-const pack = JSON.parse(readFileSync("src/content/packs/fr-en.json", "utf8"));
+// P2b: the course under test — `fr-en` by default, `fr-vi` for the Vietnamese lane
+// (same curriculum, Vietnamese explanations; everything below reads the pack).
+const COURSE = process.env.E2E_COURSE ?? "fr-en";
+const pack = JSON.parse(readFileSync(`src/content/packs/${COURSE}.json`, "utf8"));
 const lessons = pack.sections.flatMap((s) => s.units.flatMap((u) => u.lessons));
 const listening = lessons.find((l) => l.exercises[0].type === "listeningComprehension");
 
@@ -60,7 +63,7 @@ try {
     const byId = (id) => page.getByTestId(id);
 
     await go("/");
-    await byId("onboarding-course-fr-en").click();
+    await byId(`onboarding-course-${COURSE}`).click();
     await byId("onboarding-start").click();
     await byId(`learn-section-${pack.sections[0].id}`).waitFor();
     // Pin the UI language through the in-app picker (persisted per profile).
@@ -71,7 +74,7 @@ try {
     await byId(`learn-section-${pack.sections[0].id}`).waitFor();
     await shot("01-learn");
 
-    await go("/lesson/fr-en:u0-l0");
+    await go(`/lesson/${COURSE}:u0-l0`);
     await byId("session-check").waitFor();
     const options = byId("option-card");
     if ((await options.count()) > 0) {

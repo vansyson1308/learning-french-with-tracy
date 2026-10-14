@@ -1,0 +1,882 @@
+{
+  "version": 1,
+  "language": "fr",
+  "placementVersion": 3,
+  "maxItems": 28,
+  "allComfortableLessonId": "fr-vi:un-l0",
+  "stages": [
+    {
+      "id": "fr.pstage.foundations",
+      "title": "Nền tảng",
+      "clusters": [
+        {
+          "id": "fr.pcluster.everyday",
+          "objectiveId": "fr.obj.vocab.everyday_basics",
+          "anchorLessonId": "fr-vi:u0-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.milk",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-milk",
+                "mode": "nativeToTarget",
+                "prompt": "sữa",
+                "options": [
+                  {
+                    "text": "le lait"
+                  },
+                  {
+                    "text": "le pain"
+                  },
+                  {
+                    "text": "l'eau"
+                  },
+                  {
+                    "text": "le jus"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.vocab.everyday_basics"
+              ]
+            },
+            {
+              "id": "fr.pli.s1.bird",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-bird",
+                "mode": "targetToNative",
+                "prompt": "l'oiseau",
+                "options": [
+                  {
+                    "text": "con chim"
+                  },
+                  {
+                    "text": "con cá"
+                  },
+                  {
+                    "text": "con thỏ"
+                  },
+                  {
+                    "text": "con chuột"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.vocab.everyday_basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.greetings",
+          "objectiveId": "fr.obj.greetings.basic",
+          "anchorLessonId": "fr-vi:u1-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.morning",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-morning",
+                "mode": "nativeToTarget",
+                "prompt": "Buổi sáng, bạn bước vào tiệm bánh. Bạn nói:",
+                "options": [
+                  {
+                    "text": "Bonjour !"
+                  },
+                  {
+                    "text": "Bonsoir !"
+                  },
+                  {
+                    "text": "Au revoir !"
+                  },
+                  {
+                    "text": "Bonne nuit !"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.greetings.basic"
+              ]
+            },
+            {
+              "id": "fr.pli.s1.polite",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-polite",
+                "mode": "nativeToTarget",
+                "prompt": "Bạn xin một thứ gì đó một cách lịch sự. Bạn thêm:",
+                "options": [
+                  {
+                    "text": "s'il vous plaît"
+                  },
+                  {
+                    "text": "salut"
+                  },
+                  {
+                    "text": "bonne nuit"
+                  },
+                  {
+                    "text": "au revoir"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.greetings.basic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.reading",
+          "objectiveId": "fr.obj.reading.familiar_words",
+          "anchorLessonId": "fr-vi:u2-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.girl_milk",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-girl_milk",
+                "mode": "targetToNative",
+                "prompt": "La fille boit du lait.",
+                "options": [
+                  {
+                    "text": "Cô bé uống sữa."
+                  },
+                  {
+                    "text": "Cô bé ăn bánh mì."
+                  },
+                  {
+                    "text": "Cậu bé uống sữa."
+                  },
+                  {
+                    "text": "Cô bé uống nước."
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.familiar_words"
+              ]
+            },
+            {
+              "id": "fr.pli.s1.man_ticket",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-man_ticket",
+                "mode": "targetToNative",
+                "prompt": "L'homme a un billet.",
+                "options": [
+                  {
+                    "text": "Người đàn ông có một tấm vé."
+                  },
+                  {
+                    "text": "Người đàn ông có một tấm bản đồ."
+                  },
+                  {
+                    "text": "Người phụ nữ có một tấm vé."
+                  },
+                  {
+                    "text": "Người đàn ông ở nhà ga."
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.places",
+          "objectiveId": "fr.obj.vocab.places_travel",
+          "anchorLessonId": "fr-vi:u4-l0",
+          "items": [
+            {
+              "id": "fr.pli.s1.airport",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s1-airport",
+                "mode": "nativeToTarget",
+                "prompt": "sân bay",
+                "options": [
+                  {
+                    "text": "l'aéroport"
+                  },
+                  {
+                    "text": "l'hôtel"
+                  },
+                  {
+                    "text": "la gare"
+                  },
+                  {
+                    "text": "le musée"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.vocab.places_travel"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fr.pstage.building_blocks",
+      "title": "Viên gạch nền",
+      "clusters": [
+        {
+          "id": "fr.pcluster.articles",
+          "objectiveId": "fr.obj.gender.articles_basic",
+          "anchorLessonId": "fr-vi:ua-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.voyage",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "fr-plx-s2-voyage",
+                "articles": [
+                  "le",
+                  "la"
+                ],
+                "noun": "voyage",
+                "gloss": "chuyến đi",
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.gender.articles_basic"
+              ]
+            },
+            {
+              "id": "fr.pli.s2.securite",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "fr-plx-s2-securite",
+                "articles": [
+                  "le",
+                  "la"
+                ],
+                "noun": "sécurité",
+                "gloss": "sự an toàn",
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "fr.obj.gender.articles_basic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.endings",
+          "objectiveId": "fr.obj.gender.ending_patterns",
+          "anchorLessonId": "fr-vi:ua-l1",
+          "items": [
+            {
+              "id": "fr.pli.s2.tradition",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "fr-plx-s2-tradition",
+                "articles": [
+                  "le",
+                  "la"
+                ],
+                "noun": "tradition",
+                "gloss": "truyền thống",
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "fr.obj.gender.ending_patterns"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.etre_avoir",
+          "objectiveId": "fr.obj.verbs.etre_avoir_present",
+          "anchorLessonId": "fr-vi:ub-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.sommes",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "fr-plx-s2-sommes",
+                "mode": "targetToNative",
+                "prompt": "Nous sommes contents.",
+                "options": [
+                  {
+                    "text": "Chúng tôi vui."
+                  },
+                  {
+                    "text": "Chúng tôi có mèo."
+                  },
+                  {
+                    "text": "Họ vui."
+                  },
+                  {
+                    "text": "Bạn vui."
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.verbs.etre_avoir_present"
+              ]
+            },
+            {
+              "id": "fr.pli.s2.a_chien",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "conjugationCloze",
+                "id": "fr-plx-s2-a_chien",
+                "sentence": "Il ___ un chien.",
+                "translation": "Anh ấy có một con chó.",
+                "verb": "avoir",
+                "cell": "pre:3s",
+                "answer": "a",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.verbs.etre_avoir_present",
+                "fr.obj.writing.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.er",
+          "objectiveId": "fr.obj.verbs.er_present",
+          "anchorLessonId": "fr-vi:ub-l1",
+          "items": [
+            {
+              "id": "fr.pli.s2.parle",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "conjugationCloze",
+                "id": "fr-plx-s2-parle",
+                "sentence": "Elle ___ français.",
+                "translation": "Cô ấy nói tiếng Pháp.",
+                "verb": "parler",
+                "cell": "pre:3s",
+                "answer": "parle",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.verbs.er_present",
+                "fr.obj.writing.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.numbers",
+          "objectiveId": "fr.obj.numbers.0_100",
+          "anchorLessonId": "fr-vi:ud-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.n16",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "typeAnswer",
+                "id": "fr-plx-s2-n16",
+                "mode": "produceTarget",
+                "prompt": "16",
+                "answer": "seize",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.writing.familiar_words"
+              ]
+            },
+            {
+              "id": "fr.pli.s2.n82",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "typeAnswer",
+                "id": "fr-plx-s2-n82",
+                "mode": "produceTarget",
+                "prompt": "82",
+                "answer": "quatre-vingt-deux",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "fr.obj.numbers.0_100",
+                "fr.obj.writing.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.elision",
+          "objectiveId": "fr.obj.connected.elision",
+          "anchorLessonId": "fr-vi:ue-l0",
+          "items": [
+            {
+              "id": "fr.pli.s2.hotel",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "fillBlank",
+                "id": "fr-plx-s2-hotel",
+                "sentence": "___ hôtel est grand.",
+                "translation": "Khách sạn to.",
+                "options": [
+                  "L'",
+                  "Le"
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.connected.elision"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fr.pstage.reception",
+      "title": "Hiểu tiếng Pháp",
+      "clusters": [
+        {
+          "id": "fr.pcluster.listen_words",
+          "objectiveId": "fr.obj.listening.familiar_words",
+          "anchorLessonId": "fr-vi:uf-l0",
+          "items": [
+            {
+              "id": "fr.pli.s3.listen_lait",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "fr-plx-s3-listen_lait",
+                "clipId": "fr.clip.pl_lait",
+                "question": "Bạn nghe thấy gì?",
+                "options": [
+                  {
+                    "text": "sữa"
+                  },
+                  {
+                    "text": "bánh mì"
+                  },
+                  {
+                    "text": "nước"
+                  },
+                  {
+                    "text": "nước ép"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.listening.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.read_notices",
+          "objectiveId": "fr.obj.reading.notices_info",
+          "anchorLessonId": "fr-vi:ug-l0",
+          "items": [
+            {
+              "id": "fr.pli.s3.notice_jours",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "fr-plx-s3-notice_jours",
+                "readingId": "fr.read.pl_notice_cafe",
+                "question": "Quán cà phê mở cửa những ngày nào?",
+                "options": [
+                  {
+                    "text": "Thứ Hai đến thứ Bảy"
+                  },
+                  {
+                    "text": "Hằng ngày"
+                  },
+                  {
+                    "text": "Thứ Bảy và Chủ nhật"
+                  },
+                  {
+                    "text": "Thứ Ba đến thứ Sáu"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.notices_info"
+              ]
+            },
+            {
+              "id": "fr.pli.s3.notice_heures",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "fr-plx-s3-notice_heures",
+                "readingId": "fr.read.pl_notice_cafe",
+                "question": "Quán cà phê mở cửa lúc mấy giờ?",
+                "options": [
+                  {
+                    "text": "Lúc tám giờ"
+                  },
+                  {
+                    "text": "Lúc tám giờ tối"
+                  },
+                  {
+                    "text": "Lúc mười giờ"
+                  },
+                  {
+                    "text": "Lúc trưa"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.notices_info"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.read_messages",
+          "objectiveId": "fr.obj.reading.short_messages",
+          "anchorLessonId": "fr-vi:ug-l1",
+          "items": [
+            {
+              "id": "fr.pli.s3.message_quand",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "fr-plx-s3-message_quand",
+                "readingId": "fr.read.pl_message_court",
+                "question": "Bữa tối ở nhà hàng là khi nào?",
+                "options": [
+                  {
+                    "text": "Tối mai"
+                  },
+                  {
+                    "text": "Tối nay"
+                  },
+                  {
+                    "text": "Sáng Chủ nhật"
+                  },
+                  {
+                    "text": "Thứ Bảy tới"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.reading.short_messages"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.listen_announcements",
+          "objectiveId": "fr.obj.listening.announcements",
+          "anchorLessonId": "fr-vi:uh-l0",
+          "items": [
+            {
+              "id": "fr.pli.s3.annonce_heure",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "fr-plx-s3-annonce_heure",
+                "clipId": "fr.clip.pl_gare_annonce",
+                "question": "Tàu chạy lúc mấy giờ?",
+                "options": [
+                  {
+                    "text": "Lúc mười giờ"
+                  },
+                  {
+                    "text": "Lúc hai giờ"
+                  },
+                  {
+                    "text": "Lúc sáu giờ"
+                  },
+                  {
+                    "text": "Lúc trưa"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.listening.announcements"
+              ]
+            },
+            {
+              "id": "fr.pli.s3.annonce_voie",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "fr-plx-s3-annonce_voie",
+                "clipId": "fr.clip.pl_gare_annonce",
+                "question": "Tàu chạy từ sân ga nào?",
+                "options": [
+                  {
+                    "text": "Sân ga số một"
+                  },
+                  {
+                    "text": "Sân ga số hai"
+                  },
+                  {
+                    "text": "Sân ga số bốn"
+                  },
+                  {
+                    "text": "Sân ga số mười"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "fr.obj.listening.announcements"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fr.pstage.production",
+      "title": "Nói tiếng Pháp",
+      "clusters": [
+        {
+          "id": "fr.pcluster.speak_formulaic",
+          "objectiveId": "fr.obj.speaking.formulaic",
+          "anchorLessonId": "fr-vi:uk-l0",
+          "items": [
+            {
+              "id": "fr.pli.s4.greet_shop",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-greet_shop",
+                "speechItemId": "fr.speak.pl4_greet_shop",
+                "instruction": "Buổi sáng bạn bước vào một cửa hàng nhỏ. Hãy chào người bán hàng.",
+                "target": "Bonjour",
+                "acceptedVariants": [
+                  "Bonjour",
+                  "Bonjour, madame",
+                  "Bonjour, monsieur"
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.formulaic"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.polite_request",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-polite_request",
+                "speechItemId": "fr.speak.pl4_polite_request",
+                "instruction": "Bạn vừa hỏi mua vé. Hãy kết thúc lời yêu cầu bằng cụm từ lịch sự.",
+                "target": "S'il vous plaît",
+                "acceptedVariants": [
+                  "S'il vous plaît"
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.formulaic"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.farewell_bus",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-farewell_bus",
+                "speechItemId": "fr.speak.pl4_farewell_bus",
+                "instruction": "Xe buýt của bạn bạn sắp chạy và họ vẫy tay chào bạn. Hãy chào tạm biệt.",
+                "target": "Au revoir",
+                "acceptedVariants": [
+                  "Au revoir",
+                  "Salut",
+                  "À bientôt",
+                  "Au revoir, à bientôt",
+                  "À plus"
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.formulaic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr.pcluster.speak_info",
+          "objectiveId": "fr.obj.speaking.give_info",
+          "anchorLessonId": "fr-vi:um-l0",
+          "items": [
+            {
+              "id": "fr.pli.s4.horses",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-horses",
+                "speechItemId": "fr.speak.pl4_horses",
+                "instruction": "Hãy nói có bao nhiêu con ngựa.",
+                "cueEmoji": "🐴🐴",
+                "cueFacts": [
+                  {
+                    "label": "Ngựa",
+                    "value": "2"
+                  }
+                ],
+                "target": "Il y a deux chevaux",
+                "acceptedVariants": [
+                  "Il y a deux chevaux"
+                ],
+                "requiredConcepts": [
+                  [
+                    "il y a"
+                  ],
+                  [
+                    "deux",
+                    "2"
+                  ],
+                  [
+                    "chevaux",
+                    "cheval"
+                  ]
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.give_info"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.price_seven",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-price_seven",
+                "speechItemId": "fr.speak.pl4_price_seven",
+                "instruction": "Hãy nói giá bao nhiêu.",
+                "cueFacts": [
+                  {
+                    "label": "Giá",
+                    "value": "7 €"
+                  }
+                ],
+                "target": "Ça coûte sept euros",
+                "acceptedVariants": [
+                  "Ça coûte sept euros",
+                  "Ça fait sept euros",
+                  "C'est sept euros",
+                  "Sept euros"
+                ],
+                "requiredConcepts": [
+                  [
+                    "coûte",
+                    "ça fait",
+                    "c'est"
+                  ],
+                  [
+                    "sept",
+                    "7"
+                  ],
+                  [
+                    "euros",
+                    "euro"
+                  ]
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.give_info"
+              ]
+            },
+            {
+              "id": "fr.pli.s4.train_eight",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "fr-plx-s4-train_eight",
+                "speechItemId": "fr.speak.pl4_train_eight",
+                "instruction": "Hãy nói tàu chạy lúc mấy giờ.",
+                "cueFacts": [
+                  {
+                    "label": "Khởi hành",
+                    "value": "8:00"
+                  }
+                ],
+                "target": "Le train part à huit heures",
+                "acceptedVariants": [
+                  "Le train part à huit heures",
+                  "Il part à huit heures",
+                  "À huit heures",
+                  "Le train est à huit heures",
+                  "Le départ est à huit heures"
+                ],
+                "requiredConcepts": [
+                  [
+                    "train"
+                  ],
+                  [
+                    "huit",
+                    "8"
+                  ],
+                  [
+                    "heures",
+                    "heure"
+                  ]
+                ],
+                "evidenceLexemeRefs": [],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "fr.obj.speaking.give_info"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

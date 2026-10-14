@@ -11,6 +11,15 @@ export const orderedCourses = [...catalog.courses].sort(
     b.unitCount - a.unitCount || a.targetLanguage.localeCompare(b.targetLanguage)
 );
 
+/**
+ * Courses for pickers in a UI language (P2b): the courses explained in that
+ * language come first (a Vietnamese UI lists `fr-vi` before `fr-en`), the
+ * rest keep the default order.
+ */
+export function orderedCoursesFor(uiLanguage: string): typeof orderedCourses {
+  return [...orderedCourses].sort((a, b) => Number(b.nativeCode === uiLanguage) - Number(a.nativeCode === uiLanguage));
+}
+
 export function getPack(courseId: string): Pack {
   const pack = PACKS[courseId];
   if (!pack) throw new Error(`Unknown course: ${courseId}`);

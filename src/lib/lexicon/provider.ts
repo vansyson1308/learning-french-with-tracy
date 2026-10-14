@@ -22,13 +22,20 @@ const EMPTY_DATA: GeneratedLexiconData = { contentHash: "", entries: [] };
 
 const generated = new Map<string, GeneratedLexiconRepository>();
 
+/** Memo key: the course's lexicon artifact identity — one repository per (target, native) (P2b). */
+function lexiconKey(courseId: string): string {
+  const profile = courseProfile(courseId);
+  const db = profile.artifacts.lexiconDb ?? profile.artifacts.lexiconFallback ?? profile.targetCode;
+  return db;
+}
+
 export function getGeneratedLexiconRepository(courseId: string): GeneratedLexiconRepository {
-  const code = courseProfile(courseId).targetCode;
-  const hit = generated.get(code);
+  const key = lexiconKey(courseId);
+  const hit = generated.get(key);
   if (hit) return hit;
   const data = (artifactsFor(courseId).lexiconFallback as GeneratedLexiconData | undefined) ?? EMPTY_DATA;
   const repo = new GeneratedLexiconRepository(data);
-  generated.set(code, repo);
+  generated.set(key, repo);
   return repo;
 }
 
@@ -44,11 +51,14 @@ const nativePromises = new Map<string, Promise<LexiconRepository | null>>();
 export function getLexiconRepository(
   courseId: string
 ): Promise<{ repo: LexiconRepository; tier: LexiconTier }> {
-  const { targetCode: code, nativeCode } = courseProfile(courseId);
-  let pending = nativePromises.get(code);
+  const { targetCode: code, nativeCode, artifacts } = courseProfile(courseId);
+  const key = lexiconKey(courseId);
+  let pending = nativePromises.get(key);
   if (!pending) {
-    pending = loadNativeLexiconRepository(code, nativeCode);
-    nativePromises.set(code, pending);
+    // The database asset is keyed by the target code (primary native language) or the course id.
+    const assetKey = artifacts.lexiconDb?.includes(`/${courseId}-lexicon-`) ? courseId : code;
+    pending = loadNativeLexiconRepository(code, nativeCode, assetKey);
+    nativePromises.set(key, pending);
   }
   return pending.then((native) =>
     native !== null

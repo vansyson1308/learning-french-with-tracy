@@ -126,11 +126,11 @@ describe("prepareImport (staged validation — never mutates)", () => {
     const v4 = prepareImport(wrap(validState(), 0), NOW);
     if (!v4.ok) throw new Error("stage failed");
     const bad = clone(v4.learner);
-    bad.cards["fr-en"]["fr:w:homme|recognize"].stability = null as unknown as number;
+    bad.cards["fr"]["fr:w:homme|recognize"].stability = null as unknown as number;
     expect(prepareImport(wrap(v4.state, PERSIST_VERSION, {}, bad), NOW).ok).toBe(false);
 
     const badKey = clone(v4.learner);
-    badKey.cards["fr-en"]["no-separator"] = badKey.cards["fr-en"]["fr:w:homme|recognize"];
+    badKey.cards["fr"]["no-separator"] = badKey.cards["fr"]["fr:w:homme|recognize"];
     expect(prepareImport(wrap(v4.state, PERSIST_VERSION, {}, badKey), NOW).ok).toBe(false);
   });
 
@@ -142,7 +142,7 @@ describe("prepareImport (staged validation — never mutates)", () => {
     if (!again.ok) return;
     expect(again.state).toEqual(v4.state);
     expect(again.learner).toEqual(v4.learner);
-    expect(again.learner.cards["fr-en"]["fr:w:homme|recognize"].stability).toBe(3);
+    expect(again.learner.cards["fr"]["fr:w:homme|recognize"].stability).toBe(3);
     expect(again.state.courses["fr-en"].srsLegacy!["l'homme"].interval).toBe(3);
     expect(again.state.courses["fr-en"].cards).toBeUndefined();
     expect(again.learner.reviewLog).toEqual([]);
@@ -182,7 +182,7 @@ describe("commitImport (transaction safety)", () => {
     // Cards live in the learner store, never in the blob (P1d).
     expect(stored.state.courses["fr-en"].cards).toBeUndefined();
     const learner = await (await learnerStore()).exportAll();
-    expect(learner.cards["fr-en"]["fr:w:homme|recognize"]).toBeDefined();
+    expect(learner.cards["fr"]["fr:w:homme|recognize"]).toBeDefined();
     // …and the live store has them in memory for the active course.
     expect(useProgress.getState().courses["fr-en"].cards?.["fr:w:homme|recognize"]).toBeDefined();
     expect(useProgress.getState().streak).toBe(5);

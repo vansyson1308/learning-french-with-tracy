@@ -1,0 +1,691 @@
+{
+  "version": 1,
+  "language": "fr",
+  "order": [
+    "fr:concept:gender-two-classes",
+    "fr:concept:gender-feminine-endings",
+    "fr:concept:gender-masculine-endings",
+    "fr:concept:gender-tricky-endings",
+    "fr:concept:etre-avoir-present",
+    "fr:concept:er-verbs-one-sound",
+    "fr:concept:futur-proche",
+    "fr:concept:passe-compose",
+    "fr:concept:cognate-tion-family",
+    "fr:concept:cognate-te-family",
+    "fr:concept:false-friends",
+    "fr:concept:numbers-to-sixty",
+    "fr:concept:numbers-seventies",
+    "fr:concept:numbers-eighties",
+    "fr:concept:elision",
+    "fr:concept:liaison",
+    "fr:concept:h-two-kinds"
+  ],
+  "byId": {
+    "fr:concept:gender-two-classes": {
+      "id": "fr:concept:gender-two-classes",
+      "title": "Mọi danh từ tiếng Pháp đều có giống",
+      "shortRule": "Mọi danh từ đều là giống đực (le) hoặc giống cái (la) — mạo từ là một phần của từ.",
+      "explanation": "Tiếng Pháp xếp mọi danh từ vào hai lớp ngữ pháp: giống đực và giống cái. Đây là thuộc tính của chính từ đó, không phải của sự vật nó gọi tên, nên cách học danh từ đáng tin cậy là học cùng với mạo từ: 'le chat', 'la pomme'. Tin vui: ĐUÔI của danh từ thường báo hiệu giống của nó, và các bài sắp tới chỉ dạy những mẫu đuôi từ mà phân tích 36.940 danh từ cho thấy thật sự đáng tin.",
+      "examples": [
+        {
+          "fr": "le chat",
+          "vi": "con mèo",
+          "note": "giống đực — le"
+        },
+        {
+          "fr": "la pomme",
+          "vi": "quả táo",
+          "note": "giống cái — la"
+        },
+        {
+          "fr": "l'eau",
+          "vi": "nước",
+          "note": "trước một nguyên âm, mạo từ rút thành l' nên che mất giống — eau là giống cái"
+        }
+      ],
+      "exceptions": [
+        "Trước một âm nguyên âm, cả le và la đều thành l', nên mạo từ không còn cho biết giống nữa. Với những danh từ đó, hãy nhớ cùng un/une: une eau minérale."
+      ],
+      "memoryHint": "Luôn học 'le chat', đừng bao giờ chỉ học 'chat'.",
+      "objectives": [
+        "fr.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    "fr:concept:gender-feminine-endings": {
+      "id": "fr:concept:gender-feminine-endings",
+      "title": "Những đuôi từ báo hiệu « giống cái »",
+      "shortRule": "Danh từ kết thúc bằng -tion, -ance, -ence, -ité hoặc -ie hầu như luôn là giống cái.",
+      "explanation": "Bạn không cần ghi nhớ giống của từng danh từ một — đuôi từ thường quyết định điều đó. Trong phân tích 36.940 danh từ tiếng Pháp, từ kết thúc bằng -tion là giống cái 99,5% trường hợp, -ance 98,9%, -ence 98,3%, -ité 97,8%, và -ie 96,3%. Khi gặp một danh từ mới có một trong các đuôi này, hãy tự tin nói « la ».",
+      "examples": [
+        {
+          "fr": "la question",
+          "vi": "câu hỏi",
+          "note": "-tion → giống cái (99,5% trong 1.895 danh từ)"
+        },
+        {
+          "fr": "la chance",
+          "vi": "may mắn",
+          "note": "-ance → giống cái"
+        },
+        {
+          "fr": "la vérité",
+          "vi": "sự thật",
+          "note": "-ité → giống cái"
+        },
+        {
+          "fr": "la vie",
+          "vi": "cuộc sống",
+          "note": "-ie → giống cái"
+        }
+      ],
+      "exceptions": [
+        "“Hầu như luôn” không phải “luôn luôn”: le silence (-ence) và le génie (-ie) là những ngoại lệ thường gặp — nhưng với độ tin cậy cao như vậy, đoán là giống cái là thói quen đúng."
+      ],
+      "memoryHint": "-tion, -ance/-ence, -ité, -ie → la.",
+      "objectives": [
+        "fr.obj.gender.ending_patterns"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:gender-masculine-endings": {
+      "id": "fr:concept:gender-masculine-endings",
+      "title": "Những đuôi từ báo hiệu « giống đực »",
+      "shortRule": "Danh từ kết thúc bằng -ment, -age, -eau hoặc -ier thường là giống đực.",
+      "explanation": "Phía giống đực cũng có những mẫu đuôi từ mạnh, từ cùng phân tích 36.940 danh từ: -ment là giống đực 99,8% trường hợp, -age 98,5%, -eau 96,7%, và -ier 97,1%. Gặp một danh từ mới có một trong các đuôi này thì « le » rất có thể là đúng.",
+      "examples": [
+        {
+          "fr": "le moment",
+          "vi": "khoảnh khắc",
+          "note": "-ment → giống đực (99,8% trong 1.094 danh từ)"
+        },
+        {
+          "fr": "le voyage",
+          "vi": "chuyến đi",
+          "note": "-age → giống đực"
+        },
+        {
+          "fr": "le cadeau",
+          "vi": "món quà",
+          "note": "-eau → giống đực"
+        },
+        {
+          "fr": "le papier",
+          "vi": "tờ giấy",
+          "note": "-ier → giống đực"
+        }
+      ],
+      "exceptions": [
+        "l'eau (nước) và la peau (da) là giống cái — những ngoại lệ nổi tiếng của -eau.",
+        "l'image (bức ảnh), la page, la plage (bãi biển) và la cage là những từ -age giống cái: -age là “thường”, không phải “luôn luôn”."
+      ],
+      "memoryHint": "-ment, -age, -eau, -ier → le (nhưng l'eau là giống cái!).",
+      "objectives": [
+        "fr.obj.gender.ending_patterns"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:gender-tricky-endings": {
+      "id": "fr:concept:gender-tricky-endings",
+      "title": "Hai đuôi từ cần cẩn thận",
+      "shortRule": "-on thường là giống đực — nhưng họ -tion/-sion là giống cái, và la maison, la raison, la saison cũng vậy. -eur thường là giống đực — với vài ngoại lệ giống cái nổi tiếng.",
+      "explanation": "Hai đuôi từ thông dụng ẩn chứa các mẫu con. Danh từ đuôi -on là giống đực 96,7% trường hợp MỘT KHI bạn gạt các từ -ion và -son sang một bên — và hai nhóm đó là nhóm trộn lẫn, không đơn giản là giống cái. Các nhóm con giống cái đáng tin là -tion/-sion (la question, la télévision — 99% giống cái) và -aison/-ison (la maison, la raison, la saison, la prison). Ngoài các nhóm đó, từ -ion và -son thường là giống đực: l'avion, le camion, le lion, le poisson, le poison, le blouson. Và danh từ -eur là giống đực 92,5% trường hợp, nhưng vài từ rất thông dụng lại là giống cái. Hãy học các nhóm con, không chỉ hai chữ cái cuối.",
+      "examples": [
+        {
+          "fr": "le patron",
+          "vi": "sếp",
+          "note": "-on (không phải -tion/-aison) → giống đực"
+        },
+        {
+          "fr": "la maison",
+          "vi": "ngôi nhà",
+          "note": "-aison → nhóm con giống cái"
+        },
+        {
+          "fr": "la raison",
+          "vi": "lý do",
+          "note": "-aison → nhóm con giống cái"
+        },
+        {
+          "fr": "le docteur",
+          "vi": "bác sĩ",
+          "note": "-eur → thường là giống đực"
+        }
+      ],
+      "exceptions": [
+        "Các danh từ -eur giống cái thường gặp: la peur (nỗi sợ), l'erreur (lỗi), la couleur (màu sắc), la fleur (bông hoa).",
+        "Nhóm con -aison/-ison: la maison, la raison, la saison, la prison, la comparaison — giống cái (la chanson và la boisson cũng vậy). Nhưng le poisson, le poison, le son và le saucisson là giống đực — hãy kiểm tra mạo từ."
+      ],
+      "memoryHint": "Thấy -tion, -sion, -aison hoặc -ison? Nghĩ đến la. Các từ -on khác — le patron, le poisson, le garçon — nghĩ đến le.",
+      "objectives": [
+        "fr.obj.gender.ending_patterns"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-patterns"
+        }
+      ]
+    },
+    "fr:concept:etre-avoir-present": {
+      "id": "fr:concept:etre-avoir-present",
+      "title": "Être và avoir — hai động từ trụ cột",
+      "shortRule": "je suis / tu es / il est · j'ai / tu as / il a — hãy thuộc lòng sáu dạng này.",
+      "explanation": "Hai động từ được dùng nhiều nhất trong tiếng Pháp cũng là hai động từ bất quy tắc nhất, nên các dạng hiện tại của chúng được học như từ vựng, không theo mẫu: être (là) — je suis, tu es, il/elle est, nous sommes, vous êtes, ils/elles sont; avoir (có) — j'ai, tu as, il/elle a, nous avons, vous avez, ils/elles ont. Công sức bỏ ra được đền đáp gấp đôi: chúng tạo nên các câu hằng ngày ngay bây giờ, và sau này chúng xây thì quá khứ cho mọi động từ khác.",
+      "examples": [
+        {
+          "fr": "Je suis content.",
+          "vi": "Tôi vui.",
+          "note": "être — ngôi thứ nhất"
+        },
+        {
+          "fr": "Tu as raison.",
+          "vi": "Bạn nói đúng (nghĩa đen: bạn có lý).",
+          "note": "avoir — ngôi thứ hai"
+        },
+        {
+          "fr": "Ils ont deux chats.",
+          "vi": "Họ có hai con mèo.",
+          "note": "avoir — ngôi thứ ba số nhiều"
+        }
+      ],
+      "exceptions": [
+        "Tiếng Pháp dùng avoir (có) trong các cụm cố định mà tiếng Việt dùng cách nói khác: avoir faim (đói), avoir raison (nói đúng), avoir 20 ans (20 tuổi).",
+        "Trước nguyên âm, je rút gọn: j'ai, không bao giờ 'je ai'."
+      ],
+      "memoryHint": "sont = họ là, ont = họ có — chữ s thuộc về être.",
+      "objectives": [
+        "fr.obj.verbs.etre_avoir_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:er-verbs-one-sound": {
+      "id": "fr:concept:er-verbs-one-sound",
+      "title": "Động từ -er: sáu cách viết, ba cách đọc",
+      "shortRule": "parle, parles và parlent đều đọc giống nhau — đuôi từ thay đổi trên giấy nhiều hơn trong lời nói.",
+      "explanation": "Các động từ -er có quy tắc (họ động từ lớn nhất) đều chia như parler: je parle, tu parles, il/elle parle, nous parlons, vous parlez, ils/elles parlent. Khi nói, sáu dạng đó gộp lại thành ba âm — parle/parles/parlent đều đọc như 'parl' (ngữ âm Lexique 4: /paʁl/), parlons có âm riêng, và parlez đọc giống hệt nguyên mẫu parler (/paʁle/). Vì vậy khi nói, đại từ làm phần lớn việc; đuôi viết quan trọng nhất khi bạn gõ hoặc viết.",
+      "examples": [
+        {
+          "fr": "Elle parle avec sa mère.",
+          "vi": "Cô ấy nói chuyện với mẹ.",
+          "note": "ngôi thứ ba: gốc + e"
+        },
+        {
+          "fr": "Nous habitons à Paris.",
+          "vi": "Chúng tôi sống ở Paris.",
+          "note": "nous: gốc + ons"
+        },
+        {
+          "fr": "Vous aimez le café ?",
+          "vi": "Bạn có thích cà phê không?",
+          "note": "vous: gốc + ez — đọc giống dạng nguyên mẫu"
+        }
+      ],
+      "exceptions": [
+        "Động từ -ger giữ chữ e trước -ons để giữ âm g mềm: nous mangeons, không bao giờ 'mangons'.",
+        "Aller trông như động từ -er nhưng bất quy tắc: je vais, tu vas, il va."
+      ],
+      "memoryHint": "Nếu chủ ngữ là je/tu/il/ils, động từ -er thường ĐỌC giống như gốc trần của nó.",
+      "objectives": [
+        "fr.obj.verbs.er_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:futur-proche": {
+      "id": "fr:concept:futur-proche",
+      "title": "Nói về tương lai với aller",
+      "shortRule": "aller (hiện tại) + nguyên mẫu = sắp: Je vais manger — Tôi sắp ăn.",
+      "explanation": "Tiếng Pháp có một thì tương lai đơn giản bạn dùng được ngay từ ngày đầu: chia aller ở hiện tại rồi đặt bất kỳ động từ nguyên mẫu nào sau nó, giống như 'sắp' trong tiếng Việt. Je vais parler (tôi sắp nói), tu vas manger, nous allons habiter à Lyon. Bạn chỉ chia aller — động từ thứ hai giữ nguyên dạng từ điển — nên sáu dạng aller đã thuộc mở ra câu tương lai với mọi động từ bạn biết.",
+      "examples": [
+        {
+          "fr": "Je vais manger.",
+          "vi": "Tôi sắp ăn.",
+          "note": "vais + nguyên mẫu"
+        },
+        {
+          "fr": "Nous allons parler avec le patron.",
+          "vi": "Chúng tôi sắp nói chuyện với sếp.",
+          "note": "allons + nguyên mẫu"
+        },
+        {
+          "fr": "Ils vont faire un voyage.",
+          "vi": "Họ sắp đi một chuyến.",
+          "note": "vont + nguyên mẫu"
+        }
+      ],
+      "exceptions": [
+        "Aller đứng một mình cũng có nghĩa là đi đến đâu đó: Je vais au bureau — Tôi đang đi đến văn phòng. Ngữ cảnh cho bạn biết nghĩa nào đang được dùng."
+      ],
+      "memoryHint": "aller + nguyên mẫu dùng giống như 'sắp + động từ' trong tiếng Việt.",
+      "objectives": [
+        "fr.obj.verbs.futur_proche"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:passe-compose": {
+      "id": "fr:concept:passe-compose",
+      "title": "Quá khứ với avoir + phân từ",
+      "shortRule": "avoir (hiện tại) + quá khứ phân từ = đã làm: J'ai mangé — Tôi đã ăn.",
+      "explanation": "Thì quá khứ hằng ngày của tiếng Pháp được ghép từ hai mảnh bạn đã có: avoir ở hiện tại cộng với quá khứ phân từ của động từ. Với động từ -er, phân từ chỉ đổi -er thành -é (parler → parlé, manger → mangé), nên J'ai parlé = tôi đã nói, Tu as mangé = bạn đã ăn, Nous avons habité = chúng tôi đã sống. Một số động từ có phân từ phải thuộc lòng — être → été, avoir → eu, faire → fait — nhưng khung câu không bao giờ thay đổi.",
+      "examples": [
+        {
+          "fr": "J'ai mangé une pomme.",
+          "vi": "Tôi đã ăn một quả táo.",
+          "note": "avoir + mangé"
+        },
+        {
+          "fr": "Tu as parlé avec elle ?",
+          "vi": "Bạn đã nói chuyện với cô ấy chưa?",
+          "note": "avoir + parlé"
+        },
+        {
+          "fr": "Il a fait ses devoirs.",
+          "vi": "Cậu ấy đã làm bài tập về nhà.",
+          "note": "phân từ bất quy tắc: fait"
+        }
+      ],
+      "exceptions": [
+        "Một nhóm nhỏ động từ chuyển động/thay đổi (trong đó có aller) tạo thì này với être thay vì avoir: Je suis allé — Tôi đã đi. Nhóm đó sẽ được dạy thành danh sách riêng sau."
+      ],
+      "memoryHint": "Động từ -er? Phân từ của nó đọc giống nguyên mẫu và viết là -é.",
+      "objectives": [
+        "fr.obj.verbs.passe_compose_avoir"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "fr:concept:cognate-tion-family": {
+      "id": "fr:concept:cognate-tion-family",
+      "title": "Hàng trăm từ “miễn phí”",
+      "shortRule": "Danh từ tiếng Pháp đuôi -tion hầu như luôn giống hệt từ tiếng Anh tương ứng — và là giống cái.",
+      "explanation": "Bạn đã biết một vốn từ tiếng Pháp lớn (qua tiếng Anh): trong 16 danh từ -tion đủ thông dụng để vào nhóm ứng viên lấy từ kho ngữ liệu của khóa học này, 15 từ giống hệt tiếng Anh — solution, question, direction, situation, attention, information, condition, conversation… (opération chỉ đổi é thành e). Giống của chúng cũng được tặng kèm: trong phân tích 36.940 danh từ, danh từ -tion là giống cái 99,5% (đo trên 1.895 từ), nên hãy nói la solution, la direction — và nhớ rằng l' che mất la trong l'attention.",
+      "examples": [
+        {
+          "fr": "la solution",
+          "vi": "giải pháp",
+          "note": "cách viết giống hệt tiếng Anh"
+        },
+        {
+          "fr": "la direction",
+          "vi": "hướng",
+          "note": "cách viết giống hệt tiếng Anh"
+        },
+        {
+          "fr": "l'attention",
+          "vi": "sự chú ý",
+          "note": "giống cái — l' chỉ che đi thôi"
+        }
+      ],
+      "exceptions": [
+        "félicitation là từ -tion duy nhất trong nhóm không trong suốt: Félicitations ! nghĩa là Chúc mừng!",
+        "Từ thì giống nhau, âm thì không — -tion tiếng Pháp đọc /sjɔ̃/, không bao giờ đọc như tiếng Anh /shun/."
+      ],
+      "memoryHint": "Thấy -tion? Tin vào nghĩa, nói la.",
+      "objectives": [
+        "fr.obj.strategy.cognate_transfer",
+        "fr.obj.gender.ending_patterns"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "candidate-pool"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    "fr:concept:cognate-te-family": {
+      "id": "fr:concept:cognate-te-family",
+      "title": "Cây cầu -té",
+      "shortRule": "-té thường tương ứng với -ty trong tiếng Anh: la liberté → liberty (tự do).",
+      "explanation": "Đuôi -té là cây cầu sang -ty của tiếng Anh: 10 trong 16 danh từ -té của nhóm từ hằng ngày tương ứng thẳng — liberté→liberty (tự do), réalité→reality (thực tế), société→society (xã hội), sécurité→security (an ninh), université→university (đại học), identité→identity (danh tính)… Sáu từ còn lại là từ vựng thật cần học, không phải từ đồng nguyên — ví dụ santé (sức khỏe), vérité (sự thật), volonté (ý chí) và été (mùa hè). Giống: 91,6% trong 1.031 danh từ -té là giống cái; ngoại lệ giống đực gồm le côté (phía, bên), l'été và un invité (khách mời). Họ từ bổ sung để sau: tiếng Pháp có 616 danh từ -isme tương ứng với -ism tiếng Anh, 99,8% giống đực — không từ nào lọt vào nhóm 1.500 từ hằng ngày.",
+      "examples": [
+        {
+          "fr": "la liberté",
+          "vi": "tự do",
+          "note": "-té → -ty"
+        },
+        {
+          "fr": "la réalité",
+          "vi": "thực tế",
+          "note": "-té → -ty"
+        },
+        {
+          "fr": "la santé",
+          "vi": "sức khỏe",
+          "note": "KHÔNG phải \"santy\" — một từ thật cần học"
+        }
+      ],
+      "exceptions": [
+        "Những từ không đồng nguyên trong họ này: santé = sức khỏe, vérité = sự thật, volonté = ý chí, été = mùa hè.",
+        "Ngoại lệ giống đực của -té giống cái: le côté, l'été, un invité."
+      ],
+      "memoryHint": "-té → -ty, và la — trừ le côté hoặc l'été.",
+      "objectives": [
+        "fr.obj.strategy.cognate_transfer",
+        "fr.obj.gender.ending_patterns"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        },
+        {
+          "source": "lexique-4",
+          "key": "candidate-pool"
+        },
+        {
+          "source": "lexique-4",
+          "key": "gender-suffix-stats"
+        }
+      ]
+    },
+    "fr:concept:false-friends": {
+      "id": "fr:concept:false-friends",
+      "title": "Những từ đánh lừa",
+      "shortRule": "Một số từ tiếng Pháp trông giống tiếng Anh nhưng nghĩa khác hẳn — hãy học từng bẫy cùng với từ đúng của nó.",
+      "explanation": "Vài từ tiếng Pháp giá trị cao là những cái bẫy: chúng trông giống từ tiếng Anh mà chúng không có nghĩa đó. La librairie là hiệu sách — còn thư viện là la bibliothèque. La journée là ban ngày — còn chuyến đi là un voyage. La monnaie là tiền lẻ, tiền xu — còn tiền nói chung là l'argent. Rester nghĩa là ở lại, không bao giờ là nghỉ ngơi, và attendre nghĩa là đợi, không bao giờ là tham dự. Cách khắc phục là học mỗi bẫy thành một cặp: từ tiếng Pháp với nghĩa thật của nó, cộng với từ tiếng Pháp cho nghĩa mà nó đã đánh lừa bạn.",
+      "examples": [
+        {
+          "fr": "la librairie",
+          "vi": "hiệu sách",
+          "note": "thư viện = la bibliothèque"
+        },
+        {
+          "fr": "Bonne journée !",
+          "vi": "Chúc một ngày tốt lành!",
+          "note": "cuộc hành trình = un voyage"
+        },
+        {
+          "fr": "Tu as de la monnaie ?",
+          "vi": "Bạn có tiền lẻ không?",
+          "note": "tiền = l'argent"
+        }
+      ],
+      "exceptions": [
+        "Thêm vài bẫy để sau: sensible nghĩa là nhạy cảm, actuellement nghĩa là hiện nay, assister à nghĩa là tham dự."
+      ],
+      "memoryHint": "La librairie bán sách; la bibliothèque cho mượn sách.",
+      "objectives": [
+        "fr.obj.strategy.cognate_transfer"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:numbers-to-sixty": {
+      "id": "fr:concept:numbers-to-sixty",
+      "title": "Đếm đến sáu mươi",
+      "shortRule": "Số đơn đến 16, ghép với dix đến 19, rồi hàng chục + gạch nối — trừ 21, 31… dùng \"et un\".",
+      "explanation": "Số tiếng Pháp là một hệ thống, không phải một danh sách. 0–16 là các từ đơn (zéro … seize). 17–19 ghép với dix: dix-sept, dix-huit, dix-neuf. Các hàng chục vingt, trente, quarante, cinquante, soixante gắn hàng đơn vị bằng gạch nối — vingt-deux, cinquante-huit — trừ ở số một, nơi tiếng Pháp nói vingt et un, trente et un … soixante et un. Có hai cách viết chính thức: dạng truyền thống 'vingt et un' và dạng cải cách 1990 'vingt-et-un'. Khóa học này hiển thị dạng truyền thống và chấp nhận cả hai khi bạn gõ.",
+      "examples": [
+        {
+          "fr": "dix-sept",
+          "vi": "17",
+          "note": "dix + sept"
+        },
+        {
+          "fr": "vingt-deux",
+          "vi": "22",
+          "note": "gạch nối"
+        },
+        {
+          "fr": "vingt et un",
+          "vi": "21",
+          "note": "ngoại lệ et-un (cũng viết là vingt-et-un)"
+        }
+      ],
+      "exceptions": [
+        "\"et\" chỉ xuất hiện ở 21, 31, 41, 51, 61 — và ở 71."
+      ],
+      "memoryHint": "Gạch nối ở mọi nơi; \"et\" chỉ đứng trước un (và onze ở 71).",
+      "objectives": [
+        "fr.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:numbers-seventies": {
+      "id": "fr:concept:numbers-seventies",
+      "title": "Hàng bảy mươi nổi tiếng",
+      "shortRule": "70 là soixante-dix (sáu mươi-mười); hàng bảy mươi đếm tiếp bằng các số từ 11 đến 19.",
+      "explanation": "Tiếng Pháp của Pháp không có từ riêng cho bảy mươi. 70 là soixante-dix — sáu mươi-mười — và cả hàng chục này đi tiếp bằng các số 11–19: 72 soixante-douze (60+12), 75 soixante-quinze, 77 soixante-dix-sept, 79 soixante-dix-neuf. 71 là trường hợp 'et onze' duy nhất: soixante et onze. Nếu nghe soixante, hãy đợi phần còn lại của con số rồi mới viết.",
+      "examples": [
+        {
+          "fr": "soixante-dix",
+          "vi": "70",
+          "note": "60 + 10"
+        },
+        {
+          "fr": "soixante et onze",
+          "vi": "71",
+          "note": "\"et onze\" đơn độc"
+        },
+        {
+          "fr": "soixante-dix-sept",
+          "vi": "77",
+          "note": "60 + 17"
+        }
+      ],
+      "exceptions": [
+        "Bỉ và Thụy Sĩ nói septante (septante-cinq = 75). Hãy nhận ra nó — khóa này dạy và chấm theo tiếng Pháp của Pháp."
+      ],
+      "memoryHint": "Hàng 70 = soixante + các số 11–19.",
+      "objectives": [
+        "fr.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:numbers-eighties": {
+      "id": "fr:concept:numbers-eighties",
+      "title": "Bốn lần hai mươi",
+      "shortRule": "80 là quatre-vingts (4 × 20); chữ -s chỉ mất khi có số khác theo sau (quatre-vingt-un), và hàng 80/90 không bao giờ dùng \"et\".",
+      "explanation": "80 là quatre-vingts — nghĩa đen là bốn lần hai mươi — và giữ chữ -s số nhiều trừ khi có số khác theo sau: quatre-vingts, quatre-vingts euros, nhưng quatre-vingt-un, quatre-vingt-deux… (và ở đây không có 'et' trước un). Hàng chín mươi lại chồng các số 11–19 lên trên: 90 quatre-vingt-dix, 91 quatre-vingt-onze, 99 quatre-vingt-dix-neuf. Và 100 đơn giản là cent.",
+      "examples": [
+        {
+          "fr": "quatre-vingts",
+          "vi": "80",
+          "note": "không có gì theo sau — giữ -s (quatre-vingts euros cũng vậy)"
+        },
+        {
+          "fr": "quatre-vingt-un",
+          "vi": "81",
+          "note": "không -s, không \"et\""
+        },
+        {
+          "fr": "quatre-vingt-onze",
+          "vi": "91",
+          "note": "80 + 11"
+        }
+      ],
+      "exceptions": [
+        "Bỉ và Thụy Sĩ nói nonante cho hàng chín mươi (nonante-deux = 92). Chỉ cần nhận ra — ở đây chấm theo tiếng Pháp của Pháp."
+      ],
+      "memoryHint": "quatre-vingts mất -s ngay khi có số khác theo sau.",
+      "objectives": [
+        "fr.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:elision": {
+      "id": "fr:concept:elision",
+      "title": "Những nguyên âm biến mất",
+      "shortRule": "le, la, je, ne, de, que, ce bỏ nguyên âm của mình trước một âm nguyên âm: l'eau, j'ai, n'est pas, c'est.",
+      "explanation": "Tiếng Pháp không cho hai âm nguyên âm va vào nhau qua những từ nhỏ này. Trước một từ bắt đầu bằng âm nguyên âm, le và la thành l' (l'eau, l'homme), je thành j' (j'ai), ne thành n' (ce n'est pas), de thành d', que thành qu', và ce thành c' (c'est). Điều này không tùy chọn hay tùy tiện — viết 'je ai' đơn giản là sai. Dấu nháy là dấu vết nhìn thấy được của nguyên âm bị bỏ, và đó là lý do các mục từ điển như eau giấu giống của mình sau l'.",
+      "examples": [
+        {
+          "fr": "l'eau",
+          "vi": "nước",
+          "note": "la + eau"
+        },
+        {
+          "fr": "j'ai deux chats",
+          "vi": "Tôi có hai con mèo",
+          "note": "je + ai"
+        },
+        {
+          "fr": "ce n'est pas vrai",
+          "vi": "điều đó không đúng",
+          "note": "ne + est"
+        }
+      ],
+      "exceptions": [
+        "Lược âm cần một ÂM nguyên âm, không chỉ chữ cái nguyên âm — và một số từ bắt đầu bằng h hoàn toàn từ chối nó (xem hai loại h)."
+      ],
+      "memoryHint": "Hai âm nguyên âm không bao giờ được chạm nhau: bỏ âm đầu, viết dấu nháy.",
+      "objectives": [
+        "fr.obj.connected.elision"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:liaison": {
+      "id": "fr:concept:liaison",
+      "title": "Nối các từ với nhau",
+      "shortRule": "Một phụ âm cuối câm có thể “thức dậy” trước nguyên âm: les amis đọc như \"lê-za-mi\".",
+      "explanation": "Trong lời nói liền mạch, một số phụ âm cuối câm gắn vào nguyên âm theo sau. Sau các từ nhỏ — từ hạn định và đại từ — việc nối là bắt buộc: les amis (chữ s thức dậy thành âm z và mở đầu 'amis'), nous avons, vous êtes, un petit enfant (t nối). Nhưng nối âm bị cấm sau et (et ici — không nối), sau danh từ số ít (le chat est — chữ t của chat vẫn câm), và trước một số từ bắt đầu bằng h. Giữa hai cực đó có vùng trung gian thuộc văn phong lịch sự mà bạn sẽ gặp sau; hiện tại, hãy tin vào các liên kết bắt buộc sau les/des/nous/vous/ils/elles.",
+      "examples": [
+        {
+          "fr": "les amis",
+          "vi": "những người bạn",
+          "note": "s nối thành âm z"
+        },
+        {
+          "fr": "nous avons",
+          "vi": "chúng tôi có",
+          "note": "bắt buộc nối âm sau nous"
+        },
+        {
+          "fr": "et ici",
+          "vi": "và ở đây",
+          "note": "KHÔNG BAO GIỜ nối âm sau et"
+        }
+      ],
+      "exceptions": [
+        "Không nối âm sau et, sau danh từ số ít, hoặc trước từ có h aspiré (les héros — không nối)."
+      ],
+      "memoryHint": "Từ nhỏ + nguyên âm = nối. Sau et: không bao giờ.",
+      "objectives": [
+        "fr.obj.connected.liaison_h"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    },
+    "fr:concept:h-two-kinds": {
+      "id": "fr:concept:h-two-kinds",
+      "title": "Hai loại h câm",
+      "shortRule": "Mọi chữ h tiếng Pháp đều câm — nhưng từ có h muet lược âm và nối âm (l'histoire), từ có h aspiré từ chối cả hai (le héros).",
+      "explanation": "Không chữ h nào trong tiếng Pháp được phát âm, nhưng các từ bắt đầu bằng h chia làm hai nhóm. H muet hành xử như nguyên âm: l'histoire, l'homme, l'hôtel — có lược âm, và có nối âm (les hommes: âm z). H aspiré hành xử như phụ âm dù bạn không nghe thấy gì: le héros (không bao giờ l'héros), và les héros hoàn toàn không nối. Bạn không thể nghe sự khác biệt ở chính chữ h — chỉ các từ xung quanh mới cho biết từ thuộc nhóm nào, nên hãy học các từ bắt đầu bằng h cùng với mạo từ của chúng.",
+      "examples": [
+        {
+          "fr": "l'histoire",
+          "vi": "câu chuyện",
+          "note": "h muet — có lược âm"
+        },
+        {
+          "fr": "le héros",
+          "vi": "người anh hùng",
+          "note": "h aspiré — không bao giờ l'héros"
+        },
+        {
+          "fr": "l'hôtel",
+          "vi": "khách sạn",
+          "note": "h muet"
+        }
+      ],
+      "exceptions": [
+        "Từ điển đánh dấu h aspiré bằng dấu sao hoặc dấu nháy trước mục từ. Khi không chắc, phép thử le/l' cho bạn biết từ thuộc nhóm nào."
+      ],
+      "memoryHint": "Anh hùng giữ khoảng cách: LE héros. Câu chuyện mời bạn vào: L'histoire.",
+      "objectives": [
+        "fr.obj.connected.liaison_h"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-french-pedagogy"
+        }
+      ]
+    }
+  }
+}

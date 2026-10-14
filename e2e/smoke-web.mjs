@@ -34,7 +34,10 @@ if (!browserPath) {
   process.exit(2);
 }
 
-const pack = JSON.parse(readFileSync("src/content/packs/fr-en.json", "utf8"));
+// P2b: the course under test — `fr-en` by default, `fr-vi` for the Vietnamese lane
+// (same curriculum, Vietnamese explanations; everything below reads the pack).
+const COURSE = process.env.E2E_COURSE ?? "fr-en";
+const pack = JSON.parse(readFileSync(`src/content/packs/${COURSE}.json`, "utf8"));
 const lastSection = pack.sections[pack.sections.length - 1];
 // The policy boundary sentence in each language (assertion text, not a selector).
 const POLICY_BOUNDARY = {
@@ -87,7 +90,7 @@ try {
 
   // 1. Onboarding on first load — in the export's UI language.
   await page.goto(BASE, { waitUntil: "networkidle" });
-  await byId("onboarding-course-fr-en").click();
+  await byId(`onboarding-course-${COURSE}`).click();
   const startLabel = (await byId("onboarding-start").textContent())?.trim();
   const expectedStart = t("onboarding.learn", { language: languageName("fr") });
   check(`onboarding start button reads the ${UI_LANG} label`, startLabel?.toLowerCase() === expectedStart.toLowerCase(), `"${startLabel}"`);

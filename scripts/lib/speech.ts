@@ -20,6 +20,7 @@ import type { Exercise } from "../../content/schema";
 import { foldSpoken, normalizeSpoken } from "../../src/lib/speech/grader";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeCueFacts, localizeSpeechPrompt, pickNative } from "./native-text";
+import { localizedBankExercise } from "./writing";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export function speechSourcePath(lang: string): string {
@@ -352,17 +353,21 @@ export function validateSpeech(input: {
 }
 
 /** Speak exercises inside the checkpoint and placement banks of a language (§20). */
-export function assessmentBankSpeechExercises(lang: string): SpeakExercise[] {
+export function assessmentBankSpeechExercises(lang: string, nativeCode?: string): SpeakExercise[] {
   const found: SpeakExercise[] = [];
+  let docNative = "en";
   const collect = (items: unknown) => {
     if (!Array.isArray(items)) return;
     for (const entry of items) {
-      const exercise = (entry as { exercise?: { type?: unknown } }).exercise;
+      const item = entry as { id: string; exercise?: { type?: unknown }; exerciseNative?: Record<string, Record<string, string>> };
+      const exercise = item.exercise;
       if (
         exercise?.type === "speakProduction" ||
         exercise?.type === "speakRepetition"
       ) {
-        found.push(exercise as SpeakExercise);
+        // P2b: the bank in a secondary native language is the overlay-applied payload.
+        const localized = nativeCode === undefined || nativeCode === docNative ? exercise : localizedBankExercise(item as { id: string; exercise: { type: string }; exerciseNative?: Record<string, Record<string, string>> }, docNative, nativeCode);
+        if (localized) found.push(localized as SpeakExercise);
       }
     }
   };
@@ -372,6 +377,7 @@ export function assessmentBankSpeechExercises(lang: string): SpeakExercise[] {
   ] as const) {
     try {
       const doc = readJson(relPath) as Record<string, unknown>;
+      docNative = typeof doc.exerciseNativeCode === "string" ? doc.exerciseNativeCode : "en";
       const containers = doc[key];
       if (!Array.isArray(containers)) continue;
       for (const container of containers) {

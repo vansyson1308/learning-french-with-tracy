@@ -5,7 +5,7 @@
     "format": "lingo-progress-backup",
     "learner": {
       "cards": {
-        "fr-en": {
+        "fr": {
           "fr:w:bonjour|speak": {
             "difficulty": 5.5,
             "due": 1781956800000,
@@ -162,11 +162,11 @@
         "hearts",
         "heartsUpdatedAt",
         "speechNoticeAckAt",
-        "assessmentByCourse",
-        "uiLanguage"
+        "uiLanguage",
+        "assessmentByTarget"
       ]
     },
-    "persistVersion": 4
+    "persistVersion": 5
   },
   "fromVersion": 3,
   "invariants": [],
@@ -179,13 +179,14 @@
         "xp": 30
       }
     },
-    "assessmentByCourse": {
-      "fr-en": {
+    "assessmentByTarget": {
+      "fr": {
         "checkpointAttempts": [
           {
             "checkpointId": "fr.checkpoint.section-1",
             "checkpointVersion": 1,
             "completedAt": 1780747800000,
+            "courseId": "fr-en",
             "itemResults": [
               {
                 "correct": true,
@@ -207,6 +208,7 @@
             "checkpointId": "fr.checkpoint.a1-capstone",
             "checkpointVersion": 1,
             "completedAt": 1781439300000,
+            "courseId": "fr-en",
             "formId": "a",
             "formVersion": 1,
             "itemResults": [
@@ -235,6 +237,7 @@
         ],
         "placement": {
           "completedAt": 1780660800000,
+          "courseId": "fr-en",
           "itemResults": [
             {
               "correct": true,
@@ -452,7 +455,7 @@
   "staged": {
     "learner": {
       "cards": {
-        "fr-en": {
+        "fr": {
           "fr:w:bonjour|speak": {
             "difficulty": 5.5,
             "due": 1781956800000,
@@ -598,13 +601,14 @@
           "xp": 30
         }
       },
-      "assessmentByCourse": {
-        "fr-en": {
+      "assessmentByTarget": {
+        "fr": {
           "checkpointAttempts": [
             {
               "checkpointId": "fr.checkpoint.section-1",
               "checkpointVersion": 1,
               "completedAt": 1780747800000,
+              "courseId": "fr-en",
               "itemResults": [
                 {
                   "correct": true,
@@ -626,6 +630,7 @@
               "checkpointId": "fr.checkpoint.a1-capstone",
               "checkpointVersion": 1,
               "completedAt": 1781439300000,
+              "courseId": "fr-en",
               "formId": "a",
               "formVersion": 1,
               "itemResults": [
@@ -654,6 +659,7 @@
           ],
           "placement": {
             "completedAt": 1780660800000,
+            "courseId": "fr-en",
             "itemResults": [
               {
                 "correct": true,
@@ -735,5 +741,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 4
+  "toVersion": 5
 }

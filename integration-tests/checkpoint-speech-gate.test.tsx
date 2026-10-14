@@ -43,7 +43,7 @@ function seed() {
     courses: {},
     activeDays: {},
     reviewLog: [],
-    assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
+    assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 0 } },
     speechNoticeAckAt: null,
   } as never);
 }

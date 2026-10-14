@@ -61,6 +61,60 @@ capability in the compiled course profile (`src/content/course-profiles.json`).
 - Example sentences compile to `{ "<target>": …, "<native>": … }` objects;
   the runtime resolves the two keys through the course profile.
 
+## A second native language for a target (`fr-vi` from `fr-en`, P2b)
+
+A target language can have one course per native language. The TARGET
+corpus is authored once (`content/<target>/**`: lexemes, clips, speech,
+writing, scenarios, objectives, checkpoints, placement) and every
+native-language string is a `Record<nativeCode, string>`; the course packs
+differ only in their native text. Producing the Vietnamese-native French
+course:
+
+1. **Extract** — `bun scripts/translate-native.ts extract --from en --to vi --target fr`
+   walks every native field of `content/fr/**`, the assessment exercises
+   (see `scripts/lib/native-fields.ts` for the per-exercise-type table of
+   native paths) and the pack `content/courses/fr-en.json`, and writes two
+   draft files: `content/fr/translations/vi.dictionary.json` (one entry per
+   distinct source text — short strings) and `content/fr/translations/vi.jsonl`
+   (one record per key for guidebooks, concept prose and the structured
+   word-bank / typed-answer records that must be re-authored, not token-shuffled).
+   The owner fills the drafts (Claude prompt template, register and glossary in
+   `plan/authoring/TRANSLATION-STYLE-vi.md`); the repository itself never calls
+   a network service. `status` reports what is still missing.
+2. **Apply** — `… apply …` fails closed on any missing draft, then adds the
+   `vi` keys in the shared `content/fr/**` files, attaches
+   `exerciseNative.vi` overlays to assessment items (the exercise payload of
+   checkpoints and placement stays authored in `exerciseNativeCode`, default
+   `en`; a secondary native language is an overlay of native-text paths),
+   writes the pack `content/courses/fr-vi.json` (section and unit ids are
+   target-level and kept; lesson and exercise ids are rewritten to the
+   `fr-vi:` prefix with the 1:1 map in `content/courses/fr-vi.map.json`, flows
+   remapped), and the native review sheet `content/fr/REVIEW-vi.md`.
+3. **Validate** — besides the per-language rules, `content:validate` checks:
+   every native field carries every native code used by a course of the
+   target (no silent fallback); the secondary course has the same sections,
+   units, words, lessons, objectives and exercise types as the primary one
+   (`stripNative` comparison; word-bank token arrays may differ in length);
+   placement anchors resolve in each course (`placementForCourse` re-points
+   `<primary>:` lesson ids); pack audio keys resolve against the primary
+   course's manifest (the audio is the target language's, recorded once).
+4. **Compile** — the primary native language of a target is its smallest
+   native code (`en` for French, so `fr-*` artifact names and the French
+   goldens are unchanged); a secondary course gets its own native-dependent
+   artifacts prefixed by the course id (`fr-vi-index.json`,
+   `assets/lexicon/fr-vi-lexicon-v3-<hash>.db`, `fr-vi-placement.json`, …) and
+   shares the target-level ones (`fr.json` ids, attainment, claim, listening,
+   clip assets). The lexicon content hash is taken over the NATIVE VIEW of the
+   lexicon (`lexiconNativeView`), so adding `vi` glosses never changes the
+   `fr-en` database. The course profile records `audioCourseId: "fr-en"` so the
+   runtime plays the primary course's pack audio. The claim gate stays per
+   target and lists the courses that inherit it.
+5. **Learner data (D-4)** — FSRS cards are keyed by target language
+   (`cards (target_code, item_id, skill)`, course recorded as provenance),
+   the review log stays per course, and the assessment record (checkpoints,
+   placement) is per target (`assessmentByTarget`, persist v5). A review in
+   `fr-vi` moves the card `fr-en` sees.
+
 ## Adding a language `<code>`
 
 1. **Pack.** `content/courses/<code>-<native>.json` with `targetCode`,

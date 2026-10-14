@@ -101,7 +101,7 @@ describe("every historical persona reaches the final persist version losslessly"
     test(name, () => {
       const state = build();
       expect(runInvariants(state, NOW)).toEqual([]);
-      expect(state.assessmentByCourse).toBeDefined();
+      expect(state.assessmentByTarget).toBeDefined();
       expect(state.assessment).toBeUndefined();
       expect(state.uiLanguage).toBe("system");
       expect(Array.isArray(state.reviewLog)).toBe(true);
@@ -123,7 +123,7 @@ describe("every historical persona reaches the final persist version losslessly"
 
   test("the Phase 8/9 persona keeps unstamped and stamped attempts exactly as recorded", () => {
     const state = migrateProgress(phase9Persona(), 3, NOW);
-    const assessment = state.assessmentByCourse!["fr-en"];
+    const assessment = state.assessmentByTarget!["fr"];
     const [unstamped, stamped] = assessment.checkpointAttempts;
     expect(unstamped.formId).toBeUndefined();
     expect(stamped.formId).toBe("a");

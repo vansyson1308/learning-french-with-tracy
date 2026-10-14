@@ -5,7 +5,7 @@
     "format": "lingo-progress-backup",
     "learner": {
       "cards": {
-        "fr-en": {
+        "fr": {
           "fr:w:femme|recognize": {
             "difficulty": 0,
             "due": 1767950000000,
@@ -51,11 +51,11 @@
         "activeDays",
         "hearts",
         "heartsUpdatedAt",
-        "assessmentByCourse",
-        "uiLanguage"
+        "uiLanguage",
+        "assessmentByTarget"
       ]
     },
-    "persistVersion": 4
+    "persistVersion": 5
   },
   "fromVersion": 0,
   "invariants": [],
@@ -68,7 +68,7 @@
         "xp": 30
       }
     },
-    "assessmentByCourse": {},
+    "assessmentByTarget": {},
     "courses": {
       "es-en": {
         "completedLessons": {
@@ -152,7 +152,7 @@
   "staged": {
     "learner": {
       "cards": {
-        "fr-en": {
+        "fr": {
           "fr:w:femme|recognize": {
             "difficulty": 0,
             "due": 1767950000000,
@@ -188,7 +188,7 @@
           "xp": 30
         }
       },
-      "assessmentByCourse": {},
+      "assessmentByTarget": {},
       "courses": {
         "es-en": {
           "completedLessons": {
@@ -246,5 +246,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 4
+  "toVersion": 5
 }

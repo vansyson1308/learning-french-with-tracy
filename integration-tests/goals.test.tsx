@@ -32,7 +32,7 @@ function seedFrench(extra: Record<string, unknown> = {}) {
     courses: {},
     activeDays: {},
     reviewLog: [],
-    assessmentByCourse: { "fr-en": emptyAssessmentState() },
+    assessmentByTarget: { fr: emptyAssessmentState() },
     ...extra,
   });
 }
@@ -86,7 +86,7 @@ describe("goals screen (§90-97)", () => {
       total: 2,
     }));
     seedFrench({
-      assessmentByCourse: { "fr-en": {
+      assessmentByTarget: { fr: {
         placementFloor: 0,
         checkpointAttempts: [
           {
@@ -132,7 +132,7 @@ describe("goals screen (§90-97)", () => {
       overallCorrectShare: 1,
     });
     seedFrench({
-      assessmentByCourse: { "fr-en": {
+      assessmentByTarget: { fr: {
         placementFloor: 0,
         checkpointAttempts: [
           attempt("fr.checkpoint.section-3", required.filter((id) => /listening|reading/.test(id))),
@@ -152,7 +152,7 @@ describe("goals screen (§90-97)", () => {
 
   test("placement: comfortable goals show as ESTIMATES; gaps never do (§40)", async () => {
     seedFrench({
-      assessmentByCourse: { "fr-en": {
+      assessmentByTarget: { fr: {
         checkpointAttempts: [],
         placement: PLACEMENT_RESULT,
         placementFloor: 20,
@@ -170,7 +170,7 @@ describe("goals screen (§90-97)", () => {
 
   test("checkpoint verdicts beat estimates; thin evidence is not 'needs practice' (§93)", async () => {
     seedFrench({
-      assessmentByCourse: { "fr-en": {
+      assessmentByTarget: { fr: {
         placement: PLACEMENT_RESULT,
         placementFloor: 0,
         checkpointAttempts: [
@@ -207,7 +207,7 @@ describe("goals screen (§90-97)", () => {
 
   test("reset starting point clears the floor and keeps the record (§86)", async () => {
     seedFrench({
-      assessmentByCourse: { "fr-en": {
+      assessmentByTarget: { fr: {
         checkpointAttempts: [],
         placement: PLACEMENT_RESULT,
         placementFloor: 20,

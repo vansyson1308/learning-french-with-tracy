@@ -21,7 +21,9 @@ import type { LexiconRepository } from "./types";
 
 export async function loadNativeLexiconRepository(
   targetCode: string,
-  nativeCode: string
+  nativeCode: string,
+  /** The course's own database key when its native language is not the target's primary one (P2b: `fr-vi`). */
+  assetKey: string = targetCode
 ): Promise<LexiconRepository | null> {
   try {
     const [sqlite, assetMod, expoAsset, fsLegacy] = await Promise.all([
@@ -30,7 +32,7 @@ export async function loadNativeLexiconRepository(
       import("expo-asset"),
       import("expo-file-system/legacy"),
     ]);
-    const entry = assetMod.LEXICON_DB_ASSETS[targetCode];
+    const entry = assetMod.LEXICON_DB_ASSETS[assetKey] ?? assetMod.LEXICON_DB_ASSETS[targetCode];
     if (!entry) return null;
     const { name: dbName, contentHash, asset: assetModule } = entry;
 

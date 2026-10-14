@@ -6,15 +6,16 @@ import { useT } from "@/lib/i18n";
 import { CloseButton } from "@/components/close-button";
 import { Flag } from "@/components/flag";
 import { exitScreen } from "@/lib/navigation";
-import { orderedCourses } from "@/lib/content";
+import { orderedCoursesFor } from "@/lib/content";
 import { courseProfile } from "@/lib/course-profile";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export default function CoursesScreen() {
   const styles = useStyles();
-  const { t, languageName } = useT();
+  const { t, lang, languageName } = useT();
   const { activeCourseId, setActiveCourse, courses } = useProgress();
+  const list = orderedCoursesFor(lang);
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
@@ -26,7 +27,7 @@ export default function CoursesScreen() {
 
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.subtitle}>{t("courses.subtitle")}</Text>
-        {orderedCourses.map((course) => {
+        {list.map((course) => {
           const prog = courses[course.id];
           const lessonsDone = prog
             ? Object.keys(prog.completedLessons).length
@@ -50,6 +51,9 @@ export default function CoursesScreen() {
                 <Text style={styles.langName}>{name}</Text>
                 <Text style={styles.meta}>
                   {t("courses.meta", { done: lessonsDone, total: course.lessonCount, units: course.unitCount })}
+                </Text>
+                <Text style={styles.meta}>
+                  {t("courses.nativeLine", { language: languageName(course.nativeCode, course.nativeLanguage) })}
                 </Text>
               </View>
               {active ? <Text style={styles.activeBadge}>{t("courses.active")}</Text> : null}

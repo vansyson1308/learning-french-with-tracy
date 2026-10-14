@@ -398,7 +398,7 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
     useProgress.setState({
       activeCourseId: "fr-en",
       dailyXp: 10,
-      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
+      assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 0 } },
       courses: {
         "fr-en": {
           xp: 42,
@@ -430,7 +430,7 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
 
   test('"start from the beginning" stores the result with floor 0', () => {
     useProgress.setState({
-      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
+      assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 0 } },
     } as never);
     useProgress.getState().setPlacementResult(result, 0);
     const s = assessmentFor(useProgress.getState(), "fr-en");
@@ -440,7 +440,7 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
 
   test("resetPlacement clears the floor but keeps the record (§86)", () => {
     useProgress.setState({
-      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 20, placement: result } },
+      assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 20, placement: result } },
     } as never);
     useProgress.getState().resetPlacement();
     const s = assessmentFor(useProgress.getState(), "fr-en");
@@ -450,7 +450,7 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
 
   test("a hostile floor value never persists (finite, non-negative, integer)", () => {
     useProgress.setState({
-      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
+      assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 0 } },
     } as never);
     useProgress.getState().setPlacementResult(result, Number.NaN);
     expect(assessmentFor(useProgress.getState(), "fr-en").placementFloor).toBe(0);

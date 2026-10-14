@@ -24,11 +24,11 @@
         "themePreference",
         "activeDays",
         "courses",
-        "assessmentByCourse",
-        "uiLanguage"
+        "uiLanguage",
+        "assessmentByTarget"
       ]
     },
-    "persistVersion": 4
+    "persistVersion": 5
   },
   "fromVersion": 0,
   "invariants": [],
@@ -41,7 +41,7 @@
         "xp": 15
       }
     },
-    "assessmentByCourse": {},
+    "assessmentByTarget": {},
     "courses": {
       "es-en": {
         "completedLessons": {
@@ -92,7 +92,7 @@
           "xp": 15
         }
       },
-      "assessmentByCourse": {},
+      "assessmentByTarget": {},
       "courses": {
         "es-en": {
           "completedLessons": {
@@ -128,5 +128,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 4
+  "toVersion": 5
 }

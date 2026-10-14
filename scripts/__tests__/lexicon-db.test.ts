@@ -26,7 +26,7 @@ import { loadRegistry, removeTempDirSync, safeResolve } from "../lib/pipeline";
 const lexicon = loadRichLexicon("fr");
 const manifest = loadSourceManifest("fr");
 const registry = loadRegistry();
-const contentHash = lexiconContentHash(lexicon, manifest, registry);
+const contentHash = lexiconContentHash(lexicon, manifest, registry, "en");
 const committedPath = safeResolve(`assets/lexicon/${dbAssetName("fr", contentHash)}`);
 const BUILD = { plugin: buildPlugin("fr"), nativeCode: "en" };
 
@@ -174,10 +174,10 @@ describe("build determinism (logical-dump contract)", () => {
 
   test("the content hash is derived from source data, not the binary", () => {
     // Recomputing from the same in-memory sources is stable.
-    expect(lexiconContentHash(lexicon, manifest, registry)).toBe(contentHash);
+    expect(lexiconContentHash(lexicon, manifest, registry, "en")).toBe(contentHash);
     // And it responds to source changes.
     const mutated = structuredClone(lexicon);
     mutated.lexemes[0].glosses = { en: "the mutant" };
-    expect(lexiconContentHash(mutated, manifest, registry)).not.toBe(contentHash);
+    expect(lexiconContentHash(mutated, manifest, registry, "en")).not.toBe(contentHash);
   });
 });

@@ -32,11 +32,11 @@ describe("migration + backup goldens", () => {
     });
   }
 
-  test("every intermediate version of v0-rich (v1, v2, v3, v4)", () => {
+  test("every intermediate version of v0-rich (v1, v2, v3, v4, v5)", () => {
     const fixture = fixtureFor("v0-rich");
     expectGolden(
       "migrations/v0-rich.steps",
-      [1, 2, 3, 4].map((to) => ({ to, state: migrateProgress(fixtureFor("v0-rich").state, fixture.version, NOW, to) }))
+      [1, 2, 3, 4, 5].map((to) => ({ to, state: migrateProgress(fixtureFor("v0-rich").state, fixture.version, NOW, to) }))
     );
   });
 });

@@ -60,29 +60,55 @@ export const DB_SCHEMA_VERSION = 3;
  */
 export const DB_BUILD_REVISION = 3;
 
+/**
+ * The lexicon as seen from ONE native language: `glosses` and example
+ * `translations` keep only that native code's text. The content hash is
+ * taken over this view (P2b), so adding a translation for another native
+ * language never changes the asset of an existing course — the French
+ * database for `fr-en` stays byte-identical when `vi` glosses are added.
+ */
+export function lexiconNativeView(lexicon: RichLexicon, nativeCode: string): RichLexicon {
+  const pick = (map: Record<string, string>): Record<string, string> =>
+    nativeCode in map ? { [nativeCode]: map[nativeCode] } : {};
+  return {
+    ...lexicon,
+    lexemes: lexicon.lexemes.map((lex) => ({
+      ...lex,
+      glosses: pick(lex.glosses),
+      examples: lex.examples.map((ex) => ({ ...ex, translations: pick(ex.translations) })),
+    })),
+  };
+}
+
 export function lexiconContentHash(
   lexicon: RichLexicon,
   manifest: SourceManifest | null,
-  registry: SourceRegistry
+  registry: SourceRegistry,
+  nativeCode: string
 ): string {
   const referenced = referencedSources(lexicon, registry);
   const input = canonicalJson({
     dbSchemaVersion: DB_SCHEMA_VERSION,
     dbBuildRevision: DB_BUILD_REVISION,
-    lexicon,
+    lexicon: lexiconNativeView(lexicon, nativeCode),
     sourceSha256: manifest?.retrieval.sha256 ?? null,
     sources: referenced,
   });
   return createHash("sha256").update(input).digest("hex").slice(0, 16);
 }
 
-export function dbAssetName(lang: string, contentHash: string): string {
-  return `${lang}-lexicon-v${DB_SCHEMA_VERSION}-${contentHash}.db`;
+/**
+ * `<prefix>-lexicon-v<n>-<hash>.db`. The prefix is the target language for
+ * the target's primary native language and the COURSE id (`fr-vi`) for a
+ * secondary native language (P2b): one database per (target, native).
+ */
+export function dbAssetName(prefix: string, contentHash: string): string {
+  return `${prefix}-lexicon-v${DB_SCHEMA_VERSION}-${contentHash}.db`;
 }
 
-/** `<lang>-lexicon-v<n>-<hash>.db` → lang, or undefined for a foreign file. */
+/** `<prefix>-lexicon-v<n>-<hash>.db` → prefix (`fr` or `fr-vi`), or undefined for a foreign file. */
 export function dbAssetLanguage(fileName: string): string | undefined {
-  return /^([a-z]{2,3})-lexicon-v\d+-[0-9a-f]{16}\.db$/.exec(fileName)?.[1];
+  return /^([a-z]{2,3}(?:-[a-z]{2,3})?)-lexicon-v\d+-[0-9a-f]{16}\.db$/.exec(fileName)?.[1];
 }
 
 /** Registry entries actually referenced by lexicon data, sorted by id. */
@@ -539,24 +565,28 @@ export function compileLexiconArtifacts(input: {
   nativeCode: string;
   /** src/content or the test-only root. */
   artifactRoot: string;
-  /** content/reports or content/reports/<lang>. */
-  reportsDir: string;
+  /** content/reports or content/reports/<lang>; null = a secondary native language (no reports). */
+  reportsDir: string | null;
+  /** Artifact file prefix: the language code (primary native) or the course id (secondary native). */
+  artifactPrefix?: string;
 }): { contentHash: string; files: Array<{ relPath: string; contents: string }> } {
   const { lexicon, manifest, registry, nativeCode, artifactRoot, reportsDir } = input;
   const lang = lexicon.language;
-  const contentHash = lexiconContentHash(lexicon, manifest, registry);
+  const prefix = input.artifactPrefix ?? lang;
+  const contentHash = lexiconContentHash(lexicon, manifest, registry, nativeCode);
   const audit = committedSourceAudit(lexicon, manifest);
-  return {
-    contentHash,
-    files: [
-      {
-        relPath: `${artifactRoot}/lexicon/${lang}-index.json`,
-        contents: canonicalJson({ contentHash, ...buildRuntimeIndex(lexicon, lang, nativeCode) }),
-      },
-      {
-        relPath: `${artifactRoot}/lexicon/${lang}-web-fallback.json`,
-        contents: canonicalJson(buildWebFallback(lexicon, registry, contentHash, lang, nativeCode)),
-      },
+  const files: Array<{ relPath: string; contents: string }> = [
+    {
+      relPath: `${artifactRoot}/lexicon/${prefix}-index.json`,
+      contents: canonicalJson({ contentHash, ...buildRuntimeIndex(lexicon, lang, nativeCode) }),
+    },
+    {
+      relPath: `${artifactRoot}/lexicon/${prefix}-web-fallback.json`,
+      contents: canonicalJson(buildWebFallback(lexicon, registry, contentHash, lang, nativeCode)),
+    },
+  ];
+  if (reportsDir !== null) {
+    files.push(
       {
         relPath: `${reportsDir}/lexicon-quality.json`,
         contents: canonicalJson(buildQualityReport(lexicon, manifest, contentHash, audit)),
@@ -564,14 +594,17 @@ export function compileLexiconArtifacts(input: {
       {
         relPath: `${reportsDir}/lexicon-source-audit.json`,
         contents: canonicalJson(buildSourceAuditReport(audit)),
-      },
-    ],
-  };
+      }
+    );
+  }
+  return { contentHash, files };
 }
 
 /** Everything the SQLite build of one language needs. */
 export type LexiconDbPlan = {
   lang: string;
+  /** `fr` (primary native) or the course id `fr-vi` (secondary native). */
+  assetPrefix: string;
   name: string;
   contentHash: string;
   lexicon: RichLexicon;
@@ -584,11 +617,14 @@ export function lexiconDbPlan(input: {
   contentHash: string;
   nativeCode: string;
   testOnly: boolean;
+  assetPrefix?: string;
 }): LexiconDbPlan {
   const lang = input.lexicon.language;
+  const assetPrefix = input.assetPrefix ?? lang;
   return {
     lang,
-    name: dbAssetName(lang, input.contentHash),
+    assetPrefix,
+    name: dbAssetName(assetPrefix, input.contentHash),
     contentHash: input.contentHash,
     lexicon: input.lexicon,
     options: { plugin: buildPlugin(lang), nativeCode: input.nativeCode },

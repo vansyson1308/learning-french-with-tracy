@@ -16,7 +16,9 @@ import {
   LEARNER_SCHEMA_VERSION,
   emptyLearnerData,
   logRefOf,
+  normalizeLearnerCards,
   sameLogRef,
+  targetCodeOfCourse,
   type CourseLearnerSlice,
   type LearnerBatch,
   type LearnerData,
@@ -45,11 +47,19 @@ export class JsonLearnerStore implements LearnerStore {
     const raw = await this.storage.getItem(this.key);
     if (!raw) return emptyDocument();
     const parsed = JSON.parse(raw) as Partial<Document>;
-    return {
-      cards: parsed.cards && typeof parsed.cards === "object" ? parsed.cards : {},
+    const meta = parsed.meta && typeof parsed.meta === "object" ? parsed.meta : emptyDocument().meta;
+    const rawCards = parsed.cards && typeof parsed.cards === "object" ? parsed.cards : {};
+    // Schema v1 (P1d) keyed cards by course; v2 (P2b) keys them by target
+    // language. Re-key on read (newest evidence wins) and persist the
+    // upgraded document once.
+    const upgrade = meta[LEARNER_META.schemaVersion] !== String(LEARNER_SCHEMA_VERSION);
+    const doc: Document = {
+      cards: upgrade ? normalizeLearnerCards(rawCards) : rawCards,
       reviewLog: Array.isArray(parsed.reviewLog) ? parsed.reviewLog : [],
-      meta: parsed.meta && typeof parsed.meta === "object" ? parsed.meta : emptyDocument().meta,
+      meta: upgrade ? { ...meta, [LEARNER_META.schemaVersion]: String(LEARNER_SCHEMA_VERSION) } : meta,
     };
+    if (upgrade) await this.write(doc);
+    return doc;
   }
 
   private async write(doc: Document): Promise<void> {
@@ -59,12 +69,12 @@ export class JsonLearnerStore implements LearnerStore {
   async loadCourse(courseId: string, logWindow = LEARNER_LOG_WINDOW): Promise<CourseLearnerSlice> {
     const doc = await this.read();
     const mine = doc.reviewLog.filter((e) => e.courseId === courseId);
-    return { cards: { ...(doc.cards[courseId] ?? {}) }, reviewLog: mine.slice(Math.max(0, mine.length - logWindow)) };
+    return { cards: { ...(doc.cards[targetCodeOfCourse(courseId)] ?? {}) }, reviewLog: mine.slice(Math.max(0, mine.length - logWindow)) };
   }
 
   async commit(batch: LearnerBatch): Promise<void> {
     const doc = await this.read();
-    for (const u of batch.cardUpserts) (doc.cards[u.courseId] ??= {})[u.cardKey] = u.card;
+    for (const u of batch.cardUpserts) (doc.cards[targetCodeOfCourse(u.courseId)] ??= {})[u.cardKey] = u.card;
     const known = doc.reviewLog.map(logRefOf);
     const appended: ReviewLogEntry[] = [];
     for (const e of batch.logAppends) {
@@ -94,7 +104,7 @@ export class JsonLearnerStore implements LearnerStore {
 
   async replaceAll(data: LearnerData): Promise<void> {
     const doc = await this.read();
-    await this.write({ cards: data.cards, reviewLog: data.reviewLog, meta: doc.meta });
+    await this.write({ cards: normalizeLearnerCards(data.cards), reviewLog: data.reviewLog, meta: doc.meta });
   }
 
   async getMeta(key: string): Promise<string | null> {

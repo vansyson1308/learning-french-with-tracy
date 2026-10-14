@@ -123,7 +123,7 @@ for (const [name, open] of STORES) {
       const store = await open();
       await store.commit(batch);
       const data = await store.exportAll();
-      expect(Object.keys(data.cards).sort()).toEqual(["es-en", "fr-en"]);
+      expect(Object.keys(data.cards).sort()).toEqual(["es", "fr"]);
       expect(data.reviewLog.map((e) => e.at)).toEqual([10, 20, 30]);
       const other = await open();
       await other.replaceAll(data);
@@ -137,7 +137,7 @@ for (const [name, open] of STORES) {
       expect(await store.getMeta("blobImportedAt")).toBeNull();
       await store.setMeta("blobImportedAt", "2026-10-15");
       expect(await store.getMeta("blobImportedAt")).toBe("2026-10-15");
-      expect(await store.getMeta("schemaVersion")).toBe("1");
+      expect(await store.getMeta("schemaVersion")).toBe("2");
     });
   });
 }
@@ -186,5 +186,79 @@ describe("pending-batch merge rules", () => {
     expect(rest.cardUpserts.map((u) => u.cardKey)).toEqual(["j|recognize"]);
     expect(rest.logAppends.map((e) => e.at)).toEqual([6]);
     expect(subtractBatch(committed, committed)).toEqual(emptyBatch());
+  });
+});
+
+/**
+ * P2b (decision D-4): cards are shared per TARGET language. A review in
+ * `fr-vi` updates the card `fr-en` sees; the log keeps each course's own
+ * entries; a v1 (course-keyed) SQLite schema and a v1 JSON document are
+ * re-keyed on open with the newest evidence winning.
+ */
+describe("cards shared per target language (D-4)", () => {
+  for (const [name, open] of STORES) {
+    test(`${name}: a card written through fr-vi is the card fr-en loads, and vice versa`, async () => {
+      const store = await open();
+      await store.commit({ ...emptyBatch(), cardUpserts: [{ courseId: "fr-en", cardKey: "fr:w:chat|recognize", card: card(1000, 1) }] });
+      await store.commit({ ...emptyBatch(), cardUpserts: [{ courseId: "fr-vi", cardKey: "fr:w:chat|recognize", card: card(5000, 2) }], logAppends: [entry("fr-vi", 50, "fr:w:chat|recognize")] });
+      const viewFromEn = await store.loadCourse("fr-en");
+      const viewFromVi = await store.loadCourse("fr-vi");
+      expect(viewFromEn.cards["fr:w:chat|recognize"].reps).toBe(2);
+      expect(viewFromVi.cards["fr:w:chat|recognize"].reps).toBe(2);
+      // The log stays per course (provenance / undo).
+      expect(viewFromEn.reviewLog.length).toBe(0);
+      expect(viewFromVi.reviewLog.length).toBe(1);
+      const all = await store.exportAll();
+      expect(Object.keys(all.cards)).toEqual(["fr"]);
+      expect((await store.counts()).cards).toBe(1);
+    });
+
+    test(`${name}: replaceAll with a pre-P2b (course-keyed) backup re-keys by target, newest evidence wins`, async () => {
+      const store = await open();
+      await store.replaceAll({
+        cards: {
+          "fr-en": { "fr:w:chat|recognize": { ...card(1000, 1), last_review: 1000 } },
+          "fr-vi": { "fr:w:chat|recognize": { ...card(2000, 3), last_review: 2000 }, "fr:w:pain|recognize": card(1) },
+        },
+        reviewLog: [],
+      });
+      const all = await store.exportAll();
+      expect(Object.keys(all.cards)).toEqual(["fr"]);
+      expect(all.cards.fr["fr:w:chat|recognize"].reps).toBe(3);
+      expect(Object.keys(all.cards.fr).sort()).toEqual(["fr:w:chat|recognize", "fr:w:pain|recognize"]);
+    });
+  }
+
+  test("sqlite: a v1 schema (course-keyed cards table) migrates in place on open", async () => {
+    const db = new Database(":memory:");
+    const exec = bunSqliteExecutor(db);
+    await exec.run(`CREATE TABLE meta (key TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)`);
+    await exec.run(`INSERT INTO meta (key, value) VALUES ('schemaVersion', '1')`);
+    await exec.run(`CREATE TABLE cards (course_id TEXT NOT NULL, item_id TEXT NOT NULL, skill TEXT NOT NULL, state_json TEXT NOT NULL, due INTEGER NOT NULL, updated_at INTEGER NOT NULL, PRIMARY KEY (course_id, item_id, skill))`);
+    await exec.run(`INSERT INTO cards VALUES ('fr-en', 'fr:w:chat', 'recognize', ?, 1000, 10)`, [JSON.stringify(card(1000, 1))]);
+    await exec.run(`INSERT INTO cards VALUES ('fr-vi', 'fr:w:chat', 'recognize', ?, 2000, 20)`, [JSON.stringify(card(2000, 4))]);
+    await exec.run(`INSERT INTO cards VALUES ('es-en', 'el gato', 'recognize', ?, 3000, 30)`, [JSON.stringify(card(3000, 1))]);
+    const store = new SqlLearnerStore(exec);
+    await store.init();
+    expect(await store.getMeta("schemaVersion")).toBe("2");
+    const all = await store.exportAll();
+    expect(Object.keys(all.cards).sort()).toEqual(["es", "fr"]);
+    expect(all.cards.fr["fr:w:chat|recognize"].reps).toBe(4); // the newer write (updated_at 20) won
+    expect((await store.counts()).cards).toBe(2);
+    // Idempotent: a second init leaves everything as is.
+    await store.init();
+    expect((await store.counts()).cards).toBe(2);
+  });
+
+  test("json: a v1 document (course-keyed) is re-keyed on first read and persisted as v2", async () => {
+    const kv = new Map<string, string>();
+    const storage = { getItem: async (k: string) => kv.get(k) ?? null, setItem: async (k: string, v: string) => void kv.set(k, v) };
+    kv.set("learner-v4", JSON.stringify({ cards: { "fr-en": { "fr:w:chat|recognize": card(1000, 1) }, "fr-vi": { "fr:w:pain|listen": card(1) } }, reviewLog: [], meta: { schemaVersion: "1" } }));
+    const store = new JsonLearnerStore(storage);
+    const slice = await store.loadCourse("fr-vi");
+    expect(Object.keys(slice.cards).sort()).toEqual(["fr:w:chat|recognize", "fr:w:pain|listen"]);
+    const written = JSON.parse(kv.get("learner-v4") as string);
+    expect(written.meta.schemaVersion).toBe("2");
+    expect(Object.keys(written.cards)).toEqual(["fr"]);
   });
 });

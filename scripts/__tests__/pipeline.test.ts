@@ -113,7 +113,10 @@ describe("compiler: round-trip and determinism", () => {
     expect(byPath.has("src/content/packs/xx-en.json")).toBe(false);
     const catalog = JSON.parse(byPath.get("src/content/catalog.json")!) as { courses: { id: string; nativeCode: string }[] };
     expect(catalog.courses.map((c) => c.id)).not.toContain("xx-en");
-    expect(catalog.courses.every((c) => c.nativeCode === "en")).toBe(true);
+    // P2b: the catalogue carries one course per (target, native) — French
+    // is explained in English and in Vietnamese; nothing else has a second
+    // native language yet.
+    expect(catalog.courses.filter((c) => c.nativeCode !== "en").map((c) => c.id)).toEqual(["fr-vi"]);
   });
 
   test("compiling twice yields identical bytes (deterministic)", () => {
@@ -156,8 +159,11 @@ describe("compiler: round-trip and determinism", () => {
     expect(fr.byType["dictation"]).toEqual({ total: 7, withGradeTargets: 0 });
     // Only languages with a stable-id registry ever get gradeTargets: the
     // legacy packs none, the synthetic test language its two mapped words.
+    // The Vietnamese-native French course is the same curriculum: identical
+    // grade-target coverage (P2b).
+    expect(coverage["fr-vi"]).toEqual(fr);
     for (const [courseId, row] of Object.entries(coverage)) {
-      if (courseId === "fr-en") continue;
+      if (courseId === "fr-en" || courseId === "fr-vi") continue;
       expect({ courseId, targets: row.withGradeTargets }).toEqual({ courseId, targets: courseId === "xx-en" ? 2 : 0 });
     }
   });

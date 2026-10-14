@@ -51,6 +51,7 @@ export type MessageKey =
   | "courses.active"
   | "courses.cardLabel"
   | "courses.meta"
+  | "courses.nativeLine"
   | "courses.subtitle"
   | "courses.title"
   | "domain.interaction"
@@ -447,4 +448,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 445;
+export const MESSAGE_KEY_COUNT = 446;

@@ -7,19 +7,20 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
-import { catalog, orderedCourses } from "@/lib/content";
+import { catalog, orderedCoursesFor } from "@/lib/content";
 import { courseProfile } from "@/lib/course-profile";
 import { DAILY_GOAL_OPTIONS, DEFAULT_COURSE, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export default function OnboardingScreen() {
   const styles = useStyles();
-  const { t, languageName } = useT();
+  const { t, lang, languageName } = useT();
+  const courses = orderedCoursesFor(lang);
   const finishOnboarding = useProgress((s) => s.finishOnboarding);
   const [courseId, setCourseId] = useState(
     catalog.courses.some((c) => c.id === DEFAULT_COURSE)
       ? DEFAULT_COURSE
-      : (orderedCourses[0]?.id ?? DEFAULT_COURSE)
+      : (courses[0]?.id ?? DEFAULT_COURSE)
   );
   const [goal, setGoal] = useState<number>(20);
 
@@ -41,7 +42,7 @@ export default function OnboardingScreen() {
 
         <Text style={styles.sectionLabel}>{t("onboarding.wantToLearn")}</Text>
         <View style={styles.langGrid}>
-          {orderedCourses.map((course) => (
+          {courses.map((course) => (
             <Pressable
               key={course.id}
               onPress={() => setCourseId(course.id)}
@@ -62,6 +63,9 @@ export default function OnboardingScreen() {
               </Text>
               <Text style={styles.langMeta}>
                 {t("onboarding.courseMeta", { units: course.unitCount, lessons: course.lessonCount })}
+              </Text>
+              <Text style={styles.langMeta}>
+                {t("courses.nativeLine", { language: languageName(course.nativeCode, course.nativeLanguage) })}
               </Text>
             </Pressable>
           ))}

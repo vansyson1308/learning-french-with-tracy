@@ -122,7 +122,7 @@ export function freshCompile(): FreshCompile {
     for (const plan of compiled.lexiconDbs) {
       const fresh = path.join(tempDir, plan.name);
       buildSqliteDb(fresh, plan.lexicon, registry, plan.contentHash, plan.options);
-      lexiconDbs[plan.lang] = { name: plan.name, logicalDumpSha256: sha256(logicalDump(fresh)) };
+      lexiconDbs[plan.assetPrefix] = { name: plan.name, logicalDumpSha256: sha256(logicalDump(fresh)) };
     }
     return { files, lexiconDbs };
   } finally {

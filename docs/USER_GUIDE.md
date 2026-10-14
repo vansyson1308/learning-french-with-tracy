@@ -15,11 +15,11 @@ The app needs about 150 MB of storage and no permissions to install. The only pe
 
 ## 3. First launch
 
-The first screen asks which course you want. French is the course this app is built around and is already selected; keep it (or tap another course). Then pick a **Daily XP goal** — 10, 20, 30 or 50 XP (a lesson is worth 15 XP, 20 when perfect) — and tap **Learn French** (the button names the course you selected). You land on the **Learn** tab. You can change the course later from Profile → Learning → **Switch**.
+The first screen asks which course you want. French is the course this app is built around and comes in two editions: one explained in English (`fr-en`) and one explained in Vietnamese (`fr-vi`) — same French words, audio, lessons and checks, different explanation language; each card says which ("Explained in …"). The edition explained in your app language is listed first and already selected; keep it (or tap another course). Then pick a **Daily XP goal** — 10, 20, 30 or 50 XP (a lesson is worth 15 XP, 20 when perfect) — and tap **Learn French** (the button names the course you selected). You land on the **Learn** tab. You can change the course later from Profile → Learning → **Switch**.
 
 ## 4. Choosing French
 
-French is the only course with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. The other courses offer the learning path, practice of mistakes and word review.
+French is the only course with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. Both French editions have it. Your French memory is shared between them: a word you review in one edition is the same memory card in the other, and the starting-point check and checkpoint results carry over — only lesson completion and XP are counted per edition. The other courses offer the learning path, practice of mistakes and word review.
 
 ## 5. Starting-point check (placement)
 

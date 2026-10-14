@@ -76,6 +76,12 @@ export type CourseProfile = {
   legacyIdPrefix: string;
   capabilities: CourseCapabilities;
   artifacts: CourseArtifactPaths;
+  /**
+   * The course whose pack-audio manifest entries this course plays (P2b):
+   * set only for a course in a secondary native language — the audio is
+   * the target language's, recorded once for the primary course.
+   */
+  audioCourseId?: string;
 };
 
 export const NO_CAPABILITIES: CourseCapabilities = {

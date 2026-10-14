@@ -167,6 +167,6 @@ describe("soak: fifty heavy days through the real store", () => {
     if (!staged.ok) return;
     expect(staged.state.courses["fr-en"].xp).toBe(before.courses["fr-en"].xp);
     expect(staged.learner.reviewLog.length).toBe(before.reviewLog.length);
-    expect(Object.keys(staged.learner.cards["fr-en"] ?? {}).length).toBe(Object.keys(before.courses["fr-en"].cards ?? {}).length);
+    expect(Object.keys(staged.learner.cards["fr"] ?? {}).length).toBe(Object.keys(before.courses["fr-en"].cards ?? {}).length);
   });
 });

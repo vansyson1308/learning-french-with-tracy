@@ -36,7 +36,10 @@ if (!browserPath) {
   process.exit(2);
 }
 
-const pack = JSON.parse(readFileSync("src/content/packs/fr-en.json", "utf8"));
+// P2b: the course under test — `fr-en` by default, `fr-vi` for the Vietnamese lane
+// (same curriculum, Vietnamese explanations; everything below reads the pack).
+const COURSE = process.env.E2E_COURSE ?? "fr-en";
+const pack = JSON.parse(readFileSync(`src/content/packs/${COURSE}.json`, "utf8"));
 const sectionTitles = pack.sections.map((s) => s.title);
 const lessonsById = new Map();
 for (const s of pack.sections) for (const u of s.units) for (const l of u.lessons) lessonsById.set(l.id, { lesson: l, unit: u });
@@ -139,7 +142,7 @@ try {
     await see(t("onboarding.dailyGoal"));
     let chips = 0;
     for (const g of [10, 20, 30, 50]) if (await visible(byId(`onboarding-goal-${g}`))) chips++;
-    await byId("onboarding-course-fr-en").click();
+    await byId(`onboarding-course-${COURSE}`).click();
     const button = byId("onboarding-start");
     const label = (await button.textContent())?.trim();
     const expected = t("onboarding.learn", { language: FR });
@@ -208,7 +211,7 @@ try {
 
   // ---- §8 lesson flow -------------------------------------------------------
   await attempt(8, "Lesson flow — Check, I don't know reveals the answer, Continue", async () => {
-    await go("/lesson/fr-en:u0-l0");
+    await go(`/lesson/${COURSE}:u0-l0`);
     await see(t("common.check"), { exact: true });
     const dontKnow = await byId("session-idk").count();
     const option = byId("option-card");
@@ -269,7 +272,7 @@ try {
 
   // ---- §15 §16 §17 speaking ------------------------------------------------
   await attempt(15, "Speaking — a Section 4 lesson shows the honest no-recognizer escape on web", async () => {
-    await go("/lesson/fr-en:uk-l0");
+    await go(`/lesson/${COURSE}:uk-l0`);
     const step = await stepThrough(async () => (await visible(byId("speak-skip").first())) || (await visible(byId("speak-blocked").first())));
     if (step < 0) throw new Error("no speaking step reached");
     const escape = (await visible(byId("speak-skip").first())) ? t("ex.skipStep") : "unavailable notice";

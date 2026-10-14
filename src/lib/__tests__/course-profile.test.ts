@@ -48,9 +48,28 @@ describe("courseProfile", () => {
     ]);
   });
 
+  test("fr-vi (P2b) mirrors the French capabilities with its own native-dependent artifacts", () => {
+    const fr = courseProfile("fr-en");
+    const vi = courseProfile("fr-vi");
+    expect(vi.nativeCode).toBe("vi");
+    expect(vi.capabilities).toEqual(fr.capabilities);
+    expect(vi.idPrefix).toBe(fr.idPrefix);
+    expect(Object.keys(vi.artifacts).sort()).toEqual(Object.keys(fr.artifacts).sort());
+    // Native-dependent artifacts are the course's own; target-level ones are shared.
+    expect(vi.artifacts.lexiconDb).toMatch(/^assets\/lexicon\/fr-vi-lexicon-v\d+-[0-9a-f]{16}\.db$/);
+    expect(vi.artifacts.lexiconDb).not.toBe(fr.artifacts.lexiconDb);
+    expect(vi.artifacts.placement).toBe("src/content/assessment/fr-vi-placement.json");
+    expect(vi.artifacts.ids).toBe(fr.artifacts.ids);
+    expect(vi.artifacts.listening).toBe(fr.artifacts.listening);
+    expect(vi.artifacts.claim).toBe(fr.artifacts.claim);
+    // Pack audio is the target language's, recorded once for the primary course.
+    expect(vi.audioCourseId).toBe("fr-en");
+    expect(fr.audioCourseId).toBeUndefined();
+  });
+
   test("every inherited course has no rich capability and no artifacts", () => {
     for (const course of catalog.courses) {
-      if (course.id === "fr-en") continue;
+      if (course.id === "fr-en" || course.id === "fr-vi") continue;
       const p = courseProfile(course.id);
       for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
       expect(p.artifacts).toEqual({});

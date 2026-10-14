@@ -1105,11 +1105,21 @@ export type AttainmentPolicy = z.infer<typeof AttainmentPolicySchema>;
  * (checkpoints don't touch lexical FSRS), and item ids/versions are stable
  * so stored attempts stay interpretable (§66, §123).
  */
+/**
+ * P2b: the exercise payload is authored in ONE native language (the
+ * document's `exerciseNativeCode`); every other native language a course of
+ * this target uses supplies the same native-language fields (see
+ * scripts/lib/native-fields.ts) as a dot-path → text overlay. The compiler
+ * applies the overlay for that course and fails closed on a missing path.
+ */
+export const ExerciseNativeOverlaySchema = z.record(languageCode, z.record(z.string().min(1), z.string().min(1)));
+
 export const checkpointItemSchema = (lang: string) =>
   z.strictObject({
     id: assessmentItemId(lang),
     itemVersion: z.number().int().min(1),
     exercise: exerciseSchemas(lang).ExerciseSchema,
+    exerciseNative: ExerciseNativeOverlaySchema.optional(),
     objectiveTargets: z.array(objectiveId(lang)).min(1),
     /** Items assessing an essential objective the blueprint counts on. */
     essential: z.boolean(),
@@ -1173,6 +1183,8 @@ export const checkpointsSchema = (lang: string) =>
   z.strictObject({
     version: z.literal(1),
     language: languageCode,
+    /** Native language of the plain exercise payloads (P2b); other native languages come from `exerciseNative`. */
+    exerciseNativeCode: languageCode.default("en"),
     checkpoints: z.array(checkpointSchema(lang)).min(1),
   });
 export const CheckpointsSchema = checkpointsSchema(ANY_LANGUAGE);
@@ -1187,6 +1199,7 @@ export const placementItemSchema = (lang: string) =>
     id: placementItemId(lang),
     itemVersion: z.number().int().min(1),
     exercise: exerciseSchemas(lang).ExerciseSchema,
+    exerciseNative: ExerciseNativeOverlaySchema.optional(),
     objectiveTargets: z.array(objectiveId(lang)).min(1),
   });
 export const PlacementItemSchema = placementItemSchema(ANY_LANGUAGE);
@@ -1226,6 +1239,7 @@ export const placementSchema = (lang: string) =>
   z.strictObject({
     version: z.literal(1),
     language: languageCode,
+    exerciseNativeCode: languageCode.default("en"),
     placementVersion: z.number().int().min(1),
     /**
      * Worst-case item budget. Raised 22 → 28 for placement v3's OPTIONAL

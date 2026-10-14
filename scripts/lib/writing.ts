@@ -30,6 +30,7 @@ import {
 } from "../../src/lib/writing/rubric";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeRubric, localizeWritingTask, type LocalizedWritingTask } from "./native-text";
+import { localizeAssessmentItem } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export function writingSourcePath(lang: string): string {
@@ -371,7 +372,20 @@ export function validateWriting(input: {
  * Writing exercises inside scored banks (checkpoints + placement) of a
  * language; used by callers as validateWriting's assessmentWriting input.
  */
-export function assessmentBankWritingExercises(lang: string): WritingExercise[] {
+/** The overlay-applied exercise of an assessment item, or null when the overlay is missing (reported by the overlay validator). */
+export function localizedBankExercise<T extends { type: string }>(
+  item: { id: string; exercise: T; exerciseNative?: Record<string, Record<string, string>> },
+  docNative: string,
+  nativeCode: string
+): T | null {
+  try {
+    return localizeAssessmentItem(item as { id: string; exercise: Record<string, unknown>; exerciseNative?: Record<string, Record<string, string>> }, docNative, nativeCode).exercise as T;
+  } catch {
+    return null;
+  }
+}
+
+export function assessmentBankWritingExercises(lang: string, nativeCode?: string): WritingExercise[] {
   const out: WritingExercise[] = [];
   const push = (exercise: { type: string }) => {
     if (exercise.type === "guidedWriting" || exercise.type === "simpleForm") {
@@ -381,10 +395,16 @@ export function assessmentBankWritingExercises(lang: string): WritingExercise[] 
   const checkpointsRel = `content/${lang}/assessment/checkpoints.json`;
   if (existsSync(safeResolve(checkpointsRel))) {
     const checkpoints = readJson(checkpointsRel) as {
-      checkpoints?: { items: { exercise: { type: string } }[] }[];
+      exerciseNativeCode?: string;
+      checkpoints?: { items: { id: string; exercise: { type: string }; exerciseNative?: Record<string, Record<string, string>> }[] }[];
     };
+    // P2b: the bank in a secondary native language is the overlay-applied payload.
+    const docNative = checkpoints.exerciseNativeCode ?? "en";
     for (const checkpoint of checkpoints.checkpoints ?? []) {
-      for (const item of checkpoint.items) push(item.exercise);
+      for (const item of checkpoint.items) {
+        const localized = nativeCode === undefined || nativeCode === docNative ? item.exercise : localizedBankExercise(item, docNative, nativeCode);
+        if (localized) push(localized);
+      }
     }
   }
   const placementRel = `content/${lang}/assessment/placement.json`;

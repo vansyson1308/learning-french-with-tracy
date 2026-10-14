@@ -334,7 +334,7 @@ describe("store: recordCheckpointAttempt mutates assessment state ONLY (§56-59,
     useProgress.setState({
       activeCourseId: "fr-en",
       dailyXp: 10,
-      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
+      assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 0 } },
       courses: {
         "fr-en": {
           xp: 42,
@@ -371,7 +371,7 @@ describe("store: recordCheckpointAttempt mutates assessment state ONLY (§56-59,
 
   test("retakes append and retention caps per checkpoint without dropping the latest", () => {
     useProgress.setState({
-      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
+      assessmentByTarget: { fr: { checkpointAttempts: [], placementFloor: 0 } },
     } as never);
     for (let i = 0; i < 8; i++) {
       useProgress.getState().recordCheckpointAttempt({

@@ -15,8 +15,36 @@
 import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 
-/** courseId → serialized CardKey → card. */
+/**
+ * Course ids are `<target>-<native>`; FSRS cards are shared per TARGET
+ * language (decision D-4, P2b): a review of `fr:w:chat` in `fr-vi` updates
+ * the card `fr-en` sees. A key without a dash is already a target code.
+ */
+export function targetCodeOfCourse(courseId: string): string {
+  const at = courseId.indexOf("-");
+  return at > 0 ? courseId.slice(0, at) : courseId;
+}
+
+/** targetCode → serialized CardKey → card (course-keyed maps from pre-P2b data are re-keyed on read). */
 export type LearnerCards = Record<string, Record<string, FsrsCardState>>;
+
+/** Prefer the card with the most recent evidence when two course maps of one target collide (pre-P2b data). */
+function newerCard(a: FsrsCardState, b: FsrsCardState): FsrsCardState {
+  return (b.last_review ?? b.due) > (a.last_review ?? a.due) ? b : a;
+}
+
+/** Re-key course-keyed card maps (`fr-en` → `fr`); target-keyed maps pass through unchanged. */
+export function normalizeLearnerCards(cards: LearnerCards): LearnerCards {
+  const out: LearnerCards = {};
+  for (const [key, byKey] of Object.entries(cards)) {
+    const target = targetCodeOfCourse(key);
+    const bucket = (out[target] ??= {});
+    for (const [cardKey, card] of Object.entries(byKey ?? {})) {
+      bucket[cardKey] = bucket[cardKey] ? newerCard(bucket[cardKey], card) : card;
+    }
+  }
+  return out;
+}
 
 /** Everything the learner store holds — the backup's `learner` section. */
 export type LearnerData = {
@@ -135,4 +163,5 @@ export const LEARNER_META = {
   blobImportedAt: "blobImportedAt",
 } as const;
 
-export const LEARNER_SCHEMA_VERSION = 1;
+/** 2 (P2b): cards keyed by target language; 1 (P1d): cards keyed by course. */
+export const LEARNER_SCHEMA_VERSION = 2;

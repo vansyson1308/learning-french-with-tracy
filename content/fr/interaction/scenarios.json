@@ -5,10 +5,12 @@
   {
    "id": "fr.scenario.salut_ca_va",
    "title": {
-    "en": "A quick hello"
+    "en": "A quick hello",
+    "vi": "Một lời chào nhanh"
    },
    "goal": {
-    "en": "Greet a friend, say how you are, and say goodbye."
+    "en": "Greet a friend, say how you are, and say goodbye.",
+    "vi": "Chào một người bạn, nói bạn thế nào, và chào tạm biệt."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -36,7 +38,8 @@
      "kind": "learner",
      "id": "l_hello",
      "prompt": {
-      "en": "Say hello back and say you're doing well."
+      "en": "Say hello back and say you're doing well.",
+      "vi": "Hãy chào lại và nói rằng bạn khỏe."
      },
      "expected": [
       {
@@ -78,7 +81,8 @@
      "kind": "learner",
      "id": "l_hello_b",
      "prompt": {
-      "en": "Say hello back and say you're doing well."
+      "en": "Say hello back and say you're doing well.",
+      "vi": "Hãy chào lại và nói rằng bạn khỏe."
      },
      "expected": [
       {
@@ -122,7 +126,8 @@
      "kind": "learner",
      "id": "l_bye",
      "prompt": {
-      "en": "Say goodbye."
+      "en": "Say goodbye.",
+      "vi": "Hãy chào tạm biệt."
      },
      "expected": [
       {
@@ -161,7 +166,8 @@
      "kind": "learner",
      "id": "l_bye_b",
      "prompt": {
-      "en": "Say goodbye."
+      "en": "Say goodbye.",
+      "vi": "Hãy chào tạm biệt."
      },
      "expected": [
       {
@@ -207,10 +213,12 @@
   {
    "id": "fr.scenario.rencontre_nom",
    "title": {
-    "en": "Meeting someone"
+    "en": "Meeting someone",
+    "vi": "Gặp một người"
    },
    "goal": {
-    "en": "Say hello, give your name, and answer a simple question. You are Léa."
+    "en": "Say hello, give your name, and answer a simple question. You are Léa.",
+    "vi": "Chào, nói tên bạn, và trả lời một câu hỏi đơn giản. Bạn là Léa."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -238,7 +246,8 @@
      "kind": "learner",
      "id": "l_name",
      "prompt": {
-      "en": "Say hello and give your name — you are Léa."
+      "en": "Say hello and give your name — you are Léa.",
+      "vi": "Hãy chào và nói tên bạn — bạn là Léa."
      },
      "expected": [
       {
@@ -273,7 +282,8 @@
      "kind": "learner",
      "id": "l_name_b",
      "prompt": {
-      "en": "Say hello and give your name — you are Léa."
+      "en": "Say hello and give your name — you are Léa.",
+      "vi": "Hãy chào và nói tên bạn — bạn là Léa."
      },
      "expected": [
       {
@@ -324,7 +334,8 @@
      "kind": "learner",
      "id": "l_here",
      "prompt": {
-      "en": "Answer the question — do you live here? Say yes or no."
+      "en": "Answer the question — do you live here? Say yes or no.",
+      "vi": "Hãy trả lời câu hỏi — bạn có sống ở đây không? Nói có hoặc không."
      },
      "expected": [
       {
@@ -368,7 +379,8 @@
      "kind": "learner",
      "id": "l_here_b",
      "prompt": {
-      "en": "Answer the question — do you live here? Say yes or no."
+      "en": "Answer the question — do you live here? Say yes or no.",
+      "vi": "Hãy trả lời câu hỏi — bạn có sống ở đây không? Nói có hoặc không."
      },
      "expected": [
       {
@@ -412,10 +424,12 @@
   {
    "id": "fr.scenario.cafe_boisson",
    "title": {
-    "en": "At the café"
+    "en": "At the café",
+    "vi": "Ở quán cà phê"
    },
    "goal": {
-    "en": "Order a drink and thank the server."
+    "en": "Order a drink and thank the server.",
+    "vi": "Gọi một đồ uống và cảm ơn người phục vụ."
    },
    "taskFamily": "transaction",
    "objectiveRefs": [
@@ -461,7 +475,8 @@
      "kind": "learner",
      "id": "l_order",
      "prompt": {
-      "en": "Order a coffee — or a tea."
+      "en": "Order a coffee — or a tea.",
+      "vi": "Hãy gọi một cà phê — hoặc một trà."
      },
      "expected": [
       {
@@ -507,7 +522,8 @@
      "kind": "learner",
      "id": "l_order_b",
      "prompt": {
-      "en": "Order a coffee — or a tea."
+      "en": "Order a coffee — or a tea.",
+      "vi": "Hãy gọi một cà phê — hoặc một trà."
      },
      "expected": [
       {
@@ -546,7 +562,8 @@
      "kind": "learner",
      "id": "l_thanks",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -579,7 +596,8 @@
      "kind": "learner",
      "id": "l_thanks_b",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -619,10 +637,12 @@
   {
    "id": "fr.scenario.magasin_courses",
    "title": {
-    "en": "At the shop"
+    "en": "At the shop",
+    "vi": "Ở cửa hàng"
    },
    "goal": {
-    "en": "Ask for bread, then answer the follow-up question."
+    "en": "Ask for bread, then answer the follow-up question.",
+    "vi": "Hỏi mua bánh mì, rồi trả lời câu hỏi tiếp theo."
    },
    "taskFamily": "transaction",
    "objectiveRefs": [
@@ -650,7 +670,8 @@
      "kind": "learner",
      "id": "l_want",
      "prompt": {
-      "en": "Say you would like some bread."
+      "en": "Say you would like some bread.",
+      "vi": "Hãy nói rằng bạn muốn mua bánh mì."
      },
      "expected": [
       {
@@ -683,7 +704,8 @@
      "kind": "learner",
      "id": "l_want_b",
      "prompt": {
-      "en": "Say you would like some bread."
+      "en": "Say you would like some bread.",
+      "vi": "Hãy nói rằng bạn muốn mua bánh mì."
      },
      "expected": [
       {
@@ -732,7 +754,8 @@
      "kind": "learner",
      "id": "l_more",
      "prompt": {
-      "en": "Ask for some water too — or say that's all."
+      "en": "Ask for some water too — or say that's all.",
+      "vi": "Hãy hỏi thêm nước — hoặc nói thế là đủ."
      },
      "expected": [
       {
@@ -780,7 +803,8 @@
      "kind": "learner",
      "id": "l_more_b",
      "prompt": {
-      "en": "Ask for some water too — or say that's all."
+      "en": "Ask for some water too — or say that's all.",
+      "vi": "Hãy hỏi thêm nước — hoặc nói thế là đủ."
      },
      "expected": [
       {
@@ -828,10 +852,12 @@
   {
    "id": "fr.scenario.ou_gare",
    "title": {
-    "en": "Where is the station?"
+    "en": "Where is the station?",
+    "vi": "Nhà ga ở đâu?"
    },
    "goal": {
-    "en": "Ask where the station is and thank them."
+    "en": "Ask where the station is and thank them.",
+    "vi": "Hỏi nhà ga ở đâu và cảm ơn họ."
    },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
@@ -859,7 +885,8 @@
      "kind": "learner",
      "id": "l_ask",
      "prompt": {
-      "en": "Ask: where is the station, please?"
+      "en": "Ask: where is the station, please?",
+      "vi": "Hãy hỏi: xin hỏi nhà ga ở đâu?"
      },
      "expected": [
       {
@@ -899,7 +926,8 @@
      "kind": "learner",
      "id": "l_ask_b",
      "prompt": {
-      "en": "Ask: where is the station, please?"
+      "en": "Ask: where is the station, please?",
+      "vi": "Hãy hỏi: xin hỏi nhà ga ở đâu?"
      },
      "expected": [
       {
@@ -941,7 +969,8 @@
      "kind": "learner",
      "id": "l_thanks",
      "prompt": {
-      "en": "Thank them and say goodbye."
+      "en": "Thank them and say goodbye.",
+      "vi": "Hãy cảm ơn họ và chào tạm biệt."
      },
      "expected": [
       {
@@ -973,7 +1002,8 @@
      "kind": "learner",
      "id": "l_thanks_b",
      "prompt": {
-      "en": "Thank them and say goodbye."
+      "en": "Thank them and say goodbye.",
+      "vi": "Hãy cảm ơn họ và chào tạm biệt."
      },
      "expected": [
       {
@@ -1012,10 +1042,12 @@
   {
    "id": "fr.scenario.ou_hotel",
    "title": {
-    "en": "Finding the hotel"
+    "en": "Finding the hotel",
+    "vi": "Tìm khách sạn"
    },
    "goal": {
-    "en": "Ask where the hotel is in the evening and thank them."
+    "en": "Ask where the hotel is in the evening and thank them.",
+    "vi": "Buổi tối, hỏi khách sạn ở đâu và cảm ơn họ."
    },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
@@ -1043,7 +1075,8 @@
      "kind": "learner",
      "id": "l_ask",
      "prompt": {
-      "en": "Ask where the hotel is."
+      "en": "Ask where the hotel is.",
+      "vi": "Hãy hỏi khách sạn ở đâu."
      },
      "expected": [
       {
@@ -1082,7 +1115,8 @@
      "kind": "learner",
      "id": "l_ask_b",
      "prompt": {
-      "en": "Ask where the hotel is."
+      "en": "Ask where the hotel is.",
+      "vi": "Hãy hỏi khách sạn ở đâu."
      },
      "expected": [
       {
@@ -1123,7 +1157,8 @@
      "kind": "learner",
      "id": "l_thanks",
      "prompt": {
-      "en": "Say thank you very much."
+      "en": "Say thank you very much.",
+      "vi": "Hãy nói cảm ơn rất nhiều."
      },
      "expected": [
       {
@@ -1155,7 +1190,8 @@
      "kind": "learner",
      "id": "l_thanks_b",
      "prompt": {
-      "en": "Say thank you very much."
+      "en": "Say thank you very much.",
+      "vi": "Hãy nói cảm ơn rất nhiều."
      },
      "expected": [
       {
@@ -1194,10 +1230,12 @@
   {
    "id": "fr.scenario.rendez_vous",
    "title": {
-    "en": "Making a plan"
+    "en": "Making a plan",
+    "vi": "Lên kế hoạch"
    },
    "goal": {
-    "en": "Agree when and where to meet tomorrow."
+    "en": "Agree when and where to meet tomorrow.",
+    "vi": "Thống nhất khi nào và ở đâu gặp nhau ngày mai."
    },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
@@ -1225,7 +1263,8 @@
      "kind": "learner",
      "id": "l_time",
      "prompt": {
-      "en": "Suggest a time: at ten o'clock."
+      "en": "Suggest a time: at ten o'clock.",
+      "vi": "Hãy đề xuất một giờ: lúc mười giờ."
      },
      "expected": [
       {
@@ -1258,7 +1297,8 @@
      "kind": "learner",
      "id": "l_time_b",
      "prompt": {
-      "en": "Suggest a time: at ten o'clock."
+      "en": "Suggest a time: at ten o'clock.",
+      "vi": "Hãy đề xuất một giờ: lúc mười giờ."
      },
      "expected": [
       {
@@ -1293,7 +1333,8 @@
      "kind": "learner",
      "id": "l_place",
      "prompt": {
-      "en": "Say: at the café."
+      "en": "Say: at the café.",
+      "vi": "Hãy nói: ở quán cà phê."
      },
      "expected": [
       {
@@ -1325,7 +1366,8 @@
      "kind": "learner",
      "id": "l_place_b",
      "prompt": {
-      "en": "Say: at the café."
+      "en": "Say: at the café.",
+      "vi": "Hãy nói: ở quán cà phê."
      },
      "expected": [
       {
@@ -1364,10 +1406,12 @@
   {
    "id": "fr.scenario.chez_ami",
    "title": {
-    "en": "At a friend's place"
+    "en": "At a friend's place",
+    "vi": "Ở nhà một người bạn"
    },
    "goal": {
-    "en": "Answer your friend's offer and say what you would like."
+    "en": "Answer your friend's offer and say what you would like.",
+    "vi": "Trả lời lời mời của bạn bạn và nói bạn muốn gì."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -1413,7 +1457,8 @@
      "kind": "learner",
      "id": "l_offer",
      "prompt": {
-      "en": "Say yes — you'd like some water (or a coffee), please."
+      "en": "Say yes — you'd like some water (or a coffee), please.",
+      "vi": "Hãy nói có — bạn muốn nước (hoặc cà phê), làm ơn."
      },
      "expected": [
       {
@@ -1460,7 +1505,8 @@
      "kind": "learner",
      "id": "l_offer_b",
      "prompt": {
-      "en": "Say yes — you'd like some water (or a coffee), please."
+      "en": "Say yes — you'd like some water (or a coffee), please.",
+      "vi": "Hãy nói có — bạn muốn nước (hoặc cà phê), làm ơn."
      },
      "expected": [
       {
@@ -1500,7 +1546,8 @@
      "kind": "learner",
      "id": "l_thanks",
      "prompt": {
-      "en": "Say thank you."
+      "en": "Say thank you.",
+      "vi": "Hãy nói cảm ơn."
      },
      "expected": [
       {
@@ -1531,7 +1578,8 @@
      "kind": "learner",
      "id": "l_thanks_b",
      "prompt": {
-      "en": "Say thank you."
+      "en": "Say thank you.",
+      "vi": "Hãy nói cảm ơn."
      },
      "expected": [
       {
@@ -1569,10 +1617,12 @@
   {
    "id": "fr.scenario.cp_rencontre",
    "title": {
-    "en": "Meeting Paul"
+    "en": "Meeting Paul",
+    "vi": "Gặp Paul"
    },
    "goal": {
-    "en": "Meet someone: greet him, give your name, say how you are, and say goodbye. You are Nadia."
+    "en": "Meet someone: greet him, give your name, say how you are, and say goodbye. You are Nadia.",
+    "vi": "Gặp một người: chào anh ấy, nói tên bạn, nói bạn thế nào, và chào tạm biệt. Bạn là Nadia."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -1600,7 +1650,8 @@
      "kind": "learner",
      "id": "l_name",
      "prompt": {
-      "en": "Greet him and say your name — you are Nadia."
+      "en": "Greet him and say your name — you are Nadia.",
+      "vi": "Hãy chào anh ấy và nói tên bạn — bạn là Nadia."
      },
      "expected": [
       {
@@ -1635,7 +1686,8 @@
      "kind": "learner",
      "id": "l_name_b",
      "prompt": {
-      "en": "Greet him and say your name — you are Nadia."
+      "en": "Greet him and say your name — you are Nadia.",
+      "vi": "Hãy chào anh ấy và nói tên bạn — bạn là Nadia."
      },
      "expected": [
       {
@@ -1690,7 +1742,8 @@
      "kind": "learner",
      "id": "l_how",
      "prompt": {
-      "en": "Say how you are — very well, or just okay."
+      "en": "Say how you are — very well, or just okay.",
+      "vi": "Hãy nói bạn thế nào — rất khỏe, hoặc bình thường."
      },
      "expected": [
       {
@@ -1744,7 +1797,8 @@
      "kind": "learner",
      "id": "l_how_b",
      "prompt": {
-      "en": "Say how you are — very well, or just okay."
+      "en": "Say how you are — very well, or just okay.",
+      "vi": "Hãy nói bạn thế nào — rất khỏe, hoặc bình thường."
      },
      "expected": [
       {
@@ -1791,7 +1845,8 @@
      "kind": "learner",
      "id": "l_bye",
      "prompt": {
-      "en": "Say goodbye."
+      "en": "Say goodbye.",
+      "vi": "Hãy chào tạm biệt."
      },
      "expected": [
       {
@@ -1826,7 +1881,8 @@
      "kind": "learner",
      "id": "l_bye_b",
      "prompt": {
-      "en": "Say goodbye."
+      "en": "Say goodbye.",
+      "vi": "Hãy chào tạm biệt."
      },
      "expected": [
       {
@@ -1868,10 +1924,12 @@
   {
    "id": "fr.scenario.cp_cafe",
    "title": {
-    "en": "Ordering at the café"
+    "en": "Ordering at the café",
+    "vi": "Gọi món ở quán cà phê"
    },
    "goal": {
-    "en": "Order a drink, ask the price, and close politely."
+    "en": "Order a drink, ask the price, and close politely.",
+    "vi": "Gọi một đồ uống, hỏi giá, và kết thúc lịch sự."
    },
    "taskFamily": "transaction",
    "objectiveRefs": [
@@ -1917,7 +1975,8 @@
      "kind": "learner",
      "id": "l_order",
      "prompt": {
-      "en": "Order a coffee — or a tea — politely."
+      "en": "Order a coffee — or a tea — politely.",
+      "vi": "Hãy gọi một cà phê — hoặc một trà — một cách lịch sự."
      },
      "expected": [
       {
@@ -1963,7 +2022,8 @@
      "kind": "learner",
      "id": "l_order_b",
      "prompt": {
-      "en": "Order a coffee — or a tea — politely."
+      "en": "Order a coffee — or a tea — politely.",
+      "vi": "Hãy gọi một cà phê — hoặc một trà — một cách lịch sự."
      },
      "expected": [
       {
@@ -2002,7 +2062,8 @@
      "kind": "learner",
      "id": "l_price",
      "prompt": {
-      "en": "Ask how much it is."
+      "en": "Ask how much it is.",
+      "vi": "Hãy hỏi giá bao nhiêu."
      },
      "expected": [
       {
@@ -2036,7 +2097,8 @@
      "kind": "learner",
      "id": "l_price_b",
      "prompt": {
-      "en": "Ask how much it is."
+      "en": "Ask how much it is.",
+      "vi": "Hãy hỏi giá bao nhiêu."
      },
      "expected": [
       {
@@ -2072,7 +2134,8 @@
      "kind": "learner",
      "id": "l_thanks",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -2104,7 +2167,8 @@
      "kind": "learner",
      "id": "l_thanks_b",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -2143,10 +2207,12 @@
   {
    "id": "fr.scenario.cp_boulangerie",
    "title": {
-    "en": "At the bakery"
+    "en": "At the bakery",
+    "vi": "Ở tiệm bánh"
    },
    "goal": {
-    "en": "Buy bread, answer the follow-up question, and close politely."
+    "en": "Buy bread, answer the follow-up question, and close politely.",
+    "vi": "Mua bánh mì, trả lời câu hỏi tiếp theo, và kết thúc lịch sự."
    },
    "taskFamily": "transaction",
    "objectiveRefs": [
@@ -2174,7 +2240,8 @@
      "kind": "learner",
      "id": "l_want",
      "prompt": {
-      "en": "Ask for a baguette — or some bread."
+      "en": "Ask for a baguette — or some bread.",
+      "vi": "Hãy hỏi mua một bánh mì baguette — hoặc bánh mì."
      },
      "expected": [
       {
@@ -2208,7 +2275,8 @@
      "kind": "learner",
      "id": "l_want_b",
      "prompt": {
-      "en": "Ask for a baguette — or some bread."
+      "en": "Ask for a baguette — or some bread.",
+      "vi": "Hãy hỏi mua một bánh mì baguette — hoặc bánh mì."
      },
      "expected": [
       {
@@ -2262,7 +2330,8 @@
      "kind": "learner",
      "id": "l_more",
      "prompt": {
-      "en": "Say that's all — or ask for some water too."
+      "en": "Say that's all — or ask for some water too.",
+      "vi": "Hãy nói thế là đủ — hoặc hỏi thêm nước."
      },
      "expected": [
       {
@@ -2309,7 +2378,8 @@
      "kind": "learner",
      "id": "l_more_b",
      "prompt": {
-      "en": "Say that's all — or ask for some water too."
+      "en": "Say that's all — or ask for some water too.",
+      "vi": "Hãy nói thế là đủ — hoặc hỏi thêm nước."
      },
      "expected": [
       {
@@ -2349,7 +2419,8 @@
      "kind": "learner",
      "id": "l_thanks",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -2381,7 +2452,8 @@
      "kind": "learner",
      "id": "l_thanks_b",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -2420,10 +2492,12 @@
   {
    "id": "fr.scenario.cp_faire_connaissance",
    "title": {
-    "en": "Getting to know Paul"
+    "en": "Getting to know Paul",
+    "vi": "Làm quen với Paul"
    },
    "goal": {
-    "en": "Answer simple questions about yourself, then ask one back. You are Nadia, from Lyon."
+    "en": "Answer simple questions about yourself, then ask one back. You are Nadia, from Lyon.",
+    "vi": "Trả lời các câu hỏi đơn giản về bản thân, rồi hỏi lại một câu. Bạn là Nadia, đến từ Lyon."
    },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
@@ -2451,7 +2525,8 @@
      "kind": "learner",
      "id": "l_live",
      "prompt": {
-      "en": "Answer: you live in Lyon."
+      "en": "Answer: you live in Lyon.",
+      "vi": "Hãy trả lời: bạn sống ở Lyon."
      },
      "expected": [
       {
@@ -2485,7 +2560,8 @@
      "kind": "learner",
      "id": "l_live_b",
      "prompt": {
-      "en": "Answer: you live in Lyon."
+      "en": "Answer: you live in Lyon.",
+      "vi": "Hãy trả lời: bạn sống ở Lyon."
      },
      "expected": [
       {
@@ -2539,7 +2615,8 @@
      "kind": "learner",
      "id": "l_english",
      "prompt": {
-      "en": "Answer: yes or no — do you speak English?"
+      "en": "Answer: yes or no — do you speak English?",
+      "vi": "Hãy trả lời: có hoặc không — bạn có nói tiếng Anh không?"
      },
      "expected": [
       {
@@ -2584,7 +2661,8 @@
      "kind": "learner",
      "id": "l_english_b",
      "prompt": {
-      "en": "Answer: yes or no — do you speak English?"
+      "en": "Answer: yes or no — do you speak English?",
+      "vi": "Hãy trả lời: có hoặc không — bạn có nói tiếng Anh không?"
      },
      "expected": [
       {
@@ -2622,7 +2700,8 @@
      "kind": "learner",
      "id": "l_ask_back",
      "prompt": {
-      "en": "Now ask HIM: and you, where do you live?"
+      "en": "Now ask HIM: and you, where do you live?",
+      "vi": "Giờ hãy hỏi ANH ẤY: còn bạn, bạn sống ở đâu?"
      },
      "expected": [
       {
@@ -2658,7 +2737,8 @@
      "kind": "learner",
      "id": "l_ask_back_b",
      "prompt": {
-      "en": "Now ask HIM: and you, where do you live?"
+      "en": "Now ask HIM: and you, where do you live?",
+      "vi": "Giờ hãy hỏi ANH ẤY: còn bạn, bạn sống ở đâu?"
      },
      "expected": [
       {
@@ -2701,10 +2781,12 @@
   {
    "id": "fr.scenario.cp_projets",
    "title": {
-    "en": "Restaurant plans"
+    "en": "Restaurant plans",
+    "vi": "Kế hoạch đi nhà hàng"
    },
    "goal": {
-    "en": "Make a simple plan with a friend: agree on the day, the time and the place."
+    "en": "Make a simple plan with a friend: agree on the day, the time and the place.",
+    "vi": "Lên một kế hoạch đơn giản với bạn: thống nhất ngày, giờ và địa điểm."
    },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
@@ -2750,7 +2832,8 @@
      "kind": "learner",
      "id": "l_day",
      "prompt": {
-      "en": "Choose a day: tomorrow — or Saturday."
+      "en": "Choose a day: tomorrow — or Saturday.",
+      "vi": "Hãy chọn một ngày: ngày mai — hoặc thứ Bảy."
      },
      "expected": [
       {
@@ -2796,7 +2879,8 @@
      "kind": "learner",
      "id": "l_day_b",
      "prompt": {
-      "en": "Choose a day: tomorrow — or Saturday."
+      "en": "Choose a day: tomorrow — or Saturday.",
+      "vi": "Hãy chọn một ngày: ngày mai — hoặc thứ Bảy."
      },
      "expected": [
       {
@@ -2835,7 +2919,8 @@
      "kind": "learner",
      "id": "l_time",
      "prompt": {
-      "en": "Say a time: at seven o'clock."
+      "en": "Say a time: at seven o'clock.",
+      "vi": "Hãy nói một giờ: lúc bảy giờ."
      },
      "expected": [
       {
@@ -2868,7 +2953,8 @@
      "kind": "learner",
      "id": "l_time_b",
      "prompt": {
-      "en": "Say a time: at seven o'clock."
+      "en": "Say a time: at seven o'clock.",
+      "vi": "Hãy nói một giờ: lúc bảy giờ."
      },
      "expected": [
       {
@@ -2903,7 +2989,8 @@
      "kind": "learner",
      "id": "l_place",
      "prompt": {
-      "en": "Say: at the restaurant."
+      "en": "Say: at the restaurant.",
+      "vi": "Hãy nói: ở nhà hàng."
      },
      "expected": [
       {
@@ -2935,7 +3022,8 @@
      "kind": "learner",
      "id": "l_place_b",
      "prompt": {
-      "en": "Say: at the restaurant."
+      "en": "Say: at the restaurant.",
+      "vi": "Hãy nói: ở nhà hàng."
      },
      "expected": [
       {
@@ -2974,10 +3062,12 @@
   {
    "id": "fr.scenario.cp_billet",
    "title": {
-    "en": "A ticket to Lyon"
+    "en": "A ticket to Lyon",
+    "vi": "Một vé đi Lyon"
    },
    "goal": {
-    "en": "Buy a train ticket to Lyon, ask a question about the trip, and close politely."
+    "en": "Buy a train ticket to Lyon, ask a question about the trip, and close politely.",
+    "vi": "Mua một vé tàu đi Lyon, hỏi một câu về chuyến đi, và kết thúc lịch sự."
    },
    "taskFamily": "transaction",
    "objectiveRefs": [
@@ -3005,7 +3095,8 @@
      "kind": "learner",
      "id": "l_ticket",
      "prompt": {
-      "en": "Say you would like a ticket to Lyon."
+      "en": "Say you would like a ticket to Lyon.",
+      "vi": "Hãy nói rằng bạn muốn một vé đi Lyon."
      },
      "expected": [
       {
@@ -3037,7 +3128,8 @@
      "kind": "learner",
      "id": "l_ticket_b",
      "prompt": {
-      "en": "Say you would like a ticket to Lyon."
+      "en": "Say you would like a ticket to Lyon.",
+      "vi": "Hãy nói rằng bạn muốn một vé đi Lyon."
      },
      "expected": [
       {
@@ -3089,7 +3181,8 @@
      "kind": "learner",
      "id": "l_question",
      "prompt": {
-      "en": "Ask a question: at what time is the train? Or: which platform?"
+      "en": "Ask a question: at what time is the train? Or: which platform?",
+      "vi": "Hãy hỏi một câu: tàu chạy lúc mấy giờ? Hoặc: sân ga nào?"
      },
      "expected": [
       {
@@ -3137,7 +3230,8 @@
      "kind": "learner",
      "id": "l_question_b",
      "prompt": {
-      "en": "Ask a question: at what time is the train? Or: which platform?"
+      "en": "Ask a question: at what time is the train? Or: which platform?",
+      "vi": "Hãy hỏi một câu: tàu chạy lúc mấy giờ? Hoặc: sân ga nào?"
      },
      "expected": [
       {
@@ -3178,7 +3272,8 @@
      "kind": "learner",
      "id": "l_thanks",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -3210,7 +3305,8 @@
      "kind": "learner",
      "id": "l_thanks_b",
      "prompt": {
-      "en": "Say thank you and goodbye."
+      "en": "Say thank you and goodbye.",
+      "vi": "Hãy nói cảm ơn và tạm biệt."
      },
      "expected": [
       {
@@ -3249,10 +3345,12 @@
   {
    "id": "fr.scenario.a1cap_voisin",
    "title": {
-    "en": "A friendly neighbour"
+    "en": "A friendly neighbour",
+    "vi": "Một người hàng xóm thân thiện"
    },
    "goal": {
-    "en": "Answer your neighbour's greeting and wish them a good day."
+    "en": "Answer your neighbour's greeting and wish them a good day.",
+    "vi": "Đáp lại lời chào của hàng xóm và chúc họ một ngày tốt lành."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -3280,7 +3378,8 @@
      "kind": "learner",
      "id": "l_hello",
      "prompt": {
-      "en": "Say you're doing well, thanks."
+      "en": "Say you're doing well, thanks.",
+      "vi": "Hãy nói rằng bạn khỏe, cảm ơn."
      },
      "expected": [
       {
@@ -3318,7 +3417,8 @@
      "kind": "learner",
      "id": "l_hello_b",
      "prompt": {
-      "en": "Say you're doing well, thanks."
+      "en": "Say you're doing well, thanks.",
+      "vi": "Hãy nói rằng bạn khỏe, cảm ơn."
      },
      "expected": [
       {
@@ -3358,7 +3458,8 @@
      "kind": "learner",
      "id": "l_bye",
      "prompt": {
-      "en": "Wish them a good day."
+      "en": "Wish them a good day.",
+      "vi": "Hãy chúc họ một ngày tốt lành."
      },
      "expected": [
       {
@@ -3392,7 +3493,8 @@
      "kind": "learner",
      "id": "l_bye_b",
      "prompt": {
-      "en": "Wish them a good day."
+      "en": "Wish them a good day.",
+      "vi": "Hãy chúc họ một ngày tốt lành."
      },
      "expected": [
       {
@@ -3433,10 +3535,12 @@
   {
    "id": "fr.scenario.a1cap_telephone",
    "title": {
-    "en": "A quick phone call"
+    "en": "A quick phone call",
+    "vi": "Một cuộc gọi nhanh"
    },
    "goal": {
-    "en": "Agree when and where to meet tomorrow."
+    "en": "Agree when and where to meet tomorrow.",
+    "vi": "Thống nhất khi nào và ở đâu gặp nhau ngày mai."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -3464,7 +3568,8 @@
      "kind": "learner",
      "id": "l_time",
      "prompt": {
-      "en": "Say a time: at nine o'clock."
+      "en": "Say a time: at nine o'clock.",
+      "vi": "Hãy nói một giờ: lúc chín giờ."
      },
      "expected": [
       {
@@ -3497,7 +3602,8 @@
      "kind": "learner",
      "id": "l_time_b",
      "prompt": {
-      "en": "Say a time: at nine o'clock."
+      "en": "Say a time: at nine o'clock.",
+      "vi": "Hãy nói một giờ: lúc chín giờ."
      },
      "expected": [
       {
@@ -3532,7 +3638,8 @@
      "kind": "learner",
      "id": "l_place",
      "prompt": {
-      "en": "Say: at the café."
+      "en": "Say: at the café.",
+      "vi": "Hãy nói: ở quán cà phê."
      },
      "expected": [
       {
@@ -3563,7 +3670,8 @@
      "kind": "learner",
      "id": "l_place_b",
      "prompt": {
-      "en": "Say: at the café."
+      "en": "Say: at the café.",
+      "vi": "Hãy nói: ở quán cà phê."
      },
      "expected": [
       {
@@ -3601,10 +3709,12 @@
   {
    "id": "fr.scenario.a1cap_julie",
    "title": {
-    "en": "Meeting Julie"
+    "en": "Meeting Julie",
+    "vi": "Gặp Julie"
    },
    "goal": {
-    "en": "Give your name and answer her question. You are Nadia."
+    "en": "Give your name and answer her question. You are Nadia.",
+    "vi": "Nói tên bạn và trả lời câu hỏi của cô ấy. Bạn là Nadia."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -3632,7 +3742,8 @@
      "kind": "learner",
      "id": "l_name",
      "prompt": {
-      "en": "Say hello and give your name — you are Nadia."
+      "en": "Say hello and give your name — you are Nadia.",
+      "vi": "Hãy chào và nói tên bạn — bạn là Nadia."
      },
      "expected": [
       {
@@ -3667,7 +3778,8 @@
      "kind": "learner",
      "id": "l_name_b",
      "prompt": {
-      "en": "Say hello and give your name — you are Nadia."
+      "en": "Say hello and give your name — you are Nadia.",
+      "vi": "Hãy chào và nói tên bạn — bạn là Nadia."
      },
      "expected": [
       {
@@ -3704,7 +3816,8 @@
      "kind": "learner",
      "id": "l_french",
      "prompt": {
-      "en": "Say yes — a little."
+      "en": "Say yes — a little.",
+      "vi": "Hãy nói có — một chút."
      },
      "expected": [
       {
@@ -3737,7 +3850,8 @@
      "kind": "learner",
      "id": "l_french_b",
      "prompt": {
-      "en": "Say yes — a little."
+      "en": "Say yes — a little.",
+      "vi": "Hãy nói có — một chút."
      },
      "expected": [
       {
@@ -3777,10 +3891,12 @@
   {
    "id": "fr.scenario.a1cap_invitation",
    "title": {
-    "en": "An invitation"
+    "en": "An invitation",
+    "vi": "Một lời mời"
    },
    "goal": {
-    "en": "Accept a friend's café invitation and confirm the time."
+    "en": "Accept a friend's café invitation and confirm the time.",
+    "vi": "Nhận lời mời đi cà phê của bạn và xác nhận giờ."
    },
    "taskFamily": "conversation",
    "objectiveRefs": [
@@ -3808,7 +3924,8 @@
      "kind": "learner",
      "id": "l_invite",
      "prompt": {
-      "en": "Say yes — sounds good."
+      "en": "Say yes — sounds good.",
+      "vi": "Hãy nói có — nghe hay đấy."
      },
      "expected": [
       {
@@ -3843,7 +3960,8 @@
      "kind": "learner",
      "id": "l_invite_b",
      "prompt": {
-      "en": "Say yes — sounds good."
+      "en": "Say yes — sounds good.",
+      "vi": "Hãy nói có — nghe hay đấy."
      },
      "expected": [
       {
@@ -3880,7 +3998,8 @@
      "kind": "learner",
      "id": "l_confirm",
      "prompt": {
-      "en": "Say yes, that works."
+      "en": "Say yes, that works.",
+      "vi": "Hãy nói có, được đấy."
      },
      "expected": [
       {
@@ -3916,7 +4035,8 @@
      "kind": "learner",
      "id": "l_confirm_b",
      "prompt": {
-      "en": "Say yes, that works."
+      "en": "Say yes, that works.",
+      "vi": "Hãy nói có, được đấy."
      },
      "expected": [
       {

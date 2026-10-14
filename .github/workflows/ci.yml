@@ -123,13 +123,16 @@ jobs:
           EXPO_PUBLIC_UI_LANG: vi
         # --clear: the transform cache of the English export would otherwise keep the inlined env.
         run: bunx expo export --platform web --output-dir dist-vi --clear
-      - name: Browser E2E (web tier, Vietnamese UI)
+      # P2b: the Vietnamese lane walks the Vietnamese-native French course.
+      - name: Browser E2E (web tier, Vietnamese UI, fr-vi)
         env:
           E2E_BROWSER_PATH: /usr/bin/google-chrome
           UI_LANG: vi
+          E2E_COURSE: fr-vi
         run: bun run e2e:web dist-vi
-      - name: User-guide walk (web tier, Vietnamese UI)
+      - name: User-guide walk (web tier, Vietnamese UI, fr-vi)
         env:
           E2E_BROWSER_PATH: /usr/bin/google-chrome
           UI_LANG: vi
+          E2E_COURSE: fr-vi
         run: bun run e2e:guide dist-vi
