@@ -1,0 +1,15 @@
+{
+  "source": {
+    "id": "kaikki-en",
+    "sha256": "e5a3714f9a1493b993f5b381201bf5f954ae1efcdc96b26fe2f99b2ef152fd7f",
+    "url": "https://kaikki.org/dictionary/Japanese/kaikki.org-dictionary-Japanese.jsonl",
+    "retrievedAt": "2026-10-14"
+  },
+  "generator": "scripts/lib/lexicon-etl/derive.ts",
+  "population": {
+    "definition": "nouns of the frequency population whose kaikki entry carries a gender",
+    "size": 3
+  },
+  "minCount": 20,
+  "dataDrivenEndings": []
+}

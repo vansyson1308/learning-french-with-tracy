@@ -1,0 +1,113 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "ja",
+  "recordedAt": "2026-10-14",
+  "artifacts": {
+    "kaikki-en-ja.jsonl": {
+      "status": "retrieved",
+      "sha256": "e5a3714f9a1493b993f5b381201bf5f954ae1efcdc96b26fe2f99b2ef152fd7f",
+      "bytes": 384872752,
+      "lines": 199484,
+      "samples": [
+        "{\"word\": \"数\", \"lang\": \"Japanese\", \"lang_code\": \"ja\", \"redirects\": [\"しばしば\"], \"pos\": \"soft-redirect\", \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"en-数-ja-soft-redirect-47DEQpj8\"}]}",
+        "{\"word\": \"AA\", \"lang\": \"Japanese\", \"lang_code\": \"ja\", \"redirects\": [\"アスキーアート\"], \"pos\": \"soft-redirect\", \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"en-AA-ja-soft-redirect-47DEQpj8\"}]}"
+      ]
+    },
+    "kaikki-vi-ja.jsonl": {
+      "status": "retrieved",
+      "sha256": "806959e0d5085bf1b2dd7f93ea363c51e586e74f95279345a66afd0b6f4a4120",
+      "bytes": 19331885,
+      "lines": 11818,
+      "samples": [
+        "{\"word\": \"サンキュ\", \"lang_code\": \"ja\", \"lang\": \"Tiếng Nhật\", \"pos\": \"name\", \"pos_title\": \"Danh từ riêng\", \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"vi-サンキュ-ja-name-47DEQpj8\"}]}"
+      ]
+    },
+    "frequencywords-ja.txt": {
+      "status": "retrieved",
+      "sha256": "581dd106a134ff9f2706e23cde9fe95cd24d96ead6357cd3bd3bba9e166a764e",
+      "bytes": 402792,
+      "lines": 34504,
+      "samples": [
+        "、 148670",
+        "。 104416"
+      ]
+    },
+    "wordfreq-ja.csv": {
+      "status": "retrieved",
+      "sha256": "09b0816060addd3c177852e84c41039f8ab4bdab36e1646500dcf760ccfaac9f",
+      "bytes": 701954,
+      "lines": 50001,
+      "samples": [
+        "word,zipf",
+        "の,7.72"
+      ]
+    },
+    "openjlpt-0.1.0.tar.gz": {
+      "status": "retrieved",
+      "sha256": "afb286ec7d3546728253b5c766461a3bfd0b7f592db4aa25602a53b58073adc2",
+      "bytes": 2205536,
+      "lines": 0,
+      "samples": []
+    },
+    "JMdict_e.xml": {
+      "status": "retrieved",
+      "sha256": "accad227e8ea4b2cbf5f0fa0ce0af7637a49f7b64b11d5d60747fbb423f287e3",
+      "bytes": 63172132,
+      "lines": 3731915,
+      "samples": [
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+        "<!-- Rev 1.09"
+      ]
+    },
+    "tatoeba-ja-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "5e5e26c37df3aa3bd63464c587b6532395cbe4042e772d78598be88f8b5f2dc5",
+      "bytes": 24074707,
+      "lines": 248924,
+      "samples": [
+        "1297\tjpn\tきみにちょっとしたものをもってきたよ。\txtofu80\t2008-01-26 18:04:24\t2010-07-02 00:11:07",
+        "4702\tjpn\t何かしてみましょう。\tmookeee\t\\N\t2011-08-26 17:35:57"
+      ]
+    },
+    "tatoeba-ja-links-en.tsv": {
+      "status": "retrieved",
+      "sha256": "c49dbba9bfe196a27407ae69a2720e2ff8ab8010a53d933a1977fd87e5333a45",
+      "bytes": 4109704,
+      "lines": 280723,
+      "samples": [
+        "1297\t4724",
+        "4702\t1276"
+      ]
+    },
+    "tatoeba-ja-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "e1c5c0de73535ee0b6b2f9edd4b54d82c737f1b4598f3308c148de8249867f70",
+      "bytes": 129872,
+      "lines": 8485,
+      "samples": [
+        "4703\t5662",
+        "4704\t5663"
+      ]
+    },
+    "tatoeba-eng-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+      "bytes": 198754998,
+      "lines": 2038719,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+      "bytes": 3739296,
+      "lines": 33223,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}
