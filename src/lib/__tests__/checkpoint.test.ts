@@ -11,7 +11,7 @@ import { evidencePlanFor } from "../session/evidence";
 import { emptySessionState, sessionReducer, type SessionMachineState } from "../session/reducer";
 import { buildCheckpointSessionDefinition } from "../session/sources";
 import type { ExerciseStep, SessionAssessmentPlan, SessionStep } from "../session/types";
-import { useProgress } from "../store";
+import { assessmentFor, useProgress } from "../store";
 
 const CP1 = checkpointFor("fr-en", "fr.checkpoint.section-1")!;
 const CP2 = checkpointFor("fr-en", "fr.checkpoint.section-2")!;
@@ -334,7 +334,7 @@ describe("store: recordCheckpointAttempt mutates assessment state ONLY (§56-59,
     useProgress.setState({
       activeCourseId: "fr-en",
       dailyXp: 10,
-      assessment: { checkpointAttempts: [], placementFloor: 0 },
+      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
       courses: {
         "fr-en": {
           xp: 42,
@@ -362,7 +362,7 @@ describe("store: recordCheckpointAttempt mutates assessment state ONLY (§56-59,
     });
 
     const after = useProgress.getState();
-    expect(after.assessment.checkpointAttempts.length).toBe(1);
+    expect(assessmentFor(after, "fr-en").checkpointAttempts.length).toBe(1);
     expect(after.courses["fr-en"].xp).toBe(42);
     expect(after.dailyXp).toBe(10);
     expect(JSON.stringify(after.courses)).toBe(beforeCourse);
@@ -371,7 +371,7 @@ describe("store: recordCheckpointAttempt mutates assessment state ONLY (§56-59,
 
   test("retakes append and retention caps per checkpoint without dropping the latest", () => {
     useProgress.setState({
-      assessment: { checkpointAttempts: [], placementFloor: 0 },
+      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
     } as never);
     for (let i = 0; i < 8; i++) {
       useProgress.getState().recordCheckpointAttempt({
@@ -384,7 +384,7 @@ describe("store: recordCheckpointAttempt mutates assessment state ONLY (§56-59,
         overallCorrectShare: 0,
       });
     }
-    const attempts = useProgress.getState().assessment.checkpointAttempts;
+    const attempts = assessmentFor(useProgress.getState(), "fr-en").checkpointAttempts;
     expect(attempts.length).toBe(5);
     expect(attempts[attempts.length - 1].startedAt).toBe(7);
   });

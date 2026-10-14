@@ -21,7 +21,7 @@ import {
 import { emptySessionState, sessionReducer, type SessionMachineState } from "../session/reducer";
 import { buildPlacementStageSessionDefinition } from "../session/sources";
 import type { ExerciseStep } from "../session/types";
-import { useProgress } from "../store";
+import { assessmentFor, useProgress } from "../store";
 
 const PLAN = placementEnginePlan("fr-en");
 const CONTENT = placementContent("fr-en");
@@ -398,7 +398,7 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
     useProgress.setState({
       activeCourseId: "fr-en",
       dailyXp: 10,
-      assessment: { checkpointAttempts: [], placementFloor: 0 },
+      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
       courses: {
         "fr-en": {
           xp: 42,
@@ -418,8 +418,8 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
     before.setPlacementResult(result, 20);
 
     const after = useProgress.getState();
-    expect(after.assessment.placement?.recommendedLessonId).toBe("fr-en:ua-l0");
-    expect(after.assessment.placementFloor).toBe(20);
+    expect(assessmentFor(after, "fr-en").placement?.recommendedLessonId).toBe("fr-en:ua-l0");
+    expect(assessmentFor(after, "fr-en").placementFloor).toBe(20);
     expect(after.courses["fr-en"].xp).toBe(42);
     expect(after.dailyXp).toBe(10);
     expect(JSON.stringify(after.courses)).toBe(beforeCourses);
@@ -430,34 +430,34 @@ describe("store: placement mutates assessment state ONLY (§78, §149)", () => {
 
   test('"start from the beginning" stores the result with floor 0', () => {
     useProgress.setState({
-      assessment: { checkpointAttempts: [], placementFloor: 0 },
+      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
     } as never);
     useProgress.getState().setPlacementResult(result, 0);
-    const s = useProgress.getState().assessment;
+    const s = assessmentFor(useProgress.getState(), "fr-en");
     expect(s.placement?.recommendedFloorIndex).toBe(20);
     expect(s.placementFloor).toBe(0);
   });
 
   test("resetPlacement clears the floor but keeps the record (§86)", () => {
     useProgress.setState({
-      assessment: { checkpointAttempts: [], placementFloor: 20, placement: result },
+      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 20, placement: result } },
     } as never);
     useProgress.getState().resetPlacement();
-    const s = useProgress.getState().assessment;
+    const s = assessmentFor(useProgress.getState(), "fr-en");
     expect(s.placementFloor).toBe(0);
     expect(s.placement?.completedAt).toBe(123);
   });
 
   test("a hostile floor value never persists (finite, non-negative, integer)", () => {
     useProgress.setState({
-      assessment: { checkpointAttempts: [], placementFloor: 0 },
+      assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
     } as never);
     useProgress.getState().setPlacementResult(result, Number.NaN);
-    expect(useProgress.getState().assessment.placementFloor).toBe(0);
+    expect(assessmentFor(useProgress.getState(), "fr-en").placementFloor).toBe(0);
     useProgress.getState().setPlacementResult(result, -3);
-    expect(useProgress.getState().assessment.placementFloor).toBe(0);
+    expect(assessmentFor(useProgress.getState(), "fr-en").placementFloor).toBe(0);
     useProgress.getState().setPlacementResult(result, 4.9);
-    expect(useProgress.getState().assessment.placementFloor).toBe(4);
+    expect(assessmentFor(useProgress.getState(), "fr-en").placementFloor).toBe(4);
   });
 });
 

@@ -251,5 +251,98 @@
       "themePreference": "dark"
     },
     "to": 3
+  },
+  {
+    "state": {
+      "activeCourseId": "fr-en",
+      "activeDays": {
+        "2026-01-10": {
+          "lessons": 2,
+          "perfect": 1,
+          "xp": 30
+        }
+      },
+      "assessmentByCourse": {},
+      "courses": {
+        "es-en": {
+          "completedLessons": {
+            "es-en:u0-l0": true
+          },
+          "mistakes": [],
+          "srs": {},
+          "wordStats": {},
+          "xp": 15
+        },
+        "fr-en": {
+          "cards": {
+            "fr:w:femme|recognize": {
+              "difficulty": 0,
+              "due": 1767950000000,
+              "lapses": 0,
+              "learning_steps": 0,
+              "reps": 0,
+              "scheduled_days": 0,
+              "stability": 0,
+              "state": "new"
+            },
+            "fr:w:homme|recognize": {
+              "difficulty": 7.433767808396142,
+              "due": 1768200000000,
+              "lapses": 1,
+              "last_review": 1767940800000,
+              "learning_steps": 0,
+              "reps": 2,
+              "scheduled_days": 3,
+              "stability": 3,
+              "state": "review"
+            }
+          },
+          "completedLessons": {
+            "fr-en:u0-l0": true,
+            "fr-en:u0-l1": true
+          },
+          "mistakes": [
+            {
+              "exerciseId": "fr-en:u0-l1-e3",
+              "lessonId": "fr-en:u0-l1"
+            }
+          ],
+          "srsLegacy": {
+            "l'homme": {
+              "dueAt": 1768200000000,
+              "ease": 2.6,
+              "interval": 3,
+              "streak": 2
+            },
+            "la femme": {
+              "dueAt": 1767950000000,
+              "ease": 2.3,
+              "interval": 0,
+              "streak": 0
+            }
+          },
+          "wordStats": {
+            "fr:w:homme": {
+              "correct": 4,
+              "lastSeen": 1767950000000,
+              "wrong": 1
+            }
+          },
+          "xp": 215
+        }
+      },
+      "dailyGoal": 20,
+      "dailyXp": 30,
+      "dailyXpDay": "2026-01-10",
+      "hearts": 3,
+      "heartsUpdatedAt": 1767000000000,
+      "lastActiveDay": "2026-01-10",
+      "onboardingDone": true,
+      "reviewLog": [],
+      "streak": 5,
+      "themePreference": "dark",
+      "uiLanguage": "system"
+    },
+    "to": 4
   }
 ]

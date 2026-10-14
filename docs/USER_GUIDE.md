@@ -129,15 +129,15 @@ Profile shows **Day streak**, **Course XP**, **Today's XP**, **To review**, **Le
 
 ## 27. Backup export
 
-Profile → Data → **Export progress** (*Save a backup file of everything.*) creates a backup file and opens the system share sheet — save it to Files/Drive or send it to yourself. The file contains your progress for every course; it contains no recordings, transcripts or personal identifiers.
+Profile → Data → **Export progress** (*Save a backup file of everything.*) creates a backup file and opens the system share sheet — save it to Files/Drive or send it to yourself. The file contains your progress for every course in two parts — your settings, scores and check results, and your spaced-repetition cards with their review history; it contains no recordings, transcripts or personal identifiers. Unsaved review history from a session you are in the middle of is written out first, so the file is complete.
 
 ## 28. Backup import / restore
 
-Profile → Data → **Import progress** (*Restore from a backup file.*) → pick the file → confirm **Import**. The app checks the file completely before touching your current progress; if anything is wrong it says why and your current progress is unchanged. A backup made by a newer version of the app is refused rather than guessed at.
+Profile → Data → **Import progress** (*Restore from a backup file.*) → pick the file → confirm **Import**. The app checks the file completely before touching your current progress; if anything is wrong it says why and your current progress is unchanged. A backup made by a newer version of the app is refused rather than guessed at. Backups made by older versions (before the local database) import normally. Before an import replaces anything, the app saves a copy of your current progress as `progress-before-import-<date>.json` in its own documents folder; if the import cannot be verified afterwards, your previous progress is put back automatically and the screen says so.
 
 ## 29. Data and privacy
 
-Everything lives on your device. The app makes no network requests of its own, has no account, no analytics and no advertising. Speaking uses your device's system recogniser (see section 17). Deleting the app deletes all its data. The full policy is under Profile → **Privacy** and on the website.
+Everything lives on your device: a local database holds your cards and review history, a settings store holds everything else. The first time a version with the local database starts over older progress, it moves your history across once and keeps a copy of the old progress as `progress-before-v4-<date>.json` in the app's documents folder. The app makes no network requests of its own, has no account, no analytics and no advertising. Speaking uses your device's system recogniser (see section 17). Deleting the app deletes all its data. The full policy is under Profile → **Privacy** and on the website.
 
 ## 30. Accessibility
 

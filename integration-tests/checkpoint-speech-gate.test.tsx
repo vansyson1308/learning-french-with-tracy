@@ -9,7 +9,7 @@ import { screen, userEvent, waitFor } from "@testing-library/react-native";
 import { renderRouter } from "expo-router/testing-library";
 import React from "react";
 
-import { useProgress } from "../src/lib/store";
+import { assessmentFor, useProgress } from "../src/lib/store";
 
 // The setup.js double; mutated per test, restored in afterEach.
 const speech = jest.requireMock("expo-speech-recognition") as {
@@ -43,7 +43,7 @@ function seed() {
     courses: {},
     activeDays: {},
     reviewLog: [],
-    assessment: { checkpointAttempts: [], placementFloor: 0 },
+    assessmentByCourse: { "fr-en": { checkpointAttempts: [], placementFloor: 0 } },
     speechNoticeAckAt: null,
   } as never);
 }
@@ -66,7 +66,7 @@ describe("spoken checkpoint pre-gate (§20)", () => {
     expect(screen.getByText("Back")).toBeOnTheScreen();
     expect(screen.queryByTestId("speak-record")).toBeNull();
     // Nothing about the learner was inferred from the device state.
-    expect(useProgress.getState().assessment.checkpointAttempts).toHaveLength(0);
+    expect(assessmentFor(useProgress.getState(), "fr-en").checkpointAttempts).toHaveLength(0);
   });
 
   test("a device without FRENCH recognition is equally blocked", async () => {
@@ -151,7 +151,7 @@ describe("preflight permission + disclosure UX (P9 §7/§8)", () => {
     );
     expect(screen.getByText("Open Settings")).toBeOnTheScreen();
     expect(screen.getByText("Back")).toBeOnTheScreen();
-    expect(useProgress.getState().assessment.checkpointAttempts).toHaveLength(0);
+    expect(assessmentFor(useProgress.getState(), "fr-en").checkpointAttempts).toHaveLength(0);
   });
 
   test("network-possible device: the §7 disclosure gates the scored start, once", async () => {

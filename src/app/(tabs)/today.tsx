@@ -22,7 +22,7 @@ import {
   TODAY_PRESETS,
   type TodayPreset,
 } from "@/lib/learning/today";
-import { currentStreak, useProgress } from "@/lib/store";
+import { assessmentFor, currentStreak, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 const PRESET_ORDER: TodayPreset[] = ["short", "regular", "long"];
@@ -35,7 +35,7 @@ export default function TodayScreen() {
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const course = useProgress((s) => s.courses[s.activeCourseId]);
   const streak = useProgress((s) => currentStreak(s));
-  const placementFloor = useProgress((s) => s.assessment.placementFloor);
+  const placementFloor = useProgress((s) => assessmentFor(s, s.activeCourseId).placementFloor);
   const { pack } = useCourseContent(activeCourseId);
   const [preset, setPreset] = useState<TodayPreset>("regular");
   // "Can't speak now" (P8 §17): per-visit choice — off composes a fully

@@ -14,6 +14,7 @@ import freshFixture from "../../__fixtures__/progress/fresh.json";
 import multiCourseFixture from "../../__fixtures__/progress/multi-course.json";
 import v0FlatLegacyFixture from "../../__fixtures__/progress/v0-flat-legacy.json";
 import v0RichFixture from "../../__fixtures__/progress/v0-rich.json";
+import v3AssessedFixture from "../../__fixtures__/progress/v3-assessed.json";
 import frPackJson from "../../../content/packs/fr-en.json";
 import type { Answer } from "../../grading";
 import { migrateProgress, type PersistedProgress } from "../../persistence/migrations";
@@ -98,7 +99,7 @@ export const GOLDEN_DAY = "2026-06-15";
 export const MINUTE = 60_000;
 export const DAY_MS = 86_400_000;
 
-export const PERSONA_NAMES = ["fresh", "multi-course", "v0-rich"] as const;
+export const PERSONA_NAMES = ["fresh", "multi-course", "v0-rich", "v3-assessed"] as const;
 export type PersonaName = (typeof PERSONA_NAMES)[number];
 
 type Fixture = { state: unknown; version: number };
@@ -106,6 +107,7 @@ const FIXTURES: Record<PersonaName | "v0-flat-legacy", Fixture> = {
   fresh: freshFixture as Fixture,
   "multi-course": multiCourseFixture as Fixture,
   "v0-rich": v0RichFixture as Fixture,
+  "v3-assessed": v3AssessedFixture as Fixture,
   "v0-flat-legacy": v0FlatLegacyFixture as Fixture,
 };
 

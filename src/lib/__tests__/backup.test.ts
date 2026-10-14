@@ -7,8 +7,10 @@ import {
   ENVELOPE_VERSION,
   sanitize,
 } from "../persistence/backup-core";
-import type { PersistedProgress } from "../persistence/migrations";
-import { PROGRESS_STORAGE_KEY, useProgress } from "../store";
+import { __setLearnerStoreForTests, learnerDataFromBlob, learnerStore } from "../persistence/learner";
+import type { LearnerData } from "../persistence/learner-types";
+import { PERSIST_VERSION, type PersistedProgress } from "../persistence/migrations";
+import { PROGRESS_STORAGE_KEY, useProgress, whenLearnerReady } from "../store";
 import { asyncStorageMock, memFiles, memoryStorage } from "./helpers/mocks";
 import freshFixture from "../__fixtures__/progress/fresh.json";
 import richFixture from "../__fixtures__/progress/v0-rich.json";
@@ -19,12 +21,16 @@ function validState(): PersistedProgress {
   return JSON.parse(JSON.stringify(richFixture.state)) as PersistedProgress;
 }
 
-function wrap(state: unknown, persistVersion = 0, extra: object = {}) {
+/** An envelope of `state` (cards/log inline in older shapes are split into the learner section). */
+function wrap(state: unknown, persistVersion = 0, extra: object = {}, learner?: LearnerData) {
+  const s = state as PersistedProgress;
   return JSON.stringify({
-    ...createEnvelope(state as PersistedProgress, persistVersion, NOW),
+    ...createEnvelope(s, learner ?? learnerDataFromBlob(s), persistVersion, NOW),
     ...extra,
   });
 }
+
+const clone = <T,>(v: T): T => JSON.parse(JSON.stringify(v)) as T;
 
 beforeEach(async () => {
   memFiles.clear();
@@ -45,6 +51,7 @@ beforeEach(async () => {
   // storage, so it can't race in behind a test's memoryStorage.set().
   await new Promise((r) => setTimeout(r, 0));
   memoryStorage.clear();
+  __setLearnerStoreForTests(null);
 });
 
 describe("prepareImport (staged validation — never mutates)", () => {
@@ -113,31 +120,31 @@ describe("prepareImport (staged validation — never mutates)", () => {
     expect(prepareImport(wrap(bad, 0), NOW).ok).toBe(false);
   });
 
-  test("invariant violations are rejected (malformed v2 FSRS card)", () => {
-    // A v2-versioned backup skips migration, so its cards are validated as-is.
-    const v2 = prepareImport(wrap(validState(), 0), NOW);
-    if (!v2.ok) throw new Error("stage failed");
-    const bad = JSON.parse(JSON.stringify(v2.state)) as typeof v2.state;
-    bad.courses["fr-en"].cards!["fr:w:homme|recognize"].stability =
-      null as unknown as number;
-    expect(prepareImport(wrap(bad, 2), NOW).ok).toBe(false);
+  test("invariant violations are rejected (malformed FSRS card in the learner section)", () => {
+    // A current-version backup skips migration, so its cards are validated as-is.
+    const v4 = prepareImport(wrap(validState(), 0), NOW);
+    if (!v4.ok) throw new Error("stage failed");
+    const bad = clone(v4.learner);
+    bad.cards["fr-en"]["fr:w:homme|recognize"].stability = null as unknown as number;
+    expect(prepareImport(wrap(v4.state, PERSIST_VERSION, {}, bad), NOW).ok).toBe(false);
 
-    const badKey = JSON.parse(JSON.stringify(v2.state)) as typeof v2.state;
-    badKey.courses["fr-en"].cards!["no-separator"] =
-      badKey.courses["fr-en"].cards!["fr:w:homme|recognize"];
-    expect(prepareImport(wrap(badKey, 2), NOW).ok).toBe(false);
+    const badKey = clone(v4.learner);
+    badKey.cards["fr-en"]["no-separator"] = badKey.cards["fr-en"]["fr:w:homme|recognize"];
+    expect(prepareImport(wrap(v4.state, PERSIST_VERSION, {}, badKey), NOW).ok).toBe(false);
   });
 
-  test("a v2 export round-trips: French cards and srsLegacy survive import", () => {
-    const v2 = prepareImport(wrap(validState(), 0), NOW);
-    if (!v2.ok) throw new Error("stage failed");
-    const again = prepareImport(wrap(v2.state, 2), NOW);
+  test("a current export round-trips: French cards and srsLegacy survive import", () => {
+    const v4 = prepareImport(wrap(validState(), 0), NOW);
+    if (!v4.ok) throw new Error("stage failed");
+    const again = prepareImport(wrap(v4.state, PERSIST_VERSION, {}, v4.learner), NOW);
     expect(again.ok).toBe(true);
     if (!again.ok) return;
-    expect(again.state).toEqual(v2.state);
-    expect(again.state.courses["fr-en"].cards!["fr:w:homme|recognize"].stability).toBe(3);
+    expect(again.state).toEqual(v4.state);
+    expect(again.learner).toEqual(v4.learner);
+    expect(again.learner.cards["fr-en"]["fr:w:homme|recognize"].stability).toBe(3);
     expect(again.state.courses["fr-en"].srsLegacy!["l'homme"].interval).toBe(3);
-    expect(again.state.reviewLog).toEqual([]);
+    expect(again.state.courses["fr-en"].cards).toBeUndefined();
+    expect(again.learner.reviewLog).toEqual([]);
   });
 
   test("prototype-pollution keys are stripped, not merged", () => {
@@ -165,13 +172,18 @@ describe("commitImport (transaction safety)", () => {
     const staged = prepareImport(wrap(validState(), 0), NOW);
     if (!staged.ok) throw new Error("stage failed");
 
-    const outcome = await commitImport(staged.state, NOW);
+    const outcome = await commitImport(staged.state, staged.learner, NOW);
     expect(outcome.ok).toBe(true);
 
     const stored = JSON.parse(memoryStorage.get(PROGRESS_STORAGE_KEY) as string);
-    expect(stored.version).toBe(3);
+    expect(stored.version).toBe(PERSIST_VERSION);
     expect(stored.state.courses["fr-en"].xp).toBe(215);
-    expect(stored.state.courses["fr-en"].cards["fr:w:homme|recognize"]).toBeDefined();
+    // Cards live in the learner store, never in the blob (P1d).
+    expect(stored.state.courses["fr-en"].cards).toBeUndefined();
+    const learner = await (await learnerStore()).exportAll();
+    expect(learner.cards["fr-en"]["fr:w:homme|recognize"]).toBeDefined();
+    // …and the live store has them in memory for the active course.
+    expect(useProgress.getState().courses["fr-en"].cards?.["fr:w:homme|recognize"]).toBeDefined();
     expect(useProgress.getState().streak).toBe(5);
     expect(useProgress.getState().activeCourseId).toBe("fr-en");
 
@@ -185,18 +197,20 @@ describe("commitImport (transaction safety)", () => {
   });
 
   test("interrupted commit leaves current state untouched", async () => {
-    // Seed at the current persist version so the restore path's rehydrate
-    // doesn't (legitimately) migrate-and-rewrite the stored form.
-    const before = JSON.stringify({
-      state: { ...freshFixture.state, reviewLog: [] },
-      version: 3,
-    });
-    memoryStorage.set(PROGRESS_STORAGE_KEY, before);
+    // Seed the fresh fixture and let the store write it back in the current
+    // persisted form, so the restore path's rehydrate rewrites identical bytes.
+    memoryStorage.set(PROGRESS_STORAGE_KEY, JSON.stringify(freshFixture));
+    await useProgress.persist.rehydrate();
+    await whenLearnerReady();
+    useProgress.getState().setThemePreference("system");
+    await new Promise((r) => setTimeout(r, 0));
+    const before = memoryStorage.get(PROGRESS_STORAGE_KEY) as string;
+    expect(JSON.parse(before).version).toBe(PERSIST_VERSION);
     const staged = prepareImport(wrap(validState(), 0), NOW);
     if (!staged.ok) throw new Error("stage failed");
 
-    asyncStorageMock.failNextSet = true; // the commit write fails
-    const outcome = await commitImport(staged.state, NOW);
+    asyncStorageMock.failNextSet = true; // the first commit write (learner store) fails
+    const outcome = await commitImport(staged.state, staged.learner, NOW);
     expect(outcome.ok).toBe(false);
     expect(memoryStorage.get(PROGRESS_STORAGE_KEY)).toBe(before);
     expect(useProgress.getState().activeCourseId).toBe("es-en");

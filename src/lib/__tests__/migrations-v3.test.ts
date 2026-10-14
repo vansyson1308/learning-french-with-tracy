@@ -16,7 +16,6 @@ import {
 import {
   __setMigrationFailureForTests,
   migrateProgress,
-  PERSIST_VERSION,
   type PersistedProgress,
 } from "../persistence/migrations";
 import { runInvariants, stageImport } from "../persistence/backup-core";
@@ -33,7 +32,7 @@ function v2Of(fixtureState: unknown): PersistedProgress {
 describe("v2 → v3: the assessment container", () => {
   test("a Phase-5 user gains exactly the empty container; everything else is byte-identical", () => {
     const v2 = v2Of(richFixture.state);
-    const out = migrateProgress(JSON.parse(JSON.stringify(v2)), 2, NOW);
+    const out = migrateProgress(JSON.parse(JSON.stringify(v2)), 2, NOW, 3);
     expect(out.assessment).toEqual(emptyAssessmentState());
     expect(out.assessment!.placementFloor).toBe(0);
     const { assessment: _a, ...outRest } = out;
@@ -43,13 +42,13 @@ describe("v2 → v3: the assessment container", () => {
   test("srsLegacy SURVIVES v3 (§46 — rollback data needs its own migration decision)", () => {
     const v2 = v2Of(richFixture.state);
     expect(v2.courses["fr-en"].srsLegacy).toBeDefined();
-    const out = migrateProgress(v2, 2, NOW);
+    const out = migrateProgress(v2, 2, NOW, 3);
     expect(out.courses["fr-en"].srsLegacy).toEqual(v2.courses["fr-en"].srsLegacy);
   });
 
   test("the full v0 → v3 chain works for every persona fixture", () => {
     for (const fixture of [richFixture.state, multiFixture.state, {}]) {
-      const out = migrateProgress(JSON.parse(JSON.stringify(fixture)), 0, NOW);
+      const out = migrateProgress(JSON.parse(JSON.stringify(fixture)), 0, NOW, 3);
       expect(out.assessment).toEqual(emptyAssessmentState());
       expect(Array.isArray(out.reviewLog)).toBe(true);
     }
@@ -58,7 +57,7 @@ describe("v2 → v3: the assessment container", () => {
   test("a corrupt pre-existing assessment value is replaced by the empty container", () => {
     const v2 = v2Of(richFixture.state);
     for (const corrupt of [null, 42, "x", { checkpointAttempts: "nope" }, { checkpointAttempts: [], placementFloor: -1 }, { checkpointAttempts: [], placementFloor: Number.NaN }]) {
-      const out = migrateProgress({ ...v2, assessment: corrupt }, 2, NOW);
+      const out = migrateProgress({ ...v2, assessment: corrupt }, 2, NOW, 3);
       expect(out.assessment).toEqual(emptyAssessmentState());
     }
   });
@@ -77,13 +76,13 @@ describe("v2 → v3: the assessment container", () => {
         itemResults: [],
       },
     };
-    const out = migrateProgress({ ...v2, assessment: container }, 2, NOW);
+    const out = migrateProgress({ ...v2, assessment: container }, 2, NOW, 3);
     expect(out.assessment).toEqual(container);
   });
 
   test("migrating from v3 is a no-op endpoint (idempotent)", () => {
-    const v3 = migrateProgress(v2Of(richFixture.state), 2, NOW);
-    const again = migrateProgress(JSON.parse(JSON.stringify(v3)), PERSIST_VERSION, NOW);
+    const v3 = migrateProgress(v2Of(richFixture.state), 2, NOW, 3);
+    const again = migrateProgress(JSON.parse(JSON.stringify(v3)), 3, NOW, 3);
     expect(JSON.stringify(again)).toBe(JSON.stringify(v3));
   });
 
@@ -101,7 +100,7 @@ describe("v2 → v3: the assessment container", () => {
 
 describe("backup import validates assessment state fail-closed (§47-48)", () => {
   function envelope(stateMutator: (s: PersistedProgress) => void): string {
-    const state = migrateProgress(JSON.parse(JSON.stringify(v2Of(richFixture.state))), 2, NOW);
+    const state = migrateProgress(JSON.parse(JSON.stringify(v2Of(richFixture.state))), 2, NOW, 3);
     stateMutator(state);
     return JSON.stringify({
       format: "lingo-progress-backup",

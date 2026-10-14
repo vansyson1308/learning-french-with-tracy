@@ -32,7 +32,7 @@ import { useCourseContent } from "@/lib/content";
 import { exitScreen } from "@/lib/navigation";
 import { probeSpeechCapabilityOnce } from "@/lib/speech/use-speech-session";
 import { courseProfile, hasCapability } from "@/lib/course-profile";
-import { useProgress } from "@/lib/store";
+import { assessmentFor, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 const GROUPS: {
@@ -113,12 +113,12 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
     objectiveIds: objectives.map((o) => o.id),
     objectiveLessons: objectiveLessonMap(pack),
     completedLessons: frCourse?.completedLessons ?? {},
-    checkpointAttempts: progress.assessment.checkpointAttempts,
-    placement: progress.assessment.placement,
+    checkpointAttempts: assessmentFor(progress, courseId).checkpointAttempts,
+    placement: assessmentFor(progress, courseId).placement,
   });
 
-  const placement = progress.assessment.placement;
-  const floor = progress.assessment.placementFloor;
+  const placement = assessmentFor(progress, courseId).placement;
+  const floor = assessmentFor(progress, courseId).placementFloor;
   const floorRef =
     floor > 0 ? getLesson(placement?.recommendedLessonId ?? "") : undefined;
 

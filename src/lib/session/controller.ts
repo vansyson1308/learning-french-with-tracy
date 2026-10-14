@@ -123,6 +123,9 @@ export function useSessionController(definition: SessionDefinition): SessionCont
         Math.min(assessmentsCompleted, XP_PER_LESSON)
       );
     }
+    // P1d: one learner-store transaction per completed session (every
+    // answered step is already in the crash-safe pending buffer).
+    void progress.flushLearner();
     sfx.playFinish();
     haptics.celebrate();
     // eslint-disable-next-line react-hooks/exhaustive-deps

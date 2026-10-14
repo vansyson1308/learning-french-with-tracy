@@ -9,7 +9,7 @@ import React from "react";
 
 import { attainmentPolicy } from "../src/lib/assessment/content";
 import { emptyAssessmentState } from "../src/lib/assessment/types";
-import { useProgress } from "../src/lib/store";
+import { assessmentFor, useProgress } from "../src/lib/store";
 
 // Confirm dialogs go through Alert on native; auto-accept the reset.
 jest.spyOn(require("react-native").Alert, "alert").mockImplementation(
@@ -32,7 +32,7 @@ function seedFrench(extra: Record<string, unknown> = {}) {
     courses: {},
     activeDays: {},
     reviewLog: [],
-    assessment: emptyAssessmentState(),
+    assessmentByCourse: { "fr-en": emptyAssessmentState() },
     ...extra,
   });
 }
@@ -86,7 +86,7 @@ describe("goals screen (§90-97)", () => {
       total: 2,
     }));
     seedFrench({
-      assessment: {
+      assessmentByCourse: { "fr-en": {
         placementFloor: 0,
         checkpointAttempts: [
           {
@@ -101,7 +101,7 @@ describe("goals screen (§90-97)", () => {
             overallCorrectShare: 1,
           },
         ],
-      },
+      } },
     });
     renderRouter("./src/app", { initialUrl: "/goals" });
     await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
@@ -132,7 +132,7 @@ describe("goals screen (§90-97)", () => {
       overallCorrectShare: 1,
     });
     seedFrench({
-      assessment: {
+      assessmentByCourse: { "fr-en": {
         placementFloor: 0,
         checkpointAttempts: [
           attempt("fr.checkpoint.section-3", required.filter((id) => /listening|reading/.test(id))),
@@ -140,7 +140,7 @@ describe("goals screen (§90-97)", () => {
           attempt("fr.checkpoint.section-5", required.filter((id) => /writing/.test(id))),
           attempt("fr.checkpoint.section-6", required.filter((id) => /interaction/.test(id))),
         ],
-      },
+      } },
     });
     renderRouter("./src/app", { initialUrl: "/goals" });
     await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
@@ -152,11 +152,11 @@ describe("goals screen (§90-97)", () => {
 
   test("placement: comfortable goals show as ESTIMATES; gaps never do (§40)", async () => {
     seedFrench({
-      assessment: {
+      assessmentByCourse: { "fr-en": {
         checkpointAttempts: [],
         placement: PLACEMENT_RESULT,
         placementFloor: 20,
-      },
+      } },
     });
     renderRouter("./src/app", { initialUrl: "/goals" });
     await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
@@ -170,7 +170,7 @@ describe("goals screen (§90-97)", () => {
 
   test("checkpoint verdicts beat estimates; thin evidence is not 'needs practice' (§93)", async () => {
     seedFrench({
-      assessment: {
+      assessmentByCourse: { "fr-en": {
         placement: PLACEMENT_RESULT,
         placementFloor: 0,
         checkpointAttempts: [
@@ -188,7 +188,7 @@ describe("goals screen (§90-97)", () => {
             overallCorrectShare: 0.6,
           },
         ],
-      },
+      } },
     });
     renderRouter("./src/app", { initialUrl: "/goals" });
     await waitFor(() => expect(screen.getByText("Your French goals")).toBeOnTheScreen());
@@ -207,19 +207,19 @@ describe("goals screen (§90-97)", () => {
 
   test("reset starting point clears the floor and keeps the record (§86)", async () => {
     seedFrench({
-      assessment: {
+      assessmentByCourse: { "fr-en": {
         checkpointAttempts: [],
         placement: PLACEMENT_RESULT,
         placementFloor: 20,
-      },
+      } },
     });
     renderRouter("./src/app", { initialUrl: "/goals" });
     await waitFor(() => expect(screen.getByTestId("reset-floor")).toBeOnTheScreen());
     await userEvent.press(screen.getByTestId("reset-floor"));
     await waitFor(() => {
-      expect(useProgress.getState().assessment.placementFloor).toBe(0);
+      expect(assessmentFor(useProgress.getState(), "fr-en").placementFloor).toBe(0);
     });
-    expect(useProgress.getState().assessment.placement?.completedAt).toBe(
+    expect(assessmentFor(useProgress.getState(), "fr-en").placement?.completedAt).toBe(
       PLACEMENT_RESULT.completedAt
     );
     // The screen reflects the reset: back to "from the beginning".

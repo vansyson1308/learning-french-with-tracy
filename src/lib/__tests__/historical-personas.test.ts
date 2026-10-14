@@ -17,7 +17,9 @@ import {
   createEnvelope,
   runInvariants,
   stageImport,
+  stripLearnerData,
 } from "../persistence/backup-core";
+import { learnerDataFromBlob } from "../persistence/learner";
 import {
   migrateProgress,
   PERSIST_VERSION,
@@ -99,7 +101,9 @@ describe("every historical persona reaches the final persist version losslessly"
     test(name, () => {
       const state = build();
       expect(runInvariants(state, NOW)).toEqual([]);
-      expect(state.assessment).toBeDefined();
+      expect(state.assessmentByCourse).toBeDefined();
+      expect(state.assessment).toBeUndefined();
+      expect(state.uiLanguage).toBe("system");
       expect(Array.isArray(state.reviewLog)).toBe(true);
       // Re-running the final-version migration is a no-op: stable fixed point.
       const again = migrateProgress(clone(state), PERSIST_VERSION, NOW);
@@ -119,11 +123,12 @@ describe("every historical persona reaches the final persist version losslessly"
 
   test("the Phase 8/9 persona keeps unstamped and stamped attempts exactly as recorded", () => {
     const state = migrateProgress(phase9Persona(), 3, NOW);
-    const [unstamped, stamped] = state.assessment!.checkpointAttempts;
+    const assessment = state.assessmentByCourse!["fr-en"];
+    const [unstamped, stamped] = assessment.checkpointAttempts;
     expect(unstamped.formId).toBeUndefined();
     expect(stamped.formId).toBe("a");
     expect(stamped.formVersion).toBe(1);
-    expect(state.assessment!.placementFloor).toBe(20);
+    expect(assessment.placementFloor).toBe(20);
     expect(Object.keys(state.courses["fr-en"].cards ?? {}).some((k) => k.endsWith("|speak"))).toBe(true);
   });
 });
@@ -132,11 +137,14 @@ describe("backup round trip under the final build (§56)", () => {
   for (const [name, build] of PERSONAS) {
     test(`${name}: export → import → read-back is identical`, () => {
       const state = build();
-      const raw = JSON.stringify(createEnvelope(state, PERSIST_VERSION, NOW));
+      const raw = JSON.stringify(createEnvelope(state, learnerDataFromBlob(state), PERSIST_VERSION, NOW));
       const staged = stageImport(raw, NOW);
       expect(staged.ok).toBe(true);
       if (!staged.ok) return;
-      expect(JSON.stringify(staged.state)).toBe(JSON.stringify(state));
+      // The blob half round-trips byte for byte; the learner half (cards +
+      // log, which pre-v4 shapes carried inline) rides in the v2 section.
+      expect(JSON.stringify(staged.state)).toBe(JSON.stringify(stripLearnerData(state)));
+      expect(staged.learner).toEqual(learnerDataFromBlob(state));
       // Speech never rides along: no transcript or audio field anywhere.
       expect(raw).not.toMatch(/transcript|recordingUri|\.wav/);
     });
@@ -148,7 +156,8 @@ describe("corrupt state fails closed and never fabricates a valid state (§57)",
   const envelope = (mutate: (s: PersistedProgress) => unknown, version = PERSIST_VERSION) => {
     const s = valid();
     const mutated = mutate(s) ?? s;
-    return JSON.stringify(createEnvelope(mutated as PersistedProgress, version, NOW));
+    const m = mutated as PersistedProgress;
+    return JSON.stringify(createEnvelope(m, learnerDataFromBlob(m), version, NOW));
   };
 
   test("malformed JSON", () => {
