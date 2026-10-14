@@ -1,0 +1,96 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "pt",
+  "recordedAt": "2026-10-14",
+  "artifacts": {
+    "kaikki-en-pt.jsonl": {
+      "status": "retrieved",
+      "sha256": "85ff31158301aea961297c8b10e631482a83eea895a2e1e421c821f8a1af9152",
+      "bytes": 577009001,
+      "lines": 446043,
+      "samples": [
+        "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"pt\", \"2\": \"noun form\"}, \"expansion\": \"alas\"}], \"word\": \"alas\", \"lang\": \"Portuguese\", \"lang_code\": \"pt\", \"senses\": [{\"links\": [[\"ala\", \"ala#Portuguese\"]], \"glosses\": [\"plural of ala\"], \"tags\": [\"form-of\", \"plural\"], \"form_of\": [{\"word\": \"ala\"}], \"id\": \"en-alas-pt-noun-eqP8aFYh\"}]}",
+        "{\"pos\": \"intj\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"pt\", \"2\": \"intj\"}, \"expansion\": \"hm\"}], \"word\": \"hm\", \"lang\": \"Portuguese\", \"lang_code\": \"pt\", \"forms\": [{\"form\": \"hmm\", \"tags\": [\"alternative\"]}, {\"form\": \"hmmm\", \"tags\": [\"alternative\"]}, {\"form\": \"mmm\", \"tags\": [\"alternative\"]}], \"senses\": [{\"links\": [[\"what\", \"what\"]], \"glosses\": [\"what?\"], \"id\": \"en-hm-pt-intj-LMmlmuFO\"}]}"
+      ]
+    },
+    "kaikki-vi-pt.jsonl": {
+      "status": "retrieved",
+      "sha256": "f2472866bf1db1be56a583b69453b7f1c23cc8e055834c4c95145142668b7c5c",
+      "bytes": 1853394,
+      "lines": 1378,
+      "samples": [
+        "{\"word\": \"agra\", \"lang_code\": \"pt\", \"lang\": \"Tiếng Bồ Đào Nha\", \"pos\": \"adj\", \"pos_title\": \"Tính từ\", \"categories\": [{\"name\": \"Mục từ có cách phát âm IPA tiếng Bồ Đào Nha\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}, {\"name\": \"Từ 2 âm tiết tiếng Bồ Đào Nha\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}], \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"vi-agra-pt-adj-47DEQpj8\"}]}"
+      ]
+    },
+    "frequencywords-pt.txt": {
+      "status": "retrieved",
+      "sha256": "a61d6f2ede97c5daad5fb3907b72a228f0aff12668be6d24da590d20804fa611",
+      "bytes": 650066,
+      "lines": 50000,
+      "samples": [
+        "que 15044152",
+        "não 12169729"
+      ]
+    },
+    "wordfreq-pt.csv": {
+      "status": "retrieved",
+      "sha256": "6bb467d2f0727d54654d3365443e2ba0ded68f3a48b52b5b265016be8384ff5c",
+      "bytes": 685413,
+      "lines": 50001,
+      "samples": [
+        "word,zipf",
+        "de,7.68"
+      ]
+    },
+    "tatoeba-pt-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "20cf90327df32e500faf1ec7276a61f703ee12f58a0746043dd54138feb9e628",
+      "bytes": 47381240,
+      "lines": 445215,
+      "samples": [
+        "146680\tpor\tUma menina chorando abriu a porta.\tLeonroz\t\\N\t2019-01-13 01:57:11",
+        "180624\tpor\tVamos tentar alguma coisa!\tRicardo14\t2008-04-17 00:17:33\t2015-08-19 02:18:37"
+      ]
+    },
+    "tatoeba-pt-links-en.tsv": {
+      "status": "retrieved",
+      "sha256": "e625dca6270aacad7a1b27674bcda539f46a46ee2cf5f8b2726f875ed5ca0b85",
+      "bytes": 4811327,
+      "lines": 302280,
+      "samples": [
+        "146680\t267881",
+        "180624\t1276"
+      ]
+    },
+    "tatoeba-pt-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "1d99dfad635380a2a6fb2b11f45ace2e748ff9d057c12039cc9fe188de7ebe1e",
+      "bytes": 300,
+      "lines": 20,
+      "samples": [
+        "182184\t5662",
+        "340439\t5788"
+      ]
+    },
+    "tatoeba-eng-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+      "bytes": 198754998,
+      "lines": 2038719,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+      "bytes": 3739296,
+      "lines": 33223,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}
