@@ -1,0 +1,97 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "de",
+  "recordedAt": "2026-10-14",
+  "artifacts": {
+    "kaikki-en-de.jsonl": {
+      "status": "retrieved",
+      "sha256": "d7ae58be5479ebf607bb9f714e74d796f4df3e8b558478d8e9c7710c55510394",
+      "bytes": 1085014820,
+      "lines": 371261,
+      "samples": [
+        "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"de\", \"2\": \"noun\"}, \"expansion\": \"BS\"}], \"word\": \"BS\", \"lang\": \"German\", \"lang_code\": \"de\", \"senses\": [{\"links\": [[\"Bausoldat\", \"Bausoldat\"]], \"glosses\": [\"Bausoldat\"], \"id\": \"en-BS-de-noun-pUG0lhdt\"}]}",
+        "{\"pos\": \"num\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"de\", \"2\": \"numeral\"}, \"expansion\": \"drey\"}], \"word\": \"drey\", \"lang\": \"German\", \"lang_code\": \"de\", \"senses\": [{\"links\": [[\"drei\", \"drei#German\"]], \"glosses\": [\"obsolete spelling of drei\"], \"tags\": [\"alt-of\", \"obsolete\"], \"alt_of\": [{\"word\": \"drei\"}], \"id\": \"en-drey-de-num-nb-Py2gP\", \"categories\": []}]}"
+      ]
+    },
+    "kaikki-vi-de.jsonl": {
+      "status": "retrieved",
+      "sha256": "4a95bf148447b79b0a5108150895655271b31e4963a51e2c83d43e830463c495",
+      "bytes": 2963664,
+      "lines": 1761,
+      "samples": [
+        "{\"word\": \"sexagesimal\", \"lang_code\": \"de\", \"lang\": \"Tiếng Đức\", \"pos\": \"adj\", \"pos_title\": \"Tính từ\", \"categories\": [{\"name\": \"Từ dẫn xuất từ tiếng Latinh tiếng Đức\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}], \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"vi-sexagesimal-de-adj-47DEQpj8\"}]}",
+        "{\"word\": \"fotografierender\", \"lang_code\": \"de\", \"lang\": \"Tiếng Đức\", \"pos\": \"adj\", \"pos_title\": \"Tính từ\", \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"vi-fotografierender-de-adj-47DEQpj8\"}]}"
+      ]
+    },
+    "frequencywords-de.txt": {
+      "status": "retrieved",
+      "sha256": "d9e50546fd7e8b6fe6542a2b33c51d1331092b2a3916ec09f80d97856068705b",
+      "bytes": 662497,
+      "lines": 50000,
+      "samples": [
+        "ich 5890279",
+        "sie 3806767"
+      ]
+    },
+    "wordfreq-de.csv": {
+      "status": "retrieved",
+      "sha256": "8ce19aa8a3ae67f9ab6d3fe4ed14f4a734122808c9dc55dc27c34443f3aaa10c",
+      "bytes": 731692,
+      "lines": 50001,
+      "samples": [
+        "word,zipf",
+        "die,7.48"
+      ]
+    },
+    "tatoeba-de-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "5517ea95b1608dfdd4ce2e5e947bb86731311844e3cddad5a5d19069da7e9c76",
+      "bytes": 87725712,
+      "lines": 783551,
+      "samples": [
+        "77\tdeu\tLass uns etwas versuchen!\tludoviko\t\\N\t2010-10-11 09:53:14",
+        "78\tdeu\tIch muss schlafen gehen.\tcburgmer\t\\N\t2010-02-15 09:06:02"
+      ]
+    },
+    "tatoeba-de-links-en.tsv": {
+      "status": "retrieved",
+      "sha256": "26ee55d57f5f59dc99f036592702d39ad53493ddf0421bc23555d3a6eb3f7352",
+      "bytes": 9433286,
+      "lines": 585698,
+      "samples": [
+        "77\t1276",
+        "80\t42849"
+      ]
+    },
+    "tatoeba-de-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "e276ca819a6c5d0f7bea92c29cb0b53cb18255e48b28cb62c161000688e8ccc0",
+      "bytes": 5783,
+      "lines": 470,
+      "samples": [
+        "78\t5662",
+        "80\t5664"
+      ]
+    },
+    "tatoeba-eng-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+      "bytes": 198754998,
+      "lines": 2038719,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+      "bytes": 3739296,
+      "lines": 33223,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}
