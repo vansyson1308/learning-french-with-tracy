@@ -1,0 +1,218 @@
+{
+  "allowUndo": false,
+  "completion": "practice",
+  "courseId": "fr-en",
+  "evidenceSource": "lesson",
+  "kind": "review",
+  "lessonId": "writing-practice",
+  "steps": [
+    {
+      "exercise": {
+        "cueFacts": [
+          {
+            "label": "Name",
+            "value": "Léa"
+          },
+          {
+            "label": "Age",
+            "value": "22"
+          },
+          {
+            "label": "City",
+            "value": "Paris"
+          }
+        ],
+        "id": "s5-e7",
+        "instruction": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences.",
+        "modelAnswers": [
+          "Je m'appelle Léa, j'ai 22 ans et j'habite à Paris."
+        ],
+        "objectiveTargets": [
+          "fr.obj.writing.personal_info"
+        ],
+        "rubric": {
+          "maxTokens": 30,
+          "minTokens": 8,
+          "requireSentenceVerbs": [
+            "m'appelle",
+            "suis",
+            "c'est"
+          ],
+          "requiredSlots": [
+            {
+              "cueProvided": true,
+              "description": "your name",
+              "id": "name",
+              "variants": [
+                "je m'appelle Léa",
+                "je suis Léa",
+                "moi c'est Léa"
+              ]
+            },
+            {
+              "cueProvided": true,
+              "description": "your age",
+              "id": "age",
+              "variants": [
+                "j'ai vingt-deux ans"
+              ]
+            },
+            {
+              "cueProvided": true,
+              "description": "where you live",
+              "id": "city",
+              "variants": [
+                "j'habite à Paris",
+                "j'habite Paris"
+              ]
+            }
+          ]
+        },
+        "type": "guidedWriting",
+        "writingMode": "guided",
+        "writingTaskId": "fr.write.o_profile"
+      },
+      "stepId": "wp-s5-e7",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "id": "s5-e11",
+        "instruction": "Write a sentence saying you like tea and bread.",
+        "modelAnswers": [
+          "J'aime le thé et le pain."
+        ],
+        "objectiveTargets": [
+          "fr.obj.writing.phrases_sentences"
+        ],
+        "rubric": {
+          "maxTokens": 14,
+          "minTokens": 4,
+          "requireSentenceVerbs": [
+            "aime",
+            "adore"
+          ],
+          "requiredSlots": [
+            {
+              "cueProvided": false,
+              "description": "that you like something (j'aime)",
+              "id": "like",
+              "variants": [
+                "j'aime",
+                "j'adore"
+              ]
+            },
+            {
+              "cueProvided": false,
+              "description": "the tea",
+              "id": "tea",
+              "variants": [
+                "thé"
+              ]
+            },
+            {
+              "cueProvided": false,
+              "description": "the bread",
+              "id": "bread",
+              "variants": [
+                "pain"
+              ]
+            }
+          ]
+        },
+        "type": "guidedWriting",
+        "writingMode": "guided",
+        "writingTaskId": "fr.write.p_like_two"
+      },
+      "stepId": "wp-s5-e11",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "id": "s5-e19",
+        "instruction": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”.",
+        "modelAnswers": [
+          "Bonjour, je suis à la gare. À demain !"
+        ],
+        "objectiveTargets": [
+          "fr.obj.writing.short_message"
+        ],
+        "rubric": {
+          "maxTokens": 22,
+          "minTokens": 6,
+          "requireSentenceVerbs": [
+            "suis"
+          ],
+          "requiredSlots": [
+            {
+              "cueProvided": false,
+              "description": "a greeting",
+              "id": "greeting",
+              "variants": [
+                "bonjour",
+                "salut"
+              ]
+            },
+            {
+              "cueProvided": false,
+              "description": "where you are",
+              "id": "place",
+              "variants": [
+                "je suis à la gare"
+              ]
+            },
+            {
+              "cueProvided": false,
+              "description": "a closing",
+              "id": "closing",
+              "variants": [
+                "à demain"
+              ]
+            }
+          ]
+        },
+        "type": "guidedWriting",
+        "writingMode": "guided",
+        "writingTaskId": "fr.write.q_note_closing"
+      },
+      "stepId": "wp-s5-e19",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "id": "s5-e20",
+        "instruction": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice.",
+        "modelAnswers": [
+          "Salut Léa, je suis au café. À demain !"
+        ],
+        "objectiveTargets": [
+          "fr.obj.writing.short_message"
+        ],
+        "rubric": {
+          "maxTokens": 60,
+          "minTokens": 4,
+          "requiredSlots": [
+            {
+              "cueProvided": false,
+              "description": "your message",
+              "id": "message",
+              "variants": [
+                "bonjour",
+                "salut",
+                "à demain",
+                "au revoir",
+                "merci"
+              ]
+            }
+          ]
+        },
+        "type": "guidedWriting",
+        "writingMode": "open",
+        "writingTaskId": "fr.write.q_open"
+      },
+      "stepId": "wp-s5-e20",
+      "type": "exercise"
+    }
+  ],
+  "trackMistakes": false
+}

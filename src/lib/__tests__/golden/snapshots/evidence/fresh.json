@@ -1,0 +1,224 @@
+{
+  "cards": {
+    "fr:w:femme|recognize": {
+      "difficulty": 6.4133,
+      "due": 1781524920000,
+      "lapses": 0,
+      "last_review": 1781524860000,
+      "learning_steps": 0,
+      "reps": 1,
+      "scheduled_days": 0,
+      "stability": 0.212,
+      "state": "learning"
+    },
+    "fr:w:fille|recognize": {
+      "difficulty": 6.4133,
+      "due": 1781525040000,
+      "lapses": 0,
+      "last_review": 1781524980000,
+      "learning_steps": 0,
+      "reps": 1,
+      "scheduled_days": 0,
+      "stability": 0.212,
+      "state": "learning"
+    },
+    "fr:w:homme|recognize": {
+      "difficulty": 2.11810397,
+      "due": 1781525400000,
+      "lapses": 0,
+      "last_review": 1781524800000,
+      "learning_steps": 1,
+      "reps": 1,
+      "scheduled_days": 0,
+      "stability": 2.3065,
+      "state": "learning"
+    }
+  },
+  "mutated": [
+    true,
+    true,
+    false,
+    true,
+    false,
+    false
+  ],
+  "reviewLog": [
+    {
+      "assisted": false,
+      "at": 1781524800000,
+      "attemptIndex": 0,
+      "cardKey": "fr:w:homme|recognize",
+      "correct": true,
+      "courseId": "fr-en",
+      "exerciseId": "golden-e0",
+      "hinted": false,
+      "latencyMs": 1500,
+      "modality": "recognizeText",
+      "mutation": {
+        "fsrsLog": {
+          "difficulty": 0,
+          "due": 1781524800000,
+          "learning_steps": 0,
+          "rating": 3,
+          "review": 1781524800000,
+          "scheduled_days": 0,
+          "stability": 0,
+          "state": 0
+        },
+        "grade": "good",
+        "prevCard": {
+          "difficulty": 0,
+          "due": 1781524800000,
+          "lapses": 0,
+          "learning_steps": 0,
+          "reps": 0,
+          "scheduled_days": 0,
+          "stability": 0,
+          "state": "new"
+        }
+      },
+      "sessionId": "golden-session",
+      "source": "lesson",
+      "srsRole": "assessment",
+      "toleranceUsed": false
+    },
+    {
+      "assisted": false,
+      "at": 1781524860000,
+      "attemptIndex": 0,
+      "cardKey": "fr:w:femme|recognize",
+      "correct": false,
+      "courseId": "fr-en",
+      "exerciseId": "golden-e1",
+      "hinted": false,
+      "latencyMs": 1600,
+      "modality": "recognizeText",
+      "mutation": {
+        "fsrsLog": {
+          "difficulty": 0,
+          "due": 1781524860000,
+          "learning_steps": 0,
+          "rating": 1,
+          "review": 1781524860000,
+          "scheduled_days": 0,
+          "stability": 0,
+          "state": 0
+        },
+        "grade": "again",
+        "prevCard": {
+          "difficulty": 0,
+          "due": 1781524860000,
+          "lapses": 0,
+          "learning_steps": 0,
+          "reps": 0,
+          "scheduled_days": 0,
+          "stability": 0,
+          "state": "new"
+        }
+      },
+      "sessionId": "golden-session",
+      "source": "review",
+      "srsRole": "assessment",
+      "toleranceUsed": false
+    },
+    {
+      "assisted": false,
+      "at": 1781524920000,
+      "attemptIndex": 1,
+      "cardKey": "fr:w:garcon|recognize",
+      "correct": true,
+      "courseId": "fr-en",
+      "exerciseId": "golden-e2",
+      "hinted": false,
+      "latencyMs": 1700,
+      "modality": "recognizeText",
+      "sessionId": "golden-session",
+      "source": "lesson",
+      "srsRole": "assessment",
+      "toleranceUsed": false
+    },
+    {
+      "assisted": false,
+      "at": 1781524980000,
+      "attemptIndex": 0,
+      "cardKey": "fr:w:fille|recognize",
+      "correct": true,
+      "courseId": "fr-en",
+      "exerciseId": "golden-e3",
+      "hinted": true,
+      "latencyMs": 1800,
+      "modality": "recognizeText",
+      "mutation": {
+        "fsrsLog": {
+          "difficulty": 0,
+          "due": 1781524980000,
+          "learning_steps": 0,
+          "rating": 1,
+          "review": 1781524980000,
+          "scheduled_days": 0,
+          "stability": 0,
+          "state": 0
+        },
+        "grade": "again",
+        "prevCard": {
+          "difficulty": 0,
+          "due": 1781524980000,
+          "lapses": 0,
+          "learning_steps": 0,
+          "reps": 0,
+          "scheduled_days": 0,
+          "stability": 0,
+          "state": "new"
+        }
+      },
+      "sessionId": "golden-session",
+      "source": "review",
+      "srsRole": "assessment",
+      "toleranceUsed": false
+    },
+    {
+      "assisted": true,
+      "at": 1781525040000,
+      "attemptIndex": 0,
+      "cardKey": "fr:w:homme|listen",
+      "correct": true,
+      "courseId": "fr-en",
+      "exerciseId": "golden-e4",
+      "hinted": false,
+      "latencyMs": 1900,
+      "modality": "listen",
+      "sessionId": "golden-session",
+      "source": "lesson",
+      "srsRole": "assessment",
+      "toleranceUsed": false
+    },
+    {
+      "assisted": false,
+      "at": 1781525100000,
+      "attemptIndex": 0,
+      "cardKey": "fr:w:femme|speak",
+      "correct": false,
+      "courseId": "fr-en",
+      "exerciseId": "golden-e5",
+      "hinted": false,
+      "latencyMs": 2000,
+      "modality": "speak",
+      "sessionId": "golden-session",
+      "source": "review",
+      "srsRole": "practice",
+      "toleranceUsed": false
+    }
+  ],
+  "wordStats": {
+    "fr:w:garcon": {
+      "correct": 1,
+      "lastSeen": 1781524920000,
+      "wrong": 0
+    },
+    "fr:w:homme": {
+      "correct": 2,
+      "lastSeen": 1781525040000,
+      "wrong": 0
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "envelope": {
+    "envelopeVersion": 1,
+    "exportedAt": "2026-06-15T12:00:00.000Z",
+    "format": "lingo-progress-backup",
+    "manifest": {
+      "courses": [],
+      "topLevelKeys": [
+        "activeCourseId",
+        "streak",
+        "lastActiveDay",
+        "dailyGoal",
+        "dailyXp",
+        "dailyXpDay",
+        "onboardingDone",
+        "themePreference",
+        "courses",
+        "activeDays",
+        "reviewLog",
+        "assessment"
+      ]
+    },
+    "persistVersion": 3
+  },
+  "fromVersion": 0,
+  "invariants": [],
+  "migrated": {
+    "activeCourseId": "es-en",
+    "activeDays": {},
+    "assessment": {
+      "checkpointAttempts": [],
+      "placementFloor": 0
+    },
+    "courses": {},
+    "dailyGoal": 20,
+    "dailyXp": 0,
+    "dailyXpDay": null,
+    "lastActiveDay": null,
+    "onboardingDone": false,
+    "reviewLog": [],
+    "streak": 0,
+    "themePreference": "system"
+  },
+  "staged": {
+    "ok": true,
+    "state": {
+      "activeCourseId": "es-en",
+      "activeDays": {},
+      "assessment": {
+        "checkpointAttempts": [],
+        "placementFloor": 0
+      },
+      "courses": {},
+      "dailyGoal": 20,
+      "dailyXp": 0,
+      "dailyXpDay": null,
+      "lastActiveDay": null,
+      "onboardingDone": false,
+      "reviewLog": [],
+      "streak": 0,
+      "themePreference": "system"
+    }
+  },
+  "toVersion": 3
+}

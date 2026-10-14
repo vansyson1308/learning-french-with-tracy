@@ -1,0 +1,478 @@
+{
+  "backlogRemaining": 0,
+  "backlogTotal": 2,
+  "estimatedMinutes": 6,
+  "listenCount": 0,
+  "newCount": 4,
+  "reviewCount": 2,
+  "speakCount": 0,
+  "steps": [
+    {
+      "evidence": {
+        "itemId": "fr:w:femme",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "la femme",
+        "correct": 1,
+        "id": "today-review-fr:w:femme",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "👔",
+            "text": "the boss"
+          },
+          {
+            "emoji": "👩",
+            "text": "the woman"
+          },
+          {
+            "emoji": "👧",
+            "text": "the girl"
+          },
+          {
+            "emoji": "👨",
+            "text": "the man"
+          }
+        ],
+        "prompt": "la femme",
+        "type": "select"
+      },
+      "phase": "warmup",
+      "stepId": "today-review-fr:w:femme",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:homme",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "l'homme",
+        "correct": 1,
+        "id": "today-review-fr:w:homme",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "👦",
+            "text": "the boy"
+          },
+          {
+            "emoji": "👨",
+            "text": "the man"
+          },
+          {
+            "emoji": "👩",
+            "text": "the woman"
+          },
+          {
+            "emoji": "🦸",
+            "text": "the hero"
+          }
+        ],
+        "prompt": "l'homme",
+        "type": "select"
+      },
+      "phase": "warmup",
+      "stepId": "today-review-fr:w:homme",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:eau",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:eau",
+      "type": "teach",
+      "word": {
+        "emoji": "💧",
+        "native": "the water",
+        "target": "l'eau"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:eau",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "l'eau",
+        "correct": 0,
+        "id": "today-new-fr:w:eau",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "💧",
+            "text": "the water"
+          },
+          {
+            "emoji": "🧃",
+            "text": "the juice"
+          },
+          {
+            "emoji": "🍎",
+            "text": "the apple"
+          },
+          {
+            "emoji": "🥚",
+            "text": "the egg"
+          }
+        ],
+        "prompt": "l'eau",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:eau",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:lait",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:lait",
+      "type": "teach",
+      "word": {
+        "emoji": "🥛",
+        "native": "the milk",
+        "target": "le lait"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:lait",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "le lait",
+        "correct": 0,
+        "id": "today-new-fr:w:lait",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🥛",
+            "text": "the milk"
+          },
+          {
+            "emoji": "🧀",
+            "text": "the cheese"
+          },
+          {
+            "emoji": "🍵",
+            "text": "the tea"
+          },
+          {
+            "emoji": "🍚",
+            "text": "the rice"
+          }
+        ],
+        "prompt": "le lait",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:lait",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:manger",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:manger",
+      "type": "teach",
+      "word": {
+        "emoji": "🍽️",
+        "native": "to eat",
+        "target": "manger"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:manger",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "manger",
+        "correct": 0,
+        "id": "today-new-fr:w:manger",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🍽️",
+            "text": "to eat"
+          },
+          {
+            "emoji": "🎁",
+            "text": "to have"
+          },
+          {
+            "emoji": "🚶",
+            "text": "to go"
+          },
+          {
+            "emoji": "🥤",
+            "text": "to drink"
+          }
+        ],
+        "prompt": "manger",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:manger",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:pomme",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:pomme",
+      "type": "teach",
+      "word": {
+        "emoji": "🍎",
+        "native": "the apple",
+        "target": "la pomme"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:pomme",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "la pomme",
+        "correct": 0,
+        "id": "today-new-fr:w:pomme",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🍎",
+            "text": "the apple"
+          },
+          {
+            "emoji": "☕",
+            "text": "the coffee"
+          },
+          {
+            "emoji": "🥚",
+            "text": "the egg"
+          },
+          {
+            "emoji": "💧",
+            "text": "the water"
+          }
+        ],
+        "prompt": "la pomme",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:pomme",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:homme",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "l'homme",
+        "correct": 0,
+        "id": "today-mixed-fr:w:homme",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "l'homme"
+          },
+          {
+            "text": "le garçon"
+          },
+          {
+            "text": "le héros"
+          },
+          {
+            "text": "la femme"
+          }
+        ],
+        "prompt": "the man",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:homme",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:manger",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "manger",
+        "correct": 3,
+        "id": "today-mixed-fr:w:manger",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "vouloir"
+          },
+          {
+            "text": "faire"
+          },
+          {
+            "text": "boire"
+          },
+          {
+            "text": "manger"
+          }
+        ],
+        "prompt": "to eat",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:manger",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:femme",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "la femme",
+        "correct": 2,
+        "id": "today-mixed-fr:w:femme",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "la fille"
+          },
+          {
+            "text": "l'homme"
+          },
+          {
+            "text": "la femme"
+          },
+          {
+            "text": "le héros"
+          }
+        ],
+        "prompt": "the woman",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:femme",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:lait",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "le lait",
+        "correct": 3,
+        "id": "today-mixed-fr:w:lait",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "le poulet"
+          },
+          {
+            "text": "le pain"
+          },
+          {
+            "text": "le jus"
+          },
+          {
+            "text": "le lait"
+          }
+        ],
+        "prompt": "the milk",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:lait",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:pomme",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "la pomme",
+        "correct": 0,
+        "id": "today-mixed-fr:w:pomme",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "la pomme"
+          },
+          {
+            "text": "le jus"
+          },
+          {
+            "text": "le riz"
+          },
+          {
+            "text": "l'eau"
+          }
+        ],
+        "prompt": "the apple",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:pomme",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:eau",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "l'eau",
+        "correct": 3,
+        "id": "today-mixed-fr:w:eau",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "l'œuf"
+          },
+          {
+            "text": "la pomme"
+          },
+          {
+            "text": "le jus"
+          },
+          {
+            "text": "l'eau"
+          }
+        ],
+        "prompt": "the water",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:eau",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "id": "today-finale",
+        "pairs": [
+          {
+            "native": "the apple",
+            "target": "la pomme"
+          },
+          {
+            "native": "the man",
+            "target": "l'homme"
+          },
+          {
+            "native": "to eat",
+            "target": "manger"
+          },
+          {
+            "native": "the water",
+            "target": "l'eau"
+          }
+        ],
+        "type": "match"
+      },
+      "phase": "finale",
+      "stepId": "today-finale",
+      "type": "exercise"
+    }
+  ]
+}

@@ -1,0 +1,827 @@
+{
+  "final": {
+    "attempts": {
+      "fr.cpi.s3.ann_biblio_heure": 1,
+      "fr.cpi.s3.ann_biblio_lieu": 1,
+      "fr.cpi.s3.ann_dictee_voie": 1,
+      "fr.cpi.s3.ann_train_voie": 1,
+      "fr.cpi.s3.dlg_magasin_heure": 1,
+      "fr.cpi.s3.dlg_the_objet": 1,
+      "fr.cpi.s3.dlg_the_prix": 1,
+      "fr.cpi.s3.fam_dictee_soir": 1,
+      "fr.cpi.s3.fam_fromage": 1,
+      "fr.cpi.s3.fam_hotel": 1,
+      "fr.cpi.s3.info_musee_jour": 1,
+      "fr.cpi.s3.info_musee_prix": 1,
+      "fr.cpi.s3.info_resto_plage": 1,
+      "fr.cpi.s3.msg_ferme": 1,
+      "fr.cpi.s3.msg_theo_ou": 1,
+      "fr.cpi.s3.msg_theo_quand": 1,
+      "fr.cpi.s3.not_biblio_dimanche": 1,
+      "fr.cpi.s3.not_biblio_jours": 1,
+      "fr.cpi.s3.not_sortie": 1,
+      "fr.cpi.s3.txt_camille_matin": 1,
+      "fr.cpi.s3.txt_camille_ou": 1,
+      "fr.cpi.s3.txt_nora_train": 1
+    },
+    "completedCount": 22,
+    "finished": true,
+    "firstResults": {
+      "fr.cpi.s3.ann_biblio_heure": true,
+      "fr.cpi.s3.ann_biblio_lieu": true,
+      "fr.cpi.s3.ann_dictee_voie": true,
+      "fr.cpi.s3.ann_train_voie": false,
+      "fr.cpi.s3.dlg_magasin_heure": true,
+      "fr.cpi.s3.dlg_the_objet": true,
+      "fr.cpi.s3.dlg_the_prix": true,
+      "fr.cpi.s3.fam_dictee_soir": true,
+      "fr.cpi.s3.fam_fromage": false,
+      "fr.cpi.s3.fam_hotel": true,
+      "fr.cpi.s3.info_musee_jour": true,
+      "fr.cpi.s3.info_musee_prix": true,
+      "fr.cpi.s3.info_resto_plage": false,
+      "fr.cpi.s3.msg_ferme": true,
+      "fr.cpi.s3.msg_theo_ou": true,
+      "fr.cpi.s3.msg_theo_quand": false,
+      "fr.cpi.s3.not_biblio_dimanche": false,
+      "fr.cpi.s3.not_biblio_jours": true,
+      "fr.cpi.s3.not_sortie": true,
+      "fr.cpi.s3.txt_camille_matin": true,
+      "fr.cpi.s3.txt_camille_ou": true,
+      "fr.cpi.s3.txt_nora_train": false
+    },
+    "queueIds": [
+      "fr.cpi.s3.fam_hotel",
+      "fr.cpi.s3.fam_fromage",
+      "fr.cpi.s3.fam_dictee_soir",
+      "fr.cpi.s3.ann_biblio_heure",
+      "fr.cpi.s3.ann_biblio_lieu",
+      "fr.cpi.s3.ann_train_voie",
+      "fr.cpi.s3.ann_dictee_voie",
+      "fr.cpi.s3.info_musee_prix",
+      "fr.cpi.s3.info_musee_jour",
+      "fr.cpi.s3.info_resto_plage",
+      "fr.cpi.s3.dlg_the_objet",
+      "fr.cpi.s3.dlg_the_prix",
+      "fr.cpi.s3.dlg_magasin_heure",
+      "fr.cpi.s3.msg_theo_quand",
+      "fr.cpi.s3.msg_theo_ou",
+      "fr.cpi.s3.msg_ferme",
+      "fr.cpi.s3.not_biblio_jours",
+      "fr.cpi.s3.not_biblio_dimanche",
+      "fr.cpi.s3.not_sortie",
+      "fr.cpi.s3.txt_camille_ou",
+      "fr.cpi.s3.txt_camille_matin",
+      "fr.cpi.s3.txt_nora_train"
+    ],
+    "skipped": {},
+    "wrongCounts": {
+      "fr.cpi.s3.ann_train_voie": 1,
+      "fr.cpi.s3.fam_fromage": 1,
+      "fr.cpi.s3.info_resto_plage": 1,
+      "fr.cpi.s3.msg_theo_quand": 1,
+      "fr.cpi.s3.not_biblio_dimanche": 1,
+      "fr.cpi.s3.txt_nora_train": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_hotel"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_hotel"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.fam_hotel"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_fromage"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_fromage"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.fam_fromage"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_dictee_soir"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_dictee_soir"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.fam_dictee_soir"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_dictee_soir"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.fam_dictee_soir"
+    },
+    {
+      "action": "check",
+      "completed": 3,
+      "finished": false,
+      "index": 2,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.fam_dictee_soir"
+    },
+    {
+      "action": "continue",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_biblio_heure"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_biblio_heure"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 3,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.ann_biblio_heure"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_biblio_lieu"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_biblio_lieu"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 4,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.ann_biblio_lieu"
+    },
+    {
+      "action": "continue",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_train_voie"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_train_voie"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.ann_train_voie"
+    },
+    {
+      "action": "continue",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_dictee_voie"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_dictee_voie"
+    },
+    {
+      "action": "check",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.ann_dictee_voie"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_dictee_voie"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.ann_dictee_voie"
+    },
+    {
+      "action": "check",
+      "completed": 7,
+      "finished": false,
+      "index": 6,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.ann_dictee_voie"
+    },
+    {
+      "action": "continue",
+      "completed": 7,
+      "finished": false,
+      "index": 7,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.info_musee_prix"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 7,
+      "finished": false,
+      "index": 7,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.info_musee_prix"
+    },
+    {
+      "action": "check",
+      "completed": 8,
+      "finished": false,
+      "index": 7,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.info_musee_prix"
+    },
+    {
+      "action": "continue",
+      "completed": 8,
+      "finished": false,
+      "index": 8,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.info_musee_jour"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 8,
+      "finished": false,
+      "index": 8,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.info_musee_jour"
+    },
+    {
+      "action": "check",
+      "completed": 9,
+      "finished": false,
+      "index": 8,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.info_musee_jour"
+    },
+    {
+      "action": "continue",
+      "completed": 9,
+      "finished": false,
+      "index": 9,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.info_resto_plage"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 9,
+      "finished": false,
+      "index": 9,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.info_resto_plage"
+    },
+    {
+      "action": "check",
+      "completed": 9,
+      "finished": false,
+      "index": 9,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.info_resto_plage"
+    },
+    {
+      "action": "continue",
+      "completed": 10,
+      "finished": false,
+      "index": 10,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_the_objet"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 10,
+      "finished": false,
+      "index": 10,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_the_objet"
+    },
+    {
+      "action": "check",
+      "completed": 10,
+      "finished": false,
+      "index": 10,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.dlg_the_objet"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 10,
+      "finished": false,
+      "index": 10,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_the_objet"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 10,
+      "finished": false,
+      "index": 10,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_the_objet"
+    },
+    {
+      "action": "check",
+      "completed": 11,
+      "finished": false,
+      "index": 10,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.dlg_the_objet"
+    },
+    {
+      "action": "continue",
+      "completed": 11,
+      "finished": false,
+      "index": 11,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_the_prix"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 11,
+      "finished": false,
+      "index": 11,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_the_prix"
+    },
+    {
+      "action": "check",
+      "completed": 12,
+      "finished": false,
+      "index": 11,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.dlg_the_prix"
+    },
+    {
+      "action": "continue",
+      "completed": 12,
+      "finished": false,
+      "index": 12,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_magasin_heure"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 12,
+      "finished": false,
+      "index": 12,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.dlg_magasin_heure"
+    },
+    {
+      "action": "check",
+      "completed": 13,
+      "finished": false,
+      "index": 12,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.dlg_magasin_heure"
+    },
+    {
+      "action": "continue",
+      "completed": 13,
+      "finished": false,
+      "index": 13,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_theo_quand"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 13,
+      "finished": false,
+      "index": 13,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_theo_quand"
+    },
+    {
+      "action": "check",
+      "completed": 13,
+      "finished": false,
+      "index": 13,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.msg_theo_quand"
+    },
+    {
+      "action": "continue",
+      "completed": 14,
+      "finished": false,
+      "index": 14,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_theo_ou"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 14,
+      "finished": false,
+      "index": 14,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_theo_ou"
+    },
+    {
+      "action": "check",
+      "completed": 14,
+      "finished": false,
+      "index": 14,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.msg_theo_ou"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 14,
+      "finished": false,
+      "index": 14,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_theo_ou"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 14,
+      "finished": false,
+      "index": 14,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_theo_ou"
+    },
+    {
+      "action": "check",
+      "completed": 15,
+      "finished": false,
+      "index": 14,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.msg_theo_ou"
+    },
+    {
+      "action": "continue",
+      "completed": 15,
+      "finished": false,
+      "index": 15,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_ferme"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 15,
+      "finished": false,
+      "index": 15,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.msg_ferme"
+    },
+    {
+      "action": "check",
+      "completed": 16,
+      "finished": false,
+      "index": 15,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.msg_ferme"
+    },
+    {
+      "action": "continue",
+      "completed": 16,
+      "finished": false,
+      "index": 16,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_biblio_jours"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 16,
+      "finished": false,
+      "index": 16,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_biblio_jours"
+    },
+    {
+      "action": "check",
+      "completed": 17,
+      "finished": false,
+      "index": 16,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.not_biblio_jours"
+    },
+    {
+      "action": "continue",
+      "completed": 17,
+      "finished": false,
+      "index": 17,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_biblio_dimanche"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 17,
+      "finished": false,
+      "index": 17,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_biblio_dimanche"
+    },
+    {
+      "action": "check",
+      "completed": 17,
+      "finished": false,
+      "index": 17,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.not_biblio_dimanche"
+    },
+    {
+      "action": "continue",
+      "completed": 18,
+      "finished": false,
+      "index": 18,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_sortie"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 18,
+      "finished": false,
+      "index": 18,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_sortie"
+    },
+    {
+      "action": "check",
+      "completed": 18,
+      "finished": false,
+      "index": 18,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.not_sortie"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 18,
+      "finished": false,
+      "index": 18,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_sortie"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 18,
+      "finished": false,
+      "index": 18,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.not_sortie"
+    },
+    {
+      "action": "check",
+      "completed": 19,
+      "finished": false,
+      "index": 18,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.not_sortie"
+    },
+    {
+      "action": "continue",
+      "completed": 19,
+      "finished": false,
+      "index": 19,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.txt_camille_ou"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 19,
+      "finished": false,
+      "index": 19,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.txt_camille_ou"
+    },
+    {
+      "action": "check",
+      "completed": 20,
+      "finished": false,
+      "index": 19,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.txt_camille_ou"
+    },
+    {
+      "action": "continue",
+      "completed": 20,
+      "finished": false,
+      "index": 20,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.txt_camille_matin"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 20,
+      "finished": false,
+      "index": 20,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.txt_camille_matin"
+    },
+    {
+      "action": "check",
+      "completed": 21,
+      "finished": false,
+      "index": 20,
+      "queue": 22,
+      "status": "correct",
+      "stepId": "fr.cpi.s3.txt_camille_matin"
+    },
+    {
+      "action": "continue",
+      "completed": 21,
+      "finished": false,
+      "index": 21,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.txt_nora_train"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 21,
+      "finished": false,
+      "index": 21,
+      "queue": 22,
+      "status": "idle",
+      "stepId": "fr.cpi.s3.txt_nora_train"
+    },
+    {
+      "action": "check",
+      "completed": 21,
+      "finished": false,
+      "index": 21,
+      "queue": 22,
+      "status": "wrong",
+      "stepId": "fr.cpi.s3.txt_nora_train"
+    },
+    {
+      "action": "continue",
+      "completed": 22,
+      "finished": true,
+      "index": 22,
+      "queue": 22,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "allowUndo": false,
+  "completion": "lesson",
+  "courseId": "fr-en",
+  "evidenceSource": "lesson",
+  "kind": "path",
+  "lessonId": "fr-en:u0-l0",
+  "steps": [
+    {
+      "exercise": {
+        "audioTarget": "l'homme",
+        "correct": 3,
+        "gradeTargets": [
+          "fr:w:homme"
+        ],
+        "id": "fr-en:u0-l0-e0",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "💧",
+            "text": "the water"
+          },
+          {
+            "emoji": "🥛",
+            "text": "the milk"
+          },
+          {
+            "emoji": "🍎",
+            "text": "the apple"
+          },
+          {
+            "emoji": "👨",
+            "text": "the man"
+          }
+        ],
+        "prompt": "l'homme",
+        "type": "select"
+      },
+      "stepId": "fr-en:u0-l0-e0",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "audioTarget": "la femme",
+        "correct": 1,
+        "gradeTargets": [
+          "fr:w:femme"
+        ],
+        "id": "fr-en:u0-l0-e1",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "👧",
+            "text": "the girl"
+          },
+          {
+            "emoji": "👩",
+            "text": "the woman"
+          },
+          {
+            "emoji": "🥛",
+            "text": "the milk"
+          },
+          {
+            "emoji": "🍎",
+            "text": "the apple"
+          }
+        ],
+        "prompt": "la femme",
+        "type": "select"
+      },
+      "stepId": "fr-en:u0-l0-e1",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "audioTarget": "le garçon",
+        "correct": 2,
+        "gradeTargets": [
+          "fr:w:garcon"
+        ],
+        "id": "fr-en:u0-l0-e2",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "💧",
+            "text": "the water"
+          },
+          {
+            "emoji": "👨",
+            "text": "the man"
+          },
+          {
+            "emoji": "👦",
+            "text": "the boy"
+          },
+          {
+            "emoji": "❌",
+            "text": "no"
+          }
+        ],
+        "prompt": "le garçon",
+        "type": "select"
+      },
+      "stepId": "fr-en:u0-l0-e2",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "audioTarget": "l'homme",
+        "correct": 1,
+        "gradeTargets": [
+          "fr:w:homme"
+        ],
+        "id": "fr-en:u0-l0-e3",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "emoji": "🥤",
+            "text": "boire"
+          },
+          {
+            "emoji": "👨",
+            "text": "l'homme"
+          },
+          {
+            "emoji": "👩",
+            "text": "la femme"
+          },
+          {
+            "emoji": "👧",
+            "text": "la fille"
+          }
+        ],
+        "prompt": "the man",
+        "type": "select"
+      },
+      "stepId": "fr-en:u0-l0-e3",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "audioTarget": "la femme",
+        "correct": 3,
+        "gradeTargets": [
+          "fr:w:femme"
+        ],
+        "id": "fr-en:u0-l0-e4",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "emoji": "🍽️",
+            "text": "manger"
+          },
+          {
+            "emoji": "✅",
+            "text": "oui"
+          },
+          {
+            "emoji": "👨",
+            "text": "l'homme"
+          },
+          {
+            "emoji": "👩",
+            "text": "la femme"
+          }
+        ],
+        "prompt": "the woman",
+        "type": "select"
+      },
+      "stepId": "fr-en:u0-l0-e4",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "audioTarget": "l'homme",
+        "correct": 2,
+        "gradeTargets": [
+          "fr:w:homme"
+        ],
+        "id": "fr-en:u0-l0-e5",
+        "mode": "listen",
+        "options": [
+          {
+            "text": "le pain"
+          },
+          {
+            "text": "boire"
+          },
+          {
+            "text": "l'homme"
+          },
+          {
+            "text": "non"
+          }
+        ],
+        "prompt": "Tap what you hear",
+        "type": "select"
+      },
+      "stepId": "fr-en:u0-l0-e5",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": [
+          "I",
+          "am",
+          "a",
+          "man"
+        ],
+        "audioTarget": "Je suis un homme.",
+        "direction": "targetToNative",
+        "id": "fr-en:u0-l0-e6",
+        "prompt": "Je suis un homme.",
+        "tokens": [
+          "water",
+          "milk",
+          "woman",
+          "man",
+          "am",
+          "I",
+          "a"
+        ],
+        "type": "wordBank"
+      },
+      "stepId": "fr-en:u0-l0-e6",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "answer": [
+          "I",
+          "am",
+          "a",
+          "woman"
+        ],
+        "audioTarget": "Je suis une femme.",
+        "direction": "targetToNative",
+        "id": "fr-en:u0-l0-e7",
+        "prompt": "Je suis une femme.",
+        "tokens": [
+          "girl",
+          "am",
+          "woman",
+          "a",
+          "I",
+          "you",
+          "eating"
+        ],
+        "type": "wordBank"
+      },
+      "stepId": "fr-en:u0-l0-e7",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "audioTarget": "Je suis un homme.",
+        "correct": 3,
+        "id": "fr-en:u0-l0-e8",
+        "options": [
+          "l'homme",
+          "l'eau",
+          "manger",
+          "homme"
+        ],
+        "sentence": "Je suis un ___.",
+        "translation": "I am a man.",
+        "type": "fillBlank"
+      },
+      "stepId": "fr-en:u0-l0-e8",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "gradeTargets": [
+          "fr:w:homme",
+          "fr:w:femme",
+          "fr:w:garcon",
+          "fr:w:pain",
+          "fr:w:lait"
+        ],
+        "id": "fr-en:u0-l0-e9",
+        "pairs": [
+          {
+            "native": "the man",
+            "target": "l'homme"
+          },
+          {
+            "native": "the woman",
+            "target": "la femme"
+          },
+          {
+            "native": "the boy",
+            "target": "le garçon"
+          },
+          {
+            "native": "the bread",
+            "target": "le pain"
+          },
+          {
+            "native": "the milk",
+            "target": "le lait"
+          }
+        ],
+        "type": "match"
+      },
+      "stepId": "fr-en:u0-l0-e9",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "alternatives": [],
+        "answer": "I am a woman.",
+        "audioTarget": "Je suis une femme.",
+        "id": "fr-en:u0-l0-e10",
+        "mode": "translate",
+        "prompt": "Je suis une femme.",
+        "type": "typeAnswer"
+      },
+      "stepId": "fr-en:u0-l0-e10",
+      "type": "exercise"
+    }
+  ],
+  "trackMistakes": true
+}

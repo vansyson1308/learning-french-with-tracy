@@ -1,0 +1,126 @@
+{
+  "advance": {
+    "answers": {
+      "fr.pli.s1.airport": null,
+      "fr.pli.s1.bird": true,
+      "fr.pli.s1.girl_milk": false,
+      "fr.pli.s1.man_ticket": true,
+      "fr.pli.s1.milk": true,
+      "fr.pli.s1.morning": false,
+      "fr.pli.s1.polite": true
+    },
+    "kind": "finished"
+  },
+  "answers": {
+    "fr.pli.s1.airport": null,
+    "fr.pli.s1.bird": true,
+    "fr.pli.s1.girl_milk": false,
+    "fr.pli.s1.man_ticket": true,
+    "fr.pli.s1.milk": true,
+    "fr.pli.s1.morning": false,
+    "fr.pli.s1.polite": true
+  },
+  "estimates": [
+    {
+      "estimate": "comfortable",
+      "objectiveId": "fr.obj.vocab.everyday_basics"
+    },
+    {
+      "estimate": "gap",
+      "objectiveId": "fr.obj.greetings.basic"
+    },
+    {
+      "estimate": "gap",
+      "objectiveId": "fr.obj.reading.familiar_words"
+    },
+    {
+      "estimate": "gap",
+      "objectiveId": "fr.obj.vocab.places_travel"
+    }
+  ],
+  "recommendation": {
+    "allComfortable": false,
+    "clusterOutcomes": [
+      {
+        "anchorLessonId": "fr-en:u0-l0",
+        "clusterId": "fr.pcluster.everyday",
+        "objectiveId": "fr.obj.vocab.everyday_basics",
+        "outcome": "comfortable"
+      },
+      {
+        "anchorLessonId": "fr-en:u1-l0",
+        "clusterId": "fr.pcluster.greetings",
+        "objectiveId": "fr.obj.greetings.basic",
+        "outcome": "gap"
+      },
+      {
+        "anchorLessonId": "fr-en:u2-l0",
+        "clusterId": "fr.pcluster.reading",
+        "objectiveId": "fr.obj.reading.familiar_words",
+        "outcome": "gap"
+      },
+      {
+        "anchorLessonId": "fr-en:u4-l0",
+        "clusterId": "fr.pcluster.places",
+        "objectiveId": "fr.obj.vocab.places_travel",
+        "outcome": "gap"
+      }
+    ],
+    "hasNotEstimated": false,
+    "recommendedLessonId": "fr-en:u1-l0"
+  },
+  "result": {
+    "completedAt": 1781525040000,
+    "itemResults": [
+      {
+        "correct": true,
+        "itemId": "fr.pli.s1.milk"
+      },
+      {
+        "correct": true,
+        "itemId": "fr.pli.s1.bird"
+      },
+      {
+        "correct": false,
+        "itemId": "fr.pli.s1.morning"
+      },
+      {
+        "correct": true,
+        "itemId": "fr.pli.s1.polite"
+      },
+      {
+        "correct": false,
+        "itemId": "fr.pli.s1.girl_milk"
+      },
+      {
+        "correct": true,
+        "itemId": "fr.pli.s1.man_ticket"
+      },
+      {
+        "correct": null,
+        "itemId": "fr.pli.s1.airport"
+      }
+    ],
+    "objectiveEstimates": [
+      {
+        "estimate": "comfortable",
+        "objectiveId": "fr.obj.vocab.everyday_basics"
+      },
+      {
+        "estimate": "gap",
+        "objectiveId": "fr.obj.greetings.basic"
+      },
+      {
+        "estimate": "gap",
+        "objectiveId": "fr.obj.reading.familiar_words"
+      },
+      {
+        "estimate": "gap",
+        "objectiveId": "fr.obj.vocab.places_travel"
+      }
+    ],
+    "placementVersion": 3,
+    "recommendedFloorIndex": 4,
+    "recommendedLessonId": "fr-en:u1-l0"
+  }
+}

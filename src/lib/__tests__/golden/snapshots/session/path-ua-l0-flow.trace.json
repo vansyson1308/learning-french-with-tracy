@@ -1,0 +1,418 @@
+{
+  "final": {
+    "attempts": {
+      "fr-en:ua-l0-e0": 1,
+      "fr-en:ua-l0-e1": 2,
+      "fr-en:ua-l0-e2": 1,
+      "fr-en:ua-l0-e3": 1,
+      "fr-en:ua-l0-e4": 1,
+      "fr-en:ua-l0-e5": 2,
+      "fr-en:ua-l0-e6": 1,
+      "fr-en:ua-l0-e7": 1,
+      "fr-en:ua-l0-e8": 1
+    },
+    "completedCount": 10,
+    "finished": true,
+    "firstResults": {
+      "fr-en:ua-l0-e0": true,
+      "fr-en:ua-l0-e1": false,
+      "fr-en:ua-l0-e2": true,
+      "fr-en:ua-l0-e3": true,
+      "fr-en:ua-l0-e4": true,
+      "fr-en:ua-l0-e5": false,
+      "fr-en:ua-l0-e6": true,
+      "fr-en:ua-l0-e7": true,
+      "fr-en:ua-l0-e8": true
+    },
+    "queueIds": [
+      "concept:0:fr:concept:gender-two-classes",
+      "fr-en:ua-l0-e0",
+      "fr-en:ua-l0-e1",
+      "fr-en:ua-l0-e2",
+      "fr-en:ua-l0-e3",
+      "fr-en:ua-l0-e4",
+      "fr-en:ua-l0-e5",
+      "fr-en:ua-l0-e6",
+      "fr-en:ua-l0-e7",
+      "fr-en:ua-l0-e8",
+      "fr-en:ua-l0-e1",
+      "fr-en:ua-l0-e5"
+    ],
+    "skipped": {},
+    "wrongCounts": {
+      "fr-en:ua-l0-e1": 1,
+      "fr-en:ua-l0-e5": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 10,
+      "status": "idle",
+      "stepId": "concept:0:fr:concept:gender-two-classes"
+    },
+    {
+      "action": "teachContinue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 10,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e0"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 10,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e0"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 1,
+      "queue": 10,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e0"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 10,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e1"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 10,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e1"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 10,
+      "status": "wrong",
+      "stepId": "fr-en:ua-l0-e1"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e2"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e2"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 11,
+      "status": "wrong",
+      "stepId": "fr-en:ua-l0-e2"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e2"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e2"
+    },
+    {
+      "action": "check",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 11,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e2"
+    },
+    {
+      "action": "continue",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e3"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e3"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 11,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e3"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e4"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e4"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 11,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e4"
+    },
+    {
+      "action": "continue",
+      "completed": 5,
+      "finished": false,
+      "index": 6,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e5"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 5,
+      "finished": false,
+      "index": 6,
+      "queue": 11,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e5"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 6,
+      "queue": 11,
+      "status": "wrong",
+      "stepId": "fr-en:ua-l0-e5"
+    },
+    {
+      "action": "continue",
+      "completed": 5,
+      "finished": false,
+      "index": 7,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e6"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 5,
+      "finished": false,
+      "index": 7,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e6"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 7,
+      "queue": 12,
+      "status": "wrong",
+      "stepId": "fr-en:ua-l0-e6"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 5,
+      "finished": false,
+      "index": 7,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e6"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 5,
+      "finished": false,
+      "index": 7,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e6"
+    },
+    {
+      "action": "check",
+      "completed": 6,
+      "finished": false,
+      "index": 7,
+      "queue": 12,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e6"
+    },
+    {
+      "action": "continue",
+      "completed": 6,
+      "finished": false,
+      "index": 8,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e7"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 6,
+      "finished": false,
+      "index": 8,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e7"
+    },
+    {
+      "action": "check",
+      "completed": 7,
+      "finished": false,
+      "index": 8,
+      "queue": 12,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e7"
+    },
+    {
+      "action": "continue",
+      "completed": 7,
+      "finished": false,
+      "index": 9,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e8"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 7,
+      "finished": false,
+      "index": 9,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e8"
+    },
+    {
+      "action": "check",
+      "completed": 8,
+      "finished": false,
+      "index": 9,
+      "queue": 12,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e8"
+    },
+    {
+      "action": "continue",
+      "completed": 8,
+      "finished": false,
+      "index": 10,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e1"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 8,
+      "finished": false,
+      "index": 10,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e1"
+    },
+    {
+      "action": "check",
+      "completed": 9,
+      "finished": false,
+      "index": 10,
+      "queue": 12,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e1"
+    },
+    {
+      "action": "continue",
+      "completed": 9,
+      "finished": false,
+      "index": 11,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e5"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 9,
+      "finished": false,
+      "index": 11,
+      "queue": 12,
+      "status": "idle",
+      "stepId": "fr-en:ua-l0-e5"
+    },
+    {
+      "action": "check",
+      "completed": 10,
+      "finished": false,
+      "index": 11,
+      "queue": 12,
+      "status": "correct",
+      "stepId": "fr-en:ua-l0-e5"
+    },
+    {
+      "action": "continue",
+      "completed": 10,
+      "finished": true,
+      "index": 12,
+      "queue": 12,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

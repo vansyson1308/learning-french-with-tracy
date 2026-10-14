@@ -1,0 +1,228 @@
+{
+  "allowUndo": false,
+  "completion": "lesson",
+  "courseId": "fr-en",
+  "evidenceSource": "lesson",
+  "kind": "path",
+  "lessonId": "fr-en:ua-l0",
+  "steps": [
+    {
+      "conceptId": "fr:concept:gender-two-classes",
+      "stepId": "concept:0:fr:concept:gender-two-classes",
+      "type": "concept"
+    },
+    {
+      "exercise": {
+        "correct": 1,
+        "gradeTargets": [
+          "fr:w:maison"
+        ],
+        "id": "fr-en:ua-l0-e0",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "text": "the office"
+          },
+          {
+            "text": "the house"
+          },
+          {
+            "text": "the gift"
+          },
+          {
+            "text": "the trip"
+          }
+        ],
+        "prompt": "la maison",
+        "type": "select"
+      },
+      "stepId": "fr-en:ua-l0-e0",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 3,
+        "gradeTargets": [
+          "fr:w:question"
+        ],
+        "id": "fr-en:ua-l0-e1",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "text": "the reason"
+          },
+          {
+            "text": "the message"
+          },
+          {
+            "text": "the truth"
+          },
+          {
+            "text": "the question"
+          }
+        ],
+        "prompt": "la question",
+        "type": "select"
+      },
+      "stepId": "fr-en:ua-l0-e1",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 2,
+        "gradeTargets": [
+          "fr:w:voyage"
+        ],
+        "id": "fr-en:ua-l0-e2",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "text": "the moment"
+          },
+          {
+            "text": "the house"
+          },
+          {
+            "text": "the trip"
+          },
+          {
+            "text": "the paper"
+          }
+        ],
+        "prompt": "le voyage",
+        "type": "select"
+      },
+      "stepId": "fr-en:ua-l0-e2",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 3,
+        "gradeTargets": [
+          "fr:w:bureau"
+        ],
+        "id": "fr-en:ua-l0-e3",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "text": "the gift"
+          },
+          {
+            "text": "the house"
+          },
+          {
+            "text": "the boss"
+          },
+          {
+            "text": "the office"
+          }
+        ],
+        "prompt": "le bureau",
+        "type": "select"
+      },
+      "stepId": "fr-en:ua-l0-e3",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "articles": [
+          "le",
+          "la"
+        ],
+        "correct": 1,
+        "gloss": "the house",
+        "id": "fr-en:ua-l0-e4",
+        "noun": "maison",
+        "objectiveTargets": [
+          "fr.obj.gender.articles_basic"
+        ],
+        "type": "articleSelect"
+      },
+      "stepId": "fr-en:ua-l0-e4",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "articles": [
+          "le",
+          "la"
+        ],
+        "correct": 0,
+        "gloss": "the trip",
+        "id": "fr-en:ua-l0-e5",
+        "noun": "voyage",
+        "objectiveTargets": [
+          "fr.obj.gender.articles_basic"
+        ],
+        "type": "articleSelect"
+      },
+      "stepId": "fr-en:ua-l0-e5",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 0,
+        "gradeTargets": [
+          "fr:w:maison"
+        ],
+        "id": "fr-en:ua-l0-e6",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "la maison"
+          },
+          {
+            "text": "le bureau"
+          },
+          {
+            "text": "la question"
+          },
+          {
+            "text": "le voyage"
+          }
+        ],
+        "prompt": "the house",
+        "type": "select"
+      },
+      "stepId": "fr-en:ua-l0-e6",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "articles": [
+          "le",
+          "la"
+        ],
+        "correct": 1,
+        "gloss": "the question",
+        "id": "fr-en:ua-l0-e7",
+        "noun": "question",
+        "objectiveTargets": [
+          "fr.obj.gender.articles_basic"
+        ],
+        "type": "articleSelect"
+      },
+      "stepId": "fr-en:ua-l0-e7",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 1,
+        "id": "fr-en:ua-l0-e8",
+        "objectiveTargets": [
+          "fr.obj.gender.articles_basic"
+        ],
+        "options": [
+          "La",
+          "Le"
+        ],
+        "sentence": "___ bureau est fermé.",
+        "translation": "The office is closed.",
+        "type": "fillBlank"
+      },
+      "stepId": "fr-en:ua-l0-e8",
+      "type": "exercise"
+    }
+  ],
+  "trackMistakes": true
+}
