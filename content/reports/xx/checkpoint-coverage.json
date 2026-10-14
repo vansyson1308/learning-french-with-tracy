@@ -1,0 +1,19 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "checkpoints": [
+    {
+      "id": "xx.checkpoint.section-1",
+      "checkpointVersion": 1,
+      "sectionId": "xx-en:section-1",
+      "itemCount": 3,
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.5
+      },
+      "objectives": {
+        "xx.obj.greet.basic": 1,
+        "xx.obj.read.signs": 2
+      }
+    }
+  ]
+}

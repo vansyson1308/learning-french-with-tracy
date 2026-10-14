@@ -36,6 +36,12 @@ import {
 } from "./lib/lexique-derive-lib";
 import { canonicalJson, safeResolve } from "./lib/pipeline";
 
+/** Lexique 4 is a FRENCH source; these tools take --lang for symmetry but default to it. */
+const LEXIQUE_LANG = (() => {
+  const i = process.argv.indexOf("--lang");
+  return i >= 0 ? process.argv[i + 1] : "fr";
+})();
+
 /**
  * Verb lemmas whose complete inflection rows are extracted for the Phase 5B
  * High-Yield Verbs unit (frequency/utility-researched shortlist; the unit
@@ -73,7 +79,8 @@ try {
   fail(`cannot read artifact at ${artifactPath}`);
 }
 const sha256 = createHash("sha256").update(bytes).digest("hex");
-const manifest = loadSourceManifest();
+const manifest = loadSourceManifest(LEXIQUE_LANG);
+if (manifest === null) throw new Error(`content/${LEXIQUE_LANG}/lexicon/source-manifest.json is missing`);
 
 if (manifest.retrieval.status !== "retrieved") {
   fail('manifest retrieval.status is not "retrieved" — pin the artifact first (fail-closed)');
@@ -90,7 +97,7 @@ if (manifest.expectedColumns.toConfirm) {
 const rows = parseLexiqueTsv(bytes.toString("utf8"), manifest.expectedColumns.names);
 console.log(`parsed ${rows.length} source rows (${manifest.expectedColumns.names.length} columns)`);
 
-const lexicon = loadRichLexicon();
+const lexicon = loadRichLexicon(LEXIQUE_LANG);
 const source = {
   id: manifest.source.id,
   sha256,

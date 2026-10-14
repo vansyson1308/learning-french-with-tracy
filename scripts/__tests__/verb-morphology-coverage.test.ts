@@ -52,7 +52,7 @@ const CURRICULUM_VERBS = [
 
 describe("Lexique 4 verb-morphology sufficiency (§26 decision record)", () => {
   test("derived data is pinned to the manifest artifact", () => {
-    const pinned = loadSourceManifest().retrieval.sha256;
+    const pinned = loadSourceManifest("fr")!.retrieval.sha256;
     expect(pinned).not.toBeNull();
     expect(morph.source.sha256).toBe(pinned as string);
   });

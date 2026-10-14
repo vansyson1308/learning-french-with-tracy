@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "language": "xx",
+  "order": [
+    "xx.obj.greet.basic",
+    "xx.obj.read.signs"
+  ],
+  "byId": {
+    "xx.obj.greet.basic": {
+      "id": "xx.obj.greet.basic",
+      "title": "Friends and farewells",
+      "canDo": "I can recognise the two Testish words for friend and farewell.",
+      "category": "lexical",
+      "essential": false,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:vocabulary-range"
+        }
+      ]
+    },
+    "xx.obj.read.signs": {
+      "id": "xx.obj.read.signs",
+      "title": "Reading short signs",
+      "canDo": "I can find who is welcome on a short Testish sign.",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "xx.obj.greet.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-orientation"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "language": "xx",
+  "voiceCast": {
+    "A": { "voiceId": "xx-test-tone", "speaker": null },
+    "B": { "voiceId": "xx-test-tone", "speaker": 1 }
+  },
+  "clips": [
+    {
+      "id": "xx.clip.tomo",
+      "kind": "word_phrase",
+      "segments": [{ "speaker": "A", "text": "ka tomo" }],
+      "objectiveRefs": ["xx.obj.greet.basic"],
+      "lexemeRefs": ["xx:w:tomo"],
+      "sourceRef": "original-project",
+      "authoringSpec": { "informationUnits": 1, "inferenceDemand": "locate" },
+      "scoredPlaybackPolicy": { "maxPlays": 2, "rate": 1 }
+    }
+  ]
+}

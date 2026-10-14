@@ -4,8 +4,12 @@
  "scenarios": [
   {
    "id": "fr.scenario.salut_ca_va",
-   "title": "A quick hello",
-   "goal": "Greet a friend, say how you are, and say goodbye.",
+   "title": {
+    "en": "A quick hello"
+   },
+   "goal": {
+    "en": "Greet a friend, say how you are, and say goodbye."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -31,7 +35,9 @@
     "l_hello": {
      "kind": "learner",
      "id": "l_hello",
-     "prompt": "Say hello back and say you're doing well.",
+     "prompt": {
+      "en": "Say hello back and say you're doing well."
+     },
      "expected": [
       {
        "intent": "greet_fine",
@@ -71,7 +77,9 @@
     "l_hello_b": {
      "kind": "learner",
      "id": "l_hello_b",
-     "prompt": "Say hello back and say you're doing well.",
+     "prompt": {
+      "en": "Say hello back and say you're doing well."
+     },
      "expected": [
       {
        "intent": "greet_fine",
@@ -113,7 +121,9 @@
     "l_bye": {
      "kind": "learner",
      "id": "l_bye",
-     "prompt": "Say goodbye.",
+     "prompt": {
+      "en": "Say goodbye."
+     },
      "expected": [
       {
        "intent": "say_bye",
@@ -150,7 +160,9 @@
     "l_bye_b": {
      "kind": "learner",
      "id": "l_bye_b",
-     "prompt": "Say goodbye.",
+     "prompt": {
+      "en": "Say goodbye."
+     },
      "expected": [
       {
        "intent": "say_bye",
@@ -194,8 +206,12 @@
   },
   {
    "id": "fr.scenario.rencontre_nom",
-   "title": "Meeting someone",
-   "goal": "Say hello, give your name, and answer a simple question. You are Léa.",
+   "title": {
+    "en": "Meeting someone"
+   },
+   "goal": {
+    "en": "Say hello, give your name, and answer a simple question. You are Léa."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -221,7 +237,9 @@
     "l_name": {
      "kind": "learner",
      "id": "l_name",
-     "prompt": "Say hello and give your name — you are Léa.",
+     "prompt": {
+      "en": "Say hello and give your name — you are Léa."
+     },
      "expected": [
       {
        "intent": "give_name",
@@ -254,7 +272,9 @@
     "l_name_b": {
      "kind": "learner",
      "id": "l_name_b",
-     "prompt": "Say hello and give your name — you are Léa.",
+     "prompt": {
+      "en": "Say hello and give your name — you are Léa."
+     },
      "expected": [
       {
        "intent": "give_name",
@@ -303,7 +323,9 @@
     "l_here": {
      "kind": "learner",
      "id": "l_here",
-     "prompt": "Answer the question — do you live here? Say yes or no.",
+     "prompt": {
+      "en": "Answer the question — do you live here? Say yes or no."
+     },
      "expected": [
       {
        "intent": "yes_here",
@@ -345,7 +367,9 @@
     "l_here_b": {
      "kind": "learner",
      "id": "l_here_b",
-     "prompt": "Answer the question — do you live here? Say yes or no.",
+     "prompt": {
+      "en": "Answer the question — do you live here? Say yes or no."
+     },
      "expected": [
       {
        "intent": "yes_here",
@@ -387,8 +411,12 @@
   },
   {
    "id": "fr.scenario.cafe_boisson",
-   "title": "At the café",
-   "goal": "Order a drink and thank the server.",
+   "title": {
+    "en": "At the café"
+   },
+   "goal": {
+    "en": "Order a drink and thank the server."
+   },
    "taskFamily": "transaction",
    "objectiveRefs": [
     "fr.obj.interaction.practical_needs"
@@ -432,7 +460,9 @@
     "l_order": {
      "kind": "learner",
      "id": "l_order",
-     "prompt": "Order a coffee — or a tea.",
+     "prompt": {
+      "en": "Order a coffee — or a tea."
+     },
      "expected": [
       {
        "intent": "order_cafe",
@@ -476,7 +506,9 @@
     "l_order_b": {
      "kind": "learner",
      "id": "l_order_b",
-     "prompt": "Order a coffee — or a tea.",
+     "prompt": {
+      "en": "Order a coffee — or a tea."
+     },
      "expected": [
       {
        "intent": "order_cafe",
@@ -513,7 +545,9 @@
     "l_thanks": {
      "kind": "learner",
      "id": "l_thanks",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -544,7 +578,9 @@
     "l_thanks_b": {
      "kind": "learner",
      "id": "l_thanks_b",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -582,8 +618,12 @@
   },
   {
    "id": "fr.scenario.magasin_courses",
-   "title": "At the shop",
-   "goal": "Ask for bread, then answer the follow-up question.",
+   "title": {
+    "en": "At the shop"
+   },
+   "goal": {
+    "en": "Ask for bread, then answer the follow-up question."
+   },
    "taskFamily": "transaction",
    "objectiveRefs": [
     "fr.obj.interaction.practical_needs"
@@ -609,7 +649,9 @@
     "l_want": {
      "kind": "learner",
      "id": "l_want",
-     "prompt": "Say you would like some bread.",
+     "prompt": {
+      "en": "Say you would like some bread."
+     },
      "expected": [
       {
        "intent": "want_pain",
@@ -640,7 +682,9 @@
     "l_want_b": {
      "kind": "learner",
      "id": "l_want_b",
-     "prompt": "Say you would like some bread.",
+     "prompt": {
+      "en": "Say you would like some bread."
+     },
      "expected": [
       {
        "intent": "want_pain",
@@ -687,7 +731,9 @@
     "l_more": {
      "kind": "learner",
      "id": "l_more",
-     "prompt": "Ask for some water too — or say that's all.",
+     "prompt": {
+      "en": "Ask for some water too — or say that's all."
+     },
      "expected": [
       {
        "intent": "want_eau",
@@ -733,7 +779,9 @@
     "l_more_b": {
      "kind": "learner",
      "id": "l_more_b",
-     "prompt": "Ask for some water too — or say that's all.",
+     "prompt": {
+      "en": "Ask for some water too — or say that's all."
+     },
      "expected": [
       {
        "intent": "want_eau",
@@ -779,8 +827,12 @@
   },
   {
    "id": "fr.scenario.ou_gare",
-   "title": "Where is the station?",
-   "goal": "Ask where the station is and thank them.",
+   "title": {
+    "en": "Where is the station?"
+   },
+   "goal": {
+    "en": "Ask where the station is and thank them."
+   },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
     "fr.obj.interaction.practical_needs"
@@ -806,7 +858,9 @@
     "l_ask": {
      "kind": "learner",
      "id": "l_ask",
-     "prompt": "Ask: where is the station, please?",
+     "prompt": {
+      "en": "Ask: where is the station, please?"
+     },
      "expected": [
       {
        "intent": "ask_gare",
@@ -844,7 +898,9 @@
     "l_ask_b": {
      "kind": "learner",
      "id": "l_ask_b",
-     "prompt": "Ask: where is the station, please?",
+     "prompt": {
+      "en": "Ask: where is the station, please?"
+     },
      "expected": [
       {
        "intent": "ask_gare",
@@ -884,7 +940,9 @@
     "l_thanks": {
      "kind": "learner",
      "id": "l_thanks",
-     "prompt": "Thank them and say goodbye.",
+     "prompt": {
+      "en": "Thank them and say goodbye."
+     },
      "expected": [
       {
        "intent": "say_thanks",
@@ -914,7 +972,9 @@
     "l_thanks_b": {
      "kind": "learner",
      "id": "l_thanks_b",
-     "prompt": "Thank them and say goodbye.",
+     "prompt": {
+      "en": "Thank them and say goodbye."
+     },
      "expected": [
       {
        "intent": "say_thanks",
@@ -951,8 +1011,12 @@
   },
   {
    "id": "fr.scenario.ou_hotel",
-   "title": "Finding the hotel",
-   "goal": "Ask where the hotel is in the evening and thank them.",
+   "title": {
+    "en": "Finding the hotel"
+   },
+   "goal": {
+    "en": "Ask where the hotel is in the evening and thank them."
+   },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
     "fr.obj.interaction.practical_needs"
@@ -978,7 +1042,9 @@
     "l_ask": {
      "kind": "learner",
      "id": "l_ask",
-     "prompt": "Ask where the hotel is.",
+     "prompt": {
+      "en": "Ask where the hotel is."
+     },
      "expected": [
       {
        "intent": "ask_hotel",
@@ -1015,7 +1081,9 @@
     "l_ask_b": {
      "kind": "learner",
      "id": "l_ask_b",
-     "prompt": "Ask where the hotel is.",
+     "prompt": {
+      "en": "Ask where the hotel is."
+     },
      "expected": [
       {
        "intent": "ask_hotel",
@@ -1054,7 +1122,9 @@
     "l_thanks": {
      "kind": "learner",
      "id": "l_thanks",
-     "prompt": "Say thank you very much.",
+     "prompt": {
+      "en": "Say thank you very much."
+     },
      "expected": [
       {
        "intent": "say_thanks",
@@ -1084,7 +1154,9 @@
     "l_thanks_b": {
      "kind": "learner",
      "id": "l_thanks_b",
-     "prompt": "Say thank you very much.",
+     "prompt": {
+      "en": "Say thank you very much."
+     },
      "expected": [
       {
        "intent": "say_thanks",
@@ -1121,8 +1193,12 @@
   },
   {
    "id": "fr.scenario.rendez_vous",
-   "title": "Making a plan",
-   "goal": "Agree when and where to meet tomorrow.",
+   "title": {
+    "en": "Making a plan"
+   },
+   "goal": {
+    "en": "Agree when and where to meet tomorrow."
+   },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -1148,7 +1224,9 @@
     "l_time": {
      "kind": "learner",
      "id": "l_time",
-     "prompt": "Suggest a time: at ten o'clock.",
+     "prompt": {
+      "en": "Suggest a time: at ten o'clock."
+     },
      "expected": [
       {
        "intent": "at_ten",
@@ -1179,7 +1257,9 @@
     "l_time_b": {
      "kind": "learner",
      "id": "l_time_b",
-     "prompt": "Suggest a time: at ten o'clock.",
+     "prompt": {
+      "en": "Suggest a time: at ten o'clock."
+     },
      "expected": [
       {
        "intent": "at_ten",
@@ -1212,7 +1292,9 @@
     "l_place": {
      "kind": "learner",
      "id": "l_place",
-     "prompt": "Say: at the café.",
+     "prompt": {
+      "en": "Say: at the café."
+     },
      "expected": [
       {
        "intent": "at_cafe",
@@ -1242,7 +1324,9 @@
     "l_place_b": {
      "kind": "learner",
      "id": "l_place_b",
-     "prompt": "Say: at the café.",
+     "prompt": {
+      "en": "Say: at the café."
+     },
      "expected": [
       {
        "intent": "at_cafe",
@@ -1279,8 +1363,12 @@
   },
   {
    "id": "fr.scenario.chez_ami",
-   "title": "At a friend's place",
-   "goal": "Answer your friend's offer and say what you would like.",
+   "title": {
+    "en": "At a friend's place"
+   },
+   "goal": {
+    "en": "Answer your friend's offer and say what you would like."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -1324,7 +1412,9 @@
     "l_offer": {
      "kind": "learner",
      "id": "l_offer",
-     "prompt": "Say yes — you'd like some water (or a coffee), please.",
+     "prompt": {
+      "en": "Say yes — you'd like some water (or a coffee), please."
+     },
      "expected": [
       {
        "intent": "want_eau",
@@ -1369,7 +1459,9 @@
     "l_offer_b": {
      "kind": "learner",
      "id": "l_offer_b",
-     "prompt": "Say yes — you'd like some water (or a coffee), please.",
+     "prompt": {
+      "en": "Say yes — you'd like some water (or a coffee), please."
+     },
      "expected": [
       {
        "intent": "want_eau",
@@ -1407,7 +1499,9 @@
     "l_thanks": {
      "kind": "learner",
      "id": "l_thanks",
-     "prompt": "Say thank you.",
+     "prompt": {
+      "en": "Say thank you."
+     },
      "expected": [
       {
        "intent": "say_thanks",
@@ -1436,7 +1530,9 @@
     "l_thanks_b": {
      "kind": "learner",
      "id": "l_thanks_b",
-     "prompt": "Say thank you.",
+     "prompt": {
+      "en": "Say thank you."
+     },
      "expected": [
       {
        "intent": "say_thanks",
@@ -1472,8 +1568,12 @@
   },
   {
    "id": "fr.scenario.cp_rencontre",
-   "title": "Meeting Paul",
-   "goal": "Meet someone: greet him, give your name, say how you are, and say goodbye. You are Nadia.",
+   "title": {
+    "en": "Meeting Paul"
+   },
+   "goal": {
+    "en": "Meet someone: greet him, give your name, say how you are, and say goodbye. You are Nadia."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -1499,7 +1599,9 @@
     "l_name": {
      "kind": "learner",
      "id": "l_name",
-     "prompt": "Greet him and say your name — you are Nadia.",
+     "prompt": {
+      "en": "Greet him and say your name — you are Nadia."
+     },
      "expected": [
       {
        "intent": "give_name",
@@ -1532,7 +1634,9 @@
     "l_name_b": {
      "kind": "learner",
      "id": "l_name_b",
-     "prompt": "Greet him and say your name — you are Nadia.",
+     "prompt": {
+      "en": "Greet him and say your name — you are Nadia."
+     },
      "expected": [
       {
        "intent": "give_name",
@@ -1585,7 +1689,9 @@
     "l_how": {
      "kind": "learner",
      "id": "l_how",
-     "prompt": "Say how you are — very well, or just okay.",
+     "prompt": {
+      "en": "Say how you are — very well, or just okay."
+     },
      "expected": [
       {
        "intent": "doing_fine",
@@ -1637,7 +1743,9 @@
     "l_how_b": {
      "kind": "learner",
      "id": "l_how_b",
-     "prompt": "Say how you are — very well, or just okay.",
+     "prompt": {
+      "en": "Say how you are — very well, or just okay."
+     },
      "expected": [
       {
        "intent": "doing_fine",
@@ -1682,7 +1790,9 @@
     "l_bye": {
      "kind": "learner",
      "id": "l_bye",
-     "prompt": "Say goodbye.",
+     "prompt": {
+      "en": "Say goodbye."
+     },
      "expected": [
       {
        "intent": "say_bye",
@@ -1715,7 +1825,9 @@
     "l_bye_b": {
      "kind": "learner",
      "id": "l_bye_b",
-     "prompt": "Say goodbye.",
+     "prompt": {
+      "en": "Say goodbye."
+     },
      "expected": [
       {
        "intent": "say_bye",
@@ -1755,8 +1867,12 @@
   },
   {
    "id": "fr.scenario.cp_cafe",
-   "title": "Ordering at the café",
-   "goal": "Order a drink, ask the price, and close politely.",
+   "title": {
+    "en": "Ordering at the café"
+   },
+   "goal": {
+    "en": "Order a drink, ask the price, and close politely."
+   },
    "taskFamily": "transaction",
    "objectiveRefs": [
     "fr.obj.interaction.practical_needs"
@@ -1800,7 +1916,9 @@
     "l_order": {
      "kind": "learner",
      "id": "l_order",
-     "prompt": "Order a coffee — or a tea — politely.",
+     "prompt": {
+      "en": "Order a coffee — or a tea — politely."
+     },
      "expected": [
       {
        "intent": "order_cafe",
@@ -1844,7 +1962,9 @@
     "l_order_b": {
      "kind": "learner",
      "id": "l_order_b",
-     "prompt": "Order a coffee — or a tea — politely.",
+     "prompt": {
+      "en": "Order a coffee — or a tea — politely."
+     },
      "expected": [
       {
        "intent": "order_cafe",
@@ -1881,7 +2001,9 @@
     "l_price": {
      "kind": "learner",
      "id": "l_price",
-     "prompt": "Ask how much it is.",
+     "prompt": {
+      "en": "Ask how much it is."
+     },
      "expected": [
       {
        "intent": "ask_price",
@@ -1913,7 +2035,9 @@
     "l_price_b": {
      "kind": "learner",
      "id": "l_price_b",
-     "prompt": "Ask how much it is.",
+     "prompt": {
+      "en": "Ask how much it is."
+     },
      "expected": [
       {
        "intent": "ask_price",
@@ -1947,7 +2071,9 @@
     "l_thanks": {
      "kind": "learner",
      "id": "l_thanks",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -1977,7 +2103,9 @@
     "l_thanks_b": {
      "kind": "learner",
      "id": "l_thanks_b",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -2014,8 +2142,12 @@
   },
   {
    "id": "fr.scenario.cp_boulangerie",
-   "title": "At the bakery",
-   "goal": "Buy bread, answer the follow-up question, and close politely.",
+   "title": {
+    "en": "At the bakery"
+   },
+   "goal": {
+    "en": "Buy bread, answer the follow-up question, and close politely."
+   },
    "taskFamily": "transaction",
    "objectiveRefs": [
     "fr.obj.interaction.practical_needs"
@@ -2041,7 +2173,9 @@
     "l_want": {
      "kind": "learner",
      "id": "l_want",
-     "prompt": "Ask for a baguette — or some bread.",
+     "prompt": {
+      "en": "Ask for a baguette — or some bread."
+     },
      "expected": [
       {
        "intent": "want_bread",
@@ -2073,7 +2207,9 @@
     "l_want_b": {
      "kind": "learner",
      "id": "l_want_b",
-     "prompt": "Ask for a baguette — or some bread.",
+     "prompt": {
+      "en": "Ask for a baguette — or some bread."
+     },
      "expected": [
       {
        "intent": "want_bread",
@@ -2125,7 +2261,9 @@
     "l_more": {
      "kind": "learner",
      "id": "l_more",
-     "prompt": "Say that's all — or ask for some water too.",
+     "prompt": {
+      "en": "Say that's all — or ask for some water too."
+     },
      "expected": [
       {
        "intent": "more_water",
@@ -2170,7 +2308,9 @@
     "l_more_b": {
      "kind": "learner",
      "id": "l_more_b",
-     "prompt": "Say that's all — or ask for some water too.",
+     "prompt": {
+      "en": "Say that's all — or ask for some water too."
+     },
      "expected": [
       {
        "intent": "more_water",
@@ -2208,7 +2348,9 @@
     "l_thanks": {
      "kind": "learner",
      "id": "l_thanks",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -2238,7 +2380,9 @@
     "l_thanks_b": {
      "kind": "learner",
      "id": "l_thanks_b",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -2275,8 +2419,12 @@
   },
   {
    "id": "fr.scenario.cp_faire_connaissance",
-   "title": "Getting to know Paul",
-   "goal": "Answer simple questions about yourself, then ask one back. You are Nadia, from Lyon.",
+   "title": {
+    "en": "Getting to know Paul"
+   },
+   "goal": {
+    "en": "Answer simple questions about yourself, then ask one back. You are Nadia, from Lyon."
+   },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -2302,7 +2450,9 @@
     "l_live": {
      "kind": "learner",
      "id": "l_live",
-     "prompt": "Answer: you live in Lyon.",
+     "prompt": {
+      "en": "Answer: you live in Lyon."
+     },
      "expected": [
       {
        "intent": "live_lyon",
@@ -2334,7 +2484,9 @@
     "l_live_b": {
      "kind": "learner",
      "id": "l_live_b",
-     "prompt": "Answer: you live in Lyon.",
+     "prompt": {
+      "en": "Answer: you live in Lyon."
+     },
      "expected": [
       {
        "intent": "live_lyon",
@@ -2386,7 +2538,9 @@
     "l_english": {
      "kind": "learner",
      "id": "l_english",
-     "prompt": "Answer: yes or no — do you speak English?",
+     "prompt": {
+      "en": "Answer: yes or no — do you speak English?"
+     },
      "expected": [
       {
        "intent": "yes_speak",
@@ -2429,7 +2583,9 @@
     "l_english_b": {
      "kind": "learner",
      "id": "l_english_b",
-     "prompt": "Answer: yes or no — do you speak English?",
+     "prompt": {
+      "en": "Answer: yes or no — do you speak English?"
+     },
      "expected": [
       {
        "intent": "yes_speak",
@@ -2465,7 +2621,9 @@
     "l_ask_back": {
      "kind": "learner",
      "id": "l_ask_back",
-     "prompt": "Now ask HIM: and you, where do you live?",
+     "prompt": {
+      "en": "Now ask HIM: and you, where do you live?"
+     },
      "expected": [
       {
        "intent": "ask_where",
@@ -2499,7 +2657,9 @@
     "l_ask_back_b": {
      "kind": "learner",
      "id": "l_ask_back_b",
-     "prompt": "Now ask HIM: and you, where do you live?",
+     "prompt": {
+      "en": "Now ask HIM: and you, where do you live?"
+     },
      "expected": [
       {
        "intent": "ask_where",
@@ -2540,8 +2700,12 @@
   },
   {
    "id": "fr.scenario.cp_projets",
-   "title": "Restaurant plans",
-   "goal": "Make a simple plan with a friend: agree on the day, the time and the place.",
+   "title": {
+    "en": "Restaurant plans"
+   },
+   "goal": {
+    "en": "Make a simple plan with a friend: agree on the day, the time and the place."
+   },
    "taskFamily": "information_exchange",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -2585,7 +2749,9 @@
     "l_day": {
      "kind": "learner",
      "id": "l_day",
-     "prompt": "Choose a day: tomorrow — or Saturday.",
+     "prompt": {
+      "en": "Choose a day: tomorrow — or Saturday."
+     },
      "expected": [
       {
        "intent": "day_demain",
@@ -2629,7 +2795,9 @@
     "l_day_b": {
      "kind": "learner",
      "id": "l_day_b",
-     "prompt": "Choose a day: tomorrow — or Saturday.",
+     "prompt": {
+      "en": "Choose a day: tomorrow — or Saturday."
+     },
      "expected": [
       {
        "intent": "day_demain",
@@ -2666,7 +2834,9 @@
     "l_time": {
      "kind": "learner",
      "id": "l_time",
-     "prompt": "Say a time: at seven o'clock.",
+     "prompt": {
+      "en": "Say a time: at seven o'clock."
+     },
      "expected": [
       {
        "intent": "at_seven",
@@ -2697,7 +2867,9 @@
     "l_time_b": {
      "kind": "learner",
      "id": "l_time_b",
-     "prompt": "Say a time: at seven o'clock.",
+     "prompt": {
+      "en": "Say a time: at seven o'clock."
+     },
      "expected": [
       {
        "intent": "at_seven",
@@ -2730,7 +2902,9 @@
     "l_place": {
      "kind": "learner",
      "id": "l_place",
-     "prompt": "Say: at the restaurant.",
+     "prompt": {
+      "en": "Say: at the restaurant."
+     },
      "expected": [
       {
        "intent": "at_resto",
@@ -2760,7 +2934,9 @@
     "l_place_b": {
      "kind": "learner",
      "id": "l_place_b",
-     "prompt": "Say: at the restaurant.",
+     "prompt": {
+      "en": "Say: at the restaurant."
+     },
      "expected": [
       {
        "intent": "at_resto",
@@ -2797,8 +2973,12 @@
   },
   {
    "id": "fr.scenario.cp_billet",
-   "title": "A ticket to Lyon",
-   "goal": "Buy a train ticket to Lyon, ask a question about the trip, and close politely.",
+   "title": {
+    "en": "A ticket to Lyon"
+   },
+   "goal": {
+    "en": "Buy a train ticket to Lyon, ask a question about the trip, and close politely."
+   },
    "taskFamily": "transaction",
    "objectiveRefs": [
     "fr.obj.interaction.practical_needs"
@@ -2824,7 +3004,9 @@
     "l_ticket": {
      "kind": "learner",
      "id": "l_ticket",
-     "prompt": "Say you would like a ticket to Lyon.",
+     "prompt": {
+      "en": "Say you would like a ticket to Lyon."
+     },
      "expected": [
       {
        "intent": "want_ticket",
@@ -2854,7 +3036,9 @@
     "l_ticket_b": {
      "kind": "learner",
      "id": "l_ticket_b",
-     "prompt": "Say you would like a ticket to Lyon.",
+     "prompt": {
+      "en": "Say you would like a ticket to Lyon."
+     },
      "expected": [
       {
        "intent": "want_ticket",
@@ -2904,7 +3088,9 @@
     "l_question": {
      "kind": "learner",
      "id": "l_question",
-     "prompt": "Ask a question: at what time is the train? Or: which platform?",
+     "prompt": {
+      "en": "Ask a question: at what time is the train? Or: which platform?"
+     },
      "expected": [
       {
        "intent": "ask_time",
@@ -2950,7 +3136,9 @@
     "l_question_b": {
      "kind": "learner",
      "id": "l_question_b",
-     "prompt": "Ask a question: at what time is the train? Or: which platform?",
+     "prompt": {
+      "en": "Ask a question: at what time is the train? Or: which platform?"
+     },
      "expected": [
       {
        "intent": "ask_time",
@@ -2989,7 +3177,9 @@
     "l_thanks": {
      "kind": "learner",
      "id": "l_thanks",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -3019,7 +3209,9 @@
     "l_thanks_b": {
      "kind": "learner",
      "id": "l_thanks_b",
-     "prompt": "Say thank you and goodbye.",
+     "prompt": {
+      "en": "Say thank you and goodbye."
+     },
      "expected": [
       {
        "intent": "thanks_bye",
@@ -3056,8 +3248,12 @@
   },
   {
    "id": "fr.scenario.a1cap_voisin",
-   "title": "A friendly neighbour",
-   "goal": "Answer your neighbour's greeting and wish them a good day.",
+   "title": {
+    "en": "A friendly neighbour"
+   },
+   "goal": {
+    "en": "Answer your neighbour's greeting and wish them a good day."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -3083,7 +3279,9 @@
     "l_hello": {
      "kind": "learner",
      "id": "l_hello",
-     "prompt": "Say you're doing well, thanks.",
+     "prompt": {
+      "en": "Say you're doing well, thanks."
+     },
      "expected": [
       {
        "intent": "fine",
@@ -3119,7 +3317,9 @@
     "l_hello_b": {
      "kind": "learner",
      "id": "l_hello_b",
-     "prompt": "Say you're doing well, thanks.",
+     "prompt": {
+      "en": "Say you're doing well, thanks."
+     },
      "expected": [
       {
        "intent": "fine",
@@ -3157,7 +3357,9 @@
     "l_bye": {
      "kind": "learner",
      "id": "l_bye",
-     "prompt": "Wish them a good day.",
+     "prompt": {
+      "en": "Wish them a good day."
+     },
      "expected": [
       {
        "intent": "goodday",
@@ -3189,7 +3391,9 @@
     "l_bye_b": {
      "kind": "learner",
      "id": "l_bye_b",
-     "prompt": "Wish them a good day.",
+     "prompt": {
+      "en": "Wish them a good day."
+     },
      "expected": [
       {
        "intent": "goodday",
@@ -3228,8 +3432,12 @@
   },
   {
    "id": "fr.scenario.a1cap_telephone",
-   "title": "A quick phone call",
-   "goal": "Agree when and where to meet tomorrow.",
+   "title": {
+    "en": "A quick phone call"
+   },
+   "goal": {
+    "en": "Agree when and where to meet tomorrow."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -3255,7 +3463,9 @@
     "l_time": {
      "kind": "learner",
      "id": "l_time",
-     "prompt": "Say a time: at nine o'clock.",
+     "prompt": {
+      "en": "Say a time: at nine o'clock."
+     },
      "expected": [
       {
        "intent": "nine",
@@ -3286,7 +3496,9 @@
     "l_time_b": {
      "kind": "learner",
      "id": "l_time_b",
-     "prompt": "Say a time: at nine o'clock.",
+     "prompt": {
+      "en": "Say a time: at nine o'clock."
+     },
      "expected": [
       {
        "intent": "nine",
@@ -3319,7 +3531,9 @@
     "l_place": {
      "kind": "learner",
      "id": "l_place",
-     "prompt": "Say: at the café.",
+     "prompt": {
+      "en": "Say: at the café."
+     },
      "expected": [
       {
        "intent": "cafe",
@@ -3348,7 +3562,9 @@
     "l_place_b": {
      "kind": "learner",
      "id": "l_place_b",
-     "prompt": "Say: at the café.",
+     "prompt": {
+      "en": "Say: at the café."
+     },
      "expected": [
       {
        "intent": "cafe",
@@ -3384,8 +3600,12 @@
   },
   {
    "id": "fr.scenario.a1cap_julie",
-   "title": "Meeting Julie",
-   "goal": "Give your name and answer her question. You are Nadia.",
+   "title": {
+    "en": "Meeting Julie"
+   },
+   "goal": {
+    "en": "Give your name and answer her question. You are Nadia."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -3411,7 +3631,9 @@
     "l_name": {
      "kind": "learner",
      "id": "l_name",
-     "prompt": "Say hello and give your name — you are Nadia.",
+     "prompt": {
+      "en": "Say hello and give your name — you are Nadia."
+     },
      "expected": [
       {
        "intent": "name",
@@ -3444,7 +3666,9 @@
     "l_name_b": {
      "kind": "learner",
      "id": "l_name_b",
-     "prompt": "Say hello and give your name — you are Nadia.",
+     "prompt": {
+      "en": "Say hello and give your name — you are Nadia."
+     },
      "expected": [
       {
        "intent": "name",
@@ -3479,7 +3703,9 @@
     "l_french": {
      "kind": "learner",
      "id": "l_french",
-     "prompt": "Say yes — a little.",
+     "prompt": {
+      "en": "Say yes — a little."
+     },
      "expected": [
       {
        "intent": "yes",
@@ -3510,7 +3736,9 @@
     "l_french_b": {
      "kind": "learner",
      "id": "l_french_b",
-     "prompt": "Say yes — a little.",
+     "prompt": {
+      "en": "Say yes — a little."
+     },
      "expected": [
       {
        "intent": "yes",
@@ -3548,8 +3776,12 @@
   },
   {
    "id": "fr.scenario.a1cap_invitation",
-   "title": "An invitation",
-   "goal": "Accept a friend's café invitation and confirm the time.",
+   "title": {
+    "en": "An invitation"
+   },
+   "goal": {
+    "en": "Accept a friend's café invitation and confirm the time."
+   },
    "taskFamily": "conversation",
    "objectiveRefs": [
     "fr.obj.interaction.everyday_conversation"
@@ -3575,7 +3807,9 @@
     "l_invite": {
      "kind": "learner",
      "id": "l_invite",
-     "prompt": "Say yes — sounds good.",
+     "prompt": {
+      "en": "Say yes — sounds good."
+     },
      "expected": [
       {
        "intent": "accept",
@@ -3608,7 +3842,9 @@
     "l_invite_b": {
      "kind": "learner",
      "id": "l_invite_b",
-     "prompt": "Say yes — sounds good.",
+     "prompt": {
+      "en": "Say yes — sounds good."
+     },
      "expected": [
       {
        "intent": "accept",
@@ -3643,7 +3879,9 @@
     "l_confirm": {
      "kind": "learner",
      "id": "l_confirm",
-     "prompt": "Say yes, that works.",
+     "prompt": {
+      "en": "Say yes, that works."
+     },
      "expected": [
       {
        "intent": "ok",
@@ -3677,7 +3915,9 @@
     "l_confirm_b": {
      "kind": "learner",
      "id": "l_confirm_b",
-     "prompt": "Say yes, that works.",
+     "prompt": {
+      "en": "Say yes, that works."
+     },
      "expected": [
       {
        "intent": "ok",

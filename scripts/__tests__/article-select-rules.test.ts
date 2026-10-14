@@ -48,9 +48,9 @@ describe("articleSelect validation rules", () => {
   });
 
   test("§57 elision safety: le/la on vowel- or h-initial nouns fails", () => {
-    expect(errorsFor("fr-en", drill({ noun: "eau" })).join("\n")).toContain("elide to l'");
-    expect(errorsFor("fr-en", drill({ noun: "homme", correct: 0 })).join("\n")).toContain("elide to l'");
-    expect(errorsFor("fr-en", drill({ noun: "étoile" })).join("\n")).toContain("elide to l'");
+    expect(errorsFor("fr-en", drill({ noun: "eau" })).join("\n")).toContain("elision-sensitive noun");
+    expect(errorsFor("fr-en", drill({ noun: "homme", correct: 0 })).join("\n")).toContain("elision-sensitive noun");
+    expect(errorsFor("fr-en", drill({ noun: "étoile" })).join("\n")).toContain("elision-sensitive noun");
   });
 
   test("un/une drills are exempt from the elision rule (no elision with un/une)", () => {

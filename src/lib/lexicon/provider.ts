@@ -44,10 +44,10 @@ const nativePromises = new Map<string, Promise<LexiconRepository | null>>();
 export function getLexiconRepository(
   courseId: string
 ): Promise<{ repo: LexiconRepository; tier: LexiconTier }> {
-  const code = courseProfile(courseId).targetCode;
+  const { targetCode: code, nativeCode } = courseProfile(courseId);
   let pending = nativePromises.get(code);
   if (!pending) {
-    pending = loadNativeLexiconRepository(code);
+    pending = loadNativeLexiconRepository(code, nativeCode);
     nativePromises.set(code, pending);
   }
   return pending.then((native) =>

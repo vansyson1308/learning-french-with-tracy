@@ -105,6 +105,14 @@ export function defaultCourseId(): string {
 /** Test seam: capability overrides (e.g. FSRS on a legacy course) — bun/jest only. */
 const TEST_OVERRIDES = new Map<string, Partial<CourseCapabilities>>();
 
+/** Test seam (P1c): whole profiles of TEST-ONLY courses (src/content/test-only/course-profiles.json). */
+const TEST_PROFILES = new Map<string, CourseProfile>();
+
+export function __registerCourseProfileForTests(profile: CourseProfile | null, courseId?: string): void {
+  if (profile === null) TEST_PROFILES.delete(courseId ?? "");
+  else TEST_PROFILES.set(profile.id, profile);
+}
+
 export function __setCourseCapabilityOverrideForTests(
   courseId: string,
   override: Partial<CourseCapabilities> | null
@@ -135,7 +143,7 @@ function unknownProfile(courseId: string): CourseProfile {
 
 /** The profile for a course; a fully-gated placeholder for unknown ids (never throws). */
 export function courseProfile(courseId: string): CourseProfile {
-  const base = PROFILES[courseId] ?? unknownProfile(courseId);
+  const base = TEST_PROFILES.get(courseId) ?? PROFILES[courseId] ?? unknownProfile(courseId);
   const override = TEST_OVERRIDES.get(courseId);
   // Always a fresh view: callers can never mutate the generated table.
   return {

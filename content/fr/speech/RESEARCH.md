@@ -1,5 +1,7 @@
 # Phase 8 Speech Research — Spoken Production Foundation
 
+> **Schema note (P1c).** In `items.json` the `prompt.instruction` and cue-fact `label` values are native-text records (`{ "en": "…" }`); `recognitionLocale` is BCP-47 and must equal the French plugin's `fr-FR`. Grading normalisation comes from `src/lib/languages/fr.ts`. See `content/README.md`.
+
 Evidence base for the Phase-8 microphone/speech-recognition work. Everything
 in this note that drives a technical decision was read from a pinned source
 in this session; where sandbox egress blocks a primary source, that is said

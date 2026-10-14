@@ -1,0 +1,41 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "policyVersion": 2,
+  "minItemsForAssessed": 2,
+  "breadthPolicy": {
+    "minItemsPerDirectObjective": 2,
+    "minDistinctInputsPerDirectObjective": 1,
+    "minTaskFamiliesPerDomain": 1,
+    "minDistinctScalesPerDomain": 1
+  },
+  "levels": [
+    {
+      "level": "A1",
+      "claimable": true,
+      "domains": [
+        {
+          "domain": "written_reception",
+          "status": "covered",
+          "directAssessedObjectives": [
+            "xx.obj.read.signs"
+          ],
+          "breadth": {
+            "taskFamilies": [
+              "readingComprehension"
+            ],
+            "scaleNames": [
+              "Reading for orientation"
+            ],
+            "distinctInputsByObjective": {
+              "xx.obj.read.signs": 1
+            }
+          }
+        }
+      ],
+      "coveredCompetences": [],
+      "unassessedDomains": [],
+      "evidenceLimitations": []
+    }
+  ],
+  "wording": "CEFR-aligned estimate — not an official CEFR examination or certification."
+}

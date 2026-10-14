@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "language": "xx",
+  "tasks": [
+    {
+      "id": "xx.write.friend",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": { "en": "Write one short sentence saying you are a friend." },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "friend",
+            "description": { "en": "that you are a friend" },
+            "variants": ["mi tomo"],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 10
+      },
+      "modelAnswers": ["mi tomo na"],
+      "objectiveRefs": ["xx.obj.read.signs"],
+      "lexemeRefs": ["xx:w:tomo"],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    }
+  ]
+}

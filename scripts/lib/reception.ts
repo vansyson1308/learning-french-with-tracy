@@ -1,37 +1,58 @@
 /**
- * Phase-7 reception pipeline library (P7 §43-49, §128-133): loaders,
- * validators and compiled-artifact builders for reading texts and listening
- * clips, plus the SHARED asset-key derivation the generation workflow and
- * the compiler must agree on byte-for-byte.
+ * Phase-7 reception pipeline library (P7 §43-49, §128-133; per target
+ * language since P1c): loaders, validators and compiled-artifact builders
+ * for reading texts and listening clips, plus the SHARED asset-key
+ * derivation the generation workflow and the compiler must agree on
+ * byte-for-byte.
  */
 
 import { createHash } from "crypto";
 import { existsSync, readdirSync } from "fs";
 
 import {
-  ListeningSchema,
-  ReadingsSchema,
+  listeningSchema,
+  readingsSchema,
   type CourseObjectives,
   type Listening,
   type ListeningClip,
   type Readings,
-  type ReadingSource,
 } from "../../content/schema";
+import { localizeReading } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
-export const READINGS_SOURCE = "content/fr/reception/reading.json";
-export const LISTENING_SOURCE = "content/fr/reception/listening.json";
-export const RECEPTION_ASSETS_DIR = "assets/audio/fr-reception";
 export const RECEPTION_PIPELINE_VERSION = 1;
 
-export function loadReadings(): Readings | null {
-  if (!existsSync(safeResolve(READINGS_SOURCE))) return null;
-  return ReadingsSchema.parse(readJson(READINGS_SOURCE));
+export function readingsSourcePath(lang: string): string {
+  return `content/${lang}/reception/reading.json`;
+}
+export function listeningSourcePath(lang: string): string {
+  return `content/${lang}/reception/listening.json`;
+}
+/** Committed deterministic clips of a language. */
+export function receptionAssetsDir(lang: string): string {
+  return `assets/audio/${lang}-reception`;
 }
 
-export function loadListening(): Listening | null {
-  if (!existsSync(safeResolve(LISTENING_SOURCE))) return null;
-  return ListeningSchema.parse(readJson(LISTENING_SOURCE));
+/**
+ * Generated-asset file extension by audio policy: synthesized MP3s for
+ * shipped languages, generated WAV tones for the synthetic test language.
+ */
+export type ReceptionAssetKind = "mp3" | "wav";
+
+export function loadReadings(lang: string): Readings | null {
+  const rel = readingsSourcePath(lang);
+  if (!existsSync(safeResolve(rel))) return null;
+  const doc = readingsSchema(lang).parse(readJson(rel));
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
+}
+
+export function loadListening(lang: string): Listening | null {
+  const rel = listeningSourcePath(lang);
+  if (!existsSync(safeResolve(rel))) return null;
+  const doc = listeningSchema(lang).parse(readJson(rel));
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
 }
 
 // ---------------------------------------------------------------------------
@@ -42,11 +63,12 @@ export type ResolvedSegment = { voiceId: string; speaker: number | null; text: s
 
 /** MUST stay in lockstep with scripts/reception-audio.ts (same hash inputs). */
 export function receptionAssetKey(
+  lang: string,
   segments: ResolvedSegment[],
   pipelineVersion = RECEPTION_PIPELINE_VERSION
 ): string {
   const canonical = JSON.stringify([
-    "fr",
+    lang,
     segments.map((s) => [s.voiceId, s.speaker, s.text]),
     1.0,
     pipelineVersion,
@@ -65,24 +87,33 @@ export function resolveClipSegments(
   }));
 }
 
+function clipFileName(lang: string, listening: Listening, clip: ListeningClip, kind: ReceptionAssetKind): string {
+  return `${receptionAssetKey(lang, resolveClipSegments(listening, clip))}.${kind}`;
+}
+
 // ---------------------------------------------------------------------------
 // Validation (P7 §128-130)
 // ---------------------------------------------------------------------------
 
+export type PackForReception = {
+  sections: { units: { lessons: { exercises: { type: string; id: string }[] }[] }[] }[];
+};
+
 export function validateReception(input: {
+  lang: string;
   readings: Readings | null;
   listening: Listening | null;
-  objectives: CourseObjectives;
+  objectives: CourseObjectives | null;
   lexemeIds: Set<string>;
-  /** When provided, every clipId/readingId used by fr-en exercises must resolve. */
-  frPack?: {
-    sections: { units: { lessons: { exercises: { type: string; id: string }[] }[] }[] }[];
-  };
+  /** Every clipId/readingId used by these packs' exercises must resolve. */
+  packs?: PackForReception[];
+  assetKind?: ReceptionAssetKind;
 }): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
   const err = (m: string) => errors.push(`reception: ${m}`);
-  const known = new Set(input.objectives.objectives.map((o) => o.id));
+  const known = new Set((input.objectives?.objectives ?? []).map((o) => o.id));
+  const assetKind = input.assetKind ?? "mp3";
 
   const readingIds = new Set<string>();
   for (const reading of input.readings?.readings ?? []) {
@@ -114,7 +145,7 @@ export function validateReception(input: {
   const clipIds = new Set<string>();
   const listening = input.listening;
   if (listening) {
-    const assetsAbs = safeResolve(RECEPTION_ASSETS_DIR);
+    const assetsAbs = safeResolve(receptionAssetsDir(input.lang));
     const assetsPresent = existsSync(assetsAbs);
     const assetFiles = assetsPresent ? new Set(readdirSync(assetsAbs)) : new Set<string>();
     for (const clip of listening.clips) {
@@ -148,8 +179,7 @@ export function validateReception(input: {
       // Deterministic bundled audio (P7 §26): once ANY generated asset
       // exists, every clip must resolve to its committed file; before the
       // first generation run this is a warning so authoring can iterate.
-      const key = receptionAssetKey(resolveClipSegments(listening, clip));
-      const fileName = `${key}.mp3`;
+      const fileName = clipFileName(input.lang, listening, clip, assetKind);
       if (assetsPresent) {
         if (!assetFiles.has(fileName)) {
           err(
@@ -166,21 +196,19 @@ export function validateReception(input: {
     // asset key. Orphans creep in when an authored transcript changes (the
     // key moves) — Phase 7 cleaned one by hand; the validator now catches it.
     if (assetsPresent) {
-      const referenced = new Set(
-        listening.clips.map((c) => `${receptionAssetKey(resolveClipSegments(listening, c))}.mp3`)
-      );
+      const referenced = new Set(listening.clips.map((c) => clipFileName(input.lang, listening, c, assetKind)));
       for (const file of assetFiles) {
-        if (file.endsWith(".mp3") && !referenced.has(file)) {
+        if (file.endsWith(`.${assetKind}`) && !referenced.has(file)) {
           err(`orphan asset ${file}: no authored clip resolves to it — delete it or restore its clip`);
         }
       }
     }
   }
 
-  if (input.frPack) {
+  for (const pack of input.packs ?? []) {
     const knownClips = new Set((input.listening?.clips ?? []).map((c) => c.id));
     const knownReadings = new Set((input.readings?.readings ?? []).map((r) => r.id));
-    for (const section of input.frPack.sections) {
+    for (const section of pack.sections) {
       for (const unit of section.units) {
         for (const lesson of unit.lessons) {
           for (const e of lesson.exercises) {
@@ -205,9 +233,9 @@ export function validateReception(input: {
 // Compiled artifacts (P7 §128, §43)
 // ---------------------------------------------------------------------------
 
-export function compileReadingsArtifact(readings: Readings): string {
-  const byId: Record<string, ReadingSource> = {};
-  for (const reading of readings.readings) byId[reading.id] = reading;
+export function compileReadingsArtifact(readings: Readings, nativeCode: string): string {
+  const byId: Record<string, unknown> = {};
+  for (const reading of readings.readings) byId[reading.id] = localizeReading(reading, nativeCode);
   return `${JSON.stringify(
     {
       version: readings.version,
@@ -238,7 +266,7 @@ export function compileListeningArtifact(
 ): string {
   const byId: Record<string, CompiledClip> = {};
   for (const clip of listening.clips) {
-    const key = receptionAssetKey(resolveClipSegments(listening, clip));
+    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip));
     byId[clip.id] = {
       id: clip.id,
       kind: clip.kind,
@@ -263,30 +291,24 @@ export function compileListeningArtifact(
 }
 
 /**
- * Static require map so Metro bundles the committed clips (P7 §26, §32).
- * Only clips whose generated asset EXISTS are mapped — a dead require would
- * break bundling; the validator separately errors on any missing asset once
- * generation has run, so a shipped build can never lack a mapped clip.
- */
-/**
  * Audio census (P8 Gate 0) — the three counts are DIFFERENT CONCEPTS and
  * must be reported as such, never forced equal:
  *  - authoredClipCount: logical clips in listening.json (one per clip id);
  *  - uniqueAssetCount: distinct deterministic asset keys — clips whose
  *    resolved segments are identical share one synthesized file by design;
- *  - physicalAssetCount: .mp3 files actually on disk (0 pre-generation).
+ *  - physicalAssetCount: files actually on disk (0 pre-generation).
  * Internal consistency: physical == unique once generation has run, and
  * every shared asset names the clip ids that share it.
  */
-export function compileAudioCensus(listening: Listening): string {
+export function compileAudioCensus(listening: Listening, assetKind: ReceptionAssetKind = "mp3"): string {
   const byKey = new Map<string, string[]>();
   for (const clip of listening.clips) {
-    const key = receptionAssetKey(resolveClipSegments(listening, clip));
+    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip));
     byKey.set(key, [...(byKey.get(key) ?? []), clip.id]);
   }
-  const assetsAbs = safeResolve(RECEPTION_ASSETS_DIR);
+  const assetsAbs = safeResolve(receptionAssetsDir(listening.language));
   const physical = existsSync(assetsAbs)
-    ? readdirSync(assetsAbs).filter((f) => f.endsWith(".mp3")).length
+    ? readdirSync(assetsAbs).filter((f) => f.endsWith(`.${assetKind}`)).length
     : 0;
   return canonicalJson({
     generator: "scripts/lib/reception.ts compileAudioCensus",
@@ -301,7 +323,20 @@ export function compileAudioCensus(listening: Listening): string {
   });
 }
 
-export function compileClipAssetsModule(listening: Listening): string {
+/**
+ * Static require map so Metro bundles the committed clips (P7 §26, §32).
+ * Only clips whose generated asset EXISTS are mapped — a dead require would
+ * break bundling; the validator separately errors on any missing asset once
+ * generation has run, so a shipped build can never lack a mapped clip.
+ * `requirePrefix` is the relative path from the emitted module to the repo
+ * root ("../../.." from src/content/reception).
+ */
+export function compileClipAssetsModule(
+  listening: Listening,
+  requirePrefix: string,
+  assetKind: ReceptionAssetKind = "mp3"
+): string {
+  const lang = listening.language;
   const lines = [
     "/**",
     " * Generated by scripts/compile-content.ts — do not edit.",
@@ -313,18 +348,17 @@ export function compileClipAssetsModule(listening: Listening): string {
     "export const RECEPTION_CLIP_ASSETS: Record<string, number> = {",
   ];
   for (const clip of listening.clips) {
-    const key = receptionAssetKey(resolveClipSegments(listening, clip));
-    if (!existsSync(safeResolve(RECEPTION_ASSETS_DIR, `${key}.mp3`))) continue;
-    lines.push(`  "${clip.id}": require("../../../assets/audio/fr-reception/${key}.mp3"),`);
+    const fileName = clipFileName(lang, listening, clip, assetKind);
+    if (!existsSync(safeResolve(receptionAssetsDir(lang), fileName))) continue;
+    lines.push(`  "${clip.id}": require("${requirePrefix}/${receptionAssetsDir(lang)}/${fileName}"),`);
   }
   lines.push("};", "");
   return lines.join("\n");
 }
 
 /** Durations from the generated quality report (null-safe pre-generation). */
-export function loadClipDurations(): Map<string, number> {
+export function loadClipDurations(reportPath: string): Map<string, number> {
   const durations = new Map<string, number>();
-  const reportPath = "content/reports/reception-audio-quality.json";
   if (!existsSync(safeResolve(reportPath))) return durations;
   const report = readJson(reportPath) as {
     clips?: { clipId: string; durationSec: number }[];

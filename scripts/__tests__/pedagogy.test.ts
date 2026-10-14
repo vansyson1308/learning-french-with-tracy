@@ -7,21 +7,24 @@ import { describe, expect, test } from "bun:test";
 
 import {
   PackSchema,
-  type Conjugations,
   type PackSource,
+  type ParadigmTables,
   type PedagogyConcepts,
 } from "../../content/schema";
+import { buildPlugin } from "../lib/languages";
 import {
   compileConceptsArtifact,
-  loadConjugations,
+  loadParadigms,
   loadPedagogyConcepts,
   validateConjugationClozes,
-  validateConjugationsData,
   validateLessonFlows,
+  validateParadigmsData,
   validatePedagogy,
   validatePedagogyData,
 } from "../lib/pedagogy";
 import { readJson } from "../lib/pipeline";
+
+const FR = buildPlugin("fr");
 
 type MorphologyFile = {
   verbs: { lemma: string; rows: { mot: string; infoVer: string }[] }[];
@@ -33,12 +36,12 @@ function realMorphology(): MorphologyFile {
 
 describe("committed pedagogy data", () => {
   test("validatePedagogy passes on the real content", () => {
-    expect(validatePedagogy().errors).toEqual([]);
+    expect(validatePedagogy("fr").errors).toEqual([]);
   });
 
   test("the compiled artifact keys every concept and keeps authored order", () => {
-    const concepts = loadPedagogyConcepts();
-    const artifact = JSON.parse(compileConceptsArtifact(concepts)) as {
+    const concepts = loadPedagogyConcepts("fr")!;
+    const artifact = JSON.parse(compileConceptsArtifact(concepts, "en")) as {
       order: string[];
       byId: Record<string, { id: string }>;
     };
@@ -54,10 +57,10 @@ function fixtureConcepts(): PedagogyConcepts {
     concepts: [
       {
         id: "fr:concept:test-rule",
-        title: "A teachable rule",
-        shortRule: "Short rule.",
-        explanation: "Longer explanation.",
-        examples: [{ fr: "le chat", en: "the cat" }],
+        title: { en: "A teachable rule" },
+        shortRule: { en: "Short rule." },
+        explanation: { en: "Longer explanation." },
+        examples: [{ target: "le chat", translations: { en: "the cat" } }],
         exceptions: [],
         sourceRefs: [{ source: "original-french-pedagogy" }],
       },
@@ -66,6 +69,23 @@ function fixtureConcepts(): PedagogyConcepts {
 }
 
 const REGISTRY = new Set(["original-french-pedagogy", "lexique-4"]);
+
+// Real derived-atom shape: mood:tense:person with NO number suffix —
+// number is the separate noisy field and never gates (§26 contract).
+const FIXTURE_MORPH = [
+  {
+    lemma: "parler",
+    rows: [
+      { mot: "parler", infoVer: "inf" },
+      { mot: "parle", infoVer: "ind:pre:1,ind:pre:3,sub:pre:1,sub:pre:3" },
+      { mot: "parles", infoVer: "ind:pre:2,sub:pre:2" },
+      { mot: "parlons", infoVer: "ind:pre:1,imp:pre:1" },
+      { mot: "parlez", infoVer: "ind:pre:2,imp:pre:2" },
+      { mot: "parlent", infoVer: "ind:pre:3,sub:pre:3" },
+      { mot: "parlé", infoVer: "par:pas" },
+    ],
+  },
+];
 
 describe("validatePedagogyData — every rule fires", () => {
   test("fixture baseline is valid", () => {
@@ -90,19 +110,19 @@ describe("validatePedagogyData — every rule fires", () => {
 
   test("CEFR labels in learner-facing titles fail (program rule)", () => {
     const concepts = fixtureConcepts();
-    concepts.concepts[0].title = "Gender basics (A1)";
+    concepts.concepts[0].title = { en: "Gender basics (A1)" };
     expect(
       validatePedagogyData({ concepts, registryIds: REGISTRY }).errors.join("\n")
     ).toContain("CEFR");
   });
 });
 
-function fixturePack(flow?: unknown): PackSource {
+function fixturePack(flow?: unknown, targetCode = "fr"): PackSource {
   return PackSchema.parse({
-    id: "fr-en",
+    id: `${targetCode}-en`,
     version: 1,
     targetLanguage: "French",
-    targetCode: "fr",
+    targetCode,
     nativeLanguage: "English",
     nativeCode: "en",
     flag: "x",
@@ -146,7 +166,7 @@ const CONCEPT_IDS = new Set(["fr:concept:test-rule"]);
 
 function flowErrors(courseId: string, flow?: unknown): string[] {
   return validateLessonFlows({
-    packs: [{ courseId, pack: fixturePack(flow) }],
+    packs: [{ courseId, pack: fixturePack(flow, courseId.split("-")[0]) }],
     conceptIds: CONCEPT_IDS,
   }).errors;
 }
@@ -188,51 +208,55 @@ describe("validateLessonFlows — every rule fires", () => {
   });
 });
 
-describe("validateConjugationsData — the evidence chain bites", () => {
+const validateParadigms = (paradigms: ParadigmTables, evidence: { lemma: string; rows: { mot: string; infoVer: string }[] }[]) =>
+  validateParadigmsData({ paradigms, plugin: FR, evidence, registryIds: REGISTRY });
+
+describe("validateParadigmsData — the evidence chain bites", () => {
   test("all 8 committed tables are evidenced by the real morphology rows", () => {
-    const result = validateConjugationsData({
-      conjugations: loadConjugations(),
-      morphologyVerbs: realMorphology().verbs,
-    });
+    const result = validateParadigms(loadParadigms("fr")!, realMorphology().verbs);
     expect(result.errors).toEqual([]);
   });
 
   test("corrupting a REAL cell (êtes → étes) is caught against the real evidence", () => {
-    const conjugations = loadConjugations();
-    const etre = conjugations.verbs.find((v) => v.lemma === "être");
+    const paradigms = loadParadigms("fr")!;
+    const etre = paradigms.tables.find((v) => v.lemma === "être");
     if (!etre) throw new Error("être table missing");
     etre.cells["pre:2p"] = "étes";
-    const result = validateConjugationsData({
-      conjugations,
-      morphologyVerbs: realMorphology().verbs,
-    });
+    const result = validateParadigms(paradigms, realMorphology().verbs);
     expect(result.errors.join("\n")).toContain('être: cell pre:2p = "étes" is not evidenced');
   });
 
   test("a form that exists but under the wrong analysis is rejected (sont as participle)", () => {
-    const conjugations = loadConjugations();
-    const etre = conjugations.verbs.find((v) => v.lemma === "être");
+    const paradigms = loadParadigms("fr")!;
+    const etre = paradigms.tables.find((v) => v.lemma === "être");
     if (!etre) throw new Error("être table missing");
     // "sont" is a real être row (ind:pre:3p) — but it is NOT participle
     // evidence, so mood/tense atoms must gate, not mere form existence.
     etre.cells.participle = "sont";
-    const result = validateConjugationsData({
-      conjugations,
-      morphologyVerbs: realMorphology().verbs,
-    });
+    const result = validateParadigms(paradigms, realMorphology().verbs);
     expect(result.errors.join("\n")).toContain('être: cell participle = "sont" is not evidenced');
   });
 
-  function fixtureVerb(): Conjugations {
+  test("the plugin's declared attributes and groups are enforced", () => {
+    const paradigms = fixtureVerb();
+    paradigms.tables[0].group = "ir-regular";
+    delete paradigms.tables[0].attributes;
+    const joined = validateParadigms(paradigms, FIXTURE_MORPH).errors.join("\n");
+    expect(joined).toContain('group "ir-regular" is not one of er-regular, irregular');
+    expect(joined).toContain('attribute "auxiliary" is required');
+  });
+
+  function fixtureVerb(): ParadigmTables {
     return {
       version: 1,
       language: "fr",
-      verbs: [
+      tables: [
         {
           lemma: "parler",
-          english: "to speak",
+          gloss: { en: "to speak" },
           group: "er-regular",
-          auxiliary: "avoir",
+          evidence: { source: "lexique-4" },
+          attributes: { auxiliary: "avoir" },
           cells: {
             inf: "parler",
             "pre:1s": "parle",
@@ -248,51 +272,26 @@ describe("validateConjugationsData — the evidence chain bites", () => {
     };
   }
 
-  // Real derived-atom shape: mood:tense:person with NO number suffix —
-  // number is the separate noisy field and never gates (§26 contract).
-  const FIXTURE_MORPH = [
-    {
-      lemma: "parler",
-      rows: [
-        { mot: "parler", infoVer: "inf" },
-        { mot: "parle", infoVer: "ind:pre:1,ind:pre:3,sub:pre:1,sub:pre:3" },
-        { mot: "parles", infoVer: "ind:pre:2,sub:pre:2" },
-        { mot: "parlons", infoVer: "ind:pre:1,imp:pre:1" },
-        { mot: "parlez", infoVer: "ind:pre:2,imp:pre:2" },
-        { mot: "parlent", infoVer: "ind:pre:3,sub:pre:3" },
-        { mot: "parlé", infoVer: "par:pas" },
-      ],
-    },
-  ];
-
   test("fixture baseline passes", () => {
-    expect(
-      validateConjugationsData({ conjugations: fixtureVerb(), morphologyVerbs: FIXTURE_MORPH }).errors
-    ).toEqual([]);
+    expect(validateParadigms(fixtureVerb(), FIXTURE_MORPH).errors).toEqual([]);
   });
 
   test("a verb with no morphology evidence rows fails closed", () => {
-    expect(
-      validateConjugationsData({ conjugations: fixtureVerb(), morphologyVerbs: [] }).errors.join("\n")
-    ).toContain("no verb-morphology evidence rows");
+    expect(validateParadigms(fixtureVerb(), []).errors.join("\n")).toContain("no verb-morphology evidence rows");
   });
 
   test("an incomplete table fails", () => {
-    const conjugations = fixtureVerb();
+    const paradigms = fixtureVerb();
     // The schema itself enforces completeness (exhaustive enum record); the
     // validator's own check covers direct-constructed input like this.
-    delete (conjugations.verbs[0].cells as Partial<(typeof conjugations.verbs)[0]["cells"]>)["pre:1p"];
-    expect(
-      validateConjugationsData({ conjugations, morphologyVerbs: FIXTURE_MORPH }).errors.join("\n")
-    ).toContain("cell pre:1p is missing");
+    delete paradigms.tables[0].cells["pre:1p"];
+    expect(validateParadigms(paradigms, FIXTURE_MORPH).errors.join("\n")).toContain("cell pre:1p is missing");
   });
 
   test("duplicate verb tables fail", () => {
-    const conjugations = fixtureVerb();
-    conjugations.verbs.push(structuredClone(conjugations.verbs[0]));
-    expect(
-      validateConjugationsData({ conjugations, morphologyVerbs: FIXTURE_MORPH }).errors.join("\n")
-    ).toContain("duplicate verb parler");
+    const paradigms = fixtureVerb();
+    paradigms.tables.push(structuredClone(paradigms.tables[0]));
+    expect(validateParadigms(paradigms, FIXTURE_MORPH).errors.join("\n")).toContain("duplicate table parler");
   });
 
   test("every er-regular paradigm rule fires (2s, 3s, 3p, 2p)", () => {
@@ -313,21 +312,19 @@ describe("validateConjugationsData — the evidence chain bites", () => {
       ["pre:3p", "er-regular 3p must be 1s + nt"],
       ["pre:2p", "er-regular 2p must be stem + ez"],
     ] as const) {
-      const conjugations = fixtureVerb();
-      conjugations.verbs[0].cells[cell] = "parlex";
-      expect(
-        validateConjugationsData({ conjugations, morphologyVerbs: morph }).errors.join("\n")
-      ).toContain(expected);
+      const paradigms = fixtureVerb();
+      paradigms.tables[0].cells[cell] = "parlex";
+      expect(validateParadigms(paradigms, morph).errors.join("\n")).toContain(expected);
     }
   });
 });
 
-function clozePack(overrides: Partial<Record<string, unknown>> = {}): PackSource {
+function clozePack(overrides: Partial<Record<string, unknown>> = {}, targetCode = "fr"): PackSource {
   return PackSchema.parse({
-    id: "fr-en",
+    id: `${targetCode}-en`,
     version: 1,
     targetLanguage: "French",
-    targetCode: "fr",
+    targetCode,
     nativeLanguage: "English",
     nativeCode: "en",
     flag: "x",
@@ -369,15 +366,16 @@ function clozePack(overrides: Partial<Record<string, unknown>> = {}): PackSource
 }
 
 describe("validateConjugationClozes — every rule fires", () => {
-  const CONJUGATIONS: Conjugations = {
+  const PARADIGMS: ParadigmTables = {
     version: 1,
     language: "fr",
-    verbs: [
+    tables: [
       {
         lemma: "parler",
-        english: "to speak",
+        gloss: { en: "to speak" },
         group: "er-regular",
-        auxiliary: "avoir",
+        evidence: { source: "lexique-4" },
+        attributes: { auxiliary: "avoir" },
         cells: {
           inf: "parler",
           "pre:1s": "parle",
@@ -394,8 +392,8 @@ describe("validateConjugationClozes — every rule fires", () => {
 
   function clozeErrors(courseId: string, overrides: Partial<Record<string, unknown>> = {}) {
     return validateConjugationClozes({
-      packs: [{ courseId, pack: clozePack(overrides) }],
-      conjugations: CONJUGATIONS,
+      packs: [{ courseId, pack: clozePack(overrides, courseId.split("-")[0]) }],
+      paradigmsByLang: { fr: PARADIGMS },
     }).errors;
   }
 
@@ -411,7 +409,7 @@ describe("validateConjugationClozes — every rule fires", () => {
 
   test("a verb without an authored table fails", () => {
     expect(clozeErrors("fr-en", { verb: "chanter", answer: "chante" }).join("\n")).toContain(
-      "verb chanter has no authored conjugation table"
+      "verb chanter has no authored paradigm table"
     );
   });
 

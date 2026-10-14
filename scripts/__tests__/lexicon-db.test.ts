@@ -20,13 +20,15 @@ import {
   logicalDump,
   verifySqliteDb,
 } from "../lib/lexicon-build";
+import { buildPlugin } from "../lib/languages";
 import { loadRegistry, removeTempDirSync, safeResolve } from "../lib/pipeline";
 
-const lexicon = loadRichLexicon();
-const manifest = loadSourceManifest();
+const lexicon = loadRichLexicon("fr");
+const manifest = loadSourceManifest("fr");
 const registry = loadRegistry();
 const contentHash = lexiconContentHash(lexicon, manifest, registry);
-const committedPath = safeResolve(`assets/lexicon/${dbAssetName(contentHash)}`);
+const committedPath = safeResolve(`assets/lexicon/${dbAssetName("fr", contentHash)}`);
+const BUILD = { plugin: buildPlugin("fr"), nativeCode: "en" };
 
 function open(dbPath: string): Database {
   return new Database(dbPath, { readonly: true });
@@ -154,8 +156,8 @@ describe("build determinism (logical-dump contract)", () => {
       try {
         const a = path.join(dir, "a.db");
         const b = path.join(dir, "b.db");
-        buildSqliteDb(a, lexicon, registry, contentHash);
-        buildSqliteDb(b, lexicon, registry, contentHash);
+        buildSqliteDb(a, lexicon, registry, contentHash, BUILD);
+        buildSqliteDb(b, lexicon, registry, contentHash, BUILD);
         const dumpA = logicalDump(a);
         expect(dumpA).toBe(logicalDump(b));
         expect(dumpA).toBe(logicalDump(committedPath));
@@ -175,7 +177,7 @@ describe("build determinism (logical-dump contract)", () => {
     expect(lexiconContentHash(lexicon, manifest, registry)).toBe(contentHash);
     // And it responds to source changes.
     const mutated = structuredClone(lexicon);
-    mutated.lexemes[0].nativeGloss = "the mutant";
+    mutated.lexemes[0].glosses = { en: "the mutant" };
     expect(lexiconContentHash(mutated, manifest, registry)).not.toBe(contentHash);
   });
 });

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "language": "xx",
+  "scenarios": [
+    {
+      "id": "xx.scenario.hello",
+      "title": { "en": "A quick hello" },
+      "goal": { "en": "Say you are a friend, then say goodbye." },
+      "taskFamily": "conversation",
+      "objectiveRefs": ["xx.obj.greet.basic"],
+      "startNodeId": "p1",
+      "nodes": {
+        "p1": { "kind": "partner", "id": "p1", "text": "Ka tomo?", "clipId": "xx.clip.tomo", "next": "l1" },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": { "en": "Say that you are a friend." },
+          "expected": [{ "intent": "friend", "acceptedVariants": ["mi tomo", "mi tomo na"], "next": "p2" }],
+          "noMatchNext": "p1_repair",
+          "scored": true
+        },
+        "p1_repair": { "kind": "partner", "id": "p1_repair", "text": "Ka tomo? Mi tomo?", "clipId": "xx.clip.tomo", "next": "l1" },
+        "p2": { "kind": "partner", "id": "p2", "text": "Na! Ki lira?", "clipId": "xx.clip.tomo", "next": "l2" },
+        "l2": {
+          "kind": "learner",
+          "id": "l2",
+          "prompt": { "en": "Say goodbye." },
+          "expected": [{ "intent": "bye", "acceptedVariants": ["to lira"], "next": "end" }],
+          "noMatchNext": "p2_repair",
+          "scored": true
+        },
+        "p2_repair": { "kind": "partner", "id": "p2_repair", "text": "Ki lira? To lira?", "clipId": "xx.clip.tomo", "next": "l2" },
+        "end": { "kind": "terminal", "id": "end", "outcome": "goal_met" }
+      },
+      "support": { "allowRepeat": true, "allowRephrase": true },
+      "reserved": false,
+      "sourceRef": "original-project"
+    }
+  ]
+}

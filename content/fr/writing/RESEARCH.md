@@ -1,5 +1,7 @@
 # Written production at A1 — research notes (Phase 9)
 
+> **Schema note (P1c).** In `tasks.json` the `instruction`, cue-fact `label` and rubric slot `description` values are native-text records (`{ "en": "…" }`); the compiled artifact's token set keeps its historical `knownFrench` key (golden-pinned) and is built from the plugin's function words, the number speller, the lexicon and the paradigm tables. See `content/README.md`.
+
 Construct research for the Section-5 writing system. Framework reference:
 Council of Europe, *CEFR Companion Volume* (2020). All can-do wording in
 this app is ORIGINAL — descriptor text is studied for construct meaning,

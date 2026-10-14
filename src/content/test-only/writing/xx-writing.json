@@ -1,0 +1,48 @@
+{
+  "generator": "scripts/lib/writing.ts",
+  "version": 1,
+  "order": [
+    "xx.write.friend"
+  ],
+  "byId": {
+    "xx.write.friend": {
+      "id": "xx.write.friend",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Write one short sentence saying you are a friend.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "friend",
+            "description": "that you are a friend",
+            "variants": [
+              "mi tomo"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 10
+      },
+      "modelAnswers": [
+        "mi tomo na"
+      ],
+      "objectiveRefs": [
+        "xx.obj.read.signs"
+      ],
+      "lexemeRefs": [
+        "xx:w:tomo"
+      ],
+      "scoredEligibility": false
+    }
+  },
+  "knownVocabulary": [
+    "ka",
+    "ki",
+    "lira",
+    "mi",
+    "na",
+    "to",
+    "tomo"
+  ]
+}

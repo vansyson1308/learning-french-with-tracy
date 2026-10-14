@@ -1,5 +1,7 @@
 # Phase 7 Reception Research — Listening & Reading
 
+> **Schema note (P1c).** `reading.json` support-glossary `gloss` values are native-text records (`{ "en": "…" }`); clip and reading ids use the `fr.clip.*` / `fr.read.*` factories; the asset key is `receptionAssetKey("fr", …)` shared by the compiler and `scripts/reception-audio.ts --lang fr`. See `content/README.md`.
+
 Status: working research record for the receptive-French system (Phase 7).
 Everything learner-facing that follows from this document is **original,
 app-owned wording**. No Council of Europe descriptor text is reproduced here

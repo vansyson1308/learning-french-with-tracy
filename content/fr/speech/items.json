@@ -7,7 +7,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "bonjour",
    "acceptedVariants": [
@@ -36,7 +38,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "Merci beaucoup, monsieur.",
    "acceptedVariants": [
@@ -66,7 +70,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "It's morning and you walk into a bakery. Greet the baker."
+    "instruction": {
+     "en": "It's morning and you walk into a bakery. Greet the baker."
+    }
    },
    "target": "Bonjour",
    "acceptedVariants": [
@@ -99,7 +105,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say thank you very much."
+    "instruction": {
+     "en": "Say thank you very much."
+    }
    },
    "target": "Merci beaucoup",
    "acceptedVariants": [
@@ -130,7 +138,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "You are asking for something. Add the polite phrase for 'please'."
+    "instruction": {
+     "en": "You are asking for something. Add the polite phrase for 'please'."
+    }
    },
    "target": "S'il vous plaît",
    "acceptedVariants": [
@@ -161,7 +171,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "It's 8 pm and you meet your neighbour. Greet them."
+    "instruction": {
+     "en": "It's 8 pm and you meet your neighbour. Greet them."
+    }
    },
    "target": "Bonsoir",
    "acceptedVariants": [
@@ -194,7 +206,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say goodbye."
+    "instruction": {
+     "en": "Say goodbye."
+    }
    },
    "target": "Au revoir",
    "acceptedVariants": [
@@ -225,7 +239,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "You bump into someone in the street. Excuse yourself."
+    "instruction": {
+     "en": "You bump into someone in the street. Excuse yourself."
+    }
    },
    "target": "Pardon",
    "acceptedVariants": [
@@ -262,7 +278,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "Je suis à l'hôtel.",
    "acceptedVariants": [
@@ -292,7 +310,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "J'habite à Paris.",
    "acceptedVariants": [
@@ -321,7 +341,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "Je parle français.",
    "acceptedVariants": [
@@ -350,7 +372,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that you live in Paris."
+    "instruction": {
+     "en": "Say that you live in Paris."
+    }
    },
    "target": "J'habite à Paris",
    "acceptedVariants": [
@@ -381,7 +405,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that you speak French."
+    "instruction": {
+     "en": "Say that you speak French."
+    }
    },
    "target": "Je parle français",
    "acceptedVariants": [
@@ -412,7 +438,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that you like coffee."
+    "instruction": {
+     "en": "Say that you like coffee."
+    }
    },
    "target": "J'aime le café",
    "acceptedVariants": [
@@ -446,7 +474,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that you work in the morning."
+    "instruction": {
+     "en": "Say that you work in the morning."
+    }
    },
    "target": "Je travaille le matin",
    "acceptedVariants": [
@@ -478,7 +508,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that you are going to the station."
+    "instruction": {
+     "en": "Say that you are going to the station."
+    }
    },
    "target": "Je vais à la gare",
    "acceptedVariants": [
@@ -510,7 +542,9 @@
    "taskFamily": "information_giving",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "Le billet coûte seize euros.",
    "acceptedVariants": [
@@ -540,7 +574,9 @@
    "taskFamily": "information_giving",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "Le musée ouvre à dix heures le dimanche.",
    "acceptedVariants": [
@@ -571,11 +607,15 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say how many cats there are.",
+    "instruction": {
+     "en": "Say how many cats there are."
+    },
     "cueEmoji": "🐈🐈",
     "cueFacts": [
      {
-      "label": "Cats",
+      "label": {
+       "en": "Cats"
+      },
       "value": "2"
      }
     ]
@@ -622,10 +662,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say what it costs.",
+    "instruction": {
+     "en": "Say what it costs."
+    },
     "cueFacts": [
      {
-      "label": "Price",
+      "label": {
+       "en": "Price"
+      },
       "value": "3 €"
      }
     ]
@@ -677,10 +721,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say when the train leaves.",
+    "instruction": {
+     "en": "Say when the train leaves."
+    },
     "cueFacts": [
      {
-      "label": "Departure",
+      "label": {
+       "en": "Departure"
+      },
       "value": "9:00"
      }
     ]
@@ -732,10 +780,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say how many days there are in a week.",
+    "instruction": {
+     "en": "Say how many days there are in a week."
+    },
     "cueFacts": [
      {
-      "label": "Days in a week",
+      "label": {
+       "en": "Days in a week"
+      },
       "value": "7"
      }
     ]
@@ -783,7 +835,9 @@
    "taskFamily": "description",
    "elicitationType": "repetition",
    "prompt": {
-    "instruction": "Listen, then say it yourself."
+    "instruction": {
+     "en": "Listen, then say it yourself."
+    }
    },
    "target": "Le café est ouvert le soir.",
    "acceptedVariants": [
@@ -814,7 +868,9 @@
    "taskFamily": "description",
    "elicitationType": "picture_prompt",
    "prompt": {
-    "instruction": "Say what this is.",
+    "instruction": {
+     "en": "Say what this is."
+    },
     "cueEmoji": "🐶"
    },
    "target": "C'est un chien",
@@ -847,7 +903,9 @@
    "taskFamily": "description",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "You arrive at a big building full of trains. Say what this place is."
+    "instruction": {
+     "en": "You arrive at a big building full of trains. Say what this place is."
+    }
    },
    "target": "C'est la gare",
    "acceptedVariants": [
@@ -881,7 +939,9 @@
    "taskFamily": "description",
    "elicitationType": "picture_prompt",
    "prompt": {
-    "instruction": "Say that the door is closed.",
+    "instruction": {
+     "en": "Say that the door is closed."
+    },
     "cueEmoji": "🚪🔒"
    },
    "target": "La porte est fermée",
@@ -914,7 +974,9 @@
    "taskFamily": "description",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that the shop is open."
+    "instruction": {
+     "en": "Say that the shop is open."
+    }
    },
    "target": "Le magasin est ouvert",
    "acceptedVariants": [
@@ -946,7 +1008,9 @@
    "taskFamily": "description",
    "elicitationType": "picture_prompt",
    "prompt": {
-    "instruction": "Say what time of day this is.",
+    "instruction": {
+     "en": "Say what time of day this is."
+    },
     "cueEmoji": "🌅"
    },
    "target": "C'est le matin",
@@ -979,7 +1043,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "You walk into a restaurant at seven in the evening. Greet the waiter."
+    "instruction": {
+     "en": "You walk into a restaurant at seven in the evening. Greet the waiter."
+    }
    },
    "target": "Bonsoir",
    "acceptedVariants": [
@@ -1010,7 +1076,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "Someone holds the door open for you. Thank them."
+    "instruction": {
+     "en": "Someone holds the door open for you. Thank them."
+    }
    },
    "target": "Merci",
    "acceptedVariants": [
@@ -1042,7 +1110,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "You are leaving the shop after paying. Say goodbye."
+    "instruction": {
+     "en": "You are leaving the shop after paying. Say goodbye."
+    }
    },
    "target": "Au revoir",
    "acceptedVariants": [
@@ -1073,7 +1143,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "Someone asks which language you speak. Answer: French."
+    "instruction": {
+     "en": "Someone asks which language you speak. Answer: French."
+    }
    },
    "target": "Je parle français",
    "acceptedVariants": [
@@ -1102,7 +1174,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that you like tea."
+    "instruction": {
+     "en": "Say that you like tea."
+    }
    },
    "target": "J'aime le thé",
    "acceptedVariants": [
@@ -1134,7 +1208,9 @@
    "taskFamily": "self_introduction",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that you work in the evening."
+    "instruction": {
+     "en": "Say that you work in the evening."
+    }
    },
    "target": "Je travaille le soir",
    "acceptedVariants": [
@@ -1164,11 +1240,15 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say how many dogs there are.",
+    "instruction": {
+     "en": "Say how many dogs there are."
+    },
     "cueEmoji": "🐶🐶🐶",
     "cueFacts": [
      {
-      "label": "Dogs",
+      "label": {
+       "en": "Dogs"
+      },
       "value": "3"
      }
     ]
@@ -1213,10 +1293,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say what it costs.",
+    "instruction": {
+     "en": "Say what it costs."
+    },
     "cueFacts": [
      {
-      "label": "Price",
+      "label": {
+       "en": "Price"
+      },
       "value": "5 €"
      }
     ]
@@ -1266,10 +1350,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say when the train leaves.",
+    "instruction": {
+     "en": "Say when the train leaves."
+    },
     "cueFacts": [
      {
-      "label": "Departure",
+      "label": {
+       "en": "Departure"
+      },
       "value": "10:00"
      }
     ]
@@ -1319,7 +1407,9 @@
    "taskFamily": "description",
    "elicitationType": "picture_prompt",
    "prompt": {
-    "instruction": "Say what this is.",
+    "instruction": {
+     "en": "Say what this is."
+    },
     "cueEmoji": "🐱"
    },
    "target": "C'est un chat",
@@ -1350,7 +1440,9 @@
    "taskFamily": "description",
    "elicitationType": "picture_prompt",
    "prompt": {
-    "instruction": "Say what time of day this is.",
+    "instruction": {
+     "en": "Say what time of day this is."
+    },
     "cueEmoji": "🌙"
    },
    "target": "C'est le soir",
@@ -1381,7 +1473,9 @@
    "taskFamily": "description",
    "elicitationType": "semantic_prompt",
    "prompt": {
-    "instruction": "Say that the shop is closed."
+    "instruction": {
+     "en": "Say that the shop is closed."
+    }
    },
    "target": "Le magasin est fermé",
    "acceptedVariants": [
@@ -1411,7 +1505,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "You walk into a small shop in the morning. Greet the shopkeeper."
+    "instruction": {
+     "en": "You walk into a small shop in the morning. Greet the shopkeeper."
+    }
    },
    "target": "Bonjour",
    "acceptedVariants": [
@@ -1442,7 +1538,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "You just asked for a ticket. Finish the request with the polite phrase."
+    "instruction": {
+     "en": "You just asked for a ticket. Finish the request with the polite phrase."
+    }
    },
    "target": "S'il vous plaît",
    "acceptedVariants": [
@@ -1471,7 +1569,9 @@
    "taskFamily": "formulaic_exchange",
    "elicitationType": "situation_prompt",
    "prompt": {
-    "instruction": "Your friend's bus is leaving and they wave at you. Say goodbye."
+    "instruction": {
+     "en": "Your friend's bus is leaving and they wave at you. Say goodbye."
+    }
    },
    "target": "Au revoir",
    "acceptedVariants": [
@@ -1504,11 +1604,15 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say how many horses there are.",
+    "instruction": {
+     "en": "Say how many horses there are."
+    },
     "cueEmoji": "🐴🐴",
     "cueFacts": [
      {
-      "label": "Horses",
+      "label": {
+       "en": "Horses"
+      },
       "value": "2"
      }
     ]
@@ -1553,10 +1657,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say what it costs.",
+    "instruction": {
+     "en": "Say what it costs."
+    },
     "cueFacts": [
      {
-      "label": "Price",
+      "label": {
+       "en": "Price"
+      },
       "value": "7 €"
      }
     ]
@@ -1606,10 +1714,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say when the train leaves.",
+    "instruction": {
+     "en": "Say when the train leaves."
+    },
     "cueFacts": [
      {
-      "label": "Departure",
+      "label": {
+       "en": "Departure"
+      },
       "value": "8:00"
      }
     ]
@@ -1659,10 +1771,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say what time it is.",
+    "instruction": {
+     "en": "Say what time it is."
+    },
     "cueFacts": [
      {
-      "label": "Time",
+      "label": {
+       "en": "Time"
+      },
       "value": "10:00"
      }
     ]
@@ -1695,10 +1811,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say how much it costs.",
+    "instruction": {
+     "en": "Say how much it costs."
+    },
     "cueFacts": [
      {
-      "label": "Price",
+      "label": {
+       "en": "Price"
+      },
       "value": "3 €"
      }
     ]
@@ -1733,10 +1853,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say where you live.",
+    "instruction": {
+     "en": "Say where you live."
+    },
     "cueFacts": [
      {
-      "label": "City",
+      "label": {
+       "en": "City"
+      },
       "value": "Marseille"
      }
     ]
@@ -1769,10 +1893,14 @@
    "taskFamily": "information_giving",
    "elicitationType": "information_prompt",
    "prompt": {
-    "instruction": "Say what day it is tomorrow.",
+    "instruction": {
+     "en": "Say what day it is tomorrow."
+    },
     "cueFacts": [
      {
-      "label": "Tomorrow",
+      "label": {
+       "en": "Tomorrow"
+      },
       "value": "Saturday"
      }
     ]

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "language": "xx",
+  "readings": [
+    {
+      "id": "xx.read.sign",
+      "kind": "notice",
+      "title": "Ka tomo!",
+      "blocks": [{ "kind": "paragraph", "text": "Ka tomo na. Ki lira to." }],
+      "objectiveRefs": ["xx.obj.read.signs"],
+      "lexemeRefs": ["xx:w:tomo", "xx:w:lira"],
+      "supportGlossary": [{ "surface": "na", "gloss": { "en": "welcome" } }],
+      "sourceRef": "original-project",
+      "authoringSpec": { "informationUnits": 2, "inferenceDemand": "locate" }
+    }
+  ]
+}

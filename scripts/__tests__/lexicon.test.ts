@@ -14,30 +14,33 @@ import {
   derivedSurfaceMap,
   effectiveMatchKeys,
   frequencyBandFor,
-  genderEvidenceInText,
   lexiqueGenderFor,
   lexiquePosFor,
   loadRichLexicon,
   matchLexemes,
   parseLexiqueTsv,
   selectCandidatePool,
-  splitSurfaceArticle,
   validateLexicon,
   validateLexiconData,
   validateMatchOverridesData,
   type SourceMatchRow,
 } from "../lib/lexicon";
 import { PENDING_LEXIQUE_IMPORT } from "../../src/lib/__tests__/pending-lexique-import";
-import { readJson } from "../lib/pipeline";
+import { buildPlugin } from "../lib/languages";
+import { loadPacks, readJson } from "../lib/pipeline";
+
+/** The French build plugin owns the article/gender rules the lexicon validator applies (P1c). */
+const FR = buildPlugin("fr");
+const { genderEvidenceInText, splitSurfaceArticle } = FR;
 
 describe("committed lexicon data", () => {
   test("validateLexicon passes on the real content", () => {
-    const { errors } = validateLexicon();
+    const { errors } = validateLexicon("fr", loadPacks());
     expect(errors).toEqual([]);
   });
 
   test("triple lock holds: rich lexicon ≡ frozen map ≡ runtime map (126 ids)", () => {
-    const rich = derivedSurfaceMap(loadRichLexicon());
+    const rich = derivedSurfaceMap(loadRichLexicon("fr"));
     const frozen = readJson("content/fr/lexemes.json") as Record<string, string>;
     const canon = (m: Record<string, string>) => JSON.stringify(Object.entries(m).sort());
     expect(canon(rich)).toBe(canon(frozen));
@@ -46,7 +49,7 @@ describe("committed lexicon data", () => {
   });
 
   test("post-activation pronunciation: genuine IPA everywhere; lexique-4 for adopted words, authored otherwise", () => {
-    for (const lex of loadRichLexicon().lexemes) {
+    for (const lex of loadRichLexicon("fr").lexemes) {
       expect(lex.pronunciation?.notation).toBe("ipa");
       if (lex.partOfSpeech === "expression" || PENDING_LEXIQUE_IMPORT.has(lex.id)) {
         expect(lex.pronunciation?.source).toBe("original-french-lexicon");
@@ -61,7 +64,7 @@ describe("committed lexicon data", () => {
 
   test("post-activation frequency: adopted word lexemes carry real lexique-4 measurements; expressions and pending none", () => {
     const unrankedOno = new Set(["fr:w:merci", "fr:w:salut", "fr:w:pardon"]);
-    for (const lex of loadRichLexicon().lexemes) {
+    for (const lex of loadRichLexicon("fr").lexemes) {
       if (lex.partOfSpeech === "expression" || PENDING_LEXIQUE_IMPORT.has(lex.id)) {
         // Pending lexemes must NOT fake measurements before adoption.
         expect(lex.frequency).toBeUndefined();
@@ -121,10 +124,10 @@ function fixtureLexicon(): RichLexicon {
         lookupForm: "chat",
         partOfSpeech: "noun",
         gender: "masculine",
-        nativeGloss: "the cat",
+        glosses: { en: "the cat" },
         pronunciation: { value: "ʃa", notation: "ipa", source: "original-french-lexicon" },
         topic: "animals",
-        examples: [{ fr: "Le chat dort.", en: "The cat is sleeping.", source: "original-french-lexicon" }],
+        examples: [{ target: "Le chat dort.", translations: { en: "The cat is sleeping." }, source: "original-french-lexicon" }],
         sourceRefs: [{ source: "original-french-lexicon" }],
       },
       {
@@ -133,10 +136,10 @@ function fixtureLexicon(): RichLexicon {
         lemma: "manger",
         lookupForm: "manger",
         partOfSpeech: "verb",
-        nativeGloss: "to eat",
+        glosses: { en: "to eat" },
         pronunciation: { value: "mɑ̃ʒe", notation: "ipa", source: "original-french-lexicon" },
         topic: "food",
-        examples: [{ fr: "Je mange du pain.", en: "I am eating bread.", source: "original-french-lexicon" }],
+        examples: [{ target: "Je mange du pain.", translations: { en: "I am eating bread." }, source: "original-french-lexicon" }],
         sourceRefs: [{ source: "original-french-lexicon" }],
       },
       {
@@ -145,10 +148,10 @@ function fixtureLexicon(): RichLexicon {
         lemma: "au revoir",
         lookupForm: "au revoir",
         partOfSpeech: "expression",
-        nativeGloss: "goodbye",
+        glosses: { en: "goodbye" },
         pronunciation: { value: "o ʁəvwaʁ", notation: "ipa", source: "original-french-lexicon" },
         topic: "greetings",
-        examples: [{ fr: "Au revoir, madame.", en: "Goodbye, madam.", source: "original-french-lexicon" }],
+        examples: [{ target: "Au revoir, madame.", translations: { en: "Goodbye, madam." }, source: "original-french-lexicon" }],
         sourceRefs: [{ source: "original-french-lexicon" }],
       },
     ],
@@ -202,18 +205,24 @@ function fixtureInput(overrides: {
   const lexicon = overrides.lexicon ?? fixtureLexicon();
   const map = derivedSurfaceMap(lexicon);
   return {
+    plugin: FR,
     lexicon,
     manifest: overrides.manifest ?? fixtureManifest(),
     frozenMap: overrides.frozenMap ?? map,
     runtimeMap: overrides.runtimeMap ?? overrides.frozenMap ?? map,
     registryIds: overrides.registryIds ?? new Set(["original-french-lexicon", "lexique-4"]),
-    packGloss:
-      overrides.packGloss ??
-      new Map([
-        ["le chat", "the cat"],
-        ["manger", "to eat"],
-        ["au revoir", "goodbye"],
-      ]),
+    packGlosses: [
+      {
+        nativeCode: "en",
+        gloss:
+          overrides.packGloss ??
+          new Map([
+            ["le chat", "the cat"],
+            ["manger", "to eat"],
+            ["au revoir", "goodbye"],
+          ]),
+      },
+    ],
   };
 }
 
@@ -267,7 +276,7 @@ describe("validateLexiconData mutation tests — every rule fires", () => {
   test("article audit: example sentence with a contradicting article fails", () => {
     const lexicon = fixtureLexicon();
     lexicon.lexemes[0].examples = [
-      { fr: "Une chat dort.", en: "x", source: "original-french-lexicon" },
+      { target: "Une chat dort.", translations: { en: "x" }, source: "original-french-lexicon" },
     ];
     expect(errorsFor({ lexicon }).join("\n")).toContain("example text shows a feminine article");
   });
@@ -371,7 +380,7 @@ describe("validateLexiconData mutation tests — every rule fires", () => {
 
   test("gloss drift against the course pack fails", () => {
     const lexicon = fixtureLexicon();
-    lexicon.lexemes[0].nativeGloss = "the kitty";
+    lexicon.lexemes[0].glosses = { en: "the kitty" };
     expect(errorsFor({ lexicon }).join("\n")).toContain("one truth, no drift");
   });
 
@@ -591,9 +600,9 @@ describe("matchLexemes — deterministic, fail-closed", () => {
           lookupForm: "œuf",
           partOfSpeech: "noun",
           gender: "masculine",
-          nativeGloss: "the egg",
+          glosses: { en: "the egg" },
           topic: "food",
-          examples: [{ fr: "Je mange un œuf.", en: "I eat an egg.", source: "original-french-lexicon" }],
+          examples: [{ target: "Je mange un œuf.", translations: { en: "I eat an egg." }, source: "original-french-lexicon" }],
           sourceRefs: [{ source: "original-french-lexicon" }],
         },
       ],

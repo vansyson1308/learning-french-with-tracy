@@ -9,7 +9,7 @@ import { describe, expect, test } from "bun:test";
 import { selectCheckpointForm } from "../../src/lib/assessment/checkpoint";
 import { loadCheckpoints } from "../lib/assessment";
 
-const { checkpoints } = loadCheckpoints();
+const { checkpoints } = loadCheckpoints("fr");
 const withForms = checkpoints.filter((cp) => cp.forms && cp.forms.length >= 2);
 
 type Item = (typeof checkpoints)[number]["items"][number];

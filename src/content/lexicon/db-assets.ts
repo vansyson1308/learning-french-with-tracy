@@ -7,5 +7,5 @@
  * the assets).
  */
 export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: string; asset: number }> = {
-  "fr": { name: "fr-lexicon-v2-07337cd4a8d13484.db", contentHash: "07337cd4a8d13484", asset: require("../../../assets/lexicon/fr-lexicon-v2-07337cd4a8d13484.db") },
+  "fr": { name: "fr-lexicon-v3-4fd93ff6c545b579.db", contentHash: "4fd93ff6c545b579", asset: require("../../../assets/lexicon/fr-lexicon-v3-4fd93ff6c545b579.db") },
 };

@@ -1,0 +1,23 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "placementVersion": 1,
+  "maxItems": 4,
+  "totalItems": 1,
+  "allComfortableLessonId": "xx-en:u0-l1",
+  "stages": [
+    {
+      "id": "xx.pstage.basics",
+      "clusters": [
+        {
+          "id": "xx.pcluster.greet",
+          "objectiveId": "xx.obj.greet.basic",
+          "anchorLessonId": "xx-en:u0-l0",
+          "itemCount": 1
+        }
+      ]
+    }
+  ],
+  "objectivesNotProbed": [
+    "xx.obj.read.signs"
+  ]
+}

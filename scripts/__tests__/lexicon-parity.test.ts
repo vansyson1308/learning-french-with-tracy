@@ -15,17 +15,20 @@ import {
 } from "../../src/lib/lexicon/generated-repository";
 import {
   SQL,
+  rowToExample,
   runNativeGetById,
   runNativeList,
   runNativeSearch,
+  type ExampleRow,
   type SqlExecutor,
 } from "../../src/lib/lexicon/native-sql";
 import { loadRichLexicon, loadSourceManifest } from "../lib/lexicon";
 import { dbAssetName, lexiconContentHash } from "../lib/lexicon-build";
 import { loadRegistry, safeResolve } from "../lib/pipeline";
 
-const contentHash = lexiconContentHash(loadRichLexicon(), loadSourceManifest(), loadRegistry());
-const db = new Database(safeResolve(`assets/lexicon/${dbAssetName(contentHash)}`), {
+const contentHash = lexiconContentHash(loadRichLexicon("fr"), loadSourceManifest("fr"), loadRegistry());
+const KEYS = { targetCode: "fr", nativeCode: "en" };
+const db = new Database(safeResolve(`assets/lexicon/${dbAssetName("fr", contentHash)}`), {
   readonly: true,
 });
 afterAll(() => db.close());
@@ -111,17 +114,17 @@ describe("list parity", () => {
 describe("detail parity", () => {
   test("getById agrees field-for-field on representative entries", async () => {
     for (const id of ["fr:w:homme", "fr:w:oeuf", "fr:w:s-il-vous-plait", "fr:w:gauche", "fr:w:manger"]) {
-      expect(await runNativeGetById(exec, id)).toEqual(await web.getById(id));
+      expect(await runNativeGetById(exec, id, KEYS)).toEqual(await web.getById(id));
     }
   });
 
   test("unknown ids agree (null)", async () => {
-    expect(await runNativeGetById(exec, "fr:w:ghost")).toBeNull();
+    expect(await runNativeGetById(exec, "fr:w:ghost", KEYS)).toBeNull();
     expect(await web.getById("fr:w:ghost")).toBeNull();
   });
 
   test("examples agree", async () => {
-    const nativeExamples = await exec.all(SQL.examples, ["fr:w:poule"]);
+    const nativeExamples = (await exec.all<ExampleRow>(SQL.examples, ["fr:w:poule"])).map((row) => rowToExample(row, KEYS));
     expect(nativeExamples).toEqual(await web.getExamples("fr:w:poule"));
   });
 

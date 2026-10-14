@@ -12,8 +12,8 @@ import { loadCourseObjectives } from "../lib/assessment";
 import { loadListening } from "../lib/reception";
 import { loadSpeechItems, validateSpeech } from "../lib/speech";
 
-const objectives = loadCourseObjectives();
-const listening = loadListening();
+const objectives = loadCourseObjectives("fr");
+const listening = loadListening("fr");
 const lexemeIds = new Set(Object.values(FR_LEXEME_IDS));
 const OBJECTIVE = objectives.objectives[0].id;
 const CLIP = listening!.clips[0].id;
@@ -23,7 +23,7 @@ function item(over: Partial<SpeechItem> = {}): SpeechItem {
     id: "fr.speak.test_cafe",
     taskFamily: "formulaic_exchange",
     elicitationType: "semantic_prompt",
-    prompt: { instruction: "Say that you would like a coffee." },
+    prompt: { instruction: { en: "Say that you would like a coffee." } },
     target: "Je voudrais un café",
     acceptedVariants: ["Je voudrais un café"],
     objectiveRefs: [OBJECTIVE],
@@ -46,7 +46,7 @@ function doc(...items: SpeechItem[]): SpeechItems {
 }
 
 function errorsOf(...items: SpeechItem[]): string[] {
-  return validateSpeech({ speech: doc(...items), objectives, listening, lexemeIds }).errors;
+  return validateSpeech({ lang: "fr", speech: doc(...items), objectives, listening, lexemeIds }).errors;
 }
 
 describe("well-formed items pass", () => {
@@ -70,7 +70,7 @@ describe("well-formed items pass", () => {
 
   test("a missing source (no speech content yet) validates clean", () => {
     expect(
-      validateSpeech({ speech: null, objectives, listening, lexemeIds }).errors
+      validateSpeech({ lang: "fr", speech: null, objectives, listening, lexemeIds }).errors
     ).toEqual([]);
   });
 
@@ -81,9 +81,9 @@ describe("well-formed items pass", () => {
           elicitationType: "information_prompt",
           taskFamily: "information_giving",
           prompt: {
-            instruction: "Say how many cats there are.",
+            instruction: { en: "Say how many cats there are." },
             cueEmoji: "🐈",
-            cueFacts: [{ label: "Cats", value: "2" }],
+            cueFacts: [{ label: { en: "Cats" }, value: "2" }],
           },
           target: "Il y a deux chats",
           // "Il y a 2 chats" would be REDUNDANT: grading normalization
@@ -127,9 +127,9 @@ describe("construct contradictions are rejected (§11/§13)", () => {
 
   test("a production prompt exposing the French answer is rejected", () => {
     const errors = errorsOf(
-      item({ prompt: { instruction: 'Say "Je voudrais un café" politely.' } })
+      item({ prompt: { instruction: { en: 'Say "Je voudrais un café" politely.' } } })
     );
-    expect(errors.some((e) => e.includes("exposes the French answer"))).toBe(true);
+    expect(errors.some((e) => e.includes("exposes the target answer"))).toBe(true);
   });
 
   test("French leaked through cueFacts is caught too", () => {
@@ -137,13 +137,13 @@ describe("construct contradictions are rejected (§11/§13)", () => {
       item({
         elicitationType: "information_prompt",
         prompt: {
-          instruction: "Give your order.",
-          cueFacts: [{ label: "Order", value: "un café" }],
+          instruction: { en: "Give your order." },
+          cueFacts: [{ label: { en: "Order" }, value: "un café" }],
         },
         acceptedVariants: ["Je voudrais un café"],
       })
     );
-    expect(errors.some((e) => e.includes("exposes the French answer"))).toBe(true);
+    expect(errors.some((e) => e.includes("exposes the target answer"))).toBe(true);
   });
 
   test("word-boundary honesty: English containing French letters is NOT a leak", () => {
@@ -152,7 +152,7 @@ describe("construct contradictions are rejected (§11/§13)", () => {
     expect(
       errorsOf(
         item({
-          prompt: { instruction: "Make yourself understood at the cafeteria counter." },
+          prompt: { instruction: { en: "Make yourself understood at the cafeteria counter." } },
           acceptedVariants: ["Je voudrais un café"],
           target: "Je voudrais un café",
         })
@@ -214,7 +214,7 @@ describe("reference integrity", () => {
   });
 
   test("duplicate item ids are rejected", () => {
-    const errors = errorsOf(item(), item({ target: "Bonjour", acceptedVariants: ["Bonjour"], prompt: { instruction: "Greet someone." } }));
+    const errors = errorsOf(item(), item({ target: "Bonjour", acceptedVariants: ["Bonjour"], prompt: { instruction: { en: "Greet someone." } } }));
     expect(errors.some((e) => e.includes("duplicate item id"))).toBe(true);
   });
 });
@@ -224,7 +224,7 @@ describe("assessment banks (§20 — reserved items only)", () => {
     type: "speakProduction" as const,
     id: "bank-x",
     speechItemId: item.id,
-    instruction: item.prompt.instruction,
+    instruction: item.prompt.instruction.en,
     target: item.target,
     acceptedVariants: item.acceptedVariants,
     evidenceLexemeRefs: item.evidenceLexemeRefs,
@@ -237,11 +237,12 @@ describe("assessment banks (§20 — reserved items only)", () => {
   test("a NON-reserved item in a scored bank is rejected", () => {
     const teaching = item(); // reserved: false
     const errors = validateSpeech({
+      lang: "fr",
       speech: doc(teaching),
       objectives,
       listening,
       lexemeIds,
-      assessmentSpeech: [speakBankExercise(teaching)],
+      assessmentSpeech: [{ nativeCode: "en", exercises: [speakBankExercise(teaching)] }],
     }).errors;
     expect(errors.some((e) => e.includes("must use RESERVED items"))).toBe(true);
   });
@@ -254,21 +255,23 @@ describe("assessment banks (§20 — reserved items only)", () => {
       assistancePolicy: { allowContextualBias: false, revealTargetAfterAttempts: null },
     });
     const clean = validateSpeech({
+      lang: "fr",
       speech: doc(probe),
       objectives,
       listening,
       lexemeIds,
-      assessmentSpeech: [speakBankExercise(probe)],
+      assessmentSpeech: [{ nativeCode: "en", exercises: [speakBankExercise(probe)] }],
     }).errors;
     expect(clean).toEqual([]);
 
     const drifted = { ...speakBankExercise(probe), target: "Je veux un café" };
     const errors = validateSpeech({
+      lang: "fr",
       speech: doc(probe),
       objectives,
       listening,
       lexemeIds,
-      assessmentSpeech: [drifted],
+      assessmentSpeech: [{ nativeCode: "en", exercises: [drifted] }],
     }).errors;
     expect(errors.some((e) => e.includes("target differs"))).toBe(true);
   });
@@ -277,14 +280,15 @@ describe("assessment banks (§20 — reserved items only)", () => {
 describe("repository state", () => {
   test("the shipped speech content and scored banks validate clean", async () => {
     const { assessmentBankSpeechExercises } = await import("../lib/speech");
-    const speech = loadSpeechItems();
+    const speech = loadSpeechItems("fr");
     expect(
       validateSpeech({
+        lang: "fr",
         speech,
         objectives,
         listening,
         lexemeIds,
-        assessmentSpeech: assessmentBankSpeechExercises(),
+        assessmentSpeech: [{ nativeCode: "en", exercises: assessmentBankSpeechExercises("fr") }],
       }).errors
     ).toEqual([]);
   });

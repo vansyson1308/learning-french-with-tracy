@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "language": "xx",
+  "items": [
+    {
+      "id": "xx.speak.friend",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": { "instruction": { "en": "Say that you are a friend." }, "cueEmoji": "🙂" },
+      "target": "mi tomo",
+      "acceptedVariants": ["mi tomo", "mi tomo na"],
+      "objectiveRefs": ["xx.obj.greet.basic"],
+      "lexemeRefs": ["xx:w:tomo"],
+      "evidenceLexemeRefs": ["xx:w:tomo"],
+      "assistancePolicy": { "allowContextualBias": false, "revealTargetAfterAttempts": 2 },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "xx-XX",
+      "allowedAttempts": 2,
+      "reserved": false,
+      "sourceRef": "original-project"
+    }
+  ]
+}

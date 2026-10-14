@@ -20,7 +20,8 @@ import { NativeSqliteLexiconRepository } from "./native-repository";
 import type { LexiconRepository } from "./types";
 
 export async function loadNativeLexiconRepository(
-  targetCode: string
+  targetCode: string,
+  nativeCode: string
 ): Promise<LexiconRepository | null> {
   try {
     const [sqlite, assetMod, expoAsset, fsLegacy] = await Promise.all([
@@ -75,7 +76,7 @@ export async function loadNativeLexiconRepository(
       // cleanup is hygiene, never a failure
     }
 
-    return new NativeSqliteLexiconRepository(db);
+    return new NativeSqliteLexiconRepository(db, { targetCode, nativeCode });
   } catch {
     return null;
   }

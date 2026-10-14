@@ -31,8 +31,21 @@ export type CourseArtifacts = {
 
 const EMPTY: CourseArtifacts = {};
 
+/**
+ * Test seam (P1c): artifacts of TEST-ONLY courses (compiled under
+ * src/content/test-only, never bundled) are registered here by a test so
+ * the synthetic language flows through the very same registry. Never
+ * called by app code.
+ */
+const TEST_ARTIFACTS = new Map<string, CourseArtifacts>();
+
+export function __registerCourseArtifactsForTests(courseId: string, artifacts: CourseArtifacts | null): void {
+  if (artifacts === null) TEST_ARTIFACTS.delete(courseId);
+  else TEST_ARTIFACTS.set(courseId, artifacts);
+}
+
 export function artifactsFor(courseId: string): CourseArtifacts {
-  return (COURSE_ARTIFACTS as Record<string, CourseArtifacts>)[courseId] ?? EMPTY;
+  return TEST_ARTIFACTS.get(courseId) ?? (COURSE_ARTIFACTS as Record<string, CourseArtifacts>)[courseId] ?? EMPTY;
 }
 
 /** Small per-course memo for derived views (built once per course). */

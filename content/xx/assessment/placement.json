@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "language": "xx",
+  "placementVersion": 1,
+  "maxItems": 4,
+  "allComfortableLessonId": "xx-en:u0-l1",
+  "stages": [
+    {
+      "id": "xx.pstage.basics",
+      "title": { "en": "Basics" },
+      "clusters": [
+        {
+          "id": "xx.pcluster.greet",
+          "objectiveId": "xx.obj.greet.basic",
+          "anchorLessonId": "xx-en:u0-l0",
+          "items": [
+            {
+              "id": "xx.pli.greet-1",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "pl-greet-1",
+                "mode": "targetToNative",
+                "prompt": "ki lira",
+                "options": [{ "text": "the farewell" }, { "text": "the friend" }],
+                "correct": 0
+              },
+              "objectiveTargets": ["xx.obj.greet.basic"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

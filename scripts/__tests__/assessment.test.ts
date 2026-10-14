@@ -18,11 +18,11 @@ import {
 
 describe("committed assessment data", () => {
   test("validateAssessment passes on the real content", () => {
-    expect(validateAssessment().errors).toEqual([]);
+    expect(validateAssessment("fr").errors).toEqual([]);
   });
 
   test("the graph has the authored shape: 34 objectives, 23 essential, 22 direct alignments", () => {
-    const { objectives } = loadCourseObjectives();
+    const { objectives } = loadCourseObjectives("fr");
     expect(objectives.length).toBe(34); // 17 P6 + 7 P7 + 4 P8 spoken + 4 P9 written + 2 P9 interaction
     // 8 Phase-6 essentials + 7 receptive (P7) + 3 spoken-production (P8)
     // + 3 written-production (P9; form_filling stays non-essential by
@@ -66,7 +66,7 @@ describe("committed assessment data", () => {
   });
 
   test("topological order puts every prerequisite before its dependent", () => {
-    const { objectives } = loadCourseObjectives();
+    const { objectives } = loadCourseObjectives("fr");
     const order = topologicalObjectiveOrder(objectives);
     expect(order.length).toBe(objectives.length);
     const pos = new Map(order.map((id, i) => [id, i]));
@@ -78,7 +78,7 @@ describe("committed assessment data", () => {
   });
 
   test("claim policy is activity-based and internally consistent", () => {
-    const policy = loadClaimPolicy();
+    const policy = loadClaimPolicy("fr");
     expect(validateClaimPolicyData({ policy }).errors).toEqual([]);
     expect(policy.requiredDomains).toContain("spoken_production");
     expect(policy.requiredDomains).toContain("interaction");
@@ -92,8 +92,8 @@ function fixture(): CourseObjectives {
     objectives: [
       {
         id: "fr.obj.test.alpha",
-        title: "Alpha",
-        canDo: "I can do the alpha thing.",
+        title: { en: "Alpha" },
+        canDo: { en: "I can do the alpha thing." },
         category: "grammar",
         prerequisites: [],
         cefrAlignments: [
@@ -108,8 +108,8 @@ function fixture(): CourseObjectives {
       },
       {
         id: "fr.obj.test.beta",
-        title: "Beta",
-        canDo: "I can do the beta thing.",
+        title: { en: "Beta" },
+        canDo: { en: "I can do the beta thing." },
         category: "lexical",
         prerequisites: ["fr.obj.test.alpha"],
         cefrAlignments: [
@@ -215,6 +215,8 @@ describe("validateClaimPolicyData — the gate stays activity-based", () => {
 
 import { PackSchema, type ClaimPolicy as Policy, type CourseObjective } from "../../content/schema";
 import { collectScoredItemEvidence, validateCurriculumMapping } from "../lib/assessment";
+import { localizeObjective } from "../lib/native-text";
+import { objectiveMetadataErrors } from "../lib/pipeline";
 import {
   buildCefrAlignment,
   buildObjectiveCoverage,
@@ -227,7 +229,7 @@ const frPack = () => PackSchema.parse(readJson("content/courses/fr-en.json"));
 describe("curriculum mapping — real data + mutations (§144)", () => {
   test("every French lesson declares resolving objectives; every objective is taught", () => {
     const result = validateCurriculumMapping({
-      objectives: loadCourseObjectives(),
+      objectives: loadCourseObjectives("fr"),
       packs: [{ courseId: "fr-en", pack: frPack() }],
       concepts: [],
     });
@@ -238,28 +240,24 @@ describe("curriculum mapping — real data + mutations (§144)", () => {
     const pack = frPack();
     delete pack.sections[0].units[0].lessons[0].objectives;
     const result = validateCurriculumMapping({
-      objectives: loadCourseObjectives(),
+      objectives: loadCourseObjectives("fr"),
       packs: [{ courseId: "fr-en", pack }],
       concepts: [],
     });
     expect(result.errors.join("\n")).toContain("must declare objectives");
   });
 
-  test("objective metadata on a non-French course fails (§153)", () => {
-    const pack = frPack();
-    const result = validateCurriculumMapping({
-      objectives: loadCourseObjectives(),
-      packs: [{ courseId: "es-en", pack }],
-      concepts: [],
-    });
-    expect(result.errors.join("\n")).toContain("French-only metadata");
+  test("objective metadata on a course whose language has no objectives source fails (§153)", () => {
+    const errors = objectiveMetadataErrors(frPack(), false);
+    expect(errors.join("\n")).toContain("need an authored objectives source");
+    expect(objectiveMetadataErrors(frPack(), true)).toEqual([]);
   });
 
   test("unknown objective references fail", () => {
     const pack = frPack();
     pack.sections[0].units[0].lessons[0].objectives = ["fr.obj.ghost.thing"];
     const result = validateCurriculumMapping({
-      objectives: loadCourseObjectives(),
+      objectives: loadCourseObjectives("fr"),
       packs: [{ courseId: "fr-en", pack }],
       concepts: [],
     });
@@ -267,11 +265,11 @@ describe("curriculum mapping — real data + mutations (§144)", () => {
   });
 
   test("an objective taught by no lesson fails (§23 anti-invention)", () => {
-    const objectives = loadCourseObjectives();
+    const objectives = loadCourseObjectives("fr");
     objectives.objectives.push({
       id: "fr.obj.test.untaught",
-      title: "Untaught",
-      canDo: "I can do a thing no lesson teaches.",
+      title: { en: "Untaught" },
+      canDo: { en: "I can do a thing no lesson teaches." },
       category: "grammar",
       prerequisites: [],
       cefrAlignments: [
@@ -291,8 +289,8 @@ describe("curriculum mapping — real data + mutations (§144)", () => {
 describe("coverage + alignment reports are faithful", () => {
   test("every objective is taught and the S2 grammar drills carry explicit targets", () => {
     const rows = buildObjectiveCoverage({
-      objectives: loadCourseObjectives().objectives,
-      frPack: frPack(),
+      objectives: loadCourseObjectives("fr").objectives.map((o) => localizeObjective(o, "en")),
+      pack: frPack(),
       concepts: readJson("content/fr/pedagogy/concepts.json") ? (readJson("content/fr/pedagogy/concepts.json") as { concepts: { id: string; objectives?: string[] }[] }).concepts : [],
       checkpointItemTargets: [],
       placementItemTargets: [],
@@ -315,7 +313,7 @@ describe("coverage + alignment reports are faithful", () => {
   });
 
   test("the alignment report exposes the receptive directs and groups supports", () => {
-    const report = buildCefrAlignment(loadCourseObjectives().objectives);
+    const report = buildCefrAlignment(loadCourseObjectives("fr").objectives);
     const pre = report.levels.find((l) => l.level === "PRE_A1")!;
     const preDirects = pre.scales
       .filter((s) => s.direct.length > 0)
@@ -368,8 +366,8 @@ describe("coverage + alignment reports are faithful", () => {
 });
 
 describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
-  const spokenLess = () => loadCourseObjectives().objectives;
-  const policy = (): Policy => loadClaimPolicy();
+  const spokenLess = () => loadCourseObjectives("fr").objectives;
+  const policy = (): Policy => loadClaimPolicy("fr");
   /** Evidence-row helper: standalone item unless an inputId is given. */
   const ev = (oid: string | string[], taskFamily = "select", inputId: string | null = null) => ({
     objectiveTargets: Array.isArray(oid) ? oid : [oid],
@@ -393,8 +391,8 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
 
   test("real checkpoint evidence: reception domains covered at A1; A1 overall still false (P7 §149, §181)", () => {
     const evidence = [
-      ...collectScoredItemEvidence("content/fr/assessment/checkpoints.json", "checkpoints"),
-      ...collectScoredItemEvidence("content/fr/assessment/placement.json", "stages"),
+      ...collectScoredItemEvidence("content/fr/assessment/checkpoints.json", "checkpoints", "fr"),
+      ...collectScoredItemEvidence("content/fr/assessment/placement.json", "stages", "fr"),
     ];
     const gate = evaluateClaimGate({
       objectives: spokenLess(),
@@ -472,8 +470,8 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
 
   test("limitation wording tracks the domain status — assessed-but-narrow is never called unassessed (P8 Gate 0)", () => {
     const evidence = [
-      ...collectScoredItemEvidence("content/fr/assessment/checkpoints.json", "checkpoints"),
-      ...collectScoredItemEvidence("content/fr/assessment/placement.json", "stages"),
+      ...collectScoredItemEvidence("content/fr/assessment/checkpoints.json", "checkpoints", "fr"),
+      ...collectScoredItemEvidence("content/fr/assessment/placement.json", "stages", "fr"),
     ];
     const gate = evaluateClaimGate({
       objectives: spokenLess(),
@@ -529,8 +527,8 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
     scaleName = "Synthetic scale"
   ): CourseObjective => ({
     id,
-    title: id,
-    canDo: `I can demonstrably do ${id}.`,
+    title: { en: id },
+    canDo: { en: `I can demonstrably do ${id}.` },
     category,
     prerequisites: [],
     cefrAlignments: [
@@ -676,14 +674,15 @@ describe("claim gate honesty (§145) — hardened (P7 §10-14, §149)", () => {
 });
 
 import { loadCheckpoints, validateCheckpointsData } from "../lib/assessment";
-import { loadConjugations } from "../lib/pedagogy";
+import { loadParadigms } from "../lib/pedagogy";
 
 describe("checkpoint banks — real data + mutations (§53, §64)", () => {
   const inputs = () => ({
-    checkpoints: loadCheckpoints(),
-    objectives: loadCourseObjectives(),
-    conjugations: loadConjugations(),
-    frPack: frPack(),
+    checkpoints: loadCheckpoints("fr"),
+    objectives: loadCourseObjectives("fr"),
+    paradigms: loadParadigms("fr"),
+    pack: frPack(),
+    courseId: "fr-en",
   });
 
   test("the committed banks validate", () => {
@@ -760,10 +759,11 @@ import { loadPlacement, validatePlacementData } from "../lib/assessment";
 
 describe("placement bank — real data + mutations (§73-78)", () => {
   const inputs = () => ({
-    placement: loadPlacement(),
-    objectives: loadCourseObjectives(),
-    conjugations: loadConjugations(),
-    frPack: frPack(),
+    placement: loadPlacement("fr"),
+    objectives: loadCourseObjectives("fr"),
+    paradigms: loadParadigms("fr"),
+    pack: frPack(),
+    courseId: "fr-en",
   });
 
   test("the committed placement plan validates", () => {
@@ -787,13 +787,13 @@ describe("placement bank — real data + mutations (§73-78)", () => {
   test("an anchor outside the fr-en pack fails", () => {
     const input = inputs();
     input.placement.stages[0].clusters[0].anchorLessonId = "fr-en:zz-l9";
-    expect(validatePlacementData(input).errors.join("\n")).toContain("not an fr-en lesson");
+    expect(validatePlacementData(input).errors.join("\n")).toContain("not a fr-en lesson");
   });
 
   test("an unknown all-comfortable anchor fails", () => {
     const input = inputs();
     input.placement.allComfortableLessonId = "fr-en:zz-l9";
-    expect(validatePlacementData(input).errors.join("\n")).toContain("not an fr-en lesson");
+    expect(validatePlacementData(input).errors.join("\n")).toContain("not a fr-en lesson");
   });
 
   test("exceeding the item budget fails (§76)", () => {
@@ -853,17 +853,17 @@ describe("placement bank — real data + mutations (§73-78)", () => {
 // Phase 10 Gate 2: the authored learner-attainment policy (§10-§14)
 // ---------------------------------------------------------------------------
 import {
-  CAPSTONE_CHECKPOINT_ID,
+  isCapstoneCheckpoint,
   loadAttainmentPolicy,
   validateAttainmentPolicyData,
 } from "../lib/assessment";
 import type { AttainmentPolicy } from "../../content/schema";
 
 describe("attainment policy — real data + every rule fires", () => {
-  const attainment = loadAttainmentPolicy();
-  const objectives = loadCourseObjectives();
-  const policy = loadClaimPolicy();
-  const checkpoints = loadCheckpoints();
+  const attainment = loadAttainmentPolicy("fr");
+  const objectives = loadCourseObjectives("fr");
+  const policy = loadClaimPolicy("fr");
+  const checkpoints = loadCheckpoints("fr");
   const run = (mutated: AttainmentPolicy, cps = checkpoints) =>
     validateAttainmentPolicyData({ attainment: mutated, objectives, policy, checkpoints: cps }).errors;
   const clone = (): AttainmentPolicy => JSON.parse(JSON.stringify(attainment));
@@ -942,7 +942,7 @@ describe("attainment policy — real data + every rule fires", () => {
 
   test("a capstone that targets a domain's whole required set fails (§13)", () => {
     const cps = JSON.parse(JSON.stringify(checkpoints)) as typeof checkpoints;
-    const capstone = cps.checkpoints.find((cp) => cp.id === CAPSTONE_CHECKPOINT_ID)!;
+    const capstone = cps.checkpoints.find((cp) => isCapstoneCheckpoint(cp.id))!;
     const interaction = attainment.domains.find((d) => d.domain === "interaction")!;
     capstone.items[0].objectiveTargets = [...interaction.requiredObjectiveIds];
     expect(run(attainment, cps).join("\n")).toMatch(

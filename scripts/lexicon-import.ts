@@ -35,12 +35,19 @@ import type { CoreLexemeRows, TrimmedRow } from "./lib/lexique-derive-lib";
 import { trimmedRowKey } from "./lib/lexique-derive-lib";
 import { readJson, safeResolve } from "./lib/pipeline";
 
+/** Lexique 4 is a FRENCH source; these tools take --lang for symmetry but default to it. */
+const LEXIQUE_LANG = (() => {
+  const i = process.argv.indexOf("--lang");
+  return i >= 0 ? process.argv[i + 1] : "fr";
+})();
+
 function fail(message: string): never {
   console.error(`ERROR ${message}`);
   process.exit(1);
 }
 
-const manifest = loadSourceManifest();
+const manifest = loadSourceManifest(LEXIQUE_LANG);
+if (manifest === null) fail(`content/${LEXIQUE_LANG}/lexicon/source-manifest.json is missing`);
 if (manifest.retrieval.status !== "retrieved") fail("manifest is not retrieved (fail-closed)");
 const pinned = manifest.retrieval.sha256;
 
@@ -62,7 +69,7 @@ const ranksFile = loadDerived<{ source: { sha256: string }; ranks: Record<string
   "content/fr/lexicon/derived/core-ranks.json"
 );
 
-const overrides = loadMatchOverrides();
+const overrides = loadMatchOverrides(LEXIQUE_LANG);
 const effective = effectiveMatchKeys(subset.audit, overrides);
 const thresholds = bandThresholdsFromStats(stats);
 console.log(

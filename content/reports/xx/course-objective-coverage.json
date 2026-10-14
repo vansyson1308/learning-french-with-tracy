@@ -1,0 +1,53 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "objectives": [
+    {
+      "id": "xx.obj.greet.basic",
+      "title": "Friends and farewells",
+      "category": "lexical",
+      "essential": false,
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Vocabulary range",
+          "relation": "supports"
+        }
+      ],
+      "lessonsTeaching": [
+        "xx-en:u0-l0"
+      ],
+      "conceptsTeaching": [
+        "xx:concept:two-articles"
+      ],
+      "exercisesPracticing": 6,
+      "exercisesTargeting": 4,
+      "checkpointItems": 1,
+      "placementItems": 0
+    },
+    {
+      "id": "xx.obj.read.signs",
+      "title": "Reading short signs",
+      "category": "written_reception",
+      "essential": true,
+      "prerequisites": [
+        "xx.obj.greet.basic"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation",
+          "relation": "direct"
+        }
+      ],
+      "lessonsTeaching": [
+        "xx-en:u0-l1"
+      ],
+      "conceptsTeaching": [],
+      "exercisesPracticing": 3,
+      "exercisesTargeting": 3,
+      "checkpointItems": 2,
+      "placementItems": 0
+    }
+  ]
+}

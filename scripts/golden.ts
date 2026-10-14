@@ -20,6 +20,7 @@ import {
   COMPILE_MANIFEST_REL,
   RUNTIME_GOLDEN_DIR,
   committedCompileManifest,
+  dbPinsAsFiles,
   diffFileHashes,
   formatDiff,
   freshCompile,
@@ -63,15 +64,10 @@ function check(): number {
       )
     ),
   ];
-  if (committed.lexiconDb.name !== stored.lexiconDb.name) {
-    problems.push(`committed: lexicon db name ${committed.lexiconDb.name} ≠ ${stored.lexiconDb.name}`);
-  }
-  if (committed.lexiconDb.logicalDumpSha256 !== stored.lexiconDb.logicalDumpSha256) {
-    problems.push("committed: lexicon db logical dump changed");
-  }
-  if (fresh.lexiconDb.logicalDumpSha256 !== stored.lexiconDb.logicalDumpSha256) {
-    problems.push("recompiled: lexicon db logical dump changed");
-  }
+  problems.push(
+    ...formatDiff("committed", diffFileHashes(dbPinsAsFiles(stored.lexiconDbs), dbPinsAsFiles(committed.lexiconDbs))),
+    ...formatDiff("recompiled", diffFileHashes(dbPinsAsFiles(stored.lexiconDbs), dbPinsAsFiles(fresh.lexiconDbs)))
+  );
   for (const p of problems) console.error(`GOLDEN ${p}`);
   if (problems.length > 0) {
     console.error(
@@ -79,7 +75,7 @@ function check(): number {
     );
     return 1;
   }
-  console.log(`compile golden ok (${Object.keys(stored.files).length} files + lexicon db)`);
+  console.log(`compile golden ok (${Object.keys(stored.files).length} files + ${Object.keys(stored.lexiconDbs).length} lexicon db(s))`);
   const code = runRuntimeGoldens({});
   if (code !== 0) {
     console.error("runtime goldens failed (see above)");
@@ -94,7 +90,14 @@ function bless(): number {
     console.error('--update needs --reason "<why the French output legitimately changed>"');
     return 2;
   }
-  const before = readCompileManifest();
+  let before: CompileManifest | undefined;
+  try {
+    before = readCompileManifest();
+  } catch (e) {
+    // A manifest in an older format is re-blessed from scratch; the CHANGELOG entry records it.
+    console.warn(`${COMPILE_MANIFEST_REL}: ${(e as Error).message} — re-blessing from scratch`);
+    before = undefined;
+  }
   const snapshotsBefore = runtimeSnapshotHashes();
 
   const manifest: CompileManifest = committedCompileManifest();
@@ -106,7 +109,8 @@ function bless(): number {
       fresh.files
     )
   );
-  if (drift.length > 0 || fresh.lexiconDb.logicalDumpSha256 !== manifest.lexiconDb.logicalDumpSha256) {
+  drift.push(...formatDiff("recompiled vs committed", diffFileHashes(dbPinsAsFiles(manifest.lexiconDbs), dbPinsAsFiles(fresh.lexiconDbs))));
+  if (drift.length > 0) {
     for (const d of drift) console.error(`GOLDEN ${d}`);
     console.error("the committed artifacts are stale — run `bun run content:compile` first, then re-bless");
     return 1;
@@ -125,9 +129,7 @@ function bless(): number {
   const snapshotDiff = diffFileHashes(snapshotsBefore, snapshotsAfter);
   const changed = [
     ...(compileDiff ? formatDiff("compile", compileDiff) : ["compile: initial manifest"]),
-    ...(before && before.lexiconDb.logicalDumpSha256 !== manifest.lexiconDb.logicalDumpSha256
-      ? ["compile: changed  lexicon db logical dump"]
-      : []),
+    ...(before ? formatDiff("compile", diffFileHashes(dbPinsAsFiles(before.lexiconDbs), dbPinsAsFiles(manifest.lexiconDbs))) : []),
     ...formatDiff("runtime", snapshotDiff),
   ];
   const stamp = new Date().toISOString().slice(0, 10);
@@ -138,7 +140,7 @@ function bless(): number {
     "",
   ].join("\n");
   appendFileSync(safeResolve(COMPILE_CHANGELOG_REL), `\n${entry}`);
-  console.log(`blessed: ${Object.keys(manifest.files).length} files + lexicon db; ${changed.length} change line(s) logged to ${COMPILE_CHANGELOG_REL}`);
+  console.log(`blessed: ${Object.keys(manifest.files).length} files + ${Object.keys(manifest.lexiconDbs).length} lexicon db(s); ${changed.length} change line(s) logged to ${COMPILE_CHANGELOG_REL}`);
   return 0;
 }
 
