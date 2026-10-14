@@ -6,7 +6,7 @@
  * moves, and submits the whole-scenario InteractionAnswer at a terminal.
  *
  * Construct rules enforced here (§29/§33): scored mode never shows the
- * partner's French text (audio-only, like a real conversation) and never a
+ * partner's text (audio-only, like a real conversation) and never a
  * per-turn verdict — the partner's authored reaction IS the feedback. The
  * learner's own recognized words are always shown honestly. Repeat and
  * rephrase are supportive moves: tracked, never failed.
@@ -20,6 +20,7 @@ import { SpeakRecordControl } from "@/components/exercises/speak-record-control"
 import { DuoButton } from "@/components/duo-button";
 import { isInteractionAnswer, type Answer, type InteractionAnswer, type SpokenAnswer } from "@/lib/grading";
 import { interactionScenarioFor } from "@/lib/interaction/content";
+import { languageRulesForCourse } from "@/lib/languages";
 import {
   currentLearnerNode,
   interactionReducer,
@@ -59,12 +60,16 @@ function textForPartnerEntry(scenario: Scenario, entry: TurnRecord): string {
 }
 
 export function InteractionScenarioStep({
+  courseId,
+  targetLanguage,
   exercise,
   answer,
   status,
   speech,
   onAnswer,
 }: {
+  courseId: string;
+  targetLanguage: string;
   exercise: InteractionScenarioExercise;
   answer: Answer;
   status: "none" | "correct" | "wrong";
@@ -73,8 +78,8 @@ export function InteractionScenarioStep({
 }) {
   const styles = useStyles();
   const scenario = React.useMemo(
-    () => interactionScenarioFor(exercise.scenarioId),
-    [exercise.scenarioId]
+    () => interactionScenarioFor(courseId, exercise.scenarioId),
+    [courseId, exercise.scenarioId]
   );
 
   if (!scenario) {
@@ -91,6 +96,8 @@ export function InteractionScenarioStep({
   }
   return (
     <LoadedScenario
+      courseId={courseId}
+      targetLanguage={targetLanguage}
       scenario={scenario}
       answer={answer}
       status={status}
@@ -101,12 +108,16 @@ export function InteractionScenarioStep({
 }
 
 function LoadedScenario({
+  courseId,
+  targetLanguage,
   scenario,
   answer,
   status,
   speech,
   onAnswer,
 }: {
+  courseId: string;
+  targetLanguage: string;
   scenario: Scenario;
   answer: Answer;
   status: "none" | "correct" | "wrong";
@@ -118,9 +129,10 @@ function LoadedScenario({
   const scored = speech.scored;
   const answered = status !== "none";
 
+  const rules = React.useMemo(() => languageRulesForCourse(courseId), [courseId]);
   const [state, dispatch] = React.useReducer(
     (current: InteractionState, event: InteractionEvent) =>
-      interactionReducer(scenario, current, event),
+      interactionReducer(scenario, current, event, rules),
     scenario,
     startInteraction
   );
@@ -140,13 +152,13 @@ function LoadedScenario({
   const playClip = React.useCallback(
     (clipId: string | null) => {
       if (clipId === null) return;
-      const source = clipAudioSource(clipId);
+      const source = clipAudioSource(courseId, clipId);
       if (source === null) return;
       player.replace(source);
       player.seekTo(0);
       player.play();
     },
-    [player]
+    [player, courseId]
   );
   const partnerTurns = state.history.filter((t) => t.speaker === "partner");
   const playedCountRef = React.useRef(0);
@@ -297,6 +309,7 @@ function LoadedScenario({
             </View>
           ) : null}
           <SpeakRecordControl
+            targetLanguage={targetLanguage}
             scored={scored}
             session={speech.session}
             mode={scored ? "scored" : "practice"}

@@ -8,9 +8,10 @@ import { describe, expect, test } from "bun:test";
 import {
   evaluateGuidedWriting,
   evaluateSimpleForm,
-  normalizeWrittenFrench,
+  normalizeWritten,
   type WritingRubric,
 } from "../writing/rubric";
+import { languageRules } from "../languages";
 
 /** Small stand-in for the compiled known-French vocabulary. */
 const KNOWN = new Set(
@@ -51,7 +52,7 @@ const PROMPT =
   "Introduce yourself in French. Name: Marie. Age: 21. City: Paris.";
 
 function grade(text: string) {
-  return evaluateGuidedWriting({ text, rubric, promptText: PROMPT, knownFrench: KNOWN });
+  return evaluateGuidedWriting({ rules: languageRules("fr"), targetLanguage: "French", text, rubric, promptText: PROMPT, knownVocabulary: KNOWN });
 }
 
 describe("guided writing: acceptance (§77)", () => {
@@ -78,14 +79,14 @@ describe("guided writing: acceptance (§77)", () => {
   });
 
   test("accent variation is typing, not communication: 'a Paris' == 'à Paris'", () => {
-    expect(normalizeWrittenFrench("à École")).toBe("a ecole");
+    expect(normalizeWritten("à École", languageRules("fr"))).toBe("a ecole");
     expect(grade("Je m'appelle Marie, j'ai vingt et un ans, j'habite a Paris.").verdict).toBe(
       "meets_rubric"
     );
   });
 
   test("number forms: digits and words grade identically", () => {
-    expect(normalizeWrittenFrench("21")).toBe("vingt et un");
+    expect(normalizeWritten("21", languageRules("fr"))).toBe("vingt et un");
     expect(grade("Je m'appelle Marie. J'ai vingt et un ans. J'habite à Paris.").verdict).toBe(
       "meets_rubric"
     );
@@ -139,11 +140,11 @@ describe("guided writing: rejection with named reasons (§67/§77)", () => {
       minTokens: 2,
       requireSentenceVerbs: ["habite"],
     };
-    const r = evaluateGuidedWriting({
+    const r = evaluateGuidedWriting({ rules: languageRules("fr"), targetLanguage: "French",
       text: "moi à Paris",
       rubric: verbless,
       promptText: PROMPT,
-      knownFrench: KNOWN,
+      knownVocabulary: KNOWN,
     });
     expect(r.verdict).toBe("does_not_meet_rubric");
     expect(r.feedback.join(" ")).toContain("complete sentence");
@@ -203,7 +204,7 @@ describe("simple form evaluation (§77)", () => {
   };
 
   test("a correctly filled form meets the rubric (digits accepted)", () => {
-    const r = evaluateSimpleForm({
+    const r = evaluateSimpleForm({ rules: languageRules("fr"), targetLanguage: "French",
       values: { prenom: "Marie", age: "21", ville: "paris" },
       fields,
       rubric: formRubric,
@@ -213,9 +214,9 @@ describe("simple form evaluation (§77)", () => {
 
   test("an empty form is unscorable; a partial form names the missing fields", () => {
     expect(
-      evaluateSimpleForm({ values: {}, fields, rubric: formRubric }).verdict
+      evaluateSimpleForm({ rules: languageRules("fr"), targetLanguage: "French", values: {}, fields, rubric: formRubric }).verdict
     ).toBe("insufficiently_scorable");
-    const r = evaluateSimpleForm({
+    const r = evaluateSimpleForm({ rules: languageRules("fr"), targetLanguage: "French",
       values: { prenom: "Marie", age: "", ville: "" },
       fields,
       rubric: formRubric,
@@ -226,7 +227,7 @@ describe("simple form evaluation (§77)", () => {
   });
 
   test("a wrong field is named, not silently failed", () => {
-    const r = evaluateSimpleForm({
+    const r = evaluateSimpleForm({ rules: languageRules("fr"), targetLanguage: "French",
       values: { prenom: "Marie", age: "douze", ville: "Paris" },
       fields,
       rubric: formRubric,

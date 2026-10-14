@@ -9,18 +9,19 @@ import { describe, expect, test } from "bun:test";
 
 import { gradeSpokenAttempt } from "../speech/grader";
 import { speechItemFor, speechItemIds } from "../speech/content";
-import { knownFrenchVocabulary, writingTasks } from "../writing/content";
-import { evaluateGuidedWriting, normalizeWrittenFrench } from "../writing/rubric";
+import { knownVocabulary, writingTasks } from "../writing/content";
+import { evaluateGuidedWriting, normalizeWritten } from "../writing/rubric";
+import { languageRules } from "../languages";
 
-const knownFrench = knownFrenchVocabulary();
-const guided = writingTasks().filter((t) => t.mode === "guided");
+const knownFrench = knownVocabulary("fr-en");
+const guided = writingTasks("fr-en").filter((t) => t.mode === "guided");
 
 function promptTextOf(task: (typeof guided)[number]): string {
   return [task.instruction, ...(task.cueFacts ?? []).map((c) => `${c.label} ${c.value}`)].join(" ");
 }
 
 function evaluate(task: (typeof guided)[number], text: string) {
-  return evaluateGuidedWriting({ text, rubric: task.rubric, promptText: promptTextOf(task), knownFrench });
+  return evaluateGuidedWriting({ rules: languageRules("fr"), targetLanguage: "French", text, rubric: task.rubric, promptText: promptTextOf(task), knownVocabulary: knownFrench });
 }
 
 const ENGLISH_WRAPPER =
@@ -103,7 +104,7 @@ describe("writing rubric attacks (§27) — every guided task", () => {
         .replace(/^j'habite/i, "il habite")
         .replace(/^je (\w+)e\b/i, "il $1e")
         .replace(/^je /i, "il ");
-      if (normalizeWrittenFrench(third) === normalizeWrittenFrench(model)) continue;
+      if (normalizeWritten(third, languageRules("fr")) === normalizeWritten(model, languageRules("fr"))) continue;
       checked += 1;
       expect({ task: task.id, third, verdict: evaluate(task, third).verdict }).not.toEqual({
         task: task.id,
@@ -162,7 +163,7 @@ describe("writing rubric attacks (§27) — every guided task", () => {
       maxTokens: 14,
     };
     const run = (text: string) =>
-      evaluateGuidedWriting({ text, rubric, promptText: "Say your name. Your name: Léa", knownFrench });
+      evaluateGuidedWriting({ rules: languageRules("fr"), targetLanguage: "French", text, rubric, promptText: "Say your name. Your name: Léa", knownVocabulary: knownFrench });
     expect(run("Moi je suis Léa.").verdict).toBe("meets_rubric"); // two overlapping variants = one answer
     const stuffed = run("Je m'appelle Léa. Je suis Léa.");
     expect(stuffed.verdict).toBe("does_not_meet_rubric");
@@ -171,7 +172,7 @@ describe("writing rubric attacks (§27) — every guided task", () => {
 });
 
 describe("speech grader attacks (§28) — every authored item", () => {
-  const items = speechItemIds().map((id) => speechItemFor(id)!);
+  const items = speechItemIds("fr-en").map((id) => speechItemFor("fr-en", id)!);
   const spec = (item: (typeof items)[number]) => ({
     acceptedVariants: item.acceptedVariants,
     requiredConcepts: item.requiredConcepts,
@@ -182,7 +183,7 @@ describe("speech grader attacks (§28) — every authored item", () => {
     expect(items.length).toBeGreaterThanOrEqual(25);
     for (const item of items) {
       for (const v of [item.target, ...item.acceptedVariants]) {
-        expect({ item: item.id, v, ok: gradeSpokenAttempt(finals(v), spec(item)).correct }).toEqual({
+        expect({ item: item.id, v, ok: gradeSpokenAttempt(finals(v), spec(item), languageRules("fr")).correct }).toEqual({
           item: item.id,
           v,
           ok: true,
@@ -194,10 +195,10 @@ describe("speech grader attacks (§28) — every authored item", () => {
   test("silence, whitespace and unrelated speech never grade correct", () => {
     const garbage = "euh alors donc voilà quoi hein bof";
     for (const item of items) {
-      expect(gradeSpokenAttempt(finals(""), spec(item)).correct).toBe(false);
-      expect(gradeSpokenAttempt(finals("   "), spec(item)).correct).toBe(false);
-      expect(gradeSpokenAttempt(finals("", [""]), spec(item)).correct).toBe(false);
-      expect({ item: item.id, ok: gradeSpokenAttempt(finals(garbage), spec(item)).correct }).toEqual({
+      expect(gradeSpokenAttempt(finals(""), spec(item), languageRules("fr")).correct).toBe(false);
+      expect(gradeSpokenAttempt(finals("   "), spec(item), languageRules("fr")).correct).toBe(false);
+      expect(gradeSpokenAttempt(finals("", [""]), spec(item), languageRules("fr")).correct).toBe(false);
+      expect({ item: item.id, ok: gradeSpokenAttempt(finals(garbage), spec(item), languageRules("fr")).correct }).toEqual({
         item: item.id,
         ok: false,
       });
@@ -206,7 +207,7 @@ describe("speech grader attacks (§28) — every authored item", () => {
 
   test("n-best: a matching alternative counts even when the top hypothesis differs (documented ASR leniency)", () => {
     for (const item of items) {
-      const result = gradeSpokenAttempt(finals("euh je ne sais pas", [item.target]), spec(item));
+      const result = gradeSpokenAttempt(finals("euh je ne sais pas", [item.target]), spec(item), languageRules("fr"));
       expect(result.correct).toBe(true);
       expect(result.matchedTranscriptIndex).toBe(1);
       expect(result.heard).toBe("euh je ne sais pas");
@@ -227,7 +228,7 @@ describe("speech grader attacks (§28) — every authored item", () => {
         .join(" ");
       if (wrong === item.target) continue;
       checked += 1;
-      expect({ item: item.id, wrong, ok: gradeSpokenAttempt(finals(wrong), spec(item)).correct }).toEqual({
+      expect({ item: item.id, wrong, ok: gradeSpokenAttempt(finals(wrong), spec(item), languageRules("fr")).correct }).toEqual({
         item: item.id,
         wrong,
         ok: false,
@@ -242,7 +243,7 @@ describe("speech grader attacks (§28) — every authored item", () => {
       if (!item.requiredConcepts?.some((slot) => slot.includes("il y a"))) continue;
       const negated = item.target.replace(/^il y a/i, "il n'y a pas");
       checked += 1;
-      expect({ item: item.id, negated, ok: gradeSpokenAttempt(finals(negated), spec(item)).correct }).toEqual({
+      expect({ item: item.id, negated, ok: gradeSpokenAttempt(finals(negated), spec(item), languageRules("fr")).correct }).toEqual({
         item: item.id,
         negated,
         ok: false,
@@ -260,7 +261,7 @@ describe("speech grader attacks (§28) — every authored item", () => {
       const words = item.target.split(" ");
       const stripped = words.filter((w) => !ARTICLES.has(w.toLowerCase())).join(" ");
       if (stripped === item.target) continue;
-      const ok = gradeSpokenAttempt(finals(stripped), spec(item)).correct;
+      const ok = gradeSpokenAttempt(finals(stripped), spec(item), languageRules("fr")).correct;
       if (item.requiredConcepts && item.requiredConcepts.length > 0) {
         conceptItems += 1;
         if (ok) conceptTolerant += 1;
@@ -282,7 +283,7 @@ describe("speech grader attacks (§28) — every authored item", () => {
     let whole = 0;
     for (const item of items) {
       const polite = `${item.target} s'il vous plaît`;
-      const ok = gradeSpokenAttempt(finals(polite), spec(item)).correct;
+      const ok = gradeSpokenAttempt(finals(polite), spec(item), languageRules("fr")).correct;
       if (item.requiredConcepts && item.requiredConcepts.length > 0) {
         if (ok) concept += 1;
       } else if (!ok) {

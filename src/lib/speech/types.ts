@@ -1,12 +1,11 @@
 /**
- * Speech capability + result model (P8 §7). UI never infers these facts from
- * exceptions: one immutable snapshot describes what THIS device/session can
- * do, and every surface gates on it. Recognition results carry diagnosis
- * metadata without ever persisting audio or entering the store.
+ * Speech capability + result model (P8 §7, language-neutral since P1b). UI
+ * never infers these facts from exceptions: one immutable snapshot
+ * describes what THIS device/session can do for the TARGET language's
+ * recognition locale, and every surface gates on it. Recognition results
+ * carry diagnosis metadata without ever persisting audio or entering the
+ * store.
  */
-
-/** The one recognition locale scored French production ever uses. */
-export const FRENCH_LOCALE = "fr-FR";
 
 export type SpeechPermissionState =
   | "undetermined"
@@ -17,16 +16,18 @@ export type SpeechPermissionState =
 
 export type SpeechCapability = {
   platform: "ios" | "android" | "web" | "unknown";
+  /** The recognition locale this snapshot was probed for (BCP-47, from the course profile). */
+  locale: string;
   /** A recognizer implementation exists and reports itself available. */
   available: boolean;
   microphonePermission: SpeechPermissionState;
   speechPermission: SpeechPermissionState;
-  /** French ("fr-FR") recognition is offered by the platform recognizer. */
-  frenchRecognitionAvailable: boolean;
+  /** Recognition for the target language's locale is offered by the platform recognizer. */
+  targetRecognitionAvailable: boolean;
   /** The platform supports on-device (no-network) recognition at all. */
   onDeviceRecognitionAvailable: boolean;
-  /** A French on-device model is installed (subset of the above). */
-  frenchOnDeviceModelInstalled: boolean;
+  /** An on-device model for the target locale is installed (subset of the above). */
+  targetOnDeviceModelInstalled: boolean;
   /**
    * The system recognizer may process audio over the network (the platform's
    * own service — never a third-party SaaS). Disclosed in UI when it is the
@@ -38,9 +39,10 @@ export type SpeechCapability = {
   provider: string;
   providerVersion: string;
   /**
-   * Everything a SCORED attempt needs: recognizer available, French
-   * available, both permissions granted. Placement/checkpoint speaking runs
-   * only when true; otherwise those stages report not_estimated.
+   * Everything a SCORED attempt needs: recognizer available, the target
+   * locale available, both permissions granted. Placement/checkpoint
+   * speaking runs only when true; otherwise those stages report
+   * not_estimated.
    */
   scoredEligible: boolean;
 };
@@ -48,16 +50,18 @@ export type SpeechCapability = {
 /** The capability shape for environments with no recognizer at all. */
 export function unavailableCapability(
   platform: SpeechCapability["platform"],
-  provider = "none"
+  provider = "none",
+  locale = ""
 ): SpeechCapability {
   return {
     platform,
+    locale,
     available: false,
     microphonePermission: "undetermined",
     speechPermission: "undetermined",
-    frenchRecognitionAvailable: false,
+    targetRecognitionAvailable: false,
     onDeviceRecognitionAvailable: false,
-    frenchOnDeviceModelInstalled: false,
+    targetOnDeviceModelInstalled: false,
     networkBackedRecognitionPossible: false,
     recordingPersistenceAvailable: false,
     provider,
@@ -101,7 +105,7 @@ export type SpeechTechnicalReason =
 /**
  * Terminal outcome of one attempt. The four non-final kinds are all
  * DEVICE/TECHNICAL states for assessment purposes — only "final" can ever
- * be graded, and only "final" with wrong French is learner evidence.
+ * be graded, and only "final" with a wrong utterance is learner evidence.
  * "no_speech" is kept distinct from technical failures so the UI can say
  * "I didn't hear anything" rather than "something went wrong".
  */

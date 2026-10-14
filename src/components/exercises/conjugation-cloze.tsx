@@ -2,7 +2,7 @@
  * Typed conjugation production (Phase 5B §63–67): the sentence shows a blank
  * for the conjugated form, the infinitive is given as a hint chip, and the
  * learner types the form. Grading is STRICT (accents and exact inflection
- * matter) — see strictFrenchEquals. Grammar practice only, never lexical FSRS.
+ * matter) — see strictEquals. Grammar practice only, never lexical FSRS.
  */
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
@@ -11,6 +11,7 @@ import { makeThemedStyles, radius, useResolvedScheme, useThemeColors } from "@/l
 import type { ConjugationClozeExercise } from "@/lib/types";
 
 type ConjugationClozeProps = {
+  targetLanguage: string;
   exercise: ConjugationClozeExercise;
   answer: string;
   onAnswer: (text: string) => void;
@@ -18,6 +19,7 @@ type ConjugationClozeProps = {
 };
 
 export function ConjugationCloze({
+  targetLanguage,
   exercise,
   answer,
   onAnswer,
@@ -47,7 +49,7 @@ export function ConjugationCloze({
         value={answer}
         onChangeText={onAnswer}
         editable={status === "none"}
-        placeholder="Type in French — accents count"
+        placeholder={`Type in ${targetLanguage} — accents count`}
         placeholderTextColor={colors.neutral400}
         autoCapitalize="none"
         autoCorrect={false}

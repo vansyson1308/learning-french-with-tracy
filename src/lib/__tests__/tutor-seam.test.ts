@@ -120,8 +120,8 @@ describe("§69: the import graph makes tutor grading impossible", () => {
 describe("practice entries (§62-§63)", () => {
   test("writing practice serves only taught writing steps, capped and deterministic", () => {
     const pack = getPack("fr-en");
-    const a = buildWritingPracticeSessionDefinition({ pack, seedKey: "2026-08-29" });
-    const b = buildWritingPracticeSessionDefinition({ pack, seedKey: "2026-08-29" });
+    const a = buildWritingPracticeSessionDefinition({ courseId: "fr-en", pack, seedKey: "2026-08-29" });
+    const b = buildWritingPracticeSessionDefinition({ courseId: "fr-en", pack, seedKey: "2026-08-29" });
     expect(a.steps.map((s) => s.stepId)).toEqual(b.steps.map((s) => s.stepId));
     expect(a.steps.length).toBeGreaterThanOrEqual(1);
     expect(a.steps.length).toBeLessThanOrEqual(4);
@@ -135,7 +135,7 @@ describe("practice entries (§62-§63)", () => {
     const days = ["2026-08-30", "2026-08-31", "2026-09-01", "2026-09-02"];
     const rotated = days.some(
       (day) =>
-        buildWritingPracticeSessionDefinition({ pack, seedKey: day })
+        buildWritingPracticeSessionDefinition({ courseId: "fr-en", pack, seedKey: day })
           .steps.map((s) => s.stepId)
           .join() !== a.steps.map((s) => s.stepId).join()
     );
@@ -143,21 +143,21 @@ describe("practice entries (§62-§63)", () => {
   });
 
   test("conversation practice is ONE non-reserved scenario, deterministic per day", () => {
-    const a = buildConversationPracticeSessionDefinition({ seedKey: "2026-08-29" });
+    const a = buildConversationPracticeSessionDefinition({ courseId: "fr-en", seedKey: "2026-08-29" });
     expect(a.steps.length).toBe(1);
     const step = a.steps[0];
     if (step.type !== "exercise" || step.exercise.type !== "interactionScenario") {
       throw new Error("conversation practice is one interaction step");
     }
-    const scenario = interactionScenarioFor(step.exercise.scenarioId)!;
+    const scenario = interactionScenarioFor("fr-en", step.exercise.scenarioId)!;
     expect(scenario.reserved).toBe(false);
     expect(
-      buildConversationPracticeSessionDefinition({ seedKey: "2026-08-29" }).steps[0].stepId
+      buildConversationPracticeSessionDefinition({ courseId: "fr-en", seedKey: "2026-08-29" }).steps[0].stepId
     ).toBe(step.stepId);
     const days = ["2026-08-30", "2026-08-31", "2026-09-01", "2026-09-02", "2026-09-03"];
     const rotated = days.some(
       (day) =>
-        buildConversationPracticeSessionDefinition({ seedKey: day }).steps[0].stepId !==
+        buildConversationPracticeSessionDefinition({ courseId: "fr-en", seedKey: day }).steps[0].stepId !==
         step.stepId
     );
     expect(rotated).toBe(true);

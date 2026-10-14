@@ -31,7 +31,7 @@ import {
 import { useCourseContent } from "@/lib/content";
 import { exitScreen } from "@/lib/navigation";
 import { probeSpeechCapabilityOnce } from "@/lib/speech/use-speech-session";
-import { courseCapabilities } from "@/lib/capabilities";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -61,8 +61,8 @@ const DOMAIN_STATUS_ICON: Record<DomainEstimate["status"], keyof typeof Ionicons
   no_evidence: "ellipse-outline",
 };
 
-function objectiveTitles(ids: string[]): string {
-  return ids.map((id) => objectiveFor(id)?.title ?? id).join(", ");
+function objectiveTitles(courseId: string, ids: string[]): string {
+  return ids.map((id) => objectiveFor(courseId, id)?.title ?? id).join(", ");
 }
 
 /**
@@ -71,18 +71,18 @@ function objectiveTitles(ids: string[]): string {
  * still missing — so a learner can see WHY the estimate is incomplete
  * without any assessment expertise.
  */
-function domainDetailLine(d: DomainEstimate): string {
+function domainDetailLine(courseId: string, targetLanguage: string, d: DomainEstimate): string {
   const name = A1_DOMAIN_DISPLAY[d.domain];
   const shown = `${d.demonstratedObjectives.length} of ${d.requiredObjectives.length} goals shown`;
   switch (d.status) {
     case "needs_practice":
-      return `${name} — ${shown}; worth practicing first: ${objectiveTitles(d.needsPracticeObjectives)}.`;
+      return `${name} — ${shown}; worth practicing first: ${objectiveTitles(courseId, d.needsPracticeObjectives)}.`;
     case "partial":
-      return `${name} — ${shown}; still to show: ${objectiveTitles(d.missingObjectives)}.`;
+      return `${name} — ${shown}; still to show: ${objectiveTitles(courseId, d.missingObjectives)}.`;
     case "technical_unavailable":
-      return `${name} — ${shown}; needs a device that can recognize French speech. This is a device limit, not a result.`;
+      return `${name} — ${shown}; needs a device that can recognize ${targetLanguage} speech. This is a device limit, not a result.`;
     case "no_evidence":
-      return `${name} — ${shown}; take the checkpoint to show: ${objectiveTitles(d.missingObjectives)}.`;
+      return `${name} — ${shown}; take the checkpoint to show: ${objectiveTitles(courseId, d.missingObjectives)}.`;
     case "demonstrated":
       return `${name} — every required goal shown.`;
   }
@@ -95,18 +95,20 @@ function domainDetailLine(d: DomainEstimate): string {
  */
 export default function GoalsScreen() {
   const activeCourseId = useProgress((s) => s.activeCourseId);
-  if (!courseCapabilities(activeCourseId).goals) return <Redirect href="/" />;
-  return <GoalsScreenBody />;
+  if (!hasCapability(activeCourseId, "goals")) return <Redirect href="/" />;
+  return <GoalsScreenBody courseId={activeCourseId} />;
 }
 
-function GoalsScreenBody() {
+function GoalsScreenBody({ courseId }: { courseId: string }) {
   const styles = useStyles();
   const colors = useThemeColors();
   const progress = useProgress();
-  const { pack, getLesson } = useCourseContent("fr-en");
-  const frCourse = progress.courses["fr-en"];
+  const { pack, getLesson } = useCourseContent(courseId);
+  const profile = courseProfile(courseId);
+  const targetLanguage = profile.targetLanguage;
+  const frCourse = progress.courses[courseId];
 
-  const objectives = allObjectives();
+  const objectives = allObjectives(courseId);
   const states = deriveObjectiveStates({
     objectiveIds: objectives.map((o) => o.id),
     objectiveLessons: objectiveLessonMap(pack),
@@ -122,7 +124,7 @@ function GoalsScreenBody() {
 
   // P9 §45-§49: the claim split. Course claimability is a compiled fact;
   // the learner's estimate derives from their own checkpoint evidence.
-  const courseReady = courseClaimableAt("A1");
+  const courseReady = courseClaimableAt(courseId, "A1");
   // Device speech capability is a fact about the device, shown as such
   // (Phase 10 §15): a speech domain with no evidence on a device that
   // cannot score speech reads "technical_unavailable", never a verdict.
@@ -130,15 +132,15 @@ function GoalsScreenBody() {
   const [speechAvailable, setSpeechAvailable] = React.useState<boolean | null>(null);
   React.useEffect(() => {
     let live = true;
-    void probeSpeechCapabilityOnce().then((capability) => {
+    void probeSpeechCapabilityOnce(profile.recognitionLocale).then((capability) => {
       if (live) setSpeechAvailable(capability.scoredEligible);
     });
     return () => {
       live = false;
     };
-  }, []);
+  }, [profile.recognitionLocale]);
   const estimate = deriveA1Estimate({
-    policy: attainmentPolicy(),
+    policy: attainmentPolicy(courseId),
     states,
     courseClaimable: courseReady,
     speechAvailable,
@@ -165,7 +167,7 @@ function GoalsScreenBody() {
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
       <View style={styles.header}>
         <CloseButton onPress={() => exitScreen()} />
-        <Text style={styles.headerTitle}>Your French goals</Text>
+        <Text style={styles.headerTitle}>Your {targetLanguage} goals</Text>
         <View style={{ width: 44 }} />
       </View>
       <ScrollView contentContainerStyle={styles.content}>
@@ -204,7 +206,7 @@ function GoalsScreenBody() {
                 testID={`a1-domain-chip-${d.domain}`}
                 accessible
                 accessibilityRole="text"
-                accessibilityLabel={domainDetailLine(d)}
+                accessibilityLabel={domainDetailLine(courseId, targetLanguage, d)}
               >
                 <Ionicons
                   name={DOMAIN_STATUS_ICON[d.status]}
@@ -231,7 +233,7 @@ function GoalsScreenBody() {
                 .filter((d) => d.status !== "demonstrated")
                 .map((d) => (
                   <Text key={d.domain} style={styles.overallNote}>
-                    • {domainDetailLine(d)}
+                    • {domainDetailLine(courseId, targetLanguage, d)}
                   </Text>
                 ))}
             </View>
@@ -276,7 +278,7 @@ function GoalsScreenBody() {
               </Text>
               <Text style={styles.overallNote}>
                 • Speaking and conversation checks need a device that can
-                recognize French speech. If yours can&apos;t, those parts are
+                recognize {targetLanguage} speech. If yours can&apos;t, those parts are
                 skipped: the estimate stays incomplete, and nothing is ever
                 counted as a failure.
               </Text>

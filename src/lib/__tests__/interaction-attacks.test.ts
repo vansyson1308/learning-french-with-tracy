@@ -16,14 +16,15 @@ import {
   type InteractionState,
   type LearnerNode,
 } from "../interaction/machine";
+import { languageRules } from "../languages";
 
 const reservedIds = new Set<string>();
 for (const cp of Object.values((checkpointsArtifact as { byId: Record<string, { items: { exercise: { type: string; scenarioId?: string } }[] }> }).byId)) {
   for (const item of cp.items) if (item.exercise.type === "interactionScenario" && item.exercise.scenarioId) reservedIds.add(item.exercise.scenarioId);
 }
 const scenarios: InteractionScenario[] = [
-  ...interactionPracticeScenarios(),
-  ...[...reservedIds].map((id) => interactionScenarioFor(id)!).filter(Boolean),
+  ...interactionPracticeScenarios("fr-en"),
+  ...[...reservedIds].map((id) => interactionScenarioFor("fr-en", id)!).filter(Boolean),
 ];
 
 const finals = (t: string, alternatives: string[] = []) => ({ finalTranscript: t, alternatives });
@@ -40,7 +41,7 @@ function settle(scenario: InteractionScenario, state: InteractionState): Interac
   for (let guard = 0; guard < 50 && !current.finished; guard += 1) {
     const node = scenario.nodes[current.currentNodeId];
     if (node.kind !== "partner") break;
-    current = interactionReducer(scenario, current, { type: "advance" });
+    current = interactionReducer(scenario, current, { type: "advance" }, languageRules("fr"));
   }
   return current;
 }
@@ -55,7 +56,7 @@ describe("intent matching under attack", () => {
     for (const scenario of scenarios) {
       for (const node of learnerNodes(scenario)) {
         for (const intent of node.expected) {
-          const matched = matchIntent(node, finals(utteranceFor(intent)));
+          const matched = matchIntent(node, finals(utteranceFor(intent)), languageRules("fr"));
           expect({ scenario: scenario.id, node: node.id, intent: intent.intent, matched: matched?.intent ?? null }).toEqual({
             scenario: scenario.id,
             node: node.id,
@@ -83,7 +84,7 @@ describe("intent matching under attack", () => {
         );
         if (expectsClarification) continue;
         for (const text of nonAnswers) {
-          expect({ scenario: scenario.id, node: node.id, text, matched: matchIntent(node, finals(text)) }).toEqual({
+          expect({ scenario: scenario.id, node: node.id, text, matched: matchIntent(node, finals(text), languageRules("fr")) }).toEqual({
             scenario: scenario.id,
             node: node.id,
             text,
@@ -106,7 +107,7 @@ describe("intent matching under attack", () => {
           const negated = utteranceFor(intent).replace(/^je veux/i, "je ne veux pas").replace(/^je voudrais/i, "je ne voudrais pas").replace(/^il y a/i, "il n'y a pas").replace(/^j'ai/i, "je n'ai pas").replace(/^je suis/i, "je ne suis pas");
           if (negated === utteranceFor(intent)) continue;
           checked += 1;
-          const matched = matchIntent(node, finals(negated));
+          const matched = matchIntent(node, finals(negated), languageRules("fr"));
           expect({ scenario: scenario.id, node: node.id, negated, matched: matched?.intent ?? null }).toEqual({
             scenario: scenario.id,
             node: node.id,
@@ -125,7 +126,7 @@ describe("the reducer under attack", () => {
     for (const scenario of scenarios) {
       const start = settle(scenario, startInteraction(scenario));
       if (start.finished) continue;
-      const after = interactionReducer(scenario, start, { type: "technical" });
+      const after = interactionReducer(scenario, start, { type: "technical" }, languageRules("fr"));
       expect(after.judged).toEqual(start.judged);
       expect(after.currentNodeId).toBe(start.currentNodeId);
       expect(after.technicalRetries).toBe(start.technicalRetries + 1);
@@ -138,7 +139,7 @@ describe("the reducer under attack", () => {
       const state = startInteraction(scenario);
       const node = scenario.nodes[state.currentNodeId];
       if (node.kind !== "partner") continue;
-      const after = interactionReducer(scenario, state, { type: "learnerFinal", finalTranscript: "bonjour", alternatives: [] });
+      const after = interactionReducer(scenario, state, { type: "learnerFinal", finalTranscript: "bonjour", alternatives: [] }, languageRules("fr"));
       expect(after).toBe(state);
     }
   });
@@ -150,7 +151,7 @@ describe("the reducer under attack", () => {
       for (let guard = 0; guard < 40 && !state.finished; guard += 1) {
         const node = scenario.nodes[state.currentNodeId];
         if (node.kind !== "learner") break;
-        state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals(utteranceFor(node.expected[0])) }));
+        state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals(utteranceFor(node.expected[0])) }, languageRules("fr")));
       }
       expect({ scenario: scenario.id, finished: state.finished }).toEqual({
         scenario: scenario.id,
@@ -168,12 +169,12 @@ describe("the reducer under attack", () => {
       const firstNode = scenario.nodes[state.currentNodeId];
       if (firstNode.kind !== "learner" || !firstNode.scored) continue;
       // Miss on purpose, then answer everything else correctly.
-      state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals("euh alors bof") }));
+      state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals("euh alors bof") }, languageRules("fr")));
       expect(state.judged[firstNode.id]).toEqual({ matchedFirstTry: false, intent: null });
       for (let guard = 0; guard < 40 && !state.finished; guard += 1) {
         const node = scenario.nodes[state.currentNodeId];
         if (node.kind !== "learner") break;
-        state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals(utteranceFor(node.expected[0])) }));
+        state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals(utteranceFor(node.expected[0])) }, languageRules("fr")));
       }
       expect(state.finished).not.toBeNull();
       expect(state.finished!.passedFirstTry).toBe(false);
@@ -187,8 +188,8 @@ describe("the reducer under attack", () => {
     for (const scenario of scenarios) {
       const start = settle(scenario, startInteraction(scenario));
       if (start.finished) continue;
-      let state = interactionReducer(scenario, start, { type: "repeatRequested" });
-      state = interactionReducer(scenario, state, { type: "rephraseRequested" });
+      let state = interactionReducer(scenario, start, { type: "repeatRequested" }, languageRules("fr"));
+      state = interactionReducer(scenario, state, { type: "rephraseRequested" }, languageRules("fr"));
       expect(state.judged).toEqual(start.judged);
       expect(state.currentNodeId).toBe(start.currentNodeId);
       const expectedSupport = (scenario.support.allowRepeat ? 1 : 0) + (scenario.support.allowRephrase ? 1 : 0);
@@ -202,7 +203,7 @@ describe("the reducer under attack", () => {
       for (let guard = 0; guard < 40 && !state.finished; guard += 1) {
         const node = scenario.nodes[state.currentNodeId];
         if (node.kind !== "learner") break;
-        state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals(utteranceFor(node.expected[0])) }));
+        state = settle(scenario, interactionReducer(scenario, state, { type: "learnerFinal", ...finals(utteranceFor(node.expected[0])) }, languageRules("fr")));
       }
       const done = state;
       for (const event of [
@@ -210,7 +211,7 @@ describe("the reducer under attack", () => {
         { type: "technical" as const },
         { type: "learnerFinal" as const, finalTranscript: "bonjour", alternatives: [] },
       ]) {
-        expect(interactionReducer(scenario, done, event)).toBe(done);
+        expect(interactionReducer(scenario, done, event, languageRules("fr"))).toBe(done);
       }
     }
   });

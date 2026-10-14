@@ -24,7 +24,7 @@ import type { SessionController } from "@/lib/session/controller";
 import type { SessionMachineState } from "@/lib/session/reducer";
 import { buildPlacementStageSessionDefinition } from "@/lib/session/sources";
 import { probeSpeechCapabilityOnce } from "@/lib/speech/use-speech-session";
-import { courseCapabilities } from "@/lib/capabilities";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { useProgress } from "@/lib/store";
 
 /**
@@ -92,14 +92,15 @@ function StageBridge({
  */
 export default function PlacementRunScreen() {
   const activeCourseId = useProgress((s) => s.activeCourseId);
-  if (!courseCapabilities(activeCourseId).placement) return <Redirect href="/" />;
-  return <PlacementRunScreenBody />;
+  if (!hasCapability(activeCourseId, "placement")) return <Redirect href="/" />;
+  return <PlacementRunScreenBody courseId={activeCourseId} />;
 }
 
-function PlacementRunScreenBody() {
-  const plan = placementContent();
-  const enginePlan = useMemo(() => placementEnginePlan(), []);
-  const { getLesson } = useCourseContent("fr-en");
+function PlacementRunScreenBody({ courseId }: { courseId: string }) {
+  const plan = placementContent(courseId);
+  const enginePlan = useMemo(() => placementEnginePlan(courseId), [courseId]);
+  const { getLesson } = useCourseContent(courseId);
+  const profile = courseProfile(courseId);
   const progress = useProgress();
 
   const [stageIndex, setStageIndex] = useState(0);
@@ -114,13 +115,13 @@ function PlacementRunScreenBody() {
   const [speechEligible, setSpeechEligible] = useState(false);
   useEffect(() => {
     let live = true;
-    void probeSpeechCapabilityOnce().then((capability) => {
+    void probeSpeechCapabilityOnce(profile.recognitionLocale).then((capability) => {
       if (live) setSpeechEligible(capability.scoredEligible);
     });
     return () => {
       live = false;
     };
-  }, []);
+  }, [profile.recognitionLocale]);
 
   const speechStages = useMemo(() => plan.stages.map(stageNeedsSpeech), [plan]);
 
@@ -142,8 +143,8 @@ function PlacementRunScreenBody() {
   // order of every stage is fixed for this sitting and differs next time.
   const [runSeed] = useState(() => `run${Date.now()}`);
   const definition = useMemo(
-    () => buildPlacementStageSessionDefinition(stage, runSeed),
-    [stage, runSeed]
+    () => buildPlacementStageSessionDefinition(courseId, stage, runSeed),
+    [courseId, stage, runSeed]
   );
 
   if (finished) {
@@ -164,6 +165,7 @@ function PlacementRunScreenBody() {
     };
     return (
       <PlacementResults
+        courseId={courseId}
         recommendation={recommendation}
         recommendedRef={recommendedRef}
         onStartHere={() => storeResult(recommendedFloorIndex)}
@@ -175,7 +177,7 @@ function PlacementRunScreenBody() {
   return (
     <SessionScreen
       definition={definition}
-      targetLanguage="French"
+      targetLanguage={profile.targetLanguage}
       renderFinished={(controller) => (
         <StageBridge
           key={stage.id}

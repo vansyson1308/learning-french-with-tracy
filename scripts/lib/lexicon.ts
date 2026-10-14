@@ -28,8 +28,16 @@ import {
   type RichLexicon,
   type SourceManifest,
 } from "../../content/schema";
-import { FR_COURSE_ID, FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
 import { loadRegistry, readJson, safeResolve, type ValidationResult } from "./pipeline";
+
+const FR_COURSE_ID = "fr-en";
+
+/** The committed generated registry for a language (src/content/ids/<code>.json), or the frozen map itself before the first compile. */
+function committedRegistryMap(code: string, frozen: Record<string, string>): Record<string, string> {
+  const rel = `src/content/ids/${code}.json`;
+  if (!existsSync(safeResolve(rel))) return frozen;
+  return (readJson(rel) as { surfaceToId: Record<string, string> }).surfaceToId;
+}
 
 export const LEXIQUE_SOURCE_ID = "lexique-4";
 
@@ -130,7 +138,7 @@ export function validateLexiconData(input: {
     err("rich lexicon drifted from the frozen surface→id map (content/fr/lexemes.json) — stable ids are frozen; fix the rich source, never the map");
   }
   if (canon(frozenMap) !== canon(runtimeMap)) {
-    err("frozen map drifted from src/lib/learning/ids-fr.ts");
+    err("frozen map drifted from the committed registry src/content/ids/fr.json — run bun run content:compile");
   }
 
   // Cross-check against the course pack: gloss identity and full coverage.
@@ -302,7 +310,7 @@ export function validateLexicon(): ValidationResult {
     lexicon,
     manifest,
     frozenMap,
-    runtimeMap: FR_LEXEME_IDS,
+    runtimeMap: committedRegistryMap("fr", frozenMap),
     registryIds: new Set(loadRegistry().sources.map((s) => s.id)),
     packGloss,
     bandThresholds,

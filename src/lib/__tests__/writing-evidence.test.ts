@@ -111,9 +111,9 @@ describe("boolean grading contract over the tri-state engine", () => {
       kind: "text",
       text: "I honestly cannot write anything in French today folks",
     } as const;
-    expect(checkAnswer(guided, meets)).toBe(true);
-    expect(checkAnswer(guided, misses)).toBe(false);
-    expect(checkAnswer(guided, english)).toBe(false); // boolean surface; scored routing skips it earlier
+    expect(checkAnswer(guided, meets, "fr-en")).toBe(true);
+    expect(checkAnswer(guided, misses, "fr-en")).toBe(false);
+    expect(checkAnswer(guided, english, "fr-en")).toBe(false); // boolean surface; scored routing skips it earlier
   });
 
   test("readiness and model answer contracts", () => {
@@ -124,6 +124,6 @@ describe("boolean grading contract over the tri-state engine", () => {
       answerIsReady(form, { written: true, kind: "form", values: { prenom: "Marie" } })
     ).toBe(true);
     expect(correctAnswerText(guided)).toBe("Je m'appelle Marie et j'habite à Paris.");
-    expect(checkAnswer(form, { written: true, kind: "form", values: { prenom: "Marie", ville: "Paris" } })).toBe(true);
+    expect(checkAnswer(form, { written: true, kind: "form", values: { prenom: "Marie", ville: "Paris" } }, "fr-en")).toBe(true);
   });
 });

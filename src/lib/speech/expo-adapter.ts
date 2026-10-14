@@ -8,7 +8,7 @@
  *    callbacks from a disposed/previous attempt can never reach a newer
  *    machine (P8 §9);
  *  - serialize attempts (one active at a time; concurrent start throws);
- *  - prefer on-device recognition whenever the French model is installed;
+ *  - prefer on-device recognition whenever the target locale's model is installed;
  *  - strip contextual bias from scored attempts (defense in depth, §13);
  *  - keep persisted attempt audio inside one sweepable cache subdirectory.
  */
@@ -27,7 +27,6 @@ import type {
 import type { AttemptErrorCode } from "./attempt-machine";
 import { ensureSpeechCacheDirectory } from "./speech-cache";
 import {
-  FRENCH_LOCALE,
   unavailableCapability,
   type SpeechCapability,
   type SpeechPermissionState,
@@ -42,7 +41,6 @@ type UnstampedEvent = SpeechAdapterEvent extends infer E
 
 export const SPEECH_PROVIDER = "expo-speech-recognition";
 export const SPEECH_PROVIDER_VERSION = "56.0.4";
-export { FRENCH_LOCALE };
 
 type ExpoPermissionResponse = {
   granted: boolean;
@@ -86,12 +84,14 @@ export class ExpoSpeechRecognizerAdapter implements SpeechRecognizerPort {
   private activeAttemptId: string | null = null;
   private activeStartedAt = 0;
   private activeMode: StartAttemptOptions["mode"] = "practice";
-  private activeLocale = FRENCH_LOCALE;
+  private activeLocale: string;
   private onDeviceUsed = false;
   private disposed = false;
   private cachedCapability: SpeechCapability | null = null;
 
-  constructor() {
+  /** Bound to ONE recognition locale (the course's) for the adapter's life (P1b). */
+  constructor(private readonly locale: string) {
+    this.activeLocale = locale;
     this.subscribe();
   }
 
@@ -166,9 +166,9 @@ export class ExpoSpeechRecognizerAdapter implements SpeechRecognizerPort {
     try {
       available = ExpoSpeechRecognitionModule.isRecognitionAvailable();
     } catch {
-      return unavailableCapability(platform, SPEECH_PROVIDER);
+      return unavailableCapability(platform, SPEECH_PROVIDER, this.locale);
     }
-    if (!available) return unavailableCapability(platform, SPEECH_PROVIDER);
+    if (!available) return unavailableCapability(platform, SPEECH_PROVIDER, this.locale);
 
     let onDevice = false;
     let recording = false;
@@ -179,16 +179,19 @@ export class ExpoSpeechRecognizerAdapter implements SpeechRecognizerPort {
       // Conservative: capabilities stay false.
     }
 
-    let frenchAvailable = platform !== "web"; // system recognizers offer fr-FR
-    let frenchInstalled = false;
+    // The target's language code ("fr" of "fr-FR"): a system recognizer
+    // offering any regional variant of the language counts as available.
+    const language = this.locale.split(/[-_]/)[0]?.toLowerCase() ?? this.locale.toLowerCase();
+    let targetAvailable = platform !== "web"; // system recognizers offer the major locales
+    let targetInstalled = false;
     try {
       const locales = await ExpoSpeechRecognitionModule.getSupportedLocales({});
-      const isFrench = (l: string) => l.toLowerCase().startsWith("fr");
+      const isTarget = (l: string) => l.toLowerCase().startsWith(language);
       if (locales.locales.length > 0 || locales.installedLocales.length > 0) {
-        frenchAvailable =
-          locales.locales.some(isFrench) || locales.installedLocales.some(isFrench);
+        targetAvailable =
+          locales.locales.some(isTarget) || locales.installedLocales.some(isTarget);
       }
-      frenchInstalled = locales.installedLocales.some(isFrench);
+      targetInstalled = locales.installedLocales.some(isTarget);
     } catch {
       // Some Android services cannot enumerate locales; keep the
       // conservative defaults above (available, not proven installed).
@@ -204,13 +207,14 @@ export class ExpoSpeechRecognizerAdapter implements SpeechRecognizerPort {
 
     const capability: SpeechCapability = {
       platform,
+      locale: this.locale,
       available,
       microphonePermission: micState,
       speechPermission: speechState,
-      frenchRecognitionAvailable: frenchAvailable,
+      targetRecognitionAvailable: targetAvailable,
       onDeviceRecognitionAvailable: onDevice,
-      frenchOnDeviceModelInstalled: onDevice && frenchInstalled,
-      networkBackedRecognitionPossible: !onDevice || !frenchInstalled,
+      targetOnDeviceModelInstalled: onDevice && targetInstalled,
+      networkBackedRecognitionPossible: !onDevice || !targetInstalled,
       recordingPersistenceAvailable: recording,
       provider: SPEECH_PROVIDER,
       providerVersion: SPEECH_PROVIDER_VERSION,
@@ -218,7 +222,7 @@ export class ExpoSpeechRecognizerAdapter implements SpeechRecognizerPort {
       scoredEligible:
         platform !== "web" &&
         available &&
-        frenchAvailable &&
+        targetAvailable &&
         micState === "granted" &&
         speechState === "granted",
     };
@@ -247,7 +251,7 @@ export class ExpoSpeechRecognizerAdapter implements SpeechRecognizerPort {
     this.activeMode = options.mode;
     this.activeLocale = options.locale;
     const onDevicePreferred =
-      this.cachedCapability?.frenchOnDeviceModelInstalled === true;
+      this.cachedCapability?.targetOnDeviceModelInstalled === true;
     this.onDeviceUsed = onDevicePreferred;
 
     const startOptions: ExpoSpeechRecognitionOptions = {
@@ -255,7 +259,7 @@ export class ExpoSpeechRecognizerAdapter implements SpeechRecognizerPort {
       interimResults: options.mode === "practice",
       maxAlternatives: 5,
       continuous: false,
-      // Local-first (P8 §8): never send audio off-device when the French
+      // Local-first (P8 §8): never send audio off-device when the target
       // model is installed; otherwise the SYSTEM service may use the
       // network, which the UI discloses before recording.
       requiresOnDeviceRecognition: onDevicePreferred,

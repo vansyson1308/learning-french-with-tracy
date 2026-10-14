@@ -18,14 +18,14 @@ import { checkpointFor } from "@/lib/assessment/content";
 import { buildCheckpointSessionDefinition } from "@/lib/session/sources";
 import type { SessionDefinition } from "@/lib/session/types";
 import {
-  NETWORK_DISCLOSURE_TEXT,
   networkDisclosureRequired,
+  networkDisclosureText,
 } from "@/lib/speech/step-policy";
 import {
   probeSpeechCapabilityOnce,
   requestSpeechPermissionOnce,
 } from "@/lib/speech/use-speech-session";
-import { courseCapabilities } from "@/lib/capabilities";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles } from "@/lib/theme";
 
@@ -36,13 +36,15 @@ import { makeThemedStyles } from "@/lib/theme";
  */
 export default function CheckpointScreen() {
   const activeCourseId = useProgress((s) => s.activeCourseId);
-  if (!courseCapabilities(activeCourseId).checkpoints) return <Redirect href="/" />;
-  return <CheckpointScreenBody />;
+  if (!hasCapability(activeCourseId, "checkpoints")) return <Redirect href="/" />;
+  return <CheckpointScreenBody courseId={activeCourseId} />;
 }
 
-function CheckpointScreenBody() {
+function CheckpointScreenBody({ courseId }: { courseId: string }) {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const checkpoint = checkpointFor(id ?? "");
+  const profile = courseProfile(courseId);
+  const targetLanguage = profile.targetLanguage;
+  const checkpoint = checkpointFor(courseId, id ?? "");
 
   // Parallel-form seed (P9 §38-§39): the prior attempt count is captured
   // ONCE at mount from a store snapshot — recording this sitting's attempt
@@ -56,8 +58,8 @@ function CheckpointScreenBody() {
   );
   const definition = useMemo<SessionDefinition | null>(
     () =>
-      checkpoint ? buildCheckpointSessionDefinition(checkpoint, priorAttemptCount) : null,
-    [checkpoint, priorAttemptCount]
+      checkpoint ? buildCheckpointSessionDefinition(courseId, checkpoint, priorAttemptCount) : null,
+    [courseId, checkpoint, priorAttemptCount]
   );
 
   // Speech preflight (P8 §20/§22 + P9 §8): a SPOKEN checkpoint is never
@@ -86,7 +88,7 @@ function CheckpointScreenBody() {
   ) => {
     if (
       !capability.available ||
-      !capability.frenchRecognitionAvailable ||
+      !capability.targetRecognitionAvailable ||
       capability.platform === "web"
     ) {
       return "blocked" as const;
@@ -103,7 +105,7 @@ function CheckpointScreenBody() {
   useEffect(() => {
     if (!hasSpeech) return;
     let live = true;
-    void probeSpeechCapabilityOnce().then((capability) => {
+    void probeSpeechCapabilityOnce(profile.recognitionLocale).then((capability) => {
       if (!live) return;
       setDisclosureNeeded(
         networkDisclosureRequired(capability, speechNoticeAckAt !== null)
@@ -119,7 +121,7 @@ function CheckpointScreenBody() {
   }, [hasSpeech]);
 
   const requestPermission = () => {
-    void requestSpeechPermissionOnce().then((capability) => {
+    void requestSpeechPermissionOnce(profile.recognitionLocale).then((capability) => {
       setSpeechGate(gateFromCapability(capability));
     });
   };
@@ -141,8 +143,8 @@ function CheckpointScreenBody() {
             <>
               <Text style={styles.title}>This check needs speech recognition</Text>
               <Text style={styles.body} testID="checkpoint-speech-blocked">
-                It asks you to SAY French out loud, and this device can&apos;t do
-                scored speech recognition in French. Nothing is recorded against
+                It asks you to SAY {targetLanguage} out loud, and this device can&apos;t do
+                scored speech recognition in {targetLanguage}. Nothing is recorded against
                 you — the section simply stays unchecked until you can take it
                 on a capable device.
               </Text>
@@ -152,7 +154,7 @@ function CheckpointScreenBody() {
             <>
               <Text style={styles.title}>This check uses your microphone</Text>
               <Text style={styles.body} testID="checkpoint-speech-permission">
-                Every task asks you to say French out loud, so the app needs
+                Every task asks you to say {targetLanguage} out loud, so the app needs
                 microphone and speech-recognition permission before it starts.
                 Nothing records until you tap the record button on each task.
               </Text>
@@ -179,7 +181,7 @@ function CheckpointScreenBody() {
             <>
               <Text style={styles.title}>Before you start</Text>
               <Text style={styles.body} testID="checkpoint-speech-disclosure">
-                {NETWORK_DISCLOSURE_TEXT}
+                {networkDisclosureText(targetLanguage)}
               </Text>
               <DuoButton
                 label="Got it — start the check"
@@ -199,9 +201,10 @@ function CheckpointScreenBody() {
   return (
     <SessionScreen
       definition={definition}
-      targetLanguage="French"
+      targetLanguage={targetLanguage}
       renderFinished={(controller) => (
         <CheckpointResults
+          courseId={courseId}
           checkpointTitle={checkpoint.title}
           attempt={buildCheckpointAttempt({
             plan: definition.assessment!,

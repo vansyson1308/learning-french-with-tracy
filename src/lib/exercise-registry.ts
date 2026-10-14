@@ -22,8 +22,8 @@ import type { Exercise } from "./types";
 export type ExerciseBehavior = {
   /** Enables the Check button. */
   isReady(exercise: Exercise, answer: Answer): boolean;
-  /** Grades a submitted answer. */
-  check(exercise: Exercise, answer: Answer): boolean;
+  /** Grades a submitted answer under the course's language rules. */
+  check(exercise: Exercise, answer: Answer, courseId: string): boolean;
   /** Text shown after a wrong answer. */
   answerText(exercise: Exercise): string;
   /** Evidence modality for the interaction. */

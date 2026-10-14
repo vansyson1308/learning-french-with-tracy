@@ -20,7 +20,13 @@ import {
   type SpeechItem,
   type SpeechItems,
 } from "../../content/schema";
-import { foldSpokenFrench, normalizeSpokenFrench } from "../../src/lib/speech/grader";
+import { languageRules } from "../../src/lib/languages";
+import { foldSpoken, normalizeSpoken } from "../../src/lib/speech/grader";
+
+/** The authored sources under content/fr are French (P1c parameterises this). */
+const RULES = languageRules("fr");
+const normalizeSpokenFrench = (text: string) => normalizeSpoken(text, RULES);
+const foldSpokenFrench = (text: string) => foldSpoken(text, RULES);
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const SPEECH_SOURCE = "content/fr/speech/items.json";

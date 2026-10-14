@@ -55,25 +55,28 @@ export type WritingContext = {
 };
 
 function ListeningComprehensionStep({
+  courseId,
   exercise,
   answer,
   status,
   reception,
   onAnswer,
 }: {
+  courseId: string;
   exercise: ListeningComprehensionExercise;
   answer: number | null;
   status: Status;
   reception: ReceptionContext;
   onAnswer: (value: Answer) => void;
 }) {
-  const clip = clipFor(exercise.clipId);
-  const player = useListeningPlayer(clipAudioSource(exercise.clipId), {
+  const clip = clipFor(courseId, exercise.clipId);
+  const player = useListeningPlayer(clipAudioSource(courseId, exercise.clipId), {
     maxPlays: reception.scored ? (clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
     allowSlow: !reception.scored,
   });
   return (
     <ListeningComprehension
+      courseId={courseId}
       exercise={exercise}
       answer={answer}
       status={status}
@@ -86,25 +89,30 @@ function ListeningComprehensionStep({
 }
 
 function DictationStep({
+  courseId,
+  targetLanguage,
   exercise,
   answer,
   status,
   reception,
   onAnswer,
 }: {
+  courseId: string;
+  targetLanguage: string;
   exercise: DictationExercise;
   answer: string | null;
   status: Status;
   reception: ReceptionContext;
   onAnswer: (value: Answer) => void;
 }) {
-  const clip = clipFor(exercise.clipId);
-  const player = useListeningPlayer(clipAudioSource(exercise.clipId), {
+  const clip = clipFor(courseId, exercise.clipId);
+  const player = useListeningPlayer(clipAudioSource(courseId, exercise.clipId), {
     maxPlays: reception.scored ? (clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
     allowSlow: !reception.scored,
   });
   return (
     <Dictation
+      targetLanguage={targetLanguage}
       exercise={exercise}
       answer={answer}
       status={status}
@@ -136,11 +144,11 @@ export function ExerciseRenderer({
   onAnswer: (value: Answer) => void;
   onMatchComplete: (wrongAttempts: number) => void;
   onMatchWordResult: (target: string, correct: boolean) => void;
-  /** Required whenever reception exercise types can appear (French). */
+  /** Required whenever reception exercise types can appear. */
   reception?: ReceptionContext;
-  /** Required whenever speak exercise types can appear (French, P8). */
+  /** Required whenever speak exercise types can appear (P8). */
   speech?: SpeechExerciseContext;
-  /** Writing rendering policy (French, P9); defaults to learning mode. */
+  /** Writing rendering policy (P9); defaults to learning mode. */
   writing?: WritingContext;
 }) {
   const receptionCtx: ReceptionContext =
@@ -205,6 +213,7 @@ export function ExerciseRenderer({
     case "conjugationCloze":
       return (
         <ConjugationCloze
+          targetLanguage={targetLanguage}
           exercise={exercise}
           answer={typeof answer === "string" ? answer : ""}
           onAnswer={onAnswer}
@@ -214,6 +223,7 @@ export function ExerciseRenderer({
     case "listeningComprehension":
       return (
         <ListeningComprehensionStep
+          courseId={courseId}
           exercise={exercise}
           answer={typeof answer === "number" ? answer : null}
           status={status}
@@ -224,6 +234,7 @@ export function ExerciseRenderer({
     case "readingComprehension":
       return (
         <ReadingComprehension
+          courseId={courseId}
           exercise={exercise}
           answer={typeof answer === "number" ? answer : null}
           status={status}
@@ -234,6 +245,8 @@ export function ExerciseRenderer({
     case "dictation":
       return (
         <DictationStep
+          courseId={courseId}
+          targetLanguage={targetLanguage}
           exercise={exercise}
           answer={typeof answer === "string" ? answer : null}
           status={status}
@@ -248,6 +261,8 @@ export function ExerciseRenderer({
       return (
         <SpeakRepetition
           key={exercise.id}
+          courseId={courseId}
+          targetLanguage={targetLanguage}
           exercise={exercise}
           answer={answer}
           status={status}
@@ -260,6 +275,8 @@ export function ExerciseRenderer({
       return (
         <SpeakProduction
           key={exercise.id}
+          courseId={courseId}
+          targetLanguage={targetLanguage}
           exercise={exercise}
           answer={answer}
           status={status}
@@ -271,6 +288,8 @@ export function ExerciseRenderer({
       return (
         <GuidedWriting
           key={exercise.id}
+          courseId={courseId}
+          targetLanguage={targetLanguage}
           exercise={exercise}
           answer={answer}
           status={status}
@@ -282,6 +301,8 @@ export function ExerciseRenderer({
       return (
         <SimpleForm
           key={exercise.id}
+          courseId={courseId}
+          targetLanguage={targetLanguage}
           exercise={exercise}
           answer={answer}
           status={status}
@@ -296,6 +317,8 @@ export function ExerciseRenderer({
       return (
         <InteractionScenarioStep
           key={exercise.id}
+          courseId={courseId}
+          targetLanguage={targetLanguage}
           exercise={exercise}
           answer={answer}
           status={status}

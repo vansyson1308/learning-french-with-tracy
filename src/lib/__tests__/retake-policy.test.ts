@@ -76,7 +76,7 @@ describe("deterministic form selection (§38-§39)", () => {
   });
 
   test("the session administers ONLY the selected form's items and stamps the plan", () => {
-    const def = buildCheckpointSessionDefinition(bank, 1);
+    const def = buildCheckpointSessionDefinition("fr-en", bank, 1);
     expect(def.steps.map((s) => s.stepId)).toEqual(["i2", "i3", "i5", "i6"]);
     expect(def.assessment).toMatchObject({
       checkpointId: "fr.checkpoint.test",
@@ -94,7 +94,7 @@ describe("deterministic form selection (§38-§39)", () => {
 
   test("every form still clears the per-objective criteria floor", () => {
     for (const count of [0, 1]) {
-      const def = buildCheckpointSessionDefinition(bank, count);
+      const def = buildCheckpointSessionDefinition("fr-en", bank, count);
       const perObjective = new Map<string, number>();
       for (const objectives of Object.values(def.assessment!.itemObjectives)) {
         for (const oid of objectives) {
@@ -107,7 +107,7 @@ describe("deterministic form selection (§38-§39)", () => {
   });
 
   test("the attempt records checkpointVersion, formId and formVersion (§38)", () => {
-    const def = buildCheckpointSessionDefinition(bank, 0);
+    const def = buildCheckpointSessionDefinition("fr-en", bank, 0);
     const attempt = buildCheckpointAttempt({
       plan: def.assessment!,
       firstResults: { i1: true, i2: true, i4: true, i5: false },

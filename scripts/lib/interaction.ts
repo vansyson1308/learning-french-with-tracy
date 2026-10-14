@@ -19,7 +19,12 @@ import {
   type InteractionScenarioSource,
   type Listening,
 } from "../../content/schema";
-import { normalizeSpokenFrench } from "../../src/lib/speech/grader";
+import { languageRules } from "../../src/lib/languages";
+import { normalizeSpoken } from "../../src/lib/speech/grader";
+
+/** The authored sources under content/fr are French (P1c parameterises this). */
+const RULES = languageRules("fr");
+const normalizeSpokenFrench = (text: string) => normalizeSpoken(text, RULES);
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const INTERACTION_SOURCE = "content/fr/interaction/scenarios.json";

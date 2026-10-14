@@ -25,12 +25,14 @@ function optionState(
 }
 
 export function ReadingComprehension({
+  courseId,
   exercise,
   answer,
   status,
   allowGloss,
   onAnswer,
 }: {
+  courseId: string;
   exercise: ReadingComprehensionExercise;
   answer: number | null;
   status: "none" | "correct" | "wrong";
@@ -38,7 +40,7 @@ export function ReadingComprehension({
   onAnswer: (index: number) => void;
 }) {
   const styles = useStyles();
-  const reading = readingFor(exercise.readingId);
+  const reading = readingFor(courseId, exercise.readingId);
   if (!reading) return <Text style={styles.question}>Missing reading {exercise.readingId}</Text>;
 
   return (

@@ -3,7 +3,7 @@
  * session plan. No store reads, no Math.random, no Date.now: same input +
  * same seed → the same plan, which is what makes the whole surface testable.
  *
- * Session shape (French-first):
+ * Session shape (one course at a time; the course id drives ids and distractors):
  *   1. WARM-UP  due FSRS cards, most at-risk first — designated assessments
  *   2. NEW      teach card → immediate Fr→En retrieval (the new card's
  *               designated assessment), material drawn ONLY from the PATH
@@ -28,8 +28,8 @@ import type {
 } from "../types";
 
 import { pickDistractors } from "./distractors";
-import { dueFrenchReviewQueue } from "./engine";
-import { FR_COURSE_ID, FR_SURFACE_FOR_ID, isCuratedFrItemId } from "./ids-fr";
+import { dueReviewQueue } from "./engine";
+import { isCuratedItemId, surfaceFor } from "./ids";
 import type { FsrsCardState } from "./scheduler";
 
 export type TodayPreset = "short" | "regular" | "long";
@@ -50,6 +50,8 @@ export const TODAY_STEP_SECONDS = 20;
 export const TODAY_FINALE_MAX_PAIRS = 4;
 
 export type TodayPlanInput = {
+  /** The course being composed — resolves stable ids and lexicon metadata. */
+  courseId: string;
   pack: Pack;
   completedLessons: Record<string, true>;
   cards: Record<string, FsrsCardState> | undefined;
@@ -169,13 +171,14 @@ export function pathFrontierLesson(
  * distractors never equal to (or displaying like) the answer.
  */
 function buildSelect(args: {
+  courseId: string;
   id: string;
   word: Word;
   pool: Word[];
   rng: () => number;
   direction: "targetToNative" | "nativeToTarget";
 }): SelectExercise | null {
-  const { word, pool, rng, direction } = args;
+  const { courseId, word, pool, rng, direction } = args;
   const display = (w: Word) => (direction === "targetToNative" ? w.native : w.target);
   const answerText = display(word);
 
@@ -184,10 +187,10 @@ function buildSelect(args: {
   // production the option surfaces carry articles — a lone gender would
   // leak the answer). Deterministic under the session rng.
   // Recognition options all carry their word's emoji (an emoji only on the
-  // answer would give it away); production options are plain French text.
+  // answer would give it away); production options are plain target text.
   const withEmoji = direction === "targetToNative";
   const distractors = pickDistractors({
-    courseId: FR_COURSE_ID,
+    courseId,
     word,
     pool,
     rng,
@@ -207,7 +210,7 @@ function buildSelect(args: {
     id: args.id,
     mode: direction,
     // The Select renders `prompt` as the asked word (titles come from the
-    // mode): show the French for recognition, the native for production.
+    // mode): show the target for recognition, the native for production.
     prompt: direction === "targetToNative" ? word.target : word.native,
     audioTarget: word.target,
     options,
@@ -222,6 +225,7 @@ function buildSelect(args: {
  * composeTodaySession directly with explicit values.
  */
 export function composeTodayFromSnapshot(args: {
+  courseId: string;
   pack: Pack;
   completedLessons: Record<string, true>;
   cards: Record<string, FsrsCardState> | undefined;
@@ -235,15 +239,16 @@ export function composeTodayFromSnapshot(args: {
   const now = args.now ?? Date.now();
   const day = args.day ?? dayString(new Date(now));
   const dueKeys = [
-    ...dueFrenchReviewQueue(args.cards, now),
-    ...dueFrenchReviewQueue(args.cards, now, "listen"),
-    ...dueFrenchReviewQueue(args.cards, now, "speak"),
+    ...dueReviewQueue(args.courseId, args.cards, now),
+    ...dueReviewQueue(args.courseId, args.cards, now, "listen"),
+    ...dueReviewQueue(args.courseId, args.cards, now, "speak"),
   ]
     .map((d) => `${d.key}@${d.dueAt}`)
     .join(",");
   const frontier = pathFrontierLesson(args.pack, args.completedLessons, args.placementFloor ?? 0);
   const seed = hashSeed(`${day}|${args.preset}|${frontier?.lessonId ?? "-"}|${dueKeys}`);
   return composeTodaySession({
+    courseId: args.courseId,
     pack: args.pack,
     completedLessons: args.completedLessons,
     cards: args.cards,
@@ -270,7 +275,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   const listenClips = input.listenClips ?? {};
   // Backlog honesty: EVERY due listen card counts, sessionable or not — a
   // card whose clip asset is not bundled stays due and stays visible.
-  const allListenDue = dueFrenchReviewQueue(input.cards, input.now, "listen");
+  const allListenDue = dueReviewQueue(input.courseId, input.cards, input.now, "listen");
   const listenQueue = allListenDue.filter(
     (d) => listenClips[d.key.slice(0, d.key.lastIndexOf("|"))] !== undefined
   );
@@ -286,7 +291,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   // the route provided a production exercise for the due lexeme; every due
   // speak card still counts toward the honest backlog.
   const speakExercises = input.speakExercises ?? {};
-  const allSpeakDue = dueFrenchReviewQueue(input.cards, input.now, "speak");
+  const allSpeakDue = dueReviewQueue(input.courseId, input.cards, input.now, "speak");
   const speakBudget = todaySpeakBudget(budgets.review, listenItems.length);
   const speakPicks: { itemId: string; exercise: SpeakProductionExercise }[] = [];
   for (const due of allSpeakDue) {
@@ -297,7 +302,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
     speakPicks.push({ itemId, exercise: { ...exercise, id: `today-speak-${itemId}` } });
   }
 
-  const dueQueue = dueFrenchReviewQueue(input.cards, input.now);
+  const dueQueue = dueReviewQueue(input.courseId, input.cards, input.now);
   const warmupItems: Item[] = [];
   for (const due of dueQueue) {
     if (warmupItems.length + listenItems.length + speakPicks.length >= budgets.review) break;
@@ -308,6 +313,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   }
   for (const item of warmupItems) {
     const exercise = buildSelect({
+      courseId: input.courseId,
       id: `today-review-${item.itemId}`,
       word: item.word,
       pool,
@@ -326,7 +332,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   let listenCount = 0;
   for (const item of listenItems) {
     const distractors = pickDistractors({
-      courseId: FR_COURSE_ID,
+      courseId: input.courseId,
       word: item.word,
       pool,
       rng,
@@ -373,9 +379,9 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   const newItems: Item[] = [];
   for (const id of frontier?.gradeTargetIds ?? []) {
     if (newItems.length >= budgets.newItems) break;
-    if (!isCuratedFrItemId(id)) continue; // fail closed on bad content
+    if (!isCuratedItemId(input.courseId, id)) continue; // fail closed on bad content
     if (input.cards?.[`${id}|recognize`]) continue; // already has a card
-    const surface = FR_SURFACE_FOR_ID[id];
+    const surface = surfaceFor(input.courseId, id);
     const word = surface === undefined ? undefined : wordBySurface.get(surface);
     if (!word) continue; // must be renderable from course data
     if (newItems.some((n) => n.itemId === id)) continue;
@@ -390,6 +396,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
       phase: "new",
     } satisfies TeachStep);
     const exercise = buildSelect({
+      courseId: input.courseId,
       id: `today-new-${item.itemId}`,
       word: item.word,
       pool,
@@ -412,6 +419,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   let mixedSteps: ExerciseStep[] = [];
   for (const item of mixedPoolItems) {
     const exercise = buildSelect({
+      courseId: input.courseId,
       id: `today-mixed-${item.itemId}`,
       word: item.word,
       pool,

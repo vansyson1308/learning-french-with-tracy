@@ -19,6 +19,7 @@
  * outside. Same input sequence → same state, always.
  */
 
+import type { LanguageRules } from "../languages/types";
 import { gradeSpokenAttempt } from "../speech/grader";
 
 export type PartnerNode = {
@@ -134,13 +135,18 @@ export function startInteraction(scenario: InteractionScenario): InteractionStat
 /** Deterministic intent match over the final n-best; authored order wins. */
 export function matchIntent(
   node: LearnerNode,
-  finals: { finalTranscript: string; alternatives: string[] }
+  finals: { finalTranscript: string; alternatives: string[] },
+  rules: LanguageRules
 ): ExpectedIntent | null {
   for (const expected of node.expected) {
-    const grade = gradeSpokenAttempt(finals, {
-      acceptedVariants: expected.acceptedVariants,
-      requiredConcepts: expected.requiredConcepts,
-    });
+    const grade = gradeSpokenAttempt(
+      finals,
+      {
+        acceptedVariants: expected.acceptedVariants,
+        requiredConcepts: expected.requiredConcepts,
+      },
+      rules
+    );
     if (grade.correct) return expected;
   }
   return null;
@@ -197,7 +203,9 @@ function enterNode(
 export function interactionReducer(
   scenario: InteractionScenario,
   state: InteractionState,
-  event: InteractionEvent
+  event: InteractionEvent,
+  /** The course's language rules for spoken intent matching (P1b). */
+  rules: LanguageRules
 ): InteractionState {
   if (state.finished) return state; // terminal immunity
   const node = scenario.nodes[state.currentNodeId];
@@ -210,7 +218,7 @@ export function interactionReducer(
     }
     case "learnerFinal": {
       if (node.kind !== "learner") return state;
-      const matched = matchIntent(node, event);
+      const matched = matchIntent(node, event, rules);
       const firstJudgment = !(node.id in state.judged);
       const judged =
         node.scored && firstJudgment

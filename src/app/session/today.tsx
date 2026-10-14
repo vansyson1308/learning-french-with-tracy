@@ -10,9 +10,9 @@ import React, { useMemo } from "react";
 
 import { SessionScreen } from "@/components/session/session-screen";
 import type { TodaySummaryStats } from "@/components/session/session-summary";
-import { courseCapabilities } from "@/lib/capabilities";
+import { hasCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
-import { dueFrenchReviewQueue } from "@/lib/learning/engine";
+import { dueReviewQueue } from "@/lib/learning/engine";
 import { listenWordClipIndex } from "@/lib/reception/content";
 import { speakExerciseIndex } from "@/lib/speech/content";
 import {
@@ -48,15 +48,16 @@ export default function TodaySessionRoute() {
     const course = state.courses[state.activeCourseId];
     const preset = isPreset(presetParam) ? presetParam : "regular";
     const plan = composeTodayFromSnapshot({
+      courseId: state.activeCourseId,
       pack,
       completedLessons: course?.completedLessons ?? {},
       cards: course?.cards,
       preset,
       placementFloor: state.assessment.placementFloor,
-      listenClips: listenWordClipIndex(),
+      listenClips: listenWordClipIndex(state.activeCourseId),
       // "Can't speak now" (P8 §17): speak=0 composes a fully silent session;
       // the due speak cards stay honestly in the backlog.
-      speakExercises: speakParam === "0" ? undefined : speakExerciseIndex(),
+      speakExercises: speakParam === "0" ? undefined : speakExerciseIndex(state.activeCourseId),
     });
     return {
       plan,
@@ -75,7 +76,7 @@ export default function TodaySessionRoute() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [presetParam, speakParam, activeCourseId]);
 
-  if (!courseCapabilities(activeCourseId).dailySession) {
+  if (!hasCapability(activeCourseId, "dailySession")) {
     return <Redirect href="/" />;
   }
 
@@ -106,7 +107,7 @@ export default function TodaySessionRoute() {
               ? firstAttemptAccuracy(controller.state)
               : firsts.filter(([, ok]) => ok).length / firsts.length,
           xpEarned: Math.min(controller.assessmentsCompleted, XP_PER_LESSON),
-          remainingBacklog: dueFrenchReviewQueue(live?.cards).length,
+          remainingBacklog: dueReviewQueue(definition.courseId, live?.cards).length,
         };
       }}
     />

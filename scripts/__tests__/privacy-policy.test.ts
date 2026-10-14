@@ -75,8 +75,8 @@ describe("privacy policy source and Markdown", () => {
 
   test("the in-app network-speech disclosure states the same boundary (§42, §74)", () => {
     const source = readFileSync("src/lib/speech/step-policy.ts", "utf8");
-    const start = source.indexOf("NETWORK_DISCLOSURE_TEXT =");
-    const text = source.slice(start, source.indexOf(";", start));
+    const start = source.indexOf("export function networkDisclosureText(");
+    const text = source.slice(start, source.indexOf("\n}", start));
     expect(text).toMatch(/device's system service/);
     expect(text).toMatch(/may use the internet/);
     expect(text).toMatch(/never uploads or stores your recording/);

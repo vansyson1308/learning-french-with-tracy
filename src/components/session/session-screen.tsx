@@ -35,6 +35,7 @@ import { TeachCard } from "@/components/session/teach-card";
 import { behaviorFor } from "@/lib/exercise-registry";
 import { exitScreen } from "@/lib/navigation";
 import { useSessionController, type SessionController } from "@/lib/session/controller";
+import { courseProfile } from "@/lib/course-profile";
 import { grammarNoteFor, panelItemIdFor, teachMetaFor } from "@/lib/session/panel";
 import {
   currentStep,
@@ -85,7 +86,7 @@ export function SessionScreen({
       ),
     [definition.steps]
   );
-  const speechSession = useSpeechSession(hasSpeechSteps);
+  const speechSession = useSpeechSession(hasSpeechSteps, courseProfile(definition.courseId).recognitionLocale);
 
   const step = currentStep(state);
   const percentage = sessionProgress(state) * 100;
@@ -162,7 +163,7 @@ export function SessionScreen({
   // Minimal feedback (§118): a diagnostic acknowledges the answer without
   // revealing it — no correct-answer line, no teaching panel, no verdict.
   const minimalFeedback = definition.feedbackPolicy === "minimal";
-  // Lexical feedback identity: exactly one stable French item or nothing.
+  // Lexical feedback identity: exactly one stable item of the course or nothing.
   const answered = state.status === "correct" || state.status === "wrong";
   const panelItemId = answered && !minimalFeedback ? panelItemIdFor(definition, step) : null;
 
@@ -195,9 +196,9 @@ export function SessionScreen({
           keyboardShouldPersistTaps="handled"
         >
           {step.type === "teach" ? (
-            <TeachCard word={step.word} courseId={definition.courseId} meta={teachMetaFor(step)} />
+            <TeachCard word={step.word} courseId={definition.courseId} meta={teachMetaFor(definition.courseId, step)} />
           ) : step.type === "concept" ? (
-            <ConceptCard conceptId={step.conceptId} />
+            <ConceptCard courseId={definition.courseId} conceptId={step.conceptId} />
           ) : (
             <ExerciseRenderer
               exercise={step.exercise}
@@ -288,6 +289,7 @@ export function SessionScreen({
           )}
           {panelItemId !== null ? (
             <PostAnswerPanel
+              courseId={definition.courseId}
               itemId={panelItemId}
               correct={state.status === "correct"}
               note={grammarNoteFor(step) ?? undefined}

@@ -11,9 +11,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { conceptFor } from "@/lib/learning/concepts";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
-export function ConceptCard({ conceptId }: { conceptId: string }) {
+export function ConceptCard({ courseId, conceptId }: { courseId: string; conceptId: string }) {
   const styles = useStyles();
-  const concept = conceptFor(conceptId);
+  const concept = conceptFor(courseId, conceptId);
   // Content validation guarantees resolution; fail soft (never wedge the
   // session) if a stale build ever ships a dangling reference.
   if (!concept) return null;

@@ -69,7 +69,7 @@ function Harness({
   onSpoken?: (a: SpokenAnswer) => void;
   onSkip?: () => void;
 }) {
-  const session = useSpeechSession(true);
+  const session = useSpeechSession(true, "fr-FR");
   const [answer, setAnswer] = React.useState<Answer>(null);
   const speech: SpeechExerciseContext = { scored, session, onSpeechSkip: onSkip };
   const handleAnswer = (value: SpokenAnswer) => {
@@ -78,6 +78,8 @@ function Harness({
   };
   return kind === "production" ? (
     <SpeakProduction
+      courseId="fr-en"
+      targetLanguage="French"
       exercise={production}
       answer={answer}
       status={status}
@@ -86,6 +88,8 @@ function Harness({
     />
   ) : (
     <SpeakRepetition
+      courseId="fr-en"
+      targetLanguage="French"
       exercise={repetition}
       answer={answer}
       status={status}

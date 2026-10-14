@@ -27,6 +27,7 @@ function optionState(
 }
 
 export function ListeningComprehension({
+  courseId,
   exercise,
   answer,
   status,
@@ -35,6 +36,7 @@ export function ListeningComprehension({
   onAnswer,
   onAudioUnavailable,
 }: {
+  courseId: string;
   exercise: ListeningComprehensionExercise;
   answer: number | null;
   status: "none" | "correct" | "wrong";
@@ -45,7 +47,7 @@ export function ListeningComprehension({
   onAudioUnavailable?: () => void;
 }) {
   const styles = useStyles();
-  const clip = clipFor(exercise.clipId);
+  const clip = clipFor(courseId, exercise.clipId);
 
   return (
     <View style={styles.wrap}>

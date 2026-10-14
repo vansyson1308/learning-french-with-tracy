@@ -2,14 +2,18 @@
  * Evidence application engine — the single path from ReviewEvidence to
  * persisted learning state, for every course:
  *
- *   fr-en          → evidence gate → FSRS card mutation + review log
- *   everything else → EXACT translation to the legacy recordWord /
- *                     reviewSrsWord semantics (parity-tested field-for-field)
+ *   courses with the `fsrs` capability → evidence gate → FSRS card
+ *                                         mutation + review log
+ *   everything else                     → EXACT translation to the legacy
+ *                                         recordWord / reviewSrsWord
+ *                                         semantics (parity-tested)
  *
  * Pure state-transition functions; the store supplies state and commits the
- * result. No React imports.
+ * result. No React imports, no course or language literals (P1b): routing
+ * asks the course profile, ids come from the per-course registry.
  */
 
+import { hasCapability } from "../course-profile";
 import type { CourseProgress, WordStat } from "../store";
 import { reviewWord } from "../srs";
 
@@ -17,7 +21,7 @@ import { serializeCardKey, type Skill } from "./card-key";
 import type { ReviewEvidence } from "./evidence";
 import { gateEvidence } from "./evidence-gate";
 import { fsrsScheduler } from "./fsrs-adapter";
-import { FR_COURSE_ID, FR_SURFACE_FOR_ID, frItemIdFor } from "./ids-fr";
+import { hasIdRegistry, isCuratedItemId, itemIdFor, surfaceFor } from "./ids";
 import {
   appendToReviewLog,
   cardMutatedInSession,
@@ -26,9 +30,9 @@ import {
 } from "./review-log";
 import type { FsrsCardState } from "./scheduler";
 
-/** fr-en gets stable lexical ids; legacy courses keep raw surfaces. */
+/** Registry courses get stable lexical ids; legacy courses keep raw surfaces. */
 export function itemIdForCourse(courseId: string, surface: string): string {
-  return courseId === FR_COURSE_ID ? frItemIdFor(surface) : surface;
+  return itemIdFor(courseId, surface);
 }
 
 /**
@@ -100,8 +104,9 @@ function applyLegacy(
   now: number
 ): CourseProgress {
   const surface = ev.cardKey.itemId;
-  // TODAY is French-only; if evidence ever reached a legacy course anyway,
-  // the safe translation is the review one (srs write, no stats inflation).
+  // TODAY needs the fsrs capability; if evidence ever reached a legacy
+  // course anyway, the safe translation is the review one (srs write, no
+  // stats inflation).
   if (ev.source === "review" || ev.source === "today") {
     return {
       ...course,
@@ -123,7 +128,8 @@ function applyLegacy(
   };
 }
 
-function applyFrench(
+function applyScheduled(
+  courseId: string,
   course: CourseProgress,
   reviewLog: ReviewLogEntry[],
   ev: ReviewEvidence,
@@ -188,7 +194,7 @@ function applyFrench(
     };
   }
 
-  const entry: ReviewLogEntry = { ...baseLogEntry(FR_COURSE_ID, ev, now), mutation };
+  const entry: ReviewLogEntry = { ...baseLogEntry(courseId, ev, now), mutation };
   return {
     course: next,
     reviewLog: appendToReviewLog(reviewLog, entry),
@@ -205,8 +211,8 @@ export function applyEvidence(args: {
   now: number;
 }): ApplyEvidenceResult {
   const { courseId, course, reviewLog, ev, now } = args;
-  if (courseId === FR_COURSE_ID) {
-    return applyFrench(course, reviewLog, ev, now);
+  if (hasCapability(courseId, "fsrs")) {
+    return applyScheduled(courseId, course, reviewLog, ev, now);
   }
   return {
     course: applyLegacy(course, ev, now),
@@ -215,7 +221,7 @@ export function applyEvidence(args: {
   };
 }
 
-export type DueFrenchItem = {
+export type DueItem = {
   /** Serialized CardKey. */
   key: string;
   /** Canonical surface (resolvable to a pack word). */
@@ -225,27 +231,28 @@ export type DueFrenchItem = {
 };
 
 /**
- * The French review queue: due cards ordered ascending by retrievability —
- * most-at-risk first (new/lapsed cards report 0 and lead). Only curated ids
- * are returned: fr:legacy: orphans stay safely in storage but cannot render
- * an exercise (exactly like pre-v2 sentence-keyed entries never surfaced).
- * Scoped to ONE skill (default "recognize", the pre-Phase-7 behavior):
- * listen cards live in the same map but review through their own surface,
- * so neither queue can render the other's modality. Deterministic: ties
- * break by due date, then key.
+ * The FSRS review queue of a course: due cards ordered ascending by
+ * retrievability — most-at-risk first (new/lapsed cards report 0 and
+ * lead). Only curated ids are returned: `<code>:legacy:` orphans stay
+ * safely in storage but cannot render an exercise (exactly like pre-v2
+ * sentence-keyed entries never surfaced). Scoped to ONE skill (default
+ * "recognize"): listen cards live in the same map but review through their
+ * own surface, so neither queue can render the other's modality.
+ * Deterministic: ties break by due date, then key.
  */
-export function dueFrenchReviewQueue(
+export function dueReviewQueue(
+  courseId: string,
   cards: Record<string, FsrsCardState> | undefined,
   now = Date.now(),
   skill: Skill = "recognize"
-): DueFrenchItem[] {
+): DueItem[] {
   if (!cards) return [];
-  const due: DueFrenchItem[] = [];
+  const due: DueItem[] = [];
   for (const [key, card] of Object.entries(cards)) {
     if (!fsrsScheduler.isDue(card, now)) continue;
     if (key.slice(key.lastIndexOf("|") + 1) !== skill) continue;
     const itemId = key.slice(0, key.lastIndexOf("|"));
-    const surface = FR_SURFACE_FOR_ID[itemId];
+    const surface = curatedSurface(courseId, itemId);
     if (surface === undefined) continue;
     due.push({
       key,
@@ -262,23 +269,35 @@ export function dueFrenchReviewQueue(
   );
 }
 
+/**
+ * Surface of a CURATED registry id only — `<code>:legacy:` ids never
+ * surface (they stay safely in storage). A course without a registry
+ * (legacy course moved onto FSRS by profile override) keys cards by raw
+ * surface, so the id IS the surface.
+ */
+function curatedSurface(courseId: string, itemId: string): string | undefined {
+  if (!hasIdRegistry(courseId)) return itemId;
+  return isCuratedItemId(courseId, itemId) ? surfaceFor(courseId, itemId) : undefined;
+}
+
 /** Card lookup by surface, for UI (due badges on the word list). */
-export function frCardForSurface(
+export function cardForSurface(
+  courseId: string,
   cards: Record<string, FsrsCardState> | undefined,
   surface: string
 ): FsrsCardState | undefined {
   if (!cards) return undefined;
-  return cards[serializeCardKey({ itemId: frItemIdFor(surface), skill: "recognize" })];
+  return cards[serializeCardKey({ itemId: itemIdFor(courseId, surface), skill: "recognize" })];
 }
 
 /**
- * Memory strength for the French word list (Phase 4): current FSRS
- * retrievability as a 0–100 percentage, through the app-owned adapter —
- * the UI never reimplements the forgetting formula. Words without a card
- * have no memory model yet → null (callers show an empty bar, never a
- * fabricated value). Fail-closed: an invalid card yields null, not a crash.
+ * Memory strength for the word list (Phase 4): current FSRS retrievability
+ * as a 0–100 percentage, through the app-owned adapter — the UI never
+ * reimplements the forgetting formula. Words without a card have no memory
+ * model yet → null (callers show an empty bar, never a fabricated value).
+ * Fail-closed: an invalid card yields null, not a crash.
  */
-export function frMemoryStrengthPercent(
+export function memoryStrengthPercent(
   card: FsrsCardState | undefined,
   now: number = Date.now()
 ): number | null {

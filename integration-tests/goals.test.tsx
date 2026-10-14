@@ -116,7 +116,7 @@ describe("goals screen (§90-97)", () => {
   });
 
   test("demonstrating every required objective of every domain completes the estimate (Phase 10 §11)", async () => {
-    const required = attainmentPolicy().domains.flatMap((d) => d.requiredObjectiveIds);
+    const required = attainmentPolicy("fr-en").domains.flatMap((d) => d.requiredObjectiveIds);
     const attempt = (checkpointId: string, ids: string[]) => ({
       checkpointId,
       checkpointVersion: 1,

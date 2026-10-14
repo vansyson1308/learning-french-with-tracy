@@ -32,7 +32,8 @@ import {
   type InteractionState,
   type LearnerNode,
 } from "../../src/lib/interaction/machine";
-import { normalizeSpokenFrench } from "../../src/lib/speech/grader";
+import { normalizeSpoken } from "../../src/lib/speech/grader";
+import { languageRules } from "../../src/lib/languages";
 
 const doc = JSON.parse(
   readFileSync("content/fr/interaction/scenarios.json", "utf8")
@@ -57,7 +58,7 @@ function settle(scenario: InteractionScenario, state: InteractionState): Interac
     if (current.finished) return current;
     const node = scenario.nodes[current.currentNodeId];
     if (node?.kind !== "partner") return current;
-    current = interactionReducer(scenario, current, { type: "advance" });
+    current = interactionReducer(scenario, current, { type: "advance" }, languageRules("fr"));
   }
   throw new Error(`${scenario.id}: partner chain never settled`);
 }
@@ -73,7 +74,7 @@ function speak(
       type: "learnerFinal",
       finalTranscript: utterance,
       alternatives: [],
-    })
+    }, languageRules("fr"))
   );
 }
 
@@ -86,7 +87,7 @@ describe("1. no intent shadowing (authored order is safe)", () => {
             const matched = matchIntent(node, {
               finalTranscript: variant,
               alternatives: [],
-            });
+            }, languageRules("fr"));
             expect(
               `${node.id}/${variant} → ${matched?.intent ?? "NO MATCH"}`
             ).toBe(`${node.id}/${variant} → ${expected.intent}`);
@@ -170,9 +171,9 @@ describe("4. support and silence never fail the learner (§29/§71)", () => {
     test(scenario.id, () => {
       let state = settle(scenario, startInteraction(scenario));
       // Lean on every support move and a technical failure before speaking.
-      state = interactionReducer(scenario, state, { type: "repeatRequested" });
-      state = interactionReducer(scenario, state, { type: "rephraseRequested" });
-      state = interactionReducer(scenario, state, { type: "technical" });
+      state = interactionReducer(scenario, state, { type: "repeatRequested" }, languageRules("fr"));
+      state = interactionReducer(scenario, state, { type: "rephraseRequested" }, languageRules("fr"));
+      state = interactionReducer(scenario, state, { type: "technical" }, languageRules("fr"));
       for (let turns = 0; turns < 10 && !state.finished; turns++) {
         const node = currentLearnerNode(scenario, state);
         state = speak(scenario, state, node!.expected[0].acceptedVariants[0]);
@@ -189,10 +190,10 @@ describe("5. scored-mode prompts never leak a full accepted variant", () => {
   for (const scenario of scenarios) {
     test(scenario.id, () => {
       for (const node of learnerNodes(scenario)) {
-        const prompt = normalizeSpokenFrench(node.prompt);
+        const prompt = normalizeSpoken(node.prompt, languageRules("fr"));
         for (const expected of node.expected) {
           for (const variant of expected.acceptedVariants) {
-            const normalized = normalizeSpokenFrench(variant);
+            const normalized = normalizeSpoken(variant, languageRules("fr"));
             expect(prompt.includes(normalized)).toBe(false);
           }
         }

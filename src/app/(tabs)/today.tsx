@@ -1,5 +1,5 @@
 /**
- * TODAY tab (Phase 3, French-first): one screen whose whole job is removing
+ * TODAY tab (Phase 3, for courses with the dailySession capability): one screen whose whole job is removing
  * decision fatigue — an honest preview of today's guided session and one
  * button to start it. The tab itself is hidden for courses without the
  * dailySession capability; direct navigation redirects home.
@@ -13,7 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
-import { courseCapabilities } from "@/lib/capabilities";
+import { hasCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
 import { listenWordClipIndex } from "@/lib/reception/content";
 import { speakExerciseIndex } from "@/lib/speech/content";
@@ -47,15 +47,16 @@ export default function TodayScreen() {
   const plan = useMemo(
     () =>
       composeTodayFromSnapshot({
+        courseId: activeCourseId,
         pack,
         completedLessons: course?.completedLessons ?? {},
         cards: course?.cards,
         preset,
         placementFloor,
-        listenClips: listenWordClipIndex(),
-        speakExercises: speakEnabled ? speakExerciseIndex() : undefined,
+        listenClips: listenWordClipIndex(activeCourseId),
+        speakExercises: speakEnabled ? speakExerciseIndex(activeCourseId) : undefined,
       }),
-    [pack, course, preset, placementFloor, speakEnabled]
+    [activeCourseId, pack, course, preset, placementFloor, speakEnabled]
   );
   // The toggle appears only when speaking would actually be in the plan.
   const speakAvailable = useMemo(
@@ -63,18 +64,19 @@ export default function TodayScreen() {
       speakEnabled
         ? plan.speakCount > 0
         : composeTodayFromSnapshot({
+            courseId: activeCourseId,
             pack,
             completedLessons: course?.completedLessons ?? {},
             cards: course?.cards,
             preset,
             placementFloor,
-            listenClips: listenWordClipIndex(),
-            speakExercises: speakExerciseIndex(),
+            listenClips: listenWordClipIndex(activeCourseId),
+            speakExercises: speakExerciseIndex(activeCourseId),
           }).speakCount > 0,
-    [plan.speakCount, speakEnabled, pack, course, preset, placementFloor]
+    [plan.speakCount, speakEnabled, activeCourseId, pack, course, preset, placementFloor]
   );
 
-  if (!courseCapabilities(activeCourseId).dailySession) {
+  if (!hasCapability(activeCourseId, "dailySession")) {
     return <Redirect href="/" />;
   }
 

@@ -15,16 +15,18 @@ import type { ClusterOutcome, PlacementRecommendation } from "@/lib/assessment/p
 import type { LessonRef } from "@/lib/content";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
-function titleFor(objectiveId: string): string {
-  return objectiveFor(objectiveId)?.title ?? objectiveId;
+function titleFor(courseId: string, objectiveId: string): string {
+  return objectiveFor(courseId, objectiveId)?.title ?? objectiveId;
 }
 
 export function PlacementResults({
+  courseId,
   recommendation,
   recommendedRef,
   onStartHere,
   onStartFromBeginning,
 }: {
+  courseId: string;
   recommendation: PlacementRecommendation;
   /** Resolved lesson ref for the recommended starting lesson. */
   recommendedRef: LessonRef | undefined;
@@ -73,7 +75,7 @@ export function PlacementResults({
             <Text style={styles.groupTitle}>You seem comfortable with</Text>
             {comfortable.map((o) => (
               <Text key={o.clusterId} style={styles.rowStrong}>
-                ✓ {titleFor(o.objectiveId)}
+                ✓ {titleFor(courseId, o.objectiveId)}
               </Text>
             ))}
           </View>
@@ -84,7 +86,7 @@ export function PlacementResults({
             <Text style={styles.groupTitle}>Good things to build next</Text>
             {gaps.map((o) => (
               <Text key={o.clusterId} style={styles.rowGap}>
-                • {titleFor(o.objectiveId)}
+                • {titleFor(courseId, o.objectiveId)}
               </Text>
             ))}
           </View>
@@ -95,7 +97,7 @@ export function PlacementResults({
             <Text style={styles.groupTitle}>Not estimated — audio unavailable</Text>
             {notEstimated.map((o) => (
               <Text key={o.clusterId} style={styles.rowGap}>
-                — {titleFor(o.objectiveId)}
+                — {titleFor(courseId, o.objectiveId)}
               </Text>
             ))}
             <Text style={styles.note}>

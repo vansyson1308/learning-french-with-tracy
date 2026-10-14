@@ -237,7 +237,7 @@ describe("validateLexiconData mutation tests — every rule fires", () => {
   test("frozen map drifting from the runtime map is an error", () => {
     const map = derivedSurfaceMap(fixtureLexicon());
     const runtime = { ...map, "le chat": "fr:w:different" };
-    expect(errorsFor({ runtimeMap: runtime }).join("\n")).toContain("ids-fr.ts");
+    expect(errorsFor({ runtimeMap: runtime }).join("\n")).toContain("committed registry");
   });
 
   test("noun without gender fails", () => {

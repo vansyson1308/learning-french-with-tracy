@@ -7,7 +7,7 @@
 import { describe, expect, test } from "bun:test";
 
 import {
-  CHECKPOINT_ORDER,
+  checkpointOrder,
   checkpointFor,
   placementContent,
 } from "../assessment/content";
@@ -132,14 +132,14 @@ describe("shuffleScoredOptions", () => {
 describe("checkpoint administrations are not exploitable by position (§19)", () => {
   const ATTEMPTS = 12;
 
-  for (const id of CHECKPOINT_ORDER) {
-    const checkpoint = checkpointFor(id)!;
+  for (const id of checkpointOrder("fr-en")) {
+    const checkpoint = checkpointFor("fr-en", id)!;
     const mcqCount = checkpoint.items.filter((i) => isMcq(i.exercise)).length;
     if (mcqCount < 4) continue;
 
     test(`${id}: no rendered position dominates across ${ATTEMPTS} administrations`, () => {
       const { byPosition, byItem, total } = correctPositions(
-        (attempt) => buildCheckpointSessionDefinition(checkpoint, attempt),
+        (attempt) => buildCheckpointSessionDefinition("fr-en", checkpoint, attempt),
         ATTEMPTS
       );
       expect(total).toBeGreaterThanOrEqual(mcqCount * (checkpoint.forms ? ATTEMPTS / 2 : ATTEMPTS));
@@ -163,7 +163,7 @@ describe("checkpoint administrations are not exploitable by position (§19)", ()
   }
 
   test("the authored index-0 pattern is gone from Section 1 on the very first attempt", () => {
-    const first = buildCheckpointSessionDefinition(checkpointFor("fr.checkpoint.section-1")!, 0);
+    const first = buildCheckpointSessionDefinition("fr-en", checkpointFor("fr-en", "fr.checkpoint.section-1")!, 0);
     const positions = first.steps
       .map((s) => (s.type === "exercise" && isMcq(s.exercise) ? s.exercise.correct : null))
       .filter((p): p is number => p !== null);
@@ -172,15 +172,15 @@ describe("checkpoint administrations are not exploitable by position (§19)", ()
   });
 
   test("one administration is stable: the same attempt count renders the same order", () => {
-    const cp = checkpointFor("fr.checkpoint.section-3")!;
-    expect(buildCheckpointSessionDefinition(cp, 2)).toEqual(buildCheckpointSessionDefinition(cp, 2));
-    expect(buildCheckpointSessionDefinition(cp, 2)).not.toEqual(buildCheckpointSessionDefinition(cp, 3));
+    const cp = checkpointFor("fr-en", "fr.checkpoint.section-3")!;
+    expect(buildCheckpointSessionDefinition("fr-en", cp, 2)).toEqual(buildCheckpointSessionDefinition("fr-en", cp, 2));
+    expect(buildCheckpointSessionDefinition("fr-en", cp, 2)).not.toEqual(buildCheckpointSessionDefinition("fr-en", cp, 3));
   });
 
   test("shuffling never changes what the item asks or which answer is right", () => {
-    for (const id of CHECKPOINT_ORDER) {
-      const cp = checkpointFor(id)!;
-      const rendered = buildCheckpointSessionDefinition(cp, 5);
+    for (const id of checkpointOrder("fr-en")) {
+      const cp = checkpointFor("fr-en", id)!;
+      const rendered = buildCheckpointSessionDefinition("fr-en", cp, 5);
       for (const step of rendered.steps) {
         if (step.type !== "exercise") continue;
         const source = cp.items.find((i) => i.id === step.stepId)!.exercise;
@@ -204,16 +204,16 @@ describe("checkpoint administrations are not exploitable by position (§19)", ()
 
 describe("placement administrations (§17)", () => {
   test("each run seed fixes the order; runs differ; no position dominates", () => {
-    const stages = placementContent().stages.filter(
+    const stages = placementContent("fr-en").stages.filter(
       (s) => s.clusters.flatMap((c) => c.items).filter((i) => isMcq(i.exercise)).length >= 4
     );
     expect(stages.length).toBeGreaterThanOrEqual(2);
     for (const stage of stages) {
-      expect(buildPlacementStageSessionDefinition(stage, "runA")).toEqual(
-        buildPlacementStageSessionDefinition(stage, "runA")
+      expect(buildPlacementStageSessionDefinition("fr-en", stage, "runA")).toEqual(
+        buildPlacementStageSessionDefinition("fr-en", stage, "runA")
       );
       const { byPosition, total } = correctPositions(
-        (n) => buildPlacementStageSessionDefinition(stage, `run${n}`),
+        (n) => buildPlacementStageSessionDefinition("fr-en", stage, `run${n}`),
         12
       );
       for (const count of byPosition.values()) expect(count / total).toBeLessThan(0.5);
@@ -222,9 +222,9 @@ describe("placement administrations (§17)", () => {
   });
 
   test("the builder stays pure: an empty seed is deterministic too", () => {
-    const stage = placementContent().stages[0];
-    expect(buildPlacementStageSessionDefinition(stage)).toEqual(
-      buildPlacementStageSessionDefinition(stage)
+    const stage = placementContent("fr-en").stages[0];
+    expect(buildPlacementStageSessionDefinition("fr-en", stage)).toEqual(
+      buildPlacementStageSessionDefinition("fr-en", stage)
     );
   });
 

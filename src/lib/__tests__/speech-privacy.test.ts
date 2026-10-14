@@ -17,6 +17,7 @@ import type { ReviewEvidence } from "../learning/evidence";
 import { gradeSpokenAttempt } from "../speech/grader";
 import { useProgress } from "../store";
 import type { SpeakProductionExercise } from "../types";
+import { languageRules } from "../languages";
 
 /** Nobody legitimately stores this string; if it shows up, speech leaked. */
 const SENTINEL = "je m'appelle sentinelle privée";
@@ -86,10 +87,10 @@ describe("speech privacy boundary (§8/§27)", () => {
     // test below is only meaningful because of this sensitivity check.
     const answer = spokenAnswer();
     expect(isSpokenAnswer(answer)).toBe(true);
-    expect(checkAnswer(exercise, answer)).toBe(true);
+    expect(checkAnswer(exercise, answer, "fr-en")).toBe(true);
     const grade = gradeSpokenAttempt(
       { finalTranscript: answer.finalTranscript, alternatives: answer.alternatives },
-      { acceptedVariants: exercise.acceptedVariants }
+      { acceptedVariants: exercise.acceptedVariants }, languageRules("fr")
     );
     expect(grade.correct).toBe(true);
     expect(grade.heard).toBe(SENTINEL);

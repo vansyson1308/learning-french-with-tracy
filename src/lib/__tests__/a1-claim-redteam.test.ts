@@ -12,7 +12,7 @@ import { getPack } from "../content";
 import { checkAnswer } from "../grading";
 import { scoreObjectives } from "../assessment/checkpoint";
 import {
-  CHECKPOINT_ORDER,
+  checkpointOrder,
   attainmentPolicy,
   checkpointFor,
   courseClaimableAt,
@@ -25,10 +25,10 @@ import { buildCheckpointSessionDefinition } from "../session/sources";
 
 const pack = getPack("fr-en");
 const objectiveLessons = objectiveLessonMap(pack);
-const policy = attainmentPolicy();
+const policy = attainmentPolicy("fr-en");
 const required = policy.domains.flatMap((d) => d.requiredObjectiveIds);
 const objectiveIds = Object.keys(objectiveLessons).concat(required);
-const capstone = checkpointFor("fr.checkpoint.a1-capstone")!;
+const capstone = checkpointFor("fr-en", "fr.checkpoint.a1-capstone")!;
 const capstoneObjectives = [...new Set(capstone.items.flatMap((i) => i.objectiveTargets))];
 
 type Verdict = CheckpointObjectiveResult["result"];
@@ -71,7 +71,7 @@ function estimateOf(
   return deriveA1Estimate({
     policy,
     states,
-    courseClaimable: courseClaimableAt("A1"),
+    courseClaimable: courseClaimableAt("fr-en", "A1"),
     speechAvailable: extra.speechAvailable,
   });
 }
@@ -192,18 +192,18 @@ describe("personas that must never receive A1 (§23)", () => {
 
 describe("MCQ position guessing against the shuffled checkpoints (§19, §76)", () => {
   const isMcq = (type: string) => OPTION_ORDER_SCORED_TYPES.has(type as never);
-  const mcqCheckpoints = CHECKPOINT_ORDER.map((id) => checkpointFor(id)!).filter(
+  const mcqCheckpoints = checkpointOrder("fr-en").map((id) => checkpointFor("fr-en", id)!).filter(
     (cp) => cp.items.filter((i) => isMcq(i.exercise.type)).length >= 8
   );
 
   function guess(cp: (typeof mcqCheckpoints)[number], attemptCount: number, position: number) {
-    const definition = buildCheckpointSessionDefinition(cp, attemptCount);
+    const definition = buildCheckpointSessionDefinition("fr-en", cp, attemptCount);
     const firstResults: Record<string, boolean> = {};
     let scored = 0;
     let correct = 0;
     for (const step of definition.steps) {
       if (step.type !== "exercise" || !isMcq(step.exercise.type)) continue;
-      const ok = checkAnswer(step.exercise, position as never);
+      const ok = checkAnswer(step.exercise, position as never, "fr-en");
       firstResults[step.stepId] = ok;
       scored += 1;
       if (ok) correct += 1;

@@ -11,7 +11,7 @@ import { Redirect, useLocalSearchParams } from "expo-router";
 import React, { useMemo } from "react";
 
 import { SessionScreen } from "@/components/session/session-screen";
-import { courseCapabilities, lessonRouteCapability } from "@/lib/capabilities";
+import { hasCapability, lessonRouteCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
 import { dayString } from "@/lib/dates";
 import {
@@ -28,7 +28,7 @@ import { useProgress } from "@/lib/store";
 
 /**
  * Course guard (P0): the magic ids srs-listening / srs-speaking /
- * writing-practice / conversation are French surfaces; a deep link while
+ * writing-practice / conversation need their capabilities; a deep link while
  * another course is active goes home instead of grading evidence into a
  * course that has no such content.
  */
@@ -36,7 +36,7 @@ export default function LessonScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const needs = lessonRouteCapability(id ?? "");
-  if (needs && !courseCapabilities(activeCourseId)[needs]) return <Redirect href="/" />;
+  if (needs && !hasCapability(activeCourseId, needs)) return <Redirect href="/" />;
   return <LessonScreenBody id={id ?? ""} activeCourseId={activeCourseId} />;
 }
 
@@ -69,22 +69,24 @@ function LessonScreenBody({ id, activeCourseId }: { id: string; activeCourseId: 
         pool: allWords(),
       });
     }
-    // Listening review (P7 §79-81): French-only surface over due listen
-    // cards; the practice tab only offers it for the French course.
+    // Listening review (P7 §79-81): capability-gated surface over due listen
+    // cards; the practice tab only offers it when the course has clips.
     if (id === "srs-listening") {
       return buildListeningReviewSessionDefinition({
+        courseId: state.activeCourseId,
         course: courseProgress,
         pool: allWords(),
       });
     }
-    // Speaking review (P8 §16): French-only surface over due speak cards.
+    // Speaking review (P8 §16): capability-gated surface over due speak cards.
     if (id === "srs-speaking") {
-      return buildSpeakingReviewSessionDefinition({ course: courseProgress });
+      return buildSpeakingReviewSessionDefinition({ courseId: state.activeCourseId, course: courseProgress });
     }
     // Writing practice (P9 §62): a short rotating set of taught writing
     // steps in learning mode — rubric feedback, model answers, no cards.
     if (id === "writing-practice") {
       return buildWritingPracticeSessionDefinition({
+        courseId: state.activeCourseId,
         pack,
         seedKey: dayString(new Date()),
       });
@@ -93,6 +95,7 @@ function LessonScreenBody({ id, activeCourseId }: { id: string; activeCourseId: 
     // rotating daily; reserved assessment scenarios can never appear.
     if (id === "conversation") {
       return buildConversationPracticeSessionDefinition({
+        courseId: state.activeCourseId,
         seedKey: dayString(new Date()),
       });
     }

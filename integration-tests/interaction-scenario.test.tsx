@@ -106,9 +106,9 @@ const cafe: InteractionScenario = {
 };
 
 jest.mock("@/lib/interaction/content", () => ({
-  interactionScenarioFor: (id: string) =>
+  interactionScenarioFor: (_courseId: string, id: string) =>
     id === "fr.scenario.test_cafe" ? cafe : null,
-  interactionPracticeScenarios: () => [cafe],
+  interactionPracticeScenarios: (_courseId: string) => [cafe],
 }));
 
 const exercise: InteractionScenarioExercise = {
@@ -128,7 +128,7 @@ function Harness({
   onResult?: (a: InteractionAnswer) => void;
   onSkip?: () => void;
 }) {
-  const session = useSpeechSession(true);
+  const session = useSpeechSession(true, "fr-FR");
   const [answer, setAnswer] = React.useState<Answer>(null);
   const speech: SpeechExerciseContext = { scored, session, onSpeechSkip: onSkip };
   const handleAnswer = (value: InteractionAnswer) => {
@@ -137,6 +137,8 @@ function Harness({
   };
   return (
     <InteractionScenarioStep
+      courseId="fr-en"
+      targetLanguage="French"
       exercise={exercise}
       answer={answer}
       status={status}

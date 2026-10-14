@@ -12,7 +12,7 @@
 import { describe, expect, test } from "bun:test";
 
 import { parseCardKey, serializeCardKey } from "../learning/card-key";
-import { applyEvidence, dueFrenchReviewQueue } from "../learning/engine";
+import { applyEvidence, dueReviewQueue } from "../learning/engine";
 import type { ReviewEvidence } from "../learning/evidence";
 import { fsrsScheduler } from "../learning/fsrs-adapter";
 import { composeTodaySession, todayListenBudget } from "../learning/today";
@@ -94,12 +94,12 @@ describe("due queue is skill-scoped (§79, §134)", () => {
   };
 
   test("default (recognize) never returns listen cards", () => {
-    const keys = dueFrenchReviewQueue(cards, NOW).map((d) => d.key);
+    const keys = dueReviewQueue("fr-en", cards, NOW).map((d) => d.key);
     expect(keys).toEqual(["fr:w:chat|recognize"]);
   });
 
   test("listen scope returns only listen cards", () => {
-    const keys = dueFrenchReviewQueue(cards, NOW, "listen").map((d) => d.key).sort();
+    const keys = dueReviewQueue("fr-en", cards, NOW, "listen").map((d) => d.key).sort();
     expect(keys).toEqual(["fr:w:gare|listen", "fr:w:train|listen"]);
   });
 });
@@ -211,8 +211,7 @@ describe("listening review surface (§79-81)", () => {
   };
 
   test("builds LC steps only for asset-backed word clips; card identity explicit", () => {
-    const def = buildListeningReviewSessionDefinition({
-      course: courseWith(listenDue),
+    const def = buildListeningReviewSessionDefinition({ courseId: "fr-en", course: courseWith(listenDue),
       pool: packWords(),
       now: NOW,
     });
@@ -234,13 +233,11 @@ describe("listening review surface (§79-81)", () => {
   });
 
   test("deterministic for equal state", () => {
-    const a = buildListeningReviewSessionDefinition({
-      course: courseWith(listenDue),
+    const a = buildListeningReviewSessionDefinition({ courseId: "fr-en", course: courseWith(listenDue),
       pool: packWords(),
       now: NOW,
     });
-    const b = buildListeningReviewSessionDefinition({
-      course: courseWith(listenDue),
+    const b = buildListeningReviewSessionDefinition({ courseId: "fr-en", course: courseWith(listenDue),
       pool: packWords(),
       now: NOW,
     });
@@ -248,8 +245,8 @@ describe("listening review surface (§79-81)", () => {
   });
 
   test("due count matches the sessionable subset", () => {
-    expect(dueListeningReviewCount(listenDue, NOW)).toBe(2);
-    expect(dueListeningReviewCount({}, NOW)).toBe(0);
+    expect(dueListeningReviewCount("fr-en", listenDue, NOW)).toBe(2);
+    expect(dueListeningReviewCount("fr-en", {}, NOW)).toBe(0);
   });
 });
 
@@ -276,7 +273,7 @@ describe("TODAY bounded listening share (§134-137)", () => {
   });
 
   test("listen steps are capped and carry listen-skill assessments", () => {
-    const plan = composeTodaySession({
+    const plan = composeTodaySession({ courseId: "fr-en",
       pack: frPack,
       completedLessons: {},
       cards: cardsWith(
@@ -306,7 +303,7 @@ describe("TODAY bounded listening share (§134-137)", () => {
 
   test("no listenClips input → exactly the pre-Phase-7 plan shape", () => {
     const cards = cardsWith(["fr:w:train"], ["fr:w:chat"]);
-    const plan = composeTodaySession({
+    const plan = composeTodaySession({ courseId: "fr-en",
       pack: frPack,
       completedLessons: {},
       cards,
@@ -323,7 +320,7 @@ describe("TODAY bounded listening share (§134-137)", () => {
   });
 
   test("listen-due cards without a bundled clip never enter the plan", () => {
-    const plan = composeTodaySession({
+    const plan = composeTodaySession({ courseId: "fr-en",
       pack: frPack,
       completedLessons: {},
       cards: cardsWith(["fr:w:chat"], []), // chat has no word clip

@@ -12,7 +12,7 @@ import {
   contextualStringsFor,
   gateFor,
   gateMessage,
-  NETWORK_DISCLOSURE_TEXT,
+  networkDisclosureText,
   networkDisclosureRequired,
   outcomeNotice,
   recordingBudget,
@@ -176,12 +176,13 @@ describe("outcome wording (§14 — honest, never scores)", () => {
 describe("capability gate (§24/§25)", () => {
   const ready: SpeechCapability = {
     platform: "ios",
+      locale: "fr-FR",
     available: true,
     microphonePermission: "granted",
     speechPermission: "granted",
-    frenchRecognitionAvailable: true,
+    targetRecognitionAvailable: true,
     onDeviceRecognitionAvailable: true,
-    frenchOnDeviceModelInstalled: true,
+    targetOnDeviceModelInstalled: true,
     networkBackedRecognitionPossible: false,
     recordingPersistenceAvailable: true,
     provider: "expo-speech-recognition",
@@ -197,7 +198,7 @@ describe("capability gate (§24/§25)", () => {
   test("network disclosure (P9 §7): required exactly when the system service may use the network", () => {
     const networkPossible: SpeechCapability = {
       ...ready,
-      frenchOnDeviceModelInstalled: false,
+      targetOnDeviceModelInstalled: false,
       networkBackedRecognitionPossible: true,
     };
     // Required: capable device, unproven offline model, not yet acknowledged.
@@ -210,7 +211,7 @@ describe("capability gate (§24/§25)", () => {
     expect(networkDisclosureRequired(unavailableCapability("android"), false)).toBe(false);
     expect(
       networkDisclosureRequired(
-        { ...networkPossible, frenchRecognitionAvailable: false },
+        { ...networkPossible, targetRecognitionAvailable: false },
         false
       )
     ).toBe(false);
@@ -219,12 +220,12 @@ describe("capability gate (§24/§25)", () => {
   });
 
   test("the disclosure text states the three §7 facts and offers the skip", () => {
-    expect(NETWORK_DISCLOSURE_TEXT).toContain("system service");
-    expect(NETWORK_DISCLOSURE_TEXT).toContain("internet");
-    expect(NETWORK_DISCLOSURE_TEXT).toContain("never uploads");
-    expect(NETWORK_DISCLOSURE_TEXT).toContain("skip");
+    expect(networkDisclosureText("French")).toContain("system service");
+    expect(networkDisclosureText("French")).toContain("internet");
+    expect(networkDisclosureText("French")).toContain("never uploads");
+    expect(networkDisclosureText("French")).toContain("skip");
     // Never a percentage, never scare copy about AI.
-    expect(NETWORK_DISCLOSURE_TEXT).not.toMatch(/%|AI/);
+    expect(networkDisclosureText("French")).not.toMatch(/%|AI/);
   });
 
   test("null capability is still probing", () => {
@@ -246,7 +247,7 @@ describe("capability gate (§24/§25)", () => {
         learning
       );
       expect(gate).toEqual({ kind: "blocked", reason: "permission" });
-      expect(gateMessage(gate)).toContain("Settings");
+      expect(gateMessage(gate, "French")).toContain("Settings");
     }
   });
 
@@ -255,12 +256,13 @@ describe("capability gate (§24/§25)", () => {
       kind: "blocked",
       reason: "unavailable",
     });
-    const noFrench = { ...ready, frenchRecognitionAvailable: false };
-    expect(gateFor(noFrench, learning)).toEqual({ kind: "blocked", reason: "noFrench" });
+    const noFrench = { ...ready, targetRecognitionAvailable: false };
+    expect(gateFor(noFrench, learning)).toEqual({ kind: "blocked", reason: "noTargetLanguage" });
   });
 
   test("web can practice but is NEVER scored (§25)", () => {
-    const web: SpeechCapability = { ...ready, platform: "web", scoredEligible: false };
+    const web: SpeechCapability = { ...ready, platform: "web",
+      locale: "fr-FR", scoredEligible: false };
     expect(gateFor(web, learning)).toEqual({ kind: "ready" });
     expect(gateFor(web, scored)).toEqual({ kind: "blocked", reason: "unavailable" });
   });

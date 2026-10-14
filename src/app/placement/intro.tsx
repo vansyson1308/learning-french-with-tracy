@@ -13,7 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { CloseButton } from "@/components/close-button";
 import { DuoButton } from "@/components/duo-button";
 import { placementContent } from "@/lib/assessment/content";
-import { courseCapabilities } from "@/lib/capabilities";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { exitScreen } from "@/lib/navigation";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
@@ -25,14 +25,15 @@ import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
  */
 export default function PlacementIntroScreen() {
   const activeCourseId = useProgress((s) => s.activeCourseId);
-  if (!courseCapabilities(activeCourseId).placement) return <Redirect href="/" />;
-  return <PlacementIntroScreenBody />;
+  if (!hasCapability(activeCourseId, "placement")) return <Redirect href="/" />;
+  return <PlacementIntroScreenBody courseId={activeCourseId} />;
 }
 
-function PlacementIntroScreenBody() {
+function PlacementIntroScreenBody({ courseId }: { courseId: string }) {
   const styles = useStyles();
   const colors = useThemeColors();
-  const plan = placementContent();
+  const plan = placementContent(courseId);
+  const targetLanguage = courseProfile(courseId).targetLanguage;
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -42,7 +43,7 @@ function PlacementIntroScreenBody() {
       <View style={styles.body}>
         <Ionicons name="compass" size={56} color={colors.skyDark} />
         <Text style={styles.title}>Find your starting point</Text>
-        <Text style={styles.question}>Have you studied French before?</Text>
+        <Text style={styles.question}>Have you studied {targetLanguage} before?</Text>
         <View style={styles.card}>
           <Text style={styles.cardText}>
             If you have, a short check (at most {plan.maxItems} questions, a

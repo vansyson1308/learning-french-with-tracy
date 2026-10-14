@@ -432,6 +432,31 @@ export const CatalogSchema = z.strictObject({
   ),
 });
 
+/**
+ * content/courses/<id>.profile.json (P1b, optional): explicit capability
+ * overrides layered on what the compiler derives from the course's
+ * artifacts — e.g. `{ "enabled": { "fsrs": true } }` to move a legacy
+ * course onto FSRS before it has a rich lexicon.
+ */
+export const CourseProfileOverrideSchema = z.strictObject({
+  enabled: z
+    .strictObject({
+      fsrs: z.boolean().optional(),
+      dailySession: z.boolean().optional(),
+      lexicon: z.boolean().optional(),
+      concepts: z.boolean().optional(),
+      placement: z.boolean().optional(),
+      checkpoints: z.boolean().optional(),
+      goals: z.boolean().optional(),
+      listening: z.boolean().optional(),
+      reading: z.boolean().optional(),
+      speaking: z.boolean().optional(),
+      writing: z.boolean().optional(),
+      conversation: z.boolean().optional(),
+    })
+    .optional(),
+});
+
 /** content/fr/lexemes.json: surface → stable lexeme id (fr:w:<slug>). */
 export const FrLexemeMapSchema = z.record(
   z.string().min(1),

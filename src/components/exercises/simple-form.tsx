@@ -17,12 +17,16 @@ import { makeThemedStyles, radius, useResolvedScheme, useThemeColors } from "@/l
 import type { SimpleFormExercise } from "@/lib/types";
 
 export function SimpleForm({
+  courseId,
+  targetLanguage,
   exercise,
   answer,
   status,
   scored,
   onAnswer,
 }: {
+  courseId: string;
+  targetLanguage: string;
   exercise: SimpleFormExercise;
   answer: Answer;
   status: Status;
@@ -35,11 +39,11 @@ export function SimpleForm({
   const values =
     isWrittenAnswer(answer) && answer.kind === "form" ? answer.values : {};
   const answered = status !== "none";
-  const evaluation = answered ? evaluateWrittenAnswer(exercise, answer) : null;
+  const evaluation = answered ? evaluateWrittenAnswer(exercise, answer, courseId) : null;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Fill in the form in French</Text>
+      <Text style={styles.title}>Fill in the form in {targetLanguage}</Text>
       <Text style={styles.instruction}>{exercise.instruction}</Text>
 
       <View style={styles.formBox}>

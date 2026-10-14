@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Flag } from "@/components/flag";
 import { useCourseContent } from "@/lib/content";
+import { hasCapability } from "@/lib/course-profile";
 import {
   activeToday,
   currentLessonIndex,
@@ -43,10 +44,11 @@ export default function LearnScreen() {
   const todayXp = dailyXpToday(progress);
   const goalPct = Math.min(100, (todayXp / dailyGoal) * 100);
   const lessonIds = allLessons.map((l) => l.lesson.id);
-  // The placement floor is a French-course concept (§81-89); other courses
-  // always see floor 0 — their behavior is untouched.
-  const placementFloor =
-    activeCourseId === "fr-en" ? progress.assessment.placementFloor : 0;
+  // The placement floor belongs to courses with a placement diagnostic
+  // (§81-89); other courses always see floor 0 — their behavior is untouched.
+  const placementFloor = hasCapability(activeCourseId, "placement")
+    ? progress.assessment.placementFloor
+    : 0;
   const currentIndex = currentLessonIndex(
     courseProgress.completedLessons,
     lessonIds,
@@ -54,10 +56,10 @@ export default function LearnScreen() {
   );
   const streak = currentStreak(progress);
   const streakLit = activeToday(progress);
-  // Offer "Find your starting point" to fresh French learners (§69-70):
-  // no placement yet, nothing completed yet.
+  // Offer "Find your starting point" to fresh learners of a course with a
+  // placement diagnostic (§69-70): no placement yet, nothing completed yet.
   const showPlacementEntry =
-    activeCourseId === "fr-en" &&
+    hasCapability(activeCourseId, "placement") &&
     !progress.assessment.placement &&
     Object.keys(courseProgress.completedLessons).length === 0;
 
@@ -114,12 +116,12 @@ export default function LearnScreen() {
             style={styles.placementCard}
             onPress={() => router.push("/placement/intro")}
             accessibilityRole="button"
-            accessibilityLabel="Studied French before? Find your starting point"
+            accessibilityLabel={`Studied ${pack.targetLanguage} before? Find your starting point`}
             testID="placement-entry-card"
           >
             <Ionicons name="compass" size={24} color={colors.skyDark} />
             <View style={{ flex: 1, gap: 2 }}>
-              <Text style={styles.placementTitle}>Studied French before?</Text>
+              <Text style={styles.placementTitle}>Studied {pack.targetLanguage} before?</Text>
               <Text style={styles.placementSubtitle}>
                 Take a short check to find your starting point.
               </Text>
@@ -184,8 +186,9 @@ export default function LearnScreen() {
                 </View>
               );
             })}
-            {activeCourseId === "fr-en" ? (
+            {hasCapability(activeCourseId, "checkpoints") ? (
               <CheckpointCard
+                courseId={activeCourseId}
                 sectionId={section.id}
                 sectionComplete={section.units
                   .flatMap((u) => u.lessons)

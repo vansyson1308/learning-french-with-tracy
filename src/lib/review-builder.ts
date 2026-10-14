@@ -45,11 +45,11 @@ export function buildSrsExercises(
   dueTargets: string[],
   pool: Word[],
   seed: number,
-  limit = REVIEW_SESSION_SIZE,
-  courseId = "fr-en"
+  limit: number | undefined,
+  courseId: string
 ): Exercise[] {
   const rng = seededRng(seed);
-  return dueTargets.slice(0, limit).flatMap((target) => {
+  return dueTargets.slice(0, limit ?? REVIEW_SESSION_SIZE).flatMap((target) => {
     const word = pool.find((w) => w.target === target);
     if (!word) return [];
 
@@ -76,7 +76,7 @@ export function buildSrsExercises(
         id: `srs-${target}`,
         mode: "targetToNative" as const,
         // The prompt is what the Select renders as the word being asked —
-        // it must be the French surface, not a duplicate of the title.
+        // it must be the target-language surface, not a duplicate of the title.
         prompt: word.target,
         audioTarget: word.target,
         options,

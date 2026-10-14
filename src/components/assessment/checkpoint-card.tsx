@@ -14,17 +14,19 @@ import type { CheckpointAttempt } from "@/lib/assessment/types";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 export function CheckpointCard({
+  courseId,
   sectionId,
   sectionComplete,
   attempts,
 }: {
+  courseId: string;
   sectionId: string;
   sectionComplete: boolean;
   attempts: CheckpointAttempt[];
 }) {
   const styles = useStyles();
   const colors = useThemeColors();
-  const checkpoint = checkpointForSection(sectionId);
+  const checkpoint = checkpointForSection(courseId, sectionId);
   if (!checkpoint) return null;
 
   const latest = [...attempts]

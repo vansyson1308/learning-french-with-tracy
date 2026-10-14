@@ -7,15 +7,14 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { SpeakerButton } from "@/components/speaker-button";
-import { courseCapabilities } from "@/lib/capabilities";
 import { useCourseContent } from "@/lib/content";
+import { courseProfile } from "@/lib/course-profile";
 import {
-  dueFrenchReviewQueue,
-  frCardForSurface,
-  frMemoryStrengthPercent,
+  cardForSurface,
+  dueReviewQueue,
   itemIdForCourse,
+  memoryStrengthPercent,
 } from "@/lib/learning/engine";
-import { FR_COURSE_ID } from "@/lib/learning/ids-fr";
 import { dueInDaysAt } from "@/lib/srs";
 import { dueListeningReviewCount, dueSpeakingReviewCounts } from "@/lib/session/sources";
 import { dailyQuests, dueSrsWords, useProgress, type Quest } from "@/lib/store";
@@ -28,37 +27,41 @@ export default function PracticeScreen() {
   const { activeCourseId } = progress;
   const courseProgress = progress.course();
   const { pack, allWords } = useCourseContent(activeCourseId);
-  const isFrench = activeCourseId === FR_COURSE_ID;
-  // French reviews come from the FSRS card map; other courses stay on the
-  // legacy srs map — one count, two sources.
-  const dueCount = isFrench
-    ? dueFrenchReviewQueue(courseProgress.cards).length
+  const profile = courseProfile(activeCourseId);
+  const caps = profile.capabilities;
+  const targetLanguage = profile.targetLanguage;
+  // FSRS courses count reviews from the card map; legacy courses stay on
+  // the srs map — one count, two sources.
+  const dueCount = caps.fsrs
+    ? dueReviewQueue(activeCourseId, courseProgress.cards).length
     : dueSrsWords(courseProgress.srs ?? {}).length;
   // Listening review (P7 §79-81): due listen cards whose word clip has a
-  // bundled asset. French-only; zero for every other course.
-  const dueListenCount = isFrench ? dueListeningReviewCount(courseProgress.cards) : 0;
+  // bundled asset. Capability-gated; zero for every other course.
+  const dueListenCount = caps.listening
+    ? dueListeningReviewCount(activeCourseId, courseProgress.cards)
+    : 0;
   // Speaking review (P8 §16): sessionable vs total kept apart — a due speak
   // card with no authored prompt stays VISIBLY due, never silently hidden.
-  const dueSpeak = isFrench
-    ? dueSpeakingReviewCounts(courseProgress.cards)
+  const dueSpeak = caps.speaking
+    ? dueSpeakingReviewCounts(activeCourseId, courseProgress.cards)
     : { sessionable: 0, total: 0 };
   const quests = dailyQuests(progress);
 
-  const hasLexicon = courseCapabilities(activeCourseId).lexicon;
+  const hasLexicon = caps.lexicon;
 
   const uniqueWords = [
     ...new Map(allWords().map((w) => [w.target, w] as const)).values(),
   ];
   const words = uniqueWords
     .map((w) => {
-      const card = isFrench ? frCardForSurface(courseProgress.cards, w.target) : undefined;
+      const card = caps.fsrs ? cardForSurface(activeCourseId, courseProgress.cards, w.target) : undefined;
       return {
         ...w,
         stat: courseProgress.wordStats[itemIdForCourse(activeCourseId, w.target)],
-        dueAt: isFrench ? card?.due : courseProgress.srs?.[w.target]?.dueAt,
-        // French strength = real FSRS retrievability (memory model);
-        // legacy courses keep their correctness-ratio semantics untouched.
-        memory: isFrench ? frMemoryStrengthPercent(card) : null,
+        dueAt: caps.fsrs ? card?.due : courseProgress.srs?.[w.target]?.dueAt,
+        // FSRS strength = real retrievability (memory model); legacy
+        // courses keep their correctness-ratio semantics untouched.
+        memory: caps.fsrs ? memoryStrengthPercent(card) : null,
       };
     })
     .filter((w) => w.stat);
@@ -104,7 +107,7 @@ export default function PracticeScreen() {
           />
         </View>
 
-        {isFrench ? (
+        {caps.listening ? (
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <Ionicons name="headset" size={24} color={colors.sky} />
@@ -124,7 +127,7 @@ export default function PracticeScreen() {
           </View>
         ) : null}
 
-        {isFrench ? (
+        {caps.speaking ? (
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <Ionicons name="mic" size={24} color={colors.indigo} />
@@ -146,14 +149,14 @@ export default function PracticeScreen() {
           </View>
         ) : null}
 
-        {isFrench ? (
+        {caps.writing ? (
           <View style={styles.card} testID="practice-writing-card">
             <View style={styles.cardHeader}>
               <Ionicons name="pencil" size={24} color={colors.greenDark} />
               <Text style={styles.cardTitle}>Writing practice</Text>
             </View>
             <Text style={styles.cardSubtitle}>
-              A few short writing tasks with honest feedback — what your French
+              A few short writing tasks with honest feedback — what your {targetLanguage}
               said, and what the task still needs. Nothing here is graded.
             </Text>
             <DuoButton
@@ -164,7 +167,7 @@ export default function PracticeScreen() {
           </View>
         ) : null}
 
-        {isFrench ? (
+        {caps.conversation ? (
           <View style={styles.card} testID="practice-conversation-card">
             <View style={styles.cardHeader}>
               <Ionicons name="chatbubbles" size={24} color={colors.sky} />
@@ -207,7 +210,7 @@ export default function PracticeScreen() {
               <Text style={styles.cardTitle}>Vocabulary</Text>
             </View>
             <Text style={styles.cardSubtitle}>
-              Browse every French word — meaning, gender, pronunciation and examples.
+              Browse every {targetLanguage} word — meaning, gender, pronunciation and examples.
             </Text>
             <DuoButton
               label="Open vocabulary"
@@ -222,7 +225,7 @@ export default function PracticeScreen() {
             <Ionicons name="book" size={24} color={colors.greenDark} />
             <Text style={styles.cardTitle}>Words ({words.length})</Text>
           </View>
-          {isFrench && words.length > 0 ? (
+          {caps.fsrs && words.length > 0 ? (
             <Text style={styles.cardSubtitle}>
               Bars show memory strength — how likely you are to recall each word right now.
             </Text>
@@ -237,7 +240,7 @@ export default function PracticeScreen() {
               .map((word) => {
                 const total = (word.stat?.correct ?? 0) + (word.stat?.wrong ?? 0);
                 const legacyStrength = total === 0 ? 0 : (word.stat!.correct / total) * 100;
-                const strength = isFrench ? (word.memory ?? 0) : legacyStrength;
+                const strength = caps.fsrs ? (word.memory ?? 0) : legacyStrength;
                 const due = word.dueAt !== undefined ? dueInDaysAt(word.dueAt) : null;
                 return (
                   <View key={word.target} style={styles.wordRow}>

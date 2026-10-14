@@ -1,7 +1,10 @@
 import type { Exercise, GuidedWritingExercise, SimpleFormExercise } from "./types";
 
+import { courseProfile } from "./course-profile";
+import { languageRulesForCourse } from "./languages";
+import { normalizeLenientLatin, normalizeStrictLatin } from "./languages/base";
 import { gradeSpokenAttempt } from "./speech/grader";
-import { knownFrenchVocabulary } from "./writing/content";
+import { knownVocabulary } from "./writing/content";
 import {
   evaluateGuidedWriting,
   evaluateSimpleForm,
@@ -92,72 +95,63 @@ export function isWrittenAnswer(answer: Answer): answer is WrittenAnswer {
 /** Full tri-state evaluation for a writing step (renderer + scored routing). */
 export function evaluateWrittenAnswer(
   exercise: GuidedWritingExercise | SimpleFormExercise,
-  answer: Answer
+  answer: Answer,
+  courseId: string
 ): WritingEvaluation | null {
   if (!isWrittenAnswer(answer)) return null;
+  const rules = languageRulesForCourse(courseId);
+  const targetLanguage = courseProfile(courseId).targetLanguage;
   if (exercise.type === "guidedWriting") {
     if (answer.kind !== "text") return null;
     return evaluateGuidedWriting({
+      rules,
+      targetLanguage,
       text: answer.text,
       rubric: exercise.rubric,
       promptText: [
         exercise.instruction,
         ...(exercise.cueFacts ?? []).flatMap((cue) => [cue.label, cue.value]),
       ].join(" "),
-      knownFrench: knownFrenchVocabulary(),
+      knownVocabulary: knownVocabulary(courseId),
       mode: exercise.writingMode,
     });
   }
   if (answer.kind !== "form") return null;
   return evaluateSimpleForm({
+    rules,
+    targetLanguage,
     values: answer.values,
     fields: exercise.fields,
     rubric: exercise.rubric,
   });
 }
 
+/**
+ * Generic lenient typed-answer form (the Latin defaults every plugin
+ * inherits; French-identical). Session grading goes through the course's
+ * language rules — this export stays for callers without a course.
+ */
 export function normalize(text: string) {
-  return (
-    text
-      // Smart/modifier apostrophes → ASCII. iOS smart punctuation types
-      // U+2019, while the packs use ASCII ' — without this, correct French
-      // answers like l’eau were marked wrong.
-      .replace(/[\u2018\u2019\u02BC]/g, "'")
-      // No-break and narrow spaces → plain space (French keyboards emit
-      // U+00A0/U+202F before punctuation).
-      .replace(/[\u00A0\u202F\u2009]/g, " ")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      // Ligatures NFD leaves intact: œufs ≡ oeufs.
-      .replace(/œ/g, "oe")
-      .replace(/æ/g, "ae")
-      // Punctuation stripped (now also guillemets, curly quotes, ellipsis).
-      .replace(/[.,!?¿¡;:"'、。！？«»“”…]/g, "")
-      .replace(/\s+/g, " ")
-      .trim()
-  );
+  return normalizeLenientLatin(text);
 }
 
-
 /**
- * STRICT French comparison for grammar production (conjugationCloze):
+ * STRICT comparison for grammar production (conjugationCloze, dictation):
  * apostrophe/space variants unified and case-insensitive, but accents and
  * exact inflection are preserved — "mange" ≠ "mangé" ≠ "manges" here.
  */
-export function strictFrenchEquals(a: string, b: string): boolean {
-  const fold = (t: string) =>
-    t
-      .replace(/[\u2018\u2019\u02BC]/g, "'")
-      .replace(/[\u00A0\u202F\u2009]/g, " ")
-      .normalize("NFC")
-      .toLowerCase()
-      .replace(/\s+/g, " ")
-      .trim();
+export function strictEquals(a: string, b: string, courseId?: string): boolean {
+  const fold = courseId === undefined ? normalizeStrictLatin : languageRulesForCourse(courseId).normalizeStrict;
   return fold(a) === fold(b);
 }
 
-export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
+/**
+ * Grade a submitted answer under the course's language rules. `courseId`
+ * "" (bare reducer tests) falls back to the Latin defaults, which are
+ * identical to the French rules for every typed-answer comparison.
+ */
+export function checkAnswer(exercise: Exercise, answer: Answer, courseId: string): boolean {
+  const rules = languageRulesForCourse(courseId);
   switch (exercise.type) {
     case "select":
     case "fillBlank":
@@ -166,13 +160,13 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
     case "wordBank": {
       if (!Array.isArray(answer)) return false;
       const attempt = answer.map((i) => exercise.tokens[i]).join(" ");
-      return normalize(attempt) === normalize(exercise.answer.join(" "));
+      return rules.normalizeLenient(attempt) === rules.normalizeLenient(exercise.answer.join(" "));
     }
     case "typeAnswer": {
       if (typeof answer !== "string") return false;
-      const attempt = normalize(answer);
+      const attempt = rules.normalizeLenient(answer);
       return [exercise.answer, ...exercise.alternatives].some(
-        (a) => normalize(a) === attempt
+        (a) => rules.normalizeLenient(a) === attempt
       );
     }
     case "conjugationCloze":
@@ -180,8 +174,8 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
       // Dictation shares the strict contract (P7 §63): orthographic
       // decoding is the construct, so accents and exact forms matter.
       if (typeof answer !== "string") return false;
-      return [exercise.answer, ...exercise.alternatives].some((a) =>
-        strictFrenchEquals(a, answer)
+      return [exercise.answer, ...exercise.alternatives].some(
+        (a) => rules.normalizeStrict(a) === rules.normalizeStrict(answer)
       );
     }
     case "listeningComprehension":
@@ -193,16 +187,20 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
     case "speakProduction":
       // Deterministic spoken grading (P8 §12) over the FINAL n-best only.
       if (!isSpokenAnswer(answer)) return false;
-      return gradeSpokenAttempt(answer, {
-        acceptedVariants: exercise.acceptedVariants,
-        requiredConcepts: exercise.requiredConcepts,
-      }).correct;
+      return gradeSpokenAttempt(
+        answer,
+        {
+          acceptedVariants: exercise.acceptedVariants,
+          requiredConcepts: exercise.requiredConcepts,
+        },
+        rules
+      ).correct;
     case "guidedWriting":
     case "simpleForm":
       // Tri-state collapses honestly here: only meets_rubric is "correct";
       // insufficiently_scorable is routed to no-evidence by the scored
       // surfaces BEFORE this boolean is recorded (§17).
-      return evaluateWrittenAnswer(exercise, answer)?.verdict === "meets_rubric";
+      return evaluateWrittenAnswer(exercise, answer, courseId)?.verdict === "meets_rubric";
     case "interactionScenario":
       // §37: goal met AND clean first-judgment turns; incomplete runs are
       // never graded (scored surfaces skip them before this boolean).

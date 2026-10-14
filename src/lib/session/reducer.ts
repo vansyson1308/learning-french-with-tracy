@@ -18,6 +18,8 @@ export type StepStatus = "idle" | "correct" | "wrong";
 export type SessionMachineState = {
   /** Stable for the whole session; set once by "start". */
   sessionId: string;
+  /** The session's course (grading uses its language rules); "" in bare tests. */
+  courseId: string;
   /** Wrong-answer policy (§55): "none" = scored assessment, no re-queue. */
   retryPolicy: "untilCorrect" | "none";
   /** The frozen plan — never changes after start. */
@@ -45,7 +47,13 @@ export type SessionMachineState = {
 };
 
 export type SessionAction =
-  | { type: "start"; sessionId: string; steps: SessionStep[]; retryPolicy?: "untilCorrect" | "none" }
+  | {
+      type: "start";
+      sessionId: string;
+      steps: SessionStep[];
+      retryPolicy?: "untilCorrect" | "none";
+      courseId?: string;
+    }
   | { type: "answer"; value: Answer }
   | { type: "check" }
   | { type: "skip" }
@@ -57,6 +65,7 @@ export type SessionAction =
 export function emptySessionState(): SessionMachineState {
   return {
     sessionId: "",
+    courseId: "",
     retryPolicy: "untilCorrect",
     steps: [],
     queue: [],
@@ -137,6 +146,7 @@ export function sessionReducer(
       return {
         ...emptySessionState(),
         sessionId: action.sessionId,
+        courseId: action.courseId ?? "",
         retryPolicy: action.retryPolicy ?? "untilCorrect",
         steps: action.steps,
         queue: action.steps,
@@ -152,7 +162,7 @@ export function sessionReducer(
     case "check": {
       const step = currentStep(state);
       if (!step || step.type !== "exercise" || state.status !== "idle") return state;
-      const correct = checkAnswer(step.exercise, state.answer);
+      const correct = checkAnswer(step.exercise, state.answer, state.courseId);
       const attempt = state.attempts[step.stepId] ?? 0;
       const firstResults =
         attempt === 0

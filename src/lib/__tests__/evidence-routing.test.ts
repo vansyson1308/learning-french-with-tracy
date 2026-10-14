@@ -2,8 +2,8 @@ import { afterEach, beforeEach, describe, expect, test, setSystemTime } from "bu
 
 import {
   applyEvidence,
-  dueFrenchReviewQueue,
-  frCardForSurface,
+  dueReviewQueue,
+  cardForSurface,
   itemIdForCourse,
 } from "../learning/engine";
 import type { ReviewEvidence } from "../learning/evidence";
@@ -258,7 +258,7 @@ describe("applyEvidence: French FSRS routing", () => {
   });
 });
 
-describe("dueFrenchReviewQueue ordering", () => {
+describe("dueReviewQueue ordering", () => {
   function cardAt(reviews: ("good" | "again")[], start: number): FsrsCardState {
     let card = fsrsScheduler.initialCard(start);
     let at = start;
@@ -281,7 +281,7 @@ describe("dueFrenchReviewQueue ordering", () => {
     };
     for (const c of Object.values(cards)) expect(fsrsScheduler.isDue(c, now)).toBe(true);
 
-    const queue = dueFrenchReviewQueue(cards, now);
+    const queue = dueReviewQueue("fr-en", cards, now);
     expect(queue).toHaveLength(3);
     expect(queue[0].surface).toBe("la pomme"); // r = 0
     const rs = queue.map((q) => q.retrievability);
@@ -296,17 +296,17 @@ describe("dueFrenchReviewQueue ordering", () => {
       "fr:w:chien|recognize": future,
       "fr:legacy:Je%20mange|recognize": fsrsScheduler.initialCard(T0),
     };
-    const queue = dueFrenchReviewQueue(cards, T0);
+    const queue = dueReviewQueue("fr-en", cards, T0);
     expect(queue.map((q) => q.surface)).toEqual(["la pomme"]);
-    expect(dueFrenchReviewQueue(undefined, T0)).toEqual([]);
-    expect(dueFrenchReviewQueue({}, T0)).toEqual([]);
+    expect(dueReviewQueue("fr-en", undefined, T0)).toEqual([]);
+    expect(dueReviewQueue("fr-en", {}, T0)).toEqual([]);
   });
 
-  test("frCardForSurface finds the card behind a pack word", () => {
+  test("cardForSurface finds the card behind a pack word", () => {
     const card = fsrsScheduler.initialCard(T0);
-    expect(frCardForSurface({ "fr:w:pomme|recognize": card }, "la pomme")).toEqual(card);
-    expect(frCardForSurface({}, "la pomme")).toBeUndefined();
-    expect(frCardForSurface(undefined, "la pomme")).toBeUndefined();
+    expect(cardForSurface("fr-en", { "fr:w:pomme|recognize": card }, "la pomme")).toEqual(card);
+    expect(cardForSurface("fr-en", {}, "la pomme")).toBeUndefined();
+    expect(cardForSurface("fr-en", undefined, "la pomme")).toBeUndefined();
   });
 
   test("itemIdForCourse: stable ids for French, raw surfaces elsewhere", () => {
@@ -316,7 +316,7 @@ describe("dueFrenchReviewQueue ordering", () => {
   });
 });
 
-describe("store integration: submitEvidence + undoLastFrenchReview", () => {
+describe("store integration: submitEvidence + undoLastReview", () => {
   beforeEach(async () => {
     useProgress.setState({
       activeCourseId: FR_COURSE_ID,
@@ -352,7 +352,7 @@ describe("store integration: submitEvidence + undoLastFrenchReview", () => {
     expect(s.courses[FR_COURSE_ID].cards![key].lapses).toBe(0);
     expect(s.reviewLog).toHaveLength(1);
 
-    const undone = s.undoLastFrenchReview();
+    const undone = s.undoLastReview("fr-en");
     expect(undone).toBe(true);
     s = useProgress.getState();
     // The card is back to its exact pre-review state and the entry is gone.
@@ -360,7 +360,7 @@ describe("store integration: submitEvidence + undoLastFrenchReview", () => {
     expect(s.courses[FR_COURSE_ID].cards![key].reps).toBe(0);
     expect(s.reviewLog).toHaveLength(0);
     // Nothing left to undo.
-    expect(useProgress.getState().undoLastFrenchReview()).toBe(false);
+    expect(useProgress.getState().undoLastReview("fr-en")).toBe(false);
   });
 
   test("undo targets the LAST French mutation only", () => {
@@ -372,7 +372,7 @@ describe("store integration: submitEvidence + undoLastFrenchReview", () => {
       );
     expect(useProgress.getState().reviewLog).toHaveLength(2);
 
-    useProgress.getState().undoLastFrenchReview();
+    useProgress.getState().undoLastReview("fr-en");
     const s = useProgress.getState();
     expect(s.courses[FR_COURSE_ID].cards!["fr:w:chien|recognize"].state).toBe("new");
     expect(s.courses[FR_COURSE_ID].cards!["fr:w:pomme|recognize"].state).toBe("learning");
@@ -422,7 +422,7 @@ describe("store integration: submitEvidence + undoLastFrenchReview", () => {
         correct: false,
       })
     );
-    expect(useProgress.getState().undoLastFrenchReview()).toBe(true);
+    expect(useProgress.getState().undoLastReview("fr-en")).toBe(true);
     const s = useProgress.getState();
     // The speak card is back to pre-review (new) …
     expect(s.courses[FR_COURSE_ID].cards!["fr:w:pomme|speak"].state).toBe("new");
@@ -439,7 +439,7 @@ describe("store integration: submitEvidence + undoLastFrenchReview", () => {
     const s = useProgress.getState();
     const forged = s.reviewLog.map((e) => ({ ...e, at: e.at - 1 })); // timestamp mismatch
     useProgress.setState({ reviewLog: forged });
-    expect(useProgress.getState().undoLastFrenchReview()).toBe(false);
+    expect(useProgress.getState().undoLastReview("fr-en")).toBe(false);
     // Card untouched (first Good on a new card → learning), log untouched.
     expect(
       useProgress.getState().courses[FR_COURSE_ID].cards!["fr:w:pomme|recognize"].state

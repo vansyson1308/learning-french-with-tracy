@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 
-import { courseCapabilities } from "@/lib/capabilities";
+import { hasCapability } from "@/lib/course-profile";
 import { useProgress } from "@/lib/store";
 import { useResolvedScheme, useThemeColors } from "@/lib/theme";
 
@@ -10,7 +10,7 @@ export default function TabsLayout() {
   const colors = useThemeColors();
   const scheme = useResolvedScheme();
   const activeCourseId = useProgress((s) => s.activeCourseId);
-  const hasToday = courseCapabilities(activeCourseId).dailySession;
+  const hasToday = hasCapability(activeCourseId, "dailySession");
   return (
     <Tabs
       screenOptions={{

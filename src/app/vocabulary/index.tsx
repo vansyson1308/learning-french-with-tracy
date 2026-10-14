@@ -1,5 +1,5 @@
 /**
- * Vocabulary Browser (Phase 4) — French-only, offline, entered from
+ * Vocabulary Browser (Phase 4) — lexicon courses only, offline, entered from
  * Practice (never a bottom tab). Lookup and exploration only: it reads
  * learner state (FSRS cards) for the learned/due indicators but NEVER
  * writes it — browsing and opening entries cannot create cards; PATH and
@@ -20,7 +20,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CloseButton } from "@/components/close-button";
-import { courseCapabilities } from "@/lib/capabilities";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { serializeCardKey } from "@/lib/learning/card-key";
 import type { FsrsCardState } from "@/lib/learning/scheduler";
 import { useLexiconRepository } from "@/lib/lexicon/use-lexicon-repository";
@@ -47,7 +47,7 @@ export default function VocabularyScreen() {
   const cards = useProgress(
     (s) => s.courses[s.activeCourseId]?.cards as Record<string, FsrsCardState> | undefined
   );
-  const repoState = useLexiconRepository();
+  const repoState = useLexiconRepository(activeCourseId);
 
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<LexiconSort>("course");
@@ -57,7 +57,8 @@ export default function VocabularyScreen() {
   // One timestamp per mount is plenty for due indicators (pure render).
   const [now] = useState(() => Date.now());
 
-  const hasLexicon = courseCapabilities(activeCourseId).lexicon;
+  const hasLexicon = hasCapability(activeCourseId, "lexicon");
+  const profile = courseProfile(activeCourseId);
 
   useEffect(() => {
     if (!repoState) return;
@@ -119,7 +120,7 @@ export default function VocabularyScreen() {
         <TextInput
           value={query}
           onChangeText={setQuery}
-          placeholder="Search French or English…"
+          placeholder={`Search ${profile.targetLanguage} or ${profile.nativeLanguage}…`}
           placeholderTextColor={colors.textMuted}
           autoCapitalize="none"
           autoCorrect={false}

@@ -9,11 +9,11 @@ import {
   type PersistedAssessmentState,
   type PlacementResult,
 } from "./assessment/types";
+import { defaultCourseId } from "./course-profile";
 import { addDays, dayString, localWeek } from "./dates";
 import { applyEvidence } from "./learning/engine";
 import type { ReviewEvidence } from "./learning/evidence";
 import { fsrsScheduler } from "./learning/fsrs-adapter";
-import { FR_COURSE_ID } from "./learning/ids-fr";
 import { lastMutationIndex, type ReviewLogEntry } from "./learning/review-log";
 import type { FsrsCardState } from "./learning/scheduler";
 import {
@@ -27,12 +27,12 @@ export const XP_PERFECT_BONUS = 5;
 export const DAILY_GOAL_OPTIONS = [10, 20, 30, 50] as const;
 export const DEFAULT_DAILY_GOAL = 20;
 /**
- * Course preselected at onboarding and used as the initial active course.
- * French is the complete course (P0 fix: the v0 default was the inherited
- * Spanish pack); the v0 flat-legacy migration keeps its own
- * `LEGACY_FLAT_COURSE_ID` in persistence/migrations.ts.
+ * Course preselected at onboarding and used as the initial active course:
+ * the compiler's `defaultCourseId` (the most complete course — French today;
+ * P0 replaced the inherited Spanish default). The v0 flat-legacy migration
+ * keeps its own `LEGACY_FLAT_COURSE_ID` in persistence/migrations.ts.
  */
-export const DEFAULT_COURSE = "fr-en";
+export const DEFAULT_COURSE = defaultCourseId();
 /** The AsyncStorage key. Never renamed — schema changes bump PERSIST_VERSION. */
 export const PROGRESS_STORAGE_KEY = "progress-v2";
 /** Days of per-day history kept for the streak calendar and quests. */
@@ -54,9 +54,9 @@ export type CourseProgress = {
   completedLessons: Record<string, true>;
   mistakes: MistakeRef[];
   wordStats: Record<string, WordStat>;
-  /** Legacy scheduler state — every course except fr-en (from v2). */
+  /** Legacy scheduler state — courses without the fsrs capability (from v2). */
   srs?: Record<string, SrsEntry>;
-  /** FSRS cards keyed by serialized CardKey — fr-en only (from v2). */
+  /** FSRS cards keyed by serialized CardKey — fsrs courses (from v2). */
   cards?: Record<string, FsrsCardState>;
   /** One-release rollback copy of the pre-v2 fr srs map. */
   srsLegacy?: Record<string, SrsEntry>;
@@ -132,13 +132,15 @@ type ProgressState = {
   recordWord: (target: string, correct: boolean) => void;
   reviewSrsWord: (target: string, correct: boolean) => void;
   /**
-   * The single evidence path for all courses: fr-en → evidence gate → FSRS;
-   * every other course → exact legacy recordWord/reviewSrsWord translation.
+   * The single evidence path for all courses: fsrs courses → evidence gate
+   * → FSRS; every other course → exact legacy recordWord/reviewSrsWord
+   * translation. `courseId` is the SESSION's course (definition.courseId)
+   * and must equal the active course — evidence never crosses courses.
    * Returns true when the FSRS scheduler was mutated (enables undo).
    */
-  submitEvidence: (ev: ReviewEvidence) => boolean;
-  /** Reverts the most recent French scheduler mutation (card + log entry). */
-  undoLastFrenchReview: () => boolean;
+  submitEvidence: (ev: ReviewEvidence, courseId?: string) => boolean;
+  /** Reverts the course's most recent scheduler mutation (card + log entry). */
+  undoLastReview: (courseId: string) => boolean;
   setActiveCourse: (courseId: string) => void;
   setThemePreference: (preference: ThemePreference) => void;
   finishOnboarding: (courseId: string, goal: number) => void;
@@ -352,8 +354,14 @@ export const useProgress = create<ProgressState>()(
           }))
         ),
 
-      submitEvidence: (ev) => {
+      submitEvidence: (ev, sessionCourseId) => {
         let mutated = false;
+        if (sessionCourseId !== undefined && sessionCourseId !== get().activeCourseId) {
+          console.warn(
+            `submitEvidence: session course ${sessionCourseId} is not the active course ${get().activeCourseId} — evidence dropped`
+          );
+          return false;
+        }
         set((state) => {
           const courseId = state.activeCourseId;
           const out = applyEvidence({
@@ -372,12 +380,12 @@ export const useProgress = create<ProgressState>()(
         return mutated;
       },
 
-      undoLastFrenchReview: () => {
+      undoLastReview: (courseId) => {
         const state = get();
-        const idx = lastMutationIndex(state.reviewLog, FR_COURSE_ID);
+        const idx = lastMutationIndex(state.reviewLog, courseId);
         if (idx < 0) return false;
         const entry = state.reviewLog[idx];
-        const fr = state.courses[FR_COURSE_ID];
+        const fr = state.courses[courseId];
         const current = fr?.cards?.[entry.cardKey];
         if (!fr || !current || !entry.mutation) return false;
         // Integrity guard: only roll back the exact card this mutation
@@ -395,7 +403,7 @@ export const useProgress = create<ProgressState>()(
         set({
           courses: {
             ...state.courses,
-            [FR_COURSE_ID]: {
+            [courseId]: {
               ...fr,
               cards: { ...fr.cards, [entry.cardKey]: restored },
             },

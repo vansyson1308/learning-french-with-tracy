@@ -94,16 +94,16 @@ describe("the skip gate (§36; P8 §24 regression)", () => {
 
 describe("whole-scenario grading contract (§36-§37)", () => {
   test("correct = goal met AND clean first-judgment turns AND complete", () => {
-    expect(checkAnswer(exercise, answerOf({}))).toBe(true);
-    expect(checkAnswer(exercise, answerOf({ goalMet: false }))).toBe(false);
+    expect(checkAnswer(exercise, answerOf({}), "fr-en")).toBe(true);
+    expect(checkAnswer(exercise, answerOf({ goalMet: false }), "fr-en")).toBe(false);
     expect(
-      checkAnswer(exercise, answerOf({ passedFirstTry: false, matchedFirstTry: 1 }))
+      checkAnswer(exercise, answerOf({ passedFirstTry: false, matchedFirstTry: 1 }), "fr-en")
     ).toBe(false);
-    expect(checkAnswer(exercise, answerOf({ technicallyIncomplete: true }))).toBe(false);
+    expect(checkAnswer(exercise, answerOf({ technicallyIncomplete: true }), "fr-en")).toBe(false);
   });
 
   test("support never fails the learner (§29): repeat/rephrase-heavy passes stay passes", () => {
-    expect(checkAnswer(exercise, answerOf({ supportUsed: 5 }))).toBe(true);
+    expect(checkAnswer(exercise, answerOf({ supportUsed: 5 }), "fr-en")).toBe(true);
   });
 
   test("readiness requires a COMPLETED conversation; incompleteness routes to skip, not Check", () => {
