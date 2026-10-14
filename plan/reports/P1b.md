@@ -3,7 +3,7 @@
 Session: 2026-10-14 (Claude Code, autonomous loop). Branch `phase-1/course-profile`.
 
 ## REPORT P1b
-Branch / PR: `phase-1/course-profile` → `main`; PR: PR_PLACEHOLDER
+Branch / PR: `phase-1/course-profile` → `main`; PR: https://github.com/vansyson1308/learning-french-with-tracy/pull/30
 Changed:
 - **Course profiles (data, not code).** `scripts/lib/course-profiles.ts` + `scripts/lib/languages.ts`: the compiler derives one `CourseProfile` per pack (identity, locales, script, flag asset, id prefixes, `capabilities{fsrs,dailySession,lexicon,concepts,placement,checkpoints,goals,listening,reading,speaking,writing,conversation}` from which artifacts exist for the target language, optional `content/courses/<id>.profile.json` `enabled` override — schema `CourseProfileOverrideSchema`) and emits `src/content/course-profiles.json` (incl. `defaultCourseId`, the most complete course), `src/content/ids/<code>.json` + `index.ts` (stable-id registries from `content/<code>/lexemes.json`), `src/content/artifacts/<courseId>.ts` + `index.ts` (static imports per course), `src/content/lexicon/db-assets.ts` (one SQLite asset per language; replaces `db-asset.ts`), `src/content/flags.ts`. `GENERATED_TARGETS` extended.
 - **Runtime registry.** `src/lib/course-profile.ts` (`courseProfile`, `hasCapability`, `allCourseProfiles`, `defaultCourseId`, `lessonRouteCapability`, test seam `__setCourseCapabilityOverrideForTests`) replaces `capabilities.ts` (deleted). `src/lib/content-registry.ts` (`artifactsFor`, `memoByCourse`).
