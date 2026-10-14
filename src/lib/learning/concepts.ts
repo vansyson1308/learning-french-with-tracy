@@ -7,7 +7,11 @@
  */
 import { artifactsFor, memoByCourse } from "../content-registry";
 
-export type ConceptExample = { fr: string; en: string; note?: string };
+/**
+ * Example pair keyed by language code (`{ fr: "…", en: "…" }` for fr-en)
+ * plus an optional `note`; resolve the pair with exampleTexts().
+ */
+export type ConceptExample = Record<string, string> & { note?: string };
 
 export type ConceptContent = {
   id: string;

@@ -53,9 +53,9 @@ function lexeme(over: Partial<RichLexicon["lexemes"][number]> & { id: string }):
     lookupForm: "x",
     partOfSpeech: "noun",
     gender: "masculine",
-    nativeGloss: "gloss",
+    glosses: { en: "gloss" },
     topic: "animals",
-    examples: [{ fr: "Exemple.", en: "Example.", source: "original-french-lexicon" }],
+    examples: [{ target: "Exemple.", translations: { en: "Example." }, source: "original-french-lexicon" }],
     sourceRefs: [{ source: "original-french-lexicon" }],
     ...over,
   };

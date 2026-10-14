@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "language": "xx",
+  "concepts": [
+    {
+      "id": "xx:concept:two-articles",
+      "title": { "en": "Two articles" },
+      "shortRule": { "en": "Every Testish noun takes ka or ki." },
+      "explanation": { "en": "Testish marks noun gender with its article: ka for masculine nouns, ki for feminine nouns." },
+      "examples": [
+        { "target": "ka tomo", "translations": { "en": "the friend" }, "note": { "en": "masculine — ka" } },
+        { "target": "ki lira", "translations": { "en": "the farewell" } }
+      ],
+      "exceptions": [{ "en": "Synthetic languages have no exceptions." }],
+      "memoryHint": { "en": "Learn 'ka tomo', never just 'tomo'." },
+      "objectives": ["xx.obj.greet.basic"],
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    }
+  ]
+}

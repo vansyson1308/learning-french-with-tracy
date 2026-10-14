@@ -1,0 +1,66 @@
+{
+  "contentHash": "c228fce0a96c54c4",
+  "schemaVersion": 3,
+  "datasetLicense": "original",
+  "sources": [
+    {
+      "id": "synthetic-test-language",
+      "name": "Synthetic test language (xx)",
+      "license": "original",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy/tree/main/content/xx",
+      "attribution": "Original project test fixtures; test-only, excluded from the app bundle, catalog, audio baseline and attributions."
+    }
+  ],
+  "entries": [
+    {
+      "id": "xx:w:tomo",
+      "surface": "ka tomo",
+      "lookupForm": "tomo",
+      "lemma": "tomo",
+      "gloss": "the friend",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "people",
+      "examples": [
+        {
+          "xx": "Mi tomo na ka tomo.",
+          "en": "I am a friend of the friend.",
+          "source": "synthetic-test-language"
+        }
+      ],
+      "confusables": [
+        "xx:w:lira"
+      ],
+      "sourceRefs": [
+        {
+          "source": "synthetic-test-language"
+        }
+      ]
+    },
+    {
+      "id": "xx:w:lira",
+      "surface": "ki lira",
+      "lookupForm": "lira",
+      "lemma": "lira",
+      "gloss": "the farewell",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "greetings",
+      "examples": [
+        {
+          "xx": "To lira, ki lira!",
+          "en": "Goodbye, the farewell!",
+          "source": "synthetic-test-language"
+        }
+      ],
+      "confusables": [
+        "xx:w:tomo"
+      ],
+      "sourceRefs": [
+        {
+          "source": "synthetic-test-language"
+        }
+      ]
+    }
+  ]
+}

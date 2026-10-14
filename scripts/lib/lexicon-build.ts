@@ -1,26 +1,31 @@
 /**
- * Lexicon build artifacts (Phase 4). One source of truth
- * (content/fr/lexicon/lexemes.json) compiles into:
+ * Lexicon build artifacts (Phase 4, per target language since P1c). One
+ * source of truth (content/<lang>/lexicon/lexemes.json) compiles into:
  *
- *  - src/content/lexicon/fr-index.json      lightweight synchronous runtime
+ *  - src/content/lexicon/<lang>-index.json  lightweight synchronous runtime
  *                                           index (session-critical surfaces:
  *                                           TeachCard, PostAnswerPanel,
  *                                           distractors — never SQLite)
- *  - src/content/lexicon/fr-web-fallback.json  full compiled lexicon for the
- *                                           web repository (no wasm, no
+ *  - src/content/lexicon/<lang>-web-fallback.json  full compiled lexicon for
+ *                                           the web repository (no wasm, no
  *                                           SharedArrayBuffer requirement)
- *  - assets/lexicon/fr-lexicon-v1-<hash>.db prebuilt read-only SQLite for
- *                                           native (expo-sqlite assetSource)
+ *  - assets/lexicon/<lang>-lexicon-v3-<hash>.db  prebuilt read-only SQLite
+ *                                           for native (expo-sqlite assetSource)
  *  - (src/content/lexicon/db-assets.ts is emitted by course-profiles.ts — the
- *                                           literal require() for the asset
- *  - content/reports/lexicon-quality.json   quality/coverage report
- *  - content/reports/lexicon-source-audit.json  per-lexeme source matching
+ *                                           literal require() per language)
+ *  - content/reports/[<lang>/]lexicon-quality.json   quality/coverage report
+ *  - content/reports/[<lang>/]lexicon-source-audit.json  per-lexeme source matching
  *
  * The database's identity is versioned: the filename embeds a contentHash
  * computed from canonical SOURCE data + schema version (never the binary),
  * so a content change ships as a NEW asset filename and no persisted file
  * is ever overwritten in place. Byte-identical DB files are not promised;
  * determinism is verified over schema + ordered logical dumps instead.
+ *
+ * Example sentences are stored generically (`target_text` / `native_text`)
+ * and emitted into the JSON artifacts keyed by language code
+ * (`{ fr: …, en: …, source }` for a French course with English native) —
+ * the runtime resolves the two keys through the course profile.
  */
 
 import { Database, type Statement } from "bun:sqlite";
@@ -29,7 +34,9 @@ import { createHash } from "crypto";
 import { existsSync } from "fs";
 
 import type { RichLexicon, SourceManifest, SourceRegistry } from "../../content/schema";
-import { foldForSearch, foldLigatures } from "../../src/lib/learning/lexicon-search";
+import { foldLigatures } from "../../src/lib/languages/base";
+import { buildPlugin, type BuildLanguagePlugin } from "./languages";
+import { localizeLexeme } from "./native-text";
 import { canonicalJson, readJson, safeResolve } from "./pipeline";
 import { lexiconSourceAudit, type SourceMatchRow } from "./lexicon";
 
@@ -37,9 +44,11 @@ import { lexiconSourceAudit, type SourceMatchRow } from "./lexicon";
  * Bump when the SQLite schema (tables/columns/pragmas) changes shape.
  * History: 1 = Phase 4 initial; 2 = lexeme_sources.ord (authored source-ref
  * order is the cross-tier contract — alphabetical source_id ordering broke
- * parity once lexemes carried two refs).
+ * parity once lexemes carried two refs); 3 = P1c language-neutral schema
+ * (examples.target_text/native_text replace fr/en; the FTS tokenizer is
+ * chosen by script; one database per target language).
  */
-export const DB_SCHEMA_VERSION = 2;
+export const DB_SCHEMA_VERSION = 3;
 
 /**
  * Bump when emission LOGIC changes what lands in the database without any
@@ -53,7 +62,7 @@ export const DB_BUILD_REVISION = 3;
 
 export function lexiconContentHash(
   lexicon: RichLexicon,
-  manifest: SourceManifest,
+  manifest: SourceManifest | null,
   registry: SourceRegistry
 ): string {
   const referenced = referencedSources(lexicon, registry);
@@ -61,14 +70,19 @@ export function lexiconContentHash(
     dbSchemaVersion: DB_SCHEMA_VERSION,
     dbBuildRevision: DB_BUILD_REVISION,
     lexicon,
-    sourceSha256: manifest.retrieval.sha256,
+    sourceSha256: manifest?.retrieval.sha256 ?? null,
     sources: referenced,
   });
   return createHash("sha256").update(input).digest("hex").slice(0, 16);
 }
 
-export function dbAssetName(contentHash: string): string {
-  return `fr-lexicon-v${DB_SCHEMA_VERSION}-${contentHash}.db`;
+export function dbAssetName(lang: string, contentHash: string): string {
+  return `${lang}-lexicon-v${DB_SCHEMA_VERSION}-${contentHash}.db`;
+}
+
+/** `<lang>-lexicon-v<n>-<hash>.db` → lang, or undefined for a foreign file. */
+export function dbAssetLanguage(fileName: string): string | undefined {
+  return /^([a-z]{2,3})-lexicon-v\d+-[0-9a-f]{16}\.db$/.exec(fileName)?.[1];
 }
 
 /** Registry entries actually referenced by lexicon data, sorted by id. */
@@ -86,6 +100,14 @@ export function referencedSources(lexicon: RichLexicon, registry: SourceRegistry
     .sort((a, b) => a.id.localeCompare(b.id));
 }
 
+/** The dataset licence line of a lexicon: CC BY-SA when any referenced source is, else the strictest referenced. */
+export function datasetLicense(lexicon: RichLexicon, registry: SourceRegistry): string {
+  const licenses = referencedSources(lexicon, registry).map((s) => s.license);
+  if (licenses.includes("CC-BY-SA-4.0")) return "CC-BY-SA-4.0";
+  if (licenses.includes("CC-BY-4.0")) return "CC-BY-4.0";
+  return licenses[0] ?? "original";
+}
+
 // ---------------------------------------------------------------------------
 // Runtime index (synchronous, session-critical path)
 // ---------------------------------------------------------------------------
@@ -101,19 +123,25 @@ export type LexiconIndexEntry = {
   topic?: string;
   band?: string;
   pronunciation?: { value: string; notation: string };
-  example?: { fr: string; en: string };
+  /** First example keyed by language code: `{ [targetCode]: …, [nativeCode]: … }`. */
+  example?: Record<string, string>;
   confusables?: string[];
 };
 
-export function buildRuntimeIndex(lexicon: RichLexicon): { entries: LexiconIndexEntry[] } {
+export function buildRuntimeIndex(
+  lexicon: RichLexicon,
+  targetCode: string,
+  nativeCode: string
+): { entries: LexiconIndexEntry[] } {
   return {
-    entries: lexicon.lexemes.map((lex) => {
+    entries: lexicon.lexemes.map((source) => {
+      const lex = localizeLexeme(source, nativeCode);
       const entry: LexiconIndexEntry = {
         id: lex.id,
         surface: lex.surface,
         lookupForm: lex.lookupForm,
         lemma: lex.lemma,
-        gloss: lex.nativeGloss,
+        gloss: lex.gloss,
         pos: lex.partOfSpeech,
       };
       if (lex.gender !== undefined) entry.gender = lex.gender;
@@ -123,7 +151,7 @@ export function buildRuntimeIndex(lexicon: RichLexicon): { entries: LexiconIndex
         entry.pronunciation = { value: lex.pronunciation.value, notation: lex.pronunciation.notation };
       }
       if (lex.examples.length > 0) {
-        entry.example = { fr: lex.examples[0].fr, en: lex.examples[0].en };
+        entry.example = { [targetCode]: lex.examples[0].target, [nativeCode]: lex.examples[0].native };
       }
       if (lex.relations?.confusables !== undefined) entry.confusables = [...lex.relations.confusables];
       return entry;
@@ -138,38 +166,43 @@ export function buildRuntimeIndex(lexicon: RichLexicon): { entries: LexiconIndex
 export function buildWebFallback(
   lexicon: RichLexicon,
   registry: SourceRegistry,
-  contentHash: string
+  contentHash: string,
+  targetCode: string,
+  nativeCode: string
 ) {
   return {
     contentHash,
     schemaVersion: DB_SCHEMA_VERSION,
-    datasetLicense: "CC-BY-SA-4.0",
+    datasetLicense: datasetLicense(lexicon, registry),
     sources: referencedSources(lexicon, registry),
-    entries: lexicon.lexemes.map((lex) => ({
-      id: lex.id,
-      surface: lex.surface,
-      lookupForm: lex.lookupForm,
-      lemma: lex.lemma,
-      gloss: lex.nativeGloss,
-      pos: lex.partOfSpeech,
-      ...(lex.gender !== undefined ? { gender: lex.gender } : {}),
-      ...(lex.topic !== undefined ? { topic: lex.topic } : {}),
-      ...(lex.frequency !== undefined
-        ? {
-            frequency: {
-              band: lex.frequency.band,
-              ...(lex.frequency.rank !== undefined ? { rank: lex.frequency.rank } : {}),
-              perMillion: lex.frequency.rawValue,
-            },
-          }
-        : {}),
-      ...(lex.pronunciation !== undefined
-        ? { pronunciation: { value: lex.pronunciation.value, notation: lex.pronunciation.notation } }
-        : {}),
-      examples: lex.examples.map((ex) => ({ fr: ex.fr, en: ex.en, source: ex.source })),
-      ...(lex.relations?.confusables !== undefined ? { confusables: [...lex.relations.confusables] } : {}),
-      sourceRefs: lex.sourceRefs.map((r) => ({ source: r.source, ...(r.key !== undefined ? { key: r.key } : {}) })),
-    })),
+    entries: lexicon.lexemes.map((source) => {
+      const lex = localizeLexeme(source, nativeCode);
+      return {
+        id: lex.id,
+        surface: lex.surface,
+        lookupForm: lex.lookupForm,
+        lemma: lex.lemma,
+        gloss: lex.gloss,
+        pos: lex.partOfSpeech,
+        ...(lex.gender !== undefined ? { gender: lex.gender } : {}),
+        ...(lex.topic !== undefined ? { topic: lex.topic } : {}),
+        ...(lex.frequency !== undefined
+          ? {
+              frequency: {
+                band: lex.frequency.band,
+                ...(lex.frequency.rank !== undefined ? { rank: lex.frequency.rank } : {}),
+                perMillion: lex.frequency.rawValue,
+              },
+            }
+          : {}),
+        ...(lex.pronunciation !== undefined
+          ? { pronunciation: { value: lex.pronunciation.value, notation: lex.pronunciation.notation } }
+          : {}),
+        examples: lex.examples.map((ex) => ({ [targetCode]: ex.target, [nativeCode]: ex.native, source: ex.source })),
+        ...(lex.relations?.confusables !== undefined ? { confusables: [...lex.relations.confusables] } : {}),
+        sourceRefs: lex.sourceRefs.map((r) => ({ source: r.source, ...(r.key !== undefined ? { key: r.key } : {}) })),
+      };
+    }),
   };
 }
 
@@ -177,7 +210,8 @@ export function buildWebFallback(
 // SQLite build (bun:sqlite writer → standard SQLite file for expo-sqlite)
 // ---------------------------------------------------------------------------
 
-const DDL = `
+function ddl(ftsTokenizer: string): string {
+  return `
 CREATE TABLE metadata (
   key TEXT PRIMARY KEY NOT NULL,
   value TEXT NOT NULL
@@ -202,8 +236,8 @@ CREATE TABLE lexemes (
 CREATE TABLE examples (
   lexeme_id TEXT NOT NULL REFERENCES lexemes(id),
   ordinal INTEGER NOT NULL,
-  fr TEXT NOT NULL,
-  en TEXT NOT NULL,
+  target_text TEXT NOT NULL,
+  native_text TEXT NOT NULL,
   source_id TEXT NOT NULL REFERENCES sources(id),
   PRIMARY KEY (lexeme_id, ordinal)
 ) WITHOUT ROWID;
@@ -232,16 +266,29 @@ CREATE VIRTUAL TABLE lexeme_fts USING fts5(
   surface,
   lemma,
   gloss,
-  tokenize = 'unicode61 remove_diacritics 2'
+  tokenize = '${ftsTokenizer}'
 );
 `;
+}
+
+export type DbBuildOptions = {
+  plugin: BuildLanguagePlugin;
+  nativeCode: string;
+};
+
+/** Index-text fold for FTS: ligatures for Latin scripts (unicode61 folds diacritics itself), identity for CJK. */
+function ftsFold(plugin: BuildLanguagePlugin, text: string): string {
+  return plugin.script === "latin" ? foldLigatures(text) : text;
+}
 
 export function buildSqliteDb(
   dbPath: string,
   lexicon: RichLexicon,
   registry: SourceRegistry,
-  contentHash: string
+  contentHash: string,
+  options: DbBuildOptions
 ): void {
+  const { plugin, nativeCode } = options;
   const db = new Database(dbPath, { create: true });
   // Every prepared statement is finalized before close(): an unfinalized
   // statement turns sqlite3_close into a zombie connection that only goes
@@ -256,7 +303,7 @@ export function buildSqliteDb(
     db.exec("PRAGMA journal_mode = DELETE;");
     db.exec(`PRAGMA user_version = ${DB_SCHEMA_VERSION};`);
     db.exec("PRAGMA foreign_keys = ON;");
-    db.exec(DDL);
+    db.exec(ddl(plugin.ftsTokenizer));
 
     const meta = prepare("INSERT INTO metadata (key, value) VALUES (?, ?)");
     const metadata: Record<string, string> = {
@@ -264,7 +311,7 @@ export function buildSqliteDb(
       contentVersion: String(lexicon.version),
       contentHash,
       language: lexicon.language,
-      datasetLicense: "CC-BY-SA-4.0",
+      datasetLicense: datasetLicense(lexicon, registry),
       generator: "scripts/compile-content.ts",
     };
     for (const key of Object.keys(metadata).sort()) meta.run(key, metadata[key]);
@@ -282,7 +329,7 @@ export function buildSqliteDb(
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     );
     const insExample = prepare(
-      "INSERT INTO examples (lexeme_id, ordinal, fr, en, source_id) VALUES (?, ?, ?, ?, ?)"
+      "INSERT INTO examples (lexeme_id, ordinal, target_text, native_text, source_id) VALUES (?, ?, ?, ?, ?)"
     );
     const insRelation = prepare(
       "INSERT INTO relations (lexeme_id, rel_type, target_id) VALUES (?, 'confusable', ?)"
@@ -292,19 +339,20 @@ export function buildSqliteDb(
     );
     const insFts = prepare("INSERT INTO lexeme_fts (id, surface, lemma, gloss) VALUES (?, ?, ?, ?)");
 
+    const localized = lexicon.lexemes.map((lex) => localizeLexeme(lex, nativeCode));
     // Two passes: all lexeme rows first, then the tables referencing them
     // (relations may point at lexemes that come later in authored order).
-    lexicon.lexemes.forEach((lex, ord) => {
+    localized.forEach((lex, ord) => {
       insLex.run(
         lex.id,
         ord,
         lex.surface,
         lex.lookupForm,
-        foldForSearch(lex.lookupForm),
+        plugin.rules.fold(lex.lookupForm),
         lex.lemma,
         lex.partOfSpeech,
         lex.gender ?? null,
-        lex.nativeGloss,
+        lex.gloss,
         lex.topic ?? null,
         lex.pronunciation?.value ?? null,
         lex.pronunciation?.notation ?? null,
@@ -314,10 +362,10 @@ export function buildSqliteDb(
       );
       // Ligature-folded index text: unicode61 folds true diacritics at
       // match time, but œ/æ need explicit folding (see lexicon-search.ts).
-      insFts.run(lex.id, foldLigatures(lex.surface), foldLigatures(lex.lemma), foldLigatures(lex.nativeGloss));
+      insFts.run(lex.id, ftsFold(plugin, lex.surface), ftsFold(plugin, lex.lemma), ftsFold(plugin, lex.gloss));
     });
-    for (const lex of lexicon.lexemes) {
-      lex.examples.forEach((ex, ordinal) => insExample.run(lex.id, ordinal, ex.fr, ex.en, ex.source));
+    for (const lex of localized) {
+      lex.examples.forEach((ex, ordinal) => insExample.run(lex.id, ordinal, ex.target, ex.native, ex.source));
       for (const target of lex.relations?.confusables ?? []) insRelation.run(lex.id, target);
       lex.sourceRefs.forEach((ref, refIdx) => insLexSource.run(lex.id, ref.source, ref.key ?? null, refIdx));
     }
@@ -405,7 +453,7 @@ export function verifySqliteDb(dbPath: string): string[] {
 
 export function buildQualityReport(
   lexicon: RichLexicon,
-  manifest: SourceManifest,
+  manifest: SourceManifest | null,
   contentHash: string,
   audit: SourceMatchRow[]
 ) {
@@ -425,8 +473,8 @@ export function buildQualityReport(
     contentHash,
     totals: { lexemes: lexemes.length },
     externalSource: {
-      id: manifest.source.id,
-      retrievalStatus: manifest.retrieval.status,
+      id: manifest?.source.id ?? null,
+      retrievalStatus: manifest?.retrieval.status ?? "none",
       matchStatusCounts: auditCounts,
     },
     coverage: {
@@ -444,9 +492,11 @@ export function buildQualityReport(
     candidatePool: {
       present: false,
       reason:
-        manifest.retrieval.status === "retrieved"
-          ? "run lexicon:source:extract to generate"
-          : "source not retrieved (see content/fr/lexicon/ACQUISITION.md)",
+        manifest === null
+          ? "no external lexical source for this language"
+          : manifest.retrieval.status === "retrieved"
+            ? "run lexicon:source:extract to generate"
+            : `source not retrieved (see content/${lexicon.language}/lexicon/ACQUISITION.md)`,
     },
   };
 }
@@ -463,9 +513,9 @@ export function buildSourceAuditReport(audit: SourceMatchRow[]) {
  * a stale or missing subset falls back to the honest source-unavailable
  * audit rather than inventing or reusing drifted evidence.
  */
-export function committedSourceAudit(manifest: SourceManifest): SourceMatchRow[] {
-  if (manifest.retrieval.status === "retrieved") {
-    const rel = "content/fr/lexicon/derived/lexique-subset.json";
+export function committedSourceAudit(lexicon: RichLexicon, manifest: SourceManifest | null): SourceMatchRow[] {
+  if (manifest?.retrieval.status === "retrieved") {
+    const rel = `content/${lexicon.language}/lexicon/derived/lexique-subset.json`;
     if (existsSync(safeResolve(rel))) {
       const subset = readJson(rel) as { source?: { sha256?: string }; audit?: SourceMatchRow[] };
       if (Array.isArray(subset.audit) && subset.source?.sha256 === manifest.retrieval.sha256) {
@@ -473,7 +523,7 @@ export function committedSourceAudit(manifest: SourceManifest): SourceMatchRow[]
       }
     }
   }
-  return lexiconSourceAudit();
+  return lexiconSourceAudit(lexicon);
 }
 
 export { lexiconSourceAudit };
@@ -482,33 +532,66 @@ export { lexiconSourceAudit };
 // Text artifact assembly (the binary DB is handled by the compile CLI)
 // ---------------------------------------------------------------------------
 
-
-export function compileLexiconArtifacts(
-  lexicon: RichLexicon,
-  manifest: SourceManifest,
-  registry: SourceRegistry
-): { contentHash: string; files: Array<{ relPath: string; contents: string }> } {
+export function compileLexiconArtifacts(input: {
+  lexicon: RichLexicon;
+  manifest: SourceManifest | null;
+  registry: SourceRegistry;
+  nativeCode: string;
+  /** src/content or the test-only root. */
+  artifactRoot: string;
+  /** content/reports or content/reports/<lang>. */
+  reportsDir: string;
+}): { contentHash: string; files: Array<{ relPath: string; contents: string }> } {
+  const { lexicon, manifest, registry, nativeCode, artifactRoot, reportsDir } = input;
+  const lang = lexicon.language;
   const contentHash = lexiconContentHash(lexicon, manifest, registry);
-  const audit = committedSourceAudit(manifest);
+  const audit = committedSourceAudit(lexicon, manifest);
   return {
     contentHash,
     files: [
       {
-        relPath: "src/content/lexicon/fr-index.json",
-        contents: canonicalJson({ contentHash, ...buildRuntimeIndex(lexicon) }),
+        relPath: `${artifactRoot}/lexicon/${lang}-index.json`,
+        contents: canonicalJson({ contentHash, ...buildRuntimeIndex(lexicon, lang, nativeCode) }),
       },
       {
-        relPath: "src/content/lexicon/fr-web-fallback.json",
-        contents: canonicalJson(buildWebFallback(lexicon, registry, contentHash)),
+        relPath: `${artifactRoot}/lexicon/${lang}-web-fallback.json`,
+        contents: canonicalJson(buildWebFallback(lexicon, registry, contentHash, lang, nativeCode)),
       },
       {
-        relPath: "content/reports/lexicon-quality.json",
+        relPath: `${reportsDir}/lexicon-quality.json`,
         contents: canonicalJson(buildQualityReport(lexicon, manifest, contentHash, audit)),
       },
       {
-        relPath: "content/reports/lexicon-source-audit.json",
+        relPath: `${reportsDir}/lexicon-source-audit.json`,
         contents: canonicalJson(buildSourceAuditReport(audit)),
       },
     ],
+  };
+}
+
+/** Everything the SQLite build of one language needs. */
+export type LexiconDbPlan = {
+  lang: string;
+  name: string;
+  contentHash: string;
+  lexicon: RichLexicon;
+  options: DbBuildOptions;
+  testOnly: boolean;
+};
+
+export function lexiconDbPlan(input: {
+  lexicon: RichLexicon;
+  contentHash: string;
+  nativeCode: string;
+  testOnly: boolean;
+}): LexiconDbPlan {
+  const lang = input.lexicon.language;
+  return {
+    lang,
+    name: dbAssetName(lang, input.contentHash),
+    contentHash: input.contentHash,
+    lexicon: input.lexicon,
+    options: { plugin: buildPlugin(lang), nativeCode: input.nativeCode },
+    testOnly: input.testOnly,
   };
 }

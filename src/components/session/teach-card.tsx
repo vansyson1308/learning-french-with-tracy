@@ -16,6 +16,7 @@ import Animated, { FadeInDown, ZoomIn } from "react-native-reanimated";
 import { SpeakerButton } from "@/components/speaker-button";
 import { speakTarget } from "@/lib/audio";
 import type { LexemeMeta } from "@/lib/learning/lexicon-index";
+import { exampleTexts } from "@/lib/lexicon/example-text";
 import { displayPronunciation } from "@/lib/session/panel";
 import { makeThemedStyles, radius } from "@/lib/theme";
 import type { Word } from "@/lib/types";
@@ -30,6 +31,7 @@ export function TeachCard({
   meta?: LexemeMeta;
 }) {
   const styles = useStyles();
+  const example = exampleTexts(courseId, meta?.example);
 
   // One auto-play when the word appears; the speaker button replays.
   useEffect(() => {
@@ -65,10 +67,10 @@ export function TeachCard({
         <View style={styles.speakerRow}>
           <SpeakerButton text={word.target} size={48} />
         </View>
-        {meta?.example ? (
+        {example ? (
           <View style={styles.example}>
-            <Text style={styles.exampleFr}>{meta.example.fr}</Text>
-            <Text style={styles.exampleEn}>{meta.example.en}</Text>
+            <Text style={styles.exampleFr}>{example.target}</Text>
+            <Text style={styles.exampleEn}>{example.native}</Text>
           </View>
         ) : null}
       </Animated.View>

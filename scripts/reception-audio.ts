@@ -1,7 +1,11 @@
 /**
- * Phase-7 reception-audio pipeline driver (P7 §25-42). Runs INSIDE the
- * dispatch-only GitHub Actions workflow (the interactive environment cannot
- * reach huggingface.co) and locally for pure/report subcommands.
+ * Phase-7 reception-audio pipeline driver (P7 §25-42; per target language
+ * since P1c: every subcommand takes `--lang <code>`, default fr, and reads
+ * content/<lang>/reception/*). Runs INSIDE the dispatch-only GitHub Actions
+ * workflow (the interactive environment cannot reach huggingface.co) and
+ * locally for pure/report subcommands. `plan --dry-run` validates the
+ * manifests and the listening source and prints the plan summary without
+ * writing or touching the network — the CI-testable path.
  *
  * Subcommands:
  *   recon   --downloads <dir>   Pin the double-downloaded voice files:
@@ -27,10 +31,28 @@ import { execFileSync } from "child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import path from "path";
 
+import { listeningSchema } from "../content/schema";
+import { buildPlugin } from "./lib/languages";
+import { receptionAssetKey } from "./lib/reception";
+
 const ROOT = path.resolve(import.meta.dir, "..");
-const MANIFEST_PATH = path.join(ROOT, "content/fr/reception/audio-source-manifest.json");
-const CANARY_PATH = path.join(ROOT, "content/fr/reception/audio-canary.json");
-const LISTENING_PATH = path.join(ROOT, "content/fr/reception/listening.json");
+
+function argOf(name: string): string | undefined {
+  const i = process.argv.indexOf(`--${name}`);
+  return i >= 0 ? process.argv[i + 1] : undefined;
+}
+
+/** The target language whose reception sources this run reads (default: French). */
+const LANG = argOf("lang") ?? "fr";
+if (!/^[a-z]{2,3}$/.test(LANG)) {
+  console.error(`ERROR: --lang must be a language code, got "${LANG}"`);
+  process.exit(2);
+}
+const RECEPTION_DIR = path.join(ROOT, `content/${LANG}/reception`);
+const MANIFEST_PATH = path.join(RECEPTION_DIR, "audio-source-manifest.json");
+const CANARY_PATH = path.join(RECEPTION_DIR, "audio-canary.json");
+const LISTENING_PATH = path.join(RECEPTION_DIR, "listening.json");
+const DRY_RUN = process.argv.includes("--dry-run");
 
 type VoiceFiles = Record<string, { path: string; sha256: string | null; bytes: number | null }>;
 type Voice = {
@@ -62,13 +84,11 @@ function sha256File(p: string): { sha256: string; bytes: number } {
 }
 
 function loadManifest(): Manifest {
+  if (!existsSync(MANIFEST_PATH)) fail(`${path.relative(ROOT, MANIFEST_PATH)} does not exist — no voice manifest for ${LANG}`);
   return JSON.parse(readFileSync(MANIFEST_PATH, "utf8")) as Manifest;
 }
 
-function arg(name: string): string | undefined {
-  const i = process.argv.indexOf(`--${name}`);
-  return i >= 0 ? process.argv[i + 1] : undefined;
-}
+const arg = argOf;
 
 function fail(msg: string): never {
   console.error(`ERROR: ${msg}`);
@@ -148,7 +168,7 @@ function recon(downloads: string) {
     voice.declaredLicense = license;
     const matched = licenseGateCheck(manifest, voice.id, cardText);
     // Commit the MODEL_CARD verbatim as the provenance record (P7 §36).
-    const cardsDir = path.join(ROOT, "content/fr/reception/model-cards");
+    const cardsDir = path.join(RECEPTION_DIR, "model-cards");
     mkdirSync(cardsDir, { recursive: true });
     writeFileSync(path.join(cardsDir, `${voice.id}.MODEL_CARD.txt`), cardText);
     report.push({
@@ -209,14 +229,49 @@ export type GenClip = {
   assetKey: string;
 };
 
+/** The SAME derivation the compiler uses (scripts/lib/reception.ts) — one definition, one key. */
 function assetKeyFor(segments: GenSegment[], pipelineVersion: number): string {
-  const canonical = JSON.stringify([
-    "fr",
-    segments.map((s) => [s.voiceId, s.speaker, s.text]),
-    1.0, // length scale (normal authored rate; slow mode is playback-time)
-    pipelineVersion,
-  ]);
-  return createHash("sha256").update(canonical).digest("hex").slice(0, 20);
+  return receptionAssetKey(LANG, segments, pipelineVersion);
+}
+
+/**
+ * Manifest + source checks that need no network: the voice manifest's
+ * shape and pins, the listening source against the real schema, every
+ * voice the cast uses declared in the manifest. Returns the problems.
+ */
+function dryRunProblems(manifest: Manifest, mode: string): string[] {
+  const problems: string[] = [];
+  if (typeof manifest.pipelineVersion !== "number") problems.push("manifest: pipelineVersion must be a number");
+  if (!manifest.piperTts?.pinnedVersion) problems.push("manifest: piperTts.pinnedVersion is missing");
+  if (!manifest.voicesRevision) problems.push("manifest: voicesRevision is missing");
+  if (!Array.isArray(manifest.voices) || manifest.voices.length === 0) problems.push("manifest: no voices");
+  const voiceIds = new Set<string>();
+  for (const voice of manifest.voices ?? []) {
+    voiceIds.add(voice.id);
+    for (const [kind, file] of Object.entries(voice.files ?? {})) {
+      if (!file.sha256) problems.push(`manifest: ${voice.id}.${kind} has no pinned sha256 (run recon)`);
+    }
+    if (voice.multiSpeaker && !(voice.pinnedSpeakers?.length || voice.canarySpeakers?.length)) {
+      problems.push(`manifest: ${voice.id} is multi-speaker but pins no speakers`);
+    }
+  }
+  if (mode === "generate") {
+    if (!existsSync(LISTENING_PATH)) {
+      problems.push(`${path.relative(ROOT, LISTENING_PATH)} does not exist`);
+    } else {
+      const parsed = listeningSchema(LANG).safeParse(JSON.parse(readFileSync(LISTENING_PATH, "utf8")));
+      if (!parsed.success) {
+        for (const issue of parsed.error.issues.slice(0, 5)) problems.push(`listening.json: ${issue.path.join(".")} — ${issue.message}`);
+      } else {
+        for (const [speaker, cast] of Object.entries(parsed.data.voiceCast)) {
+          if (!voiceIds.has(cast.voiceId)) problems.push(`listening.json: voiceCast.${speaker} uses ${cast.voiceId}, not in the manifest`);
+        }
+      }
+    }
+  } else if (!existsSync(CANARY_PATH)) {
+    problems.push(`${path.relative(ROOT, CANARY_PATH)} does not exist`);
+  }
+  return problems;
 }
 
 /** Short label for canary clip ids: "fr_FR-upmc-medium" → "upmc". */
@@ -224,8 +279,13 @@ function voiceShortName(voiceId: string): string {
   return voiceId.replace(/^[a-z]{2}_[A-Z]{2}-/, "").replace(/-[a-z]+$/, "");
 }
 
-function plan(mode: string, out: string) {
+function plan(mode: string, out: string | undefined) {
   const manifest = loadManifest();
+  if (DRY_RUN) {
+    const problems = dryRunProblems(manifest, mode);
+    for (const p of problems) console.error(`ERROR: ${p}`);
+    if (problems.length > 0) fail(`dry run found ${problems.length} problem(s) for ${LANG}`);
+  }
   const clips: GenClip[] = [];
   const push = (clipId: string, segments: GenSegment[]) => {
     clips.push({
@@ -274,7 +334,21 @@ function plan(mode: string, out: string) {
   } else {
     fail(`unknown plan mode ${mode}`);
   }
-  writeFileSync(out, `${JSON.stringify({ pipelineVersion: manifest.pipelineVersion, clips }, null, 2)}\n`);
+  // The plan carries the language and the plugin's ASR-normalisation spec
+  // so the Python audit never re-implements language rules (P1c).
+  const planDoc = {
+    pipelineVersion: manifest.pipelineVersion,
+    language: LANG,
+    normalization: buildPlugin(LANG).normalizeForAsr,
+    clips,
+  };
+  if (DRY_RUN) {
+    const unique = new Set(clips.map((c) => c.assetKey)).size;
+    console.log(`dry run ok (${LANG}, ${mode}): ${clips.length} clips, ${unique} unique assets, ${manifest.voices.length} voices pinned — nothing written`);
+    return;
+  }
+  if (!out) fail("--out required");
+  writeFileSync(out, `${JSON.stringify(planDoc, null, 2)}\n`);
   console.log(`plan (${mode}): ${clips.length} clips → ${out}`);
 }
 
@@ -533,7 +607,7 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
 const cmd = process.argv[2];
 if (cmd === "recon") recon(arg("downloads") ?? fail("--downloads required"));
 else if (cmd === "verify") verify(arg("downloads") ?? fail("--downloads required"));
-else if (cmd === "plan") plan(arg("mode") ?? fail("--mode required"), arg("out") ?? fail("--out required"));
+else if (cmd === "plan") plan(arg("mode") ?? fail("--mode required"), arg("out"));
 else if (cmd === "synth-script")
   synthScript(
     arg("plan") ?? fail("--plan required"),

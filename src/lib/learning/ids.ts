@@ -26,10 +26,19 @@ type Resolved = IdRegistry & { idToSurface: Record<string, string> };
 
 const RESOLVED = new Map<string, Resolved | null>();
 
+/** Test seam (P1c): id registries of TEST-ONLY languages (src/content/test-only/ids). */
+const TEST_REGISTRIES = new Map<string, IdRegistry>();
+
+export function __registerIdRegistryForTests(code: string, registry: IdRegistry | null): void {
+  if (registry === null) TEST_REGISTRIES.delete(code);
+  else TEST_REGISTRIES.set(code, registry);
+  RESOLVED.delete(code);
+}
+
 function registryForLanguage(code: string): Resolved | null {
   const hit = RESOLVED.get(code);
   if (hit !== undefined) return hit;
-  const raw = (ID_REGISTRIES as Record<string, IdRegistry | undefined>)[code];
+  const raw = TEST_REGISTRIES.get(code) ?? (ID_REGISTRIES as Record<string, IdRegistry | undefined>)[code];
   const resolved = raw
     ? {
         ...raw,

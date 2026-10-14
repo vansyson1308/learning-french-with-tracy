@@ -1,5 +1,7 @@
 # Spoken interaction at A1 — research notes (Phase 9)
 
+> **Schema note (P1c).** In `scenarios.json` the scenario `title`, `goal` and every learner-turn `prompt` are native-text records (`{ "en": "…" }`); partner lines and accepted variants stay French strings. Folding comes from the language plugin. See `content/README.md`.
+
 Construct research for the Section-6 interaction system. Framework
 reference: Council of Europe, *CEFR Companion Volume* (2020). All can-do
 wording in this app is ORIGINAL. Direct coe.int/rm.coe.int access is

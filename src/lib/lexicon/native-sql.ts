@@ -34,7 +34,7 @@ export const SQL = {
   // outside the ranked population (e.g. merci, ONO). Unmeasured entries
   // sink to the end in course order.
   orderFrequency: ` ORDER BY (freq_per_million IS NULL), freq_per_million DESC, ord`,
-  examples: `SELECT fr, en FROM examples WHERE lexeme_id = ? ORDER BY ordinal`,
+  examples: `SELECT target_text, native_text FROM examples WHERE lexeme_id = ? ORDER BY ordinal`,
   confusables: `SELECT target_id FROM relations WHERE lexeme_id = ? AND rel_type = 'confusable' ORDER BY target_id`,
   // Authored order (ord) is the cross-tier contract — the generated tier
   // returns refs in authored order, so the SQL tier must too.
@@ -122,6 +122,15 @@ export function rowToSearchable(row: LexemeRow): { surface: string; lemma: strin
  * shipped logic instead of a reimplementation.
  */
 
+/** The language codes an example row is keyed by (the course's target and native codes). */
+export type ExampleKeys = { targetCode: string; nativeCode: string };
+
+export type ExampleRow = { target_text: string; native_text: string };
+
+export function rowToExample(row: ExampleRow, keys: ExampleKeys): LexemeExample {
+  return { [keys.targetCode]: row.target_text, [keys.nativeCode]: row.native_text };
+}
+
 export type SqlExecutor = {
   all: <T>(sql: string, params: (string | number)[]) => Promise<T[]>;
   first: <T>(sql: string, params: (string | number)[]) => Promise<T | null>;
@@ -154,17 +163,17 @@ export async function runNativeList(
   return rows.map(rowToSummary);
 }
 
-export async function runNativeGetById(exec: SqlExecutor, id: string): Promise<LexemeDetail | null> {
+export async function runNativeGetById(exec: SqlExecutor, id: string, keys: ExampleKeys): Promise<LexemeDetail | null> {
   const row = await exec.first<LexemeDetailRow>(SQL.byId, [id]);
   if (!row) return null;
   const [examples, confusables, refs] = await Promise.all([
-    exec.all<LexemeExample>(SQL.examples, [id]),
+    exec.all<ExampleRow>(SQL.examples, [id]),
     exec.all<{ target_id: string }>(SQL.confusables, [id]),
     exec.all<{ source_id: string; match_key: string | null }>(SQL.sourceRefs, [id]),
   ]);
   return rowToDetail(
     row,
-    examples,
+    examples.map((ex) => rowToExample(ex, keys)),
     confusables.map((r) => r.target_id),
     refs.map((r) => ({ source: r.source_id, ...(r.match_key !== null ? { key: r.match_key } : {}) }))
   );

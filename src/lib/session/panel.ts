@@ -93,7 +93,8 @@ export type PanelData = {
   genderLabel?: string;
   /** Pronunciation, already wrapped for display (/ipa/ or raw phonology). */
   pronunciation?: string;
-  example?: { fr: string; en: string };
+  /** Keyed by language code — resolve with exampleTexts(). */
+  example?: Record<string, string>;
   /** Expanded ("More") fields. */
   lemma: string;
   pos: string;

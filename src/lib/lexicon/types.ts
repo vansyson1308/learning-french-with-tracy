@@ -23,7 +23,13 @@ export type LexemeSummary = {
   band?: string;
 };
 
-export type LexemeExample = { fr: string; en: string };
+/**
+ * One example sentence keyed by LANGUAGE CODE: the course's target code
+ * maps to the target text and its native code to the translation
+ * (`{ fr: "…", en: "…" }` for fr-en). Resolve through the course profile
+ * (`exampleTexts` in ./example-text.ts); never assume the key names.
+ */
+export type LexemeExample = Record<string, string>;
 
 export type LexemeDetail = LexemeSummary & {
   lemma: string;

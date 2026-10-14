@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "language": "xx",
+  "order": [
+    "xx.checkpoint.section-1"
+  ],
+  "byId": {
+    "xx.checkpoint.section-1": {
+      "id": "xx.checkpoint.section-1",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "xx-en:section-1",
+      "title": "Section 1 check",
+      "description": "Show what you can do with the two Testish words.",
+      "items": [
+        {
+          "id": "xx.cpi.read-1",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "cp-read-1",
+            "readingId": "xx.read.sign",
+            "question": "Who is welcome?",
+            "options": [
+              {
+                "text": "the friend"
+              },
+              {
+                "text": "the farewell"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "xx.obj.read.signs"
+          ],
+          "essential": true
+        },
+        {
+          "id": "xx.cpi.read-2",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "cp-read-2",
+            "readingId": "xx.read.sign",
+            "question": "Which word is NOT on the sign?",
+            "options": [
+              {
+                "text": "the farewell"
+              },
+              {
+                "text": "the friend"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "xx.obj.read.signs"
+          ],
+          "essential": true
+        },
+        {
+          "id": "xx.cpi.greet-1",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "cp-greet-1",
+            "mode": "nativeToTarget",
+            "prompt": "the farewell",
+            "options": [
+              {
+                "text": "ki lira"
+              },
+              {
+                "text": "ka tomo"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "xx.obj.greet.basic"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.5
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "id": "xx-en",
+  "version": 1,
+  "targetLanguage": "Testish",
+  "targetCode": "xx",
+  "nativeLanguage": "English",
+  "nativeCode": "en",
+  "flag": "🏳️",
+  "testOnly": true,
+  "audio": {
+    "policy": "test-only",
+    "reason": "Synthetic test language (P1c): generated 0.5 s tones stand in for clips; nothing here ever ships."
+  },
+  "sections": [
+    {
+      "id": "xx-en:section-1",
+      "title": "Section 1: Test",
+      "units": [
+        {
+          "id": "xx-en:unit-1",
+          "title": "Basics",
+          "description": "Two synthetic words that exercise every validator.",
+          "guidebook": "Testish nouns take **ka** (masculine) or **ki** (feminine).",
+          "words": [
+            { "target": "ka tomo", "native": "the friend", "emoji": "🙂" },
+            { "target": "ki lira", "native": "the farewell", "emoji": "👋" }
+          ],
+          "lessons": [
+            {
+              "id": "xx-en:u0-l0",
+              "title": "Friends",
+              "objectives": ["xx.obj.greet.basic"],
+              "flow": [
+                { "concept": "xx:concept:two-articles" },
+                { "exercise": "xx-en:u0-l0-e0" },
+                { "exercise": "xx-en:u0-l0-e1" },
+                { "exercise": "xx-en:u0-l0-e2" },
+                { "exercise": "xx-en:u0-l0-e3" },
+                { "exercise": "xx-en:u0-l0-e4" },
+                { "exercise": "xx-en:u0-l0-e5" }
+              ],
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "xx-en:u0-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "ka tomo",
+                  "options": [{ "text": "the friend", "emoji": "🙂" }, { "text": "the farewell", "emoji": "👋" }],
+                  "correct": 0
+                },
+                {
+                  "type": "match",
+                  "id": "xx-en:u0-l0-e1",
+                  "pairs": [
+                    { "target": "ka tomo", "native": "the friend" },
+                    { "target": "ki lira", "native": "the farewell" }
+                  ]
+                },
+                {
+                  "type": "articleSelect",
+                  "id": "xx-en:u0-l0-e2",
+                  "articles": ["ka", "ki"],
+                  "noun": "tomo",
+                  "gloss": "friend",
+                  "correct": 0,
+                  "objectiveTargets": ["xx.obj.greet.basic"]
+                },
+                {
+                  "type": "listeningComprehension",
+                  "id": "xx-en:u0-l0-e3",
+                  "clipId": "xx.clip.tomo",
+                  "question": "What did you hear?",
+                  "options": [{ "text": "the friend" }, { "text": "the farewell" }],
+                  "correct": 0,
+                  "objectiveTargets": ["xx.obj.greet.basic"]
+                },
+                {
+                  "type": "speakProduction",
+                  "id": "xx-en:u0-l0-e4",
+                  "speechItemId": "xx.speak.friend",
+                  "instruction": "Say that you are a friend.",
+                  "cueEmoji": "🙂",
+                  "target": "mi tomo",
+                  "acceptedVariants": ["mi tomo", "mi tomo na"],
+                  "evidenceLexemeRefs": ["xx:w:tomo"],
+                  "revealTargetAfterAttempts": 2,
+                  "allowContextualBias": false,
+                  "modelClipId": null,
+                  "allowedAttempts": 2,
+                  "objectiveTargets": ["xx.obj.greet.basic"]
+                },
+                {
+                  "type": "interactionScenario",
+                  "id": "xx-en:u0-l0-e5",
+                  "scenarioId": "xx.scenario.hello",
+                  "objectiveTargets": ["xx.obj.greet.basic"]
+                }
+              ]
+            },
+            {
+              "id": "xx-en:u0-l1",
+              "title": "Signs",
+              "objectives": ["xx.obj.read.signs"],
+              "exercises": [
+                {
+                  "type": "readingComprehension",
+                  "id": "xx-en:u0-l1-e0",
+                  "readingId": "xx.read.sign",
+                  "question": "Who is welcome?",
+                  "options": [{ "text": "the friend" }, { "text": "the farewell" }],
+                  "correct": 0,
+                  "objectiveTargets": ["xx.obj.read.signs"]
+                },
+                {
+                  "type": "dictation",
+                  "id": "xx-en:u0-l1-e1",
+                  "clipId": "xx.clip.tomo",
+                  "answer": "ka tomo",
+                  "alternatives": [],
+                  "objectiveTargets": ["xx.obj.read.signs"]
+                },
+                {
+                  "type": "guidedWriting",
+                  "id": "xx-en:u0-l1-e2",
+                  "writingTaskId": "xx.write.friend",
+                  "writingMode": "guided",
+                  "instruction": "Write one short sentence saying you are a friend.",
+                  "rubric": {
+                    "requiredSlots": [
+                      {
+                        "id": "friend",
+                        "description": "that you are a friend",
+                        "variants": ["mi tomo"],
+                        "cueProvided": false
+                      }
+                    ],
+                    "minTokens": 2,
+                    "maxTokens": 10
+                  },
+                  "modelAnswers": ["mi tomo na"],
+                  "objectiveTargets": ["xx.obj.read.signs"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

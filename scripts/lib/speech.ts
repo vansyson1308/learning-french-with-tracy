@@ -1,48 +1,47 @@
 /**
- * Phase-8 speech pipeline library (P8 §19): loader + construct-validity
- * validators for spoken-production items. The validators REJECT construct
- * contradictions at authoring time — a scored item that exposes its French,
- * a repetition item claiming production evidence, an ungradeable target —
- * so no construct-invalid item can ever reach a learner.
+ * Phase-8 speech pipeline library (P8 §19; per target language since P1c):
+ * loader + construct-validity validators for spoken-production items. The
+ * validators REJECT construct contradictions at authoring time — a scored
+ * item that exposes its target text, a repetition item claiming production
+ * evidence, an ungradeable target — so no construct-invalid item can ever
+ * reach a learner. Folding/tokenising comes from the language plugin.
  */
 
 import { existsSync } from "fs";
 
-import { z } from "zod";
-
 import {
-  SPEECH_PRACTICE_ELICITATIONS,
-  SpeakProductionExerciseSchema,
-  SpeakRepetitionExerciseSchema,
-  SpeechItemsSchema,
+  speechItemsSchema,
   type CourseObjectives,
   type Listening,
   type SpeechItem,
   type SpeechItems,
 } from "../../content/schema";
-import { languageRules } from "../../src/lib/languages";
+import type { Exercise } from "../../content/schema";
 import { foldSpoken, normalizeSpoken } from "../../src/lib/speech/grader";
-
-/** The authored sources under content/fr are French (P1c parameterises this). */
-const RULES = languageRules("fr");
-const normalizeSpokenFrench = (text: string) => normalizeSpoken(text, RULES);
-const foldSpokenFrench = (text: string) => foldSpoken(text, RULES);
+import { buildPlugin, type BuildLanguagePlugin } from "./languages";
+import { localizeCueFacts, localizeSpeechPrompt, pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
-export const SPEECH_SOURCE = "content/fr/speech/items.json";
+export function speechSourcePath(lang: string): string {
+  return `content/${lang}/speech/items.json`;
+}
 
-export function loadSpeechItems(): SpeechItems | null {
-  if (!existsSync(safeResolve(SPEECH_SOURCE))) return null;
-  return SpeechItemsSchema.parse(readJson(SPEECH_SOURCE));
+export function loadSpeechItems(lang: string): SpeechItems | null {
+  const rel = speechSourcePath(lang);
+  if (!existsSync(safeResolve(rel))) return null;
+  const doc = speechItemsSchema(lang).parse(readJson(rel));
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
 }
 
 /**
  * Runtime artifact for the app's speech content module. ALWAYS emitted
  * (empty before the curriculum authors items) so the static import exists,
  * and NEVER includes reserved items — assessment prompts stay out of every
- * practice/review surface by construction (§20).
+ * practice/review surface by construction (§20). Native text resolved for
+ * the course's nativeCode.
  */
-export function compileSpeechItemsArtifact(speech: SpeechItems | null): string {
+export function compileSpeechItemsArtifact(speech: SpeechItems | null, nativeCode: string): string {
   const items = (speech?.items ?? []).filter((item) => !item.reserved);
   const byId: Record<string, unknown> = {};
   for (const item of items) {
@@ -50,7 +49,7 @@ export function compileSpeechItemsArtifact(speech: SpeechItems | null): string {
       id: item.id,
       taskFamily: item.taskFamily,
       elicitationType: item.elicitationType,
-      prompt: item.prompt,
+      prompt: localizeSpeechPrompt(item, nativeCode),
       target: item.target,
       acceptedVariants: item.acceptedVariants,
       ...(item.requiredConcepts ? { requiredConcepts: item.requiredConcepts } : {}),
@@ -71,34 +70,34 @@ export function compileSpeechItemsArtifact(speech: SpeechItems | null): string {
   });
 }
 
-const PRACTICE_TYPES: readonly string[] = SPEECH_PRACTICE_ELICITATIONS;
+const PRACTICE_TYPES: readonly string[] = ["repetition", "read_aloud"];
 
 export function isPracticeElicitation(item: SpeechItem): boolean {
   return PRACTICE_TYPES.includes(item.elicitationType);
 }
 
-/** Every learner-visible prompt string of an item (emoji cues excluded). */
+/** Every learner-visible prompt string of an item, in every native language (emoji cues excluded). */
 function promptTexts(item: SpeechItem): string[] {
-  const texts = [item.prompt.instruction];
-  for (const fact of item.prompt.cueFacts ?? []) texts.push(fact.label, fact.value);
+  const texts = [...Object.values(item.prompt.instruction)];
+  for (const fact of item.prompt.cueFacts ?? []) texts.push(...Object.values(fact.label), fact.value);
   return texts;
 }
 
 /**
- * Does a prompt text expose the French answer (§13)? True when any
+ * Does a prompt text expose the target answer (§13)? True when any
  * contiguous run of min(2, |answer|) answer tokens appears in the text —
  * whole short answers ("Bonjour") and fragments of longer ones ("un café"
  * inside a cue) both count. Folding is DIGIT-BLIND on purpose: a cue
- * showing "2" conveys the meaning, not the French word "deux", so numeric
- * task data never trips the validator while French orthography always does.
+ * showing "2" conveys the meaning, not the word "deux", so numeric task
+ * data never trips the validator while target orthography always does.
  */
-function exposesFrench(promptText: string, frenchAnswer: string): boolean {
-  const prompt = foldSpokenFrench(promptText).split(" ").filter(Boolean);
-  const french = foldSpokenFrench(frenchAnswer).split(" ").filter(Boolean);
-  if (french.length === 0 || prompt.length === 0) return false;
-  const window = Math.min(2, french.length);
-  for (let start = 0; start + window <= french.length; start++) {
-    const run = french.slice(start, start + window);
+function exposesTarget(promptText: string, answer: string, plugin: BuildLanguagePlugin): boolean {
+  const prompt = foldSpoken(promptText, plugin.rules).split(" ").filter(Boolean);
+  const target = foldSpoken(answer, plugin.rules).split(" ").filter(Boolean);
+  if (target.length === 0 || prompt.length === 0) return false;
+  const window = Math.min(2, target.length);
+  for (let start = 0; start + window <= target.length; start++) {
+    const run = target.slice(start, start + window);
     outer: for (let at = 0; at + run.length <= prompt.length; at++) {
       for (let offset = 0; offset < run.length; offset++) {
         if (prompt[at + offset] !== run[offset]) continue outer;
@@ -109,20 +108,20 @@ function exposesFrench(promptText: string, frenchAnswer: string): boolean {
   return false;
 }
 
-type SpeakRepetitionExercise = z.infer<typeof SpeakRepetitionExerciseSchema>;
-type SpeakProductionExercise = z.infer<typeof SpeakProductionExerciseSchema>;
+export type SpeakRepetitionExercise = Extract<Exercise, { type: "speakRepetition" }>;
+export type SpeakProductionExercise = Extract<Exercise, { type: "speakProduction" }>;
+export type SpeakExercise = SpeakRepetitionExercise | SpeakProductionExercise;
 
-/** Minimal pack shape for the exercise cross-checks (schema-validated upstream). */
-export type FrPackForSpeech = {
+/** A course pack as the mirror checks see it: its native code and exercises. */
+export type PackForSpeech = {
+  nativeCode: string;
   sections: {
     units: { lessons: { exercises: ({ type: string; id: string } & Record<string, unknown>)[] }[] }[];
   }[];
 };
 
-function packSpeechExercises(
-  pack: FrPackForSpeech
-): (SpeakRepetitionExercise | SpeakProductionExercise)[] {
-  const found: (SpeakRepetitionExercise | SpeakProductionExercise)[] = [];
+function packSpeechExercises(pack: PackForSpeech): SpeakExercise[] {
+  const found: SpeakExercise[] = [];
   for (const section of pack.sections) {
     for (const unit of section.units) {
       for (const lesson of unit.lessons) {
@@ -142,21 +141,28 @@ function packSpeechExercises(
 const same = (a: unknown, b: unknown) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 
 export function validateSpeech(input: {
+  lang: string;
   speech: SpeechItems | null;
   objectives: CourseObjectives | null;
   listening: Listening | null;
   lexemeIds: Set<string>;
-  /** When provided, embedded speech-exercise fields must mirror the items. */
-  frPack?: FrPackForSpeech;
-  /** Speak exercises from scored banks (checkpoints/placement) — must
-   *  mirror RESERVED items (§20). Callers collect via
-   *  assessmentBankSpeechExercises(). */
-  assessmentSpeech?: (SpeakRepetitionExercise | SpeakProductionExercise)[];
+  /** Course packs of the language: embedded speech-exercise fields must mirror the items. */
+  packs?: PackForSpeech[];
+  /**
+   * Speak exercises from scored banks (checkpoints/placement) with the
+   * native code they were authored in — must mirror RESERVED items (§20).
+   * Callers collect via assessmentBankSpeechExercises().
+   */
+  assessmentSpeech?: { nativeCode: string; exercises: SpeakExercise[] }[];
+  plugin?: BuildLanguagePlugin;
 }): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
   const err = (m: string) => errors.push(`speech: ${m}`);
   if (input.speech === null) return { errors, warnings };
+  const plugin = input.plugin ?? buildPlugin(input.lang);
+  const rules = plugin.rules;
+  const norm = (text: string) => normalizeSpoken(text, rules);
 
   const knownObjectives = new Set(
     (input.objectives?.objectives ?? []).map((objective) => objective.id)
@@ -169,8 +175,12 @@ export function validateSpeech(input: {
     if (ids.has(item.id)) err(`duplicate item id ${item.id}`);
     ids.add(item.id);
 
+    if (item.recognitionLocale !== plugin.recognitionLocale) {
+      err(`${item.id}: recognitionLocale "${item.recognitionLocale}" ≠ the ${input.lang} plugin's "${plugin.recognitionLocale}"`);
+    }
+
     // --- gradability -----------------------------------------------------
-    const normalizedVariants = item.acceptedVariants.map(normalizeSpokenFrench);
+    const normalizedVariants = item.acceptedVariants.map(norm);
     normalizedVariants.forEach((variant, index) => {
       if (variant.length === 0) {
         err(`${item.id}: acceptedVariants[${index}] normalizes to nothing`);
@@ -179,7 +189,7 @@ export function validateSpeech(input: {
     if (new Set(normalizedVariants).size !== normalizedVariants.length) {
       err(`${item.id}: acceptedVariants contains duplicates after normalization`);
     }
-    const normalizedTarget = normalizeSpokenFrench(item.target);
+    const normalizedTarget = norm(item.target);
     if (normalizedTarget.length === 0) {
       err(`${item.id}: target normalizes to nothing`);
     } else if (!normalizedVariants.includes(normalizedTarget)) {
@@ -187,7 +197,7 @@ export function validateSpeech(input: {
     }
     for (const [slotIndex, slot] of (item.requiredConcepts ?? []).entries()) {
       for (const form of slot) {
-        if (normalizeSpokenFrench(form).length === 0) {
+        if (norm(form).length === 0) {
           err(`${item.id}: requiredConcepts[${slotIndex}] has a form normalizing to nothing`);
         }
       }
@@ -209,14 +219,14 @@ export function validateSpeech(input: {
         err(`${item.id}: repetition needs a modelAudioRef — there is nothing to repeat`);
       }
     } else {
-      // Production cues must carry MEANING, never the French form: no
+      // Production cues must carry MEANING, never the target form: no
       // accepted answer (whole or fragment) may occur inside any
-      // learner-visible prompt text.
+      // learner-visible prompt text, in any native language.
       for (const text of promptTexts(item)) {
         for (const variant of item.acceptedVariants) {
-          if (exposesFrench(text, variant)) {
+          if (exposesTarget(text, variant, plugin)) {
             err(
-              `${item.id}: prompt text ${JSON.stringify(text)} exposes the French answer ${JSON.stringify(variant)} before the attempt`
+              `${item.id}: prompt text ${JSON.stringify(text)} exposes the target answer ${JSON.stringify(variant)} before the attempt`
             );
           }
         }
@@ -251,10 +261,7 @@ export function validateSpeech(input: {
   // --- embedded exercises must mirror their items exactly (single source
   // of truth stays the item; embedded runtime copies cannot drift) --------
   const itemById = new Map(input.speech.items.map((entry) => [entry.id, entry]));
-  const checkMirror = (
-    exercise: SpeakRepetitionExercise | SpeakProductionExercise,
-    context: "path" | "assessment"
-  ) => {
+  const checkMirror = (exercise: SpeakExercise, context: "path" | "assessment", nativeCode: string) => {
     const item = itemById.get(exercise.speechItemId);
     if (!item) {
       err(`${exercise.id}: unknown speech item ${exercise.speechItemId}`);
@@ -297,13 +304,23 @@ export function validateSpeech(input: {
           `${exercise.id}: speakProduction must reference a production item, got ${item.elicitationType}`
         );
       }
-      if (!same(exercise.instruction, item.prompt.instruction)) {
+      const instruction = item.prompt.instruction[nativeCode];
+      if (instruction === undefined) {
+        err(`${exercise.id}: item ${item.id} has no "${nativeCode}" instruction`);
+      } else if (!same(exercise.instruction, instruction)) {
         err(`${exercise.id}: instruction differs from item ${item.id}`);
       }
       if (!same(exercise.cueEmoji, item.prompt.cueEmoji)) {
         err(`${exercise.id}: cueEmoji differs from item ${item.id}`);
       }
-      if (!same(exercise.cueFacts, item.prompt.cueFacts)) {
+      let itemCueFacts: unknown;
+      try {
+        itemCueFacts = localizeCueFacts(item.prompt.cueFacts, nativeCode, item.id);
+      } catch (e) {
+        err(`${exercise.id}: ${(e as Error).message}`);
+        itemCueFacts = undefined;
+      }
+      if (!same(exercise.cueFacts, itemCueFacts)) {
         err(`${exercise.id}: cueFacts differ from item ${item.id}`);
       }
       if (exercise.revealTargetAfterAttempts !== item.assistancePolicy.revealTargetAfterAttempts) {
@@ -324,22 +341,19 @@ export function validateSpeech(input: {
     }
   };
 
-  if (input.frPack) {
-    for (const exercise of packSpeechExercises(input.frPack)) checkMirror(exercise, "path");
+  for (const pack of input.packs ?? []) {
+    for (const exercise of packSpeechExercises(pack)) checkMirror(exercise, "path", pack.nativeCode);
   }
-  for (const exercise of input.assessmentSpeech ?? []) {
-    checkMirror(exercise, "assessment");
+  for (const bank of input.assessmentSpeech ?? []) {
+    for (const exercise of bank.exercises) checkMirror(exercise, "assessment", bank.nativeCode);
   }
 
   return { errors, warnings };
 }
 
-/** Speak exercises inside the checkpoint and placement banks (§20). */
-export function assessmentBankSpeechExercises(): (
-  | SpeakRepetitionExercise
-  | SpeakProductionExercise
-)[] {
-  const found: (SpeakRepetitionExercise | SpeakProductionExercise)[] = [];
+/** Speak exercises inside the checkpoint and placement banks of a language (§20). */
+export function assessmentBankSpeechExercises(lang: string): SpeakExercise[] {
+  const found: SpeakExercise[] = [];
   const collect = (items: unknown) => {
     if (!Array.isArray(items)) return;
     for (const entry of items) {
@@ -348,13 +362,13 @@ export function assessmentBankSpeechExercises(): (
         exercise?.type === "speakProduction" ||
         exercise?.type === "speakRepetition"
       ) {
-        found.push(exercise as SpeakRepetitionExercise | SpeakProductionExercise);
+        found.push(exercise as SpeakExercise);
       }
     }
   };
   for (const [relPath, key] of [
-    ["content/fr/assessment/checkpoints.json", "checkpoints"],
-    ["content/fr/assessment/placement.json", "stages"],
+    [`content/${lang}/assessment/checkpoints.json`, "checkpoints"],
+    [`content/${lang}/assessment/placement.json`, "stages"],
   ] as const) {
     try {
       const doc = readJson(relPath) as Record<string, unknown>;
@@ -371,4 +385,9 @@ export function assessmentBankSpeechExercises(): (
     }
   }
   return found;
+}
+
+/** The native text of an item's instruction for one course (compile-time helper). */
+export function speechInstructionFor(item: SpeechItem, nativeCode: string): string {
+  return pickNative(item.prompt.instruction, nativeCode, `${item.id}.prompt.instruction`);
 }

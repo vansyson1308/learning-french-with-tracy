@@ -27,13 +27,20 @@ export type GeneratedLexiconData = {
     topic?: string;
     frequency?: { band: string; rank?: number; perMillion: number };
     pronunciation?: { value: string; notation: string };
-    examples: { fr: string; en: string; source: string }[];
+    /** Keyed by language code (target + native) plus the registered `source` id. */
+    examples: Record<string, string>[];
     confusables?: string[];
     sourceRefs: { source: string; key?: string }[];
   }[];
 };
 
 type Entry = GeneratedLexiconData["entries"][number] & { ord: number };
+
+/** The example texts without their provenance key (the repository surfaces language-coded text only). */
+function withoutSource(example: Record<string, string>): LexemeExample {
+  const { source: _source, ...texts } = example;
+  return texts;
+}
 
 function toSummary(e: Entry): LexemeSummary {
   return {
@@ -54,7 +61,7 @@ function toDetail(e: Entry): LexemeDetail {
     lookupForm: e.lookupForm,
     ...(e.pronunciation !== undefined ? { pronunciation: { ...e.pronunciation } } : {}),
     ...(e.frequency !== undefined ? { frequency: { ...e.frequency } } : {}),
-    examples: e.examples.map((ex) => ({ fr: ex.fr, en: ex.en })),
+    examples: e.examples.map(withoutSource),
     ...(e.confusables !== undefined ? { confusables: [...e.confusables] } : {}),
     sourceRefs: e.sourceRefs.map((r) => ({ ...r })),
   };
@@ -109,7 +116,7 @@ export class GeneratedLexiconRepository implements LexiconRepository {
 
   async getExamples(id: string): Promise<LexemeExample[]> {
     const entry = this.byId.get(id);
-    return entry ? entry.examples.map((ex) => ({ fr: ex.fr, en: ex.en })) : [];
+    return entry ? entry.examples.map(withoutSource) : [];
   }
 
   async supportsFrequencySort(): Promise<boolean> {

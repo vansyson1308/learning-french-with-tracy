@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "language": "xx",
+  "objectives": [
+    {
+      "id": "xx.obj.greet.basic",
+      "title": { "en": "Friends and farewells" },
+      "canDo": { "en": "I can recognise the two Testish words for friend and farewell." },
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        { "level": "A1", "scaleName": "Vocabulary range", "relation": "supports", "sourceRef": "cefr-cv-2020:vocabulary-range" }
+      ],
+      "essential": false
+    },
+    {
+      "id": "xx.obj.read.signs",
+      "title": { "en": "Reading short signs" },
+      "canDo": { "en": "I can find who is welcome on a short Testish sign." },
+      "category": "written_reception",
+      "prerequisites": ["xx.obj.greet.basic"],
+      "cefrAlignments": [
+        { "level": "A1", "scaleName": "Reading for orientation", "relation": "direct", "sourceRef": "cefr-cv-2020:reading-orientation" }
+      ],
+      "essential": true,
+      "evidenceNote": "Assessed with two reading items on one synthetic sign."
+    }
+  ]
+}

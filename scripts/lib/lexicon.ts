@@ -1,26 +1,26 @@
 /**
- * French rich-lexicon pipeline core (Phase 4).
+ * Rich-lexicon pipeline core (Phase 4, per target language since P1c).
  *
- * content/fr/lexicon/lexemes.json is the authoritative rich source for the
- * 54 curriculum lexemes. The 54 stable ids are SACROSANCT: this module
- * enforces a triple lock — (rich lexicon → derived surface→id map)
- * ≡ content/fr/lexemes.json ≡ src/lib/learning/ids-fr.ts — so no edit
- * anywhere can drift an id without failing validation.
+ * content/<lang>/lexicon/lexemes.json is the authoritative rich source for
+ * a language's curriculum lexemes. The stable ids are SACROSANCT: this
+ * module enforces a triple lock — (rich lexicon → derived surface→id map)
+ * ≡ content/<lang>/lexemes.json ≡ the committed generated registry — so no
+ * edit anywhere can drift an id without failing validation.
  *
- * External-source (Lexique 4) handling is fail-closed: the source manifest
- * must carry a pinned SHA-256 with status "retrieved" before any
- * lexique-derived field, sourceRef, or frequency may appear anywhere.
- * While the status is "not-retrieved", the matcher reports
- * "source-unavailable" and never invents matches.
+ * External-source handling (Lexique 4 for French) is fail-closed: the
+ * optional source manifest must carry a pinned SHA-256 with status
+ * "retrieved" before any source-derived field, sourceRef, or frequency may
+ * appear anywhere. While the status is "not-retrieved" (or no manifest
+ * exists) the matcher reports "source-unavailable" and never invents
+ * matches. Article/gender rules come from the build-time language plugin.
  */
 
 import { existsSync } from "fs";
 
 import {
-  FrLexemeMapSchema,
-  MatchOverridesSchema,
-  PackSchema,
-  RichLexiconSchema,
+  lexemeMapSchema,
+  matchOverridesSchema,
+  richLexiconSchema,
   SourceManifestSchema,
   type MatchOverrides,
   type PartOfSpeech,
@@ -28,25 +28,41 @@ import {
   type RichLexicon,
   type SourceManifest,
 } from "../../content/schema";
-import { loadRegistry, readJson, safeResolve, type ValidationResult } from "./pipeline";
+import { buildPlugin, type BuildLanguagePlugin } from "./languages";
+import { idsArtifactRoot, isTestOnlyTarget, loadRegistry, packsForTarget, readJson, safeResolve, type LoadedPack, type ValidationResult } from "./pipeline";
 
-const FR_COURSE_ID = "fr-en";
-
-/** The committed generated registry for a language (src/content/ids/<code>.json), or the frozen map itself before the first compile. */
-function committedRegistryMap(code: string, frozen: Record<string, string>): Record<string, string> {
-  const rel = `src/content/ids/${code}.json`;
+/** The committed generated registry for a language, or the frozen map itself before the first compile. */
+function committedRegistryMap(code: string, frozen: Record<string, string>, testOnly: boolean): Record<string, string> {
+  const rel = `${idsArtifactRoot(testOnly)}/${code}.json`;
   if (!existsSync(safeResolve(rel))) return frozen;
   return (readJson(rel) as { surfaceToId: Record<string, string> }).surfaceToId;
 }
 
 export const LEXIQUE_SOURCE_ID = "lexique-4";
 
-export function loadRichLexicon(): RichLexicon {
-  return RichLexiconSchema.parse(readJson("content/fr/lexicon/lexemes.json"));
+export function lexiconSourcePath(lang: string): string {
+  return `content/${lang}/lexicon/lexemes.json`;
 }
 
-export function loadSourceManifest(): SourceManifest {
-  return SourceManifestSchema.parse(readJson("content/fr/lexicon/source-manifest.json"));
+export function hasRichLexicon(lang: string): boolean {
+  return existsSync(safeResolve(lexiconSourcePath(lang)));
+}
+
+export function loadRichLexicon(lang: string): RichLexicon {
+  const doc = richLexiconSchema(lang).parse(readJson(lexiconSourcePath(lang)));
+  if (doc.language !== lang) throw new Error(`${lexiconSourcePath(lang)}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
+}
+
+/** The external-source manifest, or null when the language has no external lexical source. */
+export function loadSourceManifest(lang: string): SourceManifest | null {
+  const rel = `content/${lang}/lexicon/source-manifest.json`;
+  if (!existsSync(safeResolve(rel))) return null;
+  return SourceManifestSchema.parse(readJson(rel));
+}
+
+export function loadFrozenMap(lang: string): Record<string, string> {
+  return lexemeMapSchema(lang).parse(readJson(`content/${lang}/lexemes.json`));
 }
 
 /** surface → id map derived mechanically from the rich lexicon. */
@@ -57,58 +73,37 @@ export function derivedSurfaceMap(lexicon: RichLexicon): Record<string, string> 
 }
 
 // ---------------------------------------------------------------------------
-// Article handling (data rules, not runtime heuristics)
-// ---------------------------------------------------------------------------
-
-export type SurfaceArticle = "le" | "la" | "l'" | null;
-
-/**
- * Splits a course surface into its leading article (if any) and the rest.
- * Used only to VERIFY the authored lookupForm — the runtime never strips
- * articles on its own.
- */
-export function splitSurfaceArticle(surface: string): { article: SurfaceArticle; rest: string } {
-  if (surface.startsWith("le ")) return { article: "le", rest: surface.slice(3) };
-  if (surface.startsWith("la ")) return { article: "la", rest: surface.slice(3) };
-  if (surface.startsWith("l'")) return { article: "l'", rest: surface.slice(2) };
-  return { article: null, rest: surface };
-}
-
-const ARTICLE_GENDER: Record<string, "masculine" | "feminine"> = {
-  le: "masculine",
-  la: "feminine",
-  un: "masculine",
-  une: "feminine",
-};
-
-/**
- * Gendered determiners immediately preceding the lookup form inside a text.
- * Word-boundary aware; case-insensitive; elided l' carries no gender.
- */
-export function genderEvidenceInText(text: string, lookupForm: string): ("masculine" | "feminine")[] {
-  const evidence: ("masculine" | "feminine")[] = [];
-  const escaped = lookupForm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const re = new RegExp(`(?:^|[^\\p{L}])(le|la|un|une)\\s+${escaped}(?=$|[^\\p{L}])`, "giu");
-  for (const m of text.matchAll(re)) {
-    const g = ARTICLE_GENDER[m[1].toLowerCase()];
-    if (g) evidence.push(g);
-  }
-  return evidence;
-}
-
-// ---------------------------------------------------------------------------
 // Validation
 // ---------------------------------------------------------------------------
 
+/** Course glosses of one native language: surface → gloss (first occurrence wins, as authored). */
+export type PackGlosses = { nativeCode: string; gloss: Map<string, string> };
+
+export function packGlossesOf(packs: LoadedPack[]): PackGlosses[] {
+  const byNative = new Map<string, Map<string, string>>();
+  for (const { pack } of packs) {
+    const gloss = byNative.get(pack.nativeCode) ?? new Map<string, string>();
+    byNative.set(pack.nativeCode, gloss);
+    for (const section of pack.sections)
+      for (const unit of section.units)
+        for (const word of unit.words) {
+          if (!gloss.has(word.target)) gloss.set(word.target, word.native);
+        }
+  }
+  return [...byNative.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([nativeCode, gloss]) => ({ nativeCode, gloss }));
+}
+
 /** Pure rule engine — everything injected so tests can prove each rule fires. */
 export function validateLexiconData(input: {
+  plugin: BuildLanguagePlugin;
   lexicon: RichLexicon;
-  manifest: SourceManifest;
+  /** null = the language has no external lexical source. */
+  manifest: SourceManifest | null;
   frozenMap: Record<string, string>;
   runtimeMap: Record<string, string>;
   registryIds: Set<string>;
-  /** course surface → native gloss (first occurrence wins, as authored). */
-  packGloss: Map<string, string>;
+  /** Every course of the target language: its native code and surface → gloss map. */
+  packGlosses: PackGlosses[];
   /**
    * §18 band boundaries from the committed population statistics; when
    * provided, every stored band must recompute from its rawValue — a band
@@ -116,11 +111,13 @@ export function validateLexiconData(input: {
    */
   bandThresholds?: FrequencyBandThresholds;
 }): ValidationResult {
-  const { lexicon, manifest, frozenMap, runtimeMap, registryIds, packGloss, bandThresholds } = input;
+  const { plugin, lexicon, manifest, frozenMap, runtimeMap, registryIds, packGlosses, bandThresholds } = input;
   const errors: string[] = [];
   const err = (m: string) => errors.push(`lexicon: ${m}`);
+  const lang = plugin.code;
 
-  const sourceRetrieved = manifest.retrieval.status === "retrieved";
+  const externalSourceId = manifest?.source.id ?? null;
+  const sourceRetrieved = manifest?.retrieval.status === "retrieved";
   const byId = new Map<string, RichLexeme>();
 
   // Uniqueness.
@@ -135,33 +132,39 @@ export function validateLexiconData(input: {
   const derived = derivedSurfaceMap(lexicon);
   const canon = (m: Record<string, string>) => JSON.stringify(Object.entries(m).sort());
   if (canon(derived) !== canon(frozenMap)) {
-    err("rich lexicon drifted from the frozen surface→id map (content/fr/lexemes.json) — stable ids are frozen; fix the rich source, never the map");
+    err(`rich lexicon drifted from the frozen surface→id map (content/${lang}/lexemes.json) — stable ids are frozen; fix the rich source, never the map`);
   }
   if (canon(frozenMap) !== canon(runtimeMap)) {
-    err("frozen map drifted from the committed registry src/content/ids/fr.json — run bun run content:compile");
+    err(`frozen map drifted from the committed registry (src/content/ids/${lang}.json) — run bun run content:compile`);
   }
 
-  // Cross-check against the course pack: gloss identity and full coverage.
-  for (const [target] of packGloss) {
-    if (derived[target] === undefined) err(`pack word "${target}" missing from rich lexicon`);
-  }
-  for (const lex of lexicon.lexemes) {
-    const packNative = packGloss.get(lex.surface);
-    if (packNative !== undefined && packNative !== lex.nativeGloss) {
-      err(`${lex.id}: nativeGloss "${lex.nativeGloss}" ≠ course gloss "${packNative}" — one truth, no drift`);
+  // Cross-check against every course pack of the language: gloss identity
+  // per native language and full coverage.
+  for (const { nativeCode, gloss } of packGlosses) {
+    for (const [target] of gloss) {
+      if (derived[target] === undefined) err(`pack word "${target}" missing from rich lexicon`);
+    }
+    for (const lex of lexicon.lexemes) {
+      const packNative = gloss.get(lex.surface);
+      if (packNative === undefined) continue;
+      const authored = lex.glosses[nativeCode];
+      if (authored === undefined) {
+        err(`${lex.id}: no "${nativeCode}" gloss but a ${lang}-${nativeCode} course teaches "${lex.surface}"`);
+      } else if (authored !== packNative) {
+        err(`${lex.id}: gloss "${authored}" (${nativeCode}) ≠ course gloss "${packNative}" — one truth, no drift`);
+      }
     }
   }
 
   // Per-lexeme rules.
-  const exampleCorpus = lexicon.lexemes
-    .flatMap((l) => l.examples.map((ex) => ex.fr))
-    .join("\n");
+  const exampleCorpus = lexicon.lexemes.flatMap((l) => l.examples.map((ex) => ex.target)).join("\n");
+  const articles = plugin.articleRules;
 
   for (const lex of lexicon.lexemes) {
     const where = lex.id;
 
-    // Gender ⟺ noun.
-    if (lex.partOfSpeech === "noun" && lex.gender === undefined) {
+    // Gender ⟺ noun (only meaningful where the language has grammatical gender).
+    if (articles !== null && lex.partOfSpeech === "noun" && lex.gender === undefined) {
       err(`${where}: nouns must carry gender (use "unknown" only when genuinely unknown)`);
     }
     if (lex.partOfSpeech !== "noun" && lex.gender !== undefined) {
@@ -169,7 +172,7 @@ export function validateLexiconData(input: {
     }
 
     // lookupForm is the surface minus its leading article — stored, verified.
-    const { article, rest } = splitSurfaceArticle(lex.surface);
+    const { article, rest } = plugin.splitSurfaceArticle(lex.surface);
     if (rest !== lex.lookupForm) {
       err(`${where}: lookupForm "${lex.lookupForm}" ≠ surface minus article ("${rest}")`);
     }
@@ -179,16 +182,16 @@ export function validateLexiconData(input: {
 
     // Article-consistency audit (course display vs authored gender). A
     // contradiction FAILS the gate — display text is never silently "fixed".
-    if (article === "le" && lex.gender !== "masculine") {
-      err(`${where}: surface article "le" contradicts authored gender "${lex.gender}"`);
+    if (article !== null && articles !== null) {
+      const proves = articles.gender[article];
+      if (proves !== undefined && lex.gender !== proves) {
+        err(`${where}: surface article "${article}" contradicts authored gender "${lex.gender}"`);
+      }
     }
-    if (article === "la" && lex.gender !== "feminine") {
-      err(`${where}: surface article "la" contradicts authored gender "${lex.gender}"`);
-    }
-    // Example-sentence evidence (un/une/le/la before the lookup form,
-    // anywhere in the authored examples corpus) must agree too.
-    if (lex.partOfSpeech === "noun" && (lex.gender === "masculine" || lex.gender === "feminine")) {
-      for (const evidence of genderEvidenceInText(exampleCorpus, lex.lookupForm)) {
+    // Example-sentence evidence (gendered determiners before the lookup
+    // form, anywhere in the authored examples corpus) must agree too.
+    if (lex.partOfSpeech === "noun" && lex.gender !== undefined && lex.gender !== "both" && lex.gender !== "unknown") {
+      for (const evidence of plugin.genderEvidenceInText(exampleCorpus, lex.lookupForm)) {
         if (evidence !== lex.gender) {
           err(`${where}: example text shows a ${evidence} article before "${lex.lookupForm}" but authored gender is ${lex.gender}`);
         }
@@ -207,21 +210,19 @@ export function validateLexiconData(input: {
       ...(lex.frequency ? [lex.frequency.source] : []),
     ];
     for (const src of refSources) {
-      if (src === LEXIQUE_SOURCE_ID) {
+      if (externalSourceId !== null && src === externalSourceId) {
         if (!sourceRetrieved) {
-          err(`${where}: references ${LEXIQUE_SOURCE_ID} but the source manifest is "not-retrieved" — fail-closed`);
+          err(`${where}: references ${externalSourceId} but the source manifest is "not-retrieved" — fail-closed`);
         }
         if (!registryIds.has(src)) {
-          err(`${where}: ${LEXIQUE_SOURCE_ID} data present but not registered in content/sources/registry.json`);
+          err(`${where}: ${externalSourceId} data present but not registered in content/sources/registry.json`);
         }
       } else if (!registryIds.has(src)) {
         err(`${where}: source "${src}" is not registered`);
       }
     }
-    if (lex.partOfSpeech === "expression") {
-      if (refSources.includes(LEXIQUE_SOURCE_ID)) {
-        err(`${where}: expressions are project-authored — a Lexique match here would be fabricated`);
-      }
+    if (lex.partOfSpeech === "expression" && externalSourceId !== null && refSources.includes(externalSourceId)) {
+      err(`${where}: expressions are project-authored — a ${externalSourceId} match here would be fabricated`);
     }
     // Lexique 4 ships genuine IPA in its dedicated 3_Phono_IPA column
     // (documented in content/fr/lexicon/LEXIQUE4_COLUMNS.md), so a
@@ -237,8 +238,12 @@ export function validateLexiconData(input: {
     ) {
       err(`${where}: lexique-4 pronunciation labeled "ipa" contains Lexique-ASCII alphabet characters — genuine IPA comes verbatim from 3_Phono_IPA only (2_Phono is notation "phonology")`);
     }
-    if (lex.frequency && lex.frequency.source !== LEXIQUE_SOURCE_ID) {
-      err(`${where}: frequency must come from real ${LEXIQUE_SOURCE_ID} measurements only`);
+    if (lex.frequency && (externalSourceId === null || lex.frequency.source !== externalSourceId)) {
+      err(
+        externalSourceId === null
+          ? `${where}: frequency needs a registered external measurement source (no source manifest for ${lang})`
+          : `${where}: frequency must come from real ${externalSourceId} measurements only`
+      );
     }
     if (lex.frequency && bandThresholds) {
       const expected = frequencyBandFor(lex.frequency.rawValue, bandThresholds);
@@ -264,39 +269,37 @@ export function validateLexiconData(input: {
   return { errors, warnings: [] };
 }
 
-/** Disk-reading wrapper used by the content:validate CLI. */
-export function validateLexicon(): ValidationResult {
+/** Disk-reading wrapper used by the content:validate CLI, for one target language. */
+export function validateLexicon(lang: string, packs: LoadedPack[]): ValidationResult {
+  if (!hasRichLexicon(lang)) return { errors: [], warnings: [] };
   let lexicon: RichLexicon;
-  let manifest: SourceManifest;
+  let manifest: SourceManifest | null;
   try {
-    lexicon = loadRichLexicon();
+    lexicon = loadRichLexicon(lang);
   } catch (e) {
     return {
-      errors: [`lexicon: lexemes.json failed schema validation — ${(e as Error).message.split("\n")[0]}`],
+      errors: [`lexicon: ${lexiconSourcePath(lang)} failed schema validation — ${(e as Error).message.split("\n")[0]}`],
       warnings: [],
     };
   }
   try {
-    manifest = loadSourceManifest();
+    manifest = loadSourceManifest(lang);
   } catch (e) {
     return {
-      errors: [`lexicon: source-manifest.json failed schema validation — ${(e as Error).message.split("\n")[0]}`],
+      errors: [`lexicon: content/${lang}/lexicon/source-manifest.json failed schema validation — ${(e as Error).message.split("\n")[0]}`],
       warnings: [],
     };
   }
-  const frozenMap = FrLexemeMapSchema.parse(readJson("content/fr/lexemes.json"));
-  const frPack = PackSchema.parse(readJson(`content/courses/${FR_COURSE_ID}.json`));
-  const packGloss = new Map<string, string>();
-  for (const section of frPack.sections)
-    for (const unit of section.units)
-      for (const word of unit.words) {
-        if (!packGloss.has(word.target)) packGloss.set(word.target, word.native);
-      }
+  if (!existsSync(safeResolve(`content/${lang}/lexemes.json`))) {
+    return { errors: [`lexicon: content/${lang}/lexemes.json (the frozen surface→id map) is missing`], warnings: [] };
+  }
+  const frozenMap = loadFrozenMap(lang);
+  const mine = packsForTarget(lang, packs);
   // Band thresholds come from the committed population statistics when the
   // derivation exists and matches the pinned artifact.
   let bandThresholds: FrequencyBandThresholds | undefined;
-  const statsRel = "content/fr/lexicon/derived/frequency-stats.json";
-  if (manifest.retrieval.status === "retrieved" && existsSync(safeResolve(statsRel))) {
+  const statsRel = `content/${lang}/lexicon/derived/frequency-stats.json`;
+  if (manifest?.retrieval.status === "retrieved" && existsSync(safeResolve(statsRel))) {
     const stats = readJson(statsRel) as {
       source?: { sha256?: string };
       freqLemme?: { quantiles?: Record<string, number> };
@@ -307,19 +310,20 @@ export function validateLexicon(): ValidationResult {
   }
 
   const result = validateLexiconData({
+    plugin: buildPlugin(lang),
     lexicon,
     manifest,
     frozenMap,
-    runtimeMap: committedRegistryMap("fr", frozenMap),
+    runtimeMap: committedRegistryMap(lang, frozenMap, isTestOnlyTarget(lang, packs)),
     registryIds: new Set(loadRegistry().sources.map((s) => s.id)),
-    packGloss,
+    packGlosses: packGlossesOf(mine),
     bandThresholds,
   });
 
   // Manual match overrides validate against the committed evidence subset.
   let overrides: MatchOverrides;
   try {
-    overrides = loadMatchOverrides();
+    overrides = loadMatchOverrides(lang);
   } catch (e) {
     result.errors.push(
       `match-overrides: match-overrides.json failed schema validation — ${(e as Error).message.split("\n")[0]}`
@@ -327,7 +331,7 @@ export function validateLexicon(): ValidationResult {
     return result;
   }
   if (overrides.overrides.length > 0) {
-    const subsetRel = "content/fr/lexicon/derived/lexique-subset.json";
+    const subsetRel = `content/${lang}/lexicon/derived/lexique-subset.json`;
     if (!existsSync(safeResolve(subsetRel))) {
       result.errors.push(
         "match-overrides: overrides exist but the committed evidence subset is missing — run the derive step first"
@@ -607,23 +611,24 @@ export function matchLexemes(
 }
 
 /**
- * The source-match audit. Without an artifact (the committed state while
- * the manifest is "not-retrieved") every matchable lexeme reports
- * "source-unavailable"; the developer-side extractor passes real parsed
- * rows and regenerates the committed audit at retrieval time.
+ * The source-match audit for a language. Without an artifact (the
+ * committed state while the manifest is "not-retrieved" or absent) every
+ * matchable lexeme reports "source-unavailable"; the developer-side
+ * extractor passes real parsed rows and regenerates the committed audit at
+ * retrieval time.
  */
-export function lexiconSourceAudit(rows: LexiqueRow[] | null = null): SourceMatchRow[] {
-  return matchLexemes(loadRichLexicon(), rows);
+export function lexiconSourceAudit(lexicon: RichLexicon, rows: LexiqueRow[] | null = null): SourceMatchRow[] {
+  return matchLexemes(lexicon, rows);
 }
 
 // ---------------------------------------------------------------------------
 // Manual match overrides (§15 dispositions for matcher-unresolvable items)
 // ---------------------------------------------------------------------------
 
-export function loadMatchOverrides(): MatchOverrides {
-  const rel = "content/fr/lexicon/match-overrides.json";
+export function loadMatchOverrides(lang: string): MatchOverrides {
+  const rel = `content/${lang}/lexicon/match-overrides.json`;
   if (!existsSync(safeResolve(rel))) return { version: 1, overrides: [] };
-  return MatchOverridesSchema.parse(readJson(rel));
+  return matchOverridesSchema(lang).parse(readJson(rel));
 }
 
 /**

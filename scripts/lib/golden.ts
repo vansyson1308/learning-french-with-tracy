@@ -1,8 +1,9 @@
 /**
  * Compile goldens (P1a): a committed manifest of sha256 hashes for every
  * generated artifact — every file under src/content/**, every
- * content/reports/*.json, ATTRIBUTIONS.md, src/content/attributions.json —
- * plus the logical dump of the prebuilt SQLite lexicon. The golden test
+ * content/reports/**.json, ATTRIBUTIONS.md, src/content/attributions.json —
+ * plus the logical dump of every prebuilt SQLite lexicon (one per target
+ * language since P1c). The golden test
  * (scripts/__tests__/golden/compile-golden.test.ts) checks the committed
  * files against the manifest AND recompiles everything in memory to prove
  * that a refactor of the pipeline changed nothing observable.
@@ -16,7 +17,7 @@ import os from "os";
 import path from "path";
 
 import { compileAllArtifacts } from "./compile-artifacts";
-import { buildSqliteDb, logicalDump } from "./lexicon-build";
+import { buildSqliteDb, dbAssetLanguage, logicalDump } from "./lexicon-build";
 import { loadRegistry, readJson, removeTempDirSync, safeResolve } from "./pipeline";
 
 export const GOLDEN_DIR = "scripts/__tests__/golden";
@@ -25,13 +26,17 @@ export const COMPILE_CHANGELOG_REL = `${GOLDEN_DIR}/CHANGELOG.md`;
 export const RUNTIME_GOLDEN_DIR = "src/lib/__tests__/golden";
 export const RUNTIME_SNAPSHOT_DIR = `${RUNTIME_GOLDEN_DIR}/snapshots`;
 
-export const COMPILE_MANIFEST_FORMAT = "compile-golden/1";
+/** Format 2 (P1c): `lexiconDbs` keyed by language replaces the single `lexiconDb`. */
+export const COMPILE_MANIFEST_FORMAT = "compile-golden/2";
+
+export type LexiconDbPin = { name: string; logicalDumpSha256: string };
 
 export type CompileManifest = {
   format: typeof COMPILE_MANIFEST_FORMAT;
   /** repo-relative POSIX path → sha256 of the committed bytes. */
   files: Record<string, string>;
-  lexiconDb: { name: string; logicalDumpSha256: string };
+  /** language → committed database name + logical-dump hash. */
+  lexiconDbs: Record<string, LexiconDbPin>;
 };
 
 export function sha256(data: string | Uint8Array): string {
@@ -71,37 +76,40 @@ export function pinnedGeneratedFiles(): string[] {
   ].sort();
 }
 
-/** The single committed lexicon database (assets/lexicon/*.db). */
-export function committedLexiconDb(): { name: string; abs: string } {
+/** The committed lexicon databases (assets/lexicon/<lang>-lexicon-v*-<hash>.db), by language. */
+export function committedLexiconDbs(): Record<string, { name: string; abs: string }> {
   const dir = safeResolve("assets/lexicon");
+  const out: Record<string, { name: string; abs: string }> = {};
   const dbs = existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".db")).sort() : [];
-  if (dbs.length !== 1) {
-    throw new Error(`expected exactly one assets/lexicon/*.db, found ${dbs.length}: ${dbs.join(", ")}`);
+  for (const name of dbs) {
+    const lang = dbAssetLanguage(name);
+    if (lang === undefined) throw new Error(`assets/lexicon/${name} is not a <lang>-lexicon-v<n>-<hash>.db asset`);
+    if (out[lang]) throw new Error(`assets/lexicon has two databases for ${lang}: ${out[lang].name}, ${name}`);
+    out[lang] = { name, abs: path.join(dir, name) };
   }
-  return { name: dbs[0], abs: path.join(dir, dbs[0]) };
+  return out;
 }
 
 /** Manifest of what is COMMITTED right now (no compilation). */
 export function committedCompileManifest(): CompileManifest {
   const files: Record<string, string> = {};
   for (const rel of pinnedGeneratedFiles()) files[rel] = sha256(readFileSync(safeResolve(rel)));
-  const db = committedLexiconDb();
-  return {
-    format: COMPILE_MANIFEST_FORMAT,
-    files,
-    lexiconDb: { name: db.name, logicalDumpSha256: sha256(logicalDump(db.abs)) },
-  };
+  const lexiconDbs: Record<string, LexiconDbPin> = {};
+  for (const [lang, db] of Object.entries(committedLexiconDbs())) {
+    lexiconDbs[lang] = { name: db.name, logicalDumpSha256: sha256(logicalDump(db.abs)) };
+  }
+  return { format: COMPILE_MANIFEST_FORMAT, files, lexiconDbs };
 }
 
 export type FreshCompile = {
   /** relPath → sha256 of the freshly compiled contents (text artifacts only). */
   files: Record<string, string>;
-  lexiconDb: { name: string; logicalDumpSha256: string };
+  lexiconDbs: Record<string, LexiconDbPin>;
 };
 
 /**
- * Recompile every artifact in memory (and the SQLite db into a temp dir)
- * and hash the results. Never touches the repository.
+ * Recompile every artifact in memory (and the SQLite databases into a temp
+ * dir) and hash the results. Never touches the repository.
  */
 export function freshCompile(): FreshCompile {
   const compiled = compileAllArtifacts();
@@ -109,12 +117,14 @@ export function freshCompile(): FreshCompile {
   for (const f of compiled.files) files[f.relPath] = sha256(f.contents);
   const tempDir = mkdtempSync(path.join(os.tmpdir(), "golden-db-"));
   try {
-    const fresh = path.join(tempDir, compiled.dbName);
-    buildSqliteDb(fresh, compiled.lexicon, loadRegistry(), compiled.lexiconContentHash);
-    return {
-      files,
-      lexiconDb: { name: compiled.dbName, logicalDumpSha256: sha256(logicalDump(fresh)) },
-    };
+    const registry = loadRegistry();
+    const lexiconDbs: Record<string, LexiconDbPin> = {};
+    for (const plan of compiled.lexiconDbs) {
+      const fresh = path.join(tempDir, plan.name);
+      buildSqliteDb(fresh, plan.lexicon, registry, plan.contentHash, plan.options);
+      lexiconDbs[plan.lang] = { name: plan.name, logicalDumpSha256: sha256(logicalDump(fresh)) };
+    }
+    return { files, lexiconDbs };
   } finally {
     removeTempDirSync(tempDir);
   }
@@ -150,6 +160,13 @@ export function formatDiff(label: string, diff: ManifestDiff): string[] {
   for (const f of diff.added) lines.push(`${label}: new      ${f}`);
   for (const f of diff.removed) lines.push(`${label}: missing  ${f}`);
   return lines;
+}
+
+/** Database pins as a flat `lang:name` → dump-hash map so diffFileHashes can compare them. */
+export function dbPinsAsFiles(pins: Record<string, LexiconDbPin>): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [lang, pin] of Object.entries(pins)) out[`lexicon-db:${lang}:${pin.name}`] = pin.logicalDumpSha256;
+  return out;
 }
 
 /** Runtime snapshot files (src/lib/__tests__/golden/snapshots/*.json) with hashes. */

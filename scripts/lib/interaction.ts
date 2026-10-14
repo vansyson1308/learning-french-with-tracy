@@ -1,54 +1,59 @@
 /**
- * Spoken-interaction content pipeline (P9 §24-§37).
+ * Spoken-interaction content pipeline (P9 §24-§37; per target language
+ * since P1c).
  *
- * Source of truth: content/fr/interaction/scenarios.json. The compiled
+ * Source of truth: content/<lang>/interaction/scenarios.json. The compiled
  * artifact carries EVERY scenario (reserved flagged, filtered by runtime
  * practice surfaces) because the interaction checkpoint executes reserved
  * graphs directly. Validators enforce graph integrity (no dead ends, no
- * unreachable goals), deterministic gradability of every intent, honest
- * clip references, and the CONSTRUCT rules: a scenario is only direct
- * interaction evidence when it is genuinely multi-turn (§36, §80).
+ * unreachable goals), deterministic gradability of every intent (through
+ * the language plugin's folding), honest clip references, and the
+ * CONSTRUCT rules: a scenario is only direct interaction evidence when it
+ * is genuinely multi-turn (§36, §80).
  */
 
 import { existsSync } from "fs";
 
 import {
-  InteractionScenariosSchema,
+  interactionScenariosSchema,
   type CourseObjectives,
   type InteractionScenarios,
   type InteractionScenarioSource,
   type Listening,
 } from "../../content/schema";
-import { languageRules } from "../../src/lib/languages";
 import { normalizeSpoken } from "../../src/lib/speech/grader";
-
-/** The authored sources under content/fr are French (P1c parameterises this). */
-const RULES = languageRules("fr");
-const normalizeSpokenFrench = (text: string) => normalizeSpoken(text, RULES);
+import { buildPlugin, type BuildLanguagePlugin } from "./languages";
+import { localizeScenarioNodes, pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
-export const INTERACTION_SOURCE = "content/fr/interaction/scenarios.json";
-
-export function loadInteractionScenarios(): InteractionScenarios | null {
-  if (!existsSync(safeResolve(INTERACTION_SOURCE))) return null;
-  return InteractionScenariosSchema.parse(readJson(INTERACTION_SOURCE));
+export function interactionSourcePath(lang: string): string {
+  return `content/${lang}/interaction/scenarios.json`;
 }
 
-/** Runtime artifact: ALL scenarios, reserved flagged (checkpoint needs them). */
+export function loadInteractionScenarios(lang: string): InteractionScenarios | null {
+  const rel = interactionSourcePath(lang);
+  if (!existsSync(safeResolve(rel))) return null;
+  const doc = interactionScenariosSchema(lang).parse(readJson(rel));
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
+}
+
+/** Runtime artifact: ALL scenarios, reserved flagged (checkpoint needs them), native text resolved. */
 export function compileInteractionArtifact(
-  doc: InteractionScenarios | null
+  doc: InteractionScenarios | null,
+  nativeCode: string
 ): string {
   const scenarios = doc?.scenarios ?? [];
   const byId: Record<string, unknown> = {};
   for (const scenario of scenarios) {
     byId[scenario.id] = {
       id: scenario.id,
-      title: scenario.title,
-      goal: scenario.goal,
+      title: pickNative(scenario.title, nativeCode, `${scenario.id}.title`),
+      goal: pickNative(scenario.goal, nativeCode, `${scenario.id}.goal`),
       taskFamily: scenario.taskFamily,
       objectiveRefs: scenario.objectiveRefs,
       startNodeId: scenario.startNodeId,
-      nodes: scenario.nodes,
+      nodes: localizeScenarioNodes(scenario, nativeCode),
       support: scenario.support,
       reserved: scenario.reserved,
     };
@@ -63,22 +68,26 @@ export function compileInteractionArtifact(
 
 type InteractionExerciseRef = { type: string; id: string; scenarioId?: string };
 
-export type FrPackForInteraction = {
+export type PackForInteraction = {
   sections: { units: { lessons: { exercises: InteractionExerciseRef[] }[] }[] }[];
 };
 
 export function validateInteraction(input: {
+  lang: string;
   interaction: InteractionScenarios | null;
   objectives: CourseObjectives | null;
   listening: Listening | null;
-  frPack?: FrPackForInteraction;
+  packs?: PackForInteraction[];
   /** interactionScenario exercises found in scored banks. */
   assessmentInteraction?: InteractionExerciseRef[];
+  plugin?: BuildLanguagePlugin;
 }): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
   const err = (m: string) => errors.push(`interaction: ${m}`);
   if (input.interaction === null) return { errors, warnings };
+  const rules = (input.plugin ?? buildPlugin(input.lang)).rules;
+  const norm = (text: string) => normalizeSpoken(text, rules);
 
   const knownObjectives = new Set(
     (input.objectives?.objectives ?? []).map((o) => o.id)
@@ -135,7 +144,7 @@ export function validateInteraction(input: {
           }
           seenIntents.add(expected.intent);
           ref(node.id, expected.next);
-          const normalized = expected.acceptedVariants.map(normalizeSpokenFrench);
+          const normalized = expected.acceptedVariants.map(norm);
           normalized.forEach((v, i) => {
             if (v.length === 0) {
               err(`${scenario.id}/${node.id}/${expected.intent}: variant[${i}] normalizes to nothing`);
@@ -143,7 +152,7 @@ export function validateInteraction(input: {
           });
           for (const slot of expected.requiredConcepts ?? []) {
             for (const form of slot) {
-              if (normalizeSpokenFrench(form).length === 0) {
+              if (norm(form).length === 0) {
                 err(`${scenario.id}/${node.id}/${expected.intent}: concept form normalizes to nothing`);
               }
             }
@@ -240,8 +249,8 @@ export function validateInteraction(input: {
       err(`${exercise.id}: scored banks require RESERVED scenarios`);
     }
   };
-  if (input.frPack) {
-    for (const section of input.frPack.sections) {
+  for (const pack of input.packs ?? []) {
+    for (const section of pack.sections) {
       for (const unit of section.units) {
         for (const lesson of unit.lessons) {
           for (const exercise of lesson.exercises) checkRef(exercise, "path");
@@ -256,8 +265,8 @@ export function validateInteraction(input: {
   return { errors, warnings };
 }
 
-/** interactionScenario exercises inside scored banks. */
-export function assessmentBankInteractionExercises(): InteractionExerciseRef[] {
+/** interactionScenario exercises inside the scored banks of a language. */
+export function assessmentBankInteractionExercises(lang: string): InteractionExerciseRef[] {
   const out: InteractionExerciseRef[] = [];
   const collect = (items: unknown) => {
     if (!Array.isArray(items)) return;
@@ -267,8 +276,8 @@ export function assessmentBankInteractionExercises(): InteractionExerciseRef[] {
     }
   };
   for (const [relPath, key] of [
-    ["content/fr/assessment/checkpoints.json", "checkpoints"],
-    ["content/fr/assessment/placement.json", "stages"],
+    [`content/${lang}/assessment/checkpoints.json`, "checkpoints"],
+    [`content/${lang}/assessment/placement.json`, "stages"],
   ] as const) {
     try {
       const doc = readJson(relPath) as Record<string, unknown>;

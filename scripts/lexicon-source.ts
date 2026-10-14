@@ -16,6 +16,12 @@ import { readFileSync } from "fs";
 
 import { loadSourceManifest } from "./lib/lexicon";
 
+/** Lexique 4 is a FRENCH source; these tools take --lang for symmetry but default to it. */
+const LEXIQUE_LANG = (() => {
+  const i = process.argv.indexOf("--lang");
+  return i >= 0 ? process.argv[i + 1] : "fr";
+})();
+
 function fail(message: string): never {
   console.error(`ERROR ${message}`);
   process.exit(1);
@@ -37,7 +43,8 @@ try {
   fail(`cannot read artifact at ${artifactPath}`);
 }
 const sha256 = createHash("sha256").update(bytes).digest("hex");
-const manifest = loadSourceManifest();
+const manifest = loadSourceManifest(LEXIQUE_LANG);
+if (manifest === null) throw new Error(`content/${LEXIQUE_LANG}/lexicon/source-manifest.json is missing`);
 
 console.log(`artifact: ${artifactPath}`);
 console.log(`sha256:   ${sha256}`);

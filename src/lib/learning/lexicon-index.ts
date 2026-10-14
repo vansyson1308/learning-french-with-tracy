@@ -21,7 +21,8 @@ export type LexemeMeta = {
   topic?: string;
   band?: string;
   pronunciation?: { value: string; notation: string };
-  example?: { fr: string; en: string };
+  /** First example keyed by language code (`{ [targetCode]: …, [nativeCode]: … }`). */
+  example?: Record<string, string>;
   confusables?: string[];
 };
 

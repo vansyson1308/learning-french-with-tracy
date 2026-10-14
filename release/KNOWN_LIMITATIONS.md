@@ -49,7 +49,16 @@ itself.
 - No accounts, no sync: progress lives on the device; backup is a manual
   export/import file.
 - The seven non-French courses run on the legacy scheduler untouched; the
-  French excellence layer is French-only.
+  French excellence layer is French-only (content, not code: since P1c the
+  schema, validators and compiler accept any target language — see
+  `content/README.md` — but only French has authored rich sources).
+- P1c compiles ONE set of rich artifacts per target language in the native
+  language of that language's courses; a target with courses in several
+  native languages (fr-en + fr-vi) needs the per-course artifacts of P2b.
+  Two historical names are kept for golden byte-identity until a told
+  rename: French reports stay at `content/reports/*.json` (other languages
+  report under `content/reports/<code>/`) and the French writing artifact's
+  token set stays under the `knownFrench` key.
 - The A1 statement is a **CEFR-aligned A1 estimate** derived from the
   course's own checks; it is not an official or certified CEFR result and
   the assessment has no empirical validation (no response data, no item

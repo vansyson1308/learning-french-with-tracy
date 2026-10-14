@@ -9,6 +9,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import { conceptFor } from "@/lib/learning/concepts";
+import { exampleTexts } from "@/lib/lexicon/example-text";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 export function ConceptCard({ courseId, conceptId }: { courseId: string; conceptId: string }) {
@@ -28,13 +29,17 @@ export function ConceptCard({ courseId, conceptId }: { courseId: string; concept
       <Text style={styles.explanation}>{concept.explanation}</Text>
 
       <View style={styles.examples}>
-        {concept.examples.map((example) => (
-          <View key={example.fr} style={styles.exampleRow}>
-            <Text style={styles.exampleFr}>{example.fr}</Text>
-            <Text style={styles.exampleEn}>{example.en}</Text>
-            {example.note ? <Text style={styles.exampleNote}>{example.note}</Text> : null}
-          </View>
-        ))}
+        {concept.examples.map((example, index) => {
+          const texts = exampleTexts(courseId, example);
+          if (!texts) return null;
+          return (
+            <View key={`${index}-${texts.target}`} style={styles.exampleRow}>
+              <Text style={styles.exampleFr}>{texts.target}</Text>
+              <Text style={styles.exampleEn}>{texts.native}</Text>
+              {example.note ? <Text style={styles.exampleNote}>{example.note}</Text> : null}
+            </View>
+          );
+        })}
       </View>
 
       {concept.exceptions.length > 0 ? (

@@ -1,11 +1,15 @@
 /**
- * Content pipeline core (Phase 2). Pure functions over the content/ source
- * tree; the thin CLIs in scripts/ call these. Rules this module enforces:
+ * Content pipeline core (Phase 2, generalised in P1c). Pure functions over
+ * the content/ source tree; the thin CLIs in scripts/ call these. Rules
+ * this module enforces:
  *
- * - content/ is the source of truth; src/content/packs/*.json, packs/index.ts,
- *   ATTRIBUTIONS.md and content/reports/ are GENERATED artifacts (committed,
- *   drift-guarded in CI). catalog.json stays hand-maintained; the legacy
- *   audio manifest is an immutable baseline, never regenerated here.
+ * - content/ is the source of truth; everything under GENERATED_TARGETS is
+ *   a GENERATED artifact (committed, drift-guarded in CI) — including, since
+ *   P1c, src/content/catalog.json. The legacy audio manifest is an
+ *   immutable baseline, never regenerated here.
+ * - Targets are discovered, never listed: every `content/courses/*.json`
+ *   pack names its targetCode, and `content/<code>/` holds that language's
+ *   rich sources. Nothing here names a language.
  * - Deterministic output: same input bytes → same output bytes. No
  *   timestamps, no randomness, no network. CI makes zero paid API calls.
  * - Writes go only to the declared generated targets; every path is
@@ -18,17 +22,18 @@ import path from "path";
 import {
   ALLOWED_LICENSES,
   CatalogSchema,
-  FrLexemeMapSchema,
+  LANGUAGE_CODE_PATTERN,
   PackSchema,
   SourceRegistrySchema,
+  idLanguage,
+  lexemeMapSchema,
   type PackSource,
   type SourceRegistry,
 } from "../../content/schema";
-import { BUILD_LANGUAGES } from "./languages";
+import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
 
-/** Resolves inside the repo or throws — the anti-traversal gate for IO. */
 /**
  * Remove a temp directory that briefly held a SQLite file. On Windows the
  * handle can outlive `db.close()` (or an on-access scanner holds it) for a
@@ -39,6 +44,7 @@ export function removeTempDirSync(dir: string): void {
   rmSync(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
 }
 
+/** Resolves inside the repo or throws — the anti-traversal gate for IO. */
 export function safeResolve(...segments: string[]): string {
   const resolved = path.resolve(REPO_ROOT, ...segments);
   if (resolved !== REPO_ROOT && !resolved.startsWith(REPO_ROOT + path.sep)) {
@@ -47,6 +53,9 @@ export function safeResolve(...segments: string[]): string {
   return resolved;
 }
 
+/** Generated artifacts of TEST-ONLY courses live here — never imported by the app. */
+export const TEST_ONLY_ROOT = "src/content/test-only";
+
 /** The only paths compile is allowed to write. */
 export const GENERATED_TARGETS = [
   "src/content/packs",
@@ -54,6 +63,7 @@ export const GENERATED_TARGETS = [
   "src/content/ids",
   "src/content/artifacts",
   "src/content/course-profiles.json",
+  "src/content/catalog.json",
   "src/content/flags.ts",
   "src/content/concepts",
   "src/content/assessment",
@@ -61,6 +71,7 @@ export const GENERATED_TARGETS = [
   "src/content/speech",
   "src/content/writing",
   "src/content/interaction",
+  TEST_ONLY_ROOT,
   "assets/lexicon",
   "content/reports",
   "ATTRIBUTIONS.md",
@@ -87,8 +98,102 @@ export function readJson(relPath: string): unknown {
 
 export function listCourseSources(): string[] {
   return readdirSync(safeResolve("content/courses"))
-    .filter((f) => f.endsWith(".json"))
+    .filter((f) => f.endsWith(".json") && !f.endsWith(".profile.json") && !f.endsWith(".map.json"))
     .sort();
+}
+
+/** Course ids are `<target>-<native>` (CLAUDE.md conventions). */
+export function targetCodeOf(courseId: string): string {
+  return courseId.split("-")[0] ?? courseId;
+}
+
+// ---------------------------------------------------------------------------
+// Target discovery (P1c)
+// ---------------------------------------------------------------------------
+
+export type LoadedPack = { file: string; courseId: string; pack: PackSource };
+
+/** Every pack that parses (schema failures are reported by validateContent). */
+export function loadPacks(): LoadedPack[] {
+  const out: LoadedPack[] = [];
+  for (const file of listCourseSources()) {
+    const parsed = PackSchema.safeParse(readJson(`content/courses/${file}`));
+    if (parsed.success) out.push({ file, courseId: file.replace(/\.json$/, ""), pack: parsed.data });
+  }
+  return out;
+}
+
+const RESERVED_CONTENT_DIRS = new Set(["courses", "sources", "audio", "reports"]);
+
+/** Language folders under content/ (`content/<code>/`), sorted. */
+export function contentLanguageDirs(): string[] {
+  const root = safeResolve("content");
+  return readdirSync(root)
+    .filter((entry) => {
+      if (RESERVED_CONTENT_DIRS.has(entry)) return false;
+      if (!new RegExp(`^${LANGUAGE_CODE_PATTERN}$`).test(entry)) return false;
+      return existsSync(path.join(root, entry)) && readdirSync(path.join(root, entry)).length > 0;
+    })
+    .sort();
+}
+
+/**
+ * Every TARGET language the compiler loops over: the target codes of all
+ * parsed packs plus every `content/<code>/` folder (a folder without a
+ * pack is an authoring-in-progress error the validator reports).
+ */
+export function discoverTargets(packs: LoadedPack[] = loadPacks()): string[] {
+  const codes = new Set<string>(contentLanguageDirs());
+  for (const { pack } of packs) codes.add(pack.targetCode);
+  return [...codes].sort();
+}
+
+export function packsForTarget(code: string, packs: LoadedPack[] = loadPacks()): LoadedPack[] {
+  return packs.filter((p) => p.pack.targetCode === code);
+}
+
+/** Distinct native codes of a target's courses, sorted. */
+export function nativeCodesFor(code: string, packs: LoadedPack[] = loadPacks()): string[] {
+  return [...new Set(packsForTarget(code, packs).map((p) => p.pack.nativeCode))].sort();
+}
+
+/** A target is test-only when it has courses and every one of them is `testOnly`. */
+export function isTestOnlyTarget(code: string, packs: LoadedPack[] = loadPacks()): boolean {
+  const mine = packsForTarget(code, packs);
+  return mine.length > 0 && mine.every((p) => p.pack.testOnly === true);
+}
+
+/** Target codes whose courses are all test-only. */
+export function testOnlyTargets(packs: LoadedPack[] = loadPacks()): string[] {
+  return discoverTargets(packs).filter((code) => isTestOnlyTarget(code, packs));
+}
+
+/**
+ * Which rich layers a TARGET language's authored sources provide: the
+ * exercise types that need them are allowed in a pack exactly when the
+ * layer exists for that language — no course literal anywhere.
+ */
+export function targetLayers(targetCode: string): {
+  reception: boolean;
+  pedagogy: boolean;
+  assessment: boolean;
+  speech: boolean;
+  writing: boolean;
+  interaction: boolean;
+  ids: boolean;
+  numberDrill: BuildLanguagePlugin["numberDrill"];
+} {
+  const has = (rel: string) => existsSync(safeResolve(`content/${targetCode}/${rel}`));
+  return {
+    reception: has("reception"),
+    pedagogy: has("pedagogy"),
+    assessment: has("assessment/objectives.json"),
+    speech: has("speech/items.json"),
+    writing: has("writing/tasks.json"),
+    interaction: has("interaction/scenarios.json"),
+    ids: has("lexemes.json"),
+    numberDrill: buildPlugin(targetCode).numberDrill,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -99,28 +204,22 @@ export type ValidationResult = { errors: string[]; warnings: string[] };
 
 type AnyExercise = PackSource["sections"][number]["units"][number]["lessons"][number]["exercises"][number];
 
-/**
- * Which rich layers a TARGET language's authored sources provide (P1b):
- * the exercise types that need them are allowed in a pack exactly when the
- * layer exists for that language — no course literal anywhere.
- */
-export function targetLayers(targetCode: string): {
-  reception: boolean;
-  pedagogy: boolean;
-  ids: boolean;
-  numberDrill: NonNullable<(typeof BUILD_LANGUAGES)[string]["numberDrill"]> | undefined;
-} {
-  return {
-    reception: existsSync(safeResolve(`content/${targetCode}/reception`)),
-    pedagogy: existsSync(safeResolve(`content/${targetCode}/pedagogy`)),
-    ids: existsSync(safeResolve(`content/${targetCode}/lexemes.json`)),
-    numberDrill: BUILD_LANGUAGES[targetCode]?.numberDrill,
-  };
-}
-
-/** Course ids are `<target>-<native>` (CLAUDE.md conventions). */
-export function targetCodeOf(courseId: string): string {
-  return courseId.split("-")[0] ?? courseId;
+/** Content ids an exercise references must be namespaced under the pack's target language. */
+function checkIdNamespace(e: AnyExercise, targetCode: string, push: (msg: string) => void) {
+  const refs: [string, string | undefined][] = [];
+  if ("clipId" in e) refs.push(["clipId", e.clipId]);
+  if ("readingId" in e) refs.push(["readingId", e.readingId]);
+  if ("speechItemId" in e) refs.push(["speechItemId", e.speechItemId]);
+  if ("modelClipId" in e && typeof e.modelClipId === "string") refs.push(["modelClipId", e.modelClipId]);
+  if ("writingTaskId" in e) refs.push(["writingTaskId", e.writingTaskId]);
+  if ("scenarioId" in e) refs.push(["scenarioId", e.scenarioId]);
+  if ("evidenceLexemeRefs" in e) for (const id of e.evidenceLexemeRefs) refs.push(["evidenceLexemeRefs", id]);
+  if ("objectiveTargets" in e) for (const id of e.objectiveTargets ?? []) refs.push(["objectiveTargets", id]);
+  for (const [field, value] of refs) {
+    if (value !== undefined && idLanguage(value) !== targetCode) {
+      push(`${e.id}: ${field} "${value}" is not namespaced under the pack's target language "${targetCode}"`);
+    }
+  }
 }
 
 export function validateExercise(
@@ -130,6 +229,8 @@ export function validateExercise(
   targetCode: string = targetCodeOf(courseId)
 ) {
   const layers = targetLayers(targetCode);
+  const plugin = buildPlugin(targetCode);
+  checkIdNamespace(e, targetCode, push);
   // Number-drill agreement (Phase 5B §75-80): any exercise of a language
   // with a verified number speller whose prompt is a bare integer 0-100 is
   // a number drill, and its expected answer must agree with the
@@ -197,17 +298,45 @@ export function validateExercise(
       push(`${e.id}: dictation needs authored reception content (content/${targetCode}/reception) — not available for ${courseId}`);
     }
   }
+  if (e.type === "speakRepetition" || e.type === "speakProduction") {
+    if (!layers.speech) {
+      push(`${e.id}: ${e.type} needs authored speech items (content/${targetCode}/speech) — not available for ${courseId}`);
+    }
+  }
+  if (e.type === "guidedWriting" || e.type === "simpleForm") {
+    if (!layers.writing) {
+      push(`${e.id}: ${e.type} needs authored writing tasks (content/${targetCode}/writing) — not available for ${courseId}`);
+    }
+  }
+  if (e.type === "interactionScenario") {
+    if (!layers.interaction) {
+      push(`${e.id}: interactionScenario needs authored scenarios (content/${targetCode}/interaction) — not available for ${courseId}`);
+    }
+  }
   if (e.type === "articleSelect") {
     if (e.correct >= e.articles.length) push(`${e.id}: correct index out of range`);
     if (new Set(e.articles).size !== e.articles.length) push(`${e.id}: duplicate articles`);
-    // §57 elision safety: le/la cannot be drilled on a noun that takes l'
-    // (vowel- or h-initial — h aspiré vs muet is exactly the ambiguity the
-    // program says generated exercises must avoid).
-    const elisionSensitive = e.articles.some((a) => a === "le" || a === "la");
-    if (elisionSensitive && /^[aeiouyâàäéèêëîïôöûüœh]/i.test(e.noun)) {
-      push(
-        `${e.id}: le/la drill on vowel/h-initial noun "${e.noun}" — such nouns elide to l' (or hide h-aspiré ambiguity); use un/une or a consonant-initial noun`
-      );
+    const articles = plugin.articleRules;
+    if (articles === null) {
+      push(`${e.id}: articleSelect needs a language with gendered articles — ${targetCode} declares none`);
+    } else {
+      for (const a of e.articles) {
+        if (articles.gender[a] === undefined && !articles.neutral.includes(a)) {
+          push(`${e.id}: "${a}" is not an article of ${targetCode}`);
+        }
+      }
+      // Elision safety (§57, the plugin's rule): an article pair whose
+      // choice disappears before certain nouns cannot be drilled on them.
+      const sensitive = articles.elisionSensitiveArticles ?? [];
+      if (
+        articles.elisionSensitiveNoun &&
+        e.articles.some((a) => sensitive.includes(a)) &&
+        articles.elisionSensitiveNoun.test(e.noun)
+      ) {
+        push(
+          `${e.id}: ${sensitive.join("/")} drill on elision-sensitive noun "${e.noun}" — such nouns elide (or hide h-aspiré ambiguity); use a different article pair or noun`
+        );
+      }
     }
     if (!layers.pedagogy) {
       push(`${e.id}: articleSelect needs authored pedagogy (content/${targetCode}/pedagogy) — not available for ${courseId}`);
@@ -224,6 +353,12 @@ function audioManifestKeys(): Set<string> {
   return keys;
 }
 
+/** `<courseId>:<unit>-<lesson>-e<n>` — the exercise id convention every non-frozen pack follows. */
+export function exerciseIdFollowsConvention(courseId: string, lessonId: string, exerciseId: string, index: number): boolean {
+  const lessonOk = new RegExp(`^${courseId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}:[a-z0-9]+-[a-z0-9]+$`).test(lessonId);
+  return lessonOk && exerciseId === `${lessonId}-e${index}`;
+}
+
 export function validateContent(): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -231,6 +366,7 @@ export function validateContent(): ValidationResult {
 
   const manifestKeys = audioManifestKeys();
   const seenPackIds = new Set<string>();
+  const packs = loadPacks();
 
   for (const file of listCourseSources()) {
     const parsed = PackSchema.safeParse(readJson(`content/courses/${file}`));
@@ -242,42 +378,69 @@ export function validateContent(): ValidationResult {
     }
     const pack = parsed.data;
     if (pack.id !== file.replace(/\.json$/, "")) err(`${file}: id "${pack.id}" ≠ filename`);
+    if (pack.id !== `${pack.targetCode}-${pack.nativeCode}`) {
+      err(`${file}: id "${pack.id}" must be "<targetCode>-<nativeCode>" (${pack.targetCode}-${pack.nativeCode})`);
+    }
     if (seenPackIds.has(pack.id)) err(`${file}: duplicate pack id`);
     seenPackIds.add(pack.id);
+    if (pack.audio?.policy === "test-only" && pack.testOnly !== true) {
+      err(`${file}: audio policy "test-only" is only valid on a testOnly pack`);
+    }
+    if (pack.audio?.policy === "device-tts" && pack.audio.reason === undefined) {
+      err(`${file}: audio policy "device-tts" needs a recorded reason`);
+    }
+    const layers = targetLayers(pack.targetCode);
+    const noBundledAudio = pack.audio?.policy === "device-tts" || pack.audio?.policy === "test-only";
+    errors.push(...objectiveMetadataErrors(pack, layers.assessment));
 
     const ids = new Set<string>();
     for (const section of pack.sections)
       for (const unit of section.units)
-        for (const lesson of unit.lessons)
-          for (const e of lesson.exercises) {
+        for (const lesson of unit.lessons) {
+          lesson.exercises.forEach((e, index) => {
             if (ids.has(e.id)) err(`${pack.id}: duplicate exercise id ${e.id}`);
             ids.add(e.id);
+            if (pack.frozenExerciseIds !== true && !exerciseIdFollowsConvention(pack.id, lesson.id, e.id, index)) {
+              err(`${pack.id}: exercise id "${e.id}" must be "${lesson.id}-e${index}" (<courseId>:<unit>-<lesson>-e<n>)`);
+            }
             validateExercise(pack.id, e, err, pack.targetCode);
             if ("audioTarget" in e && e.audioTarget !== undefined) {
               // device-tts courses (no license-clean voice exists for the
               // language) carry no bundled audio by policy; the runtime
               // speaks their audioTargets through the device voice.
-              if (pack.audio?.policy !== "device-tts" && !manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
+              if (!noBundledAudio && !manifestKeys.has(`${pack.id}:${e.audioTarget}`)) {
                 err(`${pack.id}: ${e.id} audioTarget has no audio: "${e.audioTarget}"`);
               }
             }
             if ("gradeTargets" in e && e.gradeTargets !== undefined) {
               err(`${pack.id}: ${e.id} authors gradeTargets — compiler-only field`);
             }
-          }
+          });
+        }
+  }
+
+  // Every language folder needs at least one course, and a target's courses
+  // must agree on what the language is called.
+  for (const code of contentLanguageDirs()) {
+    if (packsForTarget(code, packs).length === 0) {
+      err(`content/${code}/ has rich sources but no course pack in content/courses/ targets "${code}"`);
+    }
+  }
+  for (const code of discoverTargets(packs)) {
+    const mine = packsForTarget(code, packs);
+    const testFlags = new Set(mine.map((p) => p.pack.testOnly === true));
+    if (testFlags.size > 1) err(`target ${code}: testOnly must be the same for every course of a language`);
   }
 
   // Frozen lexeme maps (P1b, every language that has one): schema, unique
   // ids, exact equality with the COMMITTED generated registry (the drift
   // test — stable ids are persisted in learner data), and full coverage of
   // every pack word of a course in that language.
-  for (const file of listCourseSources()) {
-    const pack = PackSchema.safeParse(readJson(`content/courses/${file}`));
-    if (!pack.success) continue;
-    const code = pack.data.targetCode;
+  for (const { courseId, pack } of packs) {
+    const code = pack.targetCode;
     const rel = `content/${code}/lexemes.json`;
     if (!existsSync(safeResolve(rel))) continue;
-    const parsed = FrLexemeMapSchema.safeParse(readJson(rel));
+    const parsed = lexemeMapSchema(code).safeParse(readJson(rel));
     if (!parsed.success) {
       err(`${rel}: ${parsed.error.issues[0]?.message}`);
       continue;
@@ -285,39 +448,40 @@ export function validateContent(): ValidationResult {
     const map = parsed.data;
     const values = Object.values(map);
     if (new Set(values).size !== values.length) err(`${code} lexeme ids are not unique`);
-    const generatedRel = `src/content/ids/${code}.json`;
+    const generatedRel = `${idsArtifactRoot(pack.testOnly === true)}/${code}.json`;
     if (existsSync(safeResolve(generatedRel))) {
       const generated = (readJson(generatedRel) as { surfaceToId: Record<string, string> }).surfaceToId;
       const a = JSON.stringify(Object.entries(map).sort());
       const b = JSON.stringify(Object.entries(generated).sort());
       if (a !== b) err(`${rel} drifted from ${generatedRel} — run bun run content:compile`);
     }
-    for (const section of pack.data.sections)
+    for (const section of pack.sections)
       for (const unit of section.units)
         for (const word of unit.words)
           if (map[word.target] === undefined) {
-            err(`${code} word "${word.target}" missing from ${rel}`);
+            err(`${courseId}: word "${word.target}" missing from ${rel}`);
           }
   }
 
-  // Catalog (hand-maintained) still validates — and its advertised counts
-  // must MATCH each pack (P9.10: the French row silently rotted at Phase
-  // 5B's "10 units · 40 lessons" while the course grew to 27/108; a
-  // hand-maintained display number needs a machine check).
-  const catalog = CatalogSchema.safeParse(readJson("src/content/catalog.json"));
-  if (!catalog.success) err(`catalog.json: ${catalog.error.issues[0]?.message}`);
-  if (catalog.success) {
+  // Catalog (GENERATED since P1c): the committed file's advertised counts
+  // must still match the packs — the self-check that replaces hand
+  // maintenance (P9.10: the French row once silently rotted at "10 units ·
+  // 40 lessons"). A missing or old-format file is a warning here: the
+  // compiler regenerates it, and the drift guard (content:check) catches a
+  // stale commit.
+  const catalogRel = "src/content/catalog.json";
+  const catalog = existsSync(safeResolve(catalogRel)) ? CatalogSchema.safeParse(readJson(catalogRel)) : null;
+  if (catalog === null || !catalog.success) {
+    warnings.push(`${catalogRel} is missing or not in the generated format — run bun run content:compile`);
+  } else {
+    const expected = buildCatalog(packs);
     for (const course of catalog.data.courses) {
-      const pack = PackSchema.safeParse(readJson(`content/courses/${course.id}.json`));
-      if (!pack.success) continue; // pack schema errors are reported elsewhere
-      const units = pack.data.sections.reduce((n, s) => n + s.units.length, 0);
-      const lessons = pack.data.sections.reduce(
-        (n, s) => n + s.units.reduce((m, u) => m + u.lessons.length, 0),
-        0
-      );
-      if (course.unitCount !== units || course.lessonCount !== lessons) {
+      const want = expected.courses.find((c) => c.id === course.id);
+      if (!want) {
+        err(`catalog.json: ${course.id} is not a shipped course — run bun run content:compile`);
+      } else if (course.unitCount !== want.unitCount || course.lessonCount !== want.lessonCount) {
         err(
-          `catalog.json: ${course.id} advertises ${course.unitCount} units · ${course.lessonCount} lessons but the pack has ${units} · ${lessons}`
+          `catalog.json: ${course.id} advertises ${course.unitCount} units · ${course.lessonCount} lessons but the pack has ${want.unitCount} · ${want.lessonCount}`
         );
       }
     }
@@ -325,6 +489,56 @@ export function validateContent(): ValidationResult {
 
   errors.push(...validateRegistry().errors);
   return { errors, warnings };
+}
+
+/**
+ * §153: objective metadata (lesson objectives, exercise objectiveTargets)
+ * exists only for courses whose target language has an authored
+ * objectives source; any other course carrying it is an authoring error.
+ * (That such courses DO declare objectives is the assessment validator's
+ * curriculum-mapping rule, §144.)
+ */
+export function objectiveMetadataErrors(pack: PackSource, assessmentAvailable: boolean): string[] {
+  if (assessmentAvailable) return [];
+  const errors: string[] = [];
+  for (const section of pack.sections)
+    for (const unit of section.units)
+      for (const lesson of unit.lessons) {
+        if (lesson.objectives !== undefined) {
+          errors.push(`${pack.id}/${lesson.id}: objectives need an authored objectives source (content/${pack.targetCode}/assessment) — not available for ${pack.id} (§153)`);
+        }
+        for (const e of lesson.exercises) {
+          if ("objectiveTargets" in e && e.objectiveTargets !== undefined) {
+            errors.push(`${pack.id}/${e.id}: objectiveTargets need an authored objectives source (content/${pack.targetCode}/assessment) (§153)`);
+          }
+        }
+      }
+  return errors;
+}
+
+/** Where a target's id registry is emitted (test-only courses never reach the bundle). */
+export function idsArtifactRoot(testOnly: boolean): string {
+  return testOnly ? `${TEST_ONLY_ROOT}/ids` : "src/content/ids";
+}
+
+/** The catalog every non-test course appears in, from the packs. */
+export function buildCatalog(packs: LoadedPack[] = loadPacks()) {
+  return {
+    version: 1,
+    courses: packs
+      .filter((p) => p.pack.testOnly !== true)
+      .map(({ pack }) => ({
+        id: pack.id,
+        targetLanguage: pack.targetLanguage,
+        targetCode: pack.targetCode,
+        nativeLanguage: pack.nativeLanguage,
+        nativeCode: pack.nativeCode,
+        flag: pack.flag,
+        unitCount: pack.sections.reduce((n, s) => n + s.units.length, 0),
+        lessonCount: pack.sections.reduce((n, s) => n + s.units.reduce((m, u) => m + u.lessons.length, 0), 0),
+      }))
+      .sort((a, b) => a.id.localeCompare(b.id)),
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -361,6 +575,11 @@ export function loadRegistry(): SourceRegistry {
   return SourceRegistrySchema.parse(readJson("content/sources/registry.json"));
 }
 
+/** Registry sources that ship, in registry order (test-only sources back content that never reaches the app). */
+export function shippedSources(registry: SourceRegistry): SourceRegistry["sources"] {
+  return registry.sources.filter((s) => s.testOnly !== true);
+}
+
 export function renderAttributions(registry: SourceRegistry): string {
   const lines: string[] = [
     "<!-- Generated by scripts/compile-content.ts from content/sources/registry.json — do not edit by hand. -->",
@@ -372,7 +591,7 @@ export function renderAttributions(registry: SourceRegistry): string {
     "`LICENSE`; all existing copyright and MIT notices are preserved as-is.",
     "",
   ];
-  for (const s of [...registry.sources].sort((a, b) => a.id.localeCompare(b.id))) {
+  for (const s of [...shippedSources(registry)].sort((a, b) => a.id.localeCompare(b.id))) {
     lines.push(`## ${s.name}`);
     lines.push("");
     lines.push(`- **License:** ${s.license}`);
@@ -411,10 +630,10 @@ export type CoverageRow = {
  */
 function gradeTargetsFor(e: AnyExercise, map: Record<string, string>): string[] | undefined {
   if (e.type === "select") {
-    // The exercise's unambiguous French surface: bundled-audio lessons key
+    // The exercise's unambiguous target surface: bundled-audio lessons key
     // it by audioTarget (Section 1); audio-less lessons key it by what the
-    // select actually shows — the French prompt (target→native) or the
-    // correct French option (native→target). Listen mode without audio can
+    // select actually shows — the target prompt (target→native) or the
+    // correct target option (native→target). Listen mode without audio can
     // never be unambiguous.
     const surface =
       e.audioTarget ??
@@ -440,8 +659,10 @@ export function compilePack(
   idMap: Record<string, string> | undefined
 ): { pack: PackSource; coverage: CoverageRow } {
   const coverage: CoverageRow = { total: 0, withGradeTargets: 0, byType: {} };
+  // Build-only pack fields never reach the runtime pack.
+  const { frozenExerciseIds: _frozen, testOnly: _testOnly, ...shipped } = pack;
   const out: PackSource = {
-    ...pack,
+    ...shipped,
     sections: pack.sections.map((section) => ({
       ...section,
       units: section.units.map((unit) => ({
@@ -467,59 +688,64 @@ export function compilePack(
 
 const INDEX_HEADER = "// Generated by scripts/compile-content.ts — do not edit.";
 
-function renderPacksIndex(courseIds: string[]): string {
+function renderPacksIndex(courseIds: string[], libPrefix: string): string {
   const imports = courseIds
     .map((id) => `import ${id.replace(/-/g, "_")} from "./${id}.json";`)
     .join("\n");
   const entries = courseIds
     .map((id) => `  "${id}": ${id.replace(/-/g, "_")} as Pack,`)
     .join("\n");
-  return `${INDEX_HEADER}\n${imports}\nimport type { Pack } from "../../lib/types";\n\nexport const PACKS: Record<string, Pack> = {\n${entries}\n};\n`;
+  return `${INDEX_HEADER}\n${imports}\nimport type { Pack } from "${libPrefix}/lib/types";\n\nexport const PACKS: Record<string, Pack> = {\n${entries}\n};\n`;
 }
 
-/** Pure compile: returns every generated artifact as (relPath, bytes). */
 /** Frozen surface → id maps per target language that has one (content/<code>/lexemes.json). */
-export function loadIdMaps(): Record<string, Record<string, string>> {
+export function loadIdMaps(packs: LoadedPack[] = loadPacks()): Record<string, Record<string, string>> {
   const maps: Record<string, Record<string, string>> = {};
-  for (const file of listCourseSources()) {
-    const code = targetCodeOf(file.replace(/\.json$/, ""));
-    if (maps[code] !== undefined) continue;
+  for (const code of discoverTargets(packs)) {
     const rel = `content/${code}/lexemes.json`;
     if (!existsSync(safeResolve(rel))) continue;
-    const parsed = readJson(rel) as Record<string, string>;
-    const regex = new RegExp(`^${code}:w:[a-z0-9-]+$`);
-    for (const [surface, id] of Object.entries(parsed)) {
-      if (typeof id !== "string" || !regex.test(id)) throw new Error(`${rel}: "${surface}" → "${String(id)}" is not a ${code}:w:<slug> id`);
-    }
-    maps[code] = parsed;
+    maps[code] = lexemeMapSchema(code).parse(readJson(rel));
   }
   return maps;
 }
 
-export function compileAll(): {
+export function compileAll(packs: LoadedPack[] = loadPacks()): {
   files: CompiledFile[];
   coverage: Record<string, CoverageRow>;
   packs: PackSource[];
   idMaps: Record<string, Record<string, string>>;
 } {
-  const idMaps = loadIdMaps();
+  const idMaps = loadIdMaps(packs);
   const files: CompiledFile[] = [];
   const coverage: Record<string, CoverageRow> = {};
   const courseIds: string[] = [];
-  const packs: PackSource[] = [];
+  const testCourseIds: string[] = [];
+  const sources: PackSource[] = [];
 
-  for (const file of listCourseSources()) {
-    const source = PackSchema.parse(readJson(`content/courses/${file}`));
+  for (const { pack: source } of packs) {
     const { pack, coverage: row } = compilePack(source, idMaps[source.targetCode]);
-    courseIds.push(pack.id);
-    packs.push(source);
+    sources.push(source);
     coverage[pack.id] = row;
-    files.push({ relPath: `src/content/packs/${pack.id}.json`, contents: canonicalJson(pack) });
+    if (source.testOnly === true) {
+      testCourseIds.push(pack.id);
+      files.push({ relPath: `${TEST_ONLY_ROOT}/packs/${pack.id}.json`, contents: canonicalJson(pack) });
+    } else {
+      courseIds.push(pack.id);
+      files.push({ relPath: `src/content/packs/${pack.id}.json`, contents: canonicalJson(pack) });
+    }
   }
-  files.push({ relPath: "src/content/packs/index.ts", contents: renderPacksIndex(courseIds) });
+  files.push({ relPath: "src/content/packs/index.ts", contents: renderPacksIndex(courseIds, "../..") });
+  if (testCourseIds.length > 0) {
+    files.push({ relPath: `${TEST_ONLY_ROOT}/packs/index.ts`, contents: renderPacksIndex(testCourseIds, "../../..") });
+  }
+  files.push({ relPath: "src/content/catalog.json", contents: `${canonicalJson(buildCatalog(packs))}\n` });
+  // The shipped coverage report lists shipped courses only.
+  const shippedCoverage = Object.fromEntries(
+    Object.entries(coverage).filter(([id]) => !testCourseIds.includes(id))
+  );
   files.push({
     relPath: "content/reports/grade-targets.json",
-    contents: canonicalJson({ perCourse: coverage }),
+    contents: canonicalJson({ perCourse: shippedCoverage }),
   });
   const registry = loadRegistry();
   files.push({
@@ -533,7 +759,7 @@ export function compileAll(): {
     relPath: "src/content/attributions.json",
     contents: canonicalJson({
       generator: "scripts/compile-content.ts",
-      sources: registry.sources.map((e) => ({
+      sources: shippedSources(registry).map((e) => ({
         id: e.id,
         name: e.name,
         kind: e.kind,
@@ -544,5 +770,5 @@ export function compileAll(): {
       })),
     }),
   });
-  return { files, coverage, packs, idMaps };
+  return { files, coverage, packs: sources, idMaps };
 }

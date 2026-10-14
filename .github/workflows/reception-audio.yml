@@ -16,8 +16,11 @@
 #             faster-whisper ASR audit, commit the canary report ONLY
 #             (canary audio ships as a run artifact, never to the repo).
 #   generate  Verify pins, synthesize every clip in
-#             content/fr/reception/listening.json, run the same QA + ASR
+#             content/<lang>/reception/listening.json, run the same QA + ASR
 #             audit, and commit assets + the quality report.
+#
+# `lang` (P1c) selects the target language: every path below is
+# content/<lang>/reception and assets/audio/<lang>-reception.
 name: Reception audio
 
 on:
@@ -28,6 +31,11 @@ on:
         required: true
         type: choice
         options: [recon, canary, generate]
+      lang:
+        description: "target language code (content/<lang>/reception)"
+        required: false
+        default: "fr"
+        type: string
 
 permissions:
   contents: write
@@ -51,6 +59,7 @@ jobs:
       # Inputs reach the shell only through the environment (never expanded
       # into the script text).
       MODE_INPUT: ${{ inputs.mode }}
+      LANG_INPUT: ${{ inputs.lang || 'fr' }}
       BRANCH: ${{ github.ref_name }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -65,13 +74,20 @@ jobs:
       - name: Install (frozen lockfile)
         run: bun install --frozen-lockfile
 
+      - name: Validate the language input and its manifests (offline)
+        run: |
+          set -euo pipefail
+          case "$LANG_INPUT" in [a-z][a-z]|[a-z][a-z][a-z]) ;; *) echo "lang must be a 2-3 letter code"; exit 1;; esac
+          test -f "content/$LANG_INPUT/reception/audio-source-manifest.json"
+          bun scripts/reception-audio.ts plan --lang "$LANG_INPUT" --mode "$([ "$MODE_INPUT" = "canary" ] && echo canary || echo generate)" --dry-run
+
       - name: Download pinned voices
         run: |
           set -euo pipefail
           mkdir -p "$DL"
-          REV=$(bun -e 'const m=require("./content/fr/reception/audio-source-manifest.json");console.log(m.voicesRevision)')
+          REV=$(bun -e 'const m=require(`./content/${process.env.LANG_INPUT}/reception/audio-source-manifest.json`);console.log(m.voicesRevision)')
           bun -e '
-            const m = require("./content/fr/reception/audio-source-manifest.json");
+            const m = require(`./content/${process.env.LANG_INPUT}/reception/audio-source-manifest.json`);
             for (const v of m.voices) for (const [kind, f] of Object.entries(v.files)) {
               console.log(`${v.id}\t${kind}\t${f.path}`);
             }
@@ -90,17 +106,17 @@ jobs:
 
       - name: Recon — pin hashes + license gate
         if: inputs.mode == 'recon'
-        run: bun scripts/reception-audio.ts recon --downloads "$DL"
+        run: bun scripts/reception-audio.ts recon --lang "$LANG_INPUT" --downloads "$DL"
 
       - name: Verify pins (fail closed on upstream drift)
         if: inputs.mode != 'recon'
-        run: bun scripts/reception-audio.ts verify --downloads "$DL"
+        run: bun scripts/reception-audio.ts verify --lang "$LANG_INPUT" --downloads "$DL"
 
       - name: Install piper-tts (pinned) + ffmpeg
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
-          PIPER_VERSION=$(bun -e 'const m=require("./content/fr/reception/audio-source-manifest.json");console.log(m.piperTts.pinnedVersion)')
+          PIPER_VERSION=$(bun -e 'const m=require(`./content/${process.env.LANG_INPUT}/reception/audio-source-manifest.json`);console.log(m.piperTts.pinnedVersion)')
           pip install "piper-tts==$PIPER_VERSION"
           sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
           piper --version || true
@@ -109,12 +125,12 @@ jobs:
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
-          bun scripts/reception-audio.ts plan --mode "$([ "$MODE_INPUT" = "canary" ] && echo canary || echo generate)" --out "$PLAN"
+          bun scripts/reception-audio.ts plan --lang "$LANG_INPUT" --mode "$([ "$MODE_INPUT" = "canary" ] && echo canary || echo generate)" --out "$PLAN"
           # generate reuses every already-blessed asset (content-addressed):
           # only clips whose text changed are synthesized, so a wording fix
           # never re-renders the untouched clips with different bytes.
-          EXISTING=$([ "$MODE_INPUT" = "generate" ] && echo "--existing assets/audio/fr-reception" || echo "")
-          bun scripts/reception-audio.ts synth-script --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" $EXISTING > /tmp/synth.sh
+          EXISTING=$([ "$MODE_INPUT" = "generate" ] && echo "--existing assets/audio/$LANG_INPUT-reception" || echo "")
+          bun scripts/reception-audio.ts synth-script --lang "$LANG_INPUT" --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" $EXISTING > /tmp/synth.sh
           bash /tmp/synth.sh
           ls "$OUT" | wc -l
 
@@ -130,20 +146,24 @@ jobs:
         if: inputs.mode == 'canary'
         run: |
           set -euo pipefail
-          bun scripts/reception-audio.ts qa --plan "$PLAN" --outdir "$OUT" \
-            --report content/reports/reception-audio-canary.json --asr "$ASR"
+          REPORTS=$([ "$LANG_INPUT" = "fr" ] && echo content/reports || echo "content/reports/$LANG_INPUT")
+          mkdir -p "$REPORTS"
+          bun scripts/reception-audio.ts qa --lang "$LANG_INPUT" --plan "$PLAN" --outdir "$OUT" \
+            --report "$REPORTS/reception-audio-canary.json" --asr "$ASR"
 
       - name: Technical QA + commit generated assets
         if: inputs.mode == 'generate'
         run: |
           set -euo pipefail
-          mkdir -p assets/audio/fr-reception
+          ASSETS="assets/audio/$LANG_INPUT-reception"
+          REPORTS=$([ "$LANG_INPUT" = "fr" ] && echo content/reports || echo "content/reports/$LANG_INPUT")
+          mkdir -p "$ASSETS" "$REPORTS"
           # a clip whose text changed has a new key; drop the file its old text produced
-          bun scripts/reception-audio.ts prune --plan "$PLAN" --dir assets/audio/fr-reception
-          cp "$OUT"/*.mp3 assets/audio/fr-reception/
-          bun scripts/reception-audio.ts qa --plan "$PLAN" --outdir assets/audio/fr-reception \
-            --report content/reports/reception-audio-quality.json --asr "$ASR" --strict true
-          cp "$PLAN" content/fr/reception/generated-plan.json
+          bun scripts/reception-audio.ts prune --lang "$LANG_INPUT" --plan "$PLAN" --dir "$ASSETS"
+          cp "$OUT"/*.mp3 "$ASSETS"/
+          bun scripts/reception-audio.ts qa --lang "$LANG_INPUT" --plan "$PLAN" --outdir "$ASSETS" \
+            --report "$REPORTS/reception-audio-quality.json" --asr "$ASR" --strict true
+          cp "$PLAN" "content/$LANG_INPUT/reception/generated-plan.json"
           # regenerate the runtime clip-asset map and the listening artifact,
           # prove the content validates, and re-bless the audio baseline so
           # the branch is green the moment this run's commit lands
@@ -171,7 +191,7 @@ jobs:
           # Paths added individually: a multi-path `git add` is all-or-nothing
           # and a missing assets dir silently staged NOTHING on the first
           # successful recon run.
-          for p in content/fr/reception content/reports assets/audio/fr-reception src/content content/audio/legacy-baseline.json; do
+          for p in "content/$LANG_INPUT/reception" content/reports "assets/audio/$LANG_INPUT-reception" src/content content/audio/legacy-baseline.json; do
             if [ -e "$p" ]; then git add -A -- "$p"; fi
           done
           if git diff --cached --quiet; then
@@ -179,10 +199,10 @@ jobs:
             exit 0
           fi
           {
-            echo "Reception audio $MODE_INPUT: pinned-source pipeline output"
+            echo "Reception audio $MODE_INPUT ($LANG_INPUT): pinned-source pipeline output"
             echo
-            echo "Dispatch-only workflow run $GITHUB_RUN_ID (mode: $MODE_INPUT)."
-            echo "Sources pinned in content/fr/reception/audio-source-manifest.json;"
+            echo "Dispatch-only workflow run $GITHUB_RUN_ID (mode: $MODE_INPUT, lang: $LANG_INPUT)."
+            echo "Sources pinned in content/$LANG_INPUT/reception/audio-source-manifest.json;"
             echo "model weights were used on the runner and never committed."
           } > /tmp/commit-msg.txt
           git commit -F /tmp/commit-msg.txt

@@ -12,9 +12,12 @@ import type { SQLiteDatabase } from "expo-sqlite";
 
 import {
   SQL,
+  rowToExample,
   runNativeGetById,
   runNativeList,
   runNativeSearch,
+  type ExampleKeys,
+  type ExampleRow,
   type SqlExecutor,
 } from "./native-sql";
 import type {
@@ -27,8 +30,10 @@ import type {
 
 export class NativeSqliteLexiconRepository implements LexiconRepository {
   private readonly exec: SqlExecutor;
+  private readonly keys: ExampleKeys;
 
-  constructor(db: SQLiteDatabase) {
+  constructor(db: SQLiteDatabase, keys: ExampleKeys) {
+    this.keys = keys;
     this.exec = {
       all: <T>(sql: string, params: (string | number)[]) => db.getAllAsync<T>(sql, params),
       first: <T>(sql: string, params: (string | number)[]) => db.getFirstAsync<T>(sql, params),
@@ -36,7 +41,7 @@ export class NativeSqliteLexiconRepository implements LexiconRepository {
   }
 
   getById(id: string): Promise<LexemeDetail | null> {
-    return runNativeGetById(this.exec, id);
+    return runNativeGetById(this.exec, id, this.keys);
   }
 
   search(query: string): Promise<LexemeSummary[]> {
@@ -48,7 +53,8 @@ export class NativeSqliteLexiconRepository implements LexiconRepository {
   }
 
   async getExamples(id: string): Promise<LexemeExample[]> {
-    return this.exec.all<LexemeExample>(SQL.examples, [id]);
+    const rows = await this.exec.all<ExampleRow>(SQL.examples, [id]);
+    return rows.map((row) => rowToExample(row, this.keys));
   }
 
   async supportsFrequencySort(): Promise<boolean> {

@@ -6,10 +6,14 @@
    "id": "fr.write.o_name",
    "taskFamily": "personal_profile",
    "mode": "guided",
-   "instruction": "You are Léa. Write one short French sentence saying your name.",
+   "instruction": {
+    "en": "You are Léa. Write one short French sentence saying your name."
+   },
    "cueFacts": [
     {
-     "label": "Your name",
+     "label": {
+      "en": "Your name"
+     },
      "value": "Léa"
     }
    ],
@@ -17,7 +21,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "your name",
+      "description": {
+       "en": "your name"
+      },
       "variants": [
        "je m'appelle Léa",
        "je suis Léa",
@@ -51,10 +57,14 @@
    "id": "fr.write.o_age",
    "taskFamily": "personal_profile",
    "mode": "guided",
-   "instruction": "Still as Léa: write a sentence saying your age.",
+   "instruction": {
+    "en": "Still as Léa: write a sentence saying your age."
+   },
    "cueFacts": [
     {
-     "label": "Your age",
+     "label": {
+      "en": "Your age"
+     },
      "value": "22"
     }
    ],
@@ -62,7 +72,9 @@
     "requiredSlots": [
      {
       "id": "age",
-      "description": "your age",
+      "description": {
+       "en": "your age"
+      },
       "variants": [
        "j'ai vingt-deux ans"
       ],
@@ -92,10 +104,14 @@
    "id": "fr.write.o_city",
    "taskFamily": "personal_profile",
    "mode": "guided",
-   "instruction": "Still as Léa: write a sentence saying where you live.",
+   "instruction": {
+    "en": "Still as Léa: write a sentence saying where you live."
+   },
    "cueFacts": [
     {
-     "label": "Your city",
+     "label": {
+      "en": "Your city"
+     },
      "value": "Paris"
     }
    ],
@@ -103,7 +119,9 @@
     "requiredSlots": [
      {
       "id": "city",
-      "description": "where you live",
+      "description": {
+       "en": "where you live"
+      },
       "variants": [
        "j'habite à Paris",
        "j'habite Paris"
@@ -135,18 +153,26 @@
    "id": "fr.write.o_profile",
    "taskFamily": "personal_profile",
    "mode": "guided",
-   "instruction": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences.",
+   "instruction": {
+    "en": "Put it together: introduce yourself as Léa — name, age and city, in complete sentences."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Léa"
     },
     {
-     "label": "Age",
+     "label": {
+      "en": "Age"
+     },
      "value": "22"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Paris"
     }
    ],
@@ -154,7 +180,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "your name",
+      "description": {
+       "en": "your name"
+      },
       "variants": [
        "je m'appelle Léa",
        "je suis Léa",
@@ -164,7 +192,9 @@
      },
      {
       "id": "age",
-      "description": "your age",
+      "description": {
+       "en": "your age"
+      },
       "variants": [
        "j'ai vingt-deux ans"
       ],
@@ -172,7 +202,9 @@
      },
      {
       "id": "city",
-      "description": "where you live",
+      "description": {
+       "en": "where you live"
+      },
       "variants": [
        "j'habite à Paris",
        "j'habite Paris"
@@ -205,12 +237,16 @@
    "id": "fr.write.o_open",
    "taskFamily": "personal_profile",
    "mode": "open",
-   "instruction": "Now for real: introduce YOURSELF in French — your name, and your age or your city. Write freely; this is practice, not a test.",
+   "instruction": {
+    "en": "Now for real: introduce YOURSELF in French — your name, and your age or your city. Write freely; this is practice, not a test."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "about_you",
-      "description": "a sentence about you",
+      "description": {
+       "en": "a sentence about you"
+      },
       "variants": [
        "je m'appelle",
        "je suis",
@@ -240,12 +276,16 @@
    "id": "fr.write.p_like",
    "taskFamily": "simple_description",
    "mode": "guided",
-   "instruction": "Write one French sentence saying that you like coffee.",
+   "instruction": {
+    "en": "Write one French sentence saying that you like coffee."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "like",
-      "description": "what you like",
+      "description": {
+       "en": "what you like"
+      },
       "variants": [
        "j'aime le café",
        "j'adore le café"
@@ -278,12 +318,16 @@
    "id": "fr.write.p_like_two",
    "taskFamily": "simple_description",
    "mode": "guided",
-   "instruction": "Write a sentence saying you like tea and bread.",
+   "instruction": {
+    "en": "Write a sentence saying you like tea and bread."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "like",
-      "description": "that you like something (j'aime)",
+      "description": {
+       "en": "that you like something (j'aime)"
+      },
       "variants": [
        "j'aime",
        "j'adore"
@@ -292,7 +336,9 @@
      },
      {
       "id": "tea",
-      "description": "the tea",
+      "description": {
+       "en": "the tea"
+      },
       "variants": [
        "thé"
       ],
@@ -300,7 +346,9 @@
      },
      {
       "id": "bread",
-      "description": "the bread",
+      "description": {
+       "en": "the bread"
+      },
       "variants": [
        "pain"
       ],
@@ -332,14 +380,20 @@
    "id": "fr.write.p_person",
    "taskFamily": "simple_description",
    "mode": "guided",
-   "instruction": "Write one sentence about Hugo: he lives in Lyon.",
+   "instruction": {
+    "en": "Write one sentence about Hugo: he lives in Lyon."
+   },
    "cueFacts": [
     {
-     "label": "Person",
+     "label": {
+      "en": "Person"
+     },
      "value": "Hugo"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Lyon"
     }
    ],
@@ -347,7 +401,9 @@
     "requiredSlots": [
      {
       "id": "lives",
-      "description": "where Hugo lives",
+      "description": {
+       "en": "where Hugo lives"
+      },
       "variants": [
        "il habite à Lyon",
        "il habite Lyon",
@@ -380,12 +436,16 @@
    "id": "fr.write.p_cat",
    "taskFamily": "simple_description",
    "mode": "guided",
-   "instruction": "Write one sentence: the cat drinks milk.",
+   "instruction": {
+    "en": "Write one sentence: the cat drinks milk."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "fact",
-      "description": "what the cat does",
+      "description": {
+       "en": "what the cat does"
+      },
       "variants": [
        "le chat boit du lait",
        "le chat boit le lait"
@@ -418,12 +478,16 @@
    "id": "fr.write.p_open",
    "taskFamily": "simple_description",
    "mode": "open",
-   "instruction": "Describe someone you know in one or two short French sentences — where they live, or what they like.",
+   "instruction": {
+    "en": "Describe someone you know in one or two short French sentences — where they live, or what they like."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "person",
-      "description": "a sentence about the person",
+      "description": {
+       "en": "a sentence about the person"
+      },
       "variants": [
        "il est",
        "elle est",
@@ -457,18 +521,26 @@
    "id": "fr.write.q_note_cafe",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note to Marie: greet her, and tell her the café is at two o'clock.",
+   "instruction": {
+    "en": "Write a short note to Marie: greet her, and tell her the café is at two o'clock."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Marie"
     },
     {
-     "label": "What",
+     "label": {
+      "en": "What"
+     },
      "value": "café"
     },
     {
-     "label": "Time",
+     "label": {
+      "en": "Time"
+     },
      "value": "2:00"
     }
    ],
@@ -476,7 +548,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -486,7 +560,9 @@
      },
      {
       "id": "addressee",
-      "description": "who the note is for (Marie)",
+      "description": {
+       "en": "who the note is for (Marie)"
+      },
       "variants": [
        "Marie"
       ],
@@ -494,7 +570,9 @@
      },
      {
       "id": "what",
-      "description": "the café",
+      "description": {
+       "en": "the café"
+      },
       "variants": [
        "café"
       ],
@@ -502,7 +580,9 @@
      },
      {
       "id": "time",
-      "description": "the time (à deux heures)",
+      "description": {
+       "en": "the time (à deux heures)"
+      },
       "variants": [
        "à deux heures",
        "à quatorze heures"
@@ -531,18 +611,26 @@
    "id": "fr.write.q_note_train",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note to Paul: greet him, and say the train is tomorrow at nine.",
+   "instruction": {
+    "en": "Write a short note to Paul: greet him, and say the train is tomorrow at nine."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Paul"
     },
     {
-     "label": "What",
+     "label": {
+      "en": "What"
+     },
      "value": "train"
     },
     {
-     "label": "When",
+     "label": {
+      "en": "When"
+     },
      "value": "tomorrow, 9:00"
     }
    ],
@@ -550,7 +638,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -560,7 +650,9 @@
      },
      {
       "id": "addressee",
-      "description": "who the note is for (Paul)",
+      "description": {
+       "en": "who the note is for (Paul)"
+      },
       "variants": [
        "Paul"
       ],
@@ -568,7 +660,9 @@
      },
      {
       "id": "what",
-      "description": "the train",
+      "description": {
+       "en": "the train"
+      },
       "variants": [
        "train"
       ],
@@ -576,7 +670,9 @@
      },
      {
       "id": "day",
-      "description": "the day (demain)",
+      "description": {
+       "en": "the day (demain)"
+      },
       "variants": [
        "demain"
       ],
@@ -584,7 +680,9 @@
      },
      {
       "id": "time",
-      "description": "the time (à neuf heures)",
+      "description": {
+       "en": "the time (à neuf heures)"
+      },
       "variants": [
        "à neuf heures"
       ],
@@ -612,12 +710,16 @@
    "id": "fr.write.q_note_closing",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”.",
+   "instruction": {
+    "en": "Write a note: say hello, say you are at the station, and close with “see you tomorrow”."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut"
@@ -626,7 +728,9 @@
      },
      {
       "id": "place",
-      "description": "where you are",
+      "description": {
+       "en": "where you are"
+      },
       "variants": [
        "je suis à la gare"
       ],
@@ -634,7 +738,9 @@
      },
      {
       "id": "closing",
-      "description": "a closing",
+      "description": {
+       "en": "a closing"
+      },
       "variants": [
        "à demain"
       ],
@@ -665,12 +771,16 @@
    "id": "fr.write.q_open",
    "taskFamily": "short_message",
    "mode": "open",
-   "instruction": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice.",
+   "instruction": {
+    "en": "Write your own short note to a friend — a greeting, one fact, and a closing. Free practice."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "message",
-      "description": "your message",
+      "description": {
+       "en": "your message"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -701,18 +811,26 @@
    "id": "fr.write.r_form_arrival",
    "taskFamily": "simple_form",
    "mode": "guided",
-   "instruction": "Fill in the arrival form with the details on the card.",
+   "instruction": {
+    "en": "Fill in the arrival form with the details on the card."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Léa"
     },
     {
-     "label": "Age",
+     "label": {
+      "en": "Age"
+     },
      "value": "22"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Paris"
     }
    ],
@@ -737,7 +855,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "your first name",
+      "description": {
+       "en": "your first name"
+      },
       "variants": [
        "Léa"
       ],
@@ -745,7 +865,9 @@
      },
      {
       "id": "age",
-      "description": "your age",
+      "description": {
+       "en": "your age"
+      },
       "variants": [
        "vingt-deux"
       ],
@@ -753,7 +875,9 @@
      },
      {
       "id": "city",
-      "description": "your city",
+      "description": {
+       "en": "your city"
+      },
       "variants": [
        "Paris"
       ],
@@ -780,18 +904,26 @@
    "id": "fr.write.r_form_hotel",
    "taskFamily": "simple_form",
    "mode": "guided",
-   "instruction": "Fill in the small hotel form with the details on the card.",
+   "instruction": {
+    "en": "Fill in the small hotel form with the details on the card."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Marco"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Nice"
     },
     {
-     "label": "Day",
+     "label": {
+      "en": "Day"
+     },
      "value": "samedi"
     }
    ],
@@ -816,7 +948,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "the first name",
+      "description": {
+       "en": "the first name"
+      },
       "variants": [
        "Marco"
       ],
@@ -824,7 +958,9 @@
      },
      {
       "id": "city",
-      "description": "the city",
+      "description": {
+       "en": "the city"
+      },
       "variants": [
        "Nice"
       ],
@@ -832,7 +968,9 @@
      },
      {
       "id": "day",
-      "description": "the arrival day",
+      "description": {
+       "en": "the arrival day"
+      },
       "variants": [
        "samedi"
       ],
@@ -859,18 +997,26 @@
    "id": "fr.write.r_message_full",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write to Marie: greet her, say you are at the café tomorrow at ten, and close.",
+   "instruction": {
+    "en": "Write to Marie: greet her, say you are at the café tomorrow at ten, and close."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Marie"
     },
     {
-     "label": "Where",
+     "label": {
+      "en": "Where"
+     },
      "value": "café"
     },
     {
-     "label": "When",
+     "label": {
+      "en": "When"
+     },
      "value": "tomorrow, 10:00"
     }
    ],
@@ -878,7 +1024,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut"
@@ -887,7 +1035,9 @@
      },
      {
       "id": "addressee",
-      "description": "who the note is for (Marie)",
+      "description": {
+       "en": "who the note is for (Marie)"
+      },
       "variants": [
        "Marie"
       ],
@@ -895,7 +1045,9 @@
      },
      {
       "id": "where",
-      "description": "the place (café)",
+      "description": {
+       "en": "the place (café)"
+      },
       "variants": [
        "café"
       ],
@@ -903,7 +1055,9 @@
      },
      {
       "id": "day",
-      "description": "the day (demain)",
+      "description": {
+       "en": "the day (demain)"
+      },
       "variants": [
        "demain"
       ],
@@ -911,7 +1065,9 @@
      },
      {
       "id": "time",
-      "description": "the time (à dix heures)",
+      "description": {
+       "en": "the time (à dix heures)"
+      },
       "variants": [
        "à dix heures"
       ],
@@ -919,7 +1075,9 @@
      },
      {
       "id": "closing",
-      "description": "a closing",
+      "description": {
+       "en": "a closing"
+      },
       "variants": [
        "à demain",
        "au revoir",
@@ -958,12 +1116,16 @@
    "id": "fr.write.r_open",
    "taskFamily": "personal_profile",
    "mode": "open",
-   "instruction": "Write two or three short sentences about yourself — anything you can say in French. Free practice.",
+   "instruction": {
+    "en": "Write two or three short sentences about yourself — anything you can say in French. Free practice."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "about_you",
-      "description": "sentences about you",
+      "description": {
+       "en": "sentences about you"
+      },
       "variants": [
        "je m'appelle",
        "je suis",
@@ -996,18 +1158,26 @@
    "id": "fr.write.cp5_profile_nadia",
    "taskFamily": "personal_profile",
    "mode": "guided",
-   "instruction": "You are Nadia. Introduce yourself in writing — name, age and city, in complete sentences.",
+   "instruction": {
+    "en": "You are Nadia. Introduce yourself in writing — name, age and city, in complete sentences."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Nadia"
     },
     {
-     "label": "Age",
+     "label": {
+      "en": "Age"
+     },
      "value": "35"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Lyon"
     }
    ],
@@ -1015,7 +1185,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "your name",
+      "description": {
+       "en": "your name"
+      },
       "variants": [
        "je m'appelle Nadia",
        "je suis Nadia",
@@ -1025,7 +1197,9 @@
      },
      {
       "id": "age",
-      "description": "your age",
+      "description": {
+       "en": "your age"
+      },
       "variants": [
        "j'ai trente-cinq ans"
       ],
@@ -1033,7 +1207,9 @@
      },
      {
       "id": "city",
-      "description": "where you live",
+      "description": {
+       "en": "where you live"
+      },
       "variants": [
        "j'habite à Lyon",
        "j'habite Lyon"
@@ -1066,18 +1242,26 @@
    "id": "fr.write.cp5_profile_tom",
    "taskFamily": "personal_profile",
    "mode": "guided",
-   "instruction": "You are Tom. Introduce yourself in writing — name, age and city, in complete sentences.",
+   "instruction": {
+    "en": "You are Tom. Introduce yourself in writing — name, age and city, in complete sentences."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Tom"
     },
     {
-     "label": "Age",
+     "label": {
+      "en": "Age"
+     },
      "value": "28"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Nice"
     }
    ],
@@ -1085,7 +1269,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "your name",
+      "description": {
+       "en": "your name"
+      },
       "variants": [
        "je m'appelle Tom",
        "je suis Tom",
@@ -1095,7 +1281,9 @@
      },
      {
       "id": "age",
-      "description": "your age",
+      "description": {
+       "en": "your age"
+      },
       "variants": [
        "j'ai vingt-huit ans"
       ],
@@ -1103,7 +1291,9 @@
      },
      {
       "id": "city",
-      "description": "where you live",
+      "description": {
+       "en": "where you live"
+      },
       "variants": [
        "j'habite à Nice",
        "j'habite Nice"
@@ -1136,18 +1326,26 @@
    "id": "fr.write.cp5_profile_emma",
    "taskFamily": "personal_profile",
    "mode": "guided",
-   "instruction": "You are Emma. Introduce yourself in writing — name, age and city, in complete sentences.",
+   "instruction": {
+    "en": "You are Emma. Introduce yourself in writing — name, age and city, in complete sentences."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Emma"
     },
     {
-     "label": "Age",
+     "label": {
+      "en": "Age"
+     },
      "value": "41"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Marseille"
     }
    ],
@@ -1155,7 +1353,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "your name",
+      "description": {
+       "en": "your name"
+      },
       "variants": [
        "je m'appelle Emma",
        "je suis Emma",
@@ -1165,7 +1365,9 @@
      },
      {
       "id": "age",
-      "description": "your age",
+      "description": {
+       "en": "your age"
+      },
       "variants": [
        "j'ai quarante et un ans"
       ],
@@ -1173,7 +1375,9 @@
      },
      {
       "id": "city",
-      "description": "where you live",
+      "description": {
+       "en": "where you live"
+      },
       "variants": [
        "j'habite à Marseille",
        "j'habite Marseille"
@@ -1206,14 +1410,20 @@
    "id": "fr.write.cp5_sofia_tea",
    "taskFamily": "simple_description",
    "mode": "guided",
-   "instruction": "Write one sentence about Sofia: she likes tea.",
+   "instruction": {
+    "en": "Write one sentence about Sofia: she likes tea."
+   },
    "cueFacts": [
     {
-     "label": "Person",
+     "label": {
+      "en": "Person"
+     },
      "value": "Sofia"
     },
     {
-     "label": "Likes",
+     "label": {
+      "en": "Likes"
+     },
      "value": "tea"
     }
    ],
@@ -1221,7 +1431,9 @@
     "requiredSlots": [
      {
       "id": "fact",
-      "description": "what Sofia likes",
+      "description": {
+       "en": "what Sofia likes"
+      },
       "variants": [
        "sofia aime le thé",
        "elle aime le thé",
@@ -1258,12 +1470,16 @@
    "id": "fr.write.cp5_cat_water",
    "taskFamily": "simple_description",
    "mode": "guided",
-   "instruction": "Write one sentence: the cat drinks water.",
+   "instruction": {
+    "en": "Write one sentence: the cat drinks water."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "fact",
-      "description": "what the cat does",
+      "description": {
+       "en": "what the cat does"
+      },
       "variants": [
        "le chat boit de l'eau",
        "le chat boit l'eau"
@@ -1296,14 +1512,20 @@
    "id": "fr.write.cp5_leo_paris",
    "taskFamily": "simple_description",
    "mode": "guided",
-   "instruction": "Write about Léo in one or two short sentences: he lives in Paris and he works.",
+   "instruction": {
+    "en": "Write about Léo in one or two short sentences: he lives in Paris and he works."
+   },
    "cueFacts": [
     {
-     "label": "Person",
+     "label": {
+      "en": "Person"
+     },
      "value": "Léo"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Paris"
     }
    ],
@@ -1311,7 +1533,9 @@
     "requiredSlots": [
      {
       "id": "lives",
-      "description": "where Léo lives",
+      "description": {
+       "en": "where Léo lives"
+      },
       "variants": [
        "il habite à Paris",
        "il habite Paris",
@@ -1322,7 +1546,9 @@
      },
      {
       "id": "works",
-      "description": "that he works",
+      "description": {
+       "en": "that he works"
+      },
       "variants": [
        "il travaille",
        "et travaille",
@@ -1356,18 +1582,26 @@
    "id": "fr.write.cp5_note_anna",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note to Anna: greet her, and tell her the café is at three o'clock.",
+   "instruction": {
+    "en": "Write a short note to Anna: greet her, and tell her the café is at three o'clock."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Anna"
     },
     {
-     "label": "What",
+     "label": {
+      "en": "What"
+     },
      "value": "café"
     },
     {
-     "label": "Time",
+     "label": {
+      "en": "Time"
+     },
      "value": "3:00"
     }
    ],
@@ -1375,7 +1609,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -1385,7 +1621,9 @@
      },
      {
       "id": "addressee",
-      "description": "who the note is for (Anna)",
+      "description": {
+       "en": "who the note is for (Anna)"
+      },
       "variants": [
        "Anna"
       ],
@@ -1393,7 +1631,9 @@
      },
      {
       "id": "what",
-      "description": "the café",
+      "description": {
+       "en": "the café"
+      },
       "variants": [
        "café"
       ],
@@ -1401,7 +1641,9 @@
      },
      {
       "id": "time",
-      "description": "the time (à trois heures)",
+      "description": {
+       "en": "the time (à trois heures)"
+      },
       "variants": [
        "à trois heures",
        "à quinze heures"
@@ -1430,14 +1672,20 @@
    "id": "fr.write.cp5_note_train",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note: greet your friend, and say the train is Saturday at eight.",
+   "instruction": {
+    "en": "Write a short note: greet your friend, and say the train is Saturday at eight."
+   },
    "cueFacts": [
     {
-     "label": "What",
+     "label": {
+      "en": "What"
+     },
      "value": "train"
     },
     {
-     "label": "When",
+     "label": {
+      "en": "When"
+     },
      "value": "Saturday, 8:00"
     }
    ],
@@ -1445,7 +1693,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -1455,7 +1705,9 @@
      },
      {
       "id": "what",
-      "description": "the train",
+      "description": {
+       "en": "the train"
+      },
       "variants": [
        "train"
       ],
@@ -1463,7 +1715,9 @@
      },
      {
       "id": "day",
-      "description": "the day (samedi)",
+      "description": {
+       "en": "the day (samedi)"
+      },
       "variants": [
        "samedi"
       ],
@@ -1471,7 +1725,9 @@
      },
      {
       "id": "time",
-      "description": "the time (à huit heures)",
+      "description": {
+       "en": "the time (à huit heures)"
+      },
       "variants": [
        "à huit heures"
       ],
@@ -1499,12 +1755,16 @@
    "id": "fr.write.cp5_note_library",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a note: say hello, say you are at the library, and close with “see you tomorrow”.",
+   "instruction": {
+    "en": "Write a note: say hello, say you are at the library, and close with “see you tomorrow”."
+   },
    "rubric": {
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut"
@@ -1513,7 +1773,9 @@
      },
      {
       "id": "place",
-      "description": "where you are",
+      "description": {
+       "en": "where you are"
+      },
       "variants": [
        "je suis à la bibliothèque"
       ],
@@ -1521,7 +1783,9 @@
      },
      {
       "id": "closing",
-      "description": "a closing",
+      "description": {
+       "en": "a closing"
+      },
       "variants": [
        "à demain"
       ],
@@ -1552,18 +1816,26 @@
    "id": "fr.write.cp5_form_nadia",
    "taskFamily": "simple_form",
    "mode": "guided",
-   "instruction": "Fill in the registration form with the details on the card.",
+   "instruction": {
+    "en": "Fill in the registration form with the details on the card."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Nadia"
     },
     {
-     "label": "Age",
+     "label": {
+      "en": "Age"
+     },
      "value": "35"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Lyon"
     }
    ],
@@ -1588,7 +1860,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "the first name",
+      "description": {
+       "en": "the first name"
+      },
       "variants": [
        "Nadia"
       ],
@@ -1596,7 +1870,9 @@
      },
      {
       "id": "age",
-      "description": "the age",
+      "description": {
+       "en": "the age"
+      },
       "variants": [
        "trente-cinq"
       ],
@@ -1604,7 +1880,9 @@
      },
      {
       "id": "city",
-      "description": "the city",
+      "description": {
+       "en": "the city"
+      },
       "variants": [
        "Lyon"
       ],
@@ -1631,18 +1909,26 @@
    "id": "fr.write.cp5_form_tom",
    "taskFamily": "simple_form",
    "mode": "guided",
-   "instruction": "Fill in the hotel form with the details on the card.",
+   "instruction": {
+    "en": "Fill in the hotel form with the details on the card."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Tom"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Nice"
     },
     {
-     "label": "Day",
+     "label": {
+      "en": "Day"
+     },
      "value": "dimanche"
     }
    ],
@@ -1667,7 +1953,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "the first name",
+      "description": {
+       "en": "the first name"
+      },
       "variants": [
        "Tom"
       ],
@@ -1675,7 +1963,9 @@
      },
      {
       "id": "city",
-      "description": "the city",
+      "description": {
+       "en": "the city"
+      },
       "variants": [
        "Nice"
       ],
@@ -1683,7 +1973,9 @@
      },
      {
       "id": "day",
-      "description": "the arrival day",
+      "description": {
+       "en": "the arrival day"
+      },
       "variants": [
        "dimanche"
       ],
@@ -1710,18 +2002,26 @@
    "id": "fr.write.cp5_form_emma",
    "taskFamily": "simple_form",
    "mode": "guided",
-   "instruction": "Fill in the library-card form with the details on the card.",
+   "instruction": {
+    "en": "Fill in the library-card form with the details on the card."
+   },
    "cueFacts": [
     {
-     "label": "Name",
+     "label": {
+      "en": "Name"
+     },
      "value": "Emma"
     },
     {
-     "label": "Age",
+     "label": {
+      "en": "Age"
+     },
      "value": "41"
     },
     {
-     "label": "City",
+     "label": {
+      "en": "City"
+     },
      "value": "Marseille"
     }
    ],
@@ -1746,7 +2046,9 @@
     "requiredSlots": [
      {
       "id": "name",
-      "description": "the first name",
+      "description": {
+       "en": "the first name"
+      },
       "variants": [
        "Emma"
       ],
@@ -1754,7 +2056,9 @@
      },
      {
       "id": "age",
-      "description": "the age",
+      "description": {
+       "en": "the age"
+      },
       "variants": [
        "quarante et un"
       ],
@@ -1762,7 +2066,9 @@
      },
      {
       "id": "city",
-      "description": "the city",
+      "description": {
+       "en": "the city"
+      },
       "variants": [
        "Marseille"
       ],
@@ -1789,18 +2095,26 @@
    "id": "fr.write.a1cap_note_train",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note to Paul: greet him, and tell him the train is at nine o'clock.",
+   "instruction": {
+    "en": "Write a short note to Paul: greet him, and tell him the train is at nine o'clock."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Paul"
     },
     {
-     "label": "What",
+     "label": {
+      "en": "What"
+     },
      "value": "train"
     },
     {
-     "label": "Time",
+     "label": {
+      "en": "Time"
+     },
      "value": "9:00"
     }
    ],
@@ -1808,7 +2122,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -1818,7 +2134,9 @@
      },
      {
       "id": "addressee",
-      "description": "who the note is for (Paul)",
+      "description": {
+       "en": "who the note is for (Paul)"
+      },
       "variants": [
        "Paul"
       ],
@@ -1826,7 +2144,9 @@
      },
      {
       "id": "what",
-      "description": "the train",
+      "description": {
+       "en": "the train"
+      },
       "variants": [
        "train"
       ],
@@ -1834,7 +2154,9 @@
      },
      {
       "id": "time",
-      "description": "the time (à neuf heures)",
+      "description": {
+       "en": "the time (à neuf heures)"
+      },
       "variants": [
        "à neuf heures"
       ],
@@ -1862,18 +2184,26 @@
    "id": "fr.write.a1cap_note_resto",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note to Léa: greet her, and tell her the restaurant is on Saturday.",
+   "instruction": {
+    "en": "Write a short note to Léa: greet her, and tell her the restaurant is on Saturday."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Léa"
     },
     {
-     "label": "What",
+     "label": {
+      "en": "What"
+     },
      "value": "restaurant"
     },
     {
-     "label": "Day",
+     "label": {
+      "en": "Day"
+     },
      "value": "Saturday"
     }
    ],
@@ -1881,7 +2211,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -1891,7 +2223,9 @@
      },
      {
       "id": "addressee",
-      "description": "who the note is for (Léa)",
+      "description": {
+       "en": "who the note is for (Léa)"
+      },
       "variants": [
        "Léa"
       ],
@@ -1899,7 +2233,9 @@
      },
      {
       "id": "what",
-      "description": "the restaurant",
+      "description": {
+       "en": "the restaurant"
+      },
       "variants": [
        "restaurant"
       ],
@@ -1907,7 +2243,9 @@
      },
      {
       "id": "day",
-      "description": "the day (samedi)",
+      "description": {
+       "en": "the day (samedi)"
+      },
       "variants": [
        "samedi"
       ],
@@ -1935,18 +2273,26 @@
    "id": "fr.write.a1cap_note_magasin",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note to Marc: greet him, and tell him the shop is open tomorrow.",
+   "instruction": {
+    "en": "Write a short note to Marc: greet him, and tell him the shop is open tomorrow."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Marc"
     },
     {
-     "label": "What",
+     "label": {
+      "en": "What"
+     },
      "value": "shop"
     },
     {
-     "label": "When",
+     "label": {
+      "en": "When"
+     },
      "value": "tomorrow"
     }
    ],
@@ -1954,7 +2300,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -1964,7 +2312,9 @@
      },
      {
       "id": "addressee",
-      "description": "who the note is for (Marc)",
+      "description": {
+       "en": "who the note is for (Marc)"
+      },
       "variants": [
        "Marc"
       ],
@@ -1972,7 +2322,9 @@
      },
      {
       "id": "what",
-      "description": "the shop",
+      "description": {
+       "en": "the shop"
+      },
       "variants": [
        "magasin"
       ],
@@ -1980,7 +2332,9 @@
      },
      {
       "id": "open",
-      "description": "that it is open (ouvert)",
+      "description": {
+       "en": "that it is open (ouvert)"
+      },
       "variants": [
        "ouvert",
        "ouvre"
@@ -1989,7 +2343,9 @@
      },
      {
       "id": "day",
-      "description": "the day (demain)",
+      "description": {
+       "en": "the day (demain)"
+      },
       "variants": [
        "demain"
       ],
@@ -2018,18 +2374,26 @@
    "id": "fr.write.a1cap_note_gare",
    "taskFamily": "short_message",
    "mode": "guided",
-   "instruction": "Write a short note to Anna: greet her, say you are at the station, and that you are coming back at six.",
+   "instruction": {
+    "en": "Write a short note to Anna: greet her, say you are at the station, and that you are coming back at six."
+   },
    "cueFacts": [
     {
-     "label": "To",
+     "label": {
+      "en": "To"
+     },
      "value": "Anna"
     },
     {
-     "label": "Where",
+     "label": {
+      "en": "Where"
+     },
      "value": "station"
     },
     {
-     "label": "Back at",
+     "label": {
+      "en": "Back at"
+     },
      "value": "6:00"
     }
    ],
@@ -2037,7 +2401,9 @@
     "requiredSlots": [
      {
       "id": "greeting",
-      "description": "a greeting",
+      "description": {
+       "en": "a greeting"
+      },
       "variants": [
        "bonjour",
        "salut",
@@ -2047,7 +2413,9 @@
      },
      {
       "id": "place",
-      "description": "where you are",
+      "description": {
+       "en": "where you are"
+      },
       "variants": [
        "je suis à la gare"
       ],
@@ -2055,7 +2423,9 @@
      },
      {
       "id": "time",
-      "description": "when you are back",
+      "description": {
+       "en": "when you are back"
+      },
       "variants": [
        "je rentre à six heures",
        "à six heures"

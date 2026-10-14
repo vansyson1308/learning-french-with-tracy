@@ -13,6 +13,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { SpeakerButton } from "@/components/speaker-button";
+import { exampleTexts } from "@/lib/lexicon/example-text";
 import { panelDataFor } from "@/lib/session/panel";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
@@ -30,6 +31,7 @@ export function PostAnswerPanel({
   const styles = useStyles();
   const [expanded, setExpanded] = useState(false);
   const data = panelDataFor(courseId, itemId);
+  const example = exampleTexts(courseId, data?.example);
   if (!data) return null;
 
   return (
@@ -55,10 +57,10 @@ export function PostAnswerPanel({
           ) : null}
         </View>
       )}
-      {data.example ? (
+      {example ? (
         <View style={styles.example}>
-          <Text style={styles.exampleFr}>{data.example.fr}</Text>
-          <Text style={styles.exampleEn}>{data.example.en}</Text>
+          <Text style={styles.exampleFr}>{example.target}</Text>
+          <Text style={styles.exampleEn}>{example.native}</Text>
         </View>
       ) : null}
       {note ? <Text style={styles.note}>{note}</Text> : null}

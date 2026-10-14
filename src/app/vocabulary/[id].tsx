@@ -19,6 +19,7 @@ import { serializeCardKey } from "@/lib/learning/card-key";
 import { memoryStrengthPercent } from "@/lib/learning/engine";
 import type { FsrsCardState } from "@/lib/learning/scheduler";
 import { displayPronunciation } from "@/lib/session/panel";
+import { exampleTexts } from "@/lib/lexicon/example-text";
 import { useLexiconRepository } from "@/lib/lexicon/use-lexicon-repository";
 import type { LexemeDetail } from "@/lib/lexicon/types";
 import { exitScreen } from "@/lib/navigation";
@@ -101,12 +102,16 @@ export default function LexemeDetailScreen() {
             {detail.examples.length > 0 ? (
               <View style={styles.card}>
                 <Text style={styles.sectionTitle}>Example</Text>
-                {detail.examples.map((ex) => (
-                  <View key={ex.fr} style={styles.example}>
-                    <Text style={styles.exampleFr}>{ex.fr}</Text>
-                    <Text style={styles.exampleEn}>{ex.en}</Text>
-                  </View>
-                ))}
+                {detail.examples.map((ex, index) => {
+                  const texts = exampleTexts(activeCourseId, ex);
+                  if (!texts) return null;
+                  return (
+                    <View key={`${index}-${texts.target}`} style={styles.example}>
+                      <Text style={styles.exampleFr}>{texts.target}</Text>
+                      <Text style={styles.exampleEn}>{texts.native}</Text>
+                    </View>
+                  );
+                })}
               </View>
             ) : null}
 

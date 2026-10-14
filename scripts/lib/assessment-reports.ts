@@ -14,6 +14,9 @@ import type {
   PackSource,
 } from "../../content/schema";
 
+/** An objective with its native text resolved for ONE course (see native-text.ts). */
+export type LocalizedObjective = Omit<CourseObjective, "title" | "canDo"> & { title: string; canDo: string };
+
 // ---------------------------------------------------------------------------
 // Curriculum coverage (§131-132)
 // ---------------------------------------------------------------------------
@@ -38,8 +41,8 @@ export type ObjectiveCoverageRow = {
 };
 
 export function buildObjectiveCoverage(input: {
-  objectives: CourseObjective[];
-  frPack: PackSource;
+  objectives: LocalizedObjective[];
+  pack: PackSource;
   concepts: { id: string; objectives?: string[] }[];
   checkpointItemTargets: string[][];
   placementItemTargets: string[][];
@@ -65,7 +68,7 @@ export function buildObjectiveCoverage(input: {
       placementItems: 0,
     });
   }
-  for (const section of input.frPack.sections) {
+  for (const section of input.pack.sections) {
     for (const unit of section.units) {
       for (const lesson of unit.lessons) {
         for (const oid of lesson.objectives ?? []) {

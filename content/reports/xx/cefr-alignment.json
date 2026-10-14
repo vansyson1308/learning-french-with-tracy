@@ -1,0 +1,26 @@
+{
+  "generator": "scripts/lib/assessment-reports.ts",
+  "levels": [
+    {
+      "level": "A1",
+      "scales": [
+        {
+          "scaleName": "Reading for orientation",
+          "sourceRef": "cefr-cv-2020:reading-orientation",
+          "direct": [
+            "xx.obj.read.signs"
+          ],
+          "supports": []
+        },
+        {
+          "scaleName": "Vocabulary range",
+          "sourceRef": "cefr-cv-2020:vocabulary-range",
+          "direct": [],
+          "supports": [
+            "xx.obj.greet.basic"
+          ]
+        }
+      ]
+    }
+  ]
+}

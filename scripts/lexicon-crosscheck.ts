@@ -12,7 +12,14 @@ import { crossCheckCore } from "./lib/lexicon-crosscheck";
 import type { CoreLexemeRows } from "./lib/lexique-derive-lib";
 import { canonicalJson, readJson, safeResolve } from "./lib/pipeline";
 
-const manifest = loadSourceManifest();
+/** Lexique 4 is a FRENCH source; these tools take --lang for symmetry but default to it. */
+const LEXIQUE_LANG = (() => {
+  const i = process.argv.indexOf("--lang");
+  return i >= 0 ? process.argv[i + 1] : "fr";
+})();
+
+const manifest = loadSourceManifest(LEXIQUE_LANG);
+if (manifest === null) throw new Error(`content/${LEXIQUE_LANG}/lexicon/source-manifest.json is missing`);
 if (manifest.retrieval.status !== "retrieved") {
   console.error("ERROR the source manifest is not retrieved — nothing to cross-check (fail-closed)");
   process.exit(1);
@@ -34,8 +41,8 @@ if (subset.source?.sha256 !== manifest.retrieval.sha256) {
   process.exit(1);
 }
 
-const lexicon = loadRichLexicon();
-const overrideKeys = new Map(loadMatchOverrides().overrides.map((o) => [o.id, o.matchKey]));
+const lexicon = loadRichLexicon(LEXIQUE_LANG);
+const overrideKeys = new Map(loadMatchOverrides(LEXIQUE_LANG).overrides.map((o) => [o.id, o.matchKey]));
 const report = crossCheckCore(lexicon, { audit: subset.audit, entries: subset.entries }, overrideKeys);
 
 const out = safeResolve("content/fr/lexicon/derived/core-crosscheck.json");

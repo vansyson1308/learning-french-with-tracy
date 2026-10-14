@@ -1,5 +1,7 @@
 # Phase 6 assessment research base (clean-room)
 
+> **Schema note (P1c).** Native-language text in `objectives.json`, `checkpoints.json` and `placement.json` is keyed by native code since P1c: objective `title`/`canDo`, checkpoint `title`/`description` and stage `title` are `{ "en": "…" }` records (the compiler emits the course's native language). Ids are `fr.obj.*`, `fr.checkpoint.*`, `fr.cpi.*`, `fr.pstage.*`, `fr.pcluster.*`, `fr.pli.*` built by the per-language factories in `content/schema.ts`. See `content/README.md`.
+
 Authored for this project. Facts below are framework knowledge verified
 against the official sources listed; **no descriptor text is reproduced**
 anywhere in this repository (see the paraphrase policy). This file is the

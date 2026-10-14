@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "language": "xx",
+  "lexemes": [
+    {
+      "id": "xx:w:tomo",
+      "surface": "ka tomo",
+      "lemma": "tomo",
+      "lookupForm": "tomo",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": { "en": "the friend" },
+      "topic": "people",
+      "examples": [
+        {
+          "target": "Mi tomo na ka tomo.",
+          "translations": { "en": "I am a friend of the friend." },
+          "source": "synthetic-test-language"
+        }
+      ],
+      "relations": { "confusables": ["xx:w:lira"] },
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    },
+    {
+      "id": "xx:w:lira",
+      "surface": "ki lira",
+      "lemma": "lira",
+      "lookupForm": "lira",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "glosses": { "en": "the farewell" },
+      "topic": "greetings",
+      "examples": [
+        {
+          "target": "To lira, ki lira!",
+          "translations": { "en": "Goodbye, the farewell!" },
+          "source": "synthetic-test-language"
+        }
+      ],
+      "relations": { "confusables": ["xx:w:tomo"] },
+      "sourceRefs": [{ "source": "synthetic-test-language" }]
+    }
+  ]
+}

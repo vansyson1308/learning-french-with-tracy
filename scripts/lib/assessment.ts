@@ -1,33 +1,40 @@
 /**
- * Phase 6 assessment pipeline: course objectives, CEFR alignments, claim
- * policy — loading, graph validation (§25, §143) and the honesty
- * invariants that keep alignments defensible (§166).
+ * Phase 6 assessment pipeline (per target language since P1c): course
+ * objectives, CEFR alignments, claim policy — loading, graph validation
+ * (§25, §143) and the honesty invariants that keep alignments defensible
+ * (§166). Native-language text (titles, can-do statements, checkpoint
+ * copy) is resolved per course at compile time.
  */
 
+import { existsSync, readFileSync } from "fs";
+
 import {
-  AttainmentPolicySchema,
-  CheckpointsSchema,
+  attainmentPolicySchema,
+  checkpointsSchema,
   ClaimPolicySchema,
-  CourseObjectivesSchema,
-  PackSchema,
-  PlacementSchema,
+  courseObjectivesSchema,
+  placementSchema,
   type AttainmentPolicy,
-  type Checkpoint,
   type Checkpoints,
   type ClaimPolicy,
-  type Conjugations,
   type CourseObjective,
   type CourseObjectives,
   type PackSource,
+  type ParadigmTable,
+  type ParadigmTables,
   type PlacementContent,
 } from "../../content/schema";
-import { loadConjugations, loadPedagogyConcepts } from "./pedagogy";
-import { listCourseSources, readJson, validateExercise, type ValidationResult } from "./pipeline";
-import { readFileSync } from "fs";
+import { buildPlugin } from "./languages";
+import { localizeCheckpoint, localizeObjective, localizePlacementStage } from "./native-text";
+import { loadParadigms, loadPedagogyConcepts } from "./pedagogy";
+import { loadPacks, readJson, safeResolve, targetLayers, validateExercise, type LoadedPack, type ValidationResult } from "./pipeline";
 
-export const OBJECTIVES_SOURCE = "content/fr/assessment/objectives.json";
-export const CLAIM_POLICY_SOURCE = "content/fr/assessment/claim-policy.json";
-export const ASSESSMENT_RESEARCH = "content/fr/assessment/RESEARCH.md";
+export function assessmentSourcePath(
+  lang: string,
+  kind: "objectives" | "claim-policy" | "attainment" | "checkpoints" | "placement" | "RESEARCH"
+): string {
+  return `content/${lang}/assessment/${kind}.${kind === "RESEARCH" ? "md" : "json"}`;
+}
 
 /**
  * The sourceRef register (must each be documented in RESEARCH.md). An
@@ -55,7 +62,7 @@ export const CEFR_SOURCE_REFS: readonly string[] = [
   "cefr-cv-2020:sustained-monologue-describing",
   "cefr-cv-2020:sustained-monologue-giving-information",
   // Phase-9 written-production + interaction scales (documented in
-  // content/fr/writing/RESEARCH.md and content/fr/interaction/RESEARCH.md,
+  // content/<lang>/writing/RESEARCH.md and content/<lang>/interaction/RESEARCH.md,
   // with per-row verification status).
   "cefr-cv-2020:overall-written-production",
   "cefr-cv-2020:overall-written-interaction",
@@ -66,20 +73,52 @@ export const CEFR_SOURCE_REFS: readonly string[] = [
   "cefr-cv-2020:obtaining-goods-services",
 ];
 
-export function loadCourseObjectives(): CourseObjectives {
-  return CourseObjectivesSchema.parse(readJson(OBJECTIVES_SOURCE));
+function checkLanguage(rel: string, doc: { language: string }, lang: string): void {
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
 }
 
-export function loadClaimPolicy(): ClaimPolicy {
-  return ClaimPolicySchema.parse(readJson(CLAIM_POLICY_SOURCE));
+export function hasAssessment(lang: string): boolean {
+  return existsSync(safeResolve(assessmentSourcePath(lang, "objectives")));
 }
 
-export const ATTAINMENT_SOURCE = "content/fr/assessment/attainment.json";
-/** The cross-domain sampler that must never complete a domain by itself. */
-export const CAPSTONE_CHECKPOINT_ID = "fr.checkpoint.a1-capstone";
+export function loadCourseObjectives(lang: string): CourseObjectives {
+  const rel = assessmentSourcePath(lang, "objectives");
+  const doc = courseObjectivesSchema(lang).parse(readJson(rel));
+  checkLanguage(rel, doc, lang);
+  return doc;
+}
 
-export function loadAttainmentPolicy(): AttainmentPolicy {
-  return AttainmentPolicySchema.parse(readJson(ATTAINMENT_SOURCE));
+export function loadClaimPolicy(lang: string): ClaimPolicy {
+  return ClaimPolicySchema.parse(readJson(assessmentSourcePath(lang, "claim-policy")));
+}
+
+export function loadAttainmentPolicy(lang: string): AttainmentPolicy {
+  const rel = assessmentSourcePath(lang, "attainment");
+  const doc = attainmentPolicySchema(lang).parse(readJson(rel));
+  checkLanguage(rel, doc, lang);
+  return doc;
+}
+
+export function loadCheckpoints(lang: string): Checkpoints {
+  const rel = assessmentSourcePath(lang, "checkpoints");
+  const doc = checkpointsSchema(lang).parse(readJson(rel));
+  checkLanguage(rel, doc, lang);
+  return doc;
+}
+
+export function loadPlacement(lang: string): PlacementContent {
+  const rel = assessmentSourcePath(lang, "placement");
+  const doc = placementSchema(lang).parse(readJson(rel));
+  checkLanguage(rel, doc, lang);
+  return doc;
+}
+
+/**
+ * The cross-domain sampler that must never complete a domain by itself:
+ * by convention a checkpoint id ending in "-capstone" (`fr.checkpoint.a1-capstone`).
+ */
+export function isCapstoneCheckpoint(checkpointId: string): boolean {
+  return /-capstone$/.test(checkpointId);
 }
 
 /**
@@ -143,7 +182,7 @@ export function validateAttainmentPolicyData(input: {
         if (!ids.has(item.id)) continue;
         for (const oid of item.objectiveTargets) {
           perObjective.set(oid, (perObjective.get(oid) ?? 0) + 1);
-          if (cp.id === CAPSTONE_CHECKPOINT_ID) capstoneTargets.add(oid);
+          if (isCapstoneCheckpoint(cp.id)) capstoneTargets.add(oid);
         }
       }
       for (const [oid, count] of perObjective) {
@@ -229,6 +268,8 @@ export function topologicalObjectiveOrder(objectives: CourseObjective[]): string
 /** Pure rule engine over the authored objective graph. */
 export function validateObjectiveGraph(input: {
   objectives: CourseObjectives;
+  /** Path of the RESEARCH.md that must document every registered sourceRef. */
+  researchPath?: string;
 }): ValidationResult {
   const errors: string[] = [];
   const err = (m: string) => errors.push(`objectives: ${m}`);
@@ -269,17 +310,20 @@ export function validateObjectiveGraph(input: {
     }
   }
 
-  // Every registered sourceRef key must be documented in RESEARCH.md — the
-  // register and the prose never drift apart.
+  // Every registered sourceRef key USED by this language's objectives must
+  // be documented in its RESEARCH.md — the register and the prose never
+  // drift apart.
+  const researchPath = input.researchPath ?? assessmentSourcePath(input.objectives.language, "RESEARCH");
+  const used = new Set(objectives.flatMap((o) => o.cefrAlignments.map((a) => a.sourceRef)));
   try {
-    const research = readFileSync(ASSESSMENT_RESEARCH, "utf8");
+    const research = readFileSync(safeResolve(researchPath), "utf8");
     for (const key of CEFR_SOURCE_REFS) {
-      if (!research.includes(key)) {
-        err(`RESEARCH.md does not document registered sourceRef "${key}"`);
+      if (used.has(key) && !research.includes(key)) {
+        err(`${researchPath} does not document registered sourceRef "${key}"`);
       }
     }
   } catch {
-    err(`${ASSESSMENT_RESEARCH} is missing`);
+    err(`${researchPath} is missing`);
   }
 
   return { errors, warnings: [] };
@@ -307,11 +351,13 @@ export function validateClaimPolicyData(input: { policy: ClaimPolicy }): Validat
 }
 
 /**
- * Curriculum ↔ objective cross-references (§140, §144): every French lesson
- * declares resolving objectives; exercise objectiveTargets and concept
- * objectives resolve; non-French courses carry NO objective metadata
- * (§153); and every objective is actually taught by at least one lesson —
- * an untaught objective is an invented one (§23).
+ * Curriculum ↔ objective cross-references (§140, §144) for the courses of
+ * ONE target language: every lesson declares resolving objectives;
+ * exercise objectiveTargets and concept objectives resolve; and every
+ * objective is actually taught by at least one lesson — an untaught
+ * objective is an invented one (§23). (Courses of languages WITHOUT an
+ * objectives source are forbidden any objective metadata by the pack
+ * validator, §153.)
  */
 export function validateCurriculumMapping(input: {
   objectives: CourseObjectives;
@@ -324,16 +370,11 @@ export function validateCurriculumMapping(input: {
   const taught = new Set<string>();
 
   for (const { courseId, pack } of input.packs) {
-    const isFrench = courseId === "fr-en";
     for (const section of pack.sections) {
       for (const unit of section.units) {
         for (const lesson of unit.lessons) {
-          if (!isFrench) {
-            if (lesson.objectives !== undefined) {
-              err(`${courseId}/${lesson.id}: objectives are French-only metadata (§153)`);
-            }
-          } else if (lesson.objectives === undefined) {
-            err(`${lesson.id}: French lesson must declare objectives (§144)`);
+          if (lesson.objectives === undefined) {
+            err(`${courseId}/${lesson.id}: lesson must declare objectives (§144)`);
           } else {
             for (const o of lesson.objectives) {
               if (!known.has(o)) err(`${lesson.id}: unknown objective ${o}`);
@@ -346,10 +387,6 @@ export function validateCurriculumMapping(input: {
           for (const e of lesson.exercises) {
             const targets = (e as { objectiveTargets?: string[] }).objectiveTargets;
             if (targets === undefined) continue;
-            if (!isFrench) {
-              err(`${courseId}/${e.id}: objectiveTargets are French-only metadata (§153)`);
-              continue;
-            }
             for (const o of targets) {
               if (!known.has(o)) err(`${e.id}: unknown objectiveTarget ${o}`);
             }
@@ -418,71 +455,44 @@ export type ScoredItemEvidence = {
   inputId: string | null;
 };
 
-/** speechItemId → authored task family (lazy; empty when no speech source). */
-let speechFamilyCache: Map<string, string> | null = null;
-function speechTaskFamilies(): Map<string, string> {
-  if (speechFamilyCache) return speechFamilyCache;
-  speechFamilyCache = new Map();
+/** id → authored taskFamily from a `{ <key>: [{id, taskFamily}] }` source (empty when absent). */
+function taskFamilyIndex(relPath: string, key: "items" | "tasks" | "scenarios"): Map<string, string> {
+  const out = new Map<string, string>();
   try {
-    const doc = readJson("content/fr/speech/items.json") as {
-      items?: { id?: unknown; taskFamily?: unknown }[];
-    };
-    for (const item of doc.items ?? []) {
-      if (typeof item.id === "string" && typeof item.taskFamily === "string") {
-        speechFamilyCache.set(item.id, item.taskFamily);
-      }
+    const doc = readJson(relPath) as Record<string, { id?: unknown; taskFamily?: unknown }[] | undefined>;
+    for (const entry of doc[key] ?? []) {
+      if (typeof entry.id === "string" && typeof entry.taskFamily === "string") out.set(entry.id, entry.taskFamily);
     }
   } catch {
-    // No speech source yet — exercise types remain the fallback family.
+    // No such source yet — exercise types remain the fallback family.
   }
-  return speechFamilyCache;
+  return out;
 }
 
-let writingFamilyCache: Map<string, string> | null = null;
+const familyCache = new Map<string, { speech: Map<string, string>; writing: Map<string, string>; interaction: Map<string, string> }>();
 
-/** writingTaskId → authored taskFamily (P9 §21-analog honesty for writing). */
-function writingTaskFamilies(): Map<string, string> {
-  if (writingFamilyCache) return writingFamilyCache;
-  writingFamilyCache = new Map();
-  try {
-    const doc = readJson("content/fr/writing/tasks.json") as {
-      tasks?: { id?: unknown; taskFamily?: unknown }[];
+function taskFamilies(lang: string) {
+  let hit = familyCache.get(lang);
+  if (!hit) {
+    hit = {
+      speech: taskFamilyIndex(`content/${lang}/speech/items.json`, "items"),
+      writing: taskFamilyIndex(`content/${lang}/writing/tasks.json`, "tasks"),
+      interaction: taskFamilyIndex(`content/${lang}/interaction/scenarios.json`, "scenarios"),
     };
-    for (const task of doc.tasks ?? []) {
-      if (typeof task.id === "string" && typeof task.taskFamily === "string") {
-        writingFamilyCache.set(task.id, task.taskFamily);
-      }
-    }
-  } catch {
-    // No writing source yet — exercise types remain the fallback family.
+    familyCache.set(lang, hit);
   }
-  return writingFamilyCache;
+  return hit;
 }
 
-let interactionFamilyCache: Map<string, string> | null = null;
-
-/** scenarioId → authored taskFamily (P9 §35: the scenario IS the input). */
-function interactionTaskFamilies(): Map<string, string> {
-  if (interactionFamilyCache) return interactionFamilyCache;
-  interactionFamilyCache = new Map();
-  try {
-    const doc = readJson("content/fr/interaction/scenarios.json") as {
-      scenarios?: { id?: unknown; taskFamily?: unknown }[];
-    };
-    for (const scenario of doc.scenarios ?? []) {
-      if (typeof scenario.id === "string" && typeof scenario.taskFamily === "string") {
-        interactionFamilyCache.set(scenario.id, scenario.taskFamily);
-      }
-    }
-  } catch {
-    // No interaction source yet — exercise types remain the fallback family.
-  }
-  return interactionFamilyCache;
+/** Test seam: forget cached task-family indexes (sources rewritten in a test). */
+export function resetTaskFamilyCacheForTests(): void {
+  familyCache.clear();
 }
 
 export function collectScoredItemEvidence(
   relPath: string,
-  containerKey: "checkpoints" | "stages"
+  containerKey: "checkpoints" | "stages",
+  lang: string
 ): ScoredItemEvidence[] {
   let doc: unknown;
   try {
@@ -492,6 +502,7 @@ export function collectScoredItemEvidence(
   }
   const containers = (doc as Record<string, unknown>)[containerKey];
   if (!Array.isArray(containers)) return [];
+  const families = taskFamilies(lang);
   const out: ScoredItemEvidence[] = [];
   for (const container of containers) {
     const items = (container as { items?: unknown }).items;
@@ -521,12 +532,9 @@ export function collectScoredItemEvidence(
       // task family is the AUTHORED one (formulaic_exchange / transaction /
       // …), not the exercise type; the elicitation prompt — or the whole
       // scenario — is the input identity.
-      const speechFamily =
-        speechItemId !== null ? speechTaskFamilies().get(speechItemId) : undefined;
-      const writingFamily =
-        writingTaskId !== null ? writingTaskFamilies().get(writingTaskId) : undefined;
-      const interactionFamily =
-        scenarioId !== null ? interactionTaskFamilies().get(scenarioId) : undefined;
+      const speechFamily = speechItemId !== null ? families.speech.get(speechItemId) : undefined;
+      const writingFamily = writingTaskId !== null ? families.writing.get(writingTaskId) : undefined;
+      const interactionFamily = scenarioId !== null ? families.interaction.get(scenarioId) : undefined;
       out.push({
         objectiveTargets: targets as string[],
         taskFamily:
@@ -541,11 +549,12 @@ export function collectScoredItemEvidence(
   return out;
 }
 
-/** Disk-reading aggregator for the CLIs. */
-export function validateAssessment(): ValidationResult {
+/** Disk-reading aggregator for the CLIs, for one target language. */
+export function validateAssessment(lang: string, packs: LoadedPack[] = loadPacks()): ValidationResult {
+  if (!hasAssessment(lang)) return { errors: [], warnings: [] };
   let objectives: CourseObjectives;
   try {
-    objectives = loadCourseObjectives();
+    objectives = loadCourseObjectives(lang);
   } catch (e) {
     return {
       errors: [`objectives: schema validation failed — ${(e as Error).message.split("\n")[0]}`],
@@ -554,7 +563,7 @@ export function validateAssessment(): ValidationResult {
   }
   let policy: ClaimPolicy;
   try {
-    policy = loadClaimPolicy();
+    policy = loadClaimPolicy(lang);
   } catch (e) {
     return {
       errors: [`claim-policy: schema validation failed — ${(e as Error).message.split("\n")[0]}`],
@@ -565,59 +574,44 @@ export function validateAssessment(): ValidationResult {
   const claim = validateClaimPolicyData({ policy });
   // Packs that fail their own schema are reported by validateContent; the
   // mapping check simply skips them here (same posture as lesson flows).
-  const packs: { courseId: string; pack: PackSource }[] = [];
-  for (const file of listCourseSources()) {
-    const parsed = PackSchema.safeParse(readJson(`content/courses/${file}`));
-    if (parsed.success) packs.push({ courseId: file.replace(/\.json$/, ""), pack: parsed.data });
-  }
+  const mine = packs.filter((p) => p.pack.targetCode === lang);
   let concepts: { id: string; objectives?: string[] }[] = [];
   try {
-    concepts = loadPedagogyConcepts().concepts;
+    concepts = loadPedagogyConcepts(lang)?.concepts ?? [];
   } catch {
     // concept schema failures are reported by validatePedagogy
   }
-  const mapping = validateCurriculumMapping({ objectives, packs, concepts });
-  let checkpointErrors: string[] = [];
+  const mapping = validateCurriculumMapping({ objectives, packs: mine, concepts });
+  let paradigms: ParadigmTables | null = null;
   try {
-    const checkpoints = loadCheckpoints();
-    const frPack = packs.find((p) => p.courseId === "fr-en");
-    if (frPack) {
-      checkpointErrors = validateCheckpointsData({
-        checkpoints,
-        objectives,
-        conjugations: loadConjugations(),
-        frPack: frPack.pack,
-      }).errors;
-    }
-  } catch (e) {
-    checkpointErrors = [
-      `checkpoints: schema validation failed — ${(e as Error).message.split("\n")[0]}`,
-    ];
+    paradigms = targetLayers(lang).pedagogy ? loadParadigms(lang) : null;
+  } catch {
+    // reported by validatePedagogy
   }
-  let placementErrors: string[] = [];
-  try {
-    const placement = loadPlacement();
-    const frPack = packs.find((p) => p.courseId === "fr-en");
-    if (frPack) {
-      placementErrors = validatePlacementData({
-        placement,
-        objectives,
-        conjugations: loadConjugations(),
-        frPack: frPack.pack,
-      }).errors;
+  const bankErrors: string[] = [];
+  for (const { courseId, pack } of mine) {
+    try {
+      bankErrors.push(
+        ...validateCheckpointsData({ checkpoints: loadCheckpoints(lang), objectives, paradigms, pack, courseId }).errors
+      );
+    } catch (e) {
+      bankErrors.push(`checkpoints: schema validation failed — ${(e as Error).message.split("\n")[0]}`);
     }
-  } catch (e) {
-    placementErrors = [
-      `placement: schema validation failed — ${(e as Error).message.split("\n")[0]}`,
-    ];
+    try {
+      bankErrors.push(
+        ...validatePlacementData({ placement: loadPlacement(lang), objectives, paradigms, pack, courseId }).errors
+      );
+    } catch (e) {
+      bankErrors.push(`placement: schema validation failed — ${(e as Error).message.split("\n")[0]}`);
+    }
   }
   let attainmentErrors: string[] = [];
   try {
     attainmentErrors = validateAttainmentPolicyData({
-      attainment: loadAttainmentPolicy(),
+      attainment: loadAttainmentPolicy(lang),
       objectives,
       policy,
-      checkpoints: loadCheckpoints(),
+      checkpoints: loadCheckpoints(lang),
     }).errors;
   } catch (e) {
     attainmentErrors = [
@@ -629,8 +623,7 @@ export function validateAssessment(): ValidationResult {
       ...graph.errors,
       ...claim.errors,
       ...mapping.errors,
-      ...checkpointErrors,
-      ...placementErrors,
+      ...[...new Set(bankErrors)],
       ...attainmentErrors,
     ],
     warnings: [],
@@ -640,12 +633,6 @@ export function validateAssessment(): ValidationResult {
 // ---------------------------------------------------------------------------
 // Checkpoints (§49-66)
 // ---------------------------------------------------------------------------
-
-export const CHECKPOINTS_SOURCE = "content/fr/assessment/checkpoints.json";
-
-export function loadCheckpoints(): Checkpoints {
-  return CheckpointsSchema.parse(readJson(CHECKPOINTS_SOURCE));
-}
 
 /**
  * Checkpoint bank rules (§53, §64, §136): ids unique and stable, every item
@@ -658,15 +645,17 @@ export function loadCheckpoints(): Checkpoints {
 export function validateCheckpointsData(input: {
   checkpoints: Checkpoints;
   objectives: CourseObjectives;
-  conjugations: Conjugations;
-  frPack: PackSource;
+  paradigms: ParadigmTables | null;
+  /** The course whose sections the checkpoints unlock from. */
+  pack: PackSource;
+  courseId: string;
   minItemsPerEssentialObjective?: number;
 }): ValidationResult {
   const errors: string[] = [];
   const err = (m: string) => errors.push(`checkpoints: ${m}`);
   const known = new Map(input.objectives.objectives.map((o) => [o.id, o]));
-  const sectionIds = new Set(input.frPack.sections.map((s) => s.id));
-  const verbs = new Map(input.conjugations.verbs.map((v) => [v.lemma, v]));
+  const sectionIds = new Set(input.pack.sections.map((s) => s.id));
+  const verbs = new Map<string, ParadigmTable>((input.paradigms?.tables ?? []).map((v) => [v.lemma, v]));
 
   const cpIds = new Set<string>();
   const itemIds = new Set<string>();
@@ -675,7 +664,7 @@ export function validateCheckpointsData(input: {
   for (const cp of input.checkpoints.checkpoints) {
     if (cpIds.has(cp.id)) err(`duplicate checkpoint id ${cp.id}`);
     cpIds.add(cp.id);
-    if (!sectionIds.has(cp.sectionId)) err(`${cp.id}: unknown section ${cp.sectionId}`);
+    if (!sectionIds.has(cp.sectionId)) err(`${cp.id}: unknown section ${cp.sectionId} (${input.courseId})`);
 
     // Parallel forms (P9 §38-§39): every declared form must be a VALID
     // administration on its own — its items resolve, no dead bank items,
@@ -729,7 +718,7 @@ export function validateCheckpointsData(input: {
       if ("objectiveTargets" in e && (e as { objectiveTargets?: unknown }).objectiveTargets !== undefined) {
         err(`${item.id}: put objective mapping on the ITEM, not inside the exercise payload`);
       }
-      validateExercise("fr-en", e, (m) => err(`${item.id}: ${m}`));
+      validateExercise(input.courseId, e, (m) => err(`${item.id}: ${m}`), input.pack.targetCode);
       let touchesEssential = false;
       for (const oid of item.objectiveTargets) {
         const objective = known.get(oid);
@@ -748,7 +737,7 @@ export function validateCheckpointsData(input: {
       if (e.type === "conjugationCloze") {
         const table = verbs.get(e.verb);
         if (!table) {
-          err(`${item.id}: verb ${e.verb} has no authored conjugation table`);
+          err(`${item.id}: verb ${e.verb} has no authored paradigm table`);
         } else if (table.cells[e.cell] !== e.answer) {
           err(`${item.id}: answer "${e.answer}" ≠ authored cell ${e.cell} = "${table.cells[e.cell]}"`);
         }
@@ -770,10 +759,10 @@ export function validateCheckpointsData(input: {
   return { errors, warnings: [] };
 }
 
-/** Compiled runtime artifact for checkpoint sessions. */
-export function compileCheckpointsArtifact(checkpoints: Checkpoints): string {
-  const byId: Record<string, Checkpoint> = {};
-  for (const cp of checkpoints.checkpoints) byId[cp.id] = cp;
+/** Compiled runtime artifact for checkpoint sessions (native text resolved). */
+export function compileCheckpointsArtifact(checkpoints: Checkpoints, nativeCode: string): string {
+  const byId: Record<string, unknown> = {};
+  for (const cp of checkpoints.checkpoints) byId[cp.id] = localizeCheckpoint(cp, nativeCode);
   return `${JSON.stringify(
     {
       version: checkpoints.version,
@@ -790,12 +779,6 @@ export function compileCheckpointsArtifact(checkpoints: Checkpoints): string {
 // Placement (§67-89, §115-121)
 // ---------------------------------------------------------------------------
 
-export const PLACEMENT_SOURCE = "content/fr/assessment/placement.json";
-
-export function loadPlacement(): PlacementContent {
-  return PlacementSchema.parse(readJson(PLACEMENT_SOURCE));
-}
-
 /**
  * Placement bank rules (§73-77, §136): ids unique, cluster objectives and
  * anchor lessons resolve, anchors appear in strictly increasing curriculum
@@ -808,23 +791,24 @@ export function loadPlacement(): PlacementContent {
 export function validatePlacementData(input: {
   placement: PlacementContent;
   objectives: CourseObjectives;
-  conjugations: Conjugations;
-  frPack: PackSource;
+  paradigms: ParadigmTables | null;
+  pack: PackSource;
+  courseId: string;
 }): ValidationResult {
   const errors: string[] = [];
   const err = (m: string) => errors.push(`placement: ${m}`);
   const known = new Map(input.objectives.objectives.map((o) => [o.id, o]));
-  const verbs = new Map(input.conjugations.verbs.map((v) => [v.lemma, v]));
+  const verbs = new Map<string, ParadigmTable>((input.paradigms?.tables ?? []).map((v) => [v.lemma, v]));
 
   const lessonOrder = new Map<string, number>();
-  for (const section of input.frPack.sections) {
+  for (const section of input.pack.sections) {
     for (const unit of section.units) {
       for (const lesson of unit.lessons) lessonOrder.set(lesson.id, lessonOrder.size);
     }
   }
 
   if (!lessonOrder.has(input.placement.allComfortableLessonId)) {
-    err(`allComfortableLessonId ${input.placement.allComfortableLessonId} is not an fr-en lesson`);
+    err(`allComfortableLessonId ${input.placement.allComfortableLessonId} is not a ${input.courseId} lesson`);
   }
 
   const stageIds = new Set<string>();
@@ -844,7 +828,7 @@ export function validatePlacementData(input: {
       }
       const anchorIndex = lessonOrder.get(cluster.anchorLessonId);
       if (anchorIndex === undefined) {
-        err(`${cluster.id}: anchor ${cluster.anchorLessonId} is not an fr-en lesson`);
+        err(`${cluster.id}: anchor ${cluster.anchorLessonId} is not a ${input.courseId} lesson`);
       } else {
         // Strictly increasing across the whole walk: a later cluster must
         // never point earlier than one already probed (§75).
@@ -867,7 +851,7 @@ export function validatePlacementData(input: {
         if ("objectiveTargets" in e && (e as { objectiveTargets?: unknown }).objectiveTargets !== undefined) {
           err(`${item.id}: put objective mapping on the ITEM, not inside the exercise payload`);
         }
-        validateExercise("fr-en", e, (m) => err(`${item.id}: ${m}`));
+        validateExercise(input.courseId, e, (m) => err(`${item.id}: ${m}`), input.pack.targetCode);
         if (item.objectiveTargets[0] !== cluster.objectiveId) {
           err(
             `${item.id}: primary objective ${item.objectiveTargets[0]} ≠ cluster objective ${cluster.objectiveId}`
@@ -879,7 +863,7 @@ export function validatePlacementData(input: {
         if (e.type === "conjugationCloze") {
           const table = verbs.get(e.verb);
           if (!table) {
-            err(`${item.id}: verb ${e.verb} has no authored conjugation table`);
+            err(`${item.id}: verb ${e.verb} has no authored paradigm table`);
           } else if (table.cells[e.cell] !== e.answer) {
             err(`${item.id}: answer "${e.answer}" ≠ authored cell ${e.cell} = "${table.cells[e.cell]}"`);
           }
@@ -895,8 +879,8 @@ export function validatePlacementData(input: {
   return { errors, warnings: [] };
 }
 
-/** Compiled runtime artifact for placement sessions. */
-export function compilePlacementArtifact(placement: PlacementContent): string {
+/** Compiled runtime artifact for placement sessions (native text resolved). */
+export function compilePlacementArtifact(placement: PlacementContent, nativeCode: string): string {
   return `${JSON.stringify(
     {
       version: placement.version,
@@ -904,17 +888,18 @@ export function compilePlacementArtifact(placement: PlacementContent): string {
       placementVersion: placement.placementVersion,
       maxItems: placement.maxItems,
       allComfortableLessonId: placement.allComfortableLessonId,
-      stages: placement.stages,
+      stages: placement.stages.map((s) => localizePlacementStage(s, nativeCode)),
     },
     null,
     2
   )}\n`;
 }
 
-/** Compiled runtime artifact: objective metadata for progress UI. */
-export function compileObjectivesArtifact(objectives: CourseObjectives): string {
+/** Compiled runtime artifact: objective metadata for progress UI (native text resolved). */
+export function compileObjectivesArtifact(objectives: CourseObjectives, nativeCode: string): string {
   const byId: Record<string, unknown> = {};
-  for (const o of objectives.objectives) {
+  for (const source of objectives.objectives) {
+    const o = localizeObjective(source, nativeCode);
     byId[o.id] = {
       id: o.id,
       title: o.title,
@@ -936,3 +921,11 @@ export function compileObjectivesArtifact(objectives: CourseObjectives): string 
     2
   )}\n`;
 }
+
+/** The courses (packs) of a target that the assessment validators cross-reference. */
+export function packsOfTarget(lang: string, packs: LoadedPack[] = loadPacks()): LoadedPack[] {
+  return packs.filter((p) => p.pack.targetCode === lang);
+}
+
+/** @internal re-export so callers can resolve the plugin without importing languages directly. */
+export { buildPlugin };

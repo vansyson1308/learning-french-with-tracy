@@ -35,10 +35,13 @@ import {
 import { normalizeSpoken } from "../../src/lib/speech/grader";
 import { languageRules } from "../../src/lib/languages";
 
+// The COMPILED artifact (native text already resolved for fr-en) is the
+// runtime shape the machine consumes; it carries every scenario, reserved
+// included.
 const doc = JSON.parse(
-  readFileSync("content/fr/interaction/scenarios.json", "utf8")
-) as { scenarios: InteractionScenario[] };
-const scenarios = doc.scenarios;
+  readFileSync("src/content/interaction/fr-scenarios.json", "utf8")
+) as { order: string[]; byId: Record<string, InteractionScenario> };
+const scenarios = doc.order.map((id) => doc.byId[id]);
 
 test("the authored source exists and carries both banks", () => {
   expect(scenarios.length).toBeGreaterThanOrEqual(10);

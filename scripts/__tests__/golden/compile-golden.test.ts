@@ -9,6 +9,7 @@ import { describe, expect, test } from "bun:test";
 
 import {
   committedCompileManifest,
+  dbPinsAsFiles,
   diffFileHashes,
   formatDiff,
   freshCompile,
@@ -26,15 +27,14 @@ describe("compile golden", () => {
     expect(files).toContain("src/content/assessment/fr-checkpoints.json");
     expect(files).toContain("content/reports/cefr-claim-gate.json");
     expect(files).toContain("ATTRIBUTIONS.md");
-    expect(stored!.lexiconDb.name).toMatch(/^fr-lexicon-v\d+-[0-9a-f]{16}\.db$/);
+    expect(stored!.lexiconDbs.fr.name).toMatch(/^fr-lexicon-v\d+-[0-9a-f]{16}\.db$/);
   });
 
   test("every committed generated file hashes to the manifest (no unblessed change)", () => {
     const committed = committedCompileManifest();
     const diff = diffFileHashes(stored!.files, committed.files);
     expect(formatDiff("committed", diff)).toEqual([]);
-    expect(committed.lexiconDb.name).toBe(stored!.lexiconDb.name);
-    expect(committed.lexiconDb.logicalDumpSha256).toBe(stored!.lexiconDb.logicalDumpSha256);
+    expect(formatDiff("committed", diffFileHashes(dbPinsAsFiles(stored!.lexiconDbs), dbPinsAsFiles(committed.lexiconDbs)))).toEqual([]);
   });
 
   test(
@@ -49,8 +49,7 @@ describe("compile golden", () => {
       // manifest, audio reports — come from other pipelines).
       expect(Object.keys(fresh.files).length).toBeGreaterThan(30);
       expect(formatDiff("recompiled", diffFileHashes(expected, fresh.files))).toEqual([]);
-      expect(fresh.lexiconDb.name).toBe(stored!.lexiconDb.name);
-      expect(fresh.lexiconDb.logicalDumpSha256).toBe(stored!.lexiconDb.logicalDumpSha256);
+      expect(formatDiff("recompiled", diffFileHashes(dbPinsAsFiles(stored!.lexiconDbs), dbPinsAsFiles(fresh.lexiconDbs)))).toEqual([]);
     },
     120_000
   );

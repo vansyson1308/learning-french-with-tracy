@@ -1,22 +1,24 @@
 /**
  * Compiles content/ sources into the committed generated artifacts:
- * src/content/packs/*.json (+index.ts), src/content/lexicon/* (runtime
- * index, web fallback, db-asset module), assets/lexicon/*.db (prebuilt
- * SQLite), content/reports/*, ATTRIBUTIONS.md. Deterministic; validation
- * runs first; writes are containment-checked. With --check, compares
- * instead of writing and exits non-zero on drift (the CI guard).
+ * src/content/packs/*.json (+index.ts), src/content/catalog.json, per
+ * target language src/content/<layer>/<lang>-*.json, src/content/lexicon/*
+ * (runtime index, web fallback, db-asset module), assets/lexicon/*.db (one
+ * prebuilt SQLite per language), content/reports/*, ATTRIBUTIONS.md.
+ * Deterministic; validation runs first; writes are containment-checked.
+ * With --check, compares instead of writing and exits non-zero on drift
+ * (the CI guard).
  *
- * The SQLite artifact is binary, so its drift/determinism contract is the
- * ordered LOGICAL dump (schema + rows + user_version), never raw bytes;
+ * The SQLite artifacts are binary, so their drift/determinism contract is
+ * the ordered LOGICAL dump (schema + rows + user_version), never raw bytes;
  * integrity_check and foreign_key_check must also pass on the committed
- * file, and no stale versioned .db may remain next to the current one.
+ * files, and no stale versioned .db may remain next to the current ones.
  */
 import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "fs";
 import os from "os";
 import path from "path";
 
 import { compileAllArtifacts, validateAllSources } from "./lib/compile-artifacts";
-import { buildSqliteDb, dbAssetName, logicalDump, verifySqliteDb } from "./lib/lexicon-build";
+import { buildSqliteDb, logicalDump, verifySqliteDb } from "./lib/lexicon-build";
 import { loadRegistry } from "./lib/pipeline";
 import { assertGeneratedTarget, removeTempDirSync, safeResolve } from "./lib/pipeline";
 
@@ -29,8 +31,8 @@ if (validation.length > 0) {
 }
 
 // Every text artifact, assembled in memory (scripts/lib/compile-artifacts.ts);
-// the SQLite database is built below under the logical-dump contract.
-const { files, coverage, lexicon, lexiconContentHash: lexiconHash } = compileAllArtifacts();
+// the SQLite databases are built below under the logical-dump contract.
+const { files, coverage, lexiconDbs } = compileAllArtifacts();
 
 let drifted = 0;
 for (const file of files) {
@@ -48,50 +50,52 @@ for (const file of files) {
   }
 }
 
-// --- Binary SQLite artifact (logical-dump drift contract) ---
-const dbName = dbAssetName(lexiconHash);
-const dbRel = `assets/lexicon/${dbName}`;
-assertGeneratedTarget(dbRel);
-const dbAbs = safeResolve(dbRel);
+// --- Binary SQLite artifacts (logical-dump drift contract), one per language ---
+const lexiconAssetsDir = safeResolve("assets/lexicon");
+const expectedDbNames = new Set(lexiconDbs.map((plan) => plan.name));
+const registry = loadRegistry();
 const tempDir = mkdtempSync(path.join(os.tmpdir(), "lexicon-db-"));
 try {
-  const freshPath = path.join(tempDir, dbName);
-  buildSqliteDb(freshPath, lexicon, loadRegistry(), lexiconHash);
-  const freshDump = logicalDump(freshPath);
+  for (const plan of lexiconDbs) {
+    const dbRel = `assets/lexicon/${plan.name}`;
+    assertGeneratedTarget(dbRel);
+    const dbAbs = safeResolve(dbRel);
+    const freshPath = path.join(tempDir, plan.name);
+    buildSqliteDb(freshPath, plan.lexicon, registry, plan.contentHash, plan.options);
+    const freshDump = logicalDump(freshPath);
 
-  const committedOk =
-    existsSync(dbAbs) && verifySqliteDb(dbAbs).length === 0 && logicalDump(dbAbs) === freshDump;
-  const lexiconAssetsDir = safeResolve("assets/lexicon");
-  const staleDbs = existsSync(lexiconAssetsDir)
-    ? readdirSync(lexiconAssetsDir).filter((f) => f.endsWith(".db") && f !== dbName)
-    : [];
+    const committedOk =
+      existsSync(dbAbs) && verifySqliteDb(dbAbs).length === 0 && logicalDump(dbAbs) === freshDump;
 
-  if (checkOnly) {
-    if (!existsSync(dbAbs)) {
-      drifted += 1;
-      console.error(`DRIFT ${dbRel} is missing — run \`bun run content:compile\``);
-    } else {
-      const verifyErrors = verifySqliteDb(dbAbs);
-      for (const e of verifyErrors) {
+    if (checkOnly) {
+      if (!existsSync(dbAbs)) {
         drifted += 1;
-        console.error(`ERROR ${dbRel}: ${e}`);
+        console.error(`DRIFT ${dbRel} is missing — run \`bun run content:compile\``);
+      } else {
+        const verifyErrors = verifySqliteDb(dbAbs);
+        for (const e of verifyErrors) {
+          drifted += 1;
+          console.error(`ERROR ${dbRel}: ${e}`);
+        }
+        if (verifyErrors.length === 0 && logicalDump(dbAbs) !== freshDump) {
+          drifted += 1;
+          console.error(`DRIFT ${dbRel} logical contents are stale — run \`bun run content:compile\``);
+        }
       }
-      if (verifyErrors.length === 0 && logicalDump(dbAbs) !== freshDump) {
-        drifted += 1;
-        console.error(`DRIFT ${dbRel} logical contents are stale — run \`bun run content:compile\``);
-      }
-    }
-    for (const stale of staleDbs) {
-      drifted += 1;
-      console.error(`DRIFT assets/lexicon/${stale} is a stale versioned database — run \`bun run content:compile\``);
-    }
-  } else {
-    if (!committedOk) {
+    } else if (!committedOk) {
       mkdirSync(path.dirname(dbAbs), { recursive: true });
       writeFileSync(dbAbs, readFileSync(freshPath));
       console.log(`wrote ${dbRel}`);
     }
-    for (const stale of staleDbs) {
+  }
+  const staleDbs = existsSync(lexiconAssetsDir)
+    ? readdirSync(lexiconAssetsDir).filter((f) => f.endsWith(".db") && !expectedDbNames.has(f))
+    : [];
+  for (const stale of staleDbs) {
+    if (checkOnly) {
+      drifted += 1;
+      console.error(`DRIFT assets/lexicon/${stale} is a stale versioned database — run \`bun run content:compile\``);
+    } else {
       unlinkSync(path.join(lexiconAssetsDir, stale));
       console.log(`removed stale assets/lexicon/${stale}`);
     }
@@ -112,9 +116,11 @@ for (const [courseId, row] of Object.entries(coverage)) {
     );
   }
 }
-console.log(`lexicon: ${lexicon.lexemes.length} lexemes, contentHash ${lexiconHash}, db ${dbName}`);
+for (const plan of lexiconDbs) {
+  console.log(`lexicon ${plan.lang}: ${plan.lexicon.lexemes.length} lexemes, contentHash ${plan.contentHash}, db ${plan.name}${plan.testOnly ? " (test-only)" : ""}`);
+}
 
 if (checkOnly && drifted > 0) process.exit(1);
 console.log(
-  checkOnly ? "generated artifacts are up to date" : `compile done (${files.length + 1} artifacts)`
+  checkOnly ? "generated artifacts are up to date" : `compile done (${files.length + lexiconDbs.length} artifacts)`
 );

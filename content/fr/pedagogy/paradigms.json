@@ -1,12 +1,13 @@
 {
   "version": 1,
   "language": "fr",
-  "verbs": [
+  "tables": [
     {
       "lemma": "être",
-      "english": "to be",
+      "gloss": {
+        "en": "to be"
+      },
       "group": "irregular",
-      "auxiliary": "avoir",
       "cells": {
         "inf": "être",
         "pre:1s": "suis",
@@ -16,13 +17,20 @@
         "pre:2p": "êtes",
         "pre:3p": "sont",
         "participle": "été"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "avoir"
       }
     },
     {
       "lemma": "avoir",
-      "english": "to have",
+      "gloss": {
+        "en": "to have"
+      },
       "group": "irregular",
-      "auxiliary": "avoir",
       "cells": {
         "inf": "avoir",
         "pre:1s": "ai",
@@ -32,13 +40,20 @@
         "pre:2p": "avez",
         "pre:3p": "ont",
         "participle": "eu"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "avoir"
       }
     },
     {
       "lemma": "aller",
-      "english": "to go",
+      "gloss": {
+        "en": "to go"
+      },
       "group": "irregular",
-      "auxiliary": "être",
       "cells": {
         "inf": "aller",
         "pre:1s": "vais",
@@ -48,13 +63,20 @@
         "pre:2p": "allez",
         "pre:3p": "vont",
         "participle": "allé"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "être"
       }
     },
     {
       "lemma": "faire",
-      "english": "to do, to make",
+      "gloss": {
+        "en": "to do, to make"
+      },
       "group": "irregular",
-      "auxiliary": "avoir",
       "cells": {
         "inf": "faire",
         "pre:1s": "fais",
@@ -64,13 +86,20 @@
         "pre:2p": "faites",
         "pre:3p": "font",
         "participle": "fait"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "avoir"
       }
     },
     {
       "lemma": "parler",
-      "english": "to speak",
+      "gloss": {
+        "en": "to speak"
+      },
       "group": "er-regular",
-      "auxiliary": "avoir",
       "cells": {
         "inf": "parler",
         "pre:1s": "parle",
@@ -80,13 +109,20 @@
         "pre:2p": "parlez",
         "pre:3p": "parlent",
         "participle": "parlé"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "avoir"
       }
     },
     {
       "lemma": "aimer",
-      "english": "to like, to love",
+      "gloss": {
+        "en": "to like, to love"
+      },
       "group": "er-regular",
-      "auxiliary": "avoir",
       "cells": {
         "inf": "aimer",
         "pre:1s": "aime",
@@ -96,13 +132,20 @@
         "pre:2p": "aimez",
         "pre:3p": "aiment",
         "participle": "aimé"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "avoir"
       }
     },
     {
       "lemma": "habiter",
-      "english": "to live (somewhere)",
+      "gloss": {
+        "en": "to live (somewhere)"
+      },
       "group": "er-regular",
-      "auxiliary": "avoir",
       "cells": {
         "inf": "habiter",
         "pre:1s": "habite",
@@ -112,13 +155,20 @@
         "pre:2p": "habitez",
         "pre:3p": "habitent",
         "participle": "habité"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "avoir"
       }
     },
     {
       "lemma": "manger",
-      "english": "to eat",
+      "gloss": {
+        "en": "to eat"
+      },
       "group": "er-regular",
-      "auxiliary": "avoir",
       "cells": {
         "inf": "manger",
         "pre:1s": "mange",
@@ -128,6 +178,12 @@
         "pre:2p": "mangez",
         "pre:3p": "mangent",
         "participle": "mangé"
+      },
+      "evidence": {
+        "source": "lexique-4"
+      },
+      "attributes": {
+        "auxiliary": "avoir"
       }
     }
   ]

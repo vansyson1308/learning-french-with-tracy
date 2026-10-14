@@ -1,28 +1,53 @@
 /**
- * Phase 5B pedagogy pipeline: concepts source loading, validation, lesson
- * flow integrity, and the compiled runtime artifact. The concepts file is
+ * Phase 5B pedagogy pipeline (per target language since P1c): concepts
+ * source loading, validation, lesson flow integrity, paradigm (grammar
+ * table) evidence, and the compiled runtime artifact. The concepts file is
  * authored (clean-room facts with registered sourceRefs); the compiler
- * emits a keyed runtime artifact so the app resolves concept content by id
- * without shipping validation machinery.
+ * emits a keyed runtime artifact — native text resolved for the course's
+ * nativeCode — so the app resolves concept content by id without shipping
+ * validation machinery.
  */
 
+import { existsSync } from "fs";
+
 import {
-  CONJUGATION_CELLS,
-  ConjugationsSchema,
-  PackSchema,
-  PedagogyConceptsSchema,
+  paradigmTablesSchema,
+  pedagogyConceptsSchema,
   type Concept,
-  type Conjugations,
   type PackSource,
+  type ParadigmTable,
+  type ParadigmTables,
   type PedagogyConcepts,
 } from "../../content/schema";
-import { canonicalJson, listCourseSources, loadRegistry, readJson, targetCodeOf, targetLayers, type ValidationResult } from "./pipeline";
+import { buildPlugin, type BuildLanguagePlugin, type MorphVerb } from "./languages";
+import { localizeConcept } from "./native-text";
+import { canonicalJson, loadPacks, loadRegistry, readJson, safeResolve, targetCodeOf, targetLayers, type LoadedPack, type ValidationResult } from "./pipeline";
 
-export const CONCEPTS_SOURCE = "content/fr/pedagogy/concepts.json";
-export const CONCEPTS_ARTIFACT = "src/content/concepts/fr-concepts.json";
+export function conceptsSourcePath(lang: string): string {
+  return `content/${lang}/pedagogy/concepts.json`;
+}
+export function paradigmsSourcePath(lang: string): string {
+  return `content/${lang}/pedagogy/paradigms.json`;
+}
 
-export function loadPedagogyConcepts(): PedagogyConcepts {
-  return PedagogyConceptsSchema.parse(readJson(CONCEPTS_SOURCE));
+export function loadPedagogyConcepts(lang: string): PedagogyConcepts | null {
+  const rel = conceptsSourcePath(lang);
+  if (!existsSync(safeResolve(rel))) return null;
+  const doc = pedagogyConceptsSchema(lang).parse(readJson(rel));
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
+}
+
+/** Paradigm tables, parsed against the plugin's cell vocabulary; null when not authored. */
+export function loadParadigms(lang: string, plugin: BuildLanguagePlugin = buildPlugin(lang)): ParadigmTables | null {
+  const rel = paradigmsSourcePath(lang);
+  if (!existsSync(safeResolve(rel))) return null;
+  if (!plugin.paradigm) {
+    throw new Error(`${rel}: ${lang} declares no paradigm cells (scripts/lib/languages/${lang}.ts) — remove the file or declare the vocabulary`);
+  }
+  const doc = paradigmTablesSchema(plugin.paradigm.cellIds).parse(readJson(rel));
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
 }
 
 /** Pure rule engine over the authored concepts (schema already enforced). */
@@ -42,8 +67,10 @@ export function validatePedagogyData(input: {
       }
     }
     // The program forbids CEFR labels in learner-facing pedagogy titles.
-    if (/\b[ABC][12]\b/.test(concept.title) || /\bCEFR\b/i.test(concept.title)) {
-      err(`${concept.id}: learner-facing title must not carry CEFR labels`);
+    for (const [code, title] of Object.entries(concept.title)) {
+      if (/\b[ABC][12]\b/.test(title) || /\bCEFR\b/i.test(title)) {
+        err(`${concept.id}: learner-facing title (${code}) must not carry CEFR labels`);
+      }
     }
   }
   return { errors, warnings: [] };
@@ -62,6 +89,7 @@ export function validateLessonFlows(input: {
   const errors: string[] = [];
   const err = (m: string) => errors.push(`lesson-flow: ${m}`);
   for (const { courseId, pack } of input.packs) {
+    const targetCode = pack.targetCode ?? targetCodeOf(courseId);
     for (const section of pack.sections) {
       for (const unit of section.units) {
         for (const lesson of unit.lessons) {
@@ -71,8 +99,8 @@ export function validateLessonFlows(input: {
           const seenExercises = new Set<string>();
           for (const entry of lesson.flow) {
             if ("concept" in entry) {
-              if (!targetLayers(targetCodeOf(courseId)).pedagogy) {
-                err(`${where}: concept steps need authored pedagogy (content/${targetCodeOf(courseId)}/pedagogy) — not available for ${courseId}`);
+              if (!targetLayers(targetCode).pedagogy) {
+                err(`${where}: concept steps need authored pedagogy (content/${targetCode}/pedagogy) — not available for ${courseId}`);
               }
               if (!input.conceptIds.has(entry.concept)) {
                 err(`${where}: flow references unknown concept ${entry.concept}`);
@@ -99,75 +127,74 @@ export function validateLessonFlows(input: {
   return { errors, warnings: [] };
 }
 
-export const CONJUGATIONS_SOURCE = "content/fr/pedagogy/conjugations.json";
-
-export function loadConjugations(): Conjugations {
-  return ConjugationsSchema.parse(readJson(CONJUGATIONS_SOURCE));
-}
-
-type MorphVerb = {
-  lemma: string;
-  rows: { mot: string; infoVer: string }[];
-};
-
 /**
- * §26 consumption contract, enforced: every authored conjugation cell must
- * be EVIDENCED by the committed Lexique 4 verb-morphology rows — a row of
- * the same lemma whose orthographic form matches the cell's value and
- * whose analysis set carries the cell's mood:tense:person atom (row-level
- * number is documented as noisy and never gates). Regular -er verbs must
- * additionally follow the written paradigm they claim to teach.
+ * §26 consumption contract, enforced through the language plugin: every
+ * authored paradigm cell must be EVIDENCED by the registered evidence rows
+ * — a row of the same lemma whose orthographic form matches the cell's
+ * value and whose analysis set carries an atom the plugin accepts for that
+ * cell. Groups must be plugin-declared, required attributes present, and
+ * the plugin's own group rules (e.g. the French regular -er paradigm) hold.
  */
-export function validateConjugationsData(input: {
-  conjugations: Conjugations;
-  morphologyVerbs: MorphVerb[];
+export function validateParadigmsData(input: {
+  paradigms: ParadigmTables;
+  plugin: BuildLanguagePlugin;
+  /** null = the evidence derivation has not been committed yet. */
+  evidence: MorphVerb[] | null;
+  registryIds: Set<string>;
 }): ValidationResult {
   const errors: string[] = [];
-  const err = (m: string) => errors.push(`conjugations: ${m}`);
-  const byLemma = new Map(input.morphologyVerbs.map((v) => [v.lemma, v]));
-
-  const atomFor = (cell: string): ((atom: string) => boolean) => {
-    if (cell === "inf") return (a) => a === "inf";
-    if (cell === "participle") return (a) => a.startsWith("par:pas");
-    const person = cell.slice(4, 5); // "pre:1s" → "1"
-    return (a) => a === `ind:pre:${person}`;
-  };
+  const err = (m: string) => errors.push(`paradigms: ${m}`);
+  const spec = input.plugin.paradigm;
+  if (!spec) {
+    err(`${input.plugin.code} declares no paradigm cell vocabulary`);
+    return { errors, warnings: [] };
+  }
+  const byLemma = new Map((input.evidence ?? []).map((v) => [v.lemma, v]));
 
   const seen = new Set<string>();
-  for (const verb of input.conjugations.verbs) {
-    if (seen.has(verb.lemma)) err(`duplicate verb ${verb.lemma}`);
-    seen.add(verb.lemma);
-    const evidence = byLemma.get(verb.lemma);
-    if (!evidence || evidence.rows.length === 0) {
-      err(`${verb.lemma}: no verb-morphology evidence rows — extend the derive verb list first`);
+  for (const table of input.paradigms.tables) {
+    if (seen.has(table.lemma)) err(`duplicate table ${table.lemma}`);
+    seen.add(table.lemma);
+    if (!spec.groups.includes(table.group)) {
+      err(`${table.lemma}: group "${table.group}" is not one of ${spec.groups.join(", ")}`);
+    }
+    if (table.evidence.source !== spec.evidenceSource) {
+      err(`${table.lemma}: evidence source "${table.evidence.source}" must be ${spec.evidenceSource} for ${input.plugin.code}`);
+    }
+    if (!input.registryIds.has(table.evidence.source)) {
+      err(`${table.lemma}: evidence source "${table.evidence.source}" is not registered`);
+    }
+    for (const [key, allowed] of Object.entries(spec.attributes ?? {})) {
+      const value = table.attributes?.[key];
+      if (value === undefined) err(`${table.lemma}: attribute "${key}" is required (${allowed.join(" | ")})`);
+      else if (!allowed.includes(value)) err(`${table.lemma}: attribute ${key} = "${value}" is not one of ${allowed.join(", ")}`);
+    }
+    for (const key of Object.keys(table.attributes ?? {})) {
+      if (!(key in (spec.attributes ?? {}))) err(`${table.lemma}: unknown attribute "${key}"`);
+    }
+    if (input.evidence === null) {
+      err(`${table.lemma}: no committed evidence rows for ${spec.evidenceSource} — derive the morphology first`);
       continue;
     }
-    for (const cell of CONJUGATION_CELLS) {
-      const form = verb.cells[cell];
+    const evidence = byLemma.get(table.lemma);
+    if (!evidence || evidence.rows.length === 0) {
+      err(`${table.lemma}: no verb-morphology evidence rows — extend the derive verb list first`);
+      continue;
+    }
+    for (const cell of spec.cellIds) {
+      const form = table.cells[cell];
       if (form === undefined) {
-        err(`${verb.lemma}: cell ${cell} is missing — tables must be complete`);
+        err(`${table.lemma}: cell ${cell} is missing — tables must be complete`);
         continue;
       }
-      const matches = atomFor(cell);
       const evidenced = evidence.rows.some(
-        (row) => row.mot === form && row.infoVer.split(",").some(matches)
+        (row) => row.mot === form && row.infoVer.split(",").some((atom) => spec.cellEvidencedBy(cell, atom))
       );
       if (!evidenced) {
-        err(`${verb.lemma}: cell ${cell} = "${form}" is not evidenced by the Lexique 4 morphology rows`);
+        err(`${table.lemma}: cell ${cell} = "${form}" is not evidenced by the ${spec.evidenceSource} morphology rows`);
       }
     }
-    if (verb.group === "er-regular") {
-      const first = verb.cells["pre:1s"];
-      const stemEz = verb.cells.inf?.endsWith("er") ? `${verb.cells.inf.slice(0, -2)}ez` : undefined;
-      if (first !== undefined) {
-        if (verb.cells["pre:2s"] !== `${first}s`) err(`${verb.lemma}: er-regular 2s must be 1s + s`);
-        if (verb.cells["pre:3s"] !== first) err(`${verb.lemma}: er-regular 3s must equal 1s`);
-        if (verb.cells["pre:3p"] !== `${first}nt`) err(`${verb.lemma}: er-regular 3p must be 1s + nt`);
-      }
-      if (stemEz !== undefined && verb.cells["pre:2p"] !== stemEz) {
-        err(`${verb.lemma}: er-regular 2p must be stem + ez`);
-      }
-    }
+    spec.groupRules?.(table, err);
   }
   return { errors, warnings: [] };
 }
@@ -180,25 +207,32 @@ export function validateConjugationsData(input: {
  */
 export function validateConjugationClozes(input: {
   packs: { courseId: string; pack: PackSource }[];
-  conjugations: Conjugations;
+  /** lang → tables (null when the language authors none). */
+  paradigmsByLang: Record<string, ParadigmTables | null>;
 }): ValidationResult {
   const errors: string[] = [];
   const err = (m: string) => errors.push(`conjugation-cloze: ${m}`);
-  const byLemma = new Map(input.conjugations.verbs.map((v) => [v.lemma, v]));
   for (const { courseId, pack } of input.packs) {
+    const targetCode = pack.targetCode ?? targetCodeOf(courseId);
+    const tables = input.paradigmsByLang[targetCode] ?? null;
+    const byLemma = new Map<string, ParadigmTable>((tables?.tables ?? []).map((t) => [t.lemma, t]));
+    const cellIds = buildPlugin(targetCode).paradigm?.cellIds ?? [];
     for (const section of pack.sections)
       for (const unit of section.units)
         for (const lesson of unit.lessons)
           for (const e of lesson.exercises) {
             if (e.type !== "conjugationCloze") continue;
             const where = `${courseId}/${e.id}`;
-            if (!targetLayers(targetCodeOf(courseId)).pedagogy) {
-              err(`${where}: conjugationCloze needs authored pedagogy (content/${targetCodeOf(courseId)}/pedagogy) — not available for ${courseId}`);
+            if (!targetLayers(targetCode).pedagogy) {
+              err(`${where}: conjugationCloze needs authored pedagogy (content/${targetCode}/pedagogy) — not available for ${courseId}`);
               continue;
+            }
+            if (!cellIds.includes(e.cell)) {
+              err(`${where}: cell "${e.cell}" is not a ${targetCode} paradigm cell (${cellIds.join(", ") || "none declared"})`);
             }
             const verb = byLemma.get(e.verb);
             if (!verb) {
-              err(`${where}: verb ${e.verb} has no authored conjugation table`);
+              err(`${where}: verb ${e.verb} has no authored paradigm table`);
               continue;
             }
             const expected = verb.cells[e.cell];
@@ -212,72 +246,71 @@ export function validateConjugationClozes(input: {
   return { errors, warnings: [] };
 }
 
-/** Disk-reading wrapper for the CLIs: concepts + flow integrity together. */
-export function validatePedagogy(): ValidationResult {
-  let concepts: PedagogyConcepts;
+/** Disk-reading wrapper for the CLIs: concepts + flow integrity + paradigms, for one target language. */
+export function validatePedagogy(lang: string, packs: LoadedPack[] = loadPacks()): ValidationResult {
+  if (!targetLayers(lang).pedagogy) return { errors: [], warnings: [] };
+  const plugin = buildPlugin(lang);
+  let concepts: PedagogyConcepts | null;
   try {
-    concepts = loadPedagogyConcepts();
+    concepts = loadPedagogyConcepts(lang);
   } catch (e) {
     return {
-      errors: [`pedagogy: concepts.json failed schema validation — ${(e as Error).message.split("\n")[0]}`],
+      errors: [`pedagogy: ${conceptsSourcePath(lang)} failed schema validation — ${(e as Error).message.split("\n")[0]}`],
       warnings: [],
     };
+  }
+  if (concepts === null) {
+    return { errors: [`pedagogy: content/${lang}/pedagogy exists but has no concepts.json`], warnings: [] };
   }
   const registryIds = new Set(loadRegistry().sources.map((s) => s.id));
   const conceptResult = validatePedagogyData({ concepts, registryIds });
   // Packs that fail their own schema are reported by validateContent; the
-  // flow check simply skips them here.
-  const packs: { courseId: string; pack: PackSource }[] = [];
-  for (const file of listCourseSources()) {
-    const parsed = PackSchema.safeParse(readJson(`content/courses/${file}`));
-    if (parsed.success) packs.push({ courseId: file.replace(/\.json$/, ""), pack: parsed.data });
-  }
+  // flow check simply skips them here. Flows/clozes are checked for the
+  // packs of THIS target only.
+  const mine = packs.filter((p) => p.pack.targetCode === lang);
   const flowResult = validateLessonFlows({
-    packs,
+    packs: mine,
     conceptIds: new Set(concepts.concepts.map((c) => c.id)),
   });
 
-  let conjugations: Conjugations;
+  let paradigms: ParadigmTables | null;
   try {
-    conjugations = loadConjugations();
+    paradigms = loadParadigms(lang, plugin);
   } catch (e) {
     return {
       errors: [
         ...conceptResult.errors,
         ...flowResult.errors,
-        `conjugations: conjugations.json failed schema validation — ${(e as Error).message.split("\n")[0]}`,
+        `paradigms: ${paradigmsSourcePath(lang)} failed schema validation — ${(e as Error).message.split("\n")[0]}`,
       ],
       warnings: [],
     };
   }
-  const morphology = readJson("content/fr/lexicon/derived/verb-morphology.json") as {
-    verbs: { lemma: string; rows: { mot: string; infoVer: string }[] }[];
-  };
-  const conjResult = validateConjugationsData({
-    conjugations,
-    morphologyVerbs: morphology.verbs,
-  });
-  const clozeResult = validateConjugationClozes({ packs, conjugations });
+  const paradigmResult =
+    paradigms === null
+      ? { errors: [] as string[] }
+      : validateParadigmsData({ paradigms, plugin, evidence: plugin.paradigm?.loadEvidence() ?? null, registryIds });
+  const clozeResult = validateConjugationClozes({ packs: mine, paradigmsByLang: { [lang]: paradigms } });
 
   return {
     errors: [
       ...conceptResult.errors,
       ...flowResult.errors,
-      ...conjResult.errors,
+      ...paradigmResult.errors,
       ...clozeResult.errors,
     ],
     warnings: [],
   };
 }
 
-/** The compiled runtime artifact: concepts keyed by id, authored order kept. */
-export function compileConceptsArtifact(concepts: PedagogyConcepts): string {
-  const byId: Record<string, Concept> = {};
-  for (const concept of concepts.concepts) byId[concept.id] = concept;
+/** The compiled runtime artifact: concepts keyed by id, authored order kept, native text resolved. */
+export function compileConceptsArtifact(concepts: PedagogyConcepts, nativeCode: string): string {
+  const byId: Record<string, unknown> = {};
+  for (const concept of concepts.concepts) byId[concept.id] = localizeConcept(concept, concepts.language, nativeCode);
   return canonicalJson({
     version: concepts.version,
     language: concepts.language,
-    order: concepts.concepts.map((c) => c.id),
+    order: concepts.concepts.map((c: Concept) => c.id),
     byId,
   });
 }

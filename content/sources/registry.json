@@ -138,6 +138,22 @@
         "content/audio/model-cards/pt_BR-faber-medium.MODEL_CARD.txt"
       ],
       "notes": "Selected by the pack-audio canary ASR audit (mean WER 0.2292 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow."
+    },
+    {
+      "id": "synthetic-test-language",
+      "name": "Synthetic test language (xx)",
+      "kind": "test fixtures — a two-word invented language that exercises every validator and the compiler for a non-French target (P1c); never shipped",
+      "license": "original",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy/tree/main/content/xx",
+      "attribution": "Original project test fixtures; test-only, excluded from the app bundle, catalog, audio baseline and attributions.",
+      "retrievedAt": "2026-10-15",
+      "covers": [
+        "content/xx/",
+        "content/courses/xx-en.json",
+        "assets/audio/xx-reception/"
+      ],
+      "notes": "Marked testOnly: provenance is recorded like any source, but nothing it covers reaches learners.",
+      "testOnly": true
     }
   ]
 }

@@ -1,5 +1,7 @@
 # Phase 5B pedagogy research base (clean-room)
 
+> **Schema note (P1c).** `concepts.json` carries learner-facing prose as native-text records (`title`, `shortRule`, `explanation`, `exceptions[]`, `memoryHint`, example `translations`/`note`; examples are `{ target, translations }`). `conjugations.json` became `paradigms.json` (`tables[]` with `gloss`, `group`, `cells`, `evidence.source`, `attributes.auxiliary`); the cell vocabulary (`inf`, `pre:1s…pre:3p`, `participle`) and the Lexique 4 evidence rule are declared by `scripts/lib/languages/fr.ts`. See `content/README.md`.
+
 The factual grounding for the Section 2 pedagogy units. Rules stated in
 learner-facing content must trace to an entry here; every entry names its
 source. **Clean-room contract:** facts, categories and statistics are drawn
