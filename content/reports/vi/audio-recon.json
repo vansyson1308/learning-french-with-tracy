@@ -1,0 +1,44 @@
+{
+  "generator": "scripts/audio.ts recon",
+  "language": "vi",
+  "layers": "all",
+  "engines": {
+    "piper": {
+      "pinnedVersion": "1.2.0"
+    },
+    "kokoro": {
+      "pinnedVersion": "0.9.4"
+    },
+    "melotts": {
+      "pinnedVersion": "209145371cff8fc3bd60d7be902ea69cbdb7965a"
+    }
+  },
+  "voices": [
+    {
+      "voice": "vi_VN-vais1000-medium",
+      "engine": "piper",
+      "language": "vi",
+      "dataset": null,
+      "license": "* License: https://creativecommons.org/licenses/by/4.0/",
+      "status": "eligible",
+      "gateReason": "matched creativecommons.org/licenses/by/4.0",
+      "files": {
+        "model": {
+          "path": "vi/vi_VN/vais1000/medium/vi_VN-vais1000-medium.onnx",
+          "sha256": "ec7c89e2c85f4d1edc24b6120c18aaf1bda614f06b511567eb9c7c0de15e2dab",
+          "bytes": 63201294
+        },
+        "config": {
+          "path": "vi/vi_VN/vais1000/medium/vi_VN-vais1000-medium.onnx.json",
+          "sha256": "fafb9da1354ed4b77c31af228ed41fb41cd825c14cffa105454b25e6ae751ee0",
+          "bytes": 4860
+        },
+        "modelCard": {
+          "path": "vi/vi_VN/vais1000/medium/MODEL_CARD",
+          "sha256": "302db8a930ffc2b1c2181db26deaf8272116eca2b08b8f80da6375b0a994af7b",
+          "bytes": 361
+        }
+      }
+    }
+  ]
+}

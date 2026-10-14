@@ -1,0 +1,428 @@
+{
+  "generator": "scripts/audio.ts qa",
+  "language": "vi",
+  "mode": "canary",
+  "layers": [
+    "pack"
+  ],
+  "asrModel": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+  "asrReviewPolicy": {
+    "minWords": 3,
+    "werAtLeast": 0.5,
+    "note": "single-word clips are informational only; the technical QA (duration, level, edge silence, speaking rate from the language plugin) gates every clip; ja/zh scores are character error rates"
+  },
+  "clipCount": 12,
+  "uniqueAssetCount": 12,
+  "technicalFailures": 0,
+  "sentenceClipsForReview": 12,
+  "voiceSummary": [
+    {
+      "courseId": null,
+      "layer": "pack",
+      "voiceId": "vi_VN-vais1000-medium",
+      "clips": 12,
+      "meanWer": 1,
+      "technicalFailures": 0
+    }
+  ],
+  "review": [
+    {
+      "clipId": "canary.d.gi@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Dì Giang đi ra ruộng gieo giống.",
+      "heard": "the sand has thought so some",
+      "wer": 1,
+      "durationSec": 1.567
+    },
+    {
+      "clipId": "canary.final.stop@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Một, mười, hai mươi, hạt, bắp, sách.",
+      "heard": "会会系会系",
+      "wer": 1,
+      "durationSec": 1.411
+    },
+    {
+      "clipId": "canary.greeting.xinchao@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Xin chào! Chào buổi sáng! Cảm ơn và tạm biệt!",
+      "heard": "天球召梅省金恩法特液",
+      "wer": 1,
+      "durationSec": 2.194
+    },
+    {
+      "clipId": "canary.long.restaurant@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Tôi muốn đặt một bàn cho hai người lúc tám giờ tối nay, được không ạ?",
+      "heard": "对满达没问在外鹿胆射队泥略曲压",
+      "wer": 1,
+      "durationSec": 3.239
+    },
+    {
+      "clipId": "canary.ng.initial@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Ngày mai nhà tôi không có người.",
+      "heard": "曖昧がとこぐ",
+      "wer": 1,
+      "durationSec": 1.411
+    },
+    {
+      "clipId": "canary.numbers.73@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Bảy mươi ba nghìn đồng, một nghìn chín trăm chín mươi chín, mười lăm phút.",
+      "heard": "卖每帮运动木年钱挣钱煤钱梅蓝肤",
+      "wer": 1,
+      "durationSec": 3.553
+    },
+    {
+      "clipId": "canary.polite.a@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Vâng ạ, cháu cảm ơn bác nhiều ạ.",
+      "heard": "风啊酒咁嗯不要啊",
+      "wer": 1,
+      "durationSec": 1.907
+    },
+    {
+      "clipId": "canary.question.dau@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Ga ở đâu? Mấy giờ tàu chạy?",
+      "heard": "他 no每食到ち",
+      "wer": 1,
+      "durationSec": 1.541
+    },
+    {
+      "clipId": "canary.tone.ma@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Ma, má, mà, mả, mã, mạ.",
+      "heard": "来来来来来来",
+      "wer": 1,
+      "durationSec": 1.228
+    },
+    {
+      "clipId": "canary.tone.ngang_nang@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Bạn đi đâu đấy? Tôi đi chợ mua cá.",
+      "heard": "把你都位到啲죠冇か",
+      "wer": 1,
+      "durationSec": 1.855
+    },
+    {
+      "clipId": "canary.tr.ch@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Trời chiều trong trẻo, chim chóc chuyền cành.",
+      "heard": "再焦走着渐速转近",
+      "wer": 1,
+      "durationSec": 2.116
+    },
+    {
+      "clipId": "canary.vowel.uo@vi_VN-vais1000-medium",
+      "voiceId": "vi_VN-vais1000-medium",
+      "transcript": "Người lớn uống nước, trẻ con ăn cơm.",
+      "heard": "check on uncle",
+      "wer": 1,
+      "durationSec": 1.959
+    }
+  ],
+  "clips": [
+    {
+      "clipId": "canary.d.gi@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "10f4162f51b32eadcf94",
+      "transcript": "Dì Giang đi ra ruộng gieo giống.",
+      "durationSec": 1.567,
+      "bytes": 12791,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.42,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "the sand has thought so some",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.final.stop@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "2e27f766bcdc54863341",
+      "transcript": "Một, mười, hai mươi, hạt, bắp, sách.",
+      "durationSec": 1.411,
+      "bytes": 11537,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 25.52,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "会会系会系",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.greeting.xinchao@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "e7fea0816165c2ee8e31",
+      "transcript": "Xin chào! Chào buổi sáng! Cảm ơn và tạm biệt!",
+      "durationSec": 2.194,
+      "bytes": 17807,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.51,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "天球召梅省金恩法特液",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.long.restaurant@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "9eee3a158fd9c757f0c3",
+      "transcript": "Tôi muốn đặt một bàn cho hai người lúc tám giờ tối nay, được không ạ?",
+      "durationSec": 3.239,
+      "bytes": 26166,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 21.3,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "对满达没问在外鹿胆射队泥略曲压",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.ng.initial@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "ee895a46a6d3ad7a3324",
+      "transcript": "Ngày mai nhà tôi không có người.",
+      "durationSec": 1.411,
+      "bytes": 11537,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 22.69,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "曖昧がとこぐ",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.numbers.73@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "e95334e31e527a7682d0",
+      "transcript": "Bảy mươi ba nghìn đồng, một nghìn chín trăm chín mươi chín, mười lăm phút.",
+      "durationSec": 3.553,
+      "bytes": 28674,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 20.83,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "卖每帮运动木年钱挣钱煤钱梅蓝肤",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.polite.a@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "4421149b39cf365de841",
+      "transcript": "Vâng ạ, cháu cảm ơn bác nhiều ạ.",
+      "durationSec": 1.907,
+      "bytes": 15508,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 16.78,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "风啊酒咁嗯不要啊",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.question.dau@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "6e78ba233729b980ab7f",
+      "transcript": "Ga ở đâu? Mấy giờ tàu chạy?",
+      "durationSec": 1.541,
+      "bytes": 12582,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 17.52,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "他 no每食到ち",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone.ma@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "37062957d32dd086dd5b",
+      "transcript": "Ma, má, mà, mả, mã, mạ.",
+      "durationSec": 1.228,
+      "bytes": 10075,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.73,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "来来来来来来",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone.ngang_nang@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "cb58fa0d5975e104b224",
+      "transcript": "Bạn đi đâu đấy? Tôi đi chợ mua cá.",
+      "durationSec": 1.855,
+      "bytes": 15090,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.33,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "把你都位到啲죠冇か",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tr.ch@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "5d164bc29495a7a22d4a",
+      "transcript": "Trời chiều trong trẻo, chim chóc chuyền cành.",
+      "durationSec": 2.116,
+      "bytes": 17180,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 21.27,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "再焦走着渐速转近",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.vowel.uo@vi_VN-vais1000-medium",
+      "layer": "pack",
+      "courseId": null,
+      "language": "vi",
+      "voiceId": "vi_VN-vais1000-medium",
+      "speaker": null,
+      "assetKey": "a3b5c8a9bd8feaba89ad",
+      "transcript": "Người lớn uống nước, trẻ con ăn cơm.",
+      "durationSec": 1.959,
+      "bytes": 15926,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 18.37,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "check on uncle",
+        "wer": 1,
+        "metric": "wer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    }
+  ]
+}

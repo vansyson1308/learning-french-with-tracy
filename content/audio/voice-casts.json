@@ -209,7 +209,7 @@
       "reason": "for the en-vi course (P4f); Piper lessac (Blizzard licence URL), amy/alan ('See URL') and ryan (CC BY-NC-SA) fail the gate; libritts_r (CC BY 4.0, 904 speakers) is a possible later candidate"
     },
     "vi": {
-      "status": "pending-canary",
+      "status": "no-clean-voice",
       "candidates": [
         {
           "voiceId": "vi_VN-vais1000-medium",
@@ -220,8 +220,19 @@
         "A": null,
         "B": null
       },
-      "canary": null,
-      "reason": "UI / explanation audio only if ever needed (no Vietnamese target course); VAIS-1000 is CC BY 4.0"
+      "canary": {
+        "reportedAt": "2026-10-14",
+        "report": "content/reports/vi/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "vi_VN-vais1000-medium",
+            "clips": 12,
+            "meanWer": 1,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "reason": "best candidate vi_VN-vais1000-medium has mean WER/CER 1 (> 0.6) — not intelligible enough to ship"
     }
   }
 }
