@@ -12,7 +12,7 @@
 #             hashes), read its licence card, apply the gate, pin, commit cards.
 #   canary    recon + synthesise the language's canary (content/<lang>/reception/
 #             audio-canary.json × every eligible candidate, plus 12 pack strings
-#             per course), ASR-audit (Whisper, or SenseVoice for zh/ja/ko/vi),
+#             per course), ASR-audit (Whisper, or SenseVoice for zh/ja/ko),
 #             QA, select the voice cast (content/audio/voice-casts.json) and
 #             register the chosen voices; commit reports + pins.
 #   generate  Verify pins, synthesise the chosen layers (pack / lexicon /
@@ -49,8 +49,10 @@ on:
 permissions:
   contents: write
 
+# One audio run at a time across languages: every run edits the shared voice-casts /
+# pack manifest / registry / ATTRIBUTIONS files, and concurrent pushes conflicted on rebase.
 concurrency:
-  group: audio-${{ inputs.lang }}
+  group: audio
   cancel-in-progress: false
 
 jobs:
@@ -169,14 +171,14 @@ jobs:
           bash /tmp/synth.sh
           ls "$OUT" | wc -l
 
-      - name: ASR audit (Whisper, or SenseVoice for zh/ja/ko/vi — technical signal only)
+      - name: ASR audit (Whisper, or SenseVoice for zh/ja/ko — technical signal only)
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
           WHISPER=$(bun -e "console.log(require('./content/audio/engines.json').asr.whisper.pinnedVersion)")
           pip install "faster-whisper==$WHISPER" requests
           case "$LANG_INPUT" in
-            zh|ja|ko|vi)
+            zh|ja|ko)
               FUNASR=$(bun -e "console.log(require('./content/audio/engines.json').asr.sensevoice.pinnedVersion)")
               pip install "funasr==$FUNASR" torch torchaudio huggingface_hub
               ;;

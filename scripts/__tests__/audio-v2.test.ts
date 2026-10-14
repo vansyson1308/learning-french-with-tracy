@@ -75,6 +75,9 @@ describe("licence gate v2", () => {
   test("accepts Apache-2.0 / MIT model cards and CC0 / CC BY datasets; denies RAIL, NC, unknown, See URL", () => {
     expect(licenseGate(gate, "# Model card\n\n## Dataset\n\n* URL: x\n* License: apache-2.0\n").ok).toBe(true);
     expect(licenseGate(gate, "---\nlicense: mit\n---\n").ok).toBe(true);
+    // Hugging Face card: the front matter is the statement of record; prose about "non-commercial use" is not a restriction.
+    expect(licenseGate(gate, "---\nlicense: mit\nlanguage:\n- ko\n---\n# MeloTTS\n\nThis library is under MIT License, which means it is free for both commercial and non-commercial use.\n").ok).toBe(true);
+    expect(licenseGate(gate, "---\nlicense: cc-by-nc-4.0\n---\n").ok).toBe(false);
     expect(licenseGate(gate, "* Dataset: Thorsten\n* License: CC0\n").ok).toBe(true);
     expect(licenseGate(gate, "* License: https://creativecommons.org/licenses/by/4.0/\n").ok).toBe(true);
     expect(licenseGate(gate, "License: OpenRAIL-M\n").ok).toBe(false);

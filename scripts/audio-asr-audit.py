@@ -9,7 +9,8 @@ ever shipped. Runs only inside the dispatch-only audio workflow.
 
 Recognisers (content/audio/engines.json → asr):
   whisper     faster-whisper (default; --model base for canaries, medium for shipped clips)
-  sensevoice  FunASR SenseVoiceSmall — zh / ja / ko / vi (plan/06 §3); Whisper stays the fallback
+  sensevoice  FunASR SenseVoiceSmall — zh / ja / ko only (plan/06 §3; the model knows zh/yue/en/ja/ko,
+              fed Vietnamese it emits Chinese filler — vi audits with Whisper); Whisper stays the fallback
 
 Language rules are NOT re-implemented here: the plan written by
 `scripts/audio.ts plan` carries the language and the build plugin's
@@ -31,7 +32,7 @@ import sys
 import unicodedata
 
 CER_LANGUAGES = {"ja", "zh"}
-SENSEVOICE_LANGUAGES = {"zh", "ja", "ko", "vi"}
+SENSEVOICE_LANGUAGES = {"zh", "ja", "ko"}
 LEGACY_NORMALIZATION = {"ligatures": {"œ": "oe", "æ": "ae", "ß": "ss"}, "apostropheSplit": True, "wordChars": "a-zà-ÿ0-9", "whisperLanguage": None}
 
 
@@ -85,7 +86,7 @@ class WhisperRecognizer:
 
 
 class SenseVoiceRecognizer:
-    LANG = {"zh": "zh", "ja": "ja", "ko": "ko", "vi": "auto", "en": "en"}
+    LANG = {"zh": "zh", "ja": "ja", "ko": "ko", "en": "en"}
 
     def __init__(self, model: str, hub: str):
         from funasr import AutoModel  # workflow-only dependency

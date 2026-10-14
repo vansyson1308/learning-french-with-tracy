@@ -179,11 +179,53 @@ per-voice dataset licence), Kokoro-82M (Apache-2.0) or MeloTTS (MIT):
   by the language's primary course), `reception` (listening clips).
 - Steps: `recon` (double download, gate, pin) → `canary` (synthesise the
   canary × every eligible candidate, ASR audit — Whisper, or SenseVoice for
-  zh/ja/ko/vi, CER for ja/zh — select the cast, register the voices) →
+  zh/ja/ko (not vi: the model has no Vietnamese), CER for ja/zh — select
+  the cast, register the voices) →
   `generate` (strict technical QA with the plugin's `charsPerSecBand`,
   per-language merge of `src/content/audio-manifest.ts` and
   `assets/audio/<code>/`, re-bless `content/audio/baseline/<code>.json`).
 - Offline: `bun scripts/audio.ts plan --lang <code> --layer all --mode generate --dry-run`.
+
+## Authoring a course (P3c toolkit)
+
+A full French-parity course is authored **from Vietnamese** with Claude's
+help, step by step, where every generated artifact is a draft that the
+deterministic validators and a native review must approve before compile:
+
+1. `plan/authoring/BLUEPRINT.md` is the template (the French shape and
+   counts), `plan/authoring/STYLE-vi.md` the Vietnamese prose rules,
+   `plan/authoring/GLOSSARY.md` the grammar terms, and
+   `plan/authoring/briefs/<target>-vi.md` the pedagogy brief injected into
+   every prompt (what Vietnamese speakers find hard, exams, scenarios).
+2. `bun scripts/author.ts emit <step> --target es --native vi` writes
+   `content/es/_drafts/<step>/PROMPT.md` + `INPUT.json` (task, blueprint
+   slice, brief, style, the record's JSON schema from zod, allowed ids,
+   French exemplars that already carry Vietnamese). A Claude session answers
+   with `OUTPUT.jsonl` in the same folder; `bun scripts/author.ts ingest
+   <step> --target es --native vi` validates every record, merges the valid
+   ones into the authored file, runs the validators and writes `REPORT.md`
+   (pass/fail per record) — repeat until the report is clean.
+3. Steps and the sessions they take: `objectives` (1) → `units` (1; the
+   draft pack `_drafts/pack.json` with lesson stubs) → `lexicon-review`
+   (2–3; fills `TODO:vi`) → `lessons` (3–4; the real pack is written once
+   every lesson has exercises) → `concepts` (1–2) → `readings` (1) →
+   `listening` (2) → `speech` (1) → `writing` (1) → `scenarios` (2) →
+   `checkpoints` (2) → `placement` (1). `bun scripts/author.ts steps` lists them.
+4. `bun scripts/author.ts lint --course <id>` runs the quality linters
+   (answer-position balance, duplicate payloads, distractor plausibility,
+   guidebook length, exercise-type mix vs the blueprint, lexeme coverage,
+   CEFR-descriptor leak, reading-level caps) — advisory, the validators gate.
+5. `bun scripts/author.ts checklist --course <id>` writes
+   `content/<target>/REVIEW-CHECKLIST.md` (every learner-facing string).
+   The **review gate**: a course whose native language is not the original
+   English compiles only when `content/courses/<id>.profile.json` records
+   `review: { native, date }` or `allowUnreviewed: true` together with an
+   entry naming the course in `release/KNOWN_LIMITATIONS.md` (beta content
+   ships honestly, never silently).
+6. `bun scripts/author.ts selftest --target xx --native en` proves the
+   toolkit end-to-end on the synthetic language (every committed record
+   round-trips through its step schema). `_drafts/` folders are committed
+   (they are not part of the app bundle); the `xx` self-test output is ignored.
 
 ## Adding a language `<code>`
 
