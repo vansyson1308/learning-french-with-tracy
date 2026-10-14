@@ -1,0 +1,295 @@
+{
+  "envelope": {
+    "envelopeVersion": 1,
+    "exportedAt": "2026-06-15T12:00:00.000Z",
+    "format": "lingo-progress-backup",
+    "manifest": {
+      "courses": [
+        "fr-en",
+        "es-en",
+        "ja-en"
+      ],
+      "topLevelKeys": [
+        "activeCourseId",
+        "streak",
+        "lastActiveDay",
+        "dailyGoal",
+        "dailyXp",
+        "dailyXpDay",
+        "onboardingDone",
+        "themePreference",
+        "courses",
+        "activeDays",
+        "reviewLog",
+        "assessment"
+      ]
+    },
+    "persistVersion": 3
+  },
+  "fromVersion": 0,
+  "invariants": [],
+  "migrated": {
+    "activeCourseId": "ja-en",
+    "activeDays": {
+      "2026-01-07": {
+        "lessons": 2,
+        "perfect": 0,
+        "xp": 30
+      },
+      "2026-01-08": {
+        "lessons": 3,
+        "perfect": 2,
+        "xp": 65
+      }
+    },
+    "assessment": {
+      "checkpointAttempts": [],
+      "placementFloor": 0
+    },
+    "courses": {
+      "es-en": {
+        "completedLessons": {
+          "es-en:u0-l0": true,
+          "es-en:u0-l1": true
+        },
+        "mistakes": [
+          {
+            "exerciseId": "es-en:u0-l1-e5",
+            "lessonId": "es-en:u0-l1"
+          },
+          {
+            "exerciseId": "es-en:u1-l0-e2",
+            "lessonId": "es-en:u1-l0"
+          }
+        ],
+        "srs": {
+          "el agua": {
+            "dueAt": 1769600000000,
+            "ease": 2.8,
+            "interval": 20,
+            "streak": 4
+          },
+          "la manzana": {
+            "dueAt": 1768000000000,
+            "ease": 2.15,
+            "interval": 1,
+            "streak": 1
+          }
+        },
+        "wordStats": {
+          "el agua": {
+            "correct": 9,
+            "lastSeen": 1767900000000,
+            "wrong": 1
+          },
+          "la manzana": {
+            "correct": 5,
+            "lastSeen": 1767910000000,
+            "wrong": 4
+          }
+        },
+        "xp": 350
+      },
+      "fr-en": {
+        "cards": {
+          "fr:w:pain|recognize": {
+            "difficulty": 6.538252946736481,
+            "due": 1768600000000,
+            "lapses": 2,
+            "last_review": 1767908800000,
+            "learning_steps": 0,
+            "reps": 3,
+            "scheduled_days": 8,
+            "stability": 8,
+            "state": "review"
+          }
+        },
+        "completedLessons": {
+          "fr-en:u0-l0": true
+        },
+        "mistakes": [],
+        "srsLegacy": {
+          "le pain": {
+            "dueAt": 1768600000000,
+            "ease": 2.7,
+            "interval": 8,
+            "streak": 3
+          }
+        },
+        "wordStats": {
+          "fr:w:pain": {
+            "correct": 3,
+            "lastSeen": 1767800000000,
+            "wrong": 2
+          }
+        },
+        "xp": 120
+      },
+      "ja-en": {
+        "completedLessons": {
+          "ja-en:u0-l0": true,
+          "ja-en:u0-l1": true
+        },
+        "mistakes": [],
+        "srs": {
+          "男の人": {
+            "dueAt": 1768200000000,
+            "ease": 2.55,
+            "interval": 3,
+            "streak": 2
+          }
+        },
+        "wordStats": {
+          "男の人": {
+            "correct": 2,
+            "lastSeen": 1767940000000,
+            "wrong": 0
+          }
+        },
+        "xp": 60
+      }
+    },
+    "dailyGoal": 50,
+    "dailyXp": 65,
+    "dailyXpDay": "2026-01-08",
+    "lastActiveDay": "2026-01-08",
+    "onboardingDone": true,
+    "reviewLog": [],
+    "streak": 12,
+    "themePreference": "system"
+  },
+  "staged": {
+    "ok": true,
+    "state": {
+      "activeCourseId": "ja-en",
+      "activeDays": {
+        "2026-01-07": {
+          "lessons": 2,
+          "perfect": 0,
+          "xp": 30
+        },
+        "2026-01-08": {
+          "lessons": 3,
+          "perfect": 2,
+          "xp": 65
+        }
+      },
+      "assessment": {
+        "checkpointAttempts": [],
+        "placementFloor": 0
+      },
+      "courses": {
+        "es-en": {
+          "completedLessons": {
+            "es-en:u0-l0": true,
+            "es-en:u0-l1": true
+          },
+          "mistakes": [
+            {
+              "exerciseId": "es-en:u0-l1-e5",
+              "lessonId": "es-en:u0-l1"
+            },
+            {
+              "exerciseId": "es-en:u1-l0-e2",
+              "lessonId": "es-en:u1-l0"
+            }
+          ],
+          "srs": {
+            "el agua": {
+              "dueAt": 1769600000000,
+              "ease": 2.8,
+              "interval": 20,
+              "streak": 4
+            },
+            "la manzana": {
+              "dueAt": 1768000000000,
+              "ease": 2.15,
+              "interval": 1,
+              "streak": 1
+            }
+          },
+          "wordStats": {
+            "el agua": {
+              "correct": 9,
+              "lastSeen": 1767900000000,
+              "wrong": 1
+            },
+            "la manzana": {
+              "correct": 5,
+              "lastSeen": 1767910000000,
+              "wrong": 4
+            }
+          },
+          "xp": 350
+        },
+        "fr-en": {
+          "cards": {
+            "fr:w:pain|recognize": {
+              "difficulty": 6.538252946736481,
+              "due": 1768600000000,
+              "lapses": 2,
+              "last_review": 1767908800000,
+              "learning_steps": 0,
+              "reps": 3,
+              "scheduled_days": 8,
+              "stability": 8,
+              "state": "review"
+            }
+          },
+          "completedLessons": {
+            "fr-en:u0-l0": true
+          },
+          "mistakes": [],
+          "srsLegacy": {
+            "le pain": {
+              "dueAt": 1768600000000,
+              "ease": 2.7,
+              "interval": 8,
+              "streak": 3
+            }
+          },
+          "wordStats": {
+            "fr:w:pain": {
+              "correct": 3,
+              "lastSeen": 1767800000000,
+              "wrong": 2
+            }
+          },
+          "xp": 120
+        },
+        "ja-en": {
+          "completedLessons": {
+            "ja-en:u0-l0": true,
+            "ja-en:u0-l1": true
+          },
+          "mistakes": [],
+          "srs": {
+            "男の人": {
+              "dueAt": 1768200000000,
+              "ease": 2.55,
+              "interval": 3,
+              "streak": 2
+            }
+          },
+          "wordStats": {
+            "男の人": {
+              "correct": 2,
+              "lastSeen": 1767940000000,
+              "wrong": 0
+            }
+          },
+          "xp": 60
+        }
+      },
+      "dailyGoal": 50,
+      "dailyXp": 65,
+      "dailyXpDay": "2026-01-08",
+      "lastActiveDay": "2026-01-08",
+      "onboardingDone": true,
+      "reviewLog": [],
+      "streak": 12,
+      "themePreference": "system"
+    }
+  },
+  "toVersion": 3
+}

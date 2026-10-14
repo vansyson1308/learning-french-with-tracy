@@ -1,0 +1,232 @@
+{
+  "final": {
+    "attempts": {
+      "speak-review-fr:w:au-revoir": 1,
+      "speak-review-fr:w:bonjour": 1,
+      "speak-review-fr:w:bonsoir": 2,
+      "speak-review-fr:w:merci": 1,
+      "speak-review-fr:w:s-il-vous-plait": 1
+    },
+    "completedCount": 5,
+    "finished": true,
+    "firstResults": {
+      "speak-review-fr:w:au-revoir": true,
+      "speak-review-fr:w:bonjour": true,
+      "speak-review-fr:w:bonsoir": false,
+      "speak-review-fr:w:merci": true,
+      "speak-review-fr:w:s-il-vous-plait": true
+    },
+    "queueIds": [
+      "speak-review-fr:w:au-revoir",
+      "speak-review-fr:w:bonsoir",
+      "speak-review-fr:w:s-il-vous-plait",
+      "speak-review-fr:w:merci",
+      "speak-review-fr:w:bonjour",
+      "speak-review-fr:w:bonsoir"
+    ],
+    "skipped": {},
+    "wrongCounts": {
+      "speak-review-fr:w:bonsoir": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:au-revoir"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:au-revoir"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 5,
+      "status": "correct",
+      "stepId": "speak-review-fr:w:au-revoir"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:bonsoir"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:bonsoir"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 5,
+      "status": "wrong",
+      "stepId": "speak-review-fr:w:bonsoir"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:s-il-vous-plait"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:s-il-vous-plait"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "wrong",
+      "stepId": "speak-review-fr:w:s-il-vous-plait"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:s-il-vous-plait"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:s-il-vous-plait"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "speak-review-fr:w:s-il-vous-plait"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:merci"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:merci"
+    },
+    {
+      "action": "check",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "speak-review-fr:w:merci"
+    },
+    {
+      "action": "continue",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:bonjour"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:bonjour"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "speak-review-fr:w:bonjour"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:bonsoir"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "speak-review-fr:w:bonsoir"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "speak-review-fr:w:bonsoir"
+    },
+    {
+      "action": "continue",
+      "completed": 5,
+      "finished": true,
+      "index": 6,
+      "queue": 6,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

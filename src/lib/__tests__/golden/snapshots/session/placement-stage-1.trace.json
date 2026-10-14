@@ -1,0 +1,248 @@
+{
+  "final": {
+    "attempts": {
+      "fr.pli.s1.airport": 1,
+      "fr.pli.s1.bird": 1,
+      "fr.pli.s1.girl_milk": 1,
+      "fr.pli.s1.man_ticket": 1,
+      "fr.pli.s1.milk": 1,
+      "fr.pli.s1.morning": 1,
+      "fr.pli.s1.polite": 1
+    },
+    "completedCount": 7,
+    "finished": true,
+    "firstResults": {
+      "fr.pli.s1.airport": false,
+      "fr.pli.s1.bird": false,
+      "fr.pli.s1.girl_milk": true,
+      "fr.pli.s1.man_ticket": true,
+      "fr.pli.s1.milk": true,
+      "fr.pli.s1.polite": true
+    },
+    "queueIds": [
+      "fr.pli.s1.milk",
+      "fr.pli.s1.bird",
+      "fr.pli.s1.morning",
+      "fr.pli.s1.polite",
+      "fr.pli.s1.girl_milk",
+      "fr.pli.s1.man_ticket",
+      "fr.pli.s1.airport"
+    ],
+    "skipped": {
+      "fr.pli.s1.morning": true
+    },
+    "wrongCounts": {
+      "fr.pli.s1.airport": 1,
+      "fr.pli.s1.bird": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.milk"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.milk"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 7,
+      "status": "correct",
+      "stepId": "fr.pli.s1.milk"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.bird"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.bird"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 7,
+      "status": "wrong",
+      "stepId": "fr.pli.s1.bird"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.morning"
+    },
+    {
+      "action": "skip",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.polite"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.polite"
+    },
+    {
+      "action": "check",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "wrong",
+      "stepId": "fr.pli.s1.polite"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.polite"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.polite"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "correct",
+      "stepId": "fr.pli.s1.polite"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.girl_milk"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.girl_milk"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 4,
+      "queue": 7,
+      "status": "correct",
+      "stepId": "fr.pli.s1.girl_milk"
+    },
+    {
+      "action": "continue",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.man_ticket"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.man_ticket"
+    },
+    {
+      "action": "check",
+      "completed": 6,
+      "finished": false,
+      "index": 5,
+      "queue": 7,
+      "status": "correct",
+      "stepId": "fr.pli.s1.man_ticket"
+    },
+    {
+      "action": "continue",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.airport"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "fr.pli.s1.airport"
+    },
+    {
+      "action": "check",
+      "completed": 6,
+      "finished": false,
+      "index": 6,
+      "queue": 7,
+      "status": "wrong",
+      "stepId": "fr.pli.s1.airport"
+    },
+    {
+      "action": "continue",
+      "completed": 7,
+      "finished": true,
+      "index": 7,
+      "queue": 7,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

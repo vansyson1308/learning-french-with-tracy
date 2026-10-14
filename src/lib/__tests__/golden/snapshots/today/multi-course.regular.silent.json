@@ -1,0 +1,412 @@
+{
+  "backlogRemaining": 0,
+  "backlogTotal": 1,
+  "estimatedMinutes": 5,
+  "listenCount": 0,
+  "newCount": 4,
+  "reviewCount": 1,
+  "speakCount": 0,
+  "steps": [
+    {
+      "evidence": {
+        "itemId": "fr:w:pain",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "le pain",
+        "correct": 2,
+        "id": "today-review-fr:w:pain",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🧀",
+            "text": "the cheese"
+          },
+          {
+            "emoji": "🧃",
+            "text": "the juice"
+          },
+          {
+            "emoji": "🍞",
+            "text": "the bread"
+          },
+          {
+            "emoji": "🍎",
+            "text": "the fruit"
+          }
+        ],
+        "prompt": "le pain",
+        "type": "select"
+      },
+      "phase": "warmup",
+      "stepId": "today-review-fr:w:pain",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:fille",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:fille",
+      "type": "teach",
+      "word": {
+        "emoji": "👧",
+        "native": "the girl",
+        "target": "la fille"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:fille",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "la fille",
+        "correct": 1,
+        "id": "today-new-fr:w:fille",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "👦",
+            "text": "the boy"
+          },
+          {
+            "emoji": "👧",
+            "text": "the girl"
+          },
+          {
+            "emoji": "🦸",
+            "text": "the hero"
+          },
+          {
+            "emoji": "👩",
+            "text": "the woman"
+          }
+        ],
+        "prompt": "la fille",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:fille",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:pomme",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:pomme",
+      "type": "teach",
+      "word": {
+        "emoji": "🍎",
+        "native": "the apple",
+        "target": "la pomme"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:pomme",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "la pomme",
+        "correct": 2,
+        "id": "today-new-fr:w:pomme",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "💧",
+            "text": "the water"
+          },
+          {
+            "emoji": "☕",
+            "text": "the coffee"
+          },
+          {
+            "emoji": "🍎",
+            "text": "the apple"
+          },
+          {
+            "emoji": "🍗",
+            "text": "the chicken"
+          }
+        ],
+        "prompt": "la pomme",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:pomme",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:non",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:non",
+      "type": "teach",
+      "word": {
+        "emoji": "❌",
+        "native": "no",
+        "target": "non"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:non",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "non",
+        "correct": 2,
+        "id": "today-new-fr:w:non",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "✅",
+            "text": "yes"
+          },
+          {
+            "emoji": "📆",
+            "text": "today"
+          },
+          {
+            "emoji": "❌",
+            "text": "no"
+          },
+          {
+            "emoji": "📅",
+            "text": "tomorrow"
+          }
+        ],
+        "prompt": "non",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:non",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:manger",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:manger",
+      "type": "teach",
+      "word": {
+        "emoji": "🍽️",
+        "native": "to eat",
+        "target": "manger"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:manger",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "manger",
+        "correct": 3,
+        "id": "today-new-fr:w:manger",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🥤",
+            "text": "to drink"
+          },
+          {
+            "emoji": "⏳",
+            "text": "to wait"
+          },
+          {
+            "emoji": "🛒",
+            "text": "to buy"
+          },
+          {
+            "emoji": "🍽️",
+            "text": "to eat"
+          }
+        ],
+        "prompt": "manger",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:manger",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:non",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "non",
+        "correct": 2,
+        "id": "today-mixed-fr:w:non",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "oui"
+          },
+          {
+            "text": "demain"
+          },
+          {
+            "text": "non"
+          },
+          {
+            "text": "aujourd'hui"
+          }
+        ],
+        "prompt": "no",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:non",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:pomme",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "la pomme",
+        "correct": 2,
+        "id": "today-mixed-fr:w:pomme",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "le pain"
+          },
+          {
+            "text": "le fromage"
+          },
+          {
+            "text": "la pomme"
+          },
+          {
+            "text": "l'eau"
+          }
+        ],
+        "prompt": "the apple",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:pomme",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:pain",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "le pain",
+        "correct": 0,
+        "id": "today-mixed-fr:w:pain",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "le pain"
+          },
+          {
+            "text": "le café"
+          },
+          {
+            "text": "le fromage"
+          },
+          {
+            "text": "le jus"
+          }
+        ],
+        "prompt": "the bread",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:pain",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:fille",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "la fille",
+        "correct": 0,
+        "id": "today-mixed-fr:w:fille",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "la fille"
+          },
+          {
+            "text": "le garçon"
+          },
+          {
+            "text": "la femme"
+          },
+          {
+            "text": "l'homme"
+          }
+        ],
+        "prompt": "the girl",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:fille",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:manger",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "manger",
+        "correct": 3,
+        "id": "today-mixed-fr:w:manger",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "boire"
+          },
+          {
+            "text": "rester"
+          },
+          {
+            "text": "être"
+          },
+          {
+            "text": "manger"
+          }
+        ],
+        "prompt": "to eat",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:manger",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "id": "today-finale",
+        "pairs": [
+          {
+            "native": "to eat",
+            "target": "manger"
+          },
+          {
+            "native": "the apple",
+            "target": "la pomme"
+          },
+          {
+            "native": "no",
+            "target": "non"
+          },
+          {
+            "native": "the girl",
+            "target": "la fille"
+          }
+        ],
+        "type": "match"
+      },
+      "phase": "finale",
+      "stepId": "today-finale",
+      "type": "exercise"
+    }
+  ]
+}

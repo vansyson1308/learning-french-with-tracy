@@ -1,0 +1,232 @@
+{
+  "final": {
+    "attempts": {
+      "listen-review-fr:w:cafe": 1,
+      "listen-review-fr:w:eau": 2,
+      "listen-review-fr:w:gare": 1,
+      "listen-review-fr:w:pain": 1,
+      "listen-review-fr:w:train": 1
+    },
+    "completedCount": 5,
+    "finished": true,
+    "firstResults": {
+      "listen-review-fr:w:cafe": true,
+      "listen-review-fr:w:eau": false,
+      "listen-review-fr:w:gare": true,
+      "listen-review-fr:w:pain": true,
+      "listen-review-fr:w:train": true
+    },
+    "queueIds": [
+      "listen-review-fr:w:pain",
+      "listen-review-fr:w:eau",
+      "listen-review-fr:w:train",
+      "listen-review-fr:w:gare",
+      "listen-review-fr:w:cafe",
+      "listen-review-fr:w:eau"
+    ],
+    "skipped": {},
+    "wrongCounts": {
+      "listen-review-fr:w:eau": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:pain"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:pain"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 5,
+      "status": "correct",
+      "stepId": "listen-review-fr:w:pain"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:eau"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:eau"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 5,
+      "status": "wrong",
+      "stepId": "listen-review-fr:w:eau"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:train"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:train"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "wrong",
+      "stepId": "listen-review-fr:w:train"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:train"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:train"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "listen-review-fr:w:train"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:gare"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:gare"
+    },
+    {
+      "action": "check",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "listen-review-fr:w:gare"
+    },
+    {
+      "action": "continue",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:cafe"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:cafe"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "listen-review-fr:w:cafe"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:eau"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "listen-review-fr:w:eau"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 5,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "listen-review-fr:w:eau"
+    },
+    {
+      "action": "continue",
+      "completed": 5,
+      "finished": true,
+      "index": 6,
+      "queue": 6,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

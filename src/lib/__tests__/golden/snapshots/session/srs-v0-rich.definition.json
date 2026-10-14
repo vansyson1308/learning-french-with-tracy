@@ -1,0 +1,79 @@
+{
+  "allowUndo": true,
+  "completion": "practice",
+  "courseId": "fr-en",
+  "evidenceSource": "review",
+  "kind": "review",
+  "lessonId": "srs",
+  "steps": [
+    {
+      "evidence": {
+        "itemId": "fr:w:femme",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "la femme",
+        "correct": 2,
+        "id": "srs-la femme",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "👨",
+            "text": "the man"
+          },
+          {
+            "emoji": "🦸",
+            "text": "the hero"
+          },
+          {
+            "emoji": "👩",
+            "text": "the woman"
+          },
+          {
+            "emoji": "👧",
+            "text": "the girl"
+          }
+        ],
+        "prompt": "la femme",
+        "type": "select"
+      },
+      "stepId": "srs-la femme",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:homme",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "l'homme",
+        "correct": 1,
+        "id": "srs-l'homme",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "👩",
+            "text": "the woman"
+          },
+          {
+            "emoji": "👨",
+            "text": "the man"
+          },
+          {
+            "emoji": "🦸",
+            "text": "the hero"
+          },
+          {
+            "emoji": "👦",
+            "text": "the boy"
+          }
+        ],
+        "prompt": "l'homme",
+        "type": "select"
+      },
+      "stepId": "srs-l'homme",
+      "type": "exercise"
+    }
+  ],
+  "trackMistakes": false
+}

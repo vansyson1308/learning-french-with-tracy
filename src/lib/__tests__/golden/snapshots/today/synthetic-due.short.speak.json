@@ -1,0 +1,437 @@
+{
+  "backlogRemaining": 16,
+  "backlogTotal": 21,
+  "estimatedMinutes": 5,
+  "listenCount": 1,
+  "newCount": 3,
+  "reviewCount": 5,
+  "speakCount": 1,
+  "steps": [
+    {
+      "evidence": {
+        "itemId": "fr:w:bonjour",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "bonjour",
+        "correct": 1,
+        "id": "today-review-fr:w:bonjour",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🌆",
+            "text": "good evening"
+          },
+          {
+            "emoji": "👋",
+            "text": "hello / good day"
+          },
+          {
+            "emoji": "🤙",
+            "text": "hi / bye (informal)"
+          },
+          {
+            "emoji": "😅",
+            "text": "sorry / excuse me"
+          }
+        ],
+        "prompt": "bonjour",
+        "type": "select"
+      },
+      "phase": "warmup",
+      "stepId": "today-review-fr:w:bonjour",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:matin",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "le matin",
+        "correct": 3,
+        "id": "today-review-fr:w:matin",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🌆",
+            "text": "the evening"
+          },
+          {
+            "emoji": "⛪",
+            "text": "Sunday"
+          },
+          {
+            "emoji": "🗓️",
+            "text": "Saturday"
+          },
+          {
+            "emoji": "🌅",
+            "text": "the morning"
+          }
+        ],
+        "prompt": "le matin",
+        "type": "select"
+      },
+      "phase": "warmup",
+      "stepId": "today-review-fr:w:matin",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:eau",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "l'eau",
+        "correct": 1,
+        "id": "today-review-fr:w:eau",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🧃",
+            "text": "the juice"
+          },
+          {
+            "emoji": "💧",
+            "text": "the water"
+          },
+          {
+            "emoji": "☕",
+            "text": "the coffee"
+          },
+          {
+            "emoji": "🍎",
+            "text": "the apple"
+          }
+        ],
+        "prompt": "l'eau",
+        "type": "select"
+      },
+      "phase": "warmup",
+      "stepId": "today-review-fr:w:eau",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:eau",
+        "skill": "listen",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "clipId": "fr.clip.uf_eau",
+        "correct": 3,
+        "id": "today-listen-fr:w:eau",
+        "options": [
+          {
+            "text": "the apple"
+          },
+          {
+            "text": "the chicken"
+          },
+          {
+            "text": "the juice"
+          },
+          {
+            "text": "the water"
+          }
+        ],
+        "question": "What do you hear?",
+        "type": "listeningComprehension"
+      },
+      "phase": "warmup",
+      "stepId": "today-listen-fr:w:eau",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:bonsoir",
+        "skill": "speak",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "acceptedVariants": [
+          "Bonsoir",
+          "Bonsoir, madame",
+          "Bonsoir, monsieur"
+        ],
+        "allowContextualBias": false,
+        "allowedAttempts": 2,
+        "evidenceLexemeRefs": [
+          "fr:w:bonsoir"
+        ],
+        "id": "today-speak-fr:w:bonsoir",
+        "instruction": "It's 8 pm and you meet your neighbour. Greet them.",
+        "modelClipId": "fr.clip.uf_bonsoir",
+        "objectiveTargets": [
+          "fr.obj.speaking.formulaic"
+        ],
+        "revealTargetAfterAttempts": 2,
+        "speechItemId": "fr.speak.k_evening",
+        "target": "Bonsoir",
+        "type": "speakProduction"
+      },
+      "phase": "warmup",
+      "stepId": "today-speak-fr:w:bonsoir",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:boire",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:boire",
+      "type": "teach",
+      "word": {
+        "emoji": "🥤",
+        "native": "to drink",
+        "target": "boire"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:boire",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "boire",
+        "correct": 3,
+        "id": "today-new-fr:w:boire",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "🔑",
+            "text": "to open"
+          },
+          {
+            "emoji": "🚶",
+            "text": "to go"
+          },
+          {
+            "emoji": "🍽️",
+            "text": "to eat"
+          },
+          {
+            "emoji": "🥤",
+            "text": "to drink"
+          }
+        ],
+        "prompt": "boire",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:boire",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:oui",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:oui",
+      "type": "teach",
+      "word": {
+        "emoji": "✅",
+        "native": "yes",
+        "target": "oui"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:oui",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "oui",
+        "correct": 3,
+        "id": "today-new-fr:w:oui",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "📅",
+            "text": "tomorrow"
+          },
+          {
+            "emoji": "📆",
+            "text": "today"
+          },
+          {
+            "emoji": "❌",
+            "text": "no"
+          },
+          {
+            "emoji": "✅",
+            "text": "yes"
+          }
+        ],
+        "prompt": "oui",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:oui",
+      "type": "exercise"
+    },
+    {
+      "itemId": "fr:w:non",
+      "phase": "new",
+      "stepId": "today-teach-fr:w:non",
+      "type": "teach",
+      "word": {
+        "emoji": "❌",
+        "native": "no",
+        "target": "non"
+      }
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:non",
+        "srsRole": "assessment"
+      },
+      "exercise": {
+        "audioTarget": "non",
+        "correct": 2,
+        "id": "today-new-fr:w:non",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "emoji": "✅",
+            "text": "yes"
+          },
+          {
+            "emoji": "📅",
+            "text": "tomorrow"
+          },
+          {
+            "emoji": "❌",
+            "text": "no"
+          },
+          {
+            "emoji": "📆",
+            "text": "today"
+          }
+        ],
+        "prompt": "non",
+        "type": "select"
+      },
+      "phase": "new",
+      "stepId": "today-new-fr:w:non",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:oui",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "oui",
+        "correct": 1,
+        "id": "today-mixed-fr:w:oui",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "demain"
+          },
+          {
+            "text": "oui"
+          },
+          {
+            "text": "aujourd'hui"
+          },
+          {
+            "text": "non"
+          }
+        ],
+        "prompt": "yes",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:oui",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:boire",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "boire",
+        "correct": 3,
+        "id": "today-mixed-fr:w:boire",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "payer"
+          },
+          {
+            "text": "parler"
+          },
+          {
+            "text": "manger"
+          },
+          {
+            "text": "boire"
+          }
+        ],
+        "prompt": "to drink",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:boire",
+      "type": "exercise"
+    },
+    {
+      "evidence": {
+        "itemId": "fr:w:non",
+        "srsRole": "practice"
+      },
+      "exercise": {
+        "audioTarget": "non",
+        "correct": 3,
+        "id": "today-mixed-fr:w:non",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "oui"
+          },
+          {
+            "text": "demain"
+          },
+          {
+            "text": "aujourd'hui"
+          },
+          {
+            "text": "non"
+          }
+        ],
+        "prompt": "no",
+        "type": "select"
+      },
+      "phase": "mixed",
+      "stepId": "today-mixed-fr:w:non",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "id": "today-finale",
+        "pairs": [
+          {
+            "native": "the morning",
+            "target": "le matin"
+          },
+          {
+            "native": "hello / good day",
+            "target": "bonjour"
+          },
+          {
+            "native": "no",
+            "target": "non"
+          },
+          {
+            "native": "the water",
+            "target": "l'eau"
+          }
+        ],
+        "type": "match"
+      },
+      "phase": "finale",
+      "stepId": "today-finale",
+      "type": "exercise"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "final": {
+    "attempts": {
+      "srs-l'homme": 2,
+      "srs-la femme": 1
+    },
+    "completedCount": 2,
+    "finished": true,
+    "firstResults": {
+      "srs-l'homme": false,
+      "srs-la femme": true
+    },
+    "queueIds": [
+      "srs-la femme",
+      "srs-l'homme",
+      "srs-l'homme"
+    ],
+    "skipped": {},
+    "wrongCounts": {
+      "srs-l'homme": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 2,
+      "status": "idle",
+      "stepId": "srs-la femme"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 2,
+      "status": "idle",
+      "stepId": "srs-la femme"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 2,
+      "status": "correct",
+      "stepId": "srs-la femme"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 2,
+      "status": "idle",
+      "stepId": "srs-l'homme"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 2,
+      "status": "idle",
+      "stepId": "srs-l'homme"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 2,
+      "status": "wrong",
+      "stepId": "srs-l'homme"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 3,
+      "status": "idle",
+      "stepId": "srs-l'homme"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 3,
+      "status": "idle",
+      "stepId": "srs-l'homme"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 3,
+      "status": "correct",
+      "stepId": "srs-l'homme"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": true,
+      "index": 3,
+      "queue": 3,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

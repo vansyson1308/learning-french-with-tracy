@@ -1,0 +1,291 @@
+{
+  "final": {
+    "attempts": {
+      "srs-l'eau": 1,
+      "srs-la gare": 1,
+      "srs-le café": 2,
+      "srs-le matin": 1,
+      "srs-le pain": 2,
+      "srs-le train": 1
+    },
+    "completedCount": 6,
+    "finished": true,
+    "firstResults": {
+      "srs-l'eau": true,
+      "srs-la gare": true,
+      "srs-le café": false,
+      "srs-le matin": true,
+      "srs-le pain": false,
+      "srs-le train": true
+    },
+    "queueIds": [
+      "srs-le matin",
+      "srs-le pain",
+      "srs-l'eau",
+      "srs-le train",
+      "srs-la gare",
+      "srs-le café",
+      "srs-le pain",
+      "srs-le café"
+    ],
+    "skipped": {},
+    "wrongCounts": {
+      "srs-le café": 1,
+      "srs-le pain": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "srs-le matin"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "srs-le matin"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 6,
+      "status": "correct",
+      "stepId": "srs-le matin"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "srs-le pain"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 6,
+      "status": "idle",
+      "stepId": "srs-le pain"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 6,
+      "status": "wrong",
+      "stepId": "srs-le pain"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-l'eau"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-l'eau"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 7,
+      "status": "wrong",
+      "stepId": "srs-l'eau"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-l'eau"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-l'eau"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 7,
+      "status": "correct",
+      "stepId": "srs-l'eau"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-le train"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-le train"
+    },
+    {
+      "action": "check",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 7,
+      "status": "correct",
+      "stepId": "srs-le train"
+    },
+    {
+      "action": "continue",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-la gare"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-la gare"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 7,
+      "status": "correct",
+      "stepId": "srs-la gare"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-le café"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 7,
+      "status": "idle",
+      "stepId": "srs-le café"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 5,
+      "queue": 7,
+      "status": "wrong",
+      "stepId": "srs-le café"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": false,
+      "index": 6,
+      "queue": 8,
+      "status": "idle",
+      "stepId": "srs-le pain"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 4,
+      "finished": false,
+      "index": 6,
+      "queue": 8,
+      "status": "idle",
+      "stepId": "srs-le pain"
+    },
+    {
+      "action": "check",
+      "completed": 5,
+      "finished": false,
+      "index": 6,
+      "queue": 8,
+      "status": "correct",
+      "stepId": "srs-le pain"
+    },
+    {
+      "action": "continue",
+      "completed": 5,
+      "finished": false,
+      "index": 7,
+      "queue": 8,
+      "status": "idle",
+      "stepId": "srs-le café"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 5,
+      "finished": false,
+      "index": 7,
+      "queue": 8,
+      "status": "idle",
+      "stepId": "srs-le café"
+    },
+    {
+      "action": "check",
+      "completed": 6,
+      "finished": false,
+      "index": 7,
+      "queue": 8,
+      "status": "correct",
+      "stepId": "srs-le café"
+    },
+    {
+      "action": "continue",
+      "completed": 6,
+      "finished": true,
+      "index": 8,
+      "queue": 8,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

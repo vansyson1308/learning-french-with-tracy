@@ -1,0 +1,202 @@
+{
+  "final": {
+    "attempts": {
+      "wp-s5-e11": 2,
+      "wp-s5-e19": 1,
+      "wp-s5-e20": 1,
+      "wp-s5-e7": 1
+    },
+    "completedCount": 4,
+    "finished": true,
+    "firstResults": {
+      "wp-s5-e11": false,
+      "wp-s5-e19": true,
+      "wp-s5-e20": true,
+      "wp-s5-e7": true
+    },
+    "queueIds": [
+      "wp-s5-e7",
+      "wp-s5-e11",
+      "wp-s5-e19",
+      "wp-s5-e20",
+      "wp-s5-e11"
+    ],
+    "skipped": {},
+    "wrongCounts": {
+      "wp-s5-e11": 1
+    }
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 4,
+      "status": "idle",
+      "stepId": "wp-s5-e7"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 4,
+      "status": "idle",
+      "stepId": "wp-s5-e7"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 4,
+      "status": "correct",
+      "stepId": "wp-s5-e7"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 4,
+      "status": "idle",
+      "stepId": "wp-s5-e11"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 4,
+      "status": "idle",
+      "stepId": "wp-s5-e11"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 1,
+      "queue": 4,
+      "status": "wrong",
+      "stepId": "wp-s5-e11"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e19"
+    },
+    {
+      "action": "answer:wrong",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e19"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 5,
+      "status": "wrong",
+      "stepId": "wp-s5-e19"
+    },
+    {
+      "action": "undoCurrent",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e19"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 1,
+      "finished": false,
+      "index": 2,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e19"
+    },
+    {
+      "action": "check",
+      "completed": 2,
+      "finished": false,
+      "index": 2,
+      "queue": 5,
+      "status": "correct",
+      "stepId": "wp-s5-e19"
+    },
+    {
+      "action": "continue",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e20"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 2,
+      "finished": false,
+      "index": 3,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e20"
+    },
+    {
+      "action": "check",
+      "completed": 3,
+      "finished": false,
+      "index": 3,
+      "queue": 5,
+      "status": "correct",
+      "stepId": "wp-s5-e20"
+    },
+    {
+      "action": "continue",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e11"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 3,
+      "finished": false,
+      "index": 4,
+      "queue": 5,
+      "status": "idle",
+      "stepId": "wp-s5-e11"
+    },
+    {
+      "action": "check",
+      "completed": 4,
+      "finished": false,
+      "index": 4,
+      "queue": 5,
+      "status": "correct",
+      "stepId": "wp-s5-e11"
+    },
+    {
+      "action": "continue",
+      "completed": 4,
+      "finished": true,
+      "index": 5,
+      "queue": 5,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

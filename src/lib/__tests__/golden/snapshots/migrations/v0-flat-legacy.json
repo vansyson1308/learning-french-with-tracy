@@ -1,0 +1,127 @@
+{
+  "envelope": {
+    "envelopeVersion": 1,
+    "exportedAt": "2026-06-15T12:00:00.000Z",
+    "format": "lingo-progress-backup",
+    "manifest": {
+      "courses": [
+        "es-en"
+      ],
+      "topLevelKeys": [
+        "activeCourseId",
+        "streak",
+        "lastActiveDay",
+        "dailyGoal",
+        "dailyXp",
+        "dailyXpDay",
+        "onboardingDone",
+        "themePreference",
+        "activeDays",
+        "courses",
+        "reviewLog",
+        "assessment"
+      ]
+    },
+    "persistVersion": 3
+  },
+  "fromVersion": 0,
+  "invariants": [],
+  "migrated": {
+    "activeCourseId": "es-en",
+    "activeDays": {
+      "2026-01-09": {
+        "lessons": 1,
+        "perfect": 0,
+        "xp": 15
+      }
+    },
+    "assessment": {
+      "checkpointAttempts": [],
+      "placementFloor": 0
+    },
+    "courses": {
+      "es-en": {
+        "completedLessons": {
+          "es-en:u0-l0": true,
+          "es-en:u0-l1": true
+        },
+        "mistakes": [],
+        "srs": {
+          "el agua": {
+            "dueAt": 1768000000000,
+            "ease": 2.5,
+            "interval": 1,
+            "streak": 1
+          }
+        },
+        "wordStats": {
+          "el agua": {
+            "correct": 2,
+            "lastSeen": 1767950000000,
+            "wrong": 0
+          }
+        },
+        "xp": 45
+      }
+    },
+    "dailyGoal": 30,
+    "dailyXp": 15,
+    "dailyXpDay": "2026-01-09",
+    "lastActiveDay": "2026-01-09",
+    "onboardingDone": true,
+    "reviewLog": [],
+    "streak": 2,
+    "themePreference": "light"
+  },
+  "staged": {
+    "ok": true,
+    "state": {
+      "activeCourseId": "es-en",
+      "activeDays": {
+        "2026-01-09": {
+          "lessons": 1,
+          "perfect": 0,
+          "xp": 15
+        }
+      },
+      "assessment": {
+        "checkpointAttempts": [],
+        "placementFloor": 0
+      },
+      "courses": {
+        "es-en": {
+          "completedLessons": {
+            "es-en:u0-l0": true,
+            "es-en:u0-l1": true
+          },
+          "mistakes": [],
+          "srs": {
+            "el agua": {
+              "dueAt": 1768000000000,
+              "ease": 2.5,
+              "interval": 1,
+              "streak": 1
+            }
+          },
+          "wordStats": {
+            "el agua": {
+              "correct": 2,
+              "lastSeen": 1767950000000,
+              "wrong": 0
+            }
+          },
+          "xp": 45
+        }
+      },
+      "dailyGoal": 30,
+      "dailyXp": 15,
+      "dailyXpDay": "2026-01-09",
+      "lastActiveDay": "2026-01-09",
+      "onboardingDone": true,
+      "reviewLog": [],
+      "streak": 2,
+      "themePreference": "light"
+    }
+  },
+  "toVersion": 3
+}

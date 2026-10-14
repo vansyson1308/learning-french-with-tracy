@@ -1,0 +1,188 @@
+{
+  "allowUndo": false,
+  "completion": "placement",
+  "courseId": "fr-en",
+  "evidenceSource": "lesson",
+  "feedbackPolicy": "minimal",
+  "kind": "placement",
+  "lessonId": "placement:fr.pstage.foundations",
+  "retryPolicy": "none",
+  "steps": [
+    {
+      "exercise": {
+        "correct": 3,
+        "id": "fr-plx-s1-milk",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "le pain"
+          },
+          {
+            "text": "le jus"
+          },
+          {
+            "text": "l'eau"
+          },
+          {
+            "text": "le lait"
+          }
+        ],
+        "prompt": "the milk",
+        "type": "select"
+      },
+      "stepId": "fr.pli.s1.milk",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 0,
+        "id": "fr-plx-s1-bird",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "text": "the bird"
+          },
+          {
+            "text": "the rabbit"
+          },
+          {
+            "text": "the mouse"
+          },
+          {
+            "text": "the fish"
+          }
+        ],
+        "prompt": "l'oiseau",
+        "type": "select"
+      },
+      "stepId": "fr.pli.s1.bird",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 0,
+        "id": "fr-plx-s1-morning",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "Bonjour !"
+          },
+          {
+            "text": "Bonsoir !"
+          },
+          {
+            "text": "Bonne nuit !"
+          },
+          {
+            "text": "Au revoir !"
+          }
+        ],
+        "prompt": "It's morning and you walk into the bakery. You say:",
+        "type": "select"
+      },
+      "stepId": "fr.pli.s1.morning",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 1,
+        "id": "fr-plx-s1-polite",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "salut"
+          },
+          {
+            "text": "s'il vous plaît"
+          },
+          {
+            "text": "bonne nuit"
+          },
+          {
+            "text": "au revoir"
+          }
+        ],
+        "prompt": "You ask for something politely. You add:",
+        "type": "select"
+      },
+      "stepId": "fr.pli.s1.polite",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 2,
+        "id": "fr-plx-s1-girl_milk",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "text": "The girl drinks water."
+          },
+          {
+            "text": "The boy drinks milk."
+          },
+          {
+            "text": "The girl drinks milk."
+          },
+          {
+            "text": "The girl eats bread."
+          }
+        ],
+        "prompt": "La fille boit du lait.",
+        "type": "select"
+      },
+      "stepId": "fr.pli.s1.girl_milk",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 2,
+        "id": "fr-plx-s1-man_ticket",
+        "mode": "targetToNative",
+        "options": [
+          {
+            "text": "The man is at the station."
+          },
+          {
+            "text": "The woman has a ticket."
+          },
+          {
+            "text": "The man has a ticket."
+          },
+          {
+            "text": "The man has a map."
+          }
+        ],
+        "prompt": "L'homme a un billet.",
+        "type": "select"
+      },
+      "stepId": "fr.pli.s1.man_ticket",
+      "type": "exercise"
+    },
+    {
+      "exercise": {
+        "correct": 1,
+        "id": "fr-plx-s1-airport",
+        "mode": "nativeToTarget",
+        "options": [
+          {
+            "text": "la gare"
+          },
+          {
+            "text": "l'aéroport"
+          },
+          {
+            "text": "l'hôtel"
+          },
+          {
+            "text": "le musée"
+          }
+        ],
+        "prompt": "the airport",
+        "type": "select"
+      },
+      "stepId": "fr.pli.s1.airport",
+      "type": "exercise"
+    }
+  ],
+  "trackMistakes": false
+}

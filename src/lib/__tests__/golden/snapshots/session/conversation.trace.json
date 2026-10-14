@@ -1,0 +1,55 @@
+{
+  "final": {
+    "attempts": {
+      "cp-fr.scenario.salut_ca_va": 1
+    },
+    "completedCount": 1,
+    "finished": true,
+    "firstResults": {
+      "cp-fr.scenario.salut_ca_va": true
+    },
+    "queueIds": [
+      "cp-fr.scenario.salut_ca_va"
+    ],
+    "skipped": {},
+    "wrongCounts": {}
+  },
+  "rows": [
+    {
+      "action": "start",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 1,
+      "status": "idle",
+      "stepId": "cp-fr.scenario.salut_ca_va"
+    },
+    {
+      "action": "answer:correct",
+      "completed": 0,
+      "finished": false,
+      "index": 0,
+      "queue": 1,
+      "status": "idle",
+      "stepId": "cp-fr.scenario.salut_ca_va"
+    },
+    {
+      "action": "check",
+      "completed": 1,
+      "finished": false,
+      "index": 0,
+      "queue": 1,
+      "status": "correct",
+      "stepId": "cp-fr.scenario.salut_ca_va"
+    },
+    {
+      "action": "continue",
+      "completed": 1,
+      "finished": true,
+      "index": 1,
+      "queue": 1,
+      "status": "idle",
+      "stepId": null
+    }
+  ]
+}

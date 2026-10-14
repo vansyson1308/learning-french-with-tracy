@@ -48,6 +48,13 @@ jobs:
         # `bun run test` uses the scoped script (src + scripts): raw
         # `bun test` would also sweep up the jest-only integration suite.
         run: bun run test
+      # P1a: the golden gate as its own named step (the suites also run
+      # inside `bun run test`): compile manifest vs committed artifacts and a
+      # fresh in-memory recompile, then the runtime snapshot suites. Runs in
+      # every timezone lane on purpose — a snapshot that drifts with the
+      # local day is a golden bug.
+      - name: Golden tests (French behaviour pinned)
+        run: bun scripts/golden.ts --check
       - name: Lint
         if: matrix.tz == 'UTC'
         run: bun run lint
