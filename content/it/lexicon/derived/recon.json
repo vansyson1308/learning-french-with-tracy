@@ -1,0 +1,94 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "it",
+  "recordedAt": "2026-10-14",
+  "artifacts": {
+    "kaikki-en-it.jsonl": {
+      "status": "retrieved",
+      "sha256": "cfb9e823972ed10d0289a1d55afe25d1daa879a742ff37ef457b0bdc289e5e8a",
+      "bytes": 770859636,
+      "lines": 623702,
+      "samples": [
+        "{\"pos\": \"verb\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"it\", \"2\": \"misspellings\"}, \"expansion\": \"o\"}], \"etymology_number\": \"3\", \"word\": \"o\", \"lang\": \"Italian\", \"lang_code\": \"it\", \"senses\": [{\"links\": [[\"ho\", \"ho#Italian\"]], \"glosses\": [\"misspelling of ho\"], \"tags\": [\"alt-of\", \"misspelling\"], \"alt_of\": [{\"word\": \"ho\"}], \"id\": \"en-o-it-verb-v~8-NOki\", \"categories\": []}]}",
+        "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"it\", \"2\": \"noun form\", \"g\": \"f\"}, \"expansion\": \"nature f\"}], \"word\": \"nature\", \"lang\": \"Italian\", \"lang_code\": \"it\", \"senses\": [{\"links\": [[\"natura\", \"natura#Italian\"]], \"glosses\": [\"plural of natura\"], \"tags\": [\"feminine\", \"form-of\", \"plural\"], \"form_of\": [{\"word\": \"natura\"}], \"id\": \"en-nature-it-noun-iiCXin10\"}]}"
+      ]
+    },
+    "kaikki-vi-it.jsonl": {
+      "status": "retrieved",
+      "sha256": "8c0a05d8e642101756808999e90d63f416de2e81767e980cceec4000a6e1dda6",
+      "bytes": 970295,
+      "lines": 959,
+      "samples": []
+    },
+    "frequencywords-it.txt": {
+      "status": "retrieved",
+      "sha256": "bb96cdcb56d28342c1e909db6b2525448b7767136b7e86a2ccc649a1be66fc19",
+      "bytes": 653205,
+      "lines": 50000,
+      "samples": [
+        "e 7389373",
+        "non 6257811"
+      ]
+    },
+    "wordfreq-it.csv": {
+      "status": "retrieved",
+      "sha256": "f4ffa8919a96d3691ab89d79306737d8d507524e6dffa4430564a6994abd81e1",
+      "bytes": 698128,
+      "lines": 50001,
+      "samples": [
+        "word,zipf",
+        "di,7.59"
+      ]
+    },
+    "tatoeba-it-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b786f67e4b00dff822e99281b824547c7a857a31d44e0fb7a267ab4eeb5e435c",
+      "bytes": 97002670,
+      "lines": 988826,
+      "samples": [
+        "4369\tita\tDevo andare a dormire.\tPharamp\t\\N\t2010-11-07 19:25:18",
+        "4371\tita\tChe cos'è?\tTRANG\t2008-09-08 09:20:59\t2012-11-01 01:32:51"
+      ]
+    },
+    "tatoeba-it-links-en.tsv": {
+      "status": "retrieved",
+      "sha256": "f4be7867ba1fcfc54c8d5b1dd98953d7cc96055cef8e123f526bf934ddc95170",
+      "bytes": 11602797,
+      "lines": 721852,
+      "samples": [
+        "4369\t1277",
+        "4369\t2047094"
+      ]
+    },
+    "tatoeba-it-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "ecbcc686521ef3a8ca731ee778258815af16308d25b71b0a6ab614c6862db0c6",
+      "bytes": 3762,
+      "lines": 262,
+      "samples": [
+        "4369\t5662",
+        "4371\t5664"
+      ]
+    },
+    "tatoeba-eng-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+      "bytes": 198754998,
+      "lines": 2038719,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+      "bytes": 3739296,
+      "lines": 33223,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "version": 2,
+  "language": "it",
+  "generator": "scripts/lexicon-etl.ts",
+  "sources": [
+    {
+      "id": "kaikki-en",
+      "role": "lexicon",
+      "name": "kaikki.org Wiktextract — Italian (English Wiktionary edition)",
+      "license": "CC-BY-SA-4.0",
+      "citation": "Ylonen, T. (2022). Wiktextract: Wiktionary as Machine-Readable Structured Data. Proceedings of the 13th Conference on Language Resources and Evaluation (LREC), pp. 1395–1403. Data: https://kaikki.org/dictionary/ (Wiktionary, CC BY-SA 4.0 / GFDL).",
+      "url": "https://kaikki.org/dictionary/Italian/kaikki.org-dictionary-Italian.jsonl",
+      "artifactFilename": "kaikki-en-it.jsonl",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "cfb9e823972ed10d0289a1d55afe25d1daa879a742ff37ef457b0bdc289e5e8a",
+        "bytes": 770859636
+      },
+      "notes": "Wiktionary content under CC BY-SA 4.0 (and GFDL); used under CC BY-SA 4.0 with attribution to Wiktionary contributors and kaikki.org. Per-entry provenance is the word|pos key in sourceRefs."
+    },
+    {
+      "id": "kaikki-vi",
+      "role": "gloss-vi",
+      "name": "kaikki.org Wiktextract — Tiếng Ý (Vietnamese Wiktionary edition)",
+      "license": "CC-BY-SA-4.0",
+      "citation": "Ylonen, T. (2022). Wiktextract: Wiktionary as Machine-Readable Structured Data. Proceedings of the 13th Conference on Language Resources and Evaluation (LREC), pp. 1395–1403. Data: https://kaikki.org/dictionary/ (Wiktionary, CC BY-SA 4.0 / GFDL).",
+      "url": "https://kaikki.org/viwiktionary/Ti%E1%BA%BFng%20%C3%9D/kaikki.org-dictionary-Ti%E1%BA%BFng%C3%9D.jsonl",
+      "artifactFilename": "kaikki-vi-it.jsonl",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "8c0a05d8e642101756808999e90d63f416de2e81767e980cceec4000a6e1dda6",
+        "bytes": 970295
+      },
+      "notes": "Vietnamese Wiktionary content under CC BY-SA 4.0; the Vietnamese senses are the primary native glosses. Entries whose sense text only redirects (\"Xem …\") are skipped."
+    },
+    {
+      "id": "frequencywords",
+      "role": "frequency",
+      "name": "FrequencyWords (OpenSubtitles 2018 word frequencies)",
+      "license": "CC-BY-SA-4.0",
+      "citation": "hermitdave/FrequencyWords — word frequency lists derived from OpenSubtitles2018 (content CC BY-SA 4.0, code MIT). https://github.com/hermitdave/FrequencyWords",
+      "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/it/it_50k.txt",
+      "artifactFilename": "frequencywords-it.txt",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "bb96cdcb56d28342c1e909db6b2525448b7767136b7e86a2ccc649a1be66fc19",
+        "bytes": 653205
+      },
+      "notes": "README: \"MIT License for code, CC-by-sa-4.0 for content\". Only the derived counts are used; per-million values are relative to the list total (documented in frequency-stats.json)."
+    },
+    {
+      "id": "wordfreq",
+      "role": "frequency-secondary",
+      "name": "wordfreq 3.1.1 (Zipf frequencies)",
+      "license": "CC-BY-SA-4.0",
+      "citation": "Speer, R. (2022). rspeer/wordfreq: v3.0 (v3.0.2). Zenodo. https://doi.org/10.5281/zenodo.7199437 — data CC BY-SA 4.0 (includes Google Books Ngram and SUBTLEX components; see the package README for their acknowledgements).",
+      "url": "https://pypi.org/project/wordfreq/3.1.1/",
+      "artifactFilename": "wordfreq-it.csv",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "f4ffa8919a96d3691ab89d79306737d8d507524e6dffa4430564a6994abd81e1",
+        "bytes": 698128
+      },
+      "notes": "Exported at acquisition time by scripts/lexicon-etl/export-wordfreq.py from the pinned PyPI package (data CC BY-SA 4.0, code Apache-2.0); the export is `word,zipf` for the top 50,000 words of the `large` list when available. The author discourages dumps that strip attribution — the citation ships in ATTRIBUTIONS.md."
+    },
+    {
+      "id": "tatoeba",
+      "role": "examples",
+      "name": "Tatoeba — ita sentences (detailed export)",
+      "license": "CC-BY-2.0-FR",
+      "citation": "Tatoeba Project — sentences and translation links (CC BY 2.0 FR; per-sentence attribution to contributors). https://tatoeba.org/en/downloads",
+      "url": "https://downloads.tatoeba.org/exports/per_language/ita/ita_sentences_detailed.tsv.bz2",
+      "artifactFilename": "tatoeba-it-sentences.tsv",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "b786f67e4b00dff822e99281b824547c7a857a31d44e0fb7a267ab4eeb5e435c",
+        "bytes": 97002670
+      },
+      "notes": "Sentence text under CC BY 2.0 FR; the detailed export carries the contributor username, recorded per example in derived/tatoeba-credits.json. Audio is never used (per-contributor licences)."
+    },
+    {
+      "id": "tatoeba",
+      "role": "examples",
+      "name": "Tatoeba — ita–eng links",
+      "license": "CC-BY-2.0-FR",
+      "citation": "Tatoeba Project — sentences and translation links (CC BY 2.0 FR; per-sentence attribution to contributors). https://tatoeba.org/en/downloads",
+      "url": "https://downloads.tatoeba.org/exports/per_language/ita/ita-eng_links.tsv.bz2",
+      "artifactFilename": "tatoeba-it-links-en.tsv",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "f4be7867ba1fcfc54c8d5b1dd98953d7cc96055cef8e123f526bf934ddc95170",
+        "bytes": 11602797
+      },
+      "notes": "Sentence text under CC BY 2.0 FR; the detailed export carries the contributor username, recorded per example in derived/tatoeba-credits.json. Audio is never used (per-contributor licences)."
+    },
+    {
+      "id": "tatoeba",
+      "role": "examples",
+      "name": "Tatoeba — ita–vie links",
+      "license": "CC-BY-2.0-FR",
+      "citation": "Tatoeba Project — sentences and translation links (CC BY 2.0 FR; per-sentence attribution to contributors). https://tatoeba.org/en/downloads",
+      "url": "https://downloads.tatoeba.org/exports/per_language/ita/ita-vie_links.tsv.bz2",
+      "artifactFilename": "tatoeba-it-links-vi.tsv",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "ecbcc686521ef3a8ca731ee778258815af16308d25b71b0a6ab614c6862db0c6",
+        "bytes": 3762
+      },
+      "notes": "Sentence text under CC BY 2.0 FR; the detailed export carries the contributor username, recorded per example in derived/tatoeba-credits.json. Audio is never used (per-contributor licences)."
+    },
+    {
+      "id": "tatoeba",
+      "role": "examples",
+      "name": "Tatoeba — eng sentences (detailed export)",
+      "license": "CC-BY-2.0-FR",
+      "citation": "Tatoeba Project — sentences and translation links (CC BY 2.0 FR; per-sentence attribution to contributors). https://tatoeba.org/en/downloads",
+      "url": "https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences_detailed.tsv.bz2",
+      "artifactFilename": "tatoeba-eng-sentences.tsv",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
+        "bytes": 198754998
+      },
+      "notes": "English side of the Tatoeba links (same licence terms)."
+    },
+    {
+      "id": "tatoeba",
+      "role": "examples",
+      "name": "Tatoeba — vie sentences (detailed export)",
+      "license": "CC-BY-2.0-FR",
+      "citation": "Tatoeba Project — sentences and translation links (CC BY 2.0 FR; per-sentence attribution to contributors). https://tatoeba.org/en/downloads",
+      "url": "https://downloads.tatoeba.org/exports/per_language/vie/vie_sentences_detailed.tsv.bz2",
+      "artifactFilename": "tatoeba-vie-sentences.tsv",
+      "retrieval": {
+        "status": "retrieved",
+        "retrievedAt": "2026-10-14",
+        "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
+        "bytes": 3739296
+      },
+      "notes": "Vietnamese side of the Tatoeba links (same licence terms)."
+    }
+  ],
+  "frequencySourceId": "frequencywords",
+  "notes": "Lexicon ETL v2 (P3a) source manifest for it: every artifact is downloaded from its official location by the dispatch-only workflow .github/workflows/lexicon-source.yml (or a developer run of scripts/lexicon-etl.ts fetch), hashed, and pinned here; raw dumps are never committed. A retrieval that does not hash to the pin is source-version drift and extract refuses to run (re-pin deliberately with recon). Declared sources whose download could not be completed stay \"not-retrieved\" with the blocker recorded and can never be cited by a lexeme."
+}

@@ -1,0 +1,1319 @@
+{
+  "source": {
+    "id": "kaikki-en",
+    "sha256": "cfb9e823972ed10d0289a1d55afe25d1daa879a742ff37ef457b0bdc289e5e8a",
+    "url": "https://kaikki.org/dictionary/Italian/kaikki.org-dictionary-Italian.jsonl",
+    "retrievedAt": "2026-10-14"
+  },
+  "generator": "scripts/lib/lexicon-etl/derive.ts",
+  "population": {
+    "definition": "nouns of the frequency population whose kaikki entry carries a gender",
+    "size": 11233
+  },
+  "minCount": 20,
+  "dataDrivenEndings": [
+    {
+      "ending": "o",
+      "total": 4240,
+      "counts": {
+        "masculine": 4213,
+        "feminine": 11,
+        "both": 16
+      }
+    },
+    {
+      "ending": "a",
+      "total": 3391,
+      "counts": {
+        "feminine": 3066,
+        "masculine": 163,
+        "both": 162
+      }
+    },
+    {
+      "ending": "e",
+      "total": 2584,
+      "counts": {
+        "masculine": 1249,
+        "feminine": 1038,
+        "both": 297
+      }
+    },
+    {
+      "ending": "to",
+      "total": 1153,
+      "counts": {
+        "masculine": 1148,
+        "feminine": 1,
+        "both": 4
+      }
+    },
+    {
+      "ending": "ne",
+      "total": 1005,
+      "counts": {
+        "feminine": 716,
+        "masculine": 258,
+        "both": 31
+      }
+    },
+    {
+      "ending": "one",
+      "total": 903,
+      "counts": {
+        "feminine": 672,
+        "both": 9,
+        "masculine": 222
+      }
+    },
+    {
+      "ending": "ta",
+      "total": 724,
+      "counts": {
+        "feminine": 574,
+        "both": 137,
+        "masculine": 13
+      }
+    },
+    {
+      "ending": "io",
+      "total": 694,
+      "counts": {
+        "masculine": 690,
+        "both": 1,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "ia",
+      "total": 623,
+      "counts": {
+        "feminine": 609,
+        "masculine": 11,
+        "both": 3
+      }
+    },
+    {
+      "ending": "no",
+      "total": 605,
+      "counts": {
+        "masculine": 602,
+        "feminine": 1,
+        "both": 2
+      }
+    },
+    {
+      "ending": "re",
+      "total": 571,
+      "counts": {
+        "masculine": 529,
+        "feminine": 22,
+        "both": 20
+      }
+    },
+    {
+      "ending": "na",
+      "total": 379,
+      "counts": {
+        "feminine": 364,
+        "masculine": 13,
+        "both": 2
+      }
+    },
+    {
+      "ending": "ore",
+      "total": 372,
+      "counts": {
+        "masculine": 363,
+        "both": 8,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "lo",
+      "total": 335,
+      "counts": {
+        "masculine": 333,
+        "feminine": 1,
+        "both": 1
+      }
+    },
+    {
+      "ending": "te",
+      "total": 332,
+      "counts": {
+        "feminine": 76,
+        "both": 121,
+        "masculine": 135
+      }
+    },
+    {
+      "ending": "ra",
+      "total": 327,
+      "counts": {
+        "feminine": 315,
+        "both": 4,
+        "masculine": 8
+      }
+    },
+    {
+      "ending": "nto",
+      "total": 319,
+      "counts": {
+        "masculine": 319
+      }
+    },
+    {
+      "ending": "ino",
+      "total": 312,
+      "counts": {
+        "masculine": 312
+      }
+    },
+    {
+      "ending": "le",
+      "total": 285,
+      "counts": {
+        "masculine": 176,
+        "feminine": 56,
+        "both": 53
+      }
+    },
+    {
+      "ending": "co",
+      "total": 284,
+      "counts": {
+        "masculine": 281,
+        "both": 3
+      }
+    },
+    {
+      "ending": "za",
+      "total": 277,
+      "counts": {
+        "feminine": 276,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "ato",
+      "total": 267,
+      "counts": {
+        "masculine": 267
+      }
+    },
+    {
+      "ending": "ro",
+      "total": 267,
+      "counts": {
+        "masculine": 262,
+        "feminine": 3,
+        "both": 2
+      }
+    },
+    {
+      "ending": "tto",
+      "total": 263,
+      "counts": {
+        "masculine": 261,
+        "both": 2
+      }
+    },
+    {
+      "ending": "la",
+      "total": 259,
+      "counts": {
+        "feminine": 242,
+        "masculine": 15,
+        "both": 2
+      }
+    },
+    {
+      "ending": "i",
+      "total": 239,
+      "counts": {
+        "masculine": 157,
+        "feminine": 68,
+        "both": 14
+      }
+    },
+    {
+      "ending": "nte",
+      "total": 236,
+      "counts": {
+        "feminine": 20,
+        "both": 111,
+        "masculine": 105
+      }
+    },
+    {
+      "ending": "ca",
+      "total": 230,
+      "counts": {
+        "feminine": 220,
+        "masculine": 9,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ata",
+      "total": 218,
+      "counts": {
+        "feminine": 215,
+        "masculine": 2,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ina",
+      "total": 217,
+      "counts": {
+        "feminine": 214,
+        "masculine": 2,
+        "both": 1
+      }
+    },
+    {
+      "ending": "à",
+      "total": 203,
+      "counts": {
+        "masculine": 6,
+        "feminine": 197
+      }
+    },
+    {
+      "ending": "tà",
+      "total": 197,
+      "counts": {
+        "feminine": 197
+      }
+    },
+    {
+      "ending": "nza",
+      "total": 189,
+      "counts": {
+        "feminine": 189
+      }
+    },
+    {
+      "ending": "so",
+      "total": 180,
+      "counts": {
+        "masculine": 180
+      }
+    },
+    {
+      "ending": "ità",
+      "total": 168,
+      "counts": {
+        "feminine": 168
+      }
+    },
+    {
+      "ending": "mo",
+      "total": 168,
+      "counts": {
+        "masculine": 168
+      }
+    },
+    {
+      "ending": "tta",
+      "total": 168,
+      "counts": {
+        "feminine": 166,
+        "both": 2
+      }
+    },
+    {
+      "ending": "ale",
+      "total": 165,
+      "counts": {
+        "masculine": 103,
+        "both": 31,
+        "feminine": 31
+      }
+    },
+    {
+      "ending": "sta",
+      "total": 161,
+      "counts": {
+        "feminine": 42,
+        "both": 119
+      }
+    },
+    {
+      "ending": "ico",
+      "total": 141,
+      "counts": {
+        "masculine": 141
+      }
+    },
+    {
+      "ending": "ano",
+      "total": 139,
+      "counts": {
+        "feminine": 1,
+        "masculine": 138
+      }
+    },
+    {
+      "ending": "llo",
+      "total": 139,
+      "counts": {
+        "masculine": 139
+      }
+    },
+    {
+      "ending": "do",
+      "total": 138,
+      "counts": {
+        "masculine": 137,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "rio",
+      "total": 137,
+      "counts": {
+        "masculine": 137
+      }
+    },
+    {
+      "ending": "olo",
+      "total": 134,
+      "counts": {
+        "masculine": 133,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ria",
+      "total": 127,
+      "counts": {
+        "feminine": 126,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "ura",
+      "total": 125,
+      "counts": {
+        "feminine": 125
+      }
+    },
+    {
+      "ending": "ica",
+      "total": 122,
+      "counts": {
+        "feminine": 122
+      }
+    },
+    {
+      "ending": "ma",
+      "total": 122,
+      "counts": {
+        "masculine": 61,
+        "feminine": 61
+      }
+    },
+    {
+      "ending": "gio",
+      "total": 119,
+      "counts": {
+        "masculine": 119
+      }
+    },
+    {
+      "ending": "cio",
+      "total": 106,
+      "counts": {
+        "masculine": 106
+      }
+    },
+    {
+      "ending": "sa",
+      "total": 106,
+      "counts": {
+        "feminine": 104,
+        "both": 2
+      }
+    },
+    {
+      "ending": "ito",
+      "total": 104,
+      "counts": {
+        "masculine": 103,
+        "both": 1
+      }
+    },
+    {
+      "ending": "lla",
+      "total": 102,
+      "counts": {
+        "feminine": 98,
+        "masculine": 4
+      }
+    },
+    {
+      "ending": "ere",
+      "total": 101,
+      "counts": {
+        "masculine": 92,
+        "feminine": 6,
+        "both": 3
+      }
+    },
+    {
+      "ending": "ola",
+      "total": 101,
+      "counts": {
+        "feminine": 95,
+        "masculine": 5,
+        "both": 1
+      }
+    },
+    {
+      "ending": "r",
+      "total": 100,
+      "counts": {
+        "masculine": 81,
+        "both": 16,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "ce",
+      "total": 95,
+      "counts": {
+        "feminine": 58,
+        "masculine": 27,
+        "both": 10
+      }
+    },
+    {
+      "ending": "era",
+      "total": 87,
+      "counts": {
+        "feminine": 86,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "t",
+      "total": 85,
+      "counts": {
+        "masculine": 79,
+        "both": 4,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "cia",
+      "total": 82,
+      "counts": {
+        "feminine": 80,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "da",
+      "total": 81,
+      "counts": {
+        "feminine": 67,
+        "both": 5,
+        "masculine": 9
+      }
+    },
+    {
+      "ending": "go",
+      "total": 81,
+      "counts": {
+        "masculine": 81
+      }
+    },
+    {
+      "ending": "vo",
+      "total": 81,
+      "counts": {
+        "masculine": 81
+      }
+    },
+    {
+      "ending": "zza",
+      "total": 81,
+      "counts": {
+        "feminine": 80,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "er",
+      "total": 78,
+      "counts": {
+        "masculine": 62,
+        "both": 15,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ero",
+      "total": 77,
+      "counts": {
+        "masculine": 76,
+        "both": 1
+      }
+    },
+    {
+      "ending": "lio",
+      "total": 76,
+      "counts": {
+        "masculine": 76
+      }
+    },
+    {
+      "ending": "sso",
+      "total": 70,
+      "counts": {
+        "masculine": 70
+      }
+    },
+    {
+      "ending": "ile",
+      "total": 68,
+      "counts": {
+        "feminine": 6,
+        "both": 11,
+        "masculine": 51
+      }
+    },
+    {
+      "ending": "lia",
+      "total": 68,
+      "counts": {
+        "feminine": 65,
+        "masculine": 2,
+        "both": 1
+      }
+    },
+    {
+      "ending": "smo",
+      "total": 63,
+      "counts": {
+        "masculine": 63
+      }
+    },
+    {
+      "ending": "zo",
+      "total": 62,
+      "counts": {
+        "masculine": 62
+      }
+    },
+    {
+      "ending": "me",
+      "total": 61,
+      "counts": {
+        "masculine": 53,
+        "feminine": 5,
+        "both": 3
+      }
+    },
+    {
+      "ending": "se",
+      "total": 61,
+      "counts": {
+        "masculine": 15,
+        "feminine": 13,
+        "both": 33
+      }
+    },
+    {
+      "ending": "are",
+      "total": 60,
+      "counts": {
+        "masculine": 52,
+        "both": 5,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "tro",
+      "total": 60,
+      "counts": {
+        "masculine": 59,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "va",
+      "total": 59,
+      "counts": {
+        "feminine": 56,
+        "masculine": 3
+      }
+    },
+    {
+      "ending": "ine",
+      "total": 57,
+      "counts": {
+        "masculine": 20,
+        "feminine": 36,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ita",
+      "total": 56,
+      "counts": {
+        "feminine": 45,
+        "both": 6,
+        "masculine": 5
+      }
+    },
+    {
+      "ending": "gia",
+      "total": 55,
+      "counts": {
+        "feminine": 55
+      }
+    },
+    {
+      "ending": "ga",
+      "total": 54,
+      "counts": {
+        "feminine": 47,
+        "both": 3,
+        "masculine": 4
+      }
+    },
+    {
+      "ending": "sto",
+      "total": 54,
+      "counts": {
+        "masculine": 54
+      }
+    },
+    {
+      "ending": "po",
+      "total": 53,
+      "counts": {
+        "masculine": 51,
+        "both": 2
+      }
+    },
+    {
+      "ending": "ivo",
+      "total": 52,
+      "counts": {
+        "masculine": 52
+      }
+    },
+    {
+      "ending": "de",
+      "total": 49,
+      "counts": {
+        "masculine": 13,
+        "both": 12,
+        "feminine": 24
+      }
+    },
+    {
+      "ending": "ice",
+      "total": 49,
+      "counts": {
+        "masculine": 13,
+        "both": 5,
+        "feminine": 31
+      }
+    },
+    {
+      "ending": "n",
+      "total": 48,
+      "counts": {
+        "masculine": 44,
+        "both": 2,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "cco",
+      "total": 47,
+      "counts": {
+        "masculine": 47
+      }
+    },
+    {
+      "ending": "pa",
+      "total": 47,
+      "counts": {
+        "feminine": 46,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "rto",
+      "total": 47,
+      "counts": {
+        "masculine": 46,
+        "both": 1
+      }
+    },
+    {
+      "ending": "si",
+      "total": 47,
+      "counts": {
+        "feminine": 42,
+        "masculine": 4,
+        "both": 1
+      }
+    },
+    {
+      "ending": "s",
+      "total": 45,
+      "counts": {
+        "masculine": 41,
+        "feminine": 2,
+        "both": 2
+      }
+    },
+    {
+      "ending": "uto",
+      "total": 44,
+      "counts": {
+        "masculine": 44
+      }
+    },
+    {
+      "ending": "ana",
+      "total": 43,
+      "counts": {
+        "feminine": 37,
+        "masculine": 5,
+        "both": 1
+      }
+    },
+    {
+      "ending": "imo",
+      "total": 43,
+      "counts": {
+        "masculine": 43
+      }
+    },
+    {
+      "ending": "aio",
+      "total": 42,
+      "counts": {
+        "masculine": 41,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "cca",
+      "total": 42,
+      "counts": {
+        "feminine": 41,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "eo",
+      "total": 42,
+      "counts": {
+        "masculine": 41,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ssa",
+      "total": 41,
+      "counts": {
+        "feminine": 40,
+        "both": 1
+      }
+    },
+    {
+      "ending": "zia",
+      "total": 41,
+      "counts": {
+        "feminine": 41
+      }
+    },
+    {
+      "ending": "zzo",
+      "total": 39,
+      "counts": {
+        "masculine": 39
+      }
+    },
+    {
+      "ending": "ese",
+      "total": 38,
+      "counts": {
+        "masculine": 5,
+        "both": 30,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "bo",
+      "total": 37,
+      "counts": {
+        "masculine": 36,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "nda",
+      "total": 37,
+      "counts": {
+        "feminine": 33,
+        "masculine": 2,
+        "both": 2
+      }
+    },
+    {
+      "ending": "ndo",
+      "total": 37,
+      "counts": {
+        "masculine": 37
+      }
+    },
+    {
+      "ending": "zio",
+      "total": 37,
+      "counts": {
+        "masculine": 37
+      }
+    },
+    {
+      "ending": "fo",
+      "total": 36,
+      "counts": {
+        "masculine": 36
+      }
+    },
+    {
+      "ending": "gno",
+      "total": 35,
+      "counts": {
+        "masculine": 35
+      }
+    },
+    {
+      "ending": "oso",
+      "total": 35,
+      "counts": {
+        "masculine": 35
+      }
+    },
+    {
+      "ending": "hio",
+      "total": 34,
+      "counts": {
+        "masculine": 34
+      }
+    },
+    {
+      "ending": "l",
+      "total": 34,
+      "counts": {
+        "masculine": 29,
+        "both": 3,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "ni",
+      "total": 34,
+      "counts": {
+        "masculine": 23,
+        "feminine": 10,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ba",
+      "total": 33,
+      "counts": {
+        "feminine": 25,
+        "both": 2,
+        "masculine": 6
+      }
+    },
+    {
+      "ending": "nia",
+      "total": 33,
+      "counts": {
+        "feminine": 32,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "dio",
+      "total": 32,
+      "counts": {
+        "masculine": 30,
+        "both": 1,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "eno",
+      "total": 32,
+      "counts": {
+        "masculine": 31,
+        "both": 1
+      }
+    },
+    {
+      "ending": "mia",
+      "total": 32,
+      "counts": {
+        "feminine": 32
+      }
+    },
+    {
+      "ending": "nta",
+      "total": 32,
+      "counts": {
+        "feminine": 30,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "ri",
+      "total": 32,
+      "counts": {
+        "masculine": 28,
+        "both": 1,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "g",
+      "total": 31,
+      "counts": {
+        "masculine": 28,
+        "feminine": 2,
+        "both": 1
+      }
+    },
+    {
+      "ending": "iva",
+      "total": 31,
+      "counts": {
+        "feminine": 30,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "nio",
+      "total": 31,
+      "counts": {
+        "masculine": 31
+      }
+    },
+    {
+      "ending": "rdo",
+      "total": 31,
+      "counts": {
+        "masculine": 31
+      }
+    },
+    {
+      "ending": "gna",
+      "total": 30,
+      "counts": {
+        "feminine": 27,
+        "masculine": 3
+      }
+    },
+    {
+      "ending": "ie",
+      "total": 30,
+      "counts": {
+        "feminine": 22,
+        "both": 3,
+        "masculine": 5
+      }
+    },
+    {
+      "ending": "ono",
+      "total": 30,
+      "counts": {
+        "masculine": 30
+      }
+    },
+    {
+      "ending": "sia",
+      "total": 30,
+      "counts": {
+        "feminine": 28,
+        "both": 1,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "ti",
+      "total": 30,
+      "counts": {
+        "masculine": 27,
+        "feminine": 1,
+        "both": 2
+      }
+    },
+    {
+      "ending": "uta",
+      "total": 30,
+      "counts": {
+        "feminine": 27,
+        "both": 3
+      }
+    },
+    {
+      "ending": "aro",
+      "total": 29,
+      "counts": {
+        "masculine": 29
+      }
+    },
+    {
+      "ending": "m",
+      "total": 29,
+      "counts": {
+        "masculine": 27,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "y",
+      "total": 29,
+      "counts": {
+        "masculine": 22,
+        "both": 2,
+        "feminine": 5
+      }
+    },
+    {
+      "ending": "d",
+      "total": 28,
+      "counts": {
+        "masculine": 24,
+        "feminine": 4
+      }
+    },
+    {
+      "ending": "ena",
+      "total": 28,
+      "counts": {
+        "feminine": 26,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "ido",
+      "total": 28,
+      "counts": {
+        "masculine": 27,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "rno",
+      "total": 28,
+      "counts": {
+        "masculine": 27,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ide",
+      "total": 27,
+      "counts": {
+        "both": 8,
+        "feminine": 12,
+        "masculine": 7
+      }
+    },
+    {
+      "ending": "ea",
+      "total": 26,
+      "counts": {
+        "feminine": 25,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "ite",
+      "total": 26,
+      "counts": {
+        "masculine": 4,
+        "feminine": 19,
+        "both": 3
+      }
+    },
+    {
+      "ending": "ogo",
+      "total": 26,
+      "counts": {
+        "masculine": 26
+      }
+    },
+    {
+      "ending": "ora",
+      "total": 26,
+      "counts": {
+        "feminine": 26
+      }
+    },
+    {
+      "ending": "pe",
+      "total": 26,
+      "counts": {
+        "masculine": 8,
+        "feminine": 14,
+        "both": 4
+      }
+    },
+    {
+      "ending": "fia",
+      "total": 25,
+      "counts": {
+        "feminine": 25
+      }
+    },
+    {
+      "ending": "nna",
+      "total": 25,
+      "counts": {
+        "feminine": 25
+      }
+    },
+    {
+      "ending": "lto",
+      "total": 24,
+      "counts": {
+        "masculine": 24
+      }
+    },
+    {
+      "ending": "ng",
+      "total": 23,
+      "counts": {
+        "feminine": 2,
+        "masculine": 20,
+        "both": 1
+      }
+    },
+    {
+      "ending": "nno",
+      "total": 23,
+      "counts": {
+        "masculine": 23
+      }
+    },
+    {
+      "ending": "rso",
+      "total": 23,
+      "counts": {
+        "masculine": 23
+      }
+    },
+    {
+      "ending": "tra",
+      "total": 23,
+      "counts": {
+        "feminine": 20,
+        "both": 2,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "uro",
+      "total": 23,
+      "counts": {
+        "masculine": 22,
+        "both": 1
+      }
+    },
+    {
+      "ending": "esa",
+      "total": 22,
+      "counts": {
+        "feminine": 22
+      }
+    },
+    {
+      "ending": "ame",
+      "total": 21,
+      "counts": {
+        "masculine": 19,
+        "feminine": 1,
+        "both": 1
+      }
+    },
+    {
+      "ending": "dia",
+      "total": 21,
+      "counts": {
+        "feminine": 21
+      }
+    },
+    {
+      "ending": "mma",
+      "total": 21,
+      "counts": {
+        "feminine": 5,
+        "masculine": 16
+      }
+    },
+    {
+      "ending": "on",
+      "total": 21,
+      "counts": {
+        "masculine": 19,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "sco",
+      "total": 21,
+      "counts": {
+        "masculine": 21
+      }
+    },
+    {
+      "ending": "ima",
+      "total": 20,
+      "counts": {
+        "feminine": 18,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "li",
+      "total": 20,
+      "counts": {
+        "masculine": 14,
+        "both": 3,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "lle",
+      "total": 20,
+      "counts": {
+        "feminine": 11,
+        "masculine": 5,
+        "both": 4
+      }
+    },
+    {
+      "ending": "pia",
+      "total": 20,
+      "counts": {
+        "feminine": 20
+      }
+    }
+  ]
+}
