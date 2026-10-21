@@ -13,6 +13,7 @@
  *   bun scripts/author.ts blueprint                                    → prints the French census the blueprint cites
  *   bun scripts/author.ts selftest --target xx --native en            → emit every step + ingest the committed xx content as if drafted (dry run)
  *   bun scripts/author.ts steps
+ *   bun scripts/author.ts validate --target es                        → full validation with the staged layer applied (what promote faces)
  *   bun scripts/author.ts promote --target es --native vi             → move the staged course layer into content/ once everything validates
  *
  * Staging (P3d): while a course does not exist yet (no content/courses/<id>.json)
@@ -28,10 +29,11 @@ import type { PackSource } from "../content/schema";
 import { buildBundle, writeBundle } from "./lib/authoring/bundle";
 import { collectChecklist, renderChecklist } from "./lib/authoring/checklist";
 import { ingestStep } from "./lib/authoring/ingest";
-import { listStaged, promote, stagedRoot, withStaging } from "./lib/authoring/staging";
+import { isGeneratedDrift, listStaged, promote, stagedRoot, withStaging } from "./lib/authoring/staging";
 import { lintCourse, renderLintReport } from "./lib/authoring/lint";
 import { STEP_IDS, STEPS, stepDef, type StepId } from "./lib/authoring/steps";
-import { readJson, safeResolve, validateContent } from "./lib/pipeline";
+import { validateAllSources } from "./lib/compile-artifacts";
+import { readJson, safeResolve } from "./lib/pipeline";
 
 function fail(msg: string): never {
   console.error(`ERROR: ${msg}`);
@@ -184,9 +186,15 @@ if (command === "steps") {
   }
   if (failures > 0) fail(`selftest: ${failures} record(s) failed the round trip`);
   console.log(`selftest ok: every committed ${target} record round-trips through its step schema`);
+} else if (command === "validate") {
+  // Full repository validation with the staged layer applied (read-only): what promote would face.
+  const target = opt("target") ?? fail("--target <code>");
+  const errors = withStaging(target, () => validateAllSources()).filter((e) => !isGeneratedDrift(e));
+  for (const e of errors) console.log(`  ${e}`);
+  console.log(`validate ${target} (staged): ${errors.length} error(s) besides generated-artifact drift`);
 } else if (command === "promote") {
   const target = opt("target") ?? fail("--target <code>");
-  const result = promote(target, () => validateContent().errors);
+  const result = promote(target, () => validateAllSources());
   if (result.errors.length > 0) {
     for (const e of result.errors.slice(0, 40)) console.error(`  ${e}`);
     fail(`promote ${target}: ${result.errors.length} validator error(s) with the staged layer applied — nothing moved`);
@@ -194,10 +202,10 @@ if (command === "steps") {
   console.log(`promote ${target}: moved ${result.moved.length} file(s) into content/ — compiling`);
   const compile = Bun.spawnSync(["bun", "scripts/compile-content.ts"], { stdout: "inherit", stderr: "inherit" });
   if (compile.exitCode !== 0) fail(`promote ${target}: content:compile failed after the move — fix, then run bun run content:compile`);
-  const after = validateContent();
-  if (after.errors.length > 0) {
-    for (const e of after.errors.slice(0, 40)) console.error(`  ${e}`);
-    fail(`promote ${target}: ${after.errors.length} validator error(s) after compile`);
+  const after = validateAllSources();
+  if (after.length > 0) {
+    for (const e of after.slice(0, 40)) console.error(`  ${e}`);
+    fail(`promote ${target}: ${after.length} validator error(s) after compile`);
   }
   console.log(`promote ${target}: compiled and validated — commit content/ and src/content/`);
 } else {
