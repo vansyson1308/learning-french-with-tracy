@@ -91,11 +91,16 @@
       }
     },
     "ja-en": {
-      "policy": "device-tts",
+      "policy": "generated",
       "language": "ja",
-      "reason": "rhasspy/piper-voices v1.0.0 ships no Japanese voice; the legacy recordings have no traceable license, so the course uses the device's own Japanese text-to-speech voice (expo-speech) instead of bundled audio.",
+      "voiceId": "kokoro-jf_alpha",
+      "candidates": [
+        "kokoro-jf_alpha",
+        "melotts-ja",
+        "kokoro-jm_kumo"
+      ],
       "voiceCast": {
-        "A": null,
+        "A": "kokoro-jf_alpha",
         "B": null
       }
     },
@@ -653,29 +658,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/jf_alpha.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "1bf4c9dc69e45ee46183b071f4db766349aac5592acbcfeaf051018048a5d787",
+          "bytes": 523425
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-jm_kumo",
@@ -686,29 +691,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/jm_kumo.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "98340afd68b1cee84fe0cd95528cfa6d4b39e416aa75a9df64049d52c8b55896",
+          "bytes": 523425
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "melotts-ja",
@@ -719,24 +724,24 @@
       "files": {
         "checkpoint": {
           "path": "checkpoint.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "96ae783e6ec0177aa810e2a645aec5d136a6f4992fdea26ee92b7b04d9688ad0",
+          "bytes": 207860748
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "207def0d31bf7623e20f4a5e690f217747661bf495319c0139303122b6debcc3",
+          "bytes": 3431
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "63f3b23befdef4149208bef067f24de11d1932fa61898156928ee5644ae8de29",
+          "bytes": 4412
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT"
     },
     {
       "id": "melotts-zh",

@@ -234,7 +234,7 @@
       "castNote": "A=kokoro-pm_alex (Kokoro voice pack pm_alex); B=kokoro-pf_dora: different speaker (Kokoro voice pack pf_dora), other gender (female vs male), mean WER/CER 0.1863 ≤ 0.6"
     },
     "ja": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "kokoro-jf_alpha",
@@ -250,11 +250,34 @@
         }
       ],
       "cast": {
-        "A": null,
+        "A": "kokoro-jf_alpha",
         "B": null
       },
-      "canary": null,
-      "reason": "no Piper Japanese voice exists; Kokoro ja (Apache-2.0, grade C+) and MeloTTS-JP (MIT) are compared by the SenseVoice/Whisper canary"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/ja/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-jf_alpha",
+            "clips": 24,
+            "meanWer": 0.2532,
+            "technicalFailures": 1
+          },
+          {
+            "voiceId": "melotts-ja",
+            "clips": 24,
+            "meanWer": 0.2889,
+            "technicalFailures": 1
+          },
+          {
+            "voiceId": "kokoro-jm_kumo",
+            "clips": 24,
+            "meanWer": 0.4254,
+            "technicalFailures": 1
+          }
+        ]
+      },
+      "castNote": "A=kokoro-jf_alpha (Kokoro voice pack jf_alpha); no second voice: no other candidate is a verified different speaker within the floor; skipped melotts-ja (1 technical failure(s)), kokoro-jm_kumo (1 technical failure(s))"
     },
     "zh": {
       "status": "selected",

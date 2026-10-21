@@ -149,6 +149,17 @@ Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 
 > Selected by the audio canary ASR audit (mean WER/CER 0.1701 over 24 sampled strings, 0 technical failures). Model weights are never committed.
 
+## Kokoro-82M voice kokoro-jf_alpha
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jf_alpha.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.2532 over 24 sampled strings, 1 technical failures). Model weights are never committed.
+
 ## Kokoro-82M voice kokoro-pf_dora
 
 - **License:** Apache-2.0
