@@ -13,6 +13,7 @@ import type { PackSource } from "../../../content/schema";
 import { validateTarget } from "../compile-artifacts";
 import { loadPacks, readJson, safeResolve } from "../pipeline";
 
+import { beforeWrite, isGeneratedDrift } from "./staging";
 import { stepDef, type StepId } from "./steps";
 
 export type IngestRow = { line: number; id: string; ok: boolean; reasons: string[] };
@@ -25,6 +26,7 @@ function loadDoc(rel: string, fallback: Doc): Doc {
 }
 function writeDoc(rel: string, doc: Doc, written: string[], dryRun: boolean): void {
   if (dryRun) return;
+  beforeWrite(rel);
   mkdirSync(safeResolve(rel, ".."), { recursive: true });
   writeFileSync(safeResolve(rel), `${JSON.stringify(doc, null, 2)}\n`);
   written.push(rel);
@@ -55,10 +57,19 @@ export function applyRecords(step: StepId, lang: string, native: string, courseI
       const attRel = `content/${lang}/assessment/attainment.json`;
       if (!existsSync(safeResolve(attRel))) {
         const frAtt = existsSync(safeResolve("content/fr/assessment/attainment.json")) ? (readJson("content/fr/assessment/attainment.json") as Doc) : {};
-        const essentials = (doc.objectives as { id: string; essential?: boolean; category: string; cefrAlignments: { level: string; relation: string }[] }[]).filter((o) => o.essential);
-        const byDomain: Record<string, string[]> = {};
-        for (const o of essentials) if (o.cefrAlignments.some((a) => a.relation === "direct" && a.level === "A1")) (byDomain[o.category] ??= []).push(o.id);
-        writeDoc(attRel, { ...frAtt, language: lang, domains: byDomain }, written, dryRun);
+        const objectives = doc.objectives as { id: string; essential?: boolean; category: string; cefrAlignments: { level: string; relation: string }[] }[];
+        const directA1 = objectives.filter((o) => o.cefrAlignments.some((a) => a.relation === "direct" && a.level === "A1"));
+        const domains = ["spoken_reception", "written_reception", "spoken_production", "written_production", "interaction"].map((domain) => {
+          const required = directA1.filter((o) => o.category === domain && o.essential).map((o) => o.id);
+          const excluded = directA1.filter((o) => o.category === domain && !o.essential).map((o) => o.id);
+          return {
+            domain,
+            requiredObjectiveIds: required,
+            excludedObjectiveIds: excluded.map((objectiveId) => ({ objectiveId, reason: "Direct at A1 but authored as non-essential: practised and reported on its own, not required for the estimate. Review this reason before promote." })),
+            rationale: `Scaffolded by the authoring toolkit from the essential objectives aligned directly to an A1 scale in ${domain}. Review against the checkpoints before promote.`,
+          };
+        });
+        writeDoc(attRel, { ...frAtt, language: lang, domains }, written, dryRun);
       }
       break;
     }
@@ -170,14 +181,74 @@ export function applyRecords(step: StepId, lang: string, native: string, courseI
       writeDoc(target, doc, written, dryRun);
       break;
     }
+    case "lexicon-add": {
+      const doc = loadDoc(target, { ...base, lexemes: [] });
+      const lexemes = doc.lexemes as Doc[];
+      const frozenRel = `content/${lang}/lexemes.json`;
+      const frozen = loadDoc(frozenRel, {}) as Record<string, string>;
+      const usedIds = new Set([...Object.values(frozen), ...lexemes.map((l) => l.id as string)]);
+      const surfaces = new Set(lexemes.map((l) => l.surface as string));
+      const poolRel = `content/${lang}/lexicon/derived/candidate-pool.json`;
+      type PoolEntry = { lemma: string; partOfSpeech: string; sourcePos: string; ipa?: string | null; frequency?: { perMillion: number; rank: number; band: string } | null };
+      const pool = existsSync(safeResolve(poolRel)) ? ((readJson(poolRel) as { entries: PoolEntry[] }).entries ?? []) : [];
+      const ARTICLE: Record<string, Record<string, string>> = { es: { masculine: "el", feminine: "la" }, it: { masculine: "il", feminine: "la" }, pt: { masculine: "o", feminine: "a" }, de: { masculine: "der", feminine: "die", neuter: "das" } };
+      const slugOf = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ñ/g, "n").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      for (const rec of records as { lemma: string; partOfSpeech: string; poolPos?: string; surface?: string; gender?: string; glossEn: string; glossVi: string; topic: string; examples: { target: string; en: string; vi: string }[] }[]) {
+        const surface = rec.surface ?? (rec.partOfSpeech === "noun" && rec.gender && ARTICLE[lang]?.[rec.gender] ? `${ARTICLE[lang][rec.gender]} ${rec.lemma}` : rec.lemma);
+        if (surfaces.has(surface)) throw new Error(`${surface}: already in ${target} — use lexicon-review to change it`);
+        const base0 = slugOf(rec.lemma.normalize("NFC").replace(/ñ/g, "n")) || "w";
+        let id = `${lang}:w:${base0}`;
+        for (const v of [id, `${lang}:w:${base0}-${rec.partOfSpeech}`]) if (!usedIds.has(v)) { id = v; break; }
+        let n = 2;
+        while (usedIds.has(id)) id = `${lang}:w:${base0}-${rec.partOfSpeech}-${n++}`;
+        usedIds.add(id);
+        surfaces.add(surface);
+        const ev = pool.find((e) => e.lemma === rec.lemma && e.partOfSpeech === (rec.poolPos ?? rec.partOfSpeech));
+        const sourceRefs: { source: string; key?: string }[] = [];
+        if (ev) sourceRefs.push({ source: "kaikki-en", key: `${ev.lemma}|${ev.sourcePos}` });
+        if (ev?.frequency) sourceRefs.push({ source: "frequencywords", key: ev.lemma });
+        sourceRefs.push({ source: "original-lexicon-etl" });
+        lexemes.push({
+          id,
+          surface,
+          lemma: rec.lemma,
+          lookupForm: rec.lemma,
+          partOfSpeech: rec.partOfSpeech,
+          ...(rec.partOfSpeech === "noun" ? { gender: rec.gender } : {}),
+          glosses: { en: rec.glossEn, [native]: rec.glossVi },
+          ...(ev?.ipa ? { pronunciation: { value: ev.ipa, notation: "ipa", source: "kaikki-en" } } : {}),
+          ...(ev?.frequency ? { frequency: { source: "frequencywords", rawValue: ev.frequency.perMillion, rank: ev.frequency.rank, band: ev.frequency.band } } : {}),
+          topic: rec.topic,
+          examples: rec.examples.map((x) => ({ target: x.target, translations: { en: x.en, [native]: x.vi }, source: "original-lexicon-etl", key: "add" })),
+          sourceRefs,
+        });
+        frozen[surface] = id;
+      }
+      writeDoc(target, doc, written, dryRun);
+      writeDoc(frozenRel, frozen as Doc, written, dryRun);
+      break;
+    }
     case "lexicon-review": {
       const doc = loadDoc(target, { ...base, lexemes: [] });
       const lexemes = doc.lexemes as { id: string; glosses: Record<string, string>; examples: { translations: Record<string, string> }[]; relations?: { confusables: string[] }; sourceRefs: { source: string }[] }[];
-      for (const rec of records as { id: string; glossVi: string; exampleTranslationsVi: string[]; confusables?: string[] }[]) {
-        const lex = lexemes.find((l) => l.id === rec.id);
+      for (const rec of records as { id: string; glossVi: string; exampleTranslationsVi: string[]; confusables?: string[]; dropExamples?: number[]; partOfSpeech?: string; addExamples?: { target: string; en: string; vi: string }[] }[]) {
+        const lex = lexemes.find((l) => l.id === rec.id) as ((typeof lexemes)[number] & { partOfSpeech?: string }) | undefined;
         if (!lex) throw new Error(`${rec.id}: not in ${target}`);
         lex.glosses = { ...lex.glosses, [native]: rec.glossVi };
-        lex.examples = lex.examples.map((ex, i) => (rec.exampleTranslationsVi[i] ? { ...ex, translations: { ...ex.translations, [native]: rec.exampleTranslationsVi[i] } } : ex));
+        if (rec.partOfSpeech) {
+          lex.partOfSpeech = rec.partOfSpeech;
+          // Grammatical gender is a noun property (lexicon validator): a corrected non-noun drops it.
+          if (rec.partOfSpeech !== "noun") delete (lex as { gender?: string }).gender;
+        }
+        if (rec.dropExamples && rec.dropExamples.length > 0) {
+          const drop = new Set(rec.dropExamples);
+          for (const i of drop) if (i >= lex.examples.length) throw new Error(`${rec.id}: dropExamples index ${i} out of range (${lex.examples.length} examples)`);
+          lex.examples = lex.examples.filter((_, i) => !drop.has(i));
+        }
+        if (rec.exampleTranslationsVi.length !== lex.examples.length) throw new Error(`${rec.id}: ${rec.exampleTranslationsVi.length} Vietnamese translation(s) for ${lex.examples.length} kept example(s)`);
+        lex.examples = lex.examples.map((ex, i) => ({ ...ex, translations: { ...ex.translations, [native]: rec.exampleTranslationsVi[i] } }));
+        for (const add of rec.addExamples ?? []) lex.examples.push({ target: add.target, translations: { en: add.en, [native]: add.vi }, source: "original-lexicon-etl", key: "review" } as (typeof lex.examples)[number]);
+        if (lex.examples.length === 0) throw new Error(`${rec.id}: no example left — keep one or add an original example`);
         if (rec.confusables) lex.relations = rec.confusables.length > 0 ? { confusables: [...rec.confusables].sort() } : undefined;
       }
       // Symmetry of confusables is a validator rule; make reviewed pairs symmetric here.
@@ -232,7 +303,8 @@ export function ingestStep(step: StepId, lang: string, native: string, courseId:
     if (!dryRun) {
       const packs = loadPacks();
       const all = validateTarget(lang, packs);
-      validatorErrors = all.filter((e) => def.validatorPrefixes.some((p) => e.toLowerCase().startsWith(p)) || e.includes(courseId));
+      // Generated-artifact drift is resolved by content:compile (after promote), not by editing records.
+      validatorErrors = all.filter((e) => !isGeneratedDrift(e)).filter((e) => def.validatorPrefixes.some((p) => e.toLowerCase().startsWith(p)) || e.includes(courseId));
     }
   }
   const passed = rows.filter((r) => r.ok).length;

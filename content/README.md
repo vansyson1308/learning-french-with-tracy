@@ -222,7 +222,18 @@ deterministic validators and a native review must approve before compile:
    `review: { native, date }` or `allowUnreviewed: true` together with an
    entry naming the course in `release/KNOWN_LIMITATIONS.md` (beta content
    ships honestly, never silently).
-6. `bun scripts/author.ts selftest --target xx --native en` proves the
+6. **Staging (P3d).** While a course is being built (no
+   `content/courses/<id>.json` yet, or `content/<lang>/_drafts/staged/`
+   exists), `ingest` writes every authored file under
+   `content/<lang>/_drafts/staged/<repo path>` instead of `content/`, and
+   `emit` / `ingest` / `lint` / `checklist` see the staged layer overlaid on
+   the real tree for the duration of the command (the real tree is restored
+   byte for byte). The repository therefore stays green between sessions
+   even though objectives, lessons, checkpoints and placement only validate
+   together. `bun scripts/author.ts promote --target <lang>` moves the layer
+   into `content/` once the whole repository validates with it; then run
+   `bun run content:compile`. `--direct` writes straight into `content/`.
+7. `bun scripts/author.ts selftest --target xx --native en` proves the
    toolkit end-to-end on the synthetic language (every committed record
    round-trips through its step schema). `_drafts/` folders are committed
    (they are not part of the app bundle); the `xx` self-test output is ignored.
