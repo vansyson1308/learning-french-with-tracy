@@ -103,9 +103,11 @@ jobs:
           bun run release:identity
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add app.json release/identity.json
-          git commit -m "EAS: record the owner's EAS project id (eas init --account $ACCOUNT)" -m "Written by eas-build.yml run $GITHUB_RUN_ID. Store distribution stays blocked."
-          git push origin HEAD:"${GITHUB_REF#refs/heads/}"
+          printf '%s\n' "EAS: record the owner's EAS project id (eas init --account $ACCOUNT)" "" \
+            "Written by eas-build.yml run $GITHUB_RUN_ID. Store distribution stays blocked." > /tmp/commit-msg.txt
+          # Gated commit (scripts/ci/bot-commit.sh): goldens, tests, content and audio checks first.
+          bash scripts/ci/bot-commit.sh --branch "${GITHUB_REF#refs/heads/}" --message /tmp/commit-msg.txt \
+            --reason "eas-build.yml init run $GITHUB_RUN_ID" -- app.json release/identity.json
           {
             echo "## EAS project"
             echo "- account: $ACCOUNT"

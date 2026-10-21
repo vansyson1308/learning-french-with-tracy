@@ -27,3 +27,5 @@ Owner actions:
 - Nothing blocking. After the merge the session dispatches the runs; if a run fails on a model download (Hugging Face rate limits), re-dispatch `Audio pipeline (v2)` with the same inputs.
 - Optional: listen to the canary artifacts of ja/zh/ko (run artifact `audio-<lang>-canary-all`) before the first generate for those languages (P4b+).
 Next: P3c (authoring toolkit) can assume: `scripts/audio.ts plan --layer lexicon` voices every lexicon surface/example; `voice-casts.json` is the voice cast of record per language; `content/<lang>/reception/audio-canary.json` exists for every target; the manifest v2 shape for any new reception language.
+
+> **Correction (P3c, 2026-10-21).** SenseVoice is used for zh/ja/ko only. SenseVoiceSmall has no Vietnamese, so the 2026-10-14 vi canary scored WER 1.0 on Chinese filler; Vietnamese is now audited with Whisper. The German cast B (thorsten-medium) was the same reader as A; the cast rule now requires a different speaker, and B is kerstin-low.

@@ -48,6 +48,14 @@ itself.
   the app, and the app makes no network requests of its own.
 - No accounts, no sync: progress lives on the device; backup is a manual
   export/import file.
+- **Vietnamese-native courses ship as reviewed or explicitly unreviewed
+  (P3c review gate).** `fr-vi` compiles with `allowUnreviewed: true` in
+  `content/courses/fr-vi.profile.json` because its Vietnamese text is still
+  pending native review (entry above); the gate refuses any other
+  Vietnamese-native course until a reviewer signs
+  `review: { native, date }` or the owner records the same explicit
+  exception here. `content/fr/REVIEW-CHECKLIST.md` (3,217 strings) is the
+  reviewer's list for `fr-vi`.
 - **Audio for the non-French languages is produced by dispatched runs
   (P3b).** The multi-engine pipeline, the licence gate, the per-language
   canaries and the voice casts are in the repository; the canary runs for

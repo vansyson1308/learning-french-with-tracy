@@ -25,7 +25,7 @@
 import { execFileSync } from "child_process";
 import { createWriteStream, existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "fs";
 import path from "path";
-import { Readable } from "stream";
+import { Readable, Transform } from "stream";
 import { pipeline } from "stream/promises";
 
 import { SourceManifestV2Schema, type SourceManifestV2 } from "../content/schema";
@@ -67,12 +67,41 @@ function loadManifest(): SourceManifestV2 | null {
   return parsed.data;
 }
 
+/** Abort a transfer that delivers no byte for this long (a stalled download held the ko run for 3 h). */
+const DOWNLOAD_IDLE_MS = 120_000;
+const DOWNLOAD_ATTEMPTS = 3;
+
 async function download(url: string, out: string): Promise<void> {
-  const res = await fetch(url, { redirect: "follow" });
-  if (!res.ok || !res.body) fail(`${url} → HTTP ${res.status}`);
   const tmp = `${out}.part`;
-  await pipeline(Readable.fromWeb(res.body as never), createWriteStream(tmp));
-  renameSync(tmp, out);
+  for (let attempt = 1; attempt <= DOWNLOAD_ATTEMPTS; attempt++) {
+    const ac = new AbortController();
+    let timer = setTimeout(() => ac.abort(new Error(`no data for ${DOWNLOAD_IDLE_MS / 1000} s`)), DOWNLOAD_IDLE_MS);
+    const touch = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => ac.abort(new Error(`no data for ${DOWNLOAD_IDLE_MS / 1000} s`)), DOWNLOAD_IDLE_MS);
+    };
+    try {
+      const res = await fetch(url, { redirect: "follow", signal: ac.signal });
+      if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
+      const watch = new Transform({
+        transform(chunk, _enc, cb) {
+          touch();
+          cb(null, chunk);
+        },
+      });
+      await pipeline(Readable.fromWeb(res.body as never), watch, createWriteStream(tmp));
+      renameSync(tmp, out);
+      return;
+    } catch (e) {
+      rmSync(tmp, { force: true });
+      const why = (e as Error).message;
+      if (attempt === DOWNLOAD_ATTEMPTS) fail(`${url}: download failed after ${DOWNLOAD_ATTEMPTS} attempts — ${why}`);
+      console.warn(`${url}: attempt ${attempt} failed (${why}) — retrying`);
+      await Bun.sleep(attempt * 10_000);
+    } finally {
+      clearTimeout(timer);
+    }
+  }
 }
 
 function decompress(spec: SourceSpec, downloaded: string, target: string): void {
@@ -82,7 +111,6 @@ function decompress(spec: SourceSpec, downloaded: string, target: string): void 
     rmSync(downloaded);
   } else if (spec.decompress === "bzip2") {
     // bzip2 is not in Bun's zlib; the CLI exists on the runner (ubuntu) and in Git Bash.
-    execFileSync("bzip2", ["-dc", downloaded], { maxBuffer: 1 << 30, stdio: ["ignore", "pipe", "inherit"] });
     const out = execFileSync("bzip2", ["-dc", downloaded], { maxBuffer: 1 << 30 });
     writeFileSync(target, out);
     rmSync(downloaded);

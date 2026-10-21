@@ -26,6 +26,8 @@ export function sha256File(p: string): { sha256: string; bytes: number } {
 
 /** Extract "Dataset: X" / license mentions from a Piper MODEL_CARD. */
 export function parseModelCard(text: string): { dataset: string | null; license: string | null } {
+  const fm = frontMatterLicense(text);
+  if (fm !== null) return { dataset: null, license: `license: ${fm}` };
   const dataset =
     text.match(/^\s*\*?\s*Dataset:\s*(.+)$/im)?.[1]?.trim() ??
     text.match(/^\s*Dataset\s*[-—:]\s*(.+)$/im)?.[1]?.trim() ??
@@ -44,9 +46,21 @@ export type GateVerdict = { ok: boolean; matched: string | null; reason: string 
  * card substring check once matched "NC" inside "French"). Deny tokens
  * match on token boundaries; allow entries match spelling-normalized.
  */
+/** The `license:` value of a YAML front matter (Hugging Face model cards), when the card starts with one. */
+export function frontMatterLicense(cardText: string): string | null {
+  const m = /^---\s*\n([\s\S]*?)\n---/.exec(cardText);
+  if (!m) return null;
+  const line = m[1].split("\n").find((l) => /^license:\s*\S/.test(l.trim()));
+  return line ? line.trim().replace(/^license:\s*/, "").replace(/^["']|["']$/g, "") : null;
+}
+
 export function licenseGate(gate: LicenseGate, cardText: string): GateVerdict {
   const { dataset, license } = parseModelCard(cardText);
-  const haystack = [dataset ?? "", license ?? ""].join("\n");
+  // A machine-readable front-matter licence is the statement of record: the
+  // gate reads it alone (the prose may legitimately say "free for commercial
+  // and non-commercial use" — not a restriction).
+  const frontMatter = frontMatterLicense(cardText);
+  const haystack = frontMatter !== null ? frontMatter : [dataset ?? "", license ?? ""].join("\n");
   if (haystack.trim().length === 0) {
     return { ok: false, matched: null, reason: "MODEL_CARD carries no parseable dataset/license line" };
   }

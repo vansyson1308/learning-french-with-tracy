@@ -29,6 +29,7 @@ import {
   lexemeMapSchema,
   type PackSource,
   type SourceRegistry,
+  CourseProfileOverrideSchema,
 } from "../../content/schema";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 
@@ -154,7 +155,7 @@ export function isEvidenceOnlyLanguageDir(code: string): boolean {
   // Evidence only: lexicon pools without authored lexemes, and/or the audio
   // pipeline's reception canary / voice manifest without authored
   // listening or reading sources (P3b).
-  if (entries.some((e) => e !== "lexicon" && e !== "reception")) return false;
+  if (entries.some((e) => e !== "lexicon" && e !== "reception" && e !== "_drafts")) return false;
   if (existsSync(path.join(root, "lexicon", "lexemes.json"))) return false;
   if (existsSync(path.join(root, "reception", "listening.json")) || existsSync(path.join(root, "reception", "reading.json"))) return false;
   return true;
@@ -439,6 +440,23 @@ export function validateContent(): ValidationResult {
             }
           });
         }
+  }
+
+  // P3c review gate: authored / translated courses (native language other
+  // than the original English) must be signed off by a native reviewer or
+  // explicitly allowed unreviewed with a KNOWN_LIMITATIONS entry.
+  const knownLimitations = existsSync(safeResolve("release/KNOWN_LIMITATIONS.md")) ? readFileSync(safeResolve("release/KNOWN_LIMITATIONS.md"), "utf8") : "";
+  for (const { courseId, pack } of packs) {
+    if (pack.testOnly || pack.nativeCode === "en") continue;
+    const rel = `content/courses/${courseId}.profile.json`;
+    const profile = existsSync(safeResolve(rel)) ? CourseProfileOverrideSchema.safeParse(readJson(rel)) : null;
+    const data = profile?.success ? profile.data : null;
+    if (profile && !profile.success) err(`${courseId}: ${rel} is invalid — ${profile.error.issues[0]?.message}`);
+    else if (!data?.review && data?.allowUnreviewed !== true) {
+      err(`${courseId}: no native review recorded — add review {native, date} to ${rel} after the REVIEW-CHECKLIST pass, or allowUnreviewed: true with a release/KNOWN_LIMITATIONS.md entry naming ${courseId}`);
+    } else if (!data?.review && data?.allowUnreviewed === true && !knownLimitations.includes(courseId)) {
+      err(`${courseId}: allowUnreviewed requires an entry naming the course in release/KNOWN_LIMITATIONS.md`);
+    }
   }
 
   // Every language folder needs at least one course — except an

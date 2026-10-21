@@ -9,7 +9,8 @@ ever shipped. Runs only inside the dispatch-only audio workflow.
 
 Recognisers (content/audio/engines.json → asr):
   whisper     faster-whisper (default; --model base for canaries, medium for shipped clips)
-  sensevoice  FunASR SenseVoiceSmall — zh / ja / ko / vi (plan/06 §3); Whisper stays the fallback
+  sensevoice  FunASR SenseVoiceSmall — zh / ja / ko only (plan/06 §3; the model knows zh/yue/en/ja/ko,
+              fed Vietnamese it emits Chinese filler — vi audits with Whisper); Whisper stays the fallback
 
 Language rules are NOT re-implemented here: the plan written by
 `scripts/audio.ts plan` carries the language and the build plugin's
@@ -29,9 +30,10 @@ import os
 import re
 import sys
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor
 
 CER_LANGUAGES = {"ja", "zh"}
-SENSEVOICE_LANGUAGES = {"zh", "ja", "ko", "vi"}
+SENSEVOICE_LANGUAGES = {"zh", "ja", "ko"}
 LEGACY_NORMALIZATION = {"ligatures": {"œ": "oe", "æ": "ae", "ß": "ss"}, "apostropheSplit": True, "wordChars": "a-zà-ÿ0-9", "whisperLanguage": None}
 
 
@@ -67,13 +69,16 @@ def edit_rate(ref: list[str], hyp: list[str]) -> float:
 
 
 class WhisperRecognizer:
-    def __init__(self, model: str):
+    def __init__(self, model: str, workers: int = 1):
         from faster_whisper import WhisperModel, decode_audio  # workflow-only dependency
         import numpy as np
 
         self.np = np
         self.decode_audio = decode_audio
-        self.model = WhisperModel(model, device="cpu", compute_type="int8")
+        # num_workers > 1 lets transcribe() run truly in parallel from several threads;
+        # the CPU threads are split between them. Each clip's result does not depend on the others.
+        threads = max(1, (os.cpu_count() or 2) // max(1, workers))
+        self.model = WhisperModel(model, device="cpu", compute_type="int8", cpu_threads=threads, num_workers=max(1, workers))
         self.name = f"faster-whisper:{model}"
         self.rate = 16000
 
@@ -85,7 +90,7 @@ class WhisperRecognizer:
 
 
 class SenseVoiceRecognizer:
-    LANG = {"zh": "zh", "ja": "ja", "ko": "ko", "vi": "auto", "en": "en"}
+    LANG = {"zh": "zh", "ja": "ja", "ko": "ko", "en": "en"}
 
     def __init__(self, model: str, hub: str):
         from funasr import AutoModel  # workflow-only dependency
@@ -111,6 +116,7 @@ def main() -> int:
     ap.add_argument("--model", default="medium", help="whisper model size (base for canaries)")
     ap.add_argument("--lead-silence", type=float, default=1.0)
     ap.add_argument("--tail-silence", type=float, default=0.5)
+    ap.add_argument("--workers", type=int, default=2, help="parallel Whisper transcriptions (SenseVoice stays sequential)")
     args = ap.parse_args()
 
     with open(args.plan, "r", encoding="utf-8") as f:
@@ -130,17 +136,39 @@ def main() -> int:
         sv = engines_doc.get("sensevoice", {})
         recognizer = SenseVoiceRecognizer(sv.get("model", "FunAudioLLM/SenseVoiceSmall"), sv.get("modelHub", "hf"))
     else:
-        recognizer = WhisperRecognizer(args.model)
+        recognizer = WhisperRecognizer(args.model, args.workers)
 
     metric = "cer" if language in CER_LANGUAGES else "wer"
+    # One transcription per unique asset (an asset key hashes voice + speaker + text,
+    # so clips sharing it are the same audio); results are written in plan order.
+    unique = {}
+    for clip in plan["clips"]:
+        if clip["assetKey"] not in unique and os.path.exists(os.path.join(args.outdir, clip["assetKey"] + ".mp3")):
+            unique[clip["assetKey"]] = clip
+    done = [0]
+
+    def work(item):
+        key, clip = item
+        hyp = recognizer.transcribe(os.path.join(args.outdir, key + ".mp3"), whisper_lang if engine == "whisper" else clip.get("language", language), args.lead_silence, args.tail_silence)
+        done[0] += 1
+        if done[0] % 100 == 0:
+            print(f"… transcribed {done[0]}/{len(unique)} assets", flush=True)
+        return key, hyp
+
+    workers = args.workers if engine == "whisper" else 1
+    if workers > 1:
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            hyps = dict(pool.map(work, unique.items()))
+    else:
+        hyps = dict(work(item) for item in unique.items())
+
     results = {}
     for clip in plan["clips"]:
-        path = os.path.join(args.outdir, clip["assetKey"] + ".mp3")
         clip_lang = clip.get("language", language)
-        if not os.path.exists(path):
+        hyp = hyps.get(clip["assetKey"])
+        if hyp is None:
             results[clip["clipId"]] = {"text": "", "wer": 1.0, "metric": metric, "engine": recognizer.name}
             continue
-        hyp = recognizer.transcribe(path, whisper_lang if engine == "whisper" else clip_lang, args.lead_silence, args.tail_silence)
         score = edit_rate(normalize(clip["text"], clip_lang, spec), normalize(hyp, clip_lang, spec))
         results[clip["clipId"]] = {"text": hyp, "wer": round(score, 4), "metric": metric, "model": recognizer.name, "engine": engine}
         print(f"{clip['clipId']}: {metric}={score:.3f} :: {hyp}")

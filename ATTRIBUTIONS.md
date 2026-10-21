@@ -193,6 +193,17 @@ Course audio for pt-en synthesized with Piper (MIT, rhasspy/piper) using the pt_
 
 > Selected by the pack-audio canary ASR audit (mean WER 0.2292 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
 
+## Piper voice de_DE-kerstin-low
+
+- **License:** CC0-1.0
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/kerstin/low
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-kerstin-low voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.4905 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+
 ## Piper voice fr_FR-siwis-medium
 
 - **License:** CC-BY-4.0
@@ -204,16 +215,16 @@ Course audio for fr-en synthesized with Piper (MIT, rhasspy/piper) using the fr_
 
 > Selected by the pack-audio canary ASR audit (mean WER 0.1667 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card, and the generated MP3 assets. Double-download hash verification and the fail-closed license gate run in the dispatch-only pack-audio workflow.
 
-## Piper voice de_DE-thorsten-medium
+## Piper voice de_DE-thorsten-high
 
 - **License:** CC0-1.0
-- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/thorsten/medium
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/thorsten/high
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-14
+- **Retrieved:** 2026-10-21
 
-Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-high voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.2544 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.2298 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
 
 ## Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)
 

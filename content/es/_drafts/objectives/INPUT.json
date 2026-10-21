@@ -1,0 +1,5833 @@
+{
+  "step": "objectives",
+  "target": "es",
+  "native": "vi",
+  "courseId": "es-vi",
+  "generator": "scripts/author.ts",
+  "task": "Soạn danh sách mục tiêu học tập (objectives) cho khoá học: khoảng 34 mục tiêu theo 9 nhóm (grammar, lexical, written_production, written_reception, spoken_reception, spoken_production, interaction, phonology, strategy), ~23 mục tiêu `essential`, mỗi mục tiêu có title và canDo bằng tiếng Việt, prerequisites, cefrAlignments (level, scaleName, relation direct|supports, sourceRef `cefr-cv-2020:<scale-slug>`), evidenceNote cho mọi alignment `direct`. Không bao giờ chép câu mô tả CEFR.",
+  "sessions": "1",
+  "recordSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^es\\.obj\\.[a-z0-9_]+\\.[a-z0-9_]+$"
+      },
+      "title": {
+        "type": "object",
+        "propertyNames": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}$"
+        },
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "canDo": {
+        "type": "object",
+        "propertyNames": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}$"
+        },
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 10
+        }
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "lexical",
+          "grammar",
+          "spoken_reception",
+          "written_reception",
+          "spoken_production",
+          "written_production",
+          "interaction",
+          "phonology",
+          "strategy"
+        ]
+      },
+      "prerequisites": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^es\\.obj\\.[a-z0-9_]+\\.[a-z0-9_]+$"
+        }
+      },
+      "cefrAlignments": {
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "level": {
+              "type": "string",
+              "enum": [
+                "PRE_A1",
+                "A1",
+                "A2",
+                "B1",
+                "B2",
+                "C1",
+                "C2"
+              ]
+            },
+            "scaleName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "relation": {
+              "type": "string",
+              "enum": [
+                "direct",
+                "supports"
+              ]
+            },
+            "sourceRef": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "level",
+            "scaleName",
+            "relation",
+            "sourceRef"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "essential": {
+        "type": "boolean"
+      },
+      "evidenceNote": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "title",
+      "canDo",
+      "category",
+      "prerequisites",
+      "cefrAlignments",
+      "essential"
+    ],
+    "additionalProperties": false
+  },
+  "allowedIds": {
+    "lexemes": [
+      {
+        "id": "es:w:hombre",
+        "surface": "el hombre",
+        "gloss": "nam nhi",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:mujer",
+        "surface": "la mujer",
+        "gloss": "phụ nữ",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:nino",
+        "surface": "el niño",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:nina",
+        "surface": "la niña",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:manzana",
+        "surface": "la manzana",
+        "gloss": "quả táo",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:pan",
+        "surface": "el pan",
+        "gloss": "bánh mì",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:agua",
+        "surface": "el agua",
+        "gloss": "nước",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:leche",
+        "surface": "la leche",
+        "gloss": "sữa",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:perro",
+        "surface": "el perro",
+        "gloss": "chó",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:gato",
+        "surface": "el gato",
+        "gloss": "mèo",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:el",
+        "surface": "él",
+        "gloss": null,
+        "partOfSpeech": "pronoun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ella",
+        "surface": "ella",
+        "gloss": null,
+        "partOfSpeech": "pronoun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hola",
+        "surface": "hola",
+        "gloss": "chào",
+        "partOfSpeech": "interjection",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:adios",
+        "surface": "adiós",
+        "gloss": "buổi liên hoan chia tay",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:gracias",
+        "surface": "gracias",
+        "gloss": "lời cám ơn",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:por-favor",
+        "surface": "por favor",
+        "gloss": "xin",
+        "partOfSpeech": "interjection",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:senor",
+        "surface": "el señor",
+        "gloss": "danh xưng của người đàn ông",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:senora",
+        "surface": "la señora",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:amigo",
+        "surface": "el amigo",
+        "gloss": "bạn bè",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:cafe",
+        "surface": "el café",
+        "gloss": "cà phê",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:te",
+        "surface": "el té",
+        "gloss": "trà",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:buenos-dias",
+        "surface": "buenos días",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:buenas-noches",
+        "surface": "buenas noches",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "es:w:arroz",
+        "surface": "el arroz",
+        "gloss": "lúa",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:huevo",
+        "surface": "el huevo",
+        "gloss": "trứng",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:queso",
+        "surface": "el queso",
+        "gloss": "phô mai",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:fruta",
+        "surface": "la fruta",
+        "gloss": "quả",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:jugo",
+        "surface": "el jugo",
+        "gloss": "nước ép (của quả",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:sopa",
+        "surface": "la sopa",
+        "gloss": "xúp",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:pollo",
+        "surface": "el pollo",
+        "gloss": "gà",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:caballo",
+        "surface": "el caballo",
+        "gloss": "ngựa",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:pajaro",
+        "surface": "el pájaro",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:pez",
+        "surface": "el pez",
+        "gloss": "cá",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:vaca",
+        "surface": "la vaca",
+        "gloss": "bò cái",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:raton",
+        "surface": "el ratón",
+        "gloss": "chuột",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:pato",
+        "surface": "el pato",
+        "gloss": "vịt",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:oso",
+        "surface": "el oso",
+        "gloss": "gấu",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:hotel",
+        "surface": "el hotel",
+        "gloss": "khách sạn",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:aeropuerto",
+        "surface": "el aeropuerto",
+        "gloss": "sân bay",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:tren",
+        "surface": "el tren",
+        "gloss": "xe lửa",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:calle",
+        "surface": "la calle",
+        "gloss": "phố",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:museo",
+        "surface": "el museo",
+        "gloss": "viện bảo tàng",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:ciudad",
+        "surface": "la ciudad",
+        "gloss": "thành phố",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:estacion",
+        "surface": "la estación",
+        "gloss": "trạm",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:taxi",
+        "surface": "el taxi",
+        "gloss": "xe tắc xi",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:bano",
+        "surface": "el baño",
+        "gloss": "sự tắm",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:boleto",
+        "surface": "el boleto",
+        "gloss": "vé",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:maleta",
+        "surface": "la maleta",
+        "gloss": "cái va li",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:mapa",
+        "surface": "el mapa",
+        "gloss": "bản đồ",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:madre",
+        "surface": "la madre",
+        "gloss": "mẹ",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:padre",
+        "surface": "el padre",
+        "gloss": "cha",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:hermana",
+        "surface": "la hermana",
+        "gloss": "chị",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:hermano",
+        "surface": "el hermano",
+        "gloss": "anh",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:abuela",
+        "surface": "la abuela",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:abuelo",
+        "surface": "el abuelo",
+        "gloss": "ông",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:bebe",
+        "surface": "el bebé",
+        "gloss": "bé",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:esposo",
+        "surface": "el esposo",
+        "gloss": "người chồng",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:esposa",
+        "surface": "la esposa",
+        "gloss": "vợ",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:familia",
+        "surface": "la familia",
+        "gloss": "gia đình",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:alto",
+        "surface": "alto",
+        "gloss": "chiều cao",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:bajo",
+        "surface": "bajo",
+        "gloss": "cá pecca",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:tienda",
+        "surface": "la tienda",
+        "gloss": "lều",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:mercado",
+        "surface": "el mercado",
+        "gloss": "chợ",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:dinero",
+        "surface": "el dinero",
+        "gloss": "tiền",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:camisa",
+        "surface": "la camisa",
+        "gloss": "áo",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:zapatos",
+        "surface": "los zapatos",
+        "gloss": "giày",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:precio",
+        "surface": "el precio",
+        "gloss": "giá cả",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:caro",
+        "surface": "caro",
+        "gloss": "thân",
+        "partOfSpeech": "adjective",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:barato",
+        "surface": "barato",
+        "gloss": "rẻ",
+        "partOfSpeech": "adjective",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:comprar",
+        "surface": "comprar",
+        "gloss": "mua",
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:vender",
+        "surface": "vender",
+        "gloss": "bán",
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:quiero",
+        "surface": "quiero",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:cuanto",
+        "surface": "cuánto",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:sol",
+        "surface": "el sol",
+        "gloss": "mặt trời",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:lluvia",
+        "surface": "la lluvia",
+        "gloss": "mưa",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:nieve",
+        "surface": "la nieve",
+        "gloss": "tuyết",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:calor",
+        "surface": "el calor",
+        "gloss": "hơi nóng",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:frio",
+        "surface": "el frío",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:viento",
+        "surface": "el viento",
+        "gloss": "gió",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:nube",
+        "surface": "la nube",
+        "gloss": "mây",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:verano",
+        "surface": "el verano",
+        "gloss": "cái rầm ((cũng) summer-tree)",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:invierno",
+        "surface": "el invierno",
+        "gloss": "mùa đông",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:primavera",
+        "surface": "la primavera",
+        "gloss": "sự nhảy",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:otono",
+        "surface": "el otoño",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:tormenta",
+        "surface": "la tormenta",
+        "gloss": "bão",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:trabajo",
+        "surface": "el trabajo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:oficina",
+        "surface": "la oficina",
+        "gloss": "sự giúp đỡ",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:escuela",
+        "surface": "la escuela",
+        "gloss": "trường học",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:clase",
+        "surface": "la clase",
+        "gloss": "bài diễn thuyết",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:tarea",
+        "surface": "la tarea",
+        "gloss": "nhiệm vụ",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:maestro",
+        "surface": "el maestro",
+        "gloss": "chủ",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:doctora",
+        "surface": "la doctora",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:estudiante",
+        "surface": "el estudiante",
+        "gloss": "học sinh đại học",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:estudiante-noun",
+        "surface": "la estudiante",
+        "gloss": "học sinh đại học",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:libro",
+        "surface": "el libro",
+        "gloss": "sách",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:computadora",
+        "surface": "la computadora",
+        "gloss": "máy tính",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:examen",
+        "surface": "el examen",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:cabeza",
+        "surface": "la cabeza",
+        "gloss": "đầu",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:mano",
+        "surface": "la mano",
+        "gloss": "tay",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:ojo",
+        "surface": "el ojo",
+        "gloss": "mắt",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:pie",
+        "surface": "el pie",
+        "gloss": "chân",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:hospital",
+        "surface": "el hospital",
+        "gloss": "bệnh viện",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:medico",
+        "surface": "el médico",
+        "gloss": "bác sĩ y khoa",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:medicina",
+        "surface": "la medicina",
+        "gloss": "y học",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:pastilla",
+        "surface": "la pastilla",
+        "gloss": "viên thuốc",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:enfermo",
+        "surface": "enfermo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:cansado",
+        "surface": "cansado",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:dolor",
+        "surface": "el dolor",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:fiebre",
+        "surface": "la fiebre",
+        "gloss": "cơn sốt",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:estar",
+        "surface": "estar",
+        "gloss": "đang",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ser",
+        "surface": "ser",
+        "gloss": "thì",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tener",
+        "surface": "tener",
+        "gloss": "có",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hacer",
+        "surface": "hacer",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:decir",
+        "surface": "decir",
+        "gloss": "tuyên bố",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:querer",
+        "surface": "querer",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ver",
+        "surface": "ver",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:aqui",
+        "surface": "aquí",
+        "gloss": "đây",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:poder",
+        "surface": "poder",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:solo",
+        "surface": "solo",
+        "gloss": "duy nhất",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:creer",
+        "surface": "creer",
+        "gloss": "tin",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:dejar",
+        "surface": "dejar",
+        "gloss": "để lại",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pasar",
+        "surface": "pasar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hablar",
+        "surface": "hablar",
+        "gloss": "nói",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:saber",
+        "surface": "saber",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:venir",
+        "surface": "venir",
+        "gloss": "đến",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:deber",
+        "surface": "deber",
+        "gloss": "nợ",
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:pensar",
+        "surface": "pensar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:vez",
+        "surface": "la vez",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:esperar",
+        "surface": "esperar",
+        "gloss": "hy vọng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:necesitar",
+        "surface": "necesitar",
+        "gloss": "cần",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:dia",
+        "surface": "el día",
+        "gloss": "ngày",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:casar",
+        "surface": "casar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:entonces",
+        "surface": "entonces",
+        "gloss": "lúc đó",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ahi",
+        "surface": "ahí",
+        "gloss": "ở đó",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tiempo",
+        "surface": "el tiempo",
+        "gloss": "thời gian",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:llamar",
+        "surface": "llamar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:asir",
+        "surface": "asir",
+        "gloss": "chộp",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:volver",
+        "surface": "volver",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:llevar",
+        "surface": "llevar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:encontrar",
+        "surface": "encontrar",
+        "gloss": "gặp",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:nunca",
+        "surface": "nunca",
+        "gloss": "không bao giờ",
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:gustar",
+        "surface": "gustar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ano",
+        "surface": "el año",
+        "gloss": "năm",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:asi",
+        "surface": "así",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:favor",
+        "surface": "el favor",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tambien",
+        "surface": "también",
+        "gloss": "cũng",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:poner",
+        "surface": "poner",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:dios",
+        "surface": "el dios",
+        "gloss": "thần",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:vida",
+        "surface": "la vida",
+        "gloss": "sự sống",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:tomar",
+        "surface": "tomar",
+        "gloss": "cầm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:salir",
+        "surface": "salir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:quedar",
+        "surface": "quedar",
+        "gloss": "đang",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:sentar",
+        "surface": "sentar",
+        "gloss": "để ngồi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mejor",
+        "surface": "mejor",
+        "gloss": "hơn",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:siempre",
+        "surface": "siempre",
+        "gloss": "luôn luôn",
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:llegar",
+        "surface": "llegar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ayudar",
+        "surface": "ayudar",
+        "gloss": "giúp đỡ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:seguir",
+        "surface": "seguir",
+        "gloss": "đi theo sau",
+        "partOfSpeech": "verb",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:cosa",
+        "surface": "la cosa",
+        "gloss": "cái",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:matar",
+        "surface": "matar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:nuevo",
+        "surface": "nuevo",
+        "gloss": "mới",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:crear",
+        "surface": "crear",
+        "gloss": "tạo",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mismo",
+        "surface": "mismo",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:bueno",
+        "surface": "bueno",
+        "gloss": "tốt",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mucho",
+        "surface": "mucho",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:donde",
+        "surface": "el dónde",
+        "gloss": "nơi chốn",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:sentir",
+        "surface": "sentir",
+        "gloss": "sờ mó",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:gente",
+        "surface": "la gente",
+        "gloss": "nhân dân",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hijo",
+        "surface": "el hijo",
+        "gloss": "con trai",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:morir",
+        "surface": "morir",
+        "gloss": "chết",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:noche",
+        "surface": "la noche",
+        "gloss": "đêm",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:escuchar",
+        "surface": "escuchar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:despues",
+        "surface": "después",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:senor-adjective",
+        "surface": "señor",
+        "gloss": "cao quý",
+        "partOfSpeech": "adjective",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:mirar",
+        "surface": "mirar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:momento",
+        "surface": "el momento",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:chico",
+        "surface": "el chico",
+        "gloss": "con trai",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:problema",
+        "surface": "el problema",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:buscar",
+        "surface": "buscar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:preguntar",
+        "surface": "preguntar",
+        "gloss": "hỏi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hora",
+        "surface": "la hora",
+        "gloss": "giờ",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:mundo",
+        "surface": "el mundo",
+        "gloss": "thế giới",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:lugar",
+        "surface": "el lugar",
+        "gloss": "vị trí",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:coser",
+        "surface": "coser",
+        "gloss": "may khâu",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:perder",
+        "surface": "perder",
+        "gloss": "mất không còn nữa",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:suponer",
+        "surface": "suponer",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tratar",
+        "surface": "tratar",
+        "gloss": "đối xử",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:alli",
+        "surface": "allí",
+        "gloss": "ở đó",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:era",
+        "surface": "la era",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:quiza",
+        "surface": "quizá",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:intentar",
+        "surface": "intentar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:traer",
+        "surface": "traer",
+        "gloss": "cầm lại",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:importar",
+        "surface": "importar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:contar",
+        "surface": "contar",
+        "gloss": "đếm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pedir",
+        "surface": "pedir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:recordar",
+        "surface": "recordar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:grande",
+        "surface": "grande",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:empezar",
+        "surface": "empezar",
+        "gloss": "bắt đầu",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:entrar",
+        "surface": "entrar",
+        "gloss": "đi vào",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:hoy",
+        "surface": "hoy",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:usar",
+        "surface": "usar",
+        "gloss": "dùng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pequeno",
+        "surface": "pequeño",
+        "gloss": "nhỏ",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:conmigo",
+        "surface": "conmigo",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ultimo",
+        "surface": "último",
+        "gloss": "cuối cùng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:realmente",
+        "surface": "realmente",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:aun",
+        "surface": "aún",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:razon",
+        "surface": "la razón",
+        "gloss": "lý do",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:seguro",
+        "surface": "seguro",
+        "gloss": "chắc chắn",
+        "partOfSpeech": "adjective",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:oir",
+        "surface": "oír",
+        "gloss": "nghe",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:terminar",
+        "surface": "terminar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:preocupar",
+        "surface": "preocupar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:manana",
+        "surface": "la mañana",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:primero",
+        "surface": "primero",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:persona",
+        "surface": "la persona",
+        "gloss": "con người",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:contigo",
+        "surface": "contigo",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:unico",
+        "surface": "único",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:policia",
+        "surface": "la policía",
+        "gloss": "cảnh sát",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:vivir",
+        "surface": "vivir",
+        "gloss": "sống",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:semana",
+        "surface": "la semana",
+        "gloss": "tuần",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:sacar",
+        "surface": "sacar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:minuto",
+        "surface": "el minuto",
+        "gloss": "phút",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:son",
+        "surface": "el son",
+        "gloss": "tiếng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:olvidar",
+        "surface": "olvidar",
+        "gloss": "quên",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cambiar",
+        "surface": "cambiar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:jugar",
+        "surface": "jugar",
+        "gloss": "chơi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:amor",
+        "surface": "el amor",
+        "gloss": "lòng yêu",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:casa",
+        "surface": "la casa",
+        "gloss": "nhà ở",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:ganar",
+        "surface": "ganar",
+        "gloss": "thu được",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:parte",
+        "surface": "la parte",
+        "gloss": "phần",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:todavia",
+        "surface": "todavía",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:lado",
+        "surface": "el lado",
+        "gloss": "mặt",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:dormir",
+        "surface": "dormir",
+        "gloss": "ngủ",
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:mantener",
+        "surface": "mantener",
+        "gloss": "giữ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tio",
+        "surface": "el tío",
+        "gloss": "chú",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:tipo",
+        "surface": "el tipo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pagar",
+        "surface": "pagar",
+        "gloss": "trả (tiền lương... )",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:puerta",
+        "surface": "la puerta",
+        "gloss": "cửa",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:significar",
+        "surface": "significar",
+        "gloss": "biểu thị",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:carino",
+        "surface": "el cariño",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:regresar",
+        "surface": "regresar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:manera",
+        "surface": "la manera",
+        "gloss": "đường",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:malo",
+        "surface": "malo",
+        "gloss": "xấu",
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:feliz",
+        "surface": "feliz",
+        "gloss": "mừng",
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:suceder",
+        "surface": "suceder",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:partir",
+        "surface": "partir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:probar",
+        "surface": "probar",
+        "gloss": "chứng tỏ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hermanar",
+        "surface": "hermanar",
+        "gloss": "nối",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:leer",
+        "surface": "leer",
+        "gloss": "đọc",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mover",
+        "surface": "mover",
+        "gloss": "chuyển",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:papa",
+        "surface": "el papá",
+        "gloss": "ba",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:caminar",
+        "surface": "caminar",
+        "gloss": "đi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:palabra",
+        "surface": "la palabra",
+        "gloss": "từ",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:importante",
+        "surface": "importante",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hija",
+        "surface": "la hija",
+        "gloss": "con gái",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:jefe",
+        "surface": "el jefe",
+        "gloss": "thủ lĩnh",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:mal",
+        "surface": "mal",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:casi",
+        "surface": "casi",
+        "gloss": "hầu (như)",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:meter",
+        "surface": "meter",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:ocurrir",
+        "surface": "ocurrir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:este",
+        "surface": "el este",
+        "gloss": "hướng đông",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:enviar",
+        "surface": "enviar",
+        "gloss": "gửi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:propio",
+        "surface": "propio",
+        "gloss": "của chính mình",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:funcionar",
+        "surface": "funcionar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:muerte",
+        "surface": "la muerte",
+        "gloss": "sự chết",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:corazon",
+        "surface": "el corazón",
+        "gloss": "tim",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:papar",
+        "surface": "papar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:echar",
+        "surface": "echar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:acuerdo",
+        "surface": "el acuerdo",
+        "gloss": "hiệp định",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tocar",
+        "surface": "tocar",
+        "gloss": "chạm",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:escribir",
+        "surface": "escribir",
+        "gloss": "viết",
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:dificil",
+        "surface": "difícil",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:acercar",
+        "surface": "acercar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:realidad",
+        "surface": "la realidad",
+        "gloss": "sự thực",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:miedo",
+        "surface": "el miedo",
+        "gloss": "sự sợ",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:disparar",
+        "surface": "disparar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:encantar",
+        "surface": "encantar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:serio",
+        "surface": "serio",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:recibir",
+        "surface": "recibir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:suficiente",
+        "surface": "suficiente",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tardar",
+        "surface": "tardar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:comenzar",
+        "surface": "comenzar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:detener",
+        "surface": "detener",
+        "gloss": "ngăn cản",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cuerpo",
+        "surface": "el cuerpo",
+        "gloss": "thân thể",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:doctor",
+        "surface": "el doctor",
+        "gloss": "bác sĩ y khoa",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tierra",
+        "surface": "la tierra",
+        "gloss": "đất",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:cuenta",
+        "surface": "la cuenta",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:vestir",
+        "surface": "vestir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:librar",
+        "surface": "librar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:numero",
+        "surface": "el número",
+        "gloss": "số",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:historia",
+        "surface": "la historia",
+        "gloss": "sử",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:idear",
+        "surface": "idear",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:demasiado",
+        "surface": "demasiado",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:seriar",
+        "surface": "seriar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:formar",
+        "surface": "formar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:idea",
+        "surface": "la idea",
+        "gloss": "quan niệm",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:fiesta",
+        "surface": "la fiesta",
+        "gloss": "tiệc",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cuando",
+        "surface": "cuándo",
+        "gloss": "khi nào",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:beber",
+        "surface": "beber",
+        "gloss": "uống (rượu",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:auto",
+        "surface": "el auto",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:guerra",
+        "surface": "la guerra",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:perdonar",
+        "surface": "perdonar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:desear",
+        "surface": "desear",
+        "gloss": "muốn",
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:permitir",
+        "surface": "permitir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mostrar",
+        "surface": "mostrar",
+        "gloss": "cho xem",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:armar",
+        "surface": "armar",
+        "gloss": "vũ trang",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:alla",
+        "surface": "allá",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:oportunidad",
+        "surface": "la oportunidad",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:telefono",
+        "surface": "el teléfono",
+        "gloss": "dây nói",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:subir",
+        "surface": "subir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:salvar",
+        "surface": "salvar",
+        "gloss": "cứu nguy",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:muchacho",
+        "surface": "el muchacho",
+        "gloss": "nam nhi",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:mama",
+        "surface": "la mamá",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:posible",
+        "surface": "posible",
+        "gloss": "có thể",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:plan",
+        "surface": "el plan",
+        "gloss": "sơ đồ",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:convertir",
+        "surface": "convertir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:forma",
+        "surface": "la forma",
+        "gloss": "hình",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:bajar",
+        "surface": "bajar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:cerrar",
+        "surface": "cerrar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:loco",
+        "surface": "loco",
+        "gloss": "điên dại",
+        "partOfSpeech": "adjective",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:espera",
+        "surface": "la espera",
+        "gloss": "sự chờ đợi",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:habitacion",
+        "surface": "la habitación",
+        "gloss": "buồng",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:orden",
+        "surface": "la orden",
+        "gloss": "thứ",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:capitan",
+        "surface": "el capitán",
+        "gloss": "người cầm đầu",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:quitar",
+        "surface": "quitar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:caso",
+        "surface": "el caso",
+        "gloss": "hoàn cảnh",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:levantar",
+        "surface": "levantar",
+        "gloss": "giơ lên",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:mes",
+        "surface": "el mes",
+        "gloss": "tháng",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:prometer",
+        "surface": "prometer",
+        "gloss": "hứa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:exactamente",
+        "surface": "exactamente",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:correcto",
+        "surface": "correcto",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cortar",
+        "surface": "cortar",
+        "gloss": "cắt",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tarde",
+        "surface": "la tarde",
+        "gloss": "buổi chiều",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:modo",
+        "surface": "el modo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:foto",
+        "surface": "la foto",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:confiar",
+        "surface": "confiar",
+        "gloss": "cam đoan một lần nữa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:aceptar",
+        "surface": "aceptar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:decidir",
+        "surface": "decidir",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:luz",
+        "surface": "la luz",
+        "gloss": "ánh sáng",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:presentar",
+        "surface": "presentar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:cuidar",
+        "surface": "cuidar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:proximo",
+        "surface": "próximo",
+        "gloss": "gần",
+        "partOfSpeech": "adjective",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:hermoso",
+        "surface": "hermoso",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:romper",
+        "surface": "romper",
+        "gloss": "làm gãy",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pelicula",
+        "surface": "la película",
+        "gloss": "màng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:ensenar",
+        "surface": "enseñar",
+        "gloss": "dạy",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:aprender",
+        "surface": "aprender",
+        "gloss": "học",
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:imaginar",
+        "surface": "imaginar",
+        "gloss": "tưởng tượng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:preparar",
+        "surface": "preparar",
+        "gloss": "sửa soạn sắm sửa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:perfecto",
+        "surface": "perfecto",
+        "gloss": "hoàn hảo",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:molestar",
+        "surface": "molestar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:probablemente",
+        "surface": "probablemente",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:correr",
+        "surface": "correr",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:dolar",
+        "surface": "el dólar",
+        "gloss": "đồng đô la (Mỹ)",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:servir",
+        "surface": "servir",
+        "gloss": "phục vụ",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:millon",
+        "surface": "el millón",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tampoco",
+        "surface": "tampoco",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:muerto",
+        "surface": "muerto",
+        "gloss": "chết (người",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:asegurar",
+        "surface": "asegurar",
+        "gloss": "làm kiên cố",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:arreglar",
+        "surface": "arreglar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:simplemente",
+        "surface": "simplemente",
+        "gloss": "chỉ là",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:chica",
+        "surface": "la chica",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:hecho",
+        "surface": "hecho",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:alegrar",
+        "surface": "alegrar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ayuda",
+        "surface": "la ayuda",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:volar",
+        "surface": "volar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cama",
+        "surface": "la cama",
+        "gloss": "cái giường: cái đồ gỗ cho ngủ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:junto",
+        "surface": "junto",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:lejos",
+        "surface": "lejos",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:juego",
+        "surface": "el juego",
+        "gloss": "sự vui chơi",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:estupido",
+        "surface": "estúpido",
+        "gloss": "ngu dại",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:rapido",
+        "surface": "el rápido",
+        "gloss": "thác ghềnh",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:agente",
+        "surface": "agente",
+        "gloss": "người đại lý",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:esposar",
+        "surface": "esposar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:seguridad",
+        "surface": "la seguridad",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:raro",
+        "surface": "raro",
+        "gloss": "hiếm",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cara",
+        "surface": "la cara",
+        "gloss": "mặt",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:odiar",
+        "surface": "odiar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pais",
+        "surface": "el país",
+        "gloss": "nước",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:bailar",
+        "surface": "bailar",
+        "gloss": "nhảy múa",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:podar",
+        "surface": "podar",
+        "gloss": "sửa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mentir",
+        "surface": "mentir",
+        "gloss": "nói dối",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:rey",
+        "surface": "el rey",
+        "gloss": "vua",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:vuelta",
+        "surface": "la vuelta",
+        "gloss": "sự quay",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:explicar",
+        "surface": "explicar",
+        "gloss": "giảng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:disculpar",
+        "surface": "disculpar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:equipo",
+        "surface": "el equipo",
+        "gloss": "cỗ (ngựa",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:demonio",
+        "surface": "el demonio",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:paz",
+        "surface": "la paz",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:diferente",
+        "surface": "diferente",
+        "gloss": "khác",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:referir",
+        "surface": "referir",
+        "gloss": "kể lại",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pelear",
+        "surface": "pelear",
+        "gloss": "đấu tranh",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:descubrir",
+        "surface": "descubrir",
+        "gloss": "khám phá ra",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mensaje",
+        "surface": "el mensaje",
+        "gloss": "tin nhắn",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:escapar",
+        "surface": "escapar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:increible",
+        "surface": "increíble",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:camino",
+        "surface": "el camino",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:pronto",
+        "surface": "pronto",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:anoche",
+        "surface": "anoche",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:error",
+        "surface": "el error",
+        "gloss": "sự sai lầm",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:sangrar",
+        "surface": "sangrar",
+        "gloss": "chảy máu",
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:caballero",
+        "surface": "el caballero",
+        "gloss": "người cưỡi ngựa",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:listo",
+        "surface": "listo",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:negocio",
+        "surface": "el negocio",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:atacar",
+        "surface": "atacar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:sonar",
+        "surface": "sonar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:primera",
+        "surface": "la primera",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:bastante",
+        "surface": "bastante",
+        "gloss": "sự đủ dùng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:reir",
+        "surface": "reír",
+        "gloss": "cười",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:luchar",
+        "surface": "luchar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:pobre",
+        "surface": "pobre",
+        "gloss": "nghèo",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:llorar",
+        "surface": "llorar",
+        "gloss": "khóc",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mandar",
+        "surface": "mandar",
+        "gloss": "gửi",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:cenar",
+        "surface": "cenar",
+        "gloss": "ăn cơm (trưa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ropa",
+        "surface": "la ropa",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ocupar",
+        "surface": "ocupar",
+        "gloss": "chiếm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:grupo",
+        "surface": "el grupo",
+        "gloss": "nhóm",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:joven",
+        "surface": "joven",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:proteger",
+        "surface": "proteger",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:calmar",
+        "surface": "calmar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:unir",
+        "surface": "unir",
+        "gloss": "nối",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:pregunta",
+        "surface": "la pregunta",
+        "gloss": "câu hỏi",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:visto",
+        "surface": "visto",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:incluso",
+        "surface": "incluso",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cielo",
+        "surface": "el cielo",
+        "gloss": "trời",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:desaparecer",
+        "surface": "desaparecer",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:culpar",
+        "surface": "culpar",
+        "gloss": "đổ thừa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:segundo",
+        "surface": "el segundo",
+        "gloss": "người về nhì (trong cuộc đua)",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:nueva",
+        "surface": "la nueva",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:aparecer",
+        "surface": "aparecer",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:asesinato",
+        "surface": "el asesinato",
+        "gloss": "sự ám sát",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:lograr",
+        "surface": "lograr",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:companero",
+        "surface": "el compañero",
+        "gloss": "bạn",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:marchar",
+        "surface": "marchar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:mesar",
+        "surface": "mesar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:golpear",
+        "surface": "golpear",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:soler",
+        "surface": "soler",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:viajar",
+        "surface": "viajar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:voz",
+        "surface": "la voz",
+        "gloss": "tiếng",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:informacion",
+        "surface": "la información",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:dentro",
+        "surface": "dentro",
+        "gloss": "mặt trong",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:elegir",
+        "surface": "elegir",
+        "gloss": "chọn",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:responder",
+        "surface": "responder",
+        "gloss": "trả lời",
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:siguiente",
+        "surface": "siguiente",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ademar",
+        "surface": "ademar",
+        "gloss": "cho vào thùng",
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:querido",
+        "surface": "el querido",
+        "gloss": "người yêu",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:maravilloso",
+        "surface": "maravilloso",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:respuesta",
+        "surface": "la respuesta",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:control",
+        "surface": "el control",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:temer",
+        "surface": "temer",
+        "gloss": "sợ",
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:continuar",
+        "surface": "continuar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:sistema",
+        "surface": "el sistema",
+        "gloss": "hệ thống",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:preferir",
+        "surface": "preferir",
+        "gloss": "thích hơn",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:frente",
+        "surface": "la frente",
+        "gloss": "trán",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:cliente",
+        "surface": "el cliente",
+        "gloss": "khách hàng (của luật sư",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:conducir",
+        "surface": "conducir",
+        "gloss": "dồn",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:relacion",
+        "surface": "la relación",
+        "gloss": "sự kể lại",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:par",
+        "surface": "el par",
+        "gloss": "đôi",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:profesor",
+        "surface": "el profesor",
+        "gloss": "giáo sư (đại học)",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:caja",
+        "surface": "la caja",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:limpiar",
+        "surface": "limpiar",
+        "gloss": "lau chùi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:atencion",
+        "surface": "la atención",
+        "gloss": "sự chú ý",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cargar",
+        "surface": "cargar",
+        "gloss": "chất",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:sueno",
+        "surface": "el sueño",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:resultar",
+        "surface": "resultar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:cancion",
+        "surface": "la canción",
+        "gloss": "tiếng hát",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:boca",
+        "surface": "la boca",
+        "gloss": "miệng",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:llave",
+        "surface": "la llave",
+        "gloss": "chìa khoá",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:asustar",
+        "surface": "asustar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:servicio",
+        "surface": "el servicio",
+        "gloss": "sự phục vụ",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:papel",
+        "surface": "el papel",
+        "gloss": "giấy",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ley",
+        "surface": "la ley",
+        "gloss": "luật",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:mente",
+        "surface": "la mente",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:atrapar",
+        "surface": "atrapar",
+        "gloss": "bắt giữ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:camara",
+        "surface": "la cámara",
+        "gloss": "buồng",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:decision",
+        "surface": "la decisión",
+        "gloss": "sự giải quyết (một vấn đề... )",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:faltar",
+        "surface": "faltar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:ofrecer",
+        "surface": "ofrecer",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:justo",
+        "surface": "justo",
+        "gloss": "công bằng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:tipar",
+        "surface": "tipar",
+        "gloss": "đánh máy",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:jamas",
+        "surface": "jamás",
+        "gloss": "không bao giờ",
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:asunto",
+        "surface": "el asunto",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:sonar-verb",
+        "surface": "soñar",
+        "gloss": "mơ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:victima",
+        "surface": "la víctima",
+        "gloss": "vật bị hy sinh",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:situacion",
+        "surface": "la situación",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:actuar",
+        "surface": "actuar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:esconder",
+        "surface": "esconder",
+        "gloss": "lột da",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:culpa",
+        "surface": "la culpa",
+        "gloss": "sự thiếu sót",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:personarse",
+        "surface": "personarse",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:equivocar",
+        "surface": "equivocar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:obtener",
+        "surface": "obtener",
+        "gloss": "đạt được",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:besar",
+        "surface": "besar",
+        "gloss": "hôn",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:fuerte",
+        "surface": "fuerte",
+        "gloss": "bền",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:averiguar",
+        "surface": "averiguar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:edad",
+        "surface": "la edad",
+        "gloss": "tuổi",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:novio",
+        "surface": "el novio",
+        "gloss": "bạn trai (đi lại thường xuyên với một cô gái",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:soltar",
+        "surface": "soltar",
+        "gloss": "làm nhẹ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:devolver",
+        "surface": "devolver",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:barco",
+        "surface": "el barco",
+        "gloss": "tàu thuyền",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:ayer",
+        "surface": "el ayer",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:vuelto",
+        "surface": "el vuelto",
+        "gloss": "sự đổi",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:asesinar",
+        "surface": "asesinar",
+        "gloss": "giết",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:despertar",
+        "surface": "despertar",
+        "gloss": "thức giấc",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:recoger",
+        "surface": "recoger",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "home"
+      },
+      {
+        "id": "es:w:guardar",
+        "surface": "guardar",
+        "gloss": "cứu nguy",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:escucha",
+        "surface": "la escucha",
+        "gloss": "sự nghe",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:habla",
+        "surface": "la habla",
+        "gloss": "khả năng nói",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:dije",
+        "surface": "el dije",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "es:w:reunion",
+        "surface": "la reunión",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:pasado",
+        "surface": "pasado",
+        "gloss": "quá khứ",
+        "partOfSpeech": "adjective",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:brazo",
+        "surface": "el brazo",
+        "gloss": "cánh tay",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:avion",
+        "surface": "el avión",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:broma",
+        "surface": "la broma",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:coche",
+        "surface": "el coche",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:direccion",
+        "surface": "la dirección",
+        "gloss": "sự điều khiển",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:equipar",
+        "surface": "equipar",
+        "gloss": "trang bị (cho ai... cái gì)",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:crimen",
+        "surface": "el crimen",
+        "gloss": "một hành vi phạm pháp",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:dama",
+        "surface": "la dama",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:cumpleanos",
+        "surface": "el cumpleaños",
+        "gloss": "ngày sinh",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:saltar",
+        "surface": "saltar",
+        "gloss": "nhảy",
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:senorita",
+        "surface": "la señorita",
+        "gloss": "người phụ nữ trẻ",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:campo",
+        "surface": "el campo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:llama",
+        "surface": "la llama",
+        "gloss": "ngọn lửa",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:carcel",
+        "surface": "la cárcel",
+        "gloss": "nhà tù",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:ventana",
+        "surface": "la ventana",
+        "gloss": "cửa sổ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:escena",
+        "surface": "la escena",
+        "gloss": "nơi xảy ra",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:ejercito",
+        "surface": "el ejército",
+        "gloss": "quân đội",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:hemo",
+        "surface": "el hemo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:inteligente",
+        "surface": "inteligente",
+        "gloss": "thông minh",
+        "partOfSpeech": "adjective",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:triste",
+        "surface": "triste",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:pegar",
+        "surface": "pegar",
+        "gloss": "đâm",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:abogado",
+        "surface": "el abogado",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:testigo",
+        "surface": "testigo",
+        "gloss": "sự làm chứng",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:guardia",
+        "surface": "el guardia",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:espalda",
+        "surface": "la espalda",
+        "gloss": "lưng",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:carrera",
+        "surface": "la carrera",
+        "gloss": "nòi",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:contactar",
+        "surface": "contactar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:acostar",
+        "surface": "acostar",
+        "gloss": "xếp",
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:cerebro",
+        "surface": "el cerebro",
+        "gloss": "óc",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:santo",
+        "surface": "el santo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:pena",
+        "surface": "la pena",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:bar",
+        "surface": "el bar",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:oficial",
+        "surface": "oficial",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:iglesia",
+        "surface": "la iglesia",
+        "gloss": "nhà thờ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:resto",
+        "surface": "el resto",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:pista",
+        "surface": "la pista",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:prueba",
+        "surface": "la prueba",
+        "gloss": "chứng",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:mar",
+        "surface": "mar",
+        "gloss": "biển",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:angel",
+        "surface": "el ángel",
+        "gloss": "thiên thần",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:mision",
+        "surface": "la misión",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:arbol",
+        "surface": "el árbol",
+        "gloss": "cây",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:energia",
+        "surface": "la energía",
+        "gloss": "nghị lực",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:marido",
+        "surface": "el marido",
+        "gloss": "người chồng",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:carne",
+        "surface": "la carne",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:aguar",
+        "surface": "aguar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:cubrir",
+        "surface": "cubrir",
+        "gloss": "che",
+        "partOfSpeech": "verb",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:enseguida",
+        "surface": "enseguida",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:juez",
+        "surface": "juez",
+        "gloss": "quan toà",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:fuerza",
+        "surface": "la fuerza",
+        "gloss": "sức",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:prision",
+        "surface": "la prisión",
+        "gloss": "nhà tù",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:mesa",
+        "surface": "la mesa",
+        "gloss": "bàn",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:hogar",
+        "surface": "el hogar",
+        "gloss": "nhà",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:cocinar",
+        "surface": "cocinar",
+        "gloss": "nấu",
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:banda",
+        "surface": "la banda",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:arte",
+        "surface": "arte",
+        "gloss": "tài khéo léo",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:lanzar",
+        "surface": "lanzar",
+        "gloss": "ném",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:marcar",
+        "surface": "marcar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:oscuro",
+        "surface": "oscuro",
+        "gloss": "tối",
+        "partOfSpeech": "adjective",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:operacion",
+        "surface": "la operación",
+        "gloss": "sự hoạt động",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:juicio",
+        "surface": "el juicio",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:miembro",
+        "surface": "el miembro",
+        "gloss": "chân",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:general",
+        "surface": "el general",
+        "gloss": "cái chung",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:oido",
+        "surface": "el oído",
+        "gloss": "thính giác",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:metro",
+        "surface": "el metro",
+        "gloss": "cái đo",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:sargento",
+        "surface": "sargento",
+        "gloss": "trung sĩ",
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:movimiento",
+        "surface": "el movimiento",
+        "gloss": "sự chuyển động",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:ordenar",
+        "surface": "ordenar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:nivel",
+        "surface": "el nivel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "es:w:cargo",
+        "surface": "el cargo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:libre",
+        "surface": "libre",
+        "gloss": "tự do",
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:golpe",
+        "surface": "el golpe",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:futuro",
+        "surface": "el futuro",
+        "gloss": "tương lai",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:restar",
+        "surface": "restar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:centro",
+        "surface": "el centro",
+        "gloss": "centre",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:isla",
+        "surface": "la isla",
+        "gloss": "hòn đảo",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:toma",
+        "surface": "la toma",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:colega",
+        "surface": "colega",
+        "gloss": "bạn đồng nghiệp",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:valor",
+        "surface": "el valor",
+        "gloss": "giá trị",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:temprano",
+        "surface": "temprano",
+        "gloss": "sớm",
+        "partOfSpeech": "adjective",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:normal",
+        "surface": "normal",
+        "gloss": "thường",
+        "partOfSpeech": "adjective",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:piel",
+        "surface": "la piel",
+        "gloss": "da",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:liberar",
+        "surface": "liberar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:nave",
+        "surface": "la nave",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:haya",
+        "surface": "la haya",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:camion",
+        "surface": "el camión",
+        "gloss": "xe tải ((cũng) motor lorry)",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:lucir",
+        "surface": "lucir",
+        "gloss": "chiếu sáng",
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:colgar",
+        "surface": "colgar",
+        "gloss": "treo",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:ataque",
+        "surface": "el ataque",
+        "gloss": "sự tấn công",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:montana",
+        "surface": "la montaña",
+        "gloss": "núi",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:calentar",
+        "surface": "calentar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:cuello",
+        "surface": "el cuello",
+        "gloss": "cổ (người",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:enfermedad",
+        "surface": "la enfermedad",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:accidente",
+        "surface": "el accidente",
+        "gloss": "sự rủi ro",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:piso",
+        "surface": "el piso",
+        "gloss": "sự bước",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:montar",
+        "surface": "montar",
+        "gloss": "leo",
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:espacio",
+        "surface": "el espacio",
+        "gloss": "không gian",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:botella",
+        "surface": "la botella",
+        "gloss": "chai",
+        "partOfSpeech": "noun",
+        "topic": "home"
+      },
+      {
+        "id": "es:w:programar",
+        "surface": "programar",
+        "gloss": "đặt chương trình",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:red",
+        "surface": "la red",
+        "gloss": "lưới",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:obligar",
+        "surface": "obligar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:codigo",
+        "surface": "el código",
+        "gloss": "bộ luật",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:entrada",
+        "surface": "la entrada",
+        "gloss": "sự đi vào",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:fijar",
+        "surface": "fijar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:programa",
+        "surface": "el programa",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:reloj",
+        "surface": "el reloj",
+        "gloss": "đường chỉ viền ở cạnh bít tất",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:cine",
+        "surface": "el cine",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:musica",
+        "surface": "la música",
+        "gloss": "âm nhạc",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:memoria",
+        "surface": "la memoria",
+        "gloss": "sự nhớ",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:enamorar",
+        "surface": "enamorar",
+        "gloss": "mê hoặc",
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:guapo",
+        "surface": "guapo",
+        "gloss": "dễ nhìn",
+        "partOfSpeech": "adjective",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:apartar",
+        "surface": "apartar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:fallar",
+        "surface": "fallar",
+        "gloss": "không nhớ",
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:mayor",
+        "surface": "mayor",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:fe",
+        "surface": "la fe",
+        "gloss": "sự tin tưởng",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:nariz",
+        "surface": "la nariz",
+        "gloss": "mũi",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:placer",
+        "surface": "el placer",
+        "gloss": "niềm vui thích",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:simple",
+        "surface": "simple",
+        "gloss": "đơn",
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:encender",
+        "surface": "encender",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:sucio",
+        "surface": "sucio",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:plato",
+        "surface": "el plato",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:cabo",
+        "surface": "el cabo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:inmediatamente",
+        "surface": "inmediatamente",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:necesidad",
+        "surface": "la necesidad",
+        "gloss": "sự cần",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:abierto",
+        "surface": "abierto",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:resultado",
+        "surface": "el resultado",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:pieza",
+        "surface": "la pieza",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:area",
+        "surface": "la área",
+        "gloss": "diện tích",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:base",
+        "surface": "la base",
+        "gloss": "cơ sở",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:pantalon",
+        "surface": "el pantalón",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "es:w:centrar",
+        "surface": "centrar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:matrimonio",
+        "surface": "el matrimonio",
+        "gloss": "hôn nhân",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:luna",
+        "surface": "la luna",
+        "gloss": "mặt trăng",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:alma",
+        "surface": "la alma",
+        "gloss": "linh hồn",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:interes",
+        "surface": "el interés",
+        "gloss": "sự quan tâm",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:acto",
+        "surface": "el acto",
+        "gloss": "hành động",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:cabello",
+        "surface": "el cabello",
+        "gloss": "tóc",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:pastel",
+        "surface": "el pastel",
+        "gloss": "bột nhồi",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:cinta",
+        "surface": "la cinta",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:fuente",
+        "surface": "la fuente",
+        "gloss": "sự nhảy",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:puente",
+        "surface": "el puente",
+        "gloss": "brit",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:television",
+        "surface": "la televisión",
+        "gloss": "sự truyền hình",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:traje",
+        "surface": "el traje",
+        "gloss": "bộ com lê",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "es:w:enfermar",
+        "surface": "enfermar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:inmediato",
+        "surface": "inmediato",
+        "gloss": "trực tiếp",
+        "partOfSpeech": "adjective",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:siglo",
+        "surface": "el siglo",
+        "gloss": "trăm năm",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:velocidad",
+        "surface": "la velocidad",
+        "gloss": "sự mau lẹ",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:papi",
+        "surface": "el papi",
+        "gloss": "ba",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:registro",
+        "surface": "el registro",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:espectaculo",
+        "surface": "el espectáculo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:epoca",
+        "surface": "la época",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:responsabilidad",
+        "surface": "la responsabilidad",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:espada",
+        "surface": "la espada",
+        "gloss": "gươm",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:artista",
+        "surface": "artista",
+        "gloss": "nghệ sĩ",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:reglar",
+        "surface": "reglar",
+        "gloss": "cai trị",
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:norte",
+        "surface": "el norte",
+        "gloss": "hướng bắc",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:princesa",
+        "surface": "la princesa",
+        "gloss": "bà chúa",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:diferencia",
+        "surface": "la diferencia",
+        "gloss": "sự khác nhau",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:sombrero",
+        "surface": "el sombrero",
+        "gloss": "cái mũ ((thường) có vành)",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "es:w:archivo",
+        "surface": "el archivo",
+        "gloss": "kho lưu trữ",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:pintar",
+        "surface": "pintar",
+        "gloss": "sơn",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:silencio",
+        "surface": "el silencio",
+        "gloss": "sự yên lặng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:pensamiento",
+        "surface": "el pensamiento",
+        "gloss": "ý nghĩ",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:declarar",
+        "surface": "declarar",
+        "gloss": "tuyên bố",
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:vista",
+        "surface": "la vista",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:domingo",
+        "surface": "el domingo",
+        "gloss": "chủ nhật",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:sala",
+        "surface": "la sala",
+        "gloss": "buồng",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:doblar",
+        "surface": "doblar",
+        "gloss": "gấp",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:prisionero",
+        "surface": "el prisionero",
+        "gloss": "người bị giam giữ",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:estrella",
+        "surface": "la estrella",
+        "gloss": "sao",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:nota",
+        "surface": "la nota",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:casado",
+        "surface": "el casado",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:vestido",
+        "surface": "vestido",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "clothing"
+      },
+      {
+        "id": "es:w:viernes",
+        "surface": "el viernes",
+        "gloss": "thứ sáu",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:reina",
+        "surface": "la reina",
+        "gloss": "nữ hoàng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:banco",
+        "surface": "el banco",
+        "gloss": "đê",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:ciencia",
+        "surface": "la ciencia",
+        "gloss": "khoa học",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:bruja",
+        "surface": "la bruja",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:encerrar",
+        "surface": "encerrar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:ingles",
+        "surface": "el inglés",
+        "gloss": "chuyển động quay của quả bóng theo trục thẳng đứng",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:costa",
+        "surface": "la costa",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:articulo",
+        "surface": "el artículo",
+        "gloss": "điều khoản",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "es:w:esperanza",
+        "surface": "la esperanza",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:ultimamente",
+        "surface": "últimamente",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:entrenador",
+        "surface": "el entrenador",
+        "gloss": "người dạy (súc vật)",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:humor",
+        "surface": "el humor",
+        "gloss": "lối",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:gobierno",
+        "surface": "el gobierno",
+        "gloss": "chính phủ",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:vino",
+        "surface": "el vino",
+        "gloss": "rượu vang",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:teatro",
+        "surface": "el teatro",
+        "gloss": "rạp hát",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:grado",
+        "surface": "el grado",
+        "gloss": "mức độ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:escenario",
+        "surface": "el escenario",
+        "gloss": "trường hợp",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:radio",
+        "surface": "radio",
+        "gloss": "radio",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:confesar",
+        "surface": "confesar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:sabado",
+        "surface": "el sábado",
+        "gloss": "thứ bảy",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:genio",
+        "surface": "el genio",
+        "gloss": "thiên tài",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:huella",
+        "surface": "la huella",
+        "gloss": "dấu chân",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "es:w:lengua",
+        "surface": "la lengua",
+        "gloss": "lưỡi",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:felicidad",
+        "surface": "la felicidad",
+        "gloss": "sự sung sướng",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:futbol",
+        "surface": "el fútbol",
+        "gloss": "quả bóng đá",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:rostro",
+        "surface": "el rostro",
+        "gloss": "mặt",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:verguenza",
+        "surface": "la vergüenza",
+        "gloss": "sự thẹn",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:pelea",
+        "surface": "la pelea",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:tercero",
+        "surface": "el tercero",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:alcalde",
+        "surface": "el alcalde",
+        "gloss": "thị trưởng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:actor",
+        "surface": "el actor",
+        "gloss": "diễn viên (kịch",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:credito",
+        "surface": "el crédito",
+        "gloss": "sự cho vay",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:novia",
+        "surface": "la novia",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:helar",
+        "surface": "helar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "weather"
+      },
+      {
+        "id": "es:w:vera",
+        "surface": "la vera",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:enamorado",
+        "surface": "enamorado",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:enojado",
+        "surface": "enojado",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:rio",
+        "surface": "el río",
+        "gloss": "sông",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:tema",
+        "surface": "el tema",
+        "gloss": "một chủ đề của buổi nói chuyện hoặc tác phẩm nghệ thuật",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:salida",
+        "surface": "la salida",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:milagro",
+        "surface": "el milagro",
+        "gloss": "phép lạ",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:cadena",
+        "surface": "la cadena",
+        "gloss": "dây",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "es:w:temporada",
+        "surface": "la temporada",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:chino",
+        "surface": "el chino",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:pillar",
+        "surface": "pillar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:celoso",
+        "surface": "celoso",
+        "gloss": "ghen tị",
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:tv",
+        "surface": "la tv",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:paquete",
+        "surface": "el paquete",
+        "gloss": "gói",
+        "partOfSpeech": "noun",
+        "topic": "home"
+      },
+      {
+        "id": "es:w:vaso",
+        "surface": "el vaso",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "home"
+      },
+      {
+        "id": "es:w:partido",
+        "surface": "el partido",
+        "gloss": "tiệc",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:internet",
+        "surface": "internet",
+        "gloss": "liên mạng: một hệ thống mạng lưới máy tính được liên kết với nhau bằng giao thức Internet (IP)",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "es:w:alcohol",
+        "surface": "el alcohol",
+        "gloss": "rượu cồn",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:gordo",
+        "surface": "el gordo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:asiento",
+        "surface": "el asiento",
+        "gloss": "ghế",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:rodilla",
+        "surface": "la rodilla",
+        "gloss": "đầu gối",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:lago",
+        "surface": "el lago",
+        "gloss": "hồ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:tesoro",
+        "surface": "el tesoro",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:truco",
+        "surface": "el truco",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:disco",
+        "surface": "disco",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:estilo",
+        "surface": "el estilo",
+        "gloss": "cột đồng hồ mặt trời",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:encantador",
+        "surface": "encantador",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:friend",
+        "surface": "el friend",
+        "gloss": "cam: bộ phận quay tròn có hình dạng không tròn",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:instituto",
+        "surface": "el instituto",
+        "gloss": "viện",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "es:w:presionar",
+        "surface": "presionar",
+        "gloss": "sức ép",
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:legal",
+        "surface": "legal",
+        "gloss": "hợp pháp",
+        "partOfSpeech": "adjective",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:aleman",
+        "surface": "el alemán",
+        "gloss": "ruột thịt",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:embargar",
+        "surface": "embargar",
+        "gloss": "nhốt (súc vật) vào bãi rào",
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:borracho",
+        "surface": "borracho",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:proponer",
+        "surface": "proponer",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:marcha",
+        "surface": "la marcha",
+        "gloss": "tháng ba",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:anillo",
+        "surface": "el anillo",
+        "gloss": "cái nhẫn",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "es:w:agujero",
+        "surface": "el agujero",
+        "gloss": "lỗ",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:lento",
+        "surface": "lento",
+        "gloss": "chậm",
+        "partOfSpeech": "adjective",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:anunciar",
+        "surface": "anunciar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:defensa",
+        "surface": "la defensa",
+        "gloss": "defence",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:cazar",
+        "surface": "cazar",
+        "gloss": "săn bắn",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:asistente",
+        "surface": "el asistente",
+        "gloss": "người tham dự một sự kiện tại một vị trí và thời điểm nhất định",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:colar",
+        "surface": "colar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:conectar",
+        "surface": "conectar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:diente",
+        "surface": "el diente",
+        "gloss": "răng",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:granja",
+        "surface": "la granja",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:secuestrar",
+        "surface": "secuestrar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:camioneta",
+        "surface": "la camioneta",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:copa",
+        "surface": "la copa",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:directo",
+        "surface": "directo",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:cancelar",
+        "surface": "cancelar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:oro",
+        "surface": "el oro",
+        "gloss": "vàng",
+        "partOfSpeech": "noun",
+        "topic": "colors"
+      },
+      {
+        "id": "es:w:recien",
+        "surface": "recién",
+        "gloss": "gần đây",
+        "partOfSpeech": "adverb",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:compromiso",
+        "surface": "el compromiso",
+        "gloss": "sự tận tụy",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "es:w:taza",
+        "surface": "la taza",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "home"
+      },
+      {
+        "id": "es:w:producto",
+        "surface": "el producto",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:indicar",
+        "surface": "indicar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:hombro",
+        "surface": "el hombro",
+        "gloss": "vai",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:ladron",
+        "surface": "el ladrón",
+        "gloss": "kẻ trộm",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "es:w:tia",
+        "surface": "la tía",
+        "gloss": "người phụ nữ có con trong quan hệ với con cái",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:trago",
+        "surface": "el trago",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:copar",
+        "surface": "copar",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:labio",
+        "surface": "el labio",
+        "gloss": "môi",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:pelo",
+        "surface": "el pelo",
+        "gloss": "tóc",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:canal",
+        "surface": "el canal",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:encuentro",
+        "surface": "el encuentro",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:lunes",
+        "surface": "el lunes",
+        "gloss": "thứ hai",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "es:w:ira",
+        "surface": "la ira",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:cancer",
+        "surface": "el cáncer",
+        "gloss": "bệnh ung thư",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:moneda",
+        "surface": "la moneda",
+        "gloss": "đồng tiền (tiền đồng",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:billete",
+        "surface": "el billete",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "es:w:fabrica",
+        "surface": "la fábrica",
+        "gloss": "nhà máy",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:largo",
+        "surface": "largo",
+        "gloss": "dài",
+        "partOfSpeech": "adjective",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:tuya",
+        "surface": "la tuya",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:quejarse",
+        "surface": "quejarse",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "es:w:pecho",
+        "surface": "el pecho",
+        "gloss": "giáp che ngực",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "es:w:campana",
+        "surface": "la campaña",
+        "gloss": "chiến dịch",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "es:w:bebida",
+        "surface": "la bebida",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "es:w:sobrino",
+        "surface": "el sobrino",
+        "gloss": "cháu trai (con của anh",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "es:w:plantar",
+        "surface": "plantar",
+        "gloss": "trồng",
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "es:w:vehiculo",
+        "surface": "el vehículo",
+        "gloss": "xe",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "es:w:castillo",
+        "surface": "el castillo",
+        "gloss": "lâu đài",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "es:w:cheque",
+        "surface": "el cheque",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      }
+    ],
+    "objectives": [],
+    "clips": [],
+    "readings": [],
+    "speechItems": [],
+    "writingTasks": [],
+    "scenarios": [],
+    "lessons": [],
+    "concepts": [],
+    "paradigmCells": [],
+    "exerciseTypes": [
+      "select",
+      "typeAnswer",
+      "wordBank",
+      "fillBlank",
+      "match",
+      "articleSelect",
+      "conjugationCloze",
+      "listeningComprehension",
+      "readingComprehension",
+      "dictation",
+      "speakRepetition",
+      "speakProduction",
+      "guidedWriting",
+      "simpleForm",
+      "interactionScenario"
+    ]
+  },
+  "exemplars": [
+    {
+      "id": "fr.obj.greetings.basic",
+      "title": {
+        "en": "Everyday greetings & politeness",
+        "vi": "Lời chào & phép lịch sự hằng ngày"
+      },
+      "canDo": {
+        "en": "I can recognise and write the everyday French greetings and politeness formulas — bonjour, bonsoir, salut, au revoir, merci, s'il vous plaît — and pick the right one for the situation.",
+        "vi": "Tôi có thể nhận ra và viết các lời chào và công thức lịch sự hằng ngày trong tiếng Pháp — bonjour, bonsoir, salut, au revoir, merci, s'il vous plaît — và chọn đúng câu cho tình huống."
+      },
+      "category": "lexical",
+      "prerequisites": [],
+      "cefrAlignments": [
+        {
+          "level": "PRE_A1",
+          "scaleName": "Conversation (spoken interaction)",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:conversation"
+        },
+        {
+          "level": "A1",
+          "scaleName": "Sociolinguistic appropriateness",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:sociolinguistic-appropriateness"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Formulas are assessed in written recognition and typed form only — spoken use is not yet assessed."
+    },
+    {
+      "id": "fr.obj.verbs.futur_proche",
+      "title": {
+        "en": "Near future with aller",
+        "vi": "Tương lai gần với aller"
+      },
+      "canDo": {
+        "en": "I can talk about plans by putting aller in front of any verb — Je vais manger, Nous allons parler.",
+        "vi": "Tôi có thể nói về dự định bằng cách đặt aller trước bất kỳ động từ nào — Je vais manger, Nous allons parler."
+      },
+      "category": "grammar",
+      "prerequisites": [
+        "fr.obj.verbs.aller_faire_present"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Grammatical accuracy",
+          "relation": "supports",
+          "sourceRef": "cefr-cv-2020:grammatical-accuracy"
+        }
+      ],
+      "essential": false
+    },
+    {
+      "id": "fr.obj.reading.notices_info",
+      "title": {
+        "en": "Finding information in notices & signs",
+        "vi": "Tìm thông tin trong thông báo & biển hiệu"
+      },
+      "canDo": {
+        "en": "I can find concrete information in everyday notices, signs, opening hours and simple practical texts.",
+        "vi": "Tôi có thể tìm thông tin cụ thể trong thông báo, biển hiệu, giờ mở cửa và các văn bản thực dụng đơn giản hằng ngày."
+      },
+      "category": "written_reception",
+      "prerequisites": [
+        "fr.obj.reading.familiar_words"
+      ],
+      "cefrAlignments": [
+        {
+          "level": "A1",
+          "scaleName": "Reading for orientation (signs & notices)",
+          "relation": "direct",
+          "sourceRef": "cefr-cv-2020:reading-orientation"
+        }
+      ],
+      "essential": true,
+      "evidenceNote": "Direct at A1: original notices/schedules with locate-type questions, scored in the Section-3 checkpoint."
+    }
+  ],
+  "blueprint": "## 8. Assessment (`content/<target>/assessment/`)\n\n34 objectives (`objectives.json`: grammar 8, lexical 5, written_production\n5, written_reception 4, spoken_reception 4, spoken_production 4,\ninteraction 2, phonology 1, strategy 1; 23 essential; CEFR alignments 22\ndirect / 29 supports, cited by scale identity with `sourceRef`\n`cefr-cv-2020`, **no descriptor text**; `direct` needs an evidenceNote).\n7 checkpoints (`checkpoints.json`, demonstratedShare 0.66): section-1 12\nselect; section-2 18 (conjugationCloze 6, articleSelect 5, typeAnswer 3,\nfillBlank 2, select 2); section-3 22 (listening 11, reading 7, dictation 2,\nselect 2); section-4 12 speakProduction; section-5 12 (guidedWriting 9,\nsimpleForm 3); section-6 6 interactionScenario; a1-capstone 20 (4 per\ndomain, 2 parallel forms of 10). Placement (`placement.json`): 4 stages\n(foundations 4 clusters / 7 items, building_blocks 6 / 9, reception 4 / 6,\nproduction 2 / 6), 28 items, maxItems 28, anchors strictly later per\ncluster. `claim-policy.json` (v2): evaluated levels, required domains\n(reception/production/interaction), ≥ 3 items and 2 distinct inputs per\ndirect objective, 2 task families + 2 scales per domain, fixed wording\n\"CEFR-aligned estimate — not an official CEFR examination or\ncertification\". `attainment.json`: the per-domain essential objectives a\nlevel estimate needs. Vocabulary / lesson / XP counts are never inputs.",
+  "outputFile": "content/es/_drafts/objectives/OUTPUT.jsonl"
+}

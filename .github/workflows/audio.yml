@@ -12,7 +12,7 @@
 #             hashes), read its licence card, apply the gate, pin, commit cards.
 #   canary    recon + synthesise the language's canary (content/<lang>/reception/
 #             audio-canary.json × every eligible candidate, plus 12 pack strings
-#             per course), ASR-audit (Whisper, or SenseVoice for zh/ja/ko/vi),
+#             per course), ASR-audit (Whisper, or SenseVoice for zh/ja/ko),
 #             QA, select the voice cast (content/audio/voice-casts.json) and
 #             register the chosen voices; commit reports + pins.
 #   generate  Verify pins, synthesise the chosen layers (pack / lexicon /
@@ -49,15 +49,19 @@ on:
 permissions:
   contents: write
 
+# One audio run at a time across languages: every run edits the shared voice-casts /
+# pack manifest / registry / ATTRIBUTIONS files, and concurrent pushes conflicted on rebase.
 concurrency:
-  group: audio-${{ inputs.lang }}
+  group: audio
   cancel-in-progress: false
 
 jobs:
   audio:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    # Hosted-runner maximum: es generate (2,590 clips) synthesises in ~80 min and audits with
+    # Whisper medium; 240 min was not enough (run 38650406518).
+    timeout-minutes: 360
     env:
       DL: /tmp/audio-voices
       WAV: /tmp/audio-wav
@@ -169,14 +173,14 @@ jobs:
           bash /tmp/synth.sh
           ls "$OUT" | wc -l
 
-      - name: ASR audit (Whisper, or SenseVoice for zh/ja/ko/vi — technical signal only)
+      - name: ASR audit (Whisper, or SenseVoice for zh/ja/ko — technical signal only)
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
           WHISPER=$(bun -e "console.log(require('./content/audio/engines.json').asr.whisper.pinnedVersion)")
           pip install "faster-whisper==$WHISPER" requests
           case "$LANG_INPUT" in
-            zh|ja|ko|vi)
+            zh|ja|ko)
               FUNASR=$(bun -e "console.log(require('./content/audio/engines.json').asr.sensevoice.pinnedVersion)")
               pip install "funasr==$FUNASR" torch torchaudio huggingface_hub
               ;;
@@ -230,13 +234,8 @@ jobs:
           set -euo pipefail
           git config user.name "audio workflow"
           git config user.email "actions@users.noreply.github.com"
-          for p in content/audio content/reports content/sources/registry.json "content/$LANG_INPUT/reception" "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx src/content content/courses ATTRIBUTIONS.md; do
-            if [ -e "$p" ]; then git add -A -- "$p"; fi
-          done
-          if git diff --cached --quiet; then
-            echo "nothing to commit"
-            exit 0
-          fi
+          # Gated commit (scripts/ci/bot-commit.sh): goldens re-blessed with this run's
+          # reason, then bun run test + content:check + audio:check — a failure commits nothing.
           {
             echo "audio($LANG_INPUT): $MODE_INPUT ($LAYER_INPUT) — pinned-source pipeline output"
             echo
@@ -246,14 +245,7 @@ jobs:
             echo
             echo "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
           } > /tmp/commit-msg.txt
-          git commit -F /tmp/commit-msg.txt
-          for attempt in 1 2 3; do
-            if git push origin "HEAD:$BRANCH"; then
-              exit 0
-            fi
-            echo "push rejected (attempt $attempt) — rebasing onto the moved branch"
-            git fetch origin "$BRANCH"
-            git rebase "origin/$BRANCH"
-            sleep $((attempt * 5))
-          done
-          git push origin "HEAD:$BRANCH"
+          bash scripts/ci/bot-commit.sh --branch "$BRANCH" --message /tmp/commit-msg.txt \
+            --reason "audio.yml $LANG_INPUT $MODE_INPUT ($LAYER_INPUT) run $GITHUB_RUN_ID" -- \
+            content/audio content/reports content/sources/registry.json "content/$LANG_INPUT/reception" \
+            "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx src/content content/courses ATTRIBUTIONS.md

@@ -115,7 +115,8 @@ v1.0.0, licence per voice dataset), Kokoro-82M (Apache-2.0 model and
 `kokoro` 0.9.4 package, repository revision pinned), MeloTTS (MIT library
 pinned by commit; MIT per-language models pinned by revision). ASR audit:
 faster-whisper 1.0.3 (MIT) and FunASR 1.4.16 + SenseVoiceSmall (custom model
-licence — an audit tool, never shipped) for zh/ja/ko/vi. Licence gate v2:
+licence — an audit tool, never shipped) for zh/ja/ko; Vietnamese is audited
+with faster-whisper (SenseVoiceSmall has no Vietnamese — corrected in P3c). Licence gate v2:
 allow CC0 / public domain / CC BY 4.0 / CC BY-SA 4.0 / Apache-2.0 / MIT for
 the dataset or model licence; deny GPL/AGPL/NC/ND/OpenRAIL/RAIL/Gemma/CPML
 and unverifiable cards. Clips of pipelineVersion ≥ 2 are loudness-normalised
