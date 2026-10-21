@@ -399,6 +399,14 @@ export function exerciseSchemas(lang: string) {
     id,
     writingTaskId: writingTaskId(lang),
     instruction: z.string().min(1),
+    /**
+     * P3d: the cue card the instruction refers to ("the details on the
+     * card"), native labels; mirrors the task's cueFacts when present.
+     */
+    cueFacts: z
+      .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+      .min(1)
+      .optional(),
     /** Discrete labeled fields (target-language form labels); each checks against one rubric slot. */
     fields: z
       .array(

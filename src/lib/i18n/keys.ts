@@ -103,6 +103,7 @@ export type MessageKey =
   | "ex.whatYouHeard"
   | "ex.writeFreely"
   | "ex.writeItIn"
+  | "ex.writePlaceholder"
   | "ex.writeThisIn"
   | "ex.yourAnswerLabel"
   | "ex.yourGoal"
@@ -479,4 +480,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 477;
+export const MESSAGE_KEY_COUNT = 478;

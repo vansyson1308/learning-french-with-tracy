@@ -11,6 +11,7 @@
 import { existsSync } from "fs";
 
 import type { PackSource } from "../../../content/schema";
+import { examTrackPaths } from "../exam-bank";
 import { exerciseNativeFieldPaths, getPath } from "../native-fields";
 import { readJson, safeResolve } from "../pipeline";
 
@@ -67,6 +68,26 @@ export function collectChecklist(courseId: string): Line[] {
     ["lexicon-review", `content/${lang}/lexicon/lexemes.json`],
   ];
   for (const [group, rel] of rich) if (existsSync(safeResolve(rel))) walkNative(readJson(rel), native, rel.split("/").pop()!.replace(".json", ""), out, group);
+  // P3d: scored-bank exercise payloads authored IN this native language are
+  // plain strings (no overlay) — list them too; exam tracks are banks.
+  const bankItems = (rel: string, items: (doc: Record<string, unknown>) => { id: string; exercise: Record<string, unknown> }[], group: string) => {
+    if (!existsSync(safeResolve(rel))) return;
+    const doc = readJson(rel) as Record<string, unknown>;
+    if ((typeof doc.exerciseNativeCode === "string" ? doc.exerciseNativeCode : "en") !== native) return;
+    for (const item of items(doc)) {
+      for (const p of exerciseNativeFieldPaths(item.exercise)) {
+        const text = getPath(item.exercise, p);
+        if (typeof text === "string") out.push({ group, id: `${item.id}.${p}`, text });
+      }
+    }
+  };
+  type Bank = { id: string; exercise: Record<string, unknown> };
+  bankItems(`content/${lang}/assessment/checkpoints.json`, (d) => ((d.checkpoints as { items: Bank[] }[]) ?? []).flatMap((c) => c.items), "checkpoints");
+  bankItems(`content/${lang}/assessment/placement.json`, (d) => ((d.stages as { clusters: { items: Bank[] }[] }[]) ?? []).flatMap((s) => s.clusters.flatMap((c) => c.items)), "placement");
+  for (const rel of examTrackPaths(lang)) {
+    walkNative(readJson(rel), native, rel.split("/").pop()!.replace(".json", ""), out, "exam");
+    bankItems(rel, (d) => (d.items as Bank[]) ?? [], "exam");
+  }
   return out;
 }
 

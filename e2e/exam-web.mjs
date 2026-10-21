@@ -94,11 +94,14 @@ try {
   for (const s of TRACK.sections) await byId(`exam-practice-${s.id}`).waitFor();
   check("overview lists the four parts", true);
 
-  // 4. Writing practice: two guided tasks, then a recorded result.
+  // 4. Writing practice: the whole bank (both forms: 2 forms + 2 notes), then a recorded result.
   await byId("exam-practice-writing").click();
-  for (let step = 0; step < 2; step++) {
+  let cuesShown = 0;
+  for (let step = 0; step < 4; step++) {
+    await byId("session-check").waitFor();
     const formFields = await page.locator('[data-testid^="form-field-"]').count();
     if (formFields > 0) {
+      cuesShown += await byId("form-cues").count();
       const fields = page.locator('[data-testid^="form-field-"]');
       for (let i = 0; i < formFields; i++) await fields.nth(i).fill(["Linh", "22", "Valencia"][i] ?? "x");
     } else {
@@ -107,6 +110,7 @@ try {
     await byId("session-check").click();
     await byId("session-continue").click();
   }
+  check("writing practice: every form shows its cue card", cuesShown === 2, `${cuesShown}/2`);
   await byId("exam-results").waitFor();
   const writingScore = await byId("exam-section-score-writing").innerText();
   check("writing practice records a scored result", /\/25/.test(writingScore), writingScore.trim());

@@ -139,6 +139,7 @@ type SimpleFormExercise = {
   id: string;
   writingTaskId: string;
   instruction: string;
+  cueFacts?: { label: string; value: string }[];
   fields: { id: string; label: string; slotId: string }[];
   rubric: LocalizedWritingTask["rubric"];
   modelAnswers: string[];
@@ -360,6 +361,7 @@ export function validateWriting(input: {
       }
     } else {
       same("fields", exercise.fields, task.formFields ?? null);
+      if (exercise.cueFacts !== undefined) same("cueFacts", exercise.cueFacts, localized.cueFacts ?? null);
       if (task.taskFamily !== "simple_form") {
         err(`${exercise.id}: simpleForm exercises require simple_form tasks`);
       }

@@ -298,3 +298,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/reception/es-listening.json
 - compile: changed  src/content/reception/es-reading.json
 - compile: new      src/content/exam/es-exam-tracks.json
+
+## 2026-10-21 — P3d: es-vi simpleForm exercises (lessons, checkpoints, exam) carry their task's cue card (optional simpleForm.cueFacts); French unchanged
+
+- compile: changed  src/content/assessment/es-checkpoints.json
+- compile: changed  src/content/exam/es-exam-tracks.json
+- compile: changed  src/content/packs/es-vi.json

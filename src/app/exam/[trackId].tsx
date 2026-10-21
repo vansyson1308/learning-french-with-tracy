@@ -28,7 +28,10 @@ function ExamTrackBody({ courseId }: { courseId: string }) {
   const styles = useStyles();
   const { t } = useT();
   const track = examTrackFor(courseId, trackId ?? "");
-  const attempts = useProgress((s) => assessmentFor(s, courseId).checkpointAttempts);
+  // Select the stable store slice; assessmentFor() builds a fresh empty
+  // state when nothing is recorded, which must not be a selector result.
+  const assessmentByTarget = useProgress((s) => s.assessmentByTarget);
+  const attempts = assessmentFor({ assessmentByTarget }, courseId).checkpointAttempts;
   if (!track) return <Redirect href="/" />;
 
   const mockId = examAttemptId(track.id, "mock");
