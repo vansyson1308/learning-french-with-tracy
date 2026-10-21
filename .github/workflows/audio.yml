@@ -59,7 +59,9 @@ jobs:
   audio:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    # Hosted-runner maximum: es generate (2,590 clips) synthesises in ~80 min and audits with
+    # Whisper medium; 240 min was not enough (run 38650406518).
+    timeout-minutes: 360
     env:
       DL: /tmp/audio-voices
       WAV: /tmp/audio-wav
@@ -232,13 +234,8 @@ jobs:
           set -euo pipefail
           git config user.name "audio workflow"
           git config user.email "actions@users.noreply.github.com"
-          for p in content/audio content/reports content/sources/registry.json "content/$LANG_INPUT/reception" "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx src/content content/courses ATTRIBUTIONS.md; do
-            if [ -e "$p" ]; then git add -A -- "$p"; fi
-          done
-          if git diff --cached --quiet; then
-            echo "nothing to commit"
-            exit 0
-          fi
+          # Gated commit (scripts/ci/bot-commit.sh): goldens re-blessed with this run's
+          # reason, then bun run test + content:check + audio:check — a failure commits nothing.
           {
             echo "audio($LANG_INPUT): $MODE_INPUT ($LAYER_INPUT) — pinned-source pipeline output"
             echo
@@ -248,14 +245,7 @@ jobs:
             echo
             echo "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
           } > /tmp/commit-msg.txt
-          git commit -F /tmp/commit-msg.txt
-          for attempt in 1 2 3; do
-            if git push origin "HEAD:$BRANCH"; then
-              exit 0
-            fi
-            echo "push rejected (attempt $attempt) — rebasing onto the moved branch"
-            git fetch origin "$BRANCH"
-            git rebase "origin/$BRANCH"
-            sleep $((attempt * 5))
-          done
-          git push origin "HEAD:$BRANCH"
+          bash scripts/ci/bot-commit.sh --branch "$BRANCH" --message /tmp/commit-msg.txt \
+            --reason "audio.yml $LANG_INPUT $MODE_INPUT ($LAYER_INPUT) run $GITHUB_RUN_ID" -- \
+            content/audio content/reports content/sources/registry.json "content/$LANG_INPUT/reception" \
+            "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx src/content content/courses ATTRIBUTIONS.md

@@ -86,14 +86,14 @@
     },
     {
       "id": "piper-voice-thorsten",
-      "name": "Piper voice de_DE-thorsten-medium",
+      "name": "Piper voice de_DE-thorsten-high",
       "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
       "license": "CC0-1.0",
-      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/thorsten/medium",
-      "attribution": "Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-medium voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/thorsten/high",
+      "attribution": "Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-high voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
       "covers": [
         "assets/audio/de/",
-        "content/audio/model-cards/de/de_DE-thorsten-medium.MODEL_CARD.txt"
+        "content/audio/model-cards/de/de_DE-thorsten-high.MODEL_CARD.txt"
       ]
     },
     {
@@ -346,6 +346,18 @@
       "covers": [
         "assets/audio/it/",
         "content/audio/model-cards/it/kokoro-if_sara.card.txt"
+      ]
+    },
+    {
+      "id": "piper-voice-kerstin",
+      "name": "Piper voice de_DE-kerstin-low",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC0-1.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/de/de_DE/kerstin/low",
+      "attribution": "Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-kerstin-low voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/de/",
+        "content/audio/model-cards/de/de_DE-kerstin-low.MODEL_CARD.txt"
       ]
     }
   ]

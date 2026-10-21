@@ -37,6 +37,7 @@ import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScrip
 import { loadPacks, packsForTarget } from "./lib/pipeline";
 import { receptionAssetKey } from "./lib/reception";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
+import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const PACK_MANIFEST_PATH = path.join(ROOT, "content/audio/pack-audio-manifest.json");
@@ -70,7 +71,7 @@ type ReceptionManifest = {
 type VoiceCasts = {
   version: number;
   note: string;
-  languages: Record<string, { status: string; candidates: { voiceId: string; engine: EngineId }[]; cast: { A: string | null; B: string | null }; canary: Record<string, unknown> | null; reason?: string }>;
+  languages: Record<string, { status: string; candidates: ({ voiceId: string; engine: EngineId } & DeclaredIdentity)[]; cast: { A: string | null; B: string | null }; canary: Record<string, unknown> | null; reason?: string; castNote?: string; candidateSearch?: string }>;
 };
 
 export type PlanClip = {
@@ -531,6 +532,31 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   if (failures > 0 && arg("strict") === "true") fail("technical QA failures in strict mode");
 }
 
+/** The registry source id a voice is recorded under (Piper: one entry per dataset name, shared by its qualities). */
+function registryIdFor(voice: Voice): string {
+  if (voice.engine === "piper") return `piper-voice-${voice.files.model.path.split("/")[2]}`;
+  if (voice.engine === "kokoro") return `kokoro-voice-${voice.id.replace(/^kokoro-/, "")}`;
+  return `melotts-${voice.language}`;
+}
+
+/** The committed model card of a voice (written at recon), or null. */
+function committedCard(voice: Voice): string | null {
+  const file = `${voice.id}.${voice.engine === "piper" ? "MODEL_CARD" : "card"}.txt`;
+  for (const p of [path.join(MODEL_CARDS_DIR, voice.language, file), path.join(MODEL_CARDS_DIR, file)]) if (existsSync(p)) return readFileSync(p, "utf8");
+  return null;
+}
+
+/** Speaker identities of the language's candidates (model card + the declared identity in voice-casts.json). */
+function castIdentities(all: Voice[], candidates: ({ voiceId: string } & DeclaredIdentity)[]): Map<string, SpeakerIdentity> {
+  const ids = new Map<string, SpeakerIdentity>();
+  for (const c of candidates) {
+    const voice = all.find((v) => v.id === c.voiceId);
+    if (!voice) continue;
+    ids.set(voice.id, speakerIdentity(voice, committedCard(voice), { speaker: c.speaker, gender: c.gender }));
+  }
+  return ids;
+}
+
 function registryEntryFor(voice: Voice, license: string, courseId: string, best: { meanWer: number; clips: number; technicalFailures: number }, today: string) {
   const engine = voice.engine;
   if (engine === "piper") {
@@ -598,15 +624,33 @@ function select(reportPath: string, courses?: string) {
       .filter((r) => ["eligible", "selected"].includes(voiceById(all, r.voiceId).status))
       .map((r) => ({ voiceId: r.voiceId, clips: r.clips, meanWer: Number((r.werSum / Math.max(r.clips, 1)).toFixed(4)), technicalFailures: r.technicalFailures }))
       .sort((a, b) => a.technicalFailures - b.technicalFailures || a.meanWer - b.meanWer || candidates.indexOf(a.voiceId) - candidates.indexOf(b.voiceId));
-    const best = rows[0];
-    if (!best || best.meanWer > 0.6) {
-      const reason = !best ? "no eligible candidate has canary results" : `best candidate ${best.voiceId} has mean WER/CER ${best.meanWer} (> 0.6) — not intelligible enough to ship`;
+    // QC 2026-10-21: B is a different person from A (model card / declared identity),
+    // preferably the other gender, within the same floor (scripts/lib/tts/speaker.ts).
+    const pick = pickCast(rows, castIdentities(all, langCast.candidates));
+    const best = pick.A;
+    if (!best) {
+      const reason = rows.length === 0 ? "no eligible candidate has canary results" : `best candidate ${rows[0].voiceId} has mean WER/CER ${rows[0].meanWer} (> 0.6) — not intelligible enough to ship`;
       console.log(`${LANG}: NO CLEAN VOICE — ${reason}`);
       langCast.status = "no-clean-voice";
       langCast.reason = reason;
       langCast.canary = { reportedAt: today, report: path.relative(ROOT, reportPath), voices: rows };
+      langCast.castNote = pick.note;
     } else {
-      const second = rows[1] ?? null;
+      const second = pick.B;
+      // Voices of an earlier cast that are no longer A or B go back to eligible; their registry
+      // entry is dropped unless a cast voice shares it (Piper qualities of one dataset share one entry).
+      const castIds = new Set([best.voiceId, second?.voiceId].filter((x): x is string => !!x));
+      const keptRegistryIds = new Set([...castIds].map((id) => registryIdFor(voiceById(all, id))));
+      for (const c of langCast.candidates) {
+        const voice = all.find((v) => v.id === c.voiceId);
+        if (!voice || voice.status !== "selected" || castIds.has(voice.id)) continue;
+        voice.status = "eligible";
+        const inPack = m.voices.find((v) => v.id === voice.id);
+        if (inPack) inPack.status = "eligible";
+        const rid = registryIdFor(voice);
+        if (!keptRegistryIds.has(rid)) registry.sources = registry.sources.filter((s) => s.id !== rid);
+        console.log(`${LANG}: ${voice.id} leaves the cast (back to eligible)`);
+      }
       for (const [id, course] of languageCourses(m, courses)) {
         m.courses[id] = { policy: "generated", language: LANG, voiceId: best.voiceId, candidates: candidates, voiceCast: { A: best.voiceId, B: second?.voiceId ?? null } };
         if (course.policy === "device-tts") console.log(`${id}: was device-tts — becomes generated with the new cast (the pack's audio policy is cleared by apply)`);
@@ -634,7 +678,8 @@ function select(reportPath: string, courses?: string) {
       langCast.cast = { A: best.voiceId, B: second?.voiceId ?? null };
       langCast.canary = { reportedAt: today, report: path.relative(ROOT, reportPath), voices: rows };
       delete langCast.reason;
-      console.log(`${LANG}: cast A=${best.voiceId} (meanWER/CER ${best.meanWer}) B=${second?.voiceId ?? "—"}`);
+      langCast.castNote = pick.note;
+      console.log(`${LANG}: cast A=${best.voiceId} (meanWER/CER ${best.meanWer}) B=${second?.voiceId ?? "—"} — ${pick.note}`);
     }
     savePackManifest(m);
   }

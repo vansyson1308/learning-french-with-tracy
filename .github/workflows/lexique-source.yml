@@ -144,11 +144,8 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/fr/lexicon
-          if git diff --cached --quiet; then
-            echo "Nothing to commit."
-            exit 0
-          fi
+          # Gated commit (scripts/ci/bot-commit.sh): goldens re-blessed with this run's
+          # reason, then bun run test + content:check + audio:check — a failure commits nothing.
           printf '%s\n' \
             "Phase 5A: Lexique 4 $MODE_INPUT results (official source, runner-side)" \
             "" \
@@ -160,5 +157,6 @@ jobs:
             "Co-Authored-By: Claude <noreply@anthropic.com>" \
             "Claude-Session: https://claude.ai/code/session_01AwHYc63cWfazzNrf1PyqCf" \
             > /tmp/commit-msg.txt
-          git commit -F /tmp/commit-msg.txt
-          git push origin "HEAD:$BRANCH"
+          bash scripts/ci/bot-commit.sh --branch "$BRANCH" --message /tmp/commit-msg.txt \
+            --reason "lexique-source.yml fr $MODE_INPUT run $GITHUB_RUN_ID" -- \
+            content/fr/lexicon

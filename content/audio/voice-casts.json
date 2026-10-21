@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "note": "Voice cast per target language (P3b): the candidate voices the canary ASR audit compares (every candidate must pass the licence gate at recon), the selected cast {A: primary, B: second voice for dialogue / variety}, and the canary results. `status`: pending-canary (no run yet), selected, no-clean-voice (every candidate failed the gate or the intelligibility floor — recorded explicitly, the courses stay device-tts). Written by `scripts/audio.ts select`; never edited by hand except to add candidates.",
+  "note": "Voice cast per target language (P3b): the candidate voices the canary ASR audit compares (every candidate must pass the licence gate at recon), the selected cast {A: primary, B: second voice for dialogue / variety}, and the canary results. `status`: pending-canary (no run yet), selected, no-clean-voice (every candidate failed the gate or the intelligibility floor — recorded explicitly, the courses stay device-tts). Written by `scripts/audio.ts select`; never edited by hand except to add candidates. Cast rule (QC 2026-10-21): B must be a different speaker from A (Piper: voice name + model-card dataset URL; Kokoro: voice pack; or an explicit `speaker` on the candidate), preferably of the other gender (`gender` on the candidate, Kokoro from its id), within the same floor (mean WER/CER ≤ 0.6, no technical failure); unknown identity is never paired. `castNote` records why.",
   "languages": {
     "fr": {
       "status": "selected",
@@ -58,15 +58,18 @@
       "candidates": [
         {
           "voiceId": "de_DE-thorsten-high",
-          "engine": "piper"
+          "engine": "piper",
+          "gender": "male"
         },
         {
           "voiceId": "de_DE-thorsten-medium",
-          "engine": "piper"
+          "engine": "piper",
+          "gender": "male"
         },
         {
           "voiceId": "de_DE-kerstin-low",
-          "engine": "piper"
+          "engine": "piper",
+          "gender": "female"
         },
         {
           "voiceId": "de_DE-mls-medium",
@@ -75,11 +78,11 @@
       ],
       "cast": {
         "A": "de_DE-thorsten-high",
-        "B": "de_DE-thorsten-medium"
+        "B": "de_DE-kerstin-low"
       },
       "canary": {
-        "reportedAt": "2026-10-14",
-        "report": "content/reports/de/audio-canary.json",
+        "reportedAt": "2026-10-21",
+        "report": "content\\reports\\de\\audio-canary.json",
         "voices": [
           {
             "voiceId": "de_DE-thorsten-high",
@@ -106,7 +109,9 @@
             "technicalFailures": 6
           }
         ]
-      }
+      },
+      "castNote": "A=de_DE-thorsten-high (model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice); B=de_DE-kerstin-low: different speaker (model card: voice kerstin, dataset github.com/rhasspy/dataset-voice-kerstin), other gender (female vs male), mean WER/CER 0.4905 ≤ 0.6; skipped de_DE-thorsten-medium (same speaker as A or unverifiable: model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice), de_DE-mls-medium (mean WER/CER 1.1964 > 0.6)",
+      "candidateSearch": "2026-10-21: no better German B exists at rhasspy/piper-voices v1.0.0 — the licence gate excludes eva_k, karlsson and ramona (M-AILABS, 'License: See URL') and pavoque (CC BY-NC-SA 4.0); thorsten_emotional passes (CC0) but is Thorsten Müller again (8 emotion styles, same dataset). kerstin-low (CC0, 16 kHz low quality, mean WER 0.49) is the only licence-clean second speaker, so B = kerstin-low."
     },
     "it": {
       "status": "selected",
