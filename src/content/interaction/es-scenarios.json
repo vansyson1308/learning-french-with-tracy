@@ -1,0 +1,4618 @@
+{
+  "generator": "scripts/lib/interaction.ts",
+  "version": 1,
+  "order": [
+    "es.scenario.hola_que_tal",
+    "es.scenario.conocer_nombre",
+    "es.scenario.cafe_bebida",
+    "es.scenario.tienda_compras",
+    "es.scenario.donde_estacion",
+    "es.scenario.donde_hotel",
+    "es.scenario.una_cita",
+    "es.scenario.casa_amiga",
+    "es.scenario.cp_conocer",
+    "es.scenario.cp_cafe",
+    "es.scenario.cp_panaderia",
+    "es.scenario.cp_conocerse",
+    "es.scenario.cp_planes",
+    "es.scenario.cp_boleto",
+    "es.scenario.a1cap_vecina",
+    "es.scenario.a1cap_telefono",
+    "es.scenario.a1cap_julia",
+    "es.scenario.a1cap_invitacion",
+    "es.scenario.dele_a_preguntas",
+    "es.scenario.dele_a_billete",
+    "es.scenario.dele_b_preguntas",
+    "es.scenario.dele_b_restaurante"
+  ],
+  "byId": {
+    "es.scenario.hola_que_tal": {
+      "id": "es.scenario.hola_que_tal",
+      "title": "Một lời chào nhanh",
+      "goal": "Chào một người bạn, nói bạn thế nào, và chào tạm biệt.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_hello",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_hello": {
+          "kind": "partner",
+          "id": "p_hello",
+          "text": "¡Hola! ¿Qué tal?",
+          "clipId": "es.clip.ix_hola_que_tal_hello_ask",
+          "rephraseText": "¡Hola! ¿Cómo estás?",
+          "rephraseClipId": "es.clip.ix_hola_que_tal_hello_s",
+          "next": "l_hello"
+        },
+        "l_hello": {
+          "kind": "learner",
+          "id": "l_hello",
+          "prompt": "Hãy chào lại và nói rằng bạn khỏe.",
+          "expected": [
+            {
+              "intent": "greet_fine",
+              "acceptedVariants": [
+                "¡Hola! Bien, gracias.",
+                "Muy bien, gracias.",
+                "Bien, ¿y tú?",
+                "Estoy bien, gracias.",
+                "¡Hola! Estoy muy bien."
+              ],
+              "requiredConcepts": [
+                [
+                  "bien",
+                  "muy bien"
+                ]
+              ],
+              "next": "p_bye"
+            }
+          ],
+          "noMatchNext": "r_hello",
+          "scored": true
+        },
+        "r_hello": {
+          "kind": "partner",
+          "id": "r_hello",
+          "text": "¡Hola! ¿Cómo estás?",
+          "clipId": "es.clip.ix_hola_que_tal_hello_s",
+          "next": "l_hello_b"
+        },
+        "l_hello_b": {
+          "kind": "learner",
+          "id": "l_hello_b",
+          "prompt": "Hãy chào lại và nói rằng bạn khỏe.",
+          "expected": [
+            {
+              "intent": "greet_fine",
+              "acceptedVariants": [
+                "¡Hola! Bien, gracias.",
+                "Muy bien, gracias.",
+                "Bien, ¿y tú?",
+                "Estoy bien, gracias.",
+                "¡Hola! Estoy muy bien."
+              ],
+              "requiredConcepts": [
+                [
+                  "bien",
+                  "muy bien"
+                ]
+              ],
+              "next": "p_bye"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_bye": {
+          "kind": "partner",
+          "id": "p_bye",
+          "text": "¡Qué bien! Bueno, me voy. ¡Adiós!",
+          "clipId": "es.clip.ix_hola_que_tal_bye_ask",
+          "rephraseText": "¡Adiós!",
+          "rephraseClipId": "es.clip.ix_hola_que_tal_bye_s",
+          "next": "l_bye"
+        },
+        "l_bye": {
+          "kind": "learner",
+          "id": "l_bye",
+          "prompt": "Hãy chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "say_bye",
+              "acceptedVariants": [
+                "¡Adiós!",
+                "¡Hasta luego!",
+                "Adiós, hasta luego.",
+                "¡Chao!",
+                "¡Hasta pronto!"
+              ],
+              "requiredConcepts": [
+                [
+                  "adiós",
+                  "hasta luego",
+                  "hasta pronto",
+                  "chao",
+                  "nos vemos"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_bye",
+          "scored": true
+        },
+        "r_bye": {
+          "kind": "partner",
+          "id": "r_bye",
+          "text": "¡Adiós!",
+          "clipId": "es.clip.ix_hola_que_tal_bye_s",
+          "next": "l_bye_b"
+        },
+        "l_bye_b": {
+          "kind": "learner",
+          "id": "l_bye_b",
+          "prompt": "Hãy chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "say_bye",
+              "acceptedVariants": [
+                "¡Adiós!",
+                "¡Hasta luego!",
+                "Adiós, hasta luego.",
+                "¡Chao!",
+                "¡Hasta pronto!"
+              ],
+              "requiredConcepts": [
+                [
+                  "adiós",
+                  "hasta luego",
+                  "hasta pronto",
+                  "chao",
+                  "nos vemos"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Hasta pronto!",
+          "clipId": "es.clip.ix_hola_que_tal_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.conocer_nombre": {
+      "id": "es.scenario.conocer_nombre",
+      "title": "Gặp một người",
+      "goal": "Chào, nói tên bạn, và trả lời một câu hỏi đơn giản. Bạn là Lucía.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_name",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_name": {
+          "kind": "partner",
+          "id": "p_name",
+          "text": "¡Hola! Me llamo Marcos. ¿Y tú?",
+          "clipId": "es.clip.ix_conocer_nombre_name_ask",
+          "rephraseText": "Yo soy Marcos. ¿Y tú?",
+          "rephraseClipId": "es.clip.ix_conocer_nombre_name_s",
+          "next": "l_name"
+        },
+        "l_name": {
+          "kind": "learner",
+          "id": "l_name",
+          "prompt": "Hãy chào và nói tên bạn — bạn là Lucía.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Hola, me llamo Lucía.",
+                "Me llamo Lucía.",
+                "Soy Lucía.",
+                "Hola, soy Lucía."
+              ],
+              "requiredConcepts": [
+                [
+                  "lucía",
+                  "lucia"
+                ]
+              ],
+              "next": "p_here"
+            }
+          ],
+          "noMatchNext": "r_name",
+          "scored": true
+        },
+        "r_name": {
+          "kind": "partner",
+          "id": "r_name",
+          "text": "Yo soy Marcos. ¿Y tú?",
+          "clipId": "es.clip.ix_conocer_nombre_name_s",
+          "next": "l_name_b"
+        },
+        "l_name_b": {
+          "kind": "learner",
+          "id": "l_name_b",
+          "prompt": "Hãy chào và nói tên bạn — bạn là Lucía.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Hola, me llamo Lucía.",
+                "Me llamo Lucía.",
+                "Soy Lucía.",
+                "Hola, soy Lucía."
+              ],
+              "requiredConcepts": [
+                [
+                  "lucía",
+                  "lucia"
+                ]
+              ],
+              "next": "p_here"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_here": {
+          "kind": "partner",
+          "id": "p_here",
+          "text": "¡Mucho gusto, Lucía! ¿Vives aquí?",
+          "clipId": "es.clip.ix_conocer_nombre_here_ask",
+          "rephraseText": "¿Vives aquí?",
+          "rephraseClipId": "es.clip.ix_conocer_nombre_here_s",
+          "next": "l_here"
+        },
+        "t_yes_here": {
+          "kind": "terminal",
+          "id": "t_yes_here",
+          "outcome": "goal_met",
+          "text": "¡Qué bien! Yo también vivo aquí. ¡Adiós, Lucía!",
+          "clipId": "es.clip.ix_conocer_nombre_yes_here_t"
+        },
+        "t_no_elsewhere": {
+          "kind": "terminal",
+          "id": "t_no_elsewhere",
+          "outcome": "goal_met",
+          "text": "¡Ah, vale! Pues bienvenida. ¡Adiós, Lucía!",
+          "clipId": "es.clip.ix_conocer_nombre_no_elsewhere_t"
+        },
+        "l_here": {
+          "kind": "learner",
+          "id": "l_here",
+          "prompt": "Hãy trả lời câu hỏi — bạn có sống ở đây không? Nói có hoặc không.",
+          "expected": [
+            {
+              "intent": "yes_here",
+              "acceptedVariants": [
+                "Sí, vivo aquí.",
+                "¡Sí!",
+                "Sí, vivo aquí, en Madrid."
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si"
+                ]
+              ],
+              "next": "t_yes_here"
+            },
+            {
+              "intent": "no_elsewhere",
+              "acceptedVariants": [
+                "No, vivo en Sevilla.",
+                "¡No!",
+                "No, no vivo aquí."
+              ],
+              "requiredConcepts": [
+                [
+                  "no"
+                ]
+              ],
+              "next": "t_no_elsewhere"
+            }
+          ],
+          "noMatchNext": "r_here",
+          "scored": true
+        },
+        "r_here": {
+          "kind": "partner",
+          "id": "r_here",
+          "text": "¿Vives aquí?",
+          "clipId": "es.clip.ix_conocer_nombre_here_s",
+          "next": "l_here_b"
+        },
+        "l_here_b": {
+          "kind": "learner",
+          "id": "l_here_b",
+          "prompt": "Hãy trả lời câu hỏi — bạn có sống ở đây không? Nói có hoặc không.",
+          "expected": [
+            {
+              "intent": "yes_here",
+              "acceptedVariants": [
+                "Sí, vivo aquí.",
+                "¡Sí!",
+                "Sí, vivo aquí, en Madrid."
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si"
+                ]
+              ],
+              "next": "t_yes_here"
+            },
+            {
+              "intent": "no_elsewhere",
+              "acceptedVariants": [
+                "No, vivo en Sevilla.",
+                "¡No!",
+                "No, no vivo aquí."
+              ],
+              "requiredConcepts": [
+                [
+                  "no"
+                ]
+              ],
+              "next": "t_no_elsewhere"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.cafe_bebida": {
+      "id": "es.scenario.cafe_bebida",
+      "title": "Ở quán cà phê",
+      "goal": "Gọi một đồ uống và cảm ơn người phục vụ.",
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_order",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_order": {
+          "kind": "partner",
+          "id": "p_order",
+          "text": "¡Buenos días! ¿Qué desea?",
+          "clipId": "es.clip.ix_cafe_bebida_order_ask",
+          "rephraseText": "¿Qué quiere tomar?",
+          "rephraseClipId": "es.clip.ix_cafe_bebida_order_s",
+          "next": "l_order"
+        },
+        "l_order": {
+          "kind": "learner",
+          "id": "l_order",
+          "prompt": "Hãy gọi một cà phê — hoặc một trà.",
+          "expected": [
+            {
+              "intent": "order_cafe",
+              "acceptedVariants": [
+                "Un café, por favor.",
+                "Quiero un café, por favor.",
+                "Un café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "b_order_order_cafe"
+            },
+            {
+              "intent": "order_te",
+              "acceptedVariants": [
+                "Un té, por favor.",
+                "Quiero un té, por favor.",
+                "Un té."
+              ],
+              "requiredConcepts": [
+                [
+                  "té",
+                  "te"
+                ]
+              ],
+              "next": "b_order_order_te"
+            }
+          ],
+          "noMatchNext": "r_order",
+          "scored": true
+        },
+        "r_order": {
+          "kind": "partner",
+          "id": "r_order",
+          "text": "¿Qué quiere tomar?",
+          "clipId": "es.clip.ix_cafe_bebida_order_s",
+          "next": "l_order_b"
+        },
+        "l_order_b": {
+          "kind": "learner",
+          "id": "l_order_b",
+          "prompt": "Hãy gọi một cà phê — hoặc một trà.",
+          "expected": [
+            {
+              "intent": "order_cafe",
+              "acceptedVariants": [
+                "Un café, por favor.",
+                "Quiero un café, por favor.",
+                "Un café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "b_order_order_cafe"
+            },
+            {
+              "intent": "order_te",
+              "acceptedVariants": [
+                "Un té, por favor.",
+                "Quiero un té, por favor.",
+                "Un té."
+              ],
+              "requiredConcepts": [
+                [
+                  "té",
+                  "te"
+                ]
+              ],
+              "next": "b_order_order_te"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_order_order_cafe": {
+          "kind": "partner",
+          "id": "b_order_order_cafe",
+          "text": "Un café, muy bien. Son dos euros. ¡Aquí tiene su café!",
+          "clipId": "es.clip.ix_cafe_bebida_order_cafe_b",
+          "rephraseText": "¡Aquí tiene!",
+          "rephraseClipId": "es.clip.ix_cafe_bebida_thanks_s",
+          "next": "l_thanks"
+        },
+        "b_order_order_te": {
+          "kind": "partner",
+          "id": "b_order_order_te",
+          "text": "Un té, perfecto. Son dos euros. ¡Aquí tiene su té!",
+          "clipId": "es.clip.ix_cafe_bebida_order_te_b",
+          "rephraseText": "¡Aquí tiene!",
+          "rephraseClipId": "es.clip.ix_cafe_bebida_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!"
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "¡Aquí tiene!",
+          "clipId": "es.clip.ix_cafe_bebida_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!"
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Gracias a usted! ¡Que tenga un buen día!",
+          "clipId": "es.clip.ix_cafe_bebida_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.tienda_compras": {
+      "id": "es.scenario.tienda_compras",
+      "title": "Ở cửa hàng",
+      "goal": "Hỏi mua bánh mì, rồi trả lời câu hỏi tiếp theo.",
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_want",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_want": {
+          "kind": "partner",
+          "id": "p_want",
+          "text": "¡Buenos días! ¿En qué puedo ayudarle?",
+          "clipId": "es.clip.ix_tienda_compras_want_ask",
+          "rephraseText": "¿Qué quiere?",
+          "rephraseClipId": "es.clip.ix_tienda_compras_want_s",
+          "next": "l_want"
+        },
+        "l_want": {
+          "kind": "learner",
+          "id": "l_want",
+          "prompt": "Hãy nói rằng bạn muốn mua bánh mì.",
+          "expected": [
+            {
+              "intent": "want_pan",
+              "acceptedVariants": [
+                "Quiero pan, por favor.",
+                "Pan, por favor.",
+                "Un pan, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "pan"
+                ]
+              ],
+              "next": "p_more"
+            }
+          ],
+          "noMatchNext": "r_want",
+          "scored": true
+        },
+        "r_want": {
+          "kind": "partner",
+          "id": "r_want",
+          "text": "¿Qué quiere?",
+          "clipId": "es.clip.ix_tienda_compras_want_s",
+          "next": "l_want_b"
+        },
+        "l_want_b": {
+          "kind": "learner",
+          "id": "l_want_b",
+          "prompt": "Hãy nói rằng bạn muốn mua bánh mì.",
+          "expected": [
+            {
+              "intent": "want_pan",
+              "acceptedVariants": [
+                "Quiero pan, por favor.",
+                "Pan, por favor.",
+                "Un pan, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "pan"
+                ]
+              ],
+              "next": "p_more"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_more": {
+          "kind": "partner",
+          "id": "p_more",
+          "text": "¡Aquí tiene el pan! ¿Algo más?",
+          "clipId": "es.clip.ix_tienda_compras_more_ask",
+          "rephraseText": "¿Quiere algo más?",
+          "rephraseClipId": "es.clip.ix_tienda_compras_more_s",
+          "next": "l_more"
+        },
+        "t_want_agua": {
+          "kind": "terminal",
+          "id": "t_want_agua",
+          "outcome": "goal_met",
+          "text": "¡Y una botella de agua! Son tres euros. ¡Gracias, buen día!",
+          "clipId": "es.clip.ix_tienda_compras_want_agua_t"
+        },
+        "t_thats_all": {
+          "kind": "terminal",
+          "id": "t_thats_all",
+          "outcome": "goal_met",
+          "text": "Muy bien. Son dos euros. ¡Gracias, buen día!",
+          "clipId": "es.clip.ix_tienda_compras_thats_all_t"
+        },
+        "l_more": {
+          "kind": "learner",
+          "id": "l_more",
+          "prompt": "Hãy hỏi thêm nước — hoặc nói thế là đủ.",
+          "expected": [
+            {
+              "intent": "want_agua",
+              "acceptedVariants": [
+                "Agua, por favor.",
+                "Y agua, por favor.",
+                "Quiero agua también."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "t_want_agua"
+            },
+            {
+              "intent": "thats_all",
+              "acceptedVariants": [
+                "No, nada más, gracias.",
+                "Nada más.",
+                "Es todo, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "nada más",
+                  "nada mas",
+                  "es todo",
+                  "eso es todo"
+                ]
+              ],
+              "next": "t_thats_all"
+            }
+          ],
+          "noMatchNext": "r_more",
+          "scored": true
+        },
+        "r_more": {
+          "kind": "partner",
+          "id": "r_more",
+          "text": "¿Quiere algo más?",
+          "clipId": "es.clip.ix_tienda_compras_more_s",
+          "next": "l_more_b"
+        },
+        "l_more_b": {
+          "kind": "learner",
+          "id": "l_more_b",
+          "prompt": "Hãy hỏi thêm nước — hoặc nói thế là đủ.",
+          "expected": [
+            {
+              "intent": "want_agua",
+              "acceptedVariants": [
+                "Agua, por favor.",
+                "Y agua, por favor.",
+                "Quiero agua también."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "t_want_agua"
+            },
+            {
+              "intent": "thats_all",
+              "acceptedVariants": [
+                "No, nada más, gracias.",
+                "Nada más.",
+                "Es todo, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "nada más",
+                  "nada mas",
+                  "es todo",
+                  "eso es todo"
+                ]
+              ],
+              "next": "t_thats_all"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.donde_estacion": {
+      "id": "es.scenario.donde_estacion",
+      "title": "Nhà ga ở đâu?",
+      "goal": "Hỏi nhà ga ở đâu và cảm ơn họ.",
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_ask",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_ask": {
+          "kind": "partner",
+          "id": "p_ask",
+          "text": "Sí, hola. ¿Puedo ayudarle?",
+          "clipId": "es.clip.ix_donde_estacion_ask_ask",
+          "rephraseText": "¿Busca algo?",
+          "rephraseClipId": "es.clip.ix_donde_estacion_ask_s",
+          "next": "l_ask"
+        },
+        "l_ask": {
+          "kind": "learner",
+          "id": "l_ask",
+          "prompt": "Hãy hỏi: xin hỏi nhà ga ở đâu?",
+          "expected": [
+            {
+              "intent": "ask_estacion",
+              "acceptedVariants": [
+                "¿Dónde está la estación, por favor?",
+                "Perdón, ¿dónde está la estación?",
+                "¿La estación, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "estación",
+                  "estacion"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "r_ask",
+          "scored": true
+        },
+        "r_ask": {
+          "kind": "partner",
+          "id": "r_ask",
+          "text": "¿Busca algo?",
+          "clipId": "es.clip.ix_donde_estacion_ask_s",
+          "next": "l_ask_b"
+        },
+        "l_ask_b": {
+          "kind": "learner",
+          "id": "l_ask_b",
+          "prompt": "Hãy hỏi: xin hỏi nhà ga ở đâu?",
+          "expected": [
+            {
+              "intent": "ask_estacion",
+              "acceptedVariants": [
+                "¿Dónde está la estación, por favor?",
+                "Perdón, ¿dónde está la estación?",
+                "¿La estación, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "estación",
+                  "estacion"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_thanks": {
+          "kind": "partner",
+          "id": "p_thanks",
+          "text": "¿La estación? Todo recto y después a la izquierda.",
+          "clipId": "es.clip.ix_donde_estacion_thanks_ask",
+          "rephraseText": "Todo recto y a la izquierda.",
+          "rephraseClipId": "es.clip.ix_donde_estacion_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy cảm ơn họ và chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "say_thanks",
+              "acceptedVariants": [
+                "¡Muchas gracias! ¡Adiós!",
+                "Gracias, adiós.",
+                "Muchas gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "Todo recto y a la izquierda.",
+          "clipId": "es.clip.ix_donde_estacion_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy cảm ơn họ và chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "say_thanks",
+              "acceptedVariants": [
+                "¡Muchas gracias! ¡Adiós!",
+                "Gracias, adiós.",
+                "Muchas gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡De nada! ¡Buen día!",
+          "clipId": "es.clip.ix_donde_estacion_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.donde_hotel": {
+      "id": "es.scenario.donde_hotel",
+      "title": "Tìm khách sạn",
+      "goal": "Buổi tối, hỏi khách sạn ở đâu và cảm ơn họ.",
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_ask",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_ask": {
+          "kind": "partner",
+          "id": "p_ask",
+          "text": "¡Buenas noches! ¿Busca algo?",
+          "clipId": "es.clip.ix_donde_hotel_ask_ask",
+          "rephraseText": "¿Puedo ayudarle?",
+          "rephraseClipId": "es.clip.ix_donde_hotel_ask_s",
+          "next": "l_ask"
+        },
+        "l_ask": {
+          "kind": "learner",
+          "id": "l_ask",
+          "prompt": "Hãy hỏi khách sạn ở đâu.",
+          "expected": [
+            {
+              "intent": "ask_hotel",
+              "acceptedVariants": [
+                "¿Dónde está el hotel, por favor?",
+                "Perdón, ¿dónde está el hotel?",
+                "¿El hotel, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "hotel"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "r_ask",
+          "scored": true
+        },
+        "r_ask": {
+          "kind": "partner",
+          "id": "r_ask",
+          "text": "¿Puedo ayudarle?",
+          "clipId": "es.clip.ix_donde_hotel_ask_s",
+          "next": "l_ask_b"
+        },
+        "l_ask_b": {
+          "kind": "learner",
+          "id": "l_ask_b",
+          "prompt": "Hãy hỏi khách sạn ở đâu.",
+          "expected": [
+            {
+              "intent": "ask_hotel",
+              "acceptedVariants": [
+                "¿Dónde está el hotel, por favor?",
+                "Perdón, ¿dónde está el hotel?",
+                "¿El hotel, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "hotel"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_thanks": {
+          "kind": "partner",
+          "id": "p_thanks",
+          "text": "El hotel está allí, a la derecha. Está a dos minutos.",
+          "clipId": "es.clip.ix_donde_hotel_thanks_ask",
+          "rephraseText": "A la derecha. Está muy cerca.",
+          "rephraseClipId": "es.clip.ix_donde_hotel_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy nói cảm ơn rất nhiều.",
+          "expected": [
+            {
+              "intent": "say_thanks",
+              "acceptedVariants": [
+                "¡Muchas gracias!",
+                "Muchas gracias, buenas noches.",
+                "Gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "A la derecha. Está muy cerca.",
+          "clipId": "es.clip.ix_donde_hotel_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy nói cảm ơn rất nhiều.",
+          "expected": [
+            {
+              "intent": "say_thanks",
+              "acceptedVariants": [
+                "¡Muchas gracias!",
+                "Muchas gracias, buenas noches.",
+                "Gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡De nada! ¡Buenas noches!",
+          "clipId": "es.clip.ix_donde_hotel_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.una_cita": {
+      "id": "es.scenario.una_cita",
+      "title": "Lên kế hoạch",
+      "goal": "Thống nhất khi nào và ở đâu gặp nhau ngày mai.",
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_time",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_time": {
+          "kind": "partner",
+          "id": "p_time",
+          "text": "¿Vamos al café mañana? ¿A qué hora?",
+          "clipId": "es.clip.ix_una_cita_time_ask",
+          "rephraseText": "Mañana, ¿a qué hora?",
+          "rephraseClipId": "es.clip.ix_una_cita_time_s",
+          "next": "l_time"
+        },
+        "l_time": {
+          "kind": "learner",
+          "id": "l_time",
+          "prompt": "Hãy đề xuất một giờ: lúc mười giờ.",
+          "expected": [
+            {
+              "intent": "at_ten",
+              "acceptedVariants": [
+                "¡A las diez!",
+                "A las diez, ¿vale?",
+                "¿A las diez?"
+              ],
+              "requiredConcepts": [
+                [
+                  "diez",
+                  "10"
+                ]
+              ],
+              "next": "p_place"
+            }
+          ],
+          "noMatchNext": "r_time",
+          "scored": true
+        },
+        "r_time": {
+          "kind": "partner",
+          "id": "r_time",
+          "text": "Mañana, ¿a qué hora?",
+          "clipId": "es.clip.ix_una_cita_time_s",
+          "next": "l_time_b"
+        },
+        "l_time_b": {
+          "kind": "learner",
+          "id": "l_time_b",
+          "prompt": "Hãy đề xuất một giờ: lúc mười giờ.",
+          "expected": [
+            {
+              "intent": "at_ten",
+              "acceptedVariants": [
+                "¡A las diez!",
+                "A las diez, ¿vale?",
+                "¿A las diez?"
+              ],
+              "requiredConcepts": [
+                [
+                  "diez",
+                  "10"
+                ]
+              ],
+              "next": "p_place"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_place": {
+          "kind": "partner",
+          "id": "p_place",
+          "text": "A las diez, ¡perfecto! ¿Dónde nos vemos?",
+          "clipId": "es.clip.ix_una_cita_place_ask",
+          "rephraseText": "¿Dónde?",
+          "rephraseClipId": "es.clip.ix_una_cita_place_s",
+          "next": "l_place"
+        },
+        "l_place": {
+          "kind": "learner",
+          "id": "l_place",
+          "prompt": "Hãy nói: ở quán cà phê.",
+          "expected": [
+            {
+              "intent": "at_cafe",
+              "acceptedVariants": [
+                "¡En el café!",
+                "Nos vemos en el café.",
+                "En el café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_place",
+          "scored": true
+        },
+        "r_place": {
+          "kind": "partner",
+          "id": "r_place",
+          "text": "¿Dónde?",
+          "clipId": "es.clip.ix_una_cita_place_s",
+          "next": "l_place_b"
+        },
+        "l_place_b": {
+          "kind": "learner",
+          "id": "l_place_b",
+          "prompt": "Hãy nói: ở quán cà phê.",
+          "expected": [
+            {
+              "intent": "at_cafe",
+              "acceptedVariants": [
+                "¡En el café!",
+                "Nos vemos en el café.",
+                "En el café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Genial! ¡Hasta mañana, entonces!",
+          "clipId": "es.clip.ix_una_cita_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.casa_amiga": {
+      "id": "es.scenario.casa_amiga",
+      "title": "Ở nhà một người bạn",
+      "goal": "Trả lời lời mời của bạn bạn và nói bạn muốn gì.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_offer",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_offer": {
+          "kind": "partner",
+          "id": "p_offer",
+          "text": "¡Bienvenida! ¿Quieres tomar algo?",
+          "clipId": "es.clip.ix_casa_amiga_offer_ask",
+          "rephraseText": "¿Quieres agua o un café?",
+          "rephraseClipId": "es.clip.ix_casa_amiga_offer_s",
+          "next": "l_offer"
+        },
+        "l_offer": {
+          "kind": "learner",
+          "id": "l_offer",
+          "prompt": "Hãy nói có — bạn muốn nước (hoặc cà phê), làm ơn.",
+          "expected": [
+            {
+              "intent": "want_agua",
+              "acceptedVariants": [
+                "Sí, agua, por favor.",
+                "Agua, por favor.",
+                "Quiero agua, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "b_offer_want_agua"
+            },
+            {
+              "intent": "want_cafe",
+              "acceptedVariants": [
+                "Sí, un café, por favor.",
+                "Un café, por favor.",
+                "Quiero un café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "b_offer_want_cafe"
+            }
+          ],
+          "noMatchNext": "r_offer",
+          "scored": true
+        },
+        "r_offer": {
+          "kind": "partner",
+          "id": "r_offer",
+          "text": "¿Quieres agua o un café?",
+          "clipId": "es.clip.ix_casa_amiga_offer_s",
+          "next": "l_offer_b"
+        },
+        "l_offer_b": {
+          "kind": "learner",
+          "id": "l_offer_b",
+          "prompt": "Hãy nói có — bạn muốn nước (hoặc cà phê), làm ơn.",
+          "expected": [
+            {
+              "intent": "want_agua",
+              "acceptedVariants": [
+                "Sí, agua, por favor.",
+                "Agua, por favor.",
+                "Quiero agua, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "b_offer_want_agua"
+            },
+            {
+              "intent": "want_cafe",
+              "acceptedVariants": [
+                "Sí, un café, por favor.",
+                "Un café, por favor.",
+                "Quiero un café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "b_offer_want_cafe"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_offer_want_agua": {
+          "kind": "partner",
+          "id": "b_offer_want_agua",
+          "text": "Un vaso grande de agua, entonces. ¡Aquí tienes!",
+          "clipId": "es.clip.ix_casa_amiga_want_agua_b",
+          "rephraseText": "¡Toma!",
+          "rephraseClipId": "es.clip.ix_casa_amiga_thanks_s",
+          "next": "l_thanks"
+        },
+        "b_offer_want_cafe": {
+          "kind": "partner",
+          "id": "b_offer_want_cafe",
+          "text": "Un café, entonces. ¡Aquí tienes!",
+          "clipId": "es.clip.ix_casa_amiga_want_cafe_b",
+          "rephraseText": "¡Toma!",
+          "rephraseClipId": "es.clip.ix_casa_amiga_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy nói cảm ơn.",
+          "expected": [
+            {
+              "intent": "say_thanks",
+              "acceptedVariants": [
+                "¡Gracias!",
+                "¡Muchas gracias!",
+                "Gracias, Ana."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "¡Toma!",
+          "clipId": "es.clip.ix_casa_amiga_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy nói cảm ơn.",
+          "expected": [
+            {
+              "intent": "say_thanks",
+              "acceptedVariants": [
+                "¡Gracias!",
+                "¡Muchas gracias!",
+                "Gracias, Ana."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡De nada! ¡Siéntate!",
+          "clipId": "es.clip.ix_casa_amiga_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": false
+    },
+    "es.scenario.cp_conocer": {
+      "id": "es.scenario.cp_conocer",
+      "title": "Gặp Pablo",
+      "goal": "Gặp một người: chào anh ấy, nói tên bạn, nói bạn thế nào, và chào tạm biệt. Bạn là Nadia.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_name",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_name": {
+          "kind": "partner",
+          "id": "p_name",
+          "text": "¡Hola! Yo soy Pablo. ¿Y usted, cómo se llama?",
+          "clipId": "es.clip.ix_cp_conocer_name_ask",
+          "rephraseText": "¿Cómo se llama?",
+          "rephraseClipId": "es.clip.ix_cp_conocer_name_s",
+          "next": "l_name"
+        },
+        "l_name": {
+          "kind": "learner",
+          "id": "l_name",
+          "prompt": "Hãy chào anh ấy và nói tên bạn — bạn là Nadia.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Hola, me llamo Nadia.",
+                "Me llamo Nadia.",
+                "Soy Nadia."
+              ],
+              "requiredConcepts": [
+                [
+                  "nadia"
+                ]
+              ],
+              "next": "p_how"
+            }
+          ],
+          "noMatchNext": "r_name",
+          "scored": true
+        },
+        "r_name": {
+          "kind": "partner",
+          "id": "r_name",
+          "text": "¿Cómo se llama?",
+          "clipId": "es.clip.ix_cp_conocer_name_s",
+          "next": "l_name_b"
+        },
+        "l_name_b": {
+          "kind": "learner",
+          "id": "l_name_b",
+          "prompt": "Hãy chào anh ấy và nói tên bạn — bạn là Nadia.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Hola, me llamo Nadia.",
+                "Me llamo Nadia.",
+                "Soy Nadia."
+              ],
+              "requiredConcepts": [
+                [
+                  "nadia"
+                ]
+              ],
+              "next": "p_how"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_how": {
+          "kind": "partner",
+          "id": "p_how",
+          "text": "¡Mucho gusto, Nadia! ¿Está bien?",
+          "clipId": "es.clip.ix_cp_conocer_how_ask",
+          "rephraseText": "¿Qué tal?",
+          "rephraseClipId": "es.clip.ix_cp_conocer_how_s",
+          "next": "l_how"
+        },
+        "l_how": {
+          "kind": "learner",
+          "id": "l_how",
+          "prompt": "Hãy nói bạn thế nào — rất khỏe, hoặc bình thường.",
+          "expected": [
+            {
+              "intent": "doing_fine",
+              "acceptedVariants": [
+                "Muy bien, gracias.",
+                "Estoy muy bien, gracias.",
+                "Bien, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "bien"
+                ]
+              ],
+              "next": "b_how_doing_fine"
+            },
+            {
+              "intent": "doing_ok",
+              "acceptedVariants": [
+                "Regular.",
+                "Más o menos.",
+                "Normal."
+              ],
+              "requiredConcepts": [
+                [
+                  "regular",
+                  "más o menos",
+                  "mas o menos",
+                  "normal"
+                ]
+              ],
+              "next": "b_how_doing_ok"
+            }
+          ],
+          "noMatchNext": "r_how",
+          "scored": true
+        },
+        "r_how": {
+          "kind": "partner",
+          "id": "r_how",
+          "text": "¿Qué tal?",
+          "clipId": "es.clip.ix_cp_conocer_how_s",
+          "next": "l_how_b"
+        },
+        "l_how_b": {
+          "kind": "learner",
+          "id": "l_how_b",
+          "prompt": "Hãy nói bạn thế nào — rất khỏe, hoặc bình thường.",
+          "expected": [
+            {
+              "intent": "doing_fine",
+              "acceptedVariants": [
+                "Muy bien, gracias.",
+                "Estoy muy bien, gracias.",
+                "Bien, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "bien"
+                ]
+              ],
+              "next": "b_how_doing_fine"
+            },
+            {
+              "intent": "doing_ok",
+              "acceptedVariants": [
+                "Regular.",
+                "Más o menos.",
+                "Normal."
+              ],
+              "requiredConcepts": [
+                [
+                  "regular",
+                  "más o menos",
+                  "mas o menos",
+                  "normal"
+                ]
+              ],
+              "next": "b_how_doing_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_how_doing_fine": {
+          "kind": "partner",
+          "id": "b_how_doing_fine",
+          "text": "¡Me alegro! Bueno, me tengo que ir. ¡Hasta pronto!",
+          "clipId": "es.clip.ix_cp_conocer_doing_fine_b",
+          "rephraseText": "¡Adiós!",
+          "rephraseClipId": "es.clip.ix_cp_conocer_bye_s",
+          "next": "l_bye"
+        },
+        "b_how_doing_ok": {
+          "kind": "partner",
+          "id": "b_how_doing_ok",
+          "text": "Vaya, ¡ánimo! Bueno, me tengo que ir. ¡Hasta pronto!",
+          "clipId": "es.clip.ix_cp_conocer_doing_ok_b",
+          "rephraseText": "¡Adiós!",
+          "rephraseClipId": "es.clip.ix_cp_conocer_bye_s",
+          "next": "l_bye"
+        },
+        "l_bye": {
+          "kind": "learner",
+          "id": "l_bye",
+          "prompt": "Hãy chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "say_bye",
+              "acceptedVariants": [
+                "¡Adiós!",
+                "¡Hasta luego!",
+                "Adiós, hasta luego.",
+                "¡Chao!",
+                "¡Hasta pronto!",
+                "Adiós, Pablo."
+              ],
+              "requiredConcepts": [
+                [
+                  "adiós",
+                  "hasta luego",
+                  "hasta pronto",
+                  "chao",
+                  "nos vemos"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_bye",
+          "scored": true
+        },
+        "r_bye": {
+          "kind": "partner",
+          "id": "r_bye",
+          "text": "¡Adiós!",
+          "clipId": "es.clip.ix_cp_conocer_bye_s",
+          "next": "l_bye_b"
+        },
+        "l_bye_b": {
+          "kind": "learner",
+          "id": "l_bye_b",
+          "prompt": "Hãy chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "say_bye",
+              "acceptedVariants": [
+                "¡Adiós!",
+                "¡Hasta luego!",
+                "Adiós, hasta luego.",
+                "¡Chao!",
+                "¡Hasta pronto!",
+                "Adiós, Pablo."
+              ],
+              "requiredConcepts": [
+                [
+                  "adiós",
+                  "hasta luego",
+                  "hasta pronto",
+                  "chao",
+                  "nos vemos"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Buen día!",
+          "clipId": "es.clip.ix_cp_conocer_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.cp_cafe": {
+      "id": "es.scenario.cp_cafe",
+      "title": "Gọi món ở quán cà phê",
+      "goal": "Gọi một đồ uống, hỏi giá, và kết thúc lịch sự.",
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_order",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_order": {
+          "kind": "partner",
+          "id": "p_order",
+          "text": "¡Buenos días! ¿Qué le pongo?",
+          "clipId": "es.clip.ix_cp_cafe_order_ask",
+          "rephraseText": "¿Qué quiere tomar?",
+          "rephraseClipId": "es.clip.ix_cp_cafe_order_s",
+          "next": "l_order"
+        },
+        "l_order": {
+          "kind": "learner",
+          "id": "l_order",
+          "prompt": "Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.",
+          "expected": [
+            {
+              "intent": "order_cafe",
+              "acceptedVariants": [
+                "Un café, por favor.",
+                "Quiero un café, por favor.",
+                "Me pone un café, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ],
+                [
+                  "por favor"
+                ]
+              ],
+              "next": "b_order_order_cafe"
+            },
+            {
+              "intent": "order_te",
+              "acceptedVariants": [
+                "Un té, por favor.",
+                "Quiero un té, por favor.",
+                "Me pone un té, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "té",
+                  "te"
+                ],
+                [
+                  "por favor"
+                ]
+              ],
+              "next": "b_order_order_te"
+            }
+          ],
+          "noMatchNext": "r_order",
+          "scored": true
+        },
+        "r_order": {
+          "kind": "partner",
+          "id": "r_order",
+          "text": "¿Qué quiere tomar?",
+          "clipId": "es.clip.ix_cp_cafe_order_s",
+          "next": "l_order_b"
+        },
+        "l_order_b": {
+          "kind": "learner",
+          "id": "l_order_b",
+          "prompt": "Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.",
+          "expected": [
+            {
+              "intent": "order_cafe",
+              "acceptedVariants": [
+                "Un café, por favor.",
+                "Quiero un café, por favor.",
+                "Me pone un café, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ],
+                [
+                  "por favor"
+                ]
+              ],
+              "next": "b_order_order_cafe"
+            },
+            {
+              "intent": "order_te",
+              "acceptedVariants": [
+                "Un té, por favor.",
+                "Quiero un té, por favor.",
+                "Me pone un té, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "té",
+                  "te"
+                ],
+                [
+                  "por favor"
+                ]
+              ],
+              "next": "b_order_order_te"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_order_order_cafe": {
+          "kind": "partner",
+          "id": "b_order_order_cafe",
+          "text": "Un café, ¡ahora mismo! ¡Aquí tiene!",
+          "clipId": "es.clip.ix_cp_cafe_order_cafe_b",
+          "rephraseText": "¡Aquí tiene!",
+          "rephraseClipId": "es.clip.ix_cp_cafe_price_s",
+          "next": "l_price"
+        },
+        "b_order_order_te": {
+          "kind": "partner",
+          "id": "b_order_order_te",
+          "text": "Un té, ¡ahora mismo! ¡Aquí tiene!",
+          "clipId": "es.clip.ix_cp_cafe_order_te_b",
+          "rephraseText": "¡Aquí tiene!",
+          "rephraseClipId": "es.clip.ix_cp_cafe_price_s",
+          "next": "l_price"
+        },
+        "l_price": {
+          "kind": "learner",
+          "id": "l_price",
+          "prompt": "Hãy hỏi giá bao nhiêu.",
+          "expected": [
+            {
+              "intent": "ask_price",
+              "acceptedVariants": [
+                "¿Cuánto es?",
+                "¿Cuánto cuesta?",
+                "¿Cuánto es, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "cuánto",
+                  "cuanto"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "r_price",
+          "scored": true
+        },
+        "r_price": {
+          "kind": "partner",
+          "id": "r_price",
+          "text": "¡Aquí tiene!",
+          "clipId": "es.clip.ix_cp_cafe_price_s",
+          "next": "l_price_b"
+        },
+        "l_price_b": {
+          "kind": "learner",
+          "id": "l_price_b",
+          "prompt": "Hãy hỏi giá bao nhiêu.",
+          "expected": [
+            {
+              "intent": "ask_price",
+              "acceptedVariants": [
+                "¿Cuánto es?",
+                "¿Cuánto cuesta?",
+                "¿Cuánto es, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "cuánto",
+                  "cuanto"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_thanks": {
+          "kind": "partner",
+          "id": "p_thanks",
+          "text": "Son dos euros.",
+          "clipId": "es.clip.ix_cp_cafe_thanks_ask",
+          "rephraseText": "Dos euros.",
+          "rephraseClipId": "es.clip.ix_cp_cafe_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!",
+                "Gracias, buen día."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "Dos euros.",
+          "clipId": "es.clip.ix_cp_cafe_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!",
+                "Gracias, buen día."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Gracias a usted! ¡Buen día!",
+          "clipId": "es.clip.ix_cp_cafe_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.cp_panaderia": {
+      "id": "es.scenario.cp_panaderia",
+      "title": "Ở tiệm bánh",
+      "goal": "Mua bánh mì, trả lời câu hỏi tiếp theo, và kết thúc lịch sự.",
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_want",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_want": {
+          "kind": "partner",
+          "id": "p_want",
+          "text": "¡Buenos días! ¿Qué quiere hoy?",
+          "clipId": "es.clip.ix_cp_panaderia_want_ask",
+          "rephraseText": "¿Qué quiere?",
+          "rephraseClipId": "es.clip.ix_cp_panaderia_want_s",
+          "next": "l_want"
+        },
+        "l_want": {
+          "kind": "learner",
+          "id": "l_want",
+          "prompt": "Hãy hỏi mua một ổ bánh mì.",
+          "expected": [
+            {
+              "intent": "want_bread",
+              "acceptedVariants": [
+                "Un pan, por favor.",
+                "Quiero un pan, por favor.",
+                "Pan, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "pan"
+                ]
+              ],
+              "next": "p_more"
+            }
+          ],
+          "noMatchNext": "r_want",
+          "scored": true
+        },
+        "r_want": {
+          "kind": "partner",
+          "id": "r_want",
+          "text": "¿Qué quiere?",
+          "clipId": "es.clip.ix_cp_panaderia_want_s",
+          "next": "l_want_b"
+        },
+        "l_want_b": {
+          "kind": "learner",
+          "id": "l_want_b",
+          "prompt": "Hãy hỏi mua một ổ bánh mì.",
+          "expected": [
+            {
+              "intent": "want_bread",
+              "acceptedVariants": [
+                "Un pan, por favor.",
+                "Quiero un pan, por favor.",
+                "Pan, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "pan"
+                ]
+              ],
+              "next": "p_more"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_more": {
+          "kind": "partner",
+          "id": "p_more",
+          "text": "¡Aquí tiene! ¿Algo más?",
+          "clipId": "es.clip.ix_cp_panaderia_more_ask",
+          "rephraseText": "¿Otra cosa?",
+          "rephraseClipId": "es.clip.ix_cp_panaderia_more_s",
+          "next": "l_more"
+        },
+        "l_more": {
+          "kind": "learner",
+          "id": "l_more",
+          "prompt": "Hãy nói thế là đủ — hoặc hỏi thêm nước.",
+          "expected": [
+            {
+              "intent": "more_water",
+              "acceptedVariants": [
+                "Agua, por favor.",
+                "Una botella de agua, por favor.",
+                "Y agua, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "b_more_more_water"
+            },
+            {
+              "intent": "thats_all",
+              "acceptedVariants": [
+                "No, nada más, gracias.",
+                "Nada más.",
+                "Es todo, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "nada más",
+                  "nada mas",
+                  "es todo",
+                  "eso es todo"
+                ]
+              ],
+              "next": "b_more_thats_all"
+            }
+          ],
+          "noMatchNext": "r_more",
+          "scored": true
+        },
+        "r_more": {
+          "kind": "partner",
+          "id": "r_more",
+          "text": "¿Otra cosa?",
+          "clipId": "es.clip.ix_cp_panaderia_more_s",
+          "next": "l_more_b"
+        },
+        "l_more_b": {
+          "kind": "learner",
+          "id": "l_more_b",
+          "prompt": "Hãy nói thế là đủ — hoặc hỏi thêm nước.",
+          "expected": [
+            {
+              "intent": "more_water",
+              "acceptedVariants": [
+                "Agua, por favor.",
+                "Una botella de agua, por favor.",
+                "Y agua, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "b_more_more_water"
+            },
+            {
+              "intent": "thats_all",
+              "acceptedVariants": [
+                "No, nada más, gracias.",
+                "Nada más.",
+                "Es todo, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "nada más",
+                  "nada mas",
+                  "es todo",
+                  "eso es todo"
+                ]
+              ],
+              "next": "b_more_thats_all"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_more_more_water": {
+          "kind": "partner",
+          "id": "b_more_more_water",
+          "text": "¡Y una botella de agua! Son tres euros. Aquí tiene.",
+          "clipId": "es.clip.ix_cp_panaderia_more_water_b",
+          "rephraseText": "¡Tome!",
+          "rephraseClipId": "es.clip.ix_cp_panaderia_thanks_s",
+          "next": "l_thanks"
+        },
+        "b_more_thats_all": {
+          "kind": "partner",
+          "id": "b_more_thats_all",
+          "text": "Muy bien. Son dos euros. Aquí tiene.",
+          "clipId": "es.clip.ix_cp_panaderia_thats_all_b",
+          "rephraseText": "¡Tome!",
+          "rephraseClipId": "es.clip.ix_cp_panaderia_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!",
+                "Gracias, hasta pronto."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "¡Tome!",
+          "clipId": "es.clip.ix_cp_panaderia_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!",
+                "Gracias, hasta pronto."
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Gracias! ¡Hasta pronto!",
+          "clipId": "es.clip.ix_cp_panaderia_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.cp_conocerse": {
+      "id": "es.scenario.cp_conocerse",
+      "title": "Làm quen với Pablo",
+      "goal": "Trả lời các câu hỏi đơn giản về bản thân, rồi hỏi lại một câu. Bạn là Nadia, đến từ Bilbao.",
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_live",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_live": {
+          "kind": "partner",
+          "id": "p_live",
+          "text": "Entonces, Nadia, ¿dónde vive?",
+          "clipId": "es.clip.ix_cp_conocerse_live_ask",
+          "rephraseText": "¿Dónde vive?",
+          "rephraseClipId": "es.clip.ix_cp_conocerse_live_s",
+          "next": "l_live"
+        },
+        "l_live": {
+          "kind": "learner",
+          "id": "l_live",
+          "prompt": "Hãy trả lời: bạn sống ở Bilbao.",
+          "expected": [
+            {
+              "intent": "live_bilbao",
+              "acceptedVariants": [
+                "Vivo en Bilbao.",
+                "En Bilbao.",
+                "Yo vivo en Bilbao."
+              ],
+              "requiredConcepts": [
+                [
+                  "bilbao"
+                ]
+              ],
+              "next": "p_english"
+            }
+          ],
+          "noMatchNext": "r_live",
+          "scored": true
+        },
+        "r_live": {
+          "kind": "partner",
+          "id": "r_live",
+          "text": "¿Dónde vive?",
+          "clipId": "es.clip.ix_cp_conocerse_live_s",
+          "next": "l_live_b"
+        },
+        "l_live_b": {
+          "kind": "learner",
+          "id": "l_live_b",
+          "prompt": "Hãy trả lời: bạn sống ở Bilbao.",
+          "expected": [
+            {
+              "intent": "live_bilbao",
+              "acceptedVariants": [
+                "Vivo en Bilbao.",
+                "En Bilbao.",
+                "Yo vivo en Bilbao."
+              ],
+              "requiredConcepts": [
+                [
+                  "bilbao"
+                ]
+              ],
+              "next": "p_english"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_english": {
+          "kind": "partner",
+          "id": "p_english",
+          "text": "¡Ah, Bilbao! Muy bonito. ¿Y habla inglés?",
+          "clipId": "es.clip.ix_cp_conocerse_english_ask",
+          "rephraseText": "¿Habla inglés?",
+          "rephraseClipId": "es.clip.ix_cp_conocerse_english_s",
+          "next": "l_english"
+        },
+        "l_english": {
+          "kind": "learner",
+          "id": "l_english",
+          "prompt": "Hãy trả lời: có hoặc không — bạn có nói tiếng Anh không?",
+          "expected": [
+            {
+              "intent": "yes_speak",
+              "acceptedVariants": [
+                "Sí, hablo inglés.",
+                "Sí, un poco.",
+                "Sí."
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si"
+                ]
+              ],
+              "next": "b_english_yes_speak"
+            },
+            {
+              "intent": "no_speak",
+              "acceptedVariants": [
+                "No, no hablo inglés.",
+                "No, todavía no.",
+                "No."
+              ],
+              "requiredConcepts": [
+                [
+                  "no"
+                ]
+              ],
+              "next": "b_english_no_speak"
+            }
+          ],
+          "noMatchNext": "r_english",
+          "scored": true
+        },
+        "r_english": {
+          "kind": "partner",
+          "id": "r_english",
+          "text": "¿Habla inglés?",
+          "clipId": "es.clip.ix_cp_conocerse_english_s",
+          "next": "l_english_b"
+        },
+        "l_english_b": {
+          "kind": "learner",
+          "id": "l_english_b",
+          "prompt": "Hãy trả lời: có hoặc không — bạn có nói tiếng Anh không?",
+          "expected": [
+            {
+              "intent": "yes_speak",
+              "acceptedVariants": [
+                "Sí, hablo inglés.",
+                "Sí, un poco.",
+                "Sí."
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si"
+                ]
+              ],
+              "next": "b_english_yes_speak"
+            },
+            {
+              "intent": "no_speak",
+              "acceptedVariants": [
+                "No, no hablo inglés.",
+                "No, todavía no.",
+                "No."
+              ],
+              "requiredConcepts": [
+                [
+                  "no"
+                ]
+              ],
+              "next": "b_english_no_speak"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_english_yes_speak": {
+          "kind": "partner",
+          "id": "b_english_yes_speak",
+          "text": "¡Yo también hablo inglés! Bueno, ya sabe todo de mí… o casi.",
+          "clipId": "es.clip.ix_cp_conocerse_yes_speak_b",
+          "rephraseText": "¡Hágame una pregunta!",
+          "rephraseClipId": "es.clip.ix_cp_conocerse_ask_back_s",
+          "next": "l_ask_back"
+        },
+        "b_english_no_speak": {
+          "kind": "partner",
+          "id": "b_english_no_speak",
+          "text": "No pasa nada. Bueno, ya sabe todo de mí… o casi.",
+          "clipId": "es.clip.ix_cp_conocerse_no_speak_b",
+          "rephraseText": "¡Hágame una pregunta!",
+          "rephraseClipId": "es.clip.ix_cp_conocerse_ask_back_s",
+          "next": "l_ask_back"
+        },
+        "l_ask_back": {
+          "kind": "learner",
+          "id": "l_ask_back",
+          "prompt": "Giờ hãy hỏi ANH ẤY: còn ông, ông sống ở đâu?",
+          "expected": [
+            {
+              "intent": "ask_where",
+              "acceptedVariants": [
+                "¿Y usted, dónde vive?",
+                "¿Y usted?",
+                "¿Dónde vive usted?"
+              ],
+              "requiredConcepts": [
+                [
+                  "usted",
+                  "dónde",
+                  "donde"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_ask_back",
+          "scored": true
+        },
+        "r_ask_back": {
+          "kind": "partner",
+          "id": "r_ask_back",
+          "text": "¡Hágame una pregunta!",
+          "clipId": "es.clip.ix_cp_conocerse_ask_back_s",
+          "next": "l_ask_back_b"
+        },
+        "l_ask_back_b": {
+          "kind": "learner",
+          "id": "l_ask_back_b",
+          "prompt": "Giờ hãy hỏi ANH ẤY: còn ông, ông sống ở đâu?",
+          "expected": [
+            {
+              "intent": "ask_where",
+              "acceptedVariants": [
+                "¿Y usted, dónde vive?",
+                "¿Y usted?",
+                "¿Dónde vive usted?"
+              ],
+              "requiredConcepts": [
+                [
+                  "usted",
+                  "dónde",
+                  "donde"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "Yo vivo aquí, en Madrid. ¡Hasta pronto, Nadia!",
+          "clipId": "es.clip.ix_cp_conocerse_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.cp_planes": {
+      "id": "es.scenario.cp_planes",
+      "title": "Kế hoạch đi nhà hàng",
+      "goal": "Lên một kế hoạch đơn giản với bạn: thống nhất ngày, giờ và địa điểm.",
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_day",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_day": {
+          "kind": "partner",
+          "id": "p_day",
+          "text": "¿Vamos al restaurante esta semana? ¿Mañana o el sábado?",
+          "clipId": "es.clip.ix_cp_planes_day_ask",
+          "rephraseText": "¿Mañana o el sábado?",
+          "rephraseClipId": "es.clip.ix_cp_planes_day_s",
+          "next": "l_day"
+        },
+        "l_day": {
+          "kind": "learner",
+          "id": "l_day",
+          "prompt": "Hãy chọn một ngày: ngày mai — hoặc thứ Bảy.",
+          "expected": [
+            {
+              "intent": "day_manana",
+              "acceptedVariants": [
+                "¡Mañana!",
+                "Mañana, genial.",
+                "Mejor mañana."
+              ],
+              "requiredConcepts": [
+                [
+                  "mañana",
+                  "manana"
+                ]
+              ],
+              "next": "b_day_day_manana"
+            },
+            {
+              "intent": "day_sabado",
+              "acceptedVariants": [
+                "¡El sábado!",
+                "El sábado, perfecto.",
+                "Mejor el sábado."
+              ],
+              "requiredConcepts": [
+                [
+                  "sábado",
+                  "sabado"
+                ]
+              ],
+              "next": "b_day_day_sabado"
+            }
+          ],
+          "noMatchNext": "r_day",
+          "scored": true
+        },
+        "r_day": {
+          "kind": "partner",
+          "id": "r_day",
+          "text": "¿Mañana o el sábado?",
+          "clipId": "es.clip.ix_cp_planes_day_s",
+          "next": "l_day_b"
+        },
+        "l_day_b": {
+          "kind": "learner",
+          "id": "l_day_b",
+          "prompt": "Hãy chọn một ngày: ngày mai — hoặc thứ Bảy.",
+          "expected": [
+            {
+              "intent": "day_manana",
+              "acceptedVariants": [
+                "¡Mañana!",
+                "Mañana, genial.",
+                "Mejor mañana."
+              ],
+              "requiredConcepts": [
+                [
+                  "mañana",
+                  "manana"
+                ]
+              ],
+              "next": "b_day_day_manana"
+            },
+            {
+              "intent": "day_sabado",
+              "acceptedVariants": [
+                "¡El sábado!",
+                "El sábado, perfecto.",
+                "Mejor el sábado."
+              ],
+              "requiredConcepts": [
+                [
+                  "sábado",
+                  "sabado"
+                ]
+              ],
+              "next": "b_day_day_sabado"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_day_day_manana": {
+          "kind": "partner",
+          "id": "b_day_day_manana",
+          "text": "¡Mañana, genial! Entonces, ¿a qué hora?",
+          "clipId": "es.clip.ix_cp_planes_day_manana_b",
+          "rephraseText": "¿A qué hora?",
+          "rephraseClipId": "es.clip.ix_cp_planes_time_s",
+          "next": "l_time"
+        },
+        "b_day_day_sabado": {
+          "kind": "partner",
+          "id": "b_day_day_sabado",
+          "text": "¡El sábado, perfecto! Entonces, ¿a qué hora?",
+          "clipId": "es.clip.ix_cp_planes_day_sabado_b",
+          "rephraseText": "¿A qué hora?",
+          "rephraseClipId": "es.clip.ix_cp_planes_time_s",
+          "next": "l_time"
+        },
+        "l_time": {
+          "kind": "learner",
+          "id": "l_time",
+          "prompt": "Hãy nói một giờ: lúc bảy giờ.",
+          "expected": [
+            {
+              "intent": "at_seven",
+              "acceptedVariants": [
+                "¡A las siete!",
+                "A las siete.",
+                "¿A las siete?"
+              ],
+              "requiredConcepts": [
+                [
+                  "siete",
+                  "7"
+                ]
+              ],
+              "next": "p_place"
+            }
+          ],
+          "noMatchNext": "r_time",
+          "scored": true
+        },
+        "r_time": {
+          "kind": "partner",
+          "id": "r_time",
+          "text": "¿A qué hora?",
+          "clipId": "es.clip.ix_cp_planes_time_s",
+          "next": "l_time_b"
+        },
+        "l_time_b": {
+          "kind": "learner",
+          "id": "l_time_b",
+          "prompt": "Hãy nói một giờ: lúc bảy giờ.",
+          "expected": [
+            {
+              "intent": "at_seven",
+              "acceptedVariants": [
+                "¡A las siete!",
+                "A las siete.",
+                "¿A las siete?"
+              ],
+              "requiredConcepts": [
+                [
+                  "siete",
+                  "7"
+                ]
+              ],
+              "next": "p_place"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_place": {
+          "kind": "partner",
+          "id": "p_place",
+          "text": "A las siete, ¡muy bien! ¿Dónde nos vemos?",
+          "clipId": "es.clip.ix_cp_planes_place_ask",
+          "rephraseText": "¿Dónde?",
+          "rephraseClipId": "es.clip.ix_cp_planes_place_s",
+          "next": "l_place"
+        },
+        "l_place": {
+          "kind": "learner",
+          "id": "l_place",
+          "prompt": "Hãy nói: ở nhà hàng.",
+          "expected": [
+            {
+              "intent": "at_resto",
+              "acceptedVariants": [
+                "¡En el restaurante!",
+                "Nos vemos en el restaurante.",
+                "En el restaurante."
+              ],
+              "requiredConcepts": [
+                [
+                  "restaurante"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_place",
+          "scored": true
+        },
+        "r_place": {
+          "kind": "partner",
+          "id": "r_place",
+          "text": "¿Dónde?",
+          "clipId": "es.clip.ix_cp_planes_place_s",
+          "next": "l_place_b"
+        },
+        "l_place_b": {
+          "kind": "learner",
+          "id": "l_place_b",
+          "prompt": "Hãy nói: ở nhà hàng.",
+          "expected": [
+            {
+              "intent": "at_resto",
+              "acceptedVariants": [
+                "¡En el restaurante!",
+                "Nos vemos en el restaurante.",
+                "En el restaurante."
+              ],
+              "requiredConcepts": [
+                [
+                  "restaurante"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Perfecto! ¡Hasta pronto!",
+          "clipId": "es.clip.ix_cp_planes_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.cp_boleto": {
+      "id": "es.scenario.cp_boleto",
+      "title": "Một vé đi Sevilla",
+      "goal": "Mua một vé tàu đi Sevilla, hỏi một câu về chuyến đi, và kết thúc lịch sự.",
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_ticket",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_ticket": {
+          "kind": "partner",
+          "id": "p_ticket",
+          "text": "¡Buenos días! ¿Adónde va?",
+          "clipId": "es.clip.ix_cp_boleto_ticket_ask",
+          "rephraseText": "¿Adónde quiere ir?",
+          "rephraseClipId": "es.clip.ix_cp_boleto_ticket_s",
+          "next": "l_ticket"
+        },
+        "l_ticket": {
+          "kind": "learner",
+          "id": "l_ticket",
+          "prompt": "Hãy nói rằng bạn muốn một vé đi Sevilla.",
+          "expected": [
+            {
+              "intent": "want_ticket",
+              "acceptedVariants": [
+                "Un boleto para Sevilla, por favor.",
+                "Quiero un boleto para Sevilla.",
+                "Un billete para Sevilla, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "sevilla"
+                ]
+              ],
+              "next": "p_question"
+            }
+          ],
+          "noMatchNext": "r_ticket",
+          "scored": true
+        },
+        "r_ticket": {
+          "kind": "partner",
+          "id": "r_ticket",
+          "text": "¿Adónde quiere ir?",
+          "clipId": "es.clip.ix_cp_boleto_ticket_s",
+          "next": "l_ticket_b"
+        },
+        "l_ticket_b": {
+          "kind": "learner",
+          "id": "l_ticket_b",
+          "prompt": "Hãy nói rằng bạn muốn một vé đi Sevilla.",
+          "expected": [
+            {
+              "intent": "want_ticket",
+              "acceptedVariants": [
+                "Un boleto para Sevilla, por favor.",
+                "Quiero un boleto para Sevilla.",
+                "Un billete para Sevilla, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "sevilla"
+                ]
+              ],
+              "next": "p_question"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_question": {
+          "kind": "partner",
+          "id": "p_question",
+          "text": "Un boleto para Sevilla, muy bien. Son veinte euros.",
+          "clipId": "es.clip.ix_cp_boleto_question_ask",
+          "rephraseText": "Veinte euros, por favor.",
+          "rephraseClipId": "es.clip.ix_cp_boleto_question_s",
+          "next": "l_question"
+        },
+        "l_question": {
+          "kind": "learner",
+          "id": "l_question",
+          "prompt": "Hãy hỏi một câu: tàu chạy lúc mấy giờ? Hoặc: sân ga nào?",
+          "expected": [
+            {
+              "intent": "ask_time",
+              "acceptedVariants": [
+                "¿A qué hora sale el tren?",
+                "¿A qué hora es el tren?",
+                "¿El tren sale a qué hora?"
+              ],
+              "requiredConcepts": [
+                [
+                  "hora"
+                ]
+              ],
+              "next": "b_question_ask_time"
+            },
+            {
+              "intent": "ask_track",
+              "acceptedVariants": [
+                "¿Qué andén es?",
+                "¿De qué andén sale?",
+                "¿Qué andén, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "andén",
+                  "anden"
+                ]
+              ],
+              "next": "b_question_ask_track"
+            }
+          ],
+          "noMatchNext": "r_question",
+          "scored": true
+        },
+        "r_question": {
+          "kind": "partner",
+          "id": "r_question",
+          "text": "Veinte euros, por favor.",
+          "clipId": "es.clip.ix_cp_boleto_question_s",
+          "next": "l_question_b"
+        },
+        "l_question_b": {
+          "kind": "learner",
+          "id": "l_question_b",
+          "prompt": "Hãy hỏi một câu: tàu chạy lúc mấy giờ? Hoặc: sân ga nào?",
+          "expected": [
+            {
+              "intent": "ask_time",
+              "acceptedVariants": [
+                "¿A qué hora sale el tren?",
+                "¿A qué hora es el tren?",
+                "¿El tren sale a qué hora?"
+              ],
+              "requiredConcepts": [
+                [
+                  "hora"
+                ]
+              ],
+              "next": "b_question_ask_time"
+            },
+            {
+              "intent": "ask_track",
+              "acceptedVariants": [
+                "¿Qué andén es?",
+                "¿De qué andén sale?",
+                "¿Qué andén, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "andén",
+                  "anden"
+                ]
+              ],
+              "next": "b_question_ask_track"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "b_question_ask_time": {
+          "kind": "partner",
+          "id": "b_question_ask_time",
+          "text": "El tren sale a las diez, andén dos. ¡Aquí tiene su boleto!",
+          "clipId": "es.clip.ix_cp_boleto_ask_time_b",
+          "rephraseText": "Tome, su boleto.",
+          "rephraseClipId": "es.clip.ix_cp_boleto_thanks_s",
+          "next": "l_thanks"
+        },
+        "b_question_ask_track": {
+          "kind": "partner",
+          "id": "b_question_ask_track",
+          "text": "Andén dos. El tren sale a las diez. ¡Aquí tiene su boleto!",
+          "clipId": "es.clip.ix_cp_boleto_ask_track_b",
+          "rephraseText": "Tome, su boleto.",
+          "rephraseClipId": "es.clip.ix_cp_boleto_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!"
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "Tome, su boleto.",
+          "clipId": "es.clip.ix_cp_boleto_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy nói cảm ơn và tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!"
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Buen viaje!",
+          "clipId": "es.clip.ix_cp_boleto_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.a1cap_vecina": {
+      "id": "es.scenario.a1cap_vecina",
+      "title": "Một người hàng xóm thân thiện",
+      "goal": "Đáp lại lời chào của hàng xóm và chúc họ một ngày tốt lành.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_how",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_how": {
+          "kind": "partner",
+          "id": "p_how",
+          "text": "¡Buenos días! ¿Qué tal está?",
+          "clipId": "es.clip.ix_a1cap_vecina_how_ask",
+          "rephraseText": "¿Qué tal?",
+          "rephraseClipId": "es.clip.ix_a1cap_vecina_how_s",
+          "next": "l_how"
+        },
+        "l_how": {
+          "kind": "learner",
+          "id": "l_how",
+          "prompt": "Hãy nói rằng bạn khỏe, cảm ơn.",
+          "expected": [
+            {
+              "intent": "fine",
+              "acceptedVariants": [
+                "Bien, gracias.",
+                "Muy bien, gracias.",
+                "Estoy bien, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "bien"
+                ]
+              ],
+              "next": "p_bye"
+            }
+          ],
+          "noMatchNext": "r_how",
+          "scored": true
+        },
+        "r_how": {
+          "kind": "partner",
+          "id": "r_how",
+          "text": "¿Qué tal?",
+          "clipId": "es.clip.ix_a1cap_vecina_how_s",
+          "next": "l_how_b"
+        },
+        "l_how_b": {
+          "kind": "learner",
+          "id": "l_how_b",
+          "prompt": "Hãy nói rằng bạn khỏe, cảm ơn.",
+          "expected": [
+            {
+              "intent": "fine",
+              "acceptedVariants": [
+                "Bien, gracias.",
+                "Muy bien, gracias.",
+                "Estoy bien, gracias."
+              ],
+              "requiredConcepts": [
+                [
+                  "bien"
+                ]
+              ],
+              "next": "p_bye"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_bye": {
+          "kind": "partner",
+          "id": "p_bye",
+          "text": "¡Me alegro! Bueno, ¡hasta luego!",
+          "clipId": "es.clip.ix_a1cap_vecina_bye_ask",
+          "rephraseText": "¡Hasta luego!",
+          "rephraseClipId": "es.clip.ix_a1cap_vecina_bye_s",
+          "next": "l_bye"
+        },
+        "l_bye": {
+          "kind": "learner",
+          "id": "l_bye",
+          "prompt": "Hãy chúc họ một ngày tốt lành.",
+          "expected": [
+            {
+              "intent": "goodday",
+              "acceptedVariants": [
+                "¡Buen día!",
+                "¡Que tenga un buen día!",
+                "Adiós, buen día."
+              ],
+              "requiredConcepts": [
+                [
+                  "buen día",
+                  "buen dia",
+                  "buenos días",
+                  "buenos dias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_bye",
+          "scored": true
+        },
+        "r_bye": {
+          "kind": "partner",
+          "id": "r_bye",
+          "text": "¡Hasta luego!",
+          "clipId": "es.clip.ix_a1cap_vecina_bye_s",
+          "next": "l_bye_b"
+        },
+        "l_bye_b": {
+          "kind": "learner",
+          "id": "l_bye_b",
+          "prompt": "Hãy chúc họ một ngày tốt lành.",
+          "expected": [
+            {
+              "intent": "goodday",
+              "acceptedVariants": [
+                "¡Buen día!",
+                "¡Que tenga un buen día!",
+                "Adiós, buen día."
+              ],
+              "requiredConcepts": [
+                [
+                  "buen día",
+                  "buen dia",
+                  "buenos días",
+                  "buenos dias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Gracias, hasta pronto!",
+          "clipId": "es.clip.ix_a1cap_vecina_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.a1cap_telefono": {
+      "id": "es.scenario.a1cap_telefono",
+      "title": "Một cuộc gọi nhanh",
+      "goal": "Thống nhất khi nào và ở đâu gặp nhau ngày mai.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_time",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_time": {
+          "kind": "partner",
+          "id": "p_time",
+          "text": "¡Hola! ¿A qué hora nos vemos mañana?",
+          "clipId": "es.clip.ix_a1cap_telefono_time_ask",
+          "rephraseText": "¿A qué hora, mañana?",
+          "rephraseClipId": "es.clip.ix_a1cap_telefono_time_s",
+          "next": "l_time"
+        },
+        "l_time": {
+          "kind": "learner",
+          "id": "l_time",
+          "prompt": "Hãy nói một giờ: lúc chín giờ.",
+          "expected": [
+            {
+              "intent": "nine",
+              "acceptedVariants": [
+                "¡A las nueve!",
+                "A las nueve.",
+                "Nueve."
+              ],
+              "requiredConcepts": [
+                [
+                  "nueve",
+                  "9"
+                ]
+              ],
+              "next": "p_place"
+            }
+          ],
+          "noMatchNext": "r_time",
+          "scored": true
+        },
+        "r_time": {
+          "kind": "partner",
+          "id": "r_time",
+          "text": "¿A qué hora, mañana?",
+          "clipId": "es.clip.ix_a1cap_telefono_time_s",
+          "next": "l_time_b"
+        },
+        "l_time_b": {
+          "kind": "learner",
+          "id": "l_time_b",
+          "prompt": "Hãy nói một giờ: lúc chín giờ.",
+          "expected": [
+            {
+              "intent": "nine",
+              "acceptedVariants": [
+                "¡A las nueve!",
+                "A las nueve.",
+                "Nueve."
+              ],
+              "requiredConcepts": [
+                [
+                  "nueve",
+                  "9"
+                ]
+              ],
+              "next": "p_place"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_place": {
+          "kind": "partner",
+          "id": "p_place",
+          "text": "A las nueve, ¡vale! ¿Y dónde?",
+          "clipId": "es.clip.ix_a1cap_telefono_place_ask",
+          "rephraseText": "¿Dónde nos vemos?",
+          "rephraseClipId": "es.clip.ix_a1cap_telefono_place_s",
+          "next": "l_place"
+        },
+        "l_place": {
+          "kind": "learner",
+          "id": "l_place",
+          "prompt": "Hãy nói: ở quán cà phê.",
+          "expected": [
+            {
+              "intent": "cafe",
+              "acceptedVariants": [
+                "¡En el café!",
+                "Nos vemos en el café.",
+                "En el café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_place",
+          "scored": true
+        },
+        "r_place": {
+          "kind": "partner",
+          "id": "r_place",
+          "text": "¿Dónde nos vemos?",
+          "clipId": "es.clip.ix_a1cap_telefono_place_s",
+          "next": "l_place_b"
+        },
+        "l_place_b": {
+          "kind": "learner",
+          "id": "l_place_b",
+          "prompt": "Hãy nói: ở quán cà phê.",
+          "expected": [
+            {
+              "intent": "cafe",
+              "acceptedVariants": [
+                "¡En el café!",
+                "Nos vemos en el café.",
+                "En el café."
+              ],
+              "requiredConcepts": [
+                [
+                  "café",
+                  "cafe"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Perfecto! ¡Hasta mañana!",
+          "clipId": "es.clip.ix_a1cap_telefono_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.a1cap_julia": {
+      "id": "es.scenario.a1cap_julia",
+      "title": "Gặp Julia",
+      "goal": "Nói tên bạn và trả lời câu hỏi của cô ấy. Bạn là Nadia.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_name",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_name": {
+          "kind": "partner",
+          "id": "p_name",
+          "text": "¡Hola! Yo soy Julia. ¿Y usted?",
+          "clipId": "es.clip.ix_a1cap_julia_name_ask",
+          "rephraseText": "¿Cómo se llama?",
+          "rephraseClipId": "es.clip.ix_a1cap_julia_name_s",
+          "next": "l_name"
+        },
+        "l_name": {
+          "kind": "learner",
+          "id": "l_name",
+          "prompt": "Hãy chào và nói tên bạn — bạn là Nadia.",
+          "expected": [
+            {
+              "intent": "name",
+              "acceptedVariants": [
+                "Hola, me llamo Nadia.",
+                "Me llamo Nadia.",
+                "Soy Nadia."
+              ],
+              "requiredConcepts": [
+                [
+                  "nadia"
+                ]
+              ],
+              "next": "p_spanish"
+            }
+          ],
+          "noMatchNext": "r_name",
+          "scored": true
+        },
+        "r_name": {
+          "kind": "partner",
+          "id": "r_name",
+          "text": "¿Cómo se llama?",
+          "clipId": "es.clip.ix_a1cap_julia_name_s",
+          "next": "l_name_b"
+        },
+        "l_name_b": {
+          "kind": "learner",
+          "id": "l_name_b",
+          "prompt": "Hãy chào và nói tên bạn — bạn là Nadia.",
+          "expected": [
+            {
+              "intent": "name",
+              "acceptedVariants": [
+                "Hola, me llamo Nadia.",
+                "Me llamo Nadia.",
+                "Soy Nadia."
+              ],
+              "requiredConcepts": [
+                [
+                  "nadia"
+                ]
+              ],
+              "next": "p_spanish"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_spanish": {
+          "kind": "partner",
+          "id": "p_spanish",
+          "text": "¡Mucho gusto, Nadia! ¿Habla español?",
+          "clipId": "es.clip.ix_a1cap_julia_spanish_ask",
+          "rephraseText": "¿Habla español?",
+          "rephraseClipId": "es.clip.ix_a1cap_julia_spanish_s",
+          "next": "l_spanish"
+        },
+        "l_spanish": {
+          "kind": "learner",
+          "id": "l_spanish",
+          "prompt": "Hãy nói có — một chút.",
+          "expected": [
+            {
+              "intent": "yes",
+              "acceptedVariants": [
+                "¡Sí, un poco!",
+                "Sí, un poco.",
+                "¡Sí!"
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_spanish",
+          "scored": true
+        },
+        "r_spanish": {
+          "kind": "partner",
+          "id": "r_spanish",
+          "text": "¿Habla español?",
+          "clipId": "es.clip.ix_a1cap_julia_spanish_s",
+          "next": "l_spanish_b"
+        },
+        "l_spanish_b": {
+          "kind": "learner",
+          "id": "l_spanish_b",
+          "prompt": "Hãy nói có — một chút.",
+          "expected": [
+            {
+              "intent": "yes",
+              "acceptedVariants": [
+                "¡Sí, un poco!",
+                "Sí, un poco.",
+                "¡Sí!"
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Genial! ¡Hasta pronto, Nadia!",
+          "clipId": "es.clip.ix_a1cap_julia_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.a1cap_invitacion": {
+      "id": "es.scenario.a1cap_invitacion",
+      "title": "Một lời mời",
+      "goal": "Nhận lời mời đi cà phê của bạn và xác nhận giờ.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_accept",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_accept": {
+          "kind": "partner",
+          "id": "p_accept",
+          "text": "¡Hola! ¿Vamos al café mañana por la mañana?",
+          "clipId": "es.clip.ix_a1cap_invitacion_accept_ask",
+          "rephraseText": "¿Café, mañana por la mañana?",
+          "rephraseClipId": "es.clip.ix_a1cap_invitacion_accept_s",
+          "next": "l_accept"
+        },
+        "l_accept": {
+          "kind": "learner",
+          "id": "l_accept",
+          "prompt": "Hãy nói có — nghe hay đấy.",
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "¡Sí, genial!",
+                "Sí, vale.",
+                "¡Claro que sí!"
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si",
+                  "claro",
+                  "vale"
+                ]
+              ],
+              "next": "p_confirm"
+            }
+          ],
+          "noMatchNext": "r_accept",
+          "scored": true
+        },
+        "r_accept": {
+          "kind": "partner",
+          "id": "r_accept",
+          "text": "¿Café, mañana por la mañana?",
+          "clipId": "es.clip.ix_a1cap_invitacion_accept_s",
+          "next": "l_accept_b"
+        },
+        "l_accept_b": {
+          "kind": "learner",
+          "id": "l_accept_b",
+          "prompt": "Hãy nói có — nghe hay đấy.",
+          "expected": [
+            {
+              "intent": "accept",
+              "acceptedVariants": [
+                "¡Sí, genial!",
+                "Sí, vale.",
+                "¡Claro que sí!"
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si",
+                  "claro",
+                  "vale"
+                ]
+              ],
+              "next": "p_confirm"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_confirm": {
+          "kind": "partner",
+          "id": "p_confirm",
+          "text": "¡Genial! A las nueve, ¿vale?",
+          "clipId": "es.clip.ix_a1cap_invitacion_confirm_ask",
+          "rephraseText": "A las nueve, ¿te va bien?",
+          "rephraseClipId": "es.clip.ix_a1cap_invitacion_confirm_s",
+          "next": "l_confirm"
+        },
+        "l_confirm": {
+          "kind": "learner",
+          "id": "l_confirm",
+          "prompt": "Hãy nói có, được đấy.",
+          "expected": [
+            {
+              "intent": "ok",
+              "acceptedVariants": [
+                "Sí, vale.",
+                "¡Vale!",
+                "Sí, perfecto."
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si",
+                  "vale",
+                  "perfecto"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_confirm",
+          "scored": true
+        },
+        "r_confirm": {
+          "kind": "partner",
+          "id": "r_confirm",
+          "text": "A las nueve, ¿te va bien?",
+          "clipId": "es.clip.ix_a1cap_invitacion_confirm_s",
+          "next": "l_confirm_b"
+        },
+        "l_confirm_b": {
+          "kind": "learner",
+          "id": "l_confirm_b",
+          "prompt": "Hãy nói có, được đấy.",
+          "expected": [
+            {
+              "intent": "ok",
+              "acceptedVariants": [
+                "Sí, vale.",
+                "¡Vale!",
+                "Sí, perfecto."
+              ],
+              "requiredConcepts": [
+                [
+                  "sí",
+                  "si",
+                  "vale",
+                  "perfecto"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Perfecto! ¡Hasta mañana!",
+          "clipId": "es.clip.ix_a1cap_invitacion_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.dele_a_preguntas": {
+      "id": "es.scenario.dele_a_preguntas",
+      "title": "Trả lời người phỏng vấn",
+      "goal": "Trả lời ba câu hỏi về bạn. Bạn là Linh, đến từ Việt Nam, sống ở Valencia.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_name",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_name": {
+          "kind": "partner",
+          "id": "p_name",
+          "text": "Hola, buenos días. ¿Cómo te llamas?",
+          "clipId": "es.clip.ix_dele_a_preguntas_name_ask",
+          "rephraseText": "¿Cuál es tu nombre?",
+          "rephraseClipId": "es.clip.ix_dele_a_preguntas_name_s",
+          "next": "l_name"
+        },
+        "l_name": {
+          "kind": "learner",
+          "id": "l_name",
+          "prompt": "Hãy nói tên bạn — bạn là Linh.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Me llamo Linh.",
+                "Soy Linh.",
+                "Hola, me llamo Linh."
+              ],
+              "requiredConcepts": [
+                [
+                  "linh"
+                ]
+              ],
+              "next": "p_from"
+            }
+          ],
+          "noMatchNext": "r_name",
+          "scored": true
+        },
+        "r_name": {
+          "kind": "partner",
+          "id": "r_name",
+          "text": "¿Cuál es tu nombre?",
+          "clipId": "es.clip.ix_dele_a_preguntas_name_s",
+          "next": "l_name_b"
+        },
+        "l_name_b": {
+          "kind": "learner",
+          "id": "l_name_b",
+          "prompt": "Hãy nói tên bạn — bạn là Linh.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Me llamo Linh.",
+                "Soy Linh.",
+                "Hola, me llamo Linh."
+              ],
+              "requiredConcepts": [
+                [
+                  "linh"
+                ]
+              ],
+              "next": "p_from"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_from": {
+          "kind": "partner",
+          "id": "p_from",
+          "text": "Mucho gusto. ¿De dónde eres?",
+          "clipId": "es.clip.ix_dele_a_preguntas_from_ask",
+          "rephraseText": "¿De qué país eres?",
+          "rephraseClipId": "es.clip.ix_dele_a_preguntas_from_s",
+          "next": "l_from"
+        },
+        "l_from": {
+          "kind": "learner",
+          "id": "l_from",
+          "prompt": "Hãy nói bạn đến từ Việt Nam.",
+          "expected": [
+            {
+              "intent": "from_vn",
+              "acceptedVariants": [
+                "Soy de Vietnam.",
+                "Soy vietnamita.",
+                "De Vietnam."
+              ],
+              "requiredConcepts": [
+                [
+                  "vietnam",
+                  "vietnamita"
+                ]
+              ],
+              "next": "p_live"
+            }
+          ],
+          "noMatchNext": "r_from",
+          "scored": true
+        },
+        "r_from": {
+          "kind": "partner",
+          "id": "r_from",
+          "text": "¿De qué país eres?",
+          "clipId": "es.clip.ix_dele_a_preguntas_from_s",
+          "next": "l_from_b"
+        },
+        "l_from_b": {
+          "kind": "learner",
+          "id": "l_from_b",
+          "prompt": "Hãy nói bạn đến từ Việt Nam.",
+          "expected": [
+            {
+              "intent": "from_vn",
+              "acceptedVariants": [
+                "Soy de Vietnam.",
+                "Soy vietnamita.",
+                "De Vietnam."
+              ],
+              "requiredConcepts": [
+                [
+                  "vietnam",
+                  "vietnamita"
+                ]
+              ],
+              "next": "p_live"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_live": {
+          "kind": "partner",
+          "id": "p_live",
+          "text": "¿Y dónde vives ahora?",
+          "clipId": "es.clip.ix_dele_a_preguntas_live_ask",
+          "rephraseText": "¿En qué ciudad vives?",
+          "rephraseClipId": "es.clip.ix_dele_a_preguntas_live_s",
+          "next": "l_live"
+        },
+        "l_live": {
+          "kind": "learner",
+          "id": "l_live",
+          "prompt": "Hãy nói bạn sống ở Valencia.",
+          "expected": [
+            {
+              "intent": "live_city",
+              "acceptedVariants": [
+                "Vivo en Valencia.",
+                "En Valencia.",
+                "Ahora vivo en Valencia."
+              ],
+              "requiredConcepts": [
+                [
+                  "valencia"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_live",
+          "scored": true
+        },
+        "r_live": {
+          "kind": "partner",
+          "id": "r_live",
+          "text": "¿En qué ciudad vives?",
+          "clipId": "es.clip.ix_dele_a_preguntas_live_s",
+          "next": "l_live_b"
+        },
+        "l_live_b": {
+          "kind": "learner",
+          "id": "l_live_b",
+          "prompt": "Hãy nói bạn sống ở Valencia.",
+          "expected": [
+            {
+              "intent": "live_city",
+              "acceptedVariants": [
+                "Vivo en Valencia.",
+                "En Valencia.",
+                "Ahora vivo en Valencia."
+              ],
+              "requiredConcepts": [
+                [
+                  "valencia"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Muy bien, muchas gracias!",
+          "clipId": "es.clip.ix_dele_a_preguntas_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.dele_a_billete": {
+      "id": "es.scenario.dele_a_billete",
+      "title": "Mua vé tàu",
+      "goal": "Mua một vé tàu đi Toledo cho ngày mai, rồi cảm ơn.",
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_want",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_want": {
+          "kind": "partner",
+          "id": "p_want",
+          "text": "Buenos días. ¿Qué desea?",
+          "clipId": "es.clip.ix_dele_a_billete_want_ask",
+          "rephraseText": "¿En qué puedo ayudarle?",
+          "rephraseClipId": "es.clip.ix_dele_a_billete_want_s",
+          "next": "l_want"
+        },
+        "l_want": {
+          "kind": "learner",
+          "id": "l_want",
+          "prompt": "Hãy hỏi mua một vé tàu đi Toledo.",
+          "expected": [
+            {
+              "intent": "ticket",
+              "acceptedVariants": [
+                "Un billete para Toledo, por favor.",
+                "Quiero un billete para Toledo.",
+                "Un boleto para Toledo, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "toledo"
+                ]
+              ],
+              "next": "p_day"
+            }
+          ],
+          "noMatchNext": "r_want",
+          "scored": true
+        },
+        "r_want": {
+          "kind": "partner",
+          "id": "r_want",
+          "text": "¿En qué puedo ayudarle?",
+          "clipId": "es.clip.ix_dele_a_billete_want_s",
+          "next": "l_want_b"
+        },
+        "l_want_b": {
+          "kind": "learner",
+          "id": "l_want_b",
+          "prompt": "Hãy hỏi mua một vé tàu đi Toledo.",
+          "expected": [
+            {
+              "intent": "ticket",
+              "acceptedVariants": [
+                "Un billete para Toledo, por favor.",
+                "Quiero un billete para Toledo.",
+                "Un boleto para Toledo, por favor."
+              ],
+              "requiredConcepts": [
+                [
+                  "toledo"
+                ]
+              ],
+              "next": "p_day"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_day": {
+          "kind": "partner",
+          "id": "p_day",
+          "text": "Muy bien. ¿Para hoy o para mañana?",
+          "clipId": "es.clip.ix_dele_a_billete_day_ask",
+          "rephraseText": "¿Hoy o mañana?",
+          "rephraseClipId": "es.clip.ix_dele_a_billete_day_s",
+          "next": "l_day"
+        },
+        "l_day": {
+          "kind": "learner",
+          "id": "l_day",
+          "prompt": "Hãy nói: cho ngày mai.",
+          "expected": [
+            {
+              "intent": "tomorrow",
+              "acceptedVariants": [
+                "Para mañana, por favor.",
+                "Mañana.",
+                "Para mañana."
+              ],
+              "requiredConcepts": [
+                [
+                  "mañana",
+                  "manana"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "r_day",
+          "scored": true
+        },
+        "r_day": {
+          "kind": "partner",
+          "id": "r_day",
+          "text": "¿Hoy o mañana?",
+          "clipId": "es.clip.ix_dele_a_billete_day_s",
+          "next": "l_day_b"
+        },
+        "l_day_b": {
+          "kind": "learner",
+          "id": "l_day_b",
+          "prompt": "Hãy nói: cho ngày mai.",
+          "expected": [
+            {
+              "intent": "tomorrow",
+              "acceptedVariants": [
+                "Para mañana, por favor.",
+                "Mañana.",
+                "Para mañana."
+              ],
+              "requiredConcepts": [
+                [
+                  "mañana",
+                  "manana"
+                ]
+              ],
+              "next": "p_thanks"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_thanks": {
+          "kind": "partner",
+          "id": "p_thanks",
+          "text": "Son veinte euros. Aquí tiene su billete.",
+          "clipId": "es.clip.ix_dele_a_billete_thanks_ask",
+          "rephraseText": "Veinte euros, por favor.",
+          "rephraseClipId": "es.clip.ix_dele_a_billete_thanks_s",
+          "next": "l_thanks"
+        },
+        "l_thanks": {
+          "kind": "learner",
+          "id": "l_thanks",
+          "prompt": "Hãy cảm ơn và chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!"
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_thanks",
+          "scored": true
+        },
+        "r_thanks": {
+          "kind": "partner",
+          "id": "r_thanks",
+          "text": "Veinte euros, por favor.",
+          "clipId": "es.clip.ix_dele_a_billete_thanks_s",
+          "next": "l_thanks_b"
+        },
+        "l_thanks_b": {
+          "kind": "learner",
+          "id": "l_thanks_b",
+          "prompt": "Hãy cảm ơn và chào tạm biệt.",
+          "expected": [
+            {
+              "intent": "thanks_bye",
+              "acceptedVariants": [
+                "Gracias, adiós.",
+                "Muchas gracias, adiós.",
+                "Gracias, hasta luego.",
+                "¡Gracias!"
+              ],
+              "requiredConcepts": [
+                [
+                  "gracias"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡De nada! ¡Buen viaje!",
+          "clipId": "es.clip.ix_dele_a_billete_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.dele_b_preguntas": {
+      "id": "es.scenario.dele_b_preguntas",
+      "title": "Trả lời người phỏng vấn",
+      "goal": "Trả lời ba câu hỏi về bạn. Bạn là Minh, một sinh viên.",
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p_name",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_name": {
+          "kind": "partner",
+          "id": "p_name",
+          "text": "Hola. ¿Cómo te llamas?",
+          "clipId": "es.clip.ix_dele_b_preguntas_name_ask",
+          "rephraseText": "¿Cuál es tu nombre?",
+          "rephraseClipId": "es.clip.ix_dele_b_preguntas_name_s",
+          "next": "l_name"
+        },
+        "l_name": {
+          "kind": "learner",
+          "id": "l_name",
+          "prompt": "Hãy nói tên bạn — bạn là Minh.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Me llamo Minh.",
+                "Soy Minh.",
+                "Hola, me llamo Minh."
+              ],
+              "requiredConcepts": [
+                [
+                  "minh"
+                ]
+              ],
+              "next": "p_work"
+            }
+          ],
+          "noMatchNext": "r_name",
+          "scored": true
+        },
+        "r_name": {
+          "kind": "partner",
+          "id": "r_name",
+          "text": "¿Cuál es tu nombre?",
+          "clipId": "es.clip.ix_dele_b_preguntas_name_s",
+          "next": "l_name_b"
+        },
+        "l_name_b": {
+          "kind": "learner",
+          "id": "l_name_b",
+          "prompt": "Hãy nói tên bạn — bạn là Minh.",
+          "expected": [
+            {
+              "intent": "give_name",
+              "acceptedVariants": [
+                "Me llamo Minh.",
+                "Soy Minh.",
+                "Hola, me llamo Minh."
+              ],
+              "requiredConcepts": [
+                [
+                  "minh"
+                ]
+              ],
+              "next": "p_work"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_work": {
+          "kind": "partner",
+          "id": "p_work",
+          "text": "¿Trabajas o estudias?",
+          "clipId": "es.clip.ix_dele_b_preguntas_work_ask",
+          "rephraseText": "¿Estudias o trabajas?",
+          "rephraseClipId": "es.clip.ix_dele_b_preguntas_work_s",
+          "next": "l_work"
+        },
+        "l_work": {
+          "kind": "learner",
+          "id": "l_work",
+          "prompt": "Hãy nói bạn là sinh viên.",
+          "expected": [
+            {
+              "intent": "student",
+              "acceptedVariants": [
+                "Estudio.",
+                "Soy estudiante.",
+                "Estudio en la universidad."
+              ],
+              "requiredConcepts": [
+                [
+                  "estudio",
+                  "estudiante"
+                ]
+              ],
+              "next": "p_like"
+            }
+          ],
+          "noMatchNext": "r_work",
+          "scored": true
+        },
+        "r_work": {
+          "kind": "partner",
+          "id": "r_work",
+          "text": "¿Estudias o trabajas?",
+          "clipId": "es.clip.ix_dele_b_preguntas_work_s",
+          "next": "l_work_b"
+        },
+        "l_work_b": {
+          "kind": "learner",
+          "id": "l_work_b",
+          "prompt": "Hãy nói bạn là sinh viên.",
+          "expected": [
+            {
+              "intent": "student",
+              "acceptedVariants": [
+                "Estudio.",
+                "Soy estudiante.",
+                "Estudio en la universidad."
+              ],
+              "requiredConcepts": [
+                [
+                  "estudio",
+                  "estudiante"
+                ]
+              ],
+              "next": "p_like"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_like": {
+          "kind": "partner",
+          "id": "p_like",
+          "text": "¿Y qué te gusta hacer?",
+          "clipId": "es.clip.ix_dele_b_preguntas_like_ask",
+          "rephraseText": "¿Qué haces en tu tiempo libre?",
+          "rephraseClipId": "es.clip.ix_dele_b_preguntas_like_s",
+          "next": "l_like"
+        },
+        "l_like": {
+          "kind": "learner",
+          "id": "l_like",
+          "prompt": "Hãy nói bạn thích đọc sách — hoặc thích âm nhạc.",
+          "expected": [
+            {
+              "intent": "read",
+              "acceptedVariants": [
+                "Me gusta leer.",
+                "Me gusta leer libros."
+              ],
+              "requiredConcepts": [
+                [
+                  "leer"
+                ]
+              ],
+              "next": "t_ok"
+            },
+            {
+              "intent": "music",
+              "acceptedVariants": [
+                "Me gusta la música.",
+                "Me gusta escuchar música."
+              ],
+              "requiredConcepts": [
+                [
+                  "música",
+                  "musica"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_like",
+          "scored": true
+        },
+        "r_like": {
+          "kind": "partner",
+          "id": "r_like",
+          "text": "¿Qué haces en tu tiempo libre?",
+          "clipId": "es.clip.ix_dele_b_preguntas_like_s",
+          "next": "l_like_b"
+        },
+        "l_like_b": {
+          "kind": "learner",
+          "id": "l_like_b",
+          "prompt": "Hãy nói bạn thích đọc sách — hoặc thích âm nhạc.",
+          "expected": [
+            {
+              "intent": "read",
+              "acceptedVariants": [
+                "Me gusta leer.",
+                "Me gusta leer libros."
+              ],
+              "requiredConcepts": [
+                [
+                  "leer"
+                ]
+              ],
+              "next": "t_ok"
+            },
+            {
+              "intent": "music",
+              "acceptedVariants": [
+                "Me gusta la música.",
+                "Me gusta escuchar música."
+              ],
+              "requiredConcepts": [
+                [
+                  "música",
+                  "musica"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "¡Qué bien! Muchas gracias.",
+          "clipId": "es.clip.ix_dele_b_preguntas_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    },
+    "es.scenario.dele_b_restaurante": {
+      "id": "es.scenario.dele_b_restaurante",
+      "title": "Ở nhà hàng",
+      "goal": "Gọi món ăn và đồ uống, rồi xin hóa đơn.",
+      "taskFamily": "transaction",
+      "objectiveRefs": [
+        "es.obj.interaction.practical_needs"
+      ],
+      "startNodeId": "p_order",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "¡No pasa nada! Otra vez será.",
+          "clipId": "es.clip.ix_no_pasa_nada"
+        },
+        "p_order": {
+          "kind": "partner",
+          "id": "p_order",
+          "text": "Buenas tardes. ¿Qué va a comer?",
+          "clipId": "es.clip.ix_dele_b_restaurante_order_ask",
+          "rephraseText": "¿Qué quiere comer?",
+          "rephraseClipId": "es.clip.ix_dele_b_restaurante_order_s",
+          "next": "l_order"
+        },
+        "l_order": {
+          "kind": "learner",
+          "id": "l_order",
+          "prompt": "Hãy gọi gà với cơm — hoặc một món salad.",
+          "expected": [
+            {
+              "intent": "pollo",
+              "acceptedVariants": [
+                "Pollo con arroz, por favor.",
+                "Quiero pollo con arroz."
+              ],
+              "requiredConcepts": [
+                [
+                  "pollo"
+                ]
+              ],
+              "next": "p_drink"
+            },
+            {
+              "intent": "ensalada",
+              "acceptedVariants": [
+                "Una ensalada, por favor.",
+                "Quiero una ensalada."
+              ],
+              "requiredConcepts": [
+                [
+                  "ensalada"
+                ]
+              ],
+              "next": "p_drink"
+            }
+          ],
+          "noMatchNext": "r_order",
+          "scored": true
+        },
+        "r_order": {
+          "kind": "partner",
+          "id": "r_order",
+          "text": "¿Qué quiere comer?",
+          "clipId": "es.clip.ix_dele_b_restaurante_order_s",
+          "next": "l_order_b"
+        },
+        "l_order_b": {
+          "kind": "learner",
+          "id": "l_order_b",
+          "prompt": "Hãy gọi gà với cơm — hoặc một món salad.",
+          "expected": [
+            {
+              "intent": "pollo",
+              "acceptedVariants": [
+                "Pollo con arroz, por favor.",
+                "Quiero pollo con arroz."
+              ],
+              "requiredConcepts": [
+                [
+                  "pollo"
+                ]
+              ],
+              "next": "p_drink"
+            },
+            {
+              "intent": "ensalada",
+              "acceptedVariants": [
+                "Una ensalada, por favor.",
+                "Quiero una ensalada."
+              ],
+              "requiredConcepts": [
+                [
+                  "ensalada"
+                ]
+              ],
+              "next": "p_drink"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_drink": {
+          "kind": "partner",
+          "id": "p_drink",
+          "text": "Muy bien. ¿Y para beber?",
+          "clipId": "es.clip.ix_dele_b_restaurante_drink_ask",
+          "rephraseText": "¿Qué quiere beber?",
+          "rephraseClipId": "es.clip.ix_dele_b_restaurante_drink_s",
+          "next": "l_drink"
+        },
+        "l_drink": {
+          "kind": "learner",
+          "id": "l_drink",
+          "prompt": "Hãy gọi nước.",
+          "expected": [
+            {
+              "intent": "agua",
+              "acceptedVariants": [
+                "Agua, por favor.",
+                "Un agua, por favor.",
+                "Quiero agua."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "p_bill"
+            }
+          ],
+          "noMatchNext": "r_drink",
+          "scored": true
+        },
+        "r_drink": {
+          "kind": "partner",
+          "id": "r_drink",
+          "text": "¿Qué quiere beber?",
+          "clipId": "es.clip.ix_dele_b_restaurante_drink_s",
+          "next": "l_drink_b"
+        },
+        "l_drink_b": {
+          "kind": "learner",
+          "id": "l_drink_b",
+          "prompt": "Hãy gọi nước.",
+          "expected": [
+            {
+              "intent": "agua",
+              "acceptedVariants": [
+                "Agua, por favor.",
+                "Un agua, por favor.",
+                "Quiero agua."
+              ],
+              "requiredConcepts": [
+                [
+                  "agua"
+                ]
+              ],
+              "next": "p_bill"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p_bill": {
+          "kind": "partner",
+          "id": "p_bill",
+          "text": "Aquí tiene. ¿Algo más?",
+          "clipId": "es.clip.ix_dele_b_restaurante_bill_ask",
+          "rephraseText": "¿Quiere algo más?",
+          "rephraseClipId": "es.clip.ix_dele_b_restaurante_bill_s",
+          "next": "l_bill"
+        },
+        "l_bill": {
+          "kind": "learner",
+          "id": "l_bill",
+          "prompt": "Hãy xin hóa đơn.",
+          "expected": [
+            {
+              "intent": "cuenta",
+              "acceptedVariants": [
+                "La cuenta, por favor.",
+                "¿Me trae la cuenta, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "cuenta"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r_bill",
+          "scored": true
+        },
+        "r_bill": {
+          "kind": "partner",
+          "id": "r_bill",
+          "text": "¿Quiere algo más?",
+          "clipId": "es.clip.ix_dele_b_restaurante_bill_s",
+          "next": "l_bill_b"
+        },
+        "l_bill_b": {
+          "kind": "learner",
+          "id": "l_bill_b",
+          "prompt": "Hãy xin hóa đơn.",
+          "expected": [
+            {
+              "intent": "cuenta",
+              "acceptedVariants": [
+                "La cuenta, por favor.",
+                "¿Me trae la cuenta, por favor?"
+              ],
+              "requiredConcepts": [
+                [
+                  "cuenta"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "Son quince euros. ¡Muchas gracias!",
+          "clipId": "es.clip.ix_dele_b_restaurante_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true
+    }
+  }
+}

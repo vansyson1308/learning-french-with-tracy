@@ -152,3 +152,9 @@ jobs:
           UI_LANG: vi
           E2E_COURSE: fr-vi
         run: bun run e2e:guide dist-vi
+      # P3d: the Vietnamese-first Spanish course and its DELE A1 exam track.
+      - name: Exam-track E2E (web tier, Vietnamese UI, es-vi)
+        env:
+          E2E_BROWSER_PATH: /usr/bin/google-chrome
+          UI_LANG: vi
+        run: bun run e2e:exam dist-vi

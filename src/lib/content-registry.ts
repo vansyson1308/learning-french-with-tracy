@@ -27,6 +27,7 @@ export type CourseArtifacts = {
   speech?: unknown;
   writing?: unknown;
   scenarios?: unknown;
+  examTracks?: unknown;
 };
 
 const EMPTY: CourseArtifacts = {};

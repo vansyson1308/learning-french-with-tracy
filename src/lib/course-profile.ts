@@ -36,9 +36,13 @@ export type CourseCapabilities = {
   writing: boolean;
   /** Conversation practice scenarios. */
   conversation: boolean;
+  /** P3d: an exam track (format practice + timed mock); absent = none. */
+  exam?: boolean;
 };
 
 export type CourseArtifactPaths = {
+  /** P3d: compiled exam tracks of the course (DELE A1, JLPT N5, …). */
+  examTracks?: string;
   ids?: string;
   lexiconIndex?: string;
   lexiconFallback?: string;
@@ -76,6 +80,8 @@ export type CourseProfile = {
   legacyIdPrefix: string;
   capabilities: CourseCapabilities;
   artifacts: CourseArtifactPaths;
+  /** P3d: "standalone" = an inherited course kept beside its target's primary course (no rich layers). */
+  role?: "standalone";
   /**
    * The course whose pack-audio manifest entries this course plays (P2b):
    * set only for a course in a secondary native language — the audio is
@@ -160,7 +166,7 @@ export function courseProfile(courseId: string): CourseProfile {
 }
 
 export function hasCapability(courseId: string, capability: keyof CourseCapabilities): boolean {
-  return courseProfile(courseId).capabilities[capability];
+  return courseProfile(courseId).capabilities[capability] === true;
 }
 
 export function allCourseProfiles(): CourseProfile[] {

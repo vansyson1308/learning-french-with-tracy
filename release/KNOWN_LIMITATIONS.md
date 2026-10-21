@@ -56,6 +56,29 @@ itself.
   `review: { native, date }` or the owner records the same explicit
   exception here. `content/fr/REVIEW-CHECKLIST.md` (3,217 strings) is the
   reviewer's list for `fr-vi`.
+- **`es-vi` (Spanish for Vietnamese speakers, P3d) ships unreviewed.** It
+  compiles with `allowUnreviewed: true` in `content/courses/es-vi.profile.json`:
+  its Spanish and Vietnamese text was authored with the P3c toolkit and has
+  not yet been checked by a native Spanish teacher or a native Vietnamese
+  reviewer. `content/es/REVIEW-CHECKLIST.md` is the reviewer's list. The
+  older `es-en` course is marked `"role": "standalone"`: it keeps its
+  40 legacy lessons and its English dictionary but none of the new layers,
+  and Spanish level claims and reports count only against `es-vi`.
+- **DELE A1 practice (`es-vi`) reproduces the public format only.** The
+  section, task, timing and score-group figures in `content/es/exam/dele-a1.json`
+  come from the public description summarised in the es-vi brief; the
+  official Instituto Cervantes guide could not be re-checked (the site was in
+  maintenance), so `formatSource.checkedAgainstOfficialGuide` is `false` and
+  the app says so. Matching tasks are presented as one three-option choice per
+  item. Writing and speaking are graded by the app's deterministic rubrics, so
+  their points are coarse. Results are an estimated readiness, never a
+  prediction of passing. Section practice draws on both mock forms, so a later
+  mock may repeat questions already seen (the app says this).
+- **Spanish audio is pending the generate run.** The 255 Spanish clips (lessons,
+  checkpoints, exam, conversation partners) have scripts but no bundled audio
+  until the P3b audio workflow generates them; listening items offer the
+  audio-unavailable skip meanwhile, and the course pack uses device TTS for
+  pack words (`audio.policy: device-tts`, reason recorded).
 - **Audio for the non-French languages is produced by dispatched runs
   (P3b).** The multi-engine pipeline, the licence gate, the per-language
   canaries and the voice casts are in the repository; the canary runs for

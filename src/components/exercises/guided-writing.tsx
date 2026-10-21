@@ -65,7 +65,7 @@ export function GuidedWriting({
         value={text}
         onChangeText={(next) => onAnswer({ written: true, kind: "text", text: next })}
         editable={!answered}
-        placeholder="Écris ta réponse ici…"
+        placeholder={t("ex.writePlaceholder")}
         placeholderTextColor={colors.neutral400}
         autoCapitalize="sentences"
         autoCorrect={false}

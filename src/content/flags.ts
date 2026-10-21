@@ -3,6 +3,7 @@
 export const FLAG_ASSETS: Record<string, number> = {
   "de-en": require("../../assets/images/flags/de.svg"),
   "es-en": require("../../assets/images/flags/es.svg"),
+  "es-vi": require("../../assets/images/flags/es.svg"),
   "fr-en": require("../../assets/images/flags/fr.svg"),
   "fr-vi": require("../../assets/images/flags/fr.svg"),
   "it-en": require("../../assets/images/flags/it.svg"),

@@ -21,7 +21,7 @@ import path from "path";
 
 import { existsSync } from "fs";
 
-import type { PackSource } from "../../content/schema";
+import type { ExamTrack, PackSource } from "../../content/schema";
 import { buildPlugin } from "./languages";
 import {
   assessmentSourcePath,
@@ -40,6 +40,8 @@ import {
   validateAssessment,
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
+import { examTrackPaths } from "./exam-bank";
+import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
 import { deriveGenderPatterns } from "./gender-patterns";
 import {
@@ -61,7 +63,7 @@ import {
   isTestOnlyTarget,
   loadPacks,
   loadRegistry,
-  nativeCodesFor,
+  courseRolesFor,
   packsForTarget,
   readJson,
   safeResolve,
@@ -113,25 +115,38 @@ export function artifactRootFor(testOnly: boolean): string {
 const KNOWN_VOCABULARY_KEYS: Readonly<Record<string, string>> = { fr: "knownFrench" };
 
 /**
- * The PRIMARY native language of a target (P2b): the smallest native code
- * among its courses (`en` for French, so every pre-P2b artifact keeps its
- * name and bytes). Its artifacts are `<lang>-*`; every other native
- * language of the target gets its own native-language artifacts named by
- * the course id (`fr-vi-*`), reports stay with the primary.
+ * The PRIMARY native language of a target (P2b, roles since P3d): the native
+ * code of the target's primary course (scripts/lib/course-roles.ts) — `en`
+ * for French, so every pre-P2b artifact keeps its name and bytes. Its
+ * artifacts are `<lang>-*`; every mirror course gets its own
+ * native-language artifacts named by the course id (`fr-vi-*`), reports stay
+ * with the primary.
  */
 export function artifactNativeCode(lang: string, packs: LoadedPack[]): string {
-  const codes = nativeCodesFor(lang, packs);
-  if (codes.length === 0) throw new Error(`${lang}: content/${lang}/ has no course pack`);
-  return codes[0];
+  const primary = courseRolesFor(lang, packs).primary;
+  if (primary === undefined) throw new Error(`${lang}: content/${lang}/ has no course pack`);
+  return primary.nativeCode;
 }
 
-/** The (courseId, nativeCode) pairs of a target beyond its primary native language, sorted. */
+/** The primary course pack of a target (reports, claim gates and `<lang>-*` artifacts). */
+function primaryPackOf(lang: string, packs: LoadedPack[]): PackSource | undefined {
+  return courseRolesFor(lang, packs).primary?.pack;
+}
+
+/** The (courseId, nativeCode) pairs of a target's MIRROR courses, sorted by course id. */
 export function secondaryNativeCourses(lang: string, packs: LoadedPack[]): { courseId: string; nativeCode: string }[] {
-  const primary = artifactNativeCode(lang, packs);
-  return packsForTarget(lang, packs)
-    .filter((p) => p.pack.nativeCode !== primary)
-    .map((p) => ({ courseId: p.pack.id, nativeCode: p.pack.nativeCode }))
-    .sort((a, b) => a.courseId.localeCompare(b.courseId));
+  return courseRolesFor(lang, packs).mirrors.map((p) => ({ courseId: p.id, nativeCode: p.nativeCode }));
+}
+
+/** P3d: standalone courses share only the lexicon — their own native-language dictionary. */
+export function standaloneLexiconCourses(lang: string, packs: LoadedPack[]): { courseId: string; nativeCode: string }[] {
+  return courseRolesFor(lang, packs).standalone.map((p) => ({ courseId: p.id, nativeCode: p.nativeCode }));
+}
+
+/** Native codes the rich layers must carry: the primary's and every mirror's (standalone courses excluded). */
+function richNativeCodes(lang: string, packs: LoadedPack[]): string[] {
+  const roles = courseRolesFor(lang, packs);
+  return [...new Set([roles.primary, ...roles.mirrors].filter((p) => p !== undefined).map((p) => p.nativeCode))].sort();
 }
 
 function receptionAssetKind(lang: string, packs: LoadedPack[]): ReceptionAssetKind {
@@ -169,10 +184,11 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
     }
     return [`${lang}: content/${lang}/ has rich sources but no course pack (content/courses/${lang}-<native>.json)`];
   }
-  const nativeCodes = nativeCodesFor(lang, packs);
+  const nativeCodes = richNativeCodes(lang, packs);
   const plugin = buildPlugin(lang);
   const layers = targetLayers(lang);
 
+  errors.push(...courseRolesFor(lang, packs).errors);
   errors.push(...validateLexicon(lang, packs).errors);
   errors.push(...validatePedagogy(lang, packs).errors);
   errors.push(...validateAssessment(lang, packs).errors);
@@ -325,6 +341,50 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
     }
   }
   errors.push(...validateSecondaryNativeCourses(lang, packs));
+  errors.push(...validateTargetExamTracks(lang, packs, { objectives, readings, listening, speech, writing, interaction }, nativeCodes));
+  return errors;
+}
+
+/** P3d: every exam track of a target against the primary course and the target's banks. */
+function validateTargetExamTracks(
+  lang: string,
+  packs: LoadedPack[],
+  layers: {
+    objectives: { objectives: { id: string }[] } | null;
+    readings: { readings: { id: string }[] } | null;
+    listening: { clips: { id: string }[] } | null;
+    speech: { items: { id: string }[] } | null;
+    writing: { tasks: { id: string }[] } | null;
+    interaction: { scenarios: { id: string }[] } | null;
+  },
+  nativeCodes: string[]
+): string[] {
+  if (examTrackPaths(lang).length === 0) return [];
+  const pack = primaryPackOf(lang, packs);
+  if (!pack) return [];
+  let tracks: ExamTrack[];
+  try {
+    tracks = loadExamTracks(lang);
+  } catch (e) {
+    return [schemaFailure(`exam (${lang})`, e)];
+  }
+  const ids = <T extends { id: string }>(rows: T[] | undefined) => new Set((rows ?? []).map((r) => r.id));
+  const refs = {
+    objectiveIds: ids(layers.objectives?.objectives),
+    readingIds: ids(layers.readings?.readings),
+    clipIds: ids(layers.listening?.clips),
+    speechIds: ids(layers.speech?.items),
+    writingIds: ids(layers.writing?.tasks),
+    scenarioIds: ids(layers.interaction?.scenarios),
+  };
+  const errors: string[] = [];
+  const seen = new Set<string>();
+  for (const track of tracks) {
+    if (seen.has(track.id)) errors.push(`exam (${lang}): duplicate track id ${track.id}`);
+    seen.add(track.id);
+    errors.push(...validateExamTrackData({ track, lang, pack, refs, nativeCodes }).errors);
+    errors.push(...missingExerciseOverlays(track.items, track.exerciseNativeCode, nativeCodes).map((m) => `exam (${lang}): ${m}`));
+  }
   return errors;
 }
 
@@ -336,8 +396,7 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
  */
 export function validateSecondaryNativeCourses(lang: string, packs: LoadedPack[]): string[] {
   const errors: string[] = [];
-  const primary = artifactNativeCode(lang, packs);
-  const primaryPack = packsForTarget(lang, packs).find((p) => p.pack.nativeCode === primary)?.pack;
+  const primaryPack = primaryPackOf(lang, packs);
   if (!primaryPack) return errors;
   for (const { courseId } of secondaryNativeCourses(lang, packs)) {
     const mine = packsForTarget(lang, packs).find((p) => p.pack.id === courseId)?.pack;
@@ -437,7 +496,7 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
   // The course whose sections/lessons the assessment reports count against:
   // the primary-native course (reports are target-level facts; a secondary
   // native course mirrors it exercise for exercise — validated).
-  const pack: PackSource = mine.find((p) => p.pack.nativeCode === nativeCode)?.pack ?? mine[0].pack;
+  const pack: PackSource = primaryPackOf(lang, packs) ?? mine[0].pack;
 
   const dbPlans: LexiconDbPlan[] = [];
   const lexicon = hasRichLexicon(lang) ? loadRichLexicon(lang) : null;
@@ -446,8 +505,9 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
     const artifacts = compileLexiconArtifacts({ lexicon, manifest, registry, nativeCode, artifactRoot: root, reportsDir });
     files.push(...artifacts.files);
     dbPlans.push(lexiconDbPlan({ lexicon, contentHash: artifacts.contentHash, nativeCode, testOnly }));
-    // Secondary native languages (P2b): their own index, fallback and database.
-    for (const { courseId, nativeCode: code } of secondaryNativeCourses(lang, packs)) {
+    // Mirror native languages (P2b) and standalone courses (P3d): their own index, fallback and database.
+    const lexiconCourses = [...secondaryNativeCourses(lang, packs), ...standaloneLexiconCourses(lang, packs)].sort((a, b) => a.courseId.localeCompare(b.courseId));
+    for (const { courseId, nativeCode: code } of lexiconCourses) {
       const secondary = compileLexiconArtifacts({ lexicon, manifest, registry, nativeCode: code, artifactRoot: root, reportsDir: null, artifactPrefix: courseId });
       files.push(...secondary.files);
       dbPlans.push(lexiconDbPlan({ lexicon, contentHash: secondary.contentHash, nativeCode: code, testOnly, assetPrefix: courseId }));
@@ -687,7 +747,26 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
       files.push({ relPath: `${root}/interaction/${courseId}-scenarios.json`, contents: compileInteractionArtifact(interaction, code) });
     }
   }
+  // P3d exam tracks: one artifact per course (primary + mirrors), native text resolved.
+  if (examTrackPaths(lang).length > 0) {
+    const tracks = loadExamTracks(lang);
+    const lexemeMap = <T extends { id: string; lexemeRefs?: string[] }>(rows: T[] | undefined) => new Map((rows ?? []).map((r) => [r.id, r.lexemeRefs ?? []]));
+    const sources = {
+      readings: lexemeMap(readingsForExam(lang)),
+      clips: lexemeMap(loadListening(lang)?.clips),
+      speech: lexemeMap(loadSpeechItems(lang)?.items),
+      writing: lexemeMap(loadWritingTasks(lang)?.tasks),
+    };
+    files.push({ relPath: `${root}/exam/${lang}-exam-tracks.json`, contents: compileExamTracksArtifact(tracks, lang, nativeCode, sources) });
+    for (const { courseId, nativeCode: code } of secondaryNativeCourses(lang, packs)) {
+      files.push({ relPath: `${root}/exam/${courseId}-exam-tracks.json`, contents: compileExamTracksArtifact(tracks, lang, code, sources) });
+    }
+  }
   return { files, dbPlans };
+}
+
+function readingsForExam(lang: string) {
+  return loadReadings(lang)?.readings;
 }
 
 /**

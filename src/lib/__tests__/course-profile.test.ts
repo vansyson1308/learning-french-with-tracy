@@ -75,12 +75,14 @@ describe("courseProfile", () => {
     expect(p.capabilities.fsrs).toBe(false);
     expect(p.capabilities.dailySession).toBe(false);
     expect(Object.keys(p.artifacts).sort()).toEqual(["ids", "lexiconDb", "lexiconFallback", "lexiconIndex"]);
-    expect(p.artifacts.lexiconDb).toMatch(/^assets\/lexicon\/es-lexicon-v\d+-[0-9a-f]{16}\.db$/);
+    // P3d: es-en is "standalone" — its own English-gloss dictionary, none of es-vi's rich layers.
+    expect(p.artifacts.lexiconDb).toMatch(/^assets\/lexicon\/es-en-lexicon-v\d+-[0-9a-f]{16}\.db$/);
+    expect(p.artifacts.lexiconIndex).toBe("src/content/lexicon/es-en-index.json");
   });
 
   test("every inherited course has no rich capability and no artifacts", () => {
     for (const course of catalog.courses) {
-      if (course.id === "fr-en" || course.id === "fr-vi" || course.id === "es-en") continue;
+      if (["fr-en", "fr-vi", "es-en", "es-vi"].includes(course.id)) continue;
       const p = courseProfile(course.id);
       for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
       expect(p.artifacts).toEqual({});

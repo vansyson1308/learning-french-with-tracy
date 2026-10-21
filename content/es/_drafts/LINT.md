@@ -1,0 +1,116 @@
+# Lint — es-vi
+
+Findings: 845 (distractor-pos 12, duplicate-payload 3, type-mix 1, lexeme-skill-coverage 67, lexeme-coverage 762)
+
+## distractor-pos (12)
+
+- ℹ️ `es-vi:u1-l0-e8`: distractor "gracias" is interjection, answer "señor" is adjective
+- ℹ️ `es-vi:ue-l2-e1`: distractor "xe hơi" is noun, answer "đắt" is adjective
+- ℹ️ `es-vi:uf-l2-e0`: distractor "la noche" is noun, answer "hoy" is adverb
+- ℹ️ `es-vi:uf-l2-e0`: distractor "la mañana" is noun, answer "hoy" is adverb
+- ℹ️ `es-vi:uf-l2-e0`: distractor "la semana" is noun, answer "hoy" is adverb
+- ℹ️ `es-vi:uf-l3-e3`: distractor "hoy" is adverb, answer "la mañana" is noun
+- ℹ️ `es-vi:ug-l0-e3`: distractor "đóng cửa / đóng" is adjective, answer "mở" is verb
+- ℹ️ `es-vi:ug-l1-e0`: distractor "hoy" is adverb, answer "el sábado" is noun
+- ℹ️ `es-vi:ug-l1-e3`: distractor "hôm nay" is adverb, answer "Chủ nhật" is noun
+- ℹ️ `es-vi:ug-l2-e4`: distractor "la mañana" is noun, answer "hoy" is adverb
+- ℹ️ `es-vi:ug-l2-e4`: distractor "la noche" is noun, answer "hoy" is adverb
+- ℹ️ `es-vi:ug-l2-e4`: distractor "el sábado" is noun, answer "hoy" is adverb
+
+## duplicate-payload (3)
+
+- ⚠️ `es-vi:uf-l0-e4 = es-vi:uf-l3-e5`: identical exercise payload
+- ⚠️ `es-vi:uf-l2-e4 = es-vi:uh-l3-e3`: identical exercise payload
+- ⚠️ `es-vi:un-l0-e0 = es-vi:un-l3-e0`: identical exercise payload
+
+## lexeme-coverage (762)
+
+- ℹ️ `el doctor`: taught 1 time(s) (< 2)
+- ℹ️ `hay`: taught 1 time(s) (< 2)
+- ℹ️ `hacer`: taught 1 time(s) (< 2)
+- ℹ️ `poder`: taught 1 time(s) (< 2)
+- ℹ️ `ocho`: taught 1 time(s) (< 2)
+- ℹ️ `once`: taught 1 time(s) (< 2)
+- ℹ️ `cincuenta`: taught 1 time(s) (< 2)
+- ℹ️ `la tarde`: taught 1 time(s) (< 2)
+- ℹ️ `después`: taught 1 time(s) (< 2)
+- ℹ️ `también`: taught 1 time(s) (< 2)
+- ℹ️ `llamarse`: taught 1 time(s) (< 2)
+- ℹ️ `el nombre`: taught 1 time(s) (< 2)
+- ℹ️ `el mensaje`: taught 1 time(s) (< 2)
+- ℹ️ `quiero`: taught 1 time(s) (< 2)
+- ℹ️ `cerca`: taught 1 time(s) (< 2)
+- ℹ️ `él`: lexeme never appears in the pack
+- ℹ️ `ella`: lexeme never appears in the pack
+- ℹ️ `el amigo`: lexeme never appears in the pack
+- ℹ️ `el caballo`: lexeme never appears in the pack
+- ℹ️ `el pájaro`: lexeme never appears in the pack
+- ℹ️ `el pez`: lexeme never appears in the pack
+- ℹ️ `la vaca`: lexeme never appears in the pack
+- ℹ️ `el ratón`: lexeme never appears in the pack
+- ℹ️ `el pato`: lexeme never appears in the pack
+- ℹ️ `el oso`: lexeme never appears in the pack
+- ℹ️ `el baño`: lexeme never appears in the pack
+- ℹ️ `el esposo`: lexeme never appears in the pack
+- ℹ️ `la esposa`: lexeme never appears in the pack
+- ℹ️ `alto`: lexeme never appears in the pack
+- ℹ️ `bajo`: lexeme never appears in the pack
+- ℹ️ `el mercado`: lexeme never appears in the pack
+- ℹ️ `el dinero`: lexeme never appears in the pack
+- ℹ️ `la camisa`: lexeme never appears in the pack
+- ℹ️ `los zapatos`: lexeme never appears in the pack
+- ℹ️ `barato`: lexeme never appears in the pack
+- ℹ️ `vender`: lexeme never appears in the pack
+- ℹ️ `cuánto`: lexeme never appears in the pack
+- ℹ️ `el sol`: lexeme never appears in the pack
+- ℹ️ `la lluvia`: lexeme never appears in the pack
+- ℹ️ `la nieve`: lexeme never appears in the pack
+- … 722 more
+
+## lexeme-skill-coverage (67)
+
+- ℹ️ `el niño`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `el pan`: recognize 4 / produce 0 — one skill never exercised
+- ℹ️ `comer`: recognize 4 / produce 0 — one skill never exercised
+- ℹ️ `no`: recognize 6 / produce 0 — one skill never exercised
+- ℹ️ `gracias`: recognize 5 / produce 0 — one skill never exercised
+- ℹ️ `buenas tardes`: recognize 4 / produce 0 — one skill never exercised
+- ℹ️ `el señor`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `de nada`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `el arroz`: recognize 5 / produce 0 — one skill never exercised
+- ℹ️ `la fruta`: recognize 5 / produce 0 — one skill never exercised
+- ℹ️ `el pollo`: recognize 4 / produce 0 — one skill never exercised
+- ℹ️ `el menú`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `el hermano`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `la abuela`: recognize 6 / produce 0 — one skill never exercised
+- ℹ️ `el bebé`: recognize 5 / produce 0 — one skill never exercised
+- ℹ️ `el gato`: recognize 5 / produce 0 — one skill never exercised
+- ℹ️ `la estación`: recognize 11 / produce 0 — one skill never exercised
+- ℹ️ `el taxi`: recognize 4 / produce 0 — one skill never exercised
+- ℹ️ `la derecha`: recognize 5 / produce 0 — one skill never exercised
+- ℹ️ `el día`: recognize 7 / produce 0 — one skill never exercised
+- ℹ️ `el problema`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `el idioma`: recognize 2 / produce 0 — one skill never exercised
+- ℹ️ `la canción`: recognize 2 / produce 0 — one skill never exercised
+- ℹ️ `el libro`: recognize 5 / produce 0 — one skill never exercised
+- ℹ️ `el doctor`: recognize 1 / produce 0 — one skill never exercised
+- ℹ️ `ser`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `estar`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `tener`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `hay`: recognize 1 / produce 0 — one skill never exercised
+- ℹ️ `ir`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `hacer`: recognize 1 / produce 0 — one skill never exercised
+- ℹ️ `hablar`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `vivir`: recognize 4 / produce 0 — one skill never exercised
+- ℹ️ `querer`: recognize 4 / produce 0 — one skill never exercised
+- ℹ️ `poder`: recognize 1 / produce 0 — one skill never exercised
+- ℹ️ `la realidad`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `largo`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `grande`: recognize 3 / produce 0 — one skill never exercised
+- ℹ️ `la ropa`: recognize 2 / produce 0 — one skill never exercised
+- ℹ️ `uno`: recognize 3 / produce 0 — one skill never exercised
+- … 27 more
+
+## type-mix (1)
+
+- ℹ️ `section-2`: types vs blueprint — missing: none; extra: match, wordBank

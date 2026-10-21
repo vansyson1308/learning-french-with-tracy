@@ -13,6 +13,13 @@
  *   bun scripts/author.ts blueprint                                    → prints the French census the blueprint cites
  *   bun scripts/author.ts selftest --target xx --native en            → emit every step + ingest the committed xx content as if drafted (dry run)
  *   bun scripts/author.ts steps
+ *   bun scripts/author.ts validate --target es                        → full validation with the staged layer applied (what promote faces)
+ *   bun scripts/author.ts promote --target es --native vi             → move the staged course layer into content/ once everything validates
+ *
+ * Staging (P3d): while a course does not exist yet (no content/courses/<id>.json)
+ * or content/<lang>/_drafts/staged/ exists, ingest writes there instead of
+ * content/, and emit / ingest / lint / checklist see the staged files overlaid
+ * on the real tree; `--direct` writes straight into content/.
  */
 
 import { existsSync, mkdirSync, writeFileSync } from "fs";
@@ -21,9 +28,12 @@ import type { PackSource } from "../content/schema";
 
 import { buildBundle, writeBundle } from "./lib/authoring/bundle";
 import { collectChecklist, renderChecklist } from "./lib/authoring/checklist";
+import { examTrackPaths } from "./lib/exam-bank";
 import { ingestStep } from "./lib/authoring/ingest";
+import { isGeneratedDrift, listStaged, promote, stagedRoot, withStaging } from "./lib/authoring/staging";
 import { lintCourse, renderLintReport } from "./lib/authoring/lint";
 import { STEP_IDS, STEPS, stepDef, type StepId } from "./lib/authoring/steps";
+import { validateAllSources } from "./lib/compile-artifacts";
 import { readJson, safeResolve } from "./lib/pipeline";
 
 function fail(msg: string): never {
@@ -41,6 +51,15 @@ const flag = (name: string) => args.includes(`--${name}`);
 
 function courseIdFor(target: string, native: string): string {
   return `${target}-${native}`;
+}
+
+/** Run with the staged layer overlaid when the course is being built (see the header). */
+function staged<T>(lang: string, courseId: string, fn: () => T): T {
+  const building = existsSync(safeResolve(stagedRoot(lang))) || !existsSync(safeResolve(`content/courses/${courseId}.json`));
+  if (flag("direct") || !building) return fn();
+  const result = withStaging(lang, fn);
+  console.log(`(staged: ${listStaged(lang).length} file(s) under ${stagedRoot(lang)})`);
+  return result;
 }
 
 function blueprintCensus(): Record<string, unknown> {
@@ -100,8 +119,16 @@ function synthesizeOutput(step: StepId, lang: string, native: string, courseId: 
       return rows(`content/${lang}/assessment/checkpoints.json`, "checkpoints").map((r) => JSON.stringify(r));
     case "placement":
       return rows(`content/${lang}/assessment/placement.json`, "stages").map((r) => JSON.stringify(r));
+    case "exam":
+      return examTrackPaths(lang).map((rel) => {
+        const { version: _v, language: _l, exerciseNativeCode: _n, ...rest } = readJson(rel) as Record<string, unknown>;
+        return JSON.stringify(rest);
+      });
     case "lexicon-review":
       return (rows(`content/${lang}/lexicon/lexemes.json`, "lexemes") as { id: string; glosses: Record<string, string>; examples: { translations: Record<string, string> }[]; relations?: { confusables: string[] } }[]).map((l) => JSON.stringify({ id: l.id, glossVi: l.glosses[native] ?? l.glosses.en, exampleTranslationsVi: l.examples.map((e) => e.translations[native] ?? e.translations.en), confusables: l.relations?.confusables }));
+    case "lexicon-add":
+      // Additions are new words by definition: nothing committed to round-trip (bundle only).
+      return [];
   }
 }
 
@@ -114,7 +141,7 @@ if (command === "steps") {
   stepDef(step);
   const target = opt("target") ?? fail("--target <code>");
   const native = opt("native") ?? "vi";
-  const bundle = buildBundle(step, target, native, courseIdFor(target, native));
+  const bundle = staged(target, courseIdFor(target, native), () => buildBundle(step, target, native, courseIdFor(target, native)));
   writeBundle(bundle);
   console.log(`emitted ${bundle.promptPath} + ${bundle.inputPath} (${(bundle.input.allowedIds as { lexemes: unknown[] }).lexemes.length} lexeme ids, ${(bundle.input.exemplars as unknown[]).length} exemplars)`);
 } else if (command === "ingest") {
@@ -122,13 +149,13 @@ if (command === "steps") {
   stepDef(step);
   const target = opt("target") ?? fail("--target <code>");
   const native = opt("native") ?? "vi";
-  const result = ingestStep(step, target, native, courseIdFor(target, native), { dryRun: flag("dry-run"), outputPath: opt("output") });
+  const result = staged(target, courseIdFor(target, native), () => ingestStep(step, target, native, courseIdFor(target, native), { dryRun: flag("dry-run"), outputPath: opt("output") }));
   const failed = result.rows.filter((r) => !r.ok).length;
   console.log(`ingest ${step}: ${result.rows.length} records, ${failed} failed, ${result.validatorErrors.length} validator errors → ${result.reportPath}${result.written.length ? ` (wrote ${result.written.join(", ")})` : ""}`);
   if (failed > 0 || result.validatorErrors.length > 0) process.exit(1);
 } else if (command === "lint") {
   const courseId = opt("course") ?? fail("--course <id>");
-  const report = lintCourse(courseId);
+  const report = staged(courseId.split("-")[0], courseId, () => lintCourse(courseId));
   const text = renderLintReport(report);
   const out = opt("out");
   if (out) {
@@ -138,8 +165,7 @@ if (command === "steps") {
   } else console.log(text);
 } else if (command === "checklist") {
   const courseId = opt("course") ?? fail("--course <id>");
-  const pack = readJson(`content/courses/${courseId}.json`) as PackSource;
-  const lines = collectChecklist(courseId);
+  const { pack, lines } = staged(courseId.split("-")[0], courseId, () => ({ pack: readJson(`content/courses/${courseId}.json`) as PackSource, lines: collectChecklist(courseId) }));
   const rel = `content/${pack.targetCode}/REVIEW-CHECKLIST.md`;
   writeFileSync(safeResolve(rel), renderChecklist(courseId, lines));
   console.log(`checklist ${courseId}: ${lines.length} strings → ${rel}`);
@@ -166,7 +192,29 @@ if (command === "steps") {
   }
   if (failures > 0) fail(`selftest: ${failures} record(s) failed the round trip`);
   console.log(`selftest ok: every committed ${target} record round-trips through its step schema`);
+} else if (command === "validate") {
+  // Full repository validation with the staged layer applied (read-only): what promote would face.
+  const target = opt("target") ?? fail("--target <code>");
+  const errors = withStaging(target, () => validateAllSources()).filter((e) => !isGeneratedDrift(e));
+  for (const e of errors) console.log(`  ${e}`);
+  console.log(`validate ${target} (staged): ${errors.length} error(s) besides generated-artifact drift`);
+} else if (command === "promote") {
+  const target = opt("target") ?? fail("--target <code>");
+  const result = promote(target, () => validateAllSources());
+  if (result.errors.length > 0) {
+    for (const e of result.errors.slice(0, 40)) console.error(`  ${e}`);
+    fail(`promote ${target}: ${result.errors.length} validator error(s) with the staged layer applied — nothing moved`);
+  }
+  console.log(`promote ${target}: moved ${result.moved.length} file(s) into content/ — compiling`);
+  const compile = Bun.spawnSync(["bun", "scripts/compile-content.ts"], { stdout: "inherit", stderr: "inherit" });
+  if (compile.exitCode !== 0) fail(`promote ${target}: content:compile failed after the move — fix, then run bun run content:compile`);
+  const after = validateAllSources();
+  if (after.length > 0) {
+    for (const e of after.slice(0, 40)) console.error(`  ${e}`);
+    fail(`promote ${target}: ${after.length} validator error(s) after compile`);
+  }
+  console.log(`promote ${target}: compiled and validated — commit content/ and src/content/`);
 } else {
-  fail("usage: author.ts <steps|blueprint|emit <step>|ingest <step>|lint|checklist|selftest> [--target es] [--native vi] [--course id] [--dry-run]");
+  fail("usage: author.ts <steps|blueprint|emit <step>|ingest <step>|lint|checklist|selftest|promote> [--target es] [--native vi] [--course id] [--dry-run] [--direct]");
 }
 

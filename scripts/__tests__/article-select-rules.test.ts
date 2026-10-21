@@ -58,6 +58,6 @@ describe("articleSelect validation rules", () => {
   });
 
   test("articleSelect outside the French course fails", () => {
-    expect(errorsFor("es-en", drill()).join("\n")).toContain("needs authored pedagogy");
+    expect(errorsFor("de-en", drill()).join("\n")).toContain("needs authored pedagogy");
   });
 });

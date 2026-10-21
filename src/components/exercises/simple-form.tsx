@@ -48,6 +48,17 @@ export function SimpleForm({
       <Text style={styles.title}>{t("ex.fillForm", { language: targetLanguage })}</Text>
       <Text style={styles.instruction}>{exercise.instruction}</Text>
 
+      {exercise.cueFacts ? (
+        <View style={styles.cueBox} testID="form-cues">
+          {exercise.cueFacts.map((cue) => (
+            <View key={cue.label} style={styles.cueRow}>
+              <Text style={styles.cueLabel}>{cue.label}</Text>
+              <Text style={styles.cueValue}>{cue.value}</Text>
+            </View>
+          ))}
+        </View>
+      ) : null}
+
       <View style={styles.formBox}>
         {exercise.fields.map((field) => (
           <View key={field.id} style={styles.fieldRow}>
@@ -92,6 +103,16 @@ const useStyles = makeThemedStyles((colors) =>
     container: { gap: 14 },
     title: { fontSize: 22, fontWeight: "800", color: colors.neutral700 },
     instruction: { fontSize: 16, color: colors.text, lineHeight: 22 },
+    cueBox: {
+      borderRadius: radius.md,
+      borderWidth: 2,
+      borderColor: colors.neutral200,
+      padding: 12,
+      gap: 6,
+    },
+    cueRow: { flexDirection: "row", justifyContent: "space-between", gap: 12 },
+    cueLabel: { fontSize: 14, color: colors.textMuted },
+    cueValue: { fontSize: 15, fontWeight: "700", color: colors.text },
     formBox: {
       borderWidth: 2,
       borderColor: colors.neutral200,

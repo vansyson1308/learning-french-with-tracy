@@ -223,6 +223,8 @@ export type SimpleFormExercise = {
   id: string;
   writingTaskId: string;
   instruction: string;
+  /** P3d: the cue card the instruction refers to. */
+  cueFacts?: { label: string; value: string }[];
   fields: { id: string; label: string; slotId: string }[];
   rubric: WritingRubricSpec;
   modelAnswers: string[];

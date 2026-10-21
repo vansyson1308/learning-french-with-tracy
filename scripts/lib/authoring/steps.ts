@@ -11,7 +11,9 @@ import { existsSync } from "fs";
 import { z } from "zod";
 
 import {
+  POS_VALUES,
   checkpointSchema,
+  examTrackSchema,
   conceptSchema,
   courseObjectiveSchema,
   interactionScenarioSchema,
@@ -40,14 +42,18 @@ export const STEP_IDS = [
   "scenarios",
   "checkpoints",
   "placement",
+  "exam",
   "lexicon-review",
+  "lexicon-add",
 ] as const;
 export type StepId = (typeof STEP_IDS)[number];
 
 /** A draft unit (units step): the unit without exercises — lessons are stubs the lessons step fills. */
 export const draftUnitSchema = (lang: string) =>
   z.strictObject({
-    sectionId: z.string().regex(new RegExp(`^${lang}-[a-z]{2,3}:section-[2-6]$`)),
+    sectionId: z.string().regex(new RegExp(`^${lang}-[a-z]{2,3}:section-[1-6]$`)),
+    /** Learner-facing section title (native language); the first unit of a section that carries one sets it. */
+    sectionTitle: z.string().min(1).optional(),
     id: z.string().min(1),
     title: z.string().min(1),
     description: z.string().max(120),
@@ -66,6 +72,32 @@ export const draftLessonSchema = () =>
     flow: z.array(z.union([z.strictObject({ concept: z.string().min(1) }), z.strictObject({ exercise: z.string().min(1) })])).optional(),
   });
 
+/**
+ * A lexicon addition (lexicon-add step, P3d): an A1 word the frequency-based
+ * selection left out (subject pronouns, sí/no, question words, numbers,
+ * colours, weekdays, everyday nouns and verbs). Evidence (IPA, frequency,
+ * kaikki reference) comes from the committed candidate pool when the
+ * lemma|poolPos reading exists there; the examples are original A1
+ * sentences of this project. Ids are new and never reuse a frozen one.
+ */
+export const lexiconAddSchema = (lang: string) =>
+  z.strictObject({
+    lemma: z.string().min(1),
+    partOfSpeech: z.enum(POS_VALUES),
+    /** The pool reading that carries the evidence (default: partOfSpeech). */
+    poolPos: z.enum(POS_VALUES).optional(),
+    /** Display surface; nouns default to article + lemma from the gender. */
+    surface: z.string().min(1).optional(),
+    gender: z.enum(["masculine", "feminine", "both"]).optional(),
+    glossEn: z.string().min(1),
+    glossVi: z.string().min(1).refine((s) => !/^TODO:/.test(s), "no draft marker"),
+    topic: z.string().min(1),
+    examples: z.array(z.strictObject({ target: z.string().min(1), en: z.string().min(1), vi: z.string().min(1) })).min(1).max(3),
+    note: z.string().optional(),
+  }).superRefine((r, ctx) => {
+    if (r.partOfSpeech === "noun" && r.gender === undefined) ctx.addIssue({ code: "custom", message: `${lang}: a noun needs its gender` });
+  });
+
 /** A lexicon review record: the Vietnamese fields of one lexeme (lexicon-review step). */
 export const lexiconReviewSchema = (lang: string) =>
   z.strictObject({
@@ -73,6 +105,12 @@ export const lexiconReviewSchema = (lang: string) =>
     glossVi: z.string().min(1).refine((s) => !/^TODO:/.test(s), "no draft marker"),
     exampleTranslationsVi: z.array(z.string().min(1).refine((s) => !/^TODO:/.test(s), "no draft marker")),
     confusables: z.array(z.string().regex(new RegExp(`^${lang}:w:[a-z0-9-]+$`))).optional(),
+    /** Indices (into the current examples) of examples unfit for learners — vulgar, wrong sense, word absent, idiom far beyond A1. Translations then cover the kept examples in order; at least one example must remain. */
+    dropExamples: z.array(z.number().int().min(0)).optional(),
+    /** Original examples (this project, registry source `original-lexicon-etl`) appended after the drops — for lexemes whose ETL examples do not show the word (lemmatisation errors). Not covered by exampleTranslationsVi. */
+    addExamples: z.array(z.strictObject({ target: z.string().min(1), en: z.string().min(1), vi: z.string().min(1) })).optional(),
+    /** Correct an ETL part-of-speech error (e.g. an adjective tagged as noun). */
+    partOfSpeech: z.enum(POS_VALUES).optional(),
     note: z.string().optional(),
   });
 
@@ -122,7 +160,7 @@ export const STEPS: Record<StepId, StepDef> = {
   },
   units: {
     id: "units",
-    task: "Lập kế hoạch các đơn vị (unit) của Phần 2–6 (sections 2–6): mỗi record là một unit với id `<courseId>:unit-<chữ>`, title, description (≤ 90 ký tự), guidebook markdown tiếng Việt 600–2 000 ký tự (## tiêu đề, gạch đầu dòng, ví dụ ngôn ngữ đích in nghiêng), words (surface từ danh sách lexeme cho phép + gloss `native` tiếng Việt y hệt lexicon), và 4 lesson stubs {id `<courseId>:u<chữ>-l<n>`, title, objectives}. Không viết bài tập ở bước này.",
+    task: "Lập kế hoạch các đơn vị (unit) của Phần 1–6 (sections 1–6; Phần 1 soạn mới, 5 unit): mỗi record là một unit với id `<courseId>:unit-<chữ>`, title, description (≤ 90 ký tự), guidebook markdown tiếng Việt 600–2 000 ký tự (## tiêu đề, gạch đầu dòng, ví dụ ngôn ngữ đích in nghiêng), words (surface từ danh sách lexeme cho phép + gloss `native` tiếng Việt y hệt lexicon), và 4 lesson stubs {id `<courseId>:u<chữ>-l<n>`, title, objectives}. Không viết bài tập ở bước này.",
     recordSchema: (lang) => draftUnitSchema(lang),
     target: (lang) => `content/${lang}/_drafts/pack.json`,
     validatorPrefixes: ["pack", "course"],
@@ -232,6 +270,16 @@ export const STEPS: Record<StepId, StepDef> = {
     exemplars: () => pick(frDoc("content/fr/assessment/placement.json", "stages"), 1).map((s) => ({ ...(s as Record<string, unknown>), clusters: ((s as { clusters: unknown[] }).clusters ?? []).slice(0, 2) })),
     sessions: "1",
   },
+  exam: {
+    id: "exam",
+    task: "Viết lộ trình thi (exam track) theo ĐỊNH DẠNG CÔNG KHAI của kỳ thi trong brief — không bao giờ chép đề thật: một bản ghi {id `<lang>.exam.<slug>`, trackVersion, name, level, title, description, formatSource {publisher, reference, checkedAgainstOfficialGuide, note}, sections [{id, skill reading|listening|writing|speaking, title, minutes, preparationMinutes?, maxPoints, tasks [{id, title, instruction, format mcq3|matching|form|short_text|monologue|conversation, itemsPerForm}]}], groups [{id, title, sectionIds, maxPoints, passPoints}], readiness {bands (giảm dần, band cuối minGroupShare 0; nhãn có chữ \"ước tính\"), incomplete, disclaimer}, items [{id `<lang>.exi.<track>.<slug>`, itemVersion, sectionId, taskId, exercise, objectiveTargets}], forms ≥ 2, rời nhau, mỗi form đủ itemsPerForm cho từng task}. Bài đọc/clip/speech/writing/scenario của đề là mục RIÊNG (speech/writing/scenario reserved: true), soạn ở các bước tương ứng trước. Không bao giờ viết \"sẽ đỗ\" hay hứa kết quả.",
+    recordSchema: (lang) => examTrackSchema(lang).omit({ version: true, language: true, exerciseNativeCode: true }),
+    target: (lang) => `content/${lang}/exam/<track>.json`,
+    validatorPrefixes: ["exam", "speech", "writing", "interaction", "reception"],
+    blueprintSections: ["## 8. Assessment"],
+    exemplars: () => [],
+    sessions: "1–2",
+  },
   "lexicon-review": {
     id: "lexicon-review",
     task: "Xem lại từ điển: với mỗi lexeme trong INPUT.json (những mục còn `TODO:vi`, gloss bắc cầu qua tiếng Anh, hoặc confusables tự sinh), trả về glossVi (gloss tiếng Việt ngắn, đúng từ loại), exampleTranslationsVi (bản dịch tiếng Việt cho từng ví dụ, theo thứ tự), confusables (id cho phép, tuỳ chọn), note. Không đổi id; không dịch câu ví dụ sang ngôn ngữ khác.",
@@ -242,6 +290,17 @@ export const STEPS: Record<StepId, StepDef> = {
     exemplars: () =>
       pick(frDoc<{ id: string; glosses: Record<string, string>; examples: { translations: Record<string, string> }[]; relations?: { confusables?: string[] } }>("content/fr/lexicon/lexemes.json", "lexemes"), 2).map((l) => ({ id: l.id, glossVi: l.glosses.vi, exampleTranslationsVi: l.examples.map((e) => e.translations.vi), confusables: l.relations?.confusables })),
     sessions: "2–3 (≈ 300 lexeme mỗi phiên)",
+  },
+  "lexicon-add": {
+    id: "lexicon-add",
+    task: "Bổ sung từ A1 còn thiếu trong từ điển (đại từ nhân xưng, sí/no, từ để hỏi, số đếm, màu sắc, các ngày trong tuần, danh từ và động từ thông dụng): mỗi record là một lexeme mới với lemma, partOfSpeech (poolPos nếu bằng chứng trong pool mang từ loại khác), giống (danh từ), glossEn, glossVi, topic và 1–3 câu ví dụ A1 tự soạn {target, en, vi}. Không trùng surface đã có; id do công cụ cấp và không bao giờ tái sử dụng id đã đóng băng.",
+    recordSchema: (lang) => lexiconAddSchema(lang),
+    target: (lang) => `content/${lang}/lexicon/lexemes.json`,
+    validatorPrefixes: ["lexicon"],
+    blueprintSections: ["## 2. Lexicon"],
+    exemplars: () =>
+      pick(frDoc<{ lemma: string; partOfSpeech: string; gender?: string; glosses: Record<string, string>; topic: string; examples: { target: string; translations: Record<string, string> }[] }>("content/fr/lexicon/lexemes.json", "lexemes"), 2).map((l) => ({ lemma: l.lemma, partOfSpeech: l.partOfSpeech, gender: l.gender, glossEn: l.glosses.en, glossVi: l.glosses.vi, topic: l.topic, examples: l.examples.map((e) => ({ target: e.target, en: e.translations.en, vi: e.translations.vi })) })),
+    sessions: "1",
   },
 };
 

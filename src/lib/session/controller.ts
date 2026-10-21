@@ -115,9 +115,9 @@ export function useSessionController(definition: SessionDefinition): SessionCont
           })
         );
       }
-    } else if (definition.completion === "placement") {
-      // The placement route reads the machine state and stores the result
-      // itself; completing here must mutate nothing (§78).
+    } else if (definition.completion === "placement" || definition.completion === "exam") {
+      // The placement / exam route reads the machine state and stores the
+      // result itself; completing here must mutate nothing (§78, P3d).
     } else {
       progress.completeTodaySession(
         Math.min(assessmentsCompleted, XP_PER_LESSON)

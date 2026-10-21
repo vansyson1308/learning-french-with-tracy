@@ -31,6 +31,7 @@ import {
   type SourceRegistry,
   CourseProfileOverrideSchema,
 } from "../../content/schema";
+import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
@@ -72,6 +73,7 @@ export const GENERATED_TARGETS = [
   "src/content/speech",
   "src/content/writing",
   "src/content/interaction",
+  "src/content/exam",
   TEST_ONLY_ROOT,
   "assets/lexicon",
   "content/reports",
@@ -169,6 +171,20 @@ export function discoverTargets(packs: LoadedPack[] = loadPacks()): string[] {
 
 export function packsForTarget(code: string, packs: LoadedPack[] = loadPacks()): LoadedPack[] {
   return packs.filter((p) => p.pack.targetCode === code);
+}
+
+/** P3d: the explicit role a course's profile declares (scripts/lib/course-roles.ts). */
+export function courseRoleOf(courseId: string): CourseRole | undefined {
+  const rel = `content/courses/${courseId}.profile.json`;
+  if (!existsSync(safeResolve(rel))) return undefined;
+  const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
+  return parsed.success ? parsed.data.role : undefined;
+}
+
+/** Primary / mirror / standalone courses of one target (LoadedPack form). */
+export function courseRolesFor(code: string, packs: LoadedPack[] = loadPacks()): CourseRoles<LoadedPack & CourseRef> {
+  const refs = packsForTarget(code, packs).map((p) => ({ ...p, id: p.pack.id, targetCode: p.pack.targetCode, nativeCode: p.pack.nativeCode }));
+  return resolveCourseRoles(code, refs, courseRoleOf);
 }
 
 /** Distinct native codes of a target's courses, sorted. */
@@ -412,8 +428,9 @@ export function validateContent(): ValidationResult {
     const noBundledAudio = pack.audio?.policy === "device-tts" || pack.audio?.policy === "test-only";
     // P2b: pack audio is keyed by the TARGET language's primary course; a
     // secondary-native course validates against that course's manifest.
-    const primaryNative = [...new Set(packs.filter((p) => p.pack.targetCode === pack.targetCode).map((p) => p.pack.nativeCode))].sort()[0];
-    const audioCourseId = packs.find((p) => p.pack.targetCode === pack.targetCode && p.pack.nativeCode === primaryNative)?.pack.id ?? pack.id;
+    // A standalone course (P3d) keys its own audio.
+    const roles = courseRolesFor(pack.targetCode, packs);
+    const audioCourseId = roles.standalone.some((p) => p.id === pack.id) ? pack.id : (roles.primary?.id ?? pack.id);
     errors.push(...objectiveMetadataErrors(pack, layers.assessment));
 
     const ids = new Set<string>();

@@ -399,6 +399,14 @@ export function exerciseSchemas(lang: string) {
     id,
     writingTaskId: writingTaskId(lang),
     instruction: z.string().min(1),
+    /**
+     * P3d: the cue card the instruction refers to ("the details on the
+     * card"), native labels; mirrors the task's cueFacts when present.
+     */
+    cueFacts: z
+      .array(z.strictObject({ label: z.string().min(1), value: z.string().min(1) }))
+      .min(1)
+      .optional(),
     /** Discrete labeled fields (target-language form labels); each checks against one rubric slot. */
     fields: z
       .array(
@@ -601,6 +609,14 @@ export const CourseProfileOverrideSchema = z.strictObject({
    */
   review: z.strictObject({ native: z.string().min(2), date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), checklist: z.string().optional() }).optional(),
   allowUnreviewed: z.boolean().optional(),
+  /**
+   * P3d course role within its target (scripts/lib/course-roles.ts): omitted
+   * = mirror of the primary (or the primary itself when its native code is
+   * the smallest); "primary" = this course carries the target's rich layers
+   * and reports; "standalone" = an independent course that shares only the
+   * target's lexicon.
+   */
+  role: z.enum(["primary", "standalone"]).optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),
@@ -1696,3 +1712,101 @@ export const interactionScenariosSchema = (lang: string) =>
   });
 export const InteractionScenariosSchema = interactionScenariosSchema(ANY_LANGUAGE);
 export type InteractionScenarios = z.infer<typeof InteractionScenariosSchema>;
+
+// ---------------------------------------------------------------------------
+// P3d: exam tracks (content/<lang>/exam/<track>.json)
+// ---------------------------------------------------------------------------
+
+export const examTrackId = (lang: string) => z.string().regex(idPattern(lang, "\\.exam\\.", "[a-z0-9_]+"));
+export const examItemId = (lang: string) => z.string().regex(idPattern(lang, "\\.exi\\.", "[a-z0-9_]+\\.[a-z0-9_]+"));
+const examSlug = z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/);
+export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking"] as const;
+/** Public task formats an exam track reproduces (formats only — never real exam items). */
+export const EXAM_TASK_FORMATS = ["mcq3", "matching", "form", "short_text", "monologue", "conversation"] as const;
+
+export const examTaskSchema = z.strictObject({
+  id: examSlug,
+  title: nativeText(),
+  instruction: nativeText(),
+  format: z.enum(EXAM_TASK_FORMATS),
+  /** Items one parallel form administers for this task. */
+  itemsPerForm: z.number().int().min(1),
+});
+
+export const examSectionSchema = z.strictObject({
+  id: examSlug,
+  skill: z.enum(EXAM_SKILLS),
+  title: nativeText(),
+  /** The public format's time limit; the timed mock enforces it. */
+  minutes: z.number().int().min(1).max(240),
+  preparationMinutes: z.number().int().min(1).max(60).optional(),
+  maxPoints: z.number().positive(),
+  tasks: z.array(examTaskSchema).min(1),
+});
+
+export const examGroupSchema = z.strictObject({
+  id: examSlug,
+  title: nativeText(),
+  sectionIds: z.array(examSlug).min(1),
+  maxPoints: z.number().positive(),
+  /** The format's pass threshold for the group — used only to word an ESTIMATED readiness. */
+  passPoints: z.number().positive(),
+});
+
+export const examReadinessBandSchema = z.strictObject({
+  id: examSlug,
+  /** Lowest group share (points / maxPoints, over every group) that reaches this band. */
+  minGroupShare: z.number().min(0).max(1),
+  label: nativeText(),
+  message: nativeText(),
+});
+
+export const examItemSchema = (lang: string) =>
+  z.strictObject({
+    id: examItemId(lang),
+    itemVersion: z.number().int().min(1),
+    sectionId: examSlug,
+    taskId: examSlug,
+    exercise: exerciseSchemas(lang).ExerciseSchema,
+    exerciseNative: ExerciseNativeOverlaySchema.optional(),
+    objectiveTargets: z.array(objectiveId(lang)).min(1),
+  });
+
+/**
+ * One exam track (P3d): the PUBLIC format of an exam (sections, tasks,
+ * timing, score groups) with original practice items in two or more
+ * disjoint parallel forms. Results are worded as an estimated readiness
+ * ("mức sẵn sàng ước tính"), never as a prediction of passing.
+ */
+export const examTrackSchema = (lang: string) =>
+  z.strictObject({
+    version: z.literal(1),
+    language: languageCode,
+    exerciseNativeCode: languageCode.default("en"),
+    id: examTrackId(lang),
+    /** Bump when items, forms or scoring change meaning; recorded on every attempt. */
+    trackVersion: z.number().int().min(1),
+    name: z.string().min(2),
+    level: z.string().min(1),
+    title: nativeText(),
+    description: nativeText(),
+    formatSource: z.strictObject({
+      publisher: z.string().min(2),
+      reference: z.string().min(2),
+      checkedAgainstOfficialGuide: z.boolean(),
+      note: nativeText(),
+    }),
+    sections: z.array(examSectionSchema).min(1),
+    groups: z.array(examGroupSchema).min(1),
+    readiness: z.strictObject({
+      bands: z.array(examReadinessBandSchema).min(2),
+      incomplete: nativeText(),
+      disclaimer: nativeText(),
+    }),
+    items: z.array(examItemSchema(lang)).min(1),
+    forms: z
+      .array(z.strictObject({ formId: z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/), itemIds: z.array(examItemId(lang)).min(1) }))
+      .min(2),
+  });
+export const ExamTrackSchema = examTrackSchema(ANY_LANGUAGE);
+export type ExamTrack = z.infer<typeof ExamTrackSchema>;

@@ -16,3 +16,5 @@
 *.ttf binary
 *.otf binary
 *.zip binary
+# Append-only re-bless log: keep both sides' entries on merge (bot commits and branches both append).
+scripts/__tests__/golden/CHANGELOG.md merge=union

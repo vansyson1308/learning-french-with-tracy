@@ -16,7 +16,8 @@ import { interactionPracticeScenarios } from "../interaction/content";
 import { pickDistractors } from "../learning/distractors";
 import { contentString } from "../content-strings";
 import { courseProfile, hasCapability } from "../course-profile";
-import { dueReviewQueue } from "../learning/engine";
+import { dueReviewQueue, itemIdForCourse } from "../learning/engine";
+import { surfaceFor } from "../learning/ids";
 import type { FsrsCardState } from "../learning/scheduler";
 import { listenWordClipIndex } from "../reception/content";
 import { speakExerciseForItem, speakProductionIndex, speechItemFor } from "../speech/content";
@@ -180,6 +181,36 @@ export function buildReviewSessionDefinition(args: {
       return itemId === undefined
         ? undefined
         : { itemId, srsRole: "assessment" as const };
+    }),
+    completion: "practice",
+    evidenceSource: "review",
+    trackMistakes: false,
+    allowUndo: hasCapability(courseId, "fsrs"),
+  };
+}
+
+/**
+ * Exam weak areas (P3d): the lexemes an exam attempt's missed items
+ * exercise, practised as an ordinary FSRS-recorded vocabulary review — the
+ * only path from an exam result to the scheduler, and only when the
+ * learner starts it. Lexemes with no pack word are simply not sessionable.
+ */
+export function buildWeakAreaSessionDefinition(args: {
+  courseId: string;
+  lexemeIds: readonly string[];
+  pool: Word[];
+  seed: number;
+}): SessionDefinition {
+  const { courseId } = args;
+  const surfaces = [...new Set(args.lexemeIds.map((id) => surfaceFor(courseId, id)).filter((s): s is string => s !== undefined))];
+  const exercises = buildSrsExercises(surfaces, args.pool, hashSeed(`exam-weak|${args.seed}|${surfaces.join("|")}`), undefined, courseId);
+  return {
+    kind: "review",
+    courseId,
+    lessonId: "exam-weak",
+    steps: exerciseSteps(exercises, (exercise) => {
+      const surface = exercise.type === "select" ? exercise.audioTarget : undefined;
+      return surface === undefined ? undefined : { itemId: itemIdForCourse(courseId, surface), srsRole: "assessment" as const };
     }),
     completion: "practice",
     evidenceSource: "review",

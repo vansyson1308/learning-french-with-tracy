@@ -23,8 +23,9 @@ import path from "path";
 import { CourseProfileOverrideSchema, type PackSource } from "../../content/schema";
 import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../../src/lib/course-profile";
 
+import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
-import { canonicalJson, readJson, safeResolve, type CompiledFile } from "./pipeline";
+import { canonicalJson, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
 
 export type LexiconDbInfo = { name: string; contentHash: string };
 
@@ -61,6 +62,7 @@ function artifactPathsFor(
     speech: pick(`${root}/speech/${nativePrefix}-speech-items.json`),
     writing: pick(`${root}/writing/${nativePrefix}-writing.json`),
     scenarios: pick(`${root}/interaction/${nativePrefix}-scenarios.json`),
+    examTracks: pick(`${root}/exam/${nativePrefix}-exam-tracks.json`),
   };
   return Object.fromEntries(Object.entries(out).filter(([, v]) => v !== undefined)) as CourseArtifactPaths;
 }
@@ -81,6 +83,8 @@ function deriveCapabilities(a: CourseArtifactPaths): CourseCapabilities {
     speaking: has("speech"),
     writing: has("writing"),
     conversation: has("scenarios"),
+    // P3d: emitted only when present, so courses without an exam track keep their profile bytes.
+    ...(has("examTracks") ? { exam: true } : {}),
   };
 }
 
@@ -91,21 +95,21 @@ function readOverride(courseId: string): Partial<CourseCapabilities> {
 }
 
 /**
- * The primary native language of a target (P2b): the smallest native code
- * among its courses — `en` for French, so every pre-P2b artifact name is
- * unchanged. A course of another native language reads its own artifacts
- * (prefixed by the course id).
+ * The primary native language of a target (P2b, roles since P3d): the
+ * native code of its primary course (scripts/lib/course-roles.ts) — `en`
+ * for French, so every pre-P2b artifact name is unchanged. A course of
+ * another native language reads its own artifacts (prefixed by the course id).
  */
-export function primaryNativeCodeOf(targetCode: string, packs: { targetCode: string; nativeCode: string }[]): string | undefined {
-  return packs
-    .filter((p) => p.targetCode === targetCode)
-    .map((p) => p.nativeCode)
-    .sort()[0];
+export function primaryNativeCodeOf(targetCode: string, packs: CourseRef[], roleOf: (courseId: string) => CourseRole | undefined = courseRoleOf): string | undefined {
+  return resolveCourseRoles(targetCode, packs, roleOf).primary?.nativeCode;
 }
 
-export function nativeArtifactPrefix(pack: { id: string; targetCode: string; nativeCode: string }, packs: { targetCode: string; nativeCode: string }[]): string {
-  return pack.nativeCode === primaryNativeCodeOf(pack.targetCode, packs) ? pack.targetCode : pack.id;
+export function nativeArtifactPrefix(pack: CourseRef, packs: CourseRef[], roleOf: (courseId: string) => CourseRole | undefined = courseRoleOf): string {
+  return resolveCourseRoles(pack.targetCode, packs, roleOf).primary?.id === pack.id ? pack.targetCode : pack.id;
 }
+
+/** What a standalone course (P3d) may read: the target's stable ids and its own lexicon. */
+const STANDALONE_ARTIFACT_KEYS: ReadonlySet<keyof CourseArtifactPaths> = new Set(["ids", "lexiconIndex", "lexiconFallback", "lexiconDb"]);
 
 export function deriveProfiles(args: {
   packs: PackSource[];
@@ -113,15 +117,23 @@ export function deriveProfiles(args: {
   /** artifact prefix (`fr`, `fr-vi`) → database. */
   lexiconDbs: Record<string, LexiconDbInfo>;
   artifactRoot?: string;
+  /** Course role reader (tests inject one; default reads content/courses/<id>.profile.json). */
+  roleOf?: (courseId: string) => CourseRole | undefined;
 }): Record<string, CourseProfile> {
   const root = args.artifactRoot ?? "src/content";
+  const roleOf = args.roleOf ?? courseRoleOf;
   const present = new Set(args.presentRelPaths);
   const profiles: Record<string, CourseProfile> = {};
   for (const pack of [...args.packs].sort((a, b) => a.id.localeCompare(b.id))) {
     const lang = buildLanguage(pack.targetCode);
-    const prefix = nativeArtifactPrefix(pack, args.packs);
-    const artifacts = artifactPathsFor(root, pack.targetCode, prefix, present, args.lexiconDbs[prefix]);
-    const primaryCourse = args.packs.find((p) => p.targetCode === pack.targetCode && p.nativeCode === primaryNativeCodeOf(pack.targetCode, args.packs));
+    const roles = resolveCourseRoles(pack.targetCode, args.packs, roleOf);
+    const standalone = roles.standalone.some((p) => p.id === pack.id);
+    const prefix = roles.primary?.id === pack.id ? pack.targetCode : pack.id;
+    const allArtifacts = artifactPathsFor(root, pack.targetCode, prefix, present, args.lexiconDbs[prefix]);
+    const artifacts = standalone
+      ? (Object.fromEntries(Object.entries(allArtifacts).filter(([k]) => STANDALONE_ARTIFACT_KEYS.has(k as keyof CourseArtifactPaths))) as CourseArtifactPaths)
+      : allArtifacts;
+    const primaryCourse = standalone ? undefined : roles.primary;
     const audioCourseId = primaryCourse && primaryCourse.id !== pack.id ? primaryCourse.id : undefined;
     const capabilities = { ...deriveCapabilities(artifacts), ...readOverride(pack.id) };
     profiles[pack.id] = {
@@ -140,6 +152,9 @@ export function deriveProfiles(args: {
       capabilities,
       artifacts,
       ...(audioCourseId !== undefined ? { audioCourseId } : {}),
+      // P3d: an inherited course kept beside its target's primary course —
+      // hidden from onboarding, listed under "other courses".
+      ...(standalone ? { role: "standalone" as const } : {}),
     };
   }
   return profiles;
@@ -183,6 +198,7 @@ function renderArtifactModule(root: string, profile: CourseProfile): string {
   add("speech", a.speech);
   add("writing", a.writing);
   add("scenarios", a.scenarios);
+  add("examTracks", a.examTracks);
   lines.push(`import type { CourseArtifacts } from "${importFrom(dir, "src/lib/content-registry")}";`, "");
   lines.push(`export const ARTIFACTS: CourseArtifacts = {${fields.length ? ` ${fields.join(", ")} ` : ""}};`, "");
   return lines.join("\n");
@@ -281,11 +297,18 @@ export function compileCourseProfileArtifacts(args: {
   }
   const courseIds = Object.keys(profiles).sort();
   // The onboarding default is data too: the course with the most enabled
-  // capabilities (ties broken by id). Today that is the complete French course;
-  // it moves to fr-vi by content, never by a code edit.
-  const defaultCourseId = [...courseIds].sort((a, b) => {
-    const score = (id: string) => Object.values(profiles[id].capabilities).filter(Boolean).length;
-    return score(b) - score(a) || a.localeCompare(b);
+  // capabilities, then the most authored exercises (P3d: a second complete
+  // course must not take the default by sorting first), then id. Today that
+  // is the complete French course; it moves by content, never by a code edit.
+  const exerciseCount = new Map(
+    args.packs.map((p) => [p.id, p.sections.reduce((n, s) => n + s.units.reduce((m, u) => m + u.lessons.reduce((k, l) => k + l.exercises.length, 0), 0), 0)])
+  );
+  // Optional add-ons (P3d: `exam`) do not make a course "more complete",
+  // and a standalone course is never the default.
+  const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
+  const defaultCourseId = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
+    const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
+    return score(b) - score(a) || (exerciseCount.get(b) ?? 0) - (exerciseCount.get(a) ?? 0) || a.localeCompare(b);
   })[0];
   out.push({
     relPath: `${root}/course-profiles.json`,
