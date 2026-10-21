@@ -23,7 +23,7 @@
       }
     },
     "es": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "es_MX-claude-high",
@@ -47,11 +47,40 @@
         }
       ],
       "cast": {
-        "A": "es_ES-davefx-medium",
-        "B": null
+        "A": "kokoro-ef_dora",
+        "B": "kokoro-em_alex"
       },
-      "canary": null,
-      "reason": "current A = the V1 selection (davefx, CC0); the pack text is Latin-American, so es_MX-claude-high (Apache-2.0) is expected to win the v2 canary — the audit decides"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/es/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-ef_dora",
+            "clips": 24,
+            "meanWer": 0.1035,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "kokoro-em_alex",
+            "clips": 24,
+            "meanWer": 0.1302,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "es_MX-claude-high",
+            "clips": 24,
+            "meanWer": 0.1857,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "es_ES-davefx-medium",
+            "clips": 24,
+            "meanWer": 0.3431,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "castNote": "A=kokoro-ef_dora (Kokoro voice pack ef_dora); B=kokoro-em_alex: different speaker (Kokoro voice pack em_alex), other gender (male vs female), mean WER/CER 0.1302 ≤ 0.6"
     },
     "de": {
       "status": "selected",

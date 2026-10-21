@@ -434,6 +434,34 @@
         "content/audio/model-cards/de/de_DE-kerstin-low.MODEL_CARD.txt"
       ],
       "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.4905 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets."
+    },
+    {
+      "id": "kokoro-voice-ef_dora",
+      "name": "Kokoro-82M voice kokoro-ef_dora",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/ef_dora.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/es/",
+        "content/audio/model-cards/es/kokoro-ef_dora.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1035 over 24 sampled strings, 0 technical failures). Model weights are never committed."
+    },
+    {
+      "id": "kokoro-voice-em_alex",
+      "name": "Kokoro-82M voice kokoro-em_alex",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/em_alex.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/es/",
+        "content/audio/model-cards/es/kokoro-em_alex.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1302 over 24 sampled strings, 0 technical failures). Model weights are never committed."
     }
   ]
 }
