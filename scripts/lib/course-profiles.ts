@@ -62,6 +62,7 @@ function artifactPathsFor(
     speech: pick(`${root}/speech/${nativePrefix}-speech-items.json`),
     writing: pick(`${root}/writing/${nativePrefix}-writing.json`),
     scenarios: pick(`${root}/interaction/${nativePrefix}-scenarios.json`),
+    examTracks: pick(`${root}/exam/${nativePrefix}-exam-tracks.json`),
   };
   return Object.fromEntries(Object.entries(out).filter(([, v]) => v !== undefined)) as CourseArtifactPaths;
 }
@@ -82,6 +83,8 @@ function deriveCapabilities(a: CourseArtifactPaths): CourseCapabilities {
     speaking: has("speech"),
     writing: has("writing"),
     conversation: has("scenarios"),
+    // P3d: emitted only when present, so courses without an exam track keep their profile bytes.
+    ...(has("examTracks") ? { exam: true } : {}),
   };
 }
 
@@ -149,6 +152,9 @@ export function deriveProfiles(args: {
       capabilities,
       artifacts,
       ...(audioCourseId !== undefined ? { audioCourseId } : {}),
+      // P3d: an inherited course kept beside its target's primary course —
+      // hidden from onboarding, listed under "other courses".
+      ...(standalone ? { role: "standalone" as const } : {}),
     };
   }
   return profiles;
@@ -192,6 +198,7 @@ function renderArtifactModule(root: string, profile: CourseProfile): string {
   add("speech", a.speech);
   add("writing", a.writing);
   add("scenarios", a.scenarios);
+  add("examTracks", a.examTracks);
   lines.push(`import type { CourseArtifacts } from "${importFrom(dir, "src/lib/content-registry")}";`, "");
   lines.push(`export const ARTIFACTS: CourseArtifacts = {${fields.length ? ` ${fields.join(", ")} ` : ""}};`, "");
   return lines.join("\n");
@@ -296,8 +303,11 @@ export function compileCourseProfileArtifacts(args: {
   const exerciseCount = new Map(
     args.packs.map((p) => [p.id, p.sections.reduce((n, s) => n + s.units.reduce((m, u) => m + u.lessons.reduce((k, l) => k + l.exercises.length, 0), 0), 0)])
   );
-  const defaultCourseId = [...courseIds].sort((a, b) => {
-    const score = (id: string) => Object.values(profiles[id].capabilities).filter(Boolean).length;
+  // Optional add-ons (P3d: `exam`) do not make a course "more complete",
+  // and a standalone course is never the default.
+  const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
+  const defaultCourseId = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
+    const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
     return score(b) - score(a) || (exerciseCount.get(b) ?? 0) - (exerciseCount.get(a) ?? 0) || a.localeCompare(b);
   })[0];
   out.push({

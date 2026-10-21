@@ -21,7 +21,7 @@ import path from "path";
 
 import { existsSync } from "fs";
 
-import type { PackSource } from "../../content/schema";
+import type { ExamTrack, PackSource } from "../../content/schema";
 import { buildPlugin } from "./languages";
 import {
   assessmentSourcePath,
@@ -40,6 +40,8 @@ import {
   validateAssessment,
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
+import { examTrackPaths } from "./exam-bank";
+import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
 import { deriveGenderPatterns } from "./gender-patterns";
 import {
@@ -339,6 +341,50 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
     }
   }
   errors.push(...validateSecondaryNativeCourses(lang, packs));
+  errors.push(...validateTargetExamTracks(lang, packs, { objectives, readings, listening, speech, writing, interaction }, nativeCodes));
+  return errors;
+}
+
+/** P3d: every exam track of a target against the primary course and the target's banks. */
+function validateTargetExamTracks(
+  lang: string,
+  packs: LoadedPack[],
+  layers: {
+    objectives: { objectives: { id: string }[] } | null;
+    readings: { readings: { id: string }[] } | null;
+    listening: { clips: { id: string }[] } | null;
+    speech: { items: { id: string }[] } | null;
+    writing: { tasks: { id: string }[] } | null;
+    interaction: { scenarios: { id: string }[] } | null;
+  },
+  nativeCodes: string[]
+): string[] {
+  if (examTrackPaths(lang).length === 0) return [];
+  const pack = primaryPackOf(lang, packs);
+  if (!pack) return [];
+  let tracks: ExamTrack[];
+  try {
+    tracks = loadExamTracks(lang);
+  } catch (e) {
+    return [schemaFailure(`exam (${lang})`, e)];
+  }
+  const ids = <T extends { id: string }>(rows: T[] | undefined) => new Set((rows ?? []).map((r) => r.id));
+  const refs = {
+    objectiveIds: ids(layers.objectives?.objectives),
+    readingIds: ids(layers.readings?.readings),
+    clipIds: ids(layers.listening?.clips),
+    speechIds: ids(layers.speech?.items),
+    writingIds: ids(layers.writing?.tasks),
+    scenarioIds: ids(layers.interaction?.scenarios),
+  };
+  const errors: string[] = [];
+  const seen = new Set<string>();
+  for (const track of tracks) {
+    if (seen.has(track.id)) errors.push(`exam (${lang}): duplicate track id ${track.id}`);
+    seen.add(track.id);
+    errors.push(...validateExamTrackData({ track, lang, pack, refs, nativeCodes }).errors);
+    errors.push(...missingExerciseOverlays(track.items, track.exerciseNativeCode, nativeCodes).map((m) => `exam (${lang}): ${m}`));
+  }
   return errors;
 }
 
@@ -701,7 +747,26 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
       files.push({ relPath: `${root}/interaction/${courseId}-scenarios.json`, contents: compileInteractionArtifact(interaction, code) });
     }
   }
+  // P3d exam tracks: one artifact per course (primary + mirrors), native text resolved.
+  if (examTrackPaths(lang).length > 0) {
+    const tracks = loadExamTracks(lang);
+    const lexemeMap = <T extends { id: string; lexemeRefs?: string[] }>(rows: T[] | undefined) => new Map((rows ?? []).map((r) => [r.id, r.lexemeRefs ?? []]));
+    const sources = {
+      readings: lexemeMap(readingsForExam(lang)),
+      clips: lexemeMap(loadListening(lang)?.clips),
+      speech: lexemeMap(loadSpeechItems(lang)?.items),
+      writing: lexemeMap(loadWritingTasks(lang)?.tasks),
+    };
+    files.push({ relPath: `${root}/exam/${lang}-exam-tracks.json`, contents: compileExamTracksArtifact(tracks, lang, nativeCode, sources) });
+    for (const { courseId, nativeCode: code } of secondaryNativeCourses(lang, packs)) {
+      files.push({ relPath: `${root}/exam/${courseId}-exam-tracks.json`, contents: compileExamTracksArtifact(tracks, lang, code, sources) });
+    }
+  }
   return { files, dbPlans };
+}
+
+function readingsForExam(lang: string) {
+  return loadReadings(lang)?.readings;
 }
 
 /**

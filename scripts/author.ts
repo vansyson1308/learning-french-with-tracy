@@ -28,6 +28,7 @@ import type { PackSource } from "../content/schema";
 
 import { buildBundle, writeBundle } from "./lib/authoring/bundle";
 import { collectChecklist, renderChecklist } from "./lib/authoring/checklist";
+import { examTrackPaths } from "./lib/exam-bank";
 import { ingestStep } from "./lib/authoring/ingest";
 import { isGeneratedDrift, listStaged, promote, stagedRoot, withStaging } from "./lib/authoring/staging";
 import { lintCourse, renderLintReport } from "./lib/authoring/lint";
@@ -118,6 +119,11 @@ function synthesizeOutput(step: StepId, lang: string, native: string, courseId: 
       return rows(`content/${lang}/assessment/checkpoints.json`, "checkpoints").map((r) => JSON.stringify(r));
     case "placement":
       return rows(`content/${lang}/assessment/placement.json`, "stages").map((r) => JSON.stringify(r));
+    case "exam":
+      return examTrackPaths(lang).map((rel) => {
+        const { version: _v, language: _l, exerciseNativeCode: _n, ...rest } = readJson(rel) as Record<string, unknown>;
+        return JSON.stringify(rest);
+      });
     case "lexicon-review":
       return (rows(`content/${lang}/lexicon/lexemes.json`, "lexemes") as { id: string; glosses: Record<string, string>; examples: { translations: Record<string, string> }[]; relations?: { confusables: string[] } }[]).map((l) => JSON.stringify({ id: l.id, glossVi: l.glosses[native] ?? l.glosses.en, exampleTranslationsVi: l.examples.map((e) => e.translations[native] ?? e.translations.en), confusables: l.relations?.confusables }));
     case "lexicon-add":

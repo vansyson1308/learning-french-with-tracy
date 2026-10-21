@@ -194,6 +194,14 @@ export function applyRecords(step: StepId, lang: string, native: string, courseI
       writeDoc(target, doc, written, dryRun);
       break;
     }
+    case "exam": {
+      // One file per track: content/<lang>/exam/<track-slug>.json (the record IS the document).
+      for (const rec of records as { id: string }[]) {
+        const slug = rec.id.split(".").pop()!.replace(/_/g, "-");
+        writeDoc(`content/${lang}/exam/${slug}.json`, { ...base, exerciseNativeCode: native, ...(rec as Doc) }, written, dryRun);
+      }
+      break;
+    }
     case "placement": {
       const doc = loadDoc(target, { ...base, exerciseNativeCode: native, placementVersion: 1, maxItems: 28, allComfortableLessonId: `${courseId}:un-l0`, stages: [] });
       doc.stages = mergeById(doc.stages as { id: string }[], records as { id: string }[]);

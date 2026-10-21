@@ -49,12 +49,19 @@ import { useSpeechSession } from "@/lib/speech/use-speech-session";
 import { currentStreak, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
+/** mm:ss left on an exam section clock. */
+function clockText(endsAt: number, now: number): string {
+  const s = Math.max(0, Math.ceil((endsAt - now) / 1000));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
 export function SessionScreen({
   definition,
   targetLanguage,
   emptyMessage,
   buildTodayStats,
   renderFinished,
+  countdown,
 }: {
   definition: SessionDefinition;
   targetLanguage: string;
@@ -66,6 +73,12 @@ export function SessionScreen({
    * with their own results screen (§112, §118).
    */
   renderFinished?: (controller: SessionController) => React.ReactElement | null;
+  /**
+   * P3d timed exam sections: a visible clock; at `endsAt` the route takes
+   * the controller's first-attempt results (unanswered items stay
+   * unanswered) and moves on. Called at most once.
+   */
+  countdown?: { endsAt: number; onExpire: (controller: SessionController) => void };
 }) {
   const colors = useThemeColors();
   const styles = useStyles();
@@ -89,6 +102,19 @@ export function SessionScreen({
     [definition.steps]
   );
   const speechSession = useSpeechSession(hasSpeechSteps, courseProfile(definition.courseId).recognitionLocale);
+
+  const [now, setNow] = React.useState(() => Date.now());
+  const expiredRef = React.useRef(false);
+  React.useEffect(() => {
+    if (!countdown || state.finished) return;
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, [countdown, state.finished]);
+  React.useEffect(() => {
+    if (!countdown || state.finished || expiredRef.current || now < countdown.endsAt) return;
+    expiredRef.current = true;
+    countdown.onExpire(controller);
+  }, [countdown, now, state.finished, controller]);
 
   const step = currentStep(state);
   const percentage = sessionProgress(state) * 100;
@@ -185,7 +211,11 @@ export function SessionScreen({
               <View style={styles.progressShine} />
             </Animated.View>
           </View>
-          {isPractice ? (
+          {countdown ? (
+            <Text style={styles.clock} testID="session-countdown" accessibilityLabel={t("exam.clockLabel", { time: clockText(countdown.endsAt, now) })}>
+              {clockText(countdown.endsAt, now)}
+            </Text>
+          ) : isPractice ? (
             <View style={styles.practicePill}>
               <Ionicons name="infinite" size={24} color={colors.skyDark} />
             </View>
@@ -376,6 +406,7 @@ const useStyles = makeThemedStyles((colors) =>
       borderRadius: radius.full,
       backgroundColor: "rgba(255,255,255,0.35)",
     },
+    clock: { fontSize: 16, fontWeight: "800", color: colors.skyDark, minWidth: 52, textAlign: "right" },
     practicePill: {
       flexDirection: "row",
       alignItems: "center",

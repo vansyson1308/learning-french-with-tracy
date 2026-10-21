@@ -19,7 +19,13 @@ The first screen asks which course you want. French is the course this app is bu
 
 ## 4. Choosing French
 
-French is the only course with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. Both French editions have it. Your French memory is shared between them: a word you review in one edition is the same memory card in the other, and the starting-point check and checkpoint results carry over — only lesson completion and XP are counted per edition. The other courses offer the learning path, practice of mistakes and word review.
+French and Spanish for Vietnamese speakers (`es-vi`) are the courses with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. Both French editions have it. Your French memory is shared between them: a word you review in one edition is the same memory card in the other, and the starting-point check and checkpoint results carry over — only lesson completion and XP are counted per edition. The other courses offer the learning path, practice of mistakes and word review.
+
+### Spanish for Vietnamese speakers (`es-vi`) and DELE A1 practice
+
+`es-vi` teaches neutral Latin-American Spanish to A1 with the same six-section structure as French; every explanation, question and piece of feedback is in Vietnamese. The older `es-en` course stays under **Other courses** in the course picker so earlier progress is kept, but it is no longer offered at first launch.
+
+The **DELE A1 practice** card on the Practice tab follows the public DELE A1 format (Instituto Cervantes): Reading (45 min), Listening (20 min), Writing (25 min) and Speaking (15 min plus preparation). **Practise one part** is untimed with feedback after each answer; the **timed mock** runs two parallel forms, A and B — a retake gets the other one. When a part's time is up, it ends and the questions you didn't reach count as not answered. Results show each part's points, the two score groups (Reading + Writing, Listening + Speaking) against the format's threshold, and an **estimated readiness**. It is not a real exam score, is not issued by Instituto Cervantes and does not predict a result; every question is original to the course. **Practise the words from these questions** starts an ordinary vocabulary review (recorded in your memory cards) over the words of the questions you missed. Without speech recognition on the device the Speaking part is skipped and the result says there is not enough data for an estimate. Spanish listening audio arrives once the audio generation run has finished; until then listening questions offer the skip button.
 
 ## 5. Starting-point check (placement)
 

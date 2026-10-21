@@ -73,6 +73,7 @@ export const GENERATED_TARGETS = [
   "src/content/speech",
   "src/content/writing",
   "src/content/interaction",
+  "src/content/exam",
   TEST_ONLY_ROOT,
   "assets/lexicon",
   "content/reports",

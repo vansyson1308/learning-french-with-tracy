@@ -18,6 +18,7 @@ import {
 } from "../../content/schema";
 import type { Exercise } from "../../content/schema";
 import { foldSpoken, normalizeSpoken } from "../../src/lib/speech/grader";
+import { examBankDocuments } from "./exam-bank";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeCueFacts, localizeSpeechPrompt, pickNative } from "./native-text";
 import { localizedBankExercise } from "./writing";
@@ -389,6 +390,11 @@ export function assessmentBankSpeechExercises(lang: string, nativeCode?: string)
     } catch {
       // Bank absent — nothing to check.
     }
+  }
+  // P3d: exam tracks are scored banks too — reserved items only.
+  for (const doc of examBankDocuments(lang)) {
+    docNative = doc.exerciseNativeCode;
+    collect(doc.items);
   }
   return found;
 }

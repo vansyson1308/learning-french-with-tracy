@@ -76,13 +76,16 @@ export type SessionStep = ExerciseStep | TeachStep | ConceptStep;
  *                  no XP, no streak, no lesson completion (§59)
  *  - "placement":  the placement route stores the result — no XP, no
  *                  learning-memory mutation of any kind (§78)
+ *  - "exam":       the exam route (P3d) records the attempt itself — no XP,
+ *                  no FSRS, no CEFR objective state
  */
 export type CompletionPolicy =
   | "lesson"
   | "practice"
   | "today"
   | "checkpoint"
-  | "placement";
+  | "placement"
+  | "exam";
 
 /**
  * Scored-assessment plan attached to checkpoint/placement definitions: the

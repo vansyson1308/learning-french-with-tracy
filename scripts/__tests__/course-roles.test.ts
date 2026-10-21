@@ -80,6 +80,8 @@ describe("course roles (P3d)", () => {
     expect(profiles["es-en"].artifacts.lexiconIndex).toBe("src/content/lexicon/es-en-index.json");
     expect(profiles["es-en"].artifacts.lexiconDb).toBe("assets/lexicon/es-en.db");
     expect(profiles["es-en"].audioCourseId).toBeUndefined();
+    expect(profiles["es-en"].role).toBe("standalone");
+    expect(profiles["es-vi"].role).toBeUndefined();
     expect(profiles["es-vi"].artifacts.concepts).toBe("src/content/concepts/es-concepts.json");
     expect(profiles["es-vi"].artifacts.listening).toBe("src/content/reception/es-listening.json");
     expect(profiles["es-vi"].audioCourseId).toBeUndefined();

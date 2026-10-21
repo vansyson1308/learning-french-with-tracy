@@ -13,6 +13,7 @@ import { z } from "zod";
 import {
   POS_VALUES,
   checkpointSchema,
+  examTrackSchema,
   conceptSchema,
   courseObjectiveSchema,
   interactionScenarioSchema,
@@ -41,6 +42,7 @@ export const STEP_IDS = [
   "scenarios",
   "checkpoints",
   "placement",
+  "exam",
   "lexicon-review",
   "lexicon-add",
 ] as const;
@@ -267,6 +269,16 @@ export const STEPS: Record<StepId, StepDef> = {
     blueprintSections: ["## 8. Assessment"],
     exemplars: () => pick(frDoc("content/fr/assessment/placement.json", "stages"), 1).map((s) => ({ ...(s as Record<string, unknown>), clusters: ((s as { clusters: unknown[] }).clusters ?? []).slice(0, 2) })),
     sessions: "1",
+  },
+  exam: {
+    id: "exam",
+    task: "Viết lộ trình thi (exam track) theo ĐỊNH DẠNG CÔNG KHAI của kỳ thi trong brief — không bao giờ chép đề thật: một bản ghi {id `<lang>.exam.<slug>`, trackVersion, name, level, title, description, formatSource {publisher, reference, checkedAgainstOfficialGuide, note}, sections [{id, skill reading|listening|writing|speaking, title, minutes, preparationMinutes?, maxPoints, tasks [{id, title, instruction, format mcq3|matching|form|short_text|monologue|conversation, itemsPerForm}]}], groups [{id, title, sectionIds, maxPoints, passPoints}], readiness {bands (giảm dần, band cuối minGroupShare 0; nhãn có chữ \"ước tính\"), incomplete, disclaimer}, items [{id `<lang>.exi.<track>.<slug>`, itemVersion, sectionId, taskId, exercise, objectiveTargets}], forms ≥ 2, rời nhau, mỗi form đủ itemsPerForm cho từng task}. Bài đọc/clip/speech/writing/scenario của đề là mục RIÊNG (speech/writing/scenario reserved: true), soạn ở các bước tương ứng trước. Không bao giờ viết \"sẽ đỗ\" hay hứa kết quả.",
+    recordSchema: (lang) => examTrackSchema(lang).omit({ version: true, language: true, exerciseNativeCode: true }),
+    target: (lang) => `content/${lang}/exam/<track>.json`,
+    validatorPrefixes: ["exam", "speech", "writing", "interaction", "reception"],
+    blueprintSections: ["## 8. Assessment"],
+    exemplars: () => [],
+    sessions: "1–2",
   },
   "lexicon-review": {
     id: "lexicon-review",

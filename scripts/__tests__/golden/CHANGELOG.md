@@ -288,3 +288,13 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  src/content/course-profiles.json
 - compile: changed  src/content/packs/es-en.json
+
+## 2026-10-21 — P3d DELE A1 exam track for es-vi (content/es/exam/dele-a1.json, 2 parallel forms, 112 items) + exam readings/clips/speech/writing/scenarios; course-profiles gain es-vi exam capability and es-en standalone role; French artifacts unchanged
+
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  src/content/artifacts/es-vi.ts
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/interaction/es-scenarios.json
+- compile: changed  src/content/reception/es-listening.json
+- compile: changed  src/content/reception/es-reading.json
+- compile: new      src/content/exam/es-exam-tracks.json

@@ -15,7 +15,10 @@ export default function CoursesScreen() {
   const styles = useStyles();
   const { t, lang, languageName } = useT();
   const { activeCourseId, setActiveCourse, courses } = useProgress();
-  const list = orderedCoursesFor(lang);
+  const all = orderedCoursesFor(lang);
+  // P3d: inherited standalone courses are listed last, under their own heading.
+  const list = all.filter((c) => courseProfile(c.id).role !== "standalone");
+  const others = all.filter((c) => courseProfile(c.id).role === "standalone");
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
@@ -27,7 +30,7 @@ export default function CoursesScreen() {
 
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.subtitle}>{t("courses.subtitle")}</Text>
-        {list.map((course) => {
+        {[...list, ...others].map((course, index) => {
           const prog = courses[course.id];
           const lessonsDone = prog
             ? Object.keys(prog.completedLessons).length
@@ -35,8 +38,15 @@ export default function CoursesScreen() {
           const active = course.id === activeCourseId;
           const name = languageName(courseProfile(course.id).targetCode, course.targetLanguage);
           return (
+            <React.Fragment key={course.id}>
+            {index === list.length && others.length > 0 ? (
+              <View style={styles.otherHeader} testID="courses-other">
+                <Text style={styles.otherTitle}>{t("courses.otherTitle")}</Text>
+                <Text style={styles.meta}>{t("courses.otherBody")}</Text>
+              </View>
+            ) : null}
             <Pressable
-              key={course.id}
+              testID={`courses-course-${course.id}`}
               onPress={() => {
                 setActiveCourse(course.id);
                 exitScreen();
@@ -58,6 +68,7 @@ export default function CoursesScreen() {
               </View>
               {active ? <Text style={styles.activeBadge}>{t("courses.active")}</Text> : null}
             </Pressable>
+            </React.Fragment>
           );
         })}
       </ScrollView>
@@ -79,6 +90,8 @@ const useStyles = makeThemedStyles((colors) => StyleSheet.create({
   title: { fontSize: 17, fontWeight: "800", color: colors.neutral700 },
   body: { padding: 20, gap: 12, paddingBottom: 60 },
   subtitle: { fontSize: 14, color: colors.textMuted, marginBottom: 4 },
+  otherHeader: { marginTop: 12, gap: 2 },
+  otherTitle: { fontSize: 15, fontWeight: "800", color: colors.neutral700 },
   card: {
     flexDirection: "row",
     alignItems: "center",

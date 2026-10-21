@@ -63,7 +63,8 @@
         "lexiconIndex": "src/content/lexicon/es-en-index.json",
         "lexiconFallback": "src/content/lexicon/es-en-web-fallback.json",
         "lexiconDb": "assets/lexicon/es-en-lexicon-v3-fd4864239463ab05.db"
-      }
+      },
+      "role": "standalone"
     },
     "es-vi": {
       "id": "es-vi",
@@ -90,7 +91,8 @@
         "reading": true,
         "speaking": true,
         "writing": true,
-        "conversation": true
+        "conversation": true,
+        "exam": true
       },
       "artifacts": {
         "ids": "src/content/ids/es.json",
@@ -108,7 +110,8 @@
         "clipAssets": "src/content/reception/es-clip-assets.ts",
         "speech": "src/content/speech/es-speech-items.json",
         "writing": "src/content/writing/es-writing.json",
-        "scenarios": "src/content/interaction/es-scenarios.json"
+        "scenarios": "src/content/interaction/es-scenarios.json",
+        "examTracks": "src/content/exam/es-exam-tracks.json"
       }
     },
     "fr-en": {

@@ -28,6 +28,7 @@ import {
   evaluateSimpleForm,
   normalizeWritten,
 } from "../../src/lib/writing/rubric";
+import { examBankDocuments } from "./exam-bank";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeRubric, localizeWritingTask, type LocalizedWritingTask } from "./native-text";
 import { localizeAssessmentItem } from "./native-text";
@@ -416,6 +417,13 @@ export function assessmentBankWritingExercises(lang: string, nativeCode?: string
       for (const cluster of stage.clusters) {
         for (const item of cluster.items) push(item.exercise);
       }
+    }
+  }
+  // P3d: exam tracks are scored banks too — reserved tasks only.
+  for (const doc of examBankDocuments(lang)) {
+    for (const item of doc.items) {
+      const localized = nativeCode === undefined || nativeCode === doc.exerciseNativeCode ? item.exercise : localizedBankExercise(item, doc.exerciseNativeCode, nativeCode);
+      if (localized) push(localized);
     }
   }
   return out;

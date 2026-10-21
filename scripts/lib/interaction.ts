@@ -22,6 +22,7 @@ import {
   type Listening,
 } from "../../content/schema";
 import { normalizeSpoken } from "../../src/lib/speech/grader";
+import { examBankDocuments } from "./exam-bank";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 import { localizeScenarioNodes, pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
@@ -293,5 +294,7 @@ export function assessmentBankInteractionExercises(lang: string): InteractionExe
       // Bank absent — nothing to check.
     }
   }
+  // P3d: exam tracks are scored banks too — reserved scenarios only.
+  for (const doc of examBankDocuments(lang)) collect(doc.items);
   return out;
 }

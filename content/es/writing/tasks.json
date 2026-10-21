@@ -2661,6 +2661,404 @@
       "scoredEligibility": true,
       "reserved": true,
       "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.dele_a_formulario",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu đăng ký khóa học với các thông tin trên thẻ.",
+        "en": "Fill in the course registration form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Linh"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "22"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Valencia"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "slotId": "name"
+        },
+        {
+          "id": "edad",
+          "label": "Edad",
+          "slotId": "age"
+        },
+        {
+          "id": "ciudad",
+          "label": "Ciudad",
+          "slotId": "city"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "linh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "22",
+              "veintidós"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "valencia"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Linh | 22 | Valencia"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "es:w:ciudad"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.dele_a_nota",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Carmen: chào, nói bạn đang ở thư viện và bạn về lúc 6:00.",
+        "en": "Write a short note to Carmen: greet them, say you are at the biblioteca and when you come back."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Carmen"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "thư viện"
+        },
+        {
+          "label": {
+            "vi": "Giờ về",
+            "en": "Back at"
+          },
+          "value": "6:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "carmen"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "where",
+            "description": {
+              "vi": "thư viện",
+              "en": "biblioteca"
+            },
+            "variants": [
+              "biblioteca"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ về",
+              "en": "the time you are back"
+            },
+            "variants": [
+              "a las seis",
+              "a las 6"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "Hola, Carmen: estoy en la biblioteca. Vuelvo a casa a las seis."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:volver"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.dele_b_formulario",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu đăng ký khóa học với các thông tin trên thẻ.",
+        "en": "Fill in the course registration form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Minh"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "28"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Sevilla"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "slotId": "name"
+        },
+        {
+          "id": "edad",
+          "label": "Edad",
+          "slotId": "age"
+        },
+        {
+          "id": "ciudad",
+          "label": "Ciudad",
+          "slotId": "city"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "minh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "28",
+              "veintiocho"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "sevilla"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Minh | 28 | Sevilla"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "es:w:ciudad"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.dele_b_nota",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Pablo: chào, nói bạn đang ở cửa hàng và bạn về lúc 11:00.",
+        "en": "Write a short note to Pablo: greet them, say you are at the tienda and when you come back."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Pablo"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "cửa hàng"
+        },
+        {
+          "label": {
+            "vi": "Giờ về",
+            "en": "Back at"
+          },
+          "value": "11:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "pablo"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "where",
+            "description": {
+              "vi": "cửa hàng",
+              "en": "tienda"
+            },
+            "variants": [
+              "tienda"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ về",
+              "en": "the time you are back"
+            },
+            "variants": [
+              "a las once",
+              "a las 11"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "Hola, Pablo: estoy en la tienda. Vuelvo a casa a las once."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:volver"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
     }
   ]
 }

@@ -15,10 +15,12 @@ import { makeThemedStyles, radius } from "@/lib/theme";
 export default function OnboardingScreen() {
   const styles = useStyles();
   const { t, lang, languageName } = useT();
-  const courses = orderedCoursesFor(lang);
+  // P3d: inherited standalone courses (es-en beside es-vi) are not offered
+  // to new learners; they stay installable under "other courses".
+  const courses = orderedCoursesFor(lang).filter((c) => courseProfile(c.id).role !== "standalone");
   const finishOnboarding = useProgress((s) => s.finishOnboarding);
   const [courseId, setCourseId] = useState(
-    catalog.courses.some((c) => c.id === DEFAULT_COURSE)
+    courses.some((c) => c.id === DEFAULT_COURSE)
       ? DEFAULT_COURSE
       : (courses[0]?.id ?? DEFAULT_COURSE)
   );

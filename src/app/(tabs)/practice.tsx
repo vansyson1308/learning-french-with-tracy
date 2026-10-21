@@ -10,6 +10,7 @@ import { Flag } from "@/components/flag";
 import { SpeakerButton } from "@/components/speaker-button";
 import { useCourseContent } from "@/lib/content";
 import { courseProfile } from "@/lib/course-profile";
+import { examTracksFor } from "@/lib/exam/content";
 import {
   cardForSurface,
   dueReviewQueue,
@@ -90,6 +91,22 @@ export default function PracticeScreen() {
             <QuestRow key={quest.id} quest={quest} />
           ))}
         </View>
+
+        {examTracksFor(activeCourseId).map((track) => (
+          <View key={track.id} style={styles.card} testID={`practice-exam-${track.id}`}>
+            <View style={styles.cardHeader}>
+              <MaterialCommunityIcons name="clipboard-text-clock-outline" size={24} color={colors.skyDark} />
+              <Text style={styles.cardTitle}>{track.title}</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>{t("practice.examSubtitle", { name: track.name })}</Text>
+            <DuoButton
+              label={t("practice.openExam")}
+              testID="practice-open-exam"
+              variant="primary"
+              onPress={() => router.push({ pathname: "/exam/[trackId]", params: { trackId: track.id } })}
+            />
+          </View>
+        ))}
 
         <View style={styles.card}>
           <View style={styles.cardHeader}>
