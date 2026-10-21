@@ -370,7 +370,7 @@
       "castNote": "A=kokoro-am_michael (Kokoro voice pack am_michael); B=kokoro-af_heart: different speaker (Kokoro voice pack af_heart), other gender (female vs male), mean WER/CER 0.1331 ≤ 0.6"
     },
     "vi": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "vi_VN-vais1000-medium",
@@ -378,11 +378,22 @@
         }
       ],
       "cast": {
-        "A": null,
+        "A": "vi_VN-vais1000-medium",
         "B": null
       },
-      "canary": null,
-      "reason": "UI / explanation audio only if ever needed (no Vietnamese target course); VAIS-1000 is CC BY 4.0. The 2026-10-14 canary verdict (no-clean-voice, WER 1.0) was discarded: the SenseVoice audit has no Vietnamese; re-run with Whisper."
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/vi/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "vi_VN-vais1000-medium",
+            "clips": 12,
+            "meanWer": 0.5646,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "castNote": "A=vi_VN-vais1000-medium (model card: voice vais1000, dataset ieee-dataport.org/documents/vais-1000-vietnamese-speech-synthesis-corpus); no second voice: no other candidate is a verified different speaker within the floor"
     }
   }
 }

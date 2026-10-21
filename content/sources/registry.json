@@ -546,6 +546,20 @@
         "content/audio/model-cards/zh/melotts-zh.card.txt"
       ],
       "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1119 over 24 sampled strings, 0 technical failures). Model weights are never committed."
+    },
+    {
+      "id": "piper-voice-vais1000",
+      "name": "Piper voice vi_VN-vais1000-medium",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/vi/vi_VN/vais1000/medium",
+      "attribution": "Course audio for vi (no course yet) synthesized with Piper (MIT, rhasspy/piper) using the vi_VN-vais1000-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-21",
+      "covers": [
+        "assets/audio/vi/",
+        "content/audio/model-cards/vi/vi_VN-vais1000-medium.MODEL_CARD.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.5646 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets."
     }
   ]
 }

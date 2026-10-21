@@ -455,6 +455,18 @@
         "assets/audio/zh/",
         "content/audio/model-cards/zh/melotts-zh.card.txt"
       ]
+    },
+    {
+      "id": "piper-voice-vais1000",
+      "name": "Piper voice vi_VN-vais1000-medium",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/vi/vi_VN/vais1000/medium",
+      "attribution": "Course audio for vi (no course yet) synthesized with Piper (MIT, rhasspy/piper) using the vi_VN-vais1000-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/vi/",
+        "content/audio/model-cards/vi/vi_VN-vais1000-medium.MODEL_CARD.txt"
+      ]
     }
   ]
 }
