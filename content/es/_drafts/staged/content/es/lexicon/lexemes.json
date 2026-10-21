@@ -48799,7 +48799,7 @@
     },
     {
       "id": "es:w:enero",
-      "surface": "el enero",
+      "surface": "enero",
       "lemma": "enero",
       "lookupForm": "enero",
       "partOfSpeech": "noun",
@@ -50146,6 +50146,322 @@
           "translations": {
             "en": "Is there any water?",
             "vi": "Có nước không?"
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:cerrado",
+      "surface": "cerrado",
+      "lemma": "cerrado",
+      "lookupForm": "cerrado",
+      "partOfSpeech": "adjective",
+      "glosses": {
+        "en": "closed",
+        "vi": "đóng cửa / đóng"
+      },
+      "pronunciation": {
+        "value": "θeˈrado",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 42.0762,
+        "rank": 1372,
+        "band": "less-common"
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "La tienda está cerrada.",
+          "translations": {
+            "en": "The shop is closed.",
+            "vi": "Cửa hàng đóng cửa."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        },
+        {
+          "target": "El museo está cerrado el lunes.",
+          "translations": {
+            "en": "The museum is closed on Monday.",
+            "vi": "Bảo tàng đóng cửa vào thứ Hai."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "cerrado|adj"
+        },
+        {
+          "source": "frequencywords",
+          "key": "cerrado"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:biblioteca",
+      "surface": "la biblioteca",
+      "lemma": "biblioteca",
+      "lookupForm": "biblioteca",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "glosses": {
+        "en": "library",
+        "vi": "thư viện"
+      },
+      "pronunciation": {
+        "value": "bibljoˈteka",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 27.1279,
+        "rank": 1996,
+        "band": "less-common"
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "Estudio en la biblioteca.",
+          "translations": {
+            "en": "I study in the library.",
+            "vi": "Tôi học ở thư viện."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "biblioteca|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "biblioteca"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:regalo",
+      "surface": "el regalo",
+      "lemma": "regalo",
+      "lookupForm": "regalo",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "gift",
+        "vi": "món quà"
+      },
+      "pronunciation": {
+        "value": "reˈɡalo",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 33.0913,
+        "rank": 1718,
+        "band": "less-common"
+      },
+      "topic": "shopping",
+      "examples": [
+        {
+          "target": "Compro un regalo para mi madre.",
+          "translations": {
+            "en": "I buy a gift for my mother.",
+            "vi": "Tôi mua một món quà cho mẹ."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "regalo|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "regalo"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:euro",
+      "surface": "el euro",
+      "lemma": "euro",
+      "lookupForm": "euro",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "euro",
+        "vi": "euro (tiền)"
+      },
+      "topic": "shopping",
+      "examples": [
+        {
+          "target": "El café cuesta dos euros.",
+          "translations": {
+            "en": "The coffee costs two euros.",
+            "vi": "Cà phê giá hai euro."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:amiga",
+      "surface": "la amiga",
+      "lemma": "amiga",
+      "lookupForm": "amiga",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "glosses": {
+        "en": "friend (female)",
+        "vi": "người bạn (nữ)"
+      },
+      "topic": "people",
+      "examples": [
+        {
+          "target": "Mi amiga vive en Madrid.",
+          "translations": {
+            "en": "My friend lives in Madrid.",
+            "vi": "Bạn tôi sống ở Madrid."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:mediodia",
+      "surface": "el mediodía",
+      "lemma": "mediodía",
+      "lookupForm": "mediodía",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "noon, midday",
+        "vi": "buổi trưa"
+      },
+      "pronunciation": {
+        "value": "medjoˈdia",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 17.6449,
+        "rank": 2746,
+        "band": "less-common"
+      },
+      "topic": "time",
+      "examples": [
+        {
+          "target": "Comemos al mediodía.",
+          "translations": {
+            "en": "We eat at noon.",
+            "vi": "Chúng tôi ăn trưa vào buổi trưa."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "mediodía|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "mediodía"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:panaderia",
+      "surface": "la panadería",
+      "lemma": "panadería",
+      "lookupForm": "panadería",
+      "partOfSpeech": "noun",
+      "gender": "feminine",
+      "glosses": {
+        "en": "bakery",
+        "vi": "tiệm bánh mì"
+      },
+      "topic": "places",
+      "examples": [
+        {
+          "target": "Compro pan en la panadería.",
+          "translations": {
+            "en": "I buy bread at the bakery.",
+            "vi": "Tôi mua bánh mì ở tiệm bánh."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:anden",
+      "surface": "el andén",
+      "lemma": "andén",
+      "lookupForm": "andén",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "platform (station)",
+        "vi": "sân ga"
+      },
+      "topic": "travel",
+      "examples": [
+        {
+          "target": "El tren sale del andén dos.",
+          "translations": {
+            "en": "The train leaves from platform two.",
+            "vi": "Tàu khởi hành từ sân ga số hai."
           },
           "source": "original-lexicon-etl",
           "key": "add"

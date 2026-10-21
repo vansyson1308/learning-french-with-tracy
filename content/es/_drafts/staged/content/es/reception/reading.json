@@ -1,0 +1,707 @@
+{
+  "version": 1,
+  "language": "es",
+  "readings": [
+    {
+      "id": "es.read.ug_horario_museo",
+      "kind": "notice",
+      "title": "Horario del museo",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Museo de la ciudad"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Abierto de martes a domingo, de diez a seis de la tarde."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cerrado el lunes. Entrada: ocho euros."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "es:w:museo",
+        "es:w:ciudad",
+        "es:w:abierto",
+        "es:w:entrada",
+        "es:w:domingo",
+        "es:w:euro"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "lunes",
+          "gloss": {
+            "vi": "thứ Hai",
+            "en": "Monday"
+          }
+        },
+        {
+          "surface": "martes",
+          "gloss": {
+            "vi": "thứ Ba",
+            "en": "Tuesday"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.ug_mensaje_ana",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "¡Hola! Mañana por la mañana voy al mercado con mi hermana. Compramos pan y queso. ¿Vienes? — Ana"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "es:w:hola",
+        "es:w:manana",
+        "es:w:mercado",
+        "es:w:hermana",
+        "es:w:comprar",
+        "es:w:pan",
+        "es:w:queso"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "¿Vienes?",
+          "gloss": {
+            "vi": "Bạn có đến không?",
+            "en": "Are you coming?"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.ug_cartel_salida",
+      "kind": "notice",
+      "title": "En la estación",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Salida — a la derecha"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Entrada de la tienda — a la izquierda, después de la puerta."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "es:w:salida",
+        "es:w:derecha",
+        "es:w:entrada",
+        "es:w:tienda",
+        "es:w:izquierda",
+        "es:w:puerta"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.ug_mensaje_jefe",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hola, Pablo: hoy el restaurante abre a mediodía. La mesa cerca de la puerta es para la señora Martín. ¡Gracias!"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "es:w:restaurante",
+        "es:w:abrir",
+        "es:w:hoy",
+        "es:w:mesa",
+        "es:w:puerta",
+        "es:w:mediodia"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.ug_horario_panaderia",
+      "kind": "notice",
+      "title": "Horario",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Panadería La Mañana"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Abierto de lunes a sábado, de siete a una de la tarde."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cerrado el domingo."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "es:w:panaderia",
+        "es:w:abierto",
+        "es:w:sabado",
+        "es:w:domingo",
+        "es:w:cerrado"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "lunes",
+          "gloss": {
+            "vi": "thứ Hai",
+            "en": "Monday"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.ui_dialogo_estacion",
+      "kind": "dialogue",
+      "blocks": [
+        {
+          "kind": "line",
+          "speaker": "Mateo",
+          "text": "Buenos días, un boleto para Sevilla, por favor."
+        },
+        {
+          "kind": "line",
+          "speaker": "Agente",
+          "text": "Claro. El tren sale a las nueve, andén dos."
+        },
+        {
+          "kind": "line",
+          "speaker": "Mateo",
+          "text": "¡Gracias! ¿Cuánto cuesta?"
+        },
+        {
+          "kind": "line",
+          "speaker": "Agente",
+          "text": "Dieciséis euros, señor."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages",
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:boleto",
+        "es:w:tren",
+        "es:w:anden",
+        "es:w:hora",
+        "es:w:cuanto"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "claro",
+          "gloss": {
+            "vi": "tất nhiên",
+            "en": "of course"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.ui_dialogo_cafe",
+      "kind": "dialogue",
+      "blocks": [
+        {
+          "kind": "line",
+          "speaker": "Lucía",
+          "text": "¡Buenas tardes! Una mesa para dos, por favor."
+        },
+        {
+          "kind": "line",
+          "speaker": "Camarero",
+          "text": "Claro, señora. La mesa cerca de la entrada."
+        },
+        {
+          "kind": "line",
+          "speaker": "Lucía",
+          "text": "Muchas gracias."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:buenas-tardes",
+        "es:w:mesa",
+        "es:w:entrada",
+        "es:w:senora",
+        "es:w:camarero"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.uj_ciudad_mateo",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Mateo vive en una ciudad pequeña cerca de la playa. Por la mañana trabaja en la tienda. Por la noche va al restaurante con sus amigos."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir",
+        "es:w:ciudad",
+        "es:w:playa",
+        "es:w:manana",
+        "es:w:trabajar",
+        "es:w:tienda",
+        "es:w:noche",
+        "es:w:restaurante"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "pequeña",
+          "gloss": {
+            "vi": "nhỏ",
+            "en": "small"
+          }
+        },
+        {
+          "surface": "amigos",
+          "gloss": {
+            "vi": "bạn bè",
+            "en": "friends"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.uj_sabado_ana",
+      "kind": "narrative",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hoy es sábado. Ana toma el tren para ir a la ciudad. Compra un regalo para su madre y paga doce euros. Por la noche come en un restaurante."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:hoy",
+        "es:w:sabado",
+        "es:w:tomar",
+        "es:w:tren",
+        "es:w:ciudad",
+        "es:w:comprar",
+        "es:w:regalo",
+        "es:w:pagar",
+        "es:w:noche"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "madre",
+          "gloss": {
+            "vi": "mẹ",
+            "en": "mother"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "basic_inference"
+      }
+    },
+    {
+      "id": "es.read.uj_manana_estacion",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La estación abre a las cinco de la mañana. El primer tren sale a las seis. El café de la estación abre a las siete."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts",
+        "es.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "es:w:estacion",
+        "es:w:abrir",
+        "es:w:hora",
+        "es:w:manana",
+        "es:w:tren",
+        "es:w:cafe"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "primer",
+          "gloss": {
+            "vi": "đầu tiên",
+            "en": "first"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.uj_domingo_familia",
+      "kind": "narrative",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "El domingo la tienda está cerrada. Marcos se queda en casa por la mañana. Por la tarde va a la playa con su familia. Comen pollo y arroz."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:domingo",
+        "es:w:tienda",
+        "es:w:quedar",
+        "es:w:casa",
+        "es:w:manana",
+        "es:w:playa",
+        "es:w:comer",
+        "es:w:pollo",
+        "es:w:arroz"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "cerrada",
+          "gloss": {
+            "vi": "đóng cửa",
+            "en": "closed"
+          }
+        },
+        {
+          "surface": "familia",
+          "gloss": {
+            "vi": "gia đình",
+            "en": "family"
+          }
+        },
+        {
+          "surface": "tarde",
+          "gloss": {
+            "vi": "buổi chiều",
+            "en": "afternoon"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "basic_inference"
+      }
+    },
+    {
+      "id": "es.read.cp3_mensaje_mateo",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "¡Hola! El domingo por la mañana tomo el tren para la playa. La salida es a las nueve. ¿Vienes con nosotros? — Mateo"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "es:w:domingo",
+        "es:w:manana",
+        "es:w:tomar",
+        "es:w:tren",
+        "es:w:playa",
+        "es:w:salida",
+        "es:w:hora"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.cp3_aviso_biblioteca",
+      "kind": "notice",
+      "title": "Biblioteca — horario",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Biblioteca de la ciudad"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Abierto de martes a sábado, de nueve a seis de la tarde."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cerrado el domingo y el lunes."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "es:w:biblioteca",
+        "es:w:ciudad",
+        "es:w:abierto",
+        "es:w:sabado",
+        "es:w:domingo",
+        "es:w:cerrado"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.cp3_texto_carmen",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Carmen trabaja en el restaurante de la estación. Por la mañana compra pan y queso en la tienda. El restaurante abre a mediodía y cierra a las diez de la noche."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:trabajar",
+        "es:w:restaurante",
+        "es:w:estacion",
+        "es:w:manana",
+        "es:w:comprar",
+        "es:w:pan",
+        "es:w:queso",
+        "es:w:tienda",
+        "es:w:abrir",
+        "es:w:cerrar",
+        "es:w:noche"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.pl_aviso_cafe",
+      "kind": "notice",
+      "title": "Café — horario",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Café de la Plaza"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Abierto de lunes a sábado, de ocho de la mañana a ocho de la noche."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "es:w:cafe",
+        "es:w:plaza",
+        "es:w:abierto",
+        "es:w:sabado",
+        "es:w:manana"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.pl_mensaje_corto",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "¡Hola! Mañana por la noche comemos en el restaurante cerca de la estación. ¿Vienes?"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "es:w:noche",
+        "es:w:comer",
+        "es:w:restaurante",
+        "es:w:estacion",
+        "es:w:cerca"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.cp3_texto_nora",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nora vive en Madrid. Por la mañana toma el tren para ir a la biblioteca. Por la noche come en un restaurante con una amiga."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir",
+        "es:w:tren",
+        "es:w:biblioteca",
+        "es:w:restaurante",
+        "es:w:amiga"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.a1cap_nota_tienda",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "¡Hola! Estoy en la tienda. Vuelvo a las once. Tu sándwich está en la mesa. — Papá"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "es:w:hola",
+        "es:w:tienda",
+        "es:w:volver",
+        "es:w:mesa",
+        "es:w:papa"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "sándwich",
+          "gloss": {
+            "vi": "bánh mì kẹp",
+            "en": "sandwich"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "es.read.a1cap_invitacion",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Querida Ana: el sábado comemos en el restaurante a las siete de la tarde. ¿Puedes venir? ¡Hasta el sábado! — Nadia"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "es:w:sabado",
+        "es:w:comer",
+        "es:w:restaurante",
+        "es:w:hora",
+        "es:w:tarde"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "venir",
+          "gloss": {
+            "vi": "đến",
+            "en": "to come"
+          }
+        },
+        {
+          "surface": "Querida",
+          "gloss": {
+            "vi": "(Bạn) thân mến",
+            "en": "Dear"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    }
+  ]
+}
