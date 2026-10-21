@@ -612,12 +612,14 @@ function select(reportPath: string, courses?: string) {
     // Aggregate the canary rows per voice across the language canary (courseId null) and the course samples.
     const perVoice = new Map<string, { voiceId: string; clips: number; werSum: number; technicalFailures: number }>();
     for (const r of report.voiceSummary) {
-      if (r.layer === "reception" || !candidates.includes(r.voiceId)) continue;
-      const agg = perVoice.get(r.voiceId) ?? { voiceId: r.voiceId, clips: 0, werSum: 0, technicalFailures: 0 };
+      // QA keys a voice with a fixed speaker as `<voiceId>#<speaker>` (MeloTTS "melotts-ko#KR"): the cast is per voice.
+      const voiceId = r.voiceId.split("#")[0];
+      if (r.layer === "reception" || !candidates.includes(voiceId)) continue;
+      const agg = perVoice.get(voiceId) ?? { voiceId, clips: 0, werSum: 0, technicalFailures: 0 };
       agg.clips += r.clips;
       agg.werSum += r.meanWer * r.clips;
       agg.technicalFailures += r.technicalFailures;
-      perVoice.set(r.voiceId, agg);
+      perVoice.set(voiceId, agg);
     }
     const all = allVoices();
     const rows = [...perVoice.values()]

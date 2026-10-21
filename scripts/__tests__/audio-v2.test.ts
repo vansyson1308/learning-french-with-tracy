@@ -12,6 +12,7 @@ import { describe, expect, test } from "bun:test";
 
 import { baselineGroupOf, loadBaselineGroups } from "../lib/audio";
 import { licenseGate, registryLicenseFor } from "../lib/piper-audio";
+import { buildPlugin } from "../lib/languages";
 import { existsSync } from "fs";
 
 import { readJson, safeResolve } from "../lib/pipeline";
@@ -141,5 +142,19 @@ describe("per-language audio baselines", () => {
     expect(groups.manifestSha256).toMatch(/^[0-9a-f]{64}$/);
     expect(Object.keys(groups.files).filter((k) => k.startsWith("assets/audio/fr/")).length).toBe(164);
     expect(Object.keys(groups.files).filter((k) => k.startsWith("assets/audio/fr-reception/")).length).toBe(166);
+  });
+});
+
+describe("canary fixes (2026-10-21 runs)", () => {
+  test("a Creative Commons licence URL maps to its registry licence (vi VAIS-1000 card)", () => {
+    expect(registryLicenseFor("creativecommons.org/licenses/by/4.0")).toBe("CC-BY-4.0");
+    expect(registryLicenseFor("https://creativecommons.org/licenses/by-sa/4.0/")).toBe("CC-BY-SA-4.0");
+    expect(registryLicenseFor("creativecommons.org/publicdomain/zero/1.0")).toBe("CC0-1.0");
+  });
+  test("the speaking-rate band follows the script (Han ~1 character per syllable)", () => {
+    expect(buildPlugin("zh").charsPerSecBand.min).toBeLessThan(3.4);
+    expect(buildPlugin("ko").charsPerSecBand.min).toBeLessThan(3);
+    expect(buildPlugin("es").charsPerSecBand).toEqual({ min: 4, max: 30 });
+    expect(buildPlugin("fr").charsPerSecBand).toEqual({ min: 4, max: 30 });
   });
 });
