@@ -311,10 +311,17 @@
       "canary": {
         "reportedAt": "2026-10-21",
         "report": "content/reports/ko/audio-canary.json",
-        "voices": []
+        "voices": [
+          {
+            "voiceId": "melotts-ko",
+            "clips": 24,
+            "meanWer": 0.6065,
+            "technicalFailures": 8
+          }
+        ]
       },
-      "reason": "no eligible candidate has canary results",
-      "castNote": "no canary rows"
+      "reason": "best candidate melotts-ko has mean WER/CER 0.6065 (> 0.6) — not intelligible enough to ship",
+      "castNote": "no voice within the floor (best melotts-ko mean WER/CER 0.6065 > 0.6)"
     },
     "en": {
       "status": "selected",
