@@ -149,6 +149,17 @@ Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 
 > Selected by the audio canary ASR audit (mean WER/CER 0.1701 over 24 sampled strings, 0 technical failures). Model weights are never committed.
 
+## Kokoro-82M voice kokoro-jf_alpha
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jf_alpha.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.2532 over 24 sampled strings, 1 technical failures). Model weights are never committed.
+
 ## Kokoro-82M voice kokoro-pf_dora
 
 - **License:** Apache-2.0
@@ -192,6 +203,17 @@ Course audio for zh-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., Pallier, C., Schalchli, G., Bourgin, J., & Gimenes, M. (2026). Lexique 4: A major upgrade of the Lexique French lexical database. Behavior Research Methods. Distributed under CC BY-SA 4.0 (https://lexique.org).
 
 > Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md).
+
+## MeloTTS ZH model (melotts-zh)
+
+- **License:** MIT
+- **Source:** https://huggingface.co/myshell-ai/MeloTTS-Chinese/tree/af5d207a364ea4208c6f589c89f57f88414bdd16
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for zh-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the ZH model (MIT), pinned at repository revision af5d207a364ea4208c6f589c89f57f88414bdd16; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1119 over 24 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## New General Service List 1.2 — frequency statistics
 
@@ -324,6 +346,17 @@ Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_
 Reception dialogue audio synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-upmc-medium voice (CC BY-SA 4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/fr/reception/model-cards/. Audio clips voiced by this model are distributed under CC BY-SA 4.0 with attribution, matching the project's existing share-alike posture (see LEXICON_LICENSE.md).
 
 > Speaker B of the reception voice cast (dialogue second voice), adopted after fr_FR-mls-medium failed the canary ASR quality audit. CC BY-SA 4.0 share-alike accepted deliberately: the project already publishes its derived French dataset under CC BY-SA 4.0 (approved plan, section AC2) and ships an in-app attributions screen, so the obligations are already implemented. The reception audio derived from this voice carries the same license and attribution.
+
+## Piper voice vi_VN-vais1000-medium
+
+- **License:** CC-BY-4.0
+- **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/vi/vi_VN/vais1000/medium
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for vi (no course yet) synthesized with Piper (MIT, rhasspy/piper) using the vi_VN-vais1000-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.5646 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
 
 ## Tatoeba — sentences and translation links
 

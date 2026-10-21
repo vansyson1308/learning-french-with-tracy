@@ -462,6 +462,42 @@
         "assets/audio/en/",
         "content/audio/model-cards/en/kokoro-af_heart.card.txt"
       ]
+    },
+    {
+      "id": "melotts-zh",
+      "name": "MeloTTS ZH model (melotts-zh)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "MIT",
+      "url": "https://huggingface.co/myshell-ai/MeloTTS-Chinese/tree/af5d207a364ea4208c6f589c89f57f88414bdd16",
+      "attribution": "Course audio for zh-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the ZH model (MIT), pinned at repository revision af5d207a364ea4208c6f589c89f57f88414bdd16; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/zh/",
+        "content/audio/model-cards/zh/melotts-zh.card.txt"
+      ]
+    },
+    {
+      "id": "piper-voice-vais1000",
+      "name": "Piper voice vi_VN-vais1000-medium",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/vi/vi_VN/vais1000/medium",
+      "attribution": "Course audio for vi (no course yet) synthesized with Piper (MIT, rhasspy/piper) using the vi_VN-vais1000-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/vi/",
+        "content/audio/model-cards/vi/vi_VN-vais1000-medium.MODEL_CARD.txt"
+      ]
+    },
+    {
+      "id": "kokoro-voice-jf_alpha",
+      "name": "Kokoro-82M voice kokoro-jf_alpha",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jf_alpha.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/ja/",
+        "content/audio/model-cards/ja/kokoro-jf_alpha.card.txt"
+      ]
     }
   ]
 }

@@ -304,3 +304,35 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/assessment/es-checkpoints.json
 - compile: changed  src/content/exam/es-exam-tracks.json
 - compile: changed  src/content/packs/es-vi.json
+## 2026-10-21 — audio.yml ko canary (all) run 39651544358
+
+- compile: changed  content/reports/ko/audio-canary.json
+
+## 2026-10-21 — audio.yml zh canary (all) run 39652509384
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/zh/audio-canary.json
+- compile: changed  src/content/attributions.json
+
+## 2026-10-21 — audio.yml vi canary (all) run 39654112115
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/vi/audio-canary.json
+- compile: changed  src/content/attributions.json
+
+## 2026-10-21 — audio.yml ja canary (all) run 39654605445
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/ja/audio-canary.json
+- compile: new      content/reports/ja/audio-recon.json
+
+## 2026-10-21 — merge origin/main into phase-3/es-vi: audio canary casts for ko/zh/vi/ja (bot commits 9fe89d1, 1b94313, 830cfad, 69b7900)
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/ko/audio-canary.json
+- compile: changed  content/reports/vi/audio-canary.json
+- compile: changed  content/reports/zh/audio-canary.json
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/ja/audio-canary.json
+- compile: new      content/reports/ja/audio-recon.json

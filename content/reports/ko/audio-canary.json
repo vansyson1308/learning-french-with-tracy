@@ -13,24 +13,24 @@
   },
   "clipCount": 24,
   "uniqueAssetCount": 24,
-  "technicalFailures": 13,
-  "sentenceClipsForReview": 11,
+  "technicalFailures": 8,
+  "sentenceClipsForReview": 10,
   "voiceSummary": [
     {
       "courseId": null,
       "layer": "pack",
       "voiceId": "melotts-ko#KR",
       "clips": 12,
-      "meanWer": 0.9977,
-      "technicalFailures": 2
+      "meanWer": 1.0463,
+      "technicalFailures": 0
     },
     {
       "courseId": "ko-en",
       "layer": "pack",
       "voiceId": "melotts-ko#KR",
       "clips": 12,
-      "meanWer": 0.25,
-      "technicalFailures": 11
+      "meanWer": 0.1667,
+      "technicalFailures": 8
     }
   ],
   "review": [
@@ -48,31 +48,23 @@
       "transcript": "밥을 먹고 책을 읽었습니다.",
       "heard": "밥 을 먹 고 책 을 읽 었 습니다",
       "wer": 2.25,
-      "durationSec": 3.082
+      "durationSec": 3.135
     },
     {
       "clipId": "canary.greeting.annyeong@melotts-ko",
       "voiceId": "melotts-ko",
       "transcript": "안녕하세요! 안녕히 가세요! 감사합니다!",
-      "heard": "안녕하세요 안녕히 가요 감사",
-      "wer": 0.5,
-      "durationSec": 5.825
-    },
-    {
-      "clipId": "canary.honorific.imnida@melotts-ko",
-      "voiceId": "melotts-ko",
-      "transcript": "처음 뵙겠습니다. 잘 부탁드립니다.",
-      "heard": "처음 뵙겠 습니다 잘 부탁드립니다",
-      "wer": 0.5,
-      "durationSec": 4.807
+      "heard": "안녕 하요 안녕히 가요 감사",
+      "wer": 1,
+      "durationSec": 5.773
     },
     {
       "clipId": "canary.liaison.hangugeo@melotts-ko",
       "voiceId": "melotts-ko",
       "transcript": "한국어를 배우는 것이 재미있어요.",
-      "heard": "한국어를 배우 는 것이 재미있어요",
-      "wer": 0.5,
-      "durationSec": 3.37
+      "heard": "한국 어를 배우 는 것이 재미있요",
+      "wer": 1.25,
+      "durationSec": 3.265
     },
     {
       "clipId": "canary.long.restaurant@melotts-ko",
@@ -80,15 +72,15 @@
       "transcript": "오늘 저녁 여덟 시에 두 명 자리를 예약하고 싶은데요.",
       "heard": "오늘 저녁 8 시에 2 명 자리 를 예약 하고 싶 은데요",
       "wer": 0.8889,
-      "durationSec": 4.728
+      "durationSec": 4.702
     },
     {
       "clipId": "canary.ng.gang@melotts-ko",
       "voiceId": "melotts-ko",
       "transcript": "강에서 공을 가지고 노는 아이들이 많아요.",
-      "heard": "강에서 공 을 가지고 노 는 아이 들이 많 아요",
-      "wer": 1.3333,
-      "durationSec": 3.788
+      "heard": "강 에서 공 을 가지고 노 는 아이 들이 많 아요",
+      "wer": 1.6667,
+      "durationSec": 3.762
     },
     {
       "clipId": "canary.numbers.native@melotts-ko",
@@ -96,23 +88,23 @@
       "transcript": "사과 세 개, 삼천 원, 열두 시.",
       "heard": "사과 세계 3천원 12시",
       "wer": 0.7143,
-      "durationSec": 4.624
+      "durationSec": 4.728
     },
     {
       "clipId": "canary.question.eodi@melotts-ko",
       "voiceId": "melotts-ko",
       "transcript": "역이 어디예요? 기차는 몇 시에 출발해요?",
-      "heard": "여기 어디에요 비차는 몇 시에 출발해요",
+      "heard": "여기 어디예요기차는 몇 시에 출발해요",
       "wer": 0.5,
-      "durationSec": 4.859
+      "durationSec": 4.702
     },
     {
       "clipId": "canary.tensing.ddal@melotts-ko",
       "voiceId": "melotts-ko",
       "transcript": "달과 딸과 탈을 보세요.",
-      "heard": "달과 딸 과 타 을 보 세요",
-      "wer": 1.5,
-      "durationSec": 2.821
+      "heard": "달과 딸과 탈 을 보 세요",
+      "wer": 1,
+      "durationSec": 2.847
     },
     {
       "clipId": "canary.time.sigan@melotts-ko",
@@ -120,7 +112,7 @@
       "transcript": "칠월 이십사일 네 시 반에 회의가 있습니다.",
       "heard": "7 월 24 일 4 시 반 에 회 의가 있 습니다",
       "wer": 1.2857,
-      "durationSec": 3.736
+      "durationSec": 3.814
     }
   ],
   "clips": [
@@ -158,12 +150,12 @@
       "speaker": "KR",
       "assetKey": "23759e5984adb6160036",
       "transcript": "밥을 먹고 책을 읽었습니다.",
-      "durationSec": 3.082,
-      "bytes": 24912,
+      "durationSec": 3.135,
+      "bytes": 25330,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.87,
+      "charsPerSec": 4.79,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -183,19 +175,17 @@
       "speaker": "KR",
       "assetKey": "0b35d81fbde1ec4f44c4",
       "transcript": "안녕하세요! 안녕히 가세요! 감사합니다!",
-      "durationSec": 5.825,
-      "bytes": 46855,
+      "durationSec": 5.773,
+      "bytes": 46437,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 3.78,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.8 chars/sec)"
-      ],
+      "charsPerSec": 3.81,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "안녕하세요 안녕히 가요 감사",
-        "wer": 0.5,
+        "text": "안녕 하요 안녕히 가요 감사",
+        "wer": 1,
         "metric": "wer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -216,13 +206,11 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.95,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (4.0 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "처음 뵙겠 습니다 잘 부탁드립니다",
-        "wer": 0.5,
+        "text": "처음 뵙겠습니다 잘 부탁드립니다",
+        "wer": 0,
         "metric": "wer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -237,17 +225,17 @@
       "speaker": "KR",
       "assetKey": "203ed5d5fc0769814019",
       "transcript": "한국어를 배우는 것이 재미있어요.",
-      "durationSec": 3.37,
-      "bytes": 27211,
+      "durationSec": 3.265,
+      "bytes": 26375,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.34,
+      "charsPerSec": 5.51,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "한국어를 배우 는 것이 재미있어요",
-        "wer": 0.5,
+        "text": "한국 어를 배우 는 것이 재미있요",
+        "wer": 1.25,
         "metric": "wer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -262,12 +250,12 @@
       "speaker": "KR",
       "assetKey": "429011291f731019b5e5",
       "transcript": "오늘 저녁 여덟 시에 두 명 자리를 예약하고 싶은데요.",
-      "durationSec": 4.728,
-      "bytes": 38078,
+      "durationSec": 4.702,
+      "bytes": 37869,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 6.34,
+      "charsPerSec": 6.38,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -287,17 +275,17 @@
       "speaker": "KR",
       "assetKey": "30d511ead280d06f1e2f",
       "transcript": "강에서 공을 가지고 노는 아이들이 많아요.",
-      "durationSec": 3.788,
-      "bytes": 30555,
+      "durationSec": 3.762,
+      "bytes": 30346,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 6.07,
+      "charsPerSec": 6.11,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "강에서 공 을 가지고 노 는 아이 들이 많 아요",
-        "wer": 1.3333,
+        "text": "강 에서 공 을 가지고 노 는 아이 들이 많 아요",
+        "wer": 1.6667,
         "metric": "wer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -312,12 +300,12 @@
       "speaker": "KR",
       "assetKey": "671d0632d72cb1c9082c",
       "transcript": "사과 세 개, 삼천 원, 열두 시.",
-      "durationSec": 4.624,
-      "bytes": 37242,
+      "durationSec": 4.728,
+      "bytes": 38078,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.11,
+      "charsPerSec": 4.02,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -337,16 +325,16 @@
       "speaker": "KR",
       "assetKey": "0c901b7112a38fc1d637",
       "transcript": "역이 어디예요? 기차는 몇 시에 출발해요?",
-      "durationSec": 4.859,
-      "bytes": 39123,
+      "durationSec": 4.702,
+      "bytes": 37869,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.73,
+      "charsPerSec": 4.89,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "여기 어디에요 비차는 몇 시에 출발해요",
+        "text": "여기 어디예요기차는 몇 시에 출발해요",
         "wer": 0.5,
         "metric": "wer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -362,17 +350,17 @@
       "speaker": "KR",
       "assetKey": "b6013028a4262936fa0d",
       "transcript": "달과 딸과 탈을 보세요.",
-      "durationSec": 2.821,
-      "bytes": 22822,
+      "durationSec": 2.847,
+      "bytes": 23031,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.61,
+      "charsPerSec": 4.57,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "달과 딸 과 타 을 보 세요",
-        "wer": 1.5,
+        "text": "달과 딸과 탈 을 보 세요",
+        "wer": 1,
         "metric": "wer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -387,12 +375,12 @@
       "speaker": "KR",
       "assetKey": "be7466f6c60c99069ac3",
       "transcript": "칠월 이십사일 네 시 반에 회의가 있습니다.",
-      "durationSec": 3.736,
-      "bytes": 30137,
+      "durationSec": 3.814,
+      "bytes": 30764,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 6.42,
+      "charsPerSec": 6.29,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -437,16 +425,14 @@
       "speaker": "KR",
       "assetKey": "bcfba11f72267fa1b32b",
       "transcript": "감사합니다",
-      "durationSec": 1.959,
-      "bytes": 15926,
+      "durationSec": 1.907,
+      "bytes": 15508,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 2.55,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.6 chars/sec)"
-      ],
+      "charsPerSec": 2.62,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "감사합니다",
         "wer": 0,
@@ -475,8 +461,8 @@
         "duration implausible for transcript (1.4 chars/sec)"
       ],
       "asr": {
-        "text": "고비",
-        "wer": 1,
+        "text": "고기",
+        "wer": 0,
         "metric": "wer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -518,15 +504,15 @@
       "speaker": "KR",
       "assetKey": "de023dc0c3d852258f65",
       "transcript": "먹다",
-      "durationSec": 1.515,
-      "bytes": 12373,
+      "durationSec": 1.437,
+      "bytes": 11746,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.32,
+      "charsPerSec": 1.39,
       "technical": "fail",
       "technicalIssues": [
-        "duration implausible for transcript (1.3 chars/sec)"
+        "duration implausible for transcript (1.4 chars/sec)"
       ],
       "asr": {
         "text": "먹다",
@@ -599,12 +585,12 @@
       "speaker": "KR",
       "assetKey": "d5fcd0a6277e56069aaf",
       "transcript": "안녕",
-      "durationSec": 1.489,
-      "bytes": 12164,
+      "durationSec": 1.567,
+      "bytes": 12791,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.34,
+      "charsPerSec": 1.28,
       "technical": "fail",
       "technicalIssues": [
         "duration implausible for transcript (1.3 chars/sec)"
@@ -653,12 +639,12 @@
       "speaker": "KR",
       "assetKey": "ba088ff7cca4eb520fc1",
       "transcript": "저는 과일을 좋아해요.",
-      "durationSec": 2.638,
-      "bytes": 21359,
+      "durationSec": 2.664,
+      "bytes": 21568,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.55,
+      "charsPerSec": 4.5,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -678,16 +664,14 @@
       "speaker": "KR",
       "assetKey": "1ef894e077fde321cccd",
       "transcript": "저는 여자예요.",
-      "durationSec": 2.22,
-      "bytes": 18016,
+      "durationSec": 2.194,
+      "bytes": 17807,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 3.6,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.6 chars/sec)"
-      ],
+      "charsPerSec": 3.65,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "저는 여자예요",
         "wer": 0,
@@ -705,15 +689,15 @@
       "speaker": "KR",
       "assetKey": "aea5bcb75c0377f2bf6e",
       "transcript": "주스",
-      "durationSec": 1.463,
-      "bytes": 11955,
+      "durationSec": 1.489,
+      "bytes": 12164,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.37,
+      "charsPerSec": 1.34,
       "technical": "fail",
       "technicalIssues": [
-        "duration implausible for transcript (1.4 chars/sec)"
+        "duration implausible for transcript (1.3 chars/sec)"
       ],
       "asr": {
         "text": "주스",
@@ -738,10 +722,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.91,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.9 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "코피리",
         "wer": 1,
