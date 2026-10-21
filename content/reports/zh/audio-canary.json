@@ -13,8 +13,8 @@
   },
   "clipCount": 72,
   "uniqueAssetCount": 72,
-  "technicalFailures": 53,
-  "sentenceClipsForReview": 12,
+  "technicalFailures": 10,
+  "sentenceClipsForReview": 11,
   "voiceSummary": [
     {
       "courseId": null,
@@ -22,7 +22,7 @@
       "voiceId": "kokoro-zf_xiaobei",
       "clips": 12,
       "meanWer": 0.022,
-      "technicalFailures": 12
+      "technicalFailures": 0
     },
     {
       "courseId": null,
@@ -30,14 +30,14 @@
       "voiceId": "kokoro-zm_yunjian",
       "clips": 12,
       "meanWer": 0.0451,
-      "technicalFailures": 9
+      "technicalFailures": 0
     },
     {
       "courseId": null,
       "layer": "pack",
       "voiceId": "melotts-zh#ZH",
       "clips": 12,
-      "meanWer": 0.0485,
+      "meanWer": 0.0572,
       "technicalFailures": 0
     },
     {
@@ -46,15 +46,15 @@
       "voiceId": "melotts-zh#ZH",
       "clips": 12,
       "meanWer": 0.1667,
-      "technicalFailures": 8
+      "technicalFailures": 0
     },
     {
       "courseId": "zh-en",
       "layer": "pack",
       "voiceId": "kokoro-zm_yunjian",
       "clips": 12,
-      "meanWer": 0.3333,
-      "technicalFailures": 12
+      "meanWer": 0.25,
+      "technicalFailures": 4
     },
     {
       "courseId": "zh-en",
@@ -62,7 +62,7 @@
       "voiceId": "kokoro-zf_xiaobei",
       "clips": 12,
       "meanWer": 0.4264,
-      "technicalFailures": 12
+      "technicalFailures": 6
     }
   ],
   "review": [
@@ -102,7 +102,7 @@
       "clipId": "zh-en:大@melotts-zh",
       "voiceId": "melotts-zh",
       "transcript": "大",
-      "heard": "嗯",
+      "heard": "哎",
       "wer": 1,
       "durationSec": 0.758
     },
@@ -110,25 +110,17 @@
       "clipId": "zh-en:小@kokoro-zf_xiaobei",
       "voiceId": "kokoro-zf_xiaobei",
       "transcript": "小",
-      "heard": "需",
+      "heard": "像",
       "wer": 1,
       "durationSec": 0.94
-    },
-    {
-      "clipId": "zh-en:小@kokoro-zm_yunjian",
-      "voiceId": "kokoro-zm_yunjian",
-      "transcript": "小",
-      "heard": "小女",
-      "wer": 1,
-      "durationSec": 0.888
     },
     {
       "clipId": "zh-en:小@melotts-zh",
       "voiceId": "melotts-zh",
       "transcript": "小",
-      "heard": "叫",
+      "heard": "有",
       "wer": 1,
-      "durationSec": 0.81
+      "durationSec": 0.731
     },
     {
       "clipId": "zh-en:我喜欢喝果汁。@kokoro-zf_xiaobei",
@@ -150,7 +142,7 @@
       "clipId": "zh-en:男孩@kokoro-zm_yunjian",
       "voiceId": "kokoro-zm_yunjian",
       "transcript": "男孩",
-      "heard": "南害",
+      "heard": "南海",
       "wer": 1,
       "durationSec": 1.698
     },
@@ -179,10 +171,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.62,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.6 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我们去那儿玩一会儿吃一点儿东西",
         "wer": 0,
@@ -256,10 +246,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.41,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.4 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "你好早上好谢谢再见",
         "wer": 0,
@@ -283,10 +271,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.71,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.7 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "你好早上好谢谢再见",
         "wer": 0,
@@ -304,12 +290,12 @@
       "speaker": "ZH",
       "assetKey": "c52bf8c9ceb8030fb615",
       "transcript": "你好！早上好！谢谢，再见！",
-      "durationSec": 2.664,
-      "bytes": 21568,
+      "durationSec": 2.612,
+      "bytes": 21150,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.88,
+      "charsPerSec": 4.98,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -335,10 +321,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.74,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.7 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我想预定今天晚上八点两个人的桌子可以吗",
         "wer": 0.0526,
@@ -381,12 +365,12 @@
       "speaker": "ZH",
       "assetKey": "5fc73d8dc10a404b3d93",
       "transcript": "我想预订今天晚上八点两个人的桌子，可以吗？",
-      "durationSec": 4.101,
-      "bytes": 33062,
+      "durationSec": 4.075,
+      "bytes": 32853,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.12,
+      "charsPerSec": 5.15,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -412,10 +396,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.24,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.2 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "一个人两本书三杯茶",
         "wer": 0,
@@ -439,10 +421,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.7,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.7 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "一个人两本书三杯茶",
         "wer": 0,
@@ -460,12 +440,12 @@
       "speaker": "ZH",
       "assetKey": "3eb41d33e220fce5867a",
       "transcript": "一个人、两本书、三杯茶。",
-      "durationSec": 2.508,
-      "bytes": 20315,
+      "durationSec": 2.377,
+      "bytes": 19270,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.79,
+      "charsPerSec": 5.05,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -491,10 +471,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.5,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.5 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我的朋友来了他们吃了饭",
         "wer": 0,
@@ -518,10 +496,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.98,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (4.0 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我的朋友来了他们吃了饭",
         "wer": 0,
@@ -539,17 +515,17 @@
       "speaker": "ZH",
       "assetKey": "33c131f01f30bdbdb95b",
       "transcript": "我的朋友来了，他们吃了饭。",
-      "durationSec": 2.403,
-      "bytes": 19479,
+      "durationSec": 2.299,
+      "bytes": 18643,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.41,
+      "charsPerSec": 5.66,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "我的朋友来了他们吃着饭",
-        "wer": 0.0909,
+        "text": "我的朋友来了他们吃了饭",
+        "wer": 0,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -570,10 +546,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.46,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.5 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "七十三块钱一九九九年十五分钟",
         "wer": 0,
@@ -616,17 +590,17 @@
       "speaker": "ZH",
       "assetKey": "837f76af07ae6b31b212",
       "transcript": "七十三块钱，一九九九年，十五分钟。",
-      "durationSec": 3.84,
-      "bytes": 30973,
+      "durationSec": 3.788,
+      "bytes": 30555,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.43,
+      "charsPerSec": 4.49,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "七十三块钱一九局九年十五分钟",
-        "wer": 0.0714,
+        "text": "七十三块钱一九九九年十五分钟",
+        "wer": 0,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -647,10 +621,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.28,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.3 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "你好吗火车站在哪儿呢",
         "wer": 0,
@@ -674,10 +646,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.68,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.7 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "你好吗火车站在哪儿呢",
         "wer": 0,
@@ -695,17 +665,17 @@
       "speaker": "ZH",
       "assetKey": "5e8cd2e58d56f69b7c51",
       "transcript": "你好吗？火车站在哪儿呢？",
-      "durationSec": 2.22,
-      "bytes": 18016,
+      "durationSec": 2.273,
+      "bytes": 18434,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.4,
+      "charsPerSec": 5.28,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "你好吗火车站在哪呢",
-        "wer": 0.1,
+        "text": "你好吗火车站在哪儿呢",
+        "wer": 0,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -726,10 +696,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.88,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.9 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "这是四十四指石狮子",
         "wer": 0.1111,
@@ -753,10 +721,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.3,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.3 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "就是四十四指石狮子",
         "wer": 0.2222,
@@ -774,12 +740,12 @@
       "speaker": "ZH",
       "assetKey": "c5953c153e2ee322b4f6",
       "transcript": "这是四十四只石狮子。",
-      "durationSec": 2.194,
-      "bytes": 17807,
+      "durationSec": 2.273,
+      "bytes": 18434,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.56,
+      "charsPerSec": 4.4,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -805,10 +771,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.23,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.2 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "现在八点半我们九点一刻出发",
         "wer": 0,
@@ -832,10 +796,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.75,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.8 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "现在八点半我们九点一刻出发",
         "wer": 0,
@@ -884,10 +846,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.53,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.5 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "妈妈骑马马问妈妈骂马",
         "wer": 0.1,
@@ -911,10 +871,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 3.86,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.9 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "妈妈骑马马问妈妈骂马",
         "wer": 0.1,
@@ -932,17 +890,17 @@
       "speaker": "ZH",
       "assetKey": "233095aa7258b7807f35",
       "transcript": "妈妈骑马，马慢，妈妈骂马。",
-      "durationSec": 2.743,
-      "bytes": 22195,
+      "durationSec": 2.795,
+      "bytes": 22613,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.74,
+      "charsPerSec": 4.65,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "妈妈骑马妈慢妈妈妈马",
-        "wer": 0.2,
+        "text": "妈妈骑马妈妈妈妈妈妈",
+        "wer": 0.4,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -963,10 +921,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.73,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.7 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我想买很好的雨伞",
         "wer": 0,
@@ -990,10 +946,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.97,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.0 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我想买很好的雨伞",
         "wer": 0,
@@ -1011,12 +965,12 @@
       "speaker": "ZH",
       "assetKey": "4787dd3e08f06b6f6e69",
       "transcript": "我想买很好的雨伞。",
-      "durationSec": 1.829,
-      "bytes": 14881,
+      "durationSec": 1.855,
+      "bytes": 15090,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.92,
+      "charsPerSec": 4.85,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1042,10 +996,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.39,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.4 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "绿色的路很长",
         "wer": 0,
@@ -1069,10 +1021,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.65,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.7 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "绿色的鹿很长",
         "wer": 0.1667,
@@ -1099,8 +1049,8 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "绿色的路很长",
-        "wer": 0,
+        "text": "绿色的路痕长",
+        "wer": 0.1667,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -1121,10 +1071,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.25,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.2 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "不客气",
         "wer": 0,
@@ -1148,10 +1096,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.53,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.5 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "不客气",
         "wer": 0,
@@ -1175,10 +1121,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.5,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.5 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "不客气",
         "wer": 0,
@@ -1229,10 +1173,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.22,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.2 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "供院",
         "wer": 1,
@@ -1250,16 +1192,14 @@
       "speaker": "ZH",
       "assetKey": "526f7e535fc2345f36d7",
       "transcript": "公园",
-      "durationSec": 1.097,
-      "bytes": 9030,
+      "durationSec": 1.071,
+      "bytes": 8821,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.82,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.8 chars/sec)"
-      ],
+      "charsPerSec": 1.87,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "公园",
         "wer": 0,
@@ -1310,10 +1250,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.01,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.0 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "可爱",
         "wer": 0,
@@ -1331,16 +1269,14 @@
       "speaker": "ZH",
       "assetKey": "2f3b487c4c11e87c4df4",
       "transcript": "可爱",
-      "durationSec": 1.071,
-      "bytes": 8821,
+      "durationSec": 1.123,
+      "bytes": 9239,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.87,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.9 chars/sec)"
-      ],
+      "charsPerSec": 1.78,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "可爱",
         "wer": 0,
@@ -1418,12 +1354,10 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.32,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.3 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "嗯",
+        "text": "哎",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1450,7 +1384,7 @@
         "duration implausible for transcript (1.1 chars/sec)"
       ],
       "asr": {
-        "text": "需",
+        "text": "像",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1477,8 +1411,8 @@
         "duration implausible for transcript (1.1 chars/sec)"
       ],
       "asr": {
-        "text": "小女",
-        "wer": 1,
+        "text": "小",
+        "wer": 0,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -1493,18 +1427,16 @@
       "speaker": "ZH",
       "assetKey": "9895fa38ab026d92286b",
       "transcript": "小",
-      "durationSec": 0.81,
-      "bytes": 6731,
+      "durationSec": 0.731,
+      "bytes": 6104,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.23,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.2 chars/sec)"
-      ],
+      "charsPerSec": 1.37,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "叫",
+        "text": "有",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1526,10 +1458,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.35,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.4 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我喜欢何国志",
         "wer": 0.5,
@@ -1553,10 +1483,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.55,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.6 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我喜欢喝果汁",
         "wer": 0,
@@ -1574,12 +1502,12 @@
       "speaker": "ZH",
       "assetKey": "89ca1fcd083f53bdc151",
       "transcript": "我喜欢喝果汁。",
-      "durationSec": 1.593,
-      "bytes": 13000,
+      "durationSec": 1.567,
+      "bytes": 12791,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.39,
+      "charsPerSec": 4.47,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1605,10 +1533,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.95,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.0 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我室女孩",
         "wer": 0.25,
@@ -1632,10 +1558,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.15,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.2 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我是女孩",
         "wer": 0,
@@ -1653,16 +1577,14 @@
       "speaker": "ZH",
       "assetKey": "0472db86ca92e1f1d248",
       "transcript": "我是女孩。",
-      "durationSec": 1.332,
-      "bytes": 10910,
+      "durationSec": 1.358,
+      "bytes": 11119,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 3.75,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (3.8 chars/sec)"
-      ],
+      "charsPerSec": 3.68,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "我是女孩",
         "wer": 0,
@@ -1686,10 +1608,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.44,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.4 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "万安明天见",
         "wer": 0.2,
@@ -1713,10 +1633,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.79,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.8 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "晚安明天见",
         "wer": 0,
@@ -1734,12 +1652,12 @@
       "speaker": "ZH",
       "assetKey": "b14c08cefa4d1a460117",
       "transcript": "晚安，明天见。",
-      "durationSec": 1.515,
-      "bytes": 12373,
+      "durationSec": 1.567,
+      "bytes": 12791,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.62,
+      "charsPerSec": 4.47,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1765,10 +1683,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.35,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.4 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "货车站在哪里",
         "wer": 0.1667,
@@ -1792,10 +1708,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.58,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.6 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "火车站在哪里",
         "wer": 0,
@@ -1876,7 +1790,7 @@
         "duration implausible for transcript (1.2 chars/sec)"
       ],
       "asr": {
-        "text": "南害",
+        "text": "南海",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1898,10 +1812,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.96,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.0 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "男孩",
         "wer": 0,
@@ -1925,10 +1837,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.37,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.4 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "请给我一杯水",
         "wer": 0,
@@ -1952,10 +1862,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 2.6,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (2.6 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "请给我一杯水",
         "wer": 0,
@@ -1973,12 +1881,12 @@
       "speaker": "ZH",
       "assetKey": "be3c1646f50ecd922bdf",
       "transcript": "请给我一杯水。",
-      "durationSec": 1.62,
-      "bytes": 13209,
+      "durationSec": 1.593,
+      "bytes": 13000,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.32,
+      "charsPerSec": 4.39,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -2052,16 +1960,14 @@
       "speaker": "ZH",
       "assetKey": "fec62f54e2553fb9843a",
       "transcript": "面条",
-      "durationSec": 1.045,
-      "bytes": 8612,
+      "durationSec": 1.123,
+      "bytes": 9239,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.91,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.9 chars/sec)"
-      ],
+      "charsPerSec": 1.78,
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "面条",
         "wer": 0,

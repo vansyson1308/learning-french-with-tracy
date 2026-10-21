@@ -193,6 +193,17 @@ Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., P
 
 > Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md).
 
+## MeloTTS ZH model (melotts-zh)
+
+- **License:** MIT
+- **Source:** https://huggingface.co/myshell-ai/MeloTTS-Chinese/tree/af5d207a364ea4208c6f589c89f57f88414bdd16
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for zh-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the ZH model (MIT), pinned at repository revision af5d207a364ea4208c6f589c89f57f88414bdd16; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1119 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+
 ## New General Service List 1.2 — frequency statistics
 
 - **License:** CC-BY-SA-4.0

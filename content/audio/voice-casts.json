@@ -273,7 +273,7 @@
         }
       ],
       "cast": {
-        "A": "kokoro-zm_yunjian",
+        "A": "melotts-zh",
         "B": null
       },
       "canary": {
@@ -281,20 +281,26 @@
         "report": "content/reports/zh/audio-canary.json",
         "voices": [
           {
+            "voiceId": "melotts-zh",
+            "clips": 24,
+            "meanWer": 0.1119,
+            "technicalFailures": 0
+          },
+          {
             "voiceId": "kokoro-zm_yunjian",
             "clips": 24,
-            "meanWer": 0.1892,
-            "technicalFailures": 21
+            "meanWer": 0.1475,
+            "technicalFailures": 4
           },
           {
             "voiceId": "kokoro-zf_xiaobei",
             "clips": 24,
             "meanWer": 0.2242,
-            "technicalFailures": 24
+            "technicalFailures": 6
           }
         ]
       },
-      "castNote": "A=kokoro-zm_yunjian (Kokoro voice pack zm_yunjian); no second voice: no other candidate is a verified different speaker within the floor; skipped kokoro-zf_xiaobei (24 technical failure(s))"
+      "castNote": "A=melotts-zh (MeloTTS melotts-zh speaker ZH); no second voice: no other candidate is a verified different speaker within the floor; skipped kokoro-zm_yunjian (4 technical failure(s)), kokoro-zf_xiaobei (6 technical failure(s))"
     },
     "ko": {
       "status": "no-clean-voice",

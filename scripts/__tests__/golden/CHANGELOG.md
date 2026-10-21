@@ -235,3 +235,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 ## 2026-10-21 — audio.yml ko canary (all) run 39651544358
 
 - compile: changed  content/reports/ko/audio-canary.json
+
+## 2026-10-21 — audio.yml zh canary (all) run 39652509384
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/zh/audio-canary.json
+- compile: changed  src/content/attributions.json
