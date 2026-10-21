@@ -77,11 +77,16 @@
       }
     },
     "zh-en": {
-      "policy": "device-tts",
+      "policy": "generated",
       "language": "zh",
-      "reason": "The only Mandarin Piper voice, zh_CN-huayan-medium, states 'License: Unknown' in its MODEL_CARD (excluded by the gate on 2026-09-02, run 33646858305). The upstream recordings have no traceable license, so the course speaks through the device's own Chinese text-to-speech voice.",
+      "voiceId": "kokoro-zm_yunjian",
+      "candidates": [
+        "melotts-zh",
+        "kokoro-zf_xiaobei",
+        "kokoro-zm_yunjian"
+      ],
       "voiceCast": {
-        "A": null,
+        "A": "kokoro-zm_yunjian",
         "B": null
       }
     },
@@ -742,24 +747,24 @@
       "files": {
         "checkpoint": {
           "path": "checkpoint.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "a74e9eadffff065c75eb6dfa040efa72cad23e72cfea70d39190bc174fb97093",
+          "bytes": 207770124
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "d58b5acdab89ad2bbd65325affab309ae3cb964834b02f9a60587474e81c8bb9",
+          "bytes": 2296
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "40b5b860bacbb3947cbef838719e660d2fe4961eba5b484290b4bedc0253e208",
+          "bytes": 4445
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT"
     },
     {
       "id": "kokoro-zf_xiaobei",
@@ -770,29 +775,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/zf_xiaobei.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "9b76be63dab4f4f96962030acc0126a9aee9728608fbbe115e2b58a2bd504df6",
+          "bytes": 523435
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-zm_yunjian",
@@ -803,29 +808,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/zm_yunjian.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "76cbf8bad35901d011d9628a2fdceb7b4f1f127e7a3269cb393b3941eb7fc417",
+          "bytes": 523435
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "melotts-ko",

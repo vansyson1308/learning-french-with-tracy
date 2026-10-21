@@ -407,6 +407,18 @@
         "assets/audio/pt/",
         "content/audio/model-cards/pt/kokoro-pf_dora.card.txt"
       ]
+    },
+    {
+      "id": "kokoro-voice-zm_yunjian",
+      "name": "Kokoro-82M voice kokoro-zm_yunjian",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for zh-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/zm_yunjian.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/zh/",
+        "content/audio/model-cards/zh/kokoro-zm_yunjian.card.txt"
+      ]
     }
   ]
 }

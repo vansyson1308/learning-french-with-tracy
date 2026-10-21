@@ -257,7 +257,7 @@
       "reason": "no Piper Japanese voice exists; Kokoro ja (Apache-2.0, grade C+) and MeloTTS-JP (MIT) are compared by the SenseVoice/Whisper canary"
     },
     "zh": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "melotts-zh",
@@ -273,11 +273,28 @@
         }
       ],
       "cast": {
-        "A": null,
+        "A": "kokoro-zm_yunjian",
         "B": null
       },
-      "canary": null,
-      "reason": "Piper huayan has an unknown licence (excluded); MeloTTS-ZH (MIT) and Kokoro zh (Apache-2.0, grade D) are compared"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/zh/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-zm_yunjian",
+            "clips": 24,
+            "meanWer": 0.1892,
+            "technicalFailures": 21
+          },
+          {
+            "voiceId": "kokoro-zf_xiaobei",
+            "clips": 24,
+            "meanWer": 0.2242,
+            "technicalFailures": 24
+          }
+        ]
+      },
+      "castNote": "A=kokoro-zm_yunjian (Kokoro voice pack zm_yunjian); no second voice: no other candidate is a verified different speaker within the floor; skipped kokoro-zf_xiaobei (24 technical failure(s))"
     },
     "ko": {
       "status": "pending-canary",
