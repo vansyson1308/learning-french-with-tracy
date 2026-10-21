@@ -50,6 +50,8 @@ export type StepId = (typeof STEP_IDS)[number];
 export const draftUnitSchema = (lang: string) =>
   z.strictObject({
     sectionId: z.string().regex(new RegExp(`^${lang}-[a-z]{2,3}:section-[1-6]$`)),
+    /** Learner-facing section title (native language); the first unit of a section that carries one sets it. */
+    sectionTitle: z.string().min(1).optional(),
     id: z.string().min(1),
     title: z.string().min(1),
     description: z.string().max(120),

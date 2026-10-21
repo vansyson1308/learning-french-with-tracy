@@ -74,16 +74,35 @@ export function applyRecords(step: StepId, lang: string, native: string, courseI
       break;
     }
     case "units": {
-      const pack = loadDoc(target, { ...(loadDoc(`content/courses/${courseId}.json`, { id: courseId, version: 1, targetCode: lang, nativeCode: native, sections: [] }) as Doc) }) as Doc;
+      // A new course pack takes its language names and flag from a sibling pack of the same target / native language.
+      const sibling = (code: string, field: "targetCode" | "nativeCode") =>
+        loadPacks().find((p) => (p.pack as unknown as Doc)[field] === code && p.pack.testOnly !== true)?.pack as unknown as Doc | undefined;
+      const fresh: Doc = {
+        id: courseId,
+        version: 1,
+        targetLanguage: (sibling(lang, "targetCode")?.targetLanguage as string | undefined) ?? lang,
+        targetCode: lang,
+        nativeLanguage: (sibling(native, "nativeCode")?.nativeLanguage as string | undefined) ?? native,
+        nativeCode: native,
+        flag: (sibling(lang, "targetCode")?.flag as string | undefined) ?? "🏳️",
+        sections: [],
+      };
+      const pack = loadDoc(target, { ...(loadDoc(`content/courses/${courseId}.json`, fresh) as Doc) }) as Doc;
+      for (const k of ["targetLanguage", "nativeLanguage", "flag"]) if (pack[k] === undefined) pack[k] = fresh[k];
+      const ordered: Doc = { id: pack.id, version: pack.version, targetLanguage: pack.targetLanguage, targetCode: pack.targetCode, nativeLanguage: pack.nativeLanguage, nativeCode: pack.nativeCode, flag: pack.flag };
+      for (const [k, v] of Object.entries(pack)) if (!(k in ordered)) ordered[k] = v;
+      for (const k of Object.keys(pack)) delete pack[k];
+      Object.assign(pack, ordered);
       const sections = (pack.sections as { id: string; title: string; units: Doc[] }[]) ?? [];
-      for (const rec of records as { sectionId: string; id: string; lessons: { id: string; title: string; objectives: string[] }[] }[]) {
+      for (const rec of records as { sectionId: string; sectionTitle?: string; id: string; lessons: { id: string; title: string; objectives: string[] }[] }[]) {
         let section = sections.find((s) => s.id === rec.sectionId);
         if (!section) {
-          section = { id: rec.sectionId, title: rec.sectionId.split(":")[1], units: [] };
+          section = { id: rec.sectionId, title: rec.sectionTitle ?? rec.sectionId.split(":")[1], units: [] };
           sections.push(section);
-        }
+        } else if (rec.sectionTitle) section.title = rec.sectionTitle;
         const unit: Doc = { ...rec, lessons: rec.lessons.map((l) => ({ id: l.id, title: l.title, objectives: l.objectives, exercises: [] })) };
         delete unit.sectionId;
+        delete unit.sectionTitle;
         const i = section.units.findIndex((u) => u.id === rec.id);
         if (i >= 0) {
           // keep already-authored exercises of existing lesson ids
