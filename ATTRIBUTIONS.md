@@ -83,6 +83,28 @@ Vietnamese glosses and example translations derived from the Vietnamese Wiktiona
 
 > P3a: the primary source of `glosses.vi` / `translations.vi`. Entries that only redirect are skipped; a lexeme without a Vietnamese sense carries the draft marker TODO:vi until the authoring toolkit (P3c) fills it — the marker blocks compile for any -vi course.
 
+## Kokoro-82M voice kokoro-af_heart
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/af_heart.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1331 over 12 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Kokoro-82M voice kokoro-am_michael
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/am_michael.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1238 over 12 sampled strings, 0 technical failures). Model weights are never committed.
+
 ## Kokoro-82M voice kokoro-ef_dora
 
 - **License:** Apache-2.0

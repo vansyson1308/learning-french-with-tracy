@@ -419,6 +419,30 @@
         "assets/audio/zh/",
         "content/audio/model-cards/zh/kokoro-zm_yunjian.card.txt"
       ]
+    },
+    {
+      "id": "kokoro-voice-am_michael",
+      "name": "Kokoro-82M voice kokoro-am_michael",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/am_michael.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/en/",
+        "content/audio/model-cards/en/kokoro-am_michael.card.txt"
+      ]
+    },
+    {
+      "id": "kokoro-voice-af_heart",
+      "name": "Kokoro-82M voice kokoro-af_heart",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/af_heart.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/en/",
+        "content/audio/model-cards/en/kokoro-af_heart.card.txt"
+      ]
     }
   ]
 }

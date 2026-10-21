@@ -312,7 +312,7 @@
       "reason": "MeloTTS-KR (MIT) is the only MIT/Apache Korean voice; a B voice does not exist under the gate (Supertonic 3 is OpenRAIL-M — denied for shipped audio)"
     },
     "en": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "kokoro-af_heart",
@@ -328,11 +328,28 @@
         }
       ],
       "cast": {
-        "A": null,
-        "B": null
+        "A": "kokoro-am_michael",
+        "B": "kokoro-af_heart"
       },
-      "canary": null,
-      "reason": "for the en-vi course (P4f); Piper lessac (Blizzard licence URL), amy/alan ('See URL') and ryan (CC BY-NC-SA) fail the gate; libritts_r (CC BY 4.0, 904 speakers) is a possible later candidate"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/en/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-am_michael",
+            "clips": 12,
+            "meanWer": 0.1238,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "kokoro-af_heart",
+            "clips": 12,
+            "meanWer": 0.1331,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "castNote": "A=kokoro-am_michael (Kokoro voice pack am_michael); B=kokoro-af_heart: different speaker (Kokoro voice pack af_heart), other gender (female vs male), mean WER/CER 0.1331 ≤ 0.6"
     },
     "vi": {
       "status": "pending-canary",
