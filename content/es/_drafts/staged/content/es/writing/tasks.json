@@ -1,0 +1,2666 @@
+{
+  "version": 1,
+  "language": "es",
+  "tasks": [
+    {
+      "id": "es.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Lucía. Hãy viết một câu tiếng Tây Ban Nha ngắn nói tên của bạn.",
+        "en": "You are Lucía. Write one short Spanish sentence saying your name."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên của bạn",
+            "en": "Your name"
+          },
+          "value": "Lucía"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên của bạn",
+              "en": "your name"
+            },
+            "variants": [
+              "me llamo Lucía",
+              "soy Lucía",
+              "mi nombre es Lucía"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "llamo",
+          "soy",
+          "es"
+        ]
+      },
+      "modelAnswers": [
+        "Me llamo Lucía."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:llamarse"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Vẫn là Lucía: hãy viết một câu nói tuổi của bạn.",
+        "en": "Still Lucía: write a sentence saying your age."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tuổi của bạn",
+            "en": "Your age"
+          },
+          "value": "22"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi của bạn",
+              "en": "your age"
+            },
+            "variants": [
+              "tengo veintidós años",
+              "tengo 22 años"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "tengo"
+        ]
+      },
+      "modelAnswers": [
+        "Tengo 22 años."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:ano",
+        "es:w:tener"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.o_city",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Vẫn là Lucía: hãy viết một câu nói bạn sống ở đâu.",
+        "en": "Still Lucía: write a sentence saying where you live."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Thành phố của bạn",
+            "en": "Your city"
+          },
+          "value": "Madrid"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố của bạn",
+              "en": "your city"
+            },
+            "variants": [
+              "vivo en Madrid"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "vivo"
+        ]
+      },
+      "modelAnswers": [
+        "Vivo en Madrid."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir",
+        "es:w:ciudad"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.o_profile",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Ghép lại: hãy tự giới thiệu với tư cách Lucía — tên, tuổi và thành phố, bằng câu hoàn chỉnh.",
+        "en": "Put it together: introduce yourself as Lucía — name, age and city, in full sentences."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Lucía"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "22"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Madrid"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "me llamo Lucía",
+              "soy Lucía",
+              "mi nombre es Lucía"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "tengo veintidós años",
+              "tengo 22 años"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "vivo en Madrid"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "llamo",
+          "soy",
+          "tengo",
+          "vivo"
+        ]
+      },
+      "modelAnswers": [
+        "Me llamo Lucía, tengo 22 años y vivo en Madrid."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.o_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": {
+        "vi": "Giờ là thật: hãy tự giới thiệu CHÍNH BẠN bằng tiếng Tây Ban Nha — tên bạn, và tuổi hoặc thành phố của bạn. Viết tự do; đây là luyện tập, không phải bài kiểm tra.",
+        "en": "For real now: introduce YOURSELF in Spanish — your name, and your age or city. Free practice, not a test."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about_you",
+            "description": {
+              "vi": "điều gì đó về bạn",
+              "en": "something about you"
+            },
+            "variants": [
+              "me llamo",
+              "soy",
+              "tengo",
+              "vivo"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Me llamo Minh, tengo treinta años y vivo en Hanói."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.p_like",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu tiếng Tây Ban Nha nói rằng bạn thích cà phê.",
+        "en": "Write a Spanish sentence saying that you like coffee."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích cà phê",
+              "en": "you like coffee"
+            },
+            "variants": [
+              "me gusta el café",
+              "me encanta el café"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 10,
+        "requireSentenceVerbs": [
+          "gusta",
+          "encanta"
+        ]
+      },
+      "modelAnswers": [
+        "Me gusta el café."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:gustar",
+        "es:w:cafe"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.p_like_two",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu nói rằng bạn thích trà và bánh mì.",
+        "en": "Write a sentence saying you like tea and bread."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích",
+              "en": "you like"
+            },
+            "variants": [
+              "me gusta",
+              "me gustan",
+              "me encanta",
+              "me encantan"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "tea",
+            "description": {
+              "vi": "trà",
+              "en": "tea"
+            },
+            "variants": [
+              "té"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "bread",
+            "description": {
+              "vi": "bánh mì",
+              "en": "bread"
+            },
+            "variants": [
+              "pan"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 14,
+        "requireSentenceVerbs": [
+          "gusta",
+          "gustan",
+          "encanta",
+          "encantan"
+        ]
+      },
+      "modelAnswers": [
+        "Me gustan el té y el pan."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:te",
+        "es:w:pan"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.p_person",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu về Pablo: anh ấy sống ở Sevilla.",
+        "en": "Write a sentence about Pablo: he lives in Seville."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Người",
+            "en": "Person"
+          },
+          "value": "Pablo"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Sevilla"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "lives",
+            "description": {
+              "vi": "anh ấy sống ở Sevilla",
+              "en": "he lives in Seville"
+            },
+            "variants": [
+              "vive en sevilla",
+              "pablo vive en sevilla",
+              "él vive en sevilla"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "vive"
+        ]
+      },
+      "modelAnswers": [
+        "Pablo vive en Sevilla."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.p_cat",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu: con mèo uống sữa.",
+        "en": "Write a sentence: the cat drinks milk."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "fact",
+            "description": {
+              "vi": "con mèo uống sữa",
+              "en": "the cat drinks milk"
+            },
+            "variants": [
+              "el gato bebe leche",
+              "el gato bebe la leche",
+              "el gato toma leche"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "bebe",
+          "toma"
+        ]
+      },
+      "modelAnswers": [
+        "El gato bebe leche."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:gato",
+        "es:w:beber",
+        "es:w:leche"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.p_open",
+      "taskFamily": "simple_description",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy miêu tả một người bạn biết trong một hoặc hai câu tiếng Tây Ban Nha ngắn — họ sống ở đâu, hoặc họ thích gì.",
+        "en": "Describe someone you know in one or two short Spanish sentences — where they live, or what they like."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "person",
+            "description": {
+              "vi": "một người",
+              "en": "a person"
+            },
+            "variants": [
+              "es",
+              "vive",
+              "le gusta",
+              "trabaja"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Mi hermana vive en Hanói y le gusta el té."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir",
+        "es:w:gustar"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.q_note_cafe",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Ana: chào cô ấy, và nói rằng hẹn uống cà phê lúc hai giờ.",
+        "en": "Write a short note to Ana: greet her and say coffee is at two."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Ana"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "cà phê"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "2:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "ana"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "cà phê",
+              "en": "the coffee"
+            },
+            "variants": [
+              "café"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn",
+              "en": "the time"
+            },
+            "variants": [
+              "a las dos",
+              "a las 2",
+              "a las catorce"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hola, Ana: el café es a las dos."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:cafe",
+        "es:w:hora"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.q_note_train",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Pablo: chào anh ấy, và nói rằng tàu chạy ngày mai lúc chín giờ.",
+        "en": "Write a short note to Pablo: greet him and say the train leaves tomorrow at nine."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Pablo"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "tàu hỏa"
+        },
+        {
+          "label": {
+            "vi": "Khi nào",
+            "en": "When"
+          },
+          "value": "ngày mai, 9:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "pablo"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "tàu hỏa",
+              "en": "the train"
+            },
+            "variants": [
+              "tren"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày mai",
+              "en": "tomorrow"
+            },
+            "variants": [
+              "mañana"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ",
+              "en": "the time"
+            },
+            "variants": [
+              "a las nueve",
+              "a las 9"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hola, Pablo: el tren sale mañana a las nueve."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:tren",
+        "es:w:manana"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.q_note_closing",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn: chào, nói rằng bạn đang ở nhà ga, và kết bằng «hẹn mai gặp lại».",
+        "en": "Write a note: greet, say you are at the station, and close with 'see you tomorrow'."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": {
+              "vi": "bạn đang ở nhà ga",
+              "en": "you are at the station"
+            },
+            "variants": [
+              "estoy en la estación"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "hẹn mai gặp lại",
+              "en": "see you tomorrow"
+            },
+            "variants": [
+              "hasta mañana"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 22,
+        "requireSentenceVerbs": [
+          "estoy"
+        ]
+      },
+      "modelAnswers": [
+        "Hola, estoy en la estación. ¡Hasta mañana!"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:estacion",
+        "es:w:manana"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.q_open",
+      "taskFamily": "short_message",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy tự viết một lời nhắn ngắn cho một người bạn — một lời chào, một thông tin, và một câu kết. Luyện tập tự do.",
+        "en": "Write your own short note to a friend — a greeting, one fact and a closing. Free practice."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "message",
+            "description": {
+              "vi": "lời chào hoặc lời kết",
+              "en": "a greeting or closing"
+            },
+            "variants": [
+              "hola",
+              "hasta mañana",
+              "hasta luego",
+              "adiós",
+              "un abrazo"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Hola, Ana: estoy en el café. ¡Hasta mañana!"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:cafe"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.r_message_full",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết cho Ana: chào cô ấy, nói rằng ngày mai bạn ở quán cà phê lúc mười giờ, và kết.",
+        "en": "Write to Ana: greet her, say you are at the café tomorrow at ten, and close."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Ana"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "quán cà phê"
+        },
+        {
+          "label": {
+            "vi": "Khi nào",
+            "en": "When"
+          },
+          "value": "ngày mai, 10:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "ana"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "where",
+            "description": {
+              "vi": "quán cà phê",
+              "en": "the café"
+            },
+            "variants": [
+              "café",
+              "cafetería"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày mai",
+              "en": "tomorrow"
+            },
+            "variants": [
+              "mañana"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ",
+              "en": "the time"
+            },
+            "variants": [
+              "a las diez",
+              "a las 10"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời kết",
+              "en": "a closing"
+            },
+            "variants": [
+              "hasta mañana",
+              "hasta luego",
+              "adiós",
+              "un abrazo",
+              "saludos"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 26,
+        "requireSentenceVerbs": [
+          "estoy",
+          "estaré",
+          "nos vemos"
+        ]
+      },
+      "modelAnswers": [
+        "Hola, Ana: mañana estoy en el café a las diez. ¡Hasta luego!"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message",
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:cafe",
+        "es:w:manana"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.r_open",
+      "taskFamily": "personal_profile",
+      "mode": "open",
+      "instruction": {
+        "vi": "Hãy viết hai hoặc ba câu ngắn về bản thân — bất cứ điều gì bạn nói được bằng tiếng Tây Ban Nha. Luyện tập tự do.",
+        "en": "Write two or three short sentences about yourself — anything you can say in Spanish. Free practice."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "about_you",
+            "description": {
+              "vi": "điều gì đó về bạn",
+              "en": "something about you"
+            },
+            "variants": [
+              "me llamo",
+              "soy",
+              "tengo",
+              "vivo",
+              "me gusta"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 80
+      },
+      "modelAnswers": [
+        "Me llamo Minh. Tengo treinta años, vivo en Hanói y me gusta el café."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info",
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir",
+        "es:w:gustar"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_profile_nadia",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Nadia. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh.",
+        "en": "You are Nadia. Introduce yourself in writing — name, age and city, in full sentences."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Nadia"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "35"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Bilbao"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "me llamo nadia",
+              "soy nadia",
+              "mi nombre es nadia"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "tengo treinta y cinco años",
+              "tengo 35 años"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "vivo en bilbao"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "llamo",
+          "soy",
+          "tengo",
+          "vivo"
+        ]
+      },
+      "modelAnswers": [
+        "Me llamo Nadia, tengo 35 años y vivo en Bilbao."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_profile_tomas",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Tomás. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh.",
+        "en": "You are Tomás. Introduce yourself in writing — name, age and city, in full sentences."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Tomás"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "28"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Valencia"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "me llamo tomás",
+              "soy tomás",
+              "mi nombre es tomás"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "tengo veintiocho años",
+              "tengo 28 años"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "vivo en valencia"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "llamo",
+          "soy",
+          "tengo",
+          "vivo"
+        ]
+      },
+      "modelAnswers": [
+        "Me llamo Tomás, tengo 28 años y vivo en Valencia."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_profile_elena",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Elena. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh.",
+        "en": "You are Elena. Introduce yourself in writing — name, age and city, in full sentences."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Elena"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "41"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Sevilla"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "me llamo elena",
+              "soy elena",
+              "mi nombre es elena"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "tengo cuarenta y uno años",
+              "tengo 41 años"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "vivo en sevilla"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "llamo",
+          "soy",
+          "tengo",
+          "vivo"
+        ]
+      },
+      "modelAnswers": [
+        "Me llamo Elena, tengo 41 años y vivo en Sevilla."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_sofia_tea",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu về Sofía: cô ấy thích trà.",
+        "en": "Write a sentence about Sofía: she likes tea."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Người",
+            "en": "Person"
+          },
+          "value": "Sofía"
+        },
+        {
+          "label": {
+            "vi": "Thích",
+            "en": "Likes"
+          },
+          "value": "trà"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "fact",
+            "description": {
+              "vi": "Sofía thích trà",
+              "en": "Sofía likes tea"
+            },
+            "variants": [
+              "a sofía le gusta el té",
+              "le gusta el té",
+              "sofía le gusta el té"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "gusta",
+          "encanta"
+        ]
+      },
+      "modelAnswers": [
+        "A Sofía le gusta el té."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:gustar",
+        "es:w:te"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_cat_water",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu: con mèo uống nước.",
+        "en": "Write a sentence: the cat drinks water."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "fact",
+            "description": {
+              "vi": "con mèo uống nước",
+              "en": "the cat drinks water"
+            },
+            "variants": [
+              "el gato bebe agua",
+              "el gato bebe el agua",
+              "el gato toma agua"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "bebe",
+          "toma"
+        ]
+      },
+      "modelAnswers": [
+        "El gato bebe agua."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:gato",
+        "es:w:beber",
+        "es:w:agua"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_leo_madrid",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết về Leo trong một hoặc hai câu ngắn: anh ấy sống ở Madrid và anh ấy đi làm.",
+        "en": "Write about Leo in one or two short sentences: he lives in Madrid and he works."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Người",
+            "en": "Person"
+          },
+          "value": "Leo"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Madrid"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "lives",
+            "description": {
+              "vi": "anh ấy sống ở Madrid",
+              "en": "he lives in Madrid"
+            },
+            "variants": [
+              "vive en madrid",
+              "leo vive en madrid",
+              "él vive en madrid"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "works",
+            "description": {
+              "vi": "anh ấy đi làm",
+              "en": "he works"
+            },
+            "variants": [
+              "trabaja",
+              "y trabaja",
+              "leo trabaja"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 18,
+        "requireSentenceVerbs": [
+          "vive",
+          "trabaja"
+        ]
+      },
+      "modelAnswers": [
+        "Leo vive en Madrid y trabaja."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir",
+        "es:w:trabajar"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_note_ana",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Ana: chào cô ấy, và nói rằng hẹn uống cà phê lúc ba giờ.",
+        "en": "Write a short note to Ana: greet her and say coffee is at three."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Ana"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "cà phê"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "3:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "ana"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "cà phê",
+              "en": "the coffee"
+            },
+            "variants": [
+              "café"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn",
+              "en": "the time"
+            },
+            "variants": [
+              "a las tres",
+              "a las 3",
+              "a las quince"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hola, Ana: el café es a las tres."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:cafe",
+        "es:w:hora"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_note_train",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn: chào bạn của bạn, và nói rằng tàu chạy thứ Bảy lúc tám giờ.",
+        "en": "Write a short note: greet your friend and say the train leaves on Saturday at eight."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "tàu hỏa"
+        },
+        {
+          "label": {
+            "vi": "Khi nào",
+            "en": "When"
+          },
+          "value": "thứ Bảy, 8:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "tàu hỏa",
+              "en": "the train"
+            },
+            "variants": [
+              "tren"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "thứ Bảy",
+              "en": "Saturday"
+            },
+            "variants": [
+              "sábado"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ",
+              "en": "the time"
+            },
+            "variants": [
+              "a las ocho",
+              "a las 8"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hola: el tren sale el sábado a las ocho."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:tren",
+        "es:w:sabado"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_note_library",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn: chào, nói rằng bạn đang ở thư viện, và kết bằng «hẹn mai gặp lại».",
+        "en": "Write a note: greet, say you are at the library, and close with 'see you tomorrow'."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": {
+              "vi": "bạn đang ở thư viện",
+              "en": "you are at the library"
+            },
+            "variants": [
+              "estoy en la biblioteca"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "hẹn mai gặp lại",
+              "en": "see you tomorrow"
+            },
+            "variants": [
+              "hasta mañana"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 22,
+        "requireSentenceVerbs": [
+          "estoy"
+        ]
+      },
+      "modelAnswers": [
+        "Hola, estoy en la biblioteca. ¡Hasta mañana!"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:biblioteca",
+        "es:w:manana"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.a1cap_note_train",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Pablo: chào anh ấy, và nói rằng tàu chạy lúc chín giờ.",
+        "en": "Write a short note to Pablo: greet him and say the train leaves at nine."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Pablo"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "tàu hỏa"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "9:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "pablo"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "tàu hỏa",
+              "en": "the train"
+            },
+            "variants": [
+              "tren"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ",
+              "en": "the time"
+            },
+            "variants": [
+              "a las nueve",
+              "a las 9"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hola, Pablo: el tren sale a las nueve."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:tren",
+        "es:w:hora"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.a1cap_note_resto",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Lucía: chào cô ấy, và nói rằng hẹn đi nhà hàng vào thứ Bảy.",
+        "en": "Write a short note to Lucía: greet her and say the restaurant is on Saturday."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Lucía"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "nhà hàng"
+        },
+        {
+          "label": {
+            "vi": "Ngày",
+            "en": "Day"
+          },
+          "value": "thứ Bảy"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "lucía"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "nhà hàng",
+              "en": "the restaurant"
+            },
+            "variants": [
+              "restaurante"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "thứ Bảy",
+              "en": "Saturday"
+            },
+            "variants": [
+              "sábado"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hola, Lucía: el restaurante es el sábado."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:restaurante",
+        "es:w:sabado"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.a1cap_note_tienda",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Marcos: chào anh ấy, và nói rằng ngày mai cửa hàng mở cửa.",
+        "en": "Write a short note to Marcos: greet him and say the shop is open tomorrow."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Marcos"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "cửa hàng"
+        },
+        {
+          "label": {
+            "vi": "Khi nào",
+            "en": "When"
+          },
+          "value": "ngày mai"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "marcos"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "cửa hàng",
+              "en": "the shop"
+            },
+            "variants": [
+              "tienda"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "open",
+            "description": {
+              "vi": "mở cửa",
+              "en": "open"
+            },
+            "variants": [
+              "abierta",
+              "abre",
+              "abierto"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày mai",
+              "en": "tomorrow"
+            },
+            "variants": [
+              "mañana"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hola, Marcos: la tienda abre mañana."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:tienda",
+        "es:w:abierto",
+        "es:w:manana"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.a1cap_note_estacion",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Ana: chào cô ấy, nói rằng bạn đang ở nhà ga, và rằng bạn sẽ về lúc sáu giờ.",
+        "en": "Write a short note to Ana: greet her, say you are at the station and that you will be back at six."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Ana"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "nhà ga"
+        },
+        {
+          "label": {
+            "vi": "Về lúc",
+            "en": "Back at"
+          },
+          "value": "6:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "buenos días",
+              "buenas tardes",
+              "buenas noches"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": {
+              "vi": "bạn đang ở nhà ga",
+              "en": "you are at the station"
+            },
+            "variants": [
+              "estoy en la estación"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ về",
+              "en": "the return time"
+            },
+            "variants": [
+              "vuelvo a las seis",
+              "a las seis",
+              "a las 6"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 7,
+        "maxTokens": 25
+      },
+      "modelAnswers": [
+        "Hola, Ana: estoy en la estación. Vuelvo a las seis."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:estacion",
+        "es:w:hora"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.r_form_arrival",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền biểu mẫu nhập cảnh với các thông tin trên thẻ.",
+        "en": "Fill in the arrival form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Lucía"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "22"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Madrid"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "slotId": "name"
+        },
+        {
+          "id": "edad",
+          "label": "Edad",
+          "slotId": "age"
+        },
+        {
+          "id": "ciudad",
+          "label": "Ciudad",
+          "slotId": "city"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "lucía"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "22",
+              "veintidós"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "madrid"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Lucía | 22 | Madrid"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "es:w:ciudad"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.r_form_hotel",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền biểu mẫu nhỏ của khách sạn với các thông tin trên thẻ.",
+        "en": "Fill in the small hotel form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Marco"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Valencia"
+        },
+        {
+          "label": {
+            "vi": "Ngày đến",
+            "en": "Arrival day"
+          },
+          "value": "thứ Bảy"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "slotId": "name"
+        },
+        {
+          "id": "ciudad",
+          "label": "Ciudad",
+          "slotId": "city"
+        },
+        {
+          "id": "dia",
+          "label": "Día de llegada",
+          "slotId": "day"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "marco"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "valencia"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày đến",
+              "en": "arrival day"
+            },
+            "variants": [
+              "sábado"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Marco | Valencia | sábado"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "es:w:sabado"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_form_nadia",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền biểu mẫu đăng ký với các thông tin trên thẻ.",
+        "en": "Fill in the registration form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Nadia"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "35"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Bilbao"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "slotId": "name"
+        },
+        {
+          "id": "edad",
+          "label": "Edad",
+          "slotId": "age"
+        },
+        {
+          "id": "ciudad",
+          "label": "Ciudad",
+          "slotId": "city"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "nadia"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "35",
+              "treinta y cinco"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "bilbao"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Nadia | 35 | Bilbao"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "es:w:ciudad"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_form_tomas",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền biểu mẫu khách sạn với các thông tin trên thẻ.",
+        "en": "Fill in the hotel form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Tomás"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Valencia"
+        },
+        {
+          "label": {
+            "vi": "Ngày đến",
+            "en": "Arrival day"
+          },
+          "value": "Chủ nhật"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "slotId": "name"
+        },
+        {
+          "id": "ciudad",
+          "label": "Ciudad",
+          "slotId": "city"
+        },
+        {
+          "id": "dia",
+          "label": "Día de llegada",
+          "slotId": "day"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "tomás"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "valencia"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày đến",
+              "en": "arrival day"
+            },
+            "variants": [
+              "domingo"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Tomás | Valencia | domingo"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "es:w:domingo"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.cp5_form_elena",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền biểu mẫu làm thẻ thư viện với các thông tin trên thẻ.",
+        "en": "Fill in the library-card form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Elena"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "41"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Sevilla"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "slotId": "name"
+        },
+        {
+          "id": "edad",
+          "label": "Edad",
+          "slotId": "age"
+        },
+        {
+          "id": "ciudad",
+          "label": "Ciudad",
+          "slotId": "city"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "elena"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "41",
+              "cuarenta y uno"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "sevilla"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Elena | 41 | Sevilla"
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "es:w:ciudad"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    }
+  ]
+}
