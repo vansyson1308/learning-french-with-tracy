@@ -297,7 +297,7 @@
       "castNote": "A=kokoro-zm_yunjian (Kokoro voice pack zm_yunjian); no second voice: no other candidate is a verified different speaker within the floor; skipped kokoro-zf_xiaobei (24 technical failure(s))"
     },
     "ko": {
-      "status": "pending-canary",
+      "status": "no-clean-voice",
       "candidates": [
         {
           "voiceId": "melotts-ko",
@@ -308,8 +308,13 @@
         "A": null,
         "B": null
       },
-      "canary": null,
-      "reason": "MeloTTS-KR (MIT) is the only MIT/Apache Korean voice; a B voice does not exist under the gate (Supertonic 3 is OpenRAIL-M — denied for shipped audio)"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/ko/audio-canary.json",
+        "voices": []
+      },
+      "reason": "no eligible candidate has canary results",
+      "castNote": "no canary rows"
     },
     "en": {
       "status": "selected",
