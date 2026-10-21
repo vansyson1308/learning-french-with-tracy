@@ -178,7 +178,7 @@
       }
     },
     "pt": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "pt_BR-faber-medium",
@@ -198,10 +198,40 @@
         }
       ],
       "cast": {
-        "A": "pt_BR-faber-medium",
-        "B": null
+        "A": "kokoro-pm_alex",
+        "B": "kokoro-pf_dora"
       },
-      "canary": null
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/pt/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-pm_alex",
+            "clips": 24,
+            "meanWer": 0.1431,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "kokoro-pf_dora",
+            "clips": 24,
+            "meanWer": 0.1863,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "pt_BR-cadu-medium",
+            "clips": 24,
+            "meanWer": 0.2766,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "pt_BR-faber-medium",
+            "clips": 24,
+            "meanWer": 0.2932,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "castNote": "A=kokoro-pm_alex (Kokoro voice pack pm_alex); B=kokoro-pf_dora: different speaker (Kokoro voice pack pf_dora), other gender (female vs male), mean WER/CER 0.1863 ≤ 0.6"
     },
     "ja": {
       "status": "pending-canary",

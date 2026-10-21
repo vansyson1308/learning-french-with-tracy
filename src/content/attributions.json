@@ -383,6 +383,30 @@
         "assets/audio/es/",
         "content/audio/model-cards/es/kokoro-em_alex.card.txt"
       ]
+    },
+    {
+      "id": "kokoro-voice-pm_alex",
+      "name": "Kokoro-82M voice kokoro-pm_alex",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for pt-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/pm_alex.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/pt/",
+        "content/audio/model-cards/pt/kokoro-pm_alex.card.txt"
+      ]
+    },
+    {
+      "id": "kokoro-voice-pf_dora",
+      "name": "Kokoro-82M voice kokoro-pf_dora",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for pt-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/pf_dora.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/pt/",
+        "content/audio/model-cards/pt/kokoro-pf_dora.card.txt"
+      ]
     }
   ]
 }

@@ -64,10 +64,16 @@
     "pt-en": {
       "policy": "generated",
       "language": "pt",
-      "voiceId": "pt_BR-faber-medium",
+      "voiceId": "kokoro-pm_alex",
+      "candidates": [
+        "pt_BR-faber-medium",
+        "pt_BR-cadu-medium",
+        "kokoro-pf_dora",
+        "kokoro-pm_alex"
+      ],
       "voiceCast": {
-        "A": "pt_BR-faber-medium",
-        "B": null
+        "A": "kokoro-pm_alex",
+        "B": "kokoro-pf_dora"
       }
     },
     "zh-en": {
@@ -262,7 +268,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "selected",
+      "status": "eligible",
       "gateReason": "matched CC0",
       "engine": "piper",
       "speaker": null
@@ -576,29 +582,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/pf_dora.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "07e4ff987c5d5a8c3995efd15cc4f0db7c4c15e881b198d8ab7f67ecf51f5eb7",
+          "bytes": 523425
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-pm_alex",
@@ -609,29 +615,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/pm_alex.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "cf0ba8c573c2480fc54123683a35cf1e2ae130428e441eb91f9149bdb188a526",
+          "bytes": 523425
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-jf_alpha",
