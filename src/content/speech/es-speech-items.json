@@ -1,0 +1,925 @@
+{
+  "generator": "scripts/lib/speech.ts",
+  "version": 1,
+  "order": [
+    "es.speak.k_rep_hola",
+    "es.speak.k_rep_gracias",
+    "es.speak.k_greet_morning",
+    "es.speak.k_thank",
+    "es.speak.k_please",
+    "es.speak.k_afternoon",
+    "es.speak.k_bye",
+    "es.speak.k_perdon",
+    "es.speak.l_rep_estoy",
+    "es.speak.l_rep_vivo",
+    "es.speak.l_rep_hablo",
+    "es.speak.l_live",
+    "es.speak.l_speak_spanish",
+    "es.speak.l_like_coffee",
+    "es.speak.l_work_morning",
+    "es.speak.l_go_station",
+    "es.speak.m_rep_precio",
+    "es.speak.m_rep_hora",
+    "es.speak.m_cats",
+    "es.speak.m_price",
+    "es.speak.m_train_time",
+    "es.speak.m_week_days",
+    "es.speak.n_rep_abierto",
+    "es.speak.n_dog",
+    "es.speak.n_station",
+    "es.speak.n_door_closed",
+    "es.speak.n_shop_open",
+    "es.speak.n_morning"
+  ],
+  "byId": {
+    "es.speak.k_rep_hola": {
+      "id": "es.speak.k_rep_hola",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "hola",
+      "acceptedVariants": [
+        "hola"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:hola"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.uf_dictado_hola",
+      "allowedAttempts": 2
+    },
+    "es.speak.k_rep_gracias": {
+      "id": "es.speak.k_rep_gracias",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Muchas gracias, señor.",
+      "acceptedVariants": [
+        "Muchas gracias, señor."
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:gracias",
+        "es:w:senor"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.uf_gracias",
+      "allowedAttempts": 2
+    },
+    "es.speak.k_greet_morning": {
+      "id": "es.speak.k_greet_morning",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người bán hàng."
+      },
+      "target": "Buenos días",
+      "acceptedVariants": [
+        "Buenos días",
+        "Buenos días, señora",
+        "Buenos días, señor",
+        "Hola, buenos días"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:buenos-dias"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:buenos-dias"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.uf_dictado_hola",
+      "allowedAttempts": 2
+    },
+    "es.speak.k_thank": {
+      "id": "es.speak.k_thank",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói cảm ơn rất nhiều."
+      },
+      "target": "Muchas gracias",
+      "acceptedVariants": [
+        "Muchas gracias"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:gracias"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:gracias"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.uk_gracias",
+      "allowedAttempts": 2
+    },
+    "es.speak.k_please": {
+      "id": "es.speak.k_please",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Bạn đang xin một thứ gì đó. Hãy thêm cụm từ lịch sự nghĩa là «làm ơn»."
+      },
+      "target": "Por favor",
+      "acceptedVariants": [
+        "Por favor"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:por-favor"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:por-favor"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.uk_por_favor",
+      "allowedAttempts": 2
+    },
+    "es.speak.k_afternoon": {
+      "id": "es.speak.k_afternoon",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "4 giờ chiều, bạn gặp bà hàng xóm. Hãy chào bà ấy."
+      },
+      "target": "Buenas tardes",
+      "acceptedVariants": [
+        "Buenas tardes",
+        "Buenas tardes, señora"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:buenas-tardes"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:buenas-tardes"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.uf_buenas_tardes",
+      "allowedAttempts": 2
+    },
+    "es.speak.k_bye": {
+      "id": "es.speak.k_bye",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy chào tạm biệt."
+      },
+      "target": "Adiós",
+      "acceptedVariants": [
+        "Adiós",
+        "Hasta luego"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:adios"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:adios"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.uk_adios",
+      "allowedAttempts": 2
+    },
+    "es.speak.k_perdon": {
+      "id": "es.speak.k_perdon",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Bạn va phải ai đó ngoài đường. Hãy xin lỗi."
+      },
+      "target": "Perdón",
+      "acceptedVariants": [
+        "Perdón",
+        "Perdone"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:perdon"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:perdon"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.uk_perdon",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_rep_estoy": {
+      "id": "es.speak.l_rep_estoy",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Estoy en el hotel.",
+      "acceptedVariants": [
+        "Estoy en el hotel."
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:estar",
+        "es:w:hotel"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.ul_estoy_hotel",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_rep_vivo": {
+      "id": "es.speak.l_rep_vivo",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Vivo en Madrid.",
+      "acceptedVariants": [
+        "Vivo en Madrid."
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.ul_vivo_madrid",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_rep_hablo": {
+      "id": "es.speak.l_rep_hablo",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Hablo español.",
+      "acceptedVariants": [
+        "Hablo español."
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:hablar",
+        "es:w:espanol"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.ul_hablo_espanol",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_live": {
+      "id": "es.speak.l_live",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng bạn sống ở Madrid."
+      },
+      "target": "Vivo en Madrid",
+      "acceptedVariants": [
+        "Vivo en Madrid",
+        "Yo vivo en Madrid"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:vivir"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.ul_vivo_madrid",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_speak_spanish": {
+      "id": "es.speak.l_speak_spanish",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng bạn nói tiếng Tây Ban Nha."
+      },
+      "target": "Hablo español",
+      "acceptedVariants": [
+        "Hablo español",
+        "Yo hablo español"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:hablar",
+        "es:w:espanol"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:hablar",
+        "es:w:espanol"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.ul_hablo_espanol",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_like_coffee": {
+      "id": "es.speak.l_like_coffee",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng bạn thích cà phê."
+      },
+      "target": "Me gusta el café",
+      "acceptedVariants": [
+        "Me gusta el café",
+        "A mí me gusta el café"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:gustar",
+        "es:w:cafe"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:gustar",
+        "es:w:cafe"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.ul_gusta_cafe",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_work_morning": {
+      "id": "es.speak.l_work_morning",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng bạn làm việc vào buổi sáng."
+      },
+      "target": "Trabajo por la mañana",
+      "acceptedVariants": [
+        "Trabajo por la mañana",
+        "Yo trabajo por la mañana"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:trabajar",
+        "es:w:manana"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:trabajar",
+        "es:w:manana"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.ul_trabajo_manana",
+      "allowedAttempts": 2
+    },
+    "es.speak.l_go_station": {
+      "id": "es.speak.l_go_station",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng bạn đang đi đến nhà ga."
+      },
+      "target": "Voy a la estación",
+      "acceptedVariants": [
+        "Voy a la estación",
+        "Yo voy a la estación"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "es:w:ir",
+        "es:w:estacion"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:ir",
+        "es:w:estacion"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.ul_voy_estacion",
+      "allowedAttempts": 2
+    },
+    "es.speak.m_rep_precio": {
+      "id": "es.speak.m_rep_precio",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "El boleto cuesta dieciséis euros.",
+      "acceptedVariants": [
+        "El boleto cuesta dieciséis euros."
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "es:w:boleto",
+        "es:w:costar"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.uh_precio_boleto",
+      "allowedAttempts": 2
+    },
+    "es.speak.m_rep_hora": {
+      "id": "es.speak.m_rep_hora",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "El museo abre a las diez el domingo.",
+      "acceptedVariants": [
+        "El museo abre a las diez el domingo."
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "es:w:museo",
+        "es:w:abrir",
+        "es:w:domingo"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.uh_museo_abre",
+      "allowedAttempts": 2
+    },
+    "es.speak.m_cats": {
+      "id": "es.speak.m_cats",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói có bao nhiêu con mèo.",
+        "cueEmoji": "🐈🐈",
+        "cueFacts": [
+          {
+            "label": "Mèo",
+            "value": "2"
+          }
+        ]
+      },
+      "target": "Hay dos gatos",
+      "acceptedVariants": [
+        "Hay dos gatos"
+      ],
+      "requiredConcepts": [
+        [
+          "hay"
+        ],
+        [
+          "dos",
+          "2"
+        ],
+        [
+          "gatos",
+          "gato"
+        ]
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "es:w:gato"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:gato"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.um_dos_gatos",
+      "allowedAttempts": 2
+    },
+    "es.speak.m_price": {
+      "id": "es.speak.m_price",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói giá bao nhiêu.",
+        "cueFacts": [
+          {
+            "label": "Giá",
+            "value": "3 €"
+          }
+        ]
+      },
+      "target": "Cuesta tres euros",
+      "acceptedVariants": [
+        "Cuesta tres euros",
+        "Son tres euros"
+      ],
+      "requiredConcepts": [
+        [
+          "cuesta",
+          "son",
+          "es"
+        ],
+        [
+          "tres",
+          "3"
+        ],
+        [
+          "euros",
+          "euro"
+        ]
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "es:w:costar"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:costar"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.um_cuesta_tres",
+      "allowedAttempts": 2
+    },
+    "es.speak.m_train_time": {
+      "id": "es.speak.m_train_time",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói tàu chạy lúc mấy giờ.",
+        "cueFacts": [
+          {
+            "label": "Khởi hành",
+            "value": "9:00"
+          }
+        ]
+      },
+      "target": "El tren sale a las nueve",
+      "acceptedVariants": [
+        "El tren sale a las nueve"
+      ],
+      "requiredConcepts": [
+        [
+          "tren"
+        ],
+        [
+          "nueve",
+          "9"
+        ],
+        [
+          "sale",
+          "salir"
+        ]
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "es:w:tren",
+        "es:w:hora"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:tren",
+        "es:w:hora"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.um_tren_nueve",
+      "allowedAttempts": 2
+    },
+    "es.speak.m_week_days": {
+      "id": "es.speak.m_week_days",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói một tuần có bao nhiêu ngày.",
+        "cueFacts": [
+          {
+            "label": "Số ngày trong một tuần",
+            "value": "7"
+          }
+        ]
+      },
+      "target": "Hay siete días en una semana",
+      "acceptedVariants": [
+        "Hay siete días en una semana",
+        "Una semana tiene siete días"
+      ],
+      "requiredConcepts": [
+        [
+          "siete",
+          "7"
+        ],
+        [
+          "días",
+          "día"
+        ]
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "es:w:dia",
+        "es:w:semana"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:dia",
+        "es:w:semana"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.um_siete_dias",
+      "allowedAttempts": 2
+    },
+    "es.speak.n_rep_abierto": {
+      "id": "es.speak.n_rep_abierto",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "El café está abierto por la noche.",
+      "acceptedVariants": [
+        "El café está abierto por la noche."
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "es:w:cafe",
+        "es:w:abierto",
+        "es:w:noche"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "es.clip.uf_noche_frase",
+      "allowedAttempts": 2
+    },
+    "es.speak.n_dog": {
+      "id": "es.speak.n_dog",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Hãy nói đây là gì.",
+        "cueEmoji": "🐶"
+      },
+      "target": "Es un perro",
+      "acceptedVariants": [
+        "Es un perro",
+        "Un perro"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "es:w:perro"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:perro"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.un_es_perro",
+      "allowedAttempts": 2
+    },
+    "es.speak.n_station": {
+      "id": "es.speak.n_station",
+      "taskFamily": "description",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Bạn đến một tòa nhà lớn đầy tàu hỏa. Hãy nói nơi này là gì."
+      },
+      "target": "Es la estación",
+      "acceptedVariants": [
+        "Es la estación",
+        "Es una estación",
+        "La estación"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "es:w:estacion"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:estacion"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.un_es_estacion",
+      "allowedAttempts": 2
+    },
+    "es.speak.n_door_closed": {
+      "id": "es.speak.n_door_closed",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng cửa đang đóng.",
+        "cueEmoji": "🚪🔒"
+      },
+      "target": "La puerta está cerrada",
+      "acceptedVariants": [
+        "La puerta está cerrada"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "es:w:puerta",
+        "es:w:cerrado"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:puerta",
+        "es:w:cerrado"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.un_puerta_cerrada",
+      "allowedAttempts": 2
+    },
+    "es.speak.n_shop_open": {
+      "id": "es.speak.n_shop_open",
+      "taskFamily": "description",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói rằng cửa hàng đang mở cửa."
+      },
+      "target": "La tienda está abierta",
+      "acceptedVariants": [
+        "La tienda está abierta"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "es:w:tienda",
+        "es:w:abierto"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:tienda",
+        "es:w:abierto"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.un_tienda_abierta",
+      "allowedAttempts": 2
+    },
+    "es.speak.n_morning": {
+      "id": "es.speak.n_morning",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Hãy nói đây là buổi nào trong ngày.",
+        "cueEmoji": "🌅"
+      },
+      "target": "Es por la mañana",
+      "acceptedVariants": [
+        "Es por la mañana",
+        "Es la mañana",
+        "Por la mañana"
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "es:w:manana"
+      ],
+      "evidenceLexemeRefs": [
+        "es:w:manana"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "es.clip.un_es_manana",
+      "allowedAttempts": 2
+    }
+  }
+}

@@ -27,7 +27,7 @@ import {
 import { buildPlugin } from "./languages";
 import { localizeCheckpoint, localizeObjective, localizePlacementStage } from "./native-text";
 import { loadParadigms, loadPedagogyConcepts } from "./pedagogy";
-import { loadPacks, readJson, safeResolve, targetLayers, validateExercise, type LoadedPack, type ValidationResult } from "./pipeline";
+import { courseRolesFor, loadPacks, readJson, safeResolve, targetLayers, validateExercise, type LoadedPack, type ValidationResult } from "./pipeline";
 
 export function assessmentSourcePath(
   lang: string,
@@ -574,11 +574,14 @@ export function validateAssessment(lang: string, packs: LoadedPack[] = loadPacks
   const claim = validateClaimPolicyData({ policy });
   // Packs that fail their own schema are reported by validateContent; the
   // mapping check simply skips them here (same posture as lesson flows).
-  const mine = packs.filter((p) => p.pack.targetCode === lang);
-  // The placement walk is authored against the primary-native course (the
-  // smallest native code); other courses of the target validate the same
-  // walk re-pointed at their own lesson ids.
-  const primaryCourseId = [...mine].sort((a, b) => a.pack.nativeCode.localeCompare(b.pack.nativeCode))[0]?.pack.id ?? lang;
+  // P3d: only the primary course and its mirrors carry the assessment
+  // layer — a standalone course (scripts/lib/course-roles.ts) neither
+  // teaches the objectives nor unlocks the checkpoints.
+  const roles = courseRolesFor(lang, packs);
+  const mine: LoadedPack[] = [roles.primary, ...roles.mirrors].filter((p) => p !== undefined);
+  // The placement walk is authored against the primary course; mirror
+  // courses validate the same walk re-pointed at their own lesson ids.
+  const primaryCourseId = roles.primary?.id ?? lang;
   let concepts: { id: string; objectives?: string[] }[] = [];
   try {
     concepts = loadPedagogyConcepts(lang)?.concepts ?? [];

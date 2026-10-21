@@ -1,0 +1,697 @@
+{
+  "version": 1,
+  "language": "es",
+  "order": [
+    "es:concept:gender-two-classes",
+    "es:concept:gender-o-a",
+    "es:concept:gender-other-endings",
+    "es:concept:articles-agua",
+    "es:concept:plural-agreement",
+    "es:concept:ser-estar",
+    "es:concept:regular-present",
+    "es:concept:core-irregulars",
+    "es:concept:subject-drop",
+    "es:concept:hay-tener",
+    "es:concept:numbers",
+    "es:concept:time-dates",
+    "es:concept:negation-questions",
+    "es:concept:ir-a-future",
+    "es:concept:preterite-recognition",
+    "es:concept:gustar",
+    "es:concept:stress-accent",
+    "es:concept:sounds-r-j-ll",
+    "es:concept:tu-usted",
+    "es:concept:cognates-cion-dad",
+    "es:concept:false-friends"
+  ],
+  "byId": {
+    "es:concept:gender-two-classes": {
+      "id": "es:concept:gender-two-classes",
+      "title": "Mọi danh từ tiếng Tây Ban Nha đều có giống",
+      "shortRule": "Danh từ là giống đực (el) hoặc giống cái (la) — học mạo từ cùng danh từ.",
+      "explanation": "Tiếng Tây Ban Nha xếp mọi danh từ vào hai lớp: giống đực và giống cái. Đây là thuộc tính của từ, không phải của sự vật: cái bàn (la mesa) là giống cái, cuốn sách (el libro) là giống đực. Tiếng Việt không có mạo từ, nên hãy luôn học danh từ kèm el hoặc la.",
+      "examples": [
+        {
+          "es": "el libro",
+          "vi": "cuốn sách",
+          "note": "giống đực — el"
+        },
+        {
+          "es": "la mesa",
+          "vi": "cái bàn",
+          "note": "giống cái — la"
+        }
+      ],
+      "exceptions": [
+        "Một số danh từ chỉ người dùng được cả hai giống: el estudiante / la estudiante."
+      ],
+      "memoryHint": "Luôn học «la mesa», đừng chỉ học «mesa».",
+      "objectives": [
+        "es.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:gender-o-a": {
+      "id": "es:concept:gender-o-a",
+      "title": "Đuôi -o và -a",
+      "shortRule": "Đuôi -o hầu như luôn là giống đực (99,3 %); đuôi -a thường là giống cái (khoảng 90 %).",
+      "explanation": "Trong 10.785 danh từ của dữ liệu từ điển khoá học, đuôi -o là giống đực ở 99,3 % trường hợp và đuôi -a là giống cái ở khoảng 90 %. Vì vậy khi gặp từ mới, hãy đoán theo đuôi trước, rồi kiểm tra mạo từ.",
+      "examples": [
+        {
+          "es": "el perro",
+          "vi": "con chó",
+          "note": "-o → giống đực"
+        },
+        {
+          "es": "la casa",
+          "vi": "ngôi nhà",
+          "note": "-a → giống cái"
+        }
+      ],
+      "exceptions": [
+        "Ngoại lệ hay gặp: la mano (bàn tay), el día (ngày), el mapa (bản đồ)."
+      ],
+      "memoryHint": "-o đực, -a cái — trừ la mano và el día.",
+      "objectives": [
+        "es.obj.gender.agreement",
+        "es.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "gender-stats"
+        }
+      ]
+    },
+    "es:concept:gender-other-endings": {
+      "id": "es:concept:gender-other-endings",
+      "title": "Các đuôi báo giống khác",
+      "shortRule": "-ión và -dad là giống cái; -or và -aje là giống đực; -ma gốc Hy Lạp là giống đực.",
+      "explanation": "Theo dữ liệu từ điển: -ión là giống cái ở 98,7 % trong 754 danh từ, -dad là giống cái ở cả 240 danh từ, -or là giống đực ở 98,4 % và -aje ở 96,7 %. Đuôi -ma lẫn lộn, nhưng các từ gốc Hy Lạp quen thuộc như problema, idioma, tema, sistema đều là giống đực.",
+      "examples": [
+        {
+          "es": "la estación",
+          "vi": "nhà ga",
+          "note": "-ión → giống cái"
+        },
+        {
+          "es": "la ciudad",
+          "vi": "thành phố",
+          "note": "-dad → giống cái"
+        },
+        {
+          "es": "el problema",
+          "vi": "vấn đề",
+          "note": "-ma gốc Hy Lạp → giống đực"
+        }
+      ],
+      "exceptions": [
+        "Đuôi -ma không phải lúc nào cũng giống đực: la cama (cái giường) là giống cái."
+      ],
+      "objectives": [
+        "es.obj.gender.agreement"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "gender-stats"
+        }
+      ]
+    },
+    "es:concept:articles-agua": {
+      "id": "es:concept:articles-agua",
+      "title": "Mạo từ xác định và không xác định",
+      "shortRule": "el / la / los / las = cái đã biết; un / una / unos / unas = một cái nào đó.",
+      "explanation": "Mạo từ xác định el, la, los, las chỉ thứ người nghe đã biết; mạo từ không xác định un, una, unos, unas chỉ một thứ bất kỳ. Danh từ giống cái bắt đầu bằng a có trọng âm dùng el ở số ít để dễ đọc: el agua. Số nhiều vẫn là las aguas.",
+      "examples": [
+        {
+          "es": "un café",
+          "vi": "một cà phê"
+        },
+        {
+          "es": "los libros",
+          "vi": "những cuốn sách"
+        },
+        {
+          "es": "el agua",
+          "vi": "nước",
+          "note": "giống cái nhưng dùng el"
+        }
+      ],
+      "exceptions": [
+        "Quy tắc el agua chỉ áp dụng cho a có trọng âm: la amiga vẫn dùng la."
+      ],
+      "objectives": [
+        "es.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:plural-agreement": {
+      "id": "es:concept:plural-agreement",
+      "title": "Số nhiều và hợp giống-số",
+      "shortRule": "Thêm -s sau nguyên âm, -es sau phụ âm; tính từ đổi theo danh từ.",
+      "explanation": "Danh từ tận cùng bằng nguyên âm thêm -s (casa → casas), bằng phụ âm thêm -es (ciudad → ciudades). Tính từ đứng sau danh từ, giống tiếng Việt, nhưng phải đổi theo giống và số: una casa blanca, unas casas blancas. Tiếng Việt chỉ thêm «những»; tiếng Tây Ban Nha đổi cả mạo từ, danh từ và tính từ.",
+      "examples": [
+        {
+          "es": "las casas blancas",
+          "vi": "những ngôi nhà trắng"
+        },
+        {
+          "es": "los perros negros",
+          "vi": "những con chó đen"
+        }
+      ],
+      "exceptions": [
+        "Tính từ đuôi -e hoặc phụ âm không đổi theo giống: un hotel grande, una casa grande."
+      ],
+      "objectives": [
+        "es.obj.gender.agreement"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:ser-estar": {
+      "id": "es:concept:ser-estar",
+      "title": "Ser và estar — hai chữ «là»",
+      "shortRule": "ser: bản chất, nguồn gốc, nghề; estar: trạng thái và vị trí.",
+      "explanation": "Tiếng Việt dùng «là» cho bản chất và «đang, ở» cho trạng thái, vị trí. Tiếng Tây Ban Nha chia việc này cho hai động từ: ser cho điều cố định (Soy de Vietnam — Tôi đến từ Việt Nam), estar cho điều tạm thời hoặc chỗ ở (Estoy cansado — Tôi mệt; Estoy en casa — Tôi ở nhà).",
+      "examples": [
+        {
+          "es": "Soy estudiante.",
+          "vi": "Tôi là sinh viên.",
+          "note": "nghề → ser"
+        },
+        {
+          "es": "Estoy en casa.",
+          "vi": "Tôi đang ở nhà.",
+          "note": "vị trí → estar"
+        }
+      ],
+      "exceptions": [
+        "Sự kiện diễn ra ở đâu dùng ser: La fiesta es en mi casa."
+      ],
+      "memoryHint": "Ở đâu, thấy thế nào → estar.",
+      "objectives": [
+        "es.obj.verbs.ser_estar_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "es:concept:regular-present": {
+      "id": "es:concept:regular-present",
+      "title": "Ba nhóm động từ quy tắc -ar, -er, -ir",
+      "shortRule": "Bỏ -ar/-er/-ir, thêm đuôi theo người: -o, -as/-es, -a/-e, -amos/-emos/-imos, -an/-en.",
+      "explanation": "Tiếng Việt nói «tôi nói, bạn nói, họ nói» mà không đổi động từ. Tiếng Tây Ban Nha đổi đuôi theo người nói: hablo (tôi nói), hablas (bạn nói), habla (anh ấy nói). Nhóm -er và -ir giống nhau ở hầu hết các ngôi, chỉ khác ở «chúng tôi»: comemos, vivimos.",
+      "examples": [
+        {
+          "es": "Hablo español.",
+          "vi": "Tôi nói tiếng Tây Ban Nha."
+        },
+        {
+          "es": "Comemos arroz.",
+          "vi": "Chúng tôi ăn cơm."
+        },
+        {
+          "es": "Ella vive en Hanói.",
+          "vi": "Cô ấy sống ở Hà Nội."
+        }
+      ],
+      "exceptions": [
+        "Dạng vosotros (habláis, coméis) chỉ dùng ở Tây Ban Nha; khoá học dùng ustedes (hablan) như ở Mỹ Latinh."
+      ],
+      "objectives": [
+        "es.obj.verbs.regular_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "es:concept:core-irregulars": {
+      "id": "es:concept:core-irregulars",
+      "title": "Động từ bất quy tắc cốt lõi",
+      "shortRule": "tener, ir, hacer, querer, poder: học thuộc dạng «tôi» trước — tengo, voy, hago, quiero, puedo.",
+      "explanation": "Những động từ dùng nhiều nhất lại không theo quy tắc. Tin vui là phần lớn chỉ «lệch» ở vài ngôi: querer thành quiero, quieres, quiere nhưng queremos vẫn đều. Ir (đi) thì khác hẳn: voy, vas, va, vamos, van.",
+      "examples": [
+        {
+          "es": "Tengo dos hermanos.",
+          "vi": "Tôi có hai anh em."
+        },
+        {
+          "es": "Voy al mercado.",
+          "vi": "Tôi đi chợ."
+        },
+        {
+          "es": "¿Puedo pagar?",
+          "vi": "Tôi trả tiền được không?"
+        }
+      ],
+      "exceptions": [
+        "Hacer chỉ bất quy tắc ở «tôi»: hago, nhưng haces, hace đều."
+      ],
+      "objectives": [
+        "es.obj.verbs.tener_ir_hacer_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "es:concept:subject-drop": {
+      "id": "es:concept:subject-drop",
+      "title": "Lược bỏ chủ ngữ",
+      "shortRule": "Đuôi động từ đã cho biết ai làm, nên yo, tú… thường được bỏ.",
+      "explanation": "Vì hablo chỉ có thể là «tôi nói», người Tây Ban Nha thường không nói yo. Chủ ngữ chỉ xuất hiện khi cần nhấn mạnh hoặc phân biệt: Yo soy de Vietnam, y él es de México. Tiếng Việt cũng hay lược chủ ngữ khi nói chuyện thân mật, nên đây là điểm dễ.",
+      "examples": [
+        {
+          "es": "Vivo en Hanói.",
+          "vi": "(Tôi) sống ở Hà Nội."
+        },
+        {
+          "es": "Yo soy Lan, y ella es Ana.",
+          "vi": "Tôi là Lan, còn cô ấy là Ana.",
+          "note": "chủ ngữ để phân biệt"
+        }
+      ],
+      "exceptions": [
+        "Usted thường được giữ lại để lịch sự và rõ nghĩa: ¿Usted habla inglés?"
+      ],
+      "objectives": [
+        "es.obj.verbs.regular_present",
+        "es.obj.speaking.self_intro"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:hay-tener": {
+      "id": "es:concept:hay-tener",
+      "title": "Hay và tener — hai chữ «có»",
+      "shortRule": "hay = có (tồn tại ở đâu đó); tener = có (sở hữu).",
+      "explanation": "Tiếng Việt dùng một chữ «có» cho cả hai nghĩa. Tiếng Tây Ban Nha tách ra: hay nói rằng một thứ tồn tại (Hay un banco cerca — Gần đây có một ngân hàng), còn tener nói ai sở hữu nó (Tengo un coche — Tôi có một chiếc xe). Hay không đổi theo số: hay un libro, hay dos libros.",
+      "examples": [
+        {
+          "es": "Hay agua.",
+          "vi": "Có nước."
+        },
+        {
+          "es": "Tengo agua.",
+          "vi": "Tôi có nước."
+        }
+      ],
+      "exceptions": [
+        "Tuổi, đói, khát cũng dùng tener: Tengo veinte años. Tengo hambre."
+      ],
+      "objectives": [
+        "es.obj.verbs.tener_ir_hacer_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:numbers": {
+      "id": "es:concept:numbers",
+      "title": "Số từ 0 đến 100",
+      "shortRule": "Học 0–15, viết liền 16–29, từ 31 trở đi dùng «y»: treinta y uno.",
+      "explanation": "Số tiếng Tây Ban Nha rất đều. Từ 16 đến 29 viết liền một chữ: dieciséis, veintiuno, veintidós. Từ 31 trở đi viết rời với y (và): treinta y uno, cuarenta y cinco. Tiếng Việt cũng ghép «ba mươi mốt», nên bạn chỉ cần nhớ thêm chữ y.",
+      "examples": [
+        {
+          "es": "dieciséis",
+          "vi": "mười sáu"
+        },
+        {
+          "es": "veintidós",
+          "vi": "hai mươi hai"
+        },
+        {
+          "es": "cuarenta y cinco",
+          "vi": "bốn mươi lăm"
+        }
+      ],
+      "exceptions": [
+        "Uno thành un trước danh từ giống đực (un libro) và una trước danh từ giống cái (una casa)."
+      ],
+      "memoryHint": "Dưới 30 viết liền, từ 31 thêm «y».",
+      "objectives": [
+        "es.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:time-dates": {
+      "id": "es:concept:time-dates",
+      "title": "Giờ, ngày và tháng",
+      "shortRule": "Es la una, son las dos; el lunes = vào thứ Hai; ngày và tháng viết thường.",
+      "explanation": "Hỏi giờ: ¿Qué hora es? Trả lời es la una cho một giờ, son las… cho các giờ khác. Nói «vào thứ Hai» chỉ cần el lunes; «các thứ Hai» là los lunes. Ngày trong tuần và tên tháng viết thường: el sábado, en enero.",
+      "examples": [
+        {
+          "es": "Son las tres.",
+          "vi": "Bây giờ là ba giờ."
+        },
+        {
+          "es": "El sábado voy al cine.",
+          "vi": "Thứ Bảy tôi đi xem phim."
+        }
+      ],
+      "exceptions": [
+        "Tháng không có mạo từ: en enero, không nói «en el enero»."
+      ],
+      "objectives": [
+        "es.obj.vocab.time_calendar",
+        "es.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:negation-questions": {
+      "id": "es:concept:negation-questions",
+      "title": "Phủ định và câu hỏi",
+      "shortRule": "Đặt no trước động từ; câu hỏi mở bằng ¿ và lên giọng ở cuối.",
+      "explanation": "Phủ định chỉ cần no trước động từ: No hablo francés. Câu hỏi có/không giữ nguyên trật tự từ và chỉ lên giọng: ¿Hablas español? Khi viết, câu hỏi mở bằng ¿ và đóng bằng ?. Từ để hỏi như qué, dónde, cuándo luôn có dấu.",
+      "examples": [
+        {
+          "es": "No como carne.",
+          "vi": "Tôi không ăn thịt."
+        },
+        {
+          "es": "¿Dónde vives?",
+          "vi": "Bạn sống ở đâu?"
+        }
+      ],
+      "exceptions": [
+        "Khi không phải câu hỏi, các từ này mất dấu: donde vivo (nơi tôi sống)."
+      ],
+      "objectives": [
+        "es.obj.spelling.written_accents",
+        "es.obj.reading.familiar_words"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:ir-a-future": {
+      "id": "es:concept:ir-a-future",
+      "title": "Ir a + nguyên thể — tương lai gần",
+      "shortRule": "voy / vas / va / vamos / van + a + động từ nguyên thể = sẽ làm gì.",
+      "explanation": "Tiếng Việt thêm «sẽ» trước động từ. Tiếng Tây Ban Nha dùng ir (đi) đã chia, thêm a, rồi động từ nguyên thể: Voy a comer — Tôi sẽ ăn. Chỉ ir thay đổi; động từ sau a luôn ở dạng nguyên thể.",
+      "examples": [
+        {
+          "es": "Voy a estudiar.",
+          "vi": "Tôi sẽ học."
+        },
+        {
+          "es": "Vamos a viajar en verano.",
+          "vi": "Mùa hè chúng tôi sẽ đi du lịch."
+        }
+      ],
+      "exceptions": [
+        "Đừng bỏ chữ a: nói Voy a comer, không nói «Voy comer»."
+      ],
+      "objectives": [
+        "es.obj.verbs.ir_a_infinitive"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "es:concept:preterite-recognition": {
+      "id": "es:concept:preterite-recognition",
+      "title": "Nhận biết quá khứ thường gặp",
+      "shortRule": "Dạng «tôi» ở quá khứ hay gặp: hablé, comí, viví, fui, hice.",
+      "explanation": "Tiếng Việt nói «tôi đã đi»; tiếng Tây Ban Nha đổi chính động từ: fui. Ở cấp độ này bạn chỉ cần nhận ra vài dạng rất hay gặp. Dạng «tôi» của nhóm -ar kết thúc bằng -é có dấu (hablé), nhóm -er và -ir bằng -í (comí, viví).",
+      "examples": [
+        {
+          "es": "Ayer comí arroz.",
+          "vi": "Hôm qua tôi đã ăn cơm."
+        },
+        {
+          "es": "Fui al mercado.",
+          "vi": "Tôi đã đi chợ."
+        }
+      ],
+      "exceptions": [
+        "Fui vừa là «tôi đã đi» (ir) vừa là «tôi đã là» (ser) — ngữ cảnh cho biết nghĩa."
+      ],
+      "objectives": [
+        "es.obj.verbs.preterite_recognition"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "es:concept:gustar": {
+      "id": "es:concept:gustar",
+      "title": "Gustar — «tôi thích» theo kiểu ngược",
+      "shortRule": "me gusta + một thứ; me gustan + nhiều thứ; động từ hợp với thứ được thích.",
+      "explanation": "Me gusta el café nghĩa đen là «cà phê làm tôi thích». Thứ được thích là chủ ngữ, nên động từ đổi theo nó: me gusta el té, me gustan los gatos. Người thích đứng trước động từ: me (tôi), te (bạn), le (anh ấy, cô ấy, ông, bà).",
+      "examples": [
+        {
+          "es": "Me gusta el té.",
+          "vi": "Tôi thích trà."
+        },
+        {
+          "es": "Me gustan los perros.",
+          "vi": "Tôi thích chó."
+        },
+        {
+          "es": "¿Te gusta la música?",
+          "vi": "Bạn có thích âm nhạc không?"
+        }
+      ],
+      "exceptions": [
+        "Với động từ nguyên thể luôn dùng gusta: Me gusta leer."
+      ],
+      "memoryHint": "Đếm thứ bạn thích: một → gusta, nhiều → gustan.",
+      "objectives": [
+        "es.obj.speaking.self_intro",
+        "es.obj.writing.phrases_sentences"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:stress-accent": {
+      "id": "es:concept:stress-accent",
+      "title": "Trọng âm và dấu sắc",
+      "shortRule": "Tận cùng nguyên âm, -n, -s: nhấn âm áp chót; phụ âm khác: nhấn âm cuối; ngoại lệ có dấu.",
+      "explanation": "Tiếng Việt có thanh điệu; tiếng Tây Ban Nha có trọng âm — một âm tiết được đọc mạnh hơn. Dấu sắc (´) không đổi cao độ như dấu sắc tiếng Việt; nó chỉ chỗ nhấn khi từ không theo quy tắc: café, teléfono, autobús. Dấu còn phân biệt nghĩa: tú (bạn) với tu (của bạn).",
+      "examples": [
+        {
+          "es": "ca-sa",
+          "vi": "ngôi nhà",
+          "note": "nhấn âm áp chót"
+        },
+        {
+          "es": "ciu-dad",
+          "vi": "thành phố",
+          "note": "nhấn âm cuối"
+        },
+        {
+          "es": "te-lé-fo-no",
+          "vi": "điện thoại",
+          "note": "ngoại lệ → có dấu"
+        }
+      ],
+      "exceptions": [
+        "Chữ in hoa vẫn cần dấu: ÁRBOL."
+      ],
+      "objectives": [
+        "es.obj.pronunciation.stress_r",
+        "es.obj.spelling.written_accents"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:sounds-r-j-ll": {
+      "id": "es:concept:sounds-r-j-ll",
+      "title": "Âm r, rr, j, ll và c, z",
+      "shortRule": "r giữa từ: bật lưỡi một lần; rr và r đầu từ: rung; j: «h» bật mạnh; h: câm.",
+      "explanation": "Tiếng Việt không có âm rung r, nên pero (nhưng) và perro (con chó) dễ bị đọc giống nhau. R giữa từ là một cú bật lưỡi nhẹ; rr và r đầu từ là âm rung kéo dài. J và g trước e, i đọc gần như «h» bật mạnh trong cổ (jugo, gente). Ở Mỹ Latinh, ll và y đọc giống nhau, c trước e, i và z đọc như s.",
+      "examples": [
+        {
+          "es": "pero / perro",
+          "vi": "nhưng / con chó",
+          "note": "bật lưỡi / rung"
+        },
+        {
+          "es": "rojo",
+          "vi": "đỏ",
+          "note": "r đầu từ rung"
+        },
+        {
+          "es": "el jugo",
+          "vi": "nước ép"
+        }
+      ],
+      "exceptions": [
+        "Ở phần lớn Tây Ban Nha, c trước e, i và z đọc như «th» tiếng Anh; khoá học dùng cách đọc Mỹ Latinh."
+      ],
+      "objectives": [
+        "es.obj.pronunciation.stress_r"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:tu-usted": {
+      "id": "es:concept:tu-usted",
+      "title": "Tú và usted — lịch sự",
+      "shortRule": "tú: bạn bè, người nhỏ tuổi; usted: người lạ, người lớn tuổi, khách hàng.",
+      "explanation": "Tiếng Việt có nhiều cách xưng hô theo tuổi và quan hệ. Tiếng Tây Ban Nha đơn giản hơn: tú (thân mật) và usted (lịch sự). Usted chia động từ giống ngôi thứ ba: ¿Usted habla inglés? Kèm theo por favor, gracias và perdón, bạn sẽ luôn lịch sự.",
+      "examples": [
+        {
+          "es": "¿Cómo estás?",
+          "vi": "Bạn khỏe không?",
+          "note": "tú"
+        },
+        {
+          "es": "¿Cómo está usted?",
+          "vi": "Ông / bà khỏe không?",
+          "note": "usted"
+        }
+      ],
+      "exceptions": [
+        "Số nhiều ở Mỹ Latinh chỉ có ustedes cho cả thân mật lẫn lịch sự."
+      ],
+      "objectives": [
+        "es.obj.greetings.basic",
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:cognates-cion-dad": {
+      "id": "es:concept:cognates-cion-dad",
+      "title": "Cây cầu -ción và -dad",
+      "shortRule": "-tion thường thành -ción, -ty thành -dad — và cả hai đều là giống cái.",
+      "explanation": "Nếu bạn biết một chút tiếng Anh, hàng trăm từ tiếng Tây Ban Nha đã quen: information thành la información, city thành la ciudad, reality thành la realidad. Đuôi -ción là giống cái ở 98,7 % danh từ đuôi -ión trong dữ liệu từ điển, -dad ở cả 240 danh từ. Tiếng Việt không giúp ở đây, nhưng các từ quốc tế như hotel, taxi, museo thì giống hệt.",
+      "examples": [
+        {
+          "es": "la información",
+          "vi": "thông tin"
+        },
+        {
+          "es": "la ciudad",
+          "vi": "thành phố"
+        },
+        {
+          "es": "la situación",
+          "vi": "tình huống"
+        }
+      ],
+      "exceptions": [
+        "Không phải từ nào cũng có cầu nối: work là el trabajo, không phải «la obra» trong mọi ngữ cảnh."
+      ],
+      "objectives": [
+        "es.obj.strategy.cognate_transfer",
+        "es.obj.gender.agreement"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "gender-stats"
+        }
+      ]
+    },
+    "es:concept:false-friends": {
+      "id": "es:concept:false-friends",
+      "title": "Bạn giả — những từ đánh lừa",
+      "shortRule": "Trông giống tiếng Anh không có nghĩa là cùng nghĩa: kiểm tra ngữ cảnh.",
+      "explanation": "Một số từ trông quen nhưng nghĩa khác hẳn. Embarazada là «có thai», không phải «ngượng»; éxito là «thành công», còn lối ra là la salida; largo là «dài», không phải «lớn»; carpeta là «bìa hồ sơ». Khi một từ quen làm câu nghe lạ, hãy nghi ngờ bạn giả.",
+      "examples": [
+        {
+          "es": "largo",
+          "vi": "dài",
+          "note": "không phải «lớn» (grande)"
+        },
+        {
+          "es": "la salida",
+          "vi": "lối ra",
+          "note": "éxito = thành công"
+        }
+      ],
+      "exceptions": [
+        "Danh sách bạn giả rất dài; khoá học chỉ dạy những từ hay gặp nhất ở cấp độ A1."
+      ],
+      "objectives": [
+        "es.obj.strategy.cognate_transfer"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    }
+  }
+}

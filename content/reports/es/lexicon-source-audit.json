@@ -121,7 +121,7 @@
       "id": "es:w:adios",
       "surface": "adiós",
       "lookupForm": "adiós",
-      "partOfSpeech": "noun",
+      "partOfSpeech": "interjection",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -130,7 +130,7 @@
       "id": "es:w:gracias",
       "surface": "gracias",
       "lookupForm": "gracias",
-      "partOfSpeech": "noun",
+      "partOfSpeech": "interjection",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -139,8 +139,8 @@
       "id": "es:w:por-favor",
       "surface": "por favor",
       "lookupForm": "por favor",
-      "partOfSpeech": "interjection",
-      "status": "source-unavailable",
+      "partOfSpeech": "expression",
+      "status": "not-applicable",
       "matchKey": null,
       "candidateCount": 0
     },
@@ -193,8 +193,8 @@
       "id": "es:w:buenos-dias",
       "surface": "buenos días",
       "lookupForm": "buenos días",
-      "partOfSpeech": "noun",
-      "status": "source-unavailable",
+      "partOfSpeech": "expression",
+      "status": "not-applicable",
       "matchKey": null,
       "candidateCount": 0
     },
@@ -202,8 +202,8 @@
       "id": "es:w:buenas-noches",
       "surface": "buenas noches",
       "lookupForm": "buenas noches",
-      "partOfSpeech": "noun",
-      "status": "source-unavailable",
+      "partOfSpeech": "expression",
+      "status": "not-applicable",
       "matchKey": null,
       "candidateCount": 0
     },
@@ -535,7 +535,7 @@
       "id": "es:w:alto",
       "surface": "alto",
       "lookupForm": "alto",
-      "partOfSpeech": "noun",
+      "partOfSpeech": "adjective",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -544,7 +544,7 @@
       "id": "es:w:bajo",
       "surface": "bajo",
       "lookupForm": "bajo",
-      "partOfSpeech": "noun",
+      "partOfSpeech": "adjective",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -643,7 +643,7 @@
       "id": "es:w:quiero",
       "surface": "quiero",
       "lookupForm": "quiero",
-      "partOfSpeech": "noun",
+      "partOfSpeech": "verb",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -949,7 +949,7 @@
       "id": "es:w:enfermo",
       "surface": "enfermo",
       "lookupForm": "enfermo",
-      "partOfSpeech": "noun",
+      "partOfSpeech": "adjective",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -3568,7 +3568,7 @@
       "id": "es:w:pronto",
       "surface": "pronto",
       "lookupForm": "pronto",
-      "partOfSpeech": "adjective",
+      "partOfSpeech": "adverb",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -3802,7 +3802,7 @@
       "id": "es:w:incluso",
       "surface": "incluso",
       "lookupForm": "incluso",
-      "partOfSpeech": "adjective",
+      "partOfSpeech": "adverb",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -5287,7 +5287,7 @@
       "id": "es:w:temprano",
       "surface": "temprano",
       "lookupForm": "temprano",
-      "partOfSpeech": "adjective",
+      "partOfSpeech": "adverb",
       "status": "source-unavailable",
       "matchKey": null,
       "candidateCount": 0
@@ -7195,6 +7195,789 @@
       "id": "es:w:cheque",
       "surface": "el cheque",
       "lookupForm": "cheque",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:yo",
+      "surface": "yo",
+      "lookupForm": "yo",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:tu",
+      "surface": "tú",
+      "lookupForm": "tú",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:usted",
+      "surface": "usted",
+      "lookupForm": "usted",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:nosotros",
+      "surface": "nosotros",
+      "lookupForm": "nosotros",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:ellos",
+      "surface": "ellos",
+      "lookupForm": "ellos",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:ustedes",
+      "surface": "ustedes",
+      "lookupForm": "ustedes",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:si",
+      "surface": "sí",
+      "lookupForm": "sí",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:no",
+      "surface": "no",
+      "lookupForm": "no",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:perdon",
+      "surface": "perdón",
+      "lookupForm": "perdón",
+      "partOfSpeech": "interjection",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:vale",
+      "surface": "vale",
+      "lookupForm": "vale",
+      "partOfSpeech": "interjection",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:buenas-tardes",
+      "surface": "buenas tardes",
+      "lookupForm": "buenas tardes",
+      "partOfSpeech": "expression",
+      "status": "not-applicable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:hasta-luego",
+      "surface": "hasta luego",
+      "lookupForm": "hasta luego",
+      "partOfSpeech": "expression",
+      "status": "not-applicable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:mucho-gusto",
+      "surface": "mucho gusto",
+      "lookupForm": "mucho gusto",
+      "partOfSpeech": "expression",
+      "status": "not-applicable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:de-nada",
+      "surface": "de nada",
+      "lookupForm": "de nada",
+      "partOfSpeech": "expression",
+      "status": "not-applicable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:que",
+      "surface": "qué",
+      "lookupForm": "qué",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:como",
+      "surface": "cómo",
+      "lookupForm": "cómo",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:donde-adverb",
+      "surface": "dónde",
+      "lookupForm": "dónde",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:quien",
+      "surface": "quién",
+      "lookupForm": "quién",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cual",
+      "surface": "cuál",
+      "lookupForm": "cuál",
+      "partOfSpeech": "pronoun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:muy",
+      "surface": "muy",
+      "lookupForm": "muy",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:bien",
+      "surface": "bien",
+      "lookupForm": "bien",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cerca",
+      "surface": "cerca",
+      "lookupForm": "cerca",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:recto",
+      "surface": "recto",
+      "lookupForm": "recto",
+      "partOfSpeech": "adverb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:uno",
+      "surface": "uno",
+      "lookupForm": "uno",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:dos",
+      "surface": "dos",
+      "lookupForm": "dos",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:tres",
+      "surface": "tres",
+      "lookupForm": "tres",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cuatro",
+      "surface": "cuatro",
+      "lookupForm": "cuatro",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cinco",
+      "surface": "cinco",
+      "lookupForm": "cinco",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:seis",
+      "surface": "seis",
+      "lookupForm": "seis",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:siete",
+      "surface": "siete",
+      "lookupForm": "siete",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:ocho",
+      "surface": "ocho",
+      "lookupForm": "ocho",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:nueve",
+      "surface": "nueve",
+      "lookupForm": "nueve",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:diez",
+      "surface": "diez",
+      "lookupForm": "diez",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:once",
+      "surface": "once",
+      "lookupForm": "once",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:doce",
+      "surface": "doce",
+      "lookupForm": "doce",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:quince",
+      "surface": "quince",
+      "lookupForm": "quince",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:veinte",
+      "surface": "veinte",
+      "lookupForm": "veinte",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:treinta",
+      "surface": "treinta",
+      "lookupForm": "treinta",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cincuenta",
+      "surface": "cincuenta",
+      "lookupForm": "cincuenta",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cien",
+      "surface": "cien",
+      "lookupForm": "cien",
+      "partOfSpeech": "determiner",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:rojo",
+      "surface": "rojo",
+      "lookupForm": "rojo",
+      "partOfSpeech": "adjective",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:azul",
+      "surface": "azul",
+      "lookupForm": "azul",
+      "partOfSpeech": "adjective",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:blanco",
+      "surface": "blanco",
+      "lookupForm": "blanco",
+      "partOfSpeech": "adjective",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:negro",
+      "surface": "negro",
+      "lookupForm": "negro",
+      "partOfSpeech": "adjective",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:verde",
+      "surface": "verde",
+      "lookupForm": "verde",
+      "partOfSpeech": "adjective",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:amarillo",
+      "surface": "amarillo",
+      "lookupForm": "amarillo",
+      "partOfSpeech": "adjective",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:martes",
+      "surface": "el martes",
+      "lookupForm": "martes",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:miercoles",
+      "surface": "el miércoles",
+      "lookupForm": "miércoles",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:jueves",
+      "surface": "el jueves",
+      "lookupForm": "jueves",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:enero",
+      "surface": "enero",
+      "lookupForm": "enero",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:nombre",
+      "surface": "el nombre",
+      "lookupForm": "nombre",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:apellido",
+      "surface": "el apellido",
+      "lookupForm": "apellido",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:restaurante",
+      "surface": "el restaurante",
+      "lookupForm": "restaurante",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cerveza",
+      "surface": "la cerveza",
+      "lookupForm": "cerveza",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:menu",
+      "surface": "el menú",
+      "lookupForm": "menú",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:camarero",
+      "surface": "el camarero",
+      "lookupForm": "camarero",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:farmacia",
+      "surface": "la farmacia",
+      "lookupForm": "farmacia",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:autobus",
+      "surface": "el autobús",
+      "lookupForm": "autobús",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:playa",
+      "surface": "la playa",
+      "lookupForm": "playa",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:plaza",
+      "surface": "la plaza",
+      "lookupForm": "plaza",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:izquierda",
+      "surface": "la izquierda",
+      "lookupForm": "izquierda",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:derecha",
+      "surface": "la derecha",
+      "lookupForm": "derecha",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:pueblo",
+      "surface": "el pueblo",
+      "lookupForm": "pueblo",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:idioma",
+      "surface": "el idioma",
+      "lookupForm": "idioma",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:espanol",
+      "surface": "el español",
+      "lookupForm": "español",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:vietnamita",
+      "surface": "el vietnamita",
+      "lookupForm": "vietnamita",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:universidad",
+      "surface": "la universidad",
+      "lookupForm": "universidad",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:correo",
+      "surface": "el correo",
+      "lookupForm": "correo",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:hambre",
+      "surface": "el hambre",
+      "lookupForm": "hambre",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:sed",
+      "surface": "la sed",
+      "lookupForm": "sed",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:hermanos",
+      "surface": "los hermanos",
+      "lookupForm": "hermanos",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:comer",
+      "surface": "comer",
+      "lookupForm": "comer",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:trabajar",
+      "surface": "trabajar",
+      "lookupForm": "trabajar",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:abrir",
+      "surface": "abrir",
+      "lookupForm": "abrir",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:costar",
+      "surface": "costar",
+      "lookupForm": "costar",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:llamarse",
+      "surface": "llamarse",
+      "lookupForm": "llamarse",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:estudiar",
+      "surface": "estudiar",
+      "lookupForm": "estudiar",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:ir",
+      "surface": "ir",
+      "lookupForm": "ir",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:hay",
+      "surface": "hay",
+      "lookupForm": "hay",
+      "partOfSpeech": "verb",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:cerrado",
+      "surface": "cerrado",
+      "lookupForm": "cerrado",
+      "partOfSpeech": "adjective",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:biblioteca",
+      "surface": "la biblioteca",
+      "lookupForm": "biblioteca",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:regalo",
+      "surface": "el regalo",
+      "lookupForm": "regalo",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:euro",
+      "surface": "el euro",
+      "lookupForm": "euro",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:amiga",
+      "surface": "la amiga",
+      "lookupForm": "amiga",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:mediodia",
+      "surface": "el mediodía",
+      "lookupForm": "mediodía",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:panaderia",
+      "surface": "la panadería",
+      "lookupForm": "panadería",
+      "partOfSpeech": "noun",
+      "status": "source-unavailable",
+      "matchKey": null,
+      "candidateCount": 0
+    },
+    {
+      "id": "es:w:anden",
+      "surface": "el andén",
+      "lookupForm": "andén",
       "partOfSpeech": "noun",
       "status": "source-unavailable",
       "matchKey": null,

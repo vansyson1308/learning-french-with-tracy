@@ -24,11 +24,18 @@ import { assertGeneratedTarget, removeTempDirSync, safeResolve } from "./lib/pip
 
 const checkOnly = process.argv.includes("--check");
 
+// A validation error that only says a GENERATED artifact is stale ("run
+// bun run content:compile" — e.g. src/content/ids/<lang>.json after new
+// lexemes were frozen) is exactly what a write-mode compile repairs; it is
+// deferred and re-checked after writing. --check never defers anything.
+const isGeneratedDrift = (message: string) => /run bun run content:compile/.test(message);
 const validation = validateAllSources();
-if (validation.length > 0) {
-  for (const e of validation) console.error(`ERROR ${e}`);
+const blocking = checkOnly ? validation : validation.filter((e) => !isGeneratedDrift(e));
+if (blocking.length > 0) {
+  for (const e of blocking) console.error(`ERROR ${e}`);
   process.exit(1);
 }
+const deferredDrift = validation.length - blocking.length;
 
 // Every text artifact, assembled in memory (scripts/lib/compile-artifacts.ts);
 // the SQLite databases are built below under the logical-dump contract.
@@ -121,6 +128,14 @@ for (const plan of lexiconDbs) {
 }
 
 if (checkOnly && drifted > 0) process.exit(1);
+if (deferredDrift > 0) {
+  const remaining = validateAllSources();
+  if (remaining.length > 0) {
+    for (const e of remaining) console.error(`ERROR ${e}`);
+    console.error(`ERROR compile wrote the generated artifacts, but ${remaining.length} validation error(s) remain`);
+    process.exit(1);
+  }
+}
 console.log(
   checkOnly ? "generated artifacts are up to date" : `compile done (${files.length + lexiconDbs.length} artifacts)`
 );

@@ -203,7 +203,7 @@ describe("validateLessonFlows — every rule fires", () => {
 
   test("concept steps outside the French course fail", () => {
     expect(
-      flowErrors("es-en", [{ concept: "fr:concept:test-rule" }, { exercise: "e1" }]).join("\n")
+      flowErrors("de-en", [{ concept: "fr:concept:test-rule" }, { exercise: "e1" }]).join("\n")
     ).toMatch(/needs? authored pedagogy/);
   });
 });
@@ -426,6 +426,6 @@ describe("validateConjugationClozes — every rule fires", () => {
   });
 
   test("conjugationCloze outside the French course fails", () => {
-    expect(clozeErrors("es-en").join("\n")).toMatch(/needs? authored pedagogy/);
+    expect(clozeErrors("de-en").join("\n")).toMatch(/needs? authored pedagogy/);
   });
 });

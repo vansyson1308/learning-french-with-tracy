@@ -51,6 +51,8 @@ describe("compile golden", () => {
       expect(formatDiff("recompiled", diffFileHashes(expected, fresh.files))).toEqual([]);
       expect(formatDiff("recompiled", diffFileHashes(dbPinsAsFiles(stored!.lexiconDbs), dbPinsAsFiles(fresh.lexiconDbs)))).toEqual([]);
     },
-    120_000
+    // P3d: the full recompile now builds a second complete course (es-vi);
+    // on a loaded Windows runner it can exceed two minutes.
+    300_000
   );
 });

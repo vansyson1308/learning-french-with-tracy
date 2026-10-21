@@ -241,3 +241,50 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  src/content/attributions.json
+
+## 2026-10-21 — P3d es-vi: Vietnamese-first Spanish course promoted as the es primary (course roles); es-en standalone with its own English lexicon; French unchanged
+
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/lexicon-source-audit.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/artifacts/es-en.ts
+- compile: changed  src/content/artifacts/index.ts
+- compile: changed  src/content/catalog.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/flags.ts
+- compile: changed  src/content/ids/es.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/packs/es-en.json
+- compile: changed  src/content/packs/index.ts
+- compile: new      content/reports/es/cefr-alignment.json
+- compile: new      content/reports/es/cefr-claim-gate.json
+- compile: new      content/reports/es/checkpoint-coverage.json
+- compile: new      content/reports/es/course-objective-coverage.json
+- compile: new      content/reports/es/placement-coverage.json
+- compile: new      content/reports/es/reception-audio-census.json
+- compile: new      src/content/artifacts/es-vi.ts
+- compile: new      src/content/assessment/es-attainment.json
+- compile: new      src/content/assessment/es-checkpoints.json
+- compile: new      src/content/assessment/es-claim.json
+- compile: new      src/content/assessment/es-objectives.json
+- compile: new      src/content/assessment/es-placement.json
+- compile: new      src/content/concepts/es-concepts.json
+- compile: new      src/content/interaction/es-scenarios.json
+- compile: new      src/content/lexicon/es-en-index.json
+- compile: new      src/content/lexicon/es-en-web-fallback.json
+- compile: new      src/content/packs/es-vi.json
+- compile: new      src/content/reception/es-clip-assets.ts
+- compile: new      src/content/reception/es-listening.json
+- compile: new      src/content/reception/es-reading.json
+- compile: new      src/content/speech/es-speech-items.json
+- compile: new      src/content/writing/es-writing.json
+- compile: new      lexicon-db:es-en:es-en-lexicon-v3-fd4864239463ab05.db
+- compile: new      lexicon-db:es:es-lexicon-v3-10a77b6cc2091cc9.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-e06659b53a31c566.db
+
+## 2026-10-21 — P3d: es-en lessons back to their original bytes (standalone course needs no objectives); default-course tie-break by exercise count keeps fr-en
+
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/packs/es-en.json

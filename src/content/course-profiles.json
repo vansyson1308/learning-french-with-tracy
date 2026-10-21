@@ -60,9 +60,55 @@
       },
       "artifacts": {
         "ids": "src/content/ids/es.json",
+        "lexiconIndex": "src/content/lexicon/es-en-index.json",
+        "lexiconFallback": "src/content/lexicon/es-en-web-fallback.json",
+        "lexiconDb": "assets/lexicon/es-en-lexicon-v3-fd4864239463ab05.db"
+      }
+    },
+    "es-vi": {
+      "id": "es-vi",
+      "targetCode": "es",
+      "nativeCode": "vi",
+      "targetLanguage": "Spanish",
+      "nativeLanguage": "Vietnamese",
+      "flag": "🇪🇸",
+      "flagAsset": "es",
+      "recognitionLocale": "es-ES",
+      "ttsLocale": "es-ES",
+      "script": "latin",
+      "idPrefix": "es:w:",
+      "legacyIdPrefix": "es:legacy:",
+      "capabilities": {
+        "fsrs": true,
+        "dailySession": true,
+        "lexicon": true,
+        "concepts": true,
+        "placement": true,
+        "checkpoints": true,
+        "goals": true,
+        "listening": true,
+        "reading": true,
+        "speaking": true,
+        "writing": true,
+        "conversation": true
+      },
+      "artifacts": {
+        "ids": "src/content/ids/es.json",
         "lexiconIndex": "src/content/lexicon/es-index.json",
         "lexiconFallback": "src/content/lexicon/es-web-fallback.json",
-        "lexiconDb": "assets/lexicon/es-lexicon-v3-e06659b53a31c566.db"
+        "lexiconDb": "assets/lexicon/es-lexicon-v3-10a77b6cc2091cc9.db",
+        "concepts": "src/content/concepts/es-concepts.json",
+        "objectives": "src/content/assessment/es-objectives.json",
+        "checkpoints": "src/content/assessment/es-checkpoints.json",
+        "placement": "src/content/assessment/es-placement.json",
+        "attainment": "src/content/assessment/es-attainment.json",
+        "claim": "src/content/assessment/es-claim.json",
+        "listening": "src/content/reception/es-listening.json",
+        "reading": "src/content/reception/es-reading.json",
+        "clipAssets": "src/content/reception/es-clip-assets.ts",
+        "speech": "src/content/speech/es-speech-items.json",
+        "writing": "src/content/writing/es-writing.json",
+        "scenarios": "src/content/interaction/es-scenarios.json"
       }
     },
     "fr-en": {
