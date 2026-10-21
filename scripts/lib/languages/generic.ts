@@ -71,7 +71,10 @@ export function genericPlugin(
       wordChars: facts.script === "latin" ? "a-z\\u00e0-\\u00ff0-9" : "\\w",
       whisperLanguage: facts.code,
     },
-    charsPerSecBand: { min: 4, max: 30 },
+    // Plausible speaking-rate band for the technical QA, by script: an alphabet spends several
+    // characters per syllable; Han, kana and Hangul spend about one (the 2026-10-21 zh canary
+    // failed every clip at a normal 3.4-3.6 chars/sec under the Latin floor of 4).
+    charsPerSecBand: facts.script === "latin" ? { min: 4, max: 30 } : facts.script === "han" ? { min: 1.2, max: 12 } : { min: 1.5, max: 16 },
     tokenize: (text) => rules.tokenize(rules.foldSpoken(text)),
     ftsTokenizer: ftsTokenizerFor(facts.script),
     functionWords: [],

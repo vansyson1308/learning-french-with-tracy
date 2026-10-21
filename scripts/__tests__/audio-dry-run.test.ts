@@ -62,7 +62,9 @@ describe("audio.ts plan --dry-run — pack + lexicon layers (P3b)", () => {
   });
 
   test("a language whose candidates are not pinned yet cannot plan a canary (recon first)", () => {
-    const { code, out } = run(["plan", "--lang", "ja", "--layer", "pack", "--mode", "canary", "--dry-run"]);
+    // The synthetic language has no voice candidates at all, so this never depends on which real
+    // languages a dispatched recon has pinned (ja was the example until its 2026-10-21 recon).
+    const { code, out } = run(["plan", "--lang", "xx", "--layer", "pack", "--mode", "canary", "--dry-run"]);
     expect(code).not.toBe(0);
     expect(out).toContain("no eligible candidate");
   });
