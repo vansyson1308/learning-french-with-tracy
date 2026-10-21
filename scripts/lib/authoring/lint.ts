@@ -93,7 +93,9 @@ export function lintPack(pack: PackSource, lexicon: { surface: string; partOfSpe
               for (const [i, text] of options.entries()) {
                 if (i === ex.correct) continue;
                 const d = lookup(text);
-                if (d && d.partOfSpeech !== answer.partOfSpeech) findings.push({ rule: "distractor-pos", severity: "info", where: ex.id, message: `distractor "${text}" is ${d.partOfSpeech}, answer "${options[ex.correct]}" is ${answer.partOfSpeech}` });
+                // Interjections and fixed expressions are one class for a learner (hola / buenos días / por favor).
+                const cls = (pos: string) => (pos === "interjection" || pos === "expression" ? "formula" : pos);
+                if (d && cls(d.partOfSpeech) !== cls(answer.partOfSpeech)) findings.push({ rule: "distractor-pos", severity: "info", where: ex.id, message: `distractor "${text}" is ${d.partOfSpeech}, answer "${options[ex.correct]}" is ${answer.partOfSpeech}` });
               }
             }
           }

@@ -1039,6 +1039,116 @@
           "source": "original-spanish-course"
         }
       ]
+    },
+    {
+      "id": "es:concept:cognates-cion-dad",
+      "title": {
+        "vi": "Cây cầu -ción và -dad",
+        "en": "The -ción and -dad bridges"
+      },
+      "shortRule": {
+        "vi": "-tion thường thành -ción, -ty thành -dad — và cả hai đều là giống cái.",
+        "en": "-tion usually becomes -ción, -ty becomes -dad — and both are feminine."
+      },
+      "explanation": {
+        "vi": "Nếu bạn biết một chút tiếng Anh, hàng trăm từ tiếng Tây Ban Nha đã quen: information thành la información, city thành la ciudad, reality thành la realidad. Đuôi -ción là giống cái ở 98,7 % danh từ đuôi -ión trong dữ liệu từ điển, -dad ở cả 240 danh từ. Tiếng Việt không giúp ở đây, nhưng các từ quốc tế như hotel, taxi, museo thì giống hệt.",
+        "en": "If you know some English, hundreds of Spanish words are already familiar: information → la información, city → la ciudad, reality → la realidad. -ión nouns are feminine in 98.7% of the dictionary data, -dad in all 240."
+      },
+      "examples": [
+        {
+          "target": "la información",
+          "translations": {
+            "vi": "thông tin",
+            "en": "information"
+          }
+        },
+        {
+          "target": "la ciudad",
+          "translations": {
+            "vi": "thành phố",
+            "en": "city"
+          }
+        },
+        {
+          "target": "la situación",
+          "translations": {
+            "vi": "tình huống",
+            "en": "situation"
+          }
+        }
+      ],
+      "exceptions": [
+        {
+          "vi": "Không phải từ nào cũng có cầu nối: work là el trabajo, không phải «la obra» trong mọi ngữ cảnh.",
+          "en": "Not every word has a bridge: work is el trabajo, not always 'la obra'."
+        }
+      ],
+      "objectives": [
+        "es.obj.strategy.cognate_transfer",
+        "es.obj.gender.agreement"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "gender-stats"
+        }
+      ]
+    },
+    {
+      "id": "es:concept:false-friends",
+      "title": {
+        "vi": "Bạn giả — những từ đánh lừa",
+        "en": "False friends — words that mislead"
+      },
+      "shortRule": {
+        "vi": "Trông giống tiếng Anh không có nghĩa là cùng nghĩa: kiểm tra ngữ cảnh.",
+        "en": "Looking like English does not mean the same meaning: check the context."
+      },
+      "explanation": {
+        "vi": "Một số từ trông quen nhưng nghĩa khác hẳn. Embarazada là «có thai», không phải «ngượng»; éxito là «thành công», còn lối ra là la salida; largo là «dài», không phải «lớn»; carpeta là «bìa hồ sơ». Khi một từ quen làm câu nghe lạ, hãy nghi ngờ bạn giả.",
+        "en": "Some words look familiar but mean something else: embarazada is 'pregnant', not 'embarrassed'; éxito is 'success' while the exit is la salida; largo is 'long', not 'large'; carpeta is 'folder'."
+      },
+      "examples": [
+        {
+          "target": "largo",
+          "translations": {
+            "vi": "dài",
+            "en": "long"
+          },
+          "note": {
+            "vi": "không phải «lớn» (grande)",
+            "en": "not 'large' (grande)"
+          }
+        },
+        {
+          "target": "la salida",
+          "translations": {
+            "vi": "lối ra",
+            "en": "the exit"
+          },
+          "note": {
+            "vi": "éxito = thành công",
+            "en": "éxito = success"
+          }
+        }
+      ],
+      "exceptions": [
+        {
+          "vi": "Danh sách bạn giả rất dài; khoá học chỉ dạy những từ hay gặp nhất ở cấp độ A1.",
+          "en": "The list of false friends is long; the course covers only the most frequent ones at A1."
+        }
+      ],
+      "objectives": [
+        "es.obj.strategy.cognate_transfer"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
     }
   ]
 }

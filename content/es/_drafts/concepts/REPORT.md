@@ -1,6 +1,6 @@
 # concepts — ingest report (es-vi)
 
-Records: 30 · schema-valid: 30 · failed: 0 · validator errors after merge: 0
+Records: 32 · schema-valid: 32 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -22,18 +22,20 @@ Records: 30 · schema-valid: 30 · failed: 0 · validator errors after merge: 0
 - ✅ line 16 `es:concept:gustar`
 - ✅ line 17 `es:concept:stress-accent`
 - ✅ line 18 `es:concept:sounds-r-j-ll`
-- ✅ line 19 `es:concept:tu-usted`
-- ✅ line 20 `ser`
-- ✅ line 21 `estar`
-- ✅ line 22 `tener`
-- ✅ line 23 `ir`
-- ✅ line 24 `hacer`
-- ✅ line 25 `querer`
-- ✅ line 26 `poder`
-- ✅ line 27 `hablar`
-- ✅ line 28 `trabajar`
-- ✅ line 29 `comer`
-- ✅ line 30 `vivir`
+- ✅ line 19 `es:concept:cognates-cion-dad`
+- ✅ line 20 `es:concept:false-friends`
+- ✅ line 21 `es:concept:tu-usted`
+- ✅ line 22 `ser`
+- ✅ line 23 `estar`
+- ✅ line 24 `tener`
+- ✅ line 25 `ir`
+- ✅ line 26 `hacer`
+- ✅ line 27 `querer`
+- ✅ line 28 `poder`
+- ✅ line 29 `hablar`
+- ✅ line 30 `trabajar`
+- ✅ line 31 `comer`
+- ✅ line 32 `vivir`
 
 ## Validator errors (fix these records and ingest again)
 
