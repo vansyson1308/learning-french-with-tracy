@@ -111,35 +111,35 @@
       },
       "canary": {
         "reportedAt": "2026-10-21",
-        "report": "content\\reports\\de\\audio-canary.json",
+        "report": "content/reports/de/audio-canary.json",
         "voices": [
           {
             "voiceId": "de_DE-thorsten-high",
             "clips": 24,
-            "meanWer": 0.2298,
+            "meanWer": 0.2055,
             "technicalFailures": 0
           },
           {
             "voiceId": "de_DE-thorsten-medium",
             "clips": 24,
-            "meanWer": 0.2544,
+            "meanWer": 0.2416,
             "technicalFailures": 0
           },
           {
             "voiceId": "de_DE-kerstin-low",
             "clips": 24,
-            "meanWer": 0.4905,
+            "meanWer": 0.5387,
             "technicalFailures": 0
           },
           {
             "voiceId": "de_DE-mls-medium",
             "clips": 24,
-            "meanWer": 1.1964,
-            "technicalFailures": 6
+            "meanWer": 1.1024,
+            "technicalFailures": 5
           }
         ]
       },
-      "castNote": "A=de_DE-thorsten-high (model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice); B=de_DE-kerstin-low: different speaker (model card: voice kerstin, dataset github.com/rhasspy/dataset-voice-kerstin), other gender (female vs male), mean WER/CER 0.4905 ≤ 0.6; skipped de_DE-thorsten-medium (same speaker as A or unverifiable: model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice), de_DE-mls-medium (mean WER/CER 1.1964 > 0.6)",
+      "castNote": "A=de_DE-thorsten-high (model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice); B=de_DE-kerstin-low: different speaker (model card: voice kerstin, dataset github.com/rhasspy/dataset-voice-kerstin), other gender (female vs male), mean WER/CER 0.5387 ≤ 0.6; skipped de_DE-thorsten-medium (same speaker as A or unverifiable: model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice), de_DE-mls-medium (mean WER/CER 1.1024 > 0.6)",
       "candidateSearch": "2026-10-21: no better German B exists at rhasspy/piper-voices v1.0.0 — the licence gate excludes eva_k, karlsson and ramona (M-AILABS, 'License: See URL') and pavoque (CC BY-NC-SA 4.0); thorsten_emotional passes (CC0) but is Thorsten Müller again (8 emotion styles, same dataset). kerstin-low (CC0, 16 kHz low quality, mean WER 0.49) is the only licence-clean second speaker, so B = kerstin-low."
     },
     "it": {

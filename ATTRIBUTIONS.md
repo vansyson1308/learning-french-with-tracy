@@ -279,7 +279,7 @@ Course audio for pt-en synthesized with Piper (MIT, rhasspy/piper) using the pt_
 
 Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-kerstin-low voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.4905 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.5387 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
 
 ## Piper voice fr_FR-siwis-medium
 
@@ -301,7 +301,7 @@ Course audio for fr-en synthesized with Piper (MIT, rhasspy/piper) using the fr_
 
 Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-high voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.2298 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.2055 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
 
 ## Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)
 
