@@ -366,6 +366,27 @@
       "notes": "P3a: scripts/lexicon-author.ts writes content/<lang>/lexemes.json (frozen ids) and content/<lang>/lexicon/lexemes.json from the committed derived evidence; REVIEW.md per language records what a human still has to check (TODO:vi, auto-confusables, untranslated examples)."
     },
     {
+      "id": "original-spanish-course",
+      "name": "Learning French with Tracy — authored es-vi course (Spanish for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Spanish course content for Vietnamese speakers authored by the Learning French with Tracy project.",
+      "retrievedAt": "2026-10-22",
+      "covers": [
+        "content/courses/es-vi.json",
+        "content/es/pedagogy/",
+        "content/es/reception/reading.json",
+        "content/es/reception/listening.json",
+        "content/es/speech/",
+        "content/es/writing/",
+        "content/es/interaction/",
+        "content/es/assessment/",
+        "content/es/exam/"
+      ],
+      "notes": "P3d: clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/es-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/es/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public DELE A1 formats only, never official items. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
       "id": "tts-engine-kokoro",
       "name": "Kokoro-82M (hexgrad) — neural TTS engine and model",
       "kind": "TTS engine used at pipeline time (never shipped)",

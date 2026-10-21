@@ -193,3 +193,8 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  src/content/attributions.json
+
+## 2026-10-21 — register original-spanish-course (es-vi authored content source, P3d) — attributions only
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json

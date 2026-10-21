@@ -171,6 +171,17 @@ Selection of the curriculum lexemes, topic assignment, confusable relations, sur
 
 > P3a: scripts/lexicon-author.ts writes content/<lang>/lexemes.json (frozen ids) and content/<lang>/lexicon/lexemes.json from the committed derived evidence; REVIEW.md per language records what a human still has to check (TODO:vi, auto-confusables, untranslated examples).
 
+## Learning French with Tracy — authored es-vi course (Spanish for Vietnamese speakers)
+
+- **License:** MIT
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)
+- **Retrieved:** 2026-10-22
+
+Spanish course content for Vietnamese speakers authored by the Learning French with Tracy project.
+
+> P3d: clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/es-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/es/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public DELE A1 formats only, never official items. Ships under the repository's MIT grant like the other course packs.
+
 ## Piper voice es_ES-davefx-medium
 
 - **License:** CC0-1.0
