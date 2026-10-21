@@ -1,0 +1,87 @@
+{
+  "generator": "scripts/lexicon-etl.ts recon",
+  "language": "ko",
+  "recordedAt": "2026-10-21",
+  "artifacts": {
+    "kaikki-en-ko.jsonl": {
+      "status": "retrieved",
+      "sha256": "b98abdab081d6b73d6c2935897a2d7a116fbd6a81e3a4c72d8c527ebf5bb1b9f",
+      "bytes": 204878874,
+      "lines": 63773,
+      "samples": [
+        "{\"pos\": \"character\", \"head_templates\": [{\"name\": \"ko-hanja\", \"args\": {\"1\": \"무리\", \"2\": \"훈\"}, \"expansion\": \"暈 (eumhun 무리 훈 (muri hun))\"}], \"forms\": [{\"form\": \"무리 훈\", \"roman\": \"muri hun\", \"tags\": [\"eumhun\"]}], \"etymology_number\": \"1\", \"word\": \"暈\", \"lang\": \"Korean\", \"lang_code\": \"ko\", \"senses\": [{\"tags\": [\"no-gloss\"], \"raw_tags\": [\"Hanja\"], \"id\": \"en-暈-ko-character-47DEQpj8\"}]}",
+        "{\"pos\": \"character\", \"head_templates\": [{\"name\": \"ko-hanja/new\", \"args\": {\"1\": \"달팽이\", \"2\": \"이\"}, \"expansion\": \"螔 (eumhun 달팽이 이 (dalpaeng'i i))\"}], \"forms\": [{\"form\": \"달팽이 이\", \"roman\": \"dalpaeng'i i\", \"tags\": [\"eumhun\"]}], \"word\": \"螔\", \"lang\": \"Korean\", \"lang_code\": \"ko\", \"senses\": [{\"links\": [[\"snail\", \"snail\"]], \"glosses\": [\"snail\"], \"raw_tags\": [\"Hanja\"], \"id\": \"en-螔-ko-character-YhVqe0lK\"}]}"
+      ]
+    },
+    "frequencywords-ko.txt": {
+      "status": "retrieved",
+      "sha256": "8d00401b6728c8d6feeaa5455583c1a33408dd020aae4aa55609b25004d1d99d",
+      "bytes": 695053,
+      "lines": 50000,
+      "samples": [
+        "내가 39801",
+        "그 35563"
+      ]
+    },
+    "wordfreq-ko.csv": {
+      "status": "retrieved",
+      "sha256": "ebbe347813714eb3a23087394232cd0e526535bf9770aec73d6ae1583eabcf90",
+      "bytes": 384993,
+      "lines": 29979,
+      "samples": [
+        "word,zipf",
+        "이,7.50"
+      ]
+    },
+    "tatoeba-ko-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "63a41bdc76298205ab25d028c211818fd61abf3cbf1b4c1f1a8e8d53f1d1e8d8",
+      "bytes": 1627844,
+      "lines": 15946,
+      "samples": [
+        "5350\tkor\t뭔가 해보자!\tcueyayotl\t\\N\t2014-04-07 21:15:36",
+        "5351\tkor\t자야 합니다.\tcueyayotl\t\\N\t2014-12-03 05:34:42"
+      ]
+    },
+    "tatoeba-ko-links-en.tsv": {
+      "status": "retrieved",
+      "sha256": "42235f8c2da7b6d21fc553af6934303e529be07755b1585ee387fcc012e5da3b",
+      "bytes": 186400,
+      "lines": 11601,
+      "samples": [
+        "5350\t1276",
+        "5351\t1277"
+      ]
+    },
+    "tatoeba-ko-links-vi.tsv": {
+      "status": "retrieved",
+      "sha256": "5ba97f3b04c1d13755108121a246cc5a02f1bcab190ae0431a803f5693f0f417",
+      "bytes": 570,
+      "lines": 44,
+      "samples": [
+        "5351\t5662",
+        "5352\t5663"
+      ]
+    },
+    "tatoeba-eng-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "411dc55ab184c29a052602290faccd19a4090a3d35009b8edc0513caf4f214f5",
+      "bytes": 198805928,
+      "lines": 2039120,
+      "samples": [
+        "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
+        "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
+      ]
+    },
+    "tatoeba-vie-sentences.tsv": {
+      "status": "retrieved",
+      "sha256": "7b4cf0b4bba287277086e9e4870e59d05214d6841de30b64e1673736c3a8432f",
+      "bytes": 3742406,
+      "lines": 33248,
+      "samples": [
+        "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
+        "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"
+      ]
+    }
+  }
+}

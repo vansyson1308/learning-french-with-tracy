@@ -1,0 +1,158 @@
+{
+  "generator": "scripts/audio.ts recon",
+  "language": "es",
+  "layers": "all",
+  "engines": {
+    "piper": {
+      "pinnedVersion": "1.2.0"
+    },
+    "kokoro": {
+      "pinnedVersion": "0.9.4"
+    },
+    "melotts": {
+      "pinnedVersion": "209145371cff8fc3bd60d7be902ea69cbdb7965a"
+    }
+  },
+  "voices": [
+    {
+      "voice": "es_ES-davefx-medium",
+      "engine": "piper",
+      "language": "es",
+      "dataset": null,
+      "license": "* License: CC0",
+      "status": "eligible",
+      "gateReason": "matched CC0",
+      "files": {
+        "model": {
+          "path": "es/es_ES/davefx/medium/es_ES-davefx-medium.onnx",
+          "sha256": "6658b03b1a6c316ee4c265a9896abc1393353c2d9e1bca7d66c2c442e222a917",
+          "bytes": 63201294
+        },
+        "config": {
+          "path": "es/es_ES/davefx/medium/es_ES-davefx-medium.onnx.json",
+          "sha256": "0e0dda87c732f6f38771ff274a6380d9252f327dca77aa2963d5fbdf9ec54842",
+          "bytes": 4817
+        },
+        "modelCard": {
+          "path": "es/es_ES/davefx/medium/MODEL_CARD",
+          "sha256": "17523d253d605b262341aac23226b49686c31992af90236bd0abb7d4d154774d",
+          "bytes": 275
+        }
+      }
+    },
+    {
+      "voice": "es_MX-claude-high",
+      "engine": "piper",
+      "language": "es",
+      "dataset": null,
+      "license": "* License: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0",
+      "files": {
+        "model": {
+          "path": "es/es_MX/claude/high/es_MX-claude-high.onnx",
+          "sha256": "3ef40a71ea63852cd8ab7e6fa7d2ecdcfa67a0b47c9c48e3f10e02ee02083ea0",
+          "bytes": 63122309
+        },
+        "config": {
+          "path": "es/es_MX/claude/high/es_MX-claude-high.onnx.json",
+          "sha256": "1afc81f703c0e4cb3b4d7c0dca096b8b54a98806807f0170cf5eb5557723c12d",
+          "bytes": 4963
+        },
+        "modelCard": {
+          "path": "es/es_MX/claude/high/MODEL_CARD",
+          "sha256": "f03da57c1e945f6d709b01e7699d26018e145570139de52ac7569aaa8962a174",
+          "bytes": 247
+        }
+      }
+    },
+    {
+      "voice": "kokoro-ef_dora",
+      "engine": "kokoro",
+      "language": "es",
+      "dataset": null,
+      "license": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0",
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/ef_dora.pt",
+          "sha256": "d9d69b0f8a2b87a345f269d89639f89dfbd1a6c9da0c498ae36dd34afcf35530",
+          "bytes": 523420
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      }
+    },
+    {
+      "voice": "kokoro-em_alex",
+      "engine": "kokoro",
+      "language": "es",
+      "dataset": null,
+      "license": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0",
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/em_alex.pt",
+          "sha256": "5eac53f767c3f31a081918ba531969aea850bed18fe56419b804d642c6973431",
+          "bytes": 523420
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      }
+    },
+    {
+      "voice": "melotts-es",
+      "engine": "melotts",
+      "language": "es",
+      "dataset": null,
+      "license": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT",
+      "files": {
+        "checkpoint": {
+          "path": "checkpoint.pth",
+          "sha256": "9077a7e7e5fd8e42f3f922641c401f1936971c08465a3e7ccb19d57a659e72ae",
+          "bytes": 207860748
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "54488d922a2983f4d6a7f57158cc5f2714ea117994e1b22147a8579791554221",
+          "bytes": 3431
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "e0e6a57a8d37968b9ea9578ed383cab0cd56b41286de9bb24880ebb10129bf99",
+          "bytes": 4493
+        }
+      }
+    }
+  ]
+}

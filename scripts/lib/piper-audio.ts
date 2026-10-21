@@ -84,6 +84,10 @@ export function licenseGate(gate: LicenseGate, cardText: string): GateVerdict {
 /** Map a matched allow-list entry to the registry's SPDX-style license id. */
 export function registryLicenseFor(matched: string): "CC-BY-4.0" | "CC-BY-SA-4.0" | "CC0-1.0" | "Apache-2.0" | "MIT" | null {
   const n = matched.toLowerCase().replace(/[-\s]+/g, "");
+  // Creative Commons URLs (creativecommons.org/licenses/by/4.0, …/by-sa/4.0, …/publicdomain/zero/1.0).
+  if (/creativecommons\.org\/licenses\/bysa\//.test(n)) return "CC-BY-SA-4.0";
+  if (/creativecommons\.org\/licenses\/by\//.test(n)) return "CC-BY-4.0";
+  if (/creativecommons\.org\/publicdomain\/zero\//.test(n)) return "CC0-1.0";
   if (n.includes("bysa")) return "CC-BY-SA-4.0";
   if (n.includes("cc0") || n.includes("publicdomain")) return "CC0-1.0";
   if (n.includes("ccby")) return "CC-BY-4.0";

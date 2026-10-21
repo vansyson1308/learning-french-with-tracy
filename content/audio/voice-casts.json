@@ -23,7 +23,7 @@
       }
     },
     "es": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "es_MX-claude-high",
@@ -47,11 +47,40 @@
         }
       ],
       "cast": {
-        "A": "es_ES-davefx-medium",
-        "B": null
+        "A": "kokoro-ef_dora",
+        "B": "kokoro-em_alex"
       },
-      "canary": null,
-      "reason": "current A = the V1 selection (davefx, CC0); the pack text is Latin-American, so es_MX-claude-high (Apache-2.0) is expected to win the v2 canary — the audit decides"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/es/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-ef_dora",
+            "clips": 24,
+            "meanWer": 0.1035,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "kokoro-em_alex",
+            "clips": 24,
+            "meanWer": 0.1302,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "es_MX-claude-high",
+            "clips": 24,
+            "meanWer": 0.1857,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "es_ES-davefx-medium",
+            "clips": 24,
+            "meanWer": 0.3431,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "castNote": "A=kokoro-ef_dora (Kokoro voice pack ef_dora); B=kokoro-em_alex: different speaker (Kokoro voice pack em_alex), other gender (male vs female), mean WER/CER 0.1302 ≤ 0.6"
     },
     "de": {
       "status": "selected",
@@ -82,35 +111,35 @@
       },
       "canary": {
         "reportedAt": "2026-10-21",
-        "report": "content\\reports\\de\\audio-canary.json",
+        "report": "content/reports/de/audio-canary.json",
         "voices": [
           {
             "voiceId": "de_DE-thorsten-high",
             "clips": 24,
-            "meanWer": 0.2298,
+            "meanWer": 0.2055,
             "technicalFailures": 0
           },
           {
             "voiceId": "de_DE-thorsten-medium",
             "clips": 24,
-            "meanWer": 0.2544,
+            "meanWer": 0.2416,
             "technicalFailures": 0
           },
           {
             "voiceId": "de_DE-kerstin-low",
             "clips": 24,
-            "meanWer": 0.4905,
+            "meanWer": 0.5387,
             "technicalFailures": 0
           },
           {
             "voiceId": "de_DE-mls-medium",
             "clips": 24,
-            "meanWer": 1.1964,
-            "technicalFailures": 6
+            "meanWer": 1.1024,
+            "technicalFailures": 5
           }
         ]
       },
-      "castNote": "A=de_DE-thorsten-high (model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice); B=de_DE-kerstin-low: different speaker (model card: voice kerstin, dataset github.com/rhasspy/dataset-voice-kerstin), other gender (female vs male), mean WER/CER 0.4905 ≤ 0.6; skipped de_DE-thorsten-medium (same speaker as A or unverifiable: model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice), de_DE-mls-medium (mean WER/CER 1.1964 > 0.6)",
+      "castNote": "A=de_DE-thorsten-high (model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice); B=de_DE-kerstin-low: different speaker (model card: voice kerstin, dataset github.com/rhasspy/dataset-voice-kerstin), other gender (female vs male), mean WER/CER 0.5387 ≤ 0.6; skipped de_DE-thorsten-medium (same speaker as A or unverifiable: model card: voice thorsten, dataset github.com/thorstenmueller/thorsten-voice), de_DE-mls-medium (mean WER/CER 1.1024 > 0.6)",
       "candidateSearch": "2026-10-21: no better German B exists at rhasspy/piper-voices v1.0.0 — the licence gate excludes eva_k, karlsson and ramona (M-AILABS, 'License: See URL') and pavoque (CC BY-NC-SA 4.0); thorsten_emotional passes (CC0) but is Thorsten Müller again (8 emotion styles, same dataset). kerstin-low (CC0, 16 kHz low quality, mean WER 0.49) is the only licence-clean second speaker, so B = kerstin-low."
     },
     "it": {
@@ -149,7 +178,7 @@
       }
     },
     "pt": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "pt_BR-faber-medium",
@@ -169,10 +198,40 @@
         }
       ],
       "cast": {
-        "A": "pt_BR-faber-medium",
-        "B": null
+        "A": "kokoro-pm_alex",
+        "B": "kokoro-pf_dora"
       },
-      "canary": null
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/pt/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-pm_alex",
+            "clips": 24,
+            "meanWer": 0.1431,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "kokoro-pf_dora",
+            "clips": 24,
+            "meanWer": 0.1863,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "pt_BR-cadu-medium",
+            "clips": 24,
+            "meanWer": 0.2766,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "pt_BR-faber-medium",
+            "clips": 24,
+            "meanWer": 0.2932,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "castNote": "A=kokoro-pm_alex (Kokoro voice pack pm_alex); B=kokoro-pf_dora: different speaker (Kokoro voice pack pf_dora), other gender (female vs male), mean WER/CER 0.1863 ≤ 0.6"
     },
     "ja": {
       "status": "pending-canary",
@@ -198,7 +257,7 @@
       "reason": "no Piper Japanese voice exists; Kokoro ja (Apache-2.0, grade C+) and MeloTTS-JP (MIT) are compared by the SenseVoice/Whisper canary"
     },
     "zh": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "melotts-zh",
@@ -214,14 +273,31 @@
         }
       ],
       "cast": {
-        "A": null,
+        "A": "kokoro-zm_yunjian",
         "B": null
       },
-      "canary": null,
-      "reason": "Piper huayan has an unknown licence (excluded); MeloTTS-ZH (MIT) and Kokoro zh (Apache-2.0, grade D) are compared"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/zh/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-zm_yunjian",
+            "clips": 24,
+            "meanWer": 0.1892,
+            "technicalFailures": 21
+          },
+          {
+            "voiceId": "kokoro-zf_xiaobei",
+            "clips": 24,
+            "meanWer": 0.2242,
+            "technicalFailures": 24
+          }
+        ]
+      },
+      "castNote": "A=kokoro-zm_yunjian (Kokoro voice pack zm_yunjian); no second voice: no other candidate is a verified different speaker within the floor; skipped kokoro-zf_xiaobei (24 technical failure(s))"
     },
     "ko": {
-      "status": "pending-canary",
+      "status": "no-clean-voice",
       "candidates": [
         {
           "voiceId": "melotts-ko",
@@ -232,11 +308,16 @@
         "A": null,
         "B": null
       },
-      "canary": null,
-      "reason": "MeloTTS-KR (MIT) is the only MIT/Apache Korean voice; a B voice does not exist under the gate (Supertonic 3 is OpenRAIL-M — denied for shipped audio)"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/ko/audio-canary.json",
+        "voices": []
+      },
+      "reason": "no eligible candidate has canary results",
+      "castNote": "no canary rows"
     },
     "en": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "kokoro-af_heart",
@@ -252,11 +333,28 @@
         }
       ],
       "cast": {
-        "A": null,
-        "B": null
+        "A": "kokoro-am_michael",
+        "B": "kokoro-af_heart"
       },
-      "canary": null,
-      "reason": "for the en-vi course (P4f); Piper lessac (Blizzard licence URL), amy/alan ('See URL') and ryan (CC BY-NC-SA) fail the gate; libritts_r (CC BY 4.0, 904 speakers) is a possible later candidate"
+      "canary": {
+        "reportedAt": "2026-10-21",
+        "report": "content/reports/en/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-am_michael",
+            "clips": 12,
+            "meanWer": 0.1238,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "kokoro-af_heart",
+            "clips": 12,
+            "meanWer": 0.1331,
+            "technicalFailures": 0
+          }
+        ]
+      },
+      "castNote": "A=kokoro-am_michael (Kokoro voice pack am_michael); B=kokoro-af_heart: different speaker (Kokoro voice pack af_heart), other gender (female vs male), mean WER/CER 0.1331 ≤ 0.6"
     },
     "vi": {
       "status": "pending-canary",

@@ -1,0 +1,2074 @@
+{
+  "generator": "scripts/audio.ts qa",
+  "language": "zh",
+  "mode": "canary",
+  "layers": [
+    "pack"
+  ],
+  "asrModel": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+  "asrReviewPolicy": {
+    "minWords": 3,
+    "werAtLeast": 0.5,
+    "note": "single-word clips are informational only; the technical QA (duration, level, edge silence, speaking rate from the language plugin) gates every clip; ja/zh scores are character error rates"
+  },
+  "clipCount": 72,
+  "uniqueAssetCount": 72,
+  "technicalFailures": 53,
+  "sentenceClipsForReview": 12,
+  "voiceSummary": [
+    {
+      "courseId": null,
+      "layer": "pack",
+      "voiceId": "kokoro-zf_xiaobei",
+      "clips": 12,
+      "meanWer": 0.022,
+      "technicalFailures": 12
+    },
+    {
+      "courseId": null,
+      "layer": "pack",
+      "voiceId": "kokoro-zm_yunjian",
+      "clips": 12,
+      "meanWer": 0.0451,
+      "technicalFailures": 9
+    },
+    {
+      "courseId": null,
+      "layer": "pack",
+      "voiceId": "melotts-zh#ZH",
+      "clips": 12,
+      "meanWer": 0.0485,
+      "technicalFailures": 0
+    },
+    {
+      "courseId": "zh-en",
+      "layer": "pack",
+      "voiceId": "melotts-zh#ZH",
+      "clips": 12,
+      "meanWer": 0.1667,
+      "technicalFailures": 8
+    },
+    {
+      "courseId": "zh-en",
+      "layer": "pack",
+      "voiceId": "kokoro-zm_yunjian",
+      "clips": 12,
+      "meanWer": 0.3333,
+      "technicalFailures": 12
+    },
+    {
+      "courseId": "zh-en",
+      "layer": "pack",
+      "voiceId": "kokoro-zf_xiaobei",
+      "clips": 12,
+      "meanWer": 0.4264,
+      "technicalFailures": 12
+    }
+  ],
+  "review": [
+    {
+      "clipId": "zh-en:公园@kokoro-zm_yunjian",
+      "voiceId": "kokoro-zm_yunjian",
+      "transcript": "公园",
+      "heard": "供院",
+      "wer": 1,
+      "durationSec": 1.646
+    },
+    {
+      "clipId": "zh-en:可爱@kokoro-zf_xiaobei",
+      "voiceId": "kokoro-zf_xiaobei",
+      "transcript": "可爱",
+      "heard": "克爱",
+      "wer": 0.5,
+      "durationSec": 1.881
+    },
+    {
+      "clipId": "zh-en:大@kokoro-zf_xiaobei",
+      "voiceId": "kokoro-zf_xiaobei",
+      "transcript": "大",
+      "heard": "那",
+      "wer": 1,
+      "durationSec": 1.593
+    },
+    {
+      "clipId": "zh-en:大@kokoro-zm_yunjian",
+      "voiceId": "kokoro-zm_yunjian",
+      "transcript": "大",
+      "heard": "对",
+      "wer": 1,
+      "durationSec": 1.019
+    },
+    {
+      "clipId": "zh-en:大@melotts-zh",
+      "voiceId": "melotts-zh",
+      "transcript": "大",
+      "heard": "嗯",
+      "wer": 1,
+      "durationSec": 0.758
+    },
+    {
+      "clipId": "zh-en:小@kokoro-zf_xiaobei",
+      "voiceId": "kokoro-zf_xiaobei",
+      "transcript": "小",
+      "heard": "需",
+      "wer": 1,
+      "durationSec": 0.94
+    },
+    {
+      "clipId": "zh-en:小@kokoro-zm_yunjian",
+      "voiceId": "kokoro-zm_yunjian",
+      "transcript": "小",
+      "heard": "小女",
+      "wer": 1,
+      "durationSec": 0.888
+    },
+    {
+      "clipId": "zh-en:小@melotts-zh",
+      "voiceId": "melotts-zh",
+      "transcript": "小",
+      "heard": "叫",
+      "wer": 1,
+      "durationSec": 0.81
+    },
+    {
+      "clipId": "zh-en:我喜欢喝果汁。@kokoro-zf_xiaobei",
+      "voiceId": "kokoro-zf_xiaobei",
+      "transcript": "我喜欢喝果汁。",
+      "heard": "我喜欢何国志",
+      "wer": 0.5,
+      "durationSec": 2.978
+    },
+    {
+      "clipId": "zh-en:男孩@kokoro-zf_xiaobei",
+      "voiceId": "kokoro-zf_xiaobei",
+      "transcript": "男孩",
+      "heard": "南海😔",
+      "wer": 1,
+      "durationSec": 2.325
+    },
+    {
+      "clipId": "zh-en:男孩@kokoro-zm_yunjian",
+      "voiceId": "kokoro-zm_yunjian",
+      "transcript": "男孩",
+      "heard": "南害",
+      "wer": 1,
+      "durationSec": 1.698
+    },
+    {
+      "clipId": "zh-en:面条@kokoro-zf_xiaobei",
+      "voiceId": "kokoro-zf_xiaobei",
+      "transcript": "面条",
+      "heard": "粘条",
+      "wer": 0.5,
+      "durationSec": 2.299
+    }
+  ],
+  "clips": [
+    {
+      "clipId": "canary.erhua.nar@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "788e697c66b22ae2458b",
+      "transcript": "我们去那儿玩一会儿，吃一点儿东西。",
+      "durationSec": 4.702,
+      "bytes": 37869,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.62,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.6 chars/sec)"
+      ],
+      "asr": {
+        "text": "我们去那儿玩一会儿吃一点儿东西",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.erhua.nar@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "32b2b5be504036a3d1df",
+      "transcript": "我们去那儿玩一会儿，吃一点儿东西。",
+      "durationSec": 3.944,
+      "bytes": 31808,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.31,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "我们去那儿玩一会儿吃一点儿东西",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.erhua.nar@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "34de2191fa5da75f4fef",
+      "transcript": "我们去那儿玩一会儿，吃一点儿东西。",
+      "durationSec": 2.873,
+      "bytes": 23240,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 5.92,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "我们去那儿玩一会儿吃一点东西",
+        "wer": 0.0667,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.greeting.nihao@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "7c3cc3571eb07c630917",
+      "transcript": "你好！早上好！谢谢，再见！",
+      "durationSec": 3.814,
+      "bytes": 30764,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.41,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.4 chars/sec)"
+      ],
+      "asr": {
+        "text": "你好早上好谢谢再见",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.greeting.nihao@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "e09fca859e21c86538df",
+      "transcript": "你好！早上好！谢谢，再见！",
+      "durationSec": 3.5,
+      "bytes": 28256,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.71,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.7 chars/sec)"
+      ],
+      "asr": {
+        "text": "你好早上好谢谢再见",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.greeting.nihao@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "c52bf8c9ceb8030fb615",
+      "transcript": "你好！早上好！谢谢，再见！",
+      "durationSec": 2.664,
+      "bytes": 21568,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.88,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "你好早上好谢谢再见",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.long.restaurant@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "e58fce6815d19336e61b",
+      "transcript": "我想预订今天晚上八点两个人的桌子，可以吗？",
+      "durationSec": 5.616,
+      "bytes": 45183,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.74,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.7 chars/sec)"
+      ],
+      "asr": {
+        "text": "我想预定今天晚上八点两个人的桌子可以吗",
+        "wer": 0.0526,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.long.restaurant@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "00524e7aca347b20f45b",
+      "transcript": "我想预订今天晚上八点两个人的桌子，可以吗？",
+      "durationSec": 4.807,
+      "bytes": 38705,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.37,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "我想预定今天晚上八点两个人的桌子可以吗",
+        "wer": 0.0526,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.long.restaurant@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "5fc73d8dc10a404b3d93",
+      "transcript": "我想预订今天晚上八点两个人的桌子，可以吗？",
+      "durationSec": 4.101,
+      "bytes": 33062,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 5.12,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "我想预定今天晚上八点两个人的桌子可以吗",
+        "wer": 0.0526,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.measure.ge@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "f717fce0a6b9199f23ba",
+      "transcript": "一个人、两本书、三杯茶。",
+      "durationSec": 3.709,
+      "bytes": 29928,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.24,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "一个人两本书三杯茶",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.measure.ge@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "df576a1b2515b9870347",
+      "transcript": "一个人、两本书、三杯茶。",
+      "durationSec": 3.239,
+      "bytes": 26166,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.7,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.7 chars/sec)"
+      ],
+      "asr": {
+        "text": "一个人两本书三杯茶",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.measure.ge@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "3eb41d33e220fce5867a",
+      "transcript": "一个人、两本书、三杯茶。",
+      "durationSec": 2.508,
+      "bytes": 20315,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.79,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "一个人两本书三杯茶",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.neutral.de@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "8302c9c426db899bbdd7",
+      "transcript": "我的朋友来了，他们吃了饭。",
+      "durationSec": 3.709,
+      "bytes": 29928,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.5,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.5 chars/sec)"
+      ],
+      "asr": {
+        "text": "我的朋友来了他们吃了饭",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.neutral.de@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "ed2e41a9689a2eeeb5d8",
+      "transcript": "我的朋友来了，他们吃了饭。",
+      "durationSec": 3.265,
+      "bytes": 26375,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.98,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (4.0 chars/sec)"
+      ],
+      "asr": {
+        "text": "我的朋友来了他们吃了饭",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.neutral.de@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "33c131f01f30bdbdb95b",
+      "transcript": "我的朋友来了，他们吃了饭。",
+      "durationSec": 2.403,
+      "bytes": 19479,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 5.41,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "我的朋友来了他们吃着饭",
+        "wer": 0.0909,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.numbers.73@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "214dc06f70cd945d6ef1",
+      "transcript": "七十三块钱，一九九九年，十五分钟。",
+      "durationSec": 4.911,
+      "bytes": 39541,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.46,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.5 chars/sec)"
+      ],
+      "asr": {
+        "text": "七十三块钱一九九九年十五分钟",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.numbers.73@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "987413ff18f9453b42d2",
+      "transcript": "七十三块钱，一九九九年，十五分钟。",
+      "durationSec": 4.232,
+      "bytes": 34107,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.02,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "七十三块钱一九九九年十五分钟",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.numbers.73@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "837f76af07ae6b31b212",
+      "transcript": "七十三块钱，一九九九年，十五分钟。",
+      "durationSec": 3.84,
+      "bytes": 30973,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.43,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "七十三块钱一九局九年十五分钟",
+        "wer": 0.0714,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.question.ma@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "04a7a422eb445e79b074",
+      "transcript": "你好吗？火车站在哪儿呢？",
+      "durationSec": 3.657,
+      "bytes": 29510,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.28,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.3 chars/sec)"
+      ],
+      "asr": {
+        "text": "你好吗火车站在哪儿呢",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.question.ma@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "56e88742f615519ff934",
+      "transcript": "你好吗？火车站在哪儿呢？",
+      "durationSec": 3.265,
+      "bytes": 26375,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.68,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.7 chars/sec)"
+      ],
+      "asr": {
+        "text": "你好吗火车站在哪儿呢",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.question.ma@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "5e8cd2e58d56f69b7c51",
+      "transcript": "你好吗？火车站在哪儿呢？",
+      "durationSec": 2.22,
+      "bytes": 18016,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 5.4,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "你好吗火车站在哪呢",
+        "wer": 0.1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.retroflex.zhi@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "fd79d881e57a9b5e2876",
+      "transcript": "这是四十四只石狮子。",
+      "durationSec": 3.474,
+      "bytes": 28047,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.88,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.9 chars/sec)"
+      ],
+      "asr": {
+        "text": "这是四十四指石狮子",
+        "wer": 0.1111,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.retroflex.zhi@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "20be1587e77612a775e5",
+      "transcript": "这是四十四只石狮子。",
+      "durationSec": 3.03,
+      "bytes": 24494,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.3,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.3 chars/sec)"
+      ],
+      "asr": {
+        "text": "就是四十四指石狮子",
+        "wer": 0.2222,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.retroflex.zhi@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "c5953c153e2ee322b4f6",
+      "transcript": "这是四十四只石狮子。",
+      "durationSec": 2.194,
+      "bytes": 17807,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.56,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "这是四十四只石狮子",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.time.dian@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "6c6ac841bca1bfd5f313",
+      "transcript": "现在八点半，我们九点一刻出发。",
+      "durationSec": 4.65,
+      "bytes": 37451,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.23,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "现在八点半我们九点一刻出发",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.time.dian@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "19126a17753f4e7cffa5",
+      "transcript": "现在八点半，我们九点一刻出发。",
+      "durationSec": 3.997,
+      "bytes": 32226,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.75,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.8 chars/sec)"
+      ],
+      "asr": {
+        "text": "现在八点半我们九点一刻出发",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.time.dian@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "f031ef30c07dc577b58c",
+      "transcript": "现在八点半，我们九点一刻出发。",
+      "durationSec": 2.664,
+      "bytes": 21568,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 5.63,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "现在八点半我们九点一刻出发",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone.ma@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "53c4af7c548c94e593f7",
+      "transcript": "妈妈骑马，马慢，妈妈骂马。",
+      "durationSec": 3.683,
+      "bytes": 29719,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.53,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.5 chars/sec)"
+      ],
+      "asr": {
+        "text": "妈妈骑马马问妈妈骂马",
+        "wer": 0.1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone.ma@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "bff90bc37f5d889a99d7",
+      "transcript": "妈妈骑马，马慢，妈妈骂马。",
+      "durationSec": 3.37,
+      "bytes": 27211,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.86,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.9 chars/sec)"
+      ],
+      "asr": {
+        "text": "妈妈骑马马问妈妈骂马",
+        "wer": 0.1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone.ma@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "233095aa7258b7807f35",
+      "transcript": "妈妈骑马，马慢，妈妈骂马。",
+      "durationSec": 2.743,
+      "bytes": 22195,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.74,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "妈妈骑马妈慢妈妈妈马",
+        "wer": 0.2,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone3.sandhi@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "345167aad34ded224668",
+      "transcript": "我想买很好的雨伞。",
+      "durationSec": 3.291,
+      "bytes": 26584,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.73,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.7 chars/sec)"
+      ],
+      "asr": {
+        "text": "我想买很好的雨伞",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone3.sandhi@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "b69c771908ab159b54f0",
+      "transcript": "我想买很好的雨伞。",
+      "durationSec": 3.03,
+      "bytes": 24494,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.97,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.0 chars/sec)"
+      ],
+      "asr": {
+        "text": "我想买很好的雨伞",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.tone3.sandhi@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "4787dd3e08f06b6f6e69",
+      "transcript": "我想买很好的雨伞。",
+      "durationSec": 1.829,
+      "bytes": 14881,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.92,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "我想买很好的雨伞",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.ü.lü@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "64b81c5288b4b6765cad",
+      "transcript": "绿色的路很长。",
+      "durationSec": 2.926,
+      "bytes": 23658,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.39,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.4 chars/sec)"
+      ],
+      "asr": {
+        "text": "绿色的路很长",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.ü.lü@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "fc8a73e796d7197e07f8",
+      "transcript": "绿色的路很长。",
+      "durationSec": 2.638,
+      "bytes": 21359,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.65,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.7 chars/sec)"
+      ],
+      "asr": {
+        "text": "绿色的鹿很长",
+        "wer": 0.1667,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "canary.ü.lü@melotts-zh",
+      "layer": "pack",
+      "courseId": null,
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "f9721acf0c84b74c45e8",
+      "transcript": "绿色的路很长。",
+      "durationSec": 1.593,
+      "bytes": 13000,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.39,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "绿色的路很长",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:不客气@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "c2e8deecb91f60bc6e9a",
+      "transcript": "不客气",
+      "durationSec": 2.403,
+      "bytes": 19479,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.25,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "不客气",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:不客气@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "43d2a5559321d9e9c83a",
+      "transcript": "不客气",
+      "durationSec": 1.959,
+      "bytes": 15926,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.53,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.5 chars/sec)"
+      ],
+      "asr": {
+        "text": "不客气",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:不客气@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "cbccf10fe074d23d7d1b",
+      "transcript": "不客气",
+      "durationSec": 1.202,
+      "bytes": 9866,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.5,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.5 chars/sec)"
+      ],
+      "asr": {
+        "text": "不客气",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:公园@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "49be35ce52ace088c9c4",
+      "transcript": "公园",
+      "durationSec": 2.194,
+      "bytes": 17807,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 0.91,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (0.9 chars/sec)"
+      ],
+      "asr": {
+        "text": "公园",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:公园@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "64a194b51463d85ee811",
+      "transcript": "公园",
+      "durationSec": 1.646,
+      "bytes": 13418,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.22,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "供院",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:公园@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "526f7e535fc2345f36d7",
+      "transcript": "公园",
+      "durationSec": 1.097,
+      "bytes": 9030,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.82,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.8 chars/sec)"
+      ],
+      "asr": {
+        "text": "公园",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:可爱@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "79142c8050504113c23b",
+      "transcript": "可爱",
+      "durationSec": 1.881,
+      "bytes": 15299,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.06,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.1 chars/sec)"
+      ],
+      "asr": {
+        "text": "克爱",
+        "wer": 0.5,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:可爱@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "9ff3e248799fe878323c",
+      "transcript": "可爱",
+      "durationSec": 0.993,
+      "bytes": 8194,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.01,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.0 chars/sec)"
+      ],
+      "asr": {
+        "text": "可爱",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:可爱@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "2f3b487c4c11e87c4df4",
+      "transcript": "可爱",
+      "durationSec": 1.071,
+      "bytes": 8821,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.87,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.9 chars/sec)"
+      ],
+      "asr": {
+        "text": "可爱",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:大@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "e1197eb5a1a2361e95e9",
+      "transcript": "大",
+      "durationSec": 1.593,
+      "bytes": 13000,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 0.63,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (0.6 chars/sec)"
+      ],
+      "asr": {
+        "text": "那",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:大@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "b6521c95980d9be309d0",
+      "transcript": "大",
+      "durationSec": 1.019,
+      "bytes": 8403,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 0.98,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.0 chars/sec)"
+      ],
+      "asr": {
+        "text": "对",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:大@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "40b92dfa517a77db52b9",
+      "transcript": "大",
+      "durationSec": 0.758,
+      "bytes": 6313,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.32,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.3 chars/sec)"
+      ],
+      "asr": {
+        "text": "嗯",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:小@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "5bd5ce72f736d9bdf741",
+      "transcript": "小",
+      "durationSec": 0.94,
+      "bytes": 7776,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.06,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.1 chars/sec)"
+      ],
+      "asr": {
+        "text": "需",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:小@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "b3bab92aa1d04ac07aeb",
+      "transcript": "小",
+      "durationSec": 0.888,
+      "bytes": 7358,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.13,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.1 chars/sec)"
+      ],
+      "asr": {
+        "text": "小女",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:小@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "9895fa38ab026d92286b",
+      "transcript": "小",
+      "durationSec": 0.81,
+      "bytes": 6731,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.23,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "叫",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:我喜欢喝果汁。@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "7a808ac87c4c30e4c7c0",
+      "transcript": "我喜欢喝果汁。",
+      "durationSec": 2.978,
+      "bytes": 24076,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.35,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.4 chars/sec)"
+      ],
+      "asr": {
+        "text": "我喜欢何国志",
+        "wer": 0.5,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:我喜欢喝果汁。@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "23e763668d7c0c477643",
+      "transcript": "我喜欢喝果汁。",
+      "durationSec": 2.743,
+      "bytes": 22195,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.55,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.6 chars/sec)"
+      ],
+      "asr": {
+        "text": "我喜欢喝果汁",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:我喜欢喝果汁。@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "89ca1fcd083f53bdc151",
+      "transcript": "我喜欢喝果汁。",
+      "durationSec": 1.593,
+      "bytes": 13000,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.39,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "我喜欢喝果汁",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:我是女孩。@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "6fe2980c6c8460717bcb",
+      "transcript": "我是女孩。",
+      "durationSec": 2.56,
+      "bytes": 20733,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.95,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.0 chars/sec)"
+      ],
+      "asr": {
+        "text": "我室女孩",
+        "wer": 0.25,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:我是女孩。@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "f2f9d537cedf16e1a1b8",
+      "transcript": "我是女孩。",
+      "durationSec": 2.325,
+      "bytes": 18852,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.15,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "我是女孩",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:我是女孩。@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "0472db86ca92e1f1d248",
+      "transcript": "我是女孩。",
+      "durationSec": 1.332,
+      "bytes": 10910,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 3.75,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (3.8 chars/sec)"
+      ],
+      "asr": {
+        "text": "我是女孩",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:晚安，明天见。@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "d20a0369e5bd15e673b2",
+      "transcript": "晚安，明天见。",
+      "durationSec": 2.873,
+      "bytes": 23240,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.44,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.4 chars/sec)"
+      ],
+      "asr": {
+        "text": "万安明天见",
+        "wer": 0.2,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:晚安，明天见。@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "1a810ebb2976bc02828d",
+      "transcript": "晚安，明天见。",
+      "durationSec": 2.508,
+      "bytes": 20315,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.79,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.8 chars/sec)"
+      ],
+      "asr": {
+        "text": "晚安明天见",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:晚安，明天见。@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "b14c08cefa4d1a460117",
+      "transcript": "晚安，明天见。",
+      "durationSec": 1.515,
+      "bytes": 12373,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.62,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "晚安明天见",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:火车站在哪里?@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "e4bedf629eb302101568",
+      "transcript": "火车站在哪里?",
+      "durationSec": 2.978,
+      "bytes": 24076,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.35,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.4 chars/sec)"
+      ],
+      "asr": {
+        "text": "货车站在哪里",
+        "wer": 0.1667,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:火车站在哪里?@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "6054272e64e75e2db2ff",
+      "transcript": "火车站在哪里?",
+      "durationSec": 2.717,
+      "bytes": 21986,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.58,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.6 chars/sec)"
+      ],
+      "asr": {
+        "text": "火车站在哪里",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:火车站在哪里?@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "b31cd4286c37caa4ee9b",
+      "transcript": "火车站在哪里?",
+      "durationSec": 1.672,
+      "bytes": 13627,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.19,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "火车站在哪里",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:男孩@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "d77355689870be89e4a8",
+      "transcript": "男孩",
+      "durationSec": 2.325,
+      "bytes": 18852,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 0.86,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (0.9 chars/sec)"
+      ],
+      "asr": {
+        "text": "南海😔",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:男孩@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "e52cdab576e8007574a1",
+      "transcript": "男孩",
+      "durationSec": 1.698,
+      "bytes": 13836,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.18,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "南害",
+        "wer": 1,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:男孩@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "e326689198424d4cb067",
+      "transcript": "男孩",
+      "durationSec": 1.019,
+      "bytes": 8403,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.96,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.0 chars/sec)"
+      ],
+      "asr": {
+        "text": "男孩",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:请给我一杯水。@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "d41a336326e6ea290c53",
+      "transcript": "请给我一杯水。",
+      "durationSec": 2.952,
+      "bytes": 23867,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.37,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.4 chars/sec)"
+      ],
+      "asr": {
+        "text": "请给我一杯水",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:请给我一杯水。@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "6f65a0bec66b88077fa9",
+      "transcript": "请给我一杯水。",
+      "durationSec": 2.691,
+      "bytes": 21777,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 2.6,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (2.6 chars/sec)"
+      ],
+      "asr": {
+        "text": "请给我一杯水",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:请给我一杯水。@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "be3c1646f50ecd922bdf",
+      "transcript": "请给我一杯水。",
+      "durationSec": 1.62,
+      "bytes": 13209,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 4.32,
+      "technical": "pass",
+      "technicalIssues": [],
+      "asr": {
+        "text": "请给我一杯水",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:面条@kokoro-zf_xiaobei",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zf_xiaobei",
+      "speaker": null,
+      "assetKey": "98e167d06d7826f609f8",
+      "transcript": "面条",
+      "durationSec": 2.299,
+      "bytes": 18643,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 0.87,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (0.9 chars/sec)"
+      ],
+      "asr": {
+        "text": "粘条",
+        "wer": 0.5,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:面条@kokoro-zm_yunjian",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "kokoro-zm_yunjian",
+      "speaker": null,
+      "assetKey": "a5f8d49bea9435f46f2c",
+      "transcript": "面条",
+      "durationSec": 1.698,
+      "bytes": 13836,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.18,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.2 chars/sec)"
+      ],
+      "asr": {
+        "text": "面条",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    },
+    {
+      "clipId": "zh-en:面条@melotts-zh",
+      "layer": "pack",
+      "courseId": "zh-en",
+      "language": "zh",
+      "voiceId": "melotts-zh",
+      "speaker": "ZH",
+      "assetKey": "fec62f54e2553fb9843a",
+      "transcript": "面条",
+      "durationSec": 1.045,
+      "bytes": 8612,
+      "maxVolumeDb": null,
+      "leadingSilenceSec": null,
+      "trailingSilenceSec": null,
+      "charsPerSec": 1.91,
+      "technical": "fail",
+      "technicalIssues": [
+        "duration implausible for transcript (1.9 chars/sec)"
+      ],
+      "asr": {
+        "text": "面条",
+        "wer": 0,
+        "metric": "cer",
+        "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
+        "engine": "sensevoice"
+      }
+    }
+  ]
+}

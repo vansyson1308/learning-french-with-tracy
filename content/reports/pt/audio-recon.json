@@ -1,0 +1,132 @@
+{
+  "generator": "scripts/audio.ts recon",
+  "language": "pt",
+  "layers": "all",
+  "engines": {
+    "piper": {
+      "pinnedVersion": "1.2.0"
+    },
+    "kokoro": {
+      "pinnedVersion": "0.9.4"
+    },
+    "melotts": {
+      "pinnedVersion": "209145371cff8fc3bd60d7be902ea69cbdb7965a"
+    }
+  },
+  "voices": [
+    {
+      "voice": "pt_BR-faber-medium",
+      "engine": "piper",
+      "language": "pt",
+      "dataset": null,
+      "license": "* License: CC0",
+      "status": "eligible",
+      "gateReason": "matched CC0",
+      "files": {
+        "model": {
+          "path": "pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx",
+          "sha256": "858555e3a064209c57088fe6bd70c4c3dc54d03eaa00c45d5ecaf43a33f95aa7",
+          "bytes": 63201294
+        },
+        "config": {
+          "path": "pt/pt_BR/faber/medium/pt_BR-faber-medium.onnx.json",
+          "sha256": "7e694de195ae3fc36dd732c445eb04fb49b649854893cb5506b978f0d50a1d6f",
+          "bytes": 4855
+        },
+        "modelCard": {
+          "path": "pt/pt_BR/faber/medium/MODEL_CARD",
+          "sha256": "624fc8c611d29643ba30c0c1a1a0167d8dc1341cd2514ae0a0085bfed2b4741d",
+          "bytes": 278
+        }
+      }
+    },
+    {
+      "voice": "pt_BR-cadu-medium",
+      "engine": "piper",
+      "language": "pt",
+      "dataset": null,
+      "license": "* License: CC0",
+      "status": "eligible",
+      "gateReason": "matched CC0",
+      "files": {
+        "model": {
+          "path": "pt/pt_BR/cadu/medium/pt_BR-cadu-medium.onnx",
+          "sha256": "765f0809a6ea9035d4a6d0d008dbf8876e68b2dd32029312672fa8f405bdb535",
+          "bytes": 62950044
+        },
+        "config": {
+          "path": "pt/pt_BR/cadu/medium/pt_BR-cadu-medium.onnx.json",
+          "sha256": "5fe03aa3d4901880554905b12075713cd552598c8a350455a1ec73f8b4e6be19",
+          "bytes": 5040
+        },
+        "modelCard": {
+          "path": "pt/pt_BR/cadu/medium/MODEL_CARD",
+          "sha256": "526851a9c716b375658484a678ec0199332e02378aa367652d2093026b9527f8",
+          "bytes": 277
+        }
+      }
+    },
+    {
+      "voice": "kokoro-pf_dora",
+      "engine": "kokoro",
+      "language": "pt",
+      "dataset": null,
+      "license": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0",
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/pf_dora.pt",
+          "sha256": "07e4ff987c5d5a8c3995efd15cc4f0db7c4c15e881b198d8ab7f67ecf51f5eb7",
+          "bytes": 523425
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      }
+    },
+    {
+      "voice": "kokoro-pm_alex",
+      "engine": "kokoro",
+      "language": "pt",
+      "dataset": null,
+      "license": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0",
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/pm_alex.pt",
+          "sha256": "cf0ba8c573c2480fc54123683a35cf1e2ae130428e441eb91f9149bdb188a526",
+          "bytes": 523425
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      }
+    }
+  ]
+}

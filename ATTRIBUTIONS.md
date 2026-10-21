@@ -83,6 +83,50 @@ Vietnamese glosses and example translations derived from the Vietnamese Wiktiona
 
 > P3a: the primary source of `glosses.vi` / `translations.vi`. Entries that only redirect are skipped; a lexeme without a Vietnamese sense carries the draft marker TODO:vi until the authoring toolkit (P3c) fills it — the marker blocks compile for any -vi course.
 
+## Kokoro-82M voice kokoro-af_heart
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/af_heart.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1331 over 12 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Kokoro-82M voice kokoro-am_michael
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for en (no course yet) synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/am_michael.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1238 over 12 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Kokoro-82M voice kokoro-ef_dora
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/ef_dora.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1035 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Kokoro-82M voice kokoro-em_alex
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for es-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/em_alex.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1302 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+
 ## Kokoro-82M voice kokoro-if_sara
 
 - **License:** CC-BY-4.0
@@ -104,6 +148,39 @@ Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 Course audio for it-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/im_nicola.pt voice (CC-BY-4.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
 
 > Selected by the audio canary ASR audit (mean WER/CER 0.1701 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Kokoro-82M voice kokoro-pf_dora
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for pt-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/pf_dora.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1863 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Kokoro-82M voice kokoro-pm_alex
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for pt-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/pm_alex.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1431 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+
+## Kokoro-82M voice kokoro-zm_yunjian
+
+- **License:** Apache-2.0
+- **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-21
+
+Course audio for zh-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/zm_yunjian.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1892 over 24 sampled strings, 21 technical failures). Model weights are never committed.
 
 ## Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)
 
@@ -213,7 +290,7 @@ Course audio for pt-en synthesized with Piper (MIT, rhasspy/piper) using the pt_
 
 Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-kerstin-low voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.4905 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.5387 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
 
 ## Piper voice fr_FR-siwis-medium
 
@@ -235,7 +312,7 @@ Course audio for fr-en synthesized with Piper (MIT, rhasspy/piper) using the fr_
 
 Course audio for de-en synthesized with Piper (MIT, rhasspy/piper) using the de_DE-thorsten-high voice (CC0-1.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.2298 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.2055 over 24 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
 
 ## Piper voice fr_FR-upmc-medium (UPMC French speech corpus, speakers Jessica and Pierre)
 

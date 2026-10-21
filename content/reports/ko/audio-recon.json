@@ -1,0 +1,44 @@
+{
+  "generator": "scripts/audio.ts recon",
+  "language": "ko",
+  "layers": "all",
+  "engines": {
+    "piper": {
+      "pinnedVersion": "1.2.0"
+    },
+    "kokoro": {
+      "pinnedVersion": "0.9.4"
+    },
+    "melotts": {
+      "pinnedVersion": "209145371cff8fc3bd60d7be902ea69cbdb7965a"
+    }
+  },
+  "voices": [
+    {
+      "voice": "melotts-ko",
+      "engine": "melotts",
+      "language": "ko",
+      "dataset": null,
+      "license": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT",
+      "files": {
+        "checkpoint": {
+          "path": "checkpoint.pth",
+          "sha256": "48e3ff3fd0b5348e095f0468e60ae727507564100f58142ef3a922ead6e0a4d0",
+          "bytes": 207860748
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "74543376976dfadde45ba34336fa79c7e95509f43a7c2e701b22c0f71fd7695c",
+          "bytes": 3405
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "3cde1b0324d511f8cc4b2976e6ed77734d1bcaa49cf4be6c482885bb8ee35de8",
+          "bytes": 4394
+        }
+      }
+    }
+  ]
+}

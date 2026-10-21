@@ -194,7 +194,52 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  src/content/attributions.json
 
+<<<<<<< HEAD
 ## 2026-10-21 — register original-spanish-course (es-vi authored content source, P3d) — attributions only
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+=======
+## 2026-10-21 — audio.yml es canary (all) run 39639505968
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/es/audio-canary.json
+- compile: new      content/reports/es/audio-recon.json
+
+## 2026-10-21 — audio.yml pt canary (all) run 39641421297
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/pt/audio-canary.json
+- compile: new      content/reports/pt/audio-recon.json
+
+## 2026-10-21 — audio.yml zh canary (all) run 39642847235
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/zh/audio-canary.json
+- compile: new      content/reports/zh/audio-recon.json
+
+## 2026-10-21 — audio.yml en canary (all) run 39644566161
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/en/audio-canary.json
+- compile: new      content/reports/en/audio-recon.json
+
+## 2026-10-21 — audio.yml ko canary (all) run 39647522722
+
+- compile: new      content/reports/ko/audio-canary.json
+- compile: new      content/reports/ko/audio-recon.json
+
+## 2026-10-21 — audio.yml de canary (all) run 39648961207
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/de/audio-canary.json
+>>>>>>> origin/main
+
+## 2026-10-21 — merge main into phase-3/es-vi: audio canary bot commits (es, pt, zh, en, ko, de) and the original-spanish-course registry entry
 
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  src/content/attributions.json

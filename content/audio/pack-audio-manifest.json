@@ -26,10 +26,17 @@
     "es-en": {
       "policy": "generated",
       "language": "es",
-      "voiceId": "es_ES-davefx-medium",
+      "voiceId": "kokoro-ef_dora",
+      "candidates": [
+        "es_MX-claude-high",
+        "es_ES-davefx-medium",
+        "kokoro-ef_dora",
+        "kokoro-em_alex",
+        "melotts-es"
+      ],
       "voiceCast": {
-        "A": "es_ES-davefx-medium",
-        "B": null
+        "A": "kokoro-ef_dora",
+        "B": "kokoro-em_alex"
       }
     },
     "fr-en": {
@@ -57,18 +64,29 @@
     "pt-en": {
       "policy": "generated",
       "language": "pt",
-      "voiceId": "pt_BR-faber-medium",
+      "voiceId": "kokoro-pm_alex",
+      "candidates": [
+        "pt_BR-faber-medium",
+        "pt_BR-cadu-medium",
+        "kokoro-pf_dora",
+        "kokoro-pm_alex"
+      ],
       "voiceCast": {
-        "A": "pt_BR-faber-medium",
-        "B": null
+        "A": "kokoro-pm_alex",
+        "B": "kokoro-pf_dora"
       }
     },
     "zh-en": {
-      "policy": "device-tts",
+      "policy": "generated",
       "language": "zh",
-      "reason": "The only Mandarin Piper voice, zh_CN-huayan-medium, states 'License: Unknown' in its MODEL_CARD (excluded by the gate on 2026-09-02, run 33646858305). The upstream recordings have no traceable license, so the course speaks through the device's own Chinese text-to-speech voice.",
+      "voiceId": "kokoro-zm_yunjian",
+      "candidates": [
+        "melotts-zh",
+        "kokoro-zf_xiaobei",
+        "kokoro-zm_yunjian"
+      ],
       "voiceCast": {
-        "A": null,
+        "A": "kokoro-zm_yunjian",
         "B": null
       }
     },
@@ -171,7 +189,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "selected",
+      "status": "eligible",
       "gateReason": "matched CC0",
       "engine": "piper",
       "speaker": null
@@ -255,7 +273,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "selected",
+      "status": "eligible",
       "gateReason": "matched CC0",
       "engine": "piper",
       "speaker": null
@@ -325,24 +343,24 @@
       "files": {
         "model": {
           "path": "es/es_MX/claude/high/es_MX-claude-high.onnx",
-          "sha256": null,
-          "bytes": null
+          "sha256": "3ef40a71ea63852cd8ab7e6fa7d2ecdcfa67a0b47c9c48e3f10e02ee02083ea0",
+          "bytes": 63122309
         },
         "config": {
           "path": "es/es_MX/claude/high/es_MX-claude-high.onnx.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "1afc81f703c0e4cb3b4d7c0dca096b8b54a98806807f0170cf5eb5557723c12d",
+          "bytes": 4963
         },
         "modelCard": {
           "path": "es/es_MX/claude/high/MODEL_CARD",
-          "sha256": null,
-          "bytes": null
+          "sha256": "f03da57c1e945f6d709b01e7699d26018e145570139de52ac7569aaa8962a174",
+          "bytes": 247
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "* License: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-ef_dora",
@@ -353,29 +371,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/ef_dora.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "d9d69b0f8a2b87a345f269d89639f89dfbd1a6c9da0c498ae36dd34afcf35530",
+          "bytes": 523420
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-em_alex",
@@ -386,29 +404,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/em_alex.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5eac53f767c3f31a081918ba531969aea850bed18fe56419b804d642c6973431",
+          "bytes": 523420
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "melotts-es",
@@ -419,24 +437,24 @@
       "files": {
         "checkpoint": {
           "path": "checkpoint.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "9077a7e7e5fd8e42f3f922641c401f1936971c08465a3e7ccb19d57a659e72ae",
+          "bytes": 207860748
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "54488d922a2983f4d6a7f57158cc5f2714ea117994e1b22147a8579791554221",
+          "bytes": 3431
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "e0e6a57a8d37968b9ea9578ed383cab0cd56b41286de9bb24880ebb10129bf99",
+          "bytes": 4493
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT"
     },
     {
       "id": "de_DE-thorsten-high",
@@ -569,29 +587,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/pf_dora.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "07e4ff987c5d5a8c3995efd15cc4f0db7c4c15e881b198d8ab7f67ecf51f5eb7",
+          "bytes": 523425
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-pm_alex",
@@ -602,29 +620,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/pm_alex.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "cf0ba8c573c2480fc54123683a35cf1e2ae130428e441eb91f9149bdb188a526",
+          "bytes": 523425
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-jf_alpha",
@@ -729,24 +747,24 @@
       "files": {
         "checkpoint": {
           "path": "checkpoint.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "a74e9eadffff065c75eb6dfa040efa72cad23e72cfea70d39190bc174fb97093",
+          "bytes": 207770124
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "d58b5acdab89ad2bbd65325affab309ae3cb964834b02f9a60587474e81c8bb9",
+          "bytes": 2296
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "40b5b860bacbb3947cbef838719e660d2fe4961eba5b484290b4bedc0253e208",
+          "bytes": 4445
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT"
     },
     {
       "id": "kokoro-zf_xiaobei",
@@ -757,29 +775,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/zf_xiaobei.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "9b76be63dab4f4f96962030acc0126a9aee9728608fbbe115e2b58a2bd504df6",
+          "bytes": 523435
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "eligible",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-zm_yunjian",
@@ -790,29 +808,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/zm_yunjian.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "76cbf8bad35901d011d9628a2fdceb7b4f1f127e7a3269cb393b3941eb7fc417",
+          "bytes": 523435
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "melotts-ko",
@@ -823,24 +841,24 @@
       "files": {
         "checkpoint": {
           "path": "checkpoint.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "48e3ff3fd0b5348e095f0468e60ae727507564100f58142ef3a922ead6e0a4d0",
+          "bytes": 207860748
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "74543376976dfadde45ba34336fa79c7e95509f43a7c2e701b22c0f71fd7695c",
+          "bytes": 3405
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "3cde1b0324d511f8cc4b2976e6ed77734d1bcaa49cf4be6c482885bb8ee35de8",
+          "bytes": 4394
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT"
     },
     {
       "id": "kokoro-af_heart",
@@ -851,29 +869,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/af_heart.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "0ab5709b8ffab19bfd849cd11d98f75b60af7733253ad0d67b12382a102cb4ff",
+          "bytes": 523425
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "kokoro-am_michael",
@@ -884,29 +902,29 @@
       "files": {
         "model": {
           "path": "kokoro-v1_0.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
         },
         "voiceFile": {
           "path": "voices/am_michael.pt",
-          "sha256": null,
-          "bytes": null
+          "sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
+          "bytes": 523435
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0"
     },
     {
       "id": "melotts-en",
@@ -917,24 +935,24 @@
       "files": {
         "checkpoint": {
           "path": "checkpoint.pth",
-          "sha256": null,
-          "bytes": null
+          "sha256": "acd278040eaf9536908e2b965273df5a731c44d8f0da66cc5fed7972772ed23c",
+          "bytes": 207860748
         },
         "config": {
           "path": "config.json",
-          "sha256": null,
-          "bytes": null
+          "sha256": "039116c927c70eaa4458d315ea83aaaa99e1fca1c621b50c8ca56b4a5700eb77",
+          "bytes": 3488
         },
         "modelCard": {
           "path": "README.md",
-          "sha256": null,
-          "bytes": null
+          "sha256": "493958e29457067b476c3e871885d848dd46c8fb74c8694b46fa94ad062e00c1",
+          "bytes": 5755
         }
       },
       "declaredDataset": null,
-      "declaredLicense": null,
-      "status": "candidate",
-      "gateReason": null
+      "declaredLicense": "license: mit",
+      "status": "eligible",
+      "gateReason": "matched MIT"
     },
     {
       "id": "vi_VN-vais1000-medium",
