@@ -601,6 +601,14 @@ export const CourseProfileOverrideSchema = z.strictObject({
    */
   review: z.strictObject({ native: z.string().min(2), date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), checklist: z.string().optional() }).optional(),
   allowUnreviewed: z.boolean().optional(),
+  /**
+   * P3d course role within its target (scripts/lib/course-roles.ts): omitted
+   * = mirror of the primary (or the primary itself when its native code is
+   * the smallest); "primary" = this course carries the target's rich layers
+   * and reports; "standalone" = an independent course that shares only the
+   * target's lexicon.
+   */
+  role: z.enum(["primary", "standalone"]).optional(),
   enabled: z
     .strictObject({
       fsrs: z.boolean().optional(),

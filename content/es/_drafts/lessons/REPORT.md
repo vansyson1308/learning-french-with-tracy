@@ -1,6 +1,6 @@
 # lessons — ingest report (es-vi)
 
-Records: 40 · schema-valid: 40 · failed: 0 · validator errors after merge: 0
+Records: 108 · schema-valid: 108 · failed: 0 · validator errors after merge: 1
 
 ## Records
 
@@ -44,11 +44,80 @@ Records: 40 · schema-valid: 40 · failed: 0 · validator errors after merge: 0
 - ✅ line 38 `es-vi:ue-l1`
 - ✅ line 39 `es-vi:ue-l2`
 - ✅ line 40 `es-vi:ue-l3`
+- ✅ line 41 `es-vi:uf-l0`
+- ✅ line 42 `es-vi:uf-l1`
+- ✅ line 43 `es-vi:uf-l2`
+- ✅ line 44 `es-vi:uf-l3`
+- ✅ line 45 `es-vi:ug-l0`
+- ✅ line 46 `es-vi:ug-l1`
+- ✅ line 47 `es-vi:ug-l2`
+- ✅ line 48 `es-vi:ug-l3`
+- ✅ line 49 `es-vi:uh-l0`
+- ✅ line 50 `es-vi:uh-l1`
+- ✅ line 51 `es-vi:uh-l2`
+- ✅ line 52 `es-vi:uh-l3`
+- ✅ line 53 `es-vi:ui-l0`
+- ✅ line 54 `es-vi:ui-l1`
+- ✅ line 55 `es-vi:ui-l2`
+- ✅ line 56 `es-vi:ui-l3`
+- ✅ line 57 `es-vi:uj-l0`
+- ✅ line 58 `es-vi:uj-l1`
+- ✅ line 59 `es-vi:uj-l2`
+- ✅ line 60 `es-vi:uj-l3`
+- ✅ line 61 `es-vi:uk-l0`
+- ✅ line 62 `es-vi:uk-l1`
+- ✅ line 63 `es-vi:uk-l2`
+- ✅ line 64 `es-vi:uk-l3`
+- ✅ line 65 `es-vi:ul-l0`
+- ✅ line 66 `es-vi:ul-l1`
+- ✅ line 67 `es-vi:ul-l2`
+- ✅ line 68 `es-vi:ul-l3`
+- ✅ line 69 `es-vi:um-l0`
+- ✅ line 70 `es-vi:um-l1`
+- ✅ line 71 `es-vi:um-l2`
+- ✅ line 72 `es-vi:um-l3`
+- ✅ line 73 `es-vi:un-l0`
+- ✅ line 74 `es-vi:un-l1`
+- ✅ line 75 `es-vi:un-l2`
+- ✅ line 76 `es-vi:un-l3`
+- ✅ line 77 `es-vi:uo-l0`
+- ✅ line 78 `es-vi:uo-l1`
+- ✅ line 79 `es-vi:uo-l2`
+- ✅ line 80 `es-vi:uo-l3`
+- ✅ line 81 `es-vi:up-l0`
+- ✅ line 82 `es-vi:up-l1`
+- ✅ line 83 `es-vi:up-l2`
+- ✅ line 84 `es-vi:up-l3`
+- ✅ line 85 `es-vi:uq-l0`
+- ✅ line 86 `es-vi:uq-l1`
+- ✅ line 87 `es-vi:uq-l2`
+- ✅ line 88 `es-vi:uq-l3`
+- ✅ line 89 `es-vi:ur-l0`
+- ✅ line 90 `es-vi:ur-l1`
+- ✅ line 91 `es-vi:ur-l2`
+- ✅ line 92 `es-vi:ur-l3`
+- ✅ line 93 `es-vi:us-l0`
+- ✅ line 94 `es-vi:us-l1`
+- ✅ line 95 `es-vi:us-l2`
+- ✅ line 96 `es-vi:us-l3`
+- ✅ line 97 `es-vi:ut-l0`
+- ✅ line 98 `es-vi:ut-l1`
+- ✅ line 99 `es-vi:ut-l2`
+- ✅ line 100 `es-vi:ut-l3`
+- ✅ line 101 `es-vi:uu-l0`
+- ✅ line 102 `es-vi:uu-l1`
+- ✅ line 103 `es-vi:uu-l2`
+- ✅ line 104 `es-vi:uu-l3`
+- ✅ line 105 `es-vi:uv-l0`
+- ✅ line 106 `es-vi:uv-l1`
+- ✅ line 107 `es-vi:uv-l2`
+- ✅ line 108 `es-vi:uv-l3`
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- es-vi: missing content/courses/es-vi.map.json (exercise id map to es-en)
 
 ## Written
 
 - content/es/_drafts/pack.json
+- content/courses/es-vi.json

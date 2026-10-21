@@ -23,8 +23,9 @@ import path from "path";
 import { CourseProfileOverrideSchema, type PackSource } from "../../content/schema";
 import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../../src/lib/course-profile";
 
+import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
-import { canonicalJson, readJson, safeResolve, type CompiledFile } from "./pipeline";
+import { canonicalJson, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
 
 export type LexiconDbInfo = { name: string; contentHash: string };
 
@@ -91,21 +92,21 @@ function readOverride(courseId: string): Partial<CourseCapabilities> {
 }
 
 /**
- * The primary native language of a target (P2b): the smallest native code
- * among its courses — `en` for French, so every pre-P2b artifact name is
- * unchanged. A course of another native language reads its own artifacts
- * (prefixed by the course id).
+ * The primary native language of a target (P2b, roles since P3d): the
+ * native code of its primary course (scripts/lib/course-roles.ts) — `en`
+ * for French, so every pre-P2b artifact name is unchanged. A course of
+ * another native language reads its own artifacts (prefixed by the course id).
  */
-export function primaryNativeCodeOf(targetCode: string, packs: { targetCode: string; nativeCode: string }[]): string | undefined {
-  return packs
-    .filter((p) => p.targetCode === targetCode)
-    .map((p) => p.nativeCode)
-    .sort()[0];
+export function primaryNativeCodeOf(targetCode: string, packs: CourseRef[], roleOf: (courseId: string) => CourseRole | undefined = courseRoleOf): string | undefined {
+  return resolveCourseRoles(targetCode, packs, roleOf).primary?.nativeCode;
 }
 
-export function nativeArtifactPrefix(pack: { id: string; targetCode: string; nativeCode: string }, packs: { targetCode: string; nativeCode: string }[]): string {
-  return pack.nativeCode === primaryNativeCodeOf(pack.targetCode, packs) ? pack.targetCode : pack.id;
+export function nativeArtifactPrefix(pack: CourseRef, packs: CourseRef[], roleOf: (courseId: string) => CourseRole | undefined = courseRoleOf): string {
+  return resolveCourseRoles(pack.targetCode, packs, roleOf).primary?.id === pack.id ? pack.targetCode : pack.id;
 }
+
+/** What a standalone course (P3d) may read: the target's stable ids and its own lexicon. */
+const STANDALONE_ARTIFACT_KEYS: ReadonlySet<keyof CourseArtifactPaths> = new Set(["ids", "lexiconIndex", "lexiconFallback", "lexiconDb"]);
 
 export function deriveProfiles(args: {
   packs: PackSource[];
@@ -113,15 +114,23 @@ export function deriveProfiles(args: {
   /** artifact prefix (`fr`, `fr-vi`) → database. */
   lexiconDbs: Record<string, LexiconDbInfo>;
   artifactRoot?: string;
+  /** Course role reader (tests inject one; default reads content/courses/<id>.profile.json). */
+  roleOf?: (courseId: string) => CourseRole | undefined;
 }): Record<string, CourseProfile> {
   const root = args.artifactRoot ?? "src/content";
+  const roleOf = args.roleOf ?? courseRoleOf;
   const present = new Set(args.presentRelPaths);
   const profiles: Record<string, CourseProfile> = {};
   for (const pack of [...args.packs].sort((a, b) => a.id.localeCompare(b.id))) {
     const lang = buildLanguage(pack.targetCode);
-    const prefix = nativeArtifactPrefix(pack, args.packs);
-    const artifacts = artifactPathsFor(root, pack.targetCode, prefix, present, args.lexiconDbs[prefix]);
-    const primaryCourse = args.packs.find((p) => p.targetCode === pack.targetCode && p.nativeCode === primaryNativeCodeOf(pack.targetCode, args.packs));
+    const roles = resolveCourseRoles(pack.targetCode, args.packs, roleOf);
+    const standalone = roles.standalone.some((p) => p.id === pack.id);
+    const prefix = roles.primary?.id === pack.id ? pack.targetCode : pack.id;
+    const allArtifacts = artifactPathsFor(root, pack.targetCode, prefix, present, args.lexiconDbs[prefix]);
+    const artifacts = standalone
+      ? (Object.fromEntries(Object.entries(allArtifacts).filter(([k]) => STANDALONE_ARTIFACT_KEYS.has(k as keyof CourseArtifactPaths))) as CourseArtifactPaths)
+      : allArtifacts;
+    const primaryCourse = standalone ? undefined : roles.primary;
     const audioCourseId = primaryCourse && primaryCourse.id !== pack.id ? primaryCourse.id : undefined;
     const capabilities = { ...deriveCapabilities(artifacts), ...readOverride(pack.id) };
     profiles[pack.id] = {
