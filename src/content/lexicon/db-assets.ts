@@ -7,8 +7,8 @@
  * the assets).
  */
 export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: string; asset: number }> = {
-  "es": { name: "es-lexicon-v3-59447ed22ef7518e.db", contentHash: "59447ed22ef7518e", asset: require("../../../assets/lexicon/es-lexicon-v3-59447ed22ef7518e.db") },
-  "es-en": { name: "es-en-lexicon-v3-071b89e8ff44670c.db", contentHash: "071b89e8ff44670c", asset: require("../../../assets/lexicon/es-en-lexicon-v3-071b89e8ff44670c.db") },
+  "es": { name: "es-lexicon-v3-f5b1152eba28c75a.db", contentHash: "f5b1152eba28c75a", asset: require("../../../assets/lexicon/es-lexicon-v3-f5b1152eba28c75a.db") },
+  "es-en": { name: "es-en-lexicon-v3-5f6495e69030db86.db", contentHash: "5f6495e69030db86", asset: require("../../../assets/lexicon/es-en-lexicon-v3-5f6495e69030db86.db") },
   "fr": { name: "fr-lexicon-v3-4fd93ff6c545b579.db", contentHash: "4fd93ff6c545b579", asset: require("../../../assets/lexicon/fr-lexicon-v3-4fd93ff6c545b579.db") },
   "fr-vi": { name: "fr-vi-lexicon-v3-b49c69da4dd7df8b.db", contentHash: "b49c69da4dd7df8b", asset: require("../../../assets/lexicon/fr-vi-lexicon-v3-b49c69da4dd7df8b.db") },
 };

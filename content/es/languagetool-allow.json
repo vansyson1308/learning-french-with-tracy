@@ -1,0 +1,475 @@
+{
+  "version": 1,
+  "language": "es",
+  "disabledRules": [],
+  "allow": [
+    {
+      "rule": "AGREEMENT_DET_NOUN",
+      "match": "el información",
+      "text": "el información",
+      "reason": "deliberate wrong option in es-vi:uc-l1-e4 (the answer is \"la información\")"
+    },
+    {
+      "rule": "AGREEMENT_DET_NOUN",
+      "match": "el universidad",
+      "text": "el universidad",
+      "reason": "deliberate wrong option in es-vi:uc-l1-e3 (the answer is \"la universidad\")"
+    },
+    {
+      "rule": "AGREEMENT_DET_NOUN",
+      "match": "los ciudades",
+      "text": "los ciudades",
+      "reason": "deliberate wrong option in es-vi:ua-l3-e6 (the answer is \"las ciudades\")"
+    },
+    {
+      "rule": "COMA_SUJETO_PREDICADO",
+      "match": ", ha",
+      "text": "Amiga, ha pasado demasiado tiempo.",
+      "reason": "vocative comma (Amiga, …), not a comma between subject and predicate"
+    },
+    {
+      "rule": "COMMA_ADVERB",
+      "match": "Normalmente",
+      "text": "Soy enfermero y trabajo en un hospital. Normalmente me levanto a las seis y media, me ducho y desayuno un café con leche y una tostada. Voy al trabajo en metro porque no tengo coche. Empiezo a las ocho y termino a las tres de la tarde.",
+      "reason": "a comma after a sentence-initial adverb is optional in Spanish"
+    },
+    {
+      "rule": "COMMA_ADVERB",
+      "match": "Simplemente",
+      "text": "Simplemente no sé qué decir...",
+      "reason": "a comma after a sentence-initial adverb is optional in Spanish"
+    },
+    {
+      "rule": "EL_TILDE",
+      "match": "El",
+      "text": "El",
+      "reason": "a single word in an option list or word bank: the article/possessive is correct there, no sentence context"
+    },
+    {
+      "rule": "EL_TILDE",
+      "match": "el",
+      "text": "el",
+      "reason": "a single word in an option list or word bank: the article/possessive is correct there, no sentence context"
+    },
+    {
+      "rule": "ES_QUESTION_MARK",
+      "match": "Dónde",
+      "text": "Dónde vives?",
+      "reason": "deliberate wrong option in es-vi:ue-l3-e1 (the answer is \"¿Dónde vives?\")"
+    },
+    {
+      "rule": "ES_QUESTION_MARK",
+      "match": "Hola",
+      "text": "Hola!",
+      "reason": "deliberate wrong option in es-vi:ue-l3-e2 (the answer is \"¡Hola!\")"
+    },
+    {
+      "rule": "ES_SIMPLE_REPLACE_SIMPLE_DIA",
+      "match": "dia",
+      "text": "buen dia",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "ES_SIMPLE_REPLACE_SIMPLE_DIAS",
+      "match": "dias",
+      "text": "buenos dias",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "INTERROGATIVOS_CON_TILDE_OS",
+      "match": "Donde",
+      "text": "¿Donde vives?",
+      "reason": "deliberate wrong option in es-vi:ue-l3-e1 (the answer is \"¿Dónde vives?\")"
+    },
+    {
+      "rule": "MAS",
+      "match": "mas",
+      "text": "mas o menos",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "MAS",
+      "match": "mas",
+      "text": "nada mas",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Biwa",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Crouch",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Fukuoka",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Klava",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Lan",
+      "reason": "Vietnamese personal name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Linh",
+      "reason": "Vietnamese personal name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Marconi",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Meg",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Minh",
+      "reason": "Vietnamese personal name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Tran",
+      "reason": "Vietnamese personal name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Yoko",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Yutaka",
+      "reason": "proper name in a lexicon example sentence"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "arbol",
+      "text": "el arbol",
+      "reason": "deliberate wrong option in es-vi:ue-l1-e3 (the answer is \"el árbol\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "arból",
+      "text": "el arból",
+      "reason": "deliberate wrong option in es-vi:ue-l1-e3 (the answer is \"el árbol\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "bilbao",
+      "text": "bilbao",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "bilbao",
+      "text": "vivo en bilbao",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "cafe",
+      "text": "cafe",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "cafe",
+      "text": "el cafe",
+      "reason": "deliberate wrong option in es-vi:ue-l0-e1 (the answer is \"el café\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "carmen",
+      "text": "carmen",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "ciu",
+      "text": "ciu-dad",
+      "reason": "syllable division shown on the word-stress concept card"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "ciudads",
+      "text": "las ciudads",
+      "reason": "deliberate wrong option in es-vi:ua-l3-e6 (the answer is \"las ciudades\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "cáfe",
+      "text": "el cáfe",
+      "reason": "deliberate wrong option in es-vi:ue-l0-e1 (the answer is \"el café\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "elena",
+      "text": "elena",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "elena",
+      "text": "me llamo elena",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "elena",
+      "text": "mi nombre es elena",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "elena",
+      "text": "soy elena",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "estacion",
+      "text": "estacion",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "football",
+      "text": "La palabra fútbol en español viene de la palabra inglesa football.",
+      "reason": "English word quoted in an etymology example"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "informadad",
+      "text": "la informadad",
+      "reason": "deliberate wrong option in es-vi:uc-l1-e4 (the answer is \"la información\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "linh",
+      "text": "linh",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "lé",
+      "text": "te-lé-fo-no",
+      "reason": "syllable division shown on the word-stress concept card"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "madrid",
+      "text": "leo vive en madrid",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "madrid",
+      "text": "madrid",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "madrid",
+      "text": "vive en madrid",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "madrid",
+      "text": "él vive en madrid",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "manana",
+      "text": "manana",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "minh",
+      "text": "minh",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "nadia",
+      "text": "me llamo nadia",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "nadia",
+      "text": "mi nombre es nadia",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "nadia",
+      "text": "nadia",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "nadia",
+      "text": "soy nadia",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "nguyen",
+      "text": "nguyen",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sa",
+      "text": "ca-sa",
+      "reason": "syllable division shown on the word-stress concept card"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sabado",
+      "text": "sabado",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sevilla",
+      "text": "pablo vive en sevilla",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sevilla",
+      "text": "sevilla",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sevilla",
+      "text": "vive en sevilla",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sevilla",
+      "text": "vivo en sevilla",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sevilla",
+      "text": "él vive en sevilla",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sofía",
+      "text": "a sofía le gusta el té",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "sofía",
+      "text": "sofía le gusta el té",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "telefono",
+      "text": "el telefono",
+      "reason": "deliberate wrong option in es-vi:ue-l0-e0 (the answer is \"el teléfono\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "telefóno",
+      "text": "el telefóno",
+      "reason": "deliberate wrong option in es-vi:ue-l0-e0 (the answer is \"el teléfono\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "tran",
+      "text": "tran",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "universición",
+      "text": "la universición",
+      "reason": "deliberate wrong option in es-vi:uc-l1-e3 (the answer is \"la universidad\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "veintiúno",
+      "text": "veintiúno",
+      "reason": "deliberate wrong option in es-vi:ud-l1-e3 (the answer is \"veintiuno\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "vietnam",
+      "text": "vietnam",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "ñ",
+      "text": "En español, pocas palabras empiezan por la letra ñ.",
+      "reason": "the letter ñ named in an example sentence"
+    },
+    {
+      "rule": "PRONOMBRE_SIN_VERBO",
+      "match": "te-",
+      "text": "te-lé-fo-no",
+      "reason": "syllable division shown on the word-stress concept card"
+    },
+    {
+      "rule": "SERIA",
+      "match": "seria",
+      "text": "Mi culpa. Solo no podía mantener la cara seria por mucho tiempo. Era imposible.",
+      "reason": "the adjective seria (la cara seria), not the verb form sería"
+    },
+    {
+      "rule": "TU_TILDE",
+      "match": "Tu",
+      "text": "Tu",
+      "reason": "a single word in an option list or word bank: the article/possessive is correct there, no sentence context"
+    },
+    {
+      "rule": "VOSEO",
+      "match": "tomás",
+      "text": "me llamo tomás",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "VOSEO",
+      "match": "tomás",
+      "text": "mi nombre es tomás",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "VOSEO",
+      "match": "tomás",
+      "text": "soy tomás",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "VOSEO",
+      "match": "tomás",
+      "text": "tomás",
+      "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    }
+  ]
+}

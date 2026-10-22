@@ -460,3 +460,21 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  content/reports/ja/audio-canary.json
 - compile: changed  src/content/attributions.json
+## 2026-10-22 — es lexicon repaired by the LanguageTool gate (P3e §8): el alma/área/habla/haya, la TV, teclear, la amistad; 32 failing examples dropped; French unchanged
+
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/lexicon-source-audit.json
+- compile: changed  src/content/assessment/es-checkpoints.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/es.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/lexicon/es-en-index.json
+- compile: changed  src/content/lexicon/es-en-web-fallback.json
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/writing/es-writing.json
+- compile: new      lexicon-db:es-en:es-en-lexicon-v3-5f6495e69030db86.db
+- compile: new      lexicon-db:es:es-lexicon-v3-f5b1152eba28c75a.db
+- compile: missing  lexicon-db:es-en:es-en-lexicon-v3-071b89e8ff44670c.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-59447ed22ef7518e.db

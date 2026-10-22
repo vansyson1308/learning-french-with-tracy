@@ -96,6 +96,43 @@ jobs:
         if: matrix.tz == 'UTC'
         run: bun run release:identity
 
+  # P3e §8: LanguageTool (LGPL-2.1) checks every Spanish target string of
+  # es-vi. A CI/dev tool only — downloaded on the runner (pinned + hashed),
+  # never shipped, so it is not in the shipped-provenance registry. A match
+  # fails unless content/es/languagetool-allow.json allows it with a reason.
+  languagetool:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      LT_VERSION: "6.6"
+      LT_SHA256: 53600506b399bb5ffe1e4c8dec794fd378212f14aaf38ccef9b6f89314d11631
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || '' }}
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.11 # pinned to the locally verified Phase-0/1 toolchain
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Download LanguageTool (pinned, hash-checked)
+        run: |
+          curl -sSL -o "$RUNNER_TEMP/lt.zip" "https://languagetool.org/download/LanguageTool-${LT_VERSION}.zip"
+          echo "${LT_SHA256}  $RUNNER_TEMP/lt.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/lt.zip" -d "$RUNNER_TEMP"
+      - name: Start LanguageTool server
+        run: |
+          (cd "$RUNNER_TEMP/LanguageTool-${LT_VERSION}" && nohup java -Xmx2g -cp languagetool-server.jar org.languagetool.server.HTTPServer --port 8081 > "$RUNNER_TEMP/lt.log" 2>&1 &)
+          for i in $(seq 1 60); do curl -sf http://localhost:8081/v2/languages > /dev/null && exit 0; sleep 2; done
+          cat "$RUNNER_TEMP/lt.log"; exit 1
+      - name: LanguageTool gate (es-vi)
+        run: bun scripts/languagetool.ts --course es-vi --server http://localhost:8081
+
   export-size:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
