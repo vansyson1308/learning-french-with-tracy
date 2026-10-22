@@ -86,11 +86,13 @@ itself.
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).
-- **Spanish audio is pending the generate run.** The 255 Spanish clips (lessons,
-  checkpoints, exam, conversation partners) have scripts but no bundled audio
-  until the P3b audio workflow generates them; listening items offer the
-  audio-unavailable skip meanwhile, and the course pack uses device TTS for
-  pack words (`audio.policy: device-tts`, reason recorded).
+- **Spanish audio is bundled at 32 kbps (P3f, run 39761607493).** `es-vi` and
+  `es-en` lesson audio, the 613 syllabus words and the 221 listening clips
+  (Kokoro `ef_dora` / `em_alex`) total 7.4 MB; dictionary entries outside the
+  syllabus and example sentences speak through the device voice. Five
+  sentence clips are flagged for listening review in
+  `content/reports/es/audio-quality.json`; playback of the 32 kbps files on a
+  phone is part of the RC4 checklist (not yet observed).
 - **Audio for the non-French languages is produced by dispatched runs
   (P3b).** The multi-engine pipeline, the licence gate, the per-language
   canaries and the voice casts are in the repository; the canary runs for
