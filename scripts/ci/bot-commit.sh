@@ -13,7 +13,9 @@
 #
 # Any failure exits non-zero BEFORE `git commit`: nothing is committed.
 # On a rejected push the commit is rebased onto the moved branch and the
-# gate runs again (a rebase can make the blessed manifest stale); a
+# gate runs again (a rebase can make the blessed manifest stale). Uncommitted
+# run leftovers are stashed first, and a conflict confined to the golden
+# files takes the branch's version (the gate re-blesses it); any other
 # conflicting rebase aborts and fails — re-dispatch the run instead.
 #
 # Usage:
@@ -78,10 +80,21 @@ for attempt in 1 2 3; do
   fi
   echo "bot-commit: push rejected (attempt $attempt) — rebasing onto origin/$BRANCH and re-running the gate"
   git fetch origin "$BRANCH"
+  # Files the run touched but does not commit (outside PATHS) would block the
+  # rebase; they are run leftovers, so set them aside.
+  git stash push --quiet -m "bot-commit leftovers" || true
   if ! git rebase "origin/$BRANCH"; then
-    git rebase --abort || true
-    echo "::error::bot-commit: $BRANCH moved with conflicting changes — nothing pushed; re-dispatch the run"
-    exit 1
+    # A golden manifest/CHANGELOG conflict is expected when the branch moved:
+    # take the branch's goldens and let the gate below re-bless them.
+    conflicted="$(git diff --name-only --diff-filter=U)"
+    if [ -n "$conflicted" ] && ! printf '%s\n' "$conflicted" | grep -qvE '^(scripts/__tests__/golden|src/lib/__tests__/golden)/'; then
+      printf '%s\n' "$conflicted" | while read -r f; do git checkout --ours -- "$f" && git add -- "$f"; done
+      GIT_EDITOR=true git rebase --continue || { git rebase --abort || true; echo "::error::bot-commit: rebase could not continue — re-dispatch the run"; exit 1; }
+    else
+      git rebase --abort || true
+      echo "::error::bot-commit: $BRANCH moved with conflicting changes — nothing pushed; re-dispatch the run"
+      exit 1
+    fi
   fi
   gate "$REASON (after rebase onto $(git rev-parse --short "origin/$BRANCH"))"
   stage
