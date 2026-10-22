@@ -187,6 +187,7 @@ export type MessageKey =
   | "language.vi"
   | "language.xx"
   | "language.zh"
+  | "learn.betaBanner"
   | "learn.coursePickerLabel"
   | "learn.guidebookLabel"
   | "learn.hint.cleared"
@@ -487,4 +488,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 485;
+export const MESSAGE_KEY_COUNT = 486;

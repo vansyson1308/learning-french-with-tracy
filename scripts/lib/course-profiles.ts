@@ -25,7 +25,7 @@ import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../
 
 import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
-import { canonicalJson, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
+import { canonicalJson, courseIsBeta, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
 
 export type LexiconDbInfo = { name: string; contentHash: string };
 
@@ -156,6 +156,8 @@ export function deriveProfiles(args: {
       // P3d: an inherited course kept beside its target's primary course —
       // hidden from onboarding, listed under "other courses".
       ...(standalone ? { role: "standalone" as const } : {}),
+      // P3e §8: labelled beta in the app until a native review is recorded.
+      ...(courseIsBeta(pack.id) ? { beta: true as const } : {}),
     };
   }
   return profiles;

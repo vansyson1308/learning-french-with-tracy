@@ -10,6 +10,7 @@
  *   bun scripts/author.ts ingest <step> --target es --native vi [--dry-run] [--output FILE]
  *   bun scripts/author.ts lint --course fr-en [--out FILE]
  *   bun scripts/author.ts checklist --course es-vi
+ *   bun scripts/author.ts review-tiers --course es-vi   (P3e: Tier-1 review files)
  *   bun scripts/author.ts blueprint                                    → prints the French census the blueprint cites
  *   bun scripts/author.ts selftest --target xx --native en            → emit every step + ingest the committed xx content as if drafted (dry run)
  *   bun scripts/author.ts steps
@@ -28,6 +29,7 @@ import type { PackSource } from "../content/schema";
 
 import { buildBundle, writeBundle } from "./lib/authoring/bundle";
 import { collectChecklist, renderChecklist } from "./lib/authoring/checklist";
+import { lineCount, renderTier1Native, renderTier1Target, TIER1_NATIVE_MAX_LINES, TIER1_TARGET_MAX_LINES } from "./lib/authoring/review-tiers";
 import { examTrackPaths } from "./lib/exam-bank";
 import { ingestStep } from "./lib/authoring/ingest";
 import { isGeneratedDrift, listStaged, promote, stagedRoot, withStaging } from "./lib/authoring/staging";
@@ -169,6 +171,19 @@ if (command === "steps") {
   const rel = `content/${pack.targetCode}/REVIEW-CHECKLIST.md`;
   writeFileSync(safeResolve(rel), renderChecklist(courseId, lines));
   console.log(`checklist ${courseId}: ${lines.length} strings → ${rel}`);
+} else if (command === "review-tiers") {
+  // P3e §8: the two Tier-1 review files replace the per-string checklist for new courses.
+  const courseId = opt("course") ?? fail("--course <id>");
+  const pack = readJson(`content/courses/${courseId}.json`) as PackSource;
+  const files: [string, string, number][] = [
+    [`content/${pack.targetCode}/REVIEW-TIER1-${pack.nativeCode}.md`, renderTier1Native(courseId), TIER1_NATIVE_MAX_LINES],
+    [`content/${pack.targetCode}/REVIEW-TIER1-${pack.targetCode}.md`, renderTier1Target(courseId), TIER1_TARGET_MAX_LINES],
+  ];
+  for (const [rel, text, max] of files) {
+    if (lineCount(text) > max) fail(`${rel}: ${lineCount(text)} lines, over the ${max}-line budget`);
+    writeFileSync(safeResolve(rel), `${text}\n`);
+    console.log(`review-tiers ${courseId}: ${lineCount(text)} lines → ${rel}`);
+  }
 } else if (command === "selftest") {
   const target = opt("target") ?? "xx";
   const native = opt("native") ?? "en";

@@ -84,6 +84,8 @@ export type CourseProfile = {
   artifacts: CourseArtifactPaths;
   /** P3d: "standalone" = an inherited course kept beside its target's primary course (no rich layers). */
   role?: "standalone";
+  /** P3e §8: content still under native review — the Learn tab shows a beta banner. */
+  beta?: true;
   /**
    * The course whose pack-audio manifest entries this course plays (P2b):
    * set only for a course in a secondary native language — the audio is

@@ -182,6 +182,14 @@ export function courseRoleOf(courseId: string): CourseRole | undefined {
   return parsed.success ? parsed.data.role : undefined;
 }
 
+/** P3e §8: a course flagged betaUntilReviewed with no review recorded yet. */
+export function courseIsBeta(courseId: string): boolean {
+  const rel = `content/courses/${courseId}.profile.json`;
+  if (!existsSync(safeResolve(rel))) return false;
+  const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
+  return parsed.success && parsed.data.betaUntilReviewed === true && parsed.data.review === undefined;
+}
+
 /** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
 export function courseProfileFlag(courseId: string, flag: "legacyLessonShapes" | "allowUnreviewed"): boolean | undefined {
   const rel = `content/courses/${courseId}.profile.json`;

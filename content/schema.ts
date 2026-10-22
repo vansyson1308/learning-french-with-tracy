@@ -624,6 +624,12 @@ export const CourseProfileOverrideSchema = z.strictObject({
    */
   legacyLessonShapes: z.boolean().optional(),
   /**
+   * P3e §8: while no `review` is recorded, the app labels the course
+   * "beta — content under review" (es-vi until the owner signs Tier-1 vi).
+   * The label disappears by itself once `review` is added.
+   */
+  betaUntilReviewed: z.boolean().optional(),
+  /**
    * P3d course role within its target (scripts/lib/course-roles.ts): omitted
    * = mirror of the primary (or the primary itself when its native code is
    * the smallest); "primary" = this course carries the target's rich layers

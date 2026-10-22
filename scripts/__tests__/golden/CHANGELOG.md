@@ -478,3 +478,8 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      lexicon-db:es:es-lexicon-v3-f5b1152eba28c75a.db
 - compile: missing  lexicon-db:es-en:es-en-lexicon-v3-071b89e8ff44670c.db
 - compile: missing  lexicon-db:es:es-lexicon-v3-59447ed22ef7518e.db
+
+## 2026-10-22 — es-vi beta label in course-profiles.json and three guidebook fixes (P3e §8); French unchanged
+
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/packs/es-vi.json
