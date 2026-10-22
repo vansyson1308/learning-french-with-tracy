@@ -502,3 +502,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      lexicon-db:es:es-lexicon-v3-c6fc82b48c7f025c.db
 - compile: missing  lexicon-db:es-en:es-en-lexicon-v3-5f6495e69030db86.db
 - compile: missing  lexicon-db:es:es-lexicon-v3-f5b1152eba28c75a.db
+
+## 2026-10-22 — audio.yml es generate (all) run 39716862754
+
+- compile: changed  src/content/audio-manifest.ts
+- compile: new      content/reports/es/audio-census.json
+- compile: new      content/reports/es/audio-quality.json
