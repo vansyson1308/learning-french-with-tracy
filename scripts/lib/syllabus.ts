@@ -23,7 +23,18 @@ import { syllabusSchema, type PackSource, type RichLexicon, type Syllabus } from
 import { readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const SYLLABUS_DERIVATION =
-  "members: lexemes taught by the primary course + frequency bands very-common/common; unit: first unit teaching the lexeme, else first unit teaching its topic, else the first unit; order: unit, then frequency rank";
+  "members: lexemes taught by the primary course + course-authored lexemes (source original-lexicon-etl only) + frequency bands very-common/common; unit: first unit teaching the lexeme, else first unit teaching its topic, else the first unit; order: unit, then frequency rank";
+
+/**
+ * P3e §8: a lexeme the course authored by hand (its only source is the
+ * course's own lexicon work, no dictionary or frequency evidence) is core
+ * course vocabulary — numbers, days, months, pronouns — and belongs in the
+ * syllabus even without a frequency measurement.
+ */
+export function courseAuthored(lex: { sourceRefs?: { source: string }[] }): boolean {
+  const refs = lex.sourceRefs ?? [];
+  return refs.length > 0 && refs.every((r) => r.source === "original-lexicon-etl");
+}
 
 export function syllabusPath(lang: string): string {
   return `content/${lang}/lexicon/syllabus.json`;
@@ -51,7 +62,9 @@ export function deriveSyllabus(args: { lang: string; level: string; minLexemes: 
   }
   const taught = new Set(units.flatMap((u) => [...u.surfaces]));
   // Regional forms (P3e variety) are accepted, never taught as the model.
-  const members = args.lexicon.lexemes.filter((l) => !l.variety && (taught.has(l.surface) || l.frequency?.band === "very-common" || l.frequency?.band === "common"));
+  const members = args.lexicon.lexemes.filter(
+    (l) => !l.variety && (taught.has(l.surface) || courseAuthored(l) || l.frequency?.band === "very-common" || l.frequency?.band === "common")
+  );
   const rank = (l: (typeof members)[number]) => l.frequency?.rank ?? Number.MAX_SAFE_INTEGER;
   const entries = members
     .map((l) => ({ lexemeId: l.id, unitId: firstUnitOf(l.surface) ?? (l.topic ? topicUnit.get(l.topic) : undefined) ?? units[0]?.id ?? "", rank: rank(l), surface: l.surface }))

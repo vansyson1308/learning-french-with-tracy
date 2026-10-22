@@ -483,3 +483,22 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  src/content/course-profiles.json
 - compile: changed  src/content/packs/es-vi.json
+
+## 2026-10-22 — es lexicon back-translation pass (P3e §8): homograph frequencies dropped, adjective/adverb surfaces, English glosses, Vietnamese translations; syllabus adds course-authored A1 lexemes; French unchanged
+
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/es.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/lexicon/es-en-index.json
+- compile: changed  src/content/lexicon/es-en-web-fallback.json
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/writing/es-writing.json
+- compile: new      lexicon-db:es-en:es-en-lexicon-v3-331e4292c6bb6e25.db
+- compile: new      lexicon-db:es:es-lexicon-v3-c6fc82b48c7f025c.db
+- compile: missing  lexicon-db:es-en:es-en-lexicon-v3-5f6495e69030db86.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-f5b1152eba28c75a.db

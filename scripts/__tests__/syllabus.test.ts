@@ -3,7 +3,7 @@ import { describe, expect, test } from "bun:test";
 import { lintSyllabusCoverage } from "../lib/authoring/lint";
 import { loadRichLexicon } from "../lib/lexicon";
 import { courseRolesFor, loadPacks } from "../lib/pipeline";
-import { deriveSyllabus, loadSyllabus, validateSyllabusData } from "../lib/syllabus";
+import { courseAuthored, deriveSyllabus, loadSyllabus, validateSyllabusData } from "../lib/syllabus";
 
 const packs = loadPacks();
 const esPack = courseRolesFor("es", packs).primary!.pack;
@@ -55,5 +55,22 @@ describe("lexical syllabus (P3e)", () => {
     expect(bad.stats.uncovered).toBe(1);
     expect(bad.findings.map((f) => f.where)).toEqual([dailyOnly.id]);
     expect(bad.findings.every((f) => f.severity === "error" && f.rule === "syllabus-coverage")).toBe(true);
+  });
+
+  test("P3e §8: course-authored core vocabulary is in the syllabus without a frequency measurement", () => {
+    const authored = esLex!.lexemes.filter((l) => courseAuthored(l) && !l.variety);
+    expect(authored.length).toBeGreaterThan(20);
+    const ids = new Set(ES.entries.map((e) => e.lexemeId));
+    for (const l of authored) expect(ids.has(l.id)).toBe(true);
+    expect(courseAuthored({ sourceRefs: [{ source: "kaikki-en" }, { source: "original-lexicon-etl" }] })).toBe(false);
+    expect(courseAuthored({ sourceRefs: [] })).toBe(false);
+  });
+
+  test("P3e §8: words whose frequency belonged to a homograph are not daily words", () => {
+    const ids = new Set(ES.entries.map((e) => e.lexemeId));
+    for (const id of ["es:w:asir", "es:w:casar", "es:w:mesar", "es:w:ademar", "es:w:hemo", "es:w:aguar", "es:w:tipar", "es:w:haya", "es:w:son", "es:w:era"]) {
+      expect(ids.has(id)).toBe(false);
+      expect(esLex!.lexemes.find((l) => l.id === id)?.frequency).toBeUndefined();
+    }
   });
 });
