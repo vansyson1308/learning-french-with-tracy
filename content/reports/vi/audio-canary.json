@@ -5,7 +5,7 @@
   "layers": [
     "pack"
   ],
-  "asrModel": "faster-whisper:base",
+  "asrModel": "faster-whisper:medium",
   "asrReviewPolicy": {
     "minWords": 3,
     "werAtLeast": 0.5,
@@ -14,14 +14,14 @@
   "clipCount": 12,
   "uniqueAssetCount": 12,
   "technicalFailures": 0,
-  "sentenceClipsForReview": 6,
+  "sentenceClipsForReview": 3,
   "voiceSummary": [
     {
       "courseId": null,
       "layer": "pack",
       "voiceId": "vi_VN-vais1000-medium",
       "clips": 12,
-      "meanWer": 0.5646,
+      "meanWer": 0.2925,
       "technicalFailures": 0
     }
   ],
@@ -30,49 +30,25 @@
       "clipId": "canary.d.gi@vi_VN-vais1000-medium",
       "voiceId": "vi_VN-vais1000-medium",
       "transcript": "Dì Giang đi ra ruộng gieo giống.",
-      "heard": "",
-      "wer": 1,
-      "durationSec": 1.567
+      "heard": "Vì rằng đi xa ruộng theo giống.",
+      "wer": 0.5556,
+      "durationSec": 1.515
     },
     {
       "clipId": "canary.final.stop@vi_VN-vais1000-medium",
       "voiceId": "vi_VN-vais1000-medium",
       "transcript": "Một, mười, hai mươi, hạt, bắp, sách.",
-      "heard": "1, 2, 1, 2, 1, 2, 3",
-      "wer": 1,
-      "durationSec": 1.437
-    },
-    {
-      "clipId": "canary.numbers.73@vi_VN-vais1000-medium",
-      "voiceId": "vi_VN-vais1000-medium",
-      "transcript": "Bảy mươi ba nghìn đồng, một nghìn chín trăm chín mươi chín, mười lăm phút.",
-      "heard": "7.13.000 đồng 1.919.15 phút.",
-      "wer": 0.9091,
-      "durationSec": 3.5
-    },
-    {
-      "clipId": "canary.polite.a@vi_VN-vais1000-medium",
-      "voiceId": "vi_VN-vais1000-medium",
-      "transcript": "Vâng ạ, cháu cảm ơn bác nhiều ạ.",
-      "heard": "Phông ạ, chấu cảm ơn bắt nhiều ạ.",
-      "wer": 0.625,
-      "durationSec": 1.829
+      "heard": "Một người hay người hẳn đang theo?",
+      "wer": 0.5833,
+      "durationSec": 1.411
     },
     {
       "clipId": "canary.tone.ma@vi_VN-vais1000-medium",
       "voiceId": "vi_VN-vais1000-medium",
       "transcript": "Ma, má, mà, mả, mã, mạ.",
-      "heard": "Lấy lấy lấy lấy",
-      "wer": 1.3333,
+      "heard": "LÀ LÀ LÀ",
+      "wer": 1,
       "durationSec": 1.202
-    },
-    {
-      "clipId": "canary.tr.ch@vi_VN-vais1000-medium",
-      "voiceId": "vi_VN-vais1000-medium",
-      "transcript": "Trời chiều trong trẻo, chim chóc chuyền cành.",
-      "heard": "Trời chiều chóng chèo, chìm chóc truyền cần.",
-      "wer": 0.5833,
-      "durationSec": 1.985
     }
   ],
   "clips": [
@@ -85,19 +61,19 @@
       "speaker": null,
       "assetKey": "10f4162f51b32eadcf94",
       "transcript": "Dì Giang đi ra ruộng gieo giống.",
-      "durationSec": 1.567,
-      "bytes": 12791,
+      "durationSec": 1.515,
+      "bytes": 12373,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 20.42,
+      "charsPerSec": 21.12,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "",
-        "wer": 1,
+        "text": "Vì rằng đi xa ruộng theo giống.",
+        "wer": 0.5556,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -110,19 +86,19 @@
       "speaker": null,
       "assetKey": "2e27f766bcdc54863341",
       "transcript": "Một, mười, hai mươi, hạt, bắp, sách.",
-      "durationSec": 1.437,
-      "bytes": 11746,
+      "durationSec": 1.411,
+      "bytes": 11537,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 25.06,
+      "charsPerSec": 25.52,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "1, 2, 1, 2, 1, 2, 3",
-        "wer": 1,
+        "text": "Một người hay người hẳn đang theo?",
+        "wer": 0.5833,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -144,10 +120,10 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Chính chào chào mỗi sáng, tầm ơn và tạm biệt.",
-        "wer": 0.2143,
+        "text": "Xin chào, chào buổi sáng, cảm ơn và tạm biệt.",
+        "wer": 0,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -160,19 +136,19 @@
       "speaker": null,
       "assetKey": "9eee3a158fd9c757f0c3",
       "transcript": "Tôi muốn đặt một bàn cho hai người lúc tám giờ tối nay, được không ạ?",
-      "durationSec": 3.291,
-      "bytes": 26584,
+      "durationSec": 3.37,
+      "bytes": 27211,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 20.96,
+      "charsPerSec": 20.48,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Tôi muốn đặt một bàn cho 2 người lúc 8 xờ tối nay được không ạp.",
-        "wer": 0.2105,
+        "text": "Tôi muốn đặt một bàn cho hai người lúc 8 giờ tối nay được không ạ?",
+        "wer": 0.0526,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -194,10 +170,10 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Đấy máy nhà tôi không có người",
+        "text": "Hôm nay mai nhà tôi không có người",
         "wer": 0.25,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -210,19 +186,19 @@
       "speaker": null,
       "assetKey": "e95334e31e527a7682d0",
       "transcript": "Bảy mươi ba nghìn đồng, một nghìn chín trăm chín mươi chín, mười lăm phút.",
-      "durationSec": 3.5,
-      "bytes": 28256,
+      "durationSec": 3.474,
+      "bytes": 28047,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 21.14,
+      "charsPerSec": 21.3,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "7.13.000 đồng 1.919.15 phút.",
-        "wer": 0.9091,
+        "text": "Bảy mươi ba nghìn đồng một nghìn chín trăm chín mươi chín mười lăm phút",
+        "wer": 0,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -235,19 +211,19 @@
       "speaker": null,
       "assetKey": "4421149b39cf365de841",
       "transcript": "Vâng ạ, cháu cảm ơn bác nhiều ạ.",
-      "durationSec": 1.829,
-      "bytes": 14881,
+      "durationSec": 1.907,
+      "bytes": 15508,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.5,
+      "charsPerSec": 16.78,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Phông ạ, chấu cảm ơn bắt nhiều ạ.",
-        "wer": 0.625,
+        "text": "Vâng ạ, cháu cảm ơn Bắc nhiều ạ.",
+        "wer": 0.25,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -260,19 +236,19 @@
       "speaker": null,
       "assetKey": "6e78ba233729b980ab7f",
       "transcript": "Ga ở đâu? Mấy giờ tàu chạy?",
-      "durationSec": 1.515,
-      "bytes": 12373,
+      "durationSec": 1.489,
+      "bytes": 12164,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.82,
+      "charsPerSec": 18.13,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Hạ ở đâu, mấy giờ tồ chảy.",
-        "wer": 0.25,
+        "text": "Cả ở đâu mấy giờ tàu chạy?",
+        "wer": 0.125,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -294,10 +270,10 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Lấy lấy lấy lấy",
-        "wer": 1.3333,
+        "text": "LÀ LÀ LÀ",
+        "wer": 1,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -310,19 +286,19 @@
       "speaker": null,
       "assetKey": "cb58fa0d5975e104b224",
       "transcript": "Bạn đi đâu đấy? Tôi đi chợ mua cá.",
-      "durationSec": 1.802,
-      "bytes": 14672,
+      "durationSec": 1.855,
+      "bytes": 15090,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 18.86,
+      "charsPerSec": 18.33,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "và đi đau đấy, tôi đi chậm 1 cá.",
-        "wer": 0.4,
+        "text": "Vạn đến đâu đấy? Tôi đi chợ mua cá.",
+        "wer": 0.2,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -335,19 +311,19 @@
       "speaker": null,
       "assetKey": "5d164bc29495a7a22d4a",
       "transcript": "Trời chiều trong trẻo, chim chóc chuyền cành.",
-      "durationSec": 1.985,
-      "bytes": 16135,
+      "durationSec": 2.09,
+      "bytes": 16971,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 22.67,
+      "charsPerSec": 21.53,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Trời chiều chóng chèo, chìm chóc truyền cần.",
-        "wer": 0.5833,
+        "text": "Trời chiều trong treo, chim chóc chuyên càng.",
+        "wer": 0.4167,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     },
@@ -360,19 +336,19 @@
       "speaker": null,
       "assetKey": "a3b5c8a9bd8feaba89ad",
       "transcript": "Người lớn uống nước, trẻ con ăn cơm.",
-      "durationSec": 2.011,
-      "bytes": 16344,
+      "durationSec": 2.038,
+      "bytes": 16553,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 17.9,
+      "charsPerSec": 17.67,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "Người lớn uống nước, trẻ con ăn cơm.",
-        "wer": 0,
+        "text": "Người lớn uống nước, trẻ còn ăn cơm",
+        "wer": 0.0769,
         "metric": "wer",
-        "model": "faster-whisper:base",
+        "model": "faster-whisper:medium",
         "engine": "whisper"
       }
     }

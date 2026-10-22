@@ -363,11 +363,11 @@ Reception dialogue audio synthesized with Piper (MIT, rhasspy/piper) using the f
 - **License:** CC-BY-4.0
 - **Source:** https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/vi/vi_VN/vais1000/medium
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-21
+- **Retrieved:** 2026-10-22
 
 Course audio for vi (no course yet) synthesized with Piper (MIT, rhasspy/piper) using the vi_VN-vais1000-medium voice (CC-BY-4.0). Voice pinned at rhasspy/piper-voices revision v1.0.0; the MODEL_CARD is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.5646 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
+> Selected by the audio canary ASR audit (mean WER/CER 0.2925 over 12 sampled strings, 0 technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.
 
 ## Tatoeba — sentences and translation links
 
