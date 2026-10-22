@@ -60,17 +60,28 @@ itself.
   compiles with `allowUnreviewed: true` in `content/courses/es-vi.profile.json`:
   its Spanish and Vietnamese text was authored with the P3c toolkit and has
   not yet been checked by a native Spanish teacher or a native Vietnamese
-  reviewer. `content/es/REVIEW-CHECKLIST.md` is the reviewer's list. The
+  reviewer. Since P3e the review is tiered: the owner signs
+  `content/es/REVIEW-TIER1-vi.md` (the Vietnamese that teaches or judges) and a
+  hired Spanish teacher checks `content/es/REVIEW-TIER1-es.md`; everything else
+  is covered by the validators, the LanguageTool gate (CI job `languagetool`,
+  allow-list with reasons in `content/es/languagetool-allow.json`) and the
+  back-translation pass (`content/es/_drafts/BACKTRANSLATION.md`). Until the
+  review is recorded the Learn tab labels the course "Bản beta — nội dung
+  đang được duyệt" (`betaUntilReviewed`). The
   older `es-en` course is marked `"role": "standalone"`: it keeps its
   40 legacy lessons and its English dictionary but none of the new layers,
   and Spanish level claims and reports count only against `es-vi`.
-- **DELE A1 practice (`es-vi`) reproduces the public format only.** The
-  section, task, timing and score-group figures in `content/es/exam/dele-a1.json`
-  come from the public description summarised in the es-vi brief; the
-  official Instituto Cervantes guide could not be re-checked (the site was in
-  maintenance), so `formatSource.checkedAgainstOfficialGuide` is `false` and
-  the app says so. Matching tasks are presented as one three-option choice per
-  item. Writing and speaking are graded by the app's deterministic rubrics, so
+- **DELE A1 practice (`es-vi`) reproduces the public 2020 format only.** Since
+  P3e the track follows the 2020 model (four parts of 45 + 25 + 25 + 10 minutes,
+  4 + 4 + 2 + 3 tasks with their formats including the lettered matching pools,
+  two score groups — reading + writing and listening + speaking — each needing
+  30 of 60 points; `trackVersion` 2), as described by the coordinator's spec
+  and the references recorded in `content/es/exam/dele-a1.json`. The official
+  Instituto Cervantes guide still could not be opened (2026-10-21 and
+  2026-10-22: examenes.cervantes.es redirects to a maintenance page, the web
+  archive is unreachable from this environment), so
+  `formatSource.checkedAgainstOfficialGuide` stays `false` and the app says
+  so. Writing and speaking are graded by the app's deterministic rubrics, so
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).
@@ -85,11 +96,29 @@ itself.
   es/de/it/pt/ja/zh/ko/en/vi and the Spanish pack + lexicon generation run on
   GitHub-hosted runners after the merge and commit their results
   (`content/audio/voice-casts.json`, `content/reports/<lang>/audio-*.json`).
+  Since P3e Korean is scored by character error rate (recognisers space
+  Hangul arbitrarily) and one-word clips by an absolute duration band: ko now
+  has one clean voice (MeloTTS-KR, mean CER 0.14), ja and zh have a verified
+  second speaker (Kokoro `jm_kumo`, `zm_yunjian`), vi keeps one voice.
   Until a language's cast is `selected`, its inherited course keeps
   `audio.policy = device-tts`; a language with no clean voice is recorded as
   `no-clean-voice`, never voiced by a guessed model. Spanish pack audio is
   regenerated under pipelineVersion 2 (loudness-normalised, the canary's A
   voice) — its bytes change; French audio stays byte-identical.
+- **Spanish variety (P3e).** `es-vi` models Peninsular Spanish
+  (`content/es/VARIETY.md`); Latin-American forms (*boleto, jugo, carro,
+  computadora, ustedes* for *vosotros*) are accepted in answers and shown as a
+  note on the teach card, never taught as the model. Some recognition-only
+  dictionary examples keep their Latin-American wording.
+- **Daily new words (P3e).** Today adds up to N new syllabus words a day
+  (Profile → Learning, 0–15, default 5). Spanish draws on a 613-lexeme A1
+  syllabus; the French lexicon has 126 lexemes, so French daily words run out
+  sooner (French content unchanged).
+- **Lexicon frequency homographs (P3e).** The ETL splits a word form's count
+  between every lemma sharing the form, which inflated rare verbs (*asir* from
+  *así*, *casar* from *casa*). The 35 affected Spanish lexemes lost their
+  frequency and left the syllabus (`content/es/_drafts/BACKTRANSLATION.md` §4);
+  the ETL rule itself is unchanged, so new pools (de/it/pt) need the same check.
 - **Spanish lexicon (P3a) is a derived draft.** `es-en` now ships an
   800-lexeme Spanish lexicon derived from Wiktionary (kaikki.org),
   FrequencyWords, wordfreq and Tatoeba (`content/es/lexicon/ACQUISITION.md`):
