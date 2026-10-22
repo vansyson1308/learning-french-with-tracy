@@ -184,10 +184,14 @@ describe("exam track rules — every rule fires", () => {
     expect(errorsOf(t)).toContain("min 40 exceeds the group's maximum (25)");
   });
 
-  test("a checked format needs retrieval dates", () => {
-    const t = clone();
-    t.formatSource.checkedAgainstOfficialGuide = true;
-    expect(errorsOf(t)).toContain("needs a retrieval date on every reference");
+  test("a checked format names who checked, when, and the documents read (P3f)", () => {
+    expect(errorsOf(clone())).not.toContain("checkedAgainstOfficialGuide");
+    const noDates = clone();
+    noDates.formatSource.references = noDates.formatSource.references.map(({ url, title }) => ({ url, title }));
+    expect(errorsOf(noDates)).toContain("needs a retrieval date on the document(s) actually read");
+    const noWho = clone();
+    delete noWho.formatSource.checkedBy;
+    expect(errorsOf(noWho)).toContain("needs checkedBy and checkedAt");
   });
 
   test("objective targets resolve; native text is complete", () => {

@@ -1870,6 +1870,9 @@ export const examTrackSchema = (lang: string) =>
       references: z.array(z.strictObject({ url: z.string().url(), title: z.string().min(2), retrieved: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional() })).min(1),
       /** True only after the figures were read in the official document itself. */
       checkedAgainstOfficialGuide: z.boolean(),
+      /** P3f: who read the official documents, and when (required when checked). */
+      checkedBy: z.string().min(2).optional(),
+      checkedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
       note: nativeText(),
     }),
     sections: z.array(examSectionSchema).min(1),

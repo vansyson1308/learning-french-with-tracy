@@ -1,9 +1,9 @@
 import { describe, expect, test } from "bun:test";
 
-import { lintSyllabusCoverage } from "../lib/authoring/lint";
+import { lintSyllabusContext, lintSyllabusCoverage } from "../lib/authoring/lint";
 import { loadRichLexicon } from "../lib/lexicon";
 import { courseRolesFor, loadPacks } from "../lib/pipeline";
-import { courseAuthored, deriveSyllabus, loadSyllabus, validateSyllabusData } from "../lib/syllabus";
+import { courseAuthored, deriveSyllabus, loadSyllabus, loadTopicUnits, validateSyllabusData, validateTopicUnits } from "../lib/syllabus";
 
 const packs = loadPacks();
 const esPack = courseRolesFor("es", packs).primary!.pack;
@@ -72,5 +72,23 @@ describe("lexical syllabus (P3e)", () => {
       expect(ids.has(id)).toBe(false);
       expect(esLex!.lexemes.find((l) => l.id === id)?.frequency).toBeUndefined();
     }
+  });
+
+  test("P3f: the authored topic map places words no unit teaches in their theme's unit", () => {
+    const map = loadTopicUnits("es")!;
+    expect(validateTopicUnits(map, { lexicon: esLex!, pack: esPack })).toEqual([]);
+    const onUnit1 = ES.entries.filter((e) => e.unitId === "es-vi:unit-1").length;
+    expect(onUnit1).toBeLessThan(60); // was 328 before the map
+    const byId = new Map(esLex!.lexemes.map((l) => [l.id, l]));
+    const verb = ES.entries.find((e) => byId.get(e.lexemeId)?.topic === "everyday" && byId.get(e.lexemeId)?.partOfSpeech === "verb" && e.unitId === "es-vi:unit-b");
+    expect(verb).toBeDefined();
+    const bad = { ...map, units: { ...map.units, nosuchtopic: "es-vi:unit-1", "food:verb": "es-vi:unit-zz" } };
+    expect(validateTopicUnits(bad, { lexicon: esLex!, pack: esPack })).toHaveLength(2);
+  });
+
+  test("P3f: the context lint counts daily words that no sentence of the course uses", () => {
+    const r = lintSyllabusContext(esPack, "es", ES, esLex!.lexemes);
+    expect(r.stats.withContext + r.stats.withoutContext).toBe(ES.entries.length);
+    expect(r.findings.every((f) => f.rule === "syllabus-context" && f.severity === "warn")).toBe(true);
   });
 });

@@ -41,7 +41,7 @@ import {
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
 import { examTrackPaths } from "./exam-bank";
-import { compileDailyWordsArtifact, deriveSyllabus, loadSyllabus, validateSyllabusData } from "./syllabus";
+import { compileDailyWordsArtifact, deriveSyllabus, loadSyllabus, loadTopicUnits, validateSyllabusData, validateTopicUnits } from "./syllabus";
 import { varietyErrors } from "./variety";
 import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
@@ -370,7 +370,8 @@ function validateTargetSyllabus(lang: string, packs: LoadedPack[], lexicon: Retu
   } catch (e) {
     return [schemaFailure(`syllabus (${lang})`, e)];
   }
-  return validateSyllabusData({ syllabus, lang, lexicon, pack, nativeCodes }).errors;
+  const topicUnits = loadTopicUnits(lang);
+  return [...validateSyllabusData({ syllabus, lang, lexicon, pack, nativeCodes }).errors, ...(topicUnits ? validateTopicUnits(topicUnits, { lexicon, pack }) : [])];
 }
 
 /** P3d: every exam track of a target against the primary course and the target's banks. */

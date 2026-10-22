@@ -12,7 +12,7 @@ Changed, item by item:
    `pictureMcq`, `matchToPool` / `completeFromPool` (one lettered pool shared by several
    items, fixed order, distinct keys), `form`, `short_text`, `monologue`, `conversation`;
    per-task stimulus word bands, plays per recording, speaking minutes; pass rule as score
-   groups (Reading + Writing, Listening + Speaking, 30 of 60 each) with readiness taken from
+   groups (Reading + Writing, Listening + Speaking, 30 of 50 each) with readiness taken from
    the weaker group. `content/es/exam/dele-a1.json` re-authored (`trackVersion` 2): Reading
    4 tasks / 45 min, Listening 4 / 25 min, Writing 2 / 25 min, Speaking 3 / 10 min, two forms,
    110 items; exam texts are reserved (lessons cannot use them). References recorded in

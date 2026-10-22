@@ -94,8 +94,9 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
   const err = (m: string) => errors.push(`exam ${track.id}: ${m}`);
 
   if (track.language !== input.lang) err(`language "${track.language}" ≠ content/${input.lang}/`);
-  if (track.formatSource.checkedAgainstOfficialGuide && track.formatSource.references.some((r) => r.retrieved === undefined)) {
-    err("checkedAgainstOfficialGuide needs a retrieval date on every reference");
+  if (track.formatSource.checkedAgainstOfficialGuide) {
+    if (!track.formatSource.references.some((r) => r.retrieved !== undefined)) err("checkedAgainstOfficialGuide needs a retrieval date on the document(s) actually read");
+    if (track.formatSource.checkedBy === undefined || track.formatSource.checkedAt === undefined) err("checkedAgainstOfficialGuide needs checkedBy and checkedAt");
   }
 
   // Sections, tasks and the pass rule.
@@ -271,6 +272,8 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
       publisher: track.formatSource.publisher,
       references: track.formatSource.references,
       checkedAgainstOfficialGuide: track.formatSource.checkedAgainstOfficialGuide,
+      ...(track.formatSource.checkedBy !== undefined ? { checkedBy: track.formatSource.checkedBy } : {}),
+      ...(track.formatSource.checkedAt !== undefined ? { checkedAt: track.formatSource.checkedAt } : {}),
       note: text(track.formatSource.note, `${track.id}.formatSource.note`),
     },
     sections: track.sections.map((s) => ({

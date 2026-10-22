@@ -90,7 +90,11 @@ try {
   await byId("exam-overview").waitFor();
   const overview = await byId("exam-overview").innerText();
   check("overview shows the estimate disclaimer", overview.includes(TRACK.readiness.disclaimer.slice(0, 40)));
-  check("overview says the format was not re-checked", overview.includes(TRACK.formatSource.note.slice(0, 40)));
+  // P3f: the "not re-checked" note shows only while the format is unchecked.
+  check(
+    TRACK.formatSource.checkedAgainstOfficialGuide ? "overview has no 'not re-checked' note (format checked)" : "overview says the format was not re-checked",
+    overview.includes(TRACK.formatSource.note.slice(0, 40)) === !TRACK.formatSource.checkedAgainstOfficialGuide
+  );
   for (const s of TRACK.sections) await byId(`exam-practice-${s.id}`).waitFor();
   check("overview lists the four parts", true);
 

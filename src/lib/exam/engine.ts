@@ -60,7 +60,7 @@ export type CompiledExamTrack = {
   level: string;
   title: string;
   description: string;
-  formatSource: { publisher: string; references: { url: string; title: string; retrieved?: string }[]; checkedAgainstOfficialGuide: boolean; note: string };
+  formatSource: { publisher: string; references: { url: string; title: string; retrieved?: string }[]; checkedAgainstOfficialGuide: boolean; checkedBy?: string; checkedAt?: string; note: string };
   sections: CompiledExamSection[];
   /** Generic pass rule (P3e): every group must reach its minimum — never a single total. */
   passRule: { groups: CompiledExamGroup[] };

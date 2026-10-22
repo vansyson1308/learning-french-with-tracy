@@ -558,7 +558,7 @@ export function validateContent(): ValidationResult {
         err(`catalog.json: ${course.id} is not a shipped course — run bun run content:compile`);
       } else if (course.unitCount !== want.unitCount || course.lessonCount !== want.lessonCount) {
         err(
-          `catalog.json: ${course.id} advertises ${course.unitCount} units · ${course.lessonCount} lessons but the pack has ${want.unitCount} · ${want.lessonCount}`
+          `catalog.json: ${course.id} advertises ${course.unitCount} units · ${course.lessonCount} lessons but the pack has ${want.unitCount} · ${want.lessonCount} — run bun run content:compile`
         );
       }
     }

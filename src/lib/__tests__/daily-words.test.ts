@@ -24,9 +24,11 @@ const NOW = Date.UTC(2026, 9, 22, 8);
 const firstUnitLessons = (pack: typeof ES) => pack.sections[0].units[0].lessons.map((l) => l.id);
 const done = (ids: string[]) => Object.fromEntries(ids.map((id) => [id, true as const]));
 const packSurfaces = (pack: typeof ES) => new Set(pack.sections.flatMap((s) => s.units.flatMap((u) => u.words.map((w) => w.target))));
+/** Every lesson done: all units reached (P3f: stream-only words sit in their theme's unit, no longer in unit 1). */
+const allDone = () => Object.fromEntries(ES.sections.flatMap((s) => s.units.flatMap((u) => u.lessons.map((l) => [l.id, true] as const))));
 /** A daily candidate the pack itself never teaches (only the stream delivers it). */
 const streamOnly = () =>
-  dailyWordCandidates({ courseId: "es-vi", pack: ES, completedLessons: {}, cards: {}, max: 200 }).find((c) => !packSurfaces(ES).has(c.word.target))!;
+  dailyWordCandidates({ courseId: "es-vi", pack: ES, completedLessons: allDone(), cards: {}, max: 700 }).find((c) => !packSurfaces(ES).has(c.word.target))!;
 const card = (): FsrsCardState => ({ due: NOW + 86_400_000, stability: 2, difficulty: 5, scheduled_days: 1, learning_steps: 0, reps: 1, lapses: 0, state: "review", last_review: NOW - 86_400_000 });
 
 describe("daily words — syllabus and setting", () => {

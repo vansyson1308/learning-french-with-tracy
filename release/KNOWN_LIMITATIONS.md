@@ -71,17 +71,18 @@ itself.
   older `es-en` course is marked `"role": "standalone"`: it keeps its
   40 legacy lessons and its English dictionary but none of the new layers,
   and Spanish level claims and reports count only against `es-vi`.
-- **DELE A1 practice (`es-vi`) reproduces the public 2020 format only.** Since
+- **DELE A1 practice (`es-vi`) reproduces the official 2020 format with original items.** Since
   P3e the track follows the 2020 model (four parts of 45 + 25 + 25 + 10 minutes,
   4 + 4 + 2 + 3 tasks with their formats including the lettered matching pools,
   two score groups — reading + writing and listening + speaking — each needing
-  30 of 60 points; `trackVersion` 2), as described by the coordinator's spec
-  and the references recorded in `content/es/exam/dele-a1.json`. The official
-  Instituto Cervantes guide still could not be opened (2026-10-21 and
-  2026-10-22: examenes.cervantes.es redirects to a maintenance page, the web
-  archive is unreachable from this environment), so
-  `formatSource.checkedAgainstOfficialGuide` stays `false` and the app says
-  so. Writing and speaking are graded by the app's deterministic rubrics, so
+  30 of 50 points; `trackVersion` 2), as described by the coordinator's spec
+  and the references recorded in `content/es/exam/dele-a1.json`. The
+  structure, durations, item counts, formats and the 30/50-per-group rule
+  were checked against the two official documents (Guía de examen DELE A1
+  v2020; Especificaciones DELE A1 2020) by the coordinator on the owner's
+  behalf on 2026-10-22 (`checkedAgainstOfficialGuide: true`, `checkedBy`,
+  `checkedAt`); each listening recording plays twice. Every item is
+  original; the app is not affiliated with Instituto Cervantes. Writing and speaking are graded by the app's deterministic rubrics, so
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).

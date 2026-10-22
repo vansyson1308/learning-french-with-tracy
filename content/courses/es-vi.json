@@ -7368,6 +7368,175 @@
                   "exercise": "es-vi:ub-l3-e9"
                 }
               ]
+            },
+            {
+              "id": "es-vi:ub-l4",
+              "title": "Vosotros và ustedes",
+              "objectives": [
+                "es.obj.verbs.regular_present",
+                "es.obj.interaction.everyday_conversation"
+              ],
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e0",
+                  "mode": "targetToNative",
+                  "prompt": "vosotros",
+                  "audioTarget": "vosotros",
+                  "options": [
+                    {
+                      "text": "chúng tôi"
+                    },
+                    {
+                      "text": "các bạn (thân mật, ở Tây Ban Nha)"
+                    },
+                    {
+                      "text": "họ"
+                    },
+                    {
+                      "text": "bạn (một người)"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e1",
+                  "mode": "targetToNative",
+                  "prompt": "¿Vosotros habláis español?",
+                  "audioTarget": "¿Vosotros habláis español?",
+                  "options": [
+                    {
+                      "text": "Bạn có nói tiếng Tây Ban Nha không?"
+                    },
+                    {
+                      "text": "Họ có nói tiếng Tây Ban Nha không?"
+                    },
+                    {
+                      "text": "Các bạn có nói tiếng Tây Ban Nha không?"
+                    },
+                    {
+                      "text": "Chúng tôi nói tiếng Tây Ban Nha."
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Sois de Vietnam.",
+                  "audioTarget": "Sois de Vietnam.",
+                  "options": [
+                    {
+                      "text": "Các bạn đến từ Việt Nam."
+                    },
+                    {
+                      "text": "Chúng tôi đến từ Việt Nam."
+                    },
+                    {
+                      "text": "Tôi đến từ Việt Nam."
+                    },
+                    {
+                      "text": "Họ đến từ Việt Nam."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e3",
+                  "mode": "targetToNative",
+                  "prompt": "¿Ustedes son de Madrid?",
+                  "audioTarget": "¿Ustedes son de Madrid?",
+                  "options": [
+                    {
+                      "text": "Họ đang ở Madrid à?"
+                    },
+                    {
+                      "text": "Bạn có thích Madrid không?"
+                    },
+                    {
+                      "text": "Chúng tôi đến từ Madrid."
+                    },
+                    {
+                      "text": "Các bạn / quý vị đến từ Madrid à?"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "match",
+                  "id": "es-vi:ub-l4-e4",
+                  "pairs": [
+                    {
+                      "target": "sois",
+                      "native": "các bạn là"
+                    },
+                    {
+                      "target": "estáis",
+                      "native": "các bạn đang ở"
+                    },
+                    {
+                      "target": "tenéis",
+                      "native": "các bạn có"
+                    },
+                    {
+                      "target": "vais",
+                      "native": "các bạn đi"
+                    },
+                    {
+                      "target": "coméis",
+                      "native": "các bạn ăn"
+                    }
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e5",
+                  "mode": "targetToNative",
+                  "prompt": "Vosotros vivís en Sevilla.",
+                  "audioTarget": "Vosotros vivís en Sevilla.",
+                  "options": [
+                    {
+                      "text": "Chúng tôi sống ở Sevilla."
+                    },
+                    {
+                      "text": "Các bạn sống ở Sevilla."
+                    },
+                    {
+                      "text": "Họ sống ở Sevilla."
+                    },
+                    {
+                      "text": "Bạn sống ở Sevilla."
+                    }
+                  ],
+                  "correct": 1
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "es:concept:vosotros-ustedes"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e0"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e1"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e2"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e3"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e4"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e5"
+                }
+              ]
             }
           ]
         },

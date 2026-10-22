@@ -516,3 +516,13 @@ A refactor must never appear in this file; only deliberate French changes do.
 ## 2026-10-22 — content/reports/audio-size.json added (P3f B3 audio size budget); French unchanged
 
 - compile: new      content/reports/audio-size.json
+
+## 2026-10-22 — P3f C: es-vi vosotros lesson + concept, topic→unit syllabus map, DELE format checked (checkedBy/checkedAt), catalog lesson count; French unchanged
+
+- compile: changed  content/reports/es/course-objective-coverage.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/catalog.json
+- compile: changed  src/content/concepts/es-concepts.json
+- compile: changed  src/content/exam/es-exam-tracks.json
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/packs/es-vi.json

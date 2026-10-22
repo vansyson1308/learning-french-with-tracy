@@ -21,6 +21,7 @@
     "es:concept:stress-accent",
     "es:concept:sounds-r-j-ll",
     "es:concept:tu-usted",
+    "es:concept:vosotros-ustedes",
     "es:concept:cognates-cion-dad",
     "es:concept:false-friends"
   ],
@@ -620,6 +621,35 @@
       ],
       "objectives": [
         "es.obj.greetings.basic",
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    "es:concept:vosotros-ustedes": {
+      "id": "es:concept:vosotros-ustedes",
+      "title": "vosotros (Tây Ban Nha) / ustedes (Mỹ Latinh)",
+      "shortRule": "Ở Tây Ban Nha, «các bạn» thân mật là vosotros (habláis, coméis, vivís); ustedes là lịch sự. Ở Mỹ Latinh chỉ dùng ustedes.",
+      "explanation": "Khi nói với nhiều người bạn ở Tây Ban Nha, người ta dùng vosotros và động từ có đuôi riêng: -áis, -éis, -ís (vosotros habláis, coméis, vivís; sois, estáis, tenéis, vais). Ustedes chia như ngôi thứ ba số nhiều (ustedes hablan, comen, viven) và là cách lịch sự ở Tây Ban Nha, còn ở Mỹ Latinh là cách duy nhất. Ở trình độ A1 bạn chỉ cần nhận ra vosotros khi nghe và đọc; khi nói và viết, dùng ustedes luôn được chấp nhận.",
+      "examples": [
+        {
+          "es": "¿Vosotros habláis español?",
+          "vi": "Các bạn có nói tiếng Tây Ban Nha không?",
+          "note": "vosotros"
+        },
+        {
+          "es": "¿Ustedes hablan español?",
+          "vi": "Các bạn / quý vị có nói tiếng Tây Ban Nha không?",
+          "note": "ustedes"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Nghe thấy -áis, -éis, -ís là đang nói với «các bạn» ở Tây Ban Nha.",
+      "objectives": [
+        "es.obj.verbs.regular_present",
         "es.obj.interaction.everyday_conversation"
       ],
       "sourceRefs": [
