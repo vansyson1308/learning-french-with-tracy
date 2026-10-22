@@ -434,3 +434,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  content/reports/ko/audio-canary.json
 - compile: changed  src/content/attributions.json
+## 2026-10-22 — fr simpleForm info card (bug fix approved 2026-10-22)
+
+- compile: changed  src/content/assessment/fr-checkpoints.json
+- compile: changed  src/content/assessment/fr-vi-checkpoints.json
+- compile: changed  src/content/packs/fr-en.json
+- compile: changed  src/content/packs/fr-vi.json

@@ -2831,6 +2831,20 @@
       "id": "fr-cpx-s5-form_nadia",
       "writingTaskId": "fr.write.cp5_form_nadia",
       "instruction": "Fill in the registration form with the details on the card.",
+      "cueFacts": [
+       {
+        "label": "Name",
+        "value": "Nadia"
+       },
+       {
+        "label": "Age",
+        "value": "35"
+       },
+       {
+        "label": "City",
+        "value": "Lyon"
+       }
+      ],
       "fields": [
        {
         "id": "prenom",
@@ -2887,7 +2901,10 @@
        "instruction": "Hãy điền biểu mẫu đăng ký với các thông tin trên thẻ.",
        "rubric.requiredSlots.0.description": "tên",
        "rubric.requiredSlots.1.description": "tuổi",
-       "rubric.requiredSlots.2.description": "thành phố"
+       "rubric.requiredSlots.2.description": "thành phố",
+       "cueFacts.0.label": "Tên",
+       "cueFacts.1.label": "Tuổi",
+       "cueFacts.2.label": "Thành phố"
       }
      }
     },
@@ -2903,6 +2920,20 @@
       "id": "fr-cpx-s5-form_tom",
       "writingTaskId": "fr.write.cp5_form_tom",
       "instruction": "Fill in the hotel form with the details on the card.",
+      "cueFacts": [
+       {
+        "label": "Name",
+        "value": "Tom"
+       },
+       {
+        "label": "City",
+        "value": "Nice"
+       },
+       {
+        "label": "Day",
+        "value": "dimanche"
+       }
+      ],
       "fields": [
        {
         "id": "prenom",
@@ -2959,7 +2990,10 @@
        "instruction": "Hãy điền biểu mẫu khách sạn với các thông tin trên thẻ.",
        "rubric.requiredSlots.0.description": "tên",
        "rubric.requiredSlots.1.description": "thành phố",
-       "rubric.requiredSlots.2.description": "ngày đến"
+       "rubric.requiredSlots.2.description": "ngày đến",
+       "cueFacts.0.label": "Tên",
+       "cueFacts.1.label": "Thành phố",
+       "cueFacts.2.label": "Ngày"
       }
      }
     },
@@ -2975,6 +3009,20 @@
       "id": "fr-cpx-s5-form_emma",
       "writingTaskId": "fr.write.cp5_form_emma",
       "instruction": "Fill in the library-card form with the details on the card.",
+      "cueFacts": [
+       {
+        "label": "Name",
+        "value": "Emma"
+       },
+       {
+        "label": "Age",
+        "value": "41"
+       },
+       {
+        "label": "City",
+        "value": "Marseille"
+       }
+      ],
       "fields": [
        {
         "id": "prenom",
@@ -3031,7 +3079,10 @@
        "instruction": "Hãy điền biểu mẫu làm thẻ thư viện với các thông tin trên thẻ.",
        "rubric.requiredSlots.0.description": "tên",
        "rubric.requiredSlots.1.description": "tuổi",
-       "rubric.requiredSlots.2.description": "thành phố"
+       "rubric.requiredSlots.2.description": "thành phố",
+       "cueFacts.0.label": "Tên",
+       "cueFacts.1.label": "Tuổi",
+       "cueFacts.2.label": "Thành phố"
       }
      }
     }
