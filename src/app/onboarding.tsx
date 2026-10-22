@@ -8,7 +8,7 @@ import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { catalog, orderedCoursesFor } from "@/lib/content";
-import { courseProfile } from "@/lib/course-profile";
+import { courseProfile, defaultCourseForUi } from "@/lib/course-profile";
 import { DAILY_GOAL_OPTIONS, DEFAULT_COURSE, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
@@ -19,9 +19,11 @@ export default function OnboardingScreen() {
   // to new learners; they stay installable under "other courses".
   const courses = orderedCoursesFor(lang).filter((c) => courseProfile(c.id).role !== "standalone");
   const finishOnboarding = useProgress((s) => s.finishOnboarding);
+  // P3e §7: preselect by UI language (vi → the first -vi course).
+  const uiDefault = defaultCourseForUi(lang);
   const [courseId, setCourseId] = useState(
-    courses.some((c) => c.id === DEFAULT_COURSE)
-      ? DEFAULT_COURSE
+    courses.some((c) => c.id === uiDefault)
+      ? uiDefault
       : (courses[0]?.id ?? DEFAULT_COURSE)
   );
   const [goal, setGoal] = useState<number>(20);

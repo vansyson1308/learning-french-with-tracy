@@ -107,13 +107,29 @@ export const NO_CAPABILITIES: CourseCapabilities = {
   conversation: false,
 };
 
-type ProfilesArtifact = { version: number; defaultCourseId: string; profiles: Record<string, CourseProfile> };
+type ProfilesArtifact = {
+  version: number;
+  defaultCourseId: string;
+  defaultCourseByNative?: Record<string, string>;
+  profiles: Record<string, CourseProfile>;
+};
 
 const PROFILES = (profilesJson as ProfilesArtifact).profiles;
 
 /** The compiler-chosen onboarding default (the most complete course). */
 export function defaultCourseId(): string {
   return (profilesJson as ProfilesArtifact).defaultCourseId;
+}
+
+/**
+ * P3e §7: the onboarding preselection for a UI language — the first course
+ * explained in that language in the compiler's default order (`vi` → fr-vi,
+ * `en` → fr-en), else the global default. Not the migration default
+ * (LEGACY_FLAT_COURSE_ID in persistence/migrations.ts).
+ */
+export function defaultCourseForUi(uiLanguage: string): string {
+  const artifact = profilesJson as ProfilesArtifact;
+  return artifact.defaultCourseByNative?.[uiLanguage] ?? artifact.defaultCourseId;
 }
 
 /** Test seam: capability overrides (e.g. FSRS on a legacy course) — bun/jest only. */

@@ -303,11 +303,11 @@ export function compileCourseProfileArtifacts(args: {
   // in the course pickers' order (most units, then target-language name,
   // then id) — never by exercise count, which content edits move. A
   // standalone course is never the default. Onboarding refines this per UI
-  // language at runtime (P3e §7: src/lib/content.ts defaultCourseForUi).
+  // language at runtime (P3e §7: defaultCourseByNative below, read by defaultCourseForUi).
   const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
   const packById = new Map(args.packs.map((p) => [p.id, p]));
   const unitCount = (id: string) => packById.get(id)?.sections.reduce((n, s) => n + s.units.length, 0) ?? 0;
-  const defaultCourseId = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
+  const defaultOrder = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
     const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
     return (
       score(b) - score(a) ||
@@ -315,10 +315,15 @@ export function compileCourseProfileArtifacts(args: {
       (packById.get(a)?.targetLanguage ?? "").localeCompare(packById.get(b)?.targetLanguage ?? "") ||
       a.localeCompare(b)
     );
-  })[0];
+  });
+  const defaultCourseId = defaultOrder[0];
+  // P3e §7: the same order per native language — a Vietnamese UI preselects
+  // the first `-vi` course (fr-vi today; en-vi sorts first once it exists).
+  const defaultCourseByNative: Record<string, string> = {};
+  for (const id of defaultOrder) defaultCourseByNative[profiles[id].nativeCode] ??= id;
   out.push({
     relPath: `${root}/course-profiles.json`,
-    contents: canonicalJson({ version: 1, defaultCourseId, profiles }),
+    contents: canonicalJson({ version: 1, defaultCourseId, defaultCourseByNative, profiles }),
   });
   for (const id of courseIds) {
     out.push({ relPath: `${root}/artifacts/${id}.ts`, contents: renderArtifactModule(root, profiles[id]) });

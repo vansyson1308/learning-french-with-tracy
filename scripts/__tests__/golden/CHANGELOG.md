@@ -450,3 +450,7 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  ATTRIBUTIONS.md
 - compile: changed  content/reports/vi/audio-canary.json
+## 2026-10-22 — course-profiles.json gains defaultCourseByNative (P3e §7 locale default course); French content unchanged
+
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/test-only/course-profiles.json
