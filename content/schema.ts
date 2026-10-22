@@ -299,7 +299,8 @@ export function exerciseSchemas(lang: string) {
     id,
     clipId: clipId(lang),
     question: z.string().min(1),
-    options: z.array(z.strictObject({ text: z.string().min(1) })).min(2),
+    /** P3e: an option may be a picture (emoji tile rendered by the OS emoji font; no bundled asset). */
+    options: z.array(z.strictObject({ text: z.string().min(1), emoji: z.string().min(1).optional() })).min(2),
     correct: z.number().int().min(0),
     objectiveTargets,
   });
@@ -310,7 +311,8 @@ export function exerciseSchemas(lang: string) {
     id,
     readingId: readingId(lang),
     question: z.string().min(1),
-    options: z.array(z.strictObject({ text: z.string().min(1) })).min(2),
+    /** P3e: an option may be a picture (emoji tile rendered by the OS emoji font; no bundled asset). */
+    options: z.array(z.strictObject({ text: z.string().min(1), emoji: z.string().min(1).optional() })).min(2),
     correct: z.number().int().min(0),
     objectiveTargets,
   });
@@ -1425,6 +1427,11 @@ export const readingSourceSchema = (lang: string) =>
     supportGlossary: z.array(z.strictObject({ surface: z.string().min(1), gloss: nativeText() })),
     sourceRef: z.literal("original-project"),
     authoringSpec: ReceptionAuthoringSpecSchema,
+    /**
+     * P3e: "exam" = a stimulus of an exam track, written to the public
+     * format's length (up to 260 words) — never used in lessons.
+     */
+    use: z.literal("exam").optional(),
   });
 export const ReadingSourceSchema = readingSourceSchema(ANY_LANGUAGE);
 export type ReadingSource = z.infer<typeof ReadingSourceSchema>;
@@ -1452,7 +1459,8 @@ export const listeningClipSchema = (lang: string) =>
   z.strictObject({
     id: clipId(lang),
     kind: z.enum(LISTENING_KINDS),
-    segments: z.array(ListeningSegmentSchema).min(1).max(4),
+    /** ≤ 4 segments for teaching clips; exam conversations (use "exam") up to 16. */
+    segments: z.array(ListeningSegmentSchema).min(1).max(16),
     objectiveRefs: z.array(objectiveId(lang)).min(1),
     lexemeRefs: z.array(lexemeId(lang)),
     sourceRef: z.literal("original-project"),
@@ -1462,6 +1470,8 @@ export const listeningClipSchema = (lang: string) =>
       maxPlays: z.number().int().min(1).max(3),
       rate: z.literal(1),
     }),
+    /** P3e: "exam" = an exam-track recording (format length, up to 1,400 characters) — never used in lessons. */
+    use: z.literal("exam").optional(),
   });
 export const ListeningClipSchema = listeningClipSchema(ANY_LANGUAGE);
 export type ListeningClip = z.infer<typeof ListeningClipSchema>;
@@ -1721,8 +1731,21 @@ export const examTrackId = (lang: string) => z.string().regex(idPattern(lang, "\
 export const examItemId = (lang: string) => z.string().regex(idPattern(lang, "\\.exi\\.", "[a-z0-9_]+\\.[a-z0-9_]+"));
 const examSlug = z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/);
 export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking"] as const;
-/** Public task formats an exam track reproduces (formats only — never real exam items). */
-export const EXAM_TASK_FORMATS = ["mcq3", "matching", "form", "short_text", "monologue", "conversation"] as const;
+/**
+ * Public task formats an exam track reproduces (formats only — never real
+ * exam items). P3e:
+ *  - mcq3            one question, 3 text options
+ *  - pictureMcq      one question, 3 picture (emoji) options
+ *  - matchToPool     N items share ONE pool of M > N options (texts, ads,
+ *                    pictures, sentence endings); every option is the key of
+ *                    at most one item; pool order is fixed (lettered)
+ *  - completeFromPool  N statements completed from a shared pool of M > N
+ *  - form / short_text / monologue / conversation  productive tasks
+ */
+export const EXAM_TASK_FORMATS = ["mcq3", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation"] as const;
+export const EXAM_POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
+
+const wordBand = z.strictObject({ min: z.number().int().min(1), max: z.number().int().min(1) });
 
 export const examTaskSchema = z.strictObject({
   id: examSlug,
@@ -1731,6 +1754,19 @@ export const examTaskSchema = z.strictObject({
   format: z.enum(EXAM_TASK_FORMATS),
   /** Items one parallel form administers for this task. */
   itemsPerForm: z.number().int().min(1),
+  /** Pool formats: the shared pool's size (M > itemsPerForm). */
+  poolSize: z.number().int().min(2).optional(),
+  /**
+   * Word-length band of the task's stimulus, per the public format:
+   * `per: "text"` counts each referenced reading / clip transcript as one
+   * text; `per: "block"` counts each paragraph of a multi-text reading
+   * (nine short notices) separately.
+   */
+  stimulusWords: wordBand.extend({ per: z.enum(["text", "block"]) }).optional(),
+  /** Writing tasks: word band of the expected answer (model answers are checked against it). */
+  answerWords: wordBand.optional(),
+  /** Speaking tasks: the format's spoken length in minutes (shown to the learner). */
+  speakingMinutes: z.strictObject({ min: z.number().min(0.5), max: z.number().min(0.5) }).optional(),
 });
 
 export const examSectionSchema = z.strictObject({
@@ -1741,21 +1777,34 @@ export const examSectionSchema = z.strictObject({
   minutes: z.number().int().min(1).max(240),
   preparationMinutes: z.number().int().min(1).max(60).optional(),
   maxPoints: z.number().positive(),
+  /** Listening: how many times each recording plays (must equal every referenced clip's maxPlays). */
+  playsPerRecording: z.number().int().min(1).max(3).optional(),
   tasks: z.array(examTaskSchema).min(1),
 });
 
-export const examGroupSchema = z.strictObject({
-  id: examSlug,
-  title: nativeText(),
-  sectionIds: z.array(examSlug).min(1),
-  maxPoints: z.number().positive(),
-  /** The format's pass threshold for the group — used only to word an ESTIMATED readiness. */
-  passPoints: z.number().positive(),
+/**
+ * Generic pass rule (P3e): the exam is "passed" in its own terms only when
+ * EVERY group reaches its minimum (DELE: reading + writing ≥ 30/50 AND
+ * listening + speaking ≥ 30/50) — never a single total. Goethe, JLPT, HSK
+ * and TOPIK declare theirs the same way. Used only to word an ESTIMATED
+ * readiness.
+ */
+export const examPassRuleSchema = z.strictObject({
+  groups: z
+    .array(
+      z.strictObject({
+        id: examSlug,
+        title: nativeText(),
+        sections: z.array(examSlug).min(1),
+        min: z.number().positive(),
+      })
+    )
+    .min(1),
 });
 
 export const examReadinessBandSchema = z.strictObject({
   id: examSlug,
-  /** Lowest group share (points / maxPoints, over every group) that reaches this band. */
+  /** Lowest group share (points / group max, over every group) that reaches this band. */
   minGroupShare: z.number().min(0).max(1),
   label: nativeText(),
   message: nativeText(),
@@ -1773,10 +1822,10 @@ export const examItemSchema = (lang: string) =>
   });
 
 /**
- * One exam track (P3d): the PUBLIC format of an exam (sections, tasks,
- * timing, score groups) with original practice items in two or more
- * disjoint parallel forms. Results are worded as an estimated readiness
- * ("mức sẵn sàng ước tính"), never as a prediction of passing.
+ * One exam track (P3d, format v2 since P3e): the PUBLIC format of an exam
+ * (sections, tasks, timing, pass rule) with original practice items in two
+ * or more disjoint parallel forms. Results are worded as an estimated
+ * readiness ("mức sẵn sàng ước tính"), never as a prediction of passing.
  */
 export const examTrackSchema = (lang: string) =>
   z.strictObject({
@@ -1792,12 +1841,16 @@ export const examTrackSchema = (lang: string) =>
     description: nativeText(),
     formatSource: z.strictObject({
       publisher: z.string().min(2),
-      reference: z.string().min(2),
+      /** Official documents the format follows (URL + what was taken from it). */
+      references: z.array(z.strictObject({ url: z.string().url(), title: z.string().min(2), retrieved: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional() })).min(1),
+      /** True only after the figures were read in the official document itself. */
       checkedAgainstOfficialGuide: z.boolean(),
       note: nativeText(),
     }),
     sections: z.array(examSectionSchema).min(1),
-    groups: z.array(examGroupSchema).min(1),
+    passRule: examPassRuleSchema,
+    /** How a correct item scores (DELE: 1 point per correct objective item, no negative marking). */
+    scoring: z.strictObject({ perItem: z.literal("share_of_section_points"), negativeMarking: z.literal(false) }),
     readiness: z.strictObject({
       bands: z.array(examReadinessBandSchema).min(2),
       incomplete: nativeText(),

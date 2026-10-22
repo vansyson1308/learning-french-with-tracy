@@ -336,3 +336,11 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/attributions.json
 - compile: new      content/reports/ja/audio-canary.json
 - compile: new      content/reports/ja/audio-recon.json
+
+## 2026-10-22 — P3e §1: DELE A1 track re-authored to the 2020 model (reading 5/6/6/8, listening 25 min 5/5/8/7 played twice, writing 15-25 + 30-40 words, speaking 10+10 min 3 tasks; group pass rule 30/50 each; picture and pool formats); French unchanged
+
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  src/content/exam/es-exam-tracks.json
+- compile: changed  src/content/interaction/es-scenarios.json
+- compile: changed  src/content/reception/es-listening.json
+- compile: changed  src/content/reception/es-reading.json

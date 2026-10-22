@@ -22,23 +22,13 @@
     "es.read.a1cap_nota_tienda",
     "es.read.a1cap_invitacion",
     "es.read.dele_a_r1_correo",
-    "es.read.dele_a_r2_farmacia",
-    "es.read.dele_a_r2_fumar",
-    "es.read.dele_a_r2_piscina",
-    "es.read.dele_a_r2_habitacion",
-    "es.read.dele_a_r2_super",
-    "es.read.dele_a_r2_clase",
-    "es.read.dele_a_r4_daniel",
-    "es.read.dele_b_r1_correo",
-    "es.read.dele_b_r2_silencio",
-    "es.read.dele_b_r2_museo",
-    "es.read.dele_b_r2_tren",
-    "es.read.dele_b_r2_bici",
-    "es.read.dele_b_r2_menu",
-    "es.read.dele_b_r2_banco",
-    "es.read.dele_b_r4_isabel",
+    "es.read.dele_a_r2_avisos",
     "es.read.dele_a_r3_anuncios",
-    "es.read.dele_b_r3_anuncios"
+    "es.read.dele_a_r4_texto",
+    "es.read.dele_b_r1_correo",
+    "es.read.dele_b_r2_avisos",
+    "es.read.dele_b_r3_anuncios",
+    "es.read.dele_b_r4_texto"
   ],
   "byId": {
     "es.read.ug_horario_museo": {
@@ -700,10 +690,19 @@
     "es.read.dele_a_r1_correo": {
       "id": "es.read.dele_a_r1_correo",
       "kind": "message",
+      "title": "Correo de Lucía",
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "¡Hola, Marta! Estoy en Sevilla con mi hermano. El hotel está cerca del río y es muy bonito. Por la mañana visitamos museos y por la tarde comemos en la plaza. Mañana tomamos el tren para Córdoba. El viernes vuelvo a Madrid. ¿Comemos juntas el sábado? Un abrazo, Lucía"
+          "text": "¡Hola, Marta! ¿Qué tal estás? Te escribo desde Sevilla. Estoy aquí de vacaciones con mi hermano Pablo durante una semana. El hotel está cerca del río y es pequeño pero muy bonito. Nuestra habitación tiene una ventana grande y desde allí vemos toda la ciudad."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Por la mañana visitamos museos, parques y la catedral. Por la tarde hace mucho calor, así que descansamos en el hotel o en la piscina. Por la noche comemos tapas en una plaza muy bonita con mucha gente. Me gusta mucho la comida de aquí, sobre todo el pescado."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mañana tomamos el tren para Córdoba. Allí vive una amiga de mi hermano y vamos a pasar dos días en su casa. El viernes vuelvo a Madrid porque el lunes trabajo. ¿Comemos juntas el sábado? Te llevo un regalo de Sevilla. Si vienes a mi casa, trae tu guitarra, por favor. ¡Hasta pronto! Un abrazo, Lucía"
         }
       ],
       "objectiveRefs": [
@@ -711,18 +710,28 @@
       ],
       "lexemeRefs": [
         "es:w:hola",
+        "es:w:que",
+        "es:w:aqui",
         "es:w:hermano",
+        "es:w:semana",
         "es:w:hotel",
         "es:w:cerca",
         "es:w:rio",
-        "es:w:muy",
-        "es:w:manana",
-        "es:w:tarde"
+        "es:w:pequeno",
+        "es:w:muy"
       ],
       "supportGlossary": [
         {
           "surface": "río",
           "gloss": "sông"
+        },
+        {
+          "surface": "catedral",
+          "gloss": "nhà thờ lớn"
+        },
+        {
+          "surface": "descansamos",
+          "gloss": "chúng tôi nghỉ ngơi"
         },
         {
           "surface": "juntas",
@@ -735,515 +744,91 @@
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
-        "informationUnits": 5,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_a_r2_farmacia": {
-      "id": "es.read.dele_a_r2_farmacia",
-      "kind": "notice",
-      "title": "Farmacia Central",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Abierto todos los días, de nueve de la mañana a nueve de la noche."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:abierto",
-        "es:w:nueve",
-        "es:w:manana",
-        "es:w:noche"
-      ],
-      "supportGlossary": [],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_a_r2_fumar": {
-      "id": "es.read.dele_a_r2_fumar",
-      "kind": "notice",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Prohibido fumar en la estación."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:estacion"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Prohibido",
-          "gloss": "Cấm"
-        },
-        {
-          "surface": "fumar",
-          "gloss": "hút thuốc"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_a_r2_piscina": {
-      "id": "es.read.dele_a_r2_piscina",
-      "kind": "notice",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Piscina"
-        },
-        {
-          "kind": "paragraph",
-          "text": "Abierta por la mañana, de ocho a una. Cerrada por la tarde."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:manana",
-        "es:w:ocho",
-        "es:w:tarde"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Piscina",
-          "gloss": "Hồ bơi"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_a_r2_habitacion": {
-      "id": "es.read.dele_a_r2_habitacion",
-      "kind": "notice",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Se alquila habitación cerca de la universidad. Trescientos euros al mes."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:habitacion",
-        "es:w:cerca",
-        "es:w:universidad",
-        "es:w:mes"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Se alquila",
-          "gloss": "Cho thuê"
-        },
-        {
-          "surface": "habitación",
-          "gloss": "phòng"
-        },
-        {
-          "surface": "al mes",
-          "gloss": "mỗi tháng"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_a_r2_super": {
-      "id": "es.read.dele_a_r2_super",
-      "kind": "notice",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Supermercado"
-        },
-        {
-          "kind": "paragraph",
-          "text": "Los domingos abrimos de diez de la mañana a dos de la tarde."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:diez",
-        "es:w:manana",
-        "es:w:dos",
-        "es:w:tarde"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Supermercado",
-          "gloss": "Siêu thị"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_a_r2_clase": {
-      "id": "es.read.dele_a_r2_clase",
-      "kind": "notice",
-      "title": "Clase de español",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Lunes y miércoles, a las siete de la tarde. Aula cuatro."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:lunes",
-        "es:w:miercoles",
-        "es:w:siete",
-        "es:w:tarde",
-        "es:w:cuatro"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Aula",
-          "gloss": "Phòng học"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_a_r4_daniel": {
-      "id": "es.read.dele_a_r4_daniel",
-      "kind": "description",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Me llamo Daniel. Tengo veinticinco años y soy de Valencia, pero ahora vivo en Barcelona. Soy enfermero y trabajo en un hospital. Vivo en un piso pequeño con dos amigos. Los fines de semana voy a la playa o juego al fútbol. Mi comida favorita es la paella de mi madre."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.short_texts"
-      ],
-      "lexemeRefs": [
-        "es:w:trabajo",
-        "es:w:hospital",
-        "es:w:piso",
-        "es:w:pequeno",
-        "es:w:dos",
-        "es:w:semana",
-        "es:w:playa",
-        "es:w:juego"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "enfermero",
-          "gloss": "y tá (nam)"
-        },
-        {
-          "surface": "piso",
-          "gloss": "căn hộ"
-        },
-        {
-          "surface": "fines de semana",
-          "gloss": "cuối tuần"
-        },
-        {
-          "surface": "fútbol",
-          "gloss": "bóng đá"
-        },
-        {
-          "surface": "favorita",
-          "gloss": "yêu thích"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
         "informationUnits": 6,
         "inferenceDemand": "locate"
       }
     },
-    "es.read.dele_b_r1_correo": {
-      "id": "es.read.dele_b_r1_correo",
-      "kind": "message",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Hola, Laura: ¿qué tal? Desde el lunes trabajo en una oficina en el centro. Empiezo a las ocho y termino a las tres. Por la tarde estudio inglés. Mi nuevo piso está cerca del parque. El domingo hago una fiesta en casa a las seis. ¿Vienes con tu hermana? Besos, Javier"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.short_messages"
-      ],
-      "lexemeRefs": [
-        "es:w:hola",
-        "es:w:que",
-        "es:w:lunes",
-        "es:w:trabajo",
-        "es:w:oficina",
-        "es:w:centro",
-        "es:w:ocho",
-        "es:w:tres"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "oficina",
-          "gloss": "văn phòng"
-        },
-        {
-          "surface": "piso",
-          "gloss": "căn hộ"
-        },
-        {
-          "surface": "fiesta",
-          "gloss": "bữa tiệc"
-        },
-        {
-          "surface": "Besos",
-          "gloss": "Hôn bạn (lời chào cuối thư)"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 5,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_b_r2_silencio": {
-      "id": "es.read.dele_b_r2_silencio",
+    "es.read.dele_a_r2_avisos": {
+      "id": "es.read.dele_a_r2_avisos",
       "kind": "notice",
-      "title": "Biblioteca",
+      "title": "Mensajes y avisos",
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "Silencio, por favor."
+          "text": "A. Biblioteca municipal: este sábado abrimos solo por la mañana, de diez a dos. El domingo está cerrada todo el día. Gracias."
+        },
+        {
+          "kind": "paragraph",
+          "text": "B. Hola, Ana: estoy en el médico. Llego tarde a casa, a las ocho. Hay pizza en la cocina para la cena. Besos, mamá."
+        },
+        {
+          "kind": "paragraph",
+          "text": "C. Se vende coche rojo, pequeño y muy económico. Solo tiene dos años. Precio: cinco mil euros. Llamar por la tarde."
+        },
+        {
+          "kind": "paragraph",
+          "text": "D. Piscina del barrio: abierta todos los días de julio y agosto. Los niños menores de seis años entran gratis."
+        },
+        {
+          "kind": "paragraph",
+          "text": "E. Clase de inglés para adultos los martes y jueves por la noche. Primera clase gratis. Más información en recepción."
+        },
+        {
+          "kind": "paragraph",
+          "text": "F. Querido Luis: el concierto del viernes es a las nueve en la plaza. Te espero en la puerta del bar a las ocho y media."
+        },
+        {
+          "kind": "paragraph",
+          "text": "G. Supermercado Sol: esta semana, el zumo de naranja y la fruta están más baratos. Abrimos también el domingo por la mañana."
+        },
+        {
+          "kind": "paragraph",
+          "text": "H. Atención, vecinos: el ascensor no funciona hoy. Por favor, usen la escalera. Mañana por la mañana viene el técnico."
+        },
+        {
+          "kind": "paragraph",
+          "text": "I. Se busca camarero con experiencia para trabajar los fines de semana en un restaurante del centro. Buen sueldo y comida gratis."
         }
       ],
       "objectiveRefs": [
         "es.obj.reading.notices_info"
       ],
       "lexemeRefs": [
-        "es:w:silencio",
-        "es:w:favor"
+        "es:w:biblioteca",
+        "es:w:este",
+        "es:w:sabado",
+        "es:w:solo",
+        "es:w:manana",
+        "es:w:diez",
+        "es:w:dos",
+        "es:w:domingo",
+        "es:w:dia",
+        "es:w:gracias"
       ],
       "supportGlossary": [
         {
-          "surface": "Silencio",
-          "gloss": "Yên lặng"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_b_r2_museo": {
-      "id": "es.read.dele_b_r2_museo",
-      "kind": "notice",
-      "title": "Museo de Arte",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Entrada gratis los domingos."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:entrada"
-      ],
-      "supportGlossary": [
+          "surface": "económico",
+          "gloss": "tiết kiệm"
+        },
         {
           "surface": "gratis",
           "gloss": "miễn phí"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_b_r2_tren": {
-      "id": "es.read.dele_b_r2_tren",
-      "kind": "notice",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Tren a Toledo: sale a las diez y cuarto del andén tres."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:tren",
-        "es:w:diez",
-        "es:w:anden",
-        "es:w:tres"
-      ],
-      "supportGlossary": [],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_b_r2_bici": {
-      "id": "es.read.dele_b_r2_bici",
-      "kind": "notice",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Vendo bicicleta roja, casi nueva. Ochenta euros."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:casi",
-        "es:w:nueva"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Vendo",
-          "gloss": "Tôi bán"
         },
         {
-          "surface": "casi nueva",
-          "gloss": "gần như mới"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_b_r2_menu": {
-      "id": "es.read.dele_b_r2_menu",
-      "kind": "notice",
-      "title": "Restaurante",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Menú del día: doce euros, de lunes a viernes."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:menu",
-        "es:w:dia",
-        "es:w:doce",
-        "es:w:lunes",
-        "es:w:viernes"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Menú del día",
-          "gloss": "Thực đơn trong ngày"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_b_r2_banco": {
-      "id": "es.read.dele_b_r2_banco",
-      "kind": "notice",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Banco"
+          "surface": "ascensor",
+          "gloss": "thang máy"
         },
         {
-          "kind": "paragraph",
-          "text": "Abierto de ocho a dos. Cerrado sábados y domingos."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.notices_info"
-      ],
-      "lexemeRefs": [
-        "es:w:banco",
-        "es:w:abierto",
-        "es:w:ocho",
-        "es:w:dos",
-        "es:w:cerrado"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "Banco",
-          "gloss": "Ngân hàng"
-        }
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 2,
-        "inferenceDemand": "locate"
-      }
-    },
-    "es.read.dele_b_r4_isabel": {
-      "id": "es.read.dele_b_r4_isabel",
-      "kind": "description",
-      "blocks": [
-        {
-          "kind": "paragraph",
-          "text": "Hola, me llamo Isabel y soy de México. Tengo treinta años y soy profesora en un colegio. Estoy casada y tengo una hija de cuatro años. Vivimos en una casa con jardín y tenemos un perro grande. Los sábados vamos al mercado y los domingos comemos con mis padres."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.reading.short_texts"
-      ],
-      "lexemeRefs": [
-        "es:w:hola",
-        "es:w:treinta",
-        "es:w:hija",
-        "es:w:cuatro",
-        "es:w:casa",
-        "es:w:perro",
-        "es:w:grande",
-        "es:w:mercado"
-      ],
-      "supportGlossary": [
-        {
-          "surface": "colegio",
-          "gloss": "trường học"
+          "surface": "escalera",
+          "gloss": "cầu thang"
         },
         {
-          "surface": "casada",
-          "gloss": "đã kết hôn"
+          "surface": "técnico",
+          "gloss": "thợ kỹ thuật"
         },
         {
-          "surface": "jardín",
-          "gloss": "khu vườn"
+          "surface": "sueldo",
+          "gloss": "lương"
         }
       ],
       "sourceRef": "original-project",
@@ -1259,58 +844,64 @@
       "blocks": [
         {
           "kind": "paragraph",
-          "text": "A. Restaurante Sol: comida vegetariana."
+          "text": "A. Escuela Mar: clases de español para extranjeros por la mañana."
         },
         {
           "kind": "paragraph",
-          "text": "B. Escuela de idiomas: clases de inglés por la tarde."
+          "text": "B. Tienda Luna: ropa de niños y zapatos a buen precio."
         },
         {
           "kind": "paragraph",
-          "text": "C. Tienda de bicicletas: venta y alquiler."
+          "text": "C. Restaurante Verde: comida vegetariana, abierto todos los días."
         },
         {
           "kind": "paragraph",
-          "text": "D. Gimnasio: abierto desde las seis de la mañana."
+          "text": "D. Gimnasio Activo: abierto desde las seis de la mañana."
         },
         {
           "kind": "paragraph",
-          "text": "E. Hotel Playa: habitaciones cerca del mar."
+          "text": "E. Hotel Playa: habitaciones con vistas al mar."
         },
         {
           "kind": "paragraph",
-          "text": "F. Librería Luna: libros y cafetería."
+          "text": "F. Librería El Libro: libros en varios idiomas y cafetería."
         },
         {
           "kind": "paragraph",
-          "text": "G. Farmacia: abierta toda la noche."
+          "text": "G. Farmacia Central: abierta toda la noche."
         },
         {
           "kind": "paragraph",
-          "text": "H. Escuela de música: clases de guitarra para niños."
+          "text": "H. Academia de música: clases de guitarra para niños."
+        },
+        {
+          "kind": "paragraph",
+          "text": "I. Alquiler de bicicletas: por horas o por días."
         }
       ],
       "objectiveRefs": [
         "es.obj.reading.notices_info"
       ],
       "lexemeRefs": [
-        "es:w:restaurante",
-        "es:w:sol",
         "es:w:escuela",
-        "es:w:ingles",
-        "es:w:tarde",
+        "es:w:mar",
+        "es:w:espanol",
+        "es:w:manana",
         "es:w:tienda",
-        "es:w:abierto",
-        "es:w:seis"
+        "es:w:luna",
+        "es:w:ropa",
+        "es:w:zapatos",
+        "es:w:precio",
+        "es:w:restaurante"
       ],
       "supportGlossary": [
         {
-          "surface": "vegetariana",
-          "gloss": "chay"
+          "surface": "extranjeros",
+          "gloss": "người nước ngoài"
         },
         {
-          "surface": "alquiler",
-          "gloss": "cho thuê"
+          "surface": "vegetariana",
+          "gloss": "chay"
         },
         {
           "surface": "Gimnasio",
@@ -1319,12 +910,235 @@
         {
           "surface": "Librería",
           "gloss": "Hiệu sách"
+        },
+        {
+          "surface": "Alquiler",
+          "gloss": "Cho thuê"
         }
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
         "informationUnits": 6,
         "inferenceDemand": "basic_inference"
+      }
+    },
+    "es.read.dele_a_r4_texto": {
+      "id": "es.read.dele_a_r4_texto",
+      "kind": "description",
+      "title": "Mi día",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Me llamo Daniel y tengo veinticinco años. Soy de Valencia, pero desde hace dos años vivo en Barcelona con dos amigos. Nuestro piso está en el centro, cerca de una estación de metro."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Soy enfermero y trabajo en un hospital. Normalmente me levanto a las seis y media, me ducho y desayuno un café con leche y una tostada. Voy al trabajo en metro porque no tengo coche. Empiezo a las ocho y termino a las tres de la tarde."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Por la tarde estudio inglés en una academia dos días a la semana, porque quiero trabajar en Londres un año. Los otros días voy al gimnasio o paseo por la playa, que está a veinte minutos de casa. Por la noche cocino con mis amigos; mi plato favorito es la paella de mi madre."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Los fines de semana juego al fútbol con mis compañeros del hospital y, a veces, voy en tren a Valencia para visitar a mi familia. Me gusta mucho mi vida en Barcelona, pero echo de menos a mi madre y su cocina."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:dos",
+        "es:w:piso",
+        "es:w:centro",
+        "es:w:cerca",
+        "es:w:estacion",
+        "es:w:metro",
+        "es:w:trabajo",
+        "es:w:hospital",
+        "es:w:seis",
+        "es:w:cafe"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "enfermero",
+          "gloss": "y tá (nam)"
+        },
+        {
+          "surface": "piso",
+          "gloss": "căn hộ"
+        },
+        {
+          "surface": "me ducho",
+          "gloss": "tôi tắm"
+        },
+        {
+          "surface": "tostada",
+          "gloss": "bánh mì nướng"
+        },
+        {
+          "surface": "academia",
+          "gloss": "trung tâm học"
+        },
+        {
+          "surface": "echo de menos",
+          "gloss": "tôi nhớ"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      }
+    },
+    "es.read.dele_b_r1_correo": {
+      "id": "es.read.dele_b_r1_correo",
+      "kind": "message",
+      "title": "Correo de Javier",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hola, Laura: ¿qué tal estás? Te escribo porque tengo muchas noticias. Desde el lunes trabajo en una oficina nueva en el centro de Granada. Es una empresa de viajes. Mis compañeros son muy simpáticos y el trabajo es interesante, aunque a veces tengo mucho trabajo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Empiezo a las ocho y termino a las tres, así que por la tarde estudio francés en una academia cerca de mi casa. Tengo clase los lunes, los miércoles y los jueves por la tarde. Es un poco difícil, pero me gusta mucho. Mi profesora es de París y habla muy rápido."
+        },
+        {
+          "kind": "paragraph",
+          "text": "También tengo un piso nuevo en la calle Real. Es pequeño, pero tiene una terraza con vistas al parque y mucha luz. El domingo hago una fiesta en casa a las seis para mis amigos. ¿Vienes con tu hermana? Si venís en tren, os espero en la estación. Lleva una tortilla, por favor. Besos, Javier"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "es:w:hola",
+        "es:w:que",
+        "es:w:lunes",
+        "es:w:trabajo",
+        "es:w:oficina",
+        "es:w:nueva",
+        "es:w:centro",
+        "es:w:son",
+        "es:w:muy",
+        "es:w:mucho"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "noticias",
+          "gloss": "tin tức"
+        },
+        {
+          "surface": "compañeros",
+          "gloss": "đồng nghiệp"
+        },
+        {
+          "surface": "terraza",
+          "gloss": "sân thượng"
+        },
+        {
+          "surface": "tortilla",
+          "gloss": "bánh trứng khoai tây"
+        },
+        {
+          "surface": "Besos",
+          "gloss": "Hôn bạn (lời chào cuối thư)"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      }
+    },
+    "es.read.dele_b_r2_avisos": {
+      "id": "es.read.dele_b_r2_avisos",
+      "kind": "notice",
+      "title": "Mensajes y avisos",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "A. Museo de Arte: la entrada es gratis los domingos por la tarde. Los lunes el museo está cerrado todo el día."
+        },
+        {
+          "kind": "paragraph",
+          "text": "B. Hola, Pedro: no puedo ir a clase hoy porque estoy enfermo. ¿Me pasas los deberes por correo? Gracias. Andrés."
+        },
+        {
+          "kind": "paragraph",
+          "text": "C. Tren a Toledo: hoy sale a las diez y cuarto del andén tres. Lo sentimos, hay un retraso de veinte minutos."
+        },
+        {
+          "kind": "paragraph",
+          "text": "D. Vendo bicicleta azul, casi nueva, para niños de seis a diez años. Ochenta euros. Llamar al móvil por la tarde."
+        },
+        {
+          "kind": "paragraph",
+          "text": "E. Restaurante Toro: menú del día de lunes a viernes por doce euros. El fin de semana solo comida a la carta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "F. Banco del Sur: abierto de ocho y media a dos. Los sábados y los domingos cerrado. Gracias por su visita."
+        },
+        {
+          "kind": "paragraph",
+          "text": "G. Querida Sofía: mañana es el cumpleaños de papá. Compro yo la tarta. ¿Puedes comprar tú las flores? Un beso, Marta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "H. Se necesita profesor de matemáticas para dar clases en casa a un niño de doce años. Dos tardes por semana."
+        },
+        {
+          "kind": "paragraph",
+          "text": "I. Silencio, por favor: los estudiantes tienen examen en la sala dos esta mañana. No se puede hablar en el pasillo."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "es:w:museo",
+        "es:w:arte",
+        "es:w:entrada",
+        "es:w:tarde",
+        "es:w:lunes",
+        "es:w:cerrado",
+        "es:w:dia",
+        "es:w:hola",
+        "es:w:clase",
+        "es:w:hoy"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "gratis",
+          "gloss": "miễn phí"
+        },
+        {
+          "surface": "enfermo",
+          "gloss": "bị ốm"
+        },
+        {
+          "surface": "deberes",
+          "gloss": "bài tập về nhà"
+        },
+        {
+          "surface": "retraso",
+          "gloss": "sự chậm trễ"
+        },
+        {
+          "surface": "a la carta",
+          "gloss": "gọi theo thực đơn"
+        },
+        {
+          "surface": "pasillo",
+          "gloss": "hành lang"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
       }
     },
     "es.read.dele_b_r3_anuncios": {
@@ -1342,7 +1156,7 @@
         },
         {
           "kind": "paragraph",
-          "text": "C. Taxi: veinticuatro horas, todos los días."
+          "text": "C. Taxi Rápido: veinticuatro horas, todos los días."
         },
         {
           "kind": "paragraph",
@@ -1350,19 +1164,23 @@
         },
         {
           "kind": "paragraph",
-          "text": "E. Piscina: clases de natación para adultos."
+          "text": "E. Piscina municipal: clases de natación para adultos."
         },
         {
           "kind": "paragraph",
-          "text": "F. Tienda de ropa: zapatos y abrigos baratos."
+          "text": "F. Zapatería Centro: zapatos y abrigos muy baratos."
         },
         {
           "kind": "paragraph",
-          "text": "G. Parque de animales: abierto todo el año."
+          "text": "G. Zoo de la ciudad: abierto todo el año."
         },
         {
           "kind": "paragraph",
-          "text": "H. Hostal Centro: habitaciones baratas cerca de la estación."
+          "text": "H. Hostal Estación: habitaciones baratas cerca del tren."
+        },
+        {
+          "kind": "paragraph",
+          "text": "I. Tienda de ordenadores y móviles: reparaciones rápidas."
         }
       ],
       "objectiveRefs": [
@@ -1375,17 +1193,19 @@
         "es:w:martes",
         "es:w:noche",
         "es:w:taxi",
+        "es:w:rapido",
         "es:w:mercado",
-        "es:w:plaza"
+        "es:w:plaza",
+        "es:w:centro"
       ],
       "supportGlossary": [
         {
-          "surface": "cocina",
-          "gloss": "nấu ăn"
-        },
-        {
           "surface": "natación",
           "gloss": "bơi"
+        },
+        {
+          "surface": "Zapatería",
+          "gloss": "Cửa hàng giày"
         },
         {
           "surface": "abrigos",
@@ -1394,12 +1214,81 @@
         {
           "surface": "Hostal",
           "gloss": "Nhà nghỉ"
+        },
+        {
+          "surface": "reparaciones",
+          "gloss": "sửa chữa"
         }
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
         "informationUnits": 6,
         "inferenceDemand": "basic_inference"
+      }
+    },
+    "es.read.dele_b_r4_texto": {
+      "id": "es.read.dele_b_r4_texto",
+      "kind": "description",
+      "title": "Mi familia",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hola, me llamo Isabel y soy de Salamanca. Tengo treinta y cuatro años y soy profesora de matemáticas en un colegio. Estoy casada con Marcos, que es cocinero en un restaurante del centro."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tenemos una hija, Carla, de cuatro años. Vivimos en una casa con jardín a las afueras de la ciudad, cerca de un río, y tenemos un perro grande y simpático que se llama Bruno. Carla juega con él todas las tardes en el jardín."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Entre semana me levanto a las siete y desayuno con mi hija. Llevo a Carla al colegio en coche y después voy a mi trabajo. Por la tarde corrijo exámenes y preparo las clases del día siguiente. Marcos trabaja por la noche, así que cenamos los tres juntos solo los domingos."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Los sábados por la mañana vamos al mercado y compramos fruta, verdura y pan. Por la tarde paseamos por el parque con Bruno. Los domingos comemos en casa de mis padres, que viven en el centro. Mi madre cocina muy bien y siempre prepara una sopa deliciosa."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "es:w:hola",
+        "es:w:treinta",
+        "es:w:cuatro",
+        "es:w:restaurante",
+        "es:w:centro",
+        "es:w:hija",
+        "es:w:casa",
+        "es:w:ciudad",
+        "es:w:cerca",
+        "es:w:rio"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "casada",
+          "gloss": "đã kết hôn"
+        },
+        {
+          "surface": "cocinero",
+          "gloss": "đầu bếp"
+        },
+        {
+          "surface": "afueras",
+          "gloss": "ngoại ô"
+        },
+        {
+          "surface": "corrijo",
+          "gloss": "tôi chấm (bài)"
+        },
+        {
+          "surface": "deliciosa",
+          "gloss": "ngon"
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
       }
     }
   }

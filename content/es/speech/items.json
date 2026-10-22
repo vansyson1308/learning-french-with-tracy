@@ -1984,8 +1984,8 @@
       "elicitationType": "information_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Hãy tự giới thiệu: nói tên bạn và bạn đến từ đâu.",
-          "en": "Introduce yourself: say your name and where you are from."
+          "vi": "Bài 1 — Giới thiệu bản thân (1–2 phút trong kỳ thi). Hãy nói tên, quốc tịch và nơi bạn sống theo thẻ.",
+          "en": "Task 1 — Introduce yourself (1–2 minutes in the exam). Say your name, nationality and where you live, from the card."
         },
         "cueFacts": [
           {
@@ -1997,31 +1997,44 @@
           },
           {
             "label": {
-              "vi": "Đến từ",
-              "en": "From"
+              "vi": "Quốc tịch",
+              "en": "Nationality"
             },
-            "value": "Vietnam"
+            "value": "vietnamita"
+          },
+          {
+            "label": {
+              "vi": "Thành phố",
+              "en": "City"
+            },
+            "value": "Valencia"
           }
         ]
       },
-      "target": "Me llamo Linh y soy de Vietnam",
+      "target": "Me llamo Linh, soy vietnamita y vivo en Valencia",
       "acceptedVariants": [
-        "Me llamo Linh y soy de Vietnam",
-        "Soy Linh y soy de Vietnam",
-        "Me llamo Linh, soy de Vietnam"
+        "Me llamo Linh, soy vietnamita y vivo en Valencia",
+        "Soy Linh, soy vietnamita y vivo en Valencia",
+        "Me llamo Linh, soy de Vietnam y vivo en Valencia"
       ],
       "requiredConcepts": [
         [
           "linh"
         ],
         [
+          "vietnamita",
           "vietnam"
+        ],
+        [
+          "valencia"
         ]
       ],
       "objectiveRefs": [
         "es.obj.speaking.self_intro"
       ],
-      "lexemeRefs": [],
+      "lexemeRefs": [
+        "es:w:vivir"
+      ],
       "evidenceLexemeRefs": [],
       "assistancePolicy": {
         "allowContextualBias": false,
@@ -2035,47 +2048,55 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "es.speak.dele_a_tema",
-      "taskFamily": "information_giving",
+      "id": "es.speak.dele_a_entorno",
+      "taskFamily": "description",
       "elicitationType": "information_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Hãy nói về gia đình bạn: bạn có bao nhiêu anh chị em.",
-          "en": "Talk about your family: say how many brothers and sisters you have."
+          "vi": "Bài 2 — Nói về môi trường quanh bạn (2–3 phút trong kỳ thi): hãy tả căn nhà của bạn theo thẻ.",
+          "en": "Task 2 — Talk about your surroundings (2–3 minutes in the exam): describe your home from the card."
         },
         "cueFacts": [
           {
             "label": {
-              "vi": "Anh chị em",
-              "en": "Siblings"
+              "vi": "Nhà",
+              "en": "Home"
             },
-            "value": "2"
+            "value": "căn hộ nhỏ"
+          },
+          {
+            "label": {
+              "vi": "Có",
+              "en": "It has"
+            },
+            "value": "2 phòng ngủ + 1 bếp"
           }
         ]
       },
-      "target": "Tengo dos hermanos",
+      "target": "Vivo en un piso pequeño con dos habitaciones y una cocina",
       "acceptedVariants": [
-        "Tengo dos hermanos",
-        "Yo tengo dos hermanos"
+        "Vivo en un piso pequeño con dos habitaciones y una cocina",
+        "Mi piso es pequeño y tiene dos habitaciones y una cocina",
+        "Tengo un piso pequeño con dos habitaciones y una cocina"
       ],
       "requiredConcepts": [
         [
-          "tengo"
+          "piso"
         ],
         [
-          "dos",
-          "2"
+          "habitaciones",
+          "habitación"
         ],
         [
-          "hermanos",
-          "hermano"
+          "cocina"
         ]
       ],
       "objectiveRefs": [
-        "es.obj.speaking.give_info"
+        "es.obj.speaking.describe"
       ],
       "lexemeRefs": [
-        "es:w:hermano"
+        "es:w:vivir",
+        "es:w:pequeno"
       ],
       "evidenceLexemeRefs": [],
       "assistancePolicy": {
@@ -2095,8 +2116,8 @@
       "elicitationType": "information_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Hãy tự giới thiệu: nói tên bạn và bạn sống ở đâu.",
-          "en": "Introduce yourself: say your name and where you live."
+          "vi": "Bài 1 — Giới thiệu bản thân (1–2 phút trong kỳ thi). Hãy nói tên, nghề nghiệp và nơi bạn sống theo thẻ.",
+          "en": "Task 1 — Introduce yourself (1–2 minutes in the exam). Say your name, job and where you live, from the card."
         },
         "cueFacts": [
           {
@@ -2108,6 +2129,13 @@
           },
           {
             "label": {
+              "vi": "Nghề nghiệp",
+              "en": "Job"
+            },
+            "value": "cocinero"
+          },
+          {
+            "label": {
               "vi": "Thành phố",
               "en": "City"
             },
@@ -2115,15 +2143,18 @@
           }
         ]
       },
-      "target": "Me llamo Minh y vivo en Sevilla",
+      "target": "Me llamo Minh, soy cocinero y vivo en Sevilla",
       "acceptedVariants": [
-        "Me llamo Minh y vivo en Sevilla",
-        "Soy Minh y vivo en Sevilla",
-        "Me llamo Minh, vivo en Sevilla"
+        "Me llamo Minh, soy cocinero y vivo en Sevilla",
+        "Soy Minh, soy cocinero y vivo en Sevilla",
+        "Me llamo Minh, trabajo de cocinero y vivo en Sevilla"
       ],
       "requiredConcepts": [
         [
           "minh"
+        ],
+        [
+          "cocinero"
         ],
         [
           "sevilla"
@@ -2148,43 +2179,53 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "es.speak.dele_b_tema",
-      "taskFamily": "information_giving",
+      "id": "es.speak.dele_b_entorno",
+      "taskFamily": "description",
       "elicitationType": "information_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Hãy nói về công việc của bạn: bạn làm việc ở đâu.",
-          "en": "Talk about your work: say where you work."
+          "vi": "Bài 2 — Nói về môi trường quanh bạn (2–3 phút trong kỳ thi): hãy nói về khu phố của bạn theo thẻ.",
+          "en": "Task 2 — Talk about your surroundings (2–3 minutes in the exam): talk about your neighbourhood from the card."
         },
         "cueFacts": [
           {
             "label": {
-              "vi": "Nơi làm việc",
-              "en": "Workplace"
+              "vi": "Khu phố",
+              "en": "Neighbourhood"
             },
-            "value": "hotel"
+            "value": "yên tĩnh"
+          },
+          {
+            "label": {
+              "vi": "Gần nhà có",
+              "en": "Near home"
+            },
+            "value": "công viên, chợ"
           }
         ]
       },
-      "target": "Trabajo en un hotel",
+      "target": "Mi barrio es tranquilo y hay un parque y un mercado",
       "acceptedVariants": [
-        "Trabajo en un hotel",
-        "Yo trabajo en un hotel"
+        "Mi barrio es tranquilo y hay un parque y un mercado",
+        "Mi barrio es tranquilo, hay un parque y un mercado",
+        "Vivo en un barrio tranquilo con un parque y un mercado"
       ],
       "requiredConcepts": [
         [
-          "trabajo"
+          "barrio"
         ],
         [
-          "hotel"
+          "parque"
+        ],
+        [
+          "mercado"
         ]
       ],
       "objectiveRefs": [
-        "es.obj.speaking.give_info"
+        "es.obj.speaking.describe"
       ],
       "lexemeRefs": [
-        "es:w:trabajar",
-        "es:w:hotel"
+        "es:w:mercado"
       ],
       "evidenceLexemeRefs": [],
       "assistancePolicy": {

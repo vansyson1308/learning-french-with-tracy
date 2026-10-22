@@ -1,16 +1,16 @@
 /**
- * Exam tracks (P3d): content/<lang>/exam/<track>.json — the PUBLIC format of
- * an exam (sections, tasks, timing, score groups) with ORIGINAL practice
- * items in disjoint parallel forms, compiled per course into
- * `<root>/exam/<prefix>-exam-tracks.json`.
+ * Exam tracks (P3d, format v2 since P3e): content/<lang>/exam/<track>.json —
+ * the PUBLIC format of an exam (sections, tasks, timing, pass rule) with
+ * ORIGINAL practice items in disjoint parallel forms, compiled per course
+ * into `<root>/exam/<prefix>-exam-tracks.json`.
  *
  * Honesty rules enforced here (CLAUDE.md §3): results are an estimated
  * readiness ("mức sẵn sàng ước tính"), never a prediction of passing; the
- * format source and whether it was re-checked against the official guide
- * are part of the data and reach the learner.
+ * format source and whether it was read in the official document are part
+ * of the data and reach the learner.
  */
 
-import { examTrackSchema, type ExamTrack, type PackSource } from "../../content/schema";
+import { EXAM_POOL_FORMATS, examTrackSchema, type ExamTrack, type PackSource } from "../../content/schema";
 
 import { examTrackPaths } from "./exam-bank";
 import { missingNativeCodes, localizeAssessmentItem, pickNative } from "./native-text";
@@ -22,6 +22,17 @@ const TYPES_BY_SKILL: Record<string, readonly string[]> = {
   listening: ["listeningComprehension", "dictation"],
   writing: ["guidedWriting", "simpleForm"],
   speaking: ["speakProduction", "speakRepetition", "interactionScenario"],
+};
+/** Exercise types each task format may use. */
+const TYPES_BY_FORMAT: Record<string, readonly string[]> = {
+  mcq3: ["readingComprehension", "listeningComprehension", "select"],
+  pictureMcq: ["readingComprehension", "listeningComprehension", "select"],
+  matchToPool: ["readingComprehension", "listeningComprehension"],
+  completeFromPool: ["readingComprehension", "listeningComprehension"],
+  form: ["simpleForm"],
+  short_text: ["guidedWriting"],
+  monologue: ["speakProduction", "speakRepetition"],
+  conversation: ["interactionScenario"],
 };
 
 /** Wording an exam track may never use about a learner's result (any native language). */
@@ -37,10 +48,17 @@ export function loadExamTracks(lang: string): ExamTrack[] {
   return examTrackPaths(lang).map((relPath) => examTrackSchema(lang).parse(readJson(relPath)));
 }
 
-type RefSets = {
+/** Words of a target-language string (punctuation-only tokens dropped). */
+export function wordCount(text: string): number {
+  return text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+}
+
+export type ExamStimulus = { texts: string[]; blocks: string[]; maxPlays?: number; use?: string };
+
+export type ExamRefs = {
   objectiveIds: Set<string>;
-  readingIds: Set<string>;
-  clipIds: Set<string>;
+  readings: Map<string, ExamStimulus>;
+  clips: Map<string, ExamStimulus>;
   speechIds: Set<string>;
   writingIds: Set<string>;
   scenarioIds: Set<string>;
@@ -60,31 +78,45 @@ function nativeRecords(track: ExamTrack): { where: string; record: Record<string
       out.push({ where: `${track.id}/${s.id}/${t.id}.title`, record: t.title }, { where: `${track.id}/${s.id}/${t.id}.instruction`, record: t.instruction });
     }
   }
-  for (const g of track.groups) out.push({ where: `${track.id}/${g.id}.title`, record: g.title });
+  for (const g of track.passRule.groups) out.push({ where: `${track.id}/${g.id}.title`, record: g.title });
   for (const b of track.readiness.bands) {
     out.push({ where: `${track.id}/${b.id}.label`, record: b.label }, { where: `${track.id}/${b.id}.message`, record: b.message });
   }
   return out;
 }
 
-/** Structure, honesty, references and parallel-form rules of one exam track. */
-export function validateExamTrackData(input: { track: ExamTrack; lang: string; pack: PackSource; refs: RefSets; nativeCodes: readonly string[] }): ValidationResult {
+type Options = { text: string; emoji?: string }[];
+
+/** Structure, honesty, references, format and parallel-form rules of one exam track. */
+export function validateExamTrackData(input: { track: ExamTrack; lang: string; pack: PackSource; refs: ExamRefs; nativeCodes: readonly string[] }): ValidationResult {
   const { track, refs } = input;
   const errors: string[] = [];
   const err = (m: string) => errors.push(`exam ${track.id}: ${m}`);
 
   if (track.language !== input.lang) err(`language "${track.language}" ≠ content/${input.lang}/`);
+  if (track.formatSource.checkedAgainstOfficialGuide && track.formatSource.references.some((r) => r.retrieved === undefined)) {
+    err("checkedAgainstOfficialGuide needs a retrieval date on every reference");
+  }
 
-  // Sections, tasks and score groups.
+  // Sections, tasks and the pass rule.
   const sections = new Map(track.sections.map((s) => [s.id, s]));
   if (sections.size !== track.sections.length) err("duplicate section id");
   for (const s of track.sections) {
     if (new Set(s.tasks.map((t) => t.id)).size !== s.tasks.length) err(`${s.id}: duplicate task id`);
+    if (s.skill === "listening" && s.playsPerRecording === undefined) err(`${s.id}: a listening section declares playsPerRecording`);
+    for (const t of s.tasks) {
+      const pool = EXAM_POOL_FORMATS.includes(t.format);
+      if (pool && (t.poolSize === undefined || t.poolSize <= t.itemsPerForm)) err(`${s.id}/${t.id}: ${t.format} needs a poolSize larger than itemsPerForm`);
+      if (!pool && t.poolSize !== undefined) err(`${s.id}/${t.id}: poolSize only applies to pool formats`);
+      if (t.answerWords && s.skill !== "writing") err(`${s.id}/${t.id}: answerWords only applies to writing tasks`);
+      if (t.speakingMinutes && s.skill !== "speaking") err(`${s.id}/${t.id}: speakingMinutes only applies to speaking tasks`);
+      for (const band of [t.stimulusWords, t.answerWords]) if (band && band.min > band.max) err(`${s.id}/${t.id}: word band min > max`);
+    }
   }
   const grouped = new Map<string, string>();
-  for (const g of track.groups) {
+  for (const g of track.passRule.groups) {
     let sum = 0;
-    for (const sid of g.sectionIds) {
+    for (const sid of g.sections) {
       const s = sections.get(sid);
       if (!s) {
         err(`${g.id}: unknown section ${sid}`);
@@ -94,10 +126,9 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
       grouped.set(sid, g.id);
       sum += s.maxPoints;
     }
-    if (Math.abs(sum - g.maxPoints) > 1e-9) err(`${g.id}: maxPoints ${g.maxPoints} ≠ the sum of its sections (${sum})`);
-    if (g.passPoints > g.maxPoints) err(`${g.id}: passPoints ${g.passPoints} exceeds maxPoints ${g.maxPoints}`);
+    if (g.min > sum) err(`${g.id}: min ${g.min} exceeds the group's maximum (${sum})`);
   }
-  for (const s of track.sections) if (!grouped.has(s.id)) err(`section ${s.id} belongs to no score group`);
+  for (const s of track.sections) if (!grouped.has(s.id)) err(`section ${s.id} belongs to no pass-rule group`);
 
   // Readiness: ordered bands ending at 0, estimate wording, no pass claims.
   const bands = track.readiness.bands;
@@ -131,24 +162,49 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
       continue;
     }
     const task = section.tasks.find((t) => t.id === item.taskId);
-    if (!task) err(`${item.id}: unknown task ${item.sectionId}/${item.taskId}`);
-    const e = item.exercise as { type: string; options?: unknown[]; gradeTargets?: unknown; objectiveTargets?: unknown } & Record<string, unknown>;
-    if (!TYPES_BY_SKILL[section.skill].includes(e.type)) err(`${item.id}: ${e.type} cannot assess ${section.skill}`);
-    if ((task?.format === "mcq3" || task?.format === "matching") && Array.isArray(e.options) && e.options.length !== 3) {
-      err(`${item.id}: ${task.format} items offer exactly 3 options (the public format)`);
+    if (!task) {
+      err(`${item.id}: unknown task ${item.sectionId}/${item.taskId}`);
+      continue;
     }
+    const e = item.exercise as { type: string; options?: Options; gradeTargets?: unknown; objectiveTargets?: unknown; modelAnswers?: string[] } & Record<string, unknown>;
+    if (!TYPES_BY_SKILL[section.skill].includes(e.type)) err(`${item.id}: ${e.type} cannot assess ${section.skill}`);
+    if (!TYPES_BY_FORMAT[task.format].includes(e.type)) err(`${item.id}: ${e.type} is not a ${task.format} item`);
+    const options = Array.isArray(e.options) ? e.options : null;
+    if ((task.format === "mcq3" || task.format === "pictureMcq") && options && options.length !== 3) err(`${item.id}: ${task.format} items offer exactly 3 options (the public format)`);
+    if (task.format === "pictureMcq" && options && options.some((o) => !o.emoji)) err(`${item.id}: pictureMcq options are pictures — every option needs an emoji`);
+    if (EXAM_POOL_FORMATS.includes(task.format) && options && options.length !== task.poolSize) err(`${item.id}: ${task.format} items offer the task's whole pool (${task.poolSize} options), got ${options.length}`);
     if (e.gradeTargets !== undefined) err(`${item.id}: exam items must not carry lexical gradeTargets`);
     if (e.objectiveTargets !== undefined) err(`${item.id}: put objective mapping on the ITEM, not inside the exercise payload`);
     for (const oid of item.objectiveTargets) if (!refs.objectiveIds.has(oid)) err(`${item.id}: unknown objective ${oid}`);
-    const ref = (key: string, known: Set<string>) => {
+    const stimulus = (key: "readingId" | "clipId", known: Map<string, ExamStimulus>) => {
+      const value = e[key];
+      if (typeof value !== "string") return null;
+      const found = known.get(value);
+      if (!found) err(`${item.id}: unknown ${key} ${value}`);
+      else if (found.use !== "exam") err(`${item.id}: ${value} is not an exam stimulus (use: "exam")`);
+      return found ?? null;
+    };
+    const stim = stimulus("readingId", refs.readings) ?? stimulus("clipId", refs.clips);
+    if (stim && section.playsPerRecording !== undefined && typeof e.clipId === "string" && stim.maxPlays !== section.playsPerRecording) {
+      err(`${item.id}: clip ${e.clipId as string} plays ${stim.maxPlays}× — the section plays each recording ${section.playsPerRecording}×`);
+    }
+    if (stim && task.stimulusWords) {
+      const units = task.stimulusWords.per === "block" ? stim.blocks : stim.texts;
+      for (const text of units) {
+        const n = wordCount(text);
+        if (n < task.stimulusWords.min || n > task.stimulusWords.max) err(`${item.id}: stimulus text of ${n} words is outside the format's ${task.stimulusWords.min}–${task.stimulusWords.max}`);
+      }
+    }
+    if (task.answerWords && Array.isArray(e.modelAnswers)) {
+      for (const answer of e.modelAnswers) {
+        const n = wordCount(answer.replace(/\|/g, " "));
+        if (n < task.answerWords.min || n > task.answerWords.max) err(`${item.id}: model answer of ${n} words is outside the format's ${task.answerWords.min}–${task.answerWords.max}`);
+      }
+    }
+    for (const [key, known] of [["speechItemId", refs.speechIds], ["writingTaskId", refs.writingIds], ["scenarioId", refs.scenarioIds]] as const) {
       const value = e[key];
       if (typeof value === "string" && !known.has(value)) err(`${item.id}: unknown ${key} ${value}`);
-    };
-    ref("readingId", refs.readingIds);
-    ref("clipId", refs.clipIds);
-    ref("speechItemId", refs.speechIds);
-    ref("writingTaskId", refs.writingIds);
-    ref("scenarioId", refs.scenarioIds);
+    }
     validateExercise(input.pack.id, item.exercise, (m) => err(`${item.id}: ${m}`), input.pack.targetCode);
   }
 
@@ -158,7 +214,7 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
   for (const form of track.forms) {
     if (formIds.has(form.formId)) err(`duplicate form id ${form.formId}`);
     formIds.add(form.formId);
-    const perTask = new Map<string, number>();
+    const perTask = new Map<string, typeof track.items>();
     for (const id of form.itemIds) {
       const item = byId.get(id);
       if (!item) {
@@ -168,12 +224,18 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
       if (placed.has(id)) err(`item ${id} is in forms ${placed.get(id)} and ${form.formId} — parallel forms are disjoint`);
       placed.set(id, form.formId);
       const key = `${item.sectionId}/${item.taskId}`;
-      perTask.set(key, (perTask.get(key) ?? 0) + 1);
+      perTask.set(key, [...(perTask.get(key) ?? []), item]);
     }
     for (const s of track.sections) {
       for (const t of s.tasks) {
-        const n = perTask.get(`${s.id}/${t.id}`) ?? 0;
-        if (n !== t.itemsPerForm) err(`form ${form.formId}: ${s.id}/${t.id} has ${n} item(s), the format needs ${t.itemsPerForm}`);
+        const rows = perTask.get(`${s.id}/${t.id}`) ?? [];
+        if (rows.length !== t.itemsPerForm) err(`form ${form.formId}: ${s.id}/${t.id} has ${rows.length} item(s), the format needs ${t.itemsPerForm}`);
+        if (!EXAM_POOL_FORMATS.includes(t.format) || rows.length === 0) continue;
+        // One shared pool per task and form; each option keys at most one item.
+        const poolOf = (i: (typeof rows)[number]) => JSON.stringify((i.exercise as { options?: Options }).options ?? []);
+        if (new Set(rows.map(poolOf)).size !== 1) err(`form ${form.formId}: ${s.id}/${t.id} items must share one pool`);
+        const keys = rows.map((i) => (i.exercise as { correct?: number }).correct);
+        if (new Set(keys).size !== keys.length) err(`form ${form.formId}: ${s.id}/${t.id} reuses a pool option as the key of two items`);
       }
     }
   }
@@ -207,6 +269,7 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
     description: text(track.description, `${track.id}.description`),
     formatSource: {
       publisher: track.formatSource.publisher,
+      references: track.formatSource.references,
       checkedAgainstOfficialGuide: track.formatSource.checkedAgainstOfficialGuide,
       note: text(track.formatSource.note, `${track.id}.formatSource.note`),
     },
@@ -217,15 +280,26 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
       minutes: s.minutes,
       ...(s.preparationMinutes !== undefined ? { preparationMinutes: s.preparationMinutes } : {}),
       maxPoints: s.maxPoints,
+      ...(s.playsPerRecording !== undefined ? { playsPerRecording: s.playsPerRecording } : {}),
       tasks: s.tasks.map((t) => ({
         id: t.id,
         title: text(t.title, `${track.id}/${s.id}/${t.id}.title`),
         instruction: text(t.instruction, `${track.id}/${s.id}/${t.id}.instruction`),
         format: t.format,
         itemsPerForm: t.itemsPerForm,
+        ...(t.poolSize !== undefined ? { poolSize: t.poolSize } : {}),
+        ...(t.speakingMinutes !== undefined ? { speakingMinutes: t.speakingMinutes } : {}),
       })),
     })),
-    groups: track.groups.map((g) => ({ id: g.id, title: text(g.title, `${track.id}/${g.id}.title`), sectionIds: g.sectionIds, maxPoints: g.maxPoints, passPoints: g.passPoints })),
+    passRule: {
+      groups: track.passRule.groups.map((g) => ({
+        id: g.id,
+        title: text(g.title, `${track.id}/${g.id}.title`),
+        sections: g.sections,
+        min: g.min,
+        max: g.sections.reduce((n, sid) => n + (track.sections.find((s) => s.id === sid)?.maxPoints ?? 0), 0),
+      })),
+    },
     readiness: {
       bands: track.readiness.bands.map((b) => ({ id: b.id, minGroupShare: b.minGroupShare, label: text(b.label, `${track.id}/${b.id}.label`), message: text(b.message, `${track.id}/${b.id}.message`) })),
       incomplete: text(track.readiness.incomplete, `${track.id}.readiness.incomplete`),

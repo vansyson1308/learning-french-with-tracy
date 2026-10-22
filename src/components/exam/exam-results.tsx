@@ -63,7 +63,7 @@ export function ExamResults({
                 <Text key={g.id} style={styles.row} testID={`exam-group-${g.id}`}>
                   {g.points === null
                     ? t("exam.results.groupIncomplete", { group: g.title })
-                    : t("exam.results.groupLine", { group: g.title, points: fmt(g.points), max: fmt(g.maxPoints), pass: fmt(g.passPoints) })}
+                    : t("exam.results.groupLine", { group: g.title, points: fmt(g.points), max: fmt(g.max), pass: fmt(g.min) })}
                 </Text>
               ))}
             </View>

@@ -3,7 +3,7 @@
   "language": "es",
   "exerciseNativeCode": "vi",
   "id": "es.exam.dele_a1",
-  "trackVersion": 1,
+  "trackVersion": 2,
   "name": "DELE A1",
   "level": "A1",
   "title": {
@@ -11,16 +11,29 @@
     "en": "DELE A1 practice"
   },
   "description": {
-    "vi": "Luyện theo định dạng công khai của kỳ thi DELE A1 (Instituto Cervantes): bốn phần đọc, nghe, viết và nói, có giờ làm bài và cách tính điểm theo nhóm. Mọi câu hỏi đều do khóa học tự soạn — không phải đề thi thật.",
-    "en": "Practise the public DELE A1 format (Instituto Cervantes): reading, listening, writing and speaking, with timing and group scoring. Every question is original to this course — never a real exam item."
+    "vi": "Luyện theo định dạng công khai của kỳ thi DELE A1 (mẫu 2020, Instituto Cervantes): bốn phần đọc, nghe, viết và nói với số câu, thời gian và cách tính điểm theo hai nhóm. Mọi câu hỏi đều do khóa học tự soạn — không phải đề thi thật.",
+    "en": "Practise the public DELE A1 format (2020 model, Instituto Cervantes): reading, listening, writing and speaking with the format's items, timing and two-group scoring. Every question is original to this course — never a real exam item."
   },
   "formatSource": {
     "publisher": "Instituto Cervantes",
-    "reference": "DELE A1 public exam format (model 2020), as summarised in plan/authoring/briefs/es-vi.md §5",
+    "references": [
+      {
+        "url": "https://agenda.cervantes.es/sites/default/files/DELE_A1_v2020_Guia-de-examen.pdf",
+        "title": "Instituto Cervantes — DELE A1 (modelo 2020), guía del examen"
+      },
+      {
+        "url": "https://agenda.cervantes.es/sites/default/files/Especificaciones_DELE_A1_2020.pdf",
+        "title": "Instituto Cervantes — Especificaciones DELE A1 (2020)"
+      },
+      {
+        "url": "https://examenes.cervantes.es/a1a2/a1_en.htm",
+        "title": "Instituto Cervantes — DELE A1 exam page"
+      }
+    ],
     "checkedAgainstOfficialGuide": false,
     "note": {
-      "vi": "Định dạng (số phần, số câu, thời gian, nhóm điểm) lấy từ mô tả công khai và chưa được đối chiếu lại với hướng dẫn chính thức mới nhất.",
-      "en": "Format figures (parts, items, timing, score groups) come from the public description and have not yet been re-checked against the latest official guide."
+      "vi": "Định dạng theo mô tả mẫu 2020 của Instituto Cervantes; các trang chính thức không truy cập được khi soạn (2026-10-22), nên con số chưa được đối chiếu trực tiếp với bản hướng dẫn.",
+      "en": "Format per Instituto Cervantes' 2020 model; the official pages were unreachable while authoring (2026-10-22), so the figures are not yet re-checked in the guide itself."
     }
   },
   "sections": [
@@ -37,54 +50,71 @@
         {
           "id": "t1",
           "title": {
-            "vi": "Bài 1 — Thư ngắn",
-            "en": "Task 1 — A short letter"
+            "vi": "Bài 1 — Một lá thư",
+            "en": "Task 1 — A letter"
           },
           "instruction": {
-            "vi": "Đọc lời nhắn và chọn câu trả lời đúng (a, b hoặc c).",
-            "en": "Read the message and choose the right answer (a, b or c)."
+            "vi": "Đọc lá thư (150–175 từ) và chọn đáp án đúng a, b hoặc c. Câu cuối có tranh.",
+            "en": "Read the letter (150–175 words) and choose a, b or c. The last question has pictures."
           },
           "format": "mcq3",
-          "itemsPerForm": 5
+          "itemsPerForm": 5,
+          "stimulusWords": {
+            "min": 150,
+            "max": 175,
+            "per": "text"
+          }
         },
         {
           "id": "t2",
           "title": {
-            "vi": "Bài 2 — Biển báo và thông báo",
-            "en": "Task 2 — Signs and notices"
+            "vi": "Bài 2 — Chín tin nhắn và thông báo",
+            "en": "Task 2 — Nine messages and notices"
           },
           "instruction": {
-            "vi": "Đọc sáu biển báo ngắn và chọn câu trả lời đúng.",
-            "en": "Read six short notices and choose the right answer."
+            "vi": "Đọc chín văn bản ngắn (A–I) và chọn văn bản phù hợp với từng câu. Có ba văn bản không dùng.",
+            "en": "Read the nine short texts (A–I) and choose the one that matches each statement. Three texts are not used."
           },
-          "format": "mcq3",
-          "itemsPerForm": 6
+          "format": "matchToPool",
+          "itemsPerForm": 6,
+          "poolSize": 9,
+          "stimulusWords": {
+            "min": 20,
+            "max": 30,
+            "per": "block"
+          }
         },
         {
           "id": "t3",
           "title": {
-            "vi": "Bài 3 — Ghép người với quảng cáo",
-            "en": "Task 3 — Match people to adverts"
+            "vi": "Bài 3 — Chín quảng cáo",
+            "en": "Task 3 — Nine adverts"
           },
           "instruction": {
-            "vi": "Đọc các quảng cáo và chọn quảng cáo phù hợp với từng người.",
-            "en": "Read the adverts and choose the right one for each person."
+            "vi": "Đọc chín quảng cáo (A–I) và chọn quảng cáo phù hợp với từng người. Có ba quảng cáo không dùng.",
+            "en": "Read the nine adverts (A–I) and choose the right one for each person. Three adverts are not used."
           },
-          "format": "matching",
-          "itemsPerForm": 8
+          "format": "matchToPool",
+          "itemsPerForm": 6,
+          "poolSize": 9
         },
         {
           "id": "t4",
           "title": {
-            "vi": "Bài 4 — Đoạn văn ngắn",
-            "en": "Task 4 — A short text"
+            "vi": "Bài 4 — Một đoạn văn",
+            "en": "Task 4 — A text"
           },
           "instruction": {
-            "vi": "Đọc đoạn văn và chọn câu trả lời đúng.",
-            "en": "Read the text and choose the right answer."
+            "vi": "Đọc đoạn văn (175–210 từ) và chọn đáp án đúng a, b hoặc c.",
+            "en": "Read the text (175–210 words) and choose a, b or c."
           },
           "format": "mcq3",
-          "itemsPerForm": 6
+          "itemsPerForm": 8,
+          "stimulusWords": {
+            "min": 175,
+            "max": 210,
+            "per": "text"
+          }
         }
       ]
     },
@@ -95,60 +125,69 @@
         "vi": "Nghe hiểu",
         "en": "Listening"
       },
-      "minutes": 20,
+      "minutes": 25,
       "maxPoints": 25,
+      "playsPerRecording": 2,
       "tasks": [
         {
           "id": "t1",
           "title": {
-            "vi": "Bài 1 — Hội thoại ngắn",
-            "en": "Task 1 — Short conversations"
+            "vi": "Bài 1 — Năm hội thoại ngắn",
+            "en": "Task 1 — Five short dialogues"
           },
           "instruction": {
-            "vi": "Nghe năm đoạn hội thoại ngắn và chọn câu trả lời đúng. Mỗi đoạn nghe được hai lần.",
-            "en": "Listen to five short conversations and choose the right answer. Each plays twice."
+            "vi": "Nghe từng hội thoại (hai lần) và chọn tranh đúng.",
+            "en": "Listen to each dialogue (twice) and choose the right picture."
           },
-          "format": "mcq3",
+          "format": "pictureMcq",
           "itemsPerForm": 5
         },
         {
           "id": "t2",
           "title": {
-            "vi": "Bài 2 — Thông báo và tin nhắn",
-            "en": "Task 2 — Announcements and messages"
+            "vi": "Bài 2 — Năm thông báo",
+            "en": "Task 2 — Five announcements"
           },
           "instruction": {
-            "vi": "Nghe năm thông báo hoặc tin nhắn và chọn câu trả lời đúng.",
-            "en": "Listen to five announcements or messages and choose the right answer."
+            "vi": "Nghe từng thông báo (hai lần) và chọn tranh phù hợp trong tám tranh A–H. Có ba tranh không dùng.",
+            "en": "Listen to each announcement (twice) and choose the matching picture among A–H. Three pictures are not used."
           },
-          "format": "mcq3",
-          "itemsPerForm": 5
+          "format": "matchToPool",
+          "itemsPerForm": 5,
+          "poolSize": 8
         },
         {
           "id": "t3",
           "title": {
-            "vi": "Bài 3 — Họ đang ở đâu?",
-            "en": "Task 3 — Where are they?"
+            "vi": "Bài 3 — Một người nói về ngày của mình",
+            "en": "Task 3 — Someone talks about their day"
           },
           "instruction": {
-            "vi": "Nghe tám câu ngắn và chọn nơi người nói đang ở.",
-            "en": "Listen to eight short lines and choose where the speaker is."
+            "vi": "Nghe (hai lần) và nối mỗi phần đầu câu với phần cuối đúng trong mười một lựa chọn A–K. Có ba lựa chọn không dùng.",
+            "en": "Listen (twice) and match each sentence beginning with the right ending among A–K. Three endings are not used."
           },
-          "format": "matching",
-          "itemsPerForm": 8
+          "format": "matchToPool",
+          "itemsPerForm": 8,
+          "poolSize": 11
         },
         {
           "id": "t4",
           "title": {
-            "vi": "Bài 4 — Thông tin cụ thể",
-            "en": "Task 4 — Specific information"
+            "vi": "Bài 4 — Một cuộc trò chuyện",
+            "en": "Task 4 — A conversation"
           },
           "instruction": {
-            "vi": "Nghe và chọn con số, giờ hoặc giá đúng.",
-            "en": "Listen and choose the right number, time or price."
+            "vi": "Nghe cuộc trò chuyện (160–185 từ, hai lần) và hoàn thành bảy câu bằng tám lựa chọn A–H. Có một lựa chọn không dùng.",
+            "en": "Listen to the conversation (160–185 words, twice) and complete seven sentences with the eight options A–H. One option is not used."
           },
-          "format": "mcq3",
-          "itemsPerForm": 7
+          "format": "completeFromPool",
+          "itemsPerForm": 7,
+          "poolSize": 8,
+          "stimulusWords": {
+            "min": 160,
+            "max": 185,
+            "per": "text"
+          }
         }
       ]
     },
@@ -166,27 +205,35 @@
           "id": "t1",
           "title": {
             "vi": "Bài 1 — Điền phiếu",
-            "en": "Task 1 — Fill in a form"
+            "en": "Task 1 — A form"
           },
           "instruction": {
-            "vi": "Điền phiếu với thông tin trên thẻ.",
-            "en": "Fill in the form with the details on the card."
+            "vi": "Điền phiếu bằng những câu trả lời ngắn về bản thân (15–25 từ).",
+            "en": "Fill in the form with short personal answers (15–25 words)."
           },
           "format": "form",
-          "itemsPerForm": 1
+          "itemsPerForm": 1,
+          "answerWords": {
+            "min": 15,
+            "max": 25
+          }
         },
         {
           "id": "t2",
           "title": {
-            "vi": "Bài 2 — Viết lời nhắn",
-            "en": "Task 2 — Write a note"
+            "vi": "Bài 2 — Bưu thiếp, email hoặc lời nhắn",
+            "en": "Task 2 — A postcard, email or message"
           },
           "instruction": {
-            "vi": "Viết một lời nhắn ngắn theo gợi ý.",
-            "en": "Write a short note from the cues."
+            "vi": "Viết một văn bản ngắn theo gợi ý (30–40 từ).",
+            "en": "Write a short text from the cues (30–40 words)."
           },
           "format": "short_text",
-          "itemsPerForm": 1
+          "itemsPerForm": 1,
+          "answerWords": {
+            "min": 30,
+            "max": 40
+          }
         }
       ]
     },
@@ -197,8 +244,8 @@
         "vi": "Nói",
         "en": "Speaking"
       },
-      "minutes": 15,
-      "preparationMinutes": 15,
+      "minutes": 10,
+      "preparationMinutes": 10,
       "maxPoints": 25,
       "tasks": [
         {
@@ -208,82 +255,85 @@
             "en": "Task 1 — Introduce yourself"
           },
           "instruction": {
-            "vi": "Nói vài câu về bản thân theo thẻ gợi ý.",
-            "en": "Say a few sentences about yourself from the cue card."
+            "vi": "Độc thoại đã chuẩn bị về thông tin cá nhân (1–2 phút trong kỳ thi).",
+            "en": "Prepared monologue on your personal details (1–2 minutes in the exam)."
           },
           "format": "monologue",
-          "itemsPerForm": 1
+          "itemsPerForm": 1,
+          "speakingMinutes": {
+            "min": 1,
+            "max": 2
+          }
         },
         {
           "id": "t2",
           "title": {
-            "vi": "Bài 2 — Nói về một chủ đề",
-            "en": "Task 2 — Talk about a topic"
+            "vi": "Bài 2 — Môi trường quanh bạn",
+            "en": "Task 2 — Your surroundings"
           },
           "instruction": {
-            "vi": "Nói về chủ đề trên thẻ gợi ý.",
-            "en": "Talk about the topic on the cue card."
+            "vi": "Độc thoại đã chuẩn bị về nhà, khu phố hoặc gia đình (2–3 phút trong kỳ thi).",
+            "en": "Prepared monologue on your home, area or family (2–3 minutes in the exam)."
           },
           "format": "monologue",
-          "itemsPerForm": 1
+          "itemsPerForm": 1,
+          "speakingMinutes": {
+            "min": 2,
+            "max": 3
+          }
         },
         {
           "id": "t3",
           "title": {
-            "vi": "Bài 3 — Trả lời câu hỏi",
-            "en": "Task 3 — Answer questions"
+            "vi": "Bài 3 — Hội thoại với giám khảo",
+            "en": "Task 3 — Conversation with the examiner"
           },
           "instruction": {
-            "vi": "Nghe và trả lời các câu hỏi của người hỏi.",
-            "en": "Listen and answer the examiner's questions."
+            "vi": "Trả lời câu hỏi về bài 1 và 2, và tự hỏi giám khảo hai câu (3–4 phút trong kỳ thi).",
+            "en": "Answer questions about Tasks 1–2 and ask the examiner two questions (3–4 minutes in the exam)."
           },
           "format": "conversation",
-          "itemsPerForm": 1
-        },
-        {
-          "id": "t4",
-          "title": {
-            "vi": "Bài 4 — Hội thoại tình huống",
-            "en": "Task 4 — Role play"
-          },
-          "instruction": {
-            "vi": "Đóng vai trong một tình huống hằng ngày.",
-            "en": "Play your part in an everyday situation."
-          },
-          "format": "conversation",
-          "itemsPerForm": 1
+          "itemsPerForm": 1,
+          "speakingMinutes": {
+            "min": 3,
+            "max": 4
+          }
         }
       ]
     }
   ],
-  "groups": [
-    {
-      "id": "group_1",
-      "title": {
-        "vi": "Nhóm 1 — Đọc và Viết",
-        "en": "Group 1 — Reading and Writing"
+  "passRule": {
+    "groups": [
+      {
+        "id": "group_1",
+        "title": {
+          "vi": "Nhóm 1 — Đọc và Viết",
+          "en": "Group 1 — Reading and Writing"
+        },
+        "sections": [
+          "reading",
+          "writing"
+        ],
+        "min": 30
       },
-      "sectionIds": [
-        "reading",
-        "writing"
-      ],
-      "maxPoints": 50,
-      "passPoints": 30
-    },
-    {
-      "id": "group_2",
-      "title": {
-        "vi": "Nhóm 2 — Nghe và Nói",
-        "en": "Group 2 — Listening and Speaking"
-      },
-      "sectionIds": [
-        "listening",
-        "speaking"
-      ],
-      "maxPoints": 50,
-      "passPoints": 30
-    }
-  ],
+      {
+        "id": "group_2",
+        "title": {
+          "vi": "Nhóm 2 — Nghe và Nói",
+          "en": "Group 2 — Listening and Speaking"
+        },
+        "sections": [
+          "listening",
+          "speaking"
+        ],
+        "min": 30
+      }
+    ]
+  },
+  "scoring": {
+    "perItem": "share_of_section_points",
+    "negativeMarking": false
+  },
   "readiness": {
     "bands": [
       {
@@ -294,8 +344,8 @@
           "en": "Estimated readiness: good"
         },
         "message": {
-          "vi": "Ở lần thi thử này, cả hai nhóm điểm đều cao hơn ngưỡng của định dạng thi một khoảng an toàn. Đây là mức sẵn sàng ước tính từ bài luyện của khóa học, không phải điểm thi thật.",
-          "en": "In this mock, both score groups are comfortably above the format's threshold. This is an estimated readiness from the course's practice, not a real exam score."
+          "vi": "Ở lần thi thử này, CẢ HAI nhóm điểm đều cao hơn ngưỡng 30/50 của định dạng thi một khoảng an toàn. Đây là mức sẵn sàng ước tính từ bài luyện của khóa học, không phải điểm thi thật.",
+          "en": "In this mock BOTH score groups are comfortably above the format's 30/50 threshold. This is an estimated readiness from the course's practice, not a real exam score."
         }
       },
       {
@@ -306,8 +356,8 @@
           "en": "Estimated readiness: getting close"
         },
         "message": {
-          "vi": "Cả hai nhóm điểm đều đạt ngưỡng của định dạng thi, nhưng chưa có khoảng an toàn. Hãy luyện thêm các phần yếu bên dưới.",
-          "en": "Both score groups reach the format's threshold, without a safety margin yet. Practise the weak areas below."
+          "vi": "Cả hai nhóm điểm đều đạt ngưỡng 30/50 của định dạng thi nhưng chưa có khoảng an toàn. Hãy luyện thêm các phần yếu bên dưới.",
+          "en": "Both score groups reach the format's 30/50 threshold, without a safety margin yet. Practise the weak areas below."
         }
       },
       {
@@ -318,8 +368,8 @@
           "en": "Estimated readiness: more practice needed"
         },
         "message": {
-          "vi": "Ít nhất một nhóm điểm còn dưới ngưỡng của định dạng thi. Hãy luyện các phần yếu bên dưới rồi thử lại với đề còn lại.",
-          "en": "At least one score group is below the format's threshold. Practise the weak areas below, then try the other form."
+          "vi": "Ít nhất một nhóm điểm còn dưới ngưỡng 30/50 của định dạng thi — trong kỳ thi thật, mỗi nhóm phải tự đạt ngưỡng. Hãy luyện các phần yếu bên dưới rồi thử lại với đề còn lại.",
+          "en": "At least one score group is below the format's 30/50 threshold — in the real exam each group must reach it on its own. Practise the weak areas below, then try the other form."
         }
       }
     ],
@@ -328,8 +378,8 @@
       "en": "Not enough data to estimate: Speaking needs the microphone and on-device speech recognition. The other parts are still scored."
     },
     "disclaimer": {
-      "vi": "Mức sẵn sàng ước tính dựa trên bài thi thử của khóa học — không phải kỳ thi DELE, không do Instituto Cervantes cấp và không dự đoán kết quả thi thật.",
-      "en": "Estimated readiness from this course's mock — not the DELE exam, not issued by Instituto Cervantes, and no prediction of a real result."
+      "vi": "Mức sẵn sàng ước tính dựa trên bài thi thử của khóa học — không phải kỳ thi DELE, không do Instituto Cervantes cấp và không dự đoán kết quả thi thật. Phần Viết và Nói được chấm bằng tiêu chí tự động đơn giản, nên điểm của hai phần này chỉ là gần đúng.",
+      "en": "Estimated readiness from this course's mock — not the DELE exam, not issued by Instituto Cervantes, and no prediction of a real result. Writing and Speaking are graded by simple automatic rubrics, so their points are approximate."
     }
   },
   "items": [
@@ -340,21 +390,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r1_01",
         "readingId": "es.read.dele_a_r1_correo",
-        "question": "Lucía đang ở thành phố nào?",
+        "question": "Lucía đang ở Sevilla với ai?",
         "options": [
           {
-            "text": "Sevilla"
+            "text": "Với anh/em trai của cô ấy"
           },
           {
-            "text": "Córdoba"
+            "text": "Với Marta"
           },
           {
-            "text": "Madrid"
+            "text": "Với một người bạn ở Córdoba"
           }
         ],
-        "correct": 0
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_r1_01"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -367,21 +417,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r1_02",
         "readingId": "es.read.dele_a_r1_correo",
-        "question": "Lucía đi cùng ai?",
+        "question": "Buổi chiều họ làm gì?",
         "options": [
           {
-            "text": "Mẹ của cô ấy"
+            "text": "Thăm bảo tàng"
           },
           {
-            "text": "Anh/em trai của cô ấy"
+            "text": "Nghỉ ngơi ở khách sạn"
           },
           {
-            "text": "Marta"
+            "text": "Ăn tapas ở quảng trường"
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_r1_02"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -394,21 +444,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r1_03",
         "readingId": "es.read.dele_a_r1_correo",
-        "question": "Khách sạn ở đâu?",
+        "question": "Vì sao Lucía về Madrid vào thứ Sáu?",
         "options": [
           {
-            "text": "Gần nhà ga"
+            "text": "Vì bạn cô ấy sống ở Madrid"
           },
           {
-            "text": "Ở quảng trường"
+            "text": "Vì khách sạn đóng cửa"
           },
           {
-            "text": "Gần sông"
+            "text": "Vì thứ Hai cô ấy đi làm"
           }
         ],
-        "correct": 2
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_r1_03"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -421,21 +471,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r1_04",
         "readingId": "es.read.dele_a_r1_correo",
-        "question": "Ngày mai họ làm gì?",
+        "question": "Lucía thích nhất món gì ở Sevilla?",
         "options": [
           {
-            "text": "Đi tàu đến Córdoba"
+            "text": "Cá"
           },
           {
-            "text": "Về Madrid"
+            "text": "Thịt gà"
           },
           {
-            "text": "Ở khách sạn cả ngày"
+            "text": "Bánh mì"
           }
         ],
-        "correct": 0
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_r1_04"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -448,21 +498,24 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r1_05",
         "readingId": "es.read.dele_a_r1_correo",
-        "question": "Lucía muốn làm gì vào thứ Bảy?",
+        "question": "Marta nên mang theo gì đến nhà Lucía?",
         "options": [
           {
-            "text": "Đi Córdoba"
+            "text": "Một món quà",
+            "emoji": "🎁"
           },
           {
-            "text": "Ăn cùng Marta"
+            "text": "Cây đàn guitar",
+            "emoji": "🎸"
           },
           {
-            "text": "Thăm bảo tàng"
+            "text": "Một cuốn sách",
+            "emoji": "📕"
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_r1_05"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -475,21 +528,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r2_01",
-        "readingId": "es.read.dele_a_r2_farmacia",
-        "question": "Hiệu thuốc mở cửa khi nào?",
+        "readingId": "es.read.dele_a_r2_avisos",
+        "question": "Hôm nay phải đi cầu thang.",
         "options": [
           {
-            "text": "Chỉ buổi sáng"
+            "text": "Văn bản A"
           },
           {
-            "text": "Từ thứ Hai đến thứ Sáu"
+            "text": "Văn bản B"
           },
           {
-            "text": "Hằng ngày, từ chín giờ sáng đến chín giờ tối"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 2
+        "correct": 7,
+        "id": "es-exx-dele_a1-a_r2_01"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -502,21 +573,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r2_02",
-        "readingId": "es.read.dele_a_r2_fumar",
-        "question": "Biển này nói gì?",
+        "readingId": "es.read.dele_a_r2_avisos",
+        "question": "Có người muốn bán một chiếc ô tô.",
         "options": [
           {
-            "text": "Không được hút thuốc ở nhà ga"
+            "text": "Văn bản A"
           },
           {
-            "text": "Không được ăn ở nhà ga"
+            "text": "Văn bản B"
           },
           {
-            "text": "Nhà ga đóng cửa"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 0
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_r2_02"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -529,21 +618,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r2_03",
-        "readingId": "es.read.dele_a_r2_piscina",
-        "question": "Hồ bơi mở cửa khi nào?",
+        "readingId": "es.read.dele_a_r2_avisos",
+        "question": "Trẻ nhỏ đi bơi không mất tiền.",
         "options": [
           {
-            "text": "Buổi chiều"
+            "text": "Văn bản A"
           },
           {
-            "text": "Buổi sáng"
+            "text": "Văn bản B"
           },
           {
-            "text": "Buổi tối"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 1
+        "correct": 3,
+        "id": "es-exx-dele_a1-a_r2_03"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -556,21 +663,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r2_04",
-        "readingId": "es.read.dele_a_r2_habitacion",
-        "question": "Quảng cáo này là về gì?",
+        "readingId": "es.read.dele_a_r2_avisos",
+        "question": "Người mẹ về nhà muộn.",
         "options": [
           {
-            "text": "Bán một chiếc ô tô"
+            "text": "Văn bản A"
           },
           {
-            "text": "Tìm người làm việc"
+            "text": "Văn bản B"
           },
           {
-            "text": "Cho thuê một căn phòng"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 2
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_r2_04"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -583,21 +708,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r2_05",
-        "readingId": "es.read.dele_a_r2_super",
-        "question": "Chủ nhật siêu thị mở cửa lúc mấy giờ?",
+        "readingId": "es.read.dele_a_r2_avisos",
+        "question": "Một nhà hàng đang tìm người làm việc.",
         "options": [
           {
-            "text": "Lúc mười giờ sáng"
+            "text": "Văn bản A"
           },
           {
-            "text": "Lúc hai giờ chiều"
+            "text": "Văn bản B"
           },
           {
-            "text": "Chủ nhật không mở cửa"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 0
+        "correct": 8,
+        "id": "es-exx-dele_a1-a_r2_05"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -610,21 +753,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r2_06",
-        "readingId": "es.read.dele_a_r2_clase",
-        "question": "Lớp tiếng Tây Ban Nha vào những ngày nào?",
+        "readingId": "es.read.dele_a_r2_avisos",
+        "question": "Hai người hẹn gặp nhau trước buổi hòa nhạc.",
         "options": [
           {
-            "text": "Thứ Ba và thứ Năm"
+            "text": "Văn bản A"
           },
           {
-            "text": "Thứ Hai và thứ Tư"
+            "text": "Văn bản B"
           },
           {
-            "text": "Thứ Bảy và Chủ nhật"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 1
+        "correct": 5,
+        "id": "es-exx-dele_a1-a_r2_06"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -637,21 +798,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_01",
         "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Ana muốn học tiếng Anh vào buổi chiều. Quảng cáo nào phù hợp?",
+        "question": "Elena: “Tôi muốn tập thể thao trước khi đi làm.”",
         "options": [
           {
-            "text": "Quảng cáo H"
+            "text": "Quảng cáo A"
+          },
+          {
+            "text": "Quảng cáo B"
+          },
+          {
+            "text": "Quảng cáo C"
+          },
+          {
+            "text": "Quảng cáo D"
+          },
+          {
+            "text": "Quảng cáo E"
           },
           {
             "text": "Quảng cáo F"
           },
           {
-            "text": "Quảng cáo B"
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 2
+        "correct": 3,
+        "id": "es-exx-dele_a1-a_r3_01"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -664,21 +843,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_02",
         "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Pedro không ăn thịt. Quảng cáo nào phù hợp?",
+        "question": "Pedro: “Tôi không ăn thịt.”",
         "options": [
           {
             "text": "Quảng cáo A"
           },
           {
-            "text": "Quảng cáo E"
+            "text": "Quảng cáo B"
+          },
+          {
+            "text": "Quảng cáo C"
           },
           {
             "text": "Quảng cáo D"
+          },
+          {
+            "text": "Quảng cáo E"
+          },
+          {
+            "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 0
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_r3_02"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -691,21 +888,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_03",
         "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Luis muốn thuê một chiếc xe đạp. Quảng cáo nào phù hợp?",
+        "question": "Linh: “Tôi mới đến và muốn học tiếng Tây Ban Nha.”",
         "options": [
           {
-            "text": "Quảng cáo D"
+            "text": "Quảng cáo A"
+          },
+          {
+            "text": "Quảng cáo B"
           },
           {
             "text": "Quảng cáo C"
           },
           {
+            "text": "Quảng cáo D"
+          },
+          {
             "text": "Quảng cáo E"
+          },
+          {
+            "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 1
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_r3_03"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -718,21 +933,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_04",
         "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Elena muốn tập thể dục từ sáng sớm. Quảng cáo nào phù hợp?",
+        "question": "Jorge: “Lúc nửa đêm tôi cần thuốc.”",
         "options": [
-          {
-            "text": "Quảng cáo H"
-          },
           {
             "text": "Quảng cáo A"
           },
           {
+            "text": "Quảng cáo B"
+          },
+          {
+            "text": "Quảng cáo C"
+          },
+          {
             "text": "Quảng cáo D"
+          },
+          {
+            "text": "Quảng cáo E"
+          },
+          {
+            "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 2
+        "correct": 6,
+        "id": "es-exx-dele_a1-a_r3_04"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -745,21 +978,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_05",
         "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Một gia đình muốn ngủ gần biển. Quảng cáo nào phù hợp?",
+        "question": "Carmen: “Tôi muốn mua sách và uống cà phê.”",
         "options": [
-          {
-            "text": "Quảng cáo E"
-          },
           {
             "text": "Quảng cáo A"
           },
           {
+            "text": "Quảng cáo B"
+          },
+          {
+            "text": "Quảng cáo C"
+          },
+          {
+            "text": "Quảng cáo D"
+          },
+          {
+            "text": "Quảng cáo E"
+          },
+          {
             "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 0
+        "correct": 5,
+        "id": "es-exx-dele_a1-a_r3_05"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -772,37 +1023,18 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_06",
         "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Carmen muốn mua sách và uống cà phê. Quảng cáo nào phù hợp?",
+        "question": "Luis: “Tôi muốn đi xe đạp quanh thành phố một ngày.”",
         "options": [
+          {
+            "text": "Quảng cáo A"
+          },
           {
             "text": "Quảng cáo B"
           },
           {
-            "text": "Quảng cáo F"
-          },
-          {
             "text": "Quảng cáo C"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.reading.notices_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_r3_07",
-      "itemVersion": 1,
-      "sectionId": "reading",
-      "taskId": "t3",
-      "exercise": {
-        "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_07",
-        "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Lúc nửa đêm Jorge cần thuốc. Quảng cáo nào phù hợp?",
-        "options": [
+          },
           {
             "text": "Quảng cáo D"
           },
@@ -810,37 +1042,20 @@
             "text": "Quảng cáo E"
           },
           {
+            "text": "Quảng cáo F"
+          },
+          {
             "text": "Quảng cáo G"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.reading.notices_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_r3_08",
-      "itemVersion": 1,
-      "sectionId": "reading",
-      "taskId": "t3",
-      "exercise": {
-        "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r3_08",
-        "readingId": "es.read.dele_a_r3_anuncios",
-        "question": "Con của Marta muốn học đàn guitar. Quảng cáo nào phù hợp?",
-        "options": [
+          },
           {
             "text": "Quảng cáo H"
           },
           {
-            "text": "Quảng cáo B"
-          },
-          {
-            "text": "Quảng cáo F"
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 0
+        "correct": 8,
+        "id": "es-exx-dele_a1-a_r3_06"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -853,21 +1068,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r4_01",
-        "readingId": "es.read.dele_a_r4_daniel",
-        "question": "Daniel bao nhiêu tuổi?",
+        "readingId": "es.read.dele_a_r4_texto",
+        "question": "Daniel sống với ai?",
         "options": [
           {
-            "text": "Ba mươi lăm tuổi"
+            "text": "Với bố mẹ"
           },
           {
-            "text": "Hai mươi lăm tuổi"
+            "text": "Một mình"
           },
           {
-            "text": "Hai mươi tuổi"
+            "text": "Với hai người bạn"
           }
         ],
-        "correct": 1
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_r4_01"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -880,21 +1095,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r4_02",
-        "readingId": "es.read.dele_a_r4_daniel",
-        "question": "Daniel đến từ đâu?",
+        "readingId": "es.read.dele_a_r4_texto",
+        "question": "Căn hộ ở đâu?",
         "options": [
           {
-            "text": "Barcelona"
+            "text": "Ở trung tâm, gần ga tàu điện ngầm"
           },
           {
-            "text": "Madrid"
+            "text": "Gần bãi biển"
           },
           {
-            "text": "Valencia"
+            "text": "Ở Valencia"
           }
         ],
-        "correct": 2
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_r4_02"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -907,21 +1122,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r4_03",
-        "readingId": "es.read.dele_a_r4_daniel",
+        "readingId": "es.read.dele_a_r4_texto",
         "question": "Daniel làm nghề gì?",
         "options": [
           {
-            "text": "Y tá"
+            "text": "Giáo viên"
           },
           {
-            "text": "Giáo viên"
+            "text": "Y tá"
           },
           {
             "text": "Đầu bếp"
           }
         ],
-        "correct": 0
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_r4_03"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -934,21 +1149,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r4_04",
-        "readingId": "es.read.dele_a_r4_daniel",
-        "question": "Daniel sống với ai?",
+        "readingId": "es.read.dele_a_r4_texto",
+        "question": "Buổi sáng Daniel ăn gì?",
         "options": [
           {
-            "text": "Với bố mẹ"
+            "text": "Paella"
           },
           {
-            "text": "Với hai người bạn"
+            "text": "Trái cây và nước cam"
           },
           {
-            "text": "Một mình"
+            "text": "Cà phê sữa và bánh mì nướng"
           }
         ],
-        "correct": 1
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_r4_04"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -961,21 +1176,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r4_05",
-        "readingId": "es.read.dele_a_r4_daniel",
-        "question": "Cuối tuần Daniel làm gì?",
+        "readingId": "es.read.dele_a_r4_texto",
+        "question": "Daniel đi làm bằng gì?",
         "options": [
           {
-            "text": "Làm việc ở bệnh viện"
+            "text": "Bằng tàu điện ngầm"
           },
           {
-            "text": "Học tiếng Anh"
+            "text": "Bằng ô tô"
           },
           {
-            "text": "Đi biển hoặc chơi bóng đá"
+            "text": "Đi bộ"
           }
         ],
-        "correct": 2
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_r4_05"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -988,699 +1203,78 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-a_r4_06",
-        "readingId": "es.read.dele_a_r4_daniel",
-        "question": "Món ăn yêu thích của Daniel là gì?",
+        "readingId": "es.read.dele_a_r4_texto",
+        "question": "Daniel làm việc đến mấy giờ?",
         "options": [
           {
-            "text": "Món paella của mẹ anh ấy"
+            "text": "Tám giờ sáng"
           },
           {
-            "text": "Bánh mì kẹp"
+            "text": "Ba giờ chiều"
           },
           {
-            "text": "Cơm gà"
+            "text": "Sáu giờ rưỡi"
           }
         ],
-        "correct": 0
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_r4_06"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
       ]
     },
     {
-      "id": "es.exi.dele_a1.a_l1_01",
+      "id": "es.exi.dele_a1.a_r4_07",
       "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t1",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l1_01",
-        "clipId": "es.clip.dele_a_l1_01",
-        "question": "Bánh mì giá bao nhiêu?",
-        "options": [
-          {
-            "text": "Năm euro"
-          },
-          {
-            "text": "Một euro năm mươi"
-          },
-          {
-            "text": "Mười lăm euro"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_dialogues"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l1_02",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t1",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l1_02",
-        "clipId": "es.clip.dele_a_l1_02",
-        "question": "Nhà vệ sinh ở đâu?",
-        "options": [
-          {
-            "text": "Ở cuối, bên trái"
-          },
-          {
-            "text": "Ở tầng hai"
-          },
-          {
-            "text": "Ở cuối, bên phải"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_dialogues"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l1_03",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t1",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l1_03",
-        "clipId": "es.clip.dele_a_l1_03",
-        "question": "Xe buýt chạy lúc mấy giờ?",
-        "options": [
-          {
-            "text": "Bốn giờ rưỡi"
-          },
-          {
-            "text": "Bốn giờ"
-          },
-          {
-            "text": "Năm giờ rưỡi"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_dialogues"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l1_04",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t1",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l1_04",
-        "clipId": "es.clip.dele_a_l1_04",
-        "question": "Người đó muốn uống gì?",
-        "options": [
-          {
-            "text": "Cà phê"
-          },
-          {
-            "text": "Nước cam"
-          },
-          {
-            "text": "Nước lọc"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_dialogues"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l1_05",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t1",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l1_05",
-        "clipId": "es.clip.dele_a_l1_05",
-        "question": "Sinh nhật vào ngày nào?",
-        "options": [
-          {
-            "text": "Ngày hai tháng Mười hai"
-          },
-          {
-            "text": "Ngày hai mươi tháng Năm"
-          },
-          {
-            "text": "Ngày mười hai tháng Năm"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_dialogues"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l2_01",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t2",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l2_01",
-        "clipId": "es.clip.dele_a_l2_01",
-        "question": "Tàu đi Bilbao chạy từ sân ga nào?",
-        "options": [
-          {
-            "text": "Sân ga số sáu"
-          },
-          {
-            "text": "Sân ga số hai"
-          },
-          {
-            "text": "Sân ga số mười"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.announcements"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l2_02",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t2",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l2_02",
-        "clipId": "es.clip.dele_a_l2_02",
-        "question": "Khi nào cửa hàng đóng cửa?",
-        "options": [
-          {
-            "text": "Hai mươi phút nữa"
-          },
-          {
-            "text": "Mười phút nữa"
-          },
-          {
-            "text": "Một giờ nữa"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.announcements"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l2_03",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t2",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l2_03",
-        "clipId": "es.clip.dele_a_l2_03",
-        "question": "Pedro đến lúc mấy giờ?",
-        "options": [
-          {
-            "text": "Bảy giờ"
-          },
-          {
-            "text": "Mười giờ"
-          },
-          {
-            "text": "Chín giờ"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.listening.announcements"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l2_04",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t2",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l2_04",
-        "clipId": "es.clip.dele_a_l2_04",
-        "question": "Thời tiết ở Madrid hôm nay thế nào?",
-        "options": [
-          {
-            "text": "Nắng và rất nóng"
-          },
-          {
-            "text": "Mưa và lạnh"
-          },
-          {
-            "text": "Có tuyết"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.announcements"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l2_05",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t2",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l2_05",
-        "clipId": "es.clip.dele_a_l2_05",
-        "question": "Chuyến bay đi Lima ở cửa nào?",
-        "options": [
-          {
-            "text": "Cửa số hai"
-          },
-          {
-            "text": "Cửa số mười hai"
-          },
-          {
-            "text": "Cửa số hai mươi"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.announcements"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_01",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_01",
-        "clipId": "es.clip.dele_a_l3_01",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở ngân hàng"
-          },
-          {
-            "text": "Ở hiệu thuốc"
-          },
-          {
-            "text": "Ở quán cà phê"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_02",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_02",
-        "clipId": "es.clip.dele_a_l3_02",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở hiệu thuốc"
-          },
-          {
-            "text": "Ở rạp chiếu phim"
-          },
-          {
-            "text": "Ở chợ"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_03",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_03",
-        "clipId": "es.clip.dele_a_l3_03",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở nhà ga"
-          },
-          {
-            "text": "Ở rạp chiếu phim"
-          },
-          {
-            "text": "Ở thư viện"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_04",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_04",
-        "clipId": "es.clip.dele_a_l3_04",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở bảo tàng"
-          },
-          {
-            "text": "Ở khách sạn"
-          },
-          {
-            "text": "Ở chợ"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_05",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_05",
-        "clipId": "es.clip.dele_a_l3_05",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở khách sạn"
-          },
-          {
-            "text": "Ở nhà hàng"
-          },
-          {
-            "text": "Ở trường học"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_06",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_06",
-        "clipId": "es.clip.dele_a_l3_06",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở cửa hàng quần áo"
-          },
-          {
-            "text": "Ở thư viện"
-          },
-          {
-            "text": "Ở sân bay"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_07",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_07",
-        "clipId": "es.clip.dele_a_l3_07",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở siêu thị"
-          },
-          {
-            "text": "Ở bưu điện"
-          },
-          {
-            "text": "Ở nhà ga"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l3_08",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t3",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l3_08",
-        "clipId": "es.clip.dele_a_l3_08",
-        "question": "Người này đang ở đâu?",
-        "options": [
-          {
-            "text": "Ở tiệm cắt tóc"
-          },
-          {
-            "text": "Ở hiệu thuốc"
-          },
-          {
-            "text": "Ở quán cà phê"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l4_01",
-      "itemVersion": 1,
-      "sectionId": "listening",
+      "sectionId": "reading",
       "taskId": "t4",
       "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l4_01",
-        "clipId": "es.clip.dele_a_l4_01",
-        "question": "Bảo tàng mở cửa lúc mấy giờ?",
+        "type": "readingComprehension",
+        "readingId": "es.read.dele_a_r4_texto",
+        "question": "Buổi tối Daniel làm gì?",
         "options": [
           {
-            "text": "Lúc sáu giờ"
+            "text": "Học tiếng Anh"
           },
           {
-            "text": "Lúc mười giờ"
+            "text": "Chơi bóng đá"
           },
           {
-            "text": "Lúc hai giờ"
+            "text": "Nấu ăn với bạn bè"
           }
         ],
-        "correct": 1
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_r4_07"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.reading.short_texts"
       ]
     },
     {
-      "id": "es.exi.dele_a1.a_l4_02",
+      "id": "es.exi.dele_a1.a_r4_08",
       "itemVersion": 1,
-      "sectionId": "listening",
+      "sectionId": "reading",
       "taskId": "t4",
       "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l4_02",
-        "clipId": "es.clip.dele_a_l4_02",
-        "question": "Vé vào cửa giá bao nhiêu?",
+        "type": "readingComprehension",
+        "readingId": "es.read.dele_a_r4_texto",
+        "question": "Cuối tuần Daniel làm gì?",
         "options": [
           {
-            "text": "Năm euro"
+            "text": "Chơi bóng đá với đồng nghiệp"
           },
           {
-            "text": "Năm mươi euro"
+            "text": "Làm việc ở bệnh viện"
           },
           {
-            "text": "Mười lăm euro"
+            "text": "Đi học ở trung tâm"
           }
         ],
-        "correct": 2
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_r4_08"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l4_03",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t4",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l4_03",
-        "clipId": "es.clip.dele_a_l4_03",
-        "question": "Người này sống ở số nhà bao nhiêu?",
-        "options": [
-          {
-            "text": "Số hai mươi"
-          },
-          {
-            "text": "Số mười hai"
-          },
-          {
-            "text": "Số hai"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l4_04",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t4",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l4_04",
-        "clipId": "es.clip.dele_a_l4_04",
-        "question": "Lớp học bắt đầu lúc mấy giờ?",
-        "options": [
-          {
-            "text": "Chín giờ mười lăm"
-          },
-          {
-            "text": "Chín giờ kém mười lăm"
-          },
-          {
-            "text": "Tám giờ"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l4_05",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t4",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l4_05",
-        "clipId": "es.clip.dele_a_l4_05",
-        "question": "Người này có bao nhiêu anh chị em?",
-        "options": [
-          {
-            "text": "Hai"
-          },
-          {
-            "text": "Một"
-          },
-          {
-            "text": "Ba"
-          }
-        ],
-        "correct": 2
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l4_06",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t4",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l4_06",
-        "clipId": "es.clip.dele_a_l4_06",
-        "question": "Buổi hòa nhạc diễn ra khi nào?",
-        "options": [
-          {
-            "text": "Tối thứ Sáu"
-          },
-          {
-            "text": "Sáng thứ Sáu"
-          },
-          {
-            "text": "Tối thứ Bảy"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_l4_07",
-      "itemVersion": 1,
-      "sectionId": "listening",
-      "taskId": "t4",
-      "exercise": {
-        "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-a_l4_07",
-        "clipId": "es.clip.dele_a_l4_07",
-        "question": "Người đó phải trả bao nhiêu?",
-        "options": [
-          {
-            "text": "Hai mươi bốn euro"
-          },
-          {
-            "text": "Bốn euro hai mươi"
-          },
-          {
-            "text": "Bốn mươi euro"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.reading.short_texts"
       ]
     },
     {
@@ -1690,21 +1284,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r1_01",
         "readingId": "es.read.dele_b_r1_correo",
         "question": "Javier làm việc ở đâu?",
         "options": [
           {
+            "text": "Ở một trường học ở Paris"
+          },
+          {
+            "text": "Ở một văn phòng ở trung tâm Granada"
+          },
+          {
             "text": "Ở một nhà hàng"
-          },
-          {
-            "text": "Ở một trường học"
-          },
-          {
-            "text": "Ở một văn phòng trong trung tâm"
           }
         ],
-        "correct": 2
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_r1_01"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -1717,21 +1311,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r1_02",
         "readingId": "es.read.dele_b_r1_correo",
-        "question": "Javier kết thúc công việc lúc mấy giờ?",
+        "question": "Buổi chiều Javier làm gì?",
         "options": [
           {
-            "text": "Lúc ba giờ"
+            "text": "Làm việc ở văn phòng"
           },
           {
-            "text": "Lúc tám giờ"
+            "text": "Đi công viên"
           },
           {
-            "text": "Lúc sáu giờ"
+            "text": "Học tiếng Pháp"
           }
         ],
-        "correct": 0
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_r1_02"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -1744,21 +1338,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r1_03",
         "readingId": "es.read.dele_b_r1_correo",
-        "question": "Buổi chiều Javier làm gì?",
+        "question": "Cô giáo của Javier thế nào?",
         "options": [
           {
-            "text": "Đi công viên"
+            "text": "Nói rất nhanh"
           },
           {
-            "text": "Học tiếng Anh"
+            "text": "Nói rất chậm"
           },
           {
-            "text": "Làm việc ở văn phòng"
+            "text": "Đến từ Granada"
           }
         ],
-        "correct": 1
+        "correct": 0,
+        "id": "es-exx-dele_a1-b_r1_03"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -1771,21 +1365,21 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r1_04",
         "readingId": "es.read.dele_b_r1_correo",
-        "question": "Căn hộ mới của Javier ở gần đâu?",
+        "question": "Căn hộ mới có gì đặc biệt?",
         "options": [
           {
-            "text": "Gần văn phòng"
+            "text": "Một khu vườn lớn"
           },
           {
-            "text": "Gần biển"
+            "text": "Một sân thượng nhìn ra công viên"
           },
           {
-            "text": "Gần công viên"
+            "text": "Ba phòng ngủ"
           }
         ],
-        "correct": 2
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_r1_04"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -1798,21 +1392,24 @@
       "taskId": "t1",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r1_05",
         "readingId": "es.read.dele_b_r1_correo",
-        "question": "Chủ nhật có gì?",
+        "question": "Laura nên mang gì đến bữa tiệc?",
         "options": [
           {
-            "text": "Một bữa tiệc ở nhà Javier"
+            "text": "Một chai nước",
+            "emoji": "💧"
           },
           {
-            "text": "Một lớp tiếng Anh"
+            "text": "Một chiếc bánh ngọt",
+            "emoji": "🎂"
           },
           {
-            "text": "Một chuyến tàu"
+            "text": "Bánh trứng khoai tây",
+            "emoji": "🥘"
           }
         ],
-        "correct": 0
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_r1_05"
       },
       "objectiveTargets": [
         "es.obj.reading.short_messages"
@@ -1825,21 +1422,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r2_01",
-        "readingId": "es.read.dele_b_r2_silencio",
-        "question": "Biển này yêu cầu gì?",
+        "readingId": "es.read.dele_b_r2_avisos",
+        "question": "Một học sinh bị ốm và xin bài tập.",
         "options": [
           {
-            "text": "Đóng cửa lại"
+            "text": "Văn bản A"
           },
           {
-            "text": "Giữ yên lặng"
+            "text": "Văn bản B"
           },
           {
-            "text": "Trả sách hôm nay"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_r2_01"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -1852,21 +1467,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r2_02",
-        "readingId": "es.read.dele_b_r2_museo",
-        "question": "Chủ nhật vào bảo tàng thế nào?",
+        "readingId": "es.read.dele_b_r2_avisos",
+        "question": "Hôm nay tàu chạy muộn.",
         "options": [
           {
-            "text": "Mười euro"
+            "text": "Văn bản A"
           },
           {
-            "text": "Bảo tàng đóng cửa"
+            "text": "Văn bản B"
           },
           {
-            "text": "Miễn phí"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 2
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_r2_02"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -1879,21 +1512,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r2_03",
-        "readingId": "es.read.dele_b_r2_tren",
-        "question": "Tàu đi Toledo chạy từ sân ga nào?",
+        "readingId": "es.read.dele_b_r2_avisos",
+        "question": "Một gia đình cần người dạy toán.",
         "options": [
           {
-            "text": "Sân ga số ba"
+            "text": "Văn bản A"
           },
           {
-            "text": "Sân ga số mười"
+            "text": "Văn bản B"
           },
           {
-            "text": "Sân ga số mười lăm"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 0
+        "correct": 7,
+        "id": "es-exx-dele_a1-b_r2_03"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -1906,21 +1557,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r2_04",
-        "readingId": "es.read.dele_b_r2_bici",
-        "question": "Người này bán gì?",
+        "readingId": "es.read.dele_b_r2_avisos",
+        "question": "Thứ Bảy không đến được nơi này.",
         "options": [
           {
-            "text": "Một chiếc ô tô"
+            "text": "Văn bản A"
           },
           {
-            "text": "Một chiếc xe đạp"
+            "text": "Văn bản B"
           },
           {
-            "text": "Một cái bàn"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 1
+        "correct": 5,
+        "id": "es-exx-dele_a1-b_r2_04"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -1933,21 +1602,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r2_05",
-        "readingId": "es.read.dele_b_r2_menu",
-        "question": "Có thực đơn trong ngày vào thứ Bảy không?",
+        "readingId": "es.read.dele_b_r2_avisos",
+        "question": "Hai chị em chuẩn bị sinh nhật cho bố.",
         "options": [
           {
-            "text": "Có, mỗi ngày"
+            "text": "Văn bản A"
           },
           {
-            "text": "Chỉ vào thứ Bảy"
+            "text": "Văn bản B"
           },
           {
-            "text": "Không, chỉ từ thứ Hai đến thứ Sáu"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 2
+        "correct": 6,
+        "id": "es-exx-dele_a1-b_r2_05"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -1960,21 +1647,39 @@
       "taskId": "t2",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r2_06",
-        "readingId": "es.read.dele_b_r2_banco",
-        "question": "Ngân hàng đóng cửa vào ngày nào?",
+        "readingId": "es.read.dele_b_r2_avisos",
+        "question": "Ở đây phải giữ yên lặng.",
         "options": [
           {
-            "text": "Thứ Bảy và Chủ nhật"
+            "text": "Văn bản A"
           },
           {
-            "text": "Thứ Hai"
+            "text": "Văn bản B"
           },
           {
-            "text": "Mỗi chiều thứ Sáu"
+            "text": "Văn bản C"
+          },
+          {
+            "text": "Văn bản D"
+          },
+          {
+            "text": "Văn bản E"
+          },
+          {
+            "text": "Văn bản F"
+          },
+          {
+            "text": "Văn bản G"
+          },
+          {
+            "text": "Văn bản H"
+          },
+          {
+            "text": "Văn bản I"
           }
         ],
-        "correct": 0
+        "correct": 8,
+        "id": "es-exx-dele_a1-b_r2_06"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -1987,21 +1692,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_01",
         "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Sofía muốn học nấu món Tây Ban Nha. Quảng cáo nào phù hợp?",
+        "question": "Sofía: “Tôi muốn học nấu món Tây Ban Nha.”",
         "options": [
           {
-            "text": "Quảng cáo D"
+            "text": "Quảng cáo A"
           },
           {
             "text": "Quảng cáo B"
           },
           {
+            "text": "Quảng cáo C"
+          },
+          {
+            "text": "Quảng cáo D"
+          },
+          {
+            "text": "Quảng cáo E"
+          },
+          {
             "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_r3_01"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -2014,21 +1737,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_02",
         "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Tomás muốn mua giày. Quảng cáo nào phù hợp?",
+        "question": "Tomás: “Tôi cần một đôi giày mới.”",
         "options": [
           {
-            "text": "Quảng cáo D"
+            "text": "Quảng cáo A"
           },
           {
             "text": "Quảng cáo B"
           },
           {
+            "text": "Quảng cáo C"
+          },
+          {
+            "text": "Quảng cáo D"
+          },
+          {
+            "text": "Quảng cáo E"
+          },
+          {
             "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 2
+        "correct": 5,
+        "id": "es-exx-dele_a1-b_r3_02"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -2041,21 +1782,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_03",
         "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Con của Rosa muốn xem phim. Quảng cáo nào phù hợp?",
+        "question": "Rosa: “Con tôi muốn xem phim vào cuối tuần.”",
         "options": [
           {
             "text": "Quảng cáo A"
           },
           {
-            "text": "Quảng cáo G"
+            "text": "Quảng cáo B"
+          },
+          {
+            "text": "Quảng cáo C"
+          },
+          {
+            "text": "Quảng cáo D"
           },
           {
             "text": "Quảng cáo E"
+          },
+          {
+            "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 0
+        "correct": 0,
+        "id": "es-exx-dele_a1-b_r3_03"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -2068,21 +1827,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_04",
         "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Andrés cần một chiếc xe lúc ba giờ sáng. Quảng cáo nào phù hợp?",
+        "question": "Andrés: “Tôi cần một chiếc xe lúc ba giờ sáng.”",
         "options": [
           {
-            "text": "Quảng cáo H"
+            "text": "Quảng cáo A"
+          },
+          {
+            "text": "Quảng cáo B"
           },
           {
             "text": "Quảng cáo C"
           },
           {
-            "text": "Quảng cáo A"
+            "text": "Quảng cáo D"
+          },
+          {
+            "text": "Quảng cáo E"
+          },
+          {
+            "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 1
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_r3_04"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -2095,21 +1872,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_05",
         "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Lucía muốn học bơi. Quảng cáo nào phù hợp?",
+        "question": "Pablo: “Tôi tìm chỗ ngủ rẻ gần nhà ga.”",
         "options": [
           {
             "text": "Quảng cáo A"
           },
           {
-            "text": "Quảng cáo G"
+            "text": "Quảng cáo B"
+          },
+          {
+            "text": "Quảng cáo C"
+          },
+          {
+            "text": "Quảng cáo D"
           },
           {
             "text": "Quảng cáo E"
+          },
+          {
+            "text": "Quảng cáo F"
+          },
+          {
+            "text": "Quảng cáo G"
+          },
+          {
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 2
+        "correct": 7,
+        "id": "es-exx-dele_a1-b_r3_05"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -2122,75 +1917,39 @@
       "taskId": "t3",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_06",
         "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Pablo muốn chỗ ngủ rẻ gần nhà ga. Quảng cáo nào phù hợp?",
-        "options": [
-          {
-            "text": "Quảng cáo H"
-          },
-          {
-            "text": "Quảng cáo C"
-          },
-          {
-            "text": "Quảng cáo F"
-          }
-        ],
-        "correct": 0
-      },
-      "objectiveTargets": [
-        "es.obj.reading.notices_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.b_r3_07",
-      "itemVersion": 1,
-      "sectionId": "reading",
-      "taskId": "t3",
-      "exercise": {
-        "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_07",
-        "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Gia đình Marta muốn xem động vật. Quảng cáo nào phù hợp?",
+        "question": "Nuria: “Điện thoại của tôi bị hỏng.”",
         "options": [
           {
             "text": "Quảng cáo A"
           },
           {
-            "text": "Quảng cáo G"
+            "text": "Quảng cáo B"
+          },
+          {
+            "text": "Quảng cáo C"
           },
           {
             "text": "Quảng cáo D"
-          }
-        ],
-        "correct": 1
-      },
-      "objectiveTargets": [
-        "es.obj.reading.notices_info"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.b_r3_08",
-      "itemVersion": 1,
-      "sectionId": "reading",
-      "taskId": "t3",
-      "exercise": {
-        "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r3_08",
-        "readingId": "es.read.dele_b_r3_anuncios",
-        "question": "Nuria muốn mua trái cây. Quảng cáo nào phù hợp?",
-        "options": [
+          },
+          {
+            "text": "Quảng cáo E"
+          },
           {
             "text": "Quảng cáo F"
           },
           {
-            "text": "Quảng cáo B"
+            "text": "Quảng cáo G"
           },
           {
-            "text": "Quảng cáo D"
+            "text": "Quảng cáo H"
+          },
+          {
+            "text": "Quảng cáo I"
           }
         ],
-        "correct": 2
+        "correct": 8,
+        "id": "es-exx-dele_a1-b_r3_06"
       },
       "objectiveTargets": [
         "es.obj.reading.notices_info"
@@ -2203,21 +1962,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r4_01",
-        "readingId": "es.read.dele_b_r4_isabel",
-        "question": "Isabel đến từ đâu?",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Isabel làm nghề gì?",
         "options": [
           {
-            "text": "Mexico"
+            "text": "Giáo viên toán"
           },
           {
-            "text": "Tây Ban Nha"
+            "text": "Đầu bếp"
           },
           {
-            "text": "Argentina"
+            "text": "Bác sĩ"
           }
         ],
-        "correct": 0
+        "correct": 0,
+        "id": "es-exx-dele_a1-b_r4_01"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -2230,21 +1989,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r4_02",
-        "readingId": "es.read.dele_b_r4_isabel",
-        "question": "Isabel làm nghề gì?",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Marcos làm việc ở đâu?",
         "options": [
           {
-            "text": "Y tá"
+            "text": "Ở một trường học"
           },
           {
-            "text": "Giáo viên"
+            "text": "Ở một nhà hàng ở trung tâm"
           },
           {
-            "text": "Bác sĩ"
+            "text": "Ở nhà"
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_r4_02"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -2257,12 +2016,11 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r4_03",
-        "readingId": "es.read.dele_b_r4_isabel",
-        "question": "Con gái của Isabel mấy tuổi?",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Carla bao nhiêu tuổi?",
         "options": [
           {
-            "text": "Ba mươi tuổi"
+            "text": "Ba mươi bốn tuổi"
           },
           {
             "text": "Hai tuổi"
@@ -2271,7 +2029,8 @@
             "text": "Bốn tuổi"
           }
         ],
-        "correct": 2
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_r4_03"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -2284,21 +2043,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r4_04",
-        "readingId": "es.read.dele_b_r4_isabel",
-        "question": "Nhà của họ có gì?",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Nhà của họ ở đâu?",
         "options": [
           {
-            "text": "Một khu vườn và một con chó lớn"
+            "text": "Ở ngoại ô thành phố"
           },
           {
-            "text": "Một hồ bơi"
+            "text": "Ở trung tâm"
           },
           {
-            "text": "Hai con mèo"
+            "text": "Gần bãi biển"
           }
         ],
-        "correct": 0
+        "correct": 0,
+        "id": "es-exx-dele_a1-b_r4_04"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -2311,21 +2070,21 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r4_05",
-        "readingId": "es.read.dele_b_r4_isabel",
-        "question": "Thứ Bảy họ làm gì?",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Bruno là ai?",
         "options": [
           {
-            "text": "Ăn cơm với bố mẹ"
+            "text": "Con trai của Isabel"
           },
           {
-            "text": "Đi chợ"
+            "text": "Con chó của gia đình"
           },
           {
-            "text": "Đi biển"
+            "text": "Bố của Isabel"
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_r4_05"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
@@ -2338,24 +2097,1180 @@
       "taskId": "t4",
       "exercise": {
         "type": "readingComprehension",
-        "id": "es-exx-dele_a1-b_r4_06",
-        "readingId": "es.read.dele_b_r4_isabel",
-        "question": "Chủ nhật họ ăn với ai?",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Isabel đưa Carla đến trường bằng gì?",
         "options": [
           {
-            "text": "Với bạn bè"
+            "text": "Đi bộ"
           },
           {
-            "text": "Với đồng nghiệp"
+            "text": "Bằng xe buýt"
           },
           {
-            "text": "Với bố mẹ của Isabel"
+            "text": "Bằng ô tô"
           }
         ],
-        "correct": 2
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_r4_06"
       },
       "objectiveTargets": [
         "es.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.b_r4_07",
+      "itemVersion": 1,
+      "sectionId": "reading",
+      "taskId": "t4",
+      "exercise": {
+        "type": "readingComprehension",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Khi nào cả ba người ăn tối cùng nhau?",
+        "options": [
+          {
+            "text": "Chỉ vào Chủ nhật"
+          },
+          {
+            "text": "Mỗi tối"
+          },
+          {
+            "text": "Vào thứ Bảy"
+          }
+        ],
+        "correct": 0,
+        "id": "es-exx-dele_a1-b_r4_07"
+      },
+      "objectiveTargets": [
+        "es.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.b_r4_08",
+      "itemVersion": 1,
+      "sectionId": "reading",
+      "taskId": "t4",
+      "exercise": {
+        "type": "readingComprehension",
+        "readingId": "es.read.dele_b_r4_texto",
+        "question": "Thứ Bảy họ làm gì?",
+        "options": [
+          {
+            "text": "Ăn ở nhà bố mẹ"
+          },
+          {
+            "text": "Đi chợ mua trái cây và rau"
+          },
+          {
+            "text": "Đi biển"
+          }
+        ],
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_r4_08"
+      },
+      "objectiveTargets": [
+        "es.obj.reading.short_texts"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l1_01",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l1_01",
+        "question": "Người đó gọi đồ uống gì?",
+        "options": [
+          {
+            "text": "Cà phê",
+            "emoji": "☕"
+          },
+          {
+            "text": "Nước lọc",
+            "emoji": "💧"
+          },
+          {
+            "text": "Nước cam",
+            "emoji": "🧃"
+          }
+        ],
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_l1_01"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l1_02",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l1_02",
+        "question": "Người đó đi làm bằng gì?",
+        "options": [
+          {
+            "text": "Xe đạp",
+            "emoji": "🚲"
+          },
+          {
+            "text": "Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "Ô tô",
+            "emoji": "🚗"
+          }
+        ],
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_l1_02"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l1_03",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l1_03",
+        "question": "Hôm nay thời tiết ở Madrid thế nào?",
+        "options": [
+          {
+            "text": "Trời nắng",
+            "emoji": "☀️"
+          },
+          {
+            "text": "Trời mưa",
+            "emoji": "🌧️"
+          },
+          {
+            "text": "Có tuyết",
+            "emoji": "❄️"
+          }
+        ],
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_l1_03"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l1_04",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l1_04",
+        "question": "Người đó mua gì cho bữa tiệc?",
+        "options": [
+          {
+            "text": "Hoa",
+            "emoji": "💐"
+          },
+          {
+            "text": "Một chai nước",
+            "emoji": "🍾"
+          },
+          {
+            "text": "Một chiếc bánh",
+            "emoji": "🎂"
+          }
+        ],
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_l1_04"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l1_05",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t1",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l1_05",
+        "question": "Điện thoại ở đâu?",
+        "options": [
+          {
+            "text": "Trên bàn",
+            "emoji": "📱"
+          },
+          {
+            "text": "Trong túi",
+            "emoji": "👜"
+          },
+          {
+            "text": "Trên giường",
+            "emoji": "🛏️"
+          }
+        ],
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_l1_05"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l2_01",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l2_01",
+        "question": "Thông báo này nói về hình nào?",
+        "options": [
+          {
+            "text": "A. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "B. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "C. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "D. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "E. Áo khoác",
+            "emoji": "🧥"
+          },
+          {
+            "text": "F. Nhà hàng",
+            "emoji": "🍕"
+          },
+          {
+            "text": "G. Tàu hỏa",
+            "emoji": "🚆"
+          },
+          {
+            "text": "H. Máy bay",
+            "emoji": "✈️"
+          }
+        ],
+        "correct": 3,
+        "id": "es-exx-dele_a1-a_l2_01"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.announcements"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l2_02",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l2_02",
+        "question": "Thông báo này nói về hình nào?",
+        "options": [
+          {
+            "text": "A. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "B. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "C. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "D. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "E. Áo khoác",
+            "emoji": "🧥"
+          },
+          {
+            "text": "F. Nhà hàng",
+            "emoji": "🍕"
+          },
+          {
+            "text": "G. Tàu hỏa",
+            "emoji": "🚆"
+          },
+          {
+            "text": "H. Máy bay",
+            "emoji": "✈️"
+          }
+        ],
+        "correct": 6,
+        "id": "es-exx-dele_a1-a_l2_02"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.announcements"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l2_03",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l2_03",
+        "question": "Thông báo này nói về hình nào?",
+        "options": [
+          {
+            "text": "A. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "B. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "C. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "D. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "E. Áo khoác",
+            "emoji": "🧥"
+          },
+          {
+            "text": "F. Nhà hàng",
+            "emoji": "🍕"
+          },
+          {
+            "text": "G. Tàu hỏa",
+            "emoji": "🚆"
+          },
+          {
+            "text": "H. Máy bay",
+            "emoji": "✈️"
+          }
+        ],
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_l2_03"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.announcements"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l2_04",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l2_04",
+        "question": "Thông báo này nói về hình nào?",
+        "options": [
+          {
+            "text": "A. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "B. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "C. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "D. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "E. Áo khoác",
+            "emoji": "🧥"
+          },
+          {
+            "text": "F. Nhà hàng",
+            "emoji": "🍕"
+          },
+          {
+            "text": "G. Tàu hỏa",
+            "emoji": "🚆"
+          },
+          {
+            "text": "H. Máy bay",
+            "emoji": "✈️"
+          }
+        ],
+        "correct": 4,
+        "id": "es-exx-dele_a1-a_l2_04"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.announcements"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l2_05",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t2",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l2_05",
+        "question": "Thông báo này nói về hình nào?",
+        "options": [
+          {
+            "text": "A. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "B. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "C. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "D. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "E. Áo khoác",
+            "emoji": "🧥"
+          },
+          {
+            "text": "F. Nhà hàng",
+            "emoji": "🍕"
+          },
+          {
+            "text": "G. Tàu hỏa",
+            "emoji": "🚆"
+          },
+          {
+            "text": "H. Máy bay",
+            "emoji": "✈️"
+          }
+        ],
+        "correct": 7,
+        "id": "es-exx-dele_a1-a_l2_05"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.announcements"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_01",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "Elena trabaja …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 3,
+        "id": "es-exx-dele_a1-a_l3_01"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_02",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "Va al trabajo …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 10,
+        "id": "es-exx-dele_a1-a_l3_02"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_03",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "A mediodía come …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 6,
+        "id": "es-exx-dele_a1-a_l3_03"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_04",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "Dos tardes a la semana …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_l3_04"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_05",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "Los viernes por la noche …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 9,
+        "id": "es-exx-dele_a1-a_l3_05"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_06",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "Los sábados …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 5,
+        "id": "es-exx-dele_a1-a_l3_06"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_07",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "Los domingos visita …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_l3_07"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l3_08",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t3",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l3_monologo",
+        "question": "Vuelve de Toledo …",
+        "options": [
+          {
+            "text": "A. en un hospital."
+          },
+          {
+            "text": "B. a sus padres."
+          },
+          {
+            "text": "C. estudia inglés."
+          },
+          {
+            "text": "D. en una farmacia."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. limpia la casa."
+          },
+          {
+            "text": "G. con sus compañeras."
+          },
+          {
+            "text": "H. con su hermano."
+          },
+          {
+            "text": "I. en tren."
+          },
+          {
+            "text": "J. cena en un restaurante italiano."
+          },
+          {
+            "text": "K. andando."
+          }
+        ],
+        "correct": 8,
+        "id": "es-exx-dele_a1-a_l3_08"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_info"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l4_01",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l4_conversacion",
+        "question": "La fiesta es el …",
+        "options": [
+          {
+            "text": "A. cocina."
+          },
+          {
+            "text": "B. tercero."
+          },
+          {
+            "text": "C. sábado."
+          },
+          {
+            "text": "D. coche."
+          },
+          {
+            "text": "E. las bebidas."
+          },
+          {
+            "text": "F. domingo."
+          },
+          {
+            "text": "G. estación."
+          },
+          {
+            "text": "H. ocho."
+          }
+        ],
+        "correct": 2,
+        "id": "es-exx-dele_a1-a_l4_01"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l4_02",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l4_conversacion",
+        "question": "La fiesta empieza a las …",
+        "options": [
+          {
+            "text": "A. cocina."
+          },
+          {
+            "text": "B. tercero."
+          },
+          {
+            "text": "C. sábado."
+          },
+          {
+            "text": "D. coche."
+          },
+          {
+            "text": "E. las bebidas."
+          },
+          {
+            "text": "F. domingo."
+          },
+          {
+            "text": "G. estación."
+          },
+          {
+            "text": "H. ocho."
+          }
+        ],
+        "correct": 7,
+        "id": "es-exx-dele_a1-a_l4_02"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l4_03",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l4_conversacion",
+        "question": "Carlos lleva …",
+        "options": [
+          {
+            "text": "A. cocina."
+          },
+          {
+            "text": "B. tercero."
+          },
+          {
+            "text": "C. sábado."
+          },
+          {
+            "text": "D. coche."
+          },
+          {
+            "text": "E. las bebidas."
+          },
+          {
+            "text": "F. domingo."
+          },
+          {
+            "text": "G. estación."
+          },
+          {
+            "text": "H. ocho."
+          }
+        ],
+        "correct": 4,
+        "id": "es-exx-dele_a1-a_l4_03"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l4_04",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l4_conversacion",
+        "question": "Ana vive en el piso …",
+        "options": [
+          {
+            "text": "A. cocina."
+          },
+          {
+            "text": "B. tercero."
+          },
+          {
+            "text": "C. sábado."
+          },
+          {
+            "text": "D. coche."
+          },
+          {
+            "text": "E. las bebidas."
+          },
+          {
+            "text": "F. domingo."
+          },
+          {
+            "text": "G. estación."
+          },
+          {
+            "text": "H. ocho."
+          }
+        ],
+        "correct": 1,
+        "id": "es-exx-dele_a1-a_l4_04"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l4_05",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l4_conversacion",
+        "question": "La casa está cerca de la …",
+        "options": [
+          {
+            "text": "A. cocina."
+          },
+          {
+            "text": "B. tercero."
+          },
+          {
+            "text": "C. sábado."
+          },
+          {
+            "text": "D. coche."
+          },
+          {
+            "text": "E. las bebidas."
+          },
+          {
+            "text": "F. domingo."
+          },
+          {
+            "text": "G. estación."
+          },
+          {
+            "text": "H. ocho."
+          }
+        ],
+        "correct": 6,
+        "id": "es-exx-dele_a1-a_l4_05"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l4_06",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l4_conversacion",
+        "question": "Lucía va a la fiesta en …",
+        "options": [
+          {
+            "text": "A. cocina."
+          },
+          {
+            "text": "B. tercero."
+          },
+          {
+            "text": "C. sábado."
+          },
+          {
+            "text": "D. coche."
+          },
+          {
+            "text": "E. las bebidas."
+          },
+          {
+            "text": "F. domingo."
+          },
+          {
+            "text": "G. estación."
+          },
+          {
+            "text": "H. ocho."
+          }
+        ],
+        "correct": 3,
+        "id": "es-exx-dele_a1-a_l4_06"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
+      ]
+    },
+    {
+      "id": "es.exi.dele_a1.a_l4_07",
+      "itemVersion": 1,
+      "sectionId": "listening",
+      "taskId": "t4",
+      "exercise": {
+        "type": "listeningComprehension",
+        "clipId": "es.clip.dele_a_l4_conversacion",
+        "question": "El regalo es un libro de …",
+        "options": [
+          {
+            "text": "A. cocina."
+          },
+          {
+            "text": "B. tercero."
+          },
+          {
+            "text": "C. sábado."
+          },
+          {
+            "text": "D. coche."
+          },
+          {
+            "text": "E. las bebidas."
+          },
+          {
+            "text": "F. domingo."
+          },
+          {
+            "text": "G. estación."
+          },
+          {
+            "text": "H. ocho."
+          }
+        ],
+        "correct": 0,
+        "id": "es-exx-dele_a1-a_l4_07"
+      },
+      "objectiveTargets": [
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -2365,21 +3280,24 @@
       "taskId": "t1",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l1_01",
         "clipId": "es.clip.dele_b_l1_01",
-        "question": "Tất cả giá bao nhiêu?",
+        "question": "Người đó sẽ ăn gì?",
         "options": [
           {
-            "text": "Tám euro"
+            "text": "Thịt gà",
+            "emoji": "🍗"
           },
           {
-            "text": "Hai euro"
+            "text": "Cá với khoai tây",
+            "emoji": "🐟"
           },
           {
-            "text": "Mười tám euro"
+            "text": "Một món salad",
+            "emoji": "🥗"
           }
         ],
-        "correct": 0
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_l1_01"
       },
       "objectiveTargets": [
         "es.obj.listening.short_dialogues"
@@ -2392,21 +3310,24 @@
       "taskId": "t1",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l1_02",
         "clipId": "es.clip.dele_b_l1_02",
-        "question": "Nhà ga ở đâu?",
+        "question": "Phim bắt đầu lúc mấy giờ?",
         "options": [
           {
-            "text": "Rẽ phải ngay"
+            "text": "Hai giờ",
+            "emoji": "🕑"
           },
           {
-            "text": "Đi thẳng rồi rẽ trái"
+            "text": "Sáu giờ",
+            "emoji": "🕕"
           },
           {
-            "text": "Ở sau bảo tàng"
+            "text": "Chín giờ",
+            "emoji": "🕘"
           }
         ],
-        "correct": 1
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_l1_02"
       },
       "objectiveTargets": [
         "es.obj.listening.short_dialogues"
@@ -2419,21 +3340,24 @@
       "taskId": "t1",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l1_03",
         "clipId": "es.clip.dele_b_l1_03",
-        "question": "Ngân hàng mở cửa lúc mấy giờ?",
+        "question": "Chủ nhật người đó làm gì?",
         "options": [
           {
-            "text": "Tám giờ"
+            "text": "Chơi quần vợt",
+            "emoji": "🎾"
           },
           {
-            "text": "Chín giờ rưỡi"
+            "text": "Bơi",
+            "emoji": "🏊"
           },
           {
-            "text": "Tám giờ rưỡi"
+            "text": "Đọc sách",
+            "emoji": "📖"
           }
         ],
-        "correct": 2
+        "correct": 0,
+        "id": "es-exx-dele_a1-b_l1_03"
       },
       "objectiveTargets": [
         "es.obj.listening.short_dialogues"
@@ -2446,21 +3370,24 @@
       "taskId": "t1",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l1_04",
         "clipId": "es.clip.dele_b_l1_04",
-        "question": "Người đó sẽ ăn gì?",
+        "question": "Người đó cần mua gì?",
         "options": [
           {
-            "text": "Gà với cơm"
+            "text": "Bánh mì",
+            "emoji": "🍞"
           },
           {
-            "text": "Cá với khoai tây"
+            "text": "Sữa và trứng",
+            "emoji": "🥛"
           },
           {
-            "text": "Một món salad"
+            "text": "Táo",
+            "emoji": "🍎"
           }
         ],
-        "correct": 0
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_l1_04"
       },
       "objectiveTargets": [
         "es.obj.listening.short_dialogues"
@@ -2473,21 +3400,24 @@
       "taskId": "t1",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l1_05",
         "clipId": "es.clip.dele_b_l1_05",
-        "question": "Bữa tiệc diễn ra khi nào?",
+        "question": "Hiệu thuốc ở đâu?",
         "options": [
           {
-            "text": "Chủ nhật lúc tám giờ"
+            "text": "Cạnh nhà thờ",
+            "emoji": "⛪"
           },
           {
-            "text": "Thứ Bảy lúc tám giờ"
+            "text": "Cạnh bệnh viện",
+            "emoji": "🏥"
           },
           {
-            "text": "Thứ Bảy lúc sáu giờ"
+            "text": "Cạnh ngân hàng",
+            "emoji": "🏦"
           }
         ],
-        "correct": 1
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_l1_05"
       },
       "objectiveTargets": [
         "es.obj.listening.short_dialogues"
@@ -2500,21 +3430,44 @@
       "taskId": "t2",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l2_01",
         "clipId": "es.clip.dele_b_l2_01",
-        "question": "Thông báo nói gì?",
+        "question": "Thông báo này nói về hình nào?",
         "options": [
           {
-            "text": "Xe buýt số năm đến muộn"
+            "text": "A. Tàu hỏa",
+            "emoji": "🚆"
           },
           {
-            "text": "Hôm nay xe buýt số năm miễn phí"
+            "text": "B. Nhà hàng",
+            "emoji": "🍽️"
           },
           {
-            "text": "Hôm nay xe buýt số năm không chạy"
+            "text": "C. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "D. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "E. Trái cây",
+            "emoji": "🍎"
+          },
+          {
+            "text": "F. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "G. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "H. Tàu thủy",
+            "emoji": "⛴️"
           }
         ],
-        "correct": 2
+        "correct": 3,
+        "id": "es-exx-dele_a1-b_l2_01"
       },
       "objectiveTargets": [
         "es.obj.listening.announcements"
@@ -2527,21 +3480,44 @@
       "taskId": "t2",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l2_02",
         "clipId": "es.clip.dele_b_l2_02",
-        "question": "Hôm nay siêu thị mở cửa đến mấy giờ?",
+        "question": "Thông báo này nói về hình nào?",
         "options": [
           {
-            "text": "Đến mười giờ tối"
+            "text": "A. Tàu hỏa",
+            "emoji": "🚆"
           },
           {
-            "text": "Đến tám giờ tối"
+            "text": "B. Nhà hàng",
+            "emoji": "🍽️"
           },
           {
-            "text": "Đến mười giờ sáng"
+            "text": "C. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "D. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "E. Trái cây",
+            "emoji": "🍎"
+          },
+          {
+            "text": "F. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "G. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "H. Tàu thủy",
+            "emoji": "⛴️"
           }
         ],
-        "correct": 0
+        "correct": 6,
+        "id": "es-exx-dele_a1-b_l2_02"
       },
       "objectiveTargets": [
         "es.obj.listening.announcements"
@@ -2554,21 +3530,44 @@
       "taskId": "t2",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l2_03",
         "clipId": "es.clip.dele_b_l2_03",
-        "question": "Người này về nhà lúc mấy giờ?",
+        "question": "Thông báo này nói về hình nào?",
         "options": [
           {
-            "text": "Mười một giờ"
+            "text": "A. Tàu hỏa",
+            "emoji": "🚆"
           },
           {
-            "text": "Bảy giờ"
+            "text": "B. Nhà hàng",
+            "emoji": "🍽️"
           },
           {
-            "text": "Hai giờ"
+            "text": "C. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "D. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "E. Trái cây",
+            "emoji": "🍎"
+          },
+          {
+            "text": "F. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "G. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "H. Tàu thủy",
+            "emoji": "⛴️"
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_l2_03"
       },
       "objectiveTargets": [
         "es.obj.listening.announcements"
@@ -2581,21 +3580,44 @@
       "taskId": "t2",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l2_04",
         "clipId": "es.clip.dele_b_l2_04",
-        "question": "Ngày mai thời tiết ở Barcelona thế nào?",
+        "question": "Thông báo này nói về hình nào?",
         "options": [
           {
-            "text": "Trời sẽ nắng"
+            "text": "A. Tàu hỏa",
+            "emoji": "🚆"
           },
           {
-            "text": "Trời sẽ có tuyết"
+            "text": "B. Nhà hàng",
+            "emoji": "🍽️"
           },
           {
-            "text": "Trời sẽ mưa"
+            "text": "C. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "D. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "E. Trái cây",
+            "emoji": "🍎"
+          },
+          {
+            "text": "F. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "G. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "H. Tàu thủy",
+            "emoji": "⛴️"
           }
         ],
-        "correct": 2
+        "correct": 4,
+        "id": "es-exx-dele_a1-b_l2_04"
       },
       "objectiveTargets": [
         "es.obj.listening.announcements"
@@ -2608,21 +3630,44 @@
       "taskId": "t2",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l2_05",
         "clipId": "es.clip.dele_b_l2_05",
-        "question": "Thông báo nói gì về tàu đi Málaga?",
+        "question": "Thông báo này nói về hình nào?",
         "options": [
           {
-            "text": "Tàu đến muộn hai mươi phút"
+            "text": "A. Tàu hỏa",
+            "emoji": "🚆"
           },
           {
-            "text": "Tàu đến sớm hai mươi phút"
+            "text": "B. Nhà hàng",
+            "emoji": "🍽️"
           },
           {
-            "text": "Tàu bị hủy"
+            "text": "C. Hồ bơi",
+            "emoji": "🏊"
+          },
+          {
+            "text": "D. Xe buýt",
+            "emoji": "🚌"
+          },
+          {
+            "text": "E. Trái cây",
+            "emoji": "🍎"
+          },
+          {
+            "text": "F. Bảo tàng",
+            "emoji": "🖼️"
+          },
+          {
+            "text": "G. Thư viện",
+            "emoji": "📚"
+          },
+          {
+            "text": "H. Tàu thủy",
+            "emoji": "⛴️"
           }
         ],
-        "correct": 0
+        "correct": 7,
+        "id": "es-exx-dele_a1-b_l2_05"
       },
       "objectiveTargets": [
         "es.obj.listening.announcements"
@@ -2635,21 +3680,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_01",
-        "clipId": "es.clip.dele_b_l3_01",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "Raúl vive …",
         "options": [
           {
-            "text": "Ở nhà hàng"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở cửa hàng quần áo"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở ngân hàng"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 1
+        "correct": 3,
+        "id": "es-exx-dele_a1-b_l3_01"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2662,21 +3731,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_02",
-        "clipId": "es.clip.dele_b_l3_02",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "Va a la universidad …",
         "options": [
           {
-            "text": "Ở chợ"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở bệnh viện"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở ngân hàng"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 2
+        "correct": 10,
+        "id": "es-exx-dele_a1-b_l3_02"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2689,21 +3782,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_03",
-        "clipId": "es.clip.dele_b_l3_03",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "Raúl estudia …",
         "options": [
           {
-            "text": "Ở nhà hàng"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở thư viện"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở nhà ga"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 0
+        "correct": 6,
+        "id": "es-exx-dele_a1-b_l3_03"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2716,21 +3833,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_04",
-        "clipId": "es.clip.dele_b_l3_04",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "A mediodía come …",
         "options": [
           {
-            "text": "Ở rạp chiếu phim"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở phòng khám bác sĩ"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở bảo tàng"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 1
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_l3_04"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2743,21 +3884,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_05",
-        "clipId": "es.clip.dele_b_l3_05",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "Por la tarde trabaja …",
         "options": [
           {
-            "text": "Ở siêu thị"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở khách sạn"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở bưu điện"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 2
+        "correct": 9,
+        "id": "es-exx-dele_a1-b_l3_05"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2770,21 +3935,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_06",
-        "clipId": "es.clip.dele_b_l3_06",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "Los jueves juega …",
         "options": [
           {
-            "text": "Ở sân bay"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở cửa hàng"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở trường học"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 0
+        "correct": 5,
+        "id": "es-exx-dele_a1-b_l3_06"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2797,21 +3986,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_07",
-        "clipId": "es.clip.dele_b_l3_07",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "Los fines de semana …",
         "options": [
           {
-            "text": "Ở hiệu thuốc"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở tiệm bánh"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở ngân hàng"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 1
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_l3_07"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2824,21 +4037,45 @@
       "taskId": "t3",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l3_08",
-        "clipId": "es.clip.dele_b_l3_08",
-        "question": "Người này đang ở đâu?",
+        "clipId": "es.clip.dele_b_l3_monologo",
+        "question": "En agosto va …",
         "options": [
           {
-            "text": "Ở bệnh viện"
+            "text": "A. medicina."
           },
           {
-            "text": "Ở chợ"
+            "text": "B. sale con su novia."
           },
           {
-            "text": "Ở lớp học"
+            "text": "C. en la cafetería."
+          },
+          {
+            "text": "D. con dos compañeros."
+          },
+          {
+            "text": "E. en coche."
+          },
+          {
+            "text": "F. al baloncesto."
+          },
+          {
+            "text": "G. historia."
+          },
+          {
+            "text": "H. al fútbol."
+          },
+          {
+            "text": "I. a la playa."
+          },
+          {
+            "text": "J. en una librería."
+          },
+          {
+            "text": "K. en autobús."
           }
         ],
-        "correct": 2
+        "correct": 8,
+        "id": "es-exx-dele_a1-b_l3_08"
       },
       "objectiveTargets": [
         "es.obj.listening.short_info"
@@ -2851,24 +4088,39 @@
       "taskId": "t4",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l4_01",
-        "clipId": "es.clip.dele_b_l4_01",
-        "question": "Hiệu thuốc mở cửa lúc mấy giờ?",
+        "clipId": "es.clip.dele_b_l4_conversacion",
+        "question": "El piso de Marta tiene dos …",
         "options": [
           {
-            "text": "Lúc chín giờ"
+            "text": "A. chocolate."
           },
           {
-            "text": "Lúc tám giờ"
+            "text": "B. gata."
           },
           {
-            "text": "Lúc mười giờ"
+            "text": "C. habitaciones."
+          },
+          {
+            "text": "D. pescado."
+          },
+          {
+            "text": "E. andando."
+          },
+          {
+            "text": "F. sábado."
+          },
+          {
+            "text": "G. viernes."
+          },
+          {
+            "text": "H. grande."
           }
         ],
-        "correct": 0
+        "correct": 2,
+        "id": "es-exx-dele_a1-b_l4_01"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -2878,24 +4130,39 @@
       "taskId": "t4",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l4_02",
-        "clipId": "es.clip.dele_b_l4_02",
-        "question": "Vé giá bao nhiêu?",
+        "clipId": "es.clip.dele_b_l4_conversacion",
+        "question": "La cocina es …",
         "options": [
           {
-            "text": "Mười ba euro"
+            "text": "A. chocolate."
           },
           {
-            "text": "Ba mươi euro"
+            "text": "B. gata."
           },
           {
-            "text": "Ba euro"
+            "text": "C. habitaciones."
+          },
+          {
+            "text": "D. pescado."
+          },
+          {
+            "text": "E. andando."
+          },
+          {
+            "text": "F. sábado."
+          },
+          {
+            "text": "G. viernes."
+          },
+          {
+            "text": "H. grande."
           }
         ],
-        "correct": 1
+        "correct": 7,
+        "id": "es-exx-dele_a1-b_l4_02"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -2905,24 +4172,39 @@
       "taskId": "t4",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l4_03",
-        "clipId": "es.clip.dele_b_l4_03",
-        "question": "Nhà của người này ở số bao nhiêu?",
+        "clipId": "es.clip.dele_b_l4_conversacion",
+        "question": "Marta va al trabajo …",
         "options": [
           {
-            "text": "Số năm"
+            "text": "A. chocolate."
           },
           {
-            "text": "Số năm mươi"
+            "text": "B. gata."
           },
           {
-            "text": "Số mười lăm"
+            "text": "C. habitaciones."
+          },
+          {
+            "text": "D. pescado."
+          },
+          {
+            "text": "E. andando."
+          },
+          {
+            "text": "F. sábado."
+          },
+          {
+            "text": "G. viernes."
+          },
+          {
+            "text": "H. grande."
           }
         ],
-        "correct": 2
+        "correct": 4,
+        "id": "es-exx-dele_a1-b_l4_03"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -2932,24 +4214,39 @@
       "taskId": "t4",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l4_04",
-        "clipId": "es.clip.dele_b_l4_04",
-        "question": "Phim bắt đầu lúc mấy giờ?",
+        "clipId": "es.clip.dele_b_l4_conversacion",
+        "question": "Marta vive con su …",
         "options": [
           {
-            "text": "Mười giờ mười lăm"
+            "text": "A. chocolate."
           },
           {
-            "text": "Mười giờ kém mười lăm"
+            "text": "B. gata."
           },
           {
-            "text": "Hai giờ"
+            "text": "C. habitaciones."
+          },
+          {
+            "text": "D. pescado."
+          },
+          {
+            "text": "E. andando."
+          },
+          {
+            "text": "F. sábado."
+          },
+          {
+            "text": "G. viernes."
+          },
+          {
+            "text": "H. grande."
           }
         ],
-        "correct": 0
+        "correct": 1,
+        "id": "es-exx-dele_a1-b_l4_04"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -2959,24 +4256,39 @@
       "taskId": "t4",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l4_05",
-        "clipId": "es.clip.dele_b_l4_05",
-        "question": "Người này có mấy người con?",
+        "clipId": "es.clip.dele_b_l4_conversacion",
+        "question": "La cena es el …",
         "options": [
           {
-            "text": "Hai"
+            "text": "A. chocolate."
           },
           {
-            "text": "Ba"
+            "text": "B. gata."
           },
           {
-            "text": "Một"
+            "text": "C. habitaciones."
+          },
+          {
+            "text": "D. pescado."
+          },
+          {
+            "text": "E. andando."
+          },
+          {
+            "text": "F. sábado."
+          },
+          {
+            "text": "G. viernes."
+          },
+          {
+            "text": "H. grande."
           }
         ],
-        "correct": 1
+        "correct": 6,
+        "id": "es-exx-dele_a1-b_l4_05"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -2986,24 +4298,39 @@
       "taskId": "t4",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l4_06",
-        "clipId": "es.clip.dele_b_l4_06",
-        "question": "Cuộc họp diễn ra khi nào?",
+        "clipId": "es.clip.dele_b_l4_conversacion",
+        "question": "Marta cocina …",
         "options": [
           {
-            "text": "Chiều thứ Hai"
+            "text": "A. chocolate."
           },
           {
-            "text": "Sáng thứ Ba"
+            "text": "B. gata."
           },
           {
-            "text": "Sáng thứ Hai"
+            "text": "C. habitaciones."
+          },
+          {
+            "text": "D. pescado."
+          },
+          {
+            "text": "E. andando."
+          },
+          {
+            "text": "F. sábado."
+          },
+          {
+            "text": "G. viernes."
+          },
+          {
+            "text": "H. grande."
           }
         ],
-        "correct": 2
+        "correct": 3,
+        "id": "es-exx-dele_a1-b_l4_06"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -3013,24 +4340,39 @@
       "taskId": "t4",
       "exercise": {
         "type": "listeningComprehension",
-        "id": "es-exx-dele_a1-b_l4_07",
-        "clipId": "es.clip.dele_b_l4_07",
-        "question": "Người đó phải trả bao nhiêu?",
+        "clipId": "es.clip.dele_b_l4_conversacion",
+        "question": "La amiga lleva un helado de …",
         "options": [
           {
-            "text": "Mười hai euro năm mươi"
+            "text": "A. chocolate."
           },
           {
-            "text": "Hai euro năm mươi"
+            "text": "B. gata."
           },
           {
-            "text": "Hai mươi euro"
+            "text": "C. habitaciones."
+          },
+          {
+            "text": "D. pescado."
+          },
+          {
+            "text": "E. andando."
+          },
+          {
+            "text": "F. sábado."
+          },
+          {
+            "text": "G. viernes."
+          },
+          {
+            "text": "H. grande."
           }
         ],
-        "correct": 0
+        "correct": 0,
+        "id": "es-exx-dele_a1-b_l4_07"
       },
       "objectiveTargets": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.short_dialogues"
       ]
     },
     {
@@ -3040,21 +4382,40 @@
       "taskId": "t1",
       "exercise": {
         "type": "simpleForm",
-        "id": "es-exx-dele_a1-a_w1_01",
         "writingTaskId": "es.write.dele_a_formulario",
-        "instruction": "Hãy điền phiếu đăng ký khóa học với các thông tin trên thẻ.",
+        "instruction": "Bạn đăng ký một khóa học tiếng Tây Ban Nha. Hãy điền phiếu bằng tiếng Tây Ban Nha với thông tin trên thẻ.",
         "cueFacts": [
           {
             "label": "Tên",
             "value": "Linh"
           },
           {
+            "label": "Họ",
+            "value": "Nguyen"
+          },
+          {
+            "label": "Quốc tịch",
+            "value": "vietnamita"
+          },
+          {
             "label": "Tuổi",
-            "value": "22"
+            "value": "22 años"
           },
           {
             "label": "Thành phố",
             "value": "Valencia"
+          },
+          {
+            "label": "Nghề nghiệp",
+            "value": "estudiante"
+          },
+          {
+            "label": "Ngôn ngữ",
+            "value": "vietnamita, inglés y español"
+          },
+          {
+            "label": "Sở thích",
+            "value": "leer, nadar y cocinar"
           }
         ],
         "fields": [
@@ -3062,6 +4423,16 @@
             "id": "nombre",
             "label": "Nombre",
             "slotId": "name"
+          },
+          {
+            "id": "apellido",
+            "label": "Apellido",
+            "slotId": "surname"
+          },
+          {
+            "id": "nacionalidad",
+            "label": "Nacionalidad",
+            "slotId": "nationality"
           },
           {
             "id": "edad",
@@ -3072,6 +4443,21 @@
             "id": "ciudad",
             "label": "Ciudad",
             "slotId": "city"
+          },
+          {
+            "id": "profesion",
+            "label": "Profesión",
+            "slotId": "job"
+          },
+          {
+            "id": "idiomas",
+            "label": "Idiomas",
+            "slotId": "languages"
+          },
+          {
+            "id": "aficiones",
+            "label": "Aficiones",
+            "slotId": "hobbies"
           }
         ],
         "rubric": {
@@ -3081,6 +4467,22 @@
               "description": "tên",
               "variants": [
                 "linh"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "surname",
+              "description": "họ (tên gia đình)",
+              "variants": [
+                "nguyen"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "nationality",
+              "description": "quốc tịch",
+              "variants": [
+                "vietnamita"
               ],
               "cueProvided": true
             },
@@ -3100,17 +4502,45 @@
                 "valencia"
               ],
               "cueProvided": true
+            },
+            {
+              "id": "job",
+              "description": "nghề nghiệp",
+              "variants": [
+                "estudiante"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "languages",
+              "description": "ngôn ngữ",
+              "variants": [
+                "vietnamita",
+                "inglés"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "hobbies",
+              "description": "sở thích",
+              "variants": [
+                "leer",
+                "nadar",
+                "cocinar"
+              ],
+              "cueProvided": true
             }
           ],
-          "minTokens": 2,
-          "maxTokens": 12
+          "minTokens": 15,
+          "maxTokens": 30
         },
         "modelAnswers": [
-          "Linh | 22 | Valencia"
-        ]
+          "Linh | Nguyen | vietnamita | 22 años | Valencia | estudiante | vietnamita, inglés y español | leer, nadar y cocinar"
+        ],
+        "id": "es-exx-dele_a1-a_w1_01"
       },
       "objectiveTargets": [
-        "es.obj.writing.form_filling"
+        "es.obj.writing.personal_info"
       ]
     },
     {
@@ -3120,10 +4550,9 @@
       "taskId": "t2",
       "exercise": {
         "type": "guidedWriting",
-        "id": "es-exx-dele_a1-a_w2_01",
-        "writingTaskId": "es.write.dele_a_nota",
+        "writingTaskId": "es.write.dele_a_postal",
         "writingMode": "guided",
-        "instruction": "Hãy viết một lời nhắn ngắn cho Carmen: chào, nói bạn đang ở thư viện và bạn về lúc 6:00.",
+        "instruction": "Bạn đang đi nghỉ ở biển. Hãy viết một tấm bưu thiếp cho Carmen (30–40 từ): chào, nói bạn đang ở đâu, thời tiết thế nào, bạn làm gì mỗi ngày, và chào tạm biệt.",
         "cueFacts": [
           {
             "label": "Gửi",
@@ -3131,11 +4560,15 @@
           },
           {
             "label": "Ở đâu",
-            "value": "thư viện"
+            "value": "Málaga, un hotel cerca de la playa"
           },
           {
-            "label": "Giờ về",
-            "value": "6:00"
+            "label": "Thời tiết",
+            "value": "sol, calor"
+          },
+          {
+            "label": "Mỗi ngày",
+            "value": "nadar, comer pescado"
           }
         ],
         "rubric": {
@@ -3145,9 +4578,9 @@
               "description": "lời chào",
               "variants": [
                 "hola",
-                "buenos días",
-                "buenas tardes",
-                "buenas noches"
+                "querida",
+                "querido",
+                "buenos días"
               ],
               "cueProvided": false
             },
@@ -3161,28 +4594,51 @@
             },
             {
               "id": "where",
-              "description": "thư viện",
+              "description": "bạn đang ở đâu",
               "variants": [
-                "biblioteca"
+                "málaga"
               ],
               "cueProvided": true
             },
             {
-              "id": "time",
-              "description": "giờ về",
+              "id": "weather",
+              "description": "thời tiết",
               "variants": [
-                "a las seis",
-                "a las 6"
+                "hace sol",
+                "hace calor"
               ],
               "cueProvided": true
+            },
+            {
+              "id": "activity",
+              "description": "bạn làm gì",
+              "variants": [
+                "nado",
+                "nadar"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "bye",
+              "description": "lời chào cuối",
+              "variants": [
+                "un beso",
+                "besos",
+                "un abrazo",
+                "hasta pronto",
+                "adiós",
+                "hasta luego"
+              ],
+              "cueProvided": false
             }
           ],
-          "minTokens": 8,
-          "maxTokens": 30
+          "minTokens": 30,
+          "maxTokens": 45
         },
         "modelAnswers": [
-          "Hola, Carmen: estoy en la biblioteca. Vuelvo a casa a las seis."
-        ]
+          "Querida Carmen: estoy en Málaga, en un hotel cerca de la playa. Hace sol y la temperatura es muy agradable. Todos los días nado en el mar y por la noche como pescado con mis amigos. Un beso, Linh."
+        ],
+        "id": "es-exx-dele_a1-a_w2_01"
       },
       "objectiveTargets": [
         "es.obj.writing.short_message"
@@ -3195,38 +4651,46 @@
       "taskId": "t1",
       "exercise": {
         "type": "speakProduction",
-        "id": "es-exx-dele_a1-a_s1_01",
         "speechItemId": "es.speak.dele_a_presentacion",
-        "instruction": "Hãy tự giới thiệu: nói tên bạn và bạn đến từ đâu.",
+        "instruction": "Bài 1 — Giới thiệu bản thân (1–2 phút trong kỳ thi). Hãy nói tên, quốc tịch và nơi bạn sống theo thẻ.",
         "cueFacts": [
           {
             "label": "Tên",
             "value": "Linh"
           },
           {
-            "label": "Đến từ",
-            "value": "Vietnam"
+            "label": "Quốc tịch",
+            "value": "vietnamita"
+          },
+          {
+            "label": "Thành phố",
+            "value": "Valencia"
           }
         ],
-        "target": "Me llamo Linh y soy de Vietnam",
+        "target": "Me llamo Linh, soy vietnamita y vivo en Valencia",
         "acceptedVariants": [
-          "Me llamo Linh y soy de Vietnam",
-          "Soy Linh y soy de Vietnam",
-          "Me llamo Linh, soy de Vietnam"
+          "Me llamo Linh, soy vietnamita y vivo en Valencia",
+          "Soy Linh, soy vietnamita y vivo en Valencia",
+          "Me llamo Linh, soy de Vietnam y vivo en Valencia"
         ],
         "requiredConcepts": [
           [
             "linh"
           ],
           [
+            "vietnamita",
             "vietnam"
+          ],
+          [
+            "valencia"
           ]
         ],
         "evidenceLexemeRefs": [],
         "revealTargetAfterAttempts": null,
         "allowContextualBias": false,
         "modelClipId": null,
-        "allowedAttempts": 2
+        "allowedAttempts": 2,
+        "id": "es-exx-dele_a1-a_s1_01"
       },
       "objectiveTargets": [
         "es.obj.speaking.self_intro"
@@ -3239,41 +4703,45 @@
       "taskId": "t2",
       "exercise": {
         "type": "speakProduction",
-        "id": "es-exx-dele_a1-a_s2_01",
-        "speechItemId": "es.speak.dele_a_tema",
-        "instruction": "Hãy nói về gia đình bạn: bạn có bao nhiêu anh chị em.",
+        "speechItemId": "es.speak.dele_a_entorno",
+        "instruction": "Bài 2 — Nói về môi trường quanh bạn (2–3 phút trong kỳ thi): hãy tả căn nhà của bạn theo thẻ.",
         "cueFacts": [
           {
-            "label": "Anh chị em",
-            "value": "2"
+            "label": "Nhà",
+            "value": "căn hộ nhỏ"
+          },
+          {
+            "label": "Có",
+            "value": "2 phòng ngủ + 1 bếp"
           }
         ],
-        "target": "Tengo dos hermanos",
+        "target": "Vivo en un piso pequeño con dos habitaciones y una cocina",
         "acceptedVariants": [
-          "Tengo dos hermanos",
-          "Yo tengo dos hermanos"
+          "Vivo en un piso pequeño con dos habitaciones y una cocina",
+          "Mi piso es pequeño y tiene dos habitaciones y una cocina",
+          "Tengo un piso pequeño con dos habitaciones y una cocina"
         ],
         "requiredConcepts": [
           [
-            "tengo"
+            "piso"
           ],
           [
-            "dos",
-            "2"
+            "habitaciones",
+            "habitación"
           ],
           [
-            "hermanos",
-            "hermano"
+            "cocina"
           ]
         ],
         "evidenceLexemeRefs": [],
         "revealTargetAfterAttempts": null,
         "allowContextualBias": false,
         "modelClipId": null,
-        "allowedAttempts": 2
+        "allowedAttempts": 2,
+        "id": "es-exx-dele_a1-a_s2_01"
       },
       "objectiveTargets": [
-        "es.obj.speaking.give_info"
+        "es.obj.speaking.describe"
       ]
     },
     {
@@ -3283,25 +4751,11 @@
       "taskId": "t3",
       "exercise": {
         "type": "interactionScenario",
-        "id": "es-exx-dele_a1-a_s3_01",
-        "scenarioId": "es.scenario.dele_a_preguntas"
+        "scenarioId": "es.scenario.dele_a_conversacion",
+        "id": "es-exx-dele_a1-a_s3_01"
       },
       "objectiveTargets": [
         "es.obj.interaction.everyday_conversation"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.a_s4_01",
-      "itemVersion": 1,
-      "sectionId": "speaking",
-      "taskId": "t4",
-      "exercise": {
-        "type": "interactionScenario",
-        "id": "es-exx-dele_a1-a_s4_01",
-        "scenarioId": "es.scenario.dele_a_billete"
-      },
-      "objectiveTargets": [
-        "es.obj.interaction.practical_needs"
       ]
     },
     {
@@ -3311,21 +4765,40 @@
       "taskId": "t1",
       "exercise": {
         "type": "simpleForm",
-        "id": "es-exx-dele_a1-b_w1_01",
         "writingTaskId": "es.write.dele_b_formulario",
-        "instruction": "Hãy điền phiếu đăng ký khóa học với các thông tin trên thẻ.",
+        "instruction": "Bạn đăng ký một khóa học tiếng Tây Ban Nha. Hãy điền phiếu bằng tiếng Tây Ban Nha với thông tin trên thẻ.",
         "cueFacts": [
           {
             "label": "Tên",
             "value": "Minh"
           },
           {
+            "label": "Họ",
+            "value": "Tran"
+          },
+          {
+            "label": "Quốc tịch",
+            "value": "vietnamita"
+          },
+          {
             "label": "Tuổi",
-            "value": "28"
+            "value": "28 años"
           },
           {
             "label": "Thành phố",
             "value": "Sevilla"
+          },
+          {
+            "label": "Nghề nghiệp",
+            "value": "cocinero"
+          },
+          {
+            "label": "Ngôn ngữ",
+            "value": "vietnamita y español"
+          },
+          {
+            "label": "Sở thích",
+            "value": "el fútbol y la música"
           }
         ],
         "fields": [
@@ -3333,6 +4806,16 @@
             "id": "nombre",
             "label": "Nombre",
             "slotId": "name"
+          },
+          {
+            "id": "apellido",
+            "label": "Apellido",
+            "slotId": "surname"
+          },
+          {
+            "id": "nacionalidad",
+            "label": "Nacionalidad",
+            "slotId": "nationality"
           },
           {
             "id": "edad",
@@ -3343,6 +4826,21 @@
             "id": "ciudad",
             "label": "Ciudad",
             "slotId": "city"
+          },
+          {
+            "id": "profesion",
+            "label": "Profesión",
+            "slotId": "job"
+          },
+          {
+            "id": "idiomas",
+            "label": "Idiomas",
+            "slotId": "languages"
+          },
+          {
+            "id": "aficiones",
+            "label": "Aficiones",
+            "slotId": "hobbies"
           }
         ],
         "rubric": {
@@ -3352,6 +4850,22 @@
               "description": "tên",
               "variants": [
                 "minh"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "surname",
+              "description": "họ (tên gia đình)",
+              "variants": [
+                "tran"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "nationality",
+              "description": "quốc tịch",
+              "variants": [
+                "vietnamita"
               ],
               "cueProvided": true
             },
@@ -3371,17 +4885,44 @@
                 "sevilla"
               ],
               "cueProvided": true
+            },
+            {
+              "id": "job",
+              "description": "nghề nghiệp",
+              "variants": [
+                "cocinero"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "languages",
+              "description": "ngôn ngữ",
+              "variants": [
+                "vietnamita",
+                "español"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "hobbies",
+              "description": "sở thích",
+              "variants": [
+                "fútbol",
+                "música"
+              ],
+              "cueProvided": true
             }
           ],
-          "minTokens": 2,
-          "maxTokens": 12
+          "minTokens": 15,
+          "maxTokens": 30
         },
         "modelAnswers": [
-          "Minh | 28 | Sevilla"
-        ]
+          "Minh | Tran | vietnamita | 28 años | Sevilla | cocinero | vietnamita y español | el fútbol y la música"
+        ],
+        "id": "es-exx-dele_a1-b_w1_01"
       },
       "objectiveTargets": [
-        "es.obj.writing.form_filling"
+        "es.obj.writing.personal_info"
       ]
     },
     {
@@ -3391,10 +4932,9 @@
       "taskId": "t2",
       "exercise": {
         "type": "guidedWriting",
-        "id": "es-exx-dele_a1-b_w2_01",
-        "writingTaskId": "es.write.dele_b_nota",
+        "writingTaskId": "es.write.dele_b_correo",
         "writingMode": "guided",
-        "instruction": "Hãy viết một lời nhắn ngắn cho Pablo: chào, nói bạn đang ở cửa hàng và bạn về lúc 11:00.",
+        "instruction": "Bạn vừa chuyển đến một căn nhà mới. Hãy viết một email cho Pablo (30–40 từ): chào, nói nhà mới ở đâu, nhà có những gì, mời Pablo đến chơi vào thứ Bảy, và chào tạm biệt.",
         "cueFacts": [
           {
             "label": "Gửi",
@@ -3402,11 +4942,15 @@
           },
           {
             "label": "Ở đâu",
-            "value": "cửa hàng"
+            "value": "centro, cerca del parque"
           },
           {
-            "label": "Giờ về",
-            "value": "11:00"
+            "label": "Nhà có",
+            "value": "dos habitaciones, una cocina grande"
+          },
+          {
+            "label": "Lời mời",
+            "value": "sábado, 18:00"
           }
         ],
         "rubric": {
@@ -3416,9 +4960,9 @@
               "description": "lời chào",
               "variants": [
                 "hola",
-                "buenos días",
-                "buenas tardes",
-                "buenas noches"
+                "querida",
+                "querido",
+                "buenos días"
               ],
               "cueProvided": false
             },
@@ -3432,28 +4976,48 @@
             },
             {
               "id": "where",
-              "description": "cửa hàng",
+              "description": "nhà ở đâu",
               "variants": [
-                "tienda"
+                "centro"
               ],
               "cueProvided": true
             },
             {
-              "id": "time",
-              "description": "giờ về",
+              "id": "rooms",
+              "description": "nhà có gì",
               "variants": [
-                "a las once",
-                "a las 11"
+                "habitaciones"
               ],
               "cueProvided": true
+            },
+            {
+              "id": "invite",
+              "description": "lời mời vào thứ Bảy",
+              "variants": [
+                "sábado"
+              ],
+              "cueProvided": true
+            },
+            {
+              "id": "bye",
+              "description": "lời chào cuối",
+              "variants": [
+                "un abrazo",
+                "un beso",
+                "besos",
+                "hasta pronto",
+                "adiós"
+              ],
+              "cueProvided": false
             }
           ],
-          "minTokens": 8,
-          "maxTokens": 30
+          "minTokens": 30,
+          "maxTokens": 45
         },
         "modelAnswers": [
-          "Hola, Pablo: estoy en la tienda. Vuelvo a casa a las once."
-        ]
+          "Hola, Pablo: tengo una casa nueva en el centro, cerca del parque. Tiene dos habitaciones y una cocina muy grande. ¿Quieres venir a cenar a mi casa el sábado a las seis de la tarde? Un abrazo, Minh."
+        ],
+        "id": "es-exx-dele_a1-b_w2_01"
       },
       "objectiveTargets": [
         "es.obj.writing.short_message"
@@ -3466,28 +5030,34 @@
       "taskId": "t1",
       "exercise": {
         "type": "speakProduction",
-        "id": "es-exx-dele_a1-b_s1_01",
         "speechItemId": "es.speak.dele_b_presentacion",
-        "instruction": "Hãy tự giới thiệu: nói tên bạn và bạn sống ở đâu.",
+        "instruction": "Bài 1 — Giới thiệu bản thân (1–2 phút trong kỳ thi). Hãy nói tên, nghề nghiệp và nơi bạn sống theo thẻ.",
         "cueFacts": [
           {
             "label": "Tên",
             "value": "Minh"
           },
           {
+            "label": "Nghề nghiệp",
+            "value": "cocinero"
+          },
+          {
             "label": "Thành phố",
             "value": "Sevilla"
           }
         ],
-        "target": "Me llamo Minh y vivo en Sevilla",
+        "target": "Me llamo Minh, soy cocinero y vivo en Sevilla",
         "acceptedVariants": [
-          "Me llamo Minh y vivo en Sevilla",
-          "Soy Minh y vivo en Sevilla",
-          "Me llamo Minh, vivo en Sevilla"
+          "Me llamo Minh, soy cocinero y vivo en Sevilla",
+          "Soy Minh, soy cocinero y vivo en Sevilla",
+          "Me llamo Minh, trabajo de cocinero y vivo en Sevilla"
         ],
         "requiredConcepts": [
           [
             "minh"
+          ],
+          [
+            "cocinero"
           ],
           [
             "sevilla"
@@ -3497,7 +5067,8 @@
         "revealTargetAfterAttempts": null,
         "allowContextualBias": false,
         "modelClipId": null,
-        "allowedAttempts": 2
+        "allowedAttempts": 2,
+        "id": "es-exx-dele_a1-b_s1_01"
       },
       "objectiveTargets": [
         "es.obj.speaking.self_intro"
@@ -3510,36 +5081,44 @@
       "taskId": "t2",
       "exercise": {
         "type": "speakProduction",
-        "id": "es-exx-dele_a1-b_s2_01",
-        "speechItemId": "es.speak.dele_b_tema",
-        "instruction": "Hãy nói về công việc của bạn: bạn làm việc ở đâu.",
+        "speechItemId": "es.speak.dele_b_entorno",
+        "instruction": "Bài 2 — Nói về môi trường quanh bạn (2–3 phút trong kỳ thi): hãy nói về khu phố của bạn theo thẻ.",
         "cueFacts": [
           {
-            "label": "Nơi làm việc",
-            "value": "hotel"
+            "label": "Khu phố",
+            "value": "yên tĩnh"
+          },
+          {
+            "label": "Gần nhà có",
+            "value": "công viên, chợ"
           }
         ],
-        "target": "Trabajo en un hotel",
+        "target": "Mi barrio es tranquilo y hay un parque y un mercado",
         "acceptedVariants": [
-          "Trabajo en un hotel",
-          "Yo trabajo en un hotel"
+          "Mi barrio es tranquilo y hay un parque y un mercado",
+          "Mi barrio es tranquilo, hay un parque y un mercado",
+          "Vivo en un barrio tranquilo con un parque y un mercado"
         ],
         "requiredConcepts": [
           [
-            "trabajo"
+            "barrio"
           ],
           [
-            "hotel"
+            "parque"
+          ],
+          [
+            "mercado"
           ]
         ],
         "evidenceLexemeRefs": [],
         "revealTargetAfterAttempts": null,
         "allowContextualBias": false,
         "modelClipId": null,
-        "allowedAttempts": 2
+        "allowedAttempts": 2,
+        "id": "es-exx-dele_a1-b_s2_01"
       },
       "objectiveTargets": [
-        "es.obj.speaking.give_info"
+        "es.obj.speaking.describe"
       ]
     },
     {
@@ -3549,25 +5128,11 @@
       "taskId": "t3",
       "exercise": {
         "type": "interactionScenario",
-        "id": "es-exx-dele_a1-b_s3_01",
-        "scenarioId": "es.scenario.dele_b_preguntas"
+        "scenarioId": "es.scenario.dele_b_conversacion",
+        "id": "es-exx-dele_a1-b_s3_01"
       },
       "objectiveTargets": [
         "es.obj.interaction.everyday_conversation"
-      ]
-    },
-    {
-      "id": "es.exi.dele_a1.b_s4_01",
-      "itemVersion": 1,
-      "sectionId": "speaking",
-      "taskId": "t4",
-      "exercise": {
-        "type": "interactionScenario",
-        "id": "es-exx-dele_a1-b_s4_01",
-        "scenarioId": "es.scenario.dele_b_restaurante"
-      },
-      "objectiveTargets": [
-        "es.obj.interaction.practical_needs"
       ]
     }
   ],
@@ -3592,14 +5157,14 @@
         "es.exi.dele_a1.a_r3_04",
         "es.exi.dele_a1.a_r3_05",
         "es.exi.dele_a1.a_r3_06",
-        "es.exi.dele_a1.a_r3_07",
-        "es.exi.dele_a1.a_r3_08",
         "es.exi.dele_a1.a_r4_01",
         "es.exi.dele_a1.a_r4_02",
         "es.exi.dele_a1.a_r4_03",
         "es.exi.dele_a1.a_r4_04",
         "es.exi.dele_a1.a_r4_05",
         "es.exi.dele_a1.a_r4_06",
+        "es.exi.dele_a1.a_r4_07",
+        "es.exi.dele_a1.a_r4_08",
         "es.exi.dele_a1.a_l1_01",
         "es.exi.dele_a1.a_l1_02",
         "es.exi.dele_a1.a_l1_03",
@@ -3629,8 +5194,7 @@
         "es.exi.dele_a1.a_w2_01",
         "es.exi.dele_a1.a_s1_01",
         "es.exi.dele_a1.a_s2_01",
-        "es.exi.dele_a1.a_s3_01",
-        "es.exi.dele_a1.a_s4_01"
+        "es.exi.dele_a1.a_s3_01"
       ]
     },
     {
@@ -3653,14 +5217,14 @@
         "es.exi.dele_a1.b_r3_04",
         "es.exi.dele_a1.b_r3_05",
         "es.exi.dele_a1.b_r3_06",
-        "es.exi.dele_a1.b_r3_07",
-        "es.exi.dele_a1.b_r3_08",
         "es.exi.dele_a1.b_r4_01",
         "es.exi.dele_a1.b_r4_02",
         "es.exi.dele_a1.b_r4_03",
         "es.exi.dele_a1.b_r4_04",
         "es.exi.dele_a1.b_r4_05",
         "es.exi.dele_a1.b_r4_06",
+        "es.exi.dele_a1.b_r4_07",
+        "es.exi.dele_a1.b_r4_08",
         "es.exi.dele_a1.b_l1_01",
         "es.exi.dele_a1.b_l1_02",
         "es.exi.dele_a1.b_l1_03",
@@ -3690,8 +5254,7 @@
         "es.exi.dele_a1.b_w2_01",
         "es.exi.dele_a1.b_s1_01",
         "es.exi.dele_a1.b_s2_01",
-        "es.exi.dele_a1.b_s3_01",
-        "es.exi.dele_a1.b_s4_01"
+        "es.exi.dele_a1.b_s3_01"
       ]
     }
   ]

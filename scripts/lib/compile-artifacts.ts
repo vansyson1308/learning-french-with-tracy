@@ -351,8 +351,8 @@ function validateTargetExamTracks(
   packs: LoadedPack[],
   layers: {
     objectives: { objectives: { id: string }[] } | null;
-    readings: { readings: { id: string }[] } | null;
-    listening: { clips: { id: string }[] } | null;
+    readings: { readings: { id: string; blocks: { text: string }[]; use?: string }[] } | null;
+    listening: { clips: { id: string; segments: { text: string }[]; scoredPlaybackPolicy: { maxPlays: number }; use?: string }[] } | null;
     speech: { items: { id: string }[] } | null;
     writing: { tasks: { id: string }[] } | null;
     interaction: { scenarios: { id: string }[] } | null;
@@ -371,8 +371,8 @@ function validateTargetExamTracks(
   const ids = <T extends { id: string }>(rows: T[] | undefined) => new Set((rows ?? []).map((r) => r.id));
   const refs = {
     objectiveIds: ids(layers.objectives?.objectives),
-    readingIds: ids(layers.readings?.readings),
-    clipIds: ids(layers.listening?.clips),
+    readings: new Map((layers.readings?.readings ?? []).map((r) => [r.id, { texts: [r.blocks.map((b) => b.text).join(" ")], blocks: r.blocks.map((b) => b.text), use: r.use }])),
+    clips: new Map((layers.listening?.clips ?? []).map((c) => [c.id, { texts: [c.segments.map((x) => x.text).join(" ")], blocks: c.segments.map((x) => x.text), maxPlays: c.scoredPlaybackPolicy.maxPlays, use: c.use }])),
     speechIds: ids(layers.speech?.items),
     writingIds: ids(layers.writing?.tasks),
     scenarioIds: ids(layers.interaction?.scenarios),

@@ -139,7 +139,8 @@ export function validateReception(input: {
       }
     }
     const tokens = fullText.split(/\s+/).filter(Boolean).length;
-    if (tokens > 90) err(`${reading.id}: ${tokens} tokens exceeds the beginner cap of 90 (P7 §52)`);
+    const cap = reading.use === "exam" ? 260 : 90;
+    if (tokens > cap) err(`${reading.id}: ${tokens} tokens exceeds the ${reading.use === "exam" ? "exam-text" : "beginner"} cap of ${cap} (P7 §52, P3e)`);
   }
 
   const clipIds = new Set<string>();
@@ -173,9 +174,10 @@ export function validateReception(input: {
         err(`${clip.id}: scoredPlaybackPolicy.maxPlays must be 2 (product rule, §67)`);
       }
       const totalChars = clip.segments.reduce((n, s) => n + s.text.length, 0);
-      if (totalChars > 220) {
-        err(`${clip.id}: transcript length ${totalChars} chars exceeds the beginner clip cap (P7 §58)`);
+      if (totalChars > (clip.use === "exam" ? 1400 : 220)) {
+        err(`${clip.id}: transcript length ${totalChars} chars exceeds the ${clip.use === "exam" ? "exam" : "beginner"} clip cap (P7 §58, P3e)`);
       }
+      if (clip.use !== "exam" && clip.segments.length > 4) err(`${clip.id}: teaching clips have at most 4 segments`);
       // Deterministic bundled audio (P7 §26): once ANY generated asset
       // exists, every clip must resolve to its committed file; before the
       // first generation run this is a warning so authoring can iterate.
@@ -208,6 +210,8 @@ export function validateReception(input: {
   for (const pack of input.packs ?? []) {
     const knownClips = new Set((input.listening?.clips ?? []).map((c) => c.id));
     const knownReadings = new Set((input.readings?.readings ?? []).map((r) => r.id));
+    const examClips = new Set((input.listening?.clips ?? []).filter((c) => c.use === "exam").map((c) => c.id));
+    const examReadings = new Set((input.readings?.readings ?? []).filter((r) => r.use === "exam").map((r) => r.id));
     for (const section of pack.sections) {
       for (const unit of section.units) {
         for (const lesson of unit.lessons) {
@@ -216,9 +220,11 @@ export function validateReception(input: {
             const readingRef = (e as { readingId?: string }).readingId;
             if ((e.type === "listeningComprehension" || e.type === "dictation") && clipRef !== undefined) {
               if (!knownClips.has(clipRef)) err(`${e.id}: unknown clip ${clipRef}`);
+              if (examClips.has(clipRef)) err(`${e.id}: ${clipRef} is an exam recording — lessons never use exam stimuli (P3e)`);
             }
             if (e.type === "readingComprehension" && readingRef !== undefined) {
               if (!knownReadings.has(readingRef)) err(`${e.id}: unknown reading ${readingRef}`);
+              if (examReadings.has(readingRef)) err(`${e.id}: ${readingRef} is an exam text — lessons never use exam stimuli (P3e)`);
             }
           }
         }
