@@ -43,7 +43,7 @@ describe("courseProfile", () => {
     expect(p.ttsLocale).toBe("fr-FR");
     expect(p.artifacts.lexiconDb).toMatch(/^assets\/lexicon\/fr-lexicon-v\d+-[0-9a-f]{16}\.db$/);
     expect(Object.keys(p.artifacts).sort()).toEqual([
-      "attainment", "checkpoints", "claim", "clipAssets", "concepts", "ids", "lexiconDb", "lexiconFallback",
+      "attainment", "checkpoints", "claim", "clipAssets", "concepts", "dailyWords", "ids", "lexiconDb", "lexiconFallback",
       "lexiconIndex", "listening", "objectives", "placement", "reading", "scenarios", "speech", "writing",
     ]);
   });

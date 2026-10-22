@@ -329,6 +329,9 @@ export function runInvariants(state: PersistedProgress, now: Date, learner?: Lea
   if (state.uiLanguage !== undefined && !["system", "vi", "en"].includes(String(state.uiLanguage))) {
     problems.push("invalid UI language");
   }
+  if (state.dailyNewWords !== undefined && (typeof state.dailyNewWords !== "number" || !Number.isInteger(state.dailyNewWords) || state.dailyNewWords < 0 || state.dailyNewWords > 15)) {
+    problems.push("invalid daily new words");
+  }
 
   if (!Array.isArray(learnerData.reviewLog)) {
     problems.push("invalid review log");

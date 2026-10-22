@@ -15,6 +15,7 @@ import { RECEPTION_CLIP_ASSETS as clipAssets } from "../reception/xx-clip-assets
 import speech from "../speech/xx-speech-items.json";
 import writing from "../writing/xx-writing.json";
 import scenarios from "../interaction/xx-scenarios.json";
+import dailyWords from "../lexicon/xx-daily.json";
 import type { CourseArtifacts } from "../../../lib/content-registry";
 
-export const ARTIFACTS: CourseArtifacts = { ids, lexiconIndex, lexiconFallback, concepts, objectives, checkpoints, placement, attainment, claim, listening, reading, clipAssets, speech, writing, scenarios };
+export const ARTIFACTS: CourseArtifacts = { ids, lexiconIndex, lexiconFallback, concepts, objectives, checkpoints, placement, attainment, claim, listening, reading, clipAssets, speech, writing, scenarios, dailyWords };

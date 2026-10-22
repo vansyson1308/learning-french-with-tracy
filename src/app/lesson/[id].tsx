@@ -11,6 +11,7 @@ import { Redirect, useLocalSearchParams } from "expo-router";
 import React, { useMemo } from "react";
 
 import { useT } from "@/lib/i18n";
+import { syllabusWords } from "@/lib/learning/daily-words";
 import { SessionScreen } from "@/components/session/session-screen";
 import { courseProfile, hasCapability, lessonRouteCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
@@ -68,7 +69,8 @@ function LessonScreenBody({ id, activeCourseId }: { id: string; activeCourseId: 
       return buildReviewSessionDefinition({
         courseId: state.activeCourseId,
         course: courseProgress,
-        pool: allWords(),
+        // P3e: daily-stream words are not in the pack — their cards must stay reviewable.
+        pool: [...allWords(), ...syllabusWords(state.activeCourseId)],
       });
     }
     // Listening review (P7 §79-81): capability-gated surface over due listen
@@ -77,7 +79,7 @@ function LessonScreenBody({ id, activeCourseId }: { id: string; activeCourseId: 
       return buildListeningReviewSessionDefinition({
         courseId: state.activeCourseId,
         course: courseProgress,
-        pool: allWords(),
+        pool: [...allWords(), ...syllabusWords(state.activeCourseId)],
       });
     }
     // Speaking review (P8 §16): capability-gated surface over due speak cards.

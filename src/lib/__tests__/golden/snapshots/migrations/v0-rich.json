@@ -52,10 +52,11 @@
         "hearts",
         "heartsUpdatedAt",
         "uiLanguage",
-        "assessmentByTarget"
+        "assessmentByTarget",
+        "dailyNewWords"
       ]
     },
-    "persistVersion": 5
+    "persistVersion": 6
   },
   "fromVersion": 0,
   "invariants": [],
@@ -138,6 +139,7 @@
       }
     },
     "dailyGoal": 20,
+    "dailyNewWords": 5,
     "dailyXp": 30,
     "dailyXpDay": "2026-01-10",
     "hearts": 3,
@@ -235,6 +237,7 @@
         }
       },
       "dailyGoal": 20,
+      "dailyNewWords": 5,
       "dailyXp": 30,
       "dailyXpDay": "2026-01-10",
       "hearts": 3,
@@ -246,5 +249,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 5
+  "toVersion": 6
 }

@@ -15,7 +15,7 @@ import { existsSync } from "fs";
 import type { PackSource } from "../../../content/schema";
 import { readJson, safeResolve } from "../pipeline";
 
-export type LintFinding = { rule: string; severity: "warn" | "info"; where: string; message: string };
+export type LintFinding = { rule: string; severity: "error" | "warn" | "info"; where: string; message: string };
 export type LintReport = { courseId: string; findings: LintFinding[]; stats: Record<string, unknown> };
 
 type Exercise = Record<string, unknown> & { type: string; id: string };
@@ -172,13 +172,57 @@ export function lintRich(lang: string, native: string): LintFinding[] {
   return findings;
 }
 
+/**
+ * P3e syllabus coverage: every lexeme of the level's syllabus is delivered
+ * either by the lessons (used ≥ 2 times across exercises) or by the daily
+ * new-words stream (in the syllabus with a gloss and a translated example
+ * in the course's native language). Anything else is UNCOVERED — an error.
+ */
+export function lintSyllabusCoverage(
+  pack: PackSource,
+  syllabus: { entries: { lexemeId: string }[] } | null,
+  lexicon: { id: string; surface: string; glosses: Record<string, string>; examples?: { translations: Record<string, string> }[] }[] | null,
+  native: string
+): { findings: LintFinding[]; stats: { lessons: number; daily: number; uncovered: number } } {
+  const findings: LintFinding[] = [];
+  const stats = { lessons: 0, daily: 0, uncovered: 0 };
+  if (!syllabus || !lexicon) return { findings, stats };
+  const byId = new Map(lexicon.map((l) => [l.id, l]));
+  // Authored packs carry no gradeTargets: count exercises whose text uses the
+  // lexeme's head word (article stripped, whole word, case-insensitive).
+  const texts = pack.sections.flatMap((s) => s.units.flatMap((u) => u.lessons.flatMap((l) => l.exercises.map((ex) => JSON.stringify(ex).toLowerCase()))));
+  const head = (surface: string) => surface.toLowerCase().replace(/^(el|la|los|las|le|les|l'|un|une|der|die|das|il|lo|gli|o|a|os|as) /, "");
+  const escape = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const usesOf = (surface: string) => {
+    const re = new RegExp(`(^|[^\\p{L}])${escape(head(surface))}([^\\p{L}]|$)`, "u");
+    return texts.filter((t) => re.test(t)).length;
+  };
+  for (const e of syllabus.entries) {
+    const lex = byId.get(e.lexemeId);
+    if (lex && usesOf(lex.surface) >= 2) {
+      stats.lessons += 1;
+    } else if (lex && lex.glosses[native] && (lex.examples ?? []).some((x) => x.translations[native])) {
+      stats.daily += 1;
+    } else {
+      stats.uncovered += 1;
+      findings.push({ rule: "syllabus-coverage", severity: "error", where: e.lexemeId, message: "in the syllabus but neither taught ≥ 2 times nor deliverable by the daily stream (no gloss / translated example)" });
+    }
+  }
+  return { findings, stats };
+}
+
 export function lintCourse(courseId: string): LintReport {
   const pack = readJson(`content/courses/${courseId}.json`) as PackSource;
   const lang = pack.targetCode;
   const lexRel = `content/${lang}/lexicon/lexemes.json`;
-  const lexicon = existsSync(safeResolve(lexRel)) ? (readJson(lexRel) as { lexemes: { surface: string; partOfSpeech: string; topic?: string; glosses: Record<string, string> }[] }).lexemes : null;
+  const lexicon = existsSync(safeResolve(lexRel)) ? (readJson(lexRel) as { lexemes: { id: string; surface: string; partOfSpeech: string; topic?: string; glosses: Record<string, string>; examples?: { translations: Record<string, string> }[] }[] }).lexemes : null;
   const report = lintPack(pack, lexicon, pack.nativeCode);
   report.findings.push(...lintRich(lang, pack.nativeCode));
+  const sylRel = `content/${lang}/lexicon/syllabus.json`;
+  const syllabus = existsSync(safeResolve(sylRel)) ? (readJson(sylRel) as { entries: { lexemeId: string }[] }) : null;
+  const coverage = lintSyllabusCoverage(pack, syllabus, lexicon, pack.nativeCode);
+  report.findings.push(...coverage.findings);
+  report.stats = { ...report.stats, syllabusCoverage: coverage.stats };
   return report;
 }
 
@@ -188,7 +232,7 @@ export function renderLintReport(r: LintReport): string {
   const lines = [`# Lint — ${r.courseId}`, "", `Findings: ${r.findings.length} (${[...by].map(([k, v]) => `${k} ${v.length}`).join(", ") || "none"})`, ""];
   for (const [rule, list] of [...by].sort()) {
     lines.push(`## ${rule} (${list.length})`, "");
-    for (const f of list.slice(0, 40)) lines.push(`- ${f.severity === "warn" ? "⚠️" : "ℹ️"} \`${f.where}\`: ${f.message}`);
+    for (const f of list.slice(0, 40)) lines.push(`- ${f.severity === "error" ? "❌" : f.severity === "warn" ? "⚠️" : "ℹ️"} \`${f.where}\`: ${f.message}`);
     if (list.length > 40) lines.push(`- … ${list.length - 40} more`);
     lines.push("");
   }

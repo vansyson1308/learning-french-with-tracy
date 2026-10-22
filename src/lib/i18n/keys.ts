@@ -298,6 +298,11 @@ export type MessageKey =
   | "privacy.title"
   | "profile.appearance"
   | "profile.appearanceHint"
+  | "profile.dailyWords"
+  | "profile.dailyWordsHint"
+  | "profile.dailyWordsLess"
+  | "profile.dailyWordsMore"
+  | "profile.dailyWordsValue"
   | "profile.data"
   | "profile.export"
   | "profile.exportHint"
@@ -480,4 +485,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 478;
+export const MESSAGE_KEY_COUNT = 483;

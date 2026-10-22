@@ -16,6 +16,9 @@
  *       included (§46: its removal needs its own explicit migration
  *       decision) — passes through untouched; placementFloor starts at 0
  *       so existing users behave exactly as before (§89).
+ *   v6  P3e: `dailyNewWords` arrives — how many new words the TODAY
+ *       session introduces from the course's syllabus each day (0–15);
+ *       every existing learner starts at the default (5). Nothing else moves.
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -37,6 +40,7 @@ import { serializeCardKey } from "../learning/card-key";
 import { FR_COURSE_ID, frItemIdFor, isWordMappedFrSurface } from "../learning/ids-fr";
 import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
+import { normalizeDailyNewWords } from "../learning/daily-words-setting";
 import { estimateFsrsCardFromSm2 } from "../learning/sm2-migration";
 import type { SrsEntry } from "../srs";
 import {
@@ -44,7 +48,7 @@ import {
   type PersistedAssessmentState,
 } from "../assessment/types";
 
-export const PERSIST_VERSION = 5;
+export const PERSIST_VERSION = 6;
 
 /**
  * The course the single v3 `assessment` container belonged to. A MIGRATION
@@ -114,6 +118,8 @@ export type PersistedProgress = {
   assessmentByTarget?: Record<string, PersistedAssessmentState>;
   /** UI language preference (v4). */
   uiLanguage?: UiLanguagePreference;
+  /** Daily new words from the syllabus, 0–15 (v6, P3e). */
+  dailyNewWords?: number;
 } & Record<string, unknown>;
 
 /** Route ids that practice sessions historically wrote into completedLessons. */
@@ -396,6 +402,15 @@ function migrateV4toV5(persisted: PersistedProgress): PersistedProgress {
   return { ...rest, assessmentByTarget: byTarget };
 }
 
+/**
+ * v5 → v6 (P3e): add `dailyNewWords`, normalised to 0–15 (a value already
+ * present — re-import of a v6 backup routed through the chain — is kept
+ * when valid). Idempotent; nothing else changes.
+ */
+function migrateV5toV6(persisted: PersistedProgress): PersistedProgress {
+  return { ...persisted, dailyNewWords: normalizeDailyNewWords(persisted.dailyNewWords) };
+}
+
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
@@ -423,6 +438,10 @@ export function migrateProgress(
   if (fromVersion < 5 && toVersion >= 5) {
     checkFailureSeam(5);
     state = migrateV4toV5(state as PersistedProgress);
+  }
+  if (fromVersion < 6 && toVersion >= 6) {
+    checkFailureSeam(6);
+    state = migrateV5toV6(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }

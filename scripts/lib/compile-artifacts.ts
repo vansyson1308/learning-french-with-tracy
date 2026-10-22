@@ -41,6 +41,7 @@ import {
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
 import { examTrackPaths } from "./exam-bank";
+import { compileDailyWordsArtifact, deriveSyllabus, loadSyllabus, validateSyllabusData } from "./syllabus";
 import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
 import { deriveGenderPatterns } from "./gender-patterns";
@@ -342,7 +343,21 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
   }
   errors.push(...validateSecondaryNativeCourses(lang, packs));
   errors.push(...validateTargetExamTracks(lang, packs, { objectives, readings, listening, speech, writing, interaction }, nativeCodes));
+  errors.push(...validateTargetSyllabus(lang, packs, lexicon, nativeCodes));
   return errors;
+}
+
+/** P3e: the daily-words syllabus (committed, or derived when absent) against the lexicon and the primary course. */
+function validateTargetSyllabus(lang: string, packs: LoadedPack[], lexicon: ReturnType<typeof loadRichLexicon> | null, nativeCodes: string[]): string[] {
+  const pack = primaryPackOf(lang, packs);
+  if (!lexicon || !pack) return [];
+  let syllabus;
+  try {
+    syllabus = loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack });
+  } catch (e) {
+    return [schemaFailure(`syllabus (${lang})`, e)];
+  }
+  return validateSyllabusData({ syllabus, lang, lexicon, pack, nativeCodes }).errors;
 }
 
 /** P3d: every exam track of a target against the primary course and the target's banks. */
@@ -512,6 +527,12 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
       files.push(...secondary.files);
       dbPlans.push(lexiconDbPlan({ lexicon, contentHash: secondary.contentHash, nativeCode: code, testOnly, assetPrefix: courseId }));
     }
+  }
+
+  // P3e: the daily-words stream (target-level, native-independent).
+  if (lexicon) {
+    const syllabus = loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack });
+    files.push({ relPath: `${root}/lexicon/${lang}-daily.json`, contents: compileDailyWordsArtifact(syllabus) });
   }
 
   const concepts = loadPedagogyConcepts(lang);

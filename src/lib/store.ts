@@ -12,6 +12,7 @@ import {
 import { defaultCourseId } from "./course-profile";
 import { addDays, dayString, localWeek } from "./dates";
 import { serializeCardKey } from "./learning/card-key";
+import { DAILY_NEW_WORDS_DEFAULT, normalizeDailyNewWords } from "./learning/daily-words-setting";
 import { applyEvidence } from "./learning/engine";
 import type { ReviewEvidence } from "./learning/evidence";
 import { msg, type Message } from "./i18n/message";
@@ -101,6 +102,8 @@ type ProgressState = {
   themePreference: ThemePreference;
   /** UI language (v4; P2a renders it): "system" follows the device locale. */
   uiLanguage: UiLanguagePreference;
+  /** P3e: new words a day from the course syllabus (0–15, default 5). */
+  dailyNewWords: number;
   courses: Record<string, CourseProgress>;
   /** Per-day activity across courses, for the streak calendar and quests. */
   activeDays: Record<string, DayActivity>;
@@ -170,6 +173,8 @@ type ProgressState = {
   setActiveCourse: (courseId: string) => void;
   setThemePreference: (preference: ThemePreference) => void;
   setUiLanguage: (language: UiLanguagePreference) => void;
+  /** P3e: 0–15 new syllabus words a day in TODAY (clamped). */
+  setDailyNewWords: (n: number) => void;
   finishOnboarding: (courseId: string, goal: number) => void;
   /** Commit the pending learner-store buffer (one transaction); safe when empty. */
   flushLearner: () => Promise<void>;
@@ -281,6 +286,7 @@ export const useProgress = create<ProgressState>()(
       onboardingDone: false,
       themePreference: "system",
       uiLanguage: "system",
+      dailyNewWords: DAILY_NEW_WORDS_DEFAULT,
       courses: {},
       activeDays: {},
       reviewLog: [],
@@ -529,6 +535,7 @@ export const useProgress = create<ProgressState>()(
       setThemePreference: (preference) => set({ themePreference: preference }),
 
       setUiLanguage: (language) => set({ uiLanguage: language }),
+      setDailyNewWords: (n) => set({ dailyNewWords: normalizeDailyNewWords(n) }),
 
       finishOnboarding: (courseId, goal) => {
         set({ activeCourseId: courseId, dailyGoal: goal, onboardingDone: true });

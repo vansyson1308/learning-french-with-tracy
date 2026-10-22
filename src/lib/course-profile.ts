@@ -43,6 +43,8 @@ export type CourseCapabilities = {
 export type CourseArtifactPaths = {
   /** P3d: compiled exam tracks of the course (DELE A1, JLPT N5, …). */
   examTracks?: string;
+  /** P3e: the daily-new-words syllabus (target-level delivery order + unlock units). */
+  dailyWords?: string;
   ids?: string;
   lexiconIndex?: string;
   lexiconFallback?: string;

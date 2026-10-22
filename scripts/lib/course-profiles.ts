@@ -63,6 +63,7 @@ function artifactPathsFor(
     writing: pick(`${root}/writing/${nativePrefix}-writing.json`),
     scenarios: pick(`${root}/interaction/${nativePrefix}-scenarios.json`),
     examTracks: pick(`${root}/exam/${nativePrefix}-exam-tracks.json`),
+    dailyWords: pick(`${root}/lexicon/${code}-daily.json`),
   };
   return Object.fromEntries(Object.entries(out).filter(([, v]) => v !== undefined)) as CourseArtifactPaths;
 }
@@ -199,6 +200,7 @@ function renderArtifactModule(root: string, profile: CourseProfile): string {
   add("writing", a.writing);
   add("scenarios", a.scenarios);
   add("examTracks", a.examTracks);
+  add("dailyWords", a.dailyWords);
   lines.push(`import type { CourseArtifacts } from "${importFrom(dir, "src/lib/content-registry")}";`, "");
   lines.push(`export const ARTIFACTS: CourseArtifacts = {${fields.length ? ` ${fields.join(", ")} ` : ""}};`, "");
   return lines.join("\n");
