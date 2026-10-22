@@ -428,3 +428,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      lexicon-db:es:es-lexicon-v3-59447ed22ef7518e.db
 - compile: missing  lexicon-db:es-en:es-en-lexicon-v3-fd4864239463ab05.db
 - compile: missing  lexicon-db:es:es-lexicon-v3-10a77b6cc2091cc9.db
+
+## 2026-10-22 — audio.yml ko canary (all) run 39705705422
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/ko/audio-canary.json
+- compile: changed  src/content/attributions.json

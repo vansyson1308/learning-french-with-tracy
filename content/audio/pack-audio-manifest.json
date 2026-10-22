@@ -105,11 +105,14 @@
       }
     },
     "ko-en": {
-      "policy": "device-tts",
+      "policy": "generated",
       "language": "ko",
-      "reason": "rhasspy/piper-voices v1.0.0 ships no Korean voice; the legacy recordings have no traceable license, so the course uses the device's own Korean text-to-speech voice (expo-speech) instead of bundled audio.",
+      "voiceId": "melotts-ko",
+      "candidates": [
+        "melotts-ko"
+      ],
       "voiceCast": {
-        "A": null,
+        "A": "melotts-ko",
         "B": null
       }
     }
@@ -862,7 +865,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: mit",
-      "status": "eligible",
+      "status": "selected",
       "gateReason": "matched MIT"
     },
     {

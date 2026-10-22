@@ -498,6 +498,18 @@
         "assets/audio/ja/",
         "content/audio/model-cards/ja/kokoro-jf_alpha.card.txt"
       ]
+    },
+    {
+      "id": "melotts-ko",
+      "name": "MeloTTS KR model (melotts-ko)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "MIT",
+      "url": "https://huggingface.co/myshell-ai/MeloTTS-Korean/tree/0207e5adfc90129a51b6b03d89be6d84360ed323",
+      "attribution": "Course audio for ko-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the KR model (MIT), pinned at repository revision 0207e5adfc90129a51b6b03d89be6d84360ed323; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/ko/",
+        "content/audio/model-cards/ko/melotts-ko.card.txt"
+      ]
     }
   ]
 }

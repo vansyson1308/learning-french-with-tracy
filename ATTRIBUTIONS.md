@@ -204,6 +204,17 @@ Word frequency, prevalence and IPA pronunciation data from Lexique 4: New, B., P
 
 > Official artifact Lexique400.tsv pinned by sha256 in content/fr/lexicon/source-manifest.json (33,067,258 bytes, 189,863 rows, retrieved from https://lexique.org/databases/Lexique400/Lexique400.tsv by the dispatch-only acquisition workflow; raw file never committed). Column mapping: content/fr/lexicon/LEXIQUE4_COLUMNS.md; cross-check dispositions: content/fr/lexicon/REVIEW.md pass 3. Imported fields per matched lexeme: frequency (12_FreqLemme raw + population rank + population-quantile band) and pronunciation (3_Phono_IPA verbatim, genuine IPA). CC BY-SA 4.0 share-alike is satisfied by the project's CC BY-SA 4.0 lexicon dataset licensing (LEXICON_LICENSE.md).
 
+## MeloTTS KR model (melotts-ko)
+
+- **License:** MIT
+- **Source:** https://huggingface.co/myshell-ai/MeloTTS-Korean/tree/0207e5adfc90129a51b6b03d89be6d84360ed323
+- **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
+- **Retrieved:** 2026-10-22
+
+Course audio for ko-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the KR model (MIT), pinned at repository revision 0207e5adfc90129a51b6b03d89be6d84360ed323; the model card is preserved verbatim in content/audio/model-cards/.
+
+> Selected by the audio canary ASR audit (mean WER/CER 0.1473 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+
 ## MeloTTS ZH model (melotts-zh)
 
 - **License:** MIT

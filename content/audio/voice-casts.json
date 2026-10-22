@@ -326,7 +326,7 @@
       "castNote": "A=melotts-zh (MeloTTS melotts-zh speaker ZH); no second voice: no other candidate is a verified different speaker within the floor; skipped kokoro-zm_yunjian (4 technical failure(s)), kokoro-zf_xiaobei (6 technical failure(s))"
     },
     "ko": {
-      "status": "no-clean-voice",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "melotts-ko",
@@ -334,23 +334,22 @@
         }
       ],
       "cast": {
-        "A": null,
+        "A": "melotts-ko",
         "B": null
       },
       "canary": {
-        "reportedAt": "2026-10-21",
+        "reportedAt": "2026-10-22",
         "report": "content/reports/ko/audio-canary.json",
         "voices": [
           {
             "voiceId": "melotts-ko",
             "clips": 24,
-            "meanWer": 0.6065,
-            "technicalFailures": 8
+            "meanWer": 0.1473,
+            "technicalFailures": 0
           }
         ]
       },
-      "reason": "best candidate melotts-ko has mean WER/CER 0.6065 (> 0.6) — not intelligible enough to ship",
-      "castNote": "no voice within the floor (best melotts-ko mean WER/CER 0.6065 > 0.6)"
+      "castNote": "A=melotts-ko (MeloTTS melotts-ko speaker KR); no second voice: no other candidate is a verified different speaker within the floor"
     },
     "en": {
       "status": "selected",
