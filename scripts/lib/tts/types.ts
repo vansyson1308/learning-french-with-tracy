@@ -42,7 +42,8 @@ export type EnginesDoc = {
   };
   licenseGate: { note: string; allow: string[]; deny: string[] };
   loudness: { integratedLufs: number; truePeakDb: number; loudnessRange: number };
-  encoding: { sampleRateHz: number; channels: number; mp3Kbps: number };
+  /** mp3Kbps for pipelineVersion 1–2; mp3KbpsFromVersion[v] overrides from version v on (P3f: 3 → 32 kbps). */
+  encoding: { sampleRateHz: number; channels: number; mp3Kbps: number; mp3KbpsFromVersion?: Record<string, number> };
 };
 
 /** One thing to download: an URL and the local name `<voiceId>.<kind>.<copy>`. */

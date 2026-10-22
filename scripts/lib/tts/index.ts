@@ -48,6 +48,19 @@ export type ScriptClip = {
  * normalisation for v2 clips, MP3 encode. Clips present in `existing`
  * (already blessed, content-addressed) are copied, never re-rendered.
  */
+/** Speech bitrate for a pipeline version (P3f: 32 kbps mono from version 3; French stays at version 1). */
+export function mp3KbpsFor(engines: Pick<EnginesDoc, "encoding">, pipelineVersion: number): number {
+  let kbps = engines.encoding.mp3Kbps;
+  let from = 0;
+  for (const [v, k] of Object.entries(engines.encoding.mp3KbpsFromVersion ?? {})) {
+    if (Number(v) <= pipelineVersion && Number(v) > from) {
+      from = Number(v);
+      kbps = k;
+    }
+  }
+  return kbps;
+}
+
 export function buildSynthScript(input: {
   clips: ScriptClip[];
   voices: Voice[];
@@ -105,7 +118,7 @@ export function buildSynthScript(input: {
     }
     const filter = clip.pipelineVersion >= 2 ? ` -af ${shq(`loudnorm=I=${integratedLufs}:TP=${truePeakDb}:LRA=${loudnessRange}`)}` : "";
     lines.push(
-      `ffmpeg -v error -y -i ${shq(joined)}${filter} -ar ${engines.encoding.sampleRateHz} -ac ${engines.encoding.channels} -codec:a libmp3lame -b:a ${engines.encoding.mp3Kbps}k ${shq(`${outDir}/${clip.assetKey}.mp3`)}`
+      `ffmpeg -v error -y -i ${shq(joined)}${filter} -ar ${engines.encoding.sampleRateHz} -ac ${engines.encoding.channels} -codec:a libmp3lame -b:a ${mp3KbpsFor(engines, clip.pipelineVersion)}k ${shq(`${outDir}/${clip.assetKey}.mp3`)}`
     );
   }
   lines.push(`echo "synthesized ${render.length} clips, reused ${reused} existing assets (${clips.length} plan clips)"`);

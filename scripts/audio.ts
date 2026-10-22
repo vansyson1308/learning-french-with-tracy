@@ -36,6 +36,8 @@ import { buildPlugin } from "./lib/languages";
 import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa } from "./lib/piper-audio";
 import { courseRolesFor, loadPacks } from "./lib/pipeline";
 import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
+import { writeAudioSizeReport } from "./lib/audio-size";
+import { lexiconAudioStrings } from "./lib/lexicon-audio";
 import { receptionAssetKey } from "./lib/reception";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
@@ -176,18 +178,6 @@ export function courseAudioStrings(m: PackManifest, courseId: string): string[] 
 }
 
 /** Every string the lexicon of the language speaks: surfaces and example sentences. */
-export function lexiconAudioStrings(lang: string): string[] {
-  const rel = path.join(ROOT, `content/${lang}/lexicon/lexemes.json`);
-  if (!existsSync(rel)) return [];
-  const doc = JSON.parse(readFileSync(rel, "utf8")) as { lexemes: { surface: string; examples: { target: string }[] }[] };
-  const set = new Set<string>();
-  for (const lex of doc.lexemes) {
-    set.add(lex.surface);
-    for (const ex of lex.examples) set.add(ex.target);
-  }
-  return [...set].sort((a, b) => a.localeCompare(b));
-}
-
 // ---------------------------------------------------------------------------
 // voices in scope, download-list, recon, verify
 // ---------------------------------------------------------------------------
@@ -810,6 +800,7 @@ function apply(planPath: string, outdir: string, sfxDir?: string) {
   mkdirSync(reportsDirFor(), { recursive: true });
   const census = { generator: "scripts/audio.ts apply", language: LANG, pipelineVersion: pipelineVersionFor(m, LANG), layers: doc.layers, courses: [...languageCourseIds].map((id) => ({ courseId: id, policy: m.courses[id].policy, voiceCast: m.courses[id].voiceCast ?? null, clips: packClips.filter((c) => c.courseId === id).length })), receptionClips: receptionClips.length, files: { pack: existsSync(path.join(ROOT, "assets/audio", LANG)) ? readdirSync(path.join(ROOT, "assets/audio", LANG)).length : 0, reception: existsSync(path.join(ROOT, `assets/audio/${LANG}-reception`)) ? readdirSync(path.join(ROOT, `assets/audio/${LANG}-reception`)).length : 0 } };
   writeFileSync(path.join(reportsDirFor(), "audio-census.json"), `${JSON.stringify(census, null, 2)}\n`);
+  writeAudioSizeReport();
   writeLanguageBaseline(LANG);
   writeManifestBaseline();
   console.log(`baseline re-blessed for ${LANG} (content/audio/baseline/${LANG}.json + manifest.json)`);
@@ -836,5 +827,6 @@ else if (cmd === "engines-needed") {
   writeLanguageBaseline(LANG);
   writeManifestBaseline();
   writeSfxBaseline();
+  writeAudioSizeReport();
   console.log(`baseline written for ${LANG}`);
 } else fail(`unknown subcommand ${cmd ?? "(none)"}`);

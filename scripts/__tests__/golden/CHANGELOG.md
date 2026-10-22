@@ -512,3 +512,7 @@ A refactor must never appear in this file; only deliberate French changes do.
 ## 2026-10-22 — audio-manifest.ts: one entry per key (P3f A1 — pack/lexicon duplicate keys removed, TS1117)
 
 - compile: changed  src/content/audio-manifest.ts
+
+## 2026-10-22 — content/reports/audio-size.json added (P3f B3 audio size budget); French unchanged
+
+- compile: new      content/reports/audio-size.json

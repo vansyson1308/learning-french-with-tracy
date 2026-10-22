@@ -1,7 +1,7 @@
 {
   "version": 2,
   "pipelineVersions": {
-    "default": 2,
+    "default": 3,
     "fr": 1
   },
   "note": "Bundled course audio (pack layer: every word, phrase and sentence a course pack references; lexicon layer: every lexeme surface and example of a language's lexicon, keyed by its primary course). Audio pipeline v2 (P3b): engines, pins, licence gate and loudness target live in content/audio/engines.json; candidate voices per LANGUAGE and the selected voice cast live in content/audio/voice-casts.json (written by `scripts/audio.ts select` from the canary ASR audit); every voice is pinned here by double-download hash after recon. pipelineVersions: French clips keep version 1 (their content-addressed keys and bytes never change); every other language uses version 2 (EBU R128 loudness normalisation). Courses whose language has no licence-clean voice keep policy device-tts.",

@@ -101,7 +101,7 @@ describe("manifests and voice casts", () => {
   test("every course has a language, every candidate voice is declared with its engine, French stays at pipelineVersion 1", () => {
     expect(pack.version).toBe(2);
     expect(pack.pipelineVersions.fr).toBe(1);
-    expect(pack.pipelineVersions.default).toBe(2);
+    expect(pack.pipelineVersions.default).toBe(3); // P3f: 32 kbps speech from version 3
     const voices = [...pack.voices];
     for (const lang of Object.keys(casts.languages)) {
       const rel = `content/${lang}/reception/audio-source-manifest.json`;
