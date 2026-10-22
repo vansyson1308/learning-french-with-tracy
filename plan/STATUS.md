@@ -16,11 +16,12 @@
 | P3e | QC fixes on es-vi + harden the course template | `phase-3/es-vi-hardening` (PR pending) | done (owner review + device walk pending) | 2026-10-22 | DELE A1 re-authored to the 2020 model (exam schema v2: lettered pools, score groups 30/50, 2 forms × 110 items; official guide still unreachable → `checkedAgainstOfficialGuide: false`); daily new-words stream (syllabus es 613 A1 lexemes, fr derived; persist v6 `dailyNewWords`); lesson-shape gate (≥ 5 exercises, no repeats; es-vi 712 exercises; French exempt); Peninsular Spanish with Latin-American forms accepted (`VARIETY.md`, variety gate); ko scored by CER → A `melotts-ko`, ja B `jm_kumo`, zh B `zm_yunjian`, vi A; bot-commit survives a moved branch; French simpleForm card (approved); default course by UI language (vi → fr-vi, en → fr-en); tiered review (Tier-1 vi 352 / es 313 lines), LanguageTool CI gate, back-translation pass (3,024 pairs; ETL homograph defect fixed for 35 lexemes), es-vi beta label; `plan/reports/P3e.md` |
 | P3f | QC follow-up of #40, audio size budget, RC4 on the phone | `phase-3/es-vi-hardening` → RC4 | in progress | 2026-10-22 | `plan/prompts/P3f-qc-followup-and-rc4.md`: manifest duplicate keys + bot-commit typecheck + workflow_run on main; 32 kbps + syllabus-only lexicon audio + 12 MB/language gate + ASSET_DELIVERY.md; topic→unit map, vosotros, variety, DELE checked; RC4 build 2 signed by the owner + upgrade test over RC3; roadmap: P5b before P3d(de/it/pt), P4b with Hán-Việt |
 | P4a | inherited fixes / retire -en packs | – | not started | | |
+| P5b | graded stories (moved up: context for daily words) | – | not started | | before P3d(de/it/pt) — coordinator 2026-10-22 |
 | P3d(de/it/pt) | de-vi, it-vi, pt-vi | – | not started | | |
-| P4b | CJK plugins | – | not started | | |
+| P4b | CJK plugins + Hán-Việt readings (Unihan kVietnamese + reviewed overrides) | – | not started | | |
 | P4c–e | ja-vi, zh-vi, ko-vi | – | not started | | |
 | P4f | en-vi (recommended) | – | not started | | |
-| P5a–f | breakthrough features | – | not started | | |
+| P5a, P5c–f | remaining breakthrough features | – | not started | | |
 | P6a–b | brand, store, acceptance | – | not started | | |
 
 Owner actions outstanding:
