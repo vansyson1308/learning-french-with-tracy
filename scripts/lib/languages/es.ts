@@ -83,7 +83,7 @@ export const es: BuildLanguagePlugin = genericPlugin(
   {
     rules: esRules,
     articleRules: ES_ARTICLES,
-    normalizeForAsr: { ligatures: {}, apostropheSplit: false, wordChars: "a-z\\u00e0-\\u00ff\\u00f1", whisperLanguage: "es" },
+    normalizeForAsr: { ligatures: {}, apostropheSplit: false, wordChars: "a-z\\u00e0-\\u00ff\\u00f1", whisperLanguage: "es", metric: "wer" },
     paradigm: ES_PARADIGM,
     functionWords: ES_FUNCTION_WORDS,
     targetLanguageName: "Spanish",

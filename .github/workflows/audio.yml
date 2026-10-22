@@ -185,7 +185,9 @@ jobs:
               pip install "funasr==$FUNASR" torch torchaudio huggingface_hub
               ;;
           esac
-          ASR_MODEL=$([ "$MODE_INPUT" = "generate" ] && echo medium || echo base)
+          # Whisper medium for generate runs, and for Vietnamese canaries too (P3e: base
+          # returned empty or digit-only transcripts for the vi canary).
+          ASR_MODEL=$( { [ "$MODE_INPUT" = "generate" ] || [ "$LANG_INPUT" = "vi" ]; } && echo medium || echo base)
           python3 scripts/audio-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --engine auto --model "$ASR_MODEL"
 
       - name: Canary QA + voice-cast selection

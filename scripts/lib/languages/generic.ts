@@ -70,6 +70,9 @@ export function genericPlugin(
       apostropheSplit: true,
       wordChars: facts.script === "latin" ? "a-z\\u00e0-\\u00ff0-9" : "\\w",
       whisperLanguage: facts.code,
+      // P3e: scripts without reliable word spaces are scored by CHARACTER error rate
+      // (NFC, whitespace and punctuation removed) — recognizers space Hangul arbitrarily.
+      metric: facts.script === "latin" ? "wer" : "cer",
     },
     // Plausible speaking-rate band for the technical QA, by script: an alphabet spends several
     // characters per syllable; Han, kana and Hangul spend about one (the 2026-10-21 zh canary
