@@ -297,33 +297,33 @@
       ],
       "cast": {
         "A": "melotts-zh",
-        "B": null
+        "B": "kokoro-zm_yunjian"
       },
       "canary": {
-        "reportedAt": "2026-10-21",
+        "reportedAt": "2026-10-22",
         "report": "content/reports/zh/audio-canary.json",
         "voices": [
           {
             "voiceId": "melotts-zh",
             "clips": 24,
-            "meanWer": 0.1119,
+            "meanWer": 0.1328,
             "technicalFailures": 0
           },
           {
             "voiceId": "kokoro-zm_yunjian",
             "clips": 24,
             "meanWer": 0.1475,
-            "technicalFailures": 4
+            "technicalFailures": 0
           },
           {
             "voiceId": "kokoro-zf_xiaobei",
             "clips": 24,
             "meanWer": 0.2242,
-            "technicalFailures": 6
+            "technicalFailures": 0
           }
         ]
       },
-      "castNote": "A=melotts-zh (MeloTTS melotts-zh speaker ZH); no second voice: no other candidate is a verified different speaker within the floor; skipped kokoro-zm_yunjian (4 technical failure(s)), kokoro-zf_xiaobei (6 technical failure(s))"
+      "castNote": "A=melotts-zh (MeloTTS melotts-zh speaker ZH); B=kokoro-zm_yunjian: different speaker (Kokoro voice pack zm_yunjian), gender male (no other-gender candidate within the floor), mean WER/CER 0.1475 ≤ 0.6"
     },
     "ko": {
       "status": "selected",

@@ -13,7 +13,7 @@
   },
   "clipCount": 72,
   "uniqueAssetCount": 72,
-  "technicalFailures": 10,
+  "technicalFailures": 0,
   "sentenceClipsForReview": 11,
   "voiceSummary": [
     {
@@ -37,7 +37,7 @@
       "layer": "pack",
       "voiceId": "melotts-zh#ZH",
       "clips": 12,
-      "meanWer": 0.0572,
+      "meanWer": 0.099,
       "technicalFailures": 0
     },
     {
@@ -54,7 +54,7 @@
       "voiceId": "kokoro-zm_yunjian",
       "clips": 12,
       "meanWer": 0.25,
-      "technicalFailures": 4
+      "technicalFailures": 0
     },
     {
       "courseId": "zh-en",
@@ -62,7 +62,7 @@
       "voiceId": "kokoro-zf_xiaobei",
       "clips": 12,
       "meanWer": 0.4264,
-      "technicalFailures": 6
+      "technicalFailures": 0
     }
   ],
   "review": [
@@ -78,7 +78,7 @@
       "clipId": "zh-en:可爱@kokoro-zf_xiaobei",
       "voiceId": "kokoro-zf_xiaobei",
       "transcript": "可爱",
-      "heard": "克爱",
+      "heard": "克爱😔",
       "wer": 0.5,
       "durationSec": 1.881
     },
@@ -94,7 +94,7 @@
       "clipId": "zh-en:大@kokoro-zm_yunjian",
       "voiceId": "kokoro-zm_yunjian",
       "transcript": "大",
-      "heard": "对",
+      "heard": "啊",
       "wer": 1,
       "durationSec": 1.019
     },
@@ -102,7 +102,7 @@
       "clipId": "zh-en:大@melotts-zh",
       "voiceId": "melotts-zh",
       "transcript": "大",
-      "heard": "哎",
+      "heard": "嗯",
       "wer": 1,
       "durationSec": 0.758
     },
@@ -110,7 +110,7 @@
       "clipId": "zh-en:小@kokoro-zf_xiaobei",
       "voiceId": "kokoro-zf_xiaobei",
       "transcript": "小",
-      "heard": "像",
+      "heard": "需",
       "wer": 1,
       "durationSec": 0.94
     },
@@ -118,9 +118,9 @@
       "clipId": "zh-en:小@melotts-zh",
       "voiceId": "melotts-zh",
       "transcript": "小",
-      "heard": "有",
+      "heard": "下😔",
       "wer": 1,
-      "durationSec": 0.731
+      "durationSec": 0.784
     },
     {
       "clipId": "zh-en:我喜欢喝果汁。@kokoro-zf_xiaobei",
@@ -142,7 +142,7 @@
       "clipId": "zh-en:男孩@kokoro-zm_yunjian",
       "voiceId": "kokoro-zm_yunjian",
       "transcript": "男孩",
-      "heard": "南海",
+      "heard": "南害",
       "wer": 1,
       "durationSec": 1.698
     },
@@ -215,12 +215,12 @@
       "speaker": "ZH",
       "assetKey": "34de2191fa5da75f4fef",
       "transcript": "我们去那儿玩一会儿，吃一点儿东西。",
-      "durationSec": 2.873,
-      "bytes": 23240,
+      "durationSec": 2.821,
+      "bytes": 22822,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.92,
+      "charsPerSec": 6.03,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -290,16 +290,16 @@
       "speaker": "ZH",
       "assetKey": "c52bf8c9ceb8030fb615",
       "transcript": "你好！早上好！谢谢，再见！",
-      "durationSec": 2.612,
-      "bytes": 21150,
+      "durationSec": 2.586,
+      "bytes": 20941,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.98,
+      "charsPerSec": 5.03,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "你好早上好谢谢再见",
+        "text": "你好早上好谢谢再见😊",
         "wer": 0,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -365,17 +365,17 @@
       "speaker": "ZH",
       "assetKey": "5fc73d8dc10a404b3d93",
       "transcript": "我想预订今天晚上八点两个人的桌子，可以吗？",
-      "durationSec": 4.075,
-      "bytes": 32853,
+      "durationSec": 4.101,
+      "bytes": 33062,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.15,
+      "charsPerSec": 5.12,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "我想预定今天晚上八点两个人的桌子可以吗",
-        "wer": 0.0526,
+        "text": "我想预订今天晚上八点两个人的桌子可以吗",
+        "wer": 0,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -440,12 +440,12 @@
       "speaker": "ZH",
       "assetKey": "3eb41d33e220fce5867a",
       "transcript": "一个人、两本书、三杯茶。",
-      "durationSec": 2.377,
-      "bytes": 19270,
+      "durationSec": 2.508,
+      "bytes": 20315,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.05,
+      "charsPerSec": 4.79,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -524,8 +524,8 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "我的朋友来了他们吃了饭",
-        "wer": 0,
+        "text": "我的朋友来了他们吃着饭",
+        "wer": 0.0909,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -590,12 +590,12 @@
       "speaker": "ZH",
       "assetKey": "837f76af07ae6b31b212",
       "transcript": "七十三块钱，一九九九年，十五分钟。",
-      "durationSec": 3.788,
-      "bytes": 30555,
+      "durationSec": 3.997,
+      "bytes": 32226,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.49,
+      "charsPerSec": 4.25,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -740,17 +740,17 @@
       "speaker": "ZH",
       "assetKey": "c5953c153e2ee322b4f6",
       "transcript": "这是四十四只石狮子。",
-      "durationSec": 2.273,
-      "bytes": 18434,
+      "durationSec": 2.194,
+      "bytes": 17807,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.4,
+      "charsPerSec": 4.56,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "这是四十四只石狮子",
-        "wer": 0,
+        "text": "这是四十四至十狮四",
+        "wer": 0.3333,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -815,17 +815,17 @@
       "speaker": "ZH",
       "assetKey": "f031ef30c07dc577b58c",
       "transcript": "现在八点半，我们九点一刻出发。",
-      "durationSec": 2.664,
-      "bytes": 21568,
+      "durationSec": 2.743,
+      "bytes": 22195,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 5.63,
+      "charsPerSec": 5.47,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "现在八点半我们九点一刻出发",
-        "wer": 0,
+        "text": "现在八点半我们局练一课出发",
+        "wer": 0.2308,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -890,17 +890,17 @@
       "speaker": "ZH",
       "assetKey": "233095aa7258b7807f35",
       "transcript": "妈妈骑马，马慢，妈妈骂马。",
-      "durationSec": 2.795,
-      "bytes": 22613,
+      "durationSec": 2.743,
+      "bytes": 22195,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.65,
+      "charsPerSec": 4.74,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "妈妈骑马妈妈妈妈妈妈",
-        "wer": 0.4,
+        "text": "妈妈骑马妈妈妈妈妈马",
+        "wer": 0.3,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
         "engine": "sensevoice"
@@ -965,12 +965,12 @@
       "speaker": "ZH",
       "assetKey": "4787dd3e08f06b6f6e69",
       "transcript": "我想买很好的雨伞。",
-      "durationSec": 1.855,
-      "bytes": 15090,
+      "durationSec": 1.881,
+      "bytes": 15299,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.85,
+      "charsPerSec": 4.79,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1049,7 +1049,7 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "绿色的路痕长",
+        "text": "预色的路很长",
         "wer": 0.1667,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1115,12 +1115,12 @@
       "speaker": "ZH",
       "assetKey": "cbccf10fe074d23d7d1b",
       "transcript": "不客气",
-      "durationSec": 1.202,
-      "bytes": 9866,
+      "durationSec": 1.149,
+      "bytes": 9448,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 2.5,
+      "charsPerSec": 2.61,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1146,10 +1146,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 0.91,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (0.9 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "公园",
         "wer": 0,
@@ -1192,12 +1190,12 @@
       "speaker": "ZH",
       "assetKey": "526f7e535fc2345f36d7",
       "transcript": "公园",
-      "durationSec": 1.071,
-      "bytes": 8821,
+      "durationSec": 1.149,
+      "bytes": 9448,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.87,
+      "charsPerSec": 1.74,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1223,12 +1221,10 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.06,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.1 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "克爱",
+        "text": "克爱😔",
         "wer": 0.5,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1300,10 +1296,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 0.63,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (0.6 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "那",
         "wer": 1,
@@ -1327,12 +1321,10 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 0.98,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.0 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "对",
+        "text": "啊",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1357,7 +1349,7 @@
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "哎",
+        "text": "嗯",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1379,12 +1371,10 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.06,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.1 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "像",
+        "text": "需",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1406,10 +1396,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.13,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.1 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "小",
         "wer": 0,
@@ -1427,16 +1415,16 @@
       "speaker": "ZH",
       "assetKey": "9895fa38ab026d92286b",
       "transcript": "小",
-      "durationSec": 0.731,
-      "bytes": 6104,
+      "durationSec": 0.784,
+      "bytes": 6522,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.37,
+      "charsPerSec": 1.28,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
-        "text": "有",
+        "text": "下😔",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1502,12 +1490,12 @@
       "speaker": "ZH",
       "assetKey": "89ca1fcd083f53bdc151",
       "transcript": "我喜欢喝果汁。",
-      "durationSec": 1.567,
-      "bytes": 12791,
+      "durationSec": 1.593,
+      "bytes": 13000,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.47,
+      "charsPerSec": 4.39,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1577,12 +1565,12 @@
       "speaker": "ZH",
       "assetKey": "0472db86ca92e1f1d248",
       "transcript": "我是女孩。",
-      "durationSec": 1.358,
-      "bytes": 11119,
+      "durationSec": 1.384,
+      "bytes": 11328,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 3.68,
+      "charsPerSec": 3.61,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1758,10 +1746,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 0.86,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (0.9 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "南海😔",
         "wer": 1,
@@ -1785,12 +1771,10 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.18,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.2 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
-        "text": "南海",
+        "text": "南害",
         "wer": 1,
         "metric": "cer",
         "model": "sensevoice:FunAudioLLM/SenseVoiceSmall",
@@ -1806,12 +1790,12 @@
       "speaker": "ZH",
       "assetKey": "e326689198424d4cb067",
       "transcript": "男孩",
-      "durationSec": 1.019,
-      "bytes": 8403,
+      "durationSec": 0.993,
+      "bytes": 8194,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.96,
+      "charsPerSec": 2.01,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1881,12 +1865,12 @@
       "speaker": "ZH",
       "assetKey": "be3c1646f50ecd922bdf",
       "transcript": "请给我一杯水。",
-      "durationSec": 1.593,
-      "bytes": 13000,
+      "durationSec": 1.646,
+      "bytes": 13418,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 4.39,
+      "charsPerSec": 4.25,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {
@@ -1912,10 +1896,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 0.87,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (0.9 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "粘条",
         "wer": 0.5,
@@ -1939,10 +1921,8 @@
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
       "charsPerSec": 1.18,
-      "technical": "fail",
-      "technicalIssues": [
-        "duration implausible for transcript (1.2 chars/sec)"
-      ],
+      "technical": "pass",
+      "technicalIssues": [],
       "asr": {
         "text": "面条",
         "wer": 0,
@@ -1960,12 +1940,12 @@
       "speaker": "ZH",
       "assetKey": "fec62f54e2553fb9843a",
       "transcript": "面条",
-      "durationSec": 1.123,
-      "bytes": 9239,
+      "durationSec": 1.176,
+      "bytes": 9657,
       "maxVolumeDb": null,
       "leadingSilenceSec": null,
       "trailingSilenceSec": null,
-      "charsPerSec": 1.78,
+      "charsPerSec": 1.7,
       "technical": "pass",
       "technicalIssues": [],
       "asr": {

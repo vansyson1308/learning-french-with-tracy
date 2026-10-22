@@ -440,3 +440,8 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/assessment/fr-vi-checkpoints.json
 - compile: changed  src/content/packs/fr-en.json
 - compile: changed  src/content/packs/fr-vi.json
+
+## 2026-10-22 — audio.yml zh canary (all) run 39707526129
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/zh/audio-canary.json

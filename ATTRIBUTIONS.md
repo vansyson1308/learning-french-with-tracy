@@ -187,11 +187,11 @@ Course audio for pt-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 
 - **License:** Apache-2.0
 - **Source:** https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-21
+- **Retrieved:** 2026-10-22
 
 Course audio for zh-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/zm_yunjian.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.1892 over 24 sampled strings, 21 technical failures). Model weights are never committed.
+> Selected by the audio canary ASR audit (mean WER/CER 0.1475 over 24 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## Lexique 4 (New, Pallier, Schalchli, Bourgin & Gimenes)
 
@@ -220,11 +220,11 @@ Course audio for ko-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453
 - **License:** MIT
 - **Source:** https://huggingface.co/myshell-ai/MeloTTS-Chinese/tree/af5d207a364ea4208c6f589c89f57f88414bdd16
 - **What:** neural TTS voice used at pipeline time to synthesize bundled course audio
-- **Retrieved:** 2026-10-21
+- **Retrieved:** 2026-10-22
 
 Course audio for zh-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the ZH model (MIT), pinned at repository revision af5d207a364ea4208c6f589c89f57f88414bdd16; the model card is preserved verbatim in content/audio/model-cards/.
 
-> Selected by the audio canary ASR audit (mean WER/CER 0.1119 over 24 sampled strings, 0 technical failures). Model weights are never committed.
+> Selected by the audio canary ASR audit (mean WER/CER 0.1328 over 24 sampled strings, 0 technical failures). Model weights are never committed.
 
 ## New General Service List 1.2 — frequency statistics
 
