@@ -1,5 +1,5 @@
 {
-  "contentHash": "fd4864239463ab05",
+  "contentHash": "331e4292c6bb6e25",
   "entries": [
     {
       "id": "es:w:hombre",
@@ -540,7 +540,11 @@
       },
       "confusables": [
         "es:w:juego"
-      ]
+      ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:zumo"
+      }
     },
     {
       "id": "es:w:sopa",
@@ -921,6 +925,10 @@
       "example": {
         "es": "Quiero un boleto y un mapa.",
         "en": "I want a ticket and a map"
+      },
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:billete"
       }
     },
     {
@@ -957,7 +965,7 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Quiero un boleto y un mapa.",
+        "es": "Quiero un billete y un mapa.",
         "en": "I want a ticket and a map"
       },
       "confusables": [
@@ -1442,8 +1450,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "¿Cuánto cuesta la tienda?",
-        "en": "How much does the store cost"
+        "es": "¿A cuánto están las naranjas?",
+        "en": "How much are the oranges?"
       },
       "confusables": [
         "es:w:cuando"
@@ -1911,6 +1919,10 @@
       "example": {
         "es": "Yo uso la computadora.",
         "en": "I use the computer"
+      },
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:ordenador"
       }
     },
     {
@@ -2371,8 +2383,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Creé en vos mismo.",
-        "en": "Believe in yourself."
+        "es": "¿Qué crees?",
+        "en": "What do you think?"
       },
       "confusables": [
         "es:w:crear"
@@ -2594,7 +2606,6 @@
       "gloss": "to marry, wed someone to",
       "pos": "verb",
       "topic": "ideas",
-      "band": "very-common",
       "pronunciation": {
         "value": "kaˈsaɾ",
         "notation": "ipa"
@@ -2689,7 +2700,6 @@
       "gloss": "to grab",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
       "pronunciation": {
         "value": "aˈsiɾ",
         "notation": "ipa"
@@ -2902,8 +2912,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Sólo Dios lo sabe.",
-        "en": "Only God knows."
+        "es": "Nosotros creemos en Dios.",
+        "en": "We believe in God."
       },
       "confusables": [
         "es:w:adios"
@@ -2972,7 +2982,7 @@
       "surface": "quedar",
       "lookupForm": "quedar",
       "lemma": "quedar",
-      "gloss": "to be",
+      "gloss": "to stay, to remain; to arrange to meet",
       "pos": "verb",
       "topic": "everyday",
       "band": "very-common",
@@ -3114,8 +3124,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "*ve un gato* ay, qué cosita tan linda!",
-        "en": "*sees a cat* aww, what a cutie!"
+        "es": "¿Qué es esta cosa?",
+        "en": "What is this thing?"
       },
       "confusables": [
         "es:w:casa",
@@ -3243,7 +3253,6 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "everyday",
-      "band": "very-common",
       "pronunciation": {
         "value": "ˈdonde",
         "notation": "ipa"
@@ -3404,7 +3413,6 @@
       "gloss": "great big",
       "pos": "adjective",
       "topic": "people",
-      "band": "very-common",
       "pronunciation": {
         "value": "seˈɲoɾ",
         "notation": "ipa"
@@ -3544,8 +3552,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Hay veinticuatro horas por el día.",
-        "en": "There are twenty-four hours in a day."
+        "es": "¿Qué hora es?",
+        "en": "What time is it?"
       }
     },
     {
@@ -3594,7 +3602,6 @@
       "gloss": "to sew",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
       "pronunciation": {
         "value": "koˈseɾ",
         "notation": "ipa"
@@ -3688,7 +3695,6 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "places",
-      "band": "very-common",
       "pronunciation": {
         "value": "ˈeɾa",
         "notation": "ipa"
@@ -3730,8 +3736,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Intento correr pero me canso mucho.",
-        "en": "I try to run, but I get very tired."
+        "es": "Vale la pena intentarlo.",
+        "en": "It's worth a shot."
       }
     },
     {
@@ -3917,8 +3923,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Usa la fuerza, Luke!",
-        "en": "Use the force, Luke!"
+        "es": "Uso el ordenador para trabajar.",
+        "en": "I use the computer for work."
       }
     },
     {
@@ -4077,7 +4083,7 @@
       "surface": "terminar",
       "lookupForm": "terminar",
       "lemma": "terminar",
-      "gloss": "to to",
+      "gloss": "to finish, to end",
       "pos": "verb",
       "topic": "technology",
       "band": "very-common",
@@ -4211,7 +4217,7 @@
       "surface": "la policía",
       "lookupForm": "policía",
       "lemma": "policía",
-      "gloss": "Civility, polity",
+      "gloss": "the police",
       "pos": "noun",
       "gender": "feminine",
       "topic": "people",
@@ -4308,7 +4314,6 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "leisure",
-      "band": "very-common",
       "pronunciation": {
         "value": "ˈson",
         "notation": "ipa"
@@ -4625,8 +4630,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Qué significa esa palabra?",
-        "en": "What does that word mean?"
+        "es": "¿Qué significa esta palabra?",
+        "en": "What does this word mean?"
       }
     },
     {
@@ -4786,7 +4791,6 @@
       "gloss": "to unite",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
       "pronunciation": {
         "value": "eɾmaˈnaɾ",
         "notation": "ipa"
@@ -4983,8 +4987,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Casi casi que me parece que ocurriese ayer mismo.",
-        "en": "It almost seems to me as if it had happened just yesterday."
+        "es": "Son casi las ocho.",
+        "en": "It's almost eight o'clock."
       }
     },
     {
@@ -5032,7 +5036,6 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "ˈeste",
         "notation": "ipa"
@@ -5142,7 +5145,6 @@
       "gloss": "to slurp, gulp",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "paˈpaɾ",
         "notation": "ipa"
@@ -5555,7 +5557,6 @@
       "gloss": "to save, to rescue",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "liˈbɾaɾ",
         "notation": "ipa"
@@ -5614,7 +5615,6 @@
       "gloss": "to devise, to come up with",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "ideˈaɾ",
         "notation": "ipa"
@@ -5650,7 +5650,6 @@
       "gloss": "to put in a series",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "seˈɾjaɾ",
         "notation": "ipa"
@@ -5779,7 +5778,11 @@
       "confusables": [
         "es:w:acto",
         "es:w:alto"
-      ]
+      ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:coche"
+      }
     },
     {
       "id": "es:w:guerra",
@@ -5832,8 +5835,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Cumpleaños Feliz! Cumpleaños Feliz! Te deseamos todos. Cumpleaños Feliz!",
-        "en": "Happy birthday (to you)! Happy birthday (to you)! We all wish you a happy birthday!"
+        "es": "Deja mucho que desear.",
+        "en": "It leaves a lot to be desired."
       }
     },
     {
@@ -6119,8 +6122,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "(Me) bajé del taxi.",
-        "en": "I got out of the taxi."
+        "es": "¡Baja la música!",
+        "en": "Turn down the music!"
       }
     },
     {
@@ -7130,12 +7133,11 @@
     },
     {
       "id": "es:w:rapido",
-      "surface": "el rápido",
+      "surface": "rápido",
       "lookupForm": "rápido",
       "lemma": "rápido",
-      "gloss": "the rapid",
-      "pos": "noun",
-      "gender": "masculine",
+      "gloss": "fast, quick",
+      "pos": "adjective",
       "topic": "everyday",
       "band": "common",
       "pronunciation": {
@@ -7177,7 +7179,6 @@
       "gloss": "to handcuff, manacle",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "espoˈsaɾ",
         "notation": "ipa"
@@ -7313,7 +7314,6 @@
       "gloss": "to prune",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "poˈdaɾ",
         "notation": "ipa"
@@ -7371,7 +7371,7 @@
       "surface": "la vuelta",
       "lookupForm": "vuelta",
       "lemma": "vuelta",
-      "gloss": "the turn",
+      "gloss": "the turn; the change (money)",
       "pos": "noun",
       "gender": "feminine",
       "topic": "leisure",
@@ -7381,8 +7381,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "¿Ida y vuelta? Sólo ida.",
-        "en": "Round trip? Only one-way."
+        "es": "Un billete de ida y vuelta, por favor.",
+        "en": "A return ticket, please."
       },
       "confusables": [
         "es:w:vuelto"
@@ -7698,7 +7698,6 @@
       "gloss": "to bleed",
       "pos": "verb",
       "topic": "school",
-      "band": "common",
       "pronunciation": {
         "value": "sanˈɡɾaɾ",
         "notation": "ipa"
@@ -7818,7 +7817,6 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "pɾiˈmeɾa",
         "notation": "ipa"
@@ -8067,8 +8065,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Hey, cálmate.",
-        "en": "Hey, relax."
+        "es": "Respira hondo para calmarte.",
+        "en": "Breathe deeply to calm down."
       }
     },
     {
@@ -8230,7 +8228,6 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "ˈnweba",
         "notation": "ipa"
@@ -8343,7 +8340,6 @@
       "gloss": "to pull out",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "meˈsaɾ",
         "notation": "ipa"
@@ -8528,7 +8524,6 @@
       "gloss": "to encase",
       "pos": "verb",
       "topic": "shopping",
-      "band": "common",
       "pronunciation": {
         "value": "adeˈmaɾ",
         "notation": "ipa"
@@ -8540,12 +8535,11 @@
     },
     {
       "id": "es:w:querido",
-      "surface": "el querido",
+      "surface": "querido",
       "lookupForm": "querido",
       "lemma": "querido",
-      "gloss": "the sweetheart",
-      "pos": "noun",
-      "gender": "masculine",
+      "gloss": "dear",
+      "pos": "adjective",
       "topic": "everyday",
       "band": "common",
       "pronunciation": {
@@ -9195,20 +9189,19 @@
     },
     {
       "id": "es:w:tipar",
-      "surface": "tipar",
-      "lookupForm": "tipar",
-      "lemma": "tipar",
-      "gloss": "to type",
+      "surface": "teclear",
+      "lookupForm": "teclear",
+      "lemma": "teclear",
+      "gloss": "to type (on a keyboard)",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
-        "value": "tiˈpaɾ",
+        "value": "tekleˈaɾ",
         "notation": "ipa"
       },
       "example": {
-        "es": "Tipea su nombre en la computadora.",
-        "en": "He types his name on the computer."
+        "es": "Teclea tu contraseña y pulsa «Entrar».",
+        "en": "Type your password and press “Enter”."
       }
     },
     {
@@ -9370,7 +9363,6 @@
       "gloss": "to arrive, turn up",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "peɾsoˈnaɾse",
         "notation": "ipa"
@@ -9577,12 +9569,11 @@
     },
     {
       "id": "es:w:ayer",
-      "surface": "el ayer",
+      "surface": "ayer",
       "lookupForm": "ayer",
       "lemma": "ayer",
-      "gloss": "the yesterday",
-      "pos": "noun",
-      "gender": "masculine",
+      "gloss": "yesterday",
+      "pos": "adverb",
       "topic": "time",
       "band": "common",
       "pronunciation": {
@@ -9603,7 +9594,6 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "ˈbwelto",
         "notation": "ipa"
@@ -9697,7 +9687,6 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "esˈkut͡ʃa",
         "notation": "ipa"
@@ -9712,7 +9701,7 @@
     },
     {
       "id": "es:w:habla",
-      "surface": "la habla",
+      "surface": "el habla",
       "lookupForm": "habla",
       "lemma": "habla",
       "gloss": "the speech",
@@ -9738,7 +9727,6 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "everyday",
-      "band": "common",
       "pronunciation": {
         "value": "ˈdixe",
         "notation": "ipa"
@@ -9862,6 +9850,12 @@
       },
       "confusables": [
         "es:w:noche"
+      ],
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el auto"
+        }
       ]
     },
     {
@@ -9891,7 +9885,6 @@
       "gloss": "to equip",
       "pos": "verb",
       "topic": "leisure",
-      "band": "common",
       "pronunciation": {
         "value": "ekiˈpaɾ",
         "notation": "ipa"
@@ -10034,7 +10027,6 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "nature",
-      "band": "common",
       "pronunciation": {
         "value": "ˈʝama",
         "notation": "ipa"
@@ -10129,7 +10121,6 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "nature",
-      "band": "common",
       "pronunciation": {
         "value": "ˈemo",
         "notation": "ipa"
@@ -10162,7 +10153,7 @@
       "surface": "triste",
       "lookupForm": "triste",
       "lemma": "triste",
-      "gloss": "As a temporary state",
+      "gloss": "sad",
       "pos": "adjective",
       "topic": "feelings",
       "band": "common",
@@ -10648,7 +10639,6 @@
       "gloss": "to water down, dilute",
       "pos": "verb",
       "topic": "nature",
-      "band": "common",
       "pronunciation": {
         "value": "aˈɡwaɾ",
         "notation": "ipa"
@@ -11071,8 +11061,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Están listos para ordenar?",
-        "en": "Are you ready to order?"
+        "es": "Tengo que ordenar mi habitación.",
+        "en": "I have to tidy my room."
       }
     },
     {
@@ -11127,8 +11117,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Libre crezca fecundo.",
-        "en": "Grow free and fecund."
+        "es": "¿Está libre esta mesa?",
+        "en": "Is this table free?"
       }
     },
     {
@@ -11177,7 +11167,6 @@
       "gloss": "to subtract, to reduce",
       "pos": "verb",
       "topic": "numbers",
-      "band": "common",
       "pronunciation": {
         "value": "resˈtaɾ",
         "notation": "ipa"
@@ -11237,7 +11226,6 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "body",
-      "band": "common",
       "pronunciation": {
         "value": "ˈtoma",
         "notation": "ipa"
@@ -11388,20 +11376,19 @@
     },
     {
       "id": "es:w:haya",
-      "surface": "la haya",
+      "surface": "el haya",
       "lookupForm": "haya",
       "lemma": "haya",
       "gloss": "the beech, beech tree",
       "pos": "noun",
       "gender": "feminine",
       "topic": "nature",
-      "band": "common",
       "pronunciation": {
         "value": "ˈaʝa",
         "notation": "ipa"
       },
       "example": {
-        "es": "La haya es un árbol de hoja grande.",
+        "es": "El haya es un árbol de hoja grande.",
         "en": "The beech is a tree with large leaves."
       }
     },
@@ -11420,8 +11407,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "¡Aguas! ¡Viene un camión!",
-        "en": "Look out! There's a truck coming!"
+        "es": "Casi me atropelló un camión.",
+        "en": "I almost got run over by a truck."
       },
       "confusables": [
         "es:w:camino",
@@ -11765,8 +11752,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "tweet fijado",
-        "en": "pinned tweet"
+        "es": "No me había fijado.",
+        "en": "I hadn't noticed."
       }
     },
     {
@@ -12207,7 +12194,7 @@
     },
     {
       "id": "es:w:area",
-      "surface": "la área",
+      "surface": "el área",
       "lookupForm": "área",
       "lemma": "área",
       "gloss": "the area",
@@ -12220,8 +12207,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "No es totalmente incorrecta. Es más una área gris moralmente.",
-        "en": "It's not flat-out wrong. It's more of a gray area morally."
+        "es": "El área de fumadores está fuera.",
+        "en": "The smoking area is outside."
       },
       "confusables": [
         "es:w:tarea"
@@ -12242,8 +12229,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "La tartifleta es un plato riquísimo hecho a base de papas y reblochón.",
-        "en": "Tartiflette is a delicious potatoe and reblochon cheese based dish."
+        "es": "El arroz es la base de la paella.",
+        "en": "Rice is the base of paella."
       }
     },
     {
@@ -12326,7 +12313,7 @@
     },
     {
       "id": "es:w:alma",
-      "surface": "la alma",
+      "surface": "el alma",
       "lookupForm": "alma",
       "lemma": "alma",
       "gloss": "the soul",
@@ -12681,8 +12668,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Mi madre sólo tenía dos hijos en esa época.",
-        "en": "My mother only had two children at the time."
+        "es": "En esa época todo el mundo me llamaba Tony.",
+        "en": "Everybody called me Tony in those days."
       }
     },
     {
@@ -12753,7 +12740,6 @@
       "gloss": "to rule",
       "pos": "verb",
       "topic": "travel",
-      "band": "less-common",
       "pronunciation": {
         "value": "reˈɡlaɾ",
         "notation": "ipa"
@@ -13069,12 +13055,11 @@
     },
     {
       "id": "es:w:casado",
-      "surface": "el casado",
+      "surface": "casado",
       "lookupForm": "casado",
       "lemma": "casado",
-      "gloss": "a married man",
-      "pos": "noun",
-      "gender": "masculine",
+      "gloss": "married",
+      "pos": "adjective",
       "topic": "people",
       "band": "less-common",
       "pronunciation": {
@@ -13119,8 +13104,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Este día es viernes.",
-        "en": "This day is Friday."
+        "es": "Propongo que salgamos el viernes.",
+        "en": "I suggest that we go out on Friday."
       }
     },
     {
@@ -13749,7 +13734,7 @@
       "surface": "la novia",
       "lookupForm": "novia",
       "lemma": "novia",
-      "gloss": "a type of sweet roll",
+      "gloss": "the girlfriend; the bride",
       "pos": "noun",
       "gender": "feminine",
       "topic": "people",
@@ -13793,7 +13778,6 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "places",
-      "band": "less-common",
       "pronunciation": {
         "value": "ˈbeɾa",
         "notation": "ipa"
@@ -14019,9 +14003,9 @@
     },
     {
       "id": "es:w:tv",
-      "surface": "la tv",
-      "lookupForm": "tv",
-      "lemma": "tv",
+      "surface": "la TV",
+      "lookupForm": "TV",
+      "lemma": "TV",
       "gloss": "TV",
       "pos": "noun",
       "gender": "feminine",
@@ -14139,12 +14123,11 @@
     },
     {
       "id": "es:w:gordo",
-      "surface": "el gordo",
+      "surface": "gordo",
       "lookupForm": "gordo",
       "lemma": "gordo",
-      "gloss": "the fat man",
-      "pos": "noun",
-      "gender": "masculine",
+      "gloss": "fat",
+      "pos": "adjective",
       "topic": "people",
       "band": "less-common",
       "pronunciation": {
@@ -14312,21 +14295,20 @@
     },
     {
       "id": "es:w:friend",
-      "surface": "el friend",
-      "lookupForm": "friend",
-      "lemma": "friend",
-      "gloss": "the cam",
+      "surface": "la amistad",
+      "lookupForm": "amistad",
+      "lemma": "amistad",
+      "gloss": "friendship",
       "pos": "noun",
-      "gender": "masculine",
+      "gender": "feminine",
       "topic": "leisure",
-      "band": "less-common",
       "pronunciation": {
-        "value": "ˈfɾend",
+        "value": "amisˈtad",
         "notation": "ipa"
       },
       "example": {
-        "es": "Él dice «friend» en lugar de «amigo».",
-        "en": "He says “friend” instead of “amigo”."
+        "es": "La amistad es muy importante para mí.",
+        "en": "Friendship is very important to me."
       }
     },
     {
@@ -14411,7 +14393,6 @@
       "gloss": "to impound",
       "pos": "verb",
       "topic": "ideas",
-      "band": "less-common",
       "pronunciation": {
         "value": "embaɾˈɡaɾ",
         "notation": "ipa"
@@ -14943,7 +14924,7 @@
       "surface": "la tía",
       "lookupForm": "tía",
       "lemma": "tía",
-      "gloss": "the girl, woman",
+      "gloss": "the aunt",
       "pos": "noun",
       "gender": "feminine",
       "topic": "family",
@@ -14981,7 +14962,7 @@
       "surface": "copar",
       "lookupForm": "copar",
       "lemma": "copar",
-      "gloss": "to make a clean sweep",
+      "gloss": "to fill up, to take all of",
       "pos": "verb",
       "topic": "leisure",
       "band": "less-common",
@@ -14990,8 +14971,8 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Me compré el Silent Hill 2 y me re copó.",
-        "en": "I got Silent Hill 2 and I really liked it."
+        "es": "Los turistas copan los hoteles en agosto.",
+        "en": "Tourists fill up the hotels in August."
       },
       "confusables": [
         "es:w:colar"
@@ -15154,7 +15135,7 @@
       "surface": "el billete",
       "lookupForm": "billete",
       "lemma": "billete",
-      "gloss": "the banknote, bill",
+      "gloss": "the ticket (also: banknote)",
       "pos": "noun",
       "gender": "masculine",
       "topic": "shopping",
@@ -15166,7 +15147,13 @@
       "example": {
         "es": "¿Ya reservaste los billetes del tren?",
         "en": "Have you already booked the train tickets?"
-      }
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el boleto"
+        }
+      ]
     },
     {
       "id": "es:w:fabrica",
@@ -15207,12 +15194,11 @@
     },
     {
       "id": "es:w:tuya",
-      "surface": "la tuya",
+      "surface": "tuya",
       "lookupForm": "tuya",
       "lemma": "tuya",
-      "gloss": "the thuja",
-      "pos": "noun",
-      "gender": "feminine",
+      "gloss": "yours (feminine)",
+      "pos": "pronoun",
       "topic": "places",
       "band": "less-common",
       "pronunciation": {
@@ -16834,6 +16820,70 @@
       "example": {
         "es": "El tren sale del andén dos.",
         "en": "The train leaves from platform two."
+      }
+    },
+    {
+      "id": "es:w:zumo",
+      "surface": "el zumo",
+      "lookupForm": "zumo",
+      "lemma": "zumo",
+      "gloss": "juice",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "food",
+      "example": {
+        "es": "Un zumo de naranja, por favor.",
+        "en": "An orange juice, please."
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el jugo"
+        }
+      ]
+    },
+    {
+      "id": "es:w:ordenador",
+      "surface": "el ordenador",
+      "lookupForm": "ordenador",
+      "lemma": "ordenador",
+      "gloss": "computer",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "school",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "oɾdenaˈdoɾ",
+        "notation": "ipa"
+      },
+      "example": {
+        "es": "Trabajo con el ordenador.",
+        "en": "I work on the computer."
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "la computadora"
+        }
+      ]
+    },
+    {
+      "id": "es:w:movil",
+      "surface": "el móvil",
+      "lookupForm": "móvil",
+      "lemma": "móvil",
+      "gloss": "mobile phone",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈmobil",
+        "notation": "ipa"
+      },
+      "example": {
+        "es": "Mi móvil está en la mesa.",
+        "en": "My mobile is on the table."
       }
     }
   ]

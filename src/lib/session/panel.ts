@@ -10,6 +10,7 @@
  * panel is shown. A fake panel is worse than no panel.
  */
 
+import { languageRulesForCourse } from "../languages";
 import { behaviorFor } from "../exercise-registry";
 import { msg, type Message } from "../i18n/message";
 import { isCuratedItemId } from "../learning/ids";
@@ -41,48 +42,32 @@ export function teachMetaFor(courseId: string, step: SessionStep): LexemeMeta | 
   return lexemeMetaFor(courseId, step.itemId);
 }
 
-/** Conjugation cells the panel note can name (Phase 5B §67; the words live in the catalogue's `panel.conjugationNote` select). */
-const CELL_SELECTORS: Record<string, string> = {
-  "pre:1s": "pre1s",
-  "pre:2s": "pre2s",
-  "pre:3s": "pre3s",
-  "pre:1p": "pre1p",
-  "pre:2p": "pre2p",
-  "pre:3p": "pre3p",
-  inf: "inf",
-  participle: "participle",
-};
-
-const ARTICLE_GENDER: Record<string, string> = {
-  le: "masculine",
-  la: "feminine",
-  un: "masculine",
-  une: "feminine",
-};
-
 /**
  * Phase 5B single-note addition: ONE derived line for grammar exercises,
  * built purely from the exercise's own authored fields (never parsed from
  * rendered text). Null for every other exercise type — the lexical panel
  * stays exactly as it was.
  */
-export function grammarNoteFor(step: SessionStep): Message | null {
+export function grammarNoteFor(step: SessionStep, courseId: string): Message | null {
   if (step.type !== "exercise") return null;
   const exercise = step.exercise;
+  const labels = languageRulesForCourse(courseId).grammarLabels;
   if (exercise.type === "articleSelect") {
     const article = exercise.articles[exercise.correct];
     if (article === undefined) return null;
-    const gender = ARTICLE_GENDER[article] ?? "unknown";
+    const gender = labels?.articleGenders[article] ?? "unknown";
     return msg("panel.articleNote", { noun: exercise.noun, article, gender });
   }
   if (exercise.type === "conjugationCloze") {
-    const cell = CELL_SELECTORS[exercise.cell];
-    if (cell === undefined) return null;
+    const person = labels?.persons[exercise.cell as keyof NonNullable<typeof labels>["persons"]];
+    const cell = person !== undefined ? "person" : exercise.cell === "inf" || exercise.cell === "participle" ? exercise.cell : "other";
     return msg("panel.conjugationNote", {
       answer: exercise.answer,
       cell,
+      person: person ?? "",
       verb: exercise.verb,
-      present: exercise.cell.startsWith("pre:") ? "yes" : "no",
+      present: exercise.cell.startsWith("pre:") && labels !== undefined ? "yes" : "no",
+      tense: labels?.presentTense ?? "",
     });
   }
   return null;

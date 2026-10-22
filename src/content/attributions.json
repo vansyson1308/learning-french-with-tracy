@@ -498,6 +498,30 @@
         "assets/audio/ja/",
         "content/audio/model-cards/ja/kokoro-jf_alpha.card.txt"
       ]
+    },
+    {
+      "id": "melotts-ko",
+      "name": "MeloTTS KR model (melotts-ko)",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "MIT",
+      "url": "https://huggingface.co/myshell-ai/MeloTTS-Korean/tree/0207e5adfc90129a51b6b03d89be6d84360ed323",
+      "attribution": "Course audio for ko-en synthesized with MeloTTS (MyShell.ai, MIT; commit 2091453) using the KR model (MIT), pinned at repository revision 0207e5adfc90129a51b6b03d89be6d84360ed323; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/ko/",
+        "content/audio/model-cards/ko/melotts-ko.card.txt"
+      ]
+    },
+    {
+      "id": "kokoro-voice-jm_kumo",
+      "name": "Kokoro-82M voice kokoro-jm_kumo",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jm_kumo.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "covers": [
+        "assets/audio/ja/",
+        "content/audio/model-cards/ja/kokoro-jm_kumo.card.txt"
+      ]
     }
   ]
 }

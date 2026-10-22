@@ -6,6 +6,7 @@
  * intentionally blessing a new one with a recorded reason, never in CI.
  */
 import { baselineGroupOf, buildAudioBaseline, checkAudio, writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
+import { audioSizeErrors, writeAudioSizeReport } from "./lib/audio-size";
 
 if (process.argv.includes("--write-baseline")) {
   // P3b: one baseline file per language group under content/audio/baseline/
@@ -22,11 +23,14 @@ if (process.argv.includes("--write-baseline")) {
     writeSfxBaseline();
   }
   writeManifestBaseline();
+  writeAudioSizeReport();
   console.log(`baseline written: ${baseline.fileCount} files, ${(baseline.totalBytes / 1e6).toFixed(1)} MB (${lang ?? "every language"} + sfx + manifest)`);
   process.exit(0);
 }
 
-const { errors, checkedFiles } = checkAudio();
+const { errors: baselineErrors, checkedFiles } = checkAudio();
+// P3f: per-language size budget + the size report.
+const errors = [...baselineErrors, ...audioSizeErrors()];
 for (const e of errors) console.error(`ERROR ${e}`);
 if (errors.length > 0) {
   console.error(`\naudio check failed with ${errors.length} error(s)`);

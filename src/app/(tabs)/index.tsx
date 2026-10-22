@@ -116,6 +116,12 @@ export default function LearnScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.path}>
+        {courseProfile(activeCourseId).beta ? (
+          <View style={styles.betaBanner} testID="beta-banner" accessibilityRole="text">
+            <Ionicons name="construct-outline" size={18} color={colors.orange} />
+            <Text style={styles.betaText}>{t("learn.betaBanner")}</Text>
+          </View>
+        ) : null}
         {showPlacementEntry ? (
           <Pressable
             style={styles.placementCard}
@@ -420,6 +426,20 @@ const useStyles = makeThemedStyles((colors) => StyleSheet.create({
   },
   placementTitle: { fontSize: 15, fontWeight: "800", color: colors.text },
   placementSubtitle: { fontSize: 13, color: colors.textMuted },
+  betaBanner: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    borderRadius: radius.md,
+    borderWidth: 2,
+    borderColor: colors.orange,
+    backgroundColor: colors.surface,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginBottom: 10,
+    alignSelf: "stretch",
+  },
+  betaText: { flex: 1, fontSize: 13, fontWeight: "700", color: colors.text },
   startBubble: {
     backgroundColor: colors.surface,
     borderWidth: 2,

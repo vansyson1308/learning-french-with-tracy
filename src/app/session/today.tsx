@@ -16,6 +16,7 @@ import { useCourseContent } from "@/lib/content";
 import { dueReviewQueue } from "@/lib/learning/engine";
 import { listenWordClipIndex } from "@/lib/reception/content";
 import { speakExerciseIndex } from "@/lib/speech/content";
+import { dailyWordCandidates, syllabusWords } from "@/lib/learning/daily-words";
 import {
   composeTodayFromSnapshot,
   TODAY_PRESETS,
@@ -60,6 +61,16 @@ export default function TodaySessionRoute() {
       // "Can't speak now" (P8 §17): speak=0 composes a fully silent session;
       // the due speak cards stay honestly in the backlog.
       speakExercises: speakParam === "0" ? undefined : speakExerciseIndex(state.activeCourseId),
+      // P3e daily new words: unlocked syllabus lexemes, the learner's number a day.
+      dailyWords: dailyWordCandidates({
+        courseId: state.activeCourseId,
+        pack,
+        completedLessons: course?.completedLessons ?? {},
+        placementFloor: assessmentFor(state, state.activeCourseId).placementFloor,
+        cards: course?.cards,
+      }),
+      dailyNewWords: state.dailyNewWords,
+      lexiconWords: syllabusWords(state.activeCourseId),
     });
     return {
       plan,

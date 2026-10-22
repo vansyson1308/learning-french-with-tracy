@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test } from "bun:test";
 
 import { dayString } from "../dates";
-import { __setMigrationFailureForTests } from "../persistence/migrations";
+import { __setMigrationFailureForTests, PERSIST_VERSION } from "../persistence/migrations";
 import {
   dailyQuests,
   lastSevenDays,
@@ -38,7 +38,7 @@ beforeEach(() => {
 });
 
 describe("persist wiring: rehydrate runs the full migration chain", () => {
-  test("v0 fixture rehydrates at the latest version: French on FSRS cards, next write stores version 5 without them", async () => {
+  test("v0 fixture rehydrates at the latest version: French on FSRS cards, next write stores the latest version without them", async () => {
     await rehydrateFrom(richFixture);
     await whenLearnerReady();
     const s = useProgress.getState();
@@ -57,7 +57,7 @@ describe("persist wiring: rehydrate runs the full migration chain", () => {
     const raw = memoryStorage.get(PROGRESS_STORAGE_KEY);
     expect(raw).toBeTruthy();
     const stored = JSON.parse(raw as string);
-    expect(stored.version).toBe(5);
+    expect(stored.version).toBe(PERSIST_VERSION);
     expect(stored.state.themePreference).toBe("light");
     expect(stored.state.courses["fr-en"].completedLessons["srs"]).toBeUndefined();
     // P1d: cards never enter the blob again — the learner store holds them.

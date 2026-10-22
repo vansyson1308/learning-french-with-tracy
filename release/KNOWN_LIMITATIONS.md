@@ -60,36 +60,68 @@ itself.
   compiles with `allowUnreviewed: true` in `content/courses/es-vi.profile.json`:
   its Spanish and Vietnamese text was authored with the P3c toolkit and has
   not yet been checked by a native Spanish teacher or a native Vietnamese
-  reviewer. `content/es/REVIEW-CHECKLIST.md` is the reviewer's list. The
+  reviewer. Since P3e the review is tiered: the owner signs
+  `content/es/REVIEW-TIER1-vi.md` (the Vietnamese that teaches or judges) and a
+  hired Spanish teacher checks `content/es/REVIEW-TIER1-es.md`; everything else
+  is covered by the validators, the LanguageTool gate (CI job `languagetool`,
+  allow-list with reasons in `content/es/languagetool-allow.json`) and the
+  back-translation pass (`content/es/_drafts/BACKTRANSLATION.md`). Until the
+  review is recorded the Learn tab labels the course "Bản beta — nội dung
+  đang được duyệt" (`betaUntilReviewed`). The
   older `es-en` course is marked `"role": "standalone"`: it keeps its
   40 legacy lessons and its English dictionary but none of the new layers,
   and Spanish level claims and reports count only against `es-vi`.
-- **DELE A1 practice (`es-vi`) reproduces the public format only.** The
-  section, task, timing and score-group figures in `content/es/exam/dele-a1.json`
-  come from the public description summarised in the es-vi brief; the
-  official Instituto Cervantes guide could not be re-checked (the site was in
-  maintenance), so `formatSource.checkedAgainstOfficialGuide` is `false` and
-  the app says so. Matching tasks are presented as one three-option choice per
-  item. Writing and speaking are graded by the app's deterministic rubrics, so
+- **DELE A1 practice (`es-vi`) reproduces the official 2020 format with original items.** Since
+  P3e the track follows the 2020 model (four parts of 45 + 25 + 25 + 10 minutes,
+  4 + 4 + 2 + 3 tasks with their formats including the lettered matching pools,
+  two score groups — reading + writing and listening + speaking — each needing
+  30 of 50 points; `trackVersion` 2), as described by the coordinator's spec
+  and the references recorded in `content/es/exam/dele-a1.json`. The
+  structure, durations, item counts, formats and the 30/50-per-group rule
+  were checked against the two official documents (Guía de examen DELE A1
+  v2020; Especificaciones DELE A1 2020) by the coordinator on the owner's
+  behalf on 2026-10-22 (`checkedAgainstOfficialGuide: true`, `checkedBy`,
+  `checkedAt`); each listening recording plays twice. Every item is
+  original; the app is not affiliated with Instituto Cervantes. Writing and speaking are graded by the app's deterministic rubrics, so
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).
-- **Spanish audio is pending the generate run.** The 255 Spanish clips (lessons,
-  checkpoints, exam, conversation partners) have scripts but no bundled audio
-  until the P3b audio workflow generates them; listening items offer the
-  audio-unavailable skip meanwhile, and the course pack uses device TTS for
-  pack words (`audio.policy: device-tts`, reason recorded).
+- **Spanish audio is bundled at 32 kbps (P3f, run 39761607493).** `es-vi` and
+  `es-en` lesson audio, the 613 syllabus words and the 221 listening clips
+  (Kokoro `ef_dora` / `em_alex`) total 7.4 MB; dictionary entries outside the
+  syllabus and example sentences speak through the device voice. Five
+  sentence clips are flagged for listening review in
+  `content/reports/es/audio-quality.json`; playback of the 32 kbps files on a
+  phone is part of the RC4 checklist (not yet observed).
 - **Audio for the non-French languages is produced by dispatched runs
   (P3b).** The multi-engine pipeline, the licence gate, the per-language
   canaries and the voice casts are in the repository; the canary runs for
   es/de/it/pt/ja/zh/ko/en/vi and the Spanish pack + lexicon generation run on
   GitHub-hosted runners after the merge and commit their results
   (`content/audio/voice-casts.json`, `content/reports/<lang>/audio-*.json`).
+  Since P3e Korean is scored by character error rate (recognisers space
+  Hangul arbitrarily) and one-word clips by an absolute duration band: ko now
+  has one clean voice (MeloTTS-KR, mean CER 0.14), ja and zh have a verified
+  second speaker (Kokoro `jm_kumo`, `zm_yunjian`), vi keeps one voice.
   Until a language's cast is `selected`, its inherited course keeps
   `audio.policy = device-tts`; a language with no clean voice is recorded as
   `no-clean-voice`, never voiced by a guessed model. Spanish pack audio is
   regenerated under pipelineVersion 2 (loudness-normalised, the canary's A
   voice) — its bytes change; French audio stays byte-identical.
+- **Spanish variety (P3e).** `es-vi` models Peninsular Spanish
+  (`content/es/VARIETY.md`); Latin-American forms (*boleto, jugo, carro,
+  computadora, ustedes* for *vosotros*) are accepted in answers and shown as a
+  note on the teach card, never taught as the model. Some recognition-only
+  dictionary examples keep their Latin-American wording.
+- **Daily new words (P3e).** Today adds up to N new syllabus words a day
+  (Profile → Learning, 0–15, default 5). Spanish draws on a 613-lexeme A1
+  syllabus; the French lexicon has 126 lexemes, so French daily words run out
+  sooner (French content unchanged).
+- **Lexicon frequency homographs (P3e).** The ETL splits a word form's count
+  between every lemma sharing the form, which inflated rare verbs (*asir* from
+  *así*, *casar* from *casa*). The 35 affected Spanish lexemes lost their
+  frequency and left the syllabus (`content/es/_drafts/BACKTRANSLATION.md` §4);
+  the ETL rule itself is unchanged, so new pools (de/it/pt) need the same check.
 - **Spanish lexicon (P3a) is a derived draft.** `es-en` now ships an
   800-lexeme Spanish lexicon derived from Wiktionary (kaikki.org),
   FrequencyWords, wordfreq and Tatoeba (`content/es/lexicon/ACQUISITION.md`):

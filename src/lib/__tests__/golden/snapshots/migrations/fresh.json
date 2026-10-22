@@ -23,10 +23,11 @@
         "courses",
         "activeDays",
         "uiLanguage",
-        "assessmentByTarget"
+        "assessmentByTarget",
+        "dailyNewWords"
       ]
     },
-    "persistVersion": 5
+    "persistVersion": 6
   },
   "fromVersion": 0,
   "invariants": [],
@@ -36,6 +37,7 @@
     "assessmentByTarget": {},
     "courses": {},
     "dailyGoal": 20,
+    "dailyNewWords": 5,
     "dailyXp": 0,
     "dailyXpDay": null,
     "lastActiveDay": null,
@@ -57,6 +59,7 @@
       "assessmentByTarget": {},
       "courses": {},
       "dailyGoal": 20,
+      "dailyNewWords": 5,
       "dailyXp": 0,
       "dailyXpDay": null,
       "lastActiveDay": null,
@@ -66,5 +69,5 @@
       "uiLanguage": "system"
     }
   },
-  "toVersion": 5
+  "toVersion": 6
 }

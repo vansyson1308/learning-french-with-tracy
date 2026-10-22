@@ -462,7 +462,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "El boleto cuesta dieciséis euros."
+          "text": "El billete cuesta dieciséis euros."
         }
       ],
       "objectiveRefs": [
@@ -543,7 +543,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Buenos días, un café y un jugo de naranja, por favor."
+          "text": "Buenos días, un café y un zumo de naranja, por favor."
         },
         {
           "speaker": "A",
@@ -576,7 +576,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Un boleto para Madrid, por favor."
+          "text": "Un billete para Madrid, por favor."
         },
         {
           "speaker": "A",
@@ -3743,7 +3743,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Un boleto para Sevilla, muy bien. Son veinte euros."
+          "text": "Un billete para Sevilla, muy bien. Son veinte euros."
         }
       ],
       "objectiveRefs": [
@@ -3789,7 +3789,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "El tren sale a las diez, andén dos. ¡Aquí tiene su boleto!"
+          "text": "El tren sale a las diez, andén dos. ¡Aquí tiene su billete!"
         }
       ],
       "objectiveRefs": [
@@ -3812,7 +3812,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Tome, su boleto."
+          "text": "Tome, su billete."
         }
       ],
       "objectiveRefs": [
@@ -3835,7 +3835,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Andén dos. El tren sale a las diez. ¡Aquí tiene su boleto!"
+          "text": "Andén dos. El tren sale a las diez. ¡Aquí tiene su billete!"
         }
       ],
       "objectiveRefs": [
@@ -4341,103 +4341,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Cuánto cuesta el pan?"
-        },
-        {
-          "speaker": "A",
-          "text": "Un euro con cincuenta."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_dialogues"
-      ],
-      "lexemeRefs": [
-        "es:w:cuanto",
-        "es:w:pan",
-        "es:w:euro",
-        "es:w:cincuenta"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l1_02",
-      "kind": "dialogue",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Perdón, ¿dónde está el baño?"
-        },
-        {
-          "speaker": "A",
-          "text": "Al fondo, a la derecha."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_dialogues"
-      ],
-      "lexemeRefs": [
-        "es:w:perdon",
-        "es:w:donde",
-        "es:w:bano",
-        "es:w:derecha"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l1_03",
-      "kind": "dialogue",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿A qué hora sale el autobús?"
-        },
-        {
-          "speaker": "A",
-          "text": "A las cuatro y media."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_dialogues"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:hora",
-        "es:w:autobus",
-        "es:w:cuatro"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l1_04",
-      "kind": "dialogue",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Qué quieres beber?"
+          "text": "Perdone, ¿qué desea tomar?"
         },
         {
           "speaker": "A",
@@ -4449,7 +4353,7 @@
       ],
       "lexemeRefs": [
         "es:w:que",
-        "es:w:beber",
+        "es:w:tomar",
         "es:w:favor"
       ],
       "sourceRef": "original-project",
@@ -4460,28 +4364,28 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
-      "id": "es.clip.dele_a_l1_05",
+      "id": "es.clip.dele_a_l1_02",
       "kind": "dialogue",
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Cuándo es tu cumpleaños?"
+          "text": "¿Cómo vas al trabajo?"
         },
         {
           "speaker": "A",
-          "text": "El doce de mayo."
+          "text": "Normalmente voy en bicicleta."
         }
       ],
       "objectiveRefs": [
         "es.obj.listening.short_dialogues"
       ],
       "lexemeRefs": [
-        "es:w:cuando",
-        "es:w:cumpleanos",
-        "es:w:doce"
+        "es:w:como",
+        "es:w:trabajo"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -4491,7 +4395,105 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_a_l1_03",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿Qué tiempo hace hoy en Madrid?"
+        },
+        {
+          "speaker": "A",
+          "text": "Llueve mucho, lleva paraguas."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:que",
+        "es:w:tiempo",
+        "es:w:hoy",
+        "es:w:mucho"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_a_l1_04",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿Qué compras para la fiesta?"
+        },
+        {
+          "speaker": "A",
+          "text": "Una tarta de chocolate."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:que",
+        "es:w:fiesta"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_a_l1_05",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿Dónde está mi móvil?"
+        },
+        {
+          "speaker": "A",
+          "text": "Está encima de la mesa, al lado del libro."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:donde",
+        "es:w:mesa",
+        "es:w:lado",
+        "es:w:libro"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
     },
     {
       "id": "es.clip.dele_a_l2_01",
@@ -4499,7 +4501,37 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Atención: el tren para Bilbao sale del andén seis."
+          "text": "Información: el museo cierra hoy a las dos de la tarde."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "es:w:informacion",
+        "es:w:museo",
+        "es:w:hoy",
+        "es:w:dos",
+        "es:w:tarde"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_a_l2_02",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "Atención: el tren a Bilbao sale del andén seis."
         }
       ],
       "objectiveRefs": [
@@ -4519,24 +4551,23 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
-      "id": "es.clip.dele_a_l2_02",
+      "id": "es.clip.dele_a_l2_03",
       "kind": "announcement",
       "segments": [
         {
           "speaker": "A",
-          "text": "La tienda cierra en diez minutos. Gracias por su visita."
+          "text": "La piscina está cerrada hoy por limpieza."
         }
       ],
       "objectiveRefs": [
         "es.obj.listening.announcements"
       ],
       "lexemeRefs": [
-        "es:w:tienda",
-        "es:w:diez",
-        "es:w:gracias"
+        "es:w:hoy"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -4546,42 +4577,16 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l2_03",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Hola, soy Pedro. Llego tarde, a las nueve. Lo siento."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.announcements"
-      ],
-      "lexemeRefs": [
-        "es:w:hola",
-        "es:w:tarde",
-        "es:w:nueve"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
       },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
+      "use": "exam"
     },
     {
       "id": "es.clip.dele_a_l2_04",
-      "kind": "message",
+      "kind": "announcement",
       "segments": [
         {
           "speaker": "A",
-          "text": "Hoy en Madrid hace sol y mucho calor."
+          "text": "Hoy en la tienda de ropa todos los abrigos están más baratos."
         }
       ],
       "objectiveRefs": [
@@ -4589,9 +4594,8 @@
       ],
       "lexemeRefs": [
         "es:w:hoy",
-        "es:w:sol",
-        "es:w:mucho",
-        "es:w:calor"
+        "es:w:tienda",
+        "es:w:ropa"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -4601,7 +4605,8 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
       "id": "es.clip.dele_a_l2_05",
@@ -4609,15 +4614,15 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Señores pasajeros, el vuelo a Lima sale por la puerta doce."
+          "text": "Señores pasajeros, el avión para Lima va a despegar en diez minutos."
         }
       ],
       "objectiveRefs": [
         "es.obj.listening.announcements"
       ],
       "lexemeRefs": [
-        "es:w:puerta",
-        "es:w:doce"
+        "es:w:avion",
+        "es:w:diez"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -4627,22 +4632,231 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
-      "id": "es.clip.dele_a_l3_01",
-      "kind": "message",
+      "id": "es.clip.dele_a_l3_monologo",
+      "kind": "factual",
       "segments": [
         {
           "speaker": "A",
-          "text": "Un café con leche y un cruasán, por favor."
+          "text": "Hola, me llamo Elena y vivo en Madrid. Me levanto a las siete y desayuno en casa. Trabajo en una farmacia cerca de mi casa, así que voy andando. A mediodía como con mis compañeras en un bar pequeño. Por la tarde, dos días a la semana, estudio inglés. Los viernes por la noche ceno con mis amigos en un restaurante italiano. Los sábados limpio la casa y hago la compra. Los domingos visito a mis padres en Toledo y vuelvo por la noche en tren."
         }
       ],
       "objectiveRefs": [
         "es.obj.listening.short_info"
       ],
       "lexemeRefs": [
-        "es:w:cafe",
+        "es:w:hola",
+        "es:w:siete",
+        "es:w:casa",
+        "es:w:trabajo",
+        "es:w:farmacia",
+        "es:w:cerca"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_a_l4_conversacion",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "Hola, Carlos. ¿Vienes el sábado a la fiesta de cumpleaños de Ana?"
+        },
+        {
+          "speaker": "B",
+          "text": "Claro. ¿A qué hora es?"
+        },
+        {
+          "speaker": "A",
+          "text": "A las ocho de la tarde, en su casa. Yo llevo la tarta y tú puedes llevar las bebidas, ¿vale?"
+        },
+        {
+          "speaker": "B",
+          "text": "Vale. ¿Llevo zumo y agua?"
+        },
+        {
+          "speaker": "A",
+          "text": "Sí, y también un poco de fruta. Ana vive ahora en la calle Mayor, número doce, en el tercer piso."
+        },
+        {
+          "speaker": "B",
+          "text": "¿Cerca de la estación?"
+        },
+        {
+          "speaker": "A",
+          "text": "Sí, al lado. Si vienes en tren, la casa está a cinco minutos andando. Yo voy en coche con mi hermana Lucía."
+        },
+        {
+          "speaker": "B",
+          "text": "Perfecto. ¿Qué regalo compramos?"
+        },
+        {
+          "speaker": "A",
+          "text": "Un libro de cocina, porque le gusta mucho cocinar. Lo compro yo mañana en la librería del centro y luego pagamos entre los dos, ¿te parece bien?"
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, muy bien. Es un buen regalo. ¿Viene también su hermano Pedro a la fiesta?"
+        },
+        {
+          "speaker": "A",
+          "text": "No, Pedro está en Londres por trabajo, pero vienen sus amigas de la universidad y sus vecinos."
+        },
+        {
+          "speaker": "B",
+          "text": "Perfecto. Entonces nos vemos el sábado a las ocho en casa de Ana. ¡Hasta luego, Marta!"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:hola",
+        "es:w:sabado",
+        "es:w:fiesta",
+        "es:w:cumpleanos",
+        "es:w:que",
+        "es:w:hora"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 6,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_b_l1_01",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿Qué vas a comer?"
+        },
+        {
+          "speaker": "A",
+          "text": "Pescado con patatas."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:que",
+        "es:w:comer"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_b_l1_02",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿A qué hora empieza la película?"
+        },
+        {
+          "speaker": "A",
+          "text": "A las nueve de la noche."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:que",
+        "es:w:hora",
+        "es:w:pelicula",
+        "es:w:nueve",
+        "es:w:noche"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_b_l1_03",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿Qué haces los domingos?"
+        },
+        {
+          "speaker": "A",
+          "text": "Juego al tenis con mi hermano."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:que",
+        "es:w:juego",
+        "es:w:hermano"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_b_l1_04",
+      "kind": "dialogue",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿Qué necesitas de la tienda?"
+        },
+        {
+          "speaker": "A",
+          "text": "Leche y huevos, por favor."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "es:w:que",
+        "es:w:tienda",
         "es:w:leche",
         "es:w:favor"
       ],
@@ -4654,506 +4868,8 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l3_02",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Necesito algo para el dolor de cabeza."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:dolor",
-        "es:w:cabeza"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
       },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l3_03",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Dos entradas para la película de las ocho."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:dos",
-        "es:w:pelicula",
-        "es:w:ocho"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l3_04",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Un kilo de tomates y dos de naranjas."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:dos"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l3_05",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Tengo una reserva para dos noches, a nombre de García."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:dos",
-        "es:w:nombre"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l3_06",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Quiero devolver estos libros."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:quiero",
-        "es:w:devolver"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l3_07",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Un billete de ida y vuelta para Granada."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:billete",
-        "es:w:vuelta"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l3_08",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Un poco más corto, por favor. Solo el pelo de atrás."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:favor",
-        "es:w:solo",
-        "es:w:pelo"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l4_01",
-      "kind": "factual",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "El museo abre a las diez y cierra a las seis."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:museo",
-        "es:w:diez",
-        "es:w:seis"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l4_02",
-      "kind": "factual",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "La entrada cuesta quince euros."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:entrada",
-        "es:w:quince"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l4_03",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Vivo en la calle Sol, número veinte."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:calle",
-        "es:w:sol",
-        "es:w:numero",
-        "es:w:veinte"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l4_04",
-      "kind": "factual",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "La clase empieza a las nueve menos cuarto."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:clase",
-        "es:w:nueve"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l4_05",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Tengo dos hermanos y una hermana."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:dos",
-        "es:w:hermanos",
-        "es:w:hermana"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l4_06",
-      "kind": "factual",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "El concierto es el viernes por la noche."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:viernes",
-        "es:w:noche"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_a_l4_07",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Son cuatro euros con veinte, por favor."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:son",
-        "es:w:cuatro",
-        "es:w:veinte",
-        "es:w:favor"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l1_01",
-      "kind": "dialogue",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Cuánto es todo?"
-        },
-        {
-          "speaker": "A",
-          "text": "Son ocho euros."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_dialogues"
-      ],
-      "lexemeRefs": [
-        "es:w:cuanto",
-        "es:w:son",
-        "es:w:ocho"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l1_02",
-      "kind": "dialogue",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Dónde está la estación?"
-        },
-        {
-          "speaker": "A",
-          "text": "Todo recto y después a la izquierda."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_dialogues"
-      ],
-      "lexemeRefs": [
-        "es:w:donde",
-        "es:w:estacion",
-        "es:w:recto",
-        "es:w:despues",
-        "es:w:izquierda"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l1_03",
-      "kind": "dialogue",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿A qué hora abre el banco?"
-        },
-        {
-          "speaker": "A",
-          "text": "A las ocho y media."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_dialogues"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:hora",
-        "es:w:banco",
-        "es:w:ocho"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l1_04",
-      "kind": "dialogue",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Qué vas a comer?"
-        },
-        {
-          "speaker": "A",
-          "text": "Pollo con arroz."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_dialogues"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:comer",
-        "es:w:pollo",
-        "es:w:arroz"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
+      "use": "exam"
     },
     {
       "id": "es.clip.dele_b_l1_05",
@@ -5161,21 +4877,22 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Cuándo es la fiesta?"
+          "text": "¿Dónde está la farmacia?"
         },
         {
           "speaker": "A",
-          "text": "El sábado a las ocho."
+          "text": "Está al lado del banco, en la plaza."
         }
       ],
       "objectiveRefs": [
         "es.obj.listening.short_dialogues"
       ],
       "lexemeRefs": [
-        "es:w:cuando",
-        "es:w:fiesta",
-        "es:w:sabado",
-        "es:w:ocho"
+        "es:w:donde",
+        "es:w:farmacia",
+        "es:w:lado",
+        "es:w:banco",
+        "es:w:plaza"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -5185,7 +4902,8 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
       "id": "es.clip.dele_b_l2_01",
@@ -5214,7 +4932,8 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
       "id": "es.clip.dele_b_l2_02",
@@ -5222,415 +4941,16 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Hoy el supermercado está abierto hasta las diez de la noche."
+          "text": "Información: la biblioteca abre mañana a las diez."
         }
       ],
       "objectiveRefs": [
         "es.obj.listening.announcements"
       ],
       "lexemeRefs": [
-        "es:w:hoy",
-        "es:w:abierto",
-        "es:w:diez",
-        "es:w:noche"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l2_03",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Hola, mamá. Estoy en casa de Ana. Vuelvo a las siete."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.announcements"
-      ],
-      "lexemeRefs": [
-        "es:w:hola",
-        "es:w:mama",
-        "es:w:casa",
-        "es:w:siete"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l2_04",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Mañana va a llover en Barcelona."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.announcements"
-      ],
-      "lexemeRefs": [
-        "es:w:manana"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l2_05",
-      "kind": "announcement",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "El tren para Málaga llega con veinte minutos de retraso."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.announcements"
-      ],
-      "lexemeRefs": [
-        "es:w:tren",
-        "es:w:veinte"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_01",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "¿Tiene esta camisa en una talla más grande?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:camisa",
-        "es:w:grande"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_02",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Quiero cambiar cien dólares a euros."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:quiero",
-        "es:w:cambiar",
-        "es:w:cien"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_03",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "La cuenta, por favor."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:cuenta",
-        "es:w:favor"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_04",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Doctor, me duele el estómago desde ayer."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:doctor",
-        "es:w:ayer"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_05",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Quiero enviar esta carta a Vietnam."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:quiero",
-        "es:w:enviar"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_06",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "¿A qué hora sale el avión para Roma?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:hora",
-        "es:w:avion"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_07",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Una barra de pan y dos cruasanes, por favor."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:pan",
-        "es:w:dos",
-        "es:w:favor"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l3_08",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Abran el libro en la página diez, por favor."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:libro",
-        "es:w:diez",
-        "es:w:favor"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l4_01",
-      "kind": "factual",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "La farmacia abre a las nueve y cierra a las ocho."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:farmacia",
-        "es:w:nueve",
-        "es:w:ocho"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l4_02",
-      "kind": "factual",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "El billete cuesta treinta euros."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:billete",
-        "es:w:treinta"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l4_03",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "Mi casa está en la calle Luna, número quince."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:casa",
-        "es:w:calle",
-        "es:w:luna",
-        "es:w:numero",
-        "es:w:quince"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.dele_b_l4_04",
-      "kind": "factual",
-      "segments": [
-        {
-          "speaker": "A",
-          "text": "La película empieza a las diez y cuarto."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:pelicula",
+        "es:w:informacion",
+        "es:w:biblioteca",
+        "es:w:manana",
         "es:w:diez"
       ],
       "sourceRef": "original-project",
@@ -5641,24 +4961,26 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
-      "id": "es.clip.dele_b_l4_05",
-      "kind": "message",
+      "id": "es.clip.dele_b_l2_03",
+      "kind": "announcement",
       "segments": [
         {
           "speaker": "A",
-          "text": "Tengo tres hijos: dos niñas y un niño."
+          "text": "El restaurante del hotel sirve la cena de ocho a once."
         }
       ],
       "objectiveRefs": [
-        "es.obj.listening.short_info"
+        "es.obj.listening.announcements"
       ],
       "lexemeRefs": [
-        "es:w:tres",
-        "es:w:dos",
-        "es:w:nino"
+        "es:w:restaurante",
+        "es:w:hotel",
+        "es:w:ocho",
+        "es:w:once"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -5668,311 +4990,196 @@
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
-      "id": "es.clip.dele_b_l4_06",
+      "id": "es.clip.dele_b_l2_04",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "Hoy el supermercado vende la fruta más barata."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "es:w:hoy",
+        "es:w:fruta"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_b_l2_05",
+      "kind": "announcement",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "Señores pasajeros, el barco para Mallorca sale a las seis."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "es:w:barco",
+        "es:w:seis"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "use": "exam"
+    },
+    {
+      "id": "es.clip.dele_b_l3_monologo",
       "kind": "factual",
       "segments": [
         {
           "speaker": "A",
-          "text": "La reunión es el lunes por la mañana."
+          "text": "Buenos días, me llamo Raúl y soy estudiante. Vivo en Salamanca con dos compañeros. Por la mañana voy a la universidad en autobús. Estudio historia y me gusta mucho. A mediodía como en la cafetería de la universidad. Por la tarde trabajo en una librería tres horas. Los jueves juego al baloncesto con mis amigos. Los fines de semana leo, veo películas o salgo con mi novia. En agosto voy a la playa con mi familia."
         }
       ],
       "objectiveRefs": [
         "es.obj.listening.short_info"
       ],
       "lexemeRefs": [
-        "es:w:reunion",
-        "es:w:lunes",
-        "es:w:manana"
+        "es:w:estudiante",
+        "es:w:dos",
+        "es:w:manana",
+        "es:w:universidad",
+        "es:w:autobus",
+        "es:w:historia"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
-        "informationUnits": 1,
+        "informationUnits": 6,
         "inferenceDemand": "locate"
       },
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
+      },
+      "use": "exam"
     },
     {
-      "id": "es.clip.dele_b_l4_07",
-      "kind": "message",
+      "id": "es.clip.dele_b_l4_conversacion",
+      "kind": "dialogue",
       "segments": [
         {
           "speaker": "A",
-          "text": "Son doce euros con cincuenta."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.listening.short_info"
-      ],
-      "lexemeRefs": [
-        "es:w:son",
-        "es:w:doce",
-        "es:w:cincuenta"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_preguntas_name_ask",
-      "kind": "message",
-      "segments": [
+          "text": "Hola, Marta. ¿Qué tal tu nuevo piso? ¿Estás contenta?"
+        },
         {
           "speaker": "B",
-          "text": "Hola, buenos días. ¿Cómo te llamas?"
+          "text": "Sí, muy contenta, gracias. Es pequeño, pero tiene mucha luz y es muy tranquilo."
+        },
+        {
+          "speaker": "A",
+          "text": "¡Qué bien! ¿Y cuántas habitaciones tiene?"
+        },
+        {
+          "speaker": "B",
+          "text": "Dos habitaciones, un baño y una cocina grande. Y una terraza con flores."
+        },
+        {
+          "speaker": "A",
+          "text": "¡Qué bonito! Me encantan las flores. ¿Y dónde está?"
+        },
+        {
+          "speaker": "B",
+          "text": "En el barrio de la playa, cerca del mercado. Puedo ir andando al trabajo en quince minutos."
+        },
+        {
+          "speaker": "A",
+          "text": "¿Y el piso es caro?"
+        },
+        {
+          "speaker": "B",
+          "text": "No mucho. Pago quinientos euros al mes, con el agua y la luz."
+        },
+        {
+          "speaker": "A",
+          "text": "¿Vives sola?"
+        },
+        {
+          "speaker": "B",
+          "text": "No, vivo con mi gata, Luna. Es blanca, muy tranquila y duerme todo el día."
+        },
+        {
+          "speaker": "A",
+          "text": "¿Cuándo hacemos una cena en tu casa?"
+        },
+        {
+          "speaker": "B",
+          "text": "El viernes que viene, a las nueve. Yo cocino pescado. Tú puedes traer el postre, ¿vale?"
+        },
+        {
+          "speaker": "A",
+          "text": "¡Vale! Llevo un helado de chocolate, que te gusta mucho. ¿Invito también a Jorge?"
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, claro. Pero el piso es pequeño, así que solo cuatro personas, ¿vale?"
+        },
+        {
+          "speaker": "A",
+          "text": "Perfecto, entonces somos cuatro. ¡Hasta el viernes, Marta!"
         }
       ],
       "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
+        "es.obj.listening.short_dialogues"
       ],
       "lexemeRefs": [
         "es:w:hola",
-        "es:w:como"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_preguntas_name_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Cuál es tu nombre?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:cual",
-        "es:w:nombre"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_preguntas_from_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Mucho gusto. ¿De dónde eres?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:mucho",
-        "es:w:donde"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_preguntas_from_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿De qué país eres?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
         "es:w:que",
-        "es:w:pais"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_preguntas_live_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Y dónde vives ahora?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:donde"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_preguntas_live_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿En qué ciudad vives?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:ciudad"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_preguntas_end",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¡Muy bien, muchas gracias!"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
+        "es:w:nuevo",
+        "es:w:piso",
         "es:w:muy",
-        "es:w:bien",
         "es:w:gracias"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
-        "informationUnits": 1,
+        "informationUnits": 6,
         "inferenceDemand": "locate"
       },
       "scoredPlaybackPolicy": {
         "maxPlays": 2,
         "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_billete_want_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Buenos días. ¿Qué desea?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [
-        "es:w:que"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
       },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
+      "use": "exam"
     },
     {
-      "id": "es.clip.ix_dele_a_billete_want_s",
+      "id": "es.clip.ix_dele_a_conversacion_study_ask",
       "kind": "message",
       "segments": [
         {
           "speaker": "B",
-          "text": "¿En qué puedo ayudarle?"
+          "text": "Muy bien, Linh. ¿Estudias o trabajas en Valencia?"
         }
       ],
       "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [
-        "es:w:que"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_billete_day_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Muy bien. ¿Para hoy o para mañana?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
+        "es.obj.interaction.everyday_conversation"
       ],
       "lexemeRefs": [
         "es:w:muy",
-        "es:w:bien",
-        "es:w:hoy",
-        "es:w:manana"
+        "es:w:bien"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -5985,185 +5192,7 @@
       }
     },
     {
-      "id": "es.clip.ix_dele_a_billete_day_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Hoy o mañana?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [
-        "es:w:hoy",
-        "es:w:manana"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_billete_thanks_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Son veinte euros. Aquí tiene su billete."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [
-        "es:w:son",
-        "es:w:veinte",
-        "es:w:aqui",
-        "es:w:billete"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_billete_thanks_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Veinte euros, por favor."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [
-        "es:w:veinte",
-        "es:w:favor"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_a_billete_end",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¡De nada! ¡Buen viaje!"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_preguntas_name_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Hola. ¿Cómo te llamas?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:hola",
-        "es:w:como"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_preguntas_name_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Cuál es tu nombre?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:cual",
-        "es:w:nombre"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_preguntas_work_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Trabajas o estudias?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_preguntas_work_s",
+      "id": "es.clip.ix_dele_a_conversacion_study_s",
       "kind": "message",
       "segments": [
         {
@@ -6186,153 +5215,22 @@
       }
     },
     {
-      "id": "es.clip.ix_dele_b_preguntas_like_ask",
+      "id": "es.clip.ix_dele_a_conversacion_ask1_ask",
       "kind": "message",
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Y qué te gusta hacer?"
+          "text": "Muy bien. Ahora hazme una pregunta a mí: pregúntame dónde vivo."
         }
       ],
       "objectiveRefs": [
         "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:hacer"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_preguntas_like_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Qué haces en tu tiempo libre?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:tiempo",
-        "es:w:libre"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_preguntas_end",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¡Qué bien! Muchas gracias."
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.everyday_conversation"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:bien",
-        "es:w:gracias"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_restaurante_order_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Buenas tardes. ¿Qué va a comer?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:comer"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_restaurante_order_s",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "¿Qué quiere comer?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
-      ],
-      "lexemeRefs": [
-        "es:w:que",
-        "es:w:comer"
-      ],
-      "sourceRef": "original-project",
-      "authoringSpec": {
-        "informationUnits": 1,
-        "inferenceDemand": "locate"
-      },
-      "scoredPlaybackPolicy": {
-        "maxPlays": 2,
-        "rate": 1
-      }
-    },
-    {
-      "id": "es.clip.ix_dele_b_restaurante_drink_ask",
-      "kind": "message",
-      "segments": [
-        {
-          "speaker": "B",
-          "text": "Muy bien. ¿Y para beber?"
-        }
-      ],
-      "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
       ],
       "lexemeRefs": [
         "es:w:muy",
         "es:w:bien",
-        "es:w:beber"
+        "es:w:pregunta",
+        "es:w:donde"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -6345,20 +5243,19 @@
       }
     },
     {
-      "id": "es.clip.ix_dele_b_restaurante_drink_s",
+      "id": "es.clip.ix_dele_a_conversacion_ask1_s",
       "kind": "message",
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Qué quiere beber?"
+          "text": "Pregúntame dónde vivo."
         }
       ],
       "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
+        "es.obj.interaction.everyday_conversation"
       ],
       "lexemeRefs": [
-        "es:w:que",
-        "es:w:beber"
+        "es:w:donde"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -6371,19 +5268,20 @@
       }
     },
     {
-      "id": "es.clip.ix_dele_b_restaurante_bill_ask",
+      "id": "es.clip.ix_dele_a_conversacion_ask2_ask",
       "kind": "message",
       "segments": [
         {
           "speaker": "B",
-          "text": "Aquí tiene. ¿Algo más?"
+          "text": "Vivo en Madrid, en el centro. Hazme otra pregunta: pregúntame si tengo hijos."
         }
       ],
       "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
+        "es.obj.interaction.everyday_conversation"
       ],
       "lexemeRefs": [
-        "es:w:aqui"
+        "es:w:centro",
+        "es:w:pregunta"
       ],
       "sourceRef": "original-project",
       "authoringSpec": {
@@ -6396,16 +5294,16 @@
       }
     },
     {
-      "id": "es.clip.ix_dele_b_restaurante_bill_s",
+      "id": "es.clip.ix_dele_a_conversacion_ask2_s",
       "kind": "message",
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Quiere algo más?"
+          "text": "Pregúntame si tengo hijos."
         }
       ],
       "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
+        "es.obj.interaction.everyday_conversation"
       ],
       "lexemeRefs": [],
       "sourceRef": "original-project",
@@ -6419,22 +5317,354 @@
       }
     },
     {
-      "id": "es.clip.ix_dele_b_restaurante_end",
+      "id": "es.clip.ix_dele_a_conversacion_thanks_ask",
       "kind": "message",
       "segments": [
         {
           "speaker": "B",
-          "text": "Son quince euros. ¡Muchas gracias!"
+          "text": "Sí, tengo dos hijos. Muy bien, terminamos. Muchas gracias."
         }
       ],
       "objectiveRefs": [
-        "es.obj.interaction.practical_needs"
+        "es.obj.interaction.everyday_conversation"
       ],
       "lexemeRefs": [
-        "es:w:son",
-        "es:w:quince",
+        "es:w:dos",
+        "es:w:muy",
+        "es:w:bien",
         "es:w:gracias"
       ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_a_conversacion_thanks_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Terminamos. Gracias."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:gracias"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_a_conversacion_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¡Adiós, Linh! Buen trabajo."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:adios",
+        "es:w:trabajo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_like_ask",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Muy bien, Minh. ¿Te gusta tu barrio?"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:muy",
+        "es:w:bien"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_like_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¿Te gusta el barrio donde vives?"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_ask1_ask",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Muy bien. Ahora hazme una pregunta a mí: pregúntame qué hago."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:muy",
+        "es:w:bien",
+        "es:w:pregunta",
+        "es:w:que"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_ask1_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Pregúntame en qué trabajo."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:que",
+        "es:w:trabajo"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_ask2_ask",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Soy profesora de español. Hazme otra pregunta: pregúntame si me gusta cocinar."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:espanol",
+        "es:w:pregunta",
+        "es:w:cocinar"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_ask2_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Pregúntame si me gusta cocinar."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:cocinar"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_thanks_ask",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Sí, me gusta mucho. Bueno, terminamos. Gracias, Minh."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:mucho",
+        "es:w:bueno",
+        "es:w:gracias"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_thanks_s",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "Terminamos. Gracias."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:gracias"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.ix_dele_b_conversacion_end",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "B",
+          "text": "¡Adiós, Minh! Muy bien."
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [
+        "es:w:adios",
+        "es:w:muy",
+        "es:w:bien"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.uf_dictado_gracias",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "gracias"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.uh_dictado_anden",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "el andén dos"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.announcements"
+      ],
+      "lexemeRefs": [],
       "sourceRef": "original-project",
       "authoringSpec": {
         "informationUnits": 1,

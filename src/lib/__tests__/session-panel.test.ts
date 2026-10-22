@@ -188,8 +188,8 @@ describe("panelDataFor — display model", () => {
   });
 });
 
-const noteText = (...args: Parameters<typeof grammarNoteFor>) => {
-  const m = grammarNoteFor(...args);
+const noteText = (...args: [Parameters<typeof grammarNoteFor>[0], string?]) => {
+  const m = grammarNoteFor(args[0], args[1] ?? "fr-en");
   return m ? translateMessage("en", m) : m;
 };
 
@@ -212,6 +212,15 @@ describe("grammarNoteFor — the Phase 5B single-note addition", () => {
       })
     );
     expect(note).toBe("maison takes la — feminine.");
+  });
+
+  test("Spanish names its own persons and articles (P3e: vosotros, el/la)", () => {
+    const es = (exercise: Exercise) => {
+      const m = grammarNoteFor(step(exercise), "es-vi");
+      return m ? translateMessage("vi", m) : m;
+    };
+    expect(es({ type: "conjugationCloze", id: "s1", sentence: "Vosotros ___ español.", translation: "Các bạn nói tiếng Tây Ban Nha.", verb: "hablar", cell: "pre:2p", answer: "habláis", alternatives: [] })).toBe("habláis là dạng ngôi vosotros của hablar ở thì hiện tại.");
+    expect(es({ type: "articleSelect", id: "s2", articles: ["el", "la"], noun: "casa", gloss: "ngôi nhà", correct: 1 })).toBe("casa đi với la — giống cái.");
   });
 
   test("conjugationCloze notes the person and tense", () => {
@@ -247,9 +256,9 @@ describe("grammarNoteFor — the Phase 5B single-note addition", () => {
   });
 
   test("lexical exercises and non-exercise steps get no note", () => {
-    expect(grammarNoteFor(step(selectExercise()))).toBeNull();
+    expect(grammarNoteFor(step(selectExercise()), "fr-en")).toBeNull();
     expect(
-      grammarNoteFor({ type: "concept", stepId: "c", conceptId: "fr:concept:elision" })
+      grammarNoteFor({ type: "concept", stepId: "c", conceptId: "fr:concept:elision" }, "fr-en")
     ).toBeNull();
   });
 });

@@ -43,6 +43,8 @@ export type CourseCapabilities = {
 export type CourseArtifactPaths = {
   /** P3d: compiled exam tracks of the course (DELE A1, JLPT N5, …). */
   examTracks?: string;
+  /** P3e: the daily-new-words syllabus (target-level delivery order + unlock units). */
+  dailyWords?: string;
   ids?: string;
   lexiconIndex?: string;
   lexiconFallback?: string;
@@ -82,6 +84,8 @@ export type CourseProfile = {
   artifacts: CourseArtifactPaths;
   /** P3d: "standalone" = an inherited course kept beside its target's primary course (no rich layers). */
   role?: "standalone";
+  /** P3e §8: content still under native review — the Learn tab shows a beta banner. */
+  beta?: true;
   /**
    * The course whose pack-audio manifest entries this course plays (P2b):
    * set only for a course in a secondary native language — the audio is
@@ -105,13 +109,29 @@ export const NO_CAPABILITIES: CourseCapabilities = {
   conversation: false,
 };
 
-type ProfilesArtifact = { version: number; defaultCourseId: string; profiles: Record<string, CourseProfile> };
+type ProfilesArtifact = {
+  version: number;
+  defaultCourseId: string;
+  defaultCourseByNative?: Record<string, string>;
+  profiles: Record<string, CourseProfile>;
+};
 
 const PROFILES = (profilesJson as ProfilesArtifact).profiles;
 
 /** The compiler-chosen onboarding default (the most complete course). */
 export function defaultCourseId(): string {
   return (profilesJson as ProfilesArtifact).defaultCourseId;
+}
+
+/**
+ * P3e §7: the onboarding preselection for a UI language — the first course
+ * explained in that language in the compiler's default order (`vi` → fr-vi,
+ * `en` → fr-en), else the global default. Not the migration default
+ * (LEGACY_FLAT_COURSE_ID in persistence/migrations.ts).
+ */
+export function defaultCourseForUi(uiLanguage: string): string {
+  const artifact = profilesJson as ProfilesArtifact;
+  return artifact.defaultCourseByNative?.[uiLanguage] ?? artifact.defaultCourseId;
 }
 
 /** Test seam: capability overrides (e.g. FSRS on a legacy course) — bun/jest only. */

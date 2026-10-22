@@ -61,6 +61,7 @@ export function ReadingComprehension({
           <OptionCard
             key={option.text + i}
             text={option.text}
+            emoji={option.emoji}
             state={optionState(i, answer, status, exercise.correct)}
             disabled={status !== "none"}
             onPress={() => onAnswer(i)}

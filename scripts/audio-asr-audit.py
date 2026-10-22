@@ -32,16 +32,23 @@ import sys
 import unicodedata
 from concurrent.futures import ThreadPoolExecutor
 
-CER_LANGUAGES = {"ja", "zh"}
+# Languages scored by CHARACTER error rate when the plan carries no explicit
+# metric (P3e: Korean added — SenseVoice inserts spaces inside Hangul words,
+# "커피와" → "커 피와", which made word error rate meaningless).
+CER_LANGUAGES = {"ja", "zh", "ko"}
 SENSEVOICE_LANGUAGES = {"zh", "ja", "ko"}
 LEGACY_NORMALIZATION = {"ligatures": {"œ": "oe", "æ": "ae", "ß": "ss"}, "apostropheSplit": True, "wordChars": "a-zà-ÿ0-9", "whisperLanguage": None}
+
+
+def metric_for(language: str, spec: dict) -> str:
+    return spec.get("metric") or ("cer" if language in CER_LANGUAGES else "wer")
 
 
 def normalize(text: str, language: str, spec: dict) -> list[str]:
     text = unicodedata.normalize("NFC", text.lower())
     for src, dst in (spec.get("ligatures") or {}).items():
         text = text.replace(src, dst)
-    if language in CER_LANGUAGES:
+    if metric_for(language, spec) == "cer":
         # Character tokens: letters/digits/kana/han only (punctuation and spaces dropped).
         return [c for c in text if c.isalnum()]
     if spec.get("apostropheSplit", True):
@@ -117,6 +124,12 @@ def main() -> int:
     ap.add_argument("--lead-silence", type=float, default=1.0)
     ap.add_argument("--tail-silence", type=float, default=0.5)
     ap.add_argument("--workers", type=int, default=2, help="parallel Whisper transcriptions (SenseVoice stays sequential)")
+    if len(sys.argv) > 1 and sys.argv[1] == "score":
+        # Offline check of the metric (tests): score <language> <reference> <heard> [spec-json]
+        _, _, lang, ref, hyp = sys.argv[:5]
+        spec_arg = json.loads(sys.argv[5]) if len(sys.argv) > 5 else {}
+        print(json.dumps({"metric": metric_for(lang, spec_arg), "score": round(edit_rate(normalize(ref, lang, spec_arg), normalize(hyp, lang, spec_arg)), 4)}))
+        return
     args = ap.parse_args()
 
     with open(args.plan, "r", encoding="utf-8") as f:
@@ -138,7 +151,7 @@ def main() -> int:
     else:
         recognizer = WhisperRecognizer(args.model, args.workers)
 
-    metric = "cer" if language in CER_LANGUAGES else "wer"
+    metric = metric_for(language, spec)
     # One transcription per unique asset (an asset key hashes voice + speaker + text,
     # so clips sharing it are the same audio); results are written in plan order.
     unique = {}

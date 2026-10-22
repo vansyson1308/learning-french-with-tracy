@@ -122,6 +122,19 @@ the dataset or model licence; deny GPL/AGPL/NC/ND/OpenRAIL/RAIL/Gemma/CPML
 and unverifiable cards. Clips of pipelineVersion ≥ 2 are loudness-normalised
 (EBU R128, −18 LUFS integrated, −1.5 dBTP); French stays at version 1.
 
+**Encoding (P3f).** pipelineVersion 1–2: 22.05 kHz mono MP3 at 64 kbps. From
+pipelineVersion 3 (the default for every language except French) speech is
+encoded at **32 kbps mono** (`content/audio/engines.json`
+`encoding.mp3KbpsFromVersion`), which halves the bundle for spoken words and
+sentences. French files are untouched (version 1, frozen keys). The lexicon
+layer voices only the syllabus words (`content/<lang>/lexicon/syllabus.json`),
+not every lexeme and example; the rest of the dictionary uses the device
+voice. Each language's bundled speech is capped at **12 MB** (`audio:check`
+fails above it); `content/reports/audio-size.json` records the sizes.
+Playback of the 32 kbps files by expo-audio is part of the RC4 device
+checklist (`release/DEVICE_ACCEPTANCE.md`) — **not yet observed on a device**.
+Beyond four bundled languages see `release/ASSET_DELIVERY.md`.
+
 The tables below are filled by the dispatched runs (`mode: canary` writes
 `voice-casts.json` and `content/reports/<lang>/audio-canary.json`;
 `mode: generate` writes `audio-quality.json`, `audio-census.json`, the
@@ -130,15 +143,15 @@ assets and the language's baseline). Status at the time of this commit:
 | Language | Candidates (engine) | Cast A / B | Status | Reports |
 |---|---|---|---|---|
 | fr | siwis (Piper, CC BY 4.0), upmc (Piper, CC BY-SA 4.0) | siwis / upmc | selected (V1, frozen) | `content/reports/pack-audio-*.json`, `reception-audio-*.json` |
-| es | es_MX-claude-high (Piper, Apache-2.0), es_ES-davefx-medium (Piper, CC0), ef_dora / em_alex (Kokoro, Apache-2.0), MeloTTS-ES (MIT) | davefx / — (V1) until the v2 canary | pending-canary → generate (pack + 2,401 lexicon clips) | `content/reports/es/audio-canary.json` after the run |
+| es | es_MX-claude-high (Piper, Apache-2.0), es_ES-davefx-medium (Piper, CC0), ef_dora / em_alex (Kokoro, Apache-2.0), MeloTTS-ES (MIT) | ef_dora / em_alex (Kokoro) | selected; generate at pipelineVersion 3 (es-vi + es-en packs, syllabus lexicon words, 255 reception clips) | `content/reports/es/audio-canary.json`, `audio-quality.json`, `audio-census.json` |
 | de | thorsten-high, thorsten-medium, kerstin-low (Piper, CC0), mls-medium (Piper, CC BY 4.0) | thorsten-medium / — (V1) | pending-canary | `content/reports/de/` |
 | it | if_sara, im_nicola (Kokoro, Apache-2.0) | — | pending-canary (Piper paola/riccardo excluded: unverifiable licence) | `content/reports/it/` |
 | pt | faber, cadu (Piper, CC0), pf_dora, pm_alex (Kokoro, Apache-2.0) | faber / — (V1) | pending-canary | `content/reports/pt/` |
-| ja | jf_alpha, jm_kumo (Kokoro, Apache-2.0), MeloTTS-JP (MIT) | — | pending-canary (no Piper voice) | `content/reports/ja/` |
-| zh | MeloTTS-ZH (MIT), zf_xiaobei, zm_yunjian (Kokoro, Apache-2.0) | — | pending-canary (Piper huayan excluded: unknown licence) | `content/reports/zh/` |
-| ko | MeloTTS-KR (MIT) | — | pending-canary (single candidate; no B voice exists under the gate) | `content/reports/ko/` |
+| ja | jf_alpha, jm_kumo (Kokoro, Apache-2.0), MeloTTS-JP (MIT) | jf_alpha / jm_kumo | selected (P3e canary; CER) | `content/reports/ja/` |
+| zh | MeloTTS-ZH (MIT), zf_xiaobei, zm_yunjian (Kokoro, Apache-2.0) | melotts-zh / zm_yunjian | selected (P3e canary; CER; Piper huayan excluded: unknown licence) | `content/reports/zh/` |
+| ko | MeloTTS-KR (MIT) | melotts-ko / — | selected (P3e: CER 0.14; single candidate, no B voice under the gate) | `content/reports/ko/` |
 | en | af_heart, am_michael (Kokoro, Apache-2.0), MeloTTS-EN (MIT) | — | pending-canary (for en-vi, P4f; Piper lessac/amy/alan/ryan fail the gate) | `content/reports/en/` |
-| vi | vais1000 (Piper, CC BY 4.0) | — | pending-canary (UI audio only if ever needed) | `content/reports/vi/` |
+| vi | vais1000 (Piper, CC BY 4.0) | vais1000-medium / — | selected (single speaker; UI audio only if ever needed) | `content/reports/vi/` |
 
 A language whose every candidate fails the gate or the 0.6 intelligibility
 floor is recorded as `no-clean-voice` in `voice-casts.json` and its courses

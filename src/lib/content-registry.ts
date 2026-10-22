@@ -28,6 +28,7 @@ export type CourseArtifacts = {
   writing?: unknown;
   scenarios?: unknown;
   examTracks?: unknown;
+  dailyWords?: unknown;
 };
 
 const EMPTY: CourseArtifacts = {};

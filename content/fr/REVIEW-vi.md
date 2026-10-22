@@ -2,7 +2,7 @@
 
 Every learner-facing string of the `fr-vi` course with its `en` source and the `vi` draft, grouped by file. Reviewer: mark each line ✅ / ✏️ (with the corrected text) / ❌. Lines flagged **re-author** are word banks and typed answers whose Vietnamese word order differs from the source — check the token bank and accepted variants, not only the wording. Review status: **pending native review** (see release/KNOWN_LIMITATIONS.md).
 
-Strings: 3139 · drafts applied: 3139
+Strings: 3154 · drafts applied: 3154
 
 ## content/fr/lexicon/lexemes.json
 
@@ -2276,6 +2276,15 @@ Strings: 3139 · drafts applied: 3139
 - `checkpoints.4.items.9.exercise.instruction`
   - en: Fill in the registration form with the details on the card.
   - vi: Hãy điền biểu mẫu đăng ký với các thông tin trên thẻ.
+- `checkpoints.4.items.9.exercise.cueFacts.0.label`
+  - en: Name
+  - vi: Tên
+- `checkpoints.4.items.9.exercise.cueFacts.1.label`
+  - en: Age
+  - vi: Tuổi
+- `checkpoints.4.items.9.exercise.cueFacts.2.label`
+  - en: City
+  - vi: Thành phố
 - `checkpoints.4.items.9.exercise.rubric.requiredSlots.0.description`
   - en: the first name
   - vi: tên
@@ -2288,6 +2297,15 @@ Strings: 3139 · drafts applied: 3139
 - `checkpoints.4.items.10.exercise.instruction`
   - en: Fill in the hotel form with the details on the card.
   - vi: Hãy điền biểu mẫu khách sạn với các thông tin trên thẻ.
+- `checkpoints.4.items.10.exercise.cueFacts.0.label`
+  - en: Name
+  - vi: Tên
+- `checkpoints.4.items.10.exercise.cueFacts.1.label`
+  - en: City
+  - vi: Thành phố
+- `checkpoints.4.items.10.exercise.cueFacts.2.label`
+  - en: Day
+  - vi: Ngày
 - `checkpoints.4.items.10.exercise.rubric.requiredSlots.0.description`
   - en: the first name
   - vi: tên
@@ -2300,6 +2318,15 @@ Strings: 3139 · drafts applied: 3139
 - `checkpoints.4.items.11.exercise.instruction`
   - en: Fill in the library-card form with the details on the card.
   - vi: Hãy điền biểu mẫu làm thẻ thư viện với các thông tin trên thẻ.
+- `checkpoints.4.items.11.exercise.cueFacts.0.label`
+  - en: Name
+  - vi: Tên
+- `checkpoints.4.items.11.exercise.cueFacts.1.label`
+  - en: Age
+  - vi: Tuổi
+- `checkpoints.4.items.11.exercise.cueFacts.2.label`
+  - en: City
+  - vi: Thành phố
 - `checkpoints.4.items.11.exercise.rubric.requiredSlots.0.description`
   - en: the first name
   - vi: tên
@@ -9068,6 +9095,15 @@ Strings: 3139 · drafts applied: 3139
 - `sections.4.units.3.lessons.0.exercises.0.instruction`
   - en: Fill in the arrival form with the details on the card.
   - vi: Hãy điền biểu mẫu nhập cảnh với các thông tin trên thẻ.
+- `sections.4.units.3.lessons.0.exercises.0.cueFacts.0.label`
+  - en: Name
+  - vi: Tên
+- `sections.4.units.3.lessons.0.exercises.0.cueFacts.1.label`
+  - en: Age
+  - vi: Tuổi
+- `sections.4.units.3.lessons.0.exercises.0.cueFacts.2.label`
+  - en: City
+  - vi: Thành phố
 - `sections.4.units.3.lessons.0.exercises.0.rubric.requiredSlots.0.description`
   - en: your first name
   - vi: tên của bạn
@@ -9083,6 +9119,15 @@ Strings: 3139 · drafts applied: 3139
 - `sections.4.units.3.lessons.1.exercises.0.instruction`
   - en: Fill in the small hotel form with the details on the card.
   - vi: Hãy điền biểu mẫu nhỏ của khách sạn với các thông tin trên thẻ.
+- `sections.4.units.3.lessons.1.exercises.0.cueFacts.0.label`
+  - en: Name
+  - vi: Tên
+- `sections.4.units.3.lessons.1.exercises.0.cueFacts.1.label`
+  - en: City
+  - vi: Thành phố
+- `sections.4.units.3.lessons.1.exercises.0.cueFacts.2.label`
+  - en: Day
+  - vi: Ngày
 - `sections.4.units.3.lessons.1.exercises.0.rubric.requiredSlots.0.description`
   - en: the first name
   - vi: tên

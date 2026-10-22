@@ -1283,7 +1283,7 @@
               "en": "age"
             },
             "variants": [
-              "tengo cuarenta y uno años",
+              "tengo cuarenta y un años",
               "tengo 41 años"
             ],
             "cueProvided": true
@@ -2667,8 +2667,8 @@
       "taskFamily": "simple_form",
       "mode": "guided",
       "instruction": {
-        "vi": "Hãy điền phiếu đăng ký khóa học với các thông tin trên thẻ.",
-        "en": "Fill in the course registration form with the details on the card."
+        "vi": "Bạn đăng ký một khóa học tiếng Tây Ban Nha. Hãy điền phiếu bằng tiếng Tây Ban Nha với thông tin trên thẻ.",
+        "en": "You are enrolling in a Spanish course. Fill in the form in Spanish with the details on the card."
       },
       "cueFacts": [
         {
@@ -2680,10 +2680,24 @@
         },
         {
           "label": {
+            "vi": "Họ",
+            "en": "Surname"
+          },
+          "value": "Nguyen"
+        },
+        {
+          "label": {
+            "vi": "Quốc tịch",
+            "en": "Nationality"
+          },
+          "value": "vietnamita"
+        },
+        {
+          "label": {
             "vi": "Tuổi",
             "en": "Age"
           },
-          "value": "22"
+          "value": "22 años"
         },
         {
           "label": {
@@ -2691,6 +2705,27 @@
             "en": "City"
           },
           "value": "Valencia"
+        },
+        {
+          "label": {
+            "vi": "Nghề nghiệp",
+            "en": "Job"
+          },
+          "value": "estudiante"
+        },
+        {
+          "label": {
+            "vi": "Ngôn ngữ",
+            "en": "Languages"
+          },
+          "value": "vietnamita, inglés y español"
+        },
+        {
+          "label": {
+            "vi": "Sở thích",
+            "en": "Hobbies"
+          },
+          "value": "leer, nadar y cocinar"
         }
       ],
       "formFields": [
@@ -2698,6 +2733,16 @@
           "id": "nombre",
           "label": "Nombre",
           "slotId": "name"
+        },
+        {
+          "id": "apellido",
+          "label": "Apellido",
+          "slotId": "surname"
+        },
+        {
+          "id": "nacionalidad",
+          "label": "Nacionalidad",
+          "slotId": "nationality"
         },
         {
           "id": "edad",
@@ -2708,6 +2753,21 @@
           "id": "ciudad",
           "label": "Ciudad",
           "slotId": "city"
+        },
+        {
+          "id": "profesion",
+          "label": "Profesión",
+          "slotId": "job"
+        },
+        {
+          "id": "idiomas",
+          "label": "Idiomas",
+          "slotId": "languages"
+        },
+        {
+          "id": "aficiones",
+          "label": "Aficiones",
+          "slotId": "hobbies"
         }
       ],
       "rubric": {
@@ -2720,6 +2780,28 @@
             },
             "variants": [
               "linh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "surname",
+            "description": {
+              "vi": "họ (tên gia đình)",
+              "en": "surname"
+            },
+            "variants": [
+              "nguyen"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "nationality",
+            "description": {
+              "vi": "quốc tịch",
+              "en": "nationality"
+            },
+            "variants": [
+              "vietnamita"
             ],
             "cueProvided": true
           },
@@ -2745,117 +2827,55 @@
               "valencia"
             ],
             "cueProvided": true
-          }
-        ],
-        "minTokens": 2,
-        "maxTokens": 12
-      },
-      "modelAnswers": [
-        "Linh | 22 | Valencia"
-      ],
-      "objectiveRefs": [
-        "es.obj.writing.form_filling"
-      ],
-      "lexemeRefs": [
-        "es:w:ciudad"
-      ],
-      "scoredEligibility": true,
-      "reserved": true,
-      "sourceRef": "original-project"
-    },
-    {
-      "id": "es.write.dele_a_nota",
-      "taskFamily": "short_message",
-      "mode": "guided",
-      "instruction": {
-        "vi": "Hãy viết một lời nhắn ngắn cho Carmen: chào, nói bạn đang ở thư viện và bạn về lúc 6:00.",
-        "en": "Write a short note to Carmen: greet them, say you are at the biblioteca and when you come back."
-      },
-      "cueFacts": [
-        {
-          "label": {
-            "vi": "Gửi",
-            "en": "To"
-          },
-          "value": "Carmen"
-        },
-        {
-          "label": {
-            "vi": "Ở đâu",
-            "en": "Where"
-          },
-          "value": "thư viện"
-        },
-        {
-          "label": {
-            "vi": "Giờ về",
-            "en": "Back at"
-          },
-          "value": "6:00"
-        }
-      ],
-      "rubric": {
-        "requiredSlots": [
-          {
-            "id": "greeting",
-            "description": {
-              "vi": "lời chào",
-              "en": "a greeting"
-            },
-            "variants": [
-              "hola",
-              "buenos días",
-              "buenas tardes",
-              "buenas noches"
-            ],
-            "cueProvided": false
           },
           {
-            "id": "addressee",
+            "id": "job",
             "description": {
-              "vi": "tên người nhận",
-              "en": "the addressee"
+              "vi": "nghề nghiệp",
+              "en": "job"
             },
             "variants": [
-              "carmen"
+              "estudiante"
             ],
             "cueProvided": true
           },
           {
-            "id": "where",
+            "id": "languages",
             "description": {
-              "vi": "thư viện",
-              "en": "biblioteca"
+              "vi": "ngôn ngữ",
+              "en": "languages"
             },
             "variants": [
-              "biblioteca"
+              "vietnamita",
+              "inglés"
             ],
             "cueProvided": true
           },
           {
-            "id": "time",
+            "id": "hobbies",
             "description": {
-              "vi": "giờ về",
-              "en": "the time you are back"
+              "vi": "sở thích",
+              "en": "hobbies"
             },
             "variants": [
-              "a las seis",
-              "a las 6"
+              "leer",
+              "nadar",
+              "cocinar"
             ],
             "cueProvided": true
           }
         ],
-        "minTokens": 8,
+        "minTokens": 15,
         "maxTokens": 30
       },
       "modelAnswers": [
-        "Hola, Carmen: estoy en la biblioteca. Vuelvo a casa a las seis."
+        "Linh | Nguyen | vietnamita | 22 años | Valencia | estudiante | vietnamita, inglés y español | leer, nadar y cocinar"
       ],
       "objectiveRefs": [
-        "es.obj.writing.short_message"
+        "es.obj.writing.personal_info"
       ],
       "lexemeRefs": [
-        "es:w:volver"
+        "es:w:ciudad"
       ],
       "scoredEligibility": true,
       "reserved": true,
@@ -2866,8 +2886,8 @@
       "taskFamily": "simple_form",
       "mode": "guided",
       "instruction": {
-        "vi": "Hãy điền phiếu đăng ký khóa học với các thông tin trên thẻ.",
-        "en": "Fill in the course registration form with the details on the card."
+        "vi": "Bạn đăng ký một khóa học tiếng Tây Ban Nha. Hãy điền phiếu bằng tiếng Tây Ban Nha với thông tin trên thẻ.",
+        "en": "You are enrolling in a Spanish course. Fill in the form in Spanish with the details on the card."
       },
       "cueFacts": [
         {
@@ -2879,10 +2899,24 @@
         },
         {
           "label": {
+            "vi": "Họ",
+            "en": "Surname"
+          },
+          "value": "Tran"
+        },
+        {
+          "label": {
+            "vi": "Quốc tịch",
+            "en": "Nationality"
+          },
+          "value": "vietnamita"
+        },
+        {
+          "label": {
             "vi": "Tuổi",
             "en": "Age"
           },
-          "value": "28"
+          "value": "28 años"
         },
         {
           "label": {
@@ -2890,6 +2924,27 @@
             "en": "City"
           },
           "value": "Sevilla"
+        },
+        {
+          "label": {
+            "vi": "Nghề nghiệp",
+            "en": "Job"
+          },
+          "value": "cocinero"
+        },
+        {
+          "label": {
+            "vi": "Ngôn ngữ",
+            "en": "Languages"
+          },
+          "value": "vietnamita y español"
+        },
+        {
+          "label": {
+            "vi": "Sở thích",
+            "en": "Hobbies"
+          },
+          "value": "el fútbol y la música"
         }
       ],
       "formFields": [
@@ -2897,6 +2952,16 @@
           "id": "nombre",
           "label": "Nombre",
           "slotId": "name"
+        },
+        {
+          "id": "apellido",
+          "label": "Apellido",
+          "slotId": "surname"
+        },
+        {
+          "id": "nacionalidad",
+          "label": "Nacionalidad",
+          "slotId": "nationality"
         },
         {
           "id": "edad",
@@ -2907,6 +2972,21 @@
           "id": "ciudad",
           "label": "Ciudad",
           "slotId": "city"
+        },
+        {
+          "id": "profesion",
+          "label": "Profesión",
+          "slotId": "job"
+        },
+        {
+          "id": "idiomas",
+          "label": "Idiomas",
+          "slotId": "languages"
+        },
+        {
+          "id": "aficiones",
+          "label": "Aficiones",
+          "slotId": "hobbies"
         }
       ],
       "rubric": {
@@ -2919,6 +2999,28 @@
             },
             "variants": [
               "minh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "surname",
+            "description": {
+              "vi": "họ (tên gia đình)",
+              "en": "surname"
+            },
+            "variants": [
+              "tran"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "nationality",
+            "description": {
+              "vi": "quốc tịch",
+              "en": "nationality"
+            },
+            "variants": [
+              "vietnamita"
             ],
             "cueProvided": true
           },
@@ -2944,16 +3046,51 @@
               "sevilla"
             ],
             "cueProvided": true
+          },
+          {
+            "id": "job",
+            "description": {
+              "vi": "nghề nghiệp",
+              "en": "job"
+            },
+            "variants": [
+              "cocinero"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "languages",
+            "description": {
+              "vi": "ngôn ngữ",
+              "en": "languages"
+            },
+            "variants": [
+              "vietnamita",
+              "español"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "hobbies",
+            "description": {
+              "vi": "sở thích",
+              "en": "hobbies"
+            },
+            "variants": [
+              "fútbol",
+              "música"
+            ],
+            "cueProvided": true
           }
         ],
-        "minTokens": 2,
-        "maxTokens": 12
+        "minTokens": 15,
+        "maxTokens": 30
       },
       "modelAnswers": [
-        "Minh | 28 | Sevilla"
+        "Minh | Tran | vietnamita | 28 años | Sevilla | cocinero | vietnamita y español | el fútbol y la música"
       ],
       "objectiveRefs": [
-        "es.obj.writing.form_filling"
+        "es.obj.writing.personal_info"
       ],
       "lexemeRefs": [
         "es:w:ciudad"
@@ -2963,12 +3100,147 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "es.write.dele_b_nota",
+      "id": "es.write.dele_a_postal",
       "taskFamily": "short_message",
       "mode": "guided",
       "instruction": {
-        "vi": "Hãy viết một lời nhắn ngắn cho Pablo: chào, nói bạn đang ở cửa hàng và bạn về lúc 11:00.",
-        "en": "Write a short note to Pablo: greet them, say you are at the tienda and when you come back."
+        "vi": "Bạn đang đi nghỉ ở biển. Hãy viết một tấm bưu thiếp cho Carmen (30–40 từ): chào, nói bạn đang ở đâu, thời tiết thế nào, bạn làm gì mỗi ngày, và chào tạm biệt.",
+        "en": "You are on holiday by the sea. Write a postcard to Carmen (30–40 words): greet her, say where you are, what the weather is like, what you do every day, and say goodbye."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Carmen"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "Málaga, un hotel cerca de la playa"
+        },
+        {
+          "label": {
+            "vi": "Thời tiết",
+            "en": "Weather"
+          },
+          "value": "sol, calor"
+        },
+        {
+          "label": {
+            "vi": "Mỗi ngày",
+            "en": "Every day"
+          },
+          "value": "nadar, comer pescado"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "a greeting"
+            },
+            "variants": [
+              "hola",
+              "querida",
+              "querido",
+              "buenos días"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the addressee"
+            },
+            "variants": [
+              "carmen"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "where",
+            "description": {
+              "vi": "bạn đang ở đâu",
+              "en": "where you are"
+            },
+            "variants": [
+              "málaga"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "weather",
+            "description": {
+              "vi": "thời tiết",
+              "en": "the weather"
+            },
+            "variants": [
+              "hace sol",
+              "hace calor"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "activity",
+            "description": {
+              "vi": "bạn làm gì",
+              "en": "what you do"
+            },
+            "variants": [
+              "nado",
+              "nadar"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "bye",
+            "description": {
+              "vi": "lời chào cuối",
+              "en": "a goodbye"
+            },
+            "variants": [
+              "un beso",
+              "besos",
+              "un abrazo",
+              "hasta pronto",
+              "adiós",
+              "hasta luego"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 30,
+        "maxTokens": 45
+      },
+      "modelAnswers": [
+        "Querida Carmen: estoy en Málaga, en un hotel cerca de la playa. Hace sol y la temperatura es muy agradable. Todos los días nado en el mar y por la noche como pescado con mis amigos. Un beso, Linh."
+      ],
+      "objectiveRefs": [
+        "es.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "es:w:playa",
+        "es:w:hotel",
+        "es:w:casa"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.write.dele_b_correo",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn vừa chuyển đến một căn nhà mới. Hãy viết một email cho Pablo (30–40 từ): chào, nói nhà mới ở đâu, nhà có những gì, mời Pablo đến chơi vào thứ Bảy, và chào tạm biệt.",
+        "en": "You have just moved into a new home. Write an email to Pablo (30–40 words): greet him, say where the new home is, what it has, invite him on Saturday, and say goodbye."
       },
       "cueFacts": [
         {
@@ -2983,14 +3255,21 @@
             "vi": "Ở đâu",
             "en": "Where"
           },
-          "value": "cửa hàng"
+          "value": "centro, cerca del parque"
         },
         {
           "label": {
-            "vi": "Giờ về",
-            "en": "Back at"
+            "vi": "Nhà có",
+            "en": "It has"
           },
-          "value": "11:00"
+          "value": "dos habitaciones, una cocina grande"
+        },
+        {
+          "label": {
+            "vi": "Lời mời",
+            "en": "Invitation"
+          },
+          "value": "sábado, 18:00"
         }
       ],
       "rubric": {
@@ -3003,9 +3282,9 @@
             },
             "variants": [
               "hola",
-              "buenos días",
-              "buenas tardes",
-              "buenas noches"
+              "querida",
+              "querido",
+              "buenos días"
             ],
             "cueProvided": false
           },
@@ -3023,38 +3302,65 @@
           {
             "id": "where",
             "description": {
-              "vi": "cửa hàng",
-              "en": "tienda"
+              "vi": "nhà ở đâu",
+              "en": "where it is"
             },
             "variants": [
-              "tienda"
+              "centro"
             ],
             "cueProvided": true
           },
           {
-            "id": "time",
+            "id": "rooms",
             "description": {
-              "vi": "giờ về",
-              "en": "the time you are back"
+              "vi": "nhà có gì",
+              "en": "what it has"
             },
             "variants": [
-              "a las once",
-              "a las 11"
+              "habitaciones"
             ],
             "cueProvided": true
+          },
+          {
+            "id": "invite",
+            "description": {
+              "vi": "lời mời vào thứ Bảy",
+              "en": "the invitation"
+            },
+            "variants": [
+              "sábado"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "bye",
+            "description": {
+              "vi": "lời chào cuối",
+              "en": "a goodbye"
+            },
+            "variants": [
+              "un abrazo",
+              "un beso",
+              "besos",
+              "hasta pronto",
+              "adiós"
+            ],
+            "cueProvided": false
           }
         ],
-        "minTokens": 8,
-        "maxTokens": 30
+        "minTokens": 30,
+        "maxTokens": 45
       },
       "modelAnswers": [
-        "Hola, Pablo: estoy en la tienda. Vuelvo a casa a las once."
+        "Hola, Pablo: tengo una casa nueva en el centro, cerca del parque. Tiene dos habitaciones y una cocina muy grande. ¿Quieres venir a cenar a mi casa el sábado a las seis de la tarde? Un abrazo, Minh."
       ],
       "objectiveRefs": [
         "es.obj.writing.short_message"
       ],
       "lexemeRefs": [
-        "es:w:volver"
+        "es:w:playa",
+        "es:w:hotel",
+        "es:w:casa"
       ],
       "scoredEligibility": true,
       "reserved": true,

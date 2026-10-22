@@ -14643,6 +14643,20 @@
          "id": "s5-e21",
          "writingTaskId": "fr.write.r_form_arrival",
          "instruction": "Fill in the arrival form with the details on the card.",
+         "cueFacts": [
+          {
+           "label": "Name",
+           "value": "Léa"
+          },
+          {
+           "label": "Age",
+           "value": "22"
+          },
+          {
+           "label": "City",
+           "value": "Paris"
+          }
+         ],
          "fields": [
           {
            "id": "prenom",
@@ -14711,6 +14725,20 @@
          "id": "s5-e22",
          "writingTaskId": "fr.write.r_form_hotel",
          "instruction": "Fill in the small hotel form with the details on the card.",
+         "cueFacts": [
+          {
+           "label": "Name",
+           "value": "Marco"
+          },
+          {
+           "label": "City",
+           "value": "Nice"
+          },
+          {
+           "label": "Day",
+           "value": "samedi"
+          }
+         ],
          "fields": [
           {
            "id": "prenom",

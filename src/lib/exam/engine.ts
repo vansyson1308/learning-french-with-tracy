@@ -18,7 +18,18 @@ import type { Exercise } from "../types";
 
 export type ExamSkill = "reading" | "listening" | "writing" | "speaking";
 
-export type CompiledExamTask = { id: string; title: string; instruction: string; format: string; itemsPerForm: number };
+export type CompiledExamTask = {
+  id: string;
+  title: string;
+  instruction: string;
+  format: string;
+  itemsPerForm: number;
+  /** Pool formats (matchToPool / completeFromPool): the shared pool's size. */
+  poolSize?: number;
+  speakingMinutes?: { min: number; max: number };
+};
+/** Formats whose items share one lettered pool: option order is fixed, never shuffled. */
+export const POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
 export type CompiledExamSection = {
   id: string;
   skill: ExamSkill;
@@ -26,9 +37,12 @@ export type CompiledExamSection = {
   minutes: number;
   preparationMinutes?: number;
   maxPoints: number;
+  /** Listening: each recording plays this many times. */
+  playsPerRecording?: number;
   tasks: CompiledExamTask[];
 };
-export type CompiledExamGroup = { id: string; title: string; sectionIds: string[]; maxPoints: number; passPoints: number };
+/** A pass-rule group: the format's minimum over the group's sections (DELE: 30 of 50). */
+export type CompiledExamGroup = { id: string; title: string; sections: string[]; min: number; max: number };
 export type CompiledExamBand = { id: string; minGroupShare: number; label: string; message: string };
 export type CompiledExamItem = {
   id: string;
@@ -46,9 +60,10 @@ export type CompiledExamTrack = {
   level: string;
   title: string;
   description: string;
-  formatSource: { publisher: string; checkedAgainstOfficialGuide: boolean; note: string };
+  formatSource: { publisher: string; references: { url: string; title: string; retrieved?: string }[]; checkedAgainstOfficialGuide: boolean; checkedBy?: string; checkedAt?: string; note: string };
   sections: CompiledExamSection[];
-  groups: CompiledExamGroup[];
+  /** Generic pass rule (P3e): every group must reach its minimum — never a single total. */
+  passRule: { groups: CompiledExamGroup[] };
   readiness: { bands: CompiledExamBand[]; incomplete: string; disclaimer: string };
   items: CompiledExamItem[];
   forms: { formId: string; itemIds: string[] }[];
@@ -100,13 +115,19 @@ export function buildExamSectionSession(args: {
   attemptSeed: number;
 }): SessionDefinition {
   const items = sectionItems(args.track, args.sectionId, args.formId);
+  const section = args.track.sections.find((s) => s.id === args.sectionId);
+  const formatOf = new Map((section?.tasks ?? []).map((t) => [t.id, t.format]));
   const steps: SessionStep[] = items.map((item) => ({
     type: "exercise",
     stepId: item.id,
-    exercise: shuffleScoredOptions(
-      item.exercise,
-      administrationSeed([args.track.id, args.mode, args.formId ?? "bank", `v${args.track.trackVersion}`, `attempt${args.attemptSeed}`, item.id])
-    ),
+    // A lettered shared pool keeps its order (the letters ARE the answer
+    // sheet); every other scored option set is reshuffled per sitting.
+    exercise: POOL_FORMATS.includes(formatOf.get(item.taskId) ?? "")
+      ? item.exercise
+      : shuffleScoredOptions(
+          item.exercise,
+          administrationSeed([args.track.id, args.mode, args.formId ?? "bank", `v${args.track.trackVersion}`, `attempt${args.attemptSeed}`, item.id])
+        ),
   }));
   return {
     kind: "checkpoint",
@@ -160,15 +181,18 @@ export type ExamSectionScore = {
   /** null when the section was not taken (e.g. speaking without a capable device). */
   points: number | null;
 };
-export type ExamGroupScore = { id: string; title: string; points: number | null; maxPoints: number; passPoints: number; reachesThreshold: boolean | null };
+export type ExamGroupScore = { id: string; title: string; points: number | null; max: number; min: number; reachesThreshold: boolean | null };
 export type ExamScore = { sections: ExamSectionScore[]; groups: ExamGroupScore[]; complete: boolean; band: CompiledExamBand | null };
 
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
 /**
  * Score by the format: a section's points are its first-attempt correct
- * share × maxPoints (unanswered = 0); a group sums its sections. With a
- * section not taken the score is incomplete and NO readiness band is given.
+ * share × maxPoints (DELE reading/listening: 1 point per correct item, no
+ * negative marking; unanswered = 0); a pass-rule group sums its sections and
+ * reaches the format's threshold only at ≥ its minimum. The readiness band
+ * comes from the WEAKER group's share — never from a total. With a section
+ * not taken the score is incomplete and NO band is given.
  */
 export function scoreExam(track: CompiledExamTrack, itemResults: readonly AssessmentItemResult[]): ExamScore {
   const bySection = new Map<string, AssessmentItemResult[]>();
@@ -184,16 +208,16 @@ export function scoreExam(track: CompiledExamTrack, itemResults: readonly Assess
     return { id: s.id, title: s.title, maxPoints: s.maxPoints, administered: rows.length, correct, points: rows.length === 0 ? null : round1((correct / rows.length) * s.maxPoints) };
   });
   const sectionScore = new Map(sections.map((s) => [s.id, s]));
-  const groups: ExamGroupScore[] = track.groups.map((g) => {
-    const parts = g.sectionIds.map((id) => sectionScore.get(id));
+  const groups: ExamGroupScore[] = track.passRule.groups.map((g) => {
+    const parts = g.sections.map((id) => sectionScore.get(id));
     const complete = parts.every((p) => p !== undefined && p.points !== null);
     const points = complete ? round1(parts.reduce((n, p) => n + (p!.points ?? 0), 0)) : null;
-    return { id: g.id, title: g.title, points, maxPoints: g.maxPoints, passPoints: g.passPoints, reachesThreshold: points === null ? null : points >= g.passPoints };
+    return { id: g.id, title: g.title, points, max: g.max, min: g.min, reachesThreshold: points === null ? null : points >= g.min };
   });
   const complete = groups.every((g) => g.points !== null);
   let band: CompiledExamBand | null = null;
   if (complete && groups.length > 0) {
-    const minShare = Math.min(...groups.map((g) => (g.points as number) / g.maxPoints));
+    const minShare = Math.min(...groups.map((g) => (g.points as number) / g.max));
     band = track.readiness.bands.find((b) => minShare >= b.minGroupShare) ?? null;
   }
   return { sections, groups, complete, band };

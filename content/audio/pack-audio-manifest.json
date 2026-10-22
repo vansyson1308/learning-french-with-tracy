@@ -1,7 +1,7 @@
 {
   "version": 2,
   "pipelineVersions": {
-    "default": 2,
+    "default": 3,
     "fr": 1
   },
   "note": "Bundled course audio (pack layer: every word, phrase and sentence a course pack references; lexicon layer: every lexeme surface and example of a language's lexicon, keyed by its primary course). Audio pipeline v2 (P3b): engines, pins, licence gate and loudness target live in content/audio/engines.json; candidate voices per LANGUAGE and the selected voice cast live in content/audio/voice-casts.json (written by `scripts/audio.ts select` from the canary ASR audit); every voice is pinned here by double-download hash after recon. pipelineVersions: French clips keep version 1 (their content-addressed keys and bytes never change); every other language uses version 2 (EBU R128 loudness normalisation). Courses whose language has no licence-clean voice keep policy device-tts.",
@@ -24,6 +24,22 @@
       }
     },
     "es-en": {
+      "policy": "generated",
+      "language": "es",
+      "voiceId": "kokoro-ef_dora",
+      "candidates": [
+        "es_MX-claude-high",
+        "es_ES-davefx-medium",
+        "kokoro-ef_dora",
+        "kokoro-em_alex",
+        "melotts-es"
+      ],
+      "voiceCast": {
+        "A": "kokoro-ef_dora",
+        "B": "kokoro-em_alex"
+      }
+    },
+    "es-vi": {
       "policy": "generated",
       "language": "es",
       "voiceId": "kokoro-ef_dora",
@@ -87,7 +103,7 @@
       ],
       "voiceCast": {
         "A": "melotts-zh",
-        "B": null
+        "B": "kokoro-zm_yunjian"
       }
     },
     "ja-en": {
@@ -101,15 +117,18 @@
       ],
       "voiceCast": {
         "A": "kokoro-jf_alpha",
-        "B": null
+        "B": "kokoro-jm_kumo"
       }
     },
     "ko-en": {
-      "policy": "device-tts",
+      "policy": "generated",
       "language": "ko",
-      "reason": "rhasspy/piper-voices v1.0.0 ships no Korean voice; the legacy recordings have no traceable license, so the course uses the device's own Korean text-to-speech voice (expo-speech) instead of bundled audio.",
+      "voiceId": "melotts-ko",
+      "candidates": [
+        "melotts-ko"
+      ],
       "voiceCast": {
-        "A": null,
+        "A": "melotts-ko",
         "B": null
       }
     }
@@ -712,7 +731,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: apache-2.0",
-      "status": "eligible",
+      "status": "selected",
       "gateReason": "matched Apache-2.0"
     },
     {
@@ -834,7 +853,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: apache-2.0",
-      "status": "eligible",
+      "status": "selected",
       "gateReason": "matched Apache-2.0"
     },
     {
@@ -862,7 +881,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: mit",
-      "status": "eligible",
+      "status": "selected",
       "gateReason": "matched MIT"
     },
     {

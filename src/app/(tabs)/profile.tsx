@@ -41,7 +41,7 @@ export default function ProfileScreen() {
   const styles = useStyles();
   const { t, languageName } = useT();
   const progress = useProgress();
-  const { themePreference, setThemePreference, uiLanguage, setUiLanguage } = progress;
+  const { themePreference, setThemePreference, uiLanguage, setUiLanguage, dailyNewWords, setDailyNewWords } = progress;
   const { activeCourseId, dailyGoal } = progress;
   const courseProgress = progress.course();
   const { pack, allLessons, allWords } = useCourseContent(activeCourseId);
@@ -205,6 +205,39 @@ export default function ProfileScreen() {
           </View>
           <Text style={styles.settingsHint}>{t("profile.appearanceHint")}</Text>
         </View>
+
+        {hasCapability(progress.activeCourseId, "dailySession") ? (
+          <View style={styles.settingsCard} testID="daily-words-card">
+            <View style={styles.settingsHeader}>
+              <Ionicons name="sparkles-outline" size={22} color={colors.skyDark} />
+              <Text style={styles.settingsTitle}>{t("profile.dailyWords")}</Text>
+            </View>
+            <View style={styles.themeRow}>
+              <Pressable
+                onPress={() => setDailyNewWords(dailyNewWords - 1)}
+                accessibilityRole="button"
+                accessibilityLabel={t("profile.dailyWordsLess")}
+                style={styles.themeChip}
+                testID="daily-words-less"
+              >
+                <Ionicons name="remove" size={20} color={colors.textMuted} />
+              </Pressable>
+              <Text style={styles.settingsTitle} testID="daily-words-value" accessibilityLiveRegion="polite">
+                {t("profile.dailyWordsValue", { n: dailyNewWords })}
+              </Text>
+              <Pressable
+                onPress={() => setDailyNewWords(dailyNewWords + 1)}
+                accessibilityRole="button"
+                accessibilityLabel={t("profile.dailyWordsMore")}
+                style={styles.themeChip}
+                testID="daily-words-more"
+              >
+                <Ionicons name="add" size={20} color={colors.textMuted} />
+              </Pressable>
+            </View>
+            <Text style={styles.settingsHint}>{t("profile.dailyWordsHint")}</Text>
+          </View>
+        ) : null}
 
         <View style={styles.settingsCard} testID="language-card">
           <View style={styles.settingsHeader}>

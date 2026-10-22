@@ -358,8 +358,8 @@
         "en": "The three regular groups -ar, -er, -ir"
       },
       "shortRule": {
-        "vi": "Bỏ -ar/-er/-ir, thêm đuôi theo người: -o, -as/-es, -a/-e, -amos/-emos/-imos, -an/-en.",
-        "en": "Drop -ar/-er/-ir and add the person ending: -o, -as/-es, -a/-e, -amos/-emos/-imos, -an/-en."
+        "vi": "Bỏ -ar/-er/-ir, thêm đuôi theo người: -o, -as/-es, -a/-e, -amos/-emos/-imos, -áis/-éis/-ís, -an/-en.",
+        "en": "Drop -ar/-er/-ir and add the person ending: -o, -as/-es, -a/-e, -amos/-emos/-imos, -áis/-éis/-ís, -an/-en."
       },
       "explanation": {
         "vi": "Tiếng Việt nói «tôi nói, bạn nói, họ nói» mà không đổi động từ. Tiếng Tây Ban Nha đổi đuôi theo người nói: hablo (tôi nói), hablas (bạn nói), habla (anh ấy nói). Nhóm -er và -ir giống nhau ở hầu hết các ngôi, chỉ khác ở «chúng tôi»: comemos, vivimos.",
@@ -390,8 +390,8 @@
       ],
       "exceptions": [
         {
-          "vi": "Dạng vosotros (habláis, coméis) chỉ dùng ở Tây Ban Nha; khoá học dùng ustedes (hablan) như ở Mỹ Latinh.",
-          "en": "The vosotros forms (habláis, coméis) are used in Spain only; the course uses ustedes (hablan) as in Latin America."
+          "vi": "«Vosotros» (các bạn, thân mật) chỉ dùng ở Tây Ban Nha: habláis, coméis, vivís. Ở Mỹ Latinh, và khi nói lịch sự ở Tây Ban Nha, người ta dùng «ustedes» với đuôi ngôi thứ ba số nhiều: hablan. Khoá học dạy cả hai để bạn nhận ra; khi nói, dùng dạng nào cũng được chấp nhận.",
+          "en": "Vosotros (you all, informal) is used in Spain only: habláis, coméis, vivís. Latin America — and formal Spain — use ustedes with third-person plural endings: hablan. The course teaches both for recognition; either is accepted when you speak."
         }
       ],
       "objectives": [
@@ -964,7 +964,7 @@
           }
         },
         {
-          "target": "el jugo",
+          "target": "el zumo",
           "translations": {
             "vi": "nước ép",
             "en": "the juice"
@@ -1026,12 +1026,65 @@
       ],
       "exceptions": [
         {
-          "vi": "Số nhiều ở Mỹ Latinh chỉ có ustedes cho cả thân mật lẫn lịch sự.",
-          "en": "In Latin America the plural is always ustedes, informal or formal."
+          "vi": "Số nhiều: ở Tây Ban Nha, «vosotros» là các bạn thân mật (¿Vosotros habláis español?) và «ustedes» là lịch sự; ở Mỹ Latinh chỉ có «ustedes» cho cả hai. Hai cách đều được chấp nhận.",
+          "en": "Plural: in Spain vosotros is informal (¿Vosotros habláis español?) and ustedes is formal; Latin America uses ustedes for both. Both are accepted."
         }
       ],
       "objectives": [
         "es.obj.greetings.basic",
+        "es.obj.interaction.everyday_conversation"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-spanish-course"
+        }
+      ]
+    },
+    {
+      "id": "es:concept:vosotros-ustedes",
+      "title": {
+        "vi": "vosotros (Tây Ban Nha) / ustedes (Mỹ Latinh)",
+        "en": "vosotros (Spain) / ustedes (Latin America)"
+      },
+      "shortRule": {
+        "vi": "Ở Tây Ban Nha, «các bạn» thân mật là vosotros (habláis, coméis, vivís); ustedes là lịch sự. Ở Mỹ Latinh chỉ dùng ustedes.",
+        "en": "In Spain, informal \"you all\" is vosotros (habláis, coméis, vivís); ustedes is formal. Latin America uses only ustedes."
+      },
+      "explanation": {
+        "vi": "Khi nói với nhiều người bạn ở Tây Ban Nha, người ta dùng vosotros và động từ có đuôi riêng: -áis, -éis, -ís (vosotros habláis, coméis, vivís; sois, estáis, tenéis, vais). Ustedes chia như ngôi thứ ba số nhiều (ustedes hablan, comen, viven) và là cách lịch sự ở Tây Ban Nha, còn ở Mỹ Latinh là cách duy nhất. Ở trình độ A1 bạn chỉ cần nhận ra vosotros khi nghe và đọc; khi nói và viết, dùng ustedes luôn được chấp nhận.",
+        "en": "Talking to several friends in Spain you use vosotros, with its own endings: -áis, -éis, -ís (vosotros habláis, coméis, vivís; sois, estáis, tenéis, vais). Ustedes takes third-person plural forms (ustedes hablan, comen, viven); it is the polite form in Spain and the only one in Latin America. At A1 you only need to recognise vosotros when you hear or read it; when you speak or write, ustedes is always accepted."
+      },
+      "examples": [
+        {
+          "target": "¿Vosotros habláis español?",
+          "translations": {
+            "vi": "Các bạn có nói tiếng Tây Ban Nha không?",
+            "en": "Do you (all) speak Spanish? (Spain, informal)"
+          },
+          "note": {
+            "vi": "vosotros",
+            "en": "vosotros"
+          }
+        },
+        {
+          "target": "¿Ustedes hablan español?",
+          "translations": {
+            "vi": "Các bạn / quý vị có nói tiếng Tây Ban Nha không?",
+            "en": "Do you (all) speak Spanish? (formal; Latin America)"
+          },
+          "note": {
+            "vi": "ustedes",
+            "en": "ustedes"
+          }
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": {
+        "vi": "Nghe thấy -áis, -éis, -ís là đang nói với «các bạn» ở Tây Ban Nha.",
+        "en": "-áis, -éis, -ís: someone in Spain is talking to \"you all\"."
+      },
+      "objectives": [
+        "es.obj.verbs.regular_present",
         "es.obj.interaction.everyday_conversation"
       ],
       "sourceRefs": [

@@ -49,10 +49,10 @@ describe("audio.ts plan --dry-run", () => {
 });
 
 describe("audio.ts plan --dry-run — pack + lexicon layers (P3b)", () => {
-  test("the Spanish generate plan covers the pack strings and every lexicon surface + example", () => {
+  test("the Spanish generate plan covers the pack strings, every lexicon surface + example and the reception clips (P3e)", () => {
     const { code, out } = run(["plan", "--lang", "es", "--layer", "all", "--mode", "generate", "--dry-run"]);
     expect(code).toBe(0);
-    expect(out).toContain("dry run ok (es, generate, pack+lexicon)");
+    expect(out).toContain("dry run ok (es, generate, pack+lexicon+reception)");
   });
 
   test("French pack audio is frozen at pipelineVersion 1: the plan reproduces the committed keys", () => {

@@ -6,10 +6,6 @@
   "nativeLanguage": "Vietnamese",
   "nativeCode": "vi",
   "flag": "🇪🇸",
-  "audio": {
-    "policy": "device-tts",
-    "reason": "The es-vi bundled audio is synthesised by the dispatch-only audio workflow (cast kokoro-ef_dora / kokoro-em_alex, selected by the 2026-10-21 canary) once the course strings are final; until that generate run is applied the course speaks through the device's Spanish text-to-speech voice."
-  },
   "sections": [
     {
       "id": "es-vi:section-1",
@@ -1424,12 +1420,12 @@
                   "type": "fillBlank",
                   "id": "es-vi:u1-l0-e8",
                   "sentence": "Gracias, ___.",
-                  "translation": "Cảm ơn ông.",
-                  "audioTarget": "Gracias, señor.",
+                  "translation": "Cảm ơn bà.",
+                  "audioTarget": "Gracias, señora.",
                   "options": [
-                    "señor",
-                    "gracias",
-                    "nada",
+                    "señora",
+                    "hombre",
+                    "día",
                     "té"
                   ],
                   "correct": 0
@@ -2267,7 +2263,7 @@
           "id": "es-vi:unit-3",
           "title": "Đồ ăn",
           "description": "Đồ ăn thức uống và cách gọi món đơn giản.",
-          "guidebook": "## Ăn gì, uống gì? 🍽️\n\nBạn sẽ gọi món nhiều lần khi đi du lịch, nên đây là nhóm từ rất có ích.\n\n### Đồ uống\n- *el café* — cà phê, *el té* — trà\n- *el jugo* — nước ép (ở Tây Ban Nha người ta còn nói *el zumo*)\n- *la cerveza* — bia\n\n### Món ăn\n- *el arroz* — cơm, gạo; *el pollo* — thịt gà; *la carne* — thịt\n- *el huevo* — quả trứng; *el queso* — phô mai; *la sopa* — món súp\n- *la fruta* — trái cây\n\n### Gọi món lịch sự\nMẫu câu đơn giản nhất: tên món + *por favor*.\n- *Un café, por favor.* — Cho một cà phê, làm ơn.\n- *Una sopa, por favor.* — Cho một món súp.\n\n*Un* đi với danh từ giống đực, *una* với danh từ giống cái — giống như *el* và *la*. Muốn xem thực đơn, hãy hỏi *¿El menú, por favor?*",
+          "guidebook": "## Ăn gì, uống gì? 🍽️\n\nBạn sẽ gọi món nhiều lần khi đi du lịch, nên đây là nhóm từ rất có ích.\n\n### Đồ uống\n- *el café* — cà phê, *el té* — trà\n- *el zumo* — nước ép\n- *la cerveza* — bia\n\n### Món ăn\n- *el arroz* — cơm, gạo; *el pollo* — thịt gà; *la carne* — thịt\n- *el huevo* — quả trứng; *el queso* — phô mai; *la sopa* — món súp\n- *la fruta* — trái cây\n\n### Gọi món lịch sự\nMẫu câu đơn giản nhất: tên món + *por favor*.\n- *Un café, por favor.* — Cho một cà phê, làm ơn.\n- *Una sopa, por favor.* — Cho một món súp.\n\n*Un* đi với danh từ giống đực, *una* với danh từ giống cái — giống như *el* và *la*. Muốn xem thực đơn, hãy hỏi *¿El menú, por favor?*",
           "words": [
             {
               "target": "el café",
@@ -2300,7 +2296,7 @@
               "emoji": "🍇"
             },
             {
-              "target": "el jugo",
+              "target": "el zumo",
               "native": "nước ép",
               "emoji": "🧃"
             },
@@ -2524,7 +2520,7 @@
                     "es",
                     "sopa",
                     "La",
-                    "jugo",
+                    "zumo",
                     "bebo",
                     "buena",
                     "y"
@@ -2757,7 +2753,7 @@
                       "emoji": "🧀"
                     },
                     {
-                      "text": "el jugo",
+                      "text": "el zumo",
                       "emoji": "🧃"
                     }
                   ],
@@ -2777,7 +2773,7 @@
                       "text": "el té"
                     },
                     {
-                      "text": "el jugo"
+                      "text": "el zumo"
                     },
                     {
                       "text": "la fruta"
@@ -2817,13 +2813,13 @@
                     "un",
                     "arroz",
                     "por",
-                    "jugo",
+                    "zumo",
                     "El"
                   ],
                   "answer": [
                     "Bebo",
                     "un",
-                    "jugo"
+                    "zumo"
                   ]
                 },
                 {
@@ -2889,8 +2885,8 @@
                   "type": "select",
                   "id": "es-vi:u2-l2-e0",
                   "mode": "targetToNative",
-                  "prompt": "el jugo",
-                  "audioTarget": "el jugo",
+                  "prompt": "el zumo",
+                  "audioTarget": "el zumo",
                   "options": [
                     {
                       "text": "nước ép",
@@ -2968,7 +2964,7 @@
                   "id": "es-vi:u2-l2-e3",
                   "mode": "nativeToTarget",
                   "prompt": "nước ép",
-                  "audioTarget": "el jugo",
+                  "audioTarget": "el zumo",
                   "options": [
                     {
                       "text": "el menú",
@@ -2983,7 +2979,7 @@
                       "emoji": "🍚"
                     },
                     {
-                      "text": "el jugo",
+                      "text": "el zumo",
                       "emoji": "🧃"
                     }
                   ],
@@ -3093,7 +3089,7 @@
                   "id": "es-vi:u2-l2-e9",
                   "pairs": [
                     {
-                      "target": "el jugo",
+                      "target": "el zumo",
                       "native": "nước ép"
                     },
                     {
@@ -3277,7 +3273,7 @@
                       "text": "el té"
                     },
                     {
-                      "text": "el jugo"
+                      "text": "el zumo"
                     },
                     {
                       "text": "el menú"
@@ -4507,7 +4503,7 @@
           "id": "es-vi:unit-5",
           "title": "Đi lại",
           "description": "Từ vựng và mẫu câu để đi lại trong thành phố.",
-          "guidebook": "## De viaje 🧳\n\nKhi đến một thành phố mới, bạn cần tìm đường, mua vé và hỏi chỗ.\n\n### Nơi chốn\n- *la ciudad* — thành phố, *la calle* — đường phố\n- *la estación* — nhà ga, *el aeropuerto* — sân bay\n- *el hotel* — khách sạn, *el museo* — bảo tàng\n\nĐể ý *la estación*: danh từ đuôi **-ión** hầu hết là giống cái (98,7 % trong 754 danh từ, theo dữ liệu từ điển của khoá học).\n\n### Đồ cần mang\n- *el boleto* — vé (ở Tây Ban Nha hay nói *el billete*)\n- *el mapa* — bản đồ: đuôi *-a* nhưng là giống đực\n- *la maleta* — va li, *el taxi* — xe taxi\n\n### Hỏi đường\n- *¿Dónde está el hotel?* — Khách sạn ở đâu?\n- *a la izquierda* — bên trái, *a la derecha* — bên phải\n\n*Está* là dạng của **estar** — động từ dùng cho vị trí. Bạn sẽ học kỹ hơn ở Phần 2.",
+          "guidebook": "## De viaje 🧳\n\nKhi đến một thành phố mới, bạn cần tìm đường, mua vé và hỏi chỗ.\n\n### Nơi chốn\n- *la ciudad* — thành phố, *la calle* — đường phố\n- *la estación* — nhà ga, *el aeropuerto* — sân bay\n- *el hotel* — khách sạn, *el museo* — bảo tàng\n\nĐể ý *la estación*: danh từ đuôi **-ión** hầu hết là giống cái (98,7 % trong 754 danh từ, theo dữ liệu từ điển của khoá học).\n\n### Đồ cần mang\n- *el billete* — vé\n- *el mapa* — bản đồ: đuôi *-a* nhưng là giống đực\n- *la maleta* — va li, *el taxi* — xe taxi\n\n### Hỏi đường\n- *¿Dónde está el hotel?* — Khách sạn ở đâu?\n- *a la izquierda* — bên trái, *a la derecha* — bên phải\n\n*Está* là dạng của **estar** — động từ dùng cho vị trí. Bạn sẽ học kỹ hơn ở Phần 2.",
           "words": [
             {
               "target": "la ciudad",
@@ -4540,7 +4536,7 @@
               "emoji": "🏛️"
             },
             {
-              "target": "el boleto",
+              "target": "el billete",
               "native": "vé",
               "emoji": "🎟️"
             },
@@ -4779,9 +4775,9 @@
                   "id": "es-vi:u4-l0-e8",
                   "sentence": "Quiero un ___.",
                   "translation": "Tôi muốn một vé.",
-                  "audioTarget": "Quiero un boleto.",
+                  "audioTarget": "Quiero un billete.",
                   "options": [
-                    "boleto",
+                    "billete",
                     "el",
                     "cerca",
                     "derecha"
@@ -4995,7 +4991,7 @@
                       "emoji": "🏨"
                     },
                     {
-                      "text": "el boleto",
+                      "text": "el billete",
                       "emoji": "🎟️"
                     }
                   ],
@@ -5009,7 +5005,7 @@
                   "audioTarget": "el museo",
                   "options": [
                     {
-                      "text": "el boleto"
+                      "text": "el billete"
                     },
                     {
                       "text": "la derecha"
@@ -5131,8 +5127,8 @@
                   "type": "select",
                   "id": "es-vi:u4-l2-e0",
                   "mode": "targetToNative",
-                  "prompt": "el boleto",
-                  "audioTarget": "el boleto",
+                  "prompt": "el billete",
+                  "audioTarget": "el billete",
                   "options": [
                     {
                       "text": "vé",
@@ -5210,7 +5206,7 @@
                   "id": "es-vi:u4-l2-e3",
                   "mode": "nativeToTarget",
                   "prompt": "vé",
-                  "audioTarget": "el boleto",
+                  "audioTarget": "el billete",
                   "options": [
                     {
                       "text": "el hotel",
@@ -5225,7 +5221,7 @@
                       "emoji": "⬅️"
                     },
                     {
-                      "text": "el boleto",
+                      "text": "el billete",
                       "emoji": "🎟️"
                     }
                   ],
@@ -5343,7 +5339,7 @@
                   "id": "es-vi:u4-l2-e9",
                   "pairs": [
                     {
-                      "target": "el boleto",
+                      "target": "el billete",
                       "native": "vé"
                     },
                     {
@@ -5469,7 +5465,7 @@
                   "audioTarget": "la maleta",
                   "options": [
                     {
-                      "text": "el boleto",
+                      "text": "el billete",
                       "emoji": "🎟️"
                     },
                     {
@@ -5524,7 +5520,7 @@
                       "text": "el mapa"
                     },
                     {
-                      "text": "el boleto"
+                      "text": "el billete"
                     },
                     {
                       "text": "el hotel"
@@ -5583,9 +5579,9 @@
                 {
                   "type": "fillBlank",
                   "id": "es-vi:u4-l3-e8",
-                  "sentence": "Tengo un boleto y un ___.",
+                  "sentence": "Tengo un billete y un ___.",
                   "translation": "Tôi có một vé và một tấm bản đồ.",
-                  "audioTarget": "Tengo un boleto y un mapa.",
+                  "audioTarget": "Tengo un billete y un mapa.",
                   "options": [
                     "taxi",
                     "un",
@@ -6509,7 +6505,7 @@
         },
         {
           "id": "es-vi:unit-b",
-          "title": "Những động từ hiệu quả cao",
+          "title": "Những động từ dùng nhiều nhất",
           "description": "Ser, estar, tener, ir và ba nhóm động từ quy tắc.",
           "guidebook": "## Động từ: trái tim của câu 💪\n\nTiếng Việt không chia động từ: \"tôi ăn, bạn ăn, họ ăn\". Tiếng Tây Ban Nha đổi đuôi động từ theo người làm. Học vài động từ thật kỹ, bạn nói được rất nhiều.\n\n### Ser và estar — hai chữ \"là\"\n- **ser**: bản chất, nguồn gốc, nghề nghiệp — *Soy de Vietnam.* Tôi đến từ Việt Nam.\n- **estar**: trạng thái và vị trí — *Estoy cansado.* Tôi mệt. *Estoy en casa.* Tôi ở nhà.\n- *soy, eres, es, somos, son* / *estoy, estás, está, estamos, están*\n\n### Tener và hay — hai chữ \"có\"\n- **tener**: có, sở hữu — *Tengo un hermano.*\n- **hay**: có, tồn tại — *Hay un banco cerca.* Gần đây có một ngân hàng.\n\n### Ba nhóm động từ quy tắc\nBỏ đuôi -ar / -er / -ir rồi thêm đuôi theo người:\n- *hablar* → *hablo, hablas, habla, hablamos, hablan*\n- *comer* → *como, comes, come, comemos, comen*\n- *vivir* → *vivo, vives, vive, vivimos, viven*\n\n### Ir a — tương lai gần\n**ir** (đi): *voy, vas, va, vamos, van*. Thêm *a* + động từ nguyên thể để nói dự định, như \"sẽ\": *Voy a comer.* — Tôi sẽ ăn.\n\n### Nhận biết quá khứ\nVài dạng quá khứ rất hay gặp: *hablé* (tôi đã nói), *comí* (tôi đã ăn), *fui* (tôi đã đi). Tiếng Việt thêm \"đã\"; tiếng Tây Ban Nha đổi chính động từ.",
           "words": [
@@ -7366,6 +7362,175 @@
                 },
                 {
                   "exercise": "es-vi:ub-l3-e9"
+                }
+              ]
+            },
+            {
+              "id": "es-vi:ub-l4",
+              "title": "Vosotros và ustedes",
+              "objectives": [
+                "es.obj.verbs.regular_present",
+                "es.obj.interaction.everyday_conversation"
+              ],
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e0",
+                  "mode": "targetToNative",
+                  "prompt": "vosotros",
+                  "audioTarget": "vosotros",
+                  "options": [
+                    {
+                      "text": "chúng tôi"
+                    },
+                    {
+                      "text": "các bạn (thân mật, ở Tây Ban Nha)"
+                    },
+                    {
+                      "text": "họ"
+                    },
+                    {
+                      "text": "bạn (một người)"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e1",
+                  "mode": "targetToNative",
+                  "prompt": "¿Vosotros habláis español?",
+                  "audioTarget": "¿Vosotros habláis español?",
+                  "options": [
+                    {
+                      "text": "Bạn có nói tiếng Tây Ban Nha không?"
+                    },
+                    {
+                      "text": "Họ có nói tiếng Tây Ban Nha không?"
+                    },
+                    {
+                      "text": "Các bạn có nói tiếng Tây Ban Nha không?"
+                    },
+                    {
+                      "text": "Chúng tôi nói tiếng Tây Ban Nha."
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Sois de Vietnam.",
+                  "audioTarget": "Sois de Vietnam.",
+                  "options": [
+                    {
+                      "text": "Các bạn đến từ Việt Nam."
+                    },
+                    {
+                      "text": "Chúng tôi đến từ Việt Nam."
+                    },
+                    {
+                      "text": "Tôi đến từ Việt Nam."
+                    },
+                    {
+                      "text": "Họ đến từ Việt Nam."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e3",
+                  "mode": "targetToNative",
+                  "prompt": "¿Ustedes son de Madrid?",
+                  "audioTarget": "¿Ustedes son de Madrid?",
+                  "options": [
+                    {
+                      "text": "Họ đang ở Madrid à?"
+                    },
+                    {
+                      "text": "Bạn có thích Madrid không?"
+                    },
+                    {
+                      "text": "Chúng tôi đến từ Madrid."
+                    },
+                    {
+                      "text": "Các bạn / quý vị đến từ Madrid à?"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "match",
+                  "id": "es-vi:ub-l4-e4",
+                  "pairs": [
+                    {
+                      "target": "sois",
+                      "native": "các bạn là"
+                    },
+                    {
+                      "target": "estáis",
+                      "native": "các bạn đang ở"
+                    },
+                    {
+                      "target": "tenéis",
+                      "native": "các bạn có"
+                    },
+                    {
+                      "target": "vais",
+                      "native": "các bạn đi"
+                    },
+                    {
+                      "target": "coméis",
+                      "native": "các bạn ăn"
+                    }
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ub-l4-e5",
+                  "mode": "targetToNative",
+                  "prompt": "Vosotros vivís en Sevilla.",
+                  "audioTarget": "Vosotros vivís en Sevilla.",
+                  "options": [
+                    {
+                      "text": "Chúng tôi sống ở Sevilla."
+                    },
+                    {
+                      "text": "Các bạn sống ở Sevilla."
+                    },
+                    {
+                      "text": "Họ sống ở Sevilla."
+                    },
+                    {
+                      "text": "Bạn sống ở Sevilla."
+                    }
+                  ],
+                  "correct": 1
+                }
+              ],
+              "flow": [
+                {
+                  "concept": "es:concept:vosotros-ustedes"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e0"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e1"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e2"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e3"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e4"
+                },
+                {
+                  "exercise": "es-vi:ub-l4-e5"
                 }
               ]
             }
@@ -8986,7 +9151,7 @@
           "id": "es-vi:unit-e",
           "title": "Dấu và trọng âm",
           "description": "Trọng âm, dấu sắc, r và rr — viết và nghe cho đúng.",
-          "guidebook": "## Dấu sắc không phải thanh điệu 🎼\n\nTiếng Việt có sáu thanh điệu. Tiếng Tây Ban Nha không có thanh điệu mà có **trọng âm**: một âm tiết trong từ được đọc mạnh hơn. Dấu *´* chỉ chỗ trọng âm khi từ không theo quy tắc.\n\n### Quy tắc trọng âm\n- Từ tận cùng bằng **nguyên âm, -n, -s**: trọng âm ở âm tiết **áp chót** — *ca-sa, ha-blan*.\n- Từ tận cùng bằng **phụ âm khác**: trọng âm ở âm tiết **cuối** — *ciu-dad, ha-blar*.\n- Không theo quy tắc thì có dấu: *ca-fé, ár-bol, te-lé-fo-no, au-to-bús*.\n\n### Dấu đổi nghĩa\n- *tú* (bạn) / *tu* (của bạn); *él* (anh ấy) / *el* (mạo từ)\n- *sí* (vâng) / *si* (nếu); *papá* (bố) / *papa* (khoai tây)\n\n### R và rr\n- **r** giữa từ là một cú bật lưỡi nhẹ: *caro* (đắt), *pero* (nhưng)\n- **rr** và **r** đầu từ là âm rung kéo dài: *perro* (con chó), *rojo* (đỏ)\nTiếng Việt không có âm rung này; hãy luyện từ từ, đừng ngại.\n\n### Dấu câu đầu câu\nCâu hỏi mở bằng **¿** và câu cảm thán mở bằng **¡**: *¿Cómo estás?* *¡Hola!*",
+          "guidebook": "## Dấu sắc không phải thanh điệu 🎼\n\nTiếng Việt có sáu thanh điệu. Tiếng Tây Ban Nha không có thanh điệu mà có **trọng âm**: một âm tiết trong từ được đọc mạnh hơn. Dấu *´* chỉ chỗ trọng âm khi từ không theo quy tắc.\n\n### Quy tắc trọng âm\n- Từ tận cùng bằng **nguyên âm, -n, -s**: trọng âm ở âm tiết **áp chót** — *ca-sa, ha-blan*.\n- Từ tận cùng bằng **phụ âm khác**: trọng âm ở âm tiết **cuối** — *ciu-dad, ha-blar*.\n- Không theo quy tắc thì có dấu: *ca-fé, ár-bol, te-lé-fo-no, au-to-bús*.\n\n### Dấu đổi nghĩa\n- *tú* (bạn) / *tu* (của bạn); *él* (anh ấy) / *el* (mạo từ)\n- *sí* (vâng) / *si* (nếu); *papá* (bố) / *papa* (Giáo hoàng; ở Mỹ Latinh còn là khoai tây — ở Tây Ban Nha là *patata*)\n\n### R và rr\n- **r** giữa từ là một cú bật lưỡi nhẹ: *caro* (đắt), *pero* (nhưng)\n- **rr** và **r** đầu từ là âm rung kéo dài: *perro* (con chó), *rojo* (đỏ)\nTiếng Việt không có âm rung này; hãy luyện từ từ, đừng ngại.\n\n### Dấu câu đầu câu\nCâu hỏi mở bằng **¿** và câu cảm thán mở bằng **¡**: *¿Cómo estás?* *¡Hola!*",
           "words": [
             {
               "target": "el café",
@@ -9414,7 +9579,7 @@
                       "text": "đắt"
                     },
                     {
-                      "text": "xe hơi"
+                      "text": "mới"
                     }
                   ],
                   "correct": 1
@@ -9485,10 +9650,10 @@
                   "type": "fillBlank",
                   "id": "es-vi:ue-l2-e5",
                   "sentence": "El taxi es ___.",
-                  "translation": "Chiếc taxi đắt.",
+                  "translation": "Đi taxi đắt.",
                   "audioTarget": "El taxi es caro.",
                   "options": [
-                    "carro",
+                    "coche",
                     "perro",
                     "rojo",
                     "caro"
@@ -9732,7 +9897,7 @@
           "id": "es-vi:unit-f",
           "title": "¡Escucha!",
           "description": "Luyện tai: từ và cụm từ quen thuộc, chỉ bằng âm thanh.",
-          "guidebook": "## Nghe trước, đọc sau 👂\n\nTrong đơn vị này bạn chỉ nghe. Mỗi đoạn âm thanh được đọc chậm và rõ bởi giọng tổng hợp, có hai giọng khác nhau (một nam, một nữ) để tai bạn quen với nhiều cách nói.\n\n### Cách nghe hiệu quả\n- Nghe cả đoạn một lần, đừng dừng ở từ khó.\n- Nghe lại và tìm **từ khóa**: người, nơi chốn, đồ vật.\n- Đoán từ ngữ cảnh: *buenos días* thường nghe vào buổi sáng.\n\n### Âm hay gặp\n- *j* và *g* trước *e, i* đọc gần như \"h\" bật mạnh trong cổ: *jugo, gente*.\n- *ll* và *y* thường đọc giống nhau: *calle, yo*.\n- *h* không bao giờ đọc: *hola, hotel*.\n\n### Buổi sáng và buổi tối\n*La mañana* là buổi sáng, *la noche* là buổi tối. Hai từ này cũng xuất hiện trong lời chào bạn đã học: *buenos días, buenas noches*.",
+          "guidebook": "## Nghe trước, đọc sau 👂\n\nTrong đơn vị này bạn chỉ nghe. Mỗi đoạn âm thanh được đọc chậm và rõ bởi giọng tổng hợp, có hai giọng khác nhau (một nam, một nữ) để tai bạn quen với nhiều cách nói.\n\n### Cách nghe hiệu quả\n- Nghe cả đoạn một lần, đừng dừng ở từ khó.\n- Nghe lại và tìm **từ khóa**: người, nơi chốn, đồ vật.\n- Đoán từ ngữ cảnh: *buenos días* thường nghe vào buổi sáng.\n\n### Âm hay gặp\n- *j* và *g* trước *e, i* đọc gần như \"h\" bật mạnh trong cổ: *jamón, gente*.\n- *ll* và *y* thường đọc giống nhau: *calle, yo*.\n- *h* không bao giờ đọc: *hola, hotel*.\n\n### Buổi sáng và buổi tối\n*La mañana* là buổi sáng, *la noche* là buổi tối. Hai từ này cũng xuất hiện trong lời chào bạn đã học: *buenos días, buenas noches*.",
           "words": [
             {
               "target": "la mañana",
@@ -9835,7 +10000,7 @@
                       "text": "la estación"
                     },
                     {
-                      "text": "el boleto"
+                      "text": "el billete"
                     },
                     {
                       "text": "el tren"
@@ -10058,16 +10223,16 @@
                   "prompt": "hôm nay",
                   "options": [
                     {
-                      "text": "la noche"
+                      "text": "aquí"
                     },
                     {
                       "text": "hoy"
                     },
                     {
-                      "text": "la mañana"
+                      "text": "pronto"
                     },
                     {
-                      "text": "la semana"
+                      "text": "siempre"
                     }
                   ],
                   "correct": 1,
@@ -10267,7 +10432,7 @@
                   "prompt": "buổi sáng / ngày mai",
                   "options": [
                     {
-                      "text": "hoy"
+                      "text": "la tarde"
                     },
                     {
                       "text": "el día"
@@ -10311,8 +10476,8 @@
                 {
                   "type": "dictation",
                   "id": "es-vi:uf-l3-e5",
-                  "clipId": "es.clip.uf_dictado_hola",
-                  "answer": "hola",
+                  "clipId": "es.clip.uf_dictado_gracias",
+                  "answer": "gracias",
                   "alternatives": [],
                   "objectiveTargets": [
                     "es.obj.listening.familiar_words"
@@ -10453,10 +10618,10 @@
                   "prompt": "abierto",
                   "options": [
                     {
-                      "text": "đóng cửa / đóng"
+                      "text": "đang đóng cửa"
                     },
                     {
-                      "text": "mở"
+                      "text": "đang mở cửa"
                     },
                     {
                       "text": "miễn phí"
@@ -10520,7 +10685,7 @@
                       "text": "el sábado"
                     },
                     {
-                      "text": "hoy"
+                      "text": "el lunes"
                     }
                   ],
                   "correct": 2,
@@ -10583,7 +10748,7 @@
                   "prompt": "el domingo",
                   "options": [
                     {
-                      "text": "hôm nay"
+                      "text": "thứ Ba"
                     },
                     {
                       "text": "thứ Bảy"
@@ -10737,16 +10902,16 @@
                   "prompt": "hôm nay",
                   "options": [
                     {
-                      "text": "la mañana"
+                      "text": "después"
                     },
                     {
                       "text": "hoy"
                     },
                     {
-                      "text": "la noche"
+                      "text": "pronto"
                     },
                     {
-                      "text": "el sábado"
+                      "text": "siempre"
                     }
                   ],
                   "correct": 1,
@@ -11391,9 +11556,11 @@
                 {
                   "type": "dictation",
                   "id": "es-vi:uh-l3-e3",
-                  "clipId": "es.clip.uf_dictado_tren",
-                  "answer": "el tren",
-                  "alternatives": [],
+                  "clipId": "es.clip.uh_dictado_anden",
+                  "answer": "el andén dos",
+                  "alternatives": [
+                    "andén dos"
+                  ],
                   "objectiveTargets": [
                     "es.obj.listening.familiar_words"
                   ]
@@ -12632,6 +12799,46 @@
                   "objectiveTargets": [
                     "es.obj.speaking.formulaic"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uk-l0-e3",
+                  "mode": "targetToNative",
+                  "prompt": "¡Buenos días!",
+                  "audioTarget": "¡Buenos días!",
+                  "options": [
+                    {
+                      "text": "Chào buổi sáng!"
+                    },
+                    {
+                      "text": "Chúc ngủ ngon!"
+                    },
+                    {
+                      "text": "Tạm biệt!"
+                    },
+                    {
+                      "text": "Cảm ơn!"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:uk-l0-e4",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: xin chào, chào buổi sáng",
+                  "tokens": [
+                    "días",
+                    "adiós",
+                    "noches",
+                    "buenos",
+                    "Hola"
+                  ],
+                  "answer": [
+                    "Hola",
+                    "buenos",
+                    "días"
+                  ]
                 }
               ]
             },
@@ -12694,6 +12901,41 @@
                   "objectiveTargets": [
                     "es.obj.speaking.formulaic"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uk-l1-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Por favor",
+                  "audioTarget": "Por favor",
+                  "options": [
+                    {
+                      "text": "Xin lỗi"
+                    },
+                    {
+                      "text": "Làm ơn"
+                    },
+                    {
+                      "text": "Cảm ơn"
+                    },
+                    {
+                      "text": "Tạm biệt"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uk-l1-e4",
+                  "sentence": "Muchas ___, señor.",
+                  "translation": "Cảm ơn ông rất nhiều.",
+                  "audioTarget": "Muchas gracias, señor.",
+                  "options": [
+                    "gracias",
+                    "hola",
+                    "adiós"
+                  ],
+                  "correct": 0
                 }
               ]
             },
@@ -12744,6 +12986,68 @@
                   "allowedAttempts": 2,
                   "objectiveTargets": [
                     "es.obj.speaking.formulaic"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uk-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Buenas tardes",
+                  "audioTarget": "Buenas tardes",
+                  "options": [
+                    {
+                      "text": "Chào buổi sáng"
+                    },
+                    {
+                      "text": "Chúc ngủ ngon"
+                    },
+                    {
+                      "text": "Chào buổi chiều"
+                    },
+                    {
+                      "text": "Hẹn gặp lại"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uk-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Buenas noches",
+                  "audioTarget": "Buenas noches",
+                  "options": [
+                    {
+                      "text": "Tạm biệt"
+                    },
+                    {
+                      "text": "Xin lỗi"
+                    },
+                    {
+                      "text": "Chào buổi chiều"
+                    },
+                    {
+                      "text": "Chào buổi tối"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:uk-l2-e4",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tạm biệt, hẹn gặp lại",
+                  "tokens": [
+                    "luego",
+                    "gracias",
+                    "hasta",
+                    "Adiós",
+                    "noches"
+                  ],
+                  "answer": [
+                    "Adiós",
+                    "hasta",
+                    "luego"
                   ]
                 }
               ]
@@ -12797,6 +13101,52 @@
                     }
                   ],
                   "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uk-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Perdón",
+                  "audioTarget": "Perdón",
+                  "options": [
+                    {
+                      "text": "Xin lỗi"
+                    },
+                    {
+                      "text": "Cảm ơn"
+                    },
+                    {
+                      "text": "Xin chào"
+                    },
+                    {
+                      "text": "Làm ơn"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uk-l3-e3",
+                  "sentence": "Un café, por ___.",
+                  "translation": "Cho tôi một cà phê, làm ơn.",
+                  "audioTarget": "Un café, por favor.",
+                  "options": [
+                    "gracias",
+                    "favor",
+                    "perdón"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uk-l3-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: xin lỗi",
+                  "audioTarget": "Perdón",
+                  "answer": "Perdón",
+                  "alternatives": [
+                    "Perdone"
+                  ]
                 }
               ]
             }
@@ -12888,6 +13238,46 @@
                   "objectiveTargets": [
                     "es.obj.speaking.self_intro"
                   ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:ul-l0-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tôi sống ở Madrid",
+                  "tokens": [
+                    "Madrid",
+                    "Vivo",
+                    "Barcelona",
+                    "en",
+                    "Soy"
+                  ],
+                  "answer": [
+                    "Vivo",
+                    "en",
+                    "Madrid"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ul-l0-e4",
+                  "mode": "targetToNative",
+                  "prompt": "Me llamo Lucía.",
+                  "audioTarget": "Me llamo Lucía.",
+                  "options": [
+                    {
+                      "text": "Lucía đang ở khách sạn."
+                    },
+                    {
+                      "text": "Tôi tên là Lucía."
+                    },
+                    {
+                      "text": "Tôi là bạn của Lucía."
+                    },
+                    {
+                      "text": "Tôi sống với Lucía."
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -12931,6 +13321,57 @@
                   "allowedAttempts": 2,
                   "objectiveTargets": [
                     "es.obj.speaking.self_intro"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ul-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Hablo español.",
+                  "audioTarget": "Hablo español.",
+                  "options": [
+                    {
+                      "text": "Tôi học tiếng Anh."
+                    },
+                    {
+                      "text": "Tôi thích Tây Ban Nha."
+                    },
+                    {
+                      "text": "Tôi nói tiếng Tây Ban Nha."
+                    },
+                    {
+                      "text": "Tôi sống ở Tây Ban Nha."
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:ul-l1-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tôi đến từ Việt Nam",
+                  "tokens": [
+                    "de",
+                    "Vietnam",
+                    "Soy",
+                    "Estoy",
+                    "en"
+                  ],
+                  "answer": [
+                    "Soy",
+                    "de",
+                    "Vietnam"
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:ul-l1-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tôi nói tiếng Tây Ban Nha.",
+                  "audioTarget": "Hablo español.",
+                  "answer": "Hablo español.",
+                  "alternatives": [
+                    "Yo hablo español."
                   ]
                 }
               ]
@@ -12985,6 +13426,61 @@
                   "objectiveTargets": [
                     "es.obj.speaking.self_intro"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ul-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Me gusta el café.",
+                  "audioTarget": "Me gusta el café.",
+                  "options": [
+                    {
+                      "text": "Cà phê rất ngon."
+                    },
+                    {
+                      "text": "Tôi uống cà phê."
+                    },
+                    {
+                      "text": "Tôi không thích cà phê."
+                    },
+                    {
+                      "text": "Tôi thích cà phê."
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:ul-l2-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tôi làm việc vào buổi sáng",
+                  "tokens": [
+                    "mañana",
+                    "Vivo",
+                    "Trabajo",
+                    "por",
+                    "la",
+                    "noche"
+                  ],
+                  "answer": [
+                    "Trabajo",
+                    "por",
+                    "la",
+                    "mañana"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:ul-l2-e4",
+                  "sentence": "Me ___ el té.",
+                  "translation": "Tôi thích trà.",
+                  "audioTarget": "Me gusta el té.",
+                  "options": [
+                    "llamo",
+                    "vivo",
+                    "gusta"
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -13038,6 +13534,59 @@
                     }
                   ],
                   "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ul-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Voy a la estación.",
+                  "audioTarget": "Voy a la estación.",
+                  "options": [
+                    {
+                      "text": "Tôi đi đến nhà ga."
+                    },
+                    {
+                      "text": "Tôi sống gần nhà ga."
+                    },
+                    {
+                      "text": "Tôi ở nhà ga."
+                    },
+                    {
+                      "text": "Tôi đi đến khách sạn."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:ul-l3-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tôi đi đến khách sạn",
+                  "tokens": [
+                    "la",
+                    "hotel",
+                    "Voy",
+                    "al",
+                    "Vivo"
+                  ],
+                  "answer": [
+                    "Voy",
+                    "al",
+                    "hotel"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:ul-l3-e4",
+                  "sentence": "Voy ___ la estación.",
+                  "translation": "Tôi đi đến nhà ga.",
+                  "audioTarget": "Voy a la estación.",
+                  "options": [
+                    "a",
+                    "en",
+                    "de"
+                  ],
+                  "correct": 0
                 }
               ]
             }
@@ -13055,7 +13604,7 @@
               "emoji": "🚆"
             },
             {
-              "target": "el boleto",
+              "target": "el billete",
               "native": "vé",
               "emoji": "🎟️"
             },
@@ -13083,8 +13632,9 @@
                   "id": "es-vi:um-l0-e0",
                   "speechItemId": "es.speak.m_rep_precio",
                   "modelClipId": "es.clip.uh_precio_boleto",
-                  "target": "El boleto cuesta dieciséis euros.",
+                  "target": "El billete cuesta dieciséis euros.",
                   "acceptedVariants": [
+                    "El billete cuesta dieciséis euros.",
                     "El boleto cuesta dieciséis euros."
                   ],
                   "objectiveTargets": [
@@ -13129,6 +13679,55 @@
                   "allowedAttempts": 2,
                   "objectiveTargets": [
                     "es.obj.speaking.give_info"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:um-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Hay dos gatos.",
+                  "audioTarget": "Hay dos gatos.",
+                  "options": [
+                    {
+                      "text": "Có ba con mèo."
+                    },
+                    {
+                      "text": "Có hai con mèo."
+                    },
+                    {
+                      "text": "Tôi có hai con mèo."
+                    },
+                    {
+                      "text": "Có hai con chó."
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:um-l0-e3",
+                  "mode": "produceTarget",
+                  "prompt": "Viết số này bằng chữ tiếng Tây Ban Nha: 16",
+                  "audioTarget": "dieciséis",
+                  "answer": "dieciséis",
+                  "alternatives": []
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:um-l0-e4",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: có ba con chó",
+                  "tokens": [
+                    "perros",
+                    "tres",
+                    "Hay",
+                    "gatos",
+                    "dos"
+                  ],
+                  "answer": [
+                    "Hay",
+                    "tres",
+                    "perros"
                   ]
                 }
               ]
@@ -13181,6 +13780,68 @@
                   "objectiveTargets": [
                     "es.obj.speaking.give_info"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:um-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Cuesta tres euros.",
+                  "audioTarget": "Cuesta tres euros.",
+                  "options": [
+                    {
+                      "text": "Giá hai euro."
+                    },
+                    {
+                      "text": "Tôi có ba euro."
+                    },
+                    {
+                      "text": "Giá ba euro."
+                    },
+                    {
+                      "text": "Giá mười ba euro."
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:um-l1-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: giá năm euro",
+                  "tokens": [
+                    "cinco",
+                    "euros",
+                    "tres",
+                    "Hay",
+                    "Cuesta"
+                  ],
+                  "answer": [
+                    "Cuesta",
+                    "cinco",
+                    "euros"
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:um-l1-e3",
+                  "mode": "produceTarget",
+                  "prompt": "Viết số này bằng chữ tiếng Tây Ban Nha: 15",
+                  "audioTarget": "quince",
+                  "answer": "quince",
+                  "alternatives": []
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:um-l1-e4",
+                  "sentence": "El billete ___ diez euros.",
+                  "translation": "Vé giá mười euro.",
+                  "audioTarget": "El billete cuesta diez euros.",
+                  "options": [
+                    "hay",
+                    "cuesta",
+                    "es"
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -13243,6 +13904,65 @@
                   "objectiveTargets": [
                     "es.obj.speaking.give_info"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:um-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "El tren sale a las nueve.",
+                  "audioTarget": "El tren sale a las nueve.",
+                  "options": [
+                    {
+                      "text": "Tàu đến lúc chín giờ."
+                    },
+                    {
+                      "text": "Tàu chạy lúc mười giờ."
+                    },
+                    {
+                      "text": "Xe buýt chạy lúc chín giờ."
+                    },
+                    {
+                      "text": "Tàu chạy lúc chín giờ."
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:um-l2-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: bảo tàng mở cửa lúc mười giờ",
+                  "tokens": [
+                    "las",
+                    "abre",
+                    "once",
+                    "cierra",
+                    "diez",
+                    "museo",
+                    "a",
+                    "El"
+                  ],
+                  "answer": [
+                    "El",
+                    "museo",
+                    "abre",
+                    "a",
+                    "las",
+                    "diez"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:um-l2-e4",
+                  "sentence": "¿A qué ___ sale el tren?",
+                  "translation": "Tàu chạy lúc mấy giờ?",
+                  "audioTarget": "¿A qué hora sale el tren?",
+                  "options": [
+                    "año",
+                    "día",
+                    "hora"
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -13312,6 +14032,57 @@
                     }
                   ],
                   "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:um-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Hay siete días en una semana.",
+                  "audioTarget": "Hay siete días en una semana.",
+                  "options": [
+                    {
+                      "text": "Một tuần có bảy ngày."
+                    },
+                    {
+                      "text": "Hôm nay là thứ Bảy."
+                    },
+                    {
+                      "text": "Có bảy người."
+                    },
+                    {
+                      "text": "Một tháng có bảy ngày."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:um-l3-e3",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: Chủ nhật",
+                  "audioTarget": "el domingo",
+                  "answer": "el domingo",
+                  "alternatives": [
+                    "domingo"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:um-l3-e4",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: hôm nay là thứ Hai",
+                  "tokens": [
+                    "es",
+                    "Hoy",
+                    "martes",
+                    "mañana",
+                    "lunes"
+                  ],
+                  "answer": [
+                    "Hoy",
+                    "es",
+                    "lunes"
+                  ]
                 }
               ]
             }
@@ -13386,6 +14157,59 @@
                   "objectiveTargets": [
                     "es.obj.speaking.describe"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:un-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Es un perro.",
+                  "audioTarget": "Es un perro.",
+                  "options": [
+                    {
+                      "text": "Tôi có một con chó."
+                    },
+                    {
+                      "text": "Đó là một con chó."
+                    },
+                    {
+                      "text": "Đó là một con mèo."
+                    },
+                    {
+                      "text": "Con chó ở trong nhà."
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:un-l0-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: đó là một con mèo",
+                  "tokens": [
+                    "una",
+                    "Es",
+                    "gato",
+                    "un",
+                    "perro"
+                  ],
+                  "answer": [
+                    "Es",
+                    "un",
+                    "gato"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:un-l0-e4",
+                  "sentence": "El café está ___ por la noche.",
+                  "translation": "Quán cà phê mở cửa vào buổi tối.",
+                  "audioTarget": "El café está abierto por la noche.",
+                  "options": [
+                    "abierto",
+                    "cerrada",
+                    "abierta"
+                  ],
+                  "correct": 0
                 }
               ]
             },
@@ -13439,6 +14263,59 @@
                   "objectiveTargets": [
                     "es.obj.speaking.describe"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:un-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "La puerta está cerrada.",
+                  "audioTarget": "La puerta está cerrada.",
+                  "options": [
+                    {
+                      "text": "Nhà ga đóng cửa."
+                    },
+                    {
+                      "text": "Cửa hàng đóng cửa."
+                    },
+                    {
+                      "text": "Cửa đang đóng."
+                    },
+                    {
+                      "text": "Cửa đang mở."
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:un-l1-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: đó là nhà ga",
+                  "tokens": [
+                    "la",
+                    "estación",
+                    "el",
+                    "tienda",
+                    "Es"
+                  ],
+                  "answer": [
+                    "Es",
+                    "la",
+                    "estación"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:un-l1-e4",
+                  "sentence": "La tienda está ___.",
+                  "translation": "Cửa hàng đang mở cửa.",
+                  "audioTarget": "La tienda está abierta.",
+                  "options": [
+                    "abiertos",
+                    "abierta",
+                    "abierto"
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -13492,6 +14369,59 @@
                   "objectiveTargets": [
                     "es.obj.speaking.describe"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:un-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "La tienda está abierta.",
+                  "audioTarget": "La tienda está abierta.",
+                  "options": [
+                    {
+                      "text": "Nhà ga đang mở cửa."
+                    },
+                    {
+                      "text": "Cửa hàng ở gần đây."
+                    },
+                    {
+                      "text": "Cửa hàng đóng cửa."
+                    },
+                    {
+                      "text": "Cửa hàng đang mở cửa."
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:un-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Es por la mañana.",
+                  "audioTarget": "Es por la mañana.",
+                  "options": [
+                    {
+                      "text": "Vào buổi sáng."
+                    },
+                    {
+                      "text": "Ngày mai là thứ Bảy."
+                    },
+                    {
+                      "text": "Bây giờ là buổi tối."
+                    },
+                    {
+                      "text": "Hôm nay trời nắng."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:un-l2-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: Cửa đang đóng.",
+                  "audioTarget": "La puerta está cerrada.",
+                  "answer": "La puerta está cerrada.",
+                  "alternatives": []
                 }
               ]
             },
@@ -13503,17 +14433,26 @@
               ],
               "exercises": [
                 {
-                  "type": "speakRepetition",
+                  "type": "select",
                   "id": "es-vi:un-l3-e0",
-                  "speechItemId": "es.speak.n_rep_abierto",
-                  "modelClipId": "es.clip.uf_noche_frase",
-                  "target": "El café está abierto por la noche.",
-                  "acceptedVariants": [
-                    "El café está abierto por la noche."
+                  "mode": "targetToNative",
+                  "prompt": "El café está abierto por la noche.",
+                  "audioTarget": "El café está abierto por la noche.",
+                  "options": [
+                    {
+                      "text": "Quán cà phê mở cửa vào buổi tối."
+                    },
+                    {
+                      "text": "Quán cà phê mở cửa vào buổi sáng."
+                    },
+                    {
+                      "text": "Quán cà phê đóng cửa vào buổi tối."
+                    },
+                    {
+                      "text": "Cửa hàng mở cửa vào buổi tối."
+                    }
                   ],
-                  "objectiveTargets": [
-                    "es.obj.speaking.describe"
-                  ]
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -13536,6 +14475,52 @@
                     }
                   ],
                   "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:un-l3-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: con chó ở nhà ga",
+                  "tokens": [
+                    "El",
+                    "perro",
+                    "la",
+                    "la",
+                    "en",
+                    "estación",
+                    "casa",
+                    "está"
+                  ],
+                  "answer": [
+                    "El",
+                    "perro",
+                    "está",
+                    "en",
+                    "la",
+                    "estación"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:un-l3-e3",
+                  "sentence": "La puerta ___ cerrada.",
+                  "translation": "Cửa đang đóng.",
+                  "audioTarget": "La puerta está cerrada.",
+                  "options": [
+                    "es",
+                    "hay",
+                    "está"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:un-l3-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: đó là một con chó.",
+                  "audioTarget": "Es un perro.",
+                  "answer": "Es un perro.",
+                  "alternatives": []
                 }
               ]
             }
@@ -13638,6 +14623,53 @@
                   "objectiveTargets": [
                     "es.obj.writing.personal_info"
                   ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uo-l0-e2",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tôi tên là Lucía.",
+                  "audioTarget": "Me llamo Lucía.",
+                  "answer": "Me llamo Lucía.",
+                  "alternatives": [
+                    "Mi nombre es Lucía.",
+                    "Soy Lucía."
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uo-l0-e3",
+                  "sentence": "Me ___ Lucía.",
+                  "translation": "Tôi tên là Lucía.",
+                  "audioTarget": "Me llamo Lucía.",
+                  "options": [
+                    "llamo",
+                    "vivo",
+                    "tengo"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uo-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "tên",
+                  "audioTarget": "el nombre",
+                  "options": [
+                    {
+                      "text": "el año"
+                    },
+                    {
+                      "text": "el nombre"
+                    },
+                    {
+                      "text": "la ciudad"
+                    },
+                    {
+                      "text": "la calle"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -13701,6 +14733,50 @@
                   "objectiveTargets": [
                     "es.obj.writing.personal_info"
                   ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uo-l1-e2",
+                  "sentence": "___ veintidós años.",
+                  "translation": "Tôi 22 tuổi.",
+                  "audioTarget": "Tengo veintidós años.",
+                  "options": [
+                    "Estoy",
+                    "Tengo",
+                    "Soy"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uo-l1-e3",
+                  "mode": "produceTarget",
+                  "prompt": "Viết số này bằng chữ tiếng Tây Ban Nha: 22",
+                  "audioTarget": "veintidós",
+                  "answer": "veintidós",
+                  "alternatives": []
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uo-l1-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "năm",
+                  "audioTarget": "el año",
+                  "options": [
+                    {
+                      "text": "el día"
+                    },
+                    {
+                      "text": "la semana"
+                    },
+                    {
+                      "text": "el año"
+                    },
+                    {
+                      "text": "la hora"
+                    }
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -13762,6 +14838,52 @@
                   ],
                   "objectiveTargets": [
                     "es.obj.writing.personal_info"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uo-l2-e2",
+                  "sentence": "Vivo ___ Madrid.",
+                  "translation": "Tôi sống ở Madrid.",
+                  "audioTarget": "Vivo en Madrid.",
+                  "options": [
+                    "de",
+                    "a",
+                    "en"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uo-l2-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "thành phố",
+                  "audioTarget": "la ciudad",
+                  "options": [
+                    {
+                      "text": "la calle"
+                    },
+                    {
+                      "text": "la plaza"
+                    },
+                    {
+                      "text": "la casa"
+                    },
+                    {
+                      "text": "la ciudad"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uo-l2-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tôi sống ở Sevilla.",
+                  "audioTarget": "Vivo en Sevilla.",
+                  "answer": "Vivo en Sevilla.",
+                  "alternatives": [
+                    "Yo vivo en Sevilla."
                   ]
                 }
               ]
@@ -13868,6 +14990,67 @@
                   "objectiveTargets": [
                     "es.obj.writing.personal_info"
                   ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:uo-l3-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tôi tên là Lucía và tôi sống ở Madrid",
+                  "tokens": [
+                    "Me",
+                    "en",
+                    "tengo",
+                    "Madrid",
+                    "de",
+                    "vivo",
+                    "Lucía",
+                    "y",
+                    "llamo"
+                  ],
+                  "answer": [
+                    "Me",
+                    "llamo",
+                    "Lucía",
+                    "y",
+                    "vivo",
+                    "en",
+                    "Madrid"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uo-l3-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Tengo veintidós años y vivo en Madrid.",
+                  "audioTarget": "Tengo veintidós años y vivo en Madrid.",
+                  "options": [
+                    {
+                      "text": "Tôi 22 tuổi và sống ở Madrid."
+                    },
+                    {
+                      "text": "Tôi 12 tuổi và sống ở Madrid."
+                    },
+                    {
+                      "text": "Tôi đã sống ở Madrid 22 năm."
+                    },
+                    {
+                      "text": "Tôi 22 tuổi và làm việc ở Madrid."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uo-l3-e4",
+                  "sentence": "Me llamo Lucía ___ vivo en Madrid.",
+                  "translation": "Tôi tên là Lucía và tôi sống ở Madrid.",
+                  "audioTarget": "Me llamo Lucía y vivo en Madrid.",
+                  "options": [
+                    "y",
+                    "pero",
+                    "o"
+                  ],
+                  "correct": 0
                 }
               ]
             }
@@ -13953,6 +15136,50 @@
                   "objectiveTargets": [
                     "es.obj.writing.phrases_sentences"
                   ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:up-l0-e2",
+                  "sentence": "Me gusta el ___.",
+                  "translation": "Tôi thích cà phê.",
+                  "audioTarget": "Me gusta el café.",
+                  "options": [
+                    "gato",
+                    "café",
+                    "nombre"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:up-l0-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Me gusta el té.",
+                  "audioTarget": "Me gusta el té.",
+                  "options": [
+                    {
+                      "text": "Tôi uống trà."
+                    },
+                    {
+                      "text": "Tôi thích trà."
+                    },
+                    {
+                      "text": "Tôi không thích trà."
+                    },
+                    {
+                      "text": "Tôi thích cà phê."
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:up-l0-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tôi thích nước.",
+                  "audioTarget": "Me gusta el agua.",
+                  "answer": "Me gusta el agua.",
+                  "alternatives": []
                 }
               ]
             },
@@ -14014,6 +15241,89 @@
                   "objectiveTargets": [
                     "es.obj.writing.phrases_sentences"
                   ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:up-l1-e1",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tôi thích trà và bánh mì",
+                  "tokens": [
+                    "gusta",
+                    "té",
+                    "y",
+                    "Me",
+                    "el",
+                    "pan",
+                    "gato",
+                    "café",
+                    "el"
+                  ],
+                  "answer": [
+                    "Me",
+                    "gusta",
+                    "el",
+                    "té",
+                    "y",
+                    "el",
+                    "pan"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:up-l1-e2",
+                  "sentence": "Bebo ___ y como pan.",
+                  "translation": "Tôi uống trà và ăn bánh mì.",
+                  "audioTarget": "Bebo té y como pan.",
+                  "options": [
+                    "perro",
+                    "nombre",
+                    "té"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:up-l1-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Me gusta el pan.",
+                  "audioTarget": "Me gusta el pan.",
+                  "options": [
+                    {
+                      "text": "Tôi thích cà phê."
+                    },
+                    {
+                      "text": "Bánh mì ở trên bàn."
+                    },
+                    {
+                      "text": "Tôi thích bánh mì."
+                    },
+                    {
+                      "text": "Tôi ăn bánh mì."
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:up-l1-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "uống",
+                  "audioTarget": "beber",
+                  "options": [
+                    {
+                      "text": "comer"
+                    },
+                    {
+                      "text": "vivir"
+                    },
+                    {
+                      "text": "hablar"
+                    },
+                    {
+                      "text": "beber"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             },
@@ -14083,6 +15393,52 @@
                   ],
                   "objectiveTargets": [
                     "es.obj.writing.phrases_sentences"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:up-l2-e2",
+                  "sentence": "Él ___ en Sevilla.",
+                  "translation": "Anh ấy sống ở Sevilla.",
+                  "audioTarget": "Él vive en Sevilla.",
+                  "options": [
+                    "vive",
+                    "vives",
+                    "vivo"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:up-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "Ella vive en Toledo.",
+                  "audioTarget": "Ella vive en Toledo.",
+                  "options": [
+                    {
+                      "text": "Cô ấy sống ở Toledo."
+                    },
+                    {
+                      "text": "Anh ấy sống ở Toledo."
+                    },
+                    {
+                      "text": "Cô ấy đến từ Toledo."
+                    },
+                    {
+                      "text": "Cô ấy làm việc ở Toledo."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:up-l2-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: anh ấy sống ở Madrid.",
+                  "audioTarget": "Él vive en Madrid.",
+                  "answer": "Él vive en Madrid.",
+                  "alternatives": [
+                    "Vive en Madrid."
                   ]
                 }
               ]
@@ -14156,6 +15512,61 @@
                   "objectiveTargets": [
                     "es.obj.writing.phrases_sentences"
                   ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:up-l3-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: con mèo uống sữa",
+                  "tokens": [
+                    "come",
+                    "gato",
+                    "leche",
+                    "perro",
+                    "El",
+                    "bebe"
+                  ],
+                  "answer": [
+                    "El",
+                    "gato",
+                    "bebe",
+                    "leche"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:up-l3-e3",
+                  "sentence": "El gato ___ leche.",
+                  "translation": "Con mèo uống sữa.",
+                  "audioTarget": "El gato bebe leche.",
+                  "options": [
+                    "bebes",
+                    "bebe",
+                    "bebo"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:up-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "con mèo",
+                  "audioTarget": "el gato",
+                  "options": [
+                    {
+                      "text": "el pájaro"
+                    },
+                    {
+                      "text": "el gato"
+                    },
+                    {
+                      "text": "el perro"
+                    },
+                    {
+                      "text": "el pez"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             }
@@ -14283,6 +15694,63 @@
                   "objectiveTargets": [
                     "es.obj.writing.short_message"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uq-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "El café es a las dos.",
+                  "audioTarget": "El café es a las dos.",
+                  "options": [
+                    {
+                      "text": "Tôi uống hai tách cà phê."
+                    },
+                    {
+                      "text": "Quán cà phê đóng cửa lúc hai giờ."
+                    },
+                    {
+                      "text": "Hẹn uống cà phê lúc hai giờ."
+                    },
+                    {
+                      "text": "Cà phê giá hai euro."
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uq-l0-e3",
+                  "sentence": "Hola, Ana: el café es a las ___.",
+                  "translation": "Chào Ana: hẹn uống cà phê lúc hai giờ.",
+                  "audioTarget": "Hola, Ana: el café es a las dos.",
+                  "options": [
+                    "diez",
+                    "tres",
+                    "dos"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uq-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "tin nhắn",
+                  "audioTarget": "el mensaje",
+                  "options": [
+                    {
+                      "text": "la estación"
+                    },
+                    {
+                      "text": "la mañana"
+                    },
+                    {
+                      "text": "el nombre"
+                    },
+                    {
+                      "text": "el mensaje"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             },
@@ -14369,6 +15837,76 @@
                   "objectiveTargets": [
                     "es.obj.writing.short_message"
                   ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:uq-l1-e1",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tàu chạy ngày mai lúc chín giờ",
+                  "tokens": [
+                    "a",
+                    "llega",
+                    "El",
+                    "tren",
+                    "las",
+                    "diez",
+                    "nueve",
+                    "mañana",
+                    "sale"
+                  ],
+                  "answer": [
+                    "El",
+                    "tren",
+                    "sale",
+                    "mañana",
+                    "a",
+                    "las",
+                    "nueve"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uq-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "El tren sale mañana a las nueve.",
+                  "audioTarget": "El tren sale mañana a las nueve.",
+                  "options": [
+                    {
+                      "text": "Tàu chạy ngày mai lúc chín giờ."
+                    },
+                    {
+                      "text": "Tàu đến ngày mai lúc chín giờ."
+                    },
+                    {
+                      "text": "Tàu chạy ngày mai lúc mười giờ."
+                    },
+                    {
+                      "text": "Tàu chạy hôm nay lúc chín giờ."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uq-l1-e3",
+                  "sentence": "___, Pablo: el tren sale mañana.",
+                  "translation": "Chào Pablo: tàu chạy ngày mai.",
+                  "audioTarget": "Hola, Pablo: el tren sale mañana.",
+                  "options": [
+                    "Hola",
+                    "Gracias",
+                    "Adiós"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uq-l1-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: ngày mai",
+                  "audioTarget": "mañana",
+                  "answer": "mañana",
+                  "alternatives": []
                 }
               ]
             },
@@ -14426,6 +15964,79 @@
                   "objectiveTargets": [
                     "es.obj.writing.short_message"
                   ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uq-l2-e1",
+                  "sentence": "Estoy en la ___.",
+                  "translation": "Tôi đang ở nhà ga.",
+                  "audioTarget": "Estoy en la estación.",
+                  "options": [
+                    "mañana",
+                    "estación",
+                    "mensaje"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uq-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "¡Hasta mañana!",
+                  "audioTarget": "¡Hasta mañana!",
+                  "options": [
+                    {
+                      "text": "Tạm biệt nhé!"
+                    },
+                    {
+                      "text": "Hẹn mai gặp lại!"
+                    },
+                    {
+                      "text": "Cảm ơn nhiều!"
+                    },
+                    {
+                      "text": "Chào buổi sáng!"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:uq-l2-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: hẹn mai gặp lại",
+                  "tokens": [
+                    "noche",
+                    "Hasta",
+                    "mañana",
+                    "luego"
+                  ],
+                  "answer": [
+                    "Hasta",
+                    "mañana"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uq-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "nhà ga",
+                  "audioTarget": "la estación",
+                  "options": [
+                    {
+                      "text": "la calle"
+                    },
+                    {
+                      "text": "la plaza"
+                    },
+                    {
+                      "text": "la estación"
+                    },
+                    {
+                      "text": "la tienda"
+                    }
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -14465,6 +16076,72 @@
                   ],
                   "objectiveTargets": [
                     "es.obj.writing.short_message"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uq-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Un beso.",
+                  "audioTarget": "Un beso.",
+                  "options": [
+                    {
+                      "text": "Chào buổi sáng."
+                    },
+                    {
+                      "text": "Một nụ cười."
+                    },
+                    {
+                      "text": "Một lá thư."
+                    },
+                    {
+                      "text": "Hôn bạn (lời chào cuối thư)."
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:uq-l3-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: chào Ana, hẹn gặp lại",
+                  "tokens": [
+                    "hasta",
+                    "Ana",
+                    "mañana",
+                    "adiós",
+                    "Hola",
+                    "luego"
+                  ],
+                  "answer": [
+                    "Hola",
+                    "Ana",
+                    "hasta",
+                    "luego"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uq-l3-e3",
+                  "sentence": "Hola, Pablo: ¿___ estás?",
+                  "translation": "Chào Pablo: bạn thế nào?",
+                  "audioTarget": "Hola, Pablo: ¿cómo estás?",
+                  "options": [
+                    "dónde",
+                    "cuándo",
+                    "cómo"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uq-l3-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: hẹn gặp lại",
+                  "audioTarget": "Hasta luego.",
+                  "answer": "Hasta luego.",
+                  "alternatives": [
+                    "Hasta pronto."
                   ]
                 }
               ]
@@ -14575,7 +16252,8 @@
                     "es.obj.writing.form_filling"
                   ]
                 }
-              ]
+              ],
+              "lessonKind": "form"
             },
             {
               "id": "es-vi:ur-l1",
@@ -14657,7 +16335,8 @@
                     "es.obj.writing.form_filling"
                   ]
                 }
-              ]
+              ],
+              "lessonKind": "form"
             },
             {
               "id": "es-vi:ur-l2",
@@ -14761,6 +16440,83 @@
                     "es.obj.writing.short_message",
                     "es.obj.writing.personal_info"
                   ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:ur-l2-e1",
+                  "sentence": "Mañana estoy en el café a las ___.",
+                  "translation": "Ngày mai tôi ở quán cà phê lúc mười giờ.",
+                  "audioTarget": "Mañana estoy en el café a las diez.",
+                  "options": [
+                    "diez",
+                    "dos",
+                    "seis"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ur-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Mañana estoy en el café a las diez.",
+                  "audioTarget": "Mañana estoy en el café a las diez.",
+                  "options": [
+                    {
+                      "text": "Ngày mai tôi ở quán cà phê lúc mười giờ."
+                    },
+                    {
+                      "text": "Hôm nay tôi ở quán cà phê lúc mười giờ."
+                    },
+                    {
+                      "text": "Ngày mai tôi ở nhà lúc mười giờ."
+                    },
+                    {
+                      "text": "Ngày mai quán cà phê mở cửa lúc mười giờ."
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:ur-l2-e3",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: ngày mai lúc mười giờ",
+                  "tokens": [
+                    "las",
+                    "diez",
+                    "a",
+                    "noche",
+                    "dos",
+                    "Mañana"
+                  ],
+                  "answer": [
+                    "Mañana",
+                    "a",
+                    "las",
+                    "diez"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ur-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "thứ Bảy",
+                  "audioTarget": "el sábado",
+                  "options": [
+                    {
+                      "text": "el día"
+                    },
+                    {
+                      "text": "el sábado"
+                    },
+                    {
+                      "text": "el lunes"
+                    },
+                    {
+                      "text": "el domingo"
+                    }
+                  ],
+                  "correct": 1
                 }
               ]
             },
@@ -14803,6 +16559,76 @@
                     "es.obj.writing.personal_info",
                     "es.obj.writing.phrases_sentences"
                   ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:ur-l3-e1",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: tôi tên là Minh và tôi sống ở Madrid",
+                  "tokens": [
+                    "Madrid",
+                    "tengo",
+                    "vivo",
+                    "soy",
+                    "llamo",
+                    "Minh",
+                    "Me",
+                    "en",
+                    "y"
+                  ],
+                  "answer": [
+                    "Me",
+                    "llamo",
+                    "Minh",
+                    "y",
+                    "vivo",
+                    "en",
+                    "Madrid"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:ur-l3-e2",
+                  "sentence": "Los ___ trabajo por la mañana.",
+                  "translation": "Thứ Bảy nào tôi cũng làm việc vào buổi sáng.",
+                  "audioTarget": "Los sábados trabajo por la mañana.",
+                  "options": [
+                    "día",
+                    "sábados",
+                    "domingo"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ur-l3-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "Chủ nhật",
+                  "audioTarget": "el domingo",
+                  "options": [
+                    {
+                      "text": "el día"
+                    },
+                    {
+                      "text": "el lunes"
+                    },
+                    {
+                      "text": "el domingo"
+                    },
+                    {
+                      "text": "el sábado"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:ur-l3-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tôi thích thứ Bảy.",
+                  "audioTarget": "Me gusta el sábado.",
+                  "answer": "Me gusta el sábado.",
+                  "alternatives": []
                 }
               ]
             }
@@ -14909,6 +16735,30 @@
                     }
                   ],
                   "correct": 1
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:us-l0-e3",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tôi khỏe, cảm ơn.",
+                  "audioTarget": "Estoy bien, gracias.",
+                  "answer": "Estoy bien, gracias.",
+                  "alternatives": [
+                    "Bien, gracias."
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:us-l0-e4",
+                  "sentence": "¡Hola! ¿Qué ___?",
+                  "translation": "Chào! Bạn khỏe không?",
+                  "audioTarget": "¡Hola! ¿Qué tal?",
+                  "options": [
+                    "día",
+                    "hora",
+                    "tal"
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -14943,6 +16793,50 @@
                   "objectiveTargets": [
                     "es.obj.interaction.everyday_conversation"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:us-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "¡Hasta luego!",
+                  "audioTarget": "¡Hasta luego!",
+                  "options": [
+                    {
+                      "text": "Rất vui được gặp bạn!"
+                    },
+                    {
+                      "text": "Cảm ơn!"
+                    },
+                    {
+                      "text": "Chào buổi sáng!"
+                    },
+                    {
+                      "text": "Hẹn gặp lại!"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:us-l1-e3",
+                  "sentence": "Muy ___, gracias.",
+                  "translation": "Rất khỏe, cảm ơn.",
+                  "audioTarget": "Muy bien, gracias.",
+                  "options": [
+                    "bien",
+                    "mal",
+                    "tarde"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:us-l1-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tạm biệt",
+                  "audioTarget": "Adiós.",
+                  "answer": "Adiós.",
+                  "alternatives": []
                 }
               ]
             },
@@ -15013,6 +16907,31 @@
                     }
                   ],
                   "correct": 3
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:us-l2-e3",
+                  "sentence": "Me ___ Marcos.",
+                  "translation": "Tôi tên là Marcos.",
+                  "audioTarget": "Me llamo Marcos.",
+                  "options": [
+                    "gusta",
+                    "llamo",
+                    "vivo"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:us-l2-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: rất vui được gặp bạn",
+                  "audioTarget": "Mucho gusto.",
+                  "answer": "Mucho gusto.",
+                  "alternatives": [
+                    "Encantado.",
+                    "Encantada."
+                  ]
                 }
               ]
             },
@@ -15031,7 +16950,8 @@
                     "es.obj.interaction.everyday_conversation"
                   ]
                 }
-              ]
+              ],
+              "lessonKind": "scenario"
             }
           ]
         },
@@ -15047,7 +16967,7 @@
               "emoji": "🍵"
             },
             {
-              "target": "el jugo",
+              "target": "el zumo",
               "native": "nước ép",
               "emoji": "🧃"
             },
@@ -15132,6 +17052,41 @@
                     }
                   ],
                   "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:ut-l0-e3",
+                  "sentence": "Un té, por ___.",
+                  "translation": "Cho tôi một tách trà, làm ơn.",
+                  "audioTarget": "Un té, por favor.",
+                  "options": [
+                    "hola",
+                    "gracias",
+                    "favor"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ut-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "trà",
+                  "audioTarget": "el té",
+                  "options": [
+                    {
+                      "text": "el té"
+                    },
+                    {
+                      "text": "el pan"
+                    },
+                    {
+                      "text": "el café"
+                    },
+                    {
+                      "text": "el agua"
+                    }
+                  ],
+                  "correct": 0
                 }
               ]
             },
@@ -15165,6 +17120,52 @@
                   "scenarioId": "es.scenario.cafe_bebida",
                   "objectiveTargets": [
                     "es.obj.interaction.practical_needs"
+                  ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ut-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Son dos euros.",
+                  "audioTarget": "Son dos euros.",
+                  "options": [
+                    {
+                      "text": "Tôi có hai euro."
+                    },
+                    {
+                      "text": "Hết hai euro."
+                    },
+                    {
+                      "text": "Giá mười hai euro."
+                    },
+                    {
+                      "text": "Hai tách cà phê."
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:ut-l1-e3",
+                  "sentence": "Quiero ___ café, por favor.",
+                  "translation": "Tôi muốn một tách cà phê, làm ơn.",
+                  "audioTarget": "Quiero un café, por favor.",
+                  "options": [
+                    "un",
+                    "unos",
+                    "una"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:ut-l1-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: tôi muốn một tách trà.",
+                  "audioTarget": "Quiero un té.",
+                  "answer": "Quiero un té.",
+                  "alternatives": [
+                    "Quiero un té, por favor."
                   ]
                 }
               ]
@@ -15216,6 +17217,63 @@
                     "por",
                     "favor"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ut-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "¿Cuánto es?",
+                  "audioTarget": "¿Cuánto es?",
+                  "options": [
+                    {
+                      "text": "Ở đâu?"
+                    },
+                    {
+                      "text": "Mấy giờ rồi?"
+                    },
+                    {
+                      "text": "Bao nhiêu tiền?"
+                    },
+                    {
+                      "text": "Bạn thế nào?"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:ut-l2-e3",
+                  "sentence": "Quiero ___ el café.",
+                  "translation": "Tôi muốn trả tiền cà phê.",
+                  "audioTarget": "Quiero pagar el café.",
+                  "options": [
+                    "vivir",
+                    "pagar",
+                    "beber"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:ut-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "trả tiền",
+                  "audioTarget": "pagar",
+                  "options": [
+                    {
+                      "text": "beber"
+                    },
+                    {
+                      "text": "hablar"
+                    },
+                    {
+                      "text": "comer"
+                    },
+                    {
+                      "text": "pagar"
+                    }
+                  ],
+                  "correct": 3
                 }
               ]
             },
@@ -15234,7 +17292,8 @@
                     "es.obj.interaction.practical_needs"
                   ]
                 }
-              ]
+              ],
+              "lessonKind": "scenario"
             }
           ]
         },
@@ -15315,6 +17374,52 @@
                     }
                   ],
                   "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uu-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "¿Dónde está la estación?",
+                  "audioTarget": "¿Dónde está la estación?",
+                  "options": [
+                    {
+                      "text": "Nhà ga ở đâu?"
+                    },
+                    {
+                      "text": "Tôi ở nhà ga."
+                    },
+                    {
+                      "text": "Nhà ga có xa không?"
+                    },
+                    {
+                      "text": "Mấy giờ tàu chạy?"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uu-l0-e3",
+                  "sentence": "Todo recto y después a la ___.",
+                  "translation": "Đi thẳng rồi rẽ trái.",
+                  "audioTarget": "Todo recto y después a la izquierda.",
+                  "options": [
+                    "derecha",
+                    "estación",
+                    "izquierda"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uu-l0-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: bên phải",
+                  "audioTarget": "a la derecha",
+                  "answer": "a la derecha",
+                  "alternatives": [
+                    "derecha"
+                  ]
                 }
               ]
             },
@@ -15333,7 +17438,7 @@
                   "audioTarget": "¿Puedo ayudarle?",
                   "options": [
                     {
-                      "text": "Tôi giúp gì được cho bạn?"
+                      "text": "Tôi giúp gì được cho anh/chị?"
                     },
                     {
                       "text": "Đến nơi chưa?"
@@ -15354,6 +17459,48 @@
                   "objectiveTargets": [
                     "es.obj.interaction.practical_needs"
                   ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "es-vi:uu-l1-e2",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sắp xếp: nhà ga ở đâu?",
+                  "tokens": [
+                    "tienda",
+                    "está",
+                    "Dónde",
+                    "estación",
+                    "la",
+                    "el"
+                  ],
+                  "answer": [
+                    "Dónde",
+                    "está",
+                    "la",
+                    "estación"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uu-l1-e3",
+                  "sentence": "La estación está ___ de aquí.",
+                  "translation": "Nhà ga ở gần đây.",
+                  "audioTarget": "La estación está cerca de aquí.",
+                  "options": [
+                    "cerca",
+                    "lejos",
+                    "alta"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uu-l1-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: cảm ơn nhiều",
+                  "audioTarget": "Muchas gracias.",
+                  "answer": "Muchas gracias.",
+                  "alternatives": []
                 }
               ]
             },
@@ -15402,6 +17549,63 @@
                     "el",
                     "hotel"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uu-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Está a la derecha.",
+                  "audioTarget": "Está a la derecha.",
+                  "options": [
+                    {
+                      "text": "Ở rất xa."
+                    },
+                    {
+                      "text": "Ở bên phải."
+                    },
+                    {
+                      "text": "Ở bên trái."
+                    },
+                    {
+                      "text": "Đi thẳng."
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uu-l2-e3",
+                  "sentence": "El museo está ___ la plaza.",
+                  "translation": "Bảo tàng ở cạnh quảng trường.",
+                  "audioTarget": "El museo está al lado de la plaza.",
+                  "options": [
+                    "encima de",
+                    "al lado de",
+                    "debajo de"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uu-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "bên trái",
+                  "audioTarget": "la izquierda",
+                  "options": [
+                    {
+                      "text": "la estación"
+                    },
+                    {
+                      "text": "la derecha"
+                    },
+                    {
+                      "text": "la izquierda"
+                    },
+                    {
+                      "text": "la plaza"
+                    }
+                  ],
+                  "correct": 2
                 }
               ]
             },
@@ -15420,7 +17624,8 @@
                     "es.obj.interaction.practical_needs"
                   ]
                 }
-              ]
+              ],
+              "lessonKind": "scenario"
             }
           ]
         },
@@ -15516,6 +17721,31 @@
                     }
                   ],
                   "correct": 3
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uv-l0-e3",
+                  "sentence": "¿Vamos al cine el ___?",
+                  "translation": "Thứ Bảy mình đi xem phim nhé?",
+                  "audioTarget": "¿Vamos al cine el sábado?",
+                  "options": [
+                    "mañana",
+                    "sábados",
+                    "sábado"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uv-l0-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: được thôi!",
+                  "audioTarget": "¡Vale!",
+                  "answer": "¡Vale!",
+                  "alternatives": [
+                    "Vale.",
+                    "De acuerdo."
+                  ]
                 }
               ]
             },
@@ -15534,7 +17764,8 @@
                     "es.obj.interaction.everyday_conversation"
                   ]
                 }
-              ]
+              ],
+              "lessonKind": "scenario"
             },
             {
               "id": "es-vi:uv-l2",
@@ -15583,6 +17814,50 @@
                     "por",
                     "favor"
                   ]
+                },
+                {
+                  "type": "select",
+                  "id": "es-vi:uv-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "¿A qué hora quedamos?",
+                  "audioTarget": "¿A qué hora quedamos?",
+                  "options": [
+                    {
+                      "text": "Hôm nay là thứ mấy?"
+                    },
+                    {
+                      "text": "Mấy giờ rồi?"
+                    },
+                    {
+                      "text": "Bạn ở đâu?"
+                    },
+                    {
+                      "text": "Mình hẹn gặp lúc mấy giờ?"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "es-vi:uv-l2-e3",
+                  "sentence": "Quedamos a las ___ en la plaza.",
+                  "translation": "Mình hẹn lúc tám giờ ở quảng trường.",
+                  "audioTarget": "Quedamos a las ocho en la plaza.",
+                  "options": [
+                    "ocho",
+                    "sábado",
+                    "noche"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "es-vi:uv-l2-e4",
+                  "mode": "produceTarget",
+                  "prompt": "Viết bằng tiếng Tây Ban Nha: hẹn gặp ở quảng trường.",
+                  "audioTarget": "Nos vemos en la plaza.",
+                  "answer": "Nos vemos en la plaza.",
+                  "alternatives": []
                 }
               ]
             },
@@ -15601,7 +17876,8 @@
                     "es.obj.interaction.everyday_conversation"
                   ]
                 }
-              ]
+              ],
+              "lessonKind": "scenario"
             }
           ]
         }

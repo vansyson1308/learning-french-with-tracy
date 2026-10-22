@@ -148,6 +148,27 @@ export function charsPerSecBand(language: string): [number, number] {
   return [3, 30];
 }
 
+/** Transcripts this short (letters/digits only) have no meaningful speaking rate. */
+export const SHORT_TRANSCRIPT_UNITS = 3;
+/** Absolute duration band for short transcripts (one word, one or two Han / kana / Hangul characters). */
+export const SHORT_DURATION_BAND: [number, number] = [0.25, 3.0];
+
+/**
+ * P3e: the speaking-rate check. A single short word (犬, 公园, sí) is mostly
+ * the voice's fixed attack and release, so chars/sec is meaningless there
+ * (the ja/zh canaries failed every one-character word at a normal ~1 s); such
+ * transcripts are checked against an absolute duration band instead.
+ */
+export function rateIssue(transcript: string, durationSec: number, band: [number, number]): string | null {
+  const units = [...transcript].filter((c) => /[\p{L}\p{N}]/u.test(c)).length;
+  if (units <= SHORT_TRANSCRIPT_UNITS) {
+    const [lo, hi] = SHORT_DURATION_BAND;
+    return durationSec >= lo && durationSec <= hi ? null : `duration ${durationSec.toFixed(2)}s implausible for a ${units}-character transcript (expected ${lo}–${hi}s)`;
+  }
+  const charsPerSec = transcript.length / Math.max(durationSec, 0.001);
+  return charsPerSec < band[0] || charsPerSec > band[1] ? `duration implausible for transcript (${charsPerSec.toFixed(1)} chars/sec)` : null;
+}
+
 export type TechnicalQa = {
   durationSec: number;
   bytes: number;
@@ -173,9 +194,8 @@ export function technicalQa(filePath: string, transcript: string, language: stri
   if (maxVolumeDb !== null && maxVolumeDb > -0.2) issues.push(`possible clipping (max ${maxVolumeDb}dB)`);
   if (lead !== null && lead > 1.0) issues.push(`leading silence ${lead.toFixed(2)}s`);
   if (trail !== null && trail > 1.2) issues.push(`trailing silence ${trail.toFixed(2)}s`);
-  if (charsPerSec < lo || charsPerSec > hi) {
-    issues.push(`duration implausible for transcript (${charsPerSec.toFixed(1)} chars/sec)`);
-  }
+  const rate = rateIssue(transcript, duration, [lo, hi]);
+  if (rate !== null) issues.push(rate);
   return {
     durationSec: Number(duration.toFixed(3)),
     bytes,

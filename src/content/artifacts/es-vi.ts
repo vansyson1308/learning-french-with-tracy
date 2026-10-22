@@ -16,6 +16,7 @@ import speech from "../speech/es-speech-items.json";
 import writing from "../writing/es-writing.json";
 import scenarios from "../interaction/es-scenarios.json";
 import examTracks from "../exam/es-exam-tracks.json";
+import dailyWords from "../lexicon/es-daily.json";
 import type { CourseArtifacts } from "../../lib/content-registry";
 
-export const ARTIFACTS: CourseArtifacts = { ids, lexiconIndex, lexiconFallback, concepts, objectives, checkpoints, placement, attainment, claim, listening, reading, clipAssets, speech, writing, scenarios, examTracks };
+export const ARTIFACTS: CourseArtifacts = { ids, lexiconIndex, lexiconFallback, concepts, objectives, checkpoints, placement, attainment, claim, listening, reading, clipAssets, speech, writing, scenarios, examTracks, dailyWords };

@@ -81,5 +81,5 @@
     "deny": ["AGPL", "GPL", "NC", "ND", "non-commercial", "noncommercial", "OpenRAIL", "RAIL", "Gemma", "CPML", "Unknown", "See URL"]
   },
   "loudness": { "integratedLufs": -18, "truePeakDb": -1.5, "loudnessRange": 11, "note": "EBU R128 two-pass-free loudnorm applied to every clip of pipelineVersion ≥ 2 so engines mix evenly (French clips stay at pipelineVersion 1 — untouched bytes)." },
-  "encoding": { "sampleRateHz": 22050, "channels": 1, "mp3Kbps": 64 }
+  "encoding": { "sampleRateHz": 22050, "channels": 1, "mp3Kbps": 64, "mp3KbpsFromVersion": { "3": 32 } }
 }

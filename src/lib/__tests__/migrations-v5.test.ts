@@ -36,8 +36,8 @@ function attempt(checkpointId: string, completedAt: number): PersistedAssessment
 }
 
 describe("v4 → v5: assessment per target language", () => {
-  test("PERSIST_VERSION is 5; course ids split on the first dash", () => {
-    expect(PERSIST_VERSION).toBe(5);
+  test("PERSIST_VERSION is 6; course ids split on the first dash", () => {
+    expect(PERSIST_VERSION).toBe(6);
     expect(targetCodeOfCourseId("fr-en")).toBe("fr");
     expect(targetCodeOfCourseId("fr-vi")).toBe("fr");
     expect(targetCodeOfCourseId("fr")).toBe("fr");
@@ -45,7 +45,7 @@ describe("v4 → v5: assessment per target language", () => {
 
   test("one course moves under its target; attempts and placement record the course; nothing else changes", () => {
     const before = v4();
-    const out = migrateProgress(v4(), 4, NOW);
+    const out = migrateProgress(v4(), 4, NOW, 5);
     expect(out.assessmentByCourse).toBeUndefined();
     expect(Object.keys(out.assessmentByTarget!)).toEqual(["fr"]);
     const fr = out.assessmentByTarget!.fr;

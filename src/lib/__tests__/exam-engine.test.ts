@@ -47,11 +47,11 @@ describe("forms and sessions", () => {
     expect([0, 1, 2].map((n) => selectMockForm(TRACK, n).formId)).toEqual(["a", "b", "a"]);
   });
 
-  test("a form administers 25 reading and 25 listening items, task order kept", () => {
+  test("a form administers 25 reading and 25 listening items, task order kept (2020 model)", () => {
     expect(sectionItems(TRACK, "reading", "a").length).toBe(25);
     expect(sectionItems(TRACK, "listening", "b").length).toBe(25);
     expect(sectionItems(TRACK, "writing", "a").length).toBe(2);
-    expect(sectionItems(TRACK, "speaking", "a").map((i) => i.taskId)).toEqual(["t1", "t2", "t3", "t4"]);
+    expect(sectionItems(TRACK, "speaking", "a").map((i) => i.taskId)).toEqual(["t1", "t2", "t3"]);
     const tasks = sectionItems(TRACK, "reading", "a").map((i) => i.taskId);
     expect(tasks).toEqual([...tasks].sort());
     expect(sectionItems(TRACK, "reading", null).length).toBe(50);
@@ -67,6 +67,32 @@ describe("forms and sessions", () => {
     const practice = buildExamSectionSession({ courseId: "es-vi", track: TRACK, sectionId: "reading", formId: null, mode: "practice", attemptSeed: 0 });
     expect(practice.feedbackPolicy).toBe("full");
     expect(practice.steps.length).toBe(50);
+  });
+
+  test("a lettered pool keeps its order in every sitting (the letters are the answer sheet)", () => {
+    const a = buildExamSectionSession({ courseId: "es-vi", track: TRACK, sectionId: "listening", formId: "a", mode: "mock", attemptSeed: 0 });
+    const b = buildExamSectionSession({ courseId: "es-vi", track: TRACK, sectionId: "listening", formId: "a", mode: "mock", attemptSeed: 5 });
+    const poolSteps = (d: typeof a) =>
+      d.steps.filter((s) => s.type === "exercise" && TRACK.items.find((i) => i.id === s.stepId)!.taskId !== "t1").map((s) => (s.type === "exercise" ? JSON.stringify(s.exercise) : ""));
+    expect(poolSteps(a)).toEqual(poolSteps(b));
+    const original = sectionItems(TRACK, "listening", "a").filter((i) => i.taskId !== "t1").map((i) => JSON.stringify(i.exercise));
+    expect(poolSteps(a)).toEqual(original);
+  });
+
+  test("the group rule, not the total, decides: 50 + 20 is not 'ready' even with 70/100", () => {
+    const ids = formItems("a");
+    const counter: Record<string, number> = {};
+    const r = results(ids, (id) => {
+      const s = sectionOf(id);
+      counter[s] = (counter[s] ?? 0) + 1;
+      if (s === "reading" || s === "writing") return true;
+      if (s === "listening") return counter[s] <= 20;
+      return false;
+    });
+    const score = scoreExam(TRACK, r);
+    expect(score.groups.map((g) => g.points)).toEqual([50, 20]);
+    expect(score.groups.map((g) => g.reachesThreshold)).toEqual([true, false]);
+    expect(score.band?.id).toBe("not_yet");
   });
 
   test("scored options are reshuffled per sitting, the answer key follows", () => {
@@ -86,7 +112,7 @@ describe("scoring and estimated readiness", () => {
   test("all correct: 25 per section, 50 per group, the top band", () => {
     const score = scoreExam(TRACK, results(formItems("a"), () => true));
     expect(score.sections.map((s) => s.points)).toEqual([25, 25, 25, 25]);
-    expect(score.groups.map((g) => [g.points, g.reachesThreshold])).toEqual([[50, true], [50, true]]);
+    expect(score.groups.map((g) => [g.points, g.max, g.min, g.reachesThreshold])).toEqual([[50, 50, 30, true], [50, 50, 30, true]]);
     expect(score.band?.id).toBe("ready_estimate");
   });
 

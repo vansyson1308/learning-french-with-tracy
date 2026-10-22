@@ -25,7 +25,7 @@ import {
 import { JsonLearnerStore } from "../persistence/learner-json";
 import { SqlLearnerStore } from "../persistence/learner-sql";
 import { LEARNER_META, emptyBatch, type LearnerData } from "../persistence/learner-types";
-import { migrateProgress, type PersistedProgress } from "../persistence/migrations";
+import { migrateProgress, PERSIST_VERSION, type PersistedProgress } from "../persistence/migrations";
 import { PROGRESS_STORAGE_KEY, runLearnerBootstrap, useProgress, whenLearnerReady } from "../store";
 import { bunSqliteExecutor } from "./helpers/sqlite-executor";
 import { memFiles, memoryStorage } from "./helpers/mocks";
@@ -168,7 +168,7 @@ describe("the store on top of the learner store", () => {
     s.setThemePreference("dark");
     await new Promise((r) => setTimeout(r, 0));
     const stored = JSON.parse(memoryStorage.get(PROGRESS_STORAGE_KEY) as string);
-    expect(stored.version).toBe(5);
+    expect(stored.version).toBe(PERSIST_VERSION);
     expect(stored.state.courses["fr-en"].cards).toBeUndefined();
     expect(stored.state.reviewLog).toBeUndefined();
     const learner = await (await learnerStore()).exportAll();

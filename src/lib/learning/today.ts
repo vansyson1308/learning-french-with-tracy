@@ -7,7 +7,10 @@
  *   1. WARM-UP  due FSRS cards, most at-risk first — designated assessments
  *   2. NEW      teach card → immediate Fr→En retrieval (the new card's
  *               designated assessment), material drawn ONLY from the PATH
- *               frontier (first incomplete lesson), in authored order
+ *               frontier (first incomplete lesson), in authored order;
+ *               then the DAILY NEW WORDS (P3e): up to the learner's daily
+ *               number of syllabus lexemes whose unit is reached (teach +
+ *               recognition probe, + a listening probe when a clip exists)
  *   3. MIXED    reinforcement in the other direction (En→Fr) — practice
  *   4. FINALE   a small match game — reinforcement, never FSRS evidence
  *
@@ -80,6 +83,18 @@ export type TodayPlanInput = {
    * learner said "Can't speak now" — composes a fully silent session.
    */
   speakExercises?: Record<string, SpeakProductionExercise>;
+  /**
+   * P3e daily new words: syllabus candidates in delivery order (unlocked,
+   * not yet carded — src/lib/learning/daily-words.ts) and how many a day
+   * the learner wants (0–15). Omitted = no daily stream (the pre-P3e plan).
+   */
+  dailyWords?: { itemId: string; word: Word }[];
+  dailyNewWords?: number;
+  /**
+   * P3e: every syllabus lexeme as a Word — renders due cards of words that
+   * came from the daily stream (not in the pack) and widens distractors.
+   */
+  lexiconWords?: Word[];
 };
 
 export type TodayPlan = {
@@ -90,8 +105,10 @@ export type TodayPlan = {
   listenCount: number;
   /** Speaking reviews among reviewCount (bounded share, P8 §17). */
   speakCount: number;
-  /** New words taught (each = teach + immediate assessment). */
+  /** New words taught (each = teach + immediate assessment), daily words included. */
   newCount: number;
+  /** Of newCount: words from the daily-words stream (P3e). */
+  dailyCount: number;
   /** All currently due cards, before budgeting (all skills). */
   backlogTotal: number;
   /** Due cards that did NOT fit this session's budget. */
@@ -235,6 +252,9 @@ export function composeTodayFromSnapshot(args: {
   placementFloor?: number;
   listenClips?: Record<string, string>;
   speakExercises?: Record<string, SpeakProductionExercise>;
+  dailyWords?: { itemId: string; word: Word }[];
+  dailyNewWords?: number;
+  lexiconWords?: Word[];
   day?: string;
   now?: number;
 }): TodayPlan {
@@ -256,6 +276,9 @@ export function composeTodayFromSnapshot(args: {
     cards: args.cards,
     listenClips: args.listenClips,
     speakExercises: args.speakExercises,
+    dailyWords: args.dailyWords,
+    dailyNewWords: args.dailyNewWords,
+    lexiconWords: args.lexiconWords,
     preset: args.preset,
     seed,
     now,
@@ -266,7 +289,13 @@ export function composeTodayFromSnapshot(args: {
 export function composeTodaySession(input: TodayPlanInput): TodayPlan {
   const budgets = TODAY_PRESETS[input.preset];
   const rng = seededRng(input.seed);
-  const pool = packWords(input.pack);
+  const packPool = packWords(input.pack);
+  // Syllabus lexemes (P3e) render daily-word cards and widen distractors;
+  // pack words keep precedence (their authored emoji and gloss).
+  const packSurfaces = new Set(packPool.map((w) => w.target));
+  const extra = [...(input.lexiconWords ?? []), ...(input.dailyWords ?? []).map((d) => d.word)];
+  const extraBySurface = new Map(extra.filter((w) => !packSurfaces.has(w.target)).map((w) => [w.target, w]));
+  const pool = [...packPool, ...extraBySurface.values()];
   const wordBySurface = new Map(pool.map((w) => [w.target, w]));
   const steps: SessionStep[] = [];
 
@@ -389,6 +418,19 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
     if (newItems.some((n) => n.itemId === id)) continue;
     newItems.push({ itemId: id, word });
   }
+  // P3e daily new words: after the frontier's own words, up to the learner's
+  // daily number, never a word already carded or already taught above.
+  const dailyLimit = Math.max(0, Math.min(15, Math.round(input.dailyNewWords ?? 0)));
+  const dailyItems: Item[] = [];
+  for (const candidate of input.dailyWords ?? []) {
+    if (dailyItems.length >= dailyLimit) break;
+    if (input.cards?.[`${candidate.itemId}|recognize`]) continue;
+    if (newItems.some((n) => n.itemId === candidate.itemId || n.word.target === candidate.word.target)) continue;
+    if (dailyItems.some((n) => n.itemId === candidate.itemId)) continue;
+    dailyItems.push(candidate);
+  }
+  const dailyIds = new Set(dailyItems.map((d) => d.itemId));
+  newItems.push(...dailyItems);
   for (const item of newItems) {
     steps.push({
       type: "teach",
@@ -413,6 +455,28 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
         evidence: { itemId: item.itemId, srsRole: "assessment" },
         phase: "new",
       });
+    }
+    // A daily word with a bundled word clip also gets its listening probe.
+    const clipId = dailyIds.has(item.itemId) ? listenClips[item.itemId] : undefined;
+    if (clipId !== undefined) {
+      const distractors = pickDistractors({ courseId: input.courseId, word: item.word, pool, rng, direction: "targetToNative" }).map((w) => ({ text: w.native }));
+      if (distractors.length > 0) {
+        const options = shuffle([{ text: item.word.native }, ...distractors], rng);
+        steps.push({
+          type: "exercise",
+          stepId: `today-new-listen-${item.itemId}`,
+          exercise: {
+            type: "listeningComprehension",
+            id: `today-new-listen-${item.itemId}`,
+            clipId,
+            question: contentString(courseProfile(input.courseId).nativeCode, "whatDoYouHear"),
+            options,
+            correct: options.findIndex((o) => o.text === item.word.native),
+          },
+          evidence: { itemId: item.itemId, skill: "listen", srsRole: "assessment" },
+          phase: "new",
+        });
+      }
     }
   }
 
@@ -486,6 +550,7 @@ export function composeTodaySession(input: TodayPlanInput): TodayPlan {
     listenCount,
     speakCount,
     newCount: newItems.length,
+    dailyCount: dailyItems.length,
     backlogTotal: dueQueue.length + allListenDue.length + allSpeakDue.length,
     backlogRemaining: Math.max(
       0,

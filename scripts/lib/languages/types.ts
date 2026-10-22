@@ -97,6 +97,8 @@ export type AsrNormalization = {
   wordChars: string;
   /** Whisper language code. */
   whisperLanguage: string;
+  /** P3e: "cer" for scripts without reliable word spaces (Han, kana, Hangul); absent = by language (ja/zh/ko → cer). */
+  metric?: "wer" | "cer";
 };
 
 export type BuildLanguagePlugin = BuildLanguage & {

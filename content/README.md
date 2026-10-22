@@ -217,6 +217,12 @@ deterministic validators and a native review must approve before compile:
    CEFR-descriptor leak, reading-level caps) — advisory, the validators gate.
 5. `bun scripts/author.ts checklist --course <id>` writes
    `content/<target>/REVIEW-CHECKLIST.md` (every learner-facing string).
+   Since P3e new courses use `review-tiers --course <id>` instead: two short
+   Tier-1 files (`REVIEW-TIER1-<native>.md` for the owner, ≤ 600 lines;
+   `REVIEW-TIER1-<target>.md` for a hired teacher, ≤ 500 lines), backed by the
+   LanguageTool gate (`scripts/languagetool.ts`, `content/<target>/languagetool-allow.json`)
+   and a back-translation pass (`content/<target>/_drafts/BACKTRANSLATION.md`);
+   `betaUntilReviewed: true` in the profile labels the course beta until review.
    The **review gate**: a course whose native language is not the original
    English compiles only when `content/courses/<id>.profile.json` records
    `review: { native, date }` or `allowUnreviewed: true` together with an

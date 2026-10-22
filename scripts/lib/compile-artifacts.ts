@@ -41,6 +41,8 @@ import {
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
 import { examTrackPaths } from "./exam-bank";
+import { compileDailyWordsArtifact, deriveSyllabus, loadSyllabus, loadTopicUnits, validateSyllabusData, validateTopicUnits } from "./syllabus";
+import { varietyErrors } from "./variety";
 import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
 import { deriveGenderPatterns } from "./gender-patterns";
@@ -342,7 +344,34 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
   }
   errors.push(...validateSecondaryNativeCourses(lang, packs));
   errors.push(...validateTargetExamTracks(lang, packs, { objectives, readings, listening, speech, writing, interaction }, nativeCodes));
+  errors.push(...validateTargetSyllabus(lang, packs, lexicon, nativeCodes));
+  // P3e: one production variety in every target text the rich courses model.
+  {
+    const roles = courseRolesFor(lang, packs);
+    const rich = [roles.primary, ...roles.mirrors].filter((p) => p !== undefined).map((p) => p.pack);
+    const rels = [
+      `content/${lang}/reception/reading.json`, `content/${lang}/reception/listening.json`, `content/${lang}/speech/items.json`,
+      `content/${lang}/writing/tasks.json`, `content/${lang}/interaction/scenarios.json`, `content/${lang}/assessment/checkpoints.json`,
+      `content/${lang}/assessment/placement.json`, `content/${lang}/pedagogy/concepts.json`, `content/${lang}/lexicon/lexemes.json`,
+      ...examTrackPaths(lang),
+    ].filter((rel) => existsSync(safeResolve(rel)));
+    errors.push(...varietyErrors({ lang, lexicon, packs: rich, sources: rels.map((rel) => ({ rel, doc: readJson(rel) })) }));
+  }
   return errors;
+}
+
+/** P3e: the daily-words syllabus (committed, or derived when absent) against the lexicon and the primary course. */
+function validateTargetSyllabus(lang: string, packs: LoadedPack[], lexicon: ReturnType<typeof loadRichLexicon> | null, nativeCodes: string[]): string[] {
+  const pack = primaryPackOf(lang, packs);
+  if (!lexicon || !pack) return [];
+  let syllabus;
+  try {
+    syllabus = loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack });
+  } catch (e) {
+    return [schemaFailure(`syllabus (${lang})`, e)];
+  }
+  const topicUnits = loadTopicUnits(lang);
+  return [...validateSyllabusData({ syllabus, lang, lexicon, pack, nativeCodes }).errors, ...(topicUnits ? validateTopicUnits(topicUnits, { lexicon, pack }) : [])];
 }
 
 /** P3d: every exam track of a target against the primary course and the target's banks. */
@@ -351,8 +380,8 @@ function validateTargetExamTracks(
   packs: LoadedPack[],
   layers: {
     objectives: { objectives: { id: string }[] } | null;
-    readings: { readings: { id: string }[] } | null;
-    listening: { clips: { id: string }[] } | null;
+    readings: { readings: { id: string; blocks: { text: string }[]; use?: string }[] } | null;
+    listening: { clips: { id: string; segments: { text: string }[]; scoredPlaybackPolicy: { maxPlays: number }; use?: string }[] } | null;
     speech: { items: { id: string }[] } | null;
     writing: { tasks: { id: string }[] } | null;
     interaction: { scenarios: { id: string }[] } | null;
@@ -371,8 +400,8 @@ function validateTargetExamTracks(
   const ids = <T extends { id: string }>(rows: T[] | undefined) => new Set((rows ?? []).map((r) => r.id));
   const refs = {
     objectiveIds: ids(layers.objectives?.objectives),
-    readingIds: ids(layers.readings?.readings),
-    clipIds: ids(layers.listening?.clips),
+    readings: new Map((layers.readings?.readings ?? []).map((r) => [r.id, { texts: [r.blocks.map((b) => b.text).join(" ")], blocks: r.blocks.map((b) => b.text), use: r.use }])),
+    clips: new Map((layers.listening?.clips ?? []).map((c) => [c.id, { texts: [c.segments.map((x) => x.text).join(" ")], blocks: c.segments.map((x) => x.text), maxPlays: c.scoredPlaybackPolicy.maxPlays, use: c.use }])),
     speechIds: ids(layers.speech?.items),
     writingIds: ids(layers.writing?.tasks),
     scenarioIds: ids(layers.interaction?.scenarios),
@@ -512,6 +541,12 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
       files.push(...secondary.files);
       dbPlans.push(lexiconDbPlan({ lexicon, contentHash: secondary.contentHash, nativeCode: code, testOnly, assetPrefix: courseId }));
     }
+  }
+
+  // P3e: the daily-words stream (target-level, native-independent).
+  if (lexicon) {
+    const syllabus = loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack });
+    files.push({ relPath: `${root}/lexicon/${lang}-daily.json`, contents: compileDailyWordsArtifact(syllabus) });
   }
 
   const concepts = loadPedagogyConcepts(lang);

@@ -32,6 +32,7 @@ import {
   CourseProfileOverrideSchema,
 } from "../../content/schema";
 import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
+import { lessonShapeErrors } from "./lesson-shape";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
@@ -179,6 +180,22 @@ export function courseRoleOf(courseId: string): CourseRole | undefined {
   if (!existsSync(safeResolve(rel))) return undefined;
   const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
   return parsed.success ? parsed.data.role : undefined;
+}
+
+/** P3e §8: a course flagged betaUntilReviewed with no review recorded yet. */
+export function courseIsBeta(courseId: string): boolean {
+  const rel = `content/courses/${courseId}.profile.json`;
+  if (!existsSync(safeResolve(rel))) return false;
+  const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
+  return parsed.success && parsed.data.betaUntilReviewed === true && parsed.data.review === undefined;
+}
+
+/** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
+export function courseProfileFlag(courseId: string, flag: "legacyLessonShapes" | "allowUnreviewed"): boolean | undefined {
+  const rel = `content/courses/${courseId}.profile.json`;
+  if (!existsSync(safeResolve(rel))) return undefined;
+  const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
+  return parsed.success ? parsed.data[flag] : undefined;
 }
 
 /** Primary / mirror / standalone courses of one target (LoadedPack form). */
@@ -432,6 +449,7 @@ export function validateContent(): ValidationResult {
     const roles = courseRolesFor(pack.targetCode, packs);
     const audioCourseId = roles.standalone.some((p) => p.id === pack.id) ? pack.id : (roles.primary?.id ?? pack.id);
     errors.push(...objectiveMetadataErrors(pack, layers.assessment));
+    if (pack.testOnly !== true && courseProfileFlag(pack.id, "legacyLessonShapes") !== true) errors.push(...lessonShapeErrors(pack));
 
     const ids = new Set<string>();
     for (const section of pack.sections)
@@ -540,7 +558,7 @@ export function validateContent(): ValidationResult {
         err(`catalog.json: ${course.id} is not a shipped course — run bun run content:compile`);
       } else if (course.unitCount !== want.unitCount || course.lessonCount !== want.lessonCount) {
         err(
-          `catalog.json: ${course.id} advertises ${course.unitCount} units · ${course.lessonCount} lessons but the pack has ${want.unitCount} · ${want.lessonCount}`
+          `catalog.json: ${course.id} advertises ${course.unitCount} units · ${course.lessonCount} lessons but the pack has ${want.unitCount} · ${want.lessonCount} — run bun run content:compile`
         );
       }
     }

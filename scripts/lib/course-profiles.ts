@@ -25,7 +25,7 @@ import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../
 
 import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
-import { canonicalJson, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
+import { canonicalJson, courseIsBeta, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
 
 export type LexiconDbInfo = { name: string; contentHash: string };
 
@@ -63,6 +63,7 @@ function artifactPathsFor(
     writing: pick(`${root}/writing/${nativePrefix}-writing.json`),
     scenarios: pick(`${root}/interaction/${nativePrefix}-scenarios.json`),
     examTracks: pick(`${root}/exam/${nativePrefix}-exam-tracks.json`),
+    dailyWords: pick(`${root}/lexicon/${code}-daily.json`),
   };
   return Object.fromEntries(Object.entries(out).filter(([, v]) => v !== undefined)) as CourseArtifactPaths;
 }
@@ -155,6 +156,8 @@ export function deriveProfiles(args: {
       // P3d: an inherited course kept beside its target's primary course —
       // hidden from onboarding, listed under "other courses".
       ...(standalone ? { role: "standalone" as const } : {}),
+      // P3e §8: labelled beta in the app until a native review is recorded.
+      ...(courseIsBeta(pack.id) ? { beta: true as const } : {}),
     };
   }
   return profiles;
@@ -199,6 +202,7 @@ function renderArtifactModule(root: string, profile: CourseProfile): string {
   add("writing", a.writing);
   add("scenarios", a.scenarios);
   add("examTracks", a.examTracks);
+  add("dailyWords", a.dailyWords);
   lines.push(`import type { CourseArtifacts } from "${importFrom(dir, "src/lib/content-registry")}";`, "");
   lines.push(`export const ARTIFACTS: CourseArtifacts = {${fields.length ? ` ${fields.join(", ")} ` : ""}};`, "");
   return lines.join("\n");
@@ -296,23 +300,32 @@ export function compileCourseProfileArtifacts(args: {
     }
   }
   const courseIds = Object.keys(profiles).sort();
-  // The onboarding default is data too: the course with the most enabled
-  // capabilities, then the most authored exercises (P3d: a second complete
-  // course must not take the default by sorting first), then id. Today that
-  // is the complete French course; it moves by content, never by a code edit.
-  const exerciseCount = new Map(
-    args.packs.map((p) => [p.id, p.sections.reduce((n, s) => n + s.units.reduce((m, u) => m + u.lessons.reduce((k, l) => k + l.exercises.length, 0), 0), 0)])
-  );
-  // Optional add-ons (P3d: `exam`) do not make a course "more complete",
-  // and a standalone course is never the default.
+  // The fallback default is data too: the course with the most core
+  // capabilities (optional add-ons such as `exam` don't count), ties broken
+  // in the course pickers' order (most units, then target-language name,
+  // then id) — never by exercise count, which content edits move. A
+  // standalone course is never the default. Onboarding refines this per UI
+  // language at runtime (P3e §7: defaultCourseByNative below, read by defaultCourseForUi).
   const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
-  const defaultCourseId = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
+  const packById = new Map(args.packs.map((p) => [p.id, p]));
+  const unitCount = (id: string) => packById.get(id)?.sections.reduce((n, s) => n + s.units.length, 0) ?? 0;
+  const defaultOrder = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
     const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
-    return score(b) - score(a) || (exerciseCount.get(b) ?? 0) - (exerciseCount.get(a) ?? 0) || a.localeCompare(b);
-  })[0];
+    return (
+      score(b) - score(a) ||
+      unitCount(b) - unitCount(a) ||
+      (packById.get(a)?.targetLanguage ?? "").localeCompare(packById.get(b)?.targetLanguage ?? "") ||
+      a.localeCompare(b)
+    );
+  });
+  const defaultCourseId = defaultOrder[0];
+  // P3e §7: the same order per native language — a Vietnamese UI preselects
+  // the first `-vi` course (fr-vi today; en-vi sorts first once it exists).
+  const defaultCourseByNative: Record<string, string> = {};
+  for (const id of defaultOrder) defaultCourseByNative[profiles[id].nativeCode] ??= id;
   out.push({
     relPath: `${root}/course-profiles.json`,
-    contents: canonicalJson({ version: 1, defaultCourseId, profiles }),
+    contents: canonicalJson({ version: 1, defaultCourseId, defaultCourseByNative, profiles }),
   });
   for (const id of courseIds) {
     out.push({ relPath: `${root}/artifacts/${id}.ts`, contents: renderArtifactModule(root, profiles[id]) });

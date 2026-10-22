@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "pipelineVersion": 3,
+  "note": "Pinned TTS sources for the Spanish reception audio (P3e): the two Kokoro-82M voices selected by the 2026-10-21 Spanish canary (content/audio/voice-casts.json), with the same pins as the pack manifest; verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
+  "engines": "content/audio/engines.json",
+  "voices": [
+    {
+      "id": "kokoro-ef_dora",
+      "engine": "kokoro",
+      "language": "es",
+      "note": "Kokoro-82M Spanish female (Apache-2.0); espeak-ng G2P",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/ef_dora.pt",
+          "sha256": "d9d69b0f8a2b87a345f269d89639f89dfbd1a6c9da0c498ae36dd34afcf35530",
+          "bytes": 523420
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker A — female voice for announcements, monologues and dialogue turns",
+      "multiSpeaker": false
+    },
+    {
+      "id": "kokoro-em_alex",
+      "engine": "kokoro",
+      "language": "es",
+      "note": "Kokoro-82M Spanish male (Apache-2.0)",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/em_alex.pt",
+          "sha256": "5eac53f767c3f31a081918ba531969aea850bed18fe56419b804d642c6973431",
+          "bytes": 523420
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker B — male voice for the second speaker of dialogues",
+      "multiSpeaker": false
+    }
+  ],
+  "excludedVoices": []
+}

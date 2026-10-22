@@ -48,4 +48,15 @@ export type LanguageRules = {
   tokenize(folded: string): string[];
   /** Search folding (ligatures + lowercase + diacritics), mirrored by the SQLite FTS tokenizer. */
   fold(text: string): string;
+  /**
+   * P3e: the target language's own names for the post-answer grammar note —
+   * person labels per paradigm cell (es: "vosotros"), the present tense's
+   * name and the genders its articles cue. Absent = no person/tense/gender
+   * wording (the note degrades to "a form").
+   */
+  grammarLabels?: {
+    persons: Partial<Record<"pre:1s" | "pre:2s" | "pre:3s" | "pre:1p" | "pre:2p" | "pre:3p", string>>;
+    presentTense: string;
+    articleGenders: Record<string, "masculine" | "feminine" | "neuter">;
+  };
 };

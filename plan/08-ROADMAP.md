@@ -36,19 +36,23 @@ Goal: remove the ~60 `fr-en` hardcodes; any course can opt into any capability; 
 - M3.2 (`P3b`) Audio pipeline v2: engine abstraction (Piper / Kokoro / MeloTTS), licence gate, two-voice casts, ASR audit with language plugin (CER for ja/zh), reception pipeline parameterised; first run `es`; voice selection (canary) recorded for all 8 targets.
 - M3.3 (`P3c`) Authoring toolkit: LLM-assisted generators emitting drafts that must pass validators + a native (Vietnamese) review checklist; Vietnamese style guide for learner-facing prose; course blueprint with French's counts.
 - M3.4 (`P3d`, parametrised `--target es`) Author `es-vi` A1 to French parity + DELE A1 exam track (the exam-track engine is built here and reused).
+- M3.5 (`P3e`) Harden the template on `es-vi`: DELE A1 2020 model, daily new-words stream from a lexical syllabus, lesson-shape and variety gates, tiered review (Tier-1 files, LanguageTool, back-translation), locale default course.
+- M3.6 (`P3f`) QC follow-up + RC4: audio size budget (32 kbps, syllabus-only lexicon audio, 12 MB per language, `release/ASSET_DELIVERY.md`), topic→unit syllabus map, vosotros, DELE checked; RC4 (build 2) signed by the owner and upgrade-tested over RC3 on the phone.
 **DoD:** `es-vi` passes every validator and the claim gate; audio generated and provenance closed; device walk; RC with Vietnamese UI + `fr-vi` + `es-vi`.
+
+**Order after Phase 3 (coordinator decision 2026-10-22):** P4a → **P5b graded stories** → P3d(de/it/pt) → P4b (with Hán-Việt) → P4c–f → the rest of P5 → P6. Graded stories move ahead of the next languages because they are the context layer the daily-words stream needs (P3f lint `syllabus-context`: 404 of 613 Spanish daily words have no sentence yet) and every language reuses them.
 
 ## Phase 4 — The remaining courses, all from Vietnamese (≈12–20 weeks)  → prompts `P4a`…`P4g`
 - M4.1 (`P4a`) Fix inherited packs (ja/zh/ko/it defects, romanization rendering, de guidebook, es voice) and retire `*-en` basic packs from onboarding as `-vi` courses ship.
 - M4.2 (`P3d --target de|it|pt`, ∥) `de-vi`, `it-vi`, `pt-vi` with Goethe A1 / CILS A1 / CAPLE A1 tracks — same template as `es-vi`; German adds neuter + case concepts, Portuguese pt-BR primary.
-- M4.3 (`P4b`) Language plugins for ja/zh/ko: segmentation, readings (furigana/pinyin/RR), script primers with Vietnamese explanations, tokeniser/normaliser for grading, paradigm cells.
+- M4.3 (`P4b`) Language plugins for ja/zh/ko: segmentation, readings (furigana/pinyin/RR), script primers with Vietnamese explanations, tokeniser/normaliser for grading, paradigm cells — **plus Hán-Việt readings**: every kanji/hanzi/hanja word shows its Sino-Vietnamese reading (学生 → học sinh; 図書館 → đồ thư quán; 학생 學生 → học sinh), sourced from Unicode Unihan `kVietnamese` (Unicode licence — verify and register in `content/sources/registry.json`) plus a reviewed override list; one concept card per course on how to use it; a lint rule that every CJK lexeme with Han characters carries a Hán-Việt reading or an explicit "none". This is the single biggest advantage a Vietnamese learner has for ja/zh/ko.
 - M4.4 (`P4c`) `ja-vi` + JLPT N5; M4.5 (`P4d`) `zh-vi` + HSK 1–2; M4.6 (`P4e`) `ko-vi` + TOPIK I.
 - M4.7 (`P4f`, recommended) `en-vi` + VSTEP/TOEIC basics — English is the largest Vietnamese market; uses the same template with a Vietnamese-speaker pedagogy brief.
 **DoD per course:** validators + claim gate; audio provenance; Vietnamese native review signed; device walk; exam-track mock test with honest wording.
 
 ## Phase 5 — Breakthrough features (≈8–12 weeks, parallelisable)  → prompts `P5a`…`P5f`
 - M5.1 (`P5a`) FSRS visible + optimizer + gentle streak polish.
-- M5.2 (`P5b`) Graded stories generator + reader + audio.
+- M5.2 (`P5b`, **runs before M4.2**) Graded stories generator + reader + audio — the context layer for the daily-words stream (target: lint `syllabus-context` = 0 for `es-vi`), reused by every language.
 - M5.3 (`P5c`) Own-text importer.
 - M5.4 (`P5d`) Pronunciation coach: sherpa-onnx native module (Expo config plugin), model pack download manager, forced alignment + GOP, Vietnamese tips, English first; benchmark on speechocean762 subset; device tests.
 - M5.5 (`P5e`) Mistake-driven grammar.
@@ -69,6 +73,7 @@ Goal: remove the ~60 `fr-en` hardcodes; any course can opt into any capability; 
 | Weeks 2–4 | P1a–P1d |
 | Weeks 5–6 | P2a–P2b |
 | Weeks 7–12 | P3a–P3d (es-vi) → RC with Vietnamese UI, fr-vi, es-vi |
-| Weeks 13–30 | P4a–P4f (de/it/pt, then ja/zh/ko, then en) |
-| Weeks 15–30 | P5 in parallel with P4 |
+| Weeks 13–14 | P3e–P3f hardening + RC4 on the phone |
+| Weeks 15–30 | P4a → P5b graded stories → P3d de/it/pt → P4b (Hán-Việt) → P4c–f (ja/zh/ko, then en) |
+| Weeks 20–32 | rest of P5 in parallel with P4 |
 | Weeks 31–33 | P6 → store (an earlier store release with fr-vi + es-vi + Latin courses is possible after Phase 3/M4.2) |

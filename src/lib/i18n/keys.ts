@@ -187,6 +187,7 @@ export type MessageKey =
   | "language.vi"
   | "language.xx"
   | "language.zh"
+  | "learn.betaBanner"
   | "learn.coursePickerLabel"
   | "learn.guidebookLabel"
   | "learn.hint.cleared"
@@ -298,6 +299,11 @@ export type MessageKey =
   | "privacy.title"
   | "profile.appearance"
   | "profile.appearanceHint"
+  | "profile.dailyWords"
+  | "profile.dailyWordsHint"
+  | "profile.dailyWordsLess"
+  | "profile.dailyWordsMore"
+  | "profile.dailyWordsValue"
   | "profile.data"
   | "profile.export"
   | "profile.exportHint"
@@ -434,6 +440,8 @@ export type MessageKey =
   | "today.streakLabel"
   | "today.title"
   | "today.yourSession"
+  | "variety.latam"
+  | "variety.other"
   | "vocab.count"
   | "vocab.dataLicenses"
   | "vocab.detailTitle"
@@ -480,4 +488,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 478;
+export const MESSAGE_KEY_COUNT = 486;

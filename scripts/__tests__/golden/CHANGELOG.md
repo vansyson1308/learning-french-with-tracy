@@ -336,3 +336,208 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/attributions.json
 - compile: new      content/reports/ja/audio-canary.json
 - compile: new      content/reports/ja/audio-recon.json
+
+## 2026-10-22 — P3e §1: DELE A1 track re-authored to the 2020 model (reading 5/6/6/8, listening 25 min 5/5/8/7 played twice, writing 15-25 + 30-40 words, speaking 10+10 min 3 tasks; group pass rule 30/50 each; picture and pool formats); French unchanged
+
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  src/content/exam/es-exam-tracks.json
+- compile: changed  src/content/interaction/es-scenarios.json
+- compile: changed  src/content/reception/es-listening.json
+- compile: changed  src/content/reception/es-reading.json
+
+## 2026-10-22 — P3e §2: daily new-words stream — TODAY plan gains dailyCount (0 without the stream; French composer output otherwise unchanged), persist v6 (dailyNewWords) in the migration snapshots, new <lang>-daily.json artifacts (es syllabus 623 A1 lexemes, fr derived from its existing lexicon); French content unchanged
+
+- compile: changed  src/content/artifacts/es-vi.ts
+- compile: changed  src/content/artifacts/fr-en.ts
+- compile: changed  src/content/artifacts/fr-vi.ts
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/test-only/artifacts/xx-en.ts
+- compile: changed  src/content/test-only/course-profiles.json
+- compile: new      src/content/lexicon/es-daily.json
+- compile: new      src/content/lexicon/fr-daily.json
+- compile: new      src/content/test-only/lexicon/xx-daily.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/fresh.long.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/fresh.long.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/fresh.regular.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/fresh.regular.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/fresh.short.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/fresh.short.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.long.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.long.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.regular.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.regular.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.short.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.short.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.long.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.long.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.regular.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.regular.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.short.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.short.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v0-rich.long.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v0-rich.long.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v0-rich.regular.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v0-rich.regular.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v0-rich.short.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v0-rich.short.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.long.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.long.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.regular.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.regular.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.short.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.short.speak.json
+
+## 2026-10-22 — P3e §3: es-vi thin lessons filled to >= 5 exercises (126 new), 7 single scenario/form lessons declared via lessonKind, 3 duplicate payloads replaced (2 new dictation clips), 12 distractor-POS fixes, unit-b title de-calqued; French unchanged (legacyLessonShapes)
+
+- compile: changed  content/reports/es/course-objective-coverage.json
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/reception/es-listening.json
+
+## 2026-10-22 — P3e §3: default-course tie-break follows the course pickers' order (units, language name, id) instead of exercise counts — still fr-en; es-vi gradeTargets 248 after the lesson fill
+
+- compile: changed  src/content/course-profiles.json
+
+## 2026-10-22 — P3e §4: Peninsular Spanish as the production model (billete/zumo/coche/ordenador/móvil; Latin-American forms accepted and noted, 4 regional lexemes, 3 new lexemes), vosotros in concept cards, grammar-note person labels per language (French text identical); syllabus re-derived (622)
+
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/lexicon-source-audit.json
+- compile: changed  src/content/concepts/es-concepts.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/es.json
+- compile: changed  src/content/interaction/es-scenarios.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/lexicon/es-en-index.json
+- compile: changed  src/content/lexicon/es-en-web-fallback.json
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/reception/es-listening.json
+- compile: changed  src/content/reception/es-reading.json
+- compile: changed  src/content/speech/es-speech-items.json
+- compile: changed  src/content/writing/es-writing.json
+- compile: new      lexicon-db:es-en:es-en-lexicon-v3-071b89e8ff44670c.db
+- compile: new      lexicon-db:es:es-lexicon-v3-59447ed22ef7518e.db
+- compile: missing  lexicon-db:es-en:es-en-lexicon-v3-fd4864239463ab05.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-10a77b6cc2091cc9.db
+
+## 2026-10-22 — audio.yml ko canary (all) run 39705705422
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/ko/audio-canary.json
+- compile: changed  src/content/attributions.json
+## 2026-10-22 — fr simpleForm info card (bug fix approved 2026-10-22)
+
+- compile: changed  src/content/assessment/fr-checkpoints.json
+- compile: changed  src/content/assessment/fr-vi-checkpoints.json
+- compile: changed  src/content/packs/fr-en.json
+- compile: changed  src/content/packs/fr-vi.json
+
+## 2026-10-22 — audio.yml zh canary (all) run 39707526129
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/zh/audio-canary.json
+
+## 2026-10-22 — audio.yml vi canary (all) run 39708615496
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/vi/audio-canary.json
+## 2026-10-22 — course-profiles.json gains defaultCourseByNative (P3e §7 locale default course); French content unchanged
+
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/test-only/course-profiles.json
+
+## 2026-10-22 — audio.yml ja canary (all) run 39710084983
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/ja/audio-canary.json
+- compile: changed  src/content/attributions.json
+## 2026-10-22 — es lexicon repaired by the LanguageTool gate (P3e §8): el alma/área/habla/haya, la TV, teclear, la amistad; 32 failing examples dropped; French unchanged
+
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/lexicon-source-audit.json
+- compile: changed  src/content/assessment/es-checkpoints.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/es.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/lexicon/es-en-index.json
+- compile: changed  src/content/lexicon/es-en-web-fallback.json
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/writing/es-writing.json
+- compile: new      lexicon-db:es-en:es-en-lexicon-v3-5f6495e69030db86.db
+- compile: new      lexicon-db:es:es-lexicon-v3-f5b1152eba28c75a.db
+- compile: missing  lexicon-db:es-en:es-en-lexicon-v3-071b89e8ff44670c.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-59447ed22ef7518e.db
+
+## 2026-10-22 — es-vi beta label in course-profiles.json and three guidebook fixes (P3e §8); French unchanged
+
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/packs/es-vi.json
+
+## 2026-10-22 — es lexicon back-translation pass (P3e §8): homograph frequencies dropped, adjective/adverb surfaces, English glosses, Vietnamese translations; syllabus adds course-authored A1 lexemes; French unchanged
+
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/es.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/lexicon/es-en-index.json
+- compile: changed  src/content/lexicon/es-en-web-fallback.json
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/writing/es-writing.json
+- compile: new      lexicon-db:es-en:es-en-lexicon-v3-331e4292c6bb6e25.db
+- compile: new      lexicon-db:es:es-lexicon-v3-c6fc82b48c7f025c.db
+- compile: missing  lexicon-db:es-en:es-en-lexicon-v3-5f6495e69030db86.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-f5b1152eba28c75a.db
+
+## 2026-10-22 — audio.yml es generate (all) run 39716862754
+
+- compile: changed  src/content/audio-manifest.ts
+- compile: new      content/reports/es/audio-census.json
+- compile: new      content/reports/es/audio-quality.json
+
+## 2026-10-22 — audio-manifest.ts: one entry per key (P3f A1 — pack/lexicon duplicate keys removed, TS1117)
+
+- compile: changed  src/content/audio-manifest.ts
+
+## 2026-10-22 — content/reports/audio-size.json added (P3f B3 audio size budget); French unchanged
+
+- compile: new      content/reports/audio-size.json
+
+## 2026-10-22 — P3f C: es-vi vosotros lesson + concept, topic→unit syllabus map, DELE format checked (checkedBy/checkedAt), catalog lesson count; French unchanged
+
+- compile: changed  content/reports/es/course-objective-coverage.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/catalog.json
+- compile: changed  src/content/concepts/es-concepts.json
+- compile: changed  src/content/exam/es-exam-tracks.json
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/packs/es-vi.json
+
+## 2026-10-22 — es reception assets keyed by the voice manifest's pipelineVersion 3 (P3f); French unchanged
+
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  src/content/reception/es-listening.json
+
+## 2026-10-22 — audio.yml es generate (all) run 39761607493
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/es/audio-census.json
+- compile: changed  content/reports/es/audio-quality.json
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/reception/es-clip-assets.ts

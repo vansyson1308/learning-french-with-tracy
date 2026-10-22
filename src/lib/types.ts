@@ -119,7 +119,8 @@ export type ListeningComprehensionExercise = {
   id: string;
   clipId: string;
   question: string;
-  options: { text: string }[];
+  /** P3e: an option may be a picture (emoji). */
+  options: { text: string; emoji?: string }[];
   correct: number;
   /** AUTHORED course-objective targets (Phase 6 §29-31). */
   objectiveTargets?: string[];
@@ -131,7 +132,7 @@ export type ReadingComprehensionExercise = {
   id: string;
   readingId: string;
   question: string;
-  options: { text: string }[];
+  options: { text: string; emoji?: string }[];
   correct: number;
   objectiveTargets?: string[];
 };
