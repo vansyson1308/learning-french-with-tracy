@@ -454,3 +454,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  src/content/course-profiles.json
 - compile: changed  src/content/test-only/course-profiles.json
+
+## 2026-10-22 — audio.yml ja canary (all) run 39710084983
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/ja/audio-canary.json
+- compile: changed  src/content/attributions.json

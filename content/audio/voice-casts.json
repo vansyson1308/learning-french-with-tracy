@@ -251,33 +251,33 @@
       ],
       "cast": {
         "A": "kokoro-jf_alpha",
-        "B": null
+        "B": "kokoro-jm_kumo"
       },
       "canary": {
-        "reportedAt": "2026-10-21",
+        "reportedAt": "2026-10-22",
         "report": "content/reports/ja/audio-canary.json",
         "voices": [
           {
             "voiceId": "kokoro-jf_alpha",
             "clips": 24,
-            "meanWer": 0.2532,
-            "technicalFailures": 1
+            "meanWer": 0.2255,
+            "technicalFailures": 0
           },
           {
             "voiceId": "melotts-ja",
             "clips": 24,
-            "meanWer": 0.2889,
-            "technicalFailures": 1
+            "meanWer": 0.2875,
+            "technicalFailures": 0
           },
           {
             "voiceId": "kokoro-jm_kumo",
             "clips": 24,
-            "meanWer": 0.4254,
-            "technicalFailures": 1
+            "meanWer": 0.5026,
+            "technicalFailures": 0
           }
         ]
       },
-      "castNote": "A=kokoro-jf_alpha (Kokoro voice pack jf_alpha); no second voice: no other candidate is a verified different speaker within the floor; skipped melotts-ja (1 technical failure(s)), kokoro-jm_kumo (1 technical failure(s))"
+      "castNote": "A=kokoro-jf_alpha (Kokoro voice pack jf_alpha); B=kokoro-jm_kumo: different speaker (Kokoro voice pack jm_kumo), other gender (male vs female), mean WER/CER 0.5026 ≤ 0.6"
     },
     "zh": {
       "status": "selected",

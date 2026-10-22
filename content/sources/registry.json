@@ -589,12 +589,12 @@
       "license": "Apache-2.0",
       "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
       "attribution": "Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jf_alpha.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
-      "retrievedAt": "2026-10-21",
+      "retrievedAt": "2026-10-22",
       "covers": [
         "assets/audio/ja/",
         "content/audio/model-cards/ja/kokoro-jf_alpha.card.txt"
       ],
-      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.2532 over 24 sampled strings, 1 technical failures). Model weights are never committed."
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.2255 over 24 sampled strings, 0 technical failures). Model weights are never committed."
     },
     {
       "id": "melotts-ko",
@@ -609,6 +609,20 @@
         "content/audio/model-cards/ko/melotts-ko.card.txt"
       ],
       "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.1473 over 24 sampled strings, 0 technical failures). Model weights are never committed."
+    },
+    {
+      "id": "kokoro-voice-jm_kumo",
+      "name": "Kokoro-82M voice kokoro-jm_kumo",
+      "kind": "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      "license": "Apache-2.0",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M/tree/f3ff3571791e39611d31c381e3a41a3af07b4987",
+      "attribution": "Course audio for ja-en synthesized with Kokoro-82M (hexgrad, Apache-2.0; kokoro 0.9.4) using the voices/jm_kumo.pt voice (Apache-2.0). Model and voice pinned at repository revision f3ff3571791e39611d31c381e3a41a3af07b4987; the model card is preserved verbatim in content/audio/model-cards/.",
+      "retrievedAt": "2026-10-22",
+      "covers": [
+        "assets/audio/ja/",
+        "content/audio/model-cards/ja/kokoro-jm_kumo.card.txt"
+      ],
+      "notes": "Selected by the audio canary ASR audit (mean WER/CER 0.5026 over 24 sampled strings, 0 technical failures). Model weights are never committed."
     }
   ]
 }
