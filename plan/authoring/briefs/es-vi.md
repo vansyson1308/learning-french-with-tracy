@@ -3,7 +3,7 @@
 ## 1. Vì sao người Việt học
 - Du học và định cư (Tây Ban Nha, Mexico, Mỹ Latinh), việc làm trong du lịch — khách sạn, hướng dẫn viên, dịch thuật thương mại với Mỹ Latinh; cộng đồng học vì sở thích (âm nhạc, phim, bóng đá) lớn nhất trong các ngôn ngữ Rôman sau tiếng Pháp.
 - Kỳ thi mục tiêu ở A1: **DELE A1** (Instituto Cervantes; 4 phần: đọc, nghe, viết, nói) và **SIELE** (điểm theo thang). Chương trình này chỉ cung cấp *ước tính theo khung CEFR*, không mô phỏng đề thật.
-- Biến thể: khoá chọn **tiếng Tây Ban Nha Mỹ Latinh trung tính** (gói `es-en` kế thừa dùng *ustedes*, không *vosotros*; giọng A ưu tiên es_MX). Ghi chú dạng Castilla (*vosotros*, /θ/) trong thẻ khái niệm, không dạy song song.
+- Biến thể (quyết định P3e, 2026-10-22): khoá dạy **tiếng Tây Ban Nha chuẩn Tây Ban Nha** (*español de España*) làm mẫu — DELE do Instituto Cervantes tổ chức và giọng đã chọn (Kokoro ef_dora / em_alex) là giọng Castilla; các dạng Mỹ Latinh chính được **chấp nhận** khi chấm và hiện thành ghi chú "Ở Mỹ Latinh: …" (xem `content/es/VARIETY.md`). *Vosotros* dạy để nhận biết, *ustedes* được chấp nhận khi nói. Ghi chú dạng Castilla (*vosotros*, /θ/) trong thẻ khái niệm, không dạy song song.
 
 ## 2. Người Việt thường vấp ở đâu
 - **Ngữ âm**: /r/ rung (*perro* vs *pero*) — tiếng Việt không có; /x/ (*jamón*) dễ thành /h/; /ɲ/ (*niño*) gần "nh" Việt (lợi thế); nguyên âm đôi *ie/ue* (*tiempo, puerta*) hay bị tách; **trọng âm** là yếu tố mới hoàn toàn (tiếng Việt dùng thanh điệu) — *papá/papa*, *hablo/habló*; phụ âm cuối *-s, -n, -d* dễ bị nuốt vì tiếng Việt không phát âm phụ âm cuối hữu thanh.
@@ -28,7 +28,7 @@
 14. Đại từ *me/te/le* với *gustar* ("tôi thích" = *me gusta* — đảo cấu trúc).
 15. Giới từ *a/en/de/con/por/para* ở mức công thức.
 16. Trọng âm và dấu sắc: quy tắc *-n/-s/nguyên âm* → âm tiết áp chót; dấu ghi ngoại lệ.
-17. Phát âm *r/rr, j, ll/y, c/z* theo biến thể Mỹ Latinh (*seseo*).
+17. Phát âm *r/rr, j, ll/y, c/z*: mẫu là Tây Ban Nha (*z/ce/ci* = /θ/), nhưng *seseo* của Mỹ Latinh luôn được chấp nhận và nhắc tới trong thẻ khái niệm.
 18. Lịch sự: *tú* vs *usted*; *por favor / gracias / perdón*.
 
 ## 4. Kịch bản hội thoại ưu tiên (→ scenarios)

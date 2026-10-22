@@ -9,7 +9,7 @@
  *
  * Derivation (deterministic, documented in every file it writes):
  *   members  = lexemes the primary course teaches ∪ the "very-common" and
- *              "common" frequency bands
+ *              "common" frequency bands, minus regional forms (VARIETY.md)
  *   unit     = the first unit whose word list teaches the lexeme; otherwise
  *              the first unit teaching any lexeme of the same topic;
  *              otherwise the first unit of the course
@@ -50,7 +50,8 @@ export function deriveSyllabus(args: { lang: string; level: string; minLexemes: 
     if (current === undefined || unitIndex.get(unit)! < unitIndex.get(current)!) topicUnit.set(lex.topic, unit);
   }
   const taught = new Set(units.flatMap((u) => [...u.surfaces]));
-  const members = args.lexicon.lexemes.filter((l) => taught.has(l.surface) || l.frequency?.band === "very-common" || l.frequency?.band === "common");
+  // Regional forms (P3e variety) are accepted, never taught as the model.
+  const members = args.lexicon.lexemes.filter((l) => !l.variety && (taught.has(l.surface) || l.frequency?.band === "very-common" || l.frequency?.band === "common"));
   const rank = (l: (typeof members)[number]) => l.frequency?.rank ?? Number.MAX_SAFE_INTEGER;
   const entries = members
     .map((l) => ({ lexemeId: l.id, unitId: firstUnitOf(l.surface) ?? (l.topic ? topicUnit.get(l.topic) : undefined) ?? units[0]?.id ?? "", rank: rank(l), surface: l.surface }))
@@ -77,6 +78,7 @@ export function validateSyllabusData(input: { syllabus: Syllabus; lang: string; 
       continue;
     }
     if (!units.has(e.unitId)) err(`${e.lexemeId}: unit ${e.unitId} is not a unit of ${input.pack.id}`);
+    if (lex.variety) err(`${e.lexemeId}: a regional form (${lex.variety.region}) is never a syllabus word — teach ${lex.variety.equivalent}`);
     for (const code of input.nativeCodes) {
       if (!lex.glosses[code]) err(`${e.lexemeId}: no "${code}" gloss — a daily word needs one`);
       if (!lex.examples.some((x) => x.translations[code])) err(`${e.lexemeId}: no example translated into "${code}" — a daily word shows one`);

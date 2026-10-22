@@ -439,6 +439,8 @@ export type MessageKey =
   | "today.streakLabel"
   | "today.title"
   | "today.yourSession"
+  | "variety.latam"
+  | "variety.other"
   | "vocab.count"
   | "vocab.dataLicenses"
   | "vocab.detailTitle"
@@ -485,4 +487,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 483;
+export const MESSAGE_KEY_COUNT = 485;

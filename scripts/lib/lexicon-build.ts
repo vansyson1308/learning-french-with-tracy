@@ -153,6 +153,10 @@ export type LexiconIndexEntry = {
   /** First example keyed by language code: `{ [targetCode]: …, [nativeCode]: … }`. */
   example?: Record<string, string>;
   confusables?: string[];
+  /** P3e: regional forms of this word (es: "el boleto" for Latin America). */
+  regionalVariants?: { region: string; surface: string }[];
+  /** P3e: this entry IS a regional form of `equivalent`. */
+  variety?: { region: string; equivalent: string };
 };
 
 export function buildRuntimeIndex(
@@ -181,6 +185,9 @@ export function buildRuntimeIndex(
         entry.example = { [targetCode]: lex.examples[0].target, [nativeCode]: lex.examples[0].native };
       }
       if (lex.relations?.confusables !== undefined) entry.confusables = [...lex.relations.confusables];
+      const variants = lexicon.lexemes.filter((v) => v.variety?.equivalent === source.id).map((v) => ({ region: v.variety!.region, surface: v.surface }));
+      if (variants.length > 0) entry.regionalVariants = variants;
+      if (source.variety) entry.variety = { region: source.variety.region, equivalent: source.variety.equivalent };
       return entry;
     }),
   };

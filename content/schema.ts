@@ -775,6 +775,13 @@ export const richLexemeSchema = (lang: string) =>
     relations: z
       .strictObject({ confusables: z.array(lexemeId(lang)).min(1) })
       .optional(),
+    /**
+     * P3e: this lexeme is a REGIONAL form (es: "latam") of `equivalent`, the
+     * course's production-variety lexeme (content/<lang>/VARIETY.md). It is
+     * accepted in graded answers and shown as a note ("Ở Mỹ Latinh: …") on
+     * the equivalent, never taught as the model and never in the syllabus.
+     */
+    variety: z.strictObject({ region: z.string().regex(/^[a-z]+(?:-[a-z]+)*$/), equivalent: lexemeId(lang) }).optional(),
     sourceRefs: z
       .array(z.strictObject({ source: z.string().min(1), key: z.string().min(1).optional() }))
       .min(1),

@@ -1,5 +1,5 @@
 {
-  "contentHash": "fd4864239463ab05",
+  "contentHash": "071b89e8ff44670c",
   "entries": [
     {
       "id": "es:w:hombre",
@@ -540,7 +540,11 @@
       },
       "confusables": [
         "es:w:juego"
-      ]
+      ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:zumo"
+      }
     },
     {
       "id": "es:w:sopa",
@@ -921,6 +925,10 @@
       "example": {
         "es": "Quiero un boleto y un mapa.",
         "en": "I want a ticket and a map"
+      },
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:billete"
       }
     },
     {
@@ -957,7 +965,7 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Quiero un boleto y un mapa.",
+        "es": "Quiero un billete y un mapa.",
         "en": "I want a ticket and a map"
       },
       "confusables": [
@@ -1911,6 +1919,10 @@
       "example": {
         "es": "Yo uso la computadora.",
         "en": "I use the computer"
+      },
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:ordenador"
       }
     },
     {
@@ -5779,7 +5791,11 @@
       "confusables": [
         "es:w:acto",
         "es:w:alto"
-      ]
+      ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:coche"
+      }
     },
     {
       "id": "es:w:guerra",
@@ -9207,7 +9223,7 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Tipea su nombre en la computadora.",
+        "es": "Tipea su nombre en el ordenador.",
         "en": "He types his name on the computer."
       }
     },
@@ -9862,6 +9878,12 @@
       },
       "confusables": [
         "es:w:noche"
+      ],
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el auto"
+        }
       ]
     },
     {
@@ -15166,7 +15188,13 @@
       "example": {
         "es": "¿Ya reservaste los billetes del tren?",
         "en": "Have you already booked the train tickets?"
-      }
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el boleto"
+        }
+      ]
     },
     {
       "id": "es:w:fabrica",
@@ -16834,6 +16862,70 @@
       "example": {
         "es": "El tren sale del andén dos.",
         "en": "The train leaves from platform two."
+      }
+    },
+    {
+      "id": "es:w:zumo",
+      "surface": "el zumo",
+      "lookupForm": "zumo",
+      "lemma": "zumo",
+      "gloss": "juice",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "food",
+      "example": {
+        "es": "Un zumo de naranja, por favor.",
+        "en": "An orange juice, please."
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el jugo"
+        }
+      ]
+    },
+    {
+      "id": "es:w:ordenador",
+      "surface": "el ordenador",
+      "lookupForm": "ordenador",
+      "lemma": "ordenador",
+      "gloss": "computer",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "school",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "oɾdenaˈdoɾ",
+        "notation": "ipa"
+      },
+      "example": {
+        "es": "Trabajo con el ordenador.",
+        "en": "I work on the computer."
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "la computadora"
+        }
+      ]
+    },
+    {
+      "id": "es:w:movil",
+      "surface": "el móvil",
+      "lookupForm": "móvil",
+      "lemma": "móvil",
+      "gloss": "mobile phone",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈmobil",
+        "notation": "ipa"
+      },
+      "example": {
+        "es": "Mi móvil está en la mesa.",
+        "en": "My mobile is on the table."
       }
     }
   ]

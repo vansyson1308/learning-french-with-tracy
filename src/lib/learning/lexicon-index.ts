@@ -24,6 +24,9 @@ export type LexemeMeta = {
   /** First example keyed by language code (`{ [targetCode]: …, [nativeCode]: … }`). */
   example?: Record<string, string>;
   confusables?: string[];
+  /** P3e: regional forms of this word, shown as a note on teach cards. */
+  regionalVariants?: { region: string; surface: string }[];
+  variety?: { region: string; equivalent: string };
 };
 
 type IndexShape = { contentHash: string; entries: LexemeMeta[] };

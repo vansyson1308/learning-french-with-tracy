@@ -1,5 +1,5 @@
 {
-  "contentHash": "10a77b6cc2091cc9",
+  "contentHash": "59447ed22ef7518e",
   "entries": [
     {
       "id": "es:w:hombre",
@@ -540,7 +540,11 @@
       },
       "confusables": [
         "es:w:juego"
-      ]
+      ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:zumo"
+      }
     },
     {
       "id": "es:w:sopa",
@@ -921,6 +925,10 @@
       "example": {
         "es": "Quiero un boleto y un mapa.",
         "vi": "Tôi muốn một vé và một tấm bản đồ."
+      },
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:billete"
       }
     },
     {
@@ -957,7 +965,7 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Quiero un boleto y un mapa.",
+        "es": "Quiero un billete y un mapa.",
         "vi": "Tôi muốn một vé và một tấm bản đồ."
       },
       "confusables": [
@@ -1911,6 +1919,10 @@
       "example": {
         "es": "Yo uso la computadora.",
         "vi": "Tôi dùng máy tính."
+      },
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:ordenador"
       }
     },
     {
@@ -5779,7 +5791,11 @@
       "confusables": [
         "es:w:acto",
         "es:w:alto"
-      ]
+      ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:coche"
+      }
     },
     {
       "id": "es:w:guerra",
@@ -9207,7 +9223,7 @@
         "notation": "ipa"
       },
       "example": {
-        "es": "Tipea su nombre en la computadora.",
+        "es": "Tipea su nombre en el ordenador.",
         "vi": "Anh ấy gõ tên mình trên máy tính."
       }
     },
@@ -9862,6 +9878,12 @@
       },
       "confusables": [
         "es:w:noche"
+      ],
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el auto"
+        }
       ]
     },
     {
@@ -15154,7 +15176,7 @@
       "surface": "el billete",
       "lookupForm": "billete",
       "lemma": "billete",
-      "gloss": "tờ tiền / vé",
+      "gloss": "vé",
       "pos": "noun",
       "gender": "masculine",
       "topic": "shopping",
@@ -15166,7 +15188,13 @@
       "example": {
         "es": "¿Ya reservaste los billetes del tren?",
         "vi": "Bạn đã đặt vé tàu chưa?"
-      }
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el boleto"
+        }
+      ]
     },
     {
       "id": "es:w:fabrica",
@@ -16834,6 +16862,70 @@
       "example": {
         "es": "El tren sale del andén dos.",
         "vi": "Tàu khởi hành từ sân ga số hai."
+      }
+    },
+    {
+      "id": "es:w:zumo",
+      "surface": "el zumo",
+      "lookupForm": "zumo",
+      "lemma": "zumo",
+      "gloss": "nước ép",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "food",
+      "example": {
+        "es": "Un zumo de naranja, por favor.",
+        "vi": "Cho tôi một ly nước cam, làm ơn."
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "el jugo"
+        }
+      ]
+    },
+    {
+      "id": "es:w:ordenador",
+      "surface": "el ordenador",
+      "lookupForm": "ordenador",
+      "lemma": "ordenador",
+      "gloss": "máy tính",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "school",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "oɾdenaˈdoɾ",
+        "notation": "ipa"
+      },
+      "example": {
+        "es": "Trabajo con el ordenador.",
+        "vi": "Tôi làm việc với máy tính."
+      },
+      "regionalVariants": [
+        {
+          "region": "latam",
+          "surface": "la computadora"
+        }
+      ]
+    },
+    {
+      "id": "es:w:movil",
+      "surface": "el móvil",
+      "lookupForm": "móvil",
+      "lemma": "móvil",
+      "gloss": "điện thoại di động",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈmobil",
+        "notation": "ipa"
+      },
+      "example": {
+        "es": "Mi móvil está en la mesa.",
+        "vi": "Điện thoại của tôi ở trên bàn."
       }
     }
   ]

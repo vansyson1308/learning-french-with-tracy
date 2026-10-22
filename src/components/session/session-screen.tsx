@@ -193,7 +193,7 @@ export function SessionScreen({
   // Lexical feedback identity: exactly one stable item of the course or nothing.
   const answered = state.status === "correct" || state.status === "wrong";
   const panelItemId = answered && !minimalFeedback ? panelItemIdFor(definition, step) : null;
-  const grammarNote = grammarNoteFor(step);
+  const grammarNote = grammarNoteFor(step, definition.courseId);
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>

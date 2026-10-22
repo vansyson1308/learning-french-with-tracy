@@ -30,5 +30,11 @@ export const fr: LanguageRules = latinRules(
     ...ARTICLES,
     numberToWords: (value) => frenchNumber(value).traditional,
     spellDigits: spellFrenchDigits,
+    // The labels the post-answer grammar note always used for French.
+    grammarLabels: {
+      persons: { "pre:1s": "je", "pre:2s": "tu", "pre:3s": "il/elle", "pre:1p": "nous", "pre:2p": "vous", "pre:3p": "ils/elles" },
+      presentTense: "présent",
+      articleGenders: { le: "masculine", la: "feminine", un: "masculine", une: "feminine" },
+    },
   }
 );

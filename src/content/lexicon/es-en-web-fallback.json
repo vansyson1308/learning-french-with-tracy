@@ -1,5 +1,5 @@
 {
-  "contentHash": "fd4864239463ab05",
+  "contentHash": "071b89e8ff44670c",
   "schemaVersion": 3,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
@@ -2515,7 +2515,7 @@
       },
       "examples": [
         {
-          "es": "Quiero un boleto y un mapa.",
+          "es": "Quiero un billete y un mapa.",
           "en": "I want a ticket and a map",
           "source": "upstream-lingo-lessons"
         },
@@ -22117,7 +22117,7 @@
       },
       "examples": [
         {
-          "es": "Tipea su nombre en la computadora.",
+          "es": "Tipea su nombre en el ordenador.",
           "en": "He types his name on the computer.",
           "source": "original-lexicon-etl"
         }
@@ -27532,7 +27532,7 @@
           "source": "kaikki-en"
         },
         {
-          "es": "Móntate en el carro.",
+          "es": "Móntate en el coche.",
           "en": "Get in the car.",
           "source": "kaikki-en"
         }
@@ -39038,6 +39038,111 @@
         }
       ],
       "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:zumo",
+      "surface": "el zumo",
+      "lookupForm": "zumo",
+      "lemma": "zumo",
+      "gloss": "juice",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "food",
+      "examples": [
+        {
+          "es": "Un zumo de naranja, por favor.",
+          "en": "An orange juice, please.",
+          "source": "original-lexicon-etl"
+        },
+        {
+          "es": "Bebo zumo por la mañana.",
+          "en": "I drink juice in the morning.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:ordenador",
+      "surface": "el ordenador",
+      "lookupForm": "ordenador",
+      "lemma": "ordenador",
+      "gloss": "computer",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "school",
+      "frequency": {
+        "band": "less-common",
+        "rank": 1907,
+        "perMillion": 28.9137
+      },
+      "pronunciation": {
+        "value": "oɾdenaˈdoɾ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "es": "Trabajo con el ordenador.",
+          "en": "I work on the computer.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "ordenador|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "ordenador"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:movil",
+      "surface": "el móvil",
+      "lookupForm": "móvil",
+      "lemma": "móvil",
+      "gloss": "mobile phone",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "frequency": {
+        "band": "less-common",
+        "rank": 2203,
+        "perMillion": 23.5947
+      },
+      "pronunciation": {
+        "value": "ˈmobil",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "es": "Mi móvil está en la mesa.",
+          "en": "My mobile is on the table.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "móvil|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "móvil"
+        },
         {
           "source": "original-lexicon-etl"
         }

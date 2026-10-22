@@ -140,6 +140,14 @@ export function validateLexiconData(input: {
     if (byId.has(lex.id)) err(`duplicate id ${lex.id}`);
     byId.set(lex.id, lex);
   }
+  // P3e regional forms point at a production-variety lexeme of the same part of speech.
+  for (const lex of lexicon.lexemes) {
+    if (!lex.variety) continue;
+    const eq = byId.get(lex.variety.equivalent);
+    if (!eq) err(`${lex.id}: variety.equivalent ${lex.variety.equivalent} is not a lexeme`);
+    else if (eq.variety) err(`${lex.id}: variety.equivalent ${eq.id} is itself a regional form`);
+    else if (eq.partOfSpeech !== lex.partOfSpeech) err(`${lex.id}: regional form and ${eq.id} differ in part of speech`);
+  }
   const surfaces = lexicon.lexemes.map((l) => l.surface);
   if (new Set(surfaces).size !== surfaces.length) err("duplicate surfaces");
 

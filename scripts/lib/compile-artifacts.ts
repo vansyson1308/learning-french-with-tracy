@@ -42,6 +42,7 @@ import {
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
 import { examTrackPaths } from "./exam-bank";
 import { compileDailyWordsArtifact, deriveSyllabus, loadSyllabus, validateSyllabusData } from "./syllabus";
+import { varietyErrors } from "./variety";
 import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
 import { deriveGenderPatterns } from "./gender-patterns";
@@ -344,6 +345,18 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
   errors.push(...validateSecondaryNativeCourses(lang, packs));
   errors.push(...validateTargetExamTracks(lang, packs, { objectives, readings, listening, speech, writing, interaction }, nativeCodes));
   errors.push(...validateTargetSyllabus(lang, packs, lexicon, nativeCodes));
+  // P3e: one production variety in every target text the rich courses model.
+  {
+    const roles = courseRolesFor(lang, packs);
+    const rich = [roles.primary, ...roles.mirrors].filter((p) => p !== undefined).map((p) => p.pack);
+    const rels = [
+      `content/${lang}/reception/reading.json`, `content/${lang}/reception/listening.json`, `content/${lang}/speech/items.json`,
+      `content/${lang}/writing/tasks.json`, `content/${lang}/interaction/scenarios.json`, `content/${lang}/assessment/checkpoints.json`,
+      `content/${lang}/assessment/placement.json`, `content/${lang}/pedagogy/concepts.json`, `content/${lang}/lexicon/lexemes.json`,
+      ...examTrackPaths(lang),
+    ].filter((rel) => existsSync(safeResolve(rel)));
+    errors.push(...varietyErrors({ lang, lexicon, packs: rich, sources: rels.map((rel) => ({ rel, doc: readJson(rel) })) }));
+  }
   return errors;
 }
 

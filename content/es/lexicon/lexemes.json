@@ -1787,6 +1787,10 @@
           "key": "388764|2367"
         }
       ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:zumo"
+      },
       "sourceRefs": [
         {
           "source": "kaikki-en",
@@ -3068,6 +3072,10 @@
           "key": "boleto|noun|0"
         }
       ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:billete"
+      },
       "sourceRefs": [
         {
           "source": "kaikki-en",
@@ -3181,7 +3189,7 @@
       "topic": "travel",
       "examples": [
         {
-          "target": "Quiero un boleto y un mapa.",
+          "target": "Quiero un billete y un mapa.",
           "translations": {
             "en": "I want a ticket and a map",
             "vi": "Tôi muốn một vé và một tấm bản đồ."
@@ -6368,6 +6376,10 @@
           "key": "571956|249796"
         }
       ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:ordenador"
+      },
       "sourceRefs": [
         {
           "source": "kaikki-en",
@@ -18543,6 +18555,10 @@
           "key": "482413|251094"
         }
       ],
+      "variety": {
+        "region": "latam",
+        "equivalent": "es:w:coche"
+      },
       "sourceRefs": [
         {
           "source": "kaikki-en",
@@ -28713,7 +28729,7 @@
       "topic": "everyday",
       "examples": [
         {
-          "target": "Tipea su nombre en la computadora.",
+          "target": "Tipea su nombre en el ordenador.",
           "translations": {
             "en": "He types his name on the computer.",
             "vi": "Anh ấy gõ tên mình trên máy tính."
@@ -35687,7 +35703,7 @@
           "key": "montar|verb|1"
         },
         {
-          "target": "Móntate en el carro.",
+          "target": "Móntate en el coche.",
           "translations": {
             "en": "Get in the car.",
             "vi": "Lên xe đi."
@@ -46010,7 +46026,7 @@
       "gender": "masculine",
       "glosses": {
         "en": "the banknote, bill",
-        "vi": "tờ tiền / vé"
+        "vi": "vé"
       },
       "pronunciation": {
         "value": "biˈʝete",
@@ -50468,6 +50484,140 @@
         }
       ],
       "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:zumo",
+      "surface": "el zumo",
+      "lemma": "zumo",
+      "lookupForm": "zumo",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "juice",
+        "vi": "nước ép"
+      },
+      "topic": "food",
+      "examples": [
+        {
+          "target": "Un zumo de naranja, por favor.",
+          "translations": {
+            "en": "An orange juice, please.",
+            "vi": "Cho tôi một ly nước cam, làm ơn."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        },
+        {
+          "target": "Bebo zumo por la mañana.",
+          "translations": {
+            "en": "I drink juice in the morning.",
+            "vi": "Buổi sáng tôi uống nước ép."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:ordenador",
+      "surface": "el ordenador",
+      "lemma": "ordenador",
+      "lookupForm": "ordenador",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "computer",
+        "vi": "máy tính"
+      },
+      "pronunciation": {
+        "value": "oɾdenaˈdoɾ",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 28.9137,
+        "rank": 1907,
+        "band": "less-common"
+      },
+      "topic": "school",
+      "examples": [
+        {
+          "target": "Trabajo con el ordenador.",
+          "translations": {
+            "en": "I work on the computer.",
+            "vi": "Tôi làm việc với máy tính."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "ordenador|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "ordenador"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:movil",
+      "surface": "el móvil",
+      "lemma": "móvil",
+      "lookupForm": "móvil",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "mobile phone",
+        "vi": "điện thoại di động"
+      },
+      "pronunciation": {
+        "value": "ˈmobil",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 23.5947,
+        "rank": 2203,
+        "band": "less-common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Mi móvil está en la mesa.",
+          "translations": {
+            "en": "My mobile is on the table.",
+            "vi": "Điện thoại của tôi ở trên bàn."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "móvil|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "móvil"
+        },
         {
           "source": "original-lexicon-etl"
         }

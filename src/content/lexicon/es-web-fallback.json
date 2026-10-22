@@ -1,5 +1,5 @@
 {
-  "contentHash": "10a77b6cc2091cc9",
+  "contentHash": "59447ed22ef7518e",
   "schemaVersion": 3,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
@@ -2515,7 +2515,7 @@
       },
       "examples": [
         {
-          "es": "Quiero un boleto y un mapa.",
+          "es": "Quiero un billete y un mapa.",
           "vi": "Tôi muốn một vé và một tấm bản đồ.",
           "source": "upstream-lingo-lessons"
         },
@@ -22117,7 +22117,7 @@
       },
       "examples": [
         {
-          "es": "Tipea su nombre en la computadora.",
+          "es": "Tipea su nombre en el ordenador.",
           "vi": "Anh ấy gõ tên mình trên máy tính.",
           "source": "original-lexicon-etl"
         }
@@ -27532,7 +27532,7 @@
           "source": "kaikki-en"
         },
         {
-          "es": "Móntate en el carro.",
+          "es": "Móntate en el coche.",
           "vi": "Lên xe đi.",
           "source": "kaikki-en"
         }
@@ -35554,7 +35554,7 @@
       "surface": "el billete",
       "lookupForm": "billete",
       "lemma": "billete",
-      "gloss": "tờ tiền / vé",
+      "gloss": "vé",
       "pos": "noun",
       "gender": "masculine",
       "topic": "shopping",
@@ -39038,6 +39038,111 @@
         }
       ],
       "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:zumo",
+      "surface": "el zumo",
+      "lookupForm": "zumo",
+      "lemma": "zumo",
+      "gloss": "nước ép",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "food",
+      "examples": [
+        {
+          "es": "Un zumo de naranja, por favor.",
+          "vi": "Cho tôi một ly nước cam, làm ơn.",
+          "source": "original-lexicon-etl"
+        },
+        {
+          "es": "Bebo zumo por la mañana.",
+          "vi": "Buổi sáng tôi uống nước ép.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:ordenador",
+      "surface": "el ordenador",
+      "lookupForm": "ordenador",
+      "lemma": "ordenador",
+      "gloss": "máy tính",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "school",
+      "frequency": {
+        "band": "less-common",
+        "rank": 1907,
+        "perMillion": 28.9137
+      },
+      "pronunciation": {
+        "value": "oɾdenaˈdoɾ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "es": "Trabajo con el ordenador.",
+          "vi": "Tôi làm việc với máy tính.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "ordenador|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "ordenador"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "es:w:movil",
+      "surface": "el móvil",
+      "lookupForm": "móvil",
+      "lemma": "móvil",
+      "gloss": "điện thoại di động",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "frequency": {
+        "band": "less-common",
+        "rank": 2203,
+        "perMillion": 23.5947
+      },
+      "pronunciation": {
+        "value": "ˈmobil",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "es": "Mi móvil está en la mesa.",
+          "vi": "Điện thoại của tôi ở trên bàn.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "móvil|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "móvil"
+        },
         {
           "source": "original-lexicon-etl"
         }

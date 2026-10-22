@@ -69,6 +69,11 @@ export function TeachCard({
         <View style={styles.speakerRow}>
           <SpeakerButton text={word.target} size={48} />
         </View>
+        {meta?.regionalVariants?.map((v) => (
+          <Text key={`${v.region}:${v.surface}`} style={styles.variant} testID="teach-regional-variant">
+            {t(`variety.${v.region === "latam" ? "latam" : "other"}`, { surface: v.surface })}
+          </Text>
+        ))}
         {example ? (
           <View style={styles.example}>
             <Text style={styles.exampleFr}>{example.target}</Text>
@@ -92,6 +97,7 @@ const useStyles = makeThemedStyles((colors) =>
       letterSpacing: 2,
       color: colors.skyDark,
     },
+    variant: { fontSize: 14, fontStyle: "italic", color: colors.textMuted, textAlign: "center" },
     card: {
       alignSelf: "stretch",
       alignItems: "center",

@@ -404,3 +404,27 @@ A refactor must never appear in this file; only deliberate French changes do.
 ## 2026-10-22 — P3e §3: default-course tie-break follows the course pickers' order (units, language name, id) instead of exercise counts — still fr-en; es-vi gradeTargets 248 after the lesson fill
 
 - compile: changed  src/content/course-profiles.json
+
+## 2026-10-22 — P3e §4: Peninsular Spanish as the production model (billete/zumo/coche/ordenador/móvil; Latin-American forms accepted and noted, 4 regional lexemes, 3 new lexemes), vosotros in concept cards, grammar-note person labels per language (French text identical); syllabus re-derived (622)
+
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/lexicon-source-audit.json
+- compile: changed  src/content/concepts/es-concepts.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/es.json
+- compile: changed  src/content/interaction/es-scenarios.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-daily.json
+- compile: changed  src/content/lexicon/es-en-index.json
+- compile: changed  src/content/lexicon/es-en-web-fallback.json
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/reception/es-listening.json
+- compile: changed  src/content/reception/es-reading.json
+- compile: changed  src/content/speech/es-speech-items.json
+- compile: changed  src/content/writing/es-writing.json
+- compile: new      lexicon-db:es-en:es-en-lexicon-v3-071b89e8ff44670c.db
+- compile: new      lexicon-db:es:es-lexicon-v3-59447ed22ef7518e.db
+- compile: missing  lexicon-db:es-en:es-en-lexicon-v3-fd4864239463ab05.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-10a77b6cc2091cc9.db
