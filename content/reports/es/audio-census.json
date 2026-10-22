@@ -1,10 +1,11 @@
 {
   "generator": "scripts/audio.ts apply",
   "language": "es",
-  "pipelineVersion": 2,
+  "pipelineVersion": 3,
   "layers": [
     "pack",
-    "lexicon"
+    "lexicon",
+    "reception"
   ],
   "courses": [
     {
@@ -14,12 +15,21 @@
         "A": "kokoro-ef_dora",
         "B": "kokoro-em_alex"
       },
-      "clips": 2688
+      "clips": 189
+    },
+    {
+      "courseId": "es-vi",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "kokoro-ef_dora",
+        "B": "kokoro-em_alex"
+      },
+      "clips": 938
     }
   ],
-  "receptionClips": 0,
+  "receptionClips": 221,
   "files": {
-    "pack": 2510,
-    "reception": 0
+    "pack": 987,
+    "reception": 210
   }
 }

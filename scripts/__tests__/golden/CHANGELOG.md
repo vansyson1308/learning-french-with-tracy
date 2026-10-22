@@ -531,3 +531,13 @@ A refactor must never appear in this file; only deliberate French changes do.
 
 - compile: changed  content/reports/es/reception-audio-census.json
 - compile: changed  src/content/reception/es-listening.json
+
+## 2026-10-22 — audio.yml es generate (all) run 39761607493
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/es/audio-census.json
+- compile: changed  content/reports/es/audio-quality.json
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/reception/es-clip-assets.ts
