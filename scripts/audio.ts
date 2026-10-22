@@ -34,7 +34,7 @@ import { listeningSchema } from "../content/schema";
 import { writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
 import { buildPlugin } from "./lib/languages";
 import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa } from "./lib/piper-audio";
-import { loadPacks, packsForTarget } from "./lib/pipeline";
+import { courseRolesFor, loadPacks } from "./lib/pipeline";
 import { receptionAssetKey } from "./lib/reception";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
@@ -142,11 +142,15 @@ function voiceById(voices: Voice[], id: string): Voice {
   if (!v) fail(`voice ${id} is not declared in the manifest`);
   return v;
 }
-/** The primary course of the language (smallest native code): lexicon audio is keyed by it. */
+/**
+ * The primary course of the language (P3e: by course role — `es-vi` declares
+ * itself primary, `es-en` is standalone; without roles the smallest native
+ * code): lexicon audio is keyed by it, as the runtime looks it up.
+ */
 function primaryCourseId(): string {
-  const packs = packsForTarget(LANG, loadPacks()).filter((p) => p.pack.testOnly !== true);
-  if (packs.length === 0) fail(`${LANG}: no course pack`);
-  return [...packs].sort((a, b) => a.pack.nativeCode.localeCompare(b.pack.nativeCode))[0].pack.id;
+  const primary = courseRolesFor(LANG, loadPacks().filter((p) => p.pack.testOnly !== true)).primary;
+  if (!primary) fail(`${LANG}: no course pack`);
+  return primary.pack.id;
 }
 
 /** Every string a course pack can speak (unchanged from the V1 pipeline). */
