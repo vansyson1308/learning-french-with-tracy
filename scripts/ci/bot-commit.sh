@@ -59,6 +59,8 @@ gate() {
     bun scripts/golden.ts --update --reason "$why"
     bun scripts/golden.ts --check
   fi
+  bun run typecheck
+  bun run lint
   bun run test
   bun run content:check
   bun run audio:check

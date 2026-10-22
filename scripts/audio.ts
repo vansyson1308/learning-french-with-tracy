@@ -35,6 +35,7 @@ import { writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "
 import { buildPlugin } from "./lib/languages";
 import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa } from "./lib/piper-audio";
 import { courseRolesFor, loadPacks } from "./lib/pipeline";
+import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { receptionAssetKey } from "./lib/reception";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
@@ -728,6 +729,14 @@ function existingManifestEntries(): { key: string; file: string }[] {
   return out;
 }
 
+/** P3f: rewrite src/content/audio-manifest.ts with one entry per key (repairs a manifest written before the merge rule). */
+function dedupeManifest() {
+  const merged = mergeManifestEntries(existingManifestEntries());
+  if (merged.errors.length > 0) fail(`audio manifest: ${merged.errors.slice(0, 10).join("; ")}`);
+  writeFileSync(AUDIO_MANIFEST_TS, renderAudioManifest(merged.entries));
+  console.log(`audio manifest: ${merged.entries.length} entries`);
+}
+
 function apply(planPath: string, outdir: string, sfxDir?: string) {
   const doc = loadPlan(planPath);
   if (doc.mode !== "generate") fail("apply needs a generate plan");
@@ -742,15 +751,18 @@ function apply(planPath: string, outdir: string, sfxDir?: string) {
     if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
     mkdirSync(dir, { recursive: true });
     const seen = new Set<string>();
-    const entries = existingManifestEntries().filter((e) => !languageCourseIds.has(e.key.split(":")[0]));
+    const entries: ManifestEntry[] = existingManifestEntries().filter((e) => !languageCourseIds.has(e.key.split(":")[0]));
     for (const clip of packClips) {
       if (!seen.has(clip.assetKey)) {
         copyFileSync(path.join(outdir, `${clip.assetKey}.mp3`), path.join(dir, `${clip.assetKey}.mp3`));
         seen.add(clip.assetKey);
       }
-      entries.push({ key: `${clip.courseId}:${clip.text}`, file: `../../assets/audio/${LANG}/${clip.assetKey}.mp3` });
+      entries.push({ key: `${clip.courseId}:${clip.text}`, file: `../../assets/audio/${LANG}/${clip.assetKey}.mp3`, layer: clip.layer === "lexicon" ? "lexicon" : "pack" });
     }
-    writeFileSync(AUDIO_MANIFEST_TS, renderAudioManifest(entries));
+    // P3f: pack and lexicon clips share `<course>:<text>` keys — one entry per key.
+    const merged = mergeManifestEntries(entries);
+    if (merged.errors.length > 0) fail(`audio manifest: ${merged.errors.slice(0, 10).join("; ")}`);
+    writeFileSync(AUDIO_MANIFEST_TS, renderAudioManifest(merged.entries));
     // A course that now has bundled audio is no longer device-tts.
     for (const courseId of languageCourseIds) {
       const course = m.courses[courseId];
@@ -815,6 +827,7 @@ else if (cmd === "sfx-script") process.stdout.write(sfxScript(arg("out") ?? fail
 else if (cmd === "qa") qa(arg("plan") ?? fail("--plan required"), arg("outdir") ?? fail("--outdir required"), arg("report") ?? fail("--report required"), arg("asr"));
 else if (cmd === "select") select(arg("report") ?? fail("--report required"), arg("courses"));
 else if (cmd === "apply") apply(arg("plan") ?? fail("--plan required"), arg("outdir") ?? fail("--outdir required"), arg("sfx"));
+else if (cmd === "manifest-dedupe") dedupeManifest();
 else if (cmd === "engines-needed") {
   const voices = voicesInScope((arg("mode") ?? "generate") as "recon" | "generate", arg("courses"));
   process.stdout.write(`${enginesNeeded(voices).join(" ")}\n`);

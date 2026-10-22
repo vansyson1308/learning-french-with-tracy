@@ -508,3 +508,7 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/audio-manifest.ts
 - compile: new      content/reports/es/audio-census.json
 - compile: new      content/reports/es/audio-quality.json
+
+## 2026-10-22 — audio-manifest.ts: one entry per key (P3f A1 — pack/lexicon duplicate keys removed, TS1117)
+
+- compile: changed  src/content/audio-manifest.ts

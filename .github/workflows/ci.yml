@@ -24,9 +24,13 @@ on:
   # Commits pushed by a workflow token never trigger `push`: re-run CI on the
   # branch a data workflow committed to as soon as it finishes, and once a day
   # on the default branch, so a bot commit can never leave `main` red silently.
+  # P3f: only for data commits on `main` — a feature branch gets CI from its own
+  # push / pull_request events (a workflow_run run is reported against the
+  # default branch, so a feature-branch run there showed `main` red).
   workflow_run:
     workflows: ["Audio pipeline (v2)", "Lexicon source (ETL v2)", "Lexique 4 source", "EAS build (Android RC)"]
     types: [completed]
+    branches: [main]
   schedule:
     - cron: "17 3 * * *"
 
@@ -37,7 +41,7 @@ permissions:
 jobs:
   checks:
     # After a data workflow: only when it succeeded (a failed run committed nothing).
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -101,7 +105,7 @@ jobs:
   # never shipped, so it is not in the shipped-provenance registry. A match
   # fails unless content/es/languagetool-allow.json allows it with a reason.
   languagetool:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -134,7 +138,7 @@ jobs:
         run: bun scripts/languagetool.ts --course es-vi --server http://localhost:8081
 
   export-size:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
