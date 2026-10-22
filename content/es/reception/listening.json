@@ -5628,6 +5628,52 @@
         "maxPlays": 2,
         "rate": 1
       }
+    },
+    {
+      "id": "es.clip.uf_dictado_gracias",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "gracias"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
+      "id": "es.clip.uh_dictado_anden",
+      "kind": "word_phrase",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "el andén dos"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.listening.announcements"
+      ],
+      "lexemeRefs": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
     }
   ]
 }

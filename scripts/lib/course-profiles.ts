@@ -298,19 +298,23 @@ export function compileCourseProfileArtifacts(args: {
     }
   }
   const courseIds = Object.keys(profiles).sort();
-  // The onboarding default is data too: the course with the most enabled
-  // capabilities, then the most authored exercises (P3d: a second complete
-  // course must not take the default by sorting first), then id. Today that
-  // is the complete French course; it moves by content, never by a code edit.
-  const exerciseCount = new Map(
-    args.packs.map((p) => [p.id, p.sections.reduce((n, s) => n + s.units.reduce((m, u) => m + u.lessons.reduce((k, l) => k + l.exercises.length, 0), 0), 0)])
-  );
-  // Optional add-ons (P3d: `exam`) do not make a course "more complete",
-  // and a standalone course is never the default.
+  // The fallback default is data too: the course with the most core
+  // capabilities (optional add-ons such as `exam` don't count), ties broken
+  // in the course pickers' order (most units, then target-language name,
+  // then id) — never by exercise count, which content edits move. A
+  // standalone course is never the default. Onboarding refines this per UI
+  // language at runtime (P3e §7: src/lib/content.ts defaultCourseForUi).
   const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
+  const packById = new Map(args.packs.map((p) => [p.id, p]));
+  const unitCount = (id: string) => packById.get(id)?.sections.reduce((n, s) => n + s.units.length, 0) ?? 0;
   const defaultCourseId = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
     const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
-    return score(b) - score(a) || (exerciseCount.get(b) ?? 0) - (exerciseCount.get(a) ?? 0) || a.localeCompare(b);
+    return (
+      score(b) - score(a) ||
+      unitCount(b) - unitCount(a) ||
+      (packById.get(a)?.targetLanguage ?? "").localeCompare(packById.get(b)?.targetLanguage ?? "") ||
+      a.localeCompare(b)
+    );
   })[0];
   out.push({
     relPath: `${root}/course-profiles.json`,

@@ -520,6 +520,12 @@ export const LessonSchema = z.strictObject({
    * otherwise (§153) — such courses carry no CEFR/objective metadata.
    */
   objectives: z.array(objectiveId(ANY_LANGUAGE)).min(1).optional(),
+  /**
+   * P3e: "teaching" (default) lessons hold ≥ 5 exercises; a lesson that IS
+   * one conversation or one form declares "scenario" / "form" and holds
+   * exactly that exercise (scripts/lib/lesson-shape.ts).
+   */
+  lessonKind: z.enum(["teaching", "scenario", "form"]).optional(),
 });
 
 export const UnitSchema = z.strictObject({
@@ -611,6 +617,12 @@ export const CourseProfileOverrideSchema = z.strictObject({
    */
   review: z.strictObject({ native: z.string().min(2), date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), checklist: z.string().optional() }).optional(),
   allowUnreviewed: z.boolean().optional(),
+  /**
+   * P3e: a course authored before the lesson-shape rules (French) keeps its
+   * lesson sizes and repeats byte-identical; every other course must pass
+   * scripts/lib/lesson-shape.ts.
+   */
+  legacyLessonShapes: z.boolean().optional(),
   /**
    * P3d course role within its target (scripts/lib/course-roles.ts): omitted
    * = mirror of the primary (or the primary itself when its native code is

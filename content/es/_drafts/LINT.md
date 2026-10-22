@@ -1,29 +1,8 @@
 # Lint — es-vi
 
-Findings: 845 (distractor-pos 12, duplicate-payload 3, type-mix 1, lexeme-skill-coverage 67, lexeme-coverage 762)
+Findings: 826 (type-mix 4, lexeme-skill-coverage 62, lexeme-coverage 760)
 
-## distractor-pos (12)
-
-- ℹ️ `es-vi:u1-l0-e8`: distractor "gracias" is interjection, answer "señor" is adjective
-- ℹ️ `es-vi:ue-l2-e1`: distractor "xe hơi" is noun, answer "đắt" is adjective
-- ℹ️ `es-vi:uf-l2-e0`: distractor "la noche" is noun, answer "hoy" is adverb
-- ℹ️ `es-vi:uf-l2-e0`: distractor "la mañana" is noun, answer "hoy" is adverb
-- ℹ️ `es-vi:uf-l2-e0`: distractor "la semana" is noun, answer "hoy" is adverb
-- ℹ️ `es-vi:uf-l3-e3`: distractor "hoy" is adverb, answer "la mañana" is noun
-- ℹ️ `es-vi:ug-l0-e3`: distractor "đóng cửa / đóng" is adjective, answer "mở" is verb
-- ℹ️ `es-vi:ug-l1-e0`: distractor "hoy" is adverb, answer "el sábado" is noun
-- ℹ️ `es-vi:ug-l1-e3`: distractor "hôm nay" is adverb, answer "Chủ nhật" is noun
-- ℹ️ `es-vi:ug-l2-e4`: distractor "la mañana" is noun, answer "hoy" is adverb
-- ℹ️ `es-vi:ug-l2-e4`: distractor "la noche" is noun, answer "hoy" is adverb
-- ℹ️ `es-vi:ug-l2-e4`: distractor "el sábado" is noun, answer "hoy" is adverb
-
-## duplicate-payload (3)
-
-- ⚠️ `es-vi:uf-l0-e4 = es-vi:uf-l3-e5`: identical exercise payload
-- ⚠️ `es-vi:uf-l2-e4 = es-vi:uh-l3-e3`: identical exercise payload
-- ⚠️ `es-vi:un-l0-e0 = es-vi:un-l3-e0`: identical exercise payload
-
-## lexeme-coverage (762)
+## lexeme-coverage (760)
 
 - ℹ️ `el doctor`: taught 1 time(s) (< 2)
 - ℹ️ `hay`: taught 1 time(s) (< 2)
@@ -36,8 +15,7 @@ Findings: 845 (distractor-pos 12, duplicate-payload 3, type-mix 1, lexeme-skill-
 - ℹ️ `después`: taught 1 time(s) (< 2)
 - ℹ️ `también`: taught 1 time(s) (< 2)
 - ℹ️ `llamarse`: taught 1 time(s) (< 2)
-- ℹ️ `el nombre`: taught 1 time(s) (< 2)
-- ℹ️ `el mensaje`: taught 1 time(s) (< 2)
+- ℹ️ `quince`: taught 1 time(s) (< 2)
 - ℹ️ `quiero`: taught 1 time(s) (< 2)
 - ℹ️ `cerca`: taught 1 time(s) (< 2)
 - ℹ️ `él`: lexeme never appears in the pack
@@ -65,9 +43,10 @@ Findings: 845 (distractor-pos 12, duplicate-payload 3, type-mix 1, lexeme-skill-
 - ℹ️ `el sol`: lexeme never appears in the pack
 - ℹ️ `la lluvia`: lexeme never appears in the pack
 - ℹ️ `la nieve`: lexeme never appears in the pack
-- … 722 more
+- ℹ️ `el calor`: lexeme never appears in the pack
+- … 720 more
 
-## lexeme-skill-coverage (67)
+## lexeme-skill-coverage (62)
 
 - ℹ️ `el niño`: recognize 3 / produce 0 — one skill never exercised
 - ℹ️ `el pan`: recognize 4 / produce 0 — one skill never exercised
@@ -84,8 +63,6 @@ Findings: 845 (distractor-pos 12, duplicate-payload 3, type-mix 1, lexeme-skill-
 - ℹ️ `el hermano`: recognize 3 / produce 0 — one skill never exercised
 - ℹ️ `la abuela`: recognize 6 / produce 0 — one skill never exercised
 - ℹ️ `el bebé`: recognize 5 / produce 0 — one skill never exercised
-- ℹ️ `el gato`: recognize 5 / produce 0 — one skill never exercised
-- ℹ️ `la estación`: recognize 11 / produce 0 — one skill never exercised
 - ℹ️ `el taxi`: recognize 4 / produce 0 — one skill never exercised
 - ℹ️ `la derecha`: recognize 5 / produce 0 — one skill never exercised
 - ℹ️ `el día`: recognize 7 / produce 0 — one skill never exercised
@@ -109,8 +86,13 @@ Findings: 845 (distractor-pos 12, duplicate-payload 3, type-mix 1, lexeme-skill-
 - ℹ️ `grande`: recognize 3 / produce 0 — one skill never exercised
 - ℹ️ `la ropa`: recognize 2 / produce 0 — one skill never exercised
 - ℹ️ `uno`: recognize 3 / produce 0 — one skill never exercised
-- … 27 more
+- ℹ️ `dos`: recognize 2 / produce 0 — one skill never exercised
+- ℹ️ `la hora`: recognize 6 / produce 0 — one skill never exercised
+- … 22 more
 
-## type-mix (1)
+## type-mix (4)
 
 - ℹ️ `section-2`: types vs blueprint — missing: none; extra: match, wordBank
+- ℹ️ `section-4`: types vs blueprint — missing: none; extra: wordBank, fillBlank, typeAnswer
+- ℹ️ `section-5`: types vs blueprint — missing: none; extra: typeAnswer, fillBlank, select
+- ℹ️ `section-6`: types vs blueprint — missing: none; extra: typeAnswer, fillBlank

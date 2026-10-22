@@ -391,3 +391,16 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.regular.speak.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.short.silent.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/today/v3-assessed.short.speak.json
+
+## 2026-10-22 — P3e §3: es-vi thin lessons filled to >= 5 exercises (126 new), 7 single scenario/form lessons declared via lessonKind, 3 duplicate payloads replaced (2 new dictation clips), 12 distractor-POS fixes, unit-b title de-calqued; French unchanged (legacyLessonShapes)
+
+- compile: changed  content/reports/es/course-objective-coverage.json
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/reception/es-listening.json
+
+## 2026-10-22 — P3e §3: default-course tie-break follows the course pickers' order (units, language name, id) instead of exercise counts — still fr-en; es-vi gradeTargets 248 after the lesson fill
+
+- compile: changed  src/content/course-profiles.json

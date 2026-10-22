@@ -39,6 +39,9 @@ export const CEFR_DESCRIPTOR_PHRASES: readonly string[] = [
   "với điều kiện người đối thoại nói chậm và rõ",
 ];
 
+/** English calques STYLE-vi §1 bans from learner-facing Vietnamese. */
+export const CALQUE_PHRASES: readonly string[] = ["hiệu quả cao", "tần suất cao", "nền tảng cốt lõi"];
+
 /** Blueprint exercise-type mix per section (French), used as the reference distribution. */
 export const BLUEPRINT_MIX: Record<string, Record<string, number>> = {
   "section-1": { select: 120, wordBank: 40, fillBlank: 20, match: 20, typeAnswer: 20 },
@@ -142,6 +145,7 @@ export function lintPack(pack: PackSource, lexicon: { surface: string; partOfSpe
   // CEFR descriptor leak over every string of the pack.
   const text = JSON.stringify(pack).toLowerCase();
   for (const phrase of CEFR_DESCRIPTOR_PHRASES) if (text.includes(phrase.toLowerCase())) findings.push({ rule: "cefr-descriptor-leak", severity: "warn", where: pack.id, message: `contains the descriptor phrase "${phrase}"` });
+  for (const phrase of CALQUE_PHRASES) if (text.includes(phrase)) findings.push({ rule: "calque", severity: "warn", where: pack.id, message: `learner-facing text uses the calque "${phrase}" (STYLE-vi §1)` });
   return { courseId: pack.id, findings, stats: { positions: Object.fromEntries([...positions].map(([t, l]) => [t, l.length])), duplicates: [...payloads.values()].filter((v) => v.length > 1).length, lexemesTracked: lexemeUse.size } };
 }
 
@@ -150,7 +154,8 @@ export function lintRich(lang: string, native: string): LintFinding[] {
   const findings: LintFinding[] = [];
   const readRel = `content/${lang}/reception/reading.json`;
   if (existsSync(safeResolve(readRel))) {
-    const readings = (readJson(readRel) as { readings: { id: string; blocks: { text: string }[] }[] }).readings;
+    // Exam texts (use: "exam") follow the exam format's own word bands (validated there).
+    const readings = (readJson(readRel) as { readings: { id: string; blocks: { text: string }[]; use?: string }[] }).readings.filter((r) => r.use !== "exam");
     readings.forEach((r, i) => {
       const tokens = r.blocks.reduce((n, b) => n + b.text.split(/\s+/).filter(Boolean).length, 0);
       const cap = i < readings.length / 2 ? READING_TOKEN_CAP_EARLY : READING_TOKEN_CAP_LATE;

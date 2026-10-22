@@ -18,6 +18,10 @@ cho nội dung **viết mới** bằng tiếng Việt.
 - Ngôn ngữ đích viết đúng chính tả bản ngữ (dấu, hoa/thường, ß, ñ, kana,
   Hán tự, Hangul). Không phiên âm bằng chữ Việt ("bông-giua") trong văn bản
   học — gợi ý cách đọc đặt trong thẻ khái niệm và luôn nói rõ "gần giống".
+- Không dịch sát tiêu đề tiếng Anh (calque). Tránh các cụm như "hiệu quả cao"
+  (high-yield), "tần suất cao" (high-frequency), "nền tảng cốt lõi" (core
+  foundations) trong tiêu đề và lời nhắn cho người học. Viết như người Việt
+  nói: "Những động từ dùng nhiều nhất", "Những từ hay gặp nhất".
 
 ## 2. Thuật ngữ ngữ pháp (cố định — xem thêm `GLOSSARY.md`)
 
