@@ -22,6 +22,18 @@ import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./p
 
 export const RECEPTION_PIPELINE_VERSION = 1;
 
+/**
+ * P3f: the pipeline version a language's reception assets are keyed with —
+ * the one its voice manifest (content/<lang>/reception/audio-source-manifest.json)
+ * declares, as `audio.ts plan` uses it (French: 1, frozen; Spanish: 3).
+ */
+export function receptionPipelineVersion(lang: string): number {
+  const rel = `content/${lang}/reception/audio-source-manifest.json`;
+  if (!existsSync(safeResolve(rel))) return RECEPTION_PIPELINE_VERSION;
+  const v = (readJson(rel) as { pipelineVersion?: unknown }).pipelineVersion;
+  return typeof v === "number" ? v : RECEPTION_PIPELINE_VERSION;
+}
+
 export function readingsSourcePath(lang: string): string {
   return `content/${lang}/reception/reading.json`;
 }
@@ -88,7 +100,7 @@ export function resolveClipSegments(
 }
 
 function clipFileName(lang: string, listening: Listening, clip: ListeningClip, kind: ReceptionAssetKind): string {
-  return `${receptionAssetKey(lang, resolveClipSegments(listening, clip))}.${kind}`;
+  return `${receptionAssetKey(lang, resolveClipSegments(listening, clip), receptionPipelineVersion(lang))}.${kind}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -272,7 +284,7 @@ export function compileListeningArtifact(
 ): string {
   const byId: Record<string, CompiledClip> = {};
   for (const clip of listening.clips) {
-    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip));
+    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip), receptionPipelineVersion(listening.language));
     byId[clip.id] = {
       id: clip.id,
       kind: clip.kind,
@@ -309,7 +321,7 @@ export function compileListeningArtifact(
 export function compileAudioCensus(listening: Listening, assetKind: ReceptionAssetKind = "mp3"): string {
   const byKey = new Map<string, string[]>();
   for (const clip of listening.clips) {
-    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip));
+    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip), receptionPipelineVersion(listening.language));
     byKey.set(key, [...(byKey.get(key) ?? []), clip.id]);
   }
   const assetsAbs = safeResolve(receptionAssetsDir(listening.language));

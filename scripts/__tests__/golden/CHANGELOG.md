@@ -526,3 +526,8 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/exam/es-exam-tracks.json
 - compile: changed  src/content/lexicon/es-daily.json
 - compile: changed  src/content/packs/es-vi.json
+
+## 2026-10-22 — es reception assets keyed by the voice manifest's pipelineVersion 3 (P3f); French unchanged
+
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  src/content/reception/es-listening.json

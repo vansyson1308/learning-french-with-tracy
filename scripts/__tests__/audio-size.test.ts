@@ -41,3 +41,12 @@ describe("audio size budget (P3f)", () => {
     expect(strings.some((s) => /[.!?]$/.test(s))).toBe(false);
   });
 });
+
+describe("reception asset keys follow the voice manifest's pipeline version (P3f)", () => {
+  test("French stays at version 1, Spanish is keyed at version 3", async () => {
+    const { receptionPipelineVersion } = await import("../lib/reception");
+    expect(receptionPipelineVersion("fr")).toBe(1);
+    expect(receptionPipelineVersion("es")).toBe(3);
+    expect(receptionPipelineVersion("xx")).toBe(1);
+  });
+});
