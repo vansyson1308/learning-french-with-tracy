@@ -72,6 +72,23 @@ itself.
   older `es-en` course is marked `"role": "standalone"`: it keeps its
   40 legacy lessons and its English dictionary but none of the new layers,
   and Spanish level claims and reports count only against `es-vi`.
+- **Basic packs (P4a).** `de-en`, `es-en`, `it-en`, `ja-en`, `ko-en`, `pt-en` and
+  `zh-en` are the inherited Lingo Lessons packs (`"basicPack": true` in their
+  profiles). Each has 5 units (es-en 10) of one 11-step template: recognition
+  and translation into English only, no CEFR claim, no checkpoints, no listening
+  or speaking layers, and the legacy SM-2 scheduler. it/ja/ko/zh have no bundled
+  clips and speak through the device's text-to-speech. P4a repaired their data
+  defects (whole-sentence and missing blanks, Korean spacing, Italian
+  apostrophes, romanized "translations" accepted as answers, the German
+  word-order note, words repeated across units) and added validator rules so
+  these defects cannot return. Japanese, Korean and Chinese words now show their
+  romanization (Profile → "Hiện phiên âm / Show reading aid", on by default).
+  A basic pack leaves onboarding as soon as a Vietnamese course of the same
+  target is A1-claimable. It stays under "Other courses", and no learner data
+  moves. Today that applies to `es-en` (es-vi is A1-claimable). FSRS for the
+  basic packs is not enabled (P4a task 5, optional): the packs have no
+  stable-id registry, so the SM-2 → FSRS move would need one per language.
+  They are retired course by course as the `-vi` courses ship instead.
 - **DELE A1 practice (`es-vi`) reproduces the official 2020 format with original items.** Since
   P3e the track follows the 2020 model (four parts of 45 + 25 + 25 + 10 minutes,
   4 + 4 + 2 + 3 tasks with their formats including the lettered matching pools,

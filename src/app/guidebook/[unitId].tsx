@@ -10,6 +10,7 @@ import { SpeakerButton } from "@/components/speaker-button";
 import { useCourseContent } from "@/lib/content";
 import { parseGuidebook, type InlineSpan } from "@/lib/guidebook-markdown";
 import { useProgress } from "@/lib/store";
+import { useReadingAid } from "@/lib/use-reading-aid";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
 function InlineSpans({ spans }: { spans: InlineSpan[] }) {
@@ -74,6 +75,7 @@ export default function GuidebookScreen() {
   const activeCourseId = useProgress((s) => s.activeCourseId);
   const { getUnit } = useCourseContent(activeCourseId);
   const unit = getUnit(unitId ?? "");
+  const readingOf = useReadingAid(activeCourseId);
 
   if (!unit) return null;
 
@@ -97,7 +99,8 @@ export default function GuidebookScreen() {
             <View key={word.target} style={styles.wordRow}>
               <SpeakerButton text={word.target} size={36} />
               <Text style={styles.wordText}>
-                {word.emoji} {word.target} — {word.native}
+                {word.emoji} {word.target}
+                {readingOf(word.target) ? ` (${readingOf(word.target)})` : ""} — {word.native}
               </Text>
             </View>
           ))}

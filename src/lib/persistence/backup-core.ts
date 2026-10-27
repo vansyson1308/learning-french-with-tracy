@@ -332,6 +332,13 @@ export function runInvariants(state: PersistedProgress, now: Date, learner?: Lea
   if (state.dailyNewWords !== undefined && (typeof state.dailyNewWords !== "number" || !Number.isInteger(state.dailyNewWords) || state.dailyNewWords < 0 || state.dailyNewWords > 15)) {
     problems.push("invalid daily new words");
   }
+  if (
+    state.readingAid !== undefined &&
+    (!state.readingAid || typeof state.readingAid !== "object" || Array.isArray(state.readingAid) ||
+      Object.values(state.readingAid).some((on) => typeof on !== "boolean"))
+  ) {
+    problems.push("invalid reading aid settings");
+  }
 
   if (!Array.isArray(learnerData.reviewLog)) {
     problems.push("invalid review log");

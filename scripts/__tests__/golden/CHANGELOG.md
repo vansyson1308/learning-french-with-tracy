@@ -564,3 +564,19 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/test-only/course-bundles.ts
 - compile: new      src/content/test-only/course-loaders.ts
 - compile: new      src/content/test-only/courses/xx-en.ts
+
+## 2026-10-27 — P4a: inherited basic packs de/es/it/ja/ko/pt/zh-en repaired (real cloze fillBlanks, Korean spacing, Italian apostrophes, English typeAnswer alternatives instead of romanizations, German word-order note, words deduped across units); es-en profile gains hiddenFromOnboarding; persist v7 adds readingAid to the migration/backup snapshots. French artifacts unchanged.
+
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/packs/de-en.json
+- compile: changed  src/content/packs/es-en.json
+- compile: changed  src/content/packs/it-en.json
+- compile: changed  src/content/packs/ja-en.json
+- compile: changed  src/content/packs/ko-en.json
+- compile: changed  src/content/packs/pt-en.json
+- compile: changed  src/content/packs/zh-en.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json

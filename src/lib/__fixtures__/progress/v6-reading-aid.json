@@ -1,0 +1,307 @@
+{
+  "state": {
+    "activeCourseId": "ja-en",
+    "streak": 5,
+    "lastActiveDay": "2026-01-10",
+    "dailyGoal": 20,
+    "dailyXp": 30,
+    "dailyXpDay": "2026-01-10",
+    "onboardingDone": true,
+    "themePreference": "dark",
+    "courses": {
+      "fr-en": {
+        "xp": 215,
+        "completedLessons": {
+          "fr-en:u0-l0": true,
+          "fr-en:u0-l1": true
+        },
+        "mistakes": [
+          {
+            "lessonId": "fr-en:u0-l1",
+            "exerciseId": "fr-en:u0-l1-e3"
+          }
+        ],
+        "wordStats": {
+          "fr:w:homme": {
+            "correct": 4,
+            "wrong": 1,
+            "lastSeen": 1767950000000
+          }
+        },
+        "cards": {
+          "fr:w:homme|recognize": {
+            "due": 1768200000000,
+            "stability": 3,
+            "difficulty": 7.433767808396142,
+            "scheduled_days": 3,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 1,
+            "state": "review",
+            "last_review": 1767940800000
+          },
+          "fr:w:femme|recognize": {
+            "due": 1767950000000,
+            "stability": 0,
+            "difficulty": 0,
+            "scheduled_days": 0,
+            "learning_steps": 0,
+            "reps": 0,
+            "lapses": 0,
+            "state": "new"
+          },
+          "fr:w:pomme|recognize": {
+            "due": 1781438400000,
+            "stability": 6,
+            "difficulty": 5.5,
+            "scheduled_days": 6,
+            "learning_steps": 0,
+            "reps": 4,
+            "lapses": 0,
+            "state": "review",
+            "last_review": 1780920000000
+          },
+          "fr:w:pomme|listen": {
+            "due": 1781697600000,
+            "stability": 3,
+            "difficulty": 5.5,
+            "scheduled_days": 3,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": "review",
+            "last_review": 1781438400000
+          },
+          "fr:w:bonjour|speak": {
+            "due": 1781956800000,
+            "stability": 8,
+            "difficulty": 5.5,
+            "scheduled_days": 8,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": "review",
+            "last_review": 1781265600000
+          }
+        },
+        "srsLegacy": {
+          "l'homme": {
+            "interval": 3,
+            "ease": 2.6,
+            "dueAt": 1768200000000,
+            "streak": 2
+          },
+          "la femme": {
+            "interval": 0,
+            "ease": 2.3,
+            "dueAt": 1767950000000,
+            "streak": 0
+          }
+        }
+      },
+      "es-en": {
+        "xp": 15,
+        "completedLessons": {
+          "es-en:u0-l0": true
+        },
+        "mistakes": [],
+        "wordStats": {},
+        "srs": {}
+      },
+      "ja-en": {
+        "xp": 40,
+        "completedLessons": {
+          "ja-en:u0-l0": true,
+          "ja-en:u0-l1": true
+        },
+        "mistakes": [
+          {
+            "lessonId": "ja-en:u0-l1",
+            "exerciseId": "ja-en:u0-l1-e8"
+          }
+        ],
+        "wordStats": {
+          "男の人": {
+            "correct": 3,
+            "wrong": 1,
+            "lastSeen": 1761555600000
+          }
+        },
+        "srs": {}
+      }
+    },
+    "activeDays": {
+      "2026-01-10": {
+        "xp": 30,
+        "lessons": 2,
+        "perfect": 1
+      }
+    },
+    "hearts": 3,
+    "heartsUpdatedAt": 1767000000000,
+    "reviewLog": [
+      {
+        "at": 1780920000000,
+        "courseId": "fr-en",
+        "cardKey": "fr:w:pomme|recognize",
+        "sessionId": "lesson-a",
+        "exerciseId": "fr-en:u0-l0-e1",
+        "modality": "recognizeText",
+        "srsRole": "assessment",
+        "source": "lesson",
+        "correct": true,
+        "hinted": false,
+        "assisted": false,
+        "toleranceUsed": false,
+        "latencyMs": 1400,
+        "attemptIndex": 0,
+        "mutation": {
+          "grade": "good",
+          "prevCard": {
+            "due": 1780833600000,
+            "stability": 4,
+            "difficulty": 5.5,
+            "scheduled_days": 4,
+            "learning_steps": 0,
+            "reps": 3,
+            "lapses": 0,
+            "state": "review",
+            "last_review": 1780488000000
+          }
+        }
+      },
+      {
+        "at": 1780920060000,
+        "courseId": "fr-en",
+        "cardKey": "fr:w:pomme|recognize",
+        "sessionId": "lesson-a",
+        "exerciseId": "fr-en:u0-l0-e2",
+        "modality": "recognizeText",
+        "srsRole": "practice",
+        "source": "lesson",
+        "correct": false,
+        "hinted": true,
+        "assisted": false,
+        "toleranceUsed": false,
+        "latencyMs": 2100,
+        "attemptIndex": 1
+      },
+      {
+        "at": 1781438400000,
+        "courseId": "fr-en",
+        "cardKey": "fr:w:bonjour|speak",
+        "sessionId": "today-b",
+        "exerciseId": "speak-fr:w:bonjour",
+        "modality": "speak",
+        "srsRole": "assessment",
+        "source": "today",
+        "correct": true,
+        "hinted": false,
+        "assisted": false,
+        "toleranceUsed": false,
+        "latencyMs": 3300,
+        "attemptIndex": 0,
+        "mutation": {
+          "grade": "easy",
+          "prevCard": {
+            "due": 1781352000000,
+            "stability": 5,
+            "difficulty": 5.5,
+            "scheduled_days": 5,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": "review",
+            "last_review": 1780920000000
+          }
+        }
+      }
+    ],
+    "speechNoticeAckAt": 1781265600000,
+    "uiLanguage": "system",
+    "assessmentByTarget": {
+      "fr": {
+        "placementFloor": 20,
+        "placement": {
+          "placementVersion": 3,
+          "completedAt": 1780660800000,
+          "recommendedLessonId": "fr-en:ua-l0",
+          "recommendedFloorIndex": 20,
+          "objectiveEstimates": [
+            {
+              "objectiveId": "fr.obj.vocab.everyday_basics",
+              "estimate": "comfortable"
+            },
+            {
+              "objectiveId": "fr.obj.greetings.basic",
+              "estimate": "gap"
+            }
+          ],
+          "itemResults": [
+            {
+              "itemId": "fr.pli.s1.greet",
+              "correct": true
+            }
+          ],
+          "courseId": "fr-en"
+        },
+        "checkpointAttempts": [
+          {
+            "checkpointId": "fr.checkpoint.section-1",
+            "checkpointVersion": 1,
+            "startedAt": 1780747200000,
+            "completedAt": 1780747800000,
+            "itemResults": [
+              {
+                "itemId": "fr.cpi.s1.greet_evening",
+                "correct": true
+              }
+            ],
+            "objectiveResults": [
+              {
+                "objectiveId": "fr.obj.greetings.basic",
+                "result": "demonstrated",
+                "correct": 3,
+                "total": 3
+              }
+            ],
+            "overallCorrectShare": 1,
+            "courseId": "fr-en"
+          },
+          {
+            "checkpointId": "fr.checkpoint.a1-capstone",
+            "checkpointVersion": 1,
+            "formId": "a",
+            "formVersion": 1,
+            "startedAt": 1781438400000,
+            "completedAt": 1781439300000,
+            "itemResults": [
+              {
+                "itemId": "fr.cpi.a1cap.l1",
+                "correct": true
+              }
+            ],
+            "objectiveResults": [
+              {
+                "objectiveId": "fr.obj.listening.short_info",
+                "result": "demonstrated",
+                "correct": 2,
+                "total": 2
+              },
+              {
+                "objectiveId": "fr.obj.speaking.give_info",
+                "result": "insufficient_evidence",
+                "correct": 0,
+                "total": 0
+              }
+            ],
+            "overallCorrectShare": 0.5,
+            "courseId": "fr-en"
+          }
+        ]
+      }
+    },
+    "dailyNewWords": 8
+  },
+  "version": 6
+}

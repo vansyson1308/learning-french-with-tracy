@@ -16,9 +16,10 @@ import { makeThemedStyles, radius } from "@/lib/theme";
 export default function OnboardingScreen() {
   const styles = useStyles();
   const { t, lang, languageName } = useT();
-  // P3d: inherited standalone courses (es-en beside es-vi) are not offered
+  // P3d/P4a: standalone courses (es-en beside es-vi) and basic packs whose
+  // target has an A1-claimable Vietnamese course are not offered
   // to new learners; they stay installable under "other courses".
-  const courses = orderedCoursesFor(lang).filter((c) => courseProfile(c.id).role !== "standalone");
+  const courses = orderedCoursesFor(lang).filter((c) => courseProfile(c.id).hiddenFromOnboarding !== true);
   const finishOnboarding = useProgress((s) => s.finishOnboarding);
   // P3e §7: preselect by UI language (vi → the first -vi course).
   const uiDefault = defaultCourseForUi(lang);

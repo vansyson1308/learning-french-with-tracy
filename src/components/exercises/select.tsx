@@ -5,6 +5,7 @@ import { useT } from "@/lib/i18n";
 import { SpeakerButton } from "@/components/speaker-button";
 import { speakTarget } from "@/lib/audio";
 import { useProgress } from "@/lib/store";
+import { useReadingAid } from "@/lib/use-reading-aid";
 import { makeThemedStyles } from "@/lib/theme";
 import type { SelectExercise } from "@/lib/types";
 
@@ -26,6 +27,7 @@ export function Select({
   targetLanguage,
 }: SelectProps) {
   const courseId = useProgress((s) => s.activeCourseId);
+  const readingOf = useReadingAid(courseId);
   const styles = useStyles();
   const { t } = useT();
   const hasEmoji = exercise.options.some((o) => o.emoji);
@@ -55,7 +57,14 @@ export function Select({
 
       <View style={styles.promptRow}>
         {exercise.audioTarget ? <SpeakerButton text={exercise.audioTarget} /> : null}
-        {!isListen ? <Text style={styles.prompt}>{exercise.prompt}</Text> : null}
+        {!isListen ? (
+          <View>
+            <Text style={styles.prompt}>{exercise.prompt}</Text>
+            {readingOf(exercise.prompt) ? (
+              <Text style={styles.reading} testID="prompt-reading">{readingOf(exercise.prompt)}</Text>
+            ) : null}
+          </View>
+        ) : null}
       </View>
 
       <View style={[styles.options, hasEmoji && styles.grid]}>
@@ -63,6 +72,7 @@ export function Select({
           <OptionCard
             key={option.text + index}
             text={option.text}
+            reading={readingOf(option.text)}
             emoji={option.emoji}
             compact={hasEmoji}
             state={optionState(index)}
@@ -81,6 +91,7 @@ const useStyles = makeThemedStyles((colors) =>
     title: { fontSize: 22, fontWeight: "800", color: colors.neutral700 },
     promptRow: { flexDirection: "row", alignItems: "center", gap: 12 },
     prompt: { fontSize: 22, fontWeight: "700", color: colors.text, flexShrink: 1 },
+    reading: { fontSize: 15, color: colors.textMuted, marginTop: 2 },
     options: { gap: 10 },
     grid: { flexDirection: "row", flexWrap: "wrap" },
   })

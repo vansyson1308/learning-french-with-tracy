@@ -12,9 +12,11 @@ type FillBlankProps = {
   answer: number | null;
   onAnswer: (index: number) => void;
   status: "none" | "correct" | "wrong";
+  /** P4a reading aid for the options (romanization); none by default. */
+  readingOf?: (text: string) => string | undefined;
 };
 
-export function FillBlank({ exercise, answer, onAnswer, status }: FillBlankProps) {
+export function FillBlank({ exercise, answer, onAnswer, status, readingOf = () => undefined }: FillBlankProps) {
   const styles = useStyles();
   const { t } = useT();
   const filled =
@@ -40,6 +42,7 @@ export function FillBlank({ exercise, answer, onAnswer, status }: FillBlankProps
           <OptionCard
             key={option + index}
             text={option}
+            reading={readingOf(option)}
             state={optionState(index)}
             onPress={() => onAnswer(index)}
             disabled={status !== "none"}

@@ -22,6 +22,7 @@ import { SpeakProduction } from "@/components/exercises/speak-production";
 import { SpeakRepetition } from "@/components/exercises/speak-repetition";
 import { TypeAnswer } from "@/components/exercises/type-answer";
 import { WordBank } from "@/components/exercises/word-bank";
+import { useReadingAid } from "@/lib/use-reading-aid";
 import { speakTarget } from "@/lib/audio";
 import type { Answer, Status } from "@/lib/grading";
 import { clipAudioSource, clipFor } from "@/lib/reception/content";
@@ -151,6 +152,7 @@ export function ExerciseRenderer({
   /** Writing rendering policy (P9); defaults to learning mode. */
   writing?: WritingContext;
 }) {
+  const readingOf = useReadingAid(courseId);
   const receptionCtx: ReceptionContext =
     reception ?? { scored: false, revealTranscript: true };
   switch (exercise.type) {
@@ -180,6 +182,7 @@ export function ExerciseRenderer({
           onComplete={onMatchComplete}
           onWordResult={onMatchWordResult}
           onSpeak={(target) => speakTarget(courseId, target)}
+          readingOf={readingOf}
         />
       );
     case "typeAnswer":
@@ -195,6 +198,7 @@ export function ExerciseRenderer({
     case "fillBlank":
       return (
         <FillBlank
+          readingOf={readingOf}
           exercise={exercise}
           answer={typeof answer === "number" ? answer : null}
           onAnswer={onAnswer}

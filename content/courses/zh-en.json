@@ -298,16 +298,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u0-l0-e8",
-                  "sentence": "___。",
+                  "sentence": "我是___。",
                   "translation": "I am a girl.",
                   "audioTarget": "我是女孩。",
                   "options": [
-                    "我",
-                    "面包",
-                    "我是女孩",
-                    "是"
+                    "女孩",
+                    "男孩",
+                    "苹果",
+                    "面包"
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "match",
@@ -343,7 +343,7 @@
                   "audioTarget": "他是男人。",
                   "answer": "He is a man.",
                   "alternatives": [
-                    "tā shì nán rén."
+                    "He's a man."
                   ]
                 }
               ]
@@ -551,16 +551,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u0-l1-e8",
-                  "sentence": "___。",
+                  "sentence": "她是___。",
                   "translation": "She is a woman.",
                   "audioTarget": "她是女人。",
                   "options": [
-                    "她是女人",
-                    "喝",
-                    "面包",
-                    "是"
+                    "男人",
+                    "女人",
+                    "牛奶",
+                    "苹果"
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "match",
@@ -596,7 +596,7 @@
                   "audioTarget": "他是男孩。",
                   "answer": "He is a boy.",
                   "alternatives": [
-                    "tā shì nán hái."
+                    "He's a boy."
                   ]
                 }
               ]
@@ -802,16 +802,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u0-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "我吃___。",
                   "translation": "I eat an apple.",
                   "audioTarget": "我吃苹果。",
                   "options": [
-                    "我吃苹果",
-                    "喝",
+                    "水",
                     "男孩",
-                    "面包"
+                    "苹果",
+                    "牛奶"
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -847,7 +847,7 @@
                   "audioTarget": "我吃面包。",
                   "answer": "I eat bread.",
                   "alternatives": [
-                    "wǒ chī miàn bāo."
+                    "I'm eating bread."
                   ]
                 }
               ]
@@ -1051,16 +1051,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u0-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "我喝___。",
                   "translation": "I drink water.",
                   "audioTarget": "我喝水。",
                   "options": [
-                    "我喝水",
+                    "苹果",
                     "面包",
-                    "男人",
+                    "女孩",
                     "水"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -1096,7 +1096,7 @@
                   "audioTarget": "我喝牛奶。",
                   "answer": "I drink milk.",
                   "alternatives": [
-                    "wǒ hē niú nǎi."
+                    "I'm drinking milk."
                   ]
                 }
               ]
@@ -1384,14 +1384,14 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u1-l0-e8",
-                  "sentence": "___？",
+                  "sentence": "你___吗？",
                   "translation": "How are you?",
                   "audioTarget": "你好吗？",
                   "options": [
-                    "你好吗",
-                    "请",
+                    "好",
                     "谢谢",
-                    "早上好"
+                    "晚安",
+                    "再见"
                   ],
                   "correct": 0
                 },
@@ -1429,7 +1429,9 @@
                   "audioTarget": "我很好。",
                   "answer": "I am very well.",
                   "alternatives": [
-                    "Wǒ hěn hǎo."
+                    "I'm very well.",
+                    "I'm very good.",
+                    "I am very good."
                   ]
                 }
               ]
@@ -1635,14 +1637,14 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u1-l1-e8",
-                  "sentence": "___。",
+                  "sentence": "你好，很高兴___你。",
                   "translation": "Hello, nice to meet you.",
                   "audioTarget": "你好，很高兴认识你。",
                   "options": [
-                    "晚上好",
-                    "你好，很高兴认识你",
-                    "拜拜",
-                    "早上好"
+                    "晚安",
+                    "认识",
+                    "谢谢",
+                    "客气"
                   ],
                   "correct": 1
                 },
@@ -1680,7 +1682,8 @@
                   "audioTarget": "早上好！",
                   "answer": "Good morning!",
                   "alternatives": [
-                    "Zǎoshang hǎo!"
+                    "Good morning.",
+                    "Morning!"
                   ]
                 }
               ]
@@ -1886,16 +1889,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u1-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "___，明天见。",
                   "translation": "Good night, see you tomorrow.",
                   "audioTarget": "晚安，明天见。",
                   "options": [
-                    "对不起",
-                    "好",
-                    "请",
-                    "晚安，明天见"
+                    "你好",
+                    "谢谢",
+                    "晚安",
+                    "不客气"
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -1931,7 +1934,8 @@
                   "audioTarget": "谢谢你！",
                   "answer": "Thank you!",
                   "alternatives": [
-                    "Xièxie nǐ!"
+                    "Thank you.",
+                    "Thanks!"
                   ]
                 }
               ]
@@ -2133,16 +2137,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u1-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "不___。",
                   "translation": "You're welcome.",
                   "audioTarget": "不客气。",
                   "options": [
-                    "不客气",
-                    "早上好",
-                    "再见",
-                    "对不起"
+                    "你好",
+                    "晚安",
+                    "认识",
+                    "客气"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -2178,7 +2182,9 @@
                   "audioTarget": "对不起，没关系。",
                   "answer": "Sorry, no problem.",
                   "alternatives": [
-                    "Duìbùqǐ, méiguānxi."
+                    "Sorry. No problem.",
+                    "Sorry, it's okay.",
+                    "Sorry, that's all right."
                   ]
                 }
               ]
@@ -2228,34 +2234,10 @@
               "romanization": "guǒzhī"
             },
             {
-              "target": "水",
-              "native": "the water",
-              "emoji": "💧",
-              "romanization": "shuǐ"
-            },
-            {
               "target": "茶",
               "native": "the tea",
               "emoji": "🍵",
               "romanization": "chá"
-            },
-            {
-              "target": "面包",
-              "native": "the bread",
-              "emoji": "🍞",
-              "romanization": "miànbāo"
-            },
-            {
-              "target": "苹果",
-              "native": "the apple",
-              "emoji": "🍏",
-              "romanization": "píngguǒ"
-            },
-            {
-              "target": "牛奶",
-              "native": "the milk",
-              "emoji": "🥛",
-              "romanization": "niúnǎi"
             },
             {
               "target": "面条",
@@ -2472,16 +2454,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u2-l0-e8",
-                  "sentence": "___。",
+                  "sentence": "我想喝___。",
                   "translation": "I want to drink coffee.",
                   "audioTarget": "我想喝咖啡。",
                   "options": [
-                    "面条",
-                    "牛奶",
-                    "我想喝咖啡",
-                    "水果"
+                    "咖啡",
+                    "面包",
+                    "米饭",
+                    "鸡蛋"
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "match",
@@ -2517,7 +2499,7 @@
                   "audioTarget": "我喜欢吃米饭。",
                   "answer": "I like to eat rice.",
                   "alternatives": [
-                    "Wǒ xǐhuān chī mǐfàn."
+                    "I like eating rice."
                   ]
                 }
               ]
@@ -2733,14 +2715,14 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u2-l1-e8",
-                  "sentence": "___。",
+                  "sentence": "请给我一杯___。",
                   "translation": "Please give me a glass of water.",
                   "audioTarget": "请给我一杯水。",
                   "options": [
-                    "茶",
-                    "请给我一杯水",
+                    "面包",
+                    "水",
                     "米饭",
-                    "牛奶"
+                    "鸡蛋"
                   ],
                   "correct": 1
                 },
@@ -2778,7 +2760,8 @@
                   "audioTarget": "我早餐吃鸡蛋。",
                   "answer": "I eat eggs for breakfast.",
                   "alternatives": [
-                    "Wǒ zǎocān chī jīdàn."
+                    "I have eggs for breakfast.",
+                    "For breakfast I eat eggs."
                   ]
                 }
               ]
@@ -2988,14 +2971,14 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u2-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "我喜欢喝___。",
                   "translation": "I like to drink juice.",
                   "audioTarget": "我喜欢喝果汁。",
                   "options": [
-                    "水",
+                    "面包",
                     "米饭",
-                    "我喜欢喝果汁",
-                    "水果"
+                    "果汁",
+                    "鸡蛋"
                   ],
                   "correct": 2
                 },
@@ -3033,7 +3016,8 @@
                   "audioTarget": "你想要水果吗？",
                   "answer": "Do you want fruit?",
                   "alternatives": [
-                    "Nǐ xiǎng yào shuǐguǒ ma?"
+                    "Would you like fruit?",
+                    "Do you want some fruit?"
                   ]
                 }
               ]
@@ -3245,14 +3229,14 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u2-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "我喜欢喝___。",
                   "translation": "I like to drink tea.",
                   "audioTarget": "我喜欢喝茶。",
                   "options": [
-                    "水",
-                    "咖啡",
+                    "面包",
                     "米饭",
-                    "我喜欢喝茶"
+                    "鸡蛋",
+                    "茶"
                   ],
                   "correct": 3
                 },
@@ -3290,7 +3274,7 @@
                   "audioTarget": "我吃面包和奶酪。",
                   "answer": "I eat bread and cheese.",
                   "alternatives": [
-                    "Wǒ chī miànbāo hé nǎilào."
+                    "I'm eating bread and cheese."
                   ]
                 }
               ]
@@ -3580,16 +3564,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u3-l0-e8",
-                  "sentence": "___。",
+                  "sentence": "这是一只___。",
                   "translation": "This is a dog.",
                   "audioTarget": "这是一只狗。",
                   "options": [
-                    "牛",
-                    "这是一只狗",
+                    "狗",
+                    "猫",
                     "鸟",
-                    "猫"
+                    "马"
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "match",
@@ -3625,7 +3609,8 @@
                   "audioTarget": "猫很小。",
                   "answer": "The cat is small.",
                   "alternatives": [
-                    "Māo hěn xiǎo."
+                    "The cat's small.",
+                    "The cat is very small."
                   ]
                 }
               ]
@@ -3837,16 +3822,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u3-l1-e8",
-                  "sentence": "___。",
+                  "sentence": "___跑得快。",
                   "translation": "The horse runs fast.",
                   "audioTarget": "马跑得快。",
                   "options": [
-                    "小",
-                    "动物",
-                    "牛",
-                    "马跑得快"
+                    "狗",
+                    "马",
+                    "鸟",
+                    "鱼"
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "match",
@@ -3882,7 +3867,8 @@
                   "audioTarget": "鸟在天上飞。",
                   "answer": "The bird flies in the sky.",
                   "alternatives": [
-                    "Niǎo zài tiān shàng fēi."
+                    "The bird is flying in the sky.",
+                    "Birds fly in the sky."
                   ]
                 }
               ]
@@ -4094,16 +4080,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u3-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "___在水里。",
                   "translation": "The fish is in the water.",
                   "audioTarget": "鱼在水里。",
                   "options": [
-                    "小",
-                    "鱼在水里",
+                    "狗",
                     "猫",
-                    "鱼"
+                    "鱼",
+                    "马"
                   ],
-                  "correct": 1
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -4139,7 +4125,8 @@
                   "audioTarget": "牛很大。",
                   "answer": "The cow is big.",
                   "alternatives": [
-                    "Niú hěn dà."
+                    "The cow's big.",
+                    "The cow is very big."
                   ]
                 }
               ]
@@ -4347,16 +4334,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u3-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "这只___很可爱。",
                   "translation": "This cat is very cute.",
                   "audioTarget": "这只猫很可爱。",
                   "options": [
-                    "鸟",
-                    "这只猫很可爱",
                     "狗",
-                    "牛"
+                    "鸟",
+                    "鱼",
+                    "猫"
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -4392,7 +4379,8 @@
                   "audioTarget": "我喜欢狗。",
                   "answer": "I like dogs.",
                   "alternatives": [
-                    "Wǒ xǐhuān gǒu."
+                    "I like dogs!",
+                    "I love dogs."
                   ]
                 }
               ]
@@ -4682,16 +4670,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u4-l0-e8",
-                  "sentence": "___?",
+                  "sentence": "___在哪里?",
                   "translation": "Where is the hotel?",
                   "audioTarget": "酒店在哪里?",
                   "options": [
-                    "街道",
-                    "酒店在哪里",
-                    "博物馆",
-                    "火车站"
+                    "酒店",
+                    "地图",
+                    "出租车",
+                    "护照"
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "match",
@@ -4727,7 +4715,7 @@
                   "audioTarget": "机场在哪里?",
                   "answer": "Where is the airport?",
                   "alternatives": [
-                    "jīchǎng zài nǎlǐ?"
+                    "Where's the airport?"
                   ]
                 }
               ]
@@ -4937,14 +4925,14 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u4-l1-e8",
-                  "sentence": "___?",
+                  "sentence": "___在哪里?",
                   "translation": "Where is the train station?",
                   "audioTarget": "火车站在哪里?",
                   "options": [
-                    "公园",
-                    "火车站在哪里",
+                    "地图",
+                    "火车站",
                     "出租车",
-                    "机场"
+                    "护照"
                   ],
                   "correct": 1
                 },
@@ -4982,7 +4970,7 @@
                   "audioTarget": "博物馆在哪里?",
                   "answer": "Where is the museum?",
                   "alternatives": [
-                    "bówùguǎn zài nǎlǐ?"
+                    "Where's the museum?"
                   ]
                 }
               ]
@@ -5196,16 +5184,16 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u4-l2-e8",
-                  "sentence": "___?",
+                  "sentence": "___在哪里?",
                   "translation": "Where is the subway station?",
                   "audioTarget": "地铁站在哪里?",
                   "options": [
-                    "地铁站在哪里",
+                    "地图",
                     "出租车",
-                    "博物馆",
-                    "街道"
+                    "地铁站",
+                    "护照"
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -5241,7 +5229,8 @@
                   "audioTarget": "我去机场。",
                   "answer": "I am going to the airport.",
                   "alternatives": [
-                    "wǒ qù jīchǎng."
+                    "I'm going to the airport.",
+                    "I go to the airport."
                   ]
                 }
               ]
@@ -5455,14 +5444,14 @@
                 {
                   "type": "fillBlank",
                   "id": "zh-en:u4-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "请给我一张___。",
                   "translation": "Please give me a map.",
                   "audioTarget": "请给我一张地图。",
                   "options": [
-                    "行李",
-                    "出租车",
-                    "地铁",
-                    "请给我一张地图"
+                    "酒店",
+                    "机场",
+                    "火车站",
+                    "地图"
                   ],
                   "correct": 3
                 },
@@ -5500,7 +5489,7 @@
                   "audioTarget": "出租车在城市里。",
                   "answer": "The taxi is in the city.",
                   "alternatives": [
-                    "chūzū chē zài chéngshì lǐ."
+                    "The taxi's in the city."
                   ]
                 }
               ]

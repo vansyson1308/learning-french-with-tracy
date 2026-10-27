@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "fs";
 
 import { resolveCourseRoles, type CourseRole } from "../lib/course-roles";
 import { deriveProfiles, nativeArtifactPrefix, primaryNativeCodeOf } from "../lib/course-profiles";
@@ -85,5 +86,35 @@ describe("course roles (P3d)", () => {
     expect(profiles["es-vi"].artifacts.concepts).toBe("src/content/concepts/es-concepts.json");
     expect(profiles["es-vi"].artifacts.listening).toBe("src/content/reception/es-listening.json");
     expect(profiles["es-vi"].audioCourseId).toBeUndefined();
+  });
+
+  test("P4a: a basic pack leaves onboarding only when a Vietnamese course of its target is A1-claimable", () => {
+    const ja = loadPacks()
+      .map((p) => p.pack)
+      .find((p) => p.id === "ja-en");
+    if (!ja) throw new Error("ja-en missing");
+    const jaVi = { ...ja, id: "ja-vi", nativeCode: "vi", nativeLanguage: "Vietnamese" };
+    const derive = (packs: (typeof ja)[], claimA1: boolean, basic = true) =>
+      deriveProfiles({
+        packs,
+        presentRelPaths: [],
+        lexiconDbs: {},
+        roleOf: roles({}),
+        claimA1ByTarget: { ja: claimA1 },
+        basicPackOf: (id) => basic && id === "ja-en",
+      });
+    expect(derive([ja, jaVi], true)["ja-en"].hiddenFromOnboarding).toBe(true);
+    expect(derive([ja, jaVi], true)["ja-vi"].hiddenFromOnboarding).toBeUndefined();
+    expect(derive([ja, jaVi], false)["ja-en"].hiddenFromOnboarding).toBeUndefined();
+    expect(derive([ja], true)["ja-en"].hiddenFromOnboarding).toBeUndefined();
+    expect(derive([ja, jaVi], true, false)["ja-en"].hiddenFromOnboarding).toBeUndefined();
+  });
+
+  test("P4a: in the shipped catalogue only es-en is hidden from onboarding (es-vi is A1-claimable)", () => {
+    const shipped = JSON.parse(readFileSync("src/content/course-profiles.json", "utf8")) as {
+      profiles: Record<string, { hiddenFromOnboarding?: boolean }>;
+    };
+    const hidden = Object.entries(shipped.profiles).filter(([, p]) => p.hiddenFromOnboarding).map(([id]) => id);
+    expect(hidden).toEqual(["es-en"]);
   });
 });

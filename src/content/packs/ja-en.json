@@ -345,7 +345,8 @@
                   "audioTarget": "あの ひとは 男の 人です。",
                   "answer": "That person is a man.",
                   "alternatives": [
-                    "ano hito wa otoko no hito desu"
+                    "That's a man.",
+                    "That person's a man."
                   ]
                 }
               ]
@@ -602,7 +603,9 @@
                   "audioTarget": "あの 子は 男の 子です。",
                   "answer": "That child is a boy.",
                   "alternatives": [
-                    "ano ko wa otoko no ko desu"
+                    "That's a boy.",
+                    "That child's a boy.",
+                    "That kid is a boy."
                   ]
                 }
               ]
@@ -857,7 +860,9 @@
                   "audioTarget": "りんごを たべます。",
                   "answer": "I eat an apple.",
                   "alternatives": [
-                    "ringo wo tabemasu"
+                    "I eat apples.",
+                    "I'm eating an apple.",
+                    "I will eat an apple."
                   ]
                 }
               ]
@@ -1106,7 +1111,8 @@
                   "audioTarget": "みずを のみます。",
                   "answer": "I drink water.",
                   "alternatives": [
-                    "mizu wo nomimasu"
+                    "I'm drinking water.",
+                    "I will drink water."
                   ]
                 }
               ]
@@ -1400,14 +1406,14 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u1-l0-e8",
-                  "sentence": "はじめまして。よろしくお願いします。",
+                  "sentence": "___。よろしくお願いします。",
                   "translation": "Nice to meet you. Please treat me well.",
                   "audioTarget": "はじめまして。よろしくお願いします。",
                   "options": [
-                    "はじめましてよろしくお願いします",
-                    "はい",
-                    "すみません",
-                    "ありがとう"
+                    "はじめまして",
+                    "おはよう",
+                    "おやすみなさい",
+                    "さようなら"
                   ],
                   "correct": 0
                 },
@@ -1445,7 +1451,8 @@
                   "audioTarget": "おはようございます。",
                   "answer": "Good morning.",
                   "alternatives": [
-                    "Ohayou gozaimasu."
+                    "Good morning!",
+                    "Morning."
                   ]
                 }
               ]
@@ -1653,16 +1660,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u1-l1-e8",
-                  "sentence": "こんにちは、お元気ですか？",
+                  "sentence": "___、お元気ですか？",
                   "translation": "Hello, how are you?",
                   "audioTarget": "こんにちは、お元気ですか？",
                   "options": [
-                    "こんにちはお元気ですか",
+                    "おやすみなさい",
                     "こんにちは",
                     "さようなら",
-                    "いいえ"
+                    "ありがとう"
                   ],
-                  "correct": 0
+                  "correct": 1
                 },
                 {
                   "type": "match",
@@ -1698,7 +1705,9 @@
                   "audioTarget": "元気です、ありがとう。",
                   "answer": "I'm fine, thank you.",
                   "alternatives": [
-                    "Genki desu, arigatou."
+                    "I am fine, thank you.",
+                    "I'm well, thank you.",
+                    "I'm fine, thanks."
                   ]
                 }
               ]
@@ -1910,16 +1919,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u1-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "___ございます。",
                   "translation": "Thank you very much.",
                   "audioTarget": "ありがとうございます。",
                   "options": [
-                    "ありがとうございます",
-                    "いいえ",
-                    "こんばんは",
-                    "ありがとう"
+                    "おやすみ",
+                    "こんにちは",
+                    "ありがとう",
+                    "さようなら"
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -1955,7 +1964,9 @@
                   "audioTarget": "すみません、もう一度お願いします。",
                   "answer": "Excuse me, please say it again.",
                   "alternatives": [
-                    "Sumimasen, mou ichido onegaishimasu."
+                    "Sorry, please say it again.",
+                    "Excuse me, could you say that again?",
+                    "Excuse me, once more please."
                   ]
                 }
               ]
@@ -2159,16 +2170,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u1-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "___なさい。",
                   "translation": "Good night.",
                   "audioTarget": "おやすみなさい。",
                   "options": [
-                    "おやすみなさい",
-                    "さようなら",
-                    "ありがとうございます",
-                    "お願いします"
+                    "ありがとう",
+                    "こんにちは",
+                    "はじめまして",
+                    "おやすみ"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -2204,7 +2215,8 @@
                   "audioTarget": "さようなら、また明日。",
                   "answer": "Goodbye, see you tomorrow.",
                   "alternatives": [
-                    "Sayounara, mata ashita."
+                    "Goodbye, see you tomorrow!",
+                    "Bye, see you tomorrow."
                   ]
                 }
               ]
@@ -2236,22 +2248,10 @@
               "romanization": "jūsu"
             },
             {
-              "target": "みず",
-              "native": "the water",
-              "emoji": "💧",
-              "romanization": "mizu"
-            },
-            {
               "target": "ごはん",
               "native": "the rice",
               "emoji": "🍚",
               "romanization": "gohan"
-            },
-            {
-              "target": "パン",
-              "native": "the bread",
-              "emoji": "🍞",
-              "romanization": "pan"
             },
             {
               "target": "たまご",
@@ -2494,14 +2494,14 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u2-l0-e8",
-                  "sentence": "___。",
+                  "sentence": "___がのみたいです。",
                   "translation": "I want to drink coffee.",
                   "audioTarget": "コーヒーがのみたいです。",
                   "options": [
-                    "コーヒーがのみたいです",
                     "コーヒー",
-                    "おちゃ",
-                    "くだもの"
+                    "パン",
+                    "ごはん",
+                    "たまご"
                   ],
                   "correct": 0
                 },
@@ -2539,7 +2539,8 @@
                   "audioTarget": "ごはんをたべます。",
                   "answer": "I eat rice.",
                   "alternatives": [
-                    "Gohan o tabemasu."
+                    "I'm eating rice.",
+                    "I will eat rice."
                   ]
                 }
               ]
@@ -2741,16 +2742,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u2-l1-e8",
-                  "sentence": "___。",
+                  "sentence": "___をください。",
                   "translation": "Water, please.",
                   "audioTarget": "みずをください。",
                   "options": [
-                    "くだもの",
-                    "にく",
+                    "パン",
+                    "みず",
                     "ごはん",
-                    "みずをください"
+                    "たまご"
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "match",
@@ -2786,7 +2787,8 @@
                   "audioTarget": "たまごがすきです。",
                   "answer": "I like eggs.",
                   "alternatives": [
-                    "Tamago ga suki desu."
+                    "I like egg.",
+                    "I love eggs."
                   ]
                 }
               ]
@@ -2990,14 +2992,14 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u2-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "___をたべました。",
                   "translation": "I ate bread.",
                   "audioTarget": "パンをたべました。",
                   "options": [
-                    "たまご",
-                    "にく",
-                    "パンをたべました",
-                    "パン"
+                    "みず",
+                    "コーヒー",
+                    "パン",
+                    "おちゃ"
                   ],
                   "correct": 2
                 },
@@ -3035,7 +3037,8 @@
                   "audioTarget": "ジュースをのみます。",
                   "answer": "I drink juice.",
                   "alternatives": [
-                    "Jūsu o nomimasu."
+                    "I'm drinking juice.",
+                    "I will drink juice."
                   ]
                 }
               ]
@@ -3241,16 +3244,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u2-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "___がほしいです。",
                   "translation": "I want fruit.",
                   "audioTarget": "くだものがほしいです。",
                   "options": [
-                    "くだものがほしいです",
-                    "ケーキ",
+                    "みず",
                     "コーヒー",
-                    "たまご"
+                    "おちゃ",
+                    "くだもの"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -3286,7 +3289,9 @@
                   "audioTarget": "おちゃをのみませんか。",
                   "answer": "Would you like tea?",
                   "alternatives": [
-                    "Ocha o nomimasen ka."
+                    "Won't you have some tea?",
+                    "Would you like some tea?",
+                    "Will you drink tea?"
                   ]
                 }
               ]
@@ -3576,16 +3581,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u3-l0-e8",
-                  "sentence": "___。",
+                  "sentence": "犬は___です。",
                   "translation": "The dog is big.",
                   "audioTarget": "犬は大きいです。",
                   "options": [
-                    "豚",
-                    "猫",
-                    "鳥",
-                    "犬は大きいです"
+                    "大きい",
+                    "小さい",
+                    "速い",
+                    "かわいい"
                   ],
-                  "correct": 3
+                  "correct": 0
                 },
                 {
                   "type": "match",
@@ -3621,7 +3626,8 @@
                   "audioTarget": "猫は可愛いです。",
                   "answer": "The cat is cute.",
                   "alternatives": [
-                    "neko wa kawaii desu"
+                    "Cats are cute.",
+                    "The cat's cute."
                   ]
                 }
               ]
@@ -3829,14 +3835,14 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u3-l1-e8",
-                  "sentence": "___。",
+                  "sentence": "馬は___です。",
                   "translation": "The horse is fast.",
                   "audioTarget": "馬は速いです。",
                   "options": [
-                    "豚",
-                    "馬は速いです",
-                    "馬",
-                    "猿"
+                    "大きい",
+                    "速い",
+                    "小さい",
+                    "かわいい"
                   ],
                   "correct": 1
                 },
@@ -3874,7 +3880,8 @@
                   "audioTarget": "鳥は小さいです。",
                   "answer": "The bird is small.",
                   "alternatives": [
-                    "tori wa chiisai desu"
+                    "Birds are small.",
+                    "The bird's small."
                   ]
                 }
               ]
@@ -4090,16 +4097,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u3-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "___は水の中にいます。",
                   "translation": "The fish is in the water.",
                   "audioTarget": "魚は水の中にいます。",
                   "options": [
-                    "兎",
-                    "ライオン",
-                    "馬",
-                    "魚は水の中にいます"
+                    "犬",
+                    "猫",
+                    "魚",
+                    "鳥"
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -4135,7 +4142,8 @@
                   "audioTarget": "牛は農場にいます。",
                   "answer": "The cow is on the farm.",
                   "alternatives": [
-                    "ushi wa noujou ni imasu"
+                    "The cow is at the farm.",
+                    "Cows are on the farm."
                   ]
                 }
               ]
@@ -4341,16 +4349,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u3-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "私は___が好きです。",
                   "translation": "I like dogs.",
                   "audioTarget": "私は犬が好きです。",
                   "options": [
-                    "ライオン",
-                    "私は犬が好きです",
-                    "猿",
-                    "兎"
+                    "魚",
+                    "牛",
+                    "鳥",
+                    "犬"
                   ],
-                  "correct": 1
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -4386,7 +4394,8 @@
                   "audioTarget": "パンダは中国から来ます。",
                   "answer": "Pandas come from China.",
                   "alternatives": [
-                    "panda wa chuugoku kara kimasu"
+                    "Pandas are from China.",
+                    "The panda comes from China."
                   ]
                 }
               ]
@@ -4682,16 +4691,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u4-l0-e8",
-                  "sentence": "___。",
+                  "sentence": "___はどこですか。",
                   "translation": "Where is the train station?",
                   "audioTarget": "駅はどこですか。",
                   "options": [
-                    "町",
-                    "バス",
-                    "駅はどこですか",
-                    "電車"
+                    "駅",
+                    "ホテル",
+                    "空港",
+                    "博物館"
                   ],
-                  "correct": 2
+                  "correct": 0
                 },
                 {
                   "type": "match",
@@ -4727,7 +4736,9 @@
                   "audioTarget": "空港に行きます。",
                   "answer": "I am going to the airport.",
                   "alternatives": [
-                    "Kuukou ni ikimasu."
+                    "I'm going to the airport.",
+                    "I go to the airport.",
+                    "I will go to the airport."
                   ]
                 }
               ]
@@ -4941,16 +4952,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u4-l1-e8",
-                  "sentence": "___。",
+                  "sentence": "___に泊まります。",
                   "translation": "I am staying at a hotel.",
                   "audioTarget": "ホテルに泊まります。",
                   "options": [
-                    "博物館",
-                    "道",
-                    "町",
-                    "ホテルに泊まります"
+                    "駅",
+                    "ホテル",
+                    "地図",
+                    "切符"
                   ],
-                  "correct": 3
+                  "correct": 1
                 },
                 {
                   "type": "match",
@@ -4986,7 +4997,8 @@
                   "audioTarget": "切符をください。",
                   "answer": "Please give me a ticket.",
                   "alternatives": [
-                    "Kippu wo kudasai."
+                    "A ticket, please.",
+                    "Give me a ticket, please."
                   ]
                 }
               ]
@@ -5200,16 +5212,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u4-l2-e8",
-                  "sentence": "___。",
+                  "sentence": "___で町に行きます。",
                   "translation": "I go to the city by train.",
                   "audioTarget": "電車で町に行きます。",
                   "options": [
-                    "電車で町に行きます",
-                    "空港",
-                    "町",
-                    "電車"
+                    "地図",
+                    "切符",
+                    "電車",
+                    "ホテル"
                   ],
-                  "correct": 0
+                  "correct": 2
                 },
                 {
                   "type": "match",
@@ -5245,7 +5257,7 @@
                   "audioTarget": "博物館はどこですか。",
                   "answer": "Where is the museum?",
                   "alternatives": [
-                    "Hakubutsukan wa doko desu ka."
+                    "Where's the museum?"
                   ]
                 }
               ]
@@ -5457,16 +5469,16 @@
                 {
                   "type": "fillBlank",
                   "id": "ja-en:u4-l3-e8",
-                  "sentence": "___。",
+                  "sentence": "___を見てもいいですか。",
                   "translation": "May I see the map?",
                   "audioTarget": "地図を見てもいいですか。",
                   "options": [
-                    "町",
-                    "博物館",
-                    "地図を見てもいいですか",
+                    "電車",
+                    "駅",
+                    "空港",
                     "地図"
                   ],
-                  "correct": 2
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -5502,7 +5514,8 @@
                   "audioTarget": "タクシーを呼びます。",
                   "answer": "I will call a taxi.",
                   "alternatives": [
-                    "Takushii wo yobimasu."
+                    "I'll call a taxi.",
+                    "I'm going to call a taxi."
                   ]
                 }
               ]

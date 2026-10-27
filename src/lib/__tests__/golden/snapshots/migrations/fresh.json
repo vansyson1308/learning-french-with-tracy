@@ -24,10 +24,11 @@
         "activeDays",
         "uiLanguage",
         "assessmentByTarget",
-        "dailyNewWords"
+        "dailyNewWords",
+        "readingAid"
       ]
     },
-    "persistVersion": 6
+    "persistVersion": 7
   },
   "fromVersion": 0,
   "invariants": [],
@@ -42,6 +43,7 @@
     "dailyXpDay": null,
     "lastActiveDay": null,
     "onboardingDone": false,
+    "readingAid": {},
     "reviewLog": [],
     "streak": 0,
     "themePreference": "system",
@@ -64,10 +66,11 @@
       "dailyXpDay": null,
       "lastActiveDay": null,
       "onboardingDone": false,
+      "readingAid": {},
       "streak": 0,
       "themePreference": "system",
       "uiLanguage": "system"
     }
   },
-  "toVersion": 6
+  "toVersion": 7
 }

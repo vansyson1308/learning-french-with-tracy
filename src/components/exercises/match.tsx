@@ -14,6 +14,8 @@ type MatchProps = {
   onWordResult: (target: string, correct: boolean) => void;
   /** Session-provided audio: Match knows nothing about courses or stores. */
   onSpeak: (target: string) => void;
+  /** Session-provided reading aid (P4a romanization) for the target column. */
+  readingOf?: (target: string) => string | undefined;
 };
 
 function shuffleBy<T>(items: T[], seedText: string): T[] {
@@ -36,7 +38,7 @@ function shuffleBy<T>(items: T[], seedText: string): T[] {
   return out;
 }
 
-export function Match({ exercise, onComplete, onWordResult, onSpeak }: MatchProps) {
+export function Match({ exercise, onComplete, onWordResult, onSpeak, readingOf = () => undefined }: MatchProps) {
   const styles = useStyles();
   const { t } = useT();
   const left = useMemo(
@@ -97,6 +99,7 @@ export function Match({ exercise, onComplete, onWordResult, onSpeak }: MatchProp
             <OptionCard
               key={target}
               text={target}
+              reading={readingOf(target)}
               state={stateFor(target, target, selectedTarget === target)}
               disabled={matched.has(target)}
               onPress={() => {

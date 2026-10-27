@@ -36,8 +36,8 @@ function attempt(checkpointId: string, completedAt: number): PersistedAssessment
 }
 
 describe("v4 → v5: assessment per target language", () => {
-  test("PERSIST_VERSION is 6; course ids split on the first dash", () => {
-    expect(PERSIST_VERSION).toBe(6);
+  test("PERSIST_VERSION is 7; course ids split on the first dash", () => {
+    expect(PERSIST_VERSION).toBe(7);
     expect(targetCodeOfCourseId("fr-en")).toBe("fr");
     expect(targetCodeOfCourseId("fr-vi")).toBe("fr");
     expect(targetCodeOfCourseId("fr")).toBe("fr");

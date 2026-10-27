@@ -2,7 +2,7 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Image } from "expo-image";
 import React, { useState } from "react";
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Alert, Pressable, ScrollView, StyleSheet, Switch, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useT } from "@/lib/i18n";
@@ -23,6 +23,8 @@ import {
   useProgress,
   type ThemePreference,
 } from "@/lib/store";
+import { readingAidOn } from "@/lib/learning/reading-aid";
+import { courseHasReadingAid } from "@/lib/use-reading-aid";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
 const THEME_OPTIONS: { value: ThemePreference; icon: string }[] = [
@@ -236,6 +238,22 @@ export default function ProfileScreen() {
               </Pressable>
             </View>
             <Text style={styles.settingsHint}>{t("profile.dailyWordsHint")}</Text>
+          </View>
+        ) : null}
+
+        {courseHasReadingAid(activeCourseId) ? (
+          <View style={styles.settingsCard} testID="reading-aid-card">
+            <View style={styles.settingsHeader}>
+              <Ionicons name="text-outline" size={22} color={colors.indigo} />
+              <Text style={[styles.settingsTitle, { flex: 1 }]}>{t("profile.readingAid")}</Text>
+              <Switch
+                value={readingAidOn(progress.readingAid, activeCourseId)}
+                onValueChange={(on) => progress.setReadingAid(activeCourseId, on)}
+                accessibilityLabel={t("profile.readingAid")}
+                testID="reading-aid-switch"
+              />
+            </View>
+            <Text style={styles.settingsHint}>{t("profile.readingAidHint")}</Text>
           </View>
         ) : null}
 

@@ -26,7 +26,7 @@ import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../
 import { audioCourseIds, parseAudioManifest, renderAudioSlice, renderCourseBundlesStatic, renderCourseLoaders, renderCourseModule } from "./course-bundles";
 import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
-import { canonicalJson, courseIsBeta, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
+import { canonicalJson, courseIsBeta, courseProfileFlag, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
 
 export type LexiconDbInfo = { name: string; contentHash: string };
 
@@ -121,9 +121,15 @@ export function deriveProfiles(args: {
   artifactRoot?: string;
   /** Course role reader (tests inject one; default reads content/courses/<id>.profile.json). */
   roleOf?: (courseId: string) => CourseRole | undefined;
+  /** target code → its course claim gate says A1 is claimable (from this compile's `<code>-claim.json`). */
+  claimA1ByTarget?: Record<string, boolean>;
+  /** P4a basic-pack reader (tests inject one; default reads the profile's `basicPack`). */
+  basicPackOf?: (courseId: string) => boolean;
 }): Record<string, CourseProfile> {
   const root = args.artifactRoot ?? "src/content";
   const roleOf = args.roleOf ?? courseRoleOf;
+  const basicPackOf = args.basicPackOf ?? ((id: string) => courseProfileFlag(id, "basicPack") === true);
+  const claimA1 = args.claimA1ByTarget ?? {};
   const present = new Set(args.presentRelPaths);
   const profiles: Record<string, CourseProfile> = {};
   for (const pack of [...args.packs].sort((a, b) => a.id.localeCompare(b.id))) {
@@ -138,6 +144,12 @@ export function deriveProfiles(args: {
     const primaryCourse = standalone ? undefined : roles.primary;
     const audioCourseId = primaryCourse && primaryCourse.id !== pack.id ? primaryCourse.id : undefined;
     const capabilities = { ...deriveCapabilities(artifacts), ...readOverride(pack.id) };
+    // P4a: an inherited basic pack leaves onboarding once a Vietnamese course
+    // of the same target is A1-claimable; a standalone course never was offered.
+    const retired =
+      basicPackOf(pack.id) &&
+      claimA1[pack.targetCode] === true &&
+      args.packs.some((p) => p.targetCode === pack.targetCode && p.nativeCode === "vi" && p.id !== pack.id);
     profiles[pack.id] = {
       id: pack.id,
       targetCode: pack.targetCode,
@@ -157,6 +169,7 @@ export function deriveProfiles(args: {
       // P3d: an inherited course kept beside its target's primary course —
       // hidden from onboarding, listed under "other courses".
       ...(standalone ? { role: "standalone" as const } : {}),
+      ...(standalone || retired ? { hiddenFromOnboarding: true as const } : {}),
       // P3e §8: labelled beta in the app until a native review is recorded.
       ...(courseIsBeta(pack.id) ? { beta: true as const } : {}),
     };
@@ -292,7 +305,14 @@ export function compileCourseProfileArtifacts(args: {
   out.push({ relPath: `${root}/ids/index.ts`, contents: renderIdsIndex(root, idCodes) });
 
   const present = [...args.files.map((f) => f.relPath), ...out.map((f) => f.relPath)];
-  const profiles = deriveProfiles({ packs: args.packs, presentRelPaths: present, lexiconDbs: args.lexiconDbs, artifactRoot: root });
+  const claimA1ByTarget: Record<string, boolean> = {};
+  for (const f of args.files) {
+    const m = /\/assessment\/([a-z]{2,3})-claim\.json$/.exec(f.relPath);
+    if (!m) continue;
+    const levels = (JSON.parse(f.contents) as { levels?: { level: string; courseClaimable: boolean }[] }).levels ?? [];
+    claimA1ByTarget[m[1]] = levels.some((l) => l.level === "A1" && l.courseClaimable === true);
+  }
+  const profiles = deriveProfiles({ packs: args.packs, presentRelPaths: present, lexiconDbs: args.lexiconDbs, artifactRoot: root, claimA1ByTarget });
   for (const p of Object.values(profiles)) {
     for (const flag of [p.flagAsset]) {
       if (!existsSync(safeResolve(`assets/images/flags/${flag}.svg`))) {
@@ -310,7 +330,7 @@ export function compileCourseProfileArtifacts(args: {
   const CORE_CAPABILITIES = ["fsrs", "dailySession", "lexicon", "concepts", "placement", "checkpoints", "goals", "listening", "reading", "speaking", "writing", "conversation"] as const;
   const packById = new Map(args.packs.map((p) => [p.id, p]));
   const unitCount = (id: string) => packById.get(id)?.sections.reduce((n, s) => n + s.units.length, 0) ?? 0;
-  const defaultOrder = [...courseIds].filter((id) => profiles[id].role !== "standalone").sort((a, b) => {
+  const defaultOrder = [...courseIds].filter((id) => profiles[id].hiddenFromOnboarding !== true).sort((a, b) => {
     const score = (id: string) => CORE_CAPABILITIES.filter((k) => profiles[id].capabilities[k]).length;
     return (
       score(b) - score(a) ||
