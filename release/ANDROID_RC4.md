@@ -1,8 +1,10 @@
 # Android RC4 — first device candidate since RC3 (P3f D)
 
-**RC4 status (2026-10-22): release APK built and checked on the owner's PC;
-owner signing, the upgrade install over RC3 and the 15-minute checklist (§4)
-are owner actions — no device result has been observed.**
+**RC4 status (2026-10-27): PARKED.** RC4 (build 2, 3ff3b96) built, unsigned,
+not device-tested — superseded by the v1.0 candidate per owner decision
+2026-10-27 (`plan/prompts/00-MASTER-PROMPT-v2.md`). The checklist below is kept
+as the seed of the single v1.0 acceptance pass (`plan/OWNER-FINAL-CHECKLIST.md` D);
+no device result has been observed.
 
 ## 1. Commit and changes
 
