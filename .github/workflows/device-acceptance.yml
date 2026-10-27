@@ -8,7 +8,14 @@
 # speech-recogniser-unavailable path, backup export → pm clear → import,
 # offline, crash/ANR logcat scan, cold start (budget enforced on API 34),
 # memory, vi + en screenshots, and the upgrade from RC3 with learner data
-# compared field by field. Required for merge.
+# compared field by field. Required for merge: every shard on both APIs.
+#
+# The suite runs in three shards per API level (core, lessons,
+# backup-upgrade), each on its own emulator, so a job stays well under its
+# limit and a failure points at one part. A hung `maestro test` is killed
+# after FLOW_TIMEOUT (diagnostics in logs/<flow>.hang/), and the whole run
+# is wrapped in a 75 min watchdog inside a 90 min job: a hang ends as a
+# FAILED job with its report uploaded, never as a job cancelled hours later.
 #
 # Every result is an EMULATOR result. Maestro (Apache-2.0) is downloaded
 # here, checksum-pinned, and never bundled with the app. No secrets: both
@@ -33,6 +40,11 @@ env:
   RC3_COMMIT: e5dcfd015c407bf445afae9d517661f367934104
   MAESTRO_VERSION: 2.12.0
   MAESTRO_SHA256: a6044a84542f522f434c5dc3d609e60c7446d423f3ed1b2ae513f5c48663ec5e
+  # No network side-calls from the Maestro CLI; a slow driver start is
+  # waited for (2 min) instead of failing at the 15 s default.
+  MAESTRO_CLI_NO_ANALYTICS: "1"
+  MAESTRO_CLI_ANALYSIS_NOTIFICATION_DISABLED: "true"
+  MAESTRO_DRIVER_STARTUP_TIMEOUT: "120000"
 
 jobs:
   build:
@@ -104,14 +116,15 @@ jobs:
           retention-days: 7
 
   acceptance:
-    name: Emulator API ${{ matrix.api }}
+    name: Emulator API ${{ matrix.api }} (${{ matrix.shard }})
     needs: [build, build-rc3]
     runs-on: ubuntu-latest
-    timeout-minutes: 210
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:
         api: [34, 30]
+        shard: [core, lessons, backup-upgrade]
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
@@ -146,6 +159,9 @@ jobs:
         uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2
         env:
           RC3_APK: apk/rc3-x86_64.apk
+          SHARD: ${{ matrix.shard }}
+          DEVICE: emulator-5554
+          FLOW_TIMEOUT: "600"
           ENFORCE_COLD_START: ${{ matrix.api == 34 && '1' || '0' }}
         with:
           api-level: ${{ matrix.api }}
@@ -154,13 +170,15 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          script: bash scripts/device/acceptance.sh apk/app-x86_64.apk device-report
+          # Suite watchdog: 75 min, then SIGTERM (the script records the stop
+          # and writes its report), SIGKILL 2 min later.
+          script: timeout --kill-after=2m 75m bash scripts/device/acceptance.sh apk/app-x86_64.apk device-report
       - name: Report
         if: always()
         run: '[ -f device-report/REPORT.md ] && cat device-report/REPORT.md >> "$GITHUB_STEP_SUMMARY" || true'
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
-          name: device-report-api${{ matrix.api }}
+          name: device-report-api${{ matrix.api }}-${{ matrix.shard }}
           path: device-report
           retention-days: 30
