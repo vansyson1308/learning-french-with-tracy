@@ -46,7 +46,7 @@ export function TeachCard({
       : undefined;
 
   return (
-    <View style={styles.wrap} accessibilityLabel={t("teach.newWordLabel", { word: word.target })}>
+    <View style={styles.wrap} accessibilityLabel={t("teach.newWordLabel", { word: word.target })} testID="teach-card">
       <Animated.Text entering={FadeInDown.duration(200)} style={styles.kicker}>
         {t("teach.kicker")}
       </Animated.Text>

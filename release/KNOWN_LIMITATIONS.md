@@ -33,6 +33,7 @@ itself.
 | L7 | Extreme-timezone streak grandfathering | at UTC+14 a stored UTC-day equal to local-yesterday maps to local-today (the learner keeps the streak; never double-credited) | documented; tested in the Kiritimati lane |
 | L8 | Telegraphic notes accepted by the writing rubric | *Salut Marie, café à deux heures* meets the note rubric by design (facts conveyed) | recorded in the dossier as a construct decision |
 | L9 | Two liking verbs in one sentence trip the stuffing rule | *J'adore le thé et j'aime le pain* is refused with recoverable feedback | rare at A1; revisit if learner data shows it |
+| L13 | Rare native crash at launch on the x86_64 emulator (P3h) | observed once in dozens of emulator launches while P3h was built: SIGSEGV inside libc `android_unsafe_frame_pointer_chase`, called by GWP-ASan (Android's sampling allocator) while it records a backtrace for a Hermes deallocation. Hermes on x86_64 is built without frame pointers, so the walk reads past the stack; arm64 keeps frame pointers by ABI. No app frame on the faulting thread | emulator-ABI platform crash: the P3h suite reports it separately (INFO) and retries the flow; any other native or Java crash still fails the gate. Watched on the arm64 phone in `plan/OWNER-FINAL-CHECKLIST.md` D |
 
 ## P3 — cosmetic / register
 

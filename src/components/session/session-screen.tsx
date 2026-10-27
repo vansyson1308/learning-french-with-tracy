@@ -232,6 +232,8 @@ export function SessionScreen({
           ) : step.type === "concept" ? (
             <ConceptCard courseId={definition.courseId} conceptId={step.conceptId} />
           ) : (
+            // P3h: the step's exercise id is exposed for the device-acceptance flows (e2e/maestro).
+            <View testID={`exercise-${step.exercise.id}`} collapsable={false}>
             <ExerciseRenderer
               exercise={step.exercise}
               answer={state.answer}
@@ -270,6 +272,7 @@ export function SessionScreen({
                   definition.kind === "checkpoint" || definition.kind === "placement",
               }}
             />
+            </View>
           )}
         </ScrollView>
 

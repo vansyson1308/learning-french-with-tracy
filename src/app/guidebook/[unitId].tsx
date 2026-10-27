@@ -78,7 +78,7 @@ export default function GuidebookScreen() {
   if (!unit) return null;
 
   return (
-    <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
+    <SafeAreaView style={styles.screen} edges={["top", "left", "right"]} testID="guidebook-screen">
       <View style={styles.topBar}>
         <CloseButton />
         <Text style={styles.title} numberOfLines={1}>

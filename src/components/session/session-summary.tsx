@@ -49,7 +49,7 @@ export function SessionSummary({
   const isLesson = kind === "path";
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={styles.screen} testID="session-summary">
       <View style={styles.center}>
         <Animated.View entering={ZoomIn.springify().damping(12)}>
           <Image

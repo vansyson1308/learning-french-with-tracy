@@ -71,6 +71,8 @@
     "e2e:guide": "node e2e/guide-walk.mjs",
     "e2e:exam": "node e2e/exam-web.mjs",
     "e2e:screens": "node e2e/screenshots.mjs",
+    "device:flows": "bun scripts/device/maestro-flows.ts",
+    "device:acceptance": "bash scripts/device/acceptance.sh",
     "brand:render": "node scripts/render-brand-assets.mjs",
     "release:bump": "bun scripts/bump-build.ts",
     "eas-build-pre-install": "bun scripts/release-identity-gate.ts",
