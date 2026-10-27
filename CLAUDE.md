@@ -42,4 +42,4 @@ Windows: clone with `-c core.autocrlf=false`, keep the checkout at a short path 
 1. Read the milestone prompt in `plan/prompts/`, the referenced sections of the audits, and the files it names. Make a task list.
 2. Do the work on branch `phase-N/<milestone>`; run every gate locally; fix what breaks.
 3. Update docs (`release/*`, `docs/USER_GUIDE.md`, `KNOWN_LIMITATIONS.md`, `plan/STATUS.md`).
-4. Finish with a report: what changed, gates + results, open questions, what the owner must do by hand (device tests, secrets, accounts). Never claim a device result you did not observe.
+4. Finish with a report: what changed, gates + results, open questions. Since 2026-10-27 (`plan/prompts/00-MASTER-PROMPT-v2.md`) human-only tasks (device tests, secrets, accounts, reviews) are appended to `plan/OWNER-FINAL-CHECKLIST.md` and never block work. Never claim a device result you did not observe (emulator results are labelled "emulator").
