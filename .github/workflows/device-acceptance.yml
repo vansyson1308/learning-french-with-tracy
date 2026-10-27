@@ -30,7 +30,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  RC3_COMMIT: e5dcfd0
+  RC3_COMMIT: e5dcfd015c407bf445afae9d517661f367934104
   MAESTRO_VERSION: 2.12.0
   MAESTRO_SHA256: a6044a84542f522f434c5dc3d609e60c7446d423f3ed1b2ae513f5c48663ec5e
 
@@ -48,7 +48,6 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-          cache: gradle
       - run: bun install --frozen-lockfile
       - name: Generate the native project and build
         run: |
