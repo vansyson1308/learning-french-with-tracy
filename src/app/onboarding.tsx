@@ -8,6 +8,7 @@ import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
 import { Flag } from "@/components/flag";
 import { catalog, orderedCoursesFor } from "@/lib/content";
+import { loadCourse } from "@/lib/course-bundle";
 import { courseProfile, defaultCourseForUi } from "@/lib/course-profile";
 import { DAILY_GOAL_OPTIONS, DEFAULT_COURSE, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius } from "@/lib/theme";
@@ -101,8 +102,11 @@ export default function OnboardingScreen() {
           label={selected ? t("onboarding.learn", { language: nameOf(selected) }) : t("onboarding.start")}
           testID="onboarding-start"
           onPress={() => {
-            finishOnboarding(courseId, goal);
-            router.replace("/(tabs)");
+            // P3g: load the chosen course's bundle before leaving onboarding.
+            void loadCourse(courseId).then(() => {
+              finishOnboarding(courseId, goal);
+              router.replace("/(tabs)");
+            });
           }}
           style={{ alignSelf: "stretch" }}
         />

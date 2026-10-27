@@ -1,5 +1,8 @@
 import { mock } from "bun:test";
 
+import { ALL_COURSE_BUNDLES } from "../../content/course-bundles";
+import { registerCourseBundle } from "../course-bundle";
+
 import { asyncStorageMock, joinMockUri, memDirs, memFiles } from "./helpers/mocks";
 
 mock.module("@react-native-async-storage/async-storage", () => ({
@@ -79,3 +82,8 @@ mock.module("expo-sharing", () => ({
 mock.module("expo-document-picker", () => ({
   getDocumentAsync: async () => ({ canceled: true, assets: null }),
 }));
+
+// P3g: course content is loaded on demand in the app (src/lib/course-bundle.ts);
+// tests and scripts register every bundle up front.
+
+for (const bundle of ALL_COURSE_BUNDLES) registerCourseBundle(bundle);

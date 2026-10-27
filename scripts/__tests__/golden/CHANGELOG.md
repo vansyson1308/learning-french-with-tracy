@@ -541,3 +541,26 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/audio-manifest.ts
 - compile: changed  src/content/packs/es-vi.json
 - compile: changed  src/content/reception/es-clip-assets.ts
+
+## 2026-10-27 — P3g B: per-course bundles (src/content/courses/*, audio/*, course-loaders.ts, course-bundles.ts) loaded on demand; French content unchanged
+
+- compile: new      src/content/audio/de-en.ts
+- compile: new      src/content/audio/es-en.ts
+- compile: new      src/content/audio/es-vi.ts
+- compile: new      src/content/audio/fr-en.ts
+- compile: new      src/content/audio/pt-en.ts
+- compile: new      src/content/course-bundles.ts
+- compile: new      src/content/course-loaders.ts
+- compile: new      src/content/courses/de-en.ts
+- compile: new      src/content/courses/es-en.ts
+- compile: new      src/content/courses/es-vi.ts
+- compile: new      src/content/courses/fr-en.ts
+- compile: new      src/content/courses/fr-vi.ts
+- compile: new      src/content/courses/it-en.ts
+- compile: new      src/content/courses/ja-en.ts
+- compile: new      src/content/courses/ko-en.ts
+- compile: new      src/content/courses/pt-en.ts
+- compile: new      src/content/courses/zh-en.ts
+- compile: new      src/content/test-only/course-bundles.ts
+- compile: new      src/content/test-only/course-loaders.ts
+- compile: new      src/content/test-only/courses/xx-en.ts

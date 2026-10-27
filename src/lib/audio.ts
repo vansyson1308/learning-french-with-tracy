@@ -6,7 +6,7 @@ import {
 } from "expo-audio";
 import * as Speech from "expo-speech";
 
-import { audioManifest } from "../content/audio-manifest";
+import { courseBundle } from "./course-bundle";
 import { courseProfile } from "./course-profile";
 
 setAudioModeAsync({ playsInSilentMode: true }).catch(() => {});
@@ -39,7 +39,8 @@ export function speakTarget(courseId: string, text: string) {
   // plays the clips recorded for the primary course of its target (fr-en).
   const audioCourseId = courseProfile(courseId).audioCourseId ?? courseId;
   const key = `${audioCourseId}:${text}`;
-  const source = audioManifest[key];
+  // P3g: the course bundle carries its (or its audio course's) slice of the manifest.
+  const source = courseBundle(courseId)?.audio[key];
   if (source) {
     if (!voicePlayer) voicePlayer = createAudioPlayer(source);
     else voicePlayer.replace(source);

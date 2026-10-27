@@ -5,6 +5,7 @@ import * as SystemUI from "expo-system-ui";
 import React, { useEffect, useSyncExternalStore } from "react";
 import { ReduceMotion, ReducedMotionConfig } from "react-native-reanimated";
 
+import { isCourseLoaded, loadCourse, onCourseLoaded } from "@/lib/course-bundle";
 import { useProgress } from "@/lib/store";
 import { useResolvedScheme, useThemeColors } from "@/lib/theme";
 
@@ -31,16 +32,40 @@ function getServerHydrated() {
   return false;
 }
 
+// P3g: course content is loaded on demand — no screen renders before the
+// active course's bundle is in memory (getPack / artifactsFor read it).
+function subscribeToCourse(callback: () => void) {
+  const off = onCourseLoaded(callback);
+  const unsubscribeStore = useProgress.subscribe(callback);
+  return () => {
+    off();
+    unsubscribeStore();
+  };
+}
+function getActiveCourseLoaded() {
+  return isCourseLoaded(useProgress.getState().activeCourseId);
+}
+
 export default function RootLayout() {
   const onboardingDone = useProgress((s) => s.onboardingDone);
   const segments = useSegments();
   const scheme = useResolvedScheme();
   const colors = useThemeColors();
-  const hydrated = useSyncExternalStore(
+  const storeHydrated = useSyncExternalStore(
     subscribeToHydration,
     getHydrated,
     getServerHydrated
   );
+  const activeCourseId = useProgress((s) => s.activeCourseId);
+  const courseLoaded = useSyncExternalStore(subscribeToCourse, getActiveCourseLoaded, getServerHydrated);
+  const hydrated = storeHydrated && courseLoaded;
+
+  useEffect(() => {
+    if (!storeHydrated) return;
+    loadCourse(activeCourseId).catch((e: unknown) => {
+      console.error(`course bundle ${activeCourseId} failed to load`, e);
+    });
+  }, [storeHydrated, activeCourseId]);
 
   useEffect(() => {
     if (hydrated) SplashScreen.hideAsync().catch(() => {});
@@ -66,6 +91,9 @@ export default function RootLayout() {
       router.replace("/(tabs)");
     }
   }, [hydrated, onboardingDone, segments]);
+
+  // The splash stays up until the store and the active course are ready.
+  if (!hydrated) return null;
 
   return (
     <>
