@@ -69,7 +69,10 @@ const assertId = (id: string) => [`- assertVisible:`, `    id: ${q(id)}`];
 const waitId = (id: string, timeout = 30000) => [`- extendedWaitUntil:`, `    visible:`, `      id: ${q(id)}`, `    timeout: ${timeout}`];
 const shot = (name: string) => [`- takeScreenshot: ${q(name)}`];
 const openLink = (route: string) => [`- openLink: ${q(`${SCHEME}://${route}`)}`];
-const scrollTo = (id: string) => [`- scrollUntilVisible:`, `    element:`, `      id: ${q(id)}`, `    direction: DOWN`];
+// centerElement: an element merely inside the screen can sit under the API 30
+// navigation bar (edge-to-edge), where a tap lands on the bar instead.
+const SCROLL_END = [`    direction: DOWN`, `    centerElement: true`];
+const scrollTo = (id: string) => [`- scrollUntilVisible:`, `    element:`, `      id: ${q(id)}`, ...SCROLL_END];
 const TAP_CONTINUE = tapId("session-continue");
 
 function header(comment: string): string[] {
@@ -96,7 +99,7 @@ export function answerCommands(ex: Exercise, courseId: string): string[] | null 
       // Passages are long: scroll the option card into view; its label may carry an emoji prefix.
       const option = `(\\S+ )?${literal(ex.options[ex.correct].text)}`;
       const selector = [`    id: "option-card"`, `    text: ${q(option)}`];
-      return [`- scrollUntilVisible:`, `    element:`, ...selector.map((l) => `  ${l}`), `    direction: DOWN`, `- tapOn:`, ...selector, ...tapId("session-check")];
+      return [`- scrollUntilVisible:`, `    element:`, ...selector.map((l) => `  ${l}`), ...SCROLL_END, `- tapOn:`, ...selector, ...tapId("session-check")];
     }
     case "typeAnswer": {
       const typed = [ex.answer, ...ex.alternatives].map(asciiFold).find((a) => a.length > 0 && checkAnswer(ex, a, courseId));
@@ -297,23 +300,35 @@ export function exportFlow(): string {
   ].join("\n");
 }
 
+/**
+ * DocumentsUI labels in the two device locales the suite runs (vi-VN, en-US).
+ * The picker opens on Recents or on the last folder used; the driver has the
+ * pushed file indexed by MediaStore first, so it is listed in both.
+ */
+export const PICKER_LABELS = {
+  showRoots: "(?i)(Show roots|Hiện gốc|Hiển thị gốc)",
+  downloads: "(?i)(Downloads|Tệp đã tải xuống|Tệp tải xuống|Tải xuống)",
+  landmarks: "Downloads|Recent|Tệp đã tải xuống|Tệp tải xuống|Tải xuống|Gần đây",
+} as const;
+
 /** The system document picker: open Downloads if needed and pick the pushed backup. */
 function pickBackup(fileName: string): string[] {
   return [
     `- extendedWaitUntil:`,
     `    visible:`,
-    `      text: ${q(`(?i).*(${literal(fileName)}|Downloads|Recent).*`)}`,
-    `    timeout: 20000`,
+    `      text: ${q(`(?i).*(${literal(fileName)}|${PICKER_LABELS.landmarks}).*`)}`,
+    `    timeout: 30000`,
     `- runFlow:`,
     `    when:`,
     `      notVisible:`,
     `        text: ${q(literal(fileName))}`,
     `    commands:`,
     `      - tapOn:`,
-    `          text: "Show roots"`,
+    `          text: ${q(PICKER_LABELS.showRoots)}`,
     `          optional: true`,
     `      - tapOn:`,
-    `          text: "Downloads"`,
+    `          text: ${q(PICKER_LABELS.downloads)}`,
+    ...shot("picker"),
     ...tapText(fileName),
   ];
 }
@@ -355,7 +370,7 @@ export function importFlow(ui: UiLang, fileName: string): string {
  * never changes, so they cannot drift.
  */
 export function rc3Flows(fileName: string): Record<string, string> {
-  const scrollText = (text: string) => [`- scrollUntilVisible:`, `    element:`, `      text: ${q(text)}`, `    direction: DOWN`];
+  const scrollText = (text: string) => [`- scrollUntilVisible:`, `    element:`, `      text: ${q(text)}`, ...SCROLL_END];
   return {
     "rc3-onboarding.yaml": [
       ...header("RC3: fresh install → onboarding (English UI) → Learn."),
@@ -406,8 +421,9 @@ export function profileFlow(): string {
     ...waitId("profile-stat"),
     ...shot("profile"),
     ...scrollTo("language-card"),
-    ...scrollTo("profile-export"),
-    ...assertId("profile-import"),
+    // The import button sits below export: scroll to it, not past export only.
+    ...scrollTo("profile-import"),
+    ...assertId("profile-export"),
     ...shot("profile-data"),
     ``,
   ].join("\n");

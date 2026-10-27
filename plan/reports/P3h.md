@@ -36,6 +36,22 @@ Mọi kết quả dưới đây là **emulator**, không phải điện thoại.
 - **Sau mỗi lần đổi ngôn ngữ máy** (khởi động lại zygote), emulator hay hiện hộp thoại "System UI không phản hồi". Trình chạy bấm "Đợi" theo resource-id (không phụ thuộc ngôn ngữ); nếu hộp thoại quay lại thì bấm "Đóng ứng dụng".
 - Mọi flow được chạy lại tối đa một lần. Nếu lần đầu hỏng, báo cáo ghi rõ "passed on retry" kèm lỗi lần đầu, không giấu.
 
+### Lần chạy CI đầu tiên (emulator mới tinh, API 34 + 30): 5 nguyên nhân, đã sửa
+Đây đều là lỗi của bộ test, không phải của app. Logcat của cả hai API không có crash, ANR hay lỗi trình phát.
+1. **Nhập sao lưu hỏng ở cả hai API.** Từ API 29, bộ chọn file của Android lấy danh sách Downloads/Gần đây từ MediaStore, mà `adb push` không đăng ký file vào đó. Trên máy dev, file đã được quét từ những lượt trước nên vẫn thấy; trên emulator mới thì bộ chọn trống. Cách sửa:
+   - Trình chạy đẩy file vào thư mục Download rồi yêu cầu MediaStore quét.
+   - Kiểm tra bằng `content query` cho tới khi file đã có trong MediaStore.
+   - Bước chọn file hiểu cả nhãn tiếng Việt (Tệp đã tải xuống, Gần đây) lẫn tiếng Anh.
+2. **API 30 không ghi nhận âm thanh.** Từ API 33, log ghi `state=PLAYING(3)`; API 30 chỉ ghi `state=3`. Cách sửa:
+   - Biểu thức nhận cả hai dạng.
+   - Thêm tín hiệu thứ hai, độc lập: nhật ký trình phát của dịch vụ âm thanh (`dumpsys audio`). Chỉ đếm trình phát thuộc uid của app, được tạo sau khi bài học bắt đầu và đã chuyển sang "started".
+   - Logic nằm trong `scripts/device/audio-evidence.ts`, có test cho cả hai định dạng.
+3. **API 30: lesson es-en, ja-en và "upgraded: profile" không chạm được nút.** Phần tử chỉ vừa lọt vào màn hình thì có thể nằm dưới thanh điều hướng của API 30 (giao diện edge-to-edge), nên cú chạm rơi vào thanh. Cách sửa:
+   - Mọi bước cuộn dùng `centerElement: true`. Có test kiểm tra mọi flow.
+   - Flow Hồ sơ cuộn thẳng tới nút Nhập thay vì chỉ cuộn tới nút Xuất.
+4. **Không tải được artifact báo cáo.** Tên file log có dấu `:` (ví dụ "RC3: export…"), mà upload-artifact không cho phép ký tự này. Cách sửa: đặt tên log theo slug và đổi tên mọi đường dẫn có ký tự bị cấm trước khi tải lên.
+5. Hai lỗi còn lại là hệ quả của lỗi 1: so sánh sao lưu sau khi xoá dữ liệu cho thấy 0 thẻ, vì bước nhập chưa từng chạy.
+
 ## Kiểm tra
 typecheck ✅ · lint ✅ · `bun run test` 1.555 ✅ (gồm 10 test mới của bộ sinh flow: mọi id có trong app, câu gõ là ASCII, checkpoint đòi N/N, seed RC3 nhập được) · jest 76/76 ✅ · `content:check` ✅ · `audio:check` ✅ (1.721 file) · golden ✅ (tiếng Pháp không đổi) · device-acceptance trên emulator API 34 (máy dev) ✅; API 34 + 30 trên APK cuối: CI của PR.
 

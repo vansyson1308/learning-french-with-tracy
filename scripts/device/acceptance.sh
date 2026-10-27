@@ -40,6 +40,9 @@ API=$(adb shell getprop ro.build.version.sdk | tr -d '\r')
   echo "|---|---|---|"
 } > "$REPORT"
 
+# Report names hold ':' and spaces; artifact paths may not (upload-artifact).
+slug() { printf '%s' "$1" | tr -c 'A-Za-z0-9._-' '_'; }
+
 record() { # name PASS|FAIL|INFO detail
   echo "$2  $1 — $3"
   echo "| $1 | $2 | $3 |" >> "$REPORT"
@@ -83,13 +86,13 @@ dismiss_anr() {
 # crash_scan from the continuous logcat.
 flow() { # name file [extra maestro args]
   local name=$1 file=$2; shift 2
-  local started=$SECONDS
-  if run_flow "$OUT/logs/$name.log" "$file" "$@"; then
+  local started=$SECONDS log; log="$OUT/logs/$(slug "$name")"
+  if run_flow "$log.log" "$file" "$@"; then
     record "$name" PASS "$((SECONDS - started)) s"
-  elif run_flow "$OUT/logs/$name.retry.log" "$file" "$@"; then
-    record "$name" PASS "$((SECONDS - started)) s — passed on retry; first failure: $(grep -m1 -iE 'FAILED|Assertion|Error' "$OUT/logs/$name.log" | tr '|' '/' | cut -c1-120)"
+  elif run_flow "$log.retry.log" "$file" "$@"; then
+    record "$name" PASS "$((SECONDS - started)) s — passed on retry; first failure: $(grep -m1 -iE 'FAILED|Assertion|Error' "$log.log" | tr '|' '/' | cut -c1-120)"
   else
-    record "$name" FAIL "$(grep -m1 -iE 'FAILED|Assertion|Error' "$OUT/logs/$name.retry.log" | tr '|' '/' | cut -c1-160)"
+    record "$name" FAIL "$(grep -m1 -iE 'FAILED|Assertion|Error' "$log.retry.log" | tr '|' '/' | cut -c1-160) (logs/$(slug "$name").retry.log)"
     return 1
   fi
 }
@@ -104,7 +107,14 @@ start_logcat() {
 }
 mark() { sleep 1; wc -l < "$LOGCAT" | tr -d ' '; }
 since() { tail -n +"$(( $1 + 1 ))" "$LOGCAT"; }
-trap '[ -n "${LOGCAT_PID:-}" ] && kill "$LOGCAT_PID" 2>/dev/null' EXIT
+finish() {
+  [ -n "${LOGCAT_PID:-}" ] && kill "$LOGCAT_PID" 2>/dev/null
+  # upload-artifact rejects " : < > | * ? in paths: rename deepest first.
+  find "$OUT" -depth -name '*[":<>|*?]*' 2>/dev/null | while IFS= read -r f; do
+    mv "$f" "$(dirname "$f")/$(basename "$f" | tr '":<>|*?' '_______')"
+  done
+}
+trap finish EXIT
 
 wait_boot() {
   adb wait-for-device
@@ -133,9 +143,30 @@ pull_backup() { # dest — the newest export the app wrote to its cache
   [ -n "$f" ] && adb pull "$f" "$1" >/dev/null && adb shell rm -f "$f"
 }
 
-push_backup() { # file — into Downloads for the system picker
-  adb shell mkdir -p /sdcard/Download
-  adb push "$1" /sdcard/Download/lft-backup.json >/dev/null
+# Into Downloads for the system picker. Since API 29 DocumentsUI lists
+# Downloads and Recents from MediaStore, and `adb push` indexes nothing: a
+# fresh device shows an empty picker until the file is scanned.
+BACKUP_NAME=lft-backup.json
+BACKUP_PATH=/storage/emulated/0/Download/$BACKUP_NAME
+push_backup() { # file
+  local i
+  adb shell mkdir -p /storage/emulated/0/Download
+  adb push "$1" "$BACKUP_PATH" >/dev/null || return 1
+  for i in 1 2 3 4 5 6; do
+    adb shell "am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file://$BACKUP_PATH" >/dev/null 2>&1
+    [ "$i" -ge 2 ] && adb shell "content call --uri content://media --method scan_volume --arg external_primary" >/dev/null 2>&1
+    adb shell "content query --uri content://media/external/file --projection _display_name --where \"_display_name='$BACKUP_NAME'\"" 2>/dev/null \
+      | grep -q "$BACKUP_NAME" && return 0
+    sleep 5
+  done
+  return 1
+}
+index_backup() { # file label
+  if push_backup "$1"; then
+    record "$2: backup indexed (MediaStore)" PASS ""
+  else
+    record "$2: backup indexed (MediaStore)" INFO "MediaStore row not confirmed; the picker step decides"
+  fi
 }
 
 SCAN_FROM=0
@@ -187,17 +218,27 @@ for p in $RECOGNISERS; do adb shell pm disable-user --user 0 "$p" >/dev/null 2>&
 flow "speech recogniser unavailable" speech-unavailable.yaml
 for p in $RECOGNISERS; do adb shell pm enable --user 0 "$p" >/dev/null 2>&1; done
 flow "exam mock: reading part" exam-mock.yaml
+APP_UID=$(adb shell pm list packages -U "$PKG" < /dev/null | tr -d '\r' | sed -n 's/.*uid:\([0-9]*\).*/\1/p' | head -1)
+evidence() { (cd "$ROOT" && bun scripts/device/audio-evidence.ts "$@"); }
 while IFS=$'\t' read -r course clips <&3; do
+  # Playback evidence, two system signals: the media session expo-audio
+  # reports to (logcat; its format differs by API level) and the audio
+  # service's player event log (`dumpsys audio`).
+  adb shell dumpsys audio < /dev/null > "$OUT/logs/audio-before-$course.txt" 2>/dev/null
+  floor=$(evidence max-piid "$OUT/logs/audio-before-$course.txt")
   from=$(mark)
   flow "lesson $course" "lesson-$course.yaml"
-  # expo-audio's media session reports each played clip to the system.
-  plays=$(since "$from" | grep -cE "onPlaybackStateChanged\(\): $PKG : PlaybackState \{state=PLAYING")
+  since "$from" > "$OUT/logs/logcat-lesson-$course.txt"
+  adb shell dumpsys audio < /dev/null > "$OUT/logs/audio-after-$course.txt" 2>/dev/null
+  read -r plays starts <<< "$(evidence count "$PKG" "${APP_UID:-0}" "${floor:-0}" "$OUT/logs/logcat-lesson-$course.txt" "$OUT/logs/audio-after-$course.txt")"
+  plays=${plays:-0} starts=${starts:-0}
+  detail="$plays media-session plays, $starts audio-service starts"
   if [ "$clips" = 0 ]; then
-    record "audio events $course" INFO "no bundled clips for this course ($plays playback events)"
-  elif [ "$plays" -gt 0 ]; then
-    record "audio events $course" PASS "$plays clips played ($clips bundled)"
+    record "audio events $course" INFO "no bundled clips for this course ($detail)"
+  elif [ "$plays" -gt 0 ] || [ "$starts" -gt 0 ]; then
+    record "audio events $course" PASS "$detail ($clips bundled)"
   else
-    record "audio events $course" FAIL "no playback event although $clips clips are bundled"
+    record "audio events $course" FAIL "no playback event although $clips clips are bundled (uid ${APP_UID:-?}; logs/audio-after-$course.txt)"
   fi
 done 3< "$OUT/flows/courses.tsv"
 flow "profile" profile.yaml
@@ -209,7 +250,7 @@ flow "backup export" export.yaml
 if pull_backup "$OUT/backup/export-1.json"; then
   adb shell pm clear "$PKG" >/dev/null
   flow "onboarding after pm clear" onboarding-vi.yaml
-  push_backup "$OUT/backup/export-1.json"
+  index_backup "$OUT/backup/export-1.json" "backup"
   flow "backup import" import-vi.yaml
   flow "backup re-export" export.yaml
   if pull_backup "$OUT/backup/export-2.json" \
@@ -268,7 +309,7 @@ if [ -n "${RC3_APK:-}" ] && [ -f "$RC3_APK" ]; then
   adb install "$RC3_APK" > "$OUT/logs/install-rc3.log" 2>&1 || record "install RC3" FAIL "$(tail -1 "$OUT/logs/install-rc3.log")"
   (cd "$ROOT" && bun scripts/device/backup-tools.ts seed-rc3 "$OUT/backup/rc3-seed.json") >/dev/null
   flow "RC3: onboarding" rc3-onboarding.yaml
-  push_backup "$OUT/backup/rc3-seed.json"
+  index_backup "$OUT/backup/rc3-seed.json" "RC3"
   flow "RC3: seed progress (import)" rc3-import.yaml
   adb shell "rm -f /data/data/$PKG/cache/lingo-progress-*.json"
   flow "RC3: export before upgrade" rc3-export.yaml
