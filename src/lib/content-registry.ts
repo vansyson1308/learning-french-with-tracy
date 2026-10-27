@@ -1,14 +1,15 @@
 /**
  * Per-course artifact registry (P1b). The compiler generates one module per
  * course under src/content/artifacts/<courseId>.ts with STATIC imports of
- * that course's compiled artifacts (Metro needs static requires), plus an
- * index. Content modules (assessment, reception, speech, writing,
+ * that course's compiled artifacts (Metro needs static requires). Since
+ * P3g they reach the app inside the course's bundle (src/lib/course-bundle.ts),
+ * loaded on demand. Content modules (assessment, reception, speech, writing,
  * interaction, concepts, lexicon index) resolve their data through
  * `artifactsFor(courseId)` and treat a missing artifact as "no such
  * content for this course" — never as an error.
  */
 
-import { COURSE_ARTIFACTS } from "../content/artifacts";
+import { courseBundle } from "./course-bundle";
 
 export type CourseArtifacts = {
   ids?: unknown;
@@ -47,7 +48,12 @@ export function __registerCourseArtifactsForTests(courseId: string, artifacts: C
 }
 
 export function artifactsFor(courseId: string): CourseArtifacts {
-  return TEST_ARTIFACTS.get(courseId) ?? (COURSE_ARTIFACTS as Record<string, CourseArtifacts>)[courseId] ?? EMPTY;
+  return TEST_ARTIFACTS.get(courseId) ?? courseBundle(courseId)?.artifacts ?? EMPTY;
+}
+
+/** Whether a course's artifacts are available now (loaded bundle or test registration). */
+function artifactsReady(courseId: string): boolean {
+  return TEST_ARTIFACTS.has(courseId) || courseBundle(courseId) !== undefined;
 }
 
 /** Small per-course memo for derived views (built once per course). */
@@ -57,7 +63,8 @@ export function memoByCourse<T>(build: (courseId: string) => T): (courseId: stri
     const hit = cache.get(courseId);
     if (hit !== undefined) return hit;
     const value = build(courseId);
-    cache.set(courseId, value);
+    // P3g: never memoise the empty view of a course that is not loaded yet.
+    if (artifactsReady(courseId)) cache.set(courseId, value);
     return value;
   };
 }

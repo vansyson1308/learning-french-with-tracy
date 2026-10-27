@@ -8,6 +8,7 @@ import { Flag } from "@/components/flag";
 import { exitScreen } from "@/lib/navigation";
 import { orderedCoursesFor } from "@/lib/content";
 import { courseProfile } from "@/lib/course-profile";
+import { loadCourse } from "@/lib/course-bundle";
 import { useProgress } from "@/lib/store";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
@@ -48,8 +49,11 @@ export default function CoursesScreen() {
             <Pressable
               testID={`courses-course-${course.id}`}
               onPress={() => {
-                setActiveCourse(course.id);
-                exitScreen();
+                // P3g: load the course bundle before switching, so no screen renders without it.
+                void loadCourse(course.id).then(() => {
+                  setActiveCourse(course.id);
+                  exitScreen();
+                });
               }}
               accessibilityRole="button"
               accessibilityState={{ selected: active }}

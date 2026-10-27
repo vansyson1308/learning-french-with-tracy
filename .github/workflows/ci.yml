@@ -157,6 +157,9 @@ jobs:
           echo "## Web export size" >> "$GITHUB_STEP_SUMMARY"
           du -sh dist | tee -a "$GITHUB_STEP_SUMMARY"
           du -sh dist/_expo/static/js/web/*.js | sort -rh | head -5 | tee -a "$GITHUB_STEP_SUMMARY"
+      # P3g B2: course content loads on demand; the entry chunk stays ≤ 4.5 MB.
+      - name: Web entry bundle budget
+        run: bun scripts/check-web-entry.ts dist | tee -a "$GITHUB_STEP_SUMMARY"
       # Phase 10: browser E2E over the export (the runner's Chrome; the
       # web tier is honestly labelled — speech surfaces show their skip
       # affordances). No network beyond localhost.

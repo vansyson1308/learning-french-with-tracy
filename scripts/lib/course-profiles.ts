@@ -17,12 +17,13 @@
  * (e.g. fsrs for a legacy course). Deterministic.
  */
 
-import { existsSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import path from "path";
 
 import { CourseProfileOverrideSchema, type PackSource } from "../../content/schema";
 import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../../src/lib/course-profile";
 
+import { audioCourseIds, parseAudioManifest, renderAudioSlice, renderCourseBundlesStatic, renderCourseLoaders, renderCourseModule } from "./course-bundles";
 import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
 import { canonicalJson, courseIsBeta, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
@@ -333,5 +334,15 @@ export function compileCourseProfileArtifacts(args: {
   out.push({ relPath: `${root}/artifacts/index.ts`, contents: renderArtifactsIndex(root, courseIds) });
   out.push({ relPath: `${root}/lexicon/db-assets.ts`, contents: renderDbAssets(root, args.lexiconDbs) });
   out.push({ relPath: `${root}/flags.ts`, contents: renderFlags(root, profiles) });
+  // P3g B: per-course bundles loaded on demand (scripts/lib/course-bundles.ts).
+  const manifestRel = `${root}/audio-manifest.ts`;
+  const audioEntries = existsSync(safeResolve(manifestRel)) ? parseAudioManifest(readFileSync(safeResolve(manifestRel), "utf8")) : [];
+  const withAudio = new Set(audioCourseIds(audioEntries));
+  for (const id of [...withAudio].sort()) out.push({ relPath: `${root}/audio/${id}.ts`, contents: renderAudioSlice(id, audioEntries) });
+  for (const id of courseIds) {
+    out.push({ relPath: `${root}/courses/${id}.ts`, contents: renderCourseModule(root, profiles[id], `${root}/packs/${id}.json`, withAudio) });
+  }
+  out.push({ relPath: `${root}/course-loaders.ts`, contents: renderCourseLoaders(root, courseIds) });
+  out.push({ relPath: `${root}/course-bundles.ts`, contents: renderCourseBundlesStatic(root, courseIds) });
   return { files: out, profiles };
 }

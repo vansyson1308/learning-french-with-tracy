@@ -1,5 +1,5 @@
 import catalogJson from "../content/catalog.json";
-import { PACKS } from "../content/packs/index";
+import { courseBundle } from "./course-bundle";
 
 import type { Catalog, LessonPack, Pack, UnitPack } from "./types";
 
@@ -21,8 +21,9 @@ export function orderedCoursesFor(uiLanguage: string): typeof orderedCourses {
 }
 
 export function getPack(courseId: string): Pack {
-  const pack = PACKS[courseId];
-  if (!pack) throw new Error(`Unknown course: ${courseId}`);
+  // P3g: packs arrive with the course bundle (loaded by the root layout before any screen renders).
+  const pack = courseBundle(courseId)?.pack;
+  if (!pack) throw new Error(`Course not loaded: ${courseId}`);
   return pack;
 }
 

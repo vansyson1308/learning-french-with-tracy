@@ -75,6 +75,8 @@ try {
   check("onboarding hides the standalone es-en", (await byId("onboarding-course-es-en").count()) === 0);
   await byId("onboarding-course-es-vi").click();
   await byId("onboarding-start").click();
+  // P3g: the course bundle loads before onboarding finishes — wait for the Learn tab.
+  await page.locator('[data-testid^="learn-section-"]').first().waitFor();
 
   // 2. Courses screen lists es-en under "other courses".
   await page.goto(`${BASE}/courses`, { waitUntil: "networkidle" });

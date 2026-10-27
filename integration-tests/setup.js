@@ -87,3 +87,10 @@ jest.mock("expo-haptics", () => ({
   ImpactFeedbackStyle: { Light: "light", Medium: "medium" },
   NotificationFeedbackType: { Success: "success", Error: "error" },
 }));
+
+// P3g: course content is loaded on demand in the app; register every bundle up front.
+{
+  const { ALL_COURSE_BUNDLES } = require("../src/content/course-bundles");
+  const { registerCourseBundle } = require("../src/lib/course-bundle");
+  for (const bundle of ALL_COURSE_BUNDLES) registerCourseBundle(bundle);
+}

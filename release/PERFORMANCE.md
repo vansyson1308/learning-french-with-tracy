@@ -13,6 +13,16 @@
 | `bunx jest` wall time | 6.1 s (68) | 6.1–7.1 s (69) | flat |
 | Web export duration (sandbox) | — | 70 s cold / 9 s cached | — |
 
+### P3g (2026-10-27) — size after per-course bundles and the phone ABI set
+
+| Measure | Before (RC4, 3ff3b96) | After (P3g, 31f6856) | Gate |
+|---|---|---|---|
+| Web entry chunk | 7,366,281 B (single bundle) | **3,193,269 B** + one chunk per course (es-vi 1.76 MB, es-en 0.93 MB, fr-vi 0.57 MB, fr-en 0.50 MB, `-en` legacy packs 0.06–0.08 MB) | ≤ 4.5 MB (`scripts/check-web-entry.ts`, CI `export-size`) |
+| Android release APK | universal 133,664,309 B (arm64-v8a, armeabi-v7a, x86, x86_64) | **phone APK 83,997,585 B** (arm64-v8a 23.3 MB + armeabi-v7a 16.0 MB native libs; shared 44.0 MB of which audio 13.1 MB), SHA-256 `24c8b893…f836`, unsigned, `plan/scripts/build-phone-apk.sh` | < 100 MB (P3g C); v1.0: arm64 ≤ 150 MB |
+| Hermes bundle in the APK | — | `assets/index.android.bundle` 6,789,432 B (all courses compiled in; on native the course modules are evaluated on first use, not at start-up) | — |
+
+Cold start is measured by the P3h emulator suite (`am start -W`, budget ≤ 3.5 s on the API 34 emulator); no phone measurement exists.
+
 The Hermes V1 memory regression fix (Gate 0) is the one memory change
 this phase could make with certainty: the affected engine build is no
 longer shipped. Absolute memory, cold/warm start (TTID/TTFD), path
