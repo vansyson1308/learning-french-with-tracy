@@ -42,6 +42,7 @@ import {
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
 import { examTrackPaths } from "./exam-bank";
 import { compileDailyWordsArtifact, deriveSyllabus, loadSyllabus, loadTopicUnits, validateSyllabusData, validateTopicUnits } from "./syllabus";
+import { compileContextCoverageReport } from "./context-coverage";
 import { varietyErrors } from "./variety";
 import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
@@ -62,7 +63,10 @@ import {
   canonicalJson,
   compileAll,
   discoverTargets,
+  gradeTargetsFor,
   isTestOnlyTarget,
+  loadIdMaps,
+  loadLegacyMaps,
   loadPacks,
   loadRegistry,
   courseRolesFor,
@@ -803,6 +807,24 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
     }
     files.push({ relPath: `${root}/stories/${lang}-story-assets.ts`, contents: compileStoryAssetsModule(stories, path.posix.relative(`${root}/stories`, ".")) });
     files.push({ relPath: `${reportsDir}/stories-coverage.json`, contents: compileStoriesReport(analyses, stories) });
+  }
+  // QC 2026-10-28 §4: syllabus lexemes with no context (lesson, reading, clip or story), unit by unit.
+  const ctxSyllabus = lexicon ? targetSyllabus(lang, packs, lexicon) : null;
+  const ctxIds = loadIdMaps(packs)[lang];
+  if (lexicon && ctxSyllabus && ctxIds) {
+    const lookup = { ...(loadLegacyMaps(packs)[lang] ?? {}), ...ctxIds };
+    const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus: ctxSyllabus, nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
+    files.push({
+      relPath: `${reportsDir}/context-coverage.json`,
+      contents: compileContextCoverageReport({
+        syllabus: ctxSyllabus,
+        packs: mine.map((p) => p.pack),
+        gradeTargets: (e) => gradeTargetsFor(e, lookup),
+        readings,
+        listening,
+        stories: storyLexemes,
+      }),
+    });
   }
   // Phase-8 speech items; reserved items never leave the pipeline.
   const speech = loadSpeechItems(lang);

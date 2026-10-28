@@ -12,6 +12,7 @@ import { existsSync } from "fs";
 import { de as deRules } from "../../../src/lib/languages/de";
 import { readJson, safeResolve } from "../pipeline";
 
+import { germanCourseErrors, loadGermanGateData } from "./de-gates";
 import { genericPlugin } from "./generic";
 import type { ArticleRules, BuildLanguagePlugin, MorphVerb, ParadigmSpec } from "./types";
 
@@ -99,5 +100,10 @@ export const de: BuildLanguagePlugin = genericPlugin(
     paradigm: DE_PARADIGM,
     functionWords: DE_FUNCTION_WORDS,
     targetLanguageName: "German",
+    courseErrors: (pack) => {
+      const rel = "content/de/lexicon/lexemes.json";
+      const lexicon = existsSync(safeResolve(rel)) ? (readJson(rel) as { lexemes: { id: string; surface: string; legacySurfaces?: string[]; partOfSpeech: string }[] }).lexemes : [];
+      return germanCourseErrors(pack, { lexicon, ...loadGermanGateData() });
+    },
   }
 );

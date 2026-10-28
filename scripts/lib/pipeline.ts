@@ -458,6 +458,10 @@ export function validateContent(): ValidationResult {
     if (pack.testOnly !== true) {
       errors.push(...templateDefectErrors(pack, { checkWordRepeats: courseProfileFlag(pack.id, "basicPack") === true }));
     }
+    // Language gates (QC 2026-10-28); inherited basic packs are left as they are.
+    if (pack.testOnly !== true && courseProfileFlag(pack.id, "basicPack") !== true) {
+      errors.push(...(buildPlugin(pack.targetCode).courseErrors?.(pack) ?? []));
+    }
 
     const ids = new Set<string>();
     for (const section of pack.sections)
@@ -714,7 +718,7 @@ export type CoverageRow = {
  * Everything else (sentence audioTargets, wordBank/typeAnswer/fillBlank)
  * stays unmarked until deliberate eligibility metadata exists.
  */
-function gradeTargetsFor(e: AnyExercise, map: Record<string, string>): string[] | undefined {
+export function gradeTargetsFor(e: AnyExercise, map: Record<string, string>): string[] | undefined {
   if (e.type === "select") {
     // The exercise's unambiguous target surface: bundled-audio lessons key
     // it by audioTarget (Section 1); audio-less lessons key it by what the

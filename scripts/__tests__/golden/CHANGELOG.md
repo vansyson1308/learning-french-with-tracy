@@ -701,3 +701,10 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — QC 2026-10-28 §4: new context-coverage reports (fr/es/de) from scripts/lib/context-coverage.ts; no existing artifact changes
+
+- compile: new      content/reports/context-coverage.json
+- compile: new      content/reports/de/context-coverage.json
+- compile: new      content/reports/es/context-coverage.json
+- compile: new      content/reports/xx/context-coverage.json
