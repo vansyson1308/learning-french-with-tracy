@@ -695,7 +695,7 @@ Strings: 3163 · drafts applied: 3163
   - vi: muốn
 - `lexemes.114.examples.0.translations`
   - en: I would like a tea.
-  - vi: Tôi muốn một trà.
+  - vi: Tôi muốn một tách trà.
 - `lexemes.115.glosses`
   - en: to take
   - vi: lấy, đi (tàu xe)
@@ -1556,7 +1556,7 @@ Strings: 3163 · drafts applied: 3163
   - vi: Miêu tả người và vật bằng lời
 - `objectives.27.canDo`
   - en: I can describe familiar people, places and things aloud in short, mainly isolated phrases — saying what something is and one simple fact about it.
-  - vi: Tôi có thể miêu tả người, nơi chốn và đồ vật quen thuộc bằng lời trong các cụm ngắn, chủ yếu rời rạc — nói đó là gì và một sự thật đơn giản về nó.
+  - vi: Tôi có thể miêu tả người, nơi chốn và đồ vật quen thuộc bằng lời trong các cụm ngắn, chủ yếu rời rạc — nói đó là gì và một thông tin đơn giản về nó.
 - `objectives.28.title`
   - en: Writing who you are
   - vi: Viết về bản thân
@@ -3647,10 +3647,10 @@ Strings: 3163 · drafts applied: 3163
   - vi: Gọi một đồ uống và cảm ơn người phục vụ.
 - `scenarios.2.nodes.l_order.prompt`
   - en: Order a coffee — or a tea.
-  - vi: Hãy gọi một cà phê — hoặc một trà.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà.
 - `scenarios.2.nodes.l_order_b.prompt`
   - en: Order a coffee — or a tea.
-  - vi: Hãy gọi một cà phê — hoặc một trà.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà.
 - `scenarios.2.nodes.l_thanks.prompt`
   - en: Say thank you and goodbye.
   - vi: Hãy nói cảm ơn và tạm biệt.
@@ -3671,10 +3671,10 @@ Strings: 3163 · drafts applied: 3163
   - vi: Hãy nói rằng bạn muốn mua bánh mì.
 - `scenarios.3.nodes.l_more.prompt`
   - en: Ask for some water too — or say that's all.
-  - vi: Hãy hỏi thêm nước — hoặc nói thế là đủ.
+  - vi: Hãy gọi thêm nước — hoặc nói thế là đủ.
 - `scenarios.3.nodes.l_more_b.prompt`
   - en: Ask for some water too — or say that's all.
-  - vi: Hãy hỏi thêm nước — hoặc nói thế là đủ.
+  - vi: Hãy gọi thêm nước — hoặc nói thế là đủ.
 - `scenarios.4.title`
   - en: Where is the station?
   - vi: Nhà ga ở đâu?
@@ -3779,10 +3779,10 @@ Strings: 3163 · drafts applied: 3163
   - vi: Gọi một đồ uống, hỏi giá, và kết thúc lịch sự.
 - `scenarios.9.nodes.l_order.prompt`
   - en: Order a coffee — or a tea — politely.
-  - vi: Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà — một cách lịch sự.
 - `scenarios.9.nodes.l_order_b.prompt`
   - en: Order a coffee — or a tea — politely.
-  - vi: Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà — một cách lịch sự.
 - `scenarios.9.nodes.l_price.prompt`
   - en: Ask how much it is.
   - vi: Hãy hỏi giá bao nhiêu.
@@ -3809,10 +3809,10 @@ Strings: 3163 · drafts applied: 3163
   - vi: Hãy hỏi mua một bánh mì baguette — hoặc bánh mì.
 - `scenarios.10.nodes.l_more.prompt`
   - en: Say that's all — or ask for some water too.
-  - vi: Hãy nói thế là đủ — hoặc hỏi thêm nước.
+  - vi: Hãy nói thế là đủ — hoặc gọi thêm nước.
 - `scenarios.10.nodes.l_more_b.prompt`
   - en: Say that's all — or ask for some water too.
-  - vi: Hãy nói thế là đủ — hoặc hỏi thêm nước.
+  - vi: Hãy nói thế là đủ — hoặc gọi thêm nước.
 - `scenarios.10.nodes.l_thanks.prompt`
   - en: Say thank you and goodbye.
   - vi: Hãy nói cảm ơn và tạm biệt.
@@ -4132,10 +4132,10 @@ Strings: 3163 · drafts applied: 3163
   - vi: quả táo
 - `sections.0.units.0.lessons.1.exercises.6.wordBank` **re-author**
   - en: {"answer":"He is a boy","distractors":["No","an","Yes"]}
-  - vi: {"answer":"Đây là một cậu bé","distractors":["Không","cô","Có"]}
+  - vi: {"answer":"Đây là một cậu bé","distractors":["Không","cô","Có"],"alternatives":["Đây là cậu bé"]}
 - `sections.0.units.0.lessons.1.exercises.7.wordBank` **re-author**
   - en: {"answer":"She is a girl","distractors":["woman","I","boy"]}
-  - vi: {"answer":"Đây là một cô bé","distractors":["phụ nữ","Tôi","cậu"]}
+  - vi: {"answer":"Đây là một cô bé","distractors":["phụ nữ","Tôi","cậu"],"alternatives":["Đây là cô bé"]}
 - `sections.0.units.0.lessons.1.exercises.8.translation`
   - en: He is a boy.
   - vi: Đây là một cậu bé.
@@ -8767,10 +8767,10 @@ Strings: 3163 · drafts applied: 3163
   - vi: Décris-le !
 - `sections.3.units.3.description`
   - en: Describe what you see in short, simple phrases: what it is, and one fact.
-  - vi: Miêu tả những gì bạn thấy bằng cụm ngắn, đơn giản: đó là gì, và một sự thật.
+  - vi: Miêu tả những gì bạn thấy bằng cụm ngắn, đơn giản: đó là gì, và một thông tin.
 - `sections.3.units.3.guidebook`
   - en: ## « C'est… » — your description machine⏎⏎The simplest honest description is a short phrase: **C'est un chien. C'est la gare. C'est le matin.**⏎⏎- One phrase per idea. Isolated phrases are exactly what A1 speaking is.⏎- Add one fact when you can: **Le magasin est ouvert. La porte est fermée.**⏎- The picture or situation gives you the MEANING; the French comes from you.
-  - vi: ## « C'est… » — cỗ máy miêu tả của bạn⏎⏎Cách miêu tả đơn giản và trung thực nhất là một cụm ngắn: **C'est un chien. C'est la gare. C'est le matin.**⏎⏎- Mỗi ý một cụm. Các cụm rời rạc chính là cách nói ở trình độ A1.⏎- Thêm một sự thật khi có thể: **Le magasin est ouvert. La porte est fermée.**⏎- Hình ảnh hoặc tình huống cho bạn NGHĨA; tiếng Pháp đến từ bạn.
+  - vi: ## « C'est… » — cỗ máy miêu tả của bạn⏎⏎Cách miêu tả đơn giản và trung thực nhất là một cụm ngắn: **C'est un chien. C'est la gare. C'est le matin.**⏎⏎- Mỗi ý một cụm. Các cụm rời rạc chính là cách nói ở trình độ A1.⏎- Thêm một thông tin khi có thể: **Le magasin est ouvert. La porte est fermée.**⏎- Hình ảnh hoặc tình huống cho bạn NGHĨA; tiếng Pháp đến từ bạn.
 - `sections.3.units.3.words.0.native`
   - en: the dog
   - vi: con chó
