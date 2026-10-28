@@ -84,7 +84,12 @@ jobs:
       - name: Generate the native project (CNG)
         run: bunx expo prebuild --platform android --no-install --clean
       - name: Build release APK
+        timeout-minutes: 45
         working-directory: android
+        env:
+          # Maven Central read timeouts stalled the x86_64 build for 41 min (2026-10-28): bounded
+          # HTTP (connect 60 s, read 120 s) with 5 retries; a stall now fails inside the step limit.
+          GRADLE_OPTS: -Dorg.gradle.internal.http.connectionTimeout=60000 -Dorg.gradle.internal.http.socketTimeout=120000 -Dorg.gradle.internal.repository.max.retries=5 -Dorg.gradle.internal.repository.initial.backoff=2000
         run: ./gradlew --no-daemon assembleRelease
       - name: Sign with the owner-held key, verify, hash
         env:

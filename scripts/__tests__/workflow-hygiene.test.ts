@@ -65,6 +65,22 @@ describe("every hang becomes a failure", () => {
     expect(seen).toBeGreaterThanOrEqual(6);
   });
 
+  test("every Gradle build has a step timeout and bounded HTTP (read timeout + retries)", () => {
+    let seen = 0;
+    for (const [file, wf] of workflows) {
+      const wfEnv = (wf as unknown as { env?: Record<string, string> }).env ?? {};
+      for (const step of steps(wf)) {
+        if (!/gradlew/.test(step.run ?? "")) continue;
+        seen += 1;
+        expect(typeof step["timeout-minutes"], `${file}: ${step.name}`).toBe("number");
+        const opts = step.env?.GRADLE_OPTS ?? wfEnv.GRADLE_OPTS ?? "";
+        expect(opts, `${file}: ${step.name}`).toContain("org.gradle.internal.http.socketTimeout=");
+        expect(opts, `${file}: ${step.name}`).toContain("org.gradle.internal.repository.max.retries=");
+      }
+    }
+    expect(seen).toBeGreaterThanOrEqual(4);
+  });
+
   test("fetch.sh and the ETL downloader use the same curl bounds (50 kB/s floor for 120 s, 5 resuming retries)", () => {
     const sh = read("scripts/ci/fetch.sh");
     for (const flag of ["--fail", "--location", "--retry 5", "--retry-all-errors", "--connect-timeout 20", "--speed-time 120", "-C -", "while sleep 30"]) {
