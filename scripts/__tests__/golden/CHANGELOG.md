@@ -617,3 +617,16 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — P3d(de) re-authored German lexicon (894 lexemes): ETL root fixes (de-noun head gender, adjectival nouns, function homographs) + reviewed Vietnamese re-applied; German artifacts only, French unchanged
+
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-5194c2b492a7089b.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-4db6dfb5515f3f46.db

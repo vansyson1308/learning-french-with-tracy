@@ -239,11 +239,19 @@ const usable = (e: PoolEntry) =>
 // The surface's article picks the noun reading; an adjectival noun is found by
 // its definite form ("der Deutsche" → lemma Deutscher); excluded readings are
 // skipped ("ein" is the article, not the adjective "on").
+// The reading the committed lexicon reviewed wins ("früh" stays the adverb,
+// not the adjective a POS preference would pick).
 const byDefinite = new Map(pool.entries.filter((e) => e.definiteForm).map((e) => [e.definiteForm!, e]));
+const committedRel = `content/${lang}/lexicon/lexemes.json`;
+const committedPos = new Map<string, PartOfSpeech>(
+  existsSync(safeResolve(committedRel)) ? (readJson(committedRel) as { lexemes: { surface: string; partOfSpeech: PartOfSpeech }[] }).lexemes.map((l) => [l.surface, l.partOfSpeech]) : []
+);
 for (const surface of Object.keys(frozen)) {
   if (packWords.has(surface)) continue;
   const { article, rest } = plugin.splitSurfaceArticle(surface);
-  const prefs = article !== null ? ["noun", ...POS_PREFERENCE.filter((p) => p !== "noun")] : POS_PREFERENCE;
+  const reviewed = committedPos.get(surface);
+  const base = article !== null ? ["noun", ...POS_PREFERENCE.filter((p) => p !== "noun")] : POS_PREFERENCE;
+  const prefs = reviewed ? [reviewed, ...base.filter((p) => p !== reviewed)] : base;
   let entry: PoolEntry | null = null;
   for (const pos of prefs) {
     const e = byKey.get(`${rest}|${pos}`);
@@ -442,7 +450,9 @@ for (const sel of selected) {
     id,
     surface,
     lemma: sel.lookupForm,
-    lookupForm: sel.lookupForm,
+    // What the learner looks up is the surface without its article: "der Deutsche" → Deutsche
+    // (the dictionary lemma stays the strong citation form Deutscher).
+    lookupForm: e?.definiteForm && surface !== e.lemma ? plugin.splitSurfaceArticle(surface).rest : sel.lookupForm,
     partOfSpeech: pos,
     ...(gender !== undefined ? { gender } : {}),
     glosses,

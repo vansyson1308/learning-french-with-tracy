@@ -1,5 +1,5 @@
 {
-  "contentHash": "4db6dfb5515f3f46",
+  "contentHash": "5194c2b492a7089b",
   "entries": [
     {
       "id": "de:w:mann",
@@ -29,7 +29,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "people",
-      "band": "common",
+      "band": "very-common",
       "pronunciation": {
         "value": "fʁaʊ̯",
         "notation": "ipa"
@@ -84,8 +84,13 @@
       "lemma": "Apfel",
       "gloss": "the apple",
       "pos": "noun",
-      "gender": "unknown",
+      "gender": "masculine",
       "topic": "everyday",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈapfəl",
+        "notation": "ipa"
+      },
       "example": {
         "de": "Ich esse einen Apfel.",
         "en": "I eat an apple"
@@ -159,7 +164,7 @@
       "gloss": "to eat",
       "pos": "verb",
       "topic": "food",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈɛsən",
         "notation": "ipa"
@@ -448,7 +453,8 @@
         "en": "Learn these names by heart."
       },
       "confusables": [
-        "de:w:dame"
+        "de:w:dame",
+        "de:w:nase"
       ]
     },
     {
@@ -529,7 +535,10 @@
       "example": {
         "de": "Ich esse gern Käse.",
         "en": "I like to eat cheese"
-      }
+      },
+      "confusables": [
+        "de:w:nase"
+      ]
     },
     {
       "id": "de:w:obst",
@@ -540,6 +549,11 @@
       "pos": "noun",
       "gender": "neuter",
       "topic": "food",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "oːpst",
+        "notation": "ipa"
+      },
       "example": {
         "de": "Wir möchten Obst kaufen.",
         "en": "We would like to buy fruit"
@@ -552,8 +566,13 @@
       "lemma": "Saft",
       "gloss": "the juice",
       "pos": "noun",
-      "gender": "unknown",
+      "gender": "masculine",
       "topic": "food",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "zaft",
+        "notation": "ipa"
+      },
       "example": {
         "de": "Der Saft schmeckt süß.",
         "en": "The juice tastes sweet"
@@ -588,8 +607,13 @@
       "lemma": "Zucker",
       "gloss": "the sugar",
       "pos": "noun",
-      "gender": "unknown",
+      "gender": "masculine",
       "topic": "food",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈt͡sʊ.kɐ",
+        "notation": "ipa"
+      },
       "example": {
         "de": "Ich trinke Kaffee ohne Zucker.",
         "en": "I drink coffee without sugar."
@@ -784,6 +808,11 @@
       "pos": "noun",
       "gender": "neuter",
       "topic": "animals",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "kaˈniːnçən",
+        "notation": "ipa"
+      },
       "example": {
         "de": "Das Kaninchen frisst eine Karotte.",
         "en": "The rabbit is eating a carrot."
@@ -820,7 +849,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "travel",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ʃtat",
         "notation": "ipa"
@@ -1628,8 +1657,8 @@
       "surface": "ein",
       "lookupForm": "ein",
       "lemma": "ein",
-      "gloss": "on",
-      "pos": "adjective",
+      "gloss": "one",
+      "pos": "determiner",
       "topic": "everyday",
       "band": "very-common",
       "pronunciation": {
@@ -1637,8 +1666,8 @@
         "notation": "ipa"
       },
       "example": {
-        "de": "Ist der Schalter ein oder aus? (d. h., Ist der Schalter ein- oder ausgeschaltet?)",
-        "en": "Is the switch on or off? (meaning “Is the switch turned on or off?”)"
+        "de": "Ich hatte nur ein Bier bestellt.",
+        "en": "I had ordered just one beer."
       }
     },
     {
@@ -2584,7 +2613,10 @@
       "example": {
         "de": "Oh, tut mir leid.",
         "en": "Oh, I'm sorry."
-      }
+      },
+      "confusables": [
+        "de:w:kleid"
+      ]
     },
     {
       "id": "de:w:arbeiten",
@@ -3274,7 +3306,7 @@
       "gloss": "to excuse",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ɛntˈʃʊldɪɡən",
         "notation": "ipa"
@@ -3292,7 +3324,7 @@
       "gloss": "old",
       "pos": "adjective",
       "topic": "time",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "alt",
         "notation": "ipa"
@@ -3311,7 +3343,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "time",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈvɔxə",
         "notation": "ipa"
@@ -3329,7 +3361,7 @@
       "gloss": "to name",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈnɛnən",
         "notation": "ipa"
@@ -3350,7 +3382,7 @@
       "gloss": "to create, to call into being",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈʃafən",
         "notation": "ipa"
@@ -3372,7 +3404,7 @@
       "pos": "noun",
       "gender": "neuter",
       "topic": "body",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈaʊ̯ɡə",
         "notation": "ipa"
@@ -3390,7 +3422,7 @@
       "gloss": "ready for use",
       "pos": "adjective",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈfɛrtɪç",
         "notation": "ipa"
@@ -3409,7 +3441,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "time",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "miˈnuːtə",
         "notation": "ipa"
@@ -3427,7 +3459,7 @@
       "gloss": "to sit",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈzɪtsn̩",
         "notation": "ipa"
@@ -3448,7 +3480,7 @@
       "gloss": "important, relevant",
       "pos": "adjective",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈvɪçtɪç",
         "notation": "ipa"
@@ -3470,7 +3502,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "technology",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈfʁaːɡə",
         "notation": "ipa"
@@ -3489,7 +3521,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈhɪlfə",
         "notation": "ipa"
@@ -3507,7 +3539,7 @@
       "gloss": "first, at first",
       "pos": "adverb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "eːrst",
         "notation": "ipa"
@@ -3525,7 +3557,7 @@
       "gloss": "to pose, to lodge",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈʃtɛlən",
         "notation": "ipa"
@@ -3546,7 +3578,7 @@
       "gloss": "to forget",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "fɛɐ̯ˈɡɛsən",
         "notation": "ipa"
@@ -3564,7 +3596,7 @@
       "gloss": "little, few",
       "pos": "adjective",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈveːnɪç",
         "notation": "ipa"
@@ -3583,7 +3615,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "numbers",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈzaɪ̯tə",
         "notation": "ipa"
@@ -3601,7 +3633,7 @@
       "gloss": "nice",
       "pos": "adjective",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "nɛt",
         "notation": "ipa"
@@ -3623,7 +3655,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "hant",
         "notation": "ipa"
@@ -3646,7 +3678,7 @@
       "gloss": "in addition to it, in addition",
       "pos": "adverb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "daˈtsuː",
         "notation": "ipa"
@@ -3664,7 +3696,7 @@
       "gloss": "to watch, to view",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈʃaʊ̯ən",
         "notation": "ipa"
@@ -3686,7 +3718,7 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ʃat͡s",
         "notation": "ipa"
@@ -3707,7 +3739,7 @@
       "gloss": "to hope",
       "pos": "verb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈhɔfən",
         "notation": "ipa"
@@ -3725,7 +3757,7 @@
       "gloss": "to walk",
       "pos": "verb",
       "topic": "numbers",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈlaʊ̯fən",
         "notation": "ipa"
@@ -3746,7 +3778,7 @@
       "gloss": "soon",
       "pos": "adverb",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "balt",
         "notation": "ipa"
@@ -3764,7 +3796,7 @@
       "gloss": "bad, evil",
       "pos": "adjective",
       "topic": "ideas",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ʃlɛçt",
         "notation": "ipa"
@@ -3783,7 +3815,7 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "shopping",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "kɔpf",
         "notation": "ipa"
@@ -3801,7 +3833,7 @@
       "gloss": "to write, to write out",
       "pos": "verb",
       "topic": "school",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈʃraɪ̯bən",
         "notation": "ipa"
@@ -3820,7 +3852,7 @@
       "pos": "noun",
       "gender": "neuter",
       "topic": "travel",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈaʊ̯to",
         "notation": "ipa"
@@ -3842,7 +3874,7 @@
       "pos": "noun",
       "gender": "neuter",
       "topic": "everyday",
-      "band": "very-common",
+      "band": "common",
       "pronunciation": {
         "value": "ˈaltər",
         "notation": "ipa"
@@ -5433,7 +5465,7 @@
       "gloss": "to ask, to beg",
       "pos": "verb",
       "topic": "everyday",
-      "band": "common",
+      "band": "very-common",
       "pronunciation": {
         "value": "ˈbɪtn̩",
         "notation": "ipa"
@@ -6989,7 +7021,7 @@
       "gloss": "finished",
       "pos": "adverb",
       "topic": "everyday",
-      "band": "common",
+      "band": "very-common",
       "pronunciation": {
         "value": "aʊ̯f",
         "notation": "ipa"
@@ -8573,7 +8605,7 @@
       "gloss": "to be right, to be correct",
       "pos": "verb",
       "topic": "leisure",
-      "band": "common",
+      "band": "very-common",
       "pronunciation": {
         "value": "ˈʃtɪmən",
         "notation": "ipa"
@@ -9220,7 +9252,8 @@
         "en": "The shoes are made of leather."
       },
       "confusables": [
-        "de:w:schuld"
+        "de:w:schuld",
+        "de:w:schule"
       ]
     },
     {
@@ -9399,7 +9432,8 @@
         "en": "This dish is more delicious than that one."
       },
       "confusables": [
-        "de:w:gedicht"
+        "de:w:gedicht",
+        "de:w:gesicht"
       ]
     },
     {
@@ -9869,7 +9903,10 @@
       "example": {
         "de": "Sie mag Wein.",
         "en": "She likes wine."
-      }
+      },
+      "confusables": [
+        "de:w:bein"
+      ]
     },
     {
       "id": "de:w:aufgabe",
@@ -10188,7 +10225,7 @@
       "gloss": "to appear",
       "pos": "verb",
       "topic": "school",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "ɛɐ̯ˈʃaɪ̯nən",
         "notation": "ipa"
@@ -10207,7 +10244,7 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "numbers",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "bəˈfeːl",
         "notation": "ipa"
@@ -10226,7 +10263,7 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "places",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "tʊʁm",
         "notation": "ipa"
@@ -10247,7 +10284,7 @@
       "gloss": "to burn",
       "pos": "verb",
       "topic": "numbers",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "ˈbʁɛnən",
         "notation": "ipa"
@@ -10266,7 +10303,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "ideas",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "taːt",
         "notation": "ipa"
@@ -10284,7 +10321,7 @@
       "gloss": "to knock, to rap",
       "pos": "verb",
       "topic": "body",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "ˈklɔpfən",
         "notation": "ipa"
@@ -10303,7 +10340,7 @@
       "pos": "noun",
       "gender": "neuter",
       "topic": "places",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "zɪsˈteːm",
         "notation": "ipa"
@@ -10322,7 +10359,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "leisure",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "ˈʁoːzə",
         "notation": "ipa"
@@ -10343,7 +10380,7 @@
       "gloss": "absolute",
       "pos": "adjective",
       "topic": "ideas",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "ˈʊnbəˌdɪŋt",
         "notation": "ipa"
@@ -10362,7 +10399,7 @@
       "pos": "noun",
       "gender": "neuter",
       "topic": "time",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "ˈvɔxənˌɛndə",
         "notation": "ipa"
@@ -10381,7 +10418,7 @@
       "pos": "noun",
       "gender": "feminine",
       "topic": "places",
-      "band": "common",
+      "band": "less-common",
       "pronunciation": {
         "value": "ˈɪnzəl",
         "notation": "ipa"
@@ -10540,7 +10577,10 @@
       "example": {
         "de": "Morgenstern",
         "en": "morning star"
-      }
+      },
+      "confusables": [
+        "de:w:stein"
+      ]
     },
     {
       "id": "de:w:hut",
@@ -10660,12 +10700,12 @@
     },
     {
       "id": "de:w:taxi",
-      "surface": "der Taxi",
+      "surface": "das Taxi",
       "lookupForm": "Taxi",
       "lemma": "Taxi",
       "gloss": "the taxi, cab",
       "pos": "noun",
-      "gender": "masculine",
+      "gender": "neuter",
       "topic": "travel",
       "band": "less-common",
       "pronunciation": {
@@ -11629,8 +11669,8 @@
     },
     {
       "id": "de:w:deutscher",
-      "surface": "der Deutscher",
-      "lookupForm": "Deutscher",
+      "surface": "der Deutsche",
+      "lookupForm": "Deutsche",
       "lemma": "Deutscher",
       "gloss": "German",
       "pos": "noun",
@@ -11862,6 +11902,7 @@
         "en": "What does that sign say over there?"
       },
       "confusables": [
+        "de:w:schiff",
         "de:w:schuld"
       ]
     },
@@ -11922,7 +11963,8 @@
         "en": "Many students bought the book."
       },
       "confusables": [
-        "de:w:schuld"
+        "de:w:schuld",
+        "de:w:schule"
       ]
     },
     {
@@ -12448,7 +12490,7 @@
       "pos": "noun",
       "gender": "masculine",
       "topic": "travel",
-      "band": "less-common",
+      "band": "very-common",
       "pronunciation": {
         "value": "veːk",
         "notation": "ipa"
@@ -12734,7 +12776,10 @@
       "example": {
         "de": "Mein Bauch tut mir so weh!",
         "en": "My belly hurts so bad!"
-      }
+      },
+      "confusables": [
+        "de:w:buch"
+      ]
     },
     {
       "id": "de:w:jacke",
@@ -13271,7 +13316,10 @@
       "example": {
         "de": "Schau mal, ich habe einen Stock gefunden, der wie ein Schwert aussieht.",
         "en": "Check it out, I found a stick that looks like a sword."
-      }
+      },
+      "confusables": [
+        "de:w:stuck"
+      ]
     },
     {
       "id": "de:w:schloss",
@@ -13354,7 +13402,7 @@
       "lemma": "Virus",
       "gloss": "the virus",
       "pos": "noun",
-      "gender": "both",
+      "gender": "neuter",
       "topic": "numbers",
       "band": "less-common",
       "pronunciation": {
@@ -13711,7 +13759,10 @@
       "example": {
         "de": "Der Schütze trifft das Ziel.",
         "en": "The marksman hits the target."
-      }
+      },
+      "confusables": [
+        "de:w:schule"
+      ]
     },
     {
       "id": "de:w:aufnahme",
@@ -15022,7 +15073,8 @@
         "en": "She wrote a lot of poems."
       },
       "confusables": [
-        "de:w:gericht"
+        "de:w:gericht",
+        "de:w:gesicht"
       ]
     },
     {
@@ -15247,6 +15299,1781 @@
         "de": "Die Verbrecherbande plante einen Einbruch.",
         "en": "The gang was planning a robbery."
       }
+    },
+    {
+      "id": "de:w:du",
+      "surface": "du",
+      "lookupForm": "du",
+      "lemma": "du",
+      "gloss": "you",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "duː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich vermisse dich.",
+        "en": "I miss you."
+      }
+    },
+    {
+      "id": "de:w:wir",
+      "surface": "wir",
+      "lookupForm": "wir",
+      "lemma": "wir",
+      "gloss": "we",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "viːɐ̯",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Lass uns etwas versuchen!",
+        "en": "Let's try something."
+      }
+    },
+    {
+      "id": "de:w:sie",
+      "surface": "sie",
+      "lookupForm": "sie",
+      "lemma": "sie",
+      "gloss": "she",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ziː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ist sie noch krank?",
+        "en": "Is she still sick?"
+      }
+    },
+    {
+      "id": "de:w:der",
+      "surface": "der",
+      "lookupForm": "der",
+      "lemma": "der",
+      "gloss": "nominative masculine singular definite article, the",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "deːr",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Der Mann ist groß.",
+        "en": "The man is tall."
+      }
+    },
+    {
+      "id": "de:w:das",
+      "surface": "das",
+      "lookupForm": "das",
+      "lemma": "das",
+      "gloss": "who, that",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "das",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich kenne ein Mädchen, das das kann.",
+        "en": "I know a girl who can do that."
+      }
+    },
+    {
+      "id": "de:w:er",
+      "surface": "er",
+      "lookupForm": "er",
+      "lemma": "er",
+      "gloss": "he",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "eːr",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wo ist Klaus? Wo ist er?",
+        "en": "Where is Klaus? Where is he?"
+      }
+    },
+    {
+      "id": "de:w:und",
+      "surface": "und",
+      "lookupForm": "und",
+      "lemma": "und",
+      "gloss": "and",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ʊnt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Kaffee und Kuchen",
+        "en": "coffee and cake"
+      }
+    },
+    {
+      "id": "de:w:sie-pronoun",
+      "surface": "Sie",
+      "lookupForm": "Sie",
+      "lemma": "Sie",
+      "gloss": "you",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ziː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Was möchten Sie, Frau Wagner?",
+        "en": "What would you like to have, Mrs. Wagner?"
+      }
+    },
+    {
+      "id": "de:w:in",
+      "surface": "in",
+      "lookupForm": "in",
+      "lemma": "in",
+      "gloss": "in, inside",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ʔɪn",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Es ist im (in dem) Haus.",
+        "en": "It is in the house."
+      }
+    },
+    {
+      "id": "de:w:es",
+      "surface": "es",
+      "lookupForm": "es",
+      "lemma": "es",
+      "gloss": "it, they",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ɛs",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wo ist das Buch? Es liegt auf dem Tisch.",
+        "en": "Where's the book? It’s on the table."
+      }
+    },
+    {
+      "id": "de:w:dass",
+      "surface": "dass",
+      "lookupForm": "dass",
+      "lemma": "dass",
+      "gloss": "that",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "das",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich habe gehört, dass du krank bist.",
+        "en": "I was told that you are sick."
+      }
+    },
+    {
+      "id": "de:w:was",
+      "surface": "was",
+      "lookupForm": "was",
+      "lemma": "was",
+      "gloss": "what",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "vas",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Was machst du heute?",
+        "en": "What are you doing today?"
+      }
+    },
+    {
+      "id": "de:w:mit",
+      "surface": "mit",
+      "lookupForm": "mit",
+      "lemma": "mit",
+      "gloss": "with",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "mɪt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich spiele mit meinen Freunden.",
+        "en": "I'm playing with my friends."
+      }
+    },
+    {
+      "id": "de:w:von",
+      "surface": "von",
+      "lookupForm": "von",
+      "lemma": "von",
+      "gloss": "from",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "fɔn",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich fahre von Köln nach Hamburg.",
+        "en": "I’m travelling from Cologne to Hamburg."
+      }
+    },
+    {
+      "id": "de:w:zu",
+      "surface": "zu",
+      "lookupForm": "zu",
+      "lemma": "zu",
+      "gloss": "to, towards",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "t͡suː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "zum Bahnhof",
+        "en": "to the train station"
+      }
+    },
+    {
+      "id": "de:w:einer",
+      "surface": "einer",
+      "lookupForm": "einer",
+      "lemma": "einer",
+      "gloss": "one",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "aɪ̯nar",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Unschuld ist eine schöne Sache.",
+        "en": "Innocence is a beautiful thing."
+      },
+      "confusables": [
+        "de:w:deiner",
+        "de:w:keiner",
+        "de:w:meiner"
+      ]
+    },
+    {
+      "id": "de:w:wenn",
+      "surface": "wenn",
+      "lookupForm": "wenn",
+      "lemma": "wenn",
+      "gloss": "when, whenever",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "vɛn",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Sag bitte Bescheid, wenn du fertig bist!",
+        "en": "Tell me when you're done!"
+      }
+    },
+    {
+      "id": "de:w:nein",
+      "surface": "nein",
+      "lookupForm": "nein",
+      "lemma": "nein",
+      "gloss": "no",
+      "pos": "interjection",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "naɪ̯n",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Hast du morgen Abend Zeit? — Nein, leider nicht.",
+        "en": "“Do you have time tomorrow night?” — “No, unfortunately not.”"
+      }
+    },
+    {
+      "id": "de:w:wie",
+      "surface": "wie",
+      "lookupForm": "wie",
+      "lemma": "wie",
+      "gloss": "like",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "viː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Freunde sind wie Sterne in der Nacht.",
+        "en": "Friends are like stars in the night."
+      }
+    },
+    {
+      "id": "de:w:dieser",
+      "surface": "dieser",
+      "lookupForm": "dieser",
+      "lemma": "dieser",
+      "gloss": "this one, this",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈdiːzər",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wer kennt dieses Problem nicht?!",
+        "en": "Who doesn't know this problem?!"
+      }
+    },
+    {
+      "id": "de:w:sich",
+      "surface": "sich",
+      "lookupForm": "sich",
+      "lemma": "sich",
+      "gloss": "Reciprocal pronoun of the third person plural: each other",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "zɪç",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Es war eine schlechte Idee, sich abzumelden.",
+        "en": "I shouldn't have logged off."
+      }
+    },
+    {
+      "id": "de:w:fur",
+      "surface": "für",
+      "lookupForm": "für",
+      "lemma": "für",
+      "gloss": "for",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "fyːɐ̯",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das Geschenk ist für dich.",
+        "en": "The present is for you."
+      }
+    },
+    {
+      "id": "de:w:an",
+      "surface": "an",
+      "lookupForm": "an",
+      "lemma": "an",
+      "gloss": "on, upon",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "an",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das Bild hängt an der Wand.",
+        "en": "The picture hangs on the wall."
+      }
+    },
+    {
+      "id": "de:w:vor",
+      "surface": "vor",
+      "lookupForm": "vor",
+      "lemma": "vor",
+      "gloss": "in front of, ahead of",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "foːr",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "vor drei Tagen",
+        "en": "three days ago"
+      }
+    },
+    {
+      "id": "de:w:als",
+      "surface": "als",
+      "lookupForm": "als",
+      "lemma": "als",
+      "gloss": "at",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "als",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Als er ankam, öffnete sie die Tür.",
+        "en": "As he arrived, she opened the door."
+      }
+    },
+    {
+      "id": "de:w:mein",
+      "surface": "mein",
+      "lookupForm": "mein",
+      "lemma": "mein",
+      "gloss": "my",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "maɪ̯n",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das war mein Satz!",
+        "en": "That's MY line!"
+      },
+      "confusables": [
+        "de:w:dein"
+      ]
+    },
+    {
+      "id": "de:w:all",
+      "surface": "all",
+      "lookupForm": "all",
+      "lemma": "all",
+      "gloss": "all",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "al",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Alle Menschen sind gleich.",
+        "en": "All people are equal."
+      }
+    },
+    {
+      "id": "de:w:ihr",
+      "surface": "ihr",
+      "lookupForm": "ihr",
+      "lemma": "ihr",
+      "gloss": "her",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "example": {
+        "de": "Laura hat mir ihr neues Auto gezeigt.",
+        "en": "Laura showed me her new car."
+      }
+    },
+    {
+      "id": "de:w:kein",
+      "surface": "kein",
+      "lookupForm": "kein",
+      "lemma": "kein",
+      "gloss": "no",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "kaɪ̯n",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das ist kein Bett.",
+        "en": "That is not a bed."
+      },
+      "confusables": [
+        "de:w:keiner"
+      ]
+    },
+    {
+      "id": "de:w:bei",
+      "surface": "bei",
+      "lookupForm": "bei",
+      "lemma": "bei",
+      "gloss": "by, near",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "baɪ̯",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "die Bank bei der Kirche",
+        "en": "the bench/bank by the church"
+      }
+    },
+    {
+      "id": "de:w:dein",
+      "surface": "dein",
+      "lookupForm": "dein",
+      "lemma": "dein",
+      "gloss": "thy, your",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "daɪ̯n",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Deine Brille ist auf den Boden gefallen.",
+        "en": "Your glasses fell on the floor."
+      },
+      "confusables": [
+        "de:w:mein"
+      ]
+    },
+    {
+      "id": "de:w:nichts",
+      "surface": "nichts",
+      "lookupForm": "nichts",
+      "lemma": "nichts",
+      "gloss": "nothing",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "nɪx(t)s",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich weiß, dass ich nichts weiß.",
+        "en": "I know that I know nothing."
+      }
+    },
+    {
+      "id": "de:w:nach",
+      "surface": "nach",
+      "lookupForm": "nach",
+      "lemma": "nach",
+      "gloss": "after, past",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "naːx",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Viertel nach sechs",
+        "en": "a quarter past six"
+      }
+    },
+    {
+      "id": "de:w:oh",
+      "surface": "oh",
+      "lookupForm": "oh",
+      "lemma": "oh",
+      "gloss": "oh",
+      "pos": "interjection",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "oː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Oh, tut mir leid.",
+        "en": "Oh, I'm sorry."
+      }
+    },
+    {
+      "id": "de:w:keiner",
+      "surface": "keiner",
+      "lookupForm": "keiner",
+      "lemma": "keiner",
+      "gloss": "none",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈkaɪ̯nɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Keiner fühlte sich verantwortlich.",
+        "en": "Nobody felt responsible."
+      },
+      "confusables": [
+        "de:w:einer",
+        "de:w:kein",
+        "de:w:meiner"
+      ]
+    },
+    {
+      "id": "de:w:wer",
+      "surface": "wer",
+      "lookupForm": "wer",
+      "lemma": "wer",
+      "gloss": "who",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "veːr",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wer hat das gesagt?",
+        "en": "Who said that?"
+      }
+    },
+    {
+      "id": "de:w:um",
+      "surface": "um",
+      "lookupForm": "um",
+      "lemma": "um",
+      "gloss": "about",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ʊm",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Es geht um den Kuchen.",
+        "en": "It's about the pie."
+      }
+    },
+    {
+      "id": "de:w:etwas",
+      "surface": "etwas",
+      "lookupForm": "etwas",
+      "lemma": "etwas",
+      "gloss": "some, a bit of",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈɛtvas",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich möchte etwas Wasser.",
+        "en": "I would like some water."
+      }
+    },
+    {
+      "id": "de:w:ihr-determiner",
+      "surface": "Ihr",
+      "lookupForm": "Ihr",
+      "lemma": "Ihr",
+      "gloss": "your",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ʔiːɐ̯",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wo ist Ihr Wagen, Frau Wagner?",
+        "en": "Where is your car, Mrs. Wagner?"
+      }
+    },
+    {
+      "id": "de:w:unser",
+      "surface": "unser",
+      "lookupForm": "unser",
+      "lemma": "unser",
+      "gloss": "our",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈʔʊnzɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das ist unsere Schule.",
+        "en": "That is our school."
+      }
+    },
+    {
+      "id": "de:w:aus",
+      "surface": "aus",
+      "lookupForm": "aus",
+      "lemma": "aus",
+      "gloss": "out of",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "aʊ̯s",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Hole das Besteck aus der Schublade!",
+        "en": "Get the cutlery from the drawer!"
+      }
+    },
+    {
+      "id": "de:w:alles",
+      "surface": "alles",
+      "lookupForm": "alles",
+      "lemma": "alles",
+      "gloss": "everything",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈaləs",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Alles ist gut.",
+        "en": "All is well."
+      }
+    },
+    {
+      "id": "de:w:man",
+      "surface": "man",
+      "lookupForm": "man",
+      "lemma": "man",
+      "gloss": "one, you",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "man",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Man kann nicht immer kriegen, was man will.",
+        "en": "You can’t always get what you want."
+      }
+    },
+    {
+      "id": "de:w:weil",
+      "surface": "weil",
+      "lookupForm": "weil",
+      "lemma": "weil",
+      "gloss": "because, given that",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "vaɪ̯l",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich kann nicht kommen, weil ich krank bin.",
+        "en": "I can't come because I'm sick."
+      }
+    },
+    {
+      "id": "de:w:uber",
+      "surface": "über",
+      "lookupForm": "über",
+      "lemma": "über",
+      "gloss": "above, over",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈyːbɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Über dem Wald ist der Himmel blau.",
+        "en": "Over the forest, the sky is blue."
+      }
+    },
+    {
+      "id": "de:w:jemand",
+      "surface": "jemand",
+      "lookupForm": "jemand",
+      "lemma": "jemand",
+      "gloss": "someone, somebody",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈjeːmant",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Jemand betrat den Raum.",
+        "en": "Someone entered the room."
+      }
+    },
+    {
+      "id": "de:w:also",
+      "surface": "also",
+      "lookupForm": "also",
+      "lemma": "also",
+      "gloss": "alright",
+      "pos": "interjection",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈʔalzoː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich würde gerne spazieren. Also, los geht's!",
+        "en": "I would like to take a walk. Alright, let's go!"
+      }
+    },
+    {
+      "id": "de:w:meiner",
+      "surface": "meiner",
+      "lookupForm": "meiner",
+      "lemma": "meiner",
+      "gloss": "mine",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈmaɪ̯nɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das war nicht meine Absicht.",
+        "en": "That wasn't my intention."
+      },
+      "confusables": [
+        "de:w:deiner",
+        "de:w:einer",
+        "de:w:keiner"
+      ]
+    },
+    {
+      "id": "de:w:hallo-interjection",
+      "surface": "hallo",
+      "lookupForm": "hallo",
+      "lemma": "hallo",
+      "gloss": "a general greeting used when meeting someone",
+      "pos": "interjection",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈhalo",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Hallo, Sie haben Ihr Gepäck vergessen!",
+        "en": "Hello, you've left your luggage behind!"
+      }
+    },
+    {
+      "id": "de:w:zwei",
+      "surface": "zwei",
+      "lookupForm": "zwei",
+      "lemma": "zwei",
+      "gloss": "two",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "t͡svaɪ̯",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Im Winter schlafe ich mit zwei Decken.",
+        "en": "During winter I sleep with two blankets."
+      }
+    },
+    {
+      "id": "de:w:jeder",
+      "surface": "jeder",
+      "lookupForm": "jeder",
+      "lemma": "jeder",
+      "gloss": "each, every",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈjeːdɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "jedes Mal",
+        "en": "every time"
+      }
+    },
+    {
+      "id": "de:w:deiner",
+      "surface": "deiner",
+      "lookupForm": "deiner",
+      "lemma": "deiner",
+      "gloss": "yours, thine",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈdaɪ̯nɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Nimm deine Sachen und geh.",
+        "en": "Pick up your things and go away."
+      },
+      "confusables": [
+        "de:w:einer",
+        "de:w:meiner"
+      ]
+    },
+    {
+      "id": "de:w:oder",
+      "surface": "oder",
+      "lookupForm": "oder",
+      "lemma": "oder",
+      "gloss": "or",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈoːdər",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Kaffee oder Tee?",
+        "en": "Coffee or tea?"
+      }
+    },
+    {
+      "id": "de:w:na",
+      "surface": "na",
+      "lookupForm": "na",
+      "lemma": "na",
+      "gloss": "well!, so!",
+      "pos": "interjection",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "na(ː)",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Na, dann fangen wir mal an!",
+        "en": "So, let’s get started!"
+      }
+    },
+    {
+      "id": "de:w:bis",
+      "surface": "bis",
+      "lookupForm": "bis",
+      "lemma": "bis",
+      "gloss": "until, to",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "bɪs",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Meine Tochter ist bis zwei Uhr in der Schule.",
+        "en": "My daughter is at school until two o'clock."
+      }
+    },
+    {
+      "id": "de:w:ach",
+      "surface": "ach",
+      "lookupForm": "ach",
+      "lemma": "ach",
+      "gloss": "oh, alas",
+      "pos": "interjection",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ax",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ach, du warst beim Friseur.",
+        "en": "Oh, you've been to the barbershop."
+      }
+    },
+    {
+      "id": "de:w:niemand",
+      "surface": "niemand",
+      "lookupForm": "niemand",
+      "lemma": "niemand",
+      "gloss": "nobody, no one",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈniːmant",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Es ist gar niemand da.",
+        "en": "There's no one at all."
+      }
+    },
+    {
+      "id": "de:w:euer",
+      "surface": "euer",
+      "lookupForm": "euer",
+      "lemma": "euer",
+      "gloss": "your",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈɔʏ̯ɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Eure Zeit ist um.",
+        "en": "Your time is up."
+      }
+    },
+    {
+      "id": "de:w:wegen",
+      "surface": "wegen",
+      "lookupForm": "wegen",
+      "lemma": "wegen",
+      "gloss": "for, because of",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈveːɡən",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wegen des schlechten Wetters werden wir zu Hause bleiben.",
+        "en": "Because of the bad weather, we will stay at home."
+      },
+      "confusables": [
+        "de:w:gegen"
+      ]
+    },
+    {
+      "id": "de:w:ob",
+      "surface": "ob",
+      "lookupForm": "ob",
+      "lemma": "ob",
+      "gloss": "Introduces an indirect question, a doubt. if",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ɔp",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich weiß nicht, ob sie krank ist.",
+        "en": "I don't know if she's sick"
+      }
+    },
+    {
+      "id": "de:w:drei",
+      "surface": "drei",
+      "lookupForm": "drei",
+      "lemma": "drei",
+      "gloss": "three",
+      "pos": "determiner",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "dʁaɪ̯",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Meine Tante hat drei Kinder.",
+        "en": "My aunt has three children."
+      }
+    },
+    {
+      "id": "de:w:unter",
+      "surface": "unter",
+      "lookupForm": "unter",
+      "lemma": "unter",
+      "gloss": "under",
+      "pos": "preposition",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈʊntɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "unter Druck",
+        "en": "under pressure"
+      }
+    },
+    {
+      "id": "de:w:beide",
+      "surface": "beide",
+      "lookupForm": "beide",
+      "lemma": "beide",
+      "gloss": "both",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈbaɪ̯də",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wir sind beide aus Tampa.",
+        "en": "Both of us are from Tampa."
+      }
+    },
+    {
+      "id": "de:w:bitte-interjection",
+      "surface": "bitte",
+      "lookupForm": "bitte",
+      "lemma": "bitte",
+      "gloss": "you're welcome",
+      "pos": "interjection",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈbɪtə",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wo sind bitte die Eier?",
+        "en": "Where are the eggs, please?"
+      }
+    },
+    {
+      "id": "de:w:gegen",
+      "surface": "gegen",
+      "lookupForm": "gegen",
+      "lemma": "gegen",
+      "gloss": "against",
+      "pos": "preposition",
+      "topic": "body",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈɡe.ɡən",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wir spielen heute gegen Berlin.",
+        "en": "We are playing against Berlin today."
+      },
+      "confusables": [
+        "de:w:wegen"
+      ]
+    },
+    {
+      "id": "de:w:ihn",
+      "surface": "ihn",
+      "lookupForm": "ihn",
+      "lemma": "ihn",
+      "gloss": "dative of sie",
+      "pos": "pronoun",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "iːn",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich sehe ihn jeden Tag.",
+        "en": "I see him every day."
+      }
+    },
+    {
+      "id": "de:w:herr",
+      "surface": "der Herr",
+      "lookupForm": "Herr",
+      "lemma": "Herr",
+      "gloss": "the man, gentleman",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "people",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "hɛr",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "ein älterer Herr",
+        "en": "an older gentleman"
+      }
+    },
+    {
+      "id": "de:w:baby",
+      "surface": "das Baby",
+      "lookupForm": "Baby",
+      "lemma": "Baby",
+      "gloss": "the baby",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "people",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈbeːbi",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Er schläft wie ein Baby.",
+        "en": "He's sleeping like a baby."
+      }
+    },
+    {
+      "id": "de:w:lernen",
+      "surface": "lernen",
+      "lookupForm": "lernen",
+      "lemma": "lernen",
+      "gloss": "to learn, to acquire knowledge",
+      "pos": "verb",
+      "topic": "school",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈlɛrnən",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich lerne noch.",
+        "en": "I’m still learning."
+      }
+    },
+    {
+      "id": "de:w:stunde",
+      "surface": "die Stunde",
+      "lookupForm": "Stunde",
+      "lemma": "Stunde",
+      "gloss": "the hour",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "time",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈʃtʊndə",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Der Film dauert drei Stunden.",
+        "en": "The movie lasts three hours."
+      }
+    },
+    {
+      "id": "de:w:art",
+      "surface": "die Art",
+      "lookupForm": "Art",
+      "lemma": "Art",
+      "gloss": "the kind, sort",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "nature",
+      "band": "common",
+      "pronunciation": {
+        "value": "aːrt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das ist nicht seine Art.",
+        "en": "That's not his way [of doing things]."
+      }
+    },
+    {
+      "id": "de:w:stark",
+      "surface": "stark",
+      "lookupForm": "stark",
+      "lemma": "stark",
+      "gloss": "strong",
+      "pos": "adjective",
+      "topic": "school",
+      "band": "common",
+      "pronunciation": {
+        "value": "ʃtark",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Er ist sehr stark.",
+        "en": "He is very strong."
+      }
+    },
+    {
+      "id": "de:w:ort",
+      "surface": "der Ort",
+      "lookupForm": "Ort",
+      "lemma": "Ort",
+      "gloss": "the place, location",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "shopping",
+      "band": "common",
+      "pronunciation": {
+        "value": "ɔʁt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "vor Ort",
+        "en": "on site"
+      }
+    },
+    {
+      "id": "de:w:gesicht",
+      "surface": "das Gesicht",
+      "lookupForm": "Gesicht",
+      "lemma": "Gesicht",
+      "gloss": "the face",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "body",
+      "band": "common",
+      "pronunciation": {
+        "value": "ɡəˈzɪçt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "mit einem Lächeln im Gesicht",
+        "en": "with a smile on his/her face"
+      },
+      "confusables": [
+        "de:w:gedicht",
+        "de:w:gericht"
+      ]
+    },
+    {
+      "id": "de:w:nummer",
+      "surface": "die Nummer",
+      "lookupForm": "Nummer",
+      "lemma": "Nummer",
+      "gloss": "the number",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈnʊmɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wie ist deine Nummer?",
+        "en": "What is your number?"
+      }
+    },
+    {
+      "id": "de:w:stuck",
+      "surface": "das Stück",
+      "lookupForm": "Stück",
+      "lemma": "Stück",
+      "gloss": "the one, item",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "ideas",
+      "band": "common",
+      "pronunciation": {
+        "value": "ʃtʏk",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich brauche noch Glühbirnen. Geben Sie mir bitte drei Stück!",
+        "en": "I also need light bulbs. Give me three, please!"
+      },
+      "confusables": [
+        "de:w:stock"
+      ]
+    },
+    {
+      "id": "de:w:vorstellen",
+      "surface": "vorstellen",
+      "lookupForm": "vorstellen",
+      "lemma": "vorstellen",
+      "gloss": "to introduce",
+      "pos": "verb",
+      "topic": "time",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈfoːɐ̯ʃtɛln̩",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich kann's mir nicht vorstellen!",
+        "en": "I can't imagine this!"
+      }
+    },
+    {
+      "id": "de:w:schule",
+      "surface": "die Schule",
+      "lookupForm": "Schule",
+      "lemma": "Schule",
+      "gloss": "the school",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "places",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈʃuːlə",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ab Morgen haben wir wieder Schule.",
+        "en": "Starting tomorrow/from tomorrow onwards we will have school again."
+      },
+      "confusables": [
+        "de:w:schuh",
+        "de:w:schuler",
+        "de:w:schutze"
+      ]
+    },
+    {
+      "id": "de:w:bein",
+      "surface": "das Bein",
+      "lookupForm": "Bein",
+      "lemma": "Bein",
+      "gloss": "the leg of a person, animal",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "nature",
+      "band": "common",
+      "pronunciation": {
+        "value": "baɪ̯n",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Er wurde am linken Bein operiert.",
+        "en": "He had an operation on his left leg."
+      },
+      "confusables": [
+        "de:w:wein"
+      ]
+    },
+    {
+      "id": "de:w:buch",
+      "surface": "das Buch",
+      "lookupForm": "Buch",
+      "lemma": "Buch",
+      "gloss": "the book",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "shopping",
+      "band": "common",
+      "pronunciation": {
+        "value": "buːx",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Nimm ein Buch und lies es!",
+        "en": "Take a book and read it."
+      },
+      "confusables": [
+        "de:w:bauch"
+      ]
+    },
+    {
+      "id": "de:w:platz",
+      "surface": "der Platz",
+      "lookupForm": "Platz",
+      "lemma": "Platz",
+      "gloss": "the square, plaza",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "travel",
+      "band": "common",
+      "pronunciation": {
+        "value": "plat͡s",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Marktplatz",
+        "en": "market square"
+      }
+    },
+    {
+      "id": "de:w:boss",
+      "surface": "der Boss",
+      "lookupForm": "Boss",
+      "lemma": "Boss",
+      "gloss": "the boss",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "leisure",
+      "band": "common",
+      "pronunciation": {
+        "value": "bɔs",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Hast du den neuen Boss getroffen?",
+        "en": "Have you met the new boss?"
+      }
+    },
+    {
+      "id": "de:w:schiff",
+      "surface": "das Schiff",
+      "lookupForm": "Schiff",
+      "lemma": "Schiff",
+      "gloss": "the ship",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "travel",
+      "band": "common",
+      "pronunciation": {
+        "value": "ʃɪf",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Die Schiffe erreichten den Hafen.",
+        "en": "The ships reached port."
+      },
+      "confusables": [
+        "de:w:schild"
+      ]
+    },
+    {
+      "id": "de:w:seele",
+      "surface": "die Seele",
+      "lookupForm": "Seele",
+      "lemma": "Seele",
+      "gloss": "the soul",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "food",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈzeːlə",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Keine lebende Seele war da.",
+        "en": "There was not a bloody soul."
+      }
+    },
+    {
+      "id": "de:w:kleid",
+      "surface": "das Kleid",
+      "lookupForm": "Kleid",
+      "lemma": "Kleid",
+      "gloss": "the dress, gown",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "clothing",
+      "band": "common",
+      "pronunciation": {
+        "value": "klaɪ̯t",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das Kleid ist rot.",
+        "en": "The dress is red."
+      },
+      "confusables": [
+        "de:w:leid"
+      ]
+    },
+    {
+      "id": "de:w:anziehen",
+      "surface": "anziehen",
+      "lookupForm": "anziehen",
+      "lemma": "anziehen",
+      "gloss": "to get dressed",
+      "pos": "verb",
+      "topic": "clothing",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈantsiːən",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich ziehe mich an.",
+        "en": "I’m getting dressed."
+      }
+    },
+    {
+      "id": "de:w:volk",
+      "surface": "das Volk",
+      "lookupForm": "Volk",
+      "lemma": "Volk",
+      "gloss": "the people, nation",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "nature",
+      "band": "common",
+      "pronunciation": {
+        "value": "fɔlk",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Die Inka waren ein religiöses Volk.",
+        "en": "The Inca were religious people."
+      }
+    },
+    {
+      "id": "de:w:kirche",
+      "surface": "die Kirche",
+      "lookupForm": "Kirche",
+      "lemma": "Kirche",
+      "gloss": "the church",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "places",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈkɪʁçə",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wir gehen zu der Kirche, weil es heute Sonntag ist.",
+        "en": "We're going to church, because today is Sunday."
+      }
+    },
+    {
+      "id": "de:w:rot",
+      "surface": "rot",
+      "lookupForm": "rot",
+      "lemma": "rot",
+      "gloss": "red",
+      "pos": "adjective",
+      "topic": "colors",
+      "band": "common",
+      "pronunciation": {
+        "value": "roːt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Dieser Apfel ist sehr rot.",
+        "en": "This apple is very red."
+      }
+    },
+    {
+      "id": "de:w:unschuldig",
+      "surface": "unschuldig",
+      "lookupForm": "unschuldig",
+      "lemma": "unschuldig",
+      "gloss": "innocent",
+      "pos": "adjective",
+      "topic": "ideas",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈʊnʃʊldɪç",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Er muss unschuldig sein.",
+        "en": "He must be innocent."
+      }
+    },
+    {
+      "id": "de:w:nase",
+      "surface": "die Nase",
+      "lookupForm": "Nase",
+      "lemma": "Nase",
+      "gloss": "the nose",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "body",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈnaːzə",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Deine Nase läuft.",
+        "en": "Your nose is running."
+      },
+      "confusables": [
+        "de:w:kase",
+        "de:w:name"
+      ]
+    },
+    {
+      "id": "de:w:armee",
+      "surface": "die Armee",
+      "lookupForm": "Armee",
+      "lemma": "Armee",
+      "gloss": "the army",
+      "pos": "noun",
+      "gender": "feminine",
+      "topic": "ideas",
+      "band": "common",
+      "pronunciation": {
+        "value": "arˈmeː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Mein Bruder ist in der Armee.",
+        "en": "My brother is in the army."
+      }
+    },
+    {
+      "id": "de:w:lied",
+      "surface": "das Lied",
+      "lookupForm": "Lied",
+      "lemma": "Lied",
+      "gloss": "the song",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "leisure",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈliːt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Er hat ein Lied gesungen.",
+        "en": "He sang a song."
+      }
+    },
+    {
+      "id": "de:w:stein",
+      "surface": "der Stein",
+      "lookupForm": "Stein",
+      "lemma": "Stein",
+      "gloss": "the stone, rock",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "leisure",
+      "band": "common",
+      "pronunciation": {
+        "value": "ʃtaɪn",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Sie las einen Stein auf.",
+        "en": "She picked up a stone."
+      },
+      "confusables": [
+        "de:w:stern"
+      ]
     }
   ]
 }
