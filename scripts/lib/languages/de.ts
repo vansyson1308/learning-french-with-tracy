@@ -9,7 +9,7 @@
 
 import { existsSync } from "fs";
 
-import { de as deRules } from "../../../src/lib/languages/de";
+import { de as deRules, germanNumber } from "../../../src/lib/languages/de";
 import { readJson, safeResolve } from "../pipeline";
 
 import { germanCourseErrors, loadGermanGateData, scenarioRegisterErrors } from "./de-gates";
@@ -99,6 +99,8 @@ export const de: BuildLanguagePlugin = genericPlugin(
     normalizeForAsr: { ligatures: { ß: "ss" }, apostropheSplit: false, wordChars: "a-z\\u00e4\\u00f6\\u00fc0-9", whisperLanguage: "de", metric: "wer" },
     paradigm: DE_PARADIGM,
     functionWords: DE_FUNCTION_WORDS,
+    // D-10 review: written answers spell digits as German words, so the number words count as known vocabulary.
+    numberWords: germanNumber,
     targetLanguageName: "German",
     // Plurals (-en, -n, -er, -e, -s, -nen; dative plural -ern) and adjective endings (-e, -en, -er, -es, -em;
     // after a stem in -e only -r / -m: böse → böser, bösem).

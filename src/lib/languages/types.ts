@@ -36,6 +36,11 @@ export type LanguageRules = {
   spellDigits(token: string): string;
   /** Lenient comparison form: case, punctuation and (where safe) diacritics folded. */
   normalizeLenient(text: string): string;
+  /**
+   * A second lenient form under which two typed texts ALSO count as equal
+   * (German: ä/ö/ü spelt ae/oe/ue). Absent for languages without one.
+   */
+  normalizeLenientAlternate?(text: string): string;
   /** Strict comparison form: case/space folded, every letter and mark kept. */
   normalizeStrict(text: string): string;
   /**

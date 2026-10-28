@@ -47,7 +47,10 @@ function targetStrings(e: Exercise): string[] {
   // A word-bank answer is one sentence; a cloze is checked with its answer filled in (audioTarget).
   if (Array.isArray(x.answer)) out.push((x.answer as string[]).join(" "));
   else add(x.answer);
-  for (const k of ["audioTarget", "alternatives", "pairs"]) add(x[k]);
+  // D-10 review: a word-bank alternative is a token sequence too — one sentence, not loose words.
+  if (e.type === "wordBank") for (const alt of (x.alternatives as string[][] | undefined) ?? []) out.push(alt.join(" "));
+  else add(x.alternatives);
+  for (const k of ["audioTarget", "pairs"]) add(x[k]);
   if (e.type !== "fillBlank") add(x.sentence);
   // Options and prompts are German only in target-facing modes.
   if (x.mode === "nativeToTarget" || x.mode === "listen" || e.type === "fillBlank") add(x.options);

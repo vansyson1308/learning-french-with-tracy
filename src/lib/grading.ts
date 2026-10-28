@@ -3,6 +3,7 @@ import type { Exercise, GuidedWritingExercise, SimpleFormExercise } from "./type
 import { courseProfile } from "./course-profile";
 import { languageRulesForCourse } from "./languages";
 import { normalizeLenientLatin, normalizeStrictLatin } from "./languages/base";
+import type { LanguageRules } from "./languages/types";
 import { gradeSpokenAttempt } from "./speech/grader";
 import { knownVocabulary } from "./writing/content";
 import {
@@ -145,6 +146,17 @@ function stripPunctuation(text: string): string {
   return text.replace(/[.,!?\u00BF\u00A1;:"\u3001\u3002\uFF01\uFF1F\u00AB\u00BB\u201C\u201D\u2026]/g, "").replace(/\s+/g, " ").trim();
 }
 
+/**
+ * Typed-answer equality under the course's lenient form, or under the
+ * language's alternate lenient form when it has one (D-10 review, German:
+ * "schoen" = "schön"). Languages without an alternate compare exactly as before.
+ */
+function lenientEquals(rules: LanguageRules, a: string, b: string): boolean {
+  if (rules.normalizeLenient(a) === rules.normalizeLenient(b)) return true;
+  const alternate = rules.normalizeLenientAlternate;
+  return alternate !== undefined && alternate(a) === alternate(b);
+}
+
 export function strictEquals(a: string, b: string, courseId?: string): boolean {
   const fold = courseId === undefined ? normalizeStrictLatin : languageRulesForCourse(courseId).normalizeStrict;
   return fold(a) === fold(b);
@@ -164,16 +176,13 @@ export function checkAnswer(exercise: Exercise, answer: Answer, courseId: string
       return answer === exercise.correct;
     case "wordBank": {
       if (!Array.isArray(answer)) return false;
-      const attempt = rules.normalizeLenient(answer.map((i) => exercise.tokens[i]).join(" "));
+      const attempt = answer.map((i) => exercise.tokens[i]).join(" ");
       // D-10 review: another correct sentence the same tiles build may be authored as an alternative.
-      return [exercise.answer, ...(exercise.alternatives ?? [])].some((a) => rules.normalizeLenient(a.join(" ")) === attempt);
+      return [exercise.answer, ...(exercise.alternatives ?? [])].some((a) => lenientEquals(rules, a.join(" "), attempt));
     }
     case "typeAnswer": {
       if (typeof answer !== "string") return false;
-      const attempt = rules.normalizeLenient(answer);
-      return [exercise.answer, ...exercise.alternatives].some(
-        (a) => rules.normalizeLenient(a) === attempt
-      );
+      return [exercise.answer, ...exercise.alternatives].some((a) => lenientEquals(rules, a, answer));
     }
     case "conjugationCloze":
     case "dictation": {

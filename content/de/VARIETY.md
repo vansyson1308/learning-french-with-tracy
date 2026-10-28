@@ -47,3 +47,8 @@ rare]`).
   lists are exempt.
 - ASR: the German normalisation folds ß → ss (`scripts/lib/languages/de.ts`),
   so a Swiss spelling never fails a speech or dictation check.
+- Learner grading (`src/lib/languages/de.ts`, D-10 review): typed answers,
+  word banks and writing rubric slots fold ß → ss, so "heisst", "gross" or
+  "Grüsse" are correct without being listed; typed answers also accept
+  ae/oe/ue for ä/ö/ü ("schoen", "Mueller"). Dictation and conjugation
+  drills stay exact: there the spelling itself is what is practised.
