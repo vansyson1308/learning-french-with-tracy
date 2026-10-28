@@ -76,6 +76,12 @@ Cách sửa:
    - Một Maestro giả chỉ treo lần đầu thì qua ở lần chạy lại, và dòng báo cáo ghi rõ lỗi lần đầu.
    - Chạy trong `bun run test` trên Linux CI qua `scripts/__tests__/device-flow-timeout.test.ts`. Trên Windows chạy tay bằng Git Bash: 10/10 ✅.
 
+**Kết quả** (lần chạy 40605875665, commit `baea1d8`):
+- Cả 6 shard **xanh**, lâu nhất 31 phút (API 34 lessons). Các shard còn lại: API 30 core 16 phút, lessons 26 phút, backup-upgrade 12 phút; API 34 core 23 phút, backup-upgrade 15 phút.
+- Không flow nào hết giờ, không có thư mục `.hang/`. `lesson de-en` trên API 30 qua ngay lần đầu, nên lần treo trước là sự cố của Maestro CLI, không lặp lại.
+- Hai flow trên API 34 chỉ qua ở lần chạy lại (thi thử và onboarding, cả hai vì cuộn quá thời gian chờ). Báo cáo ghi rõ.
+- PR #43 đã merge.
+
 ## Kiểm tra
 typecheck ✅ · lint ✅ · `bun run test` 1.555 ✅ (gồm 10 test mới của bộ sinh flow: mọi id có trong app, câu gõ là ASCII, checkpoint đòi N/N, seed RC3 nhập được) · jest 76/76 ✅ · `content:check` ✅ · `audio:check` ✅ (1.721 file) · golden ✅ (tiếng Pháp không đổi) · device-acceptance trên emulator API 34 (máy dev) ✅; API 34 + 30 trên APK cuối: CI của PR.
 
