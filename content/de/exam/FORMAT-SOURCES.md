@@ -76,6 +76,25 @@ retrieved directly from the URLs above. The exam overview page
 - **No separate module certification.** Modular certification applies to
   B1–C2 only (exam overview page).
 
+## Wortliste coverage check (2026-10-28)
+
+Script `scratchpad goethe-gap.py` compared the Wortliste's alphabetical
+headwords with the de lexicon. It is not committed, because the list's text
+must not ship (no open licence).
+
+- **Before:** 319 of about 640 headwords were in the lexicon. The selection
+  had kept only committed (frozen) lexemes. Several very frequent core words
+  had never been added: *gehen* (frequency rank 8), *tun*, *noch*, *nur*,
+  *heißen*, *mögen*, and every-day nouns absent from the subtitle pool
+  (*Brötchen*, *Fahrkarte*, *Lehrer*, *Sonne*).
+- **Added:** 291 of them through `lexicon-add`, with original glosses,
+  topics and examples (`content/de/_drafts/_generators/de-goethe-core.py`).
+- **Left out:** inflected or derived forms the resolver already reaches
+  (*geöffnet*, *besser*, *möchten*), closed-class forms handled as story
+  function words (*dich*, *dir*, *welch-*), and parse noise.
+- **Copying:** nothing from the Wortliste is copied. Words are facts; every
+  example is new.
+
 ## App consequences
 
 - The track reproduces the four sections, the timings, the 15/15/15/15

@@ -52,7 +52,9 @@ describe("compile golden", () => {
       expect(formatDiff("recompiled", diffFileHashes(dbPinsAsFiles(stored!.lexiconDbs), dbPinsAsFiles(fresh.lexiconDbs)))).toEqual([]);
     },
     // P3d: the full recompile now builds a second complete course (es-vi);
-    // on a loaded Windows runner it can exceed two minutes.
-    300_000
+    // on a loaded Windows runner it can exceed two minutes. P3d(de): with the
+    // German course and its 1 290-lexeme database it takes about 17 s on the
+    // Linux CI runners but over five minutes on a Windows development machine.
+    900_000
   );
 });

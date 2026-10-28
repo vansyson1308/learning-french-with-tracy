@@ -33,6 +33,7 @@ import {
   type StorySource,
   type Syllabus,
 } from "../../content/schema";
+import { buildPlugin } from "./languages";
 import { pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 import { receptionAssetKey, receptionAssetsDir, receptionPipelineVersion } from "./reception";
@@ -175,7 +176,7 @@ export function buildLexemeIndex(
 const bandRank = (b: StoryBand) => STORY_BANDS.indexOf(b);
 
 /** Plural and gender endings tried on nouns/adjectives (Romance languages). */
-const ENDINGS: [RegExp, string][] = [
+const ENDINGS: readonly (readonly [RegExp, string])[] = [
   [/ones$/, "ón"],
   [/es$/, ""],
   [/s$/, ""],
@@ -194,7 +195,13 @@ export type Resolution =
 
 export function resolveToken(
   key: string,
-  ctx: { index: LexemeIndex; functionWords: ReadonlySet<string>; tokenMap: Record<string, string> }
+  ctx: {
+    index: LexemeIndex;
+    functionWords: ReadonlySet<string>;
+    tokenMap: Record<string, string>;
+    /** The language's own endings (build plugin `storyEndings`); default: the Romance list. */
+    endings?: readonly (readonly [RegExp, string])[];
+  }
 ): Resolution {
   const mapped = ctx.tokenMap[key];
   if (mapped === "function" || mapped === "name") return { kind: mapped };
@@ -203,7 +210,7 @@ export function resolveToken(
   if (/^\d+([.,]\d+)?$/.test(key)) return { kind: "number" };
   const direct = ctx.index.single.get(key);
   if (direct) return { kind: "lexeme", lexemeId: direct };
-  for (const [re, rep] of ENDINGS) {
+  for (const [re, rep] of ctx.endings ?? ENDINGS) {
     if (!re.test(key)) continue;
     const id = ctx.index.single.get(key.replace(re, rep));
     if (id && INFLECTING.has(ctx.index.pos.get(id) ?? "")) return { kind: "lexeme", lexemeId: id };
@@ -245,7 +252,13 @@ export type StoryAnalysis = {
 export function analyzeStory(
   lang: string,
   story: StorySource,
-  ctx: { index: LexemeIndex; functionWords: ReadonlySet<string>; bands: Map<string, StoryBand>; tokenMap?: Record<string, string> }
+  ctx: {
+    index: LexemeIndex;
+    functionWords: ReadonlySet<string>;
+    bands: Map<string, StoryBand>;
+    tokenMap?: Record<string, string>;
+    endings?: readonly (readonly [RegExp, string])[];
+  }
 ): StoryAnalysis {
   const tokenMap = Object.fromEntries(
     Object.entries({ ...(ctx.tokenMap ?? {}), ...(story.tokenMap ?? {}) }).map(([k, v]) => [tokenKey(k), v])
@@ -285,7 +298,7 @@ export function analyzeStory(
       }
       tokens += 1;
       const key = tokenKey(piece.text);
-      const r = resolveToken(key, { index: ctx.index, functionWords: ctx.functionWords, tokenMap });
+      const r = resolveToken(key, { index: ctx.index, functionWords: ctx.functionWords, tokenMap, endings: ctx.endings });
       if (r.kind === "lexeme") {
         count(r.lexemeId);
         out.push({ text: piece.text, lexemeId: r.lexemeId });
@@ -451,7 +464,7 @@ export function validateStories(input: {
       if (target !== "function" && target !== "name" && !lexemeIds.has(target)) err(`${story.id}: tokenMap "${surface}" → unknown lexeme ${target}`);
     }
 
-    const a = analyzeStory(lang, story, { index, functionWords, bands, tokenMap: stories.tokenMap });
+    const a = analyzeStory(lang, story, { index, functionWords, bands, tokenMap: stories.tokenMap, endings: buildPlugin(lang).storyEndings });
     analyses.push(a);
     if (a.tokens < STORY_MIN_TOKENS || a.tokens > STORY_MAX_TOKENS) err(`${story.id}: ${a.tokens} word tokens (stories are ${STORY_MIN_TOKENS}–${STORY_MAX_TOKENS})`);
     if (a.unresolved.length > 0) err(`${story.id}: unresolved tokens ${a.unresolved.slice(0, 12).join(", ")}${a.unresolved.length > 12 ? " …" : ""} — use lexicon words, or map them in tokenMap`);

@@ -100,6 +100,21 @@ export const de: BuildLanguagePlugin = genericPlugin(
     paradigm: DE_PARADIGM,
     functionWords: DE_FUNCTION_WORDS,
     targetLanguageName: "German",
+    // Plurals (-en, -n, -er, -e, -s, -nen; dative plural -ern) and adjective endings (-e, -en, -er, -es, -em;
+    // after a stem in -e only -r / -m: böse → böser, bösem).
+    storyEndings: [
+      [/nen$/, ""],
+      [/ern$/, ""],
+      [/en$/, ""],
+      [/em$/, ""],
+      [/er$/, ""],
+      [/es$/, ""],
+      [/n$/, ""],
+      [/e$/, ""],
+      [/s$/, ""],
+      [/r$/, ""],
+      [/m$/, ""],
+    ],
     courseErrors: (pack) => {
       const rel = "content/de/lexicon/lexemes.json";
       const lexicon = existsSync(safeResolve(rel)) ? (readJson(rel) as { lexemes: { id: string; surface: string; legacySurfaces?: string[]; partOfSpeech: string }[] }).lexemes : [];

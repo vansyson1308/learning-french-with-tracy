@@ -7,7 +7,7 @@
  * the assets).
  */
 export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: string; asset: number }> = {
-  "de": { name: "de-lexicon-v3-18d767decf144b2f.db", contentHash: "18d767decf144b2f", asset: require("../../../assets/lexicon/de-lexicon-v3-18d767decf144b2f.db") },
+  "de": { name: "de-lexicon-v3-2fe2e4397c15784c.db", contentHash: "2fe2e4397c15784c", asset: require("../../../assets/lexicon/de-lexicon-v3-2fe2e4397c15784c.db") },
   "es": { name: "es-lexicon-v3-c6fc82b48c7f025c.db", contentHash: "c6fc82b48c7f025c", asset: require("../../../assets/lexicon/es-lexicon-v3-c6fc82b48c7f025c.db") },
   "es-en": { name: "es-en-lexicon-v3-331e4292c6bb6e25.db", contentHash: "331e4292c6bb6e25", asset: require("../../../assets/lexicon/es-en-lexicon-v3-331e4292c6bb6e25.db") },
   "fr": { name: "fr-lexicon-v3-4fd93ff6c545b579.db", contentHash: "4fd93ff6c545b579", asset: require("../../../assets/lexicon/fr-lexicon-v3-4fd93ff6c545b579.db") },

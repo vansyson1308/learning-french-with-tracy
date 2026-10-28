@@ -128,4 +128,10 @@ export type BuildLanguagePlugin = BuildLanguage & {
    * articles/plurals, dative chunks, verb-second practice).
    */
   courseErrors?(pack: import("../../../content/schema").PackSource): string[];
+  /**
+   * Plural / agreement endings the story resolver strips from nouns and
+   * adjectives, tried in order (default: the Romance list in stories.ts).
+   * Stem changes (umlaut plurals) are never guessed — tokenMap.
+   */
+  storyEndings?: readonly (readonly [RegExp, string])[];
 };

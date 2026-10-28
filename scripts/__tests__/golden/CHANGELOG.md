@@ -736,3 +736,38 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/lexicon/de-web-fallback.json
 - compile: new      lexicon-db:de:de-lexicon-v3-18d767decf144b2f.db
 - compile: missing  lexicon-db:de:de-lexicon-v3-0916999f215379e0.db
+
+## 2026-10-28 — P3d(de): lexicon-add 291 core A1 words found missing by a coverage check against the Goethe A1 word list (gehen, heissen, noch, ...); German artifacts only
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-e0ad6b654481b005.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-18d767decf144b2f.db
+
+## 2026-10-28 — P3d(de): lexicon-add 360 core A1 words found missing by a coverage check against the Goethe A1 word list (gehen, heissen, noch, Suppe, months ...); German artifacts only
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-2fe2e4397c15784c.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-e0ad6b654481b005.db
+
+## 2026-10-28 — P3d(de): lexicon-add 360 core A1 words (Goethe A1 coverage check); syllabus derivation counts lexicon-add entries as course-selected (de +117, es syllabus re-derived +14: rojo, la playa, el martes ...); German and Spanish artifacts
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/es/context-coverage.json
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/es-daily.json
