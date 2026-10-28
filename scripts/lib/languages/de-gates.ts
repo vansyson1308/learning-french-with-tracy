@@ -15,6 +15,8 @@
  *  - v2-separable: the verb-second and separable-verb concept cards are
  *    each followed by at least 6 exercises (lessons whose flow shows the
  *    card).
+ *  - scenario-register: each interaction scenario keeps one form of
+ *    address (du or Sie) — see scenarioRegisterErrors.
  */
 import { existsSync } from "fs";
 
@@ -125,6 +127,51 @@ export function germanCourseErrors(
         }
     if (!shown) err(`v2-separable: no lesson flow shows ${concept}`);
     else if (practice < MIN_CONCEPT_PRACTICE) err(`v2-separable: ${concept} is followed by ${practice} exercise(s) (< ${MIN_CONCEPT_PRACTICE})`);
+  }
+  return errors;
+}
+
+const DU_FORMS = new Set(["du", "dich", "dir", "dein", "deine", "deinen", "deinem", "deiner", "deines"]);
+const SIE_FORMS = new Set(["Sie", "Ihnen", "Ihr", "Ihre", "Ihren", "Ihrem", "Ihrer", "Ihres"]);
+
+/** "du" / "Sie" markers of one line; a capitalised form opening a sentence may be she/they/you-plural, so it does not count. */
+function registerMarkers(line: string): { du: boolean; sie: boolean } {
+  let du = false;
+  let sie = false;
+  let sentenceStart = true;
+  for (const raw of line.split(/\s+/)) {
+    const word = raw.replace(/^[„"'(¿¡]+|[.,!?;:"'“”)]+$/gu, "").replace(/'s$/, "");
+    if (word !== "") {
+      if (DU_FORMS.has(word.toLowerCase())) du = true;
+      if (!sentenceStart && SIE_FORMS.has(word)) sie = true;
+      sentenceStart = false;
+    }
+    if (/[.!?]["”]?$/u.test(raw)) sentenceStart = true;
+  }
+  return { du, sie };
+}
+
+type ScenarioNode = { kind: string; text?: string; rephraseText?: string; expected?: { acceptedVariants?: string[] }[] };
+
+/**
+ * scenario-register (QC 2026-10-28 §2): each interaction scenario keeps one
+ * form of address. Partner lines, rephrasings, endings and the learner's
+ * accepted answers may not mix du-forms with formal Sie/Ihnen/Ihr.
+ */
+export function scenarioRegisterErrors(scenarios: { id: string; nodes: Record<string, ScenarioNode> }[]): string[] {
+  const errors: string[] = [];
+  for (const s of scenarios) {
+    const lines = Object.values(s.nodes).flatMap((n) => [
+      ...(n.text !== undefined ? [n.text] : []),
+      ...(n.rephraseText !== undefined ? [n.rephraseText] : []),
+      ...(n.expected ?? []).flatMap((x) => x.acceptedVariants ?? []),
+    ]);
+    const marks = lines.map((l) => ({ l, ...registerMarkers(l) }));
+    const du = marks.filter((m) => m.du);
+    const sie = marks.filter((m) => m.sie);
+    if (du.length > 0 && sie.length > 0) {
+      errors.push(`scenario-register: ${s.id} mixes du ("${du[0].l}") and Sie ("${sie[0].l}")`);
+    }
   }
   return errors;
 }

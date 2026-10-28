@@ -1,6 +1,6 @@
 # listening — ingest report (de-vi)
 
-Records: 30 · schema-valid: 30 · failed: 0 · validator errors after merge: 0
+Records: 110 · schema-valid: 110 · failed: 0 · validator errors after merge: 16
 
 ## Records
 
@@ -34,10 +34,105 @@ Records: 30 · schema-valid: 30 · failed: 0 · validator errors after merge: 0
 - ✅ line 28 `de.clip.uj_jonas`
 - ✅ line 29 `de.clip.uj_bahnhof`
 - ✅ line 30 `de.clip.uj_sonntag`
+- ✅ line 31 `de.clip.uk_model_rep_hallo`
+- ✅ line 32 `de.clip.uk_model_greet_morning`
+- ✅ line 33 `de.clip.uk_model_rep_danke`
+- ✅ line 34 `de.clip.uk_model_thank`
+- ✅ line 35 `de.clip.uk_model_rep_abend`
+- ✅ line 36 `de.clip.uk_model_greet_evening`
+- ✅ line 37 `de.clip.uk_model_bye`
+- ✅ line 38 `de.clip.uk_model_rep_entschuldigung`
+- ✅ line 39 `de.clip.uk_model_excuse`
+- ✅ line 40 `de.clip.ul_model_rep_name`
+- ✅ line 41 `de.clip.ul_model_name`
+- ✅ line 42 `de.clip.ul_model_rep_from`
+- ✅ line 43 `de.clip.ul_model_from`
+- ✅ line 44 `de.clip.ul_model_live`
+- ✅ line 45 `de.clip.ul_model_speak`
+- ✅ line 46 `de.clip.ul_model_work`
+- ✅ line 47 `de.clip.ul_model_like`
+- ✅ line 48 `de.clip.um_model_rep_zehn`
+- ✅ line 49 `de.clip.um_model_price`
+- ✅ line 50 `de.clip.um_model_children`
+- ✅ line 51 `de.clip.um_model_time`
+- ✅ line 52 `de.clip.um_model_rep_halb`
+- ✅ line 53 `de.clip.um_model_day`
+- ✅ line 54 `de.clip.um_model_age`
+- ✅ line 55 `de.clip.un_model_rep_gross`
+- ✅ line 56 `de.clip.un_model_house`
+- ✅ line 57 `de.clip.un_model_cat`
+- ✅ line 58 `de.clip.un_model_car`
+- ✅ line 59 `de.clip.un_model_phone`
+- ✅ line 60 `de.clip.un_model_rep_neu`
+- ✅ line 61 `de.clip.ix_hallo_wie_gehts_miss`
+- ✅ line 62 `de.clip.ix_hallo_wie_gehts_0`
+- ✅ line 63 `de.clip.ix_hallo_wie_gehts_0_s`
+- ✅ line 64 `de.clip.ix_hallo_wie_gehts_1`
+- ✅ line 65 `de.clip.ix_hallo_wie_gehts_1_s`
+- ✅ line 66 `de.clip.ix_hallo_wie_gehts_end`
+- ✅ line 67 `de.clip.ix_kennenlernen_miss`
+- ✅ line 68 `de.clip.ix_kennenlernen_0`
+- ✅ line 69 `de.clip.ix_kennenlernen_0_s`
+- ✅ line 70 `de.clip.ix_kennenlernen_1`
+- ✅ line 71 `de.clip.ix_kennenlernen_1_s`
+- ✅ line 72 `de.clip.ix_kennenlernen_end`
+- ✅ line 73 `de.clip.ix_baeckerei_miss`
+- ✅ line 74 `de.clip.ix_baeckerei_0`
+- ✅ line 75 `de.clip.ix_baeckerei_0_s`
+- ✅ line 76 `de.clip.ix_baeckerei_1`
+- ✅ line 77 `de.clip.ix_baeckerei_1_s`
+- ✅ line 78 `de.clip.ix_baeckerei_2`
+- ✅ line 79 `de.clip.ix_baeckerei_2_s`
+- ✅ line 80 `de.clip.ix_baeckerei_end`
+- ✅ line 81 `de.clip.ix_geschaeft_preis_miss`
+- ✅ line 82 `de.clip.ix_geschaeft_preis_0`
+- ✅ line 83 `de.clip.ix_geschaeft_preis_0_s`
+- ✅ line 84 `de.clip.ix_geschaeft_preis_1`
+- ✅ line 85 `de.clip.ix_geschaeft_preis_1_s`
+- ✅ line 86 `de.clip.ix_geschaeft_preis_end`
+- ✅ line 87 `de.clip.ix_wo_bahnhof_miss`
+- ✅ line 88 `de.clip.ix_wo_bahnhof_0`
+- ✅ line 89 `de.clip.ix_wo_bahnhof_0_s`
+- ✅ line 90 `de.clip.ix_wo_bahnhof_1`
+- ✅ line 91 `de.clip.ix_wo_bahnhof_1_s`
+- ✅ line 92 `de.clip.ix_wo_bahnhof_end`
+- ✅ line 93 `de.clip.ix_wo_hotel_miss`
+- ✅ line 94 `de.clip.ix_wo_hotel_0`
+- ✅ line 95 `de.clip.ix_wo_hotel_0_s`
+- ✅ line 96 `de.clip.ix_wo_hotel_1`
+- ✅ line 97 `de.clip.ix_wo_hotel_1_s`
+- ✅ line 98 `de.clip.ix_wo_hotel_end`
+- ✅ line 99 `de.clip.ix_plaene_miss`
+- ✅ line 100 `de.clip.ix_plaene_0`
+- ✅ line 101 `de.clip.ix_plaene_0_s`
+- ✅ line 102 `de.clip.ix_plaene_1`
+- ✅ line 103 `de.clip.ix_plaene_1_s`
+- ✅ line 104 `de.clip.ix_plaene_end`
+- ✅ line 105 `de.clip.ix_krankmeldung_miss`
+- ✅ line 106 `de.clip.ix_krankmeldung_0`
+- ✅ line 107 `de.clip.ix_krankmeldung_0_s`
+- ✅ line 108 `de.clip.ix_krankmeldung_1`
+- ✅ line 109 `de.clip.ix_krankmeldung_1_s`
+- ✅ line 110 `de.clip.ix_krankmeldung_end`
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- speech: de-vi:ul-l0-e1: cueFacts differ from item de.speak.l_name
+- speech: de-vi:ul-l1-e1: cueFacts differ from item de.speak.l_from
+- speech: de-vi:ul-l2-e0: cueFacts differ from item de.speak.l_speak
+- speech: de-vi:ul-l2-e1: cueEmoji differs from item de.speak.l_like
+- speech: de-vi:ul-l2-e3: cueFacts differ from item de.speak.l_work
+- speech: de-vi:ul-l3-e0: cueFacts differ from item de.speak.l_live
+- speech: de-vi:um-l0-e0: cueFacts differ from item de.speak.m_children
+- speech: de-vi:um-l1-e1: cueFacts differ from item de.speak.m_price
+- speech: de-vi:um-l2-e0: cueEmoji differs from item de.speak.m_time
+- speech: de-vi:um-l2-e0: cueFacts differ from item de.speak.m_time
+- speech: de-vi:um-l3-e0: cueFacts differ from item de.speak.m_day
+- speech: de-vi:um-l3-e1: cueFacts differ from item de.speak.m_age
+- speech: de-vi:un-l0-e1: cueEmoji differs from item de.speak.n_house
+- speech: de-vi:un-l1-e0: cueEmoji differs from item de.speak.n_cat
+- speech: de-vi:un-l2-e0: cueEmoji differs from item de.speak.n_car
+- speech: de-vi:un-l2-e1: cueEmoji differs from item de.speak.n_phone
 
 ## Written
 

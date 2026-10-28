@@ -12,7 +12,7 @@ import { existsSync } from "fs";
 import { de as deRules } from "../../../src/lib/languages/de";
 import { readJson, safeResolve } from "../pipeline";
 
-import { germanCourseErrors, loadGermanGateData } from "./de-gates";
+import { germanCourseErrors, loadGermanGateData, scenarioRegisterErrors } from "./de-gates";
 import { genericPlugin } from "./generic";
 import type { ArticleRules, BuildLanguagePlugin, MorphVerb, ParadigmSpec } from "./types";
 
@@ -103,7 +103,18 @@ export const de: BuildLanguagePlugin = genericPlugin(
     courseErrors: (pack) => {
       const rel = "content/de/lexicon/lexemes.json";
       const lexicon = existsSync(safeResolve(rel)) ? (readJson(rel) as { lexemes: { id: string; surface: string; legacySurfaces?: string[]; partOfSpeech: string }[] }).lexemes : [];
-      return germanCourseErrors(pack, { lexicon, ...loadGermanGateData() });
+      const scenariosRel = "content/de/interaction/scenarios.json";
+      const used = new Set(
+        pack.sections.flatMap((s) => s.units.flatMap((u) => u.lessons.flatMap((l) => l.exercises)))
+          .flatMap((e) => (e.type === "interactionScenario" ? [e.scenarioId] : []))
+      );
+      const scenarios = existsSync(safeResolve(scenariosRel))
+        ? (readJson(scenariosRel) as { scenarios: Parameters<typeof scenarioRegisterErrors>[0] }).scenarios.filter((s) => used.has(s.id))
+        : [];
+      return [
+        ...germanCourseErrors(pack, { lexicon, ...loadGermanGateData() }),
+        ...scenarioRegisterErrors(scenarios).map((m) => `${pack.id}: ${m}`),
+      ];
     },
   }
 );

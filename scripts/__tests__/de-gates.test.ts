@@ -5,7 +5,7 @@
 import { describe, expect, test } from "bun:test";
 
 import type { PackSource } from "../../content/schema";
-import { germanCourseErrors } from "../lib/languages/de-gates";
+import { germanCourseErrors, scenarioRegisterErrors } from "../lib/languages/de-gates";
 
 const lexicon = [
   { id: "de:w:tisch", surface: "der Tisch", partOfSpeech: "noun" },
@@ -44,5 +44,30 @@ describe("German course gates", () => {
   test("verb-second and separable verbs need their card and at least 6 exercises after it", () => {
     expect(rules(germanCourseErrors(pack({ words: [] }), ok))).toEqual(["v2-separable", "v2-separable"]);
     expect(rules(germanCourseErrors(pack({ words: [], flow: v2Flow(5) }), ok))).toEqual(["v2-separable", "v2-separable"]);
+  });
+});
+
+describe("scenario register (Sie/du) gate", () => {
+  const scenario = (id: string, partner: string[], learner: string[]) => ({
+    id,
+    nodes: Object.fromEntries([
+      ...partner.map((text, i) => [`p${i}`, { kind: "partner", id: `p${i}`, text }]),
+      ["l0", { kind: "learner", id: "l0", expected: [{ acceptedVariants: learner }] }],
+      ["t_ok", { kind: "terminal", id: "t_ok", text: "Tschüss!" }],
+    ]),
+  });
+
+  test("a scenario that keeps one register passes", () => {
+    expect(scenarioRegisterErrors([scenario("de.scenario.a", ["Wie heißen Sie?", "Woher kommen Sie?"], ["Ich heiße Minh."])])).toEqual([]);
+    expect(scenarioRegisterErrors([scenario("de.scenario.b", ["Wie geht's dir?"], ["Gut, und dir?"])])).toEqual([]);
+  });
+
+  test("sentence-initial Sie (she/they) is not a formal marker", () => {
+    expect(scenarioRegisterErrors([scenario("de.scenario.c", ["Hast du Zeit? Sie kommt auch."], ["Ja."])])).toEqual([]);
+  });
+
+  test("mixing du and Sie in one scenario fails, learner lines included", () => {
+    expect(scenarioRegisterErrors([scenario("de.scenario.d", ["Wie heißen Sie?", "Und woher kommst du?"], ["Minh."])])).toHaveLength(1);
+    expect(scenarioRegisterErrors([scenario("de.scenario.e", ["Wie geht es Ihnen?"], ["Gut, und dir?"])])).toHaveLength(1);
   });
 });

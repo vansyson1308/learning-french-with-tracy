@@ -90,7 +90,7 @@ export const lexiconAddSchema = (lang: string) =>
     poolPos: z.enum(POS_VALUES).optional(),
     /** Display surface; nouns default to article + lemma from the gender. */
     surface: z.string().min(1).optional(),
-    gender: z.enum(["masculine", "feminine", "both"]).optional(),
+    gender: z.enum(["masculine", "feminine", "neuter", "both"]).optional(),
     glossEn: z.string().min(1),
     glossVi: z.string().min(1).refine((s) => !/^TODO:/.test(s), "no draft marker"),
     topic: z.string().min(1),

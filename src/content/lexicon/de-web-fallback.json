@@ -1,5 +1,5 @@
 {
-  "contentHash": "0916999f215379e0",
+  "contentHash": "18d767decf144b2f",
   "schemaVersion": 3,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
@@ -40092,6 +40092,50 @@
         }
       ],
       "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:zimmer",
+      "surface": "das Zimmer",
+      "lookupForm": "Zimmer",
+      "lemma": "Zimmer",
+      "gloss": "room",
+      "pos": "noun",
+      "gender": "neuter",
+      "topic": "home",
+      "frequency": {
+        "band": "common",
+        "rank": 359,
+        "perMillion": 211.863
+      },
+      "pronunciation": {
+        "value": "ˈt͡sɪmɐ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Das Zimmer ist klein.",
+          "en": "The room is small.",
+          "source": "original-lexicon-etl"
+        },
+        {
+          "de": "Haben Sie ein Zimmer frei?",
+          "en": "Do you have a room free?",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "Zimmer|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "Zimmer"
+        },
         {
           "source": "original-lexicon-etl"
         }
