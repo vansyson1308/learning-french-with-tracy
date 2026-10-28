@@ -27,6 +27,8 @@
  *       by surface, P3a's registry made new progress keyed by `es:w:` ids)
  *       re-keys wordStats and the legacy srs map surface → id. Shape
  *       unchanged; see migrateV7toV8.
+ *   v9  P3d(de): German gains its id registry — the same re-key for de
+ *       (de-en: RC3 "der Mann" → `de:w:mann`).
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -58,7 +60,7 @@ import {
   type PersistedAssessmentState,
 } from "../assessment/types";
 
-export const PERSIST_VERSION = 8;
+export const PERSIST_VERSION = 9;
 
 /**
  * The course the single v3 `assessment` container belonged to. A MIGRATION
@@ -440,6 +442,12 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
  */
 export const V8_REKEYED_TARGETS: readonly string[] = ["es", "fr"];
 
+/** v9 (P3d(de)): German's registry. */
+export const V9_REKEYED_TARGETS: readonly string[] = ["de"];
+
+/** Every target whose surface-keyed progress a numbered step re-keyed. */
+export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS, ...V9_REKEYED_TARGETS];
+
 const DAY_MS = 86_400_000;
 
 /** The later of two legacy srs entries (by their implied last review), for a re-key collision. */
@@ -498,6 +506,11 @@ function migrateV7toV8(persisted: PersistedProgress): PersistedProgress {
   return rekeyRegistryCourses(persisted, V8_REKEYED_TARGETS);
 }
 
+/** v8 → v9 (P3d(de)): the same re-key for German, whose registry arrives now. */
+function migrateV8toV9(persisted: PersistedProgress): PersistedProgress {
+  return rekeyRegistryCourses(persisted, V9_REKEYED_TARGETS);
+}
+
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
@@ -537,6 +550,10 @@ export function migrateProgress(
   if (fromVersion < 8 && toVersion >= 8) {
     checkFailureSeam(8);
     state = migrateV7toV8(state as PersistedProgress);
+  }
+  if (fromVersion < 9 && toVersion >= 9) {
+    checkFailureSeam(9);
+    state = migrateV8toV9(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }

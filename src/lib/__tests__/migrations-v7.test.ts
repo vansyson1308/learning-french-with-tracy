@@ -20,8 +20,8 @@ const v6 = () => clone(v6Fixture.state) as Parameters<typeof migrateProgress>[0]
 afterEach(() => __setMigrationFailureForTests(null));
 
 describe("v6 → v7: reading aid setting", () => {
-  test("PERSIST_VERSION is 8 (v8: legacy re-key)", () => {
-    expect(PERSIST_VERSION).toBe(8);
+  test("PERSIST_VERSION is 9 (v9: German re-key)", () => {
+    expect(PERSIST_VERSION).toBe(9);
   });
 
   test("an existing learner gets an empty map; nothing else changes", () => {

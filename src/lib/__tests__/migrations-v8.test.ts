@@ -21,6 +21,7 @@ import {
   __setMigrationFailureForTests,
   migrateProgress,
   PERSIST_VERSION,
+  REKEYED_TARGETS,
   rekeyRegistryCourses,
   V8_REKEYED_TARGETS,
   type PersistedProgress,
@@ -37,12 +38,12 @@ const totals = (stats: Record<string, { correct: number; wrong: number }>) =>
   Object.values(stats).reduce((t, s) => ({ correct: t.correct + s.correct, wrong: t.wrong + s.wrong }), { correct: 0, wrong: 0 });
 
 describe("v7 → v8: legacy re-key of registry courses", () => {
-  test("PERSIST_VERSION is 8", () => {
-    expect(PERSIST_VERSION).toBe(8);
+  test("PERSIST_VERSION is 9 (v9: German re-key)", () => {
+    expect(PERSIST_VERSION).toBe(9);
   });
 
   test("every id registry the app ships was re-keyed by a numbered step (a new registry needs its own migration)", () => {
-    expect([...V8_REKEYED_TARGETS].sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
+    expect([...REKEYED_TARGETS].sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
   });
 
   test("RC3 es-en progress: every key becomes the id the runtime writes; counts are preserved", () => {
@@ -66,7 +67,7 @@ describe("v7 → v8: legacy re-key of registry courses", () => {
 
   test("fr-en (re-keyed at v2, srsLegacy kept) and courses without a registry are byte-identical", () => {
     const via7 = migrateProgress(rc3(), 3, NOW, 7);
-    const via8 = migrateProgress(rc3(), 3, NOW);
+    const via8 = migrateProgress(rc3(), 3, NOW, 8);
     expect(JSON.stringify(via8.courses["fr-en"])).toBe(JSON.stringify(via7.courses["fr-en"]));
     for (const courseId of Object.keys(via7.courses)) {
       const code = courseId.slice(0, courseId.indexOf("-"));
