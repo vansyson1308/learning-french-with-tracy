@@ -93,6 +93,9 @@ describe("German inflection endings (P3d de)", () => {
     // Adjectives in -e take only -r / -m / -n / -s: böse → böser, bösem.
     expect(resolve("böser")).toEqual({ kind: "lexeme", lexemeId: "de:w:bose" });
     expect(resolve("bösem")).toEqual({ kind: "lexeme", lexemeId: "de:w:bose" });
+    // -nen (Freundinnen) is tried last: "einen" is ein + -en, never Ei + -nen.
+    expect(resolve("einen")).toEqual({ kind: "lexeme", lexemeId: "de:w:ein" });
+    expect(resolve("freundinnen")).toEqual({ kind: "lexeme", lexemeId: "de:w:freundin" });
   });
 
   test("umlaut plurals are not guessed (they go in tokenMap, explicitly)", () => {

@@ -20,7 +20,8 @@ for v in morph:
     for r in v["rows"]:
         if " " not in r["mot"]:
             single.setdefault(r["mot"].lower(), vid)
-END = ["nen", "ern", "en", "em", "er", "es", "n", "e", "s", "r", "m"]
+CLOSED = {"sondern", "oh", "ach", "na", "welcher", "welche", "welchen", "welches", "welchem", "einige", "einigen", "einiges"}
+END = ["ern", "en", "em", "er", "es", "n", "e", "s", "r", "m", "nen"]
 INFL = {"noun", "adjective", "determiner", "pronoun", "numeral"}
 FILE_TM = {k.lower(): v for k, v in skel.get("tokenMap", {}).items()}
 def resolve(k, tm):
@@ -43,6 +44,9 @@ for line in open(r"C:\src\lft\content\de\_drafts\stories\OUTPUT.jsonl", encoding
     newtok = sum(1 for t in toks if resolve(t, tm) in new)
     missing_new = [n for n in new if n not in {resolve(t, tm) for t in toks}]
     flag = "" if 150 <= len(toks) <= 400 else " TOKENS!"
+    fn = sorted(k for k, v in tm.items() if v == "function" and k not in CLOSED)
+    if fn:
+        flag += " FUNCTION-MAPPED (review: closed class only): " + " ".join(fn)
     print(f"{st['id']}: {len(toks)} tokens{flag}, new {newtok} ({newtok / max(1, len(toks)) * 100:.1f} %){' MISSING NEW ' + str(missing_new) if missing_new else ''}{' UNRESOLVED: ' + ' '.join(un) if un else ''}")
     ok = ok and not un and not missing_new and 150 <= len(toks) <= 400
 sys.exit(0 if ok else 1)

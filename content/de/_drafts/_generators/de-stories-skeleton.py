@@ -11,7 +11,7 @@ cast = listening["voiceCast"]
 CANDIDATES = """die den dem des einen einem eines eine
 mich mir dich dir uns euch ihm ihnen ihre ihren ihrem ihrer ihres seine seinen seinem seiner seines sein
 meine meinen meinem meines deine deinen deinem deines unsere unseren unserem eure
-diese diesen diesem dieses jede jeden jedem jedes keine keinen keinem keines
+keine keinen keinem keines
 im am zum zur vom beim ins ans aufs
 noch nur so da doch ja denn mal dann schon sehr gern
 durch ohne seit zwischen hinter neben während trotz
@@ -39,6 +39,10 @@ FORMS = {
  "Stein": [], "Blume": [], "Kopf": ["köpfe"], "Platz": ["plätze"], "Schuh": [], "Großmutter": [], "Großeltern": [],
  "viel": ["viele", "vielen", "vieles", "vielem"], "gut": ["besser", "bessere", "besseren", "beste", "besten"], "groß": ["größer", "größte", "größten"],
  "anrufen": ["ruft", "rufe", "rufst", "rufen", "rief", "angerufen"], "aufstehen": ["aufgestanden"],
+ "Glückwunsch": ["glückwünsche", "glückwünschen"], "Markt": ["märkte", "märkten"], "Pass": ["pässe"], "Topf": ["töpfe"], "Wand": ["wände"], "Schrank": ["schränke"], "Koch": ["köche"], "Ausflug": ["ausflüge"],
+ "dunkel": ["dunkle", "dunklen", "dunkles", "dunkler", "dunklem"], "teuer": ["teure", "teuren", "teures", "teurer"],
+ "Gruß": ["grüße", "grüßen"],
+ "dieser": ["diese", "diesen", "diesem", "dieses"], "jeder": ["jede", "jeden", "jedem", "jedes"],
 }
 by_lookup = {l["lookupForm"]: l["id"] for l in lex}
 tm = {form: by_lookup[lemma] for lemma, forms in FORMS.items() for form in forms}

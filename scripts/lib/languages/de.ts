@@ -102,8 +102,8 @@ export const de: BuildLanguagePlugin = genericPlugin(
     targetLanguageName: "German",
     // Plurals (-en, -n, -er, -e, -s, -nen; dative plural -ern) and adjective endings (-e, -en, -er, -es, -em;
     // after a stem in -e only -r / -m: böse → böser, bösem).
+    // -nen last: "einen" is ein + -en, not Ei + -nen.
     storyEndings: [
-      [/nen$/, ""],
       [/ern$/, ""],
       [/en$/, ""],
       [/em$/, ""],
@@ -114,6 +114,7 @@ export const de: BuildLanguagePlugin = genericPlugin(
       [/s$/, ""],
       [/r$/, ""],
       [/m$/, ""],
+      [/nen$/, ""],
     ],
     courseErrors: (pack) => {
       const rel = "content/de/lexicon/lexemes.json";
