@@ -251,13 +251,22 @@ const topicCap = (topic: string) => Math.ceil(size * (topic === "everyday" ? 0.4
 const functionCap = Math.ceil(size * FUNCTION_SHARE);
 let functionTaken = 0;
 for (const s of selected) if (s.entry) topicCount.set(s.entry.topic, (topicCount.get(s.entry.topic) ?? 0) + 1);
+// The pool lists content words before function words, so the reserved share is taken first
+// (in function rank order); otherwise the content fill reaches --size before any function word.
+for (const e of pool.entries) {
+  if (selected.length >= size || functionTaken >= functionCap) break;
+  if (e.kind !== "function" || !usable(e)) continue;
+  functionTaken += 1;
+  taken.add(takeKey(e));
+  topicCount.set(e.topic, (topicCount.get(e.topic) ?? 0) + 1);
+  selected.push({ entry: e, surface: "", lookupForm: e.lemma, packGloss: {}, packTopic: null, reason: `function word rank ${rankOf(e)}` });
+}
 const deferredByTopic: PoolEntry[] = [];
 for (const e of pool.entries) {
   if (selected.length >= size) break;
   if (!usable(e)) continue;
   if (e.kind === "function") {
-    if (functionTaken >= functionCap) continue;
-    functionTaken += 1;
+    continue;
   } else if ((topicCount.get(e.topic) ?? 0) >= topicCap(e.topic)) {
     deferredByTopic.push(e);
     continue;

@@ -327,13 +327,18 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
     const examples: CandidateExample[] = [];
     const usage = new Set<string>();
     const senseTags = new Set<string>();
+    // A usage tag (dated, slang…) restricts one sense, not the word: the lemma is restricted only
+    // when every sense is, and beside plain senses the tagged ones contribute no gloss or example.
+    const isRestricted = (s: KaikkiSense) => (s.tags ?? []).some((t) => USAGE_TAGS.has(t));
+    const hasPlainSense = lemmaSenses.some((s) => !isRestricted(s));
     lemmaSenses.forEach((s, i) => {
-      const g = senseGloss(s);
-      if (g) glosses.push(g);
       for (const t of s.tags ?? []) {
         senseTags.add(t);
-        if (USAGE_TAGS.has(t)) usage.add(t);
+        if (!hasPlainSense && USAGE_TAGS.has(t)) usage.add(t);
       }
+      if (hasPlainSense && isRestricted(s)) return;
+      const g = senseGloss(s);
+      if (g) glosses.push(g);
       for (const ex of s.examples ?? []) {
         if (examples.length >= maxExamples) break;
         if (typeof ex.text !== "string" || ex.type === "quotation" || ex.ref) continue;
@@ -379,13 +384,23 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
       viTranslations,
     };
     if (existing) {
-      // Several etymologies of the same word|pos: merge, first entry wins on scalars.
-      existing.glosses.push(...record.glosses);
+      // Several etymologies of the same word|pos: merge, first entry wins on scalars. A restricted
+      // etymology beside a plain one adds no gloss or example and does not restrict the lemma.
+      const existingPlain = existing.usageTags.length === 0;
+      const recordPlain = record.usageTags.length === 0;
+      if (!existingPlain && recordPlain) {
+        existing.glosses = [];
+        existing.examples = [];
+        existing.usageTags = [];
+      }
+      if (existingPlain === recordPlain || recordPlain) {
+        existing.glosses.push(...record.glosses);
+        existing.examples.push(...record.examples.slice(0, Math.max(0, maxExamples - existing.examples.length)));
+      }
+      if (!existingPlain && !recordPlain) existing.usageTags = [...new Set([...existing.usageTags, ...record.usageTags])].sort();
       existing.senseCount += record.senseCount;
-      existing.examples.push(...record.examples.slice(0, Math.max(0, maxExamples - existing.examples.length)));
       existing.forms.push(...record.forms);
       existing.topics = [...new Set([...existing.topics, ...record.topics])].sort();
-      existing.usageTags = [...new Set([...existing.usageTags, ...record.usageTags])].sort();
       existing.viTranslations.push(...record.viTranslations);
       if (!existing.gender && record.gender) existing.gender = record.gender;
       if (!existing.ipa && record.ipa) existing.ipa = record.ipa;

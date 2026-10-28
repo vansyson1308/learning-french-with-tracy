@@ -67,6 +67,24 @@ describe("kaikki adapter", () => {
     expect([...scan.lemmas.keys()]).toEqual(["perro|noun"]);
   });
 
+  test("usage tags restrict a lemma only when every sense carries one; tagged senses give no glosses or examples beside plain ones", async () => {
+    const file = write("es/kaikki3.jsonl", [
+      entry({ word: "andar", pos: "verb", senses: [{ glosses: ["to walk"], examples: [{ text: "Ando mucho.", english: "I walk a lot." }] }, { glosses: ["to fare (dated)"], tags: ["dated"], examples: [{ text: "Anda la cosa.", english: "Old usage." }] }] }),
+      entry({ word: "andar", pos: "verb", etymology_number: 2, senses: [{ glosses: ["to go about (slang)"], tags: ["slang"] }] }),
+      entry({ word: "maravedí", pos: "noun", senses: [{ glosses: ["an old coin"], tags: ["historical"] }, { glosses: ["money (archaic)"], tags: ["archaic"] }] }),
+      entry({ word: "guay", pos: "adj", tags: ["colloquial", "slang"], senses: [{ glosses: ["cool"] }] }),
+    ].join("\n"));
+    const scan = await scanKaikki(file, { lang: "es", sourceId: "kaikki-en", glossLanguage: "en" });
+    const andar = scan.lemmas.get("andar|verb")!;
+    expect(andar.usageTags).toEqual([]);
+    expect(andar.glosses).toEqual(["to walk"]);
+    expect(andar.examples.map((x) => x.target)).toEqual(["Ando mucho."]);
+    expect(andar.senseCount).toBe(3);
+    expect(scan.lemmas.get("maravedí|noun")!.usageTags).toEqual(["archaic", "historical"]);
+    expect(scan.lemmas.get("maravedí|noun")!.glosses).toEqual(["an old coin", "money (archaic)"]);
+    expect(scan.lemmas.get("guay|adjective")!.usageTags).toEqual(["slang"]);
+  });
+
   test("tag atoms follow the Lexique-style notation and ignore combined/table rows", () => {
     expect(atomsFromTags(["first-person", "present", "singular", "subjunctive"])).toEqual(["sub:pre:1", "sg"]);
     expect(atomsFromTags(["second-person", "imperative", "singular"])).toEqual(["imp:pre:2", "sg"]);
