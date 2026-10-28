@@ -1,6 +1,6 @@
 # concepts — ingest report (de-vi)
 
-Records: 35 · schema-valid: 35 · failed: 0 · validator errors after merge: 9
+Records: 35 · schema-valid: 35 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -42,15 +42,7 @@ Records: 35 · schema-valid: 35 · failed: 0 · validator errors after merge: 9
 
 ## Validator errors (fix these records and ingest again)
 
-- paradigms: wohnen: regular pre:2s must be "wohnest", got "wohnst"
-- paradigms: wohnen: regular pre:3s must be "wohnet", got "wohnt"
-- paradigms: wohnen: regular pre:2p must be "wohnet", got "wohnt"
-- paradigms: sprechen: group "vowel change e → i" is not one of regular, irregular
-- paradigms: fahren: group "vowel change a → ä" is not one of regular, irregular
-- paradigms: essen: group "vowel change e → i" is not one of regular, irregular
-- paradigms: können: group "modal" is not one of regular, irregular
-- paradigms: müssen: group "modal" is not one of regular, irregular
-- paradigms: anrufen: group "separable" is not one of regular, irregular
+- none
 
 ## Written
 

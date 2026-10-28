@@ -165,7 +165,9 @@ describe("compiler: round-trip and determinism", () => {
       if (courseId === "fr-en" || courseId === "fr-vi") continue;
       // P3a: Spanish has an id registry, so its unambiguous selects (240) and matches (40) carry targets;
       // P3d/P3e: es-vi's unambiguous selects and matches (248 after the P3e lesson fill).
-      expect({ courseId, targets: row.withGradeTargets }).toEqual({ courseId, targets: courseId === "xx-en" ? 2 : courseId === "es-en" ? 280 : courseId === "es-vi" ? 248 : 0 });
+      // P3d(de): German has an id registry, so de-en's unambiguous selects and matches carry targets.
+      const expected: Record<string, number> = { "xx-en": 2, "es-en": 280, "es-vi": 248, "de-en": 140 };
+      expect({ courseId, targets: row.withGradeTargets }).toEqual({ courseId, targets: expected[courseId] ?? 0 });
     }
   });
 

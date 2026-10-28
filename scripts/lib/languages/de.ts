@@ -47,7 +47,8 @@ function groupRules(table: { lemma: string; group: string; cells: Record<string,
   if (table.group !== "regular") return;
   const elnErn = /(?:el|er)n$/.test(table.lemma);
   const stem = elnErn ? table.lemma.slice(0, -1) : table.lemma.replace(/en$/, "");
-  const linking = !elnErn && /(?:[dt]|[^aeiouäöülr][mn])$/.test(stem) ? "e" : "";
+  // atmen → atmest, rechnen → rechnest; but wohnen → wohnst (lengthening h), lernen, filmen, kämmen.
+  const linking = !elnErn && /(?:[dt]|(?:ch|[^aeiouäöülrhmn])[mn])$/.test(stem) ? "e" : "";
   const plural = elnErn ? "n" : "en";
   const expected: Record<string, string> = {
     "pre:1s": `${elnErn ? stem.replace(/e([lr])$/, "$1") : stem}e`,

@@ -598,3 +598,7 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/lexicon/de-index.json
 - compile: new      src/content/lexicon/de-web-fallback.json
 - compile: new      lexicon-db:de:de-lexicon-v3-4db6dfb5515f3f46.db
+
+## 2026-10-28 — de-en keeps the legacy scheduler (content/courses/de-en.profile.json enabled fsrs/dailySession false) now that the German lexicon compiles; no French output changed
+
+- compile: changed  src/content/course-profiles.json
