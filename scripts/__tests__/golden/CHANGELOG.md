@@ -580,3 +580,21 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — de lexicon reviewed (800 lexemes) now compiles into the de-en artifacts and de lexicon db; registry gains original-german-course — no French output changed
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/artifacts/de-en.ts
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/index.ts
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/packs/de-en.json
+- compile: new      content/reports/de/lexicon-quality.json
+- compile: new      content/reports/de/lexicon-source-audit.json
+- compile: new      src/content/ids/de.json
+- compile: new      src/content/lexicon/de-daily.json
+- compile: new      src/content/lexicon/de-index.json
+- compile: new      src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-4db6dfb5515f3f46.db

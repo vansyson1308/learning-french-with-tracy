@@ -17,12 +17,12 @@
       "recognitionLocale": "de-DE",
       "ttsLocale": "de-DE",
       "script": "latin",
-      "idPrefix": "",
-      "legacyIdPrefix": "",
+      "idPrefix": "de:w:",
+      "legacyIdPrefix": "de:legacy:",
       "capabilities": {
-        "fsrs": false,
-        "dailySession": false,
-        "lexicon": false,
+        "fsrs": true,
+        "dailySession": true,
+        "lexicon": true,
         "concepts": false,
         "placement": false,
         "checkpoints": false,
@@ -33,7 +33,13 @@
         "writing": false,
         "conversation": false
       },
-      "artifacts": {}
+      "artifacts": {
+        "ids": "src/content/ids/de.json",
+        "lexiconIndex": "src/content/lexicon/de-index.json",
+        "lexiconFallback": "src/content/lexicon/de-web-fallback.json",
+        "lexiconDb": "assets/lexicon/de-lexicon-v3-4db6dfb5515f3f46.db",
+        "dailyWords": "src/content/lexicon/de-daily.json"
+      }
     },
     "es-en": {
       "id": "es-en",
