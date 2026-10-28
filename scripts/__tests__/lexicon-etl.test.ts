@@ -313,8 +313,8 @@ describe("German nouns (capitalised) against a lower-case frequency list", () =>
       de({ word: "nicht", pos: "intj", head_templates: [{ name: "head", args: { "1": "de", "2": "interjection", head: "nicht?" } }], senses: [{ glosses: ["right?; is it?; is it not?"], tags: ["dated", "formal"] }] }),
       de({ word: "auch", pos: "adv", senses: [{ glosses: ["also, too"], examples: [{ text: "Ich auch.", english: "Me too." }] }] }),
       de({ word: "auch", pos: "intj", senses: [{ glosses: ["in answering a yes-no question, yes, and more"] }] }),
-      de({ word: "zeit", pos: "prep", senses: [{ glosses: ["for the entire time of, during"] }] }),
-      de({ word: "Zeit", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "f" } }], senses: [{ glosses: ["time"], examples: [{ text: "Ich habe keine Zeit.", english: "I have no time." }] }] }),
+      de({ word: "ja", pos: "intj", senses: [{ glosses: ["yes"] }] }),
+      de({ word: "Ja", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "n,s,s" } }], senses: [{ glosses: ["a yes"] }, { glosses: ["an approval"] }] }),
       de({ word: "so", pos: "adv", senses: [{ glosses: ["so, thus"] }] }),
       de({ word: "so", pos: "noun", senses: [{ glosses: ["a so (marginal noun reading)"] }] }),
       de({ word: "so", pos: "conj", senses: [{ glosses: ["thus, so"] }] }),
@@ -327,7 +327,7 @@ describe("German nouns (capitalised) against a lower-case frequency list", () =>
     expect(scan.lemmas.get("Kuchen|noun")?.gender).toBe("both"); // two genders on a sense, no head: neither is proven
 
     writeFileSync(path.join(dir, "kaikki-en-de.jsonl"), lines.join("\n"));
-    writeFileSync(path.join(dir, "frequencywords-de.txt"), "nicht 500\nauch 300\nzeit 200\nso 150\ntaxi 40\ndeutscher 30\n");
+    writeFileSync(path.join(dir, "frequencywords-de.txt"), "nicht 500\nauch 300\nja 200\nso 150\ntaxi 40\ndeutscher 30\n");
     writeFileSync(path.join(dir, "wordfreq-de.csv"), "word,zipf\nnicht,6.5\n");
     writeFileSync(path.join(dir, "kaikki-vi-de.jsonl"), "");
     for (const f of ["tatoeba-de-sentences.tsv", "tatoeba-de-links-en.tsv", "tatoeba-de-links-vi.tsv", "tatoeba-eng-sentences.tsv", "tatoeba-vie-sentences.tsv"]) writeFileSync(path.join(dir, f), "");
@@ -337,10 +337,11 @@ describe("German nouns (capitalised) against a lower-case frequency list", () =>
     const pool = (result.files["candidate-pool.json"] as { entries: { lemma: string; partOfSpeech: string; definiteForm?: string; frequency: { perMillion: number } | null }[] }).entries;
     const nicht = pool.find((e) => e.lemma === "nicht" && e.partOfSpeech === "adverb");
     expect(nicht?.frequency?.perMillion ?? 0).toBeGreaterThan(0);
-    // A plain function reading zeroes only a NOUN of the same spelling.
+    // A plain function reading zeroes its noun homographs (any case), never an adverb.
     const pm = (lemma: string, pos: string) => pool.find((e) => e.lemma === lemma && e.partOfSpeech === pos)?.frequency?.perMillion ?? 0;
     expect(pm("auch", "adverb")).toBeGreaterThan(0);
-    expect(pm("Zeit", "noun")).toBeGreaterThan(0);
+    expect(pm("ja", "interjection")).toBeGreaterThan(0);
+    expect(pm("Ja", "noun")).toBe(0); // the nominalisation (das Ja) never rides on the lower-case form
     expect(pm("so", "adverb")).toBeGreaterThan(0);
     expect(pm("so", "noun")).toBe(0);
     expect(pool.find((e) => e.lemma === "Deutscher")?.definiteForm).toBe("Deutsche");
