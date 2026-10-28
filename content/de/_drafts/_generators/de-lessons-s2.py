@@ -7,6 +7,8 @@ import json, os, sys
 ROOT = r"C:\src\lft\content\de"
 LEX = {l["surface"]: l for l in json.load(open(os.path.join(ROOT, "lexicon", "lexemes.json"), encoding="utf-8"))["lexemes"]}
 PP = os.path.join(ROOT, "_drafts", "staged", "content", "de", "pedagogy", "paradigms.json")
+if not os.path.exists(PP):  # after promote the tables live in the real tree
+    PP = os.path.join(ROOT, "pedagogy", "paradigms.json")
 PAR = {t["lemma"]: t["cells"] for t in json.load(open(PP, encoding="utf-8"))["tables"]}
 C = "de-vi"
 ARTS = ["der", "die", "das"]
@@ -81,7 +83,7 @@ L["ub-l3"] = [("concept", "de:concept:perfekt"), ("conj", "Ich habe in Berlin __
   ("conj", "Er hat viel ___.", "arbeiten", "participle", "Anh ấy đã làm việc nhiều."), ("conj", "Ich bin nach Berlin ___.", "fahren", "participle", "Tôi đã đi Berlin."), ("conj", "Sie hat Deutsch ___.", "sprechen", "participle", "Cô ấy đã nói tiếng Đức."),
   ("fill", "Ich ___ nach Hamburg gefahren.", "bin", ["habe", "hat", "ist"], "Tôi đã đi Hamburg."), ("fill", "Wir ___ Pizza gegessen.", "haben", ["sind", "hat", "bin"], "Chúng tôi đã ăn pizza."),
   ("type", "Tôi đã làm việc.", "Ich habe gearbeitet.", ["Ich habe gearbeitet"]), ("wbt", "Ich habe einen Kuchen gegessen.", "Tôi đã ăn một cái bánh ngọt.", ["uống", "sẽ", "hai"])]
-L["uc-l0"] = [("t2n", "die Musik", ["das Foto", "der Film", "das Internet"]), ("t2n", "das Foto", ["die Musik", "die Pizza", "das Problem"]), ("t2n", "der Film", ["das Internet", "das Foto", "die Musik"]),
+L["uc-l0"] = [("concept", "de:concept:three-genders"), ("t2n", "die Musik", ["das Foto", "der Film", "das Internet"]), ("t2n", "das Foto", ["die Musik", "die Pizza", "das Problem"]), ("t2n", "der Film", ["das Internet", "das Foto", "die Musik"]),
   ("n2t", "die Pizza", ["das Problem", "der Film", "die Musik"]), ("n2t", "das Problem", ["das Foto", "die Pizza", "das Internet"]), ("art", "der Film"), ("art", "die Pizza"), ("art", "das Internet"),
   ("type", "bộ phim (kèm mạo từ)", "der Film", []), ("match", [("die Musik", g("die Musik")), ("das Foto", g("das Foto")), ("der Film", g("der Film")), ("das Internet", g("das Internet")), ("die Pizza", g("die Pizza"))])]
 L["uc-l1"] = [("concept", "de:concept:compounds"), ("t2n", "das Krankenhaus", ["das Schlafzimmer", "das Wochenende", "der Geburtstag"]), ("t2n", "das Schlafzimmer", ["das Krankenhaus", "der Geburtstag", "das Wochenende"]),
@@ -92,7 +94,7 @@ L["uc-l2"] = [("concept", "de:concept:false-friends"), ("t2nx", "der Chef", "s�
   ("fill", "Ich ___ eine Nachricht.", "bekomme", ["bekommst", "bekommt", "bekommen"], "Tôi nhận được một tin nhắn."), ("type", "Sếp của tôi tên là Müller.", "Mein Chef heißt Müller.", ["Mein Chef heißt Müller"]),
   ("wb", "Tôi nhận được một bức ảnh.", "Ich bekomme ein Foto.", ["werde", "einen", "der"]), ("conj", "Das Kind ___ groß.", "werden", "pre:3s", "Đứa trẻ lớn lên (trở nên to)."),
   ("n2t", "der Chef", ["der Film", "das Problem", "das Foto"]), ("fill", "Es ___ kalt.", "wird", ["bekommt", "hat", "kommt"], "Trời trở lạnh.")]
-L["uc-l3"] = [("t2n", "wer", ["wo", "was", "wie"]), ("t2n", "wo", ["wer", "wann", "was"]), ("t2n", "also", ["auch", "aber", "oder"]),
+L["uc-l3"] = [("concept", "de:concept:questions"), ("t2n", "wer", ["wo", "was", "wie"]), ("t2n", "wo", ["wer", "wann", "was"]), ("t2n", "also", ["auch", "aber", "oder"]),
   ("fill", "___ ist das?", "Wer", ["Wo", "Wie", "Wann"], "Đó là ai?"), ("fill", "___ ist der Bahnhof?", "Wo", ["Wer", "Was", "Wann"], "Nhà ga ở đâu?"), ("t2n", "das Handy", ["das Telefon", "das Foto", "das Internet"]),
   ("type", "Đó là ai?", "Wer ist das?", ["Wer ist das"]), ("wbt", "Also, wo ist das Hotel?", "Vậy khách sạn ở đâu?", ["ai", "khi", "và"]),
   ("match", [("wer", g("wer")), ("wo", g("wo")), ("was", g("was")), ("also", g("also")), ("das Handy", g("das Handy"))])]
@@ -100,11 +102,11 @@ L["ud-l0"] = [("concept", "de:concept:numbers"), ("t2n", "drei", ["zwei", "vier"
   ("n2t", "neun", ["acht", "zehn", "fünf"]), ("fill", "Eine Woche hat ___ Tage.", "sieben", ["sechs", "acht", "zehn"], "Một tuần có bảy ngày."), ("fill", "Ein Jahr hat ___ Monate.", "zwölf", ["elf", "zehn", "zwei"], "Một năm có mười hai tháng."),
   ("type", "mười", "zehn", []), ("type", "Tôi có hai con chó.", "Ich habe zwei Hunde.", ["Ich habe zwei Hunde"]),
   ("match", [("eins", g("eins")), ("zwei", g("zwei")), ("drei", g("drei")), ("vier", g("vier")), ("fünf", g("fünf"))]), ("wbt", "Das kostet zehn Euro.", "Cái đó giá mười euro.", ["hai", "tôi", "giờ"])]
-L["ud-l1"] = [("t2n", "dreizehn", ["dreißig", "drei", "zwanzig"]), ("t2n", "sechzehn", ["sechs", "sechzig", "siebzehn"]), ("t2n", "siebzehn", ["siebzig", "sieben", "sechzehn"]), ("t2n", "zwanzig", ["zwölf", "zwei", "dreißig"]),
+L["ud-l1"] = [("concept", "de:concept:numbers"), ("t2n", "dreizehn", ["dreißig", "drei", "zwanzig"]), ("t2n", "sechzehn", ["sechs", "sechzig", "siebzehn"]), ("t2n", "siebzehn", ["siebzig", "sieben", "sechzehn"]), ("t2n", "zwanzig", ["zwölf", "zwei", "dreißig"]),
   ("n2t", "sechzehn", ["sechzig", "sechs", "siebzehn"]), ("fill", "Er ist ___ Jahre alt.", "siebzehn", ["siebenzehn", "siebzig", "sieben"], "Cậu ấy mười bảy tuổi."),
   ("fill", "Das Ticket kostet ___ Euro.", "zwanzig", ["zweizig", "zwölf", "zwei"], "Vé giá hai mươi euro."), ("type", "mười ba", "dreizehn", []), ("type", "Tôi mười sáu tuổi.", "Ich bin sechzehn Jahre alt.", ["Ich bin sechzehn.", "Ich bin sechzehn"]),
   ("match", [("dreizehn", g("dreizehn")), ("sechzehn", g("sechzehn")), ("siebzehn", g("siebzehn")), ("zwanzig", g("zwanzig")), ("zwölf", g("zwölf"))])]
-L["ud-l2"] = [("fill", "drei___zwanzig", "und", ["an", "um", "in"], "hai mươi ba (ba-và-hai mươi)"), ("t2n", "dreißig", ["dreizehn", "drei", "vierzig"]), ("t2n", "fünfzig", ["fünf", "fünfzehn", "sechzig"]),
+L["ud-l2"] = [("concept", "de:concept:numbers"), ("fill", "drei___zwanzig", "und", ["an", "um", "in"], "hai mươi ba (ba-và-hai mươi)"), ("t2n", "dreißig", ["dreizehn", "drei", "vierzig"]), ("t2n", "fünfzig", ["fünf", "fünfzehn", "sechzig"]),
   ("t2n", "siebzig", ["siebzehn", "sieben", "sechzig"]), ("t2n", "hundert", ["zehn", "zwanzig", "fünfzig"]), ("fill", "Eine Stunde hat ___ Minuten.", "sechzig", ["sechzehn", "sechs", "siebzig"], "Một giờ có sáu mươi phút."),
   ("type", "ba mươi", "dreißig", []), ("type", "một trăm", "hundert", ["einhundert"]), ("n2t", "fünfzig", ["fünf", "vierzig", "sechzig"]), ("wb", "Bố tôi bốn mươi tuổi.", "Mein Vater ist vierzig.", ["vier", "sind", "meine"])]
 L["ud-l3"] = [("concept", "de:concept:clock-time"), ("fill", "Es ist ___ drei.", "halb", ["um", "nach", "vor"], "Bây giờ là hai giờ rưỡi."), ("fill", "Der Zug kommt ___ acht Uhr.", "um", ["in", "an", "zu"], "Tàu đến lúc tám giờ."),
@@ -120,10 +122,13 @@ L["ue-l1"] = [("concept", "de:concept:sounds-umlaut-ch"), ("listen", "früh", ["
 L["ue-l2"] = [("concept", "de:concept:final-devoicing-length"), ("fill", "Der Hun___ ist groß.", "d", ["t", "dt", "tt"], "Con chó to (viết d, đọc như t)."), ("fill", "der Ta___", "g", ["k", "ck", "gg"], "ngày (viết g, đọc như k)"),
   ("fill", "Das Ki___ spielt.", "nd", ["nt", "ndt", "ntt"], "Đứa trẻ chơi."), ("type", "con chó (kèm mạo từ)", "der Hund", []), ("listen", "klein", ["groß", "schön", "spät"]), ("t2n", "spät", ["früh", "klein", "groß"]),
   ("t2n", "früh", ["spät", "schön", "klein"]), ("match", [("der Hund", g("der Hund")), ("der Tag", g("der Tag")), ("das Kind", g("das Kind")), ("die Stadt", g("die Stadt")), ("das Brot", g("das Brot"))])]
-L["ue-l3"] = [("wb", "Buổi sáng tôi uống cà phê.", "Am Morgen trinke ich Kaffee.", ["trinkst", "Tee", "du"]), ("wbt", "Der Fluss ist groß und schön.", "Dòng sông to và đẹp.", ["nhỏ", "muộn", "không"]),
+L["ue-l3"] = [("concept", "de:concept:verb-second"), ("wb", "Buổi sáng tôi uống cà phê.", "Am Morgen trinke ich Kaffee.", ["trinkst", "Tee", "du"]), ("wbt", "Der Fluss ist groß und schön.", "Dòng sông to và đẹp.", ["nhỏ", "muộn", "không"]),
   ("fill", "Ich komme heute ___.", "spät", ["früh", "groß", "klein"], "Hôm nay tôi đến muộn."), ("conj", "Du ___ in Köln.", "wohnen", "pre:2s", "Bạn sống ở Köln."),
   ("conj", "Wir ___ am Wochenende.", "spielen", "pre:1p", "Cuối tuần chúng tôi chơi."), ("type", "Bạn đến sớm.", "Du kommst früh.", ["Du kommst früh"]), ("t2n", "der Fluss", ["die Straße", "die Tür", "die Stadt"]),
-  ("n2t", "spät", ["früh", "schön", "groß"])]
+  ("n2t", "spät", ["früh", "schön", "groß"]),
+  ("concept", "de:concept:place-prepositions"), ("fill", "Ich fahre ___ Berlin.", "nach", ["zu", "in", "an"], "Tôi đi Berlin."),
+  ("fill", "Ich bin heute ___ Hause.", "zu", ["nach", "in", "an"], "Hôm nay tôi ở nhà."),
+  ("wb", "Chúng tôi đi xem phim.", "Wir gehen ins Kino.", ["nach", "zu", "gehe"])]
 
 def build(lesson_id, steps):
     unit = lesson_id.split("-")[0]

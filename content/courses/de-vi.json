@@ -6042,6 +6042,9 @@
               ],
               "flow": [
                 {
+                  "concept": "de:concept:three-genders"
+                },
+                {
                   "exercise": "de-vi:uc-l0-e0"
                 },
                 {
@@ -6638,6 +6641,9 @@
               ],
               "flow": [
                 {
+                  "concept": "de:concept:questions"
+                },
+                {
                   "exercise": "de-vi:uc-l3-e0"
                 },
                 {
@@ -7165,6 +7171,9 @@
               ],
               "flow": [
                 {
+                  "concept": "de:concept:numbers"
+                },
+                {
                   "exercise": "de-vi:ud-l1-e0"
                 },
                 {
@@ -7386,6 +7395,9 @@
                 }
               ],
               "flow": [
+                {
+                  "concept": "de:concept:numbers"
+                },
                 {
                   "exercise": "de-vi:ud-l2-e0"
                 },
@@ -8373,9 +8385,61 @@
                     }
                   ],
                   "correct": 3
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:ue-l3-e8",
+                  "sentence": "Ich fahre ___ Berlin.",
+                  "translation": "Tôi đi Berlin.",
+                  "audioTarget": "Ich fahre nach Berlin.",
+                  "options": [
+                    "nach",
+                    "zu",
+                    "in",
+                    "an"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:ue-l3-e9",
+                  "sentence": "Ich bin heute ___ Hause.",
+                  "translation": "Hôm nay tôi ở nhà.",
+                  "audioTarget": "Ich bin heute zu Hause.",
+                  "options": [
+                    "nach",
+                    "zu",
+                    "in",
+                    "an"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:ue-l3-e10",
+                  "direction": "nativeToTarget",
+                  "prompt": "Chúng tôi đi xem phim.",
+                  "tokens": [
+                    "gehen",
+                    "nach",
+                    "Wir",
+                    "Kino",
+                    "gehe",
+                    "ins",
+                    "zu"
+                  ],
+                  "answer": [
+                    "Wir",
+                    "gehen",
+                    "ins",
+                    "Kino"
+                  ]
                 }
               ],
               "flow": [
+                {
+                  "concept": "de:concept:verb-second"
+                },
                 {
                   "exercise": "de-vi:ue-l3-e0"
                 },
@@ -8399,6 +8463,18 @@
                 },
                 {
                   "exercise": "de-vi:ue-l3-e7"
+                },
+                {
+                  "concept": "de:concept:place-prepositions"
+                },
+                {
+                  "exercise": "de-vi:ue-l3-e8"
+                },
+                {
+                  "exercise": "de-vi:ue-l3-e9"
+                },
+                {
+                  "exercise": "de-vi:ue-l3-e10"
                 }
               ]
             }
