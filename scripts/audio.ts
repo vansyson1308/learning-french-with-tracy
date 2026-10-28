@@ -541,6 +541,8 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   );
   console.log(`qa (${LANG}): ${rows.length} clips, ${failures} technical failures, ${review.length} clips for review (asr model: ${asrModel ?? "none"}) → ${reportPath}`);
   for (const v of voiceSummary) console.log(`  ${v.courseId ?? v.layer} ${v.voiceId}: meanWER=${v.meanWer} techFails=${v.technicalFailures}`);
+  // 2026-10-29: run 40758568130 failed on 3 clips the log never named — list every failure with its issues.
+  for (const r of rows.filter((x) => x.technical === "fail")) console.log(`  FAIL ${r.clipId} "${r.transcript}" (${r.durationSec}s, max ${r.maxVolumeDb}dB): ${r.technicalIssues.join("; ")}`);
   if (failures > 0 && arg("strict") === "true") fail("technical QA failures in strict mode");
 }
 
