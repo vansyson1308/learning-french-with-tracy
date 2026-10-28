@@ -44,8 +44,10 @@ describe("courseProfile", () => {
     expect(p.artifacts.lexiconDb).toMatch(/^assets\/lexicon\/fr-lexicon-v\d+-[0-9a-f]{16}\.db$/);
     expect(Object.keys(p.artifacts).sort()).toEqual([
       "attainment", "checkpoints", "claim", "clipAssets", "concepts", "dailyWords", "ids", "lexiconDb", "lexiconFallback",
-      "lexiconIndex", "listening", "objectives", "placement", "reading", "scenarios", "speech", "writing",
+      "lexiconIndex", "listening", "objectives", "placement", "reading", "scenarios", "speech", "stories", "storyAssets", "writing",
     ]);
+    // P5b: graded stories, a capability emitted only for courses that have them.
+    expect(p.capabilities.stories).toBe(true);
   });
 
   test("fr-vi (P2b) mirrors the French capabilities with its own native-dependent artifacts", () => {

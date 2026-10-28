@@ -30,7 +30,7 @@ export type Modality =
   | "speak"; // spoken attempts (P8) — evidence eligibility arrives with the speak skill
 
 /** Which surface produced the evidence (drives legacy-course translation). */
-export type EvidenceSource = "lesson" | "review" | "mistakes" | "today";
+export type EvidenceSource = "lesson" | "review" | "mistakes" | "today" | "story";
 
 export type ReviewEvidence = {
   cardKey: CardKey;

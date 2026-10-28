@@ -76,6 +76,8 @@ The **Today** tab builds one session from what your memory needs: reviews that a
 
 In French and `es-vi`, Today also brings **new words a day** from the course's word list — only from units you have reached, in the order the course teaches them. Set how many under Profile → Learning → **New words a day** (0–15, default 5; 0 turns it off).
 
+Below the session, **Story for today** suggests a short graded story (see *Read & listen* in section 20).
+
 ## 13. Review
 
 Practice → **Review words**, **Review listening** and **Review speaking** each open a review session for that skill. In a review you can tap **Undo this review** right after answering if you tapped the wrong thing. Skipped speaking reviews stay due.
@@ -110,6 +112,17 @@ Practice → **Have a conversation** starts a short spoken exchange with a partn
 ## 20. Reading
 
 Reading passages (section 3) are short notices, messages and texts. Tap any word to see its meaning. Answer the comprehension questions; in checkpoints the passage stays visible while you answer.
+
+### Read & listen (graded stories)
+
+French and `es-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
+
+In the reader:
+- **Listen** plays the story sentence by sentence and highlights the sentence being read; the speaker button on a line plays from there. A story whose audio is not bundled yet is read as text.
+- **Tap a word** for its meaning; the story's new words are underlined. **Learn this word** adds any other word to the word check at the end.
+- **Tap a sentence number** for its translation.
+- **I've read it** opens three questions about the story (feedback only — nothing is scored or stored).
+- **Check the new words** runs a short check: each new word is shown once, then asked once. Only this check updates your review schedule; reading itself never does.
 
 ## 21. Checkpoints
 

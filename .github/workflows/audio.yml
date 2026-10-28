@@ -173,8 +173,16 @@ jobs:
           ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT" --mode "$PLANMODE" --out "$PLAN")
           [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
           bun scripts/audio.ts plan "${ARGS[@]}"
-          # generate reuses every already-blessed content-addressed asset of the language (pack + lexicon folder)
-          EXISTING=$([ "$MODE_INPUT" = "generate" ] && [ -d "assets/audio/$LANG_INPUT" ] && echo "--existing assets/audio/$LANG_INPUT" || echo "")
+          # generate reuses every already-blessed content-addressed asset of the language
+          # (pack + lexicon folder, and the reception folder: clips and P5b story sentences
+          # keep their bytes, only new keys are synthesized)
+          EXISTING_DIRS=""
+          if [ "$MODE_INPUT" = "generate" ]; then
+            for d in "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception"; do
+              [ -d "$d" ] && EXISTING_DIRS="${EXISTING_DIRS:+$EXISTING_DIRS,}$d"
+            done
+          fi
+          EXISTING=$([ -n "$EXISTING_DIRS" ] && echo "--existing $EXISTING_DIRS" || echo "")
           bun scripts/audio.ts synth-script --lang "$LANG_INPUT" --plan "$PLAN" --dl "$DL" --wav "$WAV" --out "$OUT" $EXISTING > /tmp/synth.sh
           bash /tmp/synth.sh
           ls "$OUT" | wc -l

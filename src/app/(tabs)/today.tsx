@@ -18,6 +18,8 @@ import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { useCourseContent } from "@/lib/content";
 import { listenWordClipIndex } from "@/lib/reception/content";
 import { speakExerciseIndex } from "@/lib/speech/content";
+import { storyList } from "@/lib/stories/content";
+import { nextStory } from "@/lib/stories/selection";
 import {
   composeTodayFromSnapshot,
   TODAY_PRESETS,
@@ -84,6 +86,7 @@ export default function TodayScreen() {
   }
 
   const caughtUp = plan.steps.length === 0;
+  const storyPick = hasCapability(activeCourseId, "stories") ? nextStory(storyList(activeCourseId), course?.cards) : null;
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
@@ -203,6 +206,24 @@ export default function TodayScreen() {
             />
           </View>
         )}
+
+        {/* P5b finale slot option: the suggested graded story, after the session. */}
+        {storyPick ? (
+          <Pressable
+            style={styles.card}
+            onPress={() => router.push({ pathname: "/story/[id]", params: { id: storyPick.story.id } })}
+            accessibilityRole="button"
+            testID="today-story"
+          >
+            <View style={styles.cardHeader}>
+              <Ionicons name="book" size={24} color={colors.indigo} />
+              <Text style={styles.cardTitle}>{t("stories.todayTitle")}</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>
+              {t("stories.todayBody", { title: storyPick.story.title, n: storyPick.unknown.length })}
+            </Text>
+          </Pressable>
+        ) : null}
       </ScrollView>
     </SafeAreaView>
   );

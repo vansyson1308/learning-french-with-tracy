@@ -31,9 +31,10 @@ describe("release hygiene (P3g E)", () => {
     expect(offenders.filter((f) => !ALLOW.includes(f))).toEqual([]);
   });
 
-  test("every bundled pack/lexicon/reception audio file is referenced, and every reference exists", () => {
+  test("every bundled pack/lexicon/reception/story audio file is referenced, and every reference exists", () => {
     const referenced = new Set<string>();
-    const generated = files(path.join(ROOT, "src/content"), /\.ts$/).filter((f) => /[\\/](audio|reception)[\\/]/.test(f) || f.endsWith("audio-manifest.ts"));
+    // P5b: graded-story sentence clips are required from src/content/stories/<lang>-story-assets.ts.
+    const generated = files(path.join(ROOT, "src/content"), /\.ts$/).filter((f) => /[\\/](audio|reception|stories)[\\/]/.test(f) || f.endsWith("audio-manifest.ts"));
     for (const f of generated) {
       for (const m of readFileSync(f, "utf8").matchAll(/require\("([^"]+\.(?:mp3|wav))"\)/g)) {
         const abs = path.resolve(path.dirname(f), m[1]);

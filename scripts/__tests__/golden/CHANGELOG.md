@@ -581,6 +581,40 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
 
+## 2026-10-28 — P5b graded stories: new artifacts src/content/stories/* (es, fr, fr-vi + sentence-audio modules) and content/reports/{,es/}stories-coverage.json; course profiles and artifact modules of es-vi, fr-en, fr-vi gain the stories capability and imports. Existing French artifacts unchanged.
+
+- compile: changed  src/content/artifacts/es-vi.ts
+- compile: changed  src/content/artifacts/fr-en.ts
+- compile: changed  src/content/artifacts/fr-vi.ts
+- compile: changed  src/content/course-profiles.json
+- compile: new      content/reports/es/stories-coverage.json
+- compile: new      content/reports/stories-coverage.json
+- compile: new      src/content/stories/es-stories.json
+- compile: new      src/content/stories/es-story-assets.ts
+- compile: new      src/content/stories/fr-stories.json
+- compile: new      src/content/stories/fr-story-assets.ts
+- compile: new      src/content/stories/fr-vi-stories.json
+
+## 2026-10-28 — P5b graded stories: new artifacts src/content/stories/* (es, fr, fr-vi + sentence-audio modules) and content/reports/{,es/}stories-coverage.json; course profiles and artifact modules of es-vi, fr-en, fr-vi gain the stories capability and imports; Spanish story sentences keyed with storyPipelineVersion 4 (24 kbps). Existing French artifacts unchanged.
+
+- compile: changed  src/content/stories/es-stories.json
+
+## 2026-10-28 — audio.yml es generate (reception) run 40642656469
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/es/audio-census.json
+- compile: changed  content/reports/es/audio-quality.json
+- compile: changed  src/content/stories/es-stories.json
+- compile: changed  src/content/stories/es-story-assets.ts
+
+## 2026-10-28 — audio.yml fr generate (reception) run 40662829846
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  src/content/stories/fr-stories.json
+- compile: changed  src/content/stories/fr-story-assets.ts
+- compile: changed  src/content/stories/fr-vi-stories.json
+- compile: new      content/reports/audio-census.json
+- compile: new      content/reports/audio-quality.json
 ## 2026-10-28 — migration v8 (legacy re-key, P-unstick 2026-10-28): es-en wordStats/srs re-keyed surface -> es:w: ids in multi-course and v0-flat-legacy; toVersion 7 -> 8 in every persona; fr-en and every other course unchanged (verified by diff)
 
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json

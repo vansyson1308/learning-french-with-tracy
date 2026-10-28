@@ -137,7 +137,7 @@ export function todaySpeakBudget(reviewBudget: number, listenTaken: number): num
 
 type Item = { itemId: string; word: Word };
 
-function shuffle<T>(items: T[], rng: () => number): T[] {
+export function shuffle<T>(items: T[], rng: () => number): T[] {
   const out = [...items];
   for (let i = out.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1));
@@ -189,7 +189,7 @@ export function pathFrontierLesson(
  * unique options where the pool permits, shuffled answer position,
  * distractors never equal to (or displaying like) the answer.
  */
-function buildSelect(args: {
+export function buildSelect(args: {
   courseId: string;
   id: string;
   word: Word;

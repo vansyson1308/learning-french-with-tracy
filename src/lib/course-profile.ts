@@ -38,6 +38,8 @@ export type CourseCapabilities = {
   conversation: boolean;
   /** P3d: an exam track (format practice + timed mock); absent = none. */
   exam?: boolean;
+  /** P5b: graded stories ("Đọc & nghe"); absent = none. */
+  stories?: boolean;
 };
 
 export type CourseArtifactPaths = {
@@ -45,6 +47,9 @@ export type CourseArtifactPaths = {
   examTracks?: string;
   /** P3e: the daily-new-words syllabus (target-level delivery order + unlock units). */
   dailyWords?: string;
+  /** P5b: graded stories (per native language) + their sentence-audio module. */
+  stories?: string;
+  storyAssets?: string;
   ids?: string;
   lexiconIndex?: string;
   lexiconFallback?: string;

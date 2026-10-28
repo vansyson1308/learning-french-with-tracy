@@ -97,7 +97,8 @@
         "speaking": true,
         "writing": true,
         "conversation": true,
-        "exam": true
+        "exam": true,
+        "stories": true
       },
       "artifacts": {
         "ids": "src/content/ids/es.json",
@@ -117,7 +118,9 @@
         "writing": "src/content/writing/es-writing.json",
         "scenarios": "src/content/interaction/es-scenarios.json",
         "examTracks": "src/content/exam/es-exam-tracks.json",
-        "dailyWords": "src/content/lexicon/es-daily.json"
+        "dailyWords": "src/content/lexicon/es-daily.json",
+        "stories": "src/content/stories/es-stories.json",
+        "storyAssets": "src/content/stories/es-story-assets.ts"
       },
       "beta": true
     },
@@ -146,7 +149,8 @@
         "reading": true,
         "speaking": true,
         "writing": true,
-        "conversation": true
+        "conversation": true,
+        "stories": true
       },
       "artifacts": {
         "ids": "src/content/ids/fr.json",
@@ -165,7 +169,9 @@
         "speech": "src/content/speech/fr-speech-items.json",
         "writing": "src/content/writing/fr-writing.json",
         "scenarios": "src/content/interaction/fr-scenarios.json",
-        "dailyWords": "src/content/lexicon/fr-daily.json"
+        "dailyWords": "src/content/lexicon/fr-daily.json",
+        "stories": "src/content/stories/fr-stories.json",
+        "storyAssets": "src/content/stories/fr-story-assets.ts"
       }
     },
     "fr-vi": {
@@ -193,7 +199,8 @@
         "reading": true,
         "speaking": true,
         "writing": true,
-        "conversation": true
+        "conversation": true,
+        "stories": true
       },
       "artifacts": {
         "ids": "src/content/ids/fr.json",
@@ -212,7 +219,9 @@
         "speech": "src/content/speech/fr-vi-speech-items.json",
         "writing": "src/content/writing/fr-vi-writing.json",
         "scenarios": "src/content/interaction/fr-vi-scenarios.json",
-        "dailyWords": "src/content/lexicon/fr-daily.json"
+        "dailyWords": "src/content/lexicon/fr-daily.json",
+        "stories": "src/content/stories/fr-vi-stories.json",
+        "storyAssets": "src/content/stories/fr-story-assets.ts"
       },
       "audioCourseId": "fr-en"
     },

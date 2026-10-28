@@ -16,6 +16,8 @@ import speech from "../speech/fr-vi-speech-items.json";
 import writing from "../writing/fr-vi-writing.json";
 import scenarios from "../interaction/fr-vi-scenarios.json";
 import dailyWords from "../lexicon/fr-daily.json";
+import stories from "../stories/fr-vi-stories.json";
+import { STORY_SENTENCE_ASSETS as storyAssets } from "../stories/fr-story-assets";
 import type { CourseArtifacts } from "../../lib/content-registry";
 
-export const ARTIFACTS: CourseArtifacts = { ids, lexiconIndex, lexiconFallback, concepts, objectives, checkpoints, placement, attainment, claim, listening, reading, clipAssets, speech, writing, scenarios, dailyWords };
+export const ARTIFACTS: CourseArtifacts = { ids, lexiconIndex, lexiconFallback, concepts, objectives, checkpoints, placement, attainment, claim, listening, reading, clipAssets, speech, writing, scenarios, dailyWords, stories, storyAssets };
