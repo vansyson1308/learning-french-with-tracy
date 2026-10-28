@@ -3,7 +3,7 @@
 Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived/, 3205-entry pool; anchors: frequency-derived). Every line below is something a human reviewer must check before the de-vi course can compile — the Vietnamese draft markers block it by construction (validator).
 
 - Pack words: 55 · anchored: 0 · frequency-filled: 745
-- `TODO:vi` glosses: **335** · Vietnamese glosses from the Vietnamese Wiktionary (verify): 49 · bridged through English (verify): 416 · examples without a Vietnamese translation: 1728
+- `TODO:vi` glosses: **335** · Vietnamese glosses from the Vietnamese Wiktionary (verify): 49 · bridged through English (verify): 416 · examples without a Vietnamese translation: 1727
 - Auto-confusables: 97 pairs · unknown gender: 6 · topic unresolved: 304 · pack words outside the pool: 7 · no example: 4
 
 ## TODO:vi glosses (fill via the P3c authoring toolkit; drafts must be reviewed by a native speaker)
@@ -337,12 +337,12 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - de:w:sprengen
 - de:w:hafen
 - de:w:post
-- de:w:holm
 - de:w:auftreten
 - de:w:vertrag
 - de:w:mitleid
-- de:w:a-moll
-- de:w:knarre
+- de:w:japanisch
+- de:w:spanisch
+- de:w:einbruch
 
 ## Vietnamese glosses taken from the Vietnamese Wiktionary sense (verify each — first sense, first reading)
 
@@ -803,7 +803,6 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - de:w:pfarrer: "pastor" → "mục sư" (via the English Wiktionary translation table — verify)
 - de:w:strafe: "punishment" → "sự phạt" (via the English Wiktionary translation table — verify)
 - de:w:glocke: "bell" → "cái chuông" (via the English Wiktionary translation table — verify)
-- de:w:ampere: "ampere" → "ampere" (via the English Wiktionary translation table — verify)
 - de:w:vorfall: "incident" → "sự kiện" (via the English Wiktionary translation table — verify)
 - de:w:mischen: "mix" → "trộn" (via the English Wiktionary translation table — verify)
 - de:w:gedicht: "poem" → "bài thơ" (via the English Wiktionary translation table — verify)
@@ -812,8 +811,9 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - de:w:technologie: "technology" → "kỹ thuật" (via the English Wiktionary translation table — verify)
 - de:w:konzert: "concert" → "sự phối hợp" (via the English Wiktionary translation table — verify)
 - de:w:schokolade: "chocolate" → "sôcôla" (via the English Wiktionary translation table — verify)
-- de:w:weiser: "sage" → "cây xô thơm (lá dùng để ướp thơm thức ăn)" (via the English Wiktionary translation table — verify)
 - de:w:autor: "author" → "tác giả" (via the English Wiktionary translation table — verify)
+- de:w:rock: "skirt" → "vạt áo" (via the English Wiktionary translation table — verify)
+- de:w:husten: "cough" → "ho" (via the English Wiktionary translation table — verify)
 
 ## Pack words absent from the candidate pool
 
@@ -2527,8 +2527,6 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - de:w:post: "Ich war gerade auf/bei der Post."
 - de:w:mulde: "Tom machte sich eine Mulde in den Kartoffelbrei."
 - de:w:mulde: "Tom machte eine Mulde in der Mitte seines Kartoffelbreis."
-- de:w:holm: "Aus mir wird kein Sherlock Holmes."
-- de:w:holm: "Ich würde gerne Herrn Holmes sehen."
 - de:w:auftreten: "Dieses Problem kann auftreten, wenn Cookies im Browser deaktiviert sind."
 - de:w:auftreten: "Die ersten Symptome treten meistens in der späten Jugend auf."
 - de:w:auftreten: "Dieser Künstler tritt überall in Europa auf."
@@ -2541,10 +2539,6 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - de:w:strafe: "Strafe muss sein."
 - de:w:glocke: "Die Glocke hat noch nicht geläutet."
 - de:w:glocke: "Die Glocke hatte schon geläutet, als ich in der Schule ankam."
-- de:w:a-moll: "Ich hab die A58 genommen."
-- de:w:a-moll: "Ziehe eine Linie von A nach B."
-- de:w:ampere: "Ich hab die A58 genommen."
-- de:w:ampere: "Ziehe eine Linie von A nach B."
 - de:w:gesundheit: "Nichts ist besser als Gesundheit."
 - de:w:gesundheit: "Gesundheit ist wichtiger als Reichtum."
 - de:w:vorfall: "Wann ereignete sich der Vorfall?"
@@ -2553,8 +2547,6 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - de:w:mischen: "Öl und Wasser mischen sich nicht."
 - de:w:gedicht: "Sie hat viele Gedichte geschrieben."
 - de:w:gedicht: "Ich muss dieses Gedicht auswendig lernen."
-- de:w:knarre: "Tom starb mit einer Knarre in der Hand."
-- de:w:knarre: "Tom hörte über sich die Bodenbretter knarren."
 - de:w:garen: "Wir haben die Kartoffeln im Backofen gegart."
 - de:w:runde: "Ich hab' schonmal die nächste Runde bestellt."
 - de:w:runde: "in kleiner Runde"
@@ -2565,12 +2557,19 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - de:w:konzert: "Das Konzert beginnt gerade."
 - de:w:schokolade: "Schokolade schmeckt süß."
 - de:w:schokolade: "Wer will heiße Schokolade?"
-- de:w:weiser: "Sie ist sehr weise."
-- de:w:weiser: "Bitte weise mich auf meinen Fehler hin."
 - de:w:autor: "Der Autor ist Brasilianer."
 - de:w:autor: "In seiner Fantasie war er ein berühmter Autor."
 - de:w:palast: "Diese Ruinen waren einmal ein prächtiger Palast."
 - de:w:palast: "Dieser Palast wurde für den reichen König erbaut."
+- de:w:japanisch: "Sie sang ein japanisches Lied für uns."
+- de:w:spanisch: "Sie spricht gut Spanisch."
+- de:w:spanisch: "Spanisch ist ihre Muttersprache."
+- de:w:rock: "Ich mag Rock."
+- de:w:rock: "Sie mag kurze Röcke."
+- de:w:husten: "Hast du Husten?"
+- de:w:husten: "Ich habe Husten und ein bisschen Fieber."
+- de:w:einbruch: "Die Verbrecherbande plante einen Einbruch."
+- de:w:einbruch: "Er kam nach Einbruch der Dunkelheit zurück."
 
 ## Auto-generated confusable pairs (same part of speech, close spelling) — keep, drop or extend
 
@@ -3532,23 +3531,22 @@ Authored 800 lexemes from the committed ETL evidence (content/de/lexicon/derived
 - Hafen: "harbour/harbor; port; haven" → "the harbour/harbor"
 - Post: "mail, post (sent and received letters etc.)" → "the mail, post"
 - Mulde: "hollow (lowered area on a surface)" → "the hollow"
-- Holm: "rail, bar (on which to hold on to)" → "the rail, bar"
 - auftreten: "to occur, appear, arise (suddenly)" → "to occur, appear"
 - Vertrag: "contract, agreement" → "the contract, agreement"
 - Pfarrer: "pastor (clergyman who serves a parish)" → "the pastor"
 - Mitleid: "pity, compassion" → "the pity, compassion"
 - Strafe: "punishment" → "the punishment"
 - Glocke: "bell (percussive instrument)" → "the bell"
-- Ampere: "ampere (unit of electrical current)" → "the ampere"
 - Gesundheit: "health (state of being in good physical condition and free from illness)" → "the health"
 - Vorfall: "incident (event or occurrence)" → "the incident"
 - Gedicht: "poem" → "the poem"
-- Knarre: "ratchet, gragger, noisemaker" → "the ratchet, gragger"
 - garen: "cook (prepare (food) for eating)" → "to cook"
 - Runde: "round (of drinks)" → "the round"
 - Technologie: "technology" → "the technology"
 - Konzert: "concert (musical event)" → "the concert"
 - Schokolade: "chocolate (food made from ground roasted cocoa beans)" → "the chocolate"
-- Weiser: "sage" → "the sage"
 - Autor: "author" → "the author"
 - Palast: "palace" → "the palace"
+- japanisch: "Japanese (of or relating to Japan, the Japanese people, or the Japanese language)" → "Japanese"
+- Rock: "skirt (garment)" → "the skirt"
+- Einbruch: "burglary, break-in" → "the burglary, break-in"
