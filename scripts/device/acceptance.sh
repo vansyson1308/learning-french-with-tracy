@@ -89,15 +89,44 @@ wait_boot() {
   return 1
 }
 
+system_pid() { adb_t shell pidof system_server | tr -d '\r'; }
+
+# After `ctl.restart zygote`, sys.boot_completed still holds the previous
+# boot's 1 and `pm` answers long before ActivityManager and WindowManager are
+# up: anything sent then (a force-stop, an install) can crash the half-started
+# system_server (API 30: NPE in onForceStopPackage, then a restart loop). So
+# the property is cleared before the restart — ActivityManager sets it again
+# when the new system_server has finished booting — and that system_server
+# must be a new process that stays up.
+wait_framework() { # system_server pid before the restart
+  local old=$1 pid
+  for _ in $(seq 1 120); do
+    pid=$(system_pid)
+    if [ -n "$pid" ] && [ "$pid" != "$old" ] \
+      && [ "$(adb_t shell getprop sys.boot_completed | tr -d '\r')" = 1 ] \
+      && adb_t shell pm path android >/dev/null 2>&1; then
+      sleep 15
+      [ "$(system_pid)" = "$pid" ] && return 0
+    fi
+    sleep 2
+  done
+  return 1
+}
+
 set_locale() { # vi-VN | en-US — needs a rootable (google_apis) image
   adb root >/dev/null 2>&1; wait_boot
-  adb shell "setprop persist.sys.locale $1; setprop ctl.restart zygote"
-  sleep 5; wait_boot; sleep 15
-  # A zygote restart can leave a transient "System UI isn't responding" dialog.
-  adb shell am broadcast -a android.intent.action.CLOSE_SYSTEM_DIALOGS >/dev/null 2>&1
-  sleep 10; dismiss_anr
+  local now old
+  now=$(adb_t shell getprop persist.sys.locale | tr -d '\r')
+  if [ "$now" != "$1" ]; then  # a restart only when the locale changes
+    old=$(system_pid)
+    adb shell "setprop persist.sys.locale $1; setprop sys.boot_completed 0; setprop ctl.restart zygote"
+    wait_framework "$old" || return 1
+    # A zygote restart can leave a transient "System UI isn't responding" dialog.
+    adb shell am broadcast -a android.intent.action.CLOSE_SYSTEM_DIALOGS >/dev/null 2>&1
+    sleep 10; dismiss_anr
+  fi
   start_logcat
-  local now; now=$(adb shell getprop persist.sys.locale | tr -d '\r')
+  now=$(adb_t shell getprop persist.sys.locale | tr -d '\r')
   [ "$now" = "$1" ]
 }
 

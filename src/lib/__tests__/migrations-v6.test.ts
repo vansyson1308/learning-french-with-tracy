@@ -17,13 +17,13 @@ const v5 = () => migrateProgress(clone(v3Fixture.state), 3, NOW, 5);
 afterEach(() => __setMigrationFailureForTests(null));
 
 describe("v5 → v6: daily new words setting", () => {
-  test("PERSIST_VERSION is 6", () => {
-    expect(PERSIST_VERSION).toBe(6);
+  test("PERSIST_VERSION is at least 6", () => {
+    expect(PERSIST_VERSION).toBeGreaterThanOrEqual(6);
   });
 
   test("an existing learner starts at 5; nothing else changes", () => {
     const before = v5();
-    const out = migrateProgress(v5(), 5, NOW);
+    const out = migrateProgress(v5(), 5, NOW, 6);
     expect(before.dailyNewWords).toBeUndefined();
     expect(out.dailyNewWords).toBe(5);
     const { dailyNewWords: _d, ...rest } = out;
@@ -31,23 +31,23 @@ describe("v5 → v6: daily new words setting", () => {
   });
 
   test("a valid value is kept, an invalid one clamped", () => {
-    expect(migrateProgress({ ...v5(), dailyNewWords: 12 }, 5, NOW).dailyNewWords).toBe(12);
-    expect(migrateProgress({ ...v5(), dailyNewWords: 99 }, 5, NOW).dailyNewWords).toBe(15);
-    expect(migrateProgress({ ...v5(), dailyNewWords: "x" }, 5, NOW).dailyNewWords).toBe(5);
+    expect(migrateProgress({ ...v5(), dailyNewWords: 12 }, 5, NOW, 6).dailyNewWords).toBe(12);
+    expect(migrateProgress({ ...v5(), dailyNewWords: 99 }, 5, NOW, 6).dailyNewWords).toBe(15);
+    expect(migrateProgress({ ...v5(), dailyNewWords: "x" }, 5, NOW, 6).dailyNewWords).toBe(5);
   });
 
   test("idempotent", () => {
-    const once = migrateProgress(v5(), 5, NOW);
-    expect(migrateProgress(clone(once), 5, NOW)).toEqual(once);
+    const once = migrateProgress(v5(), 5, NOW, 6);
+    expect(migrateProgress(clone(once), 5, NOW, 6)).toEqual(once);
   });
 
   test("the failure seam propagates", () => {
     __setMigrationFailureForTests(6);
-    expect(() => migrateProgress(v5(), 5, NOW)).toThrow();
+    expect(() => migrateProgress(v5(), 5, NOW, 6)).toThrow();
   });
 
   test("backup invariants accept 0–15 and reject anything else", () => {
-    const state = migrateProgress(v5(), 5, NOW);
+    const state = migrateProgress(v5(), 5, NOW, 6);
     const problems = (s: unknown) => runInvariants(s as never, NOW);
     expect(problems(state).join("|")).not.toContain("daily new words");
     expect(problems({ ...state, dailyNewWords: 16 }).join("|")).toContain("invalid daily new words");

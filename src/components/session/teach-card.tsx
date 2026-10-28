@@ -21,6 +21,7 @@ import { exampleTexts } from "@/lib/lexicon/example-text";
 import { displayPronunciation } from "@/lib/session/panel";
 import { makeThemedStyles, radius } from "@/lib/theme";
 import type { Word } from "@/lib/types";
+import { useReadingAid } from "@/lib/use-reading-aid";
 
 export function TeachCard({
   word,
@@ -34,6 +35,7 @@ export function TeachCard({
   const styles = useStyles();
   const { t } = useT();
   const example = exampleTexts(courseId, meta?.example);
+  const reading = useReadingAid(courseId)(word.target);
 
   // One auto-play when the word appears; the speaker button replays.
   useEffect(() => {
@@ -55,6 +57,7 @@ export function TeachCard({
           {word.emoji}
         </Text>
         <Text style={styles.target}>{word.target}</Text>
+        {reading ? <Text style={styles.pron} testID="teach-reading">{reading}</Text> : null}
         <Text style={styles.native}>{word.native}</Text>
         {meta?.pronunciation ? (
           <Text style={styles.pron} accessibilityLabel={t("teach.pronunciation")}>

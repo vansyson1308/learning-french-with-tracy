@@ -164,10 +164,11 @@
         "speechNoticeAckAt",
         "uiLanguage",
         "assessmentByTarget",
-        "dailyNewWords"
+        "dailyNewWords",
+        "readingAid"
       ]
     },
-    "persistVersion": 6
+    "persistVersion": 7
   },
   "fromVersion": 3,
   "invariants": [],
@@ -371,6 +372,7 @@
     "heartsUpdatedAt": 1767000000000,
     "lastActiveDay": "2026-01-10",
     "onboardingDone": true,
+    "readingAid": {},
     "reviewLog": [
       {
         "assisted": false,
@@ -738,11 +740,12 @@
       "heartsUpdatedAt": 1767000000000,
       "lastActiveDay": "2026-01-10",
       "onboardingDone": true,
+      "readingAid": {},
       "speechNoticeAckAt": 1781265600000,
       "streak": 5,
       "themePreference": "dark",
       "uiLanguage": "system"
     }
   },
-  "toVersion": 6
+  "toVersion": 7
 }

@@ -84,6 +84,12 @@ export type CourseProfile = {
   artifacts: CourseArtifactPaths;
   /** P3d: "standalone" = an inherited course kept beside its target's primary course (no rich layers). */
   role?: "standalone";
+  /**
+   * P4a: not offered in onboarding — listed under "Other courses" in the
+   * course switcher (a standalone course, or a basic pack whose target has
+   * an A1-claimable Vietnamese course). Migration-free: no learner data moves.
+   */
+  hiddenFromOnboarding?: true;
   /** P3e §8: content still under native review — the Learn tab shows a beta banner. */
   beta?: true;
   /**

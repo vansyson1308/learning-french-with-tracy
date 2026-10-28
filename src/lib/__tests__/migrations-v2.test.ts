@@ -22,8 +22,8 @@ function v1Of(fixtureState: unknown): PersistedProgress {
 }
 
 describe("v1 → v2 migration: French moves to FSRS", () => {
-  test("PERSIST_VERSION is 6 (P3e)", () => {
-    expect(PERSIST_VERSION).toBe(6);
+  test("PERSIST_VERSION is 7 (P4a)", () => {
+    expect(PERSIST_VERSION).toBe(7);
   });
 
   test("rich user: srs → cards under stable ids, srsLegacy kept, due preserved", () => {

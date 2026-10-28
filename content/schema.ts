@@ -624,6 +624,13 @@ export const CourseProfileOverrideSchema = z.strictObject({
    */
   legacyLessonShapes: z.boolean().optional(),
   /**
+   * P4a: an inherited upstream "basic pack" (5 units of the Lingo Lessons
+   * template, English-only). Its word lists must not repeat across units,
+   * and onboarding hides it once a `<target>-vi` course of the same target
+   * is A1-claimable (it stays under "Other courses").
+   */
+  basicPack: z.boolean().optional(),
+  /**
    * P3e §8: while no `review` is recorded, the app labels the course
    * "beta — content under review" (es-vi until the owner signs Tier-1 vi).
    * The label disappears by itself once `review` is added.

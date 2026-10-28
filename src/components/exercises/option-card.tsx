@@ -33,6 +33,8 @@ function stateColors(
 
 type OptionCardProps = {
   text: string;
+  /** P4a reading aid (romanization) shown under the text. */
+  reading?: string;
   emoji?: string;
   state: OptionState;
   onPress: () => void;
@@ -42,6 +44,7 @@ type OptionCardProps = {
 
 export function OptionCard({
   text,
+  reading,
   emoji,
   state,
   onPress,
@@ -59,7 +62,7 @@ export function OptionCard({
       }}
       disabled={disabled}
       accessibilityRole="button"
-      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${cue.label ? t(cue.label) : ""}`}
+      accessibilityLabel={`${emoji ? `${emoji} ` : ""}${text}${reading ? ` (${reading})` : ""}${cue.label ? t(cue.label) : ""}`}
       testID="option-card"
       accessibilityState={{ disabled: !!disabled, selected: state === "selected" }}
       style={({ pressed }) => [
@@ -75,6 +78,11 @@ export function OptionCard({
       {emoji ? <Text style={styles.emoji}>{emoji}</Text> : null}
       <View style={styles.textWrap}>
         <Text style={[styles.text, { color: c.text }]}>{text}</Text>
+        {reading ? (
+          <Text style={[styles.reading, { color: c.text }]} testID="option-reading">
+            {reading}
+          </Text>
+        ) : null}
       </View>
       {cue.icon ? (
         <Ionicons name={cue.icon} size={20} color={c.text} style={styles.cueIcon} />
@@ -108,4 +116,5 @@ const styles = StyleSheet.create({
   textWrap: { flexShrink: 1 },
   cueIcon: { marginLeft: 4 },
   text: { fontSize: 17, fontWeight: "700", textAlign: "center" },
+  reading: { fontSize: 13, fontWeight: "500", textAlign: "center", opacity: 0.75, marginTop: 2 },
 });

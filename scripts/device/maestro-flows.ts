@@ -71,7 +71,11 @@ const shot = (name: string) => [`- takeScreenshot: ${q(name)}`];
 const openLink = (route: string) => [`- openLink: ${q(`${SCHEME}://${route}`)}`];
 // centerElement: an element merely inside the screen can sit under the API 30
 // navigation bar (edge-to-edge), where a tap lands on the bar instead.
-const SCROLL_END = [`    direction: DOWN`, `    centerElement: true`];
+// timeout: an item at the end of a list cannot be centred; Maestro accepts it
+// after five centering swipes, and on a screen that never settles (the exam
+// timer ticks every second) each swipe waits 2-4 s — the 20 s default ran out
+// just before that fallback.
+const SCROLL_END = [`    direction: DOWN`, `    centerElement: true`, `    timeout: 60000`];
 const scrollTo = (id: string) => [`- scrollUntilVisible:`, `    element:`, `      id: ${q(id)}`, ...SCROLL_END];
 const TAP_CONTINUE = tapId("session-continue");
 

@@ -17,9 +17,9 @@ export default function CoursesScreen() {
   const { t, lang, languageName } = useT();
   const { activeCourseId, setActiveCourse, courses } = useProgress();
   const all = orderedCoursesFor(lang);
-  // P3d: inherited standalone courses are listed last, under their own heading.
-  const list = all.filter((c) => courseProfile(c.id).role !== "standalone");
-  const others = all.filter((c) => courseProfile(c.id).role === "standalone");
+  // P3d/P4a: courses hidden from onboarding (standalone, retired basic packs) are listed last, under their own heading.
+  const list = all.filter((c) => courseProfile(c.id).hiddenFromOnboarding !== true);
+  const others = all.filter((c) => courseProfile(c.id).hiddenFromOnboarding === true);
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>

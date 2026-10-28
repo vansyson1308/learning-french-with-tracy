@@ -326,6 +326,8 @@ export type MessageKey =
   | "profile.privacy"
   | "profile.privacyHint"
   | "profile.privacyLabel"
+  | "profile.readingAid"
+  | "profile.readingAidHint"
   | "profile.replaceBody"
   | "profile.replaceTitle"
   | "profile.stat.lessonsDone"
@@ -488,4 +490,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 486;
+export const MESSAGE_KEY_COUNT = 488;

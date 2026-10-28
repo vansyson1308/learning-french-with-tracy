@@ -102,3 +102,17 @@ First release.
 
 Per `SCREENSHOT_MANIFEST.md`: captured from the final RC on device/
 simulator, no mock UI, no placeholder art, current build number recorded.
+
+## Course list for the listing — draft (P4a, rewritten in P6a)
+
+The v1.0 listing is Vietnamese-first (P6a writes it). As of P4a the app ships:
+
+| Course | Explained in | Level / status | Listing wording |
+|---|---|---|---|
+| French (`fr-vi`, `fr-en`) | Vietnamese, English | full A1 course, CEFR-aligned estimate | main course |
+| Spanish (`es-vi`) | Vietnamese | full A1 course + DELE A1 practice, beta until reviewed | main course |
+| Spanish (`es-en`) | English | basic pack, under "Other courses" | "simpler beginner pack" |
+| German, Italian, Portuguese, Japanese, Korean, Chinese (`*-en`) | English | basic packs (5 units); reading aid for ja/ko/zh | "simpler beginner packs" until their Vietnamese course ships |
+
+Never list a basic pack as a full course or with a level claim; a course moves
+to "main course" only when its claim gate says A1 is claimable.

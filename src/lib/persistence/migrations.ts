@@ -19,6 +19,9 @@
  *   v6  P3e: `dailyNewWords` arrives — how many new words the TODAY
  *       session introduces from the course's syllabus each day (0–15);
  *       every existing learner starts at the default (5). Nothing else moves.
+ *   v7  P4a: `readingAid` arrives — the per-course "show reading aid"
+ *       switch (courseId → boolean; absent = on). Every existing learner
+ *       starts with an empty map (all defaults). Nothing else moves.
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -41,6 +44,7 @@ import { FR_COURSE_ID, frItemIdFor, isWordMappedFrSurface } from "../learning/id
 import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 import { normalizeDailyNewWords } from "../learning/daily-words-setting";
+import { normalizeReadingAid, type ReadingAidSettings } from "../learning/reading-aid";
 import { estimateFsrsCardFromSm2 } from "../learning/sm2-migration";
 import type { SrsEntry } from "../srs";
 import {
@@ -48,7 +52,7 @@ import {
   type PersistedAssessmentState,
 } from "../assessment/types";
 
-export const PERSIST_VERSION = 6;
+export const PERSIST_VERSION = 7;
 
 /**
  * The course the single v3 `assessment` container belonged to. A MIGRATION
@@ -120,6 +124,8 @@ export type PersistedProgress = {
   uiLanguage?: UiLanguagePreference;
   /** Daily new words from the syllabus, 0–15 (v6, P3e). */
   dailyNewWords?: number;
+  /** Per-course reading-aid switch, absent key = on (v7, P4a). */
+  readingAid?: ReadingAidSettings;
 } & Record<string, unknown>;
 
 /** Route ids that practice sessions historically wrote into completedLessons. */
@@ -411,6 +417,15 @@ function migrateV5toV6(persisted: PersistedProgress): PersistedProgress {
   return { ...persisted, dailyNewWords: normalizeDailyNewWords(persisted.dailyNewWords) };
 }
 
+/**
+ * v6 → v7 (P4a): add `readingAid` (courseId → boolean). A map already
+ * present (re-import of a v7 backup routed through the chain) keeps its
+ * valid entries. Idempotent; nothing else changes.
+ */
+function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
+  return { ...persisted, readingAid: normalizeReadingAid(persisted.readingAid) };
+}
+
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
@@ -442,6 +457,10 @@ export function migrateProgress(
   if (fromVersion < 6 && toVersion >= 6) {
     checkFailureSeam(6);
     state = migrateV5toV6(state as PersistedProgress);
+  }
+  if (fromVersion < 7 && toVersion >= 7) {
+    checkFailureSeam(7);
+    state = migrateV6toV7(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }

@@ -32,7 +32,7 @@ import {
   CourseProfileOverrideSchema,
 } from "../../content/schema";
 import { resolveCourseRoles, type CourseRef, type CourseRole, type CourseRoles } from "./course-roles";
-import { lessonShapeErrors } from "./lesson-shape";
+import { lessonShapeErrors, templateDefectErrors } from "./lesson-shape";
 import { buildPlugin, type BuildLanguagePlugin } from "./languages";
 
 export const REPO_ROOT = path.resolve(__dirname, "..", "..");
@@ -195,7 +195,7 @@ export function courseIsBeta(courseId: string): boolean {
 }
 
 /** A boolean flag of a course's profile (content/courses/<id>.profile.json), undefined when absent. */
-export function courseProfileFlag(courseId: string, flag: "legacyLessonShapes" | "allowUnreviewed"): boolean | undefined {
+export function courseProfileFlag(courseId: string, flag: "legacyLessonShapes" | "allowUnreviewed" | "basicPack"): boolean | undefined {
   const rel = `content/courses/${courseId}.profile.json`;
   if (!existsSync(safeResolve(rel))) return undefined;
   const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
@@ -454,6 +454,9 @@ export function validateContent(): ValidationResult {
     const audioCourseId = roles.standalone.some((p) => p.id === pack.id) ? pack.id : (roles.primary?.id ?? pack.id);
     errors.push(...objectiveMetadataErrors(pack, layers.assessment));
     if (pack.testOnly !== true && courseProfileFlag(pack.id, "legacyLessonShapes") !== true) errors.push(...lessonShapeErrors(pack));
+    if (pack.testOnly !== true) {
+      errors.push(...templateDefectErrors(pack, { checkWordRepeats: courseProfileFlag(pack.id, "basicPack") === true }));
+    }
 
     const ids = new Set<string>();
     for (const section of pack.sections)

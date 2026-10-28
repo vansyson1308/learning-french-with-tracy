@@ -298,7 +298,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u0-l0-e8",
-                  "sentence": "저는___.",
+                  "sentence": "저는 ___.",
                   "translation": "I am a man.",
                   "audioTarget": "저는 남자예요.",
                   "options": [
@@ -343,7 +343,7 @@
                   "audioTarget": "저는 여자예요.",
                   "answer": "I am a woman.",
                   "alternatives": [
-                    "jeo-neun yeoja-yeyo"
+                    "I'm a woman."
                   ]
                 }
               ]
@@ -551,7 +551,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u0-l1-e8",
-                  "sentence": "___소년이에요.",
+                  "sentence": "___ 소년이에요.",
                   "translation": "I am a boy.",
                   "audioTarget": "저는 소년이에요.",
                   "options": [
@@ -596,7 +596,7 @@
                   "audioTarget": "저는 소녀예요.",
                   "answer": "I am a girl.",
                   "alternatives": [
-                    "jeo-neun sonyeo-yeyo"
+                    "I'm a girl."
                   ]
                 }
               ]
@@ -802,7 +802,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u0-l2-e8",
-                  "sentence": "저는___먹어요.",
+                  "sentence": "저는 ___ 먹어요.",
                   "translation": "I eat an apple.",
                   "audioTarget": "저는 사과를 먹어요.",
                   "options": [
@@ -847,7 +847,8 @@
                   "audioTarget": "저는 빵을 먹어요.",
                   "answer": "I eat bread.",
                   "alternatives": [
-                    "jeo-neun ppang-eul meo-geo-yo"
+                    "I'm eating bread.",
+                    "I eat some bread."
                   ]
                 }
               ]
@@ -1051,7 +1052,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u0-l3-e8",
-                  "sentence": "저는물을___.",
+                  "sentence": "저는 물을 ___.",
                   "translation": "I drink water.",
                   "audioTarget": "저는 물을 마셔요.",
                   "options": [
@@ -1096,7 +1097,8 @@
                   "audioTarget": "저는 우유를 마셔요.",
                   "answer": "I drink milk.",
                   "alternatives": [
-                    "jeo-neun uyu-reul masyeo-yo"
+                    "I'm drinking milk.",
+                    "I drink some milk."
                   ]
                 }
               ]
@@ -1388,7 +1390,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u1-l0-e8",
-                  "sentence": "안녕하세요,잘___?",
+                  "sentence": "안녕하세요, 잘 ___?",
                   "translation": "Hello, how are you?",
                   "audioTarget": "안녕하세요, 잘 지내세요?",
                   "options": [
@@ -1433,7 +1435,9 @@
                   "audioTarget": "네, 잘 지내요.",
                   "answer": "Yes, I am doing well.",
                   "alternatives": [
-                    "ne, jal jinaeyo."
+                    "Yes, I'm doing well.",
+                    "Yes, I'm well.",
+                    "Yes, I am well."
                   ]
                 }
               ]
@@ -1637,7 +1641,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u1-l1-e8",
-                  "sentence": "안녕히___.",
+                  "sentence": "안녕히 ___.",
                   "translation": "Goodbye (to someone leaving).",
                   "audioTarget": "안녕히 가세요.",
                   "options": [
@@ -1682,7 +1686,8 @@
                   "audioTarget": "좋은 아침입니다.",
                   "answer": "Good morning.",
                   "alternatives": [
-                    "joeun achimimnida."
+                    "Good morning!",
+                    "Morning."
                   ]
                 }
               ]
@@ -1886,7 +1891,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u1-l2-e8",
-                  "sentence": "좋은___보내세요.",
+                  "sentence": "좋은 ___ 보내세요.",
                   "translation": "Have a good evening.",
                   "audioTarget": "좋은 저녁 보내세요.",
                   "options": [
@@ -1931,7 +1936,8 @@
                   "audioTarget": "안녕히 주무세요.",
                   "answer": "Good night.",
                   "alternatives": [
-                    "annyeonghi jumuseyo."
+                    "Good night!",
+                    "Sleep well."
                   ]
                 }
               ]
@@ -2141,7 +2147,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u1-l3-e8",
-                  "sentence": "___,선생님.",
+                  "sentence": "___, 선생님.",
                   "translation": "Thank you, teacher.",
                   "audioTarget": "감사합니다, 선생님.",
                   "options": [
@@ -2186,7 +2192,9 @@
                   "audioTarget": "죄송합니다, 다시 한 번 말해 주세요.",
                   "answer": "I'm sorry, please say it again.",
                   "alternatives": [
-                    "joesonghamnida, dasi han beon malhae juseyo."
+                    "I am sorry, please say it again.",
+                    "Sorry, please say it once more.",
+                    "I'm sorry, could you say it again?"
                   ]
                 }
               ]
@@ -2204,12 +2212,6 @@
               "native": "the rice",
               "emoji": "🍚",
               "romanization": "bap"
-            },
-            {
-              "target": "빵",
-              "native": "the bread",
-              "emoji": "🍞",
-              "romanization": "ppang"
             },
             {
               "target": "고기",
@@ -2252,18 +2254,6 @@
               "native": "the juice",
               "emoji": "🧃",
               "romanization": "juseu"
-            },
-            {
-              "target": "물",
-              "native": "the water",
-              "emoji": "💧",
-              "romanization": "mul"
-            },
-            {
-              "target": "우유",
-              "native": "the milk",
-              "emoji": "🥛",
-              "romanization": "uyu"
             },
             {
               "target": "차",
@@ -2472,7 +2462,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u2-l0-e8",
-                  "sentence": "저는___먹어요.",
+                  "sentence": "저는 ___ 먹어요.",
                   "translation": "I eat rice.",
                   "audioTarget": "저는 밥을 먹어요.",
                   "options": [
@@ -2517,7 +2507,7 @@
                   "audioTarget": "저는 커피를 마셔요.",
                   "answer": "I drink coffee.",
                   "alternatives": [
-                    "jeoneun keopireul masyeoyo"
+                    "I'm drinking coffee."
                   ]
                 }
               ]
@@ -2717,7 +2707,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u2-l1-e8",
-                  "sentence": "___주세요.",
+                  "sentence": "___ 주세요.",
                   "translation": "Coffee, please.",
                   "audioTarget": "커피를 주세요.",
                   "options": [
@@ -2762,7 +2752,9 @@
                   "audioTarget": "물 주세요.",
                   "answer": "Water, please.",
                   "alternatives": [
-                    "mul juseyo"
+                    "Water please.",
+                    "Please give me water.",
+                    "Some water, please."
                   ]
                 }
               ]
@@ -2966,7 +2958,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u2-l2-e8",
-                  "sentence": "저는___먹어요.",
+                  "sentence": "저는 ___ 먹어요.",
                   "translation": "I eat bread.",
                   "audioTarget": "저는 빵을 먹어요.",
                   "options": [
@@ -3011,7 +3003,7 @@
                   "audioTarget": "저는 차를 마셔요.",
                   "answer": "I drink tea.",
                   "alternatives": [
-                    "jeoneun chareul masyeoyo"
+                    "I'm drinking tea."
                   ]
                 }
               ]
@@ -3215,7 +3207,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u2-l3-e8",
-                  "sentence": "저는과일을___.",
+                  "sentence": "저는 과일을 ___.",
                   "translation": "I like fruit.",
                   "audioTarget": "저는 과일을 좋아해요.",
                   "options": [
@@ -3260,7 +3252,7 @@
                   "audioTarget": "저는 우유를 마셔요.",
                   "answer": "I drink milk.",
                   "alternatives": [
-                    "jeoneun uyureul masyeoyo"
+                    "I'm drinking milk."
                   ]
                 }
               ]
@@ -3550,7 +3542,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u3-l0-e8",
-                  "sentence": "개는___.",
+                  "sentence": "개는 ___.",
                   "translation": "The dog is cute.",
                   "audioTarget": "개는 귀여워요.",
                   "options": [
@@ -3595,7 +3587,8 @@
                   "audioTarget": "고양이는 작아요.",
                   "answer": "The cat is small.",
                   "alternatives": [
-                    "goyangineun jagayo"
+                    "The cat's small.",
+                    "Cats are small."
                   ]
                 }
               ]
@@ -3807,7 +3800,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u3-l1-e8",
-                  "sentence": "말은___.",
+                  "sentence": "말은 ___.",
                   "translation": "The horse is big.",
                   "audioTarget": "말은 커요.",
                   "options": [
@@ -3852,7 +3845,8 @@
                   "audioTarget": "새는 하늘을 날아요.",
                   "answer": "The bird flies in the sky.",
                   "alternatives": [
-                    "saeneun haneureul narayo"
+                    "Birds fly in the sky.",
+                    "The bird is flying in the sky."
                   ]
                 }
               ]
@@ -4064,7 +4058,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u3-l2-e8",
-                  "sentence": "물고기는___살아요.",
+                  "sentence": "물고기는 ___ 살아요.",
                   "translation": "The fish lives in the water.",
                   "audioTarget": "물고기는 물에 살아요.",
                   "options": [
@@ -4109,7 +4103,8 @@
                   "audioTarget": "소는 우유를 줘요.",
                   "answer": "The cow gives milk.",
                   "alternatives": [
-                    "soneun uyureul jwoyo"
+                    "Cows give milk.",
+                    "The cow gives us milk."
                   ]
                 }
               ]
@@ -4319,7 +4314,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u3-l3-e8",
-                  "sentence": "토끼는귀가___.",
+                  "sentence": "토끼는 귀가 ___.",
                   "translation": "The rabbit has long ears.",
                   "audioTarget": "토끼는 귀가 길어요.",
                   "options": [
@@ -4364,7 +4359,8 @@
                   "audioTarget": "호랑이는 무서워요.",
                   "answer": "The tiger is scary.",
                   "alternatives": [
-                    "horangineun museowoyo"
+                    "The tiger's scary.",
+                    "Tigers are scary."
                   ]
                 }
               ]
@@ -4658,7 +4654,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u4-l0-e8",
-                  "sentence": "___가요?",
+                  "sentence": "___ 가요?",
                   "translation": "Where are you going?",
                   "audioTarget": "어디에 가요?",
                   "options": [
@@ -4703,7 +4699,8 @@
                   "audioTarget": "호텔에 가요.",
                   "answer": "I am going to the hotel.",
                   "alternatives": [
-                    "hotel-e gayo."
+                    "I'm going to the hotel.",
+                    "I go to the hotel."
                   ]
                 }
               ]
@@ -4915,7 +4912,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u4-l1-e8",
-                  "sentence": "___어디예요?",
+                  "sentence": "___ 어디예요?",
                   "translation": "Where is the airport?",
                   "audioTarget": "공항이 어디예요?",
                   "options": [
@@ -4960,7 +4957,8 @@
                   "audioTarget": "지하철역이 저기에 있어요.",
                   "answer": "The subway station is over there.",
                   "alternatives": [
-                    "jihacheol-yeogi jeogi-e isseoyo."
+                    "The subway station's over there.",
+                    "The metro station is over there."
                   ]
                 }
               ]
@@ -5182,7 +5180,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u4-l2-e8",
-                  "sentence": "___가고싶어요.",
+                  "sentence": "___ 가고 싶어요.",
                   "translation": "I want to go to the museum.",
                   "audioTarget": "박물관에 가고 싶어요.",
                   "options": [
@@ -5227,7 +5225,8 @@
                   "audioTarget": "서울에서 부산까지 기차를 타요.",
                   "answer": "I take the train from Seoul to Busan.",
                   "alternatives": [
-                    "seoul-eseo busan-kkaji gicha-reul tayo."
+                    "I'm taking the train from Seoul to Busan.",
+                    "I take a train from Seoul to Busan."
                   ]
                 }
               ]
@@ -5441,7 +5440,7 @@
                 {
                   "type": "fillBlank",
                   "id": "ko-en:u4-l3-e8",
-                  "sentence": "___보여주세요.",
+                  "sentence": "___ 보여 주세요.",
                   "translation": "Please show me your passport.",
                   "audioTarget": "여권을 보여 주세요.",
                   "options": [
@@ -5486,7 +5485,8 @@
                   "audioTarget": "이 근처에 호텔이 있어요?",
                   "answer": "Is there a hotel near here?",
                   "alternatives": [
-                    "i geuncheo-e hotel-i isseoyo?"
+                    "Is there a hotel nearby?",
+                    "Is there a hotel around here?"
                   ]
                 }
               ]

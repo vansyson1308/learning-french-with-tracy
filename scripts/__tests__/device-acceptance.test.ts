@@ -88,7 +88,11 @@ describe("maestro suite", () => {
     for (const [name, yaml] of Object.entries(files)) {
       if (!name.endsWith(".yaml")) continue;
       const scrolls = yaml.split("- scrollUntilVisible:").slice(1);
-      for (const block of scrolls) expect(block.split("\n- ")[0]).toContain("centerElement: true");
+      for (const block of scrolls) {
+        const step = block.split("\n- ")[0];
+        expect(step).toContain("centerElement: true");
+        expect(step).toContain("timeout: 60000"); // the centering fallback fits on a ticking screen
+      }
     }
   });
 

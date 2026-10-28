@@ -52,3 +52,59 @@ export function lessonShapeErrors(pack: PackSource): string[] {
       }
   return errors;
 }
+
+/** Punctuation and spaces dropped when asking "is this option the whole sentence?". */
+const SENTENCE_NOISE = /[\s\p{P}]+/gu;
+const bareText = (s: string) => s.replace(SENTENCE_NOISE, "");
+const foldRoman = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/[^a-z]+/g, " ").trim();
+/** Crude English stem (plural/3rd person) so "pandas come" and "the panda comes" share words. */
+const stem = (t: string) => (t.length > 3 ? t.replace(/s$/, "") : t);
+
+/**
+ * Inherited-template defects (P4a), checked on every shipped course:
+ *  - a fillBlank has exactly one `___` and its correct option is a part of
+ *    the sentence, not the whole sentence (the degenerate `___。` items);
+ *  - a typeAnswer alternative is never the romanized target prompt (it
+ *    used to accept typing the prompt's romanization as a "translation");
+ *  - a basic pack lists each word in one unit only (authored courses
+ *    re-list words on purpose in their skill sections).
+ */
+export function templateDefectErrors(pack: PackSource, opts: { checkWordRepeats: boolean }): string[] {
+  const errors: string[] = [];
+  const romanOf = new Map<string, string>();
+  const unitOf = new Map<string, string>();
+  for (const section of pack.sections)
+    for (const unit of section.units)
+      for (const w of unit.words) {
+        if (w.romanization) romanOf.set(w.target, foldRoman(w.romanization));
+        const first = unitOf.get(w.target);
+        if (first === undefined) unitOf.set(w.target, unit.id);
+        else if (opts.checkWordRepeats && first !== unit.id) errors.push(`${pack.id}/${unit.id}: word "${w.target}" is already listed in unit ${first}`);
+      }
+  for (const section of pack.sections)
+    for (const unit of section.units)
+      for (const lesson of unit.lessons)
+        for (const e of lesson.exercises) {
+          if (e.type === "fillBlank") {
+            const blanks = e.sentence.split("___").length - 1;
+            if (blanks !== 1) errors.push(`${pack.id}/${e.id}: fillBlank needs exactly one ___ (has ${blanks})`);
+            else if (bareText(e.sentence.replace("___", "")) === "") errors.push(`${pack.id}/${e.id}: fillBlank blank is the whole sentence`);
+          }
+          if (e.type === "typeAnswer" && romanOf.size > 0) {
+            const prompt = e.prompt.replace(/\s+/g, "");
+            const romans = [...romanOf].filter(([target]) => prompt.includes(target)).map(([, r]) => r).filter((r) => r.length >= 3);
+            const answerTokens = new Set(foldRoman(e.answer).split(" ").map(stem));
+            for (const alt of e.alternatives) {
+              const folded = foldRoman(alt);
+              // A real translation shares most of its words with the answer;
+              // a loanword ("hotel", "panda") alone does not make it a romanization.
+              const tokens = folded.split(" ").filter(Boolean);
+              const shared = tokens.filter((t) => answerTokens.has(stem(t))).length;
+              if (shared * 2 < tokens.length && romans.some((r) => folded.replace(/ /g, "").includes(r.replace(/ /g, "")))) {
+                errors.push(`${pack.id}/${e.id}: alternative "${alt}" is the romanized prompt, not a translation`);
+              }
+            }
+          }
+        }
+  return errors;
+}

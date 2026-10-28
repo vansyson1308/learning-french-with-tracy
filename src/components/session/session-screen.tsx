@@ -48,6 +48,7 @@ import type { SessionDefinition } from "@/lib/session/types";
 import { useSpeechSession } from "@/lib/speech/use-speech-session";
 import { currentStreak, useProgress } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
+import { useReadingAid } from "@/lib/use-reading-aid";
 
 /** mm:ss left on an exam section clock. */
 function clockText(endsAt: number, now: number): string {
@@ -83,6 +84,7 @@ export function SessionScreen({
   const colors = useThemeColors();
   const styles = useStyles();
   const { t, tm } = useT();
+  const readingOf = useReadingAid(definition.courseId);
   const insets = useSafeAreaInsets();
   const progress = useProgress();
   const controller = useSessionController(definition);
@@ -314,6 +316,7 @@ export function SessionScreen({
               {behaviorFor(exercise).answerText(exercise) ? (
                 <Text style={[styles.feedbackDetail, { color: colors.wrongText }]}>
                   {behaviorFor(exercise).answerText(exercise)}
+                  {readingOf(behaviorFor(exercise).answerText(exercise) ?? "") ? ` (${readingOf(behaviorFor(exercise).answerText(exercise) ?? "")})` : ""}
                 </Text>
               ) : null}
             </Animated.View>
