@@ -17,7 +17,7 @@ import type { AssessmentItemResult, CheckpointAttempt } from "../assessment/type
 import type { SessionDefinition, SessionStep } from "../session/types";
 import type { Exercise } from "../types";
 
-export type ExamSkill = "reading" | "listening" | "writing" | "speaking";
+export type ExamSkill = "reading" | "listening" | "writing" | "speaking" | "structures";
 
 export type CompiledExamTask = {
   id: string;
@@ -32,6 +32,8 @@ export type CompiledExamTask = {
   points?: number;
   /** Listening: this part's own play count (Goethe Hören Teil 2: once); otherwise the section's. */
   playsPerRecording?: number;
+  /** The format's time for this part, when it times parts separately. */
+  minutes?: number;
 };
 /** Formats whose items share one lettered pool: option order is fixed, never shuffled. */
 export const POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
@@ -46,10 +48,23 @@ export type CompiledExamSection = {
   maxPoints: number;
   /** Listening: each recording plays this many times. */
   playsPerRecording?: number;
+  /** Speaking held in a group or with an examiner in the real exam, simulated alone here. */
+  simulatedIndividually?: boolean;
   tasks: CompiledExamTask[];
 };
 /** A pass-rule group: the format's minimum over the group's sections (DELE: 30 of 50). */
 export type CompiledExamGroup = { id: string; title: string; sections: string[]; min: number; max: number };
+/**
+ * Generic pass rule (exam-engine-v2): every declared rule must be met —
+ * group minimums, per-section minimums (CILS ≥ 7/12 each), a total
+ * (CILS ≥ 35/60) and, optionally, every section taken.
+ */
+export type CompiledExamPassRule = {
+  groups: CompiledExamGroup[];
+  sectionMinimums?: { sectionId: string; min: number; max: number }[];
+  total?: { title: string; min: number; max: number };
+  everySectionTaken?: boolean;
+};
 export type CompiledExamBand = { id: string; minGroupShare: number; label: string; message: string };
 export type CompiledExamItem = {
   id: string;
@@ -69,8 +84,7 @@ export type CompiledExamTrack = {
   description: string;
   formatSource: { publisher: string; references: { url: string; title: string; retrieved?: string }[]; checkedAgainstOfficialGuide: boolean; checkedBy?: string; checkedAt?: string; note: string };
   sections: CompiledExamSection[];
-  /** Generic pass rule (P3e): every group must reach its minimum — never a single total. */
-  passRule: { groups: CompiledExamGroup[] };
+  passRule: CompiledExamPassRule;
   readiness: { bands: CompiledExamBand[]; incomplete: string; disclaimer: string };
   items: CompiledExamItem[];
   forms: { formId: string; itemIds: string[] }[];
@@ -240,8 +254,10 @@ function sectionShare(section: CompiledExamSection, rows: readonly AssessmentIte
  * share × maxPoints (DELE reading/listening: 1 point per correct item, no
  * negative marking; unanswered = 0); a pass-rule group sums its sections and
  * reaches the format's threshold only at ≥ its minimum. The readiness band
- * comes from the WEAKER group's share — never from a total. With a section
- * not taken the score is incomplete and NO band is given.
+ * comes from the WEAKEST rule's share (groups, section minimums, total) —
+ * never from a total alone. With a rule unmeasured (a section not taken, or
+ * any section when the format requires every one) the score is incomplete
+ * and NO band is given.
  */
 export function scoreExam(track: CompiledExamTrack, itemResults: readonly AssessmentItemResult[]): ExamScore {
   const bySection = new Map<string, AssessmentItemResult[]>();
@@ -264,13 +280,40 @@ export function scoreExam(track: CompiledExamTrack, itemResults: readonly Assess
     const points = complete ? round1(parts.reduce((n, p) => n + (p!.points ?? 0), 0)) : null;
     return { id: g.id, title: g.title, points, max: g.max, min: g.min, reachesThreshold: points === null ? null : points >= g.min };
   });
-  const complete = groups.every((g) => g.points !== null);
+  const checks = ruleChecks(track, sections, groups);
+  const complete = checks.every((c) => c.points !== null) && (!track.passRule.everySectionTaken || sections.every((s) => s.points !== null));
   let band: CompiledExamBand | null = null;
-  if (complete && groups.length > 0) {
-    const minShare = Math.min(...groups.map((g) => (g.points as number) / g.max));
+  if (complete && checks.length > 0) {
+    // The weakest rule decides — never a total alone.
+    const minShare = Math.min(...checks.map((c) => (c.points as number) / c.max));
     band = track.readiness.bands.find((b) => minShare >= b.minGroupShare) ?? null;
   }
   return { sections, groups, complete, band };
+}
+
+/** One rule of the pass rule, measured on a sitting ("Phần Nghe: 6/12 — cần ≥ 7"). */
+export type ExamRuleCheck = { kind: "group" | "section" | "total"; id: string; title: string; points: number | null; max: number; min: number; met: boolean | null };
+
+function ruleChecks(track: CompiledExamTrack, sections: readonly ExamSectionScore[], groups: readonly ExamGroupScore[]): ExamRuleCheck[] {
+  const byId = new Map(sections.map((s) => [s.id, s]));
+  const met = (points: number | null, min: number) => (points === null ? null : points >= min);
+  const out: ExamRuleCheck[] = groups.map((g) => ({ kind: "group", id: g.id, title: g.title, points: g.points, max: g.max, min: g.min, met: g.reachesThreshold }));
+  for (const m of track.passRule.sectionMinimums ?? []) {
+    const s = byId.get(m.sectionId);
+    const points = s?.points ?? null;
+    out.push({ kind: "section", id: m.sectionId, title: s?.title ?? m.sectionId, points, max: m.max, min: m.min, met: met(points, m.min) });
+  }
+  const total = track.passRule.total;
+  if (total) {
+    const points = sections.every((s) => s.points !== null) ? round1(sections.reduce((n, s) => n + (s.points ?? 0), 0)) : null;
+    out.push({ kind: "total", id: "total", title: total.title, points, max: total.max, min: total.min, met: met(points, total.min) });
+  }
+  return out;
+}
+
+/** Every rule of the track's pass rule on a scored sitting, in declaration order (groups, sections, total). */
+export function examRuleChecks(track: CompiledExamTrack, score: ExamScore): ExamRuleCheck[] {
+  return ruleChecks(track, score.sections, score.groups);
 }
 
 export type ExamWeakAreas = {

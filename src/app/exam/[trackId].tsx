@@ -79,9 +79,14 @@ function ExamTrackBody({ courseId }: { courseId: string }) {
             </Text>
             {s.tasks.map((task) => (
               <Text key={task.id} style={styles.task}>
-                • {task.title}
+                • {task.minutes !== undefined ? t("exam.section.partTiming", { part: task.title, minutes: task.minutes }) : task.title}
               </Text>
             ))}
+            {s.simulatedIndividually ? (
+              <Text style={styles.muted} testID={`exam-simulated-${s.id}`}>
+                {t("exam.section.simulatedIndividually")}
+              </Text>
+            ) : null}
             <DuoButton
               label={t("exam.practice.start")}
               onPress={() => router.push({ pathname: "/exam/run", params: { track: track.id, mode: "practice", section: s.id } })}

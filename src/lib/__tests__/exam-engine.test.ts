@@ -8,6 +8,7 @@ import {
   buildExamAttempt,
   buildExamSectionSession,
   examAttemptId,
+  examRuleChecks,
   examWeakAreas,
   isExamAttemptOf,
   itemResultsFor,
@@ -272,5 +273,102 @@ describe("attempts, weak areas and FSRS isolation", () => {
     expect(secondsLeft(10_000, 0)).toBe(10);
     expect(secondsLeft(10_000, 9_001)).toBe(1);
     expect(secondsLeft(10_000, 20_000)).toBe(0);
+  });
+});
+
+/**
+ * exam-engine-v2 (QC 2026-10-29 §2): a CILS-shaped track — five sections of
+ * 12 points (the fifth is language structures), each ≥ 7, total ≥ 35/60,
+ * every part taken. One point per item keeps the arithmetic visible.
+ */
+const CILS_SECTIONS = ["listening", "reading", "structures", "writing", "speaking"] as const;
+function cilsTrack(): CompiledExamTrack {
+  const sections = CILS_SECTIONS.map((id) => ({
+    id,
+    skill: id,
+    title: `Parte ${id}`,
+    minutes: 30,
+    maxPoints: 12,
+    tasks: [{ id: "t1", title: "t1", instruction: "", format: id === "structures" ? "cloze" : "mcq3", itemsPerForm: 12 }],
+  }));
+  const items = CILS_SECTIONS.flatMap((sectionId) =>
+    Array.from({ length: 12 }, (_, n) => ({ id: `it.exi.cils_a1.${sectionId}_${n}`, itemVersion: 1, sectionId, taskId: "t1", exercise: { type: "select" } as never, objectiveTargets: [`it.obj.${sectionId}`], lexemeRefs: [] }))
+  );
+  return {
+    ...TRACK,
+    id: "it.exam.cils_a1",
+    sections,
+    passRule: {
+      groups: [],
+      sectionMinimums: CILS_SECTIONS.map((sectionId) => ({ sectionId, min: 7, max: 12 })),
+      total: { title: "Totale", min: 35, max: 60 },
+      everySectionTaken: true,
+    },
+    items,
+    forms: [{ formId: "a", itemIds: items.map((i) => i.id) }],
+  };
+}
+/** Results with `points[section]` correct items out of 12; a section missing from `points` is not taken. */
+function cilsResults(points: Partial<Record<(typeof CILS_SECTIONS)[number], number>>): AssessmentItemResult[] {
+  return Object.entries(points).flatMap(([sectionId, k]) => Array.from({ length: 12 }, (_, n) => ({ itemId: `it.exi.cils_a1.${sectionId}_${n}`, correct: n < (k as number) })));
+}
+
+describe("exam-engine-v2: any combination of pass rules (CILS)", () => {
+  const track = cilsTrack();
+
+  test("every section at its minimum and the total at 35: every rule met, a band is given", () => {
+    const score = scoreExam(track, cilsResults({ listening: 7, reading: 7, structures: 7, writing: 7, speaking: 7 }));
+    const checks = examRuleChecks(track, score);
+    expect(score.complete).toBe(true);
+    expect(checks.map((c) => `${c.kind}:${c.id}:${c.points}/${c.max}≥${c.min}:${c.met}`)).toEqual([
+      "section:listening:7/12≥7:true",
+      "section:reading:7/12≥7:true",
+      "section:structures:7/12≥7:true",
+      "section:writing:7/12≥7:true",
+      "section:speaking:7/12≥7:true",
+      "total:total:35/60≥35:true",
+    ]);
+    expect(score.band).not.toBeNull();
+  });
+
+  test("total ≥ 35 but one section at 6: that section's rule is not met, and the band follows the weakest rule", () => {
+    const strong = scoreExam(track, cilsResults({ listening: 6, reading: 12, structures: 12, writing: 12, speaking: 12 }));
+    const missed = examRuleChecks(track, strong).filter((c) => c.met === false);
+    expect(missed.map((c) => `${c.title}: ${c.points}/${c.max} — ≥ ${c.min}`)).toEqual(["Parte listening: 6/12 — ≥ 7"]);
+    expect(examRuleChecks(track, strong).find((c) => c.kind === "total")?.met).toBe(true);
+    // The weakest share is 6/12, not the 54/60 total.
+    const allHalf = scoreExam(track, cilsResults({ listening: 6, reading: 6, structures: 6, writing: 6, speaking: 6 }));
+    expect(strong.band?.id).toBe(allHalf.band?.id);
+  });
+
+  test("one section at 6 and the rest at 7: that section and the total (34/60) are both listed", () => {
+    const score = scoreExam(track, cilsResults({ listening: 7, reading: 7, structures: 7, writing: 7, speaking: 6 }));
+    const missed = examRuleChecks(track, score).filter((c) => c.met === false).map((c) => c.id);
+    expect(missed).toEqual(["speaking", "total"]);
+  });
+
+  test("a section not taken: incomplete, no band, the total and that section unmeasured", () => {
+    const score = scoreExam(track, cilsResults({ listening: 12, reading: 12, structures: 12, writing: 12 }));
+    const checks = examRuleChecks(track, score);
+    expect(score.complete).toBe(false);
+    expect(score.band).toBeNull();
+    expect(checks.filter((c) => c.points === null).map((c) => c.id)).toEqual(["speaking", "total"]);
+    expect(checks.some((c) => c.met === false)).toBe(false);
+  });
+
+  test("everySectionTaken holds a sitting incomplete even when every declared minimum is measured", () => {
+    const t = cilsTrack();
+    t.passRule = { groups: [{ id: "g", title: "g", sections: ["listening", "reading", "structures", "writing"], min: 28, max: 48 }], everySectionTaken: true };
+    const score = scoreExam(t, cilsResults({ listening: 12, reading: 12, structures: 12, writing: 12 }));
+    expect(score.groups[0].reachesThreshold).toBe(true);
+    expect(score.complete).toBe(false);
+    expect(score.band).toBeNull();
+    delete t.passRule.everySectionTaken;
+    expect(scoreExam(t, cilsResults({ listening: 12, reading: 12, structures: 12, writing: 12 })).complete).toBe(true);
+  });
+
+  test("DELE keeps its two group checks and nothing else", () => {
+    const score = scoreExam(TRACK, []);
+    expect(examRuleChecks(TRACK, score).map((c) => `${c.kind}:${c.id}`)).toEqual(["group:group_1", "group:group_2"]);
   });
 });

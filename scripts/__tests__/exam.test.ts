@@ -53,7 +53,7 @@ describe("DELE A1 track — the 2020 model (P3e)", () => {
   });
 
   test("the pass rule is two groups of 30/50 — never one total; no negative marking", () => {
-    expect(REAL.passRule.groups.map((g) => [g.sections, g.min])).toEqual([
+    expect(REAL.passRule.groups!.map((g) => [g.sections, g.min])).toEqual([
       [["reading", "writing"], 30],
       [["listening", "speaking"], 30],
     ]);
@@ -199,10 +199,43 @@ describe("exam track rules — every rule fires", () => {
 
   test("pass-rule groups cover every section once and their minimum is reachable", () => {
     const t = clone();
-    t.passRule.groups[1].sections = ["listening"];
+    t.passRule.groups![1].sections = ["listening"];
     expect(errorsOf(t)).toContain("section speaking belongs to no pass-rule group");
-    t.passRule.groups[1].min = 40;
+    t.passRule.groups![1].min = 40;
     expect(errorsOf(t)).toContain("min 40 exceeds the group's maximum (25)");
+  });
+
+  test("exam-engine-v2: section minimums and a total cover sections; their minimums are reachable", () => {
+    const t = clone();
+    t.passRule.groups![1].sections = ["listening"];
+    t.passRule.sectionMinimums = [{ section: "speaking", min: 30 }];
+    const errors = errorsOf(t);
+    expect(errors).not.toContain("section speaking belongs to no pass-rule group");
+    expect(errors).toContain("sectionMinimums: speaking min 30 exceeds its maxPoints (25)");
+    const cils = clone();
+    delete cils.passRule.groups;
+    cils.passRule.total = { title: { vi: "Tổng điểm", en: "Total" }, min: 120 };
+    cils.passRule.everySectionTaken = true;
+    expect(errorsOf(cils)).toContain("total: min 120 exceeds the exam's maximum (100)");
+    expect(errorsOf(cils)).not.toContain("belongs to no pass-rule group");
+    cils.passRule.total.min = 60;
+    expect(errorsOf(cils)).toBe("");
+    const unknown = clone();
+    unknown.passRule.sectionMinimums = [{ section: "nope", min: 1 }];
+    expect(errorsOf(unknown)).toContain("sectionMinimums: unknown section nope");
+  });
+
+  test("exam-engine-v2: part minutes fit the section; simulatedIndividually only on speaking", () => {
+    const t = clone();
+    const reading = t.sections.find((s) => s.id === "reading")!;
+    reading.tasks.forEach((task) => (task.minutes = reading.minutes));
+    expect(errorsOf(t)).toContain("reading: its parts' minutes");
+    const u = clone();
+    u.sections.find((s) => s.id === "reading")!.simulatedIndividually = true;
+    expect(errorsOf(u)).toContain("reading: simulatedIndividually only applies to a speaking section");
+    const v = clone();
+    v.sections.find((s) => s.id === "speaking")!.simulatedIndividually = true;
+    expect(errorsOf(v)).toBe("");
   });
 
   test("a checked format names who checked, when, and the documents read (P3f)", () => {

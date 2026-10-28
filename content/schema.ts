@@ -1849,7 +1849,8 @@ export type InteractionScenarios = z.infer<typeof InteractionScenariosSchema>;
 export const examTrackId = (lang: string) => z.string().regex(idPattern(lang, "\\.exam\\.", "[a-z0-9_]+"));
 export const examItemId = (lang: string) => z.string().regex(idPattern(lang, "\\.exi\\.", "[a-z0-9_]+\\.[a-z0-9_]+"));
 const examSlug = z.string().regex(/^[a-z0-9]+(?:_[a-z0-9]+)*$/);
-export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking"] as const;
+/** "structures": a language-structures section (CILS "Analisi delle strutture di comunicazione"). */
+export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking", "structures"] as const;
 /**
  * Public task formats an exam track reproduces (formats only — never real
  * exam items). P3e:
@@ -1862,8 +1863,12 @@ export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking"] as co
  *                    at most one item; pool order is fixed (lettered)
  *  - completeFromPool  N statements completed from a shared pool of M > N
  *  - form / short_text / monologue / conversation  productive tasks
+ *  - cloze           a gap in a sentence or short text, chosen or typed
+ *                    (exam-engine-v2: CILS structures)
+ *  - formCompletion  the right form of a given word (article, verb ending,
+ *                    agreement) typed into a gap
  */
-export const EXAM_TASK_FORMATS = ["mcq3", "mcq2", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation"] as const;
+export const EXAM_TASK_FORMATS = ["mcq3", "mcq2", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation", "cloze", "formCompletion"] as const;
 export const EXAM_POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
 
 const wordBand = z.strictObject({ min: z.number().int().min(1), max: z.number().int().min(1) });
@@ -1899,6 +1904,8 @@ export const examTaskSchema = z.strictObject({
    * Hören Teil 2 is heard once); otherwise the section's playsPerRecording.
    */
   playsPerRecording: z.number().int().min(1).max(3).optional(),
+  /** The format's time for this part, when it times parts separately (shown to the learner; the parts fit the section's minutes). */
+  minutes: z.number().int().min(1).max(240).optional(),
 });
 
 export const examSectionSchema = z.strictObject({
@@ -1911,32 +1918,48 @@ export const examSectionSchema = z.strictObject({
   maxPoints: z.number().positive(),
   /** Listening: how many times each recording plays (must equal every referenced clip's maxPlays). */
   playsPerRecording: z.number().int().min(1).max(3).optional(),
+  /**
+   * Speaking: the real exam holds this part in a group or face to face with
+   * an examiner, and the app simulates it alone (QC 2026-10-29 §2). The
+   * section card says so.
+   */
+  simulatedIndividually: z.literal(true).optional(),
   tasks: z.array(examTaskSchema).min(1),
 });
 
 /**
- * Generic pass rule (P3e): the exam is "passed" in its own terms only when
- * EVERY group reaches its minimum (DELE: reading + writing ≥ 30/50 AND
- * listening + speaking ≥ 30/50) — never a single total. Goethe, JLPT, HSK
- * and TOPIK declare theirs the same way. Used only to word an ESTIMATED
- * readiness.
+ * Generic pass rule (P3e, exam-engine-v2): the exam is "passed" in its own
+ * terms only when EVERY declared rule is met — any combination of group
+ * minimums (DELE: reading + writing ≥ 30/50 AND listening + speaking
+ * ≥ 30/50), per-section minimums (CILS: each section ≥ 7/12), a total
+ * minimum (Goethe ≥ 60/100 as one group; CILS ≥ 35/60) and "every section
+ * taken". Used only to word an ESTIMATED readiness.
  */
-export const examPassRuleSchema = z.strictObject({
-  groups: z
-    .array(
-      z.strictObject({
-        id: examSlug,
-        title: nativeText(),
-        sections: z.array(examSlug).min(1),
-        min: z.number().positive(),
-      })
-    )
-    .min(1),
-});
+export const examPassRuleSchema = z
+  .strictObject({
+    groups: z
+      .array(
+        z.strictObject({
+          id: examSlug,
+          title: nativeText(),
+          sections: z.array(examSlug).min(1),
+          min: z.number().positive(),
+        })
+      )
+      .min(1)
+      .optional(),
+    sectionMinimums: z.array(z.strictObject({ section: examSlug, min: z.number().positive() })).min(1).optional(),
+    total: z.strictObject({ title: nativeText(), min: z.number().positive() }).optional(),
+    /** No readiness at all unless every section was taken (CILS: all five parts are sat). */
+    everySectionTaken: z.literal(true).optional(),
+  })
+  .refine((r) => r.groups !== undefined || r.sectionMinimums !== undefined || r.total !== undefined, {
+    message: "a pass rule declares groups, sectionMinimums or a total",
+  });
 
 export const examReadinessBandSchema = z.strictObject({
   id: examSlug,
-  /** Lowest group share (points / group max, over every group) that reaches this band. */
+  /** Lowest rule share (points / max, over every group, section minimum and total) that reaches this band. */
   minGroupShare: z.number().min(0).max(1),
   label: nativeText(),
   message: nativeText(),
