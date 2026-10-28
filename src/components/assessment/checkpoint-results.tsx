@@ -34,10 +34,10 @@ export function CheckpointResults({
   const correct = attempt.itemResults.filter((r) => r.correct === true).length;
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={styles.screen} testID="checkpoint-results">
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title}>{checkpointTitle}</Text>
-        <Text style={styles.subtitle}>{t("checkpointResults.firstTry", { correct, total: attempt.itemResults.length })}</Text>
+        <Text style={styles.subtitle} testID="checkpoint-first-try">{t("checkpointResults.firstTry", { correct, total: attempt.itemResults.length })}</Text>
 
         {strong.length > 0 && (
           <View style={styles.group}>

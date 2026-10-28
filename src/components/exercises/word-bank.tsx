@@ -52,6 +52,7 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
             key={tokenIndex}
             label={exercise.tokens[tokenIndex]}
             onPress={() => unpick(tokenIndex)}
+            testID="wordbank-answer"
           />
         ))}
       </View>
@@ -64,7 +65,7 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
               <Text style={[styles.chipText, { color: "transparent" }]}>{token}</Text>
             </View>
           ) : (
-            <Chip key={index} label={token} onPress={() => pick(index)} />
+            <Chip key={index} label={token} onPress={() => pick(index)} testID="wordbank-token" />
           );
         })}
       </View>
@@ -72,7 +73,7 @@ export function WordBank({ exercise, answer, onAnswer, status }: WordBankProps) 
   );
 }
 
-function Chip({ label, onPress }: { label: string; onPress: () => void }) {
+function Chip({ label, onPress, testID }: { label: string; onPress: () => void; testID?: string }) {
   const styles = useStyles();
   return (
     <Pressable
@@ -82,6 +83,7 @@ function Chip({ label, onPress }: { label: string; onPress: () => void }) {
       }}
       accessibilityRole="button"
       accessibilityLabel={label}
+      testID={testID}
       style={({ pressed }) => [styles.chip, { borderBottomWidth: pressed ? 2 : 4 }]}
     >
       <Text style={styles.chipText}>{label}</Text>

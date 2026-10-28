@@ -23,6 +23,16 @@
 
 Cold start is measured by the P3h emulator suite (`am start -W`, budget ≤ 3.5 s on the API 34 emulator); no phone measurement exists.
 
+### P3h (2026-10-27) — emulator measurements (x86_64 release APK, API 34 google_apis, swiftshader, owner's PC)
+
+| Measure | Value | Gate |
+|---|---|---|
+| Cold start (`am start -W` TotalTime, median of 5 after a discarded first launch) | 2,194 ms (earlier runs: 3,458 ms, 2,864 ms) | ≤ 3,500 ms (`ENFORCE_COLD_START` on API 34 in CI) |
+| Memory, `dumpsys meminfo` TOTAL PSS on the Learn tab | ~159–164 MB | recorded, no gate |
+| x86_64 release APK | 69.2 MB | — |
+
+Emulator figures only. They show regressions relative to each other and say nothing about a real phone (see OWNER-FINAL-CHECKLIST D).
+
 The Hermes V1 memory regression fix (Gate 0) is the one memory change
 this phase could make with certainty: the affected engine build is no
 longer shipped. Absolute memory, cold/warm start (TTID/TTFD), path

@@ -34,6 +34,7 @@ Thay cho mọi lượt test lẻ trước đây (gói P0 RC3, smoke P1d, kiểm 
 - ☐ Một bài thi thử (một phần có giờ, phần nghe phát hai lần, một bài nói).
 - ☐ Sao lưu: xuất → xoá dữ liệu app → nhập → mọi thứ trở lại.
 - ☐ Dung lượng app trong Cài đặt → Ứng dụng.
+- ☐ Để ý app có tự thoát lúc mở không (L13 trong `release/KNOWN_LIMITATIONS.md`: chỉ thấy một lần trên emulator x86_64; điện thoại arm64 chưa ai thử). Các mục trên đã chạy tự động trên emulator API 34/30 (P3h, `plan/reports/P3h.md`), nên lượt này chỉ để xác nhận trên máy thật.
 - ☐ Báo Claude kết quả (ĐẠT / LỖI + ảnh chụp). Lỗi P0/P1 → Claude sửa → candidate tiếp theo (cùng khoá).
 
 ## E. Thông tin cửa hàng (P6a)

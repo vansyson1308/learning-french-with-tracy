@@ -417,7 +417,7 @@ const useStyles = makeThemedStyles((colors) => StyleSheet.create({
     gap: 14,
   },
   weekHeader: { flexDirection: "row", alignItems: "center", gap: 8 },
-  weekTitle: { fontSize: 16, fontWeight: "800", color: colors.neutral700 },
+  weekTitle: { flexShrink: 1, fontSize: 16, fontWeight: "800", color: colors.neutral700 },
   weekRow: { flexDirection: "row", justifyContent: "space-between" },
   weekDay: { alignItems: "center", gap: 6 },
   weekLabel: { fontSize: 12, fontWeight: "700", color: colors.textMuted },

@@ -53,6 +53,7 @@ export function TypeAnswer({
       </View>
 
       <TextInput
+        testID="type-answer-input"
         value={answer}
         onChangeText={onAnswer}
         editable={status === "none"}
