@@ -22,8 +22,8 @@ function v1Of(fixtureState: unknown): PersistedProgress {
 }
 
 describe("v1 → v2 migration: French moves to FSRS", () => {
-  test("PERSIST_VERSION is 7 (P4a)", () => {
-    expect(PERSIST_VERSION).toBe(7);
+  test("PERSIST_VERSION is 8 (v8: legacy re-key)", () => {
+    expect(PERSIST_VERSION).toBe(8);
   });
 
   test("rich user: srs → cards under stable ids, srsLegacy kept, due preserved", () => {
@@ -81,7 +81,8 @@ describe("v1 → v2 migration: French moves to FSRS", () => {
 
   test("non-French courses are byte-identical through v2", () => {
     const v1 = v1Of(multiFixture.state);
-    const out = migrateProgress(multiFixture.state, 0, NOW);
+    // Through v2 only: v8 later re-keys es-en (its target gained an id registry).
+    const out = migrateProgress(multiFixture.state, 0, NOW, 2);
     for (const courseId of ["es-en", "ja-en"]) {
       expect(JSON.stringify(out.courses[courseId])).toBe(
         JSON.stringify(v1.courses[courseId])

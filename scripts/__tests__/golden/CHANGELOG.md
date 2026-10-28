@@ -580,3 +580,11 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — migration v8 (legacy re-key, P-unstick 2026-10-28): es-en wordStats/srs re-keyed surface -> es:w: ids in multi-course and v0-flat-legacy; toVersion 7 -> 8 in every persona; fr-en and every other course unchanged (verified by diff)
+
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json

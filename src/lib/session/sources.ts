@@ -167,8 +167,12 @@ export function buildReviewSessionDefinition(args: {
     const srs = (course.srs ?? {}) as Record<string, SrsEntry>;
     const due = dueSrsWords(srs, args.now);
     const seed = hashSeed(due.map((t) => `${t}@${srs[t]?.dueAt ?? 0}`).join("|"));
-    exercises = buildSrsExercises(due, pool, seed, undefined, courseId);
-    evidenceBySurface = Object.fromEntries(due.map((t) => [t, t]));
+    // srs keys are item ids: raw surfaces without a registry, `<code>:w:` ids
+    // with one (es-en since P3a). A key the registry cannot resolve is taken
+    // as a surface.
+    const surfaceOf = (key: string) => surfaceFor(courseId, key) ?? key;
+    exercises = buildSrsExercises(due.map(surfaceOf), pool, seed, undefined, courseId);
+    evidenceBySurface = Object.fromEntries(due.map((t) => [surfaceOf(t), t]));
   }
 
   return {
