@@ -31,7 +31,7 @@ describe("release hygiene (P3g E)", () => {
     expect(offenders.filter((f) => !ALLOW.includes(f))).toEqual([]);
   });
 
-  test("every bundled pack/lexicon/reception audio file is referenced, and every reference exists", () => {
+  test("every bundled pack/lexicon/reception/story audio file is referenced, and every reference exists", () => {
     const referenced = new Set<string>();
     const generated = files(path.join(ROOT, "src/content"), /\.ts$/).filter((f) => /[\\/](audio|reception)[\\/]/.test(f) || f.endsWith("audio-manifest.ts"));
     for (const f of generated) {
