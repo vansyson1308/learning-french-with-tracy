@@ -82,6 +82,20 @@ Cách sửa:
 - Hai flow trên API 34 chỉ qua ở lần chạy lại (thi thử và onboarding, cả hai vì cuộn quá thời gian chờ). Báo cáo ghi rõ.
 - PR #43 đã merge.
 
+### Lần chạy trên PR #44 (P4a): 2 shard đỏ, cả hai do bộ test, đã sửa
+1. **API 30 backup-upgrade: cài RC3 hỏng** với lỗi `Can't find service: package`.
+   - Nguyên nhân: `set_locale` khởi động lại framework (`ctl.restart zygote`) rồi coi máy đã sẵn sàng quá sớm. `sys.boot_completed` vẫn giữ giá trị 1 của lần khởi động trước, còn `pm` trả lời trước khi ActivityManager và WindowManager chạy xong.
+   - Hậu quả: lệnh `adb uninstall` (force-stop) gửi vào system_server đang khởi động dở, làm nó crash (NPE trong `onForceStopPackage`), rồi crash thêm một lần nữa (DeviceStorageMonitor). Lệnh cài RC3 rơi đúng vào lúc đó.
+   - Cách sửa:
+     - Xoá `sys.boot_completed` trước khi khởi động lại; ActivityManager sẽ đặt lại giá trị này khi system_server mới khởi động xong.
+     - Đợi đến khi system_server là một tiến trình mới, giữ nguyên pid trong 15 s và `pm` trả lời được.
+     - Không khởi động lại nếu máy đã đúng ngôn ngữ.
+   - App không lỗi: logcat không có crash của app, đây là crash của system_server.
+2. **API 34 core: thi thử không chọn được "Văn bản H"** (lần chạy trước chỉ qua ở lần chạy lại).
+   - Đồng hồ đếm ngược của bài thi chạy mỗi giây, nên sau mỗi lần vuốt Maestro phải chờ màn hình ổn định 2–4 s.
+   - Mục H nằm cuối danh sách nên không đưa ra giữa màn hình được. Maestro chỉ chấp nhận vị trí hiện tại sau năm lần thử căn giữa, và mốc 20 s mặc định hết ngay trước bước đó (log: lần thử 0–4, lỗi lúc 20,4 s).
+   - Cách sửa: mọi `scrollUntilVisible` có `timeout: 60000`, có test kiểm tra.
+
 ## Kiểm tra
 typecheck ✅ · lint ✅ · `bun run test` 1.555 ✅ (gồm 10 test mới của bộ sinh flow: mọi id có trong app, câu gõ là ASCII, checkpoint đòi N/N, seed RC3 nhập được) · jest 76/76 ✅ · `content:check` ✅ · `audio:check` ✅ (1.721 file) · golden ✅ (tiếng Pháp không đổi) · device-acceptance trên emulator API 34 (máy dev) ✅; API 34 + 30 trên APK cuối: CI của PR.
 
