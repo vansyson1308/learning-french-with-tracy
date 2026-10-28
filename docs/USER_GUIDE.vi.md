@@ -19,13 +19,32 @@ Màn hình đầu tiên hỏi bạn muốn học khóa nào. Tiếng Pháp là k
 
 ## 4. Chọn tiếng Pháp
 
-Tiếng Pháp và tiếng Tây Ban Nha (`es-vi`, giải thích bằng tiếng Việt) là hai khóa có đầy đủ tính năng: phiên Hôm nay, nghe, nói, viết, hội thoại, bài kiểm tra, bài kiểm tra điểm bắt đầu và bài kiểm tra A1 tổng kết. Cả hai bản tiếng Pháp đều có đủ. Trí nhớ tiếng Pháp của bạn dùng chung cho hai bản: một từ bạn ôn ở bản này cũng chính là thẻ ghi nhớ ở bản kia, kết quả bài kiểm tra điểm bắt đầu và bài kiểm tra cũng được giữ chung — chỉ số bài đã hoàn thành và XP được tính riêng theo từng bản. Phần giải thích tiếng Việt của bản `fr-vi` đang chờ người bản ngữ duyệt (xem `release/KNOWN_LIMITATIONS.md`); phần tiếng Pháp, âm thanh và cách chấm giống hệt bản tiếng Anh. Các khóa khác có lộ trình học, luyện lại lỗi sai và ôn từ.
+Tiếng Pháp, tiếng Tây Ban Nha (`es-vi`) và tiếng Đức (`de-vi`, cả hai giải thích bằng tiếng Việt) là các khóa có đầy đủ tính năng: phiên Hôm nay, nghe, nói, viết, hội thoại, bài kiểm tra, bài kiểm tra điểm bắt đầu và bài kiểm tra A1 tổng kết. Cả hai bản tiếng Pháp đều có đủ. Trí nhớ tiếng Pháp của bạn dùng chung cho hai bản: một từ bạn ôn ở bản này cũng chính là thẻ ghi nhớ ở bản kia, kết quả bài kiểm tra điểm bắt đầu và bài kiểm tra cũng được giữ chung — chỉ số bài đã hoàn thành và XP được tính riêng theo từng bản. Phần giải thích tiếng Việt của bản `fr-vi` đang chờ người bản ngữ duyệt (xem `release/KNOWN_LIMITATIONS.md`); phần tiếng Pháp, âm thanh và cách chấm giống hệt bản tiếng Anh. Các khóa khác có lộ trình học, luyện lại lỗi sai và ôn từ.
 
 ### Tiếng Tây Ban Nha cho người Việt (`es-vi`) và luyện thi DELE A1
 
 Khóa `es-vi` dạy tiếng Tây Ban Nha chuẩn Tây Ban Nha đến trình độ A1 — các từ Mỹ Latinh thông dụng (boleto, jugo, carro…) luôn được chấp nhận và hiện thành ghi chú — với cùng cấu trúc sáu phần như tiếng Pháp; mọi lời giải thích, câu hỏi và phản hồi đều bằng tiếng Việt. Khóa cũ `es-en` (giải thích bằng tiếng Anh) vẫn còn trong **Khoá khác** ở màn hình chọn khóa để tiến độ cũ không mất, nhưng không còn hiện khi bắt đầu lần đầu. Trong lúc phần tiếng Việt của khóa còn đang được duyệt, tab Học hiện nhãn **Bản beta — nội dung đang được duyệt**; nhãn tự tắt khi bản duyệt được ký.
 
 Thẻ **Luyện thi DELE A1** ở tab Luyện tập mở phần luyện thi theo định dạng công khai năm 2020 của kỳ thi DELE A1 (Instituto Cervantes): Đọc (45 phút, 4 bài), Nghe (25 phút, 4 bài), Viết (25 phút, một biểu mẫu và một đoạn ngắn) và Nói (khoảng 10 phút, 3 bài). Một số bài ghép nhiều câu hỏi với một danh sách văn bản hoặc đáp án đánh chữ (A–I), giống kỳ thi thật. Bạn có thể **Luyện từng phần** (không tính giờ, có đáp án sau mỗi câu) hoặc **Thi thử có giờ** với hai đề song song A và B — làm lại sẽ nhận đề còn lại. Hết giờ một phần thì phần đó kết thúc, câu chưa làm được tính là chưa trả lời. Kết quả hiện điểm từng phần, hai nhóm điểm (Đọc + Viết, Nghe + Nói), mỗi nhóm cần 30 trên 50 điểm, và **mức sẵn sàng ước tính**. Đây không phải điểm thi thật, không do Instituto Cervantes cấp và không dự đoán kết quả kỳ thi. Mọi câu hỏi đều do khóa học tự soạn. Nút **Luyện từ vựng của các câu này** mở một phiên ôn từ bình thường (có ghi vào trí nhớ) với các từ trong những câu bạn làm sai. Nếu thiết bị không ghi âm được, phần Nói được bỏ qua và kết quả chỉ ghi "chưa đủ dữ liệu để ước tính". Âm thanh của các bài nghe tiếng Tây Ban Nha sẽ có sau khi quy trình tạo âm thanh chạy xong; trước đó các câu nghe hiện nút bỏ qua khi thiếu âm thanh.
+
+### Tiếng Đức cho người Việt (`de-vi`) và luyện thi Goethe A1
+
+Khóa `de-vi` dạy tiếng Đức chuẩn (Đức) đến trình độ A1 với cùng cấu trúc sáu phần; các dạng của Áo và Thụy Sĩ chỉ hiện thành ghi chú. Mọi lời giải thích, câu hỏi và phản hồi đều bằng tiếng Việt. Danh từ luôn được dạy kèm mạo từ và số nhiều (der Tisch, die Tische). Khóa dạy rõ cách 1 (Nominativ) và cách 4 (Akkusativ); trước Phần 4, cách 3 (Dativ) chỉ xuất hiện trong các cụm cố định như *mit dem Bus*, *in der Schule*. Khóa cũ `de-en` vẫn còn trong **Khoá khác** để tiến độ cũ không mất, nhưng không còn hiện khi bắt đầu lần đầu. Trong lúc khóa còn đang được duyệt, tab Học hiện nhãn **Bản beta — nội dung đang được duyệt**.
+
+Thẻ **Luyện thi Goethe A1** ở tab Luyện tập theo định dạng chính thức của kỳ thi Goethe-Zertifikat A1: Start Deutsch 1:
+- Nghe (Hören): khoảng 20 phút, 3 phần, 15 câu;
+- Đọc (Lesen): 25 phút, 3 phần, 15 câu;
+- Viết (Schreiben): 20 phút, gồm một biểu mẫu và một tin nhắn ngắn;
+- Nói (Sprechen): khoảng 15 phút, 3 phần.
+
+Thẻ này dùng giống thẻ DELE: **Luyện từng phần** hoặc **Thi thử có giờ** với hai đề song song. Điểm từng phần được quy ra tổng 100 như kỳ thi thật; kỳ thi thật cần 60 điểm. Kết quả hiện **mức sẵn sàng ước tính**.
+
+Có ba chỗ khác với kỳ thi thật:
+- phần Nói thật là thi theo nhóm, còn ứng dụng chỉ mô phỏng một người với giám khảo;
+- Phần 1 bỏ phần đánh vần và nhắc lại số;
+- mọi bài nghe được nghe hai lần, kể cả Hören Phần 2, phần mà kỳ thi thật chỉ cho nghe một lần.
+
+Đây không phải điểm thi thật, không do Goethe-Institut cấp và không dự đoán kết quả. Mọi câu hỏi đều do khóa học tự soạn.
 
 ## 5. Bài kiểm tra điểm bắt đầu (xếp lớp)
 
@@ -74,7 +93,7 @@ Mỗi từ tiếng Pháp trong khóa có một mục: từ loại, giống, các
 
 Tab **Hôm nay** xây một phiên từ những gì trí nhớ của bạn cần: các lượt ôn đến hạn trước (dễ quên nhất trước), rồi nội dung mới từ chương hiện tại, rồi luyện tập hỗn hợp, rồi một màn ghép từ ngắn để kết thúc. Chọn **Độ dài phiên học** — 5, 10 hoặc 15 phút — và chạm **Bắt đầu phiên hôm nay**. Trên thiết bị ghi âm được, công tắc **Lúc này không nói được** xuất hiện phía trên nút: bật lên thì các lượt ôn nói được để ngoài phiên đó và vẫn đến hạn.
 
-Với tiếng Pháp và `es-vi`, phiên Hôm nay còn thêm **từ mới mỗi ngày** từ danh sách từ của khóa — chỉ lấy từ những chương bạn đã học tới, theo thứ tự khóa dạy. Chọn số từ ở Hồ sơ → Đang học → **Từ mới mỗi ngày** (0–15, mặc định 5; chọn 0 để tắt).
+Với tiếng Pháp, `es-vi` và `de-vi`, phiên Hôm nay còn thêm **từ mới mỗi ngày** từ danh sách từ của khóa — chỉ lấy từ những chương bạn đã học tới, theo thứ tự khóa dạy. Chọn số từ ở Hồ sơ → Đang học → **Từ mới mỗi ngày** (0–15, mặc định 5; chọn 0 để tắt).
 
 ## 13. Ôn tập
 

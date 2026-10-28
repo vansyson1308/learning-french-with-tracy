@@ -82,6 +82,20 @@ itself.
   older `es-en` course is marked `"role": "standalone"`: it keeps its
   40 legacy lessons and its English dictionary but none of the new layers,
   and Spanish level claims and reports count only against `es-vi`.
+- **`de-vi` (German for Vietnamese speakers, P3d(de)) ships unreviewed**, on the
+  same terms as `es-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
+  `content/courses/de-vi.profile.json`. The owner signs
+  `content/de/REVIEW-TIER1-vi.md` (378 lines) and a hired German teacher checks
+  `content/de/REVIEW-TIER1-de.md` (309 lines). The rest is covered by:
+  - the validators and the German gates (articles, plurals, capitals, dative
+    chunks, verb-second and separable verbs, du/Sie register);
+  - the LanguageTool gate (`content/de/languagetool-allow.json`);
+  - the back-translation pass (`content/de/_drafts/BACKTRANSLATION.md`). The
+    same session wrote both languages, so this pass is not independent.
+
+  `de-en` is `"role": "standalone"`. Its lessons and stored surfaces are
+  unchanged. Old progress maps to the German ids through `legacySurfaces` in
+  persist v8, so no new migration was needed.
 - **Basic packs (P4a).** `de-en`, `es-en`, `it-en`, `ja-en`, `ko-en`, `pt-en` and
   `zh-en` are the inherited Lingo Lessons packs (`"basicPack": true` in their
   profiles). Each has 5 units (es-en 10) of one 11-step template: recognition
@@ -114,8 +128,7 @@ itself.
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).
-- **Goethe A1 practice (`de-vi`, staged — ships when de-vi is promoted) differs
-  from the real exam in three places.** The track follows the Goethe-Institut
+- **Goethe A1 practice (`de-vi`) differs from the real exam in three places.** The track follows the Goethe-Institut
   Durchführungsbestimmungen (Stand 1 September 2025) and the Start Deutsch 1
   Modellsatz, both read on 2026-10-28 (`content/de/exam/FORMAT-SOURCES.md`).
   It keeps four parts of 20 + 25 + 20 + 15 minutes, 6 + 4 + 5 listening items,
