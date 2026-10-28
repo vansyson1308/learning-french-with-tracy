@@ -9,7 +9,8 @@
 #
 #   1. golden: `golden.ts --check`; on a difference, re-bless with a reason
 #      that names the workflow, language, mode and run id, then re-check;
-#   2. `bun run test`, `bun run content:check`, `bun run audio:check`.
+#   2. `bun run test`, `bun run content:check`, `bun run audio:check`;
+#   3. after the push, dispatch ci.yml and device-acceptance.yml on the branch.
 #
 # Any failure exits non-zero BEFORE `git commit`: nothing is committed.
 # On a rejected push the commit is rebased onto the moved branch and the
@@ -66,6 +67,24 @@ gate() {
   bun run audio:check
 }
 
+# 2026-10-28: PR #45 sat with no CI on its head — the pull_request runs of a
+# bot-authored commit end as `action_required` (they wait for a human
+# "Approve and run") and a workflow-token push starts nothing. The one event
+# the workflow token may start is workflow_dispatch, and the dispatched runs'
+# checks attach to the pushed SHA, so the PR's checks are satisfied.
+# Needs GH_TOKEN and `permissions: actions: write` in the calling job.
+dispatch_checks() {
+  local wf
+  for wf in ci.yml device-acceptance.yml; do
+    if gh workflow run "$wf" --ref "$BRANCH"; then
+      echo "bot-commit: dispatched $wf on $BRANCH"
+    else
+      echo "::error::bot-commit: pushed, but could not dispatch $wf on $BRANCH — run it by hand"
+      exit 1
+    fi
+  done
+}
+
 stage
 if git diff --cached --quiet; then
   echo "bot-commit: nothing to commit"
@@ -78,6 +97,7 @@ git commit -F "$MESSAGE"
 for attempt in 1 2 3; do
   if git push origin "HEAD:$BRANCH"; then
     echo "bot-commit: pushed $(git rev-parse --short HEAD) to $BRANCH"
+    dispatch_checks
     exit 0
   fi
   echo "bot-commit: push rejected (attempt $attempt) — rebasing onto origin/$BRANCH and re-running the gate"
