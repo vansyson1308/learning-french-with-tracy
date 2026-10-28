@@ -43,7 +43,12 @@ jobs:
           echo "## Android build inputs" >> "$GITHUB_STEP_SUMMARY"
           grep -E "targetSdk|compileSdk|minSdk|buildTools|ndkVersion|agp" node_modules/react-native/gradle/libs.versions.toml | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Build release APK (debug-signed QA artifact)
+        timeout-minutes: 45
         working-directory: android
+        env:
+          # Maven Central read timeouts stalled the x86_64 build for 41 min (2026-10-28): bounded
+          # HTTP (connect 60 s, read 120 s) with 5 retries; a stall now fails inside the step limit.
+          GRADLE_OPTS: -Dorg.gradle.internal.http.connectionTimeout=60000 -Dorg.gradle.internal.http.socketTimeout=120000 -Dorg.gradle.internal.repository.max.retries=5 -Dorg.gradle.internal.repository.initial.backoff=2000
         run: ./gradlew :app:assembleRelease --no-daemon --stacktrace
       - name: Inspect the artifact (badging, permissions, target SDK)
         run: |
