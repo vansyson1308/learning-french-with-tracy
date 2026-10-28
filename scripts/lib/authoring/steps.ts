@@ -22,6 +22,7 @@ import {
   placementStageSchema,
   readingSourceSchema,
   speechItemSchema,
+  storySourceSchema,
   writingTaskSchema,
   ExerciseSchema,
   WordSchema,
@@ -45,6 +46,7 @@ export const STEP_IDS = [
   "exam",
   "lexicon-review",
   "lexicon-add",
+  "stories",
 ] as const;
 export type StepId = (typeof STEP_IDS)[number];
 
@@ -209,6 +211,16 @@ export const STEPS: Record<StepId, StepDef> = {
     blueprintSections: ["## 4. Reception"],
     exemplars: () => pick(frDoc("content/fr/reception/reading.json", "readings"), 3),
     sessions: "1",
+  },
+  stories: {
+    id: "stories",
+    task: "Viết truyện ngắn phân cấp (P5b) bằng ngôn ngữ đích: id `<lang>.story.<slug>`, band (A1-1 … A2-2), title, blurb.vi/en, 8–60 câu {speaker N|A|B, text, translation.vi/en}, newLexemes (3–5 id cho phép), questions (3: locate/infer, prompt + 3–4 options.vi/en, answer). 150–400 token; mọi token phải là lexeme cho phép (kể cả dạng chia), function word, tên riêng khai báo trong tokenMap, hoặc số; ≥ 95 % token đã biết ở band của truyện (từ mới ≤ 5 %). In vốn từ theo band: `bun scripts/stories.ts bands --lang <code>`; chấm truyện: `bun scripts/stories.ts check --lang <code>`. Không ghi nhãn CEFR (A1, B1 …) trong chữ hiển thị.",
+    recordSchema: (lang) => storySourceSchema(lang),
+    target: (lang) => `content/${lang}/stories/stories.json`,
+    validatorPrefixes: ["stories"],
+    blueprintSections: ["## 4. Reception"],
+    exemplars: () => pick(frDoc("content/fr/stories/stories.json", "stories"), 2),
+    sessions: "2–3 (10 stories each)",
   },
   listening: {
     id: "listening",

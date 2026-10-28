@@ -131,6 +131,8 @@ function synthesizeOutput(step: StepId, lang: string, native: string, courseId: 
     case "lexicon-add":
       // Additions are new words by definition: nothing committed to round-trip (bundle only).
       return [];
+    case "stories":
+      return rows(`content/${lang}/stories/stories.json`, "stories").map((r) => JSON.stringify(r));
   }
 }
 

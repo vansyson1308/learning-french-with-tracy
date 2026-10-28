@@ -1,0 +1,5629 @@
+{
+  "version": 1,
+  "language": "es",
+  "voiceCast": {
+    "N": {
+      "voiceId": "kokoro-ef_dora",
+      "speaker": null
+    },
+    "A": {
+      "voiceId": "kokoro-ef_dora",
+      "speaker": null
+    },
+    "B": {
+      "voiceId": "kokoro-em_alex",
+      "speaker": null
+    }
+  },
+  "functionWords": [
+    "el",
+    "la",
+    "los",
+    "las",
+    "lo",
+    "un",
+    "una",
+    "unos",
+    "unas",
+    "al",
+    "del",
+    "a",
+    "de",
+    "en",
+    "con",
+    "por",
+    "para",
+    "sin",
+    "sobre",
+    "entre",
+    "hasta",
+    "desde",
+    "hacia",
+    "y",
+    "e",
+    "o",
+    "u",
+    "pero",
+    "porque",
+    "que",
+    "si",
+    "cuando",
+    "ni",
+    "me",
+    "te",
+    "se",
+    "nos",
+    "le",
+    "les",
+    "mí",
+    "ti",
+    "yo",
+    "tú",
+    "él",
+    "ella",
+    "nosotros",
+    "nosotras",
+    "ellos",
+    "ellas",
+    "usted",
+    "ustedes",
+    "mi",
+    "mis",
+    "tu",
+    "tus",
+    "su",
+    "sus",
+    "nuestro",
+    "nuestra",
+    "nuestros",
+    "nuestras",
+    "este",
+    "esta",
+    "estos",
+    "estas",
+    "ese",
+    "esa",
+    "esos",
+    "esas",
+    "esto",
+    "eso",
+    "todo",
+    "toda",
+    "todos",
+    "todas",
+    "otro",
+    "otra",
+    "otros",
+    "otras",
+    "algo",
+    "nada",
+    "alguien",
+    "nadie",
+    "cada",
+    "muy",
+    "más",
+    "menos",
+    "ya",
+    "qué",
+    "quién",
+    "dónde",
+    "cómo",
+    "cuándo",
+    "cuál"
+  ],
+  "tokenMap": {
+    "ayuda": "es:w:ayudar",
+    "bebidas": "es:w:bebida",
+    "dije": "es:w:decir",
+    "era": "es:w:ser",
+    "escucha": "es:w:escuchar",
+    "felices": "es:w:feliz",
+    "habla": "es:w:hablar",
+    "llama": "es:w:llamar",
+    "mesas": "es:w:mesa",
+    "nueva": "es:w:nuevo",
+    "nuevas": "es:w:nuevo",
+    "oh": "function",
+    "peces": "es:w:pez",
+    "primer": "es:w:primero",
+    "primera": "es:w:primero",
+    "quiero": "es:w:querer",
+    "sienta": "es:w:sentar",
+    "son": "es:w:ser",
+    "sé": "es:w:saber",
+    "toma": "es:w:tomar",
+    "ve": "es:w:ver",
+    "vuelto": "es:w:volver"
+  },
+  "stories": [
+    {
+      "id": "es.story.el_perro_de_ana",
+      "band": "A1-1",
+      "title": "El perro de Ana",
+      "blurb": {
+        "vi": "Chú chó Toby biến mất. Ana và bố đi tìm khắp làng.",
+        "en": "Toby the dog is gone. Ana and her father look all over the village."
+      },
+      "newLexemes": [
+        "es:w:pajaro",
+        "es:w:rio",
+        "es:w:puente"
+      ],
+      "tokenMap": {
+        "ana": "name",
+        "toby": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Ana vive en un pueblo con su familia.",
+          "translation": {
+            "vi": "Ana sống ở một ngôi làng cùng gia đình.",
+            "en": "Ana lives in a village with her family."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ana tiene un perro grande, Toby.",
+          "translation": {
+            "vi": "Ana có một con chó lớn tên là Toby.",
+            "en": "Ana has a big dog, Toby."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Toby come pan y corre todo el día.",
+          "translation": {
+            "vi": "Toby ăn bánh mì và chạy suốt cả ngày.",
+            "en": "Toby eats bread and runs all day."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un día, Toby no está en la casa.",
+          "translation": {
+            "vi": "Một ngày nọ, Toby không có ở nhà.",
+            "en": "One day, Toby is not in the house."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ana busca a Toby en la habitación, en el baño y en la calle.",
+          "translation": {
+            "vi": "Ana tìm Toby trong phòng, trong phòng tắm và ngoài đường.",
+            "en": "Ana looks for Toby in the bedroom, in the bathroom and in the street."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Mamá, ¿dónde está Toby?",
+          "translation": {
+            "vi": "Mẹ ơi, Toby đâu rồi?",
+            "en": "Mum, where is Toby?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "No sé, hija. Vamos a buscar.",
+          "translation": {
+            "vi": "Bố không biết, con gái ạ. Mình đi tìm thôi.",
+            "en": "I don't know, love. Let's go and look."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ana y su padre van por el pueblo.",
+          "translation": {
+            "vi": "Ana và bố đi khắp làng.",
+            "en": "Ana and her father walk through the village."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Miran en la iglesia, en la estación y en el camino del mar.",
+          "translation": {
+            "vi": "Họ tìm ở nhà thờ, ở nhà ga và trên con đường ra biển.",
+            "en": "They look in the church, at the station and on the road to the sea."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Toby no está.",
+          "translation": {
+            "vi": "Toby không có ở đó.",
+            "en": "Toby is not there."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ana llora.",
+          "translation": {
+            "vi": "Ana khóc.",
+            "en": "Ana cries."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En el camino hay un río y un puente.",
+          "translation": {
+            "vi": "Trên đường có một dòng sông và một cây cầu.",
+            "en": "On the road there is a river and a bridge."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Toby está en el puente.",
+          "translation": {
+            "vi": "Toby đang ở trên cây cầu.",
+            "en": "Toby is on the bridge."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Mira un pájaro en el agua.",
+          "translation": {
+            "vi": "Nó đang nhìn một con chim trên mặt nước.",
+            "en": "He is watching a bird on the water."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Toby!",
+          "translation": {
+            "vi": "Toby!",
+            "en": "Toby!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El perro escucha a Ana y corre hacia ella.",
+          "translation": {
+            "vi": "Con chó nghe tiếng Ana và chạy về phía cô bé.",
+            "en": "The dog hears Ana and runs to her."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Toby quiere jugar con el pájaro.",
+          "translation": {
+            "vi": "Toby muốn chơi với con chim.",
+            "en": "Toby wants to play with the bird."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Pero el pájaro no quiere jugar con Toby.",
+          "translation": {
+            "vi": "Nhưng con chim không muốn chơi với Toby.",
+            "en": "But the bird does not want to play with Toby."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ana, su padre y Toby vuelven a la casa por el puente.",
+          "translation": {
+            "vi": "Ana, bố và Toby đi qua cây cầu về nhà.",
+            "en": "Ana, her father and Toby go back home over the bridge."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la casa, la madre de Ana prepara una sopa.",
+          "translation": {
+            "vi": "Ở nhà, mẹ của Ana nấu một nồi súp.",
+            "en": "At home, Ana's mother makes a soup."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Toby bebe agua y come pan.",
+          "translation": {
+            "vi": "Toby uống nước và ăn bánh mì.",
+            "en": "Toby drinks water and eats bread."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ana ríe y no llora más.",
+          "translation": {
+            "vi": "Ana cười và không khóc nữa.",
+            "en": "Ana laughs and stops crying."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Toby, ¡no vas sin mí!",
+          "translation": {
+            "vi": "Toby, không được đi đâu mà không có chị!",
+            "en": "Toby, you don't go anywhere without me!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Họ tìm thấy Toby ở đâu?",
+            "en": "Where do they find Toby?"
+          },
+          "options": [
+            {
+              "vi": "Trên cây cầu",
+              "en": "On the bridge"
+            },
+            {
+              "vi": "Trong nhà thờ",
+              "en": "In the church"
+            },
+            {
+              "vi": "Ở nhà ga",
+              "en": "At the station"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ai đi tìm Toby cùng Ana?",
+            "en": "Who looks for Toby with Ana?"
+          },
+          "options": [
+            {
+              "vi": "Mẹ của Ana",
+              "en": "Ana's mother"
+            },
+            {
+              "vi": "Bố của Ana",
+              "en": "Ana's father"
+            },
+            {
+              "vi": "Anh trai của Ana",
+              "en": "Ana's brother"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Toby ra cây cầu?",
+            "en": "Why did Toby go to the bridge?"
+          },
+          "options": [
+            {
+              "vi": "Nó đói và muốn ăn bánh mì",
+              "en": "He was hungry and wanted bread"
+            },
+            {
+              "vi": "Nó muốn đến nhà ga",
+              "en": "He wanted to go to the station"
+            },
+            {
+              "vi": "Nó muốn chơi với con chim",
+              "en": "He wanted to play with the bird"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_sopa_de_la_abuela",
+      "band": "A1-1",
+      "title": "La sopa de la abuela",
+      "blurb": {
+        "vi": "Pablo và Lucía đến nhà bà ăn trưa. Bà còn chuẩn bị một bất ngờ.",
+        "en": "Pablo and Lucía go to their grandmother's for lunch. She has a surprise too."
+      },
+      "newLexemes": [
+        "es:w:plato",
+        "es:w:botella",
+        "es:w:pastel"
+      ],
+      "tokenMap": {
+        "pablo": "name",
+        "lucía": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "La abuela de Pablo vive en una casa grande en el pueblo.",
+          "translation": {
+            "vi": "Bà của Pablo sống trong một ngôi nhà lớn ở làng.",
+            "en": "Pablo's grandmother lives in a big house in the village."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pablo va a la casa de su abuela con su hermana, Lucía.",
+          "translation": {
+            "vi": "Pablo đến nhà bà cùng với em gái, Lucía.",
+            "en": "Pablo goes to his grandmother's house with his sister, Lucía."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Hola, abuela!",
+          "translation": {
+            "vi": "Cháu chào bà!",
+            "en": "Hi, Grandma!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Hola, mis niños. ¿Tienen hambre?",
+          "translation": {
+            "vi": "Chào các cháu. Các cháu có đói không?",
+            "en": "Hello, my dears. Are you hungry?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, abuela, tenemos hambre.",
+          "translation": {
+            "vi": "Dạ có, bà ơi, chúng cháu đói rồi.",
+            "en": "Yes, Grandma, we're hungry."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La abuela cocina una sopa de pollo con arroz.",
+          "translation": {
+            "vi": "Bà nấu súp gà với cơm.",
+            "en": "Grandma cooks a chicken soup with rice."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pablo pone la mesa y Lucía trae el pan y el agua.",
+          "translation": {
+            "vi": "Pablo dọn bàn, còn Lucía mang bánh mì và nước ra.",
+            "en": "Pablo sets the table and Lucía brings the bread and the water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la mesa hay un plato para cada uno.",
+          "translation": {
+            "vi": "Trên bàn có một cái đĩa cho mỗi người.",
+            "en": "On the table there is a plate for each of them."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El abuelo llega con una botella de zumo de manzana.",
+          "translation": {
+            "vi": "Ông về, mang theo một chai nước ép táo.",
+            "en": "Grandpa arrives with a bottle of apple juice."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Quieren sopa?",
+          "translation": {
+            "vi": "Các cháu ăn súp không?",
+            "en": "Do you want some soup?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Sí, por favor!",
+          "translation": {
+            "vi": "Dạ có ạ!",
+            "en": "Yes, please!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Los niños comen la sopa y beben el zumo.",
+          "translation": {
+            "vi": "Bọn trẻ ăn súp và uống nước ép.",
+            "en": "The children eat the soup and drink the juice."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pablo quiere otro plato de sopa.",
+          "translation": {
+            "vi": "Pablo muốn thêm một đĩa súp nữa.",
+            "en": "Pablo wants another plate of soup."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La abuela trae un pastel de manzana.",
+          "translation": {
+            "vi": "Bà mang ra một cái bánh táo.",
+            "en": "Grandma brings an apple cake."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Abuela, el pastel es grande!",
+          "translation": {
+            "vi": "Bà ơi, cái bánh to quá!",
+            "en": "Grandma, the cake is big!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Es para la familia. Tu madre y tu padre vienen a cenar.",
+          "translation": {
+            "vi": "Bánh cho cả nhà. Bố mẹ cháu sẽ đến ăn tối.",
+            "en": "It's for the family. Your mother and father are coming to dinner."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Lucía ayuda a la abuela con los platos.",
+          "translation": {
+            "vi": "Lucía giúp bà dọn đĩa.",
+            "en": "Lucía helps Grandma with the plates."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pablo y el abuelo hablan de su barco y del mar.",
+          "translation": {
+            "vi": "Pablo và ông nói chuyện về con thuyền của ông và về biển.",
+            "en": "Pablo and Grandpa talk about his boat and the sea."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Cuando llegan los padres, toda la familia come el pastel.",
+          "translation": {
+            "vi": "Khi bố mẹ đến, cả nhà cùng ăn bánh.",
+            "en": "When the parents arrive, the whole family eats the cake."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Gracias, abuela. ¡Vamos a volver pronto!",
+          "translation": {
+            "vi": "Cảm ơn bà. Chúng cháu sẽ sớm quay lại!",
+            "en": "Thank you, Grandma. We'll come back soon!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Bà nấu món gì?",
+            "en": "What does Grandma cook?"
+          },
+          "options": [
+            {
+              "vi": "Súp gà với cơm",
+              "en": "Chicken soup with rice"
+            },
+            {
+              "vi": "Súp cá",
+              "en": "Fish soup"
+            },
+            {
+              "vi": "Gà nướng với khoai",
+              "en": "Roast chicken with potatoes"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ông mang gì về?",
+            "en": "What does Grandpa bring?"
+          },
+          "options": [
+            {
+              "vi": "Một cái bánh",
+              "en": "A cake"
+            },
+            {
+              "vi": "Một chai nước ép táo",
+              "en": "A bottle of apple juice"
+            },
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao cái bánh lại to như vậy?",
+            "en": "Why is the cake so big?"
+          },
+          "options": [
+            {
+              "vi": "Vì hôm nay là sinh nhật Lucía",
+              "en": "Because it is Lucía's birthday"
+            },
+            {
+              "vi": "Vì Pablo muốn ăn thật nhiều",
+              "en": "Because Pablo wants to eat a lot"
+            },
+            {
+              "vi": "Vì bố mẹ của bọn trẻ cũng đến ăn tối",
+              "en": "Because the children's parents are coming to dinner too"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.un_viaje_a_la_isla",
+      "band": "A1-1",
+      "title": "Un viaje a la isla",
+      "blurb": {
+        "vi": "Marta và chồng bay đến một hòn đảo. Họ có muốn quay lại không?",
+        "en": "Marta and her husband fly to an island. Will they want to come back?"
+      },
+      "newLexemes": [
+        "es:w:playa",
+        "es:w:sol",
+        "es:w:verano"
+      ],
+      "tokenMap": {
+        "marta": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Marta y su marido viajan a una isla.",
+          "translation": {
+            "vi": "Marta và chồng đi du lịch đến một hòn đảo.",
+            "en": "Marta and her husband travel to an island."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Llevan dos maletas y un mapa.",
+          "translation": {
+            "vi": "Họ mang theo hai va li và một tấm bản đồ.",
+            "en": "They take two suitcases and a map."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En el aeropuerto, Marta busca los billetes.",
+          "translation": {
+            "vi": "Ở sân bay, Marta tìm vé.",
+            "en": "At the airport, Marta looks for the tickets."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Dónde están los billetes?",
+          "translation": {
+            "vi": "Vé đâu rồi anh?",
+            "en": "Where are the tickets?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Están en mi maleta.",
+          "translation": {
+            "vi": "Trong va li của anh.",
+            "en": "They're in my suitcase."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El avión es grande y vuela sobre el mar.",
+          "translation": {
+            "vi": "Máy bay rất lớn và bay trên biển.",
+            "en": "The plane is big and flies over the sea."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marta mira el mar por la ventana.",
+          "translation": {
+            "vi": "Marta nhìn biển qua cửa sổ.",
+            "en": "Marta looks at the sea through the window."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Mira, una isla!",
+          "translation": {
+            "vi": "Nhìn kìa, một hòn đảo!",
+            "en": "Look, an island!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la isla hay montañas, un pueblo y una playa.",
+          "translation": {
+            "vi": "Trên đảo có núi, một ngôi làng và một bãi biển.",
+            "en": "On the island there are mountains, a village and a beach."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Van en taxi al hotel.",
+          "translation": {
+            "vi": "Họ đi taxi đến khách sạn.",
+            "en": "They take a taxi to the hotel."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El hotel está frente al mar.",
+          "translation": {
+            "vi": "Khách sạn nằm trước mặt biển.",
+            "en": "The hotel is right on the sea front."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La habitación tiene una cama grande y una ventana.",
+          "translation": {
+            "vi": "Căn phòng có một chiếc giường lớn và một ô cửa sổ.",
+            "en": "The room has a big bed and a window."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marta pone los libros en la mesa.",
+          "translation": {
+            "vi": "Marta đặt mấy cuốn sách lên bàn.",
+            "en": "Marta puts the books on the table."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Marta, ¿vamos a la playa?",
+          "translation": {
+            "vi": "Marta, mình ra biển nhé?",
+            "en": "Marta, shall we go to the beach?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sí, pero yo tengo hambre.",
+          "translation": {
+            "vi": "Ừ, nhưng em đói rồi.",
+            "en": "Yes, but I'm hungry."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Comen pollo con arroz en un restaurante del pueblo.",
+          "translation": {
+            "vi": "Họ ăn gà với cơm ở một nhà hàng trong làng.",
+            "en": "They eat chicken with rice in a restaurant in the village."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la playa hay sol.",
+          "translation": {
+            "vi": "Trên bãi biển trời nắng.",
+            "en": "On the beach it is sunny."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marta lee un libro y su marido corre en el agua.",
+          "translation": {
+            "vi": "Marta đọc sách, còn chồng cô chạy dưới nước.",
+            "en": "Marta reads a book and her husband runs in the water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Unos niños juegan en el agua con un perro.",
+          "translation": {
+            "vi": "Mấy đứa trẻ chơi dưới nước với một con chó.",
+            "en": "Some children play in the water with a dog."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Marta, vamos al agua!",
+          "translation": {
+            "vi": "Marta, xuống nước đi em!",
+            "en": "Marta, let's go in the water!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marta y su marido miran el sol sobre el mar.",
+          "translation": {
+            "vi": "Marta và chồng ngắm mặt trời trên biển.",
+            "en": "Marta and her husband watch the sun over the sea."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Quiero volver a esta isla cada verano.",
+          "translation": {
+            "vi": "Em muốn quay lại hòn đảo này mỗi mùa hè.",
+            "en": "I want to come back to this island every summer."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Yo quiero vivir en la isla.",
+          "translation": {
+            "vi": "Còn anh muốn sống luôn trên đảo.",
+            "en": "I want to live on the island."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Marta và chồng đi đâu?",
+            "en": "Where do Marta and her husband go?"
+          },
+          "options": [
+            {
+              "vi": "Một thành phố lớn",
+              "en": "A big city"
+            },
+            {
+              "vi": "Một hòn đảo",
+              "en": "An island"
+            },
+            {
+              "vi": "Một ngôi làng trên núi",
+              "en": "A mountain village"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Vé máy bay ở đâu?",
+            "en": "Where are the tickets?"
+          },
+          "options": [
+            {
+              "vi": "Trong va li của chồng Marta",
+              "en": "In her husband's suitcase"
+            },
+            {
+              "vi": "Ở khách sạn",
+              "en": "At the hotel"
+            },
+            {
+              "vi": "Trên bàn ở nhà",
+              "en": "On the table at home"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Hai vợ chồng thấy hòn đảo thế nào?",
+            "en": "What do they think of the island?"
+          },
+          "options": [
+            {
+              "vi": "Họ thấy chán và muốn về sớm",
+              "en": "They are bored and want to go home early"
+            },
+            {
+              "vi": "Họ thấy quá nóng",
+              "en": "They find it too hot"
+            },
+            {
+              "vi": "Họ rất thích và muốn quay lại",
+              "en": "They love it and want to come back"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.carlos_esta_enfermo",
+      "band": "A1-1",
+      "title": "Carlos está enfermo",
+      "blurb": {
+        "vi": "Carlos bị sốt nhưng không muốn uống thuốc. Elena đưa anh đến hiệu thuốc.",
+        "en": "Carlos has a fever but doesn't want medicine. Elena takes him to the pharmacy."
+      },
+      "newLexemes": [
+        "es:w:enfermo",
+        "es:w:fiebre",
+        "es:w:medicina"
+      ],
+      "tokenMap": {
+        "carlos": "name",
+        "elena": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Carlos tiene un problema.",
+          "translation": {
+            "vi": "Carlos gặp một chuyện.",
+            "en": "Carlos has a problem."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Carlos está enfermo.",
+          "translation": {
+            "vi": "Carlos bị ốm.",
+            "en": "Carlos is ill."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Tiene fiebre y no quiere comer.",
+          "translation": {
+            "vi": "Anh ấy bị sốt và không muốn ăn.",
+            "en": "He has a fever and doesn't want to eat."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su esposa, Elena, lo mira.",
+          "translation": {
+            "vi": "Vợ anh, Elena, nhìn anh.",
+            "en": "His wife, Elena, looks at him."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Carlos, necesitas una medicina.",
+          "translation": {
+            "vi": "Carlos, anh cần uống thuốc.",
+            "en": "Carlos, you need some medicine."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "No, no necesito nada.",
+          "translation": {
+            "vi": "Không, anh không cần gì cả.",
+            "en": "No, I don't need anything."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sí, vamos a la farmacia.",
+          "translation": {
+            "vi": "Có chứ, mình đi hiệu thuốc.",
+            "en": "Yes, let's go to the pharmacy."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La farmacia está en la calle del museo.",
+          "translation": {
+            "vi": "Hiệu thuốc ở trên con phố có bảo tàng.",
+            "en": "The pharmacy is on the museum street."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Carlos y Elena caminan hasta la farmacia.",
+          "translation": {
+            "vi": "Carlos và Elena đi bộ đến hiệu thuốc.",
+            "en": "Carlos and Elena walk to the pharmacy."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la calle hay coches y camiones.",
+          "translation": {
+            "vi": "Ngoài đường có ô tô và xe tải.",
+            "en": "In the street there are cars and lorries."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la farmacia hay una señora.",
+          "translation": {
+            "vi": "Trong hiệu thuốc có một cô dược sĩ.",
+            "en": "In the pharmacy there is a lady."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Buenos días. ¿Qué necesitan?",
+          "translation": {
+            "vi": "Chào anh chị. Anh chị cần gì ạ?",
+            "en": "Good morning. What do you need?"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elena explica el problema.",
+          "translation": {
+            "vi": "Elena kể lại chuyện.",
+            "en": "Elena explains the problem."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La señora trae una medicina para la fiebre.",
+          "translation": {
+            "vi": "Cô dược sĩ mang ra một loại thuốc hạ sốt.",
+            "en": "The lady brings a medicine for the fever."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Con esta medicina, la fiebre va a pasar pronto.",
+          "translation": {
+            "vi": "Với thuốc này, cơn sốt sẽ sớm qua thôi.",
+            "en": "With this medicine, the fever will soon pass."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Gracias, señora.",
+          "translation": {
+            "vi": "Cảm ơn cô.",
+            "en": "Thank you."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Carlos y Elena vuelven a casa.",
+          "translation": {
+            "vi": "Carlos và Elena về nhà.",
+            "en": "Carlos and Elena go back home."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Carlos se acuesta en la cama.",
+          "translation": {
+            "vi": "Carlos nằm xuống giường.",
+            "en": "Carlos lies down in bed."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elena prepara una sopa de pollo.",
+          "translation": {
+            "vi": "Elena nấu một nồi súp gà.",
+            "en": "Elena makes a chicken soup."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Elena, ¿puedo comer la sopa en la cama?",
+          "translation": {
+            "vi": "Elena ơi, anh ăn súp trên giường được không?",
+            "en": "Elena, can I eat the soup in bed?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sí. Y tienes que beber agua.",
+          "translation": {
+            "vi": "Được. Và anh phải uống nước nữa.",
+            "en": "Yes. And you have to drink water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Carlos come la sopa y bebe agua.",
+          "translation": {
+            "vi": "Carlos ăn súp và uống nước.",
+            "en": "Carlos eats the soup and drinks water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pasa un día en la cama.",
+          "translation": {
+            "vi": "Anh nằm trên giường cả một ngày.",
+            "en": "He spends a day in bed."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Dos días pasan.",
+          "translation": {
+            "vi": "Hai ngày trôi qua.",
+            "en": "Two days go by."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Elena, ¡ya puedo trabajar!",
+          "translation": {
+            "vi": "Elena, anh đi làm được rồi!",
+            "en": "Elena, I can go back to work now!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "No, Carlos. Tienes que esperar un día más.",
+          "translation": {
+            "vi": "Không, Carlos. Anh phải đợi thêm một ngày nữa.",
+            "en": "No, Carlos. You have to wait one more day."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Carlos ríe y vuelve a la cama con un libro.",
+          "translation": {
+            "vi": "Carlos cười rồi quay lại giường với một cuốn sách.",
+            "en": "Carlos laughs and goes back to bed with a book."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Carlos bị làm sao?",
+            "en": "What is wrong with Carlos?"
+          },
+          "options": [
+            {
+              "vi": "Anh ấy bị đau chân",
+              "en": "His leg hurts"
+            },
+            {
+              "vi": "Anh ấy bị mất việc",
+              "en": "He lost his job"
+            },
+            {
+              "vi": "Anh ấy bị ốm và sốt",
+              "en": "He is ill with a fever"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Hiệu thuốc ở đâu?",
+            "en": "Where is the pharmacy?"
+          },
+          "options": [
+            {
+              "vi": "Trên con phố có bảo tàng",
+              "en": "On the museum street"
+            },
+            {
+              "vi": "Cạnh nhà ga",
+              "en": "Next to the station"
+            },
+            {
+              "vi": "Trong khách sạn",
+              "en": "In the hotel"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Elena bảo Carlos đợi thêm một ngày?",
+            "en": "Why does Elena tell Carlos to wait one more day?"
+          },
+          "options": [
+            {
+              "vi": "Vì văn phòng hôm nay đóng cửa",
+              "en": "Because the office is closed today"
+            },
+            {
+              "vi": "Vì anh ấy vừa mới khỏi ốm và cần nghỉ thêm",
+              "en": "Because he has only just got better and needs more rest"
+            },
+            {
+              "vi": "Vì cô ấy muốn đi chơi với anh",
+              "en": "Because she wants to go out with him"
+            }
+          ],
+          "answer": 1
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_panaderia_del_senor_ramon",
+      "band": "A1-1",
+      "title": "La panadería del señor Ramón",
+      "blurb": {
+        "vi": "Ngày nào Sofía cũng mua bánh ở cùng một tiệm. Vì sao vậy?",
+        "en": "Every day Sofía buys bread at the same bakery. Why?"
+      },
+      "newLexemes": [
+        "es:w:cuanto",
+        "es:w:barato",
+        "es:w:taza"
+      ],
+      "tokenMap": {
+        "sofía": "name",
+        "ramón": "name",
+        "diego": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Todos los días, Sofía va a la panadería de su calle.",
+          "translation": {
+            "vi": "Ngày nào Sofía cũng đến tiệm bánh trên phố nhà mình.",
+            "en": "Every day, Sofía goes to the bakery on her street."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La panadería está frente a la iglesia.",
+          "translation": {
+            "vi": "Tiệm bánh nằm đối diện nhà thờ.",
+            "en": "The bakery is opposite the church."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la panadería trabaja el señor Ramón.",
+          "translation": {
+            "vi": "Ông Ramón làm việc ở tiệm bánh.",
+            "en": "Mr Ramón works in the bakery."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Buenos días, Sofía!",
+          "translation": {
+            "vi": "Chào cháu, Sofía!",
+            "en": "Good morning, Sofía!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Buenos días, señor Ramón. Un pan, por favor.",
+          "translation": {
+            "vi": "Cháu chào ông Ramón. Cho cháu một ổ bánh mì ạ.",
+            "en": "Good morning, Mr Ramón. A loaf, please."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¿Un pan grande o un pan de leche?",
+          "translation": {
+            "vi": "Một ổ lớn hay một ổ bánh sữa?",
+            "en": "A big loaf or a milk loaf?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Un pan grande. ¿Cuánto es?",
+          "translation": {
+            "vi": "Một ổ lớn ạ. Bao nhiêu tiền ạ?",
+            "en": "A big one. How much is it?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "El pan grande es barato.",
+          "translation": {
+            "vi": "Ổ lớn rẻ thôi.",
+            "en": "The big loaf is cheap."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sofía recoge el pan.",
+          "translation": {
+            "vi": "Sofía cầm lấy ổ bánh.",
+            "en": "Sofía picks up the bread."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la calle, Sofía encuentra a su amigo Diego.",
+          "translation": {
+            "vi": "Ngoài phố, Sofía gặp bạn mình là Diego.",
+            "en": "In the street, Sofía meets her friend Diego."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¿Quieres un café?",
+          "translation": {
+            "vi": "Đi uống cà phê không?",
+            "en": "Do you want a coffee?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sí, pero tengo que volver a casa pronto.",
+          "translation": {
+            "vi": "Ừ, nhưng mình phải về nhà sớm.",
+            "en": "Yes, but I have to go home soon."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Diego y Sofía van al restaurante del museo.",
+          "translation": {
+            "vi": "Diego và Sofía đến nhà hàng của bảo tàng.",
+            "en": "Diego and Sofía go to the museum restaurant."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Diego pide dos cafés y Sofía pide un té en una taza grande.",
+          "translation": {
+            "vi": "Diego gọi hai cà phê, còn Sofía gọi một tách trà lớn.",
+            "en": "Diego orders two coffees and Sofía orders a tea in a big cup."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¿Cuánto es un café en este restaurante?",
+          "translation": {
+            "vi": "Ở nhà hàng này một cà phê bao nhiêu tiền nhỉ?",
+            "en": "How much is a coffee in this restaurant?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "No es barato.",
+          "translation": {
+            "vi": "Không rẻ đâu.",
+            "en": "It's not cheap."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Diego ríe.",
+          "translation": {
+            "vi": "Diego bật cười.",
+            "en": "Diego laughs."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sofía, ¿por qué siempre vas a la panadería del señor Ramón?",
+          "translation": {
+            "vi": "Sofía này, sao bạn lúc nào cũng đến tiệm của ông Ramón?",
+            "en": "Sofía, why do you always go to Mr Ramón's bakery?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Porque su pan es grande y barato.",
+          "translation": {
+            "vi": "Vì bánh của ông vừa to vừa rẻ.",
+            "en": "Because his bread is big and cheap."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Y porque el señor Ramón siempre tiene una canción para mí.",
+          "translation": {
+            "vi": "Và vì lúc nào ông Ramón cũng có một bài hát dành cho mình.",
+            "en": "And because Mr Ramón always has a song for me."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Diego mira a Sofía y bebe su café.",
+          "translation": {
+            "vi": "Diego nhìn Sofía và uống cà phê.",
+            "en": "Diego looks at Sofía and drinks his coffee."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Un día voy a ir a esa panadería.",
+          "translation": {
+            "vi": "Hôm nào mình cũng sẽ đến tiệm bánh đó.",
+            "en": "One day I'm going to go to that bakery."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Sofía mua gì ở tiệm bánh?",
+            "en": "What does Sofía buy at the bakery?"
+          },
+          "options": [
+            {
+              "vi": "Một ổ bánh sữa",
+              "en": "A milk loaf"
+            },
+            {
+              "vi": "Một ổ bánh mì lớn",
+              "en": "A big loaf"
+            },
+            {
+              "vi": "Một cái bánh ngọt",
+              "en": "A cake"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Sofía gặp ai trên phố?",
+            "en": "Who does Sofía meet in the street?"
+          },
+          "options": [
+            {
+              "vi": "Bạn của cô, Diego",
+              "en": "Her friend Diego"
+            },
+            {
+              "vi": "Ông Ramón",
+              "en": "Mr Ramón"
+            },
+            {
+              "vi": "Mẹ của cô",
+              "en": "Her mother"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Sofía luôn đến tiệm của ông Ramón?",
+            "en": "Why does Sofía always go to Mr Ramón's bakery?"
+          },
+          "options": [
+            {
+              "vi": "Vì Diego làm việc ở đó",
+              "en": "Because Diego works there"
+            },
+            {
+              "vi": "Vì đó là tiệm duy nhất trong thành phố",
+              "en": "Because it is the only bakery in town"
+            },
+            {
+              "vi": "Vì bánh rẻ và ông ấy vui tính, hay hát cho cô nghe",
+              "en": "Because the bread is cheap and he is cheerful and sings for her"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.perdidos_en_la_ciudad",
+      "band": "A1-1",
+      "title": "Perdidos en la ciudad",
+      "blurb": {
+        "vi": "Clara và Jorge muốn đi bảo tàng nhưng lại xuống nhầm ga tàu điện ngầm.",
+        "en": "Clara and Jorge want to visit a museum but get off the metro at the wrong stop."
+      },
+      "newLexemes": [
+        "es:w:norte",
+        "es:w:mercado",
+        "es:w:plaza"
+      ],
+      "tokenMap": {
+        "clara": "name",
+        "jorge": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Clara y Jorge están en una ciudad grande.",
+          "translation": {
+            "vi": "Clara và Jorge đang ở một thành phố lớn.",
+            "en": "Clara and Jorge are in a big city."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Quieren ver el museo de la ciudad.",
+          "translation": {
+            "vi": "Họ muốn xem bảo tàng của thành phố.",
+            "en": "They want to see the city museum."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Jorge tiene un mapa.",
+          "translation": {
+            "vi": "Jorge có một tấm bản đồ.",
+            "en": "Jorge has a map."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "El museo está en el norte de la ciudad.",
+          "translation": {
+            "vi": "Bảo tàng ở phía bắc thành phố.",
+            "en": "The museum is in the north of the city."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Vamos en taxi o en metro?",
+          "translation": {
+            "vi": "Mình đi taxi hay tàu điện ngầm?",
+            "en": "Shall we go by taxi or by metro?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "En metro. La estación está en esta calle.",
+          "translation": {
+            "vi": "Tàu điện ngầm. Ga ở ngay phố này.",
+            "en": "By metro. The station is on this street."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la estación hay hombres, mujeres y niños.",
+          "translation": {
+            "vi": "Ở nhà ga có đàn ông, phụ nữ và trẻ con.",
+            "en": "At the station there are men, women and children."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Clara y Jorge suben al metro.",
+          "translation": {
+            "vi": "Clara và Jorge lên tàu.",
+            "en": "Clara and Jorge get on the metro."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pasan cinco minutos, pasan diez minutos.",
+          "translation": {
+            "vi": "Năm phút trôi qua, rồi mười phút.",
+            "en": "Five minutes go by, then ten."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Jorge, ¿dónde estamos?",
+          "translation": {
+            "vi": "Jorge, mình đang ở đâu thế?",
+            "en": "Jorge, where are we?"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Jorge mira el mapa y no sabe.",
+          "translation": {
+            "vi": "Jorge nhìn bản đồ nhưng không biết.",
+            "en": "Jorge looks at the map but doesn't know."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "No sé. Creo que el museo no está en este camino.",
+          "translation": {
+            "vi": "Anh không biết. Anh nghĩ bảo tàng không nằm trên đường này.",
+            "en": "I don't know. I don't think the museum is on this route."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Bajan del metro en una estación con un mercado.",
+          "translation": {
+            "vi": "Họ xuống tàu ở một ga có khu chợ.",
+            "en": "They get off at a station with a market."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En el mercado hay fruta, queso, pan y pollo.",
+          "translation": {
+            "vi": "Ở chợ có trái cây, phô mai, bánh mì và gà.",
+            "en": "At the market there is fruit, cheese, bread and chicken."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Vamos a preguntar.",
+          "translation": {
+            "vi": "Mình hỏi đường đi.",
+            "en": "Let's ask."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Clara habla con un señor del mercado.",
+          "translation": {
+            "vi": "Clara nói chuyện với một ông ở chợ.",
+            "en": "Clara talks to a man at the market."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Perdón, señor. ¿Dónde está el museo?",
+          "translation": {
+            "vi": "Xin lỗi ông. Bảo tàng ở đâu ạ?",
+            "en": "Excuse me, sir. Where is the museum?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "El museo está en la plaza, a la derecha de la iglesia.",
+          "translation": {
+            "vi": "Bảo tàng ở quảng trường, bên phải nhà thờ.",
+            "en": "The museum is on the square, to the right of the church."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Tienen que caminar recto.",
+          "translation": {
+            "vi": "Các cháu cứ đi thẳng.",
+            "en": "You have to walk straight on."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Gracias, señor!",
+          "translation": {
+            "vi": "Cảm ơn ông!",
+            "en": "Thank you, sir!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Clara y Jorge caminan recto y llegan a la plaza.",
+          "translation": {
+            "vi": "Clara và Jorge đi thẳng và đến quảng trường.",
+            "en": "Clara and Jorge walk straight on and reach the square."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la plaza está el museo.",
+          "translation": {
+            "vi": "Bảo tàng nằm ngay trên quảng trường.",
+            "en": "The museum is on the square."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Clara y Jorge pasan dos horas en el museo.",
+          "translation": {
+            "vi": "Clara và Jorge ở trong bảo tàng hai tiếng.",
+            "en": "Clara and Jorge spend two hours in the museum."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Clara và Jorge muốn đi đâu?",
+            "en": "Where do Clara and Jorge want to go?"
+          },
+          "options": [
+            {
+              "vi": "Đến chợ",
+              "en": "To the market"
+            },
+            {
+              "vi": "Đến bảo tàng",
+              "en": "To the museum"
+            },
+            {
+              "vi": "Đến nhà thờ",
+              "en": "To the church"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Họ hỏi đường ai?",
+            "en": "Who do they ask for directions?"
+          },
+          "options": [
+            {
+              "vi": "Một người lái taxi",
+              "en": "A taxi driver"
+            },
+            {
+              "vi": "Một cô ở nhà ga",
+              "en": "A woman at the station"
+            },
+            {
+              "vi": "Một ông ở chợ",
+              "en": "A man at the market"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao họ xuống tàu ở ga có chợ?",
+            "en": "Why do they get off at the station with the market?"
+          },
+          "options": [
+            {
+              "vi": "Vì họ bị lạc và cần hỏi đường",
+              "en": "Because they are lost and need to ask the way"
+            },
+            {
+              "vi": "Vì họ đói bụng",
+              "en": "Because they are hungry"
+            },
+            {
+              "vi": "Vì bảo tàng nằm trong chợ",
+              "en": "Because the museum is in the market"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_cancion_de_ines",
+      "band": "A1-1",
+      "title": "La canción de Inés",
+      "blurb": {
+        "vi": "Em bé Leo khóc mãi không thôi. Chị Inés có một ý hay.",
+        "en": "Baby Leo won't stop crying. His sister Inés has an idea."
+      },
+      "newLexemes": [
+        "es:w:luna",
+        "es:w:estrella",
+        "es:w:silencio"
+      ],
+      "tokenMap": {
+        "inés": "name",
+        "leo": "name",
+        "sienta": "es:w:sentar"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "En la casa de Inés hay un bebé, Leo.",
+          "translation": {
+            "vi": "Trong nhà của Inés có một em bé tên là Leo.",
+            "en": "In Inés's house there is a baby, Leo."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Leo llora y llora.",
+          "translation": {
+            "vi": "Leo khóc mãi, khóc mãi.",
+            "en": "Leo cries and cries."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su padre lo pone en la cama.",
+          "translation": {
+            "vi": "Bố đặt em lên giường.",
+            "en": "His father puts him in bed."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero Leo llora más.",
+          "translation": {
+            "vi": "Nhưng Leo lại khóc to hơn.",
+            "en": "But Leo cries even more."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Inés, ¿qué hacemos?",
+          "translation": {
+            "vi": "Inés ơi, mình làm gì bây giờ?",
+            "en": "Inés, what do we do?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Vamos a la ventana.",
+          "translation": {
+            "vi": "Mình ra cửa sổ đi bố.",
+            "en": "Let's go to the window."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Inés y Leo miran por la ventana.",
+          "translation": {
+            "vi": "Inés và Leo nhìn qua cửa sổ.",
+            "en": "Inés and Leo look out of the window."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sobre la ciudad hay una luna grande.",
+          "translation": {
+            "vi": "Trên thành phố có một vầng trăng lớn.",
+            "en": "Above the city there is a big moon."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Y hay estrellas, una, dos, tres, cuatro, cinco.",
+          "translation": {
+            "vi": "Và có những ngôi sao: một, hai, ba, bốn, năm.",
+            "en": "And there are stars: one, two, three, four, five."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Mira, Leo, la luna.",
+          "translation": {
+            "vi": "Nhìn này Leo, mặt trăng kìa.",
+            "en": "Look, Leo, the moon."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Leo mira la luna y no llora.",
+          "translation": {
+            "vi": "Leo nhìn mặt trăng và không khóc nữa.",
+            "en": "Leo looks at the moon and doesn't cry."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Inés recuerda una canción de su madre.",
+          "translation": {
+            "vi": "Inés nhớ ra một bài hát của mẹ.",
+            "en": "Inés remembers a song of her mother's."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Es una canción del mar, de un barco y de una isla.",
+          "translation": {
+            "vi": "Đó là một bài hát về biển, về một con thuyền và một hòn đảo.",
+            "en": "It is a song about the sea, a boat and an island."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La canción habla de un niño que viaja en un barco.",
+          "translation": {
+            "vi": "Bài hát kể về một cậu bé đi trên một con thuyền.",
+            "en": "The song is about a boy who travels on a boat."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Leo escucha la canción.",
+          "translation": {
+            "vi": "Leo lắng nghe bài hát.",
+            "en": "Leo listens to the song."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Leo mira a su hermana.",
+          "translation": {
+            "vi": "Leo nhìn chị mình.",
+            "en": "Leo looks at his sister."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su padre llega a la habitación.",
+          "translation": {
+            "vi": "Bố bước vào phòng.",
+            "en": "Their father comes into the room."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¿Qué pasa?",
+          "translation": {
+            "vi": "Có chuyện gì thế?",
+            "en": "What's going on?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Silencio. Leo escucha la canción.",
+          "translation": {
+            "vi": "Suỵt. Leo đang nghe hát.",
+            "en": "Shh. Leo is listening to the song."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El padre se sienta en la cama.",
+          "translation": {
+            "vi": "Bố ngồi xuống giường.",
+            "en": "Their father sits down on the bed."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La canción pasa, y la casa está en silencio.",
+          "translation": {
+            "vi": "Bài hát kết thúc, và cả nhà yên lặng.",
+            "en": "The song ends, and the house is silent."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Leo ya no llora.",
+          "translation": {
+            "vi": "Leo không khóc nữa.",
+            "en": "Leo isn't crying any more."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Leo está en su cama y no llora más.",
+          "translation": {
+            "vi": "Leo nằm trên giường và thôi khóc hẳn.",
+            "en": "Leo is in his bed and stops crying."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Buenas noches, Leo.",
+          "translation": {
+            "vi": "Chúc con ngủ ngon, Leo.",
+            "en": "Good night, Leo."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Buenas noches, mi bebé.",
+          "translation": {
+            "vi": "Ngủ ngon nhé, em bé của chị.",
+            "en": "Good night, my baby."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Leo là ai?",
+            "en": "Who is Leo?"
+          },
+          "options": [
+            {
+              "vi": "Bố của Inés",
+              "en": "Inés's father"
+            },
+            {
+              "vi": "Em bé, em trai của Inés",
+              "en": "The baby, Inés's little brother"
+            },
+            {
+              "vi": "Con mèo của Inés",
+              "en": "Inés's cat"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Inés và Leo nhìn thấy gì qua cửa sổ?",
+            "en": "What do Inés and Leo see from the window?"
+          },
+          "options": [
+            {
+              "vi": "Mặt trăng và các ngôi sao",
+              "en": "The moon and the stars"
+            },
+            {
+              "vi": "Biển và một con thuyền",
+              "en": "The sea and a boat"
+            },
+            {
+              "vi": "Mặt trời",
+              "en": "The sun"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Điều gì làm Leo nín khóc?",
+            "en": "What makes Leo stop crying?"
+          },
+          "options": [
+            {
+              "vi": "Một cốc sữa",
+              "en": "A glass of milk"
+            },
+            {
+              "vi": "Bố bế em lên",
+              "en": "His father picking him up"
+            },
+            {
+              "vi": "Ngắm trăng và nghe chị hát",
+              "en": "Watching the moon and hearing his sister's song"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.el_barco_del_abuelo",
+      "band": "A1-1",
+      "title": "El barco del abuelo",
+      "blurb": {
+        "vi": "Rosa ra biển trên con thuyền cũ của ông. Ông kể chuyện ngày xưa.",
+        "en": "Rosa goes out on her grandfather's old boat. He tells her about the past."
+      },
+      "newLexemes": [
+        "es:w:viento",
+        "es:w:pez",
+        "es:w:nube"
+      ],
+      "tokenMap": {
+        "rosa": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "El abuelo de Rosa tiene un barco.",
+          "translation": {
+            "vi": "Ông của Rosa có một con thuyền.",
+            "en": "Rosa's grandfather has a boat."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El barco está en el mar, frente al pueblo.",
+          "translation": {
+            "vi": "Con thuyền ở ngoài biển, trước mặt làng.",
+            "en": "The boat is on the sea, in front of the village."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un día, Rosa va al mar con su abuelo.",
+          "translation": {
+            "vi": "Một ngày nọ, Rosa ra biển cùng ông.",
+            "en": "One day, Rosa goes to the sea with her grandfather."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Abuelo, ¿vamos en el barco?",
+          "translation": {
+            "vi": "Ông ơi, mình đi thuyền nhé?",
+            "en": "Grandpa, shall we go in the boat?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, pero hay viento.",
+          "translation": {
+            "vi": "Ừ, nhưng hôm nay có gió.",
+            "en": "Yes, but it's windy."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Con viento, el mar es un problema.",
+          "translation": {
+            "vi": "Có gió thì biển nguy hiểm lắm.",
+            "en": "When it's windy, the sea is trouble."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El barco pasa frente a la isla.",
+          "translation": {
+            "vi": "Con thuyền đi ngang qua hòn đảo.",
+            "en": "The boat passes in front of the island."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Rosa mira el agua.",
+          "translation": {
+            "vi": "Rosa nhìn xuống nước.",
+            "en": "Rosa looks at the water."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Abuelo, un pez!",
+          "translation": {
+            "vi": "Ông ơi, một con cá!",
+            "en": "Grandpa, a fish!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En el agua hay un pez grande.",
+          "translation": {
+            "vi": "Dưới nước có một con cá lớn.",
+            "en": "In the water there is a big fish."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El abuelo habla de su vida en el mar.",
+          "translation": {
+            "vi": "Ông kể về cuộc đời của ông trên biển.",
+            "en": "Grandpa talks about his life at sea."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Cuando yo era un niño, mi padre tenía este barco.",
+          "translation": {
+            "vi": "Hồi ông còn nhỏ, bố của ông có con thuyền này.",
+            "en": "When I was a boy, my father had this boat."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Todos los días íbamos al mar.",
+          "translation": {
+            "vi": "Ngày nào bố con ông cũng ra biển.",
+            "en": "Every day we went out to sea."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Y tú vas al mar cada día?",
+          "translation": {
+            "vi": "Thế ông có ra biển mỗi ngày không?",
+            "en": "And do you go to sea every day?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "No, Rosa. Soy un abuelo.",
+          "translation": {
+            "vi": "Không đâu Rosa. Ông già rồi.",
+            "en": "No, Rosa. I'm a grandpa."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Rosa ríe.",
+          "translation": {
+            "vi": "Rosa bật cười.",
+            "en": "Rosa laughs."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero el viento cambia.",
+          "translation": {
+            "vi": "Nhưng gió đổi chiều.",
+            "en": "But the wind changes."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay una nube grande sobre la montaña.",
+          "translation": {
+            "vi": "Có một đám mây lớn phía trên ngọn núi.",
+            "en": "There is a big cloud over the mountain."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Rosa, tenemos que volver.",
+          "translation": {
+            "vi": "Rosa, mình phải quay về thôi.",
+            "en": "Rosa, we have to go back."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El abuelo lleva el barco al pueblo.",
+          "translation": {
+            "vi": "Ông lái thuyền về làng.",
+            "en": "Grandpa takes the boat back to the village."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Llegan a la casa cuando la nube llega al pueblo.",
+          "translation": {
+            "vi": "Hai ông cháu về đến nhà thì đám mây cũng kéo đến làng.",
+            "en": "They reach the house just as the cloud reaches the village."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Abuelo, ¿podemos volver al mar otro día?",
+          "translation": {
+            "vi": "Ông ơi, hôm khác mình lại ra biển được không?",
+            "en": "Grandpa, can we go back to sea another day?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, Rosa. El mar no se va.",
+          "translation": {
+            "vi": "Được chứ, Rosa. Biển vẫn ở đó mà.",
+            "en": "Yes, Rosa. The sea isn't going anywhere."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El abuelo y Rosa comen pan con queso en la casa.",
+          "translation": {
+            "vi": "Hai ông cháu ăn bánh mì với phô mai ở nhà.",
+            "en": "Grandpa and Rosa eat bread and cheese at home."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Rosa thấy gì dưới nước?",
+            "en": "What does Rosa see in the water?"
+          },
+          "options": [
+            {
+              "vi": "Một con chim",
+              "en": "A bird"
+            },
+            {
+              "vi": "Một con thuyền khác",
+              "en": "Another boat"
+            },
+            {
+              "vi": "Một con cá lớn",
+              "en": "A big fish"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Hồi ông còn nhỏ, con thuyền là của ai?",
+            "en": "When Grandpa was a boy, whose boat was it?"
+          },
+          "options": [
+            {
+              "vi": "Của bố ông",
+              "en": "His father's"
+            },
+            {
+              "vi": "Của bà",
+              "en": "Grandma's"
+            },
+            {
+              "vi": "Của Rosa",
+              "en": "Rosa's"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao hai ông cháu quay về?",
+            "en": "Why do they go back?"
+          },
+          "options": [
+            {
+              "vi": "Vì Rosa đói bụng",
+              "en": "Because Rosa is hungry"
+            },
+            {
+              "vi": "Vì gió đổi và có một đám mây lớn kéo đến",
+              "en": "Because the wind changes and a big cloud is coming"
+            },
+            {
+              "vi": "Vì con thuyền bị hỏng",
+              "en": "Because the boat is broken"
+            }
+          ],
+          "answer": 1
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.el_cumpleanos_de_mama",
+      "band": "A1-2",
+      "title": "El cumpleaños de mamá",
+      "blurb": {
+        "vi": "Hai anh em muốn mua quà sinh nhật cho mẹ. Nhưng mua gì đây?",
+        "en": "Two children want to buy their mother a birthday present. But what?"
+      },
+      "newLexemes": [
+        "es:w:regalo",
+        "es:w:sombrero",
+        "es:w:pastel"
+      ],
+      "tokenMap": {
+        "daniel": "name",
+        "laura": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Hoy es el cumpleaños de la madre de Daniel y Laura.",
+          "translation": {
+            "vi": "Hôm nay là sinh nhật mẹ của Daniel và Laura.",
+            "en": "Today is Daniel and Laura's mother's birthday."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Daniel y Laura quieren comprar un regalo.",
+          "translation": {
+            "vi": "Daniel và Laura muốn mua một món quà.",
+            "en": "Daniel and Laura want to buy a present."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Qué le compramos a mamá?",
+          "translation": {
+            "vi": "Mình mua gì cho mẹ nhỉ?",
+            "en": "What shall we buy Mum?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "No sé. ¿Un libro?",
+          "translation": {
+            "vi": "Anh không biết. Một cuốn sách nhé?",
+            "en": "I don't know. A book?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Mamá ya tiene libros.",
+          "translation": {
+            "vi": "Mẹ có sách rồi mà.",
+            "en": "Mum already has books."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Los dos niños van a una tienda del centro.",
+          "translation": {
+            "vi": "Hai anh em đến một cửa hàng ở trung tâm.",
+            "en": "The two children go to a shop in the town centre."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la tienda hay ropa, zapatos y sombreros.",
+          "translation": {
+            "vi": "Trong cửa hàng có quần áo, giày và mũ.",
+            "en": "In the shop there are clothes, shoes and hats."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Un sombrero! A mamá le gusta el sol.",
+          "translation": {
+            "vi": "Một cái mũ! Mẹ thích nắng mà.",
+            "en": "A hat! Mum likes the sun."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay uno rojo y uno blanco.",
+          "translation": {
+            "vi": "Có một cái màu đỏ và một cái màu trắng.",
+            "en": "There is a red one and a white one."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "El rojo es muy caro.",
+          "translation": {
+            "vi": "Cái đỏ đắt quá.",
+            "en": "The red one is very expensive."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Pero el blanco es perfecto para ella.",
+          "translation": {
+            "vi": "Nhưng cái trắng thì hợp với mẹ lắm.",
+            "en": "But the white one is perfect for her."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Laura lo paga con su dinero.",
+          "translation": {
+            "vi": "Laura trả tiền bằng tiền của mình.",
+            "en": "Laura pays for it with her own money."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Después, van a la panadería por un pastel.",
+          "translation": {
+            "vi": "Sau đó, hai anh em ghé tiệm bánh mua một cái bánh ngọt.",
+            "en": "Then they go to the bakery for a cake."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Por la tarde, el padre prepara la mesa para la fiesta.",
+          "translation": {
+            "vi": "Buổi chiều, bố bày bàn cho bữa tiệc.",
+            "en": "In the afternoon, their father lays the table for the party."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Llegan los abuelos y el tío de los niños.",
+          "translation": {
+            "vi": "Ông bà và chú của bọn trẻ đến.",
+            "en": "The children's grandparents and uncle arrive."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Cuando la madre entra en la casa, todos dicen: «¡Feliz cumpleaños!».",
+          "translation": {
+            "vi": "Khi mẹ bước vào nhà, mọi người cùng nói: «Chúc mừng sinh nhật!».",
+            "en": "When their mother comes into the house, everyone says: \"Happy birthday!\""
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La madre abre el regalo.",
+          "translation": {
+            "vi": "Mẹ mở quà.",
+            "en": "Their mother opens the present."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Me encanta! Gracias, hijos.",
+          "translation": {
+            "vi": "Mẹ thích lắm! Cảm ơn các con.",
+            "en": "I love it! Thank you, children."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Toda la familia come el pastel en la casa.",
+          "translation": {
+            "vi": "Cả nhà cùng ăn bánh.",
+            "en": "The whole family eats the cake at home."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mamá, ¿vamos a la playa mañana con tu sombrero?",
+          "translation": {
+            "vi": "Mẹ ơi, mai mình đi biển với cái mũ mới của mẹ nhé?",
+            "en": "Mum, shall we go to the beach tomorrow with your hat?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Sí! Mañana, playa y sol.",
+          "translation": {
+            "vi": "Ừ! Ngày mai: biển và nắng.",
+            "en": "Yes! Tomorrow: beach and sun."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Hai anh em mua gì cho mẹ?",
+            "en": "What do the children buy for their mother?"
+          },
+          "options": [
+            {
+              "vi": "Một cuốn sách",
+              "en": "A book"
+            },
+            {
+              "vi": "Một đôi giày",
+              "en": "A pair of shoes"
+            },
+            {
+              "vi": "Một cái mũ trắng",
+              "en": "A white hat"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ai trả tiền cái mũ?",
+            "en": "Who pays for the hat?"
+          },
+          "options": [
+            {
+              "vi": "Laura",
+              "en": "Laura"
+            },
+            {
+              "vi": "Daniel",
+              "en": "Daniel"
+            },
+            {
+              "vi": "Bố",
+              "en": "Their father"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Laura nghĩ cái mũ là món quà hay?",
+            "en": "Why does Laura think a hat is a good present?"
+          },
+          "options": [
+            {
+              "vi": "Vì cái mũ rất rẻ",
+              "en": "Because the hat is very cheap"
+            },
+            {
+              "vi": "Vì mẹ thích nắng và đi biển",
+              "en": "Because Mum likes the sun and the beach"
+            },
+            {
+              "vi": "Vì Daniel muốn mua mũ",
+              "en": "Because Daniel wants a hat"
+            }
+          ],
+          "answer": 1
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.ropa_para_la_oficina",
+      "band": "A1-2",
+      "title": "Ropa para la oficina",
+      "blurb": {
+        "vi": "Andrés cần quần áo đi làm. Một chiếc áo sơ mi đắt bằng cả một bữa tiệc!",
+        "en": "Andrés needs clothes for work. One shirt costs as much as a party!"
+      },
+      "newLexemes": [
+        "es:w:camisa",
+        "es:w:pantalon",
+        "es:w:barato"
+      ],
+      "tokenMap": {
+        "andrés": "name",
+        "paula": "name",
+        "cara": "es:w:caro"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Andrés empieza un trabajo nuevo mañana.",
+          "translation": {
+            "vi": "Ngày mai Andrés bắt đầu một công việc mới.",
+            "en": "Andrés starts a new job tomorrow."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Necesita ropa para la oficina.",
+          "translation": {
+            "vi": "Anh cần quần áo để đi làm văn phòng.",
+            "en": "He needs clothes for the office."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Va a una tienda del centro con su amiga Paula.",
+          "translation": {
+            "vi": "Anh đến một cửa hàng ở trung tâm cùng bạn là Paula.",
+            "en": "He goes to a shop in the centre with his friend Paula."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Paula, ¿qué ropa es buena para una oficina?",
+          "translation": {
+            "vi": "Paula này, đi làm văn phòng thì mặc gì cho hợp?",
+            "en": "Paula, what clothes are good for an office?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Una camisa blanca y un pantalón negro.",
+          "translation": {
+            "vi": "Một chiếc áo sơ mi trắng và một cái quần đen.",
+            "en": "A white shirt and black trousers."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la tienda hay camisas blancas, negras y rojas.",
+          "translation": {
+            "vi": "Trong cửa hàng có áo sơ mi trắng, đen và đỏ.",
+            "en": "In the shop there are white, black and red shirts."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Andrés mira el precio de una camisa blanca.",
+          "translation": {
+            "vi": "Andrés xem giá một chiếc áo sơ mi trắng.",
+            "en": "Andrés looks at the price of a white shirt."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Cien euros! Es muy cara.",
+          "translation": {
+            "vi": "Một trăm euro! Đắt quá.",
+            "en": "A hundred euros! It's very expensive."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Es una tienda cara, Andrés.",
+          "translation": {
+            "vi": "Đây là cửa hàng đắt tiền mà, Andrés.",
+            "en": "It's an expensive shop, Andrés."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Vamos a otra tienda.",
+          "translation": {
+            "vi": "Mình sang cửa hàng khác đi.",
+            "en": "Let's go to another shop."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Paula vive en el centro.",
+          "translation": {
+            "vi": "Paula sống ở trung tâm.",
+            "en": "Paula lives in the centre."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la otra tienda, la ropa es más barata.",
+          "translation": {
+            "vi": "Ở cửa hàng kia, quần áo rẻ hơn.",
+            "en": "In the other shop, the clothes are cheaper."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Andrés encuentra una blanca por veinte euros.",
+          "translation": {
+            "vi": "Andrés tìm được một chiếc màu trắng giá hai mươi euro.",
+            "en": "Andrés finds a white one for twenty euros."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "También compra un pantalón negro y unos zapatos.",
+          "translation": {
+            "vi": "Anh còn mua một cái quần đen và một đôi giày.",
+            "en": "He also buys black trousers and a pair of shoes."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Paula, ¿estoy bien?",
+          "translation": {
+            "vi": "Paula, trông mình được không?",
+            "en": "Paula, do I look all right?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Estás perfecto para la oficina!",
+          "translation": {
+            "vi": "Trông cậu đúng chuẩn dân văn phòng!",
+            "en": "You look perfect for the office!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Andrés paga cincuenta euros.",
+          "translation": {
+            "vi": "Andrés trả năm mươi euro.",
+            "en": "Andrés pays fifty euros."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Gracias, Paula. Sin ti, compro la ropa cara.",
+          "translation": {
+            "vi": "Cảm ơn Paula. Không có cậu thì mình đã mua đồ đắt rồi.",
+            "en": "Thanks, Paula. Without you, I'd buy the expensive clothes."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Paula ríe.",
+          "translation": {
+            "vi": "Paula bật cười.",
+            "en": "Paula laughs."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Paula tiene razón.",
+          "translation": {
+            "vi": "Paula nói đúng.",
+            "en": "Paula is right."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Por eso, tú pagas el café.",
+          "translation": {
+            "vi": "Vậy nên cậu trả tiền cà phê nhé.",
+            "en": "So you're paying for the coffee."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Los dos amigos van a un bar de la plaza.",
+          "translation": {
+            "vi": "Hai người bạn đến một quán bar trên quảng trường.",
+            "en": "The two friends go to a bar on the square."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Al día siguiente, Andrés llega a la oficina con su ropa nueva.",
+          "translation": {
+            "vi": "Hôm sau, Andrés đến văn phòng với bộ quần áo mới.",
+            "en": "The next day, Andrés arrives at the office in his new clothes."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su jefe dice: «Buenos días».",
+          "translation": {
+            "vi": "Sếp của anh chào: «Chào buổi sáng».",
+            "en": "His boss says: \"Good morning.\""
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Andrés cần quần áo để làm gì?",
+            "en": "Why does Andrés need clothes?"
+          },
+          "options": [
+            {
+              "vi": "Để đi làm ở văn phòng",
+              "en": "For his office job"
+            },
+            {
+              "vi": "Để đi dự tiệc",
+              "en": "For a party"
+            },
+            {
+              "vi": "Để đi biển",
+              "en": "For the beach"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ở cửa hàng đầu tiên, chiếc áo sơ mi trắng giá bao nhiêu?",
+            "en": "In the first shop, how much is the white shirt?"
+          },
+          "options": [
+            {
+              "vi": "Hai mươi euro",
+              "en": "Twenty euros"
+            },
+            {
+              "vi": "Một trăm euro",
+              "en": "A hundred euros"
+            },
+            {
+              "vi": "Năm mươi euro",
+              "en": "Fifty euros"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Paula nói Andrés phải trả tiền cà phê?",
+            "en": "Why does Paula say Andrés is paying for the coffee?"
+          },
+          "options": [
+            {
+              "vi": "Vì hôm nay là sinh nhật cô",
+              "en": "Because it is her birthday"
+            },
+            {
+              "vi": "Vì cô không mang tiền",
+              "en": "Because she has no money with her"
+            },
+            {
+              "vi": "Vì cô đã giúp anh mua được quần áo rẻ",
+              "en": "Because she helped him buy cheap clothes"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.un_dia_de_lluvia",
+      "band": "A1-2",
+      "title": "Un día de lluvia",
+      "blurb": {
+        "vi": "Lucas và Marina định đi biển, nhưng trời lại mưa.",
+        "en": "Lucas and Marina plan a beach day, but it rains."
+      },
+      "newLexemes": [
+        "es:w:lluvia",
+        "es:w:frio",
+        "es:w:cine"
+      ],
+      "tokenMap": {
+        "lucas": "name",
+        "marina": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Es sábado y Lucas quiere ir a la playa con su amiga Marina.",
+          "translation": {
+            "vi": "Hôm nay là thứ Bảy, Lucas muốn đi biển với bạn là Marina.",
+            "en": "It's Saturday and Lucas wants to go to the beach with his friend Marina."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero cuando abre la ventana, mira la lluvia.",
+          "translation": {
+            "vi": "Nhưng khi mở cửa sổ, cậu thấy trời đang mưa.",
+            "en": "But when he opens the window, he sees the rain."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El cielo está negro y hace frío.",
+          "translation": {
+            "vi": "Bầu trời đen kịt và trời lạnh.",
+            "en": "The sky is black and it's cold."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Marina, no podemos ir a la playa hoy.",
+          "translation": {
+            "vi": "Marina, hôm nay mình không đi biển được rồi.",
+            "en": "Marina, we can't go to the beach today."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Por qué no vamos al cine?",
+          "translation": {
+            "vi": "Sao mình không đi xem phim nhỉ?",
+            "en": "Why don't we go to the cinema?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Buena idea. ¿Qué película quieres ver?",
+          "translation": {
+            "vi": "Ý hay đấy. Cậu muốn xem phim gì?",
+            "en": "Good idea. What film do you want to see?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Una película de amor.",
+          "translation": {
+            "vi": "Một phim tình cảm.",
+            "en": "A love story."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¿De amor? No, por favor. Una de policías.",
+          "translation": {
+            "vi": "Phim tình cảm á? Thôi mà. Phim cảnh sát đi.",
+            "en": "A love story? Oh, please, no. A police film."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Vale, una de policías. Pero tú pagas.",
+          "translation": {
+            "vi": "Được, phim cảnh sát. Nhưng cậu trả tiền nhé.",
+            "en": "OK, a police film. But you're paying."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Lucas toma el autobús al centro.",
+          "translation": {
+            "vi": "Lucas bắt xe buýt vào trung tâm.",
+            "en": "Lucas takes the bus into the centre."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marina está en la puerta.",
+          "translation": {
+            "vi": "Marina đứng chờ ở cửa.",
+            "en": "Marina is at the door."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marina está triste.",
+          "translation": {
+            "vi": "Trông Marina buồn buồn.",
+            "en": "Marina looks sad."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¿Qué pasa, Marina?",
+          "translation": {
+            "vi": "Sao thế, Marina?",
+            "en": "What's wrong, Marina?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Tengo frío y la lluvia está en toda mi ropa.",
+          "translation": {
+            "vi": "Mình lạnh, quần áo ướt hết vì mưa.",
+            "en": "I'm cold and the rain is all over my clothes."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Lucas compra dos cafés en un bar.",
+          "translation": {
+            "vi": "Lucas mua hai cốc cà phê ở một quán bar.",
+            "en": "Lucas buys two coffees in a bar."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Después, entran.",
+          "translation": {
+            "vi": "Rồi họ vào rạp.",
+            "en": "Then they go in."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La película es muy buena.",
+          "translation": {
+            "vi": "Bộ phim rất hay.",
+            "en": "The film is very good."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Es una película de policías.",
+          "translation": {
+            "vi": "Đó là một bộ phim về cảnh sát.",
+            "en": "It's a police film."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay un policía joven y un agente muy inteligente.",
+          "translation": {
+            "vi": "Có một cậu cảnh sát trẻ và một đặc vụ rất thông minh.",
+            "en": "There is a young policeman and a very clever agent."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marina ríe mucho y Lucas también.",
+          "translation": {
+            "vi": "Marina cười rất nhiều, Lucas cũng vậy.",
+            "en": "Marina laughs a lot, and so does Lucas."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Cuando salen del cine, ya no hay lluvia.",
+          "translation": {
+            "vi": "Khi họ ra khỏi rạp, trời đã tạnh mưa.",
+            "en": "When they come out of the cinema, the rain has stopped."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay sol en la calle.",
+          "translation": {
+            "vi": "Ngoài phố trời nắng.",
+            "en": "The sun is out in the street."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Lucas, ¿vamos a la playa mañana?",
+          "translation": {
+            "vi": "Lucas, mai mình đi biển nhé?",
+            "en": "Lucas, shall we go to the beach tomorrow?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, pero mañana tú pagas el café.",
+          "translation": {
+            "vi": "Ừ, nhưng mai cậu trả tiền cà phê đấy.",
+            "en": "Yes, but tomorrow you pay for the coffee."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Vì sao họ không đi biển?",
+            "en": "Why don't they go to the beach?"
+          },
+          "options": [
+            {
+              "vi": "Vì Lucas bị ốm",
+              "en": "Because Lucas is ill"
+            },
+            {
+              "vi": "Vì trời mưa và lạnh",
+              "en": "Because it is raining and cold"
+            },
+            {
+              "vi": "Vì bãi biển đóng cửa",
+              "en": "Because the beach is closed"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Họ xem phim gì?",
+            "en": "What film do they see?"
+          },
+          "options": [
+            {
+              "vi": "Một phim về cảnh sát",
+              "en": "A police film"
+            },
+            {
+              "vi": "Một phim tình cảm",
+              "en": "A love story"
+            },
+            {
+              "vi": "Một phim hoạt hình",
+              "en": "A cartoon"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Marina buồn khi Lucas đến?",
+            "en": "Why is Marina sad when Lucas arrives?"
+          },
+          "options": [
+            {
+              "vi": "Vì cô không thích phim cảnh sát",
+              "en": "Because she doesn't like police films"
+            },
+            {
+              "vi": "Vì Lucas đến muộn",
+              "en": "Because Lucas is late"
+            },
+            {
+              "vi": "Vì cô bị lạnh và quần áo ướt mưa",
+              "en": "Because she is cold and her clothes are wet"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.el_primer_dia_de_nuria",
+      "band": "A1-2",
+      "title": "El primer día de Nuria",
+      "blurb": {
+        "vi": "Ngày đầu đi làm của Nuria: một chiếc máy tính mới, một người đồng nghiệp tốt bụng.",
+        "en": "Nuria's first day at work: a new computer and a helpful colleague."
+      },
+      "newLexemes": [
+        "es:w:ordenador",
+        "es:w:correo",
+        "es:w:reloj"
+      ],
+      "tokenMap": {
+        "nuria": "name",
+        "pedro": "name",
+        "ortega": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Hoy es el primer día de Nuria en su nuevo trabajo.",
+          "translation": {
+            "vi": "Hôm nay là ngày đầu tiên Nuria đi làm ở chỗ mới.",
+            "en": "Today is Nuria's first day at her new job."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Nuria llega a la oficina muy temprano, a las ocho.",
+          "translation": {
+            "vi": "Nuria đến văn phòng rất sớm, lúc tám giờ.",
+            "en": "Nuria gets to the office very early, at eight."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La oficina es grande y tiene veinte mesas.",
+          "translation": {
+            "vi": "Văn phòng rộng, có hai mươi cái bàn.",
+            "en": "The office is big and has twenty desks."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su jefe, el señor Ortega, le presenta a sus compañeros.",
+          "translation": {
+            "vi": "Sếp của cô, ông Ortega, giới thiệu cô với các đồng nghiệp.",
+            "en": "Her boss, Mr Ortega, introduces her to her colleagues."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Nuria, este es Pedro. Él trabaja contigo.",
+          "translation": {
+            "vi": "Nuria, đây là Pedro. Cậu ấy làm cùng nhóm với cô.",
+            "en": "Nuria, this is Pedro. He works with you."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Hola, Nuria. Tu mesa está a mi lado.",
+          "translation": {
+            "vi": "Chào Nuria. Bàn của cô ở ngay cạnh tôi.",
+            "en": "Hello, Nuria. Your desk is next to mine."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la mesa de Nuria hay un ordenador nuevo.",
+          "translation": {
+            "vi": "Trên bàn của Nuria có một chiếc máy tính mới.",
+            "en": "On Nuria's desk there is a new computer."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero Nuria no puede abrir su correo.",
+          "translation": {
+            "vi": "Nhưng Nuria không mở được hộp thư.",
+            "en": "But Nuria can't open her email."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Pedro, ¿me ayudas? No funciona.",
+          "translation": {
+            "vi": "Pedro ơi, giúp tôi với? Nó không chạy.",
+            "en": "Pedro, can you help me? It doesn't work."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, un momento.",
+          "translation": {
+            "vi": "Được, chờ một chút.",
+            "en": "Sure, just a moment."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pedro escribe algo en el ordenador.",
+          "translation": {
+            "vi": "Pedro gõ gì đó trên máy tính.",
+            "en": "Pedro types something on the computer."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Ya funciona.",
+          "translation": {
+            "vi": "Được rồi đấy.",
+            "en": "It works now."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Nuria lee sus mensajes y trabaja toda la mañana.",
+          "translation": {
+            "vi": "Nuria đọc tin nhắn và làm việc cả buổi sáng.",
+            "en": "Nuria reads her messages and works all morning."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "A la una, Pedro mira su reloj.",
+          "translation": {
+            "vi": "Lúc một giờ, Pedro nhìn đồng hồ.",
+            "en": "At one o'clock, Pedro looks at his watch."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Nuria, es la hora de comer. ¿Vienes?",
+          "translation": {
+            "vi": "Nuria, đến giờ ăn trưa rồi. Đi cùng không?",
+            "en": "Nuria, it's lunchtime. Are you coming?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sí, tengo hambre.",
+          "translation": {
+            "vi": "Có, tôi đói rồi.",
+            "en": "Yes, I'm hungry."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Comen en un restaurante cerca de la oficina.",
+          "translation": {
+            "vi": "Họ ăn ở một nhà hàng gần văn phòng.",
+            "en": "They eat in a restaurant near the office."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pedro habla de su familia y Nuria habla de su ciudad.",
+          "translation": {
+            "vi": "Pedro kể về gia đình, còn Nuria kể về thành phố của mình.",
+            "en": "Pedro talks about his family and Nuria talks about her city."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Por la tarde, el jefe envía un correo a todo el equipo.",
+          "translation": {
+            "vi": "Buổi chiều, sếp gửi một email cho cả nhóm.",
+            "en": "In the afternoon, the boss sends an email to the whole team."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Qué dice el correo?",
+          "translation": {
+            "vi": "Email viết gì thế?",
+            "en": "What does the email say?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Hay una reunión mañana a las nueve.",
+          "translation": {
+            "vi": "Sáng mai có cuộc họp lúc chín giờ.",
+            "en": "There's a meeting tomorrow at nine."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "A las seis, Nuria vuelve a casa.",
+          "translation": {
+            "vi": "Sáu giờ, Nuria về nhà.",
+            "en": "At six, Nuria goes home."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Está cansada, pero feliz.",
+          "translation": {
+            "vi": "Cô mệt nhưng vui.",
+            "en": "She is tired, but happy."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Mamá, ¡me gusta mi trabajo!",
+          "translation": {
+            "vi": "Mẹ ơi, con thích công việc này lắm!",
+            "en": "Mum, I like my job!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Nuria đến văn phòng lúc mấy giờ?",
+            "en": "What time does Nuria get to the office?"
+          },
+          "options": [
+            {
+              "vi": "Lúc chín giờ",
+              "en": "At nine"
+            },
+            {
+              "vi": "Lúc một giờ",
+              "en": "At one"
+            },
+            {
+              "vi": "Lúc tám giờ",
+              "en": "At eight"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ai giúp Nuria khi máy tính không chạy?",
+            "en": "Who helps Nuria when the computer doesn't work?"
+          },
+          "options": [
+            {
+              "vi": "Pedro, người ngồi cạnh cô",
+              "en": "Pedro, who sits next to her"
+            },
+            {
+              "vi": "Sếp của cô",
+              "en": "Her boss"
+            },
+            {
+              "vi": "Mẹ của cô",
+              "en": "Her mother"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Ngày đầu đi làm của Nuria thế nào?",
+            "en": "How was Nuria's first day?"
+          },
+          "options": [
+            {
+              "vi": "Rất tệ, cô muốn nghỉ việc",
+              "en": "Terrible, she wants to quit"
+            },
+            {
+              "vi": "Mệt nhưng vui, cô thích công việc",
+              "en": "Tiring but happy — she likes the job"
+            },
+            {
+              "vi": "Cô không làm được gì cả",
+              "en": "She couldn't do anything"
+            }
+          ],
+          "answer": 1
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_rodilla_de_javier",
+      "band": "A1-2",
+      "title": "La rodilla de Javier",
+      "blurb": {
+        "vi": "Javier sáng nào cũng chạy bộ. Một hôm, anh gặp tai nạn.",
+        "en": "Javier runs every morning. One day, he has an accident."
+      },
+      "newLexemes": [
+        "es:w:accidente",
+        "es:w:rodilla",
+        "es:w:medicina"
+      ],
+      "tokenMap": {
+        "javier": "name",
+        "carmen": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Javier corre todas las mañanas por el centro de la ciudad.",
+          "translation": {
+            "vi": "Sáng nào Javier cũng chạy bộ ở trung tâm thành phố.",
+            "en": "Javier runs through the city centre every morning."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un día, tiene un accidente en la calle.",
+          "translation": {
+            "vi": "Một hôm, anh gặp tai nạn ngoài đường.",
+            "en": "One day, he has an accident in the street."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Javier no ve una caja y golpea la caja con el pie.",
+          "translation": {
+            "vi": "Javier không thấy một cái thùng và vấp chân vào nó.",
+            "en": "Javier doesn't see a box and hits it with his foot."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Tiene un dolor fuerte en la rodilla.",
+          "translation": {
+            "vi": "Đầu gối anh đau dữ dội.",
+            "en": "He has a sharp pain in his knee."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Una mujer joven lo ayuda.",
+          "translation": {
+            "vi": "Một cô gái trẻ đến giúp anh.",
+            "en": "A young woman helps him."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Está bien? ¿Llamo a un médico?",
+          "translation": {
+            "vi": "Anh có sao không? Tôi gọi bác sĩ nhé?",
+            "en": "Are you all right? Shall I call a doctor?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "No sé. Tengo un dolor muy fuerte.",
+          "translation": {
+            "vi": "Tôi không biết. Đau lắm.",
+            "en": "I don't know. It really hurts."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La mujer lleva a Javier al hospital en su coche.",
+          "translation": {
+            "vi": "Cô gái chở Javier đến bệnh viện bằng xe của mình.",
+            "en": "The woman takes Javier to hospital in her car."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En el hospital, una médica mira la rodilla de Javier.",
+          "translation": {
+            "vi": "Ở bệnh viện, một nữ bác sĩ khám đầu gối cho Javier.",
+            "en": "At the hospital, a doctor looks at Javier's knee."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "No es un problema serio.",
+          "translation": {
+            "vi": "Không có gì nghiêm trọng.",
+            "en": "It's nothing serious."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Pero necesita una medicina para el dolor.",
+          "translation": {
+            "vi": "Nhưng anh cần uống thuốc giảm đau.",
+            "en": "But you need some medicine for the pain."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Y no puede correr en dos semanas.",
+          "translation": {
+            "vi": "Và anh không được chạy trong hai tuần.",
+            "en": "And you can't run for two weeks."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Dos semanas! Pero corro todos los días.",
+          "translation": {
+            "vi": "Hai tuần! Nhưng ngày nào tôi cũng chạy mà.",
+            "en": "Two weeks! But I run every day."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Su rodilla necesita tiempo.",
+          "translation": {
+            "vi": "Đầu gối của anh cần thời gian.",
+            "en": "Your knee needs time."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Javier vuelve a casa con su medicina.",
+          "translation": {
+            "vi": "Javier về nhà với thuốc của mình.",
+            "en": "Javier goes home with his medicine."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su hermana Carmen lo cuida.",
+          "translation": {
+            "vi": "Chị gái Carmen chăm sóc anh.",
+            "en": "His sister Carmen looks after him."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ella le prepara una sopa.",
+          "translation": {
+            "vi": "Chị nấu súp cho anh.",
+            "en": "She makes him a soup."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Javier, puedes leer, ver películas y dormir.",
+          "translation": {
+            "vi": "Javier, em có thể đọc sách, xem phim và ngủ.",
+            "en": "Javier, you can read, watch films and sleep."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Pero yo quiero correr.",
+          "translation": {
+            "vi": "Nhưng em muốn chạy cơ.",
+            "en": "But I want to run."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pasan dos semanas.",
+          "translation": {
+            "vi": "Hai tuần trôi qua.",
+            "en": "Two weeks go by."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Javier ya no tiene dolor.",
+          "translation": {
+            "vi": "Javier không còn đau nữa.",
+            "en": "Javier has no more pain."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El primer día, corre otra vez, y mira bien la calle.",
+          "translation": {
+            "vi": "Ngày đầu tiên, anh chạy lại, và nhìn đường thật kỹ.",
+            "en": "On the first day, he runs again — and watches the street carefully."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Javier bị đau ở đâu?",
+            "en": "Where does Javier hurt?"
+          },
+          "options": [
+            {
+              "vi": "Ở đầu gối",
+              "en": "In his knee"
+            },
+            {
+              "vi": "Ở tay",
+              "en": "In his arm"
+            },
+            {
+              "vi": "Ở đầu",
+              "en": "In his head"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ai đưa Javier đến bệnh viện?",
+            "en": "Who takes Javier to hospital?"
+          },
+          "options": [
+            {
+              "vi": "Chị gái Carmen",
+              "en": "His sister Carmen"
+            },
+            {
+              "vi": "Cảnh sát",
+              "en": "The police"
+            },
+            {
+              "vi": "Một cô gái trẻ, bằng xe của cô ấy",
+              "en": "A young woman, in her car"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Sau tai nạn, Javier chạy bộ khác trước thế nào?",
+            "en": "What does Javier do differently after the accident?"
+          },
+          "options": [
+            {
+              "vi": "Anh không chạy bộ nữa",
+              "en": "He stops running"
+            },
+            {
+              "vi": "Anh nhìn đường cẩn thận hơn",
+              "en": "He watches the street more carefully"
+            },
+            {
+              "vi": "Anh chỉ chạy ở nhà",
+              "en": "He only runs at home"
+            }
+          ],
+          "answer": 1
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_llave_perdida",
+      "band": "A1-2",
+      "title": "La llave perdida",
+      "blurb": {
+        "vi": "Nửa đêm, Elena không tìm thấy chìa khóa, còn cửa nhà thì đang mở.",
+        "en": "At night, Elena can't find her key — and her door is open."
+      },
+      "newLexemes": [
+        "es:w:piso",
+        "es:w:silencio",
+        "es:w:ladron"
+      ],
+      "tokenMap": {
+        "elena": "name",
+        "raúl": "name",
+        "pedro": "name",
+        "madrid": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Son las once de la noche.",
+          "translation": {
+            "vi": "Lúc đó là mười một giờ đêm.",
+            "en": "It's eleven o'clock at night."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elena vuelve a su piso después de una fiesta.",
+          "translation": {
+            "vi": "Elena về căn hộ của mình sau một bữa tiệc.",
+            "en": "Elena comes home to her flat after a party."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Busca su llave, pero no la encuentra.",
+          "translation": {
+            "vi": "Cô tìm chìa khóa nhưng không thấy.",
+            "en": "She looks for her key, but can't find it."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Dónde está mi llave?",
+          "translation": {
+            "vi": "Chìa khóa của mình đâu rồi?",
+            "en": "Where's my key?"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elena llama a su amigo Raúl.",
+          "translation": {
+            "vi": "Elena gọi cho bạn là Raúl.",
+            "en": "Elena calls her friend Raúl."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Raúl? Soy Elena. No puedo entrar en mi piso.",
+          "translation": {
+            "vi": "Raúl à? Elena đây. Mình không vào nhà được.",
+            "en": "Raúl? It's Elena. I can't get into my flat."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Voy enseguida.",
+          "translation": {
+            "vi": "Mình đến ngay.",
+            "en": "I'm coming right away."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Raúl llega en diez minutos.",
+          "translation": {
+            "vi": "Mười phút sau Raúl đến.",
+            "en": "Raúl arrives ten minutes later."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Raúl vive cerca, en la misma calle.",
+          "translation": {
+            "vi": "Raúl sống gần, ngay trên cùng con phố.",
+            "en": "Raúl lives close by, on the same street."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La puerta está abierta.",
+          "translation": {
+            "vi": "Cửa đang mở.",
+            "en": "The door is open."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Raúl, la puerta está abierta!",
+          "translation": {
+            "vi": "Raúl, cửa đang mở kìa!",
+            "en": "Raúl, the door is open!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Silencio. Puede ser un ladrón.",
+          "translation": {
+            "vi": "Suỵt. Có thể là trộm đấy.",
+            "en": "Shh. It could be a burglar."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Entran en silencio.",
+          "translation": {
+            "vi": "Họ lặng lẽ đi vào.",
+            "en": "They go in quietly."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la habitación hay luz.",
+          "translation": {
+            "vi": "Trong phòng có đèn sáng.",
+            "en": "There is a light on in the bedroom."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Raúl abre la puerta de la habitación.",
+          "translation": {
+            "vi": "Raúl mở cửa phòng.",
+            "en": "Raúl opens the bedroom door."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Allí está Pedro, el hermano de Elena.",
+          "translation": {
+            "vi": "Trong đó là Pedro, anh trai của Elena.",
+            "en": "There is Pedro, Elena's brother."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pedro come pan con queso en la cama.",
+          "translation": {
+            "vi": "Pedro đang ngồi trên giường ăn bánh mì với phô mai.",
+            "en": "Pedro is eating bread and cheese on the bed."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay una maleta grande al lado de la cama.",
+          "translation": {
+            "vi": "Cạnh giường có một chiếc va li lớn.",
+            "en": "There is a big suitcase next to the bed."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Hola! ¿Qué hacen aquí?",
+          "translation": {
+            "vi": "Chào! Hai người làm gì ở đây thế?",
+            "en": "Hi! What are you two doing here?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Pedro! ¿Qué haces tú en mi piso?",
+          "translation": {
+            "vi": "Pedro! Anh làm gì trong căn hộ của em thế?",
+            "en": "Pedro! What are you doing in my flat?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Tengo tu otra llave, ¿no recuerdas?",
+          "translation": {
+            "vi": "Anh có chìa khóa dự phòng của em mà, không nhớ à?",
+            "en": "I've got your spare key, don't you remember?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Llego de Madrid y tú no estás en casa.",
+          "translation": {
+            "vi": "Anh từ Madrid đến mà em không có nhà.",
+            "en": "I arrive from Madrid and you're not at home."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Y yo creo que eres un ladrón.",
+          "translation": {
+            "vi": "Còn em thì tưởng anh là trộm.",
+            "en": "And I think you're a burglar."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Los tres ríen.",
+          "translation": {
+            "vi": "Cả ba cùng bật cười.",
+            "en": "All three of them laugh."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elena encuentra su llave al día siguiente, en su coche.",
+          "translation": {
+            "vi": "Hôm sau, Elena tìm thấy chìa khóa trong xe ô tô của mình.",
+            "en": "The next day, Elena finds her key in her car."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Elena gọi điện cho ai?",
+            "en": "Who does Elena call?"
+          },
+          "options": [
+            {
+              "vi": "Anh trai Pedro",
+              "en": "Her brother Pedro"
+            },
+            {
+              "vi": "Bạn cô, Raúl",
+              "en": "Her friend Raúl"
+            },
+            {
+              "vi": "Cảnh sát",
+              "en": "The police"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ai đang ở trong căn hộ?",
+            "en": "Who is in the flat?"
+          },
+          "options": [
+            {
+              "vi": "Một tên trộm",
+              "en": "A burglar"
+            },
+            {
+              "vi": "Raúl",
+              "en": "Raúl"
+            },
+            {
+              "vi": "Pedro, anh trai của Elena",
+              "en": "Pedro, Elena's brother"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao cửa căn hộ lại mở?",
+            "en": "Why is the door of the flat open?"
+          },
+          "options": [
+            {
+              "vi": "Vì Pedro có chìa khóa dự phòng và đã vào trước",
+              "en": "Because Pedro has a spare key and got there first"
+            },
+            {
+              "vi": "Vì Elena quên đóng cửa",
+              "en": "Because Elena forgot to close it"
+            },
+            {
+              "vi": "Vì có trộm vào nhà",
+              "en": "Because a burglar got in"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_abuela_y_el_movil",
+      "band": "A1-2",
+      "title": "La abuela y el móvil",
+      "blurb": {
+        "vi": "Bà Carmen có chiếc điện thoại di động đầu tiên. Bà học nhanh hơn mọi người tưởng.",
+        "en": "Grandma Carmen gets her first mobile. She learns faster than anyone expects."
+      },
+      "newLexemes": [
+        "es:w:movil",
+        "es:w:internet",
+        "es:w:television"
+      ],
+      "tokenMap": {
+        "carmen": "name",
+        "marcos": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "La abuela Carmen vive en el pueblo.",
+          "translation": {
+            "vi": "Bà Carmen sống ở làng.",
+            "en": "Grandma Carmen lives in the village."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su hija vive en la ciudad.",
+          "translation": {
+            "vi": "Con gái bà sống ở thành phố.",
+            "en": "Her daughter lives in the city."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un día, la hija le compra un móvil.",
+          "translation": {
+            "vi": "Một hôm, con gái mua cho bà một chiếc điện thoại di động.",
+            "en": "One day, her daughter buys her a mobile phone."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Un móvil? Yo tengo mi teléfono de casa.",
+          "translation": {
+            "vi": "Điện thoại di động á? Mẹ có điện thoại bàn rồi.",
+            "en": "A mobile? I have my home phone."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero la abuela no sabe cómo funciona.",
+          "translation": {
+            "vi": "Nhưng bà không biết dùng nó thế nào.",
+            "en": "But Grandma doesn't know how it works."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marcos, un chico joven del pueblo, va a su casa.",
+          "translation": {
+            "vi": "Marcos, một cậu thanh niên trong làng, đến nhà bà.",
+            "en": "Marcos, a young man from the village, comes to her house."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Carmen, no es difícil.",
+          "translation": {
+            "vi": "Bà Carmen ơi, không khó đâu ạ.",
+            "en": "Carmen, it isn't difficult."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Aquí escribe un mensaje, y aquí hace una foto.",
+          "translation": {
+            "vi": "Chỗ này để viết tin nhắn, còn chỗ này để chụp ảnh.",
+            "en": "Here you write a message, and here you take a photo."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Y puedo ver a mi hija?",
+          "translation": {
+            "vi": "Thế bà có nhìn thấy con gái bà được không?",
+            "en": "And can I see my daughter?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sí, con internet puede ver a su hija y hablar con ella.",
+          "translation": {
+            "vi": "Được ạ, có mạng là bà vừa nhìn thấy vừa nói chuyện được với cô ấy.",
+            "en": "Yes, with the internet you can see your daughter and talk to her."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La abuela llama a su hija.",
+          "translation": {
+            "vi": "Bà gọi cho con gái.",
+            "en": "Grandma calls her daughter."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En el móvil, mira la cara de su hija.",
+          "translation": {
+            "vi": "Trên điện thoại, bà thấy khuôn mặt con gái.",
+            "en": "On the phone, she sees her daughter's face."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Hija! ¡Te veo!",
+          "translation": {
+            "vi": "Con ơi! Mẹ thấy con rồi!",
+            "en": "Darling! I can see you!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Mamá! ¡Qué bien!",
+          "translation": {
+            "vi": "Mẹ ơi! Tuyệt quá!",
+            "en": "Mum! How wonderful!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Desde ese día, la abuela llama a su hija todos los días.",
+          "translation": {
+            "vi": "Từ hôm đó, ngày nào bà cũng gọi cho con gái.",
+            "en": "From that day on, Grandma calls her daughter every day."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "También hace fotos de su gato y de su casa.",
+          "translation": {
+            "vi": "Bà còn chụp ảnh con mèo và ngôi nhà của mình.",
+            "en": "She also takes photos of her cat and her house."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Y envía mensajes a sus amigas del pueblo.",
+          "translation": {
+            "vi": "Và bà nhắn tin cho các bạn trong làng.",
+            "en": "And she sends messages to her friends in the village."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Una tarde, Marcos llega a la casa de la abuela.",
+          "translation": {
+            "vi": "Một buổi chiều, Marcos đến nhà bà.",
+            "en": "One afternoon, Marcos comes to Grandma's house."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Carmen, ¿qué hace?",
+          "translation": {
+            "vi": "Bà Carmen đang làm gì thế ạ?",
+            "en": "Carmen, what are you doing?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Miro una película en internet.",
+          "translation": {
+            "vi": "Bà đang xem phim trên mạng.",
+            "en": "I'm watching a film on the internet."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "La televisión ya no me gusta.",
+          "translation": {
+            "vi": "Bà chẳng thích xem ti-vi nữa.",
+            "en": "I don't like the television any more."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marcos ríe.",
+          "translation": {
+            "vi": "Marcos bật cười.",
+            "en": "Marcos laughs."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Carmen, usted aprende más rápido que yo!",
+          "translation": {
+            "vi": "Bà Carmen ơi, bà học còn nhanh hơn cả cháu!",
+            "en": "Carmen, you learn faster than I do!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ai mua điện thoại cho bà Carmen?",
+            "en": "Who buys Carmen the phone?"
+          },
+          "options": [
+            {
+              "vi": "Marcos",
+              "en": "Marcos"
+            },
+            {
+              "vi": "Con gái của bà",
+              "en": "Her daughter"
+            },
+            {
+              "vi": "Bà tự mua",
+              "en": "She buys it herself"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Bà dùng điện thoại để làm gì?",
+            "en": "What does Grandma use the phone for?"
+          },
+          "options": [
+            {
+              "vi": "Chỉ để nghe nhạc",
+              "en": "Only for music"
+            },
+            {
+              "vi": "Để đọc sách",
+              "en": "For reading books"
+            },
+            {
+              "vi": "Gọi cho con gái, chụp ảnh và nhắn tin",
+              "en": "Calling her daughter, taking photos and sending messages"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Marcos bật cười ở cuối truyện?",
+            "en": "Why does Marcos laugh at the end?"
+          },
+          "options": [
+            {
+              "vi": "Vì bà xem phim trên mạng — bà học nhanh hơn cậu nghĩ",
+              "en": "Because she watches films online — she learned faster than he thought"
+            },
+            {
+              "vi": "Vì điện thoại bị hỏng",
+              "en": "Because the phone is broken"
+            },
+            {
+              "vi": "Vì bà xem ti-vi cả ngày",
+              "en": "Because she watches TV all day"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.el_examen_de_marcos",
+      "band": "A1-2",
+      "title": "El examen de Marcos",
+      "blurb": {
+        "vi": "Ngày mai Marcos có bài kiểm tra, nhưng cậu chẳng muốn học.",
+        "en": "Marcos has a test tomorrow, but he doesn't want to study."
+      },
+      "newLexemes": [
+        "es:w:examen",
+        "es:w:tarea",
+        "es:w:nota"
+      ],
+      "tokenMap": {
+        "marcos": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Marcos tiene quince años y va a la escuela.",
+          "translation": {
+            "vi": "Marcos mười lăm tuổi và đang đi học.",
+            "en": "Marcos is fifteen and goes to school."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Mañana tiene un examen importante.",
+          "translation": {
+            "vi": "Ngày mai cậu có một bài kiểm tra quan trọng.",
+            "en": "Tomorrow he has an important test."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero Marcos no quiere estudiar.",
+          "translation": {
+            "vi": "Nhưng Marcos không muốn học.",
+            "en": "But Marcos doesn't want to study."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Quiere jugar con su teléfono y ver películas.",
+          "translation": {
+            "vi": "Cậu muốn chơi điện thoại và xem phim.",
+            "en": "He wants to play on his phone and watch films."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Marcos, ¿y tu tarea?",
+          "translation": {
+            "vi": "Marcos, còn bài tập về nhà thì sao?",
+            "en": "Marcos, what about your homework?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mamá, ya sé todo.",
+          "translation": {
+            "vi": "Mẹ ơi, con biết hết rồi.",
+            "en": "Mum, I already know everything."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Mañana vamos a ver.",
+          "translation": {
+            "vi": "Mai rồi sẽ biết.",
+            "en": "We'll see tomorrow."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Por la noche, Marcos abre su libro.",
+          "translation": {
+            "vi": "Buổi tối, Marcos mở sách ra.",
+            "en": "In the evening, Marcos opens his book."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Lee el libro diez minutos.",
+          "translation": {
+            "vi": "Cậu đọc sách được mười phút.",
+            "en": "He reads the book for ten minutes."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero a las once tiene sueño y va a la cama.",
+          "translation": {
+            "vi": "Nhưng đến mười một giờ cậu buồn ngủ và đi ngủ.",
+            "en": "But at eleven he is sleepy and goes to bed."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Al día siguiente, en la clase, el profesor pone un papel en cada mesa.",
+          "translation": {
+            "vi": "Hôm sau, trong lớp, thầy giáo đặt một tờ giấy lên mỗi bàn.",
+            "en": "The next day, in class, the teacher puts a sheet of paper on each desk."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Es el examen.",
+          "translation": {
+            "vi": "Đó là đề kiểm tra.",
+            "en": "It's the test."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marcos lee la primera pregunta.",
+          "translation": {
+            "vi": "Marcos đọc câu hỏi đầu tiên.",
+            "en": "Marcos reads the first question."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Sé esta respuesta!",
+          "translation": {
+            "vi": "Câu này mình biết!",
+            "en": "I know this answer!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Pero la segunda pregunta es difícil.",
+          "translation": {
+            "vi": "Nhưng câu thứ hai thì khó.",
+            "en": "But the second question is difficult."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Y la otra pregunta también.",
+          "translation": {
+            "vi": "Câu còn lại cũng vậy.",
+            "en": "And so is the other question."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marcos piensa y piensa, pero no recuerda nada.",
+          "translation": {
+            "vi": "Marcos nghĩ mãi, nghĩ mãi mà không nhớ ra gì.",
+            "en": "Marcos thinks and thinks, but he can't remember anything."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Una semana después, el profesor tiene las notas.",
+          "translation": {
+            "vi": "Một tuần sau, thầy giáo có điểm.",
+            "en": "A week later, the teacher has the marks."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Marcos, tu nota es un cinco.",
+          "translation": {
+            "vi": "Marcos, em được năm điểm.",
+            "en": "Marcos, your mark is a five."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En casa, Marcos habla con su madre.",
+          "translation": {
+            "vi": "Về nhà, Marcos nói chuyện với mẹ.",
+            "en": "At home, Marcos talks to his mother."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mamá, la próxima vez voy a hacer mi tarea.",
+          "translation": {
+            "vi": "Mẹ ơi, lần sau con sẽ làm bài tập.",
+            "en": "Mum, next time I'm going to do my homework."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Y yo voy a estar aquí para ver tus libros abiertos.",
+          "translation": {
+            "vi": "Còn mẹ sẽ ở đây để xem sách của con có mở ra không.",
+            "en": "And I'll be here to see your books open."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Marcos ríe y abre su libro.",
+          "translation": {
+            "vi": "Marcos cười và mở sách ra.",
+            "en": "Marcos laughs and opens his book."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ngày mai Marcos có gì?",
+            "en": "What does Marcos have tomorrow?"
+          },
+          "options": [
+            {
+              "vi": "Một bữa tiệc",
+              "en": "A party"
+            },
+            {
+              "vi": "Một bài kiểm tra quan trọng",
+              "en": "An important test"
+            },
+            {
+              "vi": "Một trận bóng",
+              "en": "A football match"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Marcos được mấy điểm?",
+            "en": "What mark does Marcos get?"
+          },
+          "options": [
+            {
+              "vi": "Mười điểm",
+              "en": "Ten"
+            },
+            {
+              "vi": "Hai điểm",
+              "en": "Two"
+            },
+            {
+              "vi": "Năm điểm",
+              "en": "Five"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Marcos không nhớ câu trả lời?",
+            "en": "Why can't Marcos remember the answers?"
+          },
+          "options": [
+            {
+              "vi": "Vì cậu chỉ đọc sách mười phút rồi đi ngủ",
+              "en": "Because he only read for ten minutes and went to bed"
+            },
+            {
+              "vi": "Vì thầy giáo chưa dạy bài đó",
+              "en": "Because the teacher never taught it"
+            },
+            {
+              "vi": "Vì cậu bị ốm",
+              "en": "Because he was ill"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.el_mercado_del_domingo",
+      "band": "A1-2",
+      "title": "El mercado del domingo",
+      "blurb": {
+        "vi": "Sara đi chợ với bố. Ở chợ có một chú chó biết nhảy.",
+        "en": "Sara goes to the market with her father. There's a dancing dog."
+      },
+      "newLexemes": [
+        "es:w:mercado",
+        "es:w:verde",
+        "es:w:cuanto"
+      ],
+      "tokenMap": {
+        "sara": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Todos los domingos, Sara va al mercado con su padre.",
+          "translation": {
+            "vi": "Chủ nhật nào Sara cũng đi chợ với bố.",
+            "en": "Every Sunday, Sara goes to the market with her father."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El mercado está en la plaza del pueblo.",
+          "translation": {
+            "vi": "Chợ họp ở quảng trường của làng.",
+            "en": "The market is on the village square."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay fruta, queso, pan, pollo y ropa.",
+          "translation": {
+            "vi": "Có trái cây, phô mai, bánh mì, gà và quần áo.",
+            "en": "There is fruit, cheese, bread, chicken and clothes."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La gente del pueblo compra allí.",
+          "translation": {
+            "vi": "Người trong làng đều mua sắm ở đó.",
+            "en": "The people of the village shop there."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sara, necesitamos manzanas y un queso.",
+          "translation": {
+            "vi": "Sara, nhà mình cần táo và một bánh phô mai.",
+            "en": "Sara, we need apples and a cheese."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sara busca las manzanas.",
+          "translation": {
+            "vi": "Sara đi tìm táo.",
+            "en": "Sara looks for the apples."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay manzanas rojas y manzanas verdes.",
+          "translation": {
+            "vi": "Có táo đỏ và táo xanh.",
+            "en": "There are red apples and green apples."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Papá, ¿rojas o verdes?",
+          "translation": {
+            "vi": "Bố ơi, táo đỏ hay táo xanh ạ?",
+            "en": "Dad, red or green?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Rojas. A tu madre le gustan las rojas.",
+          "translation": {
+            "vi": "Táo đỏ. Mẹ con thích táo đỏ.",
+            "en": "Red. Your mother likes the red ones."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sara habla con la señora de la fruta.",
+          "translation": {
+            "vi": "Sara nói chuyện với cô bán trái cây.",
+            "en": "Sara talks to the fruit lady."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Buenos días. ¿Cuánto cuestan las manzanas?",
+          "translation": {
+            "vi": "Cháu chào cô. Táo bao nhiêu tiền ạ?",
+            "en": "Good morning. How much are the apples?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Tres euros.",
+          "translation": {
+            "vi": "Ba euro.",
+            "en": "Three euros."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Quiero seis manzanas rojas, por favor.",
+          "translation": {
+            "vi": "Cho cháu sáu quả táo đỏ ạ.",
+            "en": "I'd like six red apples, please."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Su padre compra un queso grande.",
+          "translation": {
+            "vi": "Bố cô mua một bánh phô mai lớn.",
+            "en": "Her father buys a big cheese."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Después miran a un hombre con un perro pequeño.",
+          "translation": {
+            "vi": "Sau đó họ thấy một người đàn ông với một chú chó nhỏ.",
+            "en": "Then they watch a man with a little dog."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El perro baila con música.",
+          "translation": {
+            "vi": "Chú chó nhảy theo nhạc.",
+            "en": "The dog dances to music."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¡Papá, mira! ¡El perro baila!",
+          "translation": {
+            "vi": "Bố ơi, nhìn kìa! Con chó đang nhảy!",
+            "en": "Dad, look! The dog is dancing!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La gente mira al perro y ríe.",
+          "translation": {
+            "vi": "Mọi người xem chú chó và cười.",
+            "en": "People watch the dog and laugh."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El hombre pide dinero en una caja.",
+          "translation": {
+            "vi": "Người đàn ông đặt một cái hộp xin tiền.",
+            "en": "The man asks for money in a box."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sara pone un euro en la caja.",
+          "translation": {
+            "vi": "Sara bỏ một euro vào hộp.",
+            "en": "Sara puts a euro in the box."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Sara, ¿cuánto dinero tienes?",
+          "translation": {
+            "vi": "Sara, con còn bao nhiêu tiền?",
+            "en": "Sara, how much money have you got?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Nada, papá. Pero el perro está feliz.",
+          "translation": {
+            "vi": "Hết rồi bố ạ. Nhưng chú chó vui lắm.",
+            "en": "None, Dad. But the dog is happy."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El padre ríe.",
+          "translation": {
+            "vi": "Bố bật cười.",
+            "en": "Her father laughs."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Vuelven a casa con las manzanas, el queso y una historia para mamá.",
+          "translation": {
+            "vi": "Hai bố con về nhà với táo, phô mai và một câu chuyện để kể cho mẹ.",
+            "en": "They go home with the apples, the cheese and a story for Mum."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Sara đi chợ với ai?",
+            "en": "Who does Sara go to the market with?"
+          },
+          "options": [
+            {
+              "vi": "Với mẹ",
+              "en": "With her mother"
+            },
+            {
+              "vi": "Một mình",
+              "en": "Alone"
+            },
+            {
+              "vi": "Với bố",
+              "en": "With her father"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Sara mua táo màu gì?",
+            "en": "What colour apples does Sara buy?"
+          },
+          "options": [
+            {
+              "vi": "Màu đỏ",
+              "en": "Red"
+            },
+            {
+              "vi": "Màu xanh",
+              "en": "Green"
+            },
+            {
+              "vi": "Cả hai màu",
+              "en": "Both"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao Sara hết tiền?",
+            "en": "Why has Sara got no money left?"
+          },
+          "options": [
+            {
+              "vi": "Vì táo quá đắt",
+              "en": "Because the apples were too expensive"
+            },
+            {
+              "vi": "Vì cô cho tiền vào hộp của người có chú chó biết nhảy",
+              "en": "Because she gave money to the man with the dancing dog"
+            },
+            {
+              "vi": "Vì cô mua phô mai",
+              "en": "Because she bought the cheese"
+            }
+          ],
+          "answer": 1
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_fiesta_en_la_playa",
+      "band": "A1-2",
+      "title": "La fiesta en la playa",
+      "blurb": {
+        "vi": "Bữa tiệc cuối hè trên bãi biển, và một thùng đồ uống biến mất.",
+        "en": "An end-of-summer beach party — and a missing box of drinks."
+      },
+      "newLexemes": [
+        "es:w:verano",
+        "es:w:calor",
+        "es:w:bebida"
+      ],
+      "tokenMap": {
+        "iván": "name",
+        "lola": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Es el último día del verano.",
+          "translation": {
+            "vi": "Hôm nay là ngày cuối cùng của mùa hè.",
+            "en": "It's the last day of summer."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Iván y sus amigos hacen una fiesta en la playa.",
+          "translation": {
+            "vi": "Iván và các bạn tổ chức tiệc trên bãi biển.",
+            "en": "Iván and his friends have a party on the beach."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hace mucho calor.",
+          "translation": {
+            "vi": "Trời rất nóng.",
+            "en": "It's very hot."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Lola lleva música y Iván lleva las bebidas.",
+          "translation": {
+            "vi": "Lola mang nhạc, còn Iván mang đồ uống.",
+            "en": "Lola brings music and Iván brings the drinks."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay agua, zumo de fruta y café.",
+          "translation": {
+            "vi": "Có nước, nước ép trái cây và cà phê.",
+            "en": "There's water, fruit juice and coffee."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Iván, ¿dónde está la cerveza?",
+          "translation": {
+            "vi": "Iván ơi, bia đâu rồi?",
+            "en": "Iván, where's the beer?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "En la caja negra, al lado del árbol.",
+          "translation": {
+            "vi": "Trong thùng màu đen, cạnh cái cây.",
+            "en": "In the black box, next to the tree."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Los amigos bailan, juegan y corren en el agua.",
+          "translation": {
+            "vi": "Các bạn nhảy múa, chơi đùa và chạy dưới nước.",
+            "en": "The friends dance, play and run in the water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Por la tarde, el sol es muy fuerte.",
+          "translation": {
+            "vi": "Buổi chiều, nắng rất gắt.",
+            "en": "In the afternoon, the sun is very strong."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Iván, tengo calor. ¿Vamos al agua?",
+          "translation": {
+            "vi": "Iván, mình nóng quá. Xuống nước không?",
+            "en": "Iván, I'm hot. Shall we go in the water?"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Iván y Lola pasan una hora en el agua.",
+          "translation": {
+            "vi": "Iván và Lola ngâm mình dưới nước một tiếng.",
+            "en": "Iván and Lola spend an hour in the water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Cuando vuelven, la caja negra no está.",
+          "translation": {
+            "vi": "Khi họ quay lại, cái thùng đen đã biến mất.",
+            "en": "When they come back, the black box is gone."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Las bebidas! ¿Dónde están?",
+          "translation": {
+            "vi": "Đồ uống! Đâu hết rồi?",
+            "en": "The drinks! Where are they?"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Todos buscan la caja.",
+          "translation": {
+            "vi": "Mọi người đi tìm cái thùng.",
+            "en": "Everyone looks for the box."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un niño pequeño juega con la caja al lado de su madre.",
+          "translation": {
+            "vi": "Một cậu bé đang chơi với cái thùng bên cạnh mẹ.",
+            "en": "A little boy is playing with the box next to his mother."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Perdón, mi hijo cree que es su caja.",
+          "translation": {
+            "vi": "Xin lỗi nhé, con tôi tưởng đó là thùng của nó.",
+            "en": "Sorry, my son thinks it's his box."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Iván ríe.",
+          "translation": {
+            "vi": "Iván bật cười.",
+            "en": "Iván laughs."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "No es un problema. ¿Quieren algo para beber?",
+          "translation": {
+            "vi": "Không sao đâu. Hai mẹ con uống gì không?",
+            "en": "No problem. Would you like something to drink?"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El niño y su madre beben un zumo con los amigos.",
+          "translation": {
+            "vi": "Cậu bé và mẹ uống nước ép cùng nhóm bạn.",
+            "en": "The boy and his mother have a juice with the friends."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Por la noche, todos miran el cielo.",
+          "translation": {
+            "vi": "Buổi tối, mọi người cùng ngắm bầu trời.",
+            "en": "At night, everyone looks at the sky."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Iván, es la mejor fiesta del año.",
+          "translation": {
+            "vi": "Iván ơi, đây là bữa tiệc vui nhất năm.",
+            "en": "Iván, it's the best party of the year."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Y el próximo año, la hacemos otra vez.",
+          "translation": {
+            "vi": "Và năm sau mình lại làm nữa.",
+            "en": "And next year, we'll do it again."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Bữa tiệc diễn ra ở đâu?",
+            "en": "Where is the party?"
+          },
+          "options": [
+            {
+              "vi": "Ở nhà Iván",
+              "en": "At Iván's house"
+            },
+            {
+              "vi": "Trên bãi biển",
+              "en": "On the beach"
+            },
+            {
+              "vi": "Trong một nhà hàng",
+              "en": "In a restaurant"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ai mang đồ uống đến?",
+            "en": "Who brings the drinks?"
+          },
+          "options": [
+            {
+              "vi": "Iván",
+              "en": "Iván"
+            },
+            {
+              "vi": "Lola",
+              "en": "Lola"
+            },
+            {
+              "vi": "Mẹ của cậu bé",
+              "en": "The boy's mother"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao thùng đồ uống biến mất?",
+            "en": "Why did the box of drinks disappear?"
+          },
+          "options": [
+            {
+              "vi": "Vì có trộm lấy mất",
+              "en": "Because a thief took it"
+            },
+            {
+              "vi": "Vì gió thổi bay",
+              "en": "Because the wind blew it away"
+            },
+            {
+              "vi": "Vì một cậu bé tưởng đó là thùng của mình",
+              "en": "Because a little boy thought it was his"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.el_tren_de_la_noche",
+      "band": "A1-2",
+      "title": "El tren de la noche",
+      "blurb": {
+        "vi": "Trên chuyến tàu đêm, Teresa gặp một ông cụ biết rõ từng nhà ga.",
+        "en": "On the night train, Teresa meets an old man who knows every station."
+      },
+      "newLexemes": [
+        "es:w:asiento",
+        "es:w:puente",
+        "es:w:rio"
+      ],
+      "tokenMap": {
+        "teresa": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Teresa vive en la ciudad, pero sus padres viven en el campo.",
+          "translation": {
+            "vi": "Teresa sống ở thành phố, nhưng bố mẹ cô sống ở nông thôn.",
+            "en": "Teresa lives in the city, but her parents live in the country."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un sábado, Teresa toma el tren de la noche para ver a sus padres.",
+          "translation": {
+            "vi": "Một ngày thứ Bảy, Teresa đi chuyến tàu đêm về thăm bố mẹ.",
+            "en": "One Saturday, Teresa takes the night train to see her parents."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la estación busca su andén.",
+          "translation": {
+            "vi": "Ở nhà ga, cô tìm sân ga của mình.",
+            "en": "At the station she looks for her platform."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El tren llega a las diez.",
+          "translation": {
+            "vi": "Tàu đến lúc mười giờ.",
+            "en": "The train arrives at ten."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Teresa busca su asiento, el número doce.",
+          "translation": {
+            "vi": "Teresa tìm chỗ ngồi của mình, số mười hai.",
+            "en": "Teresa looks for her seat, number twelve."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En su asiento hay un señor.",
+          "translation": {
+            "vi": "Trên ghế của cô có một ông cụ đang ngồi.",
+            "en": "There is a man in her seat."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Perdón, señor. Es mi lugar.",
+          "translation": {
+            "vi": "Xin lỗi ông, đây là chỗ của cháu.",
+            "en": "Excuse me, sir. This is my place."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Oh, perdón! Mi lugar es el número once.",
+          "translation": {
+            "vi": "Ôi, xin lỗi cháu! Chỗ của ông là số mười một.",
+            "en": "Oh, sorry! My place is number eleven."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El señor se sienta al lado de Teresa.",
+          "translation": {
+            "vi": "Ông cụ ngồi xuống cạnh Teresa.",
+            "en": "The man sits down next to Teresa."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¿Usted va al campo?",
+          "translation": {
+            "vi": "Cháu về quê à?",
+            "en": "Are you going to the country?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sí, voy a la casa de mis padres.",
+          "translation": {
+            "vi": "Dạ, cháu về nhà bố mẹ.",
+            "en": "Yes, I'm going to my parents' house."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Yo voy a ver a mi hija. Tiene un bebé nuevo.",
+          "translation": {
+            "vi": "Ông đi thăm con gái. Nó vừa sinh em bé.",
+            "en": "I'm going to see my daughter. She has a new baby."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El tren pasa por un puente sobre un río.",
+          "translation": {
+            "vi": "Con tàu chạy qua một cây cầu bắc ngang sông.",
+            "en": "The train crosses a bridge over a river."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mire, señorita, el río.",
+          "translation": {
+            "vi": "Nhìn kìa cháu, dòng sông đấy.",
+            "en": "Look, miss, the river."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hay luz sobre el agua.",
+          "translation": {
+            "vi": "Có ánh sáng lấp lánh trên mặt nước.",
+            "en": "There is light on the water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El señor habla de su vida, de su hija y de su trabajo en el tren.",
+          "translation": {
+            "vi": "Ông cụ kể về cuộc đời mình, về con gái và về công việc trên tàu.",
+            "en": "The man talks about his life, his daughter and his work on the train."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Treinta años trabajo en este tren.",
+          "translation": {
+            "vi": "Ông làm việc trên chuyến tàu này ba mươi năm rồi.",
+            "en": "I've worked on this train for thirty years."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "¿Treinta años? ¡Usted sabe el nombre de cada estación!",
+          "translation": {
+            "vi": "Ba mươi năm ạ? Vậy ông biết tên từng nhà ga luôn!",
+            "en": "Thirty years? You know the name of every station!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Teresa ríe.",
+          "translation": {
+            "vi": "Teresa bật cười.",
+            "en": "Teresa laughs."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "A las seis de la mañana, el tren llega al pueblo de Teresa.",
+          "translation": {
+            "vi": "Sáu giờ sáng, tàu đến làng của Teresa.",
+            "en": "At six in the morning, the train reaches Teresa's village."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Adiós, señorita!",
+          "translation": {
+            "vi": "Tạm biệt cháu!",
+            "en": "Goodbye, miss!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Adiós, señor, y gracias por la historia.",
+          "translation": {
+            "vi": "Tạm biệt ông, cảm ơn ông vì câu chuyện.",
+            "en": "Goodbye, sir, and thank you for the story."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Teresa đi tàu đến đâu?",
+            "en": "Where is Teresa going?"
+          },
+          "options": [
+            {
+              "vi": "Về nhà bố mẹ ở nông thôn",
+              "en": "To her parents' home in the country"
+            },
+            {
+              "vi": "Đến thành phố để làm việc",
+              "en": "To the city for work"
+            },
+            {
+              "vi": "Ra bờ biển",
+              "en": "To the seaside"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Ông cụ đi đâu?",
+            "en": "Where is the man going?"
+          },
+          "options": [
+            {
+              "vi": "Về nhà ông",
+              "en": "Home"
+            },
+            {
+              "vi": "Đi thăm con gái vừa sinh em bé",
+              "en": "To see his daughter, who has a new baby"
+            },
+            {
+              "vi": "Đến nhà ga để làm việc",
+              "en": "To the station to work"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao ông cụ biết rõ tuyến tàu này?",
+            "en": "Why does the man know this line so well?"
+          },
+          "options": [
+            {
+              "vi": "Vì con gái ông lái tàu",
+              "en": "Because his daughter drives the train"
+            },
+            {
+              "vi": "Vì ông đi tàu mỗi ngày",
+              "en": "Because he takes the train every day"
+            },
+            {
+              "vi": "Vì ông đã làm việc trên tàu này ba mươi năm",
+              "en": "Because he has worked on this train for thirty years"
+            }
+          ],
+          "answer": 2
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "es.story.la_clase_de_baile",
+      "band": "A1-2",
+      "title": "La clase de baile",
+      "blurb": {
+        "vi": "Alba không quen ai ở thành phố. Rồi cô thấy một tờ thông báo lớp học nhảy.",
+        "en": "Alba knows nobody in the city. Then she sees a notice for a dance class."
+      },
+      "newLexemes": [
+        "es:w:martes",
+        "es:w:jueves",
+        "es:w:viernes"
+      ],
+      "tokenMap": {
+        "alba": "name",
+        "miguel": "name",
+        "hugo": "name",
+        "cuba": "name",
+        "marta": "name",
+        "sola": "es:w:solo"
+      },
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Alba trabaja en una oficina y no tiene amigos en la ciudad.",
+          "translation": {
+            "vi": "Alba làm việc văn phòng và chẳng có người bạn nào ở thành phố.",
+            "en": "Alba works in an office and has no friends in the city."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un día, ve un papel en la puerta de una escuela.",
+          "translation": {
+            "vi": "Một hôm, cô thấy một tờ giấy dán trên cửa một trường học.",
+            "en": "One day, she sees a notice on the door of a school."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "«Clase de baile. Martes y jueves, a las siete».",
+          "translation": {
+            "vi": "«Lớp học nhảy. Thứ Ba và thứ Năm, lúc bảy giờ».",
+            "en": "\"Dance class. Tuesdays and Thursdays at seven.\""
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Alba no sabe bailar, pero quiere aprender.",
+          "translation": {
+            "vi": "Alba không biết nhảy, nhưng cô muốn học.",
+            "en": "Alba can't dance, but she wants to learn."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El martes, va a la escuela con sus zapatos negros.",
+          "translation": {
+            "vi": "Thứ Ba, cô đến trường với đôi giày đen.",
+            "en": "On Tuesday, she goes to the school in her black shoes."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "En la clase hay diez personas.",
+          "translation": {
+            "vi": "Lớp có mười người.",
+            "en": "There are ten people in the class."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Hola a todos! Soy Miguel, su profesor.",
+          "translation": {
+            "vi": "Chào mọi người! Tôi là Miguel, giáo viên của các bạn.",
+            "en": "Hello, everyone! I'm Miguel, your teacher."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Hoy aprendemos un baile de Cuba.",
+          "translation": {
+            "vi": "Hôm nay chúng ta học một điệu nhảy của Cuba.",
+            "en": "Today we're learning a dance from Cuba."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La música empieza.",
+          "translation": {
+            "vi": "Nhạc bắt đầu.",
+            "en": "The music starts."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Alba baila con un chico joven, Hugo.",
+          "translation": {
+            "vi": "Alba nhảy với một chàng trai trẻ tên là Hugo.",
+            "en": "Alba dances with a young man, Hugo."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Perdón, no sé bailar.",
+          "translation": {
+            "vi": "Xin lỗi, tôi không biết nhảy.",
+            "en": "Sorry, I can't dance."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Yo tampoco. Es mi primer día.",
+          "translation": {
+            "vi": "Tôi cũng vậy. Hôm nay là buổi đầu của tôi.",
+            "en": "Me neither. It's my first day."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Alba y Hugo ríen y bailan mal, pero están felices.",
+          "translation": {
+            "vi": "Alba và Hugo cười và nhảy dở tệ, nhưng họ rất vui.",
+            "en": "Alba and Hugo laugh and dance badly, but they are happy."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "El jueves, Alba vuelve a la clase.",
+          "translation": {
+            "vi": "Thứ Năm, Alba lại đến lớp.",
+            "en": "On Thursday, Alba goes back to the class."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Esta vez, baila mejor.",
+          "translation": {
+            "vi": "Lần này cô nhảy khá hơn.",
+            "en": "This time, she dances better."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Muy bien, Alba!",
+          "translation": {
+            "vi": "Tốt lắm, Alba!",
+            "en": "Very good, Alba!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Después de la clase, las diez personas de la clase van a un bar.",
+          "translation": {
+            "vi": "Sau giờ học, cả mười người trong lớp đi đến một quán bar.",
+            "en": "After class, all ten people from the class go to a bar."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Hablan y ríen hasta las once.",
+          "translation": {
+            "vi": "Họ trò chuyện và cười đến mười một giờ.",
+            "en": "They talk and laugh until eleven."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Hugo, ¿vienes el viernes a la fiesta de Marta?",
+          "translation": {
+            "vi": "Hugo, thứ Sáu anh có đến bữa tiệc của Marta không?",
+            "en": "Hugo, are you coming to Marta's party on Friday?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "¡Sí, por favor!",
+          "translation": {
+            "vi": "Có chứ!",
+            "en": "Yes, please!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Alba ya no está sola en la ciudad.",
+          "translation": {
+            "vi": "Alba không còn cô đơn ở thành phố nữa.",
+            "en": "Alba is no longer alone in the city."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Tiene amigos, y los martes y jueves baila.",
+          "translation": {
+            "vi": "Cô đã có bạn bè, và thứ Ba, thứ Năm nào cô cũng đi nhảy.",
+            "en": "She has friends, and on Tuesdays and Thursdays she dances."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Lớp học nhảy vào những ngày nào?",
+            "en": "On which days is the dance class?"
+          },
+          "options": [
+            {
+              "vi": "Thứ Bảy và Chủ nhật",
+              "en": "Saturdays and Sundays"
+            },
+            {
+              "vi": "Thứ Ba và thứ Năm",
+              "en": "Tuesdays and Thursdays"
+            },
+            {
+              "vi": "Thứ Hai và thứ Sáu",
+              "en": "Mondays and Fridays"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Hugo là ai?",
+            "en": "Who is Hugo?"
+          },
+          "options": [
+            {
+              "vi": "Thầy dạy nhảy",
+              "en": "The dance teacher"
+            },
+            {
+              "vi": "Đồng nghiệp của Alba",
+              "en": "Alba's colleague"
+            },
+            {
+              "vi": "Một chàng trai cũng mới học nhảy",
+              "en": "A young man who is also new to dancing"
+            }
+          ],
+          "answer": 2
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Lớp học nhảy đã thay đổi cuộc sống của Alba thế nào?",
+            "en": "How does the dance class change Alba's life?"
+          },
+          "options": [
+            {
+              "vi": "Cô có bạn bè và không còn cô đơn",
+              "en": "She has friends and is no longer lonely"
+            },
+            {
+              "vi": "Cô bỏ việc văn phòng",
+              "en": "She quits her office job"
+            },
+            {
+              "vi": "Cô trở thành giáo viên dạy nhảy",
+              "en": "She becomes a dance teacher"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    }
+  ]
+}

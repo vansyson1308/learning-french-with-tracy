@@ -580,3 +580,21 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — P5b graded stories: new artifacts src/content/stories/* (es, fr, fr-vi + sentence-audio modules) and content/reports/{,es/}stories-coverage.json; course profiles and artifact modules of es-vi, fr-en, fr-vi gain the stories capability and imports. Existing French artifacts unchanged.
+
+- compile: changed  src/content/artifacts/es-vi.ts
+- compile: changed  src/content/artifacts/fr-en.ts
+- compile: changed  src/content/artifacts/fr-vi.ts
+- compile: changed  src/content/course-profiles.json
+- compile: new      content/reports/es/stories-coverage.json
+- compile: new      content/reports/stories-coverage.json
+- compile: new      src/content/stories/es-stories.json
+- compile: new      src/content/stories/es-story-assets.ts
+- compile: new      src/content/stories/fr-stories.json
+- compile: new      src/content/stories/fr-story-assets.ts
+- compile: new      src/content/stories/fr-vi-stories.json
+
+## 2026-10-28 — P5b graded stories: new artifacts src/content/stories/* (es, fr, fr-vi + sentence-audio modules) and content/reports/{,es/}stories-coverage.json; course profiles and artifact modules of es-vi, fr-en, fr-vi gain the stories capability and imports; Spanish story sentences keyed with storyPipelineVersion 4 (24 kbps). Existing French artifacts unchanged.
+
+- compile: changed  src/content/stories/es-stories.json

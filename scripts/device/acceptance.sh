@@ -206,6 +206,7 @@ flow "onboarding (vi)" onboarding-vi.yaml
 walk_vi() {
   flow "screens (vi)" screens-vi.yaml
   flow "today: daily words" today.yaml
+  flow "read & listen: story, questions, word check" stories.yaml
   flow "checkpoint es section 1" checkpoint.yaml
   # Recogniser unavailable: disable every RecognitionService for this flow only.
   RECOGNISERS=$(adb_t shell cmd package query-services -a android.speech.RecognitionService | tr -d '\r' | awk -F= '/^ +packageName=/ {print $2}' | sort -u)

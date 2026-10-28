@@ -30,6 +30,8 @@ import { registerCourseBundle } from "../../src/lib/course-bundle";
 import { examTracksFor } from "../../src/lib/exam/content";
 import { buildExamSectionSession, selectMockForm } from "../../src/lib/exam/engine";
 import { checkAnswer } from "../../src/lib/grading";
+import { lexemeMetaFor } from "../../src/lib/learning/lexicon-index";
+import { storyFor } from "../../src/lib/stories/content";
 import { buildCheckpointSessionDefinition, lessonSteps } from "../../src/lib/session/sources";
 import type { SessionStep } from "../../src/lib/session/types";
 import type { Exercise, LessonPack } from "../../src/lib/types";
@@ -206,6 +208,73 @@ export function todayFlow(): string {
     `- stopApp`,
     ``,
   ].join("\n");
+}
+
+/** P5b: the graded story the walk reads (A1-1, narration + dialogue). */
+export const WALK_STORY = "es.story.el_perro_de_ana";
+
+/**
+ * Read & listen: the list, the reader (sentence translation, tap-to-gloss,
+ * listen when audio is bundled), the three questions answered from the
+ * content, then the word check: each new word's teach card (shown while the
+ * learner has no card for it) and its recognition probe, answered with the
+ * lexicon gloss — evidence through the normal gate.
+ */
+export function storiesFlow(): { yaml: string; unsupported: string[] } {
+  const story = storyFor(WALK_COURSE, WALK_STORY);
+  if (!story) return { yaml: "", unsupported: [`${WALK_STORY} is not compiled for ${WALK_COURSE}`] };
+  const unsupported: string[] = [];
+  const firstWord = story.sentences[0].pieces.find((p) => p.length === 2)?.[1];
+  if (!firstWord) unsupported.push(`${WALK_STORY}: the first sentence has no tappable word`);
+  const lines = [
+    ...header(`Read & listen: ${WALK_STORY} → questions → word check (${WALK_COURSE}).`),
+    `- stopApp`,
+    ...openLink("stories"),
+    ...waitId("stories-screen"),
+    ...assertId("stories-recommended"),
+    ...shot("stories-list"),
+    ...scrollTo(`stories-item-${WALK_STORY}`),
+    ...tapId(`stories-item-${WALK_STORY}`),
+    ...waitId("story-reader"),
+    ...tapId("story-translate-1"),
+    ...assertId("story-translation-1"),
+    ...tapId(`story-word-${firstWord}`),
+    ...waitId("story-word-sheet"),
+    ...assertId("story-word-gloss"),
+    ...shot("story-reader"),
+    ...scrollTo("story-finish-reading"),
+    ...tapId("story-finish-reading"),
+    ...waitId("story-questions"),
+  ];
+  story.questions.forEach((q, i) => {
+    lines.push(...tapId(`story-question-option-${q.answer}`), ...waitId("story-question-feedback"));
+    if (i === 0) lines.push(...shot("story-questions"));
+    lines.push(...tapId("story-question-next"));
+  });
+  lines.push(...waitId("story-finished"), ...shot("story-finished"), ...tapId("story-check-words"));
+  for (const id of story.newLexemes) {
+    const gloss = lexemeMetaFor(WALK_COURSE, id)?.gloss;
+    if (!gloss) {
+      unsupported.push(`${id}: no gloss`);
+      continue;
+    }
+    lines.push(
+      ...waitId("teach-card|exercise-story-check-.*"),
+      `- runFlow:`,
+      `    when:`,
+      `      visible:`,
+      `        id: "teach-card"`,
+      `    commands:`,
+      `      - tapOn:`,
+      `          id: "session-continue"`,
+      ...waitId(literal(`exercise-story-check-${id}`)),
+      ...tapText(gloss),
+      ...tapId("session-check"),
+      ...TAP_CONTINUE
+    );
+  }
+  lines.push(...waitId("session-summary"), ...shot("story-word-check-summary"), `- stopApp`, ``);
+  return { yaml: lines.join("\n"), unsupported };
 }
 
 /** The first scored checkpoint of the walk course, answered correctly from its first form. */
@@ -485,6 +554,9 @@ export function buildSuite(): { files: Record<string, string>; problems: string[
   if (checkpoint.unsupported.length) problems.push(`checkpoint: not automatable — ${checkpoint.unsupported.join(", ")}`);
   files["checkpoint.yaml"] = checkpoint.yaml;
   files["today.yaml"] = todayFlow();
+  const stories = storiesFlow();
+  if (stories.unsupported.length) problems.push(`stories: not automatable — ${stories.unsupported.join(", ")}`);
+  files["stories.yaml"] = stories.yaml;
   files["speech-unavailable.yaml"] = speechUnavailableFlow();
   const exam = examMockFlow();
   if (exam.unsupported.length) problems.push(`exam mock: not automatable — ${exam.unsupported.join(", ")}`);

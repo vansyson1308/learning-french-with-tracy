@@ -30,6 +30,9 @@ export type CourseArtifacts = {
   scenarios?: unknown;
   examTracks?: unknown;
   dailyWords?: unknown;
+  /** P5b graded stories + assetKey → bundled sentence audio module. */
+  stories?: unknown;
+  storyAssets?: Record<string, number>;
 };
 
 const EMPTY: CourseArtifacts = {};

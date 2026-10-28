@@ -120,6 +120,8 @@ export function validateReception(input: {
   /** Every clipId/readingId used by these packs' exercises must resolve. */
   packs?: PackForReception[];
   assetKind?: ReceptionAssetKind;
+  /** Asset files other reception sources reference (P5b story sentences): never orphans. */
+  otherReferencedFiles?: ReadonlySet<string>;
 }): ValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -212,7 +214,7 @@ export function validateReception(input: {
     if (assetsPresent) {
       const referenced = new Set(listening.clips.map((c) => clipFileName(input.lang, listening, c, assetKind)));
       for (const file of assetFiles) {
-        if (file.endsWith(`.${assetKind}`) && !referenced.has(file)) {
+        if (file.endsWith(`.${assetKind}`) && !referenced.has(file) && !input.otherReferencedFiles?.has(file)) {
           err(`orphan asset ${file}: no authored clip resolves to it — delete it or restore its clip`);
         }
       }
@@ -318,7 +320,12 @@ export function compileListeningArtifact(
  * Internal consistency: physical == unique once generation has run, and
  * every shared asset names the clip ids that share it.
  */
-export function compileAudioCensus(listening: Listening, assetKind: ReceptionAssetKind = "mp3"): string {
+export function compileAudioCensus(
+  listening: Listening,
+  assetKind: ReceptionAssetKind = "mp3",
+  /** Files of other reception sources (P5b story sentences) sharing the folder: not listening assets. */
+  otherFiles: ReadonlySet<string> = new Set()
+): string {
   const byKey = new Map<string, string[]>();
   for (const clip of listening.clips) {
     const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip), receptionPipelineVersion(listening.language));
@@ -326,7 +333,7 @@ export function compileAudioCensus(listening: Listening, assetKind: ReceptionAss
   }
   const assetsAbs = safeResolve(receptionAssetsDir(listening.language));
   const physical = existsSync(assetsAbs)
-    ? readdirSync(assetsAbs).filter((f) => f.endsWith(`.${assetKind}`)).length
+    ? readdirSync(assetsAbs).filter((f) => f.endsWith(`.${assetKind}`) && !otherFiles.has(f)).length
     : 0;
   return canonicalJson({
     generator: "scripts/lib/reception.ts compileAudioCensus",

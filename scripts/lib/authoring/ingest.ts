@@ -208,6 +208,16 @@ export function applyRecords(step: StepId, lang: string, native: string, courseI
       writeDoc(target, doc, written, dryRun);
       break;
     }
+    case "stories": {
+      // A new language starts from its listening cast (N narrates with A's voice) and an empty
+      // function-word list the author fills — the schema then insists on ≥ 10 entries.
+      const listening = loadDoc(`content/${lang}/reception/listening.json`, {}) as { voiceCast?: Record<"A" | "B", unknown> };
+      const cast = listening.voiceCast ? { N: listening.voiceCast.A, A: listening.voiceCast.A, B: listening.voiceCast.B } : undefined;
+      const doc = loadDoc(target, { ...base, ...(cast ? { voiceCast: cast } : {}), functionWords: [], stories: [] });
+      doc.stories = mergeById(doc.stories as { id: string }[], records as { id: string }[]);
+      writeDoc(target, doc, written, dryRun);
+      break;
+    }
     case "lexicon-add": {
       const doc = loadDoc(target, { ...base, lexemes: [] });
       const lexemes = doc.lexemes as Doc[];
