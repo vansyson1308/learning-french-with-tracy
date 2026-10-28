@@ -40,6 +40,7 @@ on:
 
 permissions:
   contents: write # only used to push the one-time `eas init` commit
+  actions: write # scripts/ci/bot-commit.sh dispatches CI on the branch it pushed to
 
 concurrency:
   group: eas-build-${{ github.ref }}
@@ -88,6 +89,7 @@ jobs:
         if: ${{ inputs.init_account != '' }}
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           ACCOUNT: ${{ inputs.init_account }}
         run: |
           set -e
@@ -140,6 +142,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Download and verify the APK
         if: ${{ inputs.wait }}
+        timeout-minutes: 15
         run: |
           set -e
           URL=$(node -e "const f=require('./build-facts.json'); process.stdout.write(f.artifactUrl||f.applicationArchiveUrl||'')")
@@ -147,7 +150,7 @@ jobs:
           if [ "$STATUS" != "FINISHED" ] && [ "$STATUS" != "finished" ]; then echo "::error::build status is $STATUS"; exit 1; fi
           [ -n "$URL" ] || { echo "::error::no artifact URL in the build result"; exit 1; }
           mkdir -p rc-artifact
-          curl -sSL --retry 4 -o rc-artifact/app.apk "$URL"
+          bash scripts/ci/fetch.sh "$URL" rc-artifact/app.apk
           BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
           "$BT/aapt2" dump badging rc-artifact/app.apk > rc-artifact/badging.txt
           "$BT/aapt2" dump permissions rc-artifact/app.apk > rc-artifact/permissions.txt

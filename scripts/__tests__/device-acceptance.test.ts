@@ -10,7 +10,8 @@ import { readdirSync, readFileSync, statSync } from "fs";
 import path from "path";
 
 import { audioServiceStarts, maxPiid, sessionPlays } from "../device/audio-evidence";
-import { learnerSummary, seedRc3Envelope } from "../device/backup-tools";
+import { learnerSummary, rawWordCounts, seedRc3Envelope } from "../device/backup-tools";
+import { stageImport } from "../../src/lib/persistence/backup-core";
 import { APP_ID, asciiFold, buildSuite, literal, PICKER_LABELS } from "../device/maestro-flows";
 
 const { files, problems } = buildSuite();
@@ -134,6 +135,22 @@ describe("backup tools", () => {
     expect(summary.lastActiveDay).toBe("2026-10-27");
     expect(summary.cards).toBeGreaterThan(0);
     expect(JSON.stringify(summary.assessmentByTarget)).toContain("placement");
+  });
+
+  test("the RC3 seed carries surface-keyed es-en and de-en progress; the import path keeps every count (migration v8)", () => {
+    const now = new Date("2026-10-27T08:00:00Z");
+    const raw = JSON.stringify(seedRc3Envelope(now));
+    const rc3 = rawWordCounts(raw);
+    expect(rc3["es-en"]).toEqual({ words: 5, correct: 15, wrong: 4, srs: 5 });
+    expect(rc3["de-en"]).toEqual({ words: 2, correct: 4, wrong: 1, srs: 2 });
+    const courses = learnerSummary(raw, now).courses as Record<string, Record<string, unknown>>;
+    for (const id of ["es-en", "de-en", "fr-en"]) {
+      const { words, correct, wrong, srs } = courses[id];
+      expect({ words, correct, wrong, srs }, id).toEqual(rc3[id]);
+    }
+    const staged = stageImport(raw, now);
+    expect(staged.ok).toBe(true);
+    if (staged.ok) expect(Object.keys(staged.state.courses["es-en"].wordStats).every((k) => k.startsWith("es:w:"))).toBe(true);
   });
 });
 

@@ -5,23 +5,31 @@
  *   bun scripts/device/backup-tools.ts seed-rc3 <out.json>
  *       An RC3-format backup (envelope v1, persist v3) built from the
  *       v3-assessed progress fixture — streak, XP, lessons, cards, mistakes
- *       and a placement record — dated today so the streak is live.
+ *       and a placement record — plus the es-en and de-en progress of the
+ *       v3-rc3-es-de fixture (wordStats / srs keyed by raw surfaces, as RC3
+ *       wrote them), dated today so the streak is live.
  *   bun scripts/device/backup-tools.ts compare <before.json> <after.json>
  *       Stage both files through the app's own import path (which migrates
  *       older envelopes) and compare what a learner would notice: streak,
  *       XP, completed lessons, cards, review log, placement and checkpoint
- *       records. Exit 1 on any difference.
+ *       records. Exit 1 on any difference. The per-word counts of <before>
+ *       are also read RAW (no migration): the upgraded build must report the
+ *       same number of words, correct/wrong answers and srs entries per
+ *       course as RC3 wrote, whatever their keys became (migration v8).
  */
 import { readFileSync, writeFileSync } from "fs";
 
 import fixture from "../../src/lib/__fixtures__/progress/v3-assessed.json";
+import legacyFixture from "../../src/lib/__fixtures__/progress/v3-rc3-es-de.json";
 import { countCards, stageImport } from "../../src/lib/persistence/backup-core";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
 export function seedRc3Envelope(now = new Date()): Record<string, unknown> {
   const day = now.toISOString().slice(0, 10);
-  const state: Record<string, unknown> = { ...(fixture.state as Record<string, unknown>), lastActiveDay: day, dailyXpDay: day };
+  const legacy = legacyFixture.state.courses;
+  const courses = { ...(fixture.state.courses as Record<string, unknown>), "es-en": legacy["es-en"], "de-en": legacy["de-en"] };
+  const state: Record<string, unknown> = { ...(fixture.state as Record<string, unknown>), courses, lastActiveDay: day, dailyXpDay: day };
   return {
     format: "lingo-progress-backup",
     envelopeVersion: 1,
@@ -33,6 +41,23 @@ export function seedRc3Envelope(now = new Date()): Record<string, unknown> {
 }
 
 type Summary = Record<string, unknown>;
+type WordCounts = { words: number; correct: number; wrong: number; srs: number };
+
+function wordCounts(c: { wordStats?: Record<string, { correct: number; wrong: number }>; srs?: Record<string, unknown> }): WordCounts {
+  const stats = Object.values(c.wordStats ?? {});
+  return {
+    words: stats.length,
+    correct: stats.reduce((n, s) => n + s.correct, 0),
+    wrong: stats.reduce((n, s) => n + s.wrong, 0),
+    srs: Object.keys(c.srs ?? {}).length,
+  };
+}
+
+/** Per-course word counts of a backup file as written, without the import path's migrations. */
+export function rawWordCounts(raw: string): Record<string, WordCounts> {
+  const state = (JSON.parse(raw) as { state?: { courses?: Record<string, Parameters<typeof wordCounts>[0]> } }).state;
+  return Object.fromEntries(Object.entries(state?.courses ?? {}).map(([id, c]) => [id, wordCounts(c)]));
+}
 
 /** What the learner would notice if an upgrade lost it. */
 export function learnerSummary(raw: string, now = new Date()): Summary {
@@ -46,7 +71,7 @@ export function learnerSummary(raw: string, now = new Date()): Summary {
         xp: c.xp,
         completedLessons: Object.keys(c.completedLessons ?? {}).sort(),
         mistakes: (c.mistakes ?? []).length,
-        wordStats: Object.keys(c.wordStats ?? {}).length,
+        ...wordCounts(c),
       },
     ])
   );
@@ -82,6 +107,13 @@ if (import.meta.main) {
     const before = learnerSummary(readFileSync(a, "utf8"));
     const after = learnerSummary(readFileSync(b, "utf8"));
     const lines = diff(before, after);
+    // RC3's own numbers (raw file, no migration) against the upgraded build's.
+    const rawBefore = rawWordCounts(readFileSync(a, "utf8"));
+    for (const [id, counts] of Object.entries(rawBefore)) {
+      const got = (after.courses as Record<string, Partial<WordCounts>>)[id];
+      const upgraded = got ? { words: got.words, correct: got.correct, wrong: got.wrong, srs: got.srs } : null;
+      lines.push(...diff(counts, upgraded, `raw RC3 ${id}`));
+    }
     console.log(JSON.stringify(after));
     if (lines.length) {
       console.error(`backup mismatch:\n  ${lines.join("\n  ")}`);
