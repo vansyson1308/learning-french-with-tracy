@@ -1,5 +1,5 @@
 {
-  "contentHash": "5194c2b492a7089b",
+  "contentHash": "048ee5240d5a727c",
   "entries": [
     {
       "id": "de:w:mann",
@@ -316,8 +316,7 @@
       "lookupForm": "Hallo",
       "lemma": "Hallo",
       "gloss": "hello",
-      "pos": "noun",
-      "gender": "neuter",
+      "pos": "interjection",
       "topic": "greetings",
       "pronunciation": {
         "value": "haˈloː",
@@ -334,8 +333,7 @@
       "lookupForm": "Tschüss",
       "lemma": "Tschüss",
       "gloss": "bye",
-      "pos": "noun",
-      "gender": "unknown",
+      "pos": "interjection",
       "topic": "greetings",
       "example": {
         "de": "Tschüss, bis morgen!",
@@ -348,8 +346,7 @@
       "lookupForm": "Bitte",
       "lemma": "Bitte",
       "gloss": "please",
-      "pos": "noun",
-      "gender": "feminine",
+      "pos": "interjection",
       "topic": "greetings",
       "band": "less-common",
       "pronunciation": {
@@ -367,8 +364,7 @@
       "lookupForm": "Danke",
       "lemma": "Danke",
       "gloss": "thanks",
-      "pos": "noun",
-      "gender": "unknown",
+      "pos": "interjection",
       "topic": "greetings",
       "example": {
         "de": "Danke, das ist sehr nett.",
@@ -381,8 +377,7 @@
       "lookupForm": "Entschuldigung",
       "lemma": "Entschuldigung",
       "gloss": "excuse me",
-      "pos": "noun",
-      "gender": "feminine",
+      "pos": "interjection",
       "topic": "greetings",
       "band": "common",
       "pronunciation": {
@@ -400,8 +395,7 @@
       "lookupForm": "Willkommen",
       "lemma": "Willkommen",
       "gloss": "welcome",
-      "pos": "noun",
-      "gender": "neuter",
+      "pos": "interjection",
       "topic": "greetings",
       "pronunciation": {
         "value": "vɪlˈkɔmən",
@@ -414,7 +408,7 @@
     },
     {
       "id": "de:w:freund",
-      "surface": "Freund",
+      "surface": "der Freund",
       "lookupForm": "Freund",
       "lemma": "Freund",
       "gloss": "friend",
@@ -436,7 +430,7 @@
     },
     {
       "id": "de:w:name",
-      "surface": "Name",
+      "surface": "der Name",
       "lookupForm": "Name",
       "lemma": "Name",
       "gloss": "name",
@@ -5940,12 +5934,12 @@
     },
     {
       "id": "de:w:eltern",
-      "surface": "Eltern",
+      "surface": "die Eltern",
       "lookupForm": "Eltern",
       "lemma": "Eltern",
       "gloss": "the parents",
       "pos": "noun",
-      "gender": "unknown",
+      "gender": "feminine",
       "topic": "family",
       "band": "common",
       "pronunciation": {
@@ -10487,7 +10481,7 @@
     },
     {
       "id": "de:w:see",
-      "surface": "See",
+      "surface": "der See",
       "lookupForm": "See",
       "lemma": "See",
       "gloss": "the lake",
@@ -13397,7 +13391,7 @@
     },
     {
       "id": "de:w:virus",
-      "surface": "Virus",
+      "surface": "das Virus",
       "lookupForm": "Virus",
       "lemma": "Virus",
       "gloss": "the virus",
@@ -14270,7 +14264,7 @@
     },
     {
       "id": "de:w:knie",
-      "surface": "Knie",
+      "surface": "das Knie",
       "lookupForm": "Knie",
       "lemma": "Knie",
       "gloss": "the knee",
@@ -17074,6 +17068,351 @@
       "confusables": [
         "de:w:stern"
       ]
+    },
+    {
+      "id": "de:w:null",
+      "surface": "null",
+      "lookupForm": "null",
+      "lemma": "null",
+      "gloss": "zero",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Die Nummer beginnt mit null.",
+        "en": "The number starts with zero."
+      }
+    },
+    {
+      "id": "de:w:eins",
+      "surface": "eins",
+      "lookupForm": "eins",
+      "lemma": "eins",
+      "gloss": "one (counting)",
+      "pos": "determiner",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "aɪ̯ns",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Eins, zwei, drei!",
+        "en": "One, two, three!"
+      }
+    },
+    {
+      "id": "de:w:vier",
+      "surface": "vier",
+      "lookupForm": "vier",
+      "lemma": "vier",
+      "gloss": "four",
+      "pos": "determiner",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "fiːr",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wir sind vier Personen.",
+        "en": "We are four people."
+      }
+    },
+    {
+      "id": "de:w:funf",
+      "surface": "fünf",
+      "lookupForm": "fünf",
+      "lemma": "fünf",
+      "gloss": "five",
+      "pos": "determiner",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "fʏnf",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das Kind ist fünf Jahre alt.",
+        "en": "The child is five years old."
+      }
+    },
+    {
+      "id": "de:w:sechs",
+      "surface": "sechs",
+      "lookupForm": "sechs",
+      "lemma": "sechs",
+      "gloss": "six",
+      "pos": "determiner",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "zɛks",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich stehe um sechs Uhr auf.",
+        "en": "I get up at six o'clock."
+      }
+    },
+    {
+      "id": "de:w:sieben",
+      "surface": "sieben",
+      "lookupForm": "sieben",
+      "lemma": "sieben",
+      "gloss": "seven",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Eine Woche hat sieben Tage.",
+        "en": "A week has seven days."
+      }
+    },
+    {
+      "id": "de:w:acht",
+      "surface": "acht",
+      "lookupForm": "acht",
+      "lemma": "acht",
+      "gloss": "eight",
+      "pos": "determiner",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "axt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Der Zug kommt um acht Uhr.",
+        "en": "The train comes at eight o'clock."
+      }
+    },
+    {
+      "id": "de:w:neun",
+      "surface": "neun",
+      "lookupForm": "neun",
+      "lemma": "neun",
+      "gloss": "nine",
+      "pos": "determiner",
+      "topic": "numbers",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "nɔʏ̯n",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich arbeite neun Stunden.",
+        "en": "I work nine hours."
+      }
+    },
+    {
+      "id": "de:w:zehn",
+      "surface": "zehn",
+      "lookupForm": "zehn",
+      "lemma": "zehn",
+      "gloss": "ten",
+      "pos": "determiner",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "t͡seːn",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Das kostet zehn Euro.",
+        "en": "That costs ten euros."
+      }
+    },
+    {
+      "id": "de:w:elf",
+      "surface": "elf",
+      "lookupForm": "elf",
+      "lemma": "elf",
+      "gloss": "eleven",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Es ist elf Uhr.",
+        "en": "It is eleven o'clock."
+      }
+    },
+    {
+      "id": "de:w:zwolf",
+      "surface": "zwölf",
+      "lookupForm": "zwölf",
+      "lemma": "zwölf",
+      "gloss": "twelve",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Ein Jahr hat zwölf Monate.",
+        "en": "A year has twelve months."
+      }
+    },
+    {
+      "id": "de:w:dreizehn",
+      "surface": "dreizehn",
+      "lookupForm": "dreizehn",
+      "lemma": "dreizehn",
+      "gloss": "thirteen",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Meine Schwester ist dreizehn.",
+        "en": "My sister is thirteen."
+      }
+    },
+    {
+      "id": "de:w:sechzehn",
+      "surface": "sechzehn",
+      "lookupForm": "sechzehn",
+      "lemma": "sechzehn",
+      "gloss": "sixteen",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Er ist sechzehn Jahre alt.",
+        "en": "He is sixteen years old."
+      }
+    },
+    {
+      "id": "de:w:siebzehn",
+      "surface": "siebzehn",
+      "lookupForm": "siebzehn",
+      "lemma": "siebzehn",
+      "gloss": "seventeen",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Der Bus kommt um siebzehn Uhr.",
+        "en": "The bus comes at five p.m."
+      }
+    },
+    {
+      "id": "de:w:zwanzig",
+      "surface": "zwanzig",
+      "lookupForm": "zwanzig",
+      "lemma": "zwanzig",
+      "gloss": "twenty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Das Ticket kostet zwanzig Euro.",
+        "en": "The ticket costs twenty euros."
+      }
+    },
+    {
+      "id": "de:w:drei-ig",
+      "surface": "dreißig",
+      "lookupForm": "dreißig",
+      "lemma": "dreißig",
+      "gloss": "thirty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Ich bin dreißig Jahre alt.",
+        "en": "I am thirty years old."
+      }
+    },
+    {
+      "id": "de:w:vierzig",
+      "surface": "vierzig",
+      "lookupForm": "vierzig",
+      "lemma": "vierzig",
+      "gloss": "forty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Mein Vater ist vierzig.",
+        "en": "My father is forty."
+      }
+    },
+    {
+      "id": "de:w:funfzig",
+      "surface": "fünfzig",
+      "lookupForm": "fünfzig",
+      "lemma": "fünfzig",
+      "gloss": "fifty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Das Hotel hat fünfzig Zimmer.",
+        "en": "The hotel has fifty rooms."
+      }
+    },
+    {
+      "id": "de:w:sechzig",
+      "surface": "sechzig",
+      "lookupForm": "sechzig",
+      "lemma": "sechzig",
+      "gloss": "sixty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Eine Stunde hat sechzig Minuten.",
+        "en": "An hour has sixty minutes."
+      }
+    },
+    {
+      "id": "de:w:siebzig",
+      "surface": "siebzig",
+      "lookupForm": "siebzig",
+      "lemma": "siebzig",
+      "gloss": "seventy",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Meine Oma ist siebzig.",
+        "en": "My grandma is seventy."
+      }
+    },
+    {
+      "id": "de:w:hundert",
+      "surface": "hundert",
+      "lookupForm": "hundert",
+      "lemma": "hundert",
+      "gloss": "hundred",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Das kostet hundert Euro.",
+        "en": "That costs a hundred euros."
+      }
+    },
+    {
+      "id": "de:w:euro",
+      "surface": "der Euro",
+      "lookupForm": "Euro",
+      "lemma": "Euro",
+      "gloss": "euro",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "shopping",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈɔʏ̯ro",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Der Kaffee kostet drei Euro.",
+        "en": "The coffee costs three euros."
+      }
+    },
+    {
+      "id": "de:w:halb",
+      "surface": "halb",
+      "lookupForm": "halb",
+      "lemma": "halb",
+      "gloss": "half",
+      "pos": "adjective",
+      "topic": "numbers",
+      "band": "common",
+      "pronunciation": {
+        "value": "halp",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Es ist halb drei.",
+        "en": "It is half past two."
+      }
     }
   ]
 }

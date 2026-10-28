@@ -770,6 +770,13 @@ export const richLexemeSchema = (lang: string) =>
     id: lexemeId(lang),
     /** The course-visible string, verbatim (articles included for nouns). */
     surface: z.string().min(1),
+    /**
+     * QC 2026-10-28: older course surfaces of this lexeme that learner data
+     * may hold as keys (the inherited de-en pack teaches "Freund"; de-vi
+     * teaches "der Freund"). The id registry maps them to this id; they are
+     * never shown as the lexeme's surface and never a second lexeme.
+     */
+    legacySurfaces: z.array(z.string().min(1)).min(1).optional(),
     /** Dictionary lemma. */
     lemma: z.string().min(1),
     /**

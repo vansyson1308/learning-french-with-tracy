@@ -12,52 +12,175 @@
     "courses": {
       "fr-en": {
         "xp": 40,
-        "completedLessons": { "fr-en:u0-l0": true },
-        "mistakes": [],
-        "wordStats": { "fr:w:homme": { "correct": 2, "wrong": 0, "lastSeen": 1790000000000 } },
-        "cards": {
-          "fr:w:homme|recognize": { "due": 1790300000000, "stability": 3, "difficulty": 6, "scheduled_days": 3, "learning_steps": 0, "reps": 2, "lapses": 0, "state": "review", "last_review": 1790000000000 }
+        "completedLessons": {
+          "fr-en:u0-l0": true
         },
-        "srsLegacy": { "l'homme": { "interval": 3, "ease": 2.6, "dueAt": 1790300000000, "streak": 2 } }
+        "mistakes": [],
+        "wordStats": {
+          "fr:w:homme": {
+            "correct": 2,
+            "wrong": 0,
+            "lastSeen": 1790000000000
+          }
+        },
+        "cards": {
+          "fr:w:homme|recognize": {
+            "due": 1790300000000,
+            "stability": 3,
+            "difficulty": 6,
+            "scheduled_days": 3,
+            "learning_steps": 0,
+            "reps": 2,
+            "lapses": 0,
+            "state": "review",
+            "last_review": 1790000000000
+          }
+        },
+        "srsLegacy": {
+          "l'homme": {
+            "interval": 3,
+            "ease": 2.6,
+            "dueAt": 1790300000000,
+            "streak": 2
+          }
+        }
       },
       "es-en": {
         "xp": 95,
-        "completedLessons": { "es-en:u0-l0": true, "es-en:u0-l1": true, "es-en:u0-l2": true },
-        "mistakes": [{ "lessonId": "es-en:u0-l2", "exerciseId": "es-en:u0-l2-e3" }],
+        "completedLessons": {
+          "es-en:u0-l0": true,
+          "es-en:u0-l1": true,
+          "es-en:u0-l2": true
+        },
+        "mistakes": [
+          {
+            "lessonId": "es-en:u0-l2",
+            "exerciseId": "es-en:u0-l2-e3"
+          }
+        ],
         "wordStats": {
-          "el hombre": { "correct": 5, "wrong": 1, "lastSeen": 1790100000000 },
-          "la mujer": { "correct": 4, "wrong": 0, "lastSeen": 1790100000000 },
-          "el niño": { "correct": 2, "wrong": 2, "lastSeen": 1790150000000 },
-          "la manzana": { "correct": 3, "wrong": 1, "lastSeen": 1790150000000 },
-          "el agua": { "correct": 1, "wrong": 0, "lastSeen": 1790160000000 }
+          "el hombre": {
+            "correct": 5,
+            "wrong": 1,
+            "lastSeen": 1790100000000
+          },
+          "la mujer": {
+            "correct": 4,
+            "wrong": 0,
+            "lastSeen": 1790100000000
+          },
+          "el niño": {
+            "correct": 2,
+            "wrong": 2,
+            "lastSeen": 1790150000000
+          },
+          "la manzana": {
+            "correct": 3,
+            "wrong": 1,
+            "lastSeen": 1790150000000
+          },
+          "el agua": {
+            "correct": 1,
+            "wrong": 0,
+            "lastSeen": 1790160000000
+          }
         },
         "srs": {
-          "el hombre": { "interval": 6, "ease": 2.6, "dueAt": 1790600000000, "streak": 3 },
-          "la mujer": { "interval": 3, "ease": 2.5, "dueAt": 1790360000000, "streak": 2 },
-          "el niño": { "interval": 1, "ease": 2.2, "dueAt": 1790236400000, "streak": 0 },
-          "la manzana": { "interval": 1, "ease": 2.36, "dueAt": 1790236400000, "streak": 1 },
-          "el agua": { "interval": 1, "ease": 2.5, "dueAt": 1790246400000, "streak": 1 }
+          "el hombre": {
+            "interval": 6,
+            "ease": 2.6,
+            "dueAt": 1790600000000,
+            "streak": 3
+          },
+          "la mujer": {
+            "interval": 3,
+            "ease": 2.5,
+            "dueAt": 1790360000000,
+            "streak": 2
+          },
+          "el niño": {
+            "interval": 1,
+            "ease": 2.2,
+            "dueAt": 1790236400000,
+            "streak": 0
+          },
+          "la manzana": {
+            "interval": 1,
+            "ease": 2.36,
+            "dueAt": 1790236400000,
+            "streak": 1
+          },
+          "el agua": {
+            "interval": 1,
+            "ease": 2.5,
+            "dueAt": 1790246400000,
+            "streak": 1
+          }
         }
       },
       "de-en": {
         "xp": 30,
-        "completedLessons": { "de-en:u0-l0": true },
+        "completedLessons": {
+          "de-en:u0-l0": true
+        },
         "mistakes": [],
         "wordStats": {
-          "der Mann": { "correct": 3, "wrong": 0, "lastSeen": 1790050000000 },
-          "das Mädchen": { "correct": 1, "wrong": 1, "lastSeen": 1790050000000 }
+          "der Mann": {
+            "correct": 3,
+            "wrong": 0,
+            "lastSeen": 1790050000000
+          },
+          "das Mädchen": {
+            "correct": 1,
+            "wrong": 1,
+            "lastSeen": 1790050000000
+          },
+          "Freund": {
+            "correct": 2,
+            "wrong": 1,
+            "lastSeen": 1790060000000
+          }
         },
         "srs": {
-          "der Mann": { "interval": 3, "ease": 2.6, "dueAt": 1790309200000, "streak": 2 },
-          "das Mädchen": { "interval": 1, "ease": 2.36, "dueAt": 1790136400000, "streak": 0 }
+          "der Mann": {
+            "interval": 3,
+            "ease": 2.6,
+            "dueAt": 1790309200000,
+            "streak": 2
+          },
+          "das Mädchen": {
+            "interval": 1,
+            "ease": 2.36,
+            "dueAt": 1790136400000,
+            "streak": 0
+          },
+          "Freund": {
+            "interval": 1,
+            "ease": 2.36,
+            "dueAt": 1790146400000,
+            "streak": 1
+          }
         }
       }
     },
     "activeDays": {
-      "2026-09-19": { "xp": 40, "lessons": 2, "perfect": 1, "sessions": 1 },
-      "2026-09-20": { "xp": 25, "lessons": 1, "perfect": 0, "sessions": 0 }
+      "2026-09-19": {
+        "xp": 40,
+        "lessons": 2,
+        "perfect": 1,
+        "sessions": 1
+      },
+      "2026-09-20": {
+        "xp": 25,
+        "lessons": 1,
+        "perfect": 0,
+        "sessions": 0
+      }
     },
     "reviewLog": [],
-    "assessment": { "checkpointAttempts": [], "placementFloor": 0 }
+    "assessment": {
+      "checkpointAttempts": [],
+      "placementFloor": 0
+    }
   }
 }

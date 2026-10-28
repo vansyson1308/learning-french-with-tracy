@@ -82,6 +82,13 @@ export function derivedSurfaceMap(lexicon: RichLexicon): Record<string, string> 
   return map;
 }
 
+/** Older course surfaces → id (QC 2026-10-28 `legacySurfaces`). */
+export function legacySurfaceMap(lexicon: RichLexicon): Record<string, string> {
+  const map: Record<string, string> = {};
+  for (const lex of lexicon.lexemes) for (const s of lex.legacySurfaces ?? []) map[s] = lex.id;
+  return map;
+}
+
 // ---------------------------------------------------------------------------
 // Validation
 // ---------------------------------------------------------------------------
@@ -161,20 +168,29 @@ export function validateLexiconData(input: {
     err(`frozen map drifted from the committed registry (src/content/ids/${lang}.json) — run bun run content:compile`);
   }
 
+  // Legacy surfaces: never a surface of another lexeme, never listed twice.
+  const legacy = legacySurfaceMap(lexicon);
+  const legacyAll = lexicon.lexemes.flatMap((l) => l.legacySurfaces ?? []);
+  if (new Set(legacyAll).size !== legacyAll.length) err("a legacy surface is listed on two lexemes");
+  for (const s of legacyAll) if (derived[s] !== undefined) err(`legacy surface "${s}" is also the surface of ${derived[s]}`);
+
   // Cross-check against every course pack of the language: gloss identity
-  // per native language and full coverage.
+  // per native language and full coverage (a pack word may reach its lexeme
+  // through a legacy surface).
   for (const { nativeCode, gloss } of packGlosses) {
     for (const [target] of gloss) {
-      if (derived[target] === undefined) err(`pack word "${target}" missing from rich lexicon`);
+      if (derived[target] === undefined && legacy[target] === undefined) err(`pack word "${target}" missing from rich lexicon`);
     }
     for (const lex of lexicon.lexemes) {
-      const packNative = gloss.get(lex.surface);
-      if (packNative === undefined) continue;
-      const authored = lex.glosses[nativeCode];
-      if (authored === undefined) {
-        err(`${lex.id}: no "${nativeCode}" gloss but a ${lang}-${nativeCode} course teaches "${lex.surface}"`);
-      } else if (authored !== packNative) {
-        err(`${lex.id}: gloss "${authored}" (${nativeCode}) ≠ course gloss "${packNative}" — one truth, no drift`);
+      for (const surface of [lex.surface, ...(lex.legacySurfaces ?? [])]) {
+        const packNative = gloss.get(surface);
+        if (packNative === undefined) continue;
+        const authored = lex.glosses[nativeCode];
+        if (authored === undefined) {
+          err(`${lex.id}: no "${nativeCode}" gloss but a ${lang}-${nativeCode} course teaches "${surface}"`);
+        } else if (authored !== packNative) {
+          err(`${lex.id}: gloss "${authored}" (${nativeCode}) ≠ course gloss "${packNative}" for "${surface}" — one truth, no drift`);
+        }
       }
     }
   }

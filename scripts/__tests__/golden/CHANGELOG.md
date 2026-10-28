@@ -683,3 +683,21 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/stories/fr-stories.json
 - compile: new      src/content/stories/fr-story-assets.ts
 - compile: new      src/content/stories/fr-vi-stories.json
+
+## 2026-10-28 — QC 2026-10-28 §1: no migration v9 (persist back to 8; German joins the v8 re-key); German lexicon: legacySurfaces (de-en Freund/Name → der Freund/der Name), article forms die Eltern/der See/das Knie/das Virus, greetings as interjections, number words added; de registry gains legacySurfaces; es/fr registries and French byte-identical
+
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-048ee5240d5a727c.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-5194c2b492a7089b.db
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json

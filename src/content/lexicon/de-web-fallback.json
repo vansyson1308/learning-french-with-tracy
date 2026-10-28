@@ -1,5 +1,5 @@
 {
-  "contentHash": "5194c2b492a7089b",
+  "contentHash": "048ee5240d5a727c",
   "schemaVersion": 3,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
@@ -852,8 +852,7 @@
       "lookupForm": "Hallo",
       "lemma": "Hallo",
       "gloss": "hello",
-      "pos": "noun",
-      "gender": "neuter",
+      "pos": "interjection",
       "topic": "greetings",
       "pronunciation": {
         "value": "haˈloː",
@@ -891,8 +890,7 @@
       "lookupForm": "Tschüss",
       "lemma": "Tschüss",
       "gloss": "bye",
-      "pos": "noun",
-      "gender": "unknown",
+      "pos": "interjection",
       "topic": "greetings",
       "examples": [
         {
@@ -917,8 +915,7 @@
       "lookupForm": "Bitte",
       "lemma": "Bitte",
       "gloss": "please",
-      "pos": "noun",
-      "gender": "feminine",
+      "pos": "interjection",
       "topic": "greetings",
       "frequency": {
         "band": "less-common",
@@ -970,8 +967,7 @@
       "lookupForm": "Danke",
       "lemma": "Danke",
       "gloss": "thanks",
-      "pos": "noun",
-      "gender": "unknown",
+      "pos": "interjection",
       "topic": "greetings",
       "examples": [
         {
@@ -996,8 +992,7 @@
       "lookupForm": "Entschuldigung",
       "lemma": "Entschuldigung",
       "gloss": "excuse me",
-      "pos": "noun",
-      "gender": "feminine",
+      "pos": "interjection",
       "topic": "greetings",
       "frequency": {
         "band": "common",
@@ -1044,8 +1039,7 @@
       "lookupForm": "Willkommen",
       "lemma": "Willkommen",
       "gloss": "welcome",
-      "pos": "noun",
-      "gender": "neuter",
+      "pos": "interjection",
       "topic": "greetings",
       "pronunciation": {
         "value": "vɪlˈkɔmən",
@@ -1079,7 +1073,7 @@
     },
     {
       "id": "de:w:freund",
-      "surface": "Freund",
+      "surface": "der Freund",
       "lookupForm": "Freund",
       "lemma": "Freund",
       "gloss": "friend",
@@ -1121,7 +1115,7 @@
         },
         {
           "source": "upstream-lingo-lessons",
-          "key": "Freund"
+          "key": "der Freund"
         },
         {
           "source": "original-lexicon-etl"
@@ -1130,7 +1124,7 @@
     },
     {
       "id": "de:w:name",
-      "surface": "Name",
+      "surface": "der Name",
       "lookupForm": "Name",
       "lemma": "Name",
       "gloss": "name",
@@ -1173,7 +1167,7 @@
         },
         {
           "source": "upstream-lingo-lessons",
-          "key": "Name"
+          "key": "der Name"
         },
         {
           "source": "original-lexicon-etl"
@@ -13828,12 +13822,12 @@
     },
     {
       "id": "de:w:eltern",
-      "surface": "Eltern",
+      "surface": "die Eltern",
       "lookupForm": "Eltern",
       "lemma": "Eltern",
       "gloss": "the parents",
       "pos": "noun",
-      "gender": "unknown",
+      "gender": "feminine",
       "topic": "family",
       "frequency": {
         "band": "common",
@@ -23935,7 +23929,7 @@
     },
     {
       "id": "de:w:see",
-      "surface": "See",
+      "surface": "der See",
       "lookupForm": "See",
       "lemma": "See",
       "gloss": "the lake",
@@ -30456,7 +30450,7 @@
     },
     {
       "id": "de:w:virus",
-      "surface": "Virus",
+      "surface": "das Virus",
       "lookupForm": "Virus",
       "lemma": "Virus",
       "gloss": "the virus",
@@ -32429,7 +32423,7 @@
     },
     {
       "id": "de:w:knie",
-      "surface": "Knie",
+      "surface": "das Knie",
       "lookupForm": "Knie",
       "lemma": "Knie",
       "gloss": "the knee",
@@ -38998,6 +38992,643 @@
         {
           "source": "frequencywords",
           "key": "Stein"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:null",
+      "surface": "null",
+      "lookupForm": "null",
+      "lemma": "null",
+      "gloss": "zero",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Die Nummer beginnt mit null.",
+          "en": "The number starts with zero.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:eins",
+      "surface": "eins",
+      "lookupForm": "eins",
+      "lemma": "eins",
+      "gloss": "one (counting)",
+      "pos": "determiner",
+      "topic": "numbers",
+      "frequency": {
+        "band": "common",
+        "rank": 116,
+        "perMillion": 235.1354
+      },
+      "pronunciation": {
+        "value": "aɪ̯ns",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Eins, zwei, drei!",
+          "en": "One, two, three!",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "eins|num"
+        },
+        {
+          "source": "frequencywords",
+          "key": "eins"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:vier",
+      "surface": "vier",
+      "lookupForm": "vier",
+      "lemma": "vier",
+      "gloss": "four",
+      "pos": "determiner",
+      "topic": "numbers",
+      "frequency": {
+        "band": "common",
+        "rank": 122,
+        "perMillion": 206.9142
+      },
+      "pronunciation": {
+        "value": "fiːr",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Wir sind vier Personen.",
+          "en": "We are four people.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "vier|num"
+        },
+        {
+          "source": "frequencywords",
+          "key": "vier"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:funf",
+      "surface": "fünf",
+      "lookupForm": "fünf",
+      "lemma": "fünf",
+      "gloss": "five",
+      "pos": "determiner",
+      "topic": "numbers",
+      "frequency": {
+        "band": "common",
+        "rank": 119,
+        "perMillion": 220.3218
+      },
+      "pronunciation": {
+        "value": "fʏnf",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Das Kind ist fünf Jahre alt.",
+          "en": "The child is five years old.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "fünf|num"
+        },
+        {
+          "source": "frequencywords",
+          "key": "fünf"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:sechs",
+      "surface": "sechs",
+      "lookupForm": "sechs",
+      "lemma": "sechs",
+      "gloss": "six",
+      "pos": "determiner",
+      "topic": "numbers",
+      "frequency": {
+        "band": "common",
+        "rank": 138,
+        "perMillion": 148.0106
+      },
+      "pronunciation": {
+        "value": "zɛks",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Ich stehe um sechs Uhr auf.",
+          "en": "I get up at six o'clock.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "sechs|num"
+        },
+        {
+          "source": "frequencywords",
+          "key": "sechs"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:sieben",
+      "surface": "sieben",
+      "lookupForm": "sieben",
+      "lemma": "sieben",
+      "gloss": "seven",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Eine Woche hat sieben Tage.",
+          "en": "A week has seven days.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:acht",
+      "surface": "acht",
+      "lookupForm": "acht",
+      "lemma": "acht",
+      "gloss": "eight",
+      "pos": "determiner",
+      "topic": "numbers",
+      "frequency": {
+        "band": "common",
+        "rank": 156,
+        "perMillion": 97.2741
+      },
+      "pronunciation": {
+        "value": "axt",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Der Zug kommt um acht Uhr.",
+          "en": "The train comes at eight o'clock.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "acht|num"
+        },
+        {
+          "source": "frequencywords",
+          "key": "acht"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:neun",
+      "surface": "neun",
+      "lookupForm": "neun",
+      "lemma": "neun",
+      "gloss": "nine",
+      "pos": "determiner",
+      "topic": "numbers",
+      "frequency": {
+        "band": "less-common",
+        "rank": 186,
+        "perMillion": 56.3461
+      },
+      "pronunciation": {
+        "value": "nɔʏ̯n",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Ich arbeite neun Stunden.",
+          "en": "I work nine hours.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "neun|num"
+        },
+        {
+          "source": "frequencywords",
+          "key": "neun"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:zehn",
+      "surface": "zehn",
+      "lookupForm": "zehn",
+      "lemma": "zehn",
+      "gloss": "ten",
+      "pos": "determiner",
+      "topic": "numbers",
+      "frequency": {
+        "band": "common",
+        "rank": 136,
+        "perMillion": 150.6539
+      },
+      "pronunciation": {
+        "value": "t͡seːn",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Das kostet zehn Euro.",
+          "en": "That costs ten euros.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "zehn|num"
+        },
+        {
+          "source": "frequencywords",
+          "key": "zehn"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:elf",
+      "surface": "elf",
+      "lookupForm": "elf",
+      "lemma": "elf",
+      "gloss": "eleven",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Es ist elf Uhr.",
+          "en": "It is eleven o'clock.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:zwolf",
+      "surface": "zwölf",
+      "lookupForm": "zwölf",
+      "lemma": "zwölf",
+      "gloss": "twelve",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Ein Jahr hat zwölf Monate.",
+          "en": "A year has twelve months.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:dreizehn",
+      "surface": "dreizehn",
+      "lookupForm": "dreizehn",
+      "lemma": "dreizehn",
+      "gloss": "thirteen",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Meine Schwester ist dreizehn.",
+          "en": "My sister is thirteen.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:sechzehn",
+      "surface": "sechzehn",
+      "lookupForm": "sechzehn",
+      "lemma": "sechzehn",
+      "gloss": "sixteen",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Er ist sechzehn Jahre alt.",
+          "en": "He is sixteen years old.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:siebzehn",
+      "surface": "siebzehn",
+      "lookupForm": "siebzehn",
+      "lemma": "siebzehn",
+      "gloss": "seventeen",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Der Bus kommt um siebzehn Uhr.",
+          "en": "The bus comes at five p.m.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:zwanzig",
+      "surface": "zwanzig",
+      "lookupForm": "zwanzig",
+      "lemma": "zwanzig",
+      "gloss": "twenty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Das Ticket kostet zwanzig Euro.",
+          "en": "The ticket costs twenty euros.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:drei-ig",
+      "surface": "dreißig",
+      "lookupForm": "dreißig",
+      "lemma": "dreißig",
+      "gloss": "thirty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Ich bin dreißig Jahre alt.",
+          "en": "I am thirty years old.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:vierzig",
+      "surface": "vierzig",
+      "lookupForm": "vierzig",
+      "lemma": "vierzig",
+      "gloss": "forty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Mein Vater ist vierzig.",
+          "en": "My father is forty.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:funfzig",
+      "surface": "fünfzig",
+      "lookupForm": "fünfzig",
+      "lemma": "fünfzig",
+      "gloss": "fifty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Das Hotel hat fünfzig Zimmer.",
+          "en": "The hotel has fifty rooms.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:sechzig",
+      "surface": "sechzig",
+      "lookupForm": "sechzig",
+      "lemma": "sechzig",
+      "gloss": "sixty",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Eine Stunde hat sechzig Minuten.",
+          "en": "An hour has sixty minutes.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:siebzig",
+      "surface": "siebzig",
+      "lookupForm": "siebzig",
+      "lemma": "siebzig",
+      "gloss": "seventy",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Meine Oma ist siebzig.",
+          "en": "My grandma is seventy.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:hundert",
+      "surface": "hundert",
+      "lookupForm": "hundert",
+      "lemma": "hundert",
+      "gloss": "hundred",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Das kostet hundert Euro.",
+          "en": "That costs a hundred euros.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:euro",
+      "surface": "der Euro",
+      "lookupForm": "Euro",
+      "lemma": "Euro",
+      "gloss": "euro",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "shopping",
+      "frequency": {
+        "band": "less-common",
+        "rank": 2696,
+        "perMillion": 17.7317
+      },
+      "pronunciation": {
+        "value": "ˈɔʏ̯ro",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Der Kaffee kostet drei Euro.",
+          "en": "The coffee costs three euros.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "Euro|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "Euro"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:halb",
+      "surface": "halb",
+      "lookupForm": "halb",
+      "lemma": "halb",
+      "gloss": "half",
+      "pos": "adjective",
+      "topic": "numbers",
+      "frequency": {
+        "band": "common",
+        "rank": 722,
+        "perMillion": 93.0702
+      },
+      "pronunciation": {
+        "value": "halp",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Es ist halb drei.",
+          "en": "It is half past two.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "halb|adj"
+        },
+        {
+          "source": "frequencywords",
+          "key": "halb"
         },
         {
           "source": "original-lexicon-etl"

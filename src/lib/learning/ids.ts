@@ -20,9 +20,16 @@ export type IdRegistry = {
   prefix: string;
   legacyPrefix: string;
   surfaceToId: Record<string, string>;
+  /**
+   * Older course surfaces → id (QC 2026-10-28): the inherited de-en pack
+   * teaches "Freund", de-vi "der Freund" — one lexeme, one id. Learner data
+   * keyed by the old surface resolves here; the canonical surface stays in
+   * `surfaceToId`.
+   */
+  legacySurfaces?: Record<string, string>;
 };
 
-type Resolved = IdRegistry & { idToSurface: Record<string, string> };
+type Resolved = IdRegistry & { idToSurface: Record<string, string>; idToLegacy: Record<string, string[]> };
 
 const RESOLVED = new Map<string, Resolved | null>();
 
@@ -43,6 +50,7 @@ function registryForLanguage(code: string): Resolved | null {
     ? {
         ...raw,
         idToSurface: Object.fromEntries(Object.entries(raw.surfaceToId).map(([s, id]) => [id, s])),
+        idToLegacy: Object.entries(raw.legacySurfaces ?? {}).reduce<Record<string, string[]>>((acc, [s, id]) => ({ ...acc, [id]: [...(acc[id] ?? []), s] }), {}),
       }
     : null;
   RESOLVED.set(code, resolved);
@@ -67,7 +75,19 @@ export function idPrefix(courseId: string): string {
 export function itemIdFor(courseId: string, surface: string): string {
   const registry = registryFor(courseId);
   if (!registry) return surface;
-  return registry.surfaceToId[surface] ?? `${registry.legacyPrefix}${encodeURIComponent(surface)}`;
+  return registry.surfaceToId[surface] ?? registry.legacySurfaces?.[surface] ?? `${registry.legacyPrefix}${encodeURIComponent(surface)}`;
+}
+
+/**
+ * Every surface an item id can be shown with in a course of this language:
+ * the canonical one first, then its legacy surfaces (a course whose pack
+ * uses an older surface — de-en "Freund" — picks the one its pack has).
+ */
+export function surfacesFor(courseId: string, itemId: string): string[] {
+  const registry = registryFor(courseId);
+  if (!registry) return [itemId];
+  const canonical = surfaceFor(courseId, itemId);
+  return [...(canonical === undefined ? [] : [canonical]), ...(registry.idToLegacy[itemId] ?? [])];
 }
 
 /** Canonical surface for an item id this module can produce (undefined when unknown). */
@@ -93,7 +113,10 @@ export function isCuratedItemId(courseId: string, itemId: string): boolean {
 /** True when the surface has a curated identity. */
 export function isCuratedSurface(courseId: string, surface: string): boolean {
   const registry = registryFor(courseId);
-  return registry !== null && Object.prototype.hasOwnProperty.call(registry.surfaceToId, surface);
+  return (
+    registry !== null &&
+    (Object.prototype.hasOwnProperty.call(registry.surfaceToId, surface) || Object.prototype.hasOwnProperty.call(registry.legacySurfaces ?? {}, surface))
+  );
 }
 
 /** The frozen surface → id map of a course (empty without a registry). */
@@ -104,5 +127,7 @@ export function surfaceIdMap(courseId: string): Readonly<Record<string, string>>
 /** Registry by LANGUAGE code (build scripts and drift tests). */
 export function idRegistryForLanguage(code: string): IdRegistry | undefined {
   const r = registryForLanguage(code);
-  return r ? { language: r.language, prefix: r.prefix, legacyPrefix: r.legacyPrefix, surfaceToId: r.surfaceToId } : undefined;
+  return r
+    ? { language: r.language, prefix: r.prefix, legacyPrefix: r.legacyPrefix, surfaceToId: r.surfaceToId, ...(r.legacySurfaces ? { legacySurfaces: r.legacySurfaces } : {}) }
+    : undefined;
 }

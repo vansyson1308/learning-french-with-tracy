@@ -394,6 +394,17 @@ for (const sel of selected) {
     else gender = "unknown";
   }
   let surface = sel.surface;
+  // QC 2026-10-28: an inherited pack may teach a noun without its article (de-en "Freund").
+  // When the frozen map carries the article form, that is the lexeme's surface and the
+  // pack's form becomes a legacy surface (learner data keyed by it still resolves).
+  let legacySurfaces: string[] | undefined;
+  if (sel.reason === "course pack word" && plugin.splitSurfaceArticle(surface).article === null) {
+    const withArticle = Object.values(ARTICLE_OF[lang] ?? {}).map((a) => `${a} ${surface}`).find((s) => frozen[s] !== undefined);
+    if (withArticle) {
+      legacySurfaces = [surface];
+      surface = withArticle;
+    }
+  }
   if (surface === "" && e) {
     const article = pos === "noun" && gender && gender !== "both" && gender !== "unknown" ? ARTICLE_OF[lang]?.[gender] : undefined;
     // An adjectival noun reads weak after the article: der Deutsche (lemma Deutscher).
@@ -403,6 +414,7 @@ for (const sel of selected) {
   seenSurfaces.add(surface);
   const baseSlug = slugOf(sel.lookupForm);
   let id = frozen[surface] ?? `${lang}:w:${baseSlug}`;
+  if (legacySurfaces) idBySurface.set(legacySurfaces[0], id);
   if (frozen[surface] === undefined) {
     const variants = [id, `${lang}:w:${baseSlug}-${gender === "feminine" ? "f" : gender === "masculine" ? "m" : pos}`, `${lang}:w:${baseSlug}-${pos}`];
     id = variants.find((v) => !usedIds.has(v)) ?? id;
@@ -449,10 +461,11 @@ for (const sel of selected) {
   lexemes.push({
     id,
     surface,
+    ...(legacySurfaces ? { legacySurfaces } : {}),
     lemma: sel.lookupForm,
     // What the learner looks up is the surface without its article: "der Deutsche" → Deutsche
     // (the dictionary lemma stays the strong citation form Deutscher).
-    lookupForm: e?.definiteForm && surface !== e.lemma ? plugin.splitSurfaceArticle(surface).rest : sel.lookupForm,
+    lookupForm: (e?.definiteForm && surface !== e.lemma) || legacySurfaces ? plugin.splitSurfaceArticle(surface).rest : sel.lookupForm,
     partOfSpeech: pos,
     ...(gender !== undefined ? { gender } : {}),
     glosses,

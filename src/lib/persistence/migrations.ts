@@ -26,9 +26,10 @@
  *       registry after its learners started (es-en: RC3 progress is keyed
  *       by surface, P3a's registry made new progress keyed by `es:w:` ids)
  *       re-keys wordStats and the legacy srs map surface → id. Shape
- *       unchanged; see migrateV7toV8.
- *   v9  P3d(de): German gains its id registry — the same re-key for de
- *       (de-en: RC3 "der Mann" → `de:w:mann`).
+ *       unchanged; see migrateV7toV8. German (de-en, P3d(de)) is part of the
+ *       same step: v8 never ran on a learner's device before German's
+ *       registry shipped, so its data input was extended instead of adding a
+ *       step (coordinator QC 2026-10-28).
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -60,7 +61,7 @@ import {
   type PersistedAssessmentState,
 } from "../assessment/types";
 
-export const PERSIST_VERSION = 9;
+export const PERSIST_VERSION = 8;
 
 /**
  * The course the single v3 `assessment` container belonged to. A MIGRATION
@@ -440,13 +441,10 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
  * calls rekeyRegistryCourses for it — pinned by migrations-v8.test.ts, so a
  * new registry can never silently strand surface-keyed progress again.
  */
-export const V8_REKEYED_TARGETS: readonly string[] = ["es", "fr"];
-
-/** v9 (P3d(de)): German's registry. */
-export const V9_REKEYED_TARGETS: readonly string[] = ["de"];
+export const V8_REKEYED_TARGETS: readonly string[] = ["de", "es", "fr"];
 
 /** Every target whose surface-keyed progress a numbered step re-keyed. */
-export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS, ...V9_REKEYED_TARGETS];
+export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS];
 
 const DAY_MS = 86_400_000;
 
@@ -477,7 +475,8 @@ export function rekeyRegistryCourses(persisted: PersistedProgress, targets: read
     const registry = idRegistryForLanguage(code);
     if (!registry) continue;
     const isId = (key: string) => key.startsWith(registry.prefix) || key.startsWith(registry.legacyPrefix);
-    const idOf = (key: string) => (isId(key) ? key : registry.surfaceToId[key] ?? `${registry.legacyPrefix}${encodeURIComponent(key)}`);
+    const idOf = (key: string) =>
+      isId(key) ? key : registry.surfaceToId[key] ?? registry.legacySurfaces?.[key] ?? `${registry.legacyPrefix}${encodeURIComponent(key)}`;
     const statKeys = Object.keys(course.wordStats ?? {});
     const srsKeys = Object.keys(course.srs ?? {});
     if (statKeys.every(isId) && srsKeys.every(isId)) continue;
@@ -504,11 +503,6 @@ export function rekeyRegistryCourses(persisted: PersistedProgress, targets: read
 /** v7 → v8: re-key surface-keyed progress of the registry courses (see rekeyRegistryCourses). */
 function migrateV7toV8(persisted: PersistedProgress): PersistedProgress {
   return rekeyRegistryCourses(persisted, V8_REKEYED_TARGETS);
-}
-
-/** v8 → v9 (P3d(de)): the same re-key for German, whose registry arrives now. */
-function migrateV8toV9(persisted: PersistedProgress): PersistedProgress {
-  return rekeyRegistryCourses(persisted, V9_REKEYED_TARGETS);
 }
 
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
@@ -550,10 +544,6 @@ export function migrateProgress(
   if (fromVersion < 8 && toVersion >= 8) {
     checkFailureSeam(8);
     state = migrateV7toV8(state as PersistedProgress);
-  }
-  if (fromVersion < 9 && toVersion >= 9) {
-    checkFailureSeam(9);
-    state = migrateV8toV9(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }

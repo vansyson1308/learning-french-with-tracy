@@ -4,7 +4,7 @@ Authored 894 lexemes from the committed ETL evidence (content/de/lexicon/derived
 
 - Pack words: 55 · anchored: 0 · frequency-filled: 28
 - `TODO:vi` glosses: **372** · Vietnamese glosses from the Vietnamese Wiktionary (verify): 62 · bridged through English (verify): 460 · examples without a Vietnamese translation: 1935
-- Auto-confusables: 118 pairs · unknown gender: 3 · topic unresolved: 369 · pack words outside the pool: 2 · no example: 2
+- Auto-confusables: 118 pairs · unknown gender: 2 · topic unresolved: 369 · pack words outside the pool: 2 · no example: 2
 
 ## TODO:vi glosses (fill via the P3c authoring toolkit; drafts must be reviewed by a native speaker)
 
@@ -923,7 +923,6 @@ Authored 894 lexemes from the committed ETL evidence (content/de/lexicon/derived
 
 - de:w:tschuss
 - de:w:danke
-- de:w:eltern
 
 ## Examples without a Vietnamese translation (TODO:vi)
 

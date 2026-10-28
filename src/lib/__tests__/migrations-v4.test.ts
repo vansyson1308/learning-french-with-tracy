@@ -32,7 +32,7 @@ afterEach(() => __setMigrationFailureForTests(null));
 
 describe("v3 → v4: per-course assessment", () => {
   test("PERSIST_VERSION is 4 and the v3 fixture is a real v3 state", () => {
-    expect(PERSIST_VERSION).toBe(9);
+    expect(PERSIST_VERSION).toBe(8);
     expect(v3Fixture.version).toBe(3);
     expect(v3().assessment?.placementFloor).toBe(20);
     expect(v3().reviewLog?.length).toBe(3);

@@ -86,7 +86,256 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "der Mann",
+                  "audioTarget": "der Mann",
+                  "options": [
+                    {
+                      "text": "người đàn ông",
+                      "emoji": "👨"
+                    },
+                    {
+                      "text": "cậu bé, con trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "die Frau",
+                  "audioTarget": "die Frau",
+                  "options": [
+                    {
+                      "text": "cậu bé, con trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "người phụ nữ",
+                      "emoji": "👩"
+                    },
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Junge",
+                  "audioTarget": "der Junge",
+                  "options": [
+                    {
+                      "text": "người phụ nữ",
+                      "emoji": "👩"
+                    },
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "cậu bé, con trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l0-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "người đàn ông",
+                  "audioTarget": "der Mann",
+                  "options": [
+                    {
+                      "text": "das Mädchen",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "das Kind",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "der Apfel",
+                      "emoji": "🍎"
+                    },
+                    {
+                      "text": "der Mann",
+                      "emoji": "👨"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "người phụ nữ",
+                  "audioTarget": "die Frau",
+                  "options": [
+                    {
+                      "text": "die Frau",
+                      "emoji": "👩"
+                    },
+                    {
+                      "text": "das Mädchen",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "das Kind",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "der Apfel",
+                      "emoji": "🍎"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l0-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Junge",
+                  "options": [
+                    {
+                      "text": "das Mädchen"
+                    },
+                    {
+                      "text": "der Junge"
+                    },
+                    {
+                      "text": "das Kind"
+                    },
+                    {
+                      "text": "der Apfel"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l0-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Ich bin ein Mann.",
+                  "audioTarget": "Ich bin ein Mann.",
+                  "tokens": [
+                    "Tôi",
+                    "bạn",
+                    "ông",
+                    "một",
+                    "có",
+                    "đàn",
+                    "là",
+                    "không",
+                    "người"
+                  ],
+                  "answer": [
+                    "Tôi",
+                    "là",
+                    "một",
+                    "người",
+                    "đàn",
+                    "ông"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l0-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Bạn là một người phụ nữ.",
+                  "tokens": [
+                    "und",
+                    "bist",
+                    "hat",
+                    "Frau",
+                    "Du",
+                    "ein",
+                    "eine"
+                  ],
+                  "answer": [
+                    "Du",
+                    "bist",
+                    "eine",
+                    "Frau"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u0-l0-e8",
+                  "sentence": "Er ist ein ___.",
+                  "translation": "Nó là một cậu bé.",
+                  "audioTarget": "Er ist ein Junge.",
+                  "options": [
+                    "Junge",
+                    "Mann",
+                    "Apfel",
+                    "Kind"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u0-l0-e9",
+                  "pairs": [
+                    {
+                      "target": "der Mann",
+                      "native": "người đàn ông"
+                    },
+                    {
+                      "target": "die Frau",
+                      "native": "người phụ nữ"
+                    },
+                    {
+                      "target": "der Junge",
+                      "native": "cậu bé, con trai"
+                    },
+                    {
+                      "target": "das Mädchen",
+                      "native": "cô bé, cô gái"
+                    },
+                    {
+                      "target": "das Kind",
+                      "native": "đứa trẻ, con"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u0-l0-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Người đàn ông và người phụ nữ.",
+                  "audioTarget": "Der Mann und die Frau.",
+                  "answer": "Der Mann und die Frau.",
+                  "alternatives": []
+                }
+              ]
             },
             {
               "id": "de-vi:u0-l1",
@@ -95,7 +344,258 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "das Mädchen",
+                  "audioTarget": "das Mädchen",
+                  "options": [
+                    {
+                      "text": "cậu bé, con trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "quả táo",
+                      "emoji": "🍎"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "das Kind",
+                  "audioTarget": "das Kind",
+                  "options": [
+                    {
+                      "text": "cậu bé, con trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "quả táo",
+                      "emoji": "🍎"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Apfel",
+                  "audioTarget": "der Apfel",
+                  "options": [
+                    {
+                      "text": "quả táo",
+                      "emoji": "🍎"
+                    },
+                    {
+                      "text": "cậu bé, con trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l1-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "cô bé, cô gái",
+                  "audioTarget": "das Mädchen",
+                  "options": [
+                    {
+                      "text": "das Kind",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "das Mädchen",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Apfel",
+                      "emoji": "🍎"
+                    },
+                    {
+                      "text": "das Brot",
+                      "emoji": "🍞"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l1-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "đứa trẻ, con",
+                  "audioTarget": "das Kind",
+                  "options": [
+                    {
+                      "text": "das Mädchen",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Apfel",
+                      "emoji": "🍎"
+                    },
+                    {
+                      "text": "das Kind",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "das Brot",
+                      "emoji": "🍞"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l1-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Apfel",
+                  "options": [
+                    {
+                      "text": "das Mädchen"
+                    },
+                    {
+                      "text": "das Kind"
+                    },
+                    {
+                      "text": "das Brot"
+                    },
+                    {
+                      "text": "der Apfel"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l1-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Sie ist ein Mädchen.",
+                  "audioTarget": "Sie ist ein Mädchen.",
+                  "tokens": [
+                    "cô",
+                    "ấy",
+                    "bạn",
+                    "một",
+                    "Cô",
+                    "và",
+                    "bé",
+                    "là",
+                    "tôi"
+                  ],
+                  "answer": [
+                    "Cô",
+                    "ấy",
+                    "là",
+                    "một",
+                    "cô",
+                    "bé"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l1-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Đứa trẻ có một quả táo.",
+                  "tokens": [
+                    "ist",
+                    "hat",
+                    "und",
+                    "Apfel",
+                    "Kind",
+                    "die",
+                    "einen",
+                    "Das"
+                  ],
+                  "answer": [
+                    "Das",
+                    "Kind",
+                    "hat",
+                    "einen",
+                    "Apfel"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u0-l1-e8",
+                  "sentence": "Das ___ isst einen Apfel.",
+                  "translation": "Đứa trẻ ăn một quả táo.",
+                  "audioTarget": "Das Kind isst einen Apfel.",
+                  "options": [
+                    "Brot",
+                    "Kind",
+                    "Wasser",
+                    "Milch"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u0-l1-e9",
+                  "pairs": [
+                    {
+                      "target": "die Frau",
+                      "native": "người phụ nữ"
+                    },
+                    {
+                      "target": "der Junge",
+                      "native": "cậu bé, con trai"
+                    },
+                    {
+                      "target": "das Mädchen",
+                      "native": "cô bé, cô gái"
+                    },
+                    {
+                      "target": "das Kind",
+                      "native": "đứa trẻ, con"
+                    },
+                    {
+                      "target": "der Apfel",
+                      "native": "quả táo"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u0-l1-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Cô bé và cậu bé.",
+                  "audioTarget": "Das Mädchen und der Junge.",
+                  "answer": "Das Mädchen und der Junge.",
+                  "alternatives": []
+                }
+              ]
             },
             {
               "id": "de-vi:u0-l2",
@@ -104,7 +604,250 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "das Brot",
+                  "audioTarget": "das Brot",
+                  "options": [
+                    {
+                      "text": "bánh mì",
+                      "emoji": "🍞"
+                    },
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "quả táo",
+                      "emoji": "🍎"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "das Wasser",
+                  "audioTarget": "das Wasser",
+                  "options": [
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "nước",
+                      "emoji": "💧"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "quả táo",
+                      "emoji": "🍎"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "die Milch",
+                  "audioTarget": "die Milch",
+                  "options": [
+                    {
+                      "text": "cô bé, cô gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "đứa trẻ, con",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "sữa",
+                      "emoji": "🥛"
+                    },
+                    {
+                      "text": "quả táo",
+                      "emoji": "🍎"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l2-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "bánh mì",
+                  "audioTarget": "das Brot",
+                  "options": [
+                    {
+                      "text": "das Kind",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "der Apfel",
+                      "emoji": "🍎"
+                    },
+                    {
+                      "text": "das Wasser",
+                      "emoji": "💧"
+                    },
+                    {
+                      "text": "das Brot",
+                      "emoji": "🍞"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "nước",
+                  "audioTarget": "das Wasser",
+                  "options": [
+                    {
+                      "text": "das Wasser",
+                      "emoji": "💧"
+                    },
+                    {
+                      "text": "das Kind",
+                      "emoji": "🧒"
+                    },
+                    {
+                      "text": "der Apfel",
+                      "emoji": "🍎"
+                    },
+                    {
+                      "text": "das Brot",
+                      "emoji": "🍞"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l2-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "die Milch",
+                  "options": [
+                    {
+                      "text": "das Kind"
+                    },
+                    {
+                      "text": "die Milch"
+                    },
+                    {
+                      "text": "der Apfel"
+                    },
+                    {
+                      "text": "das Brot"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l2-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Ich trinke Wasser.",
+                  "audioTarget": "Ich trinke Wasser.",
+                  "tokens": [
+                    "bạn",
+                    "nước",
+                    "một",
+                    "uống",
+                    "và",
+                    "Tôi"
+                  ],
+                  "answer": [
+                    "Tôi",
+                    "uống",
+                    "nước"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l2-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Đứa trẻ uống sữa.",
+                  "tokens": [
+                    "Kind",
+                    "und",
+                    "Milch",
+                    "Das",
+                    "der",
+                    "trinkt",
+                    "bin"
+                  ],
+                  "answer": [
+                    "Das",
+                    "Kind",
+                    "trinkt",
+                    "Milch"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u0-l2-e8",
+                  "sentence": "Der Mann isst ___.",
+                  "translation": "Người đàn ông ăn bánh mì.",
+                  "audioTarget": "Der Mann isst Brot.",
+                  "options": [
+                    "Wasser",
+                    "Milch",
+                    "Brot",
+                    "Frau"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u0-l2-e9",
+                  "pairs": [
+                    {
+                      "target": "das Kind",
+                      "native": "đứa trẻ, con"
+                    },
+                    {
+                      "target": "der Apfel",
+                      "native": "quả táo"
+                    },
+                    {
+                      "target": "das Brot",
+                      "native": "bánh mì"
+                    },
+                    {
+                      "target": "das Wasser",
+                      "native": "nước"
+                    },
+                    {
+                      "target": "die Milch",
+                      "native": "sữa"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u0-l2-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi uống sữa.",
+                  "audioTarget": "Ich trinke Milch.",
+                  "answer": "Ich trinke Milch.",
+                  "alternatives": []
+                }
+              ]
             },
             {
               "id": "de-vi:u0-l3",
@@ -113,7 +856,232 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "essen",
+                  "audioTarget": "essen",
+                  "options": [
+                    {
+                      "text": "uống",
+                      "emoji": "🥤"
+                    },
+                    {
+                      "text": "có",
+                      "emoji": "🤲"
+                    },
+                    {
+                      "text": "ăn",
+                      "emoji": "🍽️"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "trinken",
+                  "audioTarget": "trinken",
+                  "options": [
+                    {
+                      "text": "ăn",
+                      "emoji": "🍽️"
+                    },
+                    {
+                      "text": "có",
+                      "emoji": "🤲"
+                    },
+                    {
+                      "text": "uống",
+                      "emoji": "🥤"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "haben",
+                  "audioTarget": "haben",
+                  "options": [
+                    {
+                      "text": "có",
+                      "emoji": "🤲"
+                    },
+                    {
+                      "text": "ăn",
+                      "emoji": "🍽️"
+                    },
+                    {
+                      "text": "uống",
+                      "emoji": "🥤"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l3-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "ăn",
+                  "audioTarget": "essen",
+                  "options": [
+                    {
+                      "text": "haben",
+                      "emoji": "🤲"
+                    },
+                    {
+                      "text": "essen",
+                      "emoji": "🍽️"
+                    },
+                    {
+                      "text": "trinken",
+                      "emoji": "🥤"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "uống",
+                  "audioTarget": "trinken",
+                  "options": [
+                    {
+                      "text": "haben",
+                      "emoji": "🤲"
+                    },
+                    {
+                      "text": "essen",
+                      "emoji": "🍽️"
+                    },
+                    {
+                      "text": "trinken",
+                      "emoji": "🥤"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u0-l3-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "haben",
+                  "options": [
+                    {
+                      "text": "trinken"
+                    },
+                    {
+                      "text": "essen"
+                    },
+                    {
+                      "text": "haben"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l3-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Wir essen Brot.",
+                  "audioTarget": "Wir essen Brot.",
+                  "tokens": [
+                    "tôi",
+                    "không",
+                    "bánh",
+                    "Chúng",
+                    "có",
+                    "ăn",
+                    "mì"
+                  ],
+                  "answer": [
+                    "Chúng",
+                    "tôi",
+                    "ăn",
+                    "bánh",
+                    "mì"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u0-l3-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Tôi có một quả táo.",
+                  "tokens": [
+                    "hat",
+                    "einen",
+                    "ein",
+                    "habe",
+                    "ist",
+                    "Apfel",
+                    "Ich"
+                  ],
+                  "answer": [
+                    "Ich",
+                    "habe",
+                    "einen",
+                    "Apfel"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u0-l3-e8",
+                  "sentence": "Die Frau ___ Wasser.",
+                  "translation": "Người phụ nữ uống nước.",
+                  "audioTarget": "Die Frau trinkt Wasser.",
+                  "options": [
+                    "isst",
+                    "hat",
+                    "bin",
+                    "trinkt"
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u0-l3-e9",
+                  "pairs": [
+                    {
+                      "target": "das Wasser",
+                      "native": "nước"
+                    },
+                    {
+                      "target": "die Milch",
+                      "native": "sữa"
+                    },
+                    {
+                      "target": "essen",
+                      "native": "ăn"
+                    },
+                    {
+                      "target": "trinken",
+                      "native": "uống"
+                    },
+                    {
+                      "target": "haben",
+                      "native": "có"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u0-l3-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Bạn ăn một quả táo.",
+                  "audioTarget": "Du isst einen Apfel.",
+                  "answer": "Du isst einen Apfel.",
+                  "alternatives": [
+                    "Du isst einen Apfel"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -145,7 +1113,7 @@
             },
             {
               "target": "Entschuldigung",
-              "native": "xin lỗi; lời xin lỗi",
+              "native": "xin lỗi",
               "emoji": "🙇"
             },
             {
@@ -174,12 +1142,12 @@
               "emoji": "☀️"
             },
             {
-              "target": "Freund",
+              "target": "der Freund",
               "native": "người bạn; bạn trai",
               "emoji": "🧑‍🤝‍🧑"
             },
             {
-              "target": "Name",
+              "target": "der Name",
               "native": "tên",
               "emoji": "🏷️"
             }
@@ -192,7 +1160,252 @@
                 "de.obj.greetings.basic",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "Hallo",
+                  "audioTarget": "Hallo",
+                  "options": [
+                    {
+                      "text": "xin chào",
+                      "emoji": "👋"
+                    },
+                    {
+                      "text": "làm ơn",
+                      "emoji": "🙏"
+                    },
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Tschüss",
+                  "audioTarget": "Tschüss",
+                  "options": [
+                    {
+                      "text": "làm ơn",
+                      "emoji": "🙏"
+                    },
+                    {
+                      "text": "tạm biệt (thân mật)",
+                      "emoji": "🚪"
+                    },
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Bitte",
+                  "audioTarget": "Bitte",
+                  "options": [
+                    {
+                      "text": "tạm biệt (thân mật)",
+                      "emoji": "🚪"
+                    },
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "làm ơn",
+                      "emoji": "🙏"
+                    },
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l0-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "xin chào",
+                  "audioTarget": "Hallo",
+                  "options": [
+                    {
+                      "text": "Danke",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "Entschuldigung",
+                      "emoji": "🙇"
+                    },
+                    {
+                      "text": "Willkommen",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "Hallo",
+                      "emoji": "👋"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "tạm biệt (thân mật)",
+                  "audioTarget": "Tschüss",
+                  "options": [
+                    {
+                      "text": "Tschüss",
+                      "emoji": "🚪"
+                    },
+                    {
+                      "text": "Danke",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "Entschuldigung",
+                      "emoji": "🙇"
+                    },
+                    {
+                      "text": "Willkommen",
+                      "emoji": "🤗"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l0-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "Bitte",
+                  "options": [
+                    {
+                      "text": "Danke"
+                    },
+                    {
+                      "text": "Bitte"
+                    },
+                    {
+                      "text": "Entschuldigung"
+                    },
+                    {
+                      "text": "Willkommen"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l0-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Hallo, ich bin Anna.",
+                  "audioTarget": "Hallo, ich bin Anna.",
+                  "tokens": [
+                    "một",
+                    "tôi",
+                    "không",
+                    "Anna",
+                    "chào,",
+                    "và",
+                    "là",
+                    "Xin"
+                  ],
+                  "answer": [
+                    "Xin",
+                    "chào,",
+                    "tôi",
+                    "là",
+                    "Anna"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l0-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Tạm biệt, Paul!",
+                  "tokens": [
+                    "nicht",
+                    "Tschüss",
+                    "die",
+                    "bin",
+                    "Paul"
+                  ],
+                  "answer": [
+                    "Tschüss",
+                    "Paul"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u1-l0-e8",
+                  "sentence": "___, wie geht's?",
+                  "translation": "Xin chào, bạn khoẻ không?",
+                  "audioTarget": "Hallo, wie geht's?",
+                  "options": [
+                    "Hallo",
+                    "Tschüss",
+                    "Danke",
+                    "Bitte"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u1-l0-e9",
+                  "pairs": [
+                    {
+                      "target": "Hallo",
+                      "native": "xin chào"
+                    },
+                    {
+                      "target": "Tschüss",
+                      "native": "tạm biệt (thân mật)"
+                    },
+                    {
+                      "target": "Bitte",
+                      "native": "làm ơn"
+                    },
+                    {
+                      "target": "Danke",
+                      "native": "cảm ơn"
+                    },
+                    {
+                      "target": "Entschuldigung",
+                      "native": "xin lỗi"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u1-l0-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Xin chào!",
+                  "audioTarget": "Hallo!",
+                  "answer": "Hallo!",
+                  "alternatives": [
+                    "Hallo"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u1-l1",
@@ -201,7 +1414,255 @@
                 "de.obj.greetings.basic",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "Danke",
+                  "audioTarget": "Danke",
+                  "options": [
+                    {
+                      "text": "làm ơn",
+                      "emoji": "🙏"
+                    },
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    },
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "chào mừng",
+                      "emoji": "🤗"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Entschuldigung",
+                  "audioTarget": "Entschuldigung",
+                  "options": [
+                    {
+                      "text": "làm ơn",
+                      "emoji": "🙏"
+                    },
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "chào mừng",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Willkommen",
+                  "audioTarget": "Willkommen",
+                  "options": [
+                    {
+                      "text": "chào mừng",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "làm ơn",
+                      "emoji": "🙏"
+                    },
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l1-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "cảm ơn",
+                  "audioTarget": "Danke",
+                  "options": [
+                    {
+                      "text": "Entschuldigung",
+                      "emoji": "🙇"
+                    },
+                    {
+                      "text": "Danke",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "Willkommen",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "Freund",
+                      "emoji": "🧑‍🤝‍🧑"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l1-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "xin lỗi",
+                  "audioTarget": "Entschuldigung",
+                  "options": [
+                    {
+                      "text": "Danke",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "Willkommen",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "Entschuldigung",
+                      "emoji": "🙇"
+                    },
+                    {
+                      "text": "Freund",
+                      "emoji": "🧑‍🤝‍🧑"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l1-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "Willkommen",
+                  "options": [
+                    {
+                      "text": "Danke"
+                    },
+                    {
+                      "text": "Entschuldigung"
+                    },
+                    {
+                      "text": "Freund"
+                    },
+                    {
+                      "text": "Willkommen"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l1-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Danke, das ist gut.",
+                  "audioTarget": "Danke, das ist gut.",
+                  "tokens": [
+                    "bạn",
+                    "đó",
+                    "Cảm",
+                    "một",
+                    "cái",
+                    "là",
+                    "tốt",
+                    "ơn,"
+                  ],
+                  "answer": [
+                    "Cảm",
+                    "ơn,",
+                    "cái",
+                    "đó",
+                    "tốt"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l1-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Chào mừng đến Berlin!",
+                  "tokens": [
+                    "Berlin",
+                    "und",
+                    "in",
+                    "der",
+                    "Willkommen",
+                    "ein"
+                  ],
+                  "answer": [
+                    "Willkommen",
+                    "in",
+                    "Berlin"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u1-l1-e8",
+                  "sentence": "___, wo ist der Bahnhof?",
+                  "translation": "Xin lỗi, nhà ga ở đâu?",
+                  "audioTarget": "Entschuldigung, wo ist der Bahnhof?",
+                  "options": [
+                    "Willkommen",
+                    "Entschuldigung",
+                    "Danke",
+                    "Tschüss"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u1-l1-e9",
+                  "pairs": [
+                    {
+                      "target": "Tschüss",
+                      "native": "tạm biệt (thân mật)"
+                    },
+                    {
+                      "target": "Bitte",
+                      "native": "làm ơn"
+                    },
+                    {
+                      "target": "Danke",
+                      "native": "cảm ơn"
+                    },
+                    {
+                      "target": "Entschuldigung",
+                      "native": "xin lỗi"
+                    },
+                    {
+                      "target": "Willkommen",
+                      "native": "chào mừng"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u1-l1-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Cảm ơn!",
+                  "audioTarget": "Danke!",
+                  "answer": "Danke!",
+                  "alternatives": [
+                    "Danke",
+                    "Danke schön!"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u1-l2",
@@ -210,7 +1671,250 @@
                 "de.obj.greetings.basic",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "der Morgen",
+                  "audioTarget": "der Morgen",
+                  "options": [
+                    {
+                      "text": "buổi sáng",
+                      "emoji": "🌅"
+                    },
+                    {
+                      "text": "buổi tối",
+                      "emoji": "🌆"
+                    },
+                    {
+                      "text": "đêm, ban đêm",
+                      "emoji": "🌙"
+                    },
+                    {
+                      "text": "ngày",
+                      "emoji": "☀️"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Abend",
+                  "audioTarget": "der Abend",
+                  "options": [
+                    {
+                      "text": "buổi sáng",
+                      "emoji": "🌅"
+                    },
+                    {
+                      "text": "buổi tối",
+                      "emoji": "🌆"
+                    },
+                    {
+                      "text": "đêm, ban đêm",
+                      "emoji": "🌙"
+                    },
+                    {
+                      "text": "ngày",
+                      "emoji": "☀️"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "die Nacht",
+                  "audioTarget": "die Nacht",
+                  "options": [
+                    {
+                      "text": "buổi sáng",
+                      "emoji": "🌅"
+                    },
+                    {
+                      "text": "buổi tối",
+                      "emoji": "🌆"
+                    },
+                    {
+                      "text": "đêm, ban đêm",
+                      "emoji": "🌙"
+                    },
+                    {
+                      "text": "ngày",
+                      "emoji": "☀️"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l2-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "buổi sáng",
+                  "audioTarget": "der Morgen",
+                  "options": [
+                    {
+                      "text": "die Nacht",
+                      "emoji": "🌙"
+                    },
+                    {
+                      "text": "der Tag",
+                      "emoji": "☀️"
+                    },
+                    {
+                      "text": "der Abend",
+                      "emoji": "🌆"
+                    },
+                    {
+                      "text": "der Morgen",
+                      "emoji": "🌅"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "buổi tối",
+                  "audioTarget": "der Abend",
+                  "options": [
+                    {
+                      "text": "der Abend",
+                      "emoji": "🌆"
+                    },
+                    {
+                      "text": "die Nacht",
+                      "emoji": "🌙"
+                    },
+                    {
+                      "text": "der Tag",
+                      "emoji": "☀️"
+                    },
+                    {
+                      "text": "der Morgen",
+                      "emoji": "🌅"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l2-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "die Nacht",
+                  "options": [
+                    {
+                      "text": "der Abend"
+                    },
+                    {
+                      "text": "die Nacht"
+                    },
+                    {
+                      "text": "der Tag"
+                    },
+                    {
+                      "text": "der Morgen"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l2-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Guten Morgen, Mama!",
+                  "audioTarget": "Guten Morgen, Mama!",
+                  "tokens": [
+                    "sáng,",
+                    "tôi",
+                    "buổi",
+                    "một",
+                    "mẹ",
+                    "Chào",
+                    "và"
+                  ],
+                  "answer": [
+                    "Chào",
+                    "buổi",
+                    "sáng,",
+                    "mẹ"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l2-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Chào buổi tối!",
+                  "tokens": [
+                    "ist",
+                    "Guten",
+                    "hat",
+                    "die",
+                    "Abend"
+                  ],
+                  "answer": [
+                    "Guten",
+                    "Abend"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u1-l2-e8",
+                  "sentence": "Gute ___!",
+                  "translation": "Chúc ngủ ngon!",
+                  "audioTarget": "Gute Nacht!",
+                  "options": [
+                    "Morgen",
+                    "Abend",
+                    "Nacht",
+                    "Tag"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u1-l2-e9",
+                  "pairs": [
+                    {
+                      "target": "Entschuldigung",
+                      "native": "xin lỗi"
+                    },
+                    {
+                      "target": "Willkommen",
+                      "native": "chào mừng"
+                    },
+                    {
+                      "target": "der Morgen",
+                      "native": "buổi sáng"
+                    },
+                    {
+                      "target": "der Abend",
+                      "native": "buổi tối"
+                    },
+                    {
+                      "target": "die Nacht",
+                      "native": "đêm, ban đêm"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u1-l2-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Chào buổi sáng!",
+                  "audioTarget": "Guten Morgen!",
+                  "answer": "Guten Morgen!",
+                  "alternatives": [
+                    "Guten Morgen"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u1-l3",
@@ -219,7 +1923,254 @@
                 "de.obj.greetings.basic",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "der Tag",
+                  "audioTarget": "der Tag",
+                  "options": [
+                    {
+                      "text": "buổi tối",
+                      "emoji": "🌆"
+                    },
+                    {
+                      "text": "đêm, ban đêm",
+                      "emoji": "🌙"
+                    },
+                    {
+                      "text": "ngày",
+                      "emoji": "☀️"
+                    },
+                    {
+                      "text": "buổi sáng",
+                      "emoji": "🌅"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "Freund",
+                  "audioTarget": "Freund",
+                  "options": [
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    },
+                    {
+                      "text": "chào mừng",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "tên",
+                      "emoji": "🏷️"
+                    },
+                    {
+                      "text": "người bạn",
+                      "emoji": "🧑‍🤝‍🧑"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "Name",
+                  "audioTarget": "Name",
+                  "options": [
+                    {
+                      "text": "tên",
+                      "emoji": "🏷️"
+                    },
+                    {
+                      "text": "xin lỗi",
+                      "emoji": "🙇"
+                    },
+                    {
+                      "text": "chào mừng",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "người bạn",
+                      "emoji": "🧑‍🤝‍🧑"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l3-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "ngày",
+                  "audioTarget": "der Tag",
+                  "options": [
+                    {
+                      "text": "die Nacht",
+                      "emoji": "🌙"
+                    },
+                    {
+                      "text": "der Tag",
+                      "emoji": "☀️"
+                    },
+                    {
+                      "text": "der Morgen",
+                      "emoji": "🌅"
+                    },
+                    {
+                      "text": "der Abend",
+                      "emoji": "🌆"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "người bạn",
+                  "audioTarget": "Freund",
+                  "options": [
+                    {
+                      "text": "Willkommen",
+                      "emoji": "🤗"
+                    },
+                    {
+                      "text": "Name",
+                      "emoji": "🏷️"
+                    },
+                    {
+                      "text": "Freund",
+                      "emoji": "🧑‍🤝‍🧑"
+                    },
+                    {
+                      "text": "Hallo",
+                      "emoji": "👋"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u1-l3-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "Name",
+                  "options": [
+                    {
+                      "text": "Willkommen"
+                    },
+                    {
+                      "text": "Freund"
+                    },
+                    {
+                      "text": "Hallo"
+                    },
+                    {
+                      "text": "Name"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l3-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Mein Name ist Tom.",
+                  "audioTarget": "Mein Name ist Tom.",
+                  "tokens": [
+                    "có",
+                    "Tom",
+                    "Tên",
+                    "không",
+                    "là",
+                    "và",
+                    "tôi"
+                  ],
+                  "answer": [
+                    "Tên",
+                    "tôi",
+                    "là",
+                    "Tom"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u1-l3-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Anh ấy là bạn tôi.",
+                  "tokens": [
+                    "und",
+                    "ist",
+                    "nicht",
+                    "Freund",
+                    "Er",
+                    "die",
+                    "mein"
+                  ],
+                  "answer": [
+                    "Er",
+                    "ist",
+                    "mein",
+                    "Freund"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u1-l3-e8",
+                  "sentence": "Wie ist dein ___?",
+                  "translation": "Bạn tên là gì?",
+                  "audioTarget": "Wie ist dein Name?",
+                  "options": [
+                    "Tag",
+                    "Freund",
+                    "Abend",
+                    "Name"
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u1-l3-e9",
+                  "pairs": [
+                    {
+                      "target": "der Abend",
+                      "native": "buổi tối"
+                    },
+                    {
+                      "target": "die Nacht",
+                      "native": "đêm, ban đêm"
+                    },
+                    {
+                      "target": "der Tag",
+                      "native": "ngày"
+                    },
+                    {
+                      "target": "Freund",
+                      "native": "người bạn"
+                    },
+                    {
+                      "target": "Name",
+                      "native": "tên"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u1-l3-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Xin chào (ban ngày)!",
+                  "audioTarget": "Guten Tag!",
+                  "answer": "Guten Tag!",
+                  "alternatives": [
+                    "Guten Tag"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -298,7 +2249,252 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "der Kaffee",
+                  "audioTarget": "der Kaffee",
+                  "options": [
+                    {
+                      "text": "cà phê",
+                      "emoji": "☕"
+                    },
+                    {
+                      "text": "cơm, gạo",
+                      "emoji": "🍚"
+                    },
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Tee",
+                  "audioTarget": "der Tee",
+                  "options": [
+                    {
+                      "text": "cơm, gạo",
+                      "emoji": "🍚"
+                    },
+                    {
+                      "text": "trà",
+                      "emoji": "🍵"
+                    },
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Reis",
+                  "audioTarget": "der Reis",
+                  "options": [
+                    {
+                      "text": "trà",
+                      "emoji": "🍵"
+                    },
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "cơm, gạo",
+                      "emoji": "🍚"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l0-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "cà phê",
+                  "audioTarget": "der Kaffee",
+                  "options": [
+                    {
+                      "text": "das Ei",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "der Käse",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "der Kaffee",
+                      "emoji": "☕"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "trà",
+                  "audioTarget": "der Tee",
+                  "options": [
+                    {
+                      "text": "der Tee",
+                      "emoji": "🍵"
+                    },
+                    {
+                      "text": "das Ei",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "der Käse",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l0-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Reis",
+                  "options": [
+                    {
+                      "text": "das Ei"
+                    },
+                    {
+                      "text": "der Reis"
+                    },
+                    {
+                      "text": "der Käse"
+                    },
+                    {
+                      "text": "das Obst"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l0-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Ich trinke Kaffee.",
+                  "audioTarget": "Ich trinke Kaffee.",
+                  "tokens": [
+                    "bạn",
+                    "uống",
+                    "không",
+                    "phê",
+                    "Tôi",
+                    "là",
+                    "cà"
+                  ],
+                  "answer": [
+                    "Tôi",
+                    "uống",
+                    "cà",
+                    "phê"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l0-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Bạn uống trà không?",
+                  "tokens": [
+                    "und",
+                    "Trinkst",
+                    "hat",
+                    "Tee",
+                    "ein",
+                    "du"
+                  ],
+                  "answer": [
+                    "Trinkst",
+                    "du",
+                    "Tee"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u2-l0-e8",
+                  "sentence": "Wir essen ___.",
+                  "translation": "Chúng tôi ăn cơm.",
+                  "audioTarget": "Wir essen Reis.",
+                  "options": [
+                    "Tee",
+                    "Reis",
+                    "Kaffee",
+                    "Saft"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u2-l0-e9",
+                  "pairs": [
+                    {
+                      "target": "der Kaffee",
+                      "native": "cà phê"
+                    },
+                    {
+                      "target": "der Tee",
+                      "native": "trà"
+                    },
+                    {
+                      "target": "der Reis",
+                      "native": "cơm, gạo"
+                    },
+                    {
+                      "target": "das Ei",
+                      "native": "quả trứng"
+                    },
+                    {
+                      "target": "der Käse",
+                      "native": "phô mai"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u2-l0-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi uống trà.",
+                  "audioTarget": "Ich trinke Tee.",
+                  "answer": "Ich trinke Tee.",
+                  "alternatives": [
+                    "Ich trinke Tee"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u2-l1",
@@ -307,7 +2503,255 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "das Ei",
+                  "audioTarget": "das Ei",
+                  "options": [
+                    {
+                      "text": "cơm, gạo",
+                      "emoji": "🍚"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Käse",
+                  "audioTarget": "der Käse",
+                  "options": [
+                    {
+                      "text": "cơm, gạo",
+                      "emoji": "🍚"
+                    },
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "das Obst",
+                  "audioTarget": "das Obst",
+                  "options": [
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "cơm, gạo",
+                      "emoji": "🍚"
+                    },
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l1-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "quả trứng",
+                  "audioTarget": "das Ei",
+                  "options": [
+                    {
+                      "text": "der Käse",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "das Ei",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "der Saft",
+                      "emoji": "🧃"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l1-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "phô mai",
+                  "audioTarget": "der Käse",
+                  "options": [
+                    {
+                      "text": "das Ei",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "der Käse",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "der Saft",
+                      "emoji": "🧃"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l1-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "das Obst",
+                  "options": [
+                    {
+                      "text": "das Ei"
+                    },
+                    {
+                      "text": "der Käse"
+                    },
+                    {
+                      "text": "der Saft"
+                    },
+                    {
+                      "text": "das Obst"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l1-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Ich esse ein Ei.",
+                  "audioTarget": "Ich esse ein Ei.",
+                  "tokens": [
+                    "quả",
+                    "Tôi",
+                    "có",
+                    "một",
+                    "trứng",
+                    "ăn",
+                    "không"
+                  ],
+                  "answer": [
+                    "Tôi",
+                    "ăn",
+                    "một",
+                    "quả",
+                    "trứng"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l1-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Người phụ nữ ăn phô mai.",
+                  "tokens": [
+                    "ist",
+                    "Frau",
+                    "nicht",
+                    "Käse",
+                    "Die",
+                    "die",
+                    "isst"
+                  ],
+                  "answer": [
+                    "Die",
+                    "Frau",
+                    "isst",
+                    "Käse"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u2-l1-e8",
+                  "sentence": "Das Kind isst ___.",
+                  "translation": "Đứa trẻ ăn trái cây.",
+                  "audioTarget": "Das Kind isst Obst.",
+                  "options": [
+                    "Kaffee",
+                    "Tee",
+                    "Saft",
+                    "Obst"
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u2-l1-e9",
+                  "pairs": [
+                    {
+                      "target": "der Tee",
+                      "native": "trà"
+                    },
+                    {
+                      "target": "der Reis",
+                      "native": "cơm, gạo"
+                    },
+                    {
+                      "target": "das Ei",
+                      "native": "quả trứng"
+                    },
+                    {
+                      "target": "der Käse",
+                      "native": "phô mai"
+                    },
+                    {
+                      "target": "das Obst",
+                      "native": "trái cây, hoa quả"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u2-l1-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi ăn trái cây.",
+                  "audioTarget": "Ich esse Obst.",
+                  "answer": "Ich esse Obst.",
+                  "alternatives": [
+                    "Ich esse Obst"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u2-l2",
@@ -316,7 +2760,254 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "der Saft",
+                  "audioTarget": "der Saft",
+                  "options": [
+                    {
+                      "text": "nước ép",
+                      "emoji": "🧃"
+                    },
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Fisch",
+                  "audioTarget": "der Fisch",
+                  "options": [
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "con cá",
+                      "emoji": "🐟"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Zucker",
+                  "audioTarget": "der Zucker",
+                  "options": [
+                    {
+                      "text": "quả trứng",
+                      "emoji": "🥚"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "đường",
+                      "emoji": "🍬"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l2-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "nước ép",
+                  "audioTarget": "der Saft",
+                  "options": [
+                    {
+                      "text": "der Käse",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "der Fisch",
+                      "emoji": "🐟"
+                    },
+                    {
+                      "text": "der Saft",
+                      "emoji": "🧃"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "con cá",
+                  "audioTarget": "der Fisch",
+                  "options": [
+                    {
+                      "text": "der Fisch",
+                      "emoji": "🐟"
+                    },
+                    {
+                      "text": "der Käse",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "der Saft",
+                      "emoji": "🧃"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l2-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Zucker",
+                  "options": [
+                    {
+                      "text": "der Käse"
+                    },
+                    {
+                      "text": "der Zucker"
+                    },
+                    {
+                      "text": "das Obst"
+                    },
+                    {
+                      "text": "der Saft"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l2-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Ich trinke Saft.",
+                  "audioTarget": "Ich trinke Saft.",
+                  "tokens": [
+                    "có",
+                    "uống",
+                    "và",
+                    "ép",
+                    "Tôi",
+                    "tôi",
+                    "nước"
+                  ],
+                  "answer": [
+                    "Tôi",
+                    "uống",
+                    "nước",
+                    "ép"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l2-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Người đàn ông ăn cá.",
+                  "tokens": [
+                    "Der",
+                    "der",
+                    "isst",
+                    "bin",
+                    "Mann",
+                    "und",
+                    "Fisch"
+                  ],
+                  "answer": [
+                    "Der",
+                    "Mann",
+                    "isst",
+                    "Fisch"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u2-l2-e8",
+                  "sentence": "Kaffee mit ___?",
+                  "translation": "Cà phê có đường không?",
+                  "audioTarget": "Kaffee mit Zucker?",
+                  "options": [
+                    "Zucker",
+                    "Fisch",
+                    "Reis",
+                    "Käse"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u2-l2-e9",
+                  "pairs": [
+                    {
+                      "target": "der Käse",
+                      "native": "phô mai"
+                    },
+                    {
+                      "target": "das Obst",
+                      "native": "trái cây, hoa quả"
+                    },
+                    {
+                      "target": "der Saft",
+                      "native": "nước ép"
+                    },
+                    {
+                      "target": "der Fisch",
+                      "native": "con cá"
+                    },
+                    {
+                      "target": "der Zucker",
+                      "native": "đường"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u2-l2-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi ăn cá.",
+                  "audioTarget": "Ich esse Fisch.",
+                  "answer": "Ich esse Fisch.",
+                  "alternatives": [
+                    "Ich esse Fisch"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u2-l3",
@@ -325,7 +3016,252 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "der Kuchen",
+                  "audioTarget": "der Kuchen",
+                  "options": [
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "bánh ngọt",
+                      "emoji": "🍰"
+                    },
+                    {
+                      "text": "nước ép",
+                      "emoji": "🧃"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "das Frühstück",
+                  "audioTarget": "das Frühstück",
+                  "options": [
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "nước ép",
+                      "emoji": "🧃"
+                    },
+                    {
+                      "text": "bữa sáng",
+                      "emoji": "🥐"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "die Schokolade",
+                  "audioTarget": "die Schokolade",
+                  "options": [
+                    {
+                      "text": "sô-cô-la",
+                      "emoji": "🍫"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
+                    },
+                    {
+                      "text": "trái cây, hoa quả",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "nước ép",
+                      "emoji": "🧃"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l3-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "bánh ngọt",
+                  "audioTarget": "der Kuchen",
+                  "options": [
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "der Kuchen",
+                      "emoji": "🍰"
+                    },
+                    {
+                      "text": "der Saft",
+                      "emoji": "🧃"
+                    },
+                    {
+                      "text": "der Fisch",
+                      "emoji": "🐟"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "bữa sáng",
+                  "audioTarget": "das Frühstück",
+                  "options": [
+                    {
+                      "text": "das Obst",
+                      "emoji": "🍇"
+                    },
+                    {
+                      "text": "der Saft",
+                      "emoji": "🧃"
+                    },
+                    {
+                      "text": "das Frühstück",
+                      "emoji": "🥐"
+                    },
+                    {
+                      "text": "der Fisch",
+                      "emoji": "🐟"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u2-l3-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "die Schokolade",
+                  "options": [
+                    {
+                      "text": "das Obst"
+                    },
+                    {
+                      "text": "der Saft"
+                    },
+                    {
+                      "text": "der Fisch"
+                    },
+                    {
+                      "text": "die Schokolade"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l3-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Der Kuchen ist gut.",
+                  "audioTarget": "Der Kuchen ist gut.",
+                  "tokens": [
+                    "Bánh",
+                    "có",
+                    "ngon",
+                    "không",
+                    "ngọt",
+                    "là"
+                  ],
+                  "answer": [
+                    "Bánh",
+                    "ngọt",
+                    "ngon"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u2-l3-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Đứa trẻ ăn sô-cô-la.",
+                  "tokens": [
+                    "ein",
+                    "Kind",
+                    "ist",
+                    "Schokolade",
+                    "Das",
+                    "hat",
+                    "isst"
+                  ],
+                  "answer": [
+                    "Das",
+                    "Kind",
+                    "isst",
+                    "Schokolade"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u2-l3-e8",
+                  "sentence": "Das ___ ist um acht Uhr.",
+                  "translation": "Bữa sáng lúc tám giờ.",
+                  "audioTarget": "Das Frühstück ist um acht Uhr.",
+                  "options": [
+                    "Ei",
+                    "Frühstück",
+                    "Obst",
+                    "Brot"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u2-l3-e9",
+                  "pairs": [
+                    {
+                      "target": "der Fisch",
+                      "native": "con cá"
+                    },
+                    {
+                      "target": "der Zucker",
+                      "native": "đường"
+                    },
+                    {
+                      "target": "der Kuchen",
+                      "native": "bánh ngọt"
+                    },
+                    {
+                      "target": "das Frühstück",
+                      "native": "bữa sáng"
+                    },
+                    {
+                      "target": "die Schokolade",
+                      "native": "sô-cô-la"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u2-l3-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi ăn bánh ngọt.",
+                  "audioTarget": "Ich esse Kuchen.",
+                  "answer": "Ich esse Kuchen.",
+                  "alternatives": [
+                    "Ich esse Kuchen"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -351,7 +3287,7 @@
               "emoji": "👨"
             },
             {
-              "target": "Eltern",
+              "target": "die Eltern",
               "native": "bố mẹ",
               "emoji": "👫"
             },
@@ -404,7 +3340,256 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "die Familie",
+                  "audioTarget": "die Familie",
+                  "options": [
+                    {
+                      "text": "gia đình",
+                      "emoji": "👪"
+                    },
+                    {
+                      "text": "bố, cha",
+                      "emoji": "👨"
+                    },
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "die Mutter",
+                  "audioTarget": "die Mutter",
+                  "options": [
+                    {
+                      "text": "bố, cha",
+                      "emoji": "👨"
+                    },
+                    {
+                      "text": "mẹ",
+                      "emoji": "👩"
+                    },
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Vater",
+                  "audioTarget": "der Vater",
+                  "options": [
+                    {
+                      "text": "mẹ",
+                      "emoji": "👩"
+                    },
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "bố, cha",
+                      "emoji": "👨"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l0-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "gia đình",
+                  "audioTarget": "die Familie",
+                  "options": [
+                    {
+                      "text": "der Bruder",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "die Schwester",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "die Familie",
+                      "emoji": "👪"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "mẹ",
+                  "audioTarget": "die Mutter",
+                  "options": [
+                    {
+                      "text": "die Mutter",
+                      "emoji": "👩"
+                    },
+                    {
+                      "text": "der Bruder",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "die Schwester",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l0-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Vater",
+                  "options": [
+                    {
+                      "text": "der Bruder"
+                    },
+                    {
+                      "text": "der Vater"
+                    },
+                    {
+                      "text": "die Schwester"
+                    },
+                    {
+                      "text": "der Sohn"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l0-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Das ist meine Familie.",
+                  "audioTarget": "Das ist meine Familie.",
+                  "tokens": [
+                    "tôi",
+                    "là",
+                    "không",
+                    "đình",
+                    "Đây",
+                    "và",
+                    "gia",
+                    "có"
+                  ],
+                  "answer": [
+                    "Đây",
+                    "là",
+                    "gia",
+                    "đình",
+                    "tôi"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l0-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Mẹ tôi uống trà.",
+                  "tokens": [
+                    "nicht",
+                    "trinkt",
+                    "die",
+                    "Mutter",
+                    "bin",
+                    "Tee",
+                    "Meine"
+                  ],
+                  "answer": [
+                    "Meine",
+                    "Mutter",
+                    "trinkt",
+                    "Tee"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u3-l0-e8",
+                  "sentence": "Mein ___ heißt Peter.",
+                  "translation": "Bố tôi tên là Peter.",
+                  "audioTarget": "Mein Vater heißt Peter.",
+                  "options": [
+                    "Vater",
+                    "Mutter",
+                    "Familie",
+                    "Tante"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u3-l0-e9",
+                  "pairs": [
+                    {
+                      "target": "die Familie",
+                      "native": "gia đình"
+                    },
+                    {
+                      "target": "die Mutter",
+                      "native": "mẹ"
+                    },
+                    {
+                      "target": "der Vater",
+                      "native": "bố, cha"
+                    },
+                    {
+                      "target": "Eltern",
+                      "native": "bố mẹ"
+                    },
+                    {
+                      "target": "der Bruder",
+                      "native": "anh/em trai"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u3-l0-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Đây là mẹ tôi.",
+                  "audioTarget": "Das ist meine Mutter.",
+                  "answer": "Das ist meine Mutter.",
+                  "alternatives": [
+                    "Das ist meine Mutter"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u3-l1",
@@ -413,7 +3598,257 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "Eltern",
+                  "audioTarget": "Eltern",
+                  "options": [
+                    {
+                      "text": "bố, cha",
+                      "emoji": "👨"
+                    },
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "bố mẹ",
+                      "emoji": "👫"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Bruder",
+                  "audioTarget": "der Bruder",
+                  "options": [
+                    {
+                      "text": "bố, cha",
+                      "emoji": "👨"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "die Schwester",
+                  "audioTarget": "die Schwester",
+                  "options": [
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "bố, cha",
+                      "emoji": "👨"
+                    },
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l1-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "bố mẹ",
+                  "audioTarget": "Eltern",
+                  "options": [
+                    {
+                      "text": "der Bruder",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "Eltern",
+                      "emoji": "👫"
+                    },
+                    {
+                      "text": "die Schwester",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l1-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "anh/em trai",
+                  "audioTarget": "der Bruder",
+                  "options": [
+                    {
+                      "text": "die Schwester",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "der Bruder",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "die Tochter",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l1-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "die Schwester",
+                  "options": [
+                    {
+                      "text": "der Bruder"
+                    },
+                    {
+                      "text": "der Sohn"
+                    },
+                    {
+                      "text": "die Tochter"
+                    },
+                    {
+                      "text": "die Schwester"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l1-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Meine Eltern wohnen in Berlin.",
+                  "audioTarget": "Meine Eltern wohnen in Berlin.",
+                  "tokens": [
+                    "Berlin",
+                    "tôi",
+                    "là",
+                    "ở",
+                    "mẹ",
+                    "bạn",
+                    "sống",
+                    "Bố"
+                  ],
+                  "answer": [
+                    "Bố",
+                    "mẹ",
+                    "tôi",
+                    "sống",
+                    "ở",
+                    "Berlin"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l1-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Tôi có một anh trai.",
+                  "tokens": [
+                    "habe",
+                    "ein",
+                    "Bruder",
+                    "Ich",
+                    "und",
+                    "einen",
+                    "der"
+                  ],
+                  "answer": [
+                    "Ich",
+                    "habe",
+                    "einen",
+                    "Bruder"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u3-l1-e8",
+                  "sentence": "Meine ___ heißt Lisa.",
+                  "translation": "Chị gái tôi tên là Lisa.",
+                  "audioTarget": "Meine Schwester heißt Lisa.",
+                  "options": [
+                    "Bruder",
+                    "Schwester",
+                    "Vater",
+                    "Onkel"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u3-l1-e9",
+                  "pairs": [
+                    {
+                      "target": "die Mutter",
+                      "native": "mẹ"
+                    },
+                    {
+                      "target": "der Vater",
+                      "native": "bố, cha"
+                    },
+                    {
+                      "target": "Eltern",
+                      "native": "bố mẹ"
+                    },
+                    {
+                      "target": "der Bruder",
+                      "native": "anh/em trai"
+                    },
+                    {
+                      "target": "die Schwester",
+                      "native": "chị/em gái"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u3-l1-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi có một em gái.",
+                  "audioTarget": "Ich habe eine Schwester.",
+                  "answer": "Ich habe eine Schwester.",
+                  "alternatives": [
+                    "Ich habe eine Schwester"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u3-l2",
@@ -422,7 +3857,256 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "der Sohn",
+                  "audioTarget": "der Sohn",
+                  "options": [
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "con gái",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "die Tochter",
+                  "audioTarget": "die Tochter",
+                  "options": [
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "con gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Onkel",
+                  "audioTarget": "der Onkel",
+                  "options": [
+                    {
+                      "text": "anh/em trai",
+                      "emoji": "👦"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "chú, bác, cậu",
+                      "emoji": "🧔"
+                    },
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l2-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "con trai",
+                  "audioTarget": "der Sohn",
+                  "options": [
+                    {
+                      "text": "die Schwester",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "die Tochter",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Onkel",
+                      "emoji": "🧔"
+                    },
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "con gái",
+                  "audioTarget": "die Tochter",
+                  "options": [
+                    {
+                      "text": "die Tochter",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "die Schwester",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "der Onkel",
+                      "emoji": "🧔"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l2-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Onkel",
+                  "options": [
+                    {
+                      "text": "die Schwester"
+                    },
+                    {
+                      "text": "der Onkel"
+                    },
+                    {
+                      "text": "der Sohn"
+                    },
+                    {
+                      "text": "die Tochter"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l2-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Das ist mein Sohn.",
+                  "audioTarget": "Das ist mein Sohn.",
+                  "tokens": [
+                    "là",
+                    "và",
+                    "trai",
+                    "Đây",
+                    "một",
+                    "con",
+                    "không",
+                    "tôi"
+                  ],
+                  "answer": [
+                    "Đây",
+                    "là",
+                    "con",
+                    "trai",
+                    "tôi"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l2-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Con gái tôi uống sữa.",
+                  "tokens": [
+                    "ist",
+                    "trinkt",
+                    "hat",
+                    "Tochter",
+                    "die",
+                    "Milch",
+                    "Meine"
+                  ],
+                  "answer": [
+                    "Meine",
+                    "Tochter",
+                    "trinkt",
+                    "Milch"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u3-l2-e8",
+                  "sentence": "Mein ___ hat einen Hund.",
+                  "translation": "Chú tôi có một con chó.",
+                  "audioTarget": "Mein Onkel hat einen Hund.",
+                  "options": [
+                    "Onkel",
+                    "Tante",
+                    "Tochter",
+                    "Mutter"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u3-l2-e9",
+                  "pairs": [
+                    {
+                      "target": "der Bruder",
+                      "native": "anh/em trai"
+                    },
+                    {
+                      "target": "die Schwester",
+                      "native": "chị/em gái"
+                    },
+                    {
+                      "target": "der Sohn",
+                      "native": "con trai"
+                    },
+                    {
+                      "target": "die Tochter",
+                      "native": "con gái"
+                    },
+                    {
+                      "target": "der Onkel",
+                      "native": "chú, bác, cậu"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u3-l2-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Đây là con gái tôi.",
+                  "audioTarget": "Das ist meine Tochter.",
+                  "answer": "Das ist meine Tochter.",
+                  "alternatives": [
+                    "Das ist meine Tochter"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u3-l3",
@@ -431,7 +4115,256 @@
                 "de.obj.vocab.everyday_basics",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "die Tante",
+                  "audioTarget": "die Tante",
+                  "options": [
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "cô, dì",
+                      "emoji": "👩‍🦰"
+                    },
+                    {
+                      "text": "con gái",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Hund",
+                  "audioTarget": "der Hund",
+                  "options": [
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "con gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "con chó",
+                      "emoji": "🐕"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "die Katze",
+                  "audioTarget": "die Katze",
+                  "options": [
+                    {
+                      "text": "con mèo",
+                      "emoji": "🐈"
+                    },
+                    {
+                      "text": "chị/em gái",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "con trai",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "con gái",
+                      "emoji": "👧"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l3-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "cô, dì",
+                  "audioTarget": "die Tante",
+                  "options": [
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "die Tante",
+                      "emoji": "👩‍🦰"
+                    },
+                    {
+                      "text": "die Tochter",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Onkel",
+                      "emoji": "🧔"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "con chó",
+                  "audioTarget": "der Hund",
+                  "options": [
+                    {
+                      "text": "der Sohn",
+                      "emoji": "👶"
+                    },
+                    {
+                      "text": "die Tochter",
+                      "emoji": "👧"
+                    },
+                    {
+                      "text": "der Hund",
+                      "emoji": "🐕"
+                    },
+                    {
+                      "text": "der Onkel",
+                      "emoji": "🧔"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u3-l3-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "die Katze",
+                  "options": [
+                    {
+                      "text": "der Sohn"
+                    },
+                    {
+                      "text": "die Tochter"
+                    },
+                    {
+                      "text": "der Onkel"
+                    },
+                    {
+                      "text": "die Katze"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l3-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Die Katze trinkt Milch.",
+                  "audioTarget": "Die Katze trinkt Milch.",
+                  "tokens": [
+                    "là",
+                    "uống",
+                    "bạn",
+                    "mèo",
+                    "không",
+                    "sữa",
+                    "Con"
+                  ],
+                  "answer": [
+                    "Con",
+                    "mèo",
+                    "uống",
+                    "sữa"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u3-l3-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Cô tôi có một con mèo.",
+                  "tokens": [
+                    "die",
+                    "eine",
+                    "Meine",
+                    "ist",
+                    "hat",
+                    "und",
+                    "Katze",
+                    "Tante"
+                  ],
+                  "answer": [
+                    "Meine",
+                    "Tante",
+                    "hat",
+                    "eine",
+                    "Katze"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u3-l3-e8",
+                  "sentence": "Wir haben einen ___.",
+                  "translation": "Chúng tôi có một con chó.",
+                  "audioTarget": "Wir haben einen Hund.",
+                  "options": [
+                    "Sohn",
+                    "Bruder",
+                    "Onkel",
+                    "Hund"
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u3-l3-e9",
+                  "pairs": [
+                    {
+                      "target": "die Tochter",
+                      "native": "con gái"
+                    },
+                    {
+                      "target": "der Onkel",
+                      "native": "chú, bác, cậu"
+                    },
+                    {
+                      "target": "die Tante",
+                      "native": "cô, dì"
+                    },
+                    {
+                      "target": "der Hund",
+                      "native": "con chó"
+                    },
+                    {
+                      "target": "die Katze",
+                      "native": "con mèo"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u3-l3-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi có một con mèo.",
+                  "audioTarget": "Ich habe eine Katze.",
+                  "answer": "Ich habe eine Katze.",
+                  "alternatives": [
+                    "Ich habe eine Katze"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -510,7 +4443,255 @@
                 "de.obj.vocab.places_travel",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l0-e0",
+                  "mode": "targetToNative",
+                  "prompt": "die Stadt",
+                  "audioTarget": "die Stadt",
+                  "options": [
+                    {
+                      "text": "thành phố",
+                      "emoji": "🏙️"
+                    },
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
+                    },
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l0-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Bahnhof",
+                  "audioTarget": "der Bahnhof",
+                  "options": [
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
+                    },
+                    {
+                      "text": "nhà ga",
+                      "emoji": "🚉"
+                    },
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l0-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Zug",
+                  "audioTarget": "der Zug",
+                  "options": [
+                    {
+                      "text": "nhà ga",
+                      "emoji": "🚉"
+                    },
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l0-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "thành phố",
+                  "audioTarget": "die Stadt",
+                  "options": [
+                    {
+                      "text": "die Straße",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "das Hotel",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "die Stadt",
+                      "emoji": "🏙️"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l0-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "nhà ga",
+                  "audioTarget": "der Bahnhof",
+                  "options": [
+                    {
+                      "text": "der Bahnhof",
+                      "emoji": "🚉"
+                    },
+                    {
+                      "text": "die Straße",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "das Hotel",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l0-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Zug",
+                  "options": [
+                    {
+                      "text": "die Straße"
+                    },
+                    {
+                      "text": "der Zug"
+                    },
+                    {
+                      "text": "das Hotel"
+                    },
+                    {
+                      "text": "der Flughafen"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l0-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Berlin ist eine Stadt.",
+                  "audioTarget": "Berlin ist eine Stadt.",
+                  "tokens": [
+                    "tôi",
+                    "thành",
+                    "Berlin",
+                    "bạn",
+                    "một",
+                    "và",
+                    "phố",
+                    "là"
+                  ],
+                  "answer": [
+                    "Berlin",
+                    "là",
+                    "một",
+                    "thành",
+                    "phố"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l0-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Nhà ga ở đâu?",
+                  "tokens": [
+                    "der",
+                    "hat",
+                    "ist",
+                    "Bahnhof",
+                    "Wo",
+                    "bin"
+                  ],
+                  "answer": [
+                    "Wo",
+                    "ist",
+                    "der",
+                    "Bahnhof"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u4-l0-e8",
+                  "sentence": "Der ___ kommt um acht Uhr.",
+                  "translation": "Tàu đến lúc tám giờ.",
+                  "audioTarget": "Der Zug kommt um acht Uhr.",
+                  "options": [
+                    "Zug",
+                    "Bahnhof",
+                    "Weg",
+                    "Bus"
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u4-l0-e9",
+                  "pairs": [
+                    {
+                      "target": "die Stadt",
+                      "native": "thành phố"
+                    },
+                    {
+                      "target": "der Bahnhof",
+                      "native": "nhà ga"
+                    },
+                    {
+                      "target": "der Zug",
+                      "native": "tàu hỏa"
+                    },
+                    {
+                      "target": "die Straße",
+                      "native": "đường phố, con đường"
+                    },
+                    {
+                      "target": "das Hotel",
+                      "native": "khách sạn"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u4-l0-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi đi tàu.",
+                  "audioTarget": "Ich fahre mit dem Zug.",
+                  "answer": "Ich fahre mit dem Zug.",
+                  "alternatives": [
+                    "Ich fahre mit dem Zug"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u4-l1",
@@ -519,7 +4700,257 @@
                 "de.obj.vocab.places_travel",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l1-e0",
+                  "mode": "targetToNative",
+                  "prompt": "die Straße",
+                  "audioTarget": "die Straße",
+                  "options": [
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l1-e1",
+                  "mode": "targetToNative",
+                  "prompt": "das Hotel",
+                  "audioTarget": "das Hotel",
+                  "options": [
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
+                    },
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l1-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Flughafen",
+                  "audioTarget": "der Flughafen",
+                  "options": [
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
+                    },
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l1-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "đường phố, con đường",
+                  "audioTarget": "die Straße",
+                  "options": [
+                    {
+                      "text": "das Hotel",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "die Straße",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "das Ticket",
+                      "emoji": "🎫"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l1-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "khách sạn",
+                  "audioTarget": "das Hotel",
+                  "options": [
+                    {
+                      "text": "die Straße",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "das Hotel",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "das Ticket",
+                      "emoji": "🎫"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l1-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Flughafen",
+                  "options": [
+                    {
+                      "text": "die Straße"
+                    },
+                    {
+                      "text": "das Hotel"
+                    },
+                    {
+                      "text": "das Ticket"
+                    },
+                    {
+                      "text": "der Flughafen"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l1-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Das Hotel ist in der Stadt.",
+                  "audioTarget": "Das Hotel ist in der Stadt.",
+                  "tokens": [
+                    "ở",
+                    "tôi",
+                    "thành",
+                    "sạn",
+                    "có",
+                    "trong",
+                    "Khách",
+                    "và",
+                    "phố"
+                  ],
+                  "answer": [
+                    "Khách",
+                    "sạn",
+                    "ở",
+                    "trong",
+                    "thành",
+                    "phố"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l1-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Sân bay ở đâu?",
+                  "tokens": [
+                    "Flughafen",
+                    "Wo",
+                    "ein",
+                    "der",
+                    "nicht",
+                    "ist"
+                  ],
+                  "answer": [
+                    "Wo",
+                    "ist",
+                    "der",
+                    "Flughafen"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u4-l1-e8",
+                  "sentence": "Wo ist die ___?",
+                  "translation": "Con đường ở đâu?",
+                  "audioTarget": "Wo ist die Straße?",
+                  "options": [
+                    "Stadt",
+                    "Straße",
+                    "Hotel",
+                    "Zug"
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u4-l1-e9",
+                  "pairs": [
+                    {
+                      "target": "der Bahnhof",
+                      "native": "nhà ga"
+                    },
+                    {
+                      "target": "der Zug",
+                      "native": "tàu hỏa"
+                    },
+                    {
+                      "target": "die Straße",
+                      "native": "đường phố, con đường"
+                    },
+                    {
+                      "target": "das Hotel",
+                      "native": "khách sạn"
+                    },
+                    {
+                      "target": "der Flughafen",
+                      "native": "sân bay"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u4-l1-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Khách sạn ở đâu?",
+                  "audioTarget": "Wo ist das Hotel?",
+                  "answer": "Wo ist das Hotel?",
+                  "alternatives": [
+                    "Wo ist das Hotel"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u4-l2",
@@ -528,7 +4959,258 @@
                 "de.obj.vocab.places_travel",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l2-e0",
+                  "mode": "targetToNative",
+                  "prompt": "das Ticket",
+                  "audioTarget": "das Ticket",
+                  "options": [
+                    {
+                      "text": "vé",
+                      "emoji": "🎫"
+                    },
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l2-e1",
+                  "mode": "targetToNative",
+                  "prompt": "der Bus",
+                  "audioTarget": "der Bus",
+                  "options": [
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "xe buýt",
+                      "emoji": "🚌"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l2-e2",
+                  "mode": "targetToNative",
+                  "prompt": "das Auto",
+                  "audioTarget": "das Auto",
+                  "options": [
+                    {
+                      "text": "đường phố, con đường",
+                      "emoji": "🛣️"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "ô tô",
+                      "emoji": "🚗"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l2-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "vé",
+                  "audioTarget": "das Ticket",
+                  "options": [
+                    {
+                      "text": "das Hotel",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "der Bus",
+                      "emoji": "🚌"
+                    },
+                    {
+                      "text": "das Ticket",
+                      "emoji": "🎫"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l2-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "xe buýt",
+                  "audioTarget": "der Bus",
+                  "options": [
+                    {
+                      "text": "der Bus",
+                      "emoji": "🚌"
+                    },
+                    {
+                      "text": "das Hotel",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "das Ticket",
+                      "emoji": "🎫"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l2-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "das Auto",
+                  "options": [
+                    {
+                      "text": "das Hotel"
+                    },
+                    {
+                      "text": "das Auto"
+                    },
+                    {
+                      "text": "der Flughafen"
+                    },
+                    {
+                      "text": "das Ticket"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l2-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Ich habe ein Ticket.",
+                  "audioTarget": "Ich habe ein Ticket.",
+                  "tokens": [
+                    "bạn",
+                    "cái",
+                    "Tôi",
+                    "là",
+                    "một",
+                    "tôi",
+                    "vé",
+                    "có"
+                  ],
+                  "answer": [
+                    "Tôi",
+                    "có",
+                    "một",
+                    "cái",
+                    "vé"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l2-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Tôi đi xe buýt.",
+                  "tokens": [
+                    "und",
+                    "Bus",
+                    "fahre",
+                    "der",
+                    "dem",
+                    "Ich",
+                    "bin",
+                    "mit"
+                  ],
+                  "answer": [
+                    "Ich",
+                    "fahre",
+                    "mit",
+                    "dem",
+                    "Bus"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u4-l2-e8",
+                  "sentence": "Wir fahren mit dem ___.",
+                  "translation": "Chúng tôi đi bằng ô tô.",
+                  "audioTarget": "Wir fahren mit dem Auto.",
+                  "options": [
+                    "Ticket",
+                    "Hotel",
+                    "Auto",
+                    "Museum"
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u4-l2-e9",
+                  "pairs": [
+                    {
+                      "target": "das Hotel",
+                      "native": "khách sạn"
+                    },
+                    {
+                      "target": "der Flughafen",
+                      "native": "sân bay"
+                    },
+                    {
+                      "target": "das Ticket",
+                      "native": "vé"
+                    },
+                    {
+                      "target": "der Bus",
+                      "native": "xe buýt"
+                    },
+                    {
+                      "target": "das Auto",
+                      "native": "ô tô"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u4-l2-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Tôi có một chiếc ô tô.",
+                  "audioTarget": "Ich habe ein Auto.",
+                  "answer": "Ich habe ein Auto.",
+                  "alternatives": [
+                    "Ich habe ein Auto"
+                  ]
+                }
+              ]
             },
             {
               "id": "de-vi:u4-l3",
@@ -537,7 +5219,254 @@
                 "de.obj.vocab.places_travel",
                 "de.obj.reading.familiar_words"
               ],
-              "exercises": []
+              "exercises": [
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l3-e0",
+                  "mode": "targetToNative",
+                  "prompt": "das Fahrrad",
+                  "audioTarget": "das Fahrrad",
+                  "options": [
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "xe đạp",
+                      "emoji": "🚲"
+                    },
+                    {
+                      "text": "vé",
+                      "emoji": "🎫"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l3-e1",
+                  "mode": "targetToNative",
+                  "prompt": "das Museum",
+                  "audioTarget": "das Museum",
+                  "options": [
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "vé",
+                      "emoji": "🎫"
+                    },
+                    {
+                      "text": "bảo tàng",
+                      "emoji": "🏛️"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l3-e2",
+                  "mode": "targetToNative",
+                  "prompt": "der Weg",
+                  "audioTarget": "der Weg",
+                  "options": [
+                    {
+                      "text": "con đường, lối đi",
+                      "emoji": "🧭"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
+                    },
+                    {
+                      "text": "sân bay",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "vé",
+                      "emoji": "🎫"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l3-e3",
+                  "mode": "nativeToTarget",
+                  "prompt": "xe đạp",
+                  "audioTarget": "das Fahrrad",
+                  "options": [
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "das Fahrrad",
+                      "emoji": "🚲"
+                    },
+                    {
+                      "text": "das Ticket",
+                      "emoji": "🎫"
+                    },
+                    {
+                      "text": "der Bus",
+                      "emoji": "🚌"
+                    }
+                  ],
+                  "correct": 1
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l3-e4",
+                  "mode": "nativeToTarget",
+                  "prompt": "bảo tàng",
+                  "audioTarget": "das Museum",
+                  "options": [
+                    {
+                      "text": "der Flughafen",
+                      "emoji": "🛫"
+                    },
+                    {
+                      "text": "das Ticket",
+                      "emoji": "🎫"
+                    },
+                    {
+                      "text": "das Museum",
+                      "emoji": "🏛️"
+                    },
+                    {
+                      "text": "der Bus",
+                      "emoji": "🚌"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "de-vi:u4-l3-e5",
+                  "mode": "listen",
+                  "prompt": "Nghe rồi chọn từ bạn nghe thấy.",
+                  "audioTarget": "der Weg",
+                  "options": [
+                    {
+                      "text": "der Flughafen"
+                    },
+                    {
+                      "text": "das Ticket"
+                    },
+                    {
+                      "text": "der Bus"
+                    },
+                    {
+                      "text": "der Weg"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l3-e6",
+                  "direction": "targetToNative",
+                  "prompt": "Ich fahre Fahrrad.",
+                  "audioTarget": "Ich fahre Fahrrad.",
+                  "tokens": [
+                    "một",
+                    "đi",
+                    "là",
+                    "đạp",
+                    "Tôi",
+                    "bạn",
+                    "xe"
+                  ],
+                  "answer": [
+                    "Tôi",
+                    "đi",
+                    "xe",
+                    "đạp"
+                  ]
+                },
+                {
+                  "type": "wordBank",
+                  "id": "de-vi:u4-l3-e7",
+                  "direction": "nativeToTarget",
+                  "prompt": "Bảo tàng ở đâu?",
+                  "tokens": [
+                    "Museum",
+                    "Wo",
+                    "bin",
+                    "das",
+                    "hat",
+                    "ist",
+                    "der"
+                  ],
+                  "answer": [
+                    "Wo",
+                    "ist",
+                    "das",
+                    "Museum"
+                  ]
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "de-vi:u4-l3-e8",
+                  "sentence": "Wie ist der ___ zum Bahnhof?",
+                  "translation": "Đường đến nhà ga thế nào?",
+                  "audioTarget": "Wie ist der Weg zum Bahnhof?",
+                  "options": [
+                    "Bus",
+                    "Zug",
+                    "Flughafen",
+                    "Weg"
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "match",
+                  "id": "de-vi:u4-l3-e9",
+                  "pairs": [
+                    {
+                      "target": "der Bus",
+                      "native": "xe buýt"
+                    },
+                    {
+                      "target": "das Auto",
+                      "native": "ô tô"
+                    },
+                    {
+                      "target": "das Fahrrad",
+                      "native": "xe đạp"
+                    },
+                    {
+                      "target": "das Museum",
+                      "native": "bảo tàng"
+                    },
+                    {
+                      "target": "der Weg",
+                      "native": "con đường, lối đi"
+                    }
+                  ]
+                },
+                {
+                  "type": "typeAnswer",
+                  "id": "de-vi:u4-l3-e10",
+                  "mode": "produceTarget",
+                  "prompt": "Bảo tàng ở trong thành phố.",
+                  "audioTarget": "Das Museum ist in der Stadt.",
+                  "answer": "Das Museum ist in der Stadt.",
+                  "alternatives": [
+                    "Das Museum ist in der Stadt"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -1481,7 +6410,7 @@
             },
             {
               "target": "Entschuldigung",
-              "native": "xin lỗi; lời xin lỗi",
+              "native": "xin lỗi",
               "emoji": "🙇"
             },
             {
@@ -1905,7 +6834,7 @@
           "guidebook": "## Điền biểu mẫu 🗂️\n\nỞ Đức bạn sẽ điền nhiều biểu mẫu: đăng ký cư trú, khóa học, khách sạn. Các ô hay gặp:\n\n### Ô thông tin\n- *Vorname* — tên, *Nachname* — họ\n- *Alter* — tuổi, *Geburtsdatum* — ngày sinh\n- *Wohnort* — nơi ở, *Straße* — đường phố\n- *Telefonnummer* — số điện thoại\n- *Staatsangehörigkeit* — quốc tịch: *vietnamesisch*\n\n### Họ và tên\nNgười Việt ghi họ trước, người Đức ghi tên trước. Với *Nguyễn Văn An*: *Vorname: Van An*, *Nachname: Nguyen*.\n\n### Ngày tháng\nNgười Đức viết ngày trước, tháng sau, có dấu chấm: *15.03.2002*.\n\n### Ghép các phần\nBài cuối của đơn vị ghép biểu mẫu với lời nhắn ngắn — dùng những gì bạn đã viết ở các đơn vị trước.",
           "words": [
             {
-              "target": "Name",
+              "target": "der Name",
               "native": "tên",
               "emoji": "🏷️"
             },
@@ -1975,7 +6904,7 @@
               "emoji": "👋"
             },
             {
-              "target": "Name",
+              "target": "der Name",
               "native": "tên",
               "emoji": "🏷️"
             },
@@ -1985,7 +6914,7 @@
               "emoji": "🚪"
             },
             {
-              "target": "Freund",
+              "target": "der Freund",
               "native": "người bạn; bạn trai",
               "emoji": "🧑‍🤝‍🧑"
             }

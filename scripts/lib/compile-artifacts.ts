@@ -866,7 +866,7 @@ function readingsForExam(lang: string) {
  */
 export function compileAllArtifacts(): CompiledArtifacts {
   const loaded = loadPacks();
-  const { files, coverage, packs, idMaps } = compileAll(loaded);
+  const { files, coverage, packs, idMaps, legacyMaps } = compileAll(loaded);
   const lexiconDbs: LexiconDbPlan[] = [];
   const dbsByRoot: Record<string, Record<string, LexiconDbInfo>> = {};
   for (const lang of discoverTargets(loaded)) {
@@ -892,6 +892,7 @@ export function compileAllArtifacts(): CompiledArtifacts {
       files,
       lexiconDbs: dbsByRoot[root] ?? {},
       idMaps: Object.fromEntries(Object.entries(idMaps).filter(([code]) => group.some((p) => p.targetCode === code))),
+      legacyMaps,
       artifactRoot: root,
     });
     files.push(...profileArtifacts.files);
