@@ -101,7 +101,9 @@ for ui, unit in enumerate(sec["units"]):
             return f"{C}:{key}-l{li}-e{len(ex)}"
         def opts(w, p, field, emoji=True, shift=1):
             others = [x for x in words if x["target"] != w["target"]]
-            same = [x for x in others if (noun_parts(x["target"])[0] is None) == (noun_parts(w["target"])[0] is None)] or others
+            same = [x for x in others if (noun_parts(x["target"])[0] is None) == (noun_parts(w["target"])[0] is None)]
+            if len(same) < 3:  # e.g. a unit with three verbs: fill the options from the whole unit
+                same = same + [x for x in others if x not in same]
             k = (li + shift + len(ex)) % len(same)
             d = (same[k:] + same[:k])[:3]
             val = (lambda x: short(x["native"])) if field == "native" else (lambda x: x["target"])

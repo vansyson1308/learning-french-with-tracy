@@ -1,6 +1,6 @@
 # placement — ingest report (de-vi)
 
-Records: 4 · schema-valid: 4 · failed: 0 · validator errors after merge: 0
+Records: 4 · schema-valid: 4 · failed: 0 · validator errors after merge: 3
 
 ## Records
 
@@ -11,7 +11,9 @@ Records: 4 · schema-valid: 4 · failed: 0 · validator errors after merge: 0
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- speech: de-vi:ul-l0-e1: evidenceLexemeRefs differ from item de.speak.l_name
+- speech: de-vi:ul-l2-e0: evidenceLexemeRefs differ from item de.speak.l_speak
+- speech: de-vi:um-l1-e1: evidenceLexemeRefs differ from item de.speak.m_price
 
 ## Written
 

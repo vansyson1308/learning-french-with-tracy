@@ -86,4 +86,19 @@ describe("promote", () => {
     expect(readFileSync(safeResolve(`${REAL_DIR}/a.json`), "utf8")).toBe('{"ok":1}\n');
     expect(existsSync(safeResolve(STAGE))).toBe(false);
   });
+
+  test("allowMissingAudio sets aside only missing-audio errors (the audio workflow runs after promote)", () => {
+    stage(`${REAL_DIR}/a.json`, "{}\n");
+    const audio = 'de-vi: de-vi:u0-l0-e0 audioTarget has no audio: "der Mann"';
+    const blocked = promote("xx", () => [audio], { allowMissingAudio: false });
+    expect(blocked.errors).toEqual([audio]);
+    expect(blocked.moved).toEqual([]);
+    const other = promote("xx", () => [audio, "a real error"], { allowMissingAudio: true });
+    expect(other.errors).toEqual(["a real error"]);
+    expect(other.moved).toEqual([]);
+    const r = promote("xx", () => [audio], { allowMissingAudio: true });
+    expect(r.errors).toEqual([]);
+    expect(r.pendingAudio).toEqual([audio]);
+    expect(r.moved).toEqual([`${REAL_DIR}/a.json`]);
+  });
 });

@@ -142,6 +142,15 @@ jobs:
           cat "$RUNNER_TEMP/lt.log"; exit 1
       - name: LanguageTool gate (es-vi)
         run: bun scripts/languagetool.ts --course es-vi --server http://localhost:8081
+      - name: LanguageTool gate (de-vi)
+        run: bun scripts/languagetool.ts --course de-vi --server http://localhost:8081 --json "$RUNNER_TEMP/lt-de-vi.json"
+      - name: Upload the LanguageTool findings (de-vi)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: languagetool-de-vi
+          path: ${{ runner.temp }}/lt-de-vi.json
+          if-no-files-found: ignore
 
   export-size:
     if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')

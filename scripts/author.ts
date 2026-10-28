@@ -16,6 +16,7 @@
  *   bun scripts/author.ts steps
  *   bun scripts/author.ts validate --target es                        → full validation with the staged layer applied (what promote faces)
  *   bun scripts/author.ts promote --target es --native vi             → move the staged course layer into content/ once everything validates
+ *       [--allow-missing-audio]  a new course: set missing audio aside (audio.yml generates it right after the promote)
  *
  * Staging (P3d): while a course does not exist yet (no content/courses/<id>.json)
  * or content/<lang>/_drafts/staged/ exists, ingest writes there instead of
@@ -32,7 +33,7 @@ import { collectChecklist, renderChecklist } from "./lib/authoring/checklist";
 import { lineCount, renderTier1Native, renderTier1Target, TIER1_NATIVE_MAX_LINES, TIER1_TARGET_MAX_LINES } from "./lib/authoring/review-tiers";
 import { examTrackPaths } from "./lib/exam-bank";
 import { ingestStep } from "./lib/authoring/ingest";
-import { isGeneratedDrift, listStaged, promote, stagedRoot, withStaging } from "./lib/authoring/staging";
+import { isGeneratedDrift, isMissingAudio, listStaged, promote, stagedRoot, withStaging } from "./lib/authoring/staging";
 import { lintCourse, renderLintReport } from "./lib/authoring/lint";
 import { STEP_IDS, STEPS, stepDef, type StepId } from "./lib/authoring/steps";
 import { validateAllSources } from "./lib/compile-artifacts";
@@ -217,7 +218,8 @@ if (command === "steps") {
   console.log(`validate ${target} (staged): ${errors.length} error(s) besides generated-artifact drift`);
 } else if (command === "promote") {
   const target = opt("target") ?? fail("--target <code>");
-  const result = promote(target, () => validateAllSources());
+  const allowMissingAudio = process.argv.includes("--allow-missing-audio");
+  const result = promote(target, () => validateAllSources(), { allowMissingAudio });
   if (result.errors.length > 0) {
     for (const e of result.errors.slice(0, 40)) console.error(`  ${e}`);
     fail(`promote ${target}: ${result.errors.length} validator error(s) with the staged layer applied — nothing moved`);
@@ -225,10 +227,13 @@ if (command === "steps") {
   console.log(`promote ${target}: moved ${result.moved.length} file(s) into content/ — compiling`);
   const compile = Bun.spawnSync(["bun", "scripts/compile-content.ts"], { stdout: "inherit", stderr: "inherit" });
   if (compile.exitCode !== 0) fail(`promote ${target}: content:compile failed after the move — fix, then run bun run content:compile`);
-  const after = validateAllSources();
+  const after = validateAllSources().filter((e) => !(allowMissingAudio && isMissingAudio(e)));
   if (after.length > 0) {
     for (const e of after.slice(0, 40)) console.error(`  ${e}`);
     fail(`promote ${target}: ${after.length} validator error(s) after compile`);
+  }
+  if (result.pendingAudio.length > 0) {
+    console.log(`promote ${target}: ${result.pendingAudio.length} audio target(s) have no audio yet — dispatch audio.yml (mode generate, lang ${target}, layer all) before merging; validation fails until it commits the audio`);
   }
   console.log(`promote ${target}: compiled and validated — commit content/ and src/content/`);
 } else {

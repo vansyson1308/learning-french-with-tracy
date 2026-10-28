@@ -93,7 +93,7 @@ describe("courseProfile", () => {
 
   test("every inherited course has no rich capability and no artifacts", () => {
     for (const course of catalog.courses) {
-      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en"].includes(course.id)) continue;
+      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en", "de-vi"].includes(course.id)) continue;
       const p = courseProfile(course.id);
       for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
       expect(p.artifacts).toEqual({});

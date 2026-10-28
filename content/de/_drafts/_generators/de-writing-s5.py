@@ -121,6 +121,25 @@ L = {
  "ur-l2": [W("r_hotel_mail"), fill("Haben Sie ein ___ frei?", "Zimmer", ["Haus", "Bett", "Bild"], "Ông/bà còn phòng trống không?"), wb("Thân chào, Minh", "Viele Grüße Minh", ["Danke", "Tschüss", "Liebe"]), typ("Ông/bà còn phòng trống không?", "Haben Sie ein Zimmer frei?", ["Haben Sie ein Zimmer frei"])],
  "ur-l3": [W("r_all"), wb("Tôi làm việc ở một bệnh viện.", "Ich arbeite in einem Krankenhaus.", ["wohne", "aus", "Haus"]), fill("Ich komme ___ Vietnam.", "aus", ["in", "nach", "um"], "Tôi đến từ Việt Nam."), n2t("das Krankenhaus", ["das Haus", "das Hotel", "das Museum"])],
 }
+# Teaching lessons need >= 5 exercises: one more practice item each.
+EXTRA = {
+ "uo-l1": typ("Tôi bao nhiêu tuổi? Viết: Tôi 40 tuổi.", "Ich bin 40 Jahre alt.", ["Ich bin vierzig Jahre alt."]),
+ "uo-l3": n2t("der Name", ["die Stadt", "das Jahr", "die Straße"]),
+ "up-l0": typ("Tôi thích đọc sách.", "Ich lese gern Bücher.", ["Ich lese gerne Bücher."]),
+ "up-l1": wb("Anh ấy thích uống cà phê.", "Er trinkt gern Kaffee.", ["Tee", "trinke", "nicht"]),
+ "up-l2": n2t("wohnen", ["kommen", "spielen", "lieben"]),
+ "up-l3": typ("Cái giường to.", "Das Bett ist groß.", ["Das Bett ist gross."]),
+ "uq-l0": typ("Chúng ta gặp nhau lúc bốn giờ.", "Wir treffen uns um vier.", ["Wir treffen uns um vier Uhr.", "Wir treffen uns um 4."]),
+ "uq-l1": n2t("treffen", ["spielen", "wohnen", "lieben"]),
+ "uq-l2": typ("Hôm nay tôi đến muộn.", "Ich komme heute spät.", ["Heute komme ich spät."]),
+ "uq-l3": fill("Wir treffen uns am ___.", "Samstag", ["Name", "Zug", "Telefon"], "Chúng ta gặp nhau vào thứ Bảy."),
+ "ur-l0": wb("Tên tôi là Lan.", "Mein Name ist Lan.", ["heiße", "Telefon", "bin"]),
+ "ur-l1": fill("Mein ___ ist neu.", "Telefon", ["Straße", "Stadt", "Name"], "Điện thoại của tôi còn mới."),
+ "ur-l2": typ("Tôi cần một phòng.", "Ich brauche ein Zimmer.", ["Ich brauche ein Zimmer"]),
+ "ur-l3": typ("Tôi làm việc ở Köln.", "Ich arbeite in Köln.", ["Ich arbeite in Köln"]),
+}
+for k, e in EXTRA.items():
+    L[k].append(e)
 recs = []
 for lid_, exs in L.items():
     out = []
