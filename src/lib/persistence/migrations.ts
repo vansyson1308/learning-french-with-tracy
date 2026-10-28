@@ -22,6 +22,11 @@
  *   v7  P4a: `readingAid` arrives — the per-course "show reading aid"
  *       switch (courseId → boolean; absent = on). Every existing learner
  *       starts with an empty map (all defaults). Nothing else moves.
+ *   v8  legacy re-key: a course whose target language gained an id
+ *       registry after its learners started (es-en: RC3 progress is keyed
+ *       by surface, P3a's registry made new progress keyed by `es:w:` ids)
+ *       re-keys wordStats and the legacy srs map surface → id. Shape
+ *       unchanged; see migrateV7toV8.
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -41,6 +46,7 @@ import {
 } from "../dates";
 import { serializeCardKey } from "../learning/card-key";
 import { FR_COURSE_ID, frItemIdFor, isWordMappedFrSurface } from "../learning/ids-fr";
+import { idRegistryForLanguage } from "../learning/ids";
 import type { ReviewLogEntry } from "../learning/review-log";
 import type { FsrsCardState } from "../learning/scheduler";
 import { normalizeDailyNewWords } from "../learning/daily-words-setting";
@@ -52,7 +58,7 @@ import {
   type PersistedAssessmentState,
 } from "../assessment/types";
 
-export const PERSIST_VERSION = 7;
+export const PERSIST_VERSION = 8;
 
 /**
  * The course the single v3 `assessment` container belonged to. A MIGRATION
@@ -426,6 +432,72 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
   return { ...persisted, readingAid: normalizeReadingAid(persisted.readingAid) };
 }
 
+/**
+ * Target languages whose registries v8 re-keyed against. A registry that
+ * appears later (de in P3d(de), it, pt, …) needs its own numbered step that
+ * calls rekeyRegistryCourses for it — pinned by migrations-v8.test.ts, so a
+ * new registry can never silently strand surface-keyed progress again.
+ */
+export const V8_REKEYED_TARGETS: readonly string[] = ["es", "fr"];
+
+const DAY_MS = 86_400_000;
+
+/** The later of two legacy srs entries (by their implied last review), for a re-key collision. */
+function newerSrsEntry(a: SrsEntry, b: SrsEntry): SrsEntry {
+  const lastReview = (e: SrsEntry) => (Number(e.dueAt) || 0) - (Number(e.interval) || 0) * DAY_MS;
+  return lastReview(b) > lastReview(a) ? b : a;
+}
+
+/**
+ * Re-key the surface-keyed progress of every course of `targets` that has
+ * an id registry: each wordStats / srs key that is not already a registry id
+ * (`<code>:w:` curated or `<code>:legacy:` reversible) becomes the id the
+ * runtime writes today (`itemIdFor`): the curated id when the registry knows
+ * the surface, otherwise `<code>:legacy:<encoded surface>` — nothing is ever
+ * dropped. Collisions (an RC3 surface key next to the id the same word got
+ * after the registry) merge: stats sum/sum/max, srs keeps the more recent
+ * review. Idempotent. fr-en is skipped (re-keyed at v2 with its own
+ * rollback copy, srsLegacy, which nothing here touches); cards and the
+ * review log are untouched (FSRS courses were id-keyed from their start).
+ */
+export function rekeyRegistryCourses(persisted: PersistedProgress, targets: readonly string[]): PersistedProgress {
+  let courses: PersistedProgress["courses"] | null = null;
+  for (const [courseId, course] of Object.entries(persisted.courses ?? {})) {
+    if (courseId === FR_COURSE_ID || !course || typeof course !== "object") continue;
+    const code = targetCodeOfCourseId(courseId);
+    if (!targets.includes(code)) continue;
+    const registry = idRegistryForLanguage(code);
+    if (!registry) continue;
+    const isId = (key: string) => key.startsWith(registry.prefix) || key.startsWith(registry.legacyPrefix);
+    const idOf = (key: string) => (isId(key) ? key : registry.surfaceToId[key] ?? `${registry.legacyPrefix}${encodeURIComponent(key)}`);
+    const statKeys = Object.keys(course.wordStats ?? {});
+    const srsKeys = Object.keys(course.srs ?? {});
+    if (statKeys.every(isId) && srsKeys.every(isId)) continue;
+
+    const wordStats: Record<string, PersistedWordStat> = {};
+    for (const [key, stat] of Object.entries(course.wordStats ?? {})) {
+      const id = idOf(key);
+      wordStats[id] = wordStats[id] ? mergeWordStats(wordStats[id], stat) : { ...stat };
+    }
+    const next: PersistedCourseProgress = { ...course, wordStats };
+    if (course.srs && typeof course.srs === "object") {
+      const srs: Record<string, SrsEntry> = {};
+      for (const [key, entry] of Object.entries(course.srs)) {
+        const id = idOf(key);
+        srs[id] = srs[id] ? newerSrsEntry(srs[id], entry) : entry;
+      }
+      next.srs = srs;
+    }
+    courses = { ...(courses ?? persisted.courses), [courseId]: next };
+  }
+  return courses ? { ...persisted, courses } : persisted;
+}
+
+/** v7 → v8: re-key surface-keyed progress of the registry courses (see rekeyRegistryCourses). */
+function migrateV7toV8(persisted: PersistedProgress): PersistedProgress {
+  return rekeyRegistryCourses(persisted, V8_REKEYED_TARGETS);
+}
+
 /** Run every step from `fromVersion` up to `toVersion` (default: latest). */
 export function migrateProgress(
   persisted: unknown,
@@ -461,6 +533,10 @@ export function migrateProgress(
   if (fromVersion < 7 && toVersion >= 7) {
     checkFailureSeam(7);
     state = migrateV6toV7(state as PersistedProgress);
+  }
+  if (fromVersion < 8 && toVersion >= 8) {
+    checkFailureSeam(8);
+    state = migrateV7toV8(state as PersistedProgress);
   }
   return state as PersistedProgress;
 }
