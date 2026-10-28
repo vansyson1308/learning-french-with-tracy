@@ -247,3 +247,35 @@ describe("derivation on a synthetic language", () => {
     expect(credits.credits["11"]).toBe("dan");
   });
 });
+
+describe("German nouns (capitalised) against a lower-case frequency list", () => {
+  test("haus/häuser lemmatise to the noun Haus; the nominalised plural tagen counts mostly for Tag", async () => {
+    const dir = path.join(scratch, "de-derive", "de");
+    mkdirSync(dir, { recursive: true });
+    const de = (o: Record<string, unknown>) => JSON.stringify({ lang_code: "de", ...o });
+    const lines = [
+      de({ word: "Haus", pos: "noun", senses: [{ glosses: ["house"], tags: ["neuter"], examples: [{ text: "Das Haus ist alt.", english: "The house is old." }] }, { glosses: ["home"] }], forms: [{ form: "Häuser", tags: ["plural"] }] }),
+      de({ word: "Häuser", pos: "noun", senses: [{ glosses: ["plural of Haus"], tags: ["form-of"], form_of: [{ word: "Haus" }] }] }),
+      de({ word: "Tag", pos: "noun", senses: [{ glosses: ["day"], tags: ["masculine"], examples: [{ text: "Guten Tag!", english: "Good day!" }] }, { glosses: ["daytime"] }, { glosses: ["date"] }], forms: [{ form: "Tagen", tags: ["dative", "plural"] }] }),
+      de({ word: "Tagen", pos: "noun", senses: [{ glosses: ["dative plural of Tag"], tags: ["form-of"], form_of: [{ word: "Tag" }] }] }),
+      de({ word: "tagen", pos: "verb", senses: [{ glosses: ["to meet, to sit (of a committee)"] }] }),
+      de({ word: "gehen", pos: "verb", senses: [{ glosses: ["to go"], examples: [{ text: "Wir gehen.", english: "We go." }] }] }),
+    ];
+    writeFileSync(path.join(dir, "kaikki-en-de.jsonl"), lines.join("\n"));
+    writeFileSync(path.join(dir, "frequencywords-de.txt"), "gehen 300\nhaus 100\nhäuser 20\ntag 80\ntagen 40\n");
+    writeFileSync(path.join(dir, "wordfreq-de.csv"), "word,zipf\nhaus,5.5\n");
+    writeFileSync(path.join(dir, "kaikki-vi-de.jsonl"), "");
+    for (const f of ["tatoeba-de-sentences.tsv", "tatoeba-de-links-en.tsv", "tatoeba-de-links-vi.tsv", "tatoeba-eng-sentences.tsv", "tatoeba-vie-sentences.tsv"]) writeFileSync(path.join(dir, f), "");
+    const ids = new Map<string, { sha256: string; bytes: number; retrievedAt: string } | null>();
+    for (const src of sourcesFor("de")) ids.set(src.artifactFilename, { sha256: "c".repeat(64), bytes: 1, retrievedAt: "2026-10-28" });
+    const result = await deriveLanguage({ lang: "de", dir, manifest: buildManifestV2("de", ids, null), poolSize: 10 });
+    const pool = (result.files["candidate-pool.json"] as { entries: { lemma: string; partOfSpeech: string; frequency: { perMillion: number } | null }[] }).entries;
+    const find = (lemma: string, pos: string) => pool.find((e) => e.lemma === lemma && e.partOfSpeech === pos);
+    expect(find("Haus", "noun")).toBeDefined();
+    expect(find("Haus", "noun")!.frequency!.perMillion).toBeCloseTo((120 / 540) * 1e6, -2);
+    const tag = find("Tag", "noun")!;
+    const tagen = find("tagen", "verb");
+    expect(tag.frequency!.perMillion).toBeGreaterThan(tagen?.frequency?.perMillion ?? 0);
+    expect(find("gehen", "verb")).toBeDefined();
+  });
+});
