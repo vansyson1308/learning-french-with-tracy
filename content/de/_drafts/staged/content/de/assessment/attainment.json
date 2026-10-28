@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "language": "de",
+  "level": "A1",
+  "principle": "A learner's CEFR-aligned A1 estimate counts a communicative domain as demonstrated only when EVERY objective listed for that domain below carries a real 'demonstrated' checkpoint verdict under the latest-attempt policy. The list is the authored denominator: it names every essential objective that is aligned directly to an A1 descriptor scale in the domain. Non-essential direct objectives are listed under excludedObjectiveIds with the pedagogical reason; nothing is omitted silently. The A1 Capstone samples one representative objective per domain and therefore can contribute evidence but can never complete a domain on its own.",
+  "domains": [
+    {
+      "domain": "spoken_reception",
+      "requiredObjectiveIds": [
+        "de.obj.listening.short_info",
+        "de.obj.listening.announcements",
+        "de.obj.listening.short_dialogues"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "Scaffolded by the authoring toolkit from the essential objectives aligned directly to an A1 scale in spoken_reception. Review against the checkpoints before promote."
+    },
+    {
+      "domain": "written_reception",
+      "requiredObjectiveIds": [
+        "de.obj.reading.short_messages",
+        "de.obj.reading.notices_info",
+        "de.obj.reading.short_texts"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "Scaffolded by the authoring toolkit from the essential objectives aligned directly to an A1 scale in written_reception. Review against the checkpoints before promote."
+    },
+    {
+      "domain": "spoken_production",
+      "requiredObjectiveIds": [
+        "de.obj.speaking.formulaic",
+        "de.obj.speaking.self_intro",
+        "de.obj.speaking.give_info"
+      ],
+      "excludedObjectiveIds": [
+        {
+          "objectiveId": "de.obj.speaking.describe",
+          "reason": "Direct at A1 but authored as non-essential: practised and reported on its own, not required for the estimate. Review this reason before promote."
+        }
+      ],
+      "rationale": "Scaffolded by the authoring toolkit from the essential objectives aligned directly to an A1 scale in spoken_production. Review against the checkpoints before promote."
+    },
+    {
+      "domain": "written_production",
+      "requiredObjectiveIds": [
+        "de.obj.writing.personal_info",
+        "de.obj.writing.phrases_sentences",
+        "de.obj.writing.short_message"
+      ],
+      "excludedObjectiveIds": [
+        {
+          "objectiveId": "de.obj.writing.form_filling",
+          "reason": "Direct at A1 but authored as non-essential: practised and reported on its own, not required for the estimate. Review this reason before promote."
+        }
+      ],
+      "rationale": "Scaffolded by the authoring toolkit from the essential objectives aligned directly to an A1 scale in written_production. Review against the checkpoints before promote."
+    },
+    {
+      "domain": "interaction",
+      "requiredObjectiveIds": [
+        "de.obj.interaction.everyday_conversation",
+        "de.obj.interaction.practical_needs"
+      ],
+      "excludedObjectiveIds": [],
+      "rationale": "Scaffolded by the authoring toolkit from the essential objectives aligned directly to an A1 scale in interaction. Review against the checkpoints before promote."
+    }
+  ]
+}
