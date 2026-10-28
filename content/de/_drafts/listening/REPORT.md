@@ -1,6 +1,6 @@
 # listening — ingest report (de-vi)
 
-Records: 110 · schema-valid: 110 · failed: 0 · validator errors after merge: 16
+Records: 244 · schema-valid: 244 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -114,25 +114,144 @@ Records: 110 · schema-valid: 110 · failed: 0 · validator errors after merge: 
 - ✅ line 108 `de.clip.ix_krankmeldung_1`
 - ✅ line 109 `de.clip.ix_krankmeldung_1_s`
 - ✅ line 110 `de.clip.ix_krankmeldung_end`
+- ✅ line 111 `de.clip.cp3_bahnhof`
+- ✅ line 112 `de.clip.cp3_kaese`
+- ✅ line 113 `de.clip.cp3_dikt_nacht`
+- ✅ line 114 `de.clip.cp3_preis`
+- ✅ line 115 `de.clip.cp3_kurs`
+- ✅ line 116 `de.clip.cp3_party`
+- ✅ line 117 `de.clip.cp3_gleis`
+- ✅ line 118 `de.clip.cp3_laden`
+- ✅ line 119 `de.clip.cp3_buch`
+- ✅ line 120 `de.clip.cp3_dikt_zug`
+- ✅ line 121 `de.clip.cp3_dlg_tee`
+- ✅ line 122 `de.clip.cp3_dlg_wohnen`
+- ✅ line 123 `de.clip.cp3_dlg_kino`
+- ✅ line 124 `de.clip.ix_cp_kurs_miss`
+- ✅ line 125 `de.clip.ix_cp_kurs_0`
+- ✅ line 126 `de.clip.ix_cp_kurs_0_s`
+- ✅ line 127 `de.clip.ix_cp_kurs_1`
+- ✅ line 128 `de.clip.ix_cp_kurs_1_s`
+- ✅ line 129 `de.clip.ix_cp_kurs_end`
+- ✅ line 130 `de.clip.ix_cp_nachbarin_miss`
+- ✅ line 131 `de.clip.ix_cp_nachbarin_0`
+- ✅ line 132 `de.clip.ix_cp_nachbarin_0_s`
+- ✅ line 133 `de.clip.ix_cp_nachbarin_1`
+- ✅ line 134 `de.clip.ix_cp_nachbarin_1_s`
+- ✅ line 135 `de.clip.ix_cp_nachbarin_end`
+- ✅ line 136 `de.clip.ix_cp_party_miss`
+- ✅ line 137 `de.clip.ix_cp_party_0`
+- ✅ line 138 `de.clip.ix_cp_party_0_s`
+- ✅ line 139 `de.clip.ix_cp_party_1`
+- ✅ line 140 `de.clip.ix_cp_party_1_s`
+- ✅ line 141 `de.clip.ix_cp_party_end`
+- ✅ line 142 `de.clip.ix_cp_cafe_miss`
+- ✅ line 143 `de.clip.ix_cp_cafe_0`
+- ✅ line 144 `de.clip.ix_cp_cafe_0_s`
+- ✅ line 145 `de.clip.ix_cp_cafe_1`
+- ✅ line 146 `de.clip.ix_cp_cafe_1_s`
+- ✅ line 147 `de.clip.ix_cp_cafe_end`
+- ✅ line 148 `de.clip.ix_cp_fahrkarte_miss`
+- ✅ line 149 `de.clip.ix_cp_fahrkarte_0`
+- ✅ line 150 `de.clip.ix_cp_fahrkarte_0_s`
+- ✅ line 151 `de.clip.ix_cp_fahrkarte_1`
+- ✅ line 152 `de.clip.ix_cp_fahrkarte_1_s`
+- ✅ line 153 `de.clip.ix_cp_fahrkarte_end`
+- ✅ line 154 `de.clip.ix_cp_apotheke_miss`
+- ✅ line 155 `de.clip.ix_cp_apotheke_0`
+- ✅ line 156 `de.clip.ix_cp_apotheke_0_s`
+- ✅ line 157 `de.clip.ix_cp_apotheke_1`
+- ✅ line 158 `de.clip.ix_cp_apotheke_1_s`
+- ✅ line 159 `de.clip.ix_cp_apotheke_end`
+- ✅ line 160 `de.clip.a1cap_museum`
+- ✅ line 161 `de.clip.a1cap_bus`
+- ✅ line 162 `de.clip.a1cap_apotheke`
+- ✅ line 163 `de.clip.a1cap_preis`
+- ✅ line 164 `de.clip.ix_a1cap_nachbar_miss`
+- ✅ line 165 `de.clip.ix_a1cap_nachbar_0`
+- ✅ line 166 `de.clip.ix_a1cap_nachbar_0_s`
+- ✅ line 167 `de.clip.ix_a1cap_nachbar_1`
+- ✅ line 168 `de.clip.ix_a1cap_nachbar_1_s`
+- ✅ line 169 `de.clip.ix_a1cap_nachbar_end`
+- ✅ line 170 `de.clip.ix_a1cap_telefon_miss`
+- ✅ line 171 `de.clip.ix_a1cap_telefon_0`
+- ✅ line 172 `de.clip.ix_a1cap_telefon_0_s`
+- ✅ line 173 `de.clip.ix_a1cap_telefon_1`
+- ✅ line 174 `de.clip.ix_a1cap_telefon_1_s`
+- ✅ line 175 `de.clip.ix_a1cap_telefon_end`
+- ✅ line 176 `de.clip.ix_a1cap_julia_miss`
+- ✅ line 177 `de.clip.ix_a1cap_julia_0`
+- ✅ line 178 `de.clip.ix_a1cap_julia_0_s`
+- ✅ line 179 `de.clip.ix_a1cap_julia_1`
+- ✅ line 180 `de.clip.ix_a1cap_julia_1_s`
+- ✅ line 181 `de.clip.ix_a1cap_julia_end`
+- ✅ line 182 `de.clip.ix_a1cap_arzt_miss`
+- ✅ line 183 `de.clip.ix_a1cap_arzt_0`
+- ✅ line 184 `de.clip.ix_a1cap_arzt_0_s`
+- ✅ line 185 `de.clip.ix_a1cap_arzt_1`
+- ✅ line 186 `de.clip.ix_a1cap_arzt_1_s`
+- ✅ line 187 `de.clip.ix_a1cap_arzt_end`
+- ✅ line 188 `de.clip.pl_milch`
+- ✅ line 189 `de.clip.pl_durchsage`
+- ✅ line 190 `de.clip.pl_kasse`
+- ✅ line 191 `de.clip.goethe_a_h1_01`
+- ✅ line 192 `de.clip.goethe_a_h1_02`
+- ✅ line 193 `de.clip.goethe_a_h1_03`
+- ✅ line 194 `de.clip.goethe_a_h1_04`
+- ✅ line 195 `de.clip.goethe_a_h1_05`
+- ✅ line 196 `de.clip.goethe_a_h1_06`
+- ✅ line 197 `de.clip.goethe_a_h2_01`
+- ✅ line 198 `de.clip.goethe_a_h2_02`
+- ✅ line 199 `de.clip.goethe_a_h2_03`
+- ✅ line 200 `de.clip.goethe_a_h2_04`
+- ✅ line 201 `de.clip.goethe_a_h3_01`
+- ✅ line 202 `de.clip.goethe_a_h3_02`
+- ✅ line 203 `de.clip.goethe_a_h3_03`
+- ✅ line 204 `de.clip.goethe_a_h3_04`
+- ✅ line 205 `de.clip.goethe_a_h3_05`
+- ✅ line 206 `de.clip.goethe_b_h1_01`
+- ✅ line 207 `de.clip.goethe_b_h1_02`
+- ✅ line 208 `de.clip.goethe_b_h1_03`
+- ✅ line 209 `de.clip.goethe_b_h1_04`
+- ✅ line 210 `de.clip.goethe_b_h1_05`
+- ✅ line 211 `de.clip.goethe_b_h1_06`
+- ✅ line 212 `de.clip.goethe_b_h2_01`
+- ✅ line 213 `de.clip.goethe_b_h2_02`
+- ✅ line 214 `de.clip.goethe_b_h2_03`
+- ✅ line 215 `de.clip.goethe_b_h2_04`
+- ✅ line 216 `de.clip.goethe_b_h3_01`
+- ✅ line 217 `de.clip.goethe_b_h3_02`
+- ✅ line 218 `de.clip.goethe_b_h3_03`
+- ✅ line 219 `de.clip.goethe_b_h3_04`
+- ✅ line 220 `de.clip.goethe_b_h3_05`
+- ✅ line 221 `de.clip.ix_goethe_a_thema_miss`
+- ✅ line 222 `de.clip.ix_goethe_a_thema_0`
+- ✅ line 223 `de.clip.ix_goethe_a_thema_0_s`
+- ✅ line 224 `de.clip.ix_goethe_a_thema_1`
+- ✅ line 225 `de.clip.ix_goethe_a_thema_1_s`
+- ✅ line 226 `de.clip.ix_goethe_a_thema_end`
+- ✅ line 227 `de.clip.ix_goethe_b_thema_miss`
+- ✅ line 228 `de.clip.ix_goethe_b_thema_0`
+- ✅ line 229 `de.clip.ix_goethe_b_thema_0_s`
+- ✅ line 230 `de.clip.ix_goethe_b_thema_1`
+- ✅ line 231 `de.clip.ix_goethe_b_thema_1_s`
+- ✅ line 232 `de.clip.ix_goethe_b_thema_end`
+- ✅ line 233 `de.clip.ix_goethe_a_bitte_miss`
+- ✅ line 234 `de.clip.ix_goethe_a_bitte_0`
+- ✅ line 235 `de.clip.ix_goethe_a_bitte_0_s`
+- ✅ line 236 `de.clip.ix_goethe_a_bitte_1`
+- ✅ line 237 `de.clip.ix_goethe_a_bitte_1_s`
+- ✅ line 238 `de.clip.ix_goethe_a_bitte_end`
+- ✅ line 239 `de.clip.ix_goethe_b_bitte_miss`
+- ✅ line 240 `de.clip.ix_goethe_b_bitte_0`
+- ✅ line 241 `de.clip.ix_goethe_b_bitte_0_s`
+- ✅ line 242 `de.clip.ix_goethe_b_bitte_1`
+- ✅ line 243 `de.clip.ix_goethe_b_bitte_1_s`
+- ✅ line 244 `de.clip.ix_goethe_b_bitte_end`
 
 ## Validator errors (fix these records and ingest again)
 
-- speech: de-vi:ul-l0-e1: cueFacts differ from item de.speak.l_name
-- speech: de-vi:ul-l1-e1: cueFacts differ from item de.speak.l_from
-- speech: de-vi:ul-l2-e0: cueFacts differ from item de.speak.l_speak
-- speech: de-vi:ul-l2-e1: cueEmoji differs from item de.speak.l_like
-- speech: de-vi:ul-l2-e3: cueFacts differ from item de.speak.l_work
-- speech: de-vi:ul-l3-e0: cueFacts differ from item de.speak.l_live
-- speech: de-vi:um-l0-e0: cueFacts differ from item de.speak.m_children
-- speech: de-vi:um-l1-e1: cueFacts differ from item de.speak.m_price
-- speech: de-vi:um-l2-e0: cueEmoji differs from item de.speak.m_time
-- speech: de-vi:um-l2-e0: cueFacts differ from item de.speak.m_time
-- speech: de-vi:um-l3-e0: cueFacts differ from item de.speak.m_day
-- speech: de-vi:um-l3-e1: cueFacts differ from item de.speak.m_age
-- speech: de-vi:un-l0-e1: cueEmoji differs from item de.speak.n_house
-- speech: de-vi:un-l1-e0: cueEmoji differs from item de.speak.n_cat
-- speech: de-vi:un-l2-e0: cueEmoji differs from item de.speak.n_car
-- speech: de-vi:un-l2-e1: cueEmoji differs from item de.speak.n_phone
+- none
 
 ## Written
 

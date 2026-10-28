@@ -139,6 +139,20 @@ describe("exam track rules — every rule fires", () => {
     expect(errorsOf(u)).toContain("offer exactly 3 options");
   });
 
+  test("mcq2 items (richtig/falsch, a/b) offer exactly two options", () => {
+    const t = clone();
+    t.sections.find((s) => s.id === "reading")!.tasks.find((k) => k.id === "t4")!.format = "mcq2";
+    expect(errorsOf(t)).toContain("mcq2 items offer exactly 2 options");
+  });
+
+  test("task points: on every task of a section or on none", () => {
+    const t = clone();
+    t.sections.find((s) => s.id === "writing")!.tasks[0].points = 5;
+    expect(errorsOf(t)).toContain("writing: task points must be set on every task of the section or on none");
+    t.sections.find((s) => s.id === "writing")!.tasks[1].points = 10;
+    expect(errorsOf(t)).toBe("");
+  });
+
   test("stimulus and answer word bands are enforced", () => {
     const refs: ExamRefs = { ...REFS, readings: new Map(REFS.readings) };
     const id = ex(itemOf(REAL, "a", "reading", "t1")).readingId!;

@@ -114,6 +114,24 @@ itself.
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).
+- **Goethe A1 practice (`de-vi`, staged — ships when de-vi is promoted) differs
+  from the real exam in three places.** The track follows the Goethe-Institut
+  Durchführungsbestimmungen (Stand 1 September 2025) and the Start Deutsch 1
+  Modellsatz, both read on 2026-10-28 (`content/de/exam/FORMAT-SOURCES.md`).
+  It keeps four parts of 20 + 25 + 20 + 15 minutes, 6 + 4 + 5 listening items,
+  5 + 5 + 5 reading items and 2 writing tasks. Each part is worth 15 raw points
+  × 1.66 (≈ 25), Schreiben is weighted 5 + 10 and Sprechen 3 + 6 + 6, and a
+  pass needs 60 of 100.
+  1. **Sprechen is a group exam** in the real test (up to four candidates, two
+     examiners). The app simulates it one learner at a time and plays the
+     partner and the examiner itself.
+  2. **Teil 1 leaves out spelling a word and repeating a number.**
+  3. **Hören Teil 2 is heard once** in the real exam. The app allows two
+     plays, as every scored recording does (product rule §67), and asks the
+     learner to try with one.
+
+  Every item is original. The app is not affiliated with the Goethe-Institut.
+  Results are an estimated readiness, never a prediction of passing.
 - **Spanish audio is bundled at 32 kbps (P3f, run 39761607493).** `es-vi` and
   `es-en` lesson audio, the 613 syllabus words and the 221 listening clips
   (Kokoro `ef_dora` / `em_alex`) total 7.4 MB; dictionary entries outside the

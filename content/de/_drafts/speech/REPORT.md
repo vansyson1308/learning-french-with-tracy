@@ -1,6 +1,6 @@
 # speech — ingest report (de-vi)
 
-Records: 30 · schema-valid: 30 · failed: 0 · validator errors after merge: 16
+Records: 54 · schema-valid: 54 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -34,25 +34,34 @@ Records: 30 · schema-valid: 30 · failed: 0 · validator errors after merge: 16
 - ✅ line 28 `de.speak.n_car`
 - ✅ line 29 `de.speak.n_phone`
 - ✅ line 30 `de.speak.n_rep_neu`
+- ✅ line 31 `de.speak.cp4_greet_evening`
+- ✅ line 32 `de.speak.cp4_thanks`
+- ✅ line 33 `de.speak.cp4_sorry`
+- ✅ line 34 `de.speak.cp4_name`
+- ✅ line 35 `de.speak.cp4_from`
+- ✅ line 36 `de.speak.cp4_live`
+- ✅ line 37 `de.speak.cp4_time`
+- ✅ line 38 `de.speak.cp4_price`
+- ✅ line 39 `de.speak.cp4_age`
+- ✅ line 40 `de.speak.cp4_dog`
+- ✅ line 41 `de.speak.cp4_car`
+- ✅ line 42 `de.speak.cp4_city`
+- ✅ line 43 `de.speak.a1cap_time`
+- ✅ line 44 `de.speak.a1cap_price`
+- ✅ line 45 `de.speak.a1cap_count`
+- ✅ line 46 `de.speak.a1cap_day`
+- ✅ line 47 `de.speak.pl4_greet_shop`
+- ✅ line 48 `de.speak.pl4_bye`
+- ✅ line 49 `de.speak.pl4_please`
+- ✅ line 50 `de.speak.pl4_apples`
+- ✅ line 51 `de.speak.pl4_time`
+- ✅ line 52 `de.speak.pl4_price`
+- ✅ line 53 `de.speak.goethe_a_vorstellung`
+- ✅ line 54 `de.speak.goethe_b_vorstellung`
 
 ## Validator errors (fix these records and ingest again)
 
-- speech: de-vi:ul-l0-e1: cueFacts differ from item de.speak.l_name
-- speech: de-vi:ul-l1-e1: cueFacts differ from item de.speak.l_from
-- speech: de-vi:ul-l2-e0: cueFacts differ from item de.speak.l_speak
-- speech: de-vi:ul-l2-e1: cueEmoji differs from item de.speak.l_like
-- speech: de-vi:ul-l2-e3: cueFacts differ from item de.speak.l_work
-- speech: de-vi:ul-l3-e0: cueFacts differ from item de.speak.l_live
-- speech: de-vi:um-l0-e0: cueFacts differ from item de.speak.m_children
-- speech: de-vi:um-l1-e1: cueFacts differ from item de.speak.m_price
-- speech: de-vi:um-l2-e0: cueEmoji differs from item de.speak.m_time
-- speech: de-vi:um-l2-e0: cueFacts differ from item de.speak.m_time
-- speech: de-vi:um-l3-e0: cueFacts differ from item de.speak.m_day
-- speech: de-vi:um-l3-e1: cueFacts differ from item de.speak.m_age
-- speech: de-vi:un-l0-e1: cueEmoji differs from item de.speak.n_house
-- speech: de-vi:un-l1-e0: cueEmoji differs from item de.speak.n_cat
-- speech: de-vi:un-l2-e0: cueEmoji differs from item de.speak.n_car
-- speech: de-vi:un-l2-e1: cueEmoji differs from item de.speak.n_phone
+- none
 
 ## Written
 

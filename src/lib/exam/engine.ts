@@ -27,9 +27,13 @@ export type CompiledExamTask = {
   /** Pool formats (matchToPool / completeFromPool): the shared pool's size. */
   poolSize?: number;
   speakingMinutes?: { min: number; max: number };
+  /** The format's raw points for this task; when set, the section's maxPoints is shared by task points. */
+  points?: number;
 };
 /** Formats whose items share one lettered pool: option order is fixed, never shuffled. */
 export const POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
+/** Formats whose option order is part of the format (pools; richtig / falsch, a / b): never shuffled. */
+export const FIXED_ORDER_FORMATS: readonly string[] = [...POOL_FORMATS, "mcq2"];
 export type CompiledExamSection = {
   id: string;
   skill: ExamSkill;
@@ -121,8 +125,9 @@ export function buildExamSectionSession(args: {
     type: "exercise",
     stepId: item.id,
     // A lettered shared pool keeps its order (the letters ARE the answer
-    // sheet); every other scored option set is reshuffled per sitting.
-    exercise: POOL_FORMATS.includes(formatOf.get(item.taskId) ?? "")
+    // sheet), so do richtig / falsch and a / b; every other scored option
+    // set is reshuffled per sitting.
+    exercise: FIXED_ORDER_FORMATS.includes(formatOf.get(item.taskId) ?? "")
       ? item.exercise
       : shuffleScoredOptions(
           item.exercise,
@@ -187,6 +192,25 @@ export type ExamScore = { sections: ExamSectionScore[]; groups: ExamGroupScore[]
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
 /**
+ * Correct share of a section's administered items. Every item weighs the
+ * same (DELE) unless the format gives each task its own points (Goethe
+ * Schreiben 5 + 10): then each task's correct share is weighted by them.
+ */
+function sectionShare(section: CompiledExamSection, rows: readonly AssessmentItemResult[], taskOf: ReadonlyMap<string, string>): number {
+  const weighted = section.tasks.length > 0 && section.tasks.every((t) => t.points !== undefined);
+  if (!weighted) return rows.filter((r) => r.correct === true).length / rows.length;
+  let earned = 0;
+  let total = 0;
+  for (const t of section.tasks) {
+    const mine = rows.filter((r) => taskOf.get(r.itemId) === t.id);
+    if (mine.length === 0) continue;
+    total += t.points!;
+    earned += (mine.filter((r) => r.correct === true).length / mine.length) * t.points!;
+  }
+  return total === 0 ? 0 : earned / total;
+}
+
+/**
  * Score by the format: a section's points are its first-attempt correct
  * share × maxPoints (DELE reading/listening: 1 point per correct item, no
  * negative marking; unanswered = 0); a pass-rule group sums its sections and
@@ -202,10 +226,11 @@ export function scoreExam(track: CompiledExamTrack, itemResults: readonly Assess
     if (sid === undefined) continue;
     bySection.set(sid, [...(bySection.get(sid) ?? []), r]);
   }
+  const taskOf = new Map(track.items.map((i) => [i.id, i.taskId]));
   const sections: ExamSectionScore[] = track.sections.map((s) => {
     const rows = bySection.get(s.id) ?? [];
     const correct = rows.filter((r) => r.correct === true).length;
-    return { id: s.id, title: s.title, maxPoints: s.maxPoints, administered: rows.length, correct, points: rows.length === 0 ? null : round1((correct / rows.length) * s.maxPoints) };
+    return { id: s.id, title: s.title, maxPoints: s.maxPoints, administered: rows.length, correct, points: rows.length === 0 ? null : round1(sectionShare(s, rows, taskOf) * s.maxPoints) };
   });
   const sectionScore = new Map(sections.map((s) => [s.id, s]));
   const groups: ExamGroupScore[] = track.passRule.groups.map((g) => {

@@ -1854,6 +1854,8 @@ export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking"] as co
  * Public task formats an exam track reproduces (formats only — never real
  * exam items). P3e:
  *  - mcq3            one question, 3 text options
+ *  - mcq2            one question, 2 options in a fixed order (Goethe:
+ *                    richtig / falsch, a / b)
  *  - pictureMcq      one question, 3 picture (emoji) options
  *  - matchToPool     N items share ONE pool of M > N options (texts, ads,
  *                    pictures, sentence endings); every option is the key of
@@ -1861,7 +1863,7 @@ export const EXAM_SKILLS = ["reading", "listening", "writing", "speaking"] as co
  *  - completeFromPool  N statements completed from a shared pool of M > N
  *  - form / short_text / monologue / conversation  productive tasks
  */
-export const EXAM_TASK_FORMATS = ["mcq3", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation"] as const;
+export const EXAM_TASK_FORMATS = ["mcq3", "mcq2", "pictureMcq", "matchToPool", "completeFromPool", "form", "short_text", "monologue", "conversation"] as const;
 export const EXAM_POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
 
 const wordBand = z.strictObject({ min: z.number().int().min(1), max: z.number().int().min(1) });
@@ -1886,6 +1888,12 @@ export const examTaskSchema = z.strictObject({
   answerWords: wordBand.optional(),
   /** Speaking tasks: the format's spoken length in minutes (shown to the learner). */
   speakingMinutes: z.strictObject({ min: z.number().min(0.5), max: z.number().min(0.5) }).optional(),
+  /**
+   * The format's raw points for this task (Goethe Schreiben: Teil 1 5, Teil 2
+   * 10). Set on every task of a section or on none; with them the section's
+   * maxPoints is shared by task points instead of equally per item.
+   */
+  points: z.number().positive().optional(),
 });
 
 export const examSectionSchema = z.strictObject({

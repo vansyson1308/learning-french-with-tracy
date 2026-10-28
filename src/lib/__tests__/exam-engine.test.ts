@@ -147,6 +147,30 @@ describe("scoring and estimated readiness", () => {
     expect(score.groups.find((g) => g.id === "group_1")!.points).toBe(50);
   });
 
+  test("task points weight a section (Goethe Schreiben: Teil 1 5 points, Teil 2 10 points)", () => {
+    const track = JSON.parse(JSON.stringify(TRACK)) as CompiledExamTrack;
+    const writing = track.sections.find((s) => s.id === "writing")!;
+    writing.tasks.find((t) => t.id === "t1")!.points = 5;
+    writing.tasks.find((t) => t.id === "t2")!.points = 10;
+    const ids = sectionItems(track, "writing", "a").map((i) => i.id);
+    const taskOf = (id: string) => track.items.find((i) => i.id === id)!.taskId;
+    const score = scoreExam(track, results(ids, (id) => taskOf(id) === "t1"));
+    expect(score.sections.find((s) => s.id === "writing")!.points).toBe(8.3);
+    // Without task points every item weighs the same (DELE): 1 of 2 items → half.
+    expect(scoreExam(TRACK, results(ids, (id) => taskOf(id) === "t1")).sections.find((s) => s.id === "writing")!.points).toBe(12.5);
+  });
+
+  test("two-option items (mcq2: richtig/falsch, a/b) keep their order in every sitting", () => {
+    const track = JSON.parse(JSON.stringify(TRACK)) as CompiledExamTrack;
+    track.sections.find((s) => s.id === "reading")!.tasks.find((t) => t.id === "t1")!.format = "mcq2";
+    const sitting = (seed: number) =>
+      buildExamSectionSession({ courseId: "es-vi", track, sectionId: "reading", formId: "a", mode: "mock", attemptSeed: seed })
+        .steps.filter((s) => s.type === "exercise" && track.items.find((i) => i.id === s.stepId)!.taskId === "t1")
+        .map((s) => (s.type === "exercise" ? JSON.stringify(s.exercise) : ""));
+    expect(sitting(0)).toEqual(sectionItems(track, "reading", "a").filter((i) => i.taskId === "t1").map((i) => JSON.stringify(i.exercise)));
+    expect(sitting(7)).toEqual(sitting(0));
+  });
+
   test("time-up items are null and count as not answered", () => {
     const ids = sectionItems(TRACK, "listening", "a").map((i) => i.id);
     const r = itemResultsFor(ids, { [ids[0]]: true });
