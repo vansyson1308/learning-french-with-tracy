@@ -144,9 +144,10 @@ jobs:
           distribution: temurin
           java-version: "17"
       - name: Install Maestro (checksum-pinned)
+        timeout-minutes: 10
         run: |
           set -euo pipefail
-          curl -fsSL -o /tmp/maestro.zip "https://github.com/mobile-dev-inc/maestro/releases/download/cli-${MAESTRO_VERSION}/maestro.zip"
+          bash scripts/ci/fetch.sh "https://github.com/mobile-dev-inc/maestro/releases/download/cli-${MAESTRO_VERSION}/maestro.zip" /tmp/maestro.zip
           echo "${MAESTRO_SHA256}  /tmp/maestro.zip" | sha256sum -c -
           unzip -q /tmp/maestro.zip -d "$HOME/maestro-cli"
           echo "MAESTRO=$HOME/maestro-cli/maestro/bin/maestro" >> "$GITHUB_ENV"

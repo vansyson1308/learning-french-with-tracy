@@ -34,6 +34,9 @@ on:
 
 permissions:
   contents: write
+  # actions: write — scripts/ci/bot-commit.sh dispatches ci.yml and device-acceptance.yml
+  # on the branch it pushed to (a bot-authored head gets no checks otherwise).
+  actions: write
 
 concurrency:
   group: lexique-source
@@ -44,6 +47,7 @@ jobs:
     # Defense in depth: refuse anything but a manual dispatch.
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     env:
       # Official host only. The origin's TLS certificate does not cover the
       # www subdomain (curl error 60 observed), so candidates are tried in
@@ -69,12 +73,13 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Download official artifact (with official-ZIP fallback)
+        timeout-minutes: 15
         run: |
           set -euo pipefail
           fetch_one () {
             local rel="$1" out="$2" base
             for base in "https://lexique.org" "https://www.lexique.org" "http://lexique.org" "http://www.lexique.org"; do
-              if curl -fSL --retry 2 --retry-delay 5 -o "$out" "$base/$rel"; then
+              if bash scripts/ci/fetch.sh "$base/$rel" "$out"; then
                 echo "$base" > /tmp/used-base.txt
                 echo "fetched $base/$rel"
                 return 0
@@ -140,6 +145,8 @@ jobs:
           if-no-files-found: error
 
       - name: Commit results to the dispatched branch
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
