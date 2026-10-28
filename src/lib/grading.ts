@@ -140,6 +140,11 @@ export function normalize(text: string) {
  * apostrophe/space variants unified and case-insensitive, but accents and
  * exact inflection are preserved — "mange" ≠ "mangé" ≠ "manges" here.
  */
+/** Sentence punctuation (Latin, Spanish inverted marks, guillemets, CJK), collapsed spaces. */
+function stripPunctuation(text: string): string {
+  return text.replace(/[.,!?\u00BF\u00A1;:"\u3001\u3002\uFF01\uFF1F\u00AB\u00BB\u201C\u201D\u2026]/g, "").replace(/\s+/g, " ").trim();
+}
+
 export function strictEquals(a: string, b: string, courseId?: string): boolean {
   const fold = courseId === undefined ? normalizeStrictLatin : languageRulesForCourse(courseId).normalizeStrict;
   return fold(a) === fold(b);
@@ -159,8 +164,9 @@ export function checkAnswer(exercise: Exercise, answer: Answer, courseId: string
       return answer === exercise.correct;
     case "wordBank": {
       if (!Array.isArray(answer)) return false;
-      const attempt = answer.map((i) => exercise.tokens[i]).join(" ");
-      return rules.normalizeLenient(attempt) === rules.normalizeLenient(exercise.answer.join(" "));
+      const attempt = rules.normalizeLenient(answer.map((i) => exercise.tokens[i]).join(" "));
+      // D-10 review: another correct sentence the same tiles build may be authored as an alternative.
+      return [exercise.answer, ...(exercise.alternatives ?? [])].some((a) => rules.normalizeLenient(a.join(" ")) === attempt);
     }
     case "typeAnswer": {
       if (typeof answer !== "string") return false;
@@ -173,10 +179,10 @@ export function checkAnswer(exercise: Exercise, answer: Answer, courseId: string
     case "dictation": {
       // Dictation shares the strict contract (P7 §63): orthographic
       // decoding is the construct, so accents and exact forms matter.
+      // Punctuation is not part of it (D-10 review: "¡Hola!" for "hola").
       if (typeof answer !== "string") return false;
-      return [exercise.answer, ...exercise.alternatives].some(
-        (a) => rules.normalizeStrict(a) === rules.normalizeStrict(answer)
-      );
+      const fold = (s: string) => (exercise.type === "dictation" ? stripPunctuation(rules.normalizeStrict(s)) : rules.normalizeStrict(s));
+      return [exercise.answer, ...exercise.alternatives].some((a) => fold(a) === fold(answer));
     }
     case "listeningComprehension":
     case "readingComprehension":

@@ -90,10 +90,14 @@ for (const { slot, path: p } of packSlots(pack, packRel)) {
       if (slot.exerciseType === "wordBank" && slot.key.endsWith(".wordBank")) {
         if (typeof draft !== "object" || typeof draft.answer !== "string") return [`${slot.key}: wordBank draft needs {answer, distractors}`];
         const answer = draft.answer.trim().split(/\s+/);
-        const distractors = Array.isArray(draft.distractors) ? (draft.distractors as string[]) : [];
+        // D-10 review (fr-51): distractors are split into single tiles like the answer — a two-syllable
+        // distractor tile next to one-syllable answer tiles gave itself away.
+        const distractors = [...new Set((Array.isArray(draft.distractors) ? (draft.distractors as string[]) : []).flatMap((d) => d.trim().split(/\s+/)))];
         const exercise = getPath(newPack, p) as Record<string, unknown>;
         const tokens = shuffleDeterministic([...answer, ...distractors.filter((d) => !answer.includes(d))], slot.key);
-        newPack = setPath(newPack, p, { ...exercise, tokens, answer });
+        // Other correct sentences the same tiles build (draft `alternatives`, whole sentences).
+        const alternatives = (Array.isArray(draft.alternatives) ? (draft.alternatives as string[]) : []).map((a) => a.trim().split(/\s+/));
+        newPack = setPath(newPack, p, { ...exercise, tokens, answer, ...(alternatives.length > 0 ? { alternatives } : {}) });
         return [];
       }
       if (slot.exerciseType === "typeAnswer" && slot.key.endsWith(".typeAnswer")) {

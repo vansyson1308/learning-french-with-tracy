@@ -110,7 +110,7 @@
       "elicitationType": "semantic_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Hãy nói cảm ơn rất nhiều.",
+          "vi": "Hãy nói «cảm ơn nhiều».",
           "en": "Say thank you very much."
         }
       },
@@ -185,7 +185,9 @@
       "target": "Buenas tardes",
       "acceptedVariants": [
         "Buenas tardes",
-        "Buenas tardes, señora"
+        "Buenas tardes, señora",
+        "Hola, buenas tardes",
+        "Hola, buenas tardes, señora"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -220,7 +222,12 @@
       "target": "Adiós",
       "acceptedVariants": [
         "Adiós",
-        "Hasta luego"
+        "Hasta luego",
+        "Adiós, hasta luego",
+        "Hasta pronto",
+        "Chao",
+        "Nos vemos",
+        "Hasta mañana"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -255,7 +262,13 @@
       "target": "Perdón",
       "acceptedVariants": [
         "Perdón",
-        "Perdone"
+        "Perdone",
+        "Perdona",
+        "Lo siento",
+        "Disculpe",
+        "Disculpa",
+        "Perdón, señor",
+        "Perdón, señora"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -819,9 +832,9 @@
           }
         ]
       },
-      "target": "Hay siete días en una semana",
+      "target": "La semana tiene siete días",
       "acceptedVariants": [
-        "Hay siete días en una semana",
+        "La semana tiene siete días",
         "Una semana tiene siete días"
       ],
       "requiredConcepts": [
@@ -1488,9 +1501,9 @@
         },
         "cueEmoji": "🌙"
       },
-      "target": "Es por la noche",
+      "target": "Es de noche",
       "acceptedVariants": [
-        "Es por la noche",
+        "Es de noche",
         "Es la noche",
         "Por la noche"
       ],

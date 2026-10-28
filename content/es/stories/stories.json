@@ -147,11 +147,13 @@
       "newLexemes": [
         "es:w:pajaro",
         "es:w:rio",
-        "es:w:puente"
+        "es:w:puente",
+        "es:w:papa"
       ],
       "tokenMap": {
         "ana": "name",
-        "toby": "name"
+        "toby": "name",
+        "buscarlo": "es:w:buscar"
       },
       "sentences": [
         {
@@ -180,7 +182,7 @@
         },
         {
           "speaker": "N",
-          "text": "Un día, Toby no está en la casa.",
+          "text": "Un día, Toby no está en casa.",
           "translation": {
             "vi": "Một ngày nọ, Toby không có ở nhà.",
             "en": "One day, Toby is not in the house."
@@ -196,15 +198,15 @@
         },
         {
           "speaker": "A",
-          "text": "Mamá, ¿dónde está Toby?",
+          "text": "Papá, ¿dónde está Toby?",
           "translation": {
-            "vi": "Mẹ ơi, Toby đâu rồi?",
-            "en": "Mum, where is Toby?"
+            "vi": "Bố ơi, Toby đâu rồi?",
+            "en": "Dad, where is Toby?"
           }
         },
         {
           "speaker": "B",
-          "text": "No sé, hija. Vamos a buscar.",
+          "text": "No sé, hija. Vamos a buscarlo.",
           "translation": {
             "vi": "Bố không biết, con gái ạ. Mình đi tìm thôi.",
             "en": "I don't know, love. Let's go and look."
@@ -300,7 +302,7 @@
         },
         {
           "speaker": "N",
-          "text": "Ana, su padre y Toby vuelven a la casa por el puente.",
+          "text": "Ana, su padre y Toby vuelven a casa por el puente.",
           "translation": {
             "vi": "Ana, bố và Toby đi qua cây cầu về nhà.",
             "en": "Ana, her father and Toby go back home over the bridge."
@@ -308,7 +310,7 @@
         },
         {
           "speaker": "N",
-          "text": "En la casa, la madre de Ana prepara una sopa.",
+          "text": "En casa, la madre de Ana prepara una sopa.",
           "translation": {
             "vi": "Ở nhà, mẹ của Ana nấu một nồi súp.",
             "en": "At home, Ana's mother makes a soup."
@@ -332,7 +334,7 @@
         },
         {
           "speaker": "A",
-          "text": "Toby, ¡no vas sin mí!",
+          "text": "Toby, ¡no te vayas sin mí!",
           "translation": {
             "vi": "Toby, không được đi đâu mà không có chị!",
             "en": "Toby, you don't go anywhere without me!"
@@ -453,7 +455,7 @@
         },
         {
           "speaker": "A",
-          "text": "Hola, mis niños. ¿Tienen hambre?",
+          "text": "Hola, mis niños. ¿Tenéis hambre?",
           "translation": {
             "vi": "Chào các cháu. Các cháu có đói không?",
             "en": "Hello, my dears. Are you hungry?"
@@ -501,7 +503,7 @@
         },
         {
           "speaker": "A",
-          "text": "¿Quieren sopa?",
+          "text": "¿Queréis sopa?",
           "translation": {
             "vi": "Các cháu ăn súp không?",
             "en": "Do you want some soup?"
@@ -527,7 +529,7 @@
           "speaker": "N",
           "text": "Pablo quiere otro plato de sopa.",
           "translation": {
-            "vi": "Pablo muốn thêm một đĩa súp nữa.",
+            "vi": "Pablo muốn ăn thêm một bát súp nữa.",
             "en": "Pablo wants another plate of soup."
           }
         },
@@ -1134,7 +1136,7 @@
         },
         {
           "speaker": "N",
-          "text": "Dos días pasan.",
+          "text": "Pasan dos días.",
           "translation": {
             "vi": "Hai ngày trôi qua.",
             "en": "Two days go by."
@@ -1426,7 +1428,7 @@
           "speaker": "B",
           "text": "Un día voy a ir a esa panadería.",
           "translation": {
-            "vi": "Hôm nào mình cũng sẽ đến tiệm bánh đó.",
+            "vi": "Hôm nào đó mình cũng sẽ đến tiệm bánh ấy.",
             "en": "One day I'm going to go to that bakery."
           }
         }
@@ -1609,7 +1611,7 @@
         },
         {
           "speaker": "B",
-          "text": "No sé. Creo que el museo no está en este camino.",
+          "text": "No sé. Creo que este no es el camino del museo.",
           "translation": {
             "vi": "Anh không biết. Anh nghĩ bảo tàng không nằm trên đường này.",
             "en": "I don't know. I don't think the museum is on this route."
@@ -1665,7 +1667,7 @@
         },
         {
           "speaker": "B",
-          "text": "Tienen que caminar recto.",
+          "text": "Tienen que ir todo recto.",
           "translation": {
             "vi": "Các cháu cứ đi thẳng.",
             "en": "You have to walk straight on."
@@ -1681,7 +1683,7 @@
         },
         {
           "speaker": "N",
-          "text": "Clara y Jorge caminan recto y llegan a la plaza.",
+          "text": "Clara y Jorge van todo recto y llegan a la plaza.",
           "translation": {
             "vi": "Clara và Jorge đi thẳng và đến quảng trường.",
             "en": "Clara and Jorge walk straight on and reach the square."
@@ -1785,7 +1787,8 @@
       "newLexemes": [
         "es:w:luna",
         "es:w:estrella",
-        "es:w:silencio"
+        "es:w:silencio",
+        "es:w:terminar"
       ],
       "tokenMap": {
         "inés": "name",
@@ -1955,7 +1958,7 @@
         },
         {
           "speaker": "N",
-          "text": "La canción pasa, y la casa está en silencio.",
+          "text": "La canción termina y la casa está en silencio.",
           "translation": {
             "vi": "Bài hát kết thúc, và cả nhà yên lặng.",
             "en": "The song ends, and the house is silent."
@@ -2171,7 +2174,7 @@
         },
         {
           "speaker": "B",
-          "text": "Cuando yo era un niño, mi padre tenía este barco.",
+          "text": "Cuando yo era niño, mi padre tenía este barco.",
           "translation": {
             "vi": "Hồi ông còn nhỏ, bố của ông có con thuyền này.",
             "en": "When I was a boy, my father had this boat."
@@ -2243,7 +2246,7 @@
         },
         {
           "speaker": "N",
-          "text": "Llegan a la casa cuando la nube llega al pueblo.",
+          "text": "Llegan a casa cuando la nube llega al pueblo.",
           "translation": {
             "vi": "Hai ông cháu về đến nhà thì đám mây cũng kéo đến làng.",
             "en": "They reach the house just as the cloud reaches the village."
@@ -2617,7 +2620,8 @@
       "tokenMap": {
         "andrés": "name",
         "paula": "name",
-        "cara": "es:w:caro"
+        "cara": "es:w:caro",
+        "tal": "function"
       },
       "sentences": [
         {
@@ -2734,7 +2738,7 @@
         },
         {
           "speaker": "B",
-          "text": "Paula, ¿estoy bien?",
+          "text": "Paula, ¿qué tal estoy?",
           "translation": {
             "vi": "Paula, trông mình được không?",
             "en": "Paula, do I look all right?"
@@ -2911,7 +2915,7 @@
         },
         {
           "speaker": "N",
-          "text": "Pero cuando abre la ventana, mira la lluvia.",
+          "text": "Pero cuando abre la ventana, ve la lluvia.",
           "translation": {
             "vi": "Nhưng khi mở cửa sổ, cậu thấy trời đang mưa.",
             "en": "But when he opens the window, he sees the rain."
@@ -3007,7 +3011,7 @@
         },
         {
           "speaker": "A",
-          "text": "Tengo frío y la lluvia está en toda mi ropa.",
+          "text": "Tengo frío y tengo agua en toda la ropa.",
           "translation": {
             "vi": "Mình lạnh, quần áo ướt hết vì mưa.",
             "en": "I'm cold and the rain is all over my clothes."
@@ -3554,7 +3558,7 @@
         },
         {
           "speaker": "A",
-          "text": "Y no puede correr en dos semanas.",
+          "text": "Y no puede correr dos semanas.",
           "translation": {
             "vi": "Và anh không được chạy trong hai tuần.",
             "en": "And you can't run for two weeks."
@@ -3877,7 +3881,7 @@
         },
         {
           "speaker": "B",
-          "text": "¡Hola! ¿Qué hacen aquí?",
+          "text": "¡Hola! ¿Qué hacéis aquí?",
           "translation": {
             "vi": "Chào! Hai người làm gì ở đây thế?",
             "en": "Hi! What are you two doing here?"
@@ -3909,7 +3913,7 @@
         },
         {
           "speaker": "A",
-          "text": "Y yo creo que eres un ladrón.",
+          "text": "¡Y yo creía que eras un ladrón!",
           "translation": {
             "vi": "Còn em thì tưởng anh là trộm.",
             "en": "And I think you're a burglar."
@@ -4174,7 +4178,7 @@
         },
         {
           "speaker": "A",
-          "text": "Miro una película en internet.",
+          "text": "Veo una película en internet.",
           "translation": {
             "vi": "Bà đang xem phim trên mạng.",
             "en": "I'm watching a film on the internet."
@@ -4342,7 +4346,7 @@
         },
         {
           "speaker": "A",
-          "text": "Mañana vamos a ver.",
+          "text": "Mañana lo vemos.",
           "translation": {
             "vi": "Mai rồi sẽ biết.",
             "en": "We'll see tomorrow."
@@ -4983,7 +4987,7 @@
         },
         {
           "speaker": "B",
-          "text": "No es un problema. ¿Quieren algo para beber?",
+          "text": "No pasa nada. ¿Quieren algo de beber?",
           "translation": {
             "vi": "Không sao đâu. Hai mẹ con uống gì không?",
             "en": "No problem. Would you like something to drink?"
@@ -5106,7 +5110,8 @@
         "es:w:rio"
       ],
       "tokenMap": {
-        "teresa": "name"
+        "teresa": "name",
+        "ay": "function"
       },
       "sentences": [
         {
@@ -5159,7 +5164,7 @@
         },
         {
           "speaker": "A",
-          "text": "Perdón, señor. Es mi lugar.",
+          "text": "Perdone, señor. Es mi asiento.",
           "translation": {
             "vi": "Xin lỗi ông, đây là chỗ của cháu.",
             "en": "Excuse me, sir. This is my place."
@@ -5167,7 +5172,7 @@
         },
         {
           "speaker": "B",
-          "text": "¡Oh, perdón! Mi lugar es el número once.",
+          "text": "¡Ay, perdón! Mi asiento es el número once.",
           "translation": {
             "vi": "Ôi, xin lỗi cháu! Chỗ của ông là số mười một.",
             "en": "Oh, sorry! My place is number eleven."
@@ -5239,7 +5244,7 @@
         },
         {
           "speaker": "B",
-          "text": "Treinta años trabajo en este tren.",
+          "text": "Trabajo en este tren desde hace treinta años.",
           "translation": {
             "vi": "Ông làm việc trên chuyến tàu này ba mươi năm rồi.",
             "en": "I've worked on this train for thirty years."
@@ -5375,7 +5380,8 @@
         "hugo": "name",
         "cuba": "name",
         "marta": "name",
-        "sola": "es:w:solo"
+        "sola": "es:w:solo",
+        "vuestro": "function"
       },
       "sentences": [
         {
@@ -5428,7 +5434,7 @@
         },
         {
           "speaker": "B",
-          "text": "¡Hola a todos! Soy Miguel, su profesor.",
+          "text": "¡Hola a todos! Soy Miguel, vuestro profesor.",
           "translation": {
             "vi": "Chào mọi người! Tôi là Miguel, giáo viên của các bạn.",
             "en": "Hello, everyone! I'm Miguel, your teacher."
@@ -5532,10 +5538,10 @@
         },
         {
           "speaker": "B",
-          "text": "¡Sí, por favor!",
+          "text": "¡Sí, sí!",
           "translation": {
             "vi": "Có chứ!",
-            "en": "Yes, please!"
+            "en": "Yes, yes!"
           }
         },
         {

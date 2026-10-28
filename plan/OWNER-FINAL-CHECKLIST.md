@@ -13,15 +13,15 @@ Ký hiệu: ☐ chưa làm · ☑ xong · (từ milestone nào)
 - ☐ **Tài khoản Google Play Console** (cá nhân) và chương trình closed test (12 tester × 14 ngày) — Claude chuẩn bị nội dung ở P6a; anh tạo tài khoản và bấm nộp. (P6)
 - ☐ (Tuỳ chọn, sau v1.0) Apple Developer Program + EAS project nếu muốn bản iOS. (RC2)
 
-## B. Duyệt nội dung (có thể làm bất cứ lúc nào; mỗi mục ký xong thì nhãn "Bản beta" của khoá đó tự tắt)
-- ☐ **fr-vi**: đọc `content/fr/REVIEW-vi.md` (từng câu tiếng Việt với nguồn tiếng Anh; mục đánh dấu **re-author** cần viết lại), sửa qua `content/fr/translations/vi.dictionary.json` / `vi.jsonl`, rồi ghi "reviewed by <tên>, <ngày>" (Claude chạy lại apply/compile khi anh báo). (P2b)
-- ☐ **es-vi Tier-1 tiếng Việt**: ký `content/es/REVIEW-TIER1-vi.md` (352 dòng). Báo Claude tên + ngày → Claude ghi `review: { native, date, checklist }` vào `content/courses/es-vi.profile.json`. (P3e)
-- ☐ **es-vi Tier-1 tiếng Tây Ban Nha**: thuê một giáo viên đọc `content/es/REVIEW-TIER1-es.md` (313 dòng, có hướng dẫn tiếng Việt + Anh bên trong, 2–3 giờ). (P3e)
-- ☐ **de-vi Tier-1 tiếng Việt**: ký `content/de/REVIEW-TIER1-vi.md` (378 dòng). Báo Claude tên + ngày → Claude ghi `review: { native, date, checklist }` vào `content/courses/de-vi.profile.json`. (P3d-de)
-- ☐ **de-vi Tier-1 tiếng Đức**: thuê một giáo viên tiếng Đức đọc `content/de/REVIEW-TIER1-de.md` (309 dòng: bài đọc, kịch bản nghe, lời thoại tình huống, bài mẫu, đề luyện Goethe A1; có hướng dẫn tiếng Việt + Anh bên trong). (P3d-de)
-- ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) sẽ có hai file Tier-1 tương tự — Claude thêm dòng vào đây khi khoá đó xong.
-- ☐ **Truyện ngắn (P5b)**: đọc bản dịch tiếng Việt từng câu, câu hỏi và lời giới thiệu của 20 truyện tiếng Tây Ban Nha (`content/es/stories/stories.json`) 10 truyện tiếng Pháp (`content/fr/stories/stories.json`) và 43 truyện tiếng Đức (`content/de/stories/stories.json`, P3d-de). Sửa thẳng trong file hoặc ghi chú gửi Claude. Phần tiếng Tây Ban Nha/Pháp/Đức nên nhờ giáo viên đọc cùng lúc với Tier-1. (P5b)
-- ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta**, ghi rõ ở đây khoá nào (định nghĩa v1.0 cho phép điều này chỉ khi anh chấp nhận bằng văn bản).
+## B. Duyệt nội dung (D-10, 2026-10-29: không thuê người duyệt bản ngữ — AI mô phỏng người bản ngữ duyệt, anh chấp nhận từng khoá)
+Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, lỗi theo mức P0/P1/P2, mẫu audit độc lập 10 % và tỉ lệ lỗi, danh sách **chưa chắc**. Khi anh đánh dấu ☑ một dòng chấp nhận dưới đây (giữ nguyên mã `ai-review:<khoá>`), Claude ghi `review: { kind: "ai-simulated", … }` vào profile của khoá đó. Nhãn "Bản beta" khi ấy đổi thành ghi chú trung thực "Nội dung được AI kiểm duyệt kỹ, chưa qua giáo viên bản ngữ…". Gate biên dịch chỉ nhận `ai-simulated` khi dòng tương ứng đã được đánh ☑.
+- ☐ **Chấp nhận duyệt AI** `ai-review:fr-vi` — đọc `content/fr/REVIEW-AI.md` (phần tiếng Pháp giữ nguyên bản fr-en).
+- ☐ **Chấp nhận duyệt AI** `ai-review:es-vi` — đọc `content/es/REVIEW-AI.md`.
+- ☐ **Chấp nhận duyệt AI** `ai-review:de-vi` — đọc `content/de/REVIEW-AI.md` (sau PR ai-review cho de-vi).
+- ☐ **Mục chưa chắc** (không chặn việc gì): xem phần "Chưa chắc" trong từng `REVIEW-AI.md` và quyết định giữ hay sửa; báo Claude.
+- ☐ **Anh tự kiểm tra (tuỳ chọn)**: anh đọc tiếng Việt bản ngữ, tiếng Pháp trình độ đại học, tiếng Anh C1 — có thể đọc lướt `content/fr/REVIEW-vi.md` (tiếng Việt của fr-vi), mọi văn bản tiếng Việt trong `REVIEW-TIER1-vi.md` của es/de, và phần tiếng Anh của en-vi khi có.
+- ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) có bước duyệt AI tích hợp sẵn trong P3d; Claude thêm dòng `ai-review:<khoá>` vào đây khi khoá đó xong.
+- ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta** (chưa đánh ☑ dòng chấp nhận), ghi rõ ở đây khoá nào.
 
 ## C. Nguồn dữ liệu chỉ tải tay được (tuỳ chọn, không chặn công việc)
 - ☐ Danh sách từ học tiếng Hàn NIKL 한국어 학습용 어휘 목록 (KOGL Type 1) — korean.go.kr từ chối tải tự động; đặt file vào `sources/ko/nikl-learner-list.tsv` hoặc gửi Claude. Không có thì neo từ vựng tiếng Hàn theo tần suất. (P3a)

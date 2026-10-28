@@ -122,6 +122,12 @@ export default function LearnScreen() {
             <Text style={styles.betaText}>{t("learn.betaBanner")}</Text>
           </View>
         ) : null}
+        {courseProfile(activeCourseId).reviewNote === "ai-simulated" ? (
+          <View style={styles.betaBanner} testID="ai-review-note" accessibilityRole="text">
+            <Ionicons name="information-circle-outline" size={18} color={colors.orange} />
+            <Text style={styles.betaText}>{t("learn.aiReviewNote")}</Text>
+          </View>
+        ) : null}
         {showPlacementEntry ? (
           <Pressable
             style={styles.placementCard}

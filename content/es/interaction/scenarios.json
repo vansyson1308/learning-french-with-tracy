@@ -737,7 +737,7 @@
           "kind": "terminal",
           "id": "t_thats_all",
           "outcome": "goal_met",
-          "text": "Muy bien. Son dos euros. ¡Gracias, buen día!",
+          "text": "Muy bien. Son dos euros. ¡Gracias, que tenga un buen día!",
           "clipId": "es.clip.ix_tienda_compras_thats_all_t"
         },
         "l_more": {
@@ -1006,7 +1006,7 @@
           "kind": "terminal",
           "id": "t_ok",
           "outcome": "goal_met",
-          "text": "¡De nada! ¡Buen día!",
+          "text": "¡De nada! ¡Que vaya bien!",
           "clipId": "es.clip.ix_donde_estacion_end"
         }
       },
@@ -1121,7 +1121,7 @@
           "kind": "learner",
           "id": "l_thanks",
           "prompt": {
-            "vi": "Hãy nói cảm ơn rất nhiều.",
+            "vi": "Hãy nói «cảm ơn nhiều».",
             "en": "Say thank you very much."
           },
           "expected": [
@@ -1154,7 +1154,7 @@
           "kind": "learner",
           "id": "l_thanks_b",
           "prompt": {
-            "vi": "Hãy nói cảm ơn rất nhiều.",
+            "vi": "Hãy nói «cảm ơn nhiều».",
             "en": "Say thank you very much."
           },
           "expected": [
@@ -1376,7 +1376,7 @@
         "en": "At a friend's home"
       },
       "goal": {
-        "vi": "Trả lời lời mời của bạn bạn và nói bạn muốn gì.",
+        "vi": "Trả lời lời mời của người bạn và nói bạn muốn uống gì.",
         "en": "Answer your friend's offer and say what you'd like."
       },
       "taskFamily": "conversation",
@@ -1395,7 +1395,7 @@
         "p_offer": {
           "kind": "partner",
           "id": "p_offer",
-          "text": "¡Bienvenida! ¿Quieres tomar algo?",
+          "text": "¡Hola, pasa, pasa! ¿Quieres tomar algo?",
           "clipId": "es.clip.ix_casa_amiga_offer_ask",
           "rephraseText": "¿Quieres agua o un café?",
           "rephraseClipId": "es.clip.ix_casa_amiga_offer_s",
@@ -1676,7 +1676,7 @@
         "p_how": {
           "kind": "partner",
           "id": "p_how",
-          "text": "¡Mucho gusto, Nadia! ¿Está bien?",
+          "text": "¡Mucho gusto, Nadia! ¿Qué tal está?",
           "clipId": "es.clip.ix_cp_conocer_how_ask",
           "rephraseText": "¿Qué tal?",
           "rephraseClipId": "es.clip.ix_cp_conocer_how_s",
@@ -2171,7 +2171,7 @@
           "kind": "terminal",
           "id": "t_ok",
           "outcome": "goal_met",
-          "text": "¡Gracias a usted! ¡Buen día!",
+          "text": "¡Gracias a usted! ¡Que tenga un buen día!",
           "clipId": "es.clip.ix_cp_cafe_end"
         }
       },
@@ -2663,7 +2663,7 @@
         "b_english_yes_speak": {
           "kind": "partner",
           "id": "b_english_yes_speak",
-          "text": "¡Yo también hablo inglés! Bueno, ya sabe todo de mí… o casi.",
+          "text": "¡Yo también hablo inglés! Bueno, ya sé mucho de usted… ¡Ahora pregúnteme usted a mí!",
           "clipId": "es.clip.ix_cp_conocerse_yes_speak_b",
           "rephraseText": "¡Hágame una pregunta!",
           "rephraseClipId": "es.clip.ix_cp_conocerse_ask_back_s",
@@ -2672,7 +2672,7 @@
         "b_english_no_speak": {
           "kind": "partner",
           "id": "b_english_no_speak",
-          "text": "No pasa nada. Bueno, ya sabe todo de mí… o casi.",
+          "text": "No pasa nada. Bueno, ya sé mucho de usted… ¡Ahora pregúnteme usted a mí!",
           "clipId": "es.clip.ix_cp_conocerse_no_speak_b",
           "rephraseText": "¡Hágame una pregunta!",
           "rephraseClipId": "es.clip.ix_cp_conocerse_ask_back_s",

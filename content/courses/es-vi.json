@@ -624,7 +624,10 @@
                   "audioTarget": "Sí, como manzanas.",
                   "answer": "Sí, como manzanas.",
                   "alternatives": [
-                    "Sí, yo como manzanas."
+                    "Sí, yo como manzanas.",
+                    "Sí, como una manzana.",
+                    "Sí, yo como una manzana.",
+                    "Sí, como manzana."
                   ]
                 }
               ]
@@ -1149,7 +1152,7 @@
           "id": "es-vi:unit-2",
           "title": "Chào hỏi",
           "description": "Lời chào và câu lịch sự thiết yếu cho mọi lúc trong ngày.",
-          "guidebook": "## Chào hỏi kiểu Tây Ban Nha 👋\n\nLời chào thay đổi theo thời điểm trong ngày:\n- *buenos días* — chào buổi sáng (đến khoảng trưa)\n- *buenas tardes* — chào buổi chiều (đến khi trời tối)\n- *buenas noches* — chào buổi tối, cũng là chúc ngủ ngon\n- *hola* — xin chào, dùng được lúc nào cũng được\n\n### Lịch sự là chìa khóa\n- *por favor* — làm ơn: *Un café, por favor.*\n- *gracias* — cảm ơn; đáp lại bằng *de nada* — không có gì\n- *perdón* — xin lỗi, cũng dùng để gọi ai đó chú ý\n\n### Ông, bà và người mới quen\n*Señor* (ông) và *señora* (bà) dùng như \"thưa ông, thưa bà\" trong tiếng Việt: *Gracias, señor.* Khi gặp người mới, nói *Mucho gusto* — rất vui được gặp bạn.\n\n### Tạm biệt\n*Adiós* là tạm biệt. Nếu sắp gặp lại, người ta hay nói *hasta luego* — hẹn gặp lại.",
+          "guidebook": "## Chào hỏi kiểu Tây Ban Nha 👋\n\nLời chào thay đổi theo thời điểm trong ngày:\n- *buenos días* — chào buổi sáng (ở Tây Ban Nha dùng đến giờ ăn trưa, khoảng 1–2 giờ chiều)\n- *buenas tardes* — chào buổi chiều (đến khi trời tối)\n- *buenas noches* — chào buổi tối, cũng là chúc ngủ ngon\n- *hola* — xin chào, dùng được lúc nào cũng được\n\n### Lịch sự là chìa khóa\n- *por favor* — làm ơn: *Un café, por favor.*\n- *gracias* — cảm ơn; đáp lại bằng *de nada* — không có gì\n- *perdón* — xin lỗi, cũng dùng để gọi ai đó chú ý\n\n### Ông, bà và người mới quen\n*Señor* (ông) và *señora* (bà) dùng như \"thưa ông, thưa bà\" trong tiếng Việt: *Gracias, señor.* Khi gặp người mới, nói *Mucho gusto* — rất vui được gặp bạn.\n\n### Tạm biệt\n*Adiós* là tạm biệt. Nếu sắp gặp lại, người ta hay nói *hasta luego* — hẹn gặp lại.",
           "words": [
             {
               "target": "hola",
@@ -1463,7 +1466,9 @@
                   "prompt": "Cho một cà phê, làm ơn.",
                   "audioTarget": "Un café, por favor.",
                   "answer": "Un café, por favor.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Por favor, un café."
+                  ]
                 }
               ],
               "flow": [
@@ -1682,9 +1687,9 @@
                   ],
                   "answer": [
                     "Chúc",
+                    "bạn",
                     "ngủ",
-                    "ngon",
-                    "bạn"
+                    "ngon"
                   ]
                 },
                 {
@@ -1751,7 +1756,10 @@
                   "prompt": "Rất vui được gặp bạn.",
                   "audioTarget": "Mucho gusto.",
                   "answer": "Mucho gusto.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Encantado.",
+                    "Encantada."
+                  ]
                 }
               ]
             },
@@ -1933,6 +1941,12 @@
                     "Xin",
                     "chào",
                     "ông"
+                  ],
+                  "alternatives": [
+                    [
+                      "chào",
+                      "ông"
+                    ]
                   ]
                 },
                 {
@@ -2263,7 +2277,7 @@
           "id": "es-vi:unit-3",
           "title": "Đồ ăn",
           "description": "Đồ ăn thức uống và cách gọi món đơn giản.",
-          "guidebook": "## Ăn gì, uống gì? 🍽️\n\nBạn sẽ gọi món nhiều lần khi đi du lịch, nên đây là nhóm từ rất có ích.\n\n### Đồ uống\n- *el café* — cà phê, *el té* — trà\n- *el zumo* — nước ép\n- *la cerveza* — bia\n\n### Món ăn\n- *el arroz* — cơm, gạo; *el pollo* — thịt gà; *la carne* — thịt\n- *el huevo* — quả trứng; *el queso* — phô mai; *la sopa* — món súp\n- *la fruta* — trái cây\n\n### Gọi món lịch sự\nMẫu câu đơn giản nhất: tên món + *por favor*.\n- *Un café, por favor.* — Cho một cà phê, làm ơn.\n- *Una sopa, por favor.* — Cho một món súp.\n\n*Un* đi với danh từ giống đực, *una* với danh từ giống cái — giống như *el* và *la*. Muốn xem thực đơn, hãy hỏi *¿El menú, por favor?*",
+          "guidebook": "## Ăn gì, uống gì? 🍽️\n\nBạn sẽ gọi món nhiều lần khi đi du lịch, nên đây là nhóm từ rất có ích.\n\n### Đồ uống\n- *el café* — cà phê, *el té* — trà\n- *el zumo* — nước ép\n- *la cerveza* — bia\n\n### Món ăn\n- *el arroz* — cơm, gạo; *el pollo* — thịt gà; *la carne* — thịt\n- *el huevo* — quả trứng; *el queso* — phô mai; *la sopa* — món súp\n- *la fruta* — trái cây\n\n### Gọi món lịch sự\nMẫu câu đơn giản nhất: tên món + *por favor*.\n- *Un café, por favor.* — Cho một cà phê, làm ơn.\n- *Una sopa, por favor.* — Cho một món súp.\n\n*Un* đi với danh từ giống đực, *una* với danh từ giống cái — giống như *el* và *la*. Muốn xem thực đơn, hãy hỏi *¿La carta, por favor?* (ở Tây Ban Nha, *el menú* thường là suất ăn cố định — *menú del día*).",
           "words": [
             {
               "target": "el café",
@@ -2523,13 +2537,22 @@
                     "zumo",
                     "bebo",
                     "buena",
-                    "y"
+                    "y",
+                    "está"
                   ],
                   "answer": [
                     "La",
                     "sopa",
-                    "es",
+                    "está",
                     "buena"
+                  ],
+                  "alternatives": [
+                    [
+                      "La",
+                      "sopa",
+                      "es",
+                      "buena"
+                    ]
                   ]
                 },
                 {
@@ -2579,7 +2602,9 @@
                   "prompt": "Cho một trà, làm ơn.",
                   "audioTarget": "Un té, por favor.",
                   "answer": "Un té, por favor.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Por favor, un té."
+                  ]
                 }
               ],
               "flow": [
@@ -2869,7 +2894,9 @@
                   "prompt": "Cho một bia, làm ơn.",
                   "audioTarget": "Una cerveza, por favor.",
                   "answer": "Una cerveza, por favor.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Por favor, una cerveza."
+                  ]
                 }
               ]
             },
@@ -3117,7 +3144,11 @@
                   "prompt": "Làm ơn cho xem thực đơn?",
                   "audioTarget": "¿El menú, por favor?",
                   "answer": "¿El menú, por favor?",
-                  "alternatives": []
+                  "alternatives": [
+                    "Por favor, el menú.",
+                    "La carta, por favor.",
+                    "Por favor, la carta."
+                  ]
                 }
               ]
             },
@@ -3381,7 +3412,7 @@
           "id": "es-vi:unit-4",
           "title": "Gia đình",
           "description": "Bố mẹ, anh chị em, ông bà — và con vật cưng trong nhà.",
-          "guidebook": "## Mi familia 👨‍👩‍👧‍👦\n\nNhiều từ chỉ người trong gia đình có cặp giống đực / giống cái chỉ khác nhau ở đuôi:\n- *el hermano* — anh, em trai / *la hermana* — chị, em gái\n- *el abuelo* — ông / *la abuela* — bà\n- *el hijo* — con trai / *la hija* — con gái\n\n### Bố và mẹ\n*El padre* và *la madre* là bố và mẹ. Trong gia đình, trẻ em gọi *papá* và *mamá*. Tiếng Việt phân biệt \"anh\" với \"em\"; tiếng Tây Ban Nha thì không: *hermano* là cả anh trai lẫn em trai. Muốn nói rõ, thêm *mayor* (lớn hơn) hoặc *menor* (nhỏ hơn).\n\n### Nói về gia đình mình\n- *Mi madre es alta.* — Mẹ tôi cao.\n- *Tengo un hermano.* — Tôi có một anh trai.\n- *Mi familia tiene un perro.* — Nhà tôi có một con chó.\n\n*Mi* nghĩa là \"của tôi\", đứng trước danh từ và không đổi theo giống: *mi padre, mi madre*.",
+          "guidebook": "## Mi familia 👨‍👩‍👧‍👦\n\nNhiều từ chỉ người trong gia đình có cặp giống đực / giống cái chỉ khác nhau ở đuôi:\n- *el hermano* — anh, em trai / *la hermana* — chị, em gái\n- *el abuelo* — ông / *la abuela* — bà\n- *el hijo* — con trai / *la hija* — con gái\n\n### Bố và mẹ\n*El padre* và *la madre* là bố và mẹ. Trong gia đình, trẻ em gọi *papá* và *mamá*. Tiếng Việt phân biệt \"anh\" với \"em\"; tiếng Tây Ban Nha thì không: *hermano* là cả anh trai lẫn em trai. Muốn nói rõ, thêm *mayor* (lớn hơn) hoặc *menor* (nhỏ hơn).\n\n### Nói về gia đình mình\n- *Mi madre es alta.* — Mẹ tôi cao.\n- *Tengo un hermano.* — Tôi có một anh trai (hoặc em trai).\n- *Mi familia tiene un perro.* — Nhà tôi có một con chó.\n\n*Mi* nghĩa là \"của tôi\", đứng trước danh từ và không đổi theo giống: *mi padre, mi madre*.",
           "words": [
             {
               "target": "la madre",
@@ -3690,10 +3721,12 @@
                   "type": "typeAnswer",
                   "id": "es-vi:u3-l0-e10",
                   "mode": "produceTarget",
-                  "prompt": "Bà tôi rất tốt.",
+                  "prompt": "Bà tôi là người tốt.",
                   "audioTarget": "Mi abuela es buena.",
                   "answer": "Mi abuela es buena.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Mi abuela es muy buena."
+                  ]
                 }
               ],
               "flow": [
@@ -4493,7 +4526,9 @@
                   "prompt": "Con mèo đang ăn.",
                   "audioTarget": "El gato come.",
                   "answer": "El gato come.",
-                  "alternatives": []
+                  "alternatives": [
+                    "El gato está comiendo."
+                  ]
                 }
               ]
             }
@@ -4768,6 +4803,14 @@
                     "estación",
                     "está",
                     "aquí"
+                  ],
+                  "alternatives": [
+                    [
+                      "aquí",
+                      "está",
+                      "La",
+                      "estación"
+                    ]
                   ]
                 },
                 {
@@ -5041,6 +5084,16 @@
                     "ở",
                     "trên",
                     "phố"
+                  ],
+                  "alternatives": [
+                    [
+                      "chiếc",
+                      "Xe",
+                      "taxi",
+                      "ở",
+                      "trên",
+                      "phố"
+                    ]
                   ]
                 },
                 {
@@ -5845,7 +5898,9 @@
                   "prompt": "ngôi nhà (kèm mạo từ)",
                   "audioTarget": "la casa",
                   "answer": "la casa",
-                  "alternatives": []
+                  "alternatives": [
+                    "una casa"
+                  ]
                 },
                 {
                   "type": "match",
@@ -6032,7 +6087,9 @@
                   "prompt": "bàn tay (kèm mạo từ)",
                   "audioTarget": "la mano",
                   "answer": "la mano",
-                  "alternatives": []
+                  "alternatives": [
+                    "una mano"
+                  ]
                 },
                 {
                   "type": "match",
@@ -6233,7 +6290,9 @@
                   "prompt": "thành phố (kèm mạo từ)",
                   "audioTarget": "la ciudad",
                   "answer": "la ciudad",
-                  "alternatives": []
+                  "alternatives": [
+                    "una ciudad"
+                  ]
                 },
                 {
                   "type": "match",
@@ -6437,7 +6496,9 @@
                   "prompt": "nước (kèm mạo từ)",
                   "audioTarget": "el agua",
                   "answer": "el agua",
-                  "alternatives": []
+                  "alternatives": [
+                    "un agua"
+                  ]
                 },
                 {
                   "type": "match",
@@ -6723,7 +6784,7 @@
                     "Soy",
                     "casa",
                     "en",
-                    "la",
+                    "el",
                     "Estoy"
                   ],
                   "answer": [
@@ -7016,7 +7077,7 @@
                   "type": "conjugationCloze",
                   "id": "es-vi:ub-l2-e2",
                   "sentence": "Yo ___ dos hermanos.",
-                  "translation": "Tôi có hai anh em.",
+                  "translation": "Tôi có hai anh chị em.",
                   "verb": "tener",
                   "cell": "pre:1s",
                   "answer": "tengo",
@@ -7099,7 +7160,9 @@
                   "audioTarget": "Voy a comer.",
                   "answer": "Voy a comer.",
                   "alternatives": [
-                    "Yo voy a comer."
+                    "Yo voy a comer.",
+                    "Comeré.",
+                    "Yo comeré."
                   ]
                 },
                 {
@@ -7303,7 +7366,9 @@
                   "audioTarget": "Hoy como arroz.",
                   "answer": "Hoy como arroz.",
                   "alternatives": [
-                    "Hoy yo como arroz."
+                    "Hoy yo como arroz.",
+                    "Como arroz hoy.",
+                    "Yo como arroz hoy."
                   ]
                 },
                 {
@@ -7733,7 +7798,9 @@
                   "prompt": "ý tưởng (kèm mạo từ)",
                   "audioTarget": "la idea",
                   "answer": "la idea",
-                  "alternatives": []
+                  "alternatives": [
+                    "una idea"
+                  ]
                 },
                 {
                   "type": "match",
@@ -7919,7 +7986,9 @@
                   "prompt": "tình huống (kèm mạo từ)",
                   "audioTarget": "la situación",
                   "answer": "la situación",
-                  "alternatives": []
+                  "alternatives": [
+                    "una situación"
+                  ]
                 },
                 {
                   "type": "match",
@@ -8105,7 +8174,9 @@
                   "prompt": "lối ra (kèm mạo từ)",
                   "audioTarget": "la salida",
                   "answer": "la salida",
-                  "alternatives": []
+                  "alternatives": [
+                    "una salida"
+                  ]
                 },
                 {
                   "type": "match",
@@ -8291,7 +8362,9 @@
                   "prompt": "âm nhạc (kèm mạo từ)",
                   "audioTarget": "la música",
                   "answer": "la música",
-                  "alternatives": []
+                  "alternatives": [
+                    "una música"
+                  ]
                 },
                 {
                   "type": "match",
@@ -9086,7 +9159,9 @@
                   "audioTarget": "Tengo veinte años.",
                   "answer": "Tengo veinte años.",
                   "alternatives": [
-                    "Yo tengo veinte años."
+                    "Yo tengo veinte años.",
+                    "Tengo 20 años.",
+                    "Yo tengo 20 años."
                   ]
                 },
                 {
@@ -9313,7 +9388,9 @@
                   "prompt": "xe buýt (kèm mạo từ)",
                   "audioTarget": "el autobús",
                   "answer": "el autobús",
-                  "alternatives": []
+                  "alternatives": [
+                    "un autobús"
+                  ]
                 },
                 {
                   "type": "match",
@@ -9486,7 +9563,9 @@
                   "prompt": "cây (kèm mạo từ)",
                   "audioTarget": "el árbol",
                   "answer": "el árbol",
-                  "alternatives": []
+                  "alternatives": [
+                    "un árbol"
+                  ]
                 },
                 {
                   "type": "match",
@@ -9832,7 +9911,9 @@
                   "audioTarget": "¿Cómo estás?",
                   "answer": "¿Cómo estás?",
                   "alternatives": [
-                    "¿Cómo estás tú?"
+                    "¿Cómo estás tú?",
+                    "¿Qué tal?",
+                    "¿Qué tal estás?"
                   ]
                 },
                 {
@@ -11559,7 +11640,10 @@
                   "clipId": "es.clip.uh_dictado_anden",
                   "answer": "el andén dos",
                   "alternatives": [
-                    "andén dos"
+                    "andén dos",
+                    "el andén 2",
+                    "andén 2",
+                    "el andén dos."
                   ],
                   "objectiveTargets": [
                     "es.obj.listening.familiar_words"
@@ -12866,7 +12950,7 @@
                   "type": "speakProduction",
                   "id": "es-vi:uk-l1-e1",
                   "speechItemId": "es.speak.k_thank",
-                  "instruction": "Hãy nói cảm ơn rất nhiều.",
+                  "instruction": "Hãy nói «cảm ơn nhiều».",
                   "target": "Muchas gracias",
                   "acceptedVariants": [
                     "Muchas gracias"
@@ -12954,7 +13038,9 @@
                   "target": "Buenas tardes",
                   "acceptedVariants": [
                     "Buenas tardes",
-                    "Buenas tardes, señora"
+                    "Buenas tardes, señora",
+                    "Hola, buenas tardes",
+                    "Hola, buenas tardes, señora"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:buenas-tardes"
@@ -12975,7 +13061,12 @@
                   "target": "Adiós",
                   "acceptedVariants": [
                     "Adiós",
-                    "Hasta luego"
+                    "Hasta luego",
+                    "Adiós, hasta luego",
+                    "Hasta pronto",
+                    "Chao",
+                    "Nos vemos",
+                    "Hasta mañana"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:adios"
@@ -13067,7 +13158,13 @@
                   "target": "Perdón",
                   "acceptedVariants": [
                     "Perdón",
-                    "Perdone"
+                    "Perdone",
+                    "Perdona",
+                    "Lo siento",
+                    "Disculpe",
+                    "Disculpa",
+                    "Perdón, señor",
+                    "Perdón, señora"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:perdon"
@@ -13145,7 +13242,11 @@
                   "audioTarget": "Perdón",
                   "answer": "Perdón",
                   "alternatives": [
-                    "Perdone"
+                    "Perdone",
+                    "Lo siento.",
+                    "Perdona.",
+                    "Disculpe.",
+                    "Disculpa."
                   ]
                 }
               ]
@@ -13984,9 +14085,9 @@
                       "value": "7"
                     }
                   ],
-                  "target": "Hay siete días en una semana",
+                  "target": "La semana tiene siete días",
                   "acceptedVariants": [
-                    "Hay siete días en una semana",
+                    "La semana tiene siete días",
                     "Una semana tiene siete días"
                   ],
                   "requiredConcepts": [
@@ -14037,8 +14138,8 @@
                   "type": "select",
                   "id": "es-vi:um-l3-e2",
                   "mode": "targetToNative",
-                  "prompt": "Hay siete días en una semana.",
-                  "audioTarget": "Hay siete días en una semana.",
+                  "prompt": "La semana tiene siete días.",
+                  "audioTarget": "La semana tiene siete días.",
                   "options": [
                     {
                       "text": "Một tuần có bảy ngày."
@@ -14520,7 +14621,10 @@
                   "prompt": "Viết bằng tiếng Tây Ban Nha: đó là một con chó.",
                   "audioTarget": "Es un perro.",
                   "answer": "Es un perro.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Ese es un perro.",
+                    "Eso es un perro."
+                  ]
                 }
               ]
             }
@@ -14633,7 +14737,8 @@
                   "answer": "Me llamo Lucía.",
                   "alternatives": [
                     "Mi nombre es Lucía.",
-                    "Soy Lucía."
+                    "Soy Lucía.",
+                    "Yo me llamo Lucía."
                   ]
                 },
                 {
@@ -15179,7 +15284,9 @@
                   "prompt": "Viết bằng tiếng Tây Ban Nha: tôi thích nước.",
                   "audioTarget": "Me gusta el agua.",
                   "answer": "Me gusta el agua.",
-                  "alternatives": []
+                  "alternatives": [
+                    "A mí me gusta el agua."
+                  ]
                 }
               ]
             },
@@ -15689,7 +15796,7 @@
                     "maxTokens": 20
                   },
                   "modelAnswers": [
-                    "Hola, Ana: el café es a las dos."
+                    "Hola, Ana: tomamos un café a las dos."
                   ],
                   "objectiveTargets": [
                     "es.obj.writing.short_message"
@@ -15722,7 +15829,7 @@
                   "id": "es-vi:uq-l0-e3",
                   "sentence": "Hola, Ana: el café es a las ___.",
                   "translation": "Chào Ana: hẹn uống cà phê lúc hai giờ.",
-                  "audioTarget": "Hola, Ana: el café es a las dos.",
+                  "audioTarget": "Hola, Ana: tomamos un café a las dos.",
                   "options": [
                     "diez",
                     "tres",
@@ -15862,6 +15969,17 @@
                     "a",
                     "las",
                     "nueve"
+                  ],
+                  "alternatives": [
+                    [
+                      "mañana",
+                      "El",
+                      "tren",
+                      "sale",
+                      "a",
+                      "las",
+                      "nueve"
+                    ]
                   ]
                 },
                 {
@@ -16141,7 +16259,9 @@
                   "audioTarget": "Hasta luego.",
                   "answer": "Hasta luego.",
                   "alternatives": [
-                    "Hasta pronto."
+                    "Hasta pronto.",
+                    "Nos vemos.",
+                    "Hasta la próxima."
                   ]
                 }
               ]
@@ -16430,7 +16550,10 @@
                     "requireSentenceVerbs": [
                       "estoy",
                       "estaré",
-                      "nos vemos"
+                      "nos vemos",
+                      "voy",
+                      "quedamos",
+                      "vemos"
                     ]
                   },
                   "modelAnswers": [
@@ -16628,7 +16751,11 @@
                   "prompt": "Viết bằng tiếng Tây Ban Nha: tôi thích thứ Bảy.",
                   "audioTarget": "Me gusta el sábado.",
                   "answer": "Me gusta el sábado.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Me gustan los sábados.",
+                    "A mí me gusta el sábado.",
+                    "A mí me gustan los sábados."
+                  ]
                 }
               ]
             }
@@ -16644,7 +16771,7 @@
           "id": "es-vi:unit-s",
           "title": "Primeros intercambios",
           "description": "Trao đổi thật đầu tiên: chào, hỏi thăm, hỏi tên, tạm biệt.",
-          "guidebook": "## Trò chuyện thật sự 🤝\n\nTrong phần này bạn nói chuyện với một nhân vật. Câu bạn nói quyết định nhân vật trả lời gì tiếp theo. Nếu bạn cần, có thể nhờ nhắc lại hoặc nói cách khác — làm vậy không bị trừ điểm.\n\n### Chào và hỏi thăm\n- *—Hola, ¿qué tal?* — Chào, khỏe không?\n- *—Bien, gracias. ¿Y tú?* — Khỏe, cảm ơn. Còn bạn?\n\n### Hỏi tên\n- *—¿Cómo te llamas?* — Bạn tên gì?\n- *—Me llamo Minh. ¿Y tú?*\n\n### Khi không hiểu\n- *¿Puede repetir, por favor?* — Ông nhắc lại được không?\n- *Más despacio, por favor.* — Chậm hơn, làm ơn.\n\n### Kết thúc\n*Adiós*, *hasta luego*, *nos vemos* (hẹn gặp lại). Với người lớn tuổi hoặc người lạ, dùng *usted* thay cho *tú*.",
+          "guidebook": "## Trò chuyện thật sự 🤝\n\nTrong phần này bạn nói chuyện với một nhân vật. Câu bạn nói quyết định nhân vật trả lời gì tiếp theo. Nếu bạn cần, có thể nhờ nhắc lại hoặc nói cách khác — làm vậy không bị trừ điểm.\n\n### Chào và hỏi thăm\n- *—Hola, ¿qué tal?* — Chào, khỏe không?\n- *—Bien, gracias. ¿Y tú?* — Khỏe, cảm ơn. Còn bạn?\n\n### Hỏi tên\n- *—¿Cómo te llamas?* — Bạn tên gì?\n- *—Me llamo Minh. ¿Y tú?*\n\n### Khi không hiểu\n- *¿Puede repetir, por favor?* — Ông/bà (anh/chị) nhắc lại giúp được không ạ?\n- *Más despacio, por favor.* — Chậm hơn, làm ơn.\n\n### Kết thúc\n*Adiós*, *hasta luego*, *nos vemos* (hẹn gặp lại). Với người lớn tuổi hoặc người lạ, dùng *usted* thay cho *tú*.",
           "words": [
             {
               "target": "hola",
@@ -16744,7 +16871,9 @@
                   "audioTarget": "Estoy bien, gracias.",
                   "answer": "Estoy bien, gracias.",
                   "alternatives": [
-                    "Bien, gracias."
+                    "Bien, gracias.",
+                    "Yo estoy bien, gracias.",
+                    "Muy bien, gracias."
                   ]
                 },
                 {
@@ -16836,7 +16965,10 @@
                   "prompt": "Viết bằng tiếng Tây Ban Nha: tạm biệt",
                   "audioTarget": "Adiós.",
                   "answer": "Adiós.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Hasta luego.",
+                    "Chao."
+                  ]
                 }
               ]
             },
@@ -17165,7 +17297,10 @@
                   "audioTarget": "Quiero un té.",
                   "answer": "Quiero un té.",
                   "alternatives": [
-                    "Quiero un té, por favor."
+                    "Quiero un té, por favor.",
+                    "Quiero una taza de té.",
+                    "Yo quiero un té.",
+                    "Quiero una taza de té, por favor."
                   ]
                 }
               ]
@@ -17418,7 +17553,8 @@
                   "audioTarget": "a la derecha",
                   "answer": "a la derecha",
                   "alternatives": [
-                    "derecha"
+                    "derecha",
+                    "la derecha"
                   ]
                 }
               ]
@@ -17744,7 +17880,10 @@
                   "answer": "¡Vale!",
                   "alternatives": [
                     "Vale.",
-                    "De acuerdo."
+                    "De acuerdo.",
+                    "Está bien.",
+                    "Bueno.",
+                    "Claro."
                   ]
                 }
               ]
@@ -17857,7 +17996,9 @@
                   "prompt": "Viết bằng tiếng Tây Ban Nha: hẹn gặp ở quảng trường.",
                   "audioTarget": "Nos vemos en la plaza.",
                   "answer": "Nos vemos en la plaza.",
-                  "alternatives": []
+                  "alternatives": [
+                    "Quedamos en la plaza."
+                  ]
                 }
               ]
             },

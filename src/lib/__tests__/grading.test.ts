@@ -87,6 +87,29 @@ describe("checkAnswer", () => {
     expect(checkAnswer(wordBank, [0, 1, 2, 3], "fr-en")).toBe(false);
     expect(checkAnswer(wordBank, "nope", "fr-en")).toBe(false);
   });
+
+  // P-ai-review (D-10): reviewer findings fr-vi / es-vi.
+  test("wordBank accepts an authored alternative order (another correct sentence from the same tiles)", () => {
+    const wb: Exercise = { ...wordBank, tokens: ["mañana", "El", "tren", "sale"], answer: ["El", "tren", "sale", "mañana"], alternatives: [["Mañana", "el", "tren", "sale"]] } as Exercise;
+    expect(checkAnswer(wb, [1, 2, 3, 0], "es-vi")).toBe(true);
+    expect(checkAnswer(wb, [0, 1, 2, 3], "es-vi")).toBe(true);
+    expect(checkAnswer(wb, [2, 1, 3, 0], "es-vi")).toBe(false);
+  });
+
+  test("typed Vietnamese folds đ like the other diacritics (\"dan ong\" = \"đàn ông\")", () => {
+    const vi: Exercise = { ...typeAnswer, answer: "Đàn ông", alternatives: [] } as Exercise;
+    expect(checkAnswer(vi, "dan ong", "fr-vi")).toBe(true);
+    expect(checkAnswer(vi, "đàn ông", "fr-vi")).toBe(true);
+  });
+
+  test("dictation ignores punctuation but keeps accents and spelling", () => {
+    const dict: Exercise = { type: "dictation", id: "d1", clipId: "x", answer: "hola", alternatives: [] } as unknown as Exercise;
+    expect(checkAnswer(dict, "¡Hola!", "es-vi")).toBe(true);
+    expect(checkAnswer(dict, "hola.", "es-vi")).toBe(true);
+    const accent: Exercise = { type: "dictation", id: "d2", clipId: "x", answer: "está", alternatives: [] } as unknown as Exercise;
+    expect(checkAnswer(accent, "esta", "es-vi")).toBe(false);
+    expect(checkAnswer(accent, "Está.", "es-vi")).toBe(true);
+  });
 });
 
 describe("answerIsReady / correctAnswerText", () => {

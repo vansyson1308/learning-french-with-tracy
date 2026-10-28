@@ -25,6 +25,7 @@
 | D‑3 | Đổi tên thương hiệu trung lập trước khi lên Play (anh chọn tên; package id có thể giữ). | Quyết định ở Phase 6 |
 | D‑4 | FSRS/từ điển/đánh giá khoá theo **ngôn ngữ đích** (fr dùng chung cho fr-en và fr-vi); tiến độ bài học theo khoá. | |
 | D‑5…D‑9 | Audio tổng hợp lúc build (Kokoro/MeloTTS/Piper, gate giấy phép); **mặc định không mạng**; miễn phí, sau này gói "ủng hộ"/gói thi mua một lần; ASR hệ thống + gói offline sherpa‑onnx + chấm phát âm GOP; LLM chỉ dạng ràng buộc, opt‑in. | Giữ nguyên như spec |
+| D‑10 | **Không thuê người duyệt bản ngữ (anh chốt 29/10/2026).** Nội dung do Claude đóng vai giáo viên bản ngữ duyệt, theo `prompts/P-ai-review.md`: agent duyệt riêng (ngữ cảnh mới), đáp án trước, audit độc lập 10 %, ghi `content/<lang>/REVIEW-AI.md`; mục chưa chắc vào OWNER-FINAL-CHECKLIST. App ghi trung thực: "Nội dung được AI kiểm duyệt kỹ, chưa qua giáo viên bản ngữ" — không bao giờ ghi "đã được người bản ngữ duyệt". Gate chỉ nhận `review.kind: "ai-simulated"` khi anh đã đánh ☑ dòng chấp nhận của khoá. | Chất lượng mục tiêu: rõ ràng trên mức beta; anh chấp nhận lỗi còn sót |
 | Exam track | Mỗi khoá có "lộ trình thi" tương ứng: DELF A1 (fr), DELE A1 (es), Goethe A1 (de), CILS/CELI A1 (it), CAPLE A1 (pt), JLPT N5 (ja), HSK 1–2 (zh), TOPIK I (ko), VSTEP/TOEIC cơ bản (en). | Chỉ dùng cấu trúc/định dạng đề công khai, không sao chép đề thật |
 
 ## 4. Lộ trình (chi tiết `08-ROADMAP.md`; mỗi milestone = 1 prompt trong `prompts/`)

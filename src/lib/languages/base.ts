@@ -27,6 +27,8 @@ export function normalizeLenientLatin(text: string): string {
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036F]/g, "")
+      // D-10 review: typed Vietnamese answers fold đ like the other marks ("dan ong" = "đàn ông"); no Latin target uses it.
+      .replace(/đ/g, "d")
       .replace(/œ/g, "oe")
       .replace(/æ/g, "ae")
       .replace(/[.,!?\u00BF\u00A1;:"'\u3001\u3002\uFF01\uFF1F\u00AB\u00BB\u201C\u201D\u2026]/g, "")

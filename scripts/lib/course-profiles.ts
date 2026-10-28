@@ -26,7 +26,7 @@ import type { CourseArtifactPaths, CourseCapabilities, CourseProfile } from "../
 import { audioCourseIds, parseAudioManifest, renderAudioSlice, renderCourseBundlesStatic, renderCourseLoaders, renderCourseModule } from "./course-bundles";
 import { resolveCourseRoles, type CourseRef, type CourseRole } from "./course-roles";
 import { buildLanguage } from "./languages";
-import { canonicalJson, courseIsBeta, courseProfileFlag, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
+import { canonicalJson, courseIsBeta, courseProfileFlag, courseReviewIsAi, courseRoleOf, readJson, safeResolve, type CompiledFile } from "./pipeline";
 
 export type LexiconDbInfo = { name: string; contentHash: string };
 
@@ -176,6 +176,8 @@ export function deriveProfiles(args: {
       ...(standalone || retired ? { hiddenFromOnboarding: true as const } : {}),
       // P3e §8: labelled beta in the app until a native review is recorded.
       ...(courseIsBeta(pack.id) ? { beta: true as const } : {}),
+      // D-10: an owner-accepted AI-simulated review — an honest note instead of the beta label.
+      ...(courseReviewIsAi(pack.id) ? { reviewNote: "ai-simulated" as const } : {}),
     };
   }
   return profiles;

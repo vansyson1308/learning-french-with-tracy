@@ -97,6 +97,8 @@ export type CourseProfile = {
   hiddenFromOnboarding?: true;
   /** P3e §8: content still under native review — the Learn tab shows a beta banner. */
   beta?: true;
+  /** D-10: reviewed by an AI-simulated native reviewer (owner-accepted) — course info and Licences show an honest note. */
+  reviewNote?: "ai-simulated";
   /**
    * The course whose pack-audio manifest entries this course plays (P2b):
    * set only for a course in a secondary native language — the audio is
