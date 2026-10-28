@@ -25,7 +25,8 @@ start=$SECONDS
   done
 ) &
 ticker=$!
-trap 'kill "$ticker" 2>/dev/null || true' EXIT
+# The ticker's pending `sleep` goes too, so no orphan holds the step's output open.
+trap 'pkill -P "$ticker" 2>/dev/null; kill "$ticker" 2>/dev/null || true' EXIT
 
 curl --fail --location --silent --show-error \
   --retry 5 --retry-all-errors --retry-delay 10 \

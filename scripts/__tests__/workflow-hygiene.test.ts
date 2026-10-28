@@ -82,8 +82,9 @@ describe("every hang becomes a failure", () => {
     const server = Bun.serve({ port: 0, fetch: () => new Response("x".repeat(100_000)) });
     try {
       const out = join(dir, "sub", "file.bin");
-      const proc = Bun.spawnSync(["bash", join(ROOT, "scripts/ci/fetch.sh"), `http://localhost:${server.port}/f`, out]);
-      expect(proc.exitCode).toBe(0);
+      // Async: a synchronous spawn would block the event loop serving the request.
+      const proc = Bun.spawn(["bash", join(ROOT, "scripts/ci/fetch.sh"), `http://localhost:${server.port}/f`, out], { stdout: "ignore", stderr: "inherit" });
+      expect(await proc.exited).toBe(0);
       expect(readFileSync(out, "utf8").length).toBe(100_000);
       expect(readdirSync(join(dir, "sub"))).toEqual(["file.bin"]);
     } finally {
