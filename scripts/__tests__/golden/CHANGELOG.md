@@ -598,3 +598,11 @@ A refactor must never appear in this file; only deliberate French changes do.
 ## 2026-10-28 — P5b graded stories: new artifacts src/content/stories/* (es, fr, fr-vi + sentence-audio modules) and content/reports/{,es/}stories-coverage.json; course profiles and artifact modules of es-vi, fr-en, fr-vi gain the stories capability and imports; Spanish story sentences keyed with storyPipelineVersion 4 (24 kbps). Existing French artifacts unchanged.
 
 - compile: changed  src/content/stories/es-stories.json
+
+## 2026-10-28 — audio.yml es generate (reception) run 40642656469
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/es/audio-census.json
+- compile: changed  content/reports/es/audio-quality.json
+- compile: changed  src/content/stories/es-stories.json
+- compile: changed  src/content/stories/es-story-assets.ts
