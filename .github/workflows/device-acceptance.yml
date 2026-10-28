@@ -37,6 +37,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  # Maven Central read timeouts stalled the x86_64 build for 41 min (2026-10-28): bounded
+  # HTTP (connect 60 s, read 120 s) with 5 retries; a stall now fails inside the step limit.
+  GRADLE_OPTS: -Dorg.gradle.internal.http.connectionTimeout=60000 -Dorg.gradle.internal.http.socketTimeout=120000 -Dorg.gradle.internal.repository.max.retries=5 -Dorg.gradle.internal.repository.initial.backoff=2000
   RC3_COMMIT: e5dcfd015c407bf445afae9d517661f367934104
   MAESTRO_VERSION: 2.12.0
   MAESTRO_SHA256: a6044a84542f522f434c5dc3d609e60c7446d423f3ed1b2ae513f5c48663ec5e
@@ -61,7 +64,15 @@ jobs:
           distribution: temurin
           java-version: "17"
       - run: bun install --frozen-lockfile
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('bun.lock', 'app.json') }}
+          restore-keys: gradle-${{ runner.os }}-
       - name: Generate the native project and build
+        timeout-minutes: 30 # normal 11-13 min
         run: |
           set -euo pipefail
           bunx expo prebuild --platform android --no-install --clean
@@ -101,6 +112,7 @@ jobs:
           java-version: "17"
       - name: Build RC3
         if: steps.cache.outputs.cache-hit != 'true'
+        timeout-minutes: 40
         working-directory: rc3
         run: |
           set -euo pipefail
