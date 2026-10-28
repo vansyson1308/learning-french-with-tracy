@@ -1,0 +1,3386 @@
+{
+  "version": 1,
+  "language": "de",
+  "order": [
+    "de.checkpoint.section-1",
+    "de.checkpoint.section-2",
+    "de.checkpoint.section-3",
+    "de.checkpoint.section-4",
+    "de.checkpoint.section-6",
+    "de.checkpoint.a1-capstone",
+    "de.checkpoint.section-5"
+  ],
+  "byId": {
+    "de.checkpoint.section-1": {
+      "id": "de.checkpoint.section-1",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "de-vi:section-1",
+      "title": "Kiểm tra Phần 1",
+      "description": "Thể hiện những gì bạn làm được với kiến thức nền — lời chào, từ hằng ngày, và đọc những câu tiếng Đức quen thuộc.",
+      "items": [
+        {
+          "id": "de.cpi.s1.greet_evening",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-greet_evening",
+            "mode": "nativeToTarget",
+            "prompt": "Bạn đến nhà hàng lúc tám giờ tối. Bạn nói gì?",
+            "options": [
+              {
+                "text": "Guten Abend!"
+              },
+              {
+                "text": "Guten Morgen!"
+              },
+              {
+                "text": "Tschüss!"
+              },
+              {
+                "text": "Danke!"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.greetings.basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.greet_leave",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-greet_leave",
+            "mode": "nativeToTarget",
+            "prompt": "Bạn rời khỏi một cửa hàng. Bạn nói gì?",
+            "options": [
+              {
+                "text": "Guten Tag!"
+              },
+              {
+                "text": "Auf Wiedersehen!"
+              },
+              {
+                "text": "Hallo!"
+              },
+              {
+                "text": "Bitte!"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.greetings.basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.greet_sorry",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-greet_sorry",
+            "mode": "nativeToTarget",
+            "prompt": "Bạn giẫm vào chân một người trên tàu. Bạn nói:",
+            "options": [
+              {
+                "text": "Danke!"
+              },
+              {
+                "text": "Willkommen!"
+              },
+              {
+                "text": "Entschuldigung!"
+              },
+              {
+                "text": "Gute Nacht!"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.greetings.basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.vocab_cheese",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-vocab_cheese",
+            "mode": "nativeToTarget",
+            "prompt": "phô mai",
+            "options": [
+              {
+                "text": "das Brot"
+              },
+              {
+                "text": "die Milch"
+              },
+              {
+                "text": "das Ei"
+              },
+              {
+                "text": "der Käse"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.vocab.everyday_basics"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.vocab_daughter",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-vocab_daughter",
+            "mode": "targetToNative",
+            "prompt": "die Tochter",
+            "audioTarget": "die Tochter",
+            "options": [
+              {
+                "text": "con gái"
+              },
+              {
+                "text": "con trai"
+              },
+              {
+                "text": "người mẹ"
+              },
+              {
+                "text": "chị/em gái"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.vocab.everyday_basics"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.vocab_juice",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-vocab_juice",
+            "mode": "nativeToTarget",
+            "prompt": "nước ép",
+            "options": [
+              {
+                "text": "der Tee"
+              },
+              {
+                "text": "der Saft"
+              },
+              {
+                "text": "das Wasser"
+              },
+              {
+                "text": "der Zucker"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.vocab.everyday_basics"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.read_boy",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-read_boy",
+            "mode": "targetToNative",
+            "prompt": "Der Junge trinkt Milch.",
+            "options": [
+              {
+                "text": "Cô bé uống sữa."
+              },
+              {
+                "text": "Cậu bé ăn bánh mì."
+              },
+              {
+                "text": "Cậu bé uống sữa."
+              },
+              {
+                "text": "Cậu bé uống nước."
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.reading.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.read_cat",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-read_cat",
+            "mode": "targetToNative",
+            "prompt": "Die Katze isst Fisch.",
+            "options": [
+              {
+                "text": "Con chó ăn cá."
+              },
+              {
+                "text": "Con mèo uống sữa."
+              },
+              {
+                "text": "Con mèo ăn bánh."
+              },
+              {
+                "text": "Con mèo ăn cá."
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.reading.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.read_family",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-read_family",
+            "mode": "targetToNative",
+            "prompt": "Meine Familie ist groß.",
+            "options": [
+              {
+                "text": "Gia đình tôi đông người."
+              },
+              {
+                "text": "Gia đình tôi nhỏ."
+              },
+              {
+                "text": "Bạn tôi cao."
+              },
+              {
+                "text": "Nhà tôi to."
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s1.place_airport",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-place_airport",
+            "mode": "nativeToTarget",
+            "prompt": "sân bay",
+            "options": [
+              {
+                "text": "der Bahnhof"
+              },
+              {
+                "text": "der Flughafen"
+              },
+              {
+                "text": "das Hotel"
+              },
+              {
+                "text": "das Museum"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.vocab.places_travel"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s1.place_ticket",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-place_ticket",
+            "mode": "targetToNative",
+            "prompt": "das Ticket",
+            "audioTarget": "das Ticket",
+            "options": [
+              {
+                "text": "tấm bản đồ"
+              },
+              {
+                "text": "chiếc xe đạp"
+              },
+              {
+                "text": "tấm vé"
+              },
+              {
+                "text": "con đường"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.vocab.places_travel"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s1.place_bus",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s1-place_bus",
+            "mode": "targetToNative",
+            "prompt": "Der Bus fährt in die Stadt.",
+            "options": [
+              {
+                "text": "Tàu chạy vào thành phố."
+              },
+              {
+                "text": "Xe buýt ở nhà ga."
+              },
+              {
+                "text": "Xe hơi chạy ra sân bay."
+              },
+              {
+                "text": "Xe buýt chạy vào thành phố."
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.vocab.places_travel"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "de.checkpoint.section-2": {
+      "id": "de.checkpoint.section-2",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "de-vi:section-2",
+      "title": "Kiểm tra Phần 2",
+      "description": "Kiểm tra những viên gạch nền: mạo từ der/die/das, sein và haben, đuôi động từ, số đếm và chính tả tiếng Đức.",
+      "items": [
+        {
+          "id": "de.cpi.s2.sein_wir",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "de-cpx-s2-sein_wir",
+            "sentence": "Wir ___ in Berlin.",
+            "translation": "Chúng tôi ở Berlin.",
+            "verb": "sein",
+            "cell": "pre:1p",
+            "answer": "sind",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.verbs.sein_haben_present",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.sein_du",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "de-cpx-s2-sein_du",
+            "sentence": "Du ___ sehr nett.",
+            "translation": "Bạn rất dễ thương.",
+            "verb": "sein",
+            "cell": "pre:2s",
+            "answer": "bist",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.verbs.sein_haben_present",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.haben_ich",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "de-cpx-s2-haben_ich",
+            "sentence": "Ich ___ einen Bruder.",
+            "translation": "Tôi có một anh/em trai.",
+            "verb": "haben",
+            "cell": "pre:1s",
+            "answer": "habe",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.verbs.sein_haben_present",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.wohnen_er",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "de-cpx-s2-wohnen_er",
+            "sentence": "Er ___ in Wien.",
+            "translation": "Anh ấy sống ở Wien.",
+            "verb": "wohnen",
+            "cell": "pre:3s",
+            "answer": "wohnt",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.verbs.regular_present",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.spielen_ihr",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "de-cpx-s2-spielen_ihr",
+            "sentence": "Ihr ___ gern Fußball.",
+            "translation": "Các bạn thích chơi bóng đá.",
+            "verb": "spielen",
+            "cell": "pre:2p",
+            "answer": "spielt",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.verbs.regular_present",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.sprechen_du",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "conjugationCloze",
+            "id": "de-cpx-s2-sprechen_du",
+            "sentence": "Du ___ gut Deutsch.",
+            "translation": "Bạn nói tiếng Đức giỏi.",
+            "verb": "sprechen",
+            "cell": "pre:2s",
+            "answer": "sprichst",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.verbs.regular_present",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.art_window",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "de-cpx-s2-art_window",
+            "articles": [
+              "der",
+              "die",
+              "das"
+            ],
+            "noun": "Fenster",
+            "gloss": "cửa sổ",
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.gender.articles_basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.art_kitchen",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "de-cpx-s2-art_kitchen",
+            "articles": [
+              "der",
+              "die",
+              "das"
+            ],
+            "noun": "Küche",
+            "gloss": "nhà bếp",
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.gender.articles_basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.art_chair",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "articleSelect",
+            "id": "de-cpx-s2-art_chair",
+            "articles": [
+              "der",
+              "die",
+              "das"
+            ],
+            "noun": "Stuhl",
+            "gloss": "cái ghế",
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.gender.articles_basic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.art_acc_bus",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "fillBlank",
+            "id": "de-cpx-s2-art_acc_bus",
+            "sentence": "Ich nehme ___ Bus.",
+            "translation": "Tôi đi xe buýt.",
+            "options": [
+              "den",
+              "der",
+              "das"
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.cases.accusative"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s2.art_acc_brother",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "fillBlank",
+            "id": "de-cpx-s2-art_acc_brother",
+            "sentence": "Ich habe ___ Bruder.",
+            "translation": "Tôi có một anh trai.",
+            "options": [
+              "ein",
+              "eine",
+              "einen"
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.cases.accusative"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s2.num_47",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "typeAnswer",
+            "id": "de-cpx-s2-num_47",
+            "mode": "produceTarget",
+            "prompt": "47",
+            "answer": "siebenundvierzig",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.numbers.0_100",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.num_16",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "typeAnswer",
+            "id": "de-cpx-s2-num_16",
+            "mode": "produceTarget",
+            "prompt": "16",
+            "answer": "sechzehn",
+            "alternatives": []
+          },
+          "objectiveTargets": [
+            "de.obj.numbers.0_100",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.num_30",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "typeAnswer",
+            "id": "de-cpx-s2-num_30",
+            "mode": "produceTarget",
+            "prompt": "30",
+            "answer": "dreißig",
+            "alternatives": [
+              "dreissig"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.numbers.0_100",
+            "de.obj.writing.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s2.spell_schoen",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "fillBlank",
+            "id": "de-cpx-s2-spell_schoen",
+            "sentence": "Das Wetter ist ___.",
+            "translation": "Thời tiết đẹp.",
+            "options": [
+              "schöne",
+              "schön",
+              "schon"
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.spelling.capitals_umlaut"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s2.spell_strasse",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "fillBlank",
+            "id": "de-cpx-s2-spell_strasse",
+            "sentence": "Ich wohne in der Haupt___.",
+            "translation": "Tôi sống ở phố Hauptstraße.",
+            "options": [
+              "straße",
+              "strase",
+              "Strasze"
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.spelling.capitals_umlaut"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s2.cog_hospital",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s2-cog_hospital",
+            "mode": "targetToNative",
+            "prompt": "das Krankenhaus",
+            "audioTarget": "das Krankenhaus",
+            "options": [
+              {
+                "text": "bệnh viện"
+              },
+              {
+                "text": "nhà nghỉ"
+              },
+              {
+                "text": "nhà hàng"
+              },
+              {
+                "text": "trường học"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.strategy.cognates_compounds"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s2.cog_get",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s2-cog_get",
+            "mode": "targetToNative",
+            "prompt": "Ich bekomme ein Geschenk.",
+            "options": [
+              {
+                "text": "Tôi trở thành một món quà."
+              },
+              {
+                "text": "Tôi nhận được một món quà."
+              },
+              {
+                "text": "Tôi mua một món quà."
+              },
+              {
+                "text": "Tôi làm mất một món quà."
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.strategy.cognates_compounds"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "de.checkpoint.section-3": {
+      "id": "de.checkpoint.section-3",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "de-vi:section-3",
+      "title": "Kiểm tra Phần 3",
+      "description": "Nghe và đọc: từ quen thuộc, thông báo, đoạn hội thoại ngắn, tin nhắn, biển báo và đoạn văn ngắn.",
+      "items": [
+        {
+          "id": "de.cpi.s3.fam_bahnhof",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-fam_bahnhof",
+            "clipId": "de.clip.cp3_bahnhof",
+            "question": "Bạn nghe thấy gì?",
+            "options": [
+              {
+                "text": "khách sạn"
+              },
+              {
+                "text": "sân bay"
+              },
+              {
+                "text": "nhà ga"
+              },
+              {
+                "text": "bảo tàng"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.fam_kaese",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-fam_kaese",
+            "clipId": "de.clip.cp3_kaese",
+            "question": "Bạn nghe thấy gì?",
+            "options": [
+              {
+                "text": "bánh mì"
+              },
+              {
+                "text": "trứng"
+              },
+              {
+                "text": "sữa"
+              },
+              {
+                "text": "phô mai"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.listening.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.fam_dikt_nacht",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "dictation",
+            "id": "de-cpx-s3-fam_dikt_nacht",
+            "clipId": "de.clip.cp3_dikt_nacht",
+            "answer": "die Nacht",
+            "alternatives": [
+              "Nacht"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.listening.familiar_words"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.info_preis",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-info_preis",
+            "clipId": "de.clip.cp3_preis",
+            "question": "Cà phê giá bao nhiêu?",
+            "options": [
+              {
+                "text": "Ba euro"
+              },
+              {
+                "text": "Hai euro"
+              },
+              {
+                "text": "Mười ba euro"
+              },
+              {
+                "text": "Ba mươi euro"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.info_kurs",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-info_kurs",
+            "clipId": "de.clip.cp3_kurs",
+            "question": "Khoá học tiếng Đức bắt đầu lúc mấy giờ?",
+            "options": [
+              {
+                "text": "Lúc mười giờ"
+              },
+              {
+                "text": "Lúc chín giờ"
+              },
+              {
+                "text": "Lúc một giờ"
+              },
+              {
+                "text": "Lúc mười chín giờ"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.info_party",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-info_party",
+            "clipId": "de.clip.cp3_party",
+            "question": "Bữa tiệc vào ngày nào?",
+            "options": [
+              {
+                "text": "Thứ Sáu"
+              },
+              {
+                "text": "Chủ nhật"
+              },
+              {
+                "text": "Thứ Bảy"
+              },
+              {
+                "text": "Thứ Hai"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.ann_gleis",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-ann_gleis",
+            "clipId": "de.clip.cp3_gleis",
+            "question": "Tàu đi Berlin chạy từ đường ray số mấy?",
+            "options": [
+              {
+                "text": "Số hai"
+              },
+              {
+                "text": "Số tám"
+              },
+              {
+                "text": "Số mười ba"
+              },
+              {
+                "text": "Số ba"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.ann_laden",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-ann_laden",
+            "clipId": "de.clip.cp3_laden",
+            "question": "Siêu thị đóng cửa khi nào?",
+            "options": [
+              {
+                "text": "Sau mười phút nữa"
+              },
+              {
+                "text": "Sau hai phút nữa"
+              },
+              {
+                "text": "Lúc mười giờ"
+              },
+              {
+                "text": "Ngày mai"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.ann_buch",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-ann_buch",
+            "clipId": "de.clip.cp3_buch",
+            "question": "Bạn phải mở sách trang mấy?",
+            "options": [
+              {
+                "text": "Trang mười hai"
+              },
+              {
+                "text": "Trang hai mươi"
+              },
+              {
+                "text": "Trang hai"
+              },
+              {
+                "text": "Trang ba mươi"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.ann_dikt_zug",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "dictation",
+            "id": "de-cpx-s3-ann_dikt_zug",
+            "clipId": "de.clip.cp3_dikt_zug",
+            "answer": "Der Zug kommt.",
+            "alternatives": [
+              "Der Zug kommt",
+              "der Zug kommt"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.dlg_tee",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-dlg_tee",
+            "clipId": "de.clip.cp3_dlg_tee",
+            "question": "Người thứ hai muốn uống gì?",
+            "options": [
+              {
+                "text": "Cà phê"
+              },
+              {
+                "text": "Nước"
+              },
+              {
+                "text": "Trà"
+              },
+              {
+                "text": "Sữa"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.dlg_wohnen",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-dlg_wohnen",
+            "clipId": "de.clip.cp3_dlg_wohnen",
+            "question": "Người thứ hai sống ở đâu?",
+            "options": [
+              {
+                "text": "Ở Hà Nội"
+              },
+              {
+                "text": "Ở Berlin"
+              },
+              {
+                "text": "Ở München"
+              },
+              {
+                "text": "Ở Hamburg"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.dlg_kino",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-s3-dlg_kino",
+            "clipId": "de.clip.cp3_dlg_kino",
+            "question": "Họ đi xem phim vào ngày nào?",
+            "options": [
+              {
+                "text": "Chủ nhật"
+              },
+              {
+                "text": "Thứ Sáu"
+              },
+              {
+                "text": "Thứ Bảy"
+              },
+              {
+                "text": "Hôm nay"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.msg_wohin",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-s3-msg_wohin",
+            "readingId": "de.read.cp3_nachricht_jonas",
+            "question": "Jonas đi đâu vào Chủ nhật?",
+            "options": [
+              {
+                "text": "Đi München bằng xe buýt"
+              },
+              {
+                "text": "Đi München bằng tàu"
+              },
+              {
+                "text": "Đến nhà Mia"
+              },
+              {
+                "text": "Đi làm"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.msg_uhr",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-s3-msg_uhr",
+            "readingId": "de.read.cp3_nachricht_jonas",
+            "question": "Tàu chạy lúc mấy giờ?",
+            "options": [
+              {
+                "text": "Lúc sáu giờ"
+              },
+              {
+                "text": "Lúc mười giờ"
+              },
+              {
+                "text": "Lúc tám giờ"
+              },
+              {
+                "text": "Lúc mười tám giờ"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.msg_cafe",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s3-msg_cafe",
+            "mode": "targetToNative",
+            "prompt": "Das Café ist heute geschlossen.",
+            "options": [
+              {
+                "text": "Hôm nay quán cà phê mở cửa."
+              },
+              {
+                "text": "Ngày mai quán cà phê đóng cửa."
+              },
+              {
+                "text": "Quán cà phê ở cạnh nhà ga."
+              },
+              {
+                "text": "Hôm nay quán cà phê đóng cửa."
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.note_samstag",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-s3-note_samstag",
+            "readingId": "de.read.cp3_schild_bibliothek",
+            "question": "Thứ Bảy thư viện mở cửa giờ nào?",
+            "options": [
+              {
+                "text": "Từ 10 đến 14 giờ"
+              },
+              {
+                "text": "Từ 9 đến 19 giờ"
+              },
+              {
+                "text": "Cả ngày"
+              },
+              {
+                "text": "Đóng cửa"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.note_zu",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-s3-note_zu",
+            "readingId": "de.read.cp3_schild_bibliothek",
+            "question": "Ngày nào thư viện đóng cửa?",
+            "options": [
+              {
+                "text": "Thứ Hai"
+              },
+              {
+                "text": "Chủ nhật"
+              },
+              {
+                "text": "Thứ Bảy"
+              },
+              {
+                "text": "Thứ Sáu"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.note_rauchen",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "select",
+            "id": "de-cpx-s3-note_rauchen",
+            "mode": "targetToNative",
+            "prompt": "Bitte nicht rauchen!",
+            "options": [
+              {
+                "text": "Xin hãy đợi!"
+              },
+              {
+                "text": "Xin đừng chạy!"
+              },
+              {
+                "text": "Xin đừng hút thuốc!"
+              },
+              {
+                "text": "Xin mời vào!"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.text_anna_wo",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-s3-text_anna_wo",
+            "readingId": "de.read.cp3_text_anna",
+            "question": "Anna sống ở đâu?",
+            "options": [
+              {
+                "text": "Ở Berlin"
+              },
+              {
+                "text": "Ở Wien"
+              },
+              {
+                "text": "Ở Hamburg"
+              },
+              {
+                "text": "Ở Köln"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_texts"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.text_anna_kinder",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-s3-text_anna_kinder",
+            "readingId": "de.read.cp3_text_anna",
+            "question": "Anna có mấy đứa con?",
+            "options": [
+              {
+                "text": "Hai"
+              },
+              {
+                "text": "Một"
+              },
+              {
+                "text": "Ba"
+              },
+              {
+                "text": "Không có"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_texts"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s3.text_paul",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-s3-text_paul",
+            "readingId": "de.read.cp3_text_paul",
+            "question": "Paul đi làm bằng gì?",
+            "options": [
+              {
+                "text": "Bằng tàu"
+              },
+              {
+                "text": "Bằng xe buýt"
+              },
+              {
+                "text": "Bằng xe đạp"
+              },
+              {
+                "text": "Đi bộ"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_texts"
+          ],
+          "essential": true
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "de.checkpoint.section-4": {
+      "id": "de.checkpoint.section-4",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "de-vi:section-4",
+      "title": "Kiểm tra Phần 4",
+      "description": "Nói thành tiếng: chào hỏi, giới thiệu bản thân, nói thông tin và tả đồ vật.",
+      "items": [
+        {
+          "id": "de.cpi.s4.greet_evening",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-greet_evening",
+            "speechItemId": "de.speak.cp4_greet_evening",
+            "instruction": "Bạn bước vào nhà hàng lúc tám giờ tối. Hãy chào người phục vụ.",
+            "target": "Guten Abend",
+            "acceptedVariants": [
+              "Guten Abend",
+              "Hallo, guten Abend"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.formulaic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.thanks",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-thanks",
+            "speechItemId": "de.speak.cp4_thanks",
+            "instruction": "Có người đưa cho bạn một cốc nước. Hãy cảm ơn.",
+            "target": "Danke",
+            "acceptedVariants": [
+              "Danke",
+              "Danke schön",
+              "Vielen Dank",
+              "Danke sehr"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.formulaic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.sorry",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-sorry",
+            "speechItemId": "de.speak.cp4_sorry",
+            "instruction": "Bạn va vào một người trên phố. Hãy xin lỗi.",
+            "target": "Entschuldigung",
+            "acceptedVariants": [
+              "Entschuldigung",
+              "Entschuldigen Sie",
+              "Oh, Entschuldigung"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.formulaic"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.name",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-name",
+            "speechItemId": "de.speak.cp4_name",
+            "instruction": "Hãy nói tên của bạn.",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Lan"
+              }
+            ],
+            "target": "Ich heiße Lan",
+            "acceptedVariants": [
+              "Ich heiße Lan",
+              "Mein Name ist Lan",
+              "Ich bin Lan"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.self_intro"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.from",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-from",
+            "speechItemId": "de.speak.cp4_from",
+            "instruction": "Hãy nói bạn đến từ đâu.",
+            "cueFacts": [
+              {
+                "label": "Quê",
+                "value": "Việt Nam"
+              }
+            ],
+            "target": "Ich komme aus Vietnam",
+            "acceptedVariants": [
+              "Ich komme aus Vietnam",
+              "Ich bin aus Vietnam"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.self_intro"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.live",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-live",
+            "speechItemId": "de.speak.cp4_live",
+            "instruction": "Hãy nói bạn sống ở đâu.",
+            "cueFacts": [
+              {
+                "label": "Thành phố",
+                "value": "Leipzig"
+              }
+            ],
+            "target": "Ich wohne in Leipzig",
+            "acceptedVariants": [
+              "Ich wohne in Leipzig",
+              "Ich lebe in Leipzig"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.self_intro"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.time",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-time",
+            "speechItemId": "de.speak.cp4_time",
+            "instruction": "Hãy nói bây giờ là mấy giờ.",
+            "cueFacts": [
+              {
+                "label": "Giờ",
+                "value": "9:00"
+              }
+            ],
+            "target": "Es ist neun Uhr",
+            "acceptedVariants": [
+              "Es ist neun Uhr",
+              "Es ist neun",
+              "Neun Uhr"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.price",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-price",
+            "speechItemId": "de.speak.cp4_price",
+            "instruction": "Hãy nói cái bánh giá bao nhiêu.",
+            "cueFacts": [
+              {
+                "label": "Giá",
+                "value": "5 €"
+              }
+            ],
+            "target": "Der Kuchen kostet fünf Euro",
+            "acceptedVariants": [
+              "Der Kuchen kostet fünf Euro",
+              "Er kostet fünf Euro",
+              "Fünf Euro"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.age",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-age",
+            "speechItemId": "de.speak.cp4_age",
+            "instruction": "Hãy nói bạn bao nhiêu tuổi.",
+            "cueFacts": [
+              {
+                "label": "Tuổi",
+                "value": "25"
+              }
+            ],
+            "target": "Ich bin fünfundzwanzig Jahre alt",
+            "acceptedVariants": [
+              "Ich bin fünfundzwanzig Jahre alt",
+              "Ich bin fünfundzwanzig"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s4.dog",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-dog",
+            "speechItemId": "de.speak.cp4_dog",
+            "instruction": "Hãy nói con chó trong hình nhỏ.",
+            "cueEmoji": "🐕",
+            "target": "Der Hund ist klein",
+            "acceptedVariants": [
+              "Der Hund ist klein",
+              "Das ist ein kleiner Hund"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.describe"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s4.car",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-car",
+            "speechItemId": "de.speak.cp4_car",
+            "instruction": "Hãy nói chiếc xe hơi trong hình mới.",
+            "cueEmoji": "🚗✨",
+            "target": "Das Auto ist neu",
+            "acceptedVariants": [
+              "Das Auto ist neu",
+              "Das ist ein neues Auto"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.describe"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s4.city",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-s4-city",
+            "speechItemId": "de.speak.cp4_city",
+            "instruction": "Hãy nói thành phố trong hình đẹp.",
+            "cueEmoji": "🏙️",
+            "target": "Die Stadt ist schön",
+            "acceptedVariants": [
+              "Die Stadt ist schön",
+              "Das ist eine schöne Stadt"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.describe"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "de.checkpoint.section-6": {
+      "id": "de.checkpoint.section-6",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "de-vi:section-6",
+      "title": "Kiểm tra Phần 6",
+      "description": "Hội thoại: trò chuyện hằng ngày và lo những việc thiết thực bằng tiếng Đức.",
+      "items": [
+        {
+          "id": "de.cpi.s6.kurs",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-s6-kurs",
+            "scenarioId": "de.scenario.cp_kurs"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s6.nachbarin",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-s6-nachbarin",
+            "scenarioId": "de.scenario.cp_nachbarin"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s6.party",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-s6-party",
+            "scenarioId": "de.scenario.cp_party"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s6.cafe",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-s6-cafe",
+            "scenarioId": "de.scenario.cp_cafe"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.practical_needs"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s6.fahrkarte",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-s6-fahrkarte",
+            "scenarioId": "de.scenario.cp_fahrkarte"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.practical_needs"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s6.apotheke",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-s6-apotheke",
+            "scenarioId": "de.scenario.cp_apotheke"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.practical_needs"
+          ],
+          "essential": true
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 3,
+        "demonstratedShare": 0.66
+      }
+    },
+    "de.checkpoint.a1-capstone": {
+      "id": "de.checkpoint.a1-capstone",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "de-vi:section-6",
+      "title": "Bài tổng kết A1",
+      "description": "Bài tổng kết: nghe, đọc, nói, viết và hội thoại — mỗi kỹ năng một phần nhỏ. Kết quả là ước tính theo khung CEFR, không phải chứng chỉ.",
+      "items": [
+        {
+          "id": "de.cpi.cap.listen_museum",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-cap-listen_museum",
+            "clipId": "de.clip.a1cap_museum",
+            "question": "Bảo tàng mở cửa giờ nào?",
+            "options": [
+              {
+                "text": "Từ tám giờ đến mười giờ"
+              },
+              {
+                "text": "Cả ngày lẫn đêm"
+              },
+              {
+                "text": "Từ mười giờ đến mười tám giờ"
+              },
+              {
+                "text": "Từ hai giờ đến tám giờ"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.listen_bus",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-cap-listen_bus",
+            "clipId": "de.clip.a1cap_bus",
+            "question": "Hôm nay xe buýt số mười hai thế nào?",
+            "options": [
+              {
+                "text": "Đến sớm hai mươi phút"
+              },
+              {
+                "text": "Không chạy"
+              },
+              {
+                "text": "Đến muộn mười hai phút"
+              },
+              {
+                "text": "Đến muộn hai mươi phút"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.listen_apotheke",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-cap-listen_apotheke",
+            "clipId": "de.clip.a1cap_apotheke",
+            "question": "Hiệu thuốc ở đâu?",
+            "options": [
+              {
+                "text": "Ở phố Goethe, cạnh bưu điện"
+              },
+              {
+                "text": "Ở nhà ga"
+              },
+              {
+                "text": "Cạnh siêu thị"
+              },
+              {
+                "text": "Ở phố Goethe, cạnh ngân hàng"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.listen_preis",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-cpx-cap-listen_preis",
+            "clipId": "de.clip.a1cap_preis",
+            "question": "Một ký táo giá bao nhiêu?",
+            "options": [
+              {
+                "text": "Mười hai euro"
+              },
+              {
+                "text": "Hai euro"
+              },
+              {
+                "text": "Một euro"
+              },
+              {
+                "text": "Hai mươi euro"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.read_vater_wo",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-cap-read_vater_wo",
+            "readingId": "de.read.a1cap_zettel_vater",
+            "question": "Bố đang ở đâu?",
+            "options": [
+              {
+                "text": "Ở nhà"
+              },
+              {
+                "text": "Ở chỗ làm"
+              },
+              {
+                "text": "Ở siêu thị"
+              },
+              {
+                "text": "Ở nhà ga"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.read_vater_wann",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-cap-read_vater_wann",
+            "readingId": "de.read.a1cap_zettel_vater",
+            "question": "Mấy giờ bố về nhà?",
+            "options": [
+              {
+                "text": "Lúc bảy giờ"
+              },
+              {
+                "text": "Lúc sáu giờ rưỡi"
+              },
+              {
+                "text": "Lúc mười sáu giờ"
+              },
+              {
+                "text": "Lúc sáu giờ"
+              }
+            ],
+            "correct": 3
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.read_einl_was",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-cap-read_einl_was",
+            "readingId": "de.read.a1cap_einladung",
+            "question": "Vì sao Lisa làm tiệc?",
+            "options": [
+              {
+                "text": "Vì là sinh nhật Lisa"
+              },
+              {
+                "text": "Vì Mai đến chơi"
+              },
+              {
+                "text": "Vì là cuối tuần"
+              },
+              {
+                "text": "Vì có khách"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.read_einl_bring",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-cpx-cap-read_einl_bring",
+            "readingId": "de.read.a1cap_einladung",
+            "question": "Mai nên mang gì đến?",
+            "options": [
+              {
+                "text": "Bánh"
+              },
+              {
+                "text": "Nhạc"
+              },
+              {
+                "text": "Hoa"
+              },
+              {
+                "text": "Đồ uống"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.speak_time",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-cap-speak_time",
+            "speechItemId": "de.speak.a1cap_time",
+            "instruction": "Hãy nói bây giờ là mấy giờ.",
+            "cueFacts": [
+              {
+                "label": "Giờ",
+                "value": "10:00"
+              }
+            ],
+            "target": "Es ist zehn Uhr",
+            "acceptedVariants": [
+              "Es ist zehn Uhr",
+              "Es ist zehn",
+              "Zehn Uhr"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.speak_price",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-cap-speak_price",
+            "speechItemId": "de.speak.a1cap_price",
+            "instruction": "Hãy nói cuốn sách giá bao nhiêu.",
+            "cueFacts": [
+              {
+                "label": "Giá",
+                "value": "12 €"
+              }
+            ],
+            "target": "Das Buch kostet zwölf Euro",
+            "acceptedVariants": [
+              "Das Buch kostet zwölf Euro",
+              "Es kostet zwölf Euro",
+              "Zwölf Euro"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.speak_count",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-cap-speak_count",
+            "speechItemId": "de.speak.a1cap_count",
+            "instruction": "Hãy nói bạn có mấy anh chị em.",
+            "cueFacts": [
+              {
+                "label": "Anh chị em",
+                "value": "2"
+              }
+            ],
+            "target": "Ich habe zwei Geschwister",
+            "acceptedVariants": [
+              "Ich habe zwei Geschwister",
+              "Ich habe zwei Brüder",
+              "Zwei"
+            ],
+            "requiredConcepts": [
+              [
+                "zwei",
+                "2"
+              ]
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.speak_day",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-cpx-cap-speak_day",
+            "speechItemId": "de.speak.a1cap_day",
+            "instruction": "Hãy nói hôm nay là thứ mấy.",
+            "cueFacts": [
+              {
+                "label": "Hôm nay",
+                "value": "thứ Hai"
+              }
+            ],
+            "target": "Heute ist Montag",
+            "acceptedVariants": [
+              "Heute ist Montag",
+              "Es ist Montag",
+              "Montag"
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.give_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.write_note_train",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-cap-write_note_train",
+            "writingTaskId": "de.write.a1cap_note_train",
+            "writingMode": "guided",
+            "instruction": "Hãy viết lời nhắn ngắn cho Paul: chào anh ấy, và nói rằng tàu chạy lúc chín giờ.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "Paul"
+              },
+              {
+                "label": "Việc gì",
+                "value": "tàu hoả"
+              },
+              {
+                "label": "Giờ",
+                "value": "9:00"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "hallo",
+                    "hi",
+                    "liebe",
+                    "lieber",
+                    "guten tag",
+                    "guten morgen"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "addressee",
+                  "description": "tên người nhận",
+                  "variants": [
+                    "paul"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "what",
+                  "description": "tàu hoả",
+                  "variants": [
+                    "zug"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "time",
+                  "description": "giờ",
+                  "variants": [
+                    "um neun",
+                    "um 9"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Hallo Paul, der Zug fährt um neun Uhr."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.write_note_shop",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-cap-write_note_shop",
+            "writingTaskId": "de.write.a1cap_note_shop",
+            "writingMode": "guided",
+            "instruction": "Hãy nhắn cho Anna: chào, nói bạn đang ở cửa hàng và về nhà lúc năm giờ.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "Anna"
+              },
+              {
+                "label": "Ở đâu",
+                "value": "cửa hàng"
+              },
+              {
+                "label": "Giờ",
+                "value": "5:00"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "hallo",
+                    "hi",
+                    "liebe",
+                    "lieber",
+                    "guten tag",
+                    "guten morgen"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "place",
+                  "description": "cửa hàng",
+                  "variants": [
+                    "geschäft",
+                    "laden",
+                    "supermarkt"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "time",
+                  "description": "giờ về",
+                  "variants": [
+                    "um fünf",
+                    "um 5",
+                    "um 17 uhr"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Hallo Anna, ich bin im Geschäft. Um fünf bin ich zu Hause."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.write_note_cafe",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-cap-write_note_cafe",
+            "writingTaskId": "de.write.a1cap_note_cafe",
+            "writingMode": "guided",
+            "instruction": "Hãy nhắn cho Ben: hẹn gặp ở quán cà phê vào thứ Sáu, rồi chào kết.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "Ben"
+              },
+              {
+                "label": "Ở đâu",
+                "value": "quán cà phê"
+              },
+              {
+                "label": "Ngày",
+                "value": "thứ Sáu"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "place",
+                  "description": "quán cà phê",
+                  "variants": [
+                    "café",
+                    "kaffee"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "day",
+                  "description": "ngày hẹn",
+                  "variants": [
+                    "freitag"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "closing",
+                  "description": "lời chào kết",
+                  "variants": [
+                    "bis bald",
+                    "tschüss",
+                    "viele grüße",
+                    "liebe grüße",
+                    "bis dann",
+                    "bis morgen"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Hallo Ben, wir treffen uns am Freitag im Café. Bis dann!"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.write_note_late",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-cap-write_note_late",
+            "writingTaskId": "de.write.a1cap_note_late",
+            "writingMode": "guided",
+            "instruction": "Hãy nhắn cho thầy giáo: chào, nói rằng hôm nay bạn đến muộn mười phút.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "thầy Becker"
+              },
+              {
+                "label": "Muộn",
+                "value": "10 phút"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "guten tag",
+                    "guten morgen",
+                    "hallo",
+                    "lieber herr becker",
+                    "sehr geehrter herr becker"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "late",
+                  "description": "đến muộn",
+                  "variants": [
+                    "später",
+                    "spät"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "minutes",
+                  "description": "mười phút",
+                  "variants": [
+                    "zehn minuten",
+                    "10 minuten"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Guten Morgen, Herr Becker, ich komme heute zehn Minuten später."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.talk_nachbar",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-cap-talk_nachbar",
+            "scenarioId": "de.scenario.a1cap_nachbar"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.talk_telefon",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-cap-talk_telefon",
+            "scenarioId": "de.scenario.a1cap_telefon"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.talk_julia",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-cap-talk_julia",
+            "scenarioId": "de.scenario.a1cap_julia"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.cap.talk_arzt",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-cpx-cap-talk_arzt",
+            "scenarioId": "de.scenario.a1cap_arzt"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "essential": true
+        }
+      ],
+      "forms": [
+        {
+          "formId": "a",
+          "itemIds": [
+            "de.cpi.cap.listen_museum",
+            "de.cpi.cap.listen_bus",
+            "de.cpi.cap.read_vater_wo",
+            "de.cpi.cap.read_vater_wann",
+            "de.cpi.cap.speak_time",
+            "de.cpi.cap.speak_price",
+            "de.cpi.cap.write_note_train",
+            "de.cpi.cap.write_note_shop",
+            "de.cpi.cap.talk_nachbar",
+            "de.cpi.cap.talk_telefon"
+          ]
+        },
+        {
+          "formId": "b",
+          "itemIds": [
+            "de.cpi.cap.listen_apotheke",
+            "de.cpi.cap.listen_preis",
+            "de.cpi.cap.read_einl_was",
+            "de.cpi.cap.read_einl_bring",
+            "de.cpi.cap.speak_count",
+            "de.cpi.cap.speak_day",
+            "de.cpi.cap.write_note_cafe",
+            "de.cpi.cap.write_note_late",
+            "de.cpi.cap.talk_julia",
+            "de.cpi.cap.talk_arzt"
+          ]
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    },
+    "de.checkpoint.section-5": {
+      "id": "de.checkpoint.section-5",
+      "checkpointVersion": 1,
+      "formVersion": 1,
+      "sectionId": "de-vi:section-5",
+      "title": "Kiểm tra Phần 5",
+      "description": "Viết: giới thiệu bản thân, câu ngắn, tin nhắn ngắn và điền biểu mẫu.",
+      "items": [
+        {
+          "id": "de.cpi.s5.profile_lan",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-profile_lan",
+            "writingTaskId": "de.write.cp5_profile_lan",
+            "writingMode": "guided",
+            "instruction": "Bạn là Lan. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh.",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Lan"
+              },
+              {
+                "label": "Tuổi",
+                "value": "28"
+              },
+              {
+                "label": "Thành phố",
+                "value": "Leipzig"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "tên",
+                  "variants": [
+                    "ich heiße lan",
+                    "mein name ist lan",
+                    "ich bin lan"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "tuổi",
+                  "variants": [
+                    "28",
+                    "achtundzwanzig"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "thành phố",
+                  "variants": [
+                    "in leipzig"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 8,
+              "maxTokens": 30,
+              "requireSentenceVerbs": [
+                "heiße",
+                "bin",
+                "wohne",
+                "lebe"
+              ]
+            },
+            "modelAnswers": [
+              "Ich heiße Lan. Ich bin 28 Jahre alt. Ich wohne in Leipzig."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.personal_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.profile_tuan",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-profile_tuan",
+            "writingTaskId": "de.write.cp5_profile_tuan",
+            "writingMode": "guided",
+            "instruction": "Bạn là Tuấn. Hãy viết về bạn: tên, quê và nơi bạn sống.",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Tuấn"
+              },
+              {
+                "label": "Quê",
+                "value": "Việt Nam"
+              },
+              {
+                "label": "Thành phố",
+                "value": "Dresden"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "tên",
+                  "variants": [
+                    "ich heiße tuấn",
+                    "mein name ist tuấn",
+                    "ich bin tuấn"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "from",
+                  "description": "quê",
+                  "variants": [
+                    "aus vietnam"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "thành phố",
+                  "variants": [
+                    "in dresden"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 8,
+              "maxTokens": 30,
+              "requireSentenceVerbs": [
+                "heiße",
+                "komme",
+                "wohne",
+                "bin",
+                "lebe"
+              ]
+            },
+            "modelAnswers": [
+              "Ich heiße Tuấn. Ich komme aus Vietnam und wohne in Dresden."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.personal_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.profile_mai",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-profile_mai",
+            "writingTaskId": "de.write.cp5_profile_mai",
+            "writingMode": "guided",
+            "instruction": "Bạn là Mai. Hãy viết tên của bạn và những tiếng bạn nói.",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Mai"
+              },
+              {
+                "label": "Ngôn ngữ",
+                "value": "tiếng Việt, tiếng Đức"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "tên",
+                  "variants": [
+                    "ich heiße mai",
+                    "mein name ist mai",
+                    "ich bin mai"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "vi",
+                  "description": "tiếng Việt",
+                  "variants": [
+                    "vietnamesisch"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "de",
+                  "description": "tiếng Đức",
+                  "variants": [
+                    "deutsch"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 6,
+              "maxTokens": 25,
+              "requireSentenceVerbs": [
+                "heiße",
+                "spreche",
+                "bin"
+              ]
+            },
+            "modelAnswers": [
+              "Ich heiße Mai. Ich spreche Vietnamesisch und Deutsch."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.personal_info"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.like_music",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-like_music",
+            "writingTaskId": "de.write.cp5_like_music",
+            "writingMode": "guided",
+            "instruction": "Hãy viết một câu nói rằng bạn thích nghe nhạc.",
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "music",
+                  "description": "nghe nhạc",
+                  "variants": [
+                    "musik"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "like",
+                  "description": "bạn thích",
+                  "variants": [
+                    "gern",
+                    "gerne",
+                    "mag",
+                    "liebe"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 3,
+              "maxTokens": 12,
+              "requireSentenceVerbs": [
+                "höre",
+                "mag",
+                "liebe"
+              ]
+            },
+            "modelAnswers": [
+              "Ich höre gern Musik."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.phrases_sentences"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.sister",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-sister",
+            "writingTaskId": "de.write.cp5_sister",
+            "writingMode": "guided",
+            "instruction": "Hãy viết hai câu về chị gái bạn: tên chị ấy là Hoa và chị ấy làm việc ở Berlin.",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Hoa"
+              },
+              {
+                "label": "Thành phố",
+                "value": "Berlin"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "tên chị gái",
+                  "variants": [
+                    "sie heißt hoa",
+                    "ihr name ist hoa",
+                    "meine schwester heißt hoa"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "work",
+                  "description": "nơi làm việc",
+                  "variants": [
+                    "arbeitet in berlin"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20,
+              "requireSentenceVerbs": [
+                "heißt",
+                "arbeitet",
+                "ist"
+              ]
+            },
+            "modelAnswers": [
+              "Meine Schwester heißt Hoa. Sie arbeitet in Berlin."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.phrases_sentences"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.room",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-room",
+            "writingTaskId": "de.write.cp5_room",
+            "writingMode": "guided",
+            "instruction": "Hãy viết hai câu tả căn phòng: cái giường to, cái bàn nhỏ.",
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "bed",
+                  "description": "cái giường to",
+                  "variants": [
+                    "das bett ist groß",
+                    "das bett ist gross"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "table",
+                  "description": "cái bàn nhỏ",
+                  "variants": [
+                    "der tisch ist klein"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 6,
+              "maxTokens": 16,
+              "requireSentenceVerbs": [
+                "ist"
+              ]
+            },
+            "modelAnswers": [
+              "Das Bett ist groß. Der Tisch ist klein."
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.phrases_sentences"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.msg_kino",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-msg_kino",
+            "writingTaskId": "de.write.cp5_msg_kino",
+            "writingMode": "guided",
+            "instruction": "Hãy viết lời nhắn cho Tom: chào anh ấy, rồi hẹn đi xem phim lúc tám giờ.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "Tom"
+              },
+              {
+                "label": "Việc gì",
+                "value": "xem phim"
+              },
+              {
+                "label": "Giờ",
+                "value": "8:00"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "hallo",
+                    "hi",
+                    "liebe",
+                    "lieber",
+                    "guten tag",
+                    "guten morgen"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "addressee",
+                  "description": "tên người nhận",
+                  "variants": [
+                    "tom"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "what",
+                  "description": "xem phim",
+                  "variants": [
+                    "kino",
+                    "film"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "time",
+                  "description": "giờ hẹn",
+                  "variants": [
+                    "um acht",
+                    "um 8",
+                    "um 20 uhr",
+                    "um zwanzig uhr"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Hallo Tom, gehen wir um acht Uhr ins Kino?"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.msg_oma",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-msg_oma",
+            "writingTaskId": "de.write.cp5_msg_oma",
+            "writingMode": "guided",
+            "instruction": "Hãy nhắn cho bà: chào bà, nói rằng bạn đến vào Chủ nhật, rồi chào kết.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "bà (Oma)"
+              },
+              {
+                "label": "Ngày",
+                "value": "Chủ nhật"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "hallo",
+                    "hi",
+                    "liebe",
+                    "lieber",
+                    "guten tag",
+                    "guten morgen"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "day",
+                  "description": "ngày bạn đến",
+                  "variants": [
+                    "sonntag"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "closing",
+                  "description": "lời chào kết",
+                  "variants": [
+                    "bis bald",
+                    "tschüss",
+                    "viele grüße",
+                    "liebe grüße",
+                    "bis dann",
+                    "bis morgen"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Liebe Oma, ich komme am Sonntag. Bis bald!"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.msg_krank",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-cpx-s5-msg_krank",
+            "writingTaskId": "de.write.cp5_msg_krank",
+            "writingMode": "guided",
+            "instruction": "Hãy nhắn cho đồng nghiệp Lisa: chào, nói rằng hôm nay bạn bị ốm, rồi chào kết.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "Lisa"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "hallo",
+                    "hi",
+                    "liebe",
+                    "lieber",
+                    "guten tag",
+                    "guten morgen"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "sick",
+                  "description": "bạn bị ốm",
+                  "variants": [
+                    "krank"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "closing",
+                  "description": "lời chào kết",
+                  "variants": [
+                    "bis bald",
+                    "tschüss",
+                    "viele grüße",
+                    "liebe grüße",
+                    "bis dann",
+                    "bis morgen"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 20
+            },
+            "modelAnswers": [
+              "Hallo Lisa, ich bin heute krank. Viele Grüße!"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "essential": true
+        },
+        {
+          "id": "de.cpi.s5.form_kurs",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "simpleForm",
+            "id": "de-cpx-s5-form_kurs",
+            "writingTaskId": "de.write.cp5_form_kurs",
+            "instruction": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ.",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Lan"
+              },
+              {
+                "label": "Họ",
+                "value": "Nguyen"
+              },
+              {
+                "label": "Tuổi",
+                "value": "28"
+              }
+            ],
+            "fields": [
+              {
+                "id": "vorname",
+                "label": "Vorname",
+                "slotId": "first"
+              },
+              {
+                "id": "nachname",
+                "label": "Nachname",
+                "slotId": "last"
+              },
+              {
+                "id": "alter",
+                "label": "Alter",
+                "slotId": "age"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "first",
+                  "description": "tên của bạn",
+                  "variants": [
+                    "lan"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "last",
+                  "description": "họ của bạn",
+                  "variants": [
+                    "nguyễn"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "tuổi",
+                  "variants": [
+                    "28",
+                    "achtundzwanzig"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 2,
+              "maxTokens": 12
+            },
+            "modelAnswers": [
+              "Lan | Nguyen | 28"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.form_filling"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s5.form_arzt",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "simpleForm",
+            "id": "de-cpx-s5-form_arzt",
+            "writingTaskId": "de.write.cp5_form_arzt",
+            "instruction": "Hãy điền phiếu ở phòng khám với các thông tin trên thẻ.",
+            "cueFacts": [
+              {
+                "label": "Họ tên",
+                "value": "Tuấn Pham"
+              },
+              {
+                "label": "Thành phố",
+                "value": "Dresden"
+              },
+              {
+                "label": "Điện thoại",
+                "value": "0160 445566"
+              }
+            ],
+            "fields": [
+              {
+                "id": "name",
+                "label": "Name",
+                "slotId": "name"
+              },
+              {
+                "id": "wohnort",
+                "label": "Wohnort",
+                "slotId": "city"
+              },
+              {
+                "id": "telefon",
+                "label": "Telefon",
+                "slotId": "phone"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "họ tên",
+                  "variants": [
+                    "tuấn pham",
+                    "pham"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "city",
+                  "description": "thành phố",
+                  "variants": [
+                    "dresden"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "phone",
+                  "description": "số điện thoại",
+                  "variants": [
+                    "0160 445566",
+                    "0160445566"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 2,
+              "maxTokens": 12
+            },
+            "modelAnswers": [
+              "Tuấn Pham | Dresden | 0160 445566"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.form_filling"
+          ],
+          "essential": false
+        },
+        {
+          "id": "de.cpi.s5.form_hotel",
+          "itemVersion": 1,
+          "exercise": {
+            "type": "simpleForm",
+            "id": "de-cpx-s5-form_hotel",
+            "writingTaskId": "de.write.cp5_form_hotel",
+            "instruction": "Hãy điền phiếu khách sạn với các thông tin trên thẻ.",
+            "cueFacts": [
+              {
+                "label": "Họ tên",
+                "value": "Mai Le"
+              },
+              {
+                "label": "Nước",
+                "value": "Việt Nam"
+              },
+              {
+                "label": "Số đêm",
+                "value": "2"
+              }
+            ],
+            "fields": [
+              {
+                "id": "name",
+                "label": "Name",
+                "slotId": "name"
+              },
+              {
+                "id": "land",
+                "label": "Land",
+                "slotId": "country"
+              },
+              {
+                "id": "naechte",
+                "label": "Nächte",
+                "slotId": "nights"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "name",
+                  "description": "họ tên",
+                  "variants": [
+                    "mai le",
+                    "le"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "country",
+                  "description": "nước",
+                  "variants": [
+                    "vietnam"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "nights",
+                  "description": "số đêm",
+                  "variants": [
+                    "2",
+                    "zwei"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 2,
+              "maxTokens": 12
+            },
+            "modelAnswers": [
+              "Mai Le | Vietnam | 2"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.form_filling"
+          ],
+          "essential": false
+        }
+      ],
+      "criteria": {
+        "minItemsPerObjective": 2,
+        "demonstratedShare": 0.66
+      }
+    }
+  }
+}

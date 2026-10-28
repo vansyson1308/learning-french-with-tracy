@@ -35,11 +35,65 @@
       },
       "artifacts": {
         "ids": "src/content/ids/de.json",
+        "lexiconIndex": "src/content/lexicon/de-en-index.json",
+        "lexiconFallback": "src/content/lexicon/de-en-web-fallback.json",
+        "lexiconDb": "assets/lexicon/de-en-lexicon-v3-2fe2e4397c15784c.db"
+      },
+      "role": "standalone",
+      "hiddenFromOnboarding": true
+    },
+    "de-vi": {
+      "id": "de-vi",
+      "targetCode": "de",
+      "nativeCode": "vi",
+      "targetLanguage": "German",
+      "nativeLanguage": "Vietnamese",
+      "flag": "🇩🇪",
+      "flagAsset": "de",
+      "recognitionLocale": "de-DE",
+      "ttsLocale": "de-DE",
+      "script": "latin",
+      "idPrefix": "de:w:",
+      "legacyIdPrefix": "de:legacy:",
+      "capabilities": {
+        "fsrs": true,
+        "dailySession": true,
+        "lexicon": true,
+        "concepts": true,
+        "placement": true,
+        "checkpoints": true,
+        "goals": true,
+        "listening": true,
+        "reading": true,
+        "speaking": true,
+        "writing": true,
+        "conversation": true,
+        "exam": true,
+        "stories": true
+      },
+      "artifacts": {
+        "ids": "src/content/ids/de.json",
         "lexiconIndex": "src/content/lexicon/de-index.json",
         "lexiconFallback": "src/content/lexicon/de-web-fallback.json",
-        "lexiconDb": "assets/lexicon/de-lexicon-v3-2fe2e4397c15784c.db",
-        "dailyWords": "src/content/lexicon/de-daily.json"
-      }
+        "lexiconDb": "assets/lexicon/de-lexicon-v3-28c29eadf27ceaa2.db",
+        "concepts": "src/content/concepts/de-concepts.json",
+        "objectives": "src/content/assessment/de-objectives.json",
+        "checkpoints": "src/content/assessment/de-checkpoints.json",
+        "placement": "src/content/assessment/de-placement.json",
+        "attainment": "src/content/assessment/de-attainment.json",
+        "claim": "src/content/assessment/de-claim.json",
+        "listening": "src/content/reception/de-listening.json",
+        "reading": "src/content/reception/de-reading.json",
+        "clipAssets": "src/content/reception/de-clip-assets.ts",
+        "speech": "src/content/speech/de-speech-items.json",
+        "writing": "src/content/writing/de-writing.json",
+        "scenarios": "src/content/interaction/de-scenarios.json",
+        "examTracks": "src/content/exam/de-exam-tracks.json",
+        "dailyWords": "src/content/lexicon/de-daily.json",
+        "stories": "src/content/stories/de-stories.json",
+        "storyAssets": "src/content/stories/de-story-assets.ts"
+      },
+      "beta": true
     },
     "es-en": {
       "id": "es-en",

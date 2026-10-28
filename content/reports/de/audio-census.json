@@ -1,0 +1,33 @@
+{
+  "generator": "scripts/audio.ts apply",
+  "language": "de",
+  "pipelineVersion": 3,
+  "layers": [
+    "pack"
+  ],
+  "courses": [
+    {
+      "courseId": "de-en",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "de_DE-thorsten-high",
+        "B": "de_DE-kerstin-low"
+      },
+      "clips": 95
+    },
+    {
+      "courseId": "de-vi",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "de_DE-thorsten-high",
+        "B": "de_DE-kerstin-low"
+      },
+      "clips": 359
+    }
+  ],
+  "receptionClips": 0,
+  "files": {
+    "pack": 454,
+    "reception": 0
+  }
+}

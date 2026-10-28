@@ -2,6 +2,7 @@
 /** Round country flags per course (HatScripts/circle-flags, MIT), from each profile's flagAsset. */
 export const FLAG_ASSETS: Record<string, number> = {
   "de-en": require("../../assets/images/flags/de.svg"),
+  "de-vi": require("../../assets/images/flags/de.svg"),
   "es-en": require("../../assets/images/flags/es.svg"),
   "es-vi": require("../../assets/images/flags/es.svg"),
   "fr-en": require("../../assets/images/flags/fr.svg"),

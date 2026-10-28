@@ -1,0 +1,2566 @@
+{
+  "version": 1,
+  "language": "de",
+  "tracks": [
+    {
+      "id": "de.exam.goethe_a1",
+      "trackVersion": 1,
+      "name": "Goethe-Zertifikat A1: Start Deutsch 1",
+      "level": "A1",
+      "title": "Luyện thi Goethe A1 (Start Deutsch 1)",
+      "description": "Luyện theo định dạng công khai của Goethe-Zertifikat A1: Start Deutsch 1 (Goethe-Institut, quy chế thi bản 1/9/2025 và đề mẫu Modellsatz): Nghe, Đọc, Viết và Nói với số câu, thời gian và cách tính điểm của kỳ thi. Phần Nói trong kỳ thi thật là thi theo nhóm (tối đa bốn người, hai giám khảo); ứng dụng chỉ mô phỏng từng người một — ứng dụng đóng vai bạn thi và giám khảo, và không có phần đánh vần hay đọc lại số. Mọi câu hỏi do khoá học tự soạn — không phải đề thi thật.",
+      "formatSource": {
+        "publisher": "Goethe-Institut e.V.",
+        "references": [
+          {
+            "url": "https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_A1_Start_Deutsch_1.pdf",
+            "title": "Goethe-Institut — Durchführungsbestimmungen Goethe-Zertifikat A1: Start Deutsch 1 (Stand 1. September 2025)",
+            "retrieved": "2026-10-28"
+          },
+          {
+            "url": "https://www.goethe.de/pro/relaunch/prf/materialien/A1_sd1/sd_1_modellsatz.pdf",
+            "title": "Goethe-Institut — Modellsatz Start Deutsch 1 (Erwachsene)",
+            "retrieved": "2026-10-28"
+          },
+          {
+            "url": "https://www.goethe.de/de/spr/prf/ueb/pa1.html",
+            "title": "Goethe-Institut — Goethe-Zertifikat A1: Start Deutsch 1, Übungsmaterialien"
+          }
+        ],
+        "checkedAgainstOfficialGuide": true,
+        "checkedBy": "coding agent (owner-delegated; owner supplied the Durchführungsbestimmungen PDF)",
+        "checkedAt": "2026-10-28",
+        "note": "Định dạng theo quy chế thi (Durchführungsbestimmungen, bản 1/9/2025) và đề mẫu Modellsatz của Goethe-Institut, đã đọc trực tiếp ngày 2026-10-28. Mỗi phần 15 điểm thô được quy đổi ×1,66 (≈ 25 điểm); đạt khi tổng ≥ 60/100 và làm đủ mọi phần."
+      },
+      "sections": [
+        {
+          "id": "listening",
+          "skill": "listening",
+          "title": "Hören — Nghe",
+          "minutes": 20,
+          "maxPoints": 25,
+          "playsPerRecording": 2,
+          "tasks": [
+            {
+              "id": "t1",
+              "title": "Teil 1 — Sáu hội thoại ngắn",
+              "instruction": "Nghe mỗi hội thoại hai lần và chọn a, b hoặc c.",
+              "format": "mcq3",
+              "itemsPerForm": 6
+            },
+            {
+              "id": "t2",
+              "title": "Teil 2 — Bốn thông báo",
+              "instruction": "Nghe mỗi thông báo và chọn đúng (richtig) hay sai (falsch). Trong kỳ thi thật phần này chỉ nghe MỘT lần; ứng dụng cho nghe tối đa hai lần như mọi bài nghe — hãy thử chỉ nghe một lần.",
+              "format": "mcq2",
+              "itemsPerForm": 4
+            },
+            {
+              "id": "t3",
+              "title": "Teil 3 — Năm tin nhắn qua điện thoại hoặc đài",
+              "instruction": "Nghe mỗi tin nhắn hai lần và chọn a, b hoặc c.",
+              "format": "mcq3",
+              "itemsPerForm": 5
+            }
+          ]
+        },
+        {
+          "id": "reading",
+          "skill": "reading",
+          "title": "Lesen — Đọc",
+          "minutes": 25,
+          "maxPoints": 25,
+          "tasks": [
+            {
+              "id": "t1",
+              "title": "Teil 1 — Hai lá thư hoặc email ngắn",
+              "instruction": "Đọc hai văn bản và chọn đúng (richtig) hay sai (falsch) cho mỗi câu.",
+              "format": "mcq2",
+              "itemsPerForm": 5
+            },
+            {
+              "id": "t2",
+              "title": "Teil 2 — Quảng cáo và trang web",
+              "instruction": "Bạn tìm thông tin ở đâu? Đọc hai quảng cáo và chọn a hoặc b.",
+              "format": "mcq2",
+              "itemsPerForm": 5
+            },
+            {
+              "id": "t3",
+              "title": "Teil 3 — Biển báo và thông báo",
+              "instruction": "Đọc biển báo và chọn đúng (richtig) hay sai (falsch).",
+              "format": "mcq2",
+              "itemsPerForm": 5
+            }
+          ]
+        },
+        {
+          "id": "writing",
+          "skill": "writing",
+          "title": "Schreiben — Viết",
+          "minutes": 20,
+          "maxPoints": 25,
+          "tasks": [
+            {
+              "id": "t1",
+              "title": "Teil 1 — Điền phiếu",
+              "instruction": "Đọc tình huống và điền năm thông tin còn thiếu vào phiếu cho một người khác.",
+              "format": "form",
+              "itemsPerForm": 1,
+              "points": 5
+            },
+            {
+              "id": "t2",
+              "title": "Teil 2 — Một tin nhắn ngắn",
+              "instruction": "Viết một tin nhắn khoảng 30 từ theo ba gợi ý, có lời chào và lời chào kết.",
+              "format": "short_text",
+              "itemsPerForm": 1,
+              "points": 10
+            }
+          ]
+        },
+        {
+          "id": "speaking",
+          "skill": "speaking",
+          "title": "Sprechen — Nói",
+          "minutes": 15,
+          "maxPoints": 25,
+          "tasks": [
+            {
+              "id": "t1",
+              "title": "Teil 1 — Giới thiệu bản thân",
+              "instruction": "Tự giới thiệu theo các từ khoá trên thẻ. (Trong kỳ thi thật còn có đánh vần một từ và đọc lại một con số.)",
+              "format": "monologue",
+              "itemsPerForm": 1,
+              "speakingMinutes": {
+                "min": 1,
+                "max": 2
+              },
+              "points": 3
+            },
+            {
+              "id": "t2",
+              "title": "Teil 2 — Hỏi và trả lời theo chủ đề",
+              "instruction": "Trả lời câu hỏi của bạn thi và tự hỏi lại theo thẻ từ.",
+              "format": "conversation",
+              "itemsPerForm": 1,
+              "speakingMinutes": {
+                "min": 1,
+                "max": 3
+              },
+              "points": 6
+            },
+            {
+              "id": "t3",
+              "title": "Teil 3 — Nhờ và đáp lại",
+              "instruction": "Lịch sự nhờ một việc theo thẻ tranh và đáp lại lời nhờ.",
+              "format": "conversation",
+              "itemsPerForm": 1,
+              "speakingMinutes": {
+                "min": 1,
+                "max": 3
+              },
+              "points": 6
+            }
+          ]
+        }
+      ],
+      "passRule": {
+        "groups": [
+          {
+            "id": "gesamt",
+            "title": "Tổng điểm — cả bốn phần",
+            "sections": [
+              "listening",
+              "reading",
+              "writing",
+              "speaking"
+            ],
+            "min": 60,
+            "max": 100
+          }
+        ]
+      },
+      "readiness": {
+        "bands": [
+          {
+            "id": "ready_estimate",
+            "minGroupShare": 0.7,
+            "label": "Mức sẵn sàng ước tính: tốt",
+            "message": "Ở lần thi thử này, tổng điểm cao hơn ngưỡng 60/100 của định dạng thi một khoảng an toàn. Đây là mức sẵn sàng ước tính từ bài luyện của khoá học, không phải điểm thi thật."
+          },
+          {
+            "id": "getting_close",
+            "minGroupShare": 0.6,
+            "label": "Mức sẵn sàng ước tính: gần đạt",
+            "message": "Tổng điểm đạt ngưỡng 60/100 của định dạng thi nhưng chưa có khoảng an toàn. Hãy luyện thêm các phần yếu bên dưới."
+          },
+          {
+            "id": "not_yet",
+            "minGroupShare": 0,
+            "label": "Mức sẵn sàng ước tính: cần luyện thêm",
+            "message": "Tổng điểm còn dưới ngưỡng 60/100 của định dạng thi. Hãy luyện các phần yếu bên dưới rồi thử lại với đề còn lại."
+          }
+        ],
+        "incomplete": "Chưa đủ dữ liệu để ước tính: kỳ thi chỉ tính khi làm đủ cả bốn phần, và phần Nói cần micro cùng nhận dạng giọng nói trên thiết bị. Các phần khác vẫn được tính điểm.",
+        "disclaimer": "Mức sẵn sàng ước tính dựa trên bài thi thử của khoá học — không phải kỳ thi Goethe, không do Goethe-Institut cấp và không dự đoán kết quả thi thật. Phần Nói được mô phỏng một người với ứng dụng thay cho thi nhóm; phần Viết và Nói được chấm bằng tiêu chí tự động đơn giản, nên điểm của hai phần này chỉ là gần đúng."
+      },
+      "items": [
+        {
+          "id": "de.exi.goethe_a1.a_h1_01",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h1_01",
+            "clipId": "de.clip.goethe_a_h1_01",
+            "question": "Xe buýt đi Hamburg chạy lúc mấy giờ?",
+            "options": [
+              {
+                "text": "10:15"
+              },
+              {
+                "text": "10:45"
+              },
+              {
+                "text": "9:15"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:bus"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h1_02",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h1_02",
+            "clipId": "de.clip.goethe_a_h1_02",
+            "question": "Người phụ nữ uống gì?",
+            "options": [
+              {
+                "text": "Cà phê"
+              },
+              {
+                "text": "Trà với sữa"
+              },
+              {
+                "text": "Sữa"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:kaffee",
+            "de:w:milch",
+            "de:w:tee"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h1_03",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h1_03",
+            "clipId": "de.clip.goethe_a_h1_03",
+            "question": "Nhà vệ sinh ở đâu?",
+            "options": [
+              {
+                "text": "Ở tầng trệt"
+              },
+              {
+                "text": "Ở tầng hai, cạnh cầu thang"
+              },
+              {
+                "text": "Ở tầng một, cạnh thang máy"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h1_04",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h1_04",
+            "clipId": "de.clip.goethe_a_h1_04",
+            "question": "Một ký cà chua giá bao nhiêu?",
+            "options": [
+              {
+                "text": "2,50 €"
+              },
+              {
+                "text": "2,15 €"
+              },
+              {
+                "text": "5,20 €"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h1_05",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h1_05",
+            "clipId": "de.clip.goethe_a_h1_05",
+            "question": "Người đàn ông đến lớp vào ngày nào?",
+            "options": [
+              {
+                "text": "Thứ Hai"
+              },
+              {
+                "text": "Thứ Tư"
+              },
+              {
+                "text": "Thứ Ba"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:montag"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h1_06",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h1_06",
+            "clipId": "de.clip.goethe_a_h1_06",
+            "question": "Số điện thoại là số nào?",
+            "options": [
+              {
+                "text": "0167 4389"
+              },
+              {
+                "text": "0176 4398"
+              },
+              {
+                "text": "0176 4389"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h2_01",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h2_01",
+            "clipId": "de.clip.goethe_a_h2_01",
+            "question": "Tàu ICE đi München hôm nay đến muộn hai mươi phút.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": [
+            "de:w:minute"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h2_02",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h2_02",
+            "clipId": "de.clip.goethe_a_h2_02",
+            "question": "Hôm nay giày ở tầng một rẻ hơn.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h2_03",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h2_03",
+            "clipId": "de.clip.goethe_a_h2_03",
+            "question": "Hôm nay hành khách phải đi xe buýt số mười hai.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": [
+            "de:w:bus"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h2_04",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h2_04",
+            "clipId": "de.clip.goethe_a_h2_04",
+            "question": "Nhà hàng hôm nay đóng cửa lúc hai mươi ba giờ.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": [
+            "de:w:schlie-en"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h3_01",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h3_01",
+            "clipId": "de.clip.goethe_a_h3_01",
+            "question": "Paul và Anna gặp nhau lúc mấy giờ?",
+            "options": [
+              {
+                "text": "Lúc bốn giờ"
+              },
+              {
+                "text": "Lúc ba giờ"
+              },
+              {
+                "text": "Lúc hai giờ"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:treffen"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h3_02",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h3_02",
+            "clipId": "de.clip.goethe_a_h3_02",
+            "question": "Lịch hẹn ở phòng khám vào ngày nào?",
+            "options": [
+              {
+                "text": "Thứ Ba"
+              },
+              {
+                "text": "Thứ Năm"
+              },
+              {
+                "text": "Thứ Sáu"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:karte",
+            "de:w:termin"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h3_03",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h3_03",
+            "clipId": "de.clip.goethe_a_h3_03",
+            "question": "Vì sao người con về muộn?",
+            "options": [
+              {
+                "text": "Phải làm thêm"
+              },
+              {
+                "text": "Phải đi bác sĩ"
+              },
+              {
+                "text": "Phải đi mua đồ"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:mussen"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h3_04",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h3_04",
+            "clipId": "de.clip.goethe_a_h3_04",
+            "question": "Chiều mai thời tiết thế nào?",
+            "options": [
+              {
+                "text": "Nắng"
+              },
+              {
+                "text": "Mưa"
+              },
+              {
+                "text": "Có tuyết"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_h3_05",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-a_h3_05",
+            "clipId": "de.clip.goethe_a_h3_05",
+            "question": "Lisa nhờ mang gì đến?",
+            "options": [
+              {
+                "text": "Bánh"
+              },
+              {
+                "text": "Nhạc"
+              },
+              {
+                "text": "Đồ uống"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:geburtstag",
+            "de:w:musik",
+            "de:w:samstag"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h1_01",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h1_01",
+            "clipId": "de.clip.goethe_b_h1_01",
+            "question": "Bộ phim bắt đầu lúc mấy giờ?",
+            "options": [
+              {
+                "text": "7:00"
+              },
+              {
+                "text": "8:30"
+              },
+              {
+                "text": "7:30"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:film"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h1_02",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h1_02",
+            "clipId": "de.clip.goethe_b_h1_02",
+            "question": "Họ mua gì?",
+            "options": [
+              {
+                "text": "Bánh mì và phô mai"
+              },
+              {
+                "text": "Trứng và bánh mì"
+              },
+              {
+                "text": "Phô mai và trứng"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:brot",
+            "de:w:ei",
+            "de:w:fruhstuck",
+            "de:w:kase"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h1_03",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h1_03",
+            "clipId": "de.clip.goethe_b_h1_03",
+            "question": "Bây giờ chị gái sống ở đâu?",
+            "options": [
+              {
+                "text": "Ở Berlin"
+              },
+              {
+                "text": "Ở Wien"
+              },
+              {
+                "text": "Ở München"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:schwester",
+            "de:w:wohnen"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h1_04",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h1_04",
+            "clipId": "de.clip.goethe_b_h1_04",
+            "question": "Họ đang đứng ở đường ray số mấy?",
+            "options": [
+              {
+                "text": "Số bốn"
+              },
+              {
+                "text": "Số mười bốn"
+              },
+              {
+                "text": "Số hai"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h1_05",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h1_05",
+            "clipId": "de.clip.goethe_b_h1_05",
+            "question": "Người phụ nữ đi làm bằng gì?",
+            "options": [
+              {
+                "text": "Bằng xe đạp"
+              },
+              {
+                "text": "Bằng xe hơi"
+              },
+              {
+                "text": "Bằng xe buýt"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:arbeit",
+            "de:w:auto",
+            "de:w:fahrrad"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h1_06",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t1",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h1_06",
+            "clipId": "de.clip.goethe_b_h1_06",
+            "question": "Một đêm phòng giá bao nhiêu?",
+            "options": [
+              {
+                "text": "17 €"
+              },
+              {
+                "text": "70 €"
+              },
+              {
+                "text": "60 €"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_dialogues"
+          ],
+          "lexemeRefs": [
+            "de:w:fruhstuck",
+            "de:w:zimmer"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h2_01",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h2_01",
+            "clipId": "de.clip.goethe_b_h2_01",
+            "question": "Tàu đi Köln hôm nay chạy từ đường ray số tám.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": [
+            "de:w:zug"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h2_02",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h2_02",
+            "clipId": "de.clip.goethe_b_h2_02",
+            "question": "Siêu thị mở cửa vào Chủ nhật.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": [
+            "de:w:sonntag"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h2_03",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h2_03",
+            "clipId": "de.clip.goethe_b_h2_03",
+            "question": "Hôm nay lớp tiếng Đức học ở phòng mười bốn.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h2_04",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t2",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h2_04",
+            "clipId": "de.clip.goethe_b_h2_04",
+            "question": "Máy bay đi Hà Nội cất cánh lúc mười sáu giờ.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.announcements"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h3_01",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h3_01",
+            "clipId": "de.clip.goethe_b_h3_01",
+            "question": "Sara nhờ Tom việc gì?",
+            "options": [
+              {
+                "text": "Đến thăm cô ấy"
+              },
+              {
+                "text": "Gọi điện cho thầy giáo"
+              },
+              {
+                "text": "Gửi bài tập về nhà"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h3_02",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h3_02",
+            "clipId": "de.clip.goethe_b_h3_02",
+            "question": "Có thể lấy xe đến mấy giờ?",
+            "options": [
+              {
+                "text": "Đến 18 giờ"
+              },
+              {
+                "text": "Đến 8 giờ"
+              },
+              {
+                "text": "Đến 16 giờ"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:auto"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h3_03",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h3_03",
+            "clipId": "de.clip.goethe_b_h3_03",
+            "question": "Tàu đến lúc mấy giờ?",
+            "options": [
+              {
+                "text": "9:30"
+              },
+              {
+                "text": "8:30"
+              },
+              {
+                "text": "8:00"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:bahnhof",
+            "de:w:warten",
+            "de:w:zug"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h3_04",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h3_04",
+            "clipId": "de.clip.goethe_b_h3_04",
+            "question": "Từ thứ Hai thư viện mở cửa giờ nào?",
+            "options": [
+              {
+                "text": "Từ 9 đến 18 giờ"
+              },
+              {
+                "text": "Từ 10 đến 17 giờ"
+              },
+              {
+                "text": "Từ 10 đến 19 giờ"
+              }
+            ],
+            "correct": 2
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:montag"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_h3_05",
+          "itemVersion": 1,
+          "sectionId": "listening",
+          "taskId": "t3",
+          "exercise": {
+            "type": "listeningComprehension",
+            "id": "de-exx-goethe_a1-b_h3_05",
+            "clipId": "de.clip.goethe_b_h3_05",
+            "question": "Bà Nguyen có thể đến khách sạn từ mấy giờ?",
+            "options": [
+              {
+                "text": "Từ 12 giờ"
+              },
+              {
+                "text": "Từ 2 giờ"
+              },
+              {
+                "text": "Từ 14 giờ"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.listening.short_info"
+          ],
+          "lexemeRefs": [
+            "de:w:hotel",
+            "de:w:zimmer"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l1_01",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l1_01",
+            "readingId": "de.read.goethe_a_mail_julia",
+            "question": "Julia sống ở nhà dì của cô ấy.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:montag",
+            "de:w:tante",
+            "de:w:wochenende",
+            "de:w:wohnung"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l1_02",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l1_02",
+            "readingId": "de.read.goethe_a_mail_julia",
+            "question": "Lớp tiếng Đức bắt đầu vào thứ Hai.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:montag",
+            "de:w:tante",
+            "de:w:wochenende",
+            "de:w:wohnung"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l1_03",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l1_03",
+            "readingId": "de.read.goethe_a_mail_julia",
+            "question": "Lớp học vào buổi chiều.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:montag",
+            "de:w:tante",
+            "de:w:wochenende",
+            "de:w:wohnung"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l1_04",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l1_04",
+            "readingId": "de.read.goethe_a_mail_chef",
+            "question": "Hôm nay Minh đi làm muộn.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:arbeit"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l1_05",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l1_05",
+            "readingId": "de.read.goethe_a_mail_chef",
+            "question": "Ngày mai Minh quay lại văn phòng.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:arbeit"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l2_01",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l2_01",
+            "readingId": "de.read.goethe_a_l2_01",
+            "question": "Bạn muốn học bơi vào cuối tuần. Bạn tìm thông tin ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l2_02",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l2_02",
+            "readingId": "de.read.goethe_a_l2_02",
+            "question": "Bạn cần một phòng khách sạn rẻ ở Berlin. Bạn xem ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l2_03",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l2_03",
+            "readingId": "de.read.goethe_a_l2_03",
+            "question": "Bạn muốn mua một chiếc xe đạp cũ. Bạn xem ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l2_04",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l2_04",
+            "readingId": "de.read.goethe_a_l2_04",
+            "question": "Tối thứ Sáu bạn muốn đi ăn món Ý. Bạn xem ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l2_05",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l2_05",
+            "readingId": "de.read.goethe_a_l2_05",
+            "question": "Bạn muốn học tiếng Đức vào buổi tối. Bạn tìm thông tin ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l3_01",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l3_01",
+            "readingId": "de.read.goethe_a_l3_01",
+            "question": "Hôm nay bạn có thể khám ở phòng khám bác sĩ Hoffmann.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l3_02",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l3_02",
+            "readingId": "de.read.goethe_a_l3_02",
+            "question": "Bạn được gọi điện ở lối vào.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l3_03",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l3_03",
+            "readingId": "de.read.goethe_a_l3_03",
+            "question": "Trẻ em năm tuổi được đi bơi một mình.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l3_04",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l3_04",
+            "readingId": "de.read.goethe_a_l3_04",
+            "question": "Tiệm bánh đang tìm người bán hàng.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_l3_05",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-a_l3_05",
+            "readingId": "de.read.goethe_a_l3_05",
+            "question": "Mọi người đều được đỗ xe miễn phí.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l1_01",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l1_01",
+            "readingId": "de.read.goethe_b_mail_tom",
+            "question": "Tom đến Köln bằng tàu.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:bahnhof",
+            "de:w:freitag",
+            "de:w:museum",
+            "de:w:nachricht",
+            "de:w:samstag",
+            "de:w:zug"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l1_02",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l1_02",
+            "readingId": "de.read.goethe_b_mail_tom",
+            "question": "Tom muốn Lena đón anh ở sân bay.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:bahnhof",
+            "de:w:freitag",
+            "de:w:museum",
+            "de:w:nachricht",
+            "de:w:samstag",
+            "de:w:zug"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l1_03",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l1_03",
+            "readingId": "de.read.goethe_b_mail_tom",
+            "question": "Thứ Bảy Tom muốn đi bảo tàng.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": [
+            "de:w:bahnhof",
+            "de:w:freitag",
+            "de:w:museum",
+            "de:w:nachricht",
+            "de:w:samstag",
+            "de:w:zug"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l1_04",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l1_04",
+            "readingId": "de.read.goethe_b_mail_kurs",
+            "question": "Thứ Ba lớp học ở phòng 3.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l1_05",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t1",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l1_05",
+            "readingId": "de.read.goethe_b_mail_kurs",
+            "question": "Lớp học bắt đầu lúc 18 giờ như mọi khi.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.short_messages"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l2_01",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l2_01",
+            "readingId": "de.read.goethe_b_l2_01",
+            "question": "Bạn muốn thuê một căn hộ nhỏ gần trung tâm. Bạn xem ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l2_02",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l2_02",
+            "readingId": "de.read.goethe_b_l2_02",
+            "question": "Con bạn muốn chơi bóng đá. Bạn tìm thông tin ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l2_03",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l2_03",
+            "readingId": "de.read.goethe_b_l2_03",
+            "question": "Bạn cần đi bác sĩ vào thứ Bảy. Bạn xem ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l2_04",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l2_04",
+            "readingId": "de.read.goethe_b_l2_04",
+            "question": "Bạn muốn mua bánh mì sáng Chủ nhật. Bạn xem ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l2_05",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t2",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l2_05",
+            "readingId": "de.read.goethe_b_l2_05",
+            "question": "Bạn muốn đi xem hoà nhạc ở thành phố. Bạn tìm thông tin ở đâu?",
+            "options": [
+              {
+                "text": "a"
+              },
+              {
+                "text": "b"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l3_01",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l3_01",
+            "readingId": "de.read.goethe_b_l3_01",
+            "question": "Siêu thị mở cửa đến 22 giờ.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l3_02",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l3_02",
+            "readingId": "de.read.goethe_b_l3_02",
+            "question": "Hôm nay bạn có thể đi thang máy.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l3_03",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l3_03",
+            "readingId": "de.read.goethe_b_l3_03",
+            "question": "Sinh viên vào cửa không mất tiền.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l3_04",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l3_04",
+            "readingId": "de.read.goethe_b_l3_04",
+            "question": "Bạn đăng ký khoá học ở văn phòng.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 0
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_l3_05",
+          "itemVersion": 1,
+          "sectionId": "reading",
+          "taskId": "t3",
+          "exercise": {
+            "type": "readingComprehension",
+            "id": "de-exx-goethe_a1-b_l3_05",
+            "readingId": "de.read.goethe_b_l3_05",
+            "question": "Nhà hàng mở cửa vào thứ Hai.",
+            "options": [
+              {
+                "text": "Đúng (richtig)"
+              },
+              {
+                "text": "Sai (falsch)"
+              }
+            ],
+            "correct": 1
+          },
+          "objectiveTargets": [
+            "de.obj.reading.notices_info"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_s1_01",
+          "itemVersion": 1,
+          "sectionId": "writing",
+          "taskId": "t1",
+          "exercise": {
+            "type": "simpleForm",
+            "id": "de-exx-goethe_a1-a_s1_01",
+            "writingTaskId": "de.write.goethe_a_formular",
+            "instruction": "Teil 1 — Bạn của bạn là Mai Tran muốn đăng ký một khoá học bơi. Cô ấy đến từ Việt Nam, sống ở Leipzig, Goethestraße 7, và muốn học vào thứ Bảy. Hãy điền phiếu cho cô ấy (năm chỗ trống).",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Mai"
+              },
+              {
+                "label": "Họ",
+                "value": "Tran"
+              },
+              {
+                "label": "Đến từ",
+                "value": "Vietnam"
+              },
+              {
+                "label": "Địa chỉ",
+                "value": "Goethestraße 7, Leipzig"
+              },
+              {
+                "label": "Ngày học",
+                "value": "Samstag"
+              }
+            ],
+            "fields": [
+              {
+                "id": "vorname",
+                "label": "Vorname",
+                "slotId": "first"
+              },
+              {
+                "id": "nachname",
+                "label": "Familienname",
+                "slotId": "last"
+              },
+              {
+                "id": "land",
+                "label": "Herkunftsland",
+                "slotId": "country"
+              },
+              {
+                "id": "adresse",
+                "label": "Straße, Hausnummer",
+                "slotId": "street"
+              },
+              {
+                "id": "kurstag",
+                "label": "Kurstag",
+                "slotId": "day"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "first",
+                  "description": "tên",
+                  "variants": [
+                    "mai"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "last",
+                  "description": "họ của cô ấy",
+                  "variants": [
+                    "tran"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "country",
+                  "description": "quê của cô ấy",
+                  "variants": [
+                    "vietnam"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "street",
+                  "description": "địa chỉ",
+                  "variants": [
+                    "goethestraße 7",
+                    "goethestrasse 7"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "day",
+                  "description": "ngày học",
+                  "variants": [
+                    "samstag"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 15
+            },
+            "modelAnswers": [
+              "Mai | Tran | Vietnam | Goethestraße 7 | Samstag"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.form_filling"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_s1_01",
+          "itemVersion": 1,
+          "sectionId": "writing",
+          "taskId": "t1",
+          "exercise": {
+            "type": "simpleForm",
+            "id": "de-exx-goethe_a1-b_s1_01",
+            "writingTaskId": "de.write.goethe_b_formular",
+            "instruction": "Teil 1 — Bạn của bạn là Tuấn Le muốn thuê một chiếc xe đạp trong ba ngày. Anh ấy 24 tuổi, ở khách sạn Hotel Sonne và có số điện thoại 0151 223344. Hãy điền phiếu cho anh ấy (năm chỗ trống).",
+            "cueFacts": [
+              {
+                "label": "Tên",
+                "value": "Tuấn"
+              },
+              {
+                "label": "Họ",
+                "value": "Le"
+              },
+              {
+                "label": "Tuổi",
+                "value": "24"
+              },
+              {
+                "label": "Khách sạn",
+                "value": "Hotel Sonne"
+              },
+              {
+                "label": "Điện thoại",
+                "value": "0151 223344"
+              }
+            ],
+            "fields": [
+              {
+                "id": "vorname",
+                "label": "Vorname",
+                "slotId": "first"
+              },
+              {
+                "id": "nachname",
+                "label": "Familienname",
+                "slotId": "last"
+              },
+              {
+                "id": "alter",
+                "label": "Alter",
+                "slotId": "age"
+              },
+              {
+                "id": "hotel",
+                "label": "Hotel",
+                "slotId": "hotel"
+              },
+              {
+                "id": "telefon",
+                "label": "Telefon",
+                "slotId": "phone"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "first",
+                  "description": "tên",
+                  "variants": [
+                    "tuấn"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "last",
+                  "description": "họ của anh ấy",
+                  "variants": [
+                    "le"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "age",
+                  "description": "tuổi",
+                  "variants": [
+                    "24",
+                    "vierundzwanzig"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "hotel",
+                  "description": "khách sạn",
+                  "variants": [
+                    "hotel sonne",
+                    "sonne"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "phone",
+                  "description": "số điện thoại",
+                  "variants": [
+                    "0151 223344",
+                    "0151223344"
+                  ],
+                  "cueProvided": true
+                }
+              ],
+              "minTokens": 5,
+              "maxTokens": 15
+            },
+            "modelAnswers": [
+              "Tuấn | Le | 24 | Hotel Sonne | 0151 223344"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.form_filling"
+          ],
+          "lexemeRefs": [
+            "de:w:hotel"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.a_s2_01",
+          "itemVersion": 1,
+          "sectionId": "writing",
+          "taskId": "t2",
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-exx-goethe_a1-a_s2_01",
+            "writingTaskId": "de.write.goethe_a_nachricht",
+            "writingMode": "guided",
+            "instruction": "Teil 2 — Bạn có sinh nhật vào thứ Bảy. Hãy viết cho bạn của bạn là Paul (khoảng 30 từ): mời anh ấy đến dự tiệc, nói giờ bắt đầu, và nhờ anh ấy mang đồ uống. Có lời chào và lời chào kết.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "Paul"
+              },
+              {
+                "label": "Khi nào",
+                "value": "Samstag, 19 Uhr"
+              },
+              {
+                "label": "Nhờ mang",
+                "value": "Getränke"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "hallo",
+                    "hi",
+                    "liebe",
+                    "lieber",
+                    "guten tag",
+                    "sehr geehrte"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "invite",
+                  "description": "lời mời dự tiệc",
+                  "variants": [
+                    "kommst du",
+                    "komm doch",
+                    "lade dich ein",
+                    "möchtest du kommen"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "time",
+                  "description": "giờ bắt đầu",
+                  "variants": [
+                    "um 19 uhr",
+                    "um sieben",
+                    "um 7",
+                    "um neunzehn uhr"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "bring",
+                  "description": "nhờ mang đồ uống",
+                  "variants": [
+                    "getränke",
+                    "trinken",
+                    "saft",
+                    "wasser",
+                    "cola"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "closing",
+                  "description": "lời chào kết",
+                  "variants": [
+                    "viele grüße",
+                    "liebe grüße",
+                    "bis bald",
+                    "tschüss",
+                    "mit freundlichen grüßen",
+                    "bis dann"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 20,
+              "maxTokens": 45
+            },
+            "modelAnswers": [
+              "Lieber Paul, am Samstag habe ich Geburtstag und ich mache eine Party. Kommst du auch? Die Party beginnt um 19 Uhr. Kannst du bitte Getränke mitbringen? Viele Grüße, Lan"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "lexemeRefs": [
+            "de:w:geburtstag",
+            "de:w:samstag"
+          ]
+        },
+        {
+          "id": "de.exi.goethe_a1.b_s2_01",
+          "itemVersion": 1,
+          "sectionId": "writing",
+          "taskId": "t2",
+          "exercise": {
+            "type": "guidedWriting",
+            "id": "de-exx-goethe_a1-b_s2_01",
+            "writingTaskId": "de.write.goethe_b_nachricht",
+            "writingMode": "guided",
+            "instruction": "Teil 2 — Bạn không thể đến lớp tiếng Đức ngày mai. Hãy viết cho cô giáo, bà Wolf (khoảng 30 từ): nói rằng bạn không đến được, giải thích lý do, và hỏi về bài tập về nhà. Có lời chào và lời chào kết.",
+            "cueFacts": [
+              {
+                "label": "Gửi",
+                "value": "Frau Wolf"
+              },
+              {
+                "label": "Lý do",
+                "value": "krank"
+              },
+              {
+                "label": "Hỏi",
+                "value": "Hausaufgaben"
+              }
+            ],
+            "rubric": {
+              "requiredSlots": [
+                {
+                  "id": "greeting",
+                  "description": "lời chào",
+                  "variants": [
+                    "liebe frau wolf",
+                    "sehr geehrte frau wolf",
+                    "guten tag",
+                    "hallo"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "absent",
+                  "description": "bạn không đến được",
+                  "variants": [
+                    "nicht zum kurs kommen",
+                    "nicht kommen",
+                    "komme nicht",
+                    "kann leider nicht"
+                  ],
+                  "cueProvided": false
+                },
+                {
+                  "id": "reason",
+                  "description": "lý do",
+                  "variants": [
+                    "krank"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "homework",
+                  "description": "bài tập về nhà",
+                  "variants": [
+                    "hausaufgaben",
+                    "hausaufgabe"
+                  ],
+                  "cueProvided": true
+                },
+                {
+                  "id": "closing",
+                  "description": "lời chào kết",
+                  "variants": [
+                    "viele grüße",
+                    "liebe grüße",
+                    "bis bald",
+                    "tschüss",
+                    "mit freundlichen grüßen",
+                    "bis dann"
+                  ],
+                  "cueProvided": false
+                }
+              ],
+              "minTokens": 20,
+              "maxTokens": 45
+            },
+            "modelAnswers": [
+              "Liebe Frau Wolf, morgen kann ich leider nicht zum Kurs kommen. Ich bin krank und muss zum Arzt. Was sind die Hausaufgaben? Können Sie mir bitte schreiben? Viele Grüße, Minh"
+            ]
+          },
+          "objectiveTargets": [
+            "de.obj.writing.short_message"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_p1_01",
+          "itemVersion": 1,
+          "sectionId": "speaking",
+          "taskId": "t1",
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-exx-goethe_a1-a_p1_01",
+            "speechItemId": "de.speak.goethe_a_vorstellung",
+            "instruction": "Teil 1 — Hãy tự giới thiệu theo các từ khoá: tên, tuổi, quê và nơi bạn sống.",
+            "cueFacts": [
+              {
+                "label": "Name",
+                "value": "Lan"
+              },
+              {
+                "label": "Alter",
+                "value": "28"
+              },
+              {
+                "label": "Land",
+                "value": "Vietnam"
+              },
+              {
+                "label": "Wohnort",
+                "value": "Leipzig"
+              }
+            ],
+            "target": "Ich heiße Lan, ich bin achtundzwanzig Jahre alt, ich komme aus Vietnam und ich wohne in Leipzig",
+            "acceptedVariants": [
+              "Ich heiße Lan, ich bin achtundzwanzig Jahre alt, ich komme aus Vietnam und ich wohne in Leipzig",
+              "Mein Name ist Lan, ich bin achtundzwanzig, ich komme aus Vietnam und wohne in Leipzig"
+            ],
+            "requiredConcepts": [
+              [
+                "lan"
+              ],
+              [
+                "achtundzwanzig",
+                "28"
+              ],
+              [
+                "vietnam"
+              ],
+              [
+                "leipzig"
+              ]
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.self_intro"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_p1_01",
+          "itemVersion": 1,
+          "sectionId": "speaking",
+          "taskId": "t1",
+          "exercise": {
+            "type": "speakProduction",
+            "id": "de-exx-goethe_a1-b_p1_01",
+            "speechItemId": "de.speak.goethe_b_vorstellung",
+            "instruction": "Teil 1 — Hãy tự giới thiệu theo các từ khoá: tên, quê, ngôn ngữ và nghề nghiệp.",
+            "cueFacts": [
+              {
+                "label": "Name",
+                "value": "Minh"
+              },
+              {
+                "label": "Land",
+                "value": "Vietnam"
+              },
+              {
+                "label": "Sprachen",
+                "value": "Vietnamesisch, Deutsch"
+              },
+              {
+                "label": "Beruf",
+                "value": "Koch"
+              }
+            ],
+            "target": "Ich heiße Minh, ich komme aus Vietnam, ich spreche Vietnamesisch und Deutsch und ich bin Koch",
+            "acceptedVariants": [
+              "Ich heiße Minh, ich komme aus Vietnam, ich spreche Vietnamesisch und Deutsch und ich bin Koch",
+              "Mein Name ist Minh, ich komme aus Vietnam, ich spreche Vietnamesisch und Deutsch, ich bin Koch von Beruf"
+            ],
+            "requiredConcepts": [
+              [
+                "minh"
+              ],
+              [
+                "vietnam"
+              ],
+              [
+                "vietnamesisch"
+              ],
+              [
+                "deutsch"
+              ],
+              [
+                "koch"
+              ]
+            ],
+            "evidenceLexemeRefs": [],
+            "revealTargetAfterAttempts": null,
+            "allowContextualBias": false,
+            "modelClipId": null,
+            "allowedAttempts": 2
+          },
+          "objectiveTargets": [
+            "de.obj.speaking.self_intro"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_p2_01",
+          "itemVersion": 1,
+          "sectionId": "speaking",
+          "taskId": "t2",
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-exx-goethe_a1-a_p2_01",
+            "scenarioId": "de.scenario.goethe_a_thema"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_p2_01",
+          "itemVersion": 1,
+          "sectionId": "speaking",
+          "taskId": "t2",
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-exx-goethe_a1-b_p2_01",
+            "scenarioId": "de.scenario.goethe_b_thema"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.everyday_conversation"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.a_p3_01",
+          "itemVersion": 1,
+          "sectionId": "speaking",
+          "taskId": "t3",
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-exx-goethe_a1-a_p3_01",
+            "scenarioId": "de.scenario.goethe_a_bitte"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.practical_needs"
+          ],
+          "lexemeRefs": []
+        },
+        {
+          "id": "de.exi.goethe_a1.b_p3_01",
+          "itemVersion": 1,
+          "sectionId": "speaking",
+          "taskId": "t3",
+          "exercise": {
+            "type": "interactionScenario",
+            "id": "de-exx-goethe_a1-b_p3_01",
+            "scenarioId": "de.scenario.goethe_b_bitte"
+          },
+          "objectiveTargets": [
+            "de.obj.interaction.practical_needs"
+          ],
+          "lexemeRefs": []
+        }
+      ],
+      "forms": [
+        {
+          "formId": "a",
+          "itemIds": [
+            "de.exi.goethe_a1.a_h1_01",
+            "de.exi.goethe_a1.a_h1_02",
+            "de.exi.goethe_a1.a_h1_03",
+            "de.exi.goethe_a1.a_h1_04",
+            "de.exi.goethe_a1.a_h1_05",
+            "de.exi.goethe_a1.a_h1_06",
+            "de.exi.goethe_a1.a_h2_01",
+            "de.exi.goethe_a1.a_h2_02",
+            "de.exi.goethe_a1.a_h2_03",
+            "de.exi.goethe_a1.a_h2_04",
+            "de.exi.goethe_a1.a_h3_01",
+            "de.exi.goethe_a1.a_h3_02",
+            "de.exi.goethe_a1.a_h3_03",
+            "de.exi.goethe_a1.a_h3_04",
+            "de.exi.goethe_a1.a_h3_05",
+            "de.exi.goethe_a1.a_l1_01",
+            "de.exi.goethe_a1.a_l1_02",
+            "de.exi.goethe_a1.a_l1_03",
+            "de.exi.goethe_a1.a_l1_04",
+            "de.exi.goethe_a1.a_l1_05",
+            "de.exi.goethe_a1.a_l2_01",
+            "de.exi.goethe_a1.a_l2_02",
+            "de.exi.goethe_a1.a_l2_03",
+            "de.exi.goethe_a1.a_l2_04",
+            "de.exi.goethe_a1.a_l2_05",
+            "de.exi.goethe_a1.a_l3_01",
+            "de.exi.goethe_a1.a_l3_02",
+            "de.exi.goethe_a1.a_l3_03",
+            "de.exi.goethe_a1.a_l3_04",
+            "de.exi.goethe_a1.a_l3_05",
+            "de.exi.goethe_a1.a_s1_01",
+            "de.exi.goethe_a1.a_s2_01",
+            "de.exi.goethe_a1.a_p1_01",
+            "de.exi.goethe_a1.a_p2_01",
+            "de.exi.goethe_a1.a_p3_01"
+          ]
+        },
+        {
+          "formId": "b",
+          "itemIds": [
+            "de.exi.goethe_a1.b_h1_01",
+            "de.exi.goethe_a1.b_h1_02",
+            "de.exi.goethe_a1.b_h1_03",
+            "de.exi.goethe_a1.b_h1_04",
+            "de.exi.goethe_a1.b_h1_05",
+            "de.exi.goethe_a1.b_h1_06",
+            "de.exi.goethe_a1.b_h2_01",
+            "de.exi.goethe_a1.b_h2_02",
+            "de.exi.goethe_a1.b_h2_03",
+            "de.exi.goethe_a1.b_h2_04",
+            "de.exi.goethe_a1.b_h3_01",
+            "de.exi.goethe_a1.b_h3_02",
+            "de.exi.goethe_a1.b_h3_03",
+            "de.exi.goethe_a1.b_h3_04",
+            "de.exi.goethe_a1.b_h3_05",
+            "de.exi.goethe_a1.b_l1_01",
+            "de.exi.goethe_a1.b_l1_02",
+            "de.exi.goethe_a1.b_l1_03",
+            "de.exi.goethe_a1.b_l1_04",
+            "de.exi.goethe_a1.b_l1_05",
+            "de.exi.goethe_a1.b_l2_01",
+            "de.exi.goethe_a1.b_l2_02",
+            "de.exi.goethe_a1.b_l2_03",
+            "de.exi.goethe_a1.b_l2_04",
+            "de.exi.goethe_a1.b_l2_05",
+            "de.exi.goethe_a1.b_l3_01",
+            "de.exi.goethe_a1.b_l3_02",
+            "de.exi.goethe_a1.b_l3_03",
+            "de.exi.goethe_a1.b_l3_04",
+            "de.exi.goethe_a1.b_l3_05",
+            "de.exi.goethe_a1.b_s1_01",
+            "de.exi.goethe_a1.b_s2_01",
+            "de.exi.goethe_a1.b_p1_01",
+            "de.exi.goethe_a1.b_p2_01",
+            "de.exi.goethe_a1.b_p3_01"
+          ]
+        }
+      ]
+    }
+  ]
+}

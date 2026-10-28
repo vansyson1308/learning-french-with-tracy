@@ -2,6 +2,7 @@
 // Every course bundle, statically. Tests and scripts only — the app loads courses
 // through course-loaders.ts (enforced by src/lib/__tests__/course-bundle.test.ts).
 import { COURSE as de_en } from "./courses/de-en";
+import { COURSE as de_vi } from "./courses/de-vi";
 import { COURSE as es_en } from "./courses/es-en";
 import { COURSE as es_vi } from "./courses/es-vi";
 import { COURSE as fr_en } from "./courses/fr-en";
@@ -15,6 +16,7 @@ import type { CourseBundle } from "../lib/course-bundle";
 
 export const ALL_COURSE_BUNDLES: CourseBundle[] = [
   de_en,
+  de_vi,
   es_en,
   es_vi,
   fr_en,

@@ -4,6 +4,7 @@ import type { CourseBundle } from "../lib/course-bundle";
 
 export const COURSE_LOADERS: Record<string, () => Promise<CourseBundle>> = {
   "de-en": () => import("./courses/de-en").then((m) => m.COURSE),
+  "de-vi": () => import("./courses/de-vi").then((m) => m.COURSE),
   "es-en": () => import("./courses/es-en").then((m) => m.COURSE),
   "es-vi": () => import("./courses/es-vi").then((m) => m.COURSE),
   "fr-en": () => import("./courses/fr-en").then((m) => m.COURSE),
