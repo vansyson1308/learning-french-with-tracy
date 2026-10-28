@@ -208,10 +208,13 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
     }
     if (candidates.size === 0) continue;
     // A closed-class (function) lemma identical to the form absorbs the
-    // whole count: "yo", "no", "que" are pronouns/adverbs/conjunctions
-    // first; their marginal noun readings never ride on the form's count.
-    // Only a PLAIN function reading absorbs: the dated interjection
-    // "nicht?" must not zero the adverb "nicht" (not).
+    // count of its marginal NOUN homograph of the same spelling: "yo", "no",
+    // "que" are pronouns/adverbs/conjunctions first, never "el yo".
+    // Only a PLAIN function reading absorbs (the dated interjection "nicht?"),
+    // and only a noun spelled exactly like the form loses its share: the
+    // adverbs auch / noch / nur keep theirs beside their interjection or
+    // conjunction readings, and the German noun Zeit (a capitalised case
+    // variant) beside the preposition "zeit".
     const functionDirect = [...candidates].some((key) => {
       const entry = lemmas.get(key)!;
       return entry.word === row.word && FUNCTION_POS.includes(entry.pos) && entry.usageTags.length === 0;
@@ -220,7 +223,7 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
       const entry = lemmas.get(key)!;
       // Letter / note readings and proper-noun homographs never absorb the count of an ordinary word.
       if (letterLike(entry) || properLike(entry.word, entry.pos)) return 0;
-      if (functionDirect && !FUNCTION_POS.includes(entry.pos)) return 0;
+      if (functionDirect && entry.pos === "noun" && entry.word === row.word) return 0;
       // Richness of the reading: senses, examples and an inflection table (a verb with 200 forms
       // outweighs the nominalised infinitive "ser (a being)" that shares its bare form).
       return Math.max(1, entry.senseCount) + entry.examples.length + (entry.forms.length > 0 ? 5 : 0);

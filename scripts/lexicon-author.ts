@@ -154,6 +154,8 @@ const isSecondaryReading = (e: PoolEntry) => e.kind === "content" && bestReading
  * learner lexicon must not author — subtitle-corpus violence and vulgarity
  * kaikki leaves untagged, ETL artefacts. Keys are `lemma|partOfSpeech`.
  */
+const frozenRel = `content/${lang}/lexemes.json`;
+const frozen: Record<string, string> = existsSync(safeResolve(frozenRel)) ? (readJson(frozenRel) as Record<string, string>) : {};
 const excludeRel = `content/${lang}/lexicon/exclude.json`;
 const excluded = new Set<string>(existsSync(safeResolve(excludeRel)) ? (readJson(excludeRel) as { entries: { key: string }[] }).entries.map((x) => x.key) : []);
 /** A plural pack surface ("los zapatos") → the singular lemma guess the pool may hold. */
@@ -231,6 +233,32 @@ const usable = (e: PoolEntry) =>
   !excluded.has(`${e.lemma}|${e.partOfSpeech}`) &&
   !packWords.has(e.lemma);
 
+// 1b. Committed lexemes stay: every surface of the frozen id map is selected
+// again (ids are frozen, and the lexicon must be stable when the ETL is re-run
+// on a newer pool — a reviewed lexeme never drops out because quotas moved).
+// The surface's article picks the noun reading; an adjectival noun is found by
+// its definite form ("der Deutsche" → lemma Deutscher); excluded readings are
+// skipped ("ein" is the article, not the adjective "on").
+const byDefinite = new Map(pool.entries.filter((e) => e.definiteForm).map((e) => [e.definiteForm!, e]));
+for (const surface of Object.keys(frozen)) {
+  if (packWords.has(surface)) continue;
+  const { article, rest } = plugin.splitSurfaceArticle(surface);
+  const prefs = article !== null ? ["noun", ...POS_PREFERENCE.filter((p) => p !== "noun")] : POS_PREFERENCE;
+  let entry: PoolEntry | null = null;
+  for (const pos of prefs) {
+    const e = byKey.get(`${rest}|${pos}`);
+    if (e && !excluded.has(takeKey(e)) && !taken.has(takeKey(e))) {
+      entry = e;
+      break;
+    }
+  }
+  entry ??= byDefinite.get(rest) ?? null;
+  if (!entry || taken.has(takeKey(entry))) continue; // reported below as "no longer selected"
+  taken.add(takeKey(entry));
+  // The committed surface stays as reviewed (its article is evidence in the gender vote, like a pack word).
+  selected.push({ entry, surface, lookupForm: entry.lemma, packGloss: {}, packTopic: null, reason: "committed lexeme (frozen id)" });
+}
+
 // 2. Anchor-first.
 const anchorRank = (e: PoolEntry) => {
   const levels = Object.values(e.anchors);
@@ -253,9 +281,14 @@ let functionTaken = 0;
 for (const s of selected) if (s.entry) topicCount.set(s.entry.topic, (topicCount.get(s.entry.topic) ?? 0) + 1);
 // The pool lists content words before function words, so the reserved share is taken first
 // (in function rank order); otherwise the content fill reaches --size before any function word.
+// A function reading is reserved only when it is the word's main reading: "auch" is
+// the adverb (also), not the interjection; "noch" the adverb (still), not "nor".
+const contentPerMillion = new Map<string, number>();
+for (const e of pool.entries) if (e.kind === "content") contentPerMillion.set(e.lemma, Math.max(contentPerMillion.get(e.lemma) ?? 0, e.frequency?.perMillion ?? 0));
+const mainlyContent = (e: PoolEntry) => (contentPerMillion.get(e.lemma) ?? 0) > (e.frequency?.perMillion ?? 0);
 for (const e of pool.entries) {
   if (selected.length >= size || functionTaken >= functionCap) break;
-  if (e.kind !== "function" || !usable(e)) continue;
+  if (e.kind !== "function" || !usable(e) || mainlyContent(e)) continue;
   functionTaken += 1;
   taken.add(takeKey(e));
   topicCount.set(e.topic, (topicCount.get(e.topic) ?? 0) + 1);
@@ -286,8 +319,6 @@ for (const e of deferredByTopic) {
 // ---------------------------------------------------------------------------
 // Assembly
 // ---------------------------------------------------------------------------
-const frozenRel = `content/${lang}/lexemes.json`;
-const frozen: Record<string, string> = existsSync(safeResolve(frozenRel)) ? (readJson(frozenRel) as Record<string, string>) : {};
 const usedIds = new Set(Object.values(frozen));
 const slugOf = (s: string) =>
   s
