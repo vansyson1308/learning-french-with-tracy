@@ -3,7 +3,7 @@ usage: python -I restore-frozen.py <old frozen.json> <repo root>"""
 import json, sys, pathlib
 old_path, root = sys.argv[1], pathlib.Path(sys.argv[2])
 frozen = json.load(open(old_path, encoding="utf-8"))
-RENAMES = {"der Taxi": "das Taxi", "der Deutscher": "der Deutsche"}
+RENAMES = {"der Taxi": "das Taxi", "der Deutscher": "der Deutsche", "Freund": "der Freund", "Name": "der Name", "Eltern": "die Eltern", "See": "der See", "Virus": "das Virus", "Knie": "das Knie"}
 out = {}
 for surface, id_ in frozen.items():
     out[RENAMES.get(surface, surface)] = id_

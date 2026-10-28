@@ -20,7 +20,7 @@ new = load(new_path)["lexemes"]
 records, todo = [], []
 for lex in new:
     o = old.get(lex["id"])
-    same = o and o["glosses"].get("en") == lex["glosses"].get("en") and o.get("partOfSpeech") == lex.get("partOfSpeech")
+    same = o and o["glosses"].get("en") == lex["glosses"].get("en")
     gloss = o["glosses"].get("vi") if same else None
     if same and gloss and not str(gloss).startswith("TODO"):
         old_ex = {e["target"]: e for e in o["examples"]}
@@ -33,6 +33,8 @@ for lex in new:
             rec["dropExamples"] = drop
         if add:
             rec["addExamples"] = add
+        if o.get("partOfSpeech") != lex.get("partOfSpeech"):
+            rec["partOfSpeech"] = o["partOfSpeech"]
         conf = (o.get("relations") or {}).get("confusables")
         if conf:
             rec["confusables"] = conf

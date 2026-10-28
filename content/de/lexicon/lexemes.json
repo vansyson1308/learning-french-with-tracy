@@ -4184,7 +4184,12 @@
         {
           "source": "original-lexicon-etl"
         }
-      ]
+      ],
+      "relations": {
+        "confusables": [
+          "de:w:wann"
+        ]
+      }
     },
     {
       "id": "de:w:lassen",
@@ -19308,7 +19313,12 @@
         {
           "source": "original-lexicon-etl"
         }
-      ]
+      ],
+      "relations": {
+        "confusables": [
+          "de:w:euro"
+        ]
+      }
     },
     {
       "id": "de:w:hierher",
@@ -50201,41 +50211,13 @@
       }
     },
     {
-      "id": "de:w:null",
-      "surface": "null",
-      "lemma": "null",
-      "lookupForm": "null",
-      "partOfSpeech": "determiner",
-      "glosses": {
-        "en": "zero",
-        "vi": "không (số 0)"
-      },
-      "topic": "numbers",
-      "examples": [
-        {
-          "target": "Die Nummer beginnt mit null.",
-          "translations": {
-            "en": "The number starts with zero.",
-            "vi": "Số bắt đầu bằng số không."
-          },
-          "source": "original-lexicon-etl",
-          "key": "add"
-        }
-      ],
-      "sourceRefs": [
-        {
-          "source": "original-lexicon-etl"
-        }
-      ]
-    },
-    {
       "id": "de:w:eins",
       "surface": "eins",
       "lemma": "eins",
       "lookupForm": "eins",
       "partOfSpeech": "determiner",
       "glosses": {
-        "en": "one (counting)",
+        "en": "one",
         "vi": "một (khi đếm)"
       },
       "pronunciation": {
@@ -50249,21 +50231,43 @@
         "rank": 116,
         "band": "common"
       },
-      "topic": "numbers",
+      "topic": "everyday",
       "examples": [
         {
-          "target": "Eins, zwei, drei!",
+          "target": "die Nummer eins",
           "translations": {
-            "en": "One, two, three!",
-            "vi": "Một, hai, ba!"
+            "en": "the number one",
+            "vi": "số một"
           },
-          "source": "original-lexicon-etl",
-          "key": "add"
+          "source": "kaikki-en",
+          "key": "eins|num|0"
+        },
+        {
+          "target": "eins plus zwei",
+          "translations": {
+            "en": "one plus two",
+            "vi": "một cộng hai"
+          },
+          "source": "kaikki-en",
+          "key": "eins|num|0"
+        },
+        {
+          "target": "hundert und eins",
+          "translations": {
+            "en": "one hundred and one",
+            "vi": "một trăm lẻ một"
+          },
+          "source": "kaikki-en",
+          "key": "eins|num|0"
         }
       ],
       "sourceRefs": [
         {
           "source": "kaikki-en",
+          "key": "eins|num"
+        },
+        {
+          "source": "kaikki-vi",
           "key": "eins|num"
         },
         {
@@ -50296,7 +50300,7 @@
         "rank": 122,
         "band": "common"
       },
-      "topic": "numbers",
+      "topic": "everyday",
       "examples": [
         {
           "target": "Wir sind vier Personen.",
@@ -50305,12 +50309,16 @@
             "vi": "Chúng tôi có bốn người."
           },
           "source": "original-lexicon-etl",
-          "key": "add"
+          "key": "review"
         }
       ],
       "sourceRefs": [
         {
           "source": "kaikki-en",
+          "key": "vier|num"
+        },
+        {
+          "source": "kaikki-vi",
           "key": "vier|num"
         },
         {
@@ -50343,7 +50351,7 @@
         "rank": 119,
         "band": "common"
       },
-      "topic": "numbers",
+      "topic": "everyday",
       "examples": [
         {
           "target": "Das Kind ist fünf Jahre alt.",
@@ -50352,12 +50360,16 @@
             "vi": "Đứa trẻ năm tuổi."
           },
           "source": "original-lexicon-etl",
-          "key": "add"
+          "key": "review"
         }
       ],
       "sourceRefs": [
         {
           "source": "kaikki-en",
+          "key": "fünf|num"
+        },
+        {
+          "source": "kaikki-vi",
           "key": "fünf|num"
         },
         {
@@ -50390,7 +50402,7 @@
         "rank": 138,
         "band": "common"
       },
-      "topic": "numbers",
+      "topic": "everyday",
       "examples": [
         {
           "target": "Ich stehe um sechs Uhr auf.",
@@ -50399,7 +50411,7 @@
             "vi": "Tôi dậy lúc sáu giờ."
           },
           "source": "original-lexicon-etl",
-          "key": "add"
+          "key": "review"
         }
       ],
       "sourceRefs": [
@@ -50408,37 +50420,13 @@
           "key": "sechs|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "sechs|num"
+        },
+        {
           "source": "frequencywords",
           "key": "sechs"
         },
-        {
-          "source": "original-lexicon-etl"
-        }
-      ]
-    },
-    {
-      "id": "de:w:sieben",
-      "surface": "sieben",
-      "lemma": "sieben",
-      "lookupForm": "sieben",
-      "partOfSpeech": "determiner",
-      "glosses": {
-        "en": "seven",
-        "vi": "bảy"
-      },
-      "topic": "numbers",
-      "examples": [
-        {
-          "target": "Eine Woche hat sieben Tage.",
-          "translations": {
-            "en": "A week has seven days.",
-            "vi": "Một tuần có bảy ngày."
-          },
-          "source": "original-lexicon-etl",
-          "key": "add"
-        }
-      ],
-      "sourceRefs": [
         {
           "source": "original-lexicon-etl"
         }
@@ -50465,7 +50453,7 @@
         "rank": 156,
         "band": "common"
       },
-      "topic": "numbers",
+      "topic": "everyday",
       "examples": [
         {
           "target": "Der Zug kommt um acht Uhr.",
@@ -50474,12 +50462,16 @@
             "vi": "Tàu đến lúc tám giờ."
           },
           "source": "original-lexicon-etl",
-          "key": "add"
+          "key": "review"
         }
       ],
       "sourceRefs": [
         {
           "source": "kaikki-en",
+          "key": "acht|num"
+        },
+        {
+          "source": "kaikki-vi",
           "key": "acht|num"
         },
         {
@@ -50512,7 +50504,7 @@
         "rank": 186,
         "band": "less-common"
       },
-      "topic": "numbers",
+      "topic": "everyday",
       "examples": [
         {
           "target": "Ich arbeite neun Stunden.",
@@ -50521,12 +50513,16 @@
             "vi": "Tôi làm việc chín tiếng."
           },
           "source": "original-lexicon-etl",
-          "key": "add"
+          "key": "review"
         }
       ],
       "sourceRefs": [
         {
           "source": "kaikki-en",
+          "key": "neun|num"
+        },
+        {
+          "source": "kaikki-vi",
           "key": "neun|num"
         },
         {
@@ -50559,7 +50555,7 @@
         "rank": 136,
         "band": "common"
       },
-      "topic": "numbers",
+      "topic": "everyday",
       "examples": [
         {
           "target": "Das kostet zehn Euro.",
@@ -50568,7 +50564,7 @@
             "vi": "Cái đó giá mười euro."
           },
           "source": "original-lexicon-etl",
-          "key": "add"
+          "key": "review"
         }
       ],
       "sourceRefs": [
@@ -50577,9 +50573,682 @@
           "key": "zehn|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "zehn|num"
+        },
+        {
           "source": "frequencywords",
           "key": "zehn"
         },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:euro",
+      "surface": "der Euro",
+      "lemma": "Euro",
+      "lookupForm": "Euro",
+      "partOfSpeech": "noun",
+      "gender": "masculine",
+      "glosses": {
+        "en": "the euro",
+        "vi": "euro (tiền)"
+      },
+      "pronunciation": {
+        "value": "ˈɔʏ̯ro",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 17.7317,
+        "rank": 2696,
+        "band": "less-common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Ich habe nur noch fünf Euro in meinem Portmonee.",
+          "translations": {
+            "en": "I have just five euro in my purse.",
+            "vi": "Trong ví tôi chỉ còn năm euro."
+          },
+          "source": "kaikki-en",
+          "key": "Euro|noun|0"
+        },
+        {
+          "target": "Gestern habe ich zwei Euro gefunden.",
+          "translations": {
+            "en": "Yesterday I found two euro.",
+            "vi": "Hôm qua tôi nhặt được hai euro."
+          },
+          "source": "kaikki-en",
+          "key": "Euro|noun|0"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "Euro|noun"
+        },
+        {
+          "source": "kaikki-vi",
+          "key": "Euro|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "Euro"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "relations": {
+        "confusables": [
+          "de:w:buro"
+        ]
+      }
+    },
+    {
+      "id": "de:w:halb",
+      "surface": "halb",
+      "lemma": "halb",
+      "lookupForm": "halb",
+      "partOfSpeech": "adjective",
+      "glosses": {
+        "en": "half, halfway",
+        "vi": "rưỡi, một nửa (halb drei = 2 giờ 30)"
+      },
+      "pronunciation": {
+        "value": "halp",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 93.0702,
+        "rank": 722,
+        "band": "common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Es ist halb drei.",
+          "translations": {
+            "en": "It is half past two.",
+            "vi": "Bây giờ là hai giờ rưỡi."
+          },
+          "source": "original-lexicon-etl",
+          "key": "review"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "halb|adj"
+        },
+        {
+          "source": "frequencywords",
+          "key": "halb"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:nicht",
+      "surface": "nicht",
+      "lemma": "nicht",
+      "lookupForm": "nicht",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "not, non-",
+        "vi": "không (phủ định)"
+      },
+      "pronunciation": {
+        "value": "nɪçt",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 10910.4886,
+        "rank": 3,
+        "band": "very-common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Bitte nicht stören!",
+          "translations": {
+            "en": "Please do not disturb!",
+            "vi": "Xin đừng làm phiền!"
+          },
+          "source": "kaikki-en",
+          "key": "nicht|adv|0"
+        },
+        {
+          "target": "Das ist nicht wahr.",
+          "translations": {
+            "en": "That is not true.",
+            "vi": "Điều đó không đúng."
+          },
+          "source": "kaikki-en",
+          "key": "nicht|adv|0"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "nicht|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "nicht"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:hier",
+      "surface": "hier",
+      "lemma": "hier",
+      "lookupForm": "hier",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "here",
+        "vi": "ở đây, đây"
+      },
+      "pronunciation": {
+        "value": "hiːr",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 3977.8577,
+        "rank": 14,
+        "band": "very-common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Ich bin hier in diesem Dorf geboren.",
+          "translations": {
+            "en": "I was born here in this village.",
+            "vi": "Tôi sinh ra ở ngôi làng này."
+          },
+          "source": "kaikki-en",
+          "key": "hier|adv|0"
+        },
+        {
+          "target": "Setzen wir uns hier aufs Sofa.",
+          "translations": {
+            "en": "Let’s sit down here on the sofa.",
+            "vi": "Chúng ta ngồi xuống ghế sofa ở đây nhé."
+          },
+          "source": "kaikki-en",
+          "key": "hier|adv|0"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "hier|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "hier"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:auch",
+      "surface": "auch",
+      "lemma": "auch",
+      "lookupForm": "auch",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "also, too",
+        "vi": "cũng"
+      },
+      "pronunciation": {
+        "value": "aʊ̯x",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 2470.3241,
+        "rank": 29,
+        "band": "very-common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Ich lerne auch Deutsch.",
+          "translations": {
+            "en": "I am also learning German.",
+            "vi": "Tôi cũng học tiếng Đức."
+          },
+          "source": "original-lexicon-etl",
+          "key": "review"
+        },
+        {
+          "target": "Du auch?",
+          "translations": {
+            "en": "You too?",
+            "vi": "Bạn cũng vậy à?"
+          },
+          "source": "original-lexicon-etl",
+          "key": "review"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "auch|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "auch"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:wo",
+      "surface": "wo",
+      "lemma": "wo",
+      "lookupForm": "wo",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "where",
+        "vi": "ở đâu"
+      },
+      "pronunciation": {
+        "value": "voː",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 1169.7288,
+        "rank": 62,
+        "band": "very-common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Wo bist du?",
+          "translations": {
+            "en": "Where are you?",
+            "vi": "Bạn đang ở đâu?"
+          },
+          "source": "kaikki-en",
+          "key": "wo|adv|0"
+        },
+        {
+          "target": "Ich kenne einen Laden, wo solche Sachen verkauft werden.",
+          "translations": {
+            "en": "I know a shop where such things are sold.",
+            "vi": "Tôi biết một cửa hàng bán những thứ như vậy."
+          },
+          "source": "kaikki-en",
+          "key": "wo|adv|1"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "wo|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "wo"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:wann",
+      "surface": "wann",
+      "lemma": "wann",
+      "lookupForm": "wann",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "when",
+        "vi": "khi nào, lúc nào"
+      },
+      "pronunciation": {
+        "value": "van",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 297.2044,
+        "rank": 267,
+        "band": "common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Wann kommt er?",
+          "translations": {
+            "en": "When will he arrive?",
+            "vi": "Khi nào anh ấy đến?"
+          },
+          "source": "kaikki-en",
+          "key": "wann|adv|0"
+        },
+        {
+          "target": "Ich weiß nicht, wann er kommt.",
+          "translations": {
+            "en": "I don’t know when he’ll arrive.",
+            "vi": "Tôi không biết khi nào anh ấy đến."
+          },
+          "source": "kaikki-en",
+          "key": "wann|adv|0"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "wann|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "wann"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "relations": {
+        "confusables": [
+          "de:w:dann"
+        ]
+      }
+    },
+    {
+      "id": "de:w:heute",
+      "surface": "heute",
+      "lemma": "heute",
+      "lookupForm": "heute",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "today",
+        "vi": "hôm nay"
+      },
+      "pronunciation": {
+        "value": "ˈhɔʏ̯tə",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 427.4522,
+        "rank": 179,
+        "band": "very-common"
+      },
+      "topic": "time",
+      "examples": [
+        {
+          "target": "Heute ist Montag",
+          "translations": {
+            "en": "Today is monday",
+            "vi": "Hôm nay là thứ Hai."
+          },
+          "source": "kaikki-en",
+          "key": "heute|adv|0"
+        },
+        {
+          "target": "Heute gibt es keine Schule",
+          "translations": {
+            "en": "Today there is no school",
+            "vi": "Hôm nay không có giờ học."
+          },
+          "source": "kaikki-en",
+          "key": "heute|adv|0"
+        },
+        {
+          "target": "Das war heute und nicht gestern?",
+          "translations": {
+            "en": "That was today and not yesterday?",
+            "vi": "Đó là hôm nay chứ không phải hôm qua à?"
+          },
+          "source": "kaikki-en",
+          "key": "heute|adv|0"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "heute|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "heute"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:morgen-adverb",
+      "surface": "morgen",
+      "lemma": "morgen",
+      "lookupForm": "morgen",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "tomorrow",
+        "vi": "ngày mai"
+      },
+      "pronunciation": {
+        "value": "ˈmɔrɡən",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 130.3323,
+        "rank": 531,
+        "band": "common"
+      },
+      "topic": "time",
+      "examples": [
+        {
+          "target": "morgen früh",
+          "translations": {
+            "en": "tomorrow morning",
+            "vi": "sáng mai"
+          },
+          "source": "kaikki-en",
+          "key": "morgen|adv|0"
+        },
+        {
+          "target": "morgen Abend",
+          "translations": {
+            "en": "tomorrow evening",
+            "vi": "tối mai"
+          },
+          "source": "kaikki-en",
+          "key": "morgen|adv|0"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "morgen|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "morgen"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:gestern",
+      "surface": "gestern",
+      "lemma": "gestern",
+      "lookupForm": "gestern",
+      "partOfSpeech": "adverb",
+      "glosses": {
+        "en": "yesterday",
+        "vi": "hôm qua"
+      },
+      "pronunciation": {
+        "value": "ˈɡɛstərn",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 32.1064,
+        "rank": 1720,
+        "band": "less-common"
+      },
+      "topic": "time",
+      "examples": [
+        {
+          "target": "Gestern habe ich ihm geholfen.",
+          "translations": {
+            "en": "I helped him yesterday.",
+            "vi": "Hôm qua tôi đã giúp anh ấy."
+          },
+          "source": "tatoeba",
+          "key": "331893|257798"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "gestern|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "gestern"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:aber",
+      "surface": "aber",
+      "lemma": "aber",
+      "lookupForm": "aber",
+      "partOfSpeech": "conjunction",
+      "glosses": {
+        "en": "but",
+        "vi": "nhưng"
+      },
+      "pronunciation": {
+        "value": "ˈaːbɐ",
+        "notation": "ipa",
+        "source": "kaikki-en"
+      },
+      "frequency": {
+        "source": "frequencywords",
+        "rawValue": 1408.1439,
+        "rank": 50,
+        "band": "very-common"
+      },
+      "topic": "everyday",
+      "examples": [
+        {
+          "target": "Ich mag keine Orangen, aber ich mag Äpfel.",
+          "translations": {
+            "en": "I don't like oranges, but I like apples.",
+            "vi": "Tôi không thích cam, nhưng tôi thích táo."
+          },
+          "source": "kaikki-en",
+          "key": "aber|conj|0"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "aber|conj"
+        },
+        {
+          "source": "frequencywords",
+          "key": "aber"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:null",
+      "surface": "null",
+      "lemma": "null",
+      "lookupForm": "null",
+      "partOfSpeech": "determiner",
+      "glosses": {
+        "en": "zero",
+        "vi": "không (số 0)"
+      },
+      "topic": "numbers",
+      "examples": [
+        {
+          "target": "Die Nummer beginnt mit null.",
+          "translations": {
+            "en": "The number starts with zero.",
+            "vi": "Số bắt đầu bằng số không."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:sieben",
+      "surface": "sieben",
+      "lemma": "sieben",
+      "lookupForm": "sieben",
+      "partOfSpeech": "determiner",
+      "glosses": {
+        "en": "seven",
+        "vi": "bảy"
+      },
+      "topic": "numbers",
+      "examples": [
+        {
+          "target": "Eine Woche hat sieben Tage.",
+          "translations": {
+            "en": "A week has seven days.",
+            "vi": "Một tuần có bảy ngày."
+          },
+          "source": "original-lexicon-etl",
+          "key": "add"
+        }
+      ],
+      "sourceRefs": [
         {
           "source": "original-lexicon-etl"
         }
@@ -50922,95 +51591,28 @@
       ]
     },
     {
-      "id": "de:w:euro",
-      "surface": "der Euro",
-      "lemma": "Euro",
-      "lookupForm": "Euro",
-      "partOfSpeech": "noun",
-      "gender": "masculine",
+      "id": "de:w:funfzehn",
+      "surface": "fünfzehn",
+      "lemma": "fünfzehn",
+      "lookupForm": "fünfzehn",
+      "partOfSpeech": "determiner",
       "glosses": {
-        "en": "euro",
-        "vi": "euro (tiền)"
-      },
-      "pronunciation": {
-        "value": "ˈɔʏ̯ro",
-        "notation": "ipa",
-        "source": "kaikki-en"
-      },
-      "frequency": {
-        "source": "frequencywords",
-        "rawValue": 17.7317,
-        "rank": 2696,
-        "band": "less-common"
-      },
-      "topic": "shopping",
-      "examples": [
-        {
-          "target": "Der Kaffee kostet drei Euro.",
-          "translations": {
-            "en": "The coffee costs three euros.",
-            "vi": "Cà phê giá ba euro."
-          },
-          "source": "original-lexicon-etl",
-          "key": "add"
-        }
-      ],
-      "sourceRefs": [
-        {
-          "source": "kaikki-en",
-          "key": "Euro|noun"
-        },
-        {
-          "source": "frequencywords",
-          "key": "Euro"
-        },
-        {
-          "source": "original-lexicon-etl"
-        }
-      ]
-    },
-    {
-      "id": "de:w:halb",
-      "surface": "halb",
-      "lemma": "halb",
-      "lookupForm": "halb",
-      "partOfSpeech": "adjective",
-      "glosses": {
-        "en": "half",
-        "vi": "rưỡi, một nửa (halb drei = 2 giờ 30)"
-      },
-      "pronunciation": {
-        "value": "halp",
-        "notation": "ipa",
-        "source": "kaikki-en"
-      },
-      "frequency": {
-        "source": "frequencywords",
-        "rawValue": 93.0702,
-        "rank": 722,
-        "band": "common"
+        "en": "fifteen",
+        "vi": "mười lăm"
       },
       "topic": "numbers",
       "examples": [
         {
-          "target": "Es ist halb drei.",
+          "target": "Die Pause dauert fünfzehn Minuten.",
           "translations": {
-            "en": "It is half past two.",
-            "vi": "Bây giờ là hai giờ rưỡi."
+            "en": "The break lasts fifteen minutes.",
+            "vi": "Giờ nghỉ kéo dài mười lăm phút."
           },
           "source": "original-lexicon-etl",
           "key": "add"
         }
       ],
       "sourceRefs": [
-        {
-          "source": "kaikki-en",
-          "key": "halb|adj"
-        },
-        {
-          "source": "frequencywords",
-          "key": "halb"
-        },
         {
           "source": "original-lexicon-etl"
         }

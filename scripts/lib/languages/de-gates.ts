@@ -42,7 +42,11 @@ function targetStrings(e: Exercise): string[] {
     else if (v && typeof v === "object" && "text" in (v as object)) add((v as { text: unknown }).text);
     else if (v && typeof v === "object" && "target" in (v as object)) add((v as { target: unknown }).target);
   };
-  for (const k of ["audioTarget", "sentence", "answer", "alternatives", "pairs"]) add(x[k]);
+  // A word-bank answer is one sentence; a cloze is checked with its answer filled in (audioTarget).
+  if (Array.isArray(x.answer)) out.push((x.answer as string[]).join(" "));
+  else add(x.answer);
+  for (const k of ["audioTarget", "alternatives", "pairs"]) add(x[k]);
+  if (e.type !== "fillBlank") add(x.sentence);
   // Options and prompts are German only in target-facing modes.
   if (x.mode === "nativeToTarget" || x.mode === "listen" || e.type === "fillBlank") add(x.options);
   if (x.mode === "targetToNative" || e.type === "wordBank" && x.direction === "targetToNative") add(x.prompt);

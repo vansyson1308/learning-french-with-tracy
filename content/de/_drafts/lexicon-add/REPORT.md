@@ -1,6 +1,6 @@
 # lexicon-add — ingest report (de-vi)
 
-Records: 23 · schema-valid: 23 · failed: 0 · validator errors after merge: 0
+Records: 15 · schema-valid: 15 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -19,14 +19,6 @@ Records: 23 · schema-valid: 23 · failed: 0 · validator errors after merge: 0
 - ✅ line 13 `(line 13)`
 - ✅ line 14 `(line 14)`
 - ✅ line 15 `(line 15)`
-- ✅ line 16 `(line 16)`
-- ✅ line 17 `(line 17)`
-- ✅ line 18 `(line 18)`
-- ✅ line 19 `(line 19)`
-- ✅ line 20 `(line 20)`
-- ✅ line 21 `(line 21)`
-- ✅ line 22 `(line 22)`
-- ✅ line 23 `(line 23)`
 
 ## Validator errors (fix these records and ingest again)
 

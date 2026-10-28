@@ -292,7 +292,8 @@ for (const s of selected) if (s.entry) topicCount.set(s.entry.topic, (topicCount
 // A function reading is reserved only when it is the word's main reading: "auch" is
 // the adverb (also), not the interjection; "noch" the adverb (still), not "nor".
 const contentPerMillion = new Map<string, number>();
-for (const e of pool.entries) if (e.kind === "content") contentPerMillion.set(e.lemma, Math.max(contentPerMillion.get(e.lemma) ?? 0, e.frequency?.perMillion ?? 0));
+// Excluded readings do not count (aber|adverb "rather" is excluded; the learner's aber is the conjunction).
+for (const e of pool.entries) if (e.kind === "content" && !excluded.has(takeKey(e))) contentPerMillion.set(e.lemma, Math.max(contentPerMillion.get(e.lemma) ?? 0, e.frequency?.perMillion ?? 0));
 const mainlyContent = (e: PoolEntry) => (contentPerMillion.get(e.lemma) ?? 0) > (e.frequency?.perMillion ?? 0);
 for (const e of pool.entries) {
   if (selected.length >= size || functionTaken >= functionCap) break;
@@ -308,7 +309,9 @@ for (const e of pool.entries) {
   if (!usable(e)) continue;
   if (e.kind === "function") {
     continue;
-  } else if ((topicCount.get(e.topic) ?? 0) >= topicCap(e.topic)) {
+  } else if ((topicCount.get(e.topic) ?? 0) >= topicCap(e.topic) && e.frequency?.band === "less-common") {
+    // The topic quota spreads the less-common words; a very common or common word (nicht, hier, wo, wann)
+    // is never deferred behind a quota.
     deferredByTopic.push(e);
     continue;
   }

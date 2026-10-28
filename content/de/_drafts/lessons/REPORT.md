@@ -1,6 +1,6 @@
 # lessons — ingest report (de-vi)
 
-Records: 20 · schema-valid: 20 · failed: 0 · validator errors after merge: 0
+Records: 40 · schema-valid: 40 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -24,6 +24,26 @@ Records: 20 · schema-valid: 20 · failed: 0 · validator errors after merge: 0
 - ✅ line 18 `de-vi:u4-l1`
 - ✅ line 19 `de-vi:u4-l2`
 - ✅ line 20 `de-vi:u4-l3`
+- ✅ line 21 `de-vi:ua-l0`
+- ✅ line 22 `de-vi:ua-l1`
+- ✅ line 23 `de-vi:ua-l2`
+- ✅ line 24 `de-vi:ua-l3`
+- ✅ line 25 `de-vi:ub-l0`
+- ✅ line 26 `de-vi:ub-l1`
+- ✅ line 27 `de-vi:ub-l2`
+- ✅ line 28 `de-vi:ub-l3`
+- ✅ line 29 `de-vi:uc-l0`
+- ✅ line 30 `de-vi:uc-l1`
+- ✅ line 31 `de-vi:uc-l2`
+- ✅ line 32 `de-vi:uc-l3`
+- ✅ line 33 `de-vi:ud-l0`
+- ✅ line 34 `de-vi:ud-l1`
+- ✅ line 35 `de-vi:ud-l2`
+- ✅ line 36 `de-vi:ud-l3`
+- ✅ line 37 `de-vi:ue-l0`
+- ✅ line 38 `de-vi:ue-l1`
+- ✅ line 39 `de-vi:ue-l2`
+- ✅ line 40 `de-vi:ue-l3`
 
 ## Validator errors (fix these records and ingest again)
 

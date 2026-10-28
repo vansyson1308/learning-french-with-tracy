@@ -1,5 +1,5 @@
 {
-  "contentHash": "048ee5240d5a727c",
+  "contentHash": "0916999f215379e0",
   "entries": [
     {
       "id": "de:w:mann",
@@ -1325,7 +1325,10 @@
       "example": {
         "de": "Ich ziehe mich erst an, dann frühstücke ich.",
         "en": "First I'm getting dressed, then I'll have breakfast."
-      }
+      },
+      "confusables": [
+        "de:w:wann"
+      ]
     },
     {
       "id": "de:w:lassen",
@@ -6464,7 +6467,10 @@
       "example": {
         "de": "Sie sitzt in ihrem Büro.",
         "en": "She’s sitting in her office."
-      }
+      },
+      "confusables": [
+        "de:w:euro"
+      ]
     },
     {
       "id": "de:w:hierher",
@@ -17070,34 +17076,21 @@
       ]
     },
     {
-      "id": "de:w:null",
-      "surface": "null",
-      "lookupForm": "null",
-      "lemma": "null",
-      "gloss": "zero",
-      "pos": "determiner",
-      "topic": "numbers",
-      "example": {
-        "de": "Die Nummer beginnt mit null.",
-        "en": "The number starts with zero."
-      }
-    },
-    {
       "id": "de:w:eins",
       "surface": "eins",
       "lookupForm": "eins",
       "lemma": "eins",
-      "gloss": "one (counting)",
+      "gloss": "one",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "band": "common",
       "pronunciation": {
         "value": "aɪ̯ns",
         "notation": "ipa"
       },
       "example": {
-        "de": "Eins, zwei, drei!",
-        "en": "One, two, three!"
+        "de": "die Nummer eins",
+        "en": "the number one"
       }
     },
     {
@@ -17107,7 +17100,7 @@
       "lemma": "vier",
       "gloss": "four",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "band": "common",
       "pronunciation": {
         "value": "fiːr",
@@ -17125,7 +17118,7 @@
       "lemma": "fünf",
       "gloss": "five",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "band": "common",
       "pronunciation": {
         "value": "fʏnf",
@@ -17143,7 +17136,7 @@
       "lemma": "sechs",
       "gloss": "six",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "band": "common",
       "pronunciation": {
         "value": "zɛks",
@@ -17155,26 +17148,13 @@
       }
     },
     {
-      "id": "de:w:sieben",
-      "surface": "sieben",
-      "lookupForm": "sieben",
-      "lemma": "sieben",
-      "gloss": "seven",
-      "pos": "determiner",
-      "topic": "numbers",
-      "example": {
-        "de": "Eine Woche hat sieben Tage.",
-        "en": "A week has seven days."
-      }
-    },
-    {
       "id": "de:w:acht",
       "surface": "acht",
       "lookupForm": "acht",
       "lemma": "acht",
       "gloss": "eight",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "band": "common",
       "pronunciation": {
         "value": "axt",
@@ -17192,7 +17172,7 @@
       "lemma": "neun",
       "gloss": "nine",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "band": "less-common",
       "pronunciation": {
         "value": "nɔʏ̯n",
@@ -17210,7 +17190,7 @@
       "lemma": "zehn",
       "gloss": "ten",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "band": "common",
       "pronunciation": {
         "value": "t͡seːn",
@@ -17219,6 +17199,237 @@
       "example": {
         "de": "Das kostet zehn Euro.",
         "en": "That costs ten euros."
+      }
+    },
+    {
+      "id": "de:w:euro",
+      "surface": "der Euro",
+      "lookupForm": "Euro",
+      "lemma": "Euro",
+      "gloss": "the euro",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈɔʏ̯ro",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich habe nur noch fünf Euro in meinem Portmonee.",
+        "en": "I have just five euro in my purse."
+      },
+      "confusables": [
+        "de:w:buro"
+      ]
+    },
+    {
+      "id": "de:w:halb",
+      "surface": "halb",
+      "lookupForm": "halb",
+      "lemma": "halb",
+      "gloss": "half, halfway",
+      "pos": "adjective",
+      "topic": "everyday",
+      "band": "common",
+      "pronunciation": {
+        "value": "halp",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Es ist halb drei.",
+        "en": "It is half past two."
+      }
+    },
+    {
+      "id": "de:w:nicht",
+      "surface": "nicht",
+      "lookupForm": "nicht",
+      "lemma": "nicht",
+      "gloss": "not, non-",
+      "pos": "adverb",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "nɪçt",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Bitte nicht stören!",
+        "en": "Please do not disturb!"
+      }
+    },
+    {
+      "id": "de:w:hier",
+      "surface": "hier",
+      "lookupForm": "hier",
+      "lemma": "hier",
+      "gloss": "here",
+      "pos": "adverb",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "hiːr",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich bin hier in diesem Dorf geboren.",
+        "en": "I was born here in this village."
+      }
+    },
+    {
+      "id": "de:w:auch",
+      "surface": "auch",
+      "lookupForm": "auch",
+      "lemma": "auch",
+      "gloss": "also, too",
+      "pos": "adverb",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "aʊ̯x",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich lerne auch Deutsch.",
+        "en": "I am also learning German."
+      }
+    },
+    {
+      "id": "de:w:wo",
+      "surface": "wo",
+      "lookupForm": "wo",
+      "lemma": "wo",
+      "gloss": "where",
+      "pos": "adverb",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "voː",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wo bist du?",
+        "en": "Where are you?"
+      }
+    },
+    {
+      "id": "de:w:wann",
+      "surface": "wann",
+      "lookupForm": "wann",
+      "lemma": "wann",
+      "gloss": "when",
+      "pos": "adverb",
+      "topic": "everyday",
+      "band": "common",
+      "pronunciation": {
+        "value": "van",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Wann kommt er?",
+        "en": "When will he arrive?"
+      },
+      "confusables": [
+        "de:w:dann"
+      ]
+    },
+    {
+      "id": "de:w:heute",
+      "surface": "heute",
+      "lookupForm": "heute",
+      "lemma": "heute",
+      "gloss": "today",
+      "pos": "adverb",
+      "topic": "time",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈhɔʏ̯tə",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Heute ist Montag",
+        "en": "Today is monday"
+      }
+    },
+    {
+      "id": "de:w:morgen-adverb",
+      "surface": "morgen",
+      "lookupForm": "morgen",
+      "lemma": "morgen",
+      "gloss": "tomorrow",
+      "pos": "adverb",
+      "topic": "time",
+      "band": "common",
+      "pronunciation": {
+        "value": "ˈmɔrɡən",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "morgen früh",
+        "en": "tomorrow morning"
+      }
+    },
+    {
+      "id": "de:w:gestern",
+      "surface": "gestern",
+      "lookupForm": "gestern",
+      "lemma": "gestern",
+      "gloss": "yesterday",
+      "pos": "adverb",
+      "topic": "time",
+      "band": "less-common",
+      "pronunciation": {
+        "value": "ˈɡɛstərn",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Gestern habe ich ihm geholfen.",
+        "en": "I helped him yesterday."
+      }
+    },
+    {
+      "id": "de:w:aber",
+      "surface": "aber",
+      "lookupForm": "aber",
+      "lemma": "aber",
+      "gloss": "but",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "band": "very-common",
+      "pronunciation": {
+        "value": "ˈaːbɐ",
+        "notation": "ipa"
+      },
+      "example": {
+        "de": "Ich mag keine Orangen, aber ich mag Äpfel.",
+        "en": "I don't like oranges, but I like apples."
+      }
+    },
+    {
+      "id": "de:w:null",
+      "surface": "null",
+      "lookupForm": "null",
+      "lemma": "null",
+      "gloss": "zero",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Die Nummer beginnt mit null.",
+        "en": "The number starts with zero."
+      }
+    },
+    {
+      "id": "de:w:sieben",
+      "surface": "sieben",
+      "lookupForm": "sieben",
+      "lemma": "sieben",
+      "gloss": "seven",
+      "pos": "determiner",
+      "topic": "numbers",
+      "example": {
+        "de": "Eine Woche hat sieben Tage.",
+        "en": "A week has seven days."
       }
     },
     {
@@ -17378,40 +17589,16 @@
       }
     },
     {
-      "id": "de:w:euro",
-      "surface": "der Euro",
-      "lookupForm": "Euro",
-      "lemma": "Euro",
-      "gloss": "euro",
-      "pos": "noun",
-      "gender": "masculine",
-      "topic": "shopping",
-      "band": "less-common",
-      "pronunciation": {
-        "value": "ˈɔʏ̯ro",
-        "notation": "ipa"
-      },
-      "example": {
-        "de": "Der Kaffee kostet drei Euro.",
-        "en": "The coffee costs three euros."
-      }
-    },
-    {
-      "id": "de:w:halb",
-      "surface": "halb",
-      "lookupForm": "halb",
-      "lemma": "halb",
-      "gloss": "half",
-      "pos": "adjective",
+      "id": "de:w:funfzehn",
+      "surface": "fünfzehn",
+      "lookupForm": "fünfzehn",
+      "lemma": "fünfzehn",
+      "gloss": "fifteen",
+      "pos": "determiner",
       "topic": "numbers",
-      "band": "common",
-      "pronunciation": {
-        "value": "halp",
-        "notation": "ipa"
-      },
       "example": {
-        "de": "Es ist halb drei.",
-        "en": "It is half past two."
+        "de": "Die Pause dauert fünfzehn Minuten.",
+        "en": "The break lasts fifteen minutes."
       }
     }
   ]

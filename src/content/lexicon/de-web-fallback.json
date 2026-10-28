@@ -1,5 +1,5 @@
 {
-  "contentHash": "048ee5240d5a727c",
+  "contentHash": "0916999f215379e0",
   "schemaVersion": 3,
   "datasetLicense": "CC-BY-SA-4.0",
   "sources": [
@@ -3283,6 +3283,9 @@
           "en": "If you make an effort, then you'll be able to do it.",
           "source": "kaikki-en"
         }
+      ],
+      "confusables": [
+        "de:w:wann"
       ],
       "sourceRefs": [
         {
@@ -14978,6 +14981,9 @@
           "en": "travel agency",
           "source": "kaikki-en"
         }
+      ],
+      "confusables": [
+        "de:w:euro"
       ],
       "sourceRefs": [
         {
@@ -38999,34 +39005,13 @@
       ]
     },
     {
-      "id": "de:w:null",
-      "surface": "null",
-      "lookupForm": "null",
-      "lemma": "null",
-      "gloss": "zero",
-      "pos": "determiner",
-      "topic": "numbers",
-      "examples": [
-        {
-          "de": "Die Nummer beginnt mit null.",
-          "en": "The number starts with zero.",
-          "source": "original-lexicon-etl"
-        }
-      ],
-      "sourceRefs": [
-        {
-          "source": "original-lexicon-etl"
-        }
-      ]
-    },
-    {
       "id": "de:w:eins",
       "surface": "eins",
       "lookupForm": "eins",
       "lemma": "eins",
-      "gloss": "one (counting)",
+      "gloss": "one",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "frequency": {
         "band": "common",
         "rank": 116,
@@ -39038,14 +39023,28 @@
       },
       "examples": [
         {
-          "de": "Eins, zwei, drei!",
-          "en": "One, two, three!",
-          "source": "original-lexicon-etl"
+          "de": "die Nummer eins",
+          "en": "the number one",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "eins plus zwei",
+          "en": "one plus two",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "hundert und eins",
+          "en": "one hundred and one",
+          "source": "kaikki-en"
         }
       ],
       "sourceRefs": [
         {
           "source": "kaikki-en",
+          "key": "eins|num"
+        },
+        {
+          "source": "kaikki-vi",
           "key": "eins|num"
         },
         {
@@ -39064,7 +39063,7 @@
       "lemma": "vier",
       "gloss": "four",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "frequency": {
         "band": "common",
         "rank": 122,
@@ -39087,6 +39086,10 @@
           "key": "vier|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "vier|num"
+        },
+        {
           "source": "frequencywords",
           "key": "vier"
         },
@@ -39102,7 +39105,7 @@
       "lemma": "fünf",
       "gloss": "five",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "frequency": {
         "band": "common",
         "rank": 119,
@@ -39125,6 +39128,10 @@
           "key": "fünf|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "fünf|num"
+        },
+        {
           "source": "frequencywords",
           "key": "fünf"
         },
@@ -39140,7 +39147,7 @@
       "lemma": "sechs",
       "gloss": "six",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "frequency": {
         "band": "common",
         "rank": 138,
@@ -39163,30 +39170,13 @@
           "key": "sechs|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "sechs|num"
+        },
+        {
           "source": "frequencywords",
           "key": "sechs"
         },
-        {
-          "source": "original-lexicon-etl"
-        }
-      ]
-    },
-    {
-      "id": "de:w:sieben",
-      "surface": "sieben",
-      "lookupForm": "sieben",
-      "lemma": "sieben",
-      "gloss": "seven",
-      "pos": "determiner",
-      "topic": "numbers",
-      "examples": [
-        {
-          "de": "Eine Woche hat sieben Tage.",
-          "en": "A week has seven days.",
-          "source": "original-lexicon-etl"
-        }
-      ],
-      "sourceRefs": [
         {
           "source": "original-lexicon-etl"
         }
@@ -39199,7 +39189,7 @@
       "lemma": "acht",
       "gloss": "eight",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "frequency": {
         "band": "common",
         "rank": 156,
@@ -39222,6 +39212,10 @@
           "key": "acht|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "acht|num"
+        },
+        {
           "source": "frequencywords",
           "key": "acht"
         },
@@ -39237,7 +39231,7 @@
       "lemma": "neun",
       "gloss": "nine",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "frequency": {
         "band": "less-common",
         "rank": 186,
@@ -39260,6 +39254,10 @@
           "key": "neun|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "neun|num"
+        },
+        {
           "source": "frequencywords",
           "key": "neun"
         },
@@ -39275,7 +39273,7 @@
       "lemma": "zehn",
       "gloss": "ten",
       "pos": "determiner",
-      "topic": "numbers",
+      "topic": "everyday",
       "frequency": {
         "band": "common",
         "rank": 136,
@@ -39298,9 +39296,529 @@
           "key": "zehn|num"
         },
         {
+          "source": "kaikki-vi",
+          "key": "zehn|num"
+        },
+        {
           "source": "frequencywords",
           "key": "zehn"
         },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:euro",
+      "surface": "der Euro",
+      "lookupForm": "Euro",
+      "lemma": "Euro",
+      "gloss": "the euro",
+      "pos": "noun",
+      "gender": "masculine",
+      "topic": "everyday",
+      "frequency": {
+        "band": "less-common",
+        "rank": 2696,
+        "perMillion": 17.7317
+      },
+      "pronunciation": {
+        "value": "ˈɔʏ̯ro",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Ich habe nur noch fünf Euro in meinem Portmonee.",
+          "en": "I have just five euro in my purse.",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "Gestern habe ich zwei Euro gefunden.",
+          "en": "Yesterday I found two euro.",
+          "source": "kaikki-en"
+        }
+      ],
+      "confusables": [
+        "de:w:buro"
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "Euro|noun"
+        },
+        {
+          "source": "kaikki-vi",
+          "key": "Euro|noun"
+        },
+        {
+          "source": "frequencywords",
+          "key": "Euro"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:halb",
+      "surface": "halb",
+      "lookupForm": "halb",
+      "lemma": "halb",
+      "gloss": "half, halfway",
+      "pos": "adjective",
+      "topic": "everyday",
+      "frequency": {
+        "band": "common",
+        "rank": 722,
+        "perMillion": 93.0702
+      },
+      "pronunciation": {
+        "value": "halp",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Es ist halb drei.",
+          "en": "It is half past two.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "halb|adj"
+        },
+        {
+          "source": "frequencywords",
+          "key": "halb"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:nicht",
+      "surface": "nicht",
+      "lookupForm": "nicht",
+      "lemma": "nicht",
+      "gloss": "not, non-",
+      "pos": "adverb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 3,
+        "perMillion": 10910.4886
+      },
+      "pronunciation": {
+        "value": "nɪçt",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Bitte nicht stören!",
+          "en": "Please do not disturb!",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "Das ist nicht wahr.",
+          "en": "That is not true.",
+          "source": "kaikki-en"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "nicht|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "nicht"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:hier",
+      "surface": "hier",
+      "lookupForm": "hier",
+      "lemma": "hier",
+      "gloss": "here",
+      "pos": "adverb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 14,
+        "perMillion": 3977.8577
+      },
+      "pronunciation": {
+        "value": "hiːr",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Ich bin hier in diesem Dorf geboren.",
+          "en": "I was born here in this village.",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "Setzen wir uns hier aufs Sofa.",
+          "en": "Let’s sit down here on the sofa.",
+          "source": "kaikki-en"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "hier|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "hier"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:auch",
+      "surface": "auch",
+      "lookupForm": "auch",
+      "lemma": "auch",
+      "gloss": "also, too",
+      "pos": "adverb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 29,
+        "perMillion": 2470.3241
+      },
+      "pronunciation": {
+        "value": "aʊ̯x",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Ich lerne auch Deutsch.",
+          "en": "I am also learning German.",
+          "source": "original-lexicon-etl"
+        },
+        {
+          "de": "Du auch?",
+          "en": "You too?",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "auch|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "auch"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:wo",
+      "surface": "wo",
+      "lookupForm": "wo",
+      "lemma": "wo",
+      "gloss": "where",
+      "pos": "adverb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 62,
+        "perMillion": 1169.7288
+      },
+      "pronunciation": {
+        "value": "voː",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Wo bist du?",
+          "en": "Where are you?",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "Ich kenne einen Laden, wo solche Sachen verkauft werden.",
+          "en": "I know a shop where such things are sold.",
+          "source": "kaikki-en"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "wo|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "wo"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:wann",
+      "surface": "wann",
+      "lookupForm": "wann",
+      "lemma": "wann",
+      "gloss": "when",
+      "pos": "adverb",
+      "topic": "everyday",
+      "frequency": {
+        "band": "common",
+        "rank": 267,
+        "perMillion": 297.2044
+      },
+      "pronunciation": {
+        "value": "van",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Wann kommt er?",
+          "en": "When will he arrive?",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "Ich weiß nicht, wann er kommt.",
+          "en": "I don’t know when he’ll arrive.",
+          "source": "kaikki-en"
+        }
+      ],
+      "confusables": [
+        "de:w:dann"
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "wann|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "wann"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:heute",
+      "surface": "heute",
+      "lookupForm": "heute",
+      "lemma": "heute",
+      "gloss": "today",
+      "pos": "adverb",
+      "topic": "time",
+      "frequency": {
+        "band": "very-common",
+        "rank": 179,
+        "perMillion": 427.4522
+      },
+      "pronunciation": {
+        "value": "ˈhɔʏ̯tə",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Heute ist Montag",
+          "en": "Today is monday",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "Heute gibt es keine Schule",
+          "en": "Today there is no school",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "Das war heute und nicht gestern?",
+          "en": "That was today and not yesterday?",
+          "source": "kaikki-en"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "heute|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "heute"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:morgen-adverb",
+      "surface": "morgen",
+      "lookupForm": "morgen",
+      "lemma": "morgen",
+      "gloss": "tomorrow",
+      "pos": "adverb",
+      "topic": "time",
+      "frequency": {
+        "band": "common",
+        "rank": 531,
+        "perMillion": 130.3323
+      },
+      "pronunciation": {
+        "value": "ˈmɔrɡən",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "morgen früh",
+          "en": "tomorrow morning",
+          "source": "kaikki-en"
+        },
+        {
+          "de": "morgen Abend",
+          "en": "tomorrow evening",
+          "source": "kaikki-en"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "morgen|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "morgen"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:gestern",
+      "surface": "gestern",
+      "lookupForm": "gestern",
+      "lemma": "gestern",
+      "gloss": "yesterday",
+      "pos": "adverb",
+      "topic": "time",
+      "frequency": {
+        "band": "less-common",
+        "rank": 1720,
+        "perMillion": 32.1064
+      },
+      "pronunciation": {
+        "value": "ˈɡɛstərn",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Gestern habe ich ihm geholfen.",
+          "en": "I helped him yesterday.",
+          "source": "tatoeba"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "gestern|adv"
+        },
+        {
+          "source": "frequencywords",
+          "key": "gestern"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:aber",
+      "surface": "aber",
+      "lookupForm": "aber",
+      "lemma": "aber",
+      "gloss": "but",
+      "pos": "conjunction",
+      "topic": "everyday",
+      "frequency": {
+        "band": "very-common",
+        "rank": 50,
+        "perMillion": 1408.1439
+      },
+      "pronunciation": {
+        "value": "ˈaːbɐ",
+        "notation": "ipa"
+      },
+      "examples": [
+        {
+          "de": "Ich mag keine Orangen, aber ich mag Äpfel.",
+          "en": "I don't like oranges, but I like apples.",
+          "source": "kaikki-en"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "kaikki-en",
+          "key": "aber|conj"
+        },
+        {
+          "source": "frequencywords",
+          "key": "aber"
+        },
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:null",
+      "surface": "null",
+      "lookupForm": "null",
+      "lemma": "null",
+      "gloss": "zero",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Die Nummer beginnt mit null.",
+          "en": "The number starts with zero.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-lexicon-etl"
+        }
+      ]
+    },
+    {
+      "id": "de:w:sieben",
+      "surface": "sieben",
+      "lookupForm": "sieben",
+      "lemma": "sieben",
+      "gloss": "seven",
+      "pos": "determiner",
+      "topic": "numbers",
+      "examples": [
+        {
+          "de": "Eine Woche hat sieben Tage.",
+          "en": "A week has seven days.",
+          "source": "original-lexicon-etl"
+        }
+      ],
+      "sourceRefs": [
         {
           "source": "original-lexicon-etl"
         }
@@ -39559,77 +40077,21 @@
       ]
     },
     {
-      "id": "de:w:euro",
-      "surface": "der Euro",
-      "lookupForm": "Euro",
-      "lemma": "Euro",
-      "gloss": "euro",
-      "pos": "noun",
-      "gender": "masculine",
-      "topic": "shopping",
-      "frequency": {
-        "band": "less-common",
-        "rank": 2696,
-        "perMillion": 17.7317
-      },
-      "pronunciation": {
-        "value": "ˈɔʏ̯ro",
-        "notation": "ipa"
-      },
-      "examples": [
-        {
-          "de": "Der Kaffee kostet drei Euro.",
-          "en": "The coffee costs three euros.",
-          "source": "original-lexicon-etl"
-        }
-      ],
-      "sourceRefs": [
-        {
-          "source": "kaikki-en",
-          "key": "Euro|noun"
-        },
-        {
-          "source": "frequencywords",
-          "key": "Euro"
-        },
-        {
-          "source": "original-lexicon-etl"
-        }
-      ]
-    },
-    {
-      "id": "de:w:halb",
-      "surface": "halb",
-      "lookupForm": "halb",
-      "lemma": "halb",
-      "gloss": "half",
-      "pos": "adjective",
+      "id": "de:w:funfzehn",
+      "surface": "fünfzehn",
+      "lookupForm": "fünfzehn",
+      "lemma": "fünfzehn",
+      "gloss": "fifteen",
+      "pos": "determiner",
       "topic": "numbers",
-      "frequency": {
-        "band": "common",
-        "rank": 722,
-        "perMillion": 93.0702
-      },
-      "pronunciation": {
-        "value": "halp",
-        "notation": "ipa"
-      },
       "examples": [
         {
-          "de": "Es ist halb drei.",
-          "en": "It is half past two.",
+          "de": "Die Pause dauert fünfzehn Minuten.",
+          "en": "The break lasts fifteen minutes.",
           "source": "original-lexicon-etl"
         }
       ],
       "sourceRefs": [
-        {
-          "source": "kaikki-en",
-          "key": "halb|adj"
-        },
-        {
-          "source": "frequencywords",
-          "key": "halb"
-        },
         {
           "source": "original-lexicon-etl"
         }

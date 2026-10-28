@@ -708,3 +708,17 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      content/reports/de/context-coverage.json
 - compile: new      content/reports/es/context-coverage.json
 - compile: new      content/reports/xx/context-coverage.json
+
+## 2026-10-28 — P3d(de): German lexicon 927 (core adverbs nicht/hier/auch/wo/wann/heute/morgen/gestern/aber frozen-in, number words); German artifacts only
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-0916999f215379e0.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-048ee5240d5a727c.db
