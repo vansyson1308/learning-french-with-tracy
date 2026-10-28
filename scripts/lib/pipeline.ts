@@ -75,6 +75,7 @@ export const GENERATED_TARGETS = [
   "src/content/writing",
   "src/content/interaction",
   "src/content/exam",
+  "src/content/stories",
   "src/content/audio",
   "src/content/courses",
   "src/content/course-loaders.ts",

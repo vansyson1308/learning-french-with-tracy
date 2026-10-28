@@ -90,6 +90,14 @@ import {
 } from "./reception";
 import { assessmentBankSpeechExercises, compileSpeechItemsArtifact, loadSpeechItems, validateSpeech } from "./speech";
 import {
+  compileStoriesArtifact,
+  compileStoriesReport,
+  compileStoryAssetsModule,
+  loadStories,
+  storyAssetFiles,
+  validateStories,
+} from "./stories";
+import {
   assessmentBankWritingExercises,
   buildKnownVocabulary,
   compileWritingArtifact,
@@ -223,10 +231,22 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
         lexemeIds,
         packs: mine.map((p) => p.pack),
         assetKind: receptionAssetKind(lang, packs),
+        otherReferencedFiles: storyAssetFiles(lang, safeLoadStories(lang)),
       }).errors
     );
   } catch (e) {
     errors.push(schemaFailure("reception", e));
+  }
+  // P5b graded stories.
+  try {
+    const stories = loadStories(lang);
+    if (stories) {
+      const syllabus = targetSyllabus(lang, packs, lexicon);
+      if (!lexicon) errors.push(`stories (${lang}): graded stories need the target's rich lexicon`);
+      else errors.push(...validateStories({ lang, stories, lexicon, syllabus, nativeCodes, receptionVoices: receptionVoiceIds(lang) }).errors);
+    }
+  } catch (e) {
+    errors.push(schemaFailure("stories", e));
   }
   if (layers.reception && readings === null && listening === null) {
     errors.push(`reception: content/${lang}/reception exists but has neither reading.json nor listening.json`);
@@ -361,6 +381,29 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
 }
 
 /** P3e: the daily-words syllabus (committed, or derived when absent) against the lexicon and the primary course. */
+/** The target's syllabus (committed, else derived exactly as the daily-words artifact is). */
+function targetSyllabus(lang: string, packs: LoadedPack[], lexicon: ReturnType<typeof loadRichLexicon> | null) {
+  const pack = primaryPackOf(lang, packs);
+  if (!lexicon || !pack) return null;
+  return loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack });
+}
+
+/** Stories for reference-only uses (asset census); a schema failure is reported by validateTarget. */
+function safeLoadStories(lang: string) {
+  try {
+    return loadStories(lang);
+  } catch {
+    return null;
+  }
+}
+
+/** Voice ids of the language's reception voice manifest, or null without one. */
+function receptionVoiceIds(lang: string): Set<string> | null {
+  const rel = `content/${lang}/reception/audio-source-manifest.json`;
+  if (!existsSync(safeResolve(rel))) return null;
+  return new Set(((readJson(rel) as { voices?: { id: string }[] }).voices ?? []).map((v) => v.id));
+}
+
 function validateTargetSyllabus(lang: string, packs: LoadedPack[], lexicon: ReturnType<typeof loadRichLexicon> | null, nativeCodes: string[]): string[] {
   const pack = primaryPackOf(lang, packs);
   if (!lexicon || !pack) return [];
@@ -746,7 +789,20 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
       relPath: `${root}/reception/${lang}-clip-assets.ts`,
       contents: compileClipAssetsModule(listening, path.posix.relative(`${root}/reception`, "."), assetKind),
     });
-    files.push({ relPath: `${reportsDir}/reception-audio-census.json`, contents: compileAudioCensus(listening, assetKind) });
+    files.push({ relPath: `${reportsDir}/reception-audio-census.json`, contents: compileAudioCensus(listening, assetKind, storyAssetFiles(lang, loadStories(lang))) });
+  }
+  // P5b graded stories: per-native artifacts, the sentence-audio module, the grading report.
+  const stories = loadStories(lang);
+  if (stories && lexicon) {
+    const syllabus = targetSyllabus(lang, packs, lexicon);
+    const { analyses } = validateStories({ lang, stories, lexicon, syllabus, nativeCodes: [], receptionVoices: null });
+    const durations = loadClipDurations(`${reportsDir}/audio-quality.json`);
+    files.push({ relPath: `${root}/stories/${lang}-stories.json`, contents: compileStoriesArtifact({ stories, analyses, nativeCode, durations }) });
+    for (const { courseId, nativeCode: code } of secondaryNativeCourses(lang, packs)) {
+      files.push({ relPath: `${root}/stories/${courseId}-stories.json`, contents: compileStoriesArtifact({ stories, analyses, nativeCode: code, durations }) });
+    }
+    files.push({ relPath: `${root}/stories/${lang}-story-assets.ts`, contents: compileStoryAssetsModule(stories, path.posix.relative(`${root}/stories`, ".")) });
+    files.push({ relPath: `${reportsDir}/stories-coverage.json`, contents: compileStoriesReport(analyses, stories) });
   }
   // Phase-8 speech items; reserved items never leave the pipeline.
   const speech = loadSpeechItems(lang);

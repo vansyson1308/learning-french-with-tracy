@@ -15,7 +15,9 @@ export type SessionKind =
   | "mistakes"
   | "today"
   | "checkpoint"
-  | "placement";
+  | "placement"
+  /** P5b: the word check after a graded story (completion "practice"). */
+  | "story";
 
 /** TODAY session phases (informational on steps; drives summary grouping). */
 export type TodayPhase = "warmup" | "new" | "mixed" | "finale";

@@ -60,6 +60,8 @@ export const conceptId = (lang: string) =>
   z.string().regex(idPattern(lang, ":concept:", "[a-z0-9]+(?:-[a-z0-9]+)*"));
 export const clipId = (lang: string) => z.string().regex(idPattern(lang, "\\.clip\\.", "[a-z0-9_]+"));
 export const readingId = (lang: string) => z.string().regex(idPattern(lang, "\\.read\\.", "[a-z0-9_]+"));
+/** Graded story id `<lang>.story.<slug>` (P5b). */
+export const storyId = (lang: string) => z.string().regex(idPattern(lang, "\\.story\\.", "[a-z0-9_]+"));
 export const speechItemId = (lang: string) => z.string().regex(idPattern(lang, "\\.speak\\.", "[a-z0-9_]+"));
 export const writingTaskId = (lang: string) => z.string().regex(idPattern(lang, "\\.write\\.", "[a-z0-9_]+"));
 export const scenarioId = (lang: string) => z.string().regex(idPattern(lang, "\\.scenario\\.", "[a-z0-9_]+"));
@@ -1525,6 +1527,84 @@ export const listeningSchema = (lang: string) =>
   });
 export const ListeningSchema = listeningSchema(ANY_LANGUAGE);
 export type Listening = z.infer<typeof ListeningSchema>;
+
+// ---------------------------------------------------------------------------
+// Graded stories (P5b): comprehensible input from the learner's lexicon
+// ---------------------------------------------------------------------------
+
+/**
+ * Lexicon bands a story is graded by: the first and second half of the
+ * target's syllabus at each level (scripts/lib/stories.ts `lexemeBands`).
+ */
+export const STORY_BANDS = ["A1-1", "A1-2", "A2-1", "A2-2"] as const;
+export type StoryBand = (typeof STORY_BANDS)[number];
+
+/** N = narrator; A/B = the two dialogue voices (a story may be narration only). */
+export const STORY_SPEAKERS = ["N", "A", "B"] as const;
+
+export const StorySentenceSchema = z.strictObject({
+  speaker: z.enum(STORY_SPEAKERS),
+  /** One sentence, one synthesized clip — the unit of highlight and gloss. */
+  text: z.string().min(1),
+  /** Tap-to-gloss translation of the whole sentence, per native language. */
+  translation: nativeText(),
+});
+
+export const StoryQuestionSchema = z.strictObject({
+  /** locate = stated in one sentence; infer = put two sentences together. */
+  kind: z.enum(["locate", "infer"]),
+  prompt: nativeText(),
+  options: z.array(nativeText()).min(3).max(4),
+  answer: z.number().int().min(0).max(3),
+});
+
+export const storySourceSchema = (lang: string) =>
+  z.strictObject({
+    id: storyId(lang),
+    band: z.enum(STORY_BANDS),
+    /** Target-language title. */
+    title: z.string().min(1),
+    /** Native-language subtitle shown under the title in the list. */
+    blurb: nativeText(),
+    sentences: z.array(StorySentenceSchema).min(8).max(60),
+    /**
+     * The 3–5 lexemes this story introduces: the only words beyond its band
+     * it may use, and the only ones its word check grades (FSRS).
+     */
+    newLexemes: z.array(lexemeId(lang)).min(3).max(5),
+    /**
+     * Token resolution overrides, lower-case surface → lexeme id, or
+     * "function" / "name". Most tokens resolve through the lexicon and its
+     * morphology; this records the rest explicitly — never silently.
+     */
+    tokenMap: z.record(z.string().min(1), z.union([lexemeId(lang), z.enum(["function", "name"])])).optional(),
+    questions: z.array(StoryQuestionSchema).length(3),
+    sourceRef: z.literal("original-project"),
+  });
+export const StorySourceSchema = storySourceSchema(ANY_LANGUAGE);
+export type StorySource = z.infer<typeof StorySourceSchema>;
+
+export const storiesSchema = (lang: string) =>
+  z.strictObject({
+    version: z.literal(1),
+    language: languageCode,
+    /**
+     * Pinned voices: N narrates, A and B carry dialogue — two distinct
+     * voices whenever a story has dialogue (validator).
+     */
+    voiceCast: z.strictObject({
+      N: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
+      A: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
+      B: z.strictObject({ voiceId: z.string().min(1), speaker: z.number().int().nullable() }),
+    }),
+    /** Closed-class words of the language (articles, pronouns, prepositions …), lower case. */
+    functionWords: z.array(z.string().min(1)).min(10),
+    /** Language-wide token overrides (homographs such as "son" → ser); a story's own map wins. */
+    tokenMap: z.record(z.string().min(1), z.union([lexemeId(lang), z.enum(["function", "name"])])).optional(),
+    stories: z.array(storySourceSchema(lang)).min(1),
+  });
+export const StoriesSchema = storiesSchema(ANY_LANGUAGE);
+export type Stories = z.infer<typeof StoriesSchema>;
 
 // ---------------------------------------------------------------------------
 // Spoken production (P8 §11/§19)

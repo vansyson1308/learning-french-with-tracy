@@ -65,6 +65,8 @@ function artifactPathsFor(
     scenarios: pick(`${root}/interaction/${nativePrefix}-scenarios.json`),
     examTracks: pick(`${root}/exam/${nativePrefix}-exam-tracks.json`),
     dailyWords: pick(`${root}/lexicon/${code}-daily.json`),
+    stories: pick(`${root}/stories/${nativePrefix}-stories.json`),
+    storyAssets: pick(`${root}/stories/${code}-story-assets.ts`),
   };
   return Object.fromEntries(Object.entries(out).filter(([, v]) => v !== undefined)) as CourseArtifactPaths;
 }
@@ -87,6 +89,8 @@ function deriveCapabilities(a: CourseArtifactPaths): CourseCapabilities {
     conversation: has("scenarios"),
     // P3d: emitted only when present, so courses without an exam track keep their profile bytes.
     ...(has("examTracks") ? { exam: true } : {}),
+    // P5b: emitted only when present (graded stories with their audio module).
+    ...(has("stories") && has("storyAssets") ? { stories: true } : {}),
   };
 }
 
@@ -217,6 +221,8 @@ function renderArtifactModule(root: string, profile: CourseProfile): string {
   add("scenarios", a.scenarios);
   add("examTracks", a.examTracks);
   add("dailyWords", a.dailyWords);
+  add("stories", a.stories);
+  add("storyAssets", a.storyAssets, "STORY_SENTENCE_ASSETS");
   lines.push(`import type { CourseArtifacts } from "${importFrom(dir, "src/lib/content-registry")}";`, "");
   lines.push(`export const ARTIFACTS: CourseArtifacts = {${fields.length ? ` ${fields.join(", ")} ` : ""}};`, "");
   return lines.join("\n");

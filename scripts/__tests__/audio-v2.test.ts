@@ -13,7 +13,7 @@ import { describe, expect, test } from "bun:test";
 import { baselineGroupOf, loadBaselineGroups } from "../lib/audio";
 import { licenseGate, registryLicenseFor } from "../lib/piper-audio";
 import { buildPlugin } from "../lib/languages";
-import { existsSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 
 import { readJson, safeResolve } from "../lib/pipeline";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type Voice } from "../lib/tts";
@@ -141,7 +141,13 @@ describe("per-language audio baselines", () => {
     expect(groups.groups).toEqual(expect.arrayContaining(["fr", "fr-reception", "de", "es", "pt", "sfx"]));
     expect(groups.manifestSha256).toMatch(/^[0-9a-f]{64}$/);
     expect(Object.keys(groups.files).filter((k) => k.startsWith("assets/audio/fr/")).length).toBe(164);
-    expect(Object.keys(groups.files).filter((k) => k.startsWith("assets/audio/fr-reception/")).length).toBe(166);
+    // P5b: graded-story sentence clips are added to fr-reception; the 166 V1 clips stay byte-identical.
+    const v1 = (readJson("scripts/__tests__/golden/fr-reception-v1.json") as { files: Record<string, string> }).files;
+    expect(Object.keys(v1).length).toBe(166);
+    for (const [rel, sha] of Object.entries(v1)) expect(groups.files[rel], rel).toBe(sha);
+    const storyClips = new Set([...readFileSync(safeResolve("src/content/stories/fr-story-assets.ts"), "utf8").matchAll(/assets\/audio\/fr-reception\/[^"]+/g)].map((m) => m[0]));
+    const extra = Object.keys(groups.files).filter((k) => k.startsWith("assets/audio/fr-reception/") && !(k in v1));
+    for (const rel of extra) expect(storyClips.has(rel), `${rel} is a story clip`).toBe(true);
   });
 });
 

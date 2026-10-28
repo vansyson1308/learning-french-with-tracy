@@ -125,6 +125,17 @@ export default function PracticeScreen() {
           />
         </View>
 
+        {caps.stories ? (
+          <View style={styles.card} testID="practice-stories-card">
+            <View style={styles.cardHeader}>
+              <Ionicons name="book" size={24} color={colors.indigo} />
+              <Text style={styles.cardTitle}>{t("stories.practiceTitle")}</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>{t("stories.practiceBody")}</Text>
+            <DuoButton label={t("stories.open")} testID="practice-stories" variant="primary" onPress={() => router.push("/stories")} />
+          </View>
+        ) : null}
+
         {caps.listening ? (
           <View style={styles.card}>
             <View style={styles.cardHeader}>

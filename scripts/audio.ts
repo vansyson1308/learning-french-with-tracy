@@ -29,7 +29,7 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "fs";
 import path from "path";
 
-import { listeningSchema } from "../content/schema";
+import { listeningSchema, storiesSchema } from "../content/schema";
 
 import { writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
 import { buildPlugin } from "./lib/languages";
@@ -39,6 +39,7 @@ import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { writeAudioSizeReport } from "./lib/audio-size";
 import { lexiconAudioStrings } from "./lib/lexicon-audio";
 import { receptionAssetKey } from "./lib/reception";
+import { storyClipId, storyPipelineVersion, storySentenceSegments } from "./lib/stories";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
 
@@ -67,6 +68,8 @@ type ReceptionVoice = Voice & { role: string; multiSpeaker: boolean; canarySpeak
 type ReceptionManifest = {
   version: number;
   pipelineVersion: number;
+  /** P5b: pipeline version of the story sentences (bitrate), when it differs. */
+  storyPipelineVersion?: number;
   note: string;
   voices: ReceptionVoice[];
   excludedVoices: { id: string; reason: string }[];
@@ -106,6 +109,7 @@ const RECEPTION_DIR = path.join(ROOT, `content/${LANG}/reception`);
 const RECEPTION_MANIFEST_PATH = path.join(RECEPTION_DIR, "audio-source-manifest.json");
 const CANARY_PATH = path.join(RECEPTION_DIR, "audio-canary.json");
 const LISTENING_PATH = path.join(RECEPTION_DIR, "listening.json");
+const STORIES_PATH = path.join(ROOT, `content/${LANG}/stories/stories.json`);
 
 const engines: EnginesDoc = loadEngines();
 const wantsPack = LAYER === "pack" || LAYER === "all" || LAYER === "lexicon";
@@ -393,9 +397,9 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
     if (r) {
       layers.push("reception");
       problems.push(...receptionDryRunProblems(r, mode));
-      const push = (clipId: string, segments: PlanClip["segments"]) => {
+      const push = (clipId: string, segments: PlanClip["segments"], version = r.pipelineVersion) => {
         const resolved = segments.map((s) => ({ voiceId: s.voiceId, speaker: typeof s.speaker === "number" ? s.speaker : null, text: s.text }));
-        clips.push({ clipId, layer: "reception", courseId: null, language: LANG, text: segments.map((s) => s.text).join(" "), segments, assetKey: receptionAssetKey(LANG, resolved, r.pipelineVersion), pipelineVersion: r.pipelineVersion });
+        clips.push({ clipId, layer: "reception", courseId: null, language: LANG, text: segments.map((s) => s.text).join(" "), segments, assetKey: receptionAssetKey(LANG, resolved, version), pipelineVersion: version });
       };
       if (mode === "canary" && existsSync(CANARY_PATH)) {
         const canary = JSON.parse(readFileSync(CANARY_PATH, "utf8")) as { items: { id: string; text: string }[] };
@@ -412,6 +416,12 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
       } else if (mode === "generate" && existsSync(LISTENING_PATH)) {
         const listening = JSON.parse(readFileSync(LISTENING_PATH, "utf8")) as { voiceCast: Record<"A" | "B", { voiceId: string; speaker: number | null }>; clips: { id: string; segments: { speaker: "A" | "B"; text: string }[] }[] };
         for (const clip of listening.clips) push(clip.id, clip.segments.map((seg) => ({ voiceId: listening.voiceCast[seg.speaker].voiceId, speaker: listening.voiceCast[seg.speaker].speaker, text: seg.text })));
+      }
+      // P5b graded stories: one asset per sentence (clip id <storyId>#<n>), voice from the stories' cast.
+      if (mode === "generate" && existsSync(STORIES_PATH)) {
+        const stories = storiesSchema(LANG).parse(JSON.parse(readFileSync(STORIES_PATH, "utf8")));
+        const version = storyPipelineVersion(LANG);
+        for (const story of stories.stories) story.sentences.forEach((s, i) => push(storyClipId(story.id, i), storySentenceSegments(stories, s), version));
       }
     } else if (LAYER === "reception") problems.push(`no reception voice manifest for ${LANG}`);
   }
@@ -445,11 +455,15 @@ function allVoices(): Voice[] {
   return out;
 }
 
+/** `existing`: comma-separated folders of already-blessed assets (pack, reception), reused byte for byte. */
 function synthScript(planPath: string, dl: string, wav: string, out: string, existing?: string) {
   const doc = loadPlan(planPath);
-  const existingKeys = new Set<string>();
-  if (existing && existsSync(existing)) for (const f of readdirSync(existing)) if (f.endsWith(".mp3")) existingKeys.add(f.slice(0, -4));
-  process.stdout.write(buildSynthScript({ clips: doc.clips, voices: allVoices(), engines, downloadsDir: dl, wavDir: wav, outDir: out, existingDir: existing, existingKeys }));
+  const existingFiles = new Map<string, string>();
+  for (const dir of (existing ?? "").split(",").filter(Boolean)) {
+    if (!existsSync(dir)) continue;
+    for (const f of readdirSync(dir)) if (f.endsWith(".mp3") && !existingFiles.has(f.slice(0, -4))) existingFiles.set(f.slice(0, -4), `${dir}/${f}`);
+  }
+  process.stdout.write(buildSynthScript({ clips: doc.clips, voices: allVoices(), engines, downloadsDir: dl, wavDir: wav, outDir: out, existingFiles }));
 }
 
 // ---------------------------------------------------------------------------

@@ -1,0 +1,578 @@
+/**
+ * Graded stories (P5b): comprehensible input built from the learner's own
+ * lexicon. Loader, tokenizer, lexical resolver, validator and compiled
+ * artifacts for `content/<lang>/stories/stories.json`.
+ *
+ * Every word token of a story resolves — to a lexeme of the target's
+ * lexicon (directly, through the committed verb morphology, or through a
+ * plural/gender ending), to a closed-class function word, to a declared
+ * name, or to an explicit `tokenMap` entry. Nothing is guessed silently: an
+ * unresolved token is a validation error.
+ *
+ * Grading: lexemes take a band from their position in the target's syllabus
+ * (first / second half of its level, `lexemeBands`). A story of band X may
+ * use function words, names, numbers and lexemes of band ≤ X; anything else
+ * must be one of its 3–5 declared new lexemes, and the new-word tokens may
+ * be at most 5 % of the text (≥ 95 % known at band).
+ *
+ * Audio: each sentence is one deterministic reception asset (same key
+ * derivation and generation workflow as listening clips, clip id
+ * `<storyId>#<n>`), so per-sentence offsets come straight from the
+ * generated durations.
+ */
+
+import { existsSync, readdirSync } from "fs";
+
+import {
+  STORY_BANDS,
+  storiesSchema,
+  type NativeText,
+  type RichLexicon,
+  type Stories,
+  type StoryBand,
+  type StorySource,
+  type Syllabus,
+} from "../../content/schema";
+import { pickNative } from "./native-text";
+import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
+import { receptionAssetKey, receptionAssetsDir, receptionPipelineVersion } from "./reception";
+
+export const STORY_MIN_TOKENS = 150;
+export const STORY_MAX_TOKENS = 400;
+export const STORY_MIN_COVERAGE = 0.95;
+/** Same single-clip cap as a teaching listening clip (P7 §58). */
+export const STORY_SENTENCE_MAX_CHARS = 220;
+
+export function storiesSourcePath(lang: string): string {
+  return `content/${lang}/stories/stories.json`;
+}
+
+export function loadStories(lang: string): Stories | null {
+  const rel = storiesSourcePath(lang);
+  if (!existsSync(safeResolve(rel))) return null;
+  const doc = storiesSchema(lang).parse(readJson(rel));
+  if (doc.language !== lang) throw new Error(`${rel}: language "${doc.language}" ≠ folder "${lang}"`);
+  return doc;
+}
+
+// ---------------------------------------------------------------------------
+// Tokenizer
+// ---------------------------------------------------------------------------
+
+/** A piece of a sentence; the pieces concatenate to the sentence exactly. */
+export type StoryPiece = { text: string; word: boolean };
+
+const APOSTROPHE = /['’]/;
+
+/**
+ * Word segmentation (Intl.Segmenter, word granularity). An elided word is
+ * split after its apostrophe — "l'homme" → "l'" + "homme", "s'il" → "s'" +
+ * "il" — so the clitic resolves as a function word and the rest on its own.
+ */
+export function segmentSentence(lang: string, text: string): StoryPiece[] {
+  const out: StoryPiece[] = [];
+  const segmenter = new Intl.Segmenter(lang, { granularity: "word" });
+  for (const seg of segmenter.segment(text)) {
+    if (!seg.isWordLike) {
+      out.push({ text: seg.segment, word: false });
+      continue;
+    }
+    let rest = seg.segment;
+    let m = APOSTROPHE.exec(rest);
+    while (m && m.index < rest.length - 1) {
+      out.push({ text: rest.slice(0, m.index + 1), word: true });
+      rest = rest.slice(m.index + 1);
+      m = APOSTROPHE.exec(rest);
+    }
+    out.push({ text: rest, word: true });
+  }
+  return out;
+}
+
+/** Lower case, typographic apostrophe folded to ASCII. */
+export function tokenKey(token: string): string {
+  return token.toLowerCase().replace(/’/g, "'");
+}
+
+// ---------------------------------------------------------------------------
+// Lexical resolver
+// ---------------------------------------------------------------------------
+
+type Morphology = { verbs: { lemma: string; rows: { mot: string }[] }[] };
+
+/** The committed verb-form evidence of a language, when it has any. */
+export function loadVerbForms(lang: string): Morphology | null {
+  for (const rel of [`content/${lang}/lexicon/derived/morphology.json`, `content/${lang}/lexicon/derived/verb-morphology.json`]) {
+    if (existsSync(safeResolve(rel))) return readJson(rel) as Morphology;
+  }
+  return null;
+}
+
+export type LexemeIndex = {
+  /** One-word forms → lexeme id. */
+  single: Map<string, string>;
+  /** Multi-word lexemes as token sequences, longest first. */
+  multi: { tokens: string[]; id: string }[];
+  /** Lexeme id → part of speech (gates the plural/gender endings). */
+  pos: Map<string, string>;
+};
+
+function keysOf(lang: string, form: string): string[] {
+  return segmentSentence(lang, form).filter((p) => p.word).map((p) => tokenKey(p.text));
+}
+
+/**
+ * Form → lexeme index. A form claimed by several lexemes resolves to a
+ * lemma/lookup form before a conjugated form ("río" the river, not "río"
+ * of `reír`), then a syllabus lexeme before one beyond it, the lower band
+ * first, then lexicon order. A homograph the other way round ("son" of
+ * `ser`, not the noun) is mapped once in the file-level tokenMap.
+ */
+export function buildLexemeIndex(
+  lang: string,
+  lexicon: RichLexicon,
+  morphology: Morphology | null,
+  bands: ReadonlyMap<string, StoryBand> = new Map()
+): LexemeIndex {
+  const candidates = new Map<string, { id: string; rank: number[] }[]>();
+  const multi: { tokens: string[]; id: string }[] = [];
+  const pos = new Map<string, string>();
+  const byLemma = new Map<string, string>();
+  const rankOf = (id: string, conjugated: number, order: number) => {
+    const band = bands.get(id);
+    return [conjugated, band === undefined ? 1 : 0, band === undefined ? 0 : bandRank(band), order];
+  };
+  const offer = (key: string, id: string, rank: number[]) => candidates.set(key, [...(candidates.get(key) ?? []), { id, rank }]);
+  lexicon.lexemes.forEach((lex, order) => {
+    pos.set(lex.id, lex.partOfSpeech);
+    for (const form of new Set([lex.lookupForm, lex.lemma])) {
+      const tokens = keysOf(lang, form);
+      if (tokens.length === 1) offer(tokens[0], lex.id, rankOf(lex.id, 0, order));
+      else if (tokens.length > 1) multi.push({ tokens, id: lex.id });
+    }
+    if (lex.partOfSpeech === "verb" && !byLemma.has(tokenKey(lex.lemma))) byLemma.set(tokenKey(lex.lemma), lex.id);
+  });
+  // Conjugated forms from the committed morphology evidence.
+  (morphology?.verbs ?? []).forEach((verb, order) => {
+    const id = byLemma.get(tokenKey(verb.lemma));
+    if (!id) return;
+    for (const row of verb.rows) offer(tokenKey(row.mot), id, rankOf(id, 1, order));
+  });
+  const single = new Map<string, string>();
+  const before = (a: number[], b: number[]) => {
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i];
+    return false;
+  };
+  for (const [key, list] of candidates) {
+    let best = list[0];
+    for (const c of list) if (before(c.rank, best.rank)) best = c;
+    single.set(key, best.id);
+  }
+  multi.sort((a, b) => b.tokens.length - a.tokens.length);
+  return { single, multi, pos };
+}
+
+const bandRank = (b: StoryBand) => STORY_BANDS.indexOf(b);
+
+/** Plural and gender endings tried on nouns/adjectives (Romance languages). */
+const ENDINGS: [RegExp, string][] = [
+  [/ones$/, "ón"],
+  [/es$/, ""],
+  [/s$/, ""],
+  [/x$/, ""],
+  [/as$/, "o"],
+  [/a$/, "o"],
+  [/es$/, "e"],
+  [/e$/, ""],
+];
+const INFLECTING = new Set(["noun", "adjective", "determiner", "pronoun", "numeral"]);
+
+export type Resolution =
+  | { kind: "lexeme"; lexemeId: string }
+  | { kind: "function" | "name" | "number" }
+  | { kind: "unresolved" };
+
+export function resolveToken(
+  key: string,
+  ctx: { index: LexemeIndex; functionWords: ReadonlySet<string>; tokenMap: Record<string, string> }
+): Resolution {
+  const mapped = ctx.tokenMap[key];
+  if (mapped === "function" || mapped === "name") return { kind: mapped };
+  if (mapped !== undefined) return { kind: "lexeme", lexemeId: mapped };
+  if (ctx.functionWords.has(key)) return { kind: "function" };
+  if (/^\d+([.,]\d+)?$/.test(key)) return { kind: "number" };
+  const direct = ctx.index.single.get(key);
+  if (direct) return { kind: "lexeme", lexemeId: direct };
+  for (const [re, rep] of ENDINGS) {
+    if (!re.test(key)) continue;
+    const id = ctx.index.single.get(key.replace(re, rep));
+    if (id && INFLECTING.has(ctx.index.pos.get(id) ?? "")) return { kind: "lexeme", lexemeId: id };
+  }
+  return { kind: "unresolved" };
+}
+
+// ---------------------------------------------------------------------------
+// Bands and analysis
+// ---------------------------------------------------------------------------
+
+/** Syllabus position → band: first half of the level's entries is `<L>-1`, the rest `<L>-2`. */
+export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">): Map<string, StoryBand> {
+  const bands = new Map<string, StoryBand>();
+  const level = syllabus.level.toUpperCase();
+  const half = Math.ceil(syllabus.entries.length / 2);
+  syllabus.entries.forEach((e, i) => {
+    const band = `${level}-${i < half ? 1 : 2}`;
+    if ((STORY_BANDS as readonly string[]).includes(band)) bands.set(e.lexemeId, band as StoryBand);
+  });
+  return bands;
+}
+
+export type AnalyzedPiece = { text: string; lexemeId?: string };
+export type StoryAnalysis = {
+  id: string;
+  band: StoryBand;
+  tokens: number;
+  unknownTokens: number;
+  coverage: number;
+  /** Distinct lexemes of the story in first-use order. */
+  lexemes: string[];
+  /** Lexemes beyond the band that are NOT declared new (validation errors). */
+  undeclared: string[];
+  unresolved: string[];
+  sentences: AnalyzedPiece[][];
+};
+
+export function analyzeStory(
+  lang: string,
+  story: StorySource,
+  ctx: { index: LexemeIndex; functionWords: ReadonlySet<string>; bands: Map<string, StoryBand>; tokenMap?: Record<string, string> }
+): StoryAnalysis {
+  const tokenMap = Object.fromEntries(
+    Object.entries({ ...(ctx.tokenMap ?? {}), ...(story.tokenMap ?? {}) }).map(([k, v]) => [tokenKey(k), v])
+  );
+  const newSet = new Set(story.newLexemes);
+  const lexemes: string[] = [];
+  const undeclared = new Set<string>();
+  const unresolved = new Set<string>();
+  let tokens = 0;
+  let unknownTokens = 0;
+  const count = (id: string) => {
+    if (!lexemes.includes(id)) lexemes.push(id);
+    const band = ctx.bands.get(id);
+    const known = !newSet.has(id) && band !== undefined && bandRank(band) <= bandRank(story.band);
+    if (!known) {
+      unknownTokens += 1;
+      if (!newSet.has(id)) undeclared.add(id);
+    }
+  };
+  const sentences = story.sentences.map((sentence) => {
+    const pieces = segmentSentence(lang, sentence.text);
+    const out: AnalyzedPiece[] = [];
+    for (let i = 0; i < pieces.length; i++) {
+      const piece = pieces[i];
+      if (!piece.word) {
+        out.push({ text: piece.text });
+        continue;
+      }
+      // Multi-word lexemes first (greedy, longest), spanning the gaps between words.
+      const multi = matchMulti(pieces, i, ctx.index);
+      if (multi) {
+        tokens += multi.words;
+        for (let w = 0; w < multi.words; w++) count(multi.id);
+        out.push({ text: pieces.slice(i, multi.end + 1).map((p) => p.text).join(""), lexemeId: multi.id });
+        i = multi.end;
+        continue;
+      }
+      tokens += 1;
+      const key = tokenKey(piece.text);
+      const r = resolveToken(key, { index: ctx.index, functionWords: ctx.functionWords, tokenMap });
+      if (r.kind === "lexeme") {
+        count(r.lexemeId);
+        out.push({ text: piece.text, lexemeId: r.lexemeId });
+      } else {
+        if (r.kind === "unresolved") {
+          unresolved.add(key);
+          unknownTokens += 1;
+        }
+        out.push({ text: piece.text });
+      }
+    }
+    return mergePlain(out);
+  });
+  return {
+    id: story.id,
+    band: story.band,
+    tokens,
+    unknownTokens,
+    coverage: tokens === 0 ? 0 : (tokens - unknownTokens) / tokens,
+    lexemes,
+    undeclared: [...undeclared].sort(),
+    unresolved: [...unresolved].sort(),
+    sentences,
+  };
+}
+
+function matchMulti(pieces: StoryPiece[], start: number, index: LexemeIndex): { id: string; end: number; words: number } | null {
+  for (const m of index.multi) {
+    let p = start;
+    let ok = true;
+    let end = start;
+    for (let t = 0; t < m.tokens.length; t++) {
+      while (p < pieces.length && !pieces[p].word && t > 0) {
+        if (pieces[p].text.trim() !== "") {
+          ok = false;
+          break;
+        }
+        p++;
+      }
+      if (!ok || p >= pieces.length || !pieces[p].word || tokenKey(pieces[p].text) !== m.tokens[t]) {
+        ok = false;
+        break;
+      }
+      end = p;
+      p++;
+    }
+    if (ok) return { id: m.id, end, words: m.tokens.length };
+  }
+  return null;
+}
+
+/** Adjacent pieces without a lexeme are merged (smaller artifact, same text). */
+function mergePlain(pieces: AnalyzedPiece[]): AnalyzedPiece[] {
+  const out: AnalyzedPiece[] = [];
+  for (const p of pieces) {
+    const last = out[out.length - 1];
+    if (last && last.lexemeId === undefined && p.lexemeId === undefined) last.text += p.text;
+    else out.push({ ...p });
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------------------
+// Audio identity
+// ---------------------------------------------------------------------------
+
+export function storyClipId(storyId: string, sentenceIndex: number): string {
+  return `${storyId}#${sentenceIndex + 1}`;
+}
+
+export function storySentenceSegments(stories: Stories, sentence: StorySource["sentences"][number]) {
+  const cast = stories.voiceCast[sentence.speaker];
+  return [{ voiceId: cast.voiceId, speaker: cast.speaker, text: sentence.text }];
+}
+
+/**
+ * Pipeline version of a language's story sentences: the voice manifest's
+ * `storyPipelineVersion` when it sets one (Spanish: 4 = 24 kbps speech, so
+ * 460 sentences fit the 12 MB per-language budget), else the reception one
+ * (French: 1, frozen).
+ */
+export function storyPipelineVersion(lang: string): number {
+  const rel = `content/${lang}/reception/audio-source-manifest.json`;
+  if (!existsSync(safeResolve(rel))) return receptionPipelineVersion(lang);
+  const v = (readJson(rel) as { storyPipelineVersion?: unknown }).storyPipelineVersion;
+  return typeof v === "number" ? v : receptionPipelineVersion(lang);
+}
+
+export function storySentenceAssetKey(lang: string, stories: Stories, sentence: StorySource["sentences"][number]): string {
+  return receptionAssetKey(lang, storySentenceSegments(stories, sentence), storyPipelineVersion(lang));
+}
+
+/** Every asset file name the stories of a language reference (`<key>.mp3`). */
+export function storyAssetFiles(lang: string, stories: Stories | null): Set<string> {
+  const out = new Set<string>();
+  for (const story of stories?.stories ?? []) for (const s of story.sentences) out.add(`${storySentenceAssetKey(lang, stories!, s)}.mp3`);
+  return out;
+}
+
+// ---------------------------------------------------------------------------
+// Validation
+// ---------------------------------------------------------------------------
+
+const CEFR_TEXT = /\b(CEFR|[ABC][12](?:[-.]\d)?)\b/;
+
+export function validateStories(input: {
+  lang: string;
+  stories: Stories;
+  lexicon: RichLexicon;
+  syllabus: Pick<Syllabus, "level" | "entries"> | null;
+  nativeCodes: readonly string[];
+  /** Voice ids of content/<lang>/reception/audio-source-manifest.json (null: no manifest). */
+  receptionVoices: ReadonlySet<string> | null;
+}): ValidationResult & { analyses: StoryAnalysis[] } {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  const { lang, stories } = input;
+  const err = (m: string) => errors.push(`stories (${lang}): ${m}`);
+  const lexemeIds = new Set(input.lexicon.lexemes.map((l) => l.id));
+  const glossOf = new Map(input.lexicon.lexemes.map((l) => [l.id, l.glosses as Record<string, string | undefined>]));
+  const functionWords = new Set(stories.functionWords.map(tokenKey));
+  const bands = input.syllabus ? lexemeBands(input.syllabus) : new Map<string, StoryBand>();
+  const index = buildLexemeIndex(lang, input.lexicon, loadVerbForms(lang), bands);
+  if (!input.syllabus) err("the target has no syllabus — stories are graded by syllabus band");
+
+  for (const [speaker, cast] of Object.entries(stories.voiceCast)) {
+    if (input.receptionVoices && !input.receptionVoices.has(cast.voiceId)) err(`voiceCast.${speaker} uses ${cast.voiceId}, not a voice of the reception manifest`);
+  }
+  const voiceOf = (s: "N" | "A" | "B") => `${stories.voiceCast[s].voiceId}|${stories.voiceCast[s].speaker}`;
+
+  const native = (where: string, text: NativeText) => {
+    for (const code of input.nativeCodes) if (!text[code]?.trim()) err(`${where}: missing ${code} text`);
+    for (const value of Object.values(text)) if (CEFR_TEXT.test(value)) err(`${where}: no CEFR/level labels in learner-facing story text ("${value}")`);
+  };
+
+  const seen = new Set<string>();
+  const analyses: StoryAnalysis[] = [];
+  for (const story of stories.stories) {
+    if (seen.has(story.id)) err(`duplicate story id ${story.id}`);
+    seen.add(story.id);
+    if (CEFR_TEXT.test(story.title)) err(`${story.id}: no CEFR/level labels in the title`);
+    native(`${story.id}.blurb`, story.blurb);
+    story.sentences.forEach((s, i) => {
+      if (/[\t\n\r]/.test(s.text)) err(`${story.id}#${i + 1}: sentence text must be single-line`);
+      if (s.text.length > STORY_SENTENCE_MAX_CHARS) err(`${story.id}#${i + 1}: ${s.text.length} chars exceeds the ${STORY_SENTENCE_MAX_CHARS}-char sentence cap`);
+      native(`${story.id}#${i + 1}.translation`, s.translation);
+    });
+    if (story.sentences.some((s) => s.speaker !== "N") && voiceOf("A") === voiceOf("B")) {
+      err(`${story.id}: a story with dialogue needs two distinct voices (voiceCast A ≠ B)`);
+    }
+    story.questions.forEach((q, i) => {
+      native(`${story.id}.questions[${i}].prompt`, q.prompt);
+      q.options.forEach((o, j) => native(`${story.id}.questions[${i}].options[${j}]`, o));
+      if (q.answer >= q.options.length) err(`${story.id}.questions[${i}]: answer ${q.answer} has no option`);
+    });
+    if (!story.questions.some((q) => q.kind === "infer")) err(`${story.id}: at least one question must ask for an inference`);
+    if (new Set(story.newLexemes).size !== story.newLexemes.length) err(`${story.id}: newLexemes repeats a lexeme`);
+    for (const id of story.newLexemes) {
+      if (!lexemeIds.has(id)) err(`${story.id}: new lexeme ${id} is not in the lexicon`);
+      for (const code of input.nativeCodes) if (!glossOf.get(id)?.[code]) err(`${story.id}: new lexeme ${id} has no ${code} gloss (the word check shows it)`);
+    }
+    for (const [surface, target] of Object.entries({ ...(stories.tokenMap ?? {}), ...(story.tokenMap ?? {}) })) {
+      if (target !== "function" && target !== "name" && !lexemeIds.has(target)) err(`${story.id}: tokenMap "${surface}" → unknown lexeme ${target}`);
+    }
+
+    const a = analyzeStory(lang, story, { index, functionWords, bands, tokenMap: stories.tokenMap });
+    analyses.push(a);
+    if (a.tokens < STORY_MIN_TOKENS || a.tokens > STORY_MAX_TOKENS) err(`${story.id}: ${a.tokens} word tokens (stories are ${STORY_MIN_TOKENS}–${STORY_MAX_TOKENS})`);
+    if (a.unresolved.length > 0) err(`${story.id}: unresolved tokens ${a.unresolved.slice(0, 12).join(", ")}${a.unresolved.length > 12 ? " …" : ""} — use lexicon words, or map them in tokenMap`);
+    if (a.undeclared.length > 0) err(`${story.id}: ${a.undeclared.join(", ")} beyond band ${story.band} — declare as new (3–5) or replace`);
+    for (const id of story.newLexemes) if (!a.lexemes.includes(id)) err(`${story.id}: new lexeme ${id} never occurs in the text`);
+    if (a.coverage < STORY_MIN_COVERAGE) err(`${story.id}: ${(a.coverage * 100).toFixed(1)} % known at band ${story.band} (≥ ${STORY_MIN_COVERAGE * 100} %; ${a.unknownTokens} of ${a.tokens} tokens new or unresolved)`);
+  }
+
+  // Bundled audio: once a generation run has produced story sentences, every
+  // sentence must resolve to its committed asset; before that, text-only.
+  const planRel = `content/${lang}/reception/generated-plan.json`;
+  const generated = existsSync(safeResolve(planRel))
+    ? ((readJson(planRel) as { clips?: { clipId: string }[] }).clips ?? []).some((c) => c.clipId.includes(".story."))
+    : false;
+  const dirAbs = safeResolve(receptionAssetsDir(lang));
+  const files = existsSync(dirAbs) ? new Set(readdirSync(dirAbs)) : new Set<string>();
+  const missing = [...storyAssetFiles(lang, stories)].filter((f) => !files.has(f));
+  if (missing.length > 0) {
+    if (generated) err(`${missing.length} story sentence assets missing (e.g. ${missing[0]}) — re-run the audio generate workflow (layer reception)`);
+    else warnings.push(`stories (${lang}): ${missing.length} sentences have no generated audio yet (bootstrap — dispatch the audio workflow, layer reception)`);
+  }
+  return { errors, warnings, analyses };
+}
+
+// ---------------------------------------------------------------------------
+// Compiled artifacts
+// ---------------------------------------------------------------------------
+
+export function compileStoriesArtifact(input: {
+  stories: Stories;
+  analyses: StoryAnalysis[];
+  nativeCode: string;
+  durations: Map<string, number>;
+}): string {
+  const { stories } = input;
+  const lang = stories.language;
+  const analysisOf = new Map(input.analyses.map((a) => [a.id, a]));
+  const byId: Record<string, unknown> = {};
+  for (const story of stories.stories) {
+    const a = analysisOf.get(story.id)!;
+    let at = 0;
+    let timed = true;
+    const sentences = story.sentences.map((s, i) => {
+      const durationSec = input.durations.get(storyClipId(story.id, i)) ?? null;
+      // A start is known while every earlier sentence's duration is.
+      const startSec = timed ? Number(at.toFixed(3)) : null;
+      if (durationSec === null) timed = false;
+      else at += durationSec;
+      return {
+        speaker: s.speaker,
+        text: s.text,
+        translation: pickNative(s.translation, input.nativeCode, `${story.id}#${i + 1}.translation`),
+        pieces: a.sentences[i].map((p) => (p.lexemeId ? [p.text, p.lexemeId] : [p.text])),
+        assetKey: storySentenceAssetKey(lang, stories, s),
+        startSec,
+        durationSec,
+      };
+    });
+    byId[story.id] = {
+      id: story.id,
+      band: story.band,
+      title: story.title,
+      blurb: pickNative(story.blurb, input.nativeCode, `${story.id}.blurb`),
+      tokens: a.tokens,
+      lexemes: a.lexemes,
+      newLexemes: story.newLexemes,
+      sentences,
+      questions: story.questions.map((q, i) => ({
+        kind: q.kind,
+        prompt: pickNative(q.prompt, input.nativeCode, `${story.id}.questions[${i}].prompt`),
+        options: q.options.map((o, j) => pickNative(o, input.nativeCode, `${story.id}.questions[${i}].options[${j}]`)),
+        answer: q.answer,
+      })),
+    };
+  }
+  const order = [...stories.stories]
+    .map((s, i) => ({ id: s.id, rank: bandRank(s.band), i }))
+    .sort((x, y) => x.rank - y.rank || x.i - y.i)
+    .map((x) => x.id);
+  // Compact, one story per line: pieces are many short tuples, and the chunk ships per course.
+  const lines = order.map((id, i) => `${JSON.stringify(id)}:${JSON.stringify(byId[id])}${i < order.length - 1 ? "," : ""}`);
+  return `{"version":${stories.version},"language":${JSON.stringify(lang)},"order":${JSON.stringify(order)},"byId":{\n${lines.join("\n")}\n}}\n`;
+}
+
+/**
+ * Static require map (assetKey → bundled MP3) for the story sentences whose
+ * generated asset exists; the validator errors on a missing one once the
+ * stories have been generated, so a shipped build plays every sentence.
+ */
+export function compileStoryAssetsModule(stories: Stories, requirePrefix: string): string {
+  const lang = stories.language;
+  const lines = [
+    "/**",
+    " * Generated by scripts/compile-content.ts — do not edit.",
+    " * Graded-story sentence audio (P5b): assetKey → bundled deterministic MP3.",
+    " */",
+    "",
+    "export const STORY_SENTENCE_ASSETS: Record<string, number> = {",
+  ];
+  const keys = [...new Set(stories.stories.flatMap((st) => st.sentences.map((s) => storySentenceAssetKey(lang, stories, s))))].sort();
+  for (const key of keys) {
+    if (!existsSync(safeResolve(receptionAssetsDir(lang), `${key}.mp3`))) continue;
+    lines.push(`  "${key}": require("${requirePrefix}/${receptionAssetsDir(lang)}/${key}.mp3"),`);
+  }
+  lines.push("};", "");
+  return lines.join("\n");
+}
+
+/** Per-story grading facts for review (content/reports/<lang>/stories-coverage.json). */
+export function compileStoriesReport(analyses: StoryAnalysis[], stories: Stories): string {
+  const newOf = new Map(stories.stories.map((s) => [s.id, s.newLexemes]));
+  return canonicalJson({
+    generator: "scripts/lib/stories.ts",
+    rule: `every token resolves; ≥ ${STORY_MIN_COVERAGE * 100} % of tokens known at the story's band; ${STORY_MIN_TOKENS}–${STORY_MAX_TOKENS} tokens; 3–5 declared new lexemes`,
+    stories: analyses.map((a) => ({
+      id: a.id,
+      band: a.band,
+      tokens: a.tokens,
+      coverage: Number(a.coverage.toFixed(4)),
+      distinctLexemes: a.lexemes.length,
+      newLexemes: newOf.get(a.id) ?? [],
+    })),
+  });
+}

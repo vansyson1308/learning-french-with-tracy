@@ -70,6 +70,8 @@ export function buildSynthScript(input: {
   outDir: string;
   existingDir?: string;
   existingKeys?: ReadonlySet<string>;
+  /** assetKey -> path of an already-blessed MP3 (several folders: pack + reception). */
+  existingFiles?: ReadonlyMap<string, string>;
 }): string {
   const { clips, engines, downloadsDir, wavDir, outDir } = input;
   const voicesById = new Map(input.voices.map((v) => [v.id, v]));
@@ -86,8 +88,9 @@ export function buildSynthScript(input: {
   for (const clip of clips) {
     if (seen.has(clip.assetKey)) continue;
     seen.add(clip.assetKey);
-    if (input.existingDir && input.existingKeys?.has(clip.assetKey)) {
-      lines.push(`cp ${shq(`${input.existingDir}/${clip.assetKey}.mp3`)} ${shq(`${outDir}/${clip.assetKey}.mp3`)}`);
+    const blessed = input.existingFiles?.get(clip.assetKey) ?? (input.existingDir && input.existingKeys?.has(clip.assetKey) ? `${input.existingDir}/${clip.assetKey}.mp3` : undefined);
+    if (blessed !== undefined) {
+      lines.push(`cp ${shq(blessed)} ${shq(`${outDir}/${clip.assetKey}.mp3`)}`);
       reused += 1;
       continue;
     }

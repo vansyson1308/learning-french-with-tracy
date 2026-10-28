@@ -45,6 +45,16 @@ itself.
 
 ## Limitations by design (not defects)
 
+- **Graded stories (P5b) exist for French (10) and Spanish (20) only.**
+  Each further course from Vietnamese (de, it, pt, ja, zh, ko, en) gets its
+  stories in its own milestone (P3d/P4c–P4f); the inherited `-en` packs get
+  none. The French lexicon has 126 lexemes, so the French stories are all
+  level 2 (the second half of the syllabus) and lean on a small vocabulary.
+  Stories are original texts that have not had a native review yet
+  (`plan/OWNER-FINAL-CHECKLIST.md` B). Until the audio workflow has
+  generated a story's sentences, it is read as text only — never with
+  device TTS.
+
 - The AI tutor seam ships **disabled**; no model, key or endpoint exists in
   the app, and the app makes no network requests of its own.
 - No accounts, no sync: progress lives on the device; backup is a manual

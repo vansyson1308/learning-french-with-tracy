@@ -10,6 +10,7 @@ import { describe, expect, test } from "bun:test";
 
 import { safeResolve } from "../lib/pipeline";
 import { loadListening, receptionAssetKey, resolveClipSegments } from "../lib/reception";
+import { loadStories, storySentenceAssetKey } from "../lib/stories";
 
 function run(args: string[]): { code: number; out: string } {
   const proc = Bun.spawnSync({
@@ -24,9 +25,15 @@ function run(args: string[]): { code: number; out: string } {
 describe("audio.ts plan --dry-run", () => {
   test("French generate plan validates offline and reports the authored clip count", () => {
     const listening = loadListening("fr")!;
-    const unique = new Set(listening.clips.map((c) => receptionAssetKey("fr", resolveClipSegments(listening, c)))).size;
+    // P5b: the reception layer also carries one clip per graded-story sentence.
+    const stories = loadStories("fr")!;
+    const sentences = stories.stories.flatMap((s) => s.sentences);
+    const keys = new Set([
+      ...listening.clips.map((c) => receptionAssetKey("fr", resolveClipSegments(listening, c))),
+      ...sentences.map((s) => storySentenceAssetKey("fr", stories, s)),
+    ]);
     const { code, out } = run(["plan", "--lang", "fr", "--layer", "reception", "--mode", "generate", "--dry-run"]);
-    expect(out).toContain(`dry run ok (fr, generate, reception): ${listening.clips.length} clips, ${unique} unique assets`);
+    expect(out).toContain(`dry run ok (fr, generate, reception): ${listening.clips.length + sentences.length} clips, ${keys.size} unique assets`);
     expect(code).toBe(0);
   });
 
