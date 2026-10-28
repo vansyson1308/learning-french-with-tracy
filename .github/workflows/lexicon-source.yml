@@ -43,6 +43,9 @@ on:
 
 permissions:
   contents: write
+  # actions: write — scripts/ci/bot-commit.sh dispatches ci.yml and device-acceptance.yml
+  # on the branch it pushed to (a bot-authored head gets no checks otherwise).
+  actions: write
 
 concurrency:
   group: lexicon-source-${{ inputs.lang }}
@@ -53,9 +56,10 @@ jobs:
     # Defense in depth: refuse anything but a manual dispatch.
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 90 # normal ≤ 30 min; a hang becomes a failure, never a 6 h wait
     env:
       SCRATCH: /tmp/lexicon-src
+      SRC_CACHE: /tmp/lexicon-cache
       # Inputs reach the shell only through the environment (never expanded into the script text).
       LANG_INPUT: ${{ inputs.lang }}
       MODE_INPUT: ${{ inputs.mode }}
@@ -74,13 +78,30 @@ jobs:
       - name: Install (frozen lockfile)
         run: bun install --frozen-lockfile
 
-      - name: Fetch official sources (twice; identical hashes required)
+      # Raw retrievals of earlier runs, keyed by URL + ETag/Last-Modified of every
+      # source: extract reuses a cached dump that matches its pin instead of
+      # downloading it again; recon compares today's retrieval with the cached one.
+      - name: Source cache key (HEAD requests only)
+        id: srckey
+        timeout-minutes: 5
+        run: echo "key=$(bun scripts/lexicon-etl.ts cache-key --lang "$LANG_INPUT")" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: /tmp/lexicon-cache/${{ inputs.lang }}
+          key: ${{ steps.srckey.outputs.key }}
+          restore-keys: lexicon-src-${{ inputs.lang }}-
+
+      - name: Fetch official sources (bounded; recon verifies a second retrieval)
+        timeout-minutes: 30
         run: |
           set -euo pipefail
           mkdir -p "$SCRATCH/$LANG_INPUT"
-          bun scripts/lexicon-etl.ts fetch --lang "$LANG_INPUT" --dir "$SCRATCH" --twice
+          TWICE=()
+          [ "$MODE_INPUT" = "extract" ] || TWICE=(--twice)
+          bun scripts/lexicon-etl.ts fetch --lang "$LANG_INPUT" --dir "$SCRATCH" --cache "$SRC_CACHE/$LANG_INPUT" "${TWICE[@]}"
 
       - name: Export wordfreq (pinned 3.1.1)
+        timeout-minutes: 15
         run: |
           set -euo pipefail
           python -m pip install --quiet "wordfreq[cjk]==3.1.1"
@@ -121,6 +142,8 @@ jobs:
           if-no-files-found: warn
 
       - name: Commit results to the dispatched branch
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"

@@ -33,6 +33,11 @@ on:
     branches: [main]
   schedule:
     - cron: "17 3 * * *"
+  # scripts/ci/bot-commit.sh dispatches CI on the branch it pushed to: the
+  # pull_request run of a bot-authored head waits for a human approval
+  # (action_required), and workflow_dispatch is the one event the workflow
+  # token may start.
+  workflow_dispatch:
 
 # Read-only token: nothing in this workflow writes to the repository.
 permissions:
@@ -43,7 +48,7 @@ jobs:
     # After a data workflow: only when it succeeded (a failed run committed nothing).
     if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15 # normal ≈ 3 min
     strategy:
       matrix:
         tz: ["UTC", "America/Los_Angeles", "Asia/Tokyo", "Pacific/Kiritimati", "Pacific/Pago_Pago"]
@@ -125,8 +130,9 @@ jobs:
       - name: Install (frozen lockfile)
         run: bun install --frozen-lockfile
       - name: Download LanguageTool (pinned, hash-checked)
+        timeout-minutes: 10
         run: |
-          curl -sSL -o "$RUNNER_TEMP/lt.zip" "https://languagetool.org/download/LanguageTool-${LT_VERSION}.zip"
+          bash scripts/ci/fetch.sh "https://languagetool.org/download/LanguageTool-${LT_VERSION}.zip" "$RUNNER_TEMP/lt.zip"
           echo "${LT_SHA256}  $RUNNER_TEMP/lt.zip" | sha256sum -c -
           unzip -q "$RUNNER_TEMP/lt.zip" -d "$RUNNER_TEMP"
       - name: Start LanguageTool server

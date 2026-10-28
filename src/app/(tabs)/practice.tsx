@@ -14,10 +14,10 @@ import { examTracksFor } from "@/lib/exam/content";
 import {
   cardForSurface,
   dueReviewQueue,
-  itemIdForCourse,
   memoryStrengthPercent,
 } from "@/lib/learning/engine";
 import { dueInDaysAt } from "@/lib/srs";
+import { srsEntryFor, wordStatFor } from "@/lib/learning/word-progress";
 import { dueListeningReviewCount, dueSpeakingReviewCounts } from "@/lib/session/sources";
 import { dailyQuests, dueSrsWords, useProgress, type Quest } from "@/lib/store";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
@@ -60,8 +60,8 @@ export default function PracticeScreen() {
       const card = caps.fsrs ? cardForSurface(activeCourseId, courseProgress.cards, w.target) : undefined;
       return {
         ...w,
-        stat: courseProgress.wordStats[itemIdForCourse(activeCourseId, w.target)],
-        dueAt: caps.fsrs ? card?.due : courseProgress.srs?.[w.target]?.dueAt,
+        stat: wordStatFor(activeCourseId, courseProgress.wordStats, w.target),
+        dueAt: caps.fsrs ? card?.due : srsEntryFor(activeCourseId, courseProgress.srs, w.target)?.dueAt,
         // FSRS strength = real retrievability (memory model); legacy
         // courses keep their correctness-ratio semantics untouched.
         memory: caps.fsrs ? memoryStrengthPercent(card) : null,

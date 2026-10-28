@@ -48,6 +48,9 @@ on:
 
 permissions:
   contents: write
+  # actions: write — scripts/ci/bot-commit.sh dispatches ci.yml and device-acceptance.yml
+  # on the branch it pushed to (a bot-authored head gets no checks otherwise).
+  actions: write
 
 # One audio run at a time across languages: every run edits the shared voice-casts /
 # pack manifest / registry / ATTRIBUTIONS files, and concurrent pushes conflicted on rebase.
@@ -102,6 +105,7 @@ jobs:
           fi
 
       - name: Download pinned / candidate voices (recon and canary download twice)
+        timeout-minutes: 30
         run: |
           set -euo pipefail
           mkdir -p "$DL"
@@ -116,7 +120,7 @@ jobs:
               if [ ! -f "$cache" ]; then
                 mkdir -p "$DL/.cache"
                 echo "downloading $url (copy $copy)"
-                curl -fSL --retry 3 --retry-delay 10 -o "$cache" "$url"
+                bash scripts/ci/fetch.sh "$url" "$cache"
               fi
               cp "$cache" "$DL/$voice.$kind.$copy"
             done
@@ -140,6 +144,7 @@ jobs:
           bun scripts/audio.ts verify "${ARGS[@]}"
 
       - name: Install the engines the plan needs (pinned) + ffmpeg
+        timeout-minutes: 20 # normal 3 min
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
@@ -160,6 +165,7 @@ jobs:
           piper --version 2>/dev/null || true
 
       - name: Synthesize
+        timeout-minutes: 90 # longest observed 30 min
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
@@ -182,6 +188,7 @@ jobs:
           ls "$OUT" | wc -l
 
       - name: ASR audit (Whisper, or SenseVoice for zh/ja/ko — technical signal only)
+        timeout-minutes: 300 # longest observed 151 min
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
@@ -212,6 +219,7 @@ jobs:
           bun scripts/validate-content.ts
 
       - name: Generate — strict QA, apply (per-language merge), baseline, compile, validate
+        timeout-minutes: 30 # longest observed 8 min
         if: inputs.mode == 'generate'
         run: |
           set -euo pipefail
@@ -240,6 +248,9 @@ jobs:
           if-no-files-found: warn
 
       - name: Commit results to the dispatched branch
+        timeout-minutes: 30 # full gate, normal 2 min
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name "audio workflow"

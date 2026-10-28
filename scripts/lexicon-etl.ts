@@ -3,11 +3,19 @@
  * language. NEVER run by CI: CI validates the committed derived data
  * offline. Three commands, mirrored by .github/workflows/lexicon-source.yml:
  *
- *   fetch   --lang es --dir <scratch> [--twice]
+ *   fetch   --lang es --dir <scratch> [--twice] [--cache <dir>]
  *           Download every catalogued source from its OFFICIAL URL into
- *           <scratch>/es/, decompress (gzip/bzip2/tar.gz), and with --twice
- *           download each artifact a second time and refuse to continue when
- *           the two retrievals differ (reproducibility, as for Lexique 4).
+ *           <scratch>/es/ (bounded: scripts/lib/lexicon-etl/fetch.ts) and
+ *           decompress (gzip/bzip2/tar.gz). With --cache, each raw retrieval
+ *           is kept there (the workflow restores it with actions/cache); a
+ *           cached retrieval whose artifact matches the pinned sha256, or
+ *           whose ETag/Last-Modified the server still reports, is reused
+ *           without a download. With --twice (recon) the retrieval must equal
+ *           the cached one or a second download, else the run refuses
+ *           (reproducibility, as for Lexique 4).
+ *   cache-key --lang es
+ *           Print the actions/cache key: URL + ETag/Last-Modified of every
+ *           source (HEAD requests only).
  *   recon   --lang es --dir <scratch>
  *           Hash every artifact present, pin sha256/bytes/date into
  *           content/es/lexicon/source-manifest.json (v2), capture each
@@ -23,14 +31,13 @@
  */
 
 import { execFileSync } from "child_process";
-import { createWriteStream, existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "fs";
 import path from "path";
-import { Readable, Transform } from "stream";
-import { pipeline } from "stream/promises";
 
 import { SourceManifestV2Schema, type SourceManifestV2 } from "../content/schema";
 
 import { deriveLanguage } from "./lib/lexicon-etl/derive";
+import { cacheKey, download, headMeta, linkOrCopy, SourceCache } from "./lib/lexicon-etl/fetch";
 import { fileIdentity, readLines } from "./lib/lexicon-etl/jsonl";
 import { buildManifestV2, type ArtifactIdentity } from "./lib/lexicon-etl/manifest";
 import { sourcesFor, type SourceSpec } from "./lib/lexicon-etl/sources";
@@ -48,11 +55,11 @@ const opt = (name: string): string | undefined => {
 };
 const flag = (name: string) => rest.includes(`--${name}`);
 
-if (!["fetch", "recon", "extract"].includes(command ?? "")) {
-  fail("usage: bun scripts/lexicon-etl.ts <fetch|recon|extract> --lang <code> --dir <scratch-dir> [--twice]");
+if (!["fetch", "recon", "extract", "cache-key"].includes(command ?? "")) {
+  fail("usage: bun scripts/lexicon-etl.ts <fetch|recon|extract|cache-key> --lang <code> --dir <scratch-dir> [--twice] [--cache <dir>]");
 }
 const lang = opt("lang") ?? fail("--lang <code> is required");
-const scratch = opt("dir") ?? fail("--dir <scratch-dir> is required");
+const scratch = opt("dir") ?? (command === "cache-key" ? path.join("/tmp", "lexicon-src") : fail("--dir <scratch-dir> is required"));
 const dir = path.join(scratch, lang);
 mkdirSync(dir, { recursive: true });
 const manifestRel = `content/${lang}/lexicon/source-manifest.json`;
@@ -65,43 +72,6 @@ function loadManifest(): SourceManifestV2 | null {
   const parsed = SourceManifestV2Schema.safeParse(readJson(manifestRel));
   if (!parsed.success) fail(`${manifestRel} is not a v2 manifest: ${parsed.error.issues[0]?.message}`);
   return parsed.data;
-}
-
-/** Abort a transfer that delivers no byte for this long (a stalled download held the ko run for 3 h). */
-const DOWNLOAD_IDLE_MS = 120_000;
-const DOWNLOAD_ATTEMPTS = 3;
-
-async function download(url: string, out: string): Promise<void> {
-  const tmp = `${out}.part`;
-  for (let attempt = 1; attempt <= DOWNLOAD_ATTEMPTS; attempt++) {
-    const ac = new AbortController();
-    let timer = setTimeout(() => ac.abort(new Error(`no data for ${DOWNLOAD_IDLE_MS / 1000} s`)), DOWNLOAD_IDLE_MS);
-    const touch = () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => ac.abort(new Error(`no data for ${DOWNLOAD_IDLE_MS / 1000} s`)), DOWNLOAD_IDLE_MS);
-    };
-    try {
-      const res = await fetch(url, { redirect: "follow", signal: ac.signal });
-      if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
-      const watch = new Transform({
-        transform(chunk, _enc, cb) {
-          touch();
-          cb(null, chunk);
-        },
-      });
-      await pipeline(Readable.fromWeb(res.body as never), watch, createWriteStream(tmp));
-      renameSync(tmp, out);
-      return;
-    } catch (e) {
-      rmSync(tmp, { force: true });
-      const why = (e as Error).message;
-      if (attempt === DOWNLOAD_ATTEMPTS) fail(`${url}: download failed after ${DOWNLOAD_ATTEMPTS} attempts — ${why}`);
-      console.warn(`${url}: attempt ${attempt} failed (${why}) — retrying`);
-      await Bun.sleep(attempt * 10_000);
-    } finally {
-      clearTimeout(timer);
-    }
-  }
 }
 
 function decompress(spec: SourceSpec, downloaded: string, target: string): void {
@@ -124,6 +94,8 @@ function decompress(spec: SourceSpec, downloaded: string, target: string): void 
 
 async function fetchAll(): Promise<void> {
   const twice = flag("twice");
+  const cache = new SourceCache(opt("cache") ?? null);
+  const pins = new Map((loadManifest()?.sources ?? []).filter((s) => s.retrieval.status === "retrieved").map((s) => [s.artifactFilename, s.retrieval.sha256]));
   for (const spec of sourcesFor(lang)) {
     const target = path.join(dir, spec.artifactFilename);
     if (existsSync(target)) {
@@ -131,17 +103,33 @@ async function fetchAll(): Promise<void> {
       continue;
     }
     const raw = spec.decompress ? `${target}.download` : target;
-    console.log(`fetching ${spec.url}`);
-    await download(spec.url, raw);
-    if (twice) {
-      const again = `${raw}.second`;
-      await download(spec.url, again);
-      const [a, b] = await Promise.all([fileIdentity(raw), fileIdentity(again)]);
-      rmSync(again);
-      if (a.sha256 !== b.sha256) fail(`${spec.artifactFilename}: the two retrievals differ (${a.sha256} ≠ ${b.sha256}) — refusing to pin an unstable artifact`);
-      console.log(`  reproducible (${a.bytes} bytes, ${a.sha256})`);
+    const now = headMeta(spec.url);
+    const cached = cache.get(spec.artifactFilename);
+    const reusable = !twice && cached && cached.meta.url === spec.url && (cached.meta.artifactSha256 === pins.get(spec.artifactFilename) || cache.fresh(spec.artifactFilename, now));
+    if (reusable) {
+      linkOrCopy(cached.raw, raw);
+      console.log(`cached   ${spec.artifactFilename} (retrieved ${cached.meta.retrievedAt}; ${cached.meta.artifactSha256 === pins.get(spec.artifactFilename) ? "matches the pinned sha256" : "server validators unchanged"} — no download)`);
+    } else {
+      console.log(`fetching ${spec.url}`);
+      await download(spec.url, raw);
+      const a = await fileIdentity(raw);
+      if (twice) {
+        if (cached && cached.meta.url === spec.url && cached.meta.sha256 === a.sha256) {
+          console.log(`  reproducible against the cached retrieval of ${cached.meta.retrievedAt} (${a.bytes} bytes, ${a.sha256})`);
+        } else {
+          // First contact, or the server's bytes differ from the cached retrieval: a second download decides.
+          const again = `${raw}.second`;
+          await download(spec.url, again);
+          const b = await fileIdentity(again);
+          rmSync(again);
+          if (a.sha256 !== b.sha256) fail(`${spec.artifactFilename}: the two retrievals differ (${a.sha256} ≠ ${b.sha256}) — refusing to pin an unstable artifact`);
+          console.log(`  reproducible (${a.bytes} bytes, ${a.sha256})`);
+        }
+      }
+      cache.put(spec.artifactFilename, raw, { ...now, sha256: a.sha256, bytes: a.bytes, retrievedAt: today, artifactSha256: null });
     }
     if (spec.decompress) decompress(spec, raw, target);
+    if (!reusable) cache.setArtifactSha256(spec.artifactFilename, (await fileIdentity(target)).sha256);
     console.log(`  → ${spec.artifactFilename} (${statSync(target).size} bytes)`);
   }
   const wordfreq = sourcesFor(lang).find((s) => s.id === "wordfreq");
@@ -233,6 +221,7 @@ async function extract(): Promise<void> {
   console.log(`summary: ${JSON.stringify(result.summary)}`);
 }
 
-if (command === "fetch") await fetchAll();
+if (command === "cache-key") console.log(cacheKey(lang, sourcesFor(lang).map((spec) => headMeta(spec.url))));
+else if (command === "fetch") await fetchAll();
 else if (command === "recon") await recon();
 else await extract();

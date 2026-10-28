@@ -24,6 +24,7 @@ import {
   type ThemePreference,
 } from "@/lib/store";
 import { readingAidOn } from "@/lib/learning/reading-aid";
+import { wordsLearnedCount } from "@/lib/learning/word-progress";
 import { courseHasReadingAid } from "@/lib/use-reading-aid";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 
@@ -55,9 +56,7 @@ export default function ProfileScreen() {
   const lessonsDone = Object.keys(courseProgress.completedLessons).filter((id) =>
     allLessons.some((l) => l.lesson.id === id)
   ).length;
-  const wordsLearned = Object.keys(courseProgress.wordStats).filter((target) =>
-    allWords().some((w) => w.target === target)
-  ).length;
+  const wordsLearned = wordsLearnedCount(activeCourseId, courseProgress.wordStats, allWords());
 
   const stats = [
     {
