@@ -141,6 +141,18 @@ jobs:
           retention-days: 90
           if-no-files-found: warn
 
+      # Also when validation fails: a new pool can move the frequency bands of the
+      # committed lexicon ("re-run the import"), and the lexicon is then re-authored
+      # locally from this derived output (gh run download <id> -n lexicon-derived-<lang>).
+      - name: Upload the derived outputs (always, also on a failed validation)
+        if: always() && (inputs.mode == 'extract' || inputs.mode == 'both')
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: lexicon-derived-${{ inputs.lang }}
+          path: content/${{ inputs.lang }}/lexicon/derived
+          retention-days: 30
+          if-no-files-found: warn
+
       - name: Commit results to the dispatched branch
         env:
           GH_TOKEN: ${{ github.token }}
