@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("die_party_bei_kai", "A1-2", "Die Party bei Kai",
+S.append(story("die_party_bei_kai", "A2-1", "Die Party bei Kai",
  ("Mia đến dự tiệc ở nhà Kai, nơi cô gần như không quen ai. Rồi cô gặp Tom.", "Mia goes to a party at Kai's, where she hardly knows anyone. Then she meets Tom."),
  ["Papier", "Stimmung", "fröhlich"],
  [("N", "Kai macht am Samstag eine Party in seiner Wohnung.", "Thứ Bảy Kai tổ chức tiệc ở căn hộ của mình.", "Kai is having a party in his flat on Saturday."),
@@ -35,7 +35,7 @@ S.append(story("die_party_bei_kai", "A1-2", "Die Party bei Kai",
   ("infer", "Vì sao lúc đầu Mia hơi sợ?", "Why is Mia a bit nervous at first?", [("Cô không thích tiệc tùng", "She doesn't like parties"), ("Cô nhảy dở", "She dances badly"), ("Ở đó cô chỉ quen mỗi Kai", "She only knows Kai there")], 2)],
  names=["Kai", "Mia", "Tom"]))
 
-S.append(story("hilfe_im_zug", "A1-2", "Hilfe im Zug",
+S.append(story("hilfe_im_zug", "A2-1", "Hilfe im Zug",
  ("Trên chuyến tàu đông người, ông Nowak giúp một người mẹ trẻ đi cùng em bé. Hôm đó ông đi làm muộn — nhưng rất vui.", "On a crowded train Mr Nowak helps a young mother with her baby. He is late for work that day — but very happy."),
  ["Kilo", "Reihe", "Linie"],
  [("N", "Herr Nowak fährt jeden Morgen mit dem Zug zur Arbeit.", "Sáng nào ông Nowak cũng đi tàu đến chỗ làm.", "Every morning Mr Nowak takes the train to work."),
@@ -65,7 +65,7 @@ S.append(story("hilfe_im_zug", "A1-2", "Hilfe im Zug",
   ("infer", "Vì sao hôm đó ông Nowak đi làm muộn?", "Why is Mr Nowak late for work that day?", [("Tàu bị hỏng", "The train broke down"), ("Ông xuống ở Köln để đưa người phụ nữ ra đường ray", "He got off in Cologne to take the woman to her platform"), ("Ông ngủ quên trên tàu", "He fell asleep on the train")], 1)],
  names=["Nowak", "Vietnam", "Deutschland", "Bonn", "Köln"], token_map={"steigen": "aussteigen"}))
 
-S.append(story("der_professor_und_der_stein", "A1-2", "Der Professor und der Stein",
+S.append(story("der_professor_und_der_stein", "A2-1", "Der Professor und der Stein",
  ("Giáo sư Lang tìm kiếm một hòn đá huyền thoại suốt hai mươi năm. Cô học trò Nora tìm ra nó — vào ngày cuối cùng.", "Professor Lang has been looking for a legendary stone for twenty years. His student Nora finds it — on the very last day."),
  ["Sommer", "regnen", "Kreis"],
  [("N", "Professor Lang arbeitet in einem Museum.", "Giáo sư Lang làm việc trong một viện bảo tàng.", "Professor Lang works in a museum."),

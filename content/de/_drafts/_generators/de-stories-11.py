@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("ein_anruf_von_opa", "A1-2", "Ein Anruf von Opa",
+S.append(story("ein_anruf_von_opa", "A2-1", "Ein Anruf von Opa",
  ("Ông gọi điện: ông hơi sốt, nhưng tháng sau ông tròn 80 tuổi và muốn mời cả nhà.", "Grandpa calls: he has a slight fever, but next month he turns 80 and wants to invite the whole family."),
  ["Gesundheit", "Kreis", "Stimmung"],
  [("N", "Am Sonntag gibt es bei Familie Pham einen Anruf.", "Chủ nhật nhà Pham có một cuộc gọi.", "On Sunday the Pham family gets a phone call."),
@@ -35,7 +35,7 @@ S.append(story("ein_anruf_von_opa", "A1-2", "Ein Anruf von Opa",
   ("infer", "Theo ông, món quà đẹp nhất là gì?", "What does Grandpa think is the best present?", [("Cái bánh to", "The big cake"), ("Bài hát", "The song"), ("Việc mọi người cùng đến dự", "Everyone coming to celebrate")], 2)],
  names=["Pham", "Hamburg"], token_map={"schönste": "schön"}))
 
-S.append(story("der_ausflug_im_regen", "A1-2", "Der Ausflug im Regen",
+S.append(story("der_ausflug_im_regen", "A2-1", "Der Ausflug im Regen",
  ("Ben và Sara định đi bộ trong rừng. Internet báo trời nắng — nhưng thời tiết lại có ý khác.", "Ben and Sara plan a hike in the forest. The internet says sunshine — but the weather has other ideas."),
  ["Reise", "Berg", "Sturm"],
  [("N", "Am Samstag wollen Ben und Sara einen Ausflug machen.", "Thứ Bảy Ben và Sara muốn đi dã ngoại.", "On Saturday Ben and Sara want to go on a trip."),

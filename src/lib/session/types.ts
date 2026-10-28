@@ -4,6 +4,7 @@
  * policies explicit instead of encoding them in magic route strings.
  */
 
+import type { MessagePointsSpec } from "../writing/message-points";
 import type { Skill } from "../learning/card-key";
 import type { EvidenceSource, SrsRole } from "../learning/evidence";
 import type { Exercise, Word } from "../types";
@@ -44,6 +45,10 @@ export type ExerciseStep = {
   exercise: Exercise;
   evidence?: StepEvidencePlan;
   phase?: TodayPhase;
+  /** Exam listening parts (QC 2026-10-29 §1.4): plays allowed, overriding the clip's scored policy. */
+  maxPlays?: number;
+  /** Exam message parts (QC 2026-10-29 §1.5): score the first answer in points with this rubric spec. */
+  writingPoints?: MessagePointsSpec;
 };
 
 export type TeachStep = {

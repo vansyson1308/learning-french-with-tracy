@@ -46,7 +46,7 @@
       "skill": "listening",
       "title": {
         "vi": "Hören — Nghe",
-        "en": "Hören — Nghe"
+        "en": "Hören — Listening"
       },
       "minutes": 20,
       "maxPoints": 25,
@@ -56,11 +56,11 @@
           "id": "t1",
           "title": {
             "vi": "Teil 1 — Sáu hội thoại ngắn",
-            "en": "Teil 1 — Sáu hội thoại ngắn"
+            "en": "Teil 1 — Six short conversations"
           },
           "instruction": {
             "vi": "Nghe mỗi hội thoại hai lần và chọn a, b hoặc c.",
-            "en": "Nghe mỗi hội thoại hai lần và chọn a, b hoặc c."
+            "en": "Listen to each conversation twice and choose a, b or c."
           },
           "format": "mcq3",
           "itemsPerForm": 6
@@ -69,24 +69,25 @@
           "id": "t2",
           "title": {
             "vi": "Teil 2 — Bốn thông báo",
-            "en": "Teil 2 — Bốn thông báo"
+            "en": "Teil 2 — Four announcements"
           },
           "instruction": {
-            "vi": "Nghe mỗi thông báo và chọn đúng (richtig) hay sai (falsch). Trong kỳ thi thật phần này chỉ nghe MỘT lần; ứng dụng cho nghe tối đa hai lần như mọi bài nghe — hãy thử chỉ nghe một lần.",
-            "en": "Nghe mỗi thông báo và chọn đúng (richtig) hay sai (falsch). Trong kỳ thi thật phần này chỉ nghe MỘT lần; ứng dụng cho nghe tối đa hai lần như mọi bài nghe — hãy thử chỉ nghe một lần."
+            "vi": "Nghe mỗi thông báo một lần và chọn đúng (richtig) hay sai (falsch). Giống kỳ thi thật, mỗi thông báo chỉ được nghe MỘT lần.",
+            "en": "Listen to each announcement once and choose true (richtig) or false (falsch). As in the real exam, each announcement is played only ONCE."
           },
           "format": "mcq2",
-          "itemsPerForm": 4
+          "itemsPerForm": 4,
+          "playsPerRecording": 1
         },
         {
           "id": "t3",
           "title": {
             "vi": "Teil 3 — Năm tin nhắn qua điện thoại hoặc đài",
-            "en": "Teil 3 — Năm tin nhắn qua điện thoại hoặc đài"
+            "en": "Teil 3 — Five phone or radio messages"
           },
           "instruction": {
             "vi": "Nghe mỗi tin nhắn hai lần và chọn a, b hoặc c.",
-            "en": "Nghe mỗi tin nhắn hai lần và chọn a, b hoặc c."
+            "en": "Listen to each message twice and choose a, b or c."
           },
           "format": "mcq3",
           "itemsPerForm": 5
@@ -98,7 +99,7 @@
       "skill": "reading",
       "title": {
         "vi": "Lesen — Đọc",
-        "en": "Lesen — Đọc"
+        "en": "Lesen — Reading"
       },
       "minutes": 25,
       "maxPoints": 25,
@@ -107,11 +108,11 @@
           "id": "t1",
           "title": {
             "vi": "Teil 1 — Hai lá thư hoặc email ngắn",
-            "en": "Teil 1 — Hai lá thư hoặc email ngắn"
+            "en": "Teil 1 — Two short letters or e-mails"
           },
           "instruction": {
             "vi": "Đọc hai văn bản và chọn đúng (richtig) hay sai (falsch) cho mỗi câu.",
-            "en": "Đọc hai văn bản và chọn đúng (richtig) hay sai (falsch) cho mỗi câu."
+            "en": "Read the two texts and choose true (richtig) or false (falsch) for each statement."
           },
           "format": "mcq2",
           "itemsPerForm": 5
@@ -120,11 +121,11 @@
           "id": "t2",
           "title": {
             "vi": "Teil 2 — Quảng cáo và trang web",
-            "en": "Teil 2 — Quảng cáo và trang web"
+            "en": "Teil 2 — Adverts and web pages"
           },
           "instruction": {
             "vi": "Bạn tìm thông tin ở đâu? Đọc hai quảng cáo và chọn a hoặc b.",
-            "en": "Bạn tìm thông tin ở đâu? Đọc hai quảng cáo và chọn a hoặc b."
+            "en": "Where do you find the information? Read the two adverts and choose a or b."
           },
           "format": "mcq2",
           "itemsPerForm": 5
@@ -133,11 +134,11 @@
           "id": "t3",
           "title": {
             "vi": "Teil 3 — Biển báo và thông báo",
-            "en": "Teil 3 — Biển báo và thông báo"
+            "en": "Teil 3 — Signs and notices"
           },
           "instruction": {
             "vi": "Đọc biển báo và chọn đúng (richtig) hay sai (falsch).",
-            "en": "Đọc biển báo và chọn đúng (richtig) hay sai (falsch)."
+            "en": "Read the sign and choose true (richtig) or false (falsch)."
           },
           "format": "mcq2",
           "itemsPerForm": 5
@@ -149,7 +150,7 @@
       "skill": "writing",
       "title": {
         "vi": "Schreiben — Viết",
-        "en": "Schreiben — Viết"
+        "en": "Schreiben — Writing"
       },
       "minutes": 20,
       "maxPoints": 25,
@@ -158,11 +159,11 @@
           "id": "t1",
           "title": {
             "vi": "Teil 1 — Điền phiếu",
-            "en": "Teil 1 — Điền phiếu"
+            "en": "Teil 1 — Fill in a form"
           },
           "instruction": {
             "vi": "Đọc tình huống và điền năm thông tin còn thiếu vào phiếu cho một người khác.",
-            "en": "Đọc tình huống và điền năm thông tin còn thiếu vào phiếu cho một người khác."
+            "en": "Read the situation and fill in the five missing details on the form for someone else."
           },
           "format": "form",
           "itemsPerForm": 1,
@@ -172,11 +173,11 @@
           "id": "t2",
           "title": {
             "vi": "Teil 2 — Một tin nhắn ngắn",
-            "en": "Teil 2 — Một tin nhắn ngắn"
+            "en": "Teil 2 — A short message"
           },
           "instruction": {
             "vi": "Viết một tin nhắn khoảng 30 từ theo ba gợi ý, có lời chào và lời chào kết.",
-            "en": "Viết một tin nhắn khoảng 30 từ theo ba gợi ý, có lời chào và lời chào kết."
+            "en": "Write a message of about 30 words covering three points, with a greeting and a closing."
           },
           "format": "short_text",
           "itemsPerForm": 1,
@@ -193,7 +194,7 @@
       "skill": "speaking",
       "title": {
         "vi": "Sprechen — Nói",
-        "en": "Sprechen — Nói"
+        "en": "Sprechen — Speaking"
       },
       "minutes": 15,
       "maxPoints": 25,
@@ -202,11 +203,11 @@
           "id": "t1",
           "title": {
             "vi": "Teil 1 — Giới thiệu bản thân",
-            "en": "Teil 1 — Giới thiệu bản thân"
+            "en": "Teil 1 — Introducing yourself"
           },
           "instruction": {
             "vi": "Tự giới thiệu theo các từ khoá trên thẻ. (Trong kỳ thi thật còn có đánh vần một từ và đọc lại một con số.)",
-            "en": "Tự giới thiệu theo các từ khoá trên thẻ. (Trong kỳ thi thật còn có đánh vần một từ và đọc lại một con số.)"
+            "en": "Introduce yourself using the keywords on the card. (The real exam also asks you to spell a word and say a number.)"
           },
           "format": "monologue",
           "itemsPerForm": 1,
@@ -220,11 +221,11 @@
           "id": "t2",
           "title": {
             "vi": "Teil 2 — Hỏi và trả lời theo chủ đề",
-            "en": "Teil 2 — Hỏi và trả lời theo chủ đề"
+            "en": "Teil 2 — Asking and answering on a topic"
           },
           "instruction": {
             "vi": "Trả lời câu hỏi của bạn thi và tự hỏi lại theo thẻ từ.",
-            "en": "Trả lời câu hỏi của bạn thi và tự hỏi lại theo thẻ từ."
+            "en": "Answer your exam partner's question, then ask one yourself using the word card."
           },
           "format": "conversation",
           "itemsPerForm": 1,
@@ -238,11 +239,11 @@
           "id": "t3",
           "title": {
             "vi": "Teil 3 — Nhờ và đáp lại",
-            "en": "Teil 3 — Nhờ và đáp lại"
+            "en": "Teil 3 — Making and answering requests"
           },
           "instruction": {
             "vi": "Lịch sự nhờ một việc theo thẻ tranh và đáp lại lời nhờ.",
-            "en": "Lịch sự nhờ một việc theo thẻ tranh và đáp lại lời nhờ."
+            "en": "Politely ask for something shown on the picture card, and respond to a request."
           },
           "format": "conversation",
           "itemsPerForm": 1,
@@ -261,7 +262,7 @@
         "id": "gesamt",
         "title": {
           "vi": "Tổng điểm — cả bốn phần",
-          "en": "Tổng điểm — cả bốn phần"
+          "en": "Total score — all four parts"
         },
         "sections": [
           "listening",
@@ -318,7 +319,7 @@
     ],
     "incomplete": {
       "vi": "Chưa đủ dữ liệu để ước tính: kỳ thi chỉ tính khi làm đủ cả bốn phần, và phần Nói cần micro cùng nhận dạng giọng nói trên thiết bị. Các phần khác vẫn được tính điểm.",
-      "en": "Chưa đủ dữ liệu để ước tính: kỳ thi chỉ tính khi làm đủ cả bốn phần, và phần Nói cần micro cùng nhận dạng giọng nói trên thiết bị. Các phần khác vẫn được tính điểm."
+      "en": "Not enough data for an estimate: the exam only counts when all four parts are taken, and Speaking needs a microphone and on-device speech recognition. The other parts are still scored."
     },
     "disclaimer": {
       "vi": "Mức sẵn sàng ước tính dựa trên bài thi thử của khoá học — không phải kỳ thi Goethe, không do Goethe-Institut cấp và không dự đoán kết quả thi thật. Phần Nói được mô phỏng một người với ứng dụng thay cho thi nhóm; phần Viết và Nói được chấm bằng tiêu chí tự động đơn giản, nên điểm của hai phần này chỉ là gần đúng.",

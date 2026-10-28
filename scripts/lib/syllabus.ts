@@ -85,6 +85,33 @@ export function loadSyllabus(lang: string): Syllabus | null {
   return existsSync(safeResolve(rel)) ? syllabusSchema(lang).parse(readJson(rel)) : null;
 }
 
+/**
+ * QC 2026-10-29 §1.2: lexemes beyond the A1 syllabus may be committed as the
+ * next band (`content/<lang>/lexicon/syllabus-a2-1.json`, level "A2-1"). It is
+ * not a daily-words stream; graded stories of band A2-1 may use its words.
+ */
+export function laterSyllabusPath(lang: string): string {
+  return `content/${lang}/lexicon/syllabus-a2-1.json`;
+}
+
+export function loadLaterSyllabus(lang: string): Syllabus | null {
+  const rel = laterSyllabusPath(lang);
+  return existsSync(safeResolve(rel)) ? syllabusSchema(lang).parse(readJson(rel)) : null;
+}
+
+/** The later list resolves, is disjoint from the level syllabus and has its own level. */
+export function validateLaterSyllabus(input: { later: Syllabus; syllabus: Syllabus; lexicon: RichLexicon; lang: string }): string[] {
+  const errors: string[] = [];
+  const ids = new Set(input.lexicon.lexemes.map((l) => l.id));
+  const a1 = new Set(input.syllabus.entries.map((e) => e.lexemeId));
+  if (input.later.level === input.syllabus.level) errors.push(`syllabus-a2-1 (${input.lang}): level must differ from the syllabus level ${input.syllabus.level}`);
+  for (const e of input.later.entries) {
+    if (!ids.has(e.lexemeId)) errors.push(`syllabus-a2-1 (${input.lang}): unknown lexeme ${e.lexemeId}`);
+    if (a1.has(e.lexemeId)) errors.push(`syllabus-a2-1 (${input.lang}): ${e.lexemeId} is already in the ${input.syllabus.level} syllabus`);
+  }
+  return errors;
+}
+
 function unitOrder(pack: PackSource): { id: string; surfaces: Set<string> }[] {
   return pack.sections.flatMap((s) => s.units.map((u) => ({ id: u.id, surfaces: new Set(u.words.map((w) => w.target)) })));
 }

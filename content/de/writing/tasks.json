@@ -8,13 +8,13 @@
       "mode": "guided",
       "instruction": {
         "vi": "Bạn là Lena. Hãy viết một câu tiếng Đức ngắn nói tên của bạn.",
-        "en": "Bạn là Lena. Hãy viết một câu tiếng Đức ngắn nói tên của bạn."
+        "en": "You are Lena. Write a short German sentence saying your name."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên của bạn",
-            "en": "Tên của bạn"
+            "en": "Your name"
           },
           "value": "Lena"
         }
@@ -25,7 +25,7 @@
             "id": "name",
             "description": {
               "vi": "tên của bạn",
-              "en": "tên của bạn"
+              "en": "your name"
             },
             "variants": [
               "ich heiße lena",
@@ -62,13 +62,13 @@
       "mode": "guided",
       "instruction": {
         "vi": "Bạn 25 tuổi. Hãy viết một câu tiếng Đức nói tuổi của bạn.",
-        "en": "Bạn 25 tuổi. Hãy viết một câu tiếng Đức nói tuổi của bạn."
+        "en": "You are 25. Write a German sentence saying how old you are."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tuổi",
-            "en": "Tuổi"
+            "en": "Age"
           },
           "value": "25"
         }
@@ -79,7 +79,7 @@
             "id": "age",
             "description": {
               "vi": "tuổi của bạn",
-              "en": "tuổi của bạn"
+              "en": "your age"
             },
             "variants": [
               "ich bin 25",
@@ -116,13 +116,13 @@
       "mode": "guided",
       "instruction": {
         "vi": "Bạn sống ở Hamburg. Hãy viết một câu tiếng Đức nói bạn sống ở đâu.",
-        "en": "Bạn sống ở Hamburg. Hãy viết một câu tiếng Đức nói bạn sống ở đâu."
+        "en": "You live in Hamburg. Write a German sentence saying where you live."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Hamburg"
         }
@@ -133,7 +133,7 @@
             "id": "city",
             "description": {
               "vi": "thành phố bạn sống",
-              "en": "thành phố bạn sống"
+              "en": "the city you live in"
             },
             "variants": [
               "ich wohne in hamburg",
@@ -169,27 +169,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố.",
-        "en": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố."
+        "en": "Write three short sentences about yourself: name, age and city."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Lena"
         },
         {
           "label": {
             "vi": "Tuổi",
-            "en": "Tuổi"
+            "en": "Age"
           },
           "value": "25"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Hamburg"
         }
@@ -200,7 +200,7 @@
             "id": "name",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "ich heiße lena",
@@ -213,7 +213,7 @@
             "id": "age",
             "description": {
               "vi": "tuổi",
-              "en": "tuổi"
+              "en": "age"
             },
             "variants": [
               "25",
@@ -225,7 +225,7 @@
             "id": "city",
             "description": {
               "vi": "thành phố",
-              "en": "thành phố"
+              "en": "city"
             },
             "variants": [
               "in hamburg"
@@ -263,7 +263,7 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết một câu tiếng Đức nói rằng bạn thích chơi bóng đá.",
-        "en": "Hãy viết một câu tiếng Đức nói rằng bạn thích chơi bóng đá."
+        "en": "Write a German sentence saying that you like playing football."
       },
       "rubric": {
         "requiredSlots": [
@@ -271,7 +271,7 @@
             "id": "like",
             "description": {
               "vi": "bạn thích chơi bóng đá",
-              "en": "bạn thích chơi bóng đá"
+              "en": "you like playing football"
             },
             "variants": [
               "ich spiele gern fußball",
@@ -306,7 +306,7 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết một câu nói rằng bạn thích uống cà phê và trà.",
-        "en": "Hãy viết một câu nói rằng bạn thích uống cà phê và trà."
+        "en": "Write a sentence saying that you like drinking coffee and tea."
       },
       "rubric": {
         "requiredSlots": [
@@ -314,7 +314,7 @@
             "id": "coffee",
             "description": {
               "vi": "cà phê",
-              "en": "cà phê"
+              "en": "coffee"
             },
             "variants": [
               "kaffee"
@@ -325,7 +325,7 @@
             "id": "tea",
             "description": {
               "vi": "trà",
-              "en": "trà"
+              "en": "tea"
             },
             "variants": [
               "tee"
@@ -360,20 +360,20 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết hai câu về Paul: tên anh ấy và nơi anh ấy sống.",
-        "en": "Hãy viết hai câu về Paul: tên anh ấy và nơi anh ấy sống."
+        "en": "Write two sentences about Paul: his name and where he lives."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Paul"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Köln"
         }
@@ -384,7 +384,7 @@
             "id": "name",
             "description": {
               "vi": "tên của Paul",
-              "en": "tên của Paul"
+              "en": "Paul's name"
             },
             "variants": [
               "er heißt paul",
@@ -397,7 +397,7 @@
             "id": "city",
             "description": {
               "vi": "nơi Paul sống",
-              "en": "nơi Paul sống"
+              "en": "where Paul lives"
             },
             "variants": [
               "er wohnt in köln",
@@ -434,7 +434,7 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết hai câu tả bức tranh: con mèo nhỏ, ngôi nhà to.",
-        "en": "Hãy viết hai câu tả bức tranh: con mèo nhỏ, ngôi nhà to."
+        "en": "Write two sentences describing the picture: the small cat, the big house."
       },
       "rubric": {
         "requiredSlots": [
@@ -442,7 +442,7 @@
             "id": "cat",
             "description": {
               "vi": "con mèo nhỏ",
-              "en": "con mèo nhỏ"
+              "en": "the small cat"
             },
             "variants": [
               "die katze ist klein"
@@ -453,7 +453,7 @@
             "id": "house",
             "description": {
               "vi": "ngôi nhà to",
-              "en": "ngôi nhà to"
+              "en": "the big house"
             },
             "variants": [
               "das haus ist groß",
@@ -490,27 +490,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết một lời nhắn ngắn cho Anna: chào cô ấy, và hẹn gặp ở quán cà phê lúc ba giờ.",
-        "en": "Hãy viết một lời nhắn ngắn cho Anna: chào cô ấy, và hẹn gặp ở quán cà phê lúc ba giờ."
+        "en": "Write a short note to Anna: greet her and arrange to meet at the café at three."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Anna"
         },
         {
           "label": {
             "vi": "Ở đâu",
-            "en": "Ở đâu"
+            "en": "Where"
           },
           "value": "quán cà phê"
         },
         {
           "label": {
             "vi": "Giờ",
-            "en": "Giờ"
+            "en": "Time"
           },
           "value": "3:00"
         }
@@ -521,7 +521,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -536,7 +536,7 @@
             "id": "addressee",
             "description": {
               "vi": "tên người nhận",
-              "en": "tên người nhận"
+              "en": "the recipient's name"
             },
             "variants": [
               "anna"
@@ -547,7 +547,7 @@
             "id": "place",
             "description": {
               "vi": "quán cà phê",
-              "en": "quán cà phê"
+              "en": "café"
             },
             "variants": [
               "café",
@@ -559,7 +559,7 @@
             "id": "time",
             "description": {
               "vi": "giờ hẹn",
-              "en": "giờ hẹn"
+              "en": "meeting time"
             },
             "variants": [
               "um drei",
@@ -591,20 +591,20 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho Tom: tàu của bạn đến lúc tám giờ.",
-        "en": "Hãy nhắn cho Tom: tàu của bạn đến lúc tám giờ."
+        "en": "Message Tom: your train arrives at eight."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Tom"
         },
         {
           "label": {
             "vi": "Giờ",
-            "en": "Giờ"
+            "en": "Time"
           },
           "value": "8:00"
         }
@@ -615,7 +615,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -630,7 +630,7 @@
             "id": "train",
             "description": {
               "vi": "chuyến tàu",
-              "en": "chuyến tàu"
+              "en": "the train"
             },
             "variants": [
               "zug"
@@ -641,7 +641,7 @@
             "id": "time",
             "description": {
               "vi": "giờ tàu đến",
-              "en": "giờ tàu đến"
+              "en": "arrival time"
             },
             "variants": [
               "um acht",
@@ -673,13 +673,13 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho Lisa: chào, báo bạn sẽ đến muộn, rồi chào kết.",
-        "en": "Hãy nhắn cho Lisa: chào, báo bạn sẽ đến muộn, rồi chào kết."
+        "en": "Message Lisa: say hello, tell her you will be late, then close."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Lisa"
         }
@@ -690,7 +690,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -705,7 +705,7 @@
             "id": "late",
             "description": {
               "vi": "bạn đến muộn",
-              "en": "bạn đến muộn"
+              "en": "you are late"
             },
             "variants": [
               "später",
@@ -717,7 +717,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "bis bald",
@@ -752,20 +752,20 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho Jonas: hẹn gặp vào thứ Bảy, rồi chào kết.",
-        "en": "Hãy nhắn cho Jonas: hẹn gặp vào thứ Bảy, rồi chào kết."
+        "en": "Message Jonas: arrange to meet on Saturday, then close."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Jonas"
         },
         {
           "label": {
             "vi": "Ngày",
-            "en": "Ngày"
+            "en": "Day"
           },
           "value": "thứ Bảy"
         }
@@ -776,7 +776,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -791,7 +791,7 @@
             "id": "day",
             "description": {
               "vi": "ngày hẹn",
-              "en": "ngày hẹn"
+              "en": "meeting day"
             },
             "variants": [
               "samstag"
@@ -802,7 +802,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "bis bald",
@@ -837,27 +837,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ.",
-        "en": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ."
+        "en": "Fill in the course registration form with the details on the card."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Minh"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Köln"
         },
         {
           "label": {
             "vi": "Điện thoại",
-            "en": "Điện thoại"
+            "en": "Phone"
           },
           "value": "0170 123456"
         }
@@ -885,7 +885,7 @@
             "id": "name",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "minh"
@@ -896,7 +896,7 @@
             "id": "city",
             "description": {
               "vi": "thành phố",
-              "en": "thành phố"
+              "en": "city"
             },
             "variants": [
               "köln",
@@ -908,7 +908,7 @@
             "id": "phone",
             "description": {
               "vi": "số điện thoại",
-              "en": "số điện thoại"
+              "en": "phone number"
             },
             "variants": [
               "0170 123456",
@@ -941,13 +941,13 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết thư ngắn cho một khách sạn: chào, hỏi một phòng cho thứ Bảy, rồi chào kết.",
-        "en": "Hãy viết thư ngắn cho một khách sạn: chào, hỏi một phòng cho thứ Bảy, rồi chào kết."
+        "en": "Write a short letter to a hotel: greet them, ask for a room for Saturday, then close."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Ngày",
-            "en": "Ngày"
+            "en": "Day"
           },
           "value": "thứ Bảy"
         }
@@ -958,7 +958,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "sehr geehrte damen und herren",
@@ -971,7 +971,7 @@
             "id": "room",
             "description": {
               "vi": "một phòng",
-              "en": "một phòng"
+              "en": "a room"
             },
             "variants": [
               "zimmer"
@@ -982,7 +982,7 @@
             "id": "day",
             "description": {
               "vi": "thứ Bảy",
-              "en": "thứ Bảy"
+              "en": "Saturday"
             },
             "variants": [
               "samstag"
@@ -993,7 +993,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "viele grüße",
@@ -1026,34 +1026,34 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết về bạn: tên, đến từ Việt Nam, sống ở Köln, làm việc ở một bệnh viện.",
-        "en": "Hãy viết về bạn: tên, đến từ Việt Nam, sống ở Köln, làm việc ở một bệnh viện."
+        "en": "Write about yourself: your name, from Vietnam, living in Köln, working at a hospital."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Minh"
         },
         {
           "label": {
             "vi": "Quê",
-            "en": "Quê"
+            "en": "Home country"
           },
           "value": "Việt Nam"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Köln"
         },
         {
           "label": {
             "vi": "Nơi làm việc",
-            "en": "Nơi làm việc"
+            "en": "Workplace"
           },
           "value": "bệnh viện"
         }
@@ -1064,7 +1064,7 @@
             "id": "name",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "ich heiße minh",
@@ -1077,7 +1077,7 @@
             "id": "from",
             "description": {
               "vi": "quê",
-              "en": "quê"
+              "en": "home country"
             },
             "variants": [
               "aus vietnam"
@@ -1088,7 +1088,7 @@
             "id": "city",
             "description": {
               "vi": "thành phố",
-              "en": "thành phố"
+              "en": "city"
             },
             "variants": [
               "in köln"
@@ -1099,7 +1099,7 @@
             "id": "work",
             "description": {
               "vi": "nơi làm việc",
-              "en": "nơi làm việc"
+              "en": "workplace"
             },
             "variants": [
               "krankenhaus"
@@ -1139,27 +1139,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy điền phiếu khách sạn với các thông tin trên thẻ.",
-        "en": "Hãy điền phiếu khách sạn với các thông tin trên thẻ."
+        "en": "Fill in the hotel form with the details on the card."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Họ",
-            "en": "Họ"
+            "en": "Surname"
           },
           "value": "Tran"
         },
         {
           "label": {
             "vi": "Đường",
-            "en": "Đường"
+            "en": "Street"
           },
           "value": "Bahnhofstraße 5"
         },
         {
           "label": {
             "vi": "Điện thoại",
-            "en": "Điện thoại"
+            "en": "Phone"
           },
           "value": "0151 987654"
         }
@@ -1187,7 +1187,7 @@
             "id": "name",
             "description": {
               "vi": "họ tên",
-              "en": "họ tên"
+              "en": "full name"
             },
             "variants": [
               "tran"
@@ -1198,7 +1198,7 @@
             "id": "street",
             "description": {
               "vi": "đường",
-              "en": "đường"
+              "en": "street"
             },
             "variants": [
               "bahnhofstraße 5",
@@ -1210,7 +1210,7 @@
             "id": "phone",
             "description": {
               "vi": "số điện thoại",
-              "en": "số điện thoại"
+              "en": "phone number"
             },
             "variants": [
               "0151 987654",
@@ -1243,27 +1243,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Bạn là Lan. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh.",
-        "en": "Bạn là Lan. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh."
+        "en": "You are Lan. Introduce yourself in writing — name, age and city, in full sentences."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Lan"
         },
         {
           "label": {
             "vi": "Tuổi",
-            "en": "Tuổi"
+            "en": "Age"
           },
           "value": "28"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Leipzig"
         }
@@ -1274,7 +1274,7 @@
             "id": "name",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "ich heiße lan",
@@ -1287,7 +1287,7 @@
             "id": "age",
             "description": {
               "vi": "tuổi",
-              "en": "tuổi"
+              "en": "age"
             },
             "variants": [
               "28",
@@ -1299,7 +1299,7 @@
             "id": "city",
             "description": {
               "vi": "thành phố",
-              "en": "thành phố"
+              "en": "city"
             },
             "variants": [
               "in leipzig"
@@ -1337,27 +1337,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Bạn là Tuấn. Hãy viết về bạn: tên, quê và nơi bạn sống.",
-        "en": "Bạn là Tuấn. Hãy viết về bạn: tên, quê và nơi bạn sống."
+        "en": "You are Tuấn. Write about yourself: your name, where you are from and where you live."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Tuấn"
         },
         {
           "label": {
             "vi": "Quê",
-            "en": "Quê"
+            "en": "Home country"
           },
           "value": "Việt Nam"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Dresden"
         }
@@ -1368,7 +1368,7 @@
             "id": "name",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "ich heiße tuấn",
@@ -1381,7 +1381,7 @@
             "id": "from",
             "description": {
               "vi": "quê",
-              "en": "quê"
+              "en": "home country"
             },
             "variants": [
               "aus vietnam"
@@ -1392,7 +1392,7 @@
             "id": "city",
             "description": {
               "vi": "thành phố",
-              "en": "thành phố"
+              "en": "city"
             },
             "variants": [
               "in dresden"
@@ -1430,20 +1430,20 @@
       "mode": "guided",
       "instruction": {
         "vi": "Bạn là Mai. Hãy viết tên của bạn và những tiếng bạn nói.",
-        "en": "Bạn là Mai. Hãy viết tên của bạn và những tiếng bạn nói."
+        "en": "You are Mai. Write your name and the languages you speak."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Mai"
         },
         {
           "label": {
             "vi": "Ngôn ngữ",
-            "en": "Ngôn ngữ"
+            "en": "Languages"
           },
           "value": "tiếng Việt, tiếng Đức"
         }
@@ -1454,7 +1454,7 @@
             "id": "name",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "ich heiße mai",
@@ -1467,7 +1467,7 @@
             "id": "vi",
             "description": {
               "vi": "tiếng Việt",
-              "en": "tiếng Việt"
+              "en": "Vietnamese"
             },
             "variants": [
               "vietnamesisch"
@@ -1478,7 +1478,7 @@
             "id": "de",
             "description": {
               "vi": "tiếng Đức",
-              "en": "tiếng Đức"
+              "en": "German"
             },
             "variants": [
               "deutsch"
@@ -1513,7 +1513,7 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết một câu nói rằng bạn thích nghe nhạc.",
-        "en": "Hãy viết một câu nói rằng bạn thích nghe nhạc."
+        "en": "Write a sentence saying that you like listening to music."
       },
       "rubric": {
         "requiredSlots": [
@@ -1521,7 +1521,7 @@
             "id": "music",
             "description": {
               "vi": "nghe nhạc",
-              "en": "nghe nhạc"
+              "en": "listening to music"
             },
             "variants": [
               "musik"
@@ -1532,7 +1532,7 @@
             "id": "like",
             "description": {
               "vi": "bạn thích",
-              "en": "bạn thích"
+              "en": "you like"
             },
             "variants": [
               "gern",
@@ -1571,20 +1571,20 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết hai câu về chị gái bạn: tên chị ấy là Hoa và chị ấy làm việc ở Berlin.",
-        "en": "Hãy viết hai câu về chị gái bạn: tên chị ấy là Hoa và chị ấy làm việc ở Berlin."
+        "en": "Write two sentences about your sister: her name is Hoa and she works in Berlin."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Hoa"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Berlin"
         }
@@ -1595,7 +1595,7 @@
             "id": "name",
             "description": {
               "vi": "tên chị gái",
-              "en": "tên chị gái"
+              "en": "your sister's name"
             },
             "variants": [
               "sie heißt hoa",
@@ -1608,7 +1608,7 @@
             "id": "work",
             "description": {
               "vi": "nơi làm việc",
-              "en": "nơi làm việc"
+              "en": "workplace"
             },
             "variants": [
               "arbeitet in berlin"
@@ -1644,7 +1644,7 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết hai câu tả căn phòng: cái giường to, cái bàn nhỏ.",
-        "en": "Hãy viết hai câu tả căn phòng: cái giường to, cái bàn nhỏ."
+        "en": "Write two sentences describing the room: the big bed, the small table."
       },
       "rubric": {
         "requiredSlots": [
@@ -1652,7 +1652,7 @@
             "id": "bed",
             "description": {
               "vi": "cái giường to",
-              "en": "cái giường to"
+              "en": "the big bed"
             },
             "variants": [
               "das bett ist groß",
@@ -1664,7 +1664,7 @@
             "id": "table",
             "description": {
               "vi": "cái bàn nhỏ",
-              "en": "cái bàn nhỏ"
+              "en": "the small table"
             },
             "variants": [
               "der tisch ist klein"
@@ -1700,27 +1700,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết lời nhắn cho Tom: chào anh ấy, rồi hẹn đi xem phim lúc tám giờ.",
-        "en": "Hãy viết lời nhắn cho Tom: chào anh ấy, rồi hẹn đi xem phim lúc tám giờ."
+        "en": "Write a note to Tom: greet him, then suggest the cinema at eight."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Tom"
         },
         {
           "label": {
             "vi": "Việc gì",
-            "en": "Việc gì"
+            "en": "What"
           },
           "value": "xem phim"
         },
         {
           "label": {
             "vi": "Giờ",
-            "en": "Giờ"
+            "en": "Time"
           },
           "value": "8:00"
         }
@@ -1731,7 +1731,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -1747,7 +1747,7 @@
             "id": "addressee",
             "description": {
               "vi": "tên người nhận",
-              "en": "tên người nhận"
+              "en": "the recipient's name"
             },
             "variants": [
               "tom"
@@ -1770,7 +1770,7 @@
             "id": "time",
             "description": {
               "vi": "giờ hẹn",
-              "en": "giờ hẹn"
+              "en": "meeting time"
             },
             "variants": [
               "um acht",
@@ -1803,20 +1803,20 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho bà: chào bà, nói rằng bạn đến vào Chủ nhật, rồi chào kết.",
-        "en": "Hãy nhắn cho bà: chào bà, nói rằng bạn đến vào Chủ nhật, rồi chào kết."
+        "en": "Message your grandmother: greet her, say you are coming on Sunday, then close."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "bà (Oma)"
         },
         {
           "label": {
             "vi": "Ngày",
-            "en": "Ngày"
+            "en": "Day"
           },
           "value": "Chủ nhật"
         }
@@ -1827,7 +1827,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -1843,7 +1843,7 @@
             "id": "day",
             "description": {
               "vi": "ngày bạn đến",
-              "en": "ngày bạn đến"
+              "en": "the day you come"
             },
             "variants": [
               "sonntag"
@@ -1854,7 +1854,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "bis bald",
@@ -1890,13 +1890,13 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho đồng nghiệp Lisa: chào, nói rằng hôm nay bạn bị ốm, rồi chào kết.",
-        "en": "Hãy nhắn cho đồng nghiệp Lisa: chào, nói rằng hôm nay bạn bị ốm, rồi chào kết."
+        "en": "Message your colleague Lisa: say hello, say you are ill today, then close."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Lisa"
         }
@@ -1907,7 +1907,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -1923,7 +1923,7 @@
             "id": "sick",
             "description": {
               "vi": "bạn bị ốm",
-              "en": "bạn bị ốm"
+              "en": "you are ill"
             },
             "variants": [
               "krank"
@@ -1934,7 +1934,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "bis bald",
@@ -1967,27 +1967,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy điền phiếu ở phòng khám với các thông tin trên thẻ.",
-        "en": "Hãy điền phiếu ở phòng khám với các thông tin trên thẻ."
+        "en": "Fill in the doctor's surgery form with the details on the card."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Họ tên",
-            "en": "Họ tên"
+            "en": "Full name"
           },
           "value": "Tuấn Pham"
         },
         {
           "label": {
             "vi": "Thành phố",
-            "en": "Thành phố"
+            "en": "City"
           },
           "value": "Dresden"
         },
         {
           "label": {
             "vi": "Điện thoại",
-            "en": "Điện thoại"
+            "en": "Phone"
           },
           "value": "0160 445566"
         }
@@ -2015,7 +2015,7 @@
             "id": "name",
             "description": {
               "vi": "họ tên",
-              "en": "họ tên"
+              "en": "full name"
             },
             "variants": [
               "tuấn pham",
@@ -2027,7 +2027,7 @@
             "id": "city",
             "description": {
               "vi": "thành phố",
-              "en": "thành phố"
+              "en": "city"
             },
             "variants": [
               "dresden"
@@ -2038,7 +2038,7 @@
             "id": "phone",
             "description": {
               "vi": "số điện thoại",
-              "en": "số điện thoại"
+              "en": "phone number"
             },
             "variants": [
               "0160 445566",
@@ -2070,27 +2070,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy điền phiếu khách sạn với các thông tin trên thẻ.",
-        "en": "Hãy điền phiếu khách sạn với các thông tin trên thẻ."
+        "en": "Fill in the hotel form with the details on the card."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Họ tên",
-            "en": "Họ tên"
+            "en": "Full name"
           },
           "value": "Mai Le"
         },
         {
           "label": {
             "vi": "Nước",
-            "en": "Nước"
+            "en": "Country"
           },
           "value": "Việt Nam"
         },
         {
           "label": {
             "vi": "Số đêm",
-            "en": "Số đêm"
+            "en": "Nights"
           },
           "value": "2"
         }
@@ -2118,7 +2118,7 @@
             "id": "name",
             "description": {
               "vi": "họ tên",
-              "en": "họ tên"
+              "en": "full name"
             },
             "variants": [
               "mai le",
@@ -2130,7 +2130,7 @@
             "id": "country",
             "description": {
               "vi": "nước",
-              "en": "nước"
+              "en": "country"
             },
             "variants": [
               "vietnam"
@@ -2141,7 +2141,7 @@
             "id": "nights",
             "description": {
               "vi": "số đêm",
-              "en": "số đêm"
+              "en": "number of nights"
             },
             "variants": [
               "2",
@@ -2172,27 +2172,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy viết lời nhắn ngắn cho Paul: chào anh ấy, và nói rằng tàu chạy lúc chín giờ.",
-        "en": "Hãy viết lời nhắn ngắn cho Paul: chào anh ấy, và nói rằng tàu chạy lúc chín giờ."
+        "en": "Write a short note to Paul: greet him and say the train leaves at nine."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Paul"
         },
         {
           "label": {
             "vi": "Việc gì",
-            "en": "Việc gì"
+            "en": "What"
           },
           "value": "tàu hoả"
         },
         {
           "label": {
             "vi": "Giờ",
-            "en": "Giờ"
+            "en": "Time"
           },
           "value": "9:00"
         }
@@ -2203,7 +2203,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -2219,7 +2219,7 @@
             "id": "addressee",
             "description": {
               "vi": "tên người nhận",
-              "en": "tên người nhận"
+              "en": "the recipient's name"
             },
             "variants": [
               "paul"
@@ -2230,7 +2230,7 @@
             "id": "what",
             "description": {
               "vi": "tàu hoả",
-              "en": "tàu hoả"
+              "en": "the train"
             },
             "variants": [
               "zug"
@@ -2241,7 +2241,7 @@
             "id": "time",
             "description": {
               "vi": "giờ",
-              "en": "giờ"
+              "en": "time"
             },
             "variants": [
               "um neun",
@@ -2272,27 +2272,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho Anna: chào, nói bạn đang ở cửa hàng và về nhà lúc năm giờ.",
-        "en": "Hãy nhắn cho Anna: chào, nói bạn đang ở cửa hàng và về nhà lúc năm giờ."
+        "en": "Message Anna: say hello, say you are at the shop and will be home at five."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Anna"
         },
         {
           "label": {
             "vi": "Ở đâu",
-            "en": "Ở đâu"
+            "en": "Where"
           },
           "value": "cửa hàng"
         },
         {
           "label": {
             "vi": "Giờ",
-            "en": "Giờ"
+            "en": "Time"
           },
           "value": "5:00"
         }
@@ -2303,7 +2303,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -2319,7 +2319,7 @@
             "id": "place",
             "description": {
               "vi": "cửa hàng",
-              "en": "cửa hàng"
+              "en": "shop"
             },
             "variants": [
               "geschäft",
@@ -2332,7 +2332,7 @@
             "id": "time",
             "description": {
               "vi": "giờ về",
-              "en": "giờ về"
+              "en": "time you get home"
             },
             "variants": [
               "um fünf",
@@ -2364,27 +2364,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho Ben: hẹn gặp ở quán cà phê vào thứ Sáu, rồi chào kết.",
-        "en": "Hãy nhắn cho Ben: hẹn gặp ở quán cà phê vào thứ Sáu, rồi chào kết."
+        "en": "Message Ben: arrange to meet at the café on Friday, then close."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Ben"
         },
         {
           "label": {
             "vi": "Ở đâu",
-            "en": "Ở đâu"
+            "en": "Where"
           },
           "value": "quán cà phê"
         },
         {
           "label": {
             "vi": "Ngày",
-            "en": "Ngày"
+            "en": "Day"
           },
           "value": "thứ Sáu"
         }
@@ -2395,7 +2395,7 @@
             "id": "place",
             "description": {
               "vi": "quán cà phê",
-              "en": "quán cà phê"
+              "en": "café"
             },
             "variants": [
               "café",
@@ -2407,7 +2407,7 @@
             "id": "day",
             "description": {
               "vi": "ngày hẹn",
-              "en": "ngày hẹn"
+              "en": "meeting day"
             },
             "variants": [
               "freitag"
@@ -2418,7 +2418,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "bis bald",
@@ -2454,20 +2454,20 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy nhắn cho thầy giáo: chào, nói rằng hôm nay bạn đến muộn mười phút.",
-        "en": "Hãy nhắn cho thầy giáo: chào, nói rằng hôm nay bạn đến muộn mười phút."
+        "en": "Message your teacher: say hello and that you will be ten minutes late today."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "thầy Becker"
         },
         {
           "label": {
             "vi": "Muộn",
-            "en": "Muộn"
+            "en": "Late by"
           },
           "value": "10 phút"
         }
@@ -2478,7 +2478,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "guten tag",
@@ -2493,7 +2493,7 @@
             "id": "late",
             "description": {
               "vi": "đến muộn",
-              "en": "đến muộn"
+              "en": "being late"
             },
             "variants": [
               "später",
@@ -2505,7 +2505,7 @@
             "id": "minutes",
             "description": {
               "vi": "mười phút",
-              "en": "mười phút"
+              "en": "ten minutes"
             },
             "variants": [
               "zehn minuten",
@@ -2537,27 +2537,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ.",
-        "en": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ."
+        "en": "Fill in the course registration form with the details on the card."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Lan"
         },
         {
           "label": {
             "vi": "Họ",
-            "en": "Họ"
+            "en": "Surname"
           },
           "value": "Nguyen"
         },
         {
           "label": {
             "vi": "Tuổi",
-            "en": "Tuổi"
+            "en": "Age"
           },
           "value": "28"
         }
@@ -2585,7 +2585,7 @@
             "id": "first",
             "description": {
               "vi": "tên của bạn",
-              "en": "tên của bạn"
+              "en": "your name"
             },
             "variants": [
               "lan"
@@ -2596,7 +2596,7 @@
             "id": "last",
             "description": {
               "vi": "họ của bạn",
-              "en": "họ của bạn"
+              "en": "your surname"
             },
             "variants": [
               "nguyễn"
@@ -2607,7 +2607,7 @@
             "id": "age",
             "description": {
               "vi": "tuổi",
-              "en": "tuổi"
+              "en": "age"
             },
             "variants": [
               "28",
@@ -2638,41 +2638,41 @@
       "mode": "guided",
       "instruction": {
         "vi": "Teil 1 — Bạn của bạn là Mai Tran muốn đăng ký một khoá học bơi. Cô ấy đến từ Việt Nam, sống ở Leipzig, Goethestraße 7, và muốn học vào thứ Bảy. Hãy điền phiếu cho cô ấy (năm chỗ trống).",
-        "en": "Teil 1 — Bạn của bạn là Mai Tran muốn đăng ký một khoá học bơi. Cô ấy đến từ Việt Nam, sống ở Leipzig, Goethestraße 7, và muốn học vào thứ Bảy. Hãy điền phiếu cho cô ấy (năm chỗ trống)."
+        "en": "Teil 1 — Your friend Mai Tran wants to sign up for a swimming course. She is from Vietnam, lives in Leipzig, Goethestraße 7, and wants lessons on Saturdays. Fill in the form for her (five gaps)."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Mai"
         },
         {
           "label": {
             "vi": "Họ",
-            "en": "Họ"
+            "en": "Surname"
           },
           "value": "Tran"
         },
         {
           "label": {
             "vi": "Đến từ",
-            "en": "Đến từ"
+            "en": "From"
           },
           "value": "Vietnam"
         },
         {
           "label": {
             "vi": "Địa chỉ",
-            "en": "Địa chỉ"
+            "en": "Address"
           },
           "value": "Goethestraße 7, Leipzig"
         },
         {
           "label": {
             "vi": "Ngày học",
-            "en": "Ngày học"
+            "en": "Course day"
           },
           "value": "Samstag"
         }
@@ -2710,7 +2710,7 @@
             "id": "first",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "mai"
@@ -2721,7 +2721,7 @@
             "id": "last",
             "description": {
               "vi": "họ của cô ấy",
-              "en": "họ của cô ấy"
+              "en": "her surname"
             },
             "variants": [
               "tran"
@@ -2732,7 +2732,7 @@
             "id": "country",
             "description": {
               "vi": "quê của cô ấy",
-              "en": "quê của cô ấy"
+              "en": "her home country"
             },
             "variants": [
               "vietnam"
@@ -2743,7 +2743,7 @@
             "id": "street",
             "description": {
               "vi": "địa chỉ",
-              "en": "địa chỉ"
+              "en": "address"
             },
             "variants": [
               "goethestraße 7",
@@ -2755,7 +2755,7 @@
             "id": "day",
             "description": {
               "vi": "ngày học",
-              "en": "ngày học"
+              "en": "course day"
             },
             "variants": [
               "samstag"
@@ -2783,41 +2783,41 @@
       "mode": "guided",
       "instruction": {
         "vi": "Teil 1 — Bạn của bạn là Tuấn Le muốn thuê một chiếc xe đạp trong ba ngày. Anh ấy 24 tuổi, ở khách sạn Hotel Sonne và có số điện thoại 0151 223344. Hãy điền phiếu cho anh ấy (năm chỗ trống).",
-        "en": "Teil 1 — Bạn của bạn là Tuấn Le muốn thuê một chiếc xe đạp trong ba ngày. Anh ấy 24 tuổi, ở khách sạn Hotel Sonne và có số điện thoại 0151 223344. Hãy điền phiếu cho anh ấy (năm chỗ trống)."
+        "en": "Teil 1 — Your friend Tuấn Le wants to hire a bicycle for three days. He is 24, is staying at the Hotel Sonne and his phone number is 0151 223344. Fill in the form for him (five gaps)."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Tên",
-            "en": "Tên"
+            "en": "Name"
           },
           "value": "Tuấn"
         },
         {
           "label": {
             "vi": "Họ",
-            "en": "Họ"
+            "en": "Surname"
           },
           "value": "Le"
         },
         {
           "label": {
             "vi": "Tuổi",
-            "en": "Tuổi"
+            "en": "Age"
           },
           "value": "24"
         },
         {
           "label": {
             "vi": "Khách sạn",
-            "en": "Khách sạn"
+            "en": "Hotel"
           },
           "value": "Hotel Sonne"
         },
         {
           "label": {
             "vi": "Điện thoại",
-            "en": "Điện thoại"
+            "en": "Phone"
           },
           "value": "0151 223344"
         }
@@ -2855,7 +2855,7 @@
             "id": "first",
             "description": {
               "vi": "tên",
-              "en": "tên"
+              "en": "name"
             },
             "variants": [
               "tuấn"
@@ -2866,7 +2866,7 @@
             "id": "last",
             "description": {
               "vi": "họ của anh ấy",
-              "en": "họ của anh ấy"
+              "en": "his surname"
             },
             "variants": [
               "le"
@@ -2877,7 +2877,7 @@
             "id": "age",
             "description": {
               "vi": "tuổi",
-              "en": "tuổi"
+              "en": "age"
             },
             "variants": [
               "24",
@@ -2889,7 +2889,7 @@
             "id": "hotel",
             "description": {
               "vi": "khách sạn",
-              "en": "khách sạn"
+              "en": "hotel"
             },
             "variants": [
               "hotel sonne",
@@ -2901,7 +2901,7 @@
             "id": "phone",
             "description": {
               "vi": "số điện thoại",
-              "en": "số điện thoại"
+              "en": "phone number"
             },
             "variants": [
               "0151 223344",
@@ -2932,27 +2932,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Teil 2 — Bạn có sinh nhật vào thứ Bảy. Hãy viết cho bạn của bạn là Paul (khoảng 30 từ): mời anh ấy đến dự tiệc, nói giờ bắt đầu, và nhờ anh ấy mang đồ uống. Có lời chào và lời chào kết.",
-        "en": "Teil 2 — Bạn có sinh nhật vào thứ Bảy. Hãy viết cho bạn của bạn là Paul (khoảng 30 từ): mời anh ấy đến dự tiệc, nói giờ bắt đầu, và nhờ anh ấy mang đồ uống. Có lời chào và lời chào kết."
+        "en": "Teil 2 — It is your birthday on Saturday. Write to your friend Paul (about 30 words): invite him to the party, say when it starts, and ask him to bring drinks. Include a greeting and a closing."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Paul"
         },
         {
           "label": {
             "vi": "Khi nào",
-            "en": "Khi nào"
+            "en": "When"
           },
           "value": "Samstag, 19 Uhr"
         },
         {
           "label": {
             "vi": "Nhờ mang",
-            "en": "Nhờ mang"
+            "en": "Please bring"
           },
           "value": "Getränke"
         }
@@ -2963,7 +2963,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "hallo",
@@ -2979,7 +2979,7 @@
             "id": "invite",
             "description": {
               "vi": "lời mời dự tiệc",
-              "en": "lời mời dự tiệc"
+              "en": "party invitation"
             },
             "variants": [
               "kommst du",
@@ -2993,7 +2993,7 @@
             "id": "time",
             "description": {
               "vi": "giờ bắt đầu",
-              "en": "giờ bắt đầu"
+              "en": "start time"
             },
             "variants": [
               "um 19 uhr",
@@ -3007,7 +3007,7 @@
             "id": "bring",
             "description": {
               "vi": "nhờ mang đồ uống",
-              "en": "nhờ mang đồ uống"
+              "en": "asking him to bring drinks"
             },
             "variants": [
               "getränke",
@@ -3022,7 +3022,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "viele grüße",
@@ -3058,27 +3058,27 @@
       "mode": "guided",
       "instruction": {
         "vi": "Teil 2 — Bạn không thể đến lớp tiếng Đức ngày mai. Hãy viết cho cô giáo, bà Wolf (khoảng 30 từ): nói rằng bạn không đến được, giải thích lý do, và hỏi về bài tập về nhà. Có lời chào và lời chào kết.",
-        "en": "Teil 2 — Bạn không thể đến lớp tiếng Đức ngày mai. Hãy viết cho cô giáo, bà Wolf (khoảng 30 từ): nói rằng bạn không đến được, giải thích lý do, và hỏi về bài tập về nhà. Có lời chào và lời chào kết."
+        "en": "Teil 2 — You cannot come to your German class tomorrow. Write to your teacher, Frau Wolf (about 30 words): say you cannot come, explain why, and ask about the homework. Include a greeting and a closing."
       },
       "cueFacts": [
         {
           "label": {
             "vi": "Gửi",
-            "en": "Gửi"
+            "en": "To"
           },
           "value": "Frau Wolf"
         },
         {
           "label": {
             "vi": "Lý do",
-            "en": "Lý do"
+            "en": "Reason"
           },
           "value": "krank"
         },
         {
           "label": {
             "vi": "Hỏi",
-            "en": "Hỏi"
+            "en": "Ask about"
           },
           "value": "Hausaufgaben"
         }
@@ -3089,7 +3089,7 @@
             "id": "greeting",
             "description": {
               "vi": "lời chào",
-              "en": "lời chào"
+              "en": "greeting"
             },
             "variants": [
               "liebe frau wolf",
@@ -3103,7 +3103,7 @@
             "id": "absent",
             "description": {
               "vi": "bạn không đến được",
-              "en": "bạn không đến được"
+              "en": "you cannot come"
             },
             "variants": [
               "nicht zum kurs kommen",
@@ -3117,7 +3117,7 @@
             "id": "reason",
             "description": {
               "vi": "lý do",
-              "en": "lý do"
+              "en": "reason"
             },
             "variants": [
               "krank"
@@ -3128,7 +3128,7 @@
             "id": "homework",
             "description": {
               "vi": "bài tập về nhà",
-              "en": "bài tập về nhà"
+              "en": "homework"
             },
             "variants": [
               "hausaufgaben",
@@ -3140,7 +3140,7 @@
             "id": "closing",
             "description": {
               "vi": "lời chào kết",
-              "en": "lời chào kết"
+              "en": "closing"
             },
             "variants": [
               "viele grüße",

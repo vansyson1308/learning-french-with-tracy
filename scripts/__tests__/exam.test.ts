@@ -167,7 +167,14 @@ describe("exam track rules — every rule fires", () => {
     const refs: ExamRefs = { ...REFS, clips: new Map(REFS.clips) };
     const id = ex(itemOf(REAL, "a", "listening", "t1")).clipId!;
     refs.clips.set(id, { ...refs.clips.get(id)!, maxPlays: 1 });
-    expect(errorsOf(clone(), refs)).toContain("plays 1× — the section plays each recording 2×");
+    expect(errorsOf(clone(), refs)).toContain("plays at most 1× — the part plays each recording 2×");
+    // A part may play a recording LESS often than the clip allows (Goethe Hören Teil 2: once).
+    const once = clone();
+    once.sections.find((s) => s.id === "listening")!.tasks.find((t) => t.id === "t1")!.playsPerRecording = 1;
+    expect(errorsOf(once, refs)).not.toContain("plays at most");
+    const misplaced = clone();
+    misplaced.sections.find((s) => s.id === "reading")!.tasks[0].playsPerRecording = 1;
+    expect(errorsOf(misplaced)).toContain("playsPerRecording only applies to listening parts");
     refs.clips.set(id, { ...refs.clips.get(id)!, maxPlays: 2, use: undefined });
     expect(errorsOf(clone(), refs)).toContain('is not an exam stimulus (use: "exam")');
   });

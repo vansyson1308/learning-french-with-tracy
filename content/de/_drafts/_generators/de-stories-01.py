@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("ein_fall_fuer_frau_weber", "A1-2", "Ein Fall für Frau Weber",
+S.append(story("ein_fall_fuer_frau_weber", "A2-1", "Ein Fall für Frau Weber",
  ("Một bức tranh biến mất khỏi bảo tàng. Bà Weber của sở cảnh sát đi tìm tên trộm.", "A painting disappears from the museum. Ms Weber of the police looks for the thief."),
  ["Dieb", "Täter", "Aussage"],
  [("N", "In der Stadt gibt es einen neuen Fall.", "Trong thành phố có một vụ án mới.", "There is a new case in the town."),
@@ -37,7 +37,7 @@ S.append(story("ein_fall_fuer_frau_weber", "A1-2", "Ein Fall für Frau Weber",
   ("infer", "Tên trộm vào bảo tàng bằng cách nào?", "How did the thief get into the museum?", [("Qua cửa chính, lúc buổi sáng", "Through the main door, in the morning"), ("Bằng xe hơi", "By car"), ("Leo cây rồi vào qua cửa sổ", "He climbed the tree and came in through the window")], 2)],
  names=["Weber"]))
 
-S.append(story("die_hochzeit_von_tante_lisa", "A1-2", "Die Hochzeit von Tante Lisa",
+S.append(story("die_hochzeit_von_tante_lisa", "A2-1", "Die Hochzeit von Tante Lisa",
  ("Cả gia đình đi dự đám cưới của dì Lisa. Mia mặc một chiếc váy mới.", "The whole family goes to Aunt Lisa's wedding. Mia wears a new dress."),
  ["Braut", "Ring", "Sommer"],
  [("N", "Heute ist ein wichtiger Tag für die Familie.", "Hôm nay là một ngày quan trọng của gia đình.", "Today is an important day for the family."),
@@ -68,7 +68,7 @@ S.append(story("die_hochzeit_von_tante_lisa", "A1-2", "Die Hochzeit von Tante Li
   ("infer", "Vì sao mẹ của Mia khóc?", "Why does Mia's mother cry?", [("Bà ấy bị ốm", "She is ill"), ("Bà ấy không thích Jan", "She does not like Jan"), ("Bà ấy rất vui vì đám cưới", "She is very happy about the wedding")], 2)],
  names=["Lisa", "Jan", "Mia"], token_map={"mias": "name"}))
 
-S.append(story("ben_beim_arzt", "A1-2", "Ben beim Arzt",
+S.append(story("ben_beim_arzt", "A2-1", "Ben beim Arzt",
  ("Ben ngã xe đạp. Chân cậu bé rất đau. Bố đưa cậu đến bác sĩ.", "Ben falls off his bike. His leg hurts a lot. His father takes him to the doctor."),
  ["Knie", "Medizin", "Pille"],
  [("N", "Ben fährt mit dem Fahrrad zur Schule.", "Ben đạp xe đến trường.", "Ben rides his bike to school."),
@@ -98,7 +98,7 @@ S.append(story("ben_beim_arzt", "A1-2", "Ben beim Arzt",
   ("infer", "Vì sao Ben ngã?", "Why did Ben fall?", [("Đường bị ướt", "The street was wet"), ("Một người đàn ông đẩy cậu", "A man pushed him"), ("Cậu đạp xe quá nhanh", "He was riding too fast")], 2)],
  names=["Ben", "Lang"], token_map={"weh": "tun", "ärztin": "Arzt", "besser": "gut"}))
 
-S.append(story("wo_ist_mein_handy", "A1-2", "Wo ist mein Handy?",
+S.append(story("wo_ist_mein_handy", "A2-1", "Wo ist mein Handy?",
  ("Lena làm mất điện thoại. Cô tìm khắp nơi — và cuối cùng tìm thấy ở một chỗ thật lạ.", "Lena has lost her phone. She looks everywhere — and finally finds it in a very strange place."),
  ["gestern", "Jacke", "Ecke"],
  [("N", "Es ist Montag, und Lena muss schnell zur Arbeit.", "Hôm nay là thứ Hai, và Lena phải nhanh chóng đi làm.", "It is Monday, and Lena has to get to work quickly."),
@@ -129,7 +129,7 @@ S.append(story("wo_ist_mein_handy", "A1-2", "Wo ist mein Handy?",
   ("infer", "Vì sao điện thoại ở trong tủ lạnh?", "Why is the phone in the fridge?", [("Paul để nó ở đó", "Paul put it there"), ("Lena cất nó cùng hộp sữa mà không để ý", "Lena put it away with the milk without noticing"), ("Điện thoại quá nóng", "The phone was too hot")], 1)],
  names=["Lena", "Paul"], token_map=None))
 
-S.append(story("ein_abend_im_kino", "A1-2", "Ein Abend im Kino",
+S.append(story("ein_abend_im_kino", "A2-1", "Ein Abend im Kino",
  ("Tom và Sara đi xem một bộ phim về một điệp viên. Nhưng điều gây bất ngờ nhất lại xảy ra sau khi phim kết thúc.", "Tom and Sara watch a film about a spy. But the biggest surprise comes after the film."),
  ["Kino", "Spion", "Ton", "Strand"],
  [("N", "Am Freitag gehen Tom und Sara ins Kino.", "Thứ Sáu Tom và Sara đi xem phim.", "On Friday Tom and Sara go to the cinema."),
@@ -160,7 +160,7 @@ S.append(story("ein_abend_im_kino", "A1-2", "Ein Abend im Kino",
   ("infer", "Vì sao Tom nhìn Sara lâu như vậy trong nhà hàng?", "Why does Tom look at Sara for so long in the restaurant?", [("Anh không thích bộ phim", "He didn't like the film"), ("Anh làm mất ví", "He lost his wallet"), ("Anh sắp cầu hôn Sara", "He is about to propose to Sara")], 2)],
  names=["Tom", "Sara", "Max"], token_map={"toms": "name", "beste": "gut"}))
 
-S.append(story("ein_tag_am_see", "A1-2", "Ein Tag am See",
+S.append(story("ein_tag_am_see", "A2-1", "Ein Tag am See",
  ("Gia đình Becker đi chơi ở hồ. Con chó Bello phát hiện ra một điều bất ngờ trong rừng.", "The Becker family spends a day at the lake. Their dog Bello finds a surprise in the forest."),
  ["See", "Wind", "Strand", "blau"],
  [("N", "Am Samstag scheint die Sonne.", "Thứ Bảy trời nắng.", "On Saturday the sun is shining."),

@@ -11,6 +11,7 @@
  * derived at read time from `itemResults` + the compiled track.
  */
 
+import { messagePointsSpecFor, type MessagePointsSpec } from "../writing/message-points";
 import { administrationSeed, shuffleScoredOptions } from "../assessment/option-order";
 import type { AssessmentItemResult, CheckpointAttempt } from "../assessment/types";
 import type { SessionDefinition, SessionStep } from "../session/types";
@@ -29,6 +30,8 @@ export type CompiledExamTask = {
   speakingMinutes?: { min: number; max: number };
   /** The format's raw points for this task; when set, the section's maxPoints is shared by task points. */
   points?: number;
+  /** Listening: this part's own play count (Goethe Hören Teil 2: once); otherwise the section's. */
+  playsPerRecording?: number;
 };
 /** Formats whose items share one lettered pool: option order is fixed, never shuffled. */
 export const POOL_FORMATS: readonly string[] = ["matchToPool", "completeFromPool"];
@@ -110,6 +113,18 @@ export function sectionItems(track: CompiledExamTrack, sectionId: string, formId
  * record too, but feedback is full so the learner sees what was right.
  * Completion "exam": the route records the attempt itself.
  */
+/** The rubric spec of a points-weighted short_text part (Goethe Schreiben Teil 2), else null. */
+function writingSpecFor(section: CompiledExamSection | undefined, item: CompiledExamItem): MessagePointsSpec | null {
+  const task = section?.tasks.find((t) => t.id === item.taskId);
+  if (!section || section.skill !== "writing" || !task || task.format !== "short_text" || task.points === undefined) return null;
+  return item.exercise.type === "guidedWriting" ? messagePointsSpecFor(item.exercise.rubric, task.points) : null;
+}
+
+/** How often each recording of a part plays: the part's own count, else the section's (QC 2026-10-29 §1.4). */
+export function playsForTask(section: CompiledExamSection, taskId: string): number | undefined {
+  return section.tasks.find((t) => t.id === taskId)?.playsPerRecording ?? section.playsPerRecording;
+}
+
 export function buildExamSectionSession(args: {
   courseId: string;
   track: CompiledExamTrack;
@@ -124,6 +139,10 @@ export function buildExamSectionSession(args: {
   const steps: SessionStep[] = items.map((item) => ({
     type: "exercise",
     stepId: item.id,
+    // QC 2026-10-29 §1.5: a points-weighted message part is scored by its rubric.
+    ...(writingSpecFor(section, item) ? { writingPoints: writingSpecFor(section, item)! } : {}),
+    // The exam player enforces the part's play count in mock and practice alike.
+    ...(section?.skill === "listening" && playsForTask(section, item.taskId) !== undefined ? { maxPlays: playsForTask(section, item.taskId) } : {}),
     // A lettered shared pool keeps its order (the letters ARE the answer
     // sheet), so do richtig / falsch and a / b; every other scored option
     // set is reshuffled per sitting.
@@ -149,8 +168,12 @@ export function buildExamSectionSession(args: {
 }
 
 /** Item results from a session's first attempts; items never reached (time up) are `null`. */
-export function itemResultsFor(itemIds: readonly string[], firstResults: Record<string, boolean>): AssessmentItemResult[] {
-  return itemIds.map((itemId) => ({ itemId, correct: firstResults[itemId] === undefined ? null : firstResults[itemId] }));
+export function itemResultsFor(itemIds: readonly string[], firstResults: Record<string, boolean>, firstCredits?: Record<string, number>): AssessmentItemResult[] {
+  return itemIds.map((itemId) => ({
+    itemId,
+    correct: firstResults[itemId] === undefined ? null : firstResults[itemId],
+    ...(firstResults[itemId] !== undefined && firstCredits?.[itemId] !== undefined ? { credit: firstCredits[itemId] } : {}),
+  }));
 }
 
 export function buildExamAttempt(args: {
@@ -199,13 +222,15 @@ const round1 = (n: number) => Math.round(n * 10) / 10;
 function sectionShare(section: CompiledExamSection, rows: readonly AssessmentItemResult[], taskOf: ReadonlyMap<string, string>): number {
   const weighted = section.tasks.length > 0 && section.tasks.every((t) => t.points !== undefined);
   if (!weighted) return rows.filter((r) => r.correct === true).length / rows.length;
+  // A rubric-scored message part (Goethe Teil 2) earns its credit; every other item is all-or-nothing.
+  const value = (r: AssessmentItemResult) => r.credit ?? (r.correct === true ? 1 : 0);
   let earned = 0;
   let total = 0;
   for (const t of section.tasks) {
     const mine = rows.filter((r) => taskOf.get(r.itemId) === t.id);
     if (mine.length === 0) continue;
     total += t.points!;
-    earned += (mine.filter((r) => r.correct === true).length / mine.length) * t.points!;
+    earned += (mine.reduce((n, r) => n + value(r), 0) / mine.length) * t.points!;
   }
   return total === 0 ? 0 : earned / total;
 }

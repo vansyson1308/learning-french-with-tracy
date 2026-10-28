@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("der_erste_tag_im_kurs", "A1-2", "Der erste Tag im Kurs",
+S.append(story("der_erste_tag_im_kurs", "A2-1", "Der erste Tag im Kurs",
  ("Hôm nay Duc bắt đầu khóa học tiếng Đức. Anh phải đánh vần tên mình — và gặp một người bạn mới.", "Today Duc starts his German course. He has to spell his name — and meets a new friend."),
  ["Schüler", "Sprache", "Papier"],
  [("N", "Heute ist Montag. Duc beginnt einen Kurs für Deutsch an einer Schule in der Stadt.", "Hôm nay là thứ Hai. Duc bắt đầu một khóa học tiếng Đức ở một trường trong thành phố.", "Today is Monday. Duc is starting a German course at a school in town."),

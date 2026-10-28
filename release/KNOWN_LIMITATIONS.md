@@ -93,6 +93,12 @@ itself.
   - the back-translation pass (`content/de/_drafts/BACKTRANSLATION.md`). The
     same session wrote both languages, so this pass is not independent.
 
+  **German stories are text-only for now.** The 43 stories (40 at band A2-1,
+  3 at A1-2) have no bundled audio. With it, German audio would be about
+  17 MB against the 12 MB per-language budget. Story audio moves to
+  per-language asset packs (`release/ASSET_DELIVERY.md`, QC 2026-10-29 §1.6);
+  lesson words, syllabus words and listening clips are bundled.
+
   `de-en` is `"role": "standalone"`. Its lessons and stored surfaces are
   unchanged. Old progress maps to the German ids through `legacySurfaces` in
   persist v8, so no new migration was needed.
@@ -128,7 +134,7 @@ itself.
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).
-- **Goethe A1 practice (`de-vi`) differs from the real exam in three places.** The track follows the Goethe-Institut
+- **Goethe A1 practice (`de-vi`) differs from the real exam in two places.** The track follows the Goethe-Institut
   Durchführungsbestimmungen (Stand 1 September 2025) and the Start Deutsch 1
   Modellsatz, both read on 2026-10-28 (`content/de/exam/FORMAT-SOURCES.md`).
   It keeps four parts of 20 + 25 + 20 + 15 minutes, 6 + 4 + 5 listening items,
@@ -139,9 +145,10 @@ itself.
      examiners). The app simulates it one learner at a time and plays the
      partner and the examiner itself.
   2. **Teil 1 leaves out spelling a word and repeating a number.**
-  3. **Hören Teil 2 is heard once** in the real exam. The app allows two
-     plays, as every scored recording does (product rule §67), and asks the
-     learner to try with one.
+
+  Hören plays each recording as the format does: twice in Teil 1 and 3, once
+  in Teil 2. A per-part `playsPerRecording` that the exam player enforces
+  overrides the two plays of the product rule (§67).
 
   Every item is original. The app is not affiliated with the Goethe-Institut.
   Results are an estimated readiness, never a prediction of passing.

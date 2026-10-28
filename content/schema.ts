@@ -1894,6 +1894,11 @@ export const examTaskSchema = z.strictObject({
    * maxPoints is shared by task points instead of equally per item.
    */
   points: z.number().positive().optional(),
+  /**
+   * Listening parts with their own play count (QC 2026-10-29 §1.4: Goethe
+   * Hören Teil 2 is heard once); otherwise the section's playsPerRecording.
+   */
+  playsPerRecording: z.number().int().min(1).max(3).optional(),
 });
 
 export const examSectionSchema = z.strictObject({

@@ -305,7 +305,7 @@ track = {
  "sections": [
   {"id": "listening", "skill": "listening", "title": T("Hören — Nghe"), "minutes": 20, "maxPoints": 25, "playsPerRecording": 2, "tasks": [
     task("t1", "Teil 1 — Sáu hội thoại ngắn", "Nghe mỗi hội thoại hai lần và chọn a, b hoặc c.", "mcq3", 6),
-    task("t2", "Teil 2 — Bốn thông báo", "Nghe mỗi thông báo và chọn đúng (richtig) hay sai (falsch). Trong kỳ thi thật phần này chỉ nghe MỘT lần; ứng dụng cho nghe tối đa hai lần như mọi bài nghe — hãy thử chỉ nghe một lần.", "mcq2", 4),
+    task("t2", "Teil 2 — Bốn thông báo", "Nghe mỗi thông báo một lần và chọn đúng (richtig) hay sai (falsch). Giống kỳ thi thật, mỗi thông báo chỉ được nghe MỘT lần.", "mcq2", 4, playsPerRecording=1),
     task("t3", "Teil 3 — Năm tin nhắn qua điện thoại hoặc đài", "Nghe mỗi tin nhắn hai lần và chọn a, b hoặc c.", "mcq3", 5)]},
   {"id": "reading", "skill": "reading", "title": T("Lesen — Đọc"), "minutes": 25, "maxPoints": 25, "tasks": [
     task("t1", "Teil 1 — Hai lá thư hoặc email ngắn", "Đọc hai văn bản và chọn đúng (richtig) hay sai (falsch) cho mỗi câu.", "mcq2", 5),

@@ -39,14 +39,17 @@ Branch / PR: `phase-4/de-vi` → `main`; PR: see `plan/STATUS.md`.
 - Differences, stated in the track and `KNOWN_LIMITATIONS.md`:
   - Sprechen is simulated one to one (the real exam is a group exam);
   - Teil 1 leaves out spelling and repeating a number;
-  - Hören Teil 2 can be played twice (product rule §67; heard once in the real exam).
 - **Exam engine additions** (tests first):
   - task format `mcq2`: richtig/falsch and a/b, exactly 2 options, fixed order;
   - optional task `points` that weight a section, on every task of a section or on none.
 
 **§4 — stories.**
-- **40 German stories** (856 sentences, band A1-2), all written to close the coverage gap.
-- Context coverage of the German syllabus rose from 8 % to **92 % (947 / 1,029 lexemes)** (`content/reports/de/context-coverage.json`).
+- **43 German stories, 922 sentences.**
+  - The first 40 use about 1,000 words, so they are band A2-1 (QC 2026-10-29 §1.2).
+  - Three A1-2 stories use only the 690-word A1 syllabus and close its last gaps.
+- **Context coverage of the A1 syllabus: 100 % (690 / 690)**, gated by `content/de/lexicon/context-uncovered.json` (empty) in `content:validate`.
+  - The committed report is `content/reports/de/context-coverage.json`.
+  - Before QC 2026-10-29 the measure was 92 % of a 1,029-word list.
 - The resolver handles German endings and umlaut plurals through the plugin's `storyEndings`, plus a per-story token map for irregular forms.
 - `plan/STORIES-PLAN.md` holds the 40–50-per-language plan; es and fr top-ups are still to do.
 
@@ -59,6 +62,9 @@ Branch / PR: `phase-4/de-vi` → `main`; PR: see `plan/STATUS.md`.
     - dictation 9, interactionScenario 8, simpleForm 2.
   - 35 objectives; 23 concept cards + 12 paradigm tables; Vietnamese guidebooks.
   - Lexicon: 1,288 lexemes with Vietnamese glosses (frozen ids kept). The Goethe Wortliste coverage check added 291 missing core words through `lexicon-add`.
+  - **A1 syllabus (QC 2026-10-29 §1.2): 690 lexemes**, committed as `content/de/lexicon/syllabus.json`.
+    - The 690 are the Wortliste headwords, the words a lesson teaches and the closed-class core.
+    - The other 598 are band A2-1 (`syllabus-a2-1.json`): still in the lexicon, used by A2-1 stories, not offered as daily words.
   - Reception: 40 readings (24 exam) and 244 clips (30 exam, 134 partner turns), cast A `thorsten-high` / B `kerstin-low`.
   - Speech, writing and scenarios: 54 speech items (24 reserved), 36 writing tasks (20 reserved), 22 scenarios (14 reserved).
   - Assessment: 7 checkpoints (102 items) and a 4-stage, 28-item placement.
@@ -82,16 +88,17 @@ Not run. It needs the owner: OWNER-FINAL-CHECKLIST D, adapted to `de-vi`. The ti
 
 ### Docs updated
 - `docs/USER_GUIDE.md` and `docs/USER_GUIDE.vi.md`: the de-vi section and Goethe A1 practice.
-- `release/KNOWN_LIMITATIONS.md`: de-vi unreviewed; the three Goethe differences.
-- `plan/STATUS.md` and `plan/OWNER-FINAL-CHECKLIST.md` B: de-vi Tier-1 vi + de, and the 40 German stories.
+- `release/KNOWN_LIMITATIONS.md`: de-vi unreviewed; German stories text-only; the two remaining Goethe differences.
+- `release/ASSET_DELIVERY.md`: per-language audio projection and the story-audio decision.
+- `plan/STATUS.md` and `plan/OWNER-FINAL-CHECKLIST.md` B: de-vi Tier-1 vi + de, and the 43 German stories.
 - This report.
 
 ### Open questions / risks
 - **Native review is still to do:**
   - both Tier-1 files;
-  - the 40 story translations;
+  - the 43 story translations;
   - the German of readings, scripts, model answers and exam texts.
-- **82 syllabus lexemes still lack a context sentence.** A few more stories would close them.
+- **German stories are text-only** until per-language asset packs exist (`release/ASSET_DELIVERY.md`). With their audio, German would be about 17 MB against the 12 MB budget.
 - **es and fr story top-ups** to 40–50 per language (`plan/STORIES-PLAN.md`) are still open.
 - **Writing and speaking points are coarse:** deterministic rubric pass/fail per item.
 - **Section practice uses both mock forms,** so a later mock can repeat questions; the app says so.

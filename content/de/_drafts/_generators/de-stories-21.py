@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("der_geist_im_schloss", "A1-2", "Der Geist im Schloss",
+S.append(story("der_geist_im_schloss", "A2-1", "Der Geist im Schloss",
  ("Một nhóm khách tham quan lâu đài cũ. Người hướng dẫn kể chuyện về một hồn ma — rồi đèn bỗng tắt.", "A group visits an old castle. The guide tells a story about a ghost — then suddenly the lights go out."),
  ["Schloss", "Ton", "Maske", "Euro"],
  [("N", "Am Samstag macht eine Gruppe eine Führung durch ein altes Schloss.", "Thứ Bảy một nhóm khách đi tham quan có hướng dẫn trong một tòa lâu đài cổ.", "On Saturday a group takes a guided tour through an old castle."),

@@ -125,6 +125,7 @@ export type MessageKey =
   | "exam.results.mockTitle"
   | "exam.results.practiceTitle"
   | "exam.results.practiceWeak"
+  | "exam.results.rubricEstimate"
   | "exam.results.sectionLine"
   | "exam.results.sectionNotTaken"
   | "exam.results.weakTitle"
@@ -521,4 +522,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 519;
+export const MESSAGE_KEY_COUNT = 520;

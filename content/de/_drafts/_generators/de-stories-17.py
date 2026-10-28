@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("beim_amt", "A1-2", "Beim Amt",
+S.append(story("beim_amt", "A2-1", "Beim Amt",
  ("Thảo phải đăng ký cư trú ở thành phố mới. Viên chức hơi khó tính, và cô quên mang một thứ quan trọng.", "Thao has to register at the town office in her new city. The official is a little strict, and she has forgotten something important."),
  ["Konto", "Identität", "Vertrag"],
  [("N", "Thao ist seit drei Tagen in Deutschland. Ihre Heimat ist Vietnam.", "Thảo mới đến Đức được ba ngày. Quê hương của cô là Việt Nam.", "Thao has been in Germany for three days. Her home country is Vietnam."),

@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("urlaub_im_internet", "A1-2", "Urlaub im Internet",
+S.append(story("urlaub_im_internet", "A2-1", "Urlaub im Internet",
  ("Cả nhà Wagner lên kế hoạch nghỉ hè trên mạng. Mỗi người một mong muốn — và mẹ phải quyết định.", "The Wagner family plans their summer holiday online. Everyone wants something different — and Mum has to decide."),
  ["Urlaub", "Strand", "Insel", "Berg", "Reise"],
  [("N", "Es ist Abend. Familie Wagner sitzt zusammen vor dem Computer.", "Trời đã tối. Cả nhà Wagner ngồi quây quần trước máy tính.", "It is evening. The Wagner family sits together in front of the computer."),

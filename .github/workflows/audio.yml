@@ -269,4 +269,4 @@ jobs:
           bash scripts/ci/bot-commit.sh --branch "$BRANCH" --message /tmp/commit-msg.txt \
             --reason "audio.yml $LANG_INPUT $MODE_INPUT ($LAYER_INPUT) run $GITHUB_RUN_ID" -- \
             content/audio content/reports content/sources/registry.json "content/$LANG_INPUT/reception" \
-            "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx src/content content/courses ATTRIBUTIONS.md
+            "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx assets/lexicon src/content content/courses ATTRIBUTIONS.md

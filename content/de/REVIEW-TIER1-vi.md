@@ -365,7 +365,7 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 
 - [ ] Luyện theo định dạng công khai của Goethe-Zertifikat A1: Start Deutsch 1 (Goethe-Institut, quy chế thi bản 1/9/2025 và đề mẫu Modellsatz): Nghe, Đọc, Viết và Nói với số câu, thời gian và cách tính điểm của kỳ thi. Phần Nói trong kỳ thi thật là thi theo nhóm (tối đa bốn người, hai giám khảo); ứng dụng chỉ mô phỏng từng người một — ứng dụng đóng vai bạn thi và giám khảo, và không có phần đánh vần hay đọc lại số. Mọi câu hỏi do khoá học tự soạn — không phải đề thi thật.
 - [ ] Hören — Nghe · Teil 1 — Sáu hội thoại ngắn — Nghe mỗi hội thoại hai lần và chọn a, b hoặc c.
-- [ ] Hören — Nghe · Teil 2 — Bốn thông báo — Nghe mỗi thông báo và chọn đúng (richtig) hay sai (falsch). Trong kỳ thi thật phần này chỉ nghe MỘT lần; ứng dụng cho nghe tối đa hai lần như mọi bài nghe — hãy thử chỉ nghe một lần.
+- [ ] Hören — Nghe · Teil 2 — Bốn thông báo — Nghe mỗi thông báo một lần và chọn đúng (richtig) hay sai (falsch). Giống kỳ thi thật, mỗi thông báo chỉ được nghe MỘT lần.
 - [ ] Hören — Nghe · Teil 3 — Năm tin nhắn qua điện thoại hoặc đài — Nghe mỗi tin nhắn hai lần và chọn a, b hoặc c.
 - [ ] Lesen — Đọc · Teil 1 — Hai lá thư hoặc email ngắn — Đọc hai văn bản và chọn đúng (richtig) hay sai (falsch) cho mỗi câu.
 - [ ] Lesen — Đọc · Teil 2 — Quảng cáo và trang web — Bạn tìm thông tin ở đâu? Đọc hai quảng cáo và chọn a hoặc b.

@@ -39,10 +39,11 @@ Thẻ **Luyện thi Goethe A1** ở tab Luyện tập theo định dạng chính
 
 Thẻ này dùng giống thẻ DELE: **Luyện từng phần** hoặc **Thi thử có giờ** với hai đề song song. Điểm từng phần được quy ra tổng 100 như kỳ thi thật; kỳ thi thật cần 60 điểm. Kết quả hiện **mức sẵn sàng ước tính**.
 
-Có ba chỗ khác với kỳ thi thật:
+Có hai chỗ khác với kỳ thi thật:
 - phần Nói thật là thi theo nhóm, còn ứng dụng chỉ mô phỏng một người với giám khảo;
-- Phần 1 bỏ phần đánh vần và nhắc lại số;
-- mọi bài nghe được nghe hai lần, kể cả Hören Phần 2, phần mà kỳ thi thật chỉ cho nghe một lần.
+- Phần 1 bỏ phần đánh vần và nhắc lại số.
+
+Giống kỳ thi thật, Hören Phần 1 và Phần 3 cho nghe mỗi bài hai lần, Phần 2 chỉ một lần.
 
 Đây không phải điểm thi thật, không do Goethe-Institut cấp và không dự đoán kết quả. Mọi câu hỏi đều do khóa học tự soạn.
 

@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("der_schatz_im_alten_haus", "A1-2", "Der Schatz im alten Haus",
+S.append(story("der_schatz_im_alten_haus", "A2-1", "Der Schatz im alten Haus",
  ("Trên gác mái nhà bà, Jonas và Mia tìm thấy một tấm bản đồ cũ. Họ đi tìm kho báu — và tìm ra một thứ quý giá hơn tiền.", "In Grandma's attic Jonas and Mia find an old map. They search for treasure — and find something worth more than money."),
  ["Kiste", "Kreuz", "Dach", "Sommer"],
  [("N", "Jonas und Mia sind im Sommer bei ihrer Großmutter auf dem Land.", "Mùa hè Jonas và Mia ở nhà bà dưới quê.", "In summer Jonas and Mia stay with their grandmother in the country."),

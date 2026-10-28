@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("die_pruefung", "A1-2", "Die Prüfung",
+S.append(story("die_pruefung", "A2-1", "Die Prüfung",
  ("Lan sắp thi tiếng Đức. Cô lo mình sẽ quên hết — cho đến khi cô bạn Nina có một ý.", "Lan's German exam is coming up. She is worried she will forget everything — until her friend Nina has an idea."),
  ["Gedächtnis", "selten", "Programm", "weniger"],
  [("N", "Lan lernt seit einem Jahr Deutsch.", "Lan học tiếng Đức được một năm rồi.", "Lan has been learning German for a year."),
@@ -34,7 +34,7 @@ S.append(story("die_pruefung", "A1-2", "Die Prüfung",
   ("infer", "Vì sao Lan mắc ít lỗi hơn vào cuối cùng?", "Why does Lan make fewer mistakes in the end?", [("Bài thi rất dễ", "The exam was very easy"), ("Nina làm bài giúp cô", "Nina did the exam for her"), ("Cô đã học cùng Nina mỗi tối", "She studied with Nina every evening")], 2)],
  names=["Lan", "Nina"]))
 
-S.append(story("der_alte_hund_rex", "A1-2", "Der alte Hund Rex",
+S.append(story("der_alte_hund_rex", "A2-1", "Der alte Hund Rex",
  ("Con chó Rex đã rất già. Một ngày nó không còn thức dậy nữa. Gia đình học cách sống với nỗi buồn.", "Rex the dog is very old. One day he does not wake up any more. The family learns to live with the sadness."),
  ["bellen", "Stern", "Winter"],
  [("N", "Rex ist der Hund von Familie Wagner.", "Rex là con chó của gia đình Wagner.", "Rex is the Wagner family's dog."),

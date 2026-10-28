@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("ein_jahr_mit_familie_schulz", "A1-2", "Ein Jahr mit Familie Schulz",
+S.append(story("ein_jahr_mit_familie_schulz", "A2-1", "Ein Jahr mit Familie Schulz",
  ("Mỗi tháng trong năm, gia đình Schulz đều có một việc riêng — từ tuyết tháng Một đến cây thông Noel tháng Mười Hai.", "Every month the Schulz family has something special — from January snow to the December tree."),
  ["Winter", "Sommer", "regnen", "Keks", "Wind"],
  [("N", "Familie Schulz wohnt in einem Dorf in Bayern.", "Gia đình Schulz sống ở một ngôi làng ở Bayern.", "The Schulz family lives in a village in Bavaria."),

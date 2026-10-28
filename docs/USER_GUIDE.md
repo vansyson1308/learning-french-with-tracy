@@ -39,10 +39,11 @@ The **Goethe A1 practice** card on the Practice tab follows the official format 
 
 It works like the DELE card: **Practise one part** or a **timed mock** with two parallel forms. Results convert each part's points to a total out of 100, as the real exam does; the real exam needs 60. They show an **estimated readiness**.
 
-The app differs from the real exam in three places:
+The app differs from the real exam in two places:
 - the real Sprechen is a group exam, and the app simulates it one to one;
-- Teil 1 leaves out spelling and repeating a number;
-- every recording can be played twice, including Hören Teil 2, which is heard once in the real exam.
+- Teil 1 leaves out spelling and repeating a number.
+
+As in the real exam, Hören Teil 1 and 3 play each recording twice and Teil 2 only once.
 
 The practice is not issued by the Goethe-Institut and does not predict a result; every question is original to the course.
 

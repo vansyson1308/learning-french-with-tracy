@@ -222,8 +222,12 @@ export function resolveToken(
 // Bands and analysis
 // ---------------------------------------------------------------------------
 
-/** Syllabus position → band: first half of the level's entries is `<L>-1`, the rest `<L>-2`. */
-export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">): Map<string, StoryBand> {
+/**
+ * Syllabus position → band: first half of the level's entries is `<L>-1`, the rest `<L>-2`.
+ * QC 2026-10-29 §1.2: a target may also commit the next band's list (`later`,
+ * e.g. syllabus-a2-1.json, level "A2-1"); its entries all take that band.
+ */
+export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">, later?: Pick<Syllabus, "level" | "entries"> | null): Map<string, StoryBand> {
   const bands = new Map<string, StoryBand>();
   const level = syllabus.level.toUpperCase();
   const half = Math.ceil(syllabus.entries.length / 2);
@@ -231,6 +235,10 @@ export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">): Map<
     const band = `${level}-${i < half ? 1 : 2}`;
     if ((STORY_BANDS as readonly string[]).includes(band)) bands.set(e.lexemeId, band as StoryBand);
   });
+  const laterBand = later?.level.toUpperCase();
+  if (later && laterBand && (STORY_BANDS as readonly string[]).includes(laterBand)) {
+    for (const e of later.entries) if (!bands.has(e.lexemeId)) bands.set(e.lexemeId, laterBand as StoryBand);
+  }
   return bands;
 }
 
@@ -409,6 +417,8 @@ export function validateStories(input: {
   stories: Stories;
   lexicon: RichLexicon;
   syllabus: Pick<Syllabus, "level" | "entries"> | null;
+  /** The next band's committed list (lexicon/syllabus-a2-1.json), if any. */
+  laterSyllabus?: Pick<Syllabus, "level" | "entries"> | null;
   nativeCodes: readonly string[];
   /** Voice ids of content/<lang>/reception/audio-source-manifest.json (null: no manifest). */
   receptionVoices: ReadonlySet<string> | null;
@@ -420,7 +430,7 @@ export function validateStories(input: {
   const lexemeIds = new Set(input.lexicon.lexemes.map((l) => l.id));
   const glossOf = new Map(input.lexicon.lexemes.map((l) => [l.id, l.glosses as Record<string, string | undefined>]));
   const functionWords = new Set(stories.functionWords.map(tokenKey));
-  const bands = input.syllabus ? lexemeBands(input.syllabus) : new Map<string, StoryBand>();
+  const bands = input.syllabus ? lexemeBands(input.syllabus, input.laterSyllabus) : new Map<string, StoryBand>();
   const index = buildLexemeIndex(lang, input.lexicon, loadVerbForms(lang), bands);
   if (!input.syllabus) err("the target has no syllabus — stories are graded by syllabus band");
 

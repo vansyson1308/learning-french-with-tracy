@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("im_restaurant", "A1-2", "Im Restaurant",
+S.append(story("im_restaurant", "A2-1", "Im Restaurant",
  ("Hai người bạn đi ăn tối. Người phục vụ mang nhầm món — và hóa đơn làm họ bất ngờ.", "Two friends go out for dinner. The waiter brings the wrong dish — and the bill is a surprise."),
  ["Euro", "Runde", "Stimmung"],
  [("N", "Am Freitag gehen Hoa und Lukas in ein kleines Lokal in der Stadt. Die Stimmung ist super.", "Thứ Sáu Hoa và Lukas đến một quán ăn nhỏ trong thành phố. Không khí rất vui.", "On Friday Hoa and Lukas go to a small restaurant in town. The atmosphere is great."),

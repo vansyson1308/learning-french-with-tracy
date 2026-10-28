@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("die_wahl_im_dorf", "A1-2", "Die Wahl im Dorf",
+S.append(story("die_wahl_im_dorf", "A2-1", "Die Wahl im Dorf",
  ("Ngôi làng nhỏ sắp bầu người đứng đầu mới. Hai ứng viên — một người hứa nhiều, một người nói thật.", "The little village is choosing a new leader. Two candidates — one promises a lot, the other tells the truth."),
  ["Bürgermeister", "Politik", "Mitglied"],
  [("N", "In einem kleinen Dorf gibt es bald eine Wahl.", "Ở một ngôi làng nhỏ sắp có một cuộc bầu cử.", "In a small village there is going to be an election."),

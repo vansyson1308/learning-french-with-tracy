@@ -43,6 +43,8 @@ import type {
 export type ReceptionContext = {
   scored: boolean;
   revealTranscript: boolean;
+  /** Exam parts: the format's play count for this recording (overrides the clip policy). */
+  maxPlays?: number;
   onAudioSkip?: () => void;
 };
 
@@ -72,7 +74,7 @@ function ListeningComprehensionStep({
 }) {
   const clip = clipFor(courseId, exercise.clipId);
   const player = useListeningPlayer(clipAudioSource(courseId, exercise.clipId), {
-    maxPlays: reception.scored ? (clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
+    maxPlays: reception.scored ? (reception.maxPlays ?? clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
     allowSlow: !reception.scored,
   });
   return (
@@ -108,7 +110,7 @@ function DictationStep({
 }) {
   const clip = clipFor(courseId, exercise.clipId);
   const player = useListeningPlayer(clipAudioSource(courseId, exercise.clipId), {
-    maxPlays: reception.scored ? (clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
+    maxPlays: reception.scored ? (reception.maxPlays ?? clip?.scoredPlaybackPolicy.maxPlays ?? 2) : null,
     allowSlow: !reception.scored,
   });
   return (

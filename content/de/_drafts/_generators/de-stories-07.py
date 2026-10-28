@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("auf_dem_markt", "A1-2", "Auf dem Markt",
+S.append(story("auf_dem_markt", "A2-1", "Auf dem Markt",
  ("Bố đưa Anh đi chợ sáng thứ Bảy. Cô bé được tự trả tiền — và học được một bài học về giá cả.", "Dad takes Anh to the market on Saturday morning. She is allowed to pay by herself — and learns something about prices."),
  ["Kilo", "einkaufen", "Euro"],
  [("N", "Am Samstag gehen Anh und ihr Vater einkaufen.", "Thứ Bảy Anh và bố đi mua sắm.", "On Saturday Anh and her father go shopping."),

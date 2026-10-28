@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("der_neue_job", "A1-2", "Der neue Job",
+S.append(story("der_neue_job", "A2-1", "Der neue Job",
  ("Minh bắt đầu công việc mới ở một công ty tại Köln. Ngày đầu tiên chẳng hề dễ dàng.", "Minh starts a new job at a company in Cologne. The first day is not easy."),
  ["Schreibtisch", "Direktor", "Papier"],
  [("N", "Minh hat einen neuen Job bei einer Firma in Köln.", "Minh có một công việc mới ở một công ty tại Köln.", "Minh has a new job at a company in Cologne."),
@@ -33,7 +33,7 @@ S.append(story("der_neue_job", "A1-2", "Der neue Job",
   ("infer", "Vì sao Minh hơi sợ khi ông giám đốc đọc kế hoạch?", "Why is Minh a little afraid when the director reads the plan?", [("Ông giám đốc im lặng rất lâu", "The director says nothing for a long time"), ("Anh đến muộn", "He came late"), ("Máy tính bị hỏng", "The computer is broken")], 0)],
  names=["Minh", "Wolf", "Anna", "Köln", "Vietnam"], token_map={"kollegin": "Kollege"}))
 
-S.append(story("das_grosse_spiel", "A1-2", "Das große Spiel",
+S.append(story("das_grosse_spiel", "A2-1", "Das große Spiel",
  ("Đội bóng của Jonas thi đấu trận quan trọng nhất trong năm. Đến phút cuối, Jonas phải đưa ra một quyết định.", "Jonas's team plays the most important match of the year. In the last minute Jonas has to make a decision."),
  ["Sport", "Runde", "Feld"],
  [("N", "Jonas ist zwölf Jahre alt und liebt Fußball.", "Jonas mười hai tuổi và rất mê bóng đá.", "Jonas is twelve and loves football."),

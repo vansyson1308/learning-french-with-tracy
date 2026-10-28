@@ -256,6 +256,7 @@ export function SessionScreen({
                   definition.kind !== "checkpoint" &&
                   definition.kind !== "placement" &&
                   definition.feedbackPolicy !== "minimal",
+                ...(step.maxPlays !== undefined ? { maxPlays: step.maxPlays } : {}),
                 onAudioSkip: controller.onSkip,
               }}
               speech={

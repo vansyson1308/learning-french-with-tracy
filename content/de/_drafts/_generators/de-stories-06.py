@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("am_bahnhof", "A1-2", "Am Bahnhof",
+S.append(story("am_bahnhof", "A2-1", "Am Bahnhof",
  ("Bà Le đi tàu đến München. Vé đắt, tàu đến muộn — và bà lo lỡ chuyến nối tiếp.", "Ms Le takes the train to Munich. The ticket is expensive, the train is late — and she worries about her connection."),
  ["Euro", "Koffer", "Reise"],
  [("N", "Frau Le will heute mit der Bahn nach München fahren.", "Hôm nay bà Le muốn đi tàu đến München.", "Today Ms Le wants to go to Munich by train."),
@@ -33,7 +33,7 @@ S.append(story("am_bahnhof", "A1-2", "Am Bahnhof",
   ("infer", "Vì sao bà Le không đi xe buýt?", "Why doesn't Ms Le take the bus?", [("Xe buýt đắt hơn", "The bus is more expensive"), ("Xe buýt không đi München", "The bus doesn't go to Munich"), ("Đi xe buýt mất quá lâu", "The bus takes too long")], 2)],
  names=["Le", "München", "Nürnberg"], token_map={"steigt": "einsteigen", "lieber": "gern", "billiger": "billig"}))
 
-S.append(story("im_hotel_sonne", "A1-2", "Im Hotel Sonne",
+S.append(story("im_hotel_sonne", "A2-1", "Im Hotel Sonne",
  ("Ông Tran đến một khách sạn ở Wien. Phòng đẹp — chỉ có cái đèn trong phòng tắm là không chịu sáng.", "Mr Tran arrives at a hotel in Vienna. The room is nice — only the bathroom light won't come on."),
  ["klopfen", "Koffer", "Ecke", "Reise"],
  [("N", "Nach einer langen Reise kommt Herr Tran am Abend in Wien an.", "Sau một chuyến đi dài, buổi tối ông Tran đến Wien.", "After a long journey Mr Tran arrives in Vienna in the evening."),
@@ -63,7 +63,7 @@ S.append(story("im_hotel_sonne", "A1-2", "Im Hotel Sonne",
   ("infer", "Vì sao ông Tran gọi điện xuống quầy lễ tân?", "Why does Mr Tran call reception?", [("Ông muốn ăn sáng sớm", "He wants an early breakfast"), ("Không có đèn nên ông không tắm được", "Without light he can't take a shower"), ("Ông làm mất hộ chiếu", "He lost his passport")], 1)],
  names=["Tran", "Wien"], token_map={"füllen": "ausfüllen", "füllt": "ausfüllen"}))
 
-S.append(story("urlaub_in_vietnam", "A1-2", "Urlaub in Vietnam",
+S.append(story("urlaub_in_vietnam", "A2-1", "Urlaub in Vietnam",
  ("Gia đình Becker bay sang Việt Nam nghỉ hè. Họ tham quan, ăn mì và đi thuyền ra một hòn đảo.", "The Becker family flies to Vietnam for a holiday. They go sightseeing, eat noodles and take a boat to an island."),
  ["Urlaub", "Insel", "Strand"],
  [("N", "Familie Becker macht Urlaub im Ausland.", "Gia đình Becker đi nghỉ ở nước ngoài.", "The Becker family is going on holiday abroad."),

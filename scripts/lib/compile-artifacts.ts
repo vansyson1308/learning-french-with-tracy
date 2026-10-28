@@ -41,8 +41,9 @@ import {
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
 import { examTrackPaths } from "./exam-bank";
-import { compileDailyWordsArtifact, deriveSyllabus, loadSyllabus, loadTopicUnits, validateSyllabusData, validateTopicUnits } from "./syllabus";
-import { compileContextCoverageReport } from "./context-coverage";
+import { compileDailyWordsArtifact, deriveSyllabus, loadLaterSyllabus, loadSyllabus, loadTopicUnits, validateLaterSyllabus, validateSyllabusData, validateTopicUnits } from "./syllabus";
+import { validateEnglishFields } from "./english-fields";
+import { compileContextCoverageReport, computeContextCoverage, contextGateErrors, contextGatePath, type ContextGate } from "./context-coverage";
 import { varietyErrors } from "./variety";
 import { compileExamTracksArtifact, loadExamTracks, validateExamTrackData } from "./exam";
 import { compileCourseProfileArtifacts, type LexiconDbInfo } from "./course-profiles";
@@ -247,10 +248,26 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
     if (stories) {
       const syllabus = targetSyllabus(lang, packs, lexicon);
       if (!lexicon) errors.push(`stories (${lang}): graded stories need the target's rich lexicon`);
-      else errors.push(...validateStories({ lang, stories, lexicon, syllabus, nativeCodes, receptionVoices: receptionVoiceIds(lang) }).errors);
+      else errors.push(...validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes, receptionVoices: receptionVoiceIds(lang) }).errors);
     }
   } catch (e) {
     errors.push(schemaFailure("stories", e));
+  }
+  // QC 2026-10-29 §1.1: the context gate, for a target that opts in (lexicon/context-uncovered.json).
+  if (existsSync(safeResolve(contextGatePath(lang)))) {
+    try {
+      const syllabus = targetSyllabus(lang, packs, lexicon);
+      const ids = loadIdMaps(packs)[lang];
+      const stories = safeLoadStories(lang);
+      if (lexicon && syllabus && ids) {
+        const lookup = { ...(loadLegacyMaps(packs)[lang] ?? {}), ...ids };
+        const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
+        const coverage = computeContextCoverage({ syllabus, packs: mine.map((p) => p.pack), gradeTargets: (e) => gradeTargetsFor(e, lookup), readings, listening, stories: storyLexemes });
+        errors.push(...contextGateErrors(lang, coverage, readJson(contextGatePath(lang)) as ContextGate));
+      }
+    } catch (e) {
+      errors.push(schemaFailure("context-gate", e));
+    }
   }
   if (layers.reception && readings === null && listening === null) {
     errors.push(`reception: content/${lang}/reception exists but has neither reading.json nor listening.json`);
@@ -418,7 +435,17 @@ function validateTargetSyllabus(lang: string, packs: LoadedPack[], lexicon: Retu
     return [schemaFailure(`syllabus (${lang})`, e)];
   }
   const topicUnits = loadTopicUnits(lang);
-  return [...validateSyllabusData({ syllabus, lang, lexicon, pack, nativeCodes }).errors, ...(topicUnits ? validateTopicUnits(topicUnits, { lexicon, pack }) : [])];
+  let later;
+  try {
+    later = loadLaterSyllabus(lang);
+  } catch (e) {
+    return [schemaFailure(`syllabus-a2-1 (${lang})`, e)];
+  }
+  return [
+    ...validateSyllabusData({ syllabus, lang, lexicon, pack, nativeCodes }).errors,
+    ...(topicUnits ? validateTopicUnits(topicUnits, { lexicon, pack }) : []),
+    ...(later ? validateLaterSyllabus({ later, syllabus, lexicon, lang }) : []),
+  ];
 }
 
 /** P3d: every exam track of a target against the primary course and the target's banks. */
@@ -546,6 +573,8 @@ export function validateAllSources(): string[] {
   const packs = loadPacks();
   const errors = [...validateContent().errors];
   for (const lang of discoverTargets(packs)) errors.push(...validateTarget(lang, packs));
+  // QC 2026-10-29 §1.3: an `en` native-text field is English, in every course.
+  errors.push(...validateEnglishFields());
   return errors;
 }
 
@@ -799,7 +828,7 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
   const stories = loadStories(lang);
   if (stories && lexicon) {
     const syllabus = targetSyllabus(lang, packs, lexicon);
-    const { analyses } = validateStories({ lang, stories, lexicon, syllabus, nativeCodes: [], receptionVoices: null });
+    const { analyses } = validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes: [], receptionVoices: null });
     const durations = loadClipDurations(`${reportsDir}/audio-quality.json`);
     files.push({ relPath: `${root}/stories/${lang}-stories.json`, contents: compileStoriesArtifact({ stories, analyses, nativeCode, durations }) });
     for (const { courseId, nativeCode: code } of secondaryNativeCourses(lang, packs)) {
@@ -813,7 +842,7 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
   const ctxIds = loadIdMaps(packs)[lang];
   if (lexicon && ctxSyllabus && ctxIds) {
     const lookup = { ...(loadLegacyMaps(packs)[lang] ?? {}), ...ctxIds };
-    const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus: ctxSyllabus, nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
+    const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus: ctxSyllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
     files.push({
       relPath: `${reportsDir}/context-coverage.json`,
       contents: compileContextCoverageReport({

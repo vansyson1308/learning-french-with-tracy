@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("an_der_ampel", "A1-2", "An der Ampel",
+S.append(story("an_der_ampel", "A2-1", "An der Ampel",
  ("Paul ngã xe đạp ở đèn giao thông. Người lái xe là một phụ nữ — và bà nói thật.", "Paul falls off his bike at the traffic lights. The driver is a woman — and she tells the truth."),
  ["Knie", "Reaktion", "Freundschaft"],
  [("N", "An einem Montag fährt Paul mit dem Fahrrad zur Arbeit.", "Một ngày thứ Hai, Paul đạp xe đi làm.", "One Monday Paul rides his bike to work."),

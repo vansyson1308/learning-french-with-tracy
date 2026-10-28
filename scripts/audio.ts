@@ -70,6 +70,8 @@ type ReceptionManifest = {
   pipelineVersion: number;
   /** P5b: pipeline version of the story sentences (bitrate), when it differs. */
   storyPipelineVersion?: number;
+  /** QC 2026-10-29 §1.6: story sentences are not bundled for this language (size budget); the reader shows text only. */
+  storyAudio?: { bundled: false; reason: string };
   note: string;
   voices: ReceptionVoice[];
   excludedVoices: { id: string; reason: string }[];
@@ -418,7 +420,8 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         for (const clip of listening.clips) push(clip.id, clip.segments.map((seg) => ({ voiceId: listening.voiceCast[seg.speaker].voiceId, speaker: listening.voiceCast[seg.speaker].speaker, text: seg.text })));
       }
       // P5b graded stories: one asset per sentence (clip id <storyId>#<n>), voice from the stories' cast.
-      if (mode === "generate" && existsSync(STORIES_PATH)) {
+      if (r.storyAudio?.bundled === false) console.log(`story sentences not bundled for ${LANG}: ${r.storyAudio.reason}`);
+      else if (mode === "generate" && existsSync(STORIES_PATH)) {
         const stories = storiesSchema(LANG).parse(JSON.parse(readFileSync(STORIES_PATH, "utf8")));
         const version = storyPipelineVersion(LANG);
         for (const story of stories.stories) story.sentences.forEach((s, i) => push(storyClipId(story.id, i), storySentenceSegments(stories, s), version));

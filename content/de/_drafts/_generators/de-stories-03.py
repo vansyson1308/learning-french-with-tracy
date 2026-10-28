@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("opas_geschichte", "A1-2", "Opas Geschichte",
+S.append(story("opas_geschichte", "A2-1", "Opas Geschichte",
  ("Ông kể cho Lea nghe ông và bà đã quen nhau thế nào. Trong một chiếc thùng cũ có một lá thư.", "Grandpa tells Lea how he and Grandma met. In an old box there is a letter."),
  ["Fabrik", "Kiste", "Gedicht"],
  [("N", "Am Sonntag besucht Lea ihren Opa.", "Chủ nhật Lea đến thăm ông.", "On Sunday Lea visits her grandpa."),
@@ -36,7 +36,7 @@ S.append(story("opas_geschichte", "A1-2", "Opas Geschichte",
   ("infer", "Bao lâu sau khi ông cầu hôn thì bà đồng ý?", "How long after Grandpa's proposal did Grandma say yes?", [("Ngay hôm đó", "The same day"), ("Một tháng sau", "A month later"), ("Một tuần sau", "A week later")], 2)],
  names=["Lea"]))
 
-S.append(story("kochen_mit_oma", "A1-2", "Kochen mit Oma",
+S.append(story("kochen_mit_oma", "A2-1", "Kochen mit Oma",
  ("Tim nấu súp cùng bà. Cậu cho quá nhiều muối — nhưng bà có một mẹo hay.", "Tim cooks soup with his grandma. He adds far too much salt — but Grandma has a good trick."),
  ["mischen", "Magen", "Keks"],
  [("N", "Tim ist zehn Jahre alt. Am Samstag ist er bei seiner Oma.", "Tim mười tuổi. Thứ Bảy cậu ở nhà bà.", "Tim is ten. On Saturday he is at his grandma's."),
@@ -67,7 +67,7 @@ S.append(story("kochen_mit_oma", "A1-2", "Kochen mit Oma",
   ("infer", "Vì sao bà cho thêm một củ khoai tây?", "Why does Grandma add another potato?", [("Vì Tim vẫn còn đói", "Because Tim is still hungry"), ("Vì súp quá ít", "Because there is too little soup"), ("Để súp bớt mặn", "To make the soup less salty")], 2)],
  names=["Tim"]))
 
-S.append(story("die_neue_wohnung", "A1-2", "Die neue Wohnung",
+S.append(story("die_neue_wohnung", "A2-1", "Die neue Wohnung",
  ("Gia đình Schmidt chuyển đến căn hộ mới. Bạn bè giúp một tay — và có một vị khách bất ngờ gõ cửa.", "The Schmidt family moves into a new flat. Friends help — and a surprise visitor knocks at the door."),
  ["klopfen", "Stock", "Leiter"],
  [("N", "Familie Schmidt zieht in eine neue Wohnung.", "Gia đình Schmidt chuyển đến một căn hộ mới.", "The Schmidt family is moving into a new flat."),
@@ -97,7 +97,7 @@ S.append(story("die_neue_wohnung", "A1-2", "Die neue Wohnung",
   ("infer", "Vì sao mọi người ngồi ăn trên sàn?", "Why does everyone eat sitting on the floor?", [("Họ thích ngồi dưới sàn", "They like sitting on the floor"), ("Ghế quá nặng", "The chairs are too heavy"), ("Trong bếp chưa có bàn", "There is no table in the kitchen yet")], 2)],
  names=["Schmidt", "Paul", "Braun"]))
 
-S.append(story("der_koenig_und_das_feuer", "A1-2", "Der König und das Feuer",
+S.append(story("der_koenig_und_das_feuer", "A2-1", "Der König und das Feuer",
  ("Một kẻ ác muốn chiếm đất nước của nhà vua. Cô con gái út Ella đi vào rừng tìm sự giúp đỡ.", "An evil man wants to take the king's land. His youngest daughter Ella goes into the forest for help."),
  ["Schloss", "Prinzessin", "Krone"],
  [("N", "Vor langer Zeit lebte ein König in einem großen Schloss.", "Ngày xửa ngày xưa có một nhà vua sống trong một tòa lâu đài lớn.", "A long time ago a king lived in a big castle."),

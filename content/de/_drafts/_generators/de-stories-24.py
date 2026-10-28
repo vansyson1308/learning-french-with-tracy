@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("eine_internationale_hochzeit", "A1-2", "Eine internationale Hochzeit",
+S.append(story("eine_internationale_hochzeit", "A2-1", "Eine internationale Hochzeit",
  ("Anna người Đức và Duc người Việt tổ chức đám cưới ở một khách sạn bên hồ. Chiếc nhẫn suýt thì bị quên.", "Anna from Germany and Duc from Vietnam get married at a hotel by a lake. The ring is almost forgotten."),
  ["Braut", "Ring", "Programm", "Jacke", "See"],
  [("N", "Anna und Duc heiraten im Juni. Die Hochzeit ist in einem großen Hotel am See.", "Anna và Duc cưới nhau vào tháng Sáu. Đám cưới diễn ra ở một khách sạn lớn bên hồ.", "Anna and Duc get married in June. The wedding is at a big hotel by a lake."),

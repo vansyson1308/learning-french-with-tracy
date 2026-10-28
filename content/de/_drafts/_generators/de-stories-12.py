@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("das_praktikum", "A1-2", "Das Praktikum",
+S.append(story("das_praktikum", "A2-1", "Das Praktikum",
  ("Linh thực tập ở một công ty nhỏ. Máy in hỏng, khách hàng không hài lòng — và cô có một ý tưởng.", "Linh does an internship at a small company. The printer breaks, the customers are unhappy — and she has an idea."),
  ["Sommer", "Unternehmen", "Schreibtisch", "Papier"],
  [("N", "Linh studiert in Leipzig. Im Sommer macht sie ein Praktikum.", "Linh học đại học ở Leipzig. Mùa hè cô đi thực tập.", "Linh studies in Leipzig. In summer she does an internship."),
@@ -35,7 +35,7 @@ S.append(story("das_praktikum", "A1-2", "Das Praktikum",
   ("infer", "Vì sao Linh được mời làm việc sau khi học xong?", "Why is Linh offered a job after her studies?", [("Vì cô sửa được máy in", "Because she fixed the printer"), ("Vì cô viết thư nhanh nhất", "Because she writes letters fastest"), ("Vì ý tưởng của cô giải quyết được vấn đề của công ty", "Because her idea solved the company's problem")], 2)],
  names=["Linh", "Leipzig", "Klein"]))
 
-S.append(story("eine_wohnung_fuer_herrn_neumann", "A1-2", "Eine Wohnung für Herrn Neumann",
+S.append(story("eine_wohnung_fuer_herrn_neumann", "A2-1", "Eine Wohnung für Herrn Neumann",
  ("Ông Neumann mới chuyển đến Köln và tìm một căn hộ. Ông tìm thấy một căn rất hợp — chỉ là ở đây cấm hút thuốc.", "Mr Neumann is new in Cologne and is looking for a flat. He finds one that suits him well — only smoking is forbidden."),
  ["Euro", "einziehen", "Vertrag"],
  [("N", "Herr Neumann ist neu in Köln. Er sucht eine Wohnung.", "Ông Neumann mới đến Köln. Ông đang tìm một căn hộ.", "Mr Neumann is new in Cologne. He is looking for a flat."),

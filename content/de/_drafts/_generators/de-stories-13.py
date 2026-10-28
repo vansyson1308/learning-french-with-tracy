@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("krank_im_bett", "A1-2", "Krank im Bett",
+S.append(story("krank_im_bett", "A2-1", "Krank im Bett",
  ("Herr Wagner bị ốm. Bác sĩ khuyên ông nghỉ ngơi và bỏ thuốc lá — nhưng điều khó nhất là phải nằm yên.", "Mr Wagner is ill. The doctor tells him to rest and give up smoking — but the hardest thing is lying still."),
  ["Medizin", "Pille", "husten", "langweilig"],
  [("N", "Herr Wagner steht am Montag nicht auf. Er fühlt sich sehr schlecht.", "Thứ Hai ông Wagner không dậy nổi. Ông thấy trong người rất mệt.", "On Monday Mr Wagner doesn't get up. He feels very bad."),

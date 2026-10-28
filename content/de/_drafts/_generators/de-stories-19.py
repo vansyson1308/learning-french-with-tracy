@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("der_planet_ohne_gefuehle", "A1-2", "Der Planet ohne Gefühle",
+S.append(story("der_planet_ohne_gefuehle", "A2-1", "Der Planet ohne Gefühle",
  ("Trên một hành tinh xa xôi, luật pháp cấm mọi cảm xúc. Rồi một người lính trẻ tìm thấy một bông hoa.", "On a distant planet the law forbids all feelings. Then a young soldier finds a flower."),
  ["Raumschiff", "Technologie", "Realität", "Strafe"],
  [("N", "Weit weg von unserer Welt gibt es einen kleinen Planeten.", "Cách xa thế giới của chúng ta có một hành tinh nhỏ.", "Far away from our world there is a small planet."),

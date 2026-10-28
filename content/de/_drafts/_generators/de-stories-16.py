@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("die_einladung_zum_grillen", "A1-2", "Die Einladung zum Grillen",
+S.append(story("die_einladung_zum_grillen", "A2-1", "Die Einladung zum Grillen",
  ("Đồng nghiệp mời Hùng và vợ đến dự tiệc nướng. Hùng lo không biết mặc gì và mang gì — rồi mọi chuyện diễn ra thật tự nhiên.", "A colleague invites Hung and his wife to a barbecue. Hung worries about what to wear and bring — then everything goes naturally."),
  ["Hemd", "Jacke", "Sommer"],
  [("N", "Am Mittwoch bekommt Hung eine Einladung von seiner Kollegin Petra.", "Thứ Tư Hùng nhận được lời mời từ đồng nghiệp Petra.", "On Wednesday Hung gets an invitation from his colleague Petra."),

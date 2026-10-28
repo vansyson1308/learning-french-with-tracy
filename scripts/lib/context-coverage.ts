@@ -4,8 +4,8 @@
  * a lesson exercise that grades it, a reading or listening clip that
  * references it, or a graded story that uses it. The report lists, unit by
  * unit, the syllabus lexemes with NO context, so stories can be written to
- * close the gap. Report only (content/reports/<lang>/context-coverage.json);
- * it is not a gate yet.
+ * close the gap (content/reports/<lang>/context-coverage.json). It becomes
+ * a gate for a target that commits lexicon/context-uncovered.json (below).
  */
 import type { PackSource } from "../../content/schema";
 
@@ -63,6 +63,30 @@ export function computeContextCoverage(input: ContextCoverageInput): ContextCove
     bySource: { lessons: count(lessons), readings: count(readings), listening: count(listening), stories: count(stories) },
     units,
   };
+}
+
+/**
+ * QC 2026-10-29 §1.1: a target that commits `content/<lang>/lexicon/context-uncovered.json`
+ * opts into the gate — every syllabus lexeme has context, or is listed there
+ * with a reason. A listed lexeme that has context is stale and an error.
+ */
+export type ContextGate = { version: 1; uncovered: Record<string, string> };
+
+export function contextGatePath(lang: string): string {
+  return `content/${lang}/lexicon/context-uncovered.json`;
+}
+
+export function contextGateErrors(lang: string, coverage: ContextCoverage, gate: ContextGate): string[] {
+  const errors: string[] = [];
+  const missing = new Map(coverage.units.flatMap((u) => u.missing.map((id) => [id, u.unitId] as const)));
+  for (const [id, unit] of missing) {
+    if (!(id in gate.uncovered)) errors.push(`context-gate (${lang}): ${id} (${unit}) has no context sentence — write one, or list it with a reason in lexicon/context-uncovered.json`);
+  }
+  for (const [id, reason] of Object.entries(gate.uncovered)) {
+    if (!missing.has(id)) errors.push(`context-gate (${lang}): ${id} is listed as uncovered but has context — remove it`);
+    else if (reason.trim().length < 10) errors.push(`context-gate (${lang}): ${id} needs a reason of at least 10 characters`);
+  }
+  return errors;
 }
 
 export function compileContextCoverageReport(input: ContextCoverageInput): string {

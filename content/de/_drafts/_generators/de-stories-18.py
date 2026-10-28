@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("papa_holt_lina_ab", "A1-2", "Papa holt Lina ab",
+S.append(story("papa_holt_lina_ab", "A2-1", "Papa holt Lina ab",
  ("Hôm nay bố Tom ở nhà làm nội trợ và đi đón bé Lina ở nhà trẻ. Nhưng Lina không có ở đó!", "Today Dad Tom is a stay-at-home father and picks up little Lina from kindergarten. But Lina isn't there!"),
  ["Farbe", "Stern", "Fantasie", "grün"],
  [("N", "Tom ist Hausmann. Seine Frau arbeitet in einer Bank, und er bleibt mit den Kindern zu Hause.", "Tom là người chồng nội trợ. Vợ anh làm ở ngân hàng, còn anh ở nhà với các con.", "Tom is a househusband. His wife works at a bank, and he stays at home with the children."),
