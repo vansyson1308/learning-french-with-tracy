@@ -138,13 +138,24 @@ const takeKey = (e: PoolEntry) => `${e.lemma}|${e.partOfSpeech}`;
 const rankOf = (e: PoolEntry) => e.frequency?.rank ?? Number.POSITIVE_INFINITY;
 // Homographs: of several content readings of one lemma (ser verb / "el ser" noun, poder verb / noun),
 // only the best-ranked reading is authored by frequency; the others stay in the pool for a human.
+// German capitalises nouns, so its nominalisations differ only in case (haben / das Haben):
+// there the readings are grouped case-insensitively.
+const readingKey = (lemma: string) => (lang === "de" ? lemma.toLowerCase() : lemma);
 const bestReading = new Map<string, PoolEntry>();
 for (const e of pool.entries) {
   if (e.kind !== "content") continue;
-  const prev = bestReading.get(e.lemma);
-  if (!prev || rankOf(e) < rankOf(prev)) bestReading.set(e.lemma, e);
+  const prev = bestReading.get(readingKey(e.lemma));
+  if (!prev || rankOf(e) < rankOf(prev)) bestReading.set(readingKey(e.lemma), e);
 }
-const isSecondaryReading = (e: PoolEntry) => e.kind === "content" && bestReading.get(e.lemma) !== e;
+const isSecondaryReading = (e: PoolEntry) => e.kind === "content" && bestReading.get(readingKey(e.lemma)) !== e;
+
+/**
+ * Curated exclusions (content/<lang>/lexicon/exclude.json, optional): readings a
+ * learner lexicon must not author — subtitle-corpus violence and vulgarity
+ * kaikki leaves untagged, ETL artefacts. Keys are `lemma|partOfSpeech`.
+ */
+const excludeRel = `content/${lang}/lexicon/exclude.json`;
+const excluded = new Set<string>(existsSync(safeResolve(excludeRel)) ? (readJson(excludeRel) as { entries: { key: string }[] }).entries.map((x) => x.key) : []);
 /** A plural pack surface ("los zapatos") → the singular lemma guess the pool may hold. */
 const singularGuesses = (form: string): string[] => {
   const out: string[] = [];
@@ -217,6 +228,7 @@ const usable = (e: PoolEntry) =>
   e.glosses.en.length > 0 &&
   e.examples.some((x) => x.translations.en !== undefined) &&
   !e.usageTags.some((t) => EXCLUDE_TAGS.has(t)) &&
+  !excluded.has(`${e.lemma}|${e.partOfSpeech}`) &&
   !packWords.has(e.lemma);
 
 // 2. Anchor-first.
