@@ -50,7 +50,9 @@ describe("Read & listen", () => {
     seed("fr-en");
     renderRouter("./src/app", { initialUrl: "/story/fr.story.le_chat_et_la_souris" });
     await waitFor(() => expect(screen.getByTestId("story-reader")).toBeOnTheScreen());
-    expect(screen.getByTestId("story-no-audio")).toBeOnTheScreen(); // no bundled audio yet: text only
+    // French story sentences have bundled audio since the fr audio run (fr-story-assets.ts).
+    expect(screen.getByTestId("story-listen")).toBeOnTheScreen();
+    expect(screen.queryByTestId("story-no-audio")).toBeNull();
 
     await userEvent.press(screen.getByTestId("story-translate-1"));
     expect(screen.getByText("In Madame Dubois's house, there is a cat.")).toBeOnTheScreen();
