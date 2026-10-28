@@ -3,17 +3,17 @@
     "id": "frequencywords",
     "sha256": "d9e50546fd7e8b6fe6542a2b33c51d1331092b2a3916ec09f80d97856068705b",
     "url": "https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/de/de_50k.txt",
-    "retrievedAt": "2026-10-14"
+    "retrievedAt": "2026-10-28"
   },
   "generator": "scripts/lib/lexicon-etl/derive.ts",
   "population": {
     "definition": "lemma|pos pairs of the content parts of speech (noun, verb, adjective, adverb) that have a kaikki lemma entry and at least one word form in the FrequencyWords list; a word form shared by several lemma entries (any part of speech) splits its count in proportion to each entry's richness (lemma senses + examples + 5 when it has an inflection table), and a closed-class lemma identical to the form absorbs the whole count; lemmas with an upper-case initial (proper nouns, abbreviations — except German nouns), single letters and letter/note names are excluded; per-million is relative to the FrequencyWords list total",
-    "size": 8599,
+    "size": 21036,
     "byPos": {
-      "verb": 4238,
-      "adverb": 908,
-      "adjective": 3448,
-      "noun": 5
+      "verb": 4247,
+      "adverb": 912,
+      "noun": 12410,
+      "adjective": 3467
     },
     "listForms": 50000,
     "listTotal": 151705378
@@ -21,10 +21,10 @@
   "freqLemme": {
     "unit": "occurrences per million words of the FrequencyWords list",
     "quantiles": {
-      "p50": 2.6631,
-      "p90": 42.418,
-      "p95": 103.411,
-      "p99": 603.6767
+      "p50": 1.8589,
+      "p90": 23.2452,
+      "p95": 55.023,
+      "p99": 309.5982
     }
   },
   "bandRule": "very-common = perMillion ≥ p99 of the population; common = ≥ p95; less-common = the rest (identical rule to the French Lexique derivation)",
@@ -32,7 +32,7 @@
     "id": "wordfreq",
     "sha256": "8ce19aa8a3ae67f9ab6d3fe4ed14f4a734122808c9dc55dc27c34443f3aaa10c",
     "url": "https://pypi.org/project/wordfreq/3.1.1/",
-    "retrievedAt": "2026-10-14",
+    "retrievedAt": "2026-10-28",
     "words": 50000,
     "unit": "Zipf (log10 per billion)"
   }

@@ -3,10 +3,10 @@
 No lexemes are authored for this language yet; this sheet records what the committed
 evidence (content/de/lexicon/derived/) can and cannot provide, for the authoring pass of a later milestone.
 
-- Pool: 3200 entries (3000 content, 200 function words); anchors: frequency-derived
-- English gloss: 3200 · Vietnamese gloss: 44 (the rest would be `TODO:vi`) · ≥1 example: 3174 · IPA: 2893 · anchored: 0
-- Usage-tagged (vulgar, slang, obsolete, abbreviation…) — excluded by the author: 282
-- Topic unresolved (`everyday`): 2821
+- Pool: 3205 entries (3004 content, 201 function words); anchors: frequency-derived
+- English gloss: 3205 · Vietnamese gloss: 109 (the rest would be `TODO:vi`) · ≥1 example: 3190 · IPA: 3027 · anchored: 0
+- Usage-tagged (vulgar, slang, obsolete, abbreviation…) — excluded by the author: 390
+- Topic unresolved (`everyday`): 2406
 
 ## Top 40 by measured frequency
 
@@ -14,39 +14,39 @@ evidence (content/de/lexicon/derived/) can and cannot provide, for the authoring
 - haben (verb, rank 2, very-common) — en: forms the perfect aspect (have) · vi: TODO:vi
 - werden (verb, rank 3, very-common) — en: will, to be going to, forms the future tense · vi: TODO:vi
 - können (verb, rank 4, very-common) — en: to be able (to do or be something), to have the possibility of, can · vi: TODO:vi
-- sagen (verb, rank 5, very-common) — en: to say (to pronounce; communicate verbally) · vi: TODO:vi
-- gehen (verb, rank 6, very-common) — en: to go, to walk · vi: TODO:vi
-- kommen (verb, rank 7, very-common) — en: to come; to arrive · vi: TODO:vi
+- gehen (verb, rank 5, very-common) — en: to go, to walk · vi: TODO:vi
+- kommen (verb, rank 6, very-common) — en: to come; to arrive · vi: TODO:vi
+- sagen (verb, rank 7, very-common) — en: to say (to pronounce; communicate verbally) · vi: TODO:vi
 - machen (verb, rank 8, very-common) — en: to make, to produce, to create (an object, arrangement, situation, etc.) · vi: TODO:vi
-- müssen (verb, rank 9, very-common) — en: to have to (do something); must; to be obliged (to do something); to need (to do something) · vi: TODO:vi
-- sehen (verb, rank 10, very-common) — en: to see; to have sight · vi: TODO:vi
-- wollen (verb, rank 11, very-common) — en: to want; to wish; to desire; to demand · vi: TODO:vi
-- wissen (verb, rank 12, very-common) — en: to know; to be aware of (a fact) · vi: TODO:vi
-- tun (verb, rank 13, very-common) — en: to do (to perform or execute an action) · vi: TODO:vi
-- sollen (verb, rank 14, very-common) — en: should; to be obligated (to do something); ought; shall · vi: TODO:vi
-- geben (verb, rank 15, very-common) — en: to give (changing ownership) · vi: TODO:vi
-- jetzt (adverb, rank 16, very-common) — en: now (at this moment, right now) · vi: TODO:vi
-- dann (adverb, rank 17, very-common) — en: then, after that · vi: TODO:vi
-- meinen (verb, rank 18, very-common) — en: to opine, to think; to believe; to suppose · vi: TODO:vi
-- lassen (verb, rank 19, very-common) — en: to allow; to permit; to let · vi: TODO:vi
-- denken (verb, rank 20, very-common) — en: to think · vi: TODO:vi
+- sehen (verb, rank 9, very-common) — en: to see; to have sight · vi: TODO:vi
+- wollen (verb, rank 10, very-common) — en: to want; to wish; to desire; to demand · vi: TODO:vi
+- müssen (verb, rank 11, very-common) — en: to have to (do something); must; to be obliged (to do something); to need (to do something) · vi: TODO:vi
+- tun (verb, rank 12, very-common) — en: to do (to perform or execute an action) · vi: TODO:vi
+- wissen (verb, rank 13, very-common) — en: to know; to be aware of (a fact) · vi: TODO:vi
+- geben (verb, rank 14, very-common) — en: to give (changing ownership) · vi: TODO:vi
+- sollen (verb, rank 15, very-common) — en: should; to be obligated (to do something); ought; shall · vi: TODO:vi
+- dann (adverb, rank 16, very-common) — en: then, after that · vi: TODO:vi
+- meinen (verb, rank 17, very-common) — en: to opine, to think; to believe; to suppose · vi: TODO:vi
+- lassen (verb, rank 18, very-common) — en: to allow; to permit; to let · vi: TODO:vi
+- denken (verb, rank 19, very-common) — en: to think · vi: TODO:vi
+- Mann (noun, rank 20, very-common) — en: man, male human being · vi: TODO:vi
 - hören (verb, rank 21, very-common) — en: to hear (to perceive sounds (or a sound) through the ear) · vi: TODO:vi
 - immer (adverb, rank 22, very-common) — en: at all times without exception · vi: TODO:vi
 - warum (adverb, rank 23, very-common) — en: why; for what reason · vi: TODO:vi
-- glauben (verb, rank 24, very-common) — en: to believe something (to consider true) · vi: TODO:vi
-- wieder (adverb, rank 25, very-common) — en: again; indicates that the action taking place has happened before · vi: TODO:vi
-- wollen (adjective, rank 26, very-common) — en: wool; woolen, woollen · vi: TODO:vi
-- schon (adverb, rank 27, very-common) — en: already (happening rather early, continuing rather long) · vi: TODO:vi
+- wieder (adverb, rank 24, very-common) — en: again; indicates that the action taking place has happened before · vi: TODO:vi
+- jetzt (adverb, rank 25, very-common) — en: now (at this moment, right now) · vi: TODO:vi
+- schon (adverb, rank 26, very-common) — en: already (happening rather early, continuing rather long) · vi: TODO:vi
+- wollen (adjective, rank 27, very-common) — en: wool; woolen, woollen · vi: TODO:vi
 - sehr (adverb, rank 28, very-common) — en: very · vi: TODO:vi
-- einmal (adverb, rank 29, very-common) — en: once, one time (one and only one time) · vi: TODO:vi
-- leben (verb, rank 30, very-common) — en: to live, to be alive · vi: TODO:vi
-- finden (verb, rank 31, very-common) — en: to find; to discover · vi: TODO:vi
-- ganz (adjective, rank 32, very-common) — en: entire, whole, complete · vi: TODO:vi
-- vielleicht (adverb, rank 33, very-common) — en: perhaps, maybe · vi: TODO:vi
-- mögen (verb, rank 34, very-common) — en: to like (something or someone) · vi: TODO:vi
-- schonen (verb, rank 35, very-common) — en: to spare (not harm) · vi: TODO:vi
-- brauchen (verb, rank 36, very-common) — en: to need, to be in need of, to require · vi: TODO:vi
-- nehmen (verb, rank 37, very-common) — en: to take (something into one's possession or on one's body) · vi: TODO:vi
-- nie (adverb, rank 38, very-common) — en: never, never at all (referring to an indefinite period of time) · vi: TODO:vi
-- gut (adjective, rank 39, very-common) — en: good (acting in the interest of what is beneficial, ethical, or moral) · vi: TODO:vi
-- einen (verb, rank 40, very-common) — en: to unite · vi: TODO:vi
+- finden (verb, rank 29, very-common) — en: to find; to discover · vi: TODO:vi
+- vielleicht (adverb, rank 30, very-common) — en: perhaps, maybe · vi: TODO:vi
+- ganz (adjective, rank 31, very-common) — en: entire, whole, complete · vi: TODO:vi
+- mögen (verb, rank 32, very-common) — en: to like (something or someone) · vi: TODO:vi
+- schonen (verb, rank 33, very-common) — en: to spare (not harm) · vi: TODO:vi
+- Jetzt (noun, rank 34, very-common) — en: the present; now · vi: TODO:vi
+- nehmen (verb, rank 35, very-common) — en: to take (something into one's possession or on one's body) · vi: TODO:vi
+- nie (adverb, rank 36, very-common) — en: never, never at all (referring to an indefinite period of time) · vi: TODO:vi
+- einen (verb, rank 37, very-common) — en: to unite · vi: TODO:vi
+- brauchen (verb, rank 38, very-common) — en: to need, to be in need of, to require · vi: TODO:vi
+- glauben (verb, rank 39, very-common) — en: to believe something (to consider true) · vi: TODO:vi
+- einmal (adverb, rank 40, very-common) — en: once, one time (one and only one time) · vi: TODO:vi
