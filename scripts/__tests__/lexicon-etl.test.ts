@@ -296,4 +296,40 @@ describe("German nouns (capitalised) against a lower-case frequency list", () =>
     expect(tag.frequency!.perMillion).toBeGreaterThan(tagen?.frequency?.perMillion ?? 0);
     expect(find("gehen", "verb")).toBeDefined();
   });
+
+  // Shapes copied from the kaikki German extract (2026-10-28): the head
+  // template names the standard gender first; sense tags mix in regional ones.
+  test("gender from the de-noun head (das Taxi, das Virus, der Name), adjectival nouns (der Deutsche), and a dated interjection never zeroes the adverb nicht", async () => {
+    const dir = path.join(scratch, "de-heads", "de");
+    mkdirSync(dir, { recursive: true });
+    const de = (o: Record<string, unknown>) => JSON.stringify({ lang_code: "de", ...o });
+    const lines = [
+      de({ word: "Taxi", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "n:m[Switzerland, but rare],(s),s:Taxen" } }], senses: [{ glosses: ["taxi, cab"], tags: ["Switzerland", "masculine", "neuter", "strong"] }] }),
+      de({ word: "Virus", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "n:m,,Viren:Vira[taxonomic rank]" } }], senses: [{ glosses: ["virus"], tags: ["masculine", "neuter"] }] }),
+      de({ word: "Name", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "m,ns.weak" } }], senses: [{ glosses: ["name"] }] }),
+      de({ word: "Deutscher", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "+", f: "+" } }], senses: [{ glosses: ["German (male or unspecified)"], tags: ["adjectival", "masculine"] }] }),
+      de({ word: "Kuchen", pos: "noun", senses: [{ glosses: ["cake"], tags: ["masculine", "neuter"] }] }),
+      de({ word: "nicht", pos: "adv", head_templates: [{ name: "head", args: { "1": "de", "2": "adverb" } }], senses: [{ glosses: ["not, non- (negates the meaning of a verb)"], examples: [{ text: "Ich weiß es nicht.", english: "I don't know." }] }] }),
+      de({ word: "nicht", pos: "intj", head_templates: [{ name: "head", args: { "1": "de", "2": "interjection", head: "nicht?" } }], senses: [{ glosses: ["right?; is it?; is it not?"], tags: ["dated", "formal"] }] }),
+    ];
+    const scan = await scanKaikki(write("de-heads.jsonl", lines.join("\n")), { lang: "de", sourceId: "kaikki-en", glossLanguage: "en" });
+    expect(scan.lemmas.get("Taxi|noun")?.gender).toBe("neuter");
+    expect(scan.lemmas.get("Virus|noun")?.gender).toBe("neuter");
+    expect(scan.lemmas.get("Name|noun")?.gender).toBe("masculine");
+    expect(scan.lemmas.get("Deutscher|noun")).toMatchObject({ gender: "masculine", definiteForm: "Deutsche" });
+    expect(scan.lemmas.get("Kuchen|noun")?.gender).toBe("both"); // two genders on a sense, no head: neither is proven
+
+    writeFileSync(path.join(dir, "kaikki-en-de.jsonl"), lines.join("\n"));
+    writeFileSync(path.join(dir, "frequencywords-de.txt"), "nicht 500\ntaxi 40\ndeutscher 30\n");
+    writeFileSync(path.join(dir, "wordfreq-de.csv"), "word,zipf\nnicht,6.5\n");
+    writeFileSync(path.join(dir, "kaikki-vi-de.jsonl"), "");
+    for (const f of ["tatoeba-de-sentences.tsv", "tatoeba-de-links-en.tsv", "tatoeba-de-links-vi.tsv", "tatoeba-eng-sentences.tsv", "tatoeba-vie-sentences.tsv"]) writeFileSync(path.join(dir, f), "");
+    const ids = new Map<string, { sha256: string; bytes: number; retrievedAt: string } | null>();
+    for (const src of sourcesFor("de")) ids.set(src.artifactFilename, { sha256: "c".repeat(64), bytes: 1, retrievedAt: "2026-10-28" });
+    const result = await deriveLanguage({ lang: "de", dir, manifest: buildManifestV2("de", ids, null), poolSize: 10 });
+    const pool = (result.files["candidate-pool.json"] as { entries: { lemma: string; partOfSpeech: string; definiteForm?: string; frequency: { perMillion: number } | null }[] }).entries;
+    const nicht = pool.find((e) => e.lemma === "nicht" && e.partOfSpeech === "adverb");
+    expect(nicht?.frequency?.perMillion ?? 0).toBeGreaterThan(0);
+    expect(pool.find((e) => e.lemma === "Deutscher")?.definiteForm).toBe("Deutsche");
+  });
 });

@@ -73,6 +73,12 @@ export type KaikkiLemma = {
   pos: PartOfSpeech;
   sourcePos: string;
   gender?: "masculine" | "feminine" | "neuter" | "both";
+  /**
+   * The form a definite article takes when it differs from the lemma:
+   * German adjectival nouns (`de-noun|+`) are cited strong ("Deutscher",
+   * "Beamter") but read weak after der/das ("der Deutsche").
+   */
+  definiteForm?: string;
   ipa?: string;
   /** First-sense glosses (one string per sense, cleaned), in sense order. */
   glosses: string[];
@@ -158,10 +164,36 @@ function genderFromTags(tags: Iterable<string>): KaikkiLemma["gender"] | undefin
     else if (t === "feminine") f = true;
     else if (t === "neuter") n = true;
   }
-  if (n && !m && !f) return "neuter";
-  if (m && f) return "both";
+  // Two genders on one sense (Taxi: neuter + Swiss masculine) prove neither: "both", never the first one read.
+  if ([m, f, n].filter(Boolean).length > 1) return "both";
+  if (n) return "neuter";
   if (m) return "masculine";
   if (f) return "feminine";
+  return undefined;
+}
+
+const DE_GENDER: Record<string, "masculine" | "feminine" | "neuter"> = { m: "masculine", f: "feminine", n: "neuter" };
+
+/**
+ * German `de-noun` head: arg 1 starts with the standard gender; alternates
+ * follow after ":" with their region in brackets ("n:m[Switzerland, but
+ * rare]" — das Taxi). "+" marks an adjectival noun, gendered by its strong
+ * ending (Deutscher m, Deutsche f, Junges n).
+ */
+export function germanHead(entry: KaikkiEntry): { gender?: "masculine" | "feminine" | "neuter"; definiteForm?: string } | undefined {
+  for (const h of entry.head_templates ?? []) {
+    if (h.name !== "de-noun") continue;
+    const arg = (h.args?.["1"] ?? "").trim();
+    if (arg.startsWith("+")) {
+      const w = entry.word;
+      if (/er$/.test(w)) return { gender: "masculine", definiteForm: w.slice(0, -1) };
+      if (/es$/.test(w)) return { gender: "neuter", definiteForm: w.slice(0, -1) };
+      if (/e$/.test(w)) return { gender: "feminine" };
+      return {};
+    }
+    const g = DE_GENDER[arg.slice(0, 1)];
+    if (g && !/^[mfn]\w/.test(arg)) return { gender: g };
+  }
   return undefined;
 }
 
@@ -368,11 +400,14 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
         if (t.code === opts.keepTranslationCode && typeof t.word === "string") viTranslations.push(t.word);
       }
     }
+    // German: the head template names the STANDARD gender first; sense tags mix in regional ones.
+    const deHead = opts.lang === "de" && pos === "noun" ? germanHead(entry) : undefined;
     const record: KaikkiLemma = {
       word: entry.word,
       pos,
       sourcePos: entry.pos,
-      gender: pos === "noun" ? (genderFromTags(senseTags) ?? genderFromHead(entry)) : undefined,
+      gender: pos === "noun" ? (deHead?.gender ?? genderFromTags(senseTags) ?? genderFromHead(entry)) : undefined,
+      ...(deHead?.definiteForm ? { definiteForm: deHead.definiteForm } : {}),
       ipa: ipaOf(entry),
       glosses,
       senseCount: lemmaSenses.length,
@@ -403,6 +438,7 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
       existing.topics = [...new Set([...existing.topics, ...record.topics])].sort();
       existing.viTranslations.push(...record.viTranslations);
       if (!existing.gender && record.gender) existing.gender = record.gender;
+      if (!existing.definiteForm && record.definiteForm) existing.definiteForm = record.definiteForm;
       if (!existing.ipa && record.ipa) existing.ipa = record.ipa;
       for (const [k, v] of Object.entries(record.readings)) if (!existing.readings[k]) existing.readings[k] = v;
     } else {

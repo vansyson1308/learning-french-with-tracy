@@ -357,7 +357,8 @@ for (const sel of selected) {
   let surface = sel.surface;
   if (surface === "" && e) {
     const article = pos === "noun" && gender && gender !== "both" && gender !== "unknown" ? ARTICLE_OF[lang]?.[gender] : undefined;
-    surface = article ? `${article} ${e.lemma}` : e.lemma;
+    // An adjectival noun reads weak after the article: der Deutsche (lemma Deutscher).
+    surface = article ? `${article} ${e.definiteForm ?? e.lemma}` : e.lemma;
   }
   if (seenSurfaces.has(surface)) continue;
   seenSurfaces.add(surface);

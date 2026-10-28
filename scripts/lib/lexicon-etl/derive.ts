@@ -76,6 +76,8 @@ export type PoolEntry = {
   partOfSpeech: PartOfSpeech;
   sourcePos: string;
   gender: "masculine" | "feminine" | "neuter" | "both" | "unknown" | null;
+  /** Definite-article form when it differs from the lemma (German adjectival nouns: Deutscher → der Deutsche). */
+  definiteForm?: string;
   ipa: string | null;
   glosses: { en: string[]; vi: string[] };
   examples: CandidateExample[];
@@ -208,9 +210,11 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
     // A closed-class (function) lemma identical to the form absorbs the
     // whole count: "yo", "no", "que" are pronouns/adverbs/conjunctions
     // first; their marginal noun readings never ride on the form's count.
+    // Only a PLAIN function reading absorbs: the dated interjection
+    // "nicht?" must not zero the adverb "nicht" (not).
     const functionDirect = [...candidates].some((key) => {
       const entry = lemmas.get(key)!;
-      return entry.word === row.word && FUNCTION_POS.includes(entry.pos);
+      return entry.word === row.word && FUNCTION_POS.includes(entry.pos) && entry.usageTags.length === 0;
     });
     const weights = [...candidates].map((key) => {
       const entry = lemmas.get(key)!;
@@ -402,6 +406,7 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
       partOfSpeech: p.pos,
       sourcePos: entry.sourcePos,
       gender: p.pos === "noun" ? (entry.gender ?? "unknown") : null,
+      ...(p.pos === "noun" && entry.definiteForm ? { definiteForm: entry.definiteForm } : {}),
       ipa: entry.ipa ?? null,
       glosses: { en: [...new Set(enGlosses)].slice(0, 3), vi: [...new Set(viGlosses)].slice(0, 3) },
       examples: examples.slice(0, 4),
