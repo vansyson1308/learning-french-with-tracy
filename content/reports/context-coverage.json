@@ -1,6 +1,6 @@
 {
   "generator": "scripts/lib/context-coverage.ts",
-  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it",
+  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it — counted only from sources whose band is at or below the lexeme's CEFR level (lesson: its unit's band; reading/clip: the earliest unit using it, else the level's last band; story: its band)",
   "level": "A1",
   "syllabus": 126,
   "withContext": 126,
@@ -11,96 +11,112 @@
     "listening": 62,
     "stories": 116
   },
+  "aboveLevelOnly": 0,
   "units": [
     {
       "unitId": "fr-en:unit-1",
       "total": 12,
       "withContext": 12,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-2",
       "total": 10,
       "withContext": 10,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-3",
       "total": 8,
       "withContext": 8,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-4",
       "total": 12,
       "withContext": 12,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-5",
       "total": 12,
       "withContext": 12,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-a",
       "total": 17,
       "withContext": 17,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-b",
       "total": 7,
       "withContext": 7,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-c",
       "total": 13,
       "withContext": 13,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-d",
       "total": 6,
       "withContext": 6,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-e",
       "total": 2,
       "withContext": 2,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-f",
       "total": 4,
       "withContext": 4,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-g",
       "total": 7,
       "withContext": 7,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-h",
       "total": 6,
       "withContext": 6,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-i",
       "total": 6,
       "withContext": 6,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "fr-en:unit-j",
       "total": 4,
       "withContext": 4,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     }
   ]
 }

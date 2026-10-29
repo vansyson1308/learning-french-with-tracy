@@ -263,7 +263,7 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
       const stories = safeLoadStories(lang);
       if (lexicon && syllabus && ids) {
         const lookup = { ...(loadLegacyMaps(packs)[lang] ?? {}), ...ids };
-        const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
+        const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes: [], receptionVoices: null }).analyses.map((a) => ({ band: a.band, lexemes: a.lexemes })) : [];
         const coverage = computeContextCoverage({ syllabus, packs: mine.map((p) => p.pack), gradeTargets: (e) => gradeTargetsFor(e, lookup), readings, listening, stories: storyLexemes });
         errors.push(...contextGateErrors(lang, coverage, readJson(contextGatePath(lang)) as ContextGate));
       }
@@ -857,7 +857,7 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
   const ctxIds = loadIdMaps(packs)[lang];
   if (lexicon && ctxSyllabus && ctxIds) {
     const lookup = { ...(loadLegacyMaps(packs)[lang] ?? {}), ...ctxIds };
-    const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus: ctxSyllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
+    const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus: ctxSyllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes: [], receptionVoices: null }).analyses.map((a) => ({ band: a.band, lexemes: a.lexemes })) : [];
     files.push({
       relPath: `${reportsDir}/context-coverage.json`,
       contents: compileContextCoverageReport({

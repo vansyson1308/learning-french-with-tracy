@@ -1,6 +1,6 @@
 {
   "generator": "scripts/lib/context-coverage.ts",
-  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it",
+  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it — counted only from sources whose band is at or below the lexeme's CEFR level (lesson: its unit's band; reading/clip: the earliest unit using it, else the level's last band; story: its band)",
   "level": "A1",
   "syllabus": 627,
   "withContext": 627,
@@ -9,146 +9,170 @@
     "lessons": 150,
     "readings": 86,
     "listening": 104,
-    "stories": 602
+    "stories": 601
   },
+  "aboveLevelOnly": 0,
   "units": [
     {
       "unitId": "es-vi:unit-1",
       "total": 12,
       "withContext": 12,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-2",
       "total": 15,
       "withContext": 15,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-3",
       "total": 16,
       "withContext": 16,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-4",
       "total": 23,
       "withContext": 23,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-5",
       "total": 43,
       "withContext": 43,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-a",
       "total": 11,
       "withContext": 11,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-b",
       "total": 141,
       "withContext": 141,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-c",
       "total": 24,
       "withContext": 24,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-d",
       "total": 56,
       "withContext": 56,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-e",
       "total": 6,
       "withContext": 6,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-f",
       "total": 5,
       "withContext": 5,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-g",
       "total": 5,
       "withContext": 5,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-h",
       "total": 5,
       "withContext": 5,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-i",
       "total": 2,
       "withContext": 2,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-j",
       "total": 57,
       "withContext": 57,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-l",
       "total": 50,
       "withContext": 50,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-n",
       "total": 81,
       "withContext": 81,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-o",
       "total": 1,
       "withContext": 1,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-p",
       "total": 26,
       "withContext": 26,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-q",
       "total": 7,
       "withContext": 7,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-t",
       "total": 14,
       "withContext": 14,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-u",
       "total": 1,
       "withContext": 1,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     },
     {
       "unitId": "es-vi:unit-v",
       "total": 26,
       "withContext": 26,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     }
   ]
 }
