@@ -859,3 +859,7 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      lexicon-db:de:de-lexicon-v3-1151654113acceb4.db
 - compile: missing  lexicon-db:de-en:de-en-lexicon-v3-2fe2e4397c15784c.db
 - compile: missing  lexicon-db:de:de-lexicon-v3-28c29eadf27ceaa2.db
+
+## 2026-10-29 — exam-engine-v2: simulatedIndividually on the DELE and Goethe speaking sections (QC 2026-10-29 §2; French unchanged)
+- compile: changed  src/content/exam/de-exam-tracks.json
+- compile: changed  src/content/exam/es-exam-tracks.json

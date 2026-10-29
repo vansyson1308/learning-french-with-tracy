@@ -314,7 +314,7 @@ track = {
   {"id": "writing", "skill": "writing", "title": T("Schreiben — Viết"), "minutes": 20, "maxPoints": 25, "tasks": [
     task("t1", "Teil 1 — Điền phiếu", "Đọc tình huống và điền năm thông tin còn thiếu vào phiếu cho một người khác.", "form", 1, points=5),
     task("t2", "Teil 2 — Một tin nhắn ngắn", "Viết một tin nhắn khoảng 30 từ theo ba gợi ý, có lời chào và lời chào kết.", "short_text", 1, answerWords={"min": 20, "max": 45}, points=10)]},
-  {"id": "speaking", "skill": "speaking", "title": T("Sprechen — Nói"), "minutes": 15, "maxPoints": 25, "tasks": [
+  {"id": "speaking", "skill": "speaking", "title": T("Sprechen — Nói"), "minutes": 15, "maxPoints": 25, "simulatedIndividually": True, "tasks": [
     task("t1", "Teil 1 — Giới thiệu bản thân", "Tự giới thiệu theo các từ khoá trên thẻ. (Trong kỳ thi thật còn có đánh vần một từ và đọc lại một con số.)", "monologue", 1, speakingMinutes={"min": 1, "max": 2}, points=3),
     task("t2", "Teil 2 — Hỏi và trả lời theo chủ đề", "Trả lời câu hỏi của bạn thi và tự hỏi lại theo thẻ từ.", "conversation", 1, speakingMinutes={"min": 1, "max": 3}, points=6),
     task("t3", "Teil 3 — Nhờ và đáp lại", "Lịch sự nhờ một việc theo thẻ tranh và đáp lại lời nhờ.", "conversation", 1, speakingMinutes={"min": 1, "max": 3}, points=6)]},

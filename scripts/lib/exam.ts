@@ -22,6 +22,7 @@ const TYPES_BY_SKILL: Record<string, readonly string[]> = {
   listening: ["listeningComprehension", "dictation"],
   writing: ["guidedWriting", "simpleForm"],
   speaking: ["speakProduction", "speakRepetition", "interactionScenario"],
+  structures: ["fillBlank", "select", "articleSelect", "conjugationCloze", "typeAnswer"],
 };
 /** Exercise types each task format may use. */
 const TYPES_BY_FORMAT: Record<string, readonly string[]> = {
@@ -34,6 +35,8 @@ const TYPES_BY_FORMAT: Record<string, readonly string[]> = {
   short_text: ["guidedWriting"],
   monologue: ["speakProduction", "speakRepetition"],
   conversation: ["interactionScenario"],
+  cloze: ["fillBlank", "select", "articleSelect"],
+  formCompletion: ["conjugationCloze", "typeAnswer", "fillBlank"],
 };
 
 /** Wording an exam track may never use about a learner's result (any native language). */
@@ -79,7 +82,8 @@ function nativeRecords(track: ExamTrack): { where: string; record: Record<string
       out.push({ where: `${track.id}/${s.id}/${t.id}.title`, record: t.title }, { where: `${track.id}/${s.id}/${t.id}.instruction`, record: t.instruction });
     }
   }
-  for (const g of track.passRule.groups) out.push({ where: `${track.id}/${g.id}.title`, record: g.title });
+  for (const g of track.passRule.groups ?? []) out.push({ where: `${track.id}/${g.id}.title`, record: g.title });
+  if (track.passRule.total) out.push({ where: `${track.id}/passRule.total.title`, record: track.passRule.total.title });
   for (const b of track.readiness.bands) {
     out.push({ where: `${track.id}/${b.id}.label`, record: b.label }, { where: `${track.id}/${b.id}.message`, record: b.message });
   }
@@ -117,9 +121,27 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
       if (t.speakingMinutes && s.skill !== "speaking") err(`${s.id}/${t.id}: speakingMinutes only applies to speaking tasks`);
       for (const band of [t.stimulusWords, t.answerWords]) if (band && band.min > band.max) err(`${s.id}/${t.id}: word band min > max`);
     }
+    const partMinutes = s.tasks.reduce((n, t) => n + (t.minutes ?? 0), 0);
+    if (partMinutes > s.minutes) err(`${s.id}: its parts' minutes (${partMinutes}) exceed the section's ${s.minutes}`);
+    if (s.simulatedIndividually && s.skill !== "speaking") err(`${s.id}: simulatedIndividually only applies to a speaking section`);
+  }
+  // Every section counts towards some rule: a group, its own minimum, or the total.
+  const covered = new Set<string>(track.passRule.total ? track.sections.map((s) => s.id) : []);
+  const minimumOf = new Set<string>();
+  for (const m of track.passRule.sectionMinimums ?? []) {
+    const s = sections.get(m.section);
+    if (!s) err(`sectionMinimums: unknown section ${m.section}`);
+    else if (m.min > s.maxPoints) err(`sectionMinimums: ${m.section} min ${m.min} exceeds its maxPoints (${s.maxPoints})`);
+    if (minimumOf.has(m.section)) err(`sectionMinimums: ${m.section} is listed twice`);
+    minimumOf.add(m.section);
+    covered.add(m.section);
+  }
+  if (track.passRule.total) {
+    const max = track.sections.reduce((n, s) => n + s.maxPoints, 0);
+    if (track.passRule.total.min > max) err(`total: min ${track.passRule.total.min} exceeds the exam's maximum (${max})`);
   }
   const grouped = new Map<string, string>();
-  for (const g of track.passRule.groups) {
+  for (const g of track.passRule.groups ?? []) {
     let sum = 0;
     for (const sid of g.sections) {
       const s = sections.get(sid);
@@ -133,7 +155,7 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
     }
     if (g.min > sum) err(`${g.id}: min ${g.min} exceeds the group's maximum (${sum})`);
   }
-  for (const s of track.sections) if (!grouped.has(s.id)) err(`section ${s.id} belongs to no pass-rule group`);
+  for (const s of track.sections) if (!grouped.has(s.id) && !covered.has(s.id)) err(`section ${s.id} belongs to no pass-rule group`);
 
   // Readiness: ordered bands ending at 0, estimate wording, no pass claims.
   const bands = track.readiness.bands;
@@ -296,6 +318,7 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
       ...(s.preparationMinutes !== undefined ? { preparationMinutes: s.preparationMinutes } : {}),
       maxPoints: s.maxPoints,
       ...(s.playsPerRecording !== undefined ? { playsPerRecording: s.playsPerRecording } : {}),
+      ...(s.simulatedIndividually ? { simulatedIndividually: true } : {}),
       tasks: s.tasks.map((t) => ({
         id: t.id,
         title: text(t.title, `${track.id}/${s.id}/${t.id}.title`),
@@ -306,16 +329,24 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
         ...(t.speakingMinutes !== undefined ? { speakingMinutes: t.speakingMinutes } : {}),
         ...(t.points !== undefined ? { points: t.points } : {}),
         ...(t.playsPerRecording !== undefined ? { playsPerRecording: t.playsPerRecording } : {}),
+        ...(t.minutes !== undefined ? { minutes: t.minutes } : {}),
       })),
     })),
     passRule: {
-      groups: track.passRule.groups.map((g) => ({
+      groups: (track.passRule.groups ?? []).map((g) => ({
         id: g.id,
         title: text(g.title, `${track.id}/${g.id}.title`),
         sections: g.sections,
         min: g.min,
         max: g.sections.reduce((n, sid) => n + (track.sections.find((s) => s.id === sid)?.maxPoints ?? 0), 0),
       })),
+      ...(track.passRule.sectionMinimums
+        ? { sectionMinimums: track.passRule.sectionMinimums.map((m) => ({ sectionId: m.section, min: m.min, max: track.sections.find((s) => s.id === m.section)?.maxPoints ?? 0 })) }
+        : {}),
+      ...(track.passRule.total
+        ? { total: { title: text(track.passRule.total.title, `${track.id}/passRule.total.title`), min: track.passRule.total.min, max: track.sections.reduce((n, s) => n + s.maxPoints, 0) } }
+        : {}),
+      ...(track.passRule.everySectionTaken ? { everySectionTaken: true } : {}),
     },
     readiness: {
       bands: track.readiness.bands.map((b) => ({ id: b.id, minGroupShare: b.minGroupShare, label: text(b.label, `${track.id}/${b.id}.label`), message: text(b.message, `${track.id}/${b.id}.message`) })),

@@ -122,6 +122,8 @@ export type MessageKey =
   | "exam.practice.start"
   | "exam.results.groupIncomplete"
   | "exam.results.groupLine"
+  | "exam.results.missedLine"
+  | "exam.results.missedTitle"
   | "exam.results.mockTitle"
   | "exam.results.practiceTitle"
   | "exam.results.practiceWeak"
@@ -129,6 +131,8 @@ export type MessageKey =
   | "exam.results.sectionLine"
   | "exam.results.sectionNotTaken"
   | "exam.results.weakTitle"
+  | "exam.section.partTiming"
+  | "exam.section.simulatedIndividually"
   | "exam.section.timing"
   | "exam.section.timingWithPrep"
   | "exam.speaking.skip"
@@ -522,4 +526,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 520;
+export const MESSAGE_KEY_COUNT = 524;

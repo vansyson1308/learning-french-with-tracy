@@ -1,7 +1,8 @@
 /**
- * Exam-track results (P3d): section points, score groups against the
- * format's threshold, and an ESTIMATED readiness band — never "you will
- * pass". Incomplete sittings (speaking unavailable) get no band at all.
+ * Exam-track results (P3d): section points, every pass-rule check against
+ * the format's threshold (groups, section minimums, total), each rule not
+ * reached, and an ESTIMATED readiness band — never "you will pass".
+ * Incomplete sittings (speaking unavailable) get no band at all.
  */
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
@@ -9,7 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { DuoButton } from "@/components/duo-button";
 import type { AssessmentItemResult } from "@/lib/assessment/types";
-import { examWeakAreas, scoreExam, type CompiledExamTrack, type ExamMode } from "@/lib/exam/engine";
+import { examRuleChecks, examWeakAreas, scoreExam, type CompiledExamTrack, type ExamMode } from "@/lib/exam/engine";
 import { useT } from "@/lib/i18n";
 import { makeThemedStyles, radius } from "@/lib/theme";
 
@@ -34,6 +35,9 @@ export function ExamResults({
   const { t } = useT();
   const score = scoreExam(track, itemResults);
   const weak = examWeakAreas(track, itemResults);
+  // Every declared rule, and the ones a measured sitting did not reach — no pass/fail wording.
+  const checks = examRuleChecks(track, score);
+  const missed = checks.filter((c) => c.met === false);
   const takenSections = score.sections.filter((s) => s.points !== null);
 
   return (
@@ -64,14 +68,24 @@ export function ExamResults({
         {mode === "mock" ? (
           <>
             <View style={styles.group}>
-              {score.groups.map((g) => (
-                <Text key={g.id} style={styles.row} testID={`exam-group-${g.id}`}>
-                  {g.points === null
-                    ? t("exam.results.groupIncomplete", { group: g.title })
-                    : t("exam.results.groupLine", { group: g.title, points: fmt(g.points), max: fmt(g.max), pass: fmt(g.min) })}
+              {checks.map((c) => (
+                <Text key={`${c.kind}-${c.id}`} style={styles.row} testID={c.kind === "group" ? `exam-group-${c.id}` : `exam-rule-${c.kind}-${c.id}`}>
+                  {c.points === null
+                    ? t("exam.results.groupIncomplete", { group: c.title })
+                    : t("exam.results.groupLine", { group: c.title, points: fmt(c.points), max: fmt(c.max), pass: fmt(c.min) })}
                 </Text>
               ))}
             </View>
+            {missed.length > 0 ? (
+              <View style={styles.group} testID="exam-rules-missed">
+                <Text style={styles.groupTitle}>{t("exam.results.missedTitle")}</Text>
+                {missed.map((c) => (
+                  <Text key={`${c.kind}-${c.id}`} style={styles.row}>
+                    • {t("exam.results.missedLine", { rule: c.title, points: fmt(c.points ?? 0), max: fmt(c.max), min: fmt(c.min) })}
+                  </Text>
+                ))}
+              </View>
+            ) : null}
             <View style={styles.band} testID="exam-readiness">
               {score.band ? (
                 <>

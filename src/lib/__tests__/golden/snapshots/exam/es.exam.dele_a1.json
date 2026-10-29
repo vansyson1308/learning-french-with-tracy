@@ -1,0 +1,795 @@
+{
+  "all-correct": {
+    "score": {
+      "band": {
+        "id": "ready_estimate",
+        "label": "Mức sẵn sàng ước tính: tốt",
+        "message": "Ở lần thi thử này, CẢ HAI nhóm điểm đều cao hơn ngưỡng 30/50 của định dạng thi một khoảng an toàn. Đây là mức sẵn sàng ước tính từ bài luyện của khóa học, không phải điểm thi thật.",
+        "minGroupShare": 0.7
+      },
+      "complete": true,
+      "groups": [
+        {
+          "id": "group_1",
+          "max": 50,
+          "min": 30,
+          "points": 50,
+          "reachesThreshold": true,
+          "title": "Nhóm 1 — Đọc và Viết"
+        },
+        {
+          "id": "group_2",
+          "max": 50,
+          "min": 30,
+          "points": 50,
+          "reachesThreshold": true,
+          "title": "Nhóm 2 — Nghe và Nói"
+        }
+      ],
+      "sections": [
+        {
+          "administered": 25,
+          "correct": 25,
+          "id": "reading",
+          "maxPoints": 25,
+          "points": 25,
+          "title": "Đọc hiểu"
+        },
+        {
+          "administered": 25,
+          "correct": 25,
+          "id": "listening",
+          "maxPoints": 25,
+          "points": 25,
+          "title": "Nghe hiểu"
+        },
+        {
+          "administered": 2,
+          "correct": 2,
+          "id": "writing",
+          "maxPoints": 25,
+          "points": 25,
+          "title": "Viết"
+        },
+        {
+          "administered": 3,
+          "correct": 3,
+          "id": "speaking",
+          "maxPoints": 25,
+          "points": 25,
+          "title": "Nói"
+        }
+      ]
+    },
+    "weakObjectives": [],
+    "weakTasks": []
+  },
+  "all-wrong": {
+    "score": {
+      "band": {
+        "id": "not_yet",
+        "label": "Mức sẵn sàng ước tính: cần luyện thêm",
+        "message": "Ít nhất một nhóm điểm còn dưới ngưỡng 30/50 của định dạng thi — trong kỳ thi thật, mỗi nhóm phải tự đạt ngưỡng. Hãy luyện các phần yếu bên dưới rồi thử lại với đề còn lại.",
+        "minGroupShare": 0
+      },
+      "complete": true,
+      "groups": [
+        {
+          "id": "group_1",
+          "max": 50,
+          "min": 30,
+          "points": 0,
+          "reachesThreshold": false,
+          "title": "Nhóm 1 — Đọc và Viết"
+        },
+        {
+          "id": "group_2",
+          "max": 50,
+          "min": 30,
+          "points": 0,
+          "reachesThreshold": false,
+          "title": "Nhóm 2 — Nghe và Nói"
+        }
+      ],
+      "sections": [
+        {
+          "administered": 25,
+          "correct": 0,
+          "id": "reading",
+          "maxPoints": 25,
+          "points": 0,
+          "title": "Đọc hiểu"
+        },
+        {
+          "administered": 25,
+          "correct": 0,
+          "id": "listening",
+          "maxPoints": 25,
+          "points": 0,
+          "title": "Nghe hiểu"
+        },
+        {
+          "administered": 2,
+          "correct": 0,
+          "id": "writing",
+          "maxPoints": 25,
+          "points": 0,
+          "title": "Viết"
+        },
+        {
+          "administered": 3,
+          "correct": 0,
+          "id": "speaking",
+          "maxPoints": 25,
+          "points": 0,
+          "title": "Nói"
+        }
+      ]
+    },
+    "weakObjectives": [
+      "es.obj.listening.short_dialogues",
+      "es.obj.reading.notices_info",
+      "es.obj.listening.short_info",
+      "es.obj.reading.short_texts",
+      "es.obj.listening.announcements",
+      "es.obj.reading.short_messages",
+      "es.obj.interaction.everyday_conversation",
+      "es.obj.speaking.describe",
+      "es.obj.speaking.self_intro",
+      "es.obj.writing.personal_info",
+      "es.obj.writing.short_message"
+    ],
+    "weakTasks": [
+      {
+        "missed": 5,
+        "sectionId": "listening",
+        "taskId": "t1",
+        "title": "Bài 1 — Năm hội thoại ngắn",
+        "total": 5
+      },
+      {
+        "missed": 5,
+        "sectionId": "listening",
+        "taskId": "t2",
+        "title": "Bài 2 — Năm thông báo",
+        "total": 5
+      },
+      {
+        "missed": 8,
+        "sectionId": "listening",
+        "taskId": "t3",
+        "title": "Bài 3 — Một người nói về ngày của mình",
+        "total": 8
+      },
+      {
+        "missed": 7,
+        "sectionId": "listening",
+        "taskId": "t4",
+        "title": "Bài 4 — Một cuộc trò chuyện",
+        "total": 7
+      },
+      {
+        "missed": 5,
+        "sectionId": "reading",
+        "taskId": "t1",
+        "title": "Bài 1 — Một lá thư",
+        "total": 5
+      },
+      {
+        "missed": 6,
+        "sectionId": "reading",
+        "taskId": "t2",
+        "title": "Bài 2 — Chín tin nhắn và thông báo",
+        "total": 6
+      },
+      {
+        "missed": 6,
+        "sectionId": "reading",
+        "taskId": "t3",
+        "title": "Bài 3 — Chín quảng cáo",
+        "total": 6
+      },
+      {
+        "missed": 8,
+        "sectionId": "reading",
+        "taskId": "t4",
+        "title": "Bài 4 — Một đoạn văn",
+        "total": 8
+      },
+      {
+        "missed": 1,
+        "sectionId": "speaking",
+        "taskId": "t1",
+        "title": "Bài 1 — Giới thiệu bản thân",
+        "total": 1
+      },
+      {
+        "missed": 1,
+        "sectionId": "speaking",
+        "taskId": "t2",
+        "title": "Bài 2 — Môi trường quanh bạn",
+        "total": 1
+      },
+      {
+        "missed": 1,
+        "sectionId": "speaking",
+        "taskId": "t3",
+        "title": "Bài 3 — Hội thoại với giám khảo",
+        "total": 1
+      },
+      {
+        "missed": 1,
+        "sectionId": "writing",
+        "taskId": "t1",
+        "title": "Bài 1 — Điền phiếu",
+        "total": 1
+      },
+      {
+        "missed": 1,
+        "sectionId": "writing",
+        "taskId": "t2",
+        "title": "Bài 2 — Bưu thiếp, email hoặc lời nhắn",
+        "total": 1
+      }
+    ]
+  },
+  "every-third-wrong": {
+    "score": {
+      "band": {
+        "id": "not_yet",
+        "label": "Mức sẵn sàng ước tính: cần luyện thêm",
+        "message": "Ít nhất một nhóm điểm còn dưới ngưỡng 30/50 của định dạng thi — trong kỳ thi thật, mỗi nhóm phải tự đạt ngưỡng. Hãy luyện các phần yếu bên dưới rồi thử lại với đề còn lại.",
+        "minGroupShare": 0
+      },
+      "complete": true,
+      "groups": [
+        {
+          "id": "group_1",
+          "max": 50,
+          "min": 30,
+          "points": 29.5,
+          "reachesThreshold": false,
+          "title": "Nhóm 1 — Đọc và Viết"
+        },
+        {
+          "id": "group_2",
+          "max": 50,
+          "min": 30,
+          "points": 33.7,
+          "reachesThreshold": true,
+          "title": "Nhóm 2 — Nghe và Nói"
+        }
+      ],
+      "sections": [
+        {
+          "administered": 25,
+          "correct": 17,
+          "id": "reading",
+          "maxPoints": 25,
+          "points": 17,
+          "title": "Đọc hiểu"
+        },
+        {
+          "administered": 25,
+          "correct": 17,
+          "id": "listening",
+          "maxPoints": 25,
+          "points": 17,
+          "title": "Nghe hiểu"
+        },
+        {
+          "administered": 2,
+          "correct": 1,
+          "id": "writing",
+          "maxPoints": 25,
+          "points": 12.5,
+          "title": "Viết"
+        },
+        {
+          "administered": 3,
+          "correct": 2,
+          "id": "speaking",
+          "maxPoints": 25,
+          "points": 16.7,
+          "title": "Nói"
+        }
+      ]
+    },
+    "weakObjectives": [
+      "es.obj.listening.short_dialogues",
+      "es.obj.reading.notices_info",
+      "es.obj.listening.short_info",
+      "es.obj.reading.short_texts",
+      "es.obj.listening.announcements",
+      "es.obj.reading.short_messages",
+      "es.obj.speaking.describe",
+      "es.obj.writing.personal_info"
+    ],
+    "weakTasks": [
+      {
+        "missed": 1,
+        "sectionId": "speaking",
+        "taskId": "t2",
+        "title": "Bài 2 — Môi trường quanh bạn",
+        "total": 1
+      },
+      {
+        "missed": 1,
+        "sectionId": "writing",
+        "taskId": "t1",
+        "title": "Bài 1 — Điền phiếu",
+        "total": 1
+      },
+      {
+        "missed": 2,
+        "sectionId": "listening",
+        "taskId": "t1",
+        "title": "Bài 1 — Năm hội thoại ngắn",
+        "total": 5
+      },
+      {
+        "missed": 3,
+        "sectionId": "listening",
+        "taskId": "t3",
+        "title": "Bài 3 — Một người nói về ngày của mình",
+        "total": 8
+      },
+      {
+        "missed": 3,
+        "sectionId": "reading",
+        "taskId": "t4",
+        "title": "Bài 4 — Một đoạn văn",
+        "total": 8
+      },
+      {
+        "missed": 2,
+        "sectionId": "reading",
+        "taskId": "t2",
+        "title": "Bài 2 — Chín tin nhắn và thông báo",
+        "total": 6
+      },
+      {
+        "missed": 2,
+        "sectionId": "reading",
+        "taskId": "t3",
+        "title": "Bài 3 — Chín quảng cáo",
+        "total": 6
+      },
+      {
+        "missed": 2,
+        "sectionId": "listening",
+        "taskId": "t4",
+        "title": "Bài 4 — Một cuộc trò chuyện",
+        "total": 7
+      },
+      {
+        "missed": 1,
+        "sectionId": "listening",
+        "taskId": "t2",
+        "title": "Bài 2 — Năm thông báo",
+        "total": 5
+      },
+      {
+        "missed": 1,
+        "sectionId": "reading",
+        "taskId": "t1",
+        "title": "Bài 1 — Một lá thư",
+        "total": 5
+      }
+    ]
+  },
+  "half-unanswered": {
+    "score": {
+      "band": {
+        "id": "not_yet",
+        "label": "Mức sẵn sàng ước tính: cần luyện thêm",
+        "message": "Ít nhất một nhóm điểm còn dưới ngưỡng 30/50 của định dạng thi — trong kỳ thi thật, mỗi nhóm phải tự đạt ngưỡng. Hãy luyện các phần yếu bên dưới rồi thử lại với đề còn lại.",
+        "minGroupShare": 0
+      },
+      "complete": true,
+      "groups": [
+        {
+          "id": "group_1",
+          "max": 50,
+          "min": 30,
+          "points": 25.5,
+          "reachesThreshold": false,
+          "title": "Nhóm 1 — Đọc và Viết"
+        },
+        {
+          "id": "group_2",
+          "max": 50,
+          "min": 30,
+          "points": 28.7,
+          "reachesThreshold": false,
+          "title": "Nhóm 2 — Nghe và Nói"
+        }
+      ],
+      "sections": [
+        {
+          "administered": 25,
+          "correct": 13,
+          "id": "reading",
+          "maxPoints": 25,
+          "points": 13,
+          "title": "Đọc hiểu"
+        },
+        {
+          "administered": 25,
+          "correct": 12,
+          "id": "listening",
+          "maxPoints": 25,
+          "points": 12,
+          "title": "Nghe hiểu"
+        },
+        {
+          "administered": 2,
+          "correct": 1,
+          "id": "writing",
+          "maxPoints": 25,
+          "points": 12.5,
+          "title": "Viết"
+        },
+        {
+          "administered": 3,
+          "correct": 2,
+          "id": "speaking",
+          "maxPoints": 25,
+          "points": 16.7,
+          "title": "Nói"
+        }
+      ]
+    },
+    "weakObjectives": [
+      "es.obj.listening.short_dialogues",
+      "es.obj.reading.notices_info",
+      "es.obj.listening.short_info",
+      "es.obj.reading.short_texts",
+      "es.obj.listening.announcements",
+      "es.obj.reading.short_messages",
+      "es.obj.speaking.describe",
+      "es.obj.writing.short_message"
+    ],
+    "weakTasks": [
+      {
+        "missed": 1,
+        "sectionId": "speaking",
+        "taskId": "t2",
+        "title": "Bài 2 — Môi trường quanh bạn",
+        "total": 1
+      },
+      {
+        "missed": 1,
+        "sectionId": "writing",
+        "taskId": "t2",
+        "title": "Bài 2 — Bưu thiếp, email hoặc lời nhắn",
+        "total": 1
+      },
+      {
+        "missed": 3,
+        "sectionId": "listening",
+        "taskId": "t1",
+        "title": "Bài 1 — Năm hội thoại ngắn",
+        "total": 5
+      },
+      {
+        "missed": 4,
+        "sectionId": "listening",
+        "taskId": "t4",
+        "title": "Bài 4 — Một cuộc trò chuyện",
+        "total": 7
+      },
+      {
+        "missed": 4,
+        "sectionId": "listening",
+        "taskId": "t3",
+        "title": "Bài 3 — Một người nói về ngày của mình",
+        "total": 8
+      },
+      {
+        "missed": 3,
+        "sectionId": "reading",
+        "taskId": "t2",
+        "title": "Bài 2 — Chín tin nhắn và thông báo",
+        "total": 6
+      },
+      {
+        "missed": 3,
+        "sectionId": "reading",
+        "taskId": "t3",
+        "title": "Bài 3 — Chín quảng cáo",
+        "total": 6
+      },
+      {
+        "missed": 4,
+        "sectionId": "reading",
+        "taskId": "t4",
+        "title": "Bài 4 — Một đoạn văn",
+        "total": 8
+      },
+      {
+        "missed": 2,
+        "sectionId": "listening",
+        "taskId": "t2",
+        "title": "Bài 2 — Năm thông báo",
+        "total": 5
+      },
+      {
+        "missed": 2,
+        "sectionId": "reading",
+        "taskId": "t1",
+        "title": "Bài 1 — Một lá thư",
+        "total": 5
+      }
+    ]
+  },
+  "speaking-not-taken": {
+    "score": {
+      "band": null,
+      "complete": false,
+      "groups": [
+        {
+          "id": "group_1",
+          "max": 50,
+          "min": 30,
+          "points": 31.5,
+          "reachesThreshold": true,
+          "title": "Nhóm 1 — Đọc và Viết"
+        },
+        {
+          "id": "group_2",
+          "max": 50,
+          "min": 30,
+          "points": null,
+          "reachesThreshold": null,
+          "title": "Nhóm 2 — Nghe và Nói"
+        }
+      ],
+      "sections": [
+        {
+          "administered": 25,
+          "correct": 19,
+          "id": "reading",
+          "maxPoints": 25,
+          "points": 19,
+          "title": "Đọc hiểu"
+        },
+        {
+          "administered": 25,
+          "correct": 19,
+          "id": "listening",
+          "maxPoints": 25,
+          "points": 19,
+          "title": "Nghe hiểu"
+        },
+        {
+          "administered": 2,
+          "correct": 1,
+          "id": "writing",
+          "maxPoints": 25,
+          "points": 12.5,
+          "title": "Viết"
+        },
+        {
+          "administered": 0,
+          "correct": 0,
+          "id": "speaking",
+          "maxPoints": 25,
+          "points": null,
+          "title": "Nói"
+        }
+      ]
+    },
+    "weakObjectives": [
+      "es.obj.listening.short_dialogues",
+      "es.obj.reading.notices_info",
+      "es.obj.listening.short_info",
+      "es.obj.reading.short_texts",
+      "es.obj.listening.announcements",
+      "es.obj.reading.short_messages",
+      "es.obj.writing.short_message"
+    ],
+    "weakTasks": [
+      {
+        "missed": 1,
+        "sectionId": "writing",
+        "taskId": "t2",
+        "title": "Bài 2 — Bưu thiếp, email hoặc lời nhắn",
+        "total": 1
+      },
+      {
+        "missed": 2,
+        "sectionId": "reading",
+        "taskId": "t3",
+        "title": "Bài 3 — Chín quảng cáo",
+        "total": 6
+      },
+      {
+        "missed": 2,
+        "sectionId": "listening",
+        "taskId": "t4",
+        "title": "Bài 4 — Một cuộc trò chuyện",
+        "total": 7
+      },
+      {
+        "missed": 2,
+        "sectionId": "listening",
+        "taskId": "t3",
+        "title": "Bài 3 — Một người nói về ngày của mình",
+        "total": 8
+      },
+      {
+        "missed": 2,
+        "sectionId": "reading",
+        "taskId": "t4",
+        "title": "Bài 4 — Một đoạn văn",
+        "total": 8
+      },
+      {
+        "missed": 1,
+        "sectionId": "listening",
+        "taskId": "t1",
+        "title": "Bài 1 — Năm hội thoại ngắn",
+        "total": 5
+      },
+      {
+        "missed": 1,
+        "sectionId": "listening",
+        "taskId": "t2",
+        "title": "Bài 2 — Năm thông báo",
+        "total": 5
+      },
+      {
+        "missed": 1,
+        "sectionId": "reading",
+        "taskId": "t1",
+        "title": "Bài 1 — Một lá thư",
+        "total": 5
+      },
+      {
+        "missed": 1,
+        "sectionId": "reading",
+        "taskId": "t2",
+        "title": "Bài 2 — Chín tin nhắn và thông báo",
+        "total": 6
+      }
+    ]
+  },
+  "writing-credit": {
+    "score": {
+      "band": {
+        "id": "ready_estimate",
+        "label": "Mức sẵn sàng ước tính: tốt",
+        "message": "Ở lần thi thử này, CẢ HAI nhóm điểm đều cao hơn ngưỡng 30/50 của định dạng thi một khoảng an toàn. Đây là mức sẵn sàng ước tính từ bài luyện của khóa học, không phải điểm thi thật.",
+        "minGroupShare": 0.7
+      },
+      "complete": true,
+      "groups": [
+        {
+          "id": "group_1",
+          "max": 50,
+          "min": 30,
+          "points": 45,
+          "reachesThreshold": true,
+          "title": "Nhóm 1 — Đọc và Viết"
+        },
+        {
+          "id": "group_2",
+          "max": 50,
+          "min": 30,
+          "points": 36.7,
+          "reachesThreshold": true,
+          "title": "Nhóm 2 — Nghe và Nói"
+        }
+      ],
+      "sections": [
+        {
+          "administered": 25,
+          "correct": 20,
+          "id": "reading",
+          "maxPoints": 25,
+          "points": 20,
+          "title": "Đọc hiểu"
+        },
+        {
+          "administered": 25,
+          "correct": 20,
+          "id": "listening",
+          "maxPoints": 25,
+          "points": 20,
+          "title": "Nghe hiểu"
+        },
+        {
+          "administered": 2,
+          "correct": 2,
+          "id": "writing",
+          "maxPoints": 25,
+          "points": 25,
+          "title": "Viết"
+        },
+        {
+          "administered": 3,
+          "correct": 2,
+          "id": "speaking",
+          "maxPoints": 25,
+          "points": 16.7,
+          "title": "Nói"
+        }
+      ]
+    },
+    "weakObjectives": [
+      "es.obj.listening.short_dialogues",
+      "es.obj.reading.notices_info",
+      "es.obj.reading.short_texts",
+      "es.obj.interaction.everyday_conversation",
+      "es.obj.listening.announcements",
+      "es.obj.listening.short_info",
+      "es.obj.reading.short_messages"
+    ],
+    "weakTasks": [
+      {
+        "missed": 1,
+        "sectionId": "speaking",
+        "taskId": "t3",
+        "title": "Bài 3 — Hội thoại với giám khảo",
+        "total": 1
+      },
+      {
+        "missed": 2,
+        "sectionId": "listening",
+        "taskId": "t4",
+        "title": "Bài 4 — Một cuộc trò chuyện",
+        "total": 7
+      },
+      {
+        "missed": 2,
+        "sectionId": "reading",
+        "taskId": "t4",
+        "title": "Bài 4 — Một đoạn văn",
+        "total": 8
+      },
+      {
+        "missed": 1,
+        "sectionId": "listening",
+        "taskId": "t1",
+        "title": "Bài 1 — Năm hội thoại ngắn",
+        "total": 5
+      },
+      {
+        "missed": 1,
+        "sectionId": "listening",
+        "taskId": "t2",
+        "title": "Bài 2 — Năm thông báo",
+        "total": 5
+      },
+      {
+        "missed": 1,
+        "sectionId": "reading",
+        "taskId": "t1",
+        "title": "Bài 1 — Một lá thư",
+        "total": 5
+      },
+      {
+        "missed": 1,
+        "sectionId": "reading",
+        "taskId": "t2",
+        "title": "Bài 2 — Chín tin nhắn và thông báo",
+        "total": 6
+      },
+      {
+        "missed": 1,
+        "sectionId": "reading",
+        "taskId": "t3",
+        "title": "Bài 3 — Chín quảng cáo",
+        "total": 6
+      },
+      {
+        "missed": 1,
+        "sectionId": "listening",
+        "taskId": "t3",
+        "title": "Bài 3 — Một người nói về ngày của mình",
+        "total": 8
+      }
+    ]
+  }
+}
