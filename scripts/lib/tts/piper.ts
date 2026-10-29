@@ -18,20 +18,19 @@ import { SHORT_TRANSCRIPT_UNITS, shq } from "../piper-audio";
  *
  * Audio run 40782316966: "du" still came out at 0.21 s at 1.35 (ASR heard
  * "Hm."). A bare two-letter token gets no utterance prosody from Piper, so a
- * short transcript is synthesised as a sentence ("du" → "du.") and a 1–2
- * letter one at a slower scale. The clip's transcript is unchanged.
+ * short transcript is synthesised as a sentence ("du" → "du.") at scale
+ * 1.7. Run 40809387767: "du." passed at 1.7, while "Sie." at 1.35 came out
+ * at 0.23 s, so every 1–3 letter transcript now uses 1.7. The clip's
+ * transcript is unchanged.
  */
-export const PIPER_SHORT_LENGTH_SCALE = 1.35;
-export const PIPER_TINY_LENGTH_SCALE = 1.7;
+export const PIPER_SHORT_LENGTH_SCALE = 1.7;
 const letterUnits = (text: string) => [...text].filter((c) => /[\p{L}\p{N}]/u.test(c)).length;
 /** What Piper is given for a transcript: a short one ends as a sentence. */
 export function piperInput(text: string): string {
   return letterUnits(text) <= SHORT_TRANSCRIPT_UNITS && !/[.!?…]\s*$/u.test(text) ? `${text}.` : text;
 }
 function lengthScaleFor(text: string): number | null {
-  const n = letterUnits(text);
-  if (n <= 2) return PIPER_TINY_LENGTH_SCALE;
-  return n <= SHORT_TRANSCRIPT_UNITS ? PIPER_SHORT_LENGTH_SCALE : null;
+  return letterUnits(text) <= SHORT_TRANSCRIPT_UNITS ? PIPER_SHORT_LENGTH_SCALE : null;
 }
 
 import type { DownloadItem, EnginesDoc, LicenseCard, SynthJob, TtsEngine, Voice } from "./types";

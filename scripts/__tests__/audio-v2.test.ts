@@ -17,7 +17,7 @@ import { existsSync, readFileSync } from "fs";
 
 import { readJson, safeResolve } from "../lib/pipeline";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type Voice } from "../lib/tts";
-import { PIPER_SHORT_LENGTH_SCALE, PIPER_TINY_LENGTH_SCALE, piperInput } from "../lib/tts/piper";
+import { PIPER_SHORT_LENGTH_SCALE, piperInput } from "../lib/tts/piper";
 
 const engines = loadEngines();
 
@@ -76,7 +76,7 @@ describe("engine abstraction", () => {
       buildSynthScript({ clips: [{ assetKey: "k", pipelineVersion: 3, segments: [{ voiceId: "es_MX-claude-high", speaker: null, text }] }], voices: [piperVoice], engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out" })
         .split("\n")
         .find((l) => l.includes("piper --model"))!;
-    expect(render("du")).toContain(`--length_scale ${PIPER_TINY_LENGTH_SCALE}`);
+    expect(render("du")).toContain(`--length_scale ${PIPER_SHORT_LENGTH_SCALE}`);
     expect(render("Sie")).toContain(`--length_scale ${PIPER_SHORT_LENGTH_SCALE}`);
     expect(render("Hola")).not.toContain("--length_scale");
     expect(render("Guten Tag")).not.toContain("--length_scale");
