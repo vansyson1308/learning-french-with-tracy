@@ -14,6 +14,7 @@ mkdir -p "$WORK/bin" "$WORK/home"
 # adb stub: answers every call, prints a device for `devices -l`.
 cat > "$WORK/bin/adb" <<'EOF'
 #!/usr/bin/env bash
+echo "$*" >> "$WORK/adb-calls"
 case "$*" in
   "devices -l") printf 'List of devices attached\nemulator-5554 device product:fake\n' ;;
   "exec-out screencap -p") printf 'PNG' ;;
@@ -59,6 +60,7 @@ check "each attempt ends within FLOW_TIMEOUT + 30 s" '[ "$elapsed" -le $(( 2 * (
 check "hang diagnostics folder" '[ -s "$OUT/logs/lesson_de-en.hang/adb-devices.txt" ] && [ -f "$OUT/logs/lesson_de-en.hang/activity-top.txt" ] && [ -s "$OUT/logs/lesson_de-en.hang/screen.png" ]'
 check "retry diagnostics folder" '[ -d "$OUT/logs/lesson_de-en.retry.hang" ]'
 check "maestro pinned to the device" 'grep -q -- "--device emulator-5554 test" "$OUT/logs/lesson_de-en.log"'
+check "a hang uninstalls the Maestro driver apps before the retry" 'grep -q "^uninstall dev.mobile.maestro.test$" "$WORK/adb-calls" && grep -q "^uninstall dev.mobile.maestro$" "$WORK/adb-calls"'
 
 # 2. Hangs once → the retry passes, and the row keeps the first failure.
 setup_case once
