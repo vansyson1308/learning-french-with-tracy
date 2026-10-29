@@ -52,6 +52,11 @@ on:
         required: false
         default: ""
         type: string
+      pending:
+        description: "other languages whose audio run comes next (e.g. de): only THEIR missing-audio errors are deferred; never the run's own language"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -73,6 +78,8 @@ jobs:
     # Whisper medium; 240 min was not enough (run 38650406518).
     timeout-minutes: 360
     env:
+      # QC 2026-10-29b §2.5 (scripts/lib/audio-pending.ts): read by validation and the bot-commit gate.
+      LFT_AUDIO_PENDING: ${{ inputs.pending }}
       DL: /tmp/audio-voices
       WAV: /tmp/audio-wav
       OUT: /tmp/audio-mp3
@@ -105,6 +112,8 @@ jobs:
         run: |
           set -euo pipefail
           case "$LANG_INPUT" in [a-z][a-z]|[a-z][a-z][a-z]) ;; *) echo "lang must be a 2-3 letter code"; exit 1;; esac
+          # pending never names the run's own language (its missing audio must always fail).
+          bun scripts/lib/audio-pending.ts
           ARGS=(--lang "$LANG_INPUT" --layer "$LAYER_INPUT")
           [ -n "$COURSES_INPUT" ] && ARGS+=(--courses "$COURSES_INPUT")
           if [ "$MODE_INPUT" = "generate" ]; then
