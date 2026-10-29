@@ -81,7 +81,21 @@ Branch / PR: `phase-4/de-vi` → `main`; PR: see `plan/STATUS.md`.
   - the "no authored pedagogy" examples moved to it-en.
 
 ### Gates
-_To be filled from the CI run on the audio bot commit._
+Real runs on GitHub Actions (PR #49). Nothing is claimed from a phone.
+
+- **Audio** (`audio.yml` generate, all, run 40815633778, head `5832d22`): success.
+  - The bot commit is `52417e1`.
+  - Strict QA (`content/reports/de/audio-quality.json`): 1,388 clips, 1,208 unique assets, **0 technical failures**, 11 sentence clips for review. They are re-synthesised in the next de run (QC 2026-10-29b §3.4). de audio is 5.63 MB.
+  - Before this success, four runs failed on 1–3 letter words below the 0.25 s floor: 40758568130 and 40769226097 (du, Sie), 40782316966 (du), 40809387767 (Sie). Each failure came only after 1–2.5 h of ASR. The pipeline fix (fail-fast checks, ASR cache, padding instead of slow-down) is on `phase-4/ai-review`.
+- **CI on `1176b76`** (run 40850339435, pull_request): every job green.
+  - Five timezones (UTC, America/Los_Angeles, Asia/Tokyo, Pacific/Pago_Pago, Pacific/Kiritimati): 1,689 unit/content tests, 63 runtime goldens, jest 12 suites / 79 tests, `content:check`, `audio:check` (3,511 baseline files), web e2e (web, guide, exam).
+  - export-size: green.
+  - **LanguageTool:**
+    - es-vi: 3,820 strings, 101 matches, all allowed, 0 failing, 0 stale.
+    - **de-vi:** 4,676 strings, 249 matches, all allowed, 0 failing, 0 stale. The gate took 84 s for the batched screen.
+    - The de-vi gate had never finished before: German costs about 0.9 s per request, and its 20-min job was cancelled every time. It now screens in batches and re-checks each touched string on its own (`0aa9493`).
+    - The first full run found 267 findings. 19 were fixed in the content (none of them carry audio). 248 are allowed with reasons in `content/de/languagetool-allow.json`, and no rule is disabled.
+- **Device acceptance on `1176b76`** (run 40850339650, pull_request): both APK builds green; 6 emulator shards (API 30 + 34 × core, lessons, backup-upgrade). See the PR checks for the final state. On `52417e1`, run 40831169624 was 6/6 green and run 40836205696 on `3065d2f` was 6/6 green.
 
 ### Device
 Not run. It needs the owner: OWNER-FINAL-CHECKLIST D, adapted to `de-vi`. The timed mock's Sprechen part needs a phone with German speech recognition.
