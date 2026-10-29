@@ -102,6 +102,27 @@ itself.
   `de-en` is `"role": "standalone"`. Its lessons and stored surfaces are
   unchanged. Old progress maps to the German ids through `legacySurfaces` in
   persist v8, so no new migration was needed.
+- **Content review is AI-simulated, not native (D-10, 2026-10-29).** The owner
+  decided not to hire native reviewers. The hired-teacher step in the entries
+  above is replaced by `plan/prompts/P-ai-review.md`:
+  - separate reviewer agents with fresh context, answer keys first;
+  - an independent 10 % audit with a 2 % P0+P1 bar;
+  - each course's result in `content/<lang>/REVIEW-AI.md`.
+  Results per course:
+  - **`fr-vi`:** 81 findings on the Vietnamese layer. Audit: 1.4 %. The French
+    text is the fr-en text, unchanged.
+  - **`es-vi`:** first audit 2.5 %, over the bar, so the course was reviewed a
+    second time and audited again (`content/es/REVIEW-AI.md`).
+  - **`de-vi`:** 196 findings. Audit: 0.6 %.
+
+  A course swaps its beta label for the honest note "Nội dung được AI kiểm duyệt
+  kỹ, chưa qua giáo viên bản ngữ…" (Learn tab and Licences screen) only once the
+  owner ticks its `ai-review:<course>` line in `plan/OWNER-FINAL-CHECKLIST.md` B.
+  The app never says a native speaker reviewed it.
+
+  Errors can remain: the audits are samples, and the reviewer and the author are
+  both models. Fixes that need a word outside the course lexicon are recorded as
+  "not applied", not forced in.
 - **Basic packs (P4a).** `de-en`, `es-en`, `it-en`, `ja-en`, `ko-en`, `pt-en` and
   `zh-en` are the inherited Lingo Lessons packs (`"basicPack": true` in their
   profiles). Each has 5 units (es-en 10) of one 11-step template: recognition
