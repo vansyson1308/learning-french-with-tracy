@@ -76,7 +76,7 @@ function dropPaths(exercise: Record<string, unknown>): Record<string, unknown> {
   return copy;
 }
 
-/** Rich source files of a target language that carry target text (lexicon examples included). */
+/** Rich source files of a target language that carry target text (lexicon examples and graded stories included). */
 export function targetSourcePaths(lang: string): string[] {
   const rels = [
     `content/${lang}/reception/reading.json`,
@@ -89,13 +89,43 @@ export function targetSourcePaths(lang: string): string[] {
     `content/${lang}/pedagogy/concepts.json`,
     `content/${lang}/pedagogy/paradigms.json`,
     `content/${lang}/lexicon/lexemes.json`,
+    storiesPath(lang),
     ...examTrackPaths(lang),
   ];
   return rels.filter((rel) => existsSync(safeResolve(rel)));
 }
 
-export function collectTargetStrings(courseId: string): TargetString[] {
+const storiesPath = (lang: string) => `content/${lang}/stories/stories.json`;
+
+/**
+ * Graded stories (QC 2026-10-29 evening §1): each story's target-language
+ * title and every sentence. The questions, blurbs and translations are
+ * native text only (StoryQuestionSchema: prompt and options are keyed by
+ * native code), and the file's function words, token map and voice cast
+ * are not prose, so nothing else is collected.
+ */
+export function collectStoryStrings(lang: string): TargetString[] {
+  const rel = storiesPath(lang);
+  if (!existsSync(safeResolve(rel))) return [];
+  const doc = readJson(rel) as { stories?: { id: string; title: string; sentences: { text: string }[] }[] };
+  const out: TargetString[] = [];
+  for (const story of doc.stories ?? []) {
+    out.push({ text: story.title, where: `${rel}:${story.id}.title`, key: "title" });
+    story.sentences.forEach((s, i) => out.push({ text: s.text, where: `${rel}:${story.id}#${i + 1}`, key: "text" }));
+  }
+  return out;
+}
+
+/**
+ * Which strings a run checks: the whole course (pack and every rich layer),
+ * or only the graded stories of its target (`--scope stories`; the French
+ * CI gate — see .github/workflows/ci.yml `languagetool`).
+ */
+export type TargetScope = "course" | "stories";
+
+export function collectTargetStrings(courseId: string, scope: TargetScope = "course"): TargetString[] {
   const pack = readJson(`content/courses/${courseId}.json`) as PackSource;
+  if (scope === "stories") return collectStoryStrings(pack.targetCode);
   const out: TargetString[] = [];
   for (const s of pack.sections) {
     for (const u of s.units) {
@@ -106,6 +136,10 @@ export function collectTargetStrings(courseId: string): TargetString[] {
     }
   }
   for (const rel of targetSourcePaths(pack.targetCode)) {
+    if (rel === storiesPath(pack.targetCode)) {
+      out.push(...collectStoryStrings(pack.targetCode));
+      continue;
+    }
     const doc = readJson(rel);
     // Lexicon: surfaces and example sentences only.
     if (rel.endsWith("lexicon/lexemes.json")) {

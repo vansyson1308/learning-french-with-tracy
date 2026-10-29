@@ -22,10 +22,40 @@
       "reason": "deliberate wrong option in es-vi:ua-l3-e6 (the answer is \"las ciudades\")"
     },
     {
+      "rule": "AGREEMENT_POSTPONED_ADJ",
+      "match": "cansada",
+      "text": "Laura no puede dormir, y llega al trabajo muy cansada.",
+      "reason": "story es.story.la_musica_de_al_lado: «cansada» agrees with the subject Laura (predicative adjective), not with «trabajo»"
+    },
+    {
+      "rule": "CAPITALIZATION_AFTER_QUESTION_MARK",
+      "match": " y",
+      "text": "Tras una hora de viaje, el coche hace «¡pum!» y deja de funcionar.",
+      "reason": "story es.story.el_coche_de_la_tia_rosa: «¡pum!» is a quoted onomatopoeia inside the sentence, so the sentence goes on in lower case"
+    },
+    {
+      "rule": "COMA_SUJETO_PREDICADO",
+      "match": ", es",
+      "text": "Iván, es la mejor fiesta del año.",
+      "reason": "story es.story.la_fiesta_en_la_playa: «Iván» is a vocative (the speaker addresses him), so the comma is required"
+    },
+    {
+      "rule": "COMA_SUJETO_PREDICADO",
+      "match": ", es",
+      "text": "Nuria, es la hora de comer. ¿Vienes?",
+      "reason": "story es.story.el_primer_dia_de_nuria (band-1, bundled audio): «Nuria» is a vocative, so the comma is required"
+    },
+    {
       "rule": "COMA_SUJETO_PREDICADO",
       "match": ", ha",
       "text": "Amiga, ha pasado demasiado tiempo.",
       "reason": "vocative comma (Amiga, …), not a comma between subject and predicate"
+    },
+    {
+      "rule": "COMA_SUJETO_PREDICADO",
+      "match": ", no",
+      "text": "Carmen, no es difícil.",
+      "reason": "story es.story.la_abuela_y_el_movil: «Carmen» is a vocative (the speaker addresses her), so the comma is required"
     },
     {
       "rule": "COMMA_ADVERB",
@@ -38,6 +68,12 @@
       "match": "Simplemente",
       "text": "Simplemente no sé qué decir...",
       "reason": "a comma after a sentence-initial adverb is optional in Spanish"
+    },
+    {
+      "rule": "COMMA_ADVERB",
+      "match": "Simplemente",
+      "text": "¿Cómo lo sabes? Simplemente no te gusta su cara.",
+      "reason": "story es.story.la_pelicula_del_domingo: a style suggestion; «simplemente» modifies the verb phrase here (\"you just don't like his face\"), so no comma"
     },
     {
       "rule": "EL_TILDE",
@@ -116,6 +152,16 @@
     },
     {
       "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Gretel",
+      "reason": "story es.story.el_juicio_de_la_bruja: Gretel of the tale «Hansel y Gretel», declared as a name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Hansel",
+      "reason": "story es.story.el_juicio_de_la_bruja: Hansel of the tale «Hansel y Gretel», declared as a name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
       "match": "Klava",
       "reason": "proper name in a lexicon example sentence"
     },
@@ -128,6 +174,11 @@
       "rule": "MORFOLOGIK_RULE_ES",
       "match": "Linh",
       "reason": "Vietnamese personal name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Mai",
+      "reason": "story es.story.la_sala_de_espera: Vietnamese personal name, declared as a name in the story's tokenMap"
     },
     {
       "rule": "MORFOLOGIK_RULE_ES",
@@ -149,6 +200,11 @@
       "match": "Noi",
       "text": "Vivo en Ha Noi.",
       "reason": "accepted typed alternative of es-vi:ub-l1-e8: the city Hà Nội typed without Vietnamese diacritics"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Toby",
+      "reason": "story es.story.el_perro_de_ana (band-1, bundled audio): the dog's name, declared as a name in the story's tokenMap"
     },
     {
       "rule": "MORFOLOGIK_RULE_ES",
@@ -347,9 +403,25 @@
     },
     {
       "rule": "MORFOLOGIK_RULE_ES",
+      "match": "ngon",
+      "reason": "story es.story.el_pho_de_linh: a quoted Vietnamese word («ngon», tasty) that the class repeats; declared as a name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
       "match": "nguyen",
       "text": "nguyen",
       "reason": "accepted-answer list, compared case-insensitively: a proper noun written in lower case"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "pho",
+      "reason": "story es.story.el_pho_de_linh: the Vietnamese dish (phở) written without diacritics, the usual spelling in Spanish menus; declared as a name"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "pum",
+      "text": "Tras una hora de viaje, el coche hace «¡pum!» y deja de funcionar.",
+      "reason": "story es.story.el_coche_de_la_tia_rosa: «¡pum!» is the onomatopoeia for a bang (RAE: pum)"
     },
     {
       "rule": "MORFOLOGIK_RULE_ES",
@@ -464,6 +536,12 @@
       "match": "Tu",
       "text": "Tu",
       "reason": "a single word in an option list or word bank: the article/possessive is correct there, no sentence context"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "el",
+      "text": "Después de unos minutos se abre una puerta, y entra… ¡el señor de la calle!",
+      "reason": "story es.story.la_entrevista_de_carla: the exclamation is part of the sentence, so it starts in lower case after «¡» (RAE: an exclamation inside a sentence does not open a new one)"
     },
     {
       "rule": "UPPERCASE_SENTENCE_START",

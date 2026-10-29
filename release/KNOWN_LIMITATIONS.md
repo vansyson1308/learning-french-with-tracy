@@ -83,7 +83,10 @@ itself.
   Vietnamese-native course until a reviewer signs
   `review: { native, date }` or the owner records the same explicit
   exception here. `content/fr/REVIEW-CHECKLIST.md` (3,217 strings) is the
-  reviewer's list for `fr-vi`.
+  reviewer's list for `fr-vi`. The LanguageTool gate checks only the French
+  graded stories (`--scope stories`, allow-list `content/fr/languagetool-allow.json`):
+  the rest of the French text is frozen byte-identical, so its findings
+  could be allowed but not fixed.
 - **`es-vi` (Spanish for Vietnamese speakers, P3d) ships unreviewed.** It
   compiles with `allowUnreviewed: true` in `content/courses/es-vi.profile.json`:
   its Spanish and Vietnamese text was authored with the P3c toolkit and has

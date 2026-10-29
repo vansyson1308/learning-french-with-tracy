@@ -1248,6 +1248,82 @@
       "match": "Kilo",
       "text": "Er wiegt über 80 Kilo.",
       "reason": "'Kilo' is normal spoken German for Kilogramm at A1"
+    },
+    {
+      "rule": "ACHTMALVIER",
+      "match": "zwei Mal",
+      "text": "Er spielt in einem Verein, zwei Mal in der Woche.",
+      "reason": "story de.story.das_grosse_spiel (band-1, bundled audio): Duden allows 'zwei Mal' next to 'zweimal' when the count is stressed (twice a week); it keeps the A1 lexemes zwei + das Mal, and 'zweimal' is not in the lexicon"
+    },
+    {
+      "rule": "ACHTMALVIER",
+      "match": "zwei Mal",
+      "text": "Ja. Und das nächste Mal schauen wir zwei Mal ins Internet!",
+      "reason": "story de.story.der_ausflug_im_regen: the stressed count (they will check the internet twice, a joke), for which Duden allows 'zwei Mal'; it echoes 'das nächste Mal' in the same line"
+    },
+    {
+      "rule": "DE_CASE",
+      "match": "Viel",
+      "text": "Dann singen alle ein Lied und rufen: Viel Gesundheit, Opa!",
+      "reason": "story de.story.ein_anruf_von_opa: direct speech after the colon (the stories write speech inside narration without quotation marks), so it starts with a capital"
+    },
+    {
+      "rule": "DE_CASE",
+      "match": "Kein",
+      "text": "Minh versteht nicht alles, aber er sagt: Kein Problem!",
+      "reason": "story de.story.der_neue_job (band-1, bundled audio): direct speech after the colon, so it starts with a capital"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Hoas",
+      "text": "Aber auf Hoas Teller liegen Wurst und Schinken!",
+      "reason": "story de.story.im_restaurant: the genitive -s of the Vietnamese name Hoa (Hoas Teller = Hoa's plate)"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Duc",
+      "reason": "Vietnamese personal name (Đức) in the graded stories der_erste_tag_im_kurs and eine_internationale_hochzeit, declared as a name"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Hung",
+      "reason": "Vietnamese personal name (Hùng) in the graded story die_einladung_zum_grillen, declared as a name"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Linh",
+      "reason": "Vietnamese personal name in the graded story das_praktikum, declared as a name"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Anh",
+      "reason": "Vietnamese personal name in the graded story auf_dem_markt, declared as a name"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Pham",
+      "reason": "Vietnamese family name (Phạm) in the graded story ein_anruf_von_opa, declared as a name"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Thao",
+      "reason": "Vietnamese personal name (Thảo) in the graded story beim_amt, declared as a name"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Vy",
+      "reason": "Vietnamese personal name in the graded story der_flohmarkt, declared as a name"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Nam",
+      "reason": "Vietnamese personal name in the graded story der_flohmarkt, declared as a name"
+    },
+    {
+      "rule": "SCHEISS_HAMMER_RIESEN",
+      "match": "super Idee",
+      "text": "Das ist eine super Idee! Wer kommt alles?",
+      "reason": "story de.story.ein_anruf_von_opa: a colloquial register flag only; the family answers Grandpa on the phone, where informal speech is natural"
     }
   ]
 }

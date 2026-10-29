@@ -9,7 +9,10 @@
  * or a developer machine, never ships in the app, and is therefore not in
  * content/sources/registry.json (the shipped-provenance registry).
  *
- *   bun scripts/languagetool.ts --course es-vi [--server http://localhost:8081] [--json <file>]
+ *   bun scripts/languagetool.ts --course es-vi [--scope course|stories] [--server http://localhost:8081] [--json <file>]
+ *
+ * `--scope stories` checks only the target's graded stories (titles and
+ * sentences) — the French gate, whose lessons are frozen (CLAUDE.md §4).
  *
  * CI: .github/workflows/ci.yml job `languagetool` downloads the pinned
  * LanguageTool release, starts its HTTP server and runs this script.
@@ -161,7 +164,9 @@ async function main(): Promise<void> {
     return i >= 0 ? args[i + 1] : undefined;
   };
   const courseId = opt("course");
-  if (!courseId) throw new Error("usage: bun scripts/languagetool.ts --course <id> [--server <url>] [--json <file>]");
+  if (!courseId) throw new Error("usage: bun scripts/languagetool.ts --course <id> [--scope course|stories] [--server <url>] [--json <file>]");
+  const scope = opt("scope") ?? "course";
+  if (scope !== "course" && scope !== "stories") throw new Error(`--scope must be "course" or "stories" (got "${scope}")`);
   const server = opt("server") ?? process.env.LT_URL ?? "http://localhost:8081";
   const lang = courseId.split("-")[0];
   const allowRel = `content/${lang}/languagetool-allow.json`;
@@ -169,7 +174,7 @@ async function main(): Promise<void> {
   const allow = AllowSchema.parse(readJson(allowRel));
   const disabled = allow.disabledRules.map((d) => d.rule);
 
-  const unique = uniqueTargetStrings(collectTargetStrings(courseId));
+  const unique = uniqueTargetStrings(collectTargetStrings(courseId, scope));
   const findings: LtFinding[] = [];
   const started = Date.now();
   const elapsed = () => `${Math.round((Date.now() - started) / 1000)} s`;
