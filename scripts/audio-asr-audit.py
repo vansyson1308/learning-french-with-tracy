@@ -154,15 +154,19 @@ def main() -> int:
     metric = metric_for(language, spec)
     # One transcription per unique asset (an asset key hashes voice + speaker + text,
     # so clips sharing it are the same audio); results are written in plan order.
+    # The file is <assetKey>.mp3, or .opus when the plan clip says so (encoding.codecByLayer).
+    def asset_file(clip):
+        return os.path.join(args.outdir, clip["assetKey"] + "." + ("opus" if clip.get("codec") == "opus" else "mp3"))
+
     unique = {}
     for clip in plan["clips"]:
-        if clip["assetKey"] not in unique and os.path.exists(os.path.join(args.outdir, clip["assetKey"] + ".mp3")):
+        if clip["assetKey"] not in unique and os.path.exists(asset_file(clip)):
             unique[clip["assetKey"]] = clip
     done = [0]
 
     def work(item):
         key, clip = item
-        hyp = recognizer.transcribe(os.path.join(args.outdir, key + ".mp3"), whisper_lang if engine == "whisper" else clip.get("language", language), args.lead_silence, args.tail_silence)
+        hyp = recognizer.transcribe(asset_file(clip), whisper_lang if engine == "whisper" else clip.get("language", language), args.lead_silence, args.tail_silence)
         done[0] += 1
         if done[0] % 100 == 0:
             print(f"… transcribed {done[0]}/{len(unique)} assets", flush=True)

@@ -17,6 +17,7 @@
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "fs";
 import path from "path";
 
+import { isAudioFile } from "./audio-codec";
 import { safeResolve } from "./pipeline";
 
 export const AUDIO_BUDGET_BYTES_PER_LANGUAGE = 12_000_000;
@@ -51,7 +52,7 @@ export function measureAudioSizes(audioRoot = safeResolve("assets/audio")): Lang
     const language = dir.replace(/-reception$/, "");
     const row = byLang.get(language) ?? { language, files: 0, bytes: 0 };
     for (const f of readdirSync(full)) {
-      if (!f.endsWith(".mp3") && !f.endsWith(".wav")) continue;
+      if (!isAudioFile(f)) continue;
       row.files += 1;
       row.bytes += statSync(path.join(full, f)).size;
     }

@@ -43,7 +43,8 @@ import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { writeAudioSizeReport } from "./lib/audio-size";
 import { lexiconAudioStrings } from "./lib/lexicon-audio";
 import { receptionAssetKey } from "./lib/reception";
-import { bundledStoryIds, storyAudioPolicy, storyClipId, storyPipelineVersion, storySentenceSegments } from "./lib/stories";
+import { assetFileName, codecProblems, codecRecipe, isAudioFile, type AudioCodec } from "./lib/audio-codec";
+import { bundledStoryIds, storyAudioPolicy, storyClipId, storyCodec, storyPipelineVersion, storySentenceSegments } from "./lib/stories";
 import { packClipRecipe, receptionClipRecipe, resynthesisFor, resynthesisProblems, type Resynthesis, type SynthesisOverride } from "./lib/audio-recipe";
 import { asrModelId, mergeAsrResults, splitPlanByCache, type AsrResult } from "./lib/asr-cache";
 import { ownerListeningLines, splitReview, techQaDoc, type ReviewRow } from "./lib/audio-qa";
@@ -105,6 +106,8 @@ export type PlanClip = {
   pipelineVersion: number;
   /** A declared re-synthesis of this clip (part of its asset key). */
   synthesis?: SynthesisOverride | null;
+  /** Set only when not mp3 (encoding.codecByLayer, scripts/lib/audio-codec.ts): the file is `<assetKey>.opus`. */
+  codec?: AudioCodec;
 };
 type PlanDoc = { language: string; mode: string; layers: Layer[]; normalization: unknown; charsPerSecBand: [number, number]; clips: PlanClip[] };
 
@@ -360,6 +363,7 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
   const layers: Layer[] = [];
   const resynthesis = loadReceptionManifest()?.resynthesis ?? null;
   problems.push(...resynthesisProblems(resynthesis));
+  problems.push(...codecProblems(engines.encoding).map((p) => `content/audio/engines.json encoding.${p}`));
   // ---- pack + lexicon layers (course-keyed, content/audio/pack-audio-manifest.json) ----
   if (wantsPack) {
     const m = loadPackManifest();
@@ -425,8 +429,10 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         const resolved = segments.map((s) => ({ voiceId: s.voiceId, speaker: typeof s.speaker === "number" ? s.speaker : null, text: s.text }));
         // Lockstep with scripts/lib/reception.ts listeningClipKey: a declared re-synthesis changes a listening clip's key (never a story sentence's).
         const synthesis = story ? null : resynthesisFor(LANG, clipId, resynthesis);
-        const recipe = story ? null : receptionClipRecipe(LANG, clipId, resynthesis);
-        clips.push({ clipId, layer: "reception", courseId: null, language: LANG, text: segments.map((s) => s.text).join(" "), segments, assetKey: receptionAssetKey(LANG, resolved, version, recipe), pipelineVersion: version, ...(synthesis ? { synthesis } : {}) });
+        // Lockstep with scripts/lib/stories.ts storySentenceAssetKey: an opus story sentence carries its codec in the key.
+        const codec = story ? storyCodec(LANG) : "mp3";
+        const recipe = story ? codecRecipe(codec, engines.encoding) : receptionClipRecipe(LANG, clipId, resynthesis);
+        clips.push({ clipId, layer: "reception", courseId: null, language: LANG, text: segments.map((s) => s.text).join(" "), segments, assetKey: receptionAssetKey(LANG, resolved, version, recipe), pipelineVersion: version, ...(synthesis ? { synthesis } : {}), ...(codec !== "mp3" ? { codec } : {}) });
       };
       if (mode === "canary" && existsSync(CANARY_PATH)) {
         const canary = JSON.parse(readFileSync(CANARY_PATH, "utf8")) as { items: { id: string; text: string }[] };
@@ -502,7 +508,11 @@ function synthScript(planPath: string, dl: string, wav: string, out: string, exi
   const existingFiles = new Map<string, string>();
   for (const dir of (existing ?? "").split(",").filter(Boolean)) {
     if (!existsSync(dir)) continue;
-    for (const f of readdirSync(dir)) if (f.endsWith(".mp3") && !existingFiles.has(f.slice(0, -4))) existingFiles.set(f.slice(0, -4), `${dir}/${f}`);
+    for (const f of readdirSync(dir)) {
+      // A key names one codec: `<key>.mp3` or `<key>.opus` (the opus recipe is part of the key).
+      const key = f.replace(/\.(mp3|opus)$/, "");
+      if (key !== f && !existingFiles.has(key)) existingFiles.set(key, `${dir}/${f}`);
+    }
   }
   process.stdout.write(buildSynthScript({ clips: doc.clips, voices: allVoices(), engines, downloadsDir: dl, wavDir: wav, outDir: out, existingFiles }));
 }
@@ -544,7 +554,7 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   const rows: QaRow[] = [];
   let failures = 0;
   for (const clip of doc.clips) {
-    const p = path.join(outdir, `${clip.assetKey}.mp3`);
+    const p = path.join(outdir, assetFileName(clip.assetKey, clip.codec));
     const voices = new Set(clip.segments.map((s) => s.voiceId));
     const voiceId = voices.size === 1 ? clip.segments[0].voiceId : "mixed";
     const speaker = voices.size === 1 ? clip.segments[0].speaker : null;
@@ -622,7 +632,7 @@ function asrCache(action: string) {
   const cacheDir = arg("cache") ?? fail("--cache required");
   const recognizer = arg("recognizer") ?? fail("--recognizer required (e.g. faster-whisper==1.0.3:medium)");
   const modelId = asrModelId({ recognizer, language: doc.language, normalization: doc.normalization, auditScript: readFileSync(path.join(ROOT, "scripts/audio-asr-audit.py")) });
-  const asrClips = doc.clips.map((c) => ({ clipId: c.clipId, assetKey: c.assetKey, text: c.text }));
+  const asrClips = doc.clips.map((c) => ({ clipId: c.clipId, assetKey: c.assetKey, text: c.text, ...(c.codec ? { codec: c.codec } : {}) }));
   if (action === "split") {
     const { hits, todo, stats } = splitPlanByCache({ plan: { ...doc, clips: asrClips }, outdir, cacheDir, modelId });
     const todoIds = new Set(todo.clips.map((c) => c.clipId));
@@ -854,7 +864,7 @@ function dedupeManifest() {
 function apply(planPath: string, outdir: string, sfxDir?: string) {
   const doc = loadPlan(planPath);
   if (doc.mode !== "generate") fail("apply needs a generate plan");
-  for (const clip of doc.clips) if (!existsSync(path.join(outdir, `${clip.assetKey}.mp3`))) fail(`missing synthesized clip for ${clip.clipId}`);
+  for (const clip of doc.clips) if (!existsSync(path.join(outdir, assetFileName(clip.assetKey, clip.codec)))) fail(`missing synthesized clip for ${clip.clipId}`);
   const m = loadPackManifest();
   const languageCourseIds = new Set(Object.entries(m.courses).filter(([, c]) => c.language === LANG).map(([id]) => id));
   const packClips = doc.clips.filter((c) => c.layer !== "reception");
@@ -905,10 +915,11 @@ function apply(planPath: string, outdir: string, sfxDir?: string) {
   if (receptionClips.length > 0) {
     const dir = path.join(ROOT, `assets/audio/${LANG}-reception`);
     mkdirSync(dir, { recursive: true });
-    const referenced = new Set(receptionClips.map((c) => `${c.assetKey}.mp3`));
-    for (const f of readdirSync(dir)) if (f.endsWith(".mp3") && !referenced.has(f)) rmSync(path.join(dir, f));
+    const referenced = new Set(receptionClips.map((c) => assetFileName(c.assetKey, c.codec)));
+    // A codec switch supersedes the old files too: every unreferenced .mp3 / .opus goes.
+    for (const f of readdirSync(dir)) if (isAudioFile(f) && !f.endsWith(".wav") && !referenced.has(f)) rmSync(path.join(dir, f));
     for (const key of referenced) copyFileSync(path.join(outdir, key), path.join(dir, key));
-    writeFileSync(path.join(RECEPTION_DIR, "generated-plan.json"), `${JSON.stringify({ pipelineVersion: receptionClips[0].pipelineVersion, clips: receptionClips.map((c) => ({ clipId: c.clipId, text: c.text, segments: c.segments, assetKey: c.assetKey })) }, null, 2)}\n`);
+    writeFileSync(path.join(RECEPTION_DIR, "generated-plan.json"), `${JSON.stringify({ pipelineVersion: receptionClips[0].pipelineVersion, clips: receptionClips.map((c) => ({ clipId: c.clipId, text: c.text, segments: c.segments, assetKey: c.assetKey, ...(c.codec ? { codec: c.codec } : {}) })) }, null, 2)}\n`);
     console.log(`applied ${receptionClips.length} reception clips (${referenced.size} assets) for ${LANG}`);
   }
   // 3. Sound effects (only when asked: they are language-neutral).

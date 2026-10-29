@@ -22,8 +22,10 @@ import { createHash } from "crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import path from "path";
 
+import { assetFileName, type AudioCodec } from "./audio-codec";
+
 export type AsrResult = { text: string; wer: number; metric?: string; model?: string; engine?: string };
-export type AsrPlanClip = { clipId: string; assetKey: string; text: string };
+export type AsrPlanClip = { clipId: string; assetKey: string; text: string; codec?: AudioCodec };
 export type AsrPlan = { language: string; normalization: unknown; clips: AsrPlanClip[] };
 type CacheEntry = { key: string; modelId: string; transcript: string; result: AsrResult };
 
@@ -44,7 +46,7 @@ function entryPath(cacheDir: string, key: string): string {
 }
 
 function clipFile(outdir: string, clip: AsrPlanClip): string {
-  return path.join(outdir, `${clip.assetKey}.mp3`);
+  return path.join(outdir, assetFileName(clip.assetKey, clip.codec));
 }
 
 /** The key of a clip whose file exists, else null (never cached). */

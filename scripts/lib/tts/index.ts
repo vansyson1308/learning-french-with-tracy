@@ -9,6 +9,7 @@
 
 import { readFileSync } from "fs";
 
+import { assetFileName, encodeOptions, opusKbpsOf, type AudioCodec } from "../audio-codec";
 import { isShortTranscript, shq } from "../piper-audio";
 import { readJson } from "../pipeline";
 
@@ -42,6 +43,8 @@ export type ScriptClip = {
   segments: { voiceId: string; speaker: number | string | null; text: string }[];
   /** QC 2026-10-29b §3.4: a declared re-synthesis (same voice, other Piper noise scale); part of the asset key. */
   synthesis?: { noiseScale: number; noiseW: number } | null;
+  /** Unset = mp3 (encoding.codecByLayer, scripts/lib/audio-codec.ts). */
+  codec?: AudioCodec;
 };
 
 /**
@@ -106,9 +109,10 @@ export function buildSynthScript(input: {
   for (const clip of clips) {
     if (seen.has(clip.assetKey)) continue;
     seen.add(clip.assetKey);
-    const blessed = input.existingFiles?.get(clip.assetKey) ?? (input.existingDir && input.existingKeys?.has(clip.assetKey) ? `${input.existingDir}/${clip.assetKey}.mp3` : undefined);
+    const file = assetFileName(clip.assetKey, clip.codec);
+    const blessed = input.existingFiles?.get(clip.assetKey) ?? (input.existingDir && input.existingKeys?.has(clip.assetKey) ? `${input.existingDir}/${file}` : undefined);
     if (blessed !== undefined) {
-      lines.push(`cp ${shq(blessed)} ${shq(`${outDir}/${clip.assetKey}.mp3`)}`);
+      lines.push(`cp ${shq(blessed)} ${shq(`${outDir}/${file}`)}`);
       reused += 1;
       continue;
     }
@@ -139,9 +143,9 @@ export function buildSynthScript(input: {
     }
     const af = encodeFilter(clip, engines.loudness);
     const filter = af === null ? "" : ` -af ${shq(af)}`;
-    lines.push(
-      `ffmpeg -v error -y -i ${shq(joined)}${filter} -ar ${engines.encoding.sampleRateHz} -ac ${engines.encoding.channels} -codec:a libmp3lame -b:a ${mp3KbpsFor(engines, clip.pipelineVersion)}k ${shq(`${outDir}/${clip.assetKey}.mp3`)}`
-    );
+    const codec = clip.codec ?? "mp3";
+    const options = encodeOptions(codec, { sampleRateHz: engines.encoding.sampleRateHz, channels: engines.encoding.channels, mp3Kbps: mp3KbpsFor(engines, clip.pipelineVersion), opusKbps: opusKbpsOf(engines.encoding) });
+    lines.push(`ffmpeg -v error -y -i ${shq(joined)}${filter} ${options} ${shq(`${outDir}/${assetFileName(clip.assetKey, codec)}`)}`);
   }
   lines.push(`echo "synthesized ${render.length} clips, reused ${reused} existing assets (${clips.length} plan clips)"`);
   return `${lines.join("\n")}\n`;

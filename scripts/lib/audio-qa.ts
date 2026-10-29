@@ -15,9 +15,10 @@
 import { existsSync } from "fs";
 import path from "path";
 
+import { assetFileName, type AudioCodec } from "./audio-codec";
 import { technicalQa, type TechnicalQa } from "./piper-audio";
 
-export type QaPlanClip = { clipId: string; assetKey: string; text: string; language: string };
+export type QaPlanClip = { clipId: string; assetKey: string; text: string; language: string; codec?: AudioCodec };
 
 export type TechQaRow = { clipId: string; assetKey: string; transcript: string } & TechnicalQa;
 
@@ -34,7 +35,7 @@ export function techQaDoc(input: {
   for (const clip of input.clips) {
     if (seen.has(clip.assetKey)) continue;
     seen.add(clip.assetKey);
-    const file = path.join(input.outdir, `${clip.assetKey}.mp3`);
+    const file = path.join(input.outdir, assetFileName(clip.assetKey, clip.codec));
     const t: TechnicalQa = existsSync(file)
       ? qa(file, clip.text, clip.language, input.band)
       : { durationSec: 0, speechSec: 0, bytes: 0, maxVolumeDb: null, meanVolumeDb: null, clipping: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 0, technical: "fail", technicalIssues: ["missing file"] };

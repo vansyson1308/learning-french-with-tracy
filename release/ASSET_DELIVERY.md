@@ -77,8 +77,9 @@ Declared per language in `content/<lang>/reception/audio-source-manifest.json`:
 **Decision pending playback check.** MP3 stays the shipped format. Opus is
 adopted only when CI shows expo-audio (Media3) playing it on emulator API 30
 and API 34 and in the web build: playback events, no decoder error, slow mode
-intelligible. iOS playback of Ogg Opus is not checked either. None of this has
-been run, so nothing here claims that Opus plays.
+intelligible. iOS playback of Ogg Opus is not checked either. The check is
+built (below) but has not run in CI, so nothing here claims that Opus plays on
+a device.
 
 Sizes measured on 2026-10-29 with ffmpeg 7.1 and libopus (mono, VBR,
 `-application voip`). The sample was 60 committed story sentences per
@@ -95,6 +96,82 @@ What it would buy, if playback is verified:
 - **For de**, band-1 story audio drops from ≈ 2.5 to ≈ 1.65 MB.
 - **For French**, story audio drops from 3.92 to about 1 MB. French is frozen,
   so that would be a deliberate French change.
+
+### The playback check (built 2026-10-29, not yet run in CI)
+One Opus file is played through the app's real audio path:
+`assets/diagnostics/opus/story-sentence-16k.opus`, encoded with
+`ffmpeg -c:a libopus -b:a 16k -ac 1` from the committed story sentence
+`fr.story.le_chat_et_la_souris#1`. The hashes and the exact command are in
+`content/audio/diagnostics-fixtures.json`, and the registry entry is
+`acceptance-diagnostics-fixtures` (test-only, the source voice's CC-BY-4.0).
+
+- **The screen.** `src/app/diagnostics/opus.tsx` uses the same expo-audio
+  hooks as the story reader. It plays the clip at rate 1, then again at the
+  listening player's slow rate (0.85, pitch-corrected). The verdict logic is
+  `src/lib/diagnostics/playback-probe.ts`. For each pass it needs `loaded`,
+  `playing` and `finished` and no player error. When the player reports a
+  rate, it must be the requested one. A pass that does not finish within
+  30 s fails.
+- **Never in a release build.** `metro.config.js` blocks
+  `src/app/diagnostics/` and `assets/diagnostics/` unless the build sets
+  `LFT_ACCEPTANCE_DIAGNOSTICS=1`. `scripts/check-diagnostics-export.ts` looks
+  for the fixture's bytes and the route's marker strings, and proves it:
+  - `--absent` runs on the CI web export (`ci.yml` export-size), on the
+    release QA APK (`android-release-build.yml`) and on the EAS RC APK
+    (`eas-build.yml`);
+  - `--present` runs on the device-acceptance APK and on the diagnostics web
+    export.
+  Locally on 2026-10-29: the plain web export holds neither; the flagged one
+  holds both.
+- **Device.** `device-acceptance.yml` builds its x86_64 release APK with
+  `LFT_ACCEPTANCE_DIAGNOSTICS=1`. The `lessons` shard runs
+  `diagnostics-opus.yaml` on API 34 and API 30, and its logcat scan fails on
+  any ExoPlayer, MediaPlayer or AudioTrack error. The report row is "opus
+  playback: loaded, playing, finished at 1.0 and slow, no decoder error",
+  plus the app's `LFT_DIAG_OPUS` line.
+- **Web.** `ci.yml` makes a second export with the flag (`dist-diag`) and
+  runs `bun run e2e:opus dist-diag`. Locally in Chrome on 2026-10-29: 12/12
+  checks passed. The fixture was served as `audio/ogg`, both passes loaded,
+  played and finished, there was no error, and the verdict was PASS. That is
+  a local browser result, not CI and not a device.
+- **Not checked:** iOS. AVPlayer support for Ogg Opus is not established.
+  The switch below must not be read as covering iOS.
+
+### What flips once CI proves playback
+Flip only after one CI run shows all three of these green: device-acceptance
+`lessons` on API 34, `lessons` on API 30, and the ci.yml "Opus playback E2E
+(web tier)" step. Each must have the opus row as PASS, not INFO.
+
+1. In `content/audio/engines.json`, set `encoding.codecByLayer.story` from
+   `"mp3"` to `"opus"`. This is the only switch. Keep `opusKbps` at 16; the
+   range is 16–20. `codecProblems` (scripts/lib/audio-codec.ts) refuses
+   opus for any other layer, and refuses to drop `"fr"` from
+   `mp3OnlyLanguages`.
+2. Everything else follows from that one value:
+   - Story sentence keys gain the recipe `opus-16k`, so every non-French
+     story sentence gets a new key.
+   - The files become `<key>.opus`: Ogg Opus, 24 kHz, mono, 16 kbps, voip
+     mode, after the same loudnorm.
+   - The next audio run (`audio.yml`, generate, layer reception, per
+     language) renders them, and tech-qa checks them, clipping included.
+   - The ASR audit reads `.opus`. `apply` copies them, writes `codec` into
+     `generated-plan.json`, and removes the superseded `.mp3` story files.
+   - The compiler maps `<key>.opus` in `<lang>-story-assets.ts`.
+   - `audio:check` counts `.opus` towards both caps, and Metro bundles
+     `.opus` (`assetExts`).
+3. **French does not change.** `mp3OnlyLanguages: ["fr"]` keeps French story
+   audio as MP3, byte-identical. Moving French to Opus (3.92 MB → ≈ 1 MB) is
+   a separate, deliberate French change: it needs an RC_HISTORY entry and a
+   golden re-bless.
+4. **Then use the room.** Lengthen the `storyAudio.stories` band-1 lists, at
+   about 1.5× the stories for the same bytes, and keep them within the
+   per-language 12 MB and the total 88 MB caps. One more reviewed change
+   lifts `STORY_AUDIO_MAX_BUNDLED` (12) in `scripts/lib/stories.ts`.
+5. Record the switch in `release/RC_HISTORY.md`, because the APK content
+   changes, and re-run device acceptance on the new RC.
+
+Until then, nothing ships as Opus, and this document claims no Opus playback
+beyond the local web run above.
 
 ## Fallbacks without bundled audio
 - **Stories outside band 1:** the device voice, labelled "Giọng đọc của máy".

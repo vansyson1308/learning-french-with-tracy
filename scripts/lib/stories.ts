@@ -33,6 +33,7 @@ import {
   type StorySource,
   type Syllabus,
 } from "../../content/schema";
+import { assetFileName, codecFor, codecRecipe, type AudioCodec, type CodecSettings } from "./audio-codec";
 import { buildPlugin } from "./languages";
 import { pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
@@ -395,8 +396,27 @@ export function storyPipelineVersion(lang: string): number {
   return typeof v === "number" ? v : receptionPipelineVersion(lang);
 }
 
-export function storySentenceAssetKey(lang: string, stories: Stories, sentence: StorySource["sentences"][number]): string {
-  return receptionAssetKey(lang, storySentenceSegments(stories, sentence), storyPipelineVersion(lang));
+/**
+ * The codec of a language's story sentences: content/audio/engines.json
+ * `encoding.codecByLayer.story` (mp3 until CI has proven Opus playback,
+ * release/ASSET_DELIVERY.md); French is always mp3.
+ */
+export function storyCodec(lang: string): AudioCodec {
+  return codecFor(storyEncoding(), "story", lang);
+}
+
+function storyEncoding(): CodecSettings | undefined {
+  return (readJson("content/audio/engines.json") as { encoding?: CodecSettings }).encoding;
+}
+
+/** An mp3 story sentence keeps its key; an opus one carries the codec in its key. */
+export function storySentenceAssetKey(lang: string, stories: Stories, sentence: StorySource["sentences"][number], codec: AudioCodec = storyCodec(lang)): string {
+  return receptionAssetKey(lang, storySentenceSegments(stories, sentence), storyPipelineVersion(lang), codecRecipe(codec, storyEncoding()));
+}
+
+/** `<key>.mp3` or `<key>.opus`, by the story codec. */
+export function storySentenceFile(lang: string, stories: Stories, sentence: StorySource["sentences"][number], codec: AudioCodec = storyCodec(lang)): string {
+  return assetFileName(storySentenceAssetKey(lang, stories, sentence, codec), codec);
 }
 
 // ---------------------------------------------------------------------------
@@ -470,14 +490,14 @@ export function storyAudioProblems(stories: Pick<Stories, "stories">, policy: St
   return { errors, warnings };
 }
 
-/** Every asset file name the BUNDLED stories of a language reference (`<key>.mp3`). */
-export function storyAssetFiles(lang: string, stories: Stories | null, policy: StoryAudioPolicy = storyAudioPolicy(lang)): Set<string> {
+/** Every asset file name the BUNDLED stories of a language reference (`<key>.mp3`, or `.opus` by the story codec). */
+export function storyAssetFiles(lang: string, stories: Stories | null, policy: StoryAudioPolicy = storyAudioPolicy(lang), codec: AudioCodec = storyCodec(lang)): Set<string> {
   const out = new Set<string>();
   if (!stories) return out;
   const bundled = bundledStoryIds(stories, policy);
   for (const story of stories.stories) {
     if (!bundled.has(story.id)) continue;
-    for (const s of story.sentences) out.add(`${storySentenceAssetKey(lang, stories, s)}.mp3`);
+    for (const s of story.sentences) out.add(storySentenceFile(lang, stories, s, codec));
   }
   return out;
 }
@@ -595,10 +615,10 @@ export function validateStories(input: {
  */
 export type StoryAudioMode = "bundled" | "device-voice";
 
-export function storyAudioMode(lang: string, stories: Stories, storyId: string, bundled: ReadonlySet<string>, hasAsset: (file: string) => boolean): StoryAudioMode {
+export function storyAudioMode(lang: string, stories: Stories, storyId: string, bundled: ReadonlySet<string>, hasAsset: (file: string) => boolean, codec: AudioCodec = storyCodec(lang)): StoryAudioMode {
   const story = stories.stories.find((s) => s.id === storyId);
   if (!story || !bundled.has(storyId) || story.sentences.length === 0) return "device-voice";
-  return story.sentences.every((s) => hasAsset(`${storySentenceAssetKey(lang, stories, s)}.mp3`)) ? "bundled" : "device-voice";
+  return story.sentences.every((s) => hasAsset(storySentenceFile(lang, stories, s, codec))) ? "bundled" : "device-voice";
 }
 
 const committedStoryAsset = (lang: string) => (file: string) => existsSync(safeResolve(receptionAssetsDir(lang), file));
@@ -679,10 +699,12 @@ export function compileStoryAssetsModule(stories: Stories, requirePrefix: string
     "export const STORY_SENTENCE_ASSETS: Record<string, number> = {",
   ];
   const bundled = bundledStoryIds(stories, policy);
-  const keys = [...new Set(stories.stories.filter((st) => bundled.has(st.id)).flatMap((st) => st.sentences.map((s) => storySentenceAssetKey(lang, stories, s))))].sort();
+  const codec = storyCodec(lang);
+  const keys = [...new Set(stories.stories.filter((st) => bundled.has(st.id)).flatMap((st) => st.sentences.map((s) => storySentenceAssetKey(lang, stories, s, codec))))].sort();
   for (const key of keys) {
-    if (!existsSync(safeResolve(receptionAssetsDir(lang), `${key}.mp3`))) continue;
-    lines.push(`  "${key}": require("${requirePrefix}/${receptionAssetsDir(lang)}/${key}.mp3"),`);
+    const file = assetFileName(key, codec);
+    if (!existsSync(safeResolve(receptionAssetsDir(lang), file))) continue;
+    lines.push(`  "${key}": require("${requirePrefix}/${receptionAssetsDir(lang)}/${file}"),`);
   }
   lines.push("};", "");
   return lines.join("\n");
