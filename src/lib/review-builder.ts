@@ -1,4 +1,5 @@
 import { pickDistractors } from "./learning/distractors";
+import { isUnpicturedWord, withPictureCues } from "./learning/picture-cues";
 import type { Exercise, Word } from "./types";
 
 /** FNV-1a string hash — a pure way to derive a session seed from content. */
@@ -55,18 +56,20 @@ export function buildSrsExercises(
 
     // Every option carries its own word's emoji — an emoji only on the
     // correct answer would telegraph it (pre-Phase-3 flaw, fixed here).
-    const distractors = pickDistractors({
+    const distractorWords = pickDistractors({
       courseId,
       word,
       pool,
       rng,
       direction: "targetToNative",
-    }).map((w) => ({ text: w.native, emoji: w.emoji }));
+    });
+    const distractors = distractorWords.map((w) => ({ text: w.native, emoji: w.emoji }));
     if (distractors.length === 0) return [];
 
-    const options = shuffle(
-      [{ text: word.native, emoji: word.emoji }, ...distractors],
-      rng
+    // QC 2026-10-30 §2.1: distinct pictures or none (kinship words: none).
+    const options = withPictureCues(
+      shuffle([{ text: word.native, emoji: word.emoji }, ...distractors], rng),
+      [word, ...distractorWords].some((w) => isUnpicturedWord(courseId, w))
     );
     const correct = options.findIndex((o) => o.text === word.native);
 

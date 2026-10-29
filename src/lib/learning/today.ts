@@ -35,6 +35,7 @@ import type {
 import { pickDistractors } from "./distractors";
 import { dueReviewQueue } from "./engine";
 import { isCuratedItemId, surfaceFor } from "./ids";
+import { isUnpicturedWord, withPictureCues } from "./picture-cues";
 import type { FsrsCardState } from "./scheduler";
 
 export type TodayPreset = "short" | "regular" | "long";
@@ -208,21 +209,27 @@ export function buildSelect(args: {
   // Recognition options all carry their word's emoji (an emoji only on the
   // answer would give it away); production options are plain target text.
   const withEmoji = direction === "targetToNative";
-  const distractors = pickDistractors({
+  const distractorWords = pickDistractors({
     courseId,
     word,
     pool,
     rng,
     direction,
-  }).map((w) => (withEmoji ? { text: display(w), emoji: w.emoji } : { text: display(w) }));
+  });
+  const distractors = distractorWords.map((w) => (withEmoji ? { text: display(w), emoji: w.emoji } : { text: display(w) }));
   if (distractors.length === 0) return null;
 
-  const options = shuffle(
-    [
-      withEmoji ? { text: answerText, emoji: word.emoji } : { text: answerText },
-      ...distractors,
-    ],
-    rng
+  // QC 2026-10-30 §2.1: distinct pictures or none (kinship words: none).
+  const unpictured = [word, ...distractorWords].some((w) => isUnpicturedWord(courseId, w));
+  const options = withPictureCues(
+    shuffle(
+      [
+        withEmoji ? { text: answerText, emoji: word.emoji } : { text: answerText },
+        ...distractors,
+      ],
+      rng
+    ),
+    unpictured
   );
   return {
     type: "select",

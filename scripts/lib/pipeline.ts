@@ -314,6 +314,26 @@ function checkIdNamespace(e: AnyExercise, targetCode: string, push: (msg: string
   }
 }
 
+/**
+ * QC 2026-10-30 §2.1, every course: in a picture-choice question each
+ * option's emoji is distinct, and either every option has one or none does
+ * (a picture on some options only telegraphs them). Fix by removing the
+ * pictures, never by inventing a misleading one.
+ */
+export function pictureCueProblems(id: string, options: readonly { text: string; emoji?: string }[]): string[] {
+  const withEmoji = options.filter((o) => o.emoji);
+  if (withEmoji.length === 0) return [];
+  const problems: string[] = [];
+  if (withEmoji.length !== options.length) problems.push(`${id}: ${withEmoji.length} of ${options.length} options have a picture — all or none`);
+  const seen = new Map<string, string>();
+  for (const o of withEmoji) {
+    const first = seen.get(o.emoji!);
+    if (first !== undefined) problems.push(`${id}: options "${first}" and "${o.text}" share the picture ${o.emoji} — make them distinct or remove the pictures`);
+    else seen.set(o.emoji!, o.text);
+  }
+  return problems;
+}
+
 export function validateExercise(
   courseId: string,
   e: AnyExercise,
@@ -352,6 +372,9 @@ export function validateExercise(
         }
       }
     }
+  }
+  if (e.type === "select" || e.type === "listeningComprehension" || e.type === "readingComprehension") {
+    for (const p of pictureCueProblems(e.id, e.options)) push(p);
   }
   if (e.type === "select") {
     if (e.correct >= e.options.length) push(`${e.id}: correct index out of range`);
