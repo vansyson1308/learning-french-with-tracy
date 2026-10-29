@@ -17,6 +17,7 @@ import {
   type ListeningClip,
   type Readings,
 } from "../../content/schema";
+import { receptionClipRecipe } from "./audio-recipe";
 import { localizeReading } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 
@@ -73,19 +74,34 @@ export function loadListening(lang: string): Listening | null {
 
 export type ResolvedSegment = { voiceId: string; speaker: number | null; text: string };
 
-/** MUST stay in lockstep with scripts/reception-audio.ts (same hash inputs). */
+/**
+ * MUST stay in lockstep with scripts/reception-audio.ts (same hash inputs).
+ * `recipe` (scripts/lib/audio-recipe.ts): a non-default render recipe, e.g.
+ * a declared re-synthesis; absent for every default clip, whose key is unchanged.
+ */
 export function receptionAssetKey(
   lang: string,
   segments: ResolvedSegment[],
-  pipelineVersion = RECEPTION_PIPELINE_VERSION
+  pipelineVersion = RECEPTION_PIPELINE_VERSION,
+  recipe: string | null = null
 ): string {
   const canonical = JSON.stringify([
     lang,
     segments.map((s) => [s.voiceId, s.speaker, s.text]),
     1.0,
     pipelineVersion,
+    ...(recipe === null ? [] : [recipe]),
   ]);
   return createHash("sha256").update(canonical).digest("hex").slice(0, 20);
+}
+
+/**
+ * The key of a listening clip as the plan, the validator and the compiler
+ * all derive it: the default recipe unless the language's voice manifest
+ * declares a re-synthesis of this clip (QC 2026-10-29b §3.4).
+ */
+export function listeningClipKey(lang: string, listening: Listening, clip: ListeningClip): string {
+  return receptionAssetKey(lang, resolveClipSegments(listening, clip), receptionPipelineVersion(lang), receptionClipRecipe(lang, clip.id));
 }
 
 export function resolveClipSegments(
@@ -100,7 +116,7 @@ export function resolveClipSegments(
 }
 
 function clipFileName(lang: string, listening: Listening, clip: ListeningClip, kind: ReceptionAssetKind): string {
-  return `${receptionAssetKey(lang, resolveClipSegments(listening, clip), receptionPipelineVersion(lang))}.${kind}`;
+  return `${listeningClipKey(lang, listening, clip)}.${kind}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -286,7 +302,7 @@ export function compileListeningArtifact(
 ): string {
   const byId: Record<string, CompiledClip> = {};
   for (const clip of listening.clips) {
-    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip), receptionPipelineVersion(listening.language));
+    const key = listeningClipKey(listening.language, listening, clip);
     byId[clip.id] = {
       id: clip.id,
       kind: clip.kind,
@@ -328,7 +344,7 @@ export function compileAudioCensus(
 ): string {
   const byKey = new Map<string, string[]>();
   for (const clip of listening.clips) {
-    const key = receptionAssetKey(listening.language, resolveClipSegments(listening, clip), receptionPipelineVersion(listening.language));
+    const key = listeningClipKey(listening.language, listening, clip);
     byKey.set(key, [...(byKey.get(key) ?? []), clip.id]);
   }
   const assetsAbs = safeResolve(receptionAssetsDir(listening.language));

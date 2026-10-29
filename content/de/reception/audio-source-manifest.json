@@ -3,8 +3,22 @@
   "pipelineVersion": 3,
   "storyPipelineVersion": 4,
   "storyAudio": {
-    "bundled": false,
-    "reason": "release/ASSET_DELIVERY.md: the 922 German story sentences (~10 MB at 24 kbps) would take de to ~16.7 MB, over the 12 MB per-language budget; they ship with the per-language asset pack decision (QC 2026-10-29 §1.6). Until then the reader shows text only."
+    "bundled": "band-1",
+    "stories": [
+      "de.story.die_anmeldung",
+      "de.story.der_umzug",
+      "de.story.die_reise_nach_hamburg",
+      "de.story.ein_fall_fuer_frau_weber",
+      "de.story.die_hochzeit_von_tante_lisa",
+      "de.story.ben_beim_arzt",
+      "de.story.wo_ist_mein_handy",
+      "de.story.ein_abend_im_kino",
+      "de.story.ein_tag_am_see",
+      "de.story.der_neue_job",
+      "de.story.das_grosse_spiel",
+      "de.story.opas_geschichte"
+    ],
+    "reason": "QC 2026-10-29b §2.3: band-1 story audio only — the first 12 stories of the reading order (the A1-2 stories, then the first A2-1 ones) bundle sentence audio at 24 kbps (≈ 2.5 MB projected, de ≈ 8.1 MB, under the 12 MB cap); every other story is read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md)."
   },
   "note": "Pinned TTS sources for the German reception audio (P3d-de, QC 2026-10-29): the two Piper voices of the de voice cast (content/audio/pack-audio-manifest.json courses.de-vi.voiceCast, A thorsten-high, B kerstin-low), with the same pins as the pack manifest; verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
   "engines": "content/audio/engines.json",
@@ -70,5 +84,25 @@
       "multiSpeaker": false
     }
   ],
-  "excludedVoices": []
+  "excludedVoices": [],
+  "resynthesis": {
+    "reason": "QC 2026-10-29b §3.4: the 11 sentence clips flagged for review (ASR WER ≥ 0.5) in content/reports/de/audio-quality.json are re-rendered with the same voice and a lower Piper noise scale, then re-audited. Any clip still flagged after that run goes to plan/OWNER-FINAL-CHECKLIST.md for a listening check (bun scripts/audio.ts owner-checklist --lang de --report content/reports/de/audio-quality.json).",
+    "piper": {
+      "noiseScale": 0.5,
+      "noiseW": 0.6
+    },
+    "clips": [
+      "de-en:Die Milch ist kalt.",
+      "de-en:Du bist eine Frau.",
+      "de-en:Gehen Sie geradeaus.",
+      "de-vi:Was darf es sein?",
+      "de-vi:Wir haben Pizza gegessen.",
+      "de.clip.cp3_dikt_zug",
+      "de.clip.goethe_a_h1_06",
+      "de.clip.ix_goethe_a_thema_miss",
+      "de.clip.ix_goethe_b_thema_miss",
+      "de.clip.ix_plaene_0_s",
+      "de.clip.uh_brot_preis"
+    ]
+  }
 }

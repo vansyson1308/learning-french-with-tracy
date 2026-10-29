@@ -16,10 +16,17 @@
 #             QA, select the voice cast (content/audio/voice-casts.json) and
 #             register the chosen voices; commit reports + pins.
 #   generate  Verify pins, synthesise the chosen layers (pack / lexicon /
-#             reception / all) with the selected cast, strict QA + ASR audit,
-#             apply (per-language merge of src/content/audio-manifest.ts and
-#             the assets), re-bless THIS language's baseline, recompile,
-#             validate, check-audio, commit.
+#             reception / all) with the selected cast, technical QA on every
+#             clip (fail fast, before ASR), ASR audit of the clips not in the
+#             ASR cache, strict QA, apply (per-language merge of
+#             src/content/audio-manifest.ts and the assets), re-bless THIS
+#             language's baseline, recompile, validate, check-audio, commit.
+#
+# QC 2026-10-29b §3: five German runs failed after 1–2.5 h of ASR because a
+# duration check ran last. Now: Synthesize → Technical QA (minutes; any
+# failure stops the run) → ASR audit with an incremental cache keyed by
+# sha256(clip bytes + model id + transcript) (actions/cache, per language +
+# recogniser; a one-clip fix re-audits one clip) → strict QA.
 name: Audio pipeline (v2)
 
 on:
@@ -72,6 +79,8 @@ jobs:
       SFX: /tmp/audio-sfx
       PLAN: /tmp/audio-plan.json
       ASR: /tmp/audio-asr.json
+      ASR_CACHE: /tmp/audio-asr-cache
+      TECH_QA: /tmp/audio-tech-qa.json
       # Inputs reach the shell only through the environment (never expanded into the script text).
       MODE_INPUT: ${{ inputs.mode }}
       LANG_INPUT: ${{ inputs.lang }}
@@ -187,23 +196,88 @@ jobs:
           bash /tmp/synth.sh
           ls "$OUT" | wc -l
 
-      - name: ASR audit (Whisper, or SenseVoice for zh/ja/ko — technical signal only)
-        timeout-minutes: 300 # longest observed 151 min
+      # QC 2026-10-29b §3.1: every cheap technical check (duration and speech-only floors,
+      # speaking rate, clipping, near-silence, edge silence, file size) on every clip,
+      # BEFORE the ASR audit — a bad clip stops the run in minutes, not after hours of ASR.
+      # The strict QA of the generate step repeats the same checks; nothing is relaxed.
+      - name: Technical QA — fail fast, before ASR
+        timeout-minutes: 20 # ~1,400 clips in a few minutes
+        if: inputs.mode == 'generate'
+        run: |
+          set -euo pipefail
+          bun scripts/audio.ts tech-qa --lang "$LANG_INPUT" --plan "$PLAN" --outdir "$OUT" --report "$TECH_QA"
+
+      - name: Choose the ASR recogniser (cache key per language + recogniser)
         if: inputs.mode != 'recon'
         run: |
           set -euo pipefail
-          WHISPER=$(bun -e "console.log(require('./content/audio/engines.json').asr.whisper.pinnedVersion)")
-          pip install "faster-whisper==$WHISPER" requests
+          # Whisper medium for generate runs, and for Vietnamese canaries too (P3e: base
+          # returned empty or digit-only transcripts for the vi canary); SenseVoice for zh/ja/ko.
+          ASR_MODEL=$( { [ "$MODE_INPUT" = "generate" ] || [ "$LANG_INPUT" = "vi" ]; } && echo medium || echo base)
           case "$LANG_INPUT" in
             zh|ja|ko)
               FUNASR=$(bun -e "console.log(require('./content/audio/engines.json').asr.sensevoice.pinnedVersion)")
-              pip install "funasr==$FUNASR" torch torchaudio huggingface_hub
+              SV_MODEL=$(bun -e "console.log(require('./content/audio/engines.json').asr.sensevoice.model)")
+              RECOGNIZER="sensevoice:funasr==$FUNASR:$SV_MODEL"
+              RECOGNIZER_KEY="sensevoice-$FUNASR"
+              ;;
+            *)
+              WHISPER=$(bun -e "console.log(require('./content/audio/engines.json').asr.whisper.pinnedVersion)")
+              RECOGNIZER="faster-whisper==$WHISPER:$ASR_MODEL"
+              RECOGNIZER_KEY="whisper-$WHISPER-$ASR_MODEL"
               ;;
           esac
-          # Whisper medium for generate runs, and for Vietnamese canaries too (P3e: base
-          # returned empty or digit-only transcripts for the vi canary).
-          ASR_MODEL=$( { [ "$MODE_INPUT" = "generate" ] || [ "$LANG_INPUT" = "vi" ]; } && echo medium || echo base)
-          python3 scripts/audio-asr-audit.py --plan "$PLAN" --outdir "$OUT" --out "$ASR" --engine auto --model "$ASR_MODEL"
+          {
+            echo "ASR_MODEL=$ASR_MODEL"
+            echo "ASR_RECOGNIZER=$RECOGNIZER"
+            echo "ASR_RECOGNIZER_KEY=$RECOGNIZER_KEY"
+          } >> "$GITHUB_ENV"
+          echo "recogniser: $RECOGNIZER"
+
+      # QC 2026-10-29b §3.2: ASR results cached by sha256(clip bytes + model id + transcript);
+      # the newest cache of this language + recogniser is restored (restore-keys: partial hit).
+      - name: Restore the ASR cache
+        if: inputs.mode != 'recon'
+        uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: /tmp/audio-asr-cache
+          key: audio-asr-v1-${{ inputs.lang }}-${{ env.ASR_RECOGNIZER_KEY }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            audio-asr-v1-${{ inputs.lang }}-${{ env.ASR_RECOGNIZER_KEY }}-
+
+      - name: ASR audit of the uncached clips (Whisper, or SenseVoice for zh/ja/ko — technical signal only)
+        id: asr
+        timeout-minutes: 300 # longest observed 151 min (no cache); a cached re-run audits only changed clips
+        if: inputs.mode != 'recon'
+        run: |
+          set -euo pipefail
+          mkdir -p "$ASR_CACHE"
+          CACHE_ARGS=(--lang "$LANG_INPUT" --plan "$PLAN" --outdir "$OUT" --cache "$ASR_CACHE" --recognizer "$ASR_RECOGNIZER")
+          bun scripts/audio.ts asr-cache split "${CACHE_ARGS[@]}" --todo /tmp/asr-todo-plan.json --hits /tmp/asr-hits.json
+          TODO=$(bun -e "console.log(require('/tmp/asr-todo-plan.json').clips.length)")
+          if [ "$TODO" -gt 0 ]; then
+            case "$LANG_INPUT" in
+              zh|ja|ko)
+                FUNASR=$(bun -e "console.log(require('./content/audio/engines.json').asr.sensevoice.pinnedVersion)")
+                pip install "funasr==$FUNASR" torch torchaudio huggingface_hub
+                ;;
+            esac
+            WHISPER=$(bun -e "console.log(require('./content/audio/engines.json').asr.whisper.pinnedVersion)")
+            pip install "faster-whisper==$WHISPER" requests
+            python3 scripts/audio-asr-audit.py --plan /tmp/asr-todo-plan.json --outdir "$OUT" --out /tmp/asr-fresh.json --engine auto --model "$ASR_MODEL"
+          else
+            echo "every clip is in the ASR cache — no transcription needed"
+            echo '{}' > /tmp/asr-fresh.json
+          fi
+          bun scripts/audio.ts asr-cache merge "${CACHE_ARGS[@]}" --hits /tmp/asr-hits.json --fresh /tmp/asr-fresh.json --out "$ASR"
+
+      # Saved right after a successful audit, so a later strict-QA failure keeps the ASR work.
+      - name: Save the ASR cache
+        if: inputs.mode != 'recon' && steps.asr.outcome == 'success'
+        uses: actions/cache/save@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: /tmp/audio-asr-cache
+          key: audio-asr-v1-${{ inputs.lang }}-${{ env.ASR_RECOGNIZER_KEY }}-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Canary QA + voice-cast selection
         if: inputs.mode == 'canary'
@@ -245,6 +319,7 @@ jobs:
             /tmp/audio-mp3
             /tmp/audio-asr.json
             /tmp/audio-plan.json
+            /tmp/audio-tech-qa.json
             content/reports/${{ inputs.lang }}/audio-quality.json
           retention-days: 90
           if-no-files-found: warn

@@ -20,7 +20,11 @@
  *   plan          --mode canary|generate [--layer] [--courses a,b] [--out FILE] [--dry-run]
  *   synth-script  --plan FILE --dl DIR --wav DIR --out DIR [--existing DIR]
  *   sfx-script    --out DIR
+ *   tech-qa       --plan FILE --outdir DIR --report FILE   (fail fast, before ASR; always strict)
+ *   asr-cache     split --plan FILE --outdir DIR --cache DIR --recognizer ID --todo FILE --hits FILE
+ *   asr-cache     merge --plan FILE --outdir DIR --cache DIR --recognizer ID --hits FILE --fresh FILE --out FILE
  *   qa            --plan FILE --outdir DIR --report FILE [--asr FILE] [--strict true]
+ *   owner-checklist --report FILE   (clips still flagged after a re-synthesis, for plan/OWNER-FINAL-CHECKLIST.md)
  *   select        --report FILE [--layer] [--courses a,b]
  *   apply         --plan FILE --outdir DIR [--sfx DIR]
  *   baseline      --write
@@ -39,7 +43,10 @@ import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { writeAudioSizeReport } from "./lib/audio-size";
 import { lexiconAudioStrings } from "./lib/lexicon-audio";
 import { receptionAssetKey } from "./lib/reception";
-import { storyClipId, storyPipelineVersion, storySentenceSegments } from "./lib/stories";
+import { bundledStoryIds, storyAudioPolicy, storyClipId, storyPipelineVersion, storySentenceSegments } from "./lib/stories";
+import { packClipRecipe, receptionClipRecipe, resynthesisFor, resynthesisProblems, type Resynthesis, type SynthesisOverride } from "./lib/audio-recipe";
+import { asrModelId, mergeAsrResults, splitPlanByCache, type AsrResult } from "./lib/asr-cache";
+import { ownerListeningLines, splitReview, techQaDoc, type ReviewRow } from "./lib/audio-qa";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
 
@@ -70,8 +77,13 @@ type ReceptionManifest = {
   pipelineVersion: number;
   /** P5b: pipeline version of the story sentences (bitrate), when it differs. */
   storyPipelineVersion?: number;
-  /** QC 2026-10-29 §1.6: story sentences are not bundled for this language (size budget); the reader shows text only. */
-  storyAudio?: { bundled: false; reason: string };
+  /**
+   * QC 2026-10-29b §2.3: which stories bundle sentence audio — `{ bundled: "band-1", stories, reason }`
+   * (the band-1 list), `{ bundled: false, reason }` (none); absent: all (scripts/lib/stories.ts parseStoryAudio).
+   */
+  storyAudio?: { bundled: false | "band-1"; stories?: string[]; reason: string };
+  /** QC 2026-10-29b §3.4: clips re-rendered with the same voice and another Piper noise scale (scripts/lib/audio-recipe.ts). */
+  resynthesis?: Resynthesis;
   note: string;
   voices: ReceptionVoice[];
   excludedVoices: { id: string; reason: string }[];
@@ -91,6 +103,8 @@ export type PlanClip = {
   segments: { voiceId: string; speaker: number | string | null; text: string }[];
   assetKey: string;
   pipelineVersion: number;
+  /** A declared re-synthesis of this clip (part of its asset key). */
+  synthesis?: SynthesisOverride | null;
 };
 type PlanDoc = { language: string; mode: string; layers: Layer[]; normalization: unknown; charsPerSecBand: [number, number]; clips: PlanClip[] };
 
@@ -344,14 +358,21 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
   const clips: PlanClip[] = [];
   const problems: string[] = [];
   const layers: Layer[] = [];
+  const resynthesis = loadReceptionManifest()?.resynthesis ?? null;
+  problems.push(...resynthesisProblems(resynthesis));
   // ---- pack + lexicon layers (course-keyed, content/audio/pack-audio-manifest.json) ----
   if (wantsPack) {
     const m = loadPackManifest();
     const version = pipelineVersionFor(m, LANG);
+    const voices = allVoices();
     const pushPack = (layer: "pack" | "lexicon", courseId: string, voiceId: string, text: string, suffix: string) => {
-      const voice = voiceById(allVoices(), voiceId);
+      const voice = voiceById(voices, voiceId);
       const speaker = voice.speaker ?? null;
-      clips.push({ clipId: `${courseId}:${text}${suffix}`, layer, courseId, language: LANG, text, segments: [{ voiceId, speaker, text }], assetKey: packAssetKey(courseId, voiceId, typeof speaker === "number" ? speaker : null, text, version), pipelineVersion: version });
+      const clipId = `${courseId}:${text}${suffix}`;
+      // QC 2026-10-29b §3.3–3.4: the short-word recipe and a declared re-synthesis enter the key of the clips they change only.
+      const synthesis = resynthesisFor(LANG, clipId, resynthesis);
+      const recipe = packClipRecipe({ engine: voice.engine, text, pipelineVersion: version, synthesis });
+      clips.push({ clipId, layer, courseId, language: LANG, text, segments: [{ voiceId, speaker, text }], assetKey: packAssetKey(courseId, voiceId, typeof speaker === "number" ? speaker : null, text, version, recipe), pipelineVersion: version, ...(synthesis ? { synthesis } : {}) });
     };
     const mine = languageCourses(m, courses);
     if (mode === "canary" && LAYER !== "lexicon") {
@@ -367,7 +388,8 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         const voice = voiceById(all, voiceId);
         const speaker = voice.speaker ?? null;
         for (const item of canary) {
-          clips.push({ clipId: `${item.id}@${voiceId}`, layer: "pack", courseId: null, language: LANG, text: item.text, segments: [{ voiceId, speaker, text: item.text }], assetKey: packAssetKey(LANG, voiceId, typeof speaker === "number" ? speaker : null, item.text, version), pipelineVersion: version });
+          const recipe = packClipRecipe({ engine: voice.engine, text: item.text, pipelineVersion: version, synthesis: null });
+          clips.push({ clipId: `${item.id}@${voiceId}`, layer: "pack", courseId: null, language: LANG, text: item.text, segments: [{ voiceId, speaker, text: item.text }], assetKey: packAssetKey(LANG, voiceId, typeof speaker === "number" ? speaker : null, item.text, version, recipe), pipelineVersion: version });
         }
         for (const [id] of mine) for (const text of canarySample(courseAudioStrings(m, id))) pushPack("pack", id, voiceId, text, `@${voiceId}`);
       }
@@ -399,9 +421,12 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
     if (r) {
       layers.push("reception");
       problems.push(...receptionDryRunProblems(r, mode));
-      const push = (clipId: string, segments: PlanClip["segments"], version = r.pipelineVersion) => {
+      const push = (clipId: string, segments: PlanClip["segments"], version = r.pipelineVersion, story = false) => {
         const resolved = segments.map((s) => ({ voiceId: s.voiceId, speaker: typeof s.speaker === "number" ? s.speaker : null, text: s.text }));
-        clips.push({ clipId, layer: "reception", courseId: null, language: LANG, text: segments.map((s) => s.text).join(" "), segments, assetKey: receptionAssetKey(LANG, resolved, version), pipelineVersion: version });
+        // Lockstep with scripts/lib/reception.ts listeningClipKey: a declared re-synthesis changes a listening clip's key (never a story sentence's).
+        const synthesis = story ? null : resynthesisFor(LANG, clipId, resynthesis);
+        const recipe = story ? null : receptionClipRecipe(LANG, clipId, resynthesis);
+        clips.push({ clipId, layer: "reception", courseId: null, language: LANG, text: segments.map((s) => s.text).join(" "), segments, assetKey: receptionAssetKey(LANG, resolved, version, recipe), pipelineVersion: version, ...(synthesis ? { synthesis } : {}) });
       };
       if (mode === "canary" && existsSync(CANARY_PATH)) {
         const canary = JSON.parse(readFileSync(CANARY_PATH, "utf8")) as { items: { id: string; text: string }[] };
@@ -420,13 +445,26 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         for (const clip of listening.clips) push(clip.id, clip.segments.map((seg) => ({ voiceId: listening.voiceCast[seg.speaker].voiceId, speaker: listening.voiceCast[seg.speaker].speaker, text: seg.text })));
       }
       // P5b graded stories: one asset per sentence (clip id <storyId>#<n>), voice from the stories' cast.
-      if (r.storyAudio?.bundled === false) console.log(`story sentences not bundled for ${LANG}: ${r.storyAudio.reason}`);
+      // QC 2026-10-29b §2.3: only the band-1 stories of `storyAudio` bundle audio; the others use the device voice.
+      const policy = storyAudioPolicy(LANG);
+      if (policy.kind === "none") console.log(`story sentences not bundled for ${LANG}: ${policy.reason}`);
       else if (mode === "generate" && existsSync(STORIES_PATH)) {
         const stories = storiesSchema(LANG).parse(JSON.parse(readFileSync(STORIES_PATH, "utf8")));
         const version = storyPipelineVersion(LANG);
-        for (const story of stories.stories) story.sentences.forEach((s, i) => push(storyClipId(story.id, i), storySentenceSegments(stories, s), version));
+        const bundled = bundledStoryIds(stories, policy);
+        for (const story of stories.stories) if (bundled.has(story.id)) story.sentences.forEach((s, i) => push(storyClipId(story.id, i), storySentenceSegments(stories, s), version, true));
+        console.log(`story sentences of ${LANG}: ${bundled.size} of ${stories.stories.length} stories bundled (${policy.kind})`);
       }
     } else if (LAYER === "reception") problems.push(`no reception voice manifest for ${LANG}`);
+  }
+  if (resynthesis !== null && mode === "generate") {
+    const planned = clips.filter((c) => c.synthesis);
+    const engineOf = new Map(allVoices().map((v) => [v.id, v.engine]));
+    for (const c of planned) for (const s of c.segments) if (engineOf.get(s.voiceId) !== "piper") problems.push(`resynthesis: ${c.clipId} uses ${s.voiceId} (${engineOf.get(s.voiceId) ?? "unknown"}), only Piper voices take a noise scale`);
+    const absent = resynthesis.clips.filter((id) => !clips.some((c) => c.clipId === id));
+    console.log(`resynthesis (${LANG}): ${planned.length} planned clip(s) re-render with noise_scale ${resynthesis.piper.noiseScale}, noise_w ${resynthesis.piper.noiseW}`);
+    // Layer-filtered runs plan only part of the list; a stale id (its text was edited) is reported, never fatal.
+    if (absent.length > 0) console.log(`  not in this plan (other layer, or text changed): ${absent.join(" | ")}`);
   }
   const plugin = buildPlugin(LANG);
   const doc: PlanDoc = { language: LANG, mode, layers: [...new Set(layers)], normalization: plugin.normalizeForAsr, charsPerSecBand: [plugin.charsPerSecBand.min, plugin.charsPerSecBand.max], clips };
@@ -486,8 +524,10 @@ type QaRow = {
   assetKey: string;
   transcript: string;
   durationSec: number;
+  speechSec: number;
   bytes: number;
   maxVolumeDb: number | null;
+  meanVolumeDb: number | null;
   leadingSilenceSec: number | null;
   trailingSilenceSec: number | null;
   charsPerSec: number;
@@ -509,7 +549,7 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
     const speaker = voices.size === 1 ? clip.segments[0].speaker : null;
     const base = { clipId: clip.clipId, layer: clip.layer, courseId: clip.courseId, language: clip.language, voiceId, speaker, assetKey: clip.assetKey, transcript: clip.text };
     if (!existsSync(p)) {
-      rows.push({ ...base, durationSec: 0, bytes: 0, maxVolumeDb: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 0, technical: "fail", technicalIssues: ["missing file"] });
+      rows.push({ ...base, durationSec: 0, speechSec: 0, bytes: 0, maxVolumeDb: null, meanVolumeDb: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 0, technical: "fail", technicalIssues: ["missing file"] });
       failures++;
       continue;
     }
@@ -532,18 +572,82 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
     .map(([key, a]) => ({ courseId: a.courseId, layer: a.layer, voiceId: key.split("|")[1], clips: a.count, meanWer: Number((a.werSum / Math.max(a.count, 1)).toFixed(4)), technicalFailures: a.techFails }))
     .sort((a, b) => (a.courseId ?? "").localeCompare(b.courseId ?? "") || a.meanWer - b.meanWer);
   const wordCount = (text: string) => text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
-  const review = rows
+  const review: ReviewRow[] = rows
     .filter((r) => r.asr && r.asr.wer >= REVIEW_WER && (wordCount(r.transcript) >= REVIEW_MIN_WORDS || /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(r.transcript)))
     .map((r) => ({ clipId: r.clipId, voiceId: r.voiceId, transcript: r.transcript, heard: r.asr!.text, wer: r.asr!.wer, durationSec: r.durationSec }));
+  // QC 2026-10-29b §3.4: flagged clips that were already re-synthesised go to the owner's listening check.
+  const resynthesized = (loadReceptionManifest()?.resynthesis?.clips ?? []).filter((id) => doc.clips.some((c) => c.clipId === id && c.synthesis));
+  const { ownerListening, resynthesisCandidates } = splitReview(review, resynthesized);
+  const keyOf = new Map(rows.map((r) => [r.clipId, r]));
+  const assetPathOf = (clipId: string) => {
+    const r = keyOf.get(clipId);
+    return r ? `assets/audio/${LANG}${r.layer === "reception" ? "-reception" : ""}/${r.assetKey}.mp3` : undefined;
+  };
   writeFileSync(
     reportPath,
-    `${JSON.stringify({ generator: "scripts/audio.ts qa", language: LANG, mode: doc.mode, layers: doc.layers, asrModel, asrReviewPolicy: { minWords: REVIEW_MIN_WORDS, werAtLeast: REVIEW_WER, note: "single-word clips are informational only; the technical QA (duration, level, edge silence, speaking rate from the language plugin) gates every clip; ja/zh scores are character error rates" }, clipCount: rows.length, uniqueAssetCount: new Set(rows.map((r) => r.assetKey)).size, technicalFailures: failures, sentenceClipsForReview: review.length, voiceSummary, review, clips: rows }, null, 2)}\n`
+    `${JSON.stringify({ generator: "scripts/audio.ts qa", language: LANG, mode: doc.mode, layers: doc.layers, asrModel, asrReviewPolicy: { minWords: REVIEW_MIN_WORDS, werAtLeast: REVIEW_WER, note: "single-word clips are informational only; the technical QA (duration and speech-only floors, level, edge silence, speaking rate from the language plugin) gates every clip; ja/zh scores are character error rates" }, clipCount: rows.length, uniqueAssetCount: new Set(rows.map((r) => r.assetKey)).size, technicalFailures: failures, sentenceClipsForReview: review.length, resynthesized, ownerListening: ownerListening.map((r) => ({ ...r, assetPath: assetPathOf(r.clipId) })), resynthesisCandidates: resynthesisCandidates.map((r) => r.clipId), voiceSummary, review, clips: rows }, null, 2)}\n`
   );
   console.log(`qa (${LANG}): ${rows.length} clips, ${failures} technical failures, ${review.length} clips for review (asr model: ${asrModel ?? "none"}) → ${reportPath}`);
+  if (resynthesized.length > 0) console.log(`  re-synthesised ${resynthesized.length}, still flagged ${ownerListening.length} → owner listening check (bun scripts/audio.ts owner-checklist --lang ${LANG} --report ${reportPath})`);
   for (const v of voiceSummary) console.log(`  ${v.courseId ?? v.layer} ${v.voiceId}: meanWER=${v.meanWer} techFails=${v.technicalFailures}`);
   // 2026-10-29: run 40758568130 failed on 3 clips the log never named — list every failure with its issues.
   for (const r of rows.filter((x) => x.technical === "fail")) console.log(`  FAIL ${r.clipId} "${r.transcript}" (${r.durationSec}s, max ${r.maxVolumeDb}dB): ${r.technicalIssues.join("; ")}`);
   if (failures > 0 && arg("strict") === "true") fail("technical QA failures in strict mode");
+}
+
+/**
+ * QC 2026-10-29b §3.1 fail fast: the technical checks on every unique asset,
+ * right after synthesis and before the ASR audit. Always strict: any failure
+ * exits non-zero (the run stops in minutes and its log names every clip).
+ */
+function techQa(planPath: string, outdir: string, reportPath: string) {
+  const doc = loadPlan(planPath);
+  const started = Date.now();
+  const { rows, failures, uniqueAssets } = techQaDoc({ clips: doc.clips, outdir, band: doc.charsPerSecBand });
+  writeFileSync(reportPath, `${JSON.stringify({ generator: "scripts/audio.ts tech-qa", language: LANG, mode: doc.mode, uniqueAssetCount: uniqueAssets, technicalFailures: failures.length, failures, clips: rows }, null, 2)}\n`);
+  console.log(`tech-qa (${LANG}): ${uniqueAssets} unique assets checked in ${((Date.now() - started) / 1000).toFixed(0)} s, ${failures.length} technical failure(s) → ${reportPath}`);
+  for (const r of failures) console.log(`  FAIL ${r.clipId} "${r.transcript}" (${r.durationSec}s, speech ${r.speechSec}s, max ${r.maxVolumeDb}dB): ${r.technicalIssues.join("; ")}`);
+  if (failures.length > 0) fail(`technical QA failed on ${failures.length} clip(s) — fix them before the ASR audit`);
+}
+
+/**
+ * QC 2026-10-29b §3.2: `asr-cache split` writes the cached results and a
+ * reduced plan of the clips still to audit; `asr-cache merge` joins them with
+ * the fresh results, stores the new entries and writes the full ASR file.
+ */
+function asrCache(action: string) {
+  const doc = loadPlan(arg("plan") ?? fail("--plan required"));
+  const outdir = arg("outdir") ?? fail("--outdir required");
+  const cacheDir = arg("cache") ?? fail("--cache required");
+  const recognizer = arg("recognizer") ?? fail("--recognizer required (e.g. faster-whisper==1.0.3:medium)");
+  const modelId = asrModelId({ recognizer, language: doc.language, normalization: doc.normalization, auditScript: readFileSync(path.join(ROOT, "scripts/audio-asr-audit.py")) });
+  const asrClips = doc.clips.map((c) => ({ clipId: c.clipId, assetKey: c.assetKey, text: c.text }));
+  if (action === "split") {
+    const { hits, todo, stats } = splitPlanByCache({ plan: { ...doc, clips: asrClips }, outdir, cacheDir, modelId });
+    const todoIds = new Set(todo.clips.map((c) => c.clipId));
+    writeFileSync(arg("todo") ?? fail("--todo required"), `${JSON.stringify({ ...doc, clips: doc.clips.filter((c) => todoIds.has(c.clipId)) }, null, 2)}\n`);
+    writeFileSync(arg("hits") ?? fail("--hits required"), `${JSON.stringify(hits, null, 2)}\n`);
+    console.log(`asr-cache (${LANG}): ${stats.clips} clips, ${stats.hits} cached, ${stats.misses} to audit (model id ${modelId})`);
+  } else if (action === "merge") {
+    const read = (name: string): Record<string, AsrResult> => {
+      const p = arg(name) ?? fail(`--${name} required`);
+      return existsSync(p) ? (JSON.parse(readFileSync(p, "utf8")) as Record<string, AsrResult>) : {};
+    };
+    const { results, written } = mergeAsrResults({ plan: { ...doc, clips: asrClips }, outdir, cacheDir, modelId, hits: read("hits"), fresh: read("fresh") });
+    writeFileSync(arg("out") ?? fail("--out required"), `${JSON.stringify(results, null, 2)}\n`);
+    console.log(`asr-cache (${LANG}): ${Object.keys(results).length} results, ${written} new cache entries`);
+  } else fail("asr-cache needs split or merge");
+}
+
+/** QC 2026-10-29b §3.4: the owner's listening lines for the clips still flagged after a re-synthesis. */
+function ownerChecklist(reportPath: string) {
+  const report = JSON.parse(readFileSync(reportPath, "utf8")) as { ownerListening?: (ReviewRow & { assetPath?: string })[] };
+  const rows = report.ownerListening ?? [];
+  if (rows.length === 0) {
+    console.log(`owner-checklist (${LANG}): no clip is still flagged after the re-synthesis — nothing for the owner to listen to`);
+    return;
+  }
+  process.stdout.write(`${ownerListeningLines(LANG, rows).join("\n")}\n`);
 }
 
 /** The registry source id a voice is recorded under (Piper: one entry per dataset name, shared by its qualities). */
@@ -835,6 +939,9 @@ else if (cmd === "plan") plan((arg("mode") ?? fail("--mode required")) as "canar
 else if (cmd === "synth-script") synthScript(arg("plan") ?? fail("--plan required"), arg("dl") ?? fail("--dl required"), arg("wav") ?? fail("--wav required"), arg("out") ?? fail("--out required"), arg("existing"));
 else if (cmd === "sfx-script") process.stdout.write(sfxScript(arg("out") ?? fail("--out required")));
 else if (cmd === "qa") qa(arg("plan") ?? fail("--plan required"), arg("outdir") ?? fail("--outdir required"), arg("report") ?? fail("--report required"), arg("asr"));
+else if (cmd === "tech-qa") techQa(arg("plan") ?? fail("--plan required"), arg("outdir") ?? fail("--outdir required"), arg("report") ?? fail("--report required"));
+else if (cmd === "asr-cache") asrCache(process.argv[3] ?? "");
+else if (cmd === "owner-checklist") ownerChecklist(arg("report") ?? fail("--report required"));
 else if (cmd === "select") select(arg("report") ?? fail("--report required"), arg("courses"));
 else if (cmd === "apply") apply(arg("plan") ?? fail("--plan required"), arg("outdir") ?? fail("--outdir required"), arg("sfx"));
 else if (cmd === "manifest-dedupe") dedupeManifest();

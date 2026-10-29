@@ -11,12 +11,13 @@
 import { describe, expect, test } from "bun:test";
 
 import { baselineGroupOf, loadBaselineGroups } from "../lib/audio";
-import { licenseGate, registryLicenseFor } from "../lib/piper-audio";
+import { licenseGate, packAssetKey, registryLicenseFor } from "../lib/piper-audio";
+import { packClipRecipe, SHORT_WORD_RECIPE } from "../lib/audio-recipe";
 import { buildPlugin } from "../lib/languages";
 import { existsSync, readFileSync } from "fs";
 
 import { readJson, safeResolve } from "../lib/pipeline";
-import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type Voice } from "../lib/tts";
+import { buildSynthScript, encodeFilter, engineFor, enginesNeeded, loadEngines, SHORT_CLIP_PAD_MS, type Voice } from "../lib/tts";
 import { PIPER_SHORT_LENGTH_SCALE, piperInput } from "../lib/tts/piper";
 
 const engines = loadEngines();
@@ -71,15 +72,47 @@ describe("engine abstraction", () => {
     expect(script).not.toContain("piper --model");
   });
 
-  test("Piper renders a 1–3 letter headword slower so it is not clipped below the QA floor (de 'du' 0.20 s, 'Sie' 0.24 s)", () => {
+  test("QC 2026-10-29b §3.3: a 1–3 letter headword is spoken at near-normal speed (≤ 1.15×, the 1.7× slow-down is reverted)", () => {
     const render = (text: string) =>
       buildSynthScript({ clips: [{ assetKey: "k", pipelineVersion: 3, segments: [{ voiceId: "es_MX-claude-high", speaker: null, text }] }], voices: [piperVoice], engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out" })
         .split("\n")
         .find((l) => l.includes("piper --model"))!;
+    expect(PIPER_SHORT_LENGTH_SCALE).toBeLessThanOrEqual(1.15);
+    expect(PIPER_SHORT_LENGTH_SCALE).toBeGreaterThanOrEqual(1.0);
     expect(render("du")).toContain(`--length_scale ${PIPER_SHORT_LENGTH_SCALE}`);
     expect(render("Sie")).toContain(`--length_scale ${PIPER_SHORT_LENGTH_SCALE}`);
+    expect(render("du")).not.toContain("--length_scale 1.7");
     expect(render("Hola")).not.toContain("--length_scale");
     expect(render("Guten Tag")).not.toContain("--length_scale");
+  });
+
+  test("QC 2026-10-29b §3.3: every 1–3 letter clip gets ≈ 120 ms of silence before and after, for every engine, after loudness normalisation", () => {
+    const encodeLine = (text: string, voice: Voice, pipelineVersion = 3) =>
+      buildSynthScript({ clips: [{ assetKey: "k", pipelineVersion, segments: [{ voiceId: voice.id, speaker: voice.speaker ?? null, text }] }], voices: [voice], engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out" })
+        .split("\n")
+        .find((l) => l.includes("libmp3lame"))!;
+    expect(SHORT_CLIP_PAD_MS).toBe(120);
+    const pad = "adelay=120:all=1,apad=pad_dur=0.12";
+    expect(encodeLine("du", piperVoice)).toContain(`loudnorm=I=-18:TP=-1.5:LRA=11,${pad}`);
+    expect(encodeLine("sí", kokoroVoice)).toContain(pad); // same rule for every engine and language
+    expect(encodeLine("犬", meloVoice)).toContain(pad);
+    expect(encodeLine("oui", piperVoice, 1)).toContain(`-af '${pad}'`); // pipeline 1: no loudnorm, padding still applies
+    expect(encodeLine("Guten Tag", piperVoice)).not.toContain("adelay");
+    expect(encodeLine("Hola, ¿qué tal?", kokoroVoice)).not.toContain("apad");
+    expect(encodeFilter({ pipelineVersion: 1, segments: [{ voiceId: "v", speaker: null, text: "Bonjour" }] }, engines.loudness)).toBeNull();
+  });
+
+  test("QC 2026-10-29b §3.3: only the Piper short words rendered with the old recipe get a new key; every other blessed clip keeps its key", () => {
+    const key = (engine: string, text: string, version = 3) => packAssetKey("de-vi", "de_DE-thorsten-high", null, text, version, packClipRecipe({ engine, text, pipelineVersion: version, synthesis: null }));
+    const legacy = (text: string, version = 3) => packAssetKey("de-vi", "de_DE-thorsten-high", null, text, version);
+    expect(packClipRecipe({ engine: "piper", text: "du", pipelineVersion: 3, synthesis: null })).toBe(SHORT_WORD_RECIPE);
+    expect(key("piper", "du")).not.toBe(legacy("du")); // re-generated in the next de run
+    expect(key("piper", "Sie")).not.toBe(legacy("Sie"));
+    expect(key("piper", "Guten Tag")).toBe(legacy("Guten Tag")); // longer clips: byte-identical reuse
+    expect(key("kokoro", "sí")).toBe(legacy("sí")); // Kokoro never had the slow-down
+    expect(key("piper", "oui", 1)).toBe(legacy("oui", 1)); // French pipeline 1 stays frozen
+    // The recipe tag leaves the default canonical untouched (no new key for an untagged clip).
+    expect(packAssetKey("de-vi", "de_DE-thorsten-high", null, "Hallo", 3, null)).toBe(legacy("Hallo"));
   });
 
   test("a short transcript is synthesised as a sentence (run 40782316966: bare 'du' came out as 'Hm.')", () => {

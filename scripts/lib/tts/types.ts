@@ -50,7 +50,15 @@ export type EnginesDoc = {
 export type DownloadItem = { voiceId: string; kind: string; url: string };
 
 /** One clip segment to synthesise with a given voice. */
-export type SynthJob = { voiceId: string; speaker: number | string | null; text: string; wavPath: string };
+export type SynthJob = {
+  voiceId: string;
+  speaker: number | string | null;
+  text: string;
+  wavPath: string;
+  /** QC 2026-10-29b §3.4: a declared re-synthesis (Piper only; other engines refuse it). */
+  noiseScale?: number;
+  noiseW?: number;
+};
 
 export interface TtsEngine {
   readonly id: EngineId;
