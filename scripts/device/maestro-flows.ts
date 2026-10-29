@@ -31,7 +31,7 @@ import { examTracksFor } from "../../src/lib/exam/content";
 import { buildExamSectionSession, selectMockForm } from "../../src/lib/exam/engine";
 import { checkAnswer } from "../../src/lib/grading";
 import { lexemeMetaFor } from "../../src/lib/learning/lexicon-index";
-import { storyFor } from "../../src/lib/stories/content";
+import { storyAudioSourceFor, storyFor, storyList } from "../../src/lib/stories/content";
 import { buildCheckpointSessionDefinition, lessonSteps } from "../../src/lib/session/sources";
 import type { SessionStep } from "../../src/lib/session/types";
 import type { Exercise, LessonPack } from "../../src/lib/types";
@@ -273,8 +273,36 @@ export function storiesFlow(): { yaml: string; unsupported: string[] } {
       ...TAP_CONTINUE
     );
   }
-  lines.push(...waitId("session-summary"), ...shot("story-word-check-summary"), `- stopApp`, ``);
+  lines.push(...waitId("session-summary"), ...shot("story-word-check-summary"));
+  const deviceVoice = deviceVoiceStoryCheck();
+  unsupported.push(...deviceVoice.unsupported);
+  lines.push(...deviceVoice.lines, `- stopApp`, ``);
   return { yaml: lines.join("\n"), unsupported };
+}
+
+/** QC 2026-10-29b ?2.4: the course whose stories have no bundled audio (device voice). */
+export const DEVICE_VOICE_COURSE = "de-vi";
+
+/**
+ * A story without bundled audio shows either the device-voice label (an
+ * offline voice is installed) or the install hint (none is): the emulator
+ * image may have no voice for the language, so either state passes. Then
+ * back to the walk course for the flows that follow.
+ */
+export function deviceVoiceStoryCheck(): { lines: string[]; unsupported: string[] } {
+  const story = storyList(DEVICE_VOICE_COURSE).find((s) => storyAudioSourceFor(DEVICE_VOICE_COURSE, s) === "device-voice");
+  if (!story) return { lines: [], unsupported: [`${DEVICE_VOICE_COURSE}: no story without bundled audio`] };
+  return {
+    lines: [
+      ...switchCourse(DEVICE_VOICE_COURSE),
+      ...openLink(`story/${encodeURIComponent(story.id)}`),
+      ...waitId("story-reader"),
+      ...waitId("story-device-voice-(label|hint)"),
+      ...shot("story-device-voice"),
+      ...switchCourse(WALK_COURSE),
+    ],
+    unsupported: [],
+  };
 }
 
 /** The first scored checkpoint of the walk course, answered correctly from its first form. */
