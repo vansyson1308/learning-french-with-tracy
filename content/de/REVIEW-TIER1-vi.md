@@ -1,6 +1,6 @@
 # Review Tier 1 — tiếng Việt (de-vi)
 
-Những câu chữ tiếng Việt **dạy hoặc chấm** người học: sổ tay từng chương, thẻ khái niệm, đề viết và tiêu chí chấm, mục tiêu và lời nhắc hội thoại, hướng dẫn thi. Tiếng Tây Ban Nha in nghiêng chỉ để đối chiếu. Đánh dấu [x] khi câu đúng và tự nhiên; sửa ngay trong nguồn (đường dẫn theo id) hoặc ghi chú bên cạnh. Khi xong, ghi `review: { native: "<tên>", date: "YYYY-MM-DD", checklist: "content/de/REVIEW-TIER1-vi.md" }` vào `content/courses/de-vi.profile.json` — nhãn "Bản beta" trong app sẽ tự tắt.
+Những câu chữ tiếng Việt **dạy hoặc chấm** người học: sổ tay từng chương, thẻ khái niệm, đề viết và tiêu chí chấm, mục tiêu và lời nhắc hội thoại, hướng dẫn thi. Tiếng Đức in nghiêng chỉ để đối chiếu. Đánh dấu [x] khi câu đúng và tự nhiên; sửa ngay trong nguồn (đường dẫn theo id) hoặc ghi chú bên cạnh. Khi xong, ghi `review: { native: "<tên>", date: "YYYY-MM-DD", checklist: "content/de/REVIEW-TIER1-vi.md" }` vào `content/courses/de-vi.profile.json` — nhãn "Bản beta" trong app sẽ tự tắt.
 
 Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lại (nhãn từ, lựa chọn, câu dịch) do tầng tự động kiểm: validators, LanguageTool, đối chiếu dịch ngược (`content/de/_drafts/BACKTRANSLATION.md`).
 
@@ -12,7 +12,7 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Đồ ăn và đồ uống** · *das Brot* — bánh mì, *der Apfel* — quả táo · *das Wasser* — nước, *die Milch* — sữa
 - [ ] **Hai động từ đầu tiên** · **essen** (ăn): *Ich esse Brot.* — Tôi ăn bánh mì. · **trinken** (uống): *Das Kind trinkt Milch.* — Đứa trẻ uống sữa.
 - [ ] **Viết hoa danh từ** · Trong tiếng Đức, **mọi danh từ đều viết hoa**, kể cả giữa câu: *Ich trinke Wasser.*
-- [ ] **Có và không** · *Ja* là vâng, *nein* là không. Muốn phủ định một động từ, đặt *nicht* sau nó: *Ich esse nicht.* — Tôi không ăn.
+- [ ] **Có và không** · *Ja* là vâng, *nein* là không. Muốn phủ định, thêm *nicht*; trong câu ngắn, *nicht* đứng sau động từ: *Ich esse nicht.* — Tôi không ăn. Với danh từ không có mạo từ thì dùng *kein*: *Ich esse kein Brot.*
 - [ ] Khái niệm `de:concept:three-genders` — **Mọi danh từ tiếng Đức đều có giống** — Danh từ là giống đực (der), giống cái (die) hoặc giống trung (das) — học mạo từ cùng danh từ. (*der Tisch*, *die Tür*)
   - Tiếng Đức xếp mọi danh từ vào ba giống. Đây là thuộc tính của từ, không phải của sự vật: cái bàn (der Tisch) là giống đực, cái cửa (die Tür) là giống cái, cô bé (das Mädchen) lại là giống trung. Tiếng Việt không có mạo từ, nên hãy luôn học danh từ kèm der, die hoặc das. — Mẹo: Học «der Tisch», đừng chỉ học «Tisch». — Ngoại lệ: Giống không theo giới tính thật: das Mädchen (cô bé) là giống trung.
 
@@ -25,7 +25,7 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Ba từ lịch sự** · *Danke!* — cảm ơn. *Danke schön!* — cảm ơn nhiều. · *Bitte!* — làm ơn; cũng là "không có gì" khi đáp lại *Danke*. · *Entschuldigung!* — xin lỗi; cũng dùng để gọi ai đó.
 - [ ] **Tên của bạn** · *Wie heißen Sie?* — Ông/bà tên gì? *Ich heiße Lan.* — Tôi tên là Lan. Chữ *ß* đọc như *ss*.
 - [ ] Khái niệm `de:concept:du-sie` — **Du hay Sie?** — Du với bạn bè, gia đình, trẻ em; Sie (viết hoa) với người lạ, người lớn tuổi và ở nơi làm việc. (*Wie heißt du?*, *Wie heißen Sie?*)
-  - Tiếng Việt có rất nhiều đại từ xưng hô; tiếng Đức chỉ có hai mức: du (thân mật) và Sie (lịch sự). Sie luôn viết hoa và chia động từ như ngôi «họ»: Wie heißen Sie? Khi không chắc, hãy dùng Sie và chờ người kia đề nghị dùng du. Mệnh lệnh lịch sự cũng dùng Sie: Nehmen Sie Platz! — Mẹo: Không chắc thì dùng Sie. — Ngoại lệ: Ở nhiều nơi làm việc trẻ và quán cà phê, người ta dùng du ngay từ đầu.
+  - Tiếng Việt có rất nhiều đại từ xưng hô; tiếng Đức chỉ có hai mức: du (thân mật) và Sie (lịch sự). Sie luôn viết hoa và chia động từ như ngôi «họ»: Wie heißen Sie? Khi không chắc, hãy dùng Sie và chờ người kia đề nghị dùng du. Mệnh lệnh lịch sự cũng dùng Sie: Nehmen Sie Platz! — Mẹo: Không chắc thì dùng Sie. — Ngoại lệ: Ở nhiều công ty trẻ và quán cà phê, người ta dùng du ngay từ đầu.
 
 ## de-vi:unit-3 — Đồ ăn
 
@@ -34,9 +34,9 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Bữa sáng kiểu Đức** · *das Frühstück* — bữa sáng · *das Brot* — bánh mì, *der Käse* — phô mai, *das Ei* — quả trứng · *der Kaffee* — cà phê, *der Tee* — trà, *der Saft* — nước ép
 - [ ] **Bữa chính** · *der Reis* — cơm, gạo, *der Fisch* — cá · *das Obst* — trái cây (danh từ chỉ chung, không đếm)
 - [ ] **Đồ ngọt** · *der Kuchen* — bánh ngọt, *die Schokolade* — sô-cô-la, *der Zucker* — đường
-- [ ] **Gọi món lịch sự** · *Ich möchte einen Kaffee, bitte.* — Cho tôi một cà phê. · *Ein Wasser, bitte.* — Một nước, làm ơn. · Để ý: sau *möchte*, *der Kaffee* đổi thành *einen Kaffee*. Bạn sẽ học quy tắc này ở Phần 2; giờ chỉ cần nhớ cả cụm.
+- [ ] **Gọi món lịch sự** · *Ich möchte einen Kaffee, bitte.* — Cho tôi một cà phê. · *Ein Wasser, bitte.* — Cho tôi một chai nước. · Để ý: sau *möchte*, *der Kaffee* đổi thành *einen Kaffee*. Bạn sẽ học quy tắc này ở Phần 2; giờ chỉ cần nhớ cả cụm.
 - [ ] Khái niệm `de:concept:ein-kein` — **Ein, eine và kein** — Ein đi với der và das, eine đi với die; phủ định danh từ bằng kein / keine. (*Ich habe ein Auto.*, *Ich habe kein Auto.*)
-  - Mạo từ không xác định giống như «một» trong tiếng Việt: ein Tisch (der), eine Tür (die), ein Fenster (das). Muốn nói «không có» một danh từ, đặt k- trước: kein Tisch, keine Tür, kein Fenster. Với động từ hoặc tính từ thì dùng nicht: Ich komme nicht. — Mẹo: Danh từ → kein; còn lại → nicht. — Ngoại lệ: Số nhiều không có ein, nhưng có keine: Ich habe keine Kinder.
+  - Mạo từ không xác định giống như «một» trong tiếng Việt: ein Tisch (der), eine Tür (die), ein Fenster (das). Muốn phủ định một danh từ («không có», «không … nào»), thêm k- vào trước: kein Tisch, keine Tür, kein Fenster. Với động từ hoặc tính từ thì dùng nicht: Ich komme nicht. — Mẹo: Danh từ → kein; còn lại → nicht. — Ngoại lệ: Số nhiều không có ein, nhưng có keine: Ich habe keine Kinder.
 
 ## de-vi:unit-4 — Gia đình
 
@@ -65,18 +65,18 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 ## de-vi:unit-a — Giống & Mạo từ
 
 - [ ] Mô tả: Der, die hay das? Đuôi từ thường mách bạn câu trả lời.
-- [ ] **Der, die oder das? 🎯** · Mọi danh từ tiếng Đức có một trong ba giống. Nghĩa của từ hiếm khi cho biết giống (*das Mädchen* — cô bé — là giống trung), nhưng **đuôi từ** thường mách bạn. Số liệu dưới đây lấy từ **12.355 danh từ** trong dữ liệu từ điển của khoá học.
+- [ ] **Der, die oder das? 🎯** · Mọi danh từ tiếng Đức có một trong ba giống. Nghĩa của từ hiếm khi cho biết giống (*das Mädchen* — cô bé — là giống trung), nhưng **đuôi từ** thường mách bạn. Số liệu dưới đây lấy từ **12.358 danh từ** trong dữ liệu từ điển của khoá học.
 - [ ] **Gần như luôn là die** · **-ung**: 99,1 % — *die Wohnung, die Zeitung* · **-heit / -keit**: 98,7 % — *die Freiheit, die Möglichkeit* · **-ion**: 98,2 % — *die Information, die Station* · **-tät**: 59/59 — *die Universität*
-- [ ] **Thường là die hoặc der** · **-e**: giống cái 85,0 % — *die Tasche, die Küche*; nhưng *der Junge, der Name* · **-er**: giống đực 81,1 % — *der Lehrer, der Computer*; nhưng *die Mutter, das Fenster*
+- [ ] **Thường là die hoặc der** · **-e**: giống cái 84,9 % — *die Tasche, die Küche*; nhưng *der Junge, der Name* · **-er**: giống đực 80,9 % — *der Lehrer, der Computer*; nhưng *die Mutter, das Fenster*
 - [ ] **Thường là das** · **-chen**: *das Mädchen, das Brötchen* — từ nhỏ hóa (đuôi -hen trong dữ liệu là giống trung 88,8 %; ngoại lệ *der Kuchen*)
 - [ ] **Mạo từ không xác định và kein** · *ein* (der, das) — *eine* (die): *ein Tisch, eine Tür, ein Fenster* · Phủ định danh từ dùng **kein / keine**: *Ich habe keine Zeit.*
 - [ ] **Số nhiều luôn là die** · *der Tisch → die Tische, die Tür → die Türen, das Bild → die Bilder.* Hãy học số nhiều cùng danh từ.
 - [ ] Khái niệm `de:concept:gender-endings` — **Đuôi từ gợi ý giống** — -ung, -heit, -keit, -ion, -tät hầu như luôn là die; -chen là das; -er thường là der. (*die Wohnung*, *die Information*)
   - Trong 12.358 danh từ của dữ liệu từ điển khoá học, đuôi -ung là giống cái ở 99,1 %, -heit/-keit ở 98,7 %, -ion ở 98,2 % và -tät ở cả 59/59 từ. Đuôi -e là giống cái ở 84,9 %, đuôi -er là giống đực ở 80,9 %. Từ nhỏ hóa -chen là giống trung. Khi gặp từ mới, hãy đoán theo đuôi trước rồi kiểm tra. — Mẹo: -ung, -heit, -keit, -ion: chắc chắn die. — Ngoại lệ: Đuôi -e có ngoại lệ hay gặp: der Junge, der Name, das Ende.; Đuôi -er có ngoại lệ: die Mutter, die Tochter, das Fenster.
 - [ ] Khái niệm `de:concept:plurals` — **Số nhiều: nhiều mẫu, một mạo từ** — Số nhiều có năm mẫu chính (-e, -en/-n, -er, ¨, -s), nhưng mạo từ số nhiều luôn là die. (*die Frau → die Frauen*, *das Kind → die Kinder*)
-  - Tiếng Việt chỉ thêm «những, các»; tiếng Đức đổi chính danh từ. Hầu hết danh từ giống cái thêm -en hoặc -n (die Frau → die Frauen). Nhiều danh từ thêm -e (der Tisch → die Tische), -er kèm umlaut (das Kind → die Kinder, das Haus → die Häuser), chỉ thêm umlaut (die Mutter → die Mütter), hoặc -s với từ mượn (das Auto → die Autos). Mạo từ số nhiều luôn là die. — Mẹo: Học ba thứ một lúc: der Tisch, die Tische. — Ngoại lệ: Một số danh từ không đổi ở số nhiều: das Fenster → die Fenster.
+  - Tiếng Việt chỉ thêm «những, các»; tiếng Đức đổi chính danh từ. Hầu hết danh từ giống cái thêm -en hoặc -n (die Frau → die Frauen). Nhiều danh từ thêm -e (der Tisch → die Tische), -er, có umlaut nếu nguyên âm a/o/u đổi được (das Kind → die Kinder, das Haus → die Häuser), chỉ thêm umlaut (die Mutter → die Mütter), hoặc -s với từ mượn (das Auto → die Autos). Mạo từ số nhiều luôn là die. — Mẹo: Học ba thứ một lúc: der Tisch, die Tische. — Ngoại lệ: Một số danh từ không đổi ở số nhiều: das Fenster → die Fenster.
 - [ ] Khái niệm `de:concept:accusative` — **Tân ngữ giống đực: der → den** — Khi danh từ giống đực làm tân ngữ, der đổi thành den và ein thành einen; die và das không đổi. (*Der Kaffee ist heiß.*, *Ich trinke den Kaffee.*)
-  - Tiếng Việt dùng trật tự từ để biết ai làm gì. Tiếng Đức còn đổi mạo từ: chủ ngữ ở chủ cách (Nominativ), tân ngữ trực tiếp ở đối cách (Akkusativ). Ở trình độ A1, chỉ giống đực đổi: Der Bus kommt. → Ich nehme den Bus. Giống cái, giống trung và số nhiều giữ nguyên. — Mẹo: Chỉ «anh chàng» der đổi áo: den, einen. — Ngoại lệ: Sau haben, möchten, brauchen, nehmen, kaufen tân ngữ ở đối cách: Ich möchte einen Tee.
+  - Tiếng Việt dùng trật tự từ để biết ai làm gì. Tiếng Đức còn đổi mạo từ: chủ ngữ ở chủ cách (Nominativ), tân ngữ trực tiếp ở đối cách (Akkusativ). Ở trình độ A1, chỉ giống đực đổi: Der Bus kommt. → Ich nehme den Bus. Giống cái, giống trung và số nhiều giữ nguyên. — Mẹo: Chỉ «anh chàng» der đổi áo: den, einen. — Ngoại lệ: Một số danh từ giống đực còn thêm -n: der Junge → den Jungen, der Name → den Namen.
 
 ## de-vi:unit-b — Những động từ dùng nhiều nhất
 
@@ -108,6 +108,8 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Từ quốc tế** · *die Musik, das Foto, der Film, das Internet, die Pizza, das Problem* · Cách viết đôi khi khác: *das Foto* (không phải *photo*), chữ cái đầu viết hoa vì là danh từ.
 - [ ] **Từ ghép: lợi thế lớn** · Tiếng Đức ghép từ như xếp gạch. Hiểu từng mảnh là đoán được nghĩa: · *das Krankenhaus* = *krank* (ốm) + *Haus* (nhà) → bệnh viện · *das Schlafzimmer* = *schlafen* (ngủ) + *Zimmer* (phòng) → phòng ngủ · *das Wochenende* = *Woche* (tuần) + *Ende* (cuối) → cuối tuần · *der Geburtstag* = *Geburt* (sự ra đời) + *Tag* (ngày) → sinh nhật · Giống của từ ghép luôn theo **từ cuối**: *das Ende → das Wochenende*.
 - [ ] **Bạn giả (nếu bạn biết tiếng Anh)** · *bekommen* = **nhận được**, không phải *become* (trở thành = *werden*) · *der Chef* = **sếp**, không phải đầu bếp · *das Gift* = **chất độc**, không phải món quà (quà = *das Geschenk*)
+- [ ] Khái niệm `de:concept:questions` — **Câu hỏi có/không và câu hỏi W-** — Câu hỏi có/không đặt động từ lên đầu; câu hỏi W- đặt từ hỏi đầu tiên, động từ thứ hai. (*Kommst du aus Vietnam?*, *Wo wohnst du?*)
+  - Tiếng Việt thêm «không?» hoặc «à?» ở cuối câu. Tiếng Đức đổi chỗ: Du wohnst in Köln. → Wohnst du in Köln? Với câu hỏi lấy thông tin, từ hỏi đứng đầu: wer (ai), was (gì), wo (ở đâu), woher (từ đâu), wann (khi nào), wie (thế nào), warum (tại sao). Lưu ý: wer là «ai», không phải «ở đâu». — Mẹo: W- hỏi thông tin; động từ đầu câu hỏi có/không. — Ngoại lệ: Trả lời câu hỏi phủ định bằng doch: Kommst du nicht? — Doch!
 - [ ] Khái niệm `de:concept:compounds` — **Từ ghép: hiểu từng mảnh** — Từ ghép lấy giống của từ cuối cùng: das Haus → das Krankenhaus; der Tag → der Geburtstag. (*das Krankenhaus*, *das Wochenende*)
   - Tiếng Đức ghép danh từ thành một từ viết liền, giống «nhà» + «thương» thành «nhà thương». Đọc từ cuối lên đầu: das Schlafzimmer là «phòng (Zimmer) để ngủ (schlafen)». Từ cuối quyết định nghĩa chính và giống, các mảnh đứng trước bổ nghĩa cho nó. Từ ghép dài như Straßenbahnhaltestelle = Straßenbahn + Haltestelle (trạm xe điện). — Mẹo: Từ cuối là «ông chủ» của từ ghép. — Ngoại lệ: Đôi khi có chữ nối -s- hoặc -n-: Geburt-s-tag, Woche-n-ende.
 - [ ] Khái niệm `de:concept:false-friends` — **Từ quốc tế và «bạn giả»** — Nhiều từ giống tiếng Anh có cùng nghĩa (das Hotel, der Film), nhưng một số là bẫy: bekommen = nhận được, der Chef = sếp. (*Ich bekomme eine Nachricht.*, *Mein Chef ist nett.*)
@@ -139,12 +141,14 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Hai kiểu ch** · Sau *a, o, u*: âm cổ họng, gần "kh" tiếng Việt — *Buch, acht* · Sau *e, i, ä, ö, ü*: âm nhẹ, gần "x" đọc giữa lưỡi — *ich, nicht*
 - [ ] **Phụ âm cuối đọc "cứng"** · *d, g, b* ở cuối từ đọc gần như *t, k, p*: *der Hund, der Tag*. Đừng bỏ âm cuối: *und* không đọc là "un".
 - [ ] **Nguyên âm dài và ngắn** · *die Miete* (tiền thuê nhà, *ie* dài) — *die Mitte* (ở giữa, *i* ngắn trước phụ âm đôi).
+- [ ] Khái niệm `de:concept:place-prepositions` — **Đi đâu: nach, zu, in** — Nach + thành phố, nước; zu + người, cửa hàng, nơi chốn; in + tòa nhà khi đi vào bên trong. (*Ich fahre nach Berlin.*, *Ich gehe zum Arzt.*)
+  - Tiếng Việt chỉ nói «đi» + nơi chốn. Tiếng Đức chọn giới từ theo loại nơi: Ich fahre nach Berlin (thành phố), Ich gehe zum Arzt (đến chỗ bác sĩ), Ich gehe ins Kino (vào rạp). Để nói «ở đâu», dùng in: Ich wohne in Berlin. Về nhà là nach Hause, ở nhà là zu Hause. — Mẹo: nach Hause = về nhà; zu Hause = ở nhà. — Ngoại lệ: Nước có mạo từ dùng in: Ich fahre in die Schweiz.
 - [ ] Khái niệm `de:concept:sounds-umlaut-ch` — **Âm ü, ö và hai kiểu ch** — Ü và ö tròn môi; ch sau a, o, u đọc ở cổ họng, sau e, i đọc nhẹ ở giữa lưỡi. (*schon — schön*, *das Buch*)
   - Tiếng Việt có ư và ơ nhưng không tròn môi. Để nói ü, đặt lưỡi như khi nói «i» rồi tròn môi như «u»: über, für. Ö: lưỡi như «ê», môi như «ô»: schön. Ch sau a, o, u gần giống «kh»: Buch, acht. Sau e, i, ä, ö, ü, ch nhẹ hơn, gần «x» đọc bằng giữa lưỡi: ich, nicht. Đây chỉ là gần giống — hãy nghe mẫu. — Mẹo: Ü = nói «i» với môi «u». — Ngoại lệ: Chs đọc như ks: sechs (sáu).
 - [ ] Khái niệm `de:concept:final-devoicing-length` — **Âm cuối «cứng» và nguyên âm dài – ngắn** — D, g, b ở cuối từ đọc gần như t, k, p; nguyên âm trước phụ âm đôi thường ngắn. (*der Hund*, *der Tag*)
-  - Tiếng Việt không có phụ âm cuối hữu thanh, nên người Việt dễ bỏ hẳn âm cuối (und → «un»). Hãy đọc rõ âm cuối nhưng «cứng»: der Hund nghe gần «hunt», der Tag gần «tak». Độ dài nguyên âm phân biệt nghĩa: die Miete (tiền thuê nhà, ie dài) — die Mitte (ở giữa, i ngắn). Ie, ah, eh, oo thường là nguyên âm dài. — Mẹo: Đừng nuốt âm cuối: und có d! — Ngoại lệ: Ở số nhiều, âm lại «mềm»: die Hunde, die Tage.
+  - Tiếng Việt không có phụ âm cuối hữu thanh, nên người Việt dễ bỏ hẳn âm cuối (und → «un»). Hãy đọc rõ âm cuối nhưng «cứng»: der Hund nghe gần «hunt», der Tag gần «tak». Độ dài nguyên âm phân biệt nghĩa: die Miete (tiền thuê nhà, ie dài) — die Mitte (ở giữa, i ngắn). Ie, ah, eh, oo thường là nguyên âm dài. — Mẹo: Đừng nuốt âm cuối: und có d! — Ngoại lệ: Khi phụ âm không còn đứng cuối (ví dụ ở số nhiều), âm lại «mềm»: die Hunde, die Tage.
 - [ ] Khái niệm `de:concept:capitals-eszett` — **Viết hoa danh từ, ß và umlaut** — Mọi danh từ viết hoa; ß sau nguyên âm dài, ss sau nguyên âm ngắn; không bỏ umlaut. (*Ich trinke Wasser.*, *die Straße*)
-  - Tiếng Đức là ngôn ngữ duy nhất viết hoa mọi danh từ, kể cả giữa câu: Ich trinke Wasser. Chữ ß (eszett) đọc như «ss» và đứng sau nguyên âm dài hoặc ei, au: die Straße, groß, heißen. Sau nguyên âm ngắn viết ss: der Fluss, essen. Nếu không gõ được umlaut, có thể viết ae, oe, ue — nhưng trong bài tập hãy gõ đúng ä, ö, ü. — Mẹo: Danh từ = chữ hoa. Dài = ß, ngắn = ss. — Ngoại lệ: Ở Thụy Sĩ không dùng ß: Strasse.
+  - Tiếng Đức viết hoa mọi danh từ, kể cả giữa câu: Ich trinke Wasser. Chữ ß (eszett) đọc như «ss» và đứng sau nguyên âm dài hoặc ei, au: die Straße, groß, heißen. Sau nguyên âm ngắn viết ss: der Fluss, essen. Nếu không gõ được umlaut, có thể viết ae, oe, ue — nhưng trong bài tập hãy gõ đúng ä, ö, ü. — Mẹo: Danh từ = chữ hoa. Dài = ß, ngắn = ss. — Ngoại lệ: Ở Thụy Sĩ không dùng ß: Strasse.
 
 ## de-vi:unit-f — Hör zu!
 
@@ -178,7 +182,7 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Hai người nói chuyện 🗣️🗣️** · Bạn nghe hai giọng khác nhau trao đổi vài câu ngắn. Hãy tìm: **ai** nói, họ ở **đâu**, họ muốn **gì**.
 - [ ] **Ở tiệm bánh (die Bäckerei)** · *Guten Morgen! Was möchten Sie?* — Chào buổi sáng! Ông/bà muốn gì? · *Zwei Brötchen, bitte.* — Hai ổ bánh mì nhỏ. · *Das macht einen Euro zwanzig.* — Tổng cộng một euro hai mươi.
 - [ ] **Ở nhà ga** · *Eine Fahrkarte nach Hamburg, bitte.* — Một vé đi Hamburg. · *Einfach oder hin und zurück?* — Một chiều hay khứ hồi?
-- [ ] **Du hay Sie?** · Người bán và khách nói *Sie* (lịch sự). Bạn bè nói *du*. Nghe *Sie* là biết đó là cuộc trò chuyện trang trọng.
+- [ ] **Du hay Sie?** · Người bán và khách nói *Sie* (lịch sự). Bạn bè nói *du*. Nghe *Sie* là biết hai người không thân và đang nói chuyện lịch sự.
 - [ ] **Mẹo** · Câu trả lời thường nằm ở câu cuối: giá tiền, giờ giấc, con số.
 
 ## de-vi:unit-j — Kleine Geschichten
@@ -212,7 +216,7 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Nói con số 🔢** · Bạn nói thông tin có con số: số lượng, giá tiền, giờ giấc. Ứng dụng chấp nhận cả chữ số và chữ viết (*drei* hay *3*), nhưng số sai là câu trả lời sai.
 - [ ] **Số lượng** · *Ich habe zwei Brüder.* — Tôi có hai anh/em trai. · *Wir sind vier Personen.* — Chúng tôi có bốn người.
 - [ ] **Giá tiền** · *Das kostet fünf Euro.* — Cái này giá năm euro. · *Zwei Euro fünfzig.* — Hai euro năm mươi.
-- [ ] **Giờ giấc** · *Um acht Uhr.* — Lúc tám giờ. · *Der Kurs beginnt um neun.* — Khóa học bắt đầu lúc chín giờ.
+- [ ] **Giờ giấc** · *Um acht Uhr.* — Lúc tám giờ. · *Der Kurs beginnt um neun.* — Lớp học bắt đầu lúc chín giờ.
 - [ ] **Ngày trong tuần** · *am Montag* — vào thứ Hai, *am Wochenende* — vào cuối tuần.
 - [ ] **Mẹo** · Với số hai chữ số, nói đơn vị trước: *vierundzwanzig* (24).
 
@@ -272,7 +276,7 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Ngày tháng** · Người Đức viết ngày trước, tháng sau, có dấu chấm: *15.03.2002*.
 - [ ] **Ghép các phần** · Bài cuối của đơn vị ghép biểu mẫu với lời nhắn ngắn — dùng những gì bạn đã viết ở các đơn vị trước.
 - [ ] Viết `de.write.r_form_course` — Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ. — Ý cần có: tên · thành phố · số điện thoại — Mẫu: *Minh | Köln | 0170 123456*
-- [ ] Viết `de.write.r_hotel_mail` — Hãy viết thư ngắn cho một khách sạn: chào, hỏi một phòng cho thứ Bảy, rồi chào kết. — Ý cần có: lời chào · một phòng · thứ Bảy · lời chào kết — Mẫu: *Sehr geehrte Damen und Herren, haben Sie am Samstag ein Zimmer frei? Viele Grüße, Minh*
+- [ ] Viết `de.write.r_hotel_mail` — Hãy viết thư ngắn cho một khách sạn: chào, hỏi một phòng cho thứ Bảy, rồi chào kết. — Ý cần có: lời chào · một phòng · thứ Bảy · lời chào kết — Mẫu: *Sehr geehrte Damen und Herren, haben Sie am Samstag ein Zimmer frei? Mit freundlichen Grüßen, Minh Tran*
 - [ ] Viết `de.write.r_all` — Hãy viết về bạn: tên, đến từ Việt Nam, sống ở Köln, làm việc ở một bệnh viện. — Ý cần có: tên · quê · thành phố · nơi làm việc — Mẫu: *Ich heiße Minh. Ich komme aus Vietnam. Ich wohne in Köln und arbeite in einem Krankenhaus.*
 - [ ] Viết `de.write.r_form_hotel` — Hãy điền phiếu khách sạn với các thông tin trên thẻ. — Ý cần có: họ tên · đường · số điện thoại — Mẫu: *Tran | Bahnhofstraße 5 | 0151 987654*
 
@@ -282,7 +286,7 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Trò chuyện thật sự 🤝** · Trong phần này bạn nói chuyện với một nhân vật. Câu bạn nói quyết định nhân vật trả lời gì tiếp theo. Nếu cần, bạn có thể nhờ nhắc lại hoặc nói cách khác — làm vậy không bị trừ điểm.
 - [ ] **Chào và hỏi thăm** · *— Hallo! Wie geht's?* — Chào! Khỏe không? · *— Gut, danke. Und dir?* — Khỏe, cảm ơn. Còn bạn?
 - [ ] **Hỏi tên** · *— Wie heißt du?* — Bạn tên gì? · *— Ich heiße Minh. Und du?*
-- [ ] **Khi không hiểu** · *Noch einmal, bitte.* — Xin nhắc lại. · *Langsamer, bitte.* — Chậm hơn, làm ơn.
+- [ ] **Khi không hiểu** · *Noch einmal, bitte.* — Xin nhắc lại. · *Langsamer, bitte.* — Làm ơn nói chậm hơn.
 - [ ] **Kết thúc** · *Tschüss!*, *Bis bald!* (hẹn sớm gặp lại). Với người lạ hoặc người lớn tuổi, dùng *Sie*: *Wie heißen Sie?*, và chào *Auf Wiedersehen*.
 - [ ] Hội thoại `de.scenario.hallo_wie_gehts` — **Một lời chào nhanh** — Mục tiêu: Chào một người bạn, nói bạn khỏe, rồi chào tạm biệt. — Mở đầu: *Hallo! Wie geht's?* — Lời nhắc: Hãy chào lại và nói rằng bạn khỏe. · Hãy chào tạm biệt kiểu thân mật.
 - [ ] Hội thoại `de.scenario.kennenlernen` — **Gặp một người lần đầu** — Mục tiêu: Nói tên và quê của bạn với một người ở lớp học. — Mở đầu: *Guten Tag! Wie heißen Sie?* — Lời nhắc: Hãy nói tên của bạn: Minh. · Hãy nói bạn đến từ Việt Nam.
@@ -315,17 +319,13 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] **Hẹn giờ và lên kế hoạch 📅** · Ở Đức người ta rất coi trọng *der Termin* — cuộc hẹn. Bạn sẽ hẹn với bạn bè, đặt lịch ở phòng khám và gọi điện xin nghỉ ốm.
 - [ ] **Hỏi ngày giờ** · *Hast du am Samstag Zeit?* — Thứ Bảy bạn rảnh không? · *Um wie viel Uhr?* — Mấy giờ? · *Wo treffen wir uns?* — Mình gặp nhau ở đâu?
 - [ ] **Đồng ý hoặc từ chối** · *Ja, gern!* — Có, rất sẵn lòng! · *Leider nicht. Ich muss arbeiten.* — Tiếc là không. Mình phải làm việc.
-- [ ] **Ở phòng khám** · *Ich brauche einen Termin.* — Tôi cần một cuộc hẹn. · *Haben Sie morgen um zehn Zeit?* — Ngày mai lúc mười giờ ông/bà có rảnh không?
+- [ ] **Ở phòng khám** · *Ich brauche einen Termin.* — Tôi cần một cuộc hẹn. · *Haben Sie morgen um zehn einen Termin frei?* — Ngày mai lúc mười giờ còn lịch trống không ạ?
 - [ ] **Gọi điện xin nghỉ** · *Ich bin krank. Ich kann heute nicht kommen.* — Tôi bị ốm. Hôm nay tôi không đến được.
 - [ ] Hội thoại `de.scenario.plaene` — **Hẹn một người bạn** — Mục tiêu: Nhận lời hẹn vào thứ Bảy và nói giờ gặp. — Mở đầu: *Hast du am Samstag Zeit?* — Lời nhắc: Hãy nói rằng bạn rảnh. · Hãy nói gặp lúc tám giờ.
 - [ ] Hội thoại `de.scenario.krankmeldung` — **Gọi điện xin nghỉ ốm** — Mục tiêu: Gọi cho công ty, nói bạn bị ốm và hôm nay không đến được. — Mở đầu: *Firma Müller, guten Morgen.* — Lời nhắc: Hãy chào, nói tên Minh và nói bạn bị ốm. · Hãy nói hôm nay bạn không đến được.
 
 ## Ôn tập, kiểm tra (ngoài bài học)
 
-- [ ] Khái niệm `de:concept:questions` — **Câu hỏi có/không và câu hỏi W-** — Câu hỏi có/không đặt động từ lên đầu; câu hỏi W- đặt từ hỏi đầu tiên, động từ thứ hai. (*Kommst du aus Vietnam?*, *Wo wohnst du?*)
-  - Tiếng Việt thêm «không?» hoặc «à?» ở cuối câu. Tiếng Đức đổi chỗ: Du wohnst in Köln. → Wohnst du in Köln? Với câu hỏi lấy thông tin, từ hỏi đứng đầu: wer (ai), was (gì), wo (ở đâu), woher (từ đâu), wann (khi nào), wie (thế nào), warum (tại sao). Lưu ý: wer là «ai», không phải «ở đâu». — Mẹo: W- hỏi thông tin; động từ đầu câu hỏi có/không. — Ngoại lệ: Trả lời câu hỏi phủ định bằng doch: Kommst du nicht? — Doch!
-- [ ] Khái niệm `de:concept:place-prepositions` — **Đi đâu: nach, zu, in** — Nach + thành phố, nước; zu + người, cửa hàng, nơi chốn; in + tòa nhà khi đi vào bên trong. (*Ich fahre nach Berlin.*, *Ich gehe zum Arzt.*)
-  - Tiếng Việt chỉ nói «đi» + nơi chốn. Tiếng Đức chọn giới từ theo loại nơi: Ich fahre nach Berlin (thành phố), Ich gehe zum Arzt (đến chỗ bác sĩ), Ich gehe ins Kino (vào rạp). Để nói «ở đâu», dùng in: Ich wohne in Berlin. Về nhà là nach Hause, ở nhà là zu Hause. — Mẹo: nach Hause = về nhà; zu Hause = ở nhà. — Ngoại lệ: Nước có mạo từ dùng in: Ich fahre in die Schweiz.
 - [ ] Viết `de.write.cp5_profile_lan` — Bạn là Lan. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh. — Ý cần có: tên · tuổi · thành phố — Mẫu: *Ich heiße Lan. Ich bin 28 Jahre alt. Ich wohne in Leipzig.*
 - [ ] Viết `de.write.cp5_profile_tuan` — Bạn là Tuấn. Hãy viết về bạn: tên, quê và nơi bạn sống. — Ý cần có: tên · quê · thành phố — Mẫu: *Ich heiße Tuấn. Ich komme aus Vietnam und wohne in Dresden.*
 - [ ] Viết `de.write.cp5_profile_mai` — Bạn là Mai. Hãy viết tên của bạn và những tiếng bạn nói. — Ý cần có: tên · tiếng Việt · tiếng Đức — Mẫu: *Ich heiße Mai. Ich spreche Vietnamesisch und Deutsch.*
@@ -345,17 +345,17 @@ Sinh bởi `bun scripts/author.ts review-tiers --course de-vi`. Phần còn lạ
 - [ ] Viết `de.write.goethe_a_formular` — Teil 1 — Bạn của bạn là Mai Tran muốn đăng ký một khoá học bơi. Cô ấy đến từ Việt Nam, sống ở Leipzig, Goethestraße 7, và muốn học vào thứ Bảy. Hãy điền phiếu cho cô ấy (năm chỗ trống). — Ý cần có: tên · họ của cô ấy · quê của cô ấy · địa chỉ · ngày học — Mẫu: *Mai | Tran | Vietnam | Goethestraße 7 | Samstag*
 - [ ] Viết `de.write.goethe_b_formular` — Teil 1 — Bạn của bạn là Tuấn Le muốn thuê một chiếc xe đạp trong ba ngày. Anh ấy 24 tuổi, ở khách sạn Hotel Sonne và có số điện thoại 0151 223344. Hãy điền phiếu cho anh ấy (năm chỗ trống). — Ý cần có: tên · họ của anh ấy · tuổi · khách sạn · số điện thoại — Mẫu: *Tuấn | Le | 24 | Hotel Sonne | 0151 223344*
 - [ ] Viết `de.write.goethe_a_nachricht` — Teil 2 — Bạn có sinh nhật vào thứ Bảy. Hãy viết cho bạn của bạn là Paul (khoảng 30 từ): mời anh ấy đến dự tiệc, nói giờ bắt đầu, và nhờ anh ấy mang đồ uống. Có lời chào và lời chào kết. — Ý cần có: lời chào · lời mời dự tiệc · giờ bắt đầu · nhờ mang đồ uống · lời chào kết — Mẫu: *Lieber Paul, am Samstag habe ich Geburtstag und ich mache eine Party. Kommst du auch? Die Party beginnt um 19 Uhr. Kannst du bitte Getränke mitbringen? Viele Grüße, Lan*
-- [ ] Viết `de.write.goethe_b_nachricht` — Teil 2 — Bạn không thể đến lớp tiếng Đức ngày mai. Hãy viết cho cô giáo, bà Wolf (khoảng 30 từ): nói rằng bạn không đến được, giải thích lý do, và hỏi về bài tập về nhà. Có lời chào và lời chào kết. — Ý cần có: lời chào · bạn không đến được · lý do · bài tập về nhà · lời chào kết — Mẫu: *Liebe Frau Wolf, morgen kann ich leider nicht zum Kurs kommen. Ich bin krank und muss zum Arzt. Was sind die Hausaufgaben? Können Sie mir bitte schreiben? Viele Grüße, Minh*
+- [ ] Viết `de.write.goethe_b_nachricht` — Teil 2 — Bạn không thể đến lớp tiếng Đức ngày mai. Hãy viết cho cô giáo, bà Wolf (khoảng 30 từ): nói rằng bạn không đến được, giải thích lý do, và hỏi về bài tập về nhà. Có lời chào và lời chào kết. — Ý cần có: lời chào · bạn không đến được · lý do · bài tập về nhà · lời chào kết — Mẫu: *Liebe Frau Wolf, morgen kann ich leider nicht zum Kurs kommen. Ich bin krank und muss zum Arzt. Was sind die Hausaufgaben? Können Sie mir das bitte schreiben? Viele Grüße, Minh*
 - [ ] Hội thoại `de.scenario.cp_kurs` — **Bạn mới ở lớp học** — Mục tiêu: Làm quen với một bạn cùng lớp: nói tên và quê. — Mở đầu: *Hallo! Ich bin Jonas. Und du?* — Lời nhắc: Hãy nói tên bạn: Lan. · Hãy nói bạn đến từ Việt Nam.
 - [ ] Hội thoại `de.scenario.cp_nachbarin` — **Gặp hàng xóm** — Mục tiêu: Chào bà hàng xóm và trả lời bà ấy. — Mở đầu: *Guten Morgen! Wie geht es Ihnen?* — Lời nhắc: Hãy chào và nói bạn khoẻ. · Hãy nói bạn sống ở đây được một năm.
 - [ ] Hội thoại `de.scenario.cp_party` — **Lời mời dự tiệc** — Mục tiêu: Nhận lời mời của bạn và hỏi giờ. — Mở đầu: *Ich mache am Samstag eine Party. Kommst du?* — Lời nhắc: Hãy nhận lời. · Hãy hỏi bữa tiệc bắt đầu lúc mấy giờ.
 - [ ] Hội thoại `de.scenario.cp_cafe` — **Ở quán cà phê** — Mục tiêu: Gọi một cốc trà và hỏi giá. — Mở đầu: *Guten Tag! Was möchten Sie?* — Lời nhắc: Hãy gọi một cốc trà. · Hãy hỏi giá bao nhiêu.
 - [ ] Hội thoại `de.scenario.cp_fahrkarte` — **Mua vé tàu** — Mục tiêu: Mua một vé đi Hamburg. — Mở đầu: *Guten Tag! Wohin möchten Sie fahren?* — Lời nhắc: Hãy nói bạn muốn đi Hamburg. · Hãy nói bạn chỉ cần vé một chiều.
-- [ ] Hội thoại `de.scenario.cp_apotheke` — **Hỏi đường đến hiệu thuốc** — Mục tiêu: Hỏi hiệu thuốc ở đâu và hỏi lại cho rõ. — Mở đầu: *Ja, bitte? Kann ich Ihnen helfen?* — Lời nhắc: Hãy hỏi hiệu thuốc ở đâu. · Hãy cảm ơn.
+- [ ] Hội thoại `de.scenario.cp_apotheke` — **Hỏi đường đến hiệu thuốc** — Mục tiêu: Hỏi hiệu thuốc ở đâu, rồi cảm ơn. — Mở đầu: *Ja, bitte? Kann ich Ihnen helfen?* — Lời nhắc: Hãy hỏi hiệu thuốc ở đâu. · Hãy cảm ơn.
 - [ ] Hội thoại `de.scenario.a1cap_nachbar` — **Nói chuyện với hàng xóm mới** — Mục tiêu: Chào hàng xóm mới, nói tên và nơi làm việc. — Mở đầu: *Guten Tag! Ich bin Herr Weber. Und wie heißen Sie?* — Lời nhắc: Hãy nói tên bạn: Minh. · Hãy nói bạn làm việc ở bệnh viện.
 - [ ] Hội thoại `de.scenario.a1cap_telefon` — **Gọi điện cho bạn** — Mục tiêu: Gọi cho một người bạn và hẹn gặp ngày mai. — Mở đầu: *Hallo, hier ist Sara!* — Lời nhắc: Hãy chào và nói tên bạn: Lan. · Hãy nói ngày mai bạn rảnh.
 - [ ] Hội thoại `de.scenario.a1cap_julia` — **Gặp Julia ở công viên** — Mục tiêu: Trò chuyện ngắn với Julia về sở thích. — Mở đầu: *Hi! Was machst du gern am Wochenende?* — Lời nhắc: Hãy nói bạn thích đọc sách. · Hãy nhận lời.
-- [ ] Hội thoại `de.scenario.a1cap_arzt` — **Đặt lịch khám** — Mục tiêu: Gọi phòng khám và đặt lịch hẹn vào thứ Hai. — Mở đầu: *Praxis Dr. Klein, guten Tag.* — Lời nhắc: Hãy chào và nói bạn muốn đặt lịch hẹn. · Hãy nói được.
+- [ ] Hội thoại `de.scenario.a1cap_arzt` — **Đặt lịch khám** — Mục tiêu: Gọi phòng khám và đặt lịch hẹn vào thứ Hai. — Mở đầu: *Praxis Dr. Klein, guten Tag.* — Lời nhắc: Hãy chào và nói bạn muốn đặt lịch hẹn. · Hãy đồng ý với giờ hẹn đó.
 - [ ] Hội thoại `de.scenario.goethe_a_thema` — **Teil 2 — Chủ đề: Đồ ăn và đồ uống** — Mục tiêu: Trả lời câu hỏi của bạn thi về chủ đề ăn uống, rồi tự hỏi lại một câu (thẻ từ: Frühstück, Lieblingsessen). — Mở đầu: *Thema Essen und Trinken. Meine Karte: Frühstück. Was essen Sie zum Frühstück?* — Lời nhắc: Hãy trả lời: bữa sáng bạn ăn bánh mì và uống cà phê. · Hãy hỏi bạn thi món ăn yêu thích của người đó là gì.
 - [ ] Hội thoại `de.scenario.goethe_b_thema` — **Teil 2 — Chủ đề: Thời gian rảnh** — Mục tiêu: Trả lời câu hỏi của bạn thi về thời gian rảnh, rồi tự hỏi lại một câu (thẻ từ: Wochenende, Sport). — Mở đầu: *Thema Freizeit. Meine Karte: Wochenende. Was machen Sie am Wochenende?* — Lời nhắc: Hãy trả lời: cuối tuần bạn đi thăm bạn bè. · Hãy hỏi bạn thi có chơi thể thao không.
 - [ ] Hội thoại `de.scenario.goethe_a_bitte` — **Teil 3 — Nhờ và đáp lại** — Mục tiêu: Lịch sự nhờ một việc theo thẻ tranh, rồi đáp lại lời nhờ của bạn thi (thẻ: 🪟 cửa sổ, ✏️ bút). — Mở đầu: *Ihre Karte zeigt ein Fenster. Bitte, was möchten Sie?* — Lời nhắc: Hãy lịch sự nhờ mở cửa sổ. · Hãy đồng ý và đưa bút.

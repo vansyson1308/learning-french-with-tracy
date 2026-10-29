@@ -54,12 +54,18 @@ export function setPath<T>(obj: T, path: string, value: unknown): T {
  * `targetToNative` shows the target and asks for the native (options,
  * answer tokens are native); `nativeToTarget` shows the native prompt.
  */
+/** French exercises (unit ue) whose select prompt is an instruction in the native language, not French. */
+export const NATIVE_PROMPT_EXERCISES: ReadonlySet<string> = new Set(["ue-l1-e0", "ue-l1-e1", "ue-l1-e2", "ue-l1-e3", "ue-l1-e4", "ue-l1-e6", "ue-l2-e4", "ue-l2-e7", "ue-l3-e8"]);
+
 export function exerciseNativeFieldPaths(e: AnyRecord): string[] {
   const paths: string[] = [];
   const arr = (key: string) => (Array.isArray(e[key]) ? (e[key] as unknown[]) : []);
   const type = e.type as string;
   switch (type) {
     case "select":
+      // D-10 review (fr-42…50): a few French "connected speech" questions put a native-language
+      // instruction in the prompt of a targetToNative select (the French pack is frozen).
+      if (e.mode === "targetToNative" && NATIVE_PROMPT_EXERCISES.has(String(e.id).replace(/^[a-z]{2}-[a-z]{2}:/, ""))) paths.push("prompt");
       if (e.mode === "targetToNative") arr("options").forEach((_, i) => paths.push(`options.${i}.text`));
       else if (e.mode === "nativeToTarget") paths.push("prompt");
       break;
@@ -75,6 +81,7 @@ export function exerciseNativeFieldPaths(e: AnyRecord): string[] {
       if (e.direction === "targetToNative") {
         arr("tokens").forEach((_, i) => paths.push(`tokens.${i}`));
         arr("answer").forEach((_, i) => paths.push(`answer.${i}`));
+        arr("alternatives").forEach((alt, i) => (Array.isArray(alt) ? alt : []).forEach((_, j) => paths.push(`alternatives.${i}.${j}`)));
       } else if (e.direction === "nativeToTarget") {
         paths.push("prompt");
       }

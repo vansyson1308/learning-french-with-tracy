@@ -37,6 +37,7 @@ const voiceEntries = registry.filter((e) => /TTS voice/i.test(e.kind));
  * the registered sources backing each one — read from the generated
  * attributions, so a new language's sources appear without touching the UI.
  */
+const aiReviewedCourses = allCourseProfiles().filter((p) => p.reviewNote === "ai-simulated");
 const lexiconLanguages = [...new Set(allCourseProfiles().filter((p) => p.capabilities.lexicon).map((p) => p.targetCode))].sort();
 const lexiconSourcesFor = (code: string) =>
   registry.filter((e) => e.covers.some((c) => c.startsWith(`content/${code}/lexicon/`) || c === `content/${code}/lexemes.json`));
@@ -76,6 +77,14 @@ export default function LicensesScreen() {
             </Section>
           );
         })}
+
+        {aiReviewedCourses.length > 0 ? (
+          <Section title={t("licenses.aiReviewTitle")}>
+            <Text style={styles.text} testID="licenses-ai-review">
+              {t("licenses.aiReviewBody", { courses: aiReviewedCourses.map((p) => `${languageName(p.targetCode, p.targetLanguage)} (${p.id})`).join(", ") })}
+            </Text>
+          </Section>
+        ) : null}
 
         <Section title={t("licenses.audio")}>
           <Text style={styles.text}>{t("licenses.audioBody")}</Text>

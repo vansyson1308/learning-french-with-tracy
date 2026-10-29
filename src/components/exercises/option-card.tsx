@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useT } from "@/lib/i18n";
 import { haptics } from "@/lib/haptics";
+import { optionTestId } from "@/lib/option-test-id";
 import { radius, useThemeColors, type ThemeColors } from "@/lib/theme";
 
 /** Spoken suffix + non-colour glyph per outcome (Phase 10 §36/§39: never colour alone). */
@@ -76,7 +77,8 @@ export function OptionCard({
       ]}
     >
       {emoji ? <Text style={styles.emoji}>{emoji}</Text> : null}
-      <View style={styles.textWrap}>
+      {/* Per-option id for device flows (the card keeps the shared "option-card"). */}
+      <View style={styles.textWrap} testID={optionTestId(text)} collapsable={false}>
         <Text style={[styles.text, { color: c.text }]}>{text}</Text>
         {reading ? (
           <Text style={[styles.reading, { color: c.text }]} testID="option-reading">

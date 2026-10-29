@@ -12,14 +12,22 @@ import { loadRichLexicon } from "../lib/lexicon";
 import { courseRolesFor, loadPacks, safeResolve } from "../lib/pipeline";
 import {
   buildLexemeIndex,
+  bundledStoryIds,
   compileStoriesArtifact,
   lexemeBands,
   loadStories,
   loadVerbForms,
+  parseStoryAudio,
   resolveToken,
   segmentSentence,
+  STORY_AUDIO_MAX_BUNDLED,
+  storyAssetFiles,
+  storyAudioPolicy,
+  storyAudioProblems,
   storyClipId,
   storyPipelineVersion,
+  storyReadingOrder,
+  storySentenceAssetKey,
   validateStories,
 } from "../lib/stories";
 import { mp3KbpsFor } from "../lib/tts";
@@ -152,6 +160,71 @@ describe("story audio budget", () => {
     expect(mp3KbpsFor(engines, 3)).toBe(32); // listening clips unchanged
     expect(storyPipelineVersion("fr")).toBe(1);
     expect(mp3KbpsFor(engines, 1)).toBe(64);
+  });
+});
+
+describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
+  const DE = target("de");
+
+  test("the voice manifests bundle the first ≤ 12 stories of the reading order; French keeps its 10 bundled stories", () => {
+    // de: the first 4 here; PR stories-topup-es puts eight A1-2 stories ahead of the A2-1 ones and extends it to 12.
+    for (const [lang, t, n] of [["es", ES, 12], ["de", DE, 4], ["fr", FR, 10]] as const) {
+      const policy = storyAudioPolicy(lang);
+      expect(policy.kind).toBe("band-1");
+      if (policy.kind !== "band-1") continue;
+      expect(policy.stories).toEqual(storyReadingOrder(t.stories).slice(0, n));
+      expect(storyAudioProblems(t.stories, policy)).toEqual({ errors: [], warnings: [] });
+    }
+    expect(bundledStoryIds(FR.stories, storyAudioPolicy("fr")).size).toBe(FR.stories.stories.length);
+    expect(bundledStoryIds(DE.stories, storyAudioPolicy("de")).size).toBe(4);
+    expect(storyAudioPolicy("de").kind === "band-1" && storyAudioPolicy("es").kind === "band-1").toBe(true);
+    expect(STORY_AUDIO_MAX_BUNDLED).toBe(12);
+  });
+
+  test("parse: absent = all, false = none, band-1 = the list; anything else is refused", () => {
+    expect(parseStoryAudio(undefined)).toEqual({ kind: "all" });
+    expect(parseStoryAudio({ bundled: false, reason: "r" })).toEqual({ kind: "none", reason: "r" });
+    expect(parseStoryAudio({ bundled: "band-1", stories: ["a"], reason: "r" })).toEqual({ kind: "band-1", stories: ["a"], reason: "r" });
+    expect(() => parseStoryAudio({ bundled: true })).toThrow();
+  });
+
+  test("declaration problems: unknown, repeated, over the cap, no reason; a list that skips an earlier story warns", () => {
+    const order = storyReadingOrder(DE.stories);
+    const bad = storyAudioProblems(DE.stories, { kind: "band-1", stories: [...order.slice(0, 13), order[0], "de.story.nope"], reason: "" });
+    expect(bad.errors.join("\n")).toContain("a reason is required");
+    expect(bad.errors.join("\n")).toContain("listed twice");
+    expect(bad.errors.join("\n")).toContain("de.story.nope is not a story");
+    expect(bad.errors.join("\n")).toContain("at most 12");
+    const skip = storyAudioProblems(DE.stories, { kind: "band-1", stories: order.slice(1, 4), reason: "r" });
+    expect(skip.errors).toEqual([]);
+    expect(skip.warnings[0]).toContain(order[0]);
+  });
+
+  test("only bundled stories need sentence assets; the others validate without audio", () => {
+    const order = storyReadingOrder(ES.stories);
+    const policy = { kind: "band-1" as const, stories: order.slice(0, 2), reason: "r" };
+    const files = storyAssetFiles("es", ES.stories, policy);
+    const sentences = ES.stories.stories.filter((s) => policy.stories.includes(s.id)).reduce((n, s) => n + s.sentences.length, 0);
+    expect(files.size).toBeLessThanOrEqual(sentences);
+    expect(files.size).toBeGreaterThan(0);
+    expect(storyAssetFiles("es", ES.stories, { kind: "none", reason: "r" }).size).toBe(0);
+    // A policy bundling nothing: no "assets missing" error for any story.
+    const result = validateStories({ lang: "es", stories: ES.stories, lexicon: ES.lexicon, syllabus: ES.syllabus, nativeCodes: ["vi", "en"], receptionVoices: null, storyAudio: { kind: "none", reason: "r" } });
+    expect(result.errors.filter((e) => e.includes("assets missing"))).toEqual([]);
+  });
+
+  test("the compiled artifact says per story `audio: \"bundled\" | \"device-voice\"`, bundled only when declared and every sentence asset exists", () => {
+    const stories = { ...ES.stories, stories: ES.stories.stories.slice(0, 3) };
+    const { analyses } = validate("es", ES, stories);
+    const [a, b, c] = stories.stories.map((s) => s.id);
+    const policy = { kind: "band-1" as const, stories: [a, b], reason: "r" };
+    const missingB = new Set(stories.stories[1].sentences.slice(0, 1).map((s) => `${storySentenceAssetKey("es", stories, s)}.mp3`));
+    const artifact = JSON.parse(compileStoriesArtifact({ stories, analyses, nativeCode: "vi", durations: new Map(), storyAudio: policy, hasAsset: (f) => !missingB.has(f) }));
+    expect(artifact.byId[a].audio).toBe("bundled");
+    expect(artifact.byId[b].audio).toBe("device-voice"); // declared, but one sentence has no asset
+    expect(artifact.byId[c].audio).toBe("device-voice"); // not band-1
+    const all = JSON.parse(compileStoriesArtifact({ stories, analyses, nativeCode: "vi", durations: new Map(), storyAudio: { kind: "all" }, hasAsset: () => true }));
+    expect(Object.values(all.byId).map((s) => (s as { audio: string }).audio)).toEqual(["bundled", "bundled", "bundled"]);
   });
 });
 

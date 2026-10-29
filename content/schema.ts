@@ -204,6 +204,8 @@ export function exerciseSchemas(lang: string) {
     audioTarget: z.string().min(1).optional(),
     tokens: z.array(z.string().min(1)).min(1),
     answer: z.array(z.string().min(1)).min(1),
+    /** D-10 review: other correct sentences the same tiles build; each must be buildable from `tokens`. */
+    alternatives: z.array(z.array(z.string().min(1)).min(1)).optional(),
     gradeTargets,
     objectiveTargets,
   });
@@ -617,7 +619,23 @@ export const CourseProfileOverrideSchema = z.strictObject({
    * or when `allowUnreviewed` is set explicitly AND release/KNOWN_LIMITATIONS.md
    * names the course — so beta content ships honestly, never silently.
    */
-  review: z.strictObject({ native: z.string().min(2), date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), checklist: z.string().optional() }).optional(),
+  review: z
+    .union([
+      z.strictObject({ native: z.string().min(2), date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/), checklist: z.string().optional() }),
+      /**
+       * D-10 (2026-10-29): an AI-simulated native review (plan/prompts/P-ai-review.md). Accepted by
+       * the gate only when plan/OWNER-FINAL-CHECKLIST.md records the owner's acceptance
+       * (a ticked line with `ai-review:<courseId>`); the app then shows an honest note, never "reviewed by a native speaker".
+       */
+      z.strictObject({
+        kind: z.literal("ai-simulated"),
+        reviewer: z.string().min(2),
+        date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        scope: z.string().min(5),
+        report: z.string().min(5),
+      }),
+    ])
+    .optional(),
   allowUnreviewed: z.boolean().optional(),
   /**
    * P3e: a course authored before the lesson-shape rules (French) keeps its

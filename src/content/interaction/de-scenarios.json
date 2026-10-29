@@ -139,7 +139,10 @@
                   "tschüss",
                   "bis bald",
                   "ciao",
-                  "bis dann"
+                  "bis dann",
+                  "tschüs",
+                  "bis später",
+                  "servus"
                 ]
               ],
               "next": "t_ok"
@@ -174,7 +177,10 @@
                   "tschüss",
                   "bis bald",
                   "ciao",
-                  "bis dann"
+                  "bis dann",
+                  "tschüs",
+                  "bis später",
+                  "servus"
                 ]
               ],
               "next": "t_ok"
@@ -2162,7 +2168,7 @@
     "de.scenario.cp_apotheke": {
       "id": "de.scenario.cp_apotheke",
       "title": "Hỏi đường đến hiệu thuốc",
-      "goal": "Hỏi hiệu thuốc ở đâu và hỏi lại cho rõ.",
+      "goal": "Hỏi hiệu thuốc ở đâu, rồi cảm ơn.",
       "taskFamily": "information_exchange",
       "objectiveRefs": [
         "de.obj.interaction.practical_needs"
@@ -2884,7 +2890,7 @@
         "l1": {
           "kind": "learner",
           "id": "l1",
-          "prompt": "Hãy nói được.",
+          "prompt": "Hãy đồng ý với giờ hẹn đó.",
           "expected": [
             {
               "intent": "ok",
@@ -2914,7 +2920,7 @@
         "l1b": {
           "kind": "learner",
           "id": "l1b",
-          "prompt": "Hãy nói được.",
+          "prompt": "Hãy đồng ý với giờ hẹn đó.",
           "expected": [
             {
               "intent": "ok",
@@ -3292,7 +3298,7 @@
         "p0": {
           "kind": "partner",
           "id": "p0",
-          "text": "Ihre Karte zeigt ein Fenster. Bitte, was möchten Sie?",
+          "text": "Ihre Karte zeigt ein Fenster. Was möchten Sie sagen?",
           "clipId": "de.clip.ix_goethe_a_bitte_0",
           "rephraseText": "Sie haben die Karte mit dem Fenster.",
           "rephraseClipId": "de.clip.ix_goethe_a_bitte_0_s",

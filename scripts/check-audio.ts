@@ -6,7 +6,7 @@
  * intentionally blessing a new one with a recorded reason, never in CI.
  */
 import { baselineGroupOf, buildAudioBaseline, checkAudio, writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
-import { audioSizeErrors, writeAudioSizeReport } from "./lib/audio-size";
+import { audioSizeErrors, audioSizeSummary, measureAudioSizes, writeAudioSizeReport } from "./lib/audio-size";
 
 if (process.argv.includes("--write-baseline")) {
   // P3b: one baseline file per language group under content/audio/baseline/
@@ -29,7 +29,9 @@ if (process.argv.includes("--write-baseline")) {
 }
 
 const { errors: baselineErrors, checkedFiles } = checkAudio();
-// P3f: per-language size budget + the size report.
+// P3f: per-language size budget; QC 2026-10-29b §2.2: total budget over every language; the size report.
+console.log("bundled audio per language (content/audio/size-budget.json):");
+for (const line of audioSizeSummary(measureAudioSizes())) console.log(line);
 const errors = [...baselineErrors, ...audioSizeErrors()];
 for (const e of errors) console.error(`ERROR ${e}`);
 if (errors.length > 0) {

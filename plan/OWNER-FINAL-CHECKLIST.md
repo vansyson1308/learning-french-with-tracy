@@ -13,19 +13,29 @@ Ký hiệu: ☐ chưa làm · ☑ xong · (từ milestone nào)
 - ☐ **Tài khoản Google Play Console** (cá nhân) và chương trình closed test (12 tester × 14 ngày) — Claude chuẩn bị nội dung ở P6a; anh tạo tài khoản và bấm nộp. (P6)
 - ☐ (Tuỳ chọn, sau v1.0) Apple Developer Program + EAS project nếu muốn bản iOS. (RC2)
 
-## B. Duyệt nội dung (có thể làm bất cứ lúc nào; mỗi mục ký xong thì nhãn "Bản beta" của khoá đó tự tắt)
-- ☐ **fr-vi**: đọc `content/fr/REVIEW-vi.md` (từng câu tiếng Việt với nguồn tiếng Anh; mục đánh dấu **re-author** cần viết lại), sửa qua `content/fr/translations/vi.dictionary.json` / `vi.jsonl`, rồi ghi "reviewed by <tên>, <ngày>" (Claude chạy lại apply/compile khi anh báo). (P2b)
-- ☐ **es-vi Tier-1 tiếng Việt**: ký `content/es/REVIEW-TIER1-vi.md` (352 dòng). Báo Claude tên + ngày → Claude ghi `review: { native, date, checklist }` vào `content/courses/es-vi.profile.json`. (P3e)
-- ☐ **es-vi Tier-1 tiếng Tây Ban Nha**: thuê một giáo viên đọc `content/es/REVIEW-TIER1-es.md` (313 dòng, có hướng dẫn tiếng Việt + Anh bên trong, 2–3 giờ). (P3e)
-- ☐ **de-vi Tier-1 tiếng Việt**: ký `content/de/REVIEW-TIER1-vi.md` (378 dòng). Báo Claude tên + ngày → Claude ghi `review: { native, date, checklist }` vào `content/courses/de-vi.profile.json`. (P3d-de)
-- ☐ **de-vi Tier-1 tiếng Đức**: thuê một giáo viên tiếng Đức đọc `content/de/REVIEW-TIER1-de.md` (309 dòng: bài đọc, kịch bản nghe, lời thoại tình huống, bài mẫu, đề luyện Goethe A1; có hướng dẫn tiếng Việt + Anh bên trong). (P3d-de)
-- ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) sẽ có hai file Tier-1 tương tự — Claude thêm dòng vào đây khi khoá đó xong.
-- ☐ **Truyện ngắn (P5b)**: đọc bản dịch tiếng Việt từng câu, câu hỏi và lời giới thiệu của 20 truyện tiếng Tây Ban Nha (`content/es/stories/stories.json`) 10 truyện tiếng Pháp (`content/fr/stories/stories.json`) và 43 truyện tiếng Đức (`content/de/stories/stories.json`, P3d-de). Sửa thẳng trong file hoặc ghi chú gửi Claude. Phần tiếng Tây Ban Nha/Pháp/Đức nên nhờ giáo viên đọc cùng lúc với Tier-1. (P5b)
-- ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta**, ghi rõ ở đây khoá nào (định nghĩa v1.0 cho phép điều này chỉ khi anh chấp nhận bằng văn bản).
+## B. Duyệt nội dung (D-10, 2026-10-29: không thuê người duyệt bản ngữ — AI mô phỏng người bản ngữ duyệt, anh chấp nhận từng khoá)
+Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, lỗi theo mức P0/P1/P2, mẫu audit độc lập 10 % và tỉ lệ lỗi, danh sách **chưa chắc**. Khi anh đánh dấu ☑ một dòng chấp nhận dưới đây (giữ nguyên mã `ai-review:<khoá>`), Claude ghi `review: { kind: "ai-simulated", … }` vào profile của khoá đó. Nhãn "Bản beta" khi ấy đổi thành ghi chú trung thực "Nội dung được AI kiểm duyệt kỹ, chưa qua giáo viên bản ngữ…". Gate biên dịch chỉ nhận `ai-simulated` khi dòng tương ứng đã được đánh ☑.
+- ☐ **Chấp nhận duyệt AI** `ai-review:fr-vi` — đọc `content/fr/REVIEW-AI.md` (phần tiếng Pháp giữ nguyên bản fr-en).
+- ☐ **Chấp nhận duyệt AI** `ai-review:es-vi` — đọc `content/es/REVIEW-AI.md`.
+- ☐ **Chấp nhận duyệt AI** `ai-review:de-vi` — đọc `content/de/REVIEW-AI.md` (sau PR ai-review cho de-vi).
+- ☐ **Mục chưa chắc** (không chặn việc gì): xem phần "Chưa chắc" trong từng `REVIEW-AI.md` và quyết định giữ hay sửa; báo Claude.
+- ☐ **Anh tự kiểm tra (tuỳ chọn)**: anh đọc tiếng Việt bản ngữ, tiếng Pháp trình độ đại học, tiếng Anh C1 — có thể đọc lướt `content/fr/REVIEW-vi.md` (tiếng Việt của fr-vi), mọi văn bản tiếng Việt trong `REVIEW-TIER1-vi.md` của es/de, và phần tiếng Anh của en-vi khi có.
+- ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) có bước duyệt AI tích hợp sẵn trong P3d; Claude thêm dòng `ai-review:<khoá>` vào đây khi khoá đó xong.
+- ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta** (chưa đánh ☑ dòng chấp nhận), ghi rõ ở đây khoá nào.
 
 ## C. Nguồn dữ liệu chỉ tải tay được (tuỳ chọn, không chặn công việc)
 - ☐ Danh sách từ học tiếng Hàn NIKL 한국어 학습용 어휘 목록 (KOGL Type 1) — korean.go.kr từ chối tải tự động; đặt file vào `sources/ko/nikl-learner-list.tsv` hoặc gửi Claude. Không có thì neo từ vựng tiếng Hàn theo tần suất. (P3a)
 - ☐ (Tuỳ chọn) Nghe thử các bản canary giọng ja/zh/ko trong artifact của workflow audio trước khi sinh audio đầy đủ. (P3b)
+
+### C1. Nghe thử các câu audio máy chấm "đáng ngờ" (QC 2026-10-29b §3.4)
+Anh không cần biết tiếng Đức: chỉ nghe xem âm thanh có bị **méo/rè** (vỡ tiếng, rè, nuốt chữ, lặp âm) hay không. 11 câu tiếng Đức bị nhận dạng giọng nói (ASR) chấm lệch được sinh lại một lần với cùng giọng, độ nhiễu Piper khác (`resynthesis` trong `content/de/reception/audio-source-manifest.json`). Câu nào **vẫn bị chấm lệch sau lần sinh lại** sẽ được Claude chép vào đây từ báo cáo của lượt audio de tiếp theo (`bun scripts/audio.ts owner-checklist --lang de --report content/reports/de/audio-quality.json`), mỗi dòng có đường dẫn file mp3. Nghe được thì đánh ☑; méo/rè thì ghi "LỖI" bên cạnh, Claude sẽ thay câu hoặc đổi giọng.
+Kết quả lượt audio de [40918763308](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/40918763308) (bot commit 92c26af): trong 11 câu sinh lại, 7 câu hết bị chấm lệch, 4 câu vẫn bị chấm lệch (hai dòng cuối là cùng một file):
+- [ ] de: nghe xem có bị méo/rè không — `de-vi:Wir haben Pizza gegessen.` «Wir haben Pizza gegessen.» (`assets/audio/de/0ef4ad270fbe6f500e7a.mp3`) — máy nghe thành «Ihr habt Pizza gegessen», nên nghe kỹ chữ đầu.
+- [ ] de: nghe xem có bị méo/rè không — `de.clip.goethe_a_h1_06` «Wie ist deine Telefonnummer? Null, eins, sieben, sechs — vier, drei, acht, neun.» (`assets/audio/de-reception/ab621e42e894b5e8f5ae.mp3`) — máy viết số bằng chữ số («017 64 38 9»), nhiều khả năng chỉ là lệch cách viết.
+- [ ] de: nghe xem có bị méo/rè không — `de.clip.ix_goethe_a_thema_miss` «Kein Problem. Danke schön!» (`assets/audio/de-reception/bfe69cea6fdd71c77f3e.mp3`) — máy viết «Dankeschön» liền, nhiều khả năng chỉ là lệch cách viết.
+- [ ] de: nghe xem có bị méo/rè không — `de.clip.ix_goethe_b_thema_miss` «Kein Problem. Danke schön!» (`assets/audio/de-reception/bfe69cea6fdd71c77f3e.mp3`) — cùng file với dòng trên.
+
+Ngoài ra có 4 câu truyện (chưa sinh lại lần nào) bị chấm lệch. Claude sẽ xử lý chúng trong PR stories-topup-es (sinh lại hoặc sửa câu), vì PR đó dựng lại audio truyện de; anh không cần làm gì lúc này: `de.story.der_umzug#6` «Nein. Ich lese jetzt viel.», `de.story.ein_fall_fuer_frau_weber#16` «Ist er der Täter?», `de.story.die_anmeldung#9`, `de.story.die_anmeldung#12`.
 
 ## D. Một lượt nghiệm thu duy nhất trên điện thoại (bản v1.0 candidate)
 Thay cho mọi lượt test lẻ trước đây (gói P0 RC3, smoke P1d, kiểm chữ P2a, đi một vòng fr-vi P2b, đi một vòng es-vi P3e, checklist RC4 — RC4 đã gác lại, không test). Claude sẽ viết bản đầy đủ bằng tiếng Việt (≤ 30 phút) vào `release/V1_ACCEPTANCE.md` khi candidate sẵn sàng; khung:

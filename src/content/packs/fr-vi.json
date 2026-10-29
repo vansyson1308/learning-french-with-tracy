@@ -261,11 +261,12 @@
                   "audioTarget": "Je suis un homme.",
                   "tokens": [
                     "Tôi",
-                    "phụ nữ",
                     "là",
-                    "nước",
                     "ông",
+                    "nữ",
                     "sữa",
+                    "nước",
+                    "phụ",
                     "đàn"
                   ],
                   "answer": [
@@ -282,12 +283,13 @@
                   "prompt": "Je suis une femme.",
                   "audioTarget": "Je suis une femme.",
                   "tokens": [
-                    "ăn",
                     "phụ",
+                    "ăn",
                     "nữ",
+                    "cô",
                     "Tôi",
                     "bạn",
-                    "cô bé",
+                    "bé",
                     "là"
                   ],
                   "answer": [
@@ -543,23 +545,29 @@
                   "prompt": "C'est un garçon.",
                   "audioTarget": "C'est un garçon.",
                   "tokens": [
-                    "Cậu",
                     "Có",
-                    "cậu",
-                    "cô",
                     "là",
-                    "ấy",
+                    "cô",
+                    "một",
+                    "Đây",
                     "bé",
                     "Không",
-                    "một"
+                    "cậu"
                   ],
                   "answer": [
-                    "Cậu",
-                    "ấy",
+                    "Đây",
                     "là",
                     "một",
                     "cậu",
                     "bé"
+                  ],
+                  "alternatives": [
+                    [
+                      "Đây",
+                      "là",
+                      "cậu",
+                      "bé"
+                    ]
                   ]
                 },
                 {
@@ -569,30 +577,37 @@
                   "prompt": "C'est une fille.",
                   "audioTarget": "C'est une fille.",
                   "tokens": [
-                    "là",
-                    "cô",
-                    "bé",
-                    "phụ nữ",
-                    "Cô",
                     "một",
-                    "ấy",
+                    "bé",
+                    "phụ",
+                    "nữ",
+                    "Đây",
+                    "cô",
+                    "là",
                     "Tôi",
                     "cậu"
                   ],
                   "answer": [
-                    "Cô",
-                    "ấy",
+                    "Đây",
                     "là",
                     "một",
                     "cô",
                     "bé"
+                  ],
+                  "alternatives": [
+                    [
+                      "Đây",
+                      "là",
+                      "cô",
+                      "bé"
+                    ]
                   ]
                 },
                 {
                   "type": "fillBlank",
                   "id": "fr-vi:u0-l1-e8",
                   "sentence": "C'est un ___.",
-                  "translation": "Cậu ấy là một cậu bé.",
+                  "translation": "Đây là một cậu bé.",
                   "audioTarget": "C'est un garçon.",
                   "options": [
                     "pain",
@@ -641,10 +656,17 @@
                   "mode": "translate",
                   "prompt": "C'est une fille.",
                   "audioTarget": "C'est une fille.",
-                  "answer": "Cô ấy là một cô bé.",
+                  "answer": "Đây là một cô bé.",
                   "alternatives": [
+                    "Cô ấy là một cô bé.",
                     "Cô ấy là cô bé.",
-                    "Cô ấy là con gái."
+                    "Cô ấy là con gái.",
+                    "Đó là một cô bé.",
+                    "Đây là cô bé.",
+                    "Đó là cô bé.",
+                    "Đây là một bé gái.",
+                    "Đó là một bé gái.",
+                    "Cô ấy là một bé gái."
                   ]
                 }
               ],
@@ -834,13 +856,14 @@
                   "prompt": "Je mange une pomme.",
                   "audioTarget": "Je mange une pomme.",
                   "tokens": [
-                    "táo",
-                    "Tôi",
-                    "cảm",
-                    "ăn",
-                    "ơn",
                     "một",
-                    "phụ nữ",
+                    "cảm",
+                    "Tôi",
+                    "ơn",
+                    "ăn",
+                    "táo",
+                    "phụ",
+                    "nữ",
                     "quả"
                   ],
                   "answer": [
@@ -858,12 +881,13 @@
                   "prompt": "Je mange du pain.",
                   "audioTarget": "Je mange du pain.",
                   "tokens": [
-                    "ăn",
                     "Tôi",
+                    "ông",
+                    "ăn",
+                    "đàn",
                     "là",
                     "một",
                     "mì",
-                    "đàn ông",
                     "bánh"
                   ],
                   "answer": [
@@ -928,7 +952,9 @@
                   "audioTarget": "Je mange du pain.",
                   "answer": "Tôi ăn bánh mì.",
                   "alternatives": [
-                    "Tôi đang ăn bánh mì."
+                    "Tôi đang ăn bánh mì.",
+                    "Tôi ăn một ít bánh mì.",
+                    "Tôi đang ăn một ít bánh mì."
                   ]
                 }
               ],
@@ -1118,11 +1144,12 @@
                   "prompt": "Je bois de l'eau.",
                   "audioTarget": "Je bois de l'eau.",
                   "tokens": [
+                    "mì",
                     "uống",
                     "Tôi",
-                    "bánh mì",
-                    "Không",
                     "nước",
+                    "bánh",
+                    "Không",
                     "là"
                   ],
                   "answer": [
@@ -1139,11 +1166,12 @@
                   "audioTarget": "Je bois du lait.",
                   "tokens": [
                     "Tôi",
-                    "Không",
-                    "Cô ấy",
+                    "uống",
                     "là",
-                    "sữa",
-                    "uống"
+                    "ấy",
+                    "Cô",
+                    "Không",
+                    "sữa"
                   ],
                   "answer": [
                     "Tôi",
@@ -1206,7 +1234,9 @@
                   "audioTarget": "Je bois du lait.",
                   "answer": "Tôi uống sữa.",
                   "alternatives": [
-                    "Tôi đang uống sữa."
+                    "Tôi đang uống sữa.",
+                    "Tôi uống một ít sữa.",
+                    "Tôi đang uống một ít sữa."
                   ]
                 }
               ],
@@ -1221,11 +1251,11 @@
           "id": "fr-en:unit-2",
           "title": "Chào hỏi",
           "description": "Học các lời chào và cách nói lịch sự thiết yếu trong tiếng Pháp cho hội thoại hằng ngày.",
-          "guidebook": "## Salutations et Politesse 🇫🇷\n\nLời chào tiếng Pháp thay đổi theo thời điểm trong ngày và mức độ trang trọng. **Bonjour** (xin chào / chào buổi sáng) là lựa chọn an toàn bất cứ lúc nào trước buổi tối. Khi trời tối, chuyển sang **Bonsoir** (chào buổi tối). Để tạm biệt, **Au revoir** dùng được trong mọi trường hợp, còn **Salut** là cách nói thân mật giữa bạn bè.\n\n**Tu và Vous**: Dùng **tu** với bạn bè, gia đình và trẻ em. Dùng **vous** với người lạ, người lớn tuổi và trong hoàn cảnh trang trọng. Khi không chắc, hãy chọn **vous** — được xem là lịch sự hơn.\n\n**Comment ça va ?** (Bạn khỏe không?) là lời chào thân mật. Hãy đáp **Ça va bien** (Tôi khỏe) hoặc **Comme ci, comme ça** (cũng tạm).\n\n**Merci** (cảm ơn) và **s'il vous plaît** (làm ơn) là thiết yếu. Để lịch sự hơn nữa, hãy nói **Merci beaucoup** (cảm ơn rất nhiều). **De rien** (không có gì) là câu đáp chuẩn.\n\n**Bonne nuit** (chúc ngủ ngon) dùng khi chia tay để đi ngủ, không dùng để chào.",
+          "guidebook": "## Salutations et Politesse 🇫🇷\n\nLời chào tiếng Pháp thay đổi theo thời điểm trong ngày và mức độ trang trọng. **Bonjour** (xin chào — dùng suốt ban ngày) là lựa chọn an toàn bất cứ lúc nào trước buổi tối. Khi trời tối, chuyển sang **Bonsoir** (chào buổi tối). Để tạm biệt, **Au revoir** dùng được trong mọi trường hợp, còn **Salut** là cách nói thân mật giữa bạn bè.\n\n**Tu và Vous**: Dùng **tu** với bạn bè, gia đình và trẻ em. Dùng **vous** với người lạ, người lớn tuổi và trong hoàn cảnh trang trọng. Khi không chắc, hãy chọn **vous** — được xem là lịch sự hơn.\n\n**Comment ça va ?** (Bạn khỏe không?) là lời chào thân mật. Hãy đáp **Ça va bien** (Tôi khỏe) hoặc **Comme ci, comme ça** (cũng tạm).\n\n**Merci** (cảm ơn) và **s'il vous plaît** (làm ơn) là thiết yếu. Để lịch sự hơn nữa, hãy nói **Merci beaucoup** (cảm ơn rất nhiều). **De rien** (không có gì) là câu đáp chuẩn.\n\n**Bonne nuit** (chúc ngủ ngon) dùng khi chia tay để đi ngủ, không dùng để chào.",
           "words": [
             {
               "target": "bonjour",
-              "native": "xin chào / chào buổi sáng",
+              "native": "xin chào (ban ngày)",
               "emoji": "👋"
             },
             {
@@ -1301,7 +1331,7 @@
                       "emoji": "👩"
                     },
                     {
-                      "text": "xin chào / chào buổi sáng",
+                      "text": "xin chào (ban ngày)",
                       "emoji": "👋"
                     },
                     {
@@ -1367,7 +1397,7 @@
                       "emoji": "🙏"
                     },
                     {
-                      "text": "xin chào / chào buổi sáng",
+                      "text": "xin chào (ban ngày)",
                       "emoji": "👋"
                     }
                   ],
@@ -1380,7 +1410,7 @@
                   "type": "select",
                   "id": "fr-vi:u1-l0-e3",
                   "mode": "nativeToTarget",
-                  "prompt": "xin chào / chào buổi sáng",
+                  "prompt": "xin chào (ban ngày)",
                   "audioTarget": "bonjour",
                   "options": [
                     {
@@ -1525,7 +1555,7 @@
                   "pairs": [
                     {
                       "target": "bonjour",
-                      "native": "xin chào / chào buổi sáng"
+                      "native": "xin chào (ban ngày)"
                     },
                     {
                       "target": "au revoir",
@@ -1561,7 +1591,12 @@
                   "answer": "Tôi khỏe, cảm ơn.",
                   "alternatives": [
                     "Tôi khỏe, cảm ơn bạn.",
-                    "Tôi ổn, cảm ơn."
+                    "Tôi ổn, cảm ơn.",
+                    "Tôi ổn, cảm ơn bạn.",
+                    "Tôi vẫn khỏe, cảm ơn.",
+                    "Cảm ơn, tôi khỏe.",
+                    "Tôi khỏe, cảm ơn ông.",
+                    "Tôi khỏe, cảm ơn bà."
                   ]
                 }
               ],
@@ -1590,7 +1625,7 @@
                       "emoji": "❌"
                     },
                     {
-                      "text": "xin chào / chào buổi sáng",
+                      "text": "xin chào (ban ngày)",
                       "emoji": "👋"
                     },
                     {
@@ -1615,7 +1650,7 @@
                       "emoji": "🌆"
                     },
                     {
-                      "text": "xin chào / chào buổi sáng",
+                      "text": "xin chào (ban ngày)",
                       "emoji": "👋"
                     },
                     {
@@ -1824,7 +1859,7 @@
                     },
                     {
                       "target": "bonjour",
-                      "native": "xin chào / chào buổi sáng"
+                      "native": "xin chào (ban ngày)"
                     }
                   ],
                   "gradeTargets": [
@@ -1844,7 +1879,15 @@
                   "answer": "Rất khỏe, còn bạn?",
                   "alternatives": [
                     "Rất tốt, còn bạn?",
-                    "Rất khỏe, còn bạn thì sao?"
+                    "Rất khỏe, còn bạn thì sao?",
+                    "Tôi rất khỏe, còn bạn?",
+                    "Rất tốt, còn bạn thì sao?",
+                    "Khỏe lắm, còn bạn?",
+                    "Rất khỏe, bạn thì sao?",
+                    "Rất khỏe, còn ông?",
+                    "Rất khỏe, còn bà?",
+                    "Rất khỏe, còn anh?",
+                    "Rất khỏe, còn chị?"
                   ]
                 }
               ],
@@ -2034,21 +2077,19 @@
                   "prompt": "Au revoir, à bientôt !",
                   "audioTarget": "Au revoir, à bientôt !",
                   "tokens": [
-                    "chào",
-                    "hẹn",
-                    "Tạm",
-                    "lại",
-                    "biệt",
                     "mừng",
+                    "Tạm",
+                    "chào",
+                    "biệt",
+                    "hẹn",
+                    "lại",
                     "gặp",
-                    "sớm",
                     "Rất"
                   ],
                   "answer": [
                     "Tạm",
                     "biệt",
                     "hẹn",
-                    "sớm",
                     "gặp",
                     "lại"
                   ]
@@ -2113,7 +2154,7 @@
                     },
                     {
                       "target": "bonjour",
-                      "native": "xin chào / chào buổi sáng"
+                      "native": "xin chào (ban ngày)"
                     }
                   ],
                   "gradeTargets": [
@@ -2132,7 +2173,11 @@
                   "audioTarget": "Merci beaucoup, madame.",
                   "answer": "Cảm ơn bà rất nhiều.",
                   "alternatives": [
-                    "Cảm ơn rất nhiều, thưa bà."
+                    "Cảm ơn rất nhiều, thưa bà.",
+                    "Cảm ơn bà nhiều.",
+                    "Cảm ơn bà nhiều lắm.",
+                    "Xin cảm ơn bà rất nhiều.",
+                    "Cảm ơn bà rất nhiều ạ."
                   ]
                 }
               ],
@@ -2215,7 +2260,7 @@
                       "emoji": "🌙"
                     },
                     {
-                      "text": "xin chào / chào buổi sáng",
+                      "text": "xin chào (ban ngày)",
                       "emoji": "👋"
                     },
                     {
@@ -2342,23 +2387,21 @@
                   "prompt": "Bonne soirée !",
                   "audioTarget": "Bonne soirée !",
                   "tokens": [
-                    "nhiều",
                     "tối",
-                    "gặp",
-                    "lành",
+                    "vẻ",
+                    "nhiều",
                     "Chúc",
-                    "một",
+                    "gặp",
                     "buổi",
                     "mừng",
-                    "tốt"
+                    "vui"
                   ],
                   "answer": [
                     "Chúc",
-                    "một",
                     "buổi",
                     "tối",
-                    "tốt",
-                    "lành"
+                    "vui",
+                    "vẻ"
                   ]
                 },
                 {
@@ -2417,7 +2460,12 @@
                   "answer": "Chúc một buổi tối tốt lành!",
                   "alternatives": [
                     "Chúc buổi tối tốt lành!",
-                    "Chúc buổi tối vui vẻ!"
+                    "Chúc buổi tối vui vẻ!",
+                    "Chúc một buổi tối vui vẻ!",
+                    "Chúc bạn buổi tối vui vẻ!",
+                    "Chúc bạn một buổi tối vui vẻ!",
+                    "Chúc bạn buổi tối tốt lành!",
+                    "Chúc bạn một buổi tối tốt lành!"
                   ]
                 }
               ],
@@ -2700,11 +2748,12 @@
                   "audioTarget": "Je mange du pain.",
                   "tokens": [
                     "trứng",
+                    "mai",
                     "Tôi",
-                    "phô mai",
+                    "mì",
                     "ăn",
                     "một",
-                    "mì",
+                    "phô",
                     "bánh"
                   ],
                   "answer": [
@@ -2769,7 +2818,9 @@
                   "audioTarget": "Je mange du pain.",
                   "answer": "Tôi ăn bánh mì.",
                   "alternatives": [
-                    "Tôi đang ăn bánh mì."
+                    "Tôi đang ăn bánh mì.",
+                    "Tôi ăn một ít bánh mì.",
+                    "Tôi đang ăn một ít bánh mì."
                   ]
                 }
               ],
@@ -2963,7 +3014,7 @@
                     "uống",
                     "cái",
                     "nước",
-                    "nước ép",
+                    "ép",
                     "Tôi"
                   ],
                   "answer": [
@@ -2979,13 +3030,14 @@
                   "prompt": "Je veux du jus.",
                   "audioTarget": "Je veux du jus.",
                   "tokens": [
-                    "ép",
-                    "gà",
-                    "Tôi",
                     "ăn",
-                    "cà phê",
+                    "gà",
+                    "cà",
+                    "Tôi",
                     "muốn",
-                    "nước"
+                    "phê",
+                    "nước",
+                    "ép"
                   ],
                   "answer": [
                     "Tôi",
@@ -3049,7 +3101,11 @@
                   "audioTarget": "Je veux du jus.",
                   "answer": "Tôi muốn nước ép.",
                   "alternatives": [
-                    "Tôi muốn uống nước ép."
+                    "Tôi muốn uống nước ép.",
+                    "Tôi muốn một ít nước ép.",
+                    "Tôi muốn nước hoa quả.",
+                    "Tôi muốn uống nước hoa quả.",
+                    "Tôi muốn một ít nước hoa quả."
                   ]
                 }
               ],
@@ -3261,13 +3317,15 @@
                   "prompt": "Je mange un œuf.",
                   "audioTarget": "Je mange un œuf.",
                   "tokens": [
-                    "trứng",
                     "ăn",
-                    "cà phê",
-                    "gà",
+                    "phê",
+                    "bánh",
                     "một",
+                    "cà",
+                    "gà",
                     "quả",
-                    "bánh mì",
+                    "trứng",
+                    "mì",
                     "Tôi"
                   ],
                   "answer": [
@@ -3334,7 +3392,8 @@
                   "answer": "Tôi ăn một quả trứng.",
                   "alternatives": [
                     "Tôi ăn trứng.",
-                    "Tôi đang ăn một quả trứng."
+                    "Tôi đang ăn một quả trứng.",
+                    "Tôi đang ăn trứng."
                   ]
                 }
               ],
@@ -3524,12 +3583,13 @@
                   "prompt": "Je veux du thé.",
                   "audioTarget": "Je veux du thé.",
                   "tokens": [
-                    "Tôi",
                     "uống",
-                    "phô mai",
-                    "trà",
+                    "Tôi",
+                    "phô",
+                    "muốn",
+                    "mai",
                     "một",
-                    "muốn"
+                    "trà"
                   ],
                   "answer": [
                     "Tôi",
@@ -3544,13 +3604,14 @@
                   "prompt": "Je mange du poulet.",
                   "audioTarget": "Je mange du poulet.",
                   "tokens": [
-                    "gà",
-                    "một ít",
+                    "uống",
+                    "cây",
                     "thích",
-                    "ăn",
+                    "trái",
                     "thịt",
-                    "trái cây",
-                    "Tôi"
+                    "gà",
+                    "Tôi",
+                    "ăn"
                   ],
                   "answer": [
                     "Tôi",
@@ -3615,7 +3676,10 @@
                   "answer": "Tôi ăn thịt gà.",
                   "alternatives": [
                     "Tôi ăn gà.",
-                    "Tôi đang ăn thịt gà."
+                    "Tôi đang ăn thịt gà.",
+                    "Tôi ăn một ít thịt gà.",
+                    "Tôi đang ăn gà.",
+                    "Tôi ăn một ít gà."
                   ]
                 }
               ],
@@ -3875,11 +3939,12 @@
                   "prompt": "Le chien est grand.",
                   "audioTarget": "Le chien est grand.",
                   "tokens": [
-                    "chó",
                     "có",
-                    "mèo",
                     "to",
-                    "động vật",
+                    "chó",
+                    "động",
+                    "mèo",
+                    "vật",
                     "Con"
                   ],
                   "answer": [
@@ -4182,16 +4247,15 @@
                   "tokens": [
                     "chim",
                     "ngựa",
-                    "nhanh",
+                    "dễ",
                     "chuột",
                     "Con",
-                    "chạy",
-                    "dễ thương"
+                    "nhanh",
+                    "thương"
                   ],
                   "answer": [
                     "Con",
                     "ngựa",
-                    "chạy",
                     "nhanh"
                   ]
                 },
@@ -4251,7 +4315,9 @@
                   "answer": "Con ngựa chạy nhanh.",
                   "alternatives": [
                     "Con ngựa nhanh.",
-                    "Con ngựa thì nhanh."
+                    "Con ngựa thì nhanh.",
+                    "Ngựa chạy nhanh.",
+                    "Con ngựa thì chạy nhanh."
                   ]
                 }
               ],
@@ -4441,12 +4507,13 @@
                   "prompt": "L'oiseau vole haut.",
                   "audioTarget": "L'oiseau vole haut.",
                   "tokens": [
-                    "chó",
-                    "Con",
-                    "dễ thương",
-                    "trong",
-                    "chim",
                     "cao",
+                    "thương",
+                    "Con",
+                    "dễ",
+                    "chó",
+                    "chim",
+                    "trong",
                     "bay"
                   ],
                   "answer": [
@@ -4535,7 +4602,10 @@
                   "audioTarget": "Le poisson est dans l'eau.",
                   "answer": "Con cá ở dưới nước.",
                   "alternatives": [
-                    "Con cá ở trong nước."
+                    "Con cá ở trong nước.",
+                    "Cá ở dưới nước.",
+                    "Cá ở trong nước.",
+                    "Con cá đang ở dưới nước."
                   ]
                 }
               ],
@@ -4725,13 +4795,14 @@
                   "prompt": "La vache est blanche.",
                   "audioTarget": "La vache est blanche.",
                   "tokens": [
-                    "thỏ",
-                    "Con",
-                    "màu",
                     "bò",
+                    "động",
+                    "Con",
                     "trắng",
-                    "động vật",
-                    "đen"
+                    "màu",
+                    "thỏ",
+                    "đen",
+                    "vật"
                   ],
                   "answer": [
                     "Con",
@@ -4747,13 +4818,14 @@
                   "prompt": "J'aime les animaux.",
                   "audioTarget": "J'aime les animaux.",
                   "tokens": [
-                    "vật",
+                    "chó",
                     "yêu",
+                    "động",
                     "Tôi",
                     "to",
-                    "chó",
-                    "dễ thương",
-                    "động"
+                    "thương",
+                    "dễ",
+                    "vật"
                   ],
                   "answer": [
                     "Tôi",
@@ -4818,7 +4890,13 @@
                   "answer": "Tôi yêu động vật.",
                   "alternatives": [
                     "Tôi thích động vật.",
-                    "Tôi yêu các con vật."
+                    "Tôi yêu các con vật.",
+                    "Tôi thích các con vật.",
+                    "Tôi yêu loài vật.",
+                    "Tôi thích loài vật.",
+                    "Tôi yêu các loài động vật.",
+                    "Tôi thích các loài động vật.",
+                    "Tôi yêu quý động vật."
                   ]
                 }
               ],
@@ -4833,7 +4911,7 @@
           "id": "fr-en:unit-5",
           "title": "Đi lại",
           "description": "Học từ vựng và mẫu câu tiếng Pháp thiết yếu để đi lại trong thành phố, dùng phương tiện giao thông, ở khách sạn và hỏi đường.",
-          "guidebook": "## Đi lại bằng tiếng Pháp\n\n**Hỏi đồ vật/nơi chốn ở đâu** dùng cấu trúc: *Où est... ?* (... ở đâu?) với danh từ số ít và *Où sont... ?* với số nhiều. Để hỏi một nơi cụ thể, dùng *Où est la gare ?* (Nhà ga ở đâu?).\n\n**Chỉ đường** thường bắt đầu bằng *Allez tout droit* (Đi thẳng), *Tournez à gauche/droite* (Rẽ trái/phải), hoặc *C'est à côté de...* (Ở cạnh...).\n\n**Ở sân bay hoặc nhà ga**, bạn sẽ nghe *Le train part à...* (Tàu chạy lúc...) và *Le vol est retardé* (Chuyến bay bị hoãn). Để mua vé, hãy nói *Un billet, s'il vous plaît* (Cho một vé, làm ơn).\n\n**Giống rất quan trọng!** Danh từ tiếng Pháp là giống đực hoặc giống cái: *le musée* (đ.), *la gare* (c.), *l'hôtel* (đ.), *la rue* (c.). Luôn học mạo từ cùng với danh từ.\n\n**Các câu lịch sự** như *Excusez-moi* và *Merci beaucoup* giúp ích rất nhiều khi bạn đi lại trong một thành phố nói tiếng Pháp!",
+          "guidebook": "## Đi lại bằng tiếng Pháp\n\n**Hỏi đồ vật/nơi chốn ở đâu** dùng cấu trúc: *Où est... ?* (... ở đâu?) với danh từ số ít và *Où sont... ?* với số nhiều. Để hỏi một nơi cụ thể, dùng *Où est la gare ?* (Nhà ga ở đâu?).\n\n**Chỉ đường** thường bắt đầu bằng *Allez tout droit* (Đi thẳng), *Tournez à gauche/droite* (Rẽ trái/phải), hoặc *C'est à côté de...* (Ở cạnh...).\n\n**Ở sân bay hoặc nhà ga**, bạn sẽ nghe *Le train part à...* (Tàu chạy lúc...) và *Le vol est retardé* (Chuyến bay bị hoãn). Để mua vé, hãy nói *Un billet, s'il vous plaît* (Cho một vé, làm ơn).\n\n**Giống rất quan trọng!** Danh từ tiếng Pháp là giống đực hoặc giống cái: *le musée* (giống đực), *la gare* (giống cái), *l'hôtel* (giống đực), *la rue* (giống cái). Luôn học mạo từ cùng với danh từ.\n\n**Các câu lịch sự** như *Excusez-moi* và *Merci beaucoup* giúp ích rất nhiều khi bạn đi lại trong một thành phố nói tiếng Pháp!",
           "words": [
             {
               "target": "la ville",
@@ -5079,11 +5157,12 @@
                   "audioTarget": "Où est la gare ?",
                   "tokens": [
                     "đâu",
+                    "một",
                     "Rẽ",
-                    "sân bay",
+                    "bay",
                     "ga",
                     "ở",
-                    "một",
+                    "sân",
                     "Nhà"
                   ],
                   "answer": [
@@ -5100,14 +5179,15 @@
                   "prompt": "Je cherche l'hôtel.",
                   "audioTarget": "Je cherche l'hôtel.",
                   "tokens": [
-                    "sạn",
-                    "Tôi",
-                    "tìm",
-                    "sân bay",
                     "đang",
                     "khách",
+                    "Tôi",
+                    "bay",
+                    "Rẽ",
+                    "tìm",
+                    "sạn",
                     "tàu",
-                    "Rẽ"
+                    "sân"
                   ],
                   "answer": [
                     "Tôi",
@@ -5362,13 +5442,14 @@
                   "prompt": "Où est le musée ?",
                   "audioTarget": "Où est le musée ?",
                   "tokens": [
-                    "cái",
-                    "Bảo",
-                    "va li",
-                    "tàng",
                     "Một",
-                    "đâu",
-                    "ở"
+                    "tàng",
+                    "Bảo",
+                    "li",
+                    "ở",
+                    "va",
+                    "cái",
+                    "đâu"
                   ],
                   "answer": [
                     "Bảo",
@@ -5451,7 +5532,11 @@
                   "answer": "Đi thẳng.",
                   "alternatives": [
                     "Hãy đi thẳng.",
-                    "Đi thẳng về phía trước."
+                    "Đi thẳng về phía trước.",
+                    "Cứ đi thẳng.",
+                    "Hãy đi thẳng về phía trước.",
+                    "Cứ đi thẳng về phía trước.",
+                    "Đi thẳng tới trước."
                   ]
                 }
               ],
@@ -5641,11 +5726,13 @@
                   "prompt": "Tournez à gauche.",
                   "audioTarget": "Tournez à gauche.",
                   "tokens": [
-                    "Rẽ",
-                    "sân bay",
-                    "tàu",
                     "trái",
-                    "ngân hàng"
+                    "Rẽ",
+                    "ngân",
+                    "tàu",
+                    "bay",
+                    "sân",
+                    "hàng"
                   ],
                   "answer": [
                     "Rẽ",
@@ -5659,18 +5746,17 @@
                   "prompt": "C'est à côté de la banque.",
                   "audioTarget": "C'est à côté de la banque.",
                   "tokens": [
-                    "ở",
-                    "Nó",
-                    "trái",
-                    "là",
-                    "ngân",
-                    "khách sạn",
                     "cạnh",
-                    "hàng"
+                    "Ở",
+                    "khách",
+                    "trái",
+                    "hàng",
+                    "sạn",
+                    "ngân",
+                    "là"
                   ],
                   "answer": [
-                    "Nó",
-                    "ở",
+                    "Ở",
                     "cạnh",
                     "ngân",
                     "hàng"
@@ -5732,7 +5818,12 @@
                   "answer": "Nó ở cạnh ngân hàng.",
                   "alternatives": [
                     "Ở cạnh ngân hàng.",
-                    "Nó ở bên cạnh ngân hàng."
+                    "Nó ở bên cạnh ngân hàng.",
+                    "Ở bên cạnh ngân hàng.",
+                    "Cạnh ngân hàng.",
+                    "Nó nằm cạnh ngân hàng.",
+                    "Nó nằm bên cạnh ngân hàng.",
+                    "Chỗ đó ở cạnh ngân hàng."
                   ]
                 }
               ],
@@ -5923,20 +6014,22 @@
                   "audioTarget": "Un billet, s'il vous plaît.",
                   "tokens": [
                     "có",
+                    "cho",
                     "Cái",
-                    "vé",
-                    "làm",
+                    "tôi",
                     "một",
                     "ơn",
-                    "Cho",
+                    "vé",
+                    "Làm",
                     "là"
                   ],
                   "answer": [
-                    "Cho",
+                    "Làm",
+                    "ơn",
+                    "cho",
+                    "tôi",
                     "một",
-                    "vé",
-                    "làm",
-                    "ơn"
+                    "vé"
                   ]
                 },
                 {
@@ -5967,7 +6060,7 @@
                   "type": "fillBlank",
                   "id": "fr-vi:u4-l3-e8",
                   "sentence": "Un billet, s'il vous ___.",
-                  "translation": "Cho một vé, làm ơn.",
+                  "translation": "Làm ơn cho tôi một vé.",
                   "audioTarget": "Un billet, s'il vous plaît.",
                   "options": [
                     "valise",
@@ -6019,7 +6112,14 @@
                   "answer": "Tàu chạy lúc mười giờ.",
                   "alternatives": [
                     "Tàu khởi hành lúc mười giờ.",
-                    "Tàu rời ga lúc mười giờ."
+                    "Tàu rời ga lúc mười giờ.",
+                    "Tàu chạy lúc 10 giờ.",
+                    "Tàu khởi hành lúc 10 giờ.",
+                    "Tàu rời ga lúc 10 giờ.",
+                    "Tàu đi lúc mười giờ.",
+                    "Chuyến tàu chạy lúc mười giờ.",
+                    "Tàu hỏa chạy lúc mười giờ.",
+                    "Tàu chạy lúc 10h."
                   ]
                 }
               ],
@@ -7009,9 +7109,9 @@
         },
         {
           "id": "fr-en:unit-b",
-          "title": "Những động từ hiệu quả cao",
+          "title": "Những động từ dùng nhiều nhất",
           "description": "Être, avoir, aller, faire và họ động từ -er — cùng thì tương lai và quá khứ bạn có thể tạo từ chúng.",
-          "guidebook": "# Những động từ hiệu quả cao\n\nTám động từ gánh một phần rất lớn tiếng Pháp hằng ngày. Bốn trụ cột bất quy tắc — **être**, **avoir**, **aller**, **faire** — và họ động từ -er có quy tắc (như **parler**) bao phủ phần lớn còn lại.\n\n## Être — là\n\n- **je suis** — tôi là\n- **tu es** — bạn là\n- **il/elle est** — anh ấy/cô ấy là\n- **nous sommes** — chúng tôi là\n- **vous êtes** — các bạn là (số nhiều hoặc trang trọng)\n- **ils/elles sont** — họ là\n\n## Avoir — có\n\n- **j'ai** — tôi có\n- **tu as** — bạn có\n- **il/elle a** — anh ấy/cô ấy có\n- **nous avons** — chúng tôi có\n- **vous avez** — các bạn có\n- **ils/elles ont** — họ có\n\nTiếng Pháp nói *avoir faim* (có cơn đói) ở chỗ tiếng Việt nói đói. Để ý avoir trong các cụm cố định: avoir raison (nói đúng), avoir 20 ans (20 tuổi).\n\n## Aller — đi\n\n- **je vais**, **tu vas**, **il/elle va**\n- **nous allons**, **vous allez**, **ils/elles vont**\n\n*Futur proche* (tương lai gần): aller + nguyên mẫu nghĩa là sắp. **Je vais manger** — Tôi sắp ăn. Chỉ aller được chia; động từ thứ hai giữ dạng từ điển.\n\n## Faire — làm\n\n- **je fais**, **tu fais**, **il/elle fait**\n- **nous faisons**, **vous faites**, **ils/elles font**\n\n## Mẫu động từ -er\n\nLấy gốc (parler → parl-) và thêm **-e, -es, -e, -ons, -ez, -ent**:\n\n- je parle · tu parles · il/elle parle\n- nous parlons · vous parlez · ils/elles parlent\n\nKhi nói, parle, parles và parlent đọc giống hệt nhau, và parlez đọc giống nguyên mẫu parler — đại từ làm việc khi nói thành tiếng. Manger giữ chữ e trước -ons: **nous mangeons**.\n\n## Quá khứ chỉ trong một bước\n\nAvoir (hiện tại) + quá khứ phân từ: **J'ai mangé** — Tôi đã ăn. Với động từ -er, phân từ đọc như nguyên mẫu và viết **-é**: parlé, aimé, habité. Phân từ bất quy tắc đáng thuộc ngay: être → **été**, avoir → **eu**, faire → **fait**.",
+          "guidebook": "# Những động từ dùng nhiều nhất\n\nTám động từ gánh một phần rất lớn tiếng Pháp hằng ngày. Bốn trụ cột bất quy tắc — **être**, **avoir**, **aller**, **faire** — và họ động từ -er có quy tắc (như **parler**) bao phủ phần lớn còn lại.\n\n## Être — là\n\n- **je suis** — tôi là\n- **tu es** — bạn là\n- **il/elle est** — anh ấy/cô ấy là\n- **nous sommes** — chúng tôi là\n- **vous êtes** — các bạn là / ông, bà là (số nhiều, hoặc lịch sự với một người)\n- **ils/elles sont** — họ là\n\n## Avoir — có\n\n- **j'ai** — tôi có\n- **tu as** — bạn có\n- **il/elle a** — anh ấy/cô ấy có\n- **nous avons** — chúng tôi có\n- **vous avez** — các bạn có\n- **ils/elles ont** — họ có\n\nTiếng Pháp nói *avoir faim* (có cơn đói) ở chỗ tiếng Việt nói đói. Để ý avoir trong các cụm cố định: avoir raison (nói đúng), avoir 20 ans (20 tuổi).\n\n## Aller — đi\n\n- **je vais**, **tu vas**, **il/elle va**\n- **nous allons**, **vous allez**, **ils/elles vont**\n\n*Futur proche* (tương lai gần): aller + nguyên mẫu nghĩa là sắp. **Je vais manger** — Tôi sắp ăn. Chỉ aller được chia; động từ thứ hai giữ dạng từ điển.\n\n## Faire — làm\n\n- **je fais**, **tu fais**, **il/elle fait**\n- **nous faisons**, **vous faites**, **ils/elles font**\n\n## Mẫu động từ -er\n\nLấy gốc (parler → parl-) và thêm **-e, -es, -e, -ons, -ez, -ent**:\n\n- je parle · tu parles · il/elle parle\n- nous parlons · vous parlez · ils/elles parlent\n\nKhi nói, parle, parles và parlent đọc giống hệt nhau, và parlez đọc giống nguyên mẫu parler — khi nói, chính đại từ cho biết ai đang làm. Manger giữ chữ e trước -ons: **nous mangeons**.\n\n## Quá khứ chỉ trong một bước\n\nAvoir (hiện tại) + quá khứ phân từ: **J'ai mangé** — Tôi đã ăn. Với động từ -er, phân từ đọc như nguyên mẫu và viết **-é**: parlé, aimé, habité. Phân từ bất quy tắc đáng thuộc ngay: être → **été**, avoir → **eu**, faire → **fait**.",
           "words": [
             {
               "target": "être",
@@ -7894,8 +7994,8 @@
         {
           "id": "fr-en:unit-c",
           "title": "Từ đồng nguyên & Từ dễ nhầm",
-          "description": "Thu hoạch những từ tiếng Pháp giống tiếng Anh — và gỡ bẫy những từ chỉ giả vờ giống.",
-          "guidebook": "# Những từ bạn đã biết — và những từ đánh lừa\n\nTiếng Pháp và tiếng Anh chia sẻ hàng nghìn từ; nếu bạn đã biết chút tiếng Anh, chương này dạy bạn thu hoạch những từ chung và gỡ bẫy những từ đánh lừa.\n\n## Họ -tion\n\nTrong 16 danh từ -tion của nhóm từ hằng ngày lấy từ kho ngữ liệu của khóa học, 15 từ giống hệt tiếng Anh: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Trong phân tích 36.940 danh từ, chúng là **giống cái 99,5%** — hãy nói *la*.\n\n- Âm thay đổi dù cách viết không đổi: -tion đọc /sjɔ̃/, không bao giờ đọc như tiếng Anh /shun/.\n- Cái bẫy duy nhất trong nhóm: **Félicitations !** nghĩa là *Chúc mừng!*\n\n## Cây cầu -té\n\n-té thường tương ứng với -ty tiếng Anh — 10 trong 16 từ của nhóm hằng ngày:\n\n- **la liberté** — tự do\n- **la réalité** — thực tế\n- **la société** — xã hội · **la sécurité** — an ninh · **l'université** — đại học\n\nNhưng sáu từ là từ vựng thật, không phải từ đồng nguyên — ví dụ **la santé** (sức khỏe), **la vérité** (sự thật), **la volonté** (ý chí), **l'été** (mùa hè). Giống: **91,6% giống cái** (đo trên 1.031 danh từ); ngoại lệ giống đực gồm **le côté** (phía, bên) và **l'été**.\n\nĐể sau: tiếng Pháp có 616 danh từ **-isme** tương ứng với -ism tiếng Anh — **99,8% giống đực**.\n\n## Từ dễ nhầm (“bạn giả”)\n\nHãy học mỗi bẫy cùng với từ đúng của nó:\n\n- **la librairie** = hiệu sách → thư viện là **la bibliothèque**\n- **la journée** = ban ngày → chuyến đi là **un voyage**\n- **la monnaie** = tiền lẻ, tiền xu → tiền là **l'argent**\n- **rester** = ở lại (không bao giờ là nghỉ ngơi)\n- **attendre** = đợi (không bao giờ là tham dự)\n\nThêm vài từ cần để ý khi học lên: *sensible* nghĩa là nhạy cảm, *actuellement* nghĩa là hiện nay.",
+          "description": "Tận dụng những từ tiếng Pháp giống tiếng Anh — và tránh bẫy những từ chỉ giả vờ giống.",
+          "guidebook": "# Những từ bạn đã biết — và những từ đánh lừa\n\nTiếng Pháp và tiếng Anh chia sẻ hàng nghìn từ; nếu bạn đã biết chút tiếng Anh, chương này giúp bạn tận dụng những từ chung và tránh bẫy những từ đánh lừa.\n\n## Họ -tion\n\nTrong 16 danh từ -tion của nhóm từ hằng ngày lấy từ kho ngữ liệu của khóa học, 15 từ giống hệt tiếng Anh: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Trong phân tích 36.940 danh từ, chúng là **giống cái 99,5%** — hãy nói *la*.\n\n- Âm thay đổi dù cách viết không đổi: -tion đọc /sjɔ̃/, không bao giờ đọc như tiếng Anh /shun/.\n- Cái bẫy duy nhất trong nhóm: **Félicitations !** nghĩa là *Chúc mừng!*\n\n## Cây cầu -té\n\n-té thường tương ứng với -ty tiếng Anh — 10 trong 16 từ của nhóm hằng ngày:\n\n- **la liberté** — tự do\n- **la réalité** — thực tế\n- **la société** — xã hội · **la sécurité** — an ninh · **l'université** — đại học\n\nNhưng sáu từ là từ vựng thật, không phải từ đồng nguyên — ví dụ **la santé** (sức khỏe), **la vérité** (sự thật), **la volonté** (ý chí), **l'été** (mùa hè). Giống: **91,6% giống cái** (đo trên 1.031 danh từ); ngoại lệ giống đực gồm **le côté** (phía, bên) và **l'été**.\n\nĐể sau: tiếng Pháp có 616 danh từ **-isme** tương ứng với -ism tiếng Anh — **99,8% giống đực**.\n\n## Từ dễ nhầm (“bạn giả”)\n\nHãy học mỗi bẫy cùng với từ đúng của nó:\n\n- **la librairie** (giống 'library') = hiệu sách → thư viện là **la bibliothèque**\n- **la journée** (giống 'journey') = một ngày, cả ngày → chuyến đi là **un voyage**\n- **la monnaie** (giống 'money') = tiền lẻ, tiền xu → tiền là **l'argent**\n- **rester** (giống 'rest') = ở lại, không phải nghỉ ngơi\n- **attendre** (giống 'attend') = đợi, không phải tham dự\n\nThêm vài từ cần để ý khi học lên: *sensible* nghĩa là nhạy cảm (không phải 'sensible' — hợp lý), *actuellement* nghĩa là hiện nay (không phải 'actually' — thật ra).",
           "words": [
             {
               "target": "la solution",
@@ -7929,7 +8029,7 @@
             },
             {
               "target": "la journée",
-              "native": "ban ngày",
+              "native": "ngày (cả ngày)",
               "emoji": "📅"
             },
             {
@@ -8503,7 +8603,7 @@
                   "prompt": "la journée",
                   "options": [
                     {
-                      "text": "ban ngày"
+                      "text": "ngày (cả ngày)"
                     },
                     {
                       "text": "cuộc hành trình"
@@ -8566,7 +8666,7 @@
                     "la"
                   ],
                   "noun": "journée",
-                  "gloss": "ban ngày",
+                  "gloss": "ngày (cả ngày)",
                   "correct": 1,
                   "objectiveTargets": [
                     "fr.obj.gender.ending_patterns"
@@ -8596,7 +8696,7 @@
                       "text": "chuyến đi"
                     },
                     {
-                      "text": "ban ngày"
+                      "text": "ngày (cả ngày)"
                     },
                     {
                       "text": "hiệu sách"
@@ -8894,7 +8994,7 @@
           "id": "fr-en:unit-d",
           "title": "Số từ 0 đến 100",
           "description": "Cả hệ thống số trong ba quy tắc — cùng các từ để đếm thời gian.",
-          "guidebook": "# Số từ 0 đến 100\n\nSố tiếng Pháp là một hệ thống nhỏ, không phải một trăm từ vựng rời rạc. Hãy học các mảnh ghép và ba góc nổi tiếng.\n\n## Các viên gạch\n\n- 0–16 là các từ đơn: zéro, un, deux… seize.\n- 17–19 ghép với dix: **dix-sept, dix-huit, dix-neuf**.\n- Hàng chục 20–60: vingt, trente, quarante, cinquante, soixante. Hàng đơn vị gắn bằng gạch nối — **vingt-deux** — trừ ở số 1: **vingt et un**, trente et un… soixante et un.\n\n## Hàng bảy mươi\n\nTiếng Pháp không có từ cho bảy mươi: 70 là **soixante-dix** (sáu mươi-mười), và hàng bảy mươi đếm tiếp bằng các số 11–19 — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 là trường hợp \"et onze\" duy nhất: **soixante et onze**. Bỉ và Thụy Sĩ nói *septante* — hãy nhận ra nó, nhưng khóa học này dạy tiếng Pháp của Pháp.\n\n## Bốn lần hai mươi\n\n80 là **quatre-vingts** — nghĩa đen là bốn lần hai mươi — và giữ -s trừ khi có số khác theo sau: **quatre-vingts** (*quatre-vingts euros*), nhưng **quatre-vingt-un** (ở đây không có \"et\"!). Hàng chín mươi lại chồng các số 11–19 lên trên: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Bỉ và Thụy Sĩ nói *nonante*. Và 100 đơn giản là **cent**.\n\n## Hai cách viết chính thức\n\nChính tả truyền thống để khoảng trắng quanh et (**vingt et un**); cải cách chính tả 1990 gạch nối tất cả (**vingt-et-un**). Cả hai đều đúng và đều được chấp nhận ở đây — khóa học hiển thị dạng truyền thống.\n\n## Đếm thời gian\n\n- **le jour** — ngày · **la journée** — cả ngày (như bạn trải qua nó)\n- **l'heure** (c) — giờ · **la minute** — phút\n- **la semaine** — tuần · **le mois** — tháng · **l'année** (c) — năm",
+          "guidebook": "# Số từ 0 đến 100\n\nSố tiếng Pháp là một hệ thống nhỏ, không phải một trăm từ vựng rời rạc. Hãy học các mảnh ghép và ba chỗ đặc biệt.\n\n## Các viên gạch\n\n- 0–16 là các từ đơn: zéro, un, deux… seize.\n- 17–19 ghép với dix: **dix-sept, dix-huit, dix-neuf**.\n- Hàng chục 20–60: vingt, trente, quarante, cinquante, soixante. Hàng đơn vị gắn bằng gạch nối — **vingt-deux** — trừ ở số 1: **vingt et un**, trente et un… soixante et un.\n\n## Hàng bảy mươi\n\nTiếng Pháp không có từ cho bảy mươi: 70 là **soixante-dix** (sáu mươi-mười), và hàng bảy mươi đếm tiếp bằng các số 11–19 — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 là trường hợp \"et onze\" duy nhất: **soixante et onze**. Bỉ và Thụy Sĩ nói *septante* — hãy nhận ra nó, nhưng khóa học này dạy tiếng Pháp của Pháp.\n\n## Bốn lần hai mươi\n\n80 là **quatre-vingts** — nghĩa đen là bốn lần hai mươi — và giữ -s trừ khi có số khác theo sau: **quatre-vingts** (*quatre-vingts euros*), nhưng **quatre-vingt-un** (ở đây không có \"et\"!). Hàng chín mươi lại chồng các số 11–19 lên trên: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Bỉ và Thụy Sĩ nói *nonante*. Và 100 đơn giản là **cent**.\n\n## Hai cách viết chính thức\n\nChính tả truyền thống để khoảng trắng quanh et (**vingt et un**); cải cách chính tả 1990 gạch nối tất cả (**vingt-et-un**). Cả hai đều đúng và đều được chấp nhận ở đây — khóa học hiển thị dạng truyền thống.\n\n## Đếm thời gian\n\n- **le jour** — ngày · **la journée** — cả ngày (như bạn trải qua nó)\n- **l'heure** (c) — giờ · **la minute** — phút\n- **la semaine** — tuần · **le mois** — tháng · **l'année** (c) — năm",
           "words": [
             {
               "target": "le jour",
@@ -9832,7 +9932,7 @@
                       "text": "tháng"
                     },
                     {
-                      "text": "ban ngày"
+                      "text": "ngày (cả ngày)"
                     },
                     {
                       "text": "tuần"
@@ -10137,7 +10237,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l1-e0",
                   "mode": "targetToNative",
-                  "prompt": "In « les amis », the final s…",
+                  "prompt": "Trong « les amis », chữ s cuối…",
                   "options": [
                     {
                       "text": "nối với amis bằng âm z"
@@ -10161,7 +10261,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l1-e1",
                   "mode": "targetToNative",
-                  "prompt": "Which phrase has a required liaison?",
+                  "prompt": "Cụm nào có nối âm bắt buộc?",
                   "options": [
                     {
                       "text": "nous avons"
@@ -10185,7 +10285,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l1-e2",
                   "mode": "targetToNative",
-                  "prompt": "In « vous êtes », the s of vous…",
+                  "prompt": "Trong « vous êtes », chữ s của vous…",
                   "options": [
                     {
                       "text": "nối: nghe như âm z mở đầu êtes"
@@ -10209,7 +10309,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l1-e3",
                   "mode": "targetToNative",
-                  "prompt": "After « et », a liaison is…",
+                  "prompt": "Sau « et », nối âm thì…",
                   "options": [
                     {
                       "text": "không bao giờ nối"
@@ -10233,7 +10333,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l1-e4",
                   "mode": "targetToNative",
-                  "prompt": "Which phrase has NO liaison?",
+                  "prompt": "Cụm nào KHÔNG có nối âm?",
                   "options": [
                     {
                       "text": "et alors"
@@ -10271,7 +10371,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l1-e6",
                   "mode": "targetToNative",
-                  "prompt": "In « les hommes », the final s of les…",
+                  "prompt": "Trong « les hommes », chữ s cuối của les…",
                   "options": [
                     {
                       "text": "nối — homme bắt đầu bằng h muet"
@@ -10413,7 +10513,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l2-e4",
                   "mode": "targetToNative",
-                  "prompt": "In « les héros », the final s of les…",
+                  "prompt": "Trong « les héros », chữ s cuối của les…",
                   "options": [
                     {
                       "text": "câm — h aspiré chặn nối âm"
@@ -10475,7 +10575,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l2-e7",
                   "mode": "targetToNative",
-                  "prompt": "Both h's in héros and histoire are…",
+                  "prompt": "Chữ h trong héros và histoire đều…",
                   "options": [
                     {
                       "text": "câm — chỉ các từ xung quanh khác nhau"
@@ -10563,7 +10663,7 @@
                   "type": "fillBlank",
                   "id": "fr-vi:ue-l3-e2",
                   "sentence": "___ année commence bien.",
-                  "translation": "Năm mới bắt đầu tốt đẹp.",
+                  "translation": "Năm nay khởi đầu tốt đẹp.",
                   "options": [
                     "L'",
                     "La"
@@ -10666,7 +10766,7 @@
                   "type": "select",
                   "id": "fr-vi:ue-l3-e8",
                   "mode": "targetToNative",
-                  "prompt": "Which is written correctly?",
+                  "prompt": "Câu nào viết đúng?",
                   "options": [
                     {
                       "text": "j'ai raison"
@@ -10704,7 +10804,7 @@
           "id": "fr-en:unit-f",
           "title": "Écoute !",
           "description": "Luyện tai: từ và cụm từ tiếng Pháp quen thuộc, chỉ bằng âm thanh.",
-          "guidebook": "## Nghe bắt đầu từ những âm bạn đã biết\n\nBạn đã đọc những từ này. Giờ bạn sẽ *nghe* chúng — phát rõ ràng, và bạn có thể phát lại hoặc nghe chậm khi luyện tập.\n\n- Nghe trước, trả lời sau. Chính tả đến sau.\n- **Chế độ chậm** là công cụ học. Bài kiểm tra dùng tốc độ thường.\n- Nếu lúc này bạn không nghe được âm thanh, bạn có thể bỏ qua một bài nghe — nó vẫn đến hạn.",
+          "guidebook": "## Nghe bắt đầu từ những âm bạn đã biết\n\nBạn đã đọc những từ này. Giờ bạn sẽ *nghe* chúng — phát rõ ràng, và bạn có thể phát lại hoặc nghe chậm khi luyện tập.\n\n- Nghe trước, trả lời sau. Chính tả đến sau.\n- **Chế độ chậm** là công cụ học. Bài kiểm tra dùng tốc độ thường.\n- Nếu lúc này bạn không nghe được âm thanh, bạn có thể bỏ qua một bài nghe — bài đó vẫn được giữ lại để bạn làm sau.",
           "words": [
             {
               "target": "le train",
@@ -11478,7 +11578,7 @@
                       "text": "Lúc 6 giờ"
                     },
                     {
-                      "text": "Lúc trưa"
+                      "text": "Vào buổi trưa"
                     }
                   ],
                   "correct": 0,
@@ -11675,7 +11775,7 @@
                       "text": "Đi thẳng"
                     },
                     {
-                      "text": "Trên lầu"
+                      "text": "Ở tầng trên"
                     }
                   ],
                   "correct": 0,
@@ -12547,7 +12647,7 @@
                       "text": "Một cà phê và một nước ép"
                     },
                     {
-                      "text": "Một trà và một sữa"
+                      "text": "Một tách trà và một ly sữa"
                     },
                     {
                       "text": "Hai cà phê"
@@ -13062,7 +13162,7 @@
         {
           "id": "fr-en:unit-j",
           "title": "Petites histoires",
-          "description": "Tiếng Pháp ngắn có mạch: tìm thông tin, theo dõi câu chuyện.",
+          "description": "Những đoạn tiếng Pháp ngắn liền mạch: tìm thông tin, theo dõi câu chuyện.",
           "guidebook": "## Từ câu đến câu chuyện\n\nNhững văn bản này dài vài câu. Hãy đọc chậm, đọc lại thoải mái — người đọc giỏi làm vậy.\n\n- Lượt đầu: nói về gì?\n- Lượt hai: tìm các thông tin cụ thể (ai, khi nào, ở đâu, bao nhiêu).\n- Gặp từ lạ? Trong bài học bạn có thể chạm vào các thẻ chú giải dưới văn bản.",
           "words": [
             {
@@ -13630,11 +13730,11 @@
           "id": "fr-en:unit-k",
           "title": "Dis bonjour !",
           "description": "Nói thành tiếng các công thức hằng ngày — lời chào, lời cảm ơn và từ lịch sự.",
-          "guidebook": "## Giọng nói của bạn, công cụ đầu tiên\n\nBạn đã đọc và nghe những công thức này. Giờ bạn NÓI chúng.\n\n- Ứng dụng nghe bằng tính năng nhận dạng giọng nói của thiết bị và hiển thị **những gì nó nghe được** — từ ngữ, không bao giờ là điểm phát âm.\n- Ghi âm chỉ diễn ra khi bạn đang nói — chạm ghi âm, nói, chạm dừng.\n- Lúc này không nói được (trên xe buýt, trong thư viện)? Bỏ qua bước này — nó vẫn đến hạn, trung thực.",
+          "guidebook": "## Giọng nói của bạn, công cụ đầu tiên\n\nBạn đã đọc và nghe những công thức này. Giờ bạn NÓI chúng.\n\n- Ứng dụng nghe bằng tính năng nhận dạng giọng nói của thiết bị và hiển thị **những gì nó nghe được** — từ ngữ, không bao giờ là điểm phát âm.\n- Ghi âm chỉ diễn ra khi bạn đang nói — chạm ghi âm, nói, chạm dừng.\n- Lúc này không nói được (trên xe buýt, trong thư viện)? Bỏ qua bước này — bài vẫn được giữ lại để bạn làm sau, không mất đi đâu.",
           "words": [
             {
               "target": "bonjour",
-              "native": "xin chào / chào buổi sáng",
+              "native": "xin chào (ban ngày)",
               "emoji": "👋"
             },
             {
@@ -13700,7 +13800,7 @@
                   "type": "speakProduction",
                   "id": "fr-vi:uk-l0-e2",
                   "speechItemId": "fr.speak.k_greet_morning",
-                  "instruction": "Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người làm bánh.",
+                  "instruction": "Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người bán bánh.",
                   "target": "Bonjour",
                   "acceptedVariants": [
                     "Bonjour",
@@ -14414,8 +14514,8 @@
         {
           "id": "fr-en:unit-n",
           "title": "Décris-le !",
-          "description": "Miêu tả những gì bạn thấy bằng cụm ngắn, đơn giản: đó là gì, và một sự thật.",
-          "guidebook": "## « C'est… » — cỗ máy miêu tả của bạn\n\nCách miêu tả đơn giản và trung thực nhất là một cụm ngắn: **C'est un chien. C'est la gare. C'est le matin.**\n\n- Mỗi ý một cụm. Các cụm rời rạc chính là cách nói ở trình độ A1.\n- Thêm một sự thật khi có thể: **Le magasin est ouvert. La porte est fermée.**\n- Hình ảnh hoặc tình huống cho bạn NGHĨA; tiếng Pháp đến từ bạn.",
+          "description": "Miêu tả những gì bạn thấy bằng cụm ngắn, đơn giản: đó là gì, và một thông tin.",
+          "guidebook": "## « C'est… » — cỗ máy miêu tả của bạn\n\nCách miêu tả đơn giản và trung thực nhất là một cụm ngắn: **C'est un chien. C'est la gare. C'est le matin.**\n\n- Mỗi ý một cụm. Các cụm rời rạc chính là cách nói ở trình độ A1.\n- Thêm một thông tin khi có thể: **Le magasin est ouvert. La porte est fermée.**\n- Hình ảnh hoặc tình huống cho bạn NGHĨA; tiếng Pháp đến từ bạn.",
           "words": [
             {
               "target": "le chien",
@@ -16102,7 +16202,7 @@
           "id": "fr-en:unit-t",
           "title": "Au café, au magasin",
           "description": "Gọi món, mua và trả tiền bằng tiếng Pháp lịch sự đơn giản.",
-          "guidebook": "Je voudrais... (tôi muốn) mở đầu hầu hết mọi lời yêu cầu lịch sự: Je voudrais un café, s'il vous plaît. Người phục vụ có thể hỏi Et avec ça ? (còn gì nữa không?) - hãy trả lời thêm, hoặc C'est tout (thế là đủ). Giá tiền quay lại với ça fait... - hãy lắng nghe con số.",
+          "guidebook": "Je voudrais... (tôi muốn) mở đầu hầu hết mọi lời yêu cầu lịch sự: Je voudrais un café, s'il vous plaît. Người phục vụ có thể hỏi Et avec ça ? (còn gì nữa không?) - hãy trả lời thêm, hoặc C'est tout (thế là đủ). Người bán báo giá bằng ça fait... - hãy lắng nghe con số.",
           "words": [
             {
               "target": "le thé",
@@ -16302,7 +16402,7 @@
           "id": "fr-en:unit-u",
           "title": "Trouver son chemin",
           "description": "Hỏi đường đến các nơi và hiểu chỉ dẫn ngắn.",
-          "guidebook": "Để tìm đường bạn chỉ cần một câu hỏi: Où est... ? (... ở đâu?). Thêm s'il vous plaît là bạn lịch sự không thể nhầm. Các câu trả lời dùng lại từ bạn đã biết: à gauche (bên trái), à droite (bên phải), tout droit (đi thẳng), là-bas (đằng kia). Nói Merci beaucoup ! là xong.",
+          "guidebook": "Để tìm đường bạn chỉ cần một câu hỏi: Où est... ? (... ở đâu?). Thêm s'il vous plaît là chắc chắn lịch sự. Các câu trả lời dùng lại từ bạn đã biết: à gauche (bên trái), à droite (bên phải), tout droit (đi thẳng), là-bas (đằng kia). Nói Merci beaucoup ! là xong.",
           "words": [
             {
               "target": "la gare",

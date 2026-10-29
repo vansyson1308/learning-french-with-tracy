@@ -2,7 +2,7 @@
 
 Every learner-facing string of the `fr-vi` course with its `en` source and the `vi` draft, grouped by file. Reviewer: mark each line ✅ / ✏️ (with the corrected text) / ❌. Lines flagged **re-author** are word banks and typed answers whose Vietnamese word order differs from the source — check the token bank and accepted variants, not only the wording. Review status: **pending native review** (see release/KNOWN_LIMITATIONS.md).
 
-Strings: 3154 · drafts applied: 3154
+Strings: 3163 · drafts applied: 3163
 
 ## content/fr/lexicon/lexemes.json
 
@@ -80,7 +80,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Không, cảm ơn.
 - `lexemes.12.glosses`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `lexemes.12.examples.0.translations`
   - en: Hello, madam.
   - vi: Xin chào bà.
@@ -101,7 +101,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: làm ơn
 - `lexemes.15.examples.0.translations`
   - en: A tea, please.
-  - vi: Cho một trà, làm ơn.
+  - vi: Làm ơn cho tôi một tách trà.
 - `lexemes.16.glosses`
   - en: good evening
   - vi: chào buổi tối
@@ -512,7 +512,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Buổi tối cô ấy nghe nhạc.
 - `lexemes.84.glosses`
   - en: the day (daytime)
-  - vi: ban ngày
+  - vi: ngày (cả ngày)
 - `lexemes.84.examples.0.translations`
   - en: Have a good day!
   - vi: Chúc một ngày tốt lành!
@@ -695,7 +695,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: muốn
 - `lexemes.114.examples.0.translations`
   - en: I would like a tea.
-  - vi: Tôi muốn một trà.
+  - vi: Tôi muốn một tách trà.
 - `lexemes.115.glosses`
   - en: to take
   - vi: lấy, đi (tàu xe)
@@ -743,7 +743,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: cái bàn
 - `lexemes.122.examples.0.translations`
   - en: A table for two, please.
-  - vi: Cho một bàn hai người, làm ơn.
+  - vi: Làm ơn cho một bàn hai người.
 - `lexemes.123.glosses`
   - en: the beach
   - vi: bãi biển
@@ -790,7 +790,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: nước
 - `concepts.0.examples.2.note`
   - en: before a vowel sound the article shortens to l', hiding the gender — eau is feminine
-  - vi: trước một nguyên âm, mạo từ rút thành l' nên che mất giống — eau là giống cái
+  - vi: trước một âm nguyên âm, mạo từ rút thành l' nên che mất giống — eau là giống cái
 - `concepts.0.exceptions.0`
   - en: Before a vowel sound, both le and la become l', so the article stops showing the gender. For those nouns, remember them with un/une instead: une eau minérale.
   - vi: Trước một âm nguyên âm, cả le và la đều thành l', nên mạo từ không còn cho biết giống nữa. Với những danh từ đó, hãy nhớ cùng un/une: une eau minérale.
@@ -1138,7 +1138,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Một số từ tiếng Pháp trông giống tiếng Anh nhưng nghĩa khác hẳn — hãy học từng bẫy cùng với từ đúng của nó.
 - `concepts.10.explanation`
   - en: A few high-value French words are traps: they look like English words they do not mean. La librairie is the bookshop — the library is la bibliothèque. La journée is the day(time) — a journey is un voyage. La monnaie is your change in coins — money in general is l'argent. Rester means to stay, never to rest, and attendre means to wait, never to attend. The fix is to learn each trap as a pair: the French word with its real meaning, plus the French word for what it fooled you into thinking.
-  - vi: Vài từ tiếng Pháp giá trị cao là những cái bẫy: chúng trông giống từ tiếng Anh mà chúng không có nghĩa đó. La librairie là hiệu sách — còn thư viện là la bibliothèque. La journée là ban ngày — còn chuyến đi là un voyage. La monnaie là tiền lẻ, tiền xu — còn tiền nói chung là l'argent. Rester nghĩa là ở lại, không bao giờ là nghỉ ngơi, và attendre nghĩa là đợi, không bao giờ là tham dự. Cách khắc phục là học mỗi bẫy thành một cặp: từ tiếng Pháp với nghĩa thật của nó, cộng với từ tiếng Pháp cho nghĩa mà nó đã đánh lừa bạn.
+  - vi: Vài từ tiếng Pháp hay gặp là những cái bẫy: chúng trông giống một từ tiếng Anh nhưng không mang nghĩa đó. La librairie (giống 'library') là hiệu sách — còn thư viện là la bibliothèque. La journée (giống 'journey') là một ngày, cả ngày — còn chuyến đi là un voyage. La monnaie (giống 'money') là tiền lẻ, tiền xu — còn tiền nói chung là l'argent. Rester (giống 'rest') nghĩa là ở lại, không phải nghỉ ngơi; attendre (giống 'attend') nghĩa là đợi, không phải tham dự. Cách khắc phục là học mỗi bẫy thành một cặp: từ tiếng Pháp với nghĩa thật của nó, cộng với từ tiếng Pháp cho nghĩa mà nó đã đánh lừa bạn.
 - `concepts.10.examples.0.translations`
   - en: the bookshop
   - vi: hiệu sách
@@ -1159,7 +1159,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: tiền = l'argent
 - `concepts.10.exceptions.0`
   - en: More traps for later: sensible means sensitive, actuellement means currently, assister à means to attend.
-  - vi: Thêm vài bẫy để sau: sensible nghĩa là nhạy cảm, actuellement nghĩa là hiện nay, assister à nghĩa là tham dự.
+  - vi: Thêm vài bẫy để sau: sensible nghĩa là nhạy cảm (không phải 'sensible'), actuellement nghĩa là hiện nay (không phải 'actually'), assister à nghĩa là tham dự.
 - `concepts.10.memoryHint`
   - en: La librairie sells books; la bibliothèque lends them.
   - vi: La librairie bán sách; la bibliothèque cho mượn sách.
@@ -1270,7 +1270,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: le, la, je, ne, de, que, ce bỏ nguyên âm của mình trước một âm nguyên âm: l'eau, j'ai, n'est pas, c'est.
 - `concepts.14.explanation`
   - en: French refuses to let two vowel sounds collide across these little words. Before a word starting with a vowel sound, le and la become l' (l'eau, l'homme), je becomes j' (j'ai), ne becomes n' (ce n'est pas), de becomes d', que becomes qu', and ce becomes c' (c'est). This is not optional or casual — writing 'je ai' is simply wrong. The apostrophe is the visible trace of the dropped vowel, and it is why dictionary entries like eau hide their gender behind l'.
-  - vi: Tiếng Pháp không cho hai âm nguyên âm va vào nhau qua những từ nhỏ này. Trước một từ bắt đầu bằng âm nguyên âm, le và la thành l' (l'eau, l'homme), je thành j' (j'ai), ne thành n' (ce n'est pas), de thành d', que thành qu', và ce thành c' (c'est). Điều này không tùy chọn hay tùy tiện — viết 'je ai' đơn giản là sai. Dấu nháy là dấu vết nhìn thấy được của nguyên âm bị bỏ, và đó là lý do các mục từ điển như eau giấu giống của mình sau l'.
+  - vi: Tiếng Pháp không cho hai âm nguyên âm va vào nhau qua những từ nhỏ này. Trước một từ bắt đầu bằng âm nguyên âm, le và la thành l' (l'eau, l'homme), je thành j' (j'ai), ne thành n' (ce n'est pas), de thành d', que thành qu', và ce thành c' (c'est). Đây không phải chuyện tùy ý hay chỉ có trong văn nói thân mật — viết 'je ai' đơn giản là sai. Dấu nháy là dấu vết nhìn thấy được của nguyên âm bị bỏ, và đó là lý do các mục từ điển như eau giấu giống của mình sau l'.
 - `concepts.14.examples.0.translations`
   - en: the water
   - vi: nước
@@ -1300,10 +1300,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Nối các từ với nhau
 - `concepts.15.shortRule`
   - en: A silent final consonant can wake up before a vowel: les amis sounds like "layz-ah-mee".
-  - vi: Một phụ âm cuối câm có thể “thức dậy” trước nguyên âm: les amis đọc như "lê-za-mi".
+  - vi: Một phụ âm cuối câm có thể “thức dậy” trước nguyên âm: les amis đọc gần giống "lê-da-mi" (d đọc như miền Bắc).
 - `concepts.15.explanation`
   - en: In connected speech, some silent final consonants attach to a following vowel. After the little words — determiners and pronouns — the link is required: les amis (the s wakes up as a z sound and starts 'amis'), nous avons, vous êtes, un petit enfant (t links). But liaison is forbidden after et (et ici — no link), after a singular noun (le chat est — the t of chat stays silent), and before certain h-words. Between those poles there is a polite-register middle ground you will meet later; for now, trust the required links after les/des/nous/vous/ils/elles.
-  - vi: Trong lời nói liền mạch, một số phụ âm cuối câm gắn vào nguyên âm theo sau. Sau các từ nhỏ — từ hạn định và đại từ — việc nối là bắt buộc: les amis (chữ s thức dậy thành âm z và mở đầu 'amis'), nous avons, vous êtes, un petit enfant (t nối). Nhưng nối âm bị cấm sau et (et ici — không nối), sau danh từ số ít (le chat est — chữ t của chat vẫn câm), và trước một số từ bắt đầu bằng h. Giữa hai cực đó có vùng trung gian thuộc văn phong lịch sự mà bạn sẽ gặp sau; hiện tại, hãy tin vào các liên kết bắt buộc sau les/des/nous/vous/ils/elles.
+  - vi: Trong lời nói liền mạch, một số phụ âm cuối câm gắn vào nguyên âm theo sau. Sau các từ nhỏ — từ hạn định và đại từ — việc nối là bắt buộc: les amis (chữ s thức dậy thành âm z và mở đầu 'amis'), nous avons, vous êtes, un petit enfant (t nối). Nhưng nối âm bị cấm sau et (et ici — không nối), sau danh từ số ít (le chat est — chữ t của chat vẫn câm), và trước một số từ bắt đầu bằng h. Giữa hai cực đó có vùng trung gian thuộc văn phong lịch sự mà bạn sẽ gặp sau; hiện tại, hãy nắm chắc các trường hợp nối âm bắt buộc sau les/des/nous/vous/ils/elles.
 - `concepts.15.examples.0.translations`
   - en: the friends
   - vi: những người bạn
@@ -1397,10 +1397,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Tôi có thể nhận ra và viết các lời chào và công thức lịch sự hằng ngày trong tiếng Pháp — bonjour, bonsoir, salut, au revoir, merci, s'il vous plaît — và chọn đúng câu cho tình huống.
 - `objectives.1.title`
   - en: Core everyday nouns
-  - vi: Danh từ hằng ngày cốt lõi
+  - vi: Những danh từ hằng ngày cơ bản
 - `objectives.1.canDo`
   - en: I can understand and name the course's core everyday words — people, food and drink, animals, and other common everyday things — when I read them.
-  - vi: Tôi có thể hiểu và gọi tên các từ hằng ngày cốt lõi của khóa học — người, đồ ăn thức uống, động vật và các đồ vật quen thuộc khác — khi đọc thấy chúng.
+  - vi: Tôi có thể hiểu và gọi tên các từ hằng ngày cơ bản của khóa học — người, đồ ăn thức uống, động vật và các đồ vật quen thuộc khác — khi đọc thấy chúng.
 - `objectives.2.title`
   - en: Places & travel words
   - vi: Từ về địa điểm & đi lại
@@ -1433,7 +1433,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Tôi có thể chọn đúng mạo từ — le hay la, un hay une — cho các danh từ quen thuộc đã học.
 - `objectives.7.title`
   - en: Gender from word endings
-  - vi: Đoán giống từ đuôi từ
+  - vi: Đoán giống qua đuôi từ
 - `objectives.7.canDo`
   - en: I can use reliable French endings — -tion, -ance, -ité, -ment, -age, -eau — to predict whether a new noun takes le or la.
   - vi: Tôi có thể dựa vào các đuôi từ tiếng Pháp đáng tin cậy — -tion, -ance, -ité, -ment, -age, -eau — để đoán một danh từ mới đi với le hay la.
@@ -1556,7 +1556,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Miêu tả người và vật bằng lời
 - `objectives.27.canDo`
   - en: I can describe familiar people, places and things aloud in short, mainly isolated phrases — saying what something is and one simple fact about it.
-  - vi: Tôi có thể miêu tả người, nơi chốn và đồ vật quen thuộc bằng lời trong các cụm ngắn, chủ yếu rời rạc — nói đó là gì và một sự thật đơn giản về nó.
+  - vi: Tôi có thể miêu tả người, nơi chốn và đồ vật quen thuộc bằng lời trong các cụm ngắn, chủ yếu rời rạc — nói đó là gì và một thông tin đơn giản về nó.
 - `objectives.28.title`
   - en: Writing who you are
   - vi: Viết về bản thân
@@ -1606,7 +1606,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Kiểm tra Phần 2
 - `checkpoints.1.description`
   - en: Show what you can do with the building blocks — articles, verbs, numbers and connected writing.
-  - vi: Thể hiện những gì bạn làm được với các viên gạch nền — mạo từ, động từ, con số và cách viết nối.
+  - vi: Thể hiện những gì bạn làm được với các viên gạch nền — mạo từ, động từ, con số, lược âm và nối âm.
 - `checkpoints.2.title`
   - en: Section 3 check
   - vi: Kiểm tra Phần 3
@@ -1630,7 +1630,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Kiểm tra Phần 6
 - `checkpoints.5.description`
   - en: Show that you can TALK with someone - six short conversations with a patient partner. You will hear the partner (no written French) and answer by speaking. Asking to hear a line again, or more simply, never counts against you.
-  - vi: Thể hiện rằng bạn TRÒ CHUYỆN được - sáu hội thoại ngắn với một người đối thoại kiên nhẫn. Bạn sẽ nghe người đó nói (không có chữ tiếng Pháp) và trả lời bằng lời. Yêu cầu nghe lại, hoặc nói đơn giản hơn, không bao giờ bị tính là điểm trừ.
+  - vi: Thể hiện rằng bạn TRÒ CHUYỆN được - sáu hội thoại ngắn với một người đối thoại kiên nhẫn. Bạn sẽ nghe người đó nói (không có chữ tiếng Pháp) và trả lời bằng lời. Xin nghe lại một câu, hoặc nghe một cách nói đơn giản hơn, không bao giờ bị tính là điểm trừ.
 - `checkpoints.6.title`
   - en: The A1 check
   - vi: Bài kiểm tra A1
@@ -1747,7 +1747,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Anh ấy nói chuyện với thầy giáo.
 - `checkpoints.1.items.9.exercise.translation`
   - en: We love chocolate.
-  - vi: Chúng tôi yêu sô-cô-la.
+  - vi: Chúng tôi rất thích sô-cô-la.
 - `checkpoints.1.items.10.exercise.translation`
   - en: You live in Paris.
   - vi: Bạn sống ở Paris.
@@ -1906,7 +1906,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Khách gọi món gì?
 - `checkpoints.2.items.10.exercise.options.0.text`
   - en: A tea
-  - vi: Một trà
+  - vi: Một tách trà
 - `checkpoints.2.items.10.exercise.options.1.text`
   - en: A coffee
   - vi: Một cà phê
@@ -2446,7 +2446,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Lúc mấy giờ?
 - `checkpoints.6.items.7.exercise.options.0.text`
   - en: At noon
-  - vi: Lúc trưa
+  - vi: Vào buổi trưa
 - `checkpoints.6.items.7.exercise.options.1.text`
   - en: At five
   - vi: Lúc năm giờ
@@ -2718,7 +2718,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Lúc mười giờ
 - `stages.2.clusters.1.items.1.exercise.options.3.text`
   - en: At noon
-  - vi: Lúc trưa
+  - vi: Vào buổi trưa
 - `stages.2.clusters.2.items.0.exercise.question`
   - en: When is the dinner at the restaurant?
   - vi: Bữa tối ở nhà hàng là khi nào?
@@ -2748,7 +2748,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Lúc sáu giờ
 - `stages.2.clusters.3.items.0.exercise.options.3.text`
   - en: At noon
-  - vi: Lúc trưa
+  - vi: Vào buổi trưa
 - `stages.2.clusters.3.items.1.exercise.question`
   - en: Which platform does it leave from?
   - vi: Tàu chạy từ sân ga nào?
@@ -2772,7 +2772,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Bạn vừa hỏi mua vé. Hãy kết thúc lời yêu cầu bằng cụm từ lịch sự.
 - `stages.3.clusters.0.items.2.exercise.instruction`
   - en: Your friend's bus is leaving and they wave at you. Say goodbye.
-  - vi: Xe buýt của bạn bạn sắp chạy và họ vẫy tay chào bạn. Hãy chào tạm biệt.
+  - vi: Xe buýt của người bạn sắp chạy và bạn ấy vẫy tay chào bạn. Hãy chào tạm biệt.
 - `stages.3.clusters.1.items.0.exercise.instruction`
   - en: Say how many horses there are.
   - vi: Hãy nói có bao nhiêu con ngựa.
@@ -2860,7 +2860,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Nghe, rồi tự nói lại.
 - `items.2.prompt.instruction`
   - en: It's morning and you walk into a bakery. Greet the baker.
-  - vi: Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người làm bánh.
+  - vi: Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người bán bánh.
 - `items.3.prompt.instruction`
   - en: Say thank you very much.
   - vi: Hãy nói cảm ơn rất nhiều.
@@ -3001,7 +3001,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Bạn vừa hỏi mua vé. Hãy kết thúc lời yêu cầu bằng cụm từ lịch sự.
 - `items.42.prompt.instruction`
   - en: Your friend's bus is leaving and they wave at you. Say goodbye.
-  - vi: Xe buýt của bạn bạn sắp chạy và họ vẫy tay chào bạn. Hãy chào tạm biệt.
+  - vi: Xe buýt của người bạn sắp chạy và bạn ấy vẫy tay chào bạn. Hãy chào tạm biệt.
 - `items.43.prompt.instruction`
   - en: Say how many horses there are.
   - vi: Hãy nói có bao nhiêu con ngựa.
@@ -3647,10 +3647,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Gọi một đồ uống và cảm ơn người phục vụ.
 - `scenarios.2.nodes.l_order.prompt`
   - en: Order a coffee — or a tea.
-  - vi: Hãy gọi một cà phê — hoặc một trà.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà.
 - `scenarios.2.nodes.l_order_b.prompt`
   - en: Order a coffee — or a tea.
-  - vi: Hãy gọi một cà phê — hoặc một trà.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà.
 - `scenarios.2.nodes.l_thanks.prompt`
   - en: Say thank you and goodbye.
   - vi: Hãy nói cảm ơn và tạm biệt.
@@ -3671,10 +3671,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Hãy nói rằng bạn muốn mua bánh mì.
 - `scenarios.3.nodes.l_more.prompt`
   - en: Ask for some water too — or say that's all.
-  - vi: Hãy hỏi thêm nước — hoặc nói thế là đủ.
+  - vi: Hãy gọi thêm nước — hoặc nói thế là đủ.
 - `scenarios.3.nodes.l_more_b.prompt`
   - en: Ask for some water too — or say that's all.
-  - vi: Hãy hỏi thêm nước — hoặc nói thế là đủ.
+  - vi: Hãy gọi thêm nước — hoặc nói thế là đủ.
 - `scenarios.4.title`
   - en: Where is the station?
   - vi: Nhà ga ở đâu?
@@ -3734,7 +3734,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Ở nhà một người bạn
 - `scenarios.7.goal`
   - en: Answer your friend's offer and say what you would like.
-  - vi: Trả lời lời mời của bạn bạn và nói bạn muốn gì.
+  - vi: Trả lời lời mời của người bạn và nói bạn muốn gì.
 - `scenarios.7.nodes.l_offer.prompt`
   - en: Say yes — you'd like some water (or a coffee), please.
   - vi: Hãy nói có — bạn muốn nước (hoặc cà phê), làm ơn.
@@ -3779,10 +3779,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Gọi một đồ uống, hỏi giá, và kết thúc lịch sự.
 - `scenarios.9.nodes.l_order.prompt`
   - en: Order a coffee — or a tea — politely.
-  - vi: Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà — một cách lịch sự.
 - `scenarios.9.nodes.l_order_b.prompt`
   - en: Order a coffee — or a tea — politely.
-  - vi: Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.
+  - vi: Hãy gọi một cà phê — hoặc một tách trà — một cách lịch sự.
 - `scenarios.9.nodes.l_price.prompt`
   - en: Ask how much it is.
   - vi: Hãy hỏi giá bao nhiêu.
@@ -3809,10 +3809,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Hãy hỏi mua một bánh mì baguette — hoặc bánh mì.
 - `scenarios.10.nodes.l_more.prompt`
   - en: Say that's all — or ask for some water too.
-  - vi: Hãy nói thế là đủ — hoặc hỏi thêm nước.
+  - vi: Hãy nói thế là đủ — hoặc gọi thêm nước.
 - `scenarios.10.nodes.l_more_b.prompt`
   - en: Say that's all — or ask for some water too.
-  - vi: Hãy nói thế là đủ — hoặc hỏi thêm nước.
+  - vi: Hãy nói thế là đủ — hoặc gọi thêm nước.
 - `scenarios.10.nodes.l_thanks.prompt`
   - en: Say thank you and goodbye.
   - vi: Hãy nói cảm ơn và tạm biệt.
@@ -4132,13 +4132,13 @@ Strings: 3154 · drafts applied: 3154
   - vi: quả táo
 - `sections.0.units.0.lessons.1.exercises.6.wordBank` **re-author**
   - en: {"answer":"He is a boy","distractors":["No","an","Yes"]}
-  - vi: {"answer":"Cậu ấy là một cậu bé","distractors":["Không","cô","Có"]}
+  - vi: {"answer":"Đây là một cậu bé","distractors":["Không","cô","Có"],"alternatives":["Đây là cậu bé"]}
 - `sections.0.units.0.lessons.1.exercises.7.wordBank` **re-author**
   - en: {"answer":"She is a girl","distractors":["woman","I","boy"]}
-  - vi: {"answer":"Cô ấy là một cô bé","distractors":["phụ nữ","Tôi","cậu"]}
+  - vi: {"answer":"Đây là một cô bé","distractors":["phụ nữ","Tôi","cậu"],"alternatives":["Đây là cô bé"]}
 - `sections.0.units.0.lessons.1.exercises.8.translation`
   - en: He is a boy.
-  - vi: Cậu ấy là một cậu bé.
+  - vi: Đây là một cậu bé.
 - `sections.0.units.0.lessons.1.exercises.9.pairs.0.native`
   - en: the girl
   - vi: cô bé
@@ -4156,7 +4156,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: ăn
 - `sections.0.units.0.lessons.1.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"She is a girl.","alternatives":[]}
-  - vi: {"answer":"Cô ấy là một cô bé.","alternatives":["Cô ấy là cô bé.","Cô ấy là con gái."]}
+  - vi: {"answer":"Đây là một cô bé.","alternatives":["Cô ấy là một cô bé.","Cô ấy là cô bé.","Cô ấy là con gái.","Đó là một cô bé.","Đây là cô bé.","Đó là cô bé.","Đây là một bé gái.","Đó là một bé gái.","Cô ấy là một bé gái."]}
 - `sections.0.units.0.lessons.2.title`
   - en: Lesson 3
   - vi: Bài 3
@@ -4228,7 +4228,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: quả táo
 - `sections.0.units.0.lessons.2.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I eat bread.","alternatives":[]}
-  - vi: {"answer":"Tôi ăn bánh mì.","alternatives":["Tôi đang ăn bánh mì."]}
+  - vi: {"answer":"Tôi ăn bánh mì.","alternatives":["Tôi đang ăn bánh mì.","Tôi ăn một ít bánh mì.","Tôi đang ăn một ít bánh mì."]}
 - `sections.0.units.0.lessons.3.title`
   - en: Lesson 4
   - vi: Bài 4
@@ -4300,7 +4300,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: người đàn ông
 - `sections.0.units.0.lessons.3.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I drink milk.","alternatives":[]}
-  - vi: {"answer":"Tôi uống sữa.","alternatives":["Tôi đang uống sữa."]}
+  - vi: {"answer":"Tôi uống sữa.","alternatives":["Tôi đang uống sữa.","Tôi uống một ít sữa.","Tôi đang uống một ít sữa."]}
 - `sections.0.units.1.title`
   - en: Greetings
   - vi: Chào hỏi
@@ -4309,10 +4309,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Học các lời chào và cách nói lịch sự thiết yếu trong tiếng Pháp cho hội thoại hằng ngày.
 - `sections.0.units.1.guidebook`
   - en: ## Salutations et Politesse 🇫🇷⏎⏎French greetings vary by time of day and formality. **Bonjour** (good day/hello) is the safe default any time before evening. After dark, switch to **Bonsoir** (good evening). For farewells, **Au revoir** works universally, while **Salut** is casual among friends.⏎⏎**Tu vs. Vous**: Use **tu** with friends, family, and children. Use **vous** with strangers, elders, and in formal settings. When in doubt, default to **vous** — it's considered more polite.⏎⏎**Comment ça va ?** (How are you?) is a casual greeting. Reply with **Ça va bien** (I'm doing well) or **Comme ci, comme ça** (so-so).⏎⏎**Merci** (thank you) and **s'il vous plaît** (please) are essential. To be extra polite, say **Merci beaucoup** (thank you very much). **De rien** (you're welcome) is the standard reply.⏎⏎**Bonne nuit** (good night) is used when parting for sleep, not as a greeting.
-  - vi: ## Salutations et Politesse 🇫🇷⏎⏎Lời chào tiếng Pháp thay đổi theo thời điểm trong ngày và mức độ trang trọng. **Bonjour** (xin chào / chào buổi sáng) là lựa chọn an toàn bất cứ lúc nào trước buổi tối. Khi trời tối, chuyển sang **Bonsoir** (chào buổi tối). Để tạm biệt, **Au revoir** dùng được trong mọi trường hợp, còn **Salut** là cách nói thân mật giữa bạn bè.⏎⏎**Tu và Vous**: Dùng **tu** với bạn bè, gia đình và trẻ em. Dùng **vous** với người lạ, người lớn tuổi và trong hoàn cảnh trang trọng. Khi không chắc, hãy chọn **vous** — được xem là lịch sự hơn.⏎⏎**Comment ça va ?** (Bạn khỏe không?) là lời chào thân mật. Hãy đáp **Ça va bien** (Tôi khỏe) hoặc **Comme ci, comme ça** (cũng tạm).⏎⏎**Merci** (cảm ơn) và **s'il vous plaît** (làm ơn) là thiết yếu. Để lịch sự hơn nữa, hãy nói **Merci beaucoup** (cảm ơn rất nhiều). **De rien** (không có gì) là câu đáp chuẩn.⏎⏎**Bonne nuit** (chúc ngủ ngon) dùng khi chia tay để đi ngủ, không dùng để chào.
+  - vi: ## Salutations et Politesse 🇫🇷⏎⏎Lời chào tiếng Pháp thay đổi theo thời điểm trong ngày và mức độ trang trọng. **Bonjour** (xin chào — dùng suốt ban ngày) là lựa chọn an toàn bất cứ lúc nào trước buổi tối. Khi trời tối, chuyển sang **Bonsoir** (chào buổi tối). Để tạm biệt, **Au revoir** dùng được trong mọi trường hợp, còn **Salut** là cách nói thân mật giữa bạn bè.⏎⏎**Tu và Vous**: Dùng **tu** với bạn bè, gia đình và trẻ em. Dùng **vous** với người lạ, người lớn tuổi và trong hoàn cảnh trang trọng. Khi không chắc, hãy chọn **vous** — được xem là lịch sự hơn.⏎⏎**Comment ça va ?** (Bạn khỏe không?) là lời chào thân mật. Hãy đáp **Ça va bien** (Tôi khỏe) hoặc **Comme ci, comme ça** (cũng tạm).⏎⏎**Merci** (cảm ơn) và **s'il vous plaît** (làm ơn) là thiết yếu. Để lịch sự hơn nữa, hãy nói **Merci beaucoup** (cảm ơn rất nhiều). **De rien** (không có gì) là câu đáp chuẩn.⏎⏎**Bonne nuit** (chúc ngủ ngon) dùng khi chia tay để đi ngủ, không dùng để chào.
 - `sections.0.units.1.words.0.native`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.words.1.native`
   - en: goodbye
   - vi: tạm biệt
@@ -4354,7 +4354,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: bà (thưa bà)
 - `sections.0.units.1.lessons.0.exercises.0.options.1.text`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.0.exercises.0.options.2.text`
   - en: sorry / excuse me
   - vi: xin lỗi
@@ -4384,10 +4384,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: làm ơn
 - `sections.0.units.1.lessons.0.exercises.2.options.3.text`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.0.exercises.3.prompt`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.0.exercises.4.prompt`
   - en: goodbye
   - vi: tạm biệt
@@ -4402,7 +4402,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Xin chào, bạn khỏe không?
 - `sections.0.units.1.lessons.0.exercises.9.pairs.0.native`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.0.exercises.9.pairs.1.native`
   - en: goodbye
   - vi: tạm biệt
@@ -4417,7 +4417,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: chào / chào nhé (thân mật)
 - `sections.0.units.1.lessons.0.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I am doing well, thank you.","alternatives":[]}
-  - vi: {"answer":"Tôi khỏe, cảm ơn.","alternatives":["Tôi khỏe, cảm ơn bạn.","Tôi ổn, cảm ơn."]}
+  - vi: {"answer":"Tôi khỏe, cảm ơn.","alternatives":["Tôi khỏe, cảm ơn bạn.","Tôi ổn, cảm ơn.","Tôi ổn, cảm ơn bạn.","Tôi vẫn khỏe, cảm ơn.","Cảm ơn, tôi khỏe.","Tôi khỏe, cảm ơn ông.","Tôi khỏe, cảm ơn bà."]}
 - `sections.0.units.1.lessons.1.title`
   - en: Lesson 2
   - vi: Bài 2
@@ -4429,7 +4429,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: không
 - `sections.0.units.1.lessons.1.exercises.0.options.2.text`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.1.exercises.0.options.3.text`
   - en: please
   - vi: làm ơn
@@ -4438,7 +4438,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: chào buổi tối
 - `sections.0.units.1.lessons.1.exercises.1.options.1.text`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.1.exercises.1.options.2.text`
   - en: sorry / excuse me
   - vi: xin lỗi
@@ -4486,10 +4486,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: không
 - `sections.0.units.1.lessons.1.exercises.9.pairs.4.native`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.1.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"Very well, and you?","alternatives":[]}
-  - vi: {"answer":"Rất khỏe, còn bạn?","alternatives":["Rất tốt, còn bạn?","Rất khỏe, còn bạn thì sao?"]}
+  - vi: {"answer":"Rất khỏe, còn bạn?","alternatives":["Rất tốt, còn bạn?","Rất khỏe, còn bạn thì sao?","Tôi rất khỏe, còn bạn?","Rất tốt, còn bạn thì sao?","Khỏe lắm, còn bạn?","Rất khỏe, bạn thì sao?","Rất khỏe, còn ông?","Rất khỏe, còn bà?","Rất khỏe, còn anh?","Rất khỏe, còn chị?"]}
 - `sections.0.units.1.lessons.2.title`
   - en: Lesson 3
   - vi: Bài 3
@@ -4537,7 +4537,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: vâng / có
 - `sections.0.units.1.lessons.2.exercises.6.wordBank` **re-author**
   - en: {"answer":"Goodbye see you soon","distractors":["welcome","to","Very"]}
-  - vi: {"answer":"Tạm biệt hẹn sớm gặp lại","distractors":["chào","mừng","Rất"]}
+  - vi: {"answer":"Tạm biệt hẹn gặp lại","distractors":["chào","mừng","Rất"]}
 - `sections.0.units.1.lessons.2.exercises.7.wordBank` **re-author**
   - en: {"answer":"Thank you very much madam","distractors":["a","to","are"]}
   - vi: {"answer":"Cảm ơn bà rất nhiều","distractors":["một","đến","là"]}
@@ -4558,10 +4558,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: ông (thưa ông)
 - `sections.0.units.1.lessons.2.exercises.9.pairs.4.native`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.2.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"Thank you very much, madam.","alternatives":[]}
-  - vi: {"answer":"Cảm ơn bà rất nhiều.","alternatives":["Cảm ơn rất nhiều, thưa bà."]}
+  - vi: {"answer":"Cảm ơn bà rất nhiều.","alternatives":["Cảm ơn rất nhiều, thưa bà.","Cảm ơn bà nhiều.","Cảm ơn bà nhiều lắm.","Xin cảm ơn bà rất nhiều.","Cảm ơn bà rất nhiều ạ."]}
 - `sections.0.units.1.lessons.3.title`
   - en: Lesson 4
   - vi: Bài 4
@@ -4594,7 +4594,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: chúc ngủ ngon
 - `sections.0.units.1.lessons.3.exercises.2.options.1.text`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.0.units.1.lessons.3.exercises.2.options.2.text`
   - en: madam
   - vi: bà (thưa bà)
@@ -4612,7 +4612,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: {"answer":"Xin lỗi ông","distractors":["là","Chào","rất"]}
 - `sections.0.units.1.lessons.3.exercises.7.wordBank` **re-author**
   - en: {"answer":"Have a good evening","distractors":["meet","welcome","much"]}
-  - vi: {"answer":"Chúc một buổi tối tốt lành","distractors":["gặp","mừng","nhiều"]}
+  - vi: {"answer":"Chúc buổi tối vui vẻ","distractors":["gặp","mừng","nhiều"]}
 - `sections.0.units.1.lessons.3.exercises.8.translation`
   - en: Excuse me, sir.
   - vi: Xin lỗi ông.
@@ -4633,7 +4633,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: chào buổi tối
 - `sections.0.units.1.lessons.3.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"Have a good evening!","alternatives":[]}
-  - vi: {"answer":"Chúc một buổi tối tốt lành!","alternatives":["Chúc buổi tối tốt lành!","Chúc buổi tối vui vẻ!"]}
+  - vi: {"answer":"Chúc một buổi tối tốt lành!","alternatives":["Chúc buổi tối tốt lành!","Chúc buổi tối vui vẻ!","Chúc một buổi tối vui vẻ!","Chúc bạn buổi tối vui vẻ!","Chúc bạn một buổi tối vui vẻ!","Chúc bạn buổi tối tốt lành!","Chúc bạn một buổi tối tốt lành!"]}
 - `sections.0.units.2.title`
   - en: Food
   - vi: Đồ ăn
@@ -4750,7 +4750,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: ăn
 - `sections.0.units.2.lessons.0.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I eat bread.","alternatives":[]}
-  - vi: {"answer":"Tôi ăn bánh mì.","alternatives":["Tôi đang ăn bánh mì."]}
+  - vi: {"answer":"Tôi ăn bánh mì.","alternatives":["Tôi đang ăn bánh mì.","Tôi ăn một ít bánh mì.","Tôi đang ăn một ít bánh mì."]}
 - `sections.0.units.2.lessons.1.title`
   - en: Lesson 2
   - vi: Bài 2
@@ -4822,7 +4822,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: nước
 - `sections.0.units.2.lessons.1.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I want some juice.","alternatives":[]}
-  - vi: {"answer":"Tôi muốn nước ép.","alternatives":["Tôi muốn uống nước ép."]}
+  - vi: {"answer":"Tôi muốn nước ép.","alternatives":["Tôi muốn uống nước ép.","Tôi muốn một ít nước ép.","Tôi muốn nước hoa quả.","Tôi muốn uống nước hoa quả.","Tôi muốn một ít nước hoa quả."]}
 - `sections.0.units.2.lessons.2.title`
   - en: Lesson 3
   - vi: Bài 3
@@ -4894,7 +4894,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: quả trứng
 - `sections.0.units.2.lessons.2.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I eat an egg.","alternatives":[]}
-  - vi: {"answer":"Tôi ăn một quả trứng.","alternatives":["Tôi ăn trứng.","Tôi đang ăn một quả trứng."]}
+  - vi: {"answer":"Tôi ăn một quả trứng.","alternatives":["Tôi ăn trứng.","Tôi đang ăn một quả trứng.","Tôi đang ăn trứng."]}
 - `sections.0.units.2.lessons.3.title`
   - en: Lesson 4
   - vi: Bài 4
@@ -4945,7 +4945,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: {"answer":"Tôi muốn trà","distractors":["uống","một","phô mai"]}
 - `sections.0.units.2.lessons.3.exercises.7.wordBank` **re-author**
   - en: {"answer":"I eat chicken","distractors":["some","like","fruit"]}
-  - vi: {"answer":"Tôi ăn thịt gà","distractors":["một ít","thích","trái cây"]}
+  - vi: {"answer":"Tôi ăn thịt gà","distractors":["uống","thích","trái cây"]}
 - `sections.0.units.2.lessons.3.exercises.8.translation`
   - en: I want some tea.
   - vi: Tôi muốn trà.
@@ -4966,7 +4966,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: trà
 - `sections.0.units.2.lessons.3.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I eat chicken.","alternatives":[]}
-  - vi: {"answer":"Tôi ăn thịt gà.","alternatives":["Tôi ăn gà.","Tôi đang ăn thịt gà."]}
+  - vi: {"answer":"Tôi ăn thịt gà.","alternatives":["Tôi ăn gà.","Tôi đang ăn thịt gà.","Tôi ăn một ít thịt gà.","Tôi đang ăn gà.","Tôi ăn một ít gà."]}
 - `sections.0.units.3.title`
   - en: Animals
   - vi: Động vật
@@ -5134,7 +5134,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: {"answer":"Tôi có một con mèo đen","distractors":["cao","nhỏ","thỏ"]}
 - `sections.0.units.3.lessons.1.exercises.7.wordBank` **re-author**
   - en: {"answer":"The horse is fast","distractors":["cute","mouse","bird"]}
-  - vi: {"answer":"Con ngựa chạy nhanh","distractors":["dễ thương","chuột","chim"]}
+  - vi: {"answer":"Con ngựa nhanh","distractors":["dễ thương","chuột","chim"]}
 - `sections.0.units.3.lessons.1.exercises.8.translation`
   - en: I have a black cat.
   - vi: Tôi có một con mèo đen.
@@ -5155,7 +5155,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: con ngựa
 - `sections.0.units.3.lessons.1.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"The horse is fast.","alternatives":[]}
-  - vi: {"answer":"Con ngựa chạy nhanh.","alternatives":["Con ngựa nhanh.","Con ngựa thì nhanh."]}
+  - vi: {"answer":"Con ngựa chạy nhanh.","alternatives":["Con ngựa nhanh.","Con ngựa thì nhanh.","Ngựa chạy nhanh.","Con ngựa thì chạy nhanh."]}
 - `sections.0.units.3.lessons.2.title`
   - en: Lesson 3
   - vi: Bài 3
@@ -5227,7 +5227,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: con lợn
 - `sections.0.units.3.lessons.2.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"The fish is in the water.","alternatives":[]}
-  - vi: {"answer":"Con cá ở dưới nước.","alternatives":["Con cá ở trong nước."]}
+  - vi: {"answer":"Con cá ở dưới nước.","alternatives":["Con cá ở trong nước.","Cá ở dưới nước.","Cá ở trong nước.","Con cá đang ở dưới nước."]}
 - `sections.0.units.3.lessons.3.title`
   - en: Lesson 4
   - vi: Bài 4
@@ -5299,7 +5299,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: con bò
 - `sections.0.units.3.lessons.3.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"I love animals.","alternatives":[]}
-  - vi: {"answer":"Tôi yêu động vật.","alternatives":["Tôi thích động vật.","Tôi yêu các con vật."]}
+  - vi: {"answer":"Tôi yêu động vật.","alternatives":["Tôi thích động vật.","Tôi yêu các con vật.","Tôi thích các con vật.","Tôi yêu loài vật.","Tôi thích loài vật.","Tôi yêu các loài động vật.","Tôi thích các loài động vật.","Tôi yêu quý động vật."]}
 - `sections.0.units.4.title`
   - en: Travel
   - vi: Đi lại
@@ -5308,7 +5308,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Học từ vựng và mẫu câu tiếng Pháp thiết yếu để đi lại trong thành phố, dùng phương tiện giao thông, ở khách sạn và hỏi đường.
 - `sections.0.units.4.guidebook`
   - en: ## Getting Around in French⏎⏎**Asking where things are** uses the structure: *Où est... ?* (Where is...?) for singular nouns and *Où sont... ?* for plural. To ask for a specific place, use *Où est la gare ?* (Where is the train station?).⏎⏎**Giving directions** often starts with *Allez tout droit* (Go straight), *Tournez à gauche/droite* (Turn left/right), or *C'est à côté de...* (It's next to...).⏎⏎**At the airport or train station**, you'll hear *Le train part à...* (The train leaves at...) and *Le vol est retardé* (The flight is delayed). To buy a ticket, ask *Un billet, s'il vous plaît* (One ticket, please).⏎⏎**Gender matters!** French nouns are masculine or feminine: *le musée* (m.), *la gare* (f.), *l'hôtel* (m.), *la rue* (f.). Always learn the article with the noun.⏎⏎**Polite phrases** like *Excusez-moi* and *Merci beaucoup* go a long way when navigating a French-speaking city!
-  - vi: ## Đi lại bằng tiếng Pháp⏎⏎**Hỏi đồ vật/nơi chốn ở đâu** dùng cấu trúc: *Où est... ?* (... ở đâu?) với danh từ số ít và *Où sont... ?* với số nhiều. Để hỏi một nơi cụ thể, dùng *Où est la gare ?* (Nhà ga ở đâu?).⏎⏎**Chỉ đường** thường bắt đầu bằng *Allez tout droit* (Đi thẳng), *Tournez à gauche/droite* (Rẽ trái/phải), hoặc *C'est à côté de...* (Ở cạnh...).⏎⏎**Ở sân bay hoặc nhà ga**, bạn sẽ nghe *Le train part à...* (Tàu chạy lúc...) và *Le vol est retardé* (Chuyến bay bị hoãn). Để mua vé, hãy nói *Un billet, s'il vous plaît* (Cho một vé, làm ơn).⏎⏎**Giống rất quan trọng!** Danh từ tiếng Pháp là giống đực hoặc giống cái: *le musée* (đ.), *la gare* (c.), *l'hôtel* (đ.), *la rue* (c.). Luôn học mạo từ cùng với danh từ.⏎⏎**Các câu lịch sự** như *Excusez-moi* và *Merci beaucoup* giúp ích rất nhiều khi bạn đi lại trong một thành phố nói tiếng Pháp!
+  - vi: ## Đi lại bằng tiếng Pháp⏎⏎**Hỏi đồ vật/nơi chốn ở đâu** dùng cấu trúc: *Où est... ?* (... ở đâu?) với danh từ số ít và *Où sont... ?* với số nhiều. Để hỏi một nơi cụ thể, dùng *Où est la gare ?* (Nhà ga ở đâu?).⏎⏎**Chỉ đường** thường bắt đầu bằng *Allez tout droit* (Đi thẳng), *Tournez à gauche/droite* (Rẽ trái/phải), hoặc *C'est à côté de...* (Ở cạnh...).⏎⏎**Ở sân bay hoặc nhà ga**, bạn sẽ nghe *Le train part à...* (Tàu chạy lúc...) và *Le vol est retardé* (Chuyến bay bị hoãn). Để mua vé, hãy nói *Un billet, s'il vous plaît* (Cho một vé, làm ơn).⏎⏎**Giống rất quan trọng!** Danh từ tiếng Pháp là giống đực hoặc giống cái: *le musée* (giống đực), *la gare* (giống cái), *l'hôtel* (giống đực), *la rue* (giống cái). Luôn học mạo từ cùng với danh từ.⏎⏎**Các câu lịch sự** như *Excusez-moi* và *Merci beaucoup* giúp ích rất nhiều khi bạn đi lại trong một thành phố nói tiếng Pháp!
 - `sections.0.units.4.words.0.native`
   - en: the city
   - vi: thành phố
@@ -5488,7 +5488,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: va li
 - `sections.0.units.4.lessons.1.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"Go straight ahead.","alternatives":[]}
-  - vi: {"answer":"Đi thẳng.","alternatives":["Hãy đi thẳng.","Đi thẳng về phía trước."]}
+  - vi: {"answer":"Đi thẳng.","alternatives":["Hãy đi thẳng.","Đi thẳng về phía trước.","Cứ đi thẳng.","Hãy đi thẳng về phía trước.","Cứ đi thẳng về phía trước.","Đi thẳng tới trước."]}
 - `sections.0.units.4.lessons.2.title`
   - en: Lesson 3
   - vi: Bài 3
@@ -5539,7 +5539,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: {"answer":"Rẽ trái","distractors":["sân bay","tàu","ngân hàng"]}
 - `sections.0.units.4.lessons.2.exercises.7.wordBank` **re-author**
   - en: {"answer":"It is next to the bank","distractors":["am","left","hotel"]}
-  - vi: {"answer":"Nó ở cạnh ngân hàng","distractors":["là","trái","khách sạn"]}
+  - vi: {"answer":"Ở cạnh ngân hàng","distractors":["là","trái","khách sạn"]}
 - `sections.0.units.4.lessons.2.exercises.8.translation`
   - en: Turn left.
   - vi: Rẽ trái.
@@ -5560,7 +5560,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: nhà ga
 - `sections.0.units.4.lessons.2.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"It is next to the bank.","alternatives":[]}
-  - vi: {"answer":"Nó ở cạnh ngân hàng.","alternatives":["Ở cạnh ngân hàng.","Nó ở bên cạnh ngân hàng."]}
+  - vi: {"answer":"Nó ở cạnh ngân hàng.","alternatives":["Ở cạnh ngân hàng.","Nó ở bên cạnh ngân hàng.","Ở bên cạnh ngân hàng.","Cạnh ngân hàng.","Nó nằm cạnh ngân hàng.","Nó nằm bên cạnh ngân hàng.","Chỗ đó ở cạnh ngân hàng."]}
 - `sections.0.units.4.lessons.3.title`
   - en: Lesson 4
   - vi: Bài 4
@@ -5608,13 +5608,13 @@ Strings: 3154 · drafts applied: 3154
   - vi: bên trái
 - `sections.0.units.4.lessons.3.exercises.6.wordBank` **re-author**
   - en: {"answer":"One ticket please","distractors":["am","The","have"]}
-  - vi: {"answer":"Cho một vé làm ơn","distractors":["là","Cái","có"]}
+  - vi: {"answer":"Làm ơn cho tôi một vé","distractors":["là","Cái","có"]}
 - `sections.0.units.4.lessons.3.exercises.7.wordBank` **re-author**
   - en: {"answer":"The train leaves at ten oclock","distractors":["looking","where","One"]}
   - vi: {"answer":"Tàu chạy lúc mười giờ","distractors":["tìm","đâu","Một"]}
 - `sections.0.units.4.lessons.3.exercises.8.translation`
   - en: One ticket, please.
-  - vi: Cho một vé, làm ơn.
+  - vi: Làm ơn cho tôi một vé.
 - `sections.0.units.4.lessons.3.exercises.9.pairs.0.native`
   - en: the suitcase
   - vi: va li
@@ -5632,7 +5632,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: bản đồ
 - `sections.0.units.4.lessons.3.exercises.10.typeAnswer` **re-author**
   - en: {"answer":"The train leaves at ten o'clock.","alternatives":[]}
-  - vi: {"answer":"Tàu chạy lúc mười giờ.","alternatives":["Tàu khởi hành lúc mười giờ.","Tàu rời ga lúc mười giờ."]}
+  - vi: {"answer":"Tàu chạy lúc mười giờ.","alternatives":["Tàu khởi hành lúc mười giờ.","Tàu rời ga lúc mười giờ.","Tàu chạy lúc 10 giờ.","Tàu khởi hành lúc 10 giờ.","Tàu rời ga lúc 10 giờ.","Tàu đi lúc mười giờ.","Chuyến tàu chạy lúc mười giờ.","Tàu hỏa chạy lúc mười giờ.","Tàu chạy lúc 10h."]}
 - `sections.1.title`
   - en: Section 2: Building blocks
   - vi: Phần 2: Viên gạch nền
@@ -5974,13 +5974,13 @@ Strings: 3154 · drafts applied: 3154
   - vi: Cuộc sống thật đẹp.
 - `sections.1.units.1.title`
   - en: High-Yield Verbs
-  - vi: Những động từ hiệu quả cao
+  - vi: Những động từ dùng nhiều nhất
 - `sections.1.units.1.description`
   - en: Être, avoir, aller, faire and the -er family — plus the future and past you can build from them.
   - vi: Être, avoir, aller, faire và họ động từ -er — cùng thì tương lai và quá khứ bạn có thể tạo từ chúng.
 - `sections.1.units.1.guidebook`
   - en: # High-yield verbs⏎⏎Eight verbs carry an enormous share of everyday French. Four are irregular anchors — **être**, **avoir**, **aller**, **faire** — and the regular -er family (like **parler**) covers most of the rest.⏎⏎## Être — to be⏎⏎- **je suis** — I am⏎- **tu es** — you are⏎- **il/elle est** — he/she is⏎- **nous sommes** — we are⏎- **vous êtes** — you are (plural or formal)⏎- **ils/elles sont** — they are⏎⏎## Avoir — to have⏎⏎- **j'ai** — I have⏎- **tu as** — you have⏎- **il/elle a** — he/she has⏎- **nous avons** — we have⏎- **vous avez** — you have⏎- **ils/elles ont** — they have⏎⏎French says *avoir faim* (to have hunger) where English says to be hungry. Watch for avoir in fixed phrases: avoir raison, avoir 20 ans.⏎⏎## Aller — to go⏎⏎- **je vais**, **tu vas**, **il/elle va**⏎- **nous allons**, **vous allez**, **ils/elles vont**⏎⏎*Futur proche*: aller + infinitive means going to. **Je vais manger** — I am going to eat. Only aller conjugates; the second verb stays in its dictionary form.⏎⏎## Faire — to do, to make⏎⏎- **je fais**, **tu fais**, **il/elle fait**⏎- **nous faisons**, **vous faites**, **ils/elles font**⏎⏎## The -er pattern⏎⏎Take the stem (parler → parl-) and add **-e, -es, -e, -ons, -ez, -ent**:⏎⏎- je parle · tu parles · il/elle parle⏎- nous parlons · vous parlez · ils/elles parlent⏎⏎In speech, parle, parles and parlent all sound identical, and parlez sounds like the infinitive parler — the pronoun does the work out loud. Manger keeps its e before -ons: **nous mangeons**.⏎⏎## The past in one move⏎⏎Avoir (présent) + past participle: **J'ai mangé** — I ate. For -er verbs the participle is the infinitive sound written **-é**: parlé, aimé, habité. Irregular participles worth memorizing now: être → **été**, avoir → **eu**, faire → **fait**.
-  - vi: # Những động từ hiệu quả cao⏎⏎Tám động từ gánh một phần rất lớn tiếng Pháp hằng ngày. Bốn trụ cột bất quy tắc — **être**, **avoir**, **aller**, **faire** — và họ động từ -er có quy tắc (như **parler**) bao phủ phần lớn còn lại.⏎⏎## Être — là⏎⏎- **je suis** — tôi là⏎- **tu es** — bạn là⏎- **il/elle est** — anh ấy/cô ấy là⏎- **nous sommes** — chúng tôi là⏎- **vous êtes** — các bạn là (số nhiều hoặc trang trọng)⏎- **ils/elles sont** — họ là⏎⏎## Avoir — có⏎⏎- **j'ai** — tôi có⏎- **tu as** — bạn có⏎- **il/elle a** — anh ấy/cô ấy có⏎- **nous avons** — chúng tôi có⏎- **vous avez** — các bạn có⏎- **ils/elles ont** — họ có⏎⏎Tiếng Pháp nói *avoir faim* (có cơn đói) ở chỗ tiếng Việt nói đói. Để ý avoir trong các cụm cố định: avoir raison (nói đúng), avoir 20 ans (20 tuổi).⏎⏎## Aller — đi⏎⏎- **je vais**, **tu vas**, **il/elle va**⏎- **nous allons**, **vous allez**, **ils/elles vont**⏎⏎*Futur proche* (tương lai gần): aller + nguyên mẫu nghĩa là sắp. **Je vais manger** — Tôi sắp ăn. Chỉ aller được chia; động từ thứ hai giữ dạng từ điển.⏎⏎## Faire — làm⏎⏎- **je fais**, **tu fais**, **il/elle fait**⏎- **nous faisons**, **vous faites**, **ils/elles font**⏎⏎## Mẫu động từ -er⏎⏎Lấy gốc (parler → parl-) và thêm **-e, -es, -e, -ons, -ez, -ent**:⏎⏎- je parle · tu parles · il/elle parle⏎- nous parlons · vous parlez · ils/elles parlent⏎⏎Khi nói, parle, parles và parlent đọc giống hệt nhau, và parlez đọc giống nguyên mẫu parler — đại từ làm việc khi nói thành tiếng. Manger giữ chữ e trước -ons: **nous mangeons**.⏎⏎## Quá khứ chỉ trong một bước⏎⏎Avoir (hiện tại) + quá khứ phân từ: **J'ai mangé** — Tôi đã ăn. Với động từ -er, phân từ đọc như nguyên mẫu và viết **-é**: parlé, aimé, habité. Phân từ bất quy tắc đáng thuộc ngay: être → **été**, avoir → **eu**, faire → **fait**.
+  - vi: # Những động từ dùng nhiều nhất⏎⏎Tám động từ gánh một phần rất lớn tiếng Pháp hằng ngày. Bốn trụ cột bất quy tắc — **être**, **avoir**, **aller**, **faire** — và họ động từ -er có quy tắc (như **parler**) bao phủ phần lớn còn lại.⏎⏎## Être — là⏎⏎- **je suis** — tôi là⏎- **tu es** — bạn là⏎- **il/elle est** — anh ấy/cô ấy là⏎- **nous sommes** — chúng tôi là⏎- **vous êtes** — các bạn là / ông, bà là (số nhiều, hoặc lịch sự với một người)⏎- **ils/elles sont** — họ là⏎⏎## Avoir — có⏎⏎- **j'ai** — tôi có⏎- **tu as** — bạn có⏎- **il/elle a** — anh ấy/cô ấy có⏎- **nous avons** — chúng tôi có⏎- **vous avez** — các bạn có⏎- **ils/elles ont** — họ có⏎⏎Tiếng Pháp nói *avoir faim* (có cơn đói) ở chỗ tiếng Việt nói đói. Để ý avoir trong các cụm cố định: avoir raison (nói đúng), avoir 20 ans (20 tuổi).⏎⏎## Aller — đi⏎⏎- **je vais**, **tu vas**, **il/elle va**⏎- **nous allons**, **vous allez**, **ils/elles vont**⏎⏎*Futur proche* (tương lai gần): aller + nguyên mẫu nghĩa là sắp. **Je vais manger** — Tôi sắp ăn. Chỉ aller được chia; động từ thứ hai giữ dạng từ điển.⏎⏎## Faire — làm⏎⏎- **je fais**, **tu fais**, **il/elle fait**⏎- **nous faisons**, **vous faites**, **ils/elles font**⏎⏎## Mẫu động từ -er⏎⏎Lấy gốc (parler → parl-) và thêm **-e, -es, -e, -ons, -ez, -ent**:⏎⏎- je parle · tu parles · il/elle parle⏎- nous parlons · vous parlez · ils/elles parlent⏎⏎Khi nói, parle, parles và parlent đọc giống hệt nhau, và parlez đọc giống nguyên mẫu parler — khi nói, chính đại từ cho biết ai đang làm. Manger giữ chữ e trước -ons: **nous mangeons**.⏎⏎## Quá khứ chỉ trong một bước⏎⏎Avoir (hiện tại) + quá khứ phân từ: **J'ai mangé** — Tôi đã ăn. Với động từ -er, phân từ đọc như nguyên mẫu và viết **-é**: parlé, aimé, habité. Phân từ bất quy tắc đáng thuộc ngay: être → **été**, avoir → **eu**, faire → **fait**.
 - `sections.1.units.1.words.0.native`
   - en: to be
   - vi: là / thì / ở
@@ -6205,10 +6205,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Từ đồng nguyên & Từ dễ nhầm
 - `sections.1.units.2.description`
   - en: Harvest the words French shares with English — and defuse the ones that only pretend to.
-  - vi: Thu hoạch những từ tiếng Pháp giống tiếng Anh — và gỡ bẫy những từ chỉ giả vờ giống.
+  - vi: Tận dụng những từ tiếng Pháp giống tiếng Anh — và tránh bẫy những từ chỉ giả vờ giống.
 - `sections.1.units.2.guidebook`
   - en: # Words you already know — and words that lie⏎⏎French and English share thousands of words. This unit teaches you to harvest the shared ones and defuse the deceptive ones.⏎⏎## The -tion family⏎⏎Of the 16 -tion nouns in this course's corpus-derived everyday pool, 15 are the same word in English: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Across a 36,940-noun analysis they are **99.5% feminine** — say *la*.⏎⏎- The sound changes even when the spelling doesn't: -tion is /sjɔ̃/, never /shun/.⏎- The one trap in the pool: **Félicitations !** means *Congratulations!*⏎⏎## The -té bridge⏎⏎-té usually becomes English -ty — 10 of the everyday pool's 16:⏎⏎- **la liberté** — liberty, freedom⏎- **la réalité** — reality⏎- **la société** — society · **la sécurité** — security · **l'université** — university⏎⏎But six are real vocabulary, not cognates — for example **la santé** (health), **la vérité** (truth), **la volonté** (will), **l'été** (summer). Gender runs **91.6% feminine** (1,031 nouns measured); the masculine exceptions include **le côté** (the side) and **l'été**.⏎⏎For later: French has 616 nouns in **-isme** matching English -ism — **99.8% masculine**.⏎⏎## False friends⏎⏎Learn each trap with its repair word:⏎⏎- **la librairie** = the bookshop → the library is **la bibliothèque**⏎- **la journée** = the day(time) → a journey is **un voyage**⏎- **la monnaie** = change, coins → money is **l'argent**⏎- **rester** = to stay (never to rest)⏎- **attendre** = to wait (never to attend)⏎⏎More to watch for as you advance: *sensible* means sensitive, *actuellement* means currently.
-  - vi: # Những từ bạn đã biết — và những từ đánh lừa⏎⏎Tiếng Pháp và tiếng Anh chia sẻ hàng nghìn từ; nếu bạn đã biết chút tiếng Anh, chương này dạy bạn thu hoạch những từ chung và gỡ bẫy những từ đánh lừa.⏎⏎## Họ -tion⏎⏎Trong 16 danh từ -tion của nhóm từ hằng ngày lấy từ kho ngữ liệu của khóa học, 15 từ giống hệt tiếng Anh: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Trong phân tích 36.940 danh từ, chúng là **giống cái 99,5%** — hãy nói *la*.⏎⏎- Âm thay đổi dù cách viết không đổi: -tion đọc /sjɔ̃/, không bao giờ đọc như tiếng Anh /shun/.⏎- Cái bẫy duy nhất trong nhóm: **Félicitations !** nghĩa là *Chúc mừng!*⏎⏎## Cây cầu -té⏎⏎-té thường tương ứng với -ty tiếng Anh — 10 trong 16 từ của nhóm hằng ngày:⏎⏎- **la liberté** — tự do⏎- **la réalité** — thực tế⏎- **la société** — xã hội · **la sécurité** — an ninh · **l'université** — đại học⏎⏎Nhưng sáu từ là từ vựng thật, không phải từ đồng nguyên — ví dụ **la santé** (sức khỏe), **la vérité** (sự thật), **la volonté** (ý chí), **l'été** (mùa hè). Giống: **91,6% giống cái** (đo trên 1.031 danh từ); ngoại lệ giống đực gồm **le côté** (phía, bên) và **l'été**.⏎⏎Để sau: tiếng Pháp có 616 danh từ **-isme** tương ứng với -ism tiếng Anh — **99,8% giống đực**.⏎⏎## Từ dễ nhầm (“bạn giả”)⏎⏎Hãy học mỗi bẫy cùng với từ đúng của nó:⏎⏎- **la librairie** = hiệu sách → thư viện là **la bibliothèque**⏎- **la journée** = ban ngày → chuyến đi là **un voyage**⏎- **la monnaie** = tiền lẻ, tiền xu → tiền là **l'argent**⏎- **rester** = ở lại (không bao giờ là nghỉ ngơi)⏎- **attendre** = đợi (không bao giờ là tham dự)⏎⏎Thêm vài từ cần để ý khi học lên: *sensible* nghĩa là nhạy cảm, *actuellement* nghĩa là hiện nay.
+  - vi: # Những từ bạn đã biết — và những từ đánh lừa⏎⏎Tiếng Pháp và tiếng Anh chia sẻ hàng nghìn từ; nếu bạn đã biết chút tiếng Anh, chương này giúp bạn tận dụng những từ chung và tránh bẫy những từ đánh lừa.⏎⏎## Họ -tion⏎⏎Trong 16 danh từ -tion của nhóm từ hằng ngày lấy từ kho ngữ liệu của khóa học, 15 từ giống hệt tiếng Anh: **la solution**, **la question**, **la direction**, **la situation**, **l'attention**, **l'information**… Trong phân tích 36.940 danh từ, chúng là **giống cái 99,5%** — hãy nói *la*.⏎⏎- Âm thay đổi dù cách viết không đổi: -tion đọc /sjɔ̃/, không bao giờ đọc như tiếng Anh /shun/.⏎- Cái bẫy duy nhất trong nhóm: **Félicitations !** nghĩa là *Chúc mừng!*⏎⏎## Cây cầu -té⏎⏎-té thường tương ứng với -ty tiếng Anh — 10 trong 16 từ của nhóm hằng ngày:⏎⏎- **la liberté** — tự do⏎- **la réalité** — thực tế⏎- **la société** — xã hội · **la sécurité** — an ninh · **l'université** — đại học⏎⏎Nhưng sáu từ là từ vựng thật, không phải từ đồng nguyên — ví dụ **la santé** (sức khỏe), **la vérité** (sự thật), **la volonté** (ý chí), **l'été** (mùa hè). Giống: **91,6% giống cái** (đo trên 1.031 danh từ); ngoại lệ giống đực gồm **le côté** (phía, bên) và **l'été**.⏎⏎Để sau: tiếng Pháp có 616 danh từ **-isme** tương ứng với -ism tiếng Anh — **99,8% giống đực**.⏎⏎## Từ dễ nhầm (“bạn giả”)⏎⏎Hãy học mỗi bẫy cùng với từ đúng của nó:⏎⏎- **la librairie** (giống 'library') = hiệu sách → thư viện là **la bibliothèque**⏎- **la journée** (giống 'journey') = một ngày, cả ngày → chuyến đi là **un voyage**⏎- **la monnaie** (giống 'money') = tiền lẻ, tiền xu → tiền là **l'argent**⏎- **rester** (giống 'rest') = ở lại, không phải nghỉ ngơi⏎- **attendre** (giống 'attend') = đợi, không phải tham dự⏎⏎Thêm vài từ cần để ý khi học lên: *sensible* nghĩa là nhạy cảm (không phải 'sensible' — hợp lý), *actuellement* nghĩa là hiện nay (không phải 'actually' — thật ra).
 - `sections.1.units.2.words.0.native`
   - en: the solution
   - vi: giải pháp
@@ -6229,7 +6229,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: âm nhạc
 - `sections.1.units.2.words.6.native`
   - en: the day (daytime)
-  - vi: ban ngày
+  - vi: ngày (cả ngày)
 - `sections.1.units.2.words.7.native`
   - en: the money
   - vi: tiền
@@ -6412,7 +6412,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: thư viện
 - `sections.1.units.2.lessons.2.exercises.3.options.0.text`
   - en: the day (daytime)
-  - vi: ban ngày
+  - vi: ngày (cả ngày)
 - `sections.1.units.2.lessons.2.exercises.3.options.1.text`
   - en: the journey
   - vi: cuộc hành trình
@@ -6430,7 +6430,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: hiệu sách
 - `sections.1.units.2.lessons.2.exercises.6.gloss`
   - en: the day (daytime)
-  - vi: ban ngày
+  - vi: ngày (cả ngày)
 - `sections.1.units.2.lessons.2.exercises.7.translation`
   - en: Have a good day!
   - vi: Chúc một ngày tốt lành!
@@ -6439,7 +6439,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: chuyến đi
 - `sections.1.units.2.lessons.2.exercises.8.options.1.text`
   - en: the day (daytime)
-  - vi: ban ngày
+  - vi: ngày (cả ngày)
 - `sections.1.units.2.lessons.2.exercises.8.options.2.text`
   - en: the bookshop
   - vi: hiệu sách
@@ -6532,7 +6532,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Cả hệ thống số trong ba quy tắc — cùng các từ để đếm thời gian.
 - `sections.1.units.3.guidebook`
   - en: # Numbers 0–100⏎⏎French numbers are a small system, not a hundred vocabulary items. Learn the pieces and the three famous corners.⏎⏎## The building blocks⏎⏎- 0–16 are single words: zéro, un, deux… seize.⏎- 17–19 compound with dix: **dix-sept, dix-huit, dix-neuf**.⏎- The tens 20–60: vingt, trente, quarante, cinquante, soixante. Units attach with a hyphen — **vingt-deux** — except at 1: **vingt et un**, trente et un… soixante et un.⏎⏎## The seventies⏎⏎There is no French word for seventy: 70 is **soixante-dix** (sixty-ten), and the seventies keep counting through the teens — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 is the one "et onze": **soixante et onze**. Belgium and Switzerland say *septante* instead — recognize it, but this course teaches France French.⏎⏎## Four twenties⏎⏎80 is **quatre-vingts** — literally four twenties — and keeps its -s unless another number follows: **quatre-vingts** (*quatre-vingts euros*), but **quatre-vingt-un** (no "et" here!). The nineties ride on top through the teens again: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Belgium and Switzerland say *nonante*. And 100 is simply **cent**.⏎⏎## Two official spellings⏎⏎The traditional orthography spaces around et (**vingt et un**); the 1990 spelling rectifications hyphenate everything (**vingt-et-un**). Both are correct and both are accepted here — this course displays the traditional forms.⏎⏎## Counting time⏎⏎- **le jour** — the day · **la journée** — the day as you live it⏎- **l'heure** (f) — the hour · **la minute** — the minute⏎- **la semaine** — the week · **le mois** — the month · **l'année** (f) — the year
-  - vi: # Số từ 0 đến 100⏎⏎Số tiếng Pháp là một hệ thống nhỏ, không phải một trăm từ vựng rời rạc. Hãy học các mảnh ghép và ba góc nổi tiếng.⏎⏎## Các viên gạch⏎⏎- 0–16 là các từ đơn: zéro, un, deux… seize.⏎- 17–19 ghép với dix: **dix-sept, dix-huit, dix-neuf**.⏎- Hàng chục 20–60: vingt, trente, quarante, cinquante, soixante. Hàng đơn vị gắn bằng gạch nối — **vingt-deux** — trừ ở số 1: **vingt et un**, trente et un… soixante et un.⏎⏎## Hàng bảy mươi⏎⏎Tiếng Pháp không có từ cho bảy mươi: 70 là **soixante-dix** (sáu mươi-mười), và hàng bảy mươi đếm tiếp bằng các số 11–19 — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 là trường hợp "et onze" duy nhất: **soixante et onze**. Bỉ và Thụy Sĩ nói *septante* — hãy nhận ra nó, nhưng khóa học này dạy tiếng Pháp của Pháp.⏎⏎## Bốn lần hai mươi⏎⏎80 là **quatre-vingts** — nghĩa đen là bốn lần hai mươi — và giữ -s trừ khi có số khác theo sau: **quatre-vingts** (*quatre-vingts euros*), nhưng **quatre-vingt-un** (ở đây không có "et"!). Hàng chín mươi lại chồng các số 11–19 lên trên: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Bỉ và Thụy Sĩ nói *nonante*. Và 100 đơn giản là **cent**.⏎⏎## Hai cách viết chính thức⏎⏎Chính tả truyền thống để khoảng trắng quanh et (**vingt et un**); cải cách chính tả 1990 gạch nối tất cả (**vingt-et-un**). Cả hai đều đúng và đều được chấp nhận ở đây — khóa học hiển thị dạng truyền thống.⏎⏎## Đếm thời gian⏎⏎- **le jour** — ngày · **la journée** — cả ngày (như bạn trải qua nó)⏎- **l'heure** (c) — giờ · **la minute** — phút⏎- **la semaine** — tuần · **le mois** — tháng · **l'année** (c) — năm
+  - vi: # Số từ 0 đến 100⏎⏎Số tiếng Pháp là một hệ thống nhỏ, không phải một trăm từ vựng rời rạc. Hãy học các mảnh ghép và ba chỗ đặc biệt.⏎⏎## Các viên gạch⏎⏎- 0–16 là các từ đơn: zéro, un, deux… seize.⏎- 17–19 ghép với dix: **dix-sept, dix-huit, dix-neuf**.⏎- Hàng chục 20–60: vingt, trente, quarante, cinquante, soixante. Hàng đơn vị gắn bằng gạch nối — **vingt-deux** — trừ ở số 1: **vingt et un**, trente et un… soixante et un.⏎⏎## Hàng bảy mươi⏎⏎Tiếng Pháp không có từ cho bảy mươi: 70 là **soixante-dix** (sáu mươi-mười), và hàng bảy mươi đếm tiếp bằng các số 11–19 — 72 **soixante-douze**, 77 **soixante-dix-sept**. 71 là trường hợp "et onze" duy nhất: **soixante et onze**. Bỉ và Thụy Sĩ nói *septante* — hãy nhận ra nó, nhưng khóa học này dạy tiếng Pháp của Pháp.⏎⏎## Bốn lần hai mươi⏎⏎80 là **quatre-vingts** — nghĩa đen là bốn lần hai mươi — và giữ -s trừ khi có số khác theo sau: **quatre-vingts** (*quatre-vingts euros*), nhưng **quatre-vingt-un** (ở đây không có "et"!). Hàng chín mươi lại chồng các số 11–19 lên trên: 90 **quatre-vingt-dix**, 91 **quatre-vingt-onze**, 99 **quatre-vingt-dix-neuf**. Bỉ và Thụy Sĩ nói *nonante*. Và 100 đơn giản là **cent**.⏎⏎## Hai cách viết chính thức⏎⏎Chính tả truyền thống để khoảng trắng quanh et (**vingt et un**); cải cách chính tả 1990 gạch nối tất cả (**vingt-et-un**). Cả hai đều đúng và đều được chấp nhận ở đây — khóa học hiển thị dạng truyền thống.⏎⏎## Đếm thời gian⏎⏎- **le jour** — ngày · **la journée** — cả ngày (như bạn trải qua nó)⏎- **l'heure** (c) — giờ · **la minute** — phút⏎- **la semaine** — tuần · **le mois** — tháng · **l'année** (c) — năm
 - `sections.1.units.3.words.0.native`
   - en: the day
   - vi: ngày
@@ -6907,7 +6907,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: tháng
 - `sections.1.units.3.lessons.3.exercises.9.options.2.text`
   - en: the day (daytime)
-  - vi: ban ngày
+  - vi: ngày (cả ngày)
 - `sections.1.units.3.lessons.3.exercises.9.options.3.text`
   - en: the week
   - vi: tuần
@@ -6980,6 +6980,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.1.title`
   - en: Linking words
   - vi: Nối từ
+- `sections.1.units.4.lessons.1.exercises.0.prompt`
+  - en: In « les amis », the final s…
+  - vi: Trong « les amis », chữ s cuối…
 - `sections.1.units.4.lessons.1.exercises.0.options.0.text`
   - en: links to amis with a z sound
   - vi: nối với amis bằng âm z
@@ -6992,6 +6995,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.1.exercises.0.options.3.text`
   - en: drops entirely from the phrase
   - vi: biến mất hoàn toàn khỏi cụm
+- `sections.1.units.4.lessons.1.exercises.1.prompt`
+  - en: Which phrase has a required liaison?
+  - vi: Cụm nào có nối âm bắt buộc?
 - `sections.1.units.4.lessons.1.exercises.1.options.0.text`
   - en: nous avons
   - vi: nous avons
@@ -7004,6 +7010,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.1.exercises.1.options.3.text`
   - en: la table
   - vi: la table
+- `sections.1.units.4.lessons.1.exercises.2.prompt`
+  - en: In « vous êtes », the s of vous…
+  - vi: Trong « vous êtes », chữ s của vous…
 - `sections.1.units.4.lessons.1.exercises.2.options.0.text`
   - en: links: it sounds like a z starting êtes
   - vi: nối: nghe như âm z mở đầu êtes
@@ -7016,6 +7025,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.1.exercises.2.options.3.text`
   - en: becomes a t sound
   - vi: trở thành âm t
+- `sections.1.units.4.lessons.1.exercises.3.prompt`
+  - en: After « et », a liaison is…
+  - vi: Sau « et », nối âm thì…
 - `sections.1.units.4.lessons.1.exercises.3.options.0.text`
   - en: never made
   - vi: không bao giờ nối
@@ -7028,6 +7040,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.1.exercises.3.options.3.text`
   - en: made only before h
   - vi: chỉ nối trước h
+- `sections.1.units.4.lessons.1.exercises.4.prompt`
+  - en: Which phrase has NO liaison?
+  - vi: Cụm nào KHÔNG có nối âm?
 - `sections.1.units.4.lessons.1.exercises.4.options.0.text`
   - en: et alors
   - vi: et alors
@@ -7043,6 +7058,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.1.exercises.5.translation`
   - en: We have two cats.
   - vi: Chúng tôi có hai con mèo.
+- `sections.1.units.4.lessons.1.exercises.6.prompt`
+  - en: In « les hommes », the final s of les…
+  - vi: Trong « les hommes », chữ s cuối của les…
 - `sections.1.units.4.lessons.1.exercises.6.options.0.text`
   - en: links — homme starts with h muet
   - vi: nối — homme bắt đầu bằng h muet
@@ -7082,6 +7100,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.2.exercises.3.translation`
   - en: The hotel is open.
   - vi: Khách sạn mở cửa.
+- `sections.1.units.4.lessons.2.exercises.4.prompt`
+  - en: In « les héros », the final s of les…
+  - vi: Trong « les héros », chữ s cuối của les…
 - `sections.1.units.4.lessons.2.exercises.4.options.0.text`
   - en: is silent — h aspiré blocks the liaison
   - vi: câm — h aspiré chặn nối âm
@@ -7100,6 +7121,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.2.exercises.6.translation`
   - en: The man is waiting for the train.
   - vi: Người đàn ông đang đợi tàu.
+- `sections.1.units.4.lessons.2.exercises.7.prompt`
+  - en: Both h's in héros and histoire are…
+  - vi: Chữ h trong héros và histoire đều…
 - `sections.1.units.4.lessons.2.exercises.7.options.0.text`
   - en: silent — only the words around them differ
   - vi: câm — chỉ các từ xung quanh khác nhau
@@ -7123,7 +7147,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Bạn có thích câu chuyện không?
 - `sections.1.units.4.lessons.3.exercises.2.translation`
   - en: The year is starting well.
-  - vi: Năm mới bắt đầu tốt đẹp.
+  - vi: Năm nay khởi đầu tốt đẹp.
 - `sections.1.units.4.lessons.3.exercises.3.options.0.text`
   - en: the money
   - vi: tiền
@@ -7148,6 +7172,9 @@ Strings: 3154 · drafts applied: 3154
 - `sections.1.units.4.lessons.3.exercises.7.translation`
   - en: It is coffee time.
   - vi: Đến giờ cà phê rồi.
+- `sections.1.units.4.lessons.3.exercises.8.prompt`
+  - en: Which is written correctly?
+  - vi: Câu nào viết đúng?
 - `sections.1.units.4.lessons.3.exercises.8.options.0.text`
   - en: j'ai raison
   - vi: j'ai raison
@@ -7171,7 +7198,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Luyện tai: từ và cụm từ tiếng Pháp quen thuộc, chỉ bằng âm thanh.
 - `sections.2.units.0.guidebook`
   - en: ## Listening starts with sounds you know⏎⏎You already read these words. Now you will *hear* them — played clearly, and you can replay or slow them down while you practice.⏎⏎- Listen first, answer second. The spelling comes after.⏎- **Slow mode** is a learning tool. Checkpoints use normal speed.⏎- If you can't use audio right now, you can skip a listening item — it stays due.
-  - vi: ## Nghe bắt đầu từ những âm bạn đã biết⏎⏎Bạn đã đọc những từ này. Giờ bạn sẽ *nghe* chúng — phát rõ ràng, và bạn có thể phát lại hoặc nghe chậm khi luyện tập.⏎⏎- Nghe trước, trả lời sau. Chính tả đến sau.⏎- **Chế độ chậm** là công cụ học. Bài kiểm tra dùng tốc độ thường.⏎- Nếu lúc này bạn không nghe được âm thanh, bạn có thể bỏ qua một bài nghe — nó vẫn đến hạn.
+  - vi: ## Nghe bắt đầu từ những âm bạn đã biết⏎⏎Bạn đã đọc những từ này. Giờ bạn sẽ *nghe* chúng — phát rõ ràng, và bạn có thể phát lại hoặc nghe chậm khi luyện tập.⏎⏎- Nghe trước, trả lời sau. Chính tả đến sau.⏎- **Chế độ chậm** là công cụ học. Bài kiểm tra dùng tốc độ thường.⏎- Nếu lúc này bạn không nghe được âm thanh, bạn có thể bỏ qua một bài nghe — bài đó vẫn được giữ lại để bạn làm sau.
 - `sections.2.units.0.words.0.native`
   - en: the train
   - vi: tàu hỏa
@@ -7540,7 +7567,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Lúc 6 giờ
 - `sections.2.units.1.lessons.0.exercises.4.options.3.text`
   - en: At noon
-  - vi: Lúc trưa
+  - vi: Vào buổi trưa
 - `sections.2.units.1.lessons.1.title`
   - en: Un petit message
   - vi: Un petit message
@@ -7624,7 +7651,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Đi thẳng
 - `sections.2.units.1.lessons.2.exercises.1.options.3.text`
   - en: Upstairs
-  - vi: Trên lầu
+  - vi: Ở tầng trên
 - `sections.2.units.1.lessons.2.exercises.2.question`
   - en: Where is the shop entrance?
   - vi: Lối vào cửa hàng ở đâu?
@@ -8020,7 +8047,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Một cà phê và một nước ép
 - `sections.2.units.3.lessons.0.exercises.1.options.1.text`
   - en: A tea and a milk
-  - vi: Một trà và một sữa
+  - vi: Một tách trà và một ly sữa
 - `sections.2.units.3.lessons.0.exercises.1.options.2.text`
   - en: Two coffees
   - vi: Hai cà phê
@@ -8263,7 +8290,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Petites histoires
 - `sections.2.units.4.description`
   - en: Short connected French: find the facts, follow the story.
-  - vi: Tiếng Pháp ngắn có mạch: tìm thông tin, theo dõi câu chuyện.
+  - vi: Những đoạn tiếng Pháp ngắn liền mạch: tìm thông tin, theo dõi câu chuyện.
 - `sections.2.units.4.guidebook`
   - en: ## From sentences to stories⏎⏎These texts are a few sentences long. Read them slowly, re-read freely — that's what good readers do.⏎⏎- First pass: what is it about?⏎- Second pass: find the specific facts (who, when, where, how much).⏎- Unknown word? In lessons you can tap the glossary chips under the text.
   - vi: ## Từ câu đến câu chuyện⏎⏎Những văn bản này dài vài câu. Hãy đọc chậm, đọc lại thoải mái — người đọc giỏi làm vậy.⏎⏎- Lượt đầu: nói về gì?⏎- Lượt hai: tìm các thông tin cụ thể (ai, khi nào, ở đâu, bao nhiêu).⏎- Gặp từ lạ? Trong bài học bạn có thể chạm vào các thẻ chú giải dưới văn bản.
@@ -8539,10 +8566,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Nói thành tiếng các công thức hằng ngày — lời chào, lời cảm ơn và từ lịch sự.
 - `sections.3.units.0.guidebook`
   - en: ## Your voice, your first tool⏎⏎You already read and hear these formulas. Now you SAY them.⏎⏎- The app listens with your device's speech recognition and shows **what it heard** — words, never a pronunciation score.⏎- Recording happens only while you hold the conversation — tap record, speak, tap stop.⏎- Can't speak right now (a bus, a library)? Skip the step — it stays due, honestly.
-  - vi: ## Giọng nói của bạn, công cụ đầu tiên⏎⏎Bạn đã đọc và nghe những công thức này. Giờ bạn NÓI chúng.⏎⏎- Ứng dụng nghe bằng tính năng nhận dạng giọng nói của thiết bị và hiển thị **những gì nó nghe được** — từ ngữ, không bao giờ là điểm phát âm.⏎- Ghi âm chỉ diễn ra khi bạn đang nói — chạm ghi âm, nói, chạm dừng.⏎- Lúc này không nói được (trên xe buýt, trong thư viện)? Bỏ qua bước này — nó vẫn đến hạn, trung thực.
+  - vi: ## Giọng nói của bạn, công cụ đầu tiên⏎⏎Bạn đã đọc và nghe những công thức này. Giờ bạn NÓI chúng.⏎⏎- Ứng dụng nghe bằng tính năng nhận dạng giọng nói của thiết bị và hiển thị **những gì nó nghe được** — từ ngữ, không bao giờ là điểm phát âm.⏎- Ghi âm chỉ diễn ra khi bạn đang nói — chạm ghi âm, nói, chạm dừng.⏎- Lúc này không nói được (trên xe buýt, trong thư viện)? Bỏ qua bước này — bài vẫn được giữ lại để bạn làm sau, không mất đi đâu.
 - `sections.3.units.0.words.0.native`
   - en: hello / good day
-  - vi: xin chào / chào buổi sáng
+  - vi: xin chào (ban ngày)
 - `sections.3.units.0.words.1.native`
   - en: thank you
   - vi: cảm ơn
@@ -8569,7 +8596,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: cảm ơn
 - `sections.3.units.0.lessons.0.exercises.2.instruction`
   - en: It's morning and you walk into a bakery. Greet the baker.
-  - vi: Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người làm bánh.
+  - vi: Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người bán bánh.
 - `sections.3.units.0.lessons.1.title`
   - en: Merci beaucoup
   - vi: Merci beaucoup
@@ -8740,10 +8767,10 @@ Strings: 3154 · drafts applied: 3154
   - vi: Décris-le !
 - `sections.3.units.3.description`
   - en: Describe what you see in short, simple phrases: what it is, and one fact.
-  - vi: Miêu tả những gì bạn thấy bằng cụm ngắn, đơn giản: đó là gì, và một sự thật.
+  - vi: Miêu tả những gì bạn thấy bằng cụm ngắn, đơn giản: đó là gì, và một thông tin.
 - `sections.3.units.3.guidebook`
   - en: ## « C'est… » — your description machine⏎⏎The simplest honest description is a short phrase: **C'est un chien. C'est la gare. C'est le matin.**⏎⏎- One phrase per idea. Isolated phrases are exactly what A1 speaking is.⏎- Add one fact when you can: **Le magasin est ouvert. La porte est fermée.**⏎- The picture or situation gives you the MEANING; the French comes from you.
-  - vi: ## « C'est… » — cỗ máy miêu tả của bạn⏎⏎Cách miêu tả đơn giản và trung thực nhất là một cụm ngắn: **C'est un chien. C'est la gare. C'est le matin.**⏎⏎- Mỗi ý một cụm. Các cụm rời rạc chính là cách nói ở trình độ A1.⏎- Thêm một sự thật khi có thể: **Le magasin est ouvert. La porte est fermée.**⏎- Hình ảnh hoặc tình huống cho bạn NGHĨA; tiếng Pháp đến từ bạn.
+  - vi: ## « C'est… » — cỗ máy miêu tả của bạn⏎⏎Cách miêu tả đơn giản và trung thực nhất là một cụm ngắn: **C'est un chien. C'est la gare. C'est le matin.**⏎⏎- Mỗi ý một cụm. Các cụm rời rạc chính là cách nói ở trình độ A1.⏎- Thêm một thông tin khi có thể: **Le magasin est ouvert. La porte est fermée.**⏎- Hình ảnh hoặc tình huống cho bạn NGHĨA; tiếng Pháp đến từ bạn.
 - `sections.3.units.3.words.0.native`
   - en: the dog
   - vi: con chó
@@ -9277,7 +9304,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Gọi món, mua và trả tiền bằng tiếng Pháp lịch sự đơn giản.
 - `sections.5.units.1.guidebook`
   - en: Je voudrais... (I would like) opens almost every polite request: Je voudrais un café, s'il vous plaît. The server may ask Et avec ça ? (anything else?) - answer with more, or C'est tout (that's all). Prices come back with ça fait... - listen for the number.
-  - vi: Je voudrais... (tôi muốn) mở đầu hầu hết mọi lời yêu cầu lịch sự: Je voudrais un café, s'il vous plaît. Người phục vụ có thể hỏi Et avec ça ? (còn gì nữa không?) - hãy trả lời thêm, hoặc C'est tout (thế là đủ). Giá tiền quay lại với ça fait... - hãy lắng nghe con số.
+  - vi: Je voudrais... (tôi muốn) mở đầu hầu hết mọi lời yêu cầu lịch sự: Je voudrais un café, s'il vous plaît. Người phục vụ có thể hỏi Et avec ça ? (còn gì nữa không?) - hãy trả lời thêm, hoặc C'est tout (thế là đủ). Người bán báo giá bằng ça fait... - hãy lắng nghe con số.
 - `sections.5.units.1.words.0.native`
   - en: the tea
   - vi: trà
@@ -9352,7 +9379,7 @@ Strings: 3154 · drafts applied: 3154
   - vi: Hỏi đường đến các nơi và hiểu chỉ dẫn ngắn.
 - `sections.5.units.2.guidebook`
   - en: To find your way you only need one question: Où est... ? (where is...?). Add s'il vous plaît and you are unmistakably polite. The answers reuse words you know: à gauche (left), à droite (right), tout droit (straight on), là-bas (over there). Say Merci beaucoup ! and you're done.
-  - vi: Để tìm đường bạn chỉ cần một câu hỏi: Où est... ? (... ở đâu?). Thêm s'il vous plaît là bạn lịch sự không thể nhầm. Các câu trả lời dùng lại từ bạn đã biết: à gauche (bên trái), à droite (bên phải), tout droit (đi thẳng), là-bas (đằng kia). Nói Merci beaucoup ! là xong.
+  - vi: Để tìm đường bạn chỉ cần một câu hỏi: Où est... ? (... ở đâu?). Thêm s'il vous plaît là chắc chắn lịch sự. Các câu trả lời dùng lại từ bạn đã biết: à gauche (bên trái), à droite (bên phải), tout droit (đi thẳng), là-bas (đằng kia). Nói Merci beaucoup ! là xong.
 - `sections.5.units.2.words.0.native`
   - en: the train station
   - vi: nhà ga

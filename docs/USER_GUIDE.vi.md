@@ -131,6 +131,18 @@ Luyện tập → **Trò chuyện** bắt đầu một cuộc trao đổi nói n
 
 Bài đọc (phần 3) là các thông báo, tin nhắn và văn bản ngắn. Chạm bất kỳ từ nào để xem nghĩa. Trả lời câu hỏi hiểu; trong bài kiểm tra, đoạn văn vẫn hiển thị khi bạn trả lời.
 
+### Đọc & nghe (truyện phân cấp)
+
+Tiếng Pháp, `es-vi` và `de-vi` có các truyện ngắn (150–400 từ) viết gần như hoàn toàn bằng những từ khóa học dạy. Mở truyện từ Luyện tập → **Đọc & nghe**, hoặc từ **Truyện hôm nay** ở thẻ Hôm nay. Danh sách đưa lên đầu truyện có **3–6 từ mới với bạn**, tính từ những từ bạn đã học; mỗi truyện ghi cấp (1–4) và số từ mới với bạn.
+
+Trong màn hình đọc:
+- **Nghe** phát truyện từng câu một và tô sáng câu đang đọc; nút loa ở một dòng phát từ câu đó.
+- Truyện chưa có âm thanh đi kèm được đọc bằng giọng của chính điện thoại, có ghi **Giọng đọc của máy**. Giọng này chạy ngoại tuyến; chất lượng tùy điện thoại. Nếu điện thoại chưa có giọng đọc ngoại tuyến cho ngôn ngữ đó, bạn chỉ thấy văn bản, kèm một dòng gợi ý: cài giọng đọc ngoại tuyến của ngôn ngữ đó trong Cài đặt Android (*Đầu ra chuyển văn bản thành giọng nói*), rồi mở lại truyện. Ứng dụng không tự tải gì.
+- **Chạm một từ** để xem nghĩa; các từ mới của truyện được gạch chân. **Học từ này** thêm bất kỳ từ nào khác vào phần kiểm tra từ ở cuối.
+- **Chạm số thứ tự của câu** để xem bản dịch.
+- **Mình đọc xong rồi** mở ba câu hỏi về truyện (chỉ có phản hồi, không chấm điểm và không lưu).
+- **Kiểm tra từ mới** chạy một bài kiểm tra ngắn: mỗi từ mới được giới thiệu một lần rồi hỏi một lần. Chỉ bài kiểm tra này cập nhật lịch ôn tập của bạn; việc đọc thì không bao giờ.
+
 ## 21. Bài kiểm tra
 
 Mỗi phần kết thúc bằng một bài kiểm tra (tab Học, sau bài cuối; *Hoàn thành các bài của phần này để mở khóa*). Bài kiểm tra có chấm điểm: thứ tự đáp án xáo mỗi lần, đoạn nghe có số lượt giới hạn, và bài kiểm tra nói cần micrô (**Đã hiểu — bắt đầu kiểm tra** sau thông báo quyền). Kết quả cho biết mục tiêu nào bạn đã thể hiện; bạn có thể làm lại bài kiểm tra sau thời gian chờ hiển thị trên màn hình kết quả.
@@ -180,6 +192,7 @@ Bài học, Hôm nay, từ vựng, đoạn nghe, đọc, viết và bài kiểm 
 ## 32. Những gì vẫn có thể cần mạng
 
 - Nhận dạng giọng nói trên thiết bị không có gói tiếng Pháp ngoại tuyến (mục 17).
+- Tải giọng đọc ngoại tuyến trong Cài đặt Android, nếu bạn muốn nghe các truyện chưa có âm thanh đi kèm (mục 20). Ứng dụng không bao giờ tự tải giọng này.
 - Cài đặt và cập nhật ứng dụng từ cửa hàng.
 - Mở các liên kết trang web (Quyền riêng tư, Hỗ trợ) từ màn hình Hồ sơ.
 

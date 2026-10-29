@@ -2,6 +2,24 @@
   "version": 2,
   "pipelineVersion": 3,
   "storyPipelineVersion": 4,
+  "storyAudio": {
+    "bundled": "band-1",
+    "stories": [
+      "es.story.el_perro_de_ana",
+      "es.story.la_sopa_de_la_abuela",
+      "es.story.un_viaje_a_la_isla",
+      "es.story.carlos_esta_enfermo",
+      "es.story.la_panaderia_del_senor_ramon",
+      "es.story.perdidos_en_la_ciudad",
+      "es.story.la_cancion_de_ines",
+      "es.story.el_barco_del_abuelo",
+      "es.story.el_cumpleanos_de_mama",
+      "es.story.ropa_para_la_oficina",
+      "es.story.un_dia_de_lluvia",
+      "es.story.el_primer_dia_de_nuria"
+    ],
+    "reason": "QC 2026-10-29b §2.3: band-1 story audio only — the first 12 stories of the reading order (all A1-1 stories, then the first A1-2 ones) bundle sentence audio at 24 kbps; every other story is read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md). The next es audio run prunes the sentence audio of the stories outside this list."
+  },
   "note": "Pinned TTS sources for the Spanish reception audio (P3e): the two Kokoro-82M voices selected by the 2026-10-21 Spanish canary (content/audio/voice-casts.json), with the same pins as the pack manifest; verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
   "engines": "content/audio/engines.json",
   "voices": [

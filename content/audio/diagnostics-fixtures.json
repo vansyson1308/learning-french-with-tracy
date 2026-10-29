@@ -1,0 +1,26 @@
+{
+  "note": "Acceptance-only audio fixtures. Bundled ONLY by builds that set LFT_ACCEPTANCE_DIAGNOSTICS=1 (metro.config.js, scripts/lib/diagnostics-gate.js); the release APK/AAB and the web export never carry them (scripts/check-diagnostics-export.ts). Each fixture is derived from a committed, baselined clip and keeps that clip's voice licence; provenance: registry entry acceptance-diagnostics-fixtures (testOnly).",
+  "fixtures": [
+    {
+      "file": "assets/diagnostics/opus/story-sentence-16k.opus",
+      "sha256": "e52ecfa4962bb6db060d87758d3afa78031e3fe3f0450538aaa429b3166dc8f8",
+      "bytes": 5218,
+      "codec": "opus",
+      "container": "ogg",
+      "bitrateKbps": 16,
+      "channels": 1,
+      "durationSec": 2.549,
+      "source": {
+        "clipId": "fr.story.le_chat_et_la_souris#1",
+        "text": "Dans la maison de madame Dubois, il y a un chat.",
+        "voiceId": "fr_FR-siwis-medium",
+        "file": "assets/audio/fr-reception/fab0c8369a8f73a2b1ae.mp3",
+        "sha256": "c1cde6047d58565d25caa1ee547fb7f3f722ae9f1fe06c1afcaf063c271a49bb",
+        "baseline": "content/audio/baseline/fr-reception.json"
+      },
+      "command": "ffmpeg -nostdin -y -i assets/audio/fr-reception/fab0c8369a8f73a2b1ae.mp3 -map_metadata -1 -fflags +bitexact -flags:a +bitexact -c:a libopus -b:a 16k -ac 1 assets/diagnostics/opus/story-sentence-16k.opus",
+      "encoder": "ffmpeg 7.1 (gyan.dev full build), libopus; bit-exact flags make the output reproducible",
+      "date": "2026-10-29"
+    }
+  ]
+}

@@ -13,6 +13,9 @@ module.exports = {
   // capacity headroom, not tolerance.
   testTimeout: 30000,
   moduleNameMapper: {
+    // Ogg Opus assets (the acceptance-only diagnostics fixture): jest-expo's
+    // asset transformer has no .opus; first, before the @/assets mapping.
+    "\\.opus$": "<rootDir>/integration-tests/asset-stub.js",
     // Mirror tsconfig: @/assets/* lives at the repo root, @/* under src/.
     "^@/assets/(.*)$": "<rootDir>/assets/$1",
     "^@/(.*)$": "<rootDir>/src/$1",

@@ -138,7 +138,8 @@ Reading passages (section 3) are short notices, messages and texts. Tap any word
 French, `es-vi` and `de-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
 
 In the reader:
-- **Listen** plays the story sentence by sentence and highlights the sentence being read; the speaker button on a line plays from there. A story whose audio is not bundled yet is read as text.
+- **Listen** plays the story sentence by sentence and highlights the sentence being read; the speaker button on a line plays from there.
+- A story without bundled audio is read along in your phone's own voice, marked **Device voice**. It works offline and its quality depends on the phone. If the phone has no offline voice for the language, you see the text only, with a one-line hint: install that language's offline voice in Android settings (*Text-to-speech output*), then come back to the story. The app downloads nothing itself.
 - **Tap a word** for its meaning; the story's new words are underlined. **Learn this word** adds any other word to the word check at the end.
 - **Tap a sentence number** for its translation.
 - **I've read it** opens three questions about the story (feedback only — nothing is scored or stored).
@@ -193,6 +194,7 @@ Lessons, Today, vocabulary, listening clips, reading, writing and checkpoints wo
 ## 32. What may still require network
 
 - Speech recognition on devices without an on-device French model (section 17).
+- Downloading an offline text-to-speech voice in Android settings, if you want to hear stories that have no bundled audio (section 20). The app itself never fetches it.
 - Installing and updating the app from the store.
 - Opening the website links (Privacy, Support) from the Profile screen.
 

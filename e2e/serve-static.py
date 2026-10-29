@@ -14,6 +14,9 @@ PORT = int(sys.argv[2]) if len(sys.argv) > 2 else 8099
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    # Ogg Opus audio (the diagnostics fixture; story audio once the codec switch flips).
+    extensions_map = {**http.server.SimpleHTTPRequestHandler.extensions_map, ".opus": "audio/ogg"}
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=ROOT, **kwargs)
 

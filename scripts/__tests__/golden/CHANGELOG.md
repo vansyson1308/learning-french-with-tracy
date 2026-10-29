@@ -863,3 +863,72 @@ A refactor must never appear in this file; only deliberate French changes do.
 ## 2026-10-29 — exam-engine-v2: simulatedIndividually on the DELE and Goethe speaking sections (QC 2026-10-29 §2; French unchanged)
 - compile: changed  src/content/exam/de-exam-tracks.json
 - compile: changed  src/content/exam/es-exam-tracks.json
+
+## 2026-10-29 — audio.yml es generate (all) run 40896689096
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/reception-audio-census.json
+- compile: changed  content/reports/de/stories-coverage.json
+- compile: changed  content/reports/es/audio-census.json
+- compile: changed  content/reports/es/audio-quality.json
+- compile: changed  content/reports/es/context-coverage.json
+- compile: changed  content/reports/es/lexicon-quality.json
+- compile: changed  content/reports/es/reception-audio-census.json
+- compile: changed  content/reports/es/stories-coverage.json
+- compile: changed  src/content/assessment/de-checkpoints.json
+- compile: changed  src/content/assessment/es-checkpoints.json
+- compile: changed  src/content/assessment/es-placement.json
+- compile: changed  src/content/assessment/fr-vi-checkpoints.json
+- compile: changed  src/content/assessment/fr-vi-objectives.json
+- compile: changed  src/content/assessment/fr-vi-placement.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/es-vi.ts
+- compile: changed  src/content/concepts/de-concepts.json
+- compile: changed  src/content/concepts/es-concepts.json
+- compile: changed  src/content/concepts/fr-vi-concepts.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/exam/de-exam-tracks.json
+- compile: changed  src/content/exam/es-exam-tracks.json
+- compile: changed  src/content/interaction/de-scenarios.json
+- compile: changed  src/content/interaction/es-scenarios.json
+- compile: changed  src/content/interaction/fr-vi-scenarios.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/es-index.json
+- compile: changed  src/content/lexicon/es-web-fallback.json
+- compile: changed  src/content/lexicon/fr-vi-index.json
+- compile: changed  src/content/lexicon/fr-vi-web-fallback.json
+- compile: changed  src/content/packs/de-vi.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/packs/fr-vi.json
+- compile: changed  src/content/reception/de-clip-assets.ts
+- compile: changed  src/content/reception/de-listening.json
+- compile: changed  src/content/reception/de-reading.json
+- compile: changed  src/content/reception/es-clip-assets.ts
+- compile: changed  src/content/reception/es-listening.json
+- compile: changed  src/content/reception/es-reading.json
+- compile: changed  src/content/speech/de-speech-items.json
+- compile: changed  src/content/speech/es-speech-items.json
+- compile: changed  src/content/speech/fr-vi-speech-items.json
+- compile: changed  src/content/stories/de-stories.json
+- compile: changed  src/content/stories/es-stories.json
+- compile: changed  src/content/stories/es-story-assets.ts
+- compile: changed  src/content/stories/fr-stories.json
+- compile: changed  src/content/stories/fr-vi-stories.json
+- compile: changed  src/content/writing/de-writing.json
+- compile: changed  src/content/writing/es-writing.json
+- compile: new      lexicon-db:es:es-lexicon-v3-5fde8895e73ea664.db
+- compile: new      lexicon-db:fr-vi:fr-vi-lexicon-v3-677e62c810756413.db
+- compile: missing  lexicon-db:es:es-lexicon-v3-c6fc82b48c7f025c.db
+- compile: missing  lexicon-db:fr-vi:fr-vi-lexicon-v3-b49c69da4dd7df8b.db
+
+## 2026-10-29 — audio.yml de generate (all) run 40918763308
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/audio-census.json
+- compile: changed  content/reports/de/audio-quality.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/de-en.ts
+- compile: changed  src/content/audio/de-vi.ts
+- compile: changed  src/content/reception/de-clip-assets.ts
+- compile: changed  src/content/stories/de-stories.json
+- compile: changed  src/content/stories/de-story-assets.ts

@@ -187,6 +187,41 @@ export function courseRoleOf(courseId: string): CourseRole | undefined {
   return parsed.success ? parsed.data.role : undefined;
 }
 
+/** D-10: the owner ticked `ai-review:<courseId>` in plan/OWNER-FINAL-CHECKLIST.md. */
+export function aiReviewAccepted(courseId: string, ownerChecklist: string): boolean {
+  return ownerChecklist.split("\n").some((line) => /^\s*-\s*(☑|\[x\])/i.test(line) && line.includes(`ai-review:${courseId}`));
+}
+
+type ReviewFields = {
+  review?: { native: string; date: string; checklist?: string } | { kind: "ai-simulated"; reviewer: string; date: string; scope: string; report: string };
+  allowUnreviewed?: boolean;
+};
+
+/** P3c review gate + D-10: a signed native review, an owner-accepted AI review, or allowUnreviewed named in KNOWN_LIMITATIONS. */
+export function reviewGateErrors(courseId: string, data: ReviewFields | null, docs: { knownLimitations: string; ownerChecklist: string }): string[] {
+  const rel = `content/courses/${courseId}.profile.json`;
+  const review = data?.review;
+  if (review && "kind" in review && review.kind === "ai-simulated") {
+    return aiReviewAccepted(courseId, docs.ownerChecklist)
+      ? []
+      : [`${courseId}: review.kind "ai-simulated" needs the owner acceptance in plan/OWNER-FINAL-CHECKLIST.md (a ticked line with \`ai-review:${courseId}\`)`];
+  }
+  if (review) return [];
+  if (data?.allowUnreviewed !== true) {
+    return [`${courseId}: no native review recorded — add review {native, date} to ${rel} after the REVIEW-CHECKLIST pass, or allowUnreviewed: true with a release/KNOWN_LIMITATIONS.md entry naming ${courseId}`];
+  }
+  return docs.knownLimitations.includes(courseId) ? [] : [`${courseId}: allowUnreviewed requires an entry naming the course in release/KNOWN_LIMITATIONS.md`];
+}
+
+/** D-10: the course carries an owner-accepted AI-simulated review (the app shows an honest note). */
+export function courseReviewIsAi(courseId: string): boolean {
+  const rel = `content/courses/${courseId}.profile.json`;
+  if (!existsSync(safeResolve(rel))) return false;
+  const parsed = CourseProfileOverrideSchema.safeParse(readJson(rel));
+  const review = parsed.success ? parsed.data.review : undefined;
+  return review !== undefined && "kind" in review && review.kind === "ai-simulated";
+}
+
 /** P3e §8: a course flagged betaUntilReviewed with no review recorded yet. */
 export function courseIsBeta(courseId: string): boolean {
   const rel = `content/courses/${courseId}.profile.json`;
@@ -328,14 +363,17 @@ export function validateExercise(
     if (new Set(e.options).size !== e.options.length) push(`${e.id}: duplicate options`);
   }
   if (e.type === "wordBank") {
-    const tokens = [...e.tokens];
-    for (const word of e.answer) {
-      const at = tokens.indexOf(word);
-      if (at === -1) {
-        push(`${e.id}: answer token "${word}" missing from tokens`);
-        return;
+    // The key and every authored alternative must be buildable from the tiles.
+    for (const [which, seq] of [["answer", e.answer], ...(e.alternatives ?? []).map((a, i) => [`alternatives[${i}]`, a] as const)] as const) {
+      const tokens = [...e.tokens];
+      for (const word of seq) {
+        const at = tokens.indexOf(word);
+        if (at === -1) {
+          push(`${e.id}: ${which} token "${word}" missing from tokens`);
+          return;
+        }
+        tokens.splice(at, 1);
       }
-      tokens.splice(at, 1);
     }
   }
   if (e.type === "match") {
@@ -493,17 +531,14 @@ export function validateContent(): ValidationResult {
   // than the original English) must be signed off by a native reviewer or
   // explicitly allowed unreviewed with a KNOWN_LIMITATIONS entry.
   const knownLimitations = existsSync(safeResolve("release/KNOWN_LIMITATIONS.md")) ? readFileSync(safeResolve("release/KNOWN_LIMITATIONS.md"), "utf8") : "";
+  const ownerChecklist = existsSync(safeResolve("plan/OWNER-FINAL-CHECKLIST.md")) ? readFileSync(safeResolve("plan/OWNER-FINAL-CHECKLIST.md"), "utf8") : "";
   for (const { courseId, pack } of packs) {
     if (pack.testOnly || pack.nativeCode === "en") continue;
     const rel = `content/courses/${courseId}.profile.json`;
     const profile = existsSync(safeResolve(rel)) ? CourseProfileOverrideSchema.safeParse(readJson(rel)) : null;
     const data = profile?.success ? profile.data : null;
     if (profile && !profile.success) err(`${courseId}: ${rel} is invalid — ${profile.error.issues[0]?.message}`);
-    else if (!data?.review && data?.allowUnreviewed !== true) {
-      err(`${courseId}: no native review recorded — add review {native, date} to ${rel} after the REVIEW-CHECKLIST pass, or allowUnreviewed: true with a release/KNOWN_LIMITATIONS.md entry naming ${courseId}`);
-    } else if (!data?.review && data?.allowUnreviewed === true && !knownLimitations.includes(courseId)) {
-      err(`${courseId}: allowUnreviewed requires an entry naming the course in release/KNOWN_LIMITATIONS.md`);
-    }
+    else for (const e of reviewGateErrors(courseId, data, { knownLimitations, ownerChecklist })) err(e);
   }
 
   // Every language folder needs at least one course — except an

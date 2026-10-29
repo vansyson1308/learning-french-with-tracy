@@ -81,5 +81,14 @@
     "deny": ["AGPL", "GPL", "NC", "ND", "non-commercial", "noncommercial", "OpenRAIL", "RAIL", "Gemma", "CPML", "Unknown", "See URL"]
   },
   "loudness": { "integratedLufs": -18, "truePeakDb": -1.5, "loudnessRange": 11, "note": "EBU R128 two-pass-free loudnorm applied to every clip of pipelineVersion ≥ 2 so engines mix evenly (French clips stay at pipelineVersion 1 — untouched bytes)." },
-  "encoding": { "sampleRateHz": 22050, "channels": 1, "mp3Kbps": 64, "mp3KbpsFromVersion": { "3": 32, "4": 24 } }
+  "encoding": {
+    "sampleRateHz": 22050,
+    "channels": 1,
+    "mp3Kbps": 64,
+    "mp3KbpsFromVersion": { "3": 32, "4": 24 },
+    "codecByLayer": { "pack": "mp3", "lexicon": "mp3", "reception": "mp3", "story": "mp3" },
+    "opusKbps": 16,
+    "mp3OnlyLanguages": ["fr"],
+    "codecNote": "codecByLayer is the one codec switch (scripts/lib/audio-codec.ts). story flips to opus only after CI proves Opus playback on device-acceptance API 30 + 34 and the web e2e (release/ASSET_DELIVERY.md). French stays MP3 (mp3OnlyLanguages)."
+  }
 }

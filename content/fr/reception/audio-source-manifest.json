@@ -1,6 +1,22 @@
 {
   "version": 2,
   "pipelineVersion": 1,
+  "storyAudio": {
+    "bundled": "band-1",
+    "stories": [
+      "fr.story.le_chat_et_la_souris",
+      "fr.story.le_cadeau_de_lea",
+      "fr.story.a_la_gare",
+      "fr.story.le_cafe_du_matin",
+      "fr.story.les_animaux_de_monsieur_martin",
+      "fr.story.une_journee_a_la_plage",
+      "fr.story.le_message_du_patron",
+      "fr.story.la_bibliotheque",
+      "fr.story.le_voyage_de_paul",
+      "fr.story.le_restaurant_du_samedi"
+    ],
+    "reason": "QC 2026-10-29b §2.3: band-1 story audio is bundled. French has 10 stories, all already bundled (frozen pipeline 1, 64 kbps); they stay. Stories added later use the device voice (release/ASSET_DELIVERY.md)."
+  },
   "note": "Pinned TTS sources for the French reception audio (Phase 7, now audio pipeline v2 shape): each voice carries its engine; pins were written by the reception recon from a double-download that agreed byte-for-byte and are verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed — only these pins, the model cards and the generated audio assets.",
   "engines": "content/audio/engines.json",
   "voices": [

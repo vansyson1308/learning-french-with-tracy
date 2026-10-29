@@ -172,6 +172,10 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Export web bundle
         run: bunx expo export --platform web --output-dir dist
+      # The acceptance-only Opus check (route + fixture) is never in a release
+      # export: LFT_ACCEPTANCE_DIAGNOSTICS is unset here (metro.config.js).
+      - name: The release export holds no diagnostics
+        run: bun scripts/check-diagnostics-export.ts dist --absent
       - name: Report export size
         run: |
           echo "## Web export size" >> "$GITHUB_STEP_SUMMARY"
@@ -222,3 +226,16 @@ jobs:
           E2E_BROWSER_PATH: /usr/bin/google-chrome
           UI_LANG: vi
         run: bun run e2e:exam dist-vi
+      # Opus playback on the web tier (release/ASSET_DELIVERY.md): a separate
+      # export built with LFT_ACCEPTANCE_DIAGNOSTICS=1 carries the acceptance-only
+      # route; the browser plays the Opus story sentence at rate 1 and in slow mode.
+      - name: Export web bundle (acceptance diagnostics)
+        env:
+          LFT_ACCEPTANCE_DIAGNOSTICS: "1"
+        run: |
+          bunx expo export --platform web --output-dir dist-diag --clear
+          bun scripts/check-diagnostics-export.ts dist-diag --present
+      - name: Opus playback E2E (web tier)
+        env:
+          E2E_BROWSER_PATH: /usr/bin/google-chrome
+        run: bun run e2e:opus dist-diag

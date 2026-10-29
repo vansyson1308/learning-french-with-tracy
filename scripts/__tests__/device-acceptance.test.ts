@@ -12,7 +12,8 @@ import path from "path";
 import { audioServiceStarts, maxPiid, sessionPlays } from "../device/audio-evidence";
 import { learnerSummary, rawWordCounts, seedRc3Envelope } from "../device/backup-tools";
 import { stageImport } from "../../src/lib/persistence/backup-core";
-import { APP_ID, asciiFold, buildSuite, literal, PICKER_LABELS } from "../device/maestro-flows";
+import { APP_ID, asciiFold, buildSuite, literal, PICKER_LABELS, TODAY_REVIEW_MAX, todayReviewAnswers } from "../device/maestro-flows";
+import { optionTestId, sessionResultTestId } from "../../src/lib/option-test-id";
 
 const { files, problems } = buildSuite();
 
@@ -42,6 +43,31 @@ describe("maestro suite", () => {
     }
   });
 
+  test("Today answers leading reviews by option id, then still demands a teach card (QC 2026-10-30)", () => {
+    // PR #51: the story word check now covers es:w:papa (D-10 text fix); a correct answer is due again
+    // after FSRS's 10-minute short-term step, so a later Today rightly opens on its review.
+    const yaml = files["today.yaml"];
+    expect(yaml).toContain(`times: ${TODAY_REVIEW_MAX}`);
+    expect(yaml).toContain('id: "exercise-today-review-.*"');
+    expect(yaml.indexOf("- repeat:")).toBeLessThan(yaml.indexOf('    visible:\n      id: "teach-card"\n'));
+    const papa = todayReviewAnswers().find((a) => a.itemId === "es:w:papa");
+    expect(papa).toEqual({ itemId: "es:w:papa", answer: "bố / ba" });
+    expect(yaml).toContain(`id: "exercise-today-review-es:w:papa"`);
+    expect(yaml).toContain(`id: "${optionTestId("bố / ba")}"`);
+    expect(optionTestId("bố / ba")).toBe("option-bo-ba");
+  });
+
+  test("options are selected by id, never by display text; lessons and the story check assert zero mistakes", () => {
+    for (const [name, yaml] of Object.entries(files)) {
+      if (!name.endsWith(".yaml") || name.startsWith("rc3-")) continue;
+      expect(yaml).not.toContain(`id: "option-card"`);
+    }
+    for (const name of Object.keys(files).filter((f) => f.startsWith("lesson-"))) expect(files[name]).toContain(`id: "${sessionResultTestId(true)}"`);
+    expect(files["stories.yaml"]).toContain(`id: "${sessionResultTestId(true)}"`);
+    expect(APP_SOURCE).toContain("testID={optionTestId(text)}");
+    expect(APP_SOURCE).toContain("testID={sessionResultTestId(perfect)}");
+  });
+
   test("every flow targets the app and every id it uses exists in the UI", () => {
     const missing = new Set<string>();
     for (const [name, yaml] of Object.entries(files)) {
@@ -58,6 +84,7 @@ describe("maestro suite", () => {
         for (const alt of alts) {
           const stem = alt.split(/\\\\[.:]|[.(*]/)[0].replace(/\\\\/g, "");
           if (stem.startsWith("exercise-")) continue; // `exercise-${id}` wrapper, checked below
+          if (stem.startsWith("option-") || stem.startsWith("session-result-")) continue; // optionTestId / sessionResultTestId, checked below
           const parts = stem.split("-");
           const templates = parts.map((_, i) => `${parts.slice(0, i + 1).join("-")}-\${`);
           const found = APP_SOURCE.includes(`"${stem}"`) || templates.some((t) => APP_SOURCE.includes(`\`${t}`));
@@ -79,6 +106,17 @@ describe("maestro suite", () => {
     const rows = files["courses.tsv"].trim().split("\n").map((r) => r.split("\t"));
     expect(rows.map(([id]) => `lesson-${id}.yaml`).sort()).toEqual(Object.keys(files).filter((f) => f.startsWith("lesson-")).sort());
     expect(rows.find(([id]) => id === "es-vi")?.[1]).not.toBe("0");
+  });
+
+  test("the Opus flow opens the acceptance-only route and asserts every playback event, no error, PASS", () => {
+    const yaml = files["diagnostics-opus.yaml"];
+    expect(yaml).toContain(`- openLink: "learningfrenchtracy://diagnostics/opus"`);
+    for (const e of ["normal-loaded", "normal-playing", "normal-finished", "slow-loaded", "slow-playing", "slow-finished", "no-error", "result-pass"]) {
+      expect(yaml).toContain(`id: "diag-opus-${e}"`);
+    }
+    const script = readFileSync("scripts/device/acceptance.sh", "utf8");
+    expect(script).toContain("lessons; opus_playback; crash_scan lessons");
+    expect(readFileSync(".github/workflows/device-acceptance.yml", "utf8")).toMatch(/LFT_ACCEPTANCE_DIAGNOSTICS: "1"[\s\S]*check-diagnostics-export\.ts \/tmp\/apk-x --present[\s\S]*OPUS_DIAGNOSTICS: "1"/);
   });
 
   test("the checkpoint flow asserts a full first-try score", () => {

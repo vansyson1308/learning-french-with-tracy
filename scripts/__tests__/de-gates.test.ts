@@ -41,6 +41,21 @@ describe("German course gates", () => {
     expect(germanCourseErrors(pack({ words: [], exercises: bad, flow: v2Flow(6), sectionIndex: 3 }), ok)).toEqual([]);
   });
 
+  test("a word-bank alternative is one sentence, like its answer (D-10 review)", () => {
+    const bank = (alternatives: string[][]) => ({
+      type: "wordBank",
+      id: "e2",
+      direction: "nativeToTarget",
+      prompt: "x",
+      tokens: ["Ich", "fahre", "mit", "dem", "Bus", "heute"],
+      answer: ["Ich", "fahre", "mit", "dem", "Bus"],
+      alternatives,
+    });
+    // "dem" is inside the chunk "mit dem Bus" in the alternative sentence too
+    expect(germanCourseErrors(pack({ words: [], exercises: [bank([["heute", "fahre", "Ich", "mit", "dem", "Bus"]])], flow: v2Flow(6) }), ok)).toEqual([]);
+    expect(rules(germanCourseErrors(pack({ words: [], exercises: [bank([["Ich", "fahre", "dem", "Bus"]])], flow: v2Flow(6) }), ok))).toEqual(["dative-chunks"]);
+  });
+
   test("verb-second and separable verbs need their card and at least 6 exercises after it", () => {
     expect(rules(germanCourseErrors(pack({ words: [] }), ok))).toEqual(["v2-separable", "v2-separable"]);
     expect(rules(germanCourseErrors(pack({ words: [], flow: v2Flow(5) }), ok))).toEqual(["v2-separable", "v2-separable"]);

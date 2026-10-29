@@ -13,6 +13,7 @@
  *   - onboarding-<ui>.yaml   fresh install → onboarding in the vi / en UI
  *   - today / checkpoint / speech-unavailable / exam-mock / profile /
  *     export / import / screens-<ui>
+ *   - diagnostics-opus.yaml  the Opus playback check (acceptance build only)
  *
  *   bun scripts/device/maestro-flows.ts [--out e2e/maestro/generated]
  *
@@ -31,7 +32,9 @@ import { examTracksFor } from "../../src/lib/exam/content";
 import { buildExamSectionSession, selectMockForm } from "../../src/lib/exam/engine";
 import { checkAnswer } from "../../src/lib/grading";
 import { lexemeMetaFor } from "../../src/lib/learning/lexicon-index";
-import { storyFor } from "../../src/lib/stories/content";
+import { optionTestId, sessionResultTestId } from "../../src/lib/option-test-id";
+import { storyAudioSourceFor, storyFor, storyList } from "../../src/lib/stories/content";
+import { storyCheckLexemes } from "../../src/lib/stories/word-check";
 import { buildCheckpointSessionDefinition, lessonSteps } from "../../src/lib/session/sources";
 import type { SessionStep } from "../../src/lib/session/types";
 import type { Exercise, LessonPack } from "../../src/lib/types";
@@ -90,22 +93,26 @@ export function answerCommands(ex: Exercise, courseId: string): string[] | null 
   switch (ex.type) {
     case "select":
     case "fillBlank": {
-      const opt = ex.options[ex.correct] as string | { text: string };
-      return [...tapText(typeof opt === "string" ? opt : opt.text), ...tapId("session-check")];
+      const ids = (ex.options as (string | { text: string })[]).map((o) => optionTestId(typeof o === "string" ? o : o.text));
+      if (ids.filter((id) => id === ids[ex.correct]).length > 1) return null; // the tap could land on a wrong twin
+      return [...tapId(ids[ex.correct]), ...tapId("session-check")];
     }
     case "wordBank":
       return [
         ...ex.answer.flatMap((tok) => [`- tapOn:`, `    id: "wordbank-token"`, `    text: ${q(literal(tok))}`]),
         ...tapId("session-check"),
       ];
-    case "match":
-      // A match completes itself once every pair is tapped (no Check).
-      return ex.pairs.flatMap((p) => [...tapText(p.target), ...tapText(p.native)]);
+    case "match": {
+      // A match completes itself once every pair is tapped (no Check). Its tiles are option cards.
+      const ids = ex.pairs.flatMap((p) => [optionTestId(p.target), optionTestId(p.native)]);
+      if (new Set(ids).size !== ids.length) return null; // two tiles would share an id
+      return ids.flatMap((id) => tapId(id));
+    }
     case "readingComprehension": {
-      // Passages are long: scroll the option card into view; its label may carry an emoji prefix.
-      const option = `(\\S+ )?${literal(ex.options[ex.correct].text)}`;
-      const selector = [`    id: "option-card"`, `    text: ${q(option)}`];
-      return [`- scrollUntilVisible:`, `    element:`, ...selector.map((l) => `  ${l}`), ...SCROLL_END, `- tapOn:`, ...selector, ...tapId("session-check")];
+      // Passages are long: scroll the option into view first.
+      const id = optionTestId(ex.options[ex.correct].text);
+      if (ex.options.filter((o) => optionTestId(o.text) === id).length > 1) return null;
+      return [...scrollTo(id), ...tapId(id), ...tapId("session-check")];
     }
     case "typeAnswer": {
       const typed = [ex.answer, ...ex.alternatives].map(asciiFold).find((a) => a.length > 0 && checkAnswer(ex, a, courseId));
@@ -166,6 +173,8 @@ export function lessonFlow(courseId: string, lesson: LessonPack): { yaml: string
     ...answerSteps(lessonSteps(lesson), courseId, unsupported),
     ...waitId("session-summary", 15000),
     ...shot(`lesson-${courseId}-summary`),
+    // Every scripted answer must be right: content drift fails here, not in a later flow.
+    ...assertId(sessionResultTestId(true)),
   ];
   return { yaml: [...lines, ``].join("\n"), unsupported };
 }
@@ -192,15 +201,67 @@ export function onboardingFlow(ui: UiLang, courseId: string): string {
   ].join("\n");
 }
 
-/** Today → the daily-words session opens on a teach card. */
+/** At most this many leading reviews are answered before the teach card must show. */
+export const TODAY_REVIEW_MAX = 10;
+
+/**
+ * The words an earlier flow of the walk can leave due (a correct answer is
+ * due again after FSRS's 10-minute short-term step): the walk lesson's
+ * graded words and the story word check. Each maps to the text of its
+ * correct option, resolved like the TODAY composer does (pack word first,
+ * then the lexicon gloss).
+ */
+export function todayReviewAnswers(): { itemId: string; answer: string }[] {
+  const bundle = ALL_COURSE_BUNDLES.find((b) => b.id === WALK_COURSE);
+  const story = storyFor(WALK_COURSE, WALK_STORY);
+  if (!bundle || !story) return [];
+  const packNative = new Map<string, string>();
+  for (const s of bundle.pack.sections) for (const u of s.units) for (const w of u.words) if (!packNative.has(w.target)) packNative.set(w.target, w.native);
+  const lessonIds = lessonSteps(bundle.pack.sections[0].units[0].lessons[0]).flatMap((s) => (s.type === "exercise" && s.evidence?.itemId ? [s.evidence.itemId] : []));
+  const out: { itemId: string; answer: string }[] = [];
+  for (const itemId of [...new Set([...lessonIds, ...storyCheckLexemes(story)])]) {
+    const meta = lexemeMetaFor(WALK_COURSE, itemId);
+    const answer = meta ? (packNative.get(meta.surface) ?? meta.gloss) : undefined;
+    if (answer) out.push({ itemId, answer });
+  }
+  return out;
+}
+
+/** While a review leads the session, answer whichever due word is on screen by option id. */
+function answerLeadingReviews(): string[] {
+  const lines = [`- repeat:`, `    times: ${TODAY_REVIEW_MAX}`, `    while:`, `      visible:`, `        id: "exercise-today-review-.*"`, `    commands:`];
+  for (const { itemId, answer } of todayReviewAnswers()) {
+    lines.push(
+      `      - runFlow:`,
+      `          when:`,
+      `            visible:`,
+      `              id: ${q(literal(`exercise-today-review-${itemId}`))}`,
+      `          commands:`,
+      `            - tapOn:`,
+      `                id: ${q(optionTestId(answer))}`,
+      `            - tapOn:`,
+      `                id: "session-check"`,
+      `            - tapOn:`,
+      `                id: "session-continue"`
+    );
+  }
+  return lines;
+}
+
+/**
+ * Today → due reviews first (answered by option id; an earlier flow of the
+ * walk can leave a word due), then the daily-words session's teach card.
+ */
 export function todayFlow(): string {
   return [
-    ...header("Today: the session starts with today's new words."),
+    ...header("Today: due reviews first, then the session's new words."),
     `- stopApp`,
     ...openLink("today"),
     ...waitId("today-start"),
     ...shot("today"),
     ...tapId("today-start"),
+    ...waitId("teach-card|exercise-.*"),
+    ...answerLeadingReviews(),
     ...waitId("teach-card"),
     ...shot("today-teach-card"),
     ...TAP_CONTINUE,
@@ -268,13 +329,70 @@ export function storiesFlow(): { yaml: string; unsupported: string[] } {
       `      - tapOn:`,
       `          id: "session-continue"`,
       ...waitId(literal(`exercise-story-check-${id}`)),
-      ...tapText(gloss),
+      ...tapId(optionTestId(gloss)),
       ...tapId("session-check"),
       ...TAP_CONTINUE
     );
   }
-  lines.push(...waitId("session-summary"), ...shot("story-word-check-summary"), `- stopApp`, ``);
+  lines.push(...waitId("session-summary"), ...shot("story-word-check-summary"), ...assertId(sessionResultTestId(true)));
+  const deviceVoice = deviceVoiceStoryCheck();
+  unsupported.push(...deviceVoice.unsupported);
+  lines.push(...deviceVoice.lines, `- stopApp`, ``);
   return { yaml: lines.join("\n"), unsupported };
+}
+
+/** QC 2026-10-29b ?2.4: the course whose stories have no bundled audio (device voice). */
+export const DEVICE_VOICE_COURSE = "de-vi";
+
+/**
+ * A story without bundled audio shows either the device-voice label (an
+ * offline voice is installed) or the install hint (none is): the emulator
+ * image may have no voice for the language, so either state passes. Then
+ * back to the walk course for the flows that follow.
+ */
+export function deviceVoiceStoryCheck(): { lines: string[]; unsupported: string[] } {
+  const story = storyList(DEVICE_VOICE_COURSE).find((s) => storyAudioSourceFor(DEVICE_VOICE_COURSE, s) === "device-voice");
+  if (!story) return { lines: [], unsupported: [`${DEVICE_VOICE_COURSE}: no story without bundled audio`] };
+  return {
+    lines: [
+      ...switchCourse(DEVICE_VOICE_COURSE),
+      ...openLink(`story/${encodeURIComponent(story.id)}`),
+      ...waitId("story-reader"),
+      ...waitId("story-device-voice-(label|hint)"),
+      ...shot("story-device-voice"),
+      ...switchCourse(WALK_COURSE),
+    ],
+    unsupported: [],
+  };
+}
+
+/** The acceptance-only Opus playback check (src/app/diagnostics/opus.tsx). */
+export const OPUS_DIAGNOSTICS_ROUTE = "diagnostics/opus";
+/** Every event the check must see, per pass; then no decoder error and the verdict. */
+export const OPUS_DIAGNOSTICS_EVENTS = ["normal-loaded", "normal-playing", "normal-finished", "slow-loaded", "slow-playing", "slow-finished"] as const;
+
+/**
+ * Opus mono 16 kbps story sentence through expo-audio, at rate 1 then at the
+ * listening player's slow rate. The screen exists only in builds made with
+ * LFT_ACCEPTANCE_DIAGNOSTICS=1 (the device-acceptance APK); acceptance.sh
+ * runs this flow only when OPUS_DIAGNOSTICS=1 says the APK carries it.
+ */
+export function opusDiagnosticsFlow(): string {
+  return [
+    ...header("Opus playback: one story sentence at 16 kbps mono, normal rate then slow mode (acceptance build only)."),
+    `- stopApp`,
+    ...openLink(OPUS_DIAGNOSTICS_ROUTE),
+    ...waitId("diag-opus-screen"),
+    ...tapId("diag-opus-start"),
+    // ~2.6 s + ~3 s of audio; each pass times out in the app after 30 s.
+    ...waitId("diag-opus-result-(pass|fail)", 90000),
+    ...shot("diag-opus"),
+    ...OPUS_DIAGNOSTICS_EVENTS.flatMap((e) => assertId(`diag-opus-${e}`)),
+    ...assertId("diag-opus-no-error"),
+    ...assertId("diag-opus-result-pass"),
+    `- stopApp`,
+    ``,
+  ].join("\n");
 }
 
 /** The first scored checkpoint of the walk course, answered correctly from its first form. */
@@ -563,6 +681,7 @@ export function buildSuite(): { files: Record<string, string>; problems: string[
   files["exam-mock.yaml"] = exam.yaml;
   files["export.yaml"] = exportFlow();
   files["profile.yaml"] = profileFlow();
+  files["diagnostics-opus.yaml"] = opusDiagnosticsFlow();
   Object.assign(files, rc3Flows("lft-backup.json"));
   files["courses.tsv"] = `${courses.join("\n")}\n`;
   return { files, problems };

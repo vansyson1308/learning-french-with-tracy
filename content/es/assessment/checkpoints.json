@@ -931,7 +931,11 @@
             "id": "es-cpx-s3-ann_dictado_anden",
             "clipId": "es.clip.cp3_dictado_anden",
             "answer": "andén cuatro",
-            "alternatives": []
+            "alternatives": [
+              "andén 4",
+              "el andén cuatro",
+              "el andén 4"
+            ]
           },
           "objectiveTargets": [
             "es.obj.listening.announcements"
@@ -1400,12 +1404,15 @@
             "type": "speakProduction",
             "id": "es-cpx-s4-greet_restaurant",
             "speechItemId": "es.speak.cp4_greet_restaurant",
-            "instruction": "Bạn bước vào nhà hàng lúc tám giờ tối. Hãy chào người phục vụ.",
+            "instruction": "Bạn bước vào nhà hàng lúc chín giờ tối. Hãy chào người phục vụ.",
             "target": "Buenas noches",
             "acceptedVariants": [
               "Buenas noches",
               "Buenas noches, señor",
-              "Buenas noches, señora"
+              "Buenas noches, señora",
+              "Hola, buenas noches",
+              "Hola, buenas noches, señor",
+              "Hola, buenas noches, señora"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1454,7 +1461,10 @@
             "acceptedVariants": [
               "Adiós",
               "Hasta luego",
-              "Gracias, adiós"
+              "Gracias, adiós",
+              "Gracias, hasta luego",
+              "Adiós, gracias",
+              "Hasta luego, gracias"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1527,7 +1537,9 @@
             "target": "Trabajo por la noche",
             "acceptedVariants": [
               "Trabajo por la noche",
-              "Yo trabajo por la noche"
+              "Yo trabajo por la noche",
+              "Trabajo por las noches",
+              "Yo trabajo por las noches"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1704,11 +1716,12 @@
             "speechItemId": "es.speak.cp4_evening_pic",
             "instruction": "Hãy nói đây là buổi nào trong ngày.",
             "cueEmoji": "🌙",
-            "target": "Es por la noche",
+            "target": "Es de noche",
             "acceptedVariants": [
-              "Es por la noche",
+              "Es de noche",
               "Es la noche",
-              "Por la noche"
+              "Por la noche",
+              "Es por la noche"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1803,8 +1816,7 @@
                   "id": "age",
                   "description": "tuổi",
                   "variants": [
-                    "tengo treinta y cinco años",
-                    "tengo 35 años"
+                    "tengo treinta y cinco años"
                   ],
                   "cueProvided": true
                 },
@@ -1874,8 +1886,7 @@
                   "id": "age",
                   "description": "tuổi",
                   "variants": [
-                    "tengo veintiocho años",
-                    "tengo 28 años"
+                    "tengo veintiocho años"
                   ],
                   "cueProvided": true
                 },
@@ -2178,7 +2189,6 @@
                   "description": "giờ hẹn",
                   "variants": [
                     "a las tres",
-                    "a las 3",
                     "a las quince"
                   ],
                   "cueProvided": true
@@ -2248,8 +2258,7 @@
                   "id": "time",
                   "description": "giờ",
                   "variants": [
-                    "a las ocho",
-                    "a las 8"
+                    "a las ocho"
                   ],
                   "cueProvided": true
                 }
@@ -2372,7 +2381,6 @@
                   "id": "age",
                   "description": "tuổi",
                   "variants": [
-                    "35",
                     "treinta y cinco"
                   ],
                   "cueProvided": true
@@ -2529,7 +2537,6 @@
                   "id": "age",
                   "description": "tuổi",
                   "variants": [
-                    "41",
                     "cuarenta y uno"
                   ],
                   "cueProvided": true
@@ -2921,7 +2928,8 @@
             ],
             "target": "Son las diez",
             "acceptedVariants": [
-              "Son las diez"
+              "Son las diez",
+              "Son las diez en punto"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -2957,7 +2965,22 @@
             "revealTargetAfterAttempts": null,
             "allowContextualBias": false,
             "modelClipId": null,
-            "allowedAttempts": 2
+            "allowedAttempts": 2,
+            "requiredConcepts": [
+              [
+                "cuesta",
+                "son",
+                "es"
+              ],
+              [
+                "tres",
+                "3"
+              ],
+              [
+                "euros",
+                "euro"
+              ]
+            ]
           },
           "objectiveTargets": [
             "es.obj.speaking.give_info"
@@ -3079,8 +3102,7 @@
                   "id": "time",
                   "description": "giờ",
                   "variants": [
-                    "a las nueve",
-                    "a las 9"
+                    "a las nueve"
                   ],
                   "cueProvided": true
                 }
@@ -3162,7 +3184,7 @@
               "maxTokens": 20
             },
             "modelAnswers": [
-              "Hola, Lucía: el restaurante es el sábado."
+              "Hola, Lucía: vamos al restaurante el sábado."
             ]
           },
           "objectiveTargets": [
@@ -3302,8 +3324,7 @@
                   "description": "giờ về",
                   "variants": [
                     "vuelvo a las seis",
-                    "a las seis",
-                    "a las 6"
+                    "a las seis"
                   ],
                   "cueProvided": true
                 }

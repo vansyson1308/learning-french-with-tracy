@@ -33,6 +33,7 @@ import {
   type StorySource,
   type Syllabus,
 } from "../../content/schema";
+import { assetFileName, codecFor, codecRecipe, type AudioCodec, type CodecSettings } from "./audio-codec";
 import { buildPlugin } from "./languages";
 import { pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
@@ -395,14 +396,109 @@ export function storyPipelineVersion(lang: string): number {
   return typeof v === "number" ? v : receptionPipelineVersion(lang);
 }
 
-export function storySentenceAssetKey(lang: string, stories: Stories, sentence: StorySource["sentences"][number]): string {
-  return receptionAssetKey(lang, storySentenceSegments(stories, sentence), storyPipelineVersion(lang));
+/**
+ * The codec of a language's story sentences: content/audio/engines.json
+ * `encoding.codecByLayer.story` (mp3 until CI has proven Opus playback,
+ * release/ASSET_DELIVERY.md); French is always mp3.
+ */
+export function storyCodec(lang: string): AudioCodec {
+  return codecFor(storyEncoding(), "story", lang);
 }
 
-/** Every asset file name the stories of a language reference (`<key>.mp3`). */
-export function storyAssetFiles(lang: string, stories: Stories | null): Set<string> {
+function storyEncoding(): CodecSettings | undefined {
+  return (readJson("content/audio/engines.json") as { encoding?: CodecSettings }).encoding;
+}
+
+/** An mp3 story sentence keeps its key; an opus one carries the codec in its key. */
+export function storySentenceAssetKey(lang: string, stories: Stories, sentence: StorySource["sentences"][number], codec: AudioCodec = storyCodec(lang)): string {
+  return receptionAssetKey(lang, storySentenceSegments(stories, sentence), storyPipelineVersion(lang), codecRecipe(codec, storyEncoding()));
+}
+
+/** `<key>.mp3` or `<key>.opus`, by the story codec. */
+export function storySentenceFile(lang: string, stories: Stories, sentence: StorySource["sentences"][number], codec: AudioCodec = storyCodec(lang)): string {
+  return assetFileName(storySentenceAssetKey(lang, stories, sentence, codec), codec);
+}
+
+// ---------------------------------------------------------------------------
+// Which stories bundle their sentence audio (QC 2026-10-29b §2.3)
+// ---------------------------------------------------------------------------
+
+/**
+ * At most this many stories per course bundle sentence audio: the band-1
+ * stories, the first ≈ 10–12 of the reading order. Every other story is read
+ * with the device voice (release/ASSET_DELIVERY.md).
+ */
+export const STORY_AUDIO_MAX_BUNDLED = 12;
+
+/**
+ * The `storyAudio` field of content/<lang>/reception/audio-source-manifest.json:
+ *  - absent: every story bundles its audio (legacy);
+ *  - `{ bundled: false, reason }`: none does;
+ *  - `{ bundled: "band-1", stories: [ids], reason }`: the listed stories do.
+ */
+export type StoryAudioPolicy =
+  | { kind: "all" }
+  | { kind: "none"; reason: string }
+  | { kind: "band-1"; stories: string[]; reason: string };
+
+export function parseStoryAudio(raw: unknown): StoryAudioPolicy {
+  if (raw === undefined || raw === null) return { kind: "all" };
+  const r = raw as { bundled?: unknown; stories?: unknown; reason?: unknown };
+  const reason = typeof r.reason === "string" ? r.reason : "";
+  if (r.bundled === false) return { kind: "none", reason };
+  if (r.bundled === "band-1") return { kind: "band-1", stories: Array.isArray(r.stories) ? r.stories.filter((x): x is string => typeof x === "string") : [], reason };
+  throw new Error(`storyAudio.bundled must be false or "band-1" (got ${JSON.stringify(r.bundled)})`);
+}
+
+export function storyAudioPolicy(lang: string): StoryAudioPolicy {
+  const rel = `content/${lang}/reception/audio-source-manifest.json`;
+  if (!existsSync(safeResolve(rel))) return { kind: "all" };
+  return parseStoryAudio((readJson(rel) as { storyAudio?: unknown }).storyAudio);
+}
+
+/** Reading order: band, then authored order (the compiled `order`). */
+export function storyReadingOrder(stories: Pick<Stories, "stories">): string[] {
+  return [...stories.stories]
+    .map((s, i) => ({ id: s.id, rank: bandRank(s.band), i }))
+    .sort((x, y) => x.rank - y.rank || x.i - y.i)
+    .map((x) => x.id);
+}
+
+/** Ids of the stories whose sentence audio is bundled. */
+export function bundledStoryIds(stories: Pick<Stories, "stories">, policy: StoryAudioPolicy): Set<string> {
+  if (policy.kind === "all") return new Set(stories.stories.map((s) => s.id));
+  if (policy.kind === "none") return new Set();
+  const known = new Set(stories.stories.map((s) => s.id));
+  return new Set(policy.stories.filter((id) => known.has(id)));
+}
+
+/** Declaration problems (pure; tested): unknown or repeated ids, over the cap, not the start of the reading order. */
+export function storyAudioProblems(stories: Pick<Stories, "stories">, policy: StoryAudioPolicy): { errors: string[]; warnings: string[] } {
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  if (policy.kind !== "band-1") return { errors, warnings };
+  const known = new Set(stories.stories.map((s) => s.id));
+  if (!policy.reason.trim()) errors.push("storyAudio: a reason is required");
+  if (policy.stories.length === 0) errors.push('storyAudio: "band-1" lists no story');
+  if (new Set(policy.stories).size !== policy.stories.length) errors.push("storyAudio: a story is listed twice");
+  for (const id of policy.stories) if (!known.has(id)) errors.push(`storyAudio: ${id} is not a story of this language`);
+  if (policy.stories.length > STORY_AUDIO_MAX_BUNDLED) errors.push(`storyAudio: ${policy.stories.length} stories listed; band-1 bundles at most ${STORY_AUDIO_MAX_BUNDLED} (release/ASSET_DELIVERY.md)`);
+  const head = storyReadingOrder(stories).slice(0, policy.stories.length);
+  const listed = new Set(policy.stories);
+  const outside = head.filter((id) => !listed.has(id));
+  if (outside.length > 0) warnings.push(`storyAudio: the band-1 list is not the start of the reading order (${outside.slice(0, 3).join(", ")} comes earlier and has no bundled audio) — update the list and re-run the audio workflow`);
+  return { errors, warnings };
+}
+
+/** Every asset file name the BUNDLED stories of a language reference (`<key>.mp3`, or `.opus` by the story codec). */
+export function storyAssetFiles(lang: string, stories: Stories | null, policy: StoryAudioPolicy = storyAudioPolicy(lang), codec: AudioCodec = storyCodec(lang)): Set<string> {
   const out = new Set<string>();
-  for (const story of stories?.stories ?? []) for (const s of story.sentences) out.add(`${storySentenceAssetKey(lang, stories!, s)}.mp3`);
+  if (!stories) return out;
+  const bundled = bundledStoryIds(stories, policy);
+  for (const story of stories.stories) {
+    if (!bundled.has(story.id)) continue;
+    for (const s of story.sentences) out.add(storySentenceFile(lang, stories, s, codec));
+  }
   return out;
 }
 
@@ -422,6 +518,8 @@ export function validateStories(input: {
   nativeCodes: readonly string[];
   /** Voice ids of content/<lang>/reception/audio-source-manifest.json (null: no manifest). */
   receptionVoices: ReadonlySet<string> | null;
+  /** Which stories bundle audio (default: the voice manifest's `storyAudio`). */
+  storyAudio?: StoryAudioPolicy;
 }): ValidationResult & { analyses: StoryAnalysis[] } {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -483,15 +581,21 @@ export function validateStories(input: {
     if (a.coverage < STORY_MIN_COVERAGE) err(`${story.id}: ${(a.coverage * 100).toFixed(1)} % known at band ${story.band} (≥ ${STORY_MIN_COVERAGE * 100} %; ${a.unknownTokens} of ${a.tokens} tokens new or unresolved)`);
   }
 
-  // Bundled audio: once a generation run has produced story sentences, every
-  // sentence must resolve to its committed asset; before that, text-only.
+  // Bundled audio (QC 2026-10-29b §2.3: band-1 stories only; the others are
+  // read with the device voice and need no asset): once a generation run has
+  // produced story sentences, every sentence of a bundled story must resolve
+  // to its committed asset; before that, text-only.
+  const policy = input.storyAudio ?? storyAudioPolicy(lang);
+  const declared = storyAudioProblems(stories, policy);
+  for (const e of declared.errors) err(e);
+  for (const w of declared.warnings) warnings.push(`stories (${lang}): ${w}`);
   const planRel = `content/${lang}/reception/generated-plan.json`;
   const generated = existsSync(safeResolve(planRel))
     ? ((readJson(planRel) as { clips?: { clipId: string }[] }).clips ?? []).some((c) => c.clipId.includes(".story."))
     : false;
   const dirAbs = safeResolve(receptionAssetsDir(lang));
   const files = existsSync(dirAbs) ? new Set(readdirSync(dirAbs)) : new Set<string>();
-  const missing = [...storyAssetFiles(lang, stories)].filter((f) => !files.has(f));
+  const missing = [...storyAssetFiles(lang, stories, policy)].filter((f) => !files.has(f));
   if (missing.length > 0) {
     if (generated) err(`${missing.length} story sentence assets missing (e.g. ${missing[0]}) — re-run the audio generate workflow (layer reception)`);
     else warnings.push(`stories (${lang}): ${missing.length} sentences have no generated audio yet (bootstrap — dispatch the audio workflow, layer reception)`);
@@ -503,15 +607,37 @@ export function validateStories(input: {
 // Compiled artifacts
 // ---------------------------------------------------------------------------
 
+/**
+ * Per-story audio mode of the compiled artifact (QC 2026-10-29b §2.3), read
+ * by the reader: "bundled" when the story is declared band-1 AND every
+ * sentence's asset is committed; otherwise "device-voice" (the reader uses
+ * expo-speech, labelled "Giọng đọc của máy", or text only without a voice).
+ */
+export type StoryAudioMode = "bundled" | "device-voice";
+
+export function storyAudioMode(lang: string, stories: Stories, storyId: string, bundled: ReadonlySet<string>, hasAsset: (file: string) => boolean, codec: AudioCodec = storyCodec(lang)): StoryAudioMode {
+  const story = stories.stories.find((s) => s.id === storyId);
+  if (!story || !bundled.has(storyId) || story.sentences.length === 0) return "device-voice";
+  return story.sentences.every((s) => hasAsset(storySentenceFile(lang, stories, s, codec))) ? "bundled" : "device-voice";
+}
+
+const committedStoryAsset = (lang: string) => (file: string) => existsSync(safeResolve(receptionAssetsDir(lang), file));
+
 export function compileStoriesArtifact(input: {
   stories: Stories;
   analyses: StoryAnalysis[];
   nativeCode: string;
   durations: Map<string, number>;
+  /** Which stories bundle audio (default: the voice manifest's `storyAudio`). */
+  storyAudio?: StoryAudioPolicy;
+  /** Whether a story asset is committed (default: the file exists under assets/audio/<lang>-reception). */
+  hasAsset?: (file: string) => boolean;
 }): string {
   const { stories } = input;
   const lang = stories.language;
   const analysisOf = new Map(input.analyses.map((a) => [a.id, a]));
+  const bundled = bundledStoryIds(stories, input.storyAudio ?? storyAudioPolicy(lang));
+  const hasAsset = input.hasAsset ?? committedStoryAsset(lang);
   const byId: Record<string, unknown> = {};
   for (const story of stories.stories) {
     const a = analysisOf.get(story.id)!;
@@ -541,6 +667,7 @@ export function compileStoriesArtifact(input: {
       tokens: a.tokens,
       lexemes: a.lexemes,
       newLexemes: story.newLexemes,
+      audio: storyAudioMode(lang, stories, story.id, bundled, hasAsset),
       sentences,
       questions: story.questions.map((q, i) => ({
         kind: q.kind,
@@ -550,10 +677,7 @@ export function compileStoriesArtifact(input: {
       })),
     };
   }
-  const order = [...stories.stories]
-    .map((s, i) => ({ id: s.id, rank: bandRank(s.band), i }))
-    .sort((x, y) => x.rank - y.rank || x.i - y.i)
-    .map((x) => x.id);
+  const order = storyReadingOrder(stories);
   // Compact, one story per line: pieces are many short tuples, and the chunk ships per course.
   const lines = order.map((id, i) => `${JSON.stringify(id)}:${JSON.stringify(byId[id])}${i < order.length - 1 ? "," : ""}`);
   return `{"version":${stories.version},"language":${JSON.stringify(lang)},"order":${JSON.stringify(order)},"byId":{\n${lines.join("\n")}\n}}\n`;
@@ -564,7 +688,7 @@ export function compileStoriesArtifact(input: {
  * generated asset exists; the validator errors on a missing one once the
  * stories have been generated, so a shipped build plays every sentence.
  */
-export function compileStoryAssetsModule(stories: Stories, requirePrefix: string): string {
+export function compileStoryAssetsModule(stories: Stories, requirePrefix: string, policy: StoryAudioPolicy = storyAudioPolicy(stories.language)): string {
   const lang = stories.language;
   const lines = [
     "/**",
@@ -574,10 +698,13 @@ export function compileStoryAssetsModule(stories: Stories, requirePrefix: string
     "",
     "export const STORY_SENTENCE_ASSETS: Record<string, number> = {",
   ];
-  const keys = [...new Set(stories.stories.flatMap((st) => st.sentences.map((s) => storySentenceAssetKey(lang, stories, s))))].sort();
+  const bundled = bundledStoryIds(stories, policy);
+  const codec = storyCodec(lang);
+  const keys = [...new Set(stories.stories.filter((st) => bundled.has(st.id)).flatMap((st) => st.sentences.map((s) => storySentenceAssetKey(lang, stories, s, codec))))].sort();
   for (const key of keys) {
-    if (!existsSync(safeResolve(receptionAssetsDir(lang), `${key}.mp3`))) continue;
-    lines.push(`  "${key}": require("${requirePrefix}/${receptionAssetsDir(lang)}/${key}.mp3"),`);
+    const file = assetFileName(key, codec);
+    if (!existsSync(safeResolve(receptionAssetsDir(lang), file))) continue;
+    lines.push(`  "${key}": require("${requirePrefix}/${receptionAssetsDir(lang)}/${file}"),`);
   }
   lines.push("};", "");
   return lines.join("\n");

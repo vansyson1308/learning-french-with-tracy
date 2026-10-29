@@ -12,8 +12,10 @@
  */
 
 import { createHash } from "crypto";
-import { execFileSync } from "child_process";
+import { execFileSync, spawnSync } from "child_process";
 import { readFileSync } from "fs";
+
+import { CLIPPING, clippingIssue, ffClipping, type ClippingStats } from "./audio-clipping";
 
 export type VoiceFile = { path: string; sha256: string | null; bytes: number | null };
 export type VoiceFiles = Record<"model" | "config" | "modelCard", VoiceFile>;
@@ -109,33 +111,72 @@ export function ffprobeDuration(p: string): number {
   return Number(out);
 }
 
-export function ffVolume(p: string): { maxVolumeDb: number | null } {
-  const out = execFileSync("ffmpeg", ["-i", p, "-af", "volumedetect", "-f", "null", "-"], {
-    encoding: "utf8",
-    stdio: ["ignore", "pipe", "pipe"],
-  });
-  const m = /max_volume:\s*(-?[\d.]+)\s*dB/.exec(out);
-  return { maxVolumeDb: m ? Number(m[1]) : null };
+/**
+ * ffmpeg's filter reports (volumedetect, silencedetect) go to STDERR.
+ * QC 2026-10-29b §3.1: the earlier helpers parsed stdout only, so the
+ * clipping and edge-silence checks never saw a value (every report row had
+ * null levels). The analysis output is read from stderr now.
+ */
+function ffAnalyze(p: string, filter: string): string {
+  const r = spawnSync("ffmpeg", ["-hide_banner", "-nostats", "-i", p, "-af", filter, "-f", "null", "-"], { encoding: "utf8" });
+  if (r.status !== 0) throw new Error(`ffmpeg ${filter} failed on ${p}: ${(r.stderr ?? "").slice(-400)}`);
+  return `${r.stdout ?? ""}\n${r.stderr ?? ""}`;
 }
 
-export function ffEdgeSilence(p: string): { lead: number | null; trail: number | null } {
-  const out = execFileSync(
-    "ffmpeg",
-    ["-i", p, "-af", "silencedetect=noise=-40dB:d=0.05", "-f", "null", "-"],
-    { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }
-  );
-  const starts = [...out.matchAll(/silence_start:\s*([\d.]+)/g)].map((m) => Number(m[1]));
+export function ffVolume(p: string): { maxVolumeDb: number | null; meanVolumeDb: number | null } {
+  const out = ffAnalyze(p, "volumedetect");
+  const max = /max_volume:\s*(-?[\d.]+|-inf)\s*dB/.exec(out);
+  const mean = /mean_volume:\s*(-?[\d.]+|-inf)\s*dB/.exec(out);
+  const num = (m: RegExpExecArray | null) => (m === null ? null : m[1] === "-inf" ? -Infinity : Number(m[1]));
+  return { maxVolumeDb: num(max), meanVolumeDb: num(mean) };
+}
+
+/** Edge-silence threshold shared by the QA and the speech-only measurement. */
+export const SILENCE_NOISE_DB = -40;
+export const SILENCE_MIN_SEC = 0.05;
+
+export type EdgeSilence = {
+  lead: number | null;
+  trail: number | null;
+  /** Speech-only duration: the clip minus its leading and trailing silence. */
+  speechSec: number;
+};
+
+/**
+ * Leading/trailing silence from silencedetect output (pure; tested). A
+ * silence that runs to the end of the stream has no `silence_end` on older
+ * ffmpeg and one at the stream end on newer builds: both count as trailing.
+ */
+export function parseEdgeSilence(out: string, duration: number): EdgeSilence {
+  const starts = [...out.matchAll(/silence_start:\s*(-?[\d.]+)/g)].map((m) => Math.max(0, Number(m[1])));
   const ends = [...out.matchAll(/silence_end:\s*([\d.]+)/g)].map((m) => Number(m[1]));
-  const duration = ffprobeDuration(p);
-  let lead: number | null = null;
-  let trail: number | null = null;
-  if (starts.length > 0 && starts[0] <= 0.01 && ends.length > 0) lead = ends[0];
-  const lastStart = starts[starts.length - 1];
-  if (lastStart !== undefined) {
-    const lastEnd = ends[ends.length - 1];
-    if (lastEnd === undefined || lastEnd < lastStart) trail = duration - lastStart;
-  }
-  return { lead, trail };
+  const spans = starts.map((start, i) => ({ start, end: Math.min(ends[i] ?? duration, duration) }));
+  const first = spans[0];
+  const last = spans[spans.length - 1];
+  const leadSpan = first !== undefined && first.start <= 0.01 ? first : null;
+  const trailSpan = last !== undefined && last.end >= duration - 0.02 ? last : null;
+  const lead = leadSpan === null ? null : leadSpan.end;
+  const trail = trailSpan === null ? null : Math.max(0, duration - trailSpan.start);
+  // One silence spanning the whole clip: no speech at all.
+  const speechSec = leadSpan !== null && leadSpan === trailSpan ? 0 : Math.max(0, duration - (lead ?? 0) - (trail ?? 0));
+  return { lead, trail, speechSec };
+}
+
+/**
+ * Decoded length of the analysed stream (astats sample count / sample rate),
+ * or null. An MP3's container duration (ffprobe) includes the encoder delay,
+ * while silencedetect timestamps run on the decoded samples: edge silence is
+ * measured against the decoded length.
+ */
+export function parseDecodedSec(out: string): number | null {
+  const samples = /Number of samples:\s*(\d+)/.exec(out);
+  const rate = /Audio:[^\n]*?(\d+) Hz/.exec(out);
+  return samples && rate ? Number(samples[1]) / Number(rate[1]) : null;
+}
+
+export function ffEdgeSilence(p: string, fallbackDuration?: number): EdgeSilence {
+  const out = ffAnalyze(p, `silencedetect=noise=${SILENCE_NOISE_DB}dB:d=${SILENCE_MIN_SEC},astats=metadata=0`);
+  return parseEdgeSilence(out, parseDecodedSec(out) ?? fallbackDuration ?? ffprobeDuration(p));
 }
 
 /**
@@ -150,6 +191,11 @@ export function charsPerSecBand(language: string): [number, number] {
 
 /** Transcripts this short (letters/digits only) have no meaningful speaking rate. */
 export const SHORT_TRANSCRIPT_UNITS = 3;
+
+/** A 1–3 letter/digit transcript ("du", "Sie", "sí", 犬): rendered with edge padding (QC 2026-10-29b §3.3). */
+export function isShortTranscript(text: string): boolean {
+  return [...text].filter((c) => /[\p{L}\p{N}]/u.test(c)).length <= SHORT_TRANSCRIPT_UNITS;
+}
 /** Absolute duration band for short transcripts (one word, one or two Han / kana / Hangul characters). */
 export const SHORT_DURATION_BAND: [number, number] = [0.25, 3.0];
 
@@ -171,8 +217,14 @@ export function rateIssue(transcript: string, durationSec: number, band: [number
 
 export type TechnicalQa = {
   durationSec: number;
+  /** QC 2026-10-29b §3.3: duration without the leading/trailing silence. */
+  speechSec: number;
   bytes: number;
+  /** Peak level (volumedetect); reported, no longer the clipping test. */
   maxVolumeDb: number | null;
+  meanVolumeDb: number | null;
+  /** Sample-level clipping scan of the decoded PCM (scripts/lib/audio-clipping.ts); null when not measured. */
+  clipping: ClippingStats | null;
   leadingSilenceSec: number | null;
   trailingSilenceSec: number | null;
   charsPerSec: number;
@@ -180,29 +232,96 @@ export type TechnicalQa = {
   technicalIssues: string[];
 };
 
-export function technicalQa(filePath: string, transcript: string, language: string, band?: [number, number]): TechnicalQa {
+/**
+ * Technical QA thresholds. They only ever get stricter (QC 2026-10-29b §3.1):
+ * the duration floor applies to the whole (padded) clip, the speech-only
+ * floor to the clip without its edge silence, so padding cannot hide a
+ * clipped word.
+ */
+export const QA_THRESHOLDS = {
+  /** Whole clip, padding included. */
+  minDurationSec: 0.25,
+  /** Speech only (silence-trimmed at -40 dB). */
+  minSpeechSec: 0.12,
+  minBytes: 800,
+  /**
+   * Clipping: at least this many CONSECUTIVE decoded samples at |x| >= 0.999
+   * (CLIPPING in scripts/lib/audio-clipping.ts). Coordinator decision
+   * 2026-10-29: the former "peak above -0.2 dB" test failed MP3 decoder
+   * overshoot (isolated samples), not clipping.
+   */
+  clippingMinRun: CLIPPING.minRun,
+  clippingSampleAbs: CLIPPING.sampleAbs,
+  /**
+   * Coordinator 2026-10-29 ("Ngưỡng chung giữ nguyên cho mọi clip mới"): a
+   * NEWLY rendered clip (its bytes are in no committed audio baseline) still
+   * fails a peak above this, on top of the sample rule. Blessed clips are
+   * judged by the sample rule only.
+   */
+  newClipMaxPeakDb: -0.2,
+  /** Peak below this: the clip is near-silent (a broken render), whatever the loudness target. */
+  quietMaxDb: -20,
+  maxLeadingSilenceSec: 1.0,
+  maxTrailingSilenceSec: 1.2,
+} as const;
+
+export type ClipMeasurement = {
+  durationSec: number;
+  bytes: number;
+  maxVolumeDb: number | null;
+  meanVolumeDb: number | null;
+  clipping: ClippingStats | null;
+  lead: number | null;
+  trail: number | null;
+  speechSec: number;
+};
+
+/** `newlyRendered`: the clip's bytes are not blessed (default true: the strict bar). */
+export type QaOptions = { newlyRendered?: boolean };
+
+/** Every technical issue of one measured clip (pure; tested). */
+export function technicalIssues(m: ClipMeasurement, transcript: string, band: [number, number], opts: QaOptions = {}): string[] {
+  const t = QA_THRESHOLDS;
   const issues: string[] = [];
-  const { bytes } = sha256File(filePath);
-  const duration = ffprobeDuration(filePath);
-  const { maxVolumeDb } = ffVolume(filePath);
-  const { lead, trail } = ffEdgeSilence(filePath);
-  const charsPerSec = transcript.length / Math.max(duration, 0.001);
-  // P3b: the band comes from the language plugin (carried in the plan); the legacy table is the fallback.
-  const [lo, hi] = band ?? charsPerSecBand(language);
-  if (!(duration > 0.25)) issues.push(`duration ${duration.toFixed(2)}s too short`);
-  if (bytes < 800) issues.push("file under 800 bytes");
-  if (maxVolumeDb !== null && maxVolumeDb > -0.2) issues.push(`possible clipping (max ${maxVolumeDb}dB)`);
-  if (lead !== null && lead > 1.0) issues.push(`leading silence ${lead.toFixed(2)}s`);
-  if (trail !== null && trail > 1.2) issues.push(`trailing silence ${trail.toFixed(2)}s`);
-  const rate = rateIssue(transcript, duration, [lo, hi]);
+  if (!(m.durationSec > t.minDurationSec)) issues.push(`duration ${m.durationSec.toFixed(2)}s too short`);
+  if (!(m.speechSec >= t.minSpeechSec)) issues.push(`speech-only duration ${m.speechSec.toFixed(2)}s under ${t.minSpeechSec}s (silence-trimmed)`);
+  if (m.bytes < t.minBytes) issues.push(`file under ${t.minBytes} bytes`);
+  const clipped = clippingIssue(m.clipping);
+  if (clipped !== null) issues.push(clipped);
+  if ((opts.newlyRendered ?? true) && m.maxVolumeDb !== null && m.maxVolumeDb > t.newClipMaxPeakDb) issues.push(`peak ${m.maxVolumeDb}dB above ${t.newClipMaxPeakDb}dB (newly rendered clip)`);
+  if (m.maxVolumeDb !== null && m.maxVolumeDb < t.quietMaxDb) issues.push(`too quiet (max ${m.maxVolumeDb}dB, under ${t.quietMaxDb}dB)`);
+  if (m.lead !== null && m.lead > t.maxLeadingSilenceSec) issues.push(`leading silence ${m.lead.toFixed(2)}s`);
+  if (m.trail !== null && m.trail > t.maxTrailingSilenceSec) issues.push(`trailing silence ${m.trail.toFixed(2)}s`);
+  const rate = rateIssue(transcript, m.durationSec, band);
   if (rate !== null) issues.push(rate);
+  return issues;
+}
+
+export function measureClip(filePath: string): ClipMeasurement {
+  const { bytes } = sha256File(filePath);
+  const durationSec = ffprobeDuration(filePath);
+  const { maxVolumeDb, meanVolumeDb } = ffVolume(filePath);
+  const clipping = ffClipping(filePath);
+  const { lead, trail, speechSec } = ffEdgeSilence(filePath);
+  return { durationSec, bytes, maxVolumeDb, meanVolumeDb, clipping, lead, trail, speechSec };
+}
+
+export function technicalQa(filePath: string, transcript: string, language: string, band?: [number, number], opts: QaOptions = {}): TechnicalQa {
+  const m = measureClip(filePath);
+  // P3b: the band comes from the language plugin (carried in the plan); the legacy table is the fallback.
+  const issues = technicalIssues(m, transcript, band ?? charsPerSecBand(language), opts);
+  const round = (x: number | null) => (x === null ? null : Number(x.toFixed(3)));
+  const level = (x: number | null) => (x === null || Number.isFinite(x) ? x : -999);
   return {
-    durationSec: Number(duration.toFixed(3)),
-    bytes,
-    maxVolumeDb,
-    leadingSilenceSec: lead === null ? null : Number(lead.toFixed(3)),
-    trailingSilenceSec: trail === null ? null : Number(trail.toFixed(3)),
-    charsPerSec: Number(charsPerSec.toFixed(2)),
+    durationSec: Number(m.durationSec.toFixed(3)),
+    speechSec: Number(m.speechSec.toFixed(3)),
+    bytes: m.bytes,
+    maxVolumeDb: level(m.maxVolumeDb),
+    meanVolumeDb: level(m.meanVolumeDb),
+    clipping: m.clipping === null ? null : { ...m.clipping, peakAbs: Number(m.clipping.peakAbs.toFixed(5)), clippedShare: Number(m.clipping.clippedShare.toFixed(7)) },
+    leadingSilenceSec: round(m.lead),
+    trailingSilenceSec: round(m.trail),
+    charsPerSec: Number((transcript.length / Math.max(m.durationSec, 0.001)).toFixed(2)),
     technical: issues.length === 0 ? "pass" : "fail",
     technicalIssues: issues,
   };
@@ -274,14 +393,20 @@ export function sfxScript(out: string): string {
   return `${lines.join("\n")}\n`;
 }
 
-/** Content-addressed key for a pack clip: what is spoken, by which voice, how. */
+/**
+ * Content-addressed key for a pack clip: what is spoken, by which voice, how.
+ * `recipe` (scripts/lib/audio-recipe.ts) names a render recipe that differs
+ * from the default one; it is left out of the hash when absent, so every
+ * clip rendered with the default recipe keeps its key and its blessed bytes.
+ */
 export function packAssetKey(
   courseId: string,
   voiceId: string,
   speaker: number | null,
   text: string,
-  pipelineVersion: number
+  pipelineVersion: number,
+  recipe: string | null = null
 ): string {
-  const canonical = JSON.stringify(["pack", courseId, voiceId, speaker, text, 1.0, pipelineVersion]);
+  const canonical = JSON.stringify(["pack", courseId, voiceId, speaker, text, 1.0, pipelineVersion, ...(recipe === null ? [] : [recipe])]);
   return createHash("sha256").update(canonical).digest("hex").slice(0, 20);
 }

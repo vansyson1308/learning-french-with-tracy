@@ -5,7 +5,7 @@
  *   content/<lang>/REVIEW-TIER1-<native>.md — the learner's-language prose
  *     that teaches or judges (guidebooks, concept cards, exam instructions,
  *     writing instructions and rubric slots, scenario goals and prompts),
- *     grouped by unit, Spanish shown for context. The owner signs this one.
+ *     grouped by unit, the target language shown for context. The owner signs this one.
  *   content/<lang>/REVIEW-TIER1-<lang>.md — the target-language text a
  *     learner reads or hears at length (readings, listening scripts,
  *     scenario partner lines, model answers, speech targets, exam texts),
@@ -37,6 +37,70 @@ type Exam = { id: string; title: Native; description?: Native; sections: ExamSec
 type Reading = { id: string; use?: string; title?: Native; blocks?: { text: string }[]; texts?: { text: string }[] };
 type Clip = { id: string; use?: string; kind: string; segments: { speaker?: string; text: string }[] };
 type SpeechItem = { id: string; target: string };
+
+/**
+ * How the target language and its taught variety are named in the reviewer
+ * briefs (content/<lang>/VARIETY.md). D-10 review: the brief used to say
+ * "Spanish" for every course; a language without an entry gets a neutral
+ * brief from the pack's own language name.
+ */
+type TierLanguage = {
+  /** Endonym, for the target file's title. */
+  self: string;
+  vi: string;
+  en: string;
+  /** The production standard, in Vietnamese and English (bold in the brief). */
+  standardVi?: string;
+  standardEn?: string;
+  /** Which other forms appear only in accepted-answer lists. */
+  otherVi?: string;
+  otherEn?: string;
+};
+
+const TIER_LANGUAGES: Record<string, TierLanguage> = {
+  es: {
+    self: "español",
+    vi: "tiếng Tây Ban Nha",
+    en: "Spanish",
+    standardVi: "tiếng Tây Ban Nha bán đảo (Tây Ban Nha)",
+    standardEn: "Peninsular Spanish (Spain)",
+    otherVi: "Từ Mỹ Latinh",
+    otherEn: "Latin-American forms",
+  },
+  de: {
+    self: "Deutsch",
+    vi: "tiếng Đức",
+    en: "German",
+    standardVi: "tiếng Đức chuẩn dùng ở Đức (Bundesdeutsch)",
+    standardEn: "German as used in Germany (Bundesdeutsch)",
+    otherVi: "Dạng từ của Áo và Thụy Sĩ",
+    otherEn: "Austrian and Swiss forms",
+  },
+  fr: { self: "français", vi: "tiếng Pháp", en: "French" },
+};
+
+function tierLanguage(pack: PackSource): TierLanguage {
+  return TIER_LANGUAGES[pack.targetCode] ?? { self: pack.targetLanguage, vi: `tiếng ${pack.targetLanguage}`, en: pack.targetLanguage };
+}
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+function targetBrief(l: TierLanguage): string[] {
+  const vi = [
+    `**Tiếng Việt.** Cảm ơn bạn đã duyệt! Đây là các văn bản ${l.vi} dài nhất mà người học Việt Nam đọc hoặc nghe trong khoá A1 (khoảng 2–3 giờ).`,
+    `Chuẩn là **${l.standardVi ?? l.vi}**, trình độ **A1** (CEFR), giọng tự nhiên — không dịch máy, không quá trang trọng.`,
+    "Với mỗi dòng: đánh dấu [x] nếu đúng và tự nhiên; nếu không, ghi cách sửa ngay dưới dòng đó. Các tên riêng Việt Nam (Minh, Linh…) là cố ý.",
+    ...(l.otherVi ? [`${l.otherVi} chỉ nằm trong danh sách đáp án chấp nhận, không xuất hiện ở đây.`] : []),
+  ];
+  const en = [
+    `**English.** Thank you for reviewing! These are the longest ${l.en} texts a Vietnamese A1 learner reads or hears in this course (about 2–3 hours).`,
+    `The standard is **${l.standardEn ?? l.en}** at **CEFR A1**, natural register — no machine-translation flavour, not overly formal.`,
+    "For each line: tick [x] if it is correct and natural; otherwise write the correction directly under the line. Vietnamese names (Minh, Linh…) are intentional.",
+    ...(l.otherEn ? [`${l.otherEn} appear only in accepted-answer lists, never here.`] : []),
+    "Single words and short phrases are already machine-checked (LanguageTool), so they are not listed.",
+  ];
+  return [vi.join(" "), "", en.join(" ")];
+}
 
 const oneLine = (s: string) => s.replace(/\s*\n\s*/g, " ").replace(/\s+/g, " ").trim();
 const words = (s: string) => s.split(/\s+/).filter(Boolean).length;
@@ -107,7 +171,7 @@ export function renderTier1Native(courseId: string): string {
   const out = [
     `# Review Tier 1 — tiếng Việt (${courseId})`,
     "",
-    `Những câu chữ tiếng Việt **dạy hoặc chấm** người học: sổ tay từng chương, thẻ khái niệm, đề viết và tiêu chí chấm, mục tiêu và lời nhắc hội thoại, hướng dẫn thi. Tiếng Tây Ban Nha in nghiêng chỉ để đối chiếu. Đánh dấu [x] khi câu đúng và tự nhiên; sửa ngay trong nguồn (đường dẫn theo id) hoặc ghi chú bên cạnh. Khi xong, ghi \`review: { native: "<tên>", date: "YYYY-MM-DD", checklist: "content/${lang}/REVIEW-TIER1-${nat}.md" }\` vào \`content/courses/${courseId}.profile.json\` — nhãn "Bản beta" trong app sẽ tự tắt.`,
+    `Những câu chữ tiếng Việt **dạy hoặc chấm** người học: sổ tay từng chương, thẻ khái niệm, đề viết và tiêu chí chấm, mục tiêu và lời nhắc hội thoại, hướng dẫn thi. ${capitalize(tierLanguage(pack).vi)} in nghiêng chỉ để đối chiếu. Đánh dấu [x] khi câu đúng và tự nhiên; sửa ngay trong nguồn (đường dẫn theo id) hoặc ghi chú bên cạnh. Khi xong, ghi \`review: { native: "<tên>", date: "YYYY-MM-DD", checklist: "content/${lang}/REVIEW-TIER1-${nat}.md" }\` vào \`content/courses/${courseId}.profile.json\` — nhãn "Bản beta" trong app sẽ tự tắt.`,
     "",
     `Sinh bởi \`bun scripts/author.ts review-tiers --course ${courseId}\`. Phần còn lại (nhãn từ, lựa chọn, câu dịch) do tầng tự động kiểm: validators, LanguageTool, đối chiếu dịch ngược (\`content/${lang}/_drafts/BACKTRANSLATION.md\`).`,
     "",
@@ -148,13 +212,11 @@ export function renderTier1Target(courseId: string): string {
   const connected = (c: Clip) => words(c.segments.map((s) => s.text).join(" ")) >= 6;
 
   const out = [
-    `# Review Tier 1 — español (${courseId})`,
+    `# Review Tier 1 — ${tierLanguage(pack).self} (${courseId})`,
     "",
     "## Hướng dẫn cho người duyệt / Brief for the reviewer",
     "",
-    "**Tiếng Việt.** Cảm ơn bạn đã duyệt! Đây là các văn bản tiếng Tây Ban Nha dài nhất mà người học Việt Nam đọc hoặc nghe trong khoá A1 (khoảng 2–3 giờ). Chuẩn là **tiếng Tây Ban Nha bán đảo (Tây Ban Nha)**, trình độ **A1** (CEFR), giọng tự nhiên — không dịch máy, không quá trang trọng. Với mỗi dòng: đánh dấu [x] nếu đúng và tự nhiên; nếu không, ghi cách sửa ngay dưới dòng đó. Các tên riêng Việt Nam (Minh, Linh…) là cố ý. Từ Mỹ Latinh chỉ nằm trong danh sách đáp án chấp nhận, không xuất hiện ở đây.",
-    "",
-    "**English.** Thank you for reviewing! These are the longest Spanish texts a Vietnamese A1 learner reads or hears in this course (about 2–3 hours). The standard is **Peninsular Spanish (Spain)** at **CEFR A1**, natural register — no machine-translation flavour, not overly formal. For each line: tick [x] if it is correct and natural; otherwise write the correction directly under the line. Vietnamese names (Minh, Linh…) are intentional. Latin-American forms appear only in accepted-answer lists, never here. Single words and short phrases are already machine-checked (LanguageTool), so they are not listed.",
+    ...targetBrief(tierLanguage(pack)),
     "",
     `Generated by \`bun scripts/author.ts review-tiers --course ${courseId}\`.`,
     "",

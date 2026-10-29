@@ -29,6 +29,8 @@ export type WordBankExercise = {
   audioTarget?: string;
   tokens: string[];
   answer: string[];
+  /** D-10 review: other correct sentences the same tiles build (each a token sequence). */
+  alternatives?: string[][];
   /** Compiler-emitted stable lexeme ids this exercise unambiguously assesses (see content/schema.ts). Unused by the runtime until deliberate eligibility metadata lands. */
   gradeTargets?: string[];
   /** AUTHORED course-objective targets (Phase 6 §29-31) — curriculum/assessment meaning, orthogonal to the lexical gradeTargets system. */

@@ -40,6 +40,7 @@ import {
   validateAssessment,
 } from "./assessment";
 import { buildCefrAlignment, buildObjectiveCoverage, evaluateClaimGate } from "./assessment-reports";
+import { courseLangOf, demotePendingAudio, pendingAudioLangs } from "./audio-pending";
 import { examTrackPaths } from "./exam-bank";
 import { compileDailyWordsArtifact, deriveSyllabus, loadLaterSyllabus, loadSyllabus, loadTopicUnits, validateLaterSyllabus, validateSyllabusData, validateTopicUnits } from "./syllabus";
 import { validateEnglishFields } from "./english-fields";
@@ -571,8 +572,16 @@ export function validateSecondaryNativeCourses(lang: string, packs: LoadedPack[]
 /** Every validator's errors, in the compiler's order. Empty = sources are valid. */
 export function validateAllSources(): string[] {
   const packs = loadPacks();
-  const errors = [...validateContent().errors];
-  for (const lang of discoverTargets(packs)) errors.push(...validateTarget(lang, packs));
+  const pending = pendingAudioLangs();
+  const demoted: string[] = [];
+  const keep = (errs: string[], langOf: (m: string) => string | null) => {
+    const r = demotePendingAudio(errs, langOf, pending);
+    demoted.push(...r.demoted);
+    return r.errors;
+  };
+  const errors = keep([...validateContent().errors], courseLangOf);
+  for (const lang of discoverTargets(packs)) errors.push(...keep(validateTarget(lang, packs), () => lang));
+  if (demoted.length > 0) console.warn(`WARN ${demoted.length} missing-audio error(s) of pending language(s) ${[...pending].join(", ")} deferred to their own audio run (LFT_AUDIO_PENDING)`);
   // QC 2026-10-29 §1.3: an `en` native-text field is English, in every course.
   errors.push(...validateEnglishFields());
   return errors;

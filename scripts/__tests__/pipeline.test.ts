@@ -5,6 +5,7 @@ import { existsSync, readFileSync } from "fs";
 import { PackSchema, SourceRegistrySchema } from "../../content/schema";
 import { FR_LEXEME_IDS } from "../../src/lib/learning/ids-fr";
 import { audioKeyHash, checkAudio, loadBaselineGroups, MockTtsProvider, type AudioSpec } from "../lib/audio";
+import { courseLangOf, demotePendingAudio, pendingAudioLangs } from "../lib/audio-pending";
 import {
   assertGeneratedTarget,
   canonicalJson,
@@ -37,7 +38,8 @@ function stripGradeTargets(value: unknown): unknown {
 
 describe("content validation (current tree)", () => {
   test("all sources, the fr map, catalog and registry validate cleanly", () => {
-    const { errors } = validateContent();
+    // Missing audio of a pending language waits for its own run (audio workflow only: scripts/lib/audio-pending.ts).
+    const { errors } = demotePendingAudio(validateContent().errors, courseLangOf, pendingAudioLangs());
     expect(errors).toEqual([]);
   });
 

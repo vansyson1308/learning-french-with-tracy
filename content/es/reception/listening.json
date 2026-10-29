@@ -676,7 +676,7 @@
         },
         {
           "speaker": "A",
-          "text": "Claro, la mesa cerca de la puerta."
+          "text": "Claro, hay una mesa libre cerca de la puerta."
         }
       ],
       "objectiveRefs": [
@@ -1222,6 +1222,31 @@
       }
     },
     {
+      "id": "es.clip.uk_buenos_dias",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "¡Buenos días!"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:buenos-dias"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
       "id": "es.clip.uk_perdon",
       "kind": "message",
       "segments": [
@@ -1485,7 +1510,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Hay siete días en una semana."
+          "text": "La semana tiene siete días."
         }
       ],
       "objectiveRefs": [
@@ -2248,7 +2273,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Y una botella de agua! Son tres euros. ¡Gracias, buen día!"
+          "text": "¡Y una botella de agua! Son tres euros. ¡Gracias, que tenga un buen día!"
         }
       ],
       "objectiveRefs": [
@@ -2271,7 +2296,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Muy bien. Son dos euros. ¡Gracias, buen día!"
+          "text": "Muy bien. Son dos euros. ¡Gracias, que tenga un buen día!"
         }
       ],
       "objectiveRefs": [
@@ -2386,7 +2411,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡De nada! ¡Buen día!"
+          "text": "¡De nada! ¡Que vaya bien!"
         }
       ],
       "objectiveRefs": [
@@ -2639,7 +2664,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Bienvenida! ¿Quieres tomar algo?"
+          "text": "¡Hola, pasa, pasa! ¿Quieres tomar algo?"
         }
       ],
       "objectiveRefs": [
@@ -2823,7 +2848,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Mucho gusto, Nadia! ¿Está bien?"
+          "text": "¡Mucho gusto, Nadia! ¿Qué tal está?"
         }
       ],
       "objectiveRefs": [
@@ -2938,7 +2963,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Buen día!"
+          "text": "¡Que tenga un buen día!"
         }
       ],
       "objectiveRefs": [
@@ -3122,7 +3147,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Gracias a usted! ¡Buen día!"
+          "text": "¡Gracias a usted! ¡Que tenga un buen día!"
         }
       ],
       "objectiveRefs": [
@@ -3214,7 +3239,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Otra cosa?"
+          "text": "¿Quiere algo más?"
         }
       ],
       "objectiveRefs": [
@@ -3421,7 +3446,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Yo también hablo inglés! Bueno, ya sabe todo de mí… o casi."
+          "text": "¡Yo también hablo inglés! Bueno, ya sé mucho de usted… ¡Ahora pregúnteme usted a mí!"
         }
       ],
       "objectiveRefs": [
@@ -3467,7 +3492,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "No pasa nada. Bueno, ya sabe todo de mí… o casi."
+          "text": "No pasa nada. Bueno, ya sé mucho de usted… ¡Ahora pregúnteme usted a mí!"
         }
       ],
       "objectiveRefs": [
@@ -4341,7 +4366,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Perdone, ¿qué desea tomar?"
+          "text": "Hola, ¿qué desea tomar?"
         },
         {
           "speaker": "A",
@@ -4408,7 +4433,7 @@
         },
         {
           "speaker": "A",
-          "text": "Llueve mucho, lleva paraguas."
+          "text": "Llueve mucho, coge el paraguas."
         }
       ],
       "objectiveRefs": [
@@ -4999,7 +5024,7 @@
       "segments": [
         {
           "speaker": "A",
-          "text": "Hoy el supermercado vende la fruta más barata."
+          "text": "Hoy en el supermercado la fruta está más barata."
         }
       ],
       "objectiveRefs": [
@@ -5136,11 +5161,11 @@
         },
         {
           "speaker": "B",
-          "text": "Sí, claro. Pero el piso es pequeño, así que solo cuatro personas, ¿vale?"
+          "text": "Sí, claro. Pero el piso es pequeño, así que solo tres personas, ¿vale?"
         },
         {
           "speaker": "A",
-          "text": "Perfecto, entonces somos cuatro. ¡Hasta el viernes, Marta!"
+          "text": "Perfecto, entonces somos tres. ¡Hasta el viernes, Marta!"
         }
       ],
       "objectiveRefs": [
@@ -5350,7 +5375,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Terminamos. Gracias."
+          "text": "Hemos terminado. Muchas gracias."
         }
       ],
       "objectiveRefs": [
@@ -5583,7 +5608,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Terminamos. Gracias."
+          "text": "Hemos terminado. Muchas gracias."
         }
       ],
       "objectiveRefs": [

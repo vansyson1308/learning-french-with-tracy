@@ -83,9 +83,7 @@
             },
             "variants": [
               "ich bin 25",
-              "ich bin fünfundzwanzig",
-              "ich bin 25 jahre alt",
-              "ich bin fünfundzwanzig jahre alt"
+              "ich bin 25 jahre alt"
             ],
             "cueProvided": true
           }
@@ -137,7 +135,8 @@
             },
             "variants": [
               "ich wohne in hamburg",
-              "ich lebe in hamburg"
+              "ich lebe in hamburg",
+              "in hamburg"
             ],
             "cueProvided": true
           }
@@ -216,8 +215,7 @@
               "en": "age"
             },
             "variants": [
-              "25",
-              "fünfundzwanzig"
+              "25"
             ],
             "cueProvided": true
           },
@@ -275,7 +273,10 @@
             },
             "variants": [
               "ich spiele gern fußball",
-              "ich spiele gerne fußball"
+              "ich spiele gerne fußball",
+              "ich spiele sehr gern fußball",
+              "fußball spiele ich gern",
+              "ich spiele fußball gern"
             ],
             "cueProvided": false
           }
@@ -401,7 +402,9 @@
             },
             "variants": [
               "er wohnt in köln",
-              "er lebt in köln"
+              "er lebt in köln",
+              "wohnt in köln",
+              "lebt in köln"
             ],
             "cueProvided": true
           }
@@ -445,7 +448,9 @@
               "en": "the small cat"
             },
             "variants": [
-              "die katze ist klein"
+              "katze ist klein",
+              "katze ist sehr klein",
+              "kleine katze"
             ],
             "cueProvided": false
           },
@@ -456,8 +461,9 @@
               "en": "the big house"
             },
             "variants": [
-              "das haus ist groß",
-              "das haus ist gross"
+              "haus ist groß",
+              "haus ist sehr groß",
+              "großes haus"
             ],
             "cueProvided": false
           }
@@ -563,8 +569,8 @@
             },
             "variants": [
               "um drei",
-              "um 3",
-              "um 15 uhr"
+              "um 15 uhr",
+              "um 15"
             ],
             "cueProvided": true
           }
@@ -644,8 +650,7 @@
               "en": "arrival time"
             },
             "variants": [
-              "um acht",
-              "um 8"
+              "um acht"
             ],
             "cueProvided": true
           }
@@ -724,7 +729,9 @@
               "tschüss",
               "viele grüße",
               "liebe grüße",
-              "bis dann"
+              "bis dann",
+              "tschüs",
+              "bis später"
             ],
             "cueProvided": false
           }
@@ -809,7 +816,9 @@
               "tschüss",
               "viele grüße",
               "liebe grüße",
-              "bis dann"
+              "bis dann",
+              "tschüs",
+              "bis samstag"
             ],
             "cueProvided": false
           }
@@ -998,7 +1007,8 @@
             "variants": [
               "viele grüße",
               "mit freundlichen grüßen",
-              "freundliche grüße"
+              "freundliche grüße",
+              "beste grüße"
             ],
             "cueProvided": false
           }
@@ -1007,7 +1017,7 @@
         "maxTokens": 30
       },
       "modelAnswers": [
-        "Sehr geehrte Damen und Herren, haben Sie am Samstag ein Zimmer frei? Viele Grüße\nMinh"
+        "Sehr geehrte Damen und Herren, haben Sie am Samstag ein Zimmer frei? Mit freundlichen Grüßen\nMinh Tran"
       ],
       "objectiveRefs": [
         "de.obj.writing.form_filling"
@@ -1201,8 +1211,7 @@
               "en": "street"
             },
             "variants": [
-              "bahnhofstraße 5",
-              "bahnhofstrasse 5"
+              "bahnhofstraße 5"
             ],
             "cueProvided": true
           },
@@ -1290,8 +1299,7 @@
               "en": "age"
             },
             "variants": [
-              "28",
-              "achtundzwanzig"
+              "28"
             ],
             "cueProvided": true
           },
@@ -1655,8 +1663,7 @@
               "en": "the big bed"
             },
             "variants": [
-              "das bett ist groß",
-              "das bett ist gross"
+              "das bett ist groß"
             ],
             "cueProvided": false
           },
@@ -1774,9 +1781,7 @@
             },
             "variants": [
               "um acht",
-              "um 8",
-              "um 20 uhr",
-              "um zwanzig uhr"
+              "um 20 uhr"
             ],
             "cueProvided": true
           }
@@ -2144,8 +2149,7 @@
               "en": "number of nights"
             },
             "variants": [
-              "2",
-              "zwei"
+              "2"
             ],
             "cueProvided": true
           }
@@ -2244,8 +2248,7 @@
               "en": "time"
             },
             "variants": [
-              "um neun",
-              "um 9"
+              "um neun"
             ],
             "cueProvided": true
           }
@@ -2336,7 +2339,6 @@
             },
             "variants": [
               "um fünf",
-              "um 5",
               "um 17 uhr"
             ],
             "cueProvided": true
@@ -2508,8 +2510,7 @@
               "en": "ten minutes"
             },
             "variants": [
-              "zehn minuten",
-              "10 minuten"
+              "zehn minuten"
             ],
             "cueProvided": true
           }
@@ -2610,8 +2611,7 @@
               "en": "age"
             },
             "variants": [
-              "28",
-              "achtundzwanzig"
+              "28"
             ],
             "cueProvided": true
           }
@@ -2746,8 +2746,7 @@
               "en": "address"
             },
             "variants": [
-              "goethestraße 7",
-              "goethestrasse 7"
+              "goethestraße 7"
             ],
             "cueProvided": true
           },
@@ -2880,8 +2879,7 @@
               "en": "age"
             },
             "variants": [
-              "24",
-              "vierundzwanzig"
+              "24"
             ],
             "cueProvided": true
           },
@@ -2997,9 +2995,7 @@
             },
             "variants": [
               "um 19 uhr",
-              "um sieben",
-              "um 7",
-              "um neunzehn uhr"
+              "um sieben"
             ],
             "cueProvided": true
           },
@@ -3157,7 +3153,7 @@
         "maxTokens": 45
       },
       "modelAnswers": [
-        "Liebe Frau Wolf, morgen kann ich leider nicht zum Kurs kommen. Ich bin krank und muss zum Arzt. Was sind die Hausaufgaben? Können Sie mir bitte schreiben? Viele Grüße\nMinh"
+        "Liebe Frau Wolf, morgen kann ich leider nicht zum Kurs kommen. Ich bin krank und muss zum Arzt. Was sind die Hausaufgaben? Können Sie mir das bitte schreiben? Viele Grüße\nMinh"
       ],
       "objectiveRefs": [
         "de.obj.writing.short_message"

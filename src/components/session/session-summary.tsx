@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useT } from "@/lib/i18n";
 import { DuoButton } from "@/components/duo-button";
+import { sessionResultTestId } from "@/lib/option-test-id";
 import { makeThemedStyles, radius, useThemeColors } from "@/lib/theme";
 import { XP_PERFECT_BONUS, XP_PER_LESSON } from "@/lib/store";
 import type { SessionKind } from "@/lib/session/types";
@@ -50,7 +51,7 @@ export function SessionSummary({
 
   return (
     <SafeAreaView style={styles.screen} testID="session-summary">
-      <View style={styles.center}>
+      <View style={styles.center} testID={sessionResultTestId(perfect)}>
         <Animated.View entering={ZoomIn.springify().damping(12)}>
           <Image
             source={require("@/assets/images/mascot.svg")}

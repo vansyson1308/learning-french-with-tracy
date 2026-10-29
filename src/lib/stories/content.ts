@@ -5,6 +5,7 @@
  */
 
 import { artifactsFor, memoByCourse } from "../content-registry";
+import { storyAudioSource, type StoryAudioSource } from "./read-along";
 
 /** A piece of a sentence: its text, and the lexeme it renders when it is a word. */
 export type StoryPieceTuple = [string] | [string, string];
@@ -42,6 +43,8 @@ export type CompiledStory = {
   newLexemes: string[];
   sentences: CompiledStorySentence[];
   questions: CompiledStoryQuestion[];
+  /** QC 2026-10-29b §2.3: band-1 stories with committed sentence audio are "bundled". */
+  audio?: StoryAudioSource;
 };
 
 type StoriesArtifact = { order: string[]; byId: Record<string, CompiledStory> };
@@ -67,9 +70,20 @@ export function sentenceAudio(courseId: string, sentence: Pick<CompiledStorySent
   return assetsOf(courseId)[sentence.assetKey] ?? null;
 }
 
-/** Every sentence has bundled audio: the reader offers "listen" only then. */
+/**
+ * How the reader voices a story: "bundled" sentence clips, or the device
+ * voice (QC 2026-10-29b §2.4). The single seam the reader reads. The
+ * compiled `audio` field decides; "bundled" also needs every sentence's
+ * asset in the manifest, so a missing file never starts a broken player.
+ */
+export function storyAudioSourceFor(courseId: string, story: CompiledStory): StoryAudioSource {
+  const derived = storyAudioSource(story, assetsOf(courseId));
+  return story.audio === "device-voice" ? "device-voice" : derived;
+}
+
+/** Every sentence has bundled audio: the bundled player is offered only then. */
 export function storyHasAudio(courseId: string, story: CompiledStory): boolean {
-  return story.sentences.length > 0 && story.sentences.every((s) => sentenceAudio(courseId, s) !== null);
+  return storyAudioSourceFor(courseId, story) === "bundled";
 }
 
 /** A rendered word of a sentence: its text, the spaces/punctuation that follow it, its lexeme. */

@@ -9,7 +9,8 @@
 
 import { readFileSync } from "fs";
 
-import { shq } from "../piper-audio";
+import { assetFileName, encodeOptions, opusKbpsOf, type AudioCodec } from "../audio-codec";
+import { isShortTranscript, shq } from "../piper-audio";
 import { readJson } from "../pipeline";
 
 import { kokoroEngine } from "./kokoro";
@@ -40,7 +41,27 @@ export type ScriptClip = {
   /** The pipeline version the clip's key was derived with (≥ 2 → loudness-normalised). */
   pipelineVersion: number;
   segments: { voiceId: string; speaker: number | string | null; text: string }[];
+  /** QC 2026-10-29b §3.4: a declared re-synthesis (same voice, other Piper noise scale); part of the asset key. */
+  synthesis?: { noiseScale: number; noiseW: number } | null;
+  /** Unset = mp3 (encoding.codecByLayer, scripts/lib/audio-codec.ts). */
+  codec?: AudioCodec;
 };
+
+/**
+ * QC 2026-10-29b §3.3: digital silence added before AND after every 1–3
+ * letter clip, for every engine and language, after loudness normalisation
+ * (so the padding does not change the measured loudness). The QA's 0.25 s
+ * floor applies to the padded clip; its speech-only floor ignores the pad.
+ */
+export const SHORT_CLIP_PAD_MS = 120;
+
+/** The encode-time audio filter of a clip: loudness normalisation (v ≥ 2), then the short-word padding. */
+export function encodeFilter(clip: Pick<ScriptClip, "pipelineVersion" | "segments">, loudness: EnginesDoc["loudness"]): string | null {
+  const parts: string[] = [];
+  if (clip.pipelineVersion >= 2) parts.push(`loudnorm=I=${loudness.integratedLufs}:TP=${loudness.truePeakDb}:LRA=${loudness.loudnessRange}`);
+  if (isShortTranscript(clip.segments.map((s) => s.text).join(" "))) parts.push(`adelay=${SHORT_CLIP_PAD_MS}:all=1`, `apad=pad_dur=${SHORT_CLIP_PAD_MS / 1000}`);
+  return parts.length === 0 ? null : parts.join(",");
+}
 
 /**
  * One bash script for every clip: segment WAVs by engine (each engine
@@ -88,9 +109,10 @@ export function buildSynthScript(input: {
   for (const clip of clips) {
     if (seen.has(clip.assetKey)) continue;
     seen.add(clip.assetKey);
-    const blessed = input.existingFiles?.get(clip.assetKey) ?? (input.existingDir && input.existingKeys?.has(clip.assetKey) ? `${input.existingDir}/${clip.assetKey}.mp3` : undefined);
+    const file = assetFileName(clip.assetKey, clip.codec);
+    const blessed = input.existingFiles?.get(clip.assetKey) ?? (input.existingDir && input.existingKeys?.has(clip.assetKey) ? `${input.existingDir}/${file}` : undefined);
     if (blessed !== undefined) {
-      lines.push(`cp ${shq(blessed)} ${shq(`${outDir}/${clip.assetKey}.mp3`)}`);
+      lines.push(`cp ${shq(blessed)} ${shq(`${outDir}/${file}`)}`);
       reused += 1;
       continue;
     }
@@ -98,8 +120,9 @@ export function buildSynthScript(input: {
     clip.segments.forEach((seg, i) => {
       const voice = voicesById.get(seg.voiceId);
       if (!voice) throw new Error(`synth: unknown voice ${seg.voiceId}`);
+      if (clip.synthesis && voice.engine !== "piper") throw new Error(`synth: ${clip.assetKey} declares a re-synthesis, but ${seg.voiceId} is a ${voice.engine} voice (Piper only)`);
       const list = jobsByEngine.get(voice.engine) ?? [];
-      list.push({ voiceId: seg.voiceId, speaker: seg.speaker, text: seg.text, wavPath: `${wavDir}/${clip.assetKey}.seg${i}.wav` });
+      list.push({ voiceId: seg.voiceId, speaker: seg.speaker, text: seg.text, wavPath: `${wavDir}/${clip.assetKey}.seg${i}.wav`, ...(clip.synthesis ? { noiseScale: clip.synthesis.noiseScale, noiseW: clip.synthesis.noiseW } : {}) });
       jobsByEngine.set(voice.engine, list);
     });
   }
@@ -107,7 +130,6 @@ export function buildSynthScript(input: {
     lines.push(`# --- ${engineId}: ${jobs.length} segment(s) ---`);
     lines.push(...engineFor(engineId).synthScript(jobs, voicesById, downloadsDir, wavDir, engines));
   }
-  const { integratedLufs, truePeakDb, loudnessRange } = engines.loudness;
   for (const clip of render) {
     const segWavs = clip.segments.map((_, i) => `${wavDir}/${clip.assetKey}.seg${i}.wav`);
     const joined = `${wavDir}/${clip.assetKey}.joined.wav`;
@@ -119,10 +141,11 @@ export function buildSynthScript(input: {
       lines.push(`printf '%b\\n' ${shq(entries)} > ${shq(listFile)}`);
       lines.push(`ffmpeg -v error -y -f concat -safe 0 -i ${shq(listFile)} -ar ${engines.encoding.sampleRateHz} -ac 1 ${shq(joined)}`);
     }
-    const filter = clip.pipelineVersion >= 2 ? ` -af ${shq(`loudnorm=I=${integratedLufs}:TP=${truePeakDb}:LRA=${loudnessRange}`)}` : "";
-    lines.push(
-      `ffmpeg -v error -y -i ${shq(joined)}${filter} -ar ${engines.encoding.sampleRateHz} -ac ${engines.encoding.channels} -codec:a libmp3lame -b:a ${mp3KbpsFor(engines, clip.pipelineVersion)}k ${shq(`${outDir}/${clip.assetKey}.mp3`)}`
-    );
+    const af = encodeFilter(clip, engines.loudness);
+    const filter = af === null ? "" : ` -af ${shq(af)}`;
+    const codec = clip.codec ?? "mp3";
+    const options = encodeOptions(codec, { sampleRateHz: engines.encoding.sampleRateHz, channels: engines.encoding.channels, mp3Kbps: mp3KbpsFor(engines, clip.pipelineVersion), opusKbps: opusKbpsOf(engines.encoding) });
+    lines.push(`ffmpeg -v error -y -i ${shq(joined)}${filter} ${options} ${shq(`${outDir}/${assetFileName(clip.assetKey, codec)}`)}`);
   }
   lines.push(`echo "synthesized ${render.length} clips, reused ${reused} existing assets (${clips.length} plan clips)"`);
   return `${lines.join("\n")}\n`;

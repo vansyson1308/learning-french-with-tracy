@@ -146,6 +146,34 @@ describe("TODAY composer: warm-up and backlog (§32-33)", () => {
   });
 });
 
+describe("TODAY session order (QC 2026-10-30 PR #51)", () => {
+  // A word answered correctly 10 min ago (FSRS short-term step) is due again:
+  // TODAY must open on it, then teach the new words — the device walk relies on it.
+  const learningDue = (): Record<string, FsrsCardState> => {
+    const card = fsrsScheduler.review(fsrsScheduler.initialCard(T0 - 11 * 60_000), "good", T0 - 11 * 60_000).card;
+    return { [`${Object.values(FR_LEXEME_IDS)[0]}|recognize`]: card };
+  };
+
+  test("due reviews come first, then the new words; every warm-up step precedes the first teach card", () => {
+    const plan = composeTodaySession(input({ cards: learningDue() }));
+    expect(plan.reviewCount).toBe(1);
+    const firstTeach = plan.steps.findIndex((s) => s.type === "teach");
+    const lastWarmup = plan.steps.map((s) => s.phase).lastIndexOf("warmup");
+    expect(plan.steps[0].phase).toBe("warmup");
+    expect(plan.steps[0].type).toBe("exercise");
+    expect(firstTeach).toBeGreaterThan(lastWarmup);
+    expect(plan.newCount).toBeGreaterThan(0);
+  });
+
+  test.each(["short", "regular", "long"] as TodayPreset[])("%s: reviews and new words are capped by the session length", (preset) => {
+    const plan = composeTodaySession(input({ preset, cards: cardsFor(Object.values(FR_LEXEME_IDS).slice(0, 30)) }));
+    expect(plan.reviewCount).toBe(TODAY_PRESETS[preset].review);
+    expect(plan.newCount).toBeLessThanOrEqual(TODAY_PRESETS[preset].newItems);
+    const firstTeach = plan.steps.findIndex((s) => s.type === "teach");
+    if (firstTeach >= 0) expect(plan.steps.slice(0, firstTeach).filter((s) => s.phase === "warmup")).toHaveLength(plan.reviewCount);
+  });
+});
+
 describe("TODAY composer: new material (§34-40)", () => {
   test("new candidates come only from the PATH frontier, in authored order", () => {
     const plan = composeTodaySession(input({ preset: "long" }));

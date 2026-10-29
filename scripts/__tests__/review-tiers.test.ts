@@ -42,6 +42,40 @@ describe("Tier-1 review files (es-vi)", () => {
   });
 });
 
+describe("Tier-1 review files name the course's own language and variety (D-10 review)", () => {
+  test("de-vi: German, Bundesdeutsch, Austrian and Swiss forms — never Spanish", () => {
+    const de = renderTier1Target("de-vi");
+    const vi = renderTier1Native("de-vi");
+    expect(de.split("\n")[0]).toBe("# Review Tier 1 — Deutsch (de-vi)");
+    expect(de).toContain("các văn bản tiếng Đức dài nhất");
+    expect(de).toContain("**tiếng Đức chuẩn dùng ở Đức (Bundesdeutsch)**");
+    expect(de).toContain("Dạng từ của Áo và Thụy Sĩ chỉ nằm trong danh sách đáp án chấp nhận");
+    expect(de).toContain("the longest German texts");
+    expect(de).toContain("**German as used in Germany (Bundesdeutsch)**");
+    expect(de).toContain("Austrian and Swiss forms appear only in accepted-answer lists");
+    expect(vi).toContain("Tiếng Đức in nghiêng chỉ để đối chiếu.");
+    for (const text of [de, vi]) {
+      expect(text).not.toMatch(/Tây Ban Nha|Spanish|español|Latin-American|Mỹ Latinh/);
+    }
+  });
+
+  test("es-vi keeps its Peninsular brief", () => {
+    const es = renderTier1Target("es-vi");
+    expect(es.split("\n")[0]).toBe("# Review Tier 1 — español (es-vi)");
+    expect(es).toContain("**tiếng Tây Ban Nha bán đảo (Tây Ban Nha)**");
+    expect(es).toContain("Latin-American forms appear only in accepted-answer lists, never here.");
+    expect(renderTier1Native("es-vi")).toContain("Tiếng Tây Ban Nha in nghiêng chỉ để đối chiếu.");
+  });
+
+  test("a language without a variety note gets a neutral brief (fr-vi)", () => {
+    const fr = renderTier1Target("fr-vi");
+    expect(fr.split("\n")[0]).toBe("# Review Tier 1 — français (fr-vi)");
+    expect(fr).toContain("các văn bản tiếng Pháp dài nhất");
+    expect(fr).toContain("The standard is **French** at **CEFR A1**");
+    expect(fr).not.toMatch(/Tây Ban Nha|Spanish|Latin-American/);
+  });
+});
+
 describe("beta label (P3e §8)", () => {
   test("es-vi is beta until its review is recorded; French courses are not labelled", () => {
     expect(courseIsBeta("es-vi")).toBe(true);

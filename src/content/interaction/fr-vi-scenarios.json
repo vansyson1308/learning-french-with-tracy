@@ -450,7 +450,7 @@
         "l_order": {
           "kind": "learner",
           "id": "l_order",
-          "prompt": "Hãy gọi một cà phê — hoặc một trà.",
+          "prompt": "Hãy gọi một cà phê — hoặc một tách trà.",
           "expected": [
             {
               "intent": "order_cafe",
@@ -494,7 +494,7 @@
         "l_order_b": {
           "kind": "learner",
           "id": "l_order_b",
-          "prompt": "Hãy gọi một cà phê — hoặc một trà.",
+          "prompt": "Hãy gọi một cà phê — hoặc một tách trà.",
           "expected": [
             {
               "intent": "order_cafe",
@@ -704,7 +704,7 @@
         "l_more": {
           "kind": "learner",
           "id": "l_more",
-          "prompt": "Hãy hỏi thêm nước — hoặc nói thế là đủ.",
+          "prompt": "Hãy gọi thêm nước — hoặc nói thế là đủ.",
           "expected": [
             {
               "intent": "want_eau",
@@ -750,7 +750,7 @@
         "l_more_b": {
           "kind": "learner",
           "id": "l_more_b",
-          "prompt": "Hãy hỏi thêm nước — hoặc nói thế là đủ.",
+          "prompt": "Hãy gọi thêm nước — hoặc nói thế là đủ.",
           "expected": [
             {
               "intent": "want_eau",
@@ -1293,7 +1293,7 @@
     "fr.scenario.chez_ami": {
       "id": "fr.scenario.chez_ami",
       "title": "Ở nhà một người bạn",
-      "goal": "Trả lời lời mời của bạn bạn và nói bạn muốn gì.",
+      "goal": "Trả lời lời mời của người bạn và nói bạn muốn gì.",
       "taskFamily": "conversation",
       "objectiveRefs": [
         "fr.obj.interaction.everyday_conversation"
@@ -1811,7 +1811,7 @@
         "l_order": {
           "kind": "learner",
           "id": "l_order",
-          "prompt": "Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.",
+          "prompt": "Hãy gọi một cà phê — hoặc một tách trà — một cách lịch sự.",
           "expected": [
             {
               "intent": "order_cafe",
@@ -1855,7 +1855,7 @@
         "l_order_b": {
           "kind": "learner",
           "id": "l_order_b",
-          "prompt": "Hãy gọi một cà phê — hoặc một trà — một cách lịch sự.",
+          "prompt": "Hãy gọi một cà phê — hoặc một tách trà — một cách lịch sự.",
           "expected": [
             {
               "intent": "order_cafe",
@@ -2135,7 +2135,7 @@
         "l_more": {
           "kind": "learner",
           "id": "l_more",
-          "prompt": "Hãy nói thế là đủ — hoặc hỏi thêm nước.",
+          "prompt": "Hãy nói thế là đủ — hoặc gọi thêm nước.",
           "expected": [
             {
               "intent": "more_water",
@@ -2180,7 +2180,7 @@
         "l_more_b": {
           "kind": "learner",
           "id": "l_more_b",
-          "prompt": "Hãy nói thế là đủ — hoặc hỏi thêm nước.",
+          "prompt": "Hãy nói thế là đủ — hoặc gọi thêm nước.",
           "expected": [
             {
               "intent": "more_water",

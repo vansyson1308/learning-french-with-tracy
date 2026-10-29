@@ -6,6 +6,8 @@
  * exact recipe, and so the local `plan --dry-run` path stays offline.
  */
 
+import type { CodecSettings } from "../audio-codec";
+
 export type EngineId = "piper" | "kokoro" | "melotts";
 
 /** A pinned file of a voice (downloaded twice at recon; hashes must agree). */
@@ -43,14 +45,22 @@ export type EnginesDoc = {
   licenseGate: { note: string; allow: string[]; deny: string[] };
   loudness: { integratedLufs: number; truePeakDb: number; loudnessRange: number };
   /** mp3Kbps for pipelineVersion 1–2; mp3KbpsFromVersion[v] overrides from version v on (P3f: 3 → 32 kbps). */
-  encoding: { sampleRateHz: number; channels: number; mp3Kbps: number; mp3KbpsFromVersion?: Record<string, number> };
+  encoding: { sampleRateHz: number; channels: number; mp3Kbps: number; mp3KbpsFromVersion?: Record<string, number>; codecNote?: string } & CodecSettings;
 };
 
 /** One thing to download: an URL and the local name `<voiceId>.<kind>.<copy>`. */
 export type DownloadItem = { voiceId: string; kind: string; url: string };
 
 /** One clip segment to synthesise with a given voice. */
-export type SynthJob = { voiceId: string; speaker: number | string | null; text: string; wavPath: string };
+export type SynthJob = {
+  voiceId: string;
+  speaker: number | string | null;
+  text: string;
+  wavPath: string;
+  /** QC 2026-10-29b §3.4: a declared re-synthesis (Piper only; other engines refuse it). */
+  noiseScale?: number;
+  noiseW?: number;
+};
 
 export interface TtsEngine {
   readonly id: EngineId;

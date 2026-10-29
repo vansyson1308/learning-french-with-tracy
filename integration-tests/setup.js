@@ -27,7 +27,8 @@ jest.mock("expo-audio", () => ({
   createAudioPlayer: () => ({ seekTo: jest.fn(), play: jest.fn(), replace: jest.fn(), remove: jest.fn() }),
   setAudioModeAsync: async () => {},
 }));
-jest.mock("expo-speech", () => ({ speak: jest.fn(), stop: jest.fn() }));
+// Default: no TTS voice installed; a test that needs one resolves getAvailableVoicesAsync itself.
+jest.mock("expo-speech", () => ({ speak: jest.fn(), stop: jest.fn(), getAvailableVoicesAsync: jest.fn(async () => []) }));
 jest.mock("expo-localization", () => ({
   getLocales: () => [{ languageTag: "en-US", languageCode: "en", regionCode: "US" }],
 }));
