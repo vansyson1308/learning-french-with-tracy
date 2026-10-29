@@ -21,10 +21,23 @@ export function isMissingAudioError(message: string): boolean {
   return MISSING_AUDIO.some((r) => r.test(message));
 }
 
-/** Language codes from LFT_AUDIO_PENDING ("de" or "de,it"); invalid entries are refused. */
-export function pendingAudioLangs(value: string | undefined = process.env.LFT_AUDIO_PENDING): Set<string> {
+/** The only place pending is legal: a manual dispatch of the audio workflow (QC 2026-10-29 evening §3). */
+export const AUDIO_WORKFLOW_NAME = "Audio pipeline (v2)";
+
+type CiEnv = { GITHUB_ACTIONS?: string; GITHUB_EVENT_NAME?: string; GITHUB_WORKFLOW?: string; [key: string]: string | undefined };
+
+/**
+ * Language codes from LFT_AUDIO_PENDING ("de" or "de,it"); invalid entries
+ * are refused. On GitHub Actions a non-empty value outside a
+ * workflow_dispatch of the audio workflow is an error, so a pull-request
+ * CI run or a release / candidate build can never defer missing audio.
+ */
+export function pendingAudioLangs(value: string | undefined = process.env.LFT_AUDIO_PENDING, ci: CiEnv = process.env): Set<string> {
   const codes = (value ?? "").split(",").map((s) => s.trim()).filter((s) => s.length > 0);
   for (const c of codes) if (!/^[a-z]{2,3}$/.test(c)) throw new Error(`LFT_AUDIO_PENDING: "${c}" is not a language code`);
+  if (codes.length > 0 && ci.GITHUB_ACTIONS === "true" && !(ci.GITHUB_EVENT_NAME === "workflow_dispatch" && ci.GITHUB_WORKFLOW === AUDIO_WORKFLOW_NAME)) {
+    throw new Error(`LFT_AUDIO_PENDING is only allowed in a workflow_dispatch of "${AUDIO_WORKFLOW_NAME}" (got ${ci.GITHUB_EVENT_NAME ?? "?"} of "${ci.GITHUB_WORKFLOW ?? "?"}")`);
+  }
   return new Set(codes);
 }
 

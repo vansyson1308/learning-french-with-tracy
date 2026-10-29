@@ -1,6 +1,8 @@
 import { describe, expect, test } from "bun:test";
+import { readdirSync, readFileSync } from "fs";
+import path from "path";
 
-import { courseLangOf, demotePendingAudio, isMissingAudioError, pendingAudioLangs } from "../lib/audio-pending";
+import { AUDIO_WORKFLOW_NAME, courseLangOf, demotePendingAudio, isMissingAudioError, pendingAudioLangs } from "../lib/audio-pending";
 
 describe("pending-language audio (QC 2026-10-29b §2.5: one run per language)", () => {
   const errors = [
@@ -24,9 +26,27 @@ describe("pending-language audio (QC 2026-10-29b §2.5: one run per language)", 
   });
 
   test("the env value is parsed strictly", () => {
-    expect([...pendingAudioLangs("de, it")]).toEqual(["de", "it"]);
-    expect(pendingAudioLangs(undefined).size).toBe(0);
-    expect(() => pendingAudioLangs("de;rm -rf")).toThrow(/not a language code/);
+    expect([...pendingAudioLangs("de, it", {})]).toEqual(["de", "it"]);
+    expect(pendingAudioLangs(undefined, {}).size).toBe(0);
+    expect(() => pendingAudioLangs("de;rm -rf", {})).toThrow(/not a language code/);
+  });
+
+  test("on CI, pending is legal only in a workflow_dispatch of the audio workflow (PR CI and release builds fail)", () => {
+    const audio = { GITHUB_ACTIONS: "true", GITHUB_EVENT_NAME: "workflow_dispatch", GITHUB_WORKFLOW: AUDIO_WORKFLOW_NAME };
+    expect([...pendingAudioLangs("de", audio)]).toEqual(["de"]);
+    expect(() => pendingAudioLangs("de", { ...audio, GITHUB_EVENT_NAME: "pull_request", GITHUB_WORKFLOW: "CI" })).toThrow(/only allowed in a workflow_dispatch/);
+    expect(() => pendingAudioLangs("de", { ...audio, GITHUB_WORKFLOW: "CI" })).toThrow(/only allowed/);
+    expect(() => pendingAudioLangs("de", { ...audio, GITHUB_WORKFLOW: "EAS build" })).toThrow(/only allowed/);
+    expect(pendingAudioLangs("", { ...audio, GITHUB_EVENT_NAME: "pull_request" }).size).toBe(0);
+  });
+
+  test("the audio workflow is named exactly as the guard expects", () => {
+    const yml = readFileSync(path.join(import.meta.dir, "../../.github/workflows/audio.yml"), "utf8");
+    expect(yml).toContain(`name: ${AUDIO_WORKFLOW_NAME}\n`);
+    for (const wf of readdirSync(path.join(import.meta.dir, "../../.github/workflows"))) {
+      if (wf === "audio.yml") continue;
+      expect(readFileSync(path.join(import.meta.dir, "../../.github/workflows", wf), "utf8")).not.toContain("LFT_AUDIO_PENDING");
+    }
   });
 
   test("course messages name their target language; non-audio errors are not missing audio", () => {
