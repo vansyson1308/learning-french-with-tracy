@@ -167,7 +167,8 @@ describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
   const DE = target("de");
 
   test("the voice manifests bundle the first ≤ 12 stories of the reading order; French keeps its 10 bundled stories", () => {
-    for (const [lang, t, n] of [["es", ES, 12], ["de", DE, 12], ["fr", FR, 10]] as const) {
+    // de: the first 4 here; PR stories-topup-es puts eight A1-2 stories ahead of the A2-1 ones and extends it to 12.
+    for (const [lang, t, n] of [["es", ES, 12], ["de", DE, 4], ["fr", FR, 10]] as const) {
       const policy = storyAudioPolicy(lang);
       expect(policy.kind).toBe("band-1");
       if (policy.kind !== "band-1") continue;
@@ -175,7 +176,9 @@ describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
       expect(storyAudioProblems(t.stories, policy)).toEqual({ errors: [], warnings: [] });
     }
     expect(bundledStoryIds(FR.stories, storyAudioPolicy("fr")).size).toBe(FR.stories.stories.length);
-    expect(bundledStoryIds(DE.stories, storyAudioPolicy("de")).size).toBe(STORY_AUDIO_MAX_BUNDLED);
+    expect(bundledStoryIds(DE.stories, storyAudioPolicy("de")).size).toBe(4);
+    expect(storyAudioPolicy("de").kind === "band-1" && storyAudioPolicy("es").kind === "band-1").toBe(true);
+    expect(STORY_AUDIO_MAX_BUNDLED).toBe(12);
   });
 
   test("parse: absent = all, false = none, band-1 = the list; anything else is refused", () => {
