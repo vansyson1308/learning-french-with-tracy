@@ -8,6 +8,8 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, readdirSync, readFileSync, statSync } from "fs";
 import path from "path";
 
+import { isPendingLanguageAsset, pendingAudioLangs } from "../../../scripts/lib/audio-pending";
+
 const ROOT = path.resolve(import.meta.dir, "../../..");
 
 function files(dir: string, re: RegExp): string[] {
@@ -43,7 +45,9 @@ describe("release hygiene (P3g E)", () => {
       }
     }
     const shipped = files(path.join(ROOT, "assets/audio"), /\.(mp3|wav)$/).map((f) => path.relative(ROOT, f).replace(/\\/g, "/"));
-    const orphans = shipped.filter((f) => !referenced.has(f) && !f.startsWith("assets/audio/xx-"));
+    // A language whose audio run comes next (audio workflow only: scripts/lib/audio-pending.ts) keeps its old files until then.
+    const pending = pendingAudioLangs();
+    const orphans = shipped.filter((f) => !referenced.has(f) && !f.startsWith("assets/audio/xx-") && !isPendingLanguageAsset(f, pending));
     expect(orphans).toEqual([]);
   });
 

@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "fs";
 import path from "path";
 
-import { AUDIO_WORKFLOW_NAME, courseLangOf, demotePendingAudio, isMissingAudioError, pendingAudioLangs } from "../lib/audio-pending";
+import { AUDIO_WORKFLOW_NAME, courseLangOf, demotePendingAudio, isMissingAudioError, isPendingLanguageAsset, pendingAudioLangs } from "../lib/audio-pending";
 
 describe("pending-language audio (QC 2026-10-29b §2.5: one run per language)", () => {
   const errors = [
@@ -27,7 +27,7 @@ describe("pending-language audio (QC 2026-10-29b §2.5: one run per language)", 
 
   test("the env value is parsed strictly", () => {
     expect([...pendingAudioLangs("de, it", {})]).toEqual(["de", "it"]);
-    expect(pendingAudioLangs(undefined, {}).size).toBe(0);
+    expect(pendingAudioLangs("", {}).size).toBe(0);
     expect(() => pendingAudioLangs("de;rm -rf", {})).toThrow(/not a language code/);
   });
 
@@ -47,6 +47,13 @@ describe("pending-language audio (QC 2026-10-29b §2.5: one run per language)", 
       if (wf === "audio.yml") continue;
       expect(readFileSync(path.join(import.meta.dir, "../../.github/workflows", wf), "utf8")).not.toContain("LFT_AUDIO_PENDING");
     }
+  });
+
+  test("a pending language's bundled files are recognised by path", () => {
+    expect(isPendingLanguageAsset("assets/audio/de-reception/94c7.mp3", new Set(["de"]))).toBe(true);
+    expect(isPendingLanguageAsset("assets/audio/de/1a2b.mp3", new Set(["de"]))).toBe(true);
+    expect(isPendingLanguageAsset("assets/audio/es-reception/94c7.mp3", new Set(["de"]))).toBe(false);
+    expect(isPendingLanguageAsset("assets/audio/de-reception/94c7.mp3", new Set())).toBe(false);
   });
 
   test("course messages name their target language; non-audio errors are not missing audio", () => {

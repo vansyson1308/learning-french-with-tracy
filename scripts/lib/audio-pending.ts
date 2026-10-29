@@ -58,6 +58,12 @@ export function demotePendingAudio(errors: readonly string[], langOf: (message: 
   return { errors: kept, demoted };
 }
 
+/** A bundled audio file of a pending language (assets/audio/<lang>/ or <lang>-reception/): its orphans wait for that run. */
+export function isPendingLanguageAsset(relPath: string, pending: ReadonlySet<string>): boolean {
+  const m = /^assets\/audio\/([a-z]{2,3})(?:-reception)?\//.exec(relPath.replace(/\\/g, "/"));
+  return m !== null && pending.has(m[1]);
+}
+
 /** CI guard (audio.yml dry run): pending never names the run's own language. */
 if (import.meta.main) {
   const own = process.env.LANG_INPUT ?? "";
