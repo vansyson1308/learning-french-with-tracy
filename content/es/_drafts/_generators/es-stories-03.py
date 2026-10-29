@@ -4,7 +4,7 @@ lib = importlib.util.module_from_spec(spec); spec.loader.exec_module(lib)
 story = lib.story
 
 S = []
-S.append(story("la_cena_del_dia_de_la_madre", "A1-1", "La cena del Día de la Madre",
+S.append(story("la_cena_del_dia_de_la_madre", "A1-2", "La cena del Día de la Madre",
  ("Ngày của Mẹ, bố Javier và hai con muốn tự nấu bữa tối. Nhưng bố chưa bao giờ vào bếp.", "On Mother's Day, Javier and his two children want to cook dinner themselves. But Javier never cooks."),
  ["papa", "cortar", "echar", "olvidar"],
  [("N", "Es el Día de la Madre.", "Hôm nay là Ngày của Mẹ.", "It is Mother's Day."),
@@ -31,22 +31,22 @@ S.append(story("la_cena_del_dia_de_la_madre", "A1-1", "La cena del Día de la Ma
   ("B", "El próximo año, yo hago el pollo con arroz. ¡Lo prometo!", "Năm sau, bố sẽ làm món gà với cơm. Bố hứa đấy!", "Next year I'll make the chicken with rice. I promise!"),
   ("N", "Pilar se ríe. No le cree.", "Chị Pilar bật cười. Chị chẳng tin anh đâu.", "Pilar laughs. She doesn't believe him.")],
  [("locate", "Chị Pilar ở đâu khi ba bố con nấu ăn?", "Where is Pilar while the others cook?", [("Ở nhà mẹ đẻ", "At her mother's"), ("Ở chỗ làm", "At work"), ("Ở trong bếp", "In the kitchen")], 0),
-  ("locate", "Chuyện gì xảy ra với nồi cơm?", "What happens to the rice?", [("Lola ăn hết", "Lola eats it all"), ("Nó bị cháy đen vì Javier quên", "It burns black because Javier forgets it"), ("Pablo làm đổ", "Pablo spills it")], 1),
+  ("locate", "Chuyện gì xảy ra với nồi cơm?", "What happens to the rice?", [("Lola ăn hết", "Lola eats it all"), ("Nó bị cháy vì Javier quên", "It burns because Javier forgets it"), ("Pablo làm đổ", "Pablo spills it")], 1),
   ("infer", "Vì sao cuối truyện chị Pilar không tin lời hứa của Javier?", "Why doesn't Pilar believe Javier's promise at the end?", [("Vì anh ấy nấu ăn rất giỏi", "Because he is a very good cook"), ("Vì năm sau chị muốn tự nấu", "Because she wants to cook next year"), ("Vì Javier chưa bao giờ nấu ăn và lần này cũng làm cháy cơm", "Because Javier never cooks and this time he burnt the rice too")], 2)],
  names=["Javier", "Pilar", "Pablo", "Lola", "Día", "Madre"],
  token_map={"intentarlo": "es:w:intentar", "día": "es:w:dia", "madre": "es:w:madre", "prueba": "es:w:probar", "reírse": "es:w:reir"}))
 
-S.append(story("el_coche_de_la_tia_rosa", "A1-1", "El coche de la tía Rosa",
+S.append(story("el_coche_de_la_tia_rosa", "A1-2", "El coche de la tía Rosa",
  ("Dì Rosa chở Pablo và Lola lên núi. Giữa đường, xe hỏng.", "Aunt Rosa drives Pablo and Lola to the mountains. On the way, the car breaks down."),
  ["conducir", "arreglar", "aparecer", "romper"],
  [("N", "La tía Rosa lleva a Pablo y a Lola a un pueblo de la montaña.", "Dì Rosa đưa Pablo và Lola lên một ngôi làng trên núi.", "Aunt Rosa takes Pablo and Lola to a mountain village."),
   ("N", "Rosa conduce su coche por un camino largo.", "Dì Rosa lái xe trên một con đường dài.", "Rosa drives her car along a long road."),
   ("N", "Los niños miran la montaña por la ventana.", "Hai đứa trẻ ngắm núi qua cửa sổ.", "The children look at the mountain through the window."),
-  ("N", "A la hora de viaje, el coche hace «¡pum!» y deja de funcionar.", "Đi được một tiếng thì chiếc xe kêu «bụp!» rồi chết máy.", "An hour into the trip, the car goes \"bang!\" and stops working."),
+  ("N", "Tras una hora de viaje, el coche hace «¡pum!» y deja de funcionar.", "Đi được một tiếng thì chiếc xe kêu «bụp!» rồi chết máy.", "An hour into the trip, the car goes \"bang!\" and stops working."),
   ("A", "¡Ay, no! El coche está roto.", "Ôi, không! Xe hỏng rồi.", "Oh no! The car has broken down."),
   ("B", "¿Qué pasa, tía?", "Có chuyện gì thế dì?", "What's wrong, Auntie?"),
   ("A", "No sé. Voy a intentar arreglarlo.", "Dì không biết. Để dì thử sửa xem.", "I don't know. I'm going to try to fix it."),
-  ("N", "Rosa trabaja una hora con las manos, pero no puede arreglar el coche.", "Dì Rosa loay hoay sửa bằng tay cả tiếng đồng hồ, nhưng không sửa được.", "Rosa works on it with her hands for an hour, but she can't fix the car."),
+  ("N", "Rosa intenta arreglar el coche durante una hora, pero no puede.", "Dì Rosa loay hoay sửa xe cả tiếng đồng hồ, nhưng không sửa được.", "Rosa tries to fix the car for an hour, but she can't."),
   ("N", "Pablo tiene hambre y Lola tiene sed.", "Pablo đói còn Lola thì khát.", "Pablo is hungry and Lola is thirsty."),
   ("N", "No pasa nadie por el camino.", "Chẳng có ai đi qua con đường.", "Nobody comes along the road."),
   ("B", "Tía, ¿vamos a vivir en este camino?", "Dì ơi, mình phải sống luôn trên con đường này à?", "Auntie, are we going to live on this road?"),

@@ -45,7 +45,7 @@ AUTO_FUNCTION = {
     "ahora", "antes", "luego", "donde", "aunque", "mientras", "tan", "tanto", "poco", "poca", "pocos", "pocas",
     "os", "vuestro", "vuestra", "vuestros", "vuestras", "mío", "mía", "tuyo", "tuya", "suyo", "suya",
     "ningún", "ninguno", "ninguna", "algún", "alguno", "alguna", "algunos", "algunas", "tal", "durante",
-    "contra", "sino", "según", "ay", "pues", "claro", "encima", "debajo", "delante", "detrás",
+    "contra", "sino", "según", "tras", "ay", "pues", "claro", "encima", "debajo", "delante", "detrás",
     "míos", "mías", "tuyos", "tuyas", "suyos", "suyas", "aquel", "aquella", "aquellos", "aquellas",
 }
 # Inflected forms the resolver cannot reach (z→c plurals, -or → -ora, a verb form shadowing a noun plural).
