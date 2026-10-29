@@ -2,5 +2,1252 @@
   "version": 1,
   "language": "de-DE",
   "disabledRules": [],
-  "allow": []
+  "allow": [
+    {
+      "rule": "ALL_ALLE",
+      "match": "all",
+      "text": "all",
+      "reason": "lexeme surface (frozen learner-data key): 'all' is the uninflected determiner, as in 'all das', 'all die Jahre'"
+    },
+    {
+      "rule": "ANREDE_KOMMA_2",
+      "match": "Tschüss",
+      "text": "Tschüss bis bald!",
+      "reason": "accepted typed alternative of de-vi:us-l1-e4 (answer \"Tschüss, bis bald!\"): a learner who leaves out the comma still passes; alternatives are never displayed"
+    },
+    {
+      "rule": "ART_KLEINES_NOMEN",
+      "match": "haus",
+      "text": "das haus ist gross",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "ART_KLEINES_NOMEN",
+      "match": "haus",
+      "text": "das haus ist groß",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "ART_KLEINES_NOMEN",
+      "match": "tisch",
+      "text": "der tisch ist klein",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "DE_AGREEMENT",
+      "match": "das Bord",
+      "text": "das Bord",
+      "reason": "lexeme surface (frozen learner-data key): das Bord (shelf) is a neuter noun of its own, next to der Bord (an Bord)"
+    },
+    {
+      "rule": "DE_CASE",
+      "match": "Nationale",
+      "text": "Johannes Schmidt ist der Minister für Nationale Verteidigung.",
+      "reason": "part of an official ministry title (Minister für Nationale Verteidigung), capitalised as in the name of the ministry"
+    },
+    {
+      "rule": "DE_VERBAGREEMENT",
+      "match": "Wir bist",
+      "text": "Wir bist Studenten.",
+      "reason": "deliberate wrong option in placement de-plx-s2-sein_sel (the answer is \"Wir sind Studenten.\")"
+    },
+    {
+      "rule": "DOPPELTES_AUSRUFEZEICHEN",
+      "match": "?!",
+      "text": "Kannst du bitte die Tür zumachen?!",
+      "reason": "'?!' marks an exasperated request in an informal Tatoeba example; legitimate punctuation"
+    },
+    {
+      "rule": "DOPPELTES_AUSRUFEZEICHEN",
+      "match": "?!",
+      "text": "Wer kennt dieses Problem nicht?!",
+      "reason": "'?!' marks a rhetorical question in a Tatoeba example; legitimate punctuation"
+    },
+    {
+      "rule": "EINHEITEN_METRISCH",
+      "match": "20 Meilen",
+      "text": "Die Truppen rückten 20 Meilen vor.",
+      "reason": "a unit-conversion suggestion, not an error; miles are the unit of the source sentence"
+    },
+    {
+      "rule": "EMPFOHLENE_ZUSAMMENSCHREIBUNG",
+      "match": "in Frage",
+      "text": "Ein Urlaub in diesem Sommer kommt nicht in Frage.",
+      "reason": "'in Frage' is a valid spelling next to the recommended 'infrage' (Duden)"
+    },
+    {
+      "rule": "F_ANSTATT_PH",
+      "match": "Autobiographien",
+      "text": "Ich lese gerne Autobiographien.",
+      "reason": "'Autobiographien' is a valid spelling next to 'Autobiografien' (Duden)"
+    },
+    {
+      "rule": "FEHLERHAFTES_KOMMA_ALLG",
+      "match": ", bitte",
+      "text": "Ein Wasser, bitte",
+      "reason": "spoken order 'Ein Wasser, bitte': setting off a trailing 'bitte' with a comma is the usual written form (Duden allows it)"
+    },
+    {
+      "rule": "FREUND",
+      "match": "freund",
+      "text": "freund",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Ann",
+      "reason": "proper name: given name (Ann) in a Tatoeba lexeme example"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "anna",
+      "text": "anna",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Aoi",
+      "reason": "proper name: Japanese given name (Aoi) in a Tatoeba lexeme example"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "apotheke",
+      "text": "apotheke",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "bahnhof",
+      "text": "bahnhof",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "bahnhofstrasse",
+      "text": "bahnhofstrasse 5",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "bahnhofstraße",
+      "text": "bahnhofstraße 5",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "becker",
+      "text": "lieber herr becker",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "becker",
+      "text": "sehr geehrter herr becker",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "berlin",
+      "text": "arbeitet in berlin",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "bett",
+      "text": "das bett ist gross",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "bett",
+      "text": "das bett ist groß",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "brot",
+      "text": "brot",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "café",
+      "text": "café",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "ck",
+      "text": "ck",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "cola",
+      "text": "cola",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "damen",
+      "text": "sehr geehrte damen und herren",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "dreissig",
+      "text": "dreissig",
+      "reason": "accepted typed alternative for a keyboard without ß/ö (ss, oe); alternatives are graded, never displayed"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "dresden",
+      "text": "dresden",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "dresden",
+      "text": "in dresden",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "dt",
+      "text": "dt",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "euro",
+      "text": "3 euro",
+      "reason": "Vietnamese cue value 'Giá: 3 euro' (Vietnamese writes the currency lower-case); the learner answers 'drei Euro'"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "fenster",
+      "text": "fenster",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Fenstere",
+      "text": "Fenstere",
+      "reason": "deliberate wrong option in de-vi:ua-l2-e3 (the answer is \"Fenster\")"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "film",
+      "text": "film",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Flu",
+      "text": "der Flu___",
+      "reason": "word stem before the blank of a spelling fill-in; the options complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "frau",
+      "text": "liebe frau wolf",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "frau",
+      "text": "sehr geehrte frau wolf",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "freitag",
+      "text": "freitag",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "fußball",
+      "text": "fußball",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "fußball",
+      "text": "ich spiele gern fußball",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "fußball",
+      "text": "ich spiele gerne fußball",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Geburts",
+      "text": "der Geburts___",
+      "reason": "word stem before the blank of a spelling fill-in; the options complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "geschäft",
+      "text": "geschäft",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "getränke",
+      "text": "getränke",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "gg",
+      "text": "gg",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "goethestrasse",
+      "text": "goethestrasse 7",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "goethestraße",
+      "text": "goethestraße 7",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "gross",
+      "text": "das bett ist gross",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "gross",
+      "text": "Das Bett ist gross.",
+      "reason": "accepted typed alternative for a keyboard without ß/ö (ss, oe); alternatives are graded, never displayed"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "gross",
+      "text": "das haus ist gross",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hamburg",
+      "text": "hamburg",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hamburg",
+      "text": "ich lebe in hamburg",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hamburg",
+      "text": "ich wohne in hamburg",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hamburg",
+      "text": "in hamburg",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "haus",
+      "text": "haus",
+      "reason": "second part of a compound in a completion fill-in (das Kranken___ → haus, Bahnhof___ → straße): lower-case inside the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hausaufgabe",
+      "text": "hausaufgabe",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hausaufgaben",
+      "text": "hausaufgaben",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "herr",
+      "text": "lieber herr becker",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "herr",
+      "text": "sehr geehrter herr becker",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "herren",
+      "text": "sehr geehrte damen und herren",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hi",
+      "text": "hi",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hoa",
+      "text": "ihr name ist hoa",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hoa",
+      "text": "meine schwester heißt hoa",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hoa",
+      "text": "sie heißt hoa",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Hoa",
+      "reason": "proper name: Vietnamese given name (Hoa), a course character"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hotel",
+      "text": "hotel",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hotel",
+      "text": "hotel sonne",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Hue",
+      "reason": "proper name: Vietnamese city Huế, written Hue in German"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Hun",
+      "text": "Der Hun___ ist groß.",
+      "reason": "word stem before the blank of a spelling fill-in; the options complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "hundertundeins",
+      "text": "hundertundeins",
+      "reason": "compound numeral (Duden: numbers below a million are written as one word); the speller has no entry for it"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "jahr",
+      "text": "jahr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "jahre",
+      "text": "ich bin 25 jahre alt",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "jahre",
+      "text": "ich bin fünfundzwanzig jahre alt",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "kaffee",
+      "text": "kaffee",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "katze",
+      "text": "die katze ist klein",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Keiko",
+      "reason": "proper name: Japanese given name (Keiko) in a Tatoeba lexeme example"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Ki",
+      "text": "Das Ki___ spielt.",
+      "reason": "word stem before the blank of a spelling fill-in; the options complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "kino",
+      "text": "kino",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "koeln",
+      "text": "koeln",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "köln",
+      "text": "er lebt in köln",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "köln",
+      "text": "er wohnt in köln",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "köln",
+      "text": "in köln",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "köln",
+      "text": "köln",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "krankenhaus",
+      "text": "krankenhaus",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "kurs",
+      "text": "nicht zum kurs kommen",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lan",
+      "text": "ich bin lan",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lan",
+      "text": "ich heiße lan",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lan",
+      "text": "lan",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lan",
+      "text": "mein name ist lan",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Lan",
+      "reason": "proper name: Vietnamese given name (Lan), a course character"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "le",
+      "text": "le",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "le",
+      "text": "mai le",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Le",
+      "reason": "proper name: Vietnamese family name (Mai Le), a course character"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "leipzig",
+      "text": "in leipzig",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "leipzig",
+      "text": "leipzig",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lena",
+      "text": "ich bin lena",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lena",
+      "text": "ich heiße lena",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lena",
+      "text": "mein name ist lena",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "lieblingsessen",
+      "text": "lieblingsessen",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Lili",
+      "reason": "proper name: pet name (Lili) in a lexeme example"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Lingua",
+      "reason": "proper name: name of a fictional language school (Sprachschule Lingua) in a Goethe-format reading"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "mai",
+      "text": "ich bin mai",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "mai",
+      "text": "ich heiße mai",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "mai",
+      "text": "mai",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "mai",
+      "text": "mai le",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "mai",
+      "text": "mein name ist mai",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Mayuko",
+      "reason": "proper name: Japanese given name (Mayuko) in a Tatoeba lexeme example"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "minh",
+      "text": "ich bin minh",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "minh",
+      "text": "ich heiße minh",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "minh",
+      "text": "mein name ist minh",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "minh",
+      "text": "minh",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Minh",
+      "reason": "proper name: Vietnamese given name (Minh), a course character"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "minuten",
+      "text": "10 minuten",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "minuten",
+      "text": "zehn minuten",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Muiriel",
+      "reason": "proper name: given name (Muiriel) in a Tatoeba lexeme example"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "musik",
+      "text": "musik",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Muter",
+      "text": "Muter",
+      "reason": "deliberate wrong option in placement de-plx-s2-spell_mueller (the answer is \"Mutter\")"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "mutter",
+      "text": "mutter",
+      "reason": "deliberate wrong option in placement de-plx-s2-spell_mueller (the answer is \"Mutter\")"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "name",
+      "text": "ihr name ist hoa",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "name",
+      "text": "mein name ist lan",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "name",
+      "text": "mein name ist lena",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "name",
+      "text": "mein name ist mai",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "name",
+      "text": "mein name ist minh",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "name",
+      "text": "sein name ist paul",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Nara",
+      "reason": "proper name: Japanese city Nara in Tatoeba lexeme examples"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "nd",
+      "text": "nd",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "ndt",
+      "text": "ndt",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "nt",
+      "text": "nt",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "ntt",
+      "text": "ntt",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "oe",
+      "text": "oe",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "participle",
+      "text": "participle",
+      "reason": "paradigm cell id ('participle') of conjugationCloze exercises, an enum value, not German text"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "paul",
+      "text": "das ist paul",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "paul",
+      "text": "er heißt paul",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "paul",
+      "text": "paul",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "paul",
+      "text": "sein name ist paul",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "pham",
+      "text": "pham",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "phim",
+      "text": "xem phim",
+      "reason": "Vietnamese cue value (the learner's native language) in cueFacts; not German text"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "phút",
+      "text": "10 phút",
+      "reason": "Vietnamese cue value (the learner's native language) in cueFacts; not German text"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "saft",
+      "text": "saft",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Saitou",
+      "reason": "proper name: Japanese family name (Ken Saitou) in a lexeme example"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "samstag",
+      "text": "samstag",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "sch",
+      "text": "Das ist sch___n.",
+      "reason": "word stem before the blank of a spelling fill-in; the options complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "sch",
+      "text": "sch",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "schoen",
+      "text": "schoen",
+      "reason": "accepted typed alternative for a keyboard without ß/ö (ss, oe); alternatives are graded, never displayed"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "schwester",
+      "text": "meine schwester heißt hoa",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "siebenzehn",
+      "text": "siebenzehn",
+      "reason": "deliberate wrong option in de-vi:ud-l1-e5 (the answer is \"siebzehn\")"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "sonntag",
+      "text": "sonntag",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "sport",
+      "text": "sport",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "ss",
+      "text": "ss",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "stadt",
+      "text": "stadt",
+      "reason": "second part of a compound in a completion fill-in (das Kranken___ → haus, Bahnhof___ → straße): lower-case inside the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Stra",
+      "text": "die Stra___e",
+      "reason": "word stem before the blank of a spelling fill-in; the options complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "strase",
+      "text": "strase",
+      "reason": "deliberate wrong option in checkpoint de-cpx-s2-spell_strasse (the answer is \"straße\")"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Strasse",
+      "text": "die Strasse",
+      "reason": "accepted typed alternative for a keyboard without ß/ö (ss, oe); alternatives are graded, never displayed"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "straße",
+      "text": "straße",
+      "reason": "second part of a compound in a completion fill-in (das Kranken___ → haus, Bahnhof___ → straße): lower-case inside the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Strasze",
+      "text": "Strasze",
+      "reason": "deliberate wrong option in checkpoint de-cpx-s2-spell_strasse (the answer is \"straße\")"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "supermarkt",
+      "text": "supermarkt",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "Ta",
+      "text": "der Ta___",
+      "reason": "word stem before the blank of a spelling fill-in; the options complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "tag",
+      "text": "guten tag",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "tag",
+      "text": "tag",
+      "reason": "second part of a compound in a completion fill-in (das Kranken___ → haus, Bahnhof___ → straße): lower-case inside the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "tasche",
+      "text": "tasche",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "tee",
+      "text": "tee",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "termin",
+      "text": "termin",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "tom",
+      "text": "tom",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "tran",
+      "text": "tran",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "tt",
+      "text": "tt",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "ue",
+      "text": "ue",
+      "reason": "letter-cluster option of a spelling fill-in: the learner picks the letters that complete the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "uhr",
+      "text": "uhr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "uhr",
+      "text": "um 15 uhr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "uhr",
+      "text": "um 17 uhr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "uhr",
+      "text": "um 19 uhr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "uhr",
+      "text": "um 20 uhr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "uhr",
+      "text": "um neunzehn uhr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "uhr",
+      "text": "um zwanzig uhr",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "vietnam",
+      "text": "aus vietnam",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "vietnam",
+      "text": "vietnam",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "wasser",
+      "text": "wasser",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "wolf",
+      "text": "liebe frau wolf",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "wolf",
+      "text": "sehr geehrte frau wolf",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "xem",
+      "text": "xem phim",
+      "reason": "Vietnamese cue value (the learner's native language) in cueFacts; not German text"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "zimmer",
+      "text": "zimmer",
+      "reason": "second part of a compound in a completion fill-in (das Kranken___ → haus, Bahnhof___ → straße): lower-case inside the word"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "zug",
+      "text": "zug",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "GERMAN_SPELLER_RULE",
+      "match": "zweizig",
+      "text": "zweizig",
+      "reason": "deliberate wrong option in de-vi:ud-l1-e6 (the answer is \"zwanzig\")"
+    },
+    {
+      "rule": "GERMAN_WORD_REPEAT_BEGINNING_RULE",
+      "match": "Ich",
+      "text": "Ich heiße Anna. Ich bin dreißig Jahre alt und wohne in Köln. Ich habe zwei Kinder und eine Katze. Am Wochenende spiele ich gern Tennis.",
+      "reason": "A1 model text: short sentences that all start with 'Ich' are the pattern taught at this level"
+    },
+    {
+      "rule": "GERMAN_WORD_REPEAT_BEGINNING_RULE",
+      "match": "Ich",
+      "text": "Ich heiße Lan. Ich bin 28 Jahre alt. Ich wohne in Leipzig.",
+      "reason": "A1 model text: short sentences that all start with 'Ich' are the pattern taught at this level"
+    },
+    {
+      "rule": "GERMAN_WORD_REPEAT_BEGINNING_RULE",
+      "match": "Ich",
+      "text": "Ich heiße Lena. Ich bin 25 Jahre alt. Ich wohne in Hamburg.",
+      "reason": "A1 model text: short sentences that all start with 'Ich' are the pattern taught at this level"
+    },
+    {
+      "rule": "GERMAN_WORD_REPEAT_BEGINNING_RULE",
+      "match": "Ich",
+      "text": "Ich heiße Minh. Ich komme aus Vietnam. Ich wohne in Köln und arbeite in einem Krankenhaus.",
+      "reason": "A1 model text: short sentences that all start with 'Ich' are the pattern taught at this level"
+    },
+    {
+      "rule": "GROSSSCHREIBUNG_MEHRTEILIGE_NAMEN",
+      "match": "afrikanische",
+      "text": "Haben Sie afrikanische Elefanten?",
+      "reason": "'afrikanische Elefanten' in everyday speech, not the zoological species name"
+    },
+    {
+      "rule": "MACHEN_UMGANGSSPRACHE",
+      "match": "zumachen",
+      "text": "Kannst du bitte die Tür zumachen?!",
+      "reason": "everyday spoken German ('zumachen') is the A1 target register"
+    },
+    {
+      "rule": "MATHE",
+      "match": "Mathe",
+      "text": "sie ist schlecht in Mathe",
+      "reason": "everyday spoken German ('Mathe') is the A1 target register"
+    },
+    {
+      "rule": "MIT_FREUNDLICHEN_SPELLING_RULE",
+      "match": "grüßen",
+      "text": "mit freundlichen grüßen",
+      "reason": "case-folded grading key (rubric slot variant / required concept): answers are lower-cased and folded before matching (src/lib/writing/rubric.ts, src/lib/speech/grader.ts); never shown to the learner"
+    },
+    {
+      "rule": "SEIT_VS_SEID",
+      "match": "seid",
+      "text": "Wir seid Studenten.",
+      "reason": "deliberate wrong option in placement de-plx-s2-sein_sel (the answer is \"Wir sind Studenten.\")"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "als",
+      "text": "als du dir vorstellen kannst.",
+      "reason": "lexeme example is a phrase, not a sentence (Wiktionary usage example, shown like 'neue Mode'); its first word is lower-case on purpose"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "danke",
+      "text": "danke für deine Nachricht! Ich komme am Freitag mit dem Zug nach Köln. Der Zug kommt um 17 Uhr 40 an. Kannst du mich am Bahnhof abholen? Am Samstag möchte ich gern ins Museum gehen.",
+      "reason": "letter body after the salutation block ('Hallo …,' / 'Liebe …,') continues lower-case, which is correct German"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "der",
+      "text": "der Deutschkurs am Dienstag ist nicht in Raum 3, sondern in Raum 12. Bitte bringen Sie Ihr Buch mit. Der Kurs beginnt wie immer um 18 Uhr.",
+      "reason": "letter body after the salutation block ('Hallo …,' / 'Liebe …,') continues lower-case, which is correct German"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "ein",
+      "text": "ein Foto machen.",
+      "reason": "lexeme example is a phrase, not a sentence (Wiktionary usage example, shown like 'neue Mode'); its first word is lower-case on purpose"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "eine",
+      "text": "eine hervorragende Wahl.",
+      "reason": "lexeme example is a phrase, not a sentence (Wiktionary usage example, shown like 'neue Mode'); its first word is lower-case on purpose"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "eine",
+      "text": "eine Wahl treffen.",
+      "reason": "lexeme example is a phrase, not a sentence (Wiktionary usage example, shown like 'neue Mode'); its first word is lower-case on purpose"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "einwandfrei",
+      "text": "einwandfrei arbeiten.",
+      "reason": "lexeme example is a phrase, not a sentence (Wiktionary usage example, shown like 'neue Mode'); its first word is lower-case on purpose"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "fotografisches",
+      "text": "fotografisches Gedächtnis.",
+      "reason": "lexeme example is a phrase, not a sentence (Wiktionary usage example, shown like 'neue Mode'); its first word is lower-case on purpose"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "ich",
+      "text": "ich bin heute im Café am Bahnhof. Kommst du um drei Uhr? Ich warte auf dich.",
+      "reason": "letter body after the salutation block ('Hallo …,' / 'Liebe …,') continues lower-case, which is correct German"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "ich",
+      "text": "ich bin jetzt in Leipzig und wohne bei meiner Tante. Die Wohnung ist klein, aber schön. Am Montag beginnt mein Deutschkurs. Er ist jeden Tag von neun bis zwölf Uhr. Am Wochenende besuche ich dich in Dresden!",
+      "reason": "letter body after the salutation block ('Hallo …,' / 'Liebe …,') continues lower-case, which is correct German"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "leider",
+      "text": "leider bin ich heute krank und kann nicht zur Arbeit kommen. Ich gehe um zehn Uhr zum Arzt. Morgen bin ich wieder im Büro.",
+      "reason": "letter body after the salutation block ('Hallo …,' / 'Liebe …,') continues lower-case, which is correct German"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "zehn",
+      "text": "zehn Jahre Gefängnis bekommen.",
+      "reason": "lexeme example is a phrase, not a sentence (Wiktionary usage example, shown like 'neue Mode'); its first word is lower-case on purpose"
+    },
+    {
+      "rule": "VOLTZAHL",
+      "match": "Kilo",
+      "text": "Er wiegt über 80 Kilo.",
+      "reason": "'Kilo' is normal spoken German for Kilogramm at A1"
+    }
+  ]
 }
