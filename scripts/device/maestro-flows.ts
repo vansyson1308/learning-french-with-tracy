@@ -211,6 +211,26 @@ export function todayFlow(): string {
   ].join("\n");
 }
 
+/**
+ * Today after other flows: the session opens, on a due review or a teach
+ * card. The story word check schedules its word, so a later Today rightly
+ * starts with that review (the scheduler puts due reviews first).
+ */
+export function todayAnyFlow(): string {
+  return [
+    ...header("Today after other flows: the session opens (a due review may come first)."),
+    `- stopApp`,
+    ...openLink("today"),
+    ...waitId("today-start"),
+    ...shot("today"),
+    ...tapId("today-start"),
+    ...waitId("teach-card|exercise-.*"),
+    ...shot("today-first-step"),
+    `- stopApp`,
+    ``,
+  ].join("\n");
+}
+
 /** P5b: the graded story the walk reads (A1-1, narration + dialogue). */
 export const WALK_STORY = "es.story.el_perro_de_ana";
 
@@ -612,6 +632,7 @@ export function buildSuite(): { files: Record<string, string>; problems: string[
   if (checkpoint.unsupported.length) problems.push(`checkpoint: not automatable — ${checkpoint.unsupported.join(", ")}`);
   files["checkpoint.yaml"] = checkpoint.yaml;
   files["today.yaml"] = todayFlow();
+  files["today-any.yaml"] = todayAnyFlow();
   const stories = storiesFlow();
   if (stories.unsupported.length) problems.push(`stories: not automatable — ${stories.unsupported.join(", ")}`);
   files["stories.yaml"] = stories.yaml;

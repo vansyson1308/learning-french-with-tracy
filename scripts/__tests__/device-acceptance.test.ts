@@ -42,6 +42,18 @@ describe("maestro suite", () => {
     }
   });
 
+  test("Today after other flows accepts a due review first; the fresh-install Today still demands a teach card", () => {
+    // PR #51: the story word check schedules es:w:papa, so the offline Today session rightly opens on its review.
+    expect(files["today.yaml"]).toContain('id: "teach-card"\n');
+    const later = files["today-any.yaml"];
+    expect(later).toContain('id: "teach-card|exercise-.*"');
+    expect(later).not.toContain('id: "teach-card"\n');
+    expect(later).not.toContain("session-continue");
+    const sh = readFileSync(path.join(import.meta.dir, "../device/acceptance.sh"), "utf8");
+    expect(sh).toContain('flow "today: daily words" today.yaml');
+    expect(sh).toContain('flow "offline today" today-any.yaml');
+  });
+
   test("every flow targets the app and every id it uses exists in the UI", () => {
     const missing = new Set<string>();
     for (const [name, yaml] of Object.entries(files)) {
