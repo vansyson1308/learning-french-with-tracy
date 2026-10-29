@@ -9,9 +9,17 @@ l'integrazione in Italia*, *A1 bambini* and *A1 adolescenti*. The app models
 **A1 standard**, the adult module abroad. In the timing table it is the column
 "A1 ad. all'estero".
 
-**Still to do before items are authored (QC 2026-10-29 §3.2):** check
-unistrasi.it for a CILS A1 format newer than the 2009 guidelines and the 2017
-sample, and record here which version is modelled.
+**Newest-format check (QC 2026-10-29 §3.2), done 2026-10-29.**
+- Two pages of cils.unistrasi.it list A1 standard among the four A1 modules:
+  "Le Linee Guida CILS" (`/1/6/12/`) and "Livello CILS A1" (`/1/79/70/`). Neither
+  announces a new or revised format.
+- The guide the site links now (`/public/articoli/12/linee_guida_cils_pdf(2).pdf`)
+  is the same *Linee guida CILS* (Barni et al.). Its PDF metadata dates it 2012-03-14.
+- Searching the site for a 2025/2026 A1 format turned up only exam dates (2025: 11 June
+  and 4 December; A1 sessions on the centres' request).
+- **Modelled version:** the *Linee guida* (first edition, 2009; the 2012 file is the
+  current download) with the June 2017 A1 standard sample.
+- Re-check this before a release that changes the track.
 
 ## Read (2026-10-29)
 
