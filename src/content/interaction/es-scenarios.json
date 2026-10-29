@@ -683,14 +683,14 @@
           "kind": "terminal",
           "id": "t_want_agua",
           "outcome": "goal_met",
-          "text": "¡Y una botella de agua! Son tres euros. ¡Gracias, buen día!",
+          "text": "¡Y una botella de agua! Son tres euros. ¡Gracias, que tenga un buen día!",
           "clipId": "es.clip.ix_tienda_compras_want_agua_t"
         },
         "t_thats_all": {
           "kind": "terminal",
           "id": "t_thats_all",
           "outcome": "goal_met",
-          "text": "Muy bien. Son dos euros. ¡Gracias, buen día!",
+          "text": "Muy bien. Son dos euros. ¡Gracias, que tenga un buen día!",
           "clipId": "es.clip.ix_tienda_compras_thats_all_t"
         },
         "l_more": {
@@ -717,14 +717,16 @@
               "acceptedVariants": [
                 "No, nada más, gracias.",
                 "Nada más.",
-                "Es todo, gracias."
+                "Es todo, gracias.",
+                "No, gracias."
               ],
               "requiredConcepts": [
                 [
                   "nada más",
                   "nada mas",
                   "es todo",
-                  "eso es todo"
+                  "eso es todo",
+                  "no gracias"
                 ]
               ],
               "next": "t_thats_all"
@@ -764,14 +766,16 @@
               "acceptedVariants": [
                 "No, nada más, gracias.",
                 "Nada más.",
-                "Es todo, gracias."
+                "Es todo, gracias.",
+                "No, gracias."
               ],
               "requiredConcepts": [
                 [
                   "nada más",
                   "nada mas",
                   "es todo",
-                  "eso es todo"
+                  "eso es todo",
+                  "no gracias"
                 ]
               ],
               "next": "t_thats_all"
@@ -934,7 +938,7 @@
           "kind": "terminal",
           "id": "t_ok",
           "outcome": "goal_met",
-          "text": "¡De nada! ¡Buen día!",
+          "text": "¡De nada! ¡Que vaya bien!",
           "clipId": "es.clip.ix_donde_estacion_end"
         }
       },
@@ -1035,7 +1039,7 @@
         "l_thanks": {
           "kind": "learner",
           "id": "l_thanks",
-          "prompt": "Hãy nói cảm ơn rất nhiều.",
+          "prompt": "Hãy nói «cảm ơn nhiều».",
           "expected": [
             {
               "intent": "say_thanks",
@@ -1065,7 +1069,7 @@
         "l_thanks_b": {
           "kind": "learner",
           "id": "l_thanks_b",
-          "prompt": "Hãy nói cảm ơn rất nhiều.",
+          "prompt": "Hãy nói «cảm ơn nhiều».",
           "expected": [
             {
               "intent": "say_thanks",
@@ -1204,7 +1208,9 @@
               "requiredConcepts": [
                 [
                   "café",
-                  "cafe"
+                  "cafe",
+                  "cafetería",
+                  "cafeteria"
                 ]
               ],
               "next": "t_ok"
@@ -1235,7 +1241,9 @@
               "requiredConcepts": [
                 [
                   "café",
-                  "cafe"
+                  "cafe",
+                  "cafetería",
+                  "cafeteria"
                 ]
               ],
               "next": "t_ok"
@@ -1261,7 +1269,7 @@
     "es.scenario.casa_amiga": {
       "id": "es.scenario.casa_amiga",
       "title": "Ở nhà một người bạn",
-      "goal": "Trả lời lời mời của bạn bạn và nói bạn muốn gì.",
+      "goal": "Trả lời lời mời của người bạn và nói bạn muốn uống gì.",
       "taskFamily": "conversation",
       "objectiveRefs": [
         "es.obj.interaction.everyday_conversation"
@@ -1278,7 +1286,7 @@
         "p_offer": {
           "kind": "partner",
           "id": "p_offer",
-          "text": "¡Bienvenida! ¿Quieres tomar algo?",
+          "text": "¡Hola, pasa, pasa! ¿Quieres tomar algo?",
           "clipId": "es.clip.ix_casa_amiga_offer_ask",
           "rephraseText": "¿Quieres agua o un café?",
           "rephraseClipId": "es.clip.ix_casa_amiga_offer_s",
@@ -1534,7 +1542,7 @@
         "p_how": {
           "kind": "partner",
           "id": "p_how",
-          "text": "¡Mucho gusto, Nadia! ¿Está bien?",
+          "text": "¡Mucho gusto, Nadia! ¿Qué tal está?",
           "clipId": "es.clip.ix_cp_conocer_how_ask",
           "rephraseText": "¿Qué tal?",
           "rephraseClipId": "es.clip.ix_cp_conocer_how_s",
@@ -1716,7 +1724,7 @@
           "kind": "terminal",
           "id": "t_ok",
           "outcome": "goal_met",
-          "text": "¡Buen día!",
+          "text": "¡Que tenga un buen día!",
           "clipId": "es.clip.ix_cp_conocer_end"
         }
       },
@@ -1992,7 +2000,7 @@
           "kind": "terminal",
           "id": "t_ok",
           "outcome": "goal_met",
-          "text": "¡Gracias a usted! ¡Buen día!",
+          "text": "¡Gracias a usted! ¡Que tenga un buen día!",
           "clipId": "es.clip.ix_cp_cafe_end"
         }
       },
@@ -2086,7 +2094,7 @@
           "id": "p_more",
           "text": "¡Aquí tiene! ¿Algo más?",
           "clipId": "es.clip.ix_cp_panaderia_more_ask",
-          "rephraseText": "¿Otra cosa?",
+          "rephraseText": "¿Quiere algo más?",
           "rephraseClipId": "es.clip.ix_cp_panaderia_more_s",
           "next": "l_more"
         },
@@ -2114,14 +2122,16 @@
               "acceptedVariants": [
                 "No, nada más, gracias.",
                 "Nada más.",
-                "Es todo, gracias."
+                "Es todo, gracias.",
+                "No, gracias."
               ],
               "requiredConcepts": [
                 [
                   "nada más",
                   "nada mas",
                   "es todo",
-                  "eso es todo"
+                  "eso es todo",
+                  "no gracias"
                 ]
               ],
               "next": "b_more_thats_all"
@@ -2133,7 +2143,7 @@
         "r_more": {
           "kind": "partner",
           "id": "r_more",
-          "text": "¿Otra cosa?",
+          "text": "¿Quiere algo más?",
           "clipId": "es.clip.ix_cp_panaderia_more_s",
           "next": "l_more_b"
         },
@@ -2161,14 +2171,16 @@
               "acceptedVariants": [
                 "No, nada más, gracias.",
                 "Nada más.",
-                "Es todo, gracias."
+                "Es todo, gracias.",
+                "No, gracias."
               ],
               "requiredConcepts": [
                 [
                   "nada más",
                   "nada mas",
                   "es todo",
-                  "eso es todo"
+                  "eso es todo",
+                  "no gracias"
                 ]
               ],
               "next": "b_more_thats_all"
@@ -2364,12 +2376,14 @@
               "acceptedVariants": [
                 "Sí, hablo inglés.",
                 "Sí, un poco.",
-                "Sí."
+                "Sí.",
+                "Un poco."
               ],
               "requiredConcepts": [
                 [
                   "sí",
-                  "si"
+                  "si",
+                  "un poco"
                 ]
               ],
               "next": "b_english_yes_speak"
@@ -2409,12 +2423,14 @@
               "acceptedVariants": [
                 "Sí, hablo inglés.",
                 "Sí, un poco.",
-                "Sí."
+                "Sí.",
+                "Un poco."
               ],
               "requiredConcepts": [
                 [
                   "sí",
-                  "si"
+                  "si",
+                  "un poco"
                 ]
               ],
               "next": "b_english_yes_speak"
@@ -2440,7 +2456,7 @@
         "b_english_yes_speak": {
           "kind": "partner",
           "id": "b_english_yes_speak",
-          "text": "¡Yo también hablo inglés! Bueno, ya sabe todo de mí… o casi.",
+          "text": "¡Yo también hablo inglés! Bueno, ya sé mucho de usted… ¡Ahora pregúnteme usted a mí!",
           "clipId": "es.clip.ix_cp_conocerse_yes_speak_b",
           "rephraseText": "¡Hágame una pregunta!",
           "rephraseClipId": "es.clip.ix_cp_conocerse_ask_back_s",
@@ -2449,7 +2465,7 @@
         "b_english_no_speak": {
           "kind": "partner",
           "id": "b_english_no_speak",
-          "text": "No pasa nada. Bueno, ya sabe todo de mí… o casi.",
+          "text": "No pasa nada. Bueno, ya sé mucho de usted… ¡Ahora pregúnteme usted a mí!",
           "clipId": "es.clip.ix_cp_conocerse_no_speak_b",
           "rephraseText": "¡Hágame una pregunta!",
           "rephraseClipId": "es.clip.ix_cp_conocerse_ask_back_s",
@@ -2458,7 +2474,7 @@
         "l_ask_back": {
           "kind": "learner",
           "id": "l_ask_back",
-          "prompt": "Giờ hãy hỏi ANH ẤY: còn ông, ông sống ở đâu?",
+          "prompt": "Giờ hãy hỏi ANH ẤY: còn anh, anh sống ở đâu?",
           "expected": [
             {
               "intent": "ask_where",
@@ -2490,7 +2506,7 @@
         "l_ask_back_b": {
           "kind": "learner",
           "id": "l_ask_back_b",
-          "prompt": "Giờ hãy hỏi ANH ẤY: còn ông, ông sống ở đâu?",
+          "prompt": "Giờ hãy hỏi ANH ẤY: còn anh, anh sống ở đâu?",
           "expected": [
             {
               "intent": "ask_where",
@@ -2886,11 +2902,14 @@
               "acceptedVariants": [
                 "¿A qué hora sale el tren?",
                 "¿A qué hora es el tren?",
-                "¿El tren sale a qué hora?"
+                "¿El tren sale a qué hora?",
+                "¿Cuándo sale el tren?"
               ],
               "requiredConcepts": [
                 [
-                  "hora"
+                  "hora",
+                  "cuándo",
+                  "cuando"
                 ]
               ],
               "next": "b_question_ask_time"
@@ -2931,11 +2950,14 @@
               "acceptedVariants": [
                 "¿A qué hora sale el tren?",
                 "¿A qué hora es el tren?",
-                "¿El tren sale a qué hora?"
+                "¿El tren sale a qué hora?",
+                "¿Cuándo sale el tren?"
               ],
               "requiredConcepts": [
                 [
-                  "hora"
+                  "hora",
+                  "cuándo",
+                  "cuando"
                 ]
               ],
               "next": "b_question_ask_time"
@@ -3142,8 +3164,8 @@
             {
               "intent": "goodday",
               "acceptedVariants": [
-                "¡Buen día!",
                 "¡Que tenga un buen día!",
+                "¡Buen día!",
                 "Adiós, buen día."
               ],
               "requiredConcepts": [
@@ -3175,8 +3197,8 @@
             {
               "intent": "goodday",
               "acceptedVariants": [
-                "¡Buen día!",
                 "¡Que tenga un buen día!",
+                "¡Buen día!",
                 "Adiós, buen día."
               ],
               "requiredConcepts": [
@@ -3312,7 +3334,9 @@
               "requiredConcepts": [
                 [
                   "café",
-                  "cafe"
+                  "cafe",
+                  "cafetería",
+                  "cafeteria"
                 ]
               ],
               "next": "t_ok"
@@ -3343,7 +3367,9 @@
               "requiredConcepts": [
                 [
                   "café",
-                  "cafe"
+                  "cafe",
+                  "cafetería",
+                  "cafeteria"
                 ]
               ],
               "next": "t_ok"
@@ -3918,7 +3944,7 @@
           "id": "p_thanks",
           "text": "Sí, tengo dos hijos. Muy bien, terminamos. Muchas gracias.",
           "clipId": "es.clip.ix_dele_a_conversacion_thanks_ask",
-          "rephraseText": "Terminamos. Gracias.",
+          "rephraseText": "Hemos terminado. Muchas gracias.",
           "rephraseClipId": "es.clip.ix_dele_a_conversacion_thanks_s",
           "next": "l_thanks"
         },
@@ -3948,7 +3974,7 @@
         "r_thanks": {
           "kind": "partner",
           "id": "r_thanks",
-          "text": "Terminamos. Gracias.",
+          "text": "Hemos terminado. Muchas gracias.",
           "clipId": "es.clip.ix_dele_a_conversacion_thanks_s",
           "next": "l_thanks_b"
         },
@@ -4213,7 +4239,7 @@
           "id": "p_thanks",
           "text": "Sí, me gusta mucho. Bueno, terminamos. Gracias, Minh.",
           "clipId": "es.clip.ix_dele_b_conversacion_thanks_ask",
-          "rephraseText": "Terminamos. Gracias.",
+          "rephraseText": "Hemos terminado. Muchas gracias.",
           "rephraseClipId": "es.clip.ix_dele_b_conversacion_thanks_s",
           "next": "l_thanks"
         },
@@ -4243,7 +4269,7 @@
         "r_thanks": {
           "kind": "partner",
           "id": "r_thanks",
-          "text": "Terminamos. Gracias.",
+          "text": "Hemos terminado. Muchas gracias.",
           "clipId": "es.clip.ix_dele_b_conversacion_thanks_s",
           "next": "l_thanks_b"
         },

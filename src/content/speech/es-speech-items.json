@@ -97,7 +97,9 @@
         "Buenos días",
         "Buenos días, señora",
         "Buenos días, señor",
-        "Hola, buenos días"
+        "Hola, buenos días",
+        "Hola, buenos días, señora",
+        "Hola, buenos días, señor"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -113,7 +115,7 @@
         "revealTargetAfterAttempts": 2
       },
       "scoredEligibility": true,
-      "modelAudioRef": "es.clip.uf_dictado_hola",
+      "modelAudioRef": "es.clip.uk_buenos_dias",
       "allowedAttempts": 2
     },
     "es.speak.k_thank": {
@@ -121,7 +123,7 @@
       "taskFamily": "formulaic_exchange",
       "elicitationType": "semantic_prompt",
       "prompt": {
-        "instruction": "Hãy nói cảm ơn rất nhiều."
+        "instruction": "Hãy nói «cảm ơn nhiều»."
       },
       "target": "Muchas gracias",
       "acceptedVariants": [
@@ -182,7 +184,9 @@
       "target": "Buenas tardes",
       "acceptedVariants": [
         "Buenas tardes",
-        "Buenas tardes, señora"
+        "Buenas tardes, señora",
+        "Hola, buenas tardes",
+        "Hola, buenas tardes, señora"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -211,7 +215,12 @@
       "target": "Adiós",
       "acceptedVariants": [
         "Adiós",
-        "Hasta luego"
+        "Hasta luego",
+        "Adiós, hasta luego",
+        "Hasta pronto",
+        "Chao",
+        "Nos vemos",
+        "Hasta mañana"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -240,7 +249,13 @@
       "target": "Perdón",
       "acceptedVariants": [
         "Perdón",
-        "Perdone"
+        "Perdone",
+        "Perdona",
+        "Lo siento",
+        "Disculpe",
+        "Disculpa",
+        "Perdón, señor",
+        "Perdón, señora"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -409,7 +424,9 @@
       "target": "Me gusta el café",
       "acceptedVariants": [
         "Me gusta el café",
-        "A mí me gusta el café"
+        "A mí me gusta el café",
+        "Me gusta mucho el café",
+        "Me encanta el café"
       ],
       "objectiveRefs": [
         "es.obj.speaking.self_intro"
@@ -440,7 +457,9 @@
       "target": "Trabajo por la mañana",
       "acceptedVariants": [
         "Trabajo por la mañana",
-        "Yo trabajo por la mañana"
+        "Yo trabajo por la mañana",
+        "Trabajo por las mañanas",
+        "Yo trabajo por las mañanas"
       ],
       "objectiveRefs": [
         "es.obj.speaking.self_intro"
@@ -708,9 +727,9 @@
           }
         ]
       },
-      "target": "Hay siete días en una semana",
+      "target": "La semana tiene siete días",
       "acceptedVariants": [
-        "Hay siete días en una semana",
+        "La semana tiene siete días",
         "Una semana tiene siete días"
       ],
       "requiredConcepts": [
@@ -781,7 +800,9 @@
       "target": "Es un perro",
       "acceptedVariants": [
         "Es un perro",
-        "Un perro"
+        "Un perro",
+        "Esto es un perro",
+        "Eso es un perro"
       ],
       "objectiveRefs": [
         "es.obj.speaking.describe"
@@ -805,13 +826,15 @@
       "taskFamily": "description",
       "elicitationType": "situation_prompt",
       "prompt": {
-        "instruction": "Bạn đến một tòa nhà lớn đầy tàu hỏa. Hãy nói nơi này là gì."
+        "instruction": "Bạn đến một tòa nhà lớn, nơi có nhiều chuyến tàu đến và đi. Hãy nói đây là nơi nào."
       },
       "target": "Es la estación",
       "acceptedVariants": [
         "Es la estación",
         "Es una estación",
-        "La estación"
+        "La estación",
+        "Esta es la estación",
+        "Es la estación de tren"
       ],
       "objectiveRefs": [
         "es.obj.speaking.describe"
@@ -870,7 +893,9 @@
       },
       "target": "La tienda está abierta",
       "acceptedVariants": [
-        "La tienda está abierta"
+        "La tienda está abierta",
+        "La tienda ya está abierta",
+        "La tienda está abierta ahora"
       ],
       "objectiveRefs": [
         "es.obj.speaking.describe"
@@ -903,7 +928,8 @@
       "acceptedVariants": [
         "Es por la mañana",
         "Es la mañana",
-        "Por la mañana"
+        "Por la mañana",
+        "Es de día"
       ],
       "objectiveRefs": [
         "es.obj.speaking.describe"
