@@ -163,6 +163,9 @@ jobs:
           grep -q "versionName='1.0.0'" rc-artifact/badging.txt || { echo "::error::versionName is not 1.0.0"; exit 1; }
           ! grep -qE "FOREGROUND_SERVICE|SYSTEM_ALERT_WINDOW|READ_EXTERNAL_STORAGE|WRITE_EXTERNAL_STORAGE" rc-artifact/permissions.txt || { echo "::error::a removed permission came back"; exit 1; }
           grep -q "Verifies" rc-artifact/apksigner.txt || { echo "::error::apksigner did not verify the signature"; exit 1; }
+          # The acceptance-only Opus check never ships (eas.json never sets LFT_ACCEPTANCE_DIAGNOSTICS).
+          rm -rf /tmp/apk-x && mkdir -p /tmp/apk-x && unzip -q rc-artifact/app.apk -d /tmp/apk-x
+          bun scripts/check-diagnostics-export.ts /tmp/apk-x --absent || { echo "::error::the acceptance-only diagnostics are in the RC APK"; exit 1; }
           if grep -q "application-debuggable" rc-artifact/badging.txt; then echo "DEBUGGABLE=yes" | tee rc-artifact/debuggable.txt; else echo "DEBUGGABLE=no" | tee rc-artifact/debuggable.txt; fi
           {
             echo "## APK"

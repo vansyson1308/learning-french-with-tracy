@@ -156,6 +156,20 @@
       "testOnly": true
     },
     {
+      "id": "acceptance-diagnostics-fixtures",
+      "name": "Acceptance-build audio fixtures (Opus playback check)",
+      "kind": "test fixture derived from a bundled story-sentence clip; acceptance builds only, never in a release build",
+      "license": "CC-BY-4.0",
+      "url": "https://huggingface.co/rhasspy/piper-voices/tree/v1.0.0/fr/fr_FR/siwis/medium",
+      "attribution": "Opus re-encode of a story-sentence clip synthesized with Piper (MIT, rhasspy/piper) using the fr_FR-siwis-medium voice (CC-BY-4.0), the same voice and licence as the source clip (registry entry piper-voice-siwis).",
+      "retrievedAt": "2026-10-29",
+      "covers": [
+        "assets/diagnostics/"
+      ],
+      "notes": "assets/diagnostics/opus/story-sentence-16k.opus is fr.story.le_chat_et_la_souris#1 (assets/audio/fr-reception/fab0c8369a8f73a2b1ae.mp3, baselined) re-encoded with ffmpeg libopus at 16 kbps mono; source and fixture hashes and the exact command are pinned in content/audio/diagnostics-fixtures.json. Bundled only when the build sets LFT_ACCEPTANCE_DIAGNOSTICS=1 (the device-acceptance APK and the diagnostics web export); scripts/check-diagnostics-export.ts proves the release outputs do not carry it. Marked testOnly: it never reaches learners, so it is not listed in the in-app credits.",
+      "testOnly": true
+    },
+    {
       "id": "kaikki-en",
       "name": "kaikki.org Wiktextract (English Wiktionary edition)",
       "kind": "lexical data (per-language JSONL dumps)",

@@ -13,6 +13,7 @@
  *   - onboarding-<ui>.yaml   fresh install → onboarding in the vi / en UI
  *   - today / checkpoint / speech-unavailable / exam-mock / profile /
  *     export / import / screens-<ui>
+ *   - diagnostics-opus.yaml  the Opus playback check (acceptance build only)
  *
  *   bun scripts/device/maestro-flows.ts [--out e2e/maestro/generated]
  *
@@ -305,6 +306,35 @@ export function deviceVoiceStoryCheck(): { lines: string[]; unsupported: string[
   };
 }
 
+/** The acceptance-only Opus playback check (src/app/diagnostics/opus.tsx). */
+export const OPUS_DIAGNOSTICS_ROUTE = "diagnostics/opus";
+/** Every event the check must see, per pass; then no decoder error and the verdict. */
+export const OPUS_DIAGNOSTICS_EVENTS = ["normal-loaded", "normal-playing", "normal-finished", "slow-loaded", "slow-playing", "slow-finished"] as const;
+
+/**
+ * Opus mono 16 kbps story sentence through expo-audio, at rate 1 then at the
+ * listening player's slow rate. The screen exists only in builds made with
+ * LFT_ACCEPTANCE_DIAGNOSTICS=1 (the device-acceptance APK); acceptance.sh
+ * runs this flow only when OPUS_DIAGNOSTICS=1 says the APK carries it.
+ */
+export function opusDiagnosticsFlow(): string {
+  return [
+    ...header("Opus playback: one story sentence at 16 kbps mono, normal rate then slow mode (acceptance build only)."),
+    `- stopApp`,
+    ...openLink(OPUS_DIAGNOSTICS_ROUTE),
+    ...waitId("diag-opus-screen"),
+    ...tapId("diag-opus-start"),
+    // ~2.6 s + ~3 s of audio; each pass times out in the app after 30 s.
+    ...waitId("diag-opus-result-(pass|fail)", 90000),
+    ...shot("diag-opus"),
+    ...OPUS_DIAGNOSTICS_EVENTS.flatMap((e) => assertId(`diag-opus-${e}`)),
+    ...assertId("diag-opus-no-error"),
+    ...assertId("diag-opus-result-pass"),
+    `- stopApp`,
+    ``,
+  ].join("\n");
+}
+
 /** The first scored checkpoint of the walk course, answered correctly from its first form. */
 export function checkpointFlow(): { yaml: string; unsupported: string[] } {
   const checkpoint = checkpointFor(WALK_COURSE, SCORED_CHECKPOINT);
@@ -591,6 +621,7 @@ export function buildSuite(): { files: Record<string, string>; problems: string[
   files["exam-mock.yaml"] = exam.yaml;
   files["export.yaml"] = exportFlow();
   files["profile.yaml"] = profileFlow();
+  files["diagnostics-opus.yaml"] = opusDiagnosticsFlow();
   Object.assign(files, rc3Flows("lft-backup.json"));
   files["courses.tsv"] = `${courses.join("\n")}\n`;
   return { files, problems };

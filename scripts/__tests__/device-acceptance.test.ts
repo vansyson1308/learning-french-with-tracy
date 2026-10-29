@@ -81,6 +81,17 @@ describe("maestro suite", () => {
     expect(rows.find(([id]) => id === "es-vi")?.[1]).not.toBe("0");
   });
 
+  test("the Opus flow opens the acceptance-only route and asserts every playback event, no error, PASS", () => {
+    const yaml = files["diagnostics-opus.yaml"];
+    expect(yaml).toContain(`- openLink: "learningfrenchtracy://diagnostics/opus"`);
+    for (const e of ["normal-loaded", "normal-playing", "normal-finished", "slow-loaded", "slow-playing", "slow-finished", "no-error", "result-pass"]) {
+      expect(yaml).toContain(`id: "diag-opus-${e}"`);
+    }
+    const script = readFileSync("scripts/device/acceptance.sh", "utf8");
+    expect(script).toContain("lessons; opus_playback; crash_scan lessons");
+    expect(readFileSync(".github/workflows/device-acceptance.yml", "utf8")).toMatch(/LFT_ACCEPTANCE_DIAGNOSTICS: "1"[\s\S]*check-diagnostics-export\.ts \/tmp\/apk-x --present[\s\S]*OPUS_DIAGNOSTICS: "1"/);
+  });
+
   test("the checkpoint flow asserts a full first-try score", () => {
     expect(files["checkpoint.yaml"]).toMatch(/id: "checkpoint-first-try"\n\s+text: "\.\*(\d+)\/\1\.\*"/);
   });

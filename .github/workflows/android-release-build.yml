@@ -67,6 +67,14 @@ jobs:
             echo "APK size: $(stat -c %s "$APK") bytes"
           } >> "$GITHUB_STEP_SUMMARY"
           cp "$APK" artifact-report/
+      # The acceptance-only Opus check (route + fixture) must never ship: this build
+      # does not set LFT_ACCEPTANCE_DIAGNOSTICS, and the APK's content proves it.
+      - name: Fail if the acceptance-only diagnostics are in the release APK
+        run: |
+          set -euo pipefail
+          APK=$(ls android/app/build/outputs/apk/release/*.apk | head -1)
+          rm -rf /tmp/apk-x && mkdir -p /tmp/apk-x && unzip -q "$APK" -d /tmp/apk-x
+          bun scripts/check-diagnostics-export.ts /tmp/apk-x --absent
       - name: Fail if targetSdk is below 36 or a removed permission came back
         run: |
           set -e

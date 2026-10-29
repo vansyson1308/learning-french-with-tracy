@@ -12,12 +12,15 @@
 #      DEVICE / FLOW_TIMEOUT / FLOW_KILL_AFTER      see flow-runner.sh
 #      COLD_START_BUDGET_MS=3500                    API 34 budget (reported on others)
 #      ENFORCE_COLD_START=1                         fail the run over budget
+#      OPUS_DIAGNOSTICS=1                           the APK was built with LFT_ACCEPTANCE_DIAGNOSTICS=1:
+#                                                   run the Opus playback check (lessons shard)
 #
 # Shards (each on its own fresh emulator, all after install + vi onboarding):
 #   core            Vietnamese screens, Today, checkpoint, recogniser
 #                   unavailable, exam mock part, Profile, offline, cold
 #                   start, memory, English screens
-#   lessons         the first lesson of every shipped course + audio evidence
+#   lessons         the first lesson of every shipped course + audio evidence,
+#                   then the Opus playback check (OPUS_DIAGNOSTICS=1 only)
 #   backup-upgrade  backup export → pm clear → import, upgrade from RC3
 # Needs: adb on PATH with one booted emulator whose image allows `adb root`
 # (google_apis), bun, Maestro (Apache-2.0; CI/dev only, never shipped).
@@ -243,6 +246,23 @@ lessons() {
 }
 evidence() { (cd "$ROOT" && bun scripts/device/audio-evidence.ts "$@"); }
 
+# Opus playback check (release/ASSET_DELIVERY.md): one Opus mono 16 kbps story
+# sentence through expo-audio at rate 1 and in slow mode. The screen exists
+# only in an APK built with LFT_ACCEPTANCE_DIAGNOSTICS=1; OPUS_DIAGNOSTICS=1
+# says this APK is one (device-acceptance.yml sets both).
+opus_playback() {
+  local from line
+  if [ "${OPUS_DIAGNOSTICS:-0}" != 1 ]; then
+    record "opus playback (diagnostics)" INFO "skipped — OPUS_DIAGNOSTICS is not 1 (APK built without LFT_ACCEPTANCE_DIAGNOSTICS=1)"
+    return 0
+  fi
+  from=$(mark)
+  flow "opus playback: loaded, playing, finished at 1.0 and slow, no decoder error" diagnostics-opus.yaml
+  since "$from" > "$OUT/logs/logcat-opus.txt"
+  line=$(grep -o 'LFT_DIAG_OPUS .*' "$OUT/logs/logcat-opus.txt" | tail -1 | tr '|' '/' | cut -c1-300)
+  record "opus playback events (app log)" INFO "${line:-no LFT_DIAG_OPUS line in logcat}"
+}
+
 backup_round_trip() {
   adb shell "rm -f /data/data/$PKG/cache/lingo-progress-*.json"
   flow "backup export" export.yaml
@@ -337,13 +357,14 @@ upgrade_from_rc3() {
 # a device that has only been through install + onboarding.
 case "$SHARD" in
   all)
-    walk_vi; lessons; flow "profile" profile.yaml; crash_scan walk
+    walk_vi; lessons; opus_playback; flow "profile" profile.yaml; crash_scan walk
     backup_round_trip; offline; performance; walk_en; upgrade_from_rc3 ;;
   core)
     walk_vi; flow "profile" profile.yaml; crash_scan walk
     offline; performance; walk_en ;;
   lessons)
-    lessons; crash_scan lessons ;;
+    # crash_scan also counts ExoPlayer/MediaPlayer/AudioTrack errors: an Opus decoder error fails here too.
+    lessons; opus_playback; crash_scan lessons ;;
   backup-upgrade)
     # Learner data worth carrying across: a finished lesson, reviewed cards
     # and the checkpoint's score.

@@ -9,6 +9,9 @@
 # offline, crash/ANR logcat scan, cold start (budget enforced on API 34),
 # memory, vi + en screenshots, and the upgrade from RC3 with learner data
 # compared field by field. Required for merge: every shard on both APIs.
+# The lessons shard also plays an Opus mono 16 kbps story sentence through
+# expo-audio at rate 1 and in slow mode (acceptance-only route, built in by
+# LFT_ACCEPTANCE_DIAGNOSTICS=1; release/ASSET_DELIVERY.md).
 #
 # The suite runs in three shards per API level (core, lessons,
 # backup-upgrade), each on its own emulator, so a job stays well under its
@@ -71,14 +74,25 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ runner.os }}-${{ hashFiles('bun.lock', 'app.json') }}
           restore-keys: gradle-${{ runner.os }}-
+      # LFT_ACCEPTANCE_DIAGNOSTICS=1: this APK (and only this one) also bundles the
+      # Opus playback check, src/app/diagnostics/opus.tsx + its fixture (metro.config.js).
+      # Every release build leaves the flag unset and proves the absence
+      # (scripts/check-diagnostics-export.ts; release/ASSET_DELIVERY.md).
       - name: Generate the native project and build
         timeout-minutes: 30 # normal 11-13 min
+        env:
+          LFT_ACCEPTANCE_DIAGNOSTICS: "1"
         run: |
           set -euo pipefail
           bunx expo prebuild --platform android --no-install --clean
           (cd android && ./gradlew --no-daemon :app:assembleRelease -PreactNativeArchitectures=x86_64)
           mkdir -p out && cp android/app/build/outputs/apk/release/app-release.apk out/app-x86_64.apk
           ls -la out && sha256sum out/*.apk
+      - name: The acceptance APK carries the Opus check (route + fixture)
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/apk-x && mkdir -p /tmp/apk-x && unzip -q out/app-x86_64.apk -d /tmp/apk-x
+          bun scripts/check-diagnostics-export.ts /tmp/apk-x --present
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: apk-x86_64
@@ -176,6 +190,8 @@ jobs:
           DEVICE: emulator-5554
           FLOW_TIMEOUT: "600"
           ENFORCE_COLD_START: ${{ matrix.api == 34 && '1' || '0' }}
+          # The APK was built with LFT_ACCEPTANCE_DIAGNOSTICS=1: the lessons shard runs the Opus check.
+          OPUS_DIAGNOSTICS: "1"
         with:
           api-level: ${{ matrix.api }}
           arch: x86_64
