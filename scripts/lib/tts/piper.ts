@@ -15,9 +15,24 @@ import { SHORT_TRANSCRIPT_UNITS, shq } from "../piper-audio";
  * transcripts are rendered with a longer phoneme length. The QA floor is
  * unchanged, and longer texts keep the voice's own rate. Already-blessed
  * assets are reused byte for byte, so no committed clip changes.
+ *
+ * Audio run 40782316966: "du" still came out at 0.21 s at 1.35 (ASR heard
+ * "Hm."). A bare two-letter token gets no utterance prosody from Piper, so a
+ * short transcript is synthesised as a sentence ("du" → "du.") and a 1–2
+ * letter one at a slower scale. The clip's transcript is unchanged.
  */
 export const PIPER_SHORT_LENGTH_SCALE = 1.35;
+export const PIPER_TINY_LENGTH_SCALE = 1.7;
 const letterUnits = (text: string) => [...text].filter((c) => /[\p{L}\p{N}]/u.test(c)).length;
+/** What Piper is given for a transcript: a short one ends as a sentence. */
+export function piperInput(text: string): string {
+  return letterUnits(text) <= SHORT_TRANSCRIPT_UNITS && !/[.!?…]\s*$/u.test(text) ? `${text}.` : text;
+}
+function lengthScaleFor(text: string): number | null {
+  const n = letterUnits(text);
+  if (n <= 2) return PIPER_TINY_LENGTH_SCALE;
+  return n <= SHORT_TRANSCRIPT_UNITS ? PIPER_SHORT_LENGTH_SCALE : null;
+}
 
 import type { DownloadItem, EnginesDoc, LicenseCard, SynthJob, TtsEngine, Voice } from "./types";
 
@@ -38,9 +53,10 @@ export const piperEngine: TtsEngine = {
       const voice = voicesById.get(job.voiceId);
       if (!voice) throw new Error(`piper: unknown voice ${job.voiceId}`);
       const speakerArgs = job.speaker === null || job.speaker === undefined ? "" : ` --speaker ${job.speaker}`;
-      const lengthArgs = letterUnits(job.text) <= SHORT_TRANSCRIPT_UNITS ? ` --length_scale ${PIPER_SHORT_LENGTH_SCALE}` : "";
+      const scale = lengthScaleFor(job.text);
+      const lengthArgs = scale === null ? "" : ` --length_scale ${scale}`;
       lines.push(
-        `printf '%s' ${shq(job.text)} | piper --model ${shq(`${downloadsDir}/${voice.id}.model.1`)} --config ${shq(`${downloadsDir}/${voice.id}.config.1`)}${speakerArgs}${lengthArgs} --output_file ${shq(job.wavPath)}`
+        `printf '%s' ${shq(piperInput(job.text))} | piper --model ${shq(`${downloadsDir}/${voice.id}.model.1`)} --config ${shq(`${downloadsDir}/${voice.id}.config.1`)}${speakerArgs}${lengthArgs} --output_file ${shq(job.wavPath)}`
       );
     }
     return lines;
