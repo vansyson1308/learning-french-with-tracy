@@ -2774,6 +2774,1140 @@
         }
       ],
       "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.story.micro_au_cafe",
+      "band": "A1-0",
+      "title": "Au café",
+      "blurb": {
+        "vi": "Một người phụ nữ ăn sáng ở quán cà phê.",
+        "en": "A woman has breakfast at a café."
+      },
+      "newLexemes": [
+        "fr:w:etre",
+        "fr:w:table",
+        "fr:w:aimer"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Une femme mange au café.",
+          "translation": {
+            "vi": "Một người phụ nữ ăn ở quán cà phê.",
+            "en": "A woman is eating at a café."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bonjour, madame. Un café ?",
+          "translation": {
+            "vi": "Chào bà. Một ly cà phê chứ ạ?",
+            "en": "Hello, madam. A coffee?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Non, merci. Un thé, s'il vous plaît.",
+          "translation": {
+            "vi": "Không, cảm ơn. Cho tôi một tách trà.",
+            "en": "No, thank you. A tea, please."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Avec du lait ?",
+          "translation": {
+            "vi": "Có sữa không ạ?",
+            "en": "With milk?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Non, merci. Et du pain avec du fromage.",
+          "translation": {
+            "vi": "Không, cảm ơn. Và bánh mì với phô mai.",
+            "en": "No, thank you. And bread with cheese."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Voilà le thé et le pain, madame.",
+          "translation": {
+            "vi": "Trà và bánh mì của bà đây ạ.",
+            "en": "Here are the tea and the bread, madam."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Merci, monsieur. C'est bien.",
+          "translation": {
+            "vi": "Cảm ơn ông. Thế là được rồi.",
+            "en": "Thank you, sir. That's fine."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La femme boit le thé à la table.",
+          "translation": {
+            "vi": "Người phụ nữ uống trà ở bàn.",
+            "en": "The woman drinks the tea at the table."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elle mange le pain et le fromage.",
+          "translation": {
+            "vi": "Bà ăn bánh mì và phô mai.",
+            "en": "She eats the bread and the cheese."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "J'aime le fromage !",
+          "translation": {
+            "vi": "Tôi thích phô mai!",
+            "en": "I love cheese!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un garçon mange une pomme.",
+          "translation": {
+            "vi": "Một cậu bé ăn một quả táo.",
+            "en": "A boy is eating an apple."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Il boit du jus.",
+          "translation": {
+            "vi": "Cậu uống nước ép.",
+            "en": "He drinks juice."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Au revoir, monsieur !",
+          "translation": {
+            "vi": "Tạm biệt ông!",
+            "en": "Goodbye, sir!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Au revoir, madame !",
+          "translation": {
+            "vi": "Tạm biệt bà!",
+            "en": "Goodbye, madam!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người phụ nữ uống gì?",
+            "en": "What does the woman drink?"
+          },
+          "options": [
+            {
+              "vi": "Cà phê",
+              "en": "Coffee"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            },
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Cậu bé ăn gì?",
+            "en": "What does the boy eat?"
+          },
+          "options": [
+            {
+              "vi": "Một quả táo",
+              "en": "An apple"
+            },
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            },
+            {
+              "vi": "Phô mai",
+              "en": "Cheese"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Người phụ nữ có uống trà với sữa không?",
+            "en": "Does the woman have milk in her tea?"
+          },
+          "options": [
+            {
+              "vi": "Không",
+              "en": "No"
+            },
+            {
+              "vi": "Có",
+              "en": "Yes"
+            },
+            {
+              "vi": "Có, và đường",
+              "en": "Yes, and sugar"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.story.micro_le_chat",
+      "band": "A1-0",
+      "title": "Le chat",
+      "blurb": {
+        "vi": "Hai bạn nhỏ nói về con mèo và cùng ăn táo.",
+        "en": "Two children talk about a cat and share apples."
+      },
+      "newLexemes": [
+        "fr:w:avoir",
+        "fr:w:chat",
+        "fr:w:aimer"
+      ],
+      "sentences": [
+        {
+          "speaker": "A",
+          "text": "Bonjour ! J'ai un chat.",
+          "translation": {
+            "vi": "Chào cậu! Tớ có một con mèo.",
+            "en": "Hello! I have a cat."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bonjour ! Il mange quoi ?",
+          "translation": {
+            "vi": "Chào cậu! Nó ăn gì?",
+            "en": "Hello! What does he eat?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Il mange du poulet et du riz.",
+          "translation": {
+            "vi": "Nó ăn thịt gà và cơm.",
+            "en": "He eats chicken and rice."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Et il boit du lait ?",
+          "translation": {
+            "vi": "Thế nó có uống sữa không?",
+            "en": "And does he drink milk?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Non, il boit de l'eau.",
+          "translation": {
+            "vi": "Không, nó uống nước.",
+            "en": "No, he drinks water."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Moi, je mange une pomme.",
+          "translation": {
+            "vi": "Còn tớ thì ăn một quả táo.",
+            "en": "Me, I'm eating an apple."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Moi aussi !",
+          "translation": {
+            "vi": "Tớ cũng vậy!",
+            "en": "Me too!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La fille et le garçon mangent une pomme.",
+          "translation": {
+            "vi": "Cô bé và cậu bé ăn một quả táo.",
+            "en": "The girl and the boy eat an apple."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ils boivent du jus.",
+          "translation": {
+            "vi": "Họ uống nước ép.",
+            "en": "They drink juice."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Il aime le fromage ?",
+          "translation": {
+            "vi": "Nó có thích phô mai không?",
+            "en": "Does he like cheese?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Oui ! Il mange beaucoup de fromage.",
+          "translation": {
+            "vi": "Có! Nó ăn nhiều phô mai lắm.",
+            "en": "Yes! He eats a lot of cheese."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Merci pour la pomme. Salut !",
+          "translation": {
+            "vi": "Cảm ơn cậu vì quả táo. Chào nhé!",
+            "en": "Thanks for the apple. Bye!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Salut !",
+          "translation": {
+            "vi": "Chào cậu!",
+            "en": "Bye!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Con mèo uống gì?",
+            "en": "What does the cat drink?"
+          },
+          "options": [
+            {
+              "vi": "Sữa",
+              "en": "Milk"
+            },
+            {
+              "vi": "Nước",
+              "en": "Water"
+            },
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Con mèo ăn gì?",
+            "en": "What does the cat eat?"
+          },
+          "options": [
+            {
+              "vi": "Thịt gà và cơm",
+              "en": "Chicken and rice"
+            },
+            {
+              "vi": "Táo",
+              "en": "Apples"
+            },
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Con mèo thích món gì?",
+            "en": "What does the cat like?"
+          },
+          "options": [
+            {
+              "vi": "Phô mai",
+              "en": "Cheese"
+            },
+            {
+              "vi": "Táo",
+              "en": "Apples"
+            },
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.story.micro_le_diner",
+      "band": "A1-0",
+      "title": "Le dîner",
+      "blurb": {
+        "vi": "Một cặp vợ chồng ăn tối ở nhà.",
+        "en": "A couple has dinner at home."
+      },
+      "newLexemes": [
+        "fr:w:soir",
+        "fr:w:maison",
+        "fr:w:etre"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Le soir, un homme et une femme mangent à la maison.",
+          "translation": {
+            "vi": "Buổi tối, một người đàn ông và một người phụ nữ ăn ở nhà.",
+            "en": "In the evening, a man and a woman eat at home."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Du poulet avec du riz ?",
+          "translation": {
+            "vi": "Thịt gà với cơm nhé?",
+            "en": "Chicken with rice?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Oui, merci.",
+          "translation": {
+            "vi": "Ừ, cảm ơn em.",
+            "en": "Yes, thanks."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Tu bois du jus ?",
+          "translation": {
+            "vi": "Anh uống nước ép không?",
+            "en": "Do you drink juice?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Non, de l'eau, s'il vous plaît.",
+          "translation": {
+            "vi": "Không, cho anh nước lọc.",
+            "en": "No, water, please."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "L'homme mange le poulet et le riz.",
+          "translation": {
+            "vi": "Người đàn ông ăn thịt gà và cơm.",
+            "en": "The man eats the chicken and the rice."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La femme mange du pain et du fromage.",
+          "translation": {
+            "vi": "Người phụ nữ ăn bánh mì và phô mai.",
+            "en": "The woman eats bread and cheese."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "C'est très bien !",
+          "translation": {
+            "vi": "Ngon lắm!",
+            "en": "It's very good!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Merci !",
+          "translation": {
+            "vi": "Cảm ơn anh!",
+            "en": "Thank you!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ils boivent un thé.",
+          "translation": {
+            "vi": "Họ uống một tách trà.",
+            "en": "They drink a tea."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "L'homme mange une pomme.",
+          "translation": {
+            "vi": "Người đàn ông ăn một quả táo.",
+            "en": "The man eats an apple."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Bonne nuit !",
+          "translation": {
+            "vi": "Chúc anh ngủ ngon!",
+            "en": "Good night!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bonne nuit !",
+          "translation": {
+            "vi": "Chúc em ngủ ngon!",
+            "en": "Good night!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người đàn ông ăn gì?",
+            "en": "What does the man eat?"
+          },
+          "options": [
+            {
+              "vi": "Thịt gà và cơm",
+              "en": "Chicken and rice"
+            },
+            {
+              "vi": "Bánh mì và phô mai",
+              "en": "Bread and cheese"
+            },
+            {
+              "vi": "Một quả táo",
+              "en": "An apple"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người đàn ông uống gì?",
+            "en": "What does the man drink?"
+          },
+          "options": [
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            },
+            {
+              "vi": "Nước",
+              "en": "Water"
+            },
+            {
+              "vi": "Cà phê",
+              "en": "Coffee"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Câu chuyện xảy ra lúc nào?",
+            "en": "When does the story happen?"
+          },
+          "options": [
+            {
+              "vi": "Buổi tối",
+              "en": "In the evening"
+            },
+            {
+              "vi": "Buổi sáng",
+              "en": "In the morning"
+            },
+            {
+              "vi": "Buổi trưa",
+              "en": "At noon"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.story.micro_le_petit_dejeuner",
+      "band": "A1-0",
+      "title": "Le chien et le pain",
+      "blurb": {
+        "vi": "Một cô bé ăn sáng, và một con chó ăn mất bánh mì.",
+        "en": "A girl has breakfast, and a dog eats her bread."
+      },
+      "newLexemes": [
+        "fr:w:matin",
+        "fr:w:chien",
+        "fr:w:avoir"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Le matin, une fille mange du pain.",
+          "translation": {
+            "vi": "Buổi sáng, một cô bé ăn bánh mì.",
+            "en": "In the morning, a girl eats bread."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Bonjour, monsieur !",
+          "translation": {
+            "vi": "Chào chú ạ!",
+            "en": "Hello, sir!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bonjour ! Tu bois du lait ?",
+          "translation": {
+            "vi": "Chào cháu! Cháu uống sữa không?",
+            "en": "Hello! Do you drink milk?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Oui, merci. Et un œuf, s'il vous plaît.",
+          "translation": {
+            "vi": "Dạ có, cảm ơn chú. Và cho cháu một quả trứng.",
+            "en": "Yes, thank you. And an egg, please."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un chien mange le pain.",
+          "translation": {
+            "vi": "Một con chó ăn mất bánh mì.",
+            "en": "A dog eats the bread."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Non ! Pardon, monsieur !",
+          "translation": {
+            "vi": "Ôi không! Xin lỗi chú!",
+            "en": "No! Sorry, sir!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Il a mon pain !",
+          "translation": {
+            "vi": "Nó lấy mất bánh mì của cháu rồi!",
+            "en": "He has my bread!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Il mange beaucoup !",
+          "translation": {
+            "vi": "Nó ăn nhiều quá!",
+            "en": "He eats a lot!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Encore du pain, s'il vous plaît.",
+          "translation": {
+            "vi": "Cho cháu thêm bánh mì nhé.",
+            "en": "More bread, please."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La fille mange le pain et l'œuf.",
+          "translation": {
+            "vi": "Cô bé ăn bánh mì và trứng.",
+            "en": "The girl eats the bread and the egg."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elle boit le lait.",
+          "translation": {
+            "vi": "Cô bé uống sữa.",
+            "en": "She drinks the milk."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Merci, monsieur. Au revoir !",
+          "translation": {
+            "vi": "Cháu cảm ơn chú. Tạm biệt chú!",
+            "en": "Thank you, sir. Goodbye!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Au revoir !",
+          "translation": {
+            "vi": "Tạm biệt cháu!",
+            "en": "Goodbye!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Con chó ăn gì?",
+            "en": "What does the dog eat?"
+          },
+          "options": [
+            {
+              "vi": "Bánh mì",
+              "en": "The bread"
+            },
+            {
+              "vi": "Trứng",
+              "en": "The egg"
+            },
+            {
+              "vi": "Phô mai",
+              "en": "Cheese"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Cô bé uống gì?",
+            "en": "What does the girl drink?"
+          },
+          "options": [
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            },
+            {
+              "vi": "Sữa",
+              "en": "Milk"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao cô bé xin thêm bánh mì?",
+            "en": "Why does the girl ask for more bread?"
+          },
+          "options": [
+            {
+              "vi": "Con chó ăn mất bánh của cô",
+              "en": "The dog ate her bread"
+            },
+            {
+              "vi": "Cô rất đói",
+              "en": "She is very hungry"
+            },
+            {
+              "vi": "Bánh mì rất ngon",
+              "en": "The bread is very good"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.story.micro_les_pommes",
+      "band": "A1-0",
+      "title": "Trois pommes",
+      "blurb": {
+        "vi": "Một người phụ nữ mua táo và phô mai.",
+        "en": "A woman buys apples and cheese."
+      },
+      "newLexemes": [
+        "fr:w:acheter",
+        "fr:w:vouloir",
+        "fr:w:rue"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Une femme achète des fruits.",
+          "translation": {
+            "vi": "Một người phụ nữ đi mua trái cây.",
+            "en": "A woman is buying fruit."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bonjour, madame !",
+          "translation": {
+            "vi": "Chào bà!",
+            "en": "Hello, madam!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Bonjour. Je veux trois pommes.",
+          "translation": {
+            "vi": "Chào ông. Tôi lấy ba quả táo.",
+            "en": "Hello. I'd like three apples."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Voilà trois pommes. Et du fromage ?",
+          "translation": {
+            "vi": "Ba quả táo đây ạ. Bà lấy phô mai không?",
+            "en": "Here are three apples. And cheese?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Oui, merci. Et du pain ?",
+          "translation": {
+            "vi": "Có, cảm ơn ông. Còn bánh mì?",
+            "en": "Yes, thank you. And bread?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Pardon, pas de pain.",
+          "translation": {
+            "vi": "Xin lỗi bà, hết bánh mì rồi.",
+            "en": "Sorry, no bread."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Et du jus ?",
+          "translation": {
+            "vi": "Thế còn nước ép?",
+            "en": "And juice?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Oui. Du jus de pomme.",
+          "translation": {
+            "vi": "Có. Nước táo ép.",
+            "en": "Yes. Apple juice."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Merci, monsieur. Au revoir !",
+          "translation": {
+            "vi": "Cảm ơn ông. Tạm biệt!",
+            "en": "Thank you, sir. Goodbye!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Au revoir, madame !",
+          "translation": {
+            "vi": "Tạm biệt bà!",
+            "en": "Goodbye, madam!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Dans la rue, la femme mange une pomme.",
+          "translation": {
+            "vi": "Ngoài phố, người phụ nữ ăn một quả táo.",
+            "en": "In the street, the woman eats an apple."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Elle boit de l'eau.",
+          "translation": {
+            "vi": "Bà uống nước.",
+            "en": "She drinks water."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Un garçon boit du jus de pomme.",
+          "translation": {
+            "vi": "Một cậu bé uống nước táo ép.",
+            "en": "A boy drinks apple juice."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người phụ nữ mua mấy quả táo?",
+            "en": "How many apples does the woman buy?"
+          },
+          "options": [
+            {
+              "vi": "Hai",
+              "en": "Two"
+            },
+            {
+              "vi": "Ba",
+              "en": "Three"
+            },
+            {
+              "vi": "Bốn",
+              "en": "Four"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người bán không có gì?",
+            "en": "What doesn't the seller have?"
+          },
+          "options": [
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            },
+            {
+              "vi": "Phô mai",
+              "en": "Cheese"
+            },
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Người phụ nữ ăn quả táo ở đâu?",
+            "en": "Where does the woman eat the apple?"
+          },
+          "options": [
+            {
+              "vi": "Ngoài phố",
+              "en": "In the street"
+            },
+            {
+              "vi": "Ở nhà",
+              "en": "At home"
+            },
+            {
+              "vi": "Ở quán cà phê",
+              "en": "At a café"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "fr.story.micro_a_la_gare",
+      "band": "A1-0",
+      "title": "À la gare",
+      "blurb": {
+        "vi": "Ở nhà ga, một người phụ nữ hỏi nhầm người.",
+        "en": "At the station, a woman asks the wrong person."
+      },
+      "newLexemes": [
+        "fr:w:matin",
+        "fr:w:gare",
+        "fr:w:billet"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Le matin, un homme boit un café à la gare.",
+          "translation": {
+            "vi": "Buổi sáng, một người đàn ông uống cà phê ở nhà ga.",
+            "en": "In the morning, a man drinks a coffee at the station."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Bonjour, monsieur ! Un billet, s'il vous plaît.",
+          "translation": {
+            "vi": "Chào ông! Cho tôi một vé.",
+            "en": "Hello, sir! A ticket, please."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Pardon, madame ?",
+          "translation": {
+            "vi": "Xin lỗi, bà nói gì ạ?",
+            "en": "Sorry, madam?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Oh, pardon ! Bonjour, monsieur. Merci !",
+          "translation": {
+            "vi": "Ôi, xin lỗi! Chào ông. Cảm ơn ông!",
+            "en": "Oh, sorry! Hello, sir. Thank you!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bonjour, madame. Vous buvez un café ?",
+          "translation": {
+            "vi": "Chào bà. Bà uống cà phê không?",
+            "en": "Hello, madam. Will you have a coffee?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Non, merci. Un thé.",
+          "translation": {
+            "vi": "Không, cảm ơn. Một tách trà thôi.",
+            "en": "No, thank you. A tea."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "L'homme et la femme boivent.",
+          "translation": {
+            "vi": "Người đàn ông và người phụ nữ cùng uống.",
+            "en": "The man and the woman drink."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Vous mangez un fruit ?",
+          "translation": {
+            "vi": "Bà ăn trái cây không?",
+            "en": "Will you have some fruit?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Oui, une pomme, merci.",
+          "translation": {
+            "vi": "Có, một quả táo, cảm ơn ông.",
+            "en": "Yes, an apple, thank you."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "La femme mange une pomme.",
+          "translation": {
+            "vi": "Người phụ nữ ăn một quả táo.",
+            "en": "The woman eats an apple."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Au revoir, madame !",
+          "translation": {
+            "vi": "Tạm biệt bà!",
+            "en": "Goodbye, madam!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Au revoir ! Merci pour le thé !",
+          "translation": {
+            "vi": "Tạm biệt! Cảm ơn ông vì tách trà!",
+            "en": "Goodbye! Thanks for the tea!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người đàn ông uống gì?",
+            "en": "What is the man drinking?"
+          },
+          "options": [
+            {
+              "vi": "Cà phê",
+              "en": "Coffee"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            },
+            {
+              "vi": "Nước",
+              "en": "Water"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người phụ nữ ăn gì?",
+            "en": "What does the woman eat?"
+          },
+          "options": [
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            },
+            {
+              "vi": "Một quả táo",
+              "en": "An apple"
+            },
+            {
+              "vi": "Phô mai",
+              "en": "Cheese"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Vì sao người phụ nữ xin lỗi?",
+            "en": "Why does the woman say sorry?"
+          },
+          "options": [
+            {
+              "vi": "Ông ấy không bán vé",
+              "en": "He doesn't sell tickets"
+            },
+            {
+              "vi": "Bà ấy làm đổ cà phê",
+              "en": "She spilled the coffee"
+            },
+            {
+              "vi": "Bà ấy đến muộn",
+              "en": "She is late"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
     }
   ]
 }

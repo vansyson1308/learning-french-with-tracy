@@ -101,6 +101,7 @@ import {
   compileStoryAssetsModule,
   loadStories,
   storyAssetFiles,
+  microBandLexemes,
   validateStories,
 } from "./stories";
 import {
@@ -249,7 +250,7 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
     if (stories) {
       const syllabus = targetSyllabus(lang, packs, lexicon);
       if (!lexicon) errors.push(`stories (${lang}): graded stories need the target's rich lexicon`);
-      else errors.push(...validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes, receptionVoices: receptionVoiceIds(lang) }).errors);
+      else errors.push(...validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes, receptionVoices: receptionVoiceIds(lang) }).errors);
     }
   } catch (e) {
     errors.push(schemaFailure("stories", e));
@@ -262,7 +263,7 @@ export function validateTarget(lang: string, packs: LoadedPack[]): string[] {
       const stories = safeLoadStories(lang);
       if (lexicon && syllabus && ids) {
         const lookup = { ...(loadLegacyMaps(packs)[lang] ?? {}), ...ids };
-        const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
+        const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
         const coverage = computeContextCoverage({ syllabus, packs: mine.map((p) => p.pack), gradeTargets: (e) => gradeTargetsFor(e, lookup), readings, listening, stories: storyLexemes });
         errors.push(...contextGateErrors(lang, coverage, readJson(contextGatePath(lang)) as ContextGate));
       }
@@ -408,6 +409,11 @@ function targetSyllabus(lang: string, packs: LoadedPack[], lexicon: ReturnType<t
   const pack = primaryPackOf(lang, packs);
   if (!lexicon || !pack) return null;
   return loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack });
+}
+
+/** Band A1-0 vocabulary: the lexemes the primary course teaches in its first units (QC 2026-10-30 §2.2). */
+function targetMicroLexemes(lang: string, packs: LoadedPack[], lexicon: ReturnType<typeof loadRichLexicon> | null): Set<string> {
+  return lexicon ? microBandLexemes(lexicon, primaryPackOf(lang, packs), loadIdMaps(packs)[lang]) : new Set();
 }
 
 /** Stories for reference-only uses (asset census); a schema failure is reported by validateTarget. */
@@ -837,7 +843,7 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
   const stories = loadStories(lang);
   if (stories && lexicon) {
     const syllabus = targetSyllabus(lang, packs, lexicon);
-    const { analyses } = validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes: [], receptionVoices: null });
+    const { analyses } = validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes: [], receptionVoices: null });
     const durations = loadClipDurations(`${reportsDir}/audio-quality.json`);
     files.push({ relPath: `${root}/stories/${lang}-stories.json`, contents: compileStoriesArtifact({ stories, analyses, nativeCode, durations }) });
     for (const { courseId, nativeCode: code } of secondaryNativeCourses(lang, packs)) {
@@ -851,7 +857,7 @@ function compileTarget(lang: string, packs: LoadedPack[]): { files: CompiledFile
   const ctxIds = loadIdMaps(packs)[lang];
   if (lexicon && ctxSyllabus && ctxIds) {
     const lookup = { ...(loadLegacyMaps(packs)[lang] ?? {}), ...ctxIds };
-    const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus: ctxSyllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
+    const storyLexemes = stories ? validateStories({ lang, stories, lexicon, syllabus: ctxSyllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: targetMicroLexemes(lang, packs, lexicon), nativeCodes: [], receptionVoices: null }).analyses.map((a) => a.lexemes) : [];
     files.push({
       relPath: `${reportsDir}/context-coverage.json`,
       contents: compileContextCoverageReport({

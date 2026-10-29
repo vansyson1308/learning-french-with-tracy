@@ -133,7 +133,7 @@ Bài đọc (phần 3) là các thông báo, tin nhắn và văn bản ngắn. C
 
 ### Đọc & nghe (truyện phân cấp)
 
-Tiếng Pháp, `es-vi` và `de-vi` có các truyện ngắn (150–400 từ) viết gần như hoàn toàn bằng những từ khóa học dạy. Mở truyện từ Luyện tập → **Đọc & nghe**, hoặc từ **Truyện hôm nay** ở thẻ Hôm nay. Danh sách đưa lên đầu truyện có **3–6 từ mới với bạn**, tính từ những từ bạn đã học; mỗi truyện ghi cấp (1–4) và số từ mới với bạn.
+Tiếng Pháp, `es-vi` và `de-vi` có các truyện ngắn (150–400 từ) viết gần như hoàn toàn bằng những từ khóa học dạy. Mỗi khoá còn có 6 truyện siêu ngắn (50–100 từ) chỉ dùng từ của 3 unit đầu, dành cho những ngày đầu; các truyện này đọc bằng giọng của máy. Thẻ **Truyện hôm nay** chỉ gợi ý truyện có tối đa 10 từ mới với bạn; nếu chưa có truyện như vậy, thẻ cho biết bạn cần học thêm bao nhiêu từ. Mở truyện từ Luyện tập → **Đọc & nghe**, hoặc từ **Truyện hôm nay** ở thẻ Hôm nay. Danh sách đưa lên đầu truyện có **3–6 từ mới với bạn**, tính từ những từ bạn đã học; mỗi truyện ghi cấp (1–4) và số từ mới với bạn.
 
 Trong màn hình đọc:
 - **Nghe** phát truyện từng câu một và tô sáng câu đang đọc; nút loa ở một dòng phát từ câu đó.

@@ -12,10 +12,10 @@
  */
 
 import { withStaging } from "./lib/authoring/staging";
-import { courseRolesFor, loadPacks } from "./lib/pipeline";
+import { courseRolesFor, loadIdMaps, loadPacks } from "./lib/pipeline";
 import { loadRichLexicon } from "./lib/lexicon";
 import { deriveSyllabus, loadLaterSyllabus, loadSyllabus } from "./lib/syllabus";
-import { lexemeBands, loadStories, validateStories } from "./lib/stories";
+import { lexemeBands, loadStories, microBandLexemes, validateStories } from "./lib/stories";
 
 function fail(message: string): never {
   console.error(message);
@@ -36,9 +36,10 @@ function run(): number {
     return 2;
   }
   const syllabus = loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack: primary });
+  const micro = microBandLexemes(lexicon, primary, loadIdMaps(packs)[lang]);
 
   if (cmd === "bands") {
-    const bands = lexemeBands(syllabus, loadLaterSyllabus(lang));
+    const bands = lexemeBands(syllabus, loadLaterSyllabus(lang), micro);
     const byId = new Map(lexicon.lexemes.map((l) => [l.id, l]));
     const groups = new Map<string, string[]>();
     for (const e of syllabus.entries) {
@@ -57,7 +58,7 @@ function run(): number {
       console.error(`content/${lang}/stories/stories.json not found`);
       return 2;
     }
-    const result = validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), nativeCodes: ["vi", "en"], receptionVoices: null });
+    const result = validateStories({ lang, stories, lexicon, syllabus, laterSyllabus: loadLaterSyllabus(lang), microLexemes: micro, nativeCodes: ["vi", "en"], receptionVoices: null });
     for (const a of result.analyses) {
       console.log(`${a.id} [${a.band}] ${a.tokens} tokens, ${(a.coverage * 100).toFixed(1)} % known${a.unresolved.length ? ` · unresolved: ${a.unresolved.join(" ")}` : ""}${a.undeclared.length ? ` · beyond band: ${a.undeclared.join(" ")}` : ""}`);
     }

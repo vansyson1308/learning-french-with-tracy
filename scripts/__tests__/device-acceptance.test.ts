@@ -57,6 +57,12 @@ describe("maestro suite", () => {
     expect(optionTestId("bố / ba")).toBe("option-bo-ba");
   });
 
+  test("Today shows a readable story or the learn-more card (QC 2026-10-30 §2.2)", () => {
+    expect(files["today.yaml"]).toContain('id: "today-story|today-story-locked"');
+    expect(APP_SOURCE).toContain('testID="today-story-locked"');
+    expect(APP_SOURCE).toContain('testID="today-story"');
+  });
+
   test("options are selected by id, never by display text; lessons and the story check assert zero mistakes", () => {
     for (const [name, yaml] of Object.entries(files)) {
       if (!name.endsWith(".yaml") || name.startsWith("rc3-")) continue;

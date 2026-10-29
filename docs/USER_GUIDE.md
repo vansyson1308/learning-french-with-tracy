@@ -96,7 +96,7 @@ The **Today** tab builds one session from what your memory needs: reviews that a
 
 In French, `es-vi` and `de-vi`, Today also brings **new words a day** from the course's word list — only from units you have reached, in the order the course teaches them. Set how many under Profile → Learning → **New words a day** (0–15, default 5; 0 turns it off).
 
-Below the session, **Story for today** suggests a short graded story (see *Read & listen* in section 20).
+Below the session, **Story for today** suggests a short graded story (see *Read & listen* in section 20). It only suggests a story with at most 10 words that are new to you. Until one exists, the card says how many more words to learn first.
 
 ## 13. Review
 
@@ -135,7 +135,7 @@ Reading passages (section 3) are short notices, messages and texts. Tap any word
 
 ### Read & listen (graded stories)
 
-French, `es-vi` and `de-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
+French, `es-vi` and `de-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Each also has six very short stories (50–100 words) that use only the words of the first three units, for your first days. These are read aloud with your phone's voice. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
 
 In the reader:
 - **Listen** plays the story sentence by sentence and highlights the sentence being read; the speaker button on a line plays from there.
