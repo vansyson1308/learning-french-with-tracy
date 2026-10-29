@@ -288,7 +288,7 @@ offline() {
   adb shell "svc wifi disable; svc data disable; cmd connectivity airplane-mode enable" >/dev/null 2>&1
   if adb shell ping -c1 -W2 8.8.8.8 >/dev/null 2>&1; then record "offline mode" FAIL "network still reachable"; else record "offline mode" PASS "airplane mode, no route"; fi
   flow "offline lesson es-vi" lesson-es-vi.yaml
-  flow "offline today" today-any.yaml
+  flow "offline today" today.yaml
   adb shell "cmd connectivity airplane-mode disable; svc wifi enable; svc data enable" >/dev/null 2>&1
   crash_scan offline
 }
