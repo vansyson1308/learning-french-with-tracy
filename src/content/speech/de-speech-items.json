@@ -1,0 +1,994 @@
+{
+  "generator": "scripts/lib/speech.ts",
+  "version": 1,
+  "order": [
+    "de.speak.k_rep_hallo",
+    "de.speak.k_greet_morning",
+    "de.speak.k_rep_danke",
+    "de.speak.k_thank",
+    "de.speak.k_rep_abend",
+    "de.speak.k_greet_evening",
+    "de.speak.k_bye",
+    "de.speak.k_rep_entschuldigung",
+    "de.speak.k_excuse",
+    "de.speak.l_rep_name",
+    "de.speak.l_name",
+    "de.speak.l_rep_from",
+    "de.speak.l_from",
+    "de.speak.l_live",
+    "de.speak.l_speak",
+    "de.speak.l_work",
+    "de.speak.l_like",
+    "de.speak.m_rep_zehn",
+    "de.speak.m_price",
+    "de.speak.m_children",
+    "de.speak.m_time",
+    "de.speak.m_rep_halb",
+    "de.speak.m_day",
+    "de.speak.m_age",
+    "de.speak.n_rep_gross",
+    "de.speak.n_house",
+    "de.speak.n_cat",
+    "de.speak.n_car",
+    "de.speak.n_phone",
+    "de.speak.n_rep_neu"
+  ],
+  "byId": {
+    "de.speak.k_rep_hallo": {
+      "id": "de.speak.k_rep_hallo",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Hallo!",
+      "acceptedVariants": [
+        "Hallo"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:hallo"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.uk_model_rep_hallo",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_greet_morning": {
+      "id": "de.speak.k_greet_morning",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Buổi sáng, bạn bước vào tiệm bánh. Hãy chào người bán hàng."
+      },
+      "target": "Guten Morgen!",
+      "acceptedVariants": [
+        "Guten Morgen",
+        "Hallo, guten Morgen",
+        "Morgen"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:morgen"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:morgen"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.uk_model_greet_morning",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_rep_danke": {
+      "id": "de.speak.k_rep_danke",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Danke schön!",
+      "acceptedVariants": [
+        "Danke schön",
+        "Danke"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:danke",
+        "de:w:schon-adjective"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.uk_model_rep_danke",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_thank": {
+      "id": "de.speak.k_thank",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Người bán đưa bạn cốc cà phê. Hãy cảm ơn."
+      },
+      "target": "Danke!",
+      "acceptedVariants": [
+        "Danke",
+        "Danke schön",
+        "Vielen Dank"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:danke"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:danke"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.uk_model_thank",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_rep_abend": {
+      "id": "de.speak.k_rep_abend",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Guten Abend!",
+      "acceptedVariants": [
+        "Guten Abend"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:abend"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.uk_model_rep_abend",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_greet_evening": {
+      "id": "de.speak.k_greet_evening",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Buổi tối bạn gặp hàng xóm lớn tuổi. Hãy chào lịch sự."
+      },
+      "target": "Guten Abend!",
+      "acceptedVariants": [
+        "Guten Abend",
+        "Guten Abend, Frau Müller",
+        "Guten Abend, Herr Müller"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:abend"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:abend"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.uk_model_greet_evening",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_bye": {
+      "id": "de.speak.k_bye",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Bạn chia tay một người bạn thân. Hãy chào tạm biệt kiểu thân mật."
+      },
+      "target": "Tschüss!",
+      "acceptedVariants": [
+        "Tschüss",
+        "Tschüss, bis bald",
+        "Bis bald"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:tschuss"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:tschuss"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.uk_model_bye",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_rep_entschuldigung": {
+      "id": "de.speak.k_rep_entschuldigung",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Entschuldigung!",
+      "acceptedVariants": [
+        "Entschuldigung"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:entschuldigung"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.uk_model_rep_entschuldigung",
+      "allowedAttempts": 2
+    },
+    "de.speak.k_excuse": {
+      "id": "de.speak.k_excuse",
+      "taskFamily": "formulaic_exchange",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": "Trên tàu, bạn vô tình chạm vào một người. Hãy xin lỗi."
+      },
+      "target": "Entschuldigung!",
+      "acceptedVariants": [
+        "Entschuldigung",
+        "Entschuldigen Sie",
+        "Oh, Entschuldigung"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:entschuldigung"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:entschuldigung"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.uk_model_excuse",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_rep_name": {
+      "id": "de.speak.l_rep_name",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Ich heiße Minh.",
+      "acceptedVariants": [
+        "Ich heiße Minh"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:hei-en"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.ul_model_rep_name",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_name": {
+      "id": "de.speak.l_name",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói tên của bạn.",
+        "cueFacts": [
+          {
+            "label": "Tên",
+            "value": "Minh"
+          }
+        ]
+      },
+      "target": "Ich heiße Minh.",
+      "acceptedVariants": [
+        "Ich heiße Minh",
+        "Mein Name ist Minh",
+        "Ich bin Minh"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:hei-en"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:hei-en"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.ul_model_name",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_rep_from": {
+      "id": "de.speak.l_rep_from",
+      "taskFamily": "self_introduction",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Ich komme aus Vietnam.",
+      "acceptedVariants": [
+        "Ich komme aus Vietnam"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:kommen"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.ul_model_rep_from",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_from": {
+      "id": "de.speak.l_from",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn đến từ đâu.",
+        "cueFacts": [
+          {
+            "label": "Quê",
+            "value": "Việt Nam"
+          }
+        ]
+      },
+      "target": "Ich komme aus Vietnam.",
+      "acceptedVariants": [
+        "Ich komme aus Vietnam",
+        "Ich bin aus Vietnam"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:kommen"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:kommen"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.ul_model_from",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_live": {
+      "id": "de.speak.l_live",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn đang sống ở đâu.",
+        "cueFacts": [
+          {
+            "label": "Thành phố",
+            "value": "Berlin"
+          }
+        ]
+      },
+      "target": "Ich wohne in Berlin.",
+      "acceptedVariants": [
+        "Ich wohne in Berlin",
+        "Ich lebe in Berlin"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:wohnen"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:wohnen"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.ul_model_live",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_speak": {
+      "id": "de.speak.l_speak",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn nói những thứ tiếng nào.",
+        "cueFacts": [
+          {
+            "label": "Tiếng",
+            "value": "Việt, Đức"
+          }
+        ]
+      },
+      "target": "Ich spreche Vietnamesisch und Deutsch.",
+      "acceptedVariants": [
+        "Ich spreche Vietnamesisch und Deutsch",
+        "Ich spreche Vietnamesisch und ein bisschen Deutsch"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:sprechen",
+        "de:w:deutsch"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:sprechen",
+        "de:w:deutsch"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.ul_model_speak",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_work": {
+      "id": "de.speak.l_work",
+      "taskFamily": "self_introduction",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn làm việc ở đâu.",
+        "cueFacts": [
+          {
+            "label": "Nơi làm việc",
+            "value": "khách sạn"
+          }
+        ]
+      },
+      "target": "Ich arbeite in einem Hotel.",
+      "acceptedVariants": [
+        "Ich arbeite in einem Hotel",
+        "Ich arbeite im Hotel"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:arbeiten",
+        "de:w:hotel"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:arbeiten",
+        "de:w:hotel"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.ul_model_work",
+      "allowedAttempts": 2
+    },
+    "de.speak.l_like": {
+      "id": "de.speak.l_like",
+      "taskFamily": "self_introduction",
+      "elicitationType": "semantic_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn thích uống cà phê.",
+        "cueEmoji": "☕"
+      },
+      "target": "Ich trinke gern Kaffee.",
+      "acceptedVariants": [
+        "Ich trinke gern Kaffee",
+        "Ich trinke gerne Kaffee"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:trinken",
+        "de:w:gern",
+        "de:w:kaffee"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:trinken",
+        "de:w:gern",
+        "de:w:kaffee"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.ul_model_like",
+      "allowedAttempts": 2
+    },
+    "de.speak.m_rep_zehn": {
+      "id": "de.speak.m_rep_zehn",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Das kostet zehn Euro.",
+      "acceptedVariants": [
+        "Das kostet zehn Euro",
+        "Zehn Euro"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.um_model_rep_zehn",
+      "allowedAttempts": 2
+    },
+    "de.speak.m_price": {
+      "id": "de.speak.m_price",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Người khách hỏi giá cà phê. Hãy trả lời.",
+        "cueFacts": [
+          {
+            "label": "Giá",
+            "value": "3 euro"
+          }
+        ]
+      },
+      "target": "Das kostet drei Euro.",
+      "acceptedVariants": [
+        "Das kostet drei Euro",
+        "Drei Euro",
+        "Der Kaffee kostet drei Euro"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.um_model_price",
+      "allowedAttempts": 2
+    },
+    "de.speak.m_children": {
+      "id": "de.speak.m_children",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói bạn có mấy đứa con.",
+        "cueFacts": [
+          {
+            "label": "Con",
+            "value": "2"
+          }
+        ]
+      },
+      "target": "Ich habe zwei Kinder.",
+      "acceptedVariants": [
+        "Ich habe zwei Kinder",
+        "Zwei Kinder"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:haben"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:haben"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.um_model_children",
+      "allowedAttempts": 2
+    },
+    "de.speak.m_time": {
+      "id": "de.speak.m_time",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Có người hỏi giờ. Hãy nói giờ.",
+        "cueEmoji": "🕗",
+        "cueFacts": [
+          {
+            "label": "Giờ",
+            "value": "8:00"
+          }
+        ]
+      },
+      "target": "Es ist acht Uhr.",
+      "acceptedVariants": [
+        "Es ist acht Uhr",
+        "Acht Uhr"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sein",
+        "de:w:uhr"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:sein",
+        "de:w:uhr"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.um_model_time",
+      "allowedAttempts": 2
+    },
+    "de.speak.m_rep_halb": {
+      "id": "de.speak.m_rep_halb",
+      "taskFamily": "information_giving",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Es ist halb drei.",
+      "acceptedVariants": [
+        "Es ist halb drei"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sein",
+        "de:w:halb"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.um_model_rep_halb",
+      "allowedAttempts": 2
+    },
+    "de.speak.m_day": {
+      "id": "de.speak.m_day",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói hôm nay là thứ mấy.",
+        "cueFacts": [
+          {
+            "label": "Hôm nay",
+            "value": "thứ Hai"
+          }
+        ]
+      },
+      "target": "Heute ist Montag.",
+      "acceptedVariants": [
+        "Heute ist Montag",
+        "Montag"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:heute",
+        "de:w:sein",
+        "de:w:montag"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:heute",
+        "de:w:sein",
+        "de:w:montag"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.um_model_day",
+      "allowedAttempts": 2
+    },
+    "de.speak.m_age": {
+      "id": "de.speak.m_age",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": "Hãy nói tuổi của bạn.",
+        "cueFacts": [
+          {
+            "label": "Tuổi",
+            "value": "20"
+          }
+        ]
+      },
+      "target": "Ich bin zwanzig Jahre alt.",
+      "acceptedVariants": [
+        "Ich bin zwanzig Jahre alt",
+        "Ich bin zwanzig"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sein",
+        "de:w:alt"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:sein",
+        "de:w:alt"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.um_model_age",
+      "allowedAttempts": 2
+    },
+    "de.speak.n_rep_gross": {
+      "id": "de.speak.n_rep_gross",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Das Haus ist groß.",
+      "acceptedVariants": [
+        "Das Haus ist groß"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:haus",
+        "de:w:sein",
+        "de:w:gro"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.un_model_rep_gross",
+      "allowedAttempts": 2
+    },
+    "de.speak.n_house": {
+      "id": "de.speak.n_house",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Hãy nói ngôi nhà trong hình to.",
+        "cueEmoji": "🏠"
+      },
+      "target": "Das Haus ist groß.",
+      "acceptedVariants": [
+        "Das Haus ist groß",
+        "Das ist ein großes Haus"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:haus",
+        "de:w:sein",
+        "de:w:gro"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:haus",
+        "de:w:sein",
+        "de:w:gro"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.un_model_house",
+      "allowedAttempts": 2
+    },
+    "de.speak.n_cat": {
+      "id": "de.speak.n_cat",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Hãy nói con mèo trong hình nhỏ.",
+        "cueEmoji": "🐈"
+      },
+      "target": "Die Katze ist klein.",
+      "acceptedVariants": [
+        "Die Katze ist klein",
+        "Das ist eine kleine Katze"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:katze",
+        "de:w:sein",
+        "de:w:klein"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:katze",
+        "de:w:sein",
+        "de:w:klein"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.un_model_cat",
+      "allowedAttempts": 2
+    },
+    "de.speak.n_car": {
+      "id": "de.speak.n_car",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Hãy nói chiếc ô tô trong hình cũ.",
+        "cueEmoji": "🚗"
+      },
+      "target": "Das Auto ist alt.",
+      "acceptedVariants": [
+        "Das Auto ist alt",
+        "Das ist ein altes Auto"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:auto",
+        "de:w:sein",
+        "de:w:alt"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:auto",
+        "de:w:sein",
+        "de:w:alt"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.un_model_car",
+      "allowedAttempts": 2
+    },
+    "de.speak.n_phone": {
+      "id": "de.speak.n_phone",
+      "taskFamily": "description",
+      "elicitationType": "picture_prompt",
+      "prompt": {
+        "instruction": "Hãy nói chiếc điện thoại trong hình mới.",
+        "cueEmoji": "📱"
+      },
+      "target": "Das Handy ist neu.",
+      "acceptedVariants": [
+        "Das Handy ist neu",
+        "Das ist ein neues Handy"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:handy",
+        "de:w:sein",
+        "de:w:neu"
+      ],
+      "evidenceLexemeRefs": [
+        "de:w:handy",
+        "de:w:sein",
+        "de:w:neu"
+      ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": 2
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": "de.clip.un_model_phone",
+      "allowedAttempts": 2
+    },
+    "de.speak.n_rep_neu": {
+      "id": "de.speak.n_rep_neu",
+      "taskFamily": "description",
+      "elicitationType": "repetition",
+      "prompt": {
+        "instruction": "Nghe, rồi tự nói lại."
+      },
+      "target": "Das Handy ist neu.",
+      "acceptedVariants": [
+        "Das Handy ist neu"
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:handy",
+        "de:w:sein",
+        "de:w:neu"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": true,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": false,
+      "modelAudioRef": "de.clip.un_model_rep_neu",
+      "allowedAttempts": 2
+    }
+  }
+}

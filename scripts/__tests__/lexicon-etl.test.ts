@@ -67,6 +67,24 @@ describe("kaikki adapter", () => {
     expect([...scan.lemmas.keys()]).toEqual(["perro|noun"]);
   });
 
+  test("usage tags restrict a lemma only when every sense carries one; tagged senses give no glosses or examples beside plain ones", async () => {
+    const file = write("es/kaikki3.jsonl", [
+      entry({ word: "andar", pos: "verb", senses: [{ glosses: ["to walk"], examples: [{ text: "Ando mucho.", english: "I walk a lot." }] }, { glosses: ["to fare (dated)"], tags: ["dated"], examples: [{ text: "Anda la cosa.", english: "Old usage." }] }] }),
+      entry({ word: "andar", pos: "verb", etymology_number: 2, senses: [{ glosses: ["to go about (slang)"], tags: ["slang"] }] }),
+      entry({ word: "maravedí", pos: "noun", senses: [{ glosses: ["an old coin"], tags: ["historical"] }, { glosses: ["money (archaic)"], tags: ["archaic"] }] }),
+      entry({ word: "guay", pos: "adj", tags: ["colloquial", "slang"], senses: [{ glosses: ["cool"] }] }),
+    ].join("\n"));
+    const scan = await scanKaikki(file, { lang: "es", sourceId: "kaikki-en", glossLanguage: "en" });
+    const andar = scan.lemmas.get("andar|verb")!;
+    expect(andar.usageTags).toEqual([]);
+    expect(andar.glosses).toEqual(["to walk"]);
+    expect(andar.examples.map((x) => x.target)).toEqual(["Ando mucho."]);
+    expect(andar.senseCount).toBe(3);
+    expect(scan.lemmas.get("maravedí|noun")!.usageTags).toEqual(["archaic", "historical"]);
+    expect(scan.lemmas.get("maravedí|noun")!.glosses).toEqual(["an old coin", "money (archaic)"]);
+    expect(scan.lemmas.get("guay|adjective")!.usageTags).toEqual(["slang"]);
+  });
+
   test("tag atoms follow the Lexique-style notation and ignore combined/table rows", () => {
     expect(atomsFromTags(["first-person", "present", "singular", "subjunctive"])).toEqual(["sub:pre:1", "sg"]);
     expect(atomsFromTags(["second-person", "imperative", "singular"])).toEqual(["imp:pre:2", "sg"]);
@@ -245,5 +263,87 @@ describe("derivation on a synthetic language", () => {
     const credits = first.files["tatoeba-credits.json"] as { credits: Record<string, string> };
     expect(credits.credits["2"]).toBe("bob");
     expect(credits.credits["11"]).toBe("dan");
+  });
+});
+
+describe("German nouns (capitalised) against a lower-case frequency list", () => {
+  test("haus/häuser lemmatise to the noun Haus; the nominalised plural tagen counts mostly for Tag", async () => {
+    const dir = path.join(scratch, "de-derive", "de");
+    mkdirSync(dir, { recursive: true });
+    const de = (o: Record<string, unknown>) => JSON.stringify({ lang_code: "de", ...o });
+    const lines = [
+      de({ word: "Haus", pos: "noun", senses: [{ glosses: ["house"], tags: ["neuter"], examples: [{ text: "Das Haus ist alt.", english: "The house is old." }] }, { glosses: ["home"] }], forms: [{ form: "Häuser", tags: ["plural"] }] }),
+      de({ word: "Häuser", pos: "noun", senses: [{ glosses: ["plural of Haus"], tags: ["form-of"], form_of: [{ word: "Haus" }] }] }),
+      de({ word: "Tag", pos: "noun", senses: [{ glosses: ["day"], tags: ["masculine"], examples: [{ text: "Guten Tag!", english: "Good day!" }] }, { glosses: ["daytime"] }, { glosses: ["date"] }], forms: [{ form: "Tagen", tags: ["dative", "plural"] }] }),
+      de({ word: "Tagen", pos: "noun", senses: [{ glosses: ["dative plural of Tag"], tags: ["form-of"], form_of: [{ word: "Tag" }] }] }),
+      de({ word: "tagen", pos: "verb", senses: [{ glosses: ["to meet, to sit (of a committee)"] }] }),
+      de({ word: "gehen", pos: "verb", senses: [{ glosses: ["to go"], examples: [{ text: "Wir gehen.", english: "We go." }] }] }),
+    ];
+    writeFileSync(path.join(dir, "kaikki-en-de.jsonl"), lines.join("\n"));
+    writeFileSync(path.join(dir, "frequencywords-de.txt"), "gehen 300\nhaus 100\nhäuser 20\ntag 80\ntagen 40\n");
+    writeFileSync(path.join(dir, "wordfreq-de.csv"), "word,zipf\nhaus,5.5\n");
+    writeFileSync(path.join(dir, "kaikki-vi-de.jsonl"), "");
+    for (const f of ["tatoeba-de-sentences.tsv", "tatoeba-de-links-en.tsv", "tatoeba-de-links-vi.tsv", "tatoeba-eng-sentences.tsv", "tatoeba-vie-sentences.tsv"]) writeFileSync(path.join(dir, f), "");
+    const ids = new Map<string, { sha256: string; bytes: number; retrievedAt: string } | null>();
+    for (const src of sourcesFor("de")) ids.set(src.artifactFilename, { sha256: "c".repeat(64), bytes: 1, retrievedAt: "2026-10-28" });
+    const result = await deriveLanguage({ lang: "de", dir, manifest: buildManifestV2("de", ids, null), poolSize: 10 });
+    const pool = (result.files["candidate-pool.json"] as { entries: { lemma: string; partOfSpeech: string; frequency: { perMillion: number } | null }[] }).entries;
+    const find = (lemma: string, pos: string) => pool.find((e) => e.lemma === lemma && e.partOfSpeech === pos);
+    expect(find("Haus", "noun")).toBeDefined();
+    expect(find("Haus", "noun")!.frequency!.perMillion).toBeCloseTo((120 / 540) * 1e6, -2);
+    const tag = find("Tag", "noun")!;
+    const tagen = find("tagen", "verb");
+    expect(tag.frequency!.perMillion).toBeGreaterThan(tagen?.frequency?.perMillion ?? 0);
+    expect(find("gehen", "verb")).toBeDefined();
+  });
+
+  // Shapes copied from the kaikki German extract (2026-10-28): the head
+  // template names the standard gender first; sense tags mix in regional ones.
+  test("gender from the de-noun head (das Taxi, das Virus, der Name), adjectival nouns (der Deutsche), and a dated interjection never zeroes the adverb nicht", async () => {
+    const dir = path.join(scratch, "de-heads", "de");
+    mkdirSync(dir, { recursive: true });
+    const de = (o: Record<string, unknown>) => JSON.stringify({ lang_code: "de", ...o });
+    const lines = [
+      de({ word: "Taxi", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "n:m[Switzerland, but rare],(s),s:Taxen" } }], senses: [{ glosses: ["taxi, cab"], tags: ["Switzerland", "masculine", "neuter", "strong"] }] }),
+      de({ word: "Virus", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "n:m,,Viren:Vira[taxonomic rank]" } }], senses: [{ glosses: ["virus"], tags: ["masculine", "neuter"] }] }),
+      de({ word: "Name", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "m,ns.weak" } }], senses: [{ glosses: ["name"] }] }),
+      de({ word: "Deutscher", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "+", f: "+" } }], senses: [{ glosses: ["German (male or unspecified)"], tags: ["adjectival", "masculine"] }] }),
+      de({ word: "Kuchen", pos: "noun", senses: [{ glosses: ["cake"], tags: ["masculine", "neuter"] }] }),
+      de({ word: "nicht", pos: "adv", head_templates: [{ name: "head", args: { "1": "de", "2": "adverb" } }], senses: [{ glosses: ["not, non- (negates the meaning of a verb)"], examples: [{ text: "Ich weiß es nicht.", english: "I don't know." }] }] }),
+      de({ word: "nicht", pos: "intj", head_templates: [{ name: "head", args: { "1": "de", "2": "interjection", head: "nicht?" } }], senses: [{ glosses: ["right?; is it?; is it not?"], tags: ["dated", "formal"] }] }),
+      de({ word: "auch", pos: "adv", senses: [{ glosses: ["also, too"], examples: [{ text: "Ich auch.", english: "Me too." }] }] }),
+      de({ word: "auch", pos: "intj", senses: [{ glosses: ["in answering a yes-no question, yes, and more"] }] }),
+      de({ word: "ja", pos: "intj", senses: [{ glosses: ["yes"] }] }),
+      de({ word: "Ja", pos: "noun", head_templates: [{ name: "de-noun", args: { "1": "n,s,s" } }], senses: [{ glosses: ["a yes"] }, { glosses: ["an approval"] }] }),
+      de({ word: "so", pos: "adv", senses: [{ glosses: ["so, thus"] }] }),
+      de({ word: "so", pos: "noun", senses: [{ glosses: ["a so (marginal noun reading)"] }] }),
+      de({ word: "so", pos: "conj", senses: [{ glosses: ["thus, so"] }] }),
+    ];
+    const scan = await scanKaikki(write("de-heads.jsonl", lines.join("\n")), { lang: "de", sourceId: "kaikki-en", glossLanguage: "en" });
+    expect(scan.lemmas.get("Taxi|noun")?.gender).toBe("neuter");
+    expect(scan.lemmas.get("Virus|noun")?.gender).toBe("neuter");
+    expect(scan.lemmas.get("Name|noun")?.gender).toBe("masculine");
+    expect(scan.lemmas.get("Deutscher|noun")).toMatchObject({ gender: "masculine", definiteForm: "Deutsche" });
+    expect(scan.lemmas.get("Kuchen|noun")?.gender).toBe("both"); // two genders on a sense, no head: neither is proven
+
+    writeFileSync(path.join(dir, "kaikki-en-de.jsonl"), lines.join("\n"));
+    writeFileSync(path.join(dir, "frequencywords-de.txt"), "nicht 500\nauch 300\nja 200\nso 150\ntaxi 40\ndeutscher 30\n");
+    writeFileSync(path.join(dir, "wordfreq-de.csv"), "word,zipf\nnicht,6.5\n");
+    writeFileSync(path.join(dir, "kaikki-vi-de.jsonl"), "");
+    for (const f of ["tatoeba-de-sentences.tsv", "tatoeba-de-links-en.tsv", "tatoeba-de-links-vi.tsv", "tatoeba-eng-sentences.tsv", "tatoeba-vie-sentences.tsv"]) writeFileSync(path.join(dir, f), "");
+    const ids = new Map<string, { sha256: string; bytes: number; retrievedAt: string } | null>();
+    for (const src of sourcesFor("de")) ids.set(src.artifactFilename, { sha256: "c".repeat(64), bytes: 1, retrievedAt: "2026-10-28" });
+    const result = await deriveLanguage({ lang: "de", dir, manifest: buildManifestV2("de", ids, null), poolSize: 10 });
+    const pool = (result.files["candidate-pool.json"] as { entries: { lemma: string; partOfSpeech: string; definiteForm?: string; frequency: { perMillion: number } | null }[] }).entries;
+    const nicht = pool.find((e) => e.lemma === "nicht" && e.partOfSpeech === "adverb");
+    expect(nicht?.frequency?.perMillion ?? 0).toBeGreaterThan(0);
+    // A plain function reading zeroes its noun homographs (any case), never an adverb.
+    const pm = (lemma: string, pos: string) => pool.find((e) => e.lemma === lemma && e.partOfSpeech === pos)?.frequency?.perMillion ?? 0;
+    expect(pm("auch", "adverb")).toBeGreaterThan(0);
+    expect(pm("ja", "interjection")).toBeGreaterThan(0);
+    expect(pm("Ja", "noun")).toBe(0); // the nominalisation (das Ja) never rides on the lower-case form
+    expect(pm("so", "adverb")).toBeGreaterThan(0);
+    expect(pm("so", "noun")).toBe(0);
+    expect(pool.find((e) => e.lemma === "Deutscher")?.definiteForm).toBe("Deutsche");
   });
 });

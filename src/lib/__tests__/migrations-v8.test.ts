@@ -21,6 +21,7 @@ import {
   __setMigrationFailureForTests,
   migrateProgress,
   PERSIST_VERSION,
+  REKEYED_TARGETS,
   rekeyRegistryCourses,
   V8_REKEYED_TARGETS,
   type PersistedProgress,
@@ -37,12 +38,12 @@ const totals = (stats: Record<string, { correct: number; wrong: number }>) =>
   Object.values(stats).reduce((t, s) => ({ correct: t.correct + s.correct, wrong: t.wrong + s.wrong }), { correct: 0, wrong: 0 });
 
 describe("v7 → v8: legacy re-key of registry courses", () => {
-  test("PERSIST_VERSION is 8", () => {
+  test("PERSIST_VERSION is 8 (v8: legacy re-key)", () => {
     expect(PERSIST_VERSION).toBe(8);
   });
 
   test("every id registry the app ships was re-keyed by a numbered step (a new registry needs its own migration)", () => {
-    expect([...V8_REKEYED_TARGETS].sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
+    expect([...REKEYED_TARGETS].sort()).toEqual(Object.keys(ID_REGISTRIES).sort());
   });
 
   test("RC3 es-en progress: every key becomes the id the runtime writes; counts are preserved", () => {

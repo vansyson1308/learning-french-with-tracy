@@ -33,6 +33,7 @@ import {
   type StorySource,
   type Syllabus,
 } from "../../content/schema";
+import { buildPlugin } from "./languages";
 import { pickNative } from "./native-text";
 import { canonicalJson, readJson, safeResolve, type ValidationResult } from "./pipeline";
 import { receptionAssetKey, receptionAssetsDir, receptionPipelineVersion } from "./reception";
@@ -175,7 +176,7 @@ export function buildLexemeIndex(
 const bandRank = (b: StoryBand) => STORY_BANDS.indexOf(b);
 
 /** Plural and gender endings tried on nouns/adjectives (Romance languages). */
-const ENDINGS: [RegExp, string][] = [
+const ENDINGS: readonly (readonly [RegExp, string])[] = [
   [/ones$/, "ón"],
   [/es$/, ""],
   [/s$/, ""],
@@ -194,7 +195,13 @@ export type Resolution =
 
 export function resolveToken(
   key: string,
-  ctx: { index: LexemeIndex; functionWords: ReadonlySet<string>; tokenMap: Record<string, string> }
+  ctx: {
+    index: LexemeIndex;
+    functionWords: ReadonlySet<string>;
+    tokenMap: Record<string, string>;
+    /** The language's own endings (build plugin `storyEndings`); default: the Romance list. */
+    endings?: readonly (readonly [RegExp, string])[];
+  }
 ): Resolution {
   const mapped = ctx.tokenMap[key];
   if (mapped === "function" || mapped === "name") return { kind: mapped };
@@ -203,7 +210,7 @@ export function resolveToken(
   if (/^\d+([.,]\d+)?$/.test(key)) return { kind: "number" };
   const direct = ctx.index.single.get(key);
   if (direct) return { kind: "lexeme", lexemeId: direct };
-  for (const [re, rep] of ENDINGS) {
+  for (const [re, rep] of ctx.endings ?? ENDINGS) {
     if (!re.test(key)) continue;
     const id = ctx.index.single.get(key.replace(re, rep));
     if (id && INFLECTING.has(ctx.index.pos.get(id) ?? "")) return { kind: "lexeme", lexemeId: id };
@@ -215,8 +222,12 @@ export function resolveToken(
 // Bands and analysis
 // ---------------------------------------------------------------------------
 
-/** Syllabus position → band: first half of the level's entries is `<L>-1`, the rest `<L>-2`. */
-export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">): Map<string, StoryBand> {
+/**
+ * Syllabus position → band: first half of the level's entries is `<L>-1`, the rest `<L>-2`.
+ * QC 2026-10-29 §1.2: a target may also commit the next band's list (`later`,
+ * e.g. syllabus-a2-1.json, level "A2-1"); its entries all take that band.
+ */
+export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">, later?: Pick<Syllabus, "level" | "entries"> | null): Map<string, StoryBand> {
   const bands = new Map<string, StoryBand>();
   const level = syllabus.level.toUpperCase();
   const half = Math.ceil(syllabus.entries.length / 2);
@@ -224,6 +235,10 @@ export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">): Map<
     const band = `${level}-${i < half ? 1 : 2}`;
     if ((STORY_BANDS as readonly string[]).includes(band)) bands.set(e.lexemeId, band as StoryBand);
   });
+  const laterBand = later?.level.toUpperCase();
+  if (later && laterBand && (STORY_BANDS as readonly string[]).includes(laterBand)) {
+    for (const e of later.entries) if (!bands.has(e.lexemeId)) bands.set(e.lexemeId, laterBand as StoryBand);
+  }
   return bands;
 }
 
@@ -245,7 +260,13 @@ export type StoryAnalysis = {
 export function analyzeStory(
   lang: string,
   story: StorySource,
-  ctx: { index: LexemeIndex; functionWords: ReadonlySet<string>; bands: Map<string, StoryBand>; tokenMap?: Record<string, string> }
+  ctx: {
+    index: LexemeIndex;
+    functionWords: ReadonlySet<string>;
+    bands: Map<string, StoryBand>;
+    tokenMap?: Record<string, string>;
+    endings?: readonly (readonly [RegExp, string])[];
+  }
 ): StoryAnalysis {
   const tokenMap = Object.fromEntries(
     Object.entries({ ...(ctx.tokenMap ?? {}), ...(story.tokenMap ?? {}) }).map(([k, v]) => [tokenKey(k), v])
@@ -285,7 +306,7 @@ export function analyzeStory(
       }
       tokens += 1;
       const key = tokenKey(piece.text);
-      const r = resolveToken(key, { index: ctx.index, functionWords: ctx.functionWords, tokenMap });
+      const r = resolveToken(key, { index: ctx.index, functionWords: ctx.functionWords, tokenMap, endings: ctx.endings });
       if (r.kind === "lexeme") {
         count(r.lexemeId);
         out.push({ text: piece.text, lexemeId: r.lexemeId });
@@ -396,6 +417,8 @@ export function validateStories(input: {
   stories: Stories;
   lexicon: RichLexicon;
   syllabus: Pick<Syllabus, "level" | "entries"> | null;
+  /** The next band's committed list (lexicon/syllabus-a2-1.json), if any. */
+  laterSyllabus?: Pick<Syllabus, "level" | "entries"> | null;
   nativeCodes: readonly string[];
   /** Voice ids of content/<lang>/reception/audio-source-manifest.json (null: no manifest). */
   receptionVoices: ReadonlySet<string> | null;
@@ -407,7 +430,7 @@ export function validateStories(input: {
   const lexemeIds = new Set(input.lexicon.lexemes.map((l) => l.id));
   const glossOf = new Map(input.lexicon.lexemes.map((l) => [l.id, l.glosses as Record<string, string | undefined>]));
   const functionWords = new Set(stories.functionWords.map(tokenKey));
-  const bands = input.syllabus ? lexemeBands(input.syllabus) : new Map<string, StoryBand>();
+  const bands = input.syllabus ? lexemeBands(input.syllabus, input.laterSyllabus) : new Map<string, StoryBand>();
   const index = buildLexemeIndex(lang, input.lexicon, loadVerbForms(lang), bands);
   if (!input.syllabus) err("the target has no syllabus — stories are graded by syllabus band");
 
@@ -451,7 +474,7 @@ export function validateStories(input: {
       if (target !== "function" && target !== "name" && !lexemeIds.has(target)) err(`${story.id}: tokenMap "${surface}" → unknown lexeme ${target}`);
     }
 
-    const a = analyzeStory(lang, story, { index, functionWords, bands, tokenMap: stories.tokenMap });
+    const a = analyzeStory(lang, story, { index, functionWords, bands, tokenMap: stories.tokenMap, endings: buildPlugin(lang).storyEndings });
     analyses.push(a);
     if (a.tokens < STORY_MIN_TOKENS || a.tokens > STORY_MAX_TOKENS) err(`${story.id}: ${a.tokens} word tokens (stories are ${STORY_MIN_TOKENS}–${STORY_MAX_TOKENS})`);
     if (a.unresolved.length > 0) err(`${story.id}: unresolved tokens ${a.unresolved.slice(0, 12).join(", ")}${a.unresolved.length > 12 ? " …" : ""} — use lexicon words, or map them in tokenMap`);

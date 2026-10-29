@@ -1,15 +1,2116 @@
 {
   "source": {
     "id": "kaikki-en",
-    "sha256": "d7ae58be5479ebf607bb9f714e74d796f4df3e8b558478d8e9c7710c55510394",
+    "sha256": "311f06d80e49e21a4d91d62b9007db13cf8bb89ccce64d218c5ed7859f37093d",
     "url": "https://kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl",
-    "retrievedAt": "2026-10-14"
+    "retrievedAt": "2026-10-28"
   },
   "generator": "scripts/lib/lexicon-etl/derive.ts",
   "population": {
     "definition": "nouns of the frequency population whose kaikki entry carries a gender",
-    "size": 4
+    "size": 12358
   },
   "minCount": 20,
-  "dataDrivenEndings": []
+  "dataDrivenEndings": [
+    {
+      "ending": "e",
+      "total": 2321,
+      "counts": {
+        "feminine": 1971,
+        "neuter": 124,
+        "masculine": 223,
+        "both": 3
+      }
+    },
+    {
+      "ending": "r",
+      "total": 1882,
+      "counts": {
+        "masculine": 1431,
+        "neuter": 266,
+        "feminine": 185
+      }
+    },
+    {
+      "ending": "t",
+      "total": 1593,
+      "counts": {
+        "neuter": 353,
+        "masculine": 559,
+        "feminine": 681
+      }
+    },
+    {
+      "ending": "er",
+      "total": 1557,
+      "counts": {
+        "masculine": 1259,
+        "feminine": 97,
+        "neuter": 201
+      }
+    },
+    {
+      "ending": "n",
+      "total": 1426,
+      "counts": {
+        "masculine": 516,
+        "neuter": 500,
+        "feminine": 410
+      }
+    },
+    {
+      "ending": "g",
+      "total": 1239,
+      "counts": {
+        "masculine": 331,
+        "feminine": 866,
+        "neuter": 42
+      }
+    },
+    {
+      "ending": "ng",
+      "total": 1013,
+      "counts": {
+        "feminine": 864,
+        "neuter": 27,
+        "masculine": 122
+      }
+    },
+    {
+      "ending": "ung",
+      "total": 866,
+      "counts": {
+        "feminine": 858,
+        "masculine": 8
+      }
+    },
+    {
+      "ending": "l",
+      "total": 771,
+      "counts": {
+        "neuter": 246,
+        "masculine": 419,
+        "feminine": 106
+      }
+    },
+    {
+      "ending": "en",
+      "total": 610,
+      "counts": {
+        "neuter": 359,
+        "masculine": 236,
+        "feminine": 15
+      }
+    },
+    {
+      "ending": "s",
+      "total": 505,
+      "counts": {
+        "neuter": 184,
+        "masculine": 259,
+        "feminine": 61,
+        "both": 1
+      }
+    },
+    {
+      "ending": "el",
+      "total": 440,
+      "counts": {
+        "masculine": 250,
+        "neuter": 110,
+        "feminine": 80
+      }
+    },
+    {
+      "ending": "d",
+      "total": 387,
+      "counts": {
+        "masculine": 196,
+        "neuter": 168,
+        "feminine": 23
+      }
+    },
+    {
+      "ending": "k",
+      "total": 342,
+      "counts": {
+        "feminine": 74,
+        "neuter": 94,
+        "masculine": 174
+      }
+    },
+    {
+      "ending": "it",
+      "total": 328,
+      "counts": {
+        "feminine": 298,
+        "masculine": 20,
+        "neuter": 10
+      }
+    },
+    {
+      "ending": "m",
+      "total": 324,
+      "counts": {
+        "neuter": 163,
+        "masculine": 142,
+        "feminine": 19
+      }
+    },
+    {
+      "ending": "ter",
+      "total": 318,
+      "counts": {
+        "masculine": 244,
+        "feminine": 26,
+        "neuter": 48
+      }
+    },
+    {
+      "ending": "h",
+      "total": 308,
+      "counts": {
+        "masculine": 192,
+        "neuter": 103,
+        "feminine": 13
+      }
+    },
+    {
+      "ending": "on",
+      "total": 307,
+      "counts": {
+        "neuter": 37,
+        "feminine": 230,
+        "masculine": 40
+      }
+    },
+    {
+      "ending": "te",
+      "total": 302,
+      "counts": {
+        "neuter": 11,
+        "feminine": 275,
+        "masculine": 16
+      }
+    },
+    {
+      "ending": "eit",
+      "total": 301,
+      "counts": {
+        "feminine": 297,
+        "masculine": 3,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "ch",
+      "total": 270,
+      "counts": {
+        "masculine": 168,
+        "neuter": 91,
+        "feminine": 11
+      }
+    },
+    {
+      "ending": "in",
+      "total": 263,
+      "counts": {
+        "neuter": 56,
+        "masculine": 63,
+        "feminine": 144
+      }
+    },
+    {
+      "ending": "ion",
+      "total": 226,
+      "counts": {
+        "feminine": 222,
+        "masculine": 3,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "se",
+      "total": 219,
+      "counts": {
+        "feminine": 182,
+        "neuter": 10,
+        "masculine": 27
+      }
+    },
+    {
+      "ending": "z",
+      "total": 218,
+      "counts": {
+        "masculine": 121,
+        "neuter": 35,
+        "feminine": 62
+      }
+    },
+    {
+      "ending": "le",
+      "total": 210,
+      "counts": {
+        "feminine": 186,
+        "masculine": 11,
+        "neuter": 13
+      }
+    },
+    {
+      "ending": "f",
+      "total": 206,
+      "counts": {
+        "masculine": 182,
+        "neuter": 22,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "ge",
+      "total": 202,
+      "counts": {
+        "feminine": 157,
+        "masculine": 26,
+        "neuter": 18,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ie",
+      "total": 192,
+      "counts": {
+        "feminine": 175,
+        "neuter": 6,
+        "masculine": 11
+      }
+    },
+    {
+      "ending": "nd",
+      "total": 185,
+      "counts": {
+        "masculine": 124,
+        "neuter": 49,
+        "feminine": 12
+      }
+    },
+    {
+      "ending": "st",
+      "total": 178,
+      "counts": {
+        "feminine": 32,
+        "neuter": 20,
+        "masculine": 126
+      }
+    },
+    {
+      "ending": "i",
+      "total": 174,
+      "counts": {
+        "feminine": 87,
+        "neuter": 30,
+        "masculine": 57
+      }
+    },
+    {
+      "ending": "ne",
+      "total": 174,
+      "counts": {
+        "feminine": 161,
+        "both": 1,
+        "masculine": 11,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "hen",
+      "total": 170,
+      "counts": {
+        "neuter": 151,
+        "masculine": 18,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "a",
+      "total": 166,
+      "counts": {
+        "feminine": 92,
+        "masculine": 28,
+        "neuter": 46
+      }
+    },
+    {
+      "ending": "ck",
+      "total": 162,
+      "counts": {
+        "neuter": 49,
+        "masculine": 112,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "de",
+      "total": 161,
+      "counts": {
+        "feminine": 123,
+        "neuter": 22,
+        "masculine": 16
+      }
+    },
+    {
+      "ending": "ger",
+      "total": 154,
+      "counts": {
+        "masculine": 139,
+        "neuter": 15
+      }
+    },
+    {
+      "ending": "um",
+      "total": 150,
+      "counts": {
+        "masculine": 49,
+        "neuter": 99,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "he",
+      "total": 146,
+      "counts": {
+        "feminine": 135,
+        "masculine": 8,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "us",
+      "total": 146,
+      "counts": {
+        "neuter": 66,
+        "masculine": 74,
+        "feminine": 6
+      }
+    },
+    {
+      "ending": "ft",
+      "total": 140,
+      "counts": {
+        "neuter": 9,
+        "feminine": 115,
+        "masculine": 16
+      }
+    },
+    {
+      "ending": "ht",
+      "total": 140,
+      "counts": {
+        "feminine": 69,
+        "neuter": 48,
+        "masculine": 23
+      }
+    },
+    {
+      "ending": "o",
+      "total": 138,
+      "counts": {
+        "neuter": 65,
+        "masculine": 61,
+        "feminine": 12
+      }
+    },
+    {
+      "ending": "cht",
+      "total": 135,
+      "counts": {
+        "feminine": 68,
+        "neuter": 46,
+        "masculine": 21
+      }
+    },
+    {
+      "ending": "ler",
+      "total": 126,
+      "counts": {
+        "masculine": 126
+      }
+    },
+    {
+      "ending": "ke",
+      "total": 120,
+      "counts": {
+        "feminine": 95,
+        "masculine": 22,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "lle",
+      "total": 120,
+      "counts": {
+        "feminine": 114,
+        "masculine": 4,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "nt",
+      "total": 120,
+      "counts": {
+        "masculine": 72,
+        "neuter": 45,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "ner",
+      "total": 119,
+      "counts": {
+        "masculine": 116,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "che",
+      "total": 115,
+      "counts": {
+        "feminine": 105,
+        "masculine": 7,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "ss",
+      "total": 107,
+      "counts": {
+        "neuter": 15,
+        "masculine": 81,
+        "feminine": 11
+      }
+    },
+    {
+      "ending": "is",
+      "total": 104,
+      "counts": {
+        "neuter": 45,
+        "masculine": 24,
+        "feminine": 34,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ll",
+      "total": 104,
+      "counts": {
+        "neuter": 22,
+        "masculine": 78,
+        "feminine": 4
+      }
+    },
+    {
+      "ending": "rt",
+      "total": 104,
+      "counts": {
+        "neuter": 26,
+        "feminine": 31,
+        "masculine": 47
+      }
+    },
+    {
+      "ending": "be",
+      "total": 102,
+      "counts": {
+        "feminine": 88,
+        "masculine": 7,
+        "neuter": 7
+      }
+    },
+    {
+      "ending": "re",
+      "total": 99,
+      "counts": {
+        "feminine": 80,
+        "neuter": 11,
+        "masculine": 7,
+        "both": 1
+      }
+    },
+    {
+      "ending": "aft",
+      "total": 98,
+      "counts": {
+        "feminine": 88,
+        "masculine": 10
+      }
+    },
+    {
+      "ending": "der",
+      "total": 97,
+      "counts": {
+        "masculine": 78,
+        "neuter": 13,
+        "feminine": 6
+      }
+    },
+    {
+      "ending": "at",
+      "total": 95,
+      "counts": {
+        "masculine": 53,
+        "feminine": 11,
+        "neuter": 31
+      }
+    },
+    {
+      "ending": "ker",
+      "total": 94,
+      "counts": {
+        "masculine": 92,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "tt",
+      "total": 90,
+      "counts": {
+        "masculine": 39,
+        "neuter": 49,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "and",
+      "total": 89,
+      "counts": {
+        "feminine": 8,
+        "neuter": 28,
+        "masculine": 53
+      }
+    },
+    {
+      "ending": "ier",
+      "total": 89,
+      "counts": {
+        "neuter": 36,
+        "feminine": 15,
+        "masculine": 38
+      }
+    },
+    {
+      "ending": "tz",
+      "total": 89,
+      "counts": {
+        "masculine": 76,
+        "neuter": 12,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ag",
+      "total": 88,
+      "counts": {
+        "masculine": 88
+      }
+    },
+    {
+      "ending": "her",
+      "total": 86,
+      "counts": {
+        "masculine": 85,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ei",
+      "total": 85,
+      "counts": {
+        "feminine": 71,
+        "masculine": 7,
+        "neuter": 7
+      }
+    },
+    {
+      "ending": "rin",
+      "total": 85,
+      "counts": {
+        "feminine": 80,
+        "neuter": 2,
+        "masculine": 3
+      }
+    },
+    {
+      "ending": "or",
+      "total": 84,
+      "counts": {
+        "masculine": 76,
+        "neuter": 8
+      }
+    },
+    {
+      "ending": "uch",
+      "total": 84,
+      "counts": {
+        "masculine": 54,
+        "neuter": 29,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "mer",
+      "total": 83,
+      "counts": {
+        "neuter": 21,
+        "feminine": 23,
+        "masculine": 39
+      }
+    },
+    {
+      "ending": "al",
+      "total": 80,
+      "counts": {
+        "neuter": 46,
+        "masculine": 30,
+        "feminine": 4
+      }
+    },
+    {
+      "ending": "ld",
+      "total": 80,
+      "counts": {
+        "neuter": 58,
+        "feminine": 5,
+        "masculine": 17
+      }
+    },
+    {
+      "ending": "sch",
+      "total": 80,
+      "counts": {
+        "masculine": 59,
+        "neuter": 21
+      }
+    },
+    {
+      "ending": "ing",
+      "total": 78,
+      "counts": {
+        "neuter": 26,
+        "masculine": 48,
+        "feminine": 4
+      }
+    },
+    {
+      "ending": "tte",
+      "total": 78,
+      "counts": {
+        "feminine": 73,
+        "masculine": 3,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "me",
+      "total": 75,
+      "counts": {
+        "masculine": 16,
+        "feminine": 57,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "ur",
+      "total": 75,
+      "counts": {
+        "feminine": 51,
+        "masculine": 20,
+        "neuter": 4
+      }
+    },
+    {
+      "ending": "gen",
+      "total": 74,
+      "counts": {
+        "masculine": 46,
+        "neuter": 28
+      }
+    },
+    {
+      "ending": "pe",
+      "total": 72,
+      "counts": {
+        "feminine": 62,
+        "masculine": 7,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "tel",
+      "total": 71,
+      "counts": {
+        "neuter": 33,
+        "masculine": 31,
+        "feminine": 7
+      }
+    },
+    {
+      "ending": "age",
+      "total": 70,
+      "counts": {
+        "feminine": 64,
+        "masculine": 2,
+        "neuter": 3,
+        "both": 1
+      }
+    },
+    {
+      "ending": "ät",
+      "total": 70,
+      "counts": {
+        "feminine": 60,
+        "neuter": 10
+      }
+    },
+    {
+      "ending": "b",
+      "total": 70,
+      "counts": {
+        "masculine": 57,
+        "neuter": 13
+      }
+    },
+    {
+      "ending": "kt",
+      "total": 70,
+      "counts": {
+        "masculine": 60,
+        "neuter": 10
+      }
+    },
+    {
+      "ending": "all",
+      "total": 69,
+      "counts": {
+        "masculine": 65,
+        "neuter": 2,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "ik",
+      "total": 69,
+      "counts": {
+        "feminine": 62,
+        "neuter": 4,
+        "masculine": 3
+      }
+    },
+    {
+      "ending": "nn",
+      "total": 69,
+      "counts": {
+        "masculine": 65,
+        "neuter": 4
+      }
+    },
+    {
+      "ending": "nz",
+      "total": 69,
+      "counts": {
+        "masculine": 13,
+        "feminine": 56
+      }
+    },
+    {
+      "ending": "ut",
+      "total": 69,
+      "counts": {
+        "masculine": 27,
+        "neuter": 18,
+        "feminine": 24
+      }
+    },
+    {
+      "ending": "ent",
+      "total": 68,
+      "counts": {
+        "masculine": 27,
+        "neuter": 41
+      }
+    },
+    {
+      "ending": "an",
+      "total": 67,
+      "counts": {
+        "masculine": 59,
+        "neuter": 7,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "fer",
+      "total": 67,
+      "counts": {
+        "neuter": 8,
+        "masculine": 55,
+        "feminine": 4
+      }
+    },
+    {
+      "ending": "ang",
+      "total": 66,
+      "counts": {
+        "masculine": 64,
+        "neuter": 1,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ber",
+      "total": 66,
+      "counts": {
+        "masculine": 58,
+        "feminine": 1,
+        "neuter": 7
+      }
+    },
+    {
+      "ending": "ein",
+      "total": 66,
+      "counts": {
+        "neuter": 26,
+        "masculine": 39,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ten",
+      "total": 66,
+      "counts": {
+        "neuter": 16,
+        "masculine": 42,
+        "feminine": 8
+      }
+    },
+    {
+      "ending": "u",
+      "total": 66,
+      "counts": {
+        "feminine": 19,
+        "masculine": 30,
+        "neuter": 17
+      }
+    },
+    {
+      "ending": "ze",
+      "total": 66,
+      "counts": {
+        "feminine": 56,
+        "masculine": 10
+      }
+    },
+    {
+      "ending": "aus",
+      "total": 65,
+      "counts": {
+        "neuter": 55,
+        "feminine": 5,
+        "masculine": 5
+      }
+    },
+    {
+      "ending": "ser",
+      "total": 61,
+      "counts": {
+        "neuter": 23,
+        "masculine": 35,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "hl",
+      "total": 60,
+      "counts": {
+        "neuter": 22,
+        "feminine": 16,
+        "masculine": 22
+      }
+    },
+    {
+      "ending": "p",
+      "total": 60,
+      "counts": {
+        "masculine": 43,
+        "neuter": 15,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "ug",
+      "total": 60,
+      "counts": {
+        "neuter": 10,
+        "masculine": 50
+      }
+    },
+    {
+      "ending": "ff",
+      "total": 59,
+      "counts": {
+        "neuter": 15,
+        "masculine": 44
+      }
+    },
+    {
+      "ending": "gel",
+      "total": 59,
+      "counts": {
+        "masculine": 42,
+        "feminine": 14,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "tät",
+      "total": 59,
+      "counts": {
+        "feminine": 59
+      }
+    },
+    {
+      "ending": "rei",
+      "total": 58,
+      "counts": {
+        "masculine": 5,
+        "feminine": 51,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "nde",
+      "total": 57,
+      "counts": {
+        "feminine": 44,
+        "neuter": 10,
+        "masculine": 3
+      }
+    },
+    {
+      "ending": "rer",
+      "total": 56,
+      "counts": {
+        "masculine": 56
+      }
+    },
+    {
+      "ending": "sel",
+      "total": 56,
+      "counts": {
+        "masculine": 31,
+        "feminine": 16,
+        "neuter": 9
+      }
+    },
+    {
+      "ending": "fe",
+      "total": 55,
+      "counts": {
+        "feminine": 49,
+        "masculine": 6
+      }
+    },
+    {
+      "ending": "ist",
+      "total": 55,
+      "counts": {
+        "masculine": 52,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "cke",
+      "total": 54,
+      "counts": {
+        "feminine": 53,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "pf",
+      "total": 54,
+      "counts": {
+        "masculine": 53,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "y",
+      "total": 54,
+      "counts": {
+        "neuter": 20,
+        "feminine": 14,
+        "masculine": 20
+      }
+    },
+    {
+      "ending": "hr",
+      "total": 53,
+      "counts": {
+        "neuter": 22,
+        "feminine": 24,
+        "masculine": 7
+      }
+    },
+    {
+      "ending": "sse",
+      "total": 52,
+      "counts": {
+        "feminine": 42,
+        "neuter": 2,
+        "masculine": 8
+      }
+    },
+    {
+      "ending": "ium",
+      "total": 51,
+      "counts": {
+        "neuter": 51
+      }
+    },
+    {
+      "ending": "lt",
+      "total": 51,
+      "counts": {
+        "feminine": 19,
+        "masculine": 28,
+        "neuter": 4
+      }
+    },
+    {
+      "ending": "nis",
+      "total": 51,
+      "counts": {
+        "neuter": 36,
+        "feminine": 14,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "tor",
+      "total": 51,
+      "counts": {
+        "masculine": 50,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "ar",
+      "total": 50,
+      "counts": {
+        "masculine": 32,
+        "neuter": 16,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "ine",
+      "total": 50,
+      "counts": {
+        "feminine": 49,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "ann",
+      "total": 49,
+      "counts": {
+        "masculine": 48,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "il",
+      "total": 49,
+      "counts": {
+        "masculine": 21,
+        "neuter": 27,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ken",
+      "total": 47,
+      "counts": {
+        "neuter": 22,
+        "masculine": 23,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "nk",
+      "total": 47,
+      "counts": {
+        "neuter": 9,
+        "feminine": 8,
+        "masculine": 30
+      }
+    },
+    {
+      "ending": "hn",
+      "total": 46,
+      "counts": {
+        "masculine": 27,
+        "feminine": 17,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "ot",
+      "total": 46,
+      "counts": {
+        "masculine": 15,
+        "neuter": 27,
+        "feminine": 4
+      }
+    },
+    {
+      "ending": "kel",
+      "total": 45,
+      "counts": {
+        "masculine": 32,
+        "neuter": 10,
+        "feminine": 3
+      }
+    },
+    {
+      "ending": "ppe",
+      "total": 44,
+      "counts": {
+        "feminine": 40,
+        "masculine": 3,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "rm",
+      "total": 44,
+      "counts": {
+        "masculine": 31,
+        "feminine": 12,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "und",
+      "total": 44,
+      "counts": {
+        "masculine": 41,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "uss",
+      "total": 44,
+      "counts": {
+        "neuter": 1,
+        "masculine": 38,
+        "feminine": 5
+      }
+    },
+    {
+      "ending": "ort",
+      "total": 42,
+      "counts": {
+        "neuter": 17,
+        "feminine": 1,
+        "masculine": 24
+      }
+    },
+    {
+      "ending": "del",
+      "total": 41,
+      "counts": {
+        "neuter": 9,
+        "masculine": 25,
+        "feminine": 7
+      }
+    },
+    {
+      "ending": "atz",
+      "total": 40,
+      "counts": {
+        "masculine": 40
+      }
+    },
+    {
+      "ending": "aum",
+      "total": 40,
+      "counts": {
+        "masculine": 40
+      }
+    },
+    {
+      "ending": "et",
+      "total": 40,
+      "counts": {
+        "masculine": 14,
+        "neuter": 26
+      }
+    },
+    {
+      "ending": "ß",
+      "total": 40,
+      "counts": {
+        "neuter": 11,
+        "masculine": 28,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "au",
+      "total": 39,
+      "counts": {
+        "feminine": 15,
+        "masculine": 19,
+        "neuter": 5
+      }
+    },
+    {
+      "ending": "den",
+      "total": 39,
+      "counts": {
+        "masculine": 30,
+        "neuter": 8,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "rn",
+      "total": 39,
+      "counts": {
+        "neuter": 21,
+        "masculine": 17,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "uf",
+      "total": 39,
+      "counts": {
+        "masculine": 39
+      }
+    },
+    {
+      "ending": "enz",
+      "total": 38,
+      "counts": {
+        "feminine": 36,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "es",
+      "total": 38,
+      "counts": {
+        "neuter": 27,
+        "feminine": 3,
+        "masculine": 8
+      }
+    },
+    {
+      "ending": "ise",
+      "total": 37,
+      "counts": {
+        "feminine": 36,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "nge",
+      "total": 37,
+      "counts": {
+        "masculine": 2,
+        "feminine": 33,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "ack",
+      "total": 36,
+      "counts": {
+        "masculine": 27,
+        "neuter": 8,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "eld",
+      "total": 36,
+      "counts": {
+        "neuter": 31,
+        "masculine": 5
+      }
+    },
+    {
+      "ending": "ett",
+      "total": 36,
+      "counts": {
+        "neuter": 34,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "rie",
+      "total": 36,
+      "counts": {
+        "feminine": 35,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "rk",
+      "total": 36,
+      "counts": {
+        "feminine": 1,
+        "masculine": 10,
+        "neuter": 25
+      }
+    },
+    {
+      "ending": "ant",
+      "total": 35,
+      "counts": {
+        "neuter": 3,
+        "masculine": 31,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "lag",
+      "total": 35,
+      "counts": {
+        "masculine": 35
+      }
+    },
+    {
+      "ending": "tin",
+      "total": 35,
+      "counts": {
+        "feminine": 31,
+        "neuter": 3,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "tze",
+      "total": 35,
+      "counts": {
+        "feminine": 30,
+        "masculine": 5
+      }
+    },
+    {
+      "ending": "alt",
+      "total": 34,
+      "counts": {
+        "masculine": 23,
+        "feminine": 11
+      }
+    },
+    {
+      "ending": "fen",
+      "total": 34,
+      "counts": {
+        "neuter": 8,
+        "masculine": 26
+      }
+    },
+    {
+      "ending": "ich",
+      "total": 34,
+      "counts": {
+        "neuter": 5,
+        "masculine": 29
+      }
+    },
+    {
+      "ending": "ite",
+      "total": 34,
+      "counts": {
+        "feminine": 33,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "ste",
+      "total": 34,
+      "counts": {
+        "feminine": 31,
+        "neuter": 2,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "zer",
+      "total": 34,
+      "counts": {
+        "masculine": 34
+      }
+    },
+    {
+      "ending": "ee",
+      "total": 33,
+      "counts": {
+        "feminine": 16,
+        "masculine": 9,
+        "neuter": 8
+      }
+    },
+    {
+      "ending": "mus",
+      "total": 33,
+      "counts": {
+        "masculine": 32,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "rte",
+      "total": 33,
+      "counts": {
+        "feminine": 29,
+        "masculine": 4
+      }
+    },
+    {
+      "ending": "sen",
+      "total": 33,
+      "counts": {
+        "neuter": 25,
+        "masculine": 8
+      }
+    },
+    {
+      "ending": "eg",
+      "total": 32,
+      "counts": {
+        "masculine": 30,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "tag",
+      "total": 32,
+      "counts": {
+        "masculine": 32
+      }
+    },
+    {
+      "ending": "x",
+      "total": 32,
+      "counts": {
+        "masculine": 17,
+        "feminine": 10,
+        "neuter": 5
+      }
+    },
+    {
+      "ending": "zug",
+      "total": 32,
+      "counts": {
+        "masculine": 32
+      }
+    },
+    {
+      "ending": "fel",
+      "total": 31,
+      "counts": {
+        "masculine": 20,
+        "feminine": 10,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "rd",
+      "total": 31,
+      "counts": {
+        "masculine": 21,
+        "neuter": 10
+      }
+    },
+    {
+      "ending": "ahn",
+      "total": 30,
+      "counts": {
+        "masculine": 13,
+        "feminine": 17
+      }
+    },
+    {
+      "ending": "men",
+      "total": 30,
+      "counts": {
+        "neuter": 21,
+        "masculine": 9
+      }
+    },
+    {
+      "ending": "nne",
+      "total": 30,
+      "counts": {
+        "feminine": 28,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "per",
+      "total": 30,
+      "counts": {
+        "masculine": 20,
+        "neuter": 3,
+        "feminine": 7
+      }
+    },
+    {
+      "ending": "eil",
+      "total": 29,
+      "counts": {
+        "masculine": 15,
+        "neuter": 14
+      }
+    },
+    {
+      "ending": "est",
+      "total": 29,
+      "counts": {
+        "masculine": 15,
+        "neuter": 12,
+        "feminine": 2
+      }
+    },
+    {
+      "ending": "iel",
+      "total": 29,
+      "counts": {
+        "neuter": 26,
+        "masculine": 3
+      }
+    },
+    {
+      "ending": "ben",
+      "total": 28,
+      "counts": {
+        "neuter": 22,
+        "masculine": 6
+      }
+    },
+    {
+      "ending": "gie",
+      "total": 28,
+      "counts": {
+        "feminine": 28
+      }
+    },
+    {
+      "ending": "ick",
+      "total": 28,
+      "counts": {
+        "masculine": 23,
+        "neuter": 5
+      }
+    },
+    {
+      "ending": "iff",
+      "total": 28,
+      "counts": {
+        "neuter": 12,
+        "masculine": 16
+      }
+    },
+    {
+      "ending": "ild",
+      "total": 28,
+      "counts": {
+        "neuter": 26,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "ma",
+      "total": 28,
+      "counts": {
+        "feminine": 4,
+        "neuter": 22,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "nie",
+      "total": 28,
+      "counts": {
+        "neuter": 2,
+        "feminine": 24,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "rat",
+      "total": 28,
+      "counts": {
+        "feminine": 1,
+        "masculine": 19,
+        "neuter": 8
+      }
+    },
+    {
+      "ending": "tur",
+      "total": 28,
+      "counts": {
+        "feminine": 27,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "uer",
+      "total": 28,
+      "counts": {
+        "neuter": 9,
+        "masculine": 9,
+        "feminine": 10
+      }
+    },
+    {
+      "ending": "ahl",
+      "total": 27,
+      "counts": {
+        "feminine": 16,
+        "masculine": 8,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "anz",
+      "total": 27,
+      "counts": {
+        "masculine": 8,
+        "feminine": 19
+      }
+    },
+    {
+      "ending": "bel",
+      "total": 27,
+      "counts": {
+        "neuter": 5,
+        "feminine": 5,
+        "masculine": 17
+      }
+    },
+    {
+      "ending": "mm",
+      "total": 27,
+      "counts": {
+        "neuter": 15,
+        "masculine": 11,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "opf",
+      "total": 27,
+      "counts": {
+        "masculine": 27
+      }
+    },
+    {
+      "ending": "ade",
+      "total": 26,
+      "counts": {
+        "feminine": 24,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "id",
+      "total": 26,
+      "counts": {
+        "neuter": 16,
+        "masculine": 9,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ose",
+      "total": 26,
+      "counts": {
+        "feminine": 24,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "pel",
+      "total": 26,
+      "counts": {
+        "masculine": 20,
+        "feminine": 3,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "ad",
+      "total": 25,
+      "counts": {
+        "masculine": 13,
+        "neuter": 12
+      }
+    },
+    {
+      "ending": "ed",
+      "total": 25,
+      "counts": {
+        "neuter": 16,
+        "masculine": 9
+      }
+    },
+    {
+      "ending": "ock",
+      "total": 25,
+      "counts": {
+        "masculine": 24,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "end",
+      "total": 24,
+      "counts": {
+        "masculine": 16,
+        "feminine": 4,
+        "neuter": 4
+      }
+    },
+    {
+      "ending": "erk",
+      "total": 24,
+      "counts": {
+        "neuter": 22,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "mpf",
+      "total": 24,
+      "counts": {
+        "masculine": 24
+      }
+    },
+    {
+      "ending": "use",
+      "total": 24,
+      "counts": {
+        "neuter": 4,
+        "feminine": 19,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "abe",
+      "total": 23,
+      "counts": {
+        "feminine": 20,
+        "masculine": 2,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "amm",
+      "total": 23,
+      "counts": {
+        "neuter": 14,
+        "masculine": 8,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "auf",
+      "total": 23,
+      "counts": {
+        "masculine": 23
+      }
+    },
+    {
+      "ending": "eck",
+      "total": 23,
+      "counts": {
+        "neuter": 8,
+        "masculine": 15
+      }
+    },
+    {
+      "ending": "ere",
+      "total": 23,
+      "counts": {
+        "feminine": 20,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "ind",
+      "total": 23,
+      "counts": {
+        "neuter": 14,
+        "masculine": 9
+      }
+    },
+    {
+      "ending": "mel",
+      "total": 23,
+      "counts": {
+        "masculine": 15,
+        "feminine": 5,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "rz",
+      "total": 23,
+      "counts": {
+        "neuter": 7,
+        "masculine": 16
+      }
+    },
+    {
+      "ending": "ße",
+      "total": 23,
+      "counts": {
+        "feminine": 22,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "tik",
+      "total": 23,
+      "counts": {
+        "feminine": 22,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "uck",
+      "total": 23,
+      "counts": {
+        "masculine": 23
+      }
+    },
+    {
+      "ending": "ück",
+      "total": 23,
+      "counts": {
+        "neuter": 23
+      }
+    },
+    {
+      "ending": "itt",
+      "total": 22,
+      "counts": {
+        "masculine": 22
+      }
+    },
+    {
+      "ending": "nte",
+      "total": 22,
+      "counts": {
+        "feminine": 21,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "off",
+      "total": 22,
+      "counts": {
+        "masculine": 22
+      }
+    },
+    {
+      "ending": "one",
+      "total": 22,
+      "counts": {
+        "feminine": 18,
+        "masculine": 3,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "ra",
+      "total": 22,
+      "counts": {
+        "feminine": 16,
+        "neuter": 5,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "ank",
+      "total": 21,
+      "counts": {
+        "feminine": 8,
+        "masculine": 13
+      }
+    },
+    {
+      "ending": "ass",
+      "total": 21,
+      "counts": {
+        "masculine": 17,
+        "neuter": 4
+      }
+    },
+    {
+      "ending": "ce",
+      "total": 21,
+      "counts": {
+        "feminine": 16,
+        "masculine": 4,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "ige",
+      "total": 21,
+      "counts": {
+        "feminine": 20,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "itz",
+      "total": 21,
+      "counts": {
+        "masculine": 19,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "mie",
+      "total": 21,
+      "counts": {
+        "feminine": 21
+      }
+    },
+    {
+      "ending": "nke",
+      "total": 21,
+      "counts": {
+        "feminine": 16,
+        "masculine": 5
+      }
+    },
+    {
+      "ending": "nst",
+      "total": 21,
+      "counts": {
+        "masculine": 14,
+        "feminine": 4,
+        "neuter": 3
+      }
+    },
+    {
+      "ending": "ren",
+      "total": 21,
+      "counts": {
+        "neuter": 18,
+        "feminine": 1,
+        "masculine": 2
+      }
+    },
+    {
+      "ending": "am",
+      "total": 20,
+      "counts": {
+        "neuter": 3,
+        "masculine": 16,
+        "feminine": 1
+      }
+    },
+    {
+      "ending": "ehr",
+      "total": 20,
+      "counts": {
+        "neuter": 6,
+        "feminine": 9,
+        "masculine": 5
+      }
+    },
+    {
+      "ending": "eis",
+      "total": 20,
+      "counts": {
+        "masculine": 18,
+        "neuter": 2
+      }
+    },
+    {
+      "ending": "em",
+      "total": 20,
+      "counts": {
+        "neuter": 17,
+        "masculine": 3
+      }
+    },
+    {
+      "ending": "hme",
+      "total": 20,
+      "counts": {
+        "feminine": 19,
+        "masculine": 1
+      }
+    },
+    {
+      "ending": "hrt",
+      "total": 20,
+      "counts": {
+        "feminine": 19,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "hte",
+      "total": 20,
+      "counts": {
+        "feminine": 19,
+        "neuter": 1
+      }
+    },
+    {
+      "ending": "ied",
+      "total": 20,
+      "counts": {
+        "neuter": 13,
+        "masculine": 7
+      }
+    },
+    {
+      "ending": "ift",
+      "total": 20,
+      "counts": {
+        "neuter": 4,
+        "masculine": 4,
+        "feminine": 12
+      }
+    },
+    {
+      "ending": "nkt",
+      "total": 20,
+      "counts": {
+        "masculine": 20
+      }
+    },
+    {
+      "ending": "ve",
+      "total": 20,
+      "counts": {
+        "masculine": 5,
+        "feminine": 13,
+        "neuter": 2
+      }
+    }
+  ]
 }

@@ -85,6 +85,16 @@ dispatch_checks() {
   done
 }
 
+# 2026-10-29: run bc9e77f compiled two new lexicon databases under
+# assets/lexicon, a path its caller did not pass. The gate passed on the
+# runner, where the files existed, but the commit left them out and CI failed
+# on the branch. A generated file the run produced and does not commit is now
+# an error, before anything is committed.
+GENERATED_ROOTS=(src/content assets content/reports)
+leftovers() {
+  git status --porcelain --untracked-files=all -- "${GENERATED_ROOTS[@]}" | grep -v '^[MADRC] ' || true
+}
+
 stage
 if git diff --cached --quiet; then
   echo "bot-commit: nothing to commit"
@@ -92,6 +102,12 @@ if git diff --cached --quiet; then
 fi
 gate "$REASON"
 stage
+left="$(leftovers)"
+if [ -n "$left" ]; then
+  echo "::error::bot-commit: the run produced generated files outside the committed paths — add their folder to the caller's path list:"
+  printf '%s\n' "$left"
+  exit 1
+fi
 git commit -F "$MESSAGE"
 
 for attempt in 1 2 3; do

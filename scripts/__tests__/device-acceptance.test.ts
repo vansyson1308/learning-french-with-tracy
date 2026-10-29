@@ -142,7 +142,7 @@ describe("backup tools", () => {
     const raw = JSON.stringify(seedRc3Envelope(now));
     const rc3 = rawWordCounts(raw);
     expect(rc3["es-en"]).toEqual({ words: 5, correct: 15, wrong: 4, srs: 5 });
-    expect(rc3["de-en"]).toEqual({ words: 2, correct: 4, wrong: 1, srs: 2 });
+    expect(rc3["de-en"]).toEqual({ words: 3, correct: 6, wrong: 2, srs: 3 }); // incl. "Freund" (legacy surface)
     const courses = learnerSummary(raw, now).courses as Record<string, Record<string, unknown>>;
     for (const id of ["es-en", "de-en", "fr-en"]) {
       const { words, correct, wrong, srs } = courses[id];

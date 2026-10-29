@@ -110,11 +110,11 @@ describe("course roles (P3d)", () => {
     expect(derive([ja, jaVi], true, false)["ja-en"].hiddenFromOnboarding).toBeUndefined();
   });
 
-  test("P4a: in the shipped catalogue only es-en is hidden from onboarding (es-vi is A1-claimable)", () => {
+  test("P4a: in the shipped catalogue only the legacy es-en and de-en are hidden from onboarding (es-vi, de-vi are A1-claimable)", () => {
     const shipped = JSON.parse(readFileSync("src/content/course-profiles.json", "utf8")) as {
       profiles: Record<string, { hiddenFromOnboarding?: boolean }>;
     };
     const hidden = Object.entries(shipped.profiles).filter(([, p]) => p.hiddenFromOnboarding).map(([id]) => id);
-    expect(hidden).toEqual(["es-en"]);
+    expect(hidden).toEqual(["de-en", "es-en"]);
   });
 });

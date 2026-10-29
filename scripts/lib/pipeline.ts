@@ -458,6 +458,10 @@ export function validateContent(): ValidationResult {
     if (pack.testOnly !== true) {
       errors.push(...templateDefectErrors(pack, { checkWordRepeats: courseProfileFlag(pack.id, "basicPack") === true }));
     }
+    // Language gates (QC 2026-10-28); inherited basic packs are left as they are.
+    if (pack.testOnly !== true && courseProfileFlag(pack.id, "basicPack") !== true) {
+      errors.push(...(buildPlugin(pack.targetCode).courseErrors?.(pack) ?? []));
+    }
 
     const ids = new Set<string>();
     for (const section of pack.sections)
@@ -540,11 +544,12 @@ export function validateContent(): ValidationResult {
       const b = JSON.stringify(Object.entries(generated).sort());
       if (a !== b) err(`${rel} drifted from ${generatedRel} — run bun run content:compile`);
     }
+    const legacy = loadLegacyMaps([{ courseId, pack } as LoadedPack])[code] ?? {};
     for (const section of pack.sections)
       for (const unit of section.units)
         for (const word of unit.words)
-          if (map[word.target] === undefined) {
-            err(`${courseId}: word "${word.target}" missing from ${rel}`);
+          if (map[word.target] === undefined && legacy[word.target] === undefined) {
+            err(`${courseId}: word "${word.target}" missing from ${rel} (and from the lexicon's legacySurfaces)`);
           }
   }
 
@@ -713,7 +718,7 @@ export type CoverageRow = {
  * Everything else (sentence audioTargets, wordBank/typeAnswer/fillBlank)
  * stays unmarked until deliberate eligibility metadata exists.
  */
-function gradeTargetsFor(e: AnyExercise, map: Record<string, string>): string[] | undefined {
+export function gradeTargetsFor(e: AnyExercise, map: Record<string, string>): string[] | undefined {
   if (e.type === "select") {
     // The exercise's unambiguous target surface: bundled-audio lessons key
     // it by audioTarget (Section 1); audio-less lessons key it by what the
@@ -794,13 +799,28 @@ export function loadIdMaps(packs: LoadedPack[] = loadPacks()): Record<string, Re
   return maps;
 }
 
+/** Legacy surface → id per language, from the rich lexicons' `legacySurfaces` (QC 2026-10-28). */
+export function loadLegacyMaps(packs: LoadedPack[] = loadPacks()): Record<string, Record<string, string>> {
+  const maps: Record<string, Record<string, string>> = {};
+  for (const code of discoverTargets(packs)) {
+    const rel = `content/${code}/lexicon/lexemes.json`;
+    if (!existsSync(safeResolve(rel))) continue;
+    const map: Record<string, string> = {};
+    for (const lex of (readJson(rel) as { lexemes: { id: string; legacySurfaces?: string[] }[] }).lexemes) for (const s of lex.legacySurfaces ?? []) map[s] = lex.id;
+    if (Object.keys(map).length > 0) maps[code] = map;
+  }
+  return maps;
+}
+
 export function compileAll(packs: LoadedPack[] = loadPacks()): {
   files: CompiledFile[];
   coverage: Record<string, CoverageRow>;
   packs: PackSource[];
   idMaps: Record<string, Record<string, string>>;
+  legacyMaps: Record<string, Record<string, string>>;
 } {
   const idMaps = loadIdMaps(packs);
+  const legacyMaps = loadLegacyMaps(packs);
   const files: CompiledFile[] = [];
   const coverage: Record<string, CoverageRow> = {};
   const courseIds: string[] = [];
@@ -808,7 +828,9 @@ export function compileAll(packs: LoadedPack[] = loadPacks()): {
   const sources: PackSource[] = [];
 
   for (const { pack: source } of packs) {
-    const { pack, coverage: row } = compilePack(source, idMaps[source.targetCode]);
+    const canonical = idMaps[source.targetCode];
+    const lookup = canonical && legacyMaps[source.targetCode] ? { ...legacyMaps[source.targetCode], ...canonical } : canonical;
+    const { pack, coverage: row } = compilePack(source, lookup);
     sources.push(source);
     coverage[pack.id] = row;
     if (source.testOnly === true) {
@@ -855,5 +877,5 @@ export function compileAll(packs: LoadedPack[] = loadPacks()): {
       })),
     }),
   });
-  return { files, coverage, packs: sources, idMaps };
+  return { files, coverage, packs: sources, idMaps, legacyMaps };
 }

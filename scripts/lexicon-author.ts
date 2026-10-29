@@ -138,13 +138,26 @@ const takeKey = (e: PoolEntry) => `${e.lemma}|${e.partOfSpeech}`;
 const rankOf = (e: PoolEntry) => e.frequency?.rank ?? Number.POSITIVE_INFINITY;
 // Homographs: of several content readings of one lemma (ser verb / "el ser" noun, poder verb / noun),
 // only the best-ranked reading is authored by frequency; the others stay in the pool for a human.
+// German capitalises nouns, so its nominalisations differ only in case (haben / das Haben):
+// there the readings are grouped case-insensitively.
+const readingKey = (lemma: string) => (lang === "de" ? lemma.toLowerCase() : lemma);
 const bestReading = new Map<string, PoolEntry>();
 for (const e of pool.entries) {
   if (e.kind !== "content") continue;
-  const prev = bestReading.get(e.lemma);
-  if (!prev || rankOf(e) < rankOf(prev)) bestReading.set(e.lemma, e);
+  const prev = bestReading.get(readingKey(e.lemma));
+  if (!prev || rankOf(e) < rankOf(prev)) bestReading.set(readingKey(e.lemma), e);
 }
-const isSecondaryReading = (e: PoolEntry) => e.kind === "content" && bestReading.get(e.lemma) !== e;
+const isSecondaryReading = (e: PoolEntry) => e.kind === "content" && bestReading.get(readingKey(e.lemma)) !== e;
+
+/**
+ * Curated exclusions (content/<lang>/lexicon/exclude.json, optional): readings a
+ * learner lexicon must not author — subtitle-corpus violence and vulgarity
+ * kaikki leaves untagged, ETL artefacts. Keys are `lemma|partOfSpeech`.
+ */
+const frozenRel = `content/${lang}/lexemes.json`;
+const frozen: Record<string, string> = existsSync(safeResolve(frozenRel)) ? (readJson(frozenRel) as Record<string, string>) : {};
+const excludeRel = `content/${lang}/lexicon/exclude.json`;
+const excluded = new Set<string>(existsSync(safeResolve(excludeRel)) ? (readJson(excludeRel) as { entries: { key: string }[] }).entries.map((x) => x.key) : []);
 /** A plural pack surface ("los zapatos") → the singular lemma guess the pool may hold. */
 const singularGuesses = (form: string): string[] => {
   const out: string[] = [];
@@ -217,7 +230,42 @@ const usable = (e: PoolEntry) =>
   e.glosses.en.length > 0 &&
   e.examples.some((x) => x.translations.en !== undefined) &&
   !e.usageTags.some((t) => EXCLUDE_TAGS.has(t)) &&
+  !excluded.has(`${e.lemma}|${e.partOfSpeech}`) &&
   !packWords.has(e.lemma);
+
+// 1b. Committed lexemes stay: every surface of the frozen id map is selected
+// again (ids are frozen, and the lexicon must be stable when the ETL is re-run
+// on a newer pool — a reviewed lexeme never drops out because quotas moved).
+// The surface's article picks the noun reading; an adjectival noun is found by
+// its definite form ("der Deutsche" → lemma Deutscher); excluded readings are
+// skipped ("ein" is the article, not the adjective "on").
+// The reading the committed lexicon reviewed wins ("früh" stays the adverb,
+// not the adjective a POS preference would pick).
+const byDefinite = new Map(pool.entries.filter((e) => e.definiteForm).map((e) => [e.definiteForm!, e]));
+const committedRel = `content/${lang}/lexicon/lexemes.json`;
+const committedPos = new Map<string, PartOfSpeech>(
+  existsSync(safeResolve(committedRel)) ? (readJson(committedRel) as { lexemes: { surface: string; partOfSpeech: PartOfSpeech }[] }).lexemes.map((l) => [l.surface, l.partOfSpeech]) : []
+);
+for (const surface of Object.keys(frozen)) {
+  if (packWords.has(surface)) continue;
+  const { article, rest } = plugin.splitSurfaceArticle(surface);
+  const reviewed = committedPos.get(surface);
+  const base = article !== null ? ["noun", ...POS_PREFERENCE.filter((p) => p !== "noun")] : POS_PREFERENCE;
+  const prefs = reviewed ? [reviewed, ...base.filter((p) => p !== reviewed)] : base;
+  let entry: PoolEntry | null = null;
+  for (const pos of prefs) {
+    const e = byKey.get(`${rest}|${pos}`);
+    if (e && !excluded.has(takeKey(e)) && !taken.has(takeKey(e))) {
+      entry = e;
+      break;
+    }
+  }
+  entry ??= byDefinite.get(rest) ?? null;
+  if (!entry || taken.has(takeKey(entry))) continue; // reported below as "no longer selected"
+  taken.add(takeKey(entry));
+  // The committed surface stays as reviewed (its article is evidence in the gender vote, like a pack word).
+  selected.push({ entry, surface, lookupForm: entry.lemma, packGloss: {}, packTopic: null, reason: "committed lexeme (frozen id)" });
+}
 
 // 2. Anchor-first.
 const anchorRank = (e: PoolEntry) => {
@@ -239,14 +287,31 @@ const topicCap = (topic: string) => Math.ceil(size * (topic === "everyday" ? 0.4
 const functionCap = Math.ceil(size * FUNCTION_SHARE);
 let functionTaken = 0;
 for (const s of selected) if (s.entry) topicCount.set(s.entry.topic, (topicCount.get(s.entry.topic) ?? 0) + 1);
+// The pool lists content words before function words, so the reserved share is taken first
+// (in function rank order); otherwise the content fill reaches --size before any function word.
+// A function reading is reserved only when it is the word's main reading: "auch" is
+// the adverb (also), not the interjection; "noch" the adverb (still), not "nor".
+const contentPerMillion = new Map<string, number>();
+// Excluded readings do not count (aber|adverb "rather" is excluded; the learner's aber is the conjunction).
+for (const e of pool.entries) if (e.kind === "content" && !excluded.has(takeKey(e))) contentPerMillion.set(e.lemma, Math.max(contentPerMillion.get(e.lemma) ?? 0, e.frequency?.perMillion ?? 0));
+const mainlyContent = (e: PoolEntry) => (contentPerMillion.get(e.lemma) ?? 0) > (e.frequency?.perMillion ?? 0);
+for (const e of pool.entries) {
+  if (selected.length >= size || functionTaken >= functionCap) break;
+  if (e.kind !== "function" || !usable(e) || mainlyContent(e)) continue;
+  functionTaken += 1;
+  taken.add(takeKey(e));
+  topicCount.set(e.topic, (topicCount.get(e.topic) ?? 0) + 1);
+  selected.push({ entry: e, surface: "", lookupForm: e.lemma, packGloss: {}, packTopic: null, reason: `function word rank ${rankOf(e)}` });
+}
 const deferredByTopic: PoolEntry[] = [];
 for (const e of pool.entries) {
   if (selected.length >= size) break;
   if (!usable(e)) continue;
   if (e.kind === "function") {
-    if (functionTaken >= functionCap) continue;
-    functionTaken += 1;
-  } else if ((topicCount.get(e.topic) ?? 0) >= topicCap(e.topic)) {
+    continue;
+  } else if ((topicCount.get(e.topic) ?? 0) >= topicCap(e.topic) && e.frequency?.band === "less-common") {
+    // The topic quota spreads the less-common words; a very common or common word (nicht, hier, wo, wann)
+    // is never deferred behind a quota.
     deferredByTopic.push(e);
     continue;
   }
@@ -265,8 +330,6 @@ for (const e of deferredByTopic) {
 // ---------------------------------------------------------------------------
 // Assembly
 // ---------------------------------------------------------------------------
-const frozenRel = `content/${lang}/lexemes.json`;
-const frozen: Record<string, string> = existsSync(safeResolve(frozenRel)) ? (readJson(frozenRel) as Record<string, string>) : {};
 const usedIds = new Set(Object.values(frozen));
 const slugOf = (s: string) =>
   s
@@ -334,14 +397,27 @@ for (const sel of selected) {
     else gender = "unknown";
   }
   let surface = sel.surface;
+  // QC 2026-10-28: an inherited pack may teach a noun without its article (de-en "Freund").
+  // When the frozen map carries the article form, that is the lexeme's surface and the
+  // pack's form becomes a legacy surface (learner data keyed by it still resolves).
+  let legacySurfaces: string[] | undefined;
+  if (sel.reason === "course pack word" && plugin.splitSurfaceArticle(surface).article === null) {
+    const withArticle = Object.values(ARTICLE_OF[lang] ?? {}).map((a) => `${a} ${surface}`).find((s) => frozen[s] !== undefined);
+    if (withArticle) {
+      legacySurfaces = [surface];
+      surface = withArticle;
+    }
+  }
   if (surface === "" && e) {
     const article = pos === "noun" && gender && gender !== "both" && gender !== "unknown" ? ARTICLE_OF[lang]?.[gender] : undefined;
-    surface = article ? `${article} ${e.lemma}` : e.lemma;
+    // An adjectival noun reads weak after the article: der Deutsche (lemma Deutscher).
+    surface = article ? `${article} ${e.definiteForm ?? e.lemma}` : e.lemma;
   }
   if (seenSurfaces.has(surface)) continue;
   seenSurfaces.add(surface);
   const baseSlug = slugOf(sel.lookupForm);
   let id = frozen[surface] ?? `${lang}:w:${baseSlug}`;
+  if (legacySurfaces) idBySurface.set(legacySurfaces[0], id);
   if (frozen[surface] === undefined) {
     const variants = [id, `${lang}:w:${baseSlug}-${gender === "feminine" ? "f" : gender === "masculine" ? "m" : pos}`, `${lang}:w:${baseSlug}-${pos}`];
     id = variants.find((v) => !usedIds.has(v)) ?? id;
@@ -388,8 +464,11 @@ for (const sel of selected) {
   lexemes.push({
     id,
     surface,
+    ...(legacySurfaces ? { legacySurfaces } : {}),
     lemma: sel.lookupForm,
-    lookupForm: sel.lookupForm,
+    // What the learner looks up is the surface without its article: "der Deutsche" → Deutsche
+    // (the dictionary lemma stays the strong citation form Deutscher).
+    lookupForm: (e?.definiteForm && surface !== e.lemma) || legacySurfaces ? plugin.splitSurfaceArticle(surface).rest : sel.lookupForm,
     partOfSpeech: pos,
     ...(gender !== undefined ? { gender } : {}),
     glosses,

@@ -25,7 +25,7 @@ import { syllabusSchema, type PackSource, type RichLexicon, type Syllabus } from
 import { readJson, safeResolve, type ValidationResult } from "./pipeline";
 
 export const SYLLABUS_DERIVATION =
-  "members: lexemes taught by the primary course + course-authored lexemes (source original-lexicon-etl only) + frequency bands very-common/common; unit: first unit teaching the lexeme, else the authored topic map (topic-units.json, topic:pos before topic), else first unit teaching its topic, else the first unit; order: unit, then frequency rank";
+  "members: lexemes taught by the primary course + course-authored lexemes (source original-lexicon-etl only) + lexemes the course added through lexicon-add + frequency bands very-common/common; unit: first unit teaching the lexeme, else the authored topic map (topic-units.json, topic:pos before topic), else first unit teaching its topic, else the first unit; order: unit, then frequency rank";
 
 /** P3f: the course's authored topic → unit map (content/<lang>/lexicon/topic-units.json). */
 export type TopicUnits = { version: 1; courseId: string; units: Record<string, string> };
@@ -66,6 +66,16 @@ export function courseAuthored(lex: { sourceRefs?: { source: string }[] }): bool
   return refs.length > 0 && refs.every((r) => r.source === "original-lexicon-etl");
 }
 
+/**
+ * P3d(de): a lexeme the course chose itself — authored by hand, or added
+ * through the `lexicon-add` step (its examples carry key "add") — is level
+ * vocabulary even when the subtitle corpus rates it less-common (der Garten,
+ * la playa, rojo). Frequency decides only for words the ETL selected.
+ */
+export function courseSelected(lex: { sourceRefs?: { source: string }[]; examples?: { source?: string; key?: string }[] }): boolean {
+  return courseAuthored(lex) || (lex.examples ?? []).some((e) => e.source === "original-lexicon-etl" && e.key === "add");
+}
+
 export function syllabusPath(lang: string): string {
   return `content/${lang}/lexicon/syllabus.json`;
 }
@@ -73,6 +83,33 @@ export function syllabusPath(lang: string): string {
 export function loadSyllabus(lang: string): Syllabus | null {
   const rel = syllabusPath(lang);
   return existsSync(safeResolve(rel)) ? syllabusSchema(lang).parse(readJson(rel)) : null;
+}
+
+/**
+ * QC 2026-10-29 §1.2: lexemes beyond the A1 syllabus may be committed as the
+ * next band (`content/<lang>/lexicon/syllabus-a2-1.json`, level "A2-1"). It is
+ * not a daily-words stream; graded stories of band A2-1 may use its words.
+ */
+export function laterSyllabusPath(lang: string): string {
+  return `content/${lang}/lexicon/syllabus-a2-1.json`;
+}
+
+export function loadLaterSyllabus(lang: string): Syllabus | null {
+  const rel = laterSyllabusPath(lang);
+  return existsSync(safeResolve(rel)) ? syllabusSchema(lang).parse(readJson(rel)) : null;
+}
+
+/** The later list resolves, is disjoint from the level syllabus and has its own level. */
+export function validateLaterSyllabus(input: { later: Syllabus; syllabus: Syllabus; lexicon: RichLexicon; lang: string }): string[] {
+  const errors: string[] = [];
+  const ids = new Set(input.lexicon.lexemes.map((l) => l.id));
+  const a1 = new Set(input.syllabus.entries.map((e) => e.lexemeId));
+  if (input.later.level === input.syllabus.level) errors.push(`syllabus-a2-1 (${input.lang}): level must differ from the syllabus level ${input.syllabus.level}`);
+  for (const e of input.later.entries) {
+    if (!ids.has(e.lexemeId)) errors.push(`syllabus-a2-1 (${input.lang}): unknown lexeme ${e.lexemeId}`);
+    if (a1.has(e.lexemeId)) errors.push(`syllabus-a2-1 (${input.lang}): ${e.lexemeId} is already in the ${input.syllabus.level} syllabus`);
+  }
+  return errors;
 }
 
 function unitOrder(pack: PackSource): { id: string; surfaces: Set<string> }[] {
@@ -95,7 +132,7 @@ export function deriveSyllabus(args: { lang: string; level: string; minLexemes: 
   const taught = new Set(units.flatMap((u) => [...u.surfaces]));
   // Regional forms (P3e variety) are accepted, never taught as the model.
   const members = args.lexicon.lexemes.filter(
-    (l) => !l.variety && (taught.has(l.surface) || courseAuthored(l) || l.frequency?.band === "very-common" || l.frequency?.band === "common")
+    (l) => !l.variety && (taught.has(l.surface) || courseSelected(l) || l.frequency?.band === "very-common" || l.frequency?.band === "common")
   );
   const rank = (l: (typeof members)[number]) => l.frequency?.rank ?? Number.MAX_SAFE_INTEGER;
   const entries = members

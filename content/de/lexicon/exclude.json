@@ -1,0 +1,483 @@
+{
+  "version": 1,
+  "language": "de",
+  "note": "Readings scripts/lexicon-author.ts must not author for the learner lexicon. The FrequencyWords list is lower case, so the ETL also tries each form capitalised (German nouns): that recovers the noun class but lets capitalised nominalisations of verb forms and function words (Habe, Muss, Heute) and rare verbs that share a lower-cased noun plural (tagen, stunden) absorb counts. Those artefacts, and subtitle-corpus violence/vulgarity kaikki leaves untagged, are listed here with the reason. Pool evidence is unchanged; a human can still add any of them through lexicon-add.",
+  "entries": [
+    {
+      "key": "Springer|noun",
+      "reason": "artefact"
+    },
+    {
+      "key": "Habe|noun",
+      "reason": "nominalisation of a verb form (habe)"
+    },
+    {
+      "key": "Hast|noun",
+      "reason": "nominalisation of a verb form (hast)"
+    },
+    {
+      "key": "Muss|noun",
+      "reason": "nominalisation of a verb form (muss)"
+    },
+    {
+      "key": "Soll|noun",
+      "reason": "nominalisation of a verb form (soll)"
+    },
+    {
+      "key": "Sage|noun",
+      "reason": "nominalisation of a verb form (sage)"
+    },
+    {
+      "key": "Würde|noun",
+      "reason": "counts belong to würde (werden)"
+    },
+    {
+      "key": "Esse|noun",
+      "reason": "counts belong to esse (essen)"
+    },
+    {
+      "key": "Denke|noun",
+      "reason": "counts belong to denke (denken)"
+    },
+    {
+      "key": "Liege|noun",
+      "reason": "counts belong to liege (liegen)"
+    },
+    {
+      "key": "Wolle|noun",
+      "reason": "counts belong to wolle (wollen)"
+    },
+    {
+      "key": "Heute|noun",
+      "reason": "nominalised adverb; heute is authored"
+    },
+    {
+      "key": "Gestern|noun",
+      "reason": "nominalised adverb; gestern is authored"
+    },
+    {
+      "key": "Leider|noun",
+      "reason": "nominalised adverb (leider)"
+    },
+    {
+      "key": "Selbst|noun",
+      "reason": "nominalised pronoun (selbst)"
+    },
+    {
+      "key": "Wohl|noun",
+      "reason": "nominalised adverb (wohl)"
+    },
+    {
+      "key": "Voraus|noun",
+      "reason": "nominalised adverb (voraus)"
+    },
+    {
+      "key": "Fort|noun",
+      "reason": "counts belong to fort (adverb)"
+    },
+    {
+      "key": "Des|noun",
+      "reason": "article form (des)"
+    },
+    {
+      "key": "Elle|noun",
+      "reason": "artefact"
+    },
+    {
+      "key": "Letzter|noun",
+      "reason": "nominalised adjective (letzter)"
+    },
+    {
+      "key": "Erster|noun",
+      "reason": "nominalised adjective (erster)"
+    },
+    {
+      "key": "Kleiner|noun",
+      "reason": "nominalised adjective (kleiner)"
+    },
+    {
+      "key": "Großer|noun",
+      "reason": "nominalised adjective (großer)"
+    },
+    {
+      "key": "Lieber|noun",
+      "reason": "nominalised adjective (lieber)"
+    },
+    {
+      "key": "Junges|noun",
+      "reason": "nominalised adjective (junges)"
+    },
+    {
+      "key": "Neues|noun",
+      "reason": "nominalised adjective (neues)"
+    },
+    {
+      "key": "Ganzes|noun",
+      "reason": "nominalised adjective (ganzes)"
+    },
+    {
+      "key": "Biss|noun",
+      "reason": "counts belong to biss (beißen)"
+    },
+    {
+      "key": "Brauch|noun",
+      "reason": "counts belong to brauch (brauchen)"
+    },
+    {
+      "key": "Fang|noun",
+      "reason": "counts belong to fang (fangen)"
+    },
+    {
+      "key": "Nord|noun",
+      "reason": "compound element; Norden is the A1 word"
+    },
+    {
+      "key": "Bob|noun",
+      "reason": "personal name"
+    },
+    {
+      "key": "Henry|noun",
+      "reason": "personal name"
+    },
+    {
+      "key": "Ar|noun",
+      "reason": "unit of area; counts belong to ar- forms"
+    },
+    {
+      "key": "Major|noun",
+      "reason": "military rank, not A1"
+    },
+    {
+      "key": "Pater|noun",
+      "reason": "religious title, not A1"
+    },
+    {
+      "key": "Hoheit|noun",
+      "reason": "honorific, not A1"
+    },
+    {
+      "key": "Handspiel|noun",
+      "reason": "artefact (sports term absorbing Hand counts)"
+    },
+    {
+      "key": "Dreh|noun",
+      "reason": "counts belong to dreh (drehen)"
+    },
+    {
+      "key": "einen|verb",
+      "reason": "counts belong to the article einen"
+    },
+    {
+      "key": "weißen|verb",
+      "reason": "counts belong to weiß / weißen (adjective)"
+    },
+    {
+      "key": "tagen|verb",
+      "reason": "counts belong to Tagen (Tag)"
+    },
+    {
+      "key": "stunden|verb",
+      "reason": "counts belong to Stunden (Stunde)"
+    },
+    {
+      "key": "wassern|verb",
+      "reason": "counts belong to Wassern (Wasser)"
+    },
+    {
+      "key": "erden|verb",
+      "reason": "counts belong to Erden (Erde)"
+    },
+    {
+      "key": "jungen|verb",
+      "reason": "counts belong to Jungen (Junge)"
+    },
+    {
+      "key": "langen|verb",
+      "reason": "counts belong to langen (lang)"
+    },
+    {
+      "key": "glücken|verb",
+      "reason": "counts belong to Glück"
+    },
+    {
+      "key": "verrücken|verb",
+      "reason": "counts belong to verrückt"
+    },
+    {
+      "key": "bessern|verb",
+      "reason": "counts belong to besser"
+    },
+    {
+      "key": "fasen|verb",
+      "reason": "artefact"
+    },
+    {
+      "key": "fällen|verb",
+      "reason": "counts belong to Fällen (Fall)"
+    },
+    {
+      "key": "sichern|verb",
+      "reason": "counts belong to sicher"
+    },
+    {
+      "key": "feuern|verb",
+      "reason": "counts belong to Feuer; violent sense"
+    },
+    {
+      "key": "lass|adjective",
+      "reason": "counts belong to lass (lassen)"
+    },
+    {
+      "key": "passiert|adjective",
+      "reason": "participle of passieren"
+    },
+    {
+      "key": "gefunden|adjective",
+      "reason": "participle of finden"
+    },
+    {
+      "key": "geliebt|adjective",
+      "reason": "participle of lieben"
+    },
+    {
+      "key": "gebrochen|adjective",
+      "reason": "participle of brechen"
+    },
+    {
+      "key": "in|adjective",
+      "reason": "counts belong to the preposition in"
+    },
+    {
+      "key": "licht|adjective",
+      "reason": "counts belong to Licht"
+    },
+    {
+      "key": "töten|verb",
+      "reason": "violence (subtitle corpus), not for a learner lexicon"
+    },
+    {
+      "key": "umbringen|verb",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "ermorden|verb",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "vergewaltigen|verb",
+      "reason": "sexual violence (subtitle corpus)"
+    },
+    {
+      "key": "entführen|verb",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "verdammen|verb",
+      "reason": "curse (subtitle corpus)"
+    },
+    {
+      "key": "hauen|verb",
+      "reason": "violence / colloquial"
+    },
+    {
+      "key": "Nutte|noun",
+      "reason": "vulgar"
+    },
+    {
+      "key": "Mörder|noun",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "Mord|noun",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "Leiche|noun",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "Pistole|noun",
+      "reason": "weapon (subtitle corpus)"
+    },
+    {
+      "key": "Waffe|noun",
+      "reason": "weapon (subtitle corpus)"
+    },
+    {
+      "key": "Bombe|noun",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "Terrorist|noun",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "Sklave|noun",
+      "reason": "not A1; sensitive"
+    },
+    {
+      "key": "Hölle|noun",
+      "reason": "curse use (subtitle corpus)"
+    },
+    {
+      "key": "erschießen|verb",
+      "reason": "violence (subtitle corpus)"
+    },
+    {
+      "key": "kotzen|verb",
+      "reason": "vulgar"
+    },
+    {
+      "key": "Sex|noun",
+      "reason": "not A1; sensitive"
+    },
+    {
+      "key": "Herrgott|noun",
+      "reason": "curse use (subtitle corpus)"
+    },
+    {
+      "key": "herzen|verb",
+      "reason": "counts belong to Herzen (Herz)"
+    },
+    {
+      "key": "House|noun",
+      "reason": "English word"
+    },
+    {
+      "key": "Lag|noun",
+      "reason": "counts belong to lag (liegen)"
+    },
+    {
+      "key": "reihen|verb",
+      "reason": "counts belong to Reihen (Reihe)"
+    },
+    {
+      "key": "Leiste|noun",
+      "reason": "counts belong to leiste (leisten)"
+    },
+    {
+      "key": "summen|verb",
+      "reason": "counts belong to Summen (Summe)"
+    },
+    {
+      "key": "Tage|noun",
+      "reason": "plural of Tag"
+    },
+    {
+      "key": "Holm|noun",
+      "reason": "counts belong to Holmes (subtitle proper name)"
+    },
+    {
+      "key": "a-Moll|noun",
+      "reason": "counts belong to the letter A"
+    },
+    {
+      "key": "Ampere|noun",
+      "reason": "counts belong to the letter A"
+    },
+    {
+      "key": "Weiser|noun",
+      "reason": "counts belong to weise (wise / weisen)"
+    },
+    {
+      "key": "Knarre|noun",
+      "reason": "counts belong to knarren; colloquial gun sense from subtitles"
+    },
+    {
+      "key": "ein|adjective",
+      "reason": "predicative-only 'on (switch)'; the learner's ein is the article / numeral"
+    },
+    {
+      "key": "ein|adverb",
+      "reason": "only in compounds (separable prefix ein-)"
+    },
+    {
+      "key": "der|pronoun",
+      "reason": "relative/demonstrative 'who, that'; A1 meets der as the article (der|determiner)"
+    },
+    {
+      "key": "zeit|preposition",
+      "reason": "archaic preposition (zeit seines Lebens); the frequency-list form is mostly the noun Zeit"
+    },
+    {
+      "key": "schießen|verb",
+      "reason": "subtitle-corpus violence (to shoot)"
+    },
+    {
+      "key": "Schuss|noun",
+      "reason": "subtitle-corpus violence (the shot)"
+    },
+    {
+      "key": "zurück|interjection",
+      "reason": "'stand back!'; the learner's zurück is the adverb (back)"
+    },
+    {
+      "key": "aber|adverb",
+      "reason": "'rather, quite' (intensifier); the learner's aber is the conjunction 'but'"
+    },
+    {
+      "key": "ja|adverb",
+      "reason": "modal particle 'obviously'; the learner's ja is the answer 'yes' (interjection)"
+    },
+    {
+      "key": "denn|adverb",
+      "reason": "modal particle in questions; the learner's denn is the conjunction 'because'"
+    },
+    {
+      "key": "durch|adjective",
+      "reason": "colloquial 'crazy'; the learner's durch is the preposition"
+    },
+    {
+      "key": "bar|adjective",
+      "reason": "'bare'; marginal at A1"
+    },
+    {
+      "key": "lose|adjective",
+      "reason": "'loose'; marginal at A1"
+    },
+    {
+      "key": "losen|verb",
+      "reason": "'to draw lots'; subtitle artefact of the form 'los'"
+    },
+    {
+      "key": "verdammt|adjective",
+      "reason": "subtitle-corpus swearing"
+    },
+    {
+      "key": "Warte|noun",
+      "reason": "'lookout post'; artefact of the form 'warte' (warten)"
+    },
+    {
+      "key": "Weiß|noun",
+      "reason": "nominalised colour; artefact of the form 'weiß' (wissen / weiß)"
+    },
+    {
+      "key": "wagen|verb",
+      "reason": "'to dare'; artefact of the form 'Wagen'"
+    },
+    {
+      "key": "schonen|verb",
+      "reason": "'to spare'; artefact of the form 'schon'"
+    },
+    {
+      "key": "dank|preposition",
+      "reason": "'thanks to' (B1); the learner meets danke"
+    },
+    {
+      "key": "Kerl|noun",
+      "reason": "colloquial 'guy'"
+    },
+    {
+      "key": "ab|adjective",
+      "reason": "colloquial 'off'; the learner's ab is the preposition/particle"
+    },
+    {
+      "key": "willkommen|adjective",
+      "reason": "duplicates the greeting Willkommen"
+    },
+    {
+      "key": "los|adverb",
+      "reason": "'rid of'; the learner's los is the interjection 'let's go'"
+    }
+  ]
+}

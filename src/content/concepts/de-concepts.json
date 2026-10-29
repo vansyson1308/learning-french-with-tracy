@@ -1,0 +1,889 @@
+{
+  "version": 1,
+  "language": "de",
+  "order": [
+    "de:concept:three-genders",
+    "de:concept:gender-endings",
+    "de:concept:ein-kein",
+    "de:concept:plurals",
+    "de:concept:accusative",
+    "de:concept:dative-phrases",
+    "de:concept:present-endings",
+    "de:concept:sein-haben",
+    "de:concept:vowel-change",
+    "de:concept:verb-second",
+    "de:concept:questions",
+    "de:concept:separable-verbs",
+    "de:concept:modal-verbs",
+    "de:concept:perfekt",
+    "de:concept:numbers",
+    "de:concept:clock-time",
+    "de:concept:du-sie",
+    "de:concept:place-prepositions",
+    "de:concept:sounds-umlaut-ch",
+    "de:concept:final-devoicing-length",
+    "de:concept:capitals-eszett",
+    "de:concept:compounds",
+    "de:concept:false-friends"
+  ],
+  "byId": {
+    "de:concept:three-genders": {
+      "id": "de:concept:three-genders",
+      "title": "Mọi danh từ tiếng Đức đều có giống",
+      "shortRule": "Danh từ là giống đực (der), giống cái (die) hoặc giống trung (das) — học mạo từ cùng danh từ.",
+      "explanation": "Tiếng Đức xếp mọi danh từ vào ba giống. Đây là thuộc tính của từ, không phải của sự vật: cái bàn (der Tisch) là giống đực, cái cửa (die Tür) là giống cái, cô bé (das Mädchen) lại là giống trung. Tiếng Việt không có mạo từ, nên hãy luôn học danh từ kèm der, die hoặc das.",
+      "examples": [
+        {
+          "de": "der Tisch",
+          "vi": "cái bàn",
+          "note": "giống đực — der"
+        },
+        {
+          "de": "die Tür",
+          "vi": "cái cửa",
+          "note": "giống cái — die"
+        },
+        {
+          "de": "das Fenster",
+          "vi": "cửa sổ",
+          "note": "giống trung — das"
+        }
+      ],
+      "exceptions": [
+        "Giống không theo giới tính thật: das Mädchen (cô bé) là giống trung."
+      ],
+      "memoryHint": "Học «der Tisch», đừng chỉ học «Tisch».",
+      "objectives": [
+        "de.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:gender-endings": {
+      "id": "de:concept:gender-endings",
+      "title": "Đuôi từ gợi ý giống",
+      "shortRule": "-ung, -heit, -keit, -ion, -tät hầu như luôn là die; -chen là das; -er thường là der.",
+      "explanation": "Trong 12.358 danh từ của dữ liệu từ điển khoá học, đuôi -ung là giống cái ở 99,1 %, -heit/-keit ở 98,7 %, -ion ở 98,2 % và -tät ở cả 59/59 từ. Đuôi -e là giống cái ở 84,9 %, đuôi -er là giống đực ở 80,9 %. Từ nhỏ hóa -chen là giống trung. Khi gặp từ mới, hãy đoán theo đuôi trước rồi kiểm tra.",
+      "examples": [
+        {
+          "de": "die Wohnung",
+          "vi": "căn hộ",
+          "note": "-ung → die"
+        },
+        {
+          "de": "die Information",
+          "vi": "thông tin",
+          "note": "-ion → die"
+        },
+        {
+          "de": "das Mädchen",
+          "vi": "cô bé",
+          "note": "-chen → das"
+        },
+        {
+          "de": "der Lehrer",
+          "vi": "thầy giáo",
+          "note": "-er → thường der"
+        }
+      ],
+      "exceptions": [
+        "Đuôi -e có ngoại lệ hay gặp: der Junge, der Name, das Ende.",
+        "Đuôi -er có ngoại lệ: die Mutter, die Tochter, das Fenster."
+      ],
+      "memoryHint": "-ung, -heit, -keit, -ion: chắc chắn die.",
+      "objectives": [
+        "de.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "gender-stats"
+        }
+      ]
+    },
+    "de:concept:ein-kein": {
+      "id": "de:concept:ein-kein",
+      "title": "Ein, eine và kein",
+      "shortRule": "Ein đi với der và das, eine đi với die; phủ định danh từ bằng kein / keine.",
+      "explanation": "Mạo từ không xác định giống như «một» trong tiếng Việt: ein Tisch (der), eine Tür (die), ein Fenster (das). Muốn nói «không có» một danh từ, đặt k- trước: kein Tisch, keine Tür, kein Fenster. Với động từ hoặc tính từ thì dùng nicht: Ich komme nicht.",
+      "examples": [
+        {
+          "de": "Ich habe ein Auto.",
+          "vi": "Tôi có một chiếc ô tô."
+        },
+        {
+          "de": "Ich habe kein Auto.",
+          "vi": "Tôi không có ô tô.",
+          "note": "danh từ → kein"
+        },
+        {
+          "de": "Das Wetter ist nicht schön.",
+          "vi": "Thời tiết không đẹp.",
+          "note": "tính từ → nicht"
+        }
+      ],
+      "exceptions": [
+        "Số nhiều không có ein, nhưng có keine: Ich habe keine Kinder."
+      ],
+      "memoryHint": "Danh từ → kein; còn lại → nicht.",
+      "objectives": [
+        "de.obj.gender.plurals_kein",
+        "de.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:plurals": {
+      "id": "de:concept:plurals",
+      "title": "Số nhiều: nhiều mẫu, một mạo từ",
+      "shortRule": "Số nhiều có năm mẫu chính (-e, -en/-n, -er, ¨, -s), nhưng mạo từ số nhiều luôn là die.",
+      "explanation": "Tiếng Việt chỉ thêm «những, các»; tiếng Đức đổi chính danh từ. Hầu hết danh từ giống cái thêm -en hoặc -n (die Frau → die Frauen). Nhiều danh từ thêm -e (der Tisch → die Tische), -er kèm umlaut (das Kind → die Kinder, das Haus → die Häuser), chỉ thêm umlaut (die Mutter → die Mütter), hoặc -s với từ mượn (das Auto → die Autos). Mạo từ số nhiều luôn là die.",
+      "examples": [
+        {
+          "de": "die Frau → die Frauen",
+          "vi": "người phụ nữ → những người phụ nữ",
+          "note": "-en"
+        },
+        {
+          "de": "das Kind → die Kinder",
+          "vi": "đứa trẻ → những đứa trẻ",
+          "note": "-er"
+        },
+        {
+          "de": "der Apfel → die Äpfel",
+          "vi": "quả táo → những quả táo",
+          "note": "chỉ thêm umlaut"
+        },
+        {
+          "de": "das Auto → die Autos",
+          "vi": "ô tô → những chiếc ô tô",
+          "note": "-s (từ mượn)"
+        }
+      ],
+      "exceptions": [
+        "Một số danh từ không đổi ở số nhiều: das Fenster → die Fenster."
+      ],
+      "memoryHint": "Học ba thứ một lúc: der Tisch, die Tische.",
+      "objectives": [
+        "de.obj.gender.plurals_kein"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:accusative": {
+      "id": "de:concept:accusative",
+      "title": "Tân ngữ giống đực: der → den",
+      "shortRule": "Khi danh từ giống đực làm tân ngữ, der đổi thành den và ein thành einen; die và das không đổi.",
+      "explanation": "Tiếng Việt dùng trật tự từ để biết ai làm gì. Tiếng Đức còn đổi mạo từ: chủ ngữ ở chủ cách (Nominativ), tân ngữ trực tiếp ở đối cách (Akkusativ). Ở trình độ A1, chỉ giống đực đổi: Der Bus kommt. → Ich nehme den Bus. Giống cái, giống trung và số nhiều giữ nguyên.",
+      "examples": [
+        {
+          "de": "Der Kaffee ist heiß.",
+          "vi": "Cà phê nóng.",
+          "note": "chủ ngữ — der"
+        },
+        {
+          "de": "Ich trinke den Kaffee.",
+          "vi": "Tôi uống cà phê.",
+          "note": "tân ngữ — den"
+        },
+        {
+          "de": "Ich habe einen Bruder.",
+          "vi": "Tôi có một anh/em trai.",
+          "note": "ein → einen"
+        },
+        {
+          "de": "Ich habe eine Schwester.",
+          "vi": "Tôi có một chị/em gái.",
+          "note": "eine không đổi"
+        }
+      ],
+      "exceptions": [
+        "Sau haben, möchten, brauchen, nehmen, kaufen tân ngữ ở đối cách: Ich möchte einen Tee."
+      ],
+      "memoryHint": "Chỉ «anh chàng» der đổi áo: den, einen.",
+      "objectives": [
+        "de.obj.cases.accusative"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:dative-phrases": {
+      "id": "de:concept:dative-phrases",
+      "title": "Tặng cách trong cụm cố định",
+      "shortRule": "Sau mit, in, bei, zu… mạo từ đổi sang tặng cách: mit dem Bus, im Haus, zum Bahnhof.",
+      "explanation": "Tặng cách (Dativ) là cách thứ ba. Ở trình độ A1, bạn chỉ cần nhớ một số cụm hay gặp như một khối: mit dem Bus (bằng xe buýt), mit der Bahn (bằng tàu), im Haus (trong nhà; im = in dem), zum Bahnhof (đến nhà ga; zum = zu dem), zur Arbeit (đi làm; zur = zu der). Bảng đầy đủ sẽ học ở trình độ sau.",
+      "examples": [
+        {
+          "de": "Ich fahre mit dem Bus.",
+          "vi": "Tôi đi bằng xe buýt."
+        },
+        {
+          "de": "Wir sind im Haus.",
+          "vi": "Chúng tôi ở trong nhà.",
+          "note": "im = in dem"
+        },
+        {
+          "de": "Wie komme ich zum Bahnhof?",
+          "vi": "Tôi đến nhà ga bằng cách nào?",
+          "note": "zum = zu dem"
+        }
+      ],
+      "exceptions": [
+        "in + chuyển động dùng đối cách: Ich gehe ins Kino (ins = in das)."
+      ],
+      "memoryHint": "Học cả cụm: mit dem Bus, zum Bahnhof, zur Arbeit.",
+      "objectives": [
+        "de.obj.cases.accusative",
+        "de.obj.vocab.places_travel"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:present-endings": {
+      "id": "de:concept:present-endings",
+      "title": "Đuôi động từ ở thì hiện tại",
+      "shortRule": "Bỏ -en của nguyên thể rồi thêm -e, -st, -t, -en, -t, -en.",
+      "explanation": "Tiếng Việt không chia động từ: tôi ở, bạn ở. Tiếng Đức đổi đuôi theo ngôi. Với wohnen: ich wohne, du wohnst, er/sie/es wohnt, wir wohnen, ihr wohnt, sie/Sie wohnen. Gốc kết thúc bằng -t hoặc -d thêm -e- để dễ đọc: du arbeitest, er arbeitet.",
+      "examples": [
+        {
+          "de": "Ich wohne in Berlin.",
+          "vi": "Tôi sống ở Berlin.",
+          "note": "ich → -e"
+        },
+        {
+          "de": "Du wohnst in Hamburg.",
+          "vi": "Bạn sống ở Hamburg.",
+          "note": "du → -st"
+        },
+        {
+          "de": "Sie arbeitet heute.",
+          "vi": "Hôm nay cô ấy làm việc.",
+          "note": "arbeit- + -e- + -t"
+        }
+      ],
+      "exceptions": [
+        "Sie viết hoa (ông/bà, lịch sự) chia giống sie (họ): Sie wohnen."
+      ],
+      "memoryHint": "e – st – t – en – t – en: «e sờ tê, en tê en».",
+      "objectives": [
+        "de.obj.verbs.regular_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "de:concept:sein-haben": {
+      "id": "de:concept:sein-haben",
+      "title": "Sein và haben",
+      "shortRule": "Sein (là, ở) và haben (có) bất quy tắc — học thuộc: ich bin, du bist, er ist; ich habe, du hast, er hat.",
+      "explanation": "Hai động từ này xuất hiện trong gần như mọi câu A1, và cũng dùng để tạo thì quá khứ Perfekt. Tiếng Việt nói «tôi hai mươi tuổi»; tiếng Đức cần sein: Ich bin zwanzig Jahre alt. Haben dùng cho sở hữu và nhiều cụm cố định: Ich habe Hunger (tôi đói), Ich habe Zeit (tôi rảnh).",
+      "examples": [
+        {
+          "de": "Ich bin Studentin.",
+          "vi": "Tôi là sinh viên."
+        },
+        {
+          "de": "Bist du müde?",
+          "vi": "Bạn mệt không?"
+        },
+        {
+          "de": "Wir haben Zeit.",
+          "vi": "Chúng tôi rảnh."
+        },
+        {
+          "de": "Hast du Hunger?",
+          "vi": "Bạn đói không?",
+          "note": "đói = có cơn đói"
+        }
+      ],
+      "exceptions": [
+        "Khi nói nghề, không dùng mạo từ: Ich bin Lehrer (không phải ein Lehrer)."
+      ],
+      "memoryHint": "bin – bist – ist – sind – seid – sind.",
+      "objectives": [
+        "de.obj.verbs.sein_haben_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "de:concept:vowel-change": {
+      "id": "de:concept:vowel-change",
+      "title": "Động từ đổi nguyên âm",
+      "shortRule": "Một số động từ đổi nguyên âm ở du và er/sie/es: sprechen → sprichst, fahren → fährst, essen → isst.",
+      "explanation": "Đuôi vẫn đều, chỉ nguyên âm của gốc đổi, và chỉ ở hai ngôi du và er/sie/es. Ba kiểu hay gặp: e → i (sprechen → du sprichst, nehmen → er nimmt), e → ie (lesen → du liest, sehen → er sieht), a → ä (fahren → du fährst, schlafen → er schläft). Ngôi ich, wir, ihr, sie giữ nguyên.",
+      "examples": [
+        {
+          "de": "Ich spreche Deutsch. Er spricht Englisch.",
+          "vi": "Tôi nói tiếng Đức. Anh ấy nói tiếng Anh.",
+          "note": "e → i"
+        },
+        {
+          "de": "Du fährst nach Berlin.",
+          "vi": "Bạn đi Berlin.",
+          "note": "a → ä"
+        },
+        {
+          "de": "Sie liest ein Buch.",
+          "vi": "Cô ấy đọc một cuốn sách.",
+          "note": "e → ie"
+        }
+      ],
+      "exceptions": [
+        "essen → du isst, er isst: gốc kết thúc bằng -ss nên du chỉ thêm -t."
+      ],
+      "memoryHint": "Chỉ du và er/sie/es «đổi giọng».",
+      "objectives": [
+        "de.obj.verbs.regular_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "de:concept:verb-second": {
+      "id": "de:concept:verb-second",
+      "title": "Động từ đứng thứ hai",
+      "shortRule": "Trong câu kể, động từ chia luôn ở vị trí thứ hai; nếu câu bắt đầu bằng từ khác, chủ ngữ đứng sau động từ.",
+      "explanation": "Tiếng Việt nói «Hôm nay tôi học» và «Tôi học hôm nay» với cùng trật tự chủ ngữ – động từ. Tiếng Đức giữ động từ ở ô thứ hai: Ich lerne heute. → Heute lerne ich. Ô thứ nhất có thể là chủ ngữ, từ chỉ thời gian hay nơi chốn, nhưng động từ không bao giờ rời ô thứ hai. Thứ tự thời gian – cách thức – nơi chốn thường gặp: Ich fahre heute mit dem Bus nach Hause.",
+      "examples": [
+        {
+          "de": "Ich lerne heute Deutsch.",
+          "vi": "Hôm nay tôi học tiếng Đức."
+        },
+        {
+          "de": "Heute lerne ich Deutsch.",
+          "vi": "Hôm nay tôi học tiếng Đức.",
+          "note": "Heute ở ô 1 → ich sau động từ"
+        },
+        {
+          "de": "Am Montag arbeite ich.",
+          "vi": "Thứ Hai tôi làm việc."
+        }
+      ],
+      "exceptions": [
+        "Und, aber, oder không chiếm ô nào: Ich bin müde, aber ich arbeite."
+      ],
+      "memoryHint": "Động từ luôn là toa thứ hai của đoàn tàu.",
+      "objectives": [
+        "de.obj.word_order.verb_second"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:questions": {
+      "id": "de:concept:questions",
+      "title": "Câu hỏi có/không và câu hỏi W-",
+      "shortRule": "Câu hỏi có/không đặt động từ lên đầu; câu hỏi W- đặt từ hỏi đầu tiên, động từ thứ hai.",
+      "explanation": "Tiếng Việt thêm «không?» hoặc «à?» ở cuối câu. Tiếng Đức đổi chỗ: Du wohnst in Köln. → Wohnst du in Köln? Với câu hỏi lấy thông tin, từ hỏi đứng đầu: wer (ai), was (gì), wo (ở đâu), woher (từ đâu), wann (khi nào), wie (thế nào), warum (tại sao). Lưu ý: wer là «ai», không phải «ở đâu».",
+      "examples": [
+        {
+          "de": "Kommst du aus Vietnam?",
+          "vi": "Bạn đến từ Việt Nam à?",
+          "note": "động từ đầu câu"
+        },
+        {
+          "de": "Wo wohnst du?",
+          "vi": "Bạn sống ở đâu?"
+        },
+        {
+          "de": "Wer ist das?",
+          "vi": "Đó là ai?",
+          "note": "wer = ai"
+        },
+        {
+          "de": "Wann beginnt der Kurs?",
+          "vi": "Khóa học bắt đầu khi nào?"
+        }
+      ],
+      "exceptions": [
+        "Trả lời câu hỏi phủ định bằng doch: Kommst du nicht? — Doch!"
+      ],
+      "memoryHint": "W- hỏi thông tin; động từ đầu câu hỏi có/không.",
+      "objectives": [
+        "de.obj.word_order.verb_second"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:separable-verbs": {
+      "id": "de:concept:separable-verbs",
+      "title": "Động từ tách",
+      "shortRule": "Tiền tố của động từ tách (an-, auf-, ein-, mit-…) chạy xuống cuối câu: anrufen → Ich rufe dich an.",
+      "explanation": "Nhiều động từ thông dụng gồm một tiền tố và một động từ: an + rufen = anrufen (gọi điện), auf + stehen = aufstehen (thức dậy), ein + kaufen = einkaufen (mua sắm). Khi chia, phần động từ đứng thứ hai, tiền tố đứng cuối câu, tạo thành «hai mảnh» ôm lấy câu. Ở nguyên thể và cuối câu, chúng lại viết liền.",
+      "examples": [
+        {
+          "de": "Ich stehe um sieben Uhr auf.",
+          "vi": "Tôi thức dậy lúc bảy giờ.",
+          "note": "aufstehen"
+        },
+        {
+          "de": "Wir kaufen am Samstag ein.",
+          "vi": "Thứ Bảy chúng tôi đi mua sắm.",
+          "note": "einkaufen"
+        },
+        {
+          "de": "Ich rufe dich morgen an.",
+          "vi": "Ngày mai mình gọi cho bạn.",
+          "note": "anrufen"
+        }
+      ],
+      "exceptions": [
+        "Với động từ khuyết thiếu, động từ tách đứng nguyên ở cuối: Ich muss früh aufstehen."
+      ],
+      "memoryHint": "Tiền tố «đi dạo» xuống cuối câu.",
+      "objectives": [
+        "de.obj.verbs.separable_modal",
+        "de.obj.word_order.verb_second"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "de:concept:modal-verbs": {
+      "id": "de:concept:modal-verbs",
+      "title": "Können, müssen, möchten",
+      "shortRule": "Động từ khuyết thiếu đứng thứ hai, động từ chính ở nguyên thể và về cuối câu.",
+      "explanation": "Tiếng Việt đặt «có thể, phải, muốn» ngay trước động từ: tôi có thể nói. Tiếng Đức tách hai động từ ra hai đầu: Ich kann Deutsch sprechen. Ngôi ich và er/sie/es giống nhau và không có đuôi: ich kann, er kann; ich muss, sie muss. Möchte (muốn, lịch sự) chia: ich möchte, du möchtest, er möchte.",
+      "examples": [
+        {
+          "de": "Ich kann gut schwimmen.",
+          "vi": "Tôi bơi giỏi."
+        },
+        {
+          "de": "Du musst heute arbeiten.",
+          "vi": "Hôm nay bạn phải làm việc."
+        },
+        {
+          "de": "Ich möchte einen Tee trinken.",
+          "vi": "Tôi muốn uống một cốc trà."
+        },
+        {
+          "de": "Ich möchte einen Kaffee.",
+          "vi": "Cho tôi một cà phê.",
+          "note": "không cần động từ thứ hai"
+        }
+      ],
+      "exceptions": [
+        "Không thêm -t ở ngôi er: er kann (không phải er kannt)."
+      ],
+      "memoryHint": "Khuyết thiếu ở ô hai, nguyên thể ở cuối.",
+      "objectives": [
+        "de.obj.verbs.separable_modal"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "de:concept:perfekt": {
+      "id": "de:concept:perfekt",
+      "title": "Quá khứ khi nói: Perfekt",
+      "shortRule": "Haben hoặc sein ở vị trí thứ hai + phân từ (thường ge-…-t hoặc ge-…-en) ở cuối câu.",
+      "explanation": "Tiếng Việt thêm «đã»: tôi đã ăn. Tiếng Đức khi nói chuyện thường dùng Perfekt: Ich habe gegessen. Phần lớn động từ dùng haben; động từ chỉ di chuyển hoặc thay đổi trạng thái dùng sein: Ich bin gefahren, Er ist gekommen. Ở trình độ này, chỉ cần nhận ra và dùng những phân từ hay gặp nhất.",
+      "examples": [
+        {
+          "de": "Ich habe Pizza gegessen.",
+          "vi": "Tôi đã ăn pizza.",
+          "note": "haben + gegessen"
+        },
+        {
+          "de": "Was hast du gemacht?",
+          "vi": "Bạn đã làm gì?"
+        },
+        {
+          "de": "Wir sind nach Berlin gefahren.",
+          "vi": "Chúng tôi đã đi Berlin.",
+          "note": "di chuyển → sein"
+        }
+      ],
+      "exceptions": [
+        "Sein và haben thường dùng dạng quá khứ ngắn: ich war (tôi đã ở), ich hatte (tôi đã có)."
+      ],
+      "memoryHint": "Đi đâu đó → sein; làm gì đó → haben.",
+      "objectives": [
+        "de.obj.verbs.perfekt_recognition"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "de:concept:numbers": {
+      "id": "de:concept:numbers",
+      "title": "Số đếm: đơn vị trước, hàng chục sau",
+      "shortRule": "Từ 21 đến 99, đọc đơn vị trước rồi «und» rồi hàng chục: 21 = einundzwanzig.",
+      "explanation": "Tiếng Việt đọc «hai mươi mốt» — chục trước, đơn vị sau. Tiếng Đức ngược lại: einundzwanzig (một và hai mươi), fünfundvierzig (năm và bốn mươi). Số 13–19 thêm -zehn: dreizehn, vierzehn. Lưu ý chính tả: sechzehn, siebzehn (bỏ bớt chữ), dreißig (có ß, không có z).",
+      "examples": [
+        {
+          "de": "einundzwanzig",
+          "vi": "hai mươi mốt (21)",
+          "note": "1 + 20"
+        },
+        {
+          "de": "Ich bin dreißig Jahre alt.",
+          "vi": "Tôi ba mươi tuổi."
+        },
+        {
+          "de": "Das kostet siebzehn Euro.",
+          "vi": "Cái này giá mười bảy euro."
+        }
+      ],
+      "exceptions": [
+        "eins khi đếm, nhưng ein trước danh từ: eins, zwei, drei — ein Euro."
+      ],
+      "memoryHint": "Nghe đến hết rồi mới viết: einund… zwanzig!",
+      "objectives": [
+        "de.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:clock-time": {
+      "id": "de:concept:clock-time",
+      "title": "Nói giờ: halb drei là 2 giờ 30",
+      "shortRule": "Halb + giờ tiếp theo = nửa tiếng trước giờ đó: halb drei là 2 giờ 30.",
+      "explanation": "Cách nói chính thức đơn giản: Es ist acht Uhr dreißig (8:30). Trong đời thường người Đức hay nói halb neun — «nửa đường đến chín giờ», tức 8 giờ 30. Đây là bẫy lớn với người Việt vì «chín rưỡi» lại là 9 giờ 30. Viertel nach drei là 3:15, Viertel vor vier là 3:45. Hỏi giờ: Wie spät ist es? Lúc mấy giờ: um acht Uhr.",
+      "examples": [
+        {
+          "de": "Es ist halb drei.",
+          "vi": "Bây giờ là 2 giờ 30.",
+          "note": "không phải 3:30!"
+        },
+        {
+          "de": "Der Zug kommt um acht Uhr.",
+          "vi": "Tàu đến lúc tám giờ."
+        },
+        {
+          "de": "Es ist Viertel nach vier.",
+          "vi": "Bây giờ là 4 giờ 15."
+        }
+      ],
+      "exceptions": [
+        "Ở thông báo nhà ga dùng giờ 24: 14:30 = vierzehn Uhr dreißig."
+      ],
+      "memoryHint": "halb = đang đi nửa đường tới giờ sau.",
+      "objectives": [
+        "de.obj.numbers.0_100",
+        "de.obj.vocab.time_calendar"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:du-sie": {
+      "id": "de:concept:du-sie",
+      "title": "Du hay Sie?",
+      "shortRule": "Du với bạn bè, gia đình, trẻ em; Sie (viết hoa) với người lạ, người lớn tuổi và ở nơi làm việc.",
+      "explanation": "Tiếng Việt có rất nhiều đại từ xưng hô; tiếng Đức chỉ có hai mức: du (thân mật) và Sie (lịch sự). Sie luôn viết hoa và chia động từ như ngôi «họ»: Wie heißen Sie? Khi không chắc, hãy dùng Sie và chờ người kia đề nghị dùng du. Mệnh lệnh lịch sự cũng dùng Sie: Nehmen Sie Platz!",
+      "examples": [
+        {
+          "de": "Wie heißt du?",
+          "vi": "Bạn tên gì?",
+          "note": "thân mật"
+        },
+        {
+          "de": "Wie heißen Sie?",
+          "vi": "Ông/bà tên gì?",
+          "note": "lịch sự"
+        },
+        {
+          "de": "Nehmen Sie bitte Platz.",
+          "vi": "Mời ông/bà ngồi.",
+          "note": "mệnh lệnh lịch sự"
+        }
+      ],
+      "exceptions": [
+        "Ở nhiều nơi làm việc trẻ và quán cà phê, người ta dùng du ngay từ đầu."
+      ],
+      "memoryHint": "Không chắc thì dùng Sie.",
+      "objectives": [
+        "de.obj.greetings.basic",
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:place-prepositions": {
+      "id": "de:concept:place-prepositions",
+      "title": "Đi đâu: nach, zu, in",
+      "shortRule": "Nach + thành phố, nước; zu + người, cửa hàng, nơi chốn; in + tòa nhà khi đi vào bên trong.",
+      "explanation": "Tiếng Việt chỉ nói «đi» + nơi chốn. Tiếng Đức chọn giới từ theo loại nơi: Ich fahre nach Berlin (thành phố), Ich gehe zum Arzt (đến chỗ bác sĩ), Ich gehe ins Kino (vào rạp). Để nói «ở đâu», dùng in: Ich wohne in Berlin. Về nhà là nach Hause, ở nhà là zu Hause.",
+      "examples": [
+        {
+          "de": "Ich fahre nach Berlin.",
+          "vi": "Tôi đi Berlin.",
+          "note": "thành phố → nach"
+        },
+        {
+          "de": "Ich gehe zum Arzt.",
+          "vi": "Tôi đi khám bác sĩ.",
+          "note": "người → zu"
+        },
+        {
+          "de": "Wir gehen ins Kino.",
+          "vi": "Chúng tôi đi xem phim.",
+          "note": "vào bên trong → in"
+        },
+        {
+          "de": "Ich bin zu Hause.",
+          "vi": "Tôi đang ở nhà."
+        }
+      ],
+      "exceptions": [
+        "Nước có mạo từ dùng in: Ich fahre in die Schweiz."
+      ],
+      "memoryHint": "nach Hause = về nhà; zu Hause = ở nhà.",
+      "objectives": [
+        "de.obj.vocab.places_travel",
+        "de.obj.cases.accusative"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:sounds-umlaut-ch": {
+      "id": "de:concept:sounds-umlaut-ch",
+      "title": "Âm ü, ö và hai kiểu ch",
+      "shortRule": "Ü và ö tròn môi; ch sau a, o, u đọc ở cổ họng, sau e, i đọc nhẹ ở giữa lưỡi.",
+      "explanation": "Tiếng Việt có ư và ơ nhưng không tròn môi. Để nói ü, đặt lưỡi như khi nói «i» rồi tròn môi như «u»: über, für. Ö: lưỡi như «ê», môi như «ô»: schön. Ch sau a, o, u gần giống «kh»: Buch, acht. Sau e, i, ä, ö, ü, ch nhẹ hơn, gần «x» đọc bằng giữa lưỡi: ich, nicht. Đây chỉ là gần giống — hãy nghe mẫu.",
+      "examples": [
+        {
+          "de": "schon — schön",
+          "vi": "đã — đẹp",
+          "note": "umlaut đổi nghĩa"
+        },
+        {
+          "de": "das Buch",
+          "vi": "cuốn sách",
+          "note": "ch cổ họng"
+        },
+        {
+          "de": "ich",
+          "vi": "tôi",
+          "note": "ch nhẹ"
+        }
+      ],
+      "exceptions": [
+        "Chs đọc như ks: sechs (sáu)."
+      ],
+      "memoryHint": "Ü = nói «i» với môi «u».",
+      "objectives": [
+        "de.obj.pronunciation.vowels_ch"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:final-devoicing-length": {
+      "id": "de:concept:final-devoicing-length",
+      "title": "Âm cuối «cứng» và nguyên âm dài – ngắn",
+      "shortRule": "D, g, b ở cuối từ đọc gần như t, k, p; nguyên âm trước phụ âm đôi thường ngắn.",
+      "explanation": "Tiếng Việt không có phụ âm cuối hữu thanh, nên người Việt dễ bỏ hẳn âm cuối (und → «un»). Hãy đọc rõ âm cuối nhưng «cứng»: der Hund nghe gần «hunt», der Tag gần «tak». Độ dài nguyên âm phân biệt nghĩa: die Miete (tiền thuê nhà, ie dài) — die Mitte (ở giữa, i ngắn). Ie, ah, eh, oo thường là nguyên âm dài.",
+      "examples": [
+        {
+          "de": "der Hund",
+          "vi": "con chó",
+          "note": "d cuối → gần t"
+        },
+        {
+          "de": "der Tag",
+          "vi": "ngày",
+          "note": "g cuối → gần k"
+        },
+        {
+          "de": "die Miete — die Mitte",
+          "vi": "tiền thuê nhà — ở giữa",
+          "note": "dài — ngắn"
+        }
+      ],
+      "exceptions": [
+        "Ở số nhiều, âm lại «mềm»: die Hunde, die Tage."
+      ],
+      "memoryHint": "Đừng nuốt âm cuối: und có d!",
+      "objectives": [
+        "de.obj.pronunciation.vowels_ch"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:capitals-eszett": {
+      "id": "de:concept:capitals-eszett",
+      "title": "Viết hoa danh từ, ß và umlaut",
+      "shortRule": "Mọi danh từ viết hoa; ß sau nguyên âm dài, ss sau nguyên âm ngắn; không bỏ umlaut.",
+      "explanation": "Tiếng Đức là ngôn ngữ duy nhất viết hoa mọi danh từ, kể cả giữa câu: Ich trinke Wasser. Chữ ß (eszett) đọc như «ss» và đứng sau nguyên âm dài hoặc ei, au: die Straße, groß, heißen. Sau nguyên âm ngắn viết ss: der Fluss, essen. Nếu không gõ được umlaut, có thể viết ae, oe, ue — nhưng trong bài tập hãy gõ đúng ä, ö, ü.",
+      "examples": [
+        {
+          "de": "Ich trinke Wasser.",
+          "vi": "Tôi uống nước.",
+          "note": "Wasser viết hoa"
+        },
+        {
+          "de": "die Straße",
+          "vi": "đường phố",
+          "note": "a dài → ß"
+        },
+        {
+          "de": "der Fluss",
+          "vi": "dòng sông",
+          "note": "u ngắn → ss"
+        }
+      ],
+      "exceptions": [
+        "Ở Thụy Sĩ không dùng ß: Strasse."
+      ],
+      "memoryHint": "Danh từ = chữ hoa. Dài = ß, ngắn = ss.",
+      "objectives": [
+        "de.obj.spelling.capitals_umlaut"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:compounds": {
+      "id": "de:concept:compounds",
+      "title": "Từ ghép: hiểu từng mảnh",
+      "shortRule": "Từ ghép lấy giống của từ cuối cùng: das Haus → das Krankenhaus; der Tag → der Geburtstag.",
+      "explanation": "Tiếng Đức ghép danh từ thành một từ viết liền, giống «nhà» + «thương» thành «nhà thương». Đọc từ cuối lên đầu: das Schlafzimmer là «phòng (Zimmer) để ngủ (schlafen)». Từ cuối quyết định nghĩa chính và giống, các mảnh đứng trước bổ nghĩa cho nó. Từ ghép dài như Straßenbahnhaltestelle = Straßenbahn + Haltestelle (trạm xe điện).",
+      "examples": [
+        {
+          "de": "das Krankenhaus",
+          "vi": "bệnh viện",
+          "note": "krank (ốm) + das Haus"
+        },
+        {
+          "de": "das Wochenende",
+          "vi": "cuối tuần",
+          "note": "die Woche + das Ende"
+        },
+        {
+          "de": "der Geburtstag",
+          "vi": "sinh nhật",
+          "note": "die Geburt + der Tag"
+        }
+      ],
+      "exceptions": [
+        "Đôi khi có chữ nối -s- hoặc -n-: Geburt-s-tag, Woche-n-ende."
+      ],
+      "memoryHint": "Từ cuối là «ông chủ» của từ ghép.",
+      "objectives": [
+        "de.obj.strategy.cognates_compounds",
+        "de.obj.gender.articles_basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    },
+    "de:concept:false-friends": {
+      "id": "de:concept:false-friends",
+      "title": "Từ quốc tế và «bạn giả»",
+      "shortRule": "Nhiều từ giống tiếng Anh có cùng nghĩa (das Hotel, der Film), nhưng một số là bẫy: bekommen = nhận được, der Chef = sếp.",
+      "explanation": "Nếu bạn biết tiếng Anh, bạn đoán được rất nhiều từ tiếng Đức: das Hotel, das Taxi, der Film, die Musik, das Internet. Nhưng hãy cẩn thận với vài «bạn giả»: bekommen nghĩa là nhận được (không phải become — trở thành là werden), der Chef là sếp (không phải đầu bếp), das Gift là chất độc (quà là das Geschenk), also nghĩa là vậy thì (không phải cũng).",
+      "examples": [
+        {
+          "de": "Ich bekomme eine Nachricht.",
+          "vi": "Tôi nhận được một tin nhắn.",
+          "note": "không phải become"
+        },
+        {
+          "de": "Mein Chef ist nett.",
+          "vi": "Sếp của tôi tử tế.",
+          "note": "Chef = sếp"
+        },
+        {
+          "de": "Das Hotel ist groß.",
+          "vi": "Khách sạn lớn.",
+          "note": "từ quốc tế"
+        }
+      ],
+      "exceptions": [
+        "Từ quốc tế vẫn mang giống tiếng Đức và viết hoa: das Internet, die Musik."
+      ],
+      "memoryHint": "Giống tiếng Anh? Đoán — rồi kiểm tra.",
+      "objectives": [
+        "de.obj.strategy.cognates_compounds"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-german-course"
+        }
+      ]
+    }
+  }
+}

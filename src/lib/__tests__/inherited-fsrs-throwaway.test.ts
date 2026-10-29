@@ -1,7 +1,7 @@
 /**
  * P1b Definition of Done: a legacy course can be moved onto the French
  * layer through DATA, not code. This throwaway lifts `fsrs` + `dailySession`
- * on de-en (es-en gained a registry in P3a) through the profile test seam and proves the engine, the
+ * on it-en (es-en gained a registry in P3a, de-en in P3d(de)) through the profile test seam and proves the engine, the
  * TODAY composer and the review builder work on SPANISH words with FSRS
  * cards. Nothing here is product behaviour (the override is cleared), and
  * no Spanish content changes.
@@ -18,7 +18,7 @@ import { composeTodaySession } from "../learning/today";
 import { buildReviewSessionDefinition } from "../session/sources";
 import type { CourseProgress } from "../store";
 
-const ES = "de-en";
+const ES = "it-en";
 const T0 = Date.UTC(2026, 5, 15, 12);
 const DAY = 86_400_000;
 
@@ -47,13 +47,13 @@ function dueCard(daysOverdue: number): FsrsCardState {
   return { ...fsrsScheduler.initialCard(T0 - 30 * DAY), due, stability: 3, difficulty: 6, scheduled_days: 3, reps: 2, state: "review", last_review: due - 3 * DAY };
 }
 
-describe("de-en on FSRS through a profile override (throwaway, P1b DoD; es-en has a registry since P3a)", () => {
+describe("it-en on FSRS through a profile override (throwaway, P1b DoD; es-en and de-en have registries since P3a / P3d(de))", () => {
   beforeAll(() => __setCourseCapabilityOverrideForTests(ES, { fsrs: true, dailySession: true }));
   afterAll(() => __setCourseCapabilityOverrideForTests(ES, null));
 
   test("the override is visible and leaves the other courses alone", () => {
     expect(hasCapability(ES, "fsrs")).toBe(true);
-    expect(hasCapability("it-en", "fsrs")).toBe(false);
+    expect(hasCapability("pt-en", "fsrs")).toBe(false);
     expect(hasCapability("fr-en", "fsrs")).toBe(true);
   });
 

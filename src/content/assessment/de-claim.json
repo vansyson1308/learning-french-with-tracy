@@ -1,0 +1,33 @@
+{
+  "generator": "scripts/compile-content.ts",
+  "claimWording": "CEFR-aligned estimate — not an official CEFR examination or certification.",
+  "levels": [
+    {
+      "level": "PRE_A1",
+      "courseClaimable": false,
+      "unassessedDomains": [
+        "spoken_reception",
+        "written_reception",
+        "spoken_production",
+        "written_production",
+        "interaction"
+      ]
+    },
+    {
+      "level": "A1",
+      "courseClaimable": true,
+      "unassessedDomains": []
+    },
+    {
+      "level": "A2",
+      "courseClaimable": false,
+      "unassessedDomains": [
+        "spoken_reception",
+        "written_reception",
+        "spoken_production",
+        "written_production",
+        "interaction"
+      ]
+    }
+  ]
+}

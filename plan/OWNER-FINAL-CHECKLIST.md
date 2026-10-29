@@ -17,8 +17,10 @@ Ký hiệu: ☐ chưa làm · ☑ xong · (từ milestone nào)
 - ☐ **fr-vi**: đọc `content/fr/REVIEW-vi.md` (từng câu tiếng Việt với nguồn tiếng Anh; mục đánh dấu **re-author** cần viết lại), sửa qua `content/fr/translations/vi.dictionary.json` / `vi.jsonl`, rồi ghi "reviewed by <tên>, <ngày>" (Claude chạy lại apply/compile khi anh báo). (P2b)
 - ☐ **es-vi Tier-1 tiếng Việt**: ký `content/es/REVIEW-TIER1-vi.md` (352 dòng). Báo Claude tên + ngày → Claude ghi `review: { native, date, checklist }` vào `content/courses/es-vi.profile.json`. (P3e)
 - ☐ **es-vi Tier-1 tiếng Tây Ban Nha**: thuê một giáo viên đọc `content/es/REVIEW-TIER1-es.md` (313 dòng, có hướng dẫn tiếng Việt + Anh bên trong, 2–3 giờ). (P3e)
-- ☐ Mỗi khoá mới (de, it, pt, ja, zh, ko, en) sẽ có hai file Tier-1 tương tự — Claude thêm dòng vào đây khi khoá đó xong.
-- ☐ **Truyện ngắn (P5b)**: đọc bản dịch tiếng Việt từng câu, câu hỏi và lời giới thiệu của 20 truyện tiếng Tây Ban Nha (`content/es/stories/stories.json`) và 10 truyện tiếng Pháp (`content/fr/stories/stories.json`). Sửa thẳng trong file hoặc ghi chú gửi Claude. Phần tiếng Tây Ban Nha/Pháp nên nhờ giáo viên đọc cùng lúc với Tier-1. (P5b)
+- ☐ **de-vi Tier-1 tiếng Việt**: ký `content/de/REVIEW-TIER1-vi.md` (378 dòng). Báo Claude tên + ngày → Claude ghi `review: { native, date, checklist }` vào `content/courses/de-vi.profile.json`. (P3d-de)
+- ☐ **de-vi Tier-1 tiếng Đức**: thuê một giáo viên tiếng Đức đọc `content/de/REVIEW-TIER1-de.md` (309 dòng: bài đọc, kịch bản nghe, lời thoại tình huống, bài mẫu, đề luyện Goethe A1; có hướng dẫn tiếng Việt + Anh bên trong). (P3d-de)
+- ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) sẽ có hai file Tier-1 tương tự — Claude thêm dòng vào đây khi khoá đó xong.
+- ☐ **Truyện ngắn (P5b)**: đọc bản dịch tiếng Việt từng câu, câu hỏi và lời giới thiệu của 20 truyện tiếng Tây Ban Nha (`content/es/stories/stories.json`) 10 truyện tiếng Pháp (`content/fr/stories/stories.json`) và 43 truyện tiếng Đức (`content/de/stories/stories.json`, P3d-de). Sửa thẳng trong file hoặc ghi chú gửi Claude. Phần tiếng Tây Ban Nha/Pháp/Đức nên nhờ giáo viên đọc cùng lúc với Tier-1. (P5b)
 - ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta**, ghi rõ ở đây khoá nào (định nghĩa v1.0 cho phép điều này chỉ khi anh chấp nhận bằng văn bản).
 
 ## C. Nguồn dữ liệu chỉ tải tay được (tuỳ chọn, không chặn công việc)

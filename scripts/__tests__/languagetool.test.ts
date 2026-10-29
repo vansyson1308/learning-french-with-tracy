@@ -4,7 +4,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { applicable, unallowed, unusedAllowances, type LanguageToolAllow, type LtFinding } from "../languagetool";
+import { applicable, batchIndices, checkText, touchedStrings, unallowed, unusedAllowances, type LanguageToolAllow, type LtFinding } from "../languagetool";
 import { readJson } from "../lib/pipeline";
 import { collectTargetStrings, uniqueTargetStrings } from "../lib/target-strings";
 
@@ -77,5 +77,35 @@ describe("target strings (es-vi)", () => {
     const u = uniqueTargetStrings(all);
     expect(u.length).toBeLessThan(all.length);
     expect(u.reduce((n, x) => n + x.where.length, 0)).toBe(all.length);
+  });
+});
+
+describe("a stalled LanguageTool request fails instead of hanging the gate (CI 2026-10-29)", () => {
+  test("checkText gives up after its timeout, with the string named", async () => {
+    const server = Bun.serve({ port: 0, fetch: () => new Promise<Response>(() => {}) });
+    try {
+      const started = Date.now();
+      await expect(checkText(`http://localhost:${server.port}`, "de-DE", "Ich heiße Minh.", [], 50)).rejects.toThrow(/failed on "Ich heiße Minh\."/);
+      expect(Date.now() - started).toBeLessThan(5_000);
+    } finally {
+      server.stop(true);
+    }
+  });
+});
+describe("batched screening (CI 2026-10-29: German costs ~0.9 s per request)", () => {
+  test("batches respect the string and character limits and keep order", () => {
+    const texts = ["a".repeat(10), "b".repeat(10), "c".repeat(10), "d".repeat(10), "e".repeat(10)];
+    expect(batchIndices(texts, 2, 1000)).toEqual([[0, 1], [2, 3], [4]]);
+    expect(batchIndices(texts, 40, 15)).toEqual([[0], [1], [2], [3], [4]]);
+    expect(batchIndices(["x".repeat(5000)], 40, 100)).toEqual([[0]]);
+  });
+
+  test("a match is mapped to every string it touches, separator included", () => {
+    const texts = ["Ich bin Minh.", "Das ist Lea.", "Gut."];
+    const second = texts[0].length + 2;
+    expect(touchedStrings(texts, 8, 4)).toEqual([0]);
+    expect(touchedStrings(texts, second, 3)).toEqual([1]);
+    expect(touchedStrings(texts, second - 2, 4)).toEqual([0, 1]);
+    expect(touchedStrings(texts, second + texts[1].length + 2, 0)).toEqual([2]);
   });
 });

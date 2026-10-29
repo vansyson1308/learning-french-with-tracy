@@ -291,6 +291,8 @@ export function compileCourseProfileArtifacts(args: {
   lexiconDbs: Record<string, LexiconDbInfo>;
   /** language code → frozen surface→id map */
   idMaps: Record<string, Record<string, string>>;
+  /** language code → legacy surface→id map (only languages that have one). */
+  legacyMaps?: Record<string, Record<string, string>>;
   /** src/content (shipped) or src/content/test-only. */
   artifactRoot?: string;
 }): { files: CompiledFile[]; profiles: Record<string, CourseProfile> } {
@@ -305,6 +307,8 @@ export function compileCourseProfileArtifacts(args: {
         prefix: `${code}:w:`,
         legacyPrefix: `${code}:legacy:`,
         surfaceToId: args.idMaps[code],
+        // Only languages with aliases carry the key (the other registries stay byte-identical).
+        ...(args.legacyMaps?.[code] ? { legacySurfaces: args.legacyMaps[code] } : {}),
       }),
     });
   }

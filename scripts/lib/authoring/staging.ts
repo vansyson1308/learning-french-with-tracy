@@ -105,15 +105,30 @@ export const isGeneratedDrift = (message: string) => /run bun run content:compil
  * (generated-artifact drift is set aside — the caller compiles right after);
  * when it reports other errors the real tree is restored and nothing is moved.
  */
-export function promote(lang: string, validate: () => string[]): { moved: string[]; errors: string[] } {
+export const isMissingAudio = (message: string) => / audioTarget has no audio: /.test(message);
+
+/**
+ * `allowMissingAudio`: the audio workflow (audio.yml) synthesises a course
+ * from the real tree, so a new course is promoted first and its audio
+ * generated right after; missing-audio errors are set aside (returned as
+ * `pendingAudio`) and every other error still blocks the move.
+ */
+export function promote(
+  lang: string,
+  validate: () => string[],
+  options: { allowMissingAudio?: boolean } = {}
+): { moved: string[]; errors: string[]; pendingAudio: string[] } {
   const staged = listStaged(lang);
-  if (staged.length === 0) return { moved: [], errors: [`nothing staged under ${stagedRoot(lang)}`] };
+  if (staged.length === 0) return { moved: [], errors: [`nothing staged under ${stagedRoot(lang)}`], pendingAudio: [] };
   let errors: string[] = [];
+  let pendingAudio: string[] = [];
   const moved: string[] = [];
   withStaging(lang, () => {
-    errors = validate().filter((e) => !isGeneratedDrift(e));
+    const all = validate().filter((e) => !isGeneratedDrift(e));
+    pendingAudio = options.allowMissingAudio ? all.filter(isMissingAudio) : [];
+    errors = options.allowMissingAudio ? all.filter((e) => !isMissingAudio(e)) : all;
   });
-  if (errors.length > 0) return { moved, errors };
+  if (errors.length > 0) return { moved, errors, pendingAudio };
   for (const rel of staged) {
     const abs = safeResolve(rel);
     mkdirSync(path.dirname(abs), { recursive: true });
@@ -121,5 +136,5 @@ export function promote(lang: string, validate: () => string[]): { moved: string
     moved.push(rel);
   }
   rmSync(safeResolve(stagedRoot(lang)), { recursive: true, force: true });
-  return { moved, errors };
+  return { moved, errors, pendingAudio };
 }

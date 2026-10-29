@@ -17,7 +17,7 @@ import { pickDistractors } from "../learning/distractors";
 import { contentString } from "../content-strings";
 import { courseProfile, hasCapability } from "../course-profile";
 import { dueReviewQueue, itemIdForCourse } from "../learning/engine";
-import { surfaceFor } from "../learning/ids";
+import { surfaceFor, surfacesFor } from "../learning/ids";
 import type { FsrsCardState } from "../learning/scheduler";
 import { listenWordClipIndex } from "../reception/content";
 import { speakExerciseForItem, speakProductionIndex, speechItemFor } from "../speech/content";
@@ -170,7 +170,8 @@ export function buildReviewSessionDefinition(args: {
     // srs keys are item ids: raw surfaces without a registry, `<code>:w:` ids
     // with one (es-en since P3a). A key the registry cannot resolve is taken
     // as a surface.
-    const surfaceOf = (key: string) => surfaceFor(courseId, key) ?? key;
+    const inPool = new Set(pool.map((w) => w.target));
+    const surfaceOf = (key: string) => surfacesFor(courseId, key).find((s) => inPool.has(s)) ?? surfaceFor(courseId, key) ?? key;
     exercises = buildSrsExercises(due.map(surfaceOf), pool, seed, undefined, courseId);
     evidenceBySurface = Object.fromEntries(due.map((t) => [surfaceOf(t), t]));
   }

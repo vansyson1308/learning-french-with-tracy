@@ -11,6 +11,7 @@ import {
   examWeakAreas,
   isExamAttemptOf,
   itemResultsFor,
+  playsForTask,
   scoreExam,
   secondsLeft,
   sectionItems,
@@ -145,6 +146,79 @@ describe("scoring and estimated readiness", () => {
     expect(score.band).toBeNull();
     expect(score.groups.find((g) => g.id === "group_2")!.points).toBeNull();
     expect(score.groups.find((g) => g.id === "group_1")!.points).toBe(50);
+  });
+
+  test("task points weight a section (Goethe Schreiben: Teil 1 5 points, Teil 2 10 points)", () => {
+    const track = JSON.parse(JSON.stringify(TRACK)) as CompiledExamTrack;
+    const writing = track.sections.find((s) => s.id === "writing")!;
+    writing.tasks.find((t) => t.id === "t1")!.points = 5;
+    writing.tasks.find((t) => t.id === "t2")!.points = 10;
+    const ids = sectionItems(track, "writing", "a").map((i) => i.id);
+    const taskOf = (id: string) => track.items.find((i) => i.id === id)!.taskId;
+    const score = scoreExam(track, results(ids, (id) => taskOf(id) === "t1"));
+    expect(score.sections.find((s) => s.id === "writing")!.points).toBe(8.3);
+    // Without task points every item weighs the same (DELE): 1 of 2 items → half.
+    expect(scoreExam(TRACK, results(ids, (id) => taskOf(id) === "t1")).sections.find((s) => s.id === "writing")!.points).toBe(12.5);
+  });
+
+  test("a rubric credit scores a message part in points (Goethe Teil 2: 8 of 10), not all-or-nothing (QC 2026-10-29 §1.5)", () => {
+    const track = JSON.parse(JSON.stringify(TRACK)) as CompiledExamTrack;
+    const writing = track.sections.find((s) => s.id === "writing")!;
+    writing.tasks.find((t) => t.id === "t1")!.points = 5;
+    writing.tasks.find((t) => t.id === "t2")!.points = 10;
+    const ids = sectionItems(track, "writing", "a").map((i) => i.id);
+    const taskOf = (id: string) => track.items.find((i) => i.id === id)!.taskId;
+    const rows = itemResultsFor(ids, Object.fromEntries(ids.map((id) => [id, taskOf(id) === "t1"])), Object.fromEntries(ids.filter((id) => taskOf(id) === "t2").map((id) => [id, 0.8])));
+    expect(rows.filter((r) => r.credit !== undefined).map((r) => r.credit)).toEqual([0.8]);
+    // (5 + 0.8 × 10) / 15 of the section's 25 points.
+    expect(scoreExam(track, rows).sections.find((s) => s.id === "writing")!.points).toBe(21.7);
+    // Without a credit the item stays all-or-nothing, as before (DELE results unchanged).
+    expect(itemResultsFor(ids, Object.fromEntries(ids.map((id) => [id, true]))).every((r) => !("credit" in r))).toBe(true);
+  });
+
+  test("a points-weighted short_text part carries its rubric spec on the session step; DELE's do not", () => {
+    const track = JSON.parse(JSON.stringify(TRACK)) as CompiledExamTrack;
+    const writing = track.sections.find((s) => s.id === "writing")!;
+    writing.tasks.find((t) => t.id === "t1")!.points = 5;
+    writing.tasks.find((t) => t.id === "t2")!.points = 10;
+    const specOf = (tr: CompiledExamTrack) =>
+      buildExamSectionSession({ courseId: "es-vi", track: tr, sectionId: "writing", formId: "a", mode: "mock", attemptSeed: 0 }).steps.map((s) => (s.type === "exercise" ? s.writingPoints?.maxPoints ?? null : null));
+    expect(specOf(track)).toEqual([null, 10]);
+    expect(specOf(TRACK)).toEqual([null, null]);
+  });
+
+  test("two-option items (mcq2: richtig/falsch, a/b) keep their order in every sitting", () => {
+    const track = JSON.parse(JSON.stringify(TRACK)) as CompiledExamTrack;
+    track.sections.find((s) => s.id === "reading")!.tasks.find((t) => t.id === "t1")!.format = "mcq2";
+    const sitting = (seed: number) =>
+      buildExamSectionSession({ courseId: "es-vi", track, sectionId: "reading", formId: "a", mode: "mock", attemptSeed: seed })
+        .steps.filter((s) => s.type === "exercise" && track.items.find((i) => i.id === s.stepId)!.taskId === "t1")
+        .map((s) => (s.type === "exercise" ? JSON.stringify(s.exercise) : ""));
+    expect(sitting(0)).toEqual(sectionItems(track, "reading", "a").filter((i) => i.taskId === "t1").map((i) => JSON.stringify(i.exercise)));
+    expect(sitting(7)).toEqual(sitting(0));
+  });
+
+  test("each Goethe Hören Teil plays as often as the format says: Teil 1 and 3 twice, Teil 2 once (QC 2026-10-29 §1.4)", () => {
+    const goethe = examTrackFor("de-vi", "de.exam.goethe_a1") as CompiledExamTrack;
+    const hoeren = goethe.sections.find((s) => s.skill === "listening")!;
+    expect(hoeren.tasks.map((t) => [t.id, playsForTask(hoeren, t.id)])).toEqual([["t1", 2], ["t2", 1], ["t3", 2]]);
+    for (const mode of ["mock", "practice"] as const) {
+      const session = buildExamSectionSession({ courseId: "de-vi", track: goethe, sectionId: hoeren.id, formId: "a", mode, attemptSeed: 0 });
+      const playsByTask = new Map<string, Set<number | undefined>>();
+      for (const s of session.steps) {
+        if (s.type !== "exercise") continue;
+        const task = goethe.items.find((i) => i.id === s.stepId)!.taskId;
+        playsByTask.set(task, new Set([...(playsByTask.get(task) ?? []), s.maxPlays]));
+      }
+      expect([...playsByTask].map(([t, p]) => [t, [...p]])).toEqual([["t1", [2]], ["t2", [1]], ["t3", [2]]]);
+    }
+  });
+
+  test("a section without per-part counts keeps its own count (DELE: twice); other sections set none", () => {
+    const listening = TRACK.sections.find((s) => s.skill === "listening")!;
+    expect(listening.tasks.every((t) => playsForTask(listening, t.id) === listening.playsPerRecording)).toBe(true);
+    const reading = buildExamSectionSession({ courseId: "es-vi", track: TRACK, sectionId: "reading", formId: "a", mode: "mock", attemptSeed: 0 });
+    expect(reading.steps.every((s) => s.type !== "exercise" || s.maxPlays === undefined)).toBe(true);
   });
 
   test("time-up items are null and count as not answered", () => {

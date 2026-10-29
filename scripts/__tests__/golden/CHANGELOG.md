@@ -581,6 +581,27 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
 
+## 2026-10-28 — de lexicon reviewed (800 lexemes) now compiles into the de-en artifacts and de lexicon db; registry gains original-german-course — no French output changed
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/artifacts/de-en.ts
+- compile: changed  src/content/attributions.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/index.ts
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/packs/de-en.json
+- compile: new      content/reports/de/lexicon-quality.json
+- compile: new      content/reports/de/lexicon-source-audit.json
+- compile: new      src/content/ids/de.json
+- compile: new      src/content/lexicon/de-daily.json
+- compile: new      src/content/lexicon/de-index.json
+- compile: new      src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-4db6dfb5515f3f46.db
+
+## 2026-10-28 — de-en keeps the legacy scheduler (content/courses/de-en.profile.json enabled fsrs/dailySession false) now that the German lexicon compiles; no French output changed
+
+- compile: changed  src/content/course-profiles.json
 ## 2026-10-28 — P5b graded stories: new artifacts src/content/stories/* (es, fr, fr-vi + sentence-audio modules) and content/reports/{,es/}stories-coverage.json; course profiles and artifact modules of es-vi, fr-en, fr-vi gain the stories capability and imports. Existing French artifacts unchanged.
 
 - compile: changed  src/content/artifacts/es-vi.ts
@@ -622,3 +643,219 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — migration v9 (P3d(de)): German gains its id registry; persist 8 -> 9 in every persona (toVersion/persistVersion only — no fixture carries de-en progress); everything else unchanged
+
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — P3d(de) re-authored German lexicon (894 lexemes): ETL root fixes (de-noun head gender, adjectival nouns, function homographs) + reviewed Vietnamese re-applied; German artifacts only, French unchanged
+
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-5194c2b492a7089b.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-4db6dfb5515f3f46.db
+
+## 2026-10-28 — merge of main (P5b stories) into phase-4/de-vi: manifest recombined (stories artifacts from main + German lexicon from this branch); no content change beyond the two sides
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/es/audio-census.json
+- compile: changed  content/reports/es/audio-quality.json
+- compile: changed  src/content/artifacts/es-vi.ts
+- compile: changed  src/content/artifacts/fr-en.ts
+- compile: changed  src/content/artifacts/fr-vi.ts
+- compile: changed  src/content/course-profiles.json
+- compile: new      content/reports/audio-census.json
+- compile: new      content/reports/audio-quality.json
+- compile: new      content/reports/es/stories-coverage.json
+- compile: new      content/reports/stories-coverage.json
+- compile: new      src/content/stories/es-stories.json
+- compile: new      src/content/stories/es-story-assets.ts
+- compile: new      src/content/stories/fr-stories.json
+- compile: new      src/content/stories/fr-story-assets.ts
+- compile: new      src/content/stories/fr-vi-stories.json
+
+## 2026-10-28 — QC 2026-10-28 §1: no migration v9 (persist back to 8; German joins the v8 re-key); German lexicon: legacySurfaces (de-en Freund/Name → der Freund/der Name), article forms die Eltern/der See/das Knie/das Virus, greetings as interjections, number words added; de registry gains legacySurfaces; es/fr registries and French byte-identical
+
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-048ee5240d5a727c.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-5194c2b492a7089b.db
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/fresh.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/multi-course.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-flat-legacy.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v0-rich.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/migrations/v3-assessed.json
+
+## 2026-10-28 — QC 2026-10-28 §4: new context-coverage reports (fr/es/de) from scripts/lib/context-coverage.ts; no existing artifact changes
+
+- compile: new      content/reports/context-coverage.json
+- compile: new      content/reports/de/context-coverage.json
+- compile: new      content/reports/es/context-coverage.json
+- compile: new      content/reports/xx/context-coverage.json
+
+## 2026-10-28 — P3d(de): German lexicon 927 (core adverbs nicht/hier/auch/wo/wann/heute/morgen/gestern/aber frozen-in, number words); German artifacts only
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-0916999f215379e0.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-048ee5240d5a727c.db
+
+## 2026-10-28 — P3d(de): lexicon-add das Zimmer (room; lexicon-add now accepts neuter nouns); German artifacts only
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-18d767decf144b2f.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-0916999f215379e0.db
+
+## 2026-10-28 — P3d(de): lexicon-add 291 core A1 words found missing by a coverage check against the Goethe A1 word list (gehen, heissen, noch, ...); German artifacts only
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-e0ad6b654481b005.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-18d767decf144b2f.db
+
+## 2026-10-28 — P3d(de): lexicon-add 360 core A1 words found missing by a coverage check against the Goethe A1 word list (gehen, heissen, noch, Suppe, months ...); German artifacts only
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/de/lexicon-source-audit.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/ids/de.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: new      lexicon-db:de:de-lexicon-v3-2fe2e4397c15784c.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-e0ad6b654481b005.db
+
+## 2026-10-28 — P3d(de): lexicon-add 360 core A1 words (Goethe A1 coverage check); syllabus derivation counts lexicon-add entries as course-selected (de +117, es syllabus re-derived +14: rojo, la playa, el martes ...); German and Spanish artifacts
+
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/es/context-coverage.json
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/es-daily.json
+
+## 2026-10-28 — audio.yml de generate (all) run 40744269854
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  content/reports/grade-targets.json
+- compile: changed  src/content/artifacts/de-en.ts
+- compile: changed  src/content/artifacts/index.ts
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/de-en.ts
+- compile: changed  src/content/catalog.json
+- compile: changed  src/content/course-bundles.ts
+- compile: changed  src/content/course-loaders.ts
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/flags.ts
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: changed  src/content/packs/index.ts
+- compile: new      content/reports/de/audio-census.json
+- compile: new      content/reports/de/audio-quality.json
+- compile: new      content/reports/de/cefr-alignment.json
+- compile: new      content/reports/de/cefr-claim-gate.json
+- compile: new      content/reports/de/checkpoint-coverage.json
+- compile: new      content/reports/de/course-objective-coverage.json
+- compile: new      content/reports/de/placement-coverage.json
+- compile: new      content/reports/de/reception-audio-census.json
+- compile: new      content/reports/de/stories-coverage.json
+- compile: new      src/content/artifacts/de-vi.ts
+- compile: new      src/content/assessment/de-attainment.json
+- compile: new      src/content/assessment/de-checkpoints.json
+- compile: new      src/content/assessment/de-claim.json
+- compile: new      src/content/assessment/de-objectives.json
+- compile: new      src/content/assessment/de-placement.json
+- compile: new      src/content/audio/de-vi.ts
+- compile: new      src/content/concepts/de-concepts.json
+- compile: new      src/content/courses/de-vi.ts
+- compile: new      src/content/exam/de-exam-tracks.json
+- compile: new      src/content/interaction/de-scenarios.json
+- compile: new      src/content/lexicon/de-en-index.json
+- compile: new      src/content/lexicon/de-en-web-fallback.json
+- compile: new      src/content/packs/de-vi.json
+- compile: new      src/content/reception/de-clip-assets.ts
+- compile: new      src/content/reception/de-listening.json
+- compile: new      src/content/reception/de-reading.json
+- compile: new      src/content/speech/de-speech-items.json
+- compile: new      src/content/stories/de-stories.json
+- compile: new      src/content/stories/de-story-assets.ts
+- compile: new      src/content/writing/de-writing.json
+- compile: new      lexicon-db:de-en:de-en-lexicon-v3-2fe2e4397c15784c.db
+- compile: new      lexicon-db:de:de-lexicon-v3-28c29eadf27ceaa2.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-2fe2e4397c15784c.db
+
+## 2026-10-29 — audio.yml de generate (all) run 40815633778
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/audio-census.json
+- compile: changed  content/reports/de/audio-quality.json
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/reception-audio-census.json
+- compile: changed  content/reports/de/stories-coverage.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/de-vi.ts
+- compile: changed  src/content/exam/de-exam-tracks.json
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/reception/de-clip-assets.ts
+- compile: changed  src/content/reception/de-listening.json
+- compile: changed  src/content/stories/de-stories.json
+
+## 2026-10-29 — languagetool de-vi triage: German lexicon example fixes and letter closings (de, de-en lexicon outputs and de-vi pack/writing/exam/reading; French unchanged)
+
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/exam/de-exam-tracks.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-en-index.json
+- compile: changed  src/content/lexicon/de-en-web-fallback.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: changed  src/content/packs/de-vi.json
+- compile: changed  src/content/reception/de-reading.json
+- compile: changed  src/content/writing/de-writing.json
+- compile: new      lexicon-db:de-en:de-en-lexicon-v3-c8515df28bdf3c65.db
+- compile: new      lexicon-db:de:de-lexicon-v3-1151654113acceb4.db
+- compile: missing  lexicon-db:de-en:de-en-lexicon-v3-2fe2e4397c15784c.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-28c29eadf27ceaa2.db

@@ -1,23 +1,23 @@
 {
   "generator": "scripts/lexicon-etl.ts recon",
   "language": "de",
-  "recordedAt": "2026-10-14",
+  "recordedAt": "2026-10-28",
   "artifacts": {
     "kaikki-en-de.jsonl": {
       "status": "retrieved",
-      "sha256": "d7ae58be5479ebf607bb9f714e74d796f4df3e8b558478d8e9c7710c55510394",
-      "bytes": 1085014820,
-      "lines": 371261,
+      "sha256": "311f06d80e49e21a4d91d62b9007db13cf8bb89ccce64d218c5ed7859f37093d",
+      "bytes": 1095258648,
+      "lines": 371793,
       "samples": [
         "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"de\", \"2\": \"noun\"}, \"expansion\": \"BS\"}], \"word\": \"BS\", \"lang\": \"German\", \"lang_code\": \"de\", \"senses\": [{\"links\": [[\"Bausoldat\", \"Bausoldat\"]], \"glosses\": [\"Bausoldat\"], \"id\": \"en-BS-de-noun-pUG0lhdt\"}]}",
-        "{\"pos\": \"num\", \"head_templates\": [{\"name\": \"head\", \"args\": {\"1\": \"de\", \"2\": \"numeral\"}, \"expansion\": \"drey\"}], \"word\": \"drey\", \"lang\": \"German\", \"lang_code\": \"de\", \"senses\": [{\"links\": [[\"drei\", \"drei#German\"]], \"glosses\": [\"obsolete spelling of drei\"], \"tags\": [\"alt-of\", \"obsolete\"], \"alt_of\": [{\"word\": \"drei\"}], \"id\": \"en-drey-de-num-nb-Py2gP\", \"categories\": []}]}"
+        "{\"pos\": \"noun\", \"head_templates\": [{\"name\": \"de-noun\", \"args\": {\"1\": \"f.sg\"}, \"expansion\": \"PPS f (genitive PPS, no plural)\"}], \"forms\": [{\"form\": \"PPS\", \"tags\": [\"genitive\"]}], \"word\": \"PPS\", \"lang\": \"German\", \"lang_code\": \"de\", \"senses\": [{\"glosses\": [\"Produktionsplanung und -steuerung\"], \"tags\": [\"feminine\", \"no-plural\"], \"id\": \"en-PPS-de-noun-D8~ih74T\"}]}"
       ]
     },
     "kaikki-vi-de.jsonl": {
       "status": "retrieved",
-      "sha256": "4a95bf148447b79b0a5108150895655271b31e4963a51e2c83d43e830463c495",
-      "bytes": 2963664,
-      "lines": 1761,
+      "sha256": "39866a3752fa752093ae808007d3c872f81927fef074314f44ebb499be94fb60",
+      "bytes": 3045918,
+      "lines": 1813,
       "samples": [
         "{\"word\": \"sexagesimal\", \"lang_code\": \"de\", \"lang\": \"Tiếng Đức\", \"pos\": \"adj\", \"pos_title\": \"Tính từ\", \"categories\": [{\"name\": \"Từ dẫn xuất từ tiếng Latinh tiếng Đức\", \"kind\": \"other\", \"parents\": [], \"source\": \"w\"}], \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"vi-sexagesimal-de-adj-47DEQpj8\"}]}",
         "{\"word\": \"fotografierender\", \"lang_code\": \"de\", \"lang\": \"Tiếng Đức\", \"pos\": \"adj\", \"pos_title\": \"Tính từ\", \"senses\": [{\"tags\": [\"no-gloss\"], \"id\": \"vi-fotografierender-de-adj-47DEQpj8\"}]}"
@@ -45,9 +45,9 @@
     },
     "tatoeba-de-sentences.tsv": {
       "status": "retrieved",
-      "sha256": "5517ea95b1608dfdd4ce2e5e947bb86731311844e3cddad5a5d19069da7e9c76",
-      "bytes": 87725712,
-      "lines": 783551,
+      "sha256": "d63a04ac83e1153f0ecf2167986efc1c45948bef035a4508859f4218e2476d69",
+      "bytes": 87865728,
+      "lines": 784711,
       "samples": [
         "77\tdeu\tLass uns etwas versuchen!\tludoviko\t\\N\t2010-10-11 09:53:14",
         "78\tdeu\tIch muss schlafen gehen.\tcburgmer\t\\N\t2010-02-15 09:06:02"
@@ -55,9 +55,9 @@
     },
     "tatoeba-de-links-en.tsv": {
       "status": "retrieved",
-      "sha256": "26ee55d57f5f59dc99f036592702d39ad53493ddf0421bc23555d3a6eb3f7352",
-      "bytes": 9433286,
-      "lines": 585698,
+      "sha256": "f0f15db4a17e03b4de39f5c800f4178beb8f9b84502fd8b4762ddde12eede6e3",
+      "bytes": 9438665,
+      "lines": 586002,
       "samples": [
         "77\t1276",
         "80\t42849"
@@ -75,9 +75,9 @@
     },
     "tatoeba-eng-sentences.tsv": {
       "status": "retrieved",
-      "sha256": "3f7d0ad83ea9d1df9aa49315d9b6c141a7daa0d24bbfa50980896b3b734dfabe",
-      "bytes": 198754998,
-      "lines": 2038719,
+      "sha256": "eca5d6fdfc04634a774a1d1d651fc7b0086b7f578c582a17b6769192b0ed41d7",
+      "bytes": 198860502,
+      "lines": 2039572,
       "samples": [
         "1276\teng\tLet's try something.\tCK\t0000-00-00 00:00:00\t2012-02-05 11:38:18",
         "1277\teng\tI have to go to sleep.\tvinhan\t\\N\t2009-11-25 23:20:59"
@@ -85,9 +85,9 @@
     },
     "tatoeba-vie-sentences.tsv": {
       "status": "retrieved",
-      "sha256": "b5f8ce222a2810256eeacc596491175c7688406ac716a1f8d8fc31fe01561f21",
-      "bytes": 3739296,
-      "lines": 33223,
+      "sha256": "d49f579c1fe71ace65291e004bf8d98545faa5ec0a1f8f4304a94fbdb15521c9",
+      "bytes": 3744678,
+      "lines": 33262,
       "samples": [
         "5662\tvie\tTôi phải đi ngủ.\tevaZ\t\\N\t2013-09-05 11:06:52",
         "5663\tvie\tBạn đang làm gì đây?\tevaZ\t\\N\t2013-09-05 11:07:04"

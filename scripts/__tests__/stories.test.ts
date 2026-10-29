@@ -7,6 +7,7 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "fs";
 
 import type { Stories, StorySource } from "../../content/schema";
+import { buildPlugin } from "../lib/languages";
 import { loadRichLexicon } from "../lib/lexicon";
 import { courseRolesFor, loadPacks, safeResolve } from "../lib/pipeline";
 import {
@@ -74,6 +75,36 @@ describe("lexical resolver", () => {
     expect(bands.get(first)).toBe("A1-1");
     expect(bands.get(last)).toBe("A1-2");
     expect([...bands.values()].filter((b) => b === "A1-1").length).toBe(Math.ceil(ES.syllabus.entries.length / 2));
+  });
+});
+
+describe("German inflection endings (P3d de)", () => {
+  const lexicon = loadRichLexicon("de");
+  const index = buildLexemeIndex("de", lexicon, loadVerbForms("de"));
+  const endings = buildPlugin("de").storyEndings;
+  const resolve = (key: string) => resolveToken(key, { index, functionWords: new Set<string>(), tokenMap: {}, endings });
+
+  test("German plural and adjective endings resolve nouns and adjectives", () => {
+    expect(resolve("frauen")).toEqual({ kind: "lexeme", lexemeId: "de:w:frau" });
+    expect(resolve("kinder")).toEqual({ kind: "lexeme", lexemeId: "de:w:kind" });
+    expect(resolve("kindern")).toEqual({ kind: "lexeme", lexemeId: "de:w:kind" });
+    expect(resolve("kleinen")).toEqual({ kind: "lexeme", lexemeId: "de:w:klein" });
+    expect(resolve("kleinem")).toEqual({ kind: "lexeme", lexemeId: "de:w:klein" });
+    // Adjectives in -e take only -r / -m / -n / -s: böse → böser, bösem.
+    expect(resolve("böser")).toEqual({ kind: "lexeme", lexemeId: "de:w:bose" });
+    expect(resolve("bösem")).toEqual({ kind: "lexeme", lexemeId: "de:w:bose" });
+    // -nen (Freundinnen) is tried last: "einen" is ein + -en, never Ei + -nen.
+    expect(resolve("einen")).toEqual({ kind: "lexeme", lexemeId: "de:w:ein" });
+    expect(resolve("freundinnen")).toEqual({ kind: "lexeme", lexemeId: "de:w:freundin" });
+  });
+
+  test("umlaut plurals are not guessed (they go in tokenMap, explicitly)", () => {
+    expect(resolve("männer")).toEqual({ kind: "unresolved" });
+  });
+
+  test("without German endings the Romance list is used (Spanish and French unchanged)", () => {
+    expect(buildPlugin("es").storyEndings).toBeUndefined();
+    expect(resolveToken("kleinen", { index, functionWords: new Set<string>(), tokenMap: {} })).toEqual({ kind: "unresolved" });
   });
 });
 

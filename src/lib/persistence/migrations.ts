@@ -26,7 +26,10 @@
  *       registry after its learners started (es-en: RC3 progress is keyed
  *       by surface, P3a's registry made new progress keyed by `es:w:` ids)
  *       re-keys wordStats and the legacy srs map surface → id. Shape
- *       unchanged; see migrateV7toV8.
+ *       unchanged; see migrateV7toV8. German (de-en, P3d(de)) is part of the
+ *       same step: v8 never ran on a learner's device before German's
+ *       registry shipped, so its data input was extended instead of adding a
+ *       step (coordinator QC 2026-10-28).
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -438,7 +441,10 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
  * calls rekeyRegistryCourses for it — pinned by migrations-v8.test.ts, so a
  * new registry can never silently strand surface-keyed progress again.
  */
-export const V8_REKEYED_TARGETS: readonly string[] = ["es", "fr"];
+export const V8_REKEYED_TARGETS: readonly string[] = ["de", "es", "fr"];
+
+/** Every target whose surface-keyed progress a numbered step re-keyed. */
+export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS];
 
 const DAY_MS = 86_400_000;
 
@@ -469,7 +475,8 @@ export function rekeyRegistryCourses(persisted: PersistedProgress, targets: read
     const registry = idRegistryForLanguage(code);
     if (!registry) continue;
     const isId = (key: string) => key.startsWith(registry.prefix) || key.startsWith(registry.legacyPrefix);
-    const idOf = (key: string) => (isId(key) ? key : registry.surfaceToId[key] ?? `${registry.legacyPrefix}${encodeURIComponent(key)}`);
+    const idOf = (key: string) =>
+      isId(key) ? key : registry.surfaceToId[key] ?? registry.legacySurfaces?.[key] ?? `${registry.legacyPrefix}${encodeURIComponent(key)}`;
     const statKeys = Object.keys(course.wordStats ?? {});
     const srsKeys = Object.keys(course.srs ?? {});
     if (statKeys.every(isId) && srsKeys.every(isId)) continue;

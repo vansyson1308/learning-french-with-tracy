@@ -76,6 +76,8 @@ export type PoolEntry = {
   partOfSpeech: PartOfSpeech;
   sourcePos: string;
   gender: "masculine" | "feminine" | "neuter" | "both" | "unknown" | null;
+  /** Definite-article form when it differs from the lemma (German adjectival nouns: Deutscher → der Deutsche). */
+  definiteForm?: string;
   ipa: string | null;
   glosses: { en: string[]; vi: string[] };
   examples: CandidateExample[];
@@ -162,7 +164,12 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
   // ---- 2. kaikki English edition: lemmas + form-of index (two passes) ------
   const kaikkiSpec = retrievedSpecs(opts, "lexicon")[0];
   if (!kaikkiSpec) throw new Error(`${lang}: the kaikki lexicon source is not retrieved (fail-closed)`);
-  const freqWords = new Set(freq.rows.map((r) => r.word));
+  // German capitalises every noun, while FrequencyWords lists are lower case:
+  // each form is also tried capitalised ("haus" → Haus, "tagen" → Tagen → Tag),
+  // or the whole noun class would be lost to verb homographs.
+  const caseVariants = (word: string): string[] =>
+    lang === "de" && word.length > 0 ? [...new Set([word, word.charAt(0).toUpperCase() + word.slice(1)])] : [word];
+  const freqWords = new Set(freq.rows.flatMap((r) => caseVariants(r.word)));
   const pass1: KaikkiScan = await scanKaikki(artifact(dir, kaikkiSpec), {
     lang,
     keepWords: freqWords,
@@ -195,21 +202,28 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
   const properLike = (lemma: string, pos: PartOfSpeech) => lang !== "de" && !["ja", "zh", "ko"].includes(lang) && /^\p{Lu}/u.test(lemma) && pos !== "pronoun";
   for (const row of freq.rows) {
     const candidates = new Set<string>();
-    for (const pos of posOf(row.word)) candidates.add(`${row.word}|${pos}`);
-    for (const target of pass1.formOf.get(row.word) ?? []) for (const pos of posOf(target)) candidates.add(`${target}|${pos}`);
+    for (const word of caseVariants(row.word)) {
+      for (const pos of posOf(word)) candidates.add(`${word}|${pos}`);
+      for (const target of pass1.formOf.get(word) ?? []) for (const pos of posOf(target)) candidates.add(`${target}|${pos}`);
+    }
     if (candidates.size === 0) continue;
     // A closed-class (function) lemma identical to the form absorbs the
-    // whole count: "yo", "no", "que" are pronouns/adverbs/conjunctions
-    // first; their marginal noun readings never ride on the form's count.
+    // count of its NOUN homographs: "yo", "no", "que" are pronouns/adverbs/
+    // conjunctions first, never "el yo"; German nominalisations (das Ich,
+    // das Ja, das Aus) never ride on the lower-case form either. Only a
+    // PLAIN function reading absorbs (not the dated interjection "nicht?"),
+    // and adverbs / adjectives / verbs keep their share (auch, noch, nur
+    // beside their interjection or conjunction readings). Known cost: the
+    // archaic preposition "zeit" leaves the noun Zeit only its other forms.
     const functionDirect = [...candidates].some((key) => {
       const entry = lemmas.get(key)!;
-      return entry.word === row.word && FUNCTION_POS.includes(entry.pos);
+      return entry.word === row.word && FUNCTION_POS.includes(entry.pos) && entry.usageTags.length === 0;
     });
     const weights = [...candidates].map((key) => {
       const entry = lemmas.get(key)!;
       // Letter / note readings and proper-noun homographs never absorb the count of an ordinary word.
       if (letterLike(entry) || properLike(entry.word, entry.pos)) return 0;
-      if (functionDirect && !FUNCTION_POS.includes(entry.pos)) return 0;
+      if (functionDirect && entry.pos === "noun") return 0;
       // Richness of the reading: senses, examples and an inflection table (a verb with 200 forms
       // outweighs the nominalised infinitive "ser (a being)" that shares its bare form).
       return Math.max(1, entry.senseCount) + entry.examples.length + (entry.forms.length > 0 ? 5 : 0);
@@ -395,6 +409,7 @@ export async function deriveLanguage(opts: DeriveOptions): Promise<DeriveResult>
       partOfSpeech: p.pos,
       sourcePos: entry.sourcePos,
       gender: p.pos === "noun" ? (entry.gender ?? "unknown") : null,
+      ...(p.pos === "noun" && entry.definiteForm ? { definiteForm: entry.definiteForm } : {}),
       ipa: entry.ipa ?? null,
       glosses: { en: [...new Set(enGlosses)].slice(0, 3), vi: [...new Set(viGlosses)].slice(0, 3) },
       examples: examples.slice(0, 4),

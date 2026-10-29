@@ -58,6 +58,7 @@ describe("articleSelect validation rules", () => {
   });
 
   test("articleSelect outside the French course fails", () => {
-    expect(errorsFor("de-en", drill()).join("\n")).toContain("needs authored pedagogy");
+    // P3d(de): German now has authored pedagogy (de-vi); Italian has none yet.
+    expect(errorsFor("it-en", drill()).join("\n")).toContain("needs authored pedagogy");
   });
 });

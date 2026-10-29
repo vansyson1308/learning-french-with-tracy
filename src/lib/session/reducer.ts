@@ -8,10 +8,11 @@
  * controller, keyed off state transitions.
  */
 
-import { checkAnswer, type Answer } from "../grading";
+import { checkAnswer, evaluateWrittenAnswer, type Answer } from "../grading";
+import { messagePoints } from "../writing/message-points";
 import type { Exercise } from "../types";
 
-import type { SessionKind, SessionStep } from "./types";
+import type { ExerciseStep, SessionKind, SessionStep } from "./types";
 
 export type StepStatus = "idle" | "correct" | "wrong";
 
@@ -37,6 +38,8 @@ export type SessionMachineState = {
   attempts: Record<string, number>;
   /** stepId → correctness of the FIRST attempt only (exercise steps). */
   firstResults: Record<string, boolean>;
+  /** stepId → rubric credit 0..1 of the FIRST attempt, for exam message parts only (QC 2026-10-29 §1.5). */
+  firstCredits?: Record<string, number>;
   /**
    * stepId → explicitly skipped via "I don't know" (§117). Distinct from a
    * wrong answer: counted once as a gap, never as a failure — skipped steps
@@ -137,6 +140,14 @@ function advance(state: SessionMachineState, requeueCurrent: boolean): SessionMa
   };
 }
 
+/** Rubric credit of an exam message answer (share of its points), or null when it is no evidence. */
+function writingCredit(step: ExerciseStep, answer: Answer, courseId: string | undefined): number | null {
+  if (!step.writingPoints || !courseId || (step.exercise.type !== "guidedWriting" && step.exercise.type !== "simpleForm")) return null;
+  const evaluation = evaluateWrittenAnswer(step.exercise, answer, courseId);
+  const points = evaluation ? messagePoints(evaluation, step.writingPoints) : null;
+  return points === null ? null : points.points / points.maxPoints;
+}
+
 export function sessionReducer(
   state: SessionMachineState,
   action: SessionAction
@@ -168,8 +179,10 @@ export function sessionReducer(
         attempt === 0
           ? { ...state.firstResults, [step.stepId]: correct }
           : state.firstResults;
+      const credit = attempt === 0 && step.writingPoints ? writingCredit(step, state.answer, state.courseId) : null;
       return {
         ...state,
+        ...(credit !== null ? { firstCredits: { ...(state.firstCredits ?? {}), [step.stepId]: credit } } : {}),
         status: correct ? "correct" : "wrong",
         attempts: { ...state.attempts, [step.stepId]: attempt + 1 },
         firstResults,

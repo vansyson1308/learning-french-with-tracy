@@ -3,7 +3,7 @@ import { describe, expect, test } from "bun:test";
 import { lintSyllabusContext, lintSyllabusCoverage } from "../lib/authoring/lint";
 import { loadRichLexicon } from "../lib/lexicon";
 import { courseRolesFor, loadPacks } from "../lib/pipeline";
-import { courseAuthored, deriveSyllabus, loadSyllabus, loadTopicUnits, validateSyllabusData, validateTopicUnits } from "../lib/syllabus";
+import { courseAuthored, courseSelected, deriveSyllabus, loadSyllabus, loadTopicUnits, validateSyllabusData, validateTopicUnits } from "../lib/syllabus";
 
 const packs = loadPacks();
 const esPack = courseRolesFor("es", packs).primary!.pack;
@@ -64,6 +64,20 @@ describe("lexical syllabus (P3e)", () => {
     for (const l of authored) expect(ids.has(l.id)).toBe(true);
     expect(courseAuthored({ sourceRefs: [{ source: "kaikki-en" }, { source: "original-lexicon-etl" }] })).toBe(false);
     expect(courseAuthored({ sourceRefs: [] })).toBe(false);
+  });
+
+  test("P3d(de): a lexeme the course added through lexicon-add is a syllabus word even when the subtitle corpus rates it less-common", () => {
+    const added = { sourceRefs: [{ source: "kaikki-en" }, { source: "frequencywords" }, { source: "original-lexicon-etl" }], examples: [{ source: "original-lexicon-etl", key: "add" }] };
+    expect(courseSelected(added)).toBe(true);
+    expect(courseSelected({ sourceRefs: [{ source: "kaikki-en" }], examples: [{ source: "tatoeba", key: "123" }] })).toBe(false);
+    expect(courseSelected({ sourceRefs: [{ source: "original-lexicon-etl" }], examples: [] })).toBe(true);
+    // es: rojo / la playa were added by the course (pool band less-common) and now count.
+    const ids = new Set(ES.entries.map((e) => e.lexemeId));
+    for (const id of ["es:w:rojo", "es:w:playa"]) expect(ids.has(id)).toBe(true);
+    const deLex = loadRichLexicon("de");
+    const dePack = courseRolesFor("de", packs).primary!.pack;
+    const de = new Set(deriveSyllabus({ lang: "de", level: "A1", minLexemes: 0, lexicon: deLex, pack: dePack }).entries.map((e) => e.lexemeId));
+    expect(de.has("de:w:garten")).toBe(true);
   });
 
   test("P3e §8: words whose frequency belonged to a homograph are not daily words", () => {

@@ -73,6 +73,12 @@ export type KaikkiLemma = {
   pos: PartOfSpeech;
   sourcePos: string;
   gender?: "masculine" | "feminine" | "neuter" | "both";
+  /**
+   * The form a definite article takes when it differs from the lemma:
+   * German adjectival nouns (`de-noun|+`) are cited strong ("Deutscher",
+   * "Beamter") but read weak after der/das ("der Deutsche").
+   */
+  definiteForm?: string;
   ipa?: string;
   /** First-sense glosses (one string per sense, cleaned), in sense order. */
   glosses: string[];
@@ -158,10 +164,36 @@ function genderFromTags(tags: Iterable<string>): KaikkiLemma["gender"] | undefin
     else if (t === "feminine") f = true;
     else if (t === "neuter") n = true;
   }
-  if (n && !m && !f) return "neuter";
-  if (m && f) return "both";
+  // Two genders on one sense (Taxi: neuter + Swiss masculine) prove neither: "both", never the first one read.
+  if ([m, f, n].filter(Boolean).length > 1) return "both";
+  if (n) return "neuter";
   if (m) return "masculine";
   if (f) return "feminine";
+  return undefined;
+}
+
+const DE_GENDER: Record<string, "masculine" | "feminine" | "neuter"> = { m: "masculine", f: "feminine", n: "neuter" };
+
+/**
+ * German `de-noun` head: arg 1 starts with the standard gender; alternates
+ * follow after ":" with their region in brackets ("n:m[Switzerland, but
+ * rare]" — das Taxi). "+" marks an adjectival noun, gendered by its strong
+ * ending (Deutscher m, Deutsche f, Junges n).
+ */
+export function germanHead(entry: KaikkiEntry): { gender?: "masculine" | "feminine" | "neuter"; definiteForm?: string } | undefined {
+  for (const h of entry.head_templates ?? []) {
+    if (h.name !== "de-noun") continue;
+    const arg = (h.args?.["1"] ?? "").trim();
+    if (arg.startsWith("+")) {
+      const w = entry.word;
+      if (/er$/.test(w)) return { gender: "masculine", definiteForm: w.slice(0, -1) };
+      if (/es$/.test(w)) return { gender: "neuter", definiteForm: w.slice(0, -1) };
+      if (/e$/.test(w)) return { gender: "feminine" };
+      return {};
+    }
+    const g = DE_GENDER[arg.slice(0, 1)];
+    if (g && !/^[mfn]\w/.test(arg)) return { gender: g };
+  }
   return undefined;
 }
 
@@ -327,13 +359,18 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
     const examples: CandidateExample[] = [];
     const usage = new Set<string>();
     const senseTags = new Set<string>();
+    // A usage tag (dated, slang…) restricts one sense, not the word: the lemma is restricted only
+    // when every sense is, and beside plain senses the tagged ones contribute no gloss or example.
+    const isRestricted = (s: KaikkiSense) => (s.tags ?? []).some((t) => USAGE_TAGS.has(t));
+    const hasPlainSense = lemmaSenses.some((s) => !isRestricted(s));
     lemmaSenses.forEach((s, i) => {
-      const g = senseGloss(s);
-      if (g) glosses.push(g);
       for (const t of s.tags ?? []) {
         senseTags.add(t);
-        if (USAGE_TAGS.has(t)) usage.add(t);
+        if (!hasPlainSense && USAGE_TAGS.has(t)) usage.add(t);
       }
+      if (hasPlainSense && isRestricted(s)) return;
+      const g = senseGloss(s);
+      if (g) glosses.push(g);
       for (const ex of s.examples ?? []) {
         if (examples.length >= maxExamples) break;
         if (typeof ex.text !== "string" || ex.type === "quotation" || ex.ref) continue;
@@ -363,11 +400,14 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
         if (t.code === opts.keepTranslationCode && typeof t.word === "string") viTranslations.push(t.word);
       }
     }
+    // German: the head template names the STANDARD gender first; sense tags mix in regional ones.
+    const deHead = opts.lang === "de" && pos === "noun" ? germanHead(entry) : undefined;
     const record: KaikkiLemma = {
       word: entry.word,
       pos,
       sourcePos: entry.pos,
-      gender: pos === "noun" ? (genderFromTags(senseTags) ?? genderFromHead(entry)) : undefined,
+      gender: pos === "noun" ? (deHead?.gender ?? genderFromTags(senseTags) ?? genderFromHead(entry)) : undefined,
+      ...(deHead?.definiteForm ? { definiteForm: deHead.definiteForm } : {}),
       ipa: ipaOf(entry),
       glosses,
       senseCount: lemmaSenses.length,
@@ -379,15 +419,26 @@ export async function scanKaikki(path: string, opts: KaikkiScanOptions): Promise
       viTranslations,
     };
     if (existing) {
-      // Several etymologies of the same word|pos: merge, first entry wins on scalars.
-      existing.glosses.push(...record.glosses);
+      // Several etymologies of the same word|pos: merge, first entry wins on scalars. A restricted
+      // etymology beside a plain one adds no gloss or example and does not restrict the lemma.
+      const existingPlain = existing.usageTags.length === 0;
+      const recordPlain = record.usageTags.length === 0;
+      if (!existingPlain && recordPlain) {
+        existing.glosses = [];
+        existing.examples = [];
+        existing.usageTags = [];
+      }
+      if (existingPlain === recordPlain || recordPlain) {
+        existing.glosses.push(...record.glosses);
+        existing.examples.push(...record.examples.slice(0, Math.max(0, maxExamples - existing.examples.length)));
+      }
+      if (!existingPlain && !recordPlain) existing.usageTags = [...new Set([...existing.usageTags, ...record.usageTags])].sort();
       existing.senseCount += record.senseCount;
-      existing.examples.push(...record.examples.slice(0, Math.max(0, maxExamples - existing.examples.length)));
       existing.forms.push(...record.forms);
       existing.topics = [...new Set([...existing.topics, ...record.topics])].sort();
-      existing.usageTags = [...new Set([...existing.usageTags, ...record.usageTags])].sort();
       existing.viTranslations.push(...record.viTranslations);
       if (!existing.gender && record.gender) existing.gender = record.gender;
+      if (!existing.definiteForm && record.definiteForm) existing.definiteForm = record.definiteForm;
       if (!existing.ipa && record.ipa) existing.ipa = record.ipa;
       for (const [k, v] of Object.entries(record.readings)) if (!existing.readings[k]) existing.readings[k] = v;
     } else {

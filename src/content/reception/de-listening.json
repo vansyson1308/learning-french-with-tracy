@@ -1,0 +1,5553 @@
+{
+  "version": 1,
+  "language": "de",
+  "order": [
+    "de.clip.uf_morgen",
+    "de.clip.uf_abend",
+    "de.clip.uf_wasser",
+    "de.clip.uf_zeit",
+    "de.clip.uf_vater",
+    "de.clip.uf_nacht",
+    "de.clip.uf_guten_morgen",
+    "de.clip.uf_guten_abend",
+    "de.clip.uf_gute_nacht",
+    "de.clip.uf_keine_zeit",
+    "de.clip.uh_zug_berlin",
+    "de.clip.uh_verspaetung",
+    "de.clip.uh_geschaeft",
+    "de.clip.uh_bus_sieben",
+    "de.clip.uh_warten",
+    "de.clip.uh_geradeaus",
+    "de.clip.uh_kasse",
+    "de.clip.uh_kaffee_preis",
+    "de.clip.uh_ticket_preis",
+    "de.clip.uh_brot_preis",
+    "de.clip.ui_baeckerei",
+    "de.clip.ui_fahrkarte",
+    "de.clip.ui_bezahlen",
+    "de.clip.ui_uhrzeit",
+    "de.clip.ui_brot_milch",
+    "de.clip.ui_zug_wann",
+    "de.clip.uj_mia",
+    "de.clip.uj_jonas",
+    "de.clip.uj_bahnhof",
+    "de.clip.uj_sonntag",
+    "de.clip.uk_model_rep_hallo",
+    "de.clip.uk_model_greet_morning",
+    "de.clip.uk_model_rep_danke",
+    "de.clip.uk_model_thank",
+    "de.clip.uk_model_rep_abend",
+    "de.clip.uk_model_greet_evening",
+    "de.clip.uk_model_bye",
+    "de.clip.uk_model_rep_entschuldigung",
+    "de.clip.uk_model_excuse",
+    "de.clip.ul_model_rep_name",
+    "de.clip.ul_model_name",
+    "de.clip.ul_model_rep_from",
+    "de.clip.ul_model_from",
+    "de.clip.ul_model_live",
+    "de.clip.ul_model_speak",
+    "de.clip.ul_model_work",
+    "de.clip.ul_model_like",
+    "de.clip.um_model_rep_zehn",
+    "de.clip.um_model_price",
+    "de.clip.um_model_children",
+    "de.clip.um_model_time",
+    "de.clip.um_model_rep_halb",
+    "de.clip.um_model_day",
+    "de.clip.um_model_age",
+    "de.clip.un_model_rep_gross",
+    "de.clip.un_model_house",
+    "de.clip.un_model_cat",
+    "de.clip.un_model_car",
+    "de.clip.un_model_phone",
+    "de.clip.un_model_rep_neu",
+    "de.clip.ix_hallo_wie_gehts_miss",
+    "de.clip.ix_hallo_wie_gehts_0",
+    "de.clip.ix_hallo_wie_gehts_0_s",
+    "de.clip.ix_hallo_wie_gehts_1",
+    "de.clip.ix_hallo_wie_gehts_1_s",
+    "de.clip.ix_hallo_wie_gehts_end",
+    "de.clip.ix_kennenlernen_miss",
+    "de.clip.ix_kennenlernen_0",
+    "de.clip.ix_kennenlernen_0_s",
+    "de.clip.ix_kennenlernen_1",
+    "de.clip.ix_kennenlernen_1_s",
+    "de.clip.ix_kennenlernen_end",
+    "de.clip.ix_baeckerei_miss",
+    "de.clip.ix_baeckerei_0",
+    "de.clip.ix_baeckerei_0_s",
+    "de.clip.ix_baeckerei_1",
+    "de.clip.ix_baeckerei_1_s",
+    "de.clip.ix_baeckerei_2",
+    "de.clip.ix_baeckerei_2_s",
+    "de.clip.ix_baeckerei_end",
+    "de.clip.ix_geschaeft_preis_miss",
+    "de.clip.ix_geschaeft_preis_0",
+    "de.clip.ix_geschaeft_preis_0_s",
+    "de.clip.ix_geschaeft_preis_1",
+    "de.clip.ix_geschaeft_preis_1_s",
+    "de.clip.ix_geschaeft_preis_end",
+    "de.clip.ix_wo_bahnhof_miss",
+    "de.clip.ix_wo_bahnhof_0",
+    "de.clip.ix_wo_bahnhof_0_s",
+    "de.clip.ix_wo_bahnhof_1",
+    "de.clip.ix_wo_bahnhof_1_s",
+    "de.clip.ix_wo_bahnhof_end",
+    "de.clip.ix_wo_hotel_miss",
+    "de.clip.ix_wo_hotel_0",
+    "de.clip.ix_wo_hotel_0_s",
+    "de.clip.ix_wo_hotel_1",
+    "de.clip.ix_wo_hotel_1_s",
+    "de.clip.ix_wo_hotel_end",
+    "de.clip.ix_plaene_miss",
+    "de.clip.ix_plaene_0",
+    "de.clip.ix_plaene_0_s",
+    "de.clip.ix_plaene_1",
+    "de.clip.ix_plaene_1_s",
+    "de.clip.ix_plaene_end",
+    "de.clip.ix_krankmeldung_miss",
+    "de.clip.ix_krankmeldung_0",
+    "de.clip.ix_krankmeldung_0_s",
+    "de.clip.ix_krankmeldung_1",
+    "de.clip.ix_krankmeldung_1_s",
+    "de.clip.ix_krankmeldung_end",
+    "de.clip.cp3_bahnhof",
+    "de.clip.cp3_kaese",
+    "de.clip.cp3_dikt_nacht",
+    "de.clip.cp3_preis",
+    "de.clip.cp3_kurs",
+    "de.clip.cp3_party",
+    "de.clip.cp3_gleis",
+    "de.clip.cp3_laden",
+    "de.clip.cp3_buch",
+    "de.clip.cp3_dikt_zug",
+    "de.clip.cp3_dlg_tee",
+    "de.clip.cp3_dlg_wohnen",
+    "de.clip.cp3_dlg_kino",
+    "de.clip.ix_cp_kurs_miss",
+    "de.clip.ix_cp_kurs_0",
+    "de.clip.ix_cp_kurs_0_s",
+    "de.clip.ix_cp_kurs_1",
+    "de.clip.ix_cp_kurs_1_s",
+    "de.clip.ix_cp_kurs_end",
+    "de.clip.ix_cp_nachbarin_miss",
+    "de.clip.ix_cp_nachbarin_0",
+    "de.clip.ix_cp_nachbarin_0_s",
+    "de.clip.ix_cp_nachbarin_1",
+    "de.clip.ix_cp_nachbarin_1_s",
+    "de.clip.ix_cp_nachbarin_end",
+    "de.clip.ix_cp_party_miss",
+    "de.clip.ix_cp_party_0",
+    "de.clip.ix_cp_party_0_s",
+    "de.clip.ix_cp_party_1",
+    "de.clip.ix_cp_party_1_s",
+    "de.clip.ix_cp_party_end",
+    "de.clip.ix_cp_cafe_miss",
+    "de.clip.ix_cp_cafe_0",
+    "de.clip.ix_cp_cafe_0_s",
+    "de.clip.ix_cp_cafe_1",
+    "de.clip.ix_cp_cafe_1_s",
+    "de.clip.ix_cp_cafe_end",
+    "de.clip.ix_cp_fahrkarte_miss",
+    "de.clip.ix_cp_fahrkarte_0",
+    "de.clip.ix_cp_fahrkarte_0_s",
+    "de.clip.ix_cp_fahrkarte_1",
+    "de.clip.ix_cp_fahrkarte_1_s",
+    "de.clip.ix_cp_fahrkarte_end",
+    "de.clip.ix_cp_apotheke_miss",
+    "de.clip.ix_cp_apotheke_0",
+    "de.clip.ix_cp_apotheke_0_s",
+    "de.clip.ix_cp_apotheke_1",
+    "de.clip.ix_cp_apotheke_1_s",
+    "de.clip.ix_cp_apotheke_end",
+    "de.clip.a1cap_museum",
+    "de.clip.a1cap_bus",
+    "de.clip.a1cap_apotheke",
+    "de.clip.a1cap_preis",
+    "de.clip.ix_a1cap_nachbar_miss",
+    "de.clip.ix_a1cap_nachbar_0",
+    "de.clip.ix_a1cap_nachbar_0_s",
+    "de.clip.ix_a1cap_nachbar_1",
+    "de.clip.ix_a1cap_nachbar_1_s",
+    "de.clip.ix_a1cap_nachbar_end",
+    "de.clip.ix_a1cap_telefon_miss",
+    "de.clip.ix_a1cap_telefon_0",
+    "de.clip.ix_a1cap_telefon_0_s",
+    "de.clip.ix_a1cap_telefon_1",
+    "de.clip.ix_a1cap_telefon_1_s",
+    "de.clip.ix_a1cap_telefon_end",
+    "de.clip.ix_a1cap_julia_miss",
+    "de.clip.ix_a1cap_julia_0",
+    "de.clip.ix_a1cap_julia_0_s",
+    "de.clip.ix_a1cap_julia_1",
+    "de.clip.ix_a1cap_julia_1_s",
+    "de.clip.ix_a1cap_julia_end",
+    "de.clip.ix_a1cap_arzt_miss",
+    "de.clip.ix_a1cap_arzt_0",
+    "de.clip.ix_a1cap_arzt_0_s",
+    "de.clip.ix_a1cap_arzt_1",
+    "de.clip.ix_a1cap_arzt_1_s",
+    "de.clip.ix_a1cap_arzt_end",
+    "de.clip.pl_milch",
+    "de.clip.pl_durchsage",
+    "de.clip.pl_kasse",
+    "de.clip.goethe_a_h1_01",
+    "de.clip.goethe_a_h1_02",
+    "de.clip.goethe_a_h1_03",
+    "de.clip.goethe_a_h1_04",
+    "de.clip.goethe_a_h1_05",
+    "de.clip.goethe_a_h1_06",
+    "de.clip.goethe_a_h2_01",
+    "de.clip.goethe_a_h2_02",
+    "de.clip.goethe_a_h2_03",
+    "de.clip.goethe_a_h2_04",
+    "de.clip.goethe_a_h3_01",
+    "de.clip.goethe_a_h3_02",
+    "de.clip.goethe_a_h3_03",
+    "de.clip.goethe_a_h3_04",
+    "de.clip.goethe_a_h3_05",
+    "de.clip.goethe_b_h1_01",
+    "de.clip.goethe_b_h1_02",
+    "de.clip.goethe_b_h1_03",
+    "de.clip.goethe_b_h1_04",
+    "de.clip.goethe_b_h1_05",
+    "de.clip.goethe_b_h1_06",
+    "de.clip.goethe_b_h2_01",
+    "de.clip.goethe_b_h2_02",
+    "de.clip.goethe_b_h2_03",
+    "de.clip.goethe_b_h2_04",
+    "de.clip.goethe_b_h3_01",
+    "de.clip.goethe_b_h3_02",
+    "de.clip.goethe_b_h3_03",
+    "de.clip.goethe_b_h3_04",
+    "de.clip.goethe_b_h3_05",
+    "de.clip.ix_goethe_a_thema_miss",
+    "de.clip.ix_goethe_a_thema_0",
+    "de.clip.ix_goethe_a_thema_0_s",
+    "de.clip.ix_goethe_a_thema_1",
+    "de.clip.ix_goethe_a_thema_1_s",
+    "de.clip.ix_goethe_a_thema_end",
+    "de.clip.ix_goethe_b_thema_miss",
+    "de.clip.ix_goethe_b_thema_0",
+    "de.clip.ix_goethe_b_thema_0_s",
+    "de.clip.ix_goethe_b_thema_1",
+    "de.clip.ix_goethe_b_thema_1_s",
+    "de.clip.ix_goethe_b_thema_end",
+    "de.clip.ix_goethe_a_bitte_miss",
+    "de.clip.ix_goethe_a_bitte_0",
+    "de.clip.ix_goethe_a_bitte_0_s",
+    "de.clip.ix_goethe_a_bitte_1",
+    "de.clip.ix_goethe_a_bitte_1_s",
+    "de.clip.ix_goethe_a_bitte_end",
+    "de.clip.ix_goethe_b_bitte_miss",
+    "de.clip.ix_goethe_b_bitte_0",
+    "de.clip.ix_goethe_b_bitte_0_s",
+    "de.clip.ix_goethe_b_bitte_1",
+    "de.clip.ix_goethe_b_bitte_1_s",
+    "de.clip.ix_goethe_b_bitte_end"
+  ],
+  "byId": {
+    "de.clip.uf_morgen": {
+      "id": "de.clip.uf_morgen",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "der Morgen"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:morgen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bc300e2f5f4dec7fa636",
+      "durationSec": null
+    },
+    "de.clip.uf_abend": {
+      "id": "de.clip.uf_abend",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "der Abend"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:abend"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "35e2669693b52da2dc99",
+      "durationSec": null
+    },
+    "de.clip.uf_wasser": {
+      "id": "de.clip.uf_wasser",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "das Wasser"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:wasser"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6fa4e35477fa424848cf",
+      "durationSec": null
+    },
+    "de.clip.uf_zeit": {
+      "id": "de.clip.uf_zeit",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "die Zeit"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:zeit"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "01b2e184e5b7acd17fe8",
+      "durationSec": null
+    },
+    "de.clip.uf_vater": {
+      "id": "de.clip.uf_vater",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "der Vater"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:vater"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "eb2fd7a1ab16654cd696",
+      "durationSec": null
+    },
+    "de.clip.uf_nacht": {
+      "id": "de.clip.uf_nacht",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "die Nacht"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:nacht"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a058202d2b3a47595981",
+      "durationSec": null
+    },
+    "de.clip.uf_guten_morgen": {
+      "id": "de.clip.uf_guten_morgen",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Morgen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:morgen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5a4a43356540d9595de6",
+      "durationSec": null
+    },
+    "de.clip.uf_guten_abend": {
+      "id": "de.clip.uf_guten_abend",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Abend!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:abend"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "08b20169e621c2219134",
+      "durationSec": null
+    },
+    "de.clip.uf_gute_nacht": {
+      "id": "de.clip.uf_gute_nacht",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gute Nacht!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:nacht"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "39cc8a4b5b0be8a906bf",
+      "durationSec": null
+    },
+    "de.clip.uf_keine_zeit": {
+      "id": "de.clip.uf_keine_zeit",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich habe keine Zeit."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:haben",
+        "de:w:zeit"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2a251160c85888af779b",
+      "durationSec": null
+    },
+    "de.clip.uh_zug_berlin": {
+      "id": "de.clip.uh_zug_berlin",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Zug nach Berlin fährt um acht Uhr von Gleis zwei."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements",
+        "de.obj.listening.short_info",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:zug",
+        "de:w:fahren",
+        "de:w:uhr",
+        "de:w:gleis"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e245844373fffb9c7dcd",
+      "durationSec": null
+    },
+    "de.clip.uh_verspaetung": {
+      "id": "de.clip.uh_verspaetung",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Achtung: Der Zug aus Hamburg kommt zehn Minuten später."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements",
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:achtung",
+        "de:w:zug",
+        "de:w:kommen",
+        "de:w:spater"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e4518c2a14fde64fe656",
+      "durationSec": null
+    },
+    "de.clip.uh_geschaeft": {
+      "id": "de.clip.uh_geschaeft",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Geschäft schließt in fünf Minuten. Bitte kommen Sie zur Kasse."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements",
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:geschaft",
+        "de:w:schlie-en",
+        "de:w:bitte",
+        "de:w:kommen",
+        "de:w:kasse"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7bf23f9ecb3fabd36237",
+      "durationSec": null
+    },
+    "de.clip.uh_bus_sieben": {
+      "id": "de.clip.uh_bus_sieben",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Bus Nummer sieben kommt in drei Minuten."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements",
+        "de.obj.listening.short_info",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:bus",
+        "de:w:nummer",
+        "de:w:kommen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ddb58f41c18e1c654d06",
+      "durationSec": null
+    },
+    "de.clip.uh_warten": {
+      "id": "de.clip.uh_warten",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bitte warten Sie hier."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:bitte",
+        "de:w:warten",
+        "de:w:hier"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c96d79855afb8f06e88c",
+      "durationSec": null
+    },
+    "de.clip.uh_geradeaus": {
+      "id": "de.clip.uh_geradeaus",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gehen Sie geradeaus und dann links."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:gehen",
+        "de:w:geradeaus",
+        "de:w:dann",
+        "de:w:links"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "661e90b310946e4155c4",
+      "durationSec": null
+    },
+    "de.clip.uh_kasse": {
+      "id": "de.clip.uh_kasse",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bitte bezahlen Sie an der Kasse."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:bitte",
+        "de:w:bezahlen",
+        "de:w:kasse"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "86155c9a003b8b5af6d3",
+      "durationSec": null
+    },
+    "de.clip.uh_kaffee_preis": {
+      "id": "de.clip.uh_kaffee_preis",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Kaffee kostet zwei Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:kaffee",
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "640b3a83c834b413c474",
+      "durationSec": null
+    },
+    "de.clip.uh_ticket_preis": {
+      "id": "de.clip.uh_ticket_preis",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Ticket kostet zwanzig Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:ticket",
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bc34f68fe22d68fb1ad8",
+      "durationSec": null
+    },
+    "de.clip.uh_brot_preis": {
+      "id": "de.clip.uh_brot_preis",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Brot kostet drei Euro fünfzig."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:brot",
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "61763ac30e6613f9f85a",
+      "durationSec": null
+    },
+    "de.clip.ui_baeckerei": {
+      "id": "de.clip.ui_baeckerei",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Morgen! Was möchten Sie?"
+        },
+        {
+          "speaker": "B",
+          "text": "Zwei Brötchen und einen Kaffee, bitte."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:morgen",
+        "de:w:brotchen",
+        "de:w:kaffee",
+        "de:w:bitte"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b26e023c01352a8d6e8c",
+      "durationSec": null
+    },
+    "de.clip.ui_fahrkarte": {
+      "id": "de.clip.ui_fahrkarte",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Eine Fahrkarte nach München, bitte."
+        },
+        {
+          "speaker": "B",
+          "text": "Einfach oder hin und zurück?"
+        },
+        {
+          "speaker": "A",
+          "text": "Einfach, bitte."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:fahrkarte",
+        "de:w:bitte",
+        "de:w:einfach",
+        "de:w:hin",
+        "de:w:zuruck"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "93ca14401423a5586a43",
+      "durationSec": null
+    },
+    "de.clip.ui_bezahlen": {
+      "id": "de.clip.ui_bezahlen",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das macht vier Euro."
+        },
+        {
+          "speaker": "B",
+          "text": "Kann ich mit Karte bezahlen?"
+        },
+        {
+          "speaker": "A",
+          "text": "Ja, natürlich."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:machen",
+        "de:w:euro",
+        "de:w:karte",
+        "de:w:bezahlen",
+        "de:w:ja",
+        "de:w:naturlich"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ebc299a341ad090af9b0",
+      "durationSec": null
+    },
+    "de.clip.ui_uhrzeit": {
+      "id": "de.clip.ui_uhrzeit",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Entschuldigung, wie spät ist es?"
+        },
+        {
+          "speaker": "A",
+          "text": "Es ist halb drei."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:entschuldigung",
+        "de:w:spat",
+        "de:w:sein",
+        "de:w:halb"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7ed40baf3b999a94a51a",
+      "durationSec": null
+    },
+    "de.clip.ui_brot_milch": {
+      "id": "de.clip.ui_brot_milch",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kaufst du Brot?"
+        },
+        {
+          "speaker": "B",
+          "text": "Ja, und Milch."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:brot",
+        "de:w:ja",
+        "de:w:milch"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d2fcc82295599384aa84",
+      "durationSec": null
+    },
+    "de.clip.ui_zug_wann": {
+      "id": "de.clip.ui_zug_wann",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Wann kommt der Zug?"
+        },
+        {
+          "speaker": "A",
+          "text": "Um zehn Uhr."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues",
+        "de.obj.numbers.0_100"
+      ],
+      "lexemeRefs": [
+        "de:w:wann",
+        "de:w:kommen",
+        "de:w:zug",
+        "de:w:uhr"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fe4da19e3cff53d942c9",
+      "durationSec": null
+    },
+    "de.clip.uj_mia": {
+      "id": "de.clip.uj_mia",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Mia fährt am Montag mit dem Bus zur Arbeit."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:fahren",
+        "de:w:montag",
+        "de:w:bus",
+        "de:w:arbeit"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6b685027dd559ecbaf9a",
+      "durationSec": null
+    },
+    "de.clip.uj_jonas": {
+      "id": "de.clip.uj_jonas",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Am Samstag trinkt Jonas Kaffee und isst ein Brot."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:samstag",
+        "de:w:trinken",
+        "de:w:kaffee",
+        "de:w:essen",
+        "de:w:brot"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f56933ef589bb108917e",
+      "durationSec": null
+    },
+    "de.clip.uj_bahnhof": {
+      "id": "de.clip.uj_bahnhof",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "B",
+          "text": "Am Bahnhof kauft eine Frau ein Ticket."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:bahnhof",
+        "de:w:kaufen",
+        "de:w:frau",
+        "de:w:ticket"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a6c6eabbc88924122d51",
+      "durationSec": null
+    },
+    "de.clip.uj_sonntag": {
+      "id": "de.clip.uj_sonntag",
+      "kind": "factual",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Am Sonntag ist die Familie zusammen im Park."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sonntag",
+        "de:w:sein",
+        "de:w:familie",
+        "de:w:zusammen",
+        "de:w:park"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "28291391807b4046cc56",
+      "durationSec": null
+    },
+    "de.clip.uk_model_rep_hallo": {
+      "id": "de.clip.uk_model_rep_hallo",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:hallo"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e92f4efd74355a4492f6",
+      "durationSec": null
+    },
+    "de.clip.uk_model_greet_morning": {
+      "id": "de.clip.uk_model_greet_morning",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Morgen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:morgen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5a4a43356540d9595de6",
+      "durationSec": null
+    },
+    "de.clip.uk_model_rep_danke": {
+      "id": "de.clip.uk_model_rep_danke",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Danke schön!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:danke",
+        "de:w:schon-adjective"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "16e12449253295d9c730",
+      "durationSec": null
+    },
+    "de.clip.uk_model_thank": {
+      "id": "de.clip.uk_model_thank",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Danke!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:danke"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7a4e5f1458158e3def01",
+      "durationSec": null
+    },
+    "de.clip.uk_model_rep_abend": {
+      "id": "de.clip.uk_model_rep_abend",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Abend!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:abend"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "08b20169e621c2219134",
+      "durationSec": null
+    },
+    "de.clip.uk_model_greet_evening": {
+      "id": "de.clip.uk_model_greet_evening",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Abend!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:abend"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "08b20169e621c2219134",
+      "durationSec": null
+    },
+    "de.clip.uk_model_bye": {
+      "id": "de.clip.uk_model_bye",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Tschüss!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:tschuss"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "389bb8b83c6b70dbd410",
+      "durationSec": null
+    },
+    "de.clip.uk_model_rep_entschuldigung": {
+      "id": "de.clip.uk_model_rep_entschuldigung",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Entschuldigung!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:entschuldigung"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cad5e70eee4567f85731",
+      "durationSec": null
+    },
+    "de.clip.uk_model_excuse": {
+      "id": "de.clip.uk_model_excuse",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Entschuldigung!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "de:w:entschuldigung"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cad5e70eee4567f85731",
+      "durationSec": null
+    },
+    "de.clip.ul_model_rep_name": {
+      "id": "de.clip.ul_model_rep_name",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich heiße Minh."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:hei-en"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dbdd02e261dde3d09b88",
+      "durationSec": null
+    },
+    "de.clip.ul_model_name": {
+      "id": "de.clip.ul_model_name",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich heiße Minh."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:hei-en"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dbdd02e261dde3d09b88",
+      "durationSec": null
+    },
+    "de.clip.ul_model_rep_from": {
+      "id": "de.clip.ul_model_rep_from",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich komme aus Vietnam."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:kommen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cf01bcfc445bb936af94",
+      "durationSec": null
+    },
+    "de.clip.ul_model_from": {
+      "id": "de.clip.ul_model_from",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich komme aus Vietnam."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:kommen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cf01bcfc445bb936af94",
+      "durationSec": null
+    },
+    "de.clip.ul_model_live": {
+      "id": "de.clip.ul_model_live",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich wohne in Berlin."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:wohnen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b3d91639d8432dae4cac",
+      "durationSec": null
+    },
+    "de.clip.ul_model_speak": {
+      "id": "de.clip.ul_model_speak",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich spreche Vietnamesisch und Deutsch."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:sprechen",
+        "de:w:deutsch"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1a11ea4cc7a1a3037b47",
+      "durationSec": null
+    },
+    "de.clip.ul_model_work": {
+      "id": "de.clip.ul_model_work",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich arbeite in einem Hotel."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:arbeiten",
+        "de:w:hotel"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c6973753dba42caee91c",
+      "durationSec": null
+    },
+    "de.clip.ul_model_like": {
+      "id": "de.clip.ul_model_like",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich trinke gern Kaffee."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.self_intro"
+      ],
+      "lexemeRefs": [
+        "de:w:trinken",
+        "de:w:gern",
+        "de:w:kaffee"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "126bf1f391072bfe1055",
+      "durationSec": null
+    },
+    "de.clip.um_model_rep_zehn": {
+      "id": "de.clip.um_model_rep_zehn",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das kostet zehn Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6314c60e2a313d2c146a",
+      "durationSec": null
+    },
+    "de.clip.um_model_price": {
+      "id": "de.clip.um_model_price",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das kostet drei Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:kosten",
+        "de:w:euro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "77efd4786ddeb3210d60",
+      "durationSec": null
+    },
+    "de.clip.um_model_children": {
+      "id": "de.clip.um_model_children",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich habe zwei Kinder."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:haben"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "276f7d35cedb57d3f26a",
+      "durationSec": null
+    },
+    "de.clip.um_model_time": {
+      "id": "de.clip.um_model_time",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Es ist acht Uhr."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sein",
+        "de:w:uhr"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "23e0af370fe0be1a6eb1",
+      "durationSec": null
+    },
+    "de.clip.um_model_rep_halb": {
+      "id": "de.clip.um_model_rep_halb",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Es ist halb drei."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sein",
+        "de:w:halb"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "38640f0162a5d0666ca1",
+      "durationSec": null
+    },
+    "de.clip.um_model_day": {
+      "id": "de.clip.um_model_day",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Heute ist Montag."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:heute",
+        "de:w:sein",
+        "de:w:montag"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6f30ebbf90490c52ef85",
+      "durationSec": null
+    },
+    "de.clip.um_model_age": {
+      "id": "de.clip.um_model_age",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich bin zwanzig Jahre alt."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sein",
+        "de:w:alt"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1c5c0b6a17dcdd2fce6b",
+      "durationSec": null
+    },
+    "de.clip.un_model_rep_gross": {
+      "id": "de.clip.un_model_rep_gross",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Haus ist groß."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:haus",
+        "de:w:sein",
+        "de:w:gro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "45259f0254deff045c36",
+      "durationSec": null
+    },
+    "de.clip.un_model_house": {
+      "id": "de.clip.un_model_house",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Haus ist groß."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:haus",
+        "de:w:sein",
+        "de:w:gro"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "45259f0254deff045c36",
+      "durationSec": null
+    },
+    "de.clip.un_model_cat": {
+      "id": "de.clip.un_model_cat",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Die Katze ist klein."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:katze",
+        "de:w:sein",
+        "de:w:klein"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a1811a1db24115118f73",
+      "durationSec": null
+    },
+    "de.clip.un_model_car": {
+      "id": "de.clip.un_model_car",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Auto ist alt."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:auto",
+        "de:w:sein",
+        "de:w:alt"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "73e588f66c9a58c0c194",
+      "durationSec": null
+    },
+    "de.clip.un_model_phone": {
+      "id": "de.clip.un_model_phone",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Handy ist neu."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:handy",
+        "de:w:sein",
+        "de:w:neu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5c31192be595f0abe569",
+      "durationSec": null
+    },
+    "de.clip.un_model_rep_neu": {
+      "id": "de.clip.un_model_rep_neu",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Handy ist neu."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "de:w:handy",
+        "de:w:sein",
+        "de:w:neu"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5c31192be595f0abe569",
+      "durationSec": null
+    },
+    "de.clip.ix_hallo_wie_gehts_miss": {
+      "id": "de.clip.ix_hallo_wie_gehts_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem! Bis zum nächsten Mal."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d126674e637bdb45882d",
+      "durationSec": null
+    },
+    "de.clip.ix_hallo_wie_gehts_0": {
+      "id": "de.clip.ix_hallo_wie_gehts_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo! Wie geht's?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "693a10aeb9a16aad10db",
+      "durationSec": null
+    },
+    "de.clip.ix_hallo_wie_gehts_0_s": {
+      "id": "de.clip.ix_hallo_wie_gehts_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo! Wie geht es dir?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "35de60b74b35421c580f",
+      "durationSec": null
+    },
+    "de.clip.ix_hallo_wie_gehts_1": {
+      "id": "de.clip.ix_hallo_wie_gehts_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Schön! Ich muss jetzt los. Tschüss!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "48d4e9c87bfbddfd61b9",
+      "durationSec": null
+    },
+    "de.clip.ix_hallo_wie_gehts_1_s": {
+      "id": "de.clip.ix_hallo_wie_gehts_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Tschüss!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "389bb8b83c6b70dbd410",
+      "durationSec": null
+    },
+    "de.clip.ix_hallo_wie_gehts_end": {
+      "id": "de.clip.ix_hallo_wie_gehts_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bis bald!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8c05285ffb6d163f1324",
+      "durationSec": null
+    },
+    "de.clip.ix_kennenlernen_miss": {
+      "id": "de.clip.ix_kennenlernen_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Bis später!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "20b1e02e3ea312b9bd6f",
+      "durationSec": null
+    },
+    "de.clip.ix_kennenlernen_0": {
+      "id": "de.clip.ix_kennenlernen_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Tag! Wie heißen Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "36359b364b432d7b8b81",
+      "durationSec": null
+    },
+    "de.clip.ix_kennenlernen_0_s": {
+      "id": "de.clip.ix_kennenlernen_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie ist Ihr Name?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "856dd08df37c10cec0f8",
+      "durationSec": null
+    },
+    "de.clip.ix_kennenlernen_1": {
+      "id": "de.clip.ix_kennenlernen_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Woher kommen Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "513d3b559f2dc53766da",
+      "durationSec": null
+    },
+    "de.clip.ix_kennenlernen_1_s": {
+      "id": "de.clip.ix_kennenlernen_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Aus welchem Land kommen Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "509ec5a42dbf37a58240",
+      "durationSec": null
+    },
+    "de.clip.ix_kennenlernen_end": {
+      "id": "de.clip.ix_kennenlernen_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Herzlich willkommen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e1c72891d9156aef0840",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_miss": {
+      "id": "de.clip.ix_baeckerei_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_0": {
+      "id": "de.clip.ix_baeckerei_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Morgen! Was möchten Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "800495f7062963b2b49b",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_0_s": {
+      "id": "de.clip.ix_baeckerei_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was darf es sein?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f235edf3bab4d33ffed8",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_1": {
+      "id": "de.clip.ix_baeckerei_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Sonst noch etwas?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9de7eeb435eed6634dfe",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_1_s": {
+      "id": "de.clip.ix_baeckerei_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Möchten Sie noch etwas?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3964a844dff3dc9d63ac",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_2": {
+      "id": "de.clip.ix_baeckerei_2",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das macht vier Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b2747e1e4524cea74795",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_2_s": {
+      "id": "de.clip.ix_baeckerei_2_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Vier Euro, bitte."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4b115adf2af763da6f2a",
+      "durationSec": null
+    },
+    "de.clip.ix_baeckerei_end": {
+      "id": "de.clip.ix_baeckerei_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Danke schön! Einen schönen Tag!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2bc132739ac795f9284c",
+      "durationSec": null
+    },
+    "de.clip.ix_geschaeft_preis_miss": {
+      "id": "de.clip.ix_geschaeft_preis_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_geschaeft_preis_0": {
+      "id": "de.clip.ix_geschaeft_preis_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Tag! Kann ich Ihnen helfen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "86420c16b23f43353793",
+      "durationSec": null
+    },
+    "de.clip.ix_geschaeft_preis_0_s": {
+      "id": "de.clip.ix_geschaeft_preis_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Suchen Sie etwas?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6960b45a2a8f7f011375",
+      "durationSec": null
+    },
+    "de.clip.ix_geschaeft_preis_1": {
+      "id": "de.clip.ix_geschaeft_preis_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Die Tasche kostet zwanzig Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "381057f2b45f9eb7bb49",
+      "durationSec": null
+    },
+    "de.clip.ix_geschaeft_preis_1_s": {
+      "id": "de.clip.ix_geschaeft_preis_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Zwanzig Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a2372b2600c7650d7b6a",
+      "durationSec": null
+    },
+    "de.clip.ix_geschaeft_preis_end": {
+      "id": "de.clip.ix_geschaeft_preis_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Vielen Dank! Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b278708b1c306742ce34",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_bahnhof_miss": {
+      "id": "de.clip.ix_wo_bahnhof_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_bahnhof_0": {
+      "id": "de.clip.ix_wo_bahnhof_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ja, bitte?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "fe55093541098f547743",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_bahnhof_0_s": {
+      "id": "de.clip.ix_wo_bahnhof_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kann ich Ihnen helfen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5b0491bf5ea2d274ba72",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_bahnhof_1": {
+      "id": "de.clip.ix_wo_bahnhof_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gehen Sie geradeaus und dann links."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "661e90b310946e4155c4",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_bahnhof_1_s": {
+      "id": "de.clip.ix_wo_bahnhof_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Geradeaus, dann links."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "344ec0b48e709b2ea813",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_bahnhof_end": {
+      "id": "de.clip.ix_wo_bahnhof_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bitte schön! Gute Reise!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "743e635731302e148d28",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_hotel_miss": {
+      "id": "de.clip.ix_wo_hotel_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Gute Nacht!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bd816cdad5aab185efc4",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_hotel_0": {
+      "id": "de.clip.ix_wo_hotel_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Abend! Wie kann ich Ihnen helfen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b408c21bff9b23c778c6",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_hotel_0_s": {
+      "id": "de.clip.ix_wo_hotel_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was suchen Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b2073131f013ae9d42cf",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_hotel_1": {
+      "id": "de.clip.ix_wo_hotel_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Hotel ist in der Bahnhofstraße, nur fünf Minuten von hier."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "032bab0d4797ffb9b97e",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_hotel_1_s": {
+      "id": "de.clip.ix_wo_hotel_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "In der Bahnhofstraße."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f1a42a52fe1dc3886e85",
+      "durationSec": null
+    },
+    "de.clip.ix_wo_hotel_end": {
+      "id": "de.clip.ix_wo_hotel_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gern geschehen! Gute Nacht!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "53ee2447360122f17015",
+      "durationSec": null
+    },
+    "de.clip.ix_plaene_miss": {
+      "id": "de.clip.ix_plaene_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Ein anderes Mal!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "399b9ecc5f24b252de3f",
+      "durationSec": null
+    },
+    "de.clip.ix_plaene_0": {
+      "id": "de.clip.ix_plaene_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hast du am Samstag Zeit?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5c37a6b30145974a1a21",
+      "durationSec": null
+    },
+    "de.clip.ix_plaene_0_s": {
+      "id": "de.clip.ix_plaene_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kannst du am Samstag?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0e1aa3a2b8a376b71a0d",
+      "durationSec": null
+    },
+    "de.clip.ix_plaene_1": {
+      "id": "de.clip.ix_plaene_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Super! Wann treffen wir uns?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "68a3a6caa54a1ad4fd40",
+      "durationSec": null
+    },
+    "de.clip.ix_plaene_1_s": {
+      "id": "de.clip.ix_plaene_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Um wie viel Uhr?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "35972219a3539d805390",
+      "durationSec": null
+    },
+    "de.clip.ix_plaene_end": {
+      "id": "de.clip.ix_plaene_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Toll, bis Samstag!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0312f589df255fadd769",
+      "durationSec": null
+    },
+    "de.clip.ix_krankmeldung_miss": {
+      "id": "de.clip.ix_krankmeldung_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Gute Besserung!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "291f4dfb935ea56e37ce",
+      "durationSec": null
+    },
+    "de.clip.ix_krankmeldung_0": {
+      "id": "de.clip.ix_krankmeldung_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Firma Müller, guten Morgen."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ac54c8bf620b146248af",
+      "durationSec": null
+    },
+    "de.clip.ix_krankmeldung_0_s": {
+      "id": "de.clip.ix_krankmeldung_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hier ist die Firma Müller."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ced8c0a02a76379edaf7",
+      "durationSec": null
+    },
+    "de.clip.ix_krankmeldung_1": {
+      "id": "de.clip.ix_krankmeldung_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Oh, das tut mir leid. Kommen Sie heute nicht?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "19b1b75761134b96804d",
+      "durationSec": null
+    },
+    "de.clip.ix_krankmeldung_1_s": {
+      "id": "de.clip.ix_krankmeldung_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kommen Sie heute?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "523ce40cd05096abd3f4",
+      "durationSec": null
+    },
+    "de.clip.ix_krankmeldung_end": {
+      "id": "de.clip.ix_krankmeldung_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gute Besserung!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "caacacfd6930f4d37f29",
+      "durationSec": null
+    },
+    "de.clip.cp3_bahnhof": {
+      "id": "de.clip.cp3_bahnhof",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "der Bahnhof"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:bahnhof"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6614c20730f42ec27de0",
+      "durationSec": null
+    },
+    "de.clip.cp3_kaese": {
+      "id": "de.clip.cp3_kaese",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "der Käse"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:kase"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dd091fd04ccc6bc72344",
+      "durationSec": null
+    },
+    "de.clip.cp3_dikt_nacht": {
+      "id": "de.clip.cp3_dikt_nacht",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "die Nacht"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:nacht"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a058202d2b3a47595981",
+      "durationSec": null
+    },
+    "de.clip.cp3_preis": {
+      "id": "de.clip.cp3_preis",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Kaffee kostet drei Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:kaffee"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6c5c1a2db8a8309a2122",
+      "durationSec": null
+    },
+    "de.clip.cp3_kurs": {
+      "id": "de.clip.cp3_kurs",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Deutschkurs beginnt um neun Uhr."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:uhr"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0515c8b55bdbc1e50ba0",
+      "durationSec": null
+    },
+    "de.clip.cp3_party": {
+      "id": "de.clip.cp3_party",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Die Party ist am Samstag, nicht am Freitag."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:samstag",
+        "de:w:freitag"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "74e797d195ce99c15ad6",
+      "durationSec": null
+    },
+    "de.clip.cp3_gleis": {
+      "id": "de.clip.cp3_gleis",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Achtung, bitte! Der Zug nach Berlin fährt heute von Gleis drei."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:zug"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0dfe8551f979dd51f36b",
+      "durationSec": null
+    },
+    "de.clip.cp3_laden": {
+      "id": "de.clip.cp3_laden",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Liebe Kunden, der Supermarkt schließt in zehn Minuten."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:schlie-en",
+        "de:w:minute"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d35d22302158d715361d",
+      "durationSec": null
+    },
+    "de.clip.cp3_buch": {
+      "id": "de.clip.cp3_buch",
+      "kind": "instruction",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Öffnen Sie bitte das Buch auf Seite zwanzig."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:offnen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "323bc508f016a1b1878b",
+      "durationSec": null
+    },
+    "de.clip.cp3_dikt_zug": {
+      "id": "de.clip.cp3_dikt_zug",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Zug kommt."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:zug",
+        "de:w:kommen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bddc69f9882a02acd17f",
+      "durationSec": null
+    },
+    "de.clip.cp3_dlg_tee": {
+      "id": "de.clip.cp3_dlg_tee",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Möchtest du einen Kaffee?"
+        },
+        {
+          "speaker": "B",
+          "text": "Nein, danke. Ich trinke lieber Tee."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:kaffee",
+        "de:w:tee"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0628069803321f265210",
+      "durationSec": null
+    },
+    "de.clip.cp3_dlg_wohnen": {
+      "id": "de.clip.cp3_dlg_wohnen",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wo wohnst du?"
+        },
+        {
+          "speaker": "B",
+          "text": "Ich wohne in Hamburg, aber ich komme aus Hanoi."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:wohnen",
+        "de:w:kommen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ca669cf92c017f1c0710",
+      "durationSec": null
+    },
+    "de.clip.cp3_dlg_kino": {
+      "id": "de.clip.cp3_dlg_kino",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gehen wir am Freitag ins Kino?"
+        },
+        {
+          "speaker": "B",
+          "text": "Am Freitag kann ich nicht. Am Sonntag?"
+        },
+        {
+          "speaker": "A",
+          "text": "Ja, gut!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:freitag",
+        "de:w:sonntag"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7240087b394d6f781a05",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_kurs_miss": {
+      "id": "de.clip.ix_cp_kurs_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Bis morgen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7bfe2092b688fcbb1dda",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_kurs_0": {
+      "id": "de.clip.ix_cp_kurs_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo! Ich bin Jonas. Und du?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2bf96e9f2ea4aa926b65",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_kurs_0_s": {
+      "id": "de.clip.ix_cp_kurs_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie heißt du?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b681bbcd828939be0fa9",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_kurs_1": {
+      "id": "de.clip.ix_cp_kurs_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Woher kommst du?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "827ac3f4edfd36c1c76d",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_kurs_1_s": {
+      "id": "de.clip.ix_cp_kurs_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Aus welchem Land kommst du?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9fb69a964b7a63bbb0ca",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_kurs_end": {
+      "id": "de.clip.ix_cp_kurs_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Cool! Bis morgen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "863720c5502d05f51fdc",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_nachbarin_miss": {
+      "id": "de.clip.ix_cp_nachbarin_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_nachbarin_0": {
+      "id": "de.clip.ix_cp_nachbarin_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Morgen! Wie geht es Ihnen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "aa0851b71a75c0ca7963",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_nachbarin_0_s": {
+      "id": "de.clip.ix_cp_nachbarin_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie geht es Ihnen heute?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8406e0c7b0302144e410",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_nachbarin_1": {
+      "id": "de.clip.ix_cp_nachbarin_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wohnen Sie schon lange hier?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "db38ddf2369fbb9ffecd",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_nachbarin_1_s": {
+      "id": "de.clip.ix_cp_nachbarin_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Seit wann wohnen Sie hier?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f5fadc4d97ec6521a7d6",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_nachbarin_end": {
+      "id": "de.clip.ix_cp_nachbarin_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Schön! Einen schönen Tag noch!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ae6c4b4d3d9c2bf56dec",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_party_miss": {
+      "id": "de.clip.ix_cp_party_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Bis bald!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0b57f8287a4908cd044",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_party_0": {
+      "id": "de.clip.ix_cp_party_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ich mache am Samstag eine Party. Kommst du?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8ca86649f383ad8d2cbc",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_party_0_s": {
+      "id": "de.clip.ix_cp_party_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kommst du am Samstag zu meiner Party?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "44f6d5542656ccc98a19",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_party_1": {
+      "id": "de.clip.ix_cp_party_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Super! Hast du noch eine Frage?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7fa01aaaa1bc21d63f6c",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_party_1_s": {
+      "id": "de.clip.ix_cp_party_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Möchtest du etwas wissen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b955c3595baf8368c508",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_party_end": {
+      "id": "de.clip.ix_cp_party_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Um acht Uhr. Bis Samstag!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4b7e0988f690f4f5432c",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_cafe_miss": {
+      "id": "de.clip.ix_cp_cafe_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_cafe_0": {
+      "id": "de.clip.ix_cp_cafe_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Tag! Was möchten Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1cb8e688403dd40f965f",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_cafe_0_s": {
+      "id": "de.clip.ix_cp_cafe_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was darf es sein?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f235edf3bab4d33ffed8",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_cafe_1": {
+      "id": "de.clip.ix_cp_cafe_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gern. Sonst noch etwas?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a563bb9a1cea370cdeb0",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_cafe_1_s": {
+      "id": "de.clip.ix_cp_cafe_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Möchten Sie noch etwas?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3964a844dff3dc9d63ac",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_cafe_end": {
+      "id": "de.clip.ix_cp_cafe_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Zwei Euro fünfzig, bitte. Danke!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9b8159e8d5166e154da0",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_fahrkarte_miss": {
+      "id": "de.clip.ix_cp_fahrkarte_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_fahrkarte_0": {
+      "id": "de.clip.ix_cp_fahrkarte_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Tag! Wohin möchten Sie fahren?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f75d166f33b270b9079d",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_fahrkarte_0_s": {
+      "id": "de.clip.ix_cp_fahrkarte_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wohin fahren Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7d9c7de460d88cf7babf",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_fahrkarte_1": {
+      "id": "de.clip.ix_cp_fahrkarte_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Einfach oder hin und zurück?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b3778090976d6c25e6bb",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_fahrkarte_1_s": {
+      "id": "de.clip.ix_cp_fahrkarte_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Nur hin oder auch zurück?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dc9aa52e2bba7f228c0a",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_fahrkarte_end": {
+      "id": "de.clip.ix_cp_fahrkarte_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das macht dreißig Euro. Gute Reise!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "29e9dc7bad4d828a6df8",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_apotheke_miss": {
+      "id": "de.clip.ix_cp_apotheke_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_apotheke_0": {
+      "id": "de.clip.ix_cp_apotheke_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ja, bitte? Kann ich Ihnen helfen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "033a1aa15cb7478720d4",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_apotheke_0_s": {
+      "id": "de.clip.ix_cp_apotheke_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Suchen Sie etwas?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6960b45a2a8f7f011375",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_apotheke_1": {
+      "id": "de.clip.ix_cp_apotheke_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Die Apotheke ist am Marktplatz, gleich links."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "29382b5f4031f0fb4f52",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_apotheke_1_s": {
+      "id": "de.clip.ix_cp_apotheke_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Am Marktplatz, links."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "57ece8490c41d7dc8889",
+      "durationSec": null
+    },
+    "de.clip.ix_cp_apotheke_end": {
+      "id": "de.clip.ix_cp_apotheke_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bitte schön!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "57a9c7b02cc821267b8e",
+      "durationSec": null
+    },
+    "de.clip.a1cap_museum": {
+      "id": "de.clip.a1cap_museum",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Das Museum ist von zehn bis achtzehn Uhr geöffnet."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:museum",
+        "de:w:uhr"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "8feb143526e2f7f7871b",
+      "durationSec": null
+    },
+    "de.clip.a1cap_bus": {
+      "id": "de.clip.a1cap_bus",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Bus Nummer zwölf kommt heute zwanzig Minuten später."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:bus",
+        "de:w:minute"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "76fedb10367d46933136",
+      "durationSec": null
+    },
+    "de.clip.a1cap_apotheke": {
+      "id": "de.clip.a1cap_apotheke",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Die Apotheke ist in der Goethestraße, neben der Post."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:stra-e",
+        "de:w:post"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "a4864cb5b304312ef594",
+      "durationSec": null
+    },
+    "de.clip.a1cap_preis": {
+      "id": "de.clip.a1cap_preis",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was kosten die Äpfel?"
+        },
+        {
+          "speaker": "B",
+          "text": "Ein Kilo kostet zwei Euro."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:apfel"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6d041571a1f729fa9916",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_nachbar_miss": {
+      "id": "de.clip.ix_a1cap_nachbar_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_nachbar_0": {
+      "id": "de.clip.ix_a1cap_nachbar_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Tag! Ich bin Herr Weber. Und wie heißen Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e9140fcbb2d4fed03b31",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_nachbar_0_s": {
+      "id": "de.clip.ix_a1cap_nachbar_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie ist Ihr Name?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "856dd08df37c10cec0f8",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_nachbar_1": {
+      "id": "de.clip.ix_a1cap_nachbar_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Und was machen Sie beruflich?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "79cfa527229c081ed4e1",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_nachbar_1_s": {
+      "id": "de.clip.ix_a1cap_nachbar_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wo arbeiten Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "57ade8717d4156ede345",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_nachbar_end": {
+      "id": "de.clip.ix_a1cap_nachbar_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Interessant! Auf gute Nachbarschaft!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2cf04849e782c0b3b20f",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_telefon_miss": {
+      "id": "de.clip.ix_a1cap_telefon_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Bis bald!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0b57f8287a4908cd044",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_telefon_0": {
+      "id": "de.clip.ix_a1cap_telefon_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo, hier ist Sara!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4bd2bbd96669f928e6e3",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_telefon_0_s": {
+      "id": "de.clip.ix_a1cap_telefon_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo, Sara hier!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3cfa452b2468d5372685",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_telefon_1": {
+      "id": "de.clip.ix_a1cap_telefon_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hast du morgen Zeit?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b3358f61655b3492a3de",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_telefon_1_s": {
+      "id": "de.clip.ix_a1cap_telefon_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kannst du morgen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "eb66313ebcb9a7d6b484",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_telefon_end": {
+      "id": "de.clip.ix_a1cap_telefon_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Super, bis morgen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0a3da48ceb6b00e3e824",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_julia_miss": {
+      "id": "de.clip.ix_a1cap_julia_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Ein anderes Mal!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "399b9ecc5f24b252de3f",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_julia_0": {
+      "id": "de.clip.ix_a1cap_julia_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hi! Was machst du gern am Wochenende?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e5d3108f1e8ddb07911b",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_julia_0_s": {
+      "id": "de.clip.ix_a1cap_julia_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was ist dein Hobby?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b56d245729d490dde2fb",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_julia_1": {
+      "id": "de.clip.ix_a1cap_julia_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Toll! Ich auch. Trinkst du einen Kaffee mit mir?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f3d4720f8ab8ccea6334",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_julia_1_s": {
+      "id": "de.clip.ix_a1cap_julia_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Möchtest du einen Kaffee?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dab8bf7c1b45eb0049eb",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_julia_end": {
+      "id": "de.clip.ix_a1cap_julia_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Super, komm mit!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0eb414f35a85ede631de",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_arzt_miss": {
+      "id": "de.clip.ix_a1cap_arzt_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Auf Wiedersehen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "c0c26390e2071a555b83",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_arzt_0": {
+      "id": "de.clip.ix_a1cap_arzt_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Praxis Dr. Klein, guten Tag."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9c5e3c517d2085f32eef",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_arzt_0_s": {
+      "id": "de.clip.ix_a1cap_arzt_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hier ist die Praxis Dr. Klein."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "2985388ab1c712bbe381",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_arzt_1": {
+      "id": "de.clip.ix_a1cap_arzt_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Geht es am Montag um zehn Uhr?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "cae41ade23b54c961c63",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_arzt_1_s": {
+      "id": "de.clip.ix_a1cap_arzt_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Montag, zehn Uhr — passt das?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dc726c7a1c3f39898f49",
+      "durationSec": null
+    },
+    "de.clip.ix_a1cap_arzt_end": {
+      "id": "de.clip.ix_a1cap_arzt_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gut, dann bis Montag!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9376eaa7eba0c4f37fb0",
+      "durationSec": null
+    },
+    "de.clip.pl_milch": {
+      "id": "de.clip.pl_milch",
+      "kind": "word_phrase",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "die Milch"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.familiar_words"
+      ],
+      "lexemeRefs": [
+        "de:w:milch"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "acb150589925d074fa6c",
+      "durationSec": null
+    },
+    "de.clip.pl_durchsage": {
+      "id": "de.clip.pl_durchsage",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Zug nach Köln fährt heute um zehn Uhr."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:zug",
+        "de:w:uhr"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7f35dc1f68588102ced8",
+      "durationSec": null
+    },
+    "de.clip.pl_kasse": {
+      "id": "de.clip.pl_kasse",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kasse drei ist jetzt geöffnet."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "bc085c619f41cdeb0355",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h1_01": {
+      "id": "de.clip.goethe_a_h1_01",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Entschuldigung, wann fährt der Bus nach Hamburg?"
+        },
+        {
+          "speaker": "B",
+          "text": "Um Viertel nach zehn. Also um 10 Uhr 15."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:bus"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "94c7d41698adbe14054b",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h1_02": {
+      "id": "de.clip.goethe_a_h1_02",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was möchtest du trinken? Kaffee?"
+        },
+        {
+          "speaker": "B",
+          "text": "Nein, keinen Kaffee. Ich nehme einen Tee mit Milch."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:kaffee",
+        "de:w:tee",
+        "de:w:milch"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "dd2fbda743e7e8f70206",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h1_03": {
+      "id": "de.clip.goethe_a_h1_03",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wo ist hier die Toilette, bitte?"
+        },
+        {
+          "speaker": "B",
+          "text": "Im ersten Stock, neben dem Aufzug."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "3c99e32ad034584ce6a2",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h1_04": {
+      "id": "de.clip.goethe_a_h1_04",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie viel kosten die Tomaten?"
+        },
+        {
+          "speaker": "B",
+          "text": "Ein Kilo kostet zwei Euro fünfzig."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ca205e712a72d2e89017",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h1_05": {
+      "id": "de.clip.goethe_a_h1_05",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kommst du am Montag zum Deutschkurs?"
+        },
+        {
+          "speaker": "B",
+          "text": "Am Montag nicht, da arbeite ich. Aber am Mittwoch komme ich."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:montag"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9deba432a7149aa658ab",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h1_06": {
+      "id": "de.clip.goethe_a_h1_06",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie ist deine Telefonnummer?"
+        },
+        {
+          "speaker": "B",
+          "text": "Null, eins, sieben, sechs — vier, drei, acht, neun."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0df07ac5ccb69b5dbf49",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h2_01": {
+      "id": "de.clip.goethe_a_h2_01",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Achtung am Gleis fünf: Der ICE nach München hat heute zwanzig Minuten Verspätung."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:minute"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d5816de5a0e2141f2e9f",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h2_02": {
+      "id": "de.clip.goethe_a_h2_02",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Liebe Kunden, heute sind alle Schuhe im zweiten Stock zwanzig Prozent billiger."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "53cc41b5cb3da500d561",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h2_03": {
+      "id": "de.clip.goethe_a_h2_03",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Die Linie drei fährt heute nicht. Bitte nehmen Sie den Bus Nummer zwölf."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:bus"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "91966707f30592413533",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h2_04": {
+      "id": "de.clip.goethe_a_h2_04",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Liebe Gäste, unser Restaurant schließt heute schon um einundzwanzig Uhr."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:schlie-en"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "55db40eacdfe977598ca",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h3_01": {
+      "id": "de.clip.goethe_a_h3_01",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo Anna, hier ist Paul. Wir treffen uns morgen nicht um drei, sondern um vier Uhr im Café. Bis morgen!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:treffen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "aba89e8515c754425a36",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h3_02": {
+      "id": "de.clip.goethe_a_h3_02",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Tag, hier ist die Praxis Dr. Weber. Ihr Termin ist am Donnerstag um neun Uhr. Bitte bringen Sie Ihre Karte mit."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:termin",
+        "de:w:karte"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4cf6d8ba78e732639fe6",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h3_03": {
+      "id": "de.clip.goethe_a_h3_03",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo Mama, ich komme heute später nach Hause. Ich muss noch einkaufen. Ich bin um sieben da."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:mussen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "48b23ab202bc3359f323",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h3_04": {
+      "id": "de.clip.goethe_a_h3_04",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Und jetzt das Wetter für morgen: Am Vormittag regnet es, am Nachmittag scheint die Sonne."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7610336b05fe91a2748f",
+      "durationSec": null
+    },
+    "de.clip.goethe_a_h3_05": {
+      "id": "de.clip.goethe_a_h3_05",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo, hier ist Lisa. Ich habe am Samstag Geburtstag und mache eine Party. Kannst du Musik mitbringen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:geburtstag",
+        "de:w:musik",
+        "de:w:samstag"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0fbfe67d436ccc7abd83",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h1_01": {
+      "id": "de.clip.goethe_b_h1_01",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wann beginnt der Film?"
+        },
+        {
+          "speaker": "B",
+          "text": "Um halb acht. Wir treffen uns um sieben vor dem Kino."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:film"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "909a4045e79116399064",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h1_02": {
+      "id": "de.clip.goethe_b_h1_02",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was kaufen wir für das Frühstück?"
+        },
+        {
+          "speaker": "B",
+          "text": "Brot und Käse. Eier haben wir noch."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:brot",
+        "de:w:kase",
+        "de:w:ei",
+        "de:w:fruhstuck"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "142f036d9d94c8eb249e",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h1_03": {
+      "id": "de.clip.goethe_b_h1_03",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wo wohnt deine Schwester jetzt?"
+        },
+        {
+          "speaker": "B",
+          "text": "In Wien. Früher hat sie in Berlin gewohnt."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:schwester",
+        "de:w:wohnen"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "172424e2fef1333cf56a",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h1_04": {
+      "id": "de.clip.goethe_b_h1_04",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Entschuldigung, ist das Gleis vier?"
+        },
+        {
+          "speaker": "B",
+          "text": "Nein, das ist Gleis zwei. Gleis vier ist da drüben."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7030fefdce3e11fc613e",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h1_05": {
+      "id": "de.clip.goethe_b_h1_05",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie fährst du zur Arbeit? Mit dem Auto?"
+        },
+        {
+          "speaker": "B",
+          "text": "Nein, mit dem Fahrrad. Das ist gesund und billig."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:fahrrad",
+        "de:w:auto",
+        "de:w:arbeit"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f3dd05d9e726c2e2bfd0",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h1_06": {
+      "id": "de.clip.goethe_b_h1_06",
+      "kind": "dialogue",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Wie viel kostet das Zimmer pro Nacht?"
+        },
+        {
+          "speaker": "B",
+          "text": "Siebzig Euro, mit Frühstück."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_dialogues"
+      ],
+      "lexemeRefs": [
+        "de:w:zimmer",
+        "de:w:fruhstuck"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1715de1a12b09304704e",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h2_01": {
+      "id": "de.clip.goethe_b_h2_01",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Information für die Fahrgäste nach Köln: Ihr Zug fährt heute von Gleis acht."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:zug"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "56c2deec3780bd430c74",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h2_02": {
+      "id": "de.clip.goethe_b_h2_02",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Liebe Kunden, unser Supermarkt ist am Sonntag geschlossen."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [
+        "de:w:sonntag"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d41c71922b469c8a780b",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h2_03": {
+      "id": "de.clip.goethe_b_h2_03",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Der Deutschkurs beginnt heute nicht in Raum zehn, sondern in Raum vierzehn."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "ba83b8131ee7152ad17e",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h2_04": {
+      "id": "de.clip.goethe_b_h2_04",
+      "kind": "announcement",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Achtung: Das Flugzeug nach Hanoi fliegt heute um sechzehn Uhr dreißig."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.announcements"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "25d2277d2966f165b883",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h3_01": {
+      "id": "de.clip.goethe_b_h3_01",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo Tom, hier ist Sara. Ich bin krank und kann heute nicht zum Kurs kommen. Kannst du mir die Hausaufgaben schicken?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "79e34a177bb0058b2e1e",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h3_02": {
+      "id": "de.clip.goethe_b_h3_02",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Guten Tag, hier ist das Autohaus Becker. Ihr Auto ist fertig. Sie können es heute bis achtzehn Uhr abholen."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:auto"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "9ae85fe0bfa7e6b340db",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h3_03": {
+      "id": "de.clip.goethe_b_h3_03",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo Jonas, ich stehe am Bahnhof, aber der Zug kommt erst um halb neun. Bitte warte nicht auf mich."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:bahnhof",
+        "de:w:zug",
+        "de:w:warten"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "48b14dd313349e8576e1",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h3_04": {
+      "id": "de.clip.goethe_b_h3_04",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hier ist die Stadtbibliothek. Ab Montag haben wir neue Öffnungszeiten: von zehn bis neunzehn Uhr."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:montag"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "0914bba345d5d9cf0cc0",
+      "durationSec": null
+    },
+    "de.clip.goethe_b_h3_05": {
+      "id": "de.clip.goethe_b_h3_05",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Hallo Frau Nguyen, hier ist Herr Klein vom Hotel Sonne. Ihr Zimmer ist frei. Sie können schon um zwölf Uhr kommen."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.listening.short_info"
+      ],
+      "lexemeRefs": [
+        "de:w:zimmer",
+        "de:w:hotel"
+      ],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "d39479d43d043f1b242f",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_thema_miss": {
+      "id": "de.clip.ix_goethe_a_thema_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Danke schön!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "84ec0da55382495faa7f",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_thema_0": {
+      "id": "de.clip.ix_goethe_a_thema_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Thema Essen und Trinken. Meine Karte: Frühstück. Was essen Sie zum Frühstück?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7990718a1ea704561c4f",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_thema_0_s": {
+      "id": "de.clip.ix_goethe_a_thema_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was frühstücken Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "67dc65ba5b0ba8aaf88f",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_thema_1": {
+      "id": "de.clip.ix_goethe_a_thema_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Danke. Und jetzt Sie! Ihre Karte: Lieblingsessen."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "b9f9cba5ef6e404045ce",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_thema_1_s": {
+      "id": "de.clip.ix_goethe_a_thema_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bitte fragen Sie mich: Lieblingsessen."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "56723427880c35146253",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_thema_end": {
+      "id": "de.clip.ix_goethe_a_thema_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Mein Lieblingsessen ist Pizza. Danke!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "505614e5990e9a30cdb9",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_thema_miss": {
+      "id": "de.clip.ix_goethe_b_thema_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Danke schön!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "84ec0da55382495faa7f",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_thema_0": {
+      "id": "de.clip.ix_goethe_b_thema_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Thema Freizeit. Meine Karte: Wochenende. Was machen Sie am Wochenende?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "adb73dbe4cab7c469ede",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_thema_0_s": {
+      "id": "de.clip.ix_goethe_b_thema_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Was machen Sie am Samstag und Sonntag?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "6daa57bd79893a597f8d",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_thema_1": {
+      "id": "de.clip.ix_goethe_b_thema_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Danke. Und jetzt Sie! Ihre Karte: Sport."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "e31192ec34c7aa7f1c21",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_thema_1_s": {
+      "id": "de.clip.ix_goethe_b_thema_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bitte fragen Sie mich: Sport."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "7f9db2e4cc319484a2af",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_thema_end": {
+      "id": "de.clip.ix_goethe_b_thema_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ja, ich spiele gern Tennis. Danke!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.everyday_conversation"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "47d9373fcd41073680ee",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_bitte_miss": {
+      "id": "de.clip.ix_goethe_a_bitte_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Danke!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "09d3058c94712ccd9d82",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_bitte_0": {
+      "id": "de.clip.ix_goethe_a_bitte_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ihre Karte zeigt ein Fenster. Bitte, was möchten Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "f6a2af05f12398795b62",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_bitte_0_s": {
+      "id": "de.clip.ix_goethe_a_bitte_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Sie haben die Karte mit dem Fenster."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "5afc4abc6edc45da6158",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_bitte_1": {
+      "id": "de.clip.ix_goethe_a_bitte_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Gern. Und ich habe eine Bitte: Können Sie mir bitte einen Stift geben?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "977030728266309f6618",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_bitte_1_s": {
+      "id": "de.clip.ix_goethe_a_bitte_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Haben Sie einen Stift für mich?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "679d4d186d0299f75ead",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_a_bitte_end": {
+      "id": "de.clip.ix_goethe_a_bitte_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Danke schön!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "16e12449253295d9c730",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_bitte_miss": {
+      "id": "de.clip.ix_goethe_b_bitte_miss",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kein Problem. Danke!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "09d3058c94712ccd9d82",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_bitte_0": {
+      "id": "de.clip.ix_goethe_b_bitte_0",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Ihre Karte zeigt ein Glas Wasser. Bitte, was möchten Sie?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "1c73a3dcad9c977dedd5",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_bitte_0_s": {
+      "id": "de.clip.ix_goethe_b_bitte_0_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Sie haben die Karte mit dem Wasser."
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "af3308b1c7b649715870",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_bitte_1": {
+      "id": "de.clip.ix_goethe_b_bitte_1",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Bitte schön. Und ich habe eine Bitte: Darf ich Ihr Telefon benutzen?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "beb278e5070c22a1a3fa",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_bitte_1_s": {
+      "id": "de.clip.ix_goethe_b_bitte_1_s",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Kann ich kurz Ihr Handy haben?"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "10f322ecea3a7218b722",
+      "durationSec": null
+    },
+    "de.clip.ix_goethe_b_bitte_end": {
+      "id": "de.clip.ix_goethe_b_bitte_end",
+      "kind": "message",
+      "transcriptLines": [
+        {
+          "speaker": "A",
+          "text": "Vielen Dank!"
+        }
+      ],
+      "objectiveRefs": [
+        "de.obj.interaction.practical_needs"
+      ],
+      "lexemeRefs": [],
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      },
+      "assetKey": "4c48ed7450b2d396621e",
+      "durationSec": null
+    }
+  }
+}

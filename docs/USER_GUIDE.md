@@ -19,13 +19,33 @@ The first screen asks which course you want. French is the course this app is bu
 
 ## 4. Choosing French
 
-French and Spanish for Vietnamese speakers (`es-vi`) are the courses with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. Both French editions have it. Your French memory is shared between them: a word you review in one edition is the same memory card in the other, and the starting-point check and checkpoint results carry over — only lesson completion and XP are counted per edition. The other courses offer the learning path, practice of mistakes and word review.
+French, Spanish for Vietnamese speakers (`es-vi`) and German for Vietnamese speakers (`de-vi`) are the courses with the full feature set: Today sessions, listening, speaking, writing, conversations, checkpoints, the starting-point check and the A1 capstone. Both French editions have it. Your French memory is shared between them: a word you review in one edition is the same memory card in the other, and the starting-point check and checkpoint results carry over — only lesson completion and XP are counted per edition. The other courses offer the learning path, practice of mistakes and word review.
 
 ### Spanish for Vietnamese speakers (`es-vi`) and DELE A1 practice
 
 `es-vi` teaches the Spanish of Spain to A1 — the main Latin-American words (boleto, jugo, carro…) are always accepted and shown as notes — with the same six-section structure as French; every explanation, question and piece of feedback is in Vietnamese. The older `es-en` course stays under **Other courses** in the course picker so earlier progress is kept, but it is no longer offered at first launch. While the course's Vietnamese is still being reviewed, the Learn tab shows the label **Bản beta — nội dung đang được duyệt** (beta — content under review); it disappears once the review is signed.
 
 The **DELE A1 practice** card on the Practice tab follows the public DELE A1 format of 2020 (Instituto Cervantes): Reading (45 min, 4 tasks), Listening (25 min, 4 tasks), Writing (25 min, a form and a short text) and Speaking (about 10 min, 3 tasks). Some tasks match several questions to one lettered list of texts or answers (A–I), as in the real exam. **Practise one part** is untimed with feedback after each answer; the **timed mock** runs two parallel forms, A and B — a retake gets the other one. When a part's time is up, it ends and the questions you didn't reach count as not answered. Results show each part's points, the two score groups (Reading + Writing, Listening + Speaking), each needing 30 of 50 points, and an **estimated readiness**. It is not a real exam score, is not issued by Instituto Cervantes and does not predict a result; every question is original to the course. **Practise the words from these questions** starts an ordinary vocabulary review (recorded in your memory cards) over the words of the questions you missed. Without speech recognition on the device the Speaking part is skipped and the result says there is not enough data for an estimate. Spanish listening audio arrives once the audio generation run has finished; until then listening questions offer the skip button.
+
+### German for Vietnamese speakers (`de-vi`) and Goethe A1 practice
+
+`de-vi` teaches standard German (Germany) to A1 with the same six-section structure; Austrian and Swiss forms appear only as notes. Every explanation, question and piece of feedback is in Vietnamese. Nouns are always taught with their article and plural (der Tisch, die Tische). The course teaches the nominative and accusative explicitly; before Section 4 the dative appears only in fixed phrases such as *mit dem Bus* or *in der Schule*. The older `de-en` course stays under **Other courses** so earlier progress is kept, but it is no longer offered at first launch. While the course is being reviewed, the Learn tab shows **Bản beta — nội dung đang được duyệt** (beta — content under review).
+
+The **Goethe A1 practice** card on the Practice tab follows the official format of the Goethe-Zertifikat A1: Start Deutsch 1:
+- Hören, about 20 min, 3 parts, 15 questions;
+- Lesen, 25 min, 3 parts, 15 questions;
+- Schreiben, 20 min: a form and a short message;
+- Sprechen, about 15 min, 3 parts.
+
+It works like the DELE card: **Practise one part** or a **timed mock** with two parallel forms. Results convert each part's points to a total out of 100, as the real exam does; the real exam needs 60. They show an **estimated readiness**.
+
+The app differs from the real exam in two places:
+- the real Sprechen is a group exam, and the app simulates it one to one;
+- Teil 1 leaves out spelling and repeating a number.
+
+As in the real exam, Hören Teil 1 and 3 play each recording twice and Teil 2 only once.
+
+The practice is not issued by the Goethe-Institut and does not predict a result; every question is original to the course.
 
 ## 5. Starting-point check (placement)
 
@@ -74,7 +94,7 @@ The app schedules review with a spaced-repetition algorithm (FSRS). Every word, 
 
 The **Today** tab builds one session from what your memory needs: reviews that are due first (most at risk first), then new material from your current unit, then mixed practice, then a short matching finale. Choose a **Session length** — 5, 10 or 15 minutes — and tap **Start today's session**. On a device that can record, a **Can't speak now** switch appears above the button: turn it on and speaking reviews are left out of that session and stay due.
 
-In French and `es-vi`, Today also brings **new words a day** from the course's word list — only from units you have reached, in the order the course teaches them. Set how many under Profile → Learning → **New words a day** (0–15, default 5; 0 turns it off).
+In French, `es-vi` and `de-vi`, Today also brings **new words a day** from the course's word list — only from units you have reached, in the order the course teaches them. Set how many under Profile → Learning → **New words a day** (0–15, default 5; 0 turns it off).
 
 Below the session, **Story for today** suggests a short graded story (see *Read & listen* in section 20).
 
@@ -115,7 +135,7 @@ Reading passages (section 3) are short notices, messages and texts. Tap any word
 
 ### Read & listen (graded stories)
 
-French and `es-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
+French, `es-vi` and `de-vi` include short stories (150–400 words) written almost entirely with words the course teaches. Open them from Practice → **Read & listen**, or from **Story for today** on the Today tab. The list puts first the story with **3–6 words that are new to you**, worked out from the words you have already learned; each story shows its level (1–4) and how many of its words are new to you.
 
 In the reader:
 - **Listen** plays the story sentence by sentence and highlights the sentence being read; the speaker button on a line plays from there. A story whose audio is not bundled yet is read as text.

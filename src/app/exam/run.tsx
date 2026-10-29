@@ -211,7 +211,7 @@ function PracticeRun({ courseId, track, sectionId }: { courseId: string; track: 
       definition={definition}
       targetLanguage={targetLanguage}
       renderFinished={(controller) => (
-        <RecordAndShow track={track} mode="practice" sectionId={sectionId} formId="bank" itemResults={itemResultsFor(itemIds, controller.state.firstResults)} startedAt={startedAt} />
+        <RecordAndShow track={track} mode="practice" sectionId={sectionId} formId="bank" itemResults={itemResultsFor(itemIds, controller.state.firstResults, controller.state.firstCredits)} startedAt={startedAt} />
       )}
     />
   );
@@ -242,9 +242,9 @@ function MockRun({ courseId, track }: { courseId: string; track: CompiledExamTra
     [courseId, track, form.formId, seed]
   );
   const next = (index: number) => setPhase(index + 1 < track.sections.length ? { kind: "intro", index: index + 1 } : { kind: "done", itemResults: results.current });
-  const finishSection = (index: number, firstResults: Record<string, boolean>) => {
+  const finishSection = (index: number, firstResults: Record<string, boolean>, firstCredits?: Record<string, number>) => {
     const ids = sectionItems(track, track.sections[index].id, form.formId).map((i) => i.id);
-    results.current = [...results.current, ...itemResultsFor(ids, firstResults)];
+    results.current = [...results.current, ...itemResultsFor(ids, firstResults, firstCredits)];
     next(index);
   };
 
@@ -298,8 +298,8 @@ function MockRun({ courseId, track }: { courseId: string; track: CompiledExamTra
       key={section.id}
       definition={definitions[index]}
       targetLanguage={targetLanguage}
-      countdown={{ endsAt: phase.endsAt, onExpire: (controller) => finishSection(index, controller.state.firstResults) }}
-      renderFinished={(controller) => <SectionDone onMount={() => finishSection(index, controller.state.firstResults)} />}
+      countdown={{ endsAt: phase.endsAt, onExpire: (controller) => finishSection(index, controller.state.firstResults, controller.state.firstCredits) }}
+      renderFinished={(controller) => <SectionDone onMount={() => finishSection(index, controller.state.firstResults, controller.state.firstCredits)} />}
     />
   );
 }

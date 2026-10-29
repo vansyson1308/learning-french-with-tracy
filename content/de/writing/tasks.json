@@ -1,0 +1,3171 @@
+{
+  "version": 1,
+  "language": "de",
+  "tasks": [
+    {
+      "id": "de.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Lena. Hãy viết một câu tiếng Đức ngắn nói tên của bạn.",
+        "en": "You are Lena. Write a short German sentence saying your name."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên của bạn",
+            "en": "Your name"
+          },
+          "value": "Lena"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên của bạn",
+              "en": "your name"
+            },
+            "variants": [
+              "ich heiße lena",
+              "mein name ist lena",
+              "ich bin lena"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "heiße",
+          "ist",
+          "bin"
+        ]
+      },
+      "modelAnswers": [
+        "Ich heiße Lena."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "de:w:name"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn 25 tuổi. Hãy viết một câu tiếng Đức nói tuổi của bạn.",
+        "en": "You are 25. Write a German sentence saying how old you are."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "25"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi của bạn",
+              "en": "your age"
+            },
+            "variants": [
+              "ich bin 25",
+              "ich bin fünfundzwanzig",
+              "ich bin 25 jahre alt",
+              "ich bin fünfundzwanzig jahre alt"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "bin"
+        ]
+      },
+      "modelAnswers": [
+        "Ich bin 25 Jahre alt."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "de:w:jahr",
+        "de:w:alt"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.o_city",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn sống ở Hamburg. Hãy viết một câu tiếng Đức nói bạn sống ở đâu.",
+        "en": "You live in Hamburg. Write a German sentence saying where you live."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Hamburg"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố bạn sống",
+              "en": "the city you live in"
+            },
+            "variants": [
+              "ich wohne in hamburg",
+              "ich lebe in hamburg"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "wohne",
+          "lebe"
+        ]
+      },
+      "modelAnswers": [
+        "Ich wohne in Hamburg."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "de:w:wohnen",
+        "de:w:stadt"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.o_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố.",
+        "en": "Write three short sentences about yourself: name, age and city."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Lena"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "25"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Hamburg"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "ich heiße lena",
+              "mein name ist lena",
+              "ich bin lena"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "25",
+              "fünfundzwanzig"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "in hamburg"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 25,
+        "requireSentenceVerbs": [
+          "heiße",
+          "bin",
+          "wohne"
+        ]
+      },
+      "modelAnswers": [
+        "Ich heiße Lena. Ich bin 25 Jahre alt. Ich wohne in Hamburg."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "de:w:name",
+        "de:w:jahr",
+        "de:w:wohnen",
+        "de:w:stadt"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.p_like",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu tiếng Đức nói rằng bạn thích chơi bóng đá.",
+        "en": "Write a German sentence saying that you like playing football."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích chơi bóng đá",
+              "en": "you like playing football"
+            },
+            "variants": [
+              "ich spiele gern fußball",
+              "ich spiele gerne fußball"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 10,
+        "requireSentenceVerbs": [
+          "spiele"
+        ]
+      },
+      "modelAnswers": [
+        "Ich spiele gern Fußball."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "de:w:spielen",
+        "de:w:gern"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.p_two",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu nói rằng bạn thích uống cà phê và trà.",
+        "en": "Write a sentence saying that you like drinking coffee and tea."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "coffee",
+            "description": {
+              "vi": "cà phê",
+              "en": "coffee"
+            },
+            "variants": [
+              "kaffee"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "tea",
+            "description": {
+              "vi": "trà",
+              "en": "tea"
+            },
+            "variants": [
+              "tee"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "trinke"
+        ]
+      },
+      "modelAnswers": [
+        "Ich trinke gern Kaffee und Tee."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "de:w:kaffee",
+        "de:w:tee",
+        "de:w:gern"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.p_other",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu về Paul: tên anh ấy và nơi anh ấy sống.",
+        "en": "Write two sentences about Paul: his name and where he lives."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Paul"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Köln"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên của Paul",
+              "en": "Paul's name"
+            },
+            "variants": [
+              "er heißt paul",
+              "sein name ist paul",
+              "das ist paul"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "nơi Paul sống",
+              "en": "where Paul lives"
+            },
+            "variants": [
+              "er wohnt in köln",
+              "er lebt in köln"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "heißt",
+          "wohnt",
+          "ist",
+          "lebt"
+        ]
+      },
+      "modelAnswers": [
+        "Er heißt Paul. Er wohnt in Köln."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "de:w:wohnen"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.p_scene",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu tả bức tranh: con mèo nhỏ, ngôi nhà to.",
+        "en": "Write two sentences describing the picture: the small cat, the big house."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "cat",
+            "description": {
+              "vi": "con mèo nhỏ",
+              "en": "the small cat"
+            },
+            "variants": [
+              "die katze ist klein"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "house",
+            "description": {
+              "vi": "ngôi nhà to",
+              "en": "the big house"
+            },
+            "variants": [
+              "das haus ist groß",
+              "das haus ist gross"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "ist"
+        ]
+      },
+      "modelAnswers": [
+        "Die Katze ist klein. Das Haus ist groß."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "de:w:katze",
+        "de:w:klein",
+        "de:w:haus",
+        "de:w:gro"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.q_cafe",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một lời nhắn ngắn cho Anna: chào cô ấy, và hẹn gặp ở quán cà phê lúc ba giờ.",
+        "en": "Write a short note to Anna: greet her and arrange to meet at the café at three."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Anna"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "quán cà phê"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "3:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the recipient's name"
+            },
+            "variants": [
+              "anna"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "place",
+            "description": {
+              "vi": "quán cà phê",
+              "en": "café"
+            },
+            "variants": [
+              "café",
+              "kaffee"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn",
+              "en": "meeting time"
+            },
+            "variants": [
+              "um drei",
+              "um 3",
+              "um 15 uhr"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Anna, wir treffen uns um drei im Café."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:treffen"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.q_train",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Tom: tàu của bạn đến lúc tám giờ.",
+        "en": "Message Tom: your train arrives at eight."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Tom"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "8:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "train",
+            "description": {
+              "vi": "chuyến tàu",
+              "en": "the train"
+            },
+            "variants": [
+              "zug"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ tàu đến",
+              "en": "arrival time"
+            },
+            "variants": [
+              "um acht",
+              "um 8"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Tom, mein Zug kommt um acht Uhr."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:zug",
+        "de:w:kommen"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.q_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Lisa: chào, báo bạn sẽ đến muộn, rồi chào kết.",
+        "en": "Message Lisa: say hello, tell her you will be late, then close."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Lisa"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "late",
+            "description": {
+              "vi": "bạn đến muộn",
+              "en": "you are late"
+            },
+            "variants": [
+              "später",
+              "spät"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "bis bald",
+              "tschüss",
+              "viele grüße",
+              "liebe grüße",
+              "bis dann"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Lisa, ich komme heute später. Bis bald!"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:spat",
+        "de:w:kommen"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.q_own",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Jonas: hẹn gặp vào thứ Bảy, rồi chào kết.",
+        "en": "Message Jonas: arrange to meet on Saturday, then close."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Jonas"
+        },
+        {
+          "label": {
+            "vi": "Ngày",
+            "en": "Day"
+          },
+          "value": "thứ Bảy"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày hẹn",
+              "en": "meeting day"
+            },
+            "variants": [
+              "samstag"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "bis bald",
+              "tschüss",
+              "viele grüße",
+              "liebe grüße",
+              "bis dann"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Jonas, wir treffen uns am Samstag. Tschüss!"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:treffen",
+        "de:w:samstag"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.r_form_course",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ.",
+        "en": "Fill in the course registration form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Minh"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Köln"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại",
+            "en": "Phone"
+          },
+          "value": "0170 123456"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "slotId": "name"
+        },
+        {
+          "id": "stadt",
+          "label": "Stadt",
+          "slotId": "city"
+        },
+        {
+          "id": "telefon",
+          "label": "Telefon",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "minh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "köln",
+              "koeln"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại",
+              "en": "phone number"
+            },
+            "variants": [
+              "0170 123456",
+              "0170123456"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Minh | Köln | 0170 123456"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:name",
+        "de:w:stadt",
+        "de:w:telefon"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.r_hotel_mail",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết thư ngắn cho một khách sạn: chào, hỏi một phòng cho thứ Bảy, rồi chào kết.",
+        "en": "Write a short letter to a hotel: greet them, ask for a room for Saturday, then close."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Ngày",
+            "en": "Day"
+          },
+          "value": "thứ Bảy"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "sehr geehrte damen und herren",
+              "guten tag",
+              "hallo"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "room",
+            "description": {
+              "vi": "một phòng",
+              "en": "a room"
+            },
+            "variants": [
+              "zimmer"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "thứ Bảy",
+              "en": "Saturday"
+            },
+            "variants": [
+              "samstag"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "viele grüße",
+              "mit freundlichen grüßen",
+              "freundliche grüße"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "Sehr geehrte Damen und Herren, haben Sie am Samstag ein Zimmer frei? Viele Grüße\nMinh"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:zimmer",
+        "de:w:samstag"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.r_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết về bạn: tên, đến từ Việt Nam, sống ở Köln, làm việc ở một bệnh viện.",
+        "en": "Write about yourself: your name, from Vietnam, living in Köln, working at a hospital."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Minh"
+        },
+        {
+          "label": {
+            "vi": "Quê",
+            "en": "Home country"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Köln"
+        },
+        {
+          "label": {
+            "vi": "Nơi làm việc",
+            "en": "Workplace"
+          },
+          "value": "bệnh viện"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "ich heiße minh",
+              "mein name ist minh",
+              "ich bin minh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "from",
+            "description": {
+              "vi": "quê",
+              "en": "home country"
+            },
+            "variants": [
+              "aus vietnam"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "in köln"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "work",
+            "description": {
+              "vi": "nơi làm việc",
+              "en": "workplace"
+            },
+            "variants": [
+              "krankenhaus"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 10,
+        "maxTokens": 35,
+        "requireSentenceVerbs": [
+          "heiße",
+          "komme",
+          "wohne",
+          "arbeite"
+        ]
+      },
+      "modelAnswers": [
+        "Ich heiße Minh. Ich komme aus Vietnam. Ich wohne in Köln und arbeite in einem Krankenhaus."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:name",
+        "de:w:kommen",
+        "de:w:wohnen",
+        "de:w:arbeiten",
+        "de:w:krankenhaus"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.r_form_hotel",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu khách sạn với các thông tin trên thẻ.",
+        "en": "Fill in the hotel form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Họ",
+            "en": "Surname"
+          },
+          "value": "Tran"
+        },
+        {
+          "label": {
+            "vi": "Đường",
+            "en": "Street"
+          },
+          "value": "Bahnhofstraße 5"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại",
+            "en": "Phone"
+          },
+          "value": "0151 987654"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "slotId": "name"
+        },
+        {
+          "id": "strasse",
+          "label": "Straße",
+          "slotId": "street"
+        },
+        {
+          "id": "telefon",
+          "label": "Telefon",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "họ tên",
+              "en": "full name"
+            },
+            "variants": [
+              "tran"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "street",
+            "description": {
+              "vi": "đường",
+              "en": "street"
+            },
+            "variants": [
+              "bahnhofstraße 5",
+              "bahnhofstrasse 5"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại",
+              "en": "phone number"
+            },
+            "variants": [
+              "0151 987654",
+              "0151987654"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Tran | Bahnhofstraße 5 | 0151 987654"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:name",
+        "de:w:stra-e",
+        "de:w:telefon"
+      ],
+      "scoredEligibility": false,
+      "reserved": false,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_profile_lan",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Lan. Hãy tự giới thiệu bằng cách viết — tên, tuổi và thành phố, bằng câu hoàn chỉnh.",
+        "en": "You are Lan. Introduce yourself in writing — name, age and city, in full sentences."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Lan"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "28"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Leipzig"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "ich heiße lan",
+              "mein name ist lan",
+              "ich bin lan"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "28",
+              "achtundzwanzig"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "in leipzig"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "heiße",
+          "bin",
+          "wohne",
+          "lebe"
+        ]
+      },
+      "modelAnswers": [
+        "Ich heiße Lan. Ich bin 28 Jahre alt. Ich wohne in Leipzig."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "de:w:name",
+        "de:w:jahr",
+        "de:w:wohnen"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_profile_tuan",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Tuấn. Hãy viết về bạn: tên, quê và nơi bạn sống.",
+        "en": "You are Tuấn. Write about yourself: your name, where you are from and where you live."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Tuấn"
+        },
+        {
+          "label": {
+            "vi": "Quê",
+            "en": "Home country"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Dresden"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "ich heiße tuấn",
+              "mein name ist tuấn",
+              "ich bin tuấn"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "from",
+            "description": {
+              "vi": "quê",
+              "en": "home country"
+            },
+            "variants": [
+              "aus vietnam"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "in dresden"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30,
+        "requireSentenceVerbs": [
+          "heiße",
+          "komme",
+          "wohne",
+          "bin",
+          "lebe"
+        ]
+      },
+      "modelAnswers": [
+        "Ich heiße Tuấn. Ich komme aus Vietnam und wohne in Dresden."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "de:w:kommen",
+        "de:w:wohnen"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_profile_mai",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Bạn là Mai. Hãy viết tên của bạn và những tiếng bạn nói.",
+        "en": "You are Mai. Write your name and the languages you speak."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Mai"
+        },
+        {
+          "label": {
+            "vi": "Ngôn ngữ",
+            "en": "Languages"
+          },
+          "value": "tiếng Việt, tiếng Đức"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "ich heiße mai",
+              "mein name ist mai",
+              "ich bin mai"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "vi",
+            "description": {
+              "vi": "tiếng Việt",
+              "en": "Vietnamese"
+            },
+            "variants": [
+              "vietnamesisch"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "de",
+            "description": {
+              "vi": "tiếng Đức",
+              "en": "German"
+            },
+            "variants": [
+              "deutsch"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 25,
+        "requireSentenceVerbs": [
+          "heiße",
+          "spreche",
+          "bin"
+        ]
+      },
+      "modelAnswers": [
+        "Ich heiße Mai. Ich spreche Vietnamesisch und Deutsch."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "de:w:sprechen"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_like_music",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết một câu nói rằng bạn thích nghe nhạc.",
+        "en": "Write a sentence saying that you like listening to music."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "music",
+            "description": {
+              "vi": "nghe nhạc",
+              "en": "listening to music"
+            },
+            "variants": [
+              "musik"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "like",
+            "description": {
+              "vi": "bạn thích",
+              "en": "you like"
+            },
+            "variants": [
+              "gern",
+              "gerne",
+              "mag",
+              "liebe"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "höre",
+          "mag",
+          "liebe"
+        ]
+      },
+      "modelAnswers": [
+        "Ich höre gern Musik."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "de:w:musik",
+        "de:w:gern"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_sister",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu về chị gái bạn: tên chị ấy là Hoa và chị ấy làm việc ở Berlin.",
+        "en": "Write two sentences about your sister: her name is Hoa and she works in Berlin."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Hoa"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Berlin"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "tên chị gái",
+              "en": "your sister's name"
+            },
+            "variants": [
+              "sie heißt hoa",
+              "ihr name ist hoa",
+              "meine schwester heißt hoa"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "work",
+            "description": {
+              "vi": "nơi làm việc",
+              "en": "workplace"
+            },
+            "variants": [
+              "arbeitet in berlin"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20,
+        "requireSentenceVerbs": [
+          "heißt",
+          "arbeitet",
+          "ist"
+        ]
+      },
+      "modelAnswers": [
+        "Meine Schwester heißt Hoa. Sie arbeitet in Berlin."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "de:w:schwester",
+        "de:w:arbeiten"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_room",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết hai câu tả căn phòng: cái giường to, cái bàn nhỏ.",
+        "en": "Write two sentences describing the room: the big bed, the small table."
+      },
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "bed",
+            "description": {
+              "vi": "cái giường to",
+              "en": "the big bed"
+            },
+            "variants": [
+              "das bett ist groß",
+              "das bett ist gross"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "table",
+            "description": {
+              "vi": "cái bàn nhỏ",
+              "en": "the small table"
+            },
+            "variants": [
+              "der tisch ist klein"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "ist"
+        ]
+      },
+      "modelAnswers": [
+        "Das Bett ist groß. Der Tisch ist klein."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "de:w:bett",
+        "de:w:tisch",
+        "de:w:gro",
+        "de:w:klein"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_msg_kino",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết lời nhắn cho Tom: chào anh ấy, rồi hẹn đi xem phim lúc tám giờ.",
+        "en": "Write a note to Tom: greet him, then suggest the cinema at eight."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Tom"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "xem phim"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "8:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag",
+              "guten morgen"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the recipient's name"
+            },
+            "variants": [
+              "tom"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "xem phim",
+              "en": "xem phim"
+            },
+            "variants": [
+              "kino",
+              "film"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ hẹn",
+              "en": "meeting time"
+            },
+            "variants": [
+              "um acht",
+              "um 8",
+              "um 20 uhr",
+              "um zwanzig uhr"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Tom, gehen wir um acht Uhr ins Kino?"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:film"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_msg_oma",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho bà: chào bà, nói rằng bạn đến vào Chủ nhật, rồi chào kết.",
+        "en": "Message your grandmother: greet her, say you are coming on Sunday, then close."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "bà (Oma)"
+        },
+        {
+          "label": {
+            "vi": "Ngày",
+            "en": "Day"
+          },
+          "value": "Chủ nhật"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag",
+              "guten morgen"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày bạn đến",
+              "en": "the day you come"
+            },
+            "variants": [
+              "sonntag"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "bis bald",
+              "tschüss",
+              "viele grüße",
+              "liebe grüße",
+              "bis dann",
+              "bis morgen"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Liebe Oma, ich komme am Sonntag. Bis bald!"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:sonntag",
+        "de:w:kommen"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_msg_krank",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho đồng nghiệp Lisa: chào, nói rằng hôm nay bạn bị ốm, rồi chào kết.",
+        "en": "Message your colleague Lisa: say hello, say you are ill today, then close."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Lisa"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag",
+              "guten morgen"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sick",
+            "description": {
+              "vi": "bạn bị ốm",
+              "en": "you are ill"
+            },
+            "variants": [
+              "krank"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "bis bald",
+              "tschüss",
+              "viele grüße",
+              "liebe grüße",
+              "bis dann",
+              "bis morgen"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Lisa, ich bin heute krank. Viele Grüße!"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_form_arzt",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu ở phòng khám với các thông tin trên thẻ.",
+        "en": "Fill in the doctor's surgery form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Họ tên",
+            "en": "Full name"
+          },
+          "value": "Tuấn Pham"
+        },
+        {
+          "label": {
+            "vi": "Thành phố",
+            "en": "City"
+          },
+          "value": "Dresden"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại",
+            "en": "Phone"
+          },
+          "value": "0160 445566"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "slotId": "name"
+        },
+        {
+          "id": "wohnort",
+          "label": "Wohnort",
+          "slotId": "city"
+        },
+        {
+          "id": "telefon",
+          "label": "Telefon",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "họ tên",
+              "en": "full name"
+            },
+            "variants": [
+              "tuấn pham",
+              "pham"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": {
+              "vi": "thành phố",
+              "en": "city"
+            },
+            "variants": [
+              "dresden"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại",
+              "en": "phone number"
+            },
+            "variants": [
+              "0160 445566",
+              "0160445566"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Tuấn Pham | Dresden | 0160 445566"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:stadt",
+        "de:w:telefon"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_form_hotel",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu khách sạn với các thông tin trên thẻ.",
+        "en": "Fill in the hotel form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Họ tên",
+            "en": "Full name"
+          },
+          "value": "Mai Le"
+        },
+        {
+          "label": {
+            "vi": "Nước",
+            "en": "Country"
+          },
+          "value": "Việt Nam"
+        },
+        {
+          "label": {
+            "vi": "Số đêm",
+            "en": "Nights"
+          },
+          "value": "2"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "slotId": "name"
+        },
+        {
+          "id": "land",
+          "label": "Land",
+          "slotId": "country"
+        },
+        {
+          "id": "naechte",
+          "label": "Nächte",
+          "slotId": "nights"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": {
+              "vi": "họ tên",
+              "en": "full name"
+            },
+            "variants": [
+              "mai le",
+              "le"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "country",
+            "description": {
+              "vi": "nước",
+              "en": "country"
+            },
+            "variants": [
+              "vietnam"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "nights",
+            "description": {
+              "vi": "số đêm",
+              "en": "number of nights"
+            },
+            "variants": [
+              "2",
+              "zwei"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Mai Le | Vietnam | 2"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:hotel"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.a1cap_note_train",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết lời nhắn ngắn cho Paul: chào anh ấy, và nói rằng tàu chạy lúc chín giờ.",
+        "en": "Write a short note to Paul: greet him and say the train leaves at nine."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Paul"
+        },
+        {
+          "label": {
+            "vi": "Việc gì",
+            "en": "What"
+          },
+          "value": "tàu hoả"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "9:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag",
+              "guten morgen"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": {
+              "vi": "tên người nhận",
+              "en": "the recipient's name"
+            },
+            "variants": [
+              "paul"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "what",
+            "description": {
+              "vi": "tàu hoả",
+              "en": "the train"
+            },
+            "variants": [
+              "zug"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ",
+              "en": "time"
+            },
+            "variants": [
+              "um neun",
+              "um 9"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Paul, der Zug fährt um neun Uhr."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:zug"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.a1cap_note_shop",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Anna: chào, nói bạn đang ở cửa hàng và về nhà lúc năm giờ.",
+        "en": "Message Anna: say hello, say you are at the shop and will be home at five."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Anna"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "cửa hàng"
+        },
+        {
+          "label": {
+            "vi": "Giờ",
+            "en": "Time"
+          },
+          "value": "5:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag",
+              "guten morgen"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": {
+              "vi": "cửa hàng",
+              "en": "shop"
+            },
+            "variants": [
+              "geschäft",
+              "laden",
+              "supermarkt"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ về",
+              "en": "time you get home"
+            },
+            "variants": [
+              "um fünf",
+              "um 5",
+              "um 17 uhr"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Anna, ich bin im Geschäft. Um fünf bin ich zu Hause."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:geschaft"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.a1cap_note_cafe",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Ben: hẹn gặp ở quán cà phê vào thứ Sáu, rồi chào kết.",
+        "en": "Message Ben: arrange to meet at the café on Friday, then close."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Ben"
+        },
+        {
+          "label": {
+            "vi": "Ở đâu",
+            "en": "Where"
+          },
+          "value": "quán cà phê"
+        },
+        {
+          "label": {
+            "vi": "Ngày",
+            "en": "Day"
+          },
+          "value": "thứ Sáu"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "place",
+            "description": {
+              "vi": "quán cà phê",
+              "en": "café"
+            },
+            "variants": [
+              "café",
+              "kaffee"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày hẹn",
+              "en": "meeting day"
+            },
+            "variants": [
+              "freitag"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "bis bald",
+              "tschüss",
+              "viele grüße",
+              "liebe grüße",
+              "bis dann",
+              "bis morgen"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hallo Ben, wir treffen uns am Freitag im Café. Bis dann!"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:freitag",
+        "de:w:treffen"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.a1cap_note_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho thầy giáo: chào, nói rằng hôm nay bạn đến muộn mười phút.",
+        "en": "Message your teacher: say hello and that you will be ten minutes late today."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "thầy Becker"
+        },
+        {
+          "label": {
+            "vi": "Muộn",
+            "en": "Late by"
+          },
+          "value": "10 phút"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "guten tag",
+              "guten morgen",
+              "hallo",
+              "lieber herr becker",
+              "sehr geehrter herr becker"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "late",
+            "description": {
+              "vi": "đến muộn",
+              "en": "being late"
+            },
+            "variants": [
+              "später",
+              "spät"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "minutes",
+            "description": {
+              "vi": "mười phút",
+              "en": "ten minutes"
+            },
+            "variants": [
+              "zehn minuten",
+              "10 minuten"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Guten Morgen, Herr Becker, ich komme heute zehn Minuten später."
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:minute",
+        "de:w:spat"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.cp5_form_kurs",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ.",
+        "en": "Fill in the course registration form with the details on the card."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Lan"
+        },
+        {
+          "label": {
+            "vi": "Họ",
+            "en": "Surname"
+          },
+          "value": "Nguyen"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "28"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "vorname",
+          "label": "Vorname",
+          "slotId": "first"
+        },
+        {
+          "id": "nachname",
+          "label": "Nachname",
+          "slotId": "last"
+        },
+        {
+          "id": "alter",
+          "label": "Alter",
+          "slotId": "age"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "first",
+            "description": {
+              "vi": "tên của bạn",
+              "en": "your name"
+            },
+            "variants": [
+              "lan"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "last",
+            "description": {
+              "vi": "họ của bạn",
+              "en": "your surname"
+            },
+            "variants": [
+              "nguyễn"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "28",
+              "achtundzwanzig"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Lan | Nguyen | 28"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:name"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.goethe_a_formular",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Teil 1 — Bạn của bạn là Mai Tran muốn đăng ký một khoá học bơi. Cô ấy đến từ Việt Nam, sống ở Leipzig, Goethestraße 7, và muốn học vào thứ Bảy. Hãy điền phiếu cho cô ấy (năm chỗ trống).",
+        "en": "Teil 1 — Your friend Mai Tran wants to sign up for a swimming course. She is from Vietnam, lives in Leipzig, Goethestraße 7, and wants lessons on Saturdays. Fill in the form for her (five gaps)."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Mai"
+        },
+        {
+          "label": {
+            "vi": "Họ",
+            "en": "Surname"
+          },
+          "value": "Tran"
+        },
+        {
+          "label": {
+            "vi": "Đến từ",
+            "en": "From"
+          },
+          "value": "Vietnam"
+        },
+        {
+          "label": {
+            "vi": "Địa chỉ",
+            "en": "Address"
+          },
+          "value": "Goethestraße 7, Leipzig"
+        },
+        {
+          "label": {
+            "vi": "Ngày học",
+            "en": "Course day"
+          },
+          "value": "Samstag"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "vorname",
+          "label": "Vorname",
+          "slotId": "first"
+        },
+        {
+          "id": "nachname",
+          "label": "Familienname",
+          "slotId": "last"
+        },
+        {
+          "id": "land",
+          "label": "Herkunftsland",
+          "slotId": "country"
+        },
+        {
+          "id": "adresse",
+          "label": "Straße, Hausnummer",
+          "slotId": "street"
+        },
+        {
+          "id": "kurstag",
+          "label": "Kurstag",
+          "slotId": "day"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "first",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "mai"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "last",
+            "description": {
+              "vi": "họ của cô ấy",
+              "en": "her surname"
+            },
+            "variants": [
+              "tran"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "country",
+            "description": {
+              "vi": "quê của cô ấy",
+              "en": "her home country"
+            },
+            "variants": [
+              "vietnam"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "street",
+            "description": {
+              "vi": "địa chỉ",
+              "en": "address"
+            },
+            "variants": [
+              "goethestraße 7",
+              "goethestrasse 7"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày học",
+              "en": "course day"
+            },
+            "variants": [
+              "samstag"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 15
+      },
+      "modelAnswers": [
+        "Mai | Tran | Vietnam | Goethestraße 7 | Samstag"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.goethe_b_formular",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Teil 1 — Bạn của bạn là Tuấn Le muốn thuê một chiếc xe đạp trong ba ngày. Anh ấy 24 tuổi, ở khách sạn Hotel Sonne và có số điện thoại 0151 223344. Hãy điền phiếu cho anh ấy (năm chỗ trống).",
+        "en": "Teil 1 — Your friend Tuấn Le wants to hire a bicycle for three days. He is 24, is staying at the Hotel Sonne and his phone number is 0151 223344. Fill in the form for him (five gaps)."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Tên",
+            "en": "Name"
+          },
+          "value": "Tuấn"
+        },
+        {
+          "label": {
+            "vi": "Họ",
+            "en": "Surname"
+          },
+          "value": "Le"
+        },
+        {
+          "label": {
+            "vi": "Tuổi",
+            "en": "Age"
+          },
+          "value": "24"
+        },
+        {
+          "label": {
+            "vi": "Khách sạn",
+            "en": "Hotel"
+          },
+          "value": "Hotel Sonne"
+        },
+        {
+          "label": {
+            "vi": "Điện thoại",
+            "en": "Phone"
+          },
+          "value": "0151 223344"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "vorname",
+          "label": "Vorname",
+          "slotId": "first"
+        },
+        {
+          "id": "nachname",
+          "label": "Familienname",
+          "slotId": "last"
+        },
+        {
+          "id": "alter",
+          "label": "Alter",
+          "slotId": "age"
+        },
+        {
+          "id": "hotel",
+          "label": "Hotel",
+          "slotId": "hotel"
+        },
+        {
+          "id": "telefon",
+          "label": "Telefon",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "first",
+            "description": {
+              "vi": "tên",
+              "en": "name"
+            },
+            "variants": [
+              "tuấn"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "last",
+            "description": {
+              "vi": "họ của anh ấy",
+              "en": "his surname"
+            },
+            "variants": [
+              "le"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": {
+              "vi": "tuổi",
+              "en": "age"
+            },
+            "variants": [
+              "24",
+              "vierundzwanzig"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "hotel",
+            "description": {
+              "vi": "khách sạn",
+              "en": "hotel"
+            },
+            "variants": [
+              "hotel sonne",
+              "sonne"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": {
+              "vi": "số điện thoại",
+              "en": "phone number"
+            },
+            "variants": [
+              "0151 223344",
+              "0151223344"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 15
+      },
+      "modelAnswers": [
+        "Tuấn | Le | 24 | Hotel Sonne | 0151 223344"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "de:w:hotel"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.goethe_a_nachricht",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Teil 2 — Bạn có sinh nhật vào thứ Bảy. Hãy viết cho bạn của bạn là Paul (khoảng 30 từ): mời anh ấy đến dự tiệc, nói giờ bắt đầu, và nhờ anh ấy mang đồ uống. Có lời chào và lời chào kết.",
+        "en": "Teil 2 — It is your birthday on Saturday. Write to your friend Paul (about 30 words): invite him to the party, say when it starts, and ask him to bring drinks. Include a greeting and a closing."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Paul"
+        },
+        {
+          "label": {
+            "vi": "Khi nào",
+            "en": "When"
+          },
+          "value": "Samstag, 19 Uhr"
+        },
+        {
+          "label": {
+            "vi": "Nhờ mang",
+            "en": "Please bring"
+          },
+          "value": "Getränke"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "hallo",
+              "hi",
+              "liebe",
+              "lieber",
+              "guten tag",
+              "sehr geehrte"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "invite",
+            "description": {
+              "vi": "lời mời dự tiệc",
+              "en": "party invitation"
+            },
+            "variants": [
+              "kommst du",
+              "komm doch",
+              "lade dich ein",
+              "möchtest du kommen"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ bắt đầu",
+              "en": "start time"
+            },
+            "variants": [
+              "um 19 uhr",
+              "um sieben",
+              "um 7",
+              "um neunzehn uhr"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "bring",
+            "description": {
+              "vi": "nhờ mang đồ uống",
+              "en": "asking him to bring drinks"
+            },
+            "variants": [
+              "getränke",
+              "trinken",
+              "saft",
+              "wasser",
+              "cola"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "viele grüße",
+              "liebe grüße",
+              "bis bald",
+              "tschüss",
+              "mit freundlichen grüßen",
+              "bis dann"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 20,
+        "maxTokens": 45
+      },
+      "modelAnswers": [
+        "Lieber Paul, am Samstag habe ich Geburtstag und ich mache eine Party. Kommst du auch? Die Party beginnt um 19 Uhr. Kannst du bitte Getränke mitbringen? Viele Grüße\nLan"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "de:w:geburtstag",
+        "de:w:samstag"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.write.goethe_b_nachricht",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Teil 2 — Bạn không thể đến lớp tiếng Đức ngày mai. Hãy viết cho cô giáo, bà Wolf (khoảng 30 từ): nói rằng bạn không đến được, giải thích lý do, và hỏi về bài tập về nhà. Có lời chào và lời chào kết.",
+        "en": "Teil 2 — You cannot come to your German class tomorrow. Write to your teacher, Frau Wolf (about 30 words): say you cannot come, explain why, and ask about the homework. Include a greeting and a closing."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi",
+            "en": "To"
+          },
+          "value": "Frau Wolf"
+        },
+        {
+          "label": {
+            "vi": "Lý do",
+            "en": "Reason"
+          },
+          "value": "krank"
+        },
+        {
+          "label": {
+            "vi": "Hỏi",
+            "en": "Ask about"
+          },
+          "value": "Hausaufgaben"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào",
+              "en": "greeting"
+            },
+            "variants": [
+              "liebe frau wolf",
+              "sehr geehrte frau wolf",
+              "guten tag",
+              "hallo"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "absent",
+            "description": {
+              "vi": "bạn không đến được",
+              "en": "you cannot come"
+            },
+            "variants": [
+              "nicht zum kurs kommen",
+              "nicht kommen",
+              "komme nicht",
+              "kann leider nicht"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "reason",
+            "description": {
+              "vi": "lý do",
+              "en": "reason"
+            },
+            "variants": [
+              "krank"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "homework",
+            "description": {
+              "vi": "bài tập về nhà",
+              "en": "homework"
+            },
+            "variants": [
+              "hausaufgaben",
+              "hausaufgabe"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết",
+              "en": "closing"
+            },
+            "variants": [
+              "viele grüße",
+              "liebe grüße",
+              "bis bald",
+              "tschüss",
+              "mit freundlichen grüßen",
+              "bis dann"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 20,
+        "maxTokens": 45
+      },
+      "modelAnswers": [
+        "Liebe Frau Wolf, morgen kann ich leider nicht zum Kurs kommen. Ich bin krank und muss zum Arzt. Was sind die Hausaufgaben? Können Sie mir bitte schreiben? Viele Grüße\nMinh"
+      ],
+      "objectiveRefs": [
+        "de.obj.writing.short_message"
+      ],
+      "lexemeRefs": [],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    }
+  ]
+}

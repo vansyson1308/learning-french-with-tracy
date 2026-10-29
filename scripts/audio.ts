@@ -70,6 +70,8 @@ type ReceptionManifest = {
   pipelineVersion: number;
   /** P5b: pipeline version of the story sentences (bitrate), when it differs. */
   storyPipelineVersion?: number;
+  /** QC 2026-10-29 §1.6: story sentences are not bundled for this language (size budget); the reader shows text only. */
+  storyAudio?: { bundled: false; reason: string };
   note: string;
   voices: ReceptionVoice[];
   excludedVoices: { id: string; reason: string }[];
@@ -418,7 +420,8 @@ function plan(mode: "canary" | "generate", out: string | undefined, courses?: st
         for (const clip of listening.clips) push(clip.id, clip.segments.map((seg) => ({ voiceId: listening.voiceCast[seg.speaker].voiceId, speaker: listening.voiceCast[seg.speaker].speaker, text: seg.text })));
       }
       // P5b graded stories: one asset per sentence (clip id <storyId>#<n>), voice from the stories' cast.
-      if (mode === "generate" && existsSync(STORIES_PATH)) {
+      if (r.storyAudio?.bundled === false) console.log(`story sentences not bundled for ${LANG}: ${r.storyAudio.reason}`);
+      else if (mode === "generate" && existsSync(STORIES_PATH)) {
         const stories = storiesSchema(LANG).parse(JSON.parse(readFileSync(STORIES_PATH, "utf8")));
         const version = storyPipelineVersion(LANG);
         for (const story of stories.stories) story.sentences.forEach((s, i) => push(storyClipId(story.id, i), storySentenceSegments(stories, s), version));
@@ -538,6 +541,8 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   );
   console.log(`qa (${LANG}): ${rows.length} clips, ${failures} technical failures, ${review.length} clips for review (asr model: ${asrModel ?? "none"}) → ${reportPath}`);
   for (const v of voiceSummary) console.log(`  ${v.courseId ?? v.layer} ${v.voiceId}: meanWER=${v.meanWer} techFails=${v.technicalFailures}`);
+  // 2026-10-29: run 40758568130 failed on 3 clips the log never named — list every failure with its issues.
+  for (const r of rows.filter((x) => x.technical === "fail")) console.log(`  FAIL ${r.clipId} "${r.transcript}" (${r.durationSec}s, max ${r.maxVolumeDb}dB): ${r.technicalIssues.join("; ")}`);
   if (failures > 0 && arg("strict") === "true") fail("technical QA failures in strict mode");
 }
 

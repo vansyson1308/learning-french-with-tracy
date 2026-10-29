@@ -314,7 +314,7 @@ describe("dueReviewQueue ordering", () => {
     expect(itemIdForCourse(FR_COURSE_ID, "unknown!")).toContain("fr:legacy:");
     // P3a: Spanish has a registry too; German (no lexicon yet) keeps raw surfaces.
     expect(itemIdForCourse("es-en", "el agua")).toBe("es:w:agua");
-    expect(itemIdForCourse("de-en", "das Haus")).toBe("das Haus");
+    expect(itemIdForCourse("it-en", "la casa")).toBe("la casa");
   });
 });
 

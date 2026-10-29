@@ -26,6 +26,7 @@ const TYPES_BY_SKILL: Record<string, readonly string[]> = {
 /** Exercise types each task format may use. */
 const TYPES_BY_FORMAT: Record<string, readonly string[]> = {
   mcq3: ["readingComprehension", "listeningComprehension", "select"],
+  mcq2: ["readingComprehension", "listeningComprehension", "select"],
   pictureMcq: ["readingComprehension", "listeningComprehension", "select"],
   matchToPool: ["readingComprehension", "listeningComprehension"],
   completeFromPool: ["readingComprehension", "listeningComprehension"],
@@ -105,11 +106,14 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
   for (const s of track.sections) {
     if (new Set(s.tasks.map((t) => t.id)).size !== s.tasks.length) err(`${s.id}: duplicate task id`);
     if (s.skill === "listening" && s.playsPerRecording === undefined) err(`${s.id}: a listening section declares playsPerRecording`);
+    const pointed = s.tasks.filter((t) => t.points !== undefined).length;
+    if (pointed !== 0 && pointed !== s.tasks.length) err(`${s.id}: task points must be set on every task of the section or on none`);
     for (const t of s.tasks) {
       const pool = EXAM_POOL_FORMATS.includes(t.format);
       if (pool && (t.poolSize === undefined || t.poolSize <= t.itemsPerForm)) err(`${s.id}/${t.id}: ${t.format} needs a poolSize larger than itemsPerForm`);
       if (!pool && t.poolSize !== undefined) err(`${s.id}/${t.id}: poolSize only applies to pool formats`);
       if (t.answerWords && s.skill !== "writing") err(`${s.id}/${t.id}: answerWords only applies to writing tasks`);
+      if (t.playsPerRecording !== undefined && s.skill !== "listening") err(`${s.id}/${t.id}: playsPerRecording only applies to listening parts`);
       if (t.speakingMinutes && s.skill !== "speaking") err(`${s.id}/${t.id}: speakingMinutes only applies to speaking tasks`);
       for (const band of [t.stimulusWords, t.answerWords]) if (band && band.min > band.max) err(`${s.id}/${t.id}: word band min > max`);
     }
@@ -172,6 +176,7 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
     if (!TYPES_BY_FORMAT[task.format].includes(e.type)) err(`${item.id}: ${e.type} is not a ${task.format} item`);
     const options = Array.isArray(e.options) ? e.options : null;
     if ((task.format === "mcq3" || task.format === "pictureMcq") && options && options.length !== 3) err(`${item.id}: ${task.format} items offer exactly 3 options (the public format)`);
+    if (task.format === "mcq2" && options && options.length !== 2) err(`${item.id}: mcq2 items offer exactly 2 options (the public format)`);
     if (task.format === "pictureMcq" && options && options.some((o) => !o.emoji)) err(`${item.id}: pictureMcq options are pictures — every option needs an emoji`);
     if (EXAM_POOL_FORMATS.includes(task.format) && options && options.length !== task.poolSize) err(`${item.id}: ${task.format} items offer the task's whole pool (${task.poolSize} options), got ${options.length}`);
     if (e.gradeTargets !== undefined) err(`${item.id}: exam items must not carry lexical gradeTargets`);
@@ -186,8 +191,15 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
       return found ?? null;
     };
     const stim = stimulus("readingId", refs.readings) ?? stimulus("clipId", refs.clips);
-    if (stim && section.playsPerRecording !== undefined && typeof e.clipId === "string" && stim.maxPlays !== section.playsPerRecording) {
-      err(`${item.id}: clip ${e.clipId as string} plays ${stim.maxPlays}× — the section plays each recording ${section.playsPerRecording}×`);
+    // The clip's scored policy is the product cap (§67: 2); an exam part may only play it as often or less.
+    const plays = task.playsPerRecording ?? section.playsPerRecording;
+    if (stim && plays !== undefined && typeof e.clipId === "string" && stim.maxPlays !== undefined && stim.maxPlays < plays) {
+      err(`${item.id}: clip ${e.clipId as string} plays at most ${stim.maxPlays}× — the part plays each recording ${plays}×`);
+    }
+    // QC 2026-10-29 §1.5: a points-weighted message part is scored by its rubric — greeting first, closing last, guided points between.
+    if (task.format === "short_text" && task.points !== undefined && e.type === "guidedWriting") {
+      const slots = (e.rubric as { requiredSlots?: unknown[] } | undefined)?.requiredSlots ?? [];
+      if (slots.length < 3) err(`${item.id}: a points-weighted message needs ≥ 3 rubric slots (greeting first, closing last, the guided points between)`);
     }
     if (stim && task.stimulusWords) {
       const units = task.stimulusWords.per === "block" ? stim.blocks : stim.texts;
@@ -292,6 +304,8 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
         itemsPerForm: t.itemsPerForm,
         ...(t.poolSize !== undefined ? { poolSize: t.poolSize } : {}),
         ...(t.speakingMinutes !== undefined ? { speakingMinutes: t.speakingMinutes } : {}),
+        ...(t.points !== undefined ? { points: t.points } : {}),
+        ...(t.playsPerRecording !== undefined ? { playsPerRecording: t.playsPerRecording } : {}),
       })),
     })),
     passRule: {

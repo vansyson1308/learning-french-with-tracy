@@ -1,0 +1,5747 @@
+{
+  "step": "lexicon-review",
+  "target": "de",
+  "native": "vi",
+  "courseId": "de-vi",
+  "generator": "scripts/author.ts",
+  "task": "Xem lại từ điển: với mỗi lexeme trong INPUT.json (những mục còn `TODO:vi`, gloss bắc cầu qua tiếng Anh, hoặc confusables tự sinh), trả về glossVi (gloss tiếng Việt ngắn, đúng từ loại), exampleTranslationsVi (bản dịch tiếng Việt cho từng ví dụ, theo thứ tự), confusables (id cho phép, tuỳ chọn), note. Không đổi id; không dịch câu ví dụ sang ngôn ngữ khác.",
+  "sessions": "2–3 (≈ 300 lexeme mỗi phiên)",
+  "recordSchema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^de:w:[a-z0-9-]+$"
+      },
+      "glossVi": {
+        "type": "string",
+        "minLength": 1
+      },
+      "exampleTranslationsVi": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "confusables": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^de:w:[a-z0-9-]+$"
+        }
+      },
+      "dropExamples": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "addExamples": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vi": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "target",
+            "en",
+            "vi"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "partOfSpeech": {
+        "type": "string",
+        "enum": [
+          "noun",
+          "verb",
+          "adjective",
+          "adverb",
+          "pronoun",
+          "determiner",
+          "preposition",
+          "conjunction",
+          "interjection",
+          "expression",
+          "other"
+        ]
+      },
+      "note": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "glossVi",
+      "exampleTranslationsVi"
+    ],
+    "additionalProperties": false
+  },
+  "allowedIds": {
+    "lexemes": [
+      {
+        "id": "de:w:mann",
+        "surface": "der Mann",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:frau",
+        "surface": "die Frau",
+        "gloss": "đàn bà",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:junge",
+        "surface": "der Junge",
+        "gloss": "con trai",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:madchen",
+        "surface": "das Mädchen",
+        "gloss": "con gái",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:apfel",
+        "surface": "der Apfel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:brot",
+        "surface": "das Brot",
+        "gloss": "bánh mì",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:wasser",
+        "surface": "das Wasser",
+        "gloss": "nước (H₂O)",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:milch",
+        "surface": "die Milch",
+        "gloss": "sữa",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:essen",
+        "surface": "essen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:trinken",
+        "surface": "trinken",
+        "gloss": "uống (rượu",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sein",
+        "surface": "sein",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ich",
+        "surface": "ich",
+        "gloss": null,
+        "partOfSpeech": "pronoun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:morgen",
+        "surface": "der Morgen",
+        "gloss": "buổi sáng",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:abend",
+        "surface": "der Abend",
+        "gloss": "buổi chiều",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:nacht",
+        "surface": "die Nacht",
+        "gloss": "đêm",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:tag",
+        "surface": "der Tag",
+        "gloss": "ban ngày",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:hallo",
+        "surface": "Hallo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:tschuss",
+        "surface": "Tschüss",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:bitte",
+        "surface": "Bitte",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:danke",
+        "surface": "Danke",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:entschuldigung",
+        "surface": "Entschuldigung",
+        "gloss": "lời biện bạch",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:willkommen",
+        "surface": "Willkommen",
+        "gloss": "sự được tiếp đi ân cần",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:freund",
+        "surface": "Freund",
+        "gloss": "người bạn",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:name",
+        "surface": "Name",
+        "gloss": "tên",
+        "partOfSpeech": "noun",
+        "topic": "greetings"
+      },
+      {
+        "id": "de:w:kaffee",
+        "surface": "der Kaffee",
+        "gloss": "cà phê",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:reis",
+        "surface": "der Reis",
+        "gloss": "lúa",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:ei",
+        "surface": "das Ei",
+        "gloss": "trứng",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:kase",
+        "surface": "der Käse",
+        "gloss": "phó mát",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:obst",
+        "surface": "das Obst",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:saft",
+        "surface": "der Saft",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:fisch",
+        "surface": "der Fisch",
+        "gloss": "cá",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:zucker",
+        "surface": "der Zucker",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:hund",
+        "surface": "der Hund",
+        "gloss": "chó",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:katze",
+        "surface": "die Katze",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:pferd",
+        "surface": "das Pferd",
+        "gloss": "con ngựa",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:vogel",
+        "surface": "der Vogel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:kuh",
+        "surface": "die Kuh",
+        "gloss": "bò cái",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:schaf",
+        "surface": "das Schaf",
+        "gloss": "con cừu",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:maus",
+        "surface": "die Maus",
+        "gloss": "chuột",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:elefant",
+        "surface": "der Elefant",
+        "gloss": "con voi",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:lowe",
+        "surface": "der Löwe",
+        "gloss": "con sư tử",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:kaninchen",
+        "surface": "das Kaninchen",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:schlange",
+        "surface": "die Schlange",
+        "gloss": "rắn",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:stadt",
+        "surface": "die Stadt",
+        "gloss": "thành phố",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:bahnhof",
+        "surface": "der Bahnhof",
+        "gloss": "nhà ga",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:zug",
+        "surface": "der Zug",
+        "gloss": "xe lửa",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:stra-e",
+        "surface": "die Straße",
+        "gloss": "phố",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:museum",
+        "surface": "das Museum",
+        "gloss": "viện bảo tàng",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:flughafen",
+        "surface": "der Flughafen",
+        "gloss": "sân bay",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:hotel",
+        "surface": "das Hotel",
+        "gloss": "khách sạn",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:karte",
+        "surface": "die Karte",
+        "gloss": "cạc",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:ticket",
+        "surface": "das Ticket",
+        "gloss": "vé",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:koffer",
+        "surface": "der Koffer",
+        "gloss": "va li",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:reise",
+        "surface": "die Reise",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:urlaub",
+        "surface": "der Urlaub",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:haben",
+        "surface": "haben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:werden",
+        "surface": "werden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:konnen",
+        "surface": "können",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:kommen",
+        "surface": "kommen",
+        "gloss": "đến",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sagen",
+        "surface": "sagen",
+        "gloss": "tuyên bố",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:machen",
+        "surface": "machen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:sehen",
+        "surface": "sehen",
+        "gloss": "thấy",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wollen",
+        "surface": "wollen",
+        "gloss": "thiếu",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:mussen",
+        "surface": "müssen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wissen",
+        "surface": "wissen",
+        "gloss": "biết",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:geben",
+        "surface": "geben",
+        "gloss": "cho",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sollen",
+        "surface": "sollen",
+        "gloss": "nên",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dann",
+        "surface": "dann",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:lassen",
+        "surface": "lassen",
+        "gloss": "cho phép",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:horen",
+        "surface": "hören",
+        "gloss": "nghe",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:immer",
+        "surface": "immer",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:warum",
+        "surface": "warum",
+        "gloss": "tại sao",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wieder",
+        "surface": "wieder",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:jetzt",
+        "surface": "jetzt",
+        "gloss": "bây giờ",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schon",
+        "surface": "schon",
+        "gloss": "đã",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sehr",
+        "surface": "sehr",
+        "gloss": "rất",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:finden",
+        "surface": "finden",
+        "gloss": "tìm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:vielleicht",
+        "surface": "vielleicht",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ganz",
+        "surface": "ganz",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:nehmen",
+        "surface": "nehmen",
+        "gloss": "cầm",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:nie",
+        "surface": "nie",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:brauchen",
+        "surface": "brauchen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:glauben",
+        "surface": "glauben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:einmal",
+        "surface": "einmal",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gut",
+        "surface": "gut",
+        "gloss": "tốt",
+        "partOfSpeech": "adjective",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:ein",
+        "surface": "ein",
+        "gloss": "đang",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:verstehen",
+        "surface": "verstehen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wirklich",
+        "surface": "wirklich",
+        "gloss": "thực",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bringen",
+        "surface": "bringen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:stehen",
+        "surface": "stehen",
+        "gloss": "đứng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bleiben",
+        "surface": "bleiben",
+        "gloss": "còn lại",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kennen",
+        "surface": "kennen",
+        "gloss": "biết",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:jahr",
+        "surface": "das Jahr",
+        "gloss": "năm",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:einfach",
+        "surface": "einfach",
+        "gloss": "thoải mái",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:helfen",
+        "surface": "helfen",
+        "gloss": "giúp đỡ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gott",
+        "surface": "der Gott",
+        "gloss": "thần",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:mal",
+        "surface": "das Mal",
+        "gloss": "thời gian",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:kind",
+        "surface": "das Kind",
+        "gloss": "con dê non",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "de:w:leben",
+        "surface": "leben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fahren",
+        "surface": "fahren",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:reden",
+        "surface": "reden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sprechen",
+        "surface": "sprechen",
+        "gloss": "nói (ngôn ngữ",
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:vater",
+        "surface": "der Vater",
+        "gloss": "cha",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:halten",
+        "surface": "halten",
+        "gloss": "cầm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:neu",
+        "surface": "neu",
+        "gloss": "mới",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:klein",
+        "surface": "klein",
+        "gloss": "nhỏ",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:malen",
+        "surface": "malen",
+        "gloss": "sơn",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:genau",
+        "surface": "genau",
+        "gloss": "chính xác",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gro",
+        "surface": "groß",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schon-adjective",
+        "surface": "schön",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:geld",
+        "surface": "das Geld",
+        "gloss": "tiền",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:richtig",
+        "surface": "richtig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:mutter",
+        "surface": "die Mutter",
+        "gloss": "mẹ",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "de:w:fragen",
+        "surface": "fragen",
+        "gloss": "hỏi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wieso",
+        "surface": "wieso",
+        "gloss": "tại sao",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:erzahlen",
+        "surface": "erzählen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:lieben",
+        "surface": "lieben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:bekommen",
+        "surface": "bekommen",
+        "gloss": "nhận",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:her",
+        "surface": "her",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:warten",
+        "surface": "warten",
+        "gloss": "chờ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:holen",
+        "surface": "holen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sterben",
+        "surface": "sterben",
+        "gloss": "chết",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sache",
+        "surface": "die Sache",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:spielen",
+        "surface": "spielen",
+        "gloss": "chơi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dort",
+        "surface": "dort",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:haus",
+        "surface": "das Haus",
+        "gloss": "căn nhà",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:gern",
+        "surface": "gern",
+        "gloss": "sẵn lòng",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:problem",
+        "surface": "das Problem",
+        "gloss": "vấn đề",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ordnung",
+        "surface": "die Ordnung",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:tot",
+        "surface": "tot",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:passieren",
+        "surface": "passieren",
+        "gloss": "xảy đến",
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:arbeit",
+        "surface": "die Arbeit",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:spat",
+        "surface": "spät",
+        "gloss": "muộn",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:davon",
+        "surface": "davon",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:leid",
+        "surface": "das Leid",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:arbeiten",
+        "surface": "arbeiten",
+        "gloss": "làm việc",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dafur",
+        "surface": "dafür",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:zeigen",
+        "surface": "zeigen",
+        "gloss": "vót nhọn (bút chì... )",
+        "partOfSpeech": "verb",
+        "topic": "technology"
+      },
+      {
+        "id": "de:w:sicher",
+        "surface": "sicher",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fallen",
+        "surface": "fallen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:leute",
+        "surface": "die Leute",
+        "gloss": "nhân dân",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:glaube",
+        "surface": "der Glaube",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:welt",
+        "surface": "die Welt",
+        "gloss": "thế giới",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fuhlen",
+        "surface": "fühlen",
+        "gloss": "sờ mó",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:angst",
+        "surface": "die Angst",
+        "gloss": "sự sợ",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:lieb",
+        "surface": "lieb",
+        "gloss": "đáng yêu",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:doktor",
+        "surface": "der Doktor",
+        "gloss": "bác sĩ y khoa",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:darauf",
+        "surface": "darauf",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:alle",
+        "surface": "alle",
+        "gloss": "hết",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:naturlich",
+        "surface": "natürlich",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:treffen",
+        "surface": "treffen",
+        "gloss": "gặp",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:liegen",
+        "surface": "liegen",
+        "gloss": "nói dối",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:moment",
+        "surface": "der Moment",
+        "gloss": "chốc",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:ziehen",
+        "surface": "ziehen",
+        "gloss": "lôi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wahr",
+        "surface": "wahr",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:familie",
+        "surface": "die Familie",
+        "gloss": "gia đình",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:schnell",
+        "surface": "schnell",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:viel",
+        "surface": "viel",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:weit",
+        "surface": "weit",
+        "gloss": "rộng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sohn",
+        "surface": "der Sohn",
+        "gloss": "con trai",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:nah",
+        "surface": "nah",
+        "gloss": "gần",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:suchen",
+        "surface": "suchen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:daran",
+        "surface": "daran",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sonst",
+        "surface": "sonst",
+        "gloss": "khác",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schlafen",
+        "surface": "schlafen",
+        "gloss": "ngủ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bruder",
+        "surface": "der Bruder",
+        "gloss": "anh",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:musik",
+        "surface": "die Musik",
+        "gloss": "âm nhạc",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:verlieren",
+        "surface": "verlieren",
+        "gloss": "mất không còn nữa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:daruber",
+        "surface": "darüber",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gehoren",
+        "surface": "gehören",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sofort",
+        "surface": "sofort",
+        "gloss": "ngay lập tức",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:entschuldigen",
+        "surface": "entschuldigen",
+        "gloss": "tha lỗi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:alt",
+        "surface": "alt",
+        "gloss": "già",
+        "partOfSpeech": "adjective",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:woche",
+        "surface": "die Woche",
+        "gloss": "tuần",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:nennen",
+        "surface": "nennen",
+        "gloss": "đặt tên",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schaffen",
+        "surface": "schaffen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:auge",
+        "surface": "das Auge",
+        "gloss": "mắt: cơ quan thị giác của con người hoặc con vật",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:fertig",
+        "surface": "fertig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:minute",
+        "surface": "die Minute",
+        "gloss": "phút",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:sitzen",
+        "surface": "sitzen",
+        "gloss": "ngồi",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wichtig",
+        "surface": "wichtig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:frage",
+        "surface": "die Frage",
+        "gloss": "câu hỏi",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "de:w:hilfe",
+        "surface": "die Hilfe",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:erst",
+        "surface": "erst",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:stellen",
+        "surface": "stellen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:vergessen",
+        "surface": "vergessen",
+        "gloss": "quên",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wenig",
+        "surface": "wenig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:seite",
+        "surface": "die Seite",
+        "gloss": "mặt",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:nett",
+        "surface": "nett",
+        "gloss": "thú vị",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:hand",
+        "surface": "die Hand",
+        "gloss": "tay",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dazu",
+        "surface": "dazu",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schauen",
+        "surface": "schauen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schatz",
+        "surface": "der Schatz",
+        "gloss": "bạc vàng",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:hoffen",
+        "surface": "hoffen",
+        "gloss": "hy vọng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:laufen",
+        "surface": "laufen",
+        "gloss": "đi",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:bald",
+        "surface": "bald",
+        "gloss": "chẳng bao lâu nữa",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schlecht",
+        "surface": "schlecht",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:kopf",
+        "surface": "der Kopf",
+        "gloss": "cái đầu (người",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:schreiben",
+        "surface": "schreiben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:auto",
+        "surface": "das Auto",
+        "gloss": "xe ô tô",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:alter",
+        "surface": "das Alter",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:uhr",
+        "surface": "die Uhr",
+        "gloss": "đồng hồ",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:lang",
+        "surface": "lang",
+        "gloss": "dài",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wort",
+        "surface": "das Wort",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:einzig",
+        "surface": "einzig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gleich",
+        "surface": "gleich",
+        "gloss": "ngang",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:tur",
+        "surface": "die Tür",
+        "gloss": "cửa",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:falsch",
+        "surface": "falsch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:setzen",
+        "surface": "setzen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:rede",
+        "surface": "die Rede",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:retten",
+        "surface": "retten",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gar",
+        "surface": "gar",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gerade",
+        "surface": "gerade",
+        "gloss": "bây giờ",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:lesen",
+        "surface": "lesen",
+        "gloss": "đọc",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:jung",
+        "surface": "jung",
+        "gloss": "trẻ",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schwer",
+        "surface": "schwer",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:erste",
+        "surface": "erste",
+        "gloss": "thứ nhất",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schwester",
+        "surface": "die Schwester",
+        "gloss": "chị",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:grund",
+        "surface": "der Grund",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kaufen",
+        "surface": "kaufen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kummern",
+        "surface": "kümmern",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:idee",
+        "surface": "die Idee",
+        "gloss": "quan niệm",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bereit",
+        "surface": "bereit",
+        "gloss": "sẵn sàng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:tod",
+        "surface": "der Tod",
+        "gloss": "sự chết",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:monat",
+        "surface": "der Monat",
+        "gloss": "tháng",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:letzte",
+        "surface": "letzte",
+        "gloss": "cuối cùng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ahnung",
+        "surface": "die Ahnung",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sorgen",
+        "surface": "sorgen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:drau-en",
+        "surface": "draußen",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:passen",
+        "surface": "passen",
+        "gloss": "hợp",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:darum",
+        "surface": "darum",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:polizei",
+        "surface": "die Polizei",
+        "gloss": "cảnh sát",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:verschwinden",
+        "surface": "verschwinden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schlimm",
+        "surface": "schlimm",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:tochter",
+        "surface": "die Tochter",
+        "gloss": "con gái",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:land",
+        "surface": "das Land",
+        "gloss": "nước",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:runter",
+        "surface": "runter",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:eigen",
+        "surface": "eigen",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:geschichte",
+        "surface": "die Geschichte",
+        "gloss": "sử",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:recht",
+        "surface": "recht",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:job",
+        "surface": "der Job",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:hin",
+        "surface": "hin",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schlagen",
+        "surface": "schlagen",
+        "gloss": "đánh đập",
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:scheinen",
+        "surface": "scheinen",
+        "gloss": "chiếu sáng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:versprechen",
+        "surface": "versprechen",
+        "gloss": "hứa",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:drin",
+        "surface": "drin",
+        "gloss": "mặt trong",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:typ",
+        "surface": "der Typ",
+        "gloss": "kiểu mẫu",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sogar",
+        "surface": "sogar",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:teufel",
+        "surface": "der Teufel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:fangen",
+        "surface": "fangen",
+        "gloss": "bắt lấy",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:je",
+        "surface": "je",
+        "gloss": "bao giờ",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:woher",
+        "surface": "woher",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:rein",
+        "surface": "rein",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:reichen",
+        "surface": "reichen",
+        "gloss": "chìa ra",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:mama",
+        "surface": "die Mama",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:uberhaupt",
+        "surface": "überhaupt",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:tragen",
+        "surface": "tragen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:liebe",
+        "surface": "die Liebe",
+        "gloss": "lòng yêu",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:legen",
+        "surface": "legen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:freuen",
+        "surface": "freuen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:anrufen",
+        "surface": "anrufen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:spiel",
+        "surface": "das Spiel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:oben",
+        "surface": "oben",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fall",
+        "surface": "der Fall",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:etwa",
+        "surface": "etwa",
+        "gloss": "khoảng chừng",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:anders",
+        "surface": "anders",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:chance",
+        "surface": "die Chance",
+        "gloss": "sự may rủi",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:zusammen",
+        "surface": "zusammen",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bezahlen",
+        "surface": "bezahlen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:glucklich",
+        "surface": "glücklich",
+        "gloss": "vui sướng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wahrheit",
+        "surface": "die Wahrheit",
+        "gloss": "sự thật",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:deshalb",
+        "surface": "deshalb",
+        "gloss": "bởi vậy",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:vertrauen",
+        "surface": "vertrauen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:klingen",
+        "surface": "klingen",
+        "gloss": "đeo nhẫn cho (ai)",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:stecken",
+        "surface": "stecken",
+        "gloss": "đâm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:frei",
+        "surface": "frei",
+        "gloss": "tự do",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kurz",
+        "surface": "kurz",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:niemals",
+        "surface": "niemals",
+        "gloss": "không bao giờ",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:macht",
+        "surface": "die Macht",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:moglich",
+        "surface": "möglich",
+        "gloss": "có thể",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sorge",
+        "surface": "die Sorge",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bett",
+        "surface": "das Bett",
+        "gloss": "cái giường: cái đồ gỗ cho ngủ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:enden",
+        "surface": "enden",
+        "gloss": "kết thúc",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:manchmal",
+        "surface": "manchmal",
+        "gloss": "đôi khi",
+        "partOfSpeech": "adverb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:bitten",
+        "surface": "bitten",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:oft",
+        "surface": "oft",
+        "gloss": "thường",
+        "partOfSpeech": "adverb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:lachen",
+        "surface": "lachen",
+        "gloss": "cười",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:verruckt",
+        "surface": "verrückt",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:vorbei",
+        "surface": "vorbei",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:anfangen",
+        "surface": "anfangen",
+        "gloss": "bắt đầu",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:versuch",
+        "surface": "der Versuch",
+        "gloss": "sự cố gắng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:benutzen",
+        "surface": "benutzen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gefuhl",
+        "surface": "das Gefühl",
+        "gloss": "sự sờ mó",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:erklaren",
+        "surface": "erklären",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dame",
+        "surface": "die Dame",
+        "gloss": "vợ",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:wunschen",
+        "surface": "wünschen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:endlich",
+        "surface": "endlich",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:andern",
+        "surface": "ändern",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fruh",
+        "surface": "früh",
+        "gloss": "sớm",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wohnen",
+        "surface": "wohnen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:funktionieren",
+        "surface": "funktionieren",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dran",
+        "surface": "dran",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:blut",
+        "surface": "das Blut",
+        "gloss": "máu",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:konig",
+        "surface": "der König",
+        "gloss": "vua",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:erwarten",
+        "surface": "erwarten",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:unten",
+        "surface": "unten",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:krieg",
+        "surface": "der Krieg",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:gluck",
+        "surface": "das Glück",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:beginnen",
+        "surface": "beginnen",
+        "gloss": "bắt đầu",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gewinnen",
+        "surface": "gewinnen",
+        "gloss": "chiếm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:eltern",
+        "surface": "Eltern",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "de:w:suche",
+        "surface": "die Suche",
+        "gloss": "sự nhìn để tìm",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:eigentlich",
+        "surface": "eigentlich",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ruhig",
+        "surface": "ruhig",
+        "gloss": "lặng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:papa",
+        "surface": "der Papa",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:irgendwie",
+        "surface": "irgendwie",
+        "gloss": "vì lý do này khác",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:heiraten",
+        "surface": "heiraten",
+        "gloss": "cưới (vợ)",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:hei",
+        "surface": "heiß",
+        "gloss": "nóng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kaum",
+        "surface": "kaum",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:singen",
+        "surface": "singen",
+        "gloss": "hát",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:ende",
+        "surface": "das Ende",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:telefon",
+        "surface": "das Telefon",
+        "gloss": "điện thoại",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "de:w:arzt",
+        "surface": "der Arzt",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:hubsch",
+        "surface": "hübsch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:verkaufen",
+        "surface": "verkaufen",
+        "gloss": "bán",
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:wohin",
+        "surface": "wohin",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:werfen",
+        "surface": "werfen",
+        "gloss": "ném",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:hassen",
+        "surface": "hassen",
+        "gloss": "căm thù",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:zuerst",
+        "surface": "zuerst",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kampf",
+        "surface": "der Kampf",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:nachricht",
+        "surface": "die Nachricht",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:folgen",
+        "surface": "folgen",
+        "gloss": "đi theo sau",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fuhren",
+        "surface": "führen",
+        "gloss": "buộc chì",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:froh",
+        "surface": "froh",
+        "gloss": "vui lòng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fehler",
+        "surface": "der Fehler",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schlie-en",
+        "surface": "schließen",
+        "gloss": "đóng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dollar",
+        "surface": "der Dollar",
+        "gloss": "đồng đô la (Mỹ)",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:buro",
+        "surface": "das Büro",
+        "gloss": "sự giúp đỡ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:hierher",
+        "surface": "hierher",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:offnen",
+        "surface": "öffnen",
+        "gloss": "mở",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:fliegen",
+        "surface": "fliegen",
+        "gloss": "bay",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:menge",
+        "surface": "die Menge",
+        "gloss": "lượng",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:dumm",
+        "surface": "dumm",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:million",
+        "surface": "die Million",
+        "gloss": "triệu",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ruhen",
+        "surface": "ruhen",
+        "gloss": "nghỉ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:dabei",
+        "surface": "dabei",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bereits",
+        "surface": "bereits",
+        "gloss": "đã",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:hoch",
+        "surface": "hoch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:herausfinden",
+        "surface": "herausfinden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:behalten",
+        "surface": "behalten",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:erkennen",
+        "surface": "erkennen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:su",
+        "surface": "süß",
+        "gloss": "ngọt",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:verdienen",
+        "surface": "verdienen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ziemlich",
+        "surface": "ziemlich",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:cool",
+        "surface": "cool",
+        "gloss": "mát mẻ",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:messen",
+        "surface": "messen",
+        "gloss": "đo",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:foto",
+        "surface": "das Foto",
+        "gloss": "ảnh",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:geschaft",
+        "surface": "das Geschäft",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:plan",
+        "surface": "der Plan",
+        "gloss": "kế hoạch",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kampfen",
+        "surface": "kämpfen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:kumpel",
+        "surface": "der Kumpel",
+        "gloss": "công nhân mỏ",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:geschehen",
+        "surface": "geschehen",
+        "gloss": "xảy ra",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:tanzen",
+        "surface": "tanzen",
+        "gloss": "nhảy múa",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:uberall",
+        "surface": "überall",
+        "gloss": "ở mọi nơi",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:entscheiden",
+        "surface": "entscheiden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:zerstoren",
+        "surface": "zerstören",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:stehlen",
+        "surface": "stehlen",
+        "gloss": "ăn cắp",
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:auf",
+        "surface": "auf",
+        "gloss": "hết",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ware",
+        "surface": "die Ware",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:bestimmt",
+        "surface": "bestimmt",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:danach",
+        "surface": "danach",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:leicht",
+        "surface": "leicht",
+        "gloss": "sáng sủa",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:deswegen",
+        "surface": "deswegen",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ernst",
+        "surface": "der Ernst",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bild",
+        "surface": "das Bild",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:blo",
+        "surface": "bloß",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:party",
+        "surface": "die Party",
+        "gloss": "tiệc",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:brechen",
+        "surface": "brechen",
+        "gloss": "làm gãy",
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:schuld",
+        "surface": "die Schuld",
+        "gloss": "nợ",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:luft",
+        "surface": "die Luft",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:lugen",
+        "surface": "lügen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:voll",
+        "surface": "voll",
+        "gloss": "đầy",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:zahlen",
+        "surface": "zahlen",
+        "gloss": "trả (tiền lương... )",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:hangen",
+        "surface": "hängen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:stelle",
+        "surface": "die Stelle",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gefallen",
+        "surface": "gefallen",
+        "gloss": "làm vui lòng",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:fu",
+        "surface": "der Fuß",
+        "gloss": "bàn chân",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:zwar",
+        "surface": "zwar",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schick",
+        "surface": "schick",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wahl",
+        "surface": "die Wahl",
+        "gloss": "lựa chọn",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:onkel",
+        "surface": "der Onkel",
+        "gloss": "chú",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gefahrlich",
+        "surface": "gefährlich",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:komisch",
+        "surface": "komisch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wahrscheinlich",
+        "surface": "wahrscheinlich",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:lustig",
+        "surface": "lustig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ubernehmen",
+        "surface": "übernehmen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:direkt",
+        "surface": "direkt",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:erreichen",
+        "surface": "erreichen",
+        "gloss": "chìa ra",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:bewegen",
+        "surface": "bewegen",
+        "gloss": "thúc đẩy",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:korper",
+        "surface": "der Körper",
+        "gloss": "thân thể",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:wunderbar",
+        "surface": "wunderbar",
+        "gloss": "kỳ lạ",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:hart",
+        "surface": "hart",
+        "gloss": "cứng",
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:damals",
+        "surface": "damals",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:vollig",
+        "surface": "völlig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:weinen",
+        "surface": "weinen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ruhe",
+        "surface": "die Ruhe",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:rest",
+        "surface": "der Rest",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:irgendwo",
+        "surface": "irgendwo",
+        "gloss": "ở một nơi nào đó",
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:genauso",
+        "surface": "genauso",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:zukunft",
+        "surface": "die Zukunft",
+        "gloss": "tương lai",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:krankenhaus",
+        "surface": "das Krankenhaus",
+        "gloss": "bệnh viện",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:antwort",
+        "surface": "die Antwort",
+        "gloss": "sự trả lời",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:beruhigen",
+        "surface": "beruhigen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gefangnis",
+        "surface": "das Gefängnis",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:satz",
+        "surface": "der Satz",
+        "gloss": "định lý",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:schworen",
+        "surface": "schwören",
+        "gloss": "thề",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:teilen",
+        "surface": "teilen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wohnung",
+        "surface": "die Wohnung",
+        "gloss": "nhà ở",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:schlussel",
+        "surface": "der Schlüssel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:film",
+        "surface": "der Film",
+        "gloss": "màng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:gucken",
+        "surface": "gucken",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:anwalt",
+        "surface": "der Anwalt",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:bestimmen",
+        "surface": "bestimmen",
+        "gloss": "định",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:arm",
+        "surface": "der Arm",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:agent",
+        "surface": "der Agent",
+        "gloss": "người đại lý",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:besuchen",
+        "surface": "besuchen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:zeug",
+        "surface": "das Zeug",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:team",
+        "surface": "das Team",
+        "gloss": "cỗ (ngựa",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:bose",
+        "surface": "böse",
+        "gloss": "xấu",
+        "partOfSpeech": "adjective",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:entscheidung",
+        "surface": "die Entscheidung",
+        "gloss": "sự giải quyết (một vấn đề... )",
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:nachdenken",
+        "surface": "nachdenken",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:treten",
+        "surface": "treten",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:au-erdem",
+        "surface": "außerdem",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:verletzen",
+        "surface": "verletzen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:ruf",
+        "surface": "der Ruf",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:beweis",
+        "surface": "der Beweis",
+        "gloss": "chứng",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:geist",
+        "surface": "der Geist",
+        "gloss": "tinh thần",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:nochmal",
+        "surface": "nochmal",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:sekunde",
+        "surface": "die Sekunde",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:beeilen",
+        "surface": "beeilen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:beweisen",
+        "surface": "beweisen",
+        "gloss": "chứng tỏ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:merken",
+        "surface": "merken",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:gedanke",
+        "surface": "der Gedanke",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:interessieren",
+        "surface": "interessieren",
+        "gloss": "làm cho quan tâm",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:wenigstens",
+        "surface": "wenigstens",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:handy",
+        "surface": "das Handy",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:tier",
+        "surface": "das Tier",
+        "gloss": "động vật",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:traumen",
+        "surface": "träumen",
+        "gloss": "mơ",
+        "partOfSpeech": "verb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:boden",
+        "surface": "der Boden",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:super",
+        "surface": "super",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:besonders",
+        "surface": "besonders",
+        "gloss": null,
+        "partOfSpeech": "adverb",
+        "topic": "everyday"
+      },
+      {
+        "id": "de:w:stimmen",
+        "surface": "stimmen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:general",
+        "surface": "der General",
+        "gloss": "cái chung",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:melden",
+        "surface": "melden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:drehen",
+        "surface": "drehen",
+        "gloss": "quay",
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:tisch",
+        "surface": "der Tisch",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:soldat",
+        "surface": "der Soldat",
+        "gloss": "lính",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:handeln",
+        "surface": "handeln",
+        "gloss": "đóng vai (kịch",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:echt",
+        "surface": "echt",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:partner",
+        "surface": "der Partner",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:prasident",
+        "surface": "der Präsident",
+        "gloss": "chủ tịch (buổi họp",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:beenden",
+        "surface": "beenden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:chef",
+        "surface": "der Chef",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:schwarz",
+        "surface": "schwarz",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "colors"
+      },
+      {
+        "id": "de:w:himmel",
+        "surface": "der Himmel",
+        "gloss": "trời",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:springen",
+        "surface": "springen",
+        "gloss": "+ up",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:klasse",
+        "surface": "die Klasse",
+        "gloss": "hình",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:fenster",
+        "surface": "das Fenster",
+        "gloss": "cửa sổ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:wirken",
+        "surface": "wirken",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:tasche",
+        "surface": "die Tasche",
+        "gloss": "bao",
+        "partOfSpeech": "noun",
+        "topic": "home"
+      },
+      {
+        "id": "de:w:platzen",
+        "surface": "platzen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:sinn",
+        "surface": "der Sinn",
+        "gloss": "giác quan",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:bescheid",
+        "surface": "der Bescheid",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:laden",
+        "surface": "laden",
+        "gloss": "chất",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:feuer",
+        "surface": "das Feuer",
+        "gloss": "lửa",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:feind",
+        "surface": "der Feind",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:polizist",
+        "surface": "der Polizist",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:hochzeit",
+        "surface": "die Hochzeit",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:bier",
+        "surface": "das Bier",
+        "gloss": "rượu bia",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:traurig",
+        "surface": "traurig",
+        "gloss": "buồn rầu",
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:jagen",
+        "surface": "jagen",
+        "gloss": "săn bắn",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:augenblick",
+        "surface": "der Augenblick",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:bewegung",
+        "surface": "die Bewegung",
+        "gloss": "sự vận động",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:gesetz",
+        "surface": "das Gesetz",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:schuh",
+        "surface": "der Schuh",
+        "gloss": "giày",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "de:w:aufgeben",
+        "surface": "aufgeben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:gast",
+        "surface": "der Gast",
+        "gloss": "khách",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:spur",
+        "surface": "die Spur",
+        "gloss": "dây kéo (buộc vào ngựa để kéo xe)",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:ohr",
+        "surface": "das Ohr",
+        "gloss": "tai",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:boot",
+        "surface": "das Boot",
+        "gloss": "tàu thuyền",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:bank",
+        "surface": "die Bank",
+        "gloss": "băng ghế",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:flugzeug",
+        "surface": "das Flugzeug",
+        "gloss": "máy bay",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:firma",
+        "surface": "die Firma",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:gericht",
+        "surface": "das Gericht",
+        "gloss": "sân nhà",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:tante",
+        "surface": "die Tante",
+        "gloss": "cô",
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "de:w:geburtstag",
+        "surface": "der Geburtstag",
+        "gloss": "sinh nhật",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:wald",
+        "surface": "der Wald",
+        "gloss": "rừng",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:professor",
+        "surface": "der Professor",
+        "gloss": "giáo sư (đại học)",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:greifen",
+        "surface": "greifen",
+        "gloss": "chộp",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:glas",
+        "surface": "das Glas",
+        "gloss": "kính thuỷ tinh",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:patient",
+        "surface": "der Patient",
+        "gloss": "người bệnh",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:regierung",
+        "surface": "die Regierung",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:baum",
+        "surface": "der Baum",
+        "gloss": "cây",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:zeit",
+        "surface": "die Zeit",
+        "gloss": "thời gian",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:gute",
+        "surface": "die Güte",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:gebaude",
+        "surface": "das Gebäude",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:landen",
+        "surface": "landen",
+        "gloss": "đưa vào bờ",
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:hose",
+        "surface": "die Hose",
+        "gloss": "quần Âu",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "de:w:freude",
+        "surface": "die Freude",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:abholen",
+        "surface": "abholen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:maschine",
+        "surface": "die Maschine",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:planet",
+        "surface": "der Planet",
+        "gloss": "hành tinh",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:lust",
+        "surface": "die Lust",
+        "gloss": "sự thèm muốn",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:folge",
+        "surface": "die Folge",
+        "gloss": "một dãy các thứ nối tiếp nhau",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:entfernen",
+        "surface": "entfernen",
+        "gloss": "dời đi",
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:angebot",
+        "surface": "das Angebot",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:bestellen",
+        "surface": "bestellen",
+        "gloss": "ra lệnh",
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:wein",
+        "surface": "der Wein",
+        "gloss": "rượu vang",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:aufgabe",
+        "surface": "die Aufgabe",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:gesellschaft",
+        "surface": "die Gesellschaft",
+        "gloss": "sự cùng đi",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:vergangenheit",
+        "surface": "die Vergangenheit",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:tee",
+        "surface": "der Tee",
+        "gloss": "cây chè",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:schneiden",
+        "surface": "schneiden",
+        "gloss": "cắt",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:blume",
+        "surface": "die Blume",
+        "gloss": "hoa",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:kochen",
+        "surface": "kochen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:ball",
+        "surface": "der Ball",
+        "gloss": "quả cầu",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:loch",
+        "surface": "das Loch",
+        "gloss": "lỗ",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:haar",
+        "surface": "das Haar",
+        "gloss": "tóc",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:kuche",
+        "surface": "die Küche",
+        "gloss": "phòng bếp",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:verbrennen",
+        "surface": "verbrennen",
+        "gloss": "đốt cháy",
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:zeichen",
+        "surface": "das Zeichen",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:schwach",
+        "surface": "schwach",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:bekennen",
+        "surface": "bekennen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:bord",
+        "surface": "das Bord",
+        "gloss": "giá sách",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:erscheinen",
+        "surface": "erscheinen",
+        "gloss": "xuất hiện",
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:befehl",
+        "surface": "der Befehl",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:turm",
+        "surface": "der Turm",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:brennen",
+        "surface": "brennen",
+        "gloss": "đốt cháy",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:tat",
+        "surface": "die Tat",
+        "gloss": "việc làm",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:klopfen",
+        "surface": "klopfen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:system",
+        "surface": "das System",
+        "gloss": "hệ thống",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:rose",
+        "surface": "die Rose",
+        "gloss": "hoa hồng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:unbedingt",
+        "surface": "unbedingt",
+        "gloss": "tuyệt đối",
+        "partOfSpeech": "adjective",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:wochenende",
+        "surface": "das Wochenende",
+        "gloss": "cuối tuần (thứ bảy và chủ nhật)",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:insel",
+        "surface": "die Insel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:rolle",
+        "surface": "die Rolle",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:prinz",
+        "surface": "der Prinz",
+        "gloss": "hoàng tử",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:prinzessin",
+        "surface": "die Prinzessin",
+        "gloss": "bà chúa",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:see",
+        "surface": "See",
+        "gloss": "chất màu đỏ tía (chế từ sơn)",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:farbe",
+        "surface": "die Farbe",
+        "gloss": "màu",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:betrugen",
+        "surface": "betrügen",
+        "gloss": "lừa dối",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:gehirn",
+        "surface": "das Gehirn",
+        "gloss": "óc",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:stern",
+        "surface": "der Stern",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:hut",
+        "surface": "der Hut",
+        "gloss": "cái mũ ((thường) có vành)",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "de:w:fruhstuck",
+        "surface": "das Frühstück",
+        "gloss": "bữa ăn sáng",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:gang",
+        "surface": "der Gang",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:schritt",
+        "surface": "der Schritt",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:binden",
+        "surface": "binden",
+        "gloss": "buộc lại",
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:operation",
+        "surface": "die Operation",
+        "gloss": "sự hoạt động",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:taxi",
+        "surface": "der Taxi",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:akt",
+        "surface": "der Akt",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:unterstutzen",
+        "surface": "unterstützen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:wind",
+        "surface": "der Wind",
+        "gloss": "gió",
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "de:w:bus",
+        "surface": "der Bus",
+        "gloss": "xe buýt",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:ecke",
+        "surface": "die Ecke",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:brucke",
+        "surface": "die Brücke",
+        "gloss": "brit",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:damon",
+        "surface": "der Dämon",
+        "gloss": "ma quỷ",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:nahern",
+        "surface": "nähern",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:sprache",
+        "surface": "die Sprache",
+        "gloss": "tiếng",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:fair",
+        "surface": "fair",
+        "gloss": "phải",
+        "partOfSpeech": "adjective",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:beruhren",
+        "surface": "berühren",
+        "gloss": "chạm",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:raum",
+        "surface": "der Raum",
+        "gloss": "không gian",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:blau",
+        "surface": "blau",
+        "gloss": "xanh dương",
+        "partOfSpeech": "adjective",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:band",
+        "surface": "das Band",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:langweilig",
+        "surface": "langweilig",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:schwert",
+        "surface": "das Schwert",
+        "gloss": "gươm",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:dach",
+        "surface": "das Dach",
+        "gloss": "mái nhà",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:weniger",
+        "surface": "weniger",
+        "gloss": "nhỏ hơn",
+        "partOfSpeech": "adverb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:stand",
+        "surface": "der Stand",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:schlag",
+        "surface": "der Schlag",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:termin",
+        "surface": "der Termin",
+        "gloss": "quả chà là",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:fass",
+        "surface": "das Fass",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "home"
+      },
+      {
+        "id": "de:w:verwandeln",
+        "surface": "verwandeln",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:mut",
+        "surface": "der Mut",
+        "gloss": "sự can đảm",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:direktor",
+        "surface": "der Direktor",
+        "gloss": "người đứng đầu",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:fluss",
+        "surface": "der Fluss",
+        "gloss": "dòng sông",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:szene",
+        "surface": "die Szene",
+        "gloss": "nơi xảy ra",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:sommer",
+        "surface": "der Sommer",
+        "gloss": "mùa hè",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:empfangen",
+        "surface": "empfangen",
+        "gloss": "nhận",
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:einheit",
+        "surface": "die Einheit",
+        "gloss": "một",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:berg",
+        "surface": "der Berg",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:kraft",
+        "surface": "die Kraft",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:lauf",
+        "surface": "der Lauf",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:decken",
+        "surface": "decken",
+        "gloss": "che",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:verbinden",
+        "surface": "verbinden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:papier",
+        "surface": "das Papier",
+        "gloss": "giấy",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:amerikaner",
+        "surface": "der Amerikaner",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:krankheit",
+        "surface": "die Krankheit",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:dieb",
+        "surface": "der Dieb",
+        "gloss": "kẻ trộm",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:wolf",
+        "surface": "der Wolf",
+        "gloss": "chó sói",
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:star",
+        "surface": "der Star",
+        "gloss": "chim sáo đá",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:mitglied",
+        "surface": "das Mitglied",
+        "gloss": "chân",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:kiste",
+        "surface": "die Kiste",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:burgermeister",
+        "surface": "der Bürgermeister",
+        "gloss": "thị trưởng",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:zahl",
+        "surface": "die Zahl",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:strand",
+        "surface": "der Strand",
+        "gloss": "sỏi cát (ở bãi biển)",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:stuhl",
+        "surface": "der Stuhl",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:song",
+        "surface": "der Song",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:kuchen",
+        "surface": "der Kuchen",
+        "gloss": "ác là",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:deutscher",
+        "surface": "der Deutscher",
+        "gloss": "ruột thịt",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:jahrhundert",
+        "surface": "das Jahrhundert",
+        "gloss": "thế kỷ",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:ruhren",
+        "surface": "rühren",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:verurteilen",
+        "surface": "verurteilen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:ring",
+        "surface": "der Ring",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:code",
+        "surface": "der Code",
+        "gloss": "bộ luật",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:zelle",
+        "surface": "die Zelle",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:stechen",
+        "surface": "stechen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:rache",
+        "surface": "die Rache",
+        "gloss": "sự trả thù",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:ubergeben",
+        "surface": "übergeben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:freitag",
+        "surface": "der Freitag",
+        "gloss": "thứ Sáu",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:schild",
+        "surface": "das Schild",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:link",
+        "surface": "der Link",
+        "gloss": "siêu liên kết",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:donnerstag",
+        "surface": "der Donnerstag",
+        "gloss": "thứ Năm",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:schuler",
+        "surface": "der Schüler",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "family"
+      },
+      {
+        "id": "de:w:enttauschen",
+        "surface": "enttäuschen",
+        "gloss": "không làm thoả ước vọng",
+        "partOfSpeech": "verb",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:aussagen",
+        "surface": "aussagen",
+        "gloss": "phát biểu",
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:kugel",
+        "surface": "die Kugel",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:botschaft",
+        "surface": "die Botschaft",
+        "gloss": "tin nhắn",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:vorschlag",
+        "surface": "der Vorschlag",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:pfund",
+        "surface": "das Pfund",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:brust",
+        "surface": "die Brust",
+        "gloss": "rương",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:offizier",
+        "surface": "der Offizier",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:sonntag",
+        "surface": "der Sonntag",
+        "gloss": "chủ nhật",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:franzosisch",
+        "surface": "französisch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:truppe",
+        "surface": "die Truppe",
+        "gloss": "đoàn (kịch)",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:unternehmen",
+        "surface": "das Unternehmen",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:bellen",
+        "surface": "bellen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:gro-e",
+        "surface": "die Größe",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:theater",
+        "surface": "das Theater",
+        "gloss": "rạp hát",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:einstellen",
+        "surface": "einstellen",
+        "gloss": "thuê",
+        "partOfSpeech": "verb",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:einsetzen",
+        "surface": "einsetzen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:abnehmen",
+        "surface": "abnehmen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:fett",
+        "surface": "fett",
+        "gloss": "được vỗ béo (để giết thịt)",
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:meister",
+        "surface": "der Meister",
+        "gloss": "chủ",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:kino",
+        "surface": "das Kino",
+        "gloss": "rạp xi nê",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:feld",
+        "surface": "das Feld",
+        "gloss": "đồng ruộng",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:artikel",
+        "surface": "der Artikel",
+        "gloss": "bài báo",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:frohlich",
+        "surface": "fröhlich",
+        "gloss": "vui",
+        "partOfSpeech": "adjective",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:ton",
+        "surface": "der Ton",
+        "gloss": "đất sét",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:hemd",
+        "surface": "das Hemd",
+        "gloss": "áo sơ mi",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "de:w:priester",
+        "surface": "der Priester",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:weg",
+        "surface": "der Weg",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:pfeifen",
+        "surface": "pfeifen",
+        "gloss": "huýt sáo",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:freundschaft",
+        "surface": "die Freundschaft",
+        "gloss": "tình bạn",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:unterstutzung",
+        "surface": "die Unterstützung",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:samstag",
+        "surface": "der Samstag",
+        "gloss": "thứ Bảy",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:medizinisch",
+        "surface": "medizinisch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:beruf",
+        "surface": "der Beruf",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:abgeben",
+        "surface": "abgeben",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:verabschieden",
+        "surface": "verabschieden",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:gebet",
+        "surface": "das Gebet",
+        "gloss": "kinh cầu nguyện",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:prasentieren",
+        "surface": "präsentieren",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:bergen",
+        "surface": "bergen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:buhne",
+        "surface": "die Bühne",
+        "gloss": "bệ",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:beschreiben",
+        "surface": "beschreiben",
+        "gloss": "tả",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:montag",
+        "surface": "der Montag",
+        "gloss": "thứ Hai",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:bauch",
+        "surface": "der Bauch",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:jacke",
+        "surface": "die Jacke",
+        "gloss": "áo vét tông (đành ông)",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "de:w:kehren",
+        "surface": "kehren",
+        "gloss": "lướt nhanh",
+        "partOfSpeech": "verb",
+        "topic": "home"
+      },
+      {
+        "id": "de:w:urteil",
+        "surface": "das Urteil",
+        "gloss": "sự xét xử",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:kreis",
+        "surface": "der Kreis",
+        "gloss": "đường tròn",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:medizin",
+        "surface": "die Medizin",
+        "gloss": "y học",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:winter",
+        "surface": "der Winter",
+        "gloss": "mùa đông",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:leitung",
+        "surface": "die Leitung",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:reisepass",
+        "surface": "der Reisepass",
+        "gloss": "hộ chiếu",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:genie",
+        "surface": "das Genie",
+        "gloss": "thiên tài",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:tater",
+        "surface": "der Täter",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:geburt",
+        "surface": "die Geburt",
+        "gloss": "sự sinh đẻ",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:schlafzimmer",
+        "surface": "das Schlafzimmer",
+        "gloss": "phòng ngủ",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:strom",
+        "surface": "der Strom",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:politisch",
+        "surface": "politisch",
+        "gloss": "chính trị",
+        "partOfSpeech": "adjective",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:aktivieren",
+        "surface": "aktivieren",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:autobahn",
+        "surface": "die Autobahn",
+        "gloss": "đường lớn dành cho ô tô chạy nhanh",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:fernsehen",
+        "surface": "fernsehen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:spion",
+        "surface": "der Spion",
+        "gloss": "gián điệp",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:maske",
+        "surface": "die Maske",
+        "gloss": "mạng che mặt của phụ nữ ngày xưa",
+        "partOfSpeech": "noun",
+        "topic": "clothing"
+      },
+      {
+        "id": "de:w:minister",
+        "surface": "der Minister",
+        "gloss": "bộ trưởng",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:loschen",
+        "surface": "löschen",
+        "gloss": "làm hết (khát)",
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:krebs",
+        "surface": "der Krebs",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:kaiser",
+        "surface": "der Kaiser",
+        "gloss": "hoàng đế",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:hutte",
+        "surface": "die Hütte",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:vorteil",
+        "surface": "der Vorteil",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:pizza",
+        "surface": "die Pizza",
+        "gloss": "pizza",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:sendung",
+        "surface": "die Sendung",
+        "gloss": "sự phân phát (thư)",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:stock",
+        "surface": "der Stock",
+        "gloss": "cái gậy",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:schloss",
+        "surface": "das Schloss",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:sperren",
+        "surface": "sperren",
+        "gloss": "cài",
+        "partOfSpeech": "verb",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:schlacht",
+        "surface": "die Schlacht",
+        "gloss": "trận đánh",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:weiblich",
+        "surface": "weiblich",
+        "gloss": "cái",
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:virus",
+        "surface": "Virus",
+        "gloss": "virut",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:fernseher",
+        "surface": "der Fernseher",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:fantasie",
+        "surface": "die Fantasie",
+        "gloss": "sức tưởng tượng",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:mannlich",
+        "surface": "männlich",
+        "gloss": "trai",
+        "partOfSpeech": "adjective",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:inspektor",
+        "surface": "der Inspektor",
+        "gloss": "người thanh tra",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:abhalten",
+        "surface": "abhalten",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:aussage",
+        "surface": "die Aussage",
+        "gloss": "lời đề nghị",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:umziehen",
+        "surface": "umziehen",
+        "gloss": "chuyển",
+        "partOfSpeech": "verb",
+        "topic": "clothing"
+      },
+      {
+        "id": "de:w:fahrrad",
+        "surface": "das Fahrrad",
+        "gloss": "xe đạp",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:bedienen",
+        "surface": "bedienen",
+        "gloss": "phục vụ",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:kommando",
+        "surface": "das Kommando",
+        "gloss": "lệnh",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:roman",
+        "surface": "der Roman",
+        "gloss": "tiểu thuyết",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:russisch",
+        "surface": "russisch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:bereich",
+        "surface": "der Bereich",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:verbrecher",
+        "surface": "der Verbrecher",
+        "gloss": "kẻ phạm tội",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:lippe",
+        "surface": "die Lippe",
+        "gloss": "môi",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:kommandant",
+        "surface": "der Kommandant",
+        "gloss": "người điều khiển",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:selten",
+        "surface": "selten",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:linie",
+        "surface": "die Linie",
+        "gloss": "dây",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:schutze",
+        "surface": "der Schütze",
+        "gloss": "người bắn súng",
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:aufnahme",
+        "surface": "die Aufnahme",
+        "gloss": "sự nhận",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:leiter",
+        "surface": "die Leiter",
+        "gloss": "thang ((nghĩa đen) & (nghĩa bóng))",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:braut",
+        "surface": "die Braut",
+        "gloss": "cô dâu",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:reaktion",
+        "surface": "die Reaktion",
+        "gloss": "sự phản tác dụng",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:brullen",
+        "surface": "brüllen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:trocken",
+        "surface": "trocken",
+        "gloss": "khô",
+        "partOfSpeech": "adjective",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:internet",
+        "surface": "das Internet",
+        "gloss": "liên mạng: một hệ thống mạng lưới máy tính được liên kết với nhau bằng giao thức Internet (IP)",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "de:w:politik",
+        "surface": "die Politik",
+        "gloss": "chính trị",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:grun",
+        "surface": "grün",
+        "gloss": "xanh lá cây",
+        "partOfSpeech": "adjective",
+        "topic": "colors"
+      },
+      {
+        "id": "de:w:programm",
+        "surface": "das Programm",
+        "gloss": "chương trình (công tác",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:pille",
+        "surface": "die Pille",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:krone",
+        "surface": "die Krone",
+        "gloss": "mũ miện",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:tunnel",
+        "surface": "der Tunnel",
+        "gloss": "đường hầm",
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:einkaufen",
+        "surface": "einkaufen",
+        "gloss": "đi mua hàng",
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:stimmung",
+        "surface": "die Stimmung",
+        "gloss": "lối",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:gnade",
+        "surface": "die Gnade",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:kreuz",
+        "surface": "das Kreuz",
+        "gloss": "cây thánh giá",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:konto",
+        "surface": "das Konto",
+        "gloss": "sự tính toán",
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:realitat",
+        "surface": "die Realität",
+        "gloss": "sự thực",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:meistens",
+        "surface": "meistens",
+        "gloss": "hầu hết",
+        "partOfSpeech": "adverb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:identitat",
+        "surface": "die Identität",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:regnen",
+        "surface": "regnen",
+        "gloss": "mưa",
+        "partOfSpeech": "verb",
+        "topic": "weather"
+      },
+      {
+        "id": "de:w:anlegen",
+        "surface": "anlegen",
+        "gloss": "tạo",
+        "partOfSpeech": "verb",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:reihe",
+        "surface": "die Reihe",
+        "gloss": "hàng",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:chip",
+        "surface": "der Chip",
+        "gloss": "vỏ bào",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:revier",
+        "surface": "das Revier",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:einnehmen",
+        "surface": "einnehmen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:knie",
+        "surface": "Knie",
+        "gloss": "đầu gối",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:verfugung",
+        "surface": "die Verfügung",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:magen",
+        "surface": "der Magen",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:real",
+        "surface": "real",
+        "gloss": "thực",
+        "partOfSpeech": "adjective",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:schreibtisch",
+        "surface": "der Schreibtisch",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:fullen",
+        "surface": "füllen",
+        "gloss": "làm đầy",
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:fabrik",
+        "surface": "die Fabrik",
+        "gloss": "nhà máy",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:versorgen",
+        "surface": "versorgen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:keks",
+        "surface": "der Keks",
+        "gloss": "bánh bao",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:franzose",
+        "surface": "der Franzose",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:dienstag",
+        "surface": "der Dienstag",
+        "gloss": "thứ Ba",
+        "partOfSpeech": "noun",
+        "topic": "time"
+      },
+      {
+        "id": "de:w:wissenschaftler",
+        "surface": "der Wissenschaftler",
+        "gloss": "nhà khoa học",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:sport",
+        "surface": "der Sport",
+        "gloss": "thể thao",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:basis",
+        "surface": "die Basis",
+        "gloss": "nền tảng",
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:motiv",
+        "surface": "das Motiv",
+        "gloss": "cớ",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:verhandlung",
+        "surface": "die Verhandlung",
+        "gloss": "sự điều đình",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:hirn",
+        "surface": "das Hirn",
+        "gloss": "óc",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:einziehen",
+        "surface": "einziehen",
+        "gloss": "xâu (kim... )",
+        "partOfSpeech": "verb",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:gewissen",
+        "surface": "das Gewissen",
+        "gloss": "lương tâm",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:sturm",
+        "surface": "der Sturm",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "weather"
+      },
+      {
+        "id": "de:w:italienisch",
+        "surface": "italienisch",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:feststellen",
+        "surface": "feststellen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:raumschiff",
+        "surface": "das Raumschiff",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "travel"
+      },
+      {
+        "id": "de:w:gedachtnis",
+        "surface": "das Gedächtnis",
+        "gloss": "sự nhớ",
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:koniglich",
+        "surface": "königlich",
+        "gloss": null,
+        "partOfSpeech": "adjective",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:durchgehen",
+        "surface": "durchgehen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "animals"
+      },
+      {
+        "id": "de:w:hauptmann",
+        "surface": "der Hauptmann",
+        "gloss": "người cầm đầu",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:kilo",
+        "surface": "das Kilo",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "numbers"
+      },
+      {
+        "id": "de:w:sprengen",
+        "surface": "sprengen",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:hafen",
+        "surface": "der Hafen",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "nature"
+      },
+      {
+        "id": "de:w:post",
+        "surface": "die Post",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:mulde",
+        "surface": "die Mulde",
+        "gloss": "chỗ rống",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      },
+      {
+        "id": "de:w:holm",
+        "surface": "der Holm",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "shopping"
+      },
+      {
+        "id": "de:w:auftreten",
+        "surface": "auftreten",
+        "gloss": null,
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:vertrag",
+        "surface": "der Vertrag",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:pfarrer",
+        "surface": "der Pfarrer",
+        "gloss": "mục sư",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:mitleid",
+        "surface": "das Mitleid",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "feelings"
+      },
+      {
+        "id": "de:w:strafe",
+        "surface": "die Strafe",
+        "gloss": "sự phạt",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:glocke",
+        "surface": "die Glocke",
+        "gloss": "cái chuông",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:a-moll",
+        "surface": "das a-Moll",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:ampere",
+        "surface": "das Ampere",
+        "gloss": "ampere",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "de:w:gesundheit",
+        "surface": "die Gesundheit",
+        "gloss": "sức khỏe",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:vorfall",
+        "surface": "der Vorfall",
+        "gloss": "sự kiện",
+        "partOfSpeech": "noun",
+        "topic": "body"
+      },
+      {
+        "id": "de:w:mischen",
+        "surface": "mischen",
+        "gloss": "trộn",
+        "partOfSpeech": "verb",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:gedicht",
+        "surface": "das Gedicht",
+        "gloss": "bài thơ",
+        "partOfSpeech": "noun",
+        "topic": "school"
+      },
+      {
+        "id": "de:w:knarre",
+        "surface": "die Knarre",
+        "gloss": null,
+        "partOfSpeech": "noun",
+        "topic": "work"
+      },
+      {
+        "id": "de:w:garen",
+        "surface": "garen",
+        "gloss": "nấu",
+        "partOfSpeech": "verb",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:runde",
+        "surface": "die Runde",
+        "gloss": "vật hình tròn",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:technologie",
+        "surface": "die Technologie",
+        "gloss": "kỹ thuật",
+        "partOfSpeech": "noun",
+        "topic": "technology"
+      },
+      {
+        "id": "de:w:konzert",
+        "surface": "das Konzert",
+        "gloss": "sự phối hợp",
+        "partOfSpeech": "noun",
+        "topic": "leisure"
+      },
+      {
+        "id": "de:w:schokolade",
+        "surface": "die Schokolade",
+        "gloss": "sôcôla",
+        "partOfSpeech": "noun",
+        "topic": "food"
+      },
+      {
+        "id": "de:w:weiser",
+        "surface": "der Weiser",
+        "gloss": "cây xô thơm (lá dùng để ướp thơm thức ăn)",
+        "partOfSpeech": "noun",
+        "topic": "ideas"
+      },
+      {
+        "id": "de:w:autor",
+        "surface": "der Autor",
+        "gloss": "tác giả",
+        "partOfSpeech": "noun",
+        "topic": "people"
+      },
+      {
+        "id": "de:w:palast",
+        "surface": "der Palast",
+        "gloss": "cung điện",
+        "partOfSpeech": "noun",
+        "topic": "places"
+      }
+    ],
+    "objectives": [],
+    "clips": [],
+    "readings": [],
+    "speechItems": [],
+    "writingTasks": [],
+    "scenarios": [],
+    "lessons": [],
+    "concepts": [],
+    "paradigmCells": [],
+    "exerciseTypes": [
+      "select",
+      "typeAnswer",
+      "wordBank",
+      "fillBlank",
+      "match",
+      "articleSelect",
+      "conjugationCloze",
+      "listeningComprehension",
+      "readingComprehension",
+      "dictation",
+      "speakRepetition",
+      "speakProduction",
+      "guidedWriting",
+      "simpleForm",
+      "interactionScenario"
+    ]
+  },
+  "exemplars": [
+    {
+      "id": "fr:w:homme",
+      "glossVi": "người đàn ông",
+      "exampleTranslationsVi": [
+        "Người đàn ông đang uống cà phê."
+      ],
+      "confusables": [
+        "fr:w:femme"
+      ]
+    },
+    {
+      "id": "fr:w:securite",
+      "glossVi": "sự an toàn",
+      "exampleTranslationsVi": [
+        "An toàn là quan trọng."
+      ]
+    }
+  ],
+  "blueprint": "## 2. Lexicon (`content/<target>/lexicon/lexemes.json`, P3a ETL)\n\n126 French lexemes (94 nouns, 19 verbs, 5 interjections, 4 adverbs, 3\nexpressions, 1 adjective); every pack word is a lexeme; IPA 126/126;\nfrequency 123/126 (bands very-common 73 / common 46 / less-common 4);\n≥1 example each; confusables symmetric; 10 topics. A new course starts from\nthe ETL output (≈800 lexemes for Spanish) and the `lexicon-review` step\nfills `TODO:vi` glosses/examples and confirms confusables.",
+  "outputFile": "content/de/_drafts/lexicon-review/OUTPUT.jsonl"
+}

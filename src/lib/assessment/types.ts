@@ -13,6 +13,13 @@
 export type AssessmentItemResult = {
   itemId: string;
   correct: boolean | null;
+  /**
+   * QC 2026-10-29 §1.5: an exam message part scored by its rubric (Goethe
+   * Schreiben Teil 2), as a share 0..1 of the part's points. Optional and
+   * additive — absent on every other item and on every attempt stored
+   * before it, where `correct` alone decides as it always did.
+   */
+  credit?: number;
 };
 
 /** Per-objective outcome of one checkpoint attempt (§61). */

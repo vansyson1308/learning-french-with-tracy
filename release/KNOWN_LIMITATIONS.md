@@ -82,6 +82,26 @@ itself.
   older `es-en` course is marked `"role": "standalone"`: it keeps its
   40 legacy lessons and its English dictionary but none of the new layers,
   and Spanish level claims and reports count only against `es-vi`.
+- **`de-vi` (German for Vietnamese speakers, P3d(de)) ships unreviewed**, on the
+  same terms as `es-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
+  `content/courses/de-vi.profile.json`. The owner signs
+  `content/de/REVIEW-TIER1-vi.md` (378 lines) and a hired German teacher checks
+  `content/de/REVIEW-TIER1-de.md` (309 lines). The rest is covered by:
+  - the validators and the German gates (articles, plurals, capitals, dative
+    chunks, verb-second and separable verbs, du/Sie register);
+  - the LanguageTool gate (`content/de/languagetool-allow.json`);
+  - the back-translation pass (`content/de/_drafts/BACKTRANSLATION.md`). The
+    same session wrote both languages, so this pass is not independent.
+
+  **German stories are text-only for now.** The 43 stories (40 at band A2-1,
+  3 at A1-2) have no bundled audio. With it, German audio would be about
+  17 MB against the 12 MB per-language budget. Story audio moves to
+  per-language asset packs (`release/ASSET_DELIVERY.md`, QC 2026-10-29 §1.6);
+  lesson words, syllabus words and listening clips are bundled.
+
+  `de-en` is `"role": "standalone"`. Its lessons and stored surfaces are
+  unchanged. Old progress maps to the German ids through `legacySurfaces` in
+  persist v8, so no new migration was needed.
 - **Basic packs (P4a).** `de-en`, `es-en`, `it-en`, `ja-en`, `ko-en`, `pt-en` and
   `zh-en` are the inherited Lingo Lessons packs (`"basicPack": true` in their
   profiles). Each has 5 units (es-en 10) of one 11-step template: recognition
@@ -114,6 +134,24 @@ itself.
   their points are coarse. Results are an estimated readiness, never a
   prediction of passing. Section practice draws on both mock forms, so a later
   mock may repeat questions already seen (the app says this).
+- **Goethe A1 practice (`de-vi`) differs from the real exam in two places.** The track follows the Goethe-Institut
+  Durchführungsbestimmungen (Stand 1 September 2025) and the Start Deutsch 1
+  Modellsatz, both read on 2026-10-28 (`content/de/exam/FORMAT-SOURCES.md`).
+  It keeps four parts of 20 + 25 + 20 + 15 minutes, 6 + 4 + 5 listening items,
+  5 + 5 + 5 reading items and 2 writing tasks. Each part is worth 15 raw points
+  × 1.66 (≈ 25), Schreiben is weighted 5 + 10 and Sprechen 3 + 6 + 6, and a
+  pass needs 60 of 100.
+  1. **Sprechen is a group exam** in the real test (up to four candidates, two
+     examiners). The app simulates it one learner at a time and plays the
+     partner and the examiner itself.
+  2. **Teil 1 leaves out spelling a word and repeating a number.**
+
+  Hören plays each recording as the format does: twice in Teil 1 and 3, once
+  in Teil 2. A per-part `playsPerRecording` that the exam player enforces
+  overrides the two plays of the product rule (§67).
+
+  Every item is original. The app is not affiliated with the Goethe-Institut.
+  Results are an estimated readiness, never a prediction of passing.
 - **Spanish audio is bundled at 32 kbps (P3f, run 39761607493).** `es-vi` and
   `es-en` lesson audio, the 613 syllabus words and the 221 listening clips
   (Kokoro `ef_dora` / `em_alex`) total 7.4 MB; dictionary entries outside the

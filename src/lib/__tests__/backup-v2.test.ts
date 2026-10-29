@@ -92,6 +92,35 @@ describe("envelope v2", () => {
     expect([...memFiles.keys()].some((k) => k.includes("progress-rollback-"))).toBe(false);
   });
 
+  test("an exam attempt's rubric credit (QC 2026-10-29 §1.5) survives export → import; attempts without it are untouched", () => {
+    const v = migrateProgress(clone(v3Fixture.state), 3, NOW);
+    const target = Object.keys(v.assessmentByTarget!)[0];
+    const before = clone(v.assessmentByTarget![target].checkpointAttempts);
+    const attempt = {
+      checkpointId: "exam:de.exam.goethe_a1:mock",
+      checkpointVersion: 1,
+      formId: "a",
+      formVersion: 1,
+      startedAt: NOW.getTime() - 60_000,
+      completedAt: NOW.getTime(),
+      itemResults: [
+        { itemId: "de.exi.goethe_a1.a_s1_01", correct: true },
+        { itemId: "de.exi.goethe_a1.a_s2_01", correct: false, credit: 0.8 },
+      ],
+      objectiveResults: [],
+      overallCorrectShare: 0.5,
+    };
+    v.assessmentByTarget![target].checkpointAttempts = [...before, attempt];
+    const staged = prepareImport(JSON.stringify(createEnvelope(v, learnerDataFromBlob(v), PERSIST_VERSION, NOW)), NOW);
+    expect(staged.ok).toBe(true);
+    if (!staged.ok) return;
+    const attempts = staged.state.assessmentByTarget![target].checkpointAttempts;
+    expect(attempts.slice(0, before.length)).toEqual(before);
+    expect(attempts[attempts.length - 1].itemResults).toEqual(attempt.itemResults);
+    // The current persist version leaves the additive field as it is.
+    expect(migrateProgress(clone(staged.state), PERSIST_VERSION, NOW).assessmentByTarget![target].checkpointAttempts.at(-1)!.itemResults[1]).toEqual({ itemId: "de.exi.goethe_a1.a_s2_01", correct: false, credit: 0.8 });
+  });
+
   test("a failure after the learner store was replaced restores both halves", async () => {
     const beforeBlob = memoryStorage.get(PROGRESS_STORAGE_KEY) as string;
     const beforeLearner = await (await learnerStore()).exportAll();

@@ -122,4 +122,16 @@ export type BuildLanguagePlugin = BuildLanguage & {
   functionWords: readonly string[];
   /** Target-language name as the writing engine labels it in feedback. */
   targetLanguageName: string;
+  /**
+   * Language-specific course gates run by content:validate on every course
+   * of the language except inherited basic packs (QC 2026-10-28: German
+   * articles/plurals, dative chunks, verb-second practice).
+   */
+  courseErrors?(pack: import("../../../content/schema").PackSource): string[];
+  /**
+   * Plural / agreement endings the story resolver strips from nouns and
+   * adjectives, tried in order (default: the Romance list in stories.ts).
+   * Stem changes (umlaut plurals) are never guessed — tokenMap.
+   */
+  storyEndings?: readonly (readonly [RegExp, string])[];
 };

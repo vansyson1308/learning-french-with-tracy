@@ -236,7 +236,8 @@ jobs:
           bun scripts/check-audio.ts
 
       - name: Upload run artifact (audio for audit)
-        if: inputs.mode != 'recon'
+        # always(): a failed QA must leave its report and clips for diagnosis (run 40758568130 left nothing).
+        if: always() && inputs.mode != 'recon'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: audio-${{ inputs.lang }}-${{ inputs.mode }}-${{ inputs.layer }}
@@ -244,6 +245,7 @@ jobs:
             /tmp/audio-mp3
             /tmp/audio-asr.json
             /tmp/audio-plan.json
+            content/reports/${{ inputs.lang }}/audio-quality.json
           retention-days: 90
           if-no-files-found: warn
 
@@ -269,4 +271,4 @@ jobs:
           bash scripts/ci/bot-commit.sh --branch "$BRANCH" --message /tmp/commit-msg.txt \
             --reason "audio.yml $LANG_INPUT $MODE_INPUT ($LAYER_INPUT) run $GITHUB_RUN_ID" -- \
             content/audio content/reports content/sources/registry.json "content/$LANG_INPUT/reception" \
-            "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx src/content content/courses ATTRIBUTIONS.md
+            "assets/audio/$LANG_INPUT" "assets/audio/$LANG_INPUT-reception" assets/sfx assets/lexicon src/content content/courses ATTRIBUTIONS.md

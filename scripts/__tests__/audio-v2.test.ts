@@ -17,6 +17,7 @@ import { existsSync, readFileSync } from "fs";
 
 import { readJson, safeResolve } from "../lib/pipeline";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type Voice } from "../lib/tts";
+import { PIPER_SHORT_LENGTH_SCALE, piperInput } from "../lib/tts/piper";
 
 const engines = loadEngines();
 
@@ -68,6 +69,25 @@ describe("engine abstraction", () => {
     const script = buildSynthScript({ clips: [{ assetKey: "aaaa", pipelineVersion: 2, segments: [{ voiceId: "es_MX-claude-high", speaker: null, text: "Hola" }] }], voices: [piperVoice], engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out", existingDir: "/blessed", existingKeys: new Set(["aaaa"]) });
     expect(script).toContain("cp '/blessed/aaaa.mp3' '/out/aaaa.mp3'");
     expect(script).not.toContain("piper --model");
+  });
+
+  test("Piper renders a 1–3 letter headword slower so it is not clipped below the QA floor (de 'du' 0.20 s, 'Sie' 0.24 s)", () => {
+    const render = (text: string) =>
+      buildSynthScript({ clips: [{ assetKey: "k", pipelineVersion: 3, segments: [{ voiceId: "es_MX-claude-high", speaker: null, text }] }], voices: [piperVoice], engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out" })
+        .split("\n")
+        .find((l) => l.includes("piper --model"))!;
+    expect(render("du")).toContain(`--length_scale ${PIPER_SHORT_LENGTH_SCALE}`);
+    expect(render("Sie")).toContain(`--length_scale ${PIPER_SHORT_LENGTH_SCALE}`);
+    expect(render("Hola")).not.toContain("--length_scale");
+    expect(render("Guten Tag")).not.toContain("--length_scale");
+  });
+
+  test("a short transcript is synthesised as a sentence (run 40782316966: bare 'du' came out as 'Hm.')", () => {
+    expect(piperInput("du")).toBe("du.");
+    expect(piperInput("Sie")).toBe("Sie.");
+    expect(piperInput("Ja!")).toBe("Ja!");
+    expect(piperInput("Hola")).toBe("Hola");
+    expect(piperInput("Guten Tag")).toBe("Guten Tag");
   });
 });
 

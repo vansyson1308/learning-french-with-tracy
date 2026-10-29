@@ -47,6 +47,11 @@ export function ExamResults({
               {t("exam.results.sectionLine", { section: s.title, points: fmt(s.points ?? 0), max: fmt(s.maxPoints), correct: s.correct, total: s.administered })}
             </Text>
           ))}
+          {itemResults.some((r) => r.credit !== undefined) ? (
+            <Text style={styles.rowMuted} testID="exam-rubric-estimate">
+              {t("exam.results.rubricEstimate")}
+            </Text>
+          ) : null}
           {score.sections
             .filter((s) => s.points === null && mode === "mock")
             .map((s) => (

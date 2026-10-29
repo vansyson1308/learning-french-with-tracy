@@ -1,0 +1,75 @@
+{
+  "contentHash": "1151654113acceb4",
+  "totals": {
+    "lexemes": 1288
+  },
+  "externalSource": {
+    "id": "frequencywords",
+    "retrievalStatus": "retrieved",
+    "matchStatusCounts": {
+      "source-unavailable": 1288
+    }
+  },
+  "coverage": {
+    "partOfSpeech": 1288,
+    "gender": 668,
+    "pronunciation": 1097,
+    "frequency": 1108,
+    "examples": 1288,
+    "topic": 1288,
+    "confusables": 179
+  },
+  "breakdowns": {
+    "partOfSpeech": {
+      "noun": 668,
+      "verb": 281,
+      "pronoun": 24,
+      "interjection": 14,
+      "adverb": 95,
+      "adjective": 140,
+      "determiner": 35,
+      "conjunction": 10,
+      "preposition": 21
+    },
+    "topic": {
+      "people": 70,
+      "leisure": 90,
+      "everyday": 444,
+      "food": 68,
+      "greetings": 19,
+      "animals": 18,
+      "travel": 72,
+      "ideas": 66,
+      "numbers": 60,
+      "time": 61,
+      "family": 14,
+      "shopping": 43,
+      "feelings": 19,
+      "places": 57,
+      "nature": 25,
+      "technology": 14,
+      "body": 39,
+      "school": 48,
+      "colors": 5,
+      "home": 33,
+      "clothing": 12,
+      "weather": 11
+    },
+    "sourceRefs": {
+      "kaikki-en": 1111,
+      "frequencywords": 1108,
+      "upstream-lingo-lessons": 55,
+      "original-lexicon-etl": 1288,
+      "kaikki-vi": 70
+    }
+  },
+  "conflicts": {
+    "articleGenderConflicts": 0,
+    "duplicateIds": 0,
+    "duplicateSurfaces": 0
+  },
+  "candidatePool": {
+    "present": false,
+    "reason": "run lexicon:source:extract to generate"
+  }
+}

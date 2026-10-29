@@ -8,6 +8,6 @@
 - Artifact: tatoeba-de-links-vi.tsv ← https://downloads.tatoeba.org/exports/per_language/deu/deu-vie_links.tsv.bz2
 - Artifact: tatoeba-eng-sentences.tsv ← https://downloads.tatoeba.org/exports/per_language/eng/eng_sentences_detailed.tsv.bz2
 - Artifact: tatoeba-vie-sentences.tsv ← https://downloads.tatoeba.org/exports/per_language/vie/vie_sentences_detailed.tsv.bz2
-- Recorded: 2026-10-14 by scripts/lexicon-etl.ts recon
+- Recorded: 2026-10-28 by scripts/lexicon-etl.ts recon
 
 Sentence text under CC BY 2.0 FR; the detailed export carries the contributor username, recorded per example in derived/tatoeba-credits.json. Audio is never used (per-contributor licences).
