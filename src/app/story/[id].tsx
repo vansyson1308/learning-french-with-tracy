@@ -3,13 +3,15 @@
  * (the playing sentence is highlighted), tap a word for its gloss, tap a
  * sentence number for its translation. Then three comprehension questions,
  * then the word check (/session/story) — the only part that feeds FSRS.
- * Needs no network; a story without bundled audio is read as text.
+ * Needs no network. A story without bundled audio is read along in the
+ * device voice (labelled as such), or as text with an install hint when the
+ * phone has no offline voice for the language (QC 2026-10-29b §2.4).
  */
 
 import { Ionicons } from "@expo/vector-icons";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import React, { useMemo, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Platform, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { CloseButton } from "@/components/close-button";
@@ -17,11 +19,13 @@ import { DuoButton } from "@/components/duo-button";
 import { SentenceRow } from "@/components/story/sentence-row";
 import { StoryQuestions } from "@/components/story/story-questions";
 import { WordSheet } from "@/components/story/word-sheet";
-import { hasCapability } from "@/lib/course-profile";
+import { courseProfile, hasCapability } from "@/lib/course-profile";
 import { useT } from "@/lib/i18n";
 import { lexemeMetaFor } from "@/lib/learning/lexicon-index";
 import { exitScreen } from "@/lib/navigation";
-import { sentenceAudio, storyFor, storyHasAudio, type CompiledStory } from "@/lib/stories/content";
+import { sentenceAudio, storyAudioSourceFor, storyFor, type CompiledStory } from "@/lib/stories/content";
+import { readAlongMode } from "@/lib/stories/read-along";
+import { useDeviceReadAlong, useDeviceVoice } from "@/lib/stories/use-device-read-along";
 import { useStoryPlayer } from "@/lib/stories/use-story-player";
 import { storyCheckLexemes } from "@/lib/stories/word-check";
 import { useProgress } from "@/lib/store";
@@ -54,10 +58,20 @@ function Missing() {
 function StoryReader({ courseId, story }: { courseId: string; story: CompiledStory }) {
   const styles = useStyles();
   const colors = useThemeColors();
-  const { t } = useT();
+  const { t, languageName } = useT();
+  const profile = courseProfile(courseId);
   const sources = useMemo(() => story.sentences.map((s) => sentenceAudio(courseId, s)), [courseId, story]);
-  const withAudio = storyHasAudio(courseId, story);
+  const texts = useMemo(() => story.sentences.map((s) => s.text), [story]);
+  const source = storyAudioSourceFor(courseId, story);
+  const withAudio = source === "bundled";
   const player = useStoryPlayer(withAudio ? sources : []);
+  // Never a silent fallback: only a story without bundled audio looks for a voice.
+  const voice = useDeviceVoice(profile.ttsLocale, !withAudio);
+  const reader = useDeviceReadAlong(texts, withAudio ? null : voice ?? null);
+  // undefined voice = still looking (nothing shown yet); a voice that failed to speak counts as none.
+  const mode = voice === undefined ? null : readAlongMode(source, reader.voiceFailed ? null : voice);
+  const playback = mode === "device-voice" ? reader.state : player.state;
+  const canPlay = mode === "bundled" || mode === "device-voice";
   const newSet = useMemo(() => new Set(story.newLexemes), [story]);
   const [phase, setPhase] = useState<Phase>("read");
   const [shown, setShown] = useState<Record<number, true>>({});
@@ -69,6 +83,7 @@ function StoryReader({ courseId, story }: { courseId: string; story: CompiledSto
 
   const finishReading = () => {
     player.pause();
+    reader.leave();
     setSelected(null);
     setPhase("questions");
   };
@@ -88,18 +103,33 @@ function StoryReader({ courseId, story }: { courseId: string; story: CompiledSto
       {phase === "read" ? (
         <>
           <View style={styles.controls}>
-            {withAudio ? (
+            {mode === "bundled" ? (
               <DuoButton
                 label={player.state.playing ? t("stories.pause") : t("stories.listen")}
                 variant="secondary"
                 onPress={player.state.playing ? player.pause : player.play}
                 testID="story-listen"
               />
-            ) : (
-              <Text style={styles.note} testID="story-no-audio">
-                {t("stories.noAudio")}
+            ) : mode === "device-voice" ? (
+              <>
+                <DuoButton
+                  label={reader.state.playing ? t("stories.pause") : t("stories.listen")}
+                  variant="secondary"
+                  onPress={reader.state.playing ? reader.pause : reader.play}
+                  testID="story-play"
+                />
+                <View style={styles.voiceLabel} testID="story-device-voice-label">
+                  <Ionicons name="phone-portrait-outline" size={14} color={colors.textMuted} />
+                  <Text style={styles.hint}>{t("stories.deviceVoice")}</Text>
+                </View>
+              </>
+            ) : mode === "text-only" ? (
+              <Text style={styles.note} testID="story-device-voice-hint">
+                {t(Platform.OS === "ios" ? "stories.deviceVoiceHintIos" : "stories.deviceVoiceHint", {
+                  language: languageName(profile.targetCode, profile.targetLanguage),
+                })}
               </Text>
-            )}
+            ) : null}
             <Text style={styles.hint}>{t("stories.tapHint")}</Text>
           </View>
           <ScrollView contentContainerStyle={styles.text} testID="story-text">
@@ -108,13 +138,13 @@ function StoryReader({ courseId, story }: { courseId: string; story: CompiledSto
                 key={i}
                 sentence={sentence}
                 index={i}
-                active={player.state.playing && player.state.index === i}
+                active={playback.playing && playback.index === i}
                 showTranslation={!!shown[i]}
                 newLexemes={newSet}
                 selectedLexeme={selected}
-                canPlay={withAudio}
+                canPlay={canPlay}
                 onToggleTranslation={() => setShown((s) => (s[i] ? omit(s, i) : { ...s, [i]: true }))}
-                onPlay={() => player.playFrom(i)}
+                onPlay={() => (mode === "device-voice" ? reader.playFrom(i) : player.playFrom(i))}
                 onWord={(lexemeId) => setSelected((cur) => (cur === lexemeId ? null : lexemeId))}
               />
             ))}
@@ -176,6 +206,7 @@ const useStyles = makeThemedStyles((colors) => ({
   controls: { paddingHorizontal: 20, gap: 8, paddingBottom: 8 },
   note: { fontSize: 14, color: colors.textMuted, backgroundColor: colors.neutral100, borderRadius: radius.md, padding: 10 },
   hint: { fontSize: 13, color: colors.textMuted },
+  voiceLabel: { flexDirection: "row" as const, alignItems: "center" as const, gap: 4 },
   text: { paddingHorizontal: 12, paddingBottom: 32, gap: 4 },
   center: { flex: 1, alignItems: "center" as const, justifyContent: "center" as const, gap: 16, padding: 24 },
   score: { fontSize: 22, fontWeight: "800" as const, color: colors.text, textAlign: "center" as const },

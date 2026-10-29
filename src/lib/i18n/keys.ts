@@ -410,6 +410,9 @@ export type MessageKey =
   | "stories.allKnown"
   | "stories.checkWords"
   | "stories.correct"
+  | "stories.deviceVoice"
+  | "stories.deviceVoiceHint"
+  | "stories.deviceVoiceHintIos"
   | "stories.done"
   | "stories.finishReading"
   | "stories.learnWord"
@@ -419,7 +422,6 @@ export type MessageKey =
   | "stories.listen"
   | "stories.newWord"
   | "stories.next"
-  | "stories.noAudio"
   | "stories.notFound"
   | "stories.open"
   | "stories.pause"
@@ -529,4 +531,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 527;
+export const MESSAGE_KEY_COUNT = 529;

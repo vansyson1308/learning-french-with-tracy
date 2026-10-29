@@ -68,7 +68,7 @@ describe("compiled stories of the shipped courses", () => {
     ]);
   });
 
-  test("before the audio generation run no story offers listening (text-only, never device TTS)", () => {
+  test("a story offers the bundled player only once its audio is generated (otherwise device voice, §2.4)", () => {
     for (const story of storyList("es-vi")) {
       if (!storyHasAudio("es-vi", story)) expect(story.sentences.some((s) => s.startSec === null || s.durationSec === null)).toBe(true);
     }
