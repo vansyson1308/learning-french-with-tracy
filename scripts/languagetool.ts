@@ -60,25 +60,74 @@ type LtResponse = {
  */
 export const LT_REQUEST_TIMEOUT_MS = 60_000;
 
-export async function checkText(server: string, language: string, text: string, disabled: string[], timeoutMs = LT_REQUEST_TIMEOUT_MS): Promise<LtMatch[]> {
+async function rawCheck(server: string, language: string, text: string, disabled: string[], timeoutMs: number): Promise<LtResponse["matches"]> {
   const body = new URLSearchParams({ text, language, disabledRules: disabled.join(",") });
   for (let attempt = 1; ; attempt++) {
     try {
       const res = await fetch(`${server}/v2/check`, { method: "POST", body, signal: AbortSignal.timeout(timeoutMs) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = (await res.json()) as LtResponse;
-      return data.matches.map((m) => ({
-        rule: m.rule.id,
-        category: m.rule.category.id,
-        message: m.message,
-        match: text.slice(m.offset, m.offset + m.length),
-        replacements: m.replacements.slice(0, 3).map((r) => r.value),
-      }));
+      return ((await res.json()) as LtResponse).matches;
     } catch (e) {
       if (attempt >= 3) throw new Error(`LanguageTool at ${server} failed on "${text.slice(0, 40)}": ${(e as Error).message}`);
       await new Promise((r) => setTimeout(r, 500 * attempt));
     }
   }
+}
+
+export async function checkText(server: string, language: string, text: string, disabled: string[], timeoutMs = LT_REQUEST_TIMEOUT_MS): Promise<LtMatch[]> {
+  return (await rawCheck(server, language, text, disabled, timeoutMs)).map((m) => ({
+    rule: m.rule.id,
+    category: m.rule.category.id,
+    message: m.message,
+    match: text.slice(m.offset, m.offset + m.length),
+    replacements: m.replacements.slice(0, 3).map((r) => r.value),
+  }));
+}
+
+/**
+ * Screening batches (CI 2026-10-29): German costs about 0.9 s per request
+ * whatever its length (the speller), so 4,675 single requests could not
+ * finish in the job. Strings are screened in batches of paragraphs, and
+ * every string a batch match touches is then checked ON ITS OWN, so the
+ * reported findings are exactly the single-string results.
+ */
+export const LT_BATCH_STRINGS = 40;
+export const LT_BATCH_CHARS = 4000;
+export const LT_BATCH_SEPARATOR = "\n\n";
+
+/** Indices of the strings, grouped into batches (pure; tested). */
+export function batchIndices(texts: readonly string[], maxStrings = LT_BATCH_STRINGS, maxChars = LT_BATCH_CHARS): number[][] {
+  const out: number[][] = [];
+  let cur: number[] = [];
+  let chars = 0;
+  texts.forEach((t, i) => {
+    if (cur.length > 0 && (cur.length >= maxStrings || chars + t.length > maxChars)) {
+      out.push(cur);
+      cur = [];
+      chars = 0;
+    }
+    cur.push(i);
+    chars += t.length + LT_BATCH_SEPARATOR.length;
+  });
+  if (cur.length > 0) out.push(cur);
+  return out;
+}
+
+/** Positions (within the batch) of the strings a match [offset, offset + length) touches (pure; tested). */
+export function touchedStrings(texts: readonly string[], offset: number, length: number): number[] {
+  const touched: number[] = [];
+  let start = 0;
+  texts.forEach((t, i) => {
+    const end = start + t.length + LT_BATCH_SEPARATOR.length;
+    if (offset < end && offset + Math.max(length, 1) > start) touched.push(i);
+    start = end;
+  });
+  return touched;
+}
+
+async function screenBatch(server: string, language: string, texts: readonly string[], disabled: string[]): Promise<number[]> {
+  const matches = await rawCheck(server, language, texts.join(LT_BATCH_SEPARATOR), disabled, LT_REQUEST_TIMEOUT_MS);
+  return [...new Set(matches.flatMap((m) => touchedStrings(texts, m.offset, m.length)))];
 }
 
 /**
@@ -122,19 +171,32 @@ async function main(): Promise<void> {
 
   const unique = uniqueTargetStrings(collectTargetStrings(courseId));
   const findings: LtFinding[] = [];
-  const queue = [...unique];
   const started = Date.now();
-  let done = 0;
-  const worker = async () => {
-    for (let s = queue.shift(); s; s = queue.shift()) {
-      for (const m of await checkText(server, allow.language, s.text, disabled)) {
-        if (applicable(m, s.text)) findings.push({ ...m, text: s.text, where: s.where });
-      }
-      done += 1;
-      if (done % 500 === 0) console.log(`languagetool ${courseId}: ${done}/${unique.length} strings checked (${Math.round((Date.now() - started) / 1000)} s)`);
-    }
+  const elapsed = () => `${Math.round((Date.now() - started) / 1000)} s`;
+  const pool = async <T>(items: T[], run: (item: T) => Promise<void>) => {
+    const queue = [...items];
+    await Promise.all(Array.from({ length: 8 }, async () => {
+      for (let it = queue.shift(); it !== undefined; it = queue.shift()) await run(it);
+    }));
   };
-  await Promise.all(Array.from({ length: 8 }, worker));
+  // Screen in batches (unless --no-batch), then check every touched string on its own.
+  let suspects = unique;
+  if (!args.includes("--no-batch")) {
+    const touched = new Set<number>();
+    await pool(batchIndices(unique.map((s) => s.text)), async (batch) => {
+      for (const j of await screenBatch(server, allow.language, batch.map((i) => unique[i].text), disabled)) touched.add(batch[j]);
+    });
+    suspects = [...touched].sort((a, b) => a - b).map((i) => unique[i]);
+    console.log(`languagetool ${courseId}: screened ${unique.length} strings in batches, ${suspects.length} to check one by one (${elapsed()})`);
+  }
+  let done = 0;
+  await pool(suspects, async (s) => {
+    for (const m of await checkText(server, allow.language, s.text, disabled)) {
+      if (applicable(m, s.text)) findings.push({ ...m, text: s.text, where: s.where });
+    }
+    done += 1;
+    if (done % 500 === 0) console.log(`languagetool ${courseId}: ${done}/${suspects.length} strings checked (${elapsed()})`);
+  });
   findings.sort((a, b) => a.rule.localeCompare(b.rule) || a.text.localeCompare(b.text));
 
   const failing = unallowed(findings, allow);

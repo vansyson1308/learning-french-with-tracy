@@ -4,7 +4,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { applicable, checkText, unallowed, unusedAllowances, type LanguageToolAllow, type LtFinding } from "../languagetool";
+import { applicable, batchIndices, checkText, touchedStrings, unallowed, unusedAllowances, type LanguageToolAllow, type LtFinding } from "../languagetool";
 import { readJson } from "../lib/pipeline";
 import { collectTargetStrings, uniqueTargetStrings } from "../lib/target-strings";
 
@@ -90,5 +90,22 @@ describe("a stalled LanguageTool request fails instead of hanging the gate (CI 2
     } finally {
       server.stop(true);
     }
+  });
+});
+describe("batched screening (CI 2026-10-29: German costs ~0.9 s per request)", () => {
+  test("batches respect the string and character limits and keep order", () => {
+    const texts = ["a".repeat(10), "b".repeat(10), "c".repeat(10), "d".repeat(10), "e".repeat(10)];
+    expect(batchIndices(texts, 2, 1000)).toEqual([[0, 1], [2, 3], [4]]);
+    expect(batchIndices(texts, 40, 15)).toEqual([[0], [1], [2], [3], [4]]);
+    expect(batchIndices(["x".repeat(5000)], 40, 100)).toEqual([[0]]);
+  });
+
+  test("a match is mapped to every string it touches, separator included", () => {
+    const texts = ["Ich bin Minh.", "Das ist Lea.", "Gut."];
+    const second = texts[0].length + 2;
+    expect(touchedStrings(texts, 8, 4)).toEqual([0]);
+    expect(touchedStrings(texts, second, 3)).toEqual([1]);
+    expect(touchedStrings(texts, second - 2, 4)).toEqual([0, 1]);
+    expect(touchedStrings(texts, second + texts[1].length + 2, 0)).toEqual([2]);
   });
 });
