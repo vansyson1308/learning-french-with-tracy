@@ -42,7 +42,8 @@ describe("technical QA measurements (ffmpeg reports are read from stderr)", () =
     expect(parseDecodedSec("nothing")).toBeNull();
   });
 
-  const m = (over: Partial<ClipMeasurement>): ClipMeasurement => ({ durationSec: 0.5, bytes: 2200, maxVolumeDb: -2, meanVolumeDb: -18, lead: 0.12, trail: 0.12, speechSec: 0.25, ...over });
+  const noClip = { sampleRate: 22050, samples: 11025, peakAbs: 0.8, hotSamples: 0, runs: 0, longestRun: 0, clippedSamples: 0, clippedShare: 0 };
+  const m = (over: Partial<ClipMeasurement>): ClipMeasurement => ({ durationSec: 0.5, bytes: 2200, maxVolumeDb: -2, meanVolumeDb: -18, clipping: noClip, lead: 0.12, trail: 0.12, speechSec: 0.25, ...over });
   const band: [number, number] = [4, 30];
 
   test("the 0.25 s floor applies to the padded clip; speech-only must reach 0.12 s (padding cannot hide a clipped word)", () => {
@@ -56,8 +57,11 @@ describe("technical QA measurements (ffmpeg reports are read from stderr)", () =
   });
 
   test("clipping, near-silence, edge silence, file size and speaking rate each fail", () => {
-    expect(technicalIssues(m({ maxVolumeDb: -0.1 }), "du", band).join()).toContain("possible clipping");
-    expect(technicalIssues(m({ maxVolumeDb: -0.2 }), "du", band)).toEqual([]); // the threshold is unchanged
+    // Coordinator decision 2026-10-29: clipping is >= 3 consecutive hot samples, not a peak level.
+    expect(technicalIssues(m({ clipping: { ...noClip, peakAbs: 1, hotSamples: 3, runs: 1, longestRun: 3, clippedSamples: 3, clippedShare: 3 / 11025 } }), "du", band).join()).toContain("clipping: 1 run(s)");
+    expect(technicalIssues(m({ maxVolumeDb: 0, clipping: { ...noClip, peakAbs: 1.097, hotSamples: 1, longestRun: 1 } }), "du", band)).toEqual([]); // MP3 overshoot
+    expect(technicalIssues(m({ maxVolumeDb: -0.1, clipping: { ...noClip, peakAbs: 0.99, hotSamples: 2, longestRun: 2 } }), "du", band)).toEqual([]);
+    expect(technicalIssues(m({ clipping: null }), "du", band)).toEqual([]);
     expect(technicalIssues(m({ maxVolumeDb: -35 }), "du", band).join()).toContain("too quiet");
     expect(technicalIssues(m({ lead: 1.3 }), "du", band).join()).toContain("leading silence 1.30s");
     expect(technicalIssues(m({ trail: 1.5 }), "du", band).join()).toContain("trailing silence 1.50s");
@@ -74,7 +78,7 @@ describe("technical QA measurements (ffmpeg reports are read from stderr)", () =
     const fake = (file: string, transcript: string): TechnicalQa => {
       seen.push(path.basename(file));
       const bad = transcript === "du";
-      return { durationSec: bad ? 0.2 : 1, speechSec: bad ? 0.1 : 0.8, bytes: 3000, maxVolumeDb: -2, meanVolumeDb: -18, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 10, technical: bad ? "fail" : "pass", technicalIssues: bad ? ["duration 0.20s too short"] : [] };
+      return { durationSec: bad ? 0.2 : 1, speechSec: bad ? 0.1 : 0.8, bytes: 3000, maxVolumeDb: -2, meanVolumeDb: -18, clipping: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 10, technical: bad ? "fail" : "pass", technicalIssues: bad ? ["duration 0.20s too short"] : [] };
     };
     const doc = techQaDoc({
       clips: [

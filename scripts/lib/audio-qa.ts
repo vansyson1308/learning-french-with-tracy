@@ -3,7 +3,8 @@
  * (QC 2026-10-29b §3.1, §3.4).
  *
  *  - Fail fast: every cheap technical check (duration floor and speaking
- *    rate, speech-only floor, clipping, near-silence, edge silence, file
+ *    rate, speech-only floor, clipping (>= 3 consecutive decoded samples at
+ *    |x| >= 0.999, scripts/lib/audio-clipping.ts), near-silence, edge silence, file
  *    size) runs on every unique asset right after synthesis, BEFORE the ASR
  *    audit. A bad clip ends the run in minutes instead of after 1–2.5 h of ASR.
  *    The final strict QA runs the same checks again; nothing is relaxed.
@@ -36,7 +37,7 @@ export function techQaDoc(input: {
     const file = path.join(input.outdir, `${clip.assetKey}.mp3`);
     const t: TechnicalQa = existsSync(file)
       ? qa(file, clip.text, clip.language, input.band)
-      : { durationSec: 0, speechSec: 0, bytes: 0, maxVolumeDb: null, meanVolumeDb: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 0, technical: "fail", technicalIssues: ["missing file"] };
+      : { durationSec: 0, speechSec: 0, bytes: 0, maxVolumeDb: null, meanVolumeDb: null, clipping: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 0, technical: "fail", technicalIssues: ["missing file"] };
     rows.push({ clipId: clip.clipId, assetKey: clip.assetKey, transcript: clip.text, ...t });
   }
   rows.sort((a, b) => a.clipId.localeCompare(b.clipId));

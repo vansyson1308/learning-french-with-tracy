@@ -37,7 +37,7 @@ import { listeningSchema, storiesSchema } from "../content/schema";
 
 import { writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "./lib/audio";
 import { buildPlugin } from "./lib/languages";
-import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa } from "./lib/piper-audio";
+import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa, type TechnicalQa } from "./lib/piper-audio";
 import { courseRolesFor, loadPacks } from "./lib/pipeline";
 import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { writeAudioSizeReport } from "./lib/audio-size";
@@ -528,6 +528,7 @@ type QaRow = {
   bytes: number;
   maxVolumeDb: number | null;
   meanVolumeDb: number | null;
+  clipping: TechnicalQa["clipping"];
   leadingSilenceSec: number | null;
   trailingSilenceSec: number | null;
   charsPerSec: number;
@@ -549,7 +550,7 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
     const speaker = voices.size === 1 ? clip.segments[0].speaker : null;
     const base = { clipId: clip.clipId, layer: clip.layer, courseId: clip.courseId, language: clip.language, voiceId, speaker, assetKey: clip.assetKey, transcript: clip.text };
     if (!existsSync(p)) {
-      rows.push({ ...base, durationSec: 0, speechSec: 0, bytes: 0, maxVolumeDb: null, meanVolumeDb: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 0, technical: "fail", technicalIssues: ["missing file"] });
+      rows.push({ ...base, durationSec: 0, speechSec: 0, bytes: 0, maxVolumeDb: null, meanVolumeDb: null, clipping: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 0, technical: "fail", technicalIssues: ["missing file"] });
       failures++;
       continue;
     }

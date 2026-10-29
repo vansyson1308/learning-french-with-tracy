@@ -15,6 +15,8 @@ import { createHash } from "crypto";
 import { execFileSync, spawnSync } from "child_process";
 import { readFileSync } from "fs";
 
+import { CLIPPING, clippingIssue, ffClipping, type ClippingStats } from "./audio-clipping";
+
 export type VoiceFile = { path: string; sha256: string | null; bytes: number | null };
 export type VoiceFiles = Record<"model" | "config" | "modelCard", VoiceFile>;
 export type LicenseGate = { note?: string; allow: string[]; deny: string[] };
@@ -218,8 +220,11 @@ export type TechnicalQa = {
   /** QC 2026-10-29b §3.3: duration without the leading/trailing silence. */
   speechSec: number;
   bytes: number;
+  /** Peak level (volumedetect); reported, no longer the clipping test. */
   maxVolumeDb: number | null;
   meanVolumeDb: number | null;
+  /** Sample-level clipping scan of the decoded PCM (scripts/lib/audio-clipping.ts); null when not measured. */
+  clipping: ClippingStats | null;
   leadingSilenceSec: number | null;
   trailingSilenceSec: number | null;
   charsPerSec: number;
@@ -239,8 +244,14 @@ export const QA_THRESHOLDS = {
   /** Speech only (silence-trimmed at -40 dB). */
   minSpeechSec: 0.12,
   minBytes: 800,
-  /** Peak above this is treated as clipping. */
-  clippingMaxDb: -0.2,
+  /**
+   * Clipping: at least this many CONSECUTIVE decoded samples at |x| >= 0.999
+   * (CLIPPING in scripts/lib/audio-clipping.ts). Coordinator decision
+   * 2026-10-29: the former "peak above -0.2 dB" test failed MP3 decoder
+   * overshoot (isolated samples), not clipping.
+   */
+  clippingMinRun: CLIPPING.minRun,
+  clippingSampleAbs: CLIPPING.sampleAbs,
   /** Peak below this: the clip is near-silent (a broken render), whatever the loudness target. */
   quietMaxDb: -20,
   maxLeadingSilenceSec: 1.0,
@@ -252,6 +263,7 @@ export type ClipMeasurement = {
   bytes: number;
   maxVolumeDb: number | null;
   meanVolumeDb: number | null;
+  clipping: ClippingStats | null;
   lead: number | null;
   trail: number | null;
   speechSec: number;
@@ -264,7 +276,8 @@ export function technicalIssues(m: ClipMeasurement, transcript: string, band: [n
   if (!(m.durationSec > t.minDurationSec)) issues.push(`duration ${m.durationSec.toFixed(2)}s too short`);
   if (!(m.speechSec >= t.minSpeechSec)) issues.push(`speech-only duration ${m.speechSec.toFixed(2)}s under ${t.minSpeechSec}s (silence-trimmed)`);
   if (m.bytes < t.minBytes) issues.push(`file under ${t.minBytes} bytes`);
-  if (m.maxVolumeDb !== null && m.maxVolumeDb > t.clippingMaxDb) issues.push(`possible clipping (max ${m.maxVolumeDb}dB)`);
+  const clipped = clippingIssue(m.clipping);
+  if (clipped !== null) issues.push(clipped);
   if (m.maxVolumeDb !== null && m.maxVolumeDb < t.quietMaxDb) issues.push(`too quiet (max ${m.maxVolumeDb}dB, under ${t.quietMaxDb}dB)`);
   if (m.lead !== null && m.lead > t.maxLeadingSilenceSec) issues.push(`leading silence ${m.lead.toFixed(2)}s`);
   if (m.trail !== null && m.trail > t.maxTrailingSilenceSec) issues.push(`trailing silence ${m.trail.toFixed(2)}s`);
@@ -277,8 +290,9 @@ export function measureClip(filePath: string): ClipMeasurement {
   const { bytes } = sha256File(filePath);
   const durationSec = ffprobeDuration(filePath);
   const { maxVolumeDb, meanVolumeDb } = ffVolume(filePath);
+  const clipping = ffClipping(filePath);
   const { lead, trail, speechSec } = ffEdgeSilence(filePath);
-  return { durationSec, bytes, maxVolumeDb, meanVolumeDb, lead, trail, speechSec };
+  return { durationSec, bytes, maxVolumeDb, meanVolumeDb, clipping, lead, trail, speechSec };
 }
 
 export function technicalQa(filePath: string, transcript: string, language: string, band?: [number, number]): TechnicalQa {
@@ -293,6 +307,7 @@ export function technicalQa(filePath: string, transcript: string, language: stri
     bytes: m.bytes,
     maxVolumeDb: level(m.maxVolumeDb),
     meanVolumeDb: level(m.meanVolumeDb),
+    clipping: m.clipping === null ? null : { ...m.clipping, peakAbs: Number(m.clipping.peakAbs.toFixed(5)), clippedShare: Number(m.clipping.clippedShare.toFixed(7)) },
     leadingSilenceSec: round(m.lead),
     trailingSilenceSec: round(m.trail),
     charsPerSec: Number((transcript.length / Math.max(m.durationSec, 0.001)).toFixed(2)),
