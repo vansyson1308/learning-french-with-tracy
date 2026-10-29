@@ -932,3 +932,30 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/reception/de-clip-assets.ts
 - compile: changed  src/content/stories/de-stories.json
 - compile: changed  src/content/stories/de-story-assets.ts
+
+## 2026-10-29 — QC 2026-10-30 §2: choice questions whose options shared a picture are text-only (39 exercises in 10 packs, incl. 6 fr-en + 6 fr-vi); six A1-0 micro-stories each for es, de, fr; bare numbers are never story word tokens (Windows ICU parity, no change to the Linux output)
+
+- compile: changed  content/reports/context-coverage.json
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/stories-coverage.json
+- compile: changed  content/reports/es/context-coverage.json
+- compile: changed  content/reports/es/stories-coverage.json
+- compile: changed  content/reports/stories-coverage.json
+- compile: changed  src/content/packs/de-en.json
+- compile: changed  src/content/packs/de-vi.json
+- compile: changed  src/content/packs/es-en.json
+- compile: changed  src/content/packs/es-vi.json
+- compile: changed  src/content/packs/fr-en.json
+- compile: changed  src/content/packs/fr-vi.json
+- compile: changed  src/content/packs/ja-en.json
+- compile: changed  src/content/packs/ko-en.json
+- compile: changed  src/content/packs/pt-en.json
+- compile: changed  src/content/packs/zh-en.json
+- compile: changed  src/content/stories/de-stories.json
+- compile: changed  src/content/stories/es-stories.json
+- compile: changed  src/content/stories/fr-stories.json
+- compile: changed  src/content/stories/fr-vi-stories.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.long.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.long.speak.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.regular.silent.json
+- runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.regular.speak.json

@@ -41,6 +41,8 @@ import { receptionAssetKey, receptionAssetsDir, receptionPipelineVersion } from 
 
 export const STORY_MIN_TOKENS = 150;
 export const STORY_MAX_TOKENS = 400;
+export const MICRO_STORY_MIN_TOKENS = 50;
+export const MICRO_STORY_MAX_TOKENS = 100;
 export const STORY_MIN_COVERAGE = 0.95;
 /** Same single-clip cap as a teaching listening clip (P7 §58). */
 export const STORY_SENTENCE_MAX_CHARS = 220;
@@ -75,7 +77,10 @@ export function segmentSentence(lang: string, text: string): StoryPiece[] {
   const out: StoryPiece[] = [];
   const segmenter = new Intl.Segmenter(lang, { granularity: "word" });
   for (const seg of segmenter.segment(text)) {
-    if (!seg.isWordLike) {
+    // A bare number is never a word token. ICU builds disagree on its
+    // isWordLike (Linux: false, Windows: true); pinned so every platform
+    // compiles the committed artifacts byte for byte.
+    if (!seg.isWordLike || /^\p{N}+$/u.test(seg.segment)) {
       out.push({ text: seg.segment, word: false });
       continue;
     }
@@ -228,19 +233,64 @@ export function resolveToken(
  * QC 2026-10-29 §1.2: a target may also commit the next band's list (`later`,
  * e.g. syllabus-a2-1.json, level "A2-1"); its entries all take that band.
  */
-export function lexemeBands(syllabus: Pick<Syllabus, "level" | "entries">, later?: Pick<Syllabus, "level" | "entries"> | null): Map<string, StoryBand> {
+export function lexemeBands(
+  syllabus: Pick<Syllabus, "level" | "entries">,
+  later?: Pick<Syllabus, "level" | "entries"> | null,
+  micro: ReadonlySet<string> = new Set()
+): Map<string, StoryBand> {
   const bands = new Map<string, StoryBand>();
+  // QC 2026-10-30 §2.2: the words of the course's first units are band A1-0.
+  for (const id of micro) bands.set(id, "A1-0");
   const level = syllabus.level.toUpperCase();
   const half = Math.ceil(syllabus.entries.length / 2);
   syllabus.entries.forEach((e, i) => {
     const band = `${level}-${i < half ? 1 : 2}`;
-    if ((STORY_BANDS as readonly string[]).includes(band)) bands.set(e.lexemeId, band as StoryBand);
+    if (!bands.has(e.lexemeId) && (STORY_BANDS as readonly string[]).includes(band)) bands.set(e.lexemeId, band as StoryBand);
   });
   const laterBand = later?.level.toUpperCase();
   if (later && laterBand && (STORY_BANDS as readonly string[]).includes(laterBand)) {
     for (const e of later.entries) if (!bands.has(e.lexemeId)) bands.set(e.lexemeId, laterBand as StoryBand);
   }
   return bands;
+}
+
+/** Micro-stories draw on the primary course's first units only. */
+export const MICRO_STORY_UNITS = 3;
+
+/**
+ * Closed-class lexemes: a language whose lexicon models pronouns, articles,
+ * prepositions and conjunctions as lexemes (German) treats them as other
+ * languages treat their `functionWords` — always allowed.
+ */
+const CLOSED_CLASS = new Set(["pronoun", "determiner", "preposition", "conjunction"]);
+
+/**
+ * Band A1-0 (QC 2026-10-30 §2.2): the lexemes the primary course teaches in
+ * its first `MICRO_STORY_UNITS` units — what a learner of the first days has
+ * actually met (the syllabus file alone cannot tell: unplaced frequency words
+ * fall back to unit 1) — plus the closed-class lexemes.
+ */
+export function microBandLexemes(
+  lexicon: Pick<RichLexicon, "lexemes">,
+  pack: { sections: { units: { words: { target: string }[] }[] }[] } | null | undefined,
+  /** The target's frozen surface → id map: the lexeme a pack word IS (a surface can name two lexemes). */
+  idMap?: Readonly<Record<string, string>>
+): Set<string> {
+  if (!pack) return new Set();
+  const taught = pack.sections.flatMap((s) => s.units).slice(0, MICRO_STORY_UNITS).flatMap((u) => u.words.map((w) => w.target));
+  // A taught surface counts for every lexeme it spells ("Hallo": the pack's id and the syllabus interjection).
+  const keys = new Set(taught.map((t) => t.toLocaleLowerCase()));
+  const mapped = new Set(taught.map((t) => idMap?.[t]).filter((id): id is string => id !== undefined));
+  return new Set(
+    lexicon.lexemes
+      .filter((l) => !l.variety && (CLOSED_CLASS.has(l.partOfSpeech) || mapped.has(l.id) || keys.has(l.surface.toLocaleLowerCase())))
+      .map((l) => l.id)
+  );
+}
+
+/** Word-token range of a story: micro-stories are short (QC 2026-10-30 §2.2). */
+export function storyTokenRange(band: StoryBand): { min: number; max: number } {
+  return band === "A1-0" ? { min: MICRO_STORY_MIN_TOKENS, max: MICRO_STORY_MAX_TOKENS } : { min: STORY_MIN_TOKENS, max: STORY_MAX_TOKENS };
 }
 
 export type AnalyzedPiece = { text: string; lexemeId?: string };
@@ -464,6 +514,12 @@ export function storyReadingOrder(stories: Pick<Stories, "stories">): string[] {
     .map((x) => x.id);
 }
 
+/** The reading order the band-1 audio list follows: micro-stories (A1-0) are read with the device voice and come before it. */
+export function bandOneOrder(stories: Pick<Stories, "stories">): string[] {
+  const micro = new Set(stories.stories.filter((s) => s.band === "A1-0").map((s) => s.id));
+  return storyReadingOrder(stories).filter((id) => !micro.has(id));
+}
+
 /** Ids of the stories whose sentence audio is bundled. */
 export function bundledStoryIds(stories: Pick<Stories, "stories">, policy: StoryAudioPolicy): Set<string> {
   if (policy.kind === "all") return new Set(stories.stories.map((s) => s.id));
@@ -483,7 +539,7 @@ export function storyAudioProblems(stories: Pick<Stories, "stories">, policy: St
   if (new Set(policy.stories).size !== policy.stories.length) errors.push("storyAudio: a story is listed twice");
   for (const id of policy.stories) if (!known.has(id)) errors.push(`storyAudio: ${id} is not a story of this language`);
   if (policy.stories.length > STORY_AUDIO_MAX_BUNDLED) errors.push(`storyAudio: ${policy.stories.length} stories listed; band-1 bundles at most ${STORY_AUDIO_MAX_BUNDLED} (release/ASSET_DELIVERY.md)`);
-  const head = storyReadingOrder(stories).slice(0, policy.stories.length);
+  const head = bandOneOrder(stories).slice(0, policy.stories.length);
   const listed = new Set(policy.stories);
   const outside = head.filter((id) => !listed.has(id));
   if (outside.length > 0) warnings.push(`storyAudio: the band-1 list is not the start of the reading order (${outside.slice(0, 3).join(", ")} comes earlier and has no bundled audio) — update the list and re-run the audio workflow`);
@@ -520,6 +576,8 @@ export function validateStories(input: {
   receptionVoices: ReadonlySet<string> | null;
   /** Which stories bundle audio (default: the voice manifest's `storyAudio`). */
   storyAudio?: StoryAudioPolicy;
+  /** Band A1-0 vocabulary (`microBandLexemes` of the primary course). */
+  microLexemes?: ReadonlySet<string>;
 }): ValidationResult & { analyses: StoryAnalysis[] } {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -528,8 +586,12 @@ export function validateStories(input: {
   const lexemeIds = new Set(input.lexicon.lexemes.map((l) => l.id));
   const glossOf = new Map(input.lexicon.lexemes.map((l) => [l.id, l.glosses as Record<string, string | undefined>]));
   const functionWords = new Set(stories.functionWords.map(tokenKey));
-  const bands = input.syllabus ? lexemeBands(input.syllabus, input.laterSyllabus) : new Map<string, StoryBand>();
-  const index = buildLexemeIndex(lang, input.lexicon, loadVerbForms(lang), bands);
+  const micro = input.microLexemes ?? new Set<string>();
+  const bands = input.syllabus ? lexemeBands(input.syllabus, input.laterSyllabus, micro) : new Map<string, StoryBand>();
+  // Token resolution ignores band A1-0: a micro band must never re-resolve the
+  // words of existing stories ("Hallo" stays the interjection the syllabus places).
+  const resolutionBands = input.syllabus ? lexemeBands(input.syllabus, input.laterSyllabus) : bands;
+  const index = buildLexemeIndex(lang, input.lexicon, loadVerbForms(lang), resolutionBands);
   if (!input.syllabus) err("the target has no syllabus — stories are graded by syllabus band");
 
   for (const [speaker, cast] of Object.entries(stories.voiceCast)) {
@@ -574,7 +636,9 @@ export function validateStories(input: {
 
     const a = analyzeStory(lang, story, { index, functionWords, bands, tokenMap: stories.tokenMap, endings: buildPlugin(lang).storyEndings });
     analyses.push(a);
-    if (a.tokens < STORY_MIN_TOKENS || a.tokens > STORY_MAX_TOKENS) err(`${story.id}: ${a.tokens} word tokens (stories are ${STORY_MIN_TOKENS}–${STORY_MAX_TOKENS})`);
+    const range = storyTokenRange(story.band);
+    if (a.tokens < range.min || a.tokens > range.max) err(`${story.id}: ${a.tokens} word tokens (band ${story.band} stories are ${range.min}–${range.max})`);
+    if (story.band === "A1-0" && micro.size === 0) err(`${story.id}: band A1-0 needs the primary course's unit 1–${MICRO_STORY_UNITS} vocabulary`);
     if (a.unresolved.length > 0) err(`${story.id}: unresolved tokens ${a.unresolved.slice(0, 12).join(", ")}${a.unresolved.length > 12 ? " …" : ""} — use lexicon words, or map them in tokenMap`);
     if (a.undeclared.length > 0) err(`${story.id}: ${a.undeclared.join(", ")} beyond band ${story.band} — declare as new (3–5) or replace`);
     for (const id of story.newLexemes) if (!a.lexemes.includes(id)) err(`${story.id}: new lexeme ${id} never occurs in the text`);

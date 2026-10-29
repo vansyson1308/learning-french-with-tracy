@@ -32,7 +32,7 @@ export function unknownLexemes(story: Pick<CompiledStory, "lexemes">, cards: Car
   return story.lexemes.filter((id) => !isKnownLexeme(cards, id));
 }
 
-const BAND_ORDER = ["A1-1", "A1-2", "A2-1", "A2-2"];
+const BAND_ORDER = ["A1-0", "A1-1", "A1-2", "A2-1", "A2-2"];
 
 /** Every story with its unknown words and reason, in recommendation order. */
 export function rankStories(stories: readonly CompiledStory[], cards: Cards): StoryPick[] {
@@ -56,4 +56,26 @@ export function rankStories(stories: readonly CompiledStory[], cards: Cards): St
 
 export function nextStory(stories: readonly CompiledStory[], cards: Cards): StoryPick | null {
   return rankStories(stories, cards)[0] ?? null;
+}
+
+/**
+ * QC 2026-10-30 §2.2: TODAY suggests a story only when it is readable for
+ * this learner — at most this many unknown words (from the card states).
+ */
+export const TODAY_STORY_MAX_UNKNOWN = 10;
+
+export type TodayStorySuggestion =
+  | { kind: "story"; pick: StoryPick }
+  /** No story is readable yet: learn `n` more words (the closest story's unknown count above the cap). */
+  | { kind: "learnMore"; n: number }
+  | null;
+
+/** The first readable story in recommendation order; else how many words are missing. */
+export function todayStorySuggestion(stories: readonly CompiledStory[], cards: Cards): TodayStorySuggestion {
+  const ranked = rankStories(stories, cards);
+  if (ranked.length === 0) return null;
+  const readable = ranked.find((p) => p.unknown.length <= TODAY_STORY_MAX_UNKNOWN);
+  if (readable) return { kind: "story", pick: readable };
+  const fewest = Math.min(...ranked.map((p) => p.unknown.length));
+  return { kind: "learnMore", n: fewest - TODAY_STORY_MAX_UNKNOWN };
 }

@@ -434,6 +434,7 @@ export type MessageKey =
   | "stories.score"
   | "stories.tapHint"
   | "stories.todayBody"
+  | "stories.todayLearnMore"
   | "stories.todayTitle"
   | "stories.translation"
   | "stories.unknownCount"
@@ -531,4 +532,4 @@ export type MessageKey =
   | "weekday.5"
   | "weekday.6";
 
-export const MESSAGE_KEY_COUNT = 529;
+export const MESSAGE_KEY_COUNT = 530;

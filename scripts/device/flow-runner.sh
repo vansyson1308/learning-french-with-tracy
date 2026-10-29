@@ -79,9 +79,14 @@ hang_diagnostics() { # dir
 }
 
 # Next `maestro test` reinstalls and reconnects its driver from scratch.
+# A force-stop alone was not enough (PR #52, API 30: the CLI hung before its
+# first command, and the retry right after failed at once with no output):
+# the driver apps are uninstalled, so the retry's CLI installs fresh ones.
 reset_driver() {
   adb_t shell am force-stop dev.mobile.maestro > /dev/null 2>&1
   adb_t shell am force-stop dev.mobile.maestro.test > /dev/null 2>&1
+  adb_t uninstall dev.mobile.maestro.test > /dev/null 2>&1
+  adb_t uninstall dev.mobile.maestro > /dev/null 2>&1
   adb_t forward --remove-all > /dev/null 2>&1
   if command -v pkill > /dev/null; then pkill -f maestro-cli || true; fi
 }

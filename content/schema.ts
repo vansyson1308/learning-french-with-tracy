@@ -1560,8 +1560,10 @@ export type Listening = z.infer<typeof ListeningSchema>;
 /**
  * Lexicon bands a story is graded by: the first and second half of the
  * target's syllabus at each level (scripts/lib/stories.ts `lexemeBands`).
+ * A1-0 (QC 2026-10-30 §2.2): micro-stories for the first days, from the
+ * words the primary course teaches in its units 1–3.
  */
-export const STORY_BANDS = ["A1-1", "A1-2", "A2-1", "A2-2"] as const;
+export const STORY_BANDS = ["A1-0", "A1-1", "A1-2", "A2-1", "A2-2"] as const;
 export type StoryBand = (typeof STORY_BANDS)[number];
 
 /** N = narrator; A/B = the two dialogue voices (a story may be narration only). */

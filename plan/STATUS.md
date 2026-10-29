@@ -1,5 +1,18 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
+> **Ghi chú (2026-10-30):** PR #51 (ai-review: D-10 + chiến lược và pipeline audio) đã merge (b89ae3c). CI, cả 6 shard thiết bị và LanguageTool đều xanh.
+> - **Audio thật:** es 1.643 clip, de 1.478 clip, 0 lỗi kỹ thuật. Trong 11 câu tiếng Đức sinh lại, 7 câu đã sạch; 4 câu còn lại nằm ở mục C1 của checklist để chủ dự án nghe thử. Tổng audio 24,7 / 88 MB.
+> - **Kiểm tra phát Opus:** đạt trên API 30, API 34 và web, ở cả tốc độ thường lẫn chế độ chậm, không lỗi giải mã. Chuyển audio truyện sang Opus sẽ làm trong PR stories-topup-es.
+> - **QC 2026-10-30 §1 ("offline today" đỏ):** nguyên nhân là đợt duyệt D-10 sửa một câu thành «Papá…», nên "papá" thành từ của truyện. Trả lời đúng vẫn đến hạn ôn lại sau 10 phút (bước ngắn hạn của FSRS), nên phiên Hôm nay mở bằng lượt ôn đó. Flow giờ chọn đáp án theo testID, bài học phải 0 lỗi, và Hôm nay trả lời lượt ôn trước rồi mới kiểm tra thẻ từ mới.
+> - **Đang làm PR `fix/today-story-and-picture-cues` (QC §2):**
+>   - linter cấm hai lựa chọn trùng hình, đã gỡ hình ở 39 câu hỏi trên 10 khoá, kể cả 6 câu của fr-en (đổi tiếng Pháp có chủ đích);
+>   - khi máy tự sinh câu hỏi, hình trùng hoặc từ họ hàng thì cả câu chỉ hiện chữ;
+>   - Hôm nay chỉ gợi ý truyện có tối đa 10 từ chưa biết, nếu không thì hiện "học thêm N từ";
+>   - 18 truyện siêu ngắn A1-0 (es, de, fr mỗi thứ tiếng 6 truyện).
+>
+>   Ngoài ra đã sửa lỗi biên dịch lệch trên Windows (Intl.Segmenter coi chữ số là một từ).
+> - Thứ tự tiếp theo: PR §2 → stories-topup-es (kèm chuyển audio truyện sang Opus) → P3d(it).
+
 > **Ghi chú (2026-10-29, chiều):** PR #49 (de-vi) xanh trên CI:
 > - **Audio tiếng Đức:** 0 lỗi kỹ thuật.
 > - **LanguageTool tiếng Đức:** lần đầu tiên chạy hết. Trước đây job luôn bị huỷ vì mỗi request mất khoảng 0,9 s; nay gửi câu theo lô. 267 phát hiện được xử lý: sửa 19, cho phép 248 kèm lý do.

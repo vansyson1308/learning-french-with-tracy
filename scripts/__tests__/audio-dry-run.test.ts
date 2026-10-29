@@ -10,7 +10,7 @@ import { describe, expect, test } from "bun:test";
 
 import { safeResolve } from "../lib/pipeline";
 import { loadListening, receptionAssetKey, resolveClipSegments } from "../lib/reception";
-import { loadStories, storySentenceAssetKey } from "../lib/stories";
+import { bundledStoryIds, loadStories, storyAudioPolicy, storySentenceAssetKey } from "../lib/stories";
 
 function run(args: string[]): { code: number; out: string } {
   const proc = Bun.spawnSync({
@@ -25,9 +25,11 @@ function run(args: string[]): { code: number; out: string } {
 describe("audio.ts plan --dry-run", () => {
   test("French generate plan validates offline and reports the authored clip count", () => {
     const listening = loadListening("fr")!;
-    // P5b: the reception layer also carries one clip per graded-story sentence.
+    // P5b: the reception layer also carries one clip per sentence of a bundled
+    // story (every French story but the A1-0 micro-stories, read with the device voice).
     const stories = loadStories("fr")!;
-    const sentences = stories.stories.flatMap((s) => s.sentences);
+    const bundled = bundledStoryIds(stories, storyAudioPolicy("fr"));
+    const sentences = stories.stories.filter((s) => bundled.has(s.id)).flatMap((s) => s.sentences);
     const keys = new Set([
       ...listening.clips.map((c) => receptionAssetKey("fr", resolveClipSegments(listening, c))),
       ...sentences.map((s) => storySentenceAssetKey("fr", stories, s)),

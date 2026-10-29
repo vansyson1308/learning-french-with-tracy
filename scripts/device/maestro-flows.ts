@@ -266,6 +266,12 @@ export function todayFlow(): string {
     ...shot("today-teach-card"),
     ...TAP_CONTINUE,
     ...waitId("teach-card|exercise-.*"),
+    // QC 2026-10-30 §2.2: the story card offers a readable story (≤ 10 unknown words) or says how many words to learn first.
+    `- stopApp`,
+    ...openLink("today"),
+    ...waitId("today-start"),
+    ...scrollTo("today-story|today-story-locked"),
+    ...shot("today-story-card"),
     `- stopApp`,
     ``,
   ].join("\n");

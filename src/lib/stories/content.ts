@@ -33,7 +33,7 @@ export type CompiledStoryQuestion = {
 
 export type CompiledStory = {
   id: string;
-  band: "A1-1" | "A1-2" | "A2-1" | "A2-2";
+  band: "A1-0" | "A1-1" | "A1-2" | "A2-1" | "A2-2";
   title: string;
   blurb: string;
   tokens: number;
@@ -115,7 +115,7 @@ export function readingTokens(pieces: readonly StoryPieceTuple[]): ReadingToken[
   return out;
 }
 
-/** Level label without CEFR wording: band 1…4 in reading order. */
+/** Level label without CEFR wording: band 1…4 in reading order; micro-stories (A1-0) read as level 1. */
 export function storyLevel(story: Pick<CompiledStory, "band">): number {
-  return ["A1-1", "A1-2", "A2-1", "A2-2"].indexOf(story.band) + 1;
+  return Math.max(1, ["A1-0", "A1-1", "A1-2", "A2-1", "A2-2"].indexOf(story.band));
 }

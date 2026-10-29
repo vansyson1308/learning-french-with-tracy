@@ -9,9 +9,13 @@ import { readFileSync } from "fs";
 import type { Stories, StorySource } from "../../content/schema";
 import { buildPlugin } from "../lib/languages";
 import { loadRichLexicon } from "../lib/lexicon";
-import { courseRolesFor, loadPacks, safeResolve } from "../lib/pipeline";
+import { courseRolesFor, loadIdMaps, loadPacks, safeResolve } from "../lib/pipeline";
 import {
+  bandOneOrder,
   buildLexemeIndex,
+  MICRO_STORY_UNITS,
+  microBandLexemes,
+  storyTokenRange,
   bundledStoryIds,
   compileStoriesArtifact,
   lexemeBands,
@@ -38,12 +42,13 @@ function target(lang: string) {
   const lexicon = loadRichLexicon(lang);
   const primary = courseRolesFor(lang, packs).primary!.pack;
   const syllabus = loadSyllabus(lang) ?? deriveSyllabus({ lang, level: "A1", minLexemes: 0, lexicon, pack: primary });
-  return { lexicon, syllabus, stories: loadStories(lang)! };
+  const micro = microBandLexemes(lexicon, primary, loadIdMaps(packs)[lang]);
+  return { lexicon, syllabus, micro, stories: loadStories(lang)! };
 }
 const ES = target("es");
 const FR = target("fr");
 const validate = (lang: string, t: ReturnType<typeof target>, stories: Stories = t.stories) =>
-  validateStories({ lang, stories, lexicon: t.lexicon, syllabus: t.syllabus, nativeCodes: ["vi", "en"], receptionVoices: null });
+  validateStories({ lang, stories, lexicon: t.lexicon, syllabus: t.syllabus, microLexemes: t.micro, nativeCodes: ["vi", "en"], receptionVoices: null });
 const words = (lang: string, text: string) => segmentSentence(lang, text).filter((p) => p.word).map((p) => p.text);
 
 describe("tokenizer", () => {
@@ -117,16 +122,19 @@ describe("German inflection endings (P3d de)", () => {
 });
 
 describe("validator", () => {
-  test("the committed stories pass: 20 Spanish, 10 French, every token resolved, ≥ 95 % known", () => {
-    for (const [lang, t, n] of [["es", ES, 20], ["fr", FR, 10]] as const) {
+  test("the committed stories pass: 20 + 6 micro Spanish, 10 + 6 micro French, every token resolved, ≥ 95 % known", () => {
+    for (const [lang, t, n] of [["es", ES, 26], ["fr", FR, 16]] as const) {
       const r = validate(lang, t);
       expect(r.errors).toEqual([]);
       expect(r.analyses.length).toBe(n);
       for (const a of r.analyses) {
         expect(a.unresolved).toEqual([]);
         expect(a.coverage).toBeGreaterThanOrEqual(0.95);
-        expect(a.tokens).toBeGreaterThanOrEqual(150);
+        const range = storyTokenRange(a.band);
+        expect(a.tokens).toBeGreaterThanOrEqual(range.min);
+        expect(a.tokens).toBeLessThanOrEqual(range.max);
       }
+      expect(r.analyses.filter((a) => a.band === "A1-0")).toHaveLength(6);
     }
   });
 
@@ -142,13 +150,74 @@ describe("validator", () => {
   });
 
   test("length, new-word, question, CEFR and voice rules", () => {
-    expect(broken((s) => ({ ...s, sentences: s.sentences.slice(0, 10) }))).toMatch(/word tokens \(stories are 150–400\)/);
+    expect(broken((s) => ({ ...s, sentences: s.sentences.slice(0, 10) }))).toMatch(/word tokens \(band A1-1 stories are 150–400\)/);
     expect(broken((s) => ({ ...s, newLexemes: [...s.newLexemes, "es:w:examen"] }))).toContain("es:w:examen never occurs");
     expect(broken((s) => ({ ...s, questions: s.questions.map((q) => ({ ...q, kind: "locate" as const })) }))).toContain("must ask for an inference");
     expect(broken((s) => ({ ...s, blurb: { vi: "Truyện cấp A1", en: "An A1 story" } }))).toContain("no CEFR/level labels");
     const sameVoice = { ...ES.stories.voiceCast, B: ES.stories.voiceCast.A };
     expect(broken((s) => s, sameVoice)).toContain("needs two distinct voices");
     expect(broken((s) => ({ ...s, blurb: { vi: "chỉ có tiếng Việt" } }))).toContain("missing en text");
+  });
+});
+
+describe("micro-stories, band A1-0 (QC 2026-10-30 §2.2)", () => {
+  const DE = target("de");
+  const primary = (lang: string) => courseRolesFor(lang, packs).primary!.pack;
+
+  test("A1-0 is the primary course's unit 1–3 words plus closed-class lexemes, nothing else", () => {
+    expect(MICRO_STORY_UNITS).toBe(3);
+    for (const id of ["es:w:comer", "es:w:pan", "es:w:gracias", "es:w:yo"]) expect(ES.micro.has(id)).toBe(true);
+    for (const id of ["es:w:perro", "es:w:tener", "es:w:estar"]) expect(ES.micro.has(id)).toBe(false);
+    // German models pronouns and articles as lexemes; they count like function words.
+    for (const id of ["de:w:ich", "de:w:und", "de:w:essen", "de:w:hallo-interjection"]) expect(DE.micro.has(id)).toBe(true);
+    expect(DE.micro.has("de:w:sein")).toBe(false);
+    const units = primary("es").sections.flatMap((s) => s.units);
+    expect(units.slice(3).flatMap((u) => u.words.map((w) => w.target))).toContain("el perro");
+  });
+
+  test("A1-0 never re-resolves the words of existing stories ('Hallo' stays the syllabus interjection)", () => {
+    const res = (micro: Set<string>) =>
+      validateStories({ lang: "de", stories: DE.stories, lexicon: DE.lexicon, syllabus: DE.syllabus, microLexemes: micro, nativeCodes: [], receptionVoices: null })
+        .analyses.filter((a) => a.band !== "A1-0")
+        .map((a) => a.lexemes);
+    expect(res(DE.micro)).toEqual(res(new Set()));
+  });
+
+  test("six micro-stories per language, 50–100 tokens, ≥ 95 % known from A1-0 alone", () => {
+    for (const t of [ES, FR, DE]) {
+      const r = validateStories({ lang: t.stories.language, stories: t.stories, lexicon: t.lexicon, syllabus: t.syllabus, microLexemes: t.micro, nativeCodes: ["vi", "en"], receptionVoices: null });
+      const micro = r.analyses.filter((a) => a.band === "A1-0");
+      expect(micro).toHaveLength(6);
+      for (const a of micro) {
+        expect(a.tokens).toBeGreaterThanOrEqual(50);
+        expect(a.tokens).toBeLessThanOrEqual(100);
+        expect(a.coverage).toBeGreaterThanOrEqual(0.95);
+        expect(a.undeclared).toEqual([]);
+      }
+    }
+    expect(storyTokenRange("A1-0")).toEqual({ min: 50, max: 100 });
+    expect(storyTokenRange("A1-1")).toEqual({ min: 150, max: 400 });
+  });
+
+  test("a micro-story without the A1-0 vocabulary, too long, or using a later word fails", () => {
+    const micro = ES.stories.stories.find((s) => s.band === "A1-0")!;
+    const run = (story: StorySource, m: Set<string> = ES.micro) =>
+      validateStories({ lang: "es", stories: { ...ES.stories, stories: [story] }, lexicon: ES.lexicon, syllabus: ES.syllabus, microLexemes: m, nativeCodes: ["vi", "en"], receptionVoices: null, storyAudio: { kind: "none", reason: "r" } }).errors.join("\n");
+    expect(run(micro)).toBe("");
+    expect(run(micro, new Set())).toContain("band A1-0 needs the primary course's unit 1–3 vocabulary");
+    const long = { ...micro, sentences: [...micro.sentences, ...micro.sentences] };
+    expect(run(long)).toMatch(/word tokens \(band A1-0 stories are 50–100\)/);
+    const later = { ...micro, sentences: [...micro.sentences, { speaker: "N" as const, text: "Ana tiene un perro.", translation: { vi: "x", en: "x" } }] };
+    expect(run(later)).toContain("beyond band A1-0");
+  });
+
+  test("the band-1 audio list starts after the micro-stories (they are read with the device voice)", () => {
+    for (const t of [ES, FR, DE]) {
+      const order = storyReadingOrder(t.stories);
+      const first = order.findIndex((id) => t.stories.stories.find((s) => s.id === id)!.band !== "A1-0");
+      expect(order.slice(0, first)).toHaveLength(6);
+      expect(bandOneOrder(t.stories)).toEqual(order.slice(first));
+    }
   });
 });
 
@@ -172,10 +241,11 @@ describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
       const policy = storyAudioPolicy(lang);
       expect(policy.kind).toBe("band-1");
       if (policy.kind !== "band-1") continue;
-      expect(policy.stories).toEqual(storyReadingOrder(t.stories).slice(0, n));
+      expect(policy.stories).toEqual(bandOneOrder(t.stories).slice(0, n));
       expect(storyAudioProblems(t.stories, policy)).toEqual({ errors: [], warnings: [] });
     }
-    expect(bundledStoryIds(FR.stories, storyAudioPolicy("fr")).size).toBe(FR.stories.stories.length);
+    // Every French story but the micro-stories (device voice).
+    expect(bundledStoryIds(FR.stories, storyAudioPolicy("fr")).size).toBe(bandOneOrder(FR.stories).length);
     expect(bundledStoryIds(DE.stories, storyAudioPolicy("de")).size).toBe(4);
     expect(storyAudioPolicy("de").kind === "band-1" && storyAudioPolicy("es").kind === "band-1").toBe(true);
     expect(STORY_AUDIO_MAX_BUNDLED).toBe(12);
@@ -189,7 +259,7 @@ describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
   });
 
   test("declaration problems: unknown, repeated, over the cap, no reason; a list that skips an earlier story warns", () => {
-    const order = storyReadingOrder(DE.stories);
+    const order = bandOneOrder(DE.stories);
     const bad = storyAudioProblems(DE.stories, { kind: "band-1", stories: [...order.slice(0, 13), order[0], "de.story.nope"], reason: "" });
     expect(bad.errors.join("\n")).toContain("a reason is required");
     expect(bad.errors.join("\n")).toContain("listed twice");

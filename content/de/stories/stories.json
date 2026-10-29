@@ -11456,6 +11456,1344 @@
         }
       ],
       "sourceRef": "original-project"
+    },
+    {
+      "id": "de.story.micro_das_fruehstueck",
+      "band": "A1-0",
+      "title": "Das Frühstück",
+      "blurb": {
+        "vi": "Một cặp vợ chồng ăn sáng cùng con.",
+        "en": "A couple has breakfast with their child."
+      },
+      "newLexemes": [
+        "de:w:sein",
+        "de:w:sehr",
+        "de:w:gut"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Ein Mann und eine Frau essen Frühstück.",
+          "translation": {
+            "vi": "Một người đàn ông và một người phụ nữ ăn sáng.",
+            "en": "A man and a woman are having breakfast."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Kaffee oder Tee?",
+          "translation": {
+            "vi": "Cà phê hay trà?",
+            "en": "Coffee or tea?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Kaffee, bitte. Mit Milch und Zucker.",
+          "translation": {
+            "vi": "Cà phê nhé. Có sữa và đường.",
+            "en": "Coffee, please. With milk and sugar."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Ich trinke Tee.",
+          "translation": {
+            "vi": "Em uống trà.",
+            "en": "I'll have tea."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Die Frau trinkt Tee mit Zucker.",
+          "translation": {
+            "vi": "Người phụ nữ uống trà với đường.",
+            "en": "The woman drinks tea with sugar."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Das Kind trinkt Milch.",
+          "translation": {
+            "vi": "Đứa trẻ uống sữa.",
+            "en": "The child drinks milk."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Hast du Brot?",
+          "translation": {
+            "vi": "Em có bánh mì không?",
+            "en": "Do you have bread?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Brot, Käse und ein Ei.",
+          "translation": {
+            "vi": "Bánh mì, phô mai và một quả trứng.",
+            "en": "Bread, cheese and an egg."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Danke.",
+          "translation": {
+            "vi": "Cảm ơn em.",
+            "en": "Thanks."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Der Mann isst Brot mit Käse.",
+          "translation": {
+            "vi": "Người đàn ông ăn bánh mì với phô mai.",
+            "en": "The man eats bread with cheese."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Die Frau isst ein Ei und Obst.",
+          "translation": {
+            "vi": "Người phụ nữ ăn một quả trứng và trái cây.",
+            "en": "The woman eats an egg and fruit."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Das Brot ist sehr gut.",
+          "translation": {
+            "vi": "Bánh mì ngon lắm.",
+            "en": "The bread is very good."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Danke!",
+          "translation": {
+            "vi": "Cảm ơn anh!",
+            "en": "Thank you!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sie trinken Saft.",
+          "translation": {
+            "vi": "Họ uống nước ép.",
+            "en": "They drink juice."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Tschüss!",
+          "translation": {
+            "vi": "Tạm biệt em!",
+            "en": "Bye!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Tschüss!",
+          "translation": {
+            "vi": "Tạm biệt anh!",
+            "en": "Bye!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người đàn ông uống gì?",
+            "en": "What does the man drink?"
+          },
+          "options": [
+            {
+              "vi": "Cà phê với sữa và đường",
+              "en": "Coffee with milk and sugar"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            },
+            {
+              "vi": "Nước",
+              "en": "Water"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Đứa trẻ uống gì?",
+            "en": "What does the child drink?"
+          },
+          "options": [
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            },
+            {
+              "vi": "Sữa",
+              "en": "Milk"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Người đàn ông thấy bánh mì thế nào?",
+            "en": "What does the man think of the bread?"
+          },
+          "options": [
+            {
+              "vi": "Ngon",
+              "en": "Good"
+            },
+            {
+              "vi": "Quá khô",
+              "en": "Too dry"
+            },
+            {
+              "vi": "Không ngon",
+              "en": "Not good"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.story.micro_katze_und_hund",
+      "band": "A1-0",
+      "title": "Katze und Hund",
+      "blurb": {
+        "vi": "Hai bạn nhỏ kể về con mèo và con chó của mình.",
+        "en": "Two children talk about their cat and their dog."
+      },
+      "newLexemes": [
+        "de:w:katze",
+        "de:w:hund",
+        "de:w:ja"
+      ],
+      "sentences": [
+        {
+          "speaker": "B",
+          "text": "Willkommen!",
+          "translation": {
+            "vi": "Chào mừng cậu!",
+            "en": "Welcome!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Hallo! Ich habe eine Katze.",
+          "translation": {
+            "vi": "Chào cậu! Tớ có một con mèo.",
+            "en": "Hi! I have a cat."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Hallo! Was isst sie?",
+          "translation": {
+            "vi": "Chào cậu! Nó ăn gì?",
+            "en": "Hi! What does she eat?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sie isst Fisch.",
+          "translation": {
+            "vi": "Nó ăn cá.",
+            "en": "She eats fish."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Und was trinkt sie?",
+          "translation": {
+            "vi": "Thế nó uống gì?",
+            "en": "And what does she drink?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Milch und Wasser.",
+          "translation": {
+            "vi": "Sữa và nước.",
+            "en": "Milk and water."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mein Hund isst kein Obst.",
+          "translation": {
+            "vi": "Con chó của tớ không ăn trái cây.",
+            "en": "My dog doesn't eat fruit."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Isst er Brot?",
+          "translation": {
+            "vi": "Nó có ăn bánh mì không?",
+            "en": "Does he eat bread?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Ja, Brot und Reis.",
+          "translation": {
+            "vi": "Có, bánh mì và cơm.",
+            "en": "Yes, bread and rice."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Sie isst kein Brot und keinen Reis.",
+          "translation": {
+            "vi": "Con mèo của tớ không ăn bánh mì, cũng không ăn cơm.",
+            "en": "She eats no bread and no rice."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Ich esse Schokolade.",
+          "translation": {
+            "vi": "Tớ ăn sô-cô-la.",
+            "en": "I eat chocolate."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Ich esse Obst.",
+          "translation": {
+            "vi": "Tớ ăn trái cây.",
+            "en": "I eat fruit."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Das Mädchen und der Junge essen Kuchen.",
+          "translation": {
+            "vi": "Cô bé và cậu bé ăn bánh ngọt.",
+            "en": "The girl and the boy eat cake."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sie trinken Saft.",
+          "translation": {
+            "vi": "Họ uống nước ép.",
+            "en": "They drink juice."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Danke für den Kuchen!",
+          "translation": {
+            "vi": "Cảm ơn cậu vì cái bánh!",
+            "en": "Thanks for the cake!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Bitte!",
+          "translation": {
+            "vi": "Không có gì!",
+            "en": "You're welcome!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Tschüss!",
+          "translation": {
+            "vi": "Tạm biệt!",
+            "en": "Bye!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Tschüss!",
+          "translation": {
+            "vi": "Tạm biệt!",
+            "en": "Bye!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Con mèo ăn gì?",
+            "en": "What does the cat eat?"
+          },
+          "options": [
+            {
+              "vi": "Cá",
+              "en": "Fish"
+            },
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            },
+            {
+              "vi": "Trái cây",
+              "en": "Fruit"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Con chó không ăn gì?",
+            "en": "What doesn't the dog eat?"
+          },
+          "options": [
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            },
+            {
+              "vi": "Trái cây",
+              "en": "Fruit"
+            },
+            {
+              "vi": "Cơm",
+              "en": "Rice"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Con vật nào ăn bánh mì?",
+            "en": "Which animal eats bread?"
+          },
+          "options": [
+            {
+              "vi": "Con chó",
+              "en": "The dog"
+            },
+            {
+              "vi": "Con mèo",
+              "en": "The cat"
+            },
+            {
+              "vi": "Cả hai",
+              "en": "Both"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.story.micro_im_cafe",
+      "band": "A1-0",
+      "title": "Im Café",
+      "blurb": {
+        "vi": "Một người phụ nữ gọi cà phê và bánh ở quán.",
+        "en": "A woman orders coffee and cake at a café."
+      },
+      "newLexemes": [
+        "de:w:ja",
+        "de:w:kellner",
+        "de:w:bringen"
+      ],
+      "sentences": [
+        {
+          "speaker": "B",
+          "text": "Hallo! Willkommen!",
+          "translation": {
+            "vi": "Xin chào! Chào mừng chị!",
+            "en": "Hello! Welcome!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Hallo. Einen Kaffee, bitte.",
+          "translation": {
+            "vi": "Chào anh. Cho tôi một cà phê.",
+            "en": "Hello. A coffee, please."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mit Milch?",
+          "translation": {
+            "vi": "Có sữa không ạ?",
+            "en": "With milk?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Mit Milch und Zucker, bitte.",
+          "translation": {
+            "vi": "Có sữa và đường nhé.",
+            "en": "With milk and sugar, please."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Und Kuchen?",
+          "translation": {
+            "vi": "Chị dùng bánh ngọt không?",
+            "en": "And cake?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Ja, bitte. Schokolade.",
+          "translation": {
+            "vi": "Có, bánh sô-cô-la nhé.",
+            "en": "Yes, please. Chocolate."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Der Kellner bringt den Kaffee und den Kuchen.",
+          "translation": {
+            "vi": "Người phục vụ mang cà phê và bánh ra.",
+            "en": "The waiter brings the coffee and the cake."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Danke.",
+          "translation": {
+            "vi": "Cảm ơn anh.",
+            "en": "Thank you."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bitte.",
+          "translation": {
+            "vi": "Không có gì ạ.",
+            "en": "You're welcome."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Die Frau trinkt den Kaffee und isst den Kuchen.",
+          "translation": {
+            "vi": "Người phụ nữ uống cà phê và ăn bánh.",
+            "en": "The woman drinks the coffee and eats the cake."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Ein Kind trinkt Saft.",
+          "translation": {
+            "vi": "Một đứa trẻ uống nước ép.",
+            "en": "A child drinks juice."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Das Kind isst ein Ei.",
+          "translation": {
+            "vi": "Đứa trẻ ăn một quả trứng.",
+            "en": "The child eats an egg."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Haben Sie Tee?",
+          "translation": {
+            "vi": "Ở đây có trà không anh?",
+            "en": "Do you have tea?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Wir haben Tee und Saft.",
+          "translation": {
+            "vi": "Chúng tôi có trà và nước ép.",
+            "en": "We have tea and juice."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Entschuldigung! Ein Wasser, bitte.",
+          "translation": {
+            "vi": "Xin lỗi! Cho tôi một cốc nước.",
+            "en": "Excuse me! A water, please."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Ein Wasser für Sie.",
+          "translation": {
+            "vi": "Nước của chị đây.",
+            "en": "A water for you."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Danke. Tschüss!",
+          "translation": {
+            "vi": "Cảm ơn anh. Tạm biệt!",
+            "en": "Thank you. Bye!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Tschüss!",
+          "translation": {
+            "vi": "Tạm biệt chị!",
+            "en": "Bye!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người phụ nữ ăn bánh gì?",
+            "en": "What cake does the woman have?"
+          },
+          "options": [
+            {
+              "vi": "Bánh sô-cô-la",
+              "en": "Chocolate cake"
+            },
+            {
+              "vi": "Bánh táo",
+              "en": "Apple cake"
+            },
+            {
+              "vi": "Không ăn bánh",
+              "en": "No cake"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Đứa trẻ uống gì?",
+            "en": "What does the child drink?"
+          },
+          "options": [
+            {
+              "vi": "Sữa",
+              "en": "Milk"
+            },
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Cuối cùng người phụ nữ gọi thêm gì?",
+            "en": "What does the woman order at the end?"
+          },
+          "options": [
+            {
+              "vi": "Nước",
+              "en": "Water"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            },
+            {
+              "vi": "Thêm bánh",
+              "en": "More cake"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.story.micro_am_abend",
+      "band": "A1-0",
+      "title": "Am Abend",
+      "blurb": {
+        "vi": "Buổi tối, một cậu bé ăn cơm với mẹ.",
+        "en": "In the evening, a boy has dinner with his mum."
+      },
+      "newLexemes": [
+        "de:w:mama",
+        "de:w:sein",
+        "de:w:kalt"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Am Abend essen der Junge und seine Mama.",
+          "translation": {
+            "vi": "Buổi tối, cậu bé ăn cơm với mẹ.",
+            "en": "In the evening, the boy and his mum have dinner."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Was isst du?",
+          "translation": {
+            "vi": "Con ăn gì?",
+            "en": "What are you eating?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Reis mit Fisch.",
+          "translation": {
+            "vi": "Cơm với cá ạ.",
+            "en": "Rice with fish."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Und was trinkst du?",
+          "translation": {
+            "vi": "Thế con uống gì?",
+            "en": "And what are you drinking?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Wasser, bitte.",
+          "translation": {
+            "vi": "Nước ạ.",
+            "en": "Water, please."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Das Wasser ist kalt.",
+          "translation": {
+            "vi": "Nước lạnh đấy.",
+            "en": "The water is cold."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Danke.",
+          "translation": {
+            "vi": "Con cảm ơn mẹ.",
+            "en": "Thanks."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sie trinkt Tee.",
+          "translation": {
+            "vi": "Mẹ uống trà.",
+            "en": "She drinks tea."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Isst du Obst?",
+          "translation": {
+            "vi": "Con có ăn trái cây không?",
+            "en": "Do you eat fruit?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Einen Apfel, bitte.",
+          "translation": {
+            "vi": "Cho con một quả táo.",
+            "en": "An apple, please."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Der Junge isst den Apfel.",
+          "translation": {
+            "vi": "Cậu bé ăn quả táo.",
+            "en": "The boy eats the apple."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Der Junge hat einen Freund.",
+          "translation": {
+            "vi": "Cậu bé có một người bạn.",
+            "en": "The boy has a friend."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mein Freund isst Fisch und Reis.",
+          "translation": {
+            "vi": "Bạn con cũng ăn cá với cơm.",
+            "en": "My friend eats fish and rice."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Danke für den Fisch.",
+          "translation": {
+            "vi": "Con cảm ơn mẹ vì món cá.",
+            "en": "Thanks for the fish."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Bitte.",
+          "translation": {
+            "vi": "Không có gì, con.",
+            "en": "You're welcome."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "In der Nacht trinkt der Junge Milch.",
+          "translation": {
+            "vi": "Ban đêm, cậu bé uống sữa.",
+            "en": "At night, the boy drinks milk."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Cậu bé ăn gì vào bữa tối?",
+            "en": "What does the boy eat for dinner?"
+          },
+          "options": [
+            {
+              "vi": "Cơm với cá",
+              "en": "Rice with fish"
+            },
+            {
+              "vi": "Bánh mì với phô mai",
+              "en": "Bread with cheese"
+            },
+            {
+              "vi": "Bánh ngọt",
+              "en": "Cake"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Mẹ uống gì?",
+            "en": "What does the mum drink?"
+          },
+          "options": [
+            {
+              "vi": "Nước",
+              "en": "Water"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            },
+            {
+              "vi": "Sữa",
+              "en": "Milk"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Cậu bé ăn trái cây gì?",
+            "en": "What fruit does the boy eat?"
+          },
+          "options": [
+            {
+              "vi": "Một quả táo",
+              "en": "An apple"
+            },
+            {
+              "vi": "Không ăn trái cây",
+              "en": "No fruit"
+            },
+            {
+              "vi": "Một quả trứng",
+              "en": "An egg"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.story.micro_der_apfel",
+      "band": "A1-0",
+      "title": "Äpfel und Käse",
+      "blurb": {
+        "vi": "Một người mẹ đi mua táo và phô mai.",
+        "en": "A mother buys apples and cheese."
+      },
+      "newLexemes": [
+        "de:w:kaufen",
+        "de:w:ja",
+        "de:w:euro"
+      ],
+      "sentences": [
+        {
+          "speaker": "N",
+          "text": "Eine Frau kauft Obst.",
+          "translation": {
+            "vi": "Một người phụ nữ đi mua trái cây.",
+            "en": "A woman is buying fruit."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Hallo! Haben Sie Äpfel?",
+          "translation": {
+            "vi": "Chào anh! Anh có táo không?",
+            "en": "Hello! Do you have apples?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Ja. Zwei oder drei?",
+          "translation": {
+            "vi": "Có. Hai hay ba quả ạ?",
+            "en": "Yes. Two or three?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Drei, bitte. Und Käse.",
+          "translation": {
+            "vi": "Ba quả nhé. Và phô mai.",
+            "en": "Three, please. And cheese."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Käse und Brot?",
+          "translation": {
+            "vi": "Phô mai và bánh mì ạ?",
+            "en": "Cheese and bread?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Kein Brot, danke.",
+          "translation": {
+            "vi": "Không lấy bánh mì, cảm ơn.",
+            "en": "No bread, thanks."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Haben Sie Milch?",
+          "translation": {
+            "vi": "Anh có sữa không?",
+            "en": "Do you have milk?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Milch haben wir.",
+          "translation": {
+            "vi": "Sữa thì có ạ.",
+            "en": "We have milk."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Und Saft?",
+          "translation": {
+            "vi": "Chị lấy nước ép không?",
+            "en": "And juice?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Einen Saft für mein Kind.",
+          "translation": {
+            "vi": "Một hộp nước ép cho con tôi.",
+            "en": "A juice for my child."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Fünf Euro, bitte.",
+          "translation": {
+            "vi": "Năm euro ạ.",
+            "en": "Five euros, please."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Danke. Tschüss!",
+          "translation": {
+            "vi": "Cảm ơn anh. Tạm biệt!",
+            "en": "Thank you. Bye!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Tschüss!",
+          "translation": {
+            "vi": "Tạm biệt chị!",
+            "en": "Bye!"
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Das Kind trinkt den Saft.",
+          "translation": {
+            "vi": "Đứa trẻ uống nước ép.",
+            "en": "The child drinks the juice."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Die Frau isst einen Apfel.",
+          "translation": {
+            "vi": "Người phụ nữ ăn một quả táo.",
+            "en": "The woman eats an apple."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Das Kind isst Käse.",
+          "translation": {
+            "vi": "Đứa trẻ ăn phô mai.",
+            "en": "The child eats cheese."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Am Abend essen sie Reis mit Fisch.",
+          "translation": {
+            "vi": "Buổi tối họ ăn cơm với cá.",
+            "en": "In the evening they eat rice with fish."
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người phụ nữ mua mấy quả táo?",
+            "en": "How many apples does the woman buy?"
+          },
+          "options": [
+            {
+              "vi": "Hai",
+              "en": "Two"
+            },
+            {
+              "vi": "Ba",
+              "en": "Three"
+            },
+            {
+              "vi": "Năm",
+              "en": "Five"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Người phụ nữ không mua gì?",
+            "en": "What doesn't the woman buy?"
+          },
+          "options": [
+            {
+              "vi": "Bánh mì",
+              "en": "Bread"
+            },
+            {
+              "vi": "Phô mai",
+              "en": "Cheese"
+            },
+            {
+              "vi": "Nước ép",
+              "en": "Juice"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Nước ép dành cho ai?",
+            "en": "Who is the juice for?"
+          },
+          "options": [
+            {
+              "vi": "Con của người phụ nữ",
+              "en": "The woman's child"
+            },
+            {
+              "vi": "Người bán hàng",
+              "en": "The seller"
+            },
+            {
+              "vi": "Bạn của chị ấy",
+              "en": "Her friend"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "de.story.micro_mein_name",
+      "band": "A1-0",
+      "title": "Mein Name ist Tom",
+      "blurb": {
+        "vi": "Lena làm quen với Tom và uống trà cùng anh ấy.",
+        "en": "Lena meets Tom and has tea with him."
+      },
+      "newLexemes": [
+        "de:w:hei-en",
+        "de:w:sein",
+        "de:w:nein"
+      ],
+      "tokenMap": {
+        "lena": "name",
+        "tom": "name"
+      },
+      "sentences": [
+        {
+          "speaker": "A",
+          "text": "Hallo! Ich heiße Lena.",
+          "translation": {
+            "vi": "Xin chào! Tôi tên là Lena.",
+            "en": "Hello! My name is Lena."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Hallo, Lena! Willkommen!",
+          "translation": {
+            "vi": "Chào Lena! Chào mừng bạn!",
+            "en": "Hello, Lena! Welcome!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Danke! Und dein Name?",
+          "translation": {
+            "vi": "Cảm ơn! Còn tên bạn là gì?",
+            "en": "Thanks! And your name?"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Mein Name ist Tom.",
+          "translation": {
+            "vi": "Tên tôi là Tom.",
+            "en": "My name is Tom."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Hallo, Tom.",
+          "translation": {
+            "vi": "Chào Tom.",
+            "en": "Hello, Tom."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Trinkst du Kaffee?",
+          "translation": {
+            "vi": "Bạn uống cà phê không?",
+            "en": "Do you drink coffee?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Kaffee? Nein, danke.",
+          "translation": {
+            "vi": "Cà phê à? Không, cảm ơn.",
+            "en": "Coffee? No, thanks."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Ich trinke Tee.",
+          "translation": {
+            "vi": "Tôi uống trà.",
+            "en": "I drink tea."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Ich habe Tee und Kuchen.",
+          "translation": {
+            "vi": "Tôi có trà và bánh ngọt.",
+            "en": "I have tea and cake."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Lena und Tom trinken Tee.",
+          "translation": {
+            "vi": "Lena và Tom uống trà.",
+            "en": "Lena and Tom drink tea."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Sie essen Kuchen mit Schokolade.",
+          "translation": {
+            "vi": "Họ ăn bánh ngọt sô-cô-la.",
+            "en": "They eat chocolate cake."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Isst du Obst?",
+          "translation": {
+            "vi": "Bạn có ăn trái cây không?",
+            "en": "Do you eat fruit?"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Einen Apfel, bitte.",
+          "translation": {
+            "vi": "Cho tôi một quả táo.",
+            "en": "An apple, please."
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Danke für den Tee, Tom!",
+          "translation": {
+            "vi": "Cảm ơn bạn vì tách trà, Tom!",
+            "en": "Thanks for the tea, Tom!"
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Bitte, Lena.",
+          "translation": {
+            "vi": "Không có gì, Lena.",
+            "en": "You're welcome, Lena."
+          }
+        },
+        {
+          "speaker": "N",
+          "text": "Am Abend trinkt Tom Milch.",
+          "translation": {
+            "vi": "Buổi tối Tom uống sữa.",
+            "en": "In the evening Tom drinks milk."
+          }
+        },
+        {
+          "speaker": "B",
+          "text": "Tschüss, Lena!",
+          "translation": {
+            "vi": "Tạm biệt Lena!",
+            "en": "Bye, Lena!"
+          }
+        },
+        {
+          "speaker": "A",
+          "text": "Tschüss!",
+          "translation": {
+            "vi": "Tạm biệt!",
+            "en": "Bye!"
+          }
+        }
+      ],
+      "questions": [
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Lena uống gì?",
+            "en": "What does Lena drink?"
+          },
+          "options": [
+            {
+              "vi": "Cà phê",
+              "en": "Coffee"
+            },
+            {
+              "vi": "Trà",
+              "en": "Tea"
+            },
+            {
+              "vi": "Sữa",
+              "en": "Milk"
+            }
+          ],
+          "answer": 1
+        },
+        {
+          "kind": "locate",
+          "prompt": {
+            "vi": "Họ ăn bánh gì?",
+            "en": "What cake do they eat?"
+          },
+          "options": [
+            {
+              "vi": "Bánh sô-cô-la",
+              "en": "Chocolate cake"
+            },
+            {
+              "vi": "Bánh táo",
+              "en": "Apple cake"
+            },
+            {
+              "vi": "Bánh phô mai",
+              "en": "Cheesecake"
+            }
+          ],
+          "answer": 0
+        },
+        {
+          "kind": "infer",
+          "prompt": {
+            "vi": "Lena và Tom quen nhau từ lâu chưa?",
+            "en": "Have Lena and Tom known each other long?"
+          },
+          "options": [
+            {
+              "vi": "Chưa, họ vừa làm quen",
+              "en": "No, they have just met"
+            },
+            {
+              "vi": "Rồi, họ là bạn cũ",
+              "en": "Yes, they are old friends"
+            },
+            {
+              "vi": "Họ là anh em",
+              "en": "They are siblings"
+            }
+          ],
+          "answer": 0
+        }
+      ],
+      "sourceRef": "original-project"
     }
   ]
 }

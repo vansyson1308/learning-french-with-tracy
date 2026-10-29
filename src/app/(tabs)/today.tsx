@@ -19,7 +19,7 @@ import { useCourseContent } from "@/lib/content";
 import { listenWordClipIndex } from "@/lib/reception/content";
 import { speakExerciseIndex } from "@/lib/speech/content";
 import { storyList } from "@/lib/stories/content";
-import { nextStory } from "@/lib/stories/selection";
+import { todayStorySuggestion } from "@/lib/stories/selection";
 import {
   composeTodayFromSnapshot,
   TODAY_PRESETS,
@@ -86,7 +86,8 @@ export default function TodayScreen() {
   }
 
   const caughtUp = plan.steps.length === 0;
-  const storyPick = hasCapability(activeCourseId, "stories") ? nextStory(storyList(activeCourseId), course?.cards) : null;
+  const storySuggestion = hasCapability(activeCourseId, "stories") ? todayStorySuggestion(storyList(activeCourseId), course?.cards) : null;
+  const storyPick = storySuggestion?.kind === "story" ? storySuggestion.pick : null;
 
   return (
     <SafeAreaView style={styles.screen} edges={["top", "left", "right"]}>
@@ -223,6 +224,16 @@ export default function TodayScreen() {
               {t("stories.todayBody", { title: storyPick.story.title, n: storyPick.unknown.length })}
             </Text>
           </Pressable>
+        ) : null}
+        {/* QC 2026-10-30 §2.2: no story is readable yet (> 10 unknown words) — say how far, never offer it. */}
+        {storySuggestion?.kind === "learnMore" ? (
+          <View style={styles.card} testID="today-story-locked">
+            <View style={styles.cardHeader}>
+              <Ionicons name="book-outline" size={24} color={colors.textMuted} />
+              <Text style={styles.cardTitle}>{t("stories.todayTitle")}</Text>
+            </View>
+            <Text style={styles.cardSubtitle}>{t("stories.todayLearnMore", { n: storySuggestion.n })}</Text>
+          </View>
         ) : null}
       </ScrollView>
     </SafeAreaView>
