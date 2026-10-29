@@ -31,7 +31,7 @@ import {
   storyClipId,
   storyPipelineVersion,
   storyReadingOrder,
-  storySentenceAssetKey,
+  storySentenceFile,
   validateStories,
 } from "../lib/stories";
 import { mp3KbpsFor } from "../lib/tts";
@@ -235,9 +235,8 @@ describe("story audio budget", () => {
 describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
   const DE = target("de");
 
-  test("the voice manifests bundle the first ≤ 12 stories of the reading order; French keeps its 10 bundled stories", () => {
-    // de: the first 4 here; PR stories-topup-es puts eight A1-2 stories ahead of the A2-1 ones and extends it to 12.
-    for (const [lang, t, n] of [["es", ES, 12], ["de", DE, 4], ["fr", FR, 10]] as const) {
+  test("the voice manifests bundle the first ≤ 18 stories of the reading order (Opus); French keeps its 10 bundled stories", () => {
+    for (const [lang, t, n] of [["es", ES, 18], ["de", DE, 18], ["fr", FR, 10]] as const) {
       const policy = storyAudioPolicy(lang);
       expect(policy.kind).toBe("band-1");
       if (policy.kind !== "band-1") continue;
@@ -246,9 +245,9 @@ describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
     }
     // Every French story but the micro-stories (device voice).
     expect(bundledStoryIds(FR.stories, storyAudioPolicy("fr")).size).toBe(bandOneOrder(FR.stories).length);
-    expect(bundledStoryIds(DE.stories, storyAudioPolicy("de")).size).toBe(4);
+    expect(bundledStoryIds(DE.stories, storyAudioPolicy("de")).size).toBe(18);
     expect(storyAudioPolicy("de").kind === "band-1" && storyAudioPolicy("es").kind === "band-1").toBe(true);
-    expect(STORY_AUDIO_MAX_BUNDLED).toBe(12);
+    expect(STORY_AUDIO_MAX_BUNDLED).toBe(18);
   });
 
   test("parse: absent = all, false = none, band-1 = the list; anything else is refused", () => {
@@ -260,11 +259,11 @@ describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
 
   test("declaration problems: unknown, repeated, over the cap, no reason; a list that skips an earlier story warns", () => {
     const order = bandOneOrder(DE.stories);
-    const bad = storyAudioProblems(DE.stories, { kind: "band-1", stories: [...order.slice(0, 13), order[0], "de.story.nope"], reason: "" });
+    const bad = storyAudioProblems(DE.stories, { kind: "band-1", stories: [...order.slice(0, 19), order[0], "de.story.nope"], reason: "" });
     expect(bad.errors.join("\n")).toContain("a reason is required");
     expect(bad.errors.join("\n")).toContain("listed twice");
     expect(bad.errors.join("\n")).toContain("de.story.nope is not a story");
-    expect(bad.errors.join("\n")).toContain("at most 12");
+    expect(bad.errors.join("\n")).toContain("at most 18");
     const skip = storyAudioProblems(DE.stories, { kind: "band-1", stories: order.slice(1, 4), reason: "r" });
     expect(skip.errors).toEqual([]);
     expect(skip.warnings[0]).toContain(order[0]);
@@ -288,7 +287,7 @@ describe("band-1 story audio (QC 2026-10-29b §2.3)", () => {
     const { analyses } = validate("es", ES, stories);
     const [a, b, c] = stories.stories.map((s) => s.id);
     const policy = { kind: "band-1" as const, stories: [a, b], reason: "r" };
-    const missingB = new Set(stories.stories[1].sentences.slice(0, 1).map((s) => `${storySentenceAssetKey("es", stories, s)}.mp3`));
+    const missingB = new Set(stories.stories[1].sentences.slice(0, 1).map((s) => storySentenceFile("es", stories, s)));
     const artifact = JSON.parse(compileStoriesArtifact({ stories, analyses, nativeCode: "vi", durations: new Map(), storyAudio: policy, hasAsset: (f) => !missingB.has(f) }));
     expect(artifact.byId[a].audio).toBe("bundled");
     expect(artifact.byId[b].audio).toBe("device-voice"); // declared, but one sentence has no asset

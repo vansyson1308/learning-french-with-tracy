@@ -448,8 +448,8 @@ export function storyPipelineVersion(lang: string): number {
 
 /**
  * The codec of a language's story sentences: content/audio/engines.json
- * `encoding.codecByLayer.story` (mp3 until CI has proven Opus playback,
- * release/ASSET_DELIVERY.md); French is always mp3.
+ * `encoding.codecByLayer.story` (opus since CI proved Opus playback on
+ * API 30, API 34 and web, release/ASSET_DELIVERY.md); French is always mp3.
  */
 export function storyCodec(lang: string): AudioCodec {
   return codecFor(storyEncoding(), "story", lang);
@@ -475,10 +475,11 @@ export function storySentenceFile(lang: string, stories: Stories, sentence: Stor
 
 /**
  * At most this many stories per course bundle sentence audio: the band-1
- * stories, the first ≈ 10–12 of the reading order. Every other story is read
- * with the device voice (release/ASSET_DELIVERY.md).
+ * stories, the first of the reading order after the micro-stories. 12 at
+ * MP3 24 kbps; 18 since story audio is Opus 16 kbps (about the same bytes,
+ * release/ASSET_DELIVERY.md). Every other story is read with the device voice.
  */
-export const STORY_AUDIO_MAX_BUNDLED = 12;
+export const STORY_AUDIO_MAX_BUNDLED = 18;
 
 /**
  * The `storyAudio` field of content/<lang>/reception/audio-source-manifest.json:

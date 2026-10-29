@@ -21,13 +21,14 @@ import { buildSynthScript, loadEngines } from "../lib/tts";
 const engines = loadEngines();
 const flipped: CodecSettings = { ...engines.encoding, codecByLayer: { ...engines.encoding.codecByLayer, story: "opus" } };
 
-describe("the committed setting is mp3 for every layer (nothing flipped before CI proves Opus)", () => {
-  test("engines.json: every layer mp3, opus at 16 kbps, French mp3-only, no problem", () => {
-    expect(engines.encoding.codecByLayer).toEqual({ pack: "mp3", lexicon: "mp3", reception: "mp3", story: "mp3" });
+describe("the committed setting: story is opus (CI proved playback, PR #51), every other layer mp3", () => {
+  test("engines.json: story opus at 16 kbps, other layers mp3, French mp3-only, no problem", () => {
+    expect(engines.encoding.codecByLayer).toEqual({ pack: "mp3", lexicon: "mp3", reception: "mp3", story: "opus" });
     expect(engines.encoding.opusKbps).toBe(16);
     expect(engines.encoding.mp3OnlyLanguages).toEqual(["fr"]);
     expect(codecProblems(engines.encoding)).toEqual([]);
-    for (const lang of ["fr", "es", "de"]) expect(storyCodec(lang)).toBe("mp3");
+    expect(storyCodec("fr")).toBe("mp3");
+    for (const lang of ["es", "de"]) expect(storyCodec(lang)).toBe("opus");
   });
 
   test("an mp3 clip keeps its key, its file name and its encode line", () => {
@@ -75,7 +76,7 @@ describe("flipping story to opus (what CI must have proven first)", () => {
     const mp3 = storySentenceAssetKey("es", es, sentence, "mp3");
     const opus = storySentenceAssetKey("es", es, sentence, "opus");
     expect(opus).not.toBe(mp3);
-    expect(storySentenceAssetKey("es", es, sentence)).toBe(mp3); // the committed setting
+    expect(storySentenceAssetKey("es", es, sentence)).toBe(opus); // the committed setting
     expect(storySentenceFile("es", es, sentence, "opus")).toBe(`${opus}.opus`);
     const files = storyAssetFiles("es", es, storyAudioPolicy("es"), "opus");
     expect([...files].every((f) => f.endsWith(".opus"))).toBe(true);
