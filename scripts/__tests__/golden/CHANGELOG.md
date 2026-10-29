@@ -825,3 +825,19 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      lexicon-db:de-en:de-en-lexicon-v3-2fe2e4397c15784c.db
 - compile: new      lexicon-db:de:de-lexicon-v3-28c29eadf27ceaa2.db
 - compile: missing  lexicon-db:de:de-lexicon-v3-2fe2e4397c15784c.db
+
+## 2026-10-29 — audio.yml de generate (all) run 40815633778
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/de/audio-census.json
+- compile: changed  content/reports/de/audio-quality.json
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/reception-audio-census.json
+- compile: changed  content/reports/de/stories-coverage.json
+- compile: changed  src/content/audio-manifest.ts
+- compile: changed  src/content/audio/de-vi.ts
+- compile: changed  src/content/exam/de-exam-tracks.json
+- compile: changed  src/content/lexicon/de-daily.json
+- compile: changed  src/content/reception/de-clip-assets.ts
+- compile: changed  src/content/reception/de-listening.json
+- compile: changed  src/content/stories/de-stories.json
