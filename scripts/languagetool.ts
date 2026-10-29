@@ -53,11 +53,18 @@ type LtResponse = {
   }[];
 };
 
-export async function checkText(server: string, language: string, text: string, disabled: string[]): Promise<LtMatch[]> {
+/**
+ * One request's ceiling. CI 2026-10-29: the de-vi gate never finished in its
+ * 20-minute job, because a request without a timeout could wait forever.
+ * The server also caps each check (maxCheckTimeMillis in ci.yml).
+ */
+export const LT_REQUEST_TIMEOUT_MS = 60_000;
+
+export async function checkText(server: string, language: string, text: string, disabled: string[], timeoutMs = LT_REQUEST_TIMEOUT_MS): Promise<LtMatch[]> {
   const body = new URLSearchParams({ text, language, disabledRules: disabled.join(",") });
   for (let attempt = 1; ; attempt++) {
     try {
-      const res = await fetch(`${server}/v2/check`, { method: "POST", body });
+      const res = await fetch(`${server}/v2/check`, { method: "POST", body, signal: AbortSignal.timeout(timeoutMs) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = (await res.json()) as LtResponse;
       return data.matches.map((m) => ({
@@ -116,11 +123,15 @@ async function main(): Promise<void> {
   const unique = uniqueTargetStrings(collectTargetStrings(courseId));
   const findings: LtFinding[] = [];
   const queue = [...unique];
+  const started = Date.now();
+  let done = 0;
   const worker = async () => {
     for (let s = queue.shift(); s; s = queue.shift()) {
       for (const m of await checkText(server, allow.language, s.text, disabled)) {
         if (applicable(m, s.text)) findings.push({ ...m, text: s.text, where: s.where });
       }
+      done += 1;
+      if (done % 500 === 0) console.log(`languagetool ${courseId}: ${done}/${unique.length} strings checked (${Math.round((Date.now() - started) / 1000)} s)`);
     }
   };
   await Promise.all(Array.from({ length: 8 }, worker));

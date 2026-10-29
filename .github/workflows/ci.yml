@@ -112,7 +112,7 @@ jobs:
   languagetool:
     if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       LT_VERSION: "6.6"
       LT_SHA256: 53600506b399bb5ffe1e4c8dec794fd378212f14aaf38ccef9b6f89314d11631
@@ -137,13 +137,18 @@ jobs:
           unzip -q "$RUNNER_TEMP/lt.zip" -d "$RUNNER_TEMP"
       - name: Start LanguageTool server
         run: |
-          (cd "$RUNNER_TEMP/LanguageTool-${LT_VERSION}" && nohup java -Xmx2g -cp languagetool-server.jar org.languagetool.server.HTTPServer --port 8081 > "$RUNNER_TEMP/lt.log" 2>&1 &)
+          # Each check is capped server-side; the client times out a request too (scripts/languagetool.ts).
+          printf 'maxCheckTimeMillis=30000\nmaxCheckThreads=4\n' > "$RUNNER_TEMP/lt-server.properties"
+          (cd "$RUNNER_TEMP/LanguageTool-${LT_VERSION}" && nohup java -Xmx2g -cp languagetool-server.jar org.languagetool.server.HTTPServer --port 8081 --config "$RUNNER_TEMP/lt-server.properties" > "$RUNNER_TEMP/lt.log" 2>&1 &)
           for i in $(seq 1 60); do curl -sf http://localhost:8081/v2/languages > /dev/null && exit 0; sleep 2; done
           cat "$RUNNER_TEMP/lt.log"; exit 1
       - name: LanguageTool gate (es-vi)
         run: bun scripts/languagetool.ts --course es-vi --server http://localhost:8081
       - name: LanguageTool gate (de-vi)
         run: bun scripts/languagetool.ts --course de-vi --server http://localhost:8081 --json "$RUNNER_TEMP/lt-de-vi.json"
+      - name: LanguageTool server log (on failure)
+        if: failure()
+        run: tail -n 80 "$RUNNER_TEMP/lt.log" || true
       - name: Upload the LanguageTool findings (de-vi)
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

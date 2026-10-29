@@ -4,7 +4,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { applicable, unallowed, unusedAllowances, type LanguageToolAllow, type LtFinding } from "../languagetool";
+import { applicable, checkText, unallowed, unusedAllowances, type LanguageToolAllow, type LtFinding } from "../languagetool";
 import { readJson } from "../lib/pipeline";
 import { collectTargetStrings, uniqueTargetStrings } from "../lib/target-strings";
 
@@ -77,5 +77,18 @@ describe("target strings (es-vi)", () => {
     const u = uniqueTargetStrings(all);
     expect(u.length).toBeLessThan(all.length);
     expect(u.reduce((n, x) => n + x.where.length, 0)).toBe(all.length);
+  });
+});
+
+describe("a stalled LanguageTool request fails instead of hanging the gate (CI 2026-10-29)", () => {
+  test("checkText gives up after its timeout, with the string named", async () => {
+    const server = Bun.serve({ port: 0, fetch: () => new Promise<Response>(() => {}) });
+    try {
+      const started = Date.now();
+      await expect(checkText(`http://localhost:${server.port}`, "de-DE", "Ich heiße Minh.", [], 50)).rejects.toThrow(/failed on "Ich heiße Minh\."/);
+      expect(Date.now() - started).toBeLessThan(5_000);
+    } finally {
+      server.stop(true);
+    }
   });
 });
