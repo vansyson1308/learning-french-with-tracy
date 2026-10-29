@@ -122,8 +122,8 @@ describe("German inflection endings (P3d de)", () => {
 });
 
 describe("validator", () => {
-  test("the committed stories pass: 20 + 6 micro Spanish, 10 + 6 micro French, every token resolved, ≥ 95 % known", () => {
-    for (const [lang, t, n] of [["es", ES, 26], ["fr", FR, 16]] as const) {
+  test("the committed stories pass: 41 + 6 micro Spanish, 10 + 6 micro French, every token resolved, ≥ 95 % known", () => {
+    for (const [lang, t, n] of [["es", ES, 47], ["fr", FR, 16]] as const) {
       const r = validate(lang, t);
       expect(r.errors).toEqual([]);
       expect(r.analyses.length).toBe(n);
