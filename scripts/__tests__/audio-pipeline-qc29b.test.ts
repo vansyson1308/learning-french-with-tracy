@@ -5,7 +5,7 @@
  * transcript), the declared German re-synthesis and the owner listening list.
  */
 import { afterAll, describe, expect, test } from "bun:test";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
 import os from "os";
 import path from "path";
 
@@ -13,7 +13,6 @@ import { asrCacheKey, asrModelId, mergeAsrResults, splitPlanByCache, type AsrPla
 import { ownerListeningLines, splitReview, techQaDoc } from "../lib/audio-qa";
 import { loadResynthesis, packClipRecipe, receptionClipRecipe, resynthesisProblems } from "../lib/audio-recipe";
 import { packAssetKey, parseDecodedSec, parseEdgeSilence, QA_THRESHOLDS, technicalIssues, type ClipMeasurement, type TechnicalQa } from "../lib/piper-audio";
-import { readJson, safeResolve } from "../lib/pipeline";
 import { listeningClipKey, loadListening, receptionAssetKey, resolveClipSegments, receptionPipelineVersion } from "../lib/reception";
 import { buildSynthScript, loadEngines, type Voice } from "../lib/tts";
 
@@ -215,12 +214,25 @@ describe("incremental ASR cache (sha256 of clip bytes + model id + transcript)",
 
 describe("German re-synthesis of the 11 flagged sentence clips (§3.4)", () => {
   const declared = loadResynthesis("de");
-  const report = readJson("content/reports/de/audio-quality.json") as { review: { clipId: string }[] };
+  // The review list of de run 40815633778, pinned: the re-synthesis run rewrites the report, so it cannot be the reference.
+  const FLAGGED_BY_RUN_40815633778 = [
+    "de-en:Die Milch ist kalt.",
+    "de-en:Du bist eine Frau.",
+    "de-en:Gehen Sie geradeaus.",
+    "de-vi:Was darf es sein?",
+    "de-vi:Wir haben Pizza gegessen.",
+    "de.clip.cp3_dikt_zug",
+    "de.clip.goethe_a_h1_06",
+    "de.clip.ix_goethe_a_thema_miss",
+    "de.clip.ix_goethe_b_thema_miss",
+    "de.clip.ix_plaene_0_s",
+    "de.clip.uh_brot_preis",
+  ];
 
   test("the de voice manifest declares exactly the clips the last de run flagged, with another noise scale, same voices", () => {
     expect(declared).not.toBeNull();
     expect(resynthesisProblems(declared)).toEqual([]);
-    expect([...declared!.clips].sort()).toEqual(report.review.map((r) => r.clipId).sort());
+    expect([...declared!.clips].sort()).toEqual(FLAGGED_BY_RUN_40815633778);
     expect(declared!.clips).toHaveLength(11);
     // Piper's defaults are 0.667 / 0.8: the declared values differ.
     expect(declared!.piper.noiseScale).not.toBe(0.667);
@@ -228,6 +240,7 @@ describe("German re-synthesis of the 11 flagged sentence clips (§3.4)", () => {
   });
 
   test("every declared listening clip gets a new key, so its blessed file is not reused and it is re-rendered and re-audited", () => {
+    // Keys only: before the re-synthesis run the new file is absent, after it the old one is (release hygiene checks both).
     const listening = loadListening("de")!;
     const version = receptionPipelineVersion("de");
     const reception = declared!.clips.filter((id) => id.startsWith("de.clip."));
@@ -238,7 +251,6 @@ describe("German re-synthesis of the 11 flagged sentence clips (§3.4)", () => {
       const old = receptionAssetKey("de", resolveClipSegments(listening, clip!), version);
       const now = listeningClipKey("de", listening, clip!);
       expect(now).not.toBe(old);
-      expect(existsSync(safeResolve(`assets/audio/de-reception/${now}.mp3`))).toBe(false);
     }
     // An undeclared clip keeps its key.
     const other = listening.clips.find((c) => !declared!.clips.includes(c.id))!;
