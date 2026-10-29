@@ -47,7 +47,7 @@ import { assetFileName, codecProblems, codecRecipe, isAudioFile, type AudioCodec
 import { bundledStoryIds, storyAudioPolicy, storyClipId, storyCodec, storyPipelineVersion, storySentenceSegments } from "./lib/stories";
 import { packClipRecipe, receptionClipRecipe, resynthesisFor, resynthesisProblems, type Resynthesis, type SynthesisOverride } from "./lib/audio-recipe";
 import { asrModelId, mergeAsrResults, splitPlanByCache, type AsrResult } from "./lib/asr-cache";
-import { ownerListeningLines, splitReview, techQaDoc, type ReviewRow } from "./lib/audio-qa";
+import { blessedBySha, committedBlessedSha256, ownerListeningLines, splitReview, techQaDoc, type ReviewRow } from "./lib/audio-qa";
 import { buildSynthScript, engineFor, enginesNeeded, loadEngines, type EngineId, type EnginesDoc, type PinnedFile, type Voice } from "./lib/tts";
 import { pickCast, speakerIdentity, type DeclaredIdentity, type SpeakerIdentity } from "./lib/tts/speaker";
 
@@ -553,6 +553,7 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
   const asrModel = Object.values(asr).find((a) => a?.model)?.model ?? null;
   const rows: QaRow[] = [];
   let failures = 0;
+  const isBlessed = blessedBySha(committedBlessedSha256());
   for (const clip of doc.clips) {
     const p = path.join(outdir, assetFileName(clip.assetKey, clip.codec));
     const voices = new Set(clip.segments.map((s) => s.voiceId));
@@ -564,7 +565,8 @@ function qa(planPath: string, outdir: string, reportPath: string, asrPath?: stri
       failures++;
       continue;
     }
-    const t = technicalQa(p, clip.text, clip.language, doc.charsPerSecBand);
+    // Coordinator 2026-10-29: a newly rendered clip also passes the old peak gate; a blessed one the sample rule only.
+    const t = technicalQa(p, clip.text, clip.language, doc.charsPerSecBand, { newlyRendered: !isBlessed(p) });
     if (t.technical === "fail") failures++;
     rows.push({ ...base, ...t, ...(asr[clip.clipId] ? { asr: asr[clip.clipId] } : {}) });
   }

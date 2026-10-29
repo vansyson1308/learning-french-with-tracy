@@ -252,6 +252,13 @@ export const QA_THRESHOLDS = {
    */
   clippingMinRun: CLIPPING.minRun,
   clippingSampleAbs: CLIPPING.sampleAbs,
+  /**
+   * Coordinator 2026-10-29 ("Ngưỡng chung giữ nguyên cho mọi clip mới"): a
+   * NEWLY rendered clip (its bytes are in no committed audio baseline) still
+   * fails a peak above this, on top of the sample rule. Blessed clips are
+   * judged by the sample rule only.
+   */
+  newClipMaxPeakDb: -0.2,
   /** Peak below this: the clip is near-silent (a broken render), whatever the loudness target. */
   quietMaxDb: -20,
   maxLeadingSilenceSec: 1.0,
@@ -269,8 +276,11 @@ export type ClipMeasurement = {
   speechSec: number;
 };
 
+/** `newlyRendered`: the clip's bytes are not blessed (default true: the strict bar). */
+export type QaOptions = { newlyRendered?: boolean };
+
 /** Every technical issue of one measured clip (pure; tested). */
-export function technicalIssues(m: ClipMeasurement, transcript: string, band: [number, number]): string[] {
+export function technicalIssues(m: ClipMeasurement, transcript: string, band: [number, number], opts: QaOptions = {}): string[] {
   const t = QA_THRESHOLDS;
   const issues: string[] = [];
   if (!(m.durationSec > t.minDurationSec)) issues.push(`duration ${m.durationSec.toFixed(2)}s too short`);
@@ -278,6 +288,7 @@ export function technicalIssues(m: ClipMeasurement, transcript: string, band: [n
   if (m.bytes < t.minBytes) issues.push(`file under ${t.minBytes} bytes`);
   const clipped = clippingIssue(m.clipping);
   if (clipped !== null) issues.push(clipped);
+  if ((opts.newlyRendered ?? true) && m.maxVolumeDb !== null && m.maxVolumeDb > t.newClipMaxPeakDb) issues.push(`peak ${m.maxVolumeDb}dB above ${t.newClipMaxPeakDb}dB (newly rendered clip)`);
   if (m.maxVolumeDb !== null && m.maxVolumeDb < t.quietMaxDb) issues.push(`too quiet (max ${m.maxVolumeDb}dB, under ${t.quietMaxDb}dB)`);
   if (m.lead !== null && m.lead > t.maxLeadingSilenceSec) issues.push(`leading silence ${m.lead.toFixed(2)}s`);
   if (m.trail !== null && m.trail > t.maxTrailingSilenceSec) issues.push(`trailing silence ${m.trail.toFixed(2)}s`);
@@ -295,10 +306,10 @@ export function measureClip(filePath: string): ClipMeasurement {
   return { durationSec, bytes, maxVolumeDb, meanVolumeDb, clipping, lead, trail, speechSec };
 }
 
-export function technicalQa(filePath: string, transcript: string, language: string, band?: [number, number]): TechnicalQa {
+export function technicalQa(filePath: string, transcript: string, language: string, band?: [number, number], opts: QaOptions = {}): TechnicalQa {
   const m = measureClip(filePath);
   // P3b: the band comes from the language plugin (carried in the plan); the legacy table is the fallback.
-  const issues = technicalIssues(m, transcript, band ?? charsPerSecBand(language));
+  const issues = technicalIssues(m, transcript, band ?? charsPerSecBand(language), opts);
   const round = (x: number | null) => (x === null ? null : Number(x.toFixed(3)));
   const level = (x: number | null) => (x === null || Number.isFinite(x) ? x : -999);
   return {

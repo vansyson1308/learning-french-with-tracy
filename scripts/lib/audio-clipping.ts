@@ -16,6 +16,11 @@
  * (fr-en:aujourd'hui, fr-en:Le chat est petit., fr.clip.ui_cafe_commande,
  * fr.story.les_animaux_de_monsieur_martin#4): 0 clipped runs each, at most
  * one isolated hot sample. No waiver was needed.
+ *
+ * The sample rule applies to every clip. A NEWLY rendered clip (its bytes
+ * are in no committed audio baseline) also still fails the old peak gate,
+ * QA_THRESHOLDS.newClipMaxPeakDb (-0.2 dB), so nothing new gets a looser bar
+ * (scripts/lib/audio-qa.ts blessedBySha).
  */
 
 import { spawnSync } from "child_process";

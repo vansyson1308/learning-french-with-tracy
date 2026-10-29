@@ -5,12 +5,20 @@
  */
 import { afterAll, describe, expect, test } from "bun:test";
 import { spawnSync } from "child_process";
-import { mkdtempSync, rmSync, writeFileSync } from "fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
 import os from "os";
 import path from "path";
 
 import { CLIPPING, clippingIssue, f32leSamples, ffClipping, scanClipping } from "../lib/audio-clipping";
-import { QA_THRESHOLDS } from "../lib/piper-audio";
+import { blessedBySha, committedBlessedSha256 } from "../lib/audio-qa";
+import { QA_THRESHOLDS, technicalQa } from "../lib/piper-audio";
+
+const FROZEN_FR = [
+  "assets/audio/fr/6151b3ba3c15a20f5d91.mp3",
+  "assets/audio/fr/a2354e82adc4bebb03f9.mp3",
+  "assets/audio/fr-reception/0dc39b0688bd4633d05d.mp3",
+  "assets/audio/fr-reception/2da1374014c3c417aa7d.mp3",
+];
 
 const ROOT = path.resolve(import.meta.dir, "../..");
 const hasFfmpeg = spawnSync("ffmpeg", ["-version"]).status === 0 && spawnSync("ffprobe", ["-version"]).status === 0;
@@ -109,5 +117,23 @@ describe("ffClipping decodes the file at its own rate (needs ffmpeg)", () => {
       expect(Math.abs(s.longestRun - e.longestRun)).toBeLessThanOrEqual(1);
       expect(s.peakAbs).toBeGreaterThanOrEqual(e.peakAbsMin);
     }
+  });
+
+  // Coordinator follow-up 2026-10-29: the 4 clips are blessed, so the old peak gate (new clips only)
+  // does not touch them; the same bytes as a NEW render would still fail it.
+  test.skipIf(!hasFfmpeg)("blessed: the 4 French clips pass without a waiver; as new renders they fail the peak gate", () => {
+    const isBlessed = blessedBySha(committedBlessedSha256());
+    for (const file of FROZEN_FR) {
+      const abs = path.join(ROOT, file);
+      expect({ file, blessed: isBlessed(abs) }).toEqual({ file, blessed: true });
+      const blessed = technicalQa(abs, "x", "fr", [0, 1000], { newlyRendered: false });
+      expect({ file, issues: blessed.technicalIssues.filter((i) => /clipping|peak/.test(i)) }).toEqual({ file, issues: [] });
+      const fresh = technicalQa(abs, "x", "fr", [0, 1000], { newlyRendered: true });
+      expect(fresh.technicalIssues.join()).toContain("(newly rendered clip)");
+    }
+    // A changed byte is a new render, whatever its name.
+    const copy = path.join(tmp, path.basename(FROZEN_FR[0]));
+    writeFileSync(copy, Buffer.concat([readFileSync(path.join(ROOT, FROZEN_FR[0])), Buffer.from([0])]));
+    expect(isBlessed(copy)).toBe(false);
   });
 });

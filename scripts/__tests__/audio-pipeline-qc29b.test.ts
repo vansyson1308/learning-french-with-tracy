@@ -59,14 +59,56 @@ describe("technical QA measurements (ffmpeg reports are read from stderr)", () =
   test("clipping, near-silence, edge silence, file size and speaking rate each fail", () => {
     // Coordinator decision 2026-10-29: clipping is >= 3 consecutive hot samples, not a peak level.
     expect(technicalIssues(m({ clipping: { ...noClip, peakAbs: 1, hotSamples: 3, runs: 1, longestRun: 3, clippedSamples: 3, clippedShare: 3 / 11025 } }), "du", band).join()).toContain("clipping: 1 run(s)");
-    expect(technicalIssues(m({ maxVolumeDb: 0, clipping: { ...noClip, peakAbs: 1.097, hotSamples: 1, longestRun: 1 } }), "du", band)).toEqual([]); // MP3 overshoot
-    expect(technicalIssues(m({ maxVolumeDb: -0.1, clipping: { ...noClip, peakAbs: 0.99, hotSamples: 2, longestRun: 2 } }), "du", band)).toEqual([]);
+    // A blessed clip with MP3 overshoot (isolated samples, runs of two) is not clipping; a new one meets the peak gate below.
+    expect(technicalIssues(m({ maxVolumeDb: 0, clipping: { ...noClip, peakAbs: 1.097, hotSamples: 1, longestRun: 1 } }), "du", band, { newlyRendered: false })).toEqual([]);
+    expect(technicalIssues(m({ maxVolumeDb: -0.1, clipping: { ...noClip, peakAbs: 0.99, hotSamples: 2, longestRun: 2 } }), "du", band, { newlyRendered: false })).toEqual([]);
     expect(technicalIssues(m({ clipping: null }), "du", band)).toEqual([]);
     expect(technicalIssues(m({ maxVolumeDb: -35 }), "du", band).join()).toContain("too quiet");
     expect(technicalIssues(m({ lead: 1.3 }), "du", band).join()).toContain("leading silence 1.30s");
     expect(technicalIssues(m({ trail: 1.5 }), "du", band).join()).toContain("trailing silence 1.50s");
     expect(technicalIssues(m({ bytes: 500 }), "du", band).join()).toContain("under 800 bytes");
     expect(technicalIssues(m({ durationSec: 0.6, speechSec: 0.5 }), "Das ist ein sehr langer Satz mit vielen Wörtern.", band).join()).toContain("chars/sec");
+  });
+
+  test("the old peak gate still applies to NEWLY rendered clips; blessed clips get the sample rule only", () => {
+    const hot = { ...noClip, peakAbs: 1.0974, hotSamples: 1, longestRun: 1 }; // fr.clip.ui_cafe_commande
+    const peak = m({ maxVolumeDb: -0.1, clipping: hot });
+    expect(QA_THRESHOLDS.newClipMaxPeakDb).toBe(-0.2);
+    // New clip (explicit, and the default): the general threshold is unchanged.
+    expect(technicalIssues(peak, "du", band, { newlyRendered: true })).toEqual(["peak -0.1dB above -0.2dB (newly rendered clip)"]);
+    expect(technicalIssues(peak, "du", band)).toEqual(["peak -0.1dB above -0.2dB (newly rendered clip)"]);
+    expect(technicalIssues(m({ maxVolumeDb: 0 }), "du", band, { newlyRendered: true }).join()).toContain("newly rendered");
+    expect(technicalIssues(m({ maxVolumeDb: -0.2 }), "du", band, { newlyRendered: true })).toEqual([]);
+    // Blessed (frozen French): no waiver needed.
+    expect(technicalIssues(peak, "du", band, { newlyRendered: false })).toEqual([]);
+    // The sample rule holds for both.
+    const run = m({ maxVolumeDb: 0, clipping: { ...noClip, peakAbs: 1, hotSamples: 4, runs: 1, longestRun: 4, clippedSamples: 4, clippedShare: 4 / 11025 } });
+    expect(technicalIssues(run, "du", band, { newlyRendered: false }).join()).toContain("clipping: 1 run(s)");
+    expect(technicalIssues(run, "du", band, { newlyRendered: true })).toHaveLength(2);
+  });
+
+  test("tech-qa marks a clip newly rendered unless its bytes are blessed", () => {
+    const outdir = path.join(tmp, "tech-bless");
+    mkdirSync(outdir, { recursive: true });
+    writeFileSync(path.join(outdir, "old.mp3"), "blessed bytes");
+    writeFileSync(path.join(outdir, "new.mp3"), "fresh bytes");
+    const seen: Record<string, boolean | undefined> = {};
+    const fake = (file: string, _t: string, _l: string, _b: [number, number], opts: { newlyRendered?: boolean }): TechnicalQa => {
+      seen[path.basename(file)] = opts.newlyRendered;
+      return { durationSec: 1, speechSec: 0.8, bytes: 3000, maxVolumeDb: -2, meanVolumeDb: -18, clipping: null, leadingSilenceSec: null, trailingSilenceSec: null, charsPerSec: 10, technical: "pass", technicalIssues: [] };
+    };
+    const doc = techQaDoc({
+      clips: [
+        { clipId: "fr-en:old", assetKey: "old", text: "old", language: "fr" },
+        { clipId: "de-vi:new", assetKey: "new", text: "new", language: "de" },
+      ],
+      outdir,
+      band,
+      qa: fake,
+      isBlessed: (file) => path.basename(file) === "old.mp3",
+    });
+    expect(seen).toEqual({ "old.mp3": false, "new.mp3": true });
+    expect(doc.rows.map((r) => [r.clipId, r.newlyRendered])).toEqual([["de-vi:new", true], ["fr-en:old", false]]);
   });
 
   test("tech-qa checks each unique asset once and names every failure", () => {
