@@ -27,6 +27,10 @@ Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, l
 - ☐ Danh sách từ học tiếng Hàn NIKL 한국어 학습용 어휘 목록 (KOGL Type 1) — korean.go.kr từ chối tải tự động; đặt file vào `sources/ko/nikl-learner-list.tsv` hoặc gửi Claude. Không có thì neo từ vựng tiếng Hàn theo tần suất. (P3a)
 - ☐ (Tuỳ chọn) Nghe thử các bản canary giọng ja/zh/ko trong artifact của workflow audio trước khi sinh audio đầy đủ. (P3b)
 
+### C1. Nghe thử các câu audio máy chấm "đáng ngờ" (QC 2026-10-29b §3.4)
+Anh không cần biết tiếng Đức: chỉ nghe xem âm thanh có bị **méo/rè** (vỡ tiếng, rè, nuốt chữ, lặp âm) hay không. 11 câu tiếng Đức bị nhận dạng giọng nói (ASR) chấm lệch được sinh lại một lần với cùng giọng, độ nhiễu Piper khác (`resynthesis` trong `content/de/reception/audio-source-manifest.json`). Câu nào **vẫn bị chấm lệch sau lần sinh lại** sẽ được Claude chép vào đây từ báo cáo của lượt audio de tiếp theo (`bun scripts/audio.ts owner-checklist --lang de --report content/reports/de/audio-quality.json`), mỗi dòng có đường dẫn file mp3. Nghe được thì đánh ☑; méo/rè thì ghi "LỖI" bên cạnh, Claude sẽ thay câu hoặc đổi giọng.
+- (đang chờ lượt audio de tiếp theo — chưa có câu nào)
+
 ## D. Một lượt nghiệm thu duy nhất trên điện thoại (bản v1.0 candidate)
 Thay cho mọi lượt test lẻ trước đây (gói P0 RC3, smoke P1d, kiểm chữ P2a, đi một vòng fr-vi P2b, đi một vòng es-vi P3e, checklist RC4 — RC4 đã gác lại, không test). Claude sẽ viết bản đầy đủ bằng tiếng Việt (≤ 30 phút) vào `release/V1_ACCEPTANCE.md` khi candidate sẵn sàng; khung:
 - ☐ **Cài đè lên RC3** (không gỡ): tiến độ RC3 (streak, XP, bài đã học, thẻ cần ôn, điểm bắt đầu) còn nguyên.
