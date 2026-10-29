@@ -7,8 +7,8 @@
  * the assets).
  */
 export const LEXICON_DB_ASSETS: Record<string, { name: string; contentHash: string; asset: number }> = {
-  "de": { name: "de-lexicon-v3-28c29eadf27ceaa2.db", contentHash: "28c29eadf27ceaa2", asset: require("../../../assets/lexicon/de-lexicon-v3-28c29eadf27ceaa2.db") },
-  "de-en": { name: "de-en-lexicon-v3-2fe2e4397c15784c.db", contentHash: "2fe2e4397c15784c", asset: require("../../../assets/lexicon/de-en-lexicon-v3-2fe2e4397c15784c.db") },
+  "de": { name: "de-lexicon-v3-1151654113acceb4.db", contentHash: "1151654113acceb4", asset: require("../../../assets/lexicon/de-lexicon-v3-1151654113acceb4.db") },
+  "de-en": { name: "de-en-lexicon-v3-c8515df28bdf3c65.db", contentHash: "c8515df28bdf3c65", asset: require("../../../assets/lexicon/de-en-lexicon-v3-c8515df28bdf3c65.db") },
   "es": { name: "es-lexicon-v3-c6fc82b48c7f025c.db", contentHash: "c6fc82b48c7f025c", asset: require("../../../assets/lexicon/es-lexicon-v3-c6fc82b48c7f025c.db") },
   "es-en": { name: "es-en-lexicon-v3-331e4292c6bb6e25.db", contentHash: "331e4292c6bb6e25", asset: require("../../../assets/lexicon/es-en-lexicon-v3-331e4292c6bb6e25.db") },
   "fr": { name: "fr-lexicon-v3-4fd93ff6c545b579.db", contentHash: "4fd93ff6c545b579", asset: require("../../../assets/lexicon/fr-lexicon-v3-4fd93ff6c545b579.db") },

@@ -841,3 +841,21 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/reception/de-clip-assets.ts
 - compile: changed  src/content/reception/de-listening.json
 - compile: changed  src/content/stories/de-stories.json
+
+## 2026-10-29 — languagetool de-vi triage: German lexicon example fixes and letter closings (de, de-en lexicon outputs and de-vi pack/writing/exam/reading; French unchanged)
+
+- compile: changed  content/reports/de/lexicon-quality.json
+- compile: changed  src/content/course-profiles.json
+- compile: changed  src/content/exam/de-exam-tracks.json
+- compile: changed  src/content/lexicon/db-assets.ts
+- compile: changed  src/content/lexicon/de-en-index.json
+- compile: changed  src/content/lexicon/de-en-web-fallback.json
+- compile: changed  src/content/lexicon/de-index.json
+- compile: changed  src/content/lexicon/de-web-fallback.json
+- compile: changed  src/content/packs/de-vi.json
+- compile: changed  src/content/reception/de-reading.json
+- compile: changed  src/content/writing/de-writing.json
+- compile: new      lexicon-db:de-en:de-en-lexicon-v3-c8515df28bdf3c65.db
+- compile: new      lexicon-db:de:de-lexicon-v3-1151654113acceb4.db
+- compile: missing  lexicon-db:de-en:de-en-lexicon-v3-2fe2e4397c15784c.db
+- compile: missing  lexicon-db:de:de-lexicon-v3-28c29eadf27ceaa2.db
