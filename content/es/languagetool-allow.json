@@ -76,6 +76,12 @@
       "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
     },
     {
+      "rule": "HA_A",
+      "match": "Ha",
+      "text": "Vivo en Ha Noi.",
+      "reason": "accepted typed alternative of es-vi:ub-l1-e8: the city Hà Nội typed without Vietnamese diacritics; 'Ha' is part of the name, not a form of haber"
+    },
+    {
       "rule": "INTERROGATIVOS_CON_TILDE_OS",
       "match": "Donde",
       "text": "¿Donde vives?",
@@ -140,6 +146,12 @@
     },
     {
       "rule": "MORFOLOGIK_RULE_ES",
+      "match": "Noi",
+      "text": "Vivo en Ha Noi.",
+      "reason": "accepted typed alternative of es-vi:ub-l1-e8: the city Hà Nội typed without Vietnamese diacritics"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
       "match": "Tran",
       "reason": "Vietnamese personal name"
     },
@@ -188,6 +200,12 @@
       "match": "cafe",
       "text": "el cafe",
       "reason": "deliberate wrong option in es-vi:ue-l0-e1 (the answer is \"el café\")"
+    },
+    {
+      "rule": "MORFOLOGIK_RULE_ES",
+      "match": "cafeteria",
+      "text": "cafeteria",
+      "reason": "accepted-answer list: the accent-free spelling a learner may type is accepted; the model text is accented"
     },
     {
       "rule": "MORFOLOGIK_RULE_ES",
@@ -446,6 +464,12 @@
       "match": "Tu",
       "text": "Tu",
       "reason": "a single word in an option list or word bank: the article/possessive is correct there, no sentence context"
+    },
+    {
+      "rule": "UPPERCASE_SENTENCE_START",
+      "match": "el",
+      "text": "el andén dos.",
+      "reason": "accepted dictation alternative of es-vi:uh-l3-e3 (answer \"el andén dos\"): dictation is compared case-insensitively (src/lib/grading.ts), so the lower-case start is right; alternatives are never displayed"
     },
     {
       "rule": "VOSEO",
