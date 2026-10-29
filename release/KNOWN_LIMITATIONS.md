@@ -45,15 +45,32 @@ itself.
 
 ## Limitations by design (not defects)
 
-- **Graded stories (P5b) exist for French (10) and Spanish (20) only.**
-  Each further course from Vietnamese (de, it, pt, ja, zh, ko, en) gets its
+- **Graded stories (P5b) exist for French (10), Spanish (20) and German (43) only.**
+  Each further course from Vietnamese (it, pt, ja, zh, ko, en) gets its
   stories in its own milestone (P3d/P4c–P4f); the inherited `-en` packs get
   none. The French lexicon has 126 lexemes, so the French stories are all
   level 2 (the second half of the syllabus) and lean on a small vocabulary.
   Stories are original texts that have not had a native review yet
-  (`plan/OWNER-FINAL-CHECKLIST.md` B). Until the audio workflow has
-  generated a story's sentences, it is read as text only — never with
-  device TTS.
+  (`plan/OWNER-FINAL-CHECKLIST.md` B).
+
+- **Story audio: bundled clips or the device voice (QC 2026-10-29b §2.4).**
+  A story whose sentences all have bundled clips plays them with the
+  bundled player, unchanged. Every other story is declared device-voice:
+  it is read along in the phone's own offline text-to-speech voice
+  (expo-speech), sentence by sentence with the same highlight, labelled
+  "Giọng đọc của máy" / "Device voice". This is never a silent fallback: a
+  story with bundled clips never uses the device voice. With no offline
+  voice for the language, the story is text only, with a one-line hint to
+  install that voice in Android settings; the app makes no request and
+  downloads nothing. Only voices judged on-device are used: Android voices
+  named `…-network` and web voices with `localService: false` are skipped,
+  and the chosen voice is passed by identifier. expo-speech exposes neither
+  Android's `isNetworkConnectionRequired` nor its "not installed" feature,
+  so the name rule and a speech error are the only signals. A voice listed
+  but not downloaded switches to the hint when it fails to speak. Device
+  voices differ in quality between phones and engines, and the story
+  player has no slow mode (rate 0.9). Today every `de-vi` story is
+  device-voice; `es-vi` and French stories are bundled.
 
 - The AI tutor seam ships **disabled**; no model, key or endpoint exists in
   the app, and the app makes no network requests of its own.
