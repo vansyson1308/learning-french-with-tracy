@@ -1222,6 +1222,31 @@
       }
     },
     {
+      "id": "es.clip.uk_buenos_dias",
+      "kind": "message",
+      "segments": [
+        {
+          "speaker": "A",
+          "text": "¡Buenos días!"
+        }
+      ],
+      "objectiveRefs": [
+        "es.obj.speaking.formulaic"
+      ],
+      "lexemeRefs": [
+        "es:w:buenos-dias"
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "scoredPlaybackPolicy": {
+        "maxPlays": 2,
+        "rate": 1
+      }
+    },
+    {
       "id": "es.clip.uk_perdon",
       "kind": "message",
       "segments": [
@@ -2248,7 +2273,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Y una botella de agua! Son tres euros. ¡Gracias, buen día!"
+          "text": "¡Y una botella de agua! Son tres euros. ¡Gracias, que tenga un buen día!"
         }
       ],
       "objectiveRefs": [
@@ -2938,7 +2963,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¡Buen día!"
+          "text": "¡Que tenga un buen día!"
         }
       ],
       "objectiveRefs": [
@@ -3214,7 +3239,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "¿Otra cosa?"
+          "text": "¿Quiere algo más?"
         }
       ],
       "objectiveRefs": [
@@ -4341,7 +4366,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Perdone, ¿qué desea tomar?"
+          "text": "Hola, ¿qué desea tomar?"
         },
         {
           "speaker": "A",
@@ -5350,7 +5375,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Terminamos. Gracias."
+          "text": "Hemos terminado. Muchas gracias."
         }
       ],
       "objectiveRefs": [
@@ -5583,7 +5608,7 @@
       "segments": [
         {
           "speaker": "B",
-          "text": "Terminamos. Gracias."
+          "text": "Hemos terminado. Muchas gracias."
         }
       ],
       "objectiveRefs": [

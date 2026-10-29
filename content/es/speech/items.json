@@ -82,7 +82,9 @@
         "Buenos días",
         "Buenos días, señora",
         "Buenos días, señor",
-        "Hola, buenos días"
+        "Hola, buenos días",
+        "Hola, buenos días, señora",
+        "Hola, buenos días, señor"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -98,7 +100,7 @@
         "revealTargetAfterAttempts": 2
       },
       "scoredEligibility": true,
-      "modelAudioRef": "es.clip.uf_dictado_hola",
+      "modelAudioRef": "es.clip.uk_buenos_dias",
       "recognitionLocale": "es-ES",
       "allowedAttempts": 2,
       "reserved": false,
@@ -473,7 +475,9 @@
       "target": "Me gusta el café",
       "acceptedVariants": [
         "Me gusta el café",
-        "A mí me gusta el café"
+        "A mí me gusta el café",
+        "Me gusta mucho el café",
+        "Me encanta el café"
       ],
       "objectiveRefs": [
         "es.obj.speaking.self_intro"
@@ -510,7 +514,9 @@
       "target": "Trabajo por la mañana",
       "acceptedVariants": [
         "Trabajo por la mañana",
-        "Yo trabajo por la mañana"
+        "Yo trabajo por la mañana",
+        "Trabajo por las mañanas",
+        "Yo trabajo por las mañanas"
       ],
       "objectiveRefs": [
         "es.obj.speaking.self_intro"
@@ -947,7 +953,7 @@
       "elicitationType": "situation_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Bạn đến một tòa nhà lớn đầy tàu hỏa. Hãy nói nơi này là gì.",
+          "vi": "Bạn đến một tòa nhà lớn, nơi có nhiều chuyến tàu đến và đi. Hãy nói đây là nơi nào.",
           "en": "You arrive at a big building full of trains. Say what this place is."
         }
       },
@@ -955,7 +961,9 @@
       "acceptedVariants": [
         "Es la estación",
         "Es una estación",
-        "La estación"
+        "La estación",
+        "Esta es la estación",
+        "Es la estación de tren"
       ],
       "objectiveRefs": [
         "es.obj.speaking.describe"
@@ -1067,7 +1075,8 @@
       "acceptedVariants": [
         "Es por la mañana",
         "Es la mañana",
-        "Por la mañana"
+        "Por la mañana",
+        "Es de día"
       ],
       "objectiveRefs": [
         "es.obj.speaking.describe"
@@ -1095,15 +1104,18 @@
       "elicitationType": "situation_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Bạn bước vào nhà hàng lúc tám giờ tối. Hãy chào người phục vụ.",
-          "en": "You walk into a restaurant at eight in the evening. Greet the waiter."
+          "vi": "Bạn bước vào nhà hàng lúc chín giờ tối. Hãy chào người phục vụ.",
+          "en": "You walk into a restaurant at nine in the evening. Greet the waiter."
         }
       },
       "target": "Buenas noches",
       "acceptedVariants": [
         "Buenas noches",
         "Buenas noches, señor",
-        "Buenas noches, señora"
+        "Buenas noches, señora",
+        "Hola, buenas noches",
+        "Hola, buenas noches, señor",
+        "Hola, buenas noches, señora"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -1170,7 +1182,10 @@
       "acceptedVariants": [
         "Adiós",
         "Hasta luego",
-        "Gracias, adiós"
+        "Gracias, adiós",
+        "Gracias, hasta luego",
+        "Adiós, gracias",
+        "Hasta luego, gracias"
       ],
       "objectiveRefs": [
         "es.obj.speaking.formulaic"
@@ -1272,7 +1287,9 @@
       "target": "Trabajo por la noche",
       "acceptedVariants": [
         "Trabajo por la noche",
-        "Yo trabajo por la noche"
+        "Yo trabajo por la noche",
+        "Trabajo por las noches",
+        "Yo trabajo por las noches"
       ],
       "objectiveRefs": [
         "es.obj.speaking.self_intro"
@@ -1509,7 +1526,8 @@
       "acceptedVariants": [
         "Es de noche",
         "Es la noche",
-        "Por la noche"
+        "Por la noche",
+        "Es por la noche"
       ],
       "objectiveRefs": [
         "es.obj.speaking.describe"
@@ -1635,7 +1653,7 @@
       "elicitationType": "situation_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Xe buýt của bạn bạn sắp chạy và họ vẫy tay chào bạn. Hãy chào tạm biệt.",
+          "vi": "Xe buýt của người bạn sắp chạy và bạn ấy vẫy tay chào bạn. Hãy chào tạm biệt.",
           "en": "Your friend's bus is leaving and they wave at you. Say goodbye."
         }
       },
@@ -1851,7 +1869,8 @@
       },
       "target": "Son las diez",
       "acceptedVariants": [
-        "Son las diez"
+        "Son las diez",
+        "Son las diez en punto"
       ],
       "objectiveRefs": [
         "es.obj.speaking.give_info"
@@ -1911,7 +1930,22 @@
       "recognitionLocale": "es-ES",
       "allowedAttempts": 2,
       "reserved": true,
-      "sourceRef": "original-project"
+      "sourceRef": "original-project",
+      "requiredConcepts": [
+        [
+          "cuesta",
+          "son",
+          "es"
+        ],
+        [
+          "tres",
+          "3"
+        ],
+        [
+          "euros",
+          "euro"
+        ]
+      ]
     },
     {
       "id": "es.speak.a1cap_live",

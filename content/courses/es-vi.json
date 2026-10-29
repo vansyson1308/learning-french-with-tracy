@@ -1387,15 +1387,12 @@
                     "buổi",
                     "Chúc",
                     "sáng",
-                    "chào",
+                    "Chào",
                     "Xin",
-                    "chào",
                     "biệt"
                   ],
                   "answer": [
-                    "Xin",
-                    "chào",
-                    "chào",
+                    "Chào",
                     "buổi",
                     "sáng"
                   ]
@@ -1463,11 +1460,13 @@
                   "type": "typeAnswer",
                   "id": "es-vi:u1-l0-e10",
                   "mode": "produceTarget",
-                  "prompt": "Cho một cà phê, làm ơn.",
+                  "prompt": "Làm ơn cho tôi một ly cà phê.",
                   "audioTarget": "Un café, por favor.",
                   "answer": "Un café, por favor.",
                   "alternatives": [
-                    "Por favor, un café."
+                    "Por favor, un café.",
+                    "Quiero un café, por favor.",
+                    "Quiero un café."
                   ]
                 }
               ],
@@ -2203,7 +2202,7 @@
                   "type": "wordBank",
                   "id": "es-vi:u1-l3-e7",
                   "direction": "nativeToTarget",
-                  "prompt": "Cho một trà, làm ơn.",
+                  "prompt": "Làm ơn cho tôi một tách trà.",
                   "tokens": [
                     "gusto",
                     "noches",
@@ -2277,7 +2276,7 @@
           "id": "es-vi:unit-3",
           "title": "Đồ ăn",
           "description": "Đồ ăn thức uống và cách gọi món đơn giản.",
-          "guidebook": "## Ăn gì, uống gì? 🍽️\n\nBạn sẽ gọi món nhiều lần khi đi du lịch, nên đây là nhóm từ rất có ích.\n\n### Đồ uống\n- *el café* — cà phê, *el té* — trà\n- *el zumo* — nước ép\n- *la cerveza* — bia\n\n### Món ăn\n- *el arroz* — cơm, gạo; *el pollo* — thịt gà; *la carne* — thịt\n- *el huevo* — quả trứng; *el queso* — phô mai; *la sopa* — món súp\n- *la fruta* — trái cây\n\n### Gọi món lịch sự\nMẫu câu đơn giản nhất: tên món + *por favor*.\n- *Un café, por favor.* — Cho một cà phê, làm ơn.\n- *Una sopa, por favor.* — Cho một món súp.\n\n*Un* đi với danh từ giống đực, *una* với danh từ giống cái — giống như *el* và *la*. Muốn xem thực đơn, hãy hỏi *¿La carta, por favor?* (ở Tây Ban Nha, *el menú* thường là suất ăn cố định — *menú del día*).",
+          "guidebook": "## Ăn gì, uống gì? 🍽️\n\nBạn sẽ gọi món nhiều lần khi đi du lịch, nên đây là nhóm từ rất có ích.\n\n### Đồ uống\n- *el café* — cà phê, *el té* — trà\n- *el zumo* — nước ép\n- *la cerveza* — bia\n\n### Món ăn\n- *el arroz* — cơm, gạo; *el pollo* — thịt gà; *la carne* — thịt\n- *el huevo* — quả trứng; *el queso* — phô mai; *la sopa* — món súp\n- *la fruta* — trái cây\n\n### Gọi món lịch sự\nMẫu câu đơn giản nhất: tên món + *por favor*.\n- *Un café, por favor.* — Làm ơn cho tôi một ly cà phê.\n- *Una sopa, por favor.* — Cho một món súp.\n\n*Un* đi với danh từ giống đực, *una* với danh từ giống cái — giống như *el* và *la*. Muốn xem thực đơn, hãy hỏi *¿La carta, por favor?* (ở Tây Ban Nha, *el menú* thường là suất ăn cố định — *menú del día*).",
           "words": [
             {
               "target": "el café",
@@ -2523,6 +2522,23 @@
                     "một",
                     "cà",
                     "phê"
+                  ],
+                  "alternatives": [
+                    [
+                      "Tôi",
+                      "muốn",
+                      "uống",
+                      "một",
+                      "cà",
+                      "phê"
+                    ],
+                    [
+                      "Tôi",
+                      "muốn",
+                      "uống",
+                      "cà",
+                      "phê"
+                    ]
                   ]
                 },
                 {
@@ -2599,7 +2615,7 @@
                   "type": "typeAnswer",
                   "id": "es-vi:u2-l0-e10",
                   "mode": "produceTarget",
-                  "prompt": "Cho một trà, làm ơn.",
+                  "prompt": "Làm ơn cho tôi một tách trà.",
                   "audioTarget": "Un té, por favor.",
                   "answer": "Un té, por favor.",
                   "alternatives": [
@@ -2891,7 +2907,7 @@
                   "type": "typeAnswer",
                   "id": "es-vi:u2-l1-e10",
                   "mode": "produceTarget",
-                  "prompt": "Cho một bia, làm ơn.",
+                  "prompt": "Làm ơn cho tôi một cốc bia.",
                   "audioTarget": "Una cerveza, por favor.",
                   "answer": "Una cerveza, por favor.",
                   "alternatives": [
@@ -3141,13 +3157,14 @@
                   "type": "typeAnswer",
                   "id": "es-vi:u2-l2-e10",
                   "mode": "produceTarget",
-                  "prompt": "Làm ơn cho xem thực đơn?",
-                  "audioTarget": "¿El menú, por favor?",
-                  "answer": "¿El menú, por favor?",
+                  "prompt": "Cho tôi xem thực đơn được không?",
+                  "audioTarget": "La carta, por favor.",
+                  "answer": "La carta, por favor.",
                   "alternatives": [
-                    "Por favor, el menú.",
-                    "La carta, por favor.",
-                    "Por favor, la carta."
+                    "¿La carta, por favor?",
+                    "Por favor, la carta.",
+                    "¿El menú, por favor?",
+                    "Por favor, el menú."
                   ]
                 }
               ]
@@ -3725,7 +3742,10 @@
                   "audioTarget": "Mi abuela es buena.",
                   "answer": "Mi abuela es buena.",
                   "alternatives": [
-                    "Mi abuela es muy buena."
+                    "Mi abuela es muy buena.",
+                    "Mi abuela es una buena persona.",
+                    "Mi abuela es buena persona.",
+                    "Mi abuela es una persona buena."
                   ]
                 }
               ],
@@ -5612,7 +5632,7 @@
                   "type": "wordBank",
                   "id": "es-vi:u4-l3-e7",
                   "direction": "nativeToTarget",
-                  "prompt": "Con phố rộng.",
+                  "prompt": "Con phố lớn.",
                   "tokens": [
                     "es",
                     "en",
@@ -9978,11 +9998,11 @@
           "id": "es-vi:unit-f",
           "title": "¡Escucha!",
           "description": "Luyện tai: từ và cụm từ quen thuộc, chỉ bằng âm thanh.",
-          "guidebook": "## Nghe trước, đọc sau 👂\n\nTrong đơn vị này bạn chỉ nghe. Mỗi đoạn âm thanh được đọc chậm và rõ bởi giọng tổng hợp, có hai giọng khác nhau (một nam, một nữ) để tai bạn quen với nhiều cách nói.\n\n### Cách nghe hiệu quả\n- Nghe cả đoạn một lần, đừng dừng ở từ khó.\n- Nghe lại và tìm **từ khóa**: người, nơi chốn, đồ vật.\n- Đoán từ ngữ cảnh: *buenos días* thường nghe vào buổi sáng.\n\n### Âm hay gặp\n- *j* và *g* trước *e, i* đọc gần như \"h\" bật mạnh trong cổ: *jamón, gente*.\n- *ll* và *y* thường đọc giống nhau: *calle, yo*.\n- *h* không bao giờ đọc: *hola, hotel*.\n\n### Buổi sáng và buổi tối\n*La mañana* là buổi sáng, *la noche* là buổi tối. Hai từ này cũng xuất hiện trong lời chào bạn đã học: *buenos días, buenas noches*.",
+          "guidebook": "## Nghe trước, đọc sau 👂\n\nTrong đơn vị này bạn chỉ nghe. Mỗi đoạn âm thanh được đọc chậm và rõ bởi giọng tổng hợp, có hai giọng khác nhau (một nam, một nữ) để tai bạn quen với nhiều cách nói.\n\n### Cách nghe hiệu quả\n- Nghe cả đoạn một lần, đừng dừng ở từ khó.\n- Nghe lại và tìm **từ khóa**: người, nơi chốn, đồ vật.\n- Đoán từ ngữ cảnh: *buenos días* thường nghe vào buổi sáng.\n\n### Âm hay gặp\n- *j* và *g* trước *e, i* đọc gần như \"h\" bật mạnh trong cổ: *jamón, gente*.\n- *ll* và *y* thường đọc giống nhau: *calle, yo*.\n- *h* không bao giờ đọc: *hola, hotel*.\n\n### Buổi sáng và buổi tối\n*La mañana* là buổi sáng, *la noche* là buổi tối. *Noche* có trong lời chào *buenas noches*; còn buổi sáng thì người ta chào *buenos días* (không dùng *mañana*). Không có mạo từ, *mañana* nghĩa là \"ngày mai\".",
           "words": [
             {
               "target": "la mañana",
-              "native": "buổi sáng / ngày mai",
+              "native": "buổi sáng",
               "emoji": "🌅"
             },
             {
@@ -10136,7 +10156,7 @@
                     },
                     {
                       "target": "la mañana",
-                      "native": "buổi sáng / ngày mai"
+                      "native": "buổi sáng"
                     },
                     {
                       "target": "la noche",
@@ -10212,7 +10232,7 @@
                   "prompt": "la mañana",
                   "options": [
                     {
-                      "text": "buổi sáng / ngày mai"
+                      "text": "buổi sáng"
                     },
                     {
                       "text": "ban đêm / buổi tối"
@@ -10409,7 +10429,7 @@
                   "pairs": [
                     {
                       "target": "la mañana",
-                      "native": "buổi sáng / ngày mai"
+                      "native": "buổi sáng"
                     },
                     {
                       "target": "el agua",
@@ -10510,7 +10530,7 @@
                   "type": "select",
                   "id": "es-vi:uf-l3-e3",
                   "mode": "nativeToTarget",
-                  "prompt": "buổi sáng / ngày mai",
+                  "prompt": "buổi sáng",
                   "options": [
                     {
                       "text": "la tarde"
@@ -11679,7 +11699,7 @@
           "id": "es-vi:unit-i",
           "title": "Pequeños diálogos",
           "description": "Theo dõi các trao đổi ngắn: ở quán cà phê, nhà ga, cửa hàng.",
-          "guidebook": "## Hai người nói chuyện 🗨️\n\nMỗi đoạn hội thoại có hai giọng khác nhau. Bạn chỉ nghe và trả lời câu hỏi: ai muốn gì, ở đâu, giá bao nhiêu.\n\n### Ở quán cà phê\n- *—¿Qué desea?* — Quý khách dùng gì?\n- *—Un café con leche, por favor.*\n- *—Aquí tiene.* — Của quý khách đây.\n\n### Mua vé\n- *—Un billete para Sevilla, por favor.*\n- *—¿Ida y vuelta?* — Khứ hồi không?\n\n### Trả tiền\n- *—¿Cuánto es?* — Hết bao nhiêu?\n- *—Son ocho euros.*\n\n### Mẹo nghe\nCâu hỏi thường lên giọng ở cuối, câu trả lời thì xuống giọng. Nếu nghe thấy *¿…?*, hãy chờ câu trả lời ngay sau đó — thông tin bạn cần thường nằm ở đó. Bạn có thể nghe lại bao nhiêu lần cũng được.",
+          "guidebook": "## Hai người nói chuyện 🗨️\n\nMỗi đoạn hội thoại có hai giọng khác nhau. Bạn chỉ nghe và trả lời câu hỏi: ai muốn gì, ở đâu, giá bao nhiêu.\n\n### Ở quán cà phê\n- *—¿Qué desea?* — Quý khách dùng gì?\n- *—Un café con leche, por favor.*\n- *—Aquí tiene.* — Của quý khách đây.\n\n### Mua vé\n- *—Un billete para Sevilla, por favor.*\n- *—¿Ida y vuelta?* — Khứ hồi không?\n\n### Trả tiền\n- *—¿Cuánto es?* — Hết bao nhiêu?\n- *—Son ocho euros.*\n\n### Mẹo nghe\nCâu hỏi thường lên giọng ở cuối, câu trả lời thì xuống giọng. Nếu nghe thấy *¿…?*, hãy chờ câu trả lời ngay sau đó — thông tin bạn cần thường nằm ở đó. Khi luyện tập, bạn có thể nghe lại nhiều lần; trong bài kiểm tra, mỗi đoạn chỉ được nghe hai lần.",
           "words": [
             {
               "target": "la mesa",
@@ -12795,7 +12815,7 @@
           "id": "es-vi:unit-k",
           "title": "¡Di hola!",
           "description": "Nói thành tiếng lời chào, lời cảm ơn và câu xin lỗi.",
-          "guidebook": "## Nói thành tiếng 🎙️\n\nTừ phần này, bạn nói vào micro. Bộ nhận dạng giọng nói trên điện thoại của bạn sẽ ghi lại những từ nó nghe được, và ứng dụng so với câu cần nói. Mình chỉ kiểm tra **từ được nhận ra**, không chấm phát âm đẹp hay xấu.\n\n### Trước khi nói\n- Nghe mẫu một lần, rồi nói chậm và rõ.\n- Nói cả câu, đừng ngắt giữa chừng.\n- Nếu mình không nghe được, bạn có thể thử lại hoặc bỏ qua — bỏ qua không bị tính là sai.\n\n### Câu sẽ luyện\n- *Hola, buenos días.* *Buenas tardes, señora.*\n- *Muchas gracias.* *De nada.*\n- *Perdón.* *Adiós, hasta luego.*\n\n### Mẹo phát âm\nĐọc *h* như không có: *hola* nghe như \"ô-la\" — gần giống thôi, hãy nghe mẫu để bắt chước.",
+          "guidebook": "## Nói thành tiếng 🎙️\n\nTừ phần này, bạn nói vào micro. Bộ nhận dạng giọng nói trên điện thoại của bạn sẽ ghi lại những từ nó nghe được, và ứng dụng so với câu cần nói. Mình chỉ kiểm tra **từ được nhận ra**, không chấm phát âm đẹp hay xấu.\n\n### Trước khi nói\n- Nghe mẫu một lần, rồi nói chậm và rõ.\n- Nói cả câu, đừng ngắt giữa chừng.\n- Nếu mình không nghe được, bạn có thể thử lại hoặc bỏ qua — bỏ qua không bị tính là sai.\n\n### Câu sẽ luyện\n- *Hola, buenos días.* *Buenas tardes, señora.*\n- *Muchas gracias.* *Por favor.*\n- *Perdón.* *Adiós, hasta luego.*\n\n### Mẹo phát âm\nĐọc *h* như không có: *hola* nghe như \"ô-la\" — gần giống thôi, hãy nghe mẫu để bắt chước.",
           "words": [
             {
               "target": "hola",
@@ -12871,14 +12891,16 @@
                     "Buenos días",
                     "Buenos días, señora",
                     "Buenos días, señor",
-                    "Hola, buenos días"
+                    "Hola, buenos días",
+                    "Hola, buenos días, señora",
+                    "Hola, buenos días, señor"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:buenos-dias"
                   ],
                   "revealTargetAfterAttempts": 2,
                   "allowContextualBias": false,
-                  "modelClipId": "es.clip.uf_dictado_hola",
+                  "modelClipId": "es.clip.uk_buenos_dias",
                   "allowedAttempts": 2,
                   "objectiveTargets": [
                     "es.obj.speaking.formulaic"
@@ -13492,7 +13514,9 @@
                   "target": "Me gusta el café",
                   "acceptedVariants": [
                     "Me gusta el café",
-                    "A mí me gusta el café"
+                    "A mí me gusta el café",
+                    "Me gusta mucho el café",
+                    "Me encanta el café"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:gustar",
@@ -13514,7 +13538,9 @@
                   "target": "Trabajo por la mañana",
                   "acceptedVariants": [
                     "Trabajo por la mañana",
-                    "Yo trabajo por la mañana"
+                    "Yo trabajo por la mañana",
+                    "Trabajo por las mañanas",
+                    "Yo trabajo por las mañanas"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:trabajar",
@@ -14212,7 +14238,7 @@
             },
             {
               "target": "la mañana",
-              "native": "buổi sáng / ngày mai",
+              "native": "buổi sáng",
               "emoji": "🌅"
             }
           ],
@@ -14327,12 +14353,14 @@
                   "type": "speakProduction",
                   "id": "es-vi:un-l1-e0",
                   "speechItemId": "es.speak.n_station",
-                  "instruction": "Bạn đến một tòa nhà lớn đầy tàu hỏa. Hãy nói nơi này là gì.",
+                  "instruction": "Bạn đến một tòa nhà lớn, nơi có nhiều chuyến tàu đến và đi. Hãy nói đây là nơi nào.",
                   "target": "Es la estación",
                   "acceptedVariants": [
                     "Es la estación",
                     "Es una estación",
-                    "La estación"
+                    "La estación",
+                    "Esta es la estación",
+                    "Es la estación de tren"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:estacion"
@@ -14462,7 +14490,8 @@
                   "acceptedVariants": [
                     "Es por la mañana",
                     "Es la mañana",
-                    "Por la mañana"
+                    "Por la mañana",
+                    "Es de día"
                   ],
                   "evidenceLexemeRefs": [
                     "es:w:manana"
@@ -14690,6 +14719,12 @@
                     "Me",
                     "llamo",
                     "Lucía"
+                  ],
+                  "alternatives": [
+                    [
+                      "Soy",
+                      "Lucía"
+                    ]
                   ]
                 },
                 {
@@ -14824,8 +14859,7 @@
                         "id": "age",
                         "description": "tuổi của bạn",
                         "variants": [
-                          "tengo veintidós años",
-                          "tengo 22 años"
+                          "tengo veintidós años"
                         ],
                         "cueProvided": true
                       }
@@ -15040,8 +15074,7 @@
                         "id": "age",
                         "description": "tuổi",
                         "variants": [
-                          "tengo veintidós años",
-                          "tengo 22 años"
+                          "tengo veintidós años"
                         ],
                         "cueProvided": true
                       },
@@ -15169,7 +15202,7 @@
           "id": "es-vi:unit-p",
           "title": "Frases sencillas",
           "description": "Viết câu đơn giản về người, đồ vật và sở thích.",
-          "guidebook": "## Câu đơn giản 🧱\n\nMột câu tiếng Tây Ban Nha cơ bản giống tiếng Việt: **ai + làm gì + cái gì**. Khác biệt là động từ phải chia theo người làm.\n\n### Điều bạn thích\n- *Me gusta el té.* — Tôi thích trà.\n- *Me gustan los gatos.* — Tôi thích mèo (số nhiều → *gustan*).\n\n### Người khác làm gì\n- *Mi madre bebe café.* — Mẹ tôi uống cà phê.\n- *Mi hermano trabaja en un hotel.* — Anh tôi làm ở một khách sạn.\n\n### Kiểm tra trước khi nộp\n1. Câu có động từ chưa? (*bebe, trabaja, vive*)\n2. Động từ đã đúng người chưa? (*yo bebo, él bebe*)\n3. Danh từ có mạo từ chưa? (*el té, la leche*)\n\nBài viết được chấm theo từng yêu cầu của đề, ví dụ \"có một động từ trong danh sách\" và \"nói về một người\".",
+          "guidebook": "## Câu đơn giản 🧱\n\nMột câu tiếng Tây Ban Nha cơ bản giống tiếng Việt: **ai + làm gì + cái gì**. Khác biệt là động từ phải chia theo người làm.\n\n### Điều bạn thích\n- *Me gusta el té.* — Tôi thích trà.\n- *Me gustan los gatos.* — Tôi thích mèo (số nhiều → *gustan*).\n\n### Người khác làm gì\n- *Mi madre bebe café.* — Mẹ tôi uống cà phê.\n- *Mi hermano trabaja en un hotel.* — Anh tôi làm ở một khách sạn.\n\n### Kiểm tra trước khi nộp\n1. Câu có động từ chưa? (*bebe, trabaja, vive*)\n2. Động từ đã đúng người chưa? (*yo bebo, él bebe*)\n3. Sau *me gusta* danh từ có mạo từ chưa? (*me gusta el té*). Sau *bebo, como* thì có thể không cần: *Bebo leche.*\n\nBài viết được chấm theo từng yêu cầu của đề, ví dụ \"có một động từ trong danh sách\" và \"nói về một người\".",
           "words": [
             {
               "target": "gustar",
@@ -15361,6 +15394,7 @@
                   "tokens": [
                     "gusta",
                     "té",
+                    "gustan",
                     "y",
                     "Me",
                     "el",
@@ -15377,6 +15411,17 @@
                     "y",
                     "el",
                     "pan"
+                  ],
+                  "alternatives": [
+                    [
+                      "Me",
+                      "gustan",
+                      "el",
+                      "té",
+                      "y",
+                      "el",
+                      "pan"
+                    ]
                   ]
                 },
                 {
@@ -15701,7 +15746,7 @@
             },
             {
               "target": "la mañana",
-              "native": "buổi sáng / ngày mai",
+              "native": "buổi sáng",
               "emoji": "🌅"
             }
           ],
@@ -15790,7 +15835,6 @@
                         "description": "giờ hẹn",
                         "variants": [
                           "a las dos",
-                          "a las 2",
                           "a las catorce"
                         ],
                         "cueProvided": true
@@ -15831,7 +15875,7 @@
                 {
                   "type": "fillBlank",
                   "id": "es-vi:uq-l0-e3",
-                  "sentence": "Hola, Ana: el café es a las ___.",
+                  "sentence": "Hola, Ana: tomamos un café a las ___.",
                   "translation": "Chào Ana: hẹn uống cà phê lúc hai giờ.",
                   "audioTarget": "Hola, Ana: tomamos un café a las dos.",
                   "options": [
@@ -15933,8 +15977,7 @@
                         "id": "time",
                         "description": "giờ",
                         "variants": [
-                          "a las nueve",
-                          "a las 9"
+                          "a las nueve"
                         ],
                         "cueProvided": true
                       }
@@ -16352,7 +16395,6 @@
                         "id": "age",
                         "description": "tuổi",
                         "variants": [
-                          "22",
                           "veintidós"
                         ],
                         "cueProvided": true
@@ -16531,8 +16573,7 @@
                         "id": "time",
                         "description": "giờ",
                         "variants": [
-                          "a las diez",
-                          "a las 10"
+                          "a las diez"
                         ],
                         "cueProvided": true
                       },
@@ -16711,6 +16752,16 @@
                     "vivo",
                     "en",
                     "Madrid"
+                  ],
+                  "alternatives": [
+                    [
+                      "soy",
+                      "Minh",
+                      "y",
+                      "vivo",
+                      "en",
+                      "Madrid"
+                    ]
                   ]
                 },
                 {
@@ -16843,6 +16894,12 @@
                     "Estoy",
                     "bien",
                     "gracias"
+                  ],
+                  "alternatives": [
+                    [
+                      "bien",
+                      "gracias"
+                    ]
                   ]
                 },
                 {
@@ -16971,7 +17028,9 @@
                   "answer": "Adiós.",
                   "alternatives": [
                     "Hasta luego.",
-                    "Chao."
+                    "Chao.",
+                    "Hasta pronto.",
+                    "Nos vemos."
                   ]
                 }
               ]
@@ -17777,7 +17836,7 @@
           "words": [
             {
               "target": "la mañana",
-              "native": "buổi sáng / ngày mai",
+              "native": "buổi sáng",
               "emoji": "🌅"
             },
             {

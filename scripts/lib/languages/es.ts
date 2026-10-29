@@ -10,7 +10,7 @@
 
 import { existsSync } from "fs";
 
-import { es as esRules } from "../../../src/lib/languages/es";
+import { es as esRules, spanishNumber } from "../../../src/lib/languages/es";
 import { readJson, safeResolve } from "../pipeline";
 
 import { genericPlugin } from "./generic";
@@ -86,6 +86,8 @@ export const es: BuildLanguagePlugin = genericPlugin(
     normalizeForAsr: { ligatures: {}, apostropheSplit: false, wordChars: "a-z\\u00e0-\\u00ff\\u00f1", whisperLanguage: "es", metric: "wer" },
     paradigm: ES_PARADIGM,
     functionWords: ES_FUNCTION_WORDS,
+    // D-10 review pass 2: written answers spell digits as Spanish words, so the number words count as known vocabulary.
+    numberWords: spanishNumber,
     targetLanguageName: "Spanish",
   }
 );
