@@ -29,7 +29,13 @@ Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, l
 
 ### C1. Nghe thử các câu audio máy chấm "đáng ngờ" (QC 2026-10-29b §3.4)
 Anh không cần biết tiếng Đức: chỉ nghe xem âm thanh có bị **méo/rè** (vỡ tiếng, rè, nuốt chữ, lặp âm) hay không. 11 câu tiếng Đức bị nhận dạng giọng nói (ASR) chấm lệch được sinh lại một lần với cùng giọng, độ nhiễu Piper khác (`resynthesis` trong `content/de/reception/audio-source-manifest.json`). Câu nào **vẫn bị chấm lệch sau lần sinh lại** sẽ được Claude chép vào đây từ báo cáo của lượt audio de tiếp theo (`bun scripts/audio.ts owner-checklist --lang de --report content/reports/de/audio-quality.json`), mỗi dòng có đường dẫn file mp3. Nghe được thì đánh ☑; méo/rè thì ghi "LỖI" bên cạnh, Claude sẽ thay câu hoặc đổi giọng.
-- (đang chờ lượt audio de tiếp theo — chưa có câu nào)
+Kết quả lượt audio de [40918763308](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/40918763308) (bot commit 92c26af): trong 11 câu sinh lại, 7 câu hết bị chấm lệch, 4 câu vẫn bị chấm lệch (hai dòng cuối là cùng một file):
+- [ ] de: nghe xem có bị méo/rè không — `de-vi:Wir haben Pizza gegessen.` «Wir haben Pizza gegessen.» (`assets/audio/de/0ef4ad270fbe6f500e7a.mp3`) — máy nghe thành «Ihr habt Pizza gegessen», nên nghe kỹ chữ đầu.
+- [ ] de: nghe xem có bị méo/rè không — `de.clip.goethe_a_h1_06` «Wie ist deine Telefonnummer? Null, eins, sieben, sechs — vier, drei, acht, neun.» (`assets/audio/de-reception/ab621e42e894b5e8f5ae.mp3`) — máy viết số bằng chữ số («017 64 38 9»), nhiều khả năng chỉ là lệch cách viết.
+- [ ] de: nghe xem có bị méo/rè không — `de.clip.ix_goethe_a_thema_miss` «Kein Problem. Danke schön!» (`assets/audio/de-reception/bfe69cea6fdd71c77f3e.mp3`) — máy viết «Dankeschön» liền, nhiều khả năng chỉ là lệch cách viết.
+- [ ] de: nghe xem có bị méo/rè không — `de.clip.ix_goethe_b_thema_miss` «Kein Problem. Danke schön!» (`assets/audio/de-reception/bfe69cea6fdd71c77f3e.mp3`) — cùng file với dòng trên.
+
+Ngoài ra có 4 câu truyện (chưa sinh lại lần nào) bị chấm lệch. Claude sẽ xử lý chúng trong PR stories-topup-es (sinh lại hoặc sửa câu), vì PR đó dựng lại audio truyện de; anh không cần làm gì lúc này: `de.story.der_umzug#6` «Nein. Ich lese jetzt viel.», `de.story.ein_fall_fuer_frau_weber#16` «Ist er der Täter?», `de.story.die_anmeldung#9`, `de.story.die_anmeldung#12`.
 
 ## D. Một lượt nghiệm thu duy nhất trên điện thoại (bản v1.0 candidate)
 Thay cho mọi lượt test lẻ trước đây (gói P0 RC3, smoke P1d, kiểm chữ P2a, đi một vòng fr-vi P2b, đi một vòng es-vi P3e, checklist RC4 — RC4 đã gác lại, không test). Claude sẽ viết bản đầy đủ bằng tiếng Việt (≤ 30 phút) vào `release/V1_ACCEPTANCE.md` khi candidate sẵn sàng; khung:
