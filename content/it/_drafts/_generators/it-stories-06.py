@@ -1,0 +1,56 @@
+"""it-vi graded stories, batch 6: the last syllabus words. usage: python -I it-stories-06.py"""
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from it_stories_lib import story, write_batch
+
+Q = lambda vi, en, opts, ans, kind="locate": (kind, vi, en, opts, ans)
+S = []
+S.append(story("in_palestra", "A1-2", "In palestra",
+ ("Nga đăng ký phòng tập và gặp một người bạn mới.", "Nga joins a gym and makes a new friend."),
+ ["la palestra", "i pantaloni", "arancione", "basso"],
+ [("N", "Nga ama lo sport, ma lavora tutto il giorno.", "Nga yêu thể thao nhưng làm việc cả ngày.", "Nga loves sport, but she works all day."),
+  ("N", "Vicino al suo ufficio c'è una palestra nuova.", "Gần văn phòng cô có một phòng tập mới.", "Near her office there is a new gym."),
+  ("N", "Il lunedì sera entra e chiede informazioni.", "Tối thứ Hai cô vào hỏi thông tin.", "On Monday evening she goes in and asks for information."),
+  ("A", "Buonasera. Quanto costa la palestra?", "Chào anh. Phòng tập giá bao nhiêu?", "Good evening. How much is the gym?"),
+  ("B", "Cinquanta euro al mese. Ma ora c'è uno sconto: la metà per il primo mese.", "Năm mươi euro một tháng. Nhưng giờ có giảm giá: nửa giá tháng đầu.", "Fifty euros a month. But now there is a discount: half price for the first month."),
+  ("A", "Bene! Ho bisogno di qualcosa?", "Tốt! Tôi có cần gì không?", "Good! Do I need anything?"),
+  ("B", "Le scarpe e i pantaloni corti. Portiamo noi l'acqua.", "Giày và quần ngắn. Nước thì chúng tôi có.", "Shoes and shorts. We provide the water."),
+  ("N", "Nga compra un paio di scarpe arancioni. Quel colore le piace molto.", "Nga mua một đôi giày màu cam. Cô rất thích màu đó.", "Nga buys a pair of orange shoes. She really likes that colour."),
+  ("N", "Martedì va in palestra per la prima volta.", "Thứ Ba cô đến phòng tập lần đầu.", "On Tuesday she goes to the gym for the first time."),
+  ("N", "Lì c'è una ragazza alta con i capelli neri.", "Ở đó có một cô gái cao tóc đen.", "There is a tall girl with black hair there."),
+  ("N", "Nga è bassa e la guarda con paura.", "Nga thấp và nhìn cô ấy với vẻ sợ.", "Nga is short and looks at her nervously."),
+  ("A", "Quella ragazza è molto forte!", "Cô gái kia khỏe quá!", "That girl is very strong!"),
+  ("B", "Ciao! Sei nuova? Mi chiamo Eva. Ti aiuto io.", "Chào bạn! Bạn mới à? Mình tên là Eva. Để mình giúp.", "Hi! Are you new? My name is Eva. I will help you."),
+  ("A", "Grazie! Oggi sono stanca, ma sono contenta.", "Cảm ơn! Hôm nay mình mệt nhưng vui.", "Thank you! Today I am tired, but I am pleased."),
+  ("N", "Dopo un mese Nga corre per venti minuti senza problemi.", "Sau một tháng Nga chạy hai mươi phút không vấn đề gì.", "After a month Nga runs for twenty minutes without any problems."),
+  ("N", "Il sabato lei ed Eva vanno a correre nel parco.", "Thứ Bảy cô và Eva đi chạy trong công viên.", "On Saturdays she and Eva go running in the park."),
+  ("N", "Adesso Nga ha un'amica e lo sport le piace ancora di più.", "Giờ Nga có một người bạn và cô càng thích thể thao hơn.", "Now Nga has a friend and she likes sport even more.")],
+ [Q("Tháng đầu Nga trả bao nhiêu?", "How much does Nga pay in the first month?", [("Một nửa giá", "Half price"), ("Năm mươi euro", "Fifty euros"), ("Không mất tiền", "Nothing")], 0),
+  Q("Giày của Nga màu gì?", "What colour are Nga's shoes?", [("Màu cam", "Orange"), ("Màu đen", "Black"), ("Màu đỏ", "Red")], 0),
+  Q("Lúc đầu Nga cảm thấy thế nào về Eva?", "How does Nga feel about Eva at first?", [("Hơi sợ vì Eva rất khỏe", "A bit nervous because Eva is very strong"), ("Giận Eva", "Angry with her"), ("Đã quen từ lâu", "She has known her for a long time")], 0, "infer")],
+ names=["Nga", "Eva"], token_map={"quel": "quello"}))
+S.append(story("il_bar_di_piazza", "A1-2", "Il bar in piazza",
+ ("Một ngày ở quán bar của bà Rina.", "A day at Rina's bar."),
+ ["il banco", "ordinare", "la cameriera", "il dolce"],
+ [("N", "Rina ha un piccolo bar in piazza, davanti alla chiesa.", "Rina có một quán bar nhỏ ở quảng trường, trước nhà thờ.", "Rina has a small bar in the square, in front of the church."),
+  ("N", "Il bar apre alle sei e chiude alle diciannove.", "Quán mở lúc sáu giờ và đóng lúc mười chín giờ.", "The bar opens at six and closes at seven p.m."),
+  ("N", "La mattina tutti bevono il caffè al banco.", "Buổi sáng mọi người uống cà phê ở quầy.", "In the morning everyone drinks coffee at the counter."),
+  ("N", "Un uomo legge il giornale e ascolta la radio.", "Một người đàn ông đọc báo và nghe đài.", "A man reads the newspaper and listens to the radio."),
+  ("N", "Rina ha una cameriera, Paola, che è molto giovane.", "Rina có một cô phục vụ, Paola, còn rất trẻ.", "Rina has a waitress, Paola, who is very young."),
+  ("A", "Buongiorno! Vorrei ordinare un cappuccino e un dolce.", "Chào chị! Tôi muốn gọi một ly cappuccino và một món ngọt.", "Good morning! I would like to order a cappuccino and a pastry."),
+  ("B", "Il caffè è senza zucchero?", "Cà phê không đường ạ?", "Is the coffee without sugar?"),
+  ("A", "Con lo zucchero, per favore. E anche un bicchiere d'acqua.", "Có đường. Và cả một ly nước nữa.", "With sugar, please. And a glass of water too."),
+  ("N", "A mezzogiorno il bar è pieno.", "Giữa trưa quán đầy khách.", "At midday the bar is full."),
+  ("N", "Ci sono studenti, operai e turisti di tutto il mondo.", "Có sinh viên, công nhân và du khách khắp thế giới.", "There are students, workers and tourists from all over the world."),
+  ("A", "Paola, ora c'è molta gente. Puoi pulire i tavoli?", "Paola, giờ đông khách. Em lau bàn được không?", "Paola, there are a lot of people now. Can you clean the tables?"),
+  ("B", "Subito! Questo tavolo è sporco, ma quello è già pulito.", "Ngay ạ! Bàn này bẩn, nhưng bàn kia đã sạch.", "Right away! This table is dirty, but that one is already clean."),
+  ("N", "Un turista non sa come pagare e chiede aiuto.", "Một du khách không biết cách trả tiền và nhờ giúp.", "A tourist does not know how to pay and asks for help."),
+  ("B", "Si paga così: prima alla cassa e poi al banco.", "Trả như thế này: trước ở quầy thu ngân rồi đến quầy pha.", "You pay like this: first at the till and then at the counter."),
+  ("N", "Il pomeriggio non c'è quasi nessuno.", "Buổi chiều gần như không có ai.", "In the afternoon there is almost nobody."),
+  ("N", "Rina beve un tè caldo e parla con Paola.", "Rina uống trà nóng và nói chuyện với Paola.", "Rina drinks a hot tea and talks with Paola."),
+  ("A", "Sei brava, Paola. Forse un giorno il bar è tuo!", "Em giỏi lắm, Paola. Có lẽ một ngày quán này là của em!", "You are good, Paola. Perhaps one day the bar will be yours!")],
+ [Q("Quán bar ở đâu?", "Where is the bar?", [("Trước nhà thờ", "In front of the church"), ("Cạnh nhà ga", "Next to the station"), ("Trong bảo tàng", "In the museum")], 0),
+  Q("Quán đông nhất lúc nào?", "When is the bar fullest?", [("Giữa trưa", "At midday"), ("Buổi chiều", "In the afternoon"), ("Buổi tối", "In the evening")], 0),
+  Q("Rina nghĩ gì về Paola?", "What does Rina think of Paola?", [("Paola làm việc tốt", "Paola works well"), ("Paola quá trẻ", "Paola is too young"), ("Paola hay đi muộn", "Paola is often late")], 0, "infer")],
+ names=["Rina", "Paola"], token_map={"dolce": "it:w:dolce-noun"}))
+write_batch("06-resto", S)

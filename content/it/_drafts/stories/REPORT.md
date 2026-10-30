@@ -1,6 +1,6 @@
 # stories — ingest report (it-vi)
 
-Records: 22 · schema-valid: 22 · failed: 0 · validator errors after merge: 3
+Records: 40 · schema-valid: 40 · failed: 0 · validator errors after merge: 2
 
 ## Records
 
@@ -26,12 +26,29 @@ Records: 22 · schema-valid: 22 · failed: 0 · validator errors after merge: 3
 - ✅ line 20 `it.story.gli_animali_del_nonno`
 - ✅ line 21 `it.story.il_vicino_nuovo`
 - ✅ line 22 `it.story.l_esame`
+- ✅ line 23 `it.story.l_ultimo_treno`
+- ✅ line 24 `it.story.una_lingua_nuova`
+- ✅ line 25 `it.story.la_borsa_di_marta`
+- ✅ line 26 `it.story.a_teatro`
+- ✅ line 27 `it.story.in_palestra`
+- ✅ line 28 `it.story.il_bar_di_piazza`
+- ✅ line 29 `it.story.il_viaggio_di_nozze`
+- ✅ line 30 `it.story.il_gatto_cattivo`
+- ✅ line 31 `it.story.come_ti_chiami`
+- ✅ line 32 `it.story.la_nostra_casa`
+- ✅ line 33 `it.story.il_biscotto_dolce`
+- ✅ line 34 `it.story.la_chiave_perduta`
+- ✅ line 35 `it.story.il_nuovo_lavoro`
+- ✅ line 36 `it.story.il_cane_al_parco`
+- ✅ line 37 `it.story.la_pizza_di_nino`
+- ✅ line 38 `it.story.il_treno_per_roma`
+- ✅ line 39 `it.story.la_lettera_del_nonno`
+- ✅ line 40 `it.story.il_supermercato_chiuso`
 
 ## Validator errors (fix these records and ingest again)
 
-- stories (it): it.story.il_vicino_nuovo: 149 word tokens (band A1-2 stories are 150–400)
-- stories (it): it.story.l_esame: 143 word tokens (band A1-2 stories are 150–400)
-- stories (it): it.story.l_esame: 93.7 % known at band A1-2 (≥ 95 %; 9 of 143 tokens new or unresolved)
+- stories (it): it.story.il_treno_per_roma: 148 word tokens (band A1-2 stories are 150–400)
+- stories (it): it.story.la_lettera_del_nonno: 94.4 % known at band A1-2 (≥ 95 %; 9 of 161 tokens new or unresolved)
 
 ## Written
 

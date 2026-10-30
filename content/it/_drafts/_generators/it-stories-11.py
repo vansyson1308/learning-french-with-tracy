@@ -1,0 +1,57 @@
+"""it-vi graded stories, batch 11: everyday stories. usage: python -I it-stories-11.py"""
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from it_stories_lib import story, write_batch
+
+Q = lambda vi, en, opts, ans, kind="locate": (kind, vi, en, opts, ans)
+S = []
+S.append(story("la_lettera_del_nonno", "A1-2", "La lettera del nonno",
+ ("Giang tìm thấy một lá thư cũ của ông.", "Giang finds an old letter from her grandfather."),
+ ["la lettera", "ricordare", "la foto"],
+ [("N", "Giang abita a Bari con suo marito e due figli.", "Giang sống ở Bari với chồng và hai con.", "Giang lives in Bari with her husband and two children."),
+  ("N", "Un giorno pulisce l'armadio e trova una vecchia lettera.", "Một hôm cô dọn tủ và tìm thấy một lá thư cũ.", "One day she cleans the wardrobe and finds an old letter."),
+  ("N", "La lettera è di suo nonno, che abitava in Vietnam.", "Lá thư là của ông cô, người từng sống ở Việt Nam.", "The letter is from her grandfather, who lived in Vietnam."),
+  ("N", "Dentro c'è anche una foto in bianco e nero.", "Bên trong còn có một bức ảnh đen trắng.", "Inside there is also a black and white photo."),
+  ("N", "Nella foto c'è un uomo giovane davanti a un fiume.", "Trong ảnh có một người đàn ông trẻ trước một dòng sông.", "In the photo there is a young man in front of a river."),
+  ("A", "Mamma, chi è questo signore?", "Mẹ ơi, ông này là ai?", "Mum, who is this gentleman?"),
+  ("B", "È il mio nonno. Si chiamava Hai ed era molto gentile.", "Đó là ông của mẹ. Ông tên là Hải và rất hiền.", "He is my grandfather. His name was Hai and he was very kind."),
+  ("A", "Cosa dice la lettera?", "Lá thư nói gì ạ?", "What does the letter say?"),
+  ("N", "Giang legge piano, perché le parole sono piccole.", "Giang đọc chậm vì chữ nhỏ.", "Giang reads slowly, because the words are small."),
+  ("B", "Cara Giang, studia molto e impara una lingua. Il mondo è grande.", "Giang yêu quý, hãy học chăm và học một ngoại ngữ. Thế giới rộng lớn.", "Dear Giang, study hard and learn a language. The world is big."),
+  ("N", "Giang è un po' triste, ma è anche felice.", "Giang hơi buồn nhưng cũng vui.", "Giang is a little sad, but she is also happy."),
+  ("B", "Ricordo il suo giardino e il suo cane. Avevo sei anni.", "Mẹ nhớ khu vườn và con chó của ông. Lúc đó mẹ sáu tuổi.", "I remember his garden and his dog. I was six."),
+  ("A", "Possiamo andare in Vietnam, mamma?", "Mình đi Việt Nam được không mẹ?", "Can we go to Vietnam, Mum?"),
+  ("B", "Sì. L'estate prossima prendiamo l'aereo e andiamo a vedere quel fiume.", "Được. Hè tới mình đi máy bay đến thăm dòng sông đó.", "Yes. Next summer we will take the plane and go to see that river."),
+  ("N", "Giang mette la lettera in un libro e la foto sul tavolo.", "Giang kẹp lá thư vào một quyển sách và đặt ảnh lên bàn.", "Giang puts the letter in a book and the photo on the table."),
+  ("N", "La sera scrive un messaggio a sua madre a Hanoi.", "Buổi tối cô nhắn tin cho mẹ ở Hà Nội.", "In the evening she writes a message to her mother in Hanoi."),
+  ("A", "Mamma, ho trovato la lettera del nonno. Veniamo a giugno!", "Mẹ ơi, con tìm thấy thư của ông. Tháng Sáu tụi con về!", "Mum, I have found Grandpa's letter. We are coming in June!")],
+ [Q("Giang tìm thấy lá thư ở đâu?", "Where does Giang find the letter?", [("Trong tủ", "In the wardrobe"), ("Trong sách", "In a book"), ("Trên bàn", "On the table")], 0),
+  Q("Khi nào họ đi Việt Nam?", "When will they go to Vietnam?", [("Mùa hè tới", "Next summer"), ("Giáng sinh", "At Christmas"), ("Tháng Một", "In January")], 0),
+  Q("Ông của Giang muốn cô làm gì?", "What did Giang's grandfather want her to do?", [("Học ngoại ngữ và đi đây đi đó", "Learn a language and see the world"), ("Ở nhà với gia đình", "Stay at home with the family"), ("Làm vườn", "Do the gardening")], 0, "infer")],
+ names=["Giang", "Bari", "Hai", "Hanoi"], token_map={"abitava": "abitare", "chiamava": "chiamarsi", "era": "essere", "avevo": "avere", "sei": "it:w:sei"}))
+S.append(story("il_supermercato_chiuso", "A1-2", "Il supermercato è chiuso",
+ ("Hà và Bình không biết siêu thị đóng cửa ngày lễ.", "Ha and Binh do not know the supermarket is closed on a holiday."),
+ ["il supermercato", "la festa", "la verdura"],
+ [("N", "Oggi è il primo maggio e in Italia è festa.", "Hôm nay là mùng một tháng Năm và ở Ý là ngày lễ.", "Today is the first of May and it is a holiday in Italy."),
+  ("N", "Ha e Bình abitano a Torino da un mese e non lo sanno.", "Hà và Bình sống ở Torino được một tháng và không biết điều đó.", "Ha and Binh have lived in Turin for a month and do not know that."),
+  ("N", "La mattina Ha guarda nel frigorifero: non c'è niente.", "Buổi sáng Hà nhìn vào tủ lạnh: không có gì.", "In the morning Ha looks in the fridge: there is nothing."),
+  ("A", "Bình, andiamo al supermercato? Non abbiamo latte, uova e verdura.", "Bình ơi, đi siêu thị nhé? Mình hết sữa, trứng và rau.", "Binh, shall we go to the supermarket? We have no milk, eggs or vegetables."),
+  ("B", "Va bene. Prendo la borsa e le chiavi.", "Được. Anh lấy túi và chìa khóa.", "All right. I will get the bag and the keys."),
+  ("N", "Camminano per dieci minuti. Le strade sono vuote.", "Họ đi bộ mười phút. Đường phố vắng.", "They walk for ten minutes. The streets are empty."),
+  ("A", "Dove sono tutti? Non ci sono macchine.", "Mọi người đâu cả rồi? Không có xe hơi.", "Where is everybody? There are no cars."),
+  ("N", "Arrivano al supermercato e vedono un cartello sulla porta.", "Họ đến siêu thị và thấy một tấm biển trên cửa.", "They reach the supermarket and see a sign on the door."),
+  ("B", "Chiuso! Oggi è chiuso. Perché?", "Đóng cửa! Hôm nay đóng cửa. Tại sao?", "Closed! It is closed today. Why?"),
+  ("N", "Una signora passa con il cane.", "Một bà đi qua với con chó.", "A lady passes with her dog."),
+  ("A", "Scusi, signora, perché è tutto chiuso?", "Xin lỗi bà, sao mọi thứ đều đóng cửa ạ?", "Excuse me, madam, why is everything closed?"),
+  ("B", "Oggi è festa! Ma il bar in piazza è aperto.", "Hôm nay là ngày lễ! Nhưng quán bar ở quảng trường mở cửa.", "Today is a holiday! But the bar in the square is open."),
+  ("N", "Vanno al bar e mangiano un cornetto.", "Họ đến quán bar và ăn bánh sừng bò.", "They go to the bar and eat a croissant."),
+  ("N", "La signora del bar è molto simpatica.", "Bà chủ quán rất dễ mến.", "The lady at the bar is very friendly."),
+  ("B", "Non avete niente a casa? Ecco il pane e il formaggio per voi.", "Nhà không có gì à? Đây là bánh mì và phô mai cho hai đứa.", "You have nothing at home? Here is bread and cheese for you."),
+  ("A", "Grazie mille! Quanto costa?", "Cảm ơn nhiều! Giá bao nhiêu ạ?", "Thank you very much! How much is it?"),
+  ("B", "Niente. Buona festa e benvenuti a Torino!", "Không mất gì. Chúc lễ vui và chào mừng đến Torino!", "Nothing. Happy holiday and welcome to Turin!"),
+  ("N", "Ha e Bình tornano a casa contenti, e leggono i giorni di festa sul calendario.", "Hà và Bình vui vẻ về nhà và xem các ngày lễ trên lịch.", "Ha and Binh go home happy, and read the holidays on the calendar.")],
+ [Q("Vì sao siêu thị đóng cửa?", "Why is the supermarket closed?", [("Vì hôm nay là ngày lễ", "Because it is a holiday"), ("Vì đã muộn", "Because it is late"), ("Vì đang sửa", "Because it is being repaired")], 0),
+  Q("Bà chủ quán cho họ gì?", "What does the lady give them?", [("Bánh mì và phô mai", "Bread and cheese"), ("Sữa và trứng", "Milk and eggs"), ("Rau", "Vegetables")], 0),
+  Q("Người ở Torino thế nào với họ?", "How are the people of Turin with them?", [("Tử tế và hay giúp đỡ", "Kind and helpful"), ("Khó chịu", "Unfriendly"), ("Không để ý đến họ", "They ignore them")], 0, "infer")],
+ names=["Ha", "Bình", "Torino"], token_map={"benvenuti": "benvenuto"}))
+write_batch("11-altre", S)

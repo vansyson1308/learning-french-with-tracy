@@ -36,7 +36,7 @@ S.append(story("il_vicino_nuovo", "A1-2", "Il vicino nuovo",
  [("N", "La signora Bruni abita al secondo piano da molti anni.", "Bà Bruni sống ở tầng hai đã nhiều năm.", "Mrs Bruni has lived on the second floor for many years."),
   ("N", "Lunedì arriva un vicino nuovo con molte valigie.", "Thứ Hai có một người hàng xóm mới đến với nhiều va li.", "On Monday a new neighbour arrives with many suitcases."),
   ("A", "Buongiorno! Lei è il vicino nuovo?", "Chào anh! Anh là hàng xóm mới à?", "Good morning! Are you the new neighbour?"),
-  ("B", "Sì, buongiorno. Piacere! Mi chiamo Duc e sono vietnamita.", "Vâng, chào bà. Rất vui được gặp bà! Tôi tên là Đức, người Việt.", "Yes, good morning. Pleased to meet you! My name is Duc and I am Vietnamese."),
+  ("B", "Sì, buongiorno. Piacere! Mi chiamo Duc e sono vietnamita, di Hanoi.", "Vâng, chào bà. Rất vui được gặp bà! Tôi tên là Đức, người Việt.", "Yes, good morning. Pleased to meet you! My name is Duc and I am Vietnamese."),
   ("A", "Benvenuto! Che lavoro fa?", "Chào mừng anh! Anh làm nghề gì?", "Welcome! What is your job?"),
   ("B", "Sono operaio. E Lei?", "Tôi là công nhân. Còn bà?", "I am a worker. And you?"),
   ("A", "Io sono una professoressa di inglese.", "Tôi là giáo viên tiếng Anh.", "I am an English teacher."),
@@ -54,5 +54,5 @@ S.append(story("il_vicino_nuovo", "A1-2", "Il vicino nuovo",
  [Q("Đức làm nghề gì?", "What is Duc's job?", [("Công nhân", "A worker"), ("Giáo viên", "A teacher"), ("Bác sĩ", "A doctor")], 0),
   Q("Vì sao bà Bruni đến cửa nhà Đức?", "Why does Mrs Bruni go to the door?", [("Vì nhạc to quá", "Because the music is too loud"), ("Vì bà cần giúp đỡ", "Because she needs help"), ("Vì bà muốn ăn cơm", "Because she wants rice")], 0),
   Q("Bà Bruni và Đức bây giờ thế nào?", "How are Mrs Bruni and Duc now?", [("Họ trở thành bạn", "They have become friends"), ("Họ không nói chuyện với nhau", "They do not talk to each other"), ("Họ giận nhau", "They are angry with each other")], 0, "infer")],
- names=["Bruni", "Duc"]))
+ names=["Bruni", "Duc", "Hanoi"]))
 write_batch("03-vicini", S)
