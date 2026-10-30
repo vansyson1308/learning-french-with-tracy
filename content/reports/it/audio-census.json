@@ -1,0 +1,34 @@
+{
+  "generator": "scripts/audio.ts apply",
+  "language": "it",
+  "pipelineVersion": 3,
+  "layers": [
+    "pack",
+    "lexicon"
+  ],
+  "courses": [
+    {
+      "courseId": "it-en",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "kokoro-im_nicola",
+        "B": "kokoro-if_sara"
+      },
+      "clips": 95
+    },
+    {
+      "courseId": "it-vi",
+      "policy": "generated",
+      "voiceCast": {
+        "A": "kokoro-im_nicola",
+        "B": "kokoro-if_sara"
+      },
+      "clips": 1182
+    }
+  ],
+  "receptionClips": 0,
+  "files": {
+    "pack": 1050,
+    "reception": 0
+  }
+}

@@ -6,10 +6,6 @@
   "nativeLanguage": "English",
   "nativeCode": "en",
   "flag": "🇮🇹",
-  "audio": {
-    "policy": "device-tts",
-    "reason": "The only Italian Piper voices are it_IT-paola-medium, whose MODEL_CARD states 'License: See URL' (no verifiable license, excluded by the gate on 2026-09-02, run 33646858305), and it_IT-riccardo-x_low (extra-low quality). The upstream recordings have no traceable license, so the course speaks through the device's own Italian text-to-speech voice."
-  },
   "sections": [
     {
       "id": "it-en:section-1",
@@ -111,7 +107,10 @@
                       "emoji": "👧"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:uomo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -137,7 +136,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:donna"
+                  ]
                 },
                 {
                   "type": "select",
@@ -163,7 +165,10 @@
                       "emoji": "🥛"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:ragazzo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -189,7 +194,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:uomo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -215,7 +223,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:donna"
+                  ]
                 },
                 {
                   "type": "select",
@@ -237,7 +248,10 @@
                       "text": "l'uomo"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:uomo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -321,6 +335,13 @@
                       "target": "il latte",
                       "native": "the milk"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:uomo",
+                    "it:w:donna",
+                    "it:w:ragazzo",
+                    "it:w:ragazza",
+                    "it:w:latte"
                   ]
                 },
                 {
@@ -362,7 +383,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:ragazza"
+                  ]
                 },
                 {
                   "type": "select",
@@ -388,7 +412,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:mela"
+                  ]
                 },
                 {
                   "type": "select",
@@ -414,7 +441,10 @@
                       "emoji": "🍞"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:pane"
+                  ]
                 },
                 {
                   "type": "select",
@@ -440,7 +470,10 @@
                       "emoji": "🍞"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:ragazza"
+                  ]
                 },
                 {
                   "type": "select",
@@ -466,7 +499,10 @@
                       "emoji": "🥛"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:mela"
+                  ]
                 },
                 {
                   "type": "select",
@@ -488,7 +524,10 @@
                       "text": "il cibo"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:mela"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -572,6 +611,13 @@
                       "target": "l'uomo",
                       "native": "the man"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:ragazza",
+                    "it:w:mela",
+                    "it:w:pane",
+                    "it:w:bambino",
+                    "it:w:uomo"
                   ]
                 },
                 {
@@ -613,7 +659,10 @@
                       "emoji": "👦"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:acqua"
+                  ]
                 },
                 {
                   "type": "select",
@@ -639,7 +688,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:latte"
+                  ]
                 },
                 {
                   "type": "select",
@@ -665,7 +717,10 @@
                       "emoji": "🧒"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:bambino"
+                  ]
                 },
                 {
                   "type": "select",
@@ -691,7 +746,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:acqua"
+                  ]
                 },
                 {
                   "type": "select",
@@ -717,7 +775,10 @@
                       "emoji": "🧒"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:latte"
+                  ]
                 },
                 {
                   "type": "select",
@@ -739,7 +800,10 @@
                       "text": "l'uomo"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:bambino"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -823,6 +887,13 @@
                       "target": "l'uomo",
                       "native": "the man"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:acqua",
+                    "it:w:latte",
+                    "it:w:bambino",
+                    "it:w:ragazza",
+                    "it:w:uomo"
                   ]
                 },
                 {
@@ -864,7 +935,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:cibo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -890,7 +964,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:mangiare"
+                  ]
                 },
                 {
                   "type": "select",
@@ -916,7 +993,10 @@
                       "emoji": "🥤"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:bere"
+                  ]
                 },
                 {
                   "type": "select",
@@ -942,7 +1022,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:cibo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -968,7 +1051,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:mangiare"
+                  ]
                 },
                 {
                   "type": "select",
@@ -990,7 +1076,10 @@
                       "text": "il bambino"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:cibo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1074,6 +1163,13 @@
                       "target": "l'acqua",
                       "native": "the water"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:cibo",
+                    "it:w:mangiare",
+                    "it:w:bere",
+                    "it:w:latte",
+                    "it:w:acqua"
                   ]
                 },
                 {
@@ -1185,7 +1281,10 @@
                       "emoji": "🤝"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:ciao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1211,7 +1310,10 @@
                       "emoji": "❌"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:buongiorno"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1237,7 +1339,10 @@
                       "emoji": "😊"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:buonasera"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1263,7 +1368,10 @@
                       "emoji": "🌅"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:ciao"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1289,7 +1397,10 @@
                       "emoji": "👨"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:buongiorno"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1311,7 +1422,10 @@
                       "text": "buongiorno"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:ciao"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1397,6 +1511,13 @@
                       "target": "arrivederci",
                       "native": "goodbye (formal)"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:ciao",
+                    "it:w:buongiorno",
+                    "it:w:buonasera",
+                    "it:w:signore",
+                    "it:w:arrivederci"
                   ]
                 },
                 {
@@ -1438,7 +1559,10 @@
                       "emoji": "🌙"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:buonanotte"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1464,7 +1588,10 @@
                       "emoji": "👩"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:arrivederci"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1490,7 +1617,10 @@
                       "emoji": "🤝"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:per-favore"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1516,7 +1646,10 @@
                       "emoji": "🌆"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:buonanotte"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1542,7 +1675,10 @@
                       "emoji": "👨"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:arrivederci"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1564,7 +1700,10 @@
                       "text": "arrivederci"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:arrivederci"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1648,6 +1787,13 @@
                       "target": "prego",
                       "native": "you're welcome"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:buonanotte",
+                    "it:w:arrivederci",
+                    "it:w:per-favore",
+                    "it:w:signore",
+                    "it:w:prego"
                   ]
                 },
                 {
@@ -1689,7 +1835,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:grazie"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1715,7 +1864,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:prego"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1741,7 +1893,10 @@
                       "emoji": "🙏"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:si"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1767,7 +1922,10 @@
                       "emoji": "💚"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:grazie"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1793,7 +1951,10 @@
                       "emoji": "😊"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:prego"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1815,7 +1976,10 @@
                       "text": "no"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:si"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -1901,6 +2065,13 @@
                       "target": "arrivederci",
                       "native": "goodbye (formal)"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:grazie",
+                    "it:w:prego",
+                    "it:w:si",
+                    "it:w:per-favore",
+                    "it:w:arrivederci"
                   ]
                 },
                 {
@@ -1942,7 +2113,10 @@
                       "emoji": "😊"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:no"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1968,7 +2142,10 @@
                       "emoji": "✅"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:signore"
+                  ]
                 },
                 {
                   "type": "select",
@@ -1994,7 +2171,10 @@
                       "emoji": "🌆"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:signora"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2020,7 +2200,10 @@
                       "emoji": "❌"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:no"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2046,7 +2229,10 @@
                       "emoji": "🤝"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:signore"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2068,7 +2254,10 @@
                       "text": "il signore"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:no"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2150,6 +2339,13 @@
                       "target": "buongiorno",
                       "native": "good morning"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:no",
+                    "it:w:signore",
+                    "it:w:signora",
+                    "it:w:arrivederci",
+                    "it:w:buongiorno"
                   ]
                 },
                 {
@@ -2241,7 +2437,10 @@
                       "emoji": "🍝"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:caffe"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2267,7 +2466,10 @@
                       "emoji": "☕"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:riso"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2293,7 +2495,10 @@
                       "emoji": "🍷"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:uovo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2319,7 +2524,10 @@
                       "emoji": "🧀"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:caffe"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2345,7 +2553,10 @@
                       "emoji": "🥤"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:riso"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2367,7 +2578,10 @@
                       "text": "il vino"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:caffe"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2451,6 +2665,13 @@
                       "target": "mangiare",
                       "native": "to eat"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:caffe",
+                    "it:w:riso",
+                    "it:w:uovo",
+                    "it:w:formaggio",
+                    "it:w:mangiare"
                   ]
                 },
                 {
@@ -2492,7 +2713,10 @@
                       "emoji": "🧀"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:formaggio"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2518,7 +2742,10 @@
                       "emoji": "🍴"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:frutta"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2544,7 +2771,10 @@
                       "emoji": "🍚"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:succo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2570,7 +2800,10 @@
                       "emoji": "🍷"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:formaggio"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2596,7 +2829,10 @@
                       "emoji": "🧀"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:frutta"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2618,7 +2854,10 @@
                       "text": "la frutta"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:frutta"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2706,6 +2945,13 @@
                       "target": "il vino",
                       "native": "the wine"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:formaggio",
+                    "it:w:frutta",
+                    "it:w:succo",
+                    "it:w:riso",
+                    "it:w:vino"
                   ]
                 },
                 {
@@ -2747,7 +2993,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:acqua"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2773,7 +3022,10 @@
                       "emoji": "🧀"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:pane"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2799,7 +3051,10 @@
                       "emoji": "🧀"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:pasta"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2825,7 +3080,10 @@
                       "emoji": "☕"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:acqua"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2851,7 +3109,10 @@
                       "emoji": "🧃"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:pane"
+                  ]
                 },
                 {
                   "type": "select",
@@ -2873,7 +3134,10 @@
                       "text": "il pane"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:pasta"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -2957,6 +3221,13 @@
                       "target": "mangiare",
                       "native": "to eat"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:acqua",
+                    "it:w:pane",
+                    "it:w:pasta",
+                    "it:w:succo",
+                    "it:w:mangiare"
                   ]
                 },
                 {
@@ -2998,7 +3269,10 @@
                       "emoji": "🍞"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:vino"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3024,7 +3298,10 @@
                       "emoji": "💧"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:mangiare"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3050,7 +3327,10 @@
                       "emoji": "🍞"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:bere"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3076,7 +3356,10 @@
                       "emoji": "🍝"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:vino"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3102,7 +3385,10 @@
                       "emoji": "🍎"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:mangiare"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3124,7 +3410,10 @@
                       "text": "l'uovo"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:vino"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3208,6 +3497,13 @@
                       "target": "il formaggio",
                       "native": "the cheese"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:vino",
+                    "it:w:mangiare",
+                    "it:w:bere",
+                    "it:w:pasta",
+                    "it:w:formaggio"
                   ]
                 },
                 {
@@ -3319,7 +3615,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:cane"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3345,7 +3644,10 @@
                       "emoji": "🐈"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:gatto"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3371,7 +3673,10 @@
                       "emoji": "🐘"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:cavallo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3397,7 +3702,10 @@
                       "emoji": "🐄"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:cane"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3423,7 +3731,10 @@
                       "emoji": "🐴"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:gatto"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3445,7 +3756,10 @@
                       "text": "il cane"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:cane"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3529,6 +3843,13 @@
                       "target": "l'uccello",
                       "native": "the bird"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:cane",
+                    "it:w:gatto",
+                    "it:w:cavallo",
+                    "it:w:elefante",
+                    "it:w:uccello"
                   ]
                 },
                 {
@@ -3570,7 +3891,10 @@
                       "emoji": "🐴"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:uccello"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3596,7 +3920,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:pesce"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3622,7 +3949,10 @@
                       "emoji": "🐄"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:mucca"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3648,7 +3978,10 @@
                       "emoji": "🐄"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:uccello"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3674,7 +4007,10 @@
                       "emoji": "🐟"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:pesce"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3696,7 +4032,10 @@
                       "text": "il coniglio"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:pesce"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -3784,6 +4123,13 @@
                       "target": "il gatto",
                       "native": "the cat"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:uccello",
+                    "it:w:pesce",
+                    "it:w:mucca",
+                    "it:w:cane",
+                    "it:w:gatto"
                   ]
                 },
                 {
@@ -3825,7 +4171,10 @@
                       "emoji": "🐰"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:coniglio"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3851,7 +4200,10 @@
                       "emoji": "🐕"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:pecora"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3877,7 +4229,10 @@
                       "emoji": "🐰"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:topo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3903,7 +4258,10 @@
                       "emoji": "🐻"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:coniglio"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3929,7 +4287,10 @@
                       "emoji": "🐭"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:pecora"
+                  ]
                 },
                 {
                   "type": "select",
@@ -3951,7 +4312,10 @@
                       "text": "il pesce"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:topo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4043,6 +4407,13 @@
                       "target": "il cane",
                       "native": "the dog"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:coniglio",
+                    "it:w:pecora",
+                    "it:w:topo",
+                    "it:w:tigre",
+                    "it:w:cane"
                   ]
                 },
                 {
@@ -4084,7 +4455,10 @@
                       "emoji": "🐰"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:elefante"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4110,7 +4484,10 @@
                       "emoji": "🐕"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:tigre"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4136,7 +4513,10 @@
                       "emoji": "🐦"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:orso"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4162,7 +4542,10 @@
                       "emoji": "🐘"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:elefante"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4188,7 +4571,10 @@
                       "emoji": "🐭"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:tigre"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4210,7 +4596,10 @@
                       "text": "l'elefante"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:elefante"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4294,6 +4683,13 @@
                       "target": "il coniglio",
                       "native": "the rabbit"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:elefante",
+                    "it:w:tigre",
+                    "it:w:orso",
+                    "it:w:gatto",
+                    "it:w:coniglio"
                   ]
                 },
                 {
@@ -4405,7 +4801,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:citta"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4431,7 +4830,10 @@
                       "emoji": "🗺️"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:treno"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4457,7 +4859,10 @@
                       "emoji": "🚉"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:stazione"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4483,7 +4888,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:citta"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4509,7 +4917,10 @@
                       "emoji": "🚆"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:treno"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4531,7 +4942,10 @@
                       "text": "la città"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:citta"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4619,6 +5033,13 @@
                       "target": "l'autobus",
                       "native": "the bus"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:citta",
+                    "it:w:treno",
+                    "it:w:stazione",
+                    "it:w:strada",
+                    "it:w:autobus"
                   ]
                 },
                 {
@@ -4660,7 +5081,10 @@
                       "emoji": "🗺️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:aeroporto"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4686,7 +5110,10 @@
                       "emoji": "🏙️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:albergo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4712,7 +5139,10 @@
                       "emoji": "🛣️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:strada"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4738,7 +5168,10 @@
                       "emoji": "🧭"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:aeroporto"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4764,7 +5197,10 @@
                       "emoji": "🚆"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:albergo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4786,7 +5222,10 @@
                       "text": "la città"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:albergo"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -4878,6 +5317,13 @@
                       "target": "la stazione",
                       "native": "the station"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:aeroporto",
+                    "it:w:albergo",
+                    "it:w:strada",
+                    "it:w:valigia",
+                    "it:w:stazione"
                   ]
                 },
                 {
@@ -4919,7 +5365,10 @@
                       "emoji": "🏛️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:museo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4945,7 +5394,10 @@
                       "emoji": "🗺️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:mappa"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4971,7 +5423,10 @@
                       "emoji": "✈️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:biglietto"
+                  ]
                 },
                 {
                   "type": "select",
@@ -4997,7 +5452,10 @@
                       "emoji": "✈️"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:museo"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5023,7 +5481,10 @@
                       "emoji": "🚉"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:mappa"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5045,7 +5506,10 @@
                       "text": "l'albergo"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:biglietto"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -5135,6 +5599,13 @@
                       "target": "la valigia",
                       "native": "the suitcase"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:museo",
+                    "it:w:mappa",
+                    "it:w:biglietto",
+                    "it:w:citta",
+                    "it:w:valigia"
                   ]
                 },
                 {
@@ -5176,7 +5647,10 @@
                       "emoji": "🚉"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:valigia"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5202,7 +5676,10 @@
                       "emoji": "🛣️"
                     }
                   ],
-                  "correct": 2
+                  "correct": 2,
+                  "gradeTargets": [
+                    "it:w:autobus"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5228,7 +5705,10 @@
                       "emoji": "🧭"
                     }
                   ],
-                  "correct": 3
+                  "correct": 3,
+                  "gradeTargets": [
+                    "it:w:viaggio"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5254,7 +5734,10 @@
                       "emoji": "🚆"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:valigia"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5280,7 +5763,10 @@
                       "emoji": "🚆"
                     }
                   ],
-                  "correct": 1
+                  "correct": 1,
+                  "gradeTargets": [
+                    "it:w:autobus"
+                  ]
                 },
                 {
                   "type": "select",
@@ -5302,7 +5788,10 @@
                       "text": "la strada"
                     }
                   ],
-                  "correct": 0
+                  "correct": 0,
+                  "gradeTargets": [
+                    "it:w:valigia"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -5390,6 +5879,13 @@
                       "target": "la città",
                       "native": "the city"
                     }
+                  ],
+                  "gradeTargets": [
+                    "it:w:valigia",
+                    "it:w:autobus",
+                    "it:w:viaggio",
+                    "it:w:aeroporto",
+                    "it:w:citta"
                   ]
                 },
                 {
