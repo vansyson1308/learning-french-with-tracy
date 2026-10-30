@@ -334,6 +334,53 @@ export function pictureCueProblems(id: string, options: readonly { text: string;
   return problems;
 }
 
+/** The whole meanings of a gloss: alternatives split on / ; , without a leading article; a label such as "(formal)" stays part of its meaning. */
+function glossMeanings(gloss: string): Set<string> {
+  return new Set(
+    gloss
+      .toLowerCase()
+      .split(/\s*[/;,]\s*/)
+      .map((m) => m.trim().replace(/^(the|a|an|to)\s+/, ""))
+      .filter((m) => m.length > 0)
+  );
+}
+
+/** Two glosses share one whole meaning ("bản đồ; thẻ; vé" and "vé"), not just a word ("xin chào" and "xin lỗi"). */
+export function sharedMeaning(a: string, b: string): boolean {
+  const other = glossMeanings(b);
+  return [...glossMeanings(a)].some((m) => other.has(m));
+}
+
+/** Words one language treats as answering the same question although their glosses differ (content/synonym-groups.json). */
+export function loadSynonymGroups(): Record<string, string[][]> {
+  return (readJson("content/synonym-groups.json") as { groups: Record<string, string[][]> }).groups;
+}
+
+/**
+ * A choice question has one right answer: no distractor may mean the same as
+ * the key, by gloss or by a declared synonym group. A listen question is
+ * exempt, since it asks which word was heard. Options are either target words
+ * or native glosses, so each is mapped back to the pack's words first.
+ */
+export function synonymDistractorProblems(pack: Pick<PackSource, "sections">, groups: readonly string[][]): string[] {
+  const words = pack.sections.flatMap((s) => s.units.flatMap((u) => u.words));
+  const glossOf = (text: string) => words.filter((w) => w.target === text || w.native === text);
+  const declared = (a: string, b: string) => a !== b && groups.some((g) => g.includes(a) && g.includes(b));
+  const problems: string[] = [];
+  for (const e of pack.sections.flatMap((s) => s.units.flatMap((u) => u.lessons.flatMap((l) => l.exercises)))) {
+    if (e.type !== "select" || e.mode === "listen") continue;
+    const answer = e.options[e.correct]?.text;
+    if (answer === undefined) continue;
+    const keys = glossOf(answer);
+    for (const [i, option] of e.options.entries()) {
+      if (i === e.correct) continue;
+      const same = glossOf(option.text).some((d) => keys.some((k) => d.target !== k.target && (sharedMeaning(d.native, k.native) || declared(d.target, k.target))));
+      if (same) problems.push(`${e.id}: distractor "${option.text}" means the same as the answer "${answer}" — a question has one right answer`);
+    }
+  }
+  return problems;
+}
+
 export function validateExercise(
   courseId: string,
   e: AnyExercise,
@@ -515,6 +562,7 @@ export function validateContent(): ValidationResult {
     const roles = courseRolesFor(pack.targetCode, packs);
     const audioCourseId = roles.standalone.some((p) => p.id === pack.id) ? pack.id : (roles.primary?.id ?? pack.id);
     errors.push(...objectiveMetadataErrors(pack, layers.assessment));
+    errors.push(...synonymDistractorProblems(pack, loadSynonymGroups()[pack.targetCode] ?? []).map((m) => `${pack.id}: ${m}`));
     if (pack.testOnly !== true && courseProfileFlag(pack.id, "legacyLessonShapes") !== true) errors.push(...lessonShapeErrors(pack));
     if (pack.testOnly !== true) {
       errors.push(...templateDefectErrors(pack, { checkWordRepeats: courseProfileFlag(pack.id, "basicPack") === true }));

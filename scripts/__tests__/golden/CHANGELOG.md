@@ -959,3 +959,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 - runtime: changed  src/lib/__tests__/golden/snapshots/today/multi-course.long.speak.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.regular.silent.json
 - runtime: changed  src/lib/__tests__/golden/snapshots/today/synthetic-due.regular.speak.json
+
+## 2026-10-30 — One right answer per choice question: seven zh-en, ja-en and pt-en distractors that also answered the question are replaced (no French change)
+
+- compile: changed  src/content/packs/ja-en.json
+- compile: changed  src/content/packs/pt-en.json
+- compile: changed  src/content/packs/zh-en.json
