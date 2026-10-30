@@ -7,7 +7,7 @@ Q = lambda vi, en, opts, ans, kind="locate": (kind, vi, en, opts, ans)
 S = []
 S.append(story("la_lettera_del_nonno", "A1-2", "La lettera del nonno",
  ("Giang tìm thấy một lá thư cũ của ông.", "Giang finds an old letter from her grandfather."),
- ["la lettera", "ricordare", "la foto"],
+ ["ricordare", "il fiume", "abitare"],
  [("N", "Giang abita a Bari con suo marito e due figli.", "Giang sống ở Bari với chồng và hai con.", "Giang lives in Bari with her husband and two children."),
   ("N", "Un giorno pulisce l'armadio e trova una vecchia lettera.", "Một hôm cô dọn tủ và tìm thấy một lá thư cũ.", "One day she cleans the wardrobe and finds an old letter."),
   ("N", "La lettera è di suo nonno, che abitava in Vietnam.", "Lá thư là của ông cô, người từng sống ở Việt Nam.", "The letter is from her grandfather, who lived in Vietnam."),

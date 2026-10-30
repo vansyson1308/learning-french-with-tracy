@@ -1,6 +1,6 @@
 # stories — ingest report (it-vi)
 
-Records: 40 · schema-valid: 40 · failed: 0 · validator errors after merge: 2
+Records: 44 · schema-valid: 44 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -44,11 +44,14 @@ Records: 40 · schema-valid: 40 · failed: 0 · validator errors after merge: 2
 - ✅ line 38 `it.story.il_treno_per_roma`
 - ✅ line 39 `it.story.la_lettera_del_nonno`
 - ✅ line 40 `it.story.il_supermercato_chiuso`
+- ✅ line 41 `it.story.la_bicicletta_rubata`
+- ✅ line 42 `it.story.lo_sciopero`
+- ✅ line 43 `it.story.il_riscaldamento`
+- ✅ line 44 `it.story.l_incidente`
 
 ## Validator errors (fix these records and ingest again)
 
-- stories (it): it.story.il_treno_per_roma: 148 word tokens (band A1-2 stories are 150–400)
-- stories (it): it.story.la_lettera_del_nonno: 94.4 % known at band A1-2 (≥ 95 %; 9 of 161 tokens new or unresolved)
+- none
 
 ## Written
 

@@ -64,7 +64,7 @@ def plural_of(r):
 
 def main():
     cmd, root = sys.argv[1], sys.argv[2]
-    pack, added = rows("core-0.txt"), rows("core-1.txt") + rows("core-2.txt") + rows("core-3.txt") + rows("core-4.txt") + rows("core-5.txt")
+    pack, added = rows("core-0.txt"), rows("core-1.txt") + rows("core-2.txt") + rows("core-3.txt") + rows("core-4.txt") + rows("core-5.txt") + rows("core-a2.txt")
     if cmd == "review":
         lex = {l["surface"]: l for l in json.load(open(f"{root}/content/it/lexicon/lexemes.json", encoding="utf-8"))["lexemes"]}
         os.makedirs(f"{root}/content/it/_drafts/lexicon-review", exist_ok=True)
