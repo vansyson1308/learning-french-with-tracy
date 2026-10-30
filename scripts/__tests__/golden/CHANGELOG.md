@@ -965,3 +965,19 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  src/content/packs/ja-en.json
 - compile: changed  src/content/packs/pt-en.json
 - compile: changed  src/content/packs/zh-en.json
+## 2026-10-30 — audio.yml es generate (all) run 41002365173
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/context-coverage.json
+- compile: changed  content/reports/de/context-coverage.json
+- compile: changed  content/reports/de/reception-audio-census.json
+- compile: changed  content/reports/de/stories-coverage.json
+- compile: changed  content/reports/es/audio-census.json
+- compile: changed  content/reports/es/audio-quality.json
+- compile: changed  content/reports/es/context-coverage.json
+- compile: changed  content/reports/es/stories-coverage.json
+- compile: changed  content/reports/xx/context-coverage.json
+- compile: changed  src/content/stories/de-stories.json
+- compile: changed  src/content/stories/de-story-assets.ts
+- compile: changed  src/content/stories/es-stories.json
+- compile: changed  src/content/stories/es-story-assets.ts
