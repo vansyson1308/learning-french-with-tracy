@@ -91,9 +91,17 @@ describe("courseProfile", () => {
     expect(p.capabilities.dailySession).toBe(false);
   });
 
+  test("it-en (P3d(it)) ships the Italian lexicon read-only: lexicon on, scheduler unchanged", () => {
+    const p = courseProfile("it-en");
+    expect(p.idPrefix).toBe("it:w:");
+    expect(p.capabilities.lexicon).toBe(true);
+    expect(p.capabilities.fsrs).toBe(false);
+    expect(p.capabilities.dailySession).toBe(false);
+  });
+
   test("every inherited course has no rich capability and no artifacts", () => {
     for (const course of catalog.courses) {
-      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en", "de-vi"].includes(course.id)) continue;
+      if (["fr-en", "fr-vi", "es-en", "es-vi", "de-en", "de-vi", "it-en", "it-vi"].includes(course.id)) continue;
       const p = courseProfile(course.id);
       for (const flag of ALL_FLAGS) expect(p.capabilities[flag]).toBe(false);
       expect(p.artifacts).toEqual({});
@@ -117,16 +125,16 @@ describe("courseProfile", () => {
   });
 
   test("the test seam lifts a capability for one course and can be cleared", () => {
-    expect(hasCapability("it-en", "fsrs")).toBe(false);
-    __setCourseCapabilityOverrideForTests("it-en", { fsrs: true });
+    expect(hasCapability("pt-en", "fsrs")).toBe(false);
+    __setCourseCapabilityOverrideForTests("pt-en", { fsrs: true });
     try {
-      expect(hasCapability("it-en", "fsrs")).toBe(true);
-      expect(hasCapability("it-en", "lexicon")).toBe(false);
-      expect(hasCapability("pt-en", "fsrs")).toBe(false);
+      expect(hasCapability("pt-en", "fsrs")).toBe(true);
+      expect(hasCapability("pt-en", "lexicon")).toBe(false);
+      expect(hasCapability("ja-en", "fsrs")).toBe(false);
     } finally {
-      __setCourseCapabilityOverrideForTests("it-en", null);
+      __setCourseCapabilityOverrideForTests("pt-en", null);
     }
-    expect(hasCapability("it-en", "fsrs")).toBe(false);
+    expect(hasCapability("pt-en", "fsrs")).toBe(false);
   });
 
   test("courseProfile returns a fresh view (callers cannot mutate the table)", () => {
