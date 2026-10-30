@@ -47,6 +47,10 @@ FAILED=0
 RUNS=0
 # shellcheck source=flow-runner.sh
 . "$ROOT/scripts/device/flow-runner.sh"
+# shellcheck source=emulator-health.sh
+. "$ROOT/scripts/device/emulator-health.sh"
+ensure_healthy
+HEALTH=$?
 API=$(adb_t shell getprop ro.build.version.sdk | tr -d '\r')
 
 {
@@ -57,6 +61,11 @@ API=$(adb_t shell getprop ro.build.version.sdk | tr -d '\r')
   echo "| Check | Result | Detail |"
   echo "|---|---|---|"
 } > "$REPORT"
+if [ "$HEALTH" != 0 ]; then
+  record "emulator health" FAIL "$INFRA_RETRIES infra retries, still unhealthy: $INFRA_REASON"
+  exit 1
+fi
+record_infra
 
 # A continuous logcat: per-check windows are line ranges of this file, so
 # nothing is ever cleared away before the crash scan reads it.
@@ -203,7 +212,14 @@ else
 fi
 
 # ------------------------------------------------- Vietnamese UI walk ---
-if set_locale vi-VN; then record "device locale vi-VN" PASS ""; else record "device locale vi-VN" FAIL "setprop failed"; fi
+# The boot option -change-locale vi-VN sets it (device-acceptance.yml): a zygote
+# restart here is what killed API 30 emulators. The row says if it had to happen.
+BOOT_LOCALE=$(adb_t shell getprop persist.sys.locale | tr -d '\r')
+if set_locale vi-VN; then
+  if [ "$BOOT_LOCALE" = vi-VN ]; then record "device locale vi-VN" PASS "set at boot"; else record "device locale vi-VN" PASS "set by a framework restart: the boot option left '$BOOT_LOCALE'"; fi
+else
+  record "device locale vi-VN" FAIL "boot option left '$BOOT_LOCALE'; the restart failed too"
+fi
 flow "onboarding (vi)" onboarding-vi.yaml
 
 walk_vi() {

@@ -146,6 +146,10 @@ jobs:
     needs: [build, build-rc3]
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      # Also read by scripts/device/emulator-health.sh for its one infra retry.
+      AVD_NAME: test
+      EMULATOR_OPTIONS: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale vi-VN
     strategy:
       fail-fast: false
       matrix:
@@ -198,7 +202,8 @@ jobs:
           target: google_apis
           profile: pixel_6
           disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          avd-name: ${{ env.AVD_NAME }}
+          emulator-options: ${{ env.EMULATOR_OPTIONS }}
           # Suite watchdog: 75 min, then SIGTERM (the script records the stop
           # and writes its report), SIGKILL 2 min later.
           script: timeout --kill-after=2m 75m bash scripts/device/acceptance.sh apk/app-x86_64.apk device-report
