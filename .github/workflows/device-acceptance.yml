@@ -148,8 +148,10 @@ jobs:
     timeout-minutes: 90
     env:
       # Also read by scripts/device/emulator-health.sh for its one infra retry.
+      # -prop sets the locale during boot. Not -change-locale: it restarts the
+      # framework after boot, which broke `adb install` (run 41060124365).
       AVD_NAME: test
-      EMULATOR_OPTIONS: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale vi-VN
+      EMULATOR_OPTIONS: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -prop persist.sys.locale=vi-VN
     strategy:
       fail-fast: false
       matrix:

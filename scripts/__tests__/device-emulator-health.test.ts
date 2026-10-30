@@ -26,7 +26,9 @@ describe("device acceptance: emulator boot", () => {
 
   test("the workflow boots in vi-VN and shares its options with the retry", () => {
     const wf = read(".github/workflows/device-acceptance.yml");
-    expect(wf).toMatch(/EMULATOR_OPTIONS: .*-change-locale vi-VN/);
+    expect(wf).toMatch(/EMULATOR_OPTIONS: .*-prop persist\.sys\.locale=vi-VN/);
+    // -change-locale restarts the framework after boot and breaks `adb install` (run 41060124365).
+    expect(wf).not.toMatch(/EMULATOR_OPTIONS: .*-change-locale/);
     expect(wf).toContain("emulator-options: ${{ env.EMULATOR_OPTIONS }}");
     expect(wf).toContain("avd-name: ${{ env.AVD_NAME }}");
   });
