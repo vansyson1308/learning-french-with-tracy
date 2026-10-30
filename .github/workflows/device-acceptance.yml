@@ -148,10 +148,11 @@ jobs:
     timeout-minutes: 90
     env:
       # Also read by scripts/device/emulator-health.sh for its one infra retry.
-      # -change-locale restarts the framework after boot; the health check waits
-      # for that restart before the app is installed. -prop persist.sys.locale does not take.
+      # No -change-locale: its framework restart races this action's own adb commands
+      # (run of 3dcf753, "Failure calling service input: Broken pipe"). acceptance.sh
+      # sets the locale itself, before install and inside its health check.
       AVD_NAME: test
-      EMULATOR_OPTIONS: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale vi-VN
+      EMULATOR_OPTIONS: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
     strategy:
       fail-fast: false
       matrix:

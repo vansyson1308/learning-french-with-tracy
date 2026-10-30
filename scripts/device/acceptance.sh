@@ -49,8 +49,6 @@ RUNS=0
 . "$ROOT/scripts/device/flow-runner.sh"
 # shellcheck source=emulator-health.sh
 . "$ROOT/scripts/device/emulator-health.sh"
-ensure_healthy
-HEALTH=$?
 API=$(adb_t shell getprop ro.build.version.sdk | tr -d '\r')
 
 {
@@ -61,11 +59,6 @@ API=$(adb_t shell getprop ro.build.version.sdk | tr -d '\r')
   echo "| Check | Result | Detail |"
   echo "|---|---|---|"
 } > "$REPORT"
-if [ "$HEALTH" != 0 ]; then
-  record "emulator health" FAIL "$INFRA_RETRIES infra retries, still unhealthy: $INFRA_REASON"
-  exit 1
-fi
-record_infra
 
 # A continuous logcat: per-check windows are line ranges of this file, so
 # nothing is ever cleared away before the crash scan reads it.
@@ -200,6 +193,18 @@ crash_scan() { # label — everything logged since the previous scan
 # ---------------------------------------------------------------- setup ---
 (cd "$ROOT" && bun scripts/device/maestro-flows.ts --out "$OUT/flows") > "$OUT/logs/generate.log" 2>&1 \
   || { record "generate flows" FAIL "see logs/generate.log"; }
+# The Vietnamese locale needs a framework restart, the step that kills emulators.
+# It runs before install, inside the health check: a death here is one wipe and
+# reboot, not a failed shard. (-change-locale races the emulator-runner's own adb
+# commands, "Broken pipe"; -prop persist.sys.locale does not take.)
+locale_vi() { set_locale vi-VN; }
+BOOT_PREPARE=locale_vi
+if ! ensure_healthy; then
+  record "emulator health" FAIL "$INFRA_RETRIES infra retries, still unhealthy: $INFRA_REASON"
+  exit 1
+fi
+record_infra
+record "device locale vi-VN" PASS ""
 adb root >/dev/null 2>&1; wait_boot
 adb logcat -c
 start_logcat
@@ -212,15 +217,6 @@ else
 fi
 
 # ------------------------------------------------- Vietnamese UI walk ---
-# The boot option -change-locale sets it (device-acceptance.yml); its framework
-# restart is awaited before install (emulator-health.sh). A second restart here
-# would be unprotected, and that is what killed API 30 emulators. The row says if it happened.
-BOOT_LOCALE=$(adb_t shell getprop persist.sys.locale | tr -d '\r')
-if set_locale vi-VN; then
-  if [ "$BOOT_LOCALE" = vi-VN ]; then record "device locale vi-VN" PASS "set at boot"; else record "device locale vi-VN" PASS "set by a framework restart: the boot option left '$BOOT_LOCALE'"; fi
-else
-  record "device locale vi-VN" FAIL "boot option left '$BOOT_LOCALE'; the restart failed too"
-fi
 flow "onboarding (vi)" onboarding-vi.yaml
 
 walk_vi() {

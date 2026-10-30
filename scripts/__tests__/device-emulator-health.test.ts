@@ -1,8 +1,8 @@
 /**
- * Emulators that die at boot (API 30, three runs in a row on 2026-10-30): the
- * locale is set by a boot option, not a zygote restart, and an unhealthy device
- * gets exactly one wipe and reboot, which the report records. The retry path
- * itself is exercised by scripts/device/test-emulator-health.sh with stubs.
+ * Emulators that die (API 30, run after run on 2026-10-30): the emulator version
+ * is pinned, the locale restart runs before install inside the health check, and
+ * an unhealthy device gets exactly one wipe and reboot, which the report records.
+ * The retry path itself is exercised by scripts/device/test-emulator-health.sh.
  */
 import { describe, expect, test } from "bun:test";
 import { spawnSync } from "child_process";
@@ -24,23 +24,25 @@ describe("device acceptance: emulator boot", () => {
     130_000,
   );
 
-  test("the workflow boots in vi-VN and shares its options with the retry", () => {
+  test("the workflow pins the emulator and shares its options with the retry", () => {
     const wf = read(".github/workflows/device-acceptance.yml");
-    expect(wf).toMatch(/EMULATOR_OPTIONS: .*-change-locale vi-VN/);
-    // It restarts the framework after boot: install only after that settles (run 41060124365).
-    const lib = read("scripts/device/emulator-health.sh");
-    expect(lib.indexOf("settle_boot_locale\n  wait_healthy")).toBeGreaterThan(0);
+    // Its framework restart races the emulator-runner's own adb commands ("Broken pipe").
+    expect(wf).not.toMatch(/EMULATOR_OPTIONS: .*-change-locale/);
     expect(wf).toContain("emulator-options: ${{ env.EMULATOR_OPTIONS }}");
     expect(wf).toContain("avd-name: ${{ env.AVD_NAME }}");
     // A silent emulator update is what the API 30 deaths line up with.
     expect(wf).toMatch(/emulator-build: "\d+"/);
   });
 
-  test("health is checked before the app is installed, and every report carries the retry count", () => {
+  test("the locale restart and the health check come before the app is installed, and every report carries the retry count", () => {
     const sh = read("scripts/device/acceptance.sh");
-    const health = sh.indexOf("ensure_healthy");
+    const health = sh.indexOf("if ! ensure_healthy");
     expect(health).toBeGreaterThan(0);
     expect(health).toBeLessThan(sh.indexOf('adb install "$APK"'));
+    expect(sh.indexOf("BOOT_PREPARE=locale_vi")).toBeGreaterThan(0);
+    expect(sh.indexOf("BOOT_PREPARE=locale_vi")).toBeLessThan(health);
+    // Every function it needs is defined before the call.
+    for (const fn of ["set_locale() {", "wait_framework() {", "start_logcat() {"]) expect(sh.indexOf(fn)).toBeLessThan(health);
     expect(sh).toContain("record_infra");
     expect(sh).toContain('record "emulator health" FAIL');
     const lib = read("scripts/device/emulator-health.sh");
