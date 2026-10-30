@@ -4,8 +4,11 @@
  * the story layer only; French is always mp3 (release/ASSET_DELIVERY.md).
  */
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "fs";
 
+import { safeResolve } from "../lib/pipeline";
 import {
+  AUDIO_FILE_EXTS,
   assetFileName,
   codecFor,
   codecProblems,
@@ -65,6 +68,13 @@ describe("codecFor / codecProblems", () => {
   test("bundled audio files include .opus", () => {
     expect(["a.mp3", "b.wav", "c.opus"].every(isAudioFile)).toBe(true);
     expect(isAudioFile("plan.json")).toBe(false);
+  });
+
+  test("bun test loads every bundled audio format as a file, never as code (bunfig.toml)", () => {
+    // es audio run 40977170511: the compiled es-story-assets.ts required .opus files that Bun parsed as JS,
+    // so the course bundle failed to load and the checkpoint / exam goldens saw `undefined`.
+    const bunfig = readFileSync(safeResolve("bunfig.toml"), "utf8");
+    for (const ext of AUDIO_FILE_EXTS) expect(bunfig).toContain(`"${ext}" = "file"`);
   });
 });
 

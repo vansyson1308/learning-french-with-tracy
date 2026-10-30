@@ -5,6 +5,10 @@ preload = ["./src/lib/__tests__/setup.ts"]
 
 # Metro bundles require()'d audio as asset modules; Bun must treat them as
 # file references too (never parse binary as JS) so the generated
-# fr-clip-assets map is importable under `bun test`.
+# fr-clip-assets map is importable under `bun test`. Every bundled audio
+# format (scripts/lib/audio-codec.ts AUDIO_FILE_EXTS): story sentences are
+# .opus since the Opus switch; without this the course bundle fails to load.
 [loader]
 ".mp3" = "file"
+".opus" = "file"
+".wav" = "file"
