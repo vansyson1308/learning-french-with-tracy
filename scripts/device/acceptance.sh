@@ -212,8 +212,9 @@ else
 fi
 
 # ------------------------------------------------- Vietnamese UI walk ---
-# The boot option -prop persist.sys.locale=vi-VN sets it (device-acceptance.yml):
-# a zygote restart here is what killed API 30 emulators. The row says if it had to happen.
+# The boot option -change-locale sets it (device-acceptance.yml); its framework
+# restart is awaited before install (emulator-health.sh). A second restart here
+# would be unprotected, and that is what killed API 30 emulators. The row says if it happened.
 BOOT_LOCALE=$(adb_t shell getprop persist.sys.locale | tr -d '\r')
 if set_locale vi-VN; then
   if [ "$BOOT_LOCALE" = vi-VN ]; then record "device locale vi-VN" PASS "set at boot"; else record "device locale vi-VN" PASS "set by a framework restart: the boot option left '$BOOT_LOCALE'"; fi

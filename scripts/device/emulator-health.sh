@@ -14,10 +14,15 @@
 #        AVD_NAME=test      the emulator-runner's default AVD
 #        HEALTH_TIMEOUT=120 seconds to wait for a healthy device, per boot
 #        HEALTH_POLL=5      seconds between checks
+#        SETTLE_TIMEOUT=90  seconds to wait for the -change-locale locale to appear
+#        SETTLE_STABLE=30   seconds system_server must keep one pid after it
 
 AVD_NAME=${AVD_NAME:-test}
 HEALTH_TIMEOUT=${HEALTH_TIMEOUT:-120}
 HEALTH_POLL=${HEALTH_POLL:-5}
+SETTLE_TIMEOUT=${SETTLE_TIMEOUT:-90}
+SETTLE_STABLE=${SETTLE_STABLE:-30}
+SETTLE_RESTARTS=0
 INFRA_RETRIES=0
 INFRA_REASON=""
 
@@ -51,14 +56,46 @@ reboot_emulator() {
   timeout 120 adb wait-for-device > /dev/null 2>&1
 }
 
+# -change-locale restarts the framework AFTER boot, and an `adb install` during
+# that restart fails with a broken pipe (run 41060124365). sys.boot_completed
+# stays 1 through it, so wait for the locale and then a stable system_server.
+# -prop persist.sys.locale does not take (run of 7e09251, API 30). The restart
+# is what killed API 30 emulators: here, the health check after it still catches that.
+settle_boot_locale() {
+  case " ${EMULATOR_OPTIONS:-} " in *" -change-locale "*) ;; *) return 0 ;; esac
+  local waited=0 pid
+  while [ "$waited" -lt "$SETTLE_TIMEOUT" ]; do
+    [ -n "$(adb_t shell getprop persist.sys.locale 2>/dev/null | tr -d '\r')" ] && break
+    sleep "$HEALTH_POLL"
+    waited=$((waited + HEALTH_POLL))
+  done
+  # The restart may still be on its way: the pid must hold still for a whole window.
+  waited=0
+  pid=$(adb_t shell pidof system_server 2>/dev/null | tr -d '\r')
+  while [ "$waited" -lt "$SETTLE_STABLE" ]; do
+    sleep "$HEALTH_POLL"
+    waited=$((waited + HEALTH_POLL))
+    local now
+    now=$(adb_t shell pidof system_server 2>/dev/null | tr -d '\r')
+    if [ -z "$now" ] || [ "$now" != "$pid" ]; then pid=$now; waited=0; SETTLE_RESTARTS=$((SETTLE_RESTARTS + 1)); fi
+    [ "$SETTLE_RESTARTS" -gt 20 ] && return 0  # never stable: the health check below decides
+  done
+}
+
+boot_ready() {
+  wait_healthy || return 1
+  settle_boot_locale
+  wait_healthy
+}
+
 # 0 when the device is healthy, at most after one wipe and reboot.
 ensure_healthy() {
-  wait_healthy && return 0
+  boot_ready && return 0
   local first=$INFRA_REASON
   INFRA_RETRIES=$((INFRA_RETRIES + 1))
   echo "infra retry: emulator unhealthy ($first); kill, wipe, boot again" >&2
   reboot_emulator
-  if wait_healthy; then
+  if boot_ready; then
     INFRA_REASON="first boot: $first"
     # The emulator-runner set these once, on the boot that died.
     adb_t shell settings put global window_animation_scale 0.0 > /dev/null 2>&1

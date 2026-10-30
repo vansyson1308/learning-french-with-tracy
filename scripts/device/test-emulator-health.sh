@@ -20,6 +20,13 @@ fi
 case "$*" in
   "get-state") echo device ;;
   "shell getprop sys.boot_completed") echo 1 ;;
+  "shell getprop persist.sys.locale") echo vi-VN ;;
+  "shell pidof system_server")
+    # DIE_AFTER_SETTLE: the framework restart killed the device, once.
+    if [ -f "$WORK/die-on-settle" ]; then rm -f "$WORK/die-on-settle" "$WORK/healthy"; exit 1; fi
+    # PID_FILE: a list of pids, consumed one per call; the last one stays.
+    if [ -s "$WORK/pids" ]; then head -1 "$WORK/pids"; [ "$(wc -l < "$WORK/pids")" -gt 1 ] && sed -i '1d' "$WORK/pids"; else echo 100; fi
+    ;;
 esac
 exit 0
 EOF
@@ -33,7 +40,7 @@ EOF
 chmod +x "$WORK/bin/adb" "$WORK/sdk/emulator/emulator"
 
 export PATH="$WORK/bin:$PATH" WORK ANDROID_HOME="$WORK/sdk"
-export HEALTH_TIMEOUT=1 HEALTH_POLL=1 AVD_NAME=test EMULATOR_OPTIONS="-no-window -change-locale vi-VN"
+export HEALTH_TIMEOUT=1 HEALTH_POLL=1 AVD_NAME=test EMULATOR_OPTIONS="-no-window -change-locale vi-VN" SETTLE_TIMEOUT=2 SETTLE_STABLE=2
 OUT=$WORK
 REPORT="$WORK/REPORT.md"
 fails=0
@@ -76,6 +83,32 @@ check "dead twice: returns non-zero" '[ "$rc" != 0 ]'
 check "dead twice: exactly one boot" '[ "$(wc -l < "$WORK/emulator-calls")" = 1 ]'
 check "dead twice: the reason names both boots" 'case "$INFRA_REASON" in *"first boot:"*"after one retry:"*) true ;; *) false ;; esac'
 check "dead twice: the count is 1" '[ "$INFRA_RETRIES" = 1 ]'
+
+# 4. The framework restarts during the wait: the pid must then hold still for a whole window.
+reset_case
+: > "$WORK/healthy"
+printf '100\n200\n200\n200\n200\n' > "$WORK/pids"
+started=$SECONDS
+ensure_healthy; rc=$?
+check "restart: returns 0, no reboot" '[ "$rc" = 0 ] && [ ! -f "$WORK/emulator-calls" ]'
+check "restart: the window starts again after the new pid" '[ $((SECONDS - started)) -ge 3 ]'
+rm -f "$WORK/pids"
+
+# 5. The device dies in that restart: the health check after it catches it, one reboot.
+reset_case
+: > "$WORK/healthy"; : > "$WORK/die-on-settle"
+export HEAL_ON_BOOT=1
+ensure_healthy; rc=$?
+unset HEAL_ON_BOOT
+sleep 1
+check "death in the restart: recovered by the one reboot" '[ "$rc" = 0 ] && [ "$INFRA_RETRIES" = 1 ] && [ "$(wc -l < "$WORK/emulator-calls")" = 1 ]'
+
+# 6. Without -change-locale nothing waits.
+reset_case
+: > "$WORK/healthy"
+EMULATOR_OPTIONS="-no-window"
+ensure_healthy; rc=$?
+check "no boot locale: no pid polling" '[ "$rc" = 0 ] && ! grep -q "pidof system_server" "$WORK/adb-calls"'
 
 [ "$fails" = 0 ] && echo "EMULATOR HEALTH TESTS PASSED" || echo "EMULATOR HEALTH TESTS FAILED"
 exit "$fails"
