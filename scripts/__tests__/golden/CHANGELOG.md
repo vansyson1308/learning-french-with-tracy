@@ -990,3 +990,7 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: changed  content/reports/de/reception-audio-census.json
 - compile: changed  src/content/stories/de-stories.json
 - compile: changed  src/content/stories/de-story-assets.ts
+
+## 2026-10-30 — audio.yml de recon (pack) run 41139331911
+
+- compile: changed  content/reports/de/audio-recon.json
