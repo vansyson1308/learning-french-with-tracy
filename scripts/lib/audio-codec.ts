@@ -71,9 +71,18 @@ export function assetFileName(assetKey: string, codec: AudioCodec | undefined): 
 export const AUDIO_FILE_EXTS = [".mp3", ".wav", ".opus"] as const;
 export const isAudioFile = (name: string) => AUDIO_FILE_EXTS.some((e) => name.endsWith(e));
 
-/** The asset-key recipe part of a codec: none for mp3 (keys unchanged), "opus-<k>k" for opus. */
+/**
+ * Headroom before an Opus encode: a peak limiter at -3 dBFS. The decoded
+ * Opus overshoots the loudness-normalised input. In the first es run
+ * (40975675021) two story sentences decoded at a 0 dB peak, which the
+ * technical QA fails for new clips (-0.2 dB). MP3 encodes are unchanged.
+ */
+export const OPUS_PEAK_LIMIT = 0.708;
+export const OPUS_LIMITER = `alimiter=limit=${OPUS_PEAK_LIMIT}:level=disabled`;
+
+/** The asset-key recipe part of a codec: none for mp3 (keys unchanged), "opus-<k>k-lim3" for opus. */
 export function codecRecipe(codec: AudioCodec, enc: CodecSettings | undefined): string | null {
-  return codec === "opus" ? `opus-${opusKbpsOf(enc)}k` : null;
+  return codec === "opus" ? `opus-${opusKbpsOf(enc)}k-lim3` : null;
 }
 
 /** ffmpeg output options of the final encode (after the filter). */

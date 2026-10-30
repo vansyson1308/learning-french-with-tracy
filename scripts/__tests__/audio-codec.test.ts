@@ -80,7 +80,7 @@ describe("flipping story to opus (what CI must have proven first)", () => {
     expect(storySentenceFile("es", es, sentence, "opus")).toBe(`${opus}.opus`);
     const files = storyAssetFiles("es", es, storyAudioPolicy("es"), "opus");
     expect([...files].every((f) => f.endsWith(".opus"))).toBe(true);
-    expect(codecRecipe("opus", flipped)).toBe("opus-16k");
+    expect(codecRecipe("opus", flipped)).toBe("opus-16k-lim3");
   });
 
   test("the synth script encodes an opus clip with libopus at 24 kHz mono and copies a blessed .opus as is", () => {
@@ -90,7 +90,11 @@ describe("flipping story to opus (what CI must have proven first)", () => {
     const encode = script.split("\n").find((l) => l.includes("libopus"))!;
     expect(encode).toContain(`-ar ${OPUS_SAMPLE_RATE_HZ} -ac 1 -map_metadata -1 -codec:a libopus -b:a 16k`);
     expect(encode).toContain("'/out/k1.opus'");
+    // Headroom for the decoder's overshoot: the limiter runs after loudnorm, before libopus.
+    expect(encode).toMatch(/loudnorm=[^,]*,alimiter=limit=0\.708:level=disabled/);
     expect(script).not.toContain("libmp3lame");
+    const mp3 = buildSynthScript({ clips: [{ ...clip, codec: undefined }], voices, engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out" });
+    expect(mp3).not.toContain("alimiter");
     const reused = buildSynthScript({ clips: [clip], voices, engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out", existingFiles: new Map([["k1", "assets/audio/es-reception/k1.opus"]]) });
     expect(reused).toContain("cp 'assets/audio/es-reception/k1.opus' '/out/k1.opus'");
   });
