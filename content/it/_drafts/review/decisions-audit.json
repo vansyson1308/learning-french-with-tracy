@@ -1,0 +1,130 @@
+[
+ {
+  "id": "it:w:pantaloni",
+  "severity": "P1",
+  "problem": "'Chiếc quần dài.' reads as the noun phrase 'the long trousers'; the predicate 'sono lunghi' is lost.",
+  "fix": "i pantaloni = quần dài | I pantaloni sono lunghi. || Chiếc quần này dài.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it-vi:un-l3-e1",
+  "severity": "P2",
+  "problem": "The translation reads as a noun phrase ('the old car'), not as a sentence with 'è'.",
+  "fix": "Chiếc ô tô này cũ.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it-vi:ua-l3-e1",
+  "severity": "P2",
+  "problem": "The translation reads as 'a big hotel', not 'the hotel is big'.",
+  "fix": "Khách sạn này lớn.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it-vi:ua-l0-e8",
+  "severity": "P2",
+  "problem": "The translation reads as 'the new backpack', not as a sentence.",
+  "fix": "Cái ba lô này mới.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it-vi:ue-l3-e3",
+  "severity": "P2",
+  "problem": "'Các cậu bé' suggests small boys; 'ragazzi' means teenagers or young men.",
+  "fix": "Các chàng trai cao.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it-vi:ug-l1-e0",
+  "severity": "P2",
+  "problem": "'quán bar' suggests a nightclub or pub to Vietnamese readers; an Italian bar is a coffee place.",
+  "fix": "Course-wide: quán bar becomes quán cà phê.",
+  "uncertain": false,
+  "decision": "applied course-wide in the generators: quán bar becomes quán cà phê"
+ },
+ {
+  "id": "it.story.come_ti_chiami#16",
+  "severity": "P2",
+  "problem": "Students going to a 'quán bar' after class gives the wrong picture.",
+  "fix": "Course-wide: quán bar becomes quán cà phê.",
+  "uncertain": false,
+  "decision": "applied course-wide in the generators: quán bar becomes quán cà phê"
+ },
+ {
+  "id": "it:w:mio",
+  "severity": "P2",
+  "problem": "'(đực)' alone reads like an animal's sex, not grammatical gender.",
+  "fix": "mio = của tôi (giống đực) | Mio padre lavora qui. || Bố tôi làm việc ở đây.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it:w:nostro",
+  "severity": "P2",
+  "problem": "'(đực)' should name the grammatical gender.",
+  "fix": "nostro = của chúng tôi (giống đực) | Questo è il nostro treno. || Đây là tàu của chúng tôi.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it:w:centro",
+  "severity": "P2",
+  "problem": "'đi vào trung tâm' is vague; 'Vado in centro' means the town centre.",
+  "fix": "il centro = trung tâm | Vado in centro. || Tôi vào trung tâm thành phố.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it.story.micro_il_succo#8",
+  "severity": "P2",
+  "problem": "'Còn một quả táo thì sao?' is translationese; the child is asking for an apple.",
+  "fix": "[A] Grazie! E una mela? || Con cảm ơn! Thế cho con một quả táo được không?",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it.story.micro_buonanotte#8",
+  "severity": "P2",
+  "problem": "'Còn một quyển sách?' is a word-for-word fragment; Nina is asking for a bedtime book.",
+  "fix": "[B] E un libro? || Thế đọc sách cho con nhé?",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it.story.micro_la_cena#6",
+  "severity": "P2",
+  "problem": "'su un piatto' sounds like describing a picture; the pasta is 'nel piatto'.",
+  "fix": "[N] La pasta è nel piatto. || Mì ở trong đĩa.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it.story.la_nostra_casa#1",
+  "severity": "P2",
+  "problem": "The reporting clause placed last is translationese in Vietnamese.",
+  "fix": "[N] La nostra casa è piccola e bianca, dice la madre. || Người mẹ nói: nhà của chúng tôi nhỏ và màu trắng.",
+  "uncertain": false,
+  "decision": "fixed"
+ },
+ {
+  "id": "it.story.la_chiave_perduta#6",
+  "severity": "P2",
+  "problem": "Italian 'primo piano' is one floor above ground; in Vietnam 'tầng một' is usually the ground floor.",
+  "fix": "[N] Allora va dal vicino, al primo piano. || Vậy là anh đến nhà hàng xóm ở tầng trên.",
+  "uncertain": true,
+  "decision": "uncertain: no change, listed in content/it/REVIEW-AI.md for the owner"
+ },
+ {
+  "id": "it.story.il_vicino_nuovo#2",
+  "severity": "P2",
+  "problem": "'il nuovo vicino' is the usual order, but the postposed form is heard in speech and matches the story's title.",
+  "fix": "[A] Buongiorno! Lei è il nuovo vicino? || Chào anh! Anh là hàng xóm mới à?",
+  "uncertain": true,
+  "decision": "uncertain: no change, listed in content/it/REVIEW-AI.md for the owner"
+ }
+]

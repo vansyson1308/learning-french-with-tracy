@@ -66,7 +66,7 @@ describe("generated id registry", () => {
   });
 
   test("courses without a registry keep raw surfaces (legacy behaviour)", () => {
-    for (const courseId of ["it-en", "ja-en", "zz-zz"]) {
+    for (const courseId of ["pt-en", "ja-en", "zz-zz"]) {
       expect(hasIdRegistry(courseId)).toBe(false);
       expect(idPrefix(courseId)).toBe("");
       expect(itemIdFor(courseId, "el agua")).toBe("el agua");

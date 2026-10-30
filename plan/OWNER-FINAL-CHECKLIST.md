@@ -18,6 +18,7 @@ Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, l
 - ☐ **Chấp nhận duyệt AI** `ai-review:fr-vi` — đọc `content/fr/REVIEW-AI.md` (phần tiếng Pháp giữ nguyên bản fr-en).
 - ☐ **Chấp nhận duyệt AI** `ai-review:es-vi` — đọc `content/es/REVIEW-AI.md`.
 - ☐ **Chấp nhận duyệt AI** `ai-review:de-vi` — đọc `content/de/REVIEW-AI.md` (sau PR ai-review cho de-vi).
+- ☐ **Chấp nhận duyệt AI** `ai-review:it-vi` — đọc `content/it/REVIEW-AI.md`.
 - ☐ **Mục chưa chắc** (không chặn việc gì): xem phần "Chưa chắc" trong từng `REVIEW-AI.md` và quyết định giữ hay sửa; báo Claude.
 - ☐ **Anh tự kiểm tra (tuỳ chọn)**: anh đọc tiếng Việt bản ngữ, tiếng Pháp trình độ đại học, tiếng Anh C1 — có thể đọc lướt `content/fr/REVIEW-vi.md` (tiếng Việt của fr-vi), mọi văn bản tiếng Việt trong `REVIEW-TIER1-vi.md` của es/de, và phần tiếng Anh của en-vi khi có.
 - ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) có bước duyệt AI tích hợp sẵn trong P3d; Claude thêm dòng `ai-review:<khoá>` vào đây khi khoá đó xong.

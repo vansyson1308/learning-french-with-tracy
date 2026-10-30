@@ -59,14 +59,14 @@ L["ua-l2"] = [("concept", k("indefinite-articles")), ("fill", "Ho ___ libro.", "
   ("wb", "Tôi có một cái bàn và một cái ghế.", "Ho un tavolo e una sedia.", ["uno", "un'", "sono"])]
 L["ua-l3"] = [("concept", k("elision")), ("fill", "___ acqua è fredda.", "L'", ["La", "Il", "Lo"], "Nước lạnh."), ("fill", "___ albergo è grande.", "L'", ["Il", "Lo", "La"], "Khách sạn lớn."),
   ("art", "il tavolo"), ("art", "la sedia"), ("art", "la porta"), ("art", "lo sport"), ("art", "l'amica"), ("type", "người bạn nữ (kèm mạo từ)", "l'amica", []),
-  ("concept", k("prepositions")), ("fill", "Vado ___ stazione.", "alla", ["al", "nel", "della"], "Tôi đến nhà ga."), ("fill", "Vado ___ bar.", "al", ["alla", "della", "nella"], "Tôi đến quán bar."),
+  ("concept", k("prepositions")), ("fill", "Vado ___ stazione.", "alla", ["al", "nel", "della"], "Tôi đến nhà ga."), ("fill", "Vado ___ bar.", "al", ["alla", "della", "nella"], "Tôi đến quán cà phê."),
   ("fill", "Abito ___ Roma.", "a", ["in", "di", "con"], "Tôi sống ở Roma."), ("fill", "Abito ___ Italia.", "in", ["a", "di", "con"], "Tôi sống ở Ý."),
   ("wbt", "L'amico è alla stazione.", "Người bạn ở nhà ga.", ["trường", "không", "hai"]), ("wb", "Tôi đến từ Hà Nội.", "Sono di Hanoi.", ["a", "ha", "in"])]
 # ---- unit b: verbs
 L["ub-l0"] = [("concept", k("essere-avere")), ("conj", "Io ___ Anna.", "essere", "pre:1s", "Tôi là Anna."), ("conj", "Tu ___ di Roma.", "essere", "pre:2s", "Bạn đến từ Roma."),
   ("conj", "Marco ___ a casa.", "essere", "pre:3s", "Marco ở nhà."), ("conj", "Noi ___ una famiglia.", "essere", "pre:1p", "Chúng tôi là một gia đình."), ("conj", "Voi ___ qui.", "essere", "pre:2p", "Các bạn ở đây."),
   ("conj", "Io ___ una macchina.", "avere", "pre:1s", "Tôi có một chiếc xe ô tô."), ("conj", "Tu ___ un cane.", "avere", "pre:2s", "Bạn có một con chó."), ("conj", "Noi ___ tempo.", "avere", "pre:1p", "Chúng tôi có thời gian."),
-  ("concept", k("c-e-ci-sono")), ("fill", "___ un bar qui vicino.", "C'è", ["Ci sono", "Ha", "Sono"], "Gần đây có một quán bar."), ("fill", "___ due letti.", "Ci sono", ["C'è", "Hanno", "È"], "Có hai cái giường."),
+  ("concept", k("c-e-ci-sono")), ("fill", "___ un bar qui vicino.", "C'è", ["Ci sono", "Ha", "Sono"], "Gần đây có một quán cà phê."), ("fill", "___ due letti.", "Ci sono", ["C'è", "Hanno", "È"], "Có hai cái giường."),
   ("t2n", "essere", ["avere", "parlare", "andare"]), ("type", "Tôi hai mươi tuổi.", "Ho vent'anni.", ["Ho venti anni."])]
 L["ub-l1"] = [("concept", k("present-regular")), ("conj", "Io ___ a Hanoi.", "abitare", "pre:1s", "Tôi sống ở Hà Nội."), ("conj", "Lei ___ a Roma.", "lavorare", "pre:3s", "Cô ấy làm việc ở Roma."),
   ("conj", "Tu ___ qui.", "lavorare", "pre:2s", "Bạn làm việc ở đây."), ("conj", "Noi ___ a Milano.", "abitare", "pre:1p", "Chúng tôi sống ở Milano."), ("conj", "Marco ___ il giornale.", "leggere", "pre:3s", "Marco đọc báo."),
@@ -95,7 +95,7 @@ L["uc-l1"] = [("t2nx", "la camera", "căn phòng", ["máy ảnh", "máy tính", 
 L["uc-l2"] = [("fill", "___ problema è grande.", "Il", ["La", "L'", "Lo"], "Vấn đề lớn."), ("fill", "___ foto è bella.", "La", ["Il", "Lo", "L'"], "Bức ảnh đẹp."), ("art", "il problema"), ("art", "la foto"), ("art", "l'università"),
   ("fill", "Ho due ___.", "film", ["filmi", "filme", "filma"], "Tôi có hai bộ phim."), ("t2n", "il problema", ["la foto", "la musica", "il film"]), ("n2t", "la foto", ["il problema", "il film", "la musica"]),
   ("type", "Không có vấn đề gì.", "Non c'è problema.", ["Non c'è problema"])]
-L["uc-l3"] = [("t2n", "chi", ["dove", "cosa", "come"]), ("t2n", "dove", ["chi", "quando", "cosa"]), ("fill", "___ è quel ragazzo?", "Chi", ["Dove", "Come", "Quando"], "Cậu bé kia là ai?"), ("fill", "___ è il bar?", "Dov'", ["Chi", "Cosa", "Quanto"], "Quán bar ở đâu?"),
+L["uc-l3"] = [("t2n", "chi", ["dove", "cosa", "come"]), ("t2n", "dove", ["chi", "quando", "cosa"]), ("fill", "___ è quel ragazzo?", "Chi", ["Dove", "Come", "Quando"], "Cậu bé kia là ai?"), ("fill", "___ è il bar?", "Dov'", ["Chi", "Cosa", "Quanto"], "Quán cà phê ở đâu?"),
   ("t2n", "il ristorante", ["il bar", "il cinema", "il museo"]), ("type", "Đó là ai?", "Chi è?", ["Chi è"]), ("wbt", "Allora, dov'è l'albergo?", "Vậy khách sạn ở đâu?", ["ai", "khi", "và"]),
   ("match", ["chi", "dove", "cosa", "allora", "il telefono"])]
 # ---- unit d: numbers

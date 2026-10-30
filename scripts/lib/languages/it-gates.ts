@@ -88,7 +88,7 @@ function nounGenders(lexicon: Lexeme[]): Map<string, Set<Gender>> {
     if (l.partOfSpeech !== "noun" || (l.gender !== "masculine" && l.gender !== "feminine")) continue;
     const bare = l.surface.replace(/^(?:il|lo|la|i|gli|le) |^l'/i, "").toLowerCase();
     // -ante, -ente, -ista nouns take both genders (l'insegnante, un'insegnante, un insegnante).
-    const both = COMMON_GENDER.test(bare) ? (["masculine", "feminine"] as const) : [l.gender];
+    const both: Gender[] = COMMON_GENDER.test(bare) ? ["masculine", "feminine"] : [l.gender];
     genders.set(bare, new Set<Gender>([...(genders.get(bare) ?? []), ...both]));
   }
   return genders;

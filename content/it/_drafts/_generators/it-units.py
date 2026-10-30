@@ -227,7 +227,7 @@ Nếu bạn biết tiếng Anh, hãy cẩn thận:
 - *la foto* đuôi -o nhưng giống cái (viết tắt của *la fotografia*)
 - *la radio* cũng giống cái
 
-### Quán bar ở Ý
+### Quán cà phê ở Ý
 *il bar* là nơi uống cà phê buổi sáng, không chỉ là nơi uống rượu.
 
 ### Tầng nhà
@@ -378,7 +378,7 @@ Hai giọng khác nhau trò chuyện vài câu. Bạn cần hiểu **họ nói v
 
 Hãy nghe cả giọng điệu: câu hỏi tiếng Ý thường chỉ khác câu kể ở ngữ điệu lên cao cuối câu.
 """, [("va bene", "👌"), ("allora", "🤔"), ("ecco", "👉"), ("d'accordo", "🤝"), ("come stai", "🙂"), ("come sta", "🎩")],
-     [("Làm quen", O("listening.short_dialogues", "greetings.basic")), ("Ở quán bar", O("listening.short_dialogues", "listening.short_info")), ("Đi đâu?", O("listening.short_dialogues", "reading.short_messages")), ("Ôn: tu và Lei", O("listening.short_dialogues", "listening.short_info"))])
+     [("Làm quen", O("listening.short_dialogues", "greetings.basic")), ("Ở quán cà phê", O("listening.short_dialogues", "listening.short_info")), ("Đi đâu?", O("listening.short_dialogues", "reading.short_messages")), ("Ôn: tu và Lei", O("listening.short_dialogues", "listening.short_info"))])
 
 unit(3, "unit-j", "uj", "Piccole storie", "Đọc và nghe những câu chuyện nhỏ về đời sống hằng ngày.", """
 ## Câu chuyện nhỏ 📖
@@ -637,9 +637,9 @@ Mỗi cuộc trò chuyện giữ một cách xưng hô: với bạn bè dùng **
      [("Làm quen", O("interaction.everyday_conversation")), ("Hỏi thăm", O("interaction.everyday_conversation")), ("Hội thoại: ở trường", O("interaction.everyday_conversation")), ("Hội thoại: hàng xóm", O("interaction.everyday_conversation"))])
 
 unit(6, "unit-t", "ut", "Al bar e in negozio", "Gọi cà phê ở quầy, mua hàng, hỏi giá và trả tiền.", """
-## Ở quán bar và cửa hàng ☕
+## Ở quán cà phê và cửa hàng ☕
 
-### Quán bar kiểu Ý
+### Quán cà phê kiểu Ý
 Ở nhiều quán, bạn **trả tiền ở quầy thu ngân trước** (*la cassa*), lấy biên lai (*lo scontrino*), rồi đưa biên lai ở quầy (*il banco*) để lấy cà phê. Uống đứng tại quầy thường rẻ hơn ngồi bàn.
 
 ### Gọi món
@@ -657,7 +657,7 @@ unit(6, "unit-t", "ut", "Al bar e in negozio", "Gọi cà phê ở quầy, mua h
 ### Lịch sự
 Với người bán, dùng **Lei**. Khi ra về nói *Arrivederci!* hoặc *Grazie, buona giornata!*
 """, [("il conto", "🧾"), ("la cassa", "🏧"), ("lo scontrino", "🎟️"), ("il banco", "🥃")],
-     [("Ở quán bar", O("interaction.practical_needs")), ("Hội thoại: gọi cà phê", O("interaction.practical_needs")), ("Ở cửa hàng", O("interaction.practical_needs")), ("Hội thoại: ở chợ", O("interaction.practical_needs"))])
+     [("Ở quán cà phê", O("interaction.practical_needs")), ("Hội thoại: gọi cà phê", O("interaction.practical_needs")), ("Ở cửa hàng", O("interaction.practical_needs")), ("Hội thoại: ở chợ", O("interaction.practical_needs"))])
 
 unit(6, "unit-u", "uu", "Dov'è…?", "Hỏi đường, đi tàu, đến hiệu thuốc.", """
 ## Hỏi đường 🧭

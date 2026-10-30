@@ -60,7 +60,7 @@ L = {
  "ug-l0": [RC("ug_orario", "Thứ Bảy tiệm bánh mở cửa đến mấy giờ?", "12 giờ", ["18 giờ", "7 giờ", "đóng cả ngày"]), RC("ug_orario", "Ngày nào tiệm bánh đóng cửa?", "Chủ nhật", ["thứ Hai", "thứ Bảy", "thứ Sáu"]),
            RC("ug_orario", "Từ thứ Hai đến thứ Sáu tiệm mở lúc mấy giờ?", "7 giờ", ["12 giờ", "18 giờ", "9 giờ"]), T2N("la domenica", "Chủ nhật", ["thứ Bảy", "thứ Hai", "thứ Sáu"]),
            MATCH([("il lunedì", "thứ Hai"), ("il venerdì", "thứ Sáu"), ("il sabato", "thứ Bảy"), ("la domenica", "Chủ nhật")])],
- "ug-l1": [RC("ug_messaggio_anna", "Anna đang ở đâu?", "ở quán bar gần nhà ga", ["ở nhà", "ở bưu điện", "ở tiệm bánh"]), RC("ug_messaggio_anna", "Anna hỏi Luca điều gì?", "Luca có đến lúc ba giờ không", ["Luca có tiền không", "Luca sống ở đâu", "Luca tên là gì"]),
+ "ug-l1": [RC("ug_messaggio_anna", "Anna đang ở đâu?", "ở quán cà phê gần nhà ga", ["ở nhà", "ở bưu điện", "ở tiệm bánh"]), RC("ug_messaggio_anna", "Anna hỏi Luca điều gì?", "Luca có đến lúc ba giờ không", ["Luca có tiền không", "Luca sống ở đâu", "Luca tên là gì"]),
            RC("ug_messaggio_anna", "Ai viết tin nhắn?", "Anna", ["Luca", "mẹ của Luca", "người bán hàng"]), T2N("il messaggio", "tin nhắn", ["cửa hàng", "bưu điện", "lối vào"]), LISTEN("il messaggio", ["il negozio", "la posta", "l'uscita"])],
  "ug-l2": [RC("ug_cartelli", "Bạn muốn đi ra khỏi nhà ga. Bạn đi theo biển nào?", "Uscita", ["Ingresso", "Bagno: a sinistra", "Vietato fumare"]), RC("ug_cartelli", "Nhà vệ sinh ở đâu?", "bên trái", ["bên phải", "ở lối vào", "không có"]),
            RC("ug_cartelli", "Biển nào cấm hút thuốc?", "Vietato fumare", ["Ingresso", "Uscita", "Bagno: a sinistra"]), T2N("l'ingresso", "lối vào", ["tin nhắn", "cửa hàng", "lối ra"]),

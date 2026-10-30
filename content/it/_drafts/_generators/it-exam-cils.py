@@ -88,7 +88,7 @@ A2 = {
  "a": ([("A", "Pronto, Giulia? Sono Marco. Sei libera sabato?"), ("B", "Ciao Marco! Sabato mattina lavoro, ma il pomeriggio sono libera."), ("A", "Bene! C'è la festa di Luca alle cinque, a casa sua."), ("B", "Che bello! Devo portare qualcosa?"), ("A", "Sì, porta una torta. Io porto la frutta."), ("B", "Va bene. Vengo in autobus. Ci vediamo lì!")],
        ["la festa", "la torta", "la frutta", "l'autobus"],
        [("Giulia làm việc khi nào?", "Sáng thứ Bảy", ["Chiều thứ Bảy", "Chủ nhật"]), ("Bữa tiệc của ai?", "Của Luca", ["Của Marco", "Của Giulia"]), ("Bữa tiệc lúc mấy giờ?", "5 giờ", ["4 giờ", "7 giờ"]),
-        ("Bữa tiệc ở đâu?", "Ở nhà Luca", ["Ở quán bar", "Ở nhà Giulia"]), ("Giulia mang gì?", "Bánh ngọt", ["Trái cây", "Rượu vang"]), ("Giulia đến bằng gì?", "Xe buýt", ["Xe hơi", "Đi bộ"])]),
+        ("Bữa tiệc ở đâu?", "Ở nhà Luca", ["Ở quán cà phê", "Ở nhà Giulia"]), ("Giulia mang gì?", "Bánh ngọt", ["Trái cây", "Rượu vang"]), ("Giulia đến bằng gì?", "Xe buýt", ["Xe hơi", "Đi bộ"])]),
  "b": ([("A", "Buongiorno, vorrei prenotare una camera per due notti."), ("B", "Buongiorno. Per quando?"), ("A", "Per venerdì e sabato."), ("B", "Va bene. Una camera singola costa sessanta euro a notte."), ("A", "C'è la colazione?"), ("B", "Sì, dalle sette alle dieci. Il Suo nome, per favore?"), ("A", "Pham. Arrivo alle otto di sera.")],
        ["la camera", "la colazione", "il venerdì", "il sabato"],
        [("Khách muốn đặt phòng mấy đêm?", "Hai đêm", ["Một đêm", "Ba đêm"]), ("Khách ở những ngày nào?", "Thứ Sáu và thứ Bảy", ["Thứ Bảy và Chủ nhật", "Thứ Năm và thứ Sáu"]), ("Phòng đơn giá bao nhiêu một đêm?", "60 euro", ["16 euro", "70 euro"]),
@@ -112,14 +112,14 @@ L1 = {
        [("Trường ở đâu?", "Gần nhà ga", ["Gần bảo tàng", "Ở quảng trường"]), ("Khóa học bắt đầu tháng nào?", "Tháng Chín", ["Tháng Mười Hai", "Tháng Một"]), ("Buổi học vào những ngày nào?", "Thứ Hai và thứ Năm", ["Thứ Ba và thứ Sáu", "Mọi ngày"]), ("Khóa học giá bao nhiêu?", "100 euro", ["10 euro", "60 euro"])],
        [("iscriversi", "đăng ký")]),
  "b": (["Il museo della città è aperto tutti i giorni tranne il lunedì, dalle nove alle diciotto. Il biglietto costa otto euro; per gli studenti costa quattro euro. La domenica mattina i bambini entrano gratis. Vicino all'ingresso c'è un piccolo bar. Non si può mangiare nelle sale."],
-       [("Bảo tàng đóng cửa ngày nào?", "Thứ Hai", ["Chủ nhật", "Thứ Sáu"]), ("Vé cho sinh viên giá bao nhiêu?", "4 euro", ["8 euro", "9 euro"]), ("Khi nào trẻ em vào miễn phí?", "Sáng Chủ nhật", ["Chiều thứ Bảy", "Mọi ngày"]), ("Quán bar ở đâu?", "Gần lối vào", ["Trong phòng trưng bày", "Ngoài quảng trường"])],
+       [("Bảo tàng đóng cửa ngày nào?", "Thứ Hai", ["Chủ nhật", "Thứ Sáu"]), ("Vé cho sinh viên giá bao nhiêu?", "4 euro", ["8 euro", "9 euro"]), ("Khi nào trẻ em vào miễn phí?", "Sáng Chủ nhật", ["Chiều thứ Bảy", "Mọi ngày"]), ("Quán cà phê ở đâu?", "Gần lối vào", ["Trong phòng trưng bày", "Ngoài quảng trường"])],
        [("tranne", "trừ"), ("gratis", "miễn phí"), ("sale", "các phòng")]),
 }
 # Prova 2: four short texts, one true statement of three.
 L2 = {
  "a": [
   (["Cerco una camera in centro per una studentessa. Massimo 300 euro al mese. Telefonare la sera: 333 445566."], "Câu nào đúng?", "Người đăng tìm một phòng ở trung tâm.", ["Phòng này giá 300 euro một tuần.", "Có thể gọi điện vào buổi sáng."]),
-  (["Bar Sport: oggi chiuso per ferie. Riapriamo lunedì alle 7:00."], "Câu nào đúng?", "Hôm nay quán bar đóng cửa.", ["Quán bar mở cửa vào thứ Hai lúc 8 giờ.", "Quán bar bán đồ thể thao."]),
+  (["Bar Sport: oggi chiuso per ferie. Riapriamo lunedì alle 7:00."], "Câu nào đúng?", "Hôm nay quán cà phê đóng cửa.", ["Quán cà phê mở cửa vào thứ Hai lúc 8 giờ.", "Quán cà phê bán đồ thể thao."]),
   (["Ciao mamma, torno tardi: ho un esame alle quattro. La cena la preparo io domani. Un bacio, Lan"], "Câu nào đúng?", "Hôm nay Lan về muộn.", ["Lan chuẩn bị bữa tối hôm nay.", "Bài thi vào buổi sáng."]),
   (["Vendo bicicletta nera, quasi nuova, 80 euro. Scrivere a Paolo: paolo@posta.it"], "Câu nào đúng?", "Paolo bán một chiếc xe đạp.", ["Chiếc xe đạp đã rất cũ.", "Muốn mua thì phải gọi điện."]),
  ],

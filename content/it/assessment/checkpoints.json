@@ -1196,16 +1196,16 @@
             "prompt": "Oggi il bar è chiuso.",
             "options": [
               {
-                "text": "Hôm nay quán bar mở cửa."
+                "text": "Hôm nay quán cà phê mở cửa."
               },
               {
-                "text": "Ngày mai quán bar đóng cửa."
+                "text": "Ngày mai quán cà phê đóng cửa."
               },
               {
-                "text": "Quán bar ở cạnh nhà ga."
+                "text": "Quán cà phê ở cạnh nhà ga."
               },
               {
-                "text": "Hôm nay quán bar đóng cửa."
+                "text": "Hôm nay quán cà phê đóng cửa."
               }
             ],
             "correct": 3
@@ -3204,7 +3204,7 @@
             "id": "it-cpx-cap-write_note_bar",
             "writingTaskId": "it.write.a1cap_note_bar",
             "writingMode": "guided",
-            "instruction": "Hãy nhắn cho Ben: hẹn gặp ở quán bar vào thứ Sáu, rồi chào kết.",
+            "instruction": "Hãy nhắn cho Ben: hẹn gặp ở quán cà phê vào thứ Sáu, rồi chào kết.",
             "cueFacts": [
               {
                 "label": "Gửi",
@@ -3223,7 +3223,7 @@
               "requiredSlots": [
                 {
                   "id": "place",
-                  "description": "quán bar",
+                  "description": "quán cà phê",
                   "variants": [
                     "bar"
                   ],

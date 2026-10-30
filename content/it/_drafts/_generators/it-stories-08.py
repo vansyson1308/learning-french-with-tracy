@@ -46,7 +46,7 @@ S.append(story("il_biscotto_dolce", "A1-2", "Un biscotto sul treno",
   ("B", "Mi dispiace, signora. Dove abitano?", "Cháu rất tiếc. Họ sống ở đâu ạ?", "I am sorry, madam. Where do they live?"),
   ("A", "A Milano. Ci vado a Natale.", "Ở Milano. Giáng sinh tôi đến đó.", "In Milan. I go there at Christmas."),
   ("N", "Il treno arriva a Napoli alle tre.", "Tàu đến Napoli lúc ba giờ.", "The train arrives in Naples at three."),
-  ("A", "Ci vediamo a Napoli? Conosco un bar molto buono.", "Mình gặp lại ở Napoli nhé? Tôi biết một quán bar rất ngon.", "Shall we meet in Naples? I know a very good bar."),
+  ("A", "Ci vediamo a Napoli? Conosco un bar molto buono.", "Mình gặp lại ở Napoli nhé? Tôi biết một quán cà phê rất ngon.", "Shall we meet in Naples? I know a very good bar."),
   ("B", "Grazie, ma oggi ho il treno per Salerno.", "Cảm ơn bà, nhưng hôm nay cháu đi tàu đến Salerno.", "Thank you, but today I have the train to Salerno."),
   ("A", "Allora un'altra volta. Ecco il mio numero.", "Vậy để lần khác. Đây là số của tôi.", "Another time, then. Here is my number."),
   ("B", "Grazie, signora! Buona giornata e a presto!", "Cảm ơn bà! Chúc bà một ngày tốt lành và hẹn gặp lại!", "Thank you, madam! Have a good day and see you soon!"),
@@ -57,7 +57,7 @@ S.append(story("il_biscotto_dolce", "A1-2", "Un biscotto sul treno",
  names=["Napoli", "Hanoi", "Milano", "Salerno"], token_map={"lei": "it:w:lei-pronoun"}))
 EXTRA = {
  "la_nostra_casa": [("N", "Il giorno dopo vanno tutti al mercato e comprano la frutta.", "Hôm sau cả nhà đi chợ và mua trái cây.", "The next day they all go to the market and buy fruit."), ("N", "La vacanza comincia bene.", "Kỳ nghỉ bắt đầu tốt đẹp.", "The holiday begins well.")],
- "il_biscotto_dolce": [("N", "La sera la signorina scrive un messaggio alla signora.", "Tối cô gái nhắn tin cho bà.", "In the evening the young woman writes a message to the lady."), ("N", "Il sabato dopo vanno insieme al bar.", "Thứ Bảy sau họ cùng đi quán bar.", "The following Saturday they go to the bar together.")],
+ "il_biscotto_dolce": [("N", "La sera la signorina scrive un messaggio alla signora.", "Tối cô gái nhắn tin cho bà.", "In the evening the young woman writes a message to the lady."), ("N", "Il sabato dopo vanno insieme al bar.", "Thứ Bảy sau họ cùng đi quán cà phê.", "The following Saturday they go to the bar together.")],
 }
 for st in S:
     for sp, it, vi, en in EXTRA.get(st["id"].split(".")[-1], []):

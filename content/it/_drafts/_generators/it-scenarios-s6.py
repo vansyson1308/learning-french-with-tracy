@@ -17,7 +17,7 @@ SC = [
   [("Buongiorno! Come si chiama?", "Qual è il Suo nome?", "Hãy nói tên của bạn: Minh.", "give_name", ["Mi chiamo Minh.", "Il mio nome è Minh.", "Sono Minh.", "Minh."], [["minh"]]),
    ("Piacere! Di dov'è?", "Da dove viene?", "Hãy nói bạn đến từ Việt Nam.", "give_origin", ["Sono vietnamita.", "Vengo dal Vietnam.", "Sono del Vietnam.", "Dal Vietnam."], [["vietnam", "vietnamita"]])],
   "Benvenuto in Italia!", "Non importa. A dopo!"),
- ("al_bar", "transaction", PRAC, "Ở quán bar", "Gọi một ly cà phê và một cái bánh sừng bò, rồi trả tiền.",
+ ("al_bar", "transaction", PRAC, "Ở quán cà phê", "Gọi một ly cà phê và một cái bánh sừng bò, rồi trả tiền.",
   [("Buongiorno! Cosa desidera?", "Cosa prende?", "Hãy gọi một ly cà phê.", "order_coffee", ["Un caffè, per favore.", "Vorrei un caffè, per favore.", "Prendo un caffè."], [["caffè", "caffe"]]),
    ("Altro?", "Desidera altro?", "Hãy gọi thêm một cái bánh sừng bò.", "order_croissant", ["Un cornetto, per favore.", "E un cornetto, per favore.", "Sì, un cornetto."], [["cornetto"]]),
    ("Sono tre euro.", "Tre euro, per favore.", "Hãy đưa tiền và nói một câu lịch sự.", "pay", ["Ecco, grazie.", "Ecco a Lei.", "Ecco tre euro.", "Grazie!"], [["ecco", "grazie"]])],

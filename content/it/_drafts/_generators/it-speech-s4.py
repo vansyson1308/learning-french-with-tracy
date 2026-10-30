@@ -14,7 +14,7 @@ FAM = {"k": "formulaic_exchange", "l": "self_introduction", "m": "information_gi
 ITEMS = {
  "k": [
   ("rep_ciao", "repetition", None, "Ciao!", ["Ciao"], "Chào bạn!", None, None),
-  ("greet_morning", "situation_prompt", "Buổi sáng, bạn bước vào một quán bar. Hãy chào người bán hàng.", "Buongiorno!", ["Buongiorno", "Salve", "Buongiorno a tutti"], "Xin chào!", None, None),
+  ("greet_morning", "situation_prompt", "Buổi sáng, bạn bước vào một quán cà phê. Hãy chào người bán hàng.", "Buongiorno!", ["Buongiorno", "Salve", "Buongiorno a tutti"], "Xin chào!", None, None),
   ("rep_grazie", "repetition", None, "Grazie mille!", ["Grazie mille", "Grazie"], "Cảm ơn nhiều!", None, None),
   ("thank", "situation_prompt", "Người bán đưa bạn ly cà phê. Hãy cảm ơn.", "Grazie!", ["Grazie", "Grazie mille", "Grazie tante"], "Cảm ơn!", None, None),
   ("rep_buonasera", "repetition", None, "Buonasera!", ["Buonasera"], "Chào buổi tối!", None, None),

@@ -108,9 +108,11 @@ itself.
   `content/it/REVIEW-TIER1-vi.md` and a hired Italian teacher checks
   `content/it/REVIEW-TIER1-it.md`. The rest is covered by the validators, the Italian
   gates (articles by gender and sound, plurals, elision, auxiliary, tu/Lei register,
-  the double-consonant drill) and the LanguageTool gate. The CILS A1 track models the
-  A1 standard module only, and Speaking is reduced to guided questions with the app
-  as examiner.
+  the double-consonant drill) and the LanguageTool gate. An AI-simulated native review
+  ran per D-10 (`content/it/REVIEW-AI.md`, independent audit 0.3 % P0+P1), which is not
+  a native speaker's review; the owner's acceptance `ai-review:it-vi` is pending. The
+  CILS A1 track models the A1 standard module only, and Speaking is reduced to guided
+  questions with the app as examiner.
 - **`de-vi` (German for Vietnamese speakers, P3d(de)) ships unreviewed**, on the
   same terms as `es-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/de-vi.profile.json`. The owner signs
