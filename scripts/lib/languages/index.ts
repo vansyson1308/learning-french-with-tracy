@@ -11,6 +11,7 @@ import { de } from "./de";
 import { es } from "./es";
 import { fr } from "./fr";
 import { genericPlugin } from "./generic";
+import { it } from "./it";
 import type { BuildLanguage, BuildLanguagePlugin } from "./types";
 import { xx } from "./xx";
 
@@ -38,7 +39,7 @@ export function buildLanguage(code: string): BuildLanguage {
   return { code, recognitionLocale: code, ttsLocale: code, script: "latin", flagAsset: code };
 }
 
-const PLUGINS: Record<string, BuildLanguagePlugin> = { fr, es, de, xx };
+const PLUGINS: Record<string, BuildLanguagePlugin> = { fr, es, de, it, xx };
 const GENERIC = new Map<string, BuildLanguagePlugin>();
 
 /** The build plugin for a target language (generic defaults for every language without its own). */

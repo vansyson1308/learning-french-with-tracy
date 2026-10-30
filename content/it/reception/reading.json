@@ -1,0 +1,1124 @@
+{
+  "version": 1,
+  "language": "it",
+  "readings": [
+    {
+      "id": "it.read.ug_orario",
+      "kind": "notice",
+      "title": "Orario del negozio",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Panetteria Rossi"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Da lunedì a venerdì: 7:00–18:00."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sabato: 7:00–12:00."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Domenica: chiuso."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "it:w:panetteria",
+        "it:w:rosso",
+        "it:w:lunedi",
+        "it:w:venerdi",
+        "it:w:sabato",
+        "it:w:domenica",
+        "it:w:chiuso"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "panetteria",
+          "gloss": {
+            "vi": "tiệm bánh mì",
+            "en": "bakery"
+          }
+        },
+        {
+          "surface": "chiuso",
+          "gloss": {
+            "vi": "đóng cửa",
+            "en": "closed"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.ug_messaggio_anna",
+      "kind": "message",
+      "title": "Un messaggio di Anna",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ciao Luca,"
+        },
+        {
+          "kind": "paragraph",
+          "text": "oggi sono al bar vicino alla stazione. Vieni alle tre? Ti aspetto."
+        },
+        {
+          "kind": "paragraph",
+          "text": "A presto, Anna"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "it:w:ciao",
+        "it:w:oggi",
+        "it:w:essere",
+        "it:w:bar",
+        "it:w:vicino",
+        "it:w:stazione",
+        "it:w:venire",
+        "it:w:aspettare",
+        "it:w:presto",
+        "it:w:anno"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "Ti aspetto",
+          "gloss": {
+            "vi": "mình đợi bạn",
+            "en": "I am waiting for you"
+          }
+        },
+        {
+          "surface": "A presto",
+          "gloss": {
+            "vi": "hẹn sớm gặp lại",
+            "en": "see you soon"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.ug_cartelli",
+      "kind": "notice",
+      "title": "Cartelli alla stazione",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ingresso"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Uscita"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vietato fumare"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bagno: a sinistra"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "it:w:ingresso",
+        "it:w:uscita",
+        "it:w:bagno",
+        "it:w:sinistra"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "Ingresso",
+          "gloss": {
+            "vi": "lối vào",
+            "en": "entrance"
+          }
+        },
+        {
+          "surface": "Uscita",
+          "gloss": {
+            "vi": "lối ra",
+            "en": "exit"
+          }
+        },
+        {
+          "surface": "Vietato fumare",
+          "gloss": {
+            "vi": "cấm hút thuốc",
+            "en": "no smoking"
+          }
+        },
+        {
+          "surface": "Bagno",
+          "gloss": {
+            "vi": "nhà vệ sinh",
+            "en": "toilet"
+          }
+        },
+        {
+          "surface": "a sinistra",
+          "gloss": {
+            "vi": "bên trái",
+            "en": "on the left"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.ug_posta",
+      "kind": "notice",
+      "title": "La posta",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Oggi la posta è chiusa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Domani apriamo alle 9:00."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Grazie!"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "it:w:oggi",
+        "it:w:posta",
+        "it:w:essere",
+        "it:w:chiuso",
+        "it:w:domani",
+        "it:w:aprire",
+        "it:w:grazie"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "chiusa",
+          "gloss": {
+            "vi": "đóng cửa",
+            "en": "closed"
+          }
+        },
+        {
+          "surface": "apriamo",
+          "gloss": {
+            "vi": "chúng tôi mở cửa",
+            "en": "we open"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.uj_mia",
+      "kind": "narrative",
+      "title": "Mia va al lavoro",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Mia abita a Bologna. Il lunedì prende l'autobus per andare al lavoro. Il lavoro comincia alle otto. La sera cucina con suo fratello."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "it:w:abitare",
+        "it:w:lunedi",
+        "it:w:prendere",
+        "it:w:autobus",
+        "it:w:andare",
+        "it:w:lavoro",
+        "it:w:cominciare",
+        "it:w:sera",
+        "it:w:cucina",
+        "it:w:fratello"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "comincia",
+          "gloss": {
+            "vi": "bắt đầu",
+            "en": "begins"
+          }
+        },
+        {
+          "surface": "cucina",
+          "gloss": {
+            "vi": "nấu ăn",
+            "en": "cooks"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.uj_paolo",
+      "kind": "narrative",
+      "title": "Il sabato di Paolo",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il sabato Paolo si alza tardi. Poi beve un caffè e mangia un cornetto. Il pomeriggio gioca a calcio con gli amici. La sera guarda un film."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "it:w:sabato",
+        "it:w:tardi",
+        "it:w:poi",
+        "it:w:bere",
+        "it:w:caffe",
+        "it:w:mangiare",
+        "it:w:cornetto",
+        "it:w:pomeriggio",
+        "it:w:gioco",
+        "it:w:calcio",
+        "it:w:amico",
+        "it:w:sera",
+        "it:w:guardare",
+        "it:w:film"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "si alza",
+          "gloss": {
+            "vi": "thức dậy",
+            "en": "gets up"
+          }
+        },
+        {
+          "surface": "tardi",
+          "gloss": {
+            "vi": "muộn",
+            "en": "late"
+          }
+        },
+        {
+          "surface": "pomeriggio",
+          "gloss": {
+            "vi": "buổi chiều",
+            "en": "afternoon"
+          }
+        },
+        {
+          "surface": "calcio",
+          "gloss": {
+            "vi": "bóng đá",
+            "en": "football"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.uj_stazione",
+      "kind": "description",
+      "title": "La stazione di mattina",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Sono le sette. Alla stazione c'è molta gente. Un treno arriva, un treno parte. Una donna compra un biglietto. Un bambino beve il latte."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "it:w:essere",
+        "it:w:stazione",
+        "it:w:gente",
+        "it:w:treno",
+        "it:w:arrivare",
+        "it:w:partire",
+        "it:w:donna",
+        "it:w:comprare",
+        "it:w:biglietto",
+        "it:w:bambino",
+        "it:w:bere",
+        "it:w:latte"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "molta gente",
+          "gloss": {
+            "vi": "rất đông người",
+            "en": "many people"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.uj_domenica",
+      "kind": "narrative",
+      "title": "La domenica in famiglia",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La domenica la famiglia è insieme. La madre prepara la colazione. Poi tutti vanno al parco. Il cane gioca nell'acqua."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "it:w:domenica",
+        "it:w:famiglia",
+        "it:w:essere",
+        "it:w:insieme",
+        "it:w:madre",
+        "it:w:preparare",
+        "it:w:colazione",
+        "it:w:poi",
+        "it:w:andare",
+        "it:w:parco",
+        "it:w:cane",
+        "it:w:gioco",
+        "it:w:acqua"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "prepara",
+          "gloss": {
+            "vi": "chuẩn bị",
+            "en": "prepares"
+          }
+        },
+        {
+          "surface": "tutti",
+          "gloss": {
+            "vi": "tất cả mọi người",
+            "en": "everyone"
+          }
+        },
+        {
+          "surface": "parco",
+          "gloss": {
+            "vi": "công viên",
+            "en": "park"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 4,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.cp3_messaggio_luca",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ciao Mia! Domenica vado a Firenze in treno. Il treno parte alle otto. Vieni con me? Luca"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "it:w:domenica",
+        "it:w:treno"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.cp3_cartello_biblioteca",
+      "kind": "notice",
+      "title": "Orario",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Biblioteca comunale"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Da lunedì a venerdì: 9:00–19:00"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sabato: 10:00–14:00"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Domenica: chiuso"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "it:w:biblioteca",
+        "it:w:lunedi",
+        "it:w:venerdi",
+        "it:w:sabato",
+        "it:w:domenica"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "comunale",
+          "gloss": {
+            "vi": "của thành phố",
+            "en": "of the city"
+          }
+        },
+        {
+          "surface": "chiuso",
+          "gloss": {
+            "vi": "đóng cửa",
+            "en": "closed"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.cp3_testo_anna",
+      "kind": "description",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Mi chiamo Anna. Ho trent'anni e abito a Bologna. Ho due figli e un gatto. Il fine settimana gioco a tennis."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "it:w:anno",
+        "it:w:abitare",
+        "it:w:gatto",
+        "it:w:giocare"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "fine settimana",
+          "gloss": {
+            "vi": "cuối tuần",
+            "en": "the weekend"
+          }
+        },
+        {
+          "surface": "tennis",
+          "gloss": {
+            "vi": "quần vợt",
+            "en": "tennis"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.cp3_testo_paolo",
+      "kind": "narrative",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Paolo si alza alle sei. Beve un caffè e poi prende l'autobus per andare al lavoro. Lavora in una panetteria."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [
+        "it:w:caffe",
+        "it:w:autobus",
+        "it:w:lavoro",
+        "it:w:lavorare"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "panetteria",
+          "gloss": {
+            "vi": "tiệm bánh mì",
+            "en": "bakery"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.a1cap_biglietto_papa",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ciao ragazzi! Sono al supermercato. Torno a casa alle sei. La cena è nel frigorifero. Papà"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "it:w:supermercato",
+        "it:w:frigorifero"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.a1cap_invito",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Cara Mai, venerdì è il mio compleanno! La festa comincia alle sette a casa mia. Porta la musica, per favore! Lisa"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "it:w:venerdi",
+        "it:w:compleanno",
+        "it:w:musica"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.pl_cartello_bar",
+      "kind": "notice",
+      "title": "Orario",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Bar Centrale"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Da lunedì a sabato: 8:00–18:00"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Domenica: chiuso"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [
+        "it:w:lunedi",
+        "it:w:sabato",
+        "it:w:domenica"
+      ],
+      "supportGlossary": [
+        {
+          "surface": "chiuso",
+          "gloss": {
+            "vi": "đóng cửa",
+            "en": "closed"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.pl_messaggio",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ciao Luca! Domani sera mangiamo al ristorante. Vieni anche tu? Lena"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [
+        "it:w:ristorante"
+      ],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      }
+    },
+    {
+      "id": "it.read.cils_a_l1",
+      "kind": "description",
+      "title": "Informazioni",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "La scuola di italiano Dante è in via Roma 12, vicino alla stazione. I corsi per stranieri cominciano a settembre e finiscono a dicembre. Le lezioni sono il lunedì e il giovedì, dalle sei alle otto di sera. Un corso costa cento euro. Per iscriversi, scrivete un'email o venite a scuola la mattina."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [
+        {
+          "surface": "iscriversi",
+          "gloss": {
+            "vi": "đăng ký",
+            "en": "to enrol"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l2_01",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Cerco una camera in centro per una studentessa. Massimo 300 euro al mese. Telefonare la sera: 333 445566."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l2_02",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Bar Sport: oggi chiuso per ferie. Riapriamo lunedì alle 7:00."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l2_03",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ciao mamma, torno tardi: ho un esame alle quattro. La cena la preparo io domani. Un bacio, Lan"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l2_04",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Vendo bicicletta nera, quasi nuova, 80 euro. Scrivere a Paolo: paolo@posta.it"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l3_01",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Vado al supermercato perché …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l3_02",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ho molto sonno, quindi …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l3_03",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il treno è in ritardo e …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_a_l3_04",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Mi piace il mare, ma …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l1",
+      "kind": "description",
+      "title": "Informazioni",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Il museo della città è aperto tutti i giorni tranne il lunedì, dalle nove alle diciotto. Il biglietto costa otto euro; per gli studenti costa quattro euro. La domenica mattina i bambini entrano gratis. Vicino all'ingresso c'è un piccolo bar. Non si può mangiare nelle sale."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_texts"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [
+        {
+          "surface": "tranne",
+          "gloss": {
+            "vi": "trừ",
+            "en": "except"
+          }
+        },
+        {
+          "surface": "gratis",
+          "gloss": {
+            "vi": "miễn phí",
+            "en": "free"
+          }
+        },
+        {
+          "surface": "sale",
+          "gloss": {
+            "vi": "các phòng",
+            "en": "the rooms"
+          }
+        }
+      ],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 3,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l2_01",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Farmacia Centrale: aperta anche la domenica, dalle 9:00 alle 13:00."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l2_02",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Cercasi cameriere per ristorante in piazza. Sabato e domenica sera. Parlare con il signor Conti."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l2_03",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Caro Marco, il treno arriva alle otto e dieci, binario cinque. Ti aspetto alla stazione. Hoa"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l2_04",
+      "kind": "notice",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Corso di cucina italiana: ogni martedì sera. Portare un coltello e una bottiglia d'olio."
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.notices_info"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 2,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l3_01",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Oggi non lavoro perché …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l3_02",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Fa freddo, quindi …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l3_03",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Abito a Roma, ma …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    },
+    {
+      "id": "it.read.cils_b_l3_04",
+      "kind": "message",
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ho fame e …"
+        }
+      ],
+      "objectiveRefs": [
+        "it.obj.reading.short_messages"
+      ],
+      "lexemeRefs": [],
+      "supportGlossary": [],
+      "sourceRef": "original-project",
+      "authoringSpec": {
+        "informationUnits": 1,
+        "inferenceDemand": "locate"
+      },
+      "use": "exam"
+    }
+  ]
+}

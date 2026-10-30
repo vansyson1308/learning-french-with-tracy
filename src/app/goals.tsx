@@ -16,6 +16,7 @@ import { CloseButton } from "@/components/close-button";
 import {
   allObjectives,
   attainmentPolicy,
+  capstoneCheckpointId,
   courseClaimableAt,
   objectiveFor,
 } from "@/lib/assessment/content";
@@ -117,6 +118,7 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
   // P9 §45-§49: the claim split. Course claimability is a compiled fact;
   // the learner's estimate derives from their own checkpoint evidence.
   const courseReady = courseClaimableAt(courseId, "A1");
+  const capstoneId = capstoneCheckpointId(courseId);
   // Device speech capability is a fact about the device, shown as such
   // (Phase 10 §15): a speech domain with no evidence on a device that
   // cannot score speech reads "technical_unavailable", never a verdict.
@@ -222,9 +224,9 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
                 ))}
             </View>
           ) : null}
-          {courseReady ? (
+          {courseReady && capstoneId ? (
             <Pressable
-              onPress={() => router.push("/checkpoint/fr.checkpoint.a1-capstone")}
+              onPress={() => router.push(`/checkpoint/${capstoneId}`)}
               accessibilityRole="button"
               accessibilityLabel={t("goals.takeA1Label")}
               style={styles.linkRow}

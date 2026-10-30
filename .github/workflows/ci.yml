@@ -146,6 +146,8 @@ jobs:
         run: bun scripts/languagetool.ts --course es-vi --server http://localhost:8081
       - name: LanguageTool gate (de-vi)
         run: bun scripts/languagetool.ts --course de-vi --server http://localhost:8081 --json "$RUNNER_TEMP/lt-de-vi.json"
+      - name: LanguageTool gate (it-vi)
+        run: bun scripts/languagetool.ts --course it-vi --server http://localhost:8081 --json "$RUNNER_TEMP/lt-it-vi.json"
       # French: the graded stories only (content/fr/stories/stories.json, shared by fr-en and
       # fr-vi). The rest of the French course is frozen byte-identical (CLAUDE.md §4), so
       # its findings could only be allowed, never fixed; the stories are the French text
@@ -161,6 +163,13 @@ jobs:
         with:
           name: languagetool-de-vi
           path: ${{ runner.temp }}/lt-de-vi.json
+          if-no-files-found: ignore
+      - name: Upload the LanguageTool findings (it-vi)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: languagetool-it-vi
+          path: ${{ runner.temp }}/lt-it-vi.json
           if-no-files-found: ignore
 
   export-size:

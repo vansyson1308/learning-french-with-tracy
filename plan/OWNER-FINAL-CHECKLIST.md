@@ -18,10 +18,19 @@ Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, l
 - ☐ **Chấp nhận duyệt AI** `ai-review:fr-vi` — đọc `content/fr/REVIEW-AI.md` (phần tiếng Pháp giữ nguyên bản fr-en).
 - ☐ **Chấp nhận duyệt AI** `ai-review:es-vi` — đọc `content/es/REVIEW-AI.md`.
 - ☐ **Chấp nhận duyệt AI** `ai-review:de-vi` — đọc `content/de/REVIEW-AI.md` (sau PR ai-review cho de-vi).
+- ☐ **Chấp nhận duyệt AI** `ai-review:it-vi` — đọc `content/it/REVIEW-AI.md`.
 - ☐ **Mục chưa chắc** (không chặn việc gì): xem phần "Chưa chắc" trong từng `REVIEW-AI.md` và quyết định giữ hay sửa; báo Claude.
-- ☐ **Anh tự kiểm tra (tuỳ chọn)**: anh đọc tiếng Việt bản ngữ, tiếng Pháp trình độ đại học, tiếng Anh C1 — có thể đọc lướt `content/fr/REVIEW-vi.md` (tiếng Việt của fr-vi), mọi văn bản tiếng Việt trong `REVIEW-TIER1-vi.md` của es/de, và phần tiếng Anh của en-vi khi có.
+- ☐ **Anh tự kiểm tra (tuỳ chọn)**: anh đọc tiếng Việt bản ngữ, tiếng Pháp trình độ đại học, tiếng Anh C1 — có thể đọc lướt `content/fr/REVIEW-vi.md` (tiếng Việt của fr-vi), mọi văn bản tiếng Việt trong `REVIEW-TIER1-vi.md` của es/de/it, và phần tiếng Anh của en-vi khi có.
 - ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) có bước duyệt AI tích hợp sẵn trong P3d; Claude thêm dòng `ai-review:<khoá>` vào đây khi khoá đó xong.
 - ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta** (chưa đánh ☑ dòng chấp nhận), ghi rõ ở đây khoá nào.
+
+### B1. Nguồn gốc giọng Piper: cần anh quyết định, nên hỏi luật sư (phát hiện 31/10/2026)
+Gate giấy phép mới chỉ xét dataset của giọng. Model card cho thấy ba giọng đang dùng được tinh chỉnh (finetune) từ một giọng tiếng Anh có dataset hạn chế hơn. Việc hạn chế đó có áp dụng cho giọng tinh chỉnh và âm thanh sinh ra hay không là câu hỏi pháp lý, Claude không kết luận. Chưa đổi gì trong app.
+- `fr_FR-siwis-medium` (fr-en, fr-vi) và `de_DE-thorsten-high` (de-en, de-vi): dataset CC-BY-4.0 và CC0, tinh chỉnh từ Piper `lessac`, dataset Blizzard 2013 theo "Research Licence".
+- `de_DE-kerstin-low` (de-en, de-vi): dataset CC0, tinh chỉnh từ Piper `ryan`, dataset CC BY-NC-SA 4.0.
+- `pt_PT-tugão-medium` (dự kiến cho pt-vi): cũng tinh chỉnh từ `lessac`.
+- ☐ **Quyết định:** giữ các giọng này, hay thay bằng giọng có nguồn gốc sạch hơn? Thay giọng tiếng Pháp sẽ phá quy tắc fr-en giữ nguyên từng byte và cần chạy lại âm thanh, nên cần lệnh rõ của anh.
+- ☐ **Thư cần gửi dưới tên anh (tuỳ chọn):** logus2k (`kokoro_tts_eu_pt`, hỏi tên và giấy phép của corpus, cho giọng pt-PT thứ hai); caple@letras.ulisboa.pt (đề mẫu và số câu của ACESSO).
 
 ## C. Nguồn dữ liệu chỉ tải tay được (tuỳ chọn, không chặn công việc)
 - ☐ Danh sách từ học tiếng Hàn NIKL 한국어 학습용 어휘 목록 (KOGL Type 1) — korean.go.kr từ chối tải tự động; đặt file vào `sources/ko/nikl-learner-list.tsv` hoặc gửi Claude. Không có thì neo từ vựng tiếng Hàn theo tần suất. (P3a)
@@ -41,6 +50,13 @@ Kết quả lượt audio de [40918763308](https://github.com/vansyson1308/learn
 - [ ] de: nghe xem có bị méo/rè không — `de.story.die_anmeldung#12` «Ja, gern. Minh Tran.» (`assets/audio/de-reception/64c5f67d8329609d7036.opus`) — máy viết «Minitran»; nhiều khả năng chỉ là tên riêng.
 
 8 câu truyện khác mới bị chấm lệch lần đầu, chỉ để tham khảo. Đó là các câu ngắn, có tên riêng như Bello, Peter hoặc là câu cảm thán; danh sách nằm trong `content/reports/de/audio-quality.json` → `resynthesisCandidates`.
+
+- [ ] it: nghe xem có bị méo/rè không — `it-vi:Abito a Milano.` «Abito a Milano.» (`assets/audio/it/76f978a44bced7014f43.mp3`) — máy nghe thành «abitua Milan».
+- [ ] it: nghe xem có bị méo/rè không — `it-vi:Ho due figli.` «Ho due figli.» (`assets/audio/it/1d531a0849995538fe2b.mp3`) — máy nghe thành «Oduo e fede».
+- [ ] it: nghe xem có bị méo/rè không — `it-vi:Ho un libro.` «Ho un libro.» (`assets/audio/it/52d4d23da276c8f1b19e.mp3`) — máy nghe thành «Own Libref».
+- [ ] it: nghe xem có bị méo/rè không — `it-vi:Anna è arrivata ieri.` «Anna è arrivata ieri.» (`assets/audio/it/1845a8ff71e195bb1167.mp3`) — máy nghe thành «Anna è arrivata agli seri».
+- [ ] it: nghe xem có bị méo/rè không — `it.story.la_nave_di_nonno#24` «Sì, nonno. Grazie!» (`assets/audio/it-reception/831890f15630b93d15e4.mp3`) — máy nghe thành «Sino no, grazie».
+- [ ] it: nghe xem có bị méo/rè không — `it.clip.ix_cp_festa_1` «Bene! Hai una domanda?» (`assets/audio/it-reception/96fcfd091a95e4fcb647.mp3`) — máy nghe thành «Venezia una domanda».
 
 ## D. Một lượt nghiệm thu duy nhất trên điện thoại (bản v1.0 candidate)
 Thay cho mọi lượt test lẻ trước đây (gói P0 RC3, smoke P1d, kiểm chữ P2a, đi một vòng fr-vi P2b, đi một vòng es-vi P3e, checklist RC4 — RC4 đã gác lại, không test). Claude sẽ viết bản đầy đủ bằng tiếng Việt (≤ 30 phút) vào `release/V1_ACCEPTANCE.md` khi candidate sẵn sàng; khung:

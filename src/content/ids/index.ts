@@ -3,9 +3,11 @@ import type { IdRegistry } from "../../lib/learning/ids";
 import de from "./de.json";
 import es from "./es.json";
 import fr from "./fr.json";
+import it from "./it.json";
 
 export const ID_REGISTRIES: Record<string, IdRegistry> = {
   "de": de,
   "es": es,
   "fr": fr,
+  "it": it,
 };

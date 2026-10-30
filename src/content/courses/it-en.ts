@@ -2,7 +2,8 @@
 // Course bundle of it-en: pack + artifacts + bundled audio, loaded on demand (src/content/course-loaders.ts).
 import pack from "../packs/it-en.json";
 import { ARTIFACTS } from "../artifacts/it-en";
+import { AUDIO } from "../audio/it-en";
 import type { CourseBundle } from "../../lib/course-bundle";
 import type { Pack } from "../../lib/types";
 
-export const COURSE: CourseBundle = { id: "it-en", pack: pack as Pack, artifacts: ARTIFACTS, audio: {} };
+export const COURSE: CourseBundle = { id: "it-en", pack: pack as Pack, artifacts: ARTIFACTS, audio: AUDIO };

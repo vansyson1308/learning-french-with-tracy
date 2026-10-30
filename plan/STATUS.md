@@ -1,9 +1,23 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
+> **Ghi chú (2026-10-31):**
+> - **QC-2026-10-31 (D-11 đến D-14):** thứ tự mới: it-vi → `audio/voice-lineage` → emulator-boot-hardening (đã merge #55) → P4f en-vi + VSTEP → P4b → ja → ko → zh → pt → P5 → P6a → v1.0. Gate lineage đã viết trên `audio/voice-lineage` (chưa push). Ngoài ba giọng QC nêu, gate còn đụng `fr_FR-upmc`, `vi_VN-vais1000`, audio `pt-en` cũ (`faber`) và MeloTTS. **Tiếng Hàn hiện không còn giọng sạch.**
+> - **D-14:** đã rà soát engine, có 5 chỗ cản việc lên A2+ (ước lượng, màn Mục tiêu, syllabus, band truyện, giới hạn xếp lớp); chưa sửa. Lỗi link capstone trên màn Mục tiêu đã sửa trong PR it-vi.
+> - **P3d(it):** nội dung, duyệt D-10 và audio xong, PR đang chạy CI. Xem `plan/reports/P3d-it.md`.
+>
+> **Ghi chú (2026-10-30, đêm):**
+> - **PR #55 đã merge (a1302eb):** ghim emulator 37.2.12 và kiểm tra sức khỏe trước khi cài app (lỗi thì wipe và khởi động lại đúng một lần, ghi số lần vào báo cáo). Khác với quyết định của điều phối viên ở một điểm: `-change-locale` và `-prop` không dùng được, nên vẫn đặt locale rồi restart, nhưng bước này chạy trong kiểm tra sức khỏe. Bằng chứng ở PR #55. Việc ghim phiên bản có tác dụng hay không chỉ biết được sau nhiều lần chạy.
+> - **PR #54 đã merge (300e678):** 22/22 check xanh trên head 8daf086, cả 6 shard thiết bị, 0 lần thử lại hạ tầng.
+> - **Lint:** cảnh báo đến từ `.opus` không nằm trong danh sách đuôi được phép của eslint-config-expo. Generator ghi header eslint-disable chỉ cho map có Opus, `lint` chạy `--max-warnings 0`, map tiếng Pháp giữ nguyên từng byte (nằm trong PR it-vi).
+> - **P3d(it) đang làm trên `phase-4/it-vi`:** plugin + gate tiếng Ý, 700 từ (syllabus A1 691), 108 bài, 25 thẻ, 38 bảng chia, 7 bài kiểm tra, xếp lớp, CILS A1 standard 2 đề × 56 câu đã qua validator. Còn: truyện, LanguageTool, duyệt D-10, audio.
+> - **P3d(pt):** quyết định pt-PT ghi ở `plan/authoring/pt-plan.md`.
+
 > **Ghi chú (2026-10-30, sáng):** PR #52 (QC 2026-10-30 §2) đã merge (97b63ce). Toàn bộ CI và 6 shard thiết bị đều xanh. Trước đó shard API 30 đỏ hai lần do emulator, và nhân dịp đó đã sửa luôn chỗ thử lại sau khi Maestro treo: driver của Maestro giờ được gỡ hẳn rồi cài lại.
 > - Nhánh `phase-5/stories-topup-es` đã rebase lên `main`. Truyện A1-0 và truyện bổ sung được gộp: es có 46 truyện thường + 6 A1-0, de có 51 + 6, fr có 10 + 6.
 > - Audio truyện chuyển sang Opus 16 kbps cho es và de. Danh sách truyện có audio thật nâng lên 18 truyện mỗi khoá; tiếng Pháp giữ mp3.
-> - Đang chạy audio es (run 40975675021), sau đó đến audio de, rồi mở PR.
+> - Audio es và de đã xong (es run 41002365173, de run 41005780237): 0 lỗi kỹ thuật; tổng audio 26,8 / 88 MB. PR #54 đang chờ CI.
+> - PR #53 đã merge (1c8b033): sửa 7 câu có hai đáp án đúng ở zh-en, ja-en, pt-en và thêm linter. Câu hỏi máy tự sinh lúc chạy chưa đọc file khai báo đồng nghĩa.
+> - Chờ chủ dự án quyết định: 852 cảnh báo lint do `.opus` trong hai file asset sinh tự động (`eslint.config.js` được hook bảo vệ). Cảnh báo không làm đỏ CI.
 
 > **Ghi chú (2026-10-30):** PR #51 (ai-review: D-10 + chiến lược và pipeline audio) đã merge (b89ae3c). CI, cả 6 shard thiết bị và LanguageTool đều xanh.
 > - **Audio thật:** es 1.643 clip, de 1.478 clip, 0 lỗi kỹ thuật. Trong 11 câu tiếng Đức sinh lại, 7 câu đã sạch; 4 câu còn lại nằm ở mục C1 của checklist để chủ dự án nghe thử. Tổng audio 24,7 / 88 MB.
@@ -73,7 +87,7 @@
   - Stories: 43 (40 A2-1 + 3 A1-2); `plan/STORIES-PLAN.md` for es/fr top-ups.
 
   Content: 6 sections / 27 units / 108 lessons / 704 exercises (all 15 types, concept steps in 25 lessons, 23 of 23 cards shown), 35 objectives, 23 concepts + 12 paradigms, 1,288 lexemes (vi; A1 syllabus 690), 40 readings, 244 clips, 54 speech / 36 writing / 22 scenarios, 7 checkpoints, 28-item placement, Goethe A1 practice 2 forms × 35 items; Tier-1 review files vi 378 / de 309 lines; back-translation 5,043 pairs (`content/de/_drafts/BACKTRANSLATION.md`). Report `plan/reports/P3d-de.md` |
-| P3d(it) | it-vi + CILS A1 | – | not started | | |
+| P3d(it) | it-vi + CILS A1 | `phase-4/it-vi` | PR open; see `plan/reports/P3d-it.md` | | |
 | P3d(pt) | pt-vi + CAPLE A1 | – | not started | | |
 | P4b | CJK plugins + Hán-Việt readings (Unihan kVietnamese + reviewed overrides) | – | not started | | |
 | P4c | ja-vi + JLPT N5 | – | not started | | |

@@ -1,0 +1,123 @@
+# lessons — ingest report (it-vi)
+
+Records: 108 · schema-valid: 108 · failed: 0 · validator errors after merge: 0
+
+## Records
+
+- ✅ line 1 `it-vi:u0-l0`
+- ✅ line 2 `it-vi:u0-l1`
+- ✅ line 3 `it-vi:u0-l2`
+- ✅ line 4 `it-vi:u0-l3`
+- ✅ line 5 `it-vi:u1-l0`
+- ✅ line 6 `it-vi:u1-l1`
+- ✅ line 7 `it-vi:u1-l2`
+- ✅ line 8 `it-vi:u1-l3`
+- ✅ line 9 `it-vi:u2-l0`
+- ✅ line 10 `it-vi:u2-l1`
+- ✅ line 11 `it-vi:u2-l2`
+- ✅ line 12 `it-vi:u2-l3`
+- ✅ line 13 `it-vi:u3-l0`
+- ✅ line 14 `it-vi:u3-l1`
+- ✅ line 15 `it-vi:u3-l2`
+- ✅ line 16 `it-vi:u3-l3`
+- ✅ line 17 `it-vi:u4-l0`
+- ✅ line 18 `it-vi:u4-l1`
+- ✅ line 19 `it-vi:u4-l2`
+- ✅ line 20 `it-vi:u4-l3`
+- ✅ line 21 `it-vi:ua-l0`
+- ✅ line 22 `it-vi:ua-l1`
+- ✅ line 23 `it-vi:ua-l2`
+- ✅ line 24 `it-vi:ua-l3`
+- ✅ line 25 `it-vi:ub-l0`
+- ✅ line 26 `it-vi:ub-l1`
+- ✅ line 27 `it-vi:ub-l2`
+- ✅ line 28 `it-vi:ub-l3`
+- ✅ line 29 `it-vi:uc-l0`
+- ✅ line 30 `it-vi:uc-l1`
+- ✅ line 31 `it-vi:uc-l2`
+- ✅ line 32 `it-vi:uc-l3`
+- ✅ line 33 `it-vi:ud-l0`
+- ✅ line 34 `it-vi:ud-l1`
+- ✅ line 35 `it-vi:ud-l2`
+- ✅ line 36 `it-vi:ud-l3`
+- ✅ line 37 `it-vi:ue-l0`
+- ✅ line 38 `it-vi:ue-l1`
+- ✅ line 39 `it-vi:ue-l2`
+- ✅ line 40 `it-vi:ue-l3`
+- ✅ line 41 `it-vi:uf-l0`
+- ✅ line 42 `it-vi:uf-l1`
+- ✅ line 43 `it-vi:uf-l2`
+- ✅ line 44 `it-vi:uf-l3`
+- ✅ line 45 `it-vi:ug-l0`
+- ✅ line 46 `it-vi:ug-l1`
+- ✅ line 47 `it-vi:ug-l2`
+- ✅ line 48 `it-vi:ug-l3`
+- ✅ line 49 `it-vi:uh-l0`
+- ✅ line 50 `it-vi:uh-l1`
+- ✅ line 51 `it-vi:uh-l2`
+- ✅ line 52 `it-vi:uh-l3`
+- ✅ line 53 `it-vi:ui-l0`
+- ✅ line 54 `it-vi:ui-l1`
+- ✅ line 55 `it-vi:ui-l2`
+- ✅ line 56 `it-vi:ui-l3`
+- ✅ line 57 `it-vi:uj-l0`
+- ✅ line 58 `it-vi:uj-l1`
+- ✅ line 59 `it-vi:uj-l2`
+- ✅ line 60 `it-vi:uj-l3`
+- ✅ line 61 `it-vi:uk-l0`
+- ✅ line 62 `it-vi:uk-l1`
+- ✅ line 63 `it-vi:uk-l2`
+- ✅ line 64 `it-vi:uk-l3`
+- ✅ line 65 `it-vi:ul-l0`
+- ✅ line 66 `it-vi:ul-l1`
+- ✅ line 67 `it-vi:ul-l2`
+- ✅ line 68 `it-vi:ul-l3`
+- ✅ line 69 `it-vi:um-l0`
+- ✅ line 70 `it-vi:um-l1`
+- ✅ line 71 `it-vi:um-l2`
+- ✅ line 72 `it-vi:um-l3`
+- ✅ line 73 `it-vi:un-l0`
+- ✅ line 74 `it-vi:un-l1`
+- ✅ line 75 `it-vi:un-l2`
+- ✅ line 76 `it-vi:un-l3`
+- ✅ line 77 `it-vi:uo-l0`
+- ✅ line 78 `it-vi:uo-l1`
+- ✅ line 79 `it-vi:uo-l2`
+- ✅ line 80 `it-vi:uo-l3`
+- ✅ line 81 `it-vi:up-l0`
+- ✅ line 82 `it-vi:up-l1`
+- ✅ line 83 `it-vi:up-l2`
+- ✅ line 84 `it-vi:up-l3`
+- ✅ line 85 `it-vi:uq-l0`
+- ✅ line 86 `it-vi:uq-l1`
+- ✅ line 87 `it-vi:uq-l2`
+- ✅ line 88 `it-vi:uq-l3`
+- ✅ line 89 `it-vi:ur-l0`
+- ✅ line 90 `it-vi:ur-l1`
+- ✅ line 91 `it-vi:ur-l2`
+- ✅ line 92 `it-vi:ur-l3`
+- ✅ line 93 `it-vi:us-l0`
+- ✅ line 94 `it-vi:us-l1`
+- ✅ line 95 `it-vi:us-l2`
+- ✅ line 96 `it-vi:us-l3`
+- ✅ line 97 `it-vi:ut-l0`
+- ✅ line 98 `it-vi:ut-l1`
+- ✅ line 99 `it-vi:ut-l2`
+- ✅ line 100 `it-vi:ut-l3`
+- ✅ line 101 `it-vi:uu-l0`
+- ✅ line 102 `it-vi:uu-l1`
+- ✅ line 103 `it-vi:uu-l2`
+- ✅ line 104 `it-vi:uu-l3`
+- ✅ line 105 `it-vi:uv-l0`
+- ✅ line 106 `it-vi:uv-l1`
+- ✅ line 107 `it-vi:uv-l2`
+- ✅ line 108 `it-vi:uv-l3`
+
+## Validator errors (fix these records and ingest again)
+
+- none
+
+## Written
+
+- content/it/_drafts/pack.json
+- content/courses/it-vi.json

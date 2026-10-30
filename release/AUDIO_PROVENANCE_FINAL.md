@@ -156,3 +156,15 @@ assets and the language's baseline). Status at the time of this commit:
 A language whose every candidate fails the gate or the 0.6 intelligibility
 floor is recorded as `no-clean-voice` in `voice-casts.json` and its courses
 keep `audio.policy = device-tts` — never a guessed voice.
+
+## Open: finetuning lineage of Piper voices (2026-10-31)
+
+The licence gate reads a voice's dataset licence. The model cards also state a finetuning base, which the gate does not read:
+
+| Voice | Dataset | Finetuned from | Base dataset licence |
+|---|---|---|---|
+| `fr_FR-siwis-medium` | CC-BY-4.0 | `lessac` | Blizzard 2013 research licence |
+| `de_DE-thorsten-high` | CC0 | `lessac` | Blizzard 2013 research licence |
+| `de_DE-kerstin-low` | CC0 | `ryan` | CC BY-NC-SA 4.0 |
+
+Whether the base's terms reach a finetuned voice or its output is a legal question, not decided here. The owner decides (`plan/OWNER-FINAL-CHECKLIST.md` B1). Nothing has been changed.
