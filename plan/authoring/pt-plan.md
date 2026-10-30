@@ -22,6 +22,20 @@ QC 2026-10-29 §4 asks for this before any content is written.
 2. **The pt lexicon evidence is mixed.** `content/pt/lexicon/derived/` and the canary were prepared for pt-BR (the canary tests `ti/di` palatalisation). The pool needs a variety pass: Kaikki tags and the pt-PT frequency list, with BR-only entries moved to variants. The canary must be rewritten for pt-PT (reduced vowels, final `s` as /ʃ/, `lh`/`nh`).
 3. **The learner migration question.** `pt:w:*` ids must not collide with stored `pt-en` progress. Check `legacySurfaces` as in `de-vi`.
 
+4. **Voice lineage and the second voice (research 2026-10-31).** `pt_PT-tugão-medium` is finetuned from Piper `lessac`, whose Blizzard 2013 dataset is under a research licence, so its CC0 dataset does not settle the voice. The owner decides this with the same question for siwis, thorsten and kerstin (`OWNER-FINAL-CHECKLIST.md` B1). Second-voice candidates read from primary cards:
+   - `logus2k/kokoro_tts_eu_pt`: pt-PT, Apache-2.0 weights, corpus unnamed, so not adoptable until its licence is stated;
+   - OpenVoiceOS `pipertts_pt-PT_dii` and `_miro`: CC-BY-NC-ND, fail;
+   - `pipertts_pt-PT_voice3` and `_voice4`: no licence stated, fail;
+   - Kokoro-82M is pt-BR only; MeloTTS has no Portuguese.
+   No second voice is adopted yet.
+
+## ACESSO format, as read on 2026-10-31 (agent research, to re-read before authoring)
+[CAPLE's ACESSO page](https://caple.letras.ulisboa.pt/exame/1/acesso):
+- Reading 20 min, 20 %; Writing 20 min, 15 %; Listening 25 min, 35 %; Speaking 8–10 min per pair, 30 % (its timetable says 10–15).
+- Bands: Muito Bom 85–100, Bom 70–84, Suficiente 55–69.
+
+Not published where we looked: item counts, task types, an explicit pass rule (55 % is only inferred from the lowest passing band), and a sample paper. CAPLE reserves all rights in its papers, so items must be original. Until the format is known, the track cannot claim the exam's item structure.
+
 ## Before authoring items
 Read the official ACESSO documents on the CAPLE site (`caple.letras.ulisboa.pt`) and record them in `content/pt/exam/FORMAT-SOURCES.md`: document, URL, version/date, read yes/no, parts, scoring, pass rule. Nothing about the format is modelled from secondary sources. A 2018 IPOR timetable (reading + writing 40 min, listening 25, speaking 10–15) is a lead only.
 

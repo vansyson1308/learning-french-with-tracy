@@ -24,6 +24,14 @@ Mỗi khoá có `content/<ngôn ngữ>/REVIEW-AI.md`: số dòng đã duyệt, l
 - ☐ Mỗi khoá mới (it, pt, ja, zh, ko, en) có bước duyệt AI tích hợp sẵn trong P3d; Claude thêm dòng `ai-review:<khoá>` vào đây khi khoá đó xong.
 - ☐ Nếu anh chấp nhận phát hành v1.0 khi một khoá **vẫn còn nhãn beta** (chưa đánh ☑ dòng chấp nhận), ghi rõ ở đây khoá nào.
 
+### B1. Nguồn gốc giọng Piper: cần anh quyết định, nên hỏi luật sư (phát hiện 31/10/2026)
+Gate giấy phép mới chỉ xét dataset của giọng. Model card cho thấy ba giọng đang dùng được tinh chỉnh (finetune) từ một giọng tiếng Anh có dataset hạn chế hơn. Việc hạn chế đó có áp dụng cho giọng tinh chỉnh và âm thanh sinh ra hay không là câu hỏi pháp lý, Claude không kết luận. Chưa đổi gì trong app.
+- `fr_FR-siwis-medium` (fr-en, fr-vi) và `de_DE-thorsten-high` (de-en, de-vi): dataset CC-BY-4.0 và CC0, tinh chỉnh từ Piper `lessac`, dataset Blizzard 2013 theo "Research Licence".
+- `de_DE-kerstin-low` (de-en, de-vi): dataset CC0, tinh chỉnh từ Piper `ryan`, dataset CC BY-NC-SA 4.0.
+- `pt_PT-tugão-medium` (dự kiến cho pt-vi): cũng tinh chỉnh từ `lessac`.
+- ☐ **Quyết định:** giữ các giọng này, hay thay bằng giọng có nguồn gốc sạch hơn? Thay giọng tiếng Pháp sẽ phá quy tắc fr-en giữ nguyên từng byte và cần chạy lại âm thanh, nên cần lệnh rõ của anh.
+- ☐ **Thư cần gửi dưới tên anh (tuỳ chọn):** logus2k (`kokoro_tts_eu_pt`, hỏi tên và giấy phép của corpus, cho giọng pt-PT thứ hai); caple@letras.ulisboa.pt (đề mẫu và số câu của ACESSO).
+
 ## C. Nguồn dữ liệu chỉ tải tay được (tuỳ chọn, không chặn công việc)
 - ☐ Danh sách từ học tiếng Hàn NIKL 한국어 학습용 어휘 목록 (KOGL Type 1) — korean.go.kr từ chối tải tự động; đặt file vào `sources/ko/nikl-learner-list.tsv` hoặc gửi Claude. Không có thì neo từ vựng tiếng Hàn theo tần suất. (P3a)
 - ☐ (Tuỳ chọn) Nghe thử các bản canary giọng ja/zh/ko trong artifact của workflow audio trước khi sinh audio đầy đủ. (P3b)
