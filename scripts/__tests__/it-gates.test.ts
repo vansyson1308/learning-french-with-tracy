@@ -5,7 +5,7 @@
 import { describe, expect, test } from "bun:test";
 
 import type { PackSource } from "../../content/schema";
-import { DOUBLE_CONSONANT_CONCEPT, expectedDefiniteArticle, expectedPluralArticle, italianCourseErrors, scenarioRegisterErrors, targetTextErrors } from "../lib/languages/it-gates";
+import { collectTargetText, DOUBLE_CONSONANT_CONCEPT, expectedDefiniteArticle, expectedPluralArticle, italianCourseErrors, scenarioRegisterErrors, targetTextErrors } from "../lib/languages/it-gates";
 
 const lexicon = [
   { id: "it:w:libro", surface: "il libro", partOfSpeech: "noun", gender: "masculine" },
@@ -117,6 +117,11 @@ describe("Italian course gates", () => {
     expect(rules(italianCourseErrors(pack({ words: [] }), ok))).toContain("double-consonants");
     expect(rules(italianCourseErrors(pack({ words: [], exercises: drill, flow: drillFlow(3) }), ok))).toEqual(["double-consonants"]);
     expect(rules(italianCourseErrors(pack({ words: [], exercises: [ex("d0", { answer: "pala palla" })], flow: drillFlow(6) }), ok))).toEqual(["double-consonants"]);
+  });
+
+  test("collectTargetText reads stories and clips, not translations or glossaries", () => {
+    const doc = { stories: [{ sentences: [{ text: "Il libro.", translation: { vi: "x", en: "y" } }], questions: [{ text: "no" }] }], supportGlossary: [{ text: "no" }], clips: [{ segments: [{ text: "La casa." }] }] };
+    expect(collectTargetText(doc)).toEqual(["Il libro.", "La casa."]);
   });
 
   test("targetTextErrors checks one free string (stories, readings)", () => {

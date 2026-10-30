@@ -1,6 +1,6 @@
 # stories — ingest report (it-vi)
 
-Records: 44 · schema-valid: 44 · failed: 0 · validator errors after merge: 0
+Records: 46 · schema-valid: 46 · failed: 0 · validator errors after merge: 1
 
 ## Records
 
@@ -48,10 +48,12 @@ Records: 44 · schema-valid: 44 · failed: 0 · validator errors after merge: 0
 - ✅ line 42 `it.story.lo_sciopero`
 - ✅ line 43 `it.story.il_riscaldamento`
 - ✅ line 44 `it.story.l_incidente`
+- ✅ line 45 `it.story.la_torta_di_nonna`
+- ✅ line 46 `it.story.in_treno_con_lo_zaino`
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- stories (it): it.story.in_treno_con_lo_zaino: it:w:anche beyond band A1-1 — declare as new (3–5) or replace
 
 ## Written
 

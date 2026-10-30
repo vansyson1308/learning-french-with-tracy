@@ -203,6 +203,24 @@ export function targetTextErrors(text: string, input: Pick<ItalianGateData, "lex
   ];
 }
 
+/** Files holding free Italian text the elision, auxiliary and agreement rules also read. */
+export const FREE_TEXT_FILES = ["content/it/reception/reading.json", "content/it/reception/listening.json", "content/it/stories/stories.json"];
+
+/** The target-language text of a reception or story file: paragraphs, clip segments, story sentences. */
+export function collectTargetText(doc: unknown): string[] {
+  const out: string[] = [];
+  const walk = (v: unknown) => {
+    if (Array.isArray(v)) v.forEach(walk);
+    else if (v && typeof v === "object") {
+      const o = v as Record<string, unknown>;
+      if (typeof o.text === "string") out.push(o.text);
+      for (const [k, x] of Object.entries(o)) if (k !== "translation" && k !== "supportGlossary" && k !== "questions") walk(x);
+    }
+  };
+  walk(doc);
+  return out;
+}
+
 /** Minimal pairs the drill must hold: a word and the same word with one doubled consonant. */
 function minimalPairsIn(words: Set<string>): number {
   let pairs = 0;

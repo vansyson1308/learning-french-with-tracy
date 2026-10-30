@@ -12,7 +12,7 @@ import { italianNumber, it as itRules } from "../../../src/lib/languages/it";
 import { readJson, safeResolve } from "../pipeline";
 
 import { genericPlugin } from "./generic";
-import { italianCourseErrors, loadItalianGateData, scenarioRegisterErrors } from "./it-gates";
+import { collectTargetText, FREE_TEXT_FILES, italianCourseErrors, loadItalianGateData, scenarioRegisterErrors, targetTextErrors } from "./it-gates";
 import type { ArticleRules, BuildLanguagePlugin, MorphVerb, ParadigmSpec } from "./types";
 
 export const IT_ARTICLES: ArticleRules = {
@@ -130,7 +130,13 @@ export const it: BuildLanguagePlugin = genericPlugin(
       const scenarios = existsSync(safeResolve(scenariosRel))
         ? (readJson(scenariosRel) as { scenarios: Parameters<typeof scenarioRegisterErrors>[0] }).scenarios.filter((s) => used.has(s.id))
         : [];
-      return [...italianCourseErrors(pack, { lexicon, ...loadItalianGateData() }), ...scenarioRegisterErrors(scenarios).map((m) => `${pack.id}: ${m}`)];
+      const gateData = loadItalianGateData();
+      const freeText = FREE_TEXT_FILES.filter((rel) => existsSync(safeResolve(rel))).flatMap((rel) => collectTargetText(readJson(rel)).map((text) => ({ rel, text })));
+      return [
+        ...italianCourseErrors(pack, { lexicon, ...gateData }),
+        ...scenarioRegisterErrors(scenarios).map((m) => `${pack.id}: ${m}`),
+        ...freeText.flatMap(({ rel, text }) => targetTextErrors(text, { lexicon, auxiliaries: gateData.auxiliaries }).map((m) => `${pack.id}: ${m} (${rel})`)),
+      ];
     },
   }
 );
