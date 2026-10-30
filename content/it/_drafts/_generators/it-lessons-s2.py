@@ -89,13 +89,13 @@ L["ub-l3"] = [("concept", k("passato-prossimo")), ("conj", "Ho ___ la pizza.", "
 L["uc-l0"] = [("concept", k("false-friends")), ("t2n", "la musica", ["il film", "il taxi", "il bar"]), ("t2n", "il taxi", ["il computer", "il film", "la musica"]), ("t2n", "il computer", ["il telefono", "il taxi", "il cinema"]),
   ("n2t", "il film", ["il cinema", "il bar", "la musica"]), ("n2t", "il ristorante", ["il bar", "il cinema", "il taxi"]), ("art", "il film"), ("art", "il computer"), ("type", "bộ phim (kèm mạo từ)", "il film", []),
   ("match", ["la musica", "il film", "il taxi", "il computer", "il bar"])]
-L["uc-l1"] = [("t2nx", "la camera", "căn phòng", ["máy ảnh", "máy tính", "điện thoại"]), ("fill", "La ___ è grande.", "camera", ["taxi", "film", "bar"], "Căn phòng rộng."), ("t2n", "il telefono", ["il computer", "il cinema", "il taxi"]),
+L["uc-l1"] = [("concept", k("false-friends")), ("t2nx", "la camera", "căn phòng", ["máy ảnh", "máy tính", "điện thoại"]), ("fill", "La ___ è grande.", "camera", ["taxi", "film", "bar"], "Căn phòng rộng."), ("t2n", "il telefono", ["il computer", "il cinema", "il taxi"]),
   ("wb", "Căn phòng ở tầng một.", "La camera è al primo piano.", ["una", "il", "sono"]), ("fill", "I miei ___ sono a Hanoi.", "genitori", ["figli", "amici", "nonni"], "Bố mẹ tôi ở Hà Nội."),
   ("type", "Bố mẹ tôi ở Việt Nam.", "I miei genitori sono in Vietnam.", ["I miei genitori sono in Vietnam"]), ("n2t", "il telefono", ["il computer", "il film", "il bar"]), ("t2n", "il cinema", ["il teatro", "il bar", "il museo"])]
-L["uc-l2"] = [("fill", "___ problema è grande.", "Il", ["La", "L'", "Lo"], "Vấn đề lớn."), ("fill", "___ foto è bella.", "La", ["Il", "Lo", "L'"], "Bức ảnh đẹp."), ("art", "il problema"), ("art", "la foto"), ("art", "l'università"),
+L["uc-l2"] = [("concept", k("gender-endings")), ("fill", "___ problema è grande.", "Il", ["La", "L'", "Lo"], "Vấn đề lớn."), ("fill", "___ foto è bella.", "La", ["Il", "Lo", "L'"], "Bức ảnh đẹp."), ("art", "il problema"), ("art", "la foto"), ("art", "l'università"),
   ("fill", "Ho due ___.", "film", ["filmi", "filme", "filma"], "Tôi có hai bộ phim."), ("t2n", "il problema", ["la foto", "la musica", "il film"]), ("n2t", "la foto", ["il problema", "il film", "la musica"]),
   ("type", "Không có vấn đề gì.", "Non c'è problema.", ["Non c'è problema"])]
-L["uc-l3"] = [("t2n", "chi", ["dove", "cosa", "come"]), ("t2n", "dove", ["chi", "quando", "cosa"]), ("fill", "___ è quel ragazzo?", "Chi", ["Dove", "Come", "Quando"], "Cậu bé kia là ai?"), ("fill", "___ è il bar?", "Dov'", ["Chi", "Cosa", "Quanto"], "Quán cà phê ở đâu?"),
+L["uc-l3"] = [("concept", k("negation-questions")), ("t2n", "chi", ["dove", "cosa", "come"]), ("t2n", "dove", ["chi", "quando", "cosa"]), ("fill", "___ è quel ragazzo?", "Chi", ["Dove", "Come", "Quando"], "Cậu bé kia là ai?"), ("fill", "___ è il bar?", "Dov'", ["Chi", "Cosa", "Quanto"], "Quán cà phê ở đâu?"),
   ("t2n", "il ristorante", ["il bar", "il cinema", "il museo"]), ("type", "Đó là ai?", "Chi è?", ["Chi è"]), ("wbt", "Allora, dov'è l'albergo?", "Vậy khách sạn ở đâu?", ["ai", "khi", "và"]),
   ("match", ["chi", "dove", "cosa", "allora", "il telefono"])]
 # ---- unit d: numbers
@@ -103,11 +103,11 @@ L["ud-l0"] = [("concept", k("numbers")), ("t2n", "tre", ["due", "quattro", "otto
   ("n2t", "nove", ["otto", "dieci", "cinque"]), ("fill", "Una settimana ha ___ giorni.", "sette", ["sei", "otto", "dieci"], "Một tuần có bảy ngày."), ("fill", "Un anno ha ___ mesi.", "dodici", ["undici", "dieci", "due"], "Một năm có mười hai tháng."),
   ("type", "mười", "dieci", []), ("type", "Tôi có hai con chó.", "Ho due cani.", ["Ho due cani"]),
   ("match", ["zero", "due", "tre", "quattro", "cinque"]), ("wbt", "Costa dieci euro.", "Giá mười euro.", ["hai", "tôi", "giờ"])]
-L["ud-l1"] = [("t2n", "tredici", ["trenta", "tre", "venti"]), ("t2n", "sedici", ["sei", "sessanta", "diciassette"]), ("t2n", "diciassette", ["settanta", "sette", "sedici"]), ("t2n", "venti", ["dodici", "due", "trenta"]),
+L["ud-l1"] = [("concept", k("numbers")), ("t2n", "tredici", ["trenta", "tre", "venti"]), ("t2n", "sedici", ["sei", "sessanta", "diciassette"]), ("t2n", "diciassette", ["settanta", "sette", "sedici"]), ("t2n", "venti", ["dodici", "due", "trenta"]),
   ("n2t", "sedici", ["sessanta", "sei", "diciassette"]), ("fill", "Lui ha ___ anni.", "diciassette", ["settanta", "sette", "sedici"], "Cậu ấy mười bảy tuổi."),
   ("fill", "Il biglietto costa ___ euro.", "venti", ["dodici", "due", "cento"], "Vé giá hai mươi euro."), ("type", "mười ba", "tredici", []), ("type", "Tôi mười sáu tuổi.", "Ho sedici anni.", ["Ho sedici anni"]),
   ("match", ["tredici", "sedici", "diciassette", "venti", "dodici"])]
-L["ud-l2"] = [("fill", "venti + uno = ___", "ventuno", ["ventiuno", "ventiuna", "ventune"], "hai mươi mốt"), ("fill", "venti + otto = ___", "ventotto", ["ventiotto", "ventoto", "ventiotti"], "hai mươi tám"), ("fill", "venti + tre = ___", "ventitré", ["ventitre'", "ventitrè", "ventatre"], "hai mươi ba"),
+L["ud-l2"] = [("concept", k("numbers")), ("fill", "venti + uno = ___", "ventuno", ["ventiuno", "ventiuna", "ventune"], "hai mươi mốt"), ("fill", "venti + otto = ___", "ventotto", ["ventiotto", "ventoto", "ventiotti"], "hai mươi tám"), ("fill", "venti + tre = ___", "ventitré", ["ventitre'", "ventitrè", "ventatre"], "hai mươi ba"),
   ("t2n", "trenta", ["tredici", "tre", "quaranta"]), ("t2n", "cinquanta", ["cinque", "quindici", "sessanta"]), ("t2n", "cento", ["dieci", "venti", "cinquanta"]),
   ("fill", "Un'ora ha ___ minuti.", "sessanta", ["sedici", "sei", "settanta"], "Một giờ có sáu mươi phút."), ("type", "ba mươi", "trenta", []), ("type", "một trăm", "cento", []), ("n2t", "cinquanta", ["cinque", "quaranta", "sessanta"]),
   ("wb", "Bố tôi bốn mươi tuổi.", "Mio padre ha quaranta anni.", ["quattro", "è", "mia"])]
