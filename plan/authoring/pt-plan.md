@@ -1,5 +1,7 @@
 # P3d(pt) — variety decision and working notes
 
+> **Superseded in part by D-12 (`plan/prompts/QC-2026-10-31.md`).** P3d(pt) moves to the end of the course list. The text model is pt-PT only if two clean pt-PT speakers pass QA; otherwise the course switches to pt-BR (text and audio, Kokoro pt-BR) with pt-PT variant notes, with the evidence recorded here. `pt_PT-tugão-medium` is out (lessac lineage). `kokoro_tts_eu_pt` stays out until its corpus licence is known. The ACESSO track is `formatFidelity: "partial"`: only the official page's parts, timing, weights and scale; question types are the course's own design and the description says so in Vietnamese; a 55 % threshold, if shown, is labelled as derived from the published scale.
+
 ## Decision (2026-10-30): pt-PT is the production model of `pt-vi`; pt-BR appears as variant notes
 
 QC 2026-10-29 §4 asks for this before any content is written.
@@ -29,12 +31,13 @@ QC 2026-10-29 §4 asks for this before any content is written.
    - Kokoro-82M is pt-BR only; MeloTTS has no Portuguese.
    No second voice is adopted yet.
 
-## ACESSO format, as read on 2026-10-31 (agent research, to re-read before authoring)
+## ACESSO format, as read on 2026-10-31 (the page's text, read directly)
 [CAPLE's ACESSO page](https://caple.letras.ulisboa.pt/exame/1/acesso):
 - Reading 20 min, 20 %; Writing 20 min, 15 %; Listening 25 min, 35 %; Speaking 8–10 min per pair, 30 % (its timetable says 10–15).
-- Bands: Muito Bom 85–100, Bom 70–84, Suficiente 55–69.
+- Bands: Muito Bom 85–100, Bom 70–84, Suficiente 55–69. The page's details box gives the scale as 55–100 % and the total as about 1 h 35 plus a 15-minute break.
+- Reading and Writing share one 40-minute slot in the timetable. Speaking is with two candidates where possible, and video-recorded.
 
-Not published where we looked: item counts, task types, an explicit pass rule (55 % is only inferred from the lowest passing band), and a sample paper. CAPLE reserves all rights in its papers, so items must be original. Until the format is known, the track cannot claim the exam's item structure.
+Not published where we looked: item counts, task types, whether a component has its own minimum, and a sample paper. The page states no pass rule in words; 55 % comes from its scale. CAPLE reserves all rights in its papers, so items must be original. Until the format is known, the track cannot claim the exam's item structure.
 
 ## Before authoring items
 Read the official ACESSO documents on the CAPLE site (`caple.letras.ulisboa.pt`) and record them in `content/pt/exam/FORMAT-SOURCES.md`: document, URL, version/date, read yes/no, parts, scoring, pass rule. Nothing about the format is modelled from secondary sources. A 2018 IPOR timetable (reading + writing 40 min, listening 25, speaking 10–15) is a lead only.
