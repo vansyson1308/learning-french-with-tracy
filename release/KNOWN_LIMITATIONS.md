@@ -112,7 +112,10 @@ itself.
   ran per D-10 (`content/it/REVIEW-AI.md`, independent audit 0.3 % P0+P1), which is not
   a native speaker's review; the owner's acceptance `ai-review:it-vi` is pending. The
   CILS A1 track models the A1 standard module only, and Speaking is reduced to guided
-  questions with the app as examiner.
+  questions with the app as examiner. The first 18 stories after the micro-stories have
+  bundled audio; the micro-stories and the other 22 use the device voice. Italian
+  audio uses Kokoro voices its author grades C, and six clips await the owner's
+  listening (`OWNER-FINAL-CHECKLIST.md` C1).
 - **`de-vi` (German for Vietnamese speakers, P3d(de)) ships unreviewed**, on the
   same terms as `es-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/de-vi.profile.json`. The owner signs
