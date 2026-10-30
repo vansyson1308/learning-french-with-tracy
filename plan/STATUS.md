@@ -1,5 +1,10 @@
 # STATUS — milestone tracker (Claude Code updates this at the end of every session)
 
+> **Ghi chú (2026-10-30, sáng):** PR #52 (QC 2026-10-30 §2) đã merge (97b63ce). Toàn bộ CI và 6 shard thiết bị đều xanh. Trước đó shard API 30 đỏ hai lần do emulator, và nhân dịp đó đã sửa luôn chỗ thử lại sau khi Maestro treo: driver của Maestro giờ được gỡ hẳn rồi cài lại.
+> - Nhánh `phase-5/stories-topup-es` đã rebase lên `main`. Truyện A1-0 và truyện bổ sung được gộp: es có 46 truyện thường + 6 A1-0, de có 51 + 6, fr có 10 + 6.
+> - Audio truyện chuyển sang Opus 16 kbps cho es và de. Danh sách truyện có audio thật nâng lên 18 truyện mỗi khoá; tiếng Pháp giữ mp3.
+> - Đang chạy audio es (run 40975675021), sau đó đến audio de, rồi mở PR.
+
 > **Ghi chú (2026-10-30):** PR #51 (ai-review: D-10 + chiến lược và pipeline audio) đã merge (b89ae3c). CI, cả 6 shard thiết bị và LanguageTool đều xanh.
 > - **Audio thật:** es 1.643 clip, de 1.478 clip, 0 lỗi kỹ thuật. Trong 11 câu tiếng Đức sinh lại, 7 câu đã sạch; 4 câu còn lại nằm ở mục C1 của checklist để chủ dự án nghe thử. Tổng audio 24,7 / 88 MB.
 > - **Kiểm tra phát Opus:** đạt trên API 30, API 34 và web, ở cả tốc độ thường lẫn chế độ chậm, không lỗi giải mã. Chuyển audio truyện sang Opus sẽ làm trong PR stories-topup-es.

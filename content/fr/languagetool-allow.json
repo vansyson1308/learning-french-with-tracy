@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "language": "fr",
+  "disabledRules": [],
+  "allow": [
+    {
+      "rule": "AGREEMENT_POSTPONED_ADJ",
+      "match": "fait",
+      "text": "La vache fait du lait.",
+      "reason": "story fr.story.les_animaux_de_monsieur_martin (bundled audio): « fait » is the verb faire (the cow makes milk), not a past participle agreeing with « vache »"
+    },
+    {
+      "rule": "C_EST_QUOI",
+      "match": "c'est quoi",
+      "text": "Lucas, c'est quoi ?",
+      "reason": "story fr.story.le_restaurant_du_samedi (bundled audio): a colloquial register flag only; spoken dialogue between friends, where « c'est quoi ? » is the natural question"
+    }
+  ]
+}

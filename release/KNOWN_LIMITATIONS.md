@@ -83,7 +83,10 @@ itself.
   Vietnamese-native course until a reviewer signs
   `review: { native, date }` or the owner records the same explicit
   exception here. `content/fr/REVIEW-CHECKLIST.md` (3,217 strings) is the
-  reviewer's list for `fr-vi`.
+  reviewer's list for `fr-vi`. The LanguageTool gate checks only the French
+  graded stories (`--scope stories`, allow-list `content/fr/languagetool-allow.json`):
+  the rest of the French text is frozen byte-identical, so its findings
+  could be allowed but not fixed.
 - **`es-vi` (Spanish for Vietnamese speakers, P3d) ships unreviewed.** It
   compiles with `allowUnreviewed: true` in `content/courses/es-vi.profile.json`:
   its Spanish and Vietnamese text was authored with the P3c toolkit and has
@@ -110,8 +113,8 @@ itself.
   - the back-translation pass (`content/de/_drafts/BACKTRANSLATION.md`). The
     same session wrote both languages, so this pass is not independent.
 
-  **German stories are text-only for now.** The 43 stories (40 at band A2-1,
-  3 at A1-2) have no bundled audio. With it, German audio would be about
+  **German stories are text-only for now.** The 51 stories (40 at band A2-1,
+  11 at A1-2) have no bundled audio. With it, German audio would be about
   17 MB against the 12 MB per-language budget. Story audio moves to
   per-language asset packs (`release/ASSET_DELIVERY.md`, QC 2026-10-29 §1.6);
   lesson words, syllabus words and listening clips are bundled.

@@ -4,8 +4,11 @@
  * the story layer only; French is always mp3 (release/ASSET_DELIVERY.md).
  */
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "fs";
 
+import { safeResolve } from "../lib/pipeline";
 import {
+  AUDIO_FILE_EXTS,
   assetFileName,
   codecFor,
   codecProblems,
@@ -21,13 +24,14 @@ import { buildSynthScript, loadEngines } from "../lib/tts";
 const engines = loadEngines();
 const flipped: CodecSettings = { ...engines.encoding, codecByLayer: { ...engines.encoding.codecByLayer, story: "opus" } };
 
-describe("the committed setting is mp3 for every layer (nothing flipped before CI proves Opus)", () => {
-  test("engines.json: every layer mp3, opus at 16 kbps, French mp3-only, no problem", () => {
-    expect(engines.encoding.codecByLayer).toEqual({ pack: "mp3", lexicon: "mp3", reception: "mp3", story: "mp3" });
+describe("the committed setting: story is opus (CI proved playback, PR #51), every other layer mp3", () => {
+  test("engines.json: story opus at 16 kbps, other layers mp3, French mp3-only, no problem", () => {
+    expect(engines.encoding.codecByLayer).toEqual({ pack: "mp3", lexicon: "mp3", reception: "mp3", story: "opus" });
     expect(engines.encoding.opusKbps).toBe(16);
     expect(engines.encoding.mp3OnlyLanguages).toEqual(["fr"]);
     expect(codecProblems(engines.encoding)).toEqual([]);
-    for (const lang of ["fr", "es", "de"]) expect(storyCodec(lang)).toBe("mp3");
+    expect(storyCodec("fr")).toBe("mp3");
+    for (const lang of ["es", "de"]) expect(storyCodec(lang)).toBe("opus");
   });
 
   test("an mp3 clip keeps its key, its file name and its encode line", () => {
@@ -65,6 +69,13 @@ describe("codecFor / codecProblems", () => {
     expect(["a.mp3", "b.wav", "c.opus"].every(isAudioFile)).toBe(true);
     expect(isAudioFile("plan.json")).toBe(false);
   });
+
+  test("bun test loads every bundled audio format as a file, never as code (bunfig.toml)", () => {
+    // es audio run 40977170511: the compiled es-story-assets.ts required .opus files that Bun parsed as JS,
+    // so the course bundle failed to load and the checkpoint / exam goldens saw `undefined`.
+    const bunfig = readFileSync(safeResolve("bunfig.toml"), "utf8");
+    for (const ext of AUDIO_FILE_EXTS) expect(bunfig).toContain(`"${ext}" = "file"`);
+  });
 });
 
 describe("flipping story to opus (what CI must have proven first)", () => {
@@ -75,11 +86,11 @@ describe("flipping story to opus (what CI must have proven first)", () => {
     const mp3 = storySentenceAssetKey("es", es, sentence, "mp3");
     const opus = storySentenceAssetKey("es", es, sentence, "opus");
     expect(opus).not.toBe(mp3);
-    expect(storySentenceAssetKey("es", es, sentence)).toBe(mp3); // the committed setting
+    expect(storySentenceAssetKey("es", es, sentence)).toBe(opus); // the committed setting
     expect(storySentenceFile("es", es, sentence, "opus")).toBe(`${opus}.opus`);
     const files = storyAssetFiles("es", es, storyAudioPolicy("es"), "opus");
     expect([...files].every((f) => f.endsWith(".opus"))).toBe(true);
-    expect(codecRecipe("opus", flipped)).toBe("opus-16k");
+    expect(codecRecipe("opus", flipped)).toBe("opus-16k-lim3");
   });
 
   test("the synth script encodes an opus clip with libopus at 24 kHz mono and copies a blessed .opus as is", () => {
@@ -89,7 +100,11 @@ describe("flipping story to opus (what CI must have proven first)", () => {
     const encode = script.split("\n").find((l) => l.includes("libopus"))!;
     expect(encode).toContain(`-ar ${OPUS_SAMPLE_RATE_HZ} -ac 1 -map_metadata -1 -codec:a libopus -b:a 16k`);
     expect(encode).toContain("'/out/k1.opus'");
+    // Headroom for the decoder's overshoot: the limiter runs after loudnorm, before libopus.
+    expect(encode).toMatch(/loudnorm=[^,]*,alimiter=limit=0\.708:level=disabled/);
     expect(script).not.toContain("libmp3lame");
+    const mp3 = buildSynthScript({ clips: [{ ...clip, codec: undefined }], voices, engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out" });
+    expect(mp3).not.toContain("alimiter");
     const reused = buildSynthScript({ clips: [clip], voices, engines, downloadsDir: "/dl", wavDir: "/wav", outDir: "/out", existingFiles: new Map([["k1", "assets/audio/es-reception/k1.opus"]]) });
     expect(reused).toContain("cp 'assets/audio/es-reception/k1.opus' '/out/k1.opus'");
   });

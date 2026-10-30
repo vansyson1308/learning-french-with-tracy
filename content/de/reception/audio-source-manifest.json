@@ -8,9 +8,23 @@
       "de.story.die_anmeldung",
       "de.story.der_umzug",
       "de.story.die_reise_nach_hamburg",
-      "de.story.ein_fall_fuer_frau_weber"
+      "de.story.mit_dem_zug_nach_wien",
+      "de.story.regen_am_meer",
+      "de.story.eine_wohnung_in_hamburg",
+      "de.story.am_schalter",
+      "de.story.die_hochzeit_von_sara_und_jan",
+      "de.story.das_praktikum_von_lea",
+      "de.story.peter_und_die_pommes",
+      "de.story.das_handy_auf_der_bank",
+      "de.story.ein_fall_fuer_frau_weber",
+      "de.story.die_hochzeit_von_tante_lisa",
+      "de.story.ben_beim_arzt",
+      "de.story.wo_ist_mein_handy",
+      "de.story.ein_abend_im_kino",
+      "de.story.ein_tag_am_see",
+      "de.story.der_neue_job"
     ],
-    "reason": "QC 2026-10-29b §2.3: band-1 story audio only — the first stories of the reading order (here the three A1-2 stories and the first A2-1 one; PR stories-topup-es adds eight A1-2 stories ahead of the A2-1 ones and extends the list to 12) bundle sentence audio at 24 kbps (≈ 2.5 MB projected, de ≈ 8.1 MB, under the 12 MB cap); every other story is read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md)."
+    "reason": "QC 2026-10-29b §2.3 + Opus (CI-proven 2026-10-30, PR #51): band-1 story audio only — the first 18 stories of the reading order after the A1-0 micro-stories (the eleven A1-2 stories, then the first A2-1 ones) bundle sentence audio as Opus 16 kbps (about the bytes of 12 at MP3 24 kbps, under the 12 MB cap); the micro-stories and every other story are read with the device voice, labelled \"Giọng đọc của máy\" (release/ASSET_DELIVERY.md)."
   },
   "note": "Pinned TTS sources for the German reception audio (P3d-de, QC 2026-10-29): the two Piper voices of the de voice cast (content/audio/pack-audio-manifest.json courses.de-vi.voiceCast, A thorsten-high, B kerstin-low), with the same pins as the pack manifest; verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
   "engines": "content/audio/engines.json",

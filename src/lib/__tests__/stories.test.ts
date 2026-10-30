@@ -21,8 +21,8 @@ const card = {} as FsrsCardState;
 const cardsFor = (ids: Iterable<string>) => Object.fromEntries([...ids].map((id) => [`${id}|recognize`, card]));
 
 describe("compiled stories of the shipped courses", () => {
-  test("es-vi has 20 + 6 micro, fr-vi and fr-en 10 + 6 each, with the capability; basic packs have none", () => {
-    expect(storyList("es-vi").length).toBe(26);
+  test("es-vi has 46 + 6 micro, fr-vi and fr-en 10 + 6 each, with the capability; basic packs have none", () => {
+    expect(storyList("es-vi").length).toBe(52);
     expect(storyList("fr-vi").length).toBe(16);
     expect(storyList("fr-en").length).toBe(16);
     for (const id of ["es-vi", "fr-vi", "de-vi"]) expect(storyList(id).filter((s) => s.band === "A1-0")).toHaveLength(6);
@@ -41,7 +41,7 @@ describe("compiled stories of the shipped courses", () => {
   test("reading order is by band; levels are shown as 1–4, never CEFR labels", () => {
     const levels = storyList("es-vi").map(storyLevel);
     expect(levels).toEqual([...levels].sort((a, b) => a - b));
-    expect(new Set(levels)).toEqual(new Set([1, 2]));
+    expect(new Set(levels)).toEqual(new Set([1, 2, 3])); // A1-0 and A1-1 read as 1; the top-up adds A2-1 (3)
   });
 
   test("every new word and every tappable word has a gloss in the course's lexicon", () => {

@@ -9,7 +9,7 @@
 
 import { readFileSync } from "fs";
 
-import { assetFileName, encodeOptions, opusKbpsOf, type AudioCodec } from "../audio-codec";
+import { assetFileName, encodeOptions, OPUS_LIMITER, opusKbpsOf, type AudioCodec } from "../audio-codec";
 import { isShortTranscript, shq } from "../piper-audio";
 import { readJson } from "../pipeline";
 
@@ -55,10 +55,11 @@ export type ScriptClip = {
  */
 export const SHORT_CLIP_PAD_MS = 120;
 
-/** The encode-time audio filter of a clip: loudness normalisation (v ≥ 2), then the short-word padding. */
-export function encodeFilter(clip: Pick<ScriptClip, "pipelineVersion" | "segments">, loudness: EnginesDoc["loudness"]): string | null {
+/** The encode-time audio filter of a clip: loudness normalisation (v ≥ 2), the Opus peak limiter, then the short-word padding. */
+export function encodeFilter(clip: Pick<ScriptClip, "pipelineVersion" | "segments" | "codec">, loudness: EnginesDoc["loudness"]): string | null {
   const parts: string[] = [];
   if (clip.pipelineVersion >= 2) parts.push(`loudnorm=I=${loudness.integratedLufs}:TP=${loudness.truePeakDb}:LRA=${loudness.loudnessRange}`);
+  if (clip.codec === "opus") parts.push(OPUS_LIMITER);
   if (isShortTranscript(clip.segments.map((s) => s.text).join(" "))) parts.push(`adelay=${SHORT_CLIP_PAD_MS}:all=1`, `apad=pad_dur=${SHORT_CLIP_PAD_MS / 1000}`);
   return parts.length === 0 ? null : parts.join(",");
 }

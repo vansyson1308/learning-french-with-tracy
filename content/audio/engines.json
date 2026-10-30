@@ -86,9 +86,9 @@
     "channels": 1,
     "mp3Kbps": 64,
     "mp3KbpsFromVersion": { "3": 32, "4": 24 },
-    "codecByLayer": { "pack": "mp3", "lexicon": "mp3", "reception": "mp3", "story": "mp3" },
+    "codecByLayer": { "pack": "mp3", "lexicon": "mp3", "reception": "mp3", "story": "opus" },
     "opusKbps": 16,
     "mp3OnlyLanguages": ["fr"],
-    "codecNote": "codecByLayer is the one codec switch (scripts/lib/audio-codec.ts). story flips to opus only after CI proves Opus playback on device-acceptance API 30 + 34 and the web e2e (release/ASSET_DELIVERY.md). French stays MP3 (mp3OnlyLanguages)."
+    "codecNote": "codecByLayer is the one codec switch (scripts/lib/audio-codec.ts). story is opus since CI proved Opus playback on device-acceptance API 30 + 34 and the web e2e (PR #51, run 40938703786 + 40938703758, 2026-10-30; release/ASSET_DELIVERY.md). French stays MP3 (mp3OnlyLanguages)."
   }
 }

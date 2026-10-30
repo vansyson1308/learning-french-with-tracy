@@ -6,7 +6,7 @@ import { describe, expect, test } from "bun:test";
 
 import { applicable, batchIndices, checkText, touchedStrings, unallowed, unusedAllowances, type LanguageToolAllow, type LtFinding } from "../languagetool";
 import { readJson } from "../lib/pipeline";
-import { collectTargetStrings, uniqueTargetStrings } from "../lib/target-strings";
+import { collectStoryStrings, collectTargetStrings, uniqueTargetStrings } from "../lib/target-strings";
 
 const finding = (rule: string, match: string, text: string): LtFinding => ({
   rule,
@@ -43,10 +43,12 @@ describe("LanguageTool gate", () => {
     expect(unusedAllowances([finding("MAS", "mas", "nada mas")], a)).toHaveLength(0);
   });
 
-  test("the committed allow file gives every entry a reason", () => {
-    const a = readJson("content/es/languagetool-allow.json") as LanguageToolAllow;
-    expect(a.language).toBe("es");
-    for (const e of [...a.allow, ...a.disabledRules]) expect(e.reason.length).toBeGreaterThanOrEqual(10);
+  test("the committed allow files give every entry a reason", () => {
+    for (const [lang, language] of [["es", "es"], ["de", "de-DE"], ["fr", "fr"]] as const) {
+      const a = readJson(`content/${lang}/languagetool-allow.json`) as LanguageToolAllow;
+      expect(a.language).toBe(language);
+      for (const e of [...a.allow, ...a.disabledRules]) expect(e.reason.length).toBeGreaterThanOrEqual(10);
+    }
   });
 });
 
@@ -71,6 +73,24 @@ describe("target strings (es-vi)", () => {
     expect(texts.has("tình bạn")).toBe(false);
     expect(texts.has("targetToNative")).toBe(false);
     expect(texts.has("es-ES")).toBe(false);
+  });
+
+  test("collects every graded story's title and sentences, and no native story text", () => {
+    const stories = readJson("content/es/stories/stories.json") as { stories: { id: string; title: string; sentences: { text: string; translation: { vi: string } }[] }[] };
+    const fromStories = all.filter((s) => s.where.startsWith("content/es/stories/stories.json"));
+    expect(fromStories.length).toBe(stories.stories.reduce((n, s) => n + 1 + s.sentences.length, 0));
+    const first = stories.stories[0];
+    expect(fromStories).toContainEqual({ text: first.title, where: `content/es/stories/stories.json:${first.id}.title`, key: "title" });
+    expect(fromStories).toContainEqual({ text: first.sentences[0].text, where: `content/es/stories/stories.json:${first.id}#1`, key: "text" });
+    expect(texts.has(first.sentences[0].translation.vi)).toBe(false);
+  });
+
+  test("the stories scope checks the stories only (the French gate); German and French stories are collected too", () => {
+    const fr = collectTargetStrings("fr-vi", "stories");
+    expect(fr.length).toBeGreaterThan(0);
+    expect(fr.every((s) => s.where.startsWith("content/fr/stories/stories.json:"))).toBe(true);
+    expect(collectTargetStrings("de-vi").some((s) => s.where.startsWith("content/de/stories/stories.json:"))).toBe(true);
+    expect(collectStoryStrings("xx")).toEqual([]);
   });
 
   test("dedupes with every location kept", () => {

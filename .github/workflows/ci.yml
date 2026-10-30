@@ -146,6 +146,12 @@ jobs:
         run: bun scripts/languagetool.ts --course es-vi --server http://localhost:8081
       - name: LanguageTool gate (de-vi)
         run: bun scripts/languagetool.ts --course de-vi --server http://localhost:8081 --json "$RUNNER_TEMP/lt-de-vi.json"
+      # French: the graded stories only (content/fr/stories/stories.json, shared by fr-en and
+      # fr-vi). The rest of the French course is frozen byte-identical (CLAUDE.md §4), so
+      # its findings could only be allowed, never fixed; the stories are the French text
+      # that still grows.
+      - name: LanguageTool gate (fr stories)
+        run: bun scripts/languagetool.ts --course fr-vi --scope stories --server http://localhost:8081
       - name: LanguageTool server log (on failure)
         if: failure()
         run: tail -n 80 "$RUNNER_TEMP/lt.log" || true

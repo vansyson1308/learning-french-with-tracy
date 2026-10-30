@@ -51,4 +51,6 @@ is fully satisfied; it becomes `v1.0.0`.
   inherited identity and the untraceable audio, and were superseded by the
   provenance-clean regeneration.
 
+- **2026-10-30: story audio becomes Opus (es, de).** CI proved Opus playback on API 30, API 34 and web (PR #51, `release/ASSET_DELIVERY.md`). `codecByLayer.story` is `"opus"`: es and de story sentences ship as Ogg Opus 16 kbps, and the band-1 lists go from 12 to 18 stories. French story audio stays MP3, byte-identical. The APK's audio content changes, so the next RC needs device acceptance again; iOS Opus playback is unchecked.
+
 - **P3g (2026-10-27): phone APK shape.** Phone/sideload builds use `plan/scripts/build-phone-apk.sh` (arm64-v8a + armeabi-v7a only): 84.0 MB on the P3g commit vs the 133.7 MB universal RC4 build. The CI QA APK (`android-release-build.yml`) and the P3h emulator suite build x86_64; the store build is an AAB with ABI splits.

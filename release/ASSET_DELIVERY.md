@@ -73,13 +73,21 @@ Declared per language in `content/<lang>/reception/audio-source-manifest.json`:
   (≈ 1.4 MB) and are read with the device voice. The es story top-up
   (QC 2026-10-29b §4) adds text-only stories.
 
-## Opus for story sentences: measured, decision pending playback check
-**Decision pending playback check.** MP3 stays the shipped format. Opus is
-adopted only when CI shows expo-audio (Media3) playing it on emulator API 30
-and API 34 and in the web build: playback events, no decoder error, slow mode
-intelligible. iOS playback of Ogg Opus is not checked either. The check is
-built (below) but has not run in CI, so nothing here claims that Opus plays on
-a device.
+## Opus for story sentences: adopted 2026-10-30 (CI-proven)
+**Decided: story sentences of es and de ship as Opus 16 kbps; French stays
+MP3.** The playback check passed in one CI run (PR #51, head 89e3be8):
+
+| Where | Run | Result |
+|---|---|---|
+| device-acceptance `lessons`, API 30 | 40938703786 | `LFT_DIAG_OPUS verdict=pass`; normal: loaded, playing, finished at rate 1; slow: rate 0.85, finished; error=none; 2.549 s |
+| device-acceptance `lessons`, API 34 | 40938703786 | `verdict=pass`, same events; error=none |
+| ci.yml "Opus playback E2E (web tier)" | 40938703758 | 12/12 checks, verdict PASS at rate 1 and slow mode; no decoder or page error |
+
+The release web export held no diagnostics route and no Opus fixture.
+iOS playback of Ogg Opus is still **not** checked. The switch below is
+Android and web only.
+
+The rest of this section is kept as the record of how the decision was made.
 
 Sizes measured on 2026-10-29 with ffmpeg 7.1 and libopus (mono, VBR,
 `-application voip`). The sample was 60 committed story sentences per
@@ -170,8 +178,14 @@ Flip only after one CI run shows all three of these green: device-acceptance
 5. Record the switch in `release/RC_HISTORY.md`, because the APK content
    changes, and re-run device acceptance on the new RC.
 
-Until then, nothing ships as Opus, and this document claims no Opus playback
-beyond the local web run above.
+**Done 2026-10-30 (PR stories-topup-es):**
+- step 1: `codecByLayer.story` is `"opus"`;
+- step 3: French is unchanged;
+- step 4: the band-1 lists for es and de are 18 stories each, after the A1-0 micro-stories (read with the device voice), and `STORY_AUDIO_MAX_BUNDLED` is 18;
+- step 5: recorded in `release/RC_HISTORY.md`.
+
+The es and de audio runs render the `.opus` files. Their sizes and
+`audio:check` results are in that PR.
 
 ## Fallbacks without bundled audio
 - **Stories outside band 1:** the device voice, labelled "Giọng đọc của máy".

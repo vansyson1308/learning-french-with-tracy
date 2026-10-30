@@ -1,6 +1,6 @@
 {
   "generator": "scripts/lib/context-coverage.ts",
-  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it",
+  "rule": "a syllabus lexeme has context when a lesson exercise grades it, a reading or listening clip references it, or a graded story uses it — counted only from sources whose band is at or below the lexeme's CEFR level (lesson: its unit's band; reading/clip: the earliest unit using it, else the level's last band; story: its band)",
   "level": "A1",
   "syllabus": 2,
   "withContext": 2,
@@ -11,12 +11,14 @@
     "listening": 1,
     "stories": 0
   },
+  "aboveLevelOnly": 0,
   "units": [
     {
       "unitId": "xx-en:unit-1",
       "total": 2,
       "withContext": 2,
-      "missing": []
+      "missing": [],
+      "aboveLevelOnly": []
     }
   ]
 }
