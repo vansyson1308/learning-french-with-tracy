@@ -107,6 +107,8 @@ describe("pickCast", () => {
 describe("committed German cast", () => {
   test("voice-casts.json: de cast A and B are different speakers", () => {
     const casts = JSON.parse(readFileSync(safeResolve("content/audio/voice-casts.json"), "utf8")) as { languages: Record<string, { cast: { A: string | null; B: string | null } }> };
-    expect(casts.languages.de.cast).toEqual({ A: "de_DE-thorsten-high", B: "de_DE-kerstin-low" });
+    const { A, B } = casts.languages.de.cast;
+    // D-11: empty only between the old cast's removal and the canary's selection.
+    if (A !== null) expect(A).not.toBe(B);
   });
 });
