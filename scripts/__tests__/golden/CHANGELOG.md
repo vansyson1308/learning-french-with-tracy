@@ -1052,3 +1052,15 @@ A refactor must never appear in this file; only deliberate French changes do.
 - compile: new      src/content/writing/it-writing.json
 - compile: new      lexicon-db:it-en:it-en-lexicon-v3-a0f634dbabe0cb2c.db
 - compile: new      lexicon-db:it:it-lexicon-v3-039b57df3447c90f.db
+
+## 2026-10-30 — audio.yml it generate (all) run 41126080727
+
+- compile: changed  content/reports/audio-size.json
+- compile: changed  content/reports/it/audio-census.json
+- compile: changed  content/reports/it/audio-quality.json
+- compile: changed  content/reports/it/reception-audio-census.json
+- compile: changed  src/content/packs/it-vi.json
+- compile: changed  src/content/reception/it-clip-assets.ts
+- compile: changed  src/content/reception/it-listening.json
+- compile: changed  src/content/stories/it-stories.json
+- compile: changed  src/content/stories/it-story-assets.ts
