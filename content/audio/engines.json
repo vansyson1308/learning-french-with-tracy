@@ -31,6 +31,28 @@
       "lineage": [{ "model": "Kokoro-82M v1.0", "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)", "licence": "Apache-2.0", "url": "https://huggingface.co/hexgrad/Kokoro-82M", "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data" }],
       "note": "Kokoro-82M (Apache-2.0, trained on permissive / non-copyrighted audio per the model card). Non-English G2P is thin (espeak-ng fallback for es/it/pt/fr); VOICES.md grades ja C+ / zh D — the canary audit decides. No Korean, no Vietnamese."
     },
+    "parler": {
+      "package": "parler-tts",
+      "pinnedCommit": "d108732cd57788ec86bc857d99a6cabd66663d68",
+      "license": "Apache-2.0",
+      "url": "https://github.com/huggingface/parler-tts",
+      "modelRepository": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1",
+      "modelRevision": "11b27d57855dec1ce0914ba1f12363bf2ea75ba3",
+      "modelLicense": "Apache-2.0",
+      "descriptionRepository": "https://huggingface.co/google/flan-t5-large",
+      "descriptionRevision": "0613663d0d48ea86ba8cb3d7a44f0f65dc596a2a",
+      "install": ["pip install \"git+https://github.com/huggingface/parler-tts.git@d108732cd57788ec86bc857d99a6cabd66663d68\" soundfile"],
+      "sampleRateHz": 44100,
+      "lineage": [
+        { "model": "Parler-TTS Mini Multilingual v1.1", "dataset": "CML-TTS, cleaned", "licence": "CC-BY-4.0", "url": "https://huggingface.co/datasets/PHBJT/cml-tts-filtered" },
+        { "model": "Parler-TTS Mini Multilingual v1.1", "dataset": "Multilingual LibriSpeech, non-English", "licence": "CC-BY-4.0", "url": "https://huggingface.co/datasets/PHBJT/mls-annotated" },
+        { "model": "Parler-TTS Mini Multilingual v1.1", "dataset": "LibriTTS-R", "licence": "CC-BY-4.0", "url": "https://huggingface.co/datasets/parler-tts/libritts_r_filtered" },
+        { "model": "Parler-TTS Mini Multilingual v1.1 weights", "dataset": "the checkpoint itself", "licence": "Apache-2.0", "url": "https://huggingface.co/parler-tts/parler-tts-mini-multilingual-v1.1", "quote": "This model is permissively licensed under the Apache 2.0 license." },
+        { "model": "Flan-T5 large (text encoder)", "dataset": "the checkpoint itself", "licence": "Apache-2.0", "url": "https://huggingface.co/google/flan-t5-large" },
+        { "model": "DAC 44 kHz (audio codec)", "dataset": "the checkpoint itself", "licence": "MIT", "url": "https://huggingface.co/parler-tts/dac_44khZ_8kbps", "quote": "Weights are released as part of this repo under MIT license." }
+      ],
+      "note": "Parler-TTS Mini Multilingual v1.1 (D-11): named speakers for languages with no clean Kokoro or Piper voice. Slower than the other engines on the runner's CPU: the helper prints the real-time factor."
+    },
     "melotts": {
       "package": "melotts",
       "gitRepository": "https://github.com/myshell-ai/MeloTTS",

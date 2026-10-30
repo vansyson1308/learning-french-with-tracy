@@ -13,6 +13,7 @@
  *      corpus count as one speaker unless (1) declares them apart);
  *   3. Kokoro: the voice pack (`kokoro-<lang><f|m>_<name>`), gender from the id;
  *   4. MeloTTS: model + speaker key.
+ *   5. Parler: the named speaker.
  * Unknown identity (no card, an unpinned multi-speaker voice) is treated as
  * "maybe the same speaker": fail-safe — no B rather than a fake pair.
  */
@@ -85,6 +86,9 @@ export function speakerIdentity(
       gender = gender ?? (m[2] === "f" ? "female" : "male");
       basis = `Kokoro voice pack ${m[1]}${m[2]}_${m[3]}`;
     } else basis = "unrecognised Kokoro voice id";
+  } else if (voice.engine === "parler") {
+    key = pinned === null ? null : `parler:${pinned}`;
+    basis = pinned === null ? "Parler voice with no named speaker" : `Parler speaker ${pinned}`;
   } else {
     key = `melotts:${voice.id}#${pinned ?? "default"}`;
     basis = `MeloTTS ${voice.id} speaker ${pinned ?? "default"}`;

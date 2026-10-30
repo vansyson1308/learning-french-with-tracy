@@ -32,7 +32,7 @@ export function piperLineageVerdict(cardText: string): GateVerdict {
 
 const badLinks = (links: LineageLink[]) => links.filter((l) => !ALLOWED_LICENSES.includes(l.licence));
 
-/** Kokoro and MeloTTS voices share their engine's model: the lineage is declared per engine in content/audio/engines.json. */
+/** Kokoro, MeloTTS and Parler voices share their engine's model: the lineage is declared per engine in content/audio/engines.json. */
 export function engineLineageVerdict(engine: string, links: LineageLink[] | undefined): GateVerdict {
   if (!links || links.length === 0) return { ok: false, matched: null, reason: `${engine}: no declared lineage` };
   const bad = badLinks(links);
@@ -46,6 +46,7 @@ export type ManifestVoice = { id: string; engine?: string; language: string; sta
 export function registryIdFor(voice: ManifestVoice): string {
   if ((voice.engine ?? "piper") === "piper") return `piper-voice-${voice.files.model.path.split("/")[2]}`;
   if (voice.engine === "kokoro") return `kokoro-voice-${voice.id.replace(/^kokoro-/, "")}`;
+  if (voice.engine === "parler") return `parler-voice-${voice.id.replace(/^parler-/, "")}`;
   return `melotts-${voice.language}`;
 }
 

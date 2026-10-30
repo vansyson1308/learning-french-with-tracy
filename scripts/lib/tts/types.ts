@@ -9,7 +9,7 @@
 import type { CodecSettings } from "../audio-codec";
 import type { LineageLink } from "../voice-lineage";
 
-export type EngineId = "piper" | "kokoro" | "melotts";
+export type EngineId = "piper" | "kokoro" | "melotts" | "parler";
 
 /** A pinned file of a voice (downloaded twice at recon; hashes must agree). */
 export type PinnedFile = { path: string; sha256: string | null; bytes: number | null };
@@ -38,6 +38,7 @@ export type EnginesDoc = {
     piper: { package: string; pinnedVersion: string; voicesRepository: string; voicesRevision: string; install: string[]; sampleRateHz: number };
     kokoro: { package: string; pinnedVersion: string; g2pPackage: string; g2pPinnedVersion: string; modelRepository: string; modelRevision: string; modelFile: string; configFile: string; install: string[]; langCodes: Record<string, string>; sampleRateHz: number; lineage?: LineageLink[] };
     melotts: { gitRepository: string; pinnedCommit: string; models: Record<string, { repository: string; revision: string | null; language: string; defaultSpeaker: string }>; install: string[]; sampleRateHz: number; lineage?: LineageLink[] };
+    parler: { package: string; pinnedCommit: string; modelRepository: string; modelRevision: string; descriptionRepository: string; descriptionRevision: string; install: string[]; sampleRateHz: number; lineage?: LineageLink[] };
   };
   asr: {
     whisper: { package: string; pinnedVersion: string; models: { canary: string; generate: string } };

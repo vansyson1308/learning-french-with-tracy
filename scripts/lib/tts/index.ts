@@ -15,12 +15,13 @@ import { readJson } from "../pipeline";
 
 import { kokoroEngine } from "./kokoro";
 import { melottsEngine } from "./melotts";
+import { parlerEngine } from "./parler";
 import { piperEngine } from "./piper";
 import type { EngineId, EnginesDoc, SynthJob, TtsEngine, Voice } from "./types";
 
 export * from "./types";
 
-const ENGINES: Record<EngineId, TtsEngine> = { piper: piperEngine, kokoro: kokoroEngine, melotts: melottsEngine };
+const ENGINES: Record<EngineId, TtsEngine> = { piper: piperEngine, kokoro: kokoroEngine, melotts: melottsEngine, parler: parlerEngine };
 
 export function engineFor(id: EngineId): TtsEngine {
   const e = ENGINES[id];

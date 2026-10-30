@@ -722,6 +722,21 @@ function registryEntryFor(voice: Voice, license: string, courseId: string, best:
       lineage: engineLineage("kokoro"),
     };
   }
+  if (engine === "parler") {
+    const p = engines.engines.parler;
+    return {
+      id: `parler-voice-${voice.id.replace(/^parler-/, "")}`,
+      name: `Parler-TTS Mini Multilingual speaker ${voice.speaker} (${voice.language})`,
+      kind: "neural TTS voice used at pipeline time to synthesize bundled course audio",
+      license,
+      url: `${p.modelRepository}/tree/${p.modelRevision}`,
+      attribution: `Course audio for ${courseId} synthesized with Parler-TTS Mini Multilingual v1.1 (Hugging Face, Apache-2.0), speaker ${voice.speaker}; trained on CML-TTS, Multilingual LibriSpeech and LibriTTS-R (CC BY 4.0). Model pinned at repository revision ${p.modelRevision}; the model card is preserved verbatim in content/audio/model-cards/.`,
+      retrievedAt: today,
+      covers: [`assets/audio/${voice.language}/`, `content/audio/model-cards/${voice.language}/${voice.id}.card.txt`],
+      notes: `Selected by the audio canary ASR audit (mean WER/CER ${best.meanWer} over ${best.clips} sampled strings, ${best.technicalFailures} technical failures). Model weights are never committed.`,
+      lineage: engineLineage("parler"),
+    };
+  }
   const model = engines.engines.melotts.models[voice.language];
   return {
     id: `melotts-${voice.language}`,
