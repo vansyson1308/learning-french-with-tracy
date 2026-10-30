@@ -270,7 +270,9 @@
               "en": "you like football"
             },
             "variants": [
-              "mi piace il calcio"
+              "mi piace il calcio",
+              "mi piace molto il calcio",
+              "a me piace il calcio"
             ],
             "cueProvided": false
           }
@@ -442,7 +444,9 @@
             },
             "variants": [
               "il gatto è piccolo",
-              "un gatto piccolo"
+              "un gatto piccolo",
+              "un piccolo gatto",
+              "il gatto piccolo"
             ],
             "cueProvided": false
           },
@@ -454,7 +458,9 @@
             },
             "variants": [
               "la casa è grande",
-              "una casa grande"
+              "una casa grande",
+              "una grande casa",
+              "la casa grande"
             ],
             "cueProvided": false
           }
@@ -525,7 +531,8 @@
               "salve",
               "caro",
               "cara",
-              "buongiorno"
+              "buongiorno",
+              "buonasera"
             ],
             "cueProvided": false
           },
@@ -617,7 +624,8 @@
               "salve",
               "caro",
               "cara",
-              "buongiorno"
+              "buongiorno",
+              "buonasera"
             ],
             "cueProvided": false
           },
@@ -639,7 +647,8 @@
               "en": "arrival time"
             },
             "variants": [
-              "alle otto"
+              "alle otto",
+              "alle 20"
             ],
             "cueProvided": true
           }
@@ -717,7 +726,12 @@
               "a presto",
               "a domani",
               "un abbraccio",
-              "a sabato"
+              "a sabato",
+              "a dopo",
+              "a più tardi",
+              "saluti",
+              "baci",
+              "un bacio"
             ],
             "cueProvided": false
           }
@@ -801,7 +815,12 @@
               "a presto",
               "a domani",
               "un abbraccio",
-              "a sabato"
+              "a sabato",
+              "a dopo",
+              "a più tardi",
+              "saluti",
+              "baci",
+              "un bacio"
             ],
             "cueProvided": false
           }
@@ -953,7 +972,8 @@
             "variants": [
               "gentile",
               "buongiorno",
-              "salve"
+              "salve",
+              "buonasera"
             ],
             "cueProvided": false
           },
@@ -964,7 +984,8 @@
               "en": "a room"
             },
             "variants": [
-              "camera"
+              "camera",
+              "stanza"
             ],
             "cueProvided": false
           },
@@ -2679,7 +2700,7 @@
         "maxTokens": 45
       },
       "modelAnswers": [
-        "La mia camera è piccola ma bella. C'è un letto, un tavolo e una grande finestra. La sera studio l'italiano in questa stanza grande."
+        "La mia camera è piccola ma bella. C'è un letto, un tavolo e una grande finestra. La sera studio l'italiano in questa stanza."
       ],
       "objectiveRefs": [
         "it.obj.writing.phrases_sentences"

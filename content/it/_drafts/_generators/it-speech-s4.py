@@ -40,7 +40,7 @@ ITEMS = {
   ("time", "information_prompt", "Có người hỏi giờ. Hãy nói giờ.", "Sono le otto.", ["Sono le otto", "Le otto", "Otto"], "Bây giờ là tám giờ.", [("Giờ", "8:00")], "🕗"),
   ("rep_mezza", "repetition", None, "Sono le due e mezza.", ["Sono le due e mezza", "Sono le due e mezzo"], "Bây giờ là hai giờ rưỡi.", None, None),
   ("day", "information_prompt", "Hãy nói hôm nay là thứ mấy.", "Oggi è lunedì.", ["Oggi è lunedì", "Lunedì"], "Hôm nay là thứ Hai.", [("Hôm nay", "thứ Hai")], None),
-  ("age", "information_prompt", "Hãy nói tuổi của bạn.", "Ho venti anni.", ["Ho venti anni", "Venti anni"], "Tôi hai mươi tuổi.", [("Tuổi", "20")], None),
+  ("age", "information_prompt", "Hãy nói tuổi của bạn.", "Ho vent'anni.", ["Ho venti anni", "Venti anni", "Vent'anni"], "Tôi hai mươi tuổi.", [("Tuổi", "20")], None),
  ],
  "n": [
   ("rep_grande", "repetition", None, "La casa è grande.", ["La casa è grande"], "Ngôi nhà lớn.", None, None),

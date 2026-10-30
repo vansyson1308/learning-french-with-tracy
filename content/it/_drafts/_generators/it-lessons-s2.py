@@ -67,7 +67,7 @@ L["ub-l0"] = [("concept", k("essere-avere")), ("conj", "Io ___ Anna.", "essere",
   ("conj", "Marco ___ a casa.", "essere", "pre:3s", "Marco ở nhà."), ("conj", "Noi ___ una famiglia.", "essere", "pre:1p", "Chúng tôi là một gia đình."), ("conj", "Voi ___ qui.", "essere", "pre:2p", "Các bạn ở đây."),
   ("conj", "Io ___ una macchina.", "avere", "pre:1s", "Tôi có một chiếc xe ô tô."), ("conj", "Tu ___ un cane.", "avere", "pre:2s", "Bạn có một con chó."), ("conj", "Noi ___ tempo.", "avere", "pre:1p", "Chúng tôi có thời gian."),
   ("concept", k("c-e-ci-sono")), ("fill", "___ un bar qui vicino.", "C'è", ["Ci sono", "Ha", "Sono"], "Gần đây có một quán bar."), ("fill", "___ due letti.", "Ci sono", ["C'è", "Hanno", "È"], "Có hai cái giường."),
-  ("t2n", "essere", ["avere", "parlare", "andare"]), ("type", "Tôi hai mươi tuổi.", "Ho venti anni.", ["Ho venti anni"])]
+  ("t2n", "essere", ["avere", "parlare", "andare"]), ("type", "Tôi hai mươi tuổi.", "Ho vent'anni.", ["Ho venti anni."])]
 L["ub-l1"] = [("concept", k("present-regular")), ("conj", "Io ___ a Hanoi.", "abitare", "pre:1s", "Tôi sống ở Hà Nội."), ("conj", "Lei ___ a Roma.", "lavorare", "pre:3s", "Cô ấy làm việc ở Roma."),
   ("conj", "Tu ___ qui.", "lavorare", "pre:2s", "Bạn làm việc ở đây."), ("conj", "Noi ___ a Milano.", "abitare", "pre:1p", "Chúng tôi sống ở Milano."), ("conj", "Marco ___ il giornale.", "leggere", "pre:3s", "Marco đọc báo."),
   ("conj", "Voi ___ bene.", "dormire", "pre:2p", "Các bạn ngủ ngon."), ("concept", k("subject-drop")), ("wb", "Tôi nói tiếng Ý.", "Parlo italiano.", ["parla", "parli", "non"]),

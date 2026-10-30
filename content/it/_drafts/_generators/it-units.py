@@ -214,7 +214,7 @@ unit(2, "unit-c", "uc", "Từ quốc tế & Bạn giả", "Từ bạn đã biế
 ### Từ quốc tế
 Bạn đã biết sẵn nhiều từ: *il taxi*, *il computer*, *il film*, *il bar*, *la musica*. Tiếng Ý cũng cho thế giới nhiều từ: *la pizza*, *la pasta*.
 
-Từ mượn kết thúc bằng phụ âm thường không đổi ở số nhiều: *i film*, *i computer*, *i bar*, *i taxi*.
+Từ mượn thường không đổi ở số nhiều: *i film*, *i computer*, *i bar*, *i taxi*.
 
 ### Bạn giả với tiếng Anh
 Nếu bạn biết tiếng Anh, hãy cẩn thận:
@@ -229,6 +229,9 @@ Nếu bạn biết tiếng Anh, hãy cẩn thận:
 
 ### Quán bar ở Ý
 *il bar* là nơi uống cà phê buổi sáng, không chỉ là nơi uống rượu.
+
+### Tầng nhà
+*il primo piano* là tầng ngay trên tầng trệt (*il piano terra*), nên có thể khác với cách đếm tầng ở Việt Nam.
 """, [("il taxi", "🚕"), ("il computer", "💻"), ("il film", "🎬"), ("il bar", "🍸"), ("il ristorante", "🍴"), ("la musica", "🎵"), ("il cinema", "🎦"), ("la camera", "🛏️"), ("il telefono", "☎️"), ("l'università", "🎓"), ("la foto", "📷"), ("il problema", "❓")],
      [("Từ quốc tế", O("strategy.cognates_false_friends", "vocab.everyday_basics")), ("Bạn giả", O("strategy.cognates_false_friends")), ("Giống của từ mượn", O("articles.definite", "strategy.cognates_false_friends")), ("Ôn: đoán nghĩa", O("strategy.cognates_false_friends", "vocab.everyday_basics"))])
 
@@ -250,7 +253,7 @@ Viết liền thành một từ: *ventidue*, *trentacinque*. Hai điều cần n
 - Số tận cùng bằng 3 có dấu: *ventitré*, *trentatré*.
 
 ### Tuổi và giá
-Tiếng Ý dùng **avere** để nói tuổi: *Ho venti anni* (nghĩa đen: "tôi có hai mươi năm").
+Tiếng Ý dùng **avere** để nói tuổi: *Ho vent'anni* (nghĩa đen: "tôi có hai mươi năm").
 *Euro* không đổi ở số nhiều: *un euro*, *dieci euro*. *Quanto costa?* — Giá bao nhiêu?
 
 ### Giờ
@@ -323,7 +326,7 @@ Tin nhắn thường có lời chào, một thông tin và lời kết:
 *Ciao Anna! Sono al bar in piazza. A presto, Marco*
 
 ### Dấu hiệu từ
-Ngày và giờ thường đi với *a* hoặc *alle*: *alle otto* — lúc tám giờ, *a marzo* — vào tháng Ba.
+Giờ và tháng thường đi với *alle* hoặc *a*: *alle otto* — lúc tám giờ, *a marzo* — vào tháng Ba. Thứ trong tuần không cần giới từ: *lunedì* — vào thứ Hai.
 """, [("aperto", "🔓"), ("chiuso", "🔒"), ("l'ingresso", "➡️"), ("l'uscita", "⬅️"), ("l'orario", "🗓️"), ("il messaggio", "📩"), ("il negozio", "🏪")],
      [("Tin nhắn ngắn", O("reading.short_messages", "reading.familiar_words")), ("Biển báo", O("reading.notices_info")), ("Giờ mở cửa", O("reading.notices_info", "numbers.0_100")), ("Ôn: tìm thông tin", O("reading.notices_info", "reading.short_messages"))])
 
@@ -364,7 +367,7 @@ Hai giọng khác nhau trò chuyện vài câu. Bạn cần hiểu **họ nói v
 ### Cuộc trò chuyện hay gặp
 - *Come ti chiami?* — *Mi chiamo Luca.*
 - *Di dove sei?* — *Sono di Hanoi.*
-- *Quanti anni hai?* — *Ho venti anni.*
+- *Quanti anni hai?* — *Ho vent'anni.*
 - *Quanto costa?* — *Due euro.*
 
 ### Từ nhỏ mà hữu ích
@@ -432,7 +435,7 @@ unit(4, "unit-l", "ul", "Mi presento", "Nói về bản thân từng câu ngắn
 - *Sono vietnamita.* — Tôi là người Việt Nam.
 - *Sono di Hanoi.* — Tôi đến từ Hà Nội.
 - *Abito a Roma.* — Tôi sống ở Roma.
-- *Ho venti anni.* — Tôi hai mươi tuổi.
+- *Ho vent'anni.* — Tôi hai mươi tuổi.
 - *Parlo vietnamita e un po' di italiano.* — Tôi nói tiếng Việt và một chút tiếng Ý.
 - *Lavoro in un negozio.* / *Studio all'università.*
 - *Mi piace la musica.* — Tôi thích âm nhạc.

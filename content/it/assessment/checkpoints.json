@@ -56,13 +56,13 @@
             "prompt": "Bạn rời khỏi một cửa hàng. Bạn nói gì?",
             "options": [
               {
-                "text": "Buongiorno!"
+                "text": "Buonanotte!"
               },
               {
                 "text": "Arrivederci!"
               },
               {
-                "text": "Ciao!"
+                "text": "Benvenuto!"
               },
               {
                 "text": "Prego!"
@@ -1420,7 +1420,9 @@
             "target": "Buonasera",
             "acceptedVariants": [
               "Buonasera",
-              "Salve, buonasera"
+              "Salve, buonasera",
+              "Salve",
+              "Buona sera"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1501,7 +1503,9 @@
             "acceptedVariants": [
               "Mi chiamo Lan",
               "Il mio nome è Lan",
-              "Sono Lan"
+              "Sono Lan",
+              "Io mi chiamo Lan",
+              "Io sono Lan"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1528,11 +1532,13 @@
                 "value": "Việt Nam"
               }
             ],
-            "target": "Sono del Vietnam",
+            "target": "Vengo dal Vietnam",
             "acceptedVariants": [
               "Sono del Vietnam",
               "Vengo dal Vietnam",
-              "Sono vietnamita"
+              "Sono vietnamita",
+              "Io vengo dal Vietnam",
+              "Io sono vietnamita"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1562,7 +1568,9 @@
             "target": "Abito a Padova",
             "acceptedVariants": [
               "Abito a Padova",
-              "Vivo a Padova"
+              "Vivo a Padova",
+              "Io abito a Padova",
+              "Io vivo a Padova"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1654,7 +1662,8 @@
             "target": "Ho venticinque anni",
             "acceptedVariants": [
               "Ho venticinque anni",
-              "Venticinque anni"
+              "Venticinque anni",
+              "Io ho venticinque anni"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -1704,7 +1713,9 @@
             "target": "La macchina è nuova",
             "acceptedVariants": [
               "La macchina è nuova",
-              "È una macchina nuova"
+              "È una macchina nuova",
+              "L'auto è nuova",
+              "È un'auto nuova"
             ],
             "evidenceLexemeRefs": [],
             "revealTargetAfterAttempts": null,
@@ -2990,7 +3001,8 @@
             "acceptedVariants": [
               "Ho due fratelli",
               "Ho due sorelle",
-              "Due"
+              "Due",
+              "Ho un fratello e una sorella"
             ],
             "requiredConcepts": [
               [

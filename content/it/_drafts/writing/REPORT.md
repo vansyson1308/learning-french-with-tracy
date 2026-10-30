@@ -1,6 +1,6 @@
 # writing — ingest report (it-vi)
 
-Records: 36 · schema-valid: 36 · failed: 0 · validator errors after merge: 1
+Records: 36 · schema-valid: 36 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -43,7 +43,7 @@ Records: 36 · schema-valid: 36 · failed: 0 · validator errors after merge: 1
 
 ## Validator errors (fix these records and ingest again)
 
-- writing: it-cpx-cap-write_note_ritardo: cueFacts does not mirror task it.write.a1cap_note_ritardo
+- none
 
 ## Written
 

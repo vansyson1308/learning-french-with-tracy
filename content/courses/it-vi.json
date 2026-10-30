@@ -397,7 +397,8 @@
                   "audioTarget": "La ragazza e il ragazzo.",
                   "answer": "La ragazza e il ragazzo.",
                   "alternatives": [
-                    "La ragazza e il ragazzo"
+                    "La ragazza e il ragazzo",
+                    "La ragazza e il bambino."
                   ]
                 }
               ],
@@ -590,7 +591,10 @@
                   "answer": "Bevo il latte.",
                   "alternatives": [
                     "Bevo il latte",
-                    "Io bevo il latte."
+                    "Io bevo il latte.",
+                    "Bevo latte.",
+                    "Bevo del latte.",
+                    "Io bevo latte."
                   ]
                 }
               ]
@@ -927,7 +931,7 @@
                       "emoji": "🌙"
                     },
                     {
-                      "text": "tạm biệt",
+                      "text": "cảm ơn",
                       "emoji": "🚶"
                     }
                   ],
@@ -1092,7 +1096,10 @@
                   "prompt": "chào",
                   "audioTarget": "ciao",
                   "answer": "ciao",
-                  "alternatives": []
+                  "alternatives": [
+                    "salve",
+                    "buongiorno"
+                  ]
                 }
               ]
             },
@@ -1419,7 +1426,8 @@
                   "audioTarget": "Buonanotte!",
                   "answer": "Buonanotte!",
                   "alternatives": [
-                    "Buonanotte"
+                    "Buonanotte",
+                    "Buona notte!"
                   ]
                 }
               ]
@@ -1620,7 +1628,9 @@
                   "audioTarget": "Arrivederci e grazie.",
                   "answer": "Arrivederci e grazie.",
                   "alternatives": [
-                    "Arrivederci e grazie"
+                    "Arrivederci e grazie",
+                    "Ciao e grazie.",
+                    "Grazie e arrivederci."
                   ]
                 },
                 {
@@ -2049,7 +2059,8 @@
                   "answer": "Non mangio le uova.",
                   "alternatives": [
                     "Non mangio le uova",
-                    "Non mangio uova."
+                    "Non mangio uova.",
+                    "Io non mangio le uova."
                   ]
                 }
               ],
@@ -2275,7 +2286,9 @@
                   "audioTarget": "Mangio la pasta.",
                   "answer": "Mangio la pasta.",
                   "alternatives": [
-                    "Mangio la pasta"
+                    "Mangio la pasta",
+                    "Io mangio la pasta.",
+                    "Mangio pasta."
                   ]
                 },
                 {
@@ -2476,7 +2489,10 @@
                   "audioTarget": "Vorrei un caffè.",
                   "answer": "Vorrei un caffè.",
                   "alternatives": [
-                    "Vorrei un caffè"
+                    "Vorrei un caffè",
+                    "Voglio un caffè.",
+                    "Io voglio un caffè.",
+                    "Io vorrei un caffè."
                   ]
                 }
               ]
@@ -2908,7 +2924,8 @@
                   "audioTarget": "Ho una sorella.",
                   "answer": "Ho una sorella.",
                   "alternatives": [
-                    "Ho una sorella"
+                    "Ho una sorella",
+                    "Io ho una sorella."
                   ]
                 }
               ]
@@ -3107,7 +3124,8 @@
                   "audioTarget": "Siamo una famiglia.",
                   "answer": "Siamo una famiglia.",
                   "alternatives": [
-                    "Siamo una famiglia"
+                    "Siamo una famiglia",
+                    "Noi siamo una famiglia."
                   ]
                 },
                 {
@@ -3305,7 +3323,8 @@
                   "audioTarget": "Ho un cane.",
                   "answer": "Ho un cane.",
                   "alternatives": [
-                    "Ho un cane"
+                    "Ho un cane",
+                    "Io ho un cane."
                   ]
                 }
               ]
@@ -3773,7 +3792,9 @@
                   "audioTarget": "Dov'è l'albergo?",
                   "answer": "Dov'è l'albergo?",
                   "alternatives": [
-                    "Dov'è l'albergo"
+                    "Dov'è l'albergo",
+                    "Dove è l'albergo?",
+                    "Dov'è l'hotel?"
                   ]
                 },
                 {
@@ -3928,7 +3949,9 @@
                   "audioTarget": "Ho una mappa.",
                   "answer": "Ho una mappa.",
                   "alternatives": [
-                    "Ho una mappa"
+                    "Ho una mappa",
+                    "Io ho una mappa.",
+                    "Ho una cartina."
                   ]
                 }
               ],
@@ -5319,10 +5342,13 @@
                   "id": "it-vi:ub-l0-e11",
                   "mode": "produceTarget",
                   "prompt": "Tôi hai mươi tuổi.",
-                  "audioTarget": "Ho venti anni.",
-                  "answer": "Ho venti anni.",
+                  "audioTarget": "Ho vent'anni.",
+                  "answer": "Ho vent'anni.",
                   "alternatives": [
-                    "Ho venti anni"
+                    "Ho venti anni.",
+                    "Ho vent'anni.",
+                    "Io ho venti anni.",
+                    "Ho 20 anni."
                   ]
                 }
               ],
@@ -5526,7 +5552,10 @@
                   "audioTarget": "Abito a Hanoi.",
                   "answer": "Abito a Hanoi.",
                   "alternatives": [
-                    "Abito a Hanoi"
+                    "Abito a Hanoi",
+                    "Vivo a Hanoi.",
+                    "Io abito a Hanoi.",
+                    "Abito ad Hanoi."
                   ]
                 },
                 {
@@ -5624,7 +5653,9 @@
                   "verb": "volere",
                   "cell": "pre:1s",
                   "answer": "voglio",
-                  "alternatives": []
+                  "alternatives": [
+                    "vorrei"
+                  ]
                 },
                 {
                   "type": "conjugationCloze",
@@ -5941,7 +5972,9 @@
                   "verb": "andare",
                   "cell": "participle",
                   "answer": "andato",
-                  "alternatives": []
+                  "alternatives": [
+                    "andata"
+                  ]
                 },
                 {
                   "type": "fillBlank",
@@ -5993,7 +6026,8 @@
                   "audioTarget": "Ho mangiato.",
                   "answer": "Ho mangiato.",
                   "alternatives": [
-                    "Ho mangiato"
+                    "Ho mangiato",
+                    "Io ho mangiato."
                   ]
                 },
                 {
@@ -6063,7 +6097,7 @@
           "id": "it-vi:unit-c",
           "title": "Từ quốc tế & Bạn giả",
           "description": "Từ bạn đã biết sẵn, và những từ trông quen nhưng nghĩa khác.",
-          "guidebook": "## Từ quen và bẫy 🎭\n\n### Từ quốc tế\nBạn đã biết sẵn nhiều từ: *il taxi*, *il computer*, *il film*, *il bar*, *la musica*. Tiếng Ý cũng cho thế giới nhiều từ: *la pizza*, *la pasta*.\n\nTừ mượn kết thúc bằng phụ âm thường không đổi ở số nhiều: *i film*, *i computer*, *i bar*, *i taxi*.\n\n### Bạn giả với tiếng Anh\nNếu bạn biết tiếng Anh, hãy cẩn thận:\n- *la camera* là **căn phòng**, không phải máy ảnh.\n- *il parente* là **họ hàng**, không phải bố mẹ. Bố mẹ là *i genitori*.\n- *la fattoria* là **trang trại**, không phải nhà máy.\n\n### Từ dễ nhầm giống\n- *il problema* đuôi -a nhưng giống đực\n- *la foto* đuôi -o nhưng giống cái (viết tắt của *la fotografia*)\n- *la radio* cũng giống cái\n\n### Quán bar ở Ý\n*il bar* là nơi uống cà phê buổi sáng, không chỉ là nơi uống rượu.",
+          "guidebook": "## Từ quen và bẫy 🎭\n\n### Từ quốc tế\nBạn đã biết sẵn nhiều từ: *il taxi*, *il computer*, *il film*, *il bar*, *la musica*. Tiếng Ý cũng cho thế giới nhiều từ: *la pizza*, *la pasta*.\n\nTừ mượn thường không đổi ở số nhiều: *i film*, *i computer*, *i bar*, *i taxi*.\n\n### Bạn giả với tiếng Anh\nNếu bạn biết tiếng Anh, hãy cẩn thận:\n- *la camera* là **căn phòng**, không phải máy ảnh.\n- *il parente* là **họ hàng**, không phải bố mẹ. Bố mẹ là *i genitori*.\n- *la fattoria* là **trang trại**, không phải nhà máy.\n\n### Từ dễ nhầm giống\n- *il problema* đuôi -a nhưng giống đực\n- *la foto* đuôi -o nhưng giống cái (viết tắt của *la fotografia*)\n- *la radio* cũng giống cái\n\n### Quán bar ở Ý\n*il bar* là nơi uống cà phê buổi sáng, không chỉ là nơi uống rượu.\n\n### Tầng nhà\n*il primo piano* là tầng ngay trên tầng trệt (*il piano terra*), nên có thể khác với cách đếm tầng ở Việt Nam.",
           "words": [
             {
               "target": "il taxi",
@@ -6454,7 +6488,10 @@
                   "audioTarget": "I miei genitori sono in Vietnam.",
                   "answer": "I miei genitori sono in Vietnam.",
                   "alternatives": [
-                    "I miei genitori sono in Vietnam"
+                    "I miei genitori sono in Vietnam",
+                    "Mio padre e mia madre sono in Vietnam.",
+                    "I miei genitori abitano in Vietnam.",
+                    "I miei genitori vivono in Vietnam."
                   ]
                 },
                 {
@@ -6673,7 +6710,10 @@
                   "audioTarget": "Non c'è problema.",
                   "answer": "Non c'è problema.",
                   "alternatives": [
-                    "Non c'è problema"
+                    "Non c'è problema",
+                    "Nessun problema.",
+                    "Non c'è nessun problema.",
+                    "Non ci sono problemi."
                   ]
                 }
               ],
@@ -6817,7 +6857,9 @@
                   "audioTarget": "Chi è?",
                   "answer": "Chi è?",
                   "alternatives": [
-                    "Chi è"
+                    "Chi è",
+                    "Chi è quello?",
+                    "Chi è quella?"
                   ]
                 },
                 {
@@ -6904,7 +6946,7 @@
           "id": "it-vi:unit-d",
           "title": "Số từ 0 đến 100",
           "description": "Đếm, giờ giấc, giá tiền và tuổi.",
-          "guidebook": "## I numeri — Số đếm 🔢\n\n### 0 đến 10\n*zero, uno, due, tre, quattro, cinque, sei, sette, otto, nove, dieci*\n\n### 11 đến 19\n*undici, dodici, tredici, quattordici, quindici, sedici, diciassette, diciotto, diciannove*\n\n### Hàng chục\n*venti, trenta, quaranta, cinquanta, sessanta, settanta, ottanta, novanta, cento*\n\n### Ghép số\nViết liền thành một từ: *ventidue*, *trentacinque*. Hai điều cần nhớ:\n- Trước *uno* và *otto*, hàng chục rụng nguyên âm cuối: *ventuno*, *ventotto*, *trentuno*.\n- Số tận cùng bằng 3 có dấu: *ventitré*, *trentatré*.\n\n### Tuổi và giá\nTiếng Ý dùng **avere** để nói tuổi: *Ho venti anni* (nghĩa đen: \"tôi có hai mươi năm\").\n*Euro* không đổi ở số nhiều: *un euro*, *dieci euro*. *Quanto costa?* — Giá bao nhiêu?\n\n### Giờ\n*Che ora è?* — *Sono le otto.* Riêng một giờ: *È l'una.*",
+          "guidebook": "## I numeri — Số đếm 🔢\n\n### 0 đến 10\n*zero, uno, due, tre, quattro, cinque, sei, sette, otto, nove, dieci*\n\n### 11 đến 19\n*undici, dodici, tredici, quattordici, quindici, sedici, diciassette, diciotto, diciannove*\n\n### Hàng chục\n*venti, trenta, quaranta, cinquanta, sessanta, settanta, ottanta, novanta, cento*\n\n### Ghép số\nViết liền thành một từ: *ventidue*, *trentacinque*. Hai điều cần nhớ:\n- Trước *uno* và *otto*, hàng chục rụng nguyên âm cuối: *ventuno*, *ventotto*, *trentuno*.\n- Số tận cùng bằng 3 có dấu: *ventitré*, *trentatré*.\n\n### Tuổi và giá\nTiếng Ý dùng **avere** để nói tuổi: *Ho vent'anni* (nghĩa đen: \"tôi có hai mươi năm\").\n*Euro* không đổi ở số nhiều: *un euro*, *dieci euro*. *Quanto costa?* — Giá bao nhiêu?\n\n### Giờ\n*Che ora è?* — *Sono le otto.* Riêng một giờ: *È l'una.*",
           "words": [
             {
               "target": "zero",
@@ -7108,7 +7150,9 @@
                   "audioTarget": "Ho due cani.",
                   "answer": "Ho due cani.",
                   "alternatives": [
-                    "Ho due cani"
+                    "Ho due cani",
+                    "Io ho due cani.",
+                    "Ho 2 cani."
                   ]
                 },
                 {
@@ -7357,7 +7401,9 @@
                   "audioTarget": "Ho sedici anni.",
                   "answer": "Ho sedici anni.",
                   "alternatives": [
-                    "Ho sedici anni"
+                    "Ho sedici anni",
+                    "Io ho sedici anni.",
+                    "Ho 16 anni."
                   ]
                 },
                 {
@@ -7433,7 +7479,7 @@
                   "id": "it-vi:ud-l2-e0",
                   "sentence": "venti + uno = ___",
                   "translation": "hai mươi mốt",
-                  "audioTarget": "venti + uno = ventuno",
+                  "audioTarget": "ventuno",
                   "options": [
                     "ventiuno",
                     "ventiuna",
@@ -7447,7 +7493,7 @@
                   "id": "it-vi:ud-l2-e1",
                   "sentence": "venti + otto = ___",
                   "translation": "hai mươi tám",
-                  "audioTarget": "venti + otto = ventotto",
+                  "audioTarget": "ventotto",
                   "options": [
                     "ventotto",
                     "ventiotto",
@@ -7461,7 +7507,7 @@
                   "id": "it-vi:ud-l2-e2",
                   "sentence": "venti + tre = ___",
                   "translation": "hai mươi ba",
-                  "audioTarget": "venti + tre = ventitré",
+                  "audioTarget": "ventitré",
                   "options": [
                     "ventitre'",
                     "ventitré",
@@ -7722,7 +7768,10 @@
                   "audioTarget": "Sono le dieci.",
                   "answer": "Sono le dieci.",
                   "alternatives": [
-                    "Sono le dieci"
+                    "Sono le dieci",
+                    "Adesso sono le dieci.",
+                    "Ora sono le dieci.",
+                    "Sono le 10."
                   ]
                 },
                 {
@@ -8446,7 +8495,10 @@
                   "audioTarget": "Bevo il caffè.",
                   "answer": "Bevo il caffè.",
                   "alternatives": [
-                    "Bevo il caffè"
+                    "Bevo il caffè",
+                    "Io bevo il caffè.",
+                    "Bevo un caffè.",
+                    "Bevo caffè."
                   ]
                 },
                 {
@@ -8640,7 +8692,8 @@
                   "audioTarget": "Una casa grande.",
                   "answer": "Una casa grande.",
                   "alternatives": [
-                    "Una casa grande"
+                    "Una casa grande",
+                    "Una grande casa."
                   ]
                 },
                 {
@@ -9243,7 +9296,7 @@
           "id": "it-vi:unit-g",
           "title": "Messaggi e cartelli",
           "description": "Đọc tin nhắn, biển báo và giờ mở cửa.",
-          "guidebook": "## Tin nhắn và biển báo 📩\n\nBạn không cần hiểu mọi từ để lấy được thông tin trên biển báo. Hãy tìm thông tin cần thiết.\n\n### Biển báo hay gặp\n- *aperto* — đang mở, *chiuso* — đóng cửa\n- *l'ingresso* — lối vào, *l'uscita* — lối ra\n- *l'orario* — giờ mở cửa\n- *il lunedì chiuso* — đóng cửa vào thứ Hai\n\n### Giờ giấc trên biển\nNgười Ý thường viết giờ theo 24 tiếng: *9:00–13:00, 15:00–19:00*. Nhiều cửa hàng nghỉ trưa, nên hãy đọc kỹ.\n\n### Tin nhắn ngắn\nTin nhắn thường có lời chào, một thông tin và lời kết:\n*Ciao Anna! Sono al bar in piazza. A presto, Marco*\n\n### Dấu hiệu từ\nNgày và giờ thường đi với *a* hoặc *alle*: *alle otto* — lúc tám giờ, *a marzo* — vào tháng Ba.",
+          "guidebook": "## Tin nhắn và biển báo 📩\n\nBạn không cần hiểu mọi từ để lấy được thông tin trên biển báo. Hãy tìm thông tin cần thiết.\n\n### Biển báo hay gặp\n- *aperto* — đang mở, *chiuso* — đóng cửa\n- *l'ingresso* — lối vào, *l'uscita* — lối ra\n- *l'orario* — giờ mở cửa\n- *il lunedì chiuso* — đóng cửa vào thứ Hai\n\n### Giờ giấc trên biển\nNgười Ý thường viết giờ theo 24 tiếng: *9:00–13:00, 15:00–19:00*. Nhiều cửa hàng nghỉ trưa, nên hãy đọc kỹ.\n\n### Tin nhắn ngắn\nTin nhắn thường có lời chào, một thông tin và lời kết:\n*Ciao Anna! Sono al bar in piazza. A presto, Marco*\n\n### Dấu hiệu từ\nGiờ và tháng thường đi với *alle* hoặc *a*: *alle otto* — lúc tám giờ, *a marzo* — vào tháng Ba. Thứ trong tuần không cần giới từ: *lunedì* — vào thứ Hai.",
           "words": [
             {
               "target": "aperto",
@@ -10246,7 +10299,7 @@
           "id": "it-vi:unit-i",
           "title": "Piccoli dialoghi",
           "description": "Nghe và hiểu những cuộc trò chuyện rất ngắn giữa hai người.",
-          "guidebook": "## Hội thoại ngắn 💬\n\nHai giọng khác nhau trò chuyện vài câu. Bạn cần hiểu **họ nói về chuyện gì** và **thông tin chính**.\n\n### Tu hay Lei?\n- Với bạn bè: **tu** — *Come stai?* — Bạn khỏe không?\n- Với người lạ: **Lei** — *Come sta?* — Ông/bà khỏe không?\n\nĐộng từ với *Lei* chia như ngôi thứ ba: *Lei parla italiano?*\n\n### Cuộc trò chuyện hay gặp\n- *Come ti chiami?* — *Mi chiamo Luca.*\n- *Di dove sei?* — *Sono di Hanoi.*\n- *Quanti anni hai?* — *Ho venti anni.*\n- *Quanto costa?* — *Due euro.*\n\n### Từ nhỏ mà hữu ích\n- *allora* — vậy thì\n- *va bene* — được rồi\n- *ecco* — đây này\n- *d'accordo* — đồng ý\n\nHãy nghe cả giọng điệu: câu hỏi tiếng Ý thường chỉ khác câu kể ở ngữ điệu lên cao cuối câu.",
+          "guidebook": "## Hội thoại ngắn 💬\n\nHai giọng khác nhau trò chuyện vài câu. Bạn cần hiểu **họ nói về chuyện gì** và **thông tin chính**.\n\n### Tu hay Lei?\n- Với bạn bè: **tu** — *Come stai?* — Bạn khỏe không?\n- Với người lạ: **Lei** — *Come sta?* — Ông/bà khỏe không?\n\nĐộng từ với *Lei* chia như ngôi thứ ba: *Lei parla italiano?*\n\n### Cuộc trò chuyện hay gặp\n- *Come ti chiami?* — *Mi chiamo Luca.*\n- *Di dove sei?* — *Sono di Hanoi.*\n- *Quanti anni hai?* — *Ho vent'anni.*\n- *Quanto costa?* — *Due euro.*\n\n### Từ nhỏ mà hữu ích\n- *allora* — vậy thì\n- *va bene* — được rồi\n- *ecco* — đây này\n- *d'accordo* — đồng ý\n\nHãy nghe cả giọng điệu: câu hỏi tiếng Ý thường chỉ khác câu kể ở ngữ điệu lên cao cuối câu.",
           "words": [
             {
               "target": "va bene",
@@ -11366,7 +11419,9 @@
                   "acceptedVariants": [
                     "Buongiorno",
                     "Salve",
-                    "Buongiorno a tutti"
+                    "Buongiorno a tutti",
+                    "Buon giorno",
+                    "Salve, buongiorno"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:buongiorno"
@@ -11387,7 +11442,9 @@
                   "audioTarget": "Buongiorno!",
                   "answer": "Buongiorno!",
                   "alternatives": [
-                    "Buongiorno"
+                    "Buongiorno",
+                    "Salve!",
+                    "Buon giorno!"
                   ]
                 },
                 {
@@ -11479,7 +11536,10 @@
                   "audioTarget": "Grazie mille!",
                   "answer": "Grazie mille!",
                   "alternatives": [
-                    "Grazie mille"
+                    "Grazie mille",
+                    "Grazie tante!",
+                    "Tante grazie!",
+                    "Molte grazie!"
                   ]
                 },
                 {
@@ -11552,13 +11612,13 @@
                       "text": "Tạm biệt!"
                     },
                     {
-                      "text": "Xin chào buổi sáng!"
+                      "text": "Xin lỗi!"
                     },
                     {
                       "text": "Cảm ơn!"
                     },
                     {
-                      "text": "Chào buổi tối!"
+                      "text": "Làm ơn!"
                     }
                   ],
                   "correct": 0
@@ -11572,7 +11632,11 @@
                   "acceptedVariants": [
                     "Ciao",
                     "Ciao, a presto",
-                    "A presto"
+                    "A presto",
+                    "Ci vediamo",
+                    "Ciao ciao",
+                    "Ciao, ci vediamo",
+                    "A dopo"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:ciao"
@@ -11593,7 +11657,8 @@
                   "audioTarget": "A presto!",
                   "answer": "A presto!",
                   "alternatives": [
-                    "A presto"
+                    "A presto",
+                    "Ci vediamo presto!"
                   ]
                 }
               ]
@@ -11696,7 +11761,7 @@
           "id": "it-vi:unit-l",
           "title": "Mi presento",
           "description": "Nói về bản thân từng câu ngắn: tên, quê, nơi sống, sở thích.",
-          "guidebook": "## Giới thiệu bản thân 🙋\n\n### Mẫu câu\n- *Mi chiamo Lan.* — Tôi tên là Lan.\n- *Sono vietnamita.* — Tôi là người Việt Nam.\n- *Sono di Hanoi.* — Tôi đến từ Hà Nội.\n- *Abito a Roma.* — Tôi sống ở Roma.\n- *Ho venti anni.* — Tôi hai mươi tuổi.\n- *Parlo vietnamita e un po' di italiano.* — Tôi nói tiếng Việt và một chút tiếng Ý.\n- *Lavoro in un negozio.* / *Studio all'università.*\n- *Mi piace la musica.* — Tôi thích âm nhạc.\n\n### Giới từ với nơi chốn\nVới **thành phố** dùng *a*: *a Roma*, *a Hanoi*. Với **đất nước** dùng *in*: *in Italia*, *in Vietnam*.\n\n### Nam hay nữ?\nMột số từ đổi theo người nói: *Sono italiano* (nam), *Sono italiana* (nữ). *Vietnamita* giữ nguyên cho cả hai.\n\n### Hỏi lại\n*E tu?* — Còn bạn? Với người lạ: *E Lei?*",
+          "guidebook": "## Giới thiệu bản thân 🙋\n\n### Mẫu câu\n- *Mi chiamo Lan.* — Tôi tên là Lan.\n- *Sono vietnamita.* — Tôi là người Việt Nam.\n- *Sono di Hanoi.* — Tôi đến từ Hà Nội.\n- *Abito a Roma.* — Tôi sống ở Roma.\n- *Ho vent'anni.* — Tôi hai mươi tuổi.\n- *Parlo vietnamita e un po' di italiano.* — Tôi nói tiếng Việt và một chút tiếng Ý.\n- *Lavoro in un negozio.* / *Studio all'università.*\n- *Mi piace la musica.* — Tôi thích âm nhạc.\n\n### Giới từ với nơi chốn\nVới **thành phố** dùng *a*: *a Roma*, *a Hanoi*. Với **đất nước** dùng *in*: *in Italia*, *in Vietnam*.\n\n### Nam hay nữ?\nMột số từ đổi theo người nói: *Sono italiano* (nam), *Sono italiana* (nữ). *Vietnamita* giữ nguyên cho cả hai.\n\n### Hỏi lại\n*E tu?* — Còn bạn? Với người lạ: *E Lei?*",
           "words": [
             {
               "target": "mi chiamo",
@@ -11760,7 +11825,9 @@
                   "acceptedVariants": [
                     "Mi chiamo Minh",
                     "Il mio nome è Minh",
-                    "Sono Minh"
+                    "Sono Minh",
+                    "Io mi chiamo Minh",
+                    "Io sono Minh"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:chiamare"
@@ -11812,6 +11879,12 @@
                     "Mi",
                     "chiamo",
                     "Minh"
+                  ],
+                  "alternatives": [
+                    [
+                      "sono",
+                      "Minh"
+                    ]
                   ]
                 },
                 {
@@ -11864,7 +11937,9 @@
                   "target": "Sono di Hanoi.",
                   "acceptedVariants": [
                     "Sono di Hanoi",
-                    "Vengo da Hanoi"
+                    "Vengo da Hanoi",
+                    "Io sono di Hanoi",
+                    "Io vengo da Hanoi"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:essere"
@@ -11955,7 +12030,9 @@
                   "target": "Parlo vietnamita e italiano.",
                   "acceptedVariants": [
                     "Parlo vietnamita e italiano",
-                    "Parlo vietnamita e un po' di italiano"
+                    "Parlo vietnamita e un po' di italiano",
+                    "Parlo italiano e vietnamita",
+                    "Io parlo vietnamita e italiano"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:parlare",
@@ -12029,7 +12106,10 @@
                   "target": "Lavoro in un albergo.",
                   "acceptedVariants": [
                     "Lavoro in un albergo",
-                    "Lavoro in albergo"
+                    "Lavoro in albergo",
+                    "Lavoro in un hotel",
+                    "Lavoro in hotel",
+                    "Io lavoro in un albergo"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:lavoro",
@@ -12078,7 +12158,9 @@
                   "target": "Abito a Roma.",
                   "acceptedVariants": [
                     "Abito a Roma",
-                    "Vivo a Roma"
+                    "Vivo a Roma",
+                    "Io abito a Roma",
+                    "Io vivo a Roma"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:abitare"
@@ -12154,7 +12236,9 @@
                   "audioTarget": "Abito a Milano.",
                   "answer": "Abito a Milano.",
                   "alternatives": [
-                    "Abito a Milano"
+                    "Abito a Milano",
+                    "Vivo a Milano.",
+                    "Io abito a Milano."
                   ]
                 }
               ]
@@ -12288,6 +12372,13 @@
                     "casa",
                     "è",
                     "grande"
+                  ],
+                  "alternatives": [
+                    [
+                      "La",
+                      "casa",
+                      "grande"
+                    ]
                   ]
                 }
               ]
@@ -12365,6 +12456,13 @@
                     "gatto",
                     "è",
                     "piccolo"
+                  ],
+                  "alternatives": [
+                    [
+                      "Il",
+                      "gatto",
+                      "piccolo"
+                    ]
                   ]
                 },
                 {
@@ -12389,7 +12487,8 @@
                   "audioTarget": "Il cane è grande.",
                   "answer": "Il cane è grande.",
                   "alternatives": [
-                    "Il cane è grande"
+                    "Il cane è grande",
+                    "Il cane grande."
                   ]
                 }
               ]
@@ -12410,7 +12509,10 @@
                   "target": "La macchina è vecchia.",
                   "acceptedVariants": [
                     "La macchina è vecchia",
-                    "È una macchina vecchia"
+                    "È una macchina vecchia",
+                    "L'auto è vecchia",
+                    "È un'auto vecchia",
+                    "È una vecchia macchina"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:macchina",
@@ -12504,6 +12606,13 @@
                     "telefono",
                     "è",
                     "nuovo"
+                  ],
+                  "alternatives": [
+                    [
+                      "Il",
+                      "telefono",
+                      "nuovo"
+                    ]
                   ]
                 }
               ]
@@ -12562,6 +12671,13 @@
                     "macchina",
                     "è",
                     "vecchia"
+                  ],
+                  "alternatives": [
+                    [
+                      "La",
+                      "macchina",
+                      "vecchia"
+                    ]
                   ]
                 },
                 {
@@ -12572,7 +12688,8 @@
                   "audioTarget": "La casa è vecchia.",
                   "answer": "La casa è vecchia.",
                   "alternatives": [
-                    "La casa è vecchia"
+                    "La casa è vecchia",
+                    "La casa vecchia."
                   ]
                 },
                 {
@@ -12651,7 +12768,9 @@
                   "target": "Ho due figli.",
                   "acceptedVariants": [
                     "Ho due figli",
-                    "Due figli"
+                    "Due figli",
+                    "Ho due bambini",
+                    "Io ho due figli"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:avere"
@@ -12727,7 +12846,10 @@
                   "audioTarget": "Ho tre figli.",
                   "answer": "Ho tre figli.",
                   "alternatives": [
-                    "Ho tre figli"
+                    "Ho tre figli",
+                    "Ho tre bambini.",
+                    "Io ho tre figli.",
+                    "Ho 3 figli."
                   ]
                 }
               ]
@@ -12826,7 +12948,9 @@
                   "audioTarget": "Costa venti euro.",
                   "answer": "Costa venti euro.",
                   "alternatives": [
-                    "Costa 20 euro."
+                    "Costa 20 euro.",
+                    "Venti euro.",
+                    "20 euro."
                   ]
                 }
               ]
@@ -12960,7 +13084,8 @@
                   "target": "Oggi è lunedì.",
                   "acceptedVariants": [
                     "Oggi è lunedì",
-                    "Lunedì"
+                    "Lunedì",
+                    "È lunedì"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:oggi",
@@ -12986,14 +13111,16 @@
                       "value": "20"
                     }
                   ],
-                  "target": "Ho venti anni.",
+                  "target": "Ho vent'anni.",
                   "acceptedVariants": [
+                    "Ho vent'anni",
                     "Ho venti anni",
-                    "Venti anni"
+                    "Venti anni",
+                    "Vent'anni",
+                    "Io ho venti anni"
                   ],
                   "evidenceLexemeRefs": [
                     "it:w:avere",
-                    "it:w:vento",
                     "it:w:anno"
                   ],
                   "revealTargetAfterAttempts": 2,
@@ -13032,17 +13159,15 @@
                   "direction": "nativeToTarget",
                   "prompt": "Tôi hai mươi tuổi.",
                   "tokens": [
-                    "anni",
+                    "anno",
+                    "vent'anni",
                     "dodici",
-                    "venti",
-                    "sono",
                     "Ho",
-                    "anno"
+                    "sono"
                   ],
                   "answer": [
                     "Ho",
-                    "venti",
-                    "anni"
+                    "vent'anni"
                   ]
                 },
                 {
@@ -13118,6 +13243,12 @@
                     "Mi",
                     "chiamo",
                     "Lena"
+                  ],
+                  "alternatives": [
+                    [
+                      "sono",
+                      "Lena"
+                    ]
                   ]
                 },
                 {
@@ -13169,7 +13300,9 @@
                   "answer": "Mi chiamo Lena.",
                   "alternatives": [
                     "Il mio nome è Lena.",
-                    "Sono Lena."
+                    "Sono Lena.",
+                    "Io mi chiamo Lena.",
+                    "Io sono Lena."
                   ]
                 },
                 {
@@ -13325,7 +13458,10 @@
                   "audioTarget": "Ho 40 anni.",
                   "answer": "Ho 40 anni.",
                   "alternatives": [
-                    "Ho quaranta anni."
+                    "Ho quaranta anni.",
+                    "Ho quarant'anni.",
+                    "Io ho 40 anni.",
+                    "Io ho quaranta anni."
                   ]
                 }
               ]
@@ -13439,7 +13575,11 @@
                   "audioTarget": "Abito in una grande città.",
                   "answer": "Abito in una grande città.",
                   "alternatives": [
-                    "Abito in una città grande."
+                    "Abito in una città grande.",
+                    "Vivo in una grande città.",
+                    "Vivo in una città grande.",
+                    "Io abito in una grande città.",
+                    "Io abito in una città grande."
                   ]
                 }
               ]
@@ -13523,7 +13663,10 @@
                   "audioTarget": "Ho 30 anni.",
                   "answer": "Ho 30 anni.",
                   "alternatives": [
-                    "Ho trenta anni."
+                    "Ho trenta anni.",
+                    "Ho trent'anni.",
+                    "Io ho 30 anni.",
+                    "Io ho trenta anni."
                   ]
                 },
                 {
@@ -13656,7 +13799,9 @@
                         "id": "like",
                         "description": "bạn thích bóng đá",
                         "variants": [
-                          "mi piace il calcio"
+                          "mi piace il calcio",
+                          "mi piace molto il calcio",
+                          "a me piace il calcio"
                         ],
                         "cueProvided": false
                       }
@@ -13835,6 +13980,13 @@
                     "beve",
                     "il",
                     "caffè"
+                  ],
+                  "alternatives": [
+                    [
+                      "Non",
+                      "beve",
+                      "caffè"
+                    ]
                   ]
                 }
               ]
@@ -13943,7 +14095,9 @@
                   "answer": "Abita a Roma.",
                   "alternatives": [
                     "Lei abita a Roma.",
-                    "Abita a Roma"
+                    "Abita a Roma",
+                    "Vive a Roma.",
+                    "Lei vive a Roma."
                   ]
                 },
                 {
@@ -13990,7 +14144,9 @@
                         "description": "con mèo nhỏ",
                         "variants": [
                           "il gatto è piccolo",
-                          "un gatto piccolo"
+                          "un gatto piccolo",
+                          "un piccolo gatto",
+                          "il gatto piccolo"
                         ],
                         "cueProvided": false
                       },
@@ -13999,7 +14155,9 @@
                         "description": "ngôi nhà lớn",
                         "variants": [
                           "la casa è grande",
-                          "una casa grande"
+                          "una casa grande",
+                          "una grande casa",
+                          "la casa grande"
                         ],
                         "cueProvided": false
                       }
@@ -14086,7 +14244,8 @@
                   "audioTarget": "Il letto è grande.",
                   "answer": "Il letto è grande.",
                   "alternatives": [
-                    "Il letto è grande"
+                    "Il letto è grande",
+                    "Il letto grande."
                   ]
                 }
               ]
@@ -14153,7 +14312,8 @@
                           "salve",
                           "caro",
                           "cara",
-                          "buongiorno"
+                          "buongiorno",
+                          "buonasera"
                         ],
                         "cueProvided": false
                       },
@@ -14212,6 +14372,14 @@
                     "vediamo",
                     "alle",
                     "tre"
+                  ],
+                  "alternatives": [
+                    [
+                      "alle",
+                      "tre",
+                      "Ci",
+                      "vediamo"
+                    ]
                   ]
                 },
                 {
@@ -14258,7 +14426,9 @@
                   "audioTarget": "Ci vediamo alle quattro.",
                   "answer": "Ci vediamo alle quattro.",
                   "alternatives": [
-                    "Ci vediamo alle 4."
+                    "Ci vediamo alle 4.",
+                    "Alle quattro ci vediamo.",
+                    "Ci incontriamo alle quattro."
                   ]
                 }
               ]
@@ -14297,7 +14467,8 @@
                           "salve",
                           "caro",
                           "cara",
-                          "buongiorno"
+                          "buongiorno",
+                          "buonasera"
                         ],
                         "cueProvided": false
                       },
@@ -14313,7 +14484,8 @@
                         "id": "time",
                         "description": "giờ tàu đến",
                         "variants": [
-                          "alle otto"
+                          "alle otto",
+                          "alle 20"
                         ],
                         "cueProvided": true
                       }
@@ -14451,7 +14623,12 @@
                           "a presto",
                           "a domani",
                           "un abbraccio",
-                          "a sabato"
+                          "a sabato",
+                          "a dopo",
+                          "a più tardi",
+                          "saluti",
+                          "baci",
+                          "un bacio"
                         ],
                         "cueProvided": false
                       }
@@ -14527,7 +14704,11 @@
                   "audioTarget": "Oggi arrivo tardi.",
                   "answer": "Oggi arrivo tardi.",
                   "alternatives": [
-                    "Arrivo tardi oggi."
+                    "Arrivo tardi oggi.",
+                    "Oggi arrivo in ritardo.",
+                    "Arrivo in ritardo oggi.",
+                    "Oggi sono in ritardo.",
+                    "Io oggi arrivo tardi."
                   ]
                 }
               ]
@@ -14584,7 +14765,12 @@
                           "a presto",
                           "a domani",
                           "un abbraccio",
-                          "a sabato"
+                          "a sabato",
+                          "a dopo",
+                          "a più tardi",
+                          "saluti",
+                          "baci",
+                          "un bacio"
                         ],
                         "cueProvided": false
                       }
@@ -14607,7 +14793,9 @@
                   "audioTarget": "Ci vediamo sabato.",
                   "answer": "Ci vediamo sabato.",
                   "alternatives": [
-                    "Ci vediamo sabato"
+                    "Ci vediamo sabato",
+                    "Sabato ci vediamo.",
+                    "Ci incontriamo sabato."
                   ]
                 },
                 {
@@ -14641,6 +14829,13 @@
                     "Ci",
                     "vediamo",
                     "domenica"
+                  ],
+                  "alternatives": [
+                    [
+                      "domenica",
+                      "Ci",
+                      "vediamo"
+                    ]
                   ]
                 },
                 {
@@ -14651,7 +14846,8 @@
                   "audioTarget": "A domani!",
                   "answer": "A domani!",
                   "alternatives": [
-                    "A domani"
+                    "A domani",
+                    "Ci vediamo domani!"
                   ]
                 }
               ]
@@ -14958,7 +15154,9 @@
                   "audioTarget": "Abito in via Roma.",
                   "answer": "Abito in via Roma.",
                   "alternatives": [
-                    "Abito in via Roma"
+                    "Abito in via Roma",
+                    "Vivo in via Roma.",
+                    "Io abito in via Roma."
                   ]
                 },
                 {
@@ -15005,7 +15203,8 @@
                         "variants": [
                           "gentile",
                           "buongiorno",
-                          "salve"
+                          "salve",
+                          "buonasera"
                         ],
                         "cueProvided": false
                       },
@@ -15013,7 +15212,8 @@
                         "id": "room",
                         "description": "một phòng",
                         "variants": [
-                          "camera"
+                          "camera",
+                          "stanza"
                         ],
                         "cueProvided": false
                       },
@@ -15087,7 +15287,11 @@
                   "audioTarget": "C'è una camera libera?",
                   "answer": "C'è una camera libera?",
                   "alternatives": [
-                    "C'è una camera libera"
+                    "C'è una camera libera",
+                    "Avete una camera libera?",
+                    "Avete camere libere?",
+                    "Ci sono camere libere?",
+                    "C'è una stanza libera?"
                   ]
                 },
                 {
@@ -15098,7 +15302,11 @@
                   "audioTarget": "Ho bisogno di una camera.",
                   "answer": "Ho bisogno di una camera.",
                   "alternatives": [
-                    "Ho bisogno di una camera"
+                    "Ho bisogno di una camera",
+                    "Mi serve una camera.",
+                    "Ho bisogno di una stanza.",
+                    "Mi serve una stanza.",
+                    "Io ho bisogno di una camera."
                   ]
                 }
               ]
@@ -15254,7 +15462,8 @@
                   "audioTarget": "Lavoro a Bologna.",
                   "answer": "Lavoro a Bologna.",
                   "alternatives": [
-                    "Lavoro a Bologna"
+                    "Lavoro a Bologna",
+                    "Io lavoro a Bologna."
                   ]
                 }
               ]
@@ -15341,6 +15550,17 @@
                     "Sto",
                     "bene",
                     "grazie"
+                  ],
+                  "alternatives": [
+                    [
+                      "bene",
+                      "grazie"
+                    ],
+                    [
+                      "grazie",
+                      "Sto",
+                      "bene"
+                    ]
                   ]
                 },
                 {
@@ -15373,7 +15593,9 @@
                   "audioTarget": "Come stai?",
                   "answer": "Come stai?",
                   "alternatives": [
-                    "Come stai"
+                    "Come stai",
+                    "Come va?",
+                    "Stai bene?"
                   ]
                 },
                 {
@@ -15468,7 +15690,9 @@
                   "audioTarget": "Ciao, a presto!",
                   "answer": "Ciao, a presto!",
                   "alternatives": [
-                    "Ciao a presto!"
+                    "Ciao a presto!",
+                    "Arrivederci, a presto!",
+                    "A presto!"
                   ]
                 }
               ]
@@ -15569,7 +15793,9 @@
                   "audioTarget": "Come si chiama?",
                   "answer": "Come si chiama?",
                   "alternatives": [
-                    "Come si chiama"
+                    "Come si chiama",
+                    "Qual è il Suo nome?",
+                    "Lei come si chiama?"
                   ]
                 }
               ]
@@ -15779,7 +16005,10 @@
                   "audioTarget": "Un tè, per favore.",
                   "answer": "Un tè, per favore.",
                   "alternatives": [
-                    "Un tè per favore."
+                    "Un tè per favore.",
+                    "Vorrei un tè.",
+                    "Vorrei un tè, per favore.",
+                    "Prendo un tè."
                   ]
                 }
               ]
@@ -15806,6 +16035,15 @@
                   "answer": [
                     "Pago",
                     "io"
+                  ],
+                  "alternatives": [
+                    [
+                      "Pago"
+                    ],
+                    [
+                      "io",
+                      "Pago"
+                    ]
                   ]
                 },
                 {
@@ -15860,7 +16098,11 @@
                   "audioTarget": "Sono quattro euro.",
                   "answer": "Sono quattro euro.",
                   "alternatives": [
-                    "Sono 4 euro."
+                    "Sono 4 euro.",
+                    "Fanno quattro euro.",
+                    "Fanno 4 euro.",
+                    "Quattro euro.",
+                    "4 euro."
                   ]
                 }
               ]
@@ -15913,6 +16155,13 @@
                     "con",
                     "la",
                     "carta"
+                  ],
+                  "alternatives": [
+                    [
+                      "Pago",
+                      "con",
+                      "carta"
+                    ]
                   ]
                 },
                 {
@@ -15959,7 +16208,10 @@
                   "audioTarget": "È tutto.",
                   "answer": "È tutto.",
                   "alternatives": [
-                    "È tutto"
+                    "È tutto",
+                    "Basta così.",
+                    "Basta così, grazie.",
+                    "Nient'altro."
                   ]
                 }
               ]
@@ -16042,7 +16294,9 @@
                   "audioTarget": "Quanto costa?",
                   "answer": "Quanto costa?",
                   "alternatives": [
-                    "Quanto costa"
+                    "Quanto costa",
+                    "Quanto costa questo?",
+                    "Quanto costa questa?"
                   ]
                 }
               ]
@@ -16150,7 +16404,7 @@
                   "id": "it-vi:uu-l0-e3",
                   "sentence": "___ è la stazione?",
                   "translation": "Nhà ga ở đâu?",
-                  "audioTarget": "Dov' è la stazione?",
+                  "audioTarget": "Dov'è la stazione?",
                   "options": [
                     "Chi",
                     "Quando",
@@ -16167,7 +16421,9 @@
                   "audioTarget": "Scusi, dov'è la stazione?",
                   "answer": "Scusi, dov'è la stazione?",
                   "alternatives": [
-                    "Scusi dov'è la stazione?"
+                    "Scusi dov'è la stazione?",
+                    "Scusa, dov'è la stazione?",
+                    "Mi scusi, dov'è la stazione?"
                   ]
                 }
               ]
@@ -16200,6 +16456,14 @@
                     "poi",
                     "a",
                     "sinistra"
+                  ],
+                  "alternatives": [
+                    [
+                      "Dritto",
+                      "poi",
+                      "a",
+                      "sinistra"
+                    ]
                   ]
                 },
                 {
@@ -16254,7 +16518,8 @@
                   "audioTarget": "Giri a sinistra.",
                   "answer": "Giri a sinistra.",
                   "alternatives": [
-                    "A sinistra."
+                    "A sinistra.",
+                    "Gira a sinistra."
                   ]
                 }
               ]
@@ -16439,7 +16704,9 @@
                   "audioTarget": "L'albergo è lontano?",
                   "answer": "L'albergo è lontano?",
                   "alternatives": [
-                    "L'albergo è lontano"
+                    "L'albergo è lontano",
+                    "È lontano l'albergo?",
+                    "L'hotel è lontano?"
                   ]
                 }
               ]
@@ -16517,6 +16784,14 @@
                     "vediamo",
                     "alle",
                     "otto"
+                  ],
+                  "alternatives": [
+                    [
+                      "alle",
+                      "otto",
+                      "Ci",
+                      "vediamo"
+                    ]
                   ]
                 },
                 {
@@ -16646,7 +16921,8 @@
                   "audioTarget": "A sabato!",
                   "answer": "A sabato!",
                   "alternatives": [
-                    "A sabato"
+                    "A sabato",
+                    "Ci vediamo sabato!"
                   ]
                 }
               ]
@@ -16743,7 +17019,9 @@
                   "audioTarget": "Lunedì alle dieci va bene?",
                   "answer": "Lunedì alle dieci va bene?",
                   "alternatives": [
-                    "Lunedì alle 10 va bene?"
+                    "Lunedì alle 10 va bene?",
+                    "Va bene lunedì alle dieci?",
+                    "Va bene lunedì alle 10?"
                   ]
                 }
               ]
@@ -16802,6 +17080,13 @@
                     "Oggi",
                     "non",
                     "vengo"
+                  ],
+                  "alternatives": [
+                    [
+                      "non",
+                      "vengo",
+                      "Oggi"
+                    ]
                   ]
                 },
                 {
@@ -16826,7 +17111,11 @@
                   "audioTarget": "Mi dispiace.",
                   "answer": "Mi dispiace.",
                   "alternatives": [
-                    "Mi dispiace"
+                    "Mi dispiace",
+                    "Mi scusi.",
+                    "Scusi.",
+                    "Scusa.",
+                    "Scusami."
                   ]
                 }
               ]

@@ -1,6 +1,6 @@
 # speech — ingest report (it-vi)
 
-Records: 54 · schema-valid: 54 · failed: 0 · validator errors after merge: 1
+Records: 54 · schema-valid: 54 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -61,7 +61,7 @@ Records: 54 · schema-valid: 54 · failed: 0 · validator errors after merge: 1
 
 ## Validator errors (fix these records and ingest again)
 
-- speech: it-cpx-cap-speak_day: cueFacts differ from item it.speak.a1cap_day
+- none
 
 ## Written
 

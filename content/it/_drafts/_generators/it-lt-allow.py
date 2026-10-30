@@ -5,7 +5,7 @@ import json, sys, io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 root, src = sys.argv[1], sys.argv[2]
 d = json.load(open(src, encoding="utf-8"))
-NAMES = {"Minh", "Trang", "Nga", "Duc", "Duc e", "Bao", "Bình", "Hoa", "Moser", "Lan", "Klara", "Giang", "Phuong", "Dũng", "Hien", "Quân", "Rex", "Khoa", "Linh", "Tuấn", "Nam", "Pham", "Hue", "Thu", "Tran", "Tuan", "Guten"}
+NAMES = {"Minh", "Trang", "Nga", "Duc", "Duc e", "Bao", "Binh", "Hoa", "Moser", "Lan", "Klara", "Giang", "Phuong", "Dung", "Hien", "Quan", "Rex", "Khoa", "Linh", "Nam", "Pham", "Hue", "Thu", "Tran", "Tuan", "Guten"}
 SLOTS = {"bologna", "firenze", "padova", "verona", "anna", "lan", "a roma", "roma", "luca", "minh", "nguyen", "pham", "hoa", "tran", "tuan", "venezia", "caffe"}
 WRONG = {"cittá", "citta", "filme", "gentila", "gentilo", "noono", "ventatre", "ventiotti", "ventiotto", "ventitre", "ventiuna", "ventiuno", "ventoto", "ventune"}
 REASONS = [
@@ -13,7 +13,7 @@ REASONS = [
     (SLOTS, "A lowercased rubric variant or typed alternative: grading text compared after folding, never shown to the learner."),
     (WRONG, "A deliberately wrong option of a spelling or number exercise: the distractor must be misspelt."),
 ]
-OTHER = {"aiutarLa": "The formal enclitic is written with a capital La in the Lei register this scenario keeps.", "participle": "An internal paradigm cell id, not learner text.", "oggi": "The sentence follows the salutation \"Ciao Luca,\" in a letter, so it starts in lower case."}
+OTHER = {"Ciao ciao": "The everyday spoken goodbye: the repetition is the idiom.", "aiutarLa": "The formal enclitic is written with a capital La in the Lei register this scenario keeps.", "participle": "An internal paradigm cell id, not learner text.", "oggi": "The sentence follows the salutation \"Ciao Luca,\" in a letter, so it starts in lower case."}
 allow, left, seen = [], [], set()
 for f in d["findings"]:
     key = (f["rule"], f["match"])

@@ -48,7 +48,9 @@
       "acceptedVariants": [
         "Buongiorno",
         "Salve",
-        "Buongiorno a tutti"
+        "Buongiorno a tutti",
+        "Buon giorno",
+        "Salve, buongiorno"
       ],
       "objectiveRefs": [
         "it.obj.speaking.formulaic"
@@ -221,7 +223,11 @@
       "acceptedVariants": [
         "Ciao",
         "Ciao, a presto",
-        "A presto"
+        "A presto",
+        "Ci vediamo",
+        "Ciao ciao",
+        "Ciao, ci vediamo",
+        "A dopo"
       ],
       "objectiveRefs": [
         "it.obj.speaking.formulaic"
@@ -366,7 +372,9 @@
       "acceptedVariants": [
         "Mi chiamo Minh",
         "Il mio nome è Minh",
-        "Sono Minh"
+        "Sono Minh",
+        "Io mi chiamo Minh",
+        "Io sono Minh"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -443,7 +451,9 @@
       "target": "Sono di Hanoi.",
       "acceptedVariants": [
         "Sono di Hanoi",
-        "Vengo da Hanoi"
+        "Vengo da Hanoi",
+        "Io sono di Hanoi",
+        "Io vengo da Hanoi"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -487,7 +497,9 @@
       "target": "Abito a Roma.",
       "acceptedVariants": [
         "Abito a Roma",
-        "Vivo a Roma"
+        "Vivo a Roma",
+        "Io abito a Roma",
+        "Io vivo a Roma"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -531,7 +543,9 @@
       "target": "Parlo vietnamita e italiano.",
       "acceptedVariants": [
         "Parlo vietnamita e italiano",
-        "Parlo vietnamita e un po' di italiano"
+        "Parlo vietnamita e un po' di italiano",
+        "Parlo italiano e vietnamita",
+        "Io parlo vietnamita e italiano"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -579,7 +593,10 @@
       "target": "Lavoro in un albergo.",
       "acceptedVariants": [
         "Lavoro in un albergo",
-        "Lavoro in albergo"
+        "Lavoro in albergo",
+        "Lavoro in un hotel",
+        "Lavoro in hotel",
+        "Io lavoro in un albergo"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -744,7 +761,9 @@
       "target": "Ho due figli.",
       "acceptedVariants": [
         "Ho due figli",
-        "Due figli"
+        "Due figli",
+        "Ho due bambini",
+        "Io ho due figli"
       ],
       "objectiveRefs": [
         "it.obj.speaking.give_info"
@@ -868,7 +887,8 @@
       "target": "Oggi è lunedì.",
       "acceptedVariants": [
         "Oggi è lunedì",
-        "Lunedì"
+        "Lunedì",
+        "È lunedì"
       ],
       "objectiveRefs": [
         "it.obj.speaking.give_info"
@@ -913,22 +933,23 @@
           }
         ]
       },
-      "target": "Ho venti anni.",
+      "target": "Ho vent'anni.",
       "acceptedVariants": [
+        "Ho vent'anni",
         "Ho venti anni",
-        "Venti anni"
+        "Venti anni",
+        "Vent'anni",
+        "Io ho venti anni"
       ],
       "objectiveRefs": [
         "it.obj.speaking.give_info"
       ],
       "lexemeRefs": [
         "it:w:avere",
-        "it:w:vento",
         "it:w:anno"
       ],
       "evidenceLexemeRefs": [
         "it:w:avere",
-        "it:w:vento",
         "it:w:anno"
       ],
       "assistancePolicy": {
@@ -1070,7 +1091,10 @@
       "target": "La macchina è vecchia.",
       "acceptedVariants": [
         "La macchina è vecchia",
-        "È una macchina vecchia"
+        "È una macchina vecchia",
+        "L'auto è vecchia",
+        "È un'auto vecchia",
+        "È una vecchia macchina"
       ],
       "objectiveRefs": [
         "it.obj.speaking.describe"
@@ -1183,7 +1207,9 @@
       "target": "Buonasera",
       "acceptedVariants": [
         "Buonasera",
-        "Salve, buonasera"
+        "Salve, buonasera",
+        "Salve",
+        "Buona sera"
       ],
       "objectiveRefs": [
         "it.obj.speaking.formulaic"
@@ -1294,7 +1320,9 @@
       "acceptedVariants": [
         "Mi chiamo Lan",
         "Il mio nome è Lan",
-        "Sono Lan"
+        "Sono Lan",
+        "Io mi chiamo Lan",
+        "Io sono Lan"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -1333,11 +1361,13 @@
           }
         ]
       },
-      "target": "Sono del Vietnam",
+      "target": "Vengo dal Vietnam",
       "acceptedVariants": [
         "Sono del Vietnam",
         "Vengo dal Vietnam",
-        "Sono vietnamita"
+        "Sono vietnamita",
+        "Io vengo dal Vietnam",
+        "Io sono vietnamita"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -1379,7 +1409,9 @@
       "target": "Abito a Padova",
       "acceptedVariants": [
         "Abito a Padova",
-        "Vivo a Padova"
+        "Vivo a Padova",
+        "Io abito a Padova",
+        "Io vivo a Padova"
       ],
       "objectiveRefs": [
         "it.obj.speaking.self_intro"
@@ -1507,7 +1539,8 @@
       "target": "Ho venticinque anni",
       "acceptedVariants": [
         "Ho venticinque anni",
-        "Venticinque anni"
+        "Venticinque anni",
+        "Io ho venticinque anni"
       ],
       "objectiveRefs": [
         "it.obj.speaking.give_info"
@@ -1576,7 +1609,9 @@
       "target": "La macchina è nuova",
       "acceptedVariants": [
         "La macchina è nuova",
-        "È una macchina nuova"
+        "È una macchina nuova",
+        "L'auto è nuova",
+        "È un'auto nuova"
       ],
       "objectiveRefs": [
         "it.obj.speaking.describe"
@@ -1741,7 +1776,8 @@
       "acceptedVariants": [
         "Ho due fratelli",
         "Ho due sorelle",
-        "Due"
+        "Due",
+        "Ho un fratello e una sorella"
       ],
       "requiredConcepts": [
         [
@@ -1897,7 +1933,9 @@
           "acqua"
         ],
         [
-          "favore"
+          "favore",
+          "piacere",
+          "cortesia"
         ]
       ],
       "objectiveRefs": [

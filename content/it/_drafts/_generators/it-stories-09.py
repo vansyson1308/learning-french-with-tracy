@@ -33,7 +33,7 @@ S.append(story("la_chiave_perduta", "A1-2", "La chiave perduta",
  names=["Khoa", "Roma"], token_map={"eccola": "ecco", "era": "essere", "dolce": "it:w:dolce-noun"}))
 S.append(story("il_nuovo_lavoro", "A1-2", "Il nuovo lavoro di Phuong",
  ("Phương đi xin việc ở một nhà hàng.", "Phuong applies for a job in a restaurant."),
- ["il cuoco", "il turno", "il capo"],
+ ["il cuoco", "il turno", "il capo", "l'annuncio"],
  [("N", "Phuong abita a Padova da sei mesi e cerca un lavoro.", "Phương sống ở Padova được sáu tháng và đang tìm việc.", "Phuong has lived in Padua for six months and is looking for a job."),
   ("N", "Un giorno legge un messaggio su internet.", "Một hôm cô đọc một tin nhắn trên mạng.", "One day she reads a message on the internet."),
   ("N", "Un ristorante in centro cerca una cameriera.", "Một nhà hàng ở trung tâm tìm người phục vụ.", "A restaurant in the centre is looking for a waitress."),
