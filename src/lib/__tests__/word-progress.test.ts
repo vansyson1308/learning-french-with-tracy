@@ -29,10 +29,10 @@ describe("legacy review queue on a registry course", () => {
     expect(prompts).toEqual(["el hombre", "la mujer"]);
   });
 
-  test("a course without a registry keeps surface keys (it-en)", () => {
-    const pool = wordsOf("it-en");
+  test("a course without a registry keeps surface keys (pt-en)", () => {
+    const pool = wordsOf("pt-en");
     const surface = pool[0].target;
-    const def = buildReviewSessionDefinition({ courseId: "it-en", course: { srs: { [surface]: due(1) }, cards: undefined }, pool, now: T0 });
+    const def = buildReviewSessionDefinition({ courseId: "pt-en", course: { srs: { [surface]: due(1) }, cards: undefined }, pool, now: T0 });
     expect(def.steps).toHaveLength(1);
     expect(def.steps[0].type === "exercise" ? def.steps[0].evidence?.itemId : undefined).toBe(surface);
   });
@@ -44,7 +44,7 @@ describe("word progress readers", () => {
   test("stats and srs entries resolve through the course's item id", () => {
     expect(wordStatFor("es-en", { "es:w:hombre": stat }, "el hombre")).toEqual(stat);
     expect(wordStatFor("es-en", { "el hombre": stat }, "el hombre")).toBeUndefined();
-    expect(wordStatFor("it-en", { gatto: stat }, "gatto")).toEqual(stat);
+    expect(wordStatFor("pt-en", { gato: stat }, "gato")).toEqual(stat);
     expect(srsEntryFor("es-en", { "es:w:mujer": due(0) }, "la mujer")).toEqual(due(0));
     expect(srsEntryFor("es-en", undefined, "la mujer")).toBeUndefined();
   });
@@ -54,7 +54,7 @@ describe("word progress readers", () => {
     expect(wordsLearnedCount("fr-en", { "fr:w:homme": stat, "fr:legacy:zzz": stat }, fr)).toBe(1);
     const es = wordsOf("es-en");
     expect(wordsLearnedCount("es-en", { "es:w:hombre": stat, "es:w:mujer": stat }, es)).toBe(2);
-    const it = wordsOf("it-en");
-    expect(wordsLearnedCount("it-en", { [it[0].target]: stat, "not a word": stat }, it)).toBe(1);
+    const pt = wordsOf("pt-en");
+    expect(wordsLearnedCount("pt-en", { [pt[0].target]: stat, "not a word": stat }, pt)).toBe(1);
   });
 });

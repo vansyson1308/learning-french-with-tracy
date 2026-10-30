@@ -18,6 +18,7 @@ import {
   storyTokenRange,
   bundledStoryIds,
   compileStoriesArtifact,
+  compileStoryAssetsModule,
   lexemeBands,
   loadStories,
   loadVerbForms,
@@ -56,6 +57,14 @@ describe("tokenizer", () => {
     const text = "C'est aujourd'hui : l'homme boit de l’eau.";
     expect(segmentSentence("fr", text).map((p) => p.text).join("")).toBe(text);
     expect(words("fr", text)).toEqual(["C'", "est", "aujourd'", "hui", "l'", "homme", "boit", "de", "l’", "eau"]);
+  });
+
+  test("the generated story asset map disables the require() lint rule only for Opus requires (coordinator 2026-10-30)", () => {
+    const directive = "/* eslint-disable @typescript-eslint/no-require-imports -- generated: Metro static asset requires */";
+    expect(compileStoryAssetsModule(ES.stories, "../../..")).toContain(directive);
+    // No requires, or MP3 (allowed by eslint-config-expo): an unused directive would itself warn.
+    expect(compileStoryAssetsModule(ES.stories, "../../..", { kind: "none", reason: "r" })).not.toContain(directive);
+    expect(compileStoryAssetsModule(FR.stories, "../../..")).not.toContain(directive);
   });
 
   test("a number is never a word token, with or without separators (ICU differs by platform)", () => {

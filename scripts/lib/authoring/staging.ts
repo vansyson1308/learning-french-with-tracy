@@ -105,7 +105,7 @@ export const isGeneratedDrift = (message: string) => /run bun run content:compil
  * (generated-artifact drift is set aside — the caller compiles right after);
  * when it reports other errors the real tree is restored and nothing is moved.
  */
-export const isMissingAudio = (message: string) => / audioTarget has no audio: /.test(message);
+export const isMissingAudio = (message: string) => / audioTarget has no audio: |: generated asset \S+ missing — run /.test(message);
 
 /**
  * `allowMissingAudio`: the audio workflow (audio.yml) synthesises a course

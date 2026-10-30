@@ -1,0 +1,2294 @@
+{
+  "generator": "scripts/lib/writing.ts",
+  "version": 1,
+  "order": [
+    "it.write.o_name",
+    "it.write.o_age",
+    "it.write.o_city",
+    "it.write.o_all",
+    "it.write.p_like",
+    "it.write.p_two",
+    "it.write.p_other",
+    "it.write.p_scene",
+    "it.write.q_bar",
+    "it.write.q_train",
+    "it.write.q_late",
+    "it.write.q_own",
+    "it.write.r_form_course",
+    "it.write.r_hotel_mail",
+    "it.write.r_all",
+    "it.write.r_form_hotel"
+  ],
+  "byId": {
+    "it.write.o_name": {
+      "id": "it.write.o_name",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn là Lena. Hãy viết một câu tiếng Ý ngắn nói tên của bạn.",
+      "cueFacts": [
+        {
+          "label": "Tên của bạn",
+          "value": "Lena"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên của bạn",
+            "variants": [
+              "mi chiamo lena",
+              "il mio nome è lena",
+              "sono lena"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "chiamo",
+          "è",
+          "sono"
+        ]
+      },
+      "modelAnswers": [
+        "Mi chiamo Lena."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "it:w:nome"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.o_age": {
+      "id": "it.write.o_age",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn 25 tuổi. Hãy viết một câu tiếng Ý nói tuổi của bạn.",
+      "cueFacts": [
+        {
+          "label": "Tuổi",
+          "value": "25"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "age",
+            "description": "tuổi của bạn",
+            "variants": [
+              "ho 25 anni"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "ho"
+        ]
+      },
+      "modelAnswers": [
+        "Ho 25 anni."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "it:w:anno",
+        "it:w:avere"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.o_city": {
+      "id": "it.write.o_city",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Bạn sống ở Firenze. Hãy viết một câu tiếng Ý nói bạn sống ở đâu.",
+      "cueFacts": [
+        {
+          "label": "Thành phố",
+          "value": "Firenze"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "city",
+            "description": "thành phố bạn sống",
+            "variants": [
+              "abito a firenze",
+              "vivo a firenze"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "abito",
+          "vivo"
+        ]
+      },
+      "modelAnswers": [
+        "Abito a Firenze."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "it:w:abitare",
+        "it:w:citta"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.o_all": {
+      "id": "it.write.o_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết ba câu ngắn về bạn: tên, tuổi và thành phố.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Lena"
+        },
+        {
+          "label": "Tuổi",
+          "value": "25"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Firenze"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên",
+            "variants": [
+              "mi chiamo lena",
+              "il mio nome è lena",
+              "sono lena"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "age",
+            "description": "tuổi",
+            "variants": [
+              "25"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố",
+            "variants": [
+              "a firenze"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 25,
+        "requireSentenceVerbs": [
+          "chiamo",
+          "ho",
+          "abito"
+        ]
+      },
+      "modelAnswers": [
+        "Mi chiamo Lena. Ho 25 anni. Abito a Firenze."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.personal_info"
+      ],
+      "lexemeRefs": [
+        "it:w:nome",
+        "it:w:anno",
+        "it:w:abitare",
+        "it:w:citta"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.p_like": {
+      "id": "it.write.p_like",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu tiếng Ý nói rằng bạn thích bóng đá.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "like",
+            "description": "bạn thích bóng đá",
+            "variants": [
+              "mi piace il calcio",
+              "mi piace molto il calcio",
+              "a me piace il calcio"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 3,
+        "maxTokens": 10,
+        "requireSentenceVerbs": [
+          "piace"
+        ]
+      },
+      "modelAnswers": [
+        "Mi piace il calcio."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "it:w:calcio",
+        "it:w:mi-piace"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.p_two": {
+      "id": "it.write.p_two",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết một câu nói rằng bạn thích cà phê và trà.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "coffee",
+            "description": "cà phê",
+            "variants": [
+              "caffè"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "tea",
+            "description": "trà",
+            "variants": [
+              "tè"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 4,
+        "maxTokens": 12,
+        "requireSentenceVerbs": [
+          "piace",
+          "piacciono"
+        ]
+      },
+      "modelAnswers": [
+        "Mi piace il caffè e mi piace il tè."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "it:w:caffe",
+        "it:w:te",
+        "it:w:mi-piace"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.p_other": {
+      "id": "it.write.p_other",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu về Paolo: tên anh ấy và nơi anh ấy sống.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Paolo"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Bologna"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên của Paolo",
+            "variants": [
+              "si chiama paolo",
+              "il suo nome è paolo",
+              "lui è paolo"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "nơi Paolo sống",
+            "variants": [
+              "abita a bologna",
+              "vive a bologna"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "chiama",
+          "abita",
+          "è",
+          "vive"
+        ]
+      },
+      "modelAnswers": [
+        "Si chiama Paolo. Abita a Bologna."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "it:w:abitare"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.p_scene": {
+      "id": "it.write.p_scene",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": "Hãy viết hai câu tả bức tranh: con mèo nhỏ, ngôi nhà lớn.",
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "cat",
+            "description": "con mèo nhỏ",
+            "variants": [
+              "il gatto è piccolo",
+              "un gatto piccolo",
+              "un piccolo gatto",
+              "il gatto piccolo"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "house",
+            "description": "ngôi nhà lớn",
+            "variants": [
+              "la casa è grande",
+              "una casa grande",
+              "una grande casa",
+              "la casa grande"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 6,
+        "maxTokens": 16,
+        "requireSentenceVerbs": [
+          "è"
+        ]
+      },
+      "modelAnswers": [
+        "Il gatto è piccolo. La casa è grande."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "it:w:gatto",
+        "it:w:piccolo",
+        "it:w:casa",
+        "it:w:grande"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.q_bar": {
+      "id": "it.write.q_bar",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết một lời nhắn ngắn cho Anna: chào cô ấy, và hẹn gặp ở quán cà phê lúc ba giờ.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Anna"
+        },
+        {
+          "label": "Ở đâu",
+          "value": "il bar"
+        },
+        {
+          "label": "Giờ",
+          "value": "3:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "ciao",
+              "salve",
+              "caro",
+              "cara",
+              "buongiorno",
+              "buonasera"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "addressee",
+            "description": "tên người nhận",
+            "variants": [
+              "anna"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "place",
+            "description": "quán cà phê",
+            "variants": [
+              "bar"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": "giờ hẹn",
+            "variants": [
+              "alle tre",
+              "alle 15"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Ciao Anna, ci vediamo alle tre al bar."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "it:w:bar"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.q_train": {
+      "id": "it.write.q_train",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho Luca: tàu của bạn đến lúc tám giờ.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Luca"
+        },
+        {
+          "label": "Giờ",
+          "value": "8:00"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "ciao",
+              "salve",
+              "caro",
+              "cara",
+              "buongiorno",
+              "buonasera"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "train",
+            "description": "chuyến tàu",
+            "variants": [
+              "treno"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": "giờ tàu đến",
+            "variants": [
+              "alle otto",
+              "alle 20"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Ciao Luca, il mio treno arriva alle otto."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "it:w:treno",
+        "it:w:arrivare"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.q_late": {
+      "id": "it.write.q_late",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho Lisa: chào, báo bạn sẽ đến muộn, rồi chào kết.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Lisa"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "ciao",
+              "salve",
+              "caro",
+              "cara",
+              "buongiorno"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "late",
+            "description": "bạn đến muộn",
+            "variants": [
+              "tardi",
+              "ritardo"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": "lời chào kết",
+            "variants": [
+              "a presto",
+              "a domani",
+              "un abbraccio",
+              "a sabato",
+              "a dopo",
+              "a più tardi",
+              "saluti",
+              "baci",
+              "un bacio"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Ciao Lisa, oggi arrivo tardi. A presto!"
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "it:w:tardi",
+        "it:w:arrivare"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.q_own": {
+      "id": "it.write.q_own",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy nhắn cho Paolo: hẹn gặp vào thứ Bảy, rồi chào kết.",
+      "cueFacts": [
+        {
+          "label": "Gửi",
+          "value": "Paolo"
+        },
+        {
+          "label": "Ngày",
+          "value": "sabato"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "ciao",
+              "salve",
+              "caro",
+              "cara",
+              "buongiorno"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": "ngày hẹn",
+            "variants": [
+              "sabato"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": "lời chào kết",
+            "variants": [
+              "a presto",
+              "a domani",
+              "un abbraccio",
+              "a sabato",
+              "a dopo",
+              "a più tardi",
+              "saluti",
+              "baci",
+              "un bacio"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Ciao Paolo, ci vediamo sabato. A presto!"
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "it:w:sabato"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.r_form_course": {
+      "id": "it.write.r_form_course",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu đăng ký khoá học với các thông tin trên thẻ.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Minh"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Bologna"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "333 123456"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "nome",
+          "label": "Nome",
+          "slotId": "name"
+        },
+        {
+          "id": "citta",
+          "label": "Città",
+          "slotId": "city"
+        },
+        {
+          "id": "telefono",
+          "label": "Telefono",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên",
+            "variants": [
+              "minh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố",
+            "variants": [
+              "bologna"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "333 123456",
+              "333123456"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Minh | Bologna | 333 123456"
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "it:w:nome",
+        "it:w:citta",
+        "it:w:telefono"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.r_hotel_mail": {
+      "id": "it.write.r_hotel_mail",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": "Hãy viết thư ngắn cho một khách sạn: chào, hỏi một phòng cho thứ Bảy, rồi chào kết.",
+      "cueFacts": [
+        {
+          "label": "Ngày",
+          "value": "sabato"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": "lời chào",
+            "variants": [
+              "gentile",
+              "buongiorno",
+              "salve",
+              "buonasera"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "room",
+            "description": "một phòng",
+            "variants": [
+              "camera",
+              "stanza"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": "thứ Bảy",
+            "variants": [
+              "sabato"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": "lời chào kết",
+            "variants": [
+              "cordiali saluti",
+              "grazie",
+              "saluti"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "Buongiorno, vorrei una camera per sabato. Cordiali saluti, Minh"
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "it:w:camera",
+        "it:w:sabato"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.r_all": {
+      "id": "it.write.r_all",
+      "taskFamily": "personal_profile",
+      "mode": "guided",
+      "instruction": "Hãy viết về bạn: tên, đến từ Việt Nam, sống ở Bologna, làm việc ở một bệnh viện.",
+      "cueFacts": [
+        {
+          "label": "Tên",
+          "value": "Minh"
+        },
+        {
+          "label": "Quê",
+          "value": "Việt Nam"
+        },
+        {
+          "label": "Thành phố",
+          "value": "Bologna"
+        },
+        {
+          "label": "Nơi làm việc",
+          "value": "bệnh viện"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "tên",
+            "variants": [
+              "mi chiamo minh",
+              "il mio nome è minh",
+              "sono minh"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "from",
+            "description": "quê",
+            "variants": [
+              "vietnam",
+              "vietnamita"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "city",
+            "description": "thành phố",
+            "variants": [
+              "a bologna"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "work",
+            "description": "nơi làm việc",
+            "variants": [
+              "ospedale"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 10,
+        "maxTokens": 35,
+        "requireSentenceVerbs": [
+          "chiamo",
+          "sono",
+          "abito",
+          "lavoro"
+        ]
+      },
+      "modelAnswers": [
+        "Mi chiamo Minh. Sono vietnamita. Abito a Bologna e lavoro in un ospedale."
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "it:w:nome",
+        "it:w:vietnamita",
+        "it:w:abitare",
+        "it:w:lavorare",
+        "it:w:ospedale"
+      ],
+      "scoredEligibility": false
+    },
+    "it.write.r_form_hotel": {
+      "id": "it.write.r_form_hotel",
+      "taskFamily": "simple_form",
+      "mode": "guided",
+      "instruction": "Hãy điền phiếu khách sạn với các thông tin trên thẻ.",
+      "cueFacts": [
+        {
+          "label": "Họ",
+          "value": "Tran"
+        },
+        {
+          "label": "Địa chỉ",
+          "value": "Via Roma 5"
+        },
+        {
+          "label": "Điện thoại",
+          "value": "347 987654"
+        }
+      ],
+      "formFields": [
+        {
+          "id": "cognome",
+          "label": "Cognome",
+          "slotId": "name"
+        },
+        {
+          "id": "indirizzo",
+          "label": "Indirizzo",
+          "slotId": "street"
+        },
+        {
+          "id": "telefono",
+          "label": "Telefono",
+          "slotId": "phone"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "name",
+            "description": "họ của bạn",
+            "variants": [
+              "tran"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "street",
+            "description": "địa chỉ",
+            "variants": [
+              "via roma 5"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "phone",
+            "description": "số điện thoại",
+            "variants": [
+              "347 987654",
+              "347987654"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 2,
+        "maxTokens": 12
+      },
+      "modelAnswers": [
+        "Tran | Via Roma 5 | 347 987654"
+      ],
+      "objectiveRefs": [
+        "it.obj.writing.form_filling"
+      ],
+      "lexemeRefs": [
+        "it:w:cognome",
+        "it:w:indirizzo",
+        "it:w:telefono"
+      ],
+      "scoredEligibility": false
+    }
+  },
+  "knownVocabulary": [
+    "a",
+    "abbastanza",
+    "abbiamo",
+    "abita",
+    "abitano",
+    "abitare",
+    "abitate",
+    "abitato",
+    "abiti",
+    "abitiamo",
+    "abito",
+    "accendere",
+    "accendo",
+    "accesa",
+    "accordo",
+    "acqua",
+    "ad",
+    "adesso",
+    "aereo",
+    "aeroporto",
+    "affitto",
+    "agli",
+    "agosto",
+    "ai",
+    "aiutare",
+    "aiuti",
+    "aiuto",
+    "al",
+    "albergo",
+    "albero",
+    "all",
+    "alla",
+    "alle",
+    "allo",
+    "allora",
+    "alto",
+    "altro",
+    "alzarsi",
+    "alzo",
+    "amare",
+    "ambulanza",
+    "amica",
+    "amici",
+    "amico",
+    "amo",
+    "anche",
+    "ancora",
+    "andare",
+    "andate",
+    "andato",
+    "andiamo",
+    "animale",
+    "anna",
+    "anni",
+    "anno",
+    "annullato",
+    "annuncio",
+    "anziano",
+    "aperta",
+    "aperto",
+    "appartamento",
+    "appuntamento",
+    "apre",
+    "apri",
+    "aprile",
+    "aprire",
+    "apro",
+    "arancia",
+    "arancione",
+    "armadio",
+    "arriva",
+    "arrivano",
+    "arrivare",
+    "arrivate",
+    "arrivato",
+    "arrivederci",
+    "arrivi",
+    "arriviamo",
+    "arrivo",
+    "ascolta",
+    "ascoltano",
+    "ascoltare",
+    "ascoltate",
+    "ascoltato",
+    "ascolti",
+    "ascoltiamo",
+    "ascolto",
+    "aspetta",
+    "aspettare",
+    "aspetto",
+    "attraversare",
+    "attraversi",
+    "auguri",
+    "autista",
+    "autobus",
+    "autunno",
+    "avere",
+    "avete",
+    "avuto",
+    "bagno",
+    "ballare",
+    "bambini",
+    "bambino",
+    "banana",
+    "banca",
+    "banco",
+    "bar",
+    "bassa",
+    "basso",
+    "bel",
+    "bella",
+    "belle",
+    "bello",
+    "bene",
+    "benvenuto",
+    "bere",
+    "beve",
+    "bevete",
+    "bevi",
+    "beviamo",
+    "bevo",
+    "bevono",
+    "bevuto",
+    "bianca",
+    "bianco",
+    "biblioteca",
+    "bicchiere",
+    "bicicletta",
+    "biglietto",
+    "binario",
+    "birra",
+    "biscotto",
+    "bisogna",
+    "bisognare",
+    "bisogno",
+    "blu",
+    "bocca",
+    "bologna",
+    "borsa",
+    "bottiglia",
+    "braccio",
+    "bravo",
+    "brutta",
+    "brutto",
+    "buon",
+    "buona",
+    "buonanotte",
+    "buonasera",
+    "buongiorno",
+    "buono",
+    "c",
+    "cade",
+    "cadere",
+    "caffe",
+    "calcio",
+    "caldo",
+    "calendario",
+    "calzini",
+    "calzino",
+    "cambiare",
+    "cambio",
+    "camera",
+    "camere",
+    "cameriera",
+    "cameriere",
+    "camicia",
+    "camminare",
+    "cammino",
+    "cane",
+    "canta",
+    "cantare",
+    "capelli",
+    "capiamo",
+    "capire",
+    "capisce",
+    "capisci",
+    "capisco",
+    "capiscono",
+    "capite",
+    "capito",
+    "capo",
+    "cappello",
+    "cappotto",
+    "cappuccino",
+    "cara",
+    "care",
+    "carne",
+    "caro",
+    "carota",
+    "carro",
+    "carta",
+    "cartello",
+    "casa",
+    "case",
+    "cassa",
+    "catena",
+    "cattivo",
+    "cavallo",
+    "cellulare",
+    "cena",
+    "cento",
+    "centro",
+    "cerca",
+    "cercano",
+    "cercare",
+    "cercate",
+    "cercato",
+    "cerchi",
+    "cerchiamo",
+    "cerco",
+    "certo",
+    "che",
+    "chi",
+    "chiama",
+    "chiamare",
+    "chiamarsi",
+    "chiami",
+    "chiamo",
+    "chiave",
+    "chiavi",
+    "chiedere",
+    "chiedo",
+    "chiesa",
+    "chilo",
+    "chitarra",
+    "chiudere",
+    "chiudo",
+    "chiusa",
+    "chiuso",
+    "ci",
+    "ciao",
+    "cibo",
+    "cielo",
+    "cinema",
+    "cinquanta",
+    "cinquantacinque",
+    "cinquantadue",
+    "cinquantanove",
+    "cinquantaquattro",
+    "cinquantasei",
+    "cinquantasette",
+    "cinquantatre",
+    "cinquantotto",
+    "cinquantuno",
+    "cinque",
+    "ciotola",
+    "cipolla",
+    "circa",
+    "citta",
+    "classe",
+    "cliente",
+    "cognome",
+    "colazione",
+    "collega",
+    "colloquio",
+    "colore",
+    "coltello",
+    "come",
+    "comincia",
+    "cominciare",
+    "commesso",
+    "compilare",
+    "compilo",
+    "compleanno",
+    "compra",
+    "comprano",
+    "comprare",
+    "comprate",
+    "comprato",
+    "compri",
+    "compriamo",
+    "compro",
+    "computer",
+    "con",
+    "coniglio",
+    "conoscere",
+    "conosco",
+    "contanti",
+    "contenta",
+    "contento",
+    "conto",
+    "contratto",
+    "coperta",
+    "cornetto",
+    "corpo",
+    "corre",
+    "correre",
+    "corro",
+    "corso",
+    "corta",
+    "corto",
+    "cosa",
+    "cose",
+    "cosi",
+    "costa",
+    "costare",
+    "credere",
+    "credo",
+    "cucchiaio",
+    "cucina",
+    "cucinare",
+    "cuoco",
+    "d",
+    "da",
+    "dagli",
+    "dai",
+    "dal",
+    "dalla",
+    "dalle",
+    "dallo",
+    "danno",
+    "dare",
+    "date",
+    "dato",
+    "davanti",
+    "davvero",
+    "decidere",
+    "decido",
+    "degli",
+    "dei",
+    "del",
+    "della",
+    "delle",
+    "dello",
+    "dente",
+    "denti",
+    "dentro",
+    "denuncia",
+    "desidera",
+    "desiderare",
+    "destra",
+    "detto",
+    "deve",
+    "devi",
+    "devo",
+    "devono",
+    "di",
+    "diamo",
+    "dice",
+    "dicembre",
+    "dici",
+    "diciamo",
+    "diciannove",
+    "diciassette",
+    "diciotto",
+    "dico",
+    "dicono",
+    "dieci",
+    "dietro",
+    "difficile",
+    "dimenticare",
+    "dimenticato",
+    "dire",
+    "dispiace",
+    "dite",
+    "ditta",
+    "divano",
+    "do",
+    "dobbiamo",
+    "dodici",
+    "dolce",
+    "domanda",
+    "domani",
+    "domenica",
+    "donna",
+    "dopo",
+    "dorme",
+    "dormi",
+    "dormiamo",
+    "dormire",
+    "dormite",
+    "dormito",
+    "dormo",
+    "dormono",
+    "dottore",
+    "dov",
+    "dove",
+    "dovere",
+    "dovete",
+    "dovuto",
+    "dritto",
+    "due",
+    "e",
+    "ecco",
+    "economico",
+    "ed",
+    "elefante",
+    "email",
+    "entra",
+    "entrano",
+    "entrare",
+    "entrate",
+    "entrato",
+    "entri",
+    "entriamo",
+    "entro",
+    "ero",
+    "esame",
+    "esce",
+    "esci",
+    "esco",
+    "escono",
+    "esercizio",
+    "esperienza",
+    "essere",
+    "estate",
+    "eta",
+    "euro",
+    "fa",
+    "facciamo",
+    "faccio",
+    "facile",
+    "fai",
+    "fame",
+    "famiglia",
+    "fanno",
+    "fare",
+    "farina",
+    "farmacia",
+    "fate",
+    "fatto",
+    "favore",
+    "febbraio",
+    "febbre",
+    "felice",
+    "ferma",
+    "fermarsi",
+    "fermata",
+    "festa",
+    "fidanzata",
+    "fidanzato",
+    "figlia",
+    "figlio",
+    "film",
+    "finestra",
+    "finiamo",
+    "finire",
+    "finisce",
+    "finisci",
+    "finisco",
+    "finiscono",
+    "finite",
+    "finito",
+    "fino",
+    "fiore",
+    "firenze",
+    "firmare",
+    "firmi",
+    "firmo",
+    "fiume",
+    "foglio",
+    "forchetta",
+    "formaggio",
+    "forse",
+    "forte",
+    "fortuna",
+    "foto",
+    "fra",
+    "francobollo",
+    "frase",
+    "fratelli",
+    "fratello",
+    "fredda",
+    "freddo",
+    "frigorifero",
+    "frutta",
+    "funziona",
+    "funzionare",
+    "fuori",
+    "gamba",
+    "gatti",
+    "gatto",
+    "gelato",
+    "genitori",
+    "gennaio",
+    "gente",
+    "gentile",
+    "gia",
+    "giacca",
+    "gialla",
+    "giallo",
+    "giardino",
+    "gioca",
+    "giocano",
+    "giocare",
+    "gioco",
+    "giornale",
+    "giornata",
+    "giorni",
+    "giorno",
+    "giovane",
+    "giovedi",
+    "girare",
+    "giri",
+    "giugno",
+    "giusta",
+    "giusto",
+    "gli",
+    "gola",
+    "gonna",
+    "grande",
+    "grave",
+    "grazie",
+    "grigio",
+    "guarda",
+    "guardano",
+    "guardare",
+    "guardate",
+    "guardato",
+    "guardi",
+    "guardiamo",
+    "guardo",
+    "ha",
+    "hai",
+    "hanno",
+    "hanoi",
+    "ho",
+    "hoa",
+    "i",
+    "idea",
+    "idraulico",
+    "ieri",
+    "il",
+    "imparare",
+    "imparo",
+    "importante",
+    "in",
+    "incidente",
+    "incontrare",
+    "incontro",
+    "indirizzo",
+    "infermiera",
+    "informazione",
+    "ingegnere",
+    "inglese",
+    "ingresso",
+    "insalata",
+    "insegna",
+    "insegnante",
+    "insegnare",
+    "insieme",
+    "interessante",
+    "internet",
+    "inverno",
+    "io",
+    "italia",
+    "italiana",
+    "italiano",
+    "l",
+    "la",
+    "ladro",
+    "lago",
+    "lasciare",
+    "lascio",
+    "latte",
+    "lavare",
+    "lavarsi",
+    "lavo",
+    "lavora",
+    "lavorano",
+    "lavorare",
+    "lavorate",
+    "lavorato",
+    "lavori",
+    "lavoriamo",
+    "lavoro",
+    "le",
+    "legge",
+    "leggere",
+    "leggete",
+    "leggi",
+    "leggiamo",
+    "leggo",
+    "leggono",
+    "legno",
+    "lei",
+    "lettera",
+    "letti",
+    "letto",
+    "lezione",
+    "li",
+    "libero",
+    "libri",
+    "libro",
+    "limone",
+    "lingua",
+    "lingue",
+    "lo",
+    "lontano",
+    "loro",
+    "luca",
+    "luce",
+    "luglio",
+    "lui",
+    "lunedi",
+    "lunga",
+    "lunghi",
+    "lungo",
+    "ma",
+    "macchina",
+    "madre",
+    "maggio",
+    "maglietta",
+    "maglione",
+    "mai",
+    "mal",
+    "malato",
+    "male",
+    "mamma",
+    "manca",
+    "mandare",
+    "mando",
+    "mangi",
+    "mangia",
+    "mangiamo",
+    "mangiano",
+    "mangiare",
+    "mangiate",
+    "mangiato",
+    "mangio",
+    "mani",
+    "mano",
+    "mappa",
+    "marco",
+    "mare",
+    "marito",
+    "marrone",
+    "marroni",
+    "martedi",
+    "marzo",
+    "matita",
+    "mattina",
+    "medicina",
+    "medico",
+    "mela",
+    "mele",
+    "meno",
+    "menu",
+    "mercato",
+    "mercoledi",
+    "mese",
+    "mesi",
+    "messaggio",
+    "meta",
+    "metropolitana",
+    "mettere",
+    "metto",
+    "mezzanotte",
+    "mezzo",
+    "mezzogiorno",
+    "mi",
+    "mia",
+    "mie",
+    "miei",
+    "milano",
+    "mille",
+    "minh",
+    "minuti",
+    "minuto",
+    "mio",
+    "modo",
+    "modulo",
+    "moglie",
+    "molta",
+    "molte",
+    "molto",
+    "mondo",
+    "montagna",
+    "mucca",
+    "museo",
+    "musica",
+    "napoli",
+    "naso",
+    "natale",
+    "nave",
+    "ne",
+    "negli",
+    "negozio",
+    "nei",
+    "nel",
+    "nell",
+    "nella",
+    "nelle",
+    "nello",
+    "nera",
+    "neri",
+    "nero",
+    "nessuno",
+    "neve",
+    "nevica",
+    "nevicare",
+    "niente",
+    "nipote",
+    "no",
+    "noi",
+    "nome",
+    "non",
+    "nonna",
+    "nonno",
+    "nono",
+    "nonostante",
+    "nostra",
+    "nostre",
+    "nostri",
+    "nostro",
+    "notizia",
+    "notte",
+    "novanta",
+    "novantacinque",
+    "novantadue",
+    "novantanove",
+    "novantaquattro",
+    "novantasei",
+    "novantasette",
+    "novantatre",
+    "novantotto",
+    "novantuno",
+    "nove",
+    "novembre",
+    "numero",
+    "nuova",
+    "nuovo",
+    "o",
+    "occhi",
+    "occhiali",
+    "occhio",
+    "occupato",
+    "oggi",
+    "ogni",
+    "olio",
+    "ombrello",
+    "operaio",
+    "oppure",
+    "ora",
+    "orario",
+    "ordinare",
+    "ordino",
+    "ore",
+    "orecchio",
+    "orso",
+    "ospedale",
+    "ottanta",
+    "ottantacinque",
+    "ottantadue",
+    "ottantanove",
+    "ottantaquattro",
+    "ottantasei",
+    "ottantasette",
+    "ottantatre",
+    "ottantotto",
+    "ottantuno",
+    "otto",
+    "ottobre",
+    "padre",
+    "padrone",
+    "paese",
+    "paga",
+    "pagano",
+    "pagare",
+    "pagate",
+    "pagato",
+    "paghi",
+    "paghiamo",
+    "pagina",
+    "pago",
+    "paio",
+    "pala",
+    "palestra",
+    "palla",
+    "pancia",
+    "pane",
+    "panetteria",
+    "panino",
+    "pantaloni",
+    "papa",
+    "parco",
+    "parla",
+    "parlano",
+    "parlare",
+    "parlate",
+    "parlato",
+    "parli",
+    "parliamo",
+    "parlo",
+    "parola",
+    "parole",
+    "parte",
+    "parti",
+    "partiamo",
+    "partire",
+    "partite",
+    "partito",
+    "parto",
+    "partono",
+    "passa",
+    "passaporto",
+    "passare",
+    "pasta",
+    "patata",
+    "patate",
+    "paura",
+    "pecora",
+    "penna",
+    "pensare",
+    "penso",
+    "per",
+    "perche",
+    "perdere",
+    "perfetto",
+    "pero",
+    "perso",
+    "persona",
+    "pesante",
+    "pesce",
+    "pezzo",
+    "piacciono",
+    "piace",
+    "piacere",
+    "piange",
+    "piangere",
+    "piano",
+    "piatti",
+    "piatto",
+    "piazza",
+    "piccola",
+    "piccolo",
+    "piede",
+    "piedi",
+    "pieno",
+    "pioggia",
+    "piove",
+    "piovere",
+    "piu",
+    "pizza",
+    "po",
+    "poco",
+    "poi",
+    "polizia",
+    "pollo",
+    "pomeriggio",
+    "pomodoro",
+    "ponte",
+    "porta",
+    "portare",
+    "porto",
+    "possiamo",
+    "posso",
+    "possono",
+    "posta",
+    "posto",
+    "potere",
+    "potete",
+    "potuto",
+    "pranzo",
+    "preferiamo",
+    "preferire",
+    "preferisce",
+    "preferisci",
+    "preferisco",
+    "preferiscono",
+    "preferita",
+    "preferite",
+    "preferito",
+    "prego",
+    "prende",
+    "prendere",
+    "prendete",
+    "prendi",
+    "prendiamo",
+    "prendo",
+    "prendono",
+    "prenotare",
+    "prenotazione",
+    "prenoto",
+    "preoccuparsi",
+    "preoccuparti",
+    "preparare",
+    "preparo",
+    "preso",
+    "presto",
+    "prezzo",
+    "prima",
+    "primavera",
+    "primo",
+    "problema",
+    "professore",
+    "professoressa",
+    "pronta",
+    "pronto",
+    "prosciutto",
+    "prossima",
+    "prossimo",
+    "provare",
+    "pulire",
+    "pulisco",
+    "pulita",
+    "pulito",
+    "puo",
+    "puoi",
+    "qua",
+    "quaderno",
+    "qual",
+    "qualche",
+    "qualcosa",
+    "qualcuno",
+    "quale",
+    "quali",
+    "quando",
+    "quanta",
+    "quante",
+    "quanti",
+    "quanto",
+    "quaranta",
+    "quarantacinque",
+    "quarantadue",
+    "quarantanove",
+    "quarantaquattro",
+    "quarantasei",
+    "quarantasette",
+    "quarantatre",
+    "quarantotto",
+    "quarantuno",
+    "quasi",
+    "quattordici",
+    "quattro",
+    "quel",
+    "quella",
+    "quelle",
+    "quelli",
+    "quello",
+    "questa",
+    "queste",
+    "questi",
+    "questo",
+    "qui",
+    "quindi",
+    "quindici",
+    "radio",
+    "ragazza",
+    "ragazzi",
+    "ragazzo",
+    "ragione",
+    "regalo",
+    "resta",
+    "restano",
+    "restare",
+    "restate",
+    "restato",
+    "resti",
+    "restiamo",
+    "resto",
+    "rex",
+    "ricetta",
+    "ricordare",
+    "ricordo",
+    "ride",
+    "ridere",
+    "rimborso",
+    "ripetere",
+    "riposarsi",
+    "riposo",
+    "riscaldamento",
+    "riso",
+    "rispondere",
+    "rispondo",
+    "risposta",
+    "ristorante",
+    "ritardo",
+    "roma",
+    "rosa",
+    "rossa",
+    "rossi",
+    "rosso",
+    "rotto",
+    "rubare",
+    "rubato",
+    "rumore",
+    "sa",
+    "sabato",
+    "sai",
+    "sale",
+    "salgo",
+    "salire",
+    "salotto",
+    "salute",
+    "salve",
+    "sanno",
+    "sapere",
+    "sapete",
+    "sappiamo",
+    "saputo",
+    "sbagliato",
+    "scala",
+    "scale",
+    "scarpa",
+    "scarpe",
+    "scendere",
+    "scendo",
+    "schiena",
+    "sciopero",
+    "sconto",
+    "scontrino",
+    "scorso",
+    "scritto",
+    "scrive",
+    "scrivere",
+    "scrivete",
+    "scrivi",
+    "scriviamo",
+    "scrivo",
+    "scrivono",
+    "scuola",
+    "scusa",
+    "scusi",
+    "se",
+    "seconda",
+    "secondo",
+    "sedia",
+    "sedici",
+    "sedile",
+    "segua",
+    "seguire",
+    "sei",
+    "semaforo",
+    "sembra",
+    "sembrare",
+    "sempre",
+    "sente",
+    "senti",
+    "sentiamo",
+    "sentire",
+    "sentite",
+    "sentito",
+    "sento",
+    "sentono",
+    "senza",
+    "sera",
+    "sessanta",
+    "sessantacinque",
+    "sessantadue",
+    "sessantanove",
+    "sessantaquattro",
+    "sessantasei",
+    "sessantasette",
+    "sessantatre",
+    "sessantotto",
+    "sessantuno",
+    "sete",
+    "settanta",
+    "settantacinque",
+    "settantadue",
+    "settantanove",
+    "settantaquattro",
+    "settantasei",
+    "settantasette",
+    "settantatre",
+    "settantotto",
+    "settantuno",
+    "sette",
+    "settembre",
+    "settimana",
+    "si",
+    "siamo",
+    "sicuro",
+    "siena",
+    "siete",
+    "signor",
+    "signora",
+    "signore",
+    "signorina",
+    "simpatica",
+    "simpatico",
+    "singola",
+    "sinistra",
+    "so",
+    "soldi",
+    "sole",
+    "solo",
+    "sonno",
+    "sono",
+    "sopra",
+    "sorella",
+    "sotto",
+    "spedire",
+    "spedisco",
+    "sperare",
+    "spero",
+    "spesa",
+    "spesso",
+    "spettacolo",
+    "spiega",
+    "spiegare",
+    "sporco",
+    "sport",
+    "sposato",
+    "sta",
+    "stagione",
+    "stai",
+    "stamattina",
+    "stanco",
+    "stanno",
+    "stanotte",
+    "stanza",
+    "stanze",
+    "stare",
+    "stasera",
+    "state",
+    "stato",
+    "stazione",
+    "stiamo",
+    "stipendio",
+    "sto",
+    "strada",
+    "straniero",
+    "studente",
+    "studentessa",
+    "studenti",
+    "studi",
+    "studia",
+    "studiamo",
+    "studiano",
+    "studiare",
+    "studiate",
+    "studiato",
+    "studio",
+    "su",
+    "sua",
+    "subito",
+    "succedere",
+    "successo",
+    "succo",
+    "sue",
+    "sugli",
+    "sui",
+    "sul",
+    "sull",
+    "sulla",
+    "sulle",
+    "sullo",
+    "suo",
+    "suoi",
+    "suona",
+    "suonare",
+    "suono",
+    "supermercato",
+    "taglia",
+    "tanti",
+    "tanto",
+    "tardi",
+    "tasca",
+    "tavolo",
+    "taxi",
+    "tazza",
+    "te",
+    "teatro",
+    "tedesco",
+    "telefono",
+    "televisione",
+    "tempo",
+    "terzo",
+    "testa",
+    "ti",
+    "tigre",
+    "tira",
+    "topo",
+    "torino",
+    "torna",
+    "tornano",
+    "tornare",
+    "tornate",
+    "tornato",
+    "torni",
+    "torniamo",
+    "torno",
+    "torta",
+    "tra",
+    "tranquilla",
+    "tranquillo",
+    "tre",
+    "tredici",
+    "treni",
+    "treno",
+    "trenta",
+    "trentacinque",
+    "trentadue",
+    "trentanove",
+    "trentaquattro",
+    "trentasei",
+    "trentasette",
+    "trentatre",
+    "trentotto",
+    "trentuno",
+    "triste",
+    "troppo",
+    "trovare",
+    "trovo",
+    "tu",
+    "tua",
+    "tue",
+    "tuo",
+    "tuoi",
+    "turista",
+    "turno",
+    "tutto",
+    "uccello",
+    "ufficio",
+    "ultimo",
+    "un",
+    "una",
+    "undici",
+    "universita",
+    "uno",
+    "uomo",
+    "uovo",
+    "usare",
+    "usciamo",
+    "uscire",
+    "uscita",
+    "uscite",
+    "uscito",
+    "uso",
+    "utile",
+    "va",
+    "vacanza",
+    "vada",
+    "vado",
+    "vai",
+    "valigia",
+    "vanno",
+    "vecchia",
+    "vecchio",
+    "vede",
+    "vedere",
+    "vedete",
+    "vedi",
+    "vediamo",
+    "vedo",
+    "vedono",
+    "vende",
+    "vendere",
+    "venerdi",
+    "vengo",
+    "vengono",
+    "veniamo",
+    "venire",
+    "venite",
+    "vent",
+    "venti",
+    "venticinque",
+    "ventidue",
+    "ventinove",
+    "ventiquattro",
+    "ventisei",
+    "ventisette",
+    "ventitre",
+    "vento",
+    "ventotto",
+    "ventuno",
+    "venuto",
+    "verde",
+    "verdi",
+    "verdura",
+    "vero",
+    "vestiti",
+    "vestito",
+    "veterinario",
+    "vi",
+    "via",
+    "viaggiare",
+    "viaggio",
+    "vicina",
+    "vicino",
+    "viene",
+    "vieni",
+    "vietnam",
+    "vietnamita",
+    "vino",
+    "visto",
+    "vivere",
+    "vivo",
+    "voglia",
+    "vogliamo",
+    "voglio",
+    "vogliono",
+    "voi",
+    "volere",
+    "volete",
+    "volta",
+    "volte",
+    "voluto",
+    "vorrei",
+    "vostra",
+    "vostre",
+    "vostri",
+    "vostro",
+    "vuoi",
+    "vuole",
+    "vuoto",
+    "zaino",
+    "zero",
+    "zia",
+    "zio",
+    "zucchero"
+  ]
+}

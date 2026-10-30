@@ -422,6 +422,27 @@
       "notes": "P3d(de): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/de-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/de/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public Goethe-Zertifikat A1: Start Deutsch 1 formats only, never official items. Ships under the repository's MIT grant like the other course packs."
     },
     {
+      "id": "original-italian-course",
+      "name": "Learning French with Tracy — authored it-vi course (Italian for Vietnamese speakers)",
+      "kind": "authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)",
+      "license": "MIT",
+      "url": "https://github.com/vansyson1308/learning-french-with-tracy",
+      "attribution": "Italian course content for Vietnamese speakers authored by the Learning French with Tracy project.",
+      "retrievedAt": "2026-10-30",
+      "covers": [
+        "content/courses/it-vi.json",
+        "content/it/pedagogy/",
+        "content/it/reception/reading.json",
+        "content/it/reception/listening.json",
+        "content/it/speech/",
+        "content/it/writing/",
+        "content/it/interaction/",
+        "content/it/assessment/",
+        "content/it/exam/"
+      ],
+      "notes": "P3d(it): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/it-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/it/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public CILS A1 standard formats only, never official items. Ships under the repository's MIT grant like the other course packs."
+    },
+    {
       "id": "tts-engine-kokoro",
       "name": "Kokoro-82M (hexgrad) — neural TTS engine and model",
       "kind": "TTS engine used at pipeline time (never shipped)",

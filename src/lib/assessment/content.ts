@@ -131,6 +131,11 @@ export function checkpointFor(courseId: string, id: string): CompiledCheckpoint 
   return checkpointsOf(courseId).byId[id];
 }
 
+/** The id of the course's capstone at a CEFR level, if it has one. */
+export function capstoneCheckpointId(courseId: string, level = "A1"): string | undefined {
+  return checkpointsOf(courseId).order.find((id) => id.endsWith(`.checkpoint.${level.toLowerCase()}-capstone`));
+}
+
 /** The checkpoint attached to a PATH section, if any. */
 export function checkpointForSection(courseId: string, sectionId: string): CompiledCheckpoint | undefined {
   const { order, byId } = checkpointsOf(courseId);

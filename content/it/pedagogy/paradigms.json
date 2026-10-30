@@ -1,0 +1,918 @@
+{
+  "version": 1,
+  "language": "it",
+  "tables": [
+    {
+      "lemma": "essere",
+      "gloss": {
+        "vi": "là, ở",
+        "en": "to be"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "essere",
+        "pre:1s": "sono",
+        "pre:2s": "sei",
+        "pre:3s": "è",
+        "pre:1p": "siamo",
+        "pre:2p": "siete",
+        "pre:3p": "sono",
+        "participle": "stato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "avere",
+      "gloss": {
+        "vi": "có",
+        "en": "to have"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "avere",
+        "pre:1s": "ho",
+        "pre:2s": "hai",
+        "pre:3s": "ha",
+        "pre:1p": "abbiamo",
+        "pre:2p": "avete",
+        "pre:3p": "hanno",
+        "participle": "avuto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "andare",
+      "gloss": {
+        "vi": "đi",
+        "en": "to go"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "andare",
+        "pre:1s": "vado",
+        "pre:2s": "vai",
+        "pre:3s": "va",
+        "pre:1p": "andiamo",
+        "pre:2p": "andate",
+        "pre:3p": "vanno",
+        "participle": "andato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "venire",
+      "gloss": {
+        "vi": "đến",
+        "en": "to come"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "venire",
+        "pre:1s": "vengo",
+        "pre:2s": "vieni",
+        "pre:3s": "viene",
+        "pre:1p": "veniamo",
+        "pre:2p": "venite",
+        "pre:3p": "vengono",
+        "participle": "venuto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "stare",
+      "gloss": {
+        "vi": "ở; khỏe",
+        "en": "to stay, to be"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "stare",
+        "pre:1s": "sto",
+        "pre:2s": "stai",
+        "pre:3s": "sta",
+        "pre:1p": "stiamo",
+        "pre:2p": "state",
+        "pre:3p": "stanno",
+        "participle": "stato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "fare",
+      "gloss": {
+        "vi": "làm",
+        "en": "to do, to make"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "fare",
+        "pre:1s": "faccio",
+        "pre:2s": "fai",
+        "pre:3s": "fa",
+        "pre:1p": "facciamo",
+        "pre:2p": "fate",
+        "pre:3p": "fanno",
+        "participle": "fatto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "dire",
+      "gloss": {
+        "vi": "nói",
+        "en": "to say"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "dire",
+        "pre:1s": "dico",
+        "pre:2s": "dici",
+        "pre:3s": "dice",
+        "pre:1p": "diciamo",
+        "pre:2p": "dite",
+        "pre:3p": "dicono",
+        "participle": "detto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "dare",
+      "gloss": {
+        "vi": "đưa, cho",
+        "en": "to give"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "dare",
+        "pre:1s": "do",
+        "pre:2s": "dai",
+        "pre:3s": "dà",
+        "pre:1p": "diamo",
+        "pre:2p": "date",
+        "pre:3p": "danno",
+        "participle": "dato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "sapere",
+      "gloss": {
+        "vi": "biết",
+        "en": "to know"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "sapere",
+        "pre:1s": "so",
+        "pre:2s": "sai",
+        "pre:3s": "sa",
+        "pre:1p": "sappiamo",
+        "pre:2p": "sapete",
+        "pre:3p": "sanno",
+        "participle": "saputo"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "volere",
+      "gloss": {
+        "vi": "muốn",
+        "en": "to want"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "volere",
+        "pre:1s": "voglio",
+        "pre:2s": "vuoi",
+        "pre:3s": "vuole",
+        "pre:1p": "vogliamo",
+        "pre:2p": "volete",
+        "pre:3p": "vogliono",
+        "participle": "voluto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "potere",
+      "gloss": {
+        "vi": "có thể",
+        "en": "can"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "potere",
+        "pre:1s": "posso",
+        "pre:2s": "puoi",
+        "pre:3s": "può",
+        "pre:1p": "possiamo",
+        "pre:2p": "potete",
+        "pre:3p": "possono",
+        "participle": "potuto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "dovere",
+      "gloss": {
+        "vi": "phải",
+        "en": "must"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "dovere",
+        "pre:1s": "devo",
+        "pre:2s": "devi",
+        "pre:3s": "deve",
+        "pre:1p": "dobbiamo",
+        "pre:2p": "dovete",
+        "pre:3p": "devono",
+        "participle": "dovuto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "bere",
+      "gloss": {
+        "vi": "uống",
+        "en": "to drink"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "bere",
+        "pre:1s": "bevo",
+        "pre:2s": "bevi",
+        "pre:3s": "beve",
+        "pre:1p": "beviamo",
+        "pre:2p": "bevete",
+        "pre:3p": "bevono",
+        "participle": "bevuto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "uscire",
+      "gloss": {
+        "vi": "đi ra ngoài",
+        "en": "to go out"
+      },
+      "group": "irregular",
+      "cells": {
+        "inf": "uscire",
+        "pre:1s": "esco",
+        "pre:2s": "esci",
+        "pre:3s": "esce",
+        "pre:1p": "usciamo",
+        "pre:2p": "uscite",
+        "pre:3p": "escono",
+        "participle": "uscito"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "parlare",
+      "gloss": {
+        "vi": "nói",
+        "en": "to speak"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "parlare",
+        "pre:1s": "parlo",
+        "pre:2s": "parli",
+        "pre:3s": "parla",
+        "pre:1p": "parliamo",
+        "pre:2p": "parlate",
+        "pre:3p": "parlano",
+        "participle": "parlato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "mangiare",
+      "gloss": {
+        "vi": "ăn",
+        "en": "to eat"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "mangiare",
+        "pre:1s": "mangio",
+        "pre:2s": "mangi",
+        "pre:3s": "mangia",
+        "pre:1p": "mangiamo",
+        "pre:2p": "mangiate",
+        "pre:3p": "mangiano",
+        "participle": "mangiato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "abitare",
+      "gloss": {
+        "vi": "sống, ở",
+        "en": "to live"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "abitare",
+        "pre:1s": "abito",
+        "pre:2s": "abiti",
+        "pre:3s": "abita",
+        "pre:1p": "abitiamo",
+        "pre:2p": "abitate",
+        "pre:3p": "abitano",
+        "participle": "abitato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "lavorare",
+      "gloss": {
+        "vi": "làm việc",
+        "en": "to work"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "lavorare",
+        "pre:1s": "lavoro",
+        "pre:2s": "lavori",
+        "pre:3s": "lavora",
+        "pre:1p": "lavoriamo",
+        "pre:2p": "lavorate",
+        "pre:3p": "lavorano",
+        "participle": "lavorato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "studiare",
+      "gloss": {
+        "vi": "học",
+        "en": "to study"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "studiare",
+        "pre:1s": "studio",
+        "pre:2s": "studi",
+        "pre:3s": "studia",
+        "pre:1p": "studiamo",
+        "pre:2p": "studiate",
+        "pre:3p": "studiano",
+        "participle": "studiato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "cercare",
+      "gloss": {
+        "vi": "tìm",
+        "en": "to look for"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "cercare",
+        "pre:1s": "cerco",
+        "pre:2s": "cerchi",
+        "pre:3s": "cerca",
+        "pre:1p": "cerchiamo",
+        "pre:2p": "cercate",
+        "pre:3p": "cercano",
+        "participle": "cercato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "pagare",
+      "gloss": {
+        "vi": "trả tiền",
+        "en": "to pay"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "pagare",
+        "pre:1s": "pago",
+        "pre:2s": "paghi",
+        "pre:3s": "paga",
+        "pre:1p": "paghiamo",
+        "pre:2p": "pagate",
+        "pre:3p": "pagano",
+        "participle": "pagato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "comprare",
+      "gloss": {
+        "vi": "mua",
+        "en": "to buy"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "comprare",
+        "pre:1s": "compro",
+        "pre:2s": "compri",
+        "pre:3s": "compra",
+        "pre:1p": "compriamo",
+        "pre:2p": "comprate",
+        "pre:3p": "comprano",
+        "participle": "comprato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "guardare",
+      "gloss": {
+        "vi": "xem, nhìn",
+        "en": "to watch"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "guardare",
+        "pre:1s": "guardo",
+        "pre:2s": "guardi",
+        "pre:3s": "guarda",
+        "pre:1p": "guardiamo",
+        "pre:2p": "guardate",
+        "pre:3p": "guardano",
+        "participle": "guardato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "ascoltare",
+      "gloss": {
+        "vi": "nghe",
+        "en": "to listen"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "ascoltare",
+        "pre:1s": "ascolto",
+        "pre:2s": "ascolti",
+        "pre:3s": "ascolta",
+        "pre:1p": "ascoltiamo",
+        "pre:2p": "ascoltate",
+        "pre:3p": "ascoltano",
+        "participle": "ascoltato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "arrivare",
+      "gloss": {
+        "vi": "đến nơi",
+        "en": "to arrive"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "arrivare",
+        "pre:1s": "arrivo",
+        "pre:2s": "arrivi",
+        "pre:3s": "arriva",
+        "pre:1p": "arriviamo",
+        "pre:2p": "arrivate",
+        "pre:3p": "arrivano",
+        "participle": "arrivato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "tornare",
+      "gloss": {
+        "vi": "trở về",
+        "en": "to return"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "tornare",
+        "pre:1s": "torno",
+        "pre:2s": "torni",
+        "pre:3s": "torna",
+        "pre:1p": "torniamo",
+        "pre:2p": "tornate",
+        "pre:3p": "tornano",
+        "participle": "tornato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "entrare",
+      "gloss": {
+        "vi": "đi vào",
+        "en": "to enter"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "entrare",
+        "pre:1s": "entro",
+        "pre:2s": "entri",
+        "pre:3s": "entra",
+        "pre:1p": "entriamo",
+        "pre:2p": "entrate",
+        "pre:3p": "entrano",
+        "participle": "entrato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "restare",
+      "gloss": {
+        "vi": "ở lại",
+        "en": "to stay"
+      },
+      "group": "are-regular",
+      "cells": {
+        "inf": "restare",
+        "pre:1s": "resto",
+        "pre:2s": "resti",
+        "pre:3s": "resta",
+        "pre:1p": "restiamo",
+        "pre:2p": "restate",
+        "pre:3p": "restano",
+        "participle": "restato"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "leggere",
+      "gloss": {
+        "vi": "đọc",
+        "en": "to read"
+      },
+      "group": "ere-regular",
+      "cells": {
+        "inf": "leggere",
+        "pre:1s": "leggo",
+        "pre:2s": "leggi",
+        "pre:3s": "legge",
+        "pre:1p": "leggiamo",
+        "pre:2p": "leggete",
+        "pre:3p": "leggono",
+        "participle": "letto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "scrivere",
+      "gloss": {
+        "vi": "viết",
+        "en": "to write"
+      },
+      "group": "ere-regular",
+      "cells": {
+        "inf": "scrivere",
+        "pre:1s": "scrivo",
+        "pre:2s": "scrivi",
+        "pre:3s": "scrive",
+        "pre:1p": "scriviamo",
+        "pre:2p": "scrivete",
+        "pre:3p": "scrivono",
+        "participle": "scritto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "prendere",
+      "gloss": {
+        "vi": "lấy; đi (xe)",
+        "en": "to take"
+      },
+      "group": "ere-regular",
+      "cells": {
+        "inf": "prendere",
+        "pre:1s": "prendo",
+        "pre:2s": "prendi",
+        "pre:3s": "prende",
+        "pre:1p": "prendiamo",
+        "pre:2p": "prendete",
+        "pre:3p": "prendono",
+        "participle": "preso"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "vedere",
+      "gloss": {
+        "vi": "nhìn thấy",
+        "en": "to see"
+      },
+      "group": "ere-regular",
+      "cells": {
+        "inf": "vedere",
+        "pre:1s": "vedo",
+        "pre:2s": "vedi",
+        "pre:3s": "vede",
+        "pre:1p": "vediamo",
+        "pre:2p": "vedete",
+        "pre:3p": "vedono",
+        "participle": "visto"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "dormire",
+      "gloss": {
+        "vi": "ngủ",
+        "en": "to sleep"
+      },
+      "group": "ire-regular",
+      "cells": {
+        "inf": "dormire",
+        "pre:1s": "dormo",
+        "pre:2s": "dormi",
+        "pre:3s": "dorme",
+        "pre:1p": "dormiamo",
+        "pre:2p": "dormite",
+        "pre:3p": "dormono",
+        "participle": "dormito"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "sentire",
+      "gloss": {
+        "vi": "nghe; cảm thấy",
+        "en": "to hear, to feel"
+      },
+      "group": "ire-regular",
+      "cells": {
+        "inf": "sentire",
+        "pre:1s": "sento",
+        "pre:2s": "senti",
+        "pre:3s": "sente",
+        "pre:1p": "sentiamo",
+        "pre:2p": "sentite",
+        "pre:3p": "sentono",
+        "participle": "sentito"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "partire",
+      "gloss": {
+        "vi": "khởi hành",
+        "en": "to leave"
+      },
+      "group": "ire-regular",
+      "cells": {
+        "inf": "partire",
+        "pre:1s": "parto",
+        "pre:2s": "parti",
+        "pre:3s": "parte",
+        "pre:1p": "partiamo",
+        "pre:2p": "partite",
+        "pre:3p": "partono",
+        "participle": "partito"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "essere"
+      }
+    },
+    {
+      "lemma": "capire",
+      "gloss": {
+        "vi": "hiểu",
+        "en": "to understand"
+      },
+      "group": "isc-regular",
+      "cells": {
+        "inf": "capire",
+        "pre:1s": "capisco",
+        "pre:2s": "capisci",
+        "pre:3s": "capisce",
+        "pre:1p": "capiamo",
+        "pre:2p": "capite",
+        "pre:3p": "capiscono",
+        "participle": "capito"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "finire",
+      "gloss": {
+        "vi": "kết thúc",
+        "en": "to finish"
+      },
+      "group": "isc-regular",
+      "cells": {
+        "inf": "finire",
+        "pre:1s": "finisco",
+        "pre:2s": "finisci",
+        "pre:3s": "finisce",
+        "pre:1p": "finiamo",
+        "pre:2p": "finite",
+        "pre:3p": "finiscono",
+        "participle": "finito"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    },
+    {
+      "lemma": "preferire",
+      "gloss": {
+        "vi": "thích hơn",
+        "en": "to prefer"
+      },
+      "group": "isc-regular",
+      "cells": {
+        "inf": "preferire",
+        "pre:1s": "preferisco",
+        "pre:2s": "preferisci",
+        "pre:3s": "preferisce",
+        "pre:1p": "preferiamo",
+        "pre:2p": "preferite",
+        "pre:3p": "preferiscono",
+        "participle": "preferito"
+      },
+      "evidence": {
+        "source": "kaikki-en"
+      },
+      "attributes": {
+        "auxiliary": "avere"
+      }
+    }
+  ]
+}

@@ -1,0 +1,969 @@
+{
+  "version": 1,
+  "language": "it",
+  "order": [
+    "it:concept:gender-endings",
+    "it:concept:definite-articles",
+    "it:concept:indefinite-articles",
+    "it:concept:plurals",
+    "it:concept:elision",
+    "it:concept:essere-avere",
+    "it:concept:c-e-ci-sono",
+    "it:concept:present-regular",
+    "it:concept:isc-verbs",
+    "it:concept:subject-drop",
+    "it:concept:tu-lei",
+    "it:concept:adjective-agreement",
+    "it:concept:negation-questions",
+    "it:concept:passato-prossimo",
+    "it:concept:numbers",
+    "it:concept:time-and-prices",
+    "it:concept:prepositions",
+    "it:concept:mi-piace",
+    "it:concept:modal-verbs",
+    "it:concept:double-consonants",
+    "it:concept:stress-accents",
+    "it:concept:c-g-sounds",
+    "it:concept:greetings-register",
+    "it:concept:false-friends",
+    "it:concept:possessives"
+  ],
+  "byId": {
+    "it:concept:gender-endings": {
+      "id": "it:concept:gender-endings",
+      "title": "Đuôi từ gợi ý giống",
+      "shortRule": "-o thường là giống đực, -a thường là giống cái, -e phải học từng từ.",
+      "explanation": "Mọi danh từ tiếng Ý là giống đực hoặc giống cái. Trong dữ liệu từ điển của khoá học (11.233 danh từ), đuôi -o là giống đực ở 99,4 %, đuôi -a là giống cái ở 90,4 %. Đuôi -e gần như chia đôi: 1.249 từ giống đực, 1.038 từ giống cái, nên hãy học từng từ. Tiếng Việt không có giống, vì vậy luôn học danh từ cùng mạo từ.",
+      "examples": [
+        {
+          "it": "il libro",
+          "vi": "quyển sách",
+          "note": "đuôi -o, giống đực"
+        },
+        {
+          "it": "la casa",
+          "vi": "ngôi nhà",
+          "note": "đuôi -a, giống cái"
+        },
+        {
+          "it": "il pane",
+          "vi": "bánh mì",
+          "note": "đuôi -e, giống đực"
+        },
+        {
+          "it": "la chiave",
+          "vi": "chìa khóa",
+          "note": "đuôi -e, giống cái"
+        }
+      ],
+      "exceptions": [
+        "Ngoại lệ hay gặp: la mano (bàn tay), la foto, la radio là giống cái; il problema là giống đực."
+      ],
+      "memoryHint": "Học «il libro», đừng chỉ học «libro».",
+      "objectives": [
+        "it.obj.articles.definite"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "gender-stats"
+        }
+      ]
+    },
+    "it:concept:definite-articles": {
+      "id": "it:concept:definite-articles",
+      "title": "Mạo từ xác định: il, lo, la, l'",
+      "shortRule": "Giống và âm đầu của danh từ quyết định mạo từ: il libro, lo zaino, la casa, l'amico.",
+      "explanation": "Giống đực dùng il trước phụ âm thường, lo trước s + phụ âm, z, gn, ps, và l' trước nguyên âm. Giống cái dùng la trước mọi phụ âm và l' trước nguyên âm. Mạo từ thay đổi theo âm của chữ đứng ngay sau nó, kể cả khi đó là tính từ: il vecchio amico. Chữ h không đọc nên l'hotel dùng l'.",
+      "examples": [
+        {
+          "it": "il libro",
+          "vi": "quyển sách",
+          "note": "phụ âm thường"
+        },
+        {
+          "it": "lo studente",
+          "vi": "sinh viên",
+          "note": "s + phụ âm"
+        },
+        {
+          "it": "lo zaino",
+          "vi": "ba lô",
+          "note": "z"
+        },
+        {
+          "it": "l'amico",
+          "vi": "người bạn nam",
+          "note": "nguyên âm"
+        },
+        {
+          "it": "la scuola",
+          "vi": "trường học",
+          "note": "giống cái: s + phụ âm không đổi gì"
+        }
+      ],
+      "exceptions": [
+        "Trước tên người thân số ít có từ sở hữu không dùng mạo từ: mia madre."
+      ],
+      "memoryHint": "Lo chỉ dành cho giống đực với âm đầu khó đọc: st-, sp-, z-, gn-.",
+      "objectives": [
+        "it.obj.articles.definite"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:indefinite-articles": {
+      "id": "it:concept:indefinite-articles",
+      "title": "Mạo từ không xác định: un, uno, una, un'",
+      "shortRule": "un libro, uno zaino, una casa, un'amica: chọn theo giống và âm đầu.",
+      "explanation": "Giống đực dùng un (cả trước nguyên âm: un amico) và uno trước s + phụ âm, z, gn, ps. Giống cái dùng una, và un' trước nguyên âm. Dấu lược chỉ xuất hiện ở giống cái. Vì vậy un amico không có dấu lược, còn un'amica thì có: nhìn dấu lược là biết người đó là nữ.",
+      "examples": [
+        {
+          "it": "un libro",
+          "vi": "một quyển sách"
+        },
+        {
+          "it": "uno zaino",
+          "vi": "một cái ba lô"
+        },
+        {
+          "it": "un amico",
+          "vi": "một người bạn nam",
+          "note": "giống đực: không có dấu lược"
+        },
+        {
+          "it": "un'amica",
+          "vi": "một người bạn nữ",
+          "note": "giống cái trước nguyên âm: có dấu lược"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Dấu lược = giống cái: un'amica.",
+      "objectives": [
+        "it.obj.articles.indefinite_elision"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:plurals": {
+      "id": "it:concept:plurals",
+      "title": "Số nhiều: đổi đuôi và đổi mạo từ",
+      "shortRule": "-o, -e → -i; -a → -e. Mạo từ: il → i, lo/l' → gli, la/l' → le.",
+      "explanation": "Tiếng Việt thêm 'những', còn tiếng Ý đổi đuôi danh từ: il libro → i libri, la casa → le case, il pane → i pani, la chiave → le chiavi. Mạo từ cũng đổi theo: giống đực dùng i, nhưng gli trước nguyên âm và các âm của lo; giống cái luôn dùng le. Từ có dấu ở cuối, từ mượn và từ một âm tiết giữ nguyên: la città → le città, il film → i film.",
+      "examples": [
+        {
+          "it": "i libri",
+          "vi": "những quyển sách"
+        },
+        {
+          "it": "gli amici",
+          "vi": "những người bạn",
+          "note": "l'amico → gli amici"
+        },
+        {
+          "it": "gli studenti",
+          "vi": "các sinh viên",
+          "note": "lo studente → gli studenti"
+        },
+        {
+          "it": "le case",
+          "vi": "những ngôi nhà"
+        },
+        {
+          "it": "le città",
+          "vi": "các thành phố",
+          "note": "không đổi"
+        }
+      ],
+      "exceptions": [
+        "Bất quy tắc hay gặp: l'uomo → gli uomini, la mano → le mani, l'uovo → le uova, il braccio → le braccia.",
+        "-ca, -ga giữ âm cứng: l'amica → le amiche, nhưng -co có thể mềm: l'amico → gli amici."
+      ],
+      "memoryHint": "Gli đi cùng lo và l': lo zaino → gli zaini, l'amico → gli amici.",
+      "objectives": [
+        "it.obj.articles.plurals"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:elision": {
+      "id": "it:concept:elision",
+      "title": "Dấu lược: l', un', dov'è, c'è",
+      "shortRule": "Trước nguyên âm, lo và la thành l'; viết liền, không có khoảng trắng sau dấu lược.",
+      "explanation": "Tiếng Ý tránh hai nguyên âm đứng cạnh nhau nên lược bớt một âm: l'amico (không phải lo amico), l'acqua (không phải la acqua). Các cụm khác cũng vậy: dov'è (dove + è), c'è (ci + è), un'ora. Khi gõ, không đặt khoảng trắng sau dấu lược. Gặp l' thì không biết giống từ mạo từ, nên hãy nhìn đuôi từ hoặc từ điển.",
+      "examples": [
+        {
+          "it": "l'acqua",
+          "vi": "nước"
+        },
+        {
+          "it": "l'albergo",
+          "vi": "khách sạn"
+        },
+        {
+          "it": "Dov'è la stazione?",
+          "vi": "Nhà ga ở đâu?"
+        },
+        {
+          "it": "C'è un bar qui.",
+          "vi": "Ở đây có một quán bar."
+        }
+      ],
+      "exceptions": [
+        "Số nhiều không lược: gli amici, le amiche."
+      ],
+      "memoryHint": "Nghe liền một hơi: l'amico đọc như một từ.",
+      "objectives": [
+        "it.obj.articles.indefinite_elision",
+        "it.obj.spelling.accents_apostrophe"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:essere-avere": {
+      "id": "it:concept:essere-avere",
+      "title": "Essere và avere",
+      "shortRule": "essere: sono, sei, è, siamo, siete, sono. avere: ho, hai, ha, abbiamo, avete, hanno.",
+      "explanation": "Hai động từ này bất quy tắc và xuất hiện ở khắp nơi. Essere nghĩa là 'là' hoặc 'ở': Sono vietnamita, Sono a Roma. Avere nghĩa là 'có'. Tiếng Ý dùng avere trong nhiều cụm mà tiếng Việt dùng 'là' hoặc tính từ: Ho venti anni (tôi hai mươi tuổi), Ho fame (tôi đói), Ho sete (tôi khát), Ho sonno (tôi buồn ngủ). Chữ h trong ho, hai, ha, hanno không đọc.",
+      "examples": [
+        {
+          "it": "Sono di Hanoi.",
+          "vi": "Tôi đến từ Hà Nội."
+        },
+        {
+          "it": "Marco è a casa.",
+          "vi": "Marco ở nhà."
+        },
+        {
+          "it": "Ho due fratelli.",
+          "vi": "Tôi có hai anh trai."
+        },
+        {
+          "it": "Ho venti anni.",
+          "vi": "Tôi hai mươi tuổi.",
+          "note": "nói tuổi dùng avere"
+        }
+      ],
+      "exceptions": [
+        "È có dấu là 'là'; e không dấu là 'và'. Ha có h là 'có'; a không có h là giới từ."
+      ],
+      "memoryHint": "Tuổi, đói, khát, buồn ngủ: tiếng Ý đều 'có'.",
+      "objectives": [
+        "it.obj.verbs.essere_avere_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "it:concept:c-e-ci-sono": {
+      "id": "it:concept:c-e-ci-sono",
+      "title": "C'è và ci sono",
+      "shortRule": "C'è + số ít, ci sono + số nhiều: 'có' để nói một thứ tồn tại ở đâu đó.",
+      "explanation": "Tiếng Việt dùng một từ 'có' cho cả sở hữu và tồn tại. Tiếng Ý tách ra: avere để nói ai có gì (Ho un gatto), còn c'è / ci sono để nói có cái gì ở đâu đó (C'è un gatto in giardino). Danh từ theo sau quyết định dùng dạng nào: C'è un letto, Ci sono due letti. Câu hỏi chỉ cần lên giọng: C'è un bar qui vicino?",
+      "examples": [
+        {
+          "it": "Ho un gatto.",
+          "vi": "Tôi có một con mèo.",
+          "note": "sở hữu"
+        },
+        {
+          "it": "C'è un gatto in giardino.",
+          "vi": "Có một con mèo trong vườn.",
+          "note": "tồn tại"
+        },
+        {
+          "it": "Ci sono due letti.",
+          "vi": "Có hai cái giường."
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Ai có gì: avere. Ở đâu có gì: c'è.",
+      "objectives": [
+        "it.obj.verbs.essere_avere_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:present-regular": {
+      "id": "it:concept:present-regular",
+      "title": "Ba nhóm động từ ở thì hiện tại",
+      "shortRule": "Bỏ -are, -ere, -ire rồi thêm đuôi theo người: -o, -i, -a/-e, -iamo, -ate/-ete/-ite, -ano/-ono.",
+      "explanation": "Tiếng Việt không chia động từ, còn tiếng Ý có sáu đuôi. Nhóm -are: parlo, parli, parla, parliamo, parlate, parlano. Nhóm -ere: leggo, leggi, legge, leggiamo, leggete, leggono. Nhóm -ire: dormo, dormi, dorme, dormiamo, dormite, dormono. Đuôi -o luôn là 'tôi', -iamo luôn là 'chúng tôi'. Động từ -care, -gare thêm h để giữ âm cứng: cerchi, paghi. Động từ -iare chỉ giữ một i: mangi, studi.",
+      "examples": [
+        {
+          "it": "Parlo italiano.",
+          "vi": "Tôi nói tiếng Ý."
+        },
+        {
+          "it": "Leggi il giornale?",
+          "vi": "Bạn có đọc báo không?"
+        },
+        {
+          "it": "Marco dorme.",
+          "vi": "Marco đang ngủ."
+        },
+        {
+          "it": "Cerchi la stazione?",
+          "vi": "Bạn đang tìm nhà ga à?",
+          "note": "h giữ âm k"
+        }
+      ],
+      "exceptions": [
+        "Thì hiện tại tiếng Ý cũng dùng cho việc đang diễn ra: Mangio = tôi ăn / tôi đang ăn."
+      ],
+      "memoryHint": "-o là tôi, -i là bạn, -iamo là chúng tôi.",
+      "objectives": [
+        "it.obj.verbs.regular_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "it:concept:isc-verbs": {
+      "id": "it:concept:isc-verbs",
+      "title": "Nhóm -ire có -isc-",
+      "shortRule": "capire, finire, preferire: thêm -isc- ở tôi, bạn, anh ấy, họ; không thêm ở chúng tôi, các bạn.",
+      "explanation": "Nhiều động từ -ire chen thêm -isc- trước đuôi: capisco, capisci, capisce, capiamo, capite, capiscono. Chữ sc đọc khác nhau: capisco có âm 'sk', capisci có âm 's nặng'. Không có quy tắc nào cho biết động từ nào thuộc nhóm này, nên hãy học từng từ: capire, finire, preferire, pulire, spedire. Các động từ dormire, partire, sentire, aprire không có -isc-.",
+      "examples": [
+        {
+          "it": "Non capisco.",
+          "vi": "Tôi không hiểu."
+        },
+        {
+          "it": "Preferisco il tè.",
+          "vi": "Tôi thích trà hơn."
+        },
+        {
+          "it": "Capiamo tutto.",
+          "vi": "Chúng tôi hiểu hết.",
+          "note": "noi: không có -isc-"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Noi và voi không có -isc-.",
+      "objectives": [
+        "it.obj.verbs.regular_present"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "it:concept:subject-drop": {
+      "id": "it:concept:subject-drop",
+      "title": "Không cần đại từ chủ ngữ",
+      "shortRule": "Đuôi động từ đã cho biết ai làm: Parlo = tôi nói. Chỉ dùng io, tu… để nhấn mạnh.",
+      "explanation": "Tiếng Việt luôn cần chủ ngữ, nhưng tiếng Ý thường bỏ vì đuôi động từ đã rõ: Abito a Roma, Studio italiano. Người Ý thêm đại từ khi muốn nhấn mạnh hoặc đối lập: Io bevo il tè, lui beve il caffè. Khi trả lời bạn cứ dùng động từ một mình; nói đủ đại từ cũng đúng nhưng nghe như đang nhấn mạnh.",
+      "examples": [
+        {
+          "it": "Abito a Roma.",
+          "vi": "Tôi sống ở Roma."
+        },
+        {
+          "it": "Io bevo il tè, lui beve il caffè.",
+          "vi": "Tôi uống trà, còn anh ấy uống cà phê.",
+          "note": "nhấn mạnh sự đối lập"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Đuôi động từ đã là chủ ngữ.",
+      "objectives": [
+        "it.obj.syntax.negation_questions"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:tu-lei": {
+      "id": "it:concept:tu-lei",
+      "title": "Tu và Lei: thân mật và lịch sự",
+      "shortRule": "Tu với bạn bè, người thân. Lei với người lạ; động từ chia như ngôi thứ ba.",
+      "explanation": "Tiếng Việt chọn xưng hô theo vai vế; tiếng Ý chọn giữa hai cách. Với bạn bè, trẻ em, người thân: tu (Come stai?). Với người lạ, người bán hàng, thầy cô, bác sĩ: Lei (Come sta?). Lei viết hoa khi lịch sự, và động từ chia như lui/lei: Lei parla italiano? Trong một cuộc trò chuyện, hãy giữ một cách xưng hô.",
+      "examples": [
+        {
+          "it": "Come ti chiami?",
+          "vi": "Bạn tên là gì?",
+          "note": "tu"
+        },
+        {
+          "it": "Come si chiama?",
+          "vi": "Ông/bà tên là gì?",
+          "note": "Lei"
+        },
+        {
+          "it": "Scusa, dov'è il bar?",
+          "vi": "Xin lỗi bạn, quán bar ở đâu?",
+          "note": "tu"
+        },
+        {
+          "it": "Scusi, dov'è il bar?",
+          "vi": "Xin lỗi ông/bà, quán bar ở đâu?",
+          "note": "Lei"
+        }
+      ],
+      "exceptions": [
+        "Khi không chắc, hãy dùng Lei: lịch sự quá vẫn hơn suồng sã."
+      ],
+      "memoryHint": "Scusa cho bạn bè, scusi cho người lạ.",
+      "objectives": [
+        "it.obj.syntax.negation_questions",
+        "it.obj.greetings.basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:adjective-agreement": {
+      "id": "it:concept:adjective-agreement",
+      "title": "Tính từ hợp giống và số",
+      "shortRule": "Tính từ thường đứng sau danh từ và đổi đuôi theo nó: la casa piccola, i libri nuovi.",
+      "explanation": "Giống tiếng Việt, tính từ thường đứng sau danh từ: una casa grande. Khác tiếng Việt, tính từ đổi đuôi theo danh từ. Loại -o có bốn dạng: piccolo, piccola, piccoli, piccole. Loại -e có hai dạng: grande, grandi; gentile, gentili. Một số tính từ rất thường dùng có thể đứng trước danh từ: una bella casa, un buon caffè.",
+      "examples": [
+        {
+          "it": "un gatto nero",
+          "vi": "một con mèo đen"
+        },
+        {
+          "it": "una borsa nera",
+          "vi": "một cái túi đen"
+        },
+        {
+          "it": "le scarpe nere",
+          "vi": "đôi giày đen"
+        },
+        {
+          "it": "una ragazza gentile",
+          "vi": "một cô gái tử tế",
+          "note": "-e giữ nguyên ở số ít"
+        }
+      ],
+      "exceptions": [
+        "Blu, rosa không đổi: la borsa blu, le borse blu."
+      ],
+      "memoryHint": "Nghe đuôi danh từ, lặp lại ở tính từ: casa piccola.",
+      "objectives": [
+        "it.obj.speaking.describe",
+        "it.obj.vocab.everyday_basics"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:negation-questions": {
+      "id": "it:concept:negation-questions",
+      "title": "Phủ định bằng non, hỏi bằng ngữ điệu",
+      "shortRule": "Non đứng ngay trước động từ. Câu hỏi có cùng trật tự, chỉ khác ngữ điệu lên cao.",
+      "explanation": "Muốn phủ định, đặt non trước động từ: Non parlo tedesco. Câu hỏi có/không giữ nguyên trật tự câu, chỉ lên giọng ở cuối và viết dấu hỏi: Parli italiano? Từ để hỏi đứng đầu câu: Dove abiti? Come ti chiami? Quanto costa? Chi è? Cosa mangi? Quando parti? Perché studi? Perché nghĩa là cả 'tại sao' và 'vì': Perché studi? Perché lavoro in Italia.",
+      "examples": [
+        {
+          "it": "Non parlo tedesco.",
+          "vi": "Tôi không nói tiếng Đức."
+        },
+        {
+          "it": "Parli italiano?",
+          "vi": "Bạn có nói tiếng Ý không?"
+        },
+        {
+          "it": "Dove abiti?",
+          "vi": "Bạn sống ở đâu?"
+        },
+        {
+          "it": "Perché studi? Perché lavoro in Italia.",
+          "vi": "Tại sao bạn học? Vì tôi làm việc ở Ý."
+        }
+      ],
+      "exceptions": [
+        "Non bao giờ đứng sau động từ. Non và mai đi cùng nhau: Non bevo mai il vino."
+      ],
+      "memoryHint": "Non đứng trước động từ, giống 'không' trong tiếng Việt.",
+      "objectives": [
+        "it.obj.syntax.negation_questions"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:passato-prossimo": {
+      "id": "it:concept:passato-prossimo",
+      "title": "Thì quá khứ passato prossimo",
+      "shortRule": "avere hoặc essere + phân từ: Ho mangiato, Sono andato. Động từ di chuyển thường đi với essere.",
+      "explanation": "Tiếng Việt thêm 'đã'; tiếng Ý dùng trợ động từ và phân từ. Phân từ có quy luật: -are → -ato, -ere → -uto, -ire → -ito: parlato, avuto, dormito. Một số bất quy tắc: fatto, letto, scritto, preso, visto. Phần lớn động từ dùng avere: Ho mangiato. Động từ di chuyển và thay đổi trạng thái dùng essere: Sono andato, È arrivata. Với essere, phân từ đổi đuôi theo chủ ngữ. Ở A1 bạn chỉ cần nhận ra điều này.",
+      "examples": [
+        {
+          "it": "Ho mangiato la pizza.",
+          "vi": "Tôi đã ăn pizza."
+        },
+        {
+          "it": "Hai dormito bene?",
+          "vi": "Bạn ngủ ngon không?"
+        },
+        {
+          "it": "Sono andato a Roma.",
+          "vi": "Tôi đã đi Roma.",
+          "note": "người nói là nam"
+        },
+        {
+          "it": "Anna è arrivata ieri.",
+          "vi": "Hôm qua Anna đã đến.",
+          "note": "Anna là nữ: -a"
+        }
+      ],
+      "exceptions": [
+        "Bản thân stato là phân từ của cả essere và stare: Sono stato a Roma."
+      ],
+      "memoryHint": "Đi, đến, về, ở lại: dùng essere.",
+      "objectives": [
+        "it.obj.verbs.passato_recognition"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "it:concept:numbers": {
+      "id": "it:concept:numbers",
+      "title": "Số đếm: ghép và rụng nguyên âm",
+      "shortRule": "Ghép viết liền: ventidue. Trước uno và otto rụng nguyên âm: ventuno, ventotto. Số 3 có dấu: ventitré.",
+      "explanation": "Từ 11 đến 16 có đuôi -dici: undici, dodici, tredici, quattordici, quindici, sedici. Từ 17 đến 19 đổi thứ tự: diciassette, diciotto, diciannove. Hàng chục: venti, trenta, quaranta, cinquanta, sessanta, settanta, ottanta, novanta, cento. Số ghép viết liền một từ. Nghe kỹ phụ âm kép: sette, otto, nonno khác sete, nono. Euro không đổi ở số nhiều: dieci euro.",
+      "examples": [
+        {
+          "it": "ventuno",
+          "vi": "hai mươi mốt",
+          "note": "venti + uno, rụng i"
+        },
+        {
+          "it": "ventotto",
+          "vi": "hai mươi tám"
+        },
+        {
+          "it": "trentatré",
+          "vi": "ba mươi ba",
+          "note": "có dấu"
+        },
+        {
+          "it": "Costa dieci euro.",
+          "vi": "Giá mười euro."
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Uno và otto bắt đầu bằng nguyên âm nên hàng chục rụng nguyên âm cuối.",
+      "objectives": [
+        "it.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:time-and-prices": {
+      "id": "it:concept:time-and-prices",
+      "title": "Giờ giấc, ngày tháng, giá tiền",
+      "shortRule": "Sono le otto, nhưng È l'una. Thứ và tháng viết thường. Quanto costa? — Costa due euro.",
+      "explanation": "Hỏi giờ: Che ora è? Trả lời bằng số nhiều: Sono le otto, Sono le due e mezza. Riêng một giờ là số ít: È l'una. Giờ lẻ: e un quarto (mười lăm phút), e mezza (rưỡi), meno un quarto (kém mười lăm). Lúc mấy giờ dùng alle: alle otto, all'una. Thứ và tháng không viết hoa: lunedì, marzo. Ngày trước tháng, giống tiếng Việt: il 5 marzo.",
+      "examples": [
+        {
+          "it": "Che ora è? Sono le tre.",
+          "vi": "Mấy giờ rồi? Ba giờ."
+        },
+        {
+          "it": "È l'una.",
+          "vi": "Một giờ."
+        },
+        {
+          "it": "Il treno parte alle otto e mezza.",
+          "vi": "Tàu chạy lúc tám giờ rưỡi."
+        },
+        {
+          "it": "Quanto costa? Due euro.",
+          "vi": "Giá bao nhiêu? Hai euro."
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Một giờ là số ít, mọi giờ khác là số nhiều.",
+      "objectives": [
+        "it.obj.vocab.time_calendar",
+        "it.obj.numbers.0_100"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:prepositions": {
+      "id": "it:concept:prepositions",
+      "title": "Giới từ a, in, di, da, con, per",
+      "shortRule": "a + thành phố, in + đất nước: a Roma, in Italia. di = của, da = từ, con = với, per = để, cho.",
+      "explanation": "Thành phố dùng a, đất nước dùng in: Abito a Roma, in Italia. Di chỉ sở hữu và quê quán: il libro di Marco, Sono di Hanoi. Da chỉ nơi xuất phát hoặc đến chỗ của ai: Vengo da Napoli, Vado dal medico. Giới từ ghép với mạo từ thành một từ: a + il = al, di + la = della, in + il = nel, da + il = dal, su + il = sul. Ở A1 bạn chỉ cần nhận ra chúng trong các cụm đã học: al bar, alla stazione, nel piatto.",
+      "examples": [
+        {
+          "it": "Abito a Roma.",
+          "vi": "Tôi sống ở Roma."
+        },
+        {
+          "it": "Sono di Hanoi.",
+          "vi": "Tôi đến từ Hà Nội."
+        },
+        {
+          "it": "Vado al bar.",
+          "vi": "Tôi đến quán bar.",
+          "note": "a + il = al"
+        },
+        {
+          "it": "Vado alla stazione.",
+          "vi": "Tôi đến nhà ga.",
+          "note": "a + la = alla"
+        }
+      ],
+      "exceptions": [
+        "A casa, a scuola, in Italia, in centro: học thành cụm, đừng tìm quy tắc."
+      ],
+      "memoryHint": "Thành phố nhỏ gọn: a. Đất nước rộng: in.",
+      "objectives": [
+        "it.obj.articles.indefinite_elision",
+        "it.obj.vocab.places_travel"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:mi-piace": {
+      "id": "it:concept:mi-piace",
+      "title": "Mi piace và mi piacciono",
+      "shortRule": "Mi piace + một thứ hoặc động từ; mi piacciono + nhiều thứ.",
+      "explanation": "Trong tiếng Việt, người thích là chủ ngữ. Trong tiếng Ý thì ngược lại: thứ được thích mới là chủ ngữ, nghĩa đen là 'pizza làm tôi hài lòng'. Vì vậy động từ theo thứ được thích: Mi piace la pizza, Mi piacciono i gatti, Mi piace leggere. Muốn nói người khác: ti piace (bạn), gli piace (anh ấy), le piace (cô ấy). Phủ định: Non mi piace il caffè.",
+      "examples": [
+        {
+          "it": "Mi piace la pizza.",
+          "vi": "Tôi thích pizza."
+        },
+        {
+          "it": "Mi piacciono i gatti.",
+          "vi": "Tôi thích mèo.",
+          "note": "số nhiều: piacciono"
+        },
+        {
+          "it": "Ti piace leggere?",
+          "vi": "Bạn có thích đọc sách không?"
+        },
+        {
+          "it": "Non mi piace il caffè.",
+          "vi": "Tôi không thích cà phê."
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Hỏi: cái gì làm tôi thích? Một thứ: piace. Nhiều thứ: piacciono.",
+      "objectives": [
+        "it.obj.verbs.modals_piacere"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:modal-verbs": {
+      "id": "it:concept:modal-verbs",
+      "title": "Volere, potere, dovere + nguyên thể",
+      "shortRule": "Voglio mangiare, Posso entrare?, Devo lavorare: động từ thứ hai giữ nguyên thể.",
+      "explanation": "Ba động từ này đi với một động từ nguyên thể, giống tiếng Việt 'muốn ăn, có thể vào, phải làm'. Chúng bất quy tắc: voglio, vuoi, vuole, vogliamo; posso, puoi, può, possiamo; devo, devi, deve, dobbiamo. Khi gọi món hay xin điều gì, voglio nghe hơi thẳng thừng; hãy dùng vorrei: Vorrei un caffè. Với người lạ dùng può: Può ripetere?",
+      "examples": [
+        {
+          "it": "Voglio imparare l'italiano.",
+          "vi": "Tôi muốn học tiếng Ý."
+        },
+        {
+          "it": "Posso entrare?",
+          "vi": "Tôi vào được không?"
+        },
+        {
+          "it": "Devo lavorare domani.",
+          "vi": "Mai tôi phải làm việc."
+        },
+        {
+          "it": "Vorrei un caffè, per favore.",
+          "vi": "Cho tôi một ly cà phê.",
+          "note": "lịch sự"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Gọi món: vorrei, đừng dùng voglio.",
+      "objectives": [
+        "it.obj.verbs.modals_piacere"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        },
+        {
+          "source": "kaikki-en",
+          "key": "verb-morphology"
+        }
+      ]
+    },
+    "it:concept:double-consonants": {
+      "id": "it:concept:double-consonants",
+      "title": "Phụ âm kép đổi nghĩa từ",
+      "shortRule": "Phụ âm kép đọc dài hơn hẳn: pala / palla, caro / carro, sete / sette, nono / nonno.",
+      "explanation": "Tiếng Việt không có phụ âm kép nên tai người Việt dễ bỏ qua, mà trong tiếng Ý nó đổi nghĩa từ. Phụ âm kép đọc giữ lại một nhịp ngắn trước khi sang nguyên âm tiếp theo: pal-la, set-te, non-no. Khi nghe, hãy chú ý âm dừng ở giữa từ. Khi viết, từ sai một chữ là từ khác: sono (tôi là) và sonno (cơn buồn ngủ); anno (năm) là từ bạn cần viết đúng đủ hai chữ n.",
+      "examples": [
+        {
+          "it": "la pala",
+          "vi": "cái xẻng",
+          "note": "một chữ l"
+        },
+        {
+          "it": "la palla",
+          "vi": "quả bóng",
+          "note": "hai chữ l, đọc dài"
+        },
+        {
+          "it": "sete",
+          "vi": "cơn khát"
+        },
+        {
+          "it": "sette",
+          "vi": "số bảy"
+        },
+        {
+          "it": "Sono stanco, ho sonno.",
+          "vi": "Tôi mệt, tôi buồn ngủ.",
+          "note": "sono và sonno"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Giữ một nhịp ở giữa: pal-la, non-no.",
+      "objectives": [
+        "it.obj.pronunciation.double_consonants"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:stress-accents": {
+      "id": "it:concept:stress-accents",
+      "title": "Trọng âm và dấu viết",
+      "shortRule": "Trọng âm thường ở âm áp chót. Dấu trên nguyên âm cuối chỉ trọng âm, không phải thanh điệu.",
+      "explanation": "Phần lớn từ tiếng Ý nhấn vào âm áp chót: ra-GAZ-zo, ma-TI-na. Nếu trọng âm rơi vào âm cuối, tiếng Ý viết dấu: cit-TÀ, caf-FÈ, u-ni-ver-si-TÀ. Người Việt dễ đọc dấu này như thanh huyền, nhưng nó chỉ báo chỗ nhấn. Dấu cũng phân biệt nghĩa: è (là) và e (và); sì (vâng) và si; là (ở đó) và la (mạo từ); dà và da.",
+      "examples": [
+        {
+          "it": "la città",
+          "vi": "thành phố"
+        },
+        {
+          "it": "il caffè",
+          "vi": "cà phê"
+        },
+        {
+          "it": "Marco è qui.",
+          "vi": "Marco ở đây.",
+          "note": "è là động từ"
+        },
+        {
+          "it": "Marco e Anna.",
+          "vi": "Marco và Anna.",
+          "note": "e là 'và'"
+        }
+      ],
+      "exceptions": [
+        "Vài từ nhấn sớm hơn: il tavolo, il numero, abito. Hãy nghe và lặp lại."
+      ],
+      "memoryHint": "Dấu ở cuối = nhấn ở cuối.",
+      "objectives": [
+        "it.obj.spelling.accents_apostrophe",
+        "it.obj.pronunciation.double_consonants"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:c-g-sounds": {
+      "id": "it:concept:c-g-sounds",
+      "title": "Chữ c, g, gn, gli, sc",
+      "shortRule": "c, g mềm trước e, i: cena, gelato. Thêm h để giữ cứng: che, chi, ghe, ghi. gn ≈ nh, gli ≈ li mềm.",
+      "explanation": "Trước a, o, u, chữ c đọc như k và g như g: casa, gatto. Trước e, i chúng mềm đi: cena (giống 'ch'), gelato (giống 'gi'). Muốn giữ âm cứng trước e, i thì thêm h: chiave, spaghetti. gn đọc gần như 'nh' tiếng Việt: bagno, gnocchi. gli gần như 'li' uốn lưỡi mềm: famiglia. sc trước e, i đọc như 's' nặng: pesce; trước a, o, u là 'sk': scuola.",
+      "examples": [
+        {
+          "it": "la cena",
+          "vi": "bữa tối",
+          "note": "c mềm"
+        },
+        {
+          "it": "la chiave",
+          "vi": "chìa khóa",
+          "note": "ch = k"
+        },
+        {
+          "it": "il bagno",
+          "vi": "phòng tắm",
+          "note": "gn"
+        },
+        {
+          "it": "la famiglia",
+          "vi": "gia đình",
+          "note": "gli"
+        },
+        {
+          "it": "il pesce",
+          "vi": "con cá",
+          "note": "sc mềm"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Chữ h trong tiếng Ý là tấm khiên giữ c, g cứng.",
+      "objectives": [
+        "it.obj.pronunciation.double_consonants"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:greetings-register": {
+      "id": "it:concept:greetings-register",
+      "title": "Chào theo giờ và mức lịch sự",
+      "shortRule": "buongiorno ban ngày, buonasera từ chiều muộn, ciao chỉ với người quen, arrivederci với người lạ.",
+      "explanation": "Ciao vừa là chào vừa là tạm biệt nhưng chỉ dùng với bạn bè, người thân. Vào cửa hàng, gặp thầy cô, bác sĩ: nói buongiorno hoặc buonasera, khi về nói arrivederci. Buonanotte chỉ dùng khi chia tay để đi ngủ. Salve là lời chào trung tính, dùng được khi không chắc. Người Ý chào rất nhiều: vào quán bar, vào thang máy, vào phòng khám đều chào.",
+      "examples": [
+        {
+          "it": "Ciao, Marco!",
+          "vi": "Chào Marco!"
+        },
+        {
+          "it": "Buongiorno, signora.",
+          "vi": "Chào bà ạ."
+        },
+        {
+          "it": "Arrivederci e grazie.",
+          "vi": "Tạm biệt và cảm ơn."
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Vào cửa hàng: đừng 'ciao', hãy 'buongiorno'.",
+      "objectives": [
+        "it.obj.greetings.basic"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:false-friends": {
+      "id": "it:concept:false-friends",
+      "title": "Từ quốc tế và bạn giả",
+      "shortRule": "Từ quen giúp đoán nghĩa, nhưng camera là căn phòng, parente là họ hàng, fattoria là trang trại.",
+      "explanation": "Bạn đã biết sẵn nhiều từ tiếng Ý vì chúng là từ quốc tế: il taxi, il computer, il film, la pizza, la musica. Khi gặp từ mới, hãy đoán trước. Nhưng người biết tiếng Anh cần cẩn thận: la camera là căn phòng, il parente là họ hàng, la fattoria là trang trại, la libreria là hiệu sách (thư viện là la biblioteca). Hãy kiểm tra từ điển trong ứng dụng khi câu không có nghĩa.",
+      "examples": [
+        {
+          "it": "La camera è grande.",
+          "vi": "Căn phòng rộng.",
+          "note": "không phải máy ảnh"
+        },
+        {
+          "it": "Studio in biblioteca.",
+          "vi": "Tôi học ở thư viện."
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Câu vô nghĩa thì nghi ngờ bạn giả.",
+      "objectives": [
+        "it.obj.strategy.cognates_false_friends"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    },
+    "it:concept:possessives": {
+      "id": "it:concept:possessives",
+      "title": "Từ sở hữu: mio, mia, tuo, tua",
+      "shortRule": "Hợp với vật được sở hữu, không phải người sở hữu: mio padre, mia madre, la mia casa.",
+      "explanation": "Từ sở hữu đổi theo danh từ theo sau: mio/mia, tuo/tua, suo/sua, nostro/nostra. Suo và sua nghĩa là 'của anh ấy' hoặc 'của cô ấy' tùy ngữ cảnh: giống của từ theo danh từ chứ không theo người. Thông thường có mạo từ đi kèm: la mia casa, il mio libro. Riêng người thân số ít thì bỏ mạo từ: mia madre, tuo fratello.",
+      "examples": [
+        {
+          "it": "la mia casa",
+          "vi": "nhà của tôi"
+        },
+        {
+          "it": "mio padre",
+          "vi": "bố tôi",
+          "note": "người thân: không mạo từ"
+        },
+        {
+          "it": "Sua figlia studia a Roma.",
+          "vi": "Con gái của anh ấy học ở Roma.",
+          "note": "sua theo figlia"
+        }
+      ],
+      "exceptions": [],
+      "memoryHint": "Nhìn danh từ, đừng nhìn người.",
+      "objectives": [
+        "it.obj.articles.definite",
+        "it.obj.vocab.everyday_basics"
+      ],
+      "sourceRefs": [
+        {
+          "source": "original-italian-course"
+        }
+      ]
+    }
+  }
+}

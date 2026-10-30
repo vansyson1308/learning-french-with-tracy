@@ -63,7 +63,8 @@ Declared per language in `content/<lang>/reception/audio-source-manifest.json`:
 | fr (64 kbps, frozen) | 10 | all 10 (unchanged) | 215 | 3.92 MB (measured) | 8.11 MB (measured) |
 | es (24 kbps stories) | 20 | first 12 (8 A1-1 + 4 A1-2) | 280 | ≈ 2.1 MB | ≈ 9.4 MB after the next es run (10.82 MB today) |
 | de (24 kbps stories) | 43 | first 12 (3 A1-2 + 9 A2-1) | 271 | ≈ 2.5 MB (projected) | ≈ 8.1 MB after the next de run (5.63 MB today) |
-| it, pt, ja, zh, ko, en | — | first ≤ 12 each | — | ≈ 2–2.5 MB each (projected) | ≈ 9.5 MB each (projected) |
+| it (Opus 16 kbps stories) | 46 | first 18 (2 A1-1 + 16 A1-2) | 359 | included in the reception total of 4.51 MB (measured) | 10.3 MB (measured) |
+| pt, ja, zh, ko, en | — | first ≤ 18 each | — | ≈ 2–2.5 MB each (projected) | ≈ 9.5 MB each (projected) |
 
 - Measured is from the committed assets; projected is 220 B per character,
   measured on the committed es story sentences at 24 kbps.

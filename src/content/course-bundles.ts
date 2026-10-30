@@ -8,6 +8,7 @@ import { COURSE as es_vi } from "./courses/es-vi";
 import { COURSE as fr_en } from "./courses/fr-en";
 import { COURSE as fr_vi } from "./courses/fr-vi";
 import { COURSE as it_en } from "./courses/it-en";
+import { COURSE as it_vi } from "./courses/it-vi";
 import { COURSE as ja_en } from "./courses/ja-en";
 import { COURSE as ko_en } from "./courses/ko-en";
 import { COURSE as pt_en } from "./courses/pt-en";
@@ -22,6 +23,7 @@ export const ALL_COURSE_BUNDLES: CourseBundle[] = [
   fr_en,
   fr_vi,
   it_en,
+  it_vi,
   ja_en,
   ko_en,
   pt_en,

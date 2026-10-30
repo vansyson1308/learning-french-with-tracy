@@ -303,6 +303,17 @@ German course content for Vietnamese speakers authored by the Learning French wi
 
 > P3d(de): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/de-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/de/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public Goethe-Zertifikat A1: Start Deutsch 1 formats only, never official items. Ships under the repository's MIT grant like the other course packs.
 
+## Learning French with Tracy — authored it-vi course (Italian for Vietnamese speakers)
+
+- **License:** MIT
+- **Source:** https://github.com/vansyson1308/learning-french-with-tracy
+- **What:** authored teaching content (course pack, guidebooks, concept explanations, readings, listening scripts, speech and writing tasks, scenarios, assessment, exam-track items)
+- **Retrieved:** 2026-10-30
+
+Italian course content for Vietnamese speakers authored by the Learning French with Tracy project.
+
+> P3d(it): clean-room authored with the P3c authoring toolkit (plan/authoring/), every record validated before compile; Vietnamese learner-facing text pending native review (content/courses/it-vi.profile.json, release/KNOWN_LIMITATIONS.md). Linguistic facts and statistics come from the committed lexicon evidence (content/it/lexicon/derived/, kaikki-en CC BY-SA 4.0 — cited per concept); exam-track items reproduce public CILS A1 standard formats only, never official items. Ships under the repository's MIT grant like the other course packs.
+
 ## Lexicon ETL v2 authored selection (this project)
 
 - **License:** original

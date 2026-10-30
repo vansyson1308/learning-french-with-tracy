@@ -26,10 +26,10 @@
  *       registry after its learners started (es-en: RC3 progress is keyed
  *       by surface, P3a's registry made new progress keyed by `es:w:` ids)
  *       re-keys wordStats and the legacy srs map surface → id. Shape
- *       unchanged; see migrateV7toV8. German (de-en, P3d(de)) is part of the
- *       same step: v8 never ran on a learner's device before German's
- *       registry shipped, so its data input was extended instead of adding a
- *       step (coordinator QC 2026-10-28).
+ *       unchanged; see migrateV7toV8. German (de-en, P3d(de)) and Italian (it-en,
+ *       P3d(it)) are part of the same step: v8 never ran on a learner's device
+ *       before their registries shipped, so its data input was extended instead
+ *       of adding a step (coordinator QC 2026-10-28).
  *   v5  P2b: assessment becomes PER TARGET LANGUAGE (`assessmentByTarget`,
  *       decision D-4; attempts and placement record their courseId).
  *   v4  P1d: assessment becomes PER COURSE (`assessmentByCourse`, the v3
@@ -437,11 +437,11 @@ function migrateV6toV7(persisted: PersistedProgress): PersistedProgress {
 
 /**
  * Target languages whose registries v8 re-keyed against. A registry that
- * appears later (de in P3d(de), it, pt, …) needs its own numbered step that
- * calls rekeyRegistryCourses for it — pinned by migrations-v8.test.ts, so a
+ * appears after v8 first reaches a device (pt, …) needs its own numbered step
+ * that calls rekeyRegistryCourses for it — pinned by migrations-v8.test.ts, so a
  * new registry can never silently strand surface-keyed progress again.
  */
-export const V8_REKEYED_TARGETS: readonly string[] = ["de", "es", "fr"];
+export const V8_REKEYED_TARGETS: readonly string[] = ["de", "es", "fr", "it"];
 
 /** Every target whose surface-keyed progress a numbered step re-keyed. */
 export const REKEYED_TARGETS: readonly string[] = [...V8_REKEYED_TARGETS];

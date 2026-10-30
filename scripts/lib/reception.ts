@@ -208,19 +208,12 @@ export function validateReception(input: {
         err(`${clip.id}: transcript length ${totalChars} chars exceeds the ${clip.use === "exam" ? "exam" : "beginner"} clip cap (P7 §58, P3e)`);
       }
       if (clip.use !== "exam" && clip.segments.length > 4) err(`${clip.id}: teaching clips have at most 4 segments`);
-      // Deterministic bundled audio (P7 §26): once ANY generated asset
-      // exists, every clip must resolve to its committed file; before the
-      // first generation run this is a warning so authoring can iterate.
+      // Deterministic bundled audio (P7 §26): every clip resolves to its committed file.
+      // P3d(it): the first-generation warning let a language pass with no reception audio at all.
       const fileName = clipFileName(input.lang, listening, clip, assetKind);
-      if (assetsPresent) {
-        if (!assetFiles.has(fileName)) {
-          err(
-            `${clip.id}: generated asset ${fileName} missing — run the reception-audio generate workflow (P7 §26)`
-          );
-        }
-      } else {
-        warnings.push(
-          `reception: ${clip.id} has no generated asset yet (bootstrap state — dispatch the generate workflow before shipping)`
+      if (!assetFiles.has(fileName)) {
+        err(
+          `${clip.id}: generated asset ${fileName} missing — run the reception-audio generate workflow (P7 §26)`
         );
       }
     }

@@ -8,6 +8,7 @@ export const FLAG_ASSETS: Record<string, number> = {
   "fr-en": require("../../assets/images/flags/fr.svg"),
   "fr-vi": require("../../assets/images/flags/fr.svg"),
   "it-en": require("../../assets/images/flags/it.svg"),
+  "it-vi": require("../../assets/images/flags/it.svg"),
   "ja-en": require("../../assets/images/flags/jp.svg"),
   "ko-en": require("../../assets/images/flags/kr.svg"),
   "pt-en": require("../../assets/images/flags/br.svg"),
