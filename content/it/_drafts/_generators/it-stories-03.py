@@ -1,0 +1,58 @@
+"""it-vi graded stories, batch 3: animals, the neighbour, school, cinema, work, the lost key, the sea, a phone call. usage: python -I it-stories-03.py"""
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from it_stories_lib import story, write_batch
+
+Q = lambda vi, en, opts, ans, kind="locate": (kind, vi, en, opts, ans)
+S = []
+S.append(story("gli_animali_del_nonno", "A1-2", "Gli animali del nonno",
+ ("Hai đứa trẻ về thăm trang trại của ông.", "Two children visit their grandfather's farm."),
+ ["la mucca", "il coniglio", "la pecora", "il topo"],
+ [("N", "D'estate Nina e Leo vanno dal nonno, in un piccolo paese.", "Mùa hè Nina và Leo về nhà ông, ở một ngôi làng nhỏ.", "In summer Nina and Leo go to their grandfather's, in a small village."),
+  ("N", "Il nonno ha molti animali e un vecchio cane nero.", "Ông có nhiều con vật.", "Grandpa has many animals."),
+  ("N", "Ha una mucca, due pecore, un cavallo e tre conigli.", "Ông có một con bò, hai con cừu, một con ngựa và ba con thỏ.", "He has a cow, two sheep, a horse and three rabbits."),
+  ("N", "Ogni mattina il nonno si alza alle cinque.", "Mỗi sáng ông dậy lúc năm giờ.", "Every morning Grandpa gets up at five."),
+  ("A", "Nonno, possiamo aiutare?", "Ông ơi, tụi cháu giúp được không?", "Grandpa, can we help?"),
+  ("B", "Sì! Nina, porta l'acqua al cavallo. Leo, dai le carote ai conigli.", "Được! Nina, mang nước cho ngựa. Leo, cho thỏ ăn cà rốt.", "Yes! Nina, take water to the horse. Leo, give the carrots to the rabbits."),
+  ("N", "Leo apre la porta e uno corre fuori.", "Leo mở cửa và một con chạy ra ngoài.", "Leo opens the door and one runs out."),
+  ("A", "Nonno, aiuto! Non è qui!", "Ông ơi, cứu! Nó không ở đây!", "Grandpa, help! It is not here!"),
+  ("B", "Tranquillo, Leo. Cerchiamo insieme.", "Bình tĩnh, Leo. Mình cùng tìm.", "Don't worry, Leo. Let's look together."),
+  ("N", "Cercano in giardino, dietro gli alberi e sotto il carro.", "Họ tìm trong vườn, sau những cái cây và dưới xe kéo.", "They look in the garden, behind the trees and under the cart."),
+  ("N", "Vedono un topo, ma il cane non lo vede.", "Họ thấy một con chuột, nhưng con chó không thấy nó.", "They see a mouse, but the dog does not see it."),
+  ("N", "Il cane del nonno corre in cucina.", "Con chó của ông chạy vào bếp.", "Grandpa's dog runs into the kitchen."),
+  ("N", "È in cucina, sotto il tavolo, e mangia una carota!", "Nó ở trong bếp, dưới gầm bàn, đang ăn cà rốt!", "It is in the kitchen, under the table, eating a carrot!"),
+  ("A", "Eccolo! Che bello!", "Nó đây rồi! Hay quá!", "There it is! How lovely!"),
+  ("B", "Vedi? Gli animali sono bravi.", "Thấy chưa? Con vật giỏi lắm.", "You see? Animals are clever."),
+  ("N", "La sera la nonna prepara il latte della mucca e il pane.", "Buổi tối bà chuẩn bị sữa bò và bánh mì.", "In the evening Grandma prepares milk from the cow and bread."),
+  ("N", "Nina e Leo sono stanchi ma molto felici: oggi hanno lavorato e hanno giocato.", "Nina và Leo mệt nhưng rất vui.", "Nina and Leo are tired but very happy."),
+  ("N", "Vanno a letto presto, perché domani c'è ancora molto lavoro.", "Hai đứa đi ngủ sớm, vì mai còn nhiều việc.", "They go to bed early, because tomorrow there is still a lot of work.")],
+ [Q("Con thỏ ở đâu?", "Where is the rabbit?", [("Trong bếp, dưới gầm bàn", "In the kitchen, under the table"), ("Trong vườn", "In the garden"), ("Dưới xe kéo", "Under the cart")], 0),
+  Q("Leo làm việc gì?", "What is Leo's job?", [("Cho thỏ ăn cà rốt", "Feeding carrots to the rabbits"), ("Mang nước cho ngựa", "Taking water to the horse"), ("Nấu ăn", "Cooking")], 0),
+  Q("Vì sao con thỏ chạy ra ngoài?", "Why does the rabbit get out?", [("Vì Leo mở cửa", "Because Leo opens the door"), ("Vì con chó đuổi nó", "Because the dog chases it"), ("Vì ông thả nó", "Because Grandpa lets it go")], 0, "infer")],
+ names=["Nina", "Leo"], token_map={"eccolo": "ecco"}))
+S.append(story("il_vicino_nuovo", "A1-2", "Il vicino nuovo",
+ ("Một người hàng xóm mới dọn đến chung cư.", "A new neighbour moves into the block of flats."),
+ ["la signorina", "buona giornata", "mi dispiace"],
+ [("N", "La signora Bruni abita al secondo piano da molti anni.", "Bà Bruni sống ở tầng hai đã nhiều năm.", "Mrs Bruni has lived on the second floor for many years."),
+  ("N", "Lunedì arriva un vicino nuovo con molte valigie.", "Thứ Hai có một người hàng xóm mới đến với nhiều va li.", "On Monday a new neighbour arrives with many suitcases."),
+  ("A", "Buongiorno! Lei è il vicino nuovo?", "Chào anh! Anh là hàng xóm mới à?", "Good morning! Are you the new neighbour?"),
+  ("B", "Sì, buongiorno. Piacere! Mi chiamo Duc e sono vietnamita.", "Vâng, chào bà. Rất vui được gặp bà! Tôi tên là Đức, người Việt.", "Yes, good morning. Pleased to meet you! My name is Duc and I am Vietnamese."),
+  ("A", "Benvenuto! Che lavoro fa?", "Chào mừng anh! Anh làm nghề gì?", "Welcome! What is your job?"),
+  ("B", "Sono operaio. E Lei?", "Tôi là công nhân. Còn bà?", "I am a worker. And you?"),
+  ("A", "Io sono una professoressa di inglese.", "Tôi là giáo viên tiếng Anh.", "I am an English teacher."),
+  ("N", "Martedì la signora sente la musica alle undici di sera.", "Thứ Ba bà nghe tiếng nhạc lúc mười một giờ đêm.", "On Tuesday the lady hears music at eleven at night."),
+  ("N", "Non può dormire, allora va alla porta del vicino.", "Bà không ngủ được nên đến cửa nhà hàng xóm.", "She cannot sleep, so she goes to the neighbour's door."),
+  ("A", "Scusi, la musica è troppo forte.", "Xin lỗi, nhạc to quá.", "Excuse me, the music is too loud."),
+  ("B", "Mi dispiace, signora! Non lo so: sono qui da due giorni.", "Ôi, tôi xin lỗi bà! Tôi không biết: tôi mới đến hai ngày.", "Oh, I am sorry, madam! I do not know: I have been here for two days."),
+  ("N", "Il giorno dopo Duc porta un piatto di riso alla signora.", "Hôm sau Đức mang một đĩa cơm cho bà.", "The next day Duc brings a plate of rice to the lady."),
+  ("B", "Questo è per Lei. È un piatto del mio paese.", "Cái này dành cho bà. Đây là món ăn quê tôi.", "This is for you. It is a dish from my country."),
+  ("A", "Grazie, è molto buono! Lei cucina bene.", "Cảm ơn, ngon lắm! Anh nấu ăn giỏi.", "Thank you, it is very good! You cook well."),
+  ("N", "La signora vuole aiutare il vicino con l'italiano.", "Bà muốn giúp anh học tiếng Ý.", "The lady wants to help her neighbour with his Italian."),
+  ("N", "Adesso ogni giovedì Duc va dalla signora Bruni e fa lezione. Impara molte parole nuove.", "Giờ mỗi thứ Năm Đức đến nhà bà Bruni học bài.", "Now every Thursday Duc goes to Mrs Bruni's for a lesson."),
+  ("A", "Arrivederci e buona giornata!", "Tạm biệt và chúc một ngày tốt lành!", "Goodbye and have a good day!"),
+  ("N", "Anche una signorina del terzo piano vuole venire a lezione.", "Một cô gái ở tầng ba cũng muốn đến học.", "A young woman from the third floor wants to come to the lessons as well.")],
+ [Q("Đức làm nghề gì?", "What is Duc's job?", [("Công nhân", "A worker"), ("Giáo viên", "A teacher"), ("Bác sĩ", "A doctor")], 0),
+  Q("Vì sao bà Bruni đến cửa nhà Đức?", "Why does Mrs Bruni go to the door?", [("Vì nhạc to quá", "Because the music is too loud"), ("Vì bà cần giúp đỡ", "Because she needs help"), ("Vì bà muốn ăn cơm", "Because she wants rice")], 0),
+  Q("Bà Bruni và Đức bây giờ thế nào?", "How are Mrs Bruni and Duc now?", [("Họ trở thành bạn", "They have become friends"), ("Họ không nói chuyện với nhau", "They do not talk to each other"), ("Họ giận nhau", "They are angry with each other")], 0, "infer")],
+ names=["Bruni", "Duc"]))
+write_batch("03-vicini", S)

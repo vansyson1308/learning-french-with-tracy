@@ -64,7 +64,7 @@ def plural_of(r):
 
 def main():
     cmd, root = sys.argv[1], sys.argv[2]
-    pack, added = rows("core-0.txt"), rows("core-1.txt") + rows("core-2.txt") + rows("core-3.txt") + rows("core-4.txt")
+    pack, added = rows("core-0.txt"), rows("core-1.txt") + rows("core-2.txt") + rows("core-3.txt") + rows("core-4.txt") + rows("core-5.txt")
     if cmd == "review":
         lex = {l["surface"]: l for l in json.load(open(f"{root}/content/it/lexicon/lexemes.json", encoding="utf-8"))["lexemes"]}
         os.makedirs(f"{root}/content/it/_drafts/lexicon-review", exist_ok=True)
@@ -77,6 +77,7 @@ def main():
     elif cmd == "add":
         os.makedirs(f"{root}/content/it/_drafts/lexicon-add", exist_ok=True)
         seen = {surface(r) for r in pack}
+        frozen = json.load(open(f"{root}/content/it/lexemes.json", encoding="utf-8")) if os.path.exists(f"{root}/content/it/lexemes.json") else {}
         n = 0
         with open(f"{root}/content/it/_drafts/lexicon-add/OUTPUT.jsonl", "w", encoding="utf-8", newline="\n") as f:
             for r in added:
@@ -84,6 +85,8 @@ def main():
                 if s in seen:
                     raise SystemExit(f"duplicate surface {s}")
                 seen.add(s)
+                if s in frozen:
+                    continue  # already in the lexicon: ids are frozen, reviewed text stays
                 rec = {"lemma": r["lemma"], "partOfSpeech": POS[r["kind"]], "surface": s, "glossEn": r["en"], "glossVi": r["vi"], "topic": r["topic"], "examples": [{"target": r["it"], "en": r["exEn"], "vi": r["exVi"]}]}
                 if r["kind"] == "N":
                     rec["gender"] = GENDER[r["gender"]]
