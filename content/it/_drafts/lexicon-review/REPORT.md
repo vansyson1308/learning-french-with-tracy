@@ -1,6 +1,6 @@
 # lexicon-review — ingest report (it-vi)
 
-Records: 56 · schema-valid: 56 · failed: 0 · validator errors after merge: 0
+Records: 56 · schema-valid: 56 · failed: 0 · validator errors after merge: 151
 
 ## Records
 
@@ -63,7 +63,157 @@ Records: 56 · schema-valid: 56 · failed: 0 · validator errors after merge: 0
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- lexicon: pack word "avere" missing from rich lexicon
+- lexicon: pack word "la pizza" missing from rich lexicon
+- lexicon: pack word "il pollo" missing from rich lexicon
+- lexicon: pack word "la carne" missing from rich lexicon
+- lexicon: pack word "il tè" missing from rich lexicon
+- lexicon: pack word "la famiglia" missing from rich lexicon
+- lexicon: pack word "il padre" missing from rich lexicon
+- lexicon: pack word "la madre" missing from rich lexicon
+- lexicon: pack word "il fratello" missing from rich lexicon
+- lexicon: pack word "la sorella" missing from rich lexicon
+- lexicon: pack word "il figlio" missing from rich lexicon
+- lexicon: pack word "la figlia" missing from rich lexicon
+- lexicon: pack word "il nonno" missing from rich lexicon
+- lexicon: pack word "la nonna" missing from rich lexicon
+- lexicon: pack word "il marito" missing from rich lexicon
+- lexicon: pack word "la moglie" missing from rich lexicon
+- lexicon: pack word "il libro" missing from rich lexicon
+- lexicon: pack word "la casa" missing from rich lexicon
+- lexicon: pack word "lo zaino" missing from rich lexicon
+- lexicon: pack word "lo studente" missing from rich lexicon
+- lexicon: pack word "l'amico" missing from rich lexicon
+- lexicon: pack word "l'amica" missing from rich lexicon
+- lexicon: pack word "la scuola" missing from rich lexicon
+- lexicon: pack word "il tavolo" missing from rich lexicon
+- lexicon: pack word "la sedia" missing from rich lexicon
+- lexicon: pack word "la porta" missing from rich lexicon
+- lexicon: pack word "la finestra" missing from rich lexicon
+- lexicon: pack word "lo sport" missing from rich lexicon
+- lexicon: pack word "il nome" missing from rich lexicon
+- lexicon: pack word "la chiave" missing from rich lexicon
+- lexicon: pack word "essere" missing from rich lexicon
+- lexicon: pack word "parlare" missing from rich lexicon
+- lexicon: pack word "abitare" missing from rich lexicon
+- lexicon: pack word "lavorare" missing from rich lexicon
+- lexicon: pack word "studiare" missing from rich lexicon
+- lexicon: pack word "leggere" missing from rich lexicon
+- lexicon: pack word "scrivere" missing from rich lexicon
+- lexicon: pack word "dormire" missing from rich lexicon
+- lexicon: pack word "capire" missing from rich lexicon
+- lexicon: pack word "andare" missing from rich lexicon
+- lexicon: pack word "fare" missing from rich lexicon
+- lexicon: pack word "volere" missing from rich lexicon
+- lexicon: pack word "il taxi" missing from rich lexicon
+- lexicon: pack word "il computer" missing from rich lexicon
+- lexicon: pack word "il film" missing from rich lexicon
+- lexicon: pack word "il bar" missing from rich lexicon
+- lexicon: pack word "il ristorante" missing from rich lexicon
+- lexicon: pack word "la musica" missing from rich lexicon
+- lexicon: pack word "il cinema" missing from rich lexicon
+- lexicon: pack word "la camera" missing from rich lexicon
+- lexicon: pack word "il telefono" missing from rich lexicon
+- lexicon: pack word "l'università" missing from rich lexicon
+- lexicon: pack word "la foto" missing from rich lexicon
+- lexicon: pack word "il problema" missing from rich lexicon
+- lexicon: pack word "zero" missing from rich lexicon
+- lexicon: pack word "due" missing from rich lexicon
+- lexicon: pack word "tre" missing from rich lexicon
+- lexicon: pack word "quattro" missing from rich lexicon
+- lexicon: pack word "cinque" missing from rich lexicon
+- lexicon: pack word "sei" missing from rich lexicon
+- lexicon: pack word "sette" missing from rich lexicon
+- lexicon: pack word "otto" missing from rich lexicon
+- lexicon: pack word "nove" missing from rich lexicon
+- lexicon: pack word "dieci" missing from rich lexicon
+- lexicon: pack word "l'euro" missing from rich lexicon
+- lexicon: pack word "l'ora" missing from rich lexicon
+- lexicon: pack word "la pala" missing from rich lexicon
+- lexicon: pack word "la palla" missing from rich lexicon
+- lexicon: pack word "il carro" missing from rich lexicon
+- lexicon: pack word "nono" missing from rich lexicon
+- lexicon: pack word "il sonno" missing from rich lexicon
+- lexicon: pack word "la sete" missing from rich lexicon
+- lexicon: pack word "caro" missing from rich lexicon
+- lexicon: pack word "la mamma" missing from rich lexicon
+- lexicon: pack word "ascoltare" missing from rich lexicon
+- lexicon: pack word "ripetere" missing from rich lexicon
+- lexicon: pack word "guardare" missing from rich lexicon
+- lexicon: pack word "vedere" missing from rich lexicon
+- lexicon: pack word "sentire" missing from rich lexicon
+- lexicon: pack word "la parola" missing from rich lexicon
+- lexicon: pack word "aperto" missing from rich lexicon
+- lexicon: pack word "chiuso" missing from rich lexicon
+- lexicon: pack word "l'ingresso" missing from rich lexicon
+- lexicon: pack word "l'uscita" missing from rich lexicon
+- lexicon: pack word "l'orario" missing from rich lexicon
+- lexicon: pack word "il messaggio" missing from rich lexicon
+- lexicon: pack word "il negozio" missing from rich lexicon
+- lexicon: pack word "il binario" missing from rich lexicon
+- lexicon: pack word "la fermata" missing from rich lexicon
+- lexicon: pack word "il ritardo" missing from rich lexicon
+- lexicon: pack word "la pagina" missing from rich lexicon
+- lexicon: pack word "la risposta" missing from rich lexicon
+- lexicon: pack word "la domanda" missing from rich lexicon
+- lexicon: pack word "va bene" missing from rich lexicon
+- lexicon: pack word "allora" missing from rich lexicon
+- lexicon: pack word "ecco" missing from rich lexicon
+- lexicon: pack word "d'accordo" missing from rich lexicon
+- lexicon: pack word "come stai" missing from rich lexicon
+- lexicon: pack word "come sta" missing from rich lexicon
+- lexicon: pack word "la mattina" missing from rich lexicon
+- lexicon: pack word "il pomeriggio" missing from rich lexicon
+- lexicon: pack word "la sera" missing from rich lexicon
+- lexicon: pack word "poi" missing from rich lexicon
+- lexicon: pack word "ogni" missing from rich lexicon
+- lexicon: pack word "spesso" missing from rich lexicon
+- lexicon: pack word "scusi" missing from rich lexicon
+- lexicon: pack word "scusa" missing from rich lexicon
+- lexicon: pack word "salve" missing from rich lexicon
+- lexicon: pack word "a presto" missing from rich lexicon
+- lexicon: pack word "mi chiamo" missing from rich lexicon
+- lexicon: pack word "vietnamita" missing from rich lexicon
+- lexicon: pack word "l'Italia" missing from rich lexicon
+- lexicon: pack word "il Vietnam" missing from rich lexicon
+- lexicon: pack word "mi piace" missing from rich lexicon
+- lexicon: pack word "grande" missing from rich lexicon
+- lexicon: pack word "piccolo" missing from rich lexicon
+- lexicon: pack word "bello" missing from rich lexicon
+- lexicon: pack word "nuovo" missing from rich lexicon
+- lexicon: pack word "il numero" missing from rich lexicon
+- lexicon: pack word "costare" missing from rich lexicon
+- lexicon: pack word "quanto" missing from rich lexicon
+- lexicon: pack word "mezzo" missing from rich lexicon
+- lexicon: pack word "il cognome" missing from rich lexicon
+- lexicon: pack word "l'età" missing from rich lexicon
+- lexicon: pack word "l'indirizzo" missing from rich lexicon
+- lexicon: pack word "il cellulare" missing from rich lexicon
+- lexicon: pack word "ma" missing from rich lexicon
+- lexicon: pack word "perché" missing from rich lexicon
+- lexicon: pack word "anche" missing from rich lexicon
+- lexicon: pack word "a domani" missing from rich lexicon
+- lexicon: pack word "il sabato" missing from rich lexicon
+- lexicon: pack word "libero" missing from rich lexicon
+- lexicon: pack word "il modulo" missing from rich lexicon
+- lexicon: pack word "compilare" missing from rich lexicon
+- lexicon: pack word "l'email" missing from rich lexicon
+- lexicon: pack word "piacere" missing from rich lexicon
+- lexicon: pack word "il vicino" missing from rich lexicon
+- lexicon: pack word "la gente" missing from rich lexicon
+- lexicon: pack word "la lingua" missing from rich lexicon
+- lexicon: pack word "il conto" missing from rich lexicon
+- lexicon: pack word "la cassa" missing from rich lexicon
+- lexicon: pack word "lo scontrino" missing from rich lexicon
+- lexicon: pack word "il banco" missing from rich lexicon
+- lexicon: pack word "la destra" missing from rich lexicon
+- lexicon: pack word "la sinistra" missing from rich lexicon
+- lexicon: pack word "dritto" missing from rich lexicon
+- lexicon: pack word "la farmacia" missing from rich lexicon
+- lexicon: pack word "l'appuntamento" missing from rich lexicon
+- lexicon: pack word "il turno" missing from rich lexicon
+- lexicon: pack word "il capo" missing from rich lexicon
+- it-en: missing content/courses/it-en.map.json (exercise id map to it-vi)
 
 ## Written
 

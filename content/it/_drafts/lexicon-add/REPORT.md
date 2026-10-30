@@ -1,6 +1,6 @@
 # lexicon-add — ingest report (it-vi)
 
-Records: 644 · schema-valid: 644 · failed: 0 · validator errors after merge: 0
+Records: 644 · schema-valid: 644 · failed: 0 · validator errors after merge: 1
 
 ## Records
 
@@ -651,7 +651,7 @@ Records: 644 · schema-valid: 644 · failed: 0 · validator errors after merge: 
 
 ## Validator errors (fix these records and ingest again)
 
-- none
+- it-en: missing content/courses/it-en.map.json (exercise id map to it-vi)
 
 ## Written
 

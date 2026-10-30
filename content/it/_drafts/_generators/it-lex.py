@@ -72,7 +72,7 @@ def main():
             for r in pack:
                 l = lex[surface(r)]
                 # ETL examples come from a subtitle corpus: the course shows its own A1 sentence.
-                f.write(json.dumps({"id": l["id"], "glossVi": r["vi"], "exampleTranslationsVi": [], "dropExamples": list(range(len(l["examples"]))), "addExamples": [{"target": r["it"], "en": r["exEn"], "vi": r["exVi"]}]}, ensure_ascii=False) + "\n")
+                f.write(json.dumps({"id": l["id"], "partOfSpeech": POS[r["kind"]], "glossVi": r["vi"], "exampleTranslationsVi": [], "dropExamples": list(range(len(l["examples"]))), "addExamples": [{"target": r["it"], "en": r["exEn"], "vi": r["exVi"]}]}, ensure_ascii=False) + "\n")
         print("review", len(pack))
     elif cmd == "add":
         os.makedirs(f"{root}/content/it/_drafts/lexicon-add", exist_ok=True)
