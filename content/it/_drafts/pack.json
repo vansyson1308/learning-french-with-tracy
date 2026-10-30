@@ -1279,32 +1279,110 @@
                 {
                   "type": "select",
                   "id": "it-vi:u1-l2-e0",
-                  "mode": "targetToNative",
-                  "prompt": "grazie",
-                  "audioTarget": "grazie",
+                  "mode": "nativeToTarget",
+                  "prompt": "có, vâng",
+                  "audioTarget": "sì",
                   "options": [
                     {
-                      "text": "chúc ngủ ngon",
-                      "emoji": "🌙"
-                    },
-                    {
-                      "text": "cảm ơn",
-                      "emoji": "😊"
-                    },
-                    {
-                      "text": "tạm biệt",
+                      "text": "arrivederci",
                       "emoji": "🚶"
                     },
                     {
-                      "text": "làm ơn",
+                      "text": "sì",
+                      "emoji": "✅"
+                    },
+                    {
+                      "text": "per favore",
                       "emoji": "🙏"
+                    },
+                    {
+                      "text": "grazie",
+                      "emoji": "😊"
                     }
                   ],
                   "correct": 1
                 },
                 {
-                  "type": "fillBlank",
+                  "type": "select",
                   "id": "it-vi:u1-l2-e1",
+                  "mode": "nativeToTarget",
+                  "prompt": "không có gì",
+                  "audioTarget": "prego",
+                  "options": [
+                    {
+                      "text": "per favore",
+                      "emoji": "🙏"
+                    },
+                    {
+                      "text": "grazie",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "prego",
+                      "emoji": "🤝"
+                    },
+                    {
+                      "text": "sì",
+                      "emoji": "✅"
+                    }
+                  ],
+                  "correct": 2
+                },
+                {
+                  "type": "select",
+                  "id": "it-vi:u1-l2-e2",
+                  "mode": "nativeToTarget",
+                  "prompt": "cảm ơn",
+                  "audioTarget": "grazie",
+                  "options": [
+                    {
+                      "text": "prego",
+                      "emoji": "🤝"
+                    },
+                    {
+                      "text": "sì",
+                      "emoji": "✅"
+                    },
+                    {
+                      "text": "no",
+                      "emoji": "❌"
+                    },
+                    {
+                      "text": "grazie",
+                      "emoji": "😊"
+                    }
+                  ],
+                  "correct": 3
+                },
+                {
+                  "type": "select",
+                  "id": "it-vi:u1-l2-e3",
+                  "mode": "targetToNative",
+                  "prompt": "grazie",
+                  "audioTarget": "grazie",
+                  "options": [
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
+                    },
+                    {
+                      "text": "không có gì",
+                      "emoji": "🤝"
+                    },
+                    {
+                      "text": "có, vâng",
+                      "emoji": "✅"
+                    },
+                    {
+                      "text": "không",
+                      "emoji": "❌"
+                    }
+                  ],
+                  "correct": 0
+                },
+                {
+                  "type": "fillBlank",
+                  "id": "it-vi:u1-l2-e4",
                   "sentence": "___, papà!",
                   "translation": "Chúc bố ngủ ngon!",
                   "audioTarget": "Buonanotte, papà!",
@@ -1318,7 +1396,7 @@
                 },
                 {
                   "type": "wordBank",
-                  "id": "it-vi:u1-l2-e2",
+                  "id": "it-vi:u1-l2-e5",
                   "direction": "nativeToTarget",
                   "prompt": "Chào buổi tối, bà ạ.",
                   "tokens": [
@@ -1335,7 +1413,7 @@
                 },
                 {
                   "type": "typeAnswer",
-                  "id": "it-vi:u1-l2-e3",
+                  "id": "it-vi:u1-l2-e6",
                   "mode": "produceTarget",
                   "prompt": "Chúc ngủ ngon!",
                   "audioTarget": "Buonanotte!",
@@ -1392,19 +1470,19 @@
                       "emoji": "🙏"
                     },
                     {
-                      "text": "cảm ơn",
-                      "emoji": "😊"
-                    },
-                    {
                       "text": "không",
                       "emoji": "❌"
+                    },
+                    {
+                      "text": "cảm ơn",
+                      "emoji": "😊"
                     },
                     {
                       "text": "không có gì",
                       "emoji": "🤝"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -1422,15 +1500,15 @@
                       "emoji": "🤝"
                     },
                     {
-                      "text": "sì",
-                      "emoji": "✅"
-                    },
-                    {
                       "text": "la signora",
                       "emoji": "👵"
+                    },
+                    {
+                      "text": "sì",
+                      "emoji": "✅"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -1440,9 +1518,6 @@
                   "audioTarget": "il signore",
                   "options": [
                     {
-                      "text": "il signore"
-                    },
-                    {
                       "text": "sì"
                     },
                     {
@@ -1450,9 +1525,12 @@
                     },
                     {
                       "text": "la signora"
+                    },
+                    {
+                      "text": "il signore"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -1462,12 +1540,12 @@
                   "audioTarget": "il signore",
                   "options": [
                     {
-                      "text": "sì",
-                      "emoji": "✅"
-                    },
-                    {
                       "text": "il signore",
                       "emoji": "🧔"
+                    },
+                    {
+                      "text": "sì",
+                      "emoji": "✅"
                     },
                     {
                       "text": "no",
@@ -1478,7 +1556,7 @@
                       "emoji": "👵"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -1566,19 +1644,19 @@
                       "emoji": "🌆"
                     },
                     {
-                      "text": "chúc ngủ ngon",
-                      "emoji": "🌙"
-                    },
-                    {
                       "text": "ông, quý ông",
                       "emoji": "🧔"
+                    },
+                    {
+                      "text": "chúc ngủ ngon",
+                      "emoji": "🌙"
                     },
                     {
                       "text": "tạm biệt",
                       "emoji": "🚶"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 }
               ]
             }
@@ -1676,15 +1754,15 @@
                       "emoji": "🧀"
                     },
                     {
-                      "text": "trái cây",
-                      "emoji": "🍇"
-                    },
-                    {
                       "text": "cà phê",
                       "emoji": "☕"
+                    },
+                    {
+                      "text": "trái cây",
+                      "emoji": "🍇"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -1693,10 +1771,6 @@
                   "prompt": "il riso",
                   "audioTarget": "il riso",
                   "options": [
-                    {
-                      "text": "cơm, gạo",
-                      "emoji": "🍚"
-                    },
                     {
                       "text": "phô mai",
                       "emoji": "🧀"
@@ -1708,9 +1782,13 @@
                     {
                       "text": "nước ép",
                       "emoji": "🧃"
+                    },
+                    {
+                      "text": "cơm, gạo",
+                      "emoji": "🍚"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -1720,12 +1798,12 @@
                   "audioTarget": "l'uovo",
                   "options": [
                     {
-                      "text": "trái cây",
-                      "emoji": "🍇"
-                    },
-                    {
                       "text": "quả trứng",
                       "emoji": "🥚"
+                    },
+                    {
+                      "text": "trái cây",
+                      "emoji": "🍇"
                     },
                     {
                       "text": "nước ép",
@@ -1736,7 +1814,7 @@
                       "emoji": "🍝"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -1749,16 +1827,16 @@
                       "text": "il vino"
                     },
                     {
-                      "text": "la pizza"
+                      "text": "il riso"
                     },
                     {
-                      "text": "il riso"
+                      "text": "la pizza"
                     },
                     {
                       "text": "il pollo"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -1776,15 +1854,15 @@
                       "emoji": "🍕"
                     },
                     {
-                      "text": "il pollo",
-                      "emoji": "🍗"
-                    },
-                    {
                       "text": "l'uovo",
                       "emoji": "🥚"
+                    },
+                    {
+                      "text": "il pollo",
+                      "emoji": "🍗"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -1793,10 +1871,6 @@
                   "prompt": "cơm, gạo",
                   "audioTarget": "il riso",
                   "options": [
-                    {
-                      "text": "il riso",
-                      "emoji": "🍚"
-                    },
                     {
                       "text": "la pizza",
                       "emoji": "🍕"
@@ -1808,9 +1882,13 @@
                     {
                       "text": "la carne",
                       "emoji": "🥩"
+                    },
+                    {
+                      "text": "il riso",
+                      "emoji": "🍚"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -1907,12 +1985,12 @@
                   "audioTarget": "il formaggio",
                   "options": [
                     {
-                      "text": "mì Ý",
-                      "emoji": "🍝"
-                    },
-                    {
                       "text": "phô mai",
                       "emoji": "🧀"
+                    },
+                    {
+                      "text": "mì Ý",
+                      "emoji": "🍝"
                     },
                     {
                       "text": "rượu vang",
@@ -1923,7 +2001,7 @@
                       "emoji": "🍕"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "fillBlank",
@@ -2048,19 +2126,19 @@
                       "emoji": "🍇"
                     },
                     {
-                      "text": "nước ép",
-                      "emoji": "🧃"
-                    },
-                    {
                       "text": "mì Ý",
                       "emoji": "🍝"
+                    },
+                    {
+                      "text": "nước ép",
+                      "emoji": "🧃"
                     },
                     {
                       "text": "rượu vang",
                       "emoji": "🍷"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -2078,15 +2156,15 @@
                       "emoji": "🍷"
                     },
                     {
-                      "text": "il pollo",
-                      "emoji": "🍗"
-                    },
-                    {
                       "text": "la pizza",
                       "emoji": "🍕"
+                    },
+                    {
+                      "text": "il pollo",
+                      "emoji": "🍗"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -2096,9 +2174,6 @@
                   "audioTarget": "il vino",
                   "options": [
                     {
-                      "text": "il vino"
-                    },
-                    {
                       "text": "il pollo"
                     },
                     {
@@ -2106,9 +2181,12 @@
                     },
                     {
                       "text": "il tè"
+                    },
+                    {
+                      "text": "il vino"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -2118,12 +2196,12 @@
                   "audioTarget": "il vino",
                   "options": [
                     {
-                      "text": "il pollo",
-                      "emoji": "🍗"
-                    },
-                    {
                       "text": "il vino",
                       "emoji": "🍷"
+                    },
+                    {
+                      "text": "il pollo",
+                      "emoji": "🍗"
                     },
                     {
                       "text": "la carne",
@@ -2134,7 +2212,7 @@
                       "emoji": "🍵"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -2221,19 +2299,19 @@
                       "emoji": "🥚"
                     },
                     {
-                      "text": "phô mai",
-                      "emoji": "🧀"
-                    },
-                    {
                       "text": "rượu vang",
                       "emoji": "🍷"
+                    },
+                    {
+                      "text": "phô mai",
+                      "emoji": "🧀"
                     },
                     {
                       "text": "trái cây",
                       "emoji": "🍇"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 }
               ]
             },
@@ -2261,15 +2339,15 @@
                       "emoji": "🧃"
                     },
                     {
-                      "text": "mì Ý",
-                      "emoji": "🍝"
-                    },
-                    {
                       "text": "thịt gà",
                       "emoji": "🍗"
+                    },
+                    {
+                      "text": "mì Ý",
+                      "emoji": "🍝"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "wordBank",
@@ -2335,12 +2413,12 @@
                   "translation": "Đứa bé ăn thịt gà.",
                   "audioTarget": "Il bambino mangia il pollo.",
                   "options": [
-                    "pollo",
                     "formaggio",
                     "frutta",
-                    "succo"
+                    "succo",
+                    "pollo"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -2350,12 +2428,12 @@
                   "audioTarget": "il tè",
                   "options": [
                     {
-                      "text": "la carne",
-                      "emoji": "🥩"
-                    },
-                    {
                       "text": "il tè",
                       "emoji": "🍵"
+                    },
+                    {
+                      "text": "la carne",
+                      "emoji": "🥩"
                     },
                     {
                       "text": "il caffè",
@@ -2366,7 +2444,7 @@
                       "emoji": "🍚"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -2379,16 +2457,16 @@
                       "text": "il riso"
                     },
                     {
-                      "text": "l'uovo"
+                      "text": "la carne"
                     },
                     {
-                      "text": "la carne"
+                      "text": "l'uovo"
                     },
                     {
                       "text": "il formaggio"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "typeAnswer",
@@ -2497,15 +2575,15 @@
                       "emoji": "👬"
                     },
                     {
-                      "text": "chị gái, em gái",
-                      "emoji": "👭"
-                    },
-                    {
                       "text": "gia đình",
                       "emoji": "🏠"
+                    },
+                    {
+                      "text": "chị gái, em gái",
+                      "emoji": "👭"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -2514,10 +2592,6 @@
                   "prompt": "il padre",
                   "audioTarget": "il padre",
                   "options": [
-                    {
-                      "text": "bố",
-                      "emoji": "👨‍🦱"
-                    },
                     {
                       "text": "anh trai, em trai",
                       "emoji": "👬"
@@ -2529,9 +2603,13 @@
                     {
                       "text": "con trai",
                       "emoji": "🧑"
+                    },
+                    {
+                      "text": "bố",
+                      "emoji": "👨‍🦱"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -2541,12 +2619,12 @@
                   "audioTarget": "la madre",
                   "options": [
                     {
-                      "text": "chị gái, em gái",
-                      "emoji": "👭"
-                    },
-                    {
                       "text": "mẹ",
                       "emoji": "👩‍🦰"
+                    },
+                    {
+                      "text": "chị gái, em gái",
+                      "emoji": "👭"
                     },
                     {
                       "text": "con trai",
@@ -2557,7 +2635,7 @@
                       "emoji": "👱‍♀️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -2570,16 +2648,16 @@
                       "text": "il nonno"
                     },
                     {
-                      "text": "la nonna"
+                      "text": "il padre"
                     },
                     {
-                      "text": "il padre"
+                      "text": "la nonna"
                     },
                     {
                       "text": "il marito"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -2597,15 +2675,15 @@
                       "emoji": "🧓"
                     },
                     {
-                      "text": "il marito",
-                      "emoji": "🤵"
-                    },
-                    {
                       "text": "la madre",
                       "emoji": "👩‍🦰"
+                    },
+                    {
+                      "text": "il marito",
+                      "emoji": "🤵"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -2614,10 +2692,6 @@
                   "prompt": "bố",
                   "audioTarget": "il padre",
                   "options": [
-                    {
-                      "text": "il padre",
-                      "emoji": "👨‍🦱"
-                    },
                     {
                       "text": "la nonna",
                       "emoji": "🧓"
@@ -2629,9 +2703,13 @@
                     {
                       "text": "la moglie",
                       "emoji": "👰"
+                    },
+                    {
+                      "text": "il padre",
+                      "emoji": "👨‍🦱"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -2686,12 +2764,12 @@
                   "audioTarget": "il fratello",
                   "options": [
                     {
-                      "text": "mẹ",
-                      "emoji": "👩‍🦰"
-                    },
-                    {
                       "text": "anh trai, em trai",
                       "emoji": "👬"
+                    },
+                    {
+                      "text": "mẹ",
+                      "emoji": "👩‍🦰"
                     },
                     {
                       "text": "chị gái, em gái",
@@ -2702,7 +2780,7 @@
                       "emoji": "🧑"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "wordBank",
@@ -2768,11 +2846,11 @@
                   "audioTarget": "Ho un fratello.",
                   "options": [
                     "padre",
-                    "madre",
                     "fratello",
+                    "madre",
                     "sorella"
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -2790,15 +2868,15 @@
                       "emoji": "👰"
                     },
                     {
-                      "text": "il cane",
-                      "emoji": "🐕"
-                    },
-                    {
                       "text": "il figlio",
                       "emoji": "🧑"
+                    },
+                    {
+                      "text": "il cane",
+                      "emoji": "🐕"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -2808,9 +2886,6 @@
                   "audioTarget": "la sorella",
                   "options": [
                     {
-                      "text": "la sorella"
-                    },
-                    {
                       "text": "il cane"
                     },
                     {
@@ -2818,9 +2893,12 @@
                     },
                     {
                       "text": "il padre"
+                    },
+                    {
+                      "text": "la sorella"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "typeAnswer",
@@ -2877,12 +2955,12 @@
                   "audioTarget": "la figlia",
                   "options": [
                     {
-                      "text": "chị gái, em gái",
-                      "emoji": "👭"
-                    },
-                    {
                       "text": "con gái",
                       "emoji": "👱‍♀️"
+                    },
+                    {
+                      "text": "chị gái, em gái",
+                      "emoji": "👭"
                     },
                     {
                       "text": "con trai",
@@ -2893,7 +2971,7 @@
                       "emoji": "👴"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -2907,19 +2985,19 @@
                       "emoji": "👱‍♀️"
                     },
                     {
-                      "text": "il nonno",
-                      "emoji": "👴"
-                    },
-                    {
                       "text": "la nonna",
                       "emoji": "🧓"
+                    },
+                    {
+                      "text": "il nonno",
+                      "emoji": "👴"
                     },
                     {
                       "text": "il marito",
                       "emoji": "🤵"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -2935,13 +3013,13 @@
                       "text": "la moglie"
                     },
                     {
-                      "text": "il cane"
+                      "text": "il nonno"
                     },
                     {
-                      "text": "il nonno"
+                      "text": "il cane"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -2950,10 +3028,6 @@
                   "prompt": "ông",
                   "audioTarget": "il nonno",
                   "options": [
-                    {
-                      "text": "il nonno",
-                      "emoji": "👴"
-                    },
                     {
                       "text": "il marito",
                       "emoji": "🤵"
@@ -2965,9 +3039,13 @@
                     {
                       "text": "il cane",
                       "emoji": "🐕"
+                    },
+                    {
+                      "text": "il nonno",
+                      "emoji": "👴"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "wordBank",
@@ -3049,12 +3127,12 @@
                   "audioTarget": "il nonno",
                   "options": [
                     {
-                      "text": "mẹ",
-                      "emoji": "👩‍🦰"
-                    },
-                    {
                       "text": "ông",
                       "emoji": "👴"
+                    },
+                    {
+                      "text": "mẹ",
+                      "emoji": "👩‍🦰"
                     },
                     {
                       "text": "anh trai, em trai",
@@ -3065,7 +3143,7 @@
                       "emoji": "👭"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 }
               ],
               "flow": [
@@ -3169,19 +3247,19 @@
                       "emoji": "👴"
                     },
                     {
-                      "text": "bà",
-                      "emoji": "🧓"
-                    },
-                    {
                       "text": "chồng",
                       "emoji": "🤵"
+                    },
+                    {
+                      "text": "bà",
+                      "emoji": "🧓"
                     },
                     {
                       "text": "vợ",
                       "emoji": "👰"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -3326,15 +3404,15 @@
                       "emoji": "🛫"
                     },
                     {
-                      "text": "khách sạn",
-                      "emoji": "🏨"
-                    },
-                    {
                       "text": "thành phố",
                       "emoji": "🏙️"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -3343,10 +3421,6 @@
                   "prompt": "il treno",
                   "audioTarget": "il treno",
                   "options": [
-                    {
-                      "text": "tàu hỏa",
-                      "emoji": "🚆"
-                    },
                     {
                       "text": "sân bay",
                       "emoji": "🛫"
@@ -3358,9 +3432,13 @@
                     {
                       "text": "con đường",
                       "emoji": "🛣️"
+                    },
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -3370,12 +3448,12 @@
                   "audioTarget": "la stazione",
                   "options": [
                     {
-                      "text": "khách sạn",
-                      "emoji": "🏨"
-                    },
-                    {
                       "text": "nhà ga",
                       "emoji": "🚉"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
                     },
                     {
                       "text": "con đường",
@@ -3386,7 +3464,7 @@
                       "emoji": "🏛️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -3399,16 +3477,16 @@
                       "text": "la mappa"
                     },
                     {
-                      "text": "il biglietto"
+                      "text": "il treno"
                     },
                     {
-                      "text": "il treno"
+                      "text": "il biglietto"
                     },
                     {
                       "text": "la valigia"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -3426,15 +3504,15 @@
                       "emoji": "🎫"
                     },
                     {
-                      "text": "la valigia",
-                      "emoji": "🧳"
-                    },
-                    {
                       "text": "la stazione",
                       "emoji": "🚉"
+                    },
+                    {
+                      "text": "la valigia",
+                      "emoji": "🧳"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -3443,10 +3521,6 @@
                   "prompt": "tàu hỏa",
                   "audioTarget": "il treno",
                   "options": [
-                    {
-                      "text": "il treno",
-                      "emoji": "🚆"
-                    },
                     {
                       "text": "il biglietto",
                       "emoji": "🎫"
@@ -3458,9 +3532,13 @@
                     {
                       "text": "l'autobus",
                       "emoji": "🚌"
+                    },
+                    {
+                      "text": "il treno",
+                      "emoji": "🚆"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "match",
@@ -3541,12 +3619,12 @@
                   "audioTarget": "l'aeroporto",
                   "options": [
                     {
-                      "text": "khách sạn",
-                      "emoji": "🏨"
-                    },
-                    {
                       "text": "sân bay",
                       "emoji": "🛫"
+                    },
+                    {
+                      "text": "khách sạn",
+                      "emoji": "🏨"
                     },
                     {
                       "text": "con đường",
@@ -3557,7 +3635,7 @@
                       "emoji": "🏛️"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -3571,19 +3649,19 @@
                       "emoji": "🏛️"
                     },
                     {
-                      "text": "la mappa",
-                      "emoji": "🗺️"
-                    },
-                    {
                       "text": "la strada",
                       "emoji": "🛣️"
+                    },
+                    {
+                      "text": "la mappa",
+                      "emoji": "🗺️"
                     },
                     {
                       "text": "il biglietto",
                       "emoji": "🎫"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "select",
@@ -3599,13 +3677,13 @@
                       "text": "la valigia"
                     },
                     {
-                      "text": "l'autobus"
+                      "text": "l'albergo"
                     },
                     {
-                      "text": "l'albergo"
+                      "text": "l'autobus"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "select",
@@ -3614,10 +3692,6 @@
                   "prompt": "khách sạn",
                   "audioTarget": "l'albergo",
                   "options": [
-                    {
-                      "text": "l'albergo",
-                      "emoji": "🏨"
-                    },
                     {
                       "text": "il biglietto",
                       "emoji": "🎫"
@@ -3629,9 +3703,13 @@
                     {
                       "text": "l'autobus",
                       "emoji": "🚌"
+                    },
+                    {
+                      "text": "l'albergo",
+                      "emoji": "🏨"
                     }
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "wordBank",
@@ -3715,12 +3793,12 @@
                   "audioTarget": "l'albergo",
                   "options": [
                     {
-                      "text": "tàu hỏa",
-                      "emoji": "🚆"
-                    },
-                    {
                       "text": "khách sạn",
                       "emoji": "🏨"
+                    },
+                    {
+                      "text": "tàu hỏa",
+                      "emoji": "🚆"
                     },
                     {
                       "text": "nhà ga",
@@ -3731,7 +3809,7 @@
                       "emoji": "🛫"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 }
               ]
             },
@@ -3797,19 +3875,19 @@
                       "emoji": "🗺️"
                     },
                     {
-                      "text": "vé",
-                      "emoji": "🎫"
-                    },
-                    {
                       "text": "bảo tàng",
                       "emoji": "🏛️"
+                    },
+                    {
+                      "text": "vé",
+                      "emoji": "🎫"
                     },
                     {
                       "text": "va li",
                       "emoji": "🧳"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "fillBlank",
@@ -3905,15 +3983,15 @@
                       "emoji": "🛣️"
                     },
                     {
-                      "text": "bảo tàng",
-                      "emoji": "🏛️"
-                    },
-                    {
                       "text": "va li",
                       "emoji": "🧳"
+                    },
+                    {
+                      "text": "bảo tàng",
+                      "emoji": "🏛️"
                     }
                   ],
-                  "correct": 3
+                  "correct": 2
                 },
                 {
                   "type": "wordBank",
@@ -3979,12 +4057,12 @@
                   "translation": "Bảo tàng ở đâu?",
                   "audioTarget": "Dov'è il museo?",
                   "options": [
-                    "museo",
                     "aeroporto",
                     "albergo",
-                    "strada"
+                    "strada",
+                    "museo"
                   ],
-                  "correct": 0
+                  "correct": 3
                 },
                 {
                   "type": "select",
@@ -3994,12 +4072,12 @@
                   "audioTarget": "il viaggio",
                   "options": [
                     {
-                      "text": "l'autobus",
-                      "emoji": "🚌"
-                    },
-                    {
                       "text": "il viaggio",
                       "emoji": "🧭"
+                    },
+                    {
+                      "text": "l'autobus",
+                      "emoji": "🚌"
                     },
                     {
                       "text": "la città",
@@ -4010,7 +4088,7 @@
                       "emoji": "🚆"
                     }
                   ],
-                  "correct": 1
+                  "correct": 0
                 },
                 {
                   "type": "select",
@@ -4023,16 +4101,16 @@
                       "text": "il treno"
                     },
                     {
-                      "text": "la stazione"
+                      "text": "l'autobus"
                     },
                     {
-                      "text": "l'autobus"
+                      "text": "la stazione"
                     },
                     {
                       "text": "l'aeroporto"
                     }
                   ],
-                  "correct": 2
+                  "correct": 1
                 },
                 {
                   "type": "typeAnswer",
@@ -5228,7 +5306,7 @@
                       "text": "có"
                     },
                     {
-                      "text": "sống, ở"
+                      "text": "nói"
                     },
                     {
                       "text": "đi"
@@ -8204,10 +8282,12 @@
                   "type": "typeAnswer",
                   "id": "it-vi:ue-l1-e6",
                   "mode": "produceTarget",
-                  "prompt": "gia đình (kèm mạo từ)",
-                  "audioTarget": "la famiglia",
-                  "answer": "la famiglia",
-                  "alternatives": []
+                  "prompt": "Gia đình tôi lớn.",
+                  "audioTarget": "La mia famiglia è grande.",
+                  "answer": "La mia famiglia è grande.",
+                  "alternatives": [
+                    "La mia famiglia è grande"
+                  ]
                 },
                 {
                   "type": "wordBank",
@@ -8362,19 +8442,23 @@
                   "type": "typeAnswer",
                   "id": "it-vi:ue-l2-e5",
                   "mode": "produceTarget",
-                  "prompt": "cà phê (kèm mạo từ)",
-                  "audioTarget": "il caffè",
-                  "answer": "il caffè",
-                  "alternatives": []
+                  "prompt": "Tôi uống cà phê.",
+                  "audioTarget": "Bevo il caffè.",
+                  "answer": "Bevo il caffè.",
+                  "alternatives": [
+                    "Bevo il caffè"
+                  ]
                 },
                 {
                   "type": "typeAnswer",
                   "id": "it-vi:ue-l2-e6",
                   "mode": "produceTarget",
-                  "prompt": "thành phố (kèm mạo từ)",
-                  "audioTarget": "la città",
-                  "answer": "la città",
-                  "alternatives": []
+                  "prompt": "Roma là một thành phố.",
+                  "audioTarget": "Roma è una città.",
+                  "answer": "Roma è una città.",
+                  "alternatives": [
+                    "Roma è una città"
+                  ]
                 },
                 {
                   "type": "select",
@@ -15129,11 +15213,11 @@
                 {
                   "type": "fillBlank",
                   "id": "it-vi:ur-l3-e2",
-                  "sentence": "Sono ___ Hanoi.",
+                  "sentence": "Vengo ___ Hanoi.",
                   "translation": "Tôi đến từ Hà Nội.",
-                  "audioTarget": "Sono di Hanoi.",
+                  "audioTarget": "Vengo da Hanoi.",
                   "options": [
-                    "di",
+                    "da",
                     "a",
                     "in",
                     "su"

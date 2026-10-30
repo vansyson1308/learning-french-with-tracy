@@ -114,6 +114,7 @@ export const it: BuildLanguagePlugin = genericPlugin(
       [/ghe$/, "ga"],
       [/ci$/, "co"],
       [/gi$/, "go"],
+      [/i$/, "io"],
       [/i$/, "o"],
       [/i$/, "e"],
       [/i$/, "a"],

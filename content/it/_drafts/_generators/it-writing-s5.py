@@ -148,7 +148,7 @@ L = {
  "ur-l0": [W("r_form_course"), n2t("il telefono", ["il nome", "la strada", "la città"]), fill("Il mio ___ è Minh.", "nome", ["telefono", "indirizzo", "numero"], "Tên tôi là Minh."), typ("điện thoại (kèm mạo từ)", "il telefono", []), wb("Tên tôi là Lan.", "Il mio nome è Lan.", ["chiamo", "telefono", "sono"])],
  "ur-l1": [W("r_form_hotel"), n2t("l'indirizzo", ["la città", "il telefono", "il nome"]), fill("Abito in ___ Roma 5.", "via", ["città", "casa", "piano"], "Tôi sống ở số 5 phố Roma."), typ("Tôi sống ở phố Roma.", "Abito in via Roma.", ["Abito in via Roma"]), fill("Il mio ___ è nuovo.", "telefono", ["strada", "città", "casa"], "Điện thoại của tôi còn mới.")],
  "ur-l2": [W("r_hotel_mail"), fill("Vorrei una ___ per sabato.", "camera", ["casa", "porta", "sedia"], "Tôi muốn một phòng cho thứ Bảy."), wb("Tôi muốn một phòng.", "Vorrei una camera.", ["sono", "un", "casa"]), typ("Khách sạn còn phòng trống không?", "C'è una camera libera?", ["C'è una camera libera"]), typ("Tôi cần một phòng.", "Ho bisogno di una camera.", ["Ho bisogno di una camera"])],
- "ur-l3": [W("r_all"), wb("Tôi làm việc ở một bệnh viện.", "Lavoro in un ospedale.", ["abito", "a", "casa"]), fill("Sono ___ Hanoi.", "di", ["a", "in", "su"], "Tôi đến từ Hà Nội."), n2t("l'ospedale", ["la casa", "l'albergo", "il museo"]), typ("Tôi làm việc ở Bologna.", "Lavoro a Bologna.", ["Lavoro a Bologna"])],
+ "ur-l3": [W("r_all"), wb("Tôi làm việc ở một bệnh viện.", "Lavoro in un ospedale.", ["abito", "a", "casa"]), fill("Vengo ___ Hanoi.", "da", ["a", "in", "su"], "Tôi đến từ Hà Nội."), n2t("l'ospedale", ["la casa", "l'albergo", "il museo"]), typ("Tôi làm việc ở Bologna.", "Lavoro a Bologna.", ["Lavoro a Bologna"])],
 }
 recs = []
 for lid_, exs in L.items():

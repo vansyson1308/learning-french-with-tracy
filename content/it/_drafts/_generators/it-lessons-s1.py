@@ -135,6 +135,8 @@ for ui, unit in enumerate(sec["units"]):
             return pool[i % len(pool)]
 
         for step in recipe:
+            if step == "article" and not nouns_seen:
+                step = "n2t"  # unit 2 teaches no noun before signore / signora
             if step == "t2n":
                 w = pick("t2n", new + seen[:-3] if len(seen) > 3 else new)
                 p = nextpos()

@@ -6,11 +6,11 @@
       "id": "it.scenario.ciao_come_stai",
       "title": {
         "vi": "Một lời chào nhanh",
-        "en": "Một lời chào nhanh"
+        "en": "A quick hello"
       },
       "goal": {
         "vi": "Chào một người bạn, nói bạn khỏe, rồi chào tạm biệt.",
-        "en": "Chào một người bạn, nói bạn khỏe, rồi chào tạm biệt."
+        "en": "Greet a friend, say you are well, then say goodbye."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -39,7 +39,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy chào lại và nói rằng bạn khỏe.",
-            "en": "Hãy chào lại và nói rằng bạn khỏe."
+            "en": "Greet them back and say you are well."
           },
           "expected": [
             {
@@ -74,7 +74,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy chào lại và nói rằng bạn khỏe.",
-            "en": "Hãy chào lại và nói rằng bạn khỏe."
+            "en": "Greet them back and say you are well."
           },
           "expected": [
             {
@@ -111,7 +111,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy chào tạm biệt kiểu thân mật.",
-            "en": "Hãy chào tạm biệt kiểu thân mật."
+            "en": "Say an informal goodbye."
           },
           "expected": [
             {
@@ -147,7 +147,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy chào tạm biệt kiểu thân mật.",
-            "en": "Hãy chào tạm biệt kiểu thân mật."
+            "en": "Say an informal goodbye."
           },
           "expected": [
             {
@@ -190,11 +190,11 @@
       "id": "it.scenario.piacere",
       "title": {
         "vi": "Gặp một người lần đầu",
-        "en": "Gặp một người lần đầu"
+        "en": "Meeting someone for the first time"
       },
       "goal": {
         "vi": "Nói tên và quê của bạn với một người ở lớp học.",
-        "en": "Nói tên và quê của bạn với một người ở lớp học."
+        "en": "Tell someone in your class your name and where you are from."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -223,7 +223,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói tên của bạn: Minh.",
-            "en": "Hãy nói tên của bạn: Minh."
+            "en": "Say your name: Minh."
           },
           "expected": [
             {
@@ -257,7 +257,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói tên của bạn: Minh.",
-            "en": "Hãy nói tên của bạn: Minh."
+            "en": "Say your name: Minh."
           },
           "expected": [
             {
@@ -293,7 +293,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn đến từ Việt Nam.",
-            "en": "Hãy nói bạn đến từ Việt Nam."
+            "en": "Say you are from Vietnam."
           },
           "expected": [
             {
@@ -328,7 +328,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn đến từ Việt Nam.",
-            "en": "Hãy nói bạn đến từ Việt Nam."
+            "en": "Say you are from Vietnam."
           },
           "expected": [
             {
@@ -370,11 +370,11 @@
       "id": "it.scenario.al_bar",
       "title": {
         "vi": "Ở quán bar",
-        "en": "Ở quán bar"
+        "en": "At the bar"
       },
       "goal": {
         "vi": "Gọi một ly cà phê và một cái bánh sừng bò, rồi trả tiền.",
-        "en": "Gọi một ly cà phê và một cái bánh sừng bò, rồi trả tiền."
+        "en": "Order a coffee and a croissant, then pay."
       },
       "taskFamily": "transaction",
       "objectiveRefs": [
@@ -403,7 +403,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy gọi một ly cà phê.",
-            "en": "Hãy gọi một ly cà phê."
+            "en": "Order a coffee."
           },
           "expected": [
             {
@@ -437,7 +437,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy gọi một ly cà phê.",
-            "en": "Hãy gọi một ly cà phê."
+            "en": "Order a coffee."
           },
           "expected": [
             {
@@ -473,7 +473,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy gọi thêm một cái bánh sừng bò.",
-            "en": "Hãy gọi thêm một cái bánh sừng bò."
+            "en": "Order a croissant as well."
           },
           "expected": [
             {
@@ -506,7 +506,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy gọi thêm một cái bánh sừng bò.",
-            "en": "Hãy gọi thêm một cái bánh sừng bò."
+            "en": "Order a croissant as well."
           },
           "expected": [
             {
@@ -541,7 +541,7 @@
           "id": "l2",
           "prompt": {
             "vi": "Hãy đưa tiền và nói một câu lịch sự.",
-            "en": "Hãy đưa tiền và nói một câu lịch sự."
+            "en": "Hand over the money and say something polite."
           },
           "expected": [
             {
@@ -576,7 +576,7 @@
           "id": "l2b",
           "prompt": {
             "vi": "Hãy đưa tiền và nói một câu lịch sự.",
-            "en": "Hãy đưa tiền và nói một câu lịch sự."
+            "en": "Hand over the money and say something polite."
           },
           "expected": [
             {
@@ -618,11 +618,11 @@
       "id": "it.scenario.negozio_prezzo",
       "title": {
         "vi": "Ở cửa hàng",
-        "en": "Ở cửa hàng"
+        "en": "In a shop"
       },
       "goal": {
         "vi": "Hỏi giá một cái túi, rồi mua nó.",
-        "en": "Hỏi giá một cái túi, rồi mua nó."
+        "en": "Ask the price of a bag, then buy it."
       },
       "taskFamily": "transaction",
       "objectiveRefs": [
@@ -651,7 +651,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy hỏi cái túi giá bao nhiêu.",
-            "en": "Hãy hỏi cái túi giá bao nhiêu."
+            "en": "Ask how much the bag costs."
           },
           "expected": [
             {
@@ -687,7 +687,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy hỏi cái túi giá bao nhiêu.",
-            "en": "Hãy hỏi cái túi giá bao nhiêu."
+            "en": "Ask how much the bag costs."
           },
           "expected": [
             {
@@ -725,7 +725,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn lấy cái túi.",
-            "en": "Hãy nói bạn lấy cái túi."
+            "en": "Say you will take the bag."
           },
           "expected": [
             {
@@ -759,7 +759,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn lấy cái túi.",
-            "en": "Hãy nói bạn lấy cái túi."
+            "en": "Say you will take the bag."
           },
           "expected": [
             {
@@ -800,11 +800,11 @@
       "id": "it.scenario.dove_stazione",
       "title": {
         "vi": "Hỏi đường ra nhà ga",
-        "en": "Hỏi đường ra nhà ga"
+        "en": "Asking the way to the station"
       },
       "goal": {
         "vi": "Hỏi một người lạ nhà ga ở đâu, rồi cảm ơn.",
-        "en": "Hỏi một người lạ nhà ga ở đâu, rồi cảm ơn."
+        "en": "Ask a stranger where the station is, then say thank you."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -833,7 +833,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy hỏi nhà ga ở đâu.",
-            "en": "Hãy hỏi nhà ga ở đâu."
+            "en": "Ask where the station is."
           },
           "expected": [
             {
@@ -870,7 +870,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy hỏi nhà ga ở đâu.",
-            "en": "Hãy hỏi nhà ga ở đâu."
+            "en": "Ask where the station is."
           },
           "expected": [
             {
@@ -909,7 +909,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy cảm ơn.",
-            "en": "Hãy cảm ơn."
+            "en": "Say thank you."
           },
           "expected": [
             {
@@ -942,7 +942,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy cảm ơn.",
-            "en": "Hãy cảm ơn."
+            "en": "Say thank you."
           },
           "expected": [
             {
@@ -982,11 +982,11 @@
       "id": "it.scenario.farmacia",
       "title": {
         "vi": "Ở hiệu thuốc",
-        "en": "Ở hiệu thuốc"
+        "en": "At the pharmacy"
       },
       "goal": {
         "vi": "Nói bạn bị đau đầu, rồi mua thuốc và cảm ơn.",
-        "en": "Nói bạn bị đau đầu, rồi mua thuốc và cảm ơn."
+        "en": "Say you have a headache, then buy a medicine and say thank you."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -1015,7 +1015,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói bạn bị đau đầu.",
-            "en": "Hãy nói bạn bị đau đầu."
+            "en": "Say that you have a headache."
           },
           "expected": [
             {
@@ -1048,7 +1048,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói bạn bị đau đầu.",
-            "en": "Hãy nói bạn bị đau đầu."
+            "en": "Say that you have a headache."
           },
           "expected": [
             {
@@ -1083,7 +1083,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy cảm ơn và chào tạm biệt lịch sự.",
-            "en": "Hãy cảm ơn và chào tạm biệt lịch sự."
+            "en": "Say thank you and a polite goodbye."
           },
           "expected": [
             {
@@ -1116,7 +1116,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy cảm ơn và chào tạm biệt lịch sự.",
-            "en": "Hãy cảm ơn và chào tạm biệt lịch sự."
+            "en": "Say thank you and a polite goodbye."
           },
           "expected": [
             {
@@ -1156,11 +1156,11 @@
       "id": "it.scenario.programmi",
       "title": {
         "vi": "Hẹn một người bạn",
-        "en": "Hẹn một người bạn"
+        "en": "Making plans with a friend"
       },
       "goal": {
         "vi": "Nhận lời hẹn vào thứ Bảy và nói giờ gặp.",
-        "en": "Nhận lời hẹn vào thứ Bảy và nói giờ gặp."
+        "en": "Accept a meeting on Saturday and say what time to meet."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -1189,7 +1189,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói rằng bạn rảnh.",
-            "en": "Hãy nói rằng bạn rảnh."
+            "en": "Say that you are free."
           },
           "expected": [
             {
@@ -1224,7 +1224,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói rằng bạn rảnh.",
-            "en": "Hãy nói rằng bạn rảnh."
+            "en": "Say that you are free."
           },
           "expected": [
             {
@@ -1261,7 +1261,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói gặp lúc tám giờ.",
-            "en": "Hãy nói gặp lúc tám giờ."
+            "en": "Say you will meet at eight."
           },
           "expected": [
             {
@@ -1295,7 +1295,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói gặp lúc tám giờ.",
-            "en": "Hãy nói gặp lúc tám giờ."
+            "en": "Say you will meet at eight."
           },
           "expected": [
             {
@@ -1336,11 +1336,11 @@
       "id": "it.scenario.sono_malato",
       "title": {
         "vi": "Gọi điện xin nghỉ ốm",
-        "en": "Gọi điện xin nghỉ ốm"
+        "en": "Calling in sick"
       },
       "goal": {
         "vi": "Gọi cho công ty, nói bạn bị ốm và hôm nay không đến được.",
-        "en": "Gọi cho công ty, nói bạn bị ốm và hôm nay không đến được."
+        "en": "Call your workplace, say you are ill and cannot come in today."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -1369,7 +1369,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy chào, nói tên Minh và nói bạn bị ốm.",
-            "en": "Hãy chào, nói tên Minh và nói bạn bị ốm."
+            "en": "Say hello, give your name, Minh, and say you are ill."
           },
           "expected": [
             {
@@ -1404,7 +1404,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy chào, nói tên Minh và nói bạn bị ốm.",
-            "en": "Hãy chào, nói tên Minh và nói bạn bị ốm."
+            "en": "Say hello, give your name, Minh, and say you are ill."
           },
           "expected": [
             {
@@ -1441,7 +1441,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói hôm nay bạn không đến được.",
-            "en": "Hãy nói hôm nay bạn không đến được."
+            "en": "Say you cannot come today."
           },
           "expected": [
             {
@@ -1475,7 +1475,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói hôm nay bạn không đến được.",
-            "en": "Hãy nói hôm nay bạn không đến được."
+            "en": "Say you cannot come today."
           },
           "expected": [
             {
@@ -1516,11 +1516,11 @@
       "id": "it.scenario.cp_corso",
       "title": {
         "vi": "Bạn mới ở lớp học",
-        "en": "Bạn mới ở lớp học"
+        "en": "A new classmate"
       },
       "goal": {
         "vi": "Làm quen với một bạn cùng lớp: nói tên và quê.",
-        "en": "Làm quen với một bạn cùng lớp: nói tên và quê."
+        "en": "Get to know a classmate: say your name and where you are from."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -1549,7 +1549,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói tên bạn: Lan.",
-            "en": "Hãy nói tên bạn: Lan."
+            "en": "Say your name: Lan."
           },
           "expected": [
             {
@@ -1582,7 +1582,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói tên bạn: Lan.",
-            "en": "Hãy nói tên bạn: Lan."
+            "en": "Say your name: Lan."
           },
           "expected": [
             {
@@ -1617,7 +1617,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn đến từ Việt Nam.",
-            "en": "Hãy nói bạn đến từ Việt Nam."
+            "en": "Say you are from Vietnam."
           },
           "expected": [
             {
@@ -1651,7 +1651,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn đến từ Việt Nam.",
-            "en": "Hãy nói bạn đến từ Việt Nam."
+            "en": "Say you are from Vietnam."
           },
           "expected": [
             {
@@ -1692,11 +1692,11 @@
       "id": "it.scenario.cp_vicina",
       "title": {
         "vi": "Gặp bà hàng xóm",
-        "en": "Gặp bà hàng xóm"
+        "en": "Meeting the neighbour"
       },
       "goal": {
         "vi": "Chào bà hàng xóm và trả lời bà ấy.",
-        "en": "Chào bà hàng xóm và trả lời bà ấy."
+        "en": "Greet your neighbour and answer her."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -1725,7 +1725,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy chào và nói bạn khỏe.",
-            "en": "Hãy chào và nói bạn khỏe."
+            "en": "Greet her and say that you are well."
           },
           "expected": [
             {
@@ -1758,7 +1758,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy chào và nói bạn khỏe.",
-            "en": "Hãy chào và nói bạn khỏe."
+            "en": "Greet her and say that you are well."
           },
           "expected": [
             {
@@ -1793,7 +1793,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn sống ở đây được một năm.",
-            "en": "Hãy nói bạn sống ở đây được một năm."
+            "en": "Say you have lived here for a year."
           },
           "expected": [
             {
@@ -1826,7 +1826,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn sống ở đây được một năm.",
-            "en": "Hãy nói bạn sống ở đây được một năm."
+            "en": "Say you have lived here for a year."
           },
           "expected": [
             {
@@ -1866,11 +1866,11 @@
       "id": "it.scenario.cp_festa",
       "title": {
         "vi": "Lời mời dự tiệc",
-        "en": "Lời mời dự tiệc"
+        "en": "A party invitation"
       },
       "goal": {
         "vi": "Nhận lời mời của bạn và hỏi giờ.",
-        "en": "Nhận lời mời của bạn và hỏi giờ."
+        "en": "Accept your friend's invitation and ask what time it is."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -1899,7 +1899,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nhận lời.",
-            "en": "Hãy nhận lời."
+            "en": "Accept the invitation."
           },
           "expected": [
             {
@@ -1933,7 +1933,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nhận lời.",
-            "en": "Hãy nhận lời."
+            "en": "Accept the invitation."
           },
           "expected": [
             {
@@ -1969,7 +1969,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy hỏi bữa tiệc bắt đầu lúc mấy giờ.",
-            "en": "Hãy hỏi bữa tiệc bắt đầu lúc mấy giờ."
+            "en": "Ask what time the party starts."
           },
           "expected": [
             {
@@ -2003,7 +2003,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy hỏi bữa tiệc bắt đầu lúc mấy giờ.",
-            "en": "Hãy hỏi bữa tiệc bắt đầu lúc mấy giờ."
+            "en": "Ask what time the party starts."
           },
           "expected": [
             {
@@ -2044,11 +2044,11 @@
       "id": "it.scenario.cp_bar",
       "title": {
         "vi": "Ở quán bar",
-        "en": "Ở quán bar"
+        "en": "At the bar"
       },
       "goal": {
         "vi": "Gọi một ly trà và hỏi giá.",
-        "en": "Gọi một ly trà và hỏi giá."
+        "en": "Order a tea and ask the price."
       },
       "taskFamily": "transaction",
       "objectiveRefs": [
@@ -2077,7 +2077,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy gọi một ly trà.",
-            "en": "Hãy gọi một ly trà."
+            "en": "Order a tea."
           },
           "expected": [
             {
@@ -2111,7 +2111,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy gọi một ly trà.",
-            "en": "Hãy gọi một ly trà."
+            "en": "Order a tea."
           },
           "expected": [
             {
@@ -2147,7 +2147,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy hỏi giá bao nhiêu.",
-            "en": "Hãy hỏi giá bao nhiêu."
+            "en": "Ask how much it costs."
           },
           "expected": [
             {
@@ -2181,7 +2181,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy hỏi giá bao nhiêu.",
-            "en": "Hãy hỏi giá bao nhiêu."
+            "en": "Ask how much it costs."
           },
           "expected": [
             {
@@ -2222,11 +2222,11 @@
       "id": "it.scenario.cp_biglietto",
       "title": {
         "vi": "Mua vé tàu",
-        "en": "Mua vé tàu"
+        "en": "Buying a train ticket"
       },
       "goal": {
         "vi": "Mua một vé đi Venezia.",
-        "en": "Mua một vé đi Venezia."
+        "en": "Buy a ticket to Venice."
       },
       "taskFamily": "transaction",
       "objectiveRefs": [
@@ -2255,7 +2255,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói bạn muốn đi Venezia.",
-            "en": "Hãy nói bạn muốn đi Venezia."
+            "en": "Say that you want to go to Venice."
           },
           "expected": [
             {
@@ -2288,7 +2288,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói bạn muốn đi Venezia.",
-            "en": "Hãy nói bạn muốn đi Venezia."
+            "en": "Say that you want to go to Venice."
           },
           "expected": [
             {
@@ -2323,7 +2323,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn chỉ cần vé một chiều.",
-            "en": "Hãy nói bạn chỉ cần vé một chiều."
+            "en": "Say you only need a single ticket."
           },
           "expected": [
             {
@@ -2355,7 +2355,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn chỉ cần vé một chiều.",
-            "en": "Hãy nói bạn chỉ cần vé một chiều."
+            "en": "Say you only need a single ticket."
           },
           "expected": [
             {
@@ -2394,11 +2394,11 @@
       "id": "it.scenario.cp_farmacia",
       "title": {
         "vi": "Hỏi đường đến hiệu thuốc",
-        "en": "Hỏi đường đến hiệu thuốc"
+        "en": "Asking the way to the pharmacy"
       },
       "goal": {
         "vi": "Hỏi hiệu thuốc ở đâu, rồi cảm ơn.",
-        "en": "Hỏi hiệu thuốc ở đâu, rồi cảm ơn."
+        "en": "Ask where the pharmacy is and check you understood."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -2427,7 +2427,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy hỏi hiệu thuốc ở đâu.",
-            "en": "Hãy hỏi hiệu thuốc ở đâu."
+            "en": "Ask where the pharmacy is."
           },
           "expected": [
             {
@@ -2460,7 +2460,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy hỏi hiệu thuốc ở đâu.",
-            "en": "Hãy hỏi hiệu thuốc ở đâu."
+            "en": "Ask where the pharmacy is."
           },
           "expected": [
             {
@@ -2495,7 +2495,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy cảm ơn.",
-            "en": "Hãy cảm ơn."
+            "en": "Say thank you."
           },
           "expected": [
             {
@@ -2528,7 +2528,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy cảm ơn.",
-            "en": "Hãy cảm ơn."
+            "en": "Say thank you."
           },
           "expected": [
             {
@@ -2568,11 +2568,11 @@
       "id": "it.scenario.a1cap_vicino",
       "title": {
         "vi": "Nói chuyện với hàng xóm mới",
-        "en": "Nói chuyện với hàng xóm mới"
+        "en": "Talking to a new neighbour"
       },
       "goal": {
         "vi": "Chào hàng xóm mới, nói tên và nơi làm việc.",
-        "en": "Chào hàng xóm mới, nói tên và nơi làm việc."
+        "en": "Greet your new neighbour, say your name and where you work."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -2601,7 +2601,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói tên bạn: Minh.",
-            "en": "Hãy nói tên bạn: Minh."
+            "en": "Say your name: Minh."
           },
           "expected": [
             {
@@ -2634,7 +2634,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói tên bạn: Minh.",
-            "en": "Hãy nói tên bạn: Minh."
+            "en": "Say your name: Minh."
           },
           "expected": [
             {
@@ -2669,7 +2669,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn làm việc ở bệnh viện.",
-            "en": "Hãy nói bạn làm việc ở bệnh viện."
+            "en": "Say you work at the hospital."
           },
           "expected": [
             {
@@ -2702,7 +2702,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn làm việc ở bệnh viện.",
-            "en": "Hãy nói bạn làm việc ở bệnh viện."
+            "en": "Say you work at the hospital."
           },
           "expected": [
             {
@@ -2742,11 +2742,11 @@
       "id": "it.scenario.a1cap_telefono",
       "title": {
         "vi": "Gọi điện cho bạn",
-        "en": "Gọi điện cho bạn"
+        "en": "Phoning a friend"
       },
       "goal": {
         "vi": "Gọi cho một người bạn và hẹn gặp ngày mai.",
-        "en": "Gọi cho một người bạn và hẹn gặp ngày mai."
+        "en": "Call a friend and arrange to meet tomorrow."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -2775,7 +2775,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy chào và nói tên bạn: Lan.",
-            "en": "Hãy chào và nói tên bạn: Lan."
+            "en": "Say hello and give your name: Lan."
           },
           "expected": [
             {
@@ -2808,7 +2808,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy chào và nói tên bạn: Lan.",
-            "en": "Hãy chào và nói tên bạn: Lan."
+            "en": "Say hello and give your name: Lan."
           },
           "expected": [
             {
@@ -2843,7 +2843,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói ngày mai bạn rảnh.",
-            "en": "Hãy nói ngày mai bạn rảnh."
+            "en": "Say you are free tomorrow."
           },
           "expected": [
             {
@@ -2877,7 +2877,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói ngày mai bạn rảnh.",
-            "en": "Hãy nói ngày mai bạn rảnh."
+            "en": "Say you are free tomorrow."
           },
           "expected": [
             {
@@ -2918,11 +2918,11 @@
       "id": "it.scenario.a1cap_giulia",
       "title": {
         "vi": "Gặp Giulia ở công viên",
-        "en": "Gặp Giulia ở công viên"
+        "en": "Meeting Giulia in the park"
       },
       "goal": {
         "vi": "Trò chuyện ngắn với Giulia về sở thích.",
-        "en": "Trò chuyện ngắn với Giulia về sở thích."
+        "en": "A short chat with Giulia about what you like doing."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -2951,7 +2951,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói bạn thích đọc sách.",
-            "en": "Hãy nói bạn thích đọc sách."
+            "en": "Say you like reading."
           },
           "expected": [
             {
@@ -2985,7 +2985,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói bạn thích đọc sách.",
-            "en": "Hãy nói bạn thích đọc sách."
+            "en": "Say you like reading."
           },
           "expected": [
             {
@@ -3021,7 +3021,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nhận lời.",
-            "en": "Hãy nhận lời."
+            "en": "Accept the invitation."
           },
           "expected": [
             {
@@ -3055,7 +3055,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nhận lời.",
-            "en": "Hãy nhận lời."
+            "en": "Accept the invitation."
           },
           "expected": [
             {
@@ -3096,11 +3096,11 @@
       "id": "it.scenario.a1cap_medico",
       "title": {
         "vi": "Đặt lịch khám",
-        "en": "Đặt lịch khám"
+        "en": "Booking a doctor's appointment"
       },
       "goal": {
         "vi": "Gọi phòng khám và đặt lịch hẹn vào thứ Hai.",
-        "en": "Gọi phòng khám và đặt lịch hẹn vào thứ Hai."
+        "en": "Call the surgery and book an appointment for Monday."
       },
       "taskFamily": "conversation",
       "objectiveRefs": [
@@ -3129,7 +3129,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy chào và nói bạn muốn đặt lịch hẹn.",
-            "en": "Hãy chào và nói bạn muốn đặt lịch hẹn."
+            "en": "Say hello and that you would like an appointment."
           },
           "expected": [
             {
@@ -3162,7 +3162,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy chào và nói bạn muốn đặt lịch hẹn.",
-            "en": "Hãy chào và nói bạn muốn đặt lịch hẹn."
+            "en": "Say hello and that you would like an appointment."
           },
           "expected": [
             {
@@ -3197,7 +3197,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói được.",
-            "en": "Hãy nói được."
+            "en": "Say that it is fine."
           },
           "expected": [
             {
@@ -3231,7 +3231,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói được.",
-            "en": "Hãy nói được."
+            "en": "Say that it is fine."
           },
           "expected": [
             {
@@ -3272,11 +3272,11 @@
       "id": "it.scenario.cils_a_colloquio",
       "title": {
         "vi": "Prova 1 — Trò chuyện với giám khảo",
-        "en": "Prova 1 — Trò chuyện với giám khảo"
+        "en": "Prova 1 — Talking with the examiner"
       },
       "goal": {
         "vi": "Trả lời câu hỏi của giám khảo về bản thân: tên, quê, nơi sống.",
-        "en": "Trả lời câu hỏi của giám khảo về bản thân: tên, quê, nơi sống."
+        "en": "Answer the examiner's questions about yourself: name, home country, where you live."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -3305,7 +3305,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói tên của bạn: Lan.",
-            "en": "Hãy nói tên của bạn: Lan."
+            "en": "Say your name: Lan."
           },
           "expected": [
             {
@@ -3338,7 +3338,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói tên của bạn: Lan.",
-            "en": "Hãy nói tên của bạn: Lan."
+            "en": "Say your name: Lan."
           },
           "expected": [
             {
@@ -3373,7 +3373,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn đến từ Việt Nam.",
-            "en": "Hãy nói bạn đến từ Việt Nam."
+            "en": "Say you are from Vietnam."
           },
           "expected": [
             {
@@ -3407,7 +3407,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn đến từ Việt Nam.",
-            "en": "Hãy nói bạn đến từ Việt Nam."
+            "en": "Say you are from Vietnam."
           },
           "expected": [
             {
@@ -3443,7 +3443,7 @@
           "id": "l2",
           "prompt": {
             "vi": "Hãy nói bạn sống ở Padova.",
-            "en": "Hãy nói bạn sống ở Padova."
+            "en": "Say that you live in Padua."
           },
           "expected": [
             {
@@ -3476,7 +3476,7 @@
           "id": "l2b",
           "prompt": {
             "vi": "Hãy nói bạn sống ở Padova.",
-            "en": "Hãy nói bạn sống ở Padova."
+            "en": "Say that you live in Padua."
           },
           "expected": [
             {
@@ -3516,11 +3516,11 @@
       "id": "it.scenario.cils_b_colloquio",
       "title": {
         "vi": "Prova 1 — Trò chuyện với giám khảo",
-        "en": "Prova 1 — Trò chuyện với giám khảo"
+        "en": "Prova 1 — Talking with the examiner"
       },
       "goal": {
         "vi": "Trả lời câu hỏi của giám khảo: tên, công việc, ngôn ngữ.",
-        "en": "Trả lời câu hỏi của giám khảo: tên, công việc, ngôn ngữ."
+        "en": "Answer the examiner's questions: name, job, languages."
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
@@ -3549,7 +3549,7 @@
           "id": "l0",
           "prompt": {
             "vi": "Hãy nói tên của bạn: Minh.",
-            "en": "Hãy nói tên của bạn: Minh."
+            "en": "Say your name: Minh."
           },
           "expected": [
             {
@@ -3582,7 +3582,7 @@
           "id": "l0b",
           "prompt": {
             "vi": "Hãy nói tên của bạn: Minh.",
-            "en": "Hãy nói tên của bạn: Minh."
+            "en": "Say your name: Minh."
           },
           "expected": [
             {
@@ -3617,7 +3617,7 @@
           "id": "l1",
           "prompt": {
             "vi": "Hãy nói bạn làm đầu bếp.",
-            "en": "Hãy nói bạn làm đầu bếp."
+            "en": "Say that you are a cook."
           },
           "expected": [
             {
@@ -3650,7 +3650,7 @@
           "id": "l1b",
           "prompt": {
             "vi": "Hãy nói bạn làm đầu bếp.",
-            "en": "Hãy nói bạn làm đầu bếp."
+            "en": "Say that you are a cook."
           },
           "expected": [
             {
@@ -3685,7 +3685,7 @@
           "id": "l2",
           "prompt": {
             "vi": "Hãy nói bạn nói tiếng Việt và tiếng Ý.",
-            "en": "Hãy nói bạn nói tiếng Việt và tiếng Ý."
+            "en": "Say that you speak Vietnamese and Italian."
           },
           "expected": [
             {
@@ -3720,7 +3720,7 @@
           "id": "l2b",
           "prompt": {
             "vi": "Hãy nói bạn nói tiếng Việt và tiếng Ý.",
-            "en": "Hãy nói bạn nói tiếng Việt và tiếng Ý."
+            "en": "Say that you speak Vietnamese and Italian."
           },
           "expected": [
             {
