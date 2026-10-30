@@ -14,6 +14,7 @@ const lexicon = [
   { id: "it:w:zaino", surface: "lo zaino", partOfSpeech: "noun", gender: "masculine" },
   { id: "it:w:studente", surface: "lo studente", partOfSpeech: "noun", gender: "masculine" },
   { id: "it:w:casa", surface: "la casa", partOfSpeech: "noun", gender: "feminine" },
+  { id: "it:w:insegnante", surface: "l'insegnante", partOfSpeech: "noun", gender: "masculine" },
   { id: "it:w:uovo", surface: "l'uovo", partOfSpeech: "noun", gender: "masculine" },
   { id: "it:w:ciao", surface: "ciao", partOfSpeech: "interjection" },
 ];
@@ -100,7 +101,7 @@ describe("Italian course gates", () => {
 
   test("clitic pronouns and correct forms stay quiet", () => {
     const good = (s: string) => italianCourseErrors(clean({ exercises: [...drill, ex("e1", { answer: s })] }), ok);
-    for (const s of ["Lo vedo.", "La amo davvero.", "Gli parlo.", "Un amico e un'amica.", "L'amico dello studente.", "All'amica, allo zaino, al libro.", "Le case e gli studenti."]) expect(good(s)).toEqual([]);
+    for (const s of ["Uno e cinquanta.", "Una in tasca.", "Un'insegnante e un insegnante.", "È scritto qui.", "Lo vedo.", "La amo davvero.", "Gli parlo.", "Un amico e un'amica.", "L'amico dello studente.", "All'amica, allo zaino, al libro.", "Le case e gli studenti."]) expect(good(s)).toEqual([]);
   });
 
   test("the auxiliary of the passato prossimo and the plural agreement after essere", () => {

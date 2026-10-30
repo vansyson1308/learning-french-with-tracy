@@ -35,6 +35,8 @@ const VOWEL = /^[aeiouàèéìíòóùúh]/i;
 /** s + consonant, z, gn, ps, pn, x, y: the "impure" openings that select lo / gli / uno. */
 const IMPURE = /^(?:s[^aeiouàèéìíòóùú\s]|z|gn|ps|pn|x|y)/i;
 
+const COMMON_GENDER = /(?:ante|ente|ista)$/;
+
 type Gender = "masculine" | "feminine";
 type Lexeme = { id: string; surface: string; legacySurfaces?: string[]; partOfSpeech: string; gender?: string | null };
 type Exercise = PackSource["sections"][number]["units"][number]["lessons"][number]["exercises"][number];
@@ -85,7 +87,9 @@ function nounGenders(lexicon: Lexeme[]): Map<string, Set<Gender>> {
   for (const l of lexicon) {
     if (l.partOfSpeech !== "noun" || (l.gender !== "masculine" && l.gender !== "feminine")) continue;
     const bare = l.surface.replace(/^(?:il|lo|la|i|gli|le) |^l'/i, "").toLowerCase();
-    genders.set(bare, (genders.get(bare) ?? new Set()).add(l.gender));
+    // -ante, -ente, -ista nouns take both genders (l'insegnante, un'insegnante, un insegnante).
+    const both = COMMON_GENDER.test(bare) ? (["masculine", "feminine"] as const) : [l.gender];
+    genders.set(bare, new Set([...(genders.get(bare) ?? []), ...both]));
   }
   return genders;
 }
@@ -138,10 +142,11 @@ function articleProblems(text: string, genders: Map<string, Set<Gender>>): strin
         case "nei":
         case "sui":
           return vowel || impure;
+        // uno and una are also the number and the pronoun ("uno e cinquanta", "una in tasca"): nouns only.
         case "uno":
-          return vowel || (!impure && isNoun);
+          return isNoun && (vowel || !impure);
         case "una":
-          return vowel;
+          return isNoun && vowel;
         case "un":
           return impure || (vowel && fem);
         case "lo":
@@ -177,7 +182,8 @@ function articleProblems(text: string, genders: Map<string, Set<Gender>>): strin
 const PLURAL_ESSERE = /(?:^|[^\p{L}])(siamo|siete)\s+(\p{L}+)/giu;
 const SINGULAR_ESSERE = /(?:^|[^\p{L}])(è|sei)\s+(\p{L}+)/giu;
 const AVERE = /(?:^|[^\p{L}])(ho|hai|ha|abbiamo|avete|hanno)\s+(\p{L}+)/giu;
-const ESSERE = /(?:^|[^\p{L}])(sono|sei|è|siamo|siete)\s+(\p{L}+)/giu;
+// Not `è`: "È scritto", "è chiuso" are passives or adjectives.
+const ESSERE = /(?:^|[^\p{L}])(sono|sei|siamo|siete)\s+(\p{L}+)/giu;
 
 /** Essere-participle stem: andato/andata/andati/andate → andat. */
 const stemOf = (participle: string) => participle.toLowerCase().replace(/[oaie]$/, "");
