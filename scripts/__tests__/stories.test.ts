@@ -57,6 +57,12 @@ describe("tokenizer", () => {
     expect(segmentSentence("fr", text).map((p) => p.text).join("")).toBe(text);
     expect(words("fr", text)).toEqual(["C'", "est", "aujourd'", "hui", "l'", "homme", "boit", "de", "l’", "eau"]);
   });
+
+  test("a number is never a word token, with or without separators (ICU differs by platform)", () => {
+    expect(words("de", "Um 8.30 Uhr kostet es 90 Euro.")).toEqual(["Um", "Uhr", "kostet", "es", "Euro"]);
+    expect(words("es", "Cuesta 48.000 euros, 1.000 más.")).toEqual(["Cuesta", "euros", "más"]);
+    expect(segmentSentence("de", "Um 8.30 Uhr.").map((p) => p.text).join("")).toBe("Um 8.30 Uhr.");
+  });
 });
 
 describe("lexical resolver", () => {

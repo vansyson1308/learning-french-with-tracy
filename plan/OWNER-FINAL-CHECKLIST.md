@@ -35,7 +35,12 @@ Kết quả lượt audio de [40918763308](https://github.com/vansyson1308/learn
 - [ ] de: nghe xem có bị méo/rè không — `de.clip.ix_goethe_a_thema_miss` «Kein Problem. Danke schön!» (`assets/audio/de-reception/bfe69cea6fdd71c77f3e.mp3`) — máy viết «Dankeschön» liền, nhiều khả năng chỉ là lệch cách viết.
 - [ ] de: nghe xem có bị méo/rè không — `de.clip.ix_goethe_b_thema_miss` «Kein Problem. Danke schön!» (`assets/audio/de-reception/bfe69cea6fdd71c77f3e.mp3`) — cùng file với dòng trên.
 
-Ngoài ra có 4 câu truyện (chưa sinh lại lần nào) bị chấm lệch. Claude sẽ xử lý chúng trong PR stories-topup-es (sinh lại hoặc sửa câu), vì PR đó dựng lại audio truyện de; anh không cần làm gì lúc này: `de.story.der_umzug#6` «Nein. Ich lese jetzt viel.», `de.story.ein_fall_fuer_frau_weber#16` «Ist er der Täter?», `de.story.die_anmeldung#9`, `de.story.die_anmeldung#12`.
+**Câu truyện tiếng Đức.** Lượt audio de [41005780237](https://github.com/vansyson1308/learning-french-with-tracy/actions/runs/41005780237) (bot commit 7cfc116) đã render lại toàn bộ câu truyện bằng Opus. Trong 4 câu từng bị chấm lệch, `die_anmeldung#9` đã sạch; 3 câu sau vẫn bị chấm lệch sau lần render thứ hai, anh nghe giúp:
+- [ ] de: nghe xem có bị méo/rè không — `de.story.der_umzug#6` «Nein. Ich lese jetzt viel.» (`assets/audio/de-reception/1c7761c658cce1fa50ae.opus`) — máy nghe thành «Aber hier ist jetzt viel».
+- [ ] de: nghe xem có bị méo/rè không — `de.story.ein_fall_fuer_frau_weber#16` «Ist er der Täter?» (`assets/audio/de-reception/09ec3a1cdfc1c397ce42.opus`) — câu hỏi rất ngắn, máy nghe ra một từ vô nghĩa.
+- [ ] de: nghe xem có bị méo/rè không — `de.story.die_anmeldung#12` «Ja, gern. Minh Tran.» (`assets/audio/de-reception/64c5f67d8329609d7036.opus`) — máy viết «Minitran»; nhiều khả năng chỉ là tên riêng.
+
+8 câu truyện khác mới bị chấm lệch lần đầu, chỉ để tham khảo. Đó là các câu ngắn, có tên riêng như Bello, Peter hoặc là câu cảm thán; danh sách nằm trong `content/reports/de/audio-quality.json` → `resynthesisCandidates`.
 
 ## D. Một lượt nghiệm thu duy nhất trên điện thoại (bản v1.0 candidate)
 Thay cho mọi lượt test lẻ trước đây (gói P0 RC3, smoke P1d, kiểm chữ P2a, đi một vòng fr-vi P2b, đi một vòng es-vi P3e, checklist RC4 — RC4 đã gác lại, không test). Claude sẽ viết bản đầy đủ bằng tiếng Việt (≤ 30 phút) vào `release/V1_ACCEPTANCE.md` khi candidate sẵn sàng; khung:

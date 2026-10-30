@@ -77,10 +77,10 @@ export function segmentSentence(lang: string, text: string): StoryPiece[] {
   const out: StoryPiece[] = [];
   const segmenter = new Intl.Segmenter(lang, { granularity: "word" });
   for (const seg of segmenter.segment(text)) {
-    // A bare number is never a word token. ICU builds disagree on its
-    // isWordLike (Linux: false, Windows: true); pinned so every platform
-    // compiles the committed artifacts byte for byte.
-    if (!seg.isWordLike || /^\p{N}+$/u.test(seg.segment)) {
+    // A number ("90", "48.000", "8.30") is never a word token. ICU builds
+    // disagree on its isWordLike (Linux: false, Windows: true); pinned so every
+    // platform compiles the committed artifacts byte for byte.
+    if (!seg.isWordLike || /^\p{N}+(?:[.,:]\p{N}+)*$/u.test(seg.segment)) {
       out.push({ text: seg.segment, word: false });
       continue;
     }
