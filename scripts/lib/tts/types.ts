@@ -7,6 +7,7 @@
  */
 
 import type { CodecSettings } from "../audio-codec";
+import type { LineageLink } from "../voice-lineage";
 
 export type EngineId = "piper" | "kokoro" | "melotts";
 
@@ -35,8 +36,8 @@ export type EnginesDoc = {
   version: number;
   engines: {
     piper: { package: string; pinnedVersion: string; voicesRepository: string; voicesRevision: string; install: string[]; sampleRateHz: number };
-    kokoro: { package: string; pinnedVersion: string; g2pPackage: string; g2pPinnedVersion: string; modelRepository: string; modelRevision: string; modelFile: string; configFile: string; install: string[]; langCodes: Record<string, string>; sampleRateHz: number };
-    melotts: { gitRepository: string; pinnedCommit: string; models: Record<string, { repository: string; revision: string | null; language: string; defaultSpeaker: string }>; install: string[]; sampleRateHz: number };
+    kokoro: { package: string; pinnedVersion: string; g2pPackage: string; g2pPinnedVersion: string; modelRepository: string; modelRevision: string; modelFile: string; configFile: string; install: string[]; langCodes: Record<string, string>; sampleRateHz: number; lineage?: LineageLink[] };
+    melotts: { gitRepository: string; pinnedCommit: string; models: Record<string, { repository: string; revision: string | null; language: string; defaultSpeaker: string }>; install: string[]; sampleRateHz: number; lineage?: LineageLink[] };
   };
   asr: {
     whisper: { package: string; pinnedVersion: string; models: { canary: string; generate: string } };

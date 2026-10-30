@@ -172,8 +172,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "eligible",
-      "gateReason": "matched CC0",
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted",
       "engine": "piper",
       "speaker": null
     },
@@ -228,8 +228,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "eligible",
-      "gateReason": "matched CC0",
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted",
       "engine": "piper",
       "speaker": null
     },
@@ -284,8 +284,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC-BY 4.0",
-      "status": "selected",
-      "gateReason": "matched CC BY 4.0",
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted",
       "engine": "piper",
       "speaker": null
     },
@@ -312,8 +312,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "eligible",
-      "gateReason": "matched CC0",
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted",
       "engine": "piper",
       "speaker": null
     },
@@ -340,8 +340,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "eligible",
-      "gateReason": "matched CC0",
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted",
       "engine": "piper",
       "speaker": null
     },
@@ -368,8 +368,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "eligible",
-      "gateReason": "matched CC0",
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted",
       "engine": "piper",
       "speaker": null
     },
@@ -398,8 +398,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: apache-2.0",
-      "status": "eligible",
-      "gateReason": "matched Apache-2.0"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: model card states no training lineage"
     },
     {
       "id": "kokoro-ef_dora",
@@ -492,8 +492,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: mit",
-      "status": "eligible",
-      "gateReason": "matched MIT"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: MeloTTS declares no training data, an unknown lineage link"
     },
     {
       "id": "de_DE-thorsten-high",
@@ -520,8 +520,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "selected",
-      "gateReason": "matched CC0"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted"
     },
     {
       "id": "de_DE-kerstin-low",
@@ -548,8 +548,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: CC0",
-      "status": "selected",
-      "gateReason": "matched CC0"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted"
     },
     {
       "id": "kokoro-if_sara",
@@ -774,8 +774,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: mit",
-      "status": "eligible",
-      "gateReason": "matched MIT"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: MeloTTS declares no training data, an unknown lineage link"
     },
     {
       "id": "melotts-zh",
@@ -802,8 +802,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: mit",
-      "status": "selected",
-      "gateReason": "matched MIT"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: MeloTTS declares no training data, an unknown lineage link"
     },
     {
       "id": "kokoro-zf_xiaobei",
@@ -896,8 +896,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: mit",
-      "status": "selected",
-      "gateReason": "matched MIT"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: MeloTTS declares no training data, an unknown lineage link"
     },
     {
       "id": "kokoro-af_heart",
@@ -990,8 +990,8 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: mit",
-      "status": "eligible",
-      "gateReason": "matched MIT"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: MeloTTS declares no training data, an unknown lineage link"
     },
     {
       "id": "vi_VN-vais1000-medium",
@@ -1018,8 +1018,439 @@
       },
       "declaredDataset": null,
       "declaredLicense": "* License: https://creativecommons.org/licenses/by/4.0/",
-      "status": "selected",
-      "gateReason": "matched creativecommons.org/licenses/by/4.0"
+      "status": "excluded",
+      "gateReason": "excluded by D-11: finetuned from a parent whose dataset is not allowlisted"
+    },
+    {
+      "id": "de_DE-mls_s1-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 1",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 1
+    },
+    {
+      "id": "de_DE-mls_s2-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 2",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 2
+    },
+    {
+      "id": "de_DE-mls_s3-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 3",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 3
+    },
+    {
+      "id": "de_DE-mls_s5-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 5",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 5
+    },
+    {
+      "id": "de_DE-mls_s8-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 8",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 8
+    },
+    {
+      "id": "de_DE-mls_s13-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 13",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 13
+    },
+    {
+      "id": "de_DE-mls_s21-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 21",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 21
+    },
+    {
+      "id": "de_DE-mls_s34-medium",
+      "language": "de",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 34",
+      "files": {
+        "model": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
+          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
+          "bytes": 76961079
+        },
+        "config": {
+          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
+          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
+          "bytes": 8948
+        },
+        "modelCard": {
+          "path": "de/de_DE/mls/medium/MODEL_CARD",
+          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
+          "bytes": 223
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "* License: CC-BY 4.0",
+      "status": "eligible",
+      "gateReason": null,
+      "engine": "piper",
+      "speaker": 34
+    },
+    {
+      "id": "fr_FR-mls_s1-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 1",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 1
+    },
+    {
+      "id": "fr_FR-mls_s2-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 2",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 2
+    },
+    {
+      "id": "fr_FR-mls_s3-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 3",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 3
+    },
+    {
+      "id": "fr_FR-mls_s5-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 5",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 5
+    },
+    {
+      "id": "fr_FR-mls_s8-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 8",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 8
+    },
+    {
+      "id": "fr_FR-mls_s13-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 13",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 13
+    },
+    {
+      "id": "fr_FR-mls_s21-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 21",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 21
+    },
+    {
+      "id": "fr_FR-mls_s34-medium",
+      "language": "fr",
+      "files": {
+        "model": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx"
+        },
+        "config": {
+          "path": "fr/fr_FR/mls/medium/fr_FR-mls-medium.onnx.json"
+        },
+        "modelCard": {
+          "path": "fr/fr_FR/mls/medium/MODEL_CARD"
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": null,
+      "engine": "piper",
+      "note": "D-11: Multilingual LibriSpeech, trained from scratch, speaker index 34",
+      "status": "eligible",
+      "gateReason": null,
+      "speaker": 34
+    },
+    {
+      "id": "kokoro-ff_siwis",
+      "engine": "kokoro",
+      "language": "fr",
+      "note": "Kokoro-82M French female, grade B-; trained on SIWIS (CC BY 4.0) per VOICES.md",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/ff_siwis.pt"
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0 | **Kokoro** is an open-weight TTS model with 82 million parameters. Despite its lightweight architecture, it delivers comparable quality to larger models while being significantly faster and more cost-efficient. With Apache-licensed weights, Kokoro can be deployed anywhere from production environments to personal projects. | > This is an Apache-licensed model, and Kokoro has been deployed in numerous projects and commercial APIs. We welcome the deployment of the model in real use cases. | - [Creative Commons Attribution](#creative-commons-attribution) | [Kokoro](/kˈOkəɹO/) is an open-weight TTS model with 82 million parameters. Despite its lightweight architecture, it delivers comparable quality to larger models while being significantly faster and more cost-efficient. With Apache-licensed weights, [Kokoro](/kˈOkəɹO/) can be deployed anywhere from production environments to personal projects. | - Public domain audio | - Audio licensed under Apache, MIT, etc | ### Creative Commons Attribution | The following CC BY audio was part of the dataset used to train Kokoro v1.0. | | Audio Data | Duration Used | License | Added to Training Set After | | | [Koniwa](https://github.com/koniwa/koniwa) `tnc` | <1h | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/deed.ja) | v0.19 / 22 Nov 2024 | | | [SIWIS](https://datashare.ed.ac.uk/handle/10283/2353) | <11h | [CC BY 4.0](https://datashare.ed.ac.uk/bitstream/handle/10283/2353/license_text) | v0.19 / 22 Nov 2024 |",
+      "status": "eligible",
+      "gateReason": null
     }
   ],
   "restoreAudioTargets": {

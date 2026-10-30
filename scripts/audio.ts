@@ -39,6 +39,7 @@ import { writeLanguageBaseline, writeManifestBaseline, writeSfxBaseline } from "
 import { buildPlugin } from "./lib/languages";
 import { licenseGate, packAssetKey, parseModelCard, registryLicenseFor, sfxScript, sha256File, technicalQa, type TechnicalQa } from "./lib/piper-audio";
 import { courseRolesFor, loadPacks } from "./lib/pipeline";
+import { engineLineageVerdict, piperLineageVerdict, registryIdFor, type LineageLink } from "./lib/voice-lineage";
 import { mergeManifestEntries, type ManifestEntry } from "./lib/audio-manifest";
 import { writeAudioSizeReport } from "./lib/audio-size";
 import { lexiconAudioStrings } from "./lib/lexicon-audio";
@@ -263,7 +264,10 @@ function gateVoice(voice: Voice, downloads: string): Record<string, unknown> {
   const { dataset, license } = parseModelCard(card.text);
   voice.declaredDataset = dataset;
   voice.declaredLicense = license;
-  const verdict = licenseGate(engines.licenseGate, card.text);
+  const licence = licenseGate(engines.licenseGate, card.text);
+  // D-11: the voice's own licence is not enough, every link of its lineage must pass.
+  const lineage = voice.engine === "piper" ? piperLineageVerdict(card.text) : engineLineageVerdict(voice.engine, engineLineage(voice.engine));
+  const verdict = licence.ok && !lineage.ok ? lineage : licence;
   voice.status = verdict.ok ? "eligible" : "excluded";
   voice.gateReason = verdict.ok ? `matched ${verdict.matched}` : verdict.reason;
   const dir = path.join(MODEL_CARDS_DIR, LANG);
@@ -664,10 +668,9 @@ function ownerChecklist(reportPath: string) {
 }
 
 /** The registry source id a voice is recorded under (Piper: one entry per dataset name, shared by its qualities). */
-function registryIdFor(voice: Voice): string {
-  if (voice.engine === "piper") return `piper-voice-${voice.files.model.path.split("/")[2]}`;
-  if (voice.engine === "kokoro") return `kokoro-voice-${voice.id.replace(/^kokoro-/, "")}`;
-  return `melotts-${voice.language}`;
+/** The declared lineage of an engine whose voices share one model (Kokoro, MeloTTS). */
+function engineLineage(engine: EngineId): LineageLink[] | undefined {
+  return engine === "piper" ? undefined : engines.engines[engine].lineage;
 }
 
 /** The committed model card of a voice (written at recon), or null. */
@@ -702,6 +705,7 @@ function registryEntryFor(voice: Voice, license: string, courseId: string, best:
       retrievedAt: today,
       covers: [`assets/audio/${voice.language}/`, `content/audio/model-cards/${voice.language}/${voice.id}.MODEL_CARD.txt`],
       notes: `Selected by the audio canary ASR audit (mean WER/CER ${best.meanWer} over ${best.clips} sampled strings, ${best.technicalFailures} technical failures). Model weights are never committed — only pins (content/audio/pack-audio-manifest.json), the model card and the generated MP3 assets.`,
+      lineage: [{ model: voice.id, dataset: voice.declaredDataset ?? `${name} (see model card)`, licence: license, url: `${engines.engines.piper.voicesRepository}/tree/${engines.engines.piper.voicesRevision}/${lang}/${locale}/${name}/${quality}` }],
     };
   }
   if (engine === "kokoro") {
@@ -715,6 +719,7 @@ function registryEntryFor(voice: Voice, license: string, courseId: string, best:
       retrievedAt: today,
       covers: [`assets/audio/${voice.language}/`, `content/audio/model-cards/${voice.language}/${voice.id}.card.txt`],
       notes: `Selected by the audio canary ASR audit (mean WER/CER ${best.meanWer} over ${best.clips} sampled strings, ${best.technicalFailures} technical failures). Model weights are never committed.`,
+      lineage: engineLineage("kokoro"),
     };
   }
   const model = engines.engines.melotts.models[voice.language];
@@ -728,6 +733,7 @@ function registryEntryFor(voice: Voice, license: string, courseId: string, best:
     retrievedAt: today,
     covers: [`assets/audio/${voice.language}/`, `content/audio/model-cards/${voice.language}/${voice.id}.card.txt`],
     notes: `Selected by the audio canary ASR audit (mean WER/CER ${best.meanWer} over ${best.clips} sampled strings, ${best.technicalFailures} technical failures). Model weights are never committed.`,
+    lineage: engineLineage("melotts"),
   };
 }
 

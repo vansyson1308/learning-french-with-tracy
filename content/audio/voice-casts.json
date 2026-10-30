@@ -3,20 +3,57 @@
   "note": "Voice cast per target language (P3b): the candidate voices the canary ASR audit compares (every candidate must pass the licence gate at recon), the selected cast {A: primary, B: second voice for dialogue / variety}, and the canary results. `status`: pending-canary (no run yet), selected, no-clean-voice (every candidate failed the gate or the intelligibility floor — recorded explicitly, the courses stay device-tts). Written by `scripts/audio.ts select`; never edited by hand except to add candidates. Cast rule (QC 2026-10-21): B must be a different speaker from A (Piper: voice name + model-card dataset URL; Kokoro: voice pack; or an explicit `speaker` on the candidate), preferably of the other gender (`gender` on the candidate, Kokoro from its id), within the same floor (mean WER/CER ≤ 0.6, no technical failure); unknown identity is never paired. `castNote` records why.",
   "languages": {
     "fr": {
-      "status": "selected",
+      "status": "pending-canary",
       "candidates": [
         {
-          "voiceId": "fr_FR-siwis-medium",
-          "engine": "piper"
+          "voiceId": "kokoro-ff_siwis",
+          "engine": "kokoro",
+          "gender": "female"
         },
         {
-          "voiceId": "fr_FR-upmc-medium",
-          "engine": "piper"
+          "voiceId": "fr_FR-mls_s1-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-1"
+        },
+        {
+          "voiceId": "fr_FR-mls_s2-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-2"
+        },
+        {
+          "voiceId": "fr_FR-mls_s3-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-3"
+        },
+        {
+          "voiceId": "fr_FR-mls_s5-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-5"
+        },
+        {
+          "voiceId": "fr_FR-mls_s8-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-8"
+        },
+        {
+          "voiceId": "fr_FR-mls_s13-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-13"
+        },
+        {
+          "voiceId": "fr_FR-mls_s21-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-21"
+        },
+        {
+          "voiceId": "fr_FR-mls_s34-medium",
+          "engine": "piper",
+          "speaker": "mls-fr-34"
         }
       ],
       "cast": {
-        "A": "fr_FR-siwis-medium",
-        "B": "fr_FR-upmc-medium"
+        "A": null,
+        "B": null
       },
       "canary": {
         "note": "Phase 7 / V1 publication canary (content/reports/reception-audio-canary.json, pack-audio-canary.json): siwis 0.184, upmc#1 0.197; French audio is frozen at pipelineVersion 1"
@@ -83,31 +120,52 @@
       "castNote": "A=kokoro-ef_dora (Kokoro voice pack ef_dora); B=kokoro-em_alex: different speaker (Kokoro voice pack em_alex), other gender (male vs female), mean WER/CER 0.1302 ≤ 0.6"
     },
     "de": {
-      "status": "selected",
+      "status": "pending-canary",
       "candidates": [
         {
-          "voiceId": "de_DE-thorsten-high",
+          "voiceId": "de_DE-mls_s1-medium",
           "engine": "piper",
-          "gender": "male"
+          "speaker": "mls-de-1"
         },
         {
-          "voiceId": "de_DE-thorsten-medium",
+          "voiceId": "de_DE-mls_s2-medium",
           "engine": "piper",
-          "gender": "male"
+          "speaker": "mls-de-2"
         },
         {
-          "voiceId": "de_DE-kerstin-low",
+          "voiceId": "de_DE-mls_s3-medium",
           "engine": "piper",
-          "gender": "female"
+          "speaker": "mls-de-3"
         },
         {
-          "voiceId": "de_DE-mls-medium",
-          "engine": "piper"
+          "voiceId": "de_DE-mls_s5-medium",
+          "engine": "piper",
+          "speaker": "mls-de-5"
+        },
+        {
+          "voiceId": "de_DE-mls_s8-medium",
+          "engine": "piper",
+          "speaker": "mls-de-8"
+        },
+        {
+          "voiceId": "de_DE-mls_s13-medium",
+          "engine": "piper",
+          "speaker": "mls-de-13"
+        },
+        {
+          "voiceId": "de_DE-mls_s21-medium",
+          "engine": "piper",
+          "speaker": "mls-de-21"
+        },
+        {
+          "voiceId": "de_DE-mls_s34-medium",
+          "engine": "piper",
+          "speaker": "mls-de-34"
         }
       ],
       "cast": {
-        "A": "de_DE-thorsten-high",
-        "B": "de_DE-kerstin-low"
+        "A": null,
+        "B": null
       },
       "canary": {
         "reportedAt": "2026-10-21",
@@ -280,12 +338,8 @@
       "castNote": "A=kokoro-jf_alpha (Kokoro voice pack jf_alpha); B=kokoro-jm_kumo: different speaker (Kokoro voice pack jm_kumo), other gender (male vs female), mean WER/CER 0.5026 ≤ 0.6"
     },
     "zh": {
-      "status": "selected",
+      "status": "pending-canary",
       "candidates": [
-        {
-          "voiceId": "melotts-zh",
-          "engine": "melotts"
-        },
         {
           "voiceId": "kokoro-zf_xiaobei",
           "engine": "kokoro"
@@ -296,8 +350,8 @@
         }
       ],
       "cast": {
-        "A": "melotts-zh",
-        "B": "kokoro-zm_yunjian"
+        "A": null,
+        "B": null
       },
       "canary": {
         "reportedAt": "2026-10-22",
@@ -326,15 +380,10 @@
       "castNote": "A=melotts-zh (MeloTTS melotts-zh speaker ZH); B=kokoro-zm_yunjian: different speaker (Kokoro voice pack zm_yunjian), gender male (no other-gender candidate within the floor), mean WER/CER 0.1475 ≤ 0.6"
     },
     "ko": {
-      "status": "selected",
-      "candidates": [
-        {
-          "voiceId": "melotts-ko",
-          "engine": "melotts"
-        }
-      ],
+      "status": "no-clean-voice",
+      "candidates": [],
       "cast": {
-        "A": "melotts-ko",
+        "A": null,
         "B": null
       },
       "canary": {
@@ -349,7 +398,8 @@
           }
         ]
       },
-      "castNote": "A=melotts-ko (MeloTTS melotts-ko speaker KR); no second voice: no other candidate is a verified different speaker within the floor"
+      "castNote": "A=melotts-ko (MeloTTS melotts-ko speaker KR); no second voice: no other candidate is a verified different speaker within the floor",
+      "reason": "D-11: MeloTTS, the only Korean engine in the pipeline, declares no training data; unknown link fails closed"
     },
     "en": {
       "status": "selected",
@@ -392,15 +442,10 @@
       "castNote": "A=kokoro-am_michael (Kokoro voice pack am_michael); B=kokoro-af_heart: different speaker (Kokoro voice pack af_heart), other gender (female vs male), mean WER/CER 0.1331 ≤ 0.6"
     },
     "vi": {
-      "status": "selected",
-      "candidates": [
-        {
-          "voiceId": "vi_VN-vais1000-medium",
-          "engine": "piper"
-        }
-      ],
+      "status": "no-clean-voice",
+      "candidates": [],
       "cast": {
-        "A": "vi_VN-vais1000-medium",
+        "A": null,
         "B": null
       },
       "canary": {
@@ -415,7 +460,8 @@
           }
         ]
       },
-      "castNote": "A=vi_VN-vais1000-medium (model card: voice vais1000, dataset ieee-dataport.org/documents/vais-1000-vietnamese-speech-synthesis-corpus); no second voice: no other candidate is a verified different speaker within the floor"
+      "castNote": "A=vi_VN-vais1000-medium (model card: voice vais1000, dataset ieee-dataport.org/documents/vais-1000-vietnamese-speech-synthesis-corpus); no second voice: no other candidate is a verified different speaker within the floor",
+      "reason": "D-11: vais1000 is finetuned from lessac; no Vietnamese audio ships today"
     }
   }
 }

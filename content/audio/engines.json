@@ -11,7 +11,7 @@
       "voicesRevision": "v1.0.0",
       "install": ["pip install \"piper-tts==1.2.0\""],
       "sampleRateHz": 22050,
-      "note": "Classic MIT engine (the GPL successor piper1-gpl is never used). Voice licences follow each voice's dataset (MODEL_CARD)."
+      "note": "Classic MIT engine (the GPL successor piper1-gpl is never used). Voice licences follow each voice's dataset (MODEL_CARD). D-11: a voice is eligible only when its card says it was trained from scratch; finetuned voices inherit from lessac or ryan, whose datasets are not allowlisted."
     },
     "kokoro": {
       "package": "kokoro",
@@ -28,6 +28,7 @@
       "install": ["pip install \"kokoro==0.9.4\" \"misaki[ja,zh]==0.9.4\" soundfile", "apt-get install -y espeak-ng"],
       "langCodes": { "en": "a", "es": "e", "fr": "f", "it": "i", "pt": "p", "ja": "j", "zh": "z", "hi": "h" },
       "sampleRateHz": 24000,
+      "lineage": [{ "model": "Kokoro-82M v1.0", "dataset": "Declared permissive or non-copyrighted audio; CC BY datasets listed on the card (French: SIWIS, CC BY 4.0)", "licence": "Apache-2.0", "url": "https://huggingface.co/hexgrad/Kokoro-82M", "quote": "Kokoro was trained exclusively on permissive/non-copyrighted audio data" }],
       "note": "Kokoro-82M (Apache-2.0, trained on permissive / non-copyrighted audio per the model card). Non-English G2P is thin (espeak-ng fallback for es/it/pt/fr); VOICES.md grades ja C+ / zh D — the canary audit decides. No Korean, no Vietnamese."
     },
     "melotts": {
@@ -47,6 +48,7 @@
       },
       "install": ["pip install \"git+https://github.com/myshell-ai/MeloTTS.git@209145371cff8fc3bd60d7be902ea69cbdb7965a\"", "python -m unidic download"],
       "sampleRateHz": 44100,
+      "lineage": [{ "model": "MeloTTS", "dataset": "Not declared on the model cards", "licence": "unknown", "url": "https://huggingface.co/myshell-ai/MeloTTS-Chinese" }],
       "note": "MeloTTS (MIT code, MIT model cards on Hugging Face). The only MIT engine with Japanese and Korean. Chinese is the mixed zh+en model."
     }
   },

@@ -1119,6 +1119,10 @@ export const SourceRegistrySchema = z.strictObject({
         testOnly: z.boolean().optional(),
         /** P3a: a build-time selection reference (anchor lists) whose data never ships; attributed in ATTRIBUTIONS.md only. */
         buildTimeOnly: z.boolean().optional(),
+        /** D-11: a voice's chain back to the first checkpoint; scripts/lib/voice-lineage.ts gates every link. */
+        lineage: z
+          .array(z.strictObject({ model: z.string().min(1), dataset: z.string().min(1), licence: z.string().min(1), url: z.string().min(1), quote: z.string().min(1).optional() }))
+          .optional(),
       })
     )
     .min(1),
