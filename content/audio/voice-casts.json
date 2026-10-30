@@ -3,7 +3,7 @@
   "note": "Voice cast per target language (P3b): the candidate voices the canary ASR audit compares (every candidate must pass the licence gate at recon), the selected cast {A: primary, B: second voice for dialogue / variety}, and the canary results. `status`: pending-canary (no run yet), selected, no-clean-voice (every candidate failed the gate or the intelligibility floor — recorded explicitly, the courses stay device-tts). Written by `scripts/audio.ts select`; never edited by hand except to add candidates. Cast rule (QC 2026-10-21): B must be a different speaker from A (Piper: voice name + model-card dataset URL; Kokoro: voice pack; or an explicit `speaker` on the candidate), preferably of the other gender (`gender` on the candidate, Kokoro from its id), within the same floor (mean WER/CER ≤ 0.6, no technical failure); unknown identity is never paired. `castNote` records why.",
   "languages": {
     "fr": {
-      "status": "pending-canary",
+      "status": "selected",
       "candidates": [
         {
           "voiceId": "kokoro-ff_siwis",
@@ -52,12 +52,70 @@
         }
       ],
       "cast": {
-        "A": null,
+        "A": "kokoro-ff_siwis",
         "B": null
       },
       "canary": {
-        "note": "Phase 7 / V1 publication canary (content/reports/reception-audio-canary.json, pack-audio-canary.json): siwis 0.184, upmc#1 0.197; French audio is frozen at pipelineVersion 1"
-      }
+        "reportedAt": "2026-10-30",
+        "report": "content/reports/audio-canary.json",
+        "voices": [
+          {
+            "voiceId": "kokoro-ff_siwis",
+            "clips": 26,
+            "meanWer": 0.1575,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "fr_FR-mls_s13-medium",
+            "clips": 26,
+            "meanWer": 2.1874,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "fr_FR-mls_s34-medium",
+            "clips": 26,
+            "meanWer": 2.9603,
+            "technicalFailures": 0
+          },
+          {
+            "voiceId": "fr_FR-mls_s8-medium",
+            "clips": 26,
+            "meanWer": 2.5046,
+            "technicalFailures": 1
+          },
+          {
+            "voiceId": "fr_FR-mls_s21-medium",
+            "clips": 26,
+            "meanWer": 2.7322,
+            "technicalFailures": 3
+          },
+          {
+            "voiceId": "fr_FR-mls_s1-medium",
+            "clips": 26,
+            "meanWer": 2.8732,
+            "technicalFailures": 4
+          },
+          {
+            "voiceId": "fr_FR-mls_s3-medium",
+            "clips": 26,
+            "meanWer": 2.972,
+            "technicalFailures": 4
+          },
+          {
+            "voiceId": "fr_FR-mls_s2-medium",
+            "clips": 26,
+            "meanWer": 3.2436,
+            "technicalFailures": 4
+          },
+          {
+            "voiceId": "fr_FR-mls_s5-medium",
+            "clips": 26,
+            "meanWer": 3.203,
+            "technicalFailures": 8
+          }
+        ]
+      },
+      "castNote": "A=kokoro-ff_siwis (Kokoro voice pack ff_siwis); no second voice: no other candidate is a verified different speaker within the floor; skipped fr_FR-mls_s13-medium (mean WER/CER 2.1874 > 0.6), fr_FR-mls_s34-medium (mean WER/CER 2.9603 > 0.6), fr_FR-mls_s8-medium (mean WER/CER 2.5046 > 0.6), fr_FR-mls_s21-medium (mean WER/CER 2.7322 > 0.6), fr_FR-mls_s1-medium (mean WER/CER 2.8732 > 0.6), fr_FR-mls_s3-medium (mean WER/CER 2.972 > 0.6), fr_FR-mls_s2-medium (mean WER/CER 3.2436 > 0.6), fr_FR-mls_s5-medium (mean WER/CER 3.203 > 0.6)"
     },
     "es": {
       "status": "selected",

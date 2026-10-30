@@ -73,9 +73,20 @@
     "fr-en": {
       "policy": "generated",
       "language": "fr",
-      "voiceId": "fr_FR-siwis-medium",
+      "voiceId": "kokoro-ff_siwis",
+      "candidates": [
+        "kokoro-ff_siwis",
+        "fr_FR-mls_s1-medium",
+        "fr_FR-mls_s2-medium",
+        "fr_FR-mls_s3-medium",
+        "fr_FR-mls_s5-medium",
+        "fr_FR-mls_s8-medium",
+        "fr_FR-mls_s13-medium",
+        "fr_FR-mls_s21-medium",
+        "fr_FR-mls_s34-medium"
+      ],
       "voiceCast": {
-        "A": "fr_FR-siwis-medium",
+        "A": "kokoro-ff_siwis",
         "B": null
       }
     },
@@ -1499,7 +1510,7 @@
       },
       "declaredDataset": null,
       "declaredLicense": "license: apache-2.0",
-      "status": "eligible",
+      "status": "selected",
       "gateReason": "matched Apache-2.0"
     }
   ],

@@ -1002,3 +1002,9 @@ A refactor must never appear in this file; only deliberate French changes do.
 ## 2026-10-30 — audio.yml fr recon (pack) run 41141864687
 
 - compile: new      content/reports/audio-recon.json
+
+## 2026-10-30 — audio.yml fr canary (pack) run 41142564235
+
+- compile: changed  ATTRIBUTIONS.md
+- compile: changed  src/content/attributions.json
+- compile: new      content/reports/audio-canary.json
