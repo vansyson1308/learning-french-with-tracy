@@ -205,6 +205,9 @@ jobs:
           profile: pixel_6
           disable-animations: true
           avd-name: ${{ env.AVD_NAME }}
+          # 37.2.12. Unpinned, the runner took 37.2.13 from 2026-10-29 20:42Z, and every
+          # API 30 emulator death since ran on it. Change this version deliberately only.
+          emulator-build: "16428233"
           emulator-options: ${{ env.EMULATOR_OPTIONS }}
           # Suite watchdog: 75 min, then SIGTERM (the script records the stop
           # and writes its report), SIGKILL 2 min later.

@@ -32,6 +32,8 @@ describe("device acceptance: emulator boot", () => {
     expect(lib.indexOf("settle_boot_locale\n  wait_healthy")).toBeGreaterThan(0);
     expect(wf).toContain("emulator-options: ${{ env.EMULATOR_OPTIONS }}");
     expect(wf).toContain("avd-name: ${{ env.AVD_NAME }}");
+    // A silent emulator update is what the API 30 deaths line up with.
+    expect(wf).toMatch(/emulator-build: "\d+"/);
   });
 
   test("health is checked before the app is installed, and every report carries the retry count", () => {
