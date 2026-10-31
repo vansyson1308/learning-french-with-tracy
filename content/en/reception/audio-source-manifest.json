@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "pipelineVersion": 3,
+  "storyPipelineVersion": 4,
+  "note": "Pinned TTS sources for the English reception audio (P4f): the two Kokoro-82M voices of the en-vi cast, with the same pins as the pack manifest; verified fail-closed on every run. Engines, licence gate and encoding live in content/audio/engines.json. Model weights are never committed.",
+  "engines": "content/audio/engines.json",
+  "voices": [
+    {
+      "id": "kokoro-af_heart",
+      "engine": "kokoro",
+      "language": "en",
+      "note": "Kokoro-82M American English female (Apache-2.0), grade A",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/af_heart.pt",
+          "sha256": "0ab5709b8ffab19bfd849cd11d98f75b60af7733253ad0d67b12382a102cb4ff",
+          "bytes": 523425
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker A — female voice for announcements, monologues and dialogue turns",
+      "multiSpeaker": false
+    },
+    {
+      "id": "kokoro-am_michael",
+      "engine": "kokoro",
+      "language": "en",
+      "note": "Kokoro-82M American English male (Apache-2.0), grade C+",
+      "speaker": null,
+      "files": {
+        "model": {
+          "path": "kokoro-v1_0.pth",
+          "sha256": "496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4",
+          "bytes": 327212226
+        },
+        "config": {
+          "path": "config.json",
+          "sha256": "5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f",
+          "bytes": 2351
+        },
+        "voiceFile": {
+          "path": "voices/am_michael.pt",
+          "sha256": "9a443b79a4b22489a5b0ab7c651a0bcd1a30bef675c28333f06971abbd47bd37",
+          "bytes": 523435
+        },
+        "modelCard": {
+          "path": "README.md",
+          "sha256": "91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78",
+          "bytes": 6348
+        }
+      },
+      "declaredDataset": null,
+      "declaredLicense": "license: apache-2.0",
+      "status": "selected",
+      "gateReason": "matched Apache-2.0",
+      "role": "speaker B — male voice for the second speaker of dialogues",
+      "multiSpeaker": false
+    }
+  ],
+  "excludedVoices": []
+}
