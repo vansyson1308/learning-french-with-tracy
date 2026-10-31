@@ -14,6 +14,7 @@
  *                  material once everything is known).
  */
 
+import { STORY_BANDS } from "./bands";
 import type { CompiledStory } from "./content";
 
 export const STORY_TARGET_MIN_UNKNOWN = 3;
@@ -32,7 +33,7 @@ export function unknownLexemes(story: Pick<CompiledStory, "lexemes">, cards: Car
   return story.lexemes.filter((id) => !isKnownLexeme(cards, id));
 }
 
-const BAND_ORDER = ["A1-0", "A1-1", "A1-2", "A2-1", "A2-2"];
+const BAND_ORDER: readonly string[] = STORY_BANDS;
 
 /** Every story with its unknown words and reason, in recommendation order. */
 export function rankStories(stories: readonly CompiledStory[], cards: Cards): StoryPick[] {

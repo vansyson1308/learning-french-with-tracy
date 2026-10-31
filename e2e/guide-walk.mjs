@@ -285,7 +285,10 @@ try {
   await attempt(18, "Writing practice — Your French answer, Check, named feedback", async () => {
     await go("/practice");
     await byId("practice-writing").click();
-    await byId("writing-input").first().fill("Bonjour, je m'appelle Léa et j'habite à Paris.");
+    // The day seeds the task order, so the first task is guided writing or a form.
+    const fields = page.locator('[data-testid="writing-input"], [data-testid^="form-field-"]');
+    await fields.first().waitFor();
+    for (const field of await fields.all()) await field.fill("Bonjour, je m'appelle Léa et j'habite à Paris.");
     await byId("session-check").click();
     const feedback = byId("session-feedback").first();
     await feedback.waitFor();
@@ -332,7 +335,7 @@ try {
   // ---- §23 §24 §25 goals ------------------------------------------------------
   await attempt(23, "CEFR-aligned A1 estimate — five skills with authored denominators", async () => {
     await go("/goals");
-    await see(t("goals.estimateLabel"));
+    await see(t("goals.estimateLabel", { level: "A1" }));
     const chip = await byId("a1-domain-chip-spoken_reception").textContent();
     if (!new RegExp(`${t("domain.spoken_reception")}\\s*\\d/\\d`).test(chip ?? "")) throw new Error(`chip "${chip}"`);
     await see(new RegExp(`${t("goals.estimateIncomplete")}|${t("goals.estimateDemonstrated")}`));

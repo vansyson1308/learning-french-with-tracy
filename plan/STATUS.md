@@ -2,8 +2,8 @@
 
 > **Ghi chú (2026-10-31):**
 > - **QC-2026-10-31 (D-11 đến D-14):** thứ tự mới: it-vi → `audio/voice-lineage` → emulator-boot-hardening (đã merge #55) → P4f en-vi + VSTEP → P4b → ja → ko → zh → pt → P5 → P6a → v1.0. Gate lineage đã viết trên `audio/voice-lineage` (chưa push). Ngoài ba giọng QC nêu, gate còn đụng `fr_FR-upmc`, `vi_VN-vais1000`, audio `pt-en` cũ (`faber`) và MeloTTS. **Tiếng Hàn hiện không còn giọng sạch.**
-> - **D-14:** đã rà soát engine, có 5 chỗ cản việc lên A2+ (ước lượng, màn Mục tiêu, syllabus, band truyện, giới hạn xếp lớp); chưa sửa. Lỗi link capstone trên màn Mục tiêu đã sửa trong PR it-vi.
-> - **P3d(it):** nội dung, duyệt D-10 và audio xong, PR đang chạy CI. Xem `plan/reports/P3d-it.md`.
+> - **D-14:** `plan/09-ROADMAP-BEYOND-A1.md` đã viết; 5 chỗ cản lên A2+ đã sửa, có test, trên `plan/beyond-a1`. Phần còn phải làm khi bắt đầu A2 ghi trong tài liệu đó.
+> - **PR #56 (it-vi) đã merge (4190d82):** 22/22 check xanh, cả 6 shard thiết bị. Xem `plan/reports/P3d-it.md`.
 >
 > **Ghi chú (2026-10-30, đêm):**
 > - **PR #55 đã merge (a1302eb):** ghim emulator 37.2.12 và kiểm tra sức khỏe trước khi cài app (lỗi thì wipe và khởi động lại đúng một lần, ghi số lần vào báo cáo). Khác với quyết định của điều phối viên ở một điểm: `-change-locale` và `-prop` không dùng được, nên vẫn đặt locale rồi restart, nhưng bước này chạy trong kiểm tra sức khỏe. Bằng chứng ở PR #55. Việc ghim phiên bản có tác dụng hay không chỉ biết được sau nhiều lần chạy.
@@ -87,7 +87,7 @@
   - Stories: 43 (40 A2-1 + 3 A1-2); `plan/STORIES-PLAN.md` for es/fr top-ups.
 
   Content: 6 sections / 27 units / 108 lessons / 704 exercises (all 15 types, concept steps in 25 lessons, 23 of 23 cards shown), 35 objectives, 23 concepts + 12 paradigms, 1,288 lexemes (vi; A1 syllabus 690), 40 readings, 244 clips, 54 speech / 36 writing / 22 scenarios, 7 checkpoints, 28-item placement, Goethe A1 practice 2 forms × 35 items; Tier-1 review files vi 378 / de 309 lines; back-translation 5,043 pairs (`content/de/_drafts/BACKTRANSLATION.md`). Report `plan/reports/P3d-de.md` |
-| P3d(it) | it-vi + CILS A1 | `phase-4/it-vi` | PR open; see `plan/reports/P3d-it.md` | | |
+| P3d(it) | it-vi + CILS A1 | `phase-4/it-vi` | merged, PR #56 (4190d82); see `plan/reports/P3d-it.md` | | |
 | P3d(pt) | pt-vi + CAPLE A1 | – | not started | | |
 | P4b | CJK plugins + Hán-Việt readings (Unihan kVietnamese + reviewed overrides) | – | not started | | |
 | P4c | ja-vi + JLPT N5 | – | not started | | |

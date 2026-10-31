@@ -117,8 +117,9 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
 
   // P9 §45-§49: the claim split. Course claimability is a compiled fact;
   // the learner's estimate derives from their own checkpoint evidence.
-  const courseReady = courseClaimableAt(courseId, "A1");
-  const capstoneId = capstoneCheckpointId(courseId);
+  const level = attainmentPolicy(courseId).level;
+  const courseReady = courseClaimableAt(courseId, level);
+  const capstoneId = capstoneCheckpointId(courseId, level);
   // Device speech capability is a fact about the device, shown as such
   // (Phase 10 §15): a speech domain with no evidence on a device that
   // cannot score speech reads "technical_unavailable", never a verdict.
@@ -165,7 +166,7 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.overallCard} testID="overall-level-card">
-          <Text style={styles.overallLabel} testID="a1-estimate-label">{t("goals.estimateLabel")}</Text>
+          <Text style={styles.overallLabel} testID="a1-estimate-label">{t("goals.estimateLabel", { level })}</Text>
           <Text style={styles.overallValue} testID="a1-estimate-value">
             {estimate.overall === "demonstrated" ? t("goals.estimateDemonstrated") : t("goals.estimateIncomplete")}
           </Text>
@@ -173,7 +174,7 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
             <Text style={styles.overallNote}>
               {estimate.overall === "demonstrated"
                 ? t("goals.noteDemonstrated")
-                : t("goals.noteIncomplete", { domains: estimate.missingDomains.map((d) => t(`domain.${d}`)) })}
+                : t("goals.noteIncomplete", { level, domains: estimate.missingDomains.map((d) => t(`domain.${d}`)) })}
             </Text>
           ) : (
             <Text style={styles.overallNote}>{t("goals.noteCourseNotReady")}</Text>
@@ -228,12 +229,12 @@ function GoalsScreenBody({ courseId }: { courseId: string }) {
             <Pressable
               onPress={() => router.push(`/checkpoint/${capstoneId}`)}
               accessibilityRole="button"
-              accessibilityLabel={t("goals.takeA1Label")}
+              accessibilityLabel={t("goals.takeA1Label", { level })}
               style={styles.linkRow}
               testID="capstone-link"
             >
               <Ionicons name="school" size={16} color={colors.skyDark} />
-              <Text style={[styles.linkText, { color: colors.skyDark }]}>{t("goals.takeA1")}</Text>
+              <Text style={[styles.linkText, { color: colors.skyDark }]}>{t("goals.takeA1", { level })}</Text>
             </Pressable>
           ) : null}
           <Pressable
