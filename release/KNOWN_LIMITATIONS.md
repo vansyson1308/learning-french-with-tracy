@@ -102,6 +102,17 @@ itself.
   older `es-en` course is marked `"role": "standalone"`: it keeps its
   40 legacy lessons and its English dictionary but none of the new layers,
   and Spanish level claims and reports count only against `es-vi`.
+- **`en-vi` (English for Vietnamese speakers, P4f) ships unreviewed**, on the same
+  terms as `it-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
+  `content/courses/en-vi.profile.json`. All Vietnamese in the course is AI-written, and
+  no native speaker has read the Vietnamese or the English yet. The rest is covered by
+  the validators and the English gates (a/an by sound, third-person -s, do-support,
+  *very* before a verb, object pronouns as subjects, uncountable nouns). Level results
+  are estimates aligned to CEFR, not certificates. The course claims no exam result: the
+  only planned track models the bậc 2 format of QĐ 1481/QĐ-BGDĐT, which is above what
+  this A1 course teaches, and it is not VSTEP (`plan/authoring/en-plan.md`). There is
+  no `articleSelect` drill in this course: English declares no gendered articles, so
+  a/an/the are practised as fill-in-the-blank.
 - **`it-vi` (Italian for Vietnamese speakers, P3d(it)) ships unreviewed**, on the
   same terms as `de-vi`: `allowUnreviewed: true` and `betaUntilReviewed` in
   `content/courses/it-vi.profile.json`. The owner signs

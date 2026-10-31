@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# en-vi steps 1-3 and 5-7: regenerate the drafts and ingest them through the toolkit. Byte-deterministic.
+# en-vi steps 1-7: regenerate the drafts and ingest them through the toolkit. Byte-deterministic.
 # Everything lands in the staged layer (content/en/_drafts/staged/) until `author.ts promote`; the draft pack is
-# content/en/_drafts/pack.json, and a copy of it is the staged content/courses/en-vi.json skeleton until the lessons step
-# writes the real one. Run from anywhere: bash content/en/_drafts/_generators/en-pipeline.sh
+# content/en/_drafts/pack.json. While it has no lessons a copy of it is the staged content/courses/en-vi.json skeleton; the
+# lessons step at the end writes the real one. Run from anywhere: bash content/en/_drafts/_generators/en-pipeline.sh
 set -euo pipefail
 export PATH="$HOME/.bun/bin:$PATH"
 cd "$(dirname "$0")/../../../.."
@@ -35,3 +35,11 @@ bun scripts/author.ts ingest readings --target en --native vi
 bun scripts/author.ts ingest speech --target en --native vi
 bun scripts/author.ts ingest writing --target en --native vi
 bun scripts/author.ts ingest scenarios --target en --native vi
+# Lessons: s1 starts lessons/OUTPUT.jsonl, s2 and s3 append. The ingest writes the staged course, which now loads, so its exit
+# status also counts what later steps still owe (audio, checkpoints, placement, exam): en-draft.ts validate reports those.
+# Only a record that failed the schema stops the pipeline here.
+python -I "$G/en-lessons-s1.py" .
+python -I "$G/en-lessons-s2.py" .
+python -I "$G/en-lessons-s3.py" .
+bun scripts/author.ts ingest lessons --target en --native vi || true
+grep -q "failed: 0 ·" content/en/_drafts/lessons/REPORT.md
