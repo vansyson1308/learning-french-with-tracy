@@ -1421,7 +1421,7 @@ export const placementSchema = (lang: string) =>
      * earlier cluster is comfortable AND the device can do scored speech —
      * the common path stays the same length as v2.
      */
-    maxItems: z.number().int().min(1).max(28),
+    maxItems: z.number().int().min(1).max(60),
     /** Recommendation when every probed cluster is comfortable. */
     allComfortableLessonId: z.string().min(1),
     stages: z.array(placementStageSchema(lang)).min(1),
@@ -1563,7 +1563,7 @@ export type Listening = z.infer<typeof ListeningSchema>;
  * A1-0 (QC 2026-10-30 §2.2): micro-stories for the first days, from the
  * words the primary course teaches in its units 1–3.
  */
-export const STORY_BANDS = ["A1-0", "A1-1", "A1-2", "A2-1", "A2-2"] as const;
+export const STORY_BANDS = ["A1-0", "A1-1", "A1-2", "A2-1", "A2-2", "B1-1", "B1-2", "B2-1", "B2-2"] as const;
 export type StoryBand = (typeof STORY_BANDS)[number];
 
 /** N = narrator; A/B = the two dialogue voices (a story may be narration only). */

@@ -241,15 +241,21 @@ export function lexemeBands(
   const bands = new Map<string, StoryBand>();
   // QC 2026-10-30 §2.2: the words of the course's first units are band A1-0.
   for (const id of micro) bands.set(id, "A1-0");
-  const level = syllabus.level.toUpperCase();
-  const half = Math.ceil(syllabus.entries.length / 2);
-  syllabus.entries.forEach((e, i) => {
-    const band = `${level}-${i < half ? 1 : 2}`;
-    if (!bands.has(e.lexemeId) && (STORY_BANDS as readonly string[]).includes(band)) bands.set(e.lexemeId, band as StoryBand);
-  });
-  const laterBand = later?.level.toUpperCase();
-  if (later && laterBand && (STORY_BANDS as readonly string[]).includes(laterBand)) {
-    for (const e of later.entries) if (!bands.has(e.lexemeId)) bands.set(e.lexemeId, laterBand as StoryBand);
+  const assign = (id: string, band: string) => {
+    if (bands.has(id)) return;
+    if (!(STORY_BANDS as readonly string[]).includes(band)) throw new Error(`syllabus band ${band} is not in STORY_BANDS`);
+    bands.set(id, band as StoryBand);
+  };
+  const byHalves = (list: Pick<Syllabus, "level" | "entries">) => {
+    const half = Math.ceil(list.entries.length / 2);
+    const level = list.level.toUpperCase();
+    list.entries.forEach((e, i) => assign(e.lexemeId, `${level}-${i < half ? 1 : 2}`));
+  };
+  byHalves(syllabus);
+  if (later) {
+    // A later list names one band ("A2-1") or a whole level ("A2"), which splits like the first.
+    if (/-\d$/.test(later.level)) for (const e of later.entries) assign(e.lexemeId, later.level.toUpperCase());
+    else byHalves(later);
   }
   return bands;
 }

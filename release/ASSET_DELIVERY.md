@@ -195,6 +195,9 @@ The es and de audio runs render the `.opus` files. Their sizes and
   the device voice (P7 §25–26).
 - **Lexicon example sentences:** the device voice, as since P3f.
 
+## Audio beyond A1 (D-14, QC 2026-10-31)
+A2 and later content does not fit the per-language cap: it-vi alone is 10.3 MB of 12 MB at A1. A2+ will need per-level packs or the device voice. Decide when A2 starts, not now (`plan/09-ROADMAP-BEYOND-A1.md`).
+
 ## Post-v1.0 option: per-language asset packs (not scheduled)
 Revisit only after v1.0 ships, and not before P3d(it). It becomes relevant
 when the store build should carry more story audio than band 1 within the
