@@ -9,216 +9,239 @@
     "kokoro": {
       "pinnedVersion": "0.9.4"
     },
+    "parler": {
+      "pinnedVersion": "d108732cd57788ec86bc857d99a6cabd66663d68"
+    },
     "melotts": {
       "pinnedVersion": "209145371cff8fc3bd60d7be902ea69cbdb7965a"
     }
   },
   "voices": [
     {
-      "voice": "de_DE-mls_s1-medium",
-      "engine": "piper",
+      "voice": "parler-de-nicole",
+      "engine": "parler",
       "language": "de",
       "dataset": null,
-      "license": "* License: CC-BY 4.0",
+      "license": "license: apache-2.0",
       "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
+      "gateReason": "matched Apache-2.0",
       "files": {
         "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
+          "path": "model.safetensors",
+          "sha256": "79c64e3705e0ccce122988c7817f0d65efa3fd37625906d90765858bdab38412",
+          "bytes": 3751321772
         },
         "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
+          "path": "config.json",
+          "sha256": "06d4cb727521542cab6b26d3ad1c8517d51fd1f551600ec67a59575364e221c6",
+          "bytes": 7467
+        },
+        "generationConfig": {
+          "path": "generation_config.json",
+          "sha256": "3bb518e78ea5f32fbbcfc7f0aaed388e7aefede474d2bf4b8cf4502fd6b27a92",
+          "bytes": 218
+        },
+        "preprocessorConfig": {
+          "path": "preprocessor_config.json",
+          "sha256": "c7d295758ce5777d6d88fef1996e94adc8ef3e2237ddfc5ecc24d1407aaddd7d",
+          "bytes": 206
+        },
+        "specialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f",
+          "bytes": 552
+        },
+        "tokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de",
+          "bytes": 10272460
+        },
+        "tokenizerModel": {
+          "path": "tokenizer.model",
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5",
+          "bytes": 1795391
+        },
+        "tokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f",
+          "bytes": 990
         },
         "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
+          "path": "README.md",
+          "sha256": "c4e8c77218ed982b11e5356f5549b62fbaca3072ecfe78def475c0396ac72530",
+          "bytes": 9934
+        },
+        "descTokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a",
+          "bytes": 2424064
+        },
+        "descTokenizerModel": {
+          "path": "spiece.model",
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+          "bytes": 791656
+        },
+        "descTokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56",
+          "bytes": 2539
+        },
+        "descSpecialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+          "bytes": 2201
         }
       }
     },
     {
-      "voice": "de_DE-mls_s2-medium",
-      "engine": "piper",
+      "voice": "parler-de-michelle",
+      "engine": "parler",
       "language": "de",
       "dataset": null,
-      "license": "* License: CC-BY 4.0",
+      "license": "license: apache-2.0",
       "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
+      "gateReason": "matched Apache-2.0",
       "files": {
         "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
+          "path": "model.safetensors",
+          "sha256": "79c64e3705e0ccce122988c7817f0d65efa3fd37625906d90765858bdab38412",
+          "bytes": 3751321772
         },
         "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
+          "path": "config.json",
+          "sha256": "06d4cb727521542cab6b26d3ad1c8517d51fd1f551600ec67a59575364e221c6",
+          "bytes": 7467
+        },
+        "generationConfig": {
+          "path": "generation_config.json",
+          "sha256": "3bb518e78ea5f32fbbcfc7f0aaed388e7aefede474d2bf4b8cf4502fd6b27a92",
+          "bytes": 218
+        },
+        "preprocessorConfig": {
+          "path": "preprocessor_config.json",
+          "sha256": "c7d295758ce5777d6d88fef1996e94adc8ef3e2237ddfc5ecc24d1407aaddd7d",
+          "bytes": 206
+        },
+        "specialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f",
+          "bytes": 552
+        },
+        "tokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de",
+          "bytes": 10272460
+        },
+        "tokenizerModel": {
+          "path": "tokenizer.model",
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5",
+          "bytes": 1795391
+        },
+        "tokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f",
+          "bytes": 990
         },
         "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
+          "path": "README.md",
+          "sha256": "c4e8c77218ed982b11e5356f5549b62fbaca3072ecfe78def475c0396ac72530",
+          "bytes": 9934
+        },
+        "descTokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a",
+          "bytes": 2424064
+        },
+        "descTokenizerModel": {
+          "path": "spiece.model",
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+          "bytes": 791656
+        },
+        "descTokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56",
+          "bytes": 2539
+        },
+        "descSpecialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+          "bytes": 2201
         }
       }
     },
     {
-      "voice": "de_DE-mls_s3-medium",
-      "engine": "piper",
+      "voice": "parler-de-christopher",
+      "engine": "parler",
       "language": "de",
       "dataset": null,
-      "license": "* License: CC-BY 4.0",
+      "license": "license: apache-2.0",
       "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
+      "gateReason": "matched Apache-2.0",
       "files": {
         "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
+          "path": "model.safetensors",
+          "sha256": "79c64e3705e0ccce122988c7817f0d65efa3fd37625906d90765858bdab38412",
+          "bytes": 3751321772
         },
         "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
+          "path": "config.json",
+          "sha256": "06d4cb727521542cab6b26d3ad1c8517d51fd1f551600ec67a59575364e221c6",
+          "bytes": 7467
+        },
+        "generationConfig": {
+          "path": "generation_config.json",
+          "sha256": "3bb518e78ea5f32fbbcfc7f0aaed388e7aefede474d2bf4b8cf4502fd6b27a92",
+          "bytes": 218
+        },
+        "preprocessorConfig": {
+          "path": "preprocessor_config.json",
+          "sha256": "c7d295758ce5777d6d88fef1996e94adc8ef3e2237ddfc5ecc24d1407aaddd7d",
+          "bytes": 206
+        },
+        "specialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "4859e5dbde90e059988a0a2136d8df3f2773d4d2fc4c4543690028f0b2166e7f",
+          "bytes": 552
+        },
+        "tokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "8b5f3a5080f95e5333930b57181cd2a9bf387632bd7b277af5d4fea59acb58de",
+          "bytes": 10272460
+        },
+        "tokenizerModel": {
+          "path": "tokenizer.model",
+          "sha256": "bc8fa773221597d09cfadb23a2b1bd717488a0481505469ea56d42cb044de9b5",
+          "bytes": 1795391
+        },
+        "tokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "47baa70cba964a32daa581a4af50b4f2c77edaa18bec2257660133ab204ca36f",
+          "bytes": 990
         },
         "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
-        }
-      }
-    },
-    {
-      "voice": "de_DE-mls_s5-medium",
-      "engine": "piper",
-      "language": "de",
-      "dataset": null,
-      "license": "* License: CC-BY 4.0",
-      "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
-      "files": {
-        "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
+          "path": "README.md",
+          "sha256": "c4e8c77218ed982b11e5356f5549b62fbaca3072ecfe78def475c0396ac72530",
+          "bytes": 9934
         },
-        "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
+        "descTokenizer": {
+          "path": "tokenizer.json",
+          "sha256": "fe2ebbbbde2985be723e0ce18217853e4020c5e9d35bd07be2c27ab9d3ead57a",
+          "bytes": 2424064
         },
-        "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
-        }
-      }
-    },
-    {
-      "voice": "de_DE-mls_s8-medium",
-      "engine": "piper",
-      "language": "de",
-      "dataset": null,
-      "license": "* License: CC-BY 4.0",
-      "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
-      "files": {
-        "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
+        "descTokenizerModel": {
+          "path": "spiece.model",
+          "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+          "bytes": 791656
         },
-        "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
+        "descTokenizerConfig": {
+          "path": "tokenizer_config.json",
+          "sha256": "5d19985330a9123285cc583fc60616d083aa9df7435812b5d8bb3e749f435d56",
+          "bytes": 2539
         },
-        "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
-        }
-      }
-    },
-    {
-      "voice": "de_DE-mls_s13-medium",
-      "engine": "piper",
-      "language": "de",
-      "dataset": null,
-      "license": "* License: CC-BY 4.0",
-      "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
-      "files": {
-        "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
-        },
-        "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
-        },
-        "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
-        }
-      }
-    },
-    {
-      "voice": "de_DE-mls_s21-medium",
-      "engine": "piper",
-      "language": "de",
-      "dataset": null,
-      "license": "* License: CC-BY 4.0",
-      "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
-      "files": {
-        "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
-        },
-        "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
-        },
-        "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
-        }
-      }
-    },
-    {
-      "voice": "de_DE-mls_s34-medium",
-      "engine": "piper",
-      "language": "de",
-      "dataset": null,
-      "license": "* License: CC-BY 4.0",
-      "status": "eligible",
-      "gateReason": "matched CC BY 4.0",
-      "files": {
-        "model": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx",
-          "sha256": "69cd1d2aa5a35839a518966fcc4924b5f93e5f8c948ed0752b1a616ad53f65bf",
-          "bytes": 76961079
-        },
-        "config": {
-          "path": "de/de_DE/mls/medium/de_DE-mls-medium.onnx.json",
-          "sha256": "b0af1c89ddfdc72d32e015729b0e89b99eec13c2c8caa1db7488d98e9e570b40",
-          "bytes": 8948
-        },
-        "modelCard": {
-          "path": "de/de_DE/mls/medium/MODEL_CARD",
-          "sha256": "ca1bf03a3c287fb6968acfa010e1917f85f0aa59db0f371efc3a2857f4035ffd",
-          "bytes": 223
+        "descSpecialTokens": {
+          "path": "special_tokens_map.json",
+          "sha256": "5c87151ef0f72a99d1f766a4c418bd2a1f90aaa30a8e22fe5eca9641daebb64f",
+          "bytes": 2201
         }
       }
     }
