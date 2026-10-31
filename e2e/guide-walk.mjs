@@ -285,7 +285,10 @@ try {
   await attempt(18, "Writing practice — Your French answer, Check, named feedback", async () => {
     await go("/practice");
     await byId("practice-writing").click();
-    await byId("writing-input").first().fill("Bonjour, je m'appelle Léa et j'habite à Paris.");
+    // The day seeds the task order, so the first task is guided writing or a form.
+    const fields = page.locator('[data-testid="writing-input"], [data-testid^="form-field-"]');
+    await fields.first().waitFor();
+    for (const field of await fields.all()) await field.fill("Bonjour, je m'appelle Léa et j'habite à Paris.");
     await byId("session-check").click();
     const feedback = byId("session-feedback").first();
     await feedback.waitFor();

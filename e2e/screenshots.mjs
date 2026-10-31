@@ -96,7 +96,10 @@ try {
 
     await go("/practice");
     await byId("practice-writing").click();
-    await byId("writing-input").first().fill("Bonjour, je m'appelle Léa.");
+    // The day seeds the task order, so the first task is guided writing or a form.
+    const fields = page.locator('[data-testid="writing-input"], [data-testid^="form-field-"]');
+    await fields.first().waitFor();
+    for (const field of await fields.all()) await field.fill("Bonjour, je m'appelle Léa.");
     await byId("session-check").click();
     await byId("session-feedback").first().waitFor();
     await shot("06-writing");

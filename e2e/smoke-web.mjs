@@ -104,7 +104,7 @@ try {
   // 3. Goals: estimate card, per-domain n/m chips, capstone link, limit explainer.
   await page.goto(`${BASE}/goals`, { waitUntil: "networkidle" });
   const estimateLabel = (await byId("a1-estimate-label").textContent())?.trim();
-  check("goals: estimate label in the UI language", estimateLabel === t("goals.estimateLabel"), `"${estimateLabel}"`);
+  check("goals: estimate label in the UI language", estimateLabel === t("goals.estimateLabel").replace("{level}", "A1"), `"${estimateLabel}"`);
   await byId("a1-domain-chips").waitFor();
   const listeningChip = await byId("a1-domain-chip-spoken_reception").innerText();
   const listeningName = t("domain.spoken_reception");
@@ -125,8 +125,10 @@ try {
 
   // 5. Writing practice grades a submission honestly.
   await byId("practice-writing").click();
-  await byId("writing-input").first().waitFor();
-  await byId("writing-input").first().fill("bonjour");
+  // The day seeds the task order, so the first task is guided writing or a form.
+  const writingFields = page.locator('[data-testid="writing-input"], [data-testid^="form-field-"]');
+  await writingFields.first().waitFor();
+  for (const field of await writingFields.all()) await field.fill("bonjour");
   await byId("session-check").click();
   await page.waitForTimeout(400);
   const feedback = await byId("session-feedback").first().textContent().catch(() => null);
