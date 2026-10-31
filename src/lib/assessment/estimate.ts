@@ -91,7 +91,8 @@ export type DomainEstimate = {
 };
 
 export type A1Estimate = {
-  level: "A1";
+  /** The level the attainment policy is written for. */
+  level: string;
   /** Whether the COURSE can assess A1 at all (compiled claim gate). */
   courseClaimable: boolean;
   domains: DomainEstimate[];
@@ -147,7 +148,7 @@ export function deriveA1Estimate(input: {
     .filter((d) => d.status !== "demonstrated")
     .map((d) => d.domain);
   return {
-    level: "A1",
+    level: input.policy.level,
     courseClaimable: input.courseClaimable,
     domains,
     overall:
