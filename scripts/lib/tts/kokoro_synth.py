@@ -14,6 +14,20 @@ import os
 import sys
 
 
+def trim_edges(audio, rate, np):
+    """Cut leading and trailing silence, keeping a short pad."""
+    window = max(1, rate // 100)
+    usable = (audio.size // window) * window
+    if usable == 0:
+        return audio
+    energy = np.abs(audio[:usable]).reshape(-1, window).max(axis=1)
+    loud = np.nonzero(energy > energy.max() * 0.02)[0]
+    if loud.size == 0:
+        return audio
+    pad = int(0.08 * rate)
+    return audio[max(0, loud[0] * window - pad) : min(audio.size, (loud[-1] + 1) * window + pad)]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--lang-code", required=True, help="Kokoro language code (a=en-US, e=es, f=fr, i=it, p=pt-BR, j=ja, z=zh)")
@@ -22,6 +36,7 @@ def main() -> int:
     ap.add_argument("--voice", required=True, help="voice .pt file (pinned)")
     ap.add_argument("--jobs", required=True)
     ap.add_argument("--speed", type=float, default=1.0)
+    ap.add_argument("--trim-edges", action="store_true", help="cut edge silence (voices that leave a long one)")
     args = ap.parse_args()
 
     os.environ.setdefault("HF_HUB_OFFLINE", "1")
@@ -48,7 +63,8 @@ def main() -> int:
             if not chunks:
                 print(f"kokoro: no audio for {job['out']}", file=sys.stderr)
                 return 1
-            sf.write(job["out"], np.concatenate(chunks), 24000)
+            audio = np.concatenate(chunks)
+            sf.write(job["out"], trim_edges(audio, 24000, np) if args.trim_edges else audio, 24000)
             done += 1
     print(f"kokoro: synthesized {done} jobs")
     return 0
