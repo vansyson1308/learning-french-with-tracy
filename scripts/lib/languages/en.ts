@@ -1,5 +1,5 @@
 /**
- * English build plugin (P4 en-vi): no gendered articles, the paradigm of regular
+ * English build plugin (P4 en-vi): articles without gender, the paradigm of regular
  * and irregular verbs evidenced by the committed kaikki morphology rows, function
  * words, story endings and the English course gates. Spelling rules: en-morph.ts.
  * Regular verb forms reach the story resolver through the morphology evidence;
@@ -14,7 +14,10 @@ import { readJson, safeResolve } from "../pipeline";
 import { collectTargetText, englishCourseErrors, FREE_TEXT_FILES, loadEnglishGateData, scenarioLines, scenarioRegisterErrors, targetTextErrors } from "./en-gates";
 import { englishGroupRules } from "./en-morph";
 import { genericPlugin } from "./generic";
-import type { BuildLanguagePlugin, MorphVerb, ParadigmSpec } from "./types";
+import type { ArticleRules, BuildLanguagePlugin, MorphVerb, ParadigmSpec } from "./types";
+
+/** Which articles a drill may offer. a/an follows the next word's sound: the a-an gate (en-gates.ts) reads every drill's keyed phrase. */
+export const EN_ARTICLES: ArticleRules = { gender: {}, neutral: ["a", "an", "the"], genderless: true };
 
 export const EN_PARADIGM_CELLS = ["inf", "pre:1s", "pre:2s", "pre:3s", "pre:1p", "pre:2p", "pre:3p", "pas:s", "pas:p", "participle", "ing"] as const;
 
@@ -67,6 +70,7 @@ export const en: BuildLanguagePlugin = genericPlugin(
   { code: "en", recognitionLocale: "en-US", ttsLocale: "en-US", script: "latin", flagAsset: "gb" },
   {
     rules: enRules,
+    articleRules: EN_ARTICLES,
     paradigm: EN_PARADIGM,
     functionWords: EN_FUNCTION_WORDS,
     numberWords: englishNumber,

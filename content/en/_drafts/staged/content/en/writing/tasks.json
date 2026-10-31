@@ -2556,92 +2556,6 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "en.write.a1cap_profile_nam",
-      "taskFamily": "personal_profile",
-      "mode": "guided",
-      "instruction": {
-        "vi": "Bạn là Nam. Hãy tự giới thiệu: tên, tuổi và công việc."
-      },
-      "cueFacts": [
-        {
-          "label": {
-            "vi": "Tên"
-          },
-          "value": "Nam"
-        },
-        {
-          "label": {
-            "vi": "Tuổi"
-          },
-          "value": "35"
-        },
-        {
-          "label": {
-            "vi": "Công việc"
-          },
-          "value": "teacher"
-        }
-      ],
-      "rubric": {
-        "requiredSlots": [
-          {
-            "id": "name",
-            "description": {
-              "vi": "tên"
-            },
-            "variants": [
-              "my name is nam",
-              "i am nam",
-              "my name's nam"
-            ],
-            "cueProvided": true
-          },
-          {
-            "id": "age",
-            "description": {
-              "vi": "tuổi"
-            },
-            "variants": [
-              "35"
-            ],
-            "cueProvided": true
-          },
-          {
-            "id": "job",
-            "description": {
-              "vi": "công việc"
-            },
-            "variants": [
-              "teacher"
-            ],
-            "cueProvided": true
-          }
-        ],
-        "minTokens": 8,
-        "maxTokens": 30,
-        "requireSentenceVerbs": [
-          "am",
-          "is"
-        ]
-      },
-      "modelAnswers": [
-        "My name is Nam. I am 35 years old. I am a teacher."
-      ],
-      "objectiveRefs": [
-        "en.obj.writing.personal_info"
-      ],
-      "lexemeRefs": [
-        "en:w:name",
-        "en:w:be",
-        "en:w:year",
-        "en:w:old",
-        "en:w:teacher"
-      ],
-      "scoredEligibility": true,
-      "reserved": true,
-      "sourceRef": "original-project"
-    },
-    {
       "id": "en.write.a1cap_note_sarah",
       "taskFamily": "short_message",
       "mode": "guided",
@@ -2718,102 +2632,11 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "en.write.a1cap_form_visa",
-      "taskFamily": "simple_form",
-      "mode": "guided",
-      "instruction": {
-        "vi": "Hãy điền phiếu ở sân bay với các thông tin trên thẻ."
-      },
-      "cueFacts": [
-        {
-          "label": {
-            "vi": "Họ"
-          },
-          "value": "Vo"
-        },
-        {
-          "label": {
-            "vi": "Nước"
-          },
-          "value": "Vietnam"
-        },
-        {
-          "label": {
-            "vi": "Hộ chiếu"
-          },
-          "value": "C1234567"
-        }
-      ],
-      "formFields": [
-        {
-          "id": "last_name",
-          "label": "Last name",
-          "slotId": "last"
-        },
-        {
-          "id": "country",
-          "label": "Country",
-          "slotId": "country"
-        },
-        {
-          "id": "passport",
-          "label": "Passport",
-          "slotId": "passport"
-        }
-      ],
-      "rubric": {
-        "requiredSlots": [
-          {
-            "id": "last",
-            "description": {
-              "vi": "họ của bạn"
-            },
-            "variants": [
-              "vo"
-            ],
-            "cueProvided": true
-          },
-          {
-            "id": "country",
-            "description": {
-              "vi": "nước"
-            },
-            "variants": [
-              "vietnam"
-            ],
-            "cueProvided": true
-          },
-          {
-            "id": "passport",
-            "description": {
-              "vi": "số hộ chiếu"
-            },
-            "variants": [
-              "c1234567"
-            ],
-            "cueProvided": true
-          }
-        ],
-        "minTokens": 2,
-        "maxTokens": 12
-      },
-      "modelAnswers": [
-        "Vo | Vietnam | C1234567"
-      ],
-      "objectiveRefs": [
-        "en.obj.writing.form_filling"
-      ],
-      "lexemeRefs": [],
-      "scoredEligibility": true,
-      "reserved": true,
-      "sourceRef": "original-project"
-    },
-    {
-      "id": "en.write.pl_note",
+      "id": "en.write.a1cap_note_bus",
       "taskFamily": "short_message",
       "mode": "guided",
       "instruction": {
-        "vi": "Hãy nhắn cho Tom: chào, nói hôm nay bạn ở nhà."
+        "vi": "Hãy nhắn cho Tom: chào anh ấy, rồi báo xe buýt của bạn đến lúc sáu giờ."
       },
       "cueFacts": [
         {
@@ -2821,6 +2644,12 @@
             "vi": "Gửi"
           },
           "value": "Tom"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "6 giờ"
         }
       ],
       "rubric": {
@@ -2838,21 +2667,120 @@
             "cueProvided": false
           },
           {
-            "id": "home",
+            "id": "bus",
             "description": {
-              "vi": "ở nhà"
+              "vi": "xe buýt"
             },
             "variants": [
-              "at home"
+              "bus"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ xe đến"
+            },
+            "variants": [
+              "at six"
+            ],
+            "cueProvided": true
+          }
+        ],
+        "minTokens": 5,
+        "maxTokens": 20
+      },
+      "modelAnswers": [
+        "Hi Tom, my bus arrives at six."
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:hi",
+        "en:w:bus",
+        "en:w:arrive",
+        "en:w:six"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.a1cap_note_home",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy nhắn cho Hoa: chào, báo bạn đang ở siêu thị và về nhà lúc năm giờ, rồi chào kết."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Hoa"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "5 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "hi",
+              "hello",
+              "dear"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": {
+              "vi": "siêu thị"
+            },
+            "variants": [
+              "supermarket"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ về nhà"
+            },
+            "variants": [
+              "at five"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết"
+            },
+            "variants": [
+              "see you",
+              "bye",
+              "goodbye",
+              "thanks",
+              "thank you"
             ],
             "cueProvided": false
           }
         ],
-        "minTokens": 4,
-        "maxTokens": 15
+        "minTokens": 6,
+        "maxTokens": 25
       },
       "modelAnswers": [
-        "Hi Tom, I am at home today."
+        "Hi Hoa, I am at the supermarket. I will come home at five. See you!"
       ],
       "objectiveRefs": [
         "en.obj.writing.short_message"
@@ -2860,8 +2788,852 @@
       "lexemeRefs": [
         "en:w:hi",
         "en:w:be",
+        "en:w:supermarket",
+        "en:w:will",
+        "en:w:come",
         "en:w:home",
-        "en:w:today"
+        "en:w:five",
+        "en:w:see-you"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.a1cap_mail_smith",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Hãy viết email ngắn cho chị Smith: chào trang trọng, báo thứ Năm bạn nghỉ làm vì bị ốm, rồi chào kết."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Ms Smith"
+        },
+        {
+          "label": {
+            "vi": "Ngày"
+          },
+          "value": "Thursday"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào trang trọng"
+            },
+            "variants": [
+              "dear",
+              "hello",
+              "good morning"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày nghỉ"
+            },
+            "variants": [
+              "thursday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "sick",
+            "description": {
+              "vi": "bạn bị ốm"
+            },
+            "variants": [
+              "sick"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời chào kết"
+            },
+            "variants": [
+              "best regards",
+              "regards",
+              "thank you",
+              "thanks"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 8,
+        "maxTokens": 30
+      },
+      "modelAnswers": [
+        "Dear Ms Smith, I can't come to work on Thursday because I am sick. Best regards, Nam"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:ms",
+        "en:w:can",
+        "en:w:not",
+        "en:w:come",
+        "en:w:work",
+        "en:w:thursday",
+        "en:w:be",
+        "en:w:sick",
+        "en:w:best-regards"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.bac2_a_sentences",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Phần 1 — Viết 5 câu hoàn chỉnh từ các cụm từ cho sẵn. Bạn cần thêm từ và đổi dạng động từ khi cần."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Câu 1"
+          },
+          "value": "I / live / small apartment / near / park"
+        },
+        {
+          "label": {
+            "vi": "Câu 2"
+          },
+          "value": "My sister / work / hospital / Hue"
+        },
+        {
+          "label": {
+            "vi": "Câu 3"
+          },
+          "value": "We / not / go / work / Sunday"
+        },
+        {
+          "label": {
+            "vi": "Câu 4"
+          },
+          "value": "Yesterday / I / buy / new phone"
+        },
+        {
+          "label": {
+            "vi": "Câu 5"
+          },
+          "value": "What time / you / get up / morning?"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "s1",
+            "description": {
+              "vi": "câu 1"
+            },
+            "variants": [
+              "live in a small apartment near the park"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s2",
+            "description": {
+              "vi": "câu 2"
+            },
+            "variants": [
+              "works in a hospital in hue",
+              "works at a hospital in hue"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s3",
+            "description": {
+              "vi": "câu 3"
+            },
+            "variants": [
+              "do not go to work on sunday"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s4",
+            "description": {
+              "vi": "câu 4"
+            },
+            "variants": [
+              "bought a new phone"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s5",
+            "description": {
+              "vi": "câu 5"
+            },
+            "variants": [
+              "what time do you get up"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 25,
+        "maxTokens": 50
+      },
+      "modelAnswers": [
+        "I live in a small apartment near the park. My sister works in a hospital in Hue. We do not go to work on Sunday. Yesterday I bought a new phone. What time do you get up in the morning?"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:live",
+        "en:w:small",
+        "en:w:apartment",
+        "en:w:park",
+        "en:w:sister",
+        "en:w:work",
+        "en:w:hospital",
+        "en:w:do",
+        "en:w:not",
+        "en:w:go",
+        "en:w:sunday",
+        "en:w:yesterday",
+        "en:w:buy",
+        "en:w:new",
+        "en:w:phone",
+        "en:w:time",
+        "en:w:get",
+        "en:w:up",
+        "en:w:morning"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.bac2_b_sentences",
+      "taskFamily": "simple_description",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Phần 1 — Viết 5 câu hoàn chỉnh từ các cụm từ cho sẵn. Bạn cần thêm từ và đổi dạng động từ khi cần."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Câu 1"
+          },
+          "value": "My brother / usually / drive / work"
+        },
+        {
+          "label": {
+            "vi": "Câu 2"
+          },
+          "value": "There / two bedrooms / my house"
+        },
+        {
+          "label": {
+            "vi": "Câu 3"
+          },
+          "value": "She / not / like / coffee"
+        },
+        {
+          "label": {
+            "vi": "Câu 4"
+          },
+          "value": "Last week / we / visit / our grandmother"
+        },
+        {
+          "label": {
+            "vi": "Câu 5"
+          },
+          "value": "Where / you / buy / this bag?"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "s1",
+            "description": {
+              "vi": "câu 1"
+            },
+            "variants": [
+              "usually drives to work"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s2",
+            "description": {
+              "vi": "câu 2"
+            },
+            "variants": [
+              "there are two bedrooms in my house"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s3",
+            "description": {
+              "vi": "câu 3"
+            },
+            "variants": [
+              "does not like coffee"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s4",
+            "description": {
+              "vi": "câu 4"
+            },
+            "variants": [
+              "visited our grandmother"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "s5",
+            "description": {
+              "vi": "câu 5"
+            },
+            "variants": [
+              "where did you buy this bag"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 22,
+        "maxTokens": 45
+      },
+      "modelAnswers": [
+        "My brother usually drives to work. There are two bedrooms in my house. She does not like coffee. Last week we visited our grandmother. Where did you buy this bag?"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.phrases_sentences"
+      ],
+      "lexemeRefs": [
+        "en:w:brother",
+        "en:w:usually",
+        "en:w:drive",
+        "en:w:work",
+        "en:w:there",
+        "en:w:be",
+        "en:w:two",
+        "en:w:bedroom",
+        "en:w:house",
+        "en:w:do",
+        "en:w:not",
+        "en:w:like",
+        "en:w:coffee",
+        "en:w:last",
+        "en:w:week",
+        "en:w:visit",
+        "en:w:grandmother",
+        "en:w:where",
+        "en:w:buy",
+        "en:w:bag"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.bac2_a_message",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Phần 2 — Viết tin nhắn cho quản lý: báo bạn bị ốm và nghỉ làm vào ngày đã cho, nói ai làm thay và ngày bạn quay lại. Có lời chào và lời kết."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Mr Brown"
+        },
+        {
+          "label": {
+            "vi": "Ngày nghỉ"
+          },
+          "value": "Monday"
+        },
+        {
+          "label": {
+            "vi": "Người làm thay"
+          },
+          "value": "Hoa"
+        },
+        {
+          "label": {
+            "vi": "Ngày quay lại"
+          },
+          "value": "Tuesday"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "dear",
+              "hi",
+              "hello"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "sick",
+            "description": {
+              "vi": "bạn bị ốm"
+            },
+            "variants": [
+              "sick",
+              "ill"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "off",
+            "description": {
+              "vi": "ngày nghỉ"
+            },
+            "variants": [
+              "monday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "cover",
+            "description": {
+              "vi": "người làm thay"
+            },
+            "variants": [
+              "hoa"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "back",
+            "description": {
+              "vi": "ngày quay lại"
+            },
+            "variants": [
+              "tuesday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời kết"
+            },
+            "variants": [
+              "best regards",
+              "regards",
+              "thank you",
+              "thanks"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 15,
+        "maxTokens": 50
+      },
+      "modelAnswers": [
+        "Dear Mr Brown, I am sick and I cannot work on Monday. Hoa will take my shift. I will come back on Tuesday. Best regards, Minh"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:mr",
+        "en:w:brown",
+        "en:w:be",
+        "en:w:sick",
+        "en:w:can",
+        "en:w:not",
+        "en:w:work",
+        "en:w:monday",
+        "en:w:will",
+        "en:w:take",
+        "en:w:shift",
+        "en:w:come",
+        "en:w:back",
+        "en:w:tuesday",
+        "en:w:best-regards"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.bac2_b_memo",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Phần 2 — Viết bản ghi nhớ cho cả nhóm: cuộc họp chuyển sang ngày và giờ đã cho, ở phòng đã cho, mọi người mang báo cáo. Có lời chào và lời kết."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Ngày mới"
+          },
+          "value": "Thursday"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "3 giờ"
+        },
+        {
+          "label": {
+            "vi": "Phòng"
+          },
+          "value": "room 5"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "dear",
+              "hi",
+              "hello",
+              "to all staff"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày họp mới"
+            },
+            "variants": [
+              "thursday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ họp"
+            },
+            "variants": [
+              "at three"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "room",
+            "description": {
+              "vi": "phòng họp"
+            },
+            "variants": [
+              "room five"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "report",
+            "description": {
+              "vi": "mang báo cáo"
+            },
+            "variants": [
+              "report"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời kết"
+            },
+            "variants": [
+              "best regards",
+              "regards",
+              "thank you",
+              "thanks"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 12,
+        "maxTokens": 50
+      },
+      "modelAnswers": [
+        "To all staff: the meeting will move to Thursday at three in room five. Please bring your report. Thank you, Lan"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:staff",
+        "en:w:meeting",
+        "en:w:will",
+        "en:w:move",
+        "en:w:thursday",
+        "en:w:three",
+        "en:w:room",
+        "en:w:five",
+        "en:w:please",
+        "en:w:bring",
+        "en:w:report",
+        "en:w:thank-you"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.bac2_a_postcard",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Phần 3 — Viết bưu thiếp cho một người bạn: bạn đang nghỉ ở đâu, thời tiết thế nào, bạn làm gì và khi nào về. Có lời chào và lời kết."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Lan"
+        },
+        {
+          "label": {
+            "vi": "Nơi"
+          },
+          "value": "Da Nang"
+        },
+        {
+          "label": {
+            "vi": "Ngày về"
+          },
+          "value": "Sunday"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "dear",
+              "hi",
+              "hello"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "place",
+            "description": {
+              "vi": "nơi bạn đang nghỉ"
+            },
+            "variants": [
+              "da nang"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "weather",
+            "description": {
+              "vi": "thời tiết"
+            },
+            "variants": [
+              "weather"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "back",
+            "description": {
+              "vi": "ngày về"
+            },
+            "variants": [
+              "sunday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời kết"
+            },
+            "variants": [
+              "see you",
+              "bye",
+              "goodbye",
+              "best wishes",
+              "love"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 20,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Dear Lan, I am on vacation in Da Nang with my family. The weather is sunny and hot. We swim in the sea every morning. I will come home on Sunday. See you soon, Minh"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:be",
+        "en:w:vacation",
+        "en:w:family",
+        "en:w:weather",
+        "en:w:hot",
+        "en:w:swim",
+        "en:w:sea",
+        "en:w:morning",
+        "en:w:will",
+        "en:w:come",
+        "en:w:home",
+        "en:w:sunday",
+        "en:w:see-you",
+        "en:w:soon"
+      ],
+      "scoredEligibility": true,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.write.bac2_b_letter",
+      "taskFamily": "short_message",
+      "mode": "guided",
+      "instruction": {
+        "vi": "Phần 3 — Viết thư ngắn mời một người bạn đến chơi: bạn có nhà mới, mời vào ngày và giờ đã cho, bạn sẽ làm gì cho khách. Có lời chào và lời kết."
+      },
+      "cueFacts": [
+        {
+          "label": {
+            "vi": "Gửi"
+          },
+          "value": "Tom"
+        },
+        {
+          "label": {
+            "vi": "Ngày"
+          },
+          "value": "Saturday"
+        },
+        {
+          "label": {
+            "vi": "Giờ"
+          },
+          "value": "10 giờ"
+        }
+      ],
+      "rubric": {
+        "requiredSlots": [
+          {
+            "id": "greeting",
+            "description": {
+              "vi": "lời chào"
+            },
+            "variants": [
+              "dear",
+              "hi",
+              "hello"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "house",
+            "description": {
+              "vi": "nhà mới"
+            },
+            "variants": [
+              "new house",
+              "new home"
+            ],
+            "cueProvided": false
+          },
+          {
+            "id": "day",
+            "description": {
+              "vi": "ngày mời"
+            },
+            "variants": [
+              "saturday"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "time",
+            "description": {
+              "vi": "giờ mời"
+            },
+            "variants": [
+              "at ten"
+            ],
+            "cueProvided": true
+          },
+          {
+            "id": "closing",
+            "description": {
+              "vi": "lời kết"
+            },
+            "variants": [
+              "see you",
+              "bye",
+              "goodbye",
+              "best wishes",
+              "love"
+            ],
+            "cueProvided": false
+          }
+        ],
+        "minTokens": 20,
+        "maxTokens": 60
+      },
+      "modelAnswers": [
+        "Dear Tom, we have a new house near the lake. Would you like to visit us this Saturday? Please come at ten and bring your family. I will cook lunch for everyone. See you soon, Hoa"
+      ],
+      "objectiveRefs": [
+        "en.obj.writing.short_message"
+      ],
+      "lexemeRefs": [
+        "en:w:dear",
+        "en:w:have",
+        "en:w:new",
+        "en:w:house",
+        "en:w:would",
+        "en:w:like",
+        "en:w:visit",
+        "en:w:saturday",
+        "en:w:please",
+        "en:w:come",
+        "en:w:ten",
+        "en:w:bring",
+        "en:w:family",
+        "en:w:will",
+        "en:w:cook",
+        "en:w:lunch",
+        "en:w:see-you",
+        "en:w:soon"
       ],
       "scoredEligibility": true,
       "reserved": true,

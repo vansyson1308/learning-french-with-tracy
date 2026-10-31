@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 
-import type { ExamTrack } from "../../content/schema";
+import { examTrackSchema, type ExamTrack } from "../../content/schema";
 import { examBankDocuments, examTrackPaths } from "../lib/exam-bank";
 import { examFileSlug, loadExamTracks, validateExamTrackData, wordCount, type ExamRefs } from "../lib/exam";
 import { loadPacks, readJson } from "../lib/pipeline";
@@ -254,6 +254,16 @@ describe("exam track rules — every rule fires", () => {
     expect(errorsOf(t)).toContain("unknown objective es.obj.reading.nope");
     const errors = validateExamTrackData({ track: clone(), lang: "es", pack, refs: REFS, nativeCodes: ["vi", "ja"] }).errors.join("\n");
     expect(errors).toContain('missing "ja" text');
+  });
+
+  test("formatFidelity (D-12): optional; a partial track must describe itself", () => {
+    expect(errorsOf(clone())).not.toContain("formatFidelity");
+    const partial = { ...clone(), formatFidelity: "partial" as const };
+    expect(errorsOf(partial)).not.toContain("formatFidelity");
+    expect(errorsOf({ ...partial, description: { vi: "  " } })).toContain('formatFidelity "partial" needs a description in vi');
+    expect(() => examTrackSchema("es").parse({ ...partial, formatFidelity: "mostly" })).toThrow();
+    expect(examTrackSchema("es").parse(partial).formatFidelity).toBe("partial");
+    expect(examTrackSchema("es").parse(clone()).formatFidelity).toBeUndefined();
   });
 });
 

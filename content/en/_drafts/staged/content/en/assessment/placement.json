@@ -1,0 +1,827 @@
+{
+  "version": 1,
+  "language": "en",
+  "exerciseNativeCode": "vi",
+  "placementVersion": 1,
+  "maxItems": 28,
+  "allComfortableLessonId": "en-vi:un-l0",
+  "stages": [
+    {
+      "id": "en.pstage.foundations",
+      "title": {
+        "vi": "Nền tảng"
+      },
+      "clusters": [
+        {
+          "id": "en.pcluster.everyday",
+          "objectiveId": "en.obj.vocab.everyday_basics",
+          "anchorLessonId": "en-vi:u0-l0",
+          "items": [
+            {
+              "id": "en.pli.s1.tea",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s1-tea",
+                "mode": "nativeToTarget",
+                "prompt": "trà",
+                "options": [
+                  {
+                    "text": "water"
+                  },
+                  {
+                    "text": "milk"
+                  },
+                  {
+                    "text": "rice"
+                  },
+                  {
+                    "text": "tea"
+                  }
+                ],
+                "correct": 3
+              },
+              "objectiveTargets": [
+                "en.obj.vocab.everyday_basics"
+              ]
+            },
+            {
+              "id": "en.pli.s1.woman",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s1-woman",
+                "mode": "targetToNative",
+                "prompt": "woman",
+                "audioTarget": "woman",
+                "options": [
+                  {
+                    "text": "người phụ nữ"
+                  },
+                  {
+                    "text": "người đàn ông"
+                  },
+                  {
+                    "text": "cô gái"
+                  },
+                  {
+                    "text": "em bé"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "en.obj.vocab.everyday_basics"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.greetings",
+          "objectiveId": "en.obj.greetings.basic",
+          "anchorLessonId": "en-vi:u1-l0",
+          "items": [
+            {
+              "id": "en.pli.s1.morning",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s1-morning",
+                "mode": "nativeToTarget",
+                "prompt": "Buổi sáng, bạn bước vào văn phòng. Bạn nói:",
+                "options": [
+                  {
+                    "text": "Good night!"
+                  },
+                  {
+                    "text": "Good morning!"
+                  },
+                  {
+                    "text": "Goodbye!"
+                  },
+                  {
+                    "text": "Thank you!"
+                  }
+                ],
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "en.obj.greetings.basic"
+              ]
+            },
+            {
+              "id": "en.pli.s1.thanks",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s1-thanks",
+                "mode": "nativeToTarget",
+                "prompt": "Có người giúp bạn. Bạn nói:",
+                "options": [
+                  {
+                    "text": "Hello!"
+                  },
+                  {
+                    "text": "Goodbye!"
+                  },
+                  {
+                    "text": "Thank you!"
+                  },
+                  {
+                    "text": "Good evening!"
+                  }
+                ],
+                "correct": 2
+              },
+              "objectiveTargets": [
+                "en.obj.greetings.basic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.reading",
+          "objectiveId": "en.obj.reading.familiar_words",
+          "anchorLessonId": "en-vi:u2-l0",
+          "items": [
+            {
+              "id": "en.pli.s1.girl_apple",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s1-girl_apple",
+                "mode": "targetToNative",
+                "prompt": "The girl eats an apple.",
+                "options": [
+                  {
+                    "text": "Cậu bé ăn một quả táo."
+                  },
+                  {
+                    "text": "Cô gái uống nước."
+                  },
+                  {
+                    "text": "Cô gái ăn cơm."
+                  },
+                  {
+                    "text": "Cô gái ăn một quả táo."
+                  }
+                ],
+                "correct": 3
+              },
+              "objectiveTargets": [
+                "en.obj.reading.familiar_words"
+              ]
+            },
+            {
+              "id": "en.pli.s1.father_coffee",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s1-father_coffee",
+                "mode": "targetToNative",
+                "prompt": "My father drinks coffee.",
+                "options": [
+                  {
+                    "text": "Bố tôi uống cà phê."
+                  },
+                  {
+                    "text": "Mẹ tôi uống cà phê."
+                  },
+                  {
+                    "text": "Bố tôi uống trà."
+                  },
+                  {
+                    "text": "Bố tôi ăn cá."
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "en.obj.reading.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.places",
+          "objectiveId": "en.obj.vocab.places_work",
+          "anchorLessonId": "en-vi:u4-l0",
+          "items": [
+            {
+              "id": "en.pli.s1.station",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s1-station",
+                "mode": "nativeToTarget",
+                "prompt": "nhà ga",
+                "options": [
+                  {
+                    "text": "airport"
+                  },
+                  {
+                    "text": "station"
+                  },
+                  {
+                    "text": "hotel"
+                  },
+                  {
+                    "text": "street"
+                  }
+                ],
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "en.obj.vocab.places_work"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en.pstage.building_blocks",
+      "title": {
+        "vi": "Viên gạch nền"
+      },
+      "clusters": [
+        {
+          "id": "en.pcluster.articles",
+          "objectiveId": "en.obj.articles.a_an_the",
+          "anchorLessonId": "en-vi:ua-l0",
+          "items": [
+            {
+              "id": "en.pli.s2.art_egg",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "en-plx-s2-art_egg",
+                "articles": [
+                  "a",
+                  "an"
+                ],
+                "noun": "egg",
+                "gloss": "quả trứng",
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "en.obj.articles.a_an_the"
+              ]
+            },
+            {
+              "id": "en.pli.s2.art_book",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "articleSelect",
+                "id": "en-plx-s2-art_book",
+                "articles": [
+                  "a",
+                  "an"
+                ],
+                "noun": "book",
+                "gloss": "quyển sách",
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "en.obj.articles.a_an_the"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.plurals",
+          "objectiveId": "en.obj.nouns.plurals_countability",
+          "anchorLessonId": "en-vi:ua-l2",
+          "items": [
+            {
+              "id": "en.pli.s2.plural_children",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "fillBlank",
+                "id": "en-plx-s2-plural_children",
+                "sentence": "I have three ___.",
+                "translation": "Tôi có ba đứa con.",
+                "options": [
+                  "children",
+                  "child",
+                  "childs"
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "en.obj.nouns.plurals_countability"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.be",
+          "objectiveId": "en.obj.verbs.be_there_is",
+          "anchorLessonId": "en-vi:ub-l0",
+          "items": [
+            {
+              "id": "en.pli.s2.be_sel",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s2-be_sel",
+                "mode": "nativeToTarget",
+                "prompt": "Chúng tôi là sinh viên.",
+                "options": [
+                  {
+                    "text": "We have students."
+                  },
+                  {
+                    "text": "We is students."
+                  },
+                  {
+                    "text": "We students."
+                  },
+                  {
+                    "text": "We are students."
+                  }
+                ],
+                "correct": 3
+              },
+              "objectiveTargets": [
+                "en.obj.verbs.be_there_is"
+              ]
+            },
+            {
+              "id": "en.pli.s2.be_she",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "conjugationCloze",
+                "id": "en-plx-s2-be_she",
+                "sentence": "Anna ___ my sister.",
+                "translation": "Anna là chị gái tôi.",
+                "verb": "be",
+                "cell": "pre:3s",
+                "answer": "is",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "en.obj.verbs.be_there_is"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.present",
+          "objectiveId": "en.obj.verbs.present_simple_do",
+          "anchorLessonId": "en-vi:ub-l1",
+          "items": [
+            {
+              "id": "en.pli.s2.live_you",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "conjugationCloze",
+                "id": "en-plx-s2-live_you",
+                "sentence": "Where ___ you live?",
+                "translation": "Bạn sống ở đâu?",
+                "verb": "do",
+                "cell": "pre:2s",
+                "answer": "do",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "en.obj.verbs.present_simple_do"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.loanwords",
+          "objectiveId": "en.obj.strategy.loanwords_false_friends",
+          "anchorLessonId": "en-vi:uc-l1",
+          "items": [
+            {
+              "id": "en.pli.s2.loan_size",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "select",
+                "id": "en-plx-s2-loan_size",
+                "mode": "targetToNative",
+                "prompt": "size",
+                "audioTarget": "size",
+                "options": [
+                  {
+                    "text": "kích cỡ"
+                  },
+                  {
+                    "text": "sếp"
+                  },
+                  {
+                    "text": "bản sao"
+                  },
+                  {
+                    "text": "tấm ảnh"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "en.obj.strategy.loanwords_false_friends"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.numbers",
+          "objectiveId": "en.obj.numbers.0_100",
+          "anchorLessonId": "en-vi:ud-l0",
+          "items": [
+            {
+              "id": "en.pli.s2.num_21",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "typeAnswer",
+                "id": "en-plx-s2-num_21",
+                "mode": "produceTarget",
+                "prompt": "Viết bằng chữ: 21",
+                "answer": "twenty-one",
+                "alternatives": [
+                  "twenty one"
+                ]
+              },
+              "objectiveTargets": [
+                "en.obj.numbers.0_100"
+              ]
+            },
+            {
+              "id": "en.pli.s2.num_13",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "typeAnswer",
+                "id": "en-plx-s2-num_13",
+                "mode": "produceTarget",
+                "prompt": "Viết bằng chữ: 13",
+                "answer": "thirteen",
+                "alternatives": []
+              },
+              "objectiveTargets": [
+                "en.obj.numbers.0_100"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en.pstage.reception",
+      "title": {
+        "vi": "Hiểu tiếng Anh"
+      },
+      "clusters": [
+        {
+          "id": "en.pcluster.listen_words",
+          "objectiveId": "en.obj.listening.familiar_words",
+          "anchorLessonId": "en-vi:uf-l0",
+          "items": [
+            {
+              "id": "en.pli.s3.listen_milk",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "en-plx-s3-listen_milk",
+                "clipId": "en.clip.pl_milk",
+                "question": "Bạn nghe thấy gì?",
+                "options": [
+                  {
+                    "text": "nước"
+                  },
+                  {
+                    "text": "sữa"
+                  },
+                  {
+                    "text": "bánh mì"
+                  },
+                  {
+                    "text": "trà"
+                  }
+                ],
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "en.obj.listening.familiar_words"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.read_messages",
+          "objectiveId": "en.obj.reading.short_messages",
+          "anchorLessonId": "en-vi:ug-l0",
+          "items": [
+            {
+              "id": "en.pli.s3.message_when",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "en-plx-s3-message_when",
+                "readingId": "en.read.pl_message",
+                "question": "Lan muốn Tuấn gọi điện khi nào?",
+                "options": [
+                  {
+                    "text": "Sáng nay"
+                  },
+                  {
+                    "text": "Ngày mai"
+                  },
+                  {
+                    "text": "Tối nay"
+                  },
+                  {
+                    "text": "Bây giờ"
+                  }
+                ],
+                "correct": 2
+              },
+              "objectiveTargets": [
+                "en.obj.reading.short_messages"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.read_notices",
+          "objectiveId": "en.obj.reading.notices_info",
+          "anchorLessonId": "en-vi:ug-l1",
+          "items": [
+            {
+              "id": "en.pli.s3.notice_dinner",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "en-plx-s3-notice_dinner",
+                "readingId": "en.read.pl_notice_cafe",
+                "question": "Bữa tối phục vụ từ mấy giờ?",
+                "options": [
+                  {
+                    "text": "Từ 11 giờ"
+                  },
+                  {
+                    "text": "Từ 14 giờ"
+                  },
+                  {
+                    "text": "Từ 21 giờ"
+                  },
+                  {
+                    "text": "Từ 17 giờ"
+                  }
+                ],
+                "correct": 3
+              },
+              "objectiveTargets": [
+                "en.obj.reading.notices_info"
+              ]
+            },
+            {
+              "id": "en.pli.s3.notice_closed",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "readingComprehension",
+                "id": "en-plx-s3-notice_closed",
+                "readingId": "en.read.pl_notice_cafe",
+                "question": "Nhà hàng đóng cửa ngày nào?",
+                "options": [
+                  {
+                    "text": "Thứ Hai"
+                  },
+                  {
+                    "text": "Chủ nhật"
+                  },
+                  {
+                    "text": "Thứ Bảy"
+                  },
+                  {
+                    "text": "Thứ Ba"
+                  }
+                ],
+                "correct": 0
+              },
+              "objectiveTargets": [
+                "en.obj.reading.notices_info"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.listen_announcements",
+          "objectiveId": "en.obj.listening.announcements",
+          "anchorLessonId": "en-vi:uh-l0",
+          "items": [
+            {
+              "id": "en.pli.s3.shop_time",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "en-plx-s3-shop_time",
+                "clipId": "en.clip.pl_shop",
+                "question": "Cửa hàng đóng cửa lúc mấy giờ?",
+                "options": [
+                  {
+                    "text": "Lúc bảy giờ"
+                  },
+                  {
+                    "text": "Lúc sáu giờ"
+                  },
+                  {
+                    "text": "Lúc hai giờ"
+                  },
+                  {
+                    "text": "Lúc mười sáu giờ"
+                  }
+                ],
+                "correct": 1
+              },
+              "objectiveTargets": [
+                "en.obj.listening.announcements"
+              ]
+            },
+            {
+              "id": "en.pli.s3.pay_where",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "listeningComprehension",
+                "id": "en-plx-s3-pay_where",
+                "clipId": "en.clip.pl_pay",
+                "question": "Bạn trả tiền ở đâu?",
+                "options": [
+                  {
+                    "text": "Ở ngân hàng"
+                  },
+                  {
+                    "text": "Trên xe buýt"
+                  },
+                  {
+                    "text": "Ở cửa"
+                  },
+                  {
+                    "text": "Ở quầy trên tầng hai"
+                  }
+                ],
+                "correct": 2
+              },
+              "objectiveTargets": [
+                "en.obj.listening.announcements"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "en.pstage.production",
+      "title": {
+        "vi": "Nói tiếng Anh"
+      },
+      "clusters": [
+        {
+          "id": "en.pcluster.speak_formulaic",
+          "objectiveId": "en.obj.speaking.formulaic",
+          "anchorLessonId": "en-vi:uk-l0",
+          "items": [
+            {
+              "id": "en.pli.s4.hello",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "en-plx-s4-hello",
+                "speechItemId": "en.speak.pl_hello",
+                "instruction": "Bạn gặp một người bạn trên phố. Hãy chào.",
+                "target": "Hello!",
+                "acceptedVariants": [
+                  "Hello",
+                  "Hi",
+                  "Hi there"
+                ],
+                "evidenceLexemeRefs": [
+                  "en:w:hello"
+                ],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "en.obj.speaking.formulaic"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.speak_intro",
+          "objectiveId": "en.obj.speaking.self_intro",
+          "anchorLessonId": "en-vi:ul-l0",
+          "items": [
+            {
+              "id": "en.pli.s4.name",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "en-plx-s4-name",
+                "speechItemId": "en.speak.pl_name_nam",
+                "instruction": "Hãy nói tên của bạn.",
+                "cueFacts": [
+                  {
+                    "label": "Tên",
+                    "value": "Nam"
+                  }
+                ],
+                "target": "My name is Nam.",
+                "acceptedVariants": [
+                  "My name is Nam",
+                  "I'm Nam",
+                  "My name's Nam"
+                ],
+                "evidenceLexemeRefs": [
+                  "en:w:name",
+                  "en:w:be"
+                ],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "en.obj.speaking.self_intro"
+              ]
+            },
+            {
+              "id": "en.pli.s4.age",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "en-plx-s4-age",
+                "speechItemId": "en.speak.pl_age",
+                "instruction": "Hãy nói tuổi của bạn.",
+                "cueFacts": [
+                  {
+                    "label": "Tuổi",
+                    "value": "30"
+                  }
+                ],
+                "target": "I'm thirty years old.",
+                "acceptedVariants": [
+                  "I'm thirty years old",
+                  "I'm thirty"
+                ],
+                "evidenceLexemeRefs": [
+                  "en:w:be",
+                  "en:w:thirty",
+                  "en:w:year",
+                  "en:w:old"
+                ],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "en.obj.speaking.self_intro"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "en.pcluster.speak_describe",
+          "objectiveId": "en.obj.speaking.describe",
+          "anchorLessonId": "en-vi:un-l0",
+          "items": [
+            {
+              "id": "en.pli.s4.car",
+              "itemVersion": 1,
+              "exercise": {
+                "type": "speakProduction",
+                "id": "en-plx-s4-car",
+                "speechItemId": "en.speak.pl_big_car",
+                "instruction": "Nhìn hình: chiếc ô tô to. Hãy nói câu đó bằng tiếng Anh.",
+                "cueEmoji": "🚙",
+                "target": "The car is big.",
+                "acceptedVariants": [
+                  "The car is big",
+                  "It's a big car",
+                  "A big car",
+                  "It's big"
+                ],
+                "evidenceLexemeRefs": [
+                  "en:w:car",
+                  "en:w:be",
+                  "en:w:big"
+                ],
+                "revealTargetAfterAttempts": null,
+                "allowContextualBias": false,
+                "modelClipId": null,
+                "allowedAttempts": 2
+              },
+              "objectiveTargets": [
+                "en.obj.speaking.describe"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

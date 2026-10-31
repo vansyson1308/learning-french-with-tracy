@@ -2019,6 +2019,12 @@ export const examTrackSchema = (lang: string) =>
     trackVersion: z.number().int().min(1),
     name: z.string().min(2),
     level: z.string().min(1),
+    /**
+     * D-12: how much of the real paper the public source fixes. "partial": the source gives
+     * parts, timing or scoring but not the item types, so the question types are the course's
+     * own design and the description says so. Absent on tracks modelled on a full sample.
+     */
+    formatFidelity: z.enum(["full", "partial"]).optional(),
     title: nativeText(),
     description: nativeText(),
     formatSource: z.strictObject({

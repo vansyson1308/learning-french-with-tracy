@@ -269,7 +269,12 @@ describe("English plugin against the committed data", () => {
     expect(buildPlugin("en")).toBe(en);
     expect(en.recognitionLocale).toBe("en-US");
     expect(en.flagAsset).toBe("gb");
-    expect(en.articleRules).toBeNull();
+    expect(en.articleRules?.neutral).toEqual(["a", "an", "the"]);
+    expect(en.articleRules?.genderless).toBe(true);
+    // No gender, and no leading word is taken off a surface.
+    expect(en.splitSurfaceArticle("a few")).toEqual({ article: null, rest: "a few" });
+    expect(en.splitSurfaceArticle("the")).toEqual({ article: null, rest: "the" });
+    expect(en.genderEvidenceInText("The apple is a fruit.", "apple")).toEqual([]);
     expect(en.numberWords?.(21)).toBe("twenty-one");
     expect(en.targetLanguageName).toBe("English");
     expect(en.functionWords).toContain("the");

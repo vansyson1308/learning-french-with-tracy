@@ -13,6 +13,7 @@ python -I "$G/en-lex.py" .
 # Full replacement, so a record the generators dropped does not linger. The draft pack is kept: it may hold lessons.
 rm -f "$STAGED/content/en/assessment/objectives.json" "$STAGED/content/en/pedagogy/concepts.json" "$STAGED/content/en/pedagogy/paradigms.json" "$STAGED/content/courses/en-vi.json"
 rm -f "$STAGED/content/en/reception/reading.json" "$STAGED/content/en/reception/listening.json" "$STAGED/content/en/speech/items.json" "$STAGED/content/en/writing/tasks.json" "$STAGED/content/en/interaction/scenarios.json"
+rm -f "$STAGED/content/en/assessment/checkpoints.json" "$STAGED/content/en/assessment/placement.json" "$STAGED/content/en/exam/bac2-qd1481.json"
 python -I "$G/en-objectives.py" .
 python -I "$G/en-units.py" .
 python -I "$G/en-concepts.py" .
@@ -30,16 +31,23 @@ python -I "$G/en-reception-s3.py" .
 python -I "$G/en-speech-s4.py" .
 python -I "$G/en-writing-s5.py" .
 python -I "$G/en-scenarios-s6.py" .
+# Checkpoints and placement use the reserved items above and write their own OUTPUT; the exam track appends its stimuli.
+python -I "$G/en-assessment.py" .
+python -I "$G/en-exam.py" .
 bun scripts/author.ts ingest listening --target en --native vi
 bun scripts/author.ts ingest readings --target en --native vi
 bun scripts/author.ts ingest speech --target en --native vi
 bun scripts/author.ts ingest writing --target en --native vi
 bun scripts/author.ts ingest scenarios --target en --native vi
 # Lessons: s1 starts lessons/OUTPUT.jsonl, s2 and s3 append. The ingest writes the staged course, which now loads, so its exit
-# status also counts what later steps still owe (audio, checkpoints, placement, exam): en-draft.ts validate reports those.
-# Only a record that failed the schema stops the pipeline here.
+# status also counts what later steps still owe (audio): en-draft.ts validate reports those.
+# Only a record that failed the schema stops the pipeline here. The same holds for the assessment steps after it.
 python -I "$G/en-lessons-s1.py" .
 python -I "$G/en-lessons-s2.py" .
 python -I "$G/en-lessons-s3.py" .
 bun scripts/author.ts ingest lessons --target en --native vi || true
 grep -q "failed: 0 ·" content/en/_drafts/lessons/REPORT.md
+for step in checkpoints placement exam; do
+  bun scripts/author.ts ingest "$step" --target en --native vi || true
+  grep -q "failed: 0 ·" "content/en/_drafts/$step/REPORT.md"
+done

@@ -1,4 +1,5 @@
-"""en-vi speech: 31 teaching items with model clips (units k-n), 22 reserved items for checkpoint 4, the capstone and placement.
+"""en-vi speech: 31 teaching items with model clips (units k-n), 20 reserved items for checkpoint 4, the capstone (four give_info items:
+one objective per domain, two in each form) and placement. Exam speech items are added by en-exam.py.
 Writes content/en/_drafts/speech/OUTPUT.jsonl and appends the model clips to listening/OUTPUT.jsonl.
 Contractions need no second variant: the English rules fold I'm = I am, so listing both is a duplicate-variant error.
 usage: python -I en-speech-s4.py <repo root>
@@ -69,12 +70,10 @@ RESERVED = [
  ("cp4_brothers", "m", "information_prompt", "Hãy nói bạn có mấy anh trai.", "I have two brothers.", ["Two brothers", "I've got two brothers"], [("Số anh trai", "2")], None),
  ("cp4_desc_dog", "n", "picture_prompt", "Nhìn hình: con chó to. Hãy nói câu đó bằng tiếng Anh.", "The dog is big.", ["It's a big dog", "A big dog", "It's big"], None, "🐕"),
  ("cp4_desc_shirt", "n", "picture_prompt", "Nhìn hình: chiếc áo màu xanh lam. Hãy nói câu đó bằng tiếng Anh.", "The shirt is blue.", ["It's a blue shirt", "A blue shirt", "It's blue"], None, "👕"),
- ("a1cap_water", "k", "situation_prompt", "Bạn muốn xin một ly nước. Hãy nói thật lịch sự.", "Water, please.", ["Can I have some water please", "I'd like some water please", "Some water please", "A glass of water please"], None, None),
- ("a1cap_live", "l", "information_prompt", "Hãy nói bạn sống ở thành phố nào.", "I live in Hanoi.", [], [("Thành phố", "Hà Nội")], None),
- ("a1cap_hospital", "l", "information_prompt", "Hãy nói bạn làm việc ở đâu.", "I work in a hospital.", ["I work at a hospital"], [("Nơi làm việc", "bệnh viện")], None),
+ ("a1cap_time_nine", "m", "information_prompt", "Có người hỏi giờ. Hãy trả lời.", "It's nine o'clock.", ["Nine o'clock", "It's nine"], [("Giờ", "9 giờ")], None),
+ ("a1cap_family_six", "m", "information_prompt", "Hãy nói gia đình bạn có bao nhiêu người.", "There are six people in my family.", ["Six people", "We have six people"], [("Số người", "6")], None),
  ("a1cap_price_tea", "m", "information_prompt", "Một vị khách hỏi giá trà. Hãy trả lời.", "It costs two dollars.", ["Two dollars", "It's two dollars", "The tea costs two dollars"], [("Giá", "2 đô la")], None),
  ("a1cap_birthday", "m", "information_prompt", "Hãy nói sinh nhật của bạn vào tháng nào.", "My birthday is in May.", ["It's in May", "In May"], [("Sinh nhật", "tháng Năm")], None),
- ("a1cap_desc_house", "n", "picture_prompt", "Nhìn hình: ngôi nhà nhỏ. Hãy nói câu đó bằng tiếng Anh.", "The house is small.", ["It's a small house", "A small house", "It's small"], None, "🏡"),
  ("pl_hello", "k", "situation_prompt", "Bạn gặp một người bạn trên phố. Hãy chào.", "Hello!", ["Hi", "Hi there"], None, None),
  ("pl_name_nam", "l", "information_prompt", "Hãy nói tên của bạn.", "My name is Nam.", ["I'm Nam", "My name's Nam"], [("Tên", "Nam")], None),
  ("pl_age", "l", "information_prompt", "Hãy nói tuổi của bạn.", "I'm thirty years old.", ["I'm thirty"], [("Tuổi", "30")], None),

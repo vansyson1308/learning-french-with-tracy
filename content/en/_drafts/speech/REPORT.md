@@ -1,6 +1,6 @@
 # speech — ingest report (en-vi)
 
-Records: 53 · schema-valid: 53 · failed: 0 · validator errors after merge: 0
+Records: 55 · schema-valid: 55 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -47,16 +47,18 @@ Records: 53 · schema-valid: 53 · failed: 0 · validator errors after merge: 0
 - ✅ line 41 `en.speak.cp4_brothers`
 - ✅ line 42 `en.speak.cp4_desc_dog`
 - ✅ line 43 `en.speak.cp4_desc_shirt`
-- ✅ line 44 `en.speak.a1cap_water`
-- ✅ line 45 `en.speak.a1cap_live`
-- ✅ line 46 `en.speak.a1cap_hospital`
-- ✅ line 47 `en.speak.a1cap_price_tea`
-- ✅ line 48 `en.speak.a1cap_birthday`
-- ✅ line 49 `en.speak.a1cap_desc_house`
-- ✅ line 50 `en.speak.pl_hello`
-- ✅ line 51 `en.speak.pl_name_nam`
-- ✅ line 52 `en.speak.pl_age`
-- ✅ line 53 `en.speak.pl_big_car`
+- ✅ line 44 `en.speak.a1cap_time_nine`
+- ✅ line 45 `en.speak.a1cap_family_six`
+- ✅ line 46 `en.speak.a1cap_price_tea`
+- ✅ line 47 `en.speak.a1cap_birthday`
+- ✅ line 48 `en.speak.pl_hello`
+- ✅ line 49 `en.speak.pl_name_nam`
+- ✅ line 50 `en.speak.pl_age`
+- ✅ line 51 `en.speak.pl_big_car`
+- ✅ line 52 `en.speak.bac2_a_describe`
+- ✅ line 53 `en.speak.bac2_b_describe`
+- ✅ line 54 `en.speak.bac2_a_discuss`
+- ✅ line 55 `en.speak.bac2_b_discuss`
 
 ## Validator errors (fix these records and ingest again)
 

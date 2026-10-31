@@ -1,4 +1,5 @@
-"""en-vi writing: guided and open tasks of units o-r, and 16 reserved tasks for checkpoint 5, the capstone and placement.
+"""en-vi writing: guided and open tasks of units o-r, and 16 reserved tasks for checkpoint 5 and the capstone (four short messages:
+one objective per domain, two in each form). Exam writing tasks are added by en-exam.py.
 Writes content/en/_drafts/writing/OUTPUT.jsonl. Rubric notes: digits are normalised ("at 3" = "at three": one variant);
 contractions too ("i'm" = "i am"); a slot with several variants must be realised once in the model answer.
 Clock cues are written in Vietnamese ("3 giờ"), never 3:00. usage: python -I en-writing-s5.py <repo root>
@@ -100,15 +101,14 @@ RESERVED = {
  "cp5_form_work": ("simple_form", FORM, "Hãy điền phiếu nhân viên mới với các thông tin trên thẻ.", [("Họ", "Le"), ("Công việc", "driver"), ("Điện thoại", "0911 222 333")],
                    [("last", "họ của bạn", ["le"], True), ("job", "công việc", ["driver"], True), ("phone", "số điện thoại", ["0911 222 333", "0911222333"], True)], 2, 12, None, "Le | driver | 0911 222 333",
                    [("last_name", "Last name", "last"), ("job", "Job", "job"), ("phone", "Phone number", "phone")]),
- "a1cap_profile_nam": ("personal_profile", PROFILE, "Bạn là Nam. Hãy tự giới thiệu: tên, tuổi và công việc.", [("Tên", "Nam"), ("Tuổi", "35"), ("Công việc", "teacher")],
-                       [("name", "tên", NAME("nam"), True), ("age", "tuổi", ["35"], True), ("job", "công việc", ["teacher"], True)], 8, 30, BE, "My name is Nam. I am 35 years old. I am a teacher.", None),
  "a1cap_note_sarah": ("short_message", MSG, "Hãy nhắn cho Sarah: chào, hẹn gặp ở nhà ga lúc năm giờ.", [("Gửi", "Sarah"), ("Giờ", "5 giờ")],
                       [("greeting", "lời chào", GREET, False), ("place", "nhà ga", ["station"], False), ("time", "giờ hẹn", ["at five"], True)], 5, 20, None, "Hi Sarah, let's meet at the station at five.", None),
- "a1cap_form_visa": ("simple_form", FORM, "Hãy điền phiếu ở sân bay với các thông tin trên thẻ.", [("Họ", "Vo"), ("Nước", "Vietnam"), ("Hộ chiếu", "C1234567")],
-                     [("last", "họ của bạn", ["vo"], True), ("country", "nước", ["vietnam"], True), ("passport", "số hộ chiếu", ["c1234567"], True)], 2, 12, None, "Vo | Vietnam | C1234567",
-                     [("last_name", "Last name", "last"), ("country", "Country", "country"), ("passport", "Passport", "passport")]),
- "pl_note": ("short_message", MSG, "Hãy nhắn cho Tom: chào, nói hôm nay bạn ở nhà.", [("Gửi", "Tom")],
-             [("greeting", "lời chào", GREET, False), ("home", "ở nhà", ["at home"], False)], 4, 15, None, "Hi Tom, I am at home today.", None),
+ "a1cap_note_bus": ("short_message", MSG, "Hãy nhắn cho Tom: chào anh ấy, rồi báo xe buýt của bạn đến lúc sáu giờ.", [("Gửi", "Tom"), ("Giờ", "6 giờ")],
+                    [("greeting", "lời chào", GREET, False), ("bus", "xe buýt", ["bus"], False), ("time", "giờ xe đến", ["at six"], True)], 5, 20, None, "Hi Tom, my bus arrives at six.", None),
+ "a1cap_note_home": ("short_message", MSG, "Hãy nhắn cho Hoa: chào, báo bạn đang ở siêu thị và về nhà lúc năm giờ, rồi chào kết.", [("Gửi", "Hoa"), ("Giờ", "5 giờ")],
+                     [("greeting", "lời chào", GREET, False), ("place", "siêu thị", ["supermarket"], False), ("time", "giờ về nhà", ["at five"], True), ("closing", "lời chào kết", CLOSE, False)], 6, 25, None, "Hi Hoa, I am at the supermarket. I will come home at five. See you!", None),
+ "a1cap_mail_smith": ("short_message", MSG, "Hãy viết email ngắn cho chị Smith: chào trang trọng, báo thứ Năm bạn nghỉ làm vì bị ốm, rồi chào kết.", [("Gửi", "Ms Smith"), ("Ngày", "Thursday")],
+                      [("greeting", "lời chào trang trọng", FORMAL, False), ("day", "ngày nghỉ", ["thursday"], True), ("sick", "bạn bị ốm", ["sick"], False), ("closing", "lời chào kết", SIGN, False)], 8, 30, None, "Dear Ms Smith, I can't come to work on Thursday because I am sick. Best regards, Nam", None),
 }
 
 

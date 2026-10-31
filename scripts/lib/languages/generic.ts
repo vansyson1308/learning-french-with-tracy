@@ -42,7 +42,7 @@ export function genderEvidenceScanner(
 export function articleSplitter(
   rules: ArticleRules | null
 ): (surface: string) => { article: string | null; rest: string } {
-  if (rules === null) return (surface) => ({ article: null, rest: surface });
+  if (rules === null || rules.genderless) return (surface) => ({ article: null, rest: surface });
   const sorted = [...Object.keys(rules.gender), ...rules.neutral].sort((a, b) => b.length - a.length);
   return (surface) => {
     for (const article of sorted) {

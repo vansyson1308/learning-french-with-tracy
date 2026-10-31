@@ -1,6 +1,6 @@
 # scenarios — ingest report (en-vi)
 
-Records: 21 · schema-valid: 21 · failed: 0 · validator errors after merge: 0
+Records: 25 · schema-valid: 25 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -22,9 +22,13 @@ Records: 21 · schema-valid: 21 · failed: 0 · validator errors after merge: 0
 - ✅ line 16 `en.scenario.cp6_clinic_cough`
 - ✅ line 17 `en.scenario.cp6_call_office`
 - ✅ line 18 `en.scenario.a1cap_new_worker`
-- ✅ line 19 `en.scenario.a1cap_hotel_room`
+- ✅ line 19 `en.scenario.a1cap_neighbor`
 - ✅ line 20 `en.scenario.a1cap_friend_plan`
-- ✅ line 21 `en.scenario.a1cap_airport_trip`
+- ✅ line 21 `en.scenario.a1cap_lunch`
+- ✅ line 22 `en.scenario.bac2_a_greet`
+- ✅ line 23 `en.scenario.bac2_b_greet`
+- ✅ line 24 `en.scenario.bac2_a_social`
+- ✅ line 25 `en.scenario.bac2_b_social`
 
 ## Validator errors (fix these records and ingest again)
 

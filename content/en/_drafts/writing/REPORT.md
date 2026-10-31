@@ -1,6 +1,6 @@
 # writing — ingest report (en-vi)
 
-Records: 41 · schema-valid: 41 · failed: 0 · validator errors after merge: 0
+Records: 47 · schema-valid: 47 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -41,10 +41,16 @@ Records: 41 · schema-valid: 41 · failed: 0 · validator errors after merge: 0
 - ✅ line 35 `en.write.cp5_form_clinic`
 - ✅ line 36 `en.write.cp5_form_bank`
 - ✅ line 37 `en.write.cp5_form_work`
-- ✅ line 38 `en.write.a1cap_profile_nam`
-- ✅ line 39 `en.write.a1cap_note_sarah`
-- ✅ line 40 `en.write.a1cap_form_visa`
-- ✅ line 41 `en.write.pl_note`
+- ✅ line 38 `en.write.a1cap_note_sarah`
+- ✅ line 39 `en.write.a1cap_note_bus`
+- ✅ line 40 `en.write.a1cap_note_home`
+- ✅ line 41 `en.write.a1cap_mail_smith`
+- ✅ line 42 `en.write.bac2_a_sentences`
+- ✅ line 43 `en.write.bac2_b_sentences`
+- ✅ line 44 `en.write.bac2_a_message`
+- ✅ line 45 `en.write.bac2_b_memo`
+- ✅ line 46 `en.write.bac2_a_postcard`
+- ✅ line 47 `en.write.bac2_b_letter`
 
 ## Validator errors (fix these records and ingest again)
 

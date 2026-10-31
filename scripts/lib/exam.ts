@@ -99,6 +99,12 @@ export function validateExamTrackData(input: { track: ExamTrack; lang: string; p
   const err = (m: string) => errors.push(`exam ${track.id}: ${m}`);
 
   if (track.language !== input.lang) err(`language "${track.language}" ≠ content/${input.lang}/`);
+  // D-12: a partial track tells the learner that its question types are the course's own design.
+  if (track.formatFidelity === "partial") {
+    for (const code of input.nativeCodes) {
+      if (!track.description[code]?.trim()) err(`formatFidelity "partial" needs a description in ${code} that says what is the course's own design`);
+    }
+  }
   if (track.formatSource.checkedAgainstOfficialGuide) {
     if (!track.formatSource.references.some((r) => r.retrieved !== undefined)) err("checkedAgainstOfficialGuide needs a retrieval date on the document(s) actually read");
     if (track.formatSource.checkedBy === undefined || track.formatSource.checkedAt === undefined) err("checkedAgainstOfficialGuide needs checkedBy and checkedAt");
@@ -300,6 +306,7 @@ export function compileExamTracksArtifact(tracks: ExamTrack[], lang: string, nat
     trackVersion: track.trackVersion,
     name: track.name,
     level: track.level,
+    ...(track.formatFidelity !== undefined ? { formatFidelity: track.formatFidelity } : {}),
     title: text(track.title, `${track.id}.title`),
     description: text(track.description, `${track.id}.description`),
     formatSource: {

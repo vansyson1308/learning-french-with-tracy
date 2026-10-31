@@ -1,6 +1,6 @@
 # listening — ingest report (en-vi)
 
-Records: 222 · schema-valid: 222 · failed: 0 · validator errors after merge: 0
+Records: 280 · schema-valid: 280 · failed: 0 · validator errors after merge: 0
 
 ## Records
 
@@ -208,24 +208,82 @@ Records: 222 · schema-valid: 222 · failed: 0 · validator errors after merge: 
 - ✅ line 202 `en.clip.ix_a1cap_new_worker_1`
 - ✅ line 203 `en.clip.ix_a1cap_new_worker_1_s`
 - ✅ line 204 `en.clip.ix_a1cap_new_worker_end`
-- ✅ line 205 `en.clip.ix_a1cap_hotel_room_miss`
-- ✅ line 206 `en.clip.ix_a1cap_hotel_room_0`
-- ✅ line 207 `en.clip.ix_a1cap_hotel_room_0_s`
-- ✅ line 208 `en.clip.ix_a1cap_hotel_room_1`
-- ✅ line 209 `en.clip.ix_a1cap_hotel_room_1_s`
-- ✅ line 210 `en.clip.ix_a1cap_hotel_room_end`
+- ✅ line 205 `en.clip.ix_a1cap_neighbor_miss`
+- ✅ line 206 `en.clip.ix_a1cap_neighbor_0`
+- ✅ line 207 `en.clip.ix_a1cap_neighbor_0_s`
+- ✅ line 208 `en.clip.ix_a1cap_neighbor_1`
+- ✅ line 209 `en.clip.ix_a1cap_neighbor_1_s`
+- ✅ line 210 `en.clip.ix_a1cap_neighbor_end`
 - ✅ line 211 `en.clip.ix_a1cap_friend_plan_miss`
 - ✅ line 212 `en.clip.ix_a1cap_friend_plan_0`
 - ✅ line 213 `en.clip.ix_a1cap_friend_plan_0_s`
 - ✅ line 214 `en.clip.ix_a1cap_friend_plan_1`
 - ✅ line 215 `en.clip.ix_a1cap_friend_plan_1_s`
 - ✅ line 216 `en.clip.ix_a1cap_friend_plan_end`
-- ✅ line 217 `en.clip.ix_a1cap_airport_trip_miss`
-- ✅ line 218 `en.clip.ix_a1cap_airport_trip_0`
-- ✅ line 219 `en.clip.ix_a1cap_airport_trip_0_s`
-- ✅ line 220 `en.clip.ix_a1cap_airport_trip_1`
-- ✅ line 221 `en.clip.ix_a1cap_airport_trip_1_s`
-- ✅ line 222 `en.clip.ix_a1cap_airport_trip_end`
+- ✅ line 217 `en.clip.ix_a1cap_lunch_miss`
+- ✅ line 218 `en.clip.ix_a1cap_lunch_0`
+- ✅ line 219 `en.clip.ix_a1cap_lunch_0_s`
+- ✅ line 220 `en.clip.ix_a1cap_lunch_1`
+- ✅ line 221 `en.clip.ix_a1cap_lunch_1_s`
+- ✅ line 222 `en.clip.ix_a1cap_lunch_end`
+- ✅ line 223 `en.clip.bac2_a_l1_01`
+- ✅ line 224 `en.clip.bac2_a_l1_02`
+- ✅ line 225 `en.clip.bac2_a_l1_03`
+- ✅ line 226 `en.clip.bac2_a_l1_04`
+- ✅ line 227 `en.clip.bac2_a_l1_05`
+- ✅ line 228 `en.clip.bac2_a_l2_01`
+- ✅ line 229 `en.clip.bac2_a_l2_02`
+- ✅ line 230 `en.clip.bac2_a_l2_03`
+- ✅ line 231 `en.clip.bac2_a_l2_04`
+- ✅ line 232 `en.clip.bac2_a_l2_05`
+- ✅ line 233 `en.clip.bac2_a_l3`
+- ✅ line 234 `en.clip.bac2_a_l4`
+- ✅ line 235 `en.clip.bac2_a_l5`
+- ✅ line 236 `en.clip.bac2_b_l1_01`
+- ✅ line 237 `en.clip.bac2_b_l1_02`
+- ✅ line 238 `en.clip.bac2_b_l1_03`
+- ✅ line 239 `en.clip.bac2_b_l1_04`
+- ✅ line 240 `en.clip.bac2_b_l1_05`
+- ✅ line 241 `en.clip.bac2_b_l2_01`
+- ✅ line 242 `en.clip.bac2_b_l2_02`
+- ✅ line 243 `en.clip.bac2_b_l2_03`
+- ✅ line 244 `en.clip.bac2_b_l2_04`
+- ✅ line 245 `en.clip.bac2_b_l2_05`
+- ✅ line 246 `en.clip.bac2_b_l3`
+- ✅ line 247 `en.clip.bac2_b_l4`
+- ✅ line 248 `en.clip.bac2_b_l5`
+- ✅ line 249 `en.clip.ix_bac2_a_greet_miss`
+- ✅ line 250 `en.clip.ix_bac2_a_greet_0`
+- ✅ line 251 `en.clip.ix_bac2_a_greet_0_s`
+- ✅ line 252 `en.clip.ix_bac2_a_greet_1`
+- ✅ line 253 `en.clip.ix_bac2_a_greet_1_s`
+- ✅ line 254 `en.clip.ix_bac2_a_greet_end`
+- ✅ line 255 `en.clip.ix_bac2_b_greet_miss`
+- ✅ line 256 `en.clip.ix_bac2_b_greet_0`
+- ✅ line 257 `en.clip.ix_bac2_b_greet_0_s`
+- ✅ line 258 `en.clip.ix_bac2_b_greet_1`
+- ✅ line 259 `en.clip.ix_bac2_b_greet_1_s`
+- ✅ line 260 `en.clip.ix_bac2_b_greet_end`
+- ✅ line 261 `en.clip.ix_bac2_a_social_miss`
+- ✅ line 262 `en.clip.ix_bac2_a_social_0`
+- ✅ line 263 `en.clip.ix_bac2_a_social_0_s`
+- ✅ line 264 `en.clip.ix_bac2_a_social_1`
+- ✅ line 265 `en.clip.ix_bac2_a_social_1_s`
+- ✅ line 266 `en.clip.ix_bac2_a_social_2`
+- ✅ line 267 `en.clip.ix_bac2_a_social_2_s`
+- ✅ line 268 `en.clip.ix_bac2_a_social_3`
+- ✅ line 269 `en.clip.ix_bac2_a_social_3_s`
+- ✅ line 270 `en.clip.ix_bac2_a_social_end`
+- ✅ line 271 `en.clip.ix_bac2_b_social_miss`
+- ✅ line 272 `en.clip.ix_bac2_b_social_0`
+- ✅ line 273 `en.clip.ix_bac2_b_social_0_s`
+- ✅ line 274 `en.clip.ix_bac2_b_social_1`
+- ✅ line 275 `en.clip.ix_bac2_b_social_1_s`
+- ✅ line 276 `en.clip.ix_bac2_b_social_2`
+- ✅ line 277 `en.clip.ix_bac2_b_social_2_s`
+- ✅ line 278 `en.clip.ix_bac2_b_social_3`
+- ✅ line 279 `en.clip.ix_bac2_b_social_3_s`
+- ✅ line 280 `en.clip.ix_bac2_b_social_end`
 
 ## Validator errors (fix these records and ingest again)
 

@@ -1,11 +1,11 @@
 """en-vi section 2 lessons: articles and plurals, the verbs that change form, familiar words and traps, numbers and time, sounds and spelling.
-Every lesson shows a concept card. English has no gender, so a/an/the are drilled as fillBlank, not articleSelect (the validator
-rejects articleSelect for a language without articleRules, and its panel note speaks of gender). Conjugation keys come from the
-committed paradigm tables. Appends to lessons/OUTPUT.jsonl. usage: python -I en-lessons-s2.py <repo root>"""
+Every lesson shows a concept card. a/an/the are drilled as fillBlank in sentences; articleSelect (AS) drills a against an by sound,
+at the end of a lesson so that no earlier exercise id moves. Conjugation keys come from the committed paradigm tables.
+Appends to lessons/OUTPUT.jsonl. usage: python -I en-lessons-s2.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from en_lesson_lib import C, F, H, J, M, MP, N, NX, T, TX, W, WT, Y, finish, lesson
+from en_lesson_lib import AS, C, F, H, J, M, MP, N, NX, T, TX, W, WT, Y, finish, lesson
 
 ART = ["a", "an", "the", "some"]
 
@@ -16,7 +16,8 @@ def A(sentence, answer, vi):
 
 # ---------------------------------------------------------------- ua: articles and plurals
 lesson("ua-l0", [
-    C("articles"), A("I have ___ book.", "a", "Tôi có một quyển sách."), A("She eats ___ apple.", "an", "Cô ấy ăn một quả táo."), A("I wait for ___ hour.", "an", "Tôi đợi một tiếng đồng hồ."), A("She studies at ___ university.", "a", "Cô ấy học ở một trường đại học."), A("It is ___ old house.", "an", "Đó là một ngôi nhà cũ."), A("It is ___ new house.", "a", "Đó là một ngôi nhà mới."), W("Tôi có một quả táo.", "I have an apple.", ["a", "is"]), Y("một giờ đồng hồ", "an hour", "one hour", digits=False), Y("một quyển sách", "a book", "one book"), M("apple", "book", "hour", "university", "house"),
+    C("articles"), A("I have ___ book.", "a", "Tôi có một quyển sách."), A("She eats ___ apple.", "an", "Cô ấy ăn một quả táo."), A("I wait for ___ hour.", "an", "Tôi đợi một tiếng đồng hồ."), A("She studies at ___ university.", "a", "Cô ấy học ở một trường đại học."), A("It is ___ old house.", "an", "Đó là một ngôi nhà cũ."), A("It is ___ new house.", "a", "Đó là một ngôi nhà mới."), W("Tôi có một quả táo.", "I have an apple.", ["a", "is"]), Y("một giờ đồng hồ", "an hour", "one hour", digits=False), Y("một quyển sách", "a book", "one book"), M("apple", "book", "hour", "university", "house"), AS("apple", "quả táo", "an"),
+    AS("hour", "một giờ đồng hồ", "an"), AS("university", "trường đại học", "a"), AS("house", "ngôi nhà", "a"),
 ])
 lesson("ua-l1", [
     C("articles"), T("door", ["window", "table", "key"]), A("I have a dog. ___ dog is small.", "The", "Tôi có một con chó. Con chó đó nhỏ."), A("Please close ___ door.", "the", "Làm ơn đóng cái cửa đó lại."), A("___ room is on the second floor.", "The", "Căn phòng ở tầng hai."), A("Open ___ window, please.", "the", "Làm ơn mở cái cửa sổ đó ra."), TX("The bathroom is next to the kitchen.", "Nhà vệ sinh ở cạnh nhà bếp.", ["Nhà bếp ở cạnh phòng ngủ.", "Nhà vệ sinh ở trong nhà bếp.", "Nhà bếp ở tầng hai."]), W("Chìa khóa ở trên bàn.", "The key is on the table.", ["a", "are"]), Y("Làm ơn đóng cửa lại.", "Please close the door.", "Close the door, please."), Y("Nhà bếp nhỏ.", "The kitchen is small.", "A small kitchen.", "The small kitchen.", "It is a small kitchen."), M("door", "window", "floor", "wall", "chair"),
@@ -57,7 +58,7 @@ lesson("uc-l2", [
     M("how", "maybe", "together", "why", "very"),
 ])
 lesson("uc-l3", [
-    NX("một ngôi nhà to", "a big house", ["a house big", "big a house", "a bigs house"]), NX("chiếc ô tô mới", "a new car", ["a car new", "new a car", "a news car"]), NX("Ngôi nhà to.", "The house is big.", ["The house big.", "The big house is.", "Big the house."]), F("These houses are ___.", "big", ["bigs", "a big", "an big"], "Những ngôi nhà này to."), C("adjectives-very-too"), W("Tôi có một chiếc ô tô mới.", "I have a new car.", ["cars", "is"]), W("Cái túi nhỏ.", "The bag is small.", ["are", "a"]), WT("It is a very good idea.", "Đó là|một|ý tưởng|rất|hay", ["không", "sách"]), Y("một con mèo nhỏ", "a small cat", "a little cat"), Y("Tôi có một ngôi nhà to.", "I have a big house."), MP(("a big house", "một ngôi nhà to"), ("a small bag", "một cái túi nhỏ"), ("an old car", "một chiếc xe cũ"), ("a new book", "một quyển sách mới")),
+    NX("một ngôi nhà to", "a big house", ["a house big", "big a house", "a bigs house"]), NX("chiếc ô tô mới", "a new car", ["a car new", "new a car", "a news car"]), NX("Ngôi nhà to.", "The house is big.", ["The house big.", "The big house is.", "Big the house."]), F("These houses are ___.", "big", ["bigs", "a big", "an big"], "Những ngôi nhà này to."), C("adjectives-very-too"), W("Tôi có một chiếc ô tô mới.", "I have a new car.", ["cars", "is"]), W("Cái túi nhỏ.", "The bag is small.", ["are", "a"]), WT("It is a very good idea.", "Đó là|một|ý tưởng|rất|hay", ["không", "sách"]), Y("một con mèo nhỏ", "a small cat", "a little cat"), Y("Tôi có một ngôi nhà to.", "I have a big house."), MP(("a big house", "một ngôi nhà to"), ("a small bag", "một cái túi nhỏ"), ("an old car", "một chiếc xe cũ"), ("a new book", "một quyển sách mới")), AS("old car", "chiếc ô tô cũ", "an"),
 ])
 
 # ---------------------------------------------------------------- ud: numbers, time, dates, prices

@@ -2952,7 +2952,7 @@
       },
       "taskFamily": "information_exchange",
       "objectiveRefs": [
-        "en.obj.interaction.practical_needs"
+        "en.obj.interaction.everyday_conversation"
       ],
       "startNodeId": "p0",
       "nodes": {
@@ -3287,16 +3287,16 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "en.scenario.a1cap_hotel_room",
+      "id": "en.scenario.a1cap_neighbor",
       "title": {
-        "vi": "Thuê phòng"
+        "vi": "Làm quen với hàng xóm"
       },
       "goal": {
-        "vi": "Hỏi một phòng cho một đêm, rồi trả bằng thẻ."
+        "vi": "Trả lời một người hàng xóm mới: tên và nơi làm việc của bạn."
       },
-      "taskFamily": "transaction",
+      "taskFamily": "conversation",
       "objectiveRefs": [
-        "en.obj.interaction.practical_needs"
+        "en.obj.interaction.everyday_conversation"
       ],
       "startNodeId": "p0",
       "nodes": {
@@ -3305,35 +3305,35 @@
           "id": "t_miss",
           "outcome": "goal_not_met",
           "text": "No problem. Goodbye!",
-          "clipId": "en.clip.ix_a1cap_hotel_room_miss"
+          "clipId": "en.clip.ix_a1cap_neighbor_miss"
         },
         "p0": {
           "kind": "partner",
           "id": "p0",
-          "text": "Good evening. How can I help you?",
-          "clipId": "en.clip.ix_a1cap_hotel_room_0",
-          "rephraseText": "Do you want a room?",
-          "rephraseClipId": "en.clip.ix_a1cap_hotel_room_0_s",
+          "text": "Hello! I live near you. Are you new here?",
+          "clipId": "en.clip.ix_a1cap_neighbor_0",
+          "rephraseText": "You are my new neighbor, right?",
+          "rephraseClipId": "en.clip.ix_a1cap_neighbor_0_s",
           "next": "l0"
         },
         "l0": {
           "kind": "learner",
           "id": "l0",
           "prompt": {
-            "vi": "Hãy hỏi một phòng cho một đêm."
+            "vi": "Hãy trả lời là đúng, rồi nói tên của bạn: Mai."
           },
           "expected": [
             {
-              "intent": "ask_room",
+              "intent": "give_name",
               "acceptedVariants": [
-                "A room for one night, please.",
-                "I'd like a room for one night.",
-                "I want a room for one night.",
-                "I need a room for one night."
+                "Yes, I'm Mai.",
+                "Yes, my name is Mai.",
+                "Yes, I'm new. I'm Mai.",
+                "I'm Mai."
               ],
               "requiredConcepts": [
                 [
-                  "room"
+                  "mai"
                 ]
               ],
               "next": "p1"
@@ -3345,28 +3345,28 @@
         "r0": {
           "kind": "partner",
           "id": "r0",
-          "text": "Do you want a room?",
-          "clipId": "en.clip.ix_a1cap_hotel_room_0_s",
+          "text": "You are my new neighbor, right?",
+          "clipId": "en.clip.ix_a1cap_neighbor_0_s",
           "next": "l0b"
         },
         "l0b": {
           "kind": "learner",
           "id": "l0b",
           "prompt": {
-            "vi": "Hãy hỏi một phòng cho một đêm."
+            "vi": "Hãy trả lời là đúng, rồi nói tên của bạn: Mai."
           },
           "expected": [
             {
-              "intent": "ask_room",
+              "intent": "give_name",
               "acceptedVariants": [
-                "A room for one night, please.",
-                "I'd like a room for one night.",
-                "I want a room for one night.",
-                "I need a room for one night."
+                "Yes, I'm Mai.",
+                "Yes, my name is Mai.",
+                "Yes, I'm new. I'm Mai.",
+                "I'm Mai."
               ],
               "requiredConcepts": [
                 [
-                  "room"
+                  "mai"
                 ]
               ],
               "next": "p1"
@@ -3378,29 +3378,30 @@
         "p1": {
           "kind": "partner",
           "id": "p1",
-          "text": "It's fifty dollars. Cash or card?",
-          "clipId": "en.clip.ix_a1cap_hotel_room_1",
-          "rephraseText": "Do you want to pay by cash or card?",
-          "rephraseClipId": "en.clip.ix_a1cap_hotel_room_1_s",
+          "text": "Nice to meet you, Mai. Where do you work?",
+          "clipId": "en.clip.ix_a1cap_neighbor_1",
+          "rephraseText": "What is your job?",
+          "rephraseClipId": "en.clip.ix_a1cap_neighbor_1_s",
           "next": "l1"
         },
         "l1": {
           "kind": "learner",
           "id": "l1",
           "prompt": {
-            "vi": "Hãy nói bạn trả bằng thẻ."
+            "vi": "Hãy nói bạn làm việc ở một ngân hàng."
           },
           "expected": [
             {
-              "intent": "pay_card",
+              "intent": "give_work",
               "acceptedVariants": [
-                "By card, please.",
-                "Card, please.",
-                "I'll pay by card."
+                "I work in a bank.",
+                "I work at a bank.",
+                "In a bank.",
+                "At a bank."
               ],
               "requiredConcepts": [
                 [
-                  "card"
+                  "bank"
                 ]
               ],
               "next": "t_ok"
@@ -3412,27 +3413,28 @@
         "r1": {
           "kind": "partner",
           "id": "r1",
-          "text": "Do you want to pay by cash or card?",
-          "clipId": "en.clip.ix_a1cap_hotel_room_1_s",
+          "text": "What is your job?",
+          "clipId": "en.clip.ix_a1cap_neighbor_1_s",
           "next": "l1b"
         },
         "l1b": {
           "kind": "learner",
           "id": "l1b",
           "prompt": {
-            "vi": "Hãy nói bạn trả bằng thẻ."
+            "vi": "Hãy nói bạn làm việc ở một ngân hàng."
           },
           "expected": [
             {
-              "intent": "pay_card",
+              "intent": "give_work",
               "acceptedVariants": [
-                "By card, please.",
-                "Card, please.",
-                "I'll pay by card."
+                "I work in a bank.",
+                "I work at a bank.",
+                "In a bank.",
+                "At a bank."
               ],
               "requiredConcepts": [
                 [
-                  "card"
+                  "bank"
                 ]
               ],
               "next": "t_ok"
@@ -3445,8 +3447,8 @@
           "kind": "terminal",
           "id": "t_ok",
           "outcome": "goal_met",
-          "text": "Thank you. Here is your key.",
-          "clipId": "en.clip.ix_a1cap_hotel_room_end"
+          "text": "That's nice. See you later!",
+          "clipId": "en.clip.ix_a1cap_neighbor_end"
         }
       },
       "support": {
@@ -3633,16 +3635,16 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "en.scenario.a1cap_airport_trip",
+      "id": "en.scenario.a1cap_lunch",
       "title": {
-        "vi": "Hỏi đáp ở sân bay"
+        "vi": "Ăn trưa với đồng nghiệp"
       },
       "goal": {
-        "vi": "Trả lời nhân viên sân bay về chuyến đi của bạn."
+        "vi": "Nhận lời ăn trưa với một đồng nghiệp và nói bạn muốn ăn gì."
       },
-      "taskFamily": "information_exchange",
+      "taskFamily": "conversation",
       "objectiveRefs": [
-        "en.obj.interaction.practical_needs"
+        "en.obj.interaction.everyday_conversation"
       ],
       "startNodeId": "p0",
       "nodes": {
@@ -3650,35 +3652,38 @@
           "kind": "terminal",
           "id": "t_miss",
           "outcome": "goal_not_met",
-          "text": "No problem. Please wait here.",
-          "clipId": "en.clip.ix_a1cap_airport_trip_miss"
+          "text": "No problem. Another day!",
+          "clipId": "en.clip.ix_a1cap_lunch_miss"
         },
         "p0": {
           "kind": "partner",
           "id": "p0",
-          "text": "Good afternoon. Where are you going?",
-          "clipId": "en.clip.ix_a1cap_airport_trip_0",
-          "rephraseText": "Where is your flight going?",
-          "rephraseClipId": "en.clip.ix_a1cap_airport_trip_0_s",
+          "text": "It's twelve o'clock. Do you want to have lunch?",
+          "clipId": "en.clip.ix_a1cap_lunch_0",
+          "rephraseText": "Do you want to eat now?",
+          "rephraseClipId": "en.clip.ix_a1cap_lunch_0_s",
           "next": "l0"
         },
         "l0": {
           "kind": "learner",
           "id": "l0",
           "prompt": {
-            "vi": "Hãy nói bạn đi Sydney."
+            "vi": "Hãy nhận lời."
           },
           "expected": [
             {
-              "intent": "destination",
+              "intent": "accept",
               "acceptedVariants": [
-                "To Sydney.",
-                "I'm going to Sydney.",
-                "Sydney."
+                "Yes, please.",
+                "Yes, I do.",
+                "Okay, thank you.",
+                "Sure."
               ],
               "requiredConcepts": [
                 [
-                  "sydney"
+                  "yes",
+                  "okay",
+                  "sure"
                 ]
               ],
               "next": "p1"
@@ -3690,27 +3695,30 @@
         "r0": {
           "kind": "partner",
           "id": "r0",
-          "text": "Where is your flight going?",
-          "clipId": "en.clip.ix_a1cap_airport_trip_0_s",
+          "text": "Do you want to eat now?",
+          "clipId": "en.clip.ix_a1cap_lunch_0_s",
           "next": "l0b"
         },
         "l0b": {
           "kind": "learner",
           "id": "l0b",
           "prompt": {
-            "vi": "Hãy nói bạn đi Sydney."
+            "vi": "Hãy nhận lời."
           },
           "expected": [
             {
-              "intent": "destination",
+              "intent": "accept",
               "acceptedVariants": [
-                "To Sydney.",
-                "I'm going to Sydney.",
-                "Sydney."
+                "Yes, please.",
+                "Yes, I do.",
+                "Okay, thank you.",
+                "Sure."
               ],
               "requiredConcepts": [
                 [
-                  "sydney"
+                  "yes",
+                  "okay",
+                  "sure"
                 ]
               ],
               "next": "p1"
@@ -3722,29 +3730,31 @@
         "p1": {
           "kind": "partner",
           "id": "p1",
-          "text": "Okay. Is this your suitcase?",
-          "clipId": "en.clip.ix_a1cap_airport_trip_1",
-          "rephraseText": "This suitcase, is it yours?",
-          "rephraseClipId": "en.clip.ix_a1cap_airport_trip_1_s",
+          "text": "Great! What do you want to eat?",
+          "clipId": "en.clip.ix_a1cap_lunch_1",
+          "rephraseText": "What food do you want?",
+          "rephraseClipId": "en.clip.ix_a1cap_lunch_1_s",
           "next": "l1"
         },
         "l1": {
           "kind": "learner",
           "id": "l1",
           "prompt": {
-            "vi": "Hãy trả lời là đúng."
+            "vi": "Hãy nói bạn muốn ăn mì."
           },
           "expected": [
             {
-              "intent": "confirm",
+              "intent": "food",
               "acceptedVariants": [
-                "Yes, it is.",
-                "Yes.",
-                "Yes, it's mine."
+                "I want noodles.",
+                "Noodles, please.",
+                "I'd like noodles.",
+                "Noodles."
               ],
               "requiredConcepts": [
                 [
-                  "yes"
+                  "noodle",
+                  "noodles"
                 ]
               ],
               "next": "t_ok"
@@ -3756,27 +3766,29 @@
         "r1": {
           "kind": "partner",
           "id": "r1",
-          "text": "This suitcase, is it yours?",
-          "clipId": "en.clip.ix_a1cap_airport_trip_1_s",
+          "text": "What food do you want?",
+          "clipId": "en.clip.ix_a1cap_lunch_1_s",
           "next": "l1b"
         },
         "l1b": {
           "kind": "learner",
           "id": "l1b",
           "prompt": {
-            "vi": "Hãy trả lời là đúng."
+            "vi": "Hãy nói bạn muốn ăn mì."
           },
           "expected": [
             {
-              "intent": "confirm",
+              "intent": "food",
               "acceptedVariants": [
-                "Yes, it is.",
-                "Yes.",
-                "Yes, it's mine."
+                "I want noodles.",
+                "Noodles, please.",
+                "I'd like noodles.",
+                "Noodles."
               ],
               "requiredConcepts": [
                 [
-                  "yes"
+                  "noodle",
+                  "noodles"
                 ]
               ],
               "next": "t_ok"
@@ -3789,8 +3801,998 @@
           "kind": "terminal",
           "id": "t_ok",
           "outcome": "goal_met",
-          "text": "Thank you. Have a good flight!",
-          "clipId": "en.clip.ix_a1cap_airport_trip_end"
+          "text": "Okay, let's go!",
+          "clipId": "en.clip.ix_a1cap_lunch_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.scenario.bac2_a_greet",
+      "title": {
+        "vi": "Phần 1 — Chào hỏi"
+      },
+      "goal": {
+        "vi": "Chào giám khảo và nói tên, quê của bạn."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "en.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "That's okay. Let's stop here.",
+          "clipId": "en.clip.ix_bac2_a_greet_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "Good morning. Please sit down. How are you today?",
+          "clipId": "en.clip.ix_bac2_a_greet_0",
+          "rephraseText": "Hello. How do you feel today?",
+          "rephraseClipId": "en.clip.ix_bac2_a_greet_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy chào lại và nói bạn khoẻ."
+          },
+          "expected": [
+            {
+              "intent": "fine",
+              "acceptedVariants": [
+                "Good morning. I'm fine, thank you.",
+                "I'm fine, thanks.",
+                "I'm very well, thank you.",
+                "I'm okay, thank you."
+              ],
+              "requiredConcepts": [
+                [
+                  "fine",
+                  "well",
+                  "okay",
+                  "good"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "Hello. How do you feel today?",
+          "clipId": "en.clip.ix_bac2_a_greet_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy chào lại và nói bạn khoẻ."
+          },
+          "expected": [
+            {
+              "intent": "fine",
+              "acceptedVariants": [
+                "Good morning. I'm fine, thank you.",
+                "I'm fine, thanks.",
+                "I'm very well, thank you.",
+                "I'm okay, thank you."
+              ],
+              "requiredConcepts": [
+                [
+                  "fine",
+                  "well",
+                  "okay",
+                  "good"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "What is your name, and where are you from?",
+          "clipId": "en.clip.ix_bac2_a_greet_1",
+          "rephraseText": "Please tell me your name and your home town.",
+          "rephraseClipId": "en.clip.ix_bac2_a_greet_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói tên bạn là Lan và bạn đến từ Huế."
+          },
+          "expected": [
+            {
+              "intent": "name_from",
+              "acceptedVariants": [
+                "My name is Lan and I'm from Hue.",
+                "I'm Lan, from Hue.",
+                "I'm Lan and I come from Hue."
+              ],
+              "requiredConcepts": [
+                [
+                  "lan"
+                ],
+                [
+                  "hue"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "Please tell me your name and your home town.",
+          "clipId": "en.clip.ix_bac2_a_greet_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói tên bạn là Lan và bạn đến từ Huế."
+          },
+          "expected": [
+            {
+              "intent": "name_from",
+              "acceptedVariants": [
+                "My name is Lan and I'm from Hue.",
+                "I'm Lan, from Hue.",
+                "I'm Lan and I come from Hue."
+              ],
+              "requiredConcepts": [
+                [
+                  "lan"
+                ],
+                [
+                  "hue"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "Thank you. That's all for this part.",
+          "clipId": "en.clip.ix_bac2_a_greet_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.scenario.bac2_b_greet",
+      "title": {
+        "vi": "Phần 1 — Chào hỏi"
+      },
+      "goal": {
+        "vi": "Chào giám khảo và nói tên, nơi sống của bạn."
+      },
+      "taskFamily": "conversation",
+      "objectiveRefs": [
+        "en.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "That's okay. Let's stop here.",
+          "clipId": "en.clip.ix_bac2_b_greet_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "Good afternoon. Come in, please. How are you?",
+          "clipId": "en.clip.ix_bac2_b_greet_0",
+          "rephraseText": "Hello. How are you feeling today?",
+          "rephraseClipId": "en.clip.ix_bac2_b_greet_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy chào lại và nói bạn khoẻ."
+          },
+          "expected": [
+            {
+              "intent": "fine",
+              "acceptedVariants": [
+                "Good afternoon. I'm fine, thank you.",
+                "I'm fine, thanks.",
+                "I'm very well, thank you.",
+                "I'm okay, thank you."
+              ],
+              "requiredConcepts": [
+                [
+                  "fine",
+                  "well",
+                  "okay",
+                  "good"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "Hello. How are you feeling today?",
+          "clipId": "en.clip.ix_bac2_b_greet_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy chào lại và nói bạn khoẻ."
+          },
+          "expected": [
+            {
+              "intent": "fine",
+              "acceptedVariants": [
+                "Good afternoon. I'm fine, thank you.",
+                "I'm fine, thanks.",
+                "I'm very well, thank you.",
+                "I'm okay, thank you."
+              ],
+              "requiredConcepts": [
+                [
+                  "fine",
+                  "well",
+                  "okay",
+                  "good"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "What is your name, and where do you live?",
+          "clipId": "en.clip.ix_bac2_b_greet_1",
+          "rephraseText": "Please tell me your name and your city.",
+          "rephraseClipId": "en.clip.ix_bac2_b_greet_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói tên bạn là Nam và bạn sống ở Hà Nội."
+          },
+          "expected": [
+            {
+              "intent": "name_city",
+              "acceptedVariants": [
+                "My name is Nam and I live in Hanoi.",
+                "I'm Nam, and I live in Hanoi.",
+                "I'm Nam, from Hanoi."
+              ],
+              "requiredConcepts": [
+                [
+                  "nam"
+                ],
+                [
+                  "hanoi"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "Please tell me your name and your city.",
+          "clipId": "en.clip.ix_bac2_b_greet_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói tên bạn là Nam và bạn sống ở Hà Nội."
+          },
+          "expected": [
+            {
+              "intent": "name_city",
+              "acceptedVariants": [
+                "My name is Nam and I live in Hanoi.",
+                "I'm Nam, and I live in Hanoi.",
+                "I'm Nam, from Hanoi."
+              ],
+              "requiredConcepts": [
+                [
+                  "nam"
+                ],
+                [
+                  "hanoi"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "Thank you. That's all for this part.",
+          "clipId": "en.clip.ix_bac2_b_greet_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.scenario.bac2_a_social",
+      "title": {
+        "vi": "Phần 2 — Tương tác xã hội"
+      },
+      "goal": {
+        "vi": "Trả lời câu hỏi về công việc và thời gian rảnh, rồi hỏi lại giám khảo một câu."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "en.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "That's okay. Let's stop here.",
+          "clipId": "en.clip.ix_bac2_a_social_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "Let's talk about your work. What do you do?",
+          "clipId": "en.clip.ix_bac2_a_social_0",
+          "rephraseText": "What is your job?",
+          "rephraseClipId": "en.clip.ix_bac2_a_social_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói bạn là y tá ở một bệnh viện."
+          },
+          "expected": [
+            {
+              "intent": "job",
+              "acceptedVariants": [
+                "I'm a nurse in a hospital.",
+                "I work as a nurse in a hospital.",
+                "I'm a nurse."
+              ],
+              "requiredConcepts": [
+                [
+                  "nurse"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "What is your job?",
+          "clipId": "en.clip.ix_bac2_a_social_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói bạn là y tá ở một bệnh viện."
+          },
+          "expected": [
+            {
+              "intent": "job",
+              "acceptedVariants": [
+                "I'm a nurse in a hospital.",
+                "I work as a nurse in a hospital.",
+                "I'm a nurse."
+              ],
+              "requiredConcepts": [
+                [
+                  "nurse"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "Do you like your job? Why?",
+          "clipId": "en.clip.ix_bac2_a_social_1",
+          "rephraseText": "Is your job good for you? Why?",
+          "rephraseClipId": "en.clip.ix_bac2_a_social_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn thích vì bạn giúp được mọi người."
+          },
+          "expected": [
+            {
+              "intent": "why",
+              "acceptedVariants": [
+                "Yes, I like it because I can help people.",
+                "Yes, because I help people.",
+                "I like it because I help people."
+              ],
+              "requiredConcepts": [
+                [
+                  "help"
+                ]
+              ],
+              "next": "p2"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "Is your job good for you? Why?",
+          "clipId": "en.clip.ix_bac2_a_social_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn thích vì bạn giúp được mọi người."
+          },
+          "expected": [
+            {
+              "intent": "why",
+              "acceptedVariants": [
+                "Yes, I like it because I can help people.",
+                "Yes, because I help people.",
+                "I like it because I help people."
+              ],
+              "requiredConcepts": [
+                [
+                  "help"
+                ]
+              ],
+              "next": "p2"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p2": {
+          "kind": "partner",
+          "id": "p2",
+          "text": "Now, your free time. What do you do on the weekend?",
+          "clipId": "en.clip.ix_bac2_a_social_2",
+          "rephraseText": "What do you like to do on Saturday and Sunday?",
+          "rephraseClipId": "en.clip.ix_bac2_a_social_2_s",
+          "next": "l2"
+        },
+        "l2": {
+          "kind": "learner",
+          "id": "l2",
+          "prompt": {
+            "vi": "Hãy nói bạn đi bơi và nấu ăn."
+          },
+          "expected": [
+            {
+              "intent": "weekend",
+              "acceptedVariants": [
+                "I go swimming and I cook.",
+                "I swim and cook.",
+                "I go swimming and cook."
+              ],
+              "requiredConcepts": [
+                [
+                  "swim",
+                  "swimming"
+                ],
+                [
+                  "cook"
+                ]
+              ],
+              "next": "p3"
+            }
+          ],
+          "noMatchNext": "r2",
+          "scored": true
+        },
+        "r2": {
+          "kind": "partner",
+          "id": "r2",
+          "text": "What do you like to do on Saturday and Sunday?",
+          "clipId": "en.clip.ix_bac2_a_social_2_s",
+          "next": "l2b"
+        },
+        "l2b": {
+          "kind": "learner",
+          "id": "l2b",
+          "prompt": {
+            "vi": "Hãy nói bạn đi bơi và nấu ăn."
+          },
+          "expected": [
+            {
+              "intent": "weekend",
+              "acceptedVariants": [
+                "I go swimming and I cook.",
+                "I swim and cook.",
+                "I go swimming and cook."
+              ],
+              "requiredConcepts": [
+                [
+                  "swim",
+                  "swimming"
+                ],
+                [
+                  "cook"
+                ]
+              ],
+              "next": "p3"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p3": {
+          "kind": "partner",
+          "id": "p3",
+          "text": "Good. Do you have a question for me?",
+          "clipId": "en.clip.ix_bac2_a_social_3",
+          "rephraseText": "You can ask me a question now.",
+          "rephraseClipId": "en.clip.ix_bac2_a_social_3_s",
+          "next": "l3"
+        },
+        "l3": {
+          "kind": "learner",
+          "id": "l3",
+          "prompt": {
+            "vi": "Hãy hỏi giám khảo có thích nấu ăn không."
+          },
+          "expected": [
+            {
+              "intent": "ask",
+              "acceptedVariants": [
+                "Do you like cooking?",
+                "Do you like to cook?",
+                "Do you cook?"
+              ],
+              "requiredConcepts": [
+                [
+                  "you"
+                ],
+                [
+                  "cook",
+                  "cooking"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r3",
+          "scored": true
+        },
+        "r3": {
+          "kind": "partner",
+          "id": "r3",
+          "text": "You can ask me a question now.",
+          "clipId": "en.clip.ix_bac2_a_social_3_s",
+          "next": "l3b"
+        },
+        "l3b": {
+          "kind": "learner",
+          "id": "l3b",
+          "prompt": {
+            "vi": "Hãy hỏi giám khảo có thích nấu ăn không."
+          },
+          "expected": [
+            {
+              "intent": "ask",
+              "acceptedVariants": [
+                "Do you like cooking?",
+                "Do you like to cook?",
+                "Do you cook?"
+              ],
+              "requiredConcepts": [
+                [
+                  "you"
+                ],
+                [
+                  "cook",
+                  "cooking"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "Thank you. That's all for this part.",
+          "clipId": "en.clip.ix_bac2_a_social_end"
+        }
+      },
+      "support": {
+        "allowRepeat": true,
+        "allowRephrase": true
+      },
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.scenario.bac2_b_social",
+      "title": {
+        "vi": "Phần 2 — Tương tác xã hội"
+      },
+      "goal": {
+        "vi": "Trả lời câu hỏi về gia đình và món ăn, rồi hỏi lại giám khảo một câu."
+      },
+      "taskFamily": "information_exchange",
+      "objectiveRefs": [
+        "en.obj.interaction.everyday_conversation"
+      ],
+      "startNodeId": "p0",
+      "nodes": {
+        "t_miss": {
+          "kind": "terminal",
+          "id": "t_miss",
+          "outcome": "goal_not_met",
+          "text": "That's okay. Let's stop here.",
+          "clipId": "en.clip.ix_bac2_b_social_miss"
+        },
+        "p0": {
+          "kind": "partner",
+          "id": "p0",
+          "text": "Tell me about your family. How many people are there?",
+          "clipId": "en.clip.ix_bac2_b_social_0",
+          "rephraseText": "How many people are in your family?",
+          "rephraseClipId": "en.clip.ix_bac2_b_social_0_s",
+          "next": "l0"
+        },
+        "l0": {
+          "kind": "learner",
+          "id": "l0",
+          "prompt": {
+            "vi": "Hãy nói gia đình bạn có năm người."
+          },
+          "expected": [
+            {
+              "intent": "count",
+              "acceptedVariants": [
+                "There are five people in my family.",
+                "Five people.",
+                "We have five people."
+              ],
+              "requiredConcepts": [
+                [
+                  "five",
+                  "5"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "r0",
+          "scored": true
+        },
+        "r0": {
+          "kind": "partner",
+          "id": "r0",
+          "text": "How many people are in your family?",
+          "clipId": "en.clip.ix_bac2_b_social_0_s",
+          "next": "l0b"
+        },
+        "l0b": {
+          "kind": "learner",
+          "id": "l0b",
+          "prompt": {
+            "vi": "Hãy nói gia đình bạn có năm người."
+          },
+          "expected": [
+            {
+              "intent": "count",
+              "acceptedVariants": [
+                "There are five people in my family.",
+                "Five people.",
+                "We have five people."
+              ],
+              "requiredConcepts": [
+                [
+                  "five",
+                  "5"
+                ]
+              ],
+              "next": "p1"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p1": {
+          "kind": "partner",
+          "id": "p1",
+          "text": "Who do you live with?",
+          "clipId": "en.clip.ix_bac2_b_social_1",
+          "rephraseText": "Do you live with your family?",
+          "rephraseClipId": "en.clip.ix_bac2_b_social_1_s",
+          "next": "l1"
+        },
+        "l1": {
+          "kind": "learner",
+          "id": "l1",
+          "prompt": {
+            "vi": "Hãy nói bạn sống với bố mẹ."
+          },
+          "expected": [
+            {
+              "intent": "live_with",
+              "acceptedVariants": [
+                "I live with my parents.",
+                "With my parents.",
+                "My parents."
+              ],
+              "requiredConcepts": [
+                [
+                  "parents"
+                ]
+              ],
+              "next": "p2"
+            }
+          ],
+          "noMatchNext": "r1",
+          "scored": true
+        },
+        "r1": {
+          "kind": "partner",
+          "id": "r1",
+          "text": "Do you live with your family?",
+          "clipId": "en.clip.ix_bac2_b_social_1_s",
+          "next": "l1b"
+        },
+        "l1b": {
+          "kind": "learner",
+          "id": "l1b",
+          "prompt": {
+            "vi": "Hãy nói bạn sống với bố mẹ."
+          },
+          "expected": [
+            {
+              "intent": "live_with",
+              "acceptedVariants": [
+                "I live with my parents.",
+                "With my parents.",
+                "My parents."
+              ],
+              "requiredConcepts": [
+                [
+                  "parents"
+                ]
+              ],
+              "next": "p2"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p2": {
+          "kind": "partner",
+          "id": "p2",
+          "text": "Let's talk about food. What is your favorite food?",
+          "clipId": "en.clip.ix_bac2_b_social_2",
+          "rephraseText": "What food do you like best?",
+          "rephraseClipId": "en.clip.ix_bac2_b_social_2_s",
+          "next": "l2"
+        },
+        "l2": {
+          "kind": "learner",
+          "id": "l2",
+          "prompt": {
+            "vi": "Hãy nói bạn thích phở nhất."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "My favorite food is pho.",
+                "I like pho best.",
+                "Pho."
+              ],
+              "requiredConcepts": [
+                [
+                  "pho"
+                ]
+              ],
+              "next": "p3"
+            }
+          ],
+          "noMatchNext": "r2",
+          "scored": true
+        },
+        "r2": {
+          "kind": "partner",
+          "id": "r2",
+          "text": "What food do you like best?",
+          "clipId": "en.clip.ix_bac2_b_social_2_s",
+          "next": "l2b"
+        },
+        "l2b": {
+          "kind": "learner",
+          "id": "l2b",
+          "prompt": {
+            "vi": "Hãy nói bạn thích phở nhất."
+          },
+          "expected": [
+            {
+              "intent": "food",
+              "acceptedVariants": [
+                "My favorite food is pho.",
+                "I like pho best.",
+                "Pho."
+              ],
+              "requiredConcepts": [
+                [
+                  "pho"
+                ]
+              ],
+              "next": "p3"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "p3": {
+          "kind": "partner",
+          "id": "p3",
+          "text": "Good. Do you have a question for me?",
+          "clipId": "en.clip.ix_bac2_b_social_3",
+          "rephraseText": "You can ask me a question now.",
+          "rephraseClipId": "en.clip.ix_bac2_b_social_3_s",
+          "next": "l3"
+        },
+        "l3": {
+          "kind": "learner",
+          "id": "l3",
+          "prompt": {
+            "vi": "Hãy hỏi giám khảo thích món gì."
+          },
+          "expected": [
+            {
+              "intent": "ask",
+              "acceptedVariants": [
+                "What is your favorite food?",
+                "What food do you like?",
+                "What do you like to eat?"
+              ],
+              "requiredConcepts": [
+                [
+                  "what"
+                ],
+                [
+                  "food",
+                  "eat"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "r3",
+          "scored": true
+        },
+        "r3": {
+          "kind": "partner",
+          "id": "r3",
+          "text": "You can ask me a question now.",
+          "clipId": "en.clip.ix_bac2_b_social_3_s",
+          "next": "l3b"
+        },
+        "l3b": {
+          "kind": "learner",
+          "id": "l3b",
+          "prompt": {
+            "vi": "Hãy hỏi giám khảo thích món gì."
+          },
+          "expected": [
+            {
+              "intent": "ask",
+              "acceptedVariants": [
+                "What is your favorite food?",
+                "What food do you like?",
+                "What do you like to eat?"
+              ],
+              "requiredConcepts": [
+                [
+                  "what"
+                ],
+                [
+                  "food",
+                  "eat"
+                ]
+              ],
+              "next": "t_ok"
+            }
+          ],
+          "noMatchNext": "t_miss",
+          "scored": false
+        },
+        "t_ok": {
+          "kind": "terminal",
+          "id": "t_ok",
+          "outcome": "goal_met",
+          "text": "Thank you. That's all for this part.",
+          "clipId": "en.clip.ix_bac2_b_social_end"
         }
       },
       "support": {

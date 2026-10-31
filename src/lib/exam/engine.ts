@@ -80,6 +80,7 @@ export type CompiledExamTrack = {
   trackVersion: number;
   name: string;
   level: string;
+  formatFidelity?: "full" | "partial";
   title: string;
   description: string;
   formatSource: { publisher: string; references: { url: string; title: string; retrieved?: string }[]; checkedAgainstOfficialGuide: boolean; checkedBy?: string; checkedAt?: string; note: string };

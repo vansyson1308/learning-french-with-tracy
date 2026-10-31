@@ -385,8 +385,9 @@ level is never an input to a level claim, and vocabulary counts never are.
 
 ## Exam track
 
-This course has no exam track at this step. The decision on what may be built is in
-`plan/authoring/en-plan.md`.
+The one exam track practises the MOET bậc 2 adult format (QĐ 1481/QĐ-BGDĐT), marked
+`formatFidelity: "partial"`. It is a further goal beyond this A1 course. Sources:
+`content/en/exam/FORMAT-SOURCES.md`; decision: `plan/authoring/en-plan.md`.
 
 ## Assessment limitations
 

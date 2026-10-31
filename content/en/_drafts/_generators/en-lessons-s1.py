@@ -4,7 +4,7 @@ usage: python -I en-lessons-s1.py <repo root>"""
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from en_lesson_lib import C, F, H, J, M, MP, N, NX, T, TX, W, WT, Y, finish, lesson
+from en_lesson_lib import AS, C, F, H, J, M, MP, N, NX, T, TX, W, WT, Y, finish, lesson
 
 # ---------------------------------------------------------------- u0: greetings
 lesson("u0-l0", [
@@ -63,7 +63,8 @@ lesson("u3-l1", [
 ])
 lesson("u3-l2", [
     T("want", ["eat", "drink", "have"]),
-    C("articles"), F("I want ___ egg.", "an", ["a", "the", "some"], "Tôi muốn một quả trứng."), NX("Tôi uống nước.", "I drink water.", ["I drink a water.", "I drinks water.", "I water drink."]), NX("Cho tôi một ly cà phê.", "A coffee, please.", ["An coffee, please.", "Coffee a, please.", "A coffee, sorry."]), W("Tôi muốn một quả trứng.", "I want an egg.", ["a", "eat"]), Y("Tôi muốn nước.", "I want water.", "I want some water."), Y("Tôi muốn ăn cơm.", "I want to eat rice.", "I want to eat some rice."), M("food", "banana", "soup", "juice", "fruit"), TX("I want some soup.", "Tôi muốn một ít súp.", ["Tôi muốn một quả chuối.", "Tôi không muốn súp.", "Tôi có một ít súp."]),
+    C("articles"), F("I want ___ egg.", "an", ["a", "the", "some"], "Tôi muốn một quả trứng."), NX("Tôi uống nước.", "I drink water.", ["I drink a water.", "I drinks water.", "I water drink."]), NX("Cho tôi một ly cà phê.", "A coffee, please.", ["An coffee, please.", "Coffee a, please.", "A coffee, sorry."]), W("Tôi muốn một quả trứng.", "I want an egg.", ["a", "eat"]), Y("Tôi muốn nước.", "I want water.", "I want some water."), Y("Tôi muốn ăn cơm.", "I want to eat rice.", "I want to eat some rice."), M("food", "banana", "soup", "juice", "fruit"), TX("I want some soup.", "Tôi muốn một ít súp.", ["Tôi muốn một quả chuối.", "Tôi không muốn súp.", "Tôi có một ít súp."]), AS("egg", "quả trứng", "an"),
+    AS("banana", "quả chuối", "a"),
 ])
 lesson("u3-l3", [
     M("breakfast", "lunch", "dinner", "meat", "vegetable"), F("We eat ___ at noon.", "lunch", ["breakfast", "dinner", "water"], "Chúng tôi ăn bữa trưa vào buổi trưa."), F("I drink a ___ of water.", "glass", ["cook", "meal", "knife"], "Tôi uống một ly nước."), F("A ___ of beer, please.", "bottle", ["bowl", "cake", "knife"], "Cho tôi một chai bia."), TX("The waiter brings the food.", "Người phục vụ mang thức ăn đến.", ["Người phục vụ ăn thức ăn.", "Đầu bếp nấu thức ăn.", "Tôi mang thức ăn đến."]), W("Tôi ăn sáng lúc bảy giờ.", "I eat breakfast at seven.", ["lunch", "in"], ["At seven I eat breakfast."]), Y("Tôi không ăn thịt.", "I don't eat meat."), Y("Mẹ tôi nấu bữa tối.", "My mother cooks dinner.", "My mother is cooking dinner."),
@@ -83,6 +84,6 @@ lesson("u4-l2", [
 ])
 lesson("u4-l3", [
     M("road", "plane", "truck", "bank", "map"), T("park", ["bank", "road", "plane"]), F("The bank is ___ the station.", "near", ["go", "where", "home"], "Ngân hàng ở gần nhà ga."), F("The park is ___ the bank and the station.", "between", ["behind", "near", "under"], "Công viên ở giữa ngân hàng và nhà ga."), TX("The taxi is at the corner.", "Tắc xi ở góc phố.", ["Tắc xi ở sân bay.", "Xe buýt ở góc phố.", "Tắc xi ở phía sau nhà."]), W("Ngân hàng ở gần sân bay.", "The bank is near the airport.", ["behind", "are"]), Y("Bến xe buýt ở đâu?", "Where is the bus stop?"), Y("Tôi có một cái bản đồ.", "I have a map."),
-    M("between", "road", "corner", "taxi", "truck"),
+    M("between", "road", "corner", "taxi", "truck"), AS("airport", "sân bay", "an"),
 ])
 finish("w")

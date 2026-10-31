@@ -1,12 +1,22 @@
 /** English rules (P4 en-vi): contractions, spoken numbers, en-GB spellings, labels. */
 import { describe, expect, test } from "bun:test";
 
+import { msg } from "../i18n/message";
+import { translateMessage } from "../i18n/translate";
 import { en as rules, englishNumber, spellEnglishDigits } from "../languages/en";
 import { gradeSpokenAttempt, normalizeSpoken } from "../speech/grader";
 
 const typed = (a: string, b: string) => rules.normalizeLenient(a) === rules.normalizeLenient(b);
 const spoken = (a: string, b: string) => normalizeSpoken(a, rules) === normalizeSpoken(b, rules);
 const strict = (a: string, b: string) => rules.normalizeStrict(a) === rules.normalizeStrict(b);
+
+describe("articleSelect note", () => {
+  test("names no gender for English, in either UI language", () => {
+    const params = { noun: "apple", article: "an", gender: rules.grammarLabels?.articleGenders.an ?? "unknown" };
+    expect(translateMessage("vi", msg("panel.articleNote", params))).toBe("apple đi với an.");
+    expect(translateMessage("en", msg("panel.articleNote", params))).toBe("apple takes an.");
+  });
+});
 
 describe("English number speller", () => {
   test("0–100 in standard spelling", () => {

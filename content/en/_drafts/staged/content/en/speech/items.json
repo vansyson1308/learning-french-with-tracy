@@ -1761,32 +1761,41 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "en.speak.a1cap_water",
-      "taskFamily": "formulaic_exchange",
-      "elicitationType": "situation_prompt",
+      "id": "en.speak.a1cap_time_nine",
+      "taskFamily": "information_giving",
+      "elicitationType": "information_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Bạn muốn xin một ly nước. Hãy nói thật lịch sự."
-        }
+          "vi": "Có người hỏi giờ. Hãy trả lời."
+        },
+        "cueFacts": [
+          {
+            "label": {
+              "vi": "Giờ"
+            },
+            "value": "9 giờ"
+          }
+        ]
       },
-      "target": "Water, please.",
+      "target": "It's nine o'clock.",
       "acceptedVariants": [
-        "Water, please",
-        "Can I have some water please",
-        "I'd like some water please",
-        "Some water please",
-        "A glass of water please"
+        "It's nine o'clock",
+        "Nine o'clock",
+        "It's nine"
       ],
       "objectiveRefs": [
-        "en.obj.speaking.formulaic"
+        "en.obj.speaking.give_info"
       ],
       "lexemeRefs": [
-        "en:w:water",
-        "en:w:please"
+        "en:w:it",
+        "en:w:be",
+        "en:w:nine",
+        "en:w:oclock"
       ],
       "evidenceLexemeRefs": [
-        "en:w:water",
-        "en:w:please"
+        "en:w:be",
+        "en:w:nine",
+        "en:w:oclock"
       ],
       "assistancePolicy": {
         "allowContextualBias": false,
@@ -1800,83 +1809,46 @@
       "sourceRef": "original-project"
     },
     {
-      "id": "en.speak.a1cap_live",
-      "taskFamily": "self_introduction",
+      "id": "en.speak.a1cap_family_six",
+      "taskFamily": "information_giving",
       "elicitationType": "information_prompt",
       "prompt": {
         "instruction": {
-          "vi": "Hãy nói bạn sống ở thành phố nào."
+          "vi": "Hãy nói gia đình bạn có bao nhiêu người."
         },
         "cueFacts": [
           {
             "label": {
-              "vi": "Thành phố"
+              "vi": "Số người"
             },
-            "value": "Hà Nội"
+            "value": "6"
           }
         ]
       },
-      "target": "I live in Hanoi.",
+      "target": "There are six people in my family.",
       "acceptedVariants": [
-        "I live in Hanoi"
+        "There are six people in my family",
+        "Six people",
+        "We have six people"
       ],
       "objectiveRefs": [
-        "en.obj.speaking.self_intro"
+        "en.obj.speaking.give_info"
       ],
       "lexemeRefs": [
-        "en:w:i",
-        "en:w:live",
-        "en:w:in"
-      ],
-      "evidenceLexemeRefs": [
-        "en:w:live"
-      ],
-      "assistancePolicy": {
-        "allowContextualBias": false,
-        "revealTargetAfterAttempts": null
-      },
-      "scoredEligibility": true,
-      "modelAudioRef": null,
-      "recognitionLocale": "en-US",
-      "allowedAttempts": 2,
-      "reserved": true,
-      "sourceRef": "original-project"
-    },
-    {
-      "id": "en.speak.a1cap_hospital",
-      "taskFamily": "self_introduction",
-      "elicitationType": "information_prompt",
-      "prompt": {
-        "instruction": {
-          "vi": "Hãy nói bạn làm việc ở đâu."
-        },
-        "cueFacts": [
-          {
-            "label": {
-              "vi": "Nơi làm việc"
-            },
-            "value": "bệnh viện"
-          }
-        ]
-      },
-      "target": "I work in a hospital.",
-      "acceptedVariants": [
-        "I work in a hospital",
-        "I work at a hospital"
-      ],
-      "objectiveRefs": [
-        "en.obj.speaking.self_intro"
-      ],
-      "lexemeRefs": [
-        "en:w:i",
-        "en:w:work",
+        "en:w:there",
+        "en:w:be",
+        "en:w:six",
+        "en:w:people",
         "en:w:in",
-        "en:w:a",
-        "en:w:hospital"
+        "en:w:my",
+        "en:w:family"
       ],
       "evidenceLexemeRefs": [
-        "en:w:work",
-        "en:w:hospital"
+        "en:w:there",
+        "en:w:be",
+        "en:w:six",
+        "en:w:people",
+        "en:w:family"
       ],
       "assistancePolicy": {
         "allowContextualBias": false,
@@ -1975,48 +1947,6 @@
         "en:w:birthday",
         "en:w:be",
         "en:w:may-noun"
-      ],
-      "assistancePolicy": {
-        "allowContextualBias": false,
-        "revealTargetAfterAttempts": null
-      },
-      "scoredEligibility": true,
-      "modelAudioRef": null,
-      "recognitionLocale": "en-US",
-      "allowedAttempts": 2,
-      "reserved": true,
-      "sourceRef": "original-project"
-    },
-    {
-      "id": "en.speak.a1cap_desc_house",
-      "taskFamily": "description",
-      "elicitationType": "picture_prompt",
-      "prompt": {
-        "instruction": {
-          "vi": "Nhìn hình: ngôi nhà nhỏ. Hãy nói câu đó bằng tiếng Anh."
-        },
-        "cueEmoji": "🏡"
-      },
-      "target": "The house is small.",
-      "acceptedVariants": [
-        "The house is small",
-        "It's a small house",
-        "A small house",
-        "It's small"
-      ],
-      "objectiveRefs": [
-        "en.obj.speaking.describe"
-      ],
-      "lexemeRefs": [
-        "en:w:the",
-        "en:w:house",
-        "en:w:be",
-        "en:w:small"
-      ],
-      "evidenceLexemeRefs": [
-        "en:w:house",
-        "en:w:be",
-        "en:w:small"
       ],
       "assistancePolicy": {
         "allowContextualBias": false,
@@ -2190,6 +2120,312 @@
         "en:w:be",
         "en:w:big"
       ],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "en-US",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.speak.bac2_a_describe",
+      "taskFamily": "description",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Phần 3 — Hãy tả căn bếp nhà bạn theo các gợi ý."
+        },
+        "cueFacts": [
+          {
+            "label": {
+              "vi": "Căn bếp"
+            },
+            "value": "nhỏ nhưng sạch"
+          },
+          {
+            "label": {
+              "vi": "Trong bếp"
+            },
+            "value": "một cái bàn, bốn cái ghế"
+          },
+          {
+            "label": {
+              "vi": "Hằng ngày"
+            },
+            "value": "nấu bữa tối"
+          }
+        ]
+      },
+      "target": "My kitchen is small but clean. There is a table and four chairs. I cook dinner there every day.",
+      "acceptedVariants": [
+        "My kitchen is small but clean. There is a table and four chairs. I cook dinner there every day",
+        "My kitchen is small and clean. There is a table and four chairs. I cook dinner there."
+      ],
+      "requiredConcepts": [
+        [
+          "kitchen"
+        ],
+        [
+          "small"
+        ],
+        [
+          "clean"
+        ],
+        [
+          "table"
+        ],
+        [
+          "chairs",
+          "chair"
+        ],
+        [
+          "cook"
+        ]
+      ],
+      "objectiveRefs": [
+        "en.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "en:w:my",
+        "en:w:kitchen",
+        "en:w:be",
+        "en:w:small",
+        "en:w:but",
+        "en:w:clean",
+        "en:w:there",
+        "en:w:a",
+        "en:w:table",
+        "en:w:and",
+        "en:w:four",
+        "en:w:chair",
+        "en:w:i",
+        "en:w:cook",
+        "en:w:dinner",
+        "en:w:every",
+        "en:w:day"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "en-US",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.speak.bac2_b_describe",
+      "taskFamily": "description",
+      "elicitationType": "information_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Phần 3 — Hãy tả một người bạn của bạn theo các gợi ý."
+        },
+        "cueFacts": [
+          {
+            "label": {
+              "vi": "Tên"
+            },
+            "value": "Hoa"
+          },
+          {
+            "label": {
+              "vi": "Người"
+            },
+            "value": "cao, tốt bụng"
+          },
+          {
+            "label": {
+              "vi": "Công việc"
+            },
+            "value": "làm ở ngân hàng"
+          },
+          {
+            "label": {
+              "vi": "Sở thích"
+            },
+            "value": "âm nhạc"
+          }
+        ]
+      },
+      "target": "My friend Hoa is tall and kind. She works in a bank. She likes music.",
+      "acceptedVariants": [
+        "My friend Hoa is tall and kind. She works in a bank. She likes music",
+        "Hoa is my friend. She is tall and kind. She works in a bank and she likes music."
+      ],
+      "requiredConcepts": [
+        [
+          "hoa"
+        ],
+        [
+          "tall"
+        ],
+        [
+          "kind"
+        ],
+        [
+          "bank"
+        ],
+        [
+          "music"
+        ]
+      ],
+      "objectiveRefs": [
+        "en.obj.speaking.describe"
+      ],
+      "lexemeRefs": [
+        "en:w:my",
+        "en:w:friend",
+        "en:w:be",
+        "en:w:tall",
+        "en:w:and",
+        "en:w:kind",
+        "en:w:she",
+        "en:w:work",
+        "en:w:in",
+        "en:w:a",
+        "en:w:bank",
+        "en:w:like",
+        "en:w:music"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "en-US",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.speak.bac2_a_discuss",
+      "taskFamily": "information_giving",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Phần 4 — Giám khảo nêu ý kiến: nhiều người nên đi làm bằng xe buýt. Giám khảo đề xuất: thành phố nên có thêm xe buýt. Hãy nói bạn đồng ý hay không với cả hai, và nói một lý do."
+        },
+        "cueFacts": [
+          {
+            "label": {
+              "vi": "Lý do của bạn"
+            },
+            "value": "xe buýt rẻ"
+          }
+        ]
+      },
+      "target": "I agree. People should take the bus because it is cheap, and the city needs more buses.",
+      "acceptedVariants": [
+        "I agree. People should take the bus because it is cheap, and the city needs more buses",
+        "I agree because the bus is cheap. The city needs more buses.",
+        "I disagree because buses are slow, but the city needs more buses."
+      ],
+      "requiredConcepts": [
+        [
+          "agree",
+          "disagree"
+        ],
+        [
+          "because"
+        ]
+      ],
+      "objectiveRefs": [
+        "en.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "en:w:i",
+        "en:w:agree",
+        "en:w:people",
+        "en:w:should",
+        "en:w:take",
+        "en:w:the",
+        "en:w:bus",
+        "en:w:because",
+        "en:w:it",
+        "en:w:be",
+        "en:w:cheap",
+        "en:w:and",
+        "en:w:city",
+        "en:w:need",
+        "en:w:more"
+      ],
+      "evidenceLexemeRefs": [],
+      "assistancePolicy": {
+        "allowContextualBias": false,
+        "revealTargetAfterAttempts": null
+      },
+      "scoredEligibility": true,
+      "modelAudioRef": null,
+      "recognitionLocale": "en-US",
+      "allowedAttempts": 2,
+      "reserved": true,
+      "sourceRef": "original-project"
+    },
+    {
+      "id": "en.speak.bac2_b_discuss",
+      "taskFamily": "information_giving",
+      "elicitationType": "situation_prompt",
+      "prompt": {
+        "instruction": {
+          "vi": "Phần 4 — Giám khảo nêu ý kiến: học sinh không nên dùng điện thoại ở trường. Giám khảo đề xuất: trường nên giữ điện thoại trong giờ học. Hãy nói bạn đồng ý hay không với cả hai, và nói một lý do."
+        },
+        "cueFacts": [
+          {
+            "label": {
+              "vi": "Lý do của bạn"
+            },
+            "value": "học sinh không tập trung"
+          }
+        ]
+      },
+      "target": "I agree. Students should not use phones at school because they cannot study well, and the school can keep the phones.",
+      "acceptedVariants": [
+        "I agree. Students should not use phones at school because they cannot study well, and the school can keep the phones",
+        "I agree because students cannot study well with phones.",
+        "I disagree because students need to call their parents."
+      ],
+      "requiredConcepts": [
+        [
+          "agree",
+          "disagree"
+        ],
+        [
+          "because"
+        ]
+      ],
+      "objectiveRefs": [
+        "en.obj.speaking.give_info"
+      ],
+      "lexemeRefs": [
+        "en:w:i",
+        "en:w:agree",
+        "en:w:student",
+        "en:w:should",
+        "en:w:not",
+        "en:w:use",
+        "en:w:phone",
+        "en:w:at",
+        "en:w:school",
+        "en:w:because",
+        "en:w:they",
+        "en:w:can",
+        "en:w:study",
+        "en:w:well",
+        "en:w:and",
+        "en:w:the",
+        "en:w:keep"
+      ],
+      "evidenceLexemeRefs": [],
       "assistancePolicy": {
         "allowContextualBias": false,
         "revealTargetAfterAttempts": null

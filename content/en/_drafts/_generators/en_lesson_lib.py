@@ -124,6 +124,12 @@ def F(sentence, answer, wrong, vi):
     return {"type": "fillBlank", "sentence": sentence, "translation": vi, "audioTarget": sentence.replace("___", answer), "options": o, "correct": p}
 
 
+def AS(noun, gloss, article):
+    """articleSelect: a or an, chosen by the sound of the next word. The a-an gate reads the keyed phrase."""
+    arts = ["a", "an"]
+    return {"type": "articleSelect", "articles": arts, "noun": noun, "gloss": gloss, "correct": arts.index(article)}
+
+
 def _digits(text):
     def sub(m):
         return NUM.get(m.group(0).lower(), m.group(0))
@@ -290,6 +296,8 @@ def _english(e):
         return [e["sentence"].replace("___", e["answer"])]
     if t == "dictation":
         return [e["answer"]]
+    if t == "articleSelect":
+        return [e["noun"]]
     return []
 
 

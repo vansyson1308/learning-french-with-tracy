@@ -137,7 +137,7 @@ CLIPS += [
  C("cp3_dict_bus", "message", B("The bus leaves at nine."), [FW], 1),
  # Capstone: 4 listening items across two forms. Placement: 3.
  C("a1cap_bank", "factual", A("The bank opens at nine o'clock."), [INFO, NUM], 2),
- C("a1cap_bus", "announcement", B("Bus number twelve stops near the hospital."), [ANN, NUM], 2),
+ C("a1cap_bus", "announcement", B("Bus number twelve stops near the hospital."), [ANN, INFO, NUM], 2),
  C("a1cap_pharmacy", "factual", A("The pharmacy is next to the post office."), [INFO], 2),
  C("a1cap_bag", "factual", B("The bag costs fifteen dollars."), [INFO, NUM], 2),
  C("pl_milk", "word_phrase", A("the milk"), [FW]),
